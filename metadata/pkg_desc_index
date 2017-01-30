@@ -2976,7 +2976,7 @@ dev-db/postgresql 9.1.24 9.2.19 9.3.15 9.4.10 9.5.5 9.6.1-r1 9999: PostgreSQL RD
 dev-db/psqlodbc 09.01.0200 09.02.0100 09.03.0210: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain text databases
-dev-db/redis 2.8.17-r1 2.8.23 3.0.4 3.0.7 3.2.5 3.2.5-r1: A persistent caching system, key-value and data structures database
+dev-db/redis 2.8.17-r1 2.8.23 3.0.4 3.0.7 3.2.5 3.2.5-r1 3.2.6 3.2.6-r1: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1: PostgreSQL Replication Manager
 dev-db/rethinkdb 2.3.5: The open-source database for the realtime web.
 dev-db/rqlite 2.1 3.0.1 9999: Replicated SQLite using the Raft consensus protocol

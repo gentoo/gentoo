@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=virtual/pkgconfig >=sys-devel/autoconf-2.63 test? ( dev-lang/tcl:0= ) luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:5.1 ) tcmalloc? ( dev-util/google-perftools ) jemalloc? ( >=dev-libs/jemalloc-3.2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A persistent caching system, key-value and data structures database
+EAPI=6
+HOMEPAGE=http://redis.io/
+IUSE=+jemalloc tcmalloc luajit test
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+LICENSE=BSD
+RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:5.1 ) tcmalloc? ( dev-util/google-perftools ) jemalloc? ( >=dev-libs/jemalloc-3.2 )
+REQUIRED_USE=?? ( tcmalloc jemalloc )
+SLOT=0
+SRC_URI=http://download.redis.io/releases/redis-3.2.6.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=7eb7eb40712a71b38492e37575d908ba
