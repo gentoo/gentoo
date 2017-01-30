@@ -316,12 +316,6 @@ dev-php/propel-runtime
 =x11-misc/alock-94-r1
 =x11-misc/alock-94-r2
 
-# David Seifert <soap@gentoo.org> (29 Dec 2016)
-# Ancient codebase, maintenance nightmare, dead
-# upstream, games-emulation/vbam is spiritual successor
-# Removal in 30 days, #598607
-games-emulation/visualboyadvance
-
 # Hans de Graaff <graaff@gentoo.org> (13 Dec 2016)
 # Mask Rails 4.1.x for removal.
 # This version of Rails has not been supported upstream since Rails
