@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,13 +24,23 @@ REQUIRED_USE="vlc? ( client )
 
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}
-	dev-python/twisted-core[${PYTHON_USEDEP}]
+	|| (
+		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		dev-python/twisted-core[${PYTHON_USEDEP}]
+	)
 	gui? ( dev-python/pyside[${PYTHON_USEDEP}] )
 	vlc? ( media-video/vlc[lua] )"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( "${FILESDIR}/syncplay-1.4.0-rc2-fix-makefile.patch" )
+src_prepare() {
+	default
+	if ! use gui; then
+		sed -i 's/"noGui": False,/"noGui": True,/' \
+			syncplay/ui/ConfigurationGetter.py \
+		|| die "Failed to patch ConfigurationGetter.py"
+	fi
+}
 
 src_compile() {
 	:
