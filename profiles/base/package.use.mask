@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Thomas Deutschmann <whissi@gentoo.org> (30 Jan 2017)
+# media-libs/raspberrypi-userland not keyworded
+media-video/motion mmal
+
 # Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
 # x11-drivers/ati-drivers is masked for removal.
 media-gfx/blender opencl
