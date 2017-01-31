@@ -115,7 +115,7 @@ src_install() {
 pkg_postinst() {
 	gnome2_pkg_postinst
 
-	if ! has_version gnome-base/gdm && ! has_version kde-plasma/kdm; then
+	if ! has_version gnome-base/gdm && ! has_version x11-misc/sddm; then
 		ewarn "If you use a custom .xinitrc for your X session,"
 		ewarn "make sure that the commands in the xinitrc.d scripts are run."
 	fi
