@@ -30,6 +30,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthias Maier <tamiko@gentoo.org> (31 Jan 2017)
+# Dead upstream (no development since 2010) [1,2], outstanding security
+# issue with newer encfs versions [3], oustanding Gentoo bugs [4,5].
+# Mask for removal in 30 days.
+# [1] https://github.com/tomm/cryptkeeper/commits/master
+# [2] https://github.com/tomm/cryptkeeper/issues/
+# [3] https://bugs.gentoo.org/show_bug.cgi?id=607772
+# [4] https://bugs.gentoo.org/show_bug.cgi?id=448360
+# [5] https://bugs.gentoo.org/show_bug.cgi?id=596832
+app-crypt/cryptkeeper
+
 # Mike Gilbert <floppym@gentoo.org> (31 Jan 2017)
 # Depends on old version of dev-python/pyparsing.
 # Removal in 30 days.
