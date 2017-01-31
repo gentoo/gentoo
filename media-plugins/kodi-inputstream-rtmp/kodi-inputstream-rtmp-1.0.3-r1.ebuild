@@ -28,7 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
+	=media-tv/kodi-17*
 	media-video/rtmpdump
 	"
 RDEPEND="
