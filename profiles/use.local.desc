@@ -3411,6 +3411,7 @@ kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
 kde-plasma/libplasmaclock:pim - KDE PIM integration via kde-apps/kdepimlibs
+kde-plasma/plasma-desktop:appstream - Enable AppStream software metadata support
 kde-plasma/plasma-desktop:gtk2 - Add support for gtk+2-based applications using legacy xembed systray icons via libappindicator.
 kde-plasma/plasma-desktop:gtk3 - Add support for gtk+3-based applications using legacy xembed systray icons via libappindicator.
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
@@ -3435,6 +3436,7 @@ kde-plasma/plasma-workspace:json - Enable JSON support via dev-libs/qjson
 kde-plasma/plasma-workspace:pim - KDE PIM integration via kde-apps/kdepimlibs
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
+kde-plasma/powerdevil:elogind - Use sys-auth/elogind for session tracking.
 kde-plasma/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
