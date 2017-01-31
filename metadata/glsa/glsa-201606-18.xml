@@ -16,10 +16,8 @@
   <access>remote</access>
   <affected>
     <package name="dev-java/icedtea-bin" auto="yes" arch="*">
-      <unaffected range="ge">7.2.6.6-r1</unaffected>
-      <unaffected range="rge">3.0.1</unaffected>
-      <unaffected range="rge">3.1.0</unaffected>
-      <unaffected range="rge">3.2.0</unaffected>
+      <unaffected range="ge" slot="7">7.2.6.6-r1</unaffected>
+      <unaffected range="ge" slot="8">3.0.1</unaffected>
       <vulnerable range="lt">7.2.6.6-r1</vulnerable>
     </package>
   </affected>

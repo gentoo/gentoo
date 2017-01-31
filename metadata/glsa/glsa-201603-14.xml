@@ -23,7 +23,7 @@
       <vulnerable range="lt">7.2.6.4</vulnerable>
     </package>
     <package name="dev-java/icedtea-bin" auto="yes" arch="*">
-      <unaffected range="ge">7.2.6.4</unaffected>
+      <unaffected range="ge" slot="7">7.2.6.4</unaffected>
       <unaffected range="rge">6.1.13.9</unaffected>
       <unaffected range="lt">6</unaffected>
       <vulnerable range="lt">7.2.6.4</vulnerable>
