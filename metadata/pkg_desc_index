@@ -13075,7 +13075,7 @@ media-libs/vulkan-loader 1.0.39.0: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.5.2 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.1-r1 0.2 0.3: AudioProcessing library from the webrtc.org code base
 media-libs/wxsvg 1.4.2 1.5.9: C++ library to create, manipulate and render SVG files
-media-libs/x264 0.0.20140308 0.0.20150820 0.0.20151011 0.0.20160523 0.0.20160712 9999: A free library for encoding X264/AVC streams
+media-libs/x264 0.0.20160712 9999: A free library for encoding X264/AVC streams
 media-libs/x265 1.8-r3 2.2 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.6-r1 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/encoding solution
@@ -14020,7 +14020,7 @@ media-video/videotrans 1.6.1 1.6.1-r1: A package to convert movies to DVD format
 media-video/vlc 2.2.4 2.2.4-r1 2.2.9999 9999: VLC media player - Video player and streamer
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
-media-video/x264-encoder 0.0.20140308 0.0.20151011 0.0.20160523 0.0.20160712 9999: A free commandline encoder for X264/AVC streams
+media-video/x264-encoder 0.0.20160712 9999: A free commandline encoder for X264/AVC streams
 media-video/xanim-export 2.80.1-r5: XAnim with Quicktime and RAW Audio export functions
 media-video/xine-ui 0.99.7 0.99.8 0.99.9: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project

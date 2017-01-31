@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=dev-lang/nasm app-arch/unzip
+DEPEND=abi_x86_32? ( dev-lang/nasm ) abi_x86_64? ( dev-lang/nasm ) app-arch/unzip
 DESCRIPTION=Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 EAPI=5
 HOMEPAGE=http://www.openh264.org/
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/cisco/openh264/archive/v1.5.0.tar.gz -> openh264-1.5.0.tar.gz https://github.com/mozilla/gmp-api/archive/Firefox39.tar.gz -> gmp-api-Firefox39.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	mozextension	3d8ee4835f89ff39d4666656aa603433	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=edd7393eaff961e03003a925af0f8d41
+_md5_=de38376f27aef28f7a3de944f7b44711
