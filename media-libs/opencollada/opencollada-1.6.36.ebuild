@@ -15,7 +15,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-IUSE="expat static-libs"
+IUSE="static-libs"
 
 # This is still needed to have so version numbers
 MY_SOVERSION="$(get_version_component_range 1-2)"
@@ -24,8 +24,7 @@ RDEPEND="dev-libs/libpcre
 	dev-libs/zziplib
 	media-libs/lib3ds
 	sys-libs/zlib
-	expat? ( dev-libs/expat )
-	!expat? ( dev-libs/libxml2 )"
+	dev-libs/libxml2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -50,8 +49,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_SHARED=ON
 		-DUSE_STATIC=$(usex static-libs)
-		-DUSE_EXPAT=$(usex expat)
-		-DUSE_LIBXML=$(usex !expat)
+		-DUSE_LIBXML=ON
 		-Dsoversion=${MY_SOVERSION}
 	)
 
