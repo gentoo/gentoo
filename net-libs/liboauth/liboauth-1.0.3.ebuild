@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 MIT )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86 ~x64-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x64-macos"
 IUSE="curl doc bindist +nss"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.0.1-doxygen-out-of-tree.patch )
