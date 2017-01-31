@@ -63,7 +63,7 @@ src_install() {
 
 	make_wrapper "${PN}" "${dir}/bin/${MY_PN}.sh"
 	newicon "bin/${MY_PN}.png" "${PN}.png"
-	make_desktop_entry "${PN}" "IntelliJ Idea Ultimate" "${PN}" "Development;IDE;"
+	make_desktop_entry "${PN}" "IntelliJ Idea Community" "${PN}" "Development;IDE;"
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	mkdir -p "${D}/etc/sysctl.d/" || die
