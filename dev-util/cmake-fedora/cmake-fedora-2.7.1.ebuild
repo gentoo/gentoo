@@ -13,7 +13,7 @@ SRC_URI="https://fedorahosted.org/releases/c/m/cmake-fedora/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
