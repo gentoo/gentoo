@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit cmake-utils base
+inherit cmake-utils
 
 DESCRIPTION="Phonon QuickTime7 backend"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/phonon/phonon-quicktime"
@@ -35,7 +35,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	base_src_prepare  # for PATCHES
+	cmake-utils_src_prepare  # for PATCHES
 	sed -i -e "/^include_directories/s:): ${EPREFIX}/usr/include):" \
 		CMakeLists.txt || die
 }
