@@ -64,7 +64,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}"/${PN}-3.6-CFLAGS.patch
 	"${FILESDIR}"/${PN}-3.6-conditionally-include-image-headers.patch
-	"${FILESDIR}"/${PN}-3.6-pdf-writer.patch )
+	"${FILESDIR}"/${PN}-3.6-pdf-writer.patch
+	"${FILESDIR}"/${PN}-3.6-gstreamer.patch )
 DOCS=( fb.modes README Docs/USING-Framebuffer
 	Docs/ideas/{cache,css-engine,render-library}.txt )
 
@@ -87,7 +88,6 @@ src_configure() {
 		NETSURF_USE_NSPSL=$(usex psl YES NO)
 		NETSURF_USE_MNG=$(usex mng YES NO)
 		NETSURF_USE_WEBP=$(usex webp YES NO)
-		NETSURF_USE_VIDEO=$(usex gstreamer YES NO)
 		NETSURF_USE_MOZJS=$(usex javascript $(usex duktape NO YES) NO)
 		NETSURF_USE_JS=NO
 		NETSURF_USE_DUKTAPE=$(usex javascript $(usex duktape YES NO) NO)
@@ -104,20 +104,24 @@ src_configure() {
 		NETSURF_FB_FONTLIB=$(usex truetype freetype internal)
 		NETSURF_FB_FONTPATH=${EROOT}usr/share/fonts/dejavu
 		TARGET=dummy
+		NETSURF_USE_VIDEO=dummy
 	)
 }
 
 src_compile() {
 	if use fbcon ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=framebuffer}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=NO}" )
 		netsurf_src_compile
 	fi
 	if use gtk2 ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
 		netsurf_src_compile
 	fi
 	if use gtk3 || use gtk ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk3}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
 		netsurf_src_compile
 	fi
 }
@@ -128,6 +132,7 @@ src_install() {
 
 	if use fbcon ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=framebuffer}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=NO}" )
 		netsurf_src_install
 		elog "framebuffer binary has been installed as netsurf-fb"
 		make_desktop_entry "${EROOT}"usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
@@ -138,12 +143,14 @@ src_install() {
 	fi
 	if use gtk2 ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
 		netsurf_src_install
 		elog "netsurf gtk2 version has been installed as netsurf-gtk"
 		make_desktop_entry "${EROOT}"usr/bin/netsurf-gtk NetSurf-gtk netsurf "Network;WebBrowser"
 	fi
 	if use gtk3 || use gtk ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk3}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
 		netsurf_src_install
 		elog "netsurf gtk3 version has been installed as netsurf-gtk3"
 		make_desktop_entry "${EROOT}"usr/bin/netsurf-gtk3 NetSurf-gtk3 netsurf "Network;WebBrowser"

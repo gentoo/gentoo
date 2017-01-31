@@ -1,0 +1,31 @@
+--- netsurf-3.6/frontends/gtk/Makefile
++++ netsurf-3.6/frontends/gtk/Makefile
+@@ -16,7 +16,6 @@
+ 
+ # GTK and GLIB flags to disable depricated usage
+ GTKDEPFLAGS := -DG_DISABLE_SINGLE_INCLUDES \
+-		-DG_DISABLE_DEPRECATED \
+ 	       	-DGTK_DISABLE_SINGLE_INCLUDES \
+ 		-DGTK_MULTIHEAD_SAFE \
+ 		-DPANGO_DISABLE_DEPRECATED
+--- netsurf-3.6/content/handlers/image/video.c
++++ netsurf-3.6/content/handlers/image/video.c
+@@ -22,6 +22,8 @@
+ #include "content/content_protected.h"
+ 
+ #include "image/video.h"
++#include "utils/http/parameter.h"
++#include "content/llcache.h"
+ 
+ typedef struct nsvideo_content {
+ 	struct content base;
+--- netsurf-3.6/content/content_factory.h
++++ netsurf-3.6/content/content_factory.h
+@@ -25,6 +25,7 @@
+ 
+ #include "netsurf/content_type.h"
+ #include "utils/errors.h"
++#include "utils/utils.h"
+ 
+ #define CONTENT_FACTORY_REGISTER_TYPES(HNAME, HTYPELIST, HHANDLER)	\
+ 									\
