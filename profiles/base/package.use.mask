@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
+# nvenc requires nvidia drivers, apply same mask logic
+media-video/ffmpeg nvenc
+
 # Thomas Deutschmann <whissi@gentoo.org> (30 Jan 2017)
 # media-libs/raspberrypi-userland not keyworded
 media-video/motion mmal

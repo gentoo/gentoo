@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
+# nvidia drivers are unmasked here
+media-video/ffmpeg -nvenc
+
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
+# nvidia drivers are unmasked here
+media-video/ffmpeg -nvenc
+
 # Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
 # Requires unkeyworded media-sound/jack-audio-connection-kit & media-video/movit
 media-libs/mlt jack opengl
