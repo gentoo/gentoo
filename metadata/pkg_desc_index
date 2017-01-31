@@ -9816,10 +9816,10 @@ dev-tex/isotope 20040401: Typeset isotopes correctly in LaTeX documents
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
 dev-tex/latex-beamer 3.36: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
-dev-tex/latex2html 2008 2008-r1 2015: Convertor written in Perl that converts LATEX documents to HTML
+dev-tex/latex2html 2008 2008-r1 2015 2017.2: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11: LaTeX to RTF converter
 dev-tex/latexdiff 0.5 1.0.4 1.1.0 1.1.1 1.2.0: Compare two latex files and mark up significant differences
-dev-tex/latexmk 435 441 443a 444 445 448: Perl script for automatically building LaTeX documents
+dev-tex/latexmk 435 441 443a 444 445 448 452c: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A source pretty printer for LaTeX - styles to stylise your source and code examples
@@ -16357,7 +16357,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.11.13 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.11.13 0.11.14 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3: Image processing routines for SciPy
