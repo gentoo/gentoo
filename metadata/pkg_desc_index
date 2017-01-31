@@ -13256,7 +13256,7 @@ media-plugins/kodi-visualization-starburst 9999: StarBurst visualizer for Kodi
 media-plugins/kodi-visualization-waveform 1.1.0 9999: Waveform visualizer for Kodi
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
-media-plugins/libvisual-projectm 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
+media-plugins/libvisual-projectm 2.1.0 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
 media-plugins/live 2013.02.11 2016.10.11 2016.10.21 2016.11.28 2017.01.26: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
@@ -15423,7 +15423,7 @@ net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin
 net-p2p/litecoind 0.10.2.2-r4 0.10.4.0: Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. It's based on Bitcoin and not so widely adapted.
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
-net-p2p/mldonkey 3.1.5-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
+net-p2p/mldonkey 3.1.5-r1 3.1.6: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
 net-p2p/multibit 0.5.18: Secure, lightweight, international Bitcoin wallet written in Java
 net-p2p/myster 8.0-r1: Myster is a decentralized file sharing network
 net-p2p/ncdc 1.18.1 1.19 1.19.1 9999: ncurses directconnect client
