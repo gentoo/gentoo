@@ -192,7 +192,7 @@ app-admin/rex 1.3.3 1.4.0-r1 1.4.1: (R)?ex is a small script to ease the executi
 app-admin/rsyslog 8.16.0-r1 8.19.0 8.22.0 8.23.0 8.24.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2015.5.10 2015.8.12 2016.3.4 2016.11.0 9999: Salt is a remote execution and configuration manager
+app-admin/salt 2015.5.10 2015.8.13 2016.3.5 2016.11.2 9999: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.0: Service orchestration and management tool
 app-admin/setools 3.3.8-r7 4.0.1 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
