@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (31 Jan 2017)
+# Depends on old version of dev-python/pyparsing.
+# Removal in 30 days.
+dev-python/mwlib
+dev-python/mwlib-rl
+
 # David Seifert <soap@gentoo.org> (30 Jan 2017)
 # No maintainer activity since git migration, dated eclass
 # Multiple open bugs, with no activity:
