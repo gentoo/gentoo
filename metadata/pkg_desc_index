@@ -2330,7 +2330,7 @@ app-text/libgepub 0.4: GObject based library for handling and rendering epub doc
 app-text/libgxps 0.2.4: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
-app-text/libmwaw 0.3.8 0.3.9 9999: Library parsing many pre-OSX MAC text formats
+app-text/libmwaw 0.3.8 0.3.9 0.3.10 9999: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
@@ -2889,7 +2889,7 @@ dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to s
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: Berkeley DB JE is a high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.7 3.0.12 3.0.15 3.1.0: A highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.7 3.0.17 3.1.0: A highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.3.26780.0-r3: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -10017,7 +10017,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
 dev-util/cmake 3.5.2-r1 3.6.3 3.7.2: Cross platform Make
-dev-util/cmake-fedora 1.3.0 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
+dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.0: A unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
@@ -16191,7 +16191,7 @@ sci-libs/cgnslib 3.2.1 3.3.0: CFD General Notation System standard library
 sci-libs/chemkit 0.1 0.1-r1: Library for chemistry applications
 sci-libs/cholmod 2.1.2: Sparse Cholesky factorization and update/downdate library
 sci-libs/cifparse-obj 7.025-r1 7.105: Provides an object-oriented application interface to information in mmCIF format
-sci-libs/clapack 3.2.1-r6 3.2.1-r8: f2c'ed version of LAPACK
+sci-libs/clapack 3.2.1-r8: f2c'ed version of LAPACK
 sci-libs/clashscore-db 3.17: Clashscore-db for clashlist
 sci-libs/clblas 2.10: Library containing BLAS routines for OpenCL
 sci-libs/clblast 0.10.0: Tuned OpenCL BLAS
