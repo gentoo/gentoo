@@ -8007,7 +8007,7 @@ dev-python/pycrypto 2.6.1 2.6.1-r1 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.72 1.9.73 1.9.73-r1: Python bindings for the CUPS API
-dev-python/pycurl 7.19.3.1-r2 7.19.5.1 7.19.5.1-r1 7.19.5.3 7.21.5 7.43.0: python binding for curl/libcurl
+dev-python/pycurl 7.43.0: python binding for curl/libcurl
 dev-python/pycxx 6.2.5 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydb 1.26-r2: Extended python debugger
 dev-python/pydecomp 0.1 9999: A python library of common (de)compression and contents handling
