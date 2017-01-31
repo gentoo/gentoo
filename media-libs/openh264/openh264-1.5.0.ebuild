@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,9 @@ IUSE="+plugin utils"
 RESTRICT="bindist"
 
 RDEPEND="!<www-client/firefox-${MOZVER}"
-DEPEND="dev-lang/nasm"
+DEPEND="
+	abi_x86_32? ( dev-lang/nasm )
+	abi_x86_64? ( dev-lang/nasm )"
 
 DOCS=( LICENSE CONTRIBUTORS README.md )
 
