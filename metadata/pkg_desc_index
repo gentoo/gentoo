@@ -12616,7 +12616,7 @@ media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/printrun 20140730: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/psftools 1.0.7: Utilities for manipulation of console fonts in PSF format
-media-gfx/pstoedit 3.61 3.62 3.70 3.70-r1: Translate PostScript and PDF graphics into other vector formats
+media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/pycam 0.5.1 0.6_pre20130416-r1: Open Source CAM - Toolpath Generation for 3-Axis CNC machining
 media-gfx/pydot 1.0.28-r2: Python interface to Graphviz's Dot language
 media-gfx/qingy-themes 20050816: Collection of qingy themes
