@@ -12,7 +12,7 @@ SRC_URI="http://mosh.mit.edu/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~mips ~ppc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos"
 IUSE="+client examples +mosh-hardening +server ufw +utempter"
 
 REQUIRED_USE="
