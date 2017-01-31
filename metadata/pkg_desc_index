@@ -16895,7 +16895,7 @@ sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.25 5.29 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
-sys-apps/firejail 0.9.44.4 0.9.44.8: Security sandbox for any type of processes
+sys-apps/firejail 0.9.44.8: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS branch
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 9999: Utility for reading, writing, erasing and verifying flash ROM chips
