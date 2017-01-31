@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install prepare test unpack
+DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=media-libs/phonon-4.5 >=dev-util/automoc-0.9.87 media-libs/opengl-apple sys-devel/gcc-apple[objc] virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.5.2
 DESCRIPTION=Phonon QuickTime7 backend
-EAPI=4
+EAPI=6
 HOMEPAGE=https://projects.kde.org/projects/kdesupport/phonon/phonon-quicktime
 IUSE=debug
 KEYWORDS=~ppc-macos ~x64-macos
@@ -9,6 +9,6 @@ LICENSE=LGPL-2.1
 RDEPEND=>=media-libs/phonon-4.5
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/phonon-qt7-0_pre20110424.tar.bz2
-_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:base src_compile:base src_test:cmake-utils src_install:base
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=8a56cbb870672e382f74a9d928a2d6d7
+_eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=2344207747023c25555eda99e7561efc
