@@ -10473,16 +10473,16 @@ games-action/supertuxkart 0.9.1 0.9.2: A kart racing game starring Tux, the linu
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.6.3 0.6.3-r1: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
-games-action/transcend 0.3: retro-style, abstract, 2D shooter
-games-action/trine-bin 1.08: a physics-based action game where diff characters allow diff solutions to challenges
+games-action/transcend 0.3 0.3-r1: Retro-style, abstract, 2D shooter
+games-action/trine-bin 1.08 1.08-r1: A physics-based action game where diff characters allow diff solutions to challenges
 games-action/trine2 1.16-r1: A sidescrolling game of action, puzzles and platforming
 games-action/trosh 20: A game made in 20 hours for a friend. It has explosions
-games-action/tuxkart 0.4.0: A racing game starring Tux, the linux penguin
-games-action/violetland 0.4.3: Help a girl by name of Violet to struggle with hordes of monsters
-games-action/wordwarvi 1.00: A retro side-scrolling shoot'em up based on the editor war story
-games-action/xblast 2.10.4: Bomberman clone w/network support for up to 6 players
+games-action/tuxkart 0.4.0 0.4.0-r1: A racing game starring Tux, the Linux penguin
+games-action/violetland 0.4.3 0.4.3-r1: Help a girl named Violet in the struggle with hordes of monsters
+games-action/wordwarvi 1.00 1.00-r1: A retro side-scrolling shoot'em up based on the editor war story
+games-action/xblast 2.10.4 2.10.4-r1: Bomberman clone w/network support for up to 6 players
 games-action/xbomber 101 101-r1: Bomberman clone w/multiplayer support
-games-action/xpilot 4.5.5: A multi-player 2D client/server space game
+games-action/xpilot 4.5.5 4.5.5-r1: A multi-player 2D client/server space game
 games-arcade/abe 1.1: A scrolling, platform-jumping, key-collecting, ancient pyramid exploring game
 games-arcade/afternoonstalker 1.1.5: Clone of the 1981 Night Stalker video game by Mattel Electronics
 games-arcade/alienwave 0.3.0 0.4.0: An ncurses-based Xenon clone

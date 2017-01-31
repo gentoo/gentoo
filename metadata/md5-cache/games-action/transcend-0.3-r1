@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=media-libs/freeglut media-libs/portaudio x11-libs/libXi x11-libs/libXmu virtual/glu virtual/opengl
+DESCRIPTION=Retro-style, abstract, 2D shooter
+EAPI=6
+HOMEPAGE=http://transcend.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/freeglut media-libs/portaudio x11-libs/libXi x11-libs/libXmu virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=mirror://sourceforge/transcend/Transcend_0.3_UnixSource.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=95fb45153a3b4507571bc97cc1724e17

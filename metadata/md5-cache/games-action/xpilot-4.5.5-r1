@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXext app-text/rman x11-misc/gccmakedep x11-misc/imake x11-proto/xextproto x11-proto/xproto
+DESCRIPTION=A multi-player 2D client/server space game
+EAPI=6
+HOMEPAGE=http://www.xpilot.org/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext
+SLOT=0
+SRC_URI=mirror://sourceforge/xpilotgame/xpilot-4.5.5.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=860111083b3191c32b4032a90fe31411

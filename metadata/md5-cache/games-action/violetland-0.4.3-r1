@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/boost[threads(+)] media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf virtual/glu virtual/opengl sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Help a girl named Violet in the struggle with hordes of monsters
+EAPI=6
+HOMEPAGE=https://code.google.com/p/violetland/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 CC-BY-SA-3.0
+RDEPEND=dev-libs/boost[threads(+)] media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=https://github.com/ooxi/violetland/archive/0.4.3.tar.gz -> violetland-0.4.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8f2a831a1d6369d3d3402c21c574825e
