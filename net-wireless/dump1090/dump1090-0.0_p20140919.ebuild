@@ -32,8 +32,8 @@ src_prepare() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
-		CFLAGS="$(pkg-config --cflags librtlsdr)" \
-		LIBS="${LDFLAGS} $(pkg-config --libs librtlsdr) -lm -lpthread" \
+		CFLAGS="$($(tc-getPKG_CONFIG) --cflags librtlsdr)" \
+		LIBS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs librtlsdr) -lm -lpthread" \
 		all
 }
 
