@@ -28,8 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
-	media-libs/kodi-platform
+	=media-tv/kodi-17*
+	=media-libs/kodi-platform-17*
 	=dev-libs/libplatform-2*
 	"
 RDEPEND="
