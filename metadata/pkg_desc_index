@@ -10268,7 +10268,7 @@ dev-util/squashdelta 0.1 9999: Efficient (partially uncompressed) SquashFS binar
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/staruml-bin 2.8.0: A sophisticated software modeler
 dev-util/strace 4.9 4.13 4.14 4.15 9999: A useful diagnostic, instructional, and debugging tool
-dev-util/stressapptest 1.0.4 1.0.6 1.0.6-r1 1.0.6-r2 1.0.7_p1: Stressful Application Test
+dev-util/stressapptest 1.0.7_p1 1.0.8: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
