@@ -2889,7 +2889,7 @@ dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to s
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: Berkeley DB JE is a high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.7 3.0.12 3.0.15: A highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.7 3.0.12 3.0.15 3.1.0: A highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.3.26780.0-r3: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
