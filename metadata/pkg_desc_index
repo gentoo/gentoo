@@ -5061,7 +5061,7 @@ dev-lua/dkjson 2.5: David Kolf's JSON module for Lua
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/ldoc 1.4.6: A LuaDoc-compatible documentation generation system
 dev-lua/lgi 0.6.2 0.6.2-r1 0.7.2 0.9.0: Lua bindings using gobject-introspection
-dev-lua/lpeg 0.12 0.12.1 0.12.2 1.0.0 1.0.0-r1: Parsing Expression Grammars for Lua
+dev-lua/lpeg 0.12 0.12.1 0.12.2 1.0.0 1.0.0-r1 1.0.1: Parsing Expression Grammars for Lua
 dev-lua/lua-cjson 2.1.0: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.4.1-r1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
@@ -8746,7 +8746,7 @@ dev-qt/qttest 4.8.6-r1 4.8.7 5.6.1 5.6.2 5.7.1: Unit testing library for the Qt5
 dev-qt/qttranslations 4.8.6-r1 4.8.7 5.6.1 5.6.2 5.7.1: Translation files for the Qt5 framework
 dev-qt/qtwayland 5.6.1 5.6.2 5.7.1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.6.1 5.6.2 5.7.1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.6.1 5.6.2 5.7.1: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtwebengine 5.6.1 5.6.2 5.7.1 5.7.1-r1: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 4.8.6-r1 4.8.7 4.10.4 5.6.1 5.6.2 5.7.1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.6.1 5.6.2 5.7.1: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwidgets 5.6.1 5.6.2 5.7.1: Set of components for creating classic desktop-style UIs for the Qt5 framework
