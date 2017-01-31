@@ -172,7 +172,7 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 # Package doesn't provide a real test suite
@@ -180,14 +180,11 @@ RESTRICT="test"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif
 	fastcgi geo gzip limit_req limit_conn map memcached proxy referer
-	rewrite scgi ssi split_clients upstream_hash upstream_ip_hash
-	upstream_keepalive upstream_least_conn upstream_zone userid uwsgi"
+	rewrite scgi ssi split_clients upstream_ip_hash userid uwsgi"
 NGINX_MODULES_OPT="addition auth_request dav degradation flv geoip gunzip
 	gzip_static image_filter mp4 perl random_index realip secure_link
 	slice stub_status sub xslt"
-NGINX_MODULES_STREAM_STD="access geo limit_conn map return split_clients
-	upstream_hash upstream_least_conn upstream_zone"
-NGINX_MODULES_STREAM_OPT="geoip realip ssl_preread"
+NGINX_MODULES_STREAM="access limit_conn upstream"
 NGINX_MODULES_MAIL="imap pop3 smtp"
 NGINX_MODULES_3RD="
 	http_upload_progress
@@ -209,7 +206,7 @@ NGINX_MODULES_3RD="
 	http_memc
 	http_auth_ldap"
 
-IUSE="aio debug +http +http2 +http-cache +ipv6 libatomic libressl luajit +pcre
+IUSE="aio debug +http +http2 +http-cache ipv6 libatomic libressl luajit +pcre
 	pcre-jit rtmp selinux ssl threads userland_GNU vim-syntax"
 
 for mod in $NGINX_MODULES_STD; do
@@ -220,11 +217,7 @@ for mod in $NGINX_MODULES_OPT; do
 	IUSE="${IUSE} nginx_modules_http_${mod}"
 done
 
-for mod in $NGINX_MODULES_STREAM_STD; do
-	IUSE="${IUSE} nginx_modules_stream_${mod}"
-done
-
-for mod in $NGINX_MODULES_STREAM_OPT; do
+for mod in $NGINX_MODULES_STREAM; do
 	IUSE="${IUSE} nginx_modules_stream_${mod}"
 done
 
@@ -285,7 +278,7 @@ CDEPEND="
 	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	nginx_modules_http_security? ( ${AUTOTOOLS_DEPEND} )
 	arm? ( dev-libs/libatomic_ops )
@@ -339,8 +332,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
 
 	if use nginx_modules_http_upstream_check; then
-		#eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}"/check_1.11.1+.patch
-		eapply -p0 "${FILESDIR}"/http_upstream_check-nginx-1.11.5+.patch
+		eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}/check_1.9.2+".patch
 	fi
 
 	if use nginx_modules_http_lua; then
@@ -412,6 +404,7 @@ src_configure() {
 	use aio       && myconf+=( --with-file-aio )
 	use debug     && myconf+=( --with-debug )
 	use http2     && myconf+=( --with-http_v2_module )
+	use ipv6      && myconf+=( --with-ipv6 )
 	use libatomic && myconf+=( --with-libatomic )
 	use pcre      && myconf+=( --with-pcre )
 	use pcre-jit  && myconf+=( --with-pcre-jit )
@@ -553,18 +546,18 @@ src_configure() {
 	fi
 
 	# Stream modules
-	for mod in $NGINX_MODULES_STREAM_STD; do
+	for mod in $NGINX_MODULES_STREAM; do
 		if use nginx_modules_stream_${mod}; then
 			stream_enabled=1
 		else
-			myconf+=( --without-stream_${mod}_module )
-		fi
-	done
-
-	for mod in $NGINX_MODULES_STREAM_OPT; do
-		if use nginx_modules_stream_${mod}; then
-			stream_enabled=1
-			myconf+=( --with-stream_${mod}_module )
+			# Treat stream upstream slightly differently
+			if ! use nginx_modules_stream_upstream; then
+				myconf+=( --without-stream_upstream_hash_module )
+				myconf+=( --without-stream_upstream_least_conn_module )
+				myconf+=( --without-stream_upstream_zone_module )
+			else
+				myconf+=( --without-stream_${mod}_module )
+			fi
 		fi
 	done
 
@@ -601,18 +594,13 @@ src_configure() {
 		myconf+=( --group=${PN} )
 	fi
 
-	local WITHOUT_IPV6=
-	if ! use ipv6; then
-		WITHOUT_IPV6=" -DNGX_HAVE_INET6=0"
-	fi
-
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--conf-path="${EPREFIX}"/etc/${PN}/${PN}.conf \
 		--error-log-path="${EPREFIX}"/var/log/${PN}/error_log \
 		--pid-path="${EPREFIX}"/run/${PN}.pid \
 		--lock-path="${EPREFIX}"/run/lock/${PN}.lock \
-		--with-cc-opt="-I${EROOT}usr/include${WITHOUT_IPV6}" \
+		--with-cc-opt="-I${EROOT}usr/include" \
 		--with-ld-opt="-L${EROOT}usr/$(get_libdir)" \
 		--http-log-path="${EPREFIX}"/var/log/${PN}/access_log \
 		--http-client-body-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/client \
@@ -620,7 +608,6 @@ src_configure() {
 		--http-fastcgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/fastcgi \
 		--http-scgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/scgi \
 		--http-uwsgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/uwsgi \
-		--with-compat \
 		"${myconf[@]}" || die "configure failed"
 
 	# A purely cosmetic change that makes nginx -V more readable. This can be
