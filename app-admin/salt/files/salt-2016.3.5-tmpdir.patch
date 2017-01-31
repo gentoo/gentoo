@@ -1,0 +1,47 @@
+diff --git a/tests/unit/modules/qemu_nbd_test.py b/tests/unit/modules/qemu_nbd_test.py
+index 615e6b5670..fbd24aab86 100644
+--- a/tests/unit/modules/qemu_nbd_test.py
++++ b/tests/unit/modules/qemu_nbd_test.py
+@@ -77,6 +77,7 @@ class QemuNbdTestCase(TestCase):
+         Test if it mount the named image via qemu-nbd
+         and return the mounted roots
+         '''
++        tmpdir = os.environ.get('TMPDIR', '/tmp')
+         mock = MagicMock(return_value=True)
+         with patch.dict(qemu_nbd.__salt__, {'cmd.run': mock}):
+             self.assertEqual(qemu_nbd.init('/srv/image.qcow2'), '')
+@@ -89,7 +90,7 @@ class QemuNbdTestCase(TestCase):
+                                  'mount.mount': mock,
+                                  'cmd.retcode': MagicMock(side_effect=[1, 0])}):
+                     self.assertDictEqual(qemu_nbd.init('/srv/image.qcow2'),
+-                                         {'/tmp/nbd/nbd0/nbd0': '/dev/nbd0'})
++                                         {os.path.join(tmpdir, 'nbd/nbd0/nbd0'): '/dev/nbd0'})
+ 
+     # 'clear' function tests: 1
+ 
+diff --git a/tests/unit/states/archive_test.py b/tests/unit/states/archive_test.py
+index e699362d8a..c7c7e8a965 100644
+--- a/tests/unit/states/archive_test.py
++++ b/tests/unit/states/archive_test.py
+@@ -25,7 +25,7 @@ from salt.ext.six.moves import zip  # pylint: disable=import-error,redefined-bui
+ 
+ # Globals
+ archive.__salt__ = {}
+-archive.__opts__ = {"cachedir": "/tmp", "test": False}
++archive.__opts__ = {"cachedir": os.environ.get('TMPDIR', "/tmp"), "test": False}
+ archive.__env__ = 'test'
+ 
+ 
+diff --git a/tests/unit/utils/context_test.py b/tests/unit/utils/context_test.py
+index 5249d56747..a27ee9ab61 100644
+--- a/tests/unit/utils/context_test.py
++++ b/tests/unit/utils/context_test.py
+@@ -18,7 +18,7 @@ import salt.payload
+ import salt.utils
+ 
+ __context__ = {'a': 'b'}
+-__opts__ = {'cachedir': '/tmp'}
++__opts__ = {'cachedir': os.environ.get('TMPDIR', '/tmp')}
+ 
+ 
+ @skipIf(NO_MOCK, NO_MOCK_REASON)
