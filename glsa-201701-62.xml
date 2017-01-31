@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">firejail</product>
   <announced>2017-01-24</announced>
-  <revised>2017-01-24: 1</revised>
+  <revised>2017-01-31: 2</revised>
   <bug>604758</bug>
   <access>local, remote</access>
   <affected>
@@ -60,5 +60,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5207">CVE-2017-5207</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-13T15:06:51Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2017-01-24T11:32:53Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-31T03:41:42Z">whissi</metadata>
 </glsa>
