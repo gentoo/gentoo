@@ -9390,7 +9390,7 @@ dev-ruby/net-telnet 0.1.1-r1: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 1.2.1 1.2.1-r1: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 1.2.1 1.2.1-r1 2.0.0: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.6.6.2 1.6.8.1 1.7.0 1.7.0.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7 1.4.9: A Nokogiri interface to the Gumbo HTML5 parser
@@ -9430,7 +9430,7 @@ dev-ruby/poltergeist 1.9.0 1.10.0: A PhantomJS driver for Capybara
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.11 0.3.12 0.3.13: Library that implements a subset of the Ruby 1.9 Process::spawn
 dev-ruby/postgres_ext 2.4.1 3.0.0: Native PostgreSQL data types and querying extensions for ActiveRecord and Arel
-dev-ruby/power_assert 0.3.1 0.4.1: Shows each value of variables and method calls in the expression
+dev-ruby/power_assert 0.3.1 0.4.1 1.0.1: Shows each value of variables and method calls in the expression
 dev-ruby/prawn 1.3.0 2.0.2 2.1.0 2.1.0-r1: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
@@ -9608,7 +9608,7 @@ dev-ruby/shoulda-matchers 2.8.0 2.8.0-r1 3.1.0 3.1.1 3.1.1-r1: Making tests easy
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
 dev-ruby/simple-rss 1.3.1-r1: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
-dev-ruby/simplecov 0.11.2 0.12.0: Code coverage with a configuration library and merging across test suites
+dev-ruby/simplecov 0.11.2 0.12.0 0.13.0: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.0: Generates a HTML report of your SimpleCov ruby code coverage results
 dev-ruby/sinatra 1.4.7: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/six 0.2.0: An ultra lite authorization library
@@ -18194,7 +18194,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 42.0.2393.351 42.0.2393.517: A fast and secure web browser
 www-client/opera-beta 43.0.2442.21 43.0.2442.52: A fast and secure web browser
-www-client/opera-developer 44.0.2463.0 44.0.2475.0: A fast and secure web browser
+www-client/opera-developer 44.0.2475.0 44.0.2487.0: A fast and secure web browser
 www-client/otter 0.9.11 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
