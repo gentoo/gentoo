@@ -338,7 +338,7 @@ app-arch/zopfli 1.0.0_p20140705 1.0.1-r2: Very good, but slow, deflate or zlib c
 app-arch/zpaq 7.13-r1: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zstd 1.1.0: zstd fast compression library
-app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
+app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7 3.3.9 3.4.1 3.4.2: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.10.1-r2 0.7.12-r1 0.7.13: Backup Manager is a command line backup tool for GNU/Linux
@@ -1335,7 +1335,7 @@ app-emulation/qemu-guest-agent 2.5.0 2.6.0: QEMU Guest Agent (qemu-ga) for use w
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
-app-emulation/rkt 1.21.0 1.22.0: rkt is an App Container runtime for Linux
+app-emulation/rkt 1.21.0 1.22.0 1.23.0: rkt is an App Container runtime for Linux
 app-emulation/runc 0.1.0 1.0.0_rc2-r2 9999: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
@@ -12825,7 +12825,7 @@ media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 1.0.2 2.2.1 2.4.0 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libclxclient 1.0.1 3.3.2 3.6.1 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libcue 1.4.0: CUE Sheet Parser Library
-media-libs/libcuefile 477 477-r1: Cue File library from Musepack
+media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.1.3-r1 2.1.4 2.2.1 2.2.3 2.2.4 2.2.5: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3: library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 0.9 1.0.2 9999: Open h.265 video codec implementation
