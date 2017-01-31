@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/perl-5.8 dev-perl/Algorithm-Diff app-arch/unzip
 DESCRIPTION=Compare two latex files and mark up significant differences
 EAPI=5
 HOMEPAGE=http://www.ctan.org/tex-archive/support/latexdiff/ https://github.com/ftilmann/latexdiff/
-KEYWORDS=alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8 dev-perl/Algorithm-Diff
 SLOT=0
 SRC_URI=http://mirror.ctan.org/support/latexdiff.zip -> latexdiff-1.1.0.zip
 _eclass_exported_funcs=src_test:- src_install:-
-_md5_=6833226ac0ea44a398c83a61f337ab46
+_md5_=43569c11a9cffb0849fc631f93262bc2
