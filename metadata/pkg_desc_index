@@ -7662,7 +7662,7 @@ dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 9.3.1 10.0.2-r1 10.1 10.1-r1 10.2: Provides access to the system keyring service
 dev-python/keyrings_alt 1.1 1.1.1 2.0: Alternate keyring implementations
-dev-python/keystoneauth 2.4.1 2.4.2 2.12.2: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 2.4.1 2.4.2 2.12.2 2.12.3: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.4.1 4.9.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kitchen 1.2.4: A cornucopia of useful code
@@ -14107,7 +14107,7 @@ net-analyzer/hydra 8.1 8.1-r1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.4 1.14.0: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.14.0: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.5.4-r1 2.6.0 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.5.4-r1 2.6.0 2.6.1 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
@@ -17334,7 +17334,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable 
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 8.3.0 9.1.1 2016.1.9999 2016.2.9999: A virtual network service for Openstack
+sys-cluster/neutron 8.3.0 9.1.1 9.2.0 2016.1.9999 2016.2.9999: A virtual network service for Openstack
 sys-cluster/nova 13.1.2 14.0.3 2016.1.9999 2016.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem

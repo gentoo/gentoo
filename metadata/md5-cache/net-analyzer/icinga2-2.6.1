@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=dev-libs/boost-1.58-r1 console? ( dev-libs/libedit ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) sys-devel/bison >=sys-devel/flex-2.5.35 apache2? ( =www-servers/apache-2* ) sys-devel/make >=dev-util/cmake-3.5.2 virtual/pkgconfig
+DESCRIPTION=Distributed, general purpose, network monitoring engine
+EAPI=5
+HOMEPAGE=http://icinga.org/icinga2
+IUSE=+mysql postgres classicui console libressl lto mail minimal nano-syntax +plugins studio +vim-syntax apache2
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=GPL-2
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=dev-libs/boost-1.58-r1 console? ( dev-libs/libedit ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) plugins? ( || ( net-analyzer/monitoring-plugins net-analyzer/nagios-plugins ) ) mail? ( virtual/mailx ) classicui? ( net-analyzer/icinga[web] ) studio? ( x11-libs/wxGTK:3.0 ) apache2? ( =www-servers/apache-2* )
+REQUIRED_USE=!minimal? ( || ( mysql postgres ) )
+SLOT=0
+SRC_URI=https://github.com/Icinga/icinga2/archive/v2.6.1.tar.gz -> icinga2-2.6.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
+_md5_=a08a649f5a1242cac51b4b8f8384a4fb
