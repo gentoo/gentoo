@@ -12,7 +12,7 @@ SRC_URI="http://download.savannah.nongnu.org/releases/proccpuinfo/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips x86"
+KEYWORDS="alpha amd64 ~hppa ~mips x86"
 IUSE=""
 
 DEPEND=">=sys-devel/flex-2.5.33"
