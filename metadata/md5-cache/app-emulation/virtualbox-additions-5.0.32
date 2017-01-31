@@ -2,7 +2,7 @@ DEFINED_PHASES=install unpack
 DESCRIPTION=CD image containing guest additions for VirtualBox
 EAPI=6
 HOMEPAGE=http://www.virtualbox.org/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2+ LGPL-2.1+ MIT SGI-B-2.0 CDDL
 RDEPEND=!app-emulation/virtualbox-bin !=app-emulation/virtualbox-9999
 RESTRICT=mirror
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://download.virtualbox.org/virtualbox/5.0.32/VBoxGuestAdditions_5.0.32.iso
 _eclass_exported_funcs=src_unpack:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=7bca6d9c914c0ee3b57bc1f9cbb68ae5
+_md5_=9834d541d1a765ce9b46c5a6100bda2a
