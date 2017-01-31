@@ -1,0 +1,164 @@
+diff --git a/installcheck/Amanda_Rest_Storages.pl b/installcheck/Amanda_Rest_Storages.pl
+index f3c699b..3e4e889 100644
+--- a/installcheck/Amanda_Rest_Storages.pl
++++ b/installcheck/Amanda_Rest_Storages.pl
+@@ -308,6 +308,7 @@ is_deeply (Installcheck::Rest::remove_source_line($reply),
+ 		'inventory' => [
+ 				 {'current' => 1,
+ 				  'label' => "DISKFLAT-001",
++				  'label_match' => '1',
+ 				  'device_status' => '0',
+ 				  'reserved' => 0,
+ 				  'f_type' => '1',
+@@ -467,6 +468,7 @@ is_deeply (Installcheck::Rest::remove_source_line($reply),
+ 		'label' => 'DISKFLAT-001',
+ 		'datestamp' => '20140509113436',
+ 		'write_protected' => '',
++		'label_match' => '1',
+ 		'process' => 'Amanda::Rest::Storages',
+ 		'running_on' => 'amanda-server',
+ 		'component' => 'rest-server',
+diff --git a/installcheck/amtape.pl b/installcheck/amtape.pl
+index 1a3527f..700c5a2 100644
+--- a/installcheck/amtape.pl
++++ b/installcheck/amtape.pl
+@@ -177,13 +177,13 @@ like($Installcheck::Run::stderr,
+ ok(run('amtape', 'TESTCONF', 'show'),
+     "'amtape TESTCONF show'");
+ like($Installcheck::Run::stderr,
+-    qr/slot +2:.*label MyTape\nslot +3/,
++    qr/slot +2:.*label MyTape \(label do not match labelstr\)\nslot +3/,
+     "'amtape TESTCONF show' ..result correct");
+ 
+ ok(run('amtape', 'TESTCONF', 'show', '2'),
+     "'amtape TESTCONF show'");
+ like($Installcheck::Run::stderr,
+-    qr/^slot +2:.*label MyTape$/,
++    qr/^slot +2:.*label MyTape \(label do not match labelstr\)$/,
+     "'amtape TESTCONF show 2' ..result correct");
+ 
+ ok(run('amtape', 'TESTCONF', 'show', '1,3'),
+@@ -252,13 +252,13 @@ like(run_err('amtape', 'TESTCONF', 'update'),
+ ok(run('amtape', 'TESTCONF', 'show'),
+     "'amtape TESTCONF show'");
+ like($Installcheck::Run::stderr,
+-    qr/slot +2:.*label MyTape\nslot +3/,
++    qr/slot +2:.*label MyTape \(label do not match labelstr\)\nslot +3/,
+     "..result correct");
+ 
+ ok(run('amtape', 'TESTCONF', 'inventory'),
+     "'amtape TESTCONF inventory'");
+ like($Installcheck::Run::stdout,
+-    qr/slot +1: blank\nslot +2: label MyTape \(current\)\nslot +3/,
++    qr/slot +1: blank\nslot +2: label MyTape \(current\) \(label do not match labelstr\)\nslot +3/,
+     "..result correct");
+ 
+ ok(run('amtape', 'TESTCONF', 'taper'),
+diff --git a/perl/Amanda/Changer.pm b/perl/Amanda/Changer.pm
+index 92ed9b6..4b4aad4 100644
+--- a/perl/Amanda/Changer.pm
++++ b/perl/Amanda/Changer.pm
+@@ -60,9 +60,10 @@ sub local_message {
+     } elsif ($self->{'code'} == 1100014) {
+ 	return "$self->{'err'}";
+     } elsif ($self->{'code'} == 1100015) {
+-	return sprintf("slot %3s: date %-14s label %s%s", $self->{'slot'},
++	return sprintf("slot %3s: date %-14s label %s%s%s", $self->{'slot'},
+ 			$self->{'datestamp'}, $self->{'label'},
+-			$self->{'write_protected'}?" (Write protected)":"");
++			$self->{'write_protected'}?" (Write protected)":"",
++			$self->{'label_match'}?"":" (label do not match labelstr)");
+     } elsif ($self->{'code'} == 1100016) {
+ 	return sprintf("slot %3s: unlabeled volume%s", $self->{'slot'},
+ 			 $self->{'write_protected'}?" (Write protected)":"");
+@@ -2014,6 +2015,13 @@ sub show {
+ 	    my $st = $dev->read_label();
+ 	    my $write_protected = !$dev->check_writable();
+ 	    if ($st == $DEVICE_STATUS_SUCCESS) {
++		my $label_match = match_labelstr(
++					$self->{'storage'}->{'labelstr'},
++					$self->{'storage'}->{'autolabel'},
++					$dev->volume_label(),
++					$res->{'barcode'},
++					$res->{'meta'},
++					$self->{'storage'}->{'storage_name'});
+ 		$params{'user_msg'}->(Amanda::Changer::Message->new(
+ 					source_filename => __FILE__,
+ 					source_line => __LINE__,
+@@ -2022,7 +2030,8 @@ sub show {
+ 					slot   => $last_slot,
+ 					datestamp  => $dev->volume_time(),
+ 					label  => $dev->volume_label(),
+-					write_protected => $write_protected));
++					write_protected => $write_protected,
++					label_match => $label_match));
+ 	    } elsif ($st == $DEVICE_STATUS_VOLUME_UNLABELED) {
+ 		$params{'user_msg'}->(Amanda::Changer::Message->new(
+ 					source_filename => __FILE__,
+diff --git a/perl/Amanda/Rest/Storages.pm b/perl/Amanda/Rest/Storages.pm
+index 680115b..b1b59d2 100644
+--- a/perl/Amanda/Rest/Storages.pm
++++ b/perl/Amanda/Rest/Storages.pm
+@@ -436,6 +436,17 @@ sub inventory {
+ 		    $inv->{'retention_type'} = $tl->get_retention_name($retention_type);
+ 		}
+ 	    }
++	    for my $inv (@$inventory) {
++		if ($inv->{label}) {
++		    $inv->{'label_match'} = Amanda::Util::match_labelstr(
++				$storage->{'labelstr'},
++				$storage->{'autolabel'},
++				$inv->{'label'},
++				$inv->{'barcode'},
++				$inv->{'metae'},
++				$storage->{'storage_name'});
++		}
++	    }
+ 	    push @result_messages, Amanda::Changer::Message->new(
+ 				source_filename => __FILE__,
+ 				source_line     => __LINE__,
+diff --git a/server-src/amtape.pl b/server-src/amtape.pl
+index b63607e..d06eefe 100644
+--- a/server-src/amtape.pl
++++ b/server-src/amtape.pl
+@@ -30,7 +30,7 @@ use Text::Wrap;
+ use Amanda::Device qw( :constants );
+ use Amanda::Debug qw( :logging );
+ use Amanda::Config qw( :init :getconf config_dir_relative );
+-use Amanda::Util qw( :constants );
++use Amanda::Util qw( :constants match_labelstr );
+ use Amanda::Storage;
+ use Amanda::Changer;
+ use Amanda::Constants;
+@@ -219,6 +219,7 @@ sub {
+ 	for my $sl (@$inv) {
+ 	    my $line = "slot $sl->{slot}:";
+ 	    my $tle;
++	    my $meta;
+ 	    if ($sl->{'state'} == Amanda::Changer::SLOT_EMPTY) {
+ 		$line .= " empty";
+ 	    } elsif (!defined($sl->{device_status}) && !defined($sl->{label})) {
+@@ -230,6 +231,7 @@ sub {
+ 		    if (defined $tle) {
+ 			if ($tle->{'meta'}) {
+ 				$line .= " ($tle->{'meta'})";
++				$meta = $tle->{'meta'};
+ 			}
+ 		    }
+ 		} elsif ($sl->{'device_status'} == $DEVICE_STATUS_VOLUME_UNLABELED) {
+@@ -263,6 +265,15 @@ sub {
+ 		    $line .= " [device error]";
+ 		}
+ 	    }
++	    if ($sl->{'label'}) {
++		if (!match_labelstr($storage->{'labelstr'},
++				    $storage->{'autolabel'},
++				    $sl->{label},
++				    $sl->{'barcode'}, $meta,
++				    $storage->{'storage_name'})) {
++		    $line .= " (label do not match labelstr)";
++		}
++	    }
+ 	    if (defined $tle) {
+ 		my $retention_type = Amanda::Tapelist::get_retention_type($tle->{pool}, $tle->{label});
+ 		$line .= " [" . $tl->get_retention_name($retention_type) . "]";
