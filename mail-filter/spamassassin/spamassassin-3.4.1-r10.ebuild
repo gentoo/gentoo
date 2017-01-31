@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -104,6 +104,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# This is how and where the perl-module eclass disables the
+	# MakeMaker interactive prompt.
+	export PERL_MM_USE_DEFAULT=1
+
 	# Set SYSCONFDIR explicitly so we can't get bitten by bug 48205 again
 	# (just to be sure, nobody knows how it could happen in the first place).
 	#
@@ -124,11 +128,8 @@ src_configure() {
 }
 
 src_compile() {
-	PERL_MM_USE_DEFAULT=1 emake
-
-	if use qmail; then
-		emake spamc/qmail-spamc
-	fi
+	emake
+	use qmail && emake spamc/qmail-spamc
 }
 
 src_install () {
