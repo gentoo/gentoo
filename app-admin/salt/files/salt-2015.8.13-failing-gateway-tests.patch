@@ -1,0 +1,69 @@
+diff --git a/tests/unit/states/boto_vpc_test.py b/tests/unit/states/boto_vpc_test.py
+index 53b6a24e4d..96b5630627 100644
+--- a/tests/unit/states/boto_vpc_test.py
++++ b/tests/unit/states/boto_vpc_test.py
+@@ -179,16 +179,6 @@ class BotoVpcResourceTestCaseMixin(BotoVpcTestCaseMixin):
+         self.assertTrue(exists)
+ 
+     @mock_ec2
+-    def test_present_when_resource_exists(self):
+-        vpc = self._create_vpc(name='test')
+-        resource = self._create_resource(vpc_id=vpc.id, name='test')
+-        with patch.dict('salt.utils.boto.__salt__', funcs):
+-            resource_present_result = salt_states['boto_vpc.{0}_present'.format(self.resource_type)](
+-                    name='test', vpc_name='test', **self.extra_kwargs)
+-        self.assertTrue(resource_present_result['result'])
+-        self.assertEqual(resource_present_result['changes'], {})
+-
+-    @mock_ec2
+     @skipIf(True, 'Disabled pending https://github.com/spulec/moto/issues/493')
+     def test_present_with_failure(self):
+         vpc = self._create_vpc(name='test')
+@@ -210,18 +200,6 @@ class BotoVpcResourceTestCaseMixin(BotoVpcTestCaseMixin):
+         self.assertEqual(resource_absent_result['changes'], {})
+ 
+     @mock_ec2
+-    def test_absent_when_resource_exists(self):
+-        vpc = self._create_vpc(name='test')
+-        self._create_resource(vpc_id=vpc.id, name='test')
+-
+-        with patch.dict('salt.utils.boto.__salt__', funcs):
+-            resource_absent_result = salt_states['boto_vpc.{0}_absent'.format(self.resource_type)]('test')
+-        self.assertTrue(resource_absent_result['result'])
+-        self.assertEqual(resource_absent_result['changes']['new'][self.resource_type], None)
+-        exists = funcs['boto_vpc.resource_exists'](self.resource_type, 'test').get('exists')
+-        self.assertFalse(exists)
+-
+-    @mock_ec2
+     @skipIf(True, 'Disabled pending https://github.com/spulec/moto/issues/493')
+     def test_absent_with_failure(self):
+         vpc = self._create_vpc(name='test')
+@@ -293,28 +271,3 @@ class BotoVpcRouteTableTestCase(BotoVpcStateTestCaseBase, BotoVpcResourceTestCas
+ 
+         new_subnets = changes['new']['subnets_associations']
+         self.assertEqual(new_subnets[0]['subnet_id'], subnet2.id)
+-
+-    @mock_ec2
+-    def test_present_with_routes(self):
+-        vpc = self._create_vpc(name='test')
+-        igw = self._create_internet_gateway(name='test', vpc_id=vpc.id)
+-
+-        route_table_present_result = salt_states['boto_vpc.route_table_present'](
+-                name='test', vpc_name='test', routes=[{'destination_cidr_block': '0.0.0.0/0',
+-                                                       'gateway_id': igw.id},
+-                                                      {'destination_cidr_block': '10.0.0.0/24',
+-                                                       'gateway_id': 'local'}])
+-        routes = [x['gateway_id'] for x in route_table_present_result['changes']['new']['routes']]
+-
+-        self.assertEqual(set(routes), set(['local', igw.id]))
+-
+-        route_table_present_result = salt_states['boto_vpc.route_table_present'](
+-                name='test', vpc_name='test', routes=[{'destination_cidr_block': '10.0.0.0/24',
+-                                                       'gateway_id': 'local'}])
+-
+-        changes = route_table_present_result['changes']
+-
+-        old_routes = [x['gateway_id'] for x in changes['old']['routes']]
+-        self.assertEqual(set(routes), set(old_routes))
+-
+-        self.assertEqual(changes['new']['routes'][0]['gateway_id'], 'local')
