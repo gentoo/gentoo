@@ -5980,7 +5980,7 @@ dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
-dev-perl/List-MoreUtils 0.330.0-r1 0.413.0: Provide the missing functionality from List::Util
+dev-perl/List-MoreUtils 0.413.0: Provide the missing functionality from List::Util
 dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
 dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
