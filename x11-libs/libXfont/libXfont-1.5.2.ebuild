@@ -14,6 +14,7 @@ IUSE="bzip2 ipv6 truetype"
 
 RDEPEND="x11-libs/xtrans
 	x11-libs/libfontenc
+	sys-libs/zlib
 	truetype? ( >=media-libs/freetype-2 )
 	bzip2? ( app-arch/bzip2 )
 	x11-proto/xproto
