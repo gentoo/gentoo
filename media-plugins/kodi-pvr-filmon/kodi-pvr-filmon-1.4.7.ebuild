@@ -29,8 +29,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-9999
-	=media-libs/kodi-platform-9999
+	=media-tv/kodi-17*
+	=media-libs/kodi-platform-17*
 	dev-libs/jsoncpp
 	"
 
