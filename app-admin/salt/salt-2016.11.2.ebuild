@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -86,16 +86,20 @@ REQUIRED_USE="|| ( raet zeromq )"
 RESTRICT="x86? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2015.8.2-tmpdir.patch"
+	"${FILESDIR}/${PN}-2016.11.0-tmpdir.patch"
 	"${FILESDIR}/${PN}-2016.3.1-dont-realpath-tmpdir.patch"
 	"${FILESDIR}/${PN}-2016.3.4-test-nonexist-dirs.patch"
-	"${FILESDIR}/${PN}-2016.3.4-dont-test-ordering.patch"
+	"${FILESDIR}/${PN}-2016.11.0-remove-file-tree-test.patch"
+	"${FILESDIR}/${PN}-2016.11.0-broken-tests.patch"
 )
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
 		tests/unit/modules/{rh_ip,win_network,random_org}_test.py || die
+
+	# https://github.com/saltstack/salt/issues/39095
+	rm tests/unit/utils/parsers_test.py
 
 	# apparently libcloud does not know about this?
 	rm tests/unit/cloud/clouds/dimensiondata_test.py || die

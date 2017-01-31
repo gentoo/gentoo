@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=5
+PYTHON_COMPAT=(python2_7)
 
 inherit eutils systemd distutils-r1
 
@@ -73,36 +73,29 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/timelib[${PYTHON_USEDEP}]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
-		!x86? ( dev-python/boto3[${PYTHON_USEDEP}] )
 		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
-		>=dev-python/SaltTesting-2016.5.11[${PYTHON_USEDEP}]
-		>=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}]
+		>=dev-python/SaltTesting-2015.2.16[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)"
 
-DOCS=( README.rst AUTHORS )
+DOCS=(README.rst AUTHORS)
 
 REQUIRED_USE="|| ( raet zeromq )"
-RESTRICT="x86? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2016.11.0-tmpdir.patch"
-	"${FILESDIR}/${PN}-2016.3.1-dont-realpath-tmpdir.patch"
-	"${FILESDIR}/${PN}-2016.3.4-test-nonexist-dirs.patch"
-	"${FILESDIR}/${PN}-2016.11.0-remove-file-tree-test.patch"
-	"${FILESDIR}/${PN}-2016.11.0-broken-tests.patch"
+	"${FILESDIR}/${PN}-2015.8.0-remove-buggy-tests.patch"
+	"${FILESDIR}/${PN}-2015.5.5-auth-tests.patch"
+	"${FILESDIR}/${PN}-2015.5.5-cron-tests.patch"
+	"${FILESDIR}/${PN}-2015.5.5-remove-buggy-tests.patch"
+	"${FILESDIR}/${PN}-2015.8.2-tmpdir.patch"
+	"${FILESDIR}/${PN}-2015.8.10-remove-failing-boto-test.patch"
+	"${FILESDIR}/${PN}-2015.8.13-failing-gateway-tests.patch"
 )
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		tests/unit/modules/{rh_ip,win_network,random_org}_test.py || die
-
-	# apparently libcloud does not know about this?
-	rm tests/unit/cloud/clouds/dimensiondata_test.py || die
-
-	# seriously? "ValueError: Missing (or not readable) key file: '/home/dany/PRIVKEY.pem'"
-	rm tests/unit/cloud/clouds/gce_test.py || die
+		tests/unit/modules/{rh_ip,win_network,random_org}_test.py
 }
 
 python_install_all() {
@@ -112,7 +105,12 @@ python_install_all() {
 	for svc in minion master syndic api; do
 		newinitd "${FILESDIR}"/${svc}-initd-4 salt-${svc}
 		newconfd "${FILESDIR}"/${svc}-confd-1 salt-${svc}
-		systemd_dounit "${FILESDIR}"/salt-${svc}.service
+		if [[ -e pkg/salt-${svc}.service ]]; then
+			sed -i -r 's/After=(.*)/After=syslog.target \1/' pkg/salt-${svc}.service || die
+			systemd_dounit pkg/salt-${svc}.service
+		elif [[ -e "${FILESDIR}"/salt-${svc}.service ]]; then
+			systemd_dounit "${FILESDIR}"/salt-${svc}.service
+		fi
 	done
 
 	insinto /etc/${PN}
@@ -122,7 +120,7 @@ python_install_all() {
 python_test() {
 	local tempdir
 	# testsuite likes lots of files
-	ulimit -n 3072 || die
+	ulimit -n 3072
 
 	# ${T} is too long a path for the tests to work
 	tempdir="$(mktemp -dup /tmp salt-XXX)"
@@ -135,8 +133,7 @@ python_test() {
 		addwrite "${tempdir}"
 		ln -s "$(realpath --relative-to=/tmp "${T}/$(basename "${tempdir}")")" "${tempdir}"
 
-		USE_SETUPTOOLS=1 SHELL="/bin/bash" \
-			TMPDIR="${tempdir}" \
+		USE_SETUPTOOLS=1 SHELL="/bin/bash" TMPDIR="${tempdir}" \
 			${EPYTHON} tests/runtests.py \
 			--unit-tests --no-report --verbose
 
