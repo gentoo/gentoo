@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rhinstaller/efivar/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0/1"
-KEYWORDS="amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 x86"
 
 RDEPEND="dev-libs/popt"
 DEPEND="${RDEPEND}
