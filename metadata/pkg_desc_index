@@ -8904,7 +8904,7 @@ dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9
 dev-ros/pr2_description 1.11.14 1.12.0 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
 dev-ros/pr2_machine 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: xxx.machine files that describe the different hosts a node can be spawned on
 dev-ros/pr2_msgs 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors
-dev-ros/python_qt_binding 0.3.1 9999: Infrastructure for an integrated graphical user interface based on Qt
+dev-ros/python_qt_binding 0.3.1 0.3.2 9999: Infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_dotgraph 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Helpers to work with dot graphs
 dev-ros/qt_gui 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: ROS infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_gui_app 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Main to start an instance of the integrated graphical user interface provided by qt_gui
