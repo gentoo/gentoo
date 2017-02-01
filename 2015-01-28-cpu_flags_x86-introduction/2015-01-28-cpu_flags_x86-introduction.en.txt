@@ -35,11 +35,11 @@ Most of the flag names match /proc/cpuinfo names, with the notable
 exception of SSE3 which is called 'pni' in /proc/cpuinfo (please also
 do not confuse it with distinct SSSE3).
 
-To help users enable the correct USE flags, we are providing a Python
-script that generates the correct value using /proc/cpuinfo. It can be
-found in the app-portage/cpuinfo2cpuflags package:
+To help users enable the correct USE flags, we are providing a tool
+that generates the correct value for the local CPU. It can be found
+in the app-portage/cpuid2cpuflags package:
 
-  $ emerge -1v app-portage/cpuinfo2cpuflags
+  $ emerge -1v app-portage/cpuid2cpuflags
   $ cpuinfo2cpuflags-x86
 
 In order to ensure safe migration and maintain compatibility with
