@@ -7941,7 +7941,7 @@ dev-python/process-tests 1.1.0 1.1.2 1.2.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r2: Text progressbar library for python
-dev-python/prometheus_client 0.0.18-r1: Python client for the Prometheus monitoring system
+dev-python/prometheus_client 0.0.18-r1 0.0.19: Python client for the Prometheus monitoring system
 dev-python/promise 0.2.2-r1 0.4.1 0.4.2: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 1.0.0 1.0.3: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protocol Buffers - official Python bindings
