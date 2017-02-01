@@ -3,8 +3,8 @@
 # $Id$
 
 EAPI=6
-ESVN_REPO_URI="https://libdivsufsort.googlecode.com/svn/trunk/"
-inherit cmake-utils multilib subversion
+EGIT_REPO_URI="https://github.com/y-256/${PN}"
+inherit cmake-utils multilib git-r3
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
 HOMEPAGE="https://github.com/y-256/libdivsufsort"
