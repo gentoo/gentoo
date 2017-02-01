@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,20 +9,19 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils flag-o-matic multilib multiprocessing \
-	pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs \
-	versionator virtualx
+inherit check-reqs chromium-2 eutils flag-o-matic multilib multiprocessing pax-utils \
+	portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx
 
 # Keep this in sync with vendor/brightray/vendor/libchromiumcontent/VERSION
-CHROMIUM_VERSION="49.0.2623.75"
+CHROMIUM_VERSION="47.0.2526.110"
 # Keep this in sync with vendor/brightray
-BRIGHTRAY_COMMIT="8dbaeed37b9c4fb8ae985670b142f659bb265fb4"
+BRIGHTRAY_COMMIT="9bc1d21b69ac99bed546d42035dc1205ea6b04af"
 # Keep this in sync with vendor/node
-NODE_COMMIT="6bcd8af891a991f8aa196e49e6bf908ebbe24cae"
+NODE_COMMIT="a507a3c3816d6ac085ed46250c489a3d76ab8b3c"
 # Keep this in sync with vendor/native_mate
-NATIVE_MATE_COMMIT="0df2d882ea2286e6335f206b7002037fce66c4a5"
+NATIVE_MATE_COMMIT="e719eab878c264bb03188d0cd6eb9ad6882bc13a"
 # Keep this in sync with vendor/brightray/vendor/libchromiumcontent
-LIBCHROMIUMCONTENT_COMMIT="60c7ec9f9bf465a8c9c7ccc3fcd2aa1cdf644bac"
+LIBCHROMIUMCONTENT_COMMIT="ad63d8ba890bcaad2f1b7e6de148b7992f4d3af7"
 # Keep this in sync with package.json#devDependencies
 ASAR_VERSION="0.12.1"
 
@@ -55,7 +54,7 @@ LIBCC_S="${BRIGHTRAY_S}/vendor/libchromiumcontent"
 LICENSE="BSD"
 SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~amd64"
-IUSE="custom-cflags cups debug gnome gnome-keyring hidpi kerberos lto neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
+IUSE="custom-cflags cups gnome gnome-keyring hidpi kerberos lto neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -121,6 +120,7 @@ RDEPEND="!<dev-util/electron-0.36.12-r4
 	x11-libs/pango:=
 	kerberos? ( virtual/krb5 )
 	>=net-libs/http-parser-2.6.2:=
+	>=dev-libs/libuv-1.8.0:=
 	>=dev-libs/openssl-1.0.2g:0=[-bindist]"
 DEPEND="${RDEPEND}
 	!arm? (
@@ -290,15 +290,13 @@ src_prepare() {
 
 	# chromium patches
 	cd "${S}" || die
-	epatch "${FILESDIR}/chromium-system-ffmpeg-r2.patch"
+	epatch "${FILESDIR}/chromium-system-ffmpeg-r0.patch"
 	epatch "${FILESDIR}/chromium-system-jinja-r7.patch"
 	epatch "${FILESDIR}/chromium-disable-widevine.patch"
-	epatch "${FILESDIR}/chromium-last-commit-position-r0.patch"
-	epatch "${FILESDIR}/chromium-snapshot-toolchain-r1.patch"
 	epatch "${FILESDIR}/chromium-remove-gardiner-mod-font.patch"
 	epatch "${FILESDIR}/chromium-shared-v8.patch"
 	epatch "${FILESDIR}/chromium-lto-fixes.patch"
-	epatch "${FILESDIR}/chromium-icu-58-r0.patch"
+	epatch "${FILESDIR}/chromium-cups-fix.patch"
 
 	# libcc chromium patches
 	_unnest_patches "${LIBCC_S}/patches"
@@ -342,19 +340,17 @@ src_prepare() {
 		'third_party/analytics' \
 		'third_party/angle' \
 		'third_party/angle/src/third_party/compiler' \
-		'third_party/angle/src/third_party/murmurhash' \
-		'third_party/angle/src/third_party/trace_event' \
 		'third_party/boringssl' \
 		'third_party/brotli' \
 		'third_party/cacheinvalidation' \
 		'third_party/catapult' \
-		'third_party/catapult/third_party/py_vulcanize' \
-		'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin' \
-		'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin' \
 		'third_party/catapult/tracing/third_party/components/polymer' \
 		'third_party/catapult/tracing/third_party/d3' \
 		'third_party/catapult/tracing/third_party/gl-matrix' \
 		'third_party/catapult/tracing/third_party/jszip' \
+		'third_party/catapult/tracing/third_party/tvcm' \
+		'third_party/catapult/tracing/third_party/tvcm/third_party/rcssmin' \
+		'third_party/catapult/tracing/third_party/tvcm/third_party/rjsmin' \
 		'third_party/cld_2' \
 		'third_party/cros_system_api' \
 		'third_party/cython/python_flags.py' \
@@ -406,7 +402,7 @@ src_prepare() {
 		'third_party/polymer' \
 		'third_party/protobuf' \
 		'third_party/qcms' \
-		'third_party/re2' \
+		'third_party/readability' \
 		'third_party/sfntly' \
 		'third_party/skia' \
 		'third_party/smhasher' \
@@ -417,7 +413,6 @@ src_prepare() {
 		'third_party/webdriver' \
 		'third_party/webrtc' \
 		'third_party/widevine' \
-		'third_party/woff2' \
 		'third_party/x86inc' \
 		'third_party/zlib/google' \
 		'url/third_party/mozilla' \
@@ -476,6 +471,7 @@ src_configure() {
 		-Duse_system_libxslt=1
 		-Duse_system_minizip=1
 		-Duse_system_nspr=1
+		-Duse_system_re2=1
 		-Duse_system_snappy=1
 		-Duse_system_speex=1
 		-Duse_system_xdg_utils=1
@@ -532,8 +528,7 @@ src_configure() {
 		-Dhost_clang=0
 		-Dlinux_use_bundled_binutils=0
 		-Dlinux_use_bundled_gold=0
-		-Dlinux_use_gold_flags=0
-		-Dsysroot="
+		-Dlinux_use_gold_flags=0"
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
 	myconf+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
@@ -636,8 +631,6 @@ src_configure() {
 
 	third_party/libaddressinput/chromium/tools/update-strings.py || die
 
-	touch chrome/test/data/webui/i18n_process_css_test.html || die
-
 	einfo "Configuring bundled nodejs..."
 	pushd vendor/node > /dev/null || die
 	# Make sure gyp_node does not run
@@ -663,7 +656,7 @@ src_configure() {
 
 	myconf+=" -Ivendor/node/config.gypi
 			  -Icommon.gypi
-			  electron.gyp"
+			  atom.gyp"
 
 	egyp_chromium ${myconf} || die
 }
@@ -723,8 +716,6 @@ src_install() {
 	doins -r out/R/resources
 	doins -r out/R/locales
 	dosym "${install_dir}/electron" "/usr/bin/electron${install_suffix}"
-
-	pax-mark -rm "${ED}/${install_dir}/electron"
 
 	# Install Node headers
 	HEADERS_ONLY=1 \
