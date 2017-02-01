@@ -26,7 +26,7 @@ RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/gmime
-	dev-util/ragel
+	<dev-util/ragel-7.0
 	sys-apps/file
 	virtual/libiconv"
 DEPEND="dev-util/ragel
