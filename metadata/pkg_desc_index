@@ -2021,10 +2021,10 @@ app-office/kmymoney 4.7.2 4.8.0: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 2.6.3-r1 3.1-r1 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.2.3.3-r1 5.2.4.2 5.2.9999 5.3.9999 9999: A full office productivity suite
+app-office/libreoffice 5.2.3.3-r1 5.2.4.2 5.2.5.1 5.2.9999 5.3.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.2.3.3 5.2.3.3-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.2.3.3 5.2.3.3-r1: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 5.2.3.3 5.2.4.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 5.2.3.3 5.2.4.2 5.2.5.1: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1 2.1.4 2.1.5 2.2.1 2.2.2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
@@ -18172,7 +18172,7 @@ www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 4.4.2 4.5.3 4.6.1 4.7 4.7.1 4.7.2: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 4.7.2: Wordpress PHP and MySQL based content management system (CMS)
 www-client/chromium 55.0.2883.75 56.0.2924.76-r1 57.0.2987.8 57.0.2987.13: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
