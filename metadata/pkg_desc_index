@@ -9800,7 +9800,7 @@ dev-tex/dvipost 1.1-r2: post processor for dvi files
 dev-tex/ellipsis 1.6: Simple package that fixes the way LaTeX centers ellipses
 dev-tex/envlab 1.2-r1: A LaTeX module to format envelopes
 dev-tex/europecv 20060424-r2: LaTeX class for the standard model for curricula vitae as recommended by the EC
-dev-tex/feynmf 1.08-r3 1.08-r4: Combined LaTeX/Metafont package for drawing of Feynman diagrams
+dev-tex/feynmf 1.08-r4: Combined LaTeX/Metafont package for drawing of Feynman diagrams
 dev-tex/flabels 1.0: Macros for typesetting pretty lables (optionally colored) for the back of files or binders
 dev-tex/floatflt 1.31a: LaTeX package used to warp text around figures
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
