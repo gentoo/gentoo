@@ -17,9 +17,10 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
+	CODENAME="Krypton"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.iptvsimple/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/pvr.iptvsimple-${PV}"
+	SRC_URI="https://github.com/kodi-pvr/pvr.iptvsimple/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/pvr.iptvsimple-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -29,8 +30,8 @@ IUSE=""
 
 DEPEND="
 	=dev-libs/libplatform-2*
-	media-tv/kodi
-	media-libs/kodi-platform
+	=media-tv/kodi-9999
+	=media-libs/kodi-platform-9999
 	sys-libs/zlib
 	"
 

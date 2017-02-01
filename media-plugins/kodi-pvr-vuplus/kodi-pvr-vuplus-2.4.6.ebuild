@@ -6,21 +6,21 @@ EAPI=6
 
 inherit cmake-utils kodi-addon
 
-DESCRIPTION="Demo PVR for Kodi"
-HOMEPAGE="https://github.com/kodi-pvr/pvr.demo"
+DESCRIPTION="Kodi's VuPlus client addon"
+HOMEPAGE="https://github.com/kodi-pvr/pvr.vuplus"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/kodi-pvr/pvr.demo.git"
+	EGIT_REPO_URI="git://github.com/kodi-pvr/pvr.vuplus.git"
 	inherit git-r3
 	;;
 *)
 	CODENAME="Krypton"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.demo/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/pvr.demo-${PV}-${CODENAME}"
+	SRC_URI="https://github.com/kodi-pvr/pvr.vuplus/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/pvr.vuplus-${PV}-${CODENAME}"
 	;;
 esac
 

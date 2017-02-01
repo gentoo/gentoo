@@ -6,21 +6,20 @@ EAPI=6
 
 inherit cmake-utils kodi-addon
 
-DESCRIPTION="Demo PVR for Kodi"
-HOMEPAGE="https://github.com/kodi-pvr/pvr.demo"
+DESCRIPTION="Libretro compatibility layer for the Kodi Game API"
+HOMEPAGE="https://github.com/xbmc/peripheral.joystick"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/kodi-pvr/pvr.demo.git"
+	EGIT_REPO_URI="git://github.com/xbmc/peripheral.joystick.git"
 	inherit git-r3
 	;;
 *)
-	CODENAME="Krypton"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.demo/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/pvr.demo-${PV}-${CODENAME}"
+	SRC_URI="https://github.com/xbmc/peripheral.joystick/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/peripheral.joystick-${PV}"
 	;;
 esac
 
@@ -31,9 +30,9 @@ IUSE=""
 DEPEND="
 	=media-tv/kodi-17*
 	=media-libs/kodi-platform-17*
-	dev-libs/tinyxml
+	=dev-libs/libplatform-2*
+	dev-libs/libpcre
 	"
-
 RDEPEND="
 	${DEPEND}
 	"
