@@ -18539,8 +18539,8 @@ x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, su
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
 x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send & sw-notify-send
 x11-libs/libtinynotify-systemwide 0.0.2 0.1 9999: A system-wide notifications module for libtinynotify
-x11-libs/libva 1.6.2 1.7.3 9999: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 1.6.2 1.7.0 1.7.1 1.7.2 1.7.3 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva 1.7.3 9999: Video Acceleration (VA) API for Linux
+x11-libs/libva-intel-driver 1.7.3 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
