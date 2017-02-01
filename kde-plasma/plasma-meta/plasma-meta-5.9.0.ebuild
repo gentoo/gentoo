@@ -21,6 +21,7 @@ RDEPEND="
 	$(add_plasma_dep kdecoration)
 	$(add_plasma_dep kdeplasma-addons)
 	$(add_plasma_dep kgamma)
+	$(add_plasma_dep khotkeys)
 	$(add_plasma_dep kinfocenter)
 	$(add_plasma_dep kmenuedit)
 	$(add_plasma_dep kscreen)
