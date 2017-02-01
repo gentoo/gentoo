@@ -13641,7 +13641,7 @@ media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 fil
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.19 0.19.21: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.19 0.19.21 0.19.21-r1: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
@@ -15921,7 +15921,7 @@ sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.12 2.13: Unit conversion program
+sci-calculators/units 2.13: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2-r1: X-ray Fluorescence Toolkit
@@ -17129,7 +17129,7 @@ sys-auth/nss-mdns 0.10-r3 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.7: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 258 259 261 262 264 264-r1 265 265-r1 265-r2 265-r4 265-r5: NSS LDAP Module
-sys-auth/oath-toolkit 2.6.1: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
+sys-auth/oath-toolkit 2.6.1 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/openpam 20140912: Open source PAM library
 sys-auth/otpcalc 0.97-r8: A One Time Password and S/Key calculator for X
 sys-auth/pam-afs-session 1.3 1.5 1.6: OpenAFS PAM Module
