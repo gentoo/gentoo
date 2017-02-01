@@ -12,6 +12,7 @@
   <use>
     <flag name="epydoc">Build html API documentation with epydoc.</flag>
     <flag name="ipc">Use inter-process communication between portage and running ebuilds.</flag>
+    <flag name="native-extensions">Build native extensions. Cross-compilation is not supported.</flag>
     <flag name="xattr">Preserve extended attributes (filesystem-stored metadata) when installing files. Usually only required for hardened systems.</flag>
   </use>
 </pkgmetadata>

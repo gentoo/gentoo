@@ -19,7 +19,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="build doc epydoc +ipc linguas_ru selinux xattr"
+IUSE="build doc epydoc +ipc linguas_ru native-extensions selinux xattr"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
@@ -84,6 +84,11 @@ pkg_setup() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	if use native-extensions; then
+		printf "[build_ext]\nportage-ext-modules=true\n" >> \
+			setup.cfg || die
+	fi
 
 	if ! use ipc ; then
 		einfo "Disabling ipc..."
