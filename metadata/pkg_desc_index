@@ -9264,7 +9264,7 @@ dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes 
 dev-ruby/hashdiff 0.3.0 0.3.1 0.3.2: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4 0.1.4-r1: Internal HashiCorp service to check version information
-dev-ruby/hashie 2.1.2-r1 3.4.4 3.4.4-r1 3.4.6: Hashie is a small collection of tools that make hashes more powerful
+dev-ruby/hashie 2.1.2-r1 3.4.4 3.4.4-r1 3.4.6 3.5.1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.6 3.1.2 3.2.0 3.2.1 3.2.2: A simple pluggable Hierarchical Database
@@ -9287,7 +9287,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.13.7 0.14.0 0.14.0-r1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.2.4 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2 0.8.0: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
 dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
@@ -9431,7 +9431,7 @@ dev-ruby/poltergeist 1.9.0 1.10.0: A PhantomJS driver for Capybara
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.11 0.3.12 0.3.13: Library that implements a subset of the Ruby 1.9 Process::spawn
 dev-ruby/postgres_ext 2.4.1 3.0.0: Native PostgreSQL data types and querying extensions for ActiveRecord and Arel
-dev-ruby/power_assert 0.3.1 0.4.1 1.0.1: Shows each value of variables and method calls in the expression
+dev-ruby/power_assert 0.3.1 0.4.1 1.0.1-r1: Shows each value of variables and method calls in the expression
 dev-ruby/prawn 1.3.0 2.0.2 2.1.0 2.1.0-r1: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
@@ -9685,7 +9685,7 @@ dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1 2.3.0 3.3.1 3.4.0: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 1.20.3 1.24.6 2.1.0 2.3.1 2.3.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots
-dev-ruby/websocket 1.2.3: Universal Ruby library to handle WebSocket protocol
+dev-ruby/websocket 1.2.3 1.2.4: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.4 0.6.5: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
 dev-ruby/wikicloth 0.8.3: A mediawiki parser
