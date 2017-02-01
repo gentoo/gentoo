@@ -1,14 +1,14 @@
-DEFINED_PHASES=install prepare setup unpack
+DEFINED_PHASES=configure install prepare setup unpack
 DESCRIPTION=quilt patch manager
 EAPI=5
 HOMEPAGE=https://savannah.nongnu.org/projects/quilt
-IUSE=emacs graphviz
-KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
+IUSE=emacs graphviz elibc_Darwin elibc_SunOS
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris
 LICENSE=GPL-2
 PDEPEND=emacs? ( app-emacs/quilt-el )
-RDEPEND=sys-apps/ed dev-util/diffstat graphviz? ( media-gfx/graphviz ) >=sys-apps/coreutils-8.5
+RDEPEND=sys-apps/ed dev-util/diffstat graphviz? ( media-gfx/graphviz ) elibc_Darwin? ( app-misc/getopt ) elibc_SunOS? ( app-misc/getopt ) >=sys-apps/coreutils-8.5
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/quilt/quilt-0.63.tar.gz
-_eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_install:-
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=0b3cc6280d3a446163629b2fa8a5a690
+_md5_=4e445a0db1fb53066282eebc44b680e1

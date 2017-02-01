@@ -1,12 +1,12 @@
-DEFINED_PHASES=install postinst prepare unpack
+DEFINED_PHASES=configure install postinst prepare unpack
 DEPEND=dev-vcs/git
 DESCRIPTION=quilt patch manager
 EAPI=5
 HOMEPAGE=https://savannah.nongnu.org/projects/quilt
-IUSE=graphviz
+IUSE=graphviz elibc_Darwin elibc_SunOS
 LICENSE=GPL-2
-RDEPEND=dev-util/diffstat mail-mta/sendmail sys-apps/ed >=sys-apps/coreutils-8.5 graphviz? ( media-gfx/graphviz )
+RDEPEND=dev-util/diffstat mail-mta/sendmail sys-apps/ed elibc_Darwin? ( app-misc/getopt ) elibc_SunOS? ( app-misc/getopt ) >=sys-apps/coreutils-8.5 graphviz? ( media-gfx/graphviz )
 SLOT=0
-_eclass_exported_funcs=pkg_postinst:- src_unpack:git-2 src_prepare:- src_install:-
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-2 src_prepare:- src_configure:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=5c9fca7d38e3d0abe5ec0615ebeeb06f
+_md5_=b865f571ff60664aca8111a40e72dd26
