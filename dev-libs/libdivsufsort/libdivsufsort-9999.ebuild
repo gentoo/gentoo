@@ -3,26 +3,17 @@
 # $Id$
 
 EAPI=6
-inherit cmake-utils multilib
-
-#if LIVE
 ESVN_REPO_URI="https://libdivsufsort.googlecode.com/svn/trunk/"
-inherit subversion
-#endif
+inherit cmake-utils multilib subversion
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
 HOMEPAGE="https://github.com/y-256/libdivsufsort"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
 
 src_prepare() {
 	cmake-utils_src_prepare
