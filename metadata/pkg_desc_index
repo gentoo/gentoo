@@ -15049,7 +15049,7 @@ net-misc/haeredes 0.4.4: Confirm delegation of NS and MX records
 net-misc/hashcash 1.22-r1: Utility to generate hashcash tokens
 net-misc/hath 0.3.0: Hath manipulates network blocks in CIDR notation
 net-misc/hlfl 0.60.1: High Level Firewall Language
-net-misc/hotot 0.9.8.14 0.9.8.14_p20130514 0.9.8.14_p20130514-r1 9999: lightweight & open source microblogging client
+net-misc/hotot 0.9.8.14_p20130514-r1 9999: lightweight & open source microblogging client
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.1.2 1.1.3: Synchronize local workstation with time offered by remote webservers
@@ -15217,7 +15217,7 @@ net-misc/quagga 1.1.0-r2: A free routing daemon replacing Zebra supporting RIP, 
 net-misc/r8168 8.042.00 8.043.01: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
-net-misc/radvd 1.9.8 2.13 2.14 2.15 2.15-r1: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 2.14 2.15-r1 2.16: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
