@@ -140,7 +140,7 @@ app-admin/logstash-bin 2.4.0-r3 5.1.2: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
-app-admin/lsyncd 2.1.5 2.1.6 2.1.6-r1 2.2.0: Live Syncing (Mirror) Daemon
+app-admin/lsyncd 2.2.0: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 100 117 122: A tool to log and decode Machine Check Exceptions
