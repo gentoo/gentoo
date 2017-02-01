@@ -4,20 +4,18 @@
 
 EAPI=6
 
-inherit gnome2-utils eutils perl-module git-r3
+inherit eutils gnome2-utils perl-module
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
 HOMEPAGE="https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/trizen/${PN}.git"
+SRC_URI="https://github.com/trizen/youtube-viewer/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 RDEPEND="
-	>=dev-lang/perl-5.16.0
 	dev-perl/Data-Dump
 	dev-perl/JSON
 	dev-perl/libwww-perl[ssl]
@@ -38,7 +36,8 @@ RDEPEND="
 		virtual/freedesktop-icon-theme
 		x11-libs/gdk-pixbuf:2[X,jpeg]
 	)
-	|| ( media-video/mpv media-video/mplayer media-video/smplayer media-video/vlc )"
+	|| ( media-video/mpv media-video/mplayer media-video/smplayer media-video/vlc )
+	"
 DEPEND="dev-perl/Module-Build"
 
 SRC_TEST="do"
