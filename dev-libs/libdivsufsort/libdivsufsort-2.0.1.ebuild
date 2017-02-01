@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 inherit cmake-utils multilib
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
@@ -15,6 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# will appreciate saner approach, if there is any
 	sed -i -e "s:\(DESTINATION \)lib:\1$(get_libdir):" \
 		*/CMakeLists.txt || die
