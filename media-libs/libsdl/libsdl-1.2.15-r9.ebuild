@@ -79,7 +79,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=
-	if [[ $(tc-arch) != "x86" ]] ; then
+	if use !x86 && use !x86-linux ; then
 		myconf="${myconf} --disable-nasm"
 	else
 		myconf="${myconf} --enable-nasm"
