@@ -1827,10 +1827,10 @@
     <name>Gentoo Kernel Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Kernel</url>
     <description>The Gentoo Kernel Project aims to deliver the best possible experience from its sources across all supported architectures.</description>
-    <member>
+    <member is-lead="1">
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Member (Kernel, gentoo-sources, genpatches)</role>
+      <role>Leade (Kernel, gentoo-sources, genpatches)</role>
     </member>
     <member>
       <email>blueness@gentoo.org</email>
@@ -1847,10 +1847,10 @@
       <name>Greg Kroah-Hartman</name>
       <role>Member (Kernel, gentoo-sources, genpatches)</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>mpagano@gentoo.org</email>
       <name>Mike Pagano</name>
-      <role>Lead (Kernel, gentoo-sources, genpatches)</role>
+      <role>Member (Kernel, gentoo-sources, genpatches)</role>
     </member>
     <member>
       <email>mrueg@gentoo.org</email>
