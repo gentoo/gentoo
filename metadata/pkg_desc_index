@@ -104,6 +104,7 @@ app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
 app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor API & Server
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
+app-admin/gentoo-perl-helpers 0.1.0: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2: Backup and recovery utilities for GitHub Enterprise
