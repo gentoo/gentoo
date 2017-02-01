@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (01 Feb 2017)
+# Fails to compile with USE=static. It is a system package, so a lot
+# of people are hitting this. Furthermore, people keep working it around
+# by forcing USE=-static which may defeat its purpose as a rescue tool.
+# Bug #607548.
+=sys-apps/busybox-1.26.2
+
 # Matthias Maier <tamiko@gentoo.org> (31 Jan 2017)
 # Dead upstream (no development since 2010) [1,2], outstanding security
 # issue with newer encfs versions [3], oustanding Gentoo bugs [4,5].
