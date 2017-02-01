@@ -62,6 +62,10 @@ src_prepare() {
 
 	if ! use test; then
 		sed -i CMakeLists.txt \
+			-e "/add_subdirectory(test/d" \
+			|| die "sed disable tests failed"
+
+		sed -i CMakeLists.txt \
 			-e "/add_subdirectory(blas/d" \
 			-e "/add_subdirectory(lapack/d" \
 			|| die "sed disable unused bundles failed"
@@ -81,7 +85,6 @@ src_compile() {
 
 src_test() {
 	local mycmakeargs=(
-		-DEIGEN_BUILD_TESTS=ON
 		-DEIGEN_TEST_ALTIVEC="$(usex altivec)"
 		-DEIGEN_TEST_CXX11="$(usex c++11)"
 		-DEIGEN_TEST_CUDA="$(usex cuda)"
