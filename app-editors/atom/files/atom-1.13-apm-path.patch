@@ -1,0 +1,16 @@
+diff --git a/build/app/src/config-schema.js b/build/app/src/config-schema.js
+index 1307db6..d6a1ba4 100644
+--- a/build/app/src/config-schema.js
++++ b/build/app/src/config-schema.js
+@@ -21,6 +21,11 @@ var configSchema = {
+   core: {
+     type: 'object',
+     properties: {
++      apmPath: {
++        type: 'string',
++        'default': '/usr/bin/apm{{ATOM_SUFFIX}}',
++        description: 'Path to apm executable.'
++      },
+       ignoredNames: {
+         type: 'array',
+         'default': ['.git', '.hg', '.svn', '.DS_Store', '._*', 'Thumbs.db'],
