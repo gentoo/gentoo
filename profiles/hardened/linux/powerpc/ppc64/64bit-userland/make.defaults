@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# We disable the symlink, since we won't be using it.
+# moved from features/64bit-native
+# TODO: figure out how to inherit this from arch profile
 SYMLINK_LIB="yes"
-
-# Since we're doing a pure 64-bit, we want LIBDIR to be lib64
-LIBDIR_amd64="lib64"
 LIBDIR_ppc64="lib64"

@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-FEATURES="-multilib-strict"
-
-MULTILIB_STRICT_DIRS=""
-MULTILIB_STRICT_DENY=""
-MULTILIB_STRICT_EXEMPT=""
+# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
+# Mask multilib, since we cannot use it.
+multilib
