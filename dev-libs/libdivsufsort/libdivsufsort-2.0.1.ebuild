@@ -7,7 +7,7 @@ inherit cmake-utils multilib
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
 HOMEPAGE="https://github.com/y-256/libdivsufsort"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://github.com/y-256/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
