@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-perl/Linux-Pid !<www-apache/mod_perl-2.0.5 >=www-apache/mod_perl-2.0.5 test? ( >=dev-perl/Apache-Test-1.360.0 ) dev-lang/perl:=[-build(-)]
+DEPEND=dev-perl/Linux-Pid !<www-apache/mod_perl-2.0.5 >=www-apache/mod_perl-2.0.5 test? ( >=dev-perl/Apache-Test-1.360.0 !www-apache/mpm_itk ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Graceful exit for large children
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Apache-SizeLimit/
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PH/PHRED/Apache-SizeLimit-0.97.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=a9fd04a05eba804e75c1f3976a103bf1
+_md5_=dc33cd8bb7acb5d42b5d6c50d49ff126
