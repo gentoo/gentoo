@@ -515,10 +515,6 @@ sci-geosciences/googleearth
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Security issues (#562898)
-=app-admin/lsyncd-2.1.5
-
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Mask new MariaDB alphas for testing
 >=dev-db/mariadb-10.2.0
