@@ -10202,7 +10202,7 @@ dev-util/obs-service-source_validator 0.3: Open Build Service client module - so
 dev-util/obs-service-tar_scm 0.3.1: Open Build Service client module - tar_scm service
 dev-util/obs-service-update_source 20130802: Open Build Service client module - update_source service
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
-dev-util/omake 0.9.8.6.0_rc1: Make replacement
+dev-util/omake 0.9.8.6.0_rc1 0.10.2: Make replacement
 dev-util/open-vcdiff 0.8.4: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/oprofile 0.9.9-r2 1.1.0-r1 1.2.0_pre20161027: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
