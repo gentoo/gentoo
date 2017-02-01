@@ -1,0 +1,8 @@
+diff --git a/config-daemon.ac b/config-daemon.ac
+index 056c939..b04deed 100644
+--- a/config-daemon.ac
++++ b/config-daemon.ac
+@@ -7,2 +7,3 @@ dnl C++ environment.  This macro must be used unconditionnaly.
+ AC_PROG_CXX
++AM_PROG_AR
+ AC_LANG([C++])
