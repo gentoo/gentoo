@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="KDE Plasma menu editor"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kmenuedit"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
+IUSE="+hotkeys"
 
 DEPEND="
 	$(add_frameworks_dep kcompletion)
@@ -30,6 +30,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
+	hotkeys? ( $(add_plasma_dep khotkeys) )
 "
 RDEPEND="${DEPEND}
 	!kde-plasma/kmenuedit:4
@@ -37,7 +38,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_KHotKeysDBusInterface=ON
+		$(cmake-utils_use_find_package hotkeys KHotKeysDBusInterface)
 	)
 
 	kde5_src_configure
