@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,13 +17,15 @@ HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
 LICENSE="GPL-2"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="graphviz"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
+IUSE="graphviz elibc_Darwin elibc_SunOS"
 
 RDEPEND="
 	dev-util/diffstat
 	mail-mta/sendmail
 	sys-apps/ed
+	elibc_Darwin? ( app-misc/getopt )
+	elibc_SunOS? ( app-misc/getopt )
 	>=sys-apps/coreutils-8.5
 	graphviz? ( media-gfx/graphviz )
 "
@@ -34,6 +36,13 @@ src_prepare() {
 
 	# remove failing test, because it fails on root-build
 	rm -rf test/delete.test
+}
+
+src_configure() {
+	local myconf=""
+	[[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] && \
+		myconf="${myconf} --with-getopt=${EPREFIX}/usr/bin/getopt-long"
+	econf ${myconf}
 }
 
 src_install() {
