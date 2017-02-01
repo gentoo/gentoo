@@ -6131,6 +6131,8 @@ net-misc/guacamole-server:ssh - enable support for ssh connections
 net-misc/guacamole-server:telnet - enable support for telnet connections
 net-misc/gwget:epiphany - Build epiphany extensions
 net-misc/hotot:chrome - Build chrome browser extension
+net-misc/hotot:gtk2 - Build gtk2 gui
+net-misc/hotot:gtk3 - Build gtk3 gui
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
 net-misc/hylafaxplus:html - Convert faxes into html email
 net-misc/hylafaxplus:jbig - JBIG Fax Compression Support
