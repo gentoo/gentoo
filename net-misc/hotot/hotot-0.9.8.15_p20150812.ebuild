@@ -6,15 +6,15 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 python-single-r1
+inherit cmake-utils python-single-r1 vcs-snapshot
 
 DESCRIPTION="lightweight & open source microblogging client"
 HOMEPAGE="http://hotot.org"
-EGIT_REPO_URI="git://github.com/lyricat/Hotot.git"
+SRC_URI="https://github.com/lyricat/Hotot/tarball/452fc0924a98923b -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="chrome gtk2 gtk3 kde qt4 qt5"
 
 REQUIRED_USE="|| ( chrome gtk2 gtk3 qt4 qt5 ) ${PYTHON_REQUIRED_USE}"
