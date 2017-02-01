@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.22-no-perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
+	"${FILESDIR}"/${PN}-2.25-gperf.patch
 )
 
 src_prepare() {
