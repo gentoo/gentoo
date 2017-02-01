@@ -2869,7 +2869,7 @@ dev-cpp/pstreams 0.7.0 0.8.1 1.0.0: C++ wrapper for the POSIX.2 functions popen(
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
 dev-cpp/rudiments 0.46 0.51: C++ class library for daemons, clients and servers
 dev-cpp/sparsehash 1.10 2.0.2 2.0.3: An extremely memory-efficient hash_map implementation
-dev-cpp/tbb 4.3.20150611 4.3.20150611-r1: High level abstract threading library
+dev-cpp/tbb 4.3.20150611 4.3.20150611-r1 2017.20161128: High level abstract threading library
 dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arguments
 dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
@@ -14061,7 +14061,8 @@ net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide va
 net-analyzer/carl 0.9-r1: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
 net-analyzer/chaosreader 0.94 0.94-r1: A tool to trace TCP/UDP/... sessions and fetch application data from snoop or tcpdump logs
-net-analyzer/check_mk 1.2.4_p5-r1: General purpose Nagios/Icinga plugin for retrieving data
+net-analyzer/check_mk 1.2.4_p5-r1 1.2.8_p16: General purpose Nagios/Icinga plugin for retrieving data
+net-analyzer/check_mk_agent 1.2.8_p16: Agent to report data to Check_MK for monitoring
 net-analyzer/cloudshark 1.0.2.174 1.0.3.180 1.0.4: Easily upload your wireshark captures to CloudShark
 net-analyzer/cnet 3.3.1 3.3.4: Network simulation tool
 net-analyzer/cryptcat 1.2.1-r1 1.2.1-r2: netcat clone extended with twofish encryption
@@ -14141,7 +14142,7 @@ net-analyzer/masscan 1.0.3-r1 1.0.3-r2: Mass IP port scanner
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/metasploit 4.12.7 4.12.16 9999: Advanced framework for developing, testing, and using vulnerability exploit code
-net-analyzer/mk-livestatus 1.2.8_p10: Nagios/Icinga event broker that allows quick/direct access to your status data
+net-analyzer/mk-livestatus 1.2.8_p10 1.2.8_p16: Nagios/Icinga event broker that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.2 2.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links

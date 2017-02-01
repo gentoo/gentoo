@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=General purpose Nagios/Icinga plugin for retrieving data
+EAPI=6
+HOMEPAGE=http://mathias-kettner.de/check_mk.html
+IUSE=agent-only apache_status livestatus logwatch mysql +nagios4 nfsexports oracle postgres smart wato xinetd zypper python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=wato? ( app-admin/sudo ) xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) ) !agent-only? ( www-servers/apache[apache2_modules_access_compat(+)] www-apache/mod_python[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] livestatus? ( net-analyzer/mk-livestatus[nagios4=] ) nagios4? ( >=net-analyzer/nagios-core-4 ) !nagios4? ( || ( <net-analyzer/nagios-core-4 net-analyzer/icinga ) ) ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
+REQUIRED_USE=livestatus? ( !agent-only ) wato? ( !agent-only )
+SLOT=0
+SRC_URI=http://mathias-kettner.de/download/check_mk-1.2.8p16.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=e97ae2a859164caf42247a2fa70d2b91
