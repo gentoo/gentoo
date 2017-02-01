@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=>=dev-libs/dbus-glib-0.98:0= >=dev-libs/glib-2.24:2= media-libs/libexif:0= x11-libs/cairo:0= >=x11-libs/gtk+-2.20:2= x11-libs/libX11:0= >=xfce-base/libxfce4ui-4.10:0= >=xfce-base/libxfce4util-4.10:0= >=xfce-base/xfconf-4.10:0= dev-util/intltool virtual/pkgconfig sys-devel/gettext >=sys-apps/sed-4
+DESCRIPTION=A fast and lightweight picture viewer for the Xfce desktop environment
+EAPI=5
+HOMEPAGE=http://goodies.xfce.org/projects/applications/ristretto
+IUSE=debug
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/dbus-glib-0.98:0= >=dev-libs/glib-2.24:2= media-libs/libexif:0= x11-libs/cairo:0= >=x11-libs/gtk+-2.20:2= x11-libs/libX11:0= >=xfce-base/libxfce4ui-4.10:0= >=xfce-base/libxfce4util-4.10:0= >=xfce-base/xfconf-4.10:0=
+SLOT=0
+SRC_URI=mirror://xfce/src/apps/ristretto/0.8/ristretto-0.8.2.tar.bz2
+_eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:xfconf
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
+_md5_=cf8c43c0c687272a00db66ae6c4df92f

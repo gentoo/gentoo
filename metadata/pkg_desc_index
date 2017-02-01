@@ -12633,7 +12633,7 @@ media-gfx/raw-thumbnailer 0.2.1: A lightweight and fast raw image thumbnailer
 media-gfx/rawtherapee 4.0.9-r1 4.0.10 4.0.11 4.0.12 4.1 4.2 4.2-r1: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.0-r1 2.1.1 2.2.1 2.2.2 2.2.3: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/replicatorg 37-r2 40-r1: ReplicatorG is a simple, open source 3D printing program
-media-gfx/ristretto 0.8.0-r1 0.8.1: A fast and lightweight picture viewer for the Xfce desktop environment
+media-gfx/ristretto 0.8.0-r1 0.8.1 0.8.2: A fast and lightweight picture viewer for the Xfce desktop environment
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.2 0.49.3: Utility to convert raster images to EPS, PDF and many others
 media-gfx/sane-backends 1.0.24-r6 1.0.25-r1: Scanner Access Now Easy - Backends
@@ -17343,7 +17343,7 @@ sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
-sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.3 1.10.3-r1 2.0.1: A high-performance message passing library (MPI)
+sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.3 1.10.3-r1 2.0.2: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2016.1.9999 2016.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2 1.1.14: Pacemaker CRM
@@ -19392,7 +19392,7 @@ xfce-extra/xfce4-mailwatch-plugin 1.2.0: An mail notification panel plug-in for 
 xfce-extra/xfce4-messenger-plugin 0.1.0: A plugin that listens DBus messages and displays received messages
 xfce-extra/xfce4-mixer 4.11.0: A volume control application (and panel plug-in) for the Xfce desktop environment
 xfce-extra/xfce4-modemlights-plugin 0.1.3.99: A panel plug-in intended to simplify establishing a ppp connection
-xfce-extra/xfce4-mount-plugin 0.6.7: An mount plug-in for the Xfce panel
+xfce-extra/xfce4-mount-plugin 0.6.7 1.1.0: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.4.5 0.5.0: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.2.4 1.3.0: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitoring panel plug-in, inspired by Gnome's Netspeed applet
