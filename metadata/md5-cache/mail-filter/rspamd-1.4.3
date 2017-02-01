@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-util/ragel !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) fann? ( sci-mathematics/fann ) pcre2? ( dev-libs/libpcre2[jit=] ) !pcre2? ( dev-libs/libpcre[jit=] ) jit? ( dev-lang/luajit:2 ) jemalloc? ( dev-libs/jemalloc ) dev-libs/libevent dev-db/sqlite:3 dev-libs/glib:2 dev-libs/gmime dev-util/ragel sys-apps/file virtual/libiconv sys-devel/make >=dev-util/cmake-3.5.2 virtual/pkgconfig
+DEPEND=dev-util/ragel !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) fann? ( sci-mathematics/fann ) pcre2? ( dev-libs/libpcre2[jit=] ) !pcre2? ( dev-libs/libpcre[jit=] ) jit? ( dev-lang/luajit:2 ) jemalloc? ( dev-libs/jemalloc ) dev-libs/libevent dev-db/sqlite:3 dev-libs/glib:2 dev-libs/gmime <dev-util/ragel-7.0 sys-apps/file virtual/libiconv sys-devel/make >=dev-util/cmake-3.5.2 virtual/pkgconfig
 DESCRIPTION=Rapid spam filtering system
 EAPI=5
 HOMEPAGE=https://github.com/vstakhov/rspamd
 IUSE=fann jemalloc +jit libressl pcre2
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=!libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) fann? ( sci-mathematics/fann ) pcre2? ( dev-libs/libpcre2[jit=] ) !pcre2? ( dev-libs/libpcre[jit=] ) jit? ( dev-lang/luajit:2 ) jemalloc? ( dev-libs/jemalloc ) dev-libs/libevent dev-db/sqlite:3 dev-libs/glib:2 dev-libs/gmime dev-util/ragel sys-apps/file virtual/libiconv
+RDEPEND=!libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) fann? ( sci-mathematics/fann ) pcre2? ( dev-libs/libpcre2[jit=] ) !pcre2? ( dev-libs/libpcre[jit=] ) jit? ( dev-lang/luajit:2 ) jemalloc? ( dev-libs/jemalloc ) dev-libs/libevent dev-db/sqlite:3 dev-libs/glib:2 dev-libs/gmime <dev-util/ragel-7.0 sys-apps/file virtual/libiconv
 SLOT=0
 SRC_URI=https://rspamd.com/downloads/rspamd-1.4.3.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	pax-utils	4c2654a34ebe732e85fda354f6ee642f	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3db28bb5ffe84011d39cf0a3f2c117fd
+_md5_=d1149e095e457892d0577bb3d4ff5d41

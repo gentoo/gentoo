@@ -10378,7 +10378,7 @@ dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts
 dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 2.2.9: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
-dev-vcs/mercurial 3.8.4 3.9.2 4.0 4.0.1 4.0.2 9999: Scalable distributed SCM
+dev-vcs/mercurial 3.8.4 3.9.2 4.0 4.0.1 4.0.2 4.1 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.2 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20150503 1.20160123: Multiple Repository management tool
