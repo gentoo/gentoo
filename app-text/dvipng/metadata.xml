@@ -23,10 +23,6 @@
   (X)Emacs. Yes, you get to see your formulas in the (X)Emacs buffer, see
   &lt;https://www.gnu.org/software/auctex/preview-latex.html&gt;.
 </longdescription>
-<use>
-  <flag name="t1lib">Enable support for T1lib font rendering
-    (<pkg>media-libs/t1lib</pkg>)</flag>
-</use>
 <upstream>
   <remote-id type="sourceforge">dvipng</remote-id>
 </upstream>

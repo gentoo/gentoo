@@ -468,8 +468,14 @@ xorg-2_src_configure() {
 		local dep_track="--disable-dependency-tracking"
 	fi
 
+	# Check if package supports disabling of selective -Werror=...
+	if grep -q -s "disable-selective-werror" ${ECONF_SOURCE:-.}/configure; then
+		local selective_werror="--disable-selective-werror"
+	fi
+
 	local myeconfargs=(
 		${dep_track}
+		${selective_werror}
 		${FONT_OPTIONS}
 		"${xorgconfadd[@]}"
 	)
