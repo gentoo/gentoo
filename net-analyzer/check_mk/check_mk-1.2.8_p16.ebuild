@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils toolchain-funcs python-r1
+inherit toolchain-funcs user systemd python-single-r1
 
 DESCRIPTION="General purpose Nagios/Icinga plugin for retrieving data"
 HOMEPAGE="http://mathias-kettner.de/check_mk.html"
@@ -17,16 +17,21 @@ MY_PV="${MY_P/check_mk-/}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="agent-only apache_status dmi_sysinfo livestatus logwatch mysql
+IUSE="agent-only apache_status livestatus logwatch mysql +nagios4
 	nfsexports oracle postgres smart wato xinetd zypper"
 
-DEPEND="wato? ( app-admin/sudo )
-	xinetd? ( sys-apps/xinetd )
-	!agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) )
-	!agent-only? ( www-servers/apache www-apache/mod_python )
+RDEPEND="wato? ( app-admin/sudo )
+	xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) )
+	!agent-only? (
+		www-servers/apache[apache2_modules_access_compat(+)]
+		www-apache/mod_python[${PYTHON_USEDEP}]
+		livestatus? ( net-analyzer/mk-livestatus[nagios4=] )
+		nagios4? ( >=net-analyzer/nagios-core-4 )
+		!nagios4? ( || ( <net-analyzer/nagios-core-4 net-analyzer/icinga ) )
+	)
 	media-libs/libpng:0
 	!!net-analyzer/check_mk_agent"
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}"
 
 REQUIRED_USE="
 	livestatus? ( !agent-only )
@@ -38,22 +43,31 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	# modify setup.sh for gentoo
-	epatch "${FILESDIR}"/${PN}-1.2.4p5-setup.sh.patch
+	eapply "${FILESDIR}"/${PN}-1.2.8p16-setup.sh.patch
+	eapply_user
 }
 
 src_configure() {
 	if has_version net-analyzer/nagios-core; then
+		einfo "Using nagios as net-analyzer/nagios-core found"
 		export mydaemon=nagios
 		export nagpipe=/var/nagios/rw/nagios.cmd
 		export check_result_path=/var/nagios/spool/checkresults
 		export nagios_status_file=/var/nagios/status.dat
 		export rrd_path=/var/nagios/perfdata
+		if use livestatus; then
+			export livesock=/var/nagios/rw/live
+		fi
 	else
+		einfo "Using icinga as net-analyzer/nagios-core not found"
 		export mydaemon=icinga
 		export nagpipe=/var/lib/icinga/rw/icinga.cmd
 		export check_result_path=/var/lib/icinga/spool/checkresults
 		export nagios_status_file=/var/lib/icinga/status.dat
 		export rrd_path=/var/lib/icinga/perfdata
+		if use livestatus; then
+			export livesock=/var/lib/icigna/rw/live
+		fi
 	fi
 
 	export nagiosuser=${mydaemon}
@@ -69,34 +83,51 @@ src_configure() {
 	export wwwuser=apache
 	export wwwgroup=apache
 	export apache_config_dir=/etc/apache2/modules.d/
-
-	if use livestatus; then
-		export enable_livestatus=yes
-	else
-		export enable_livestatus=no
-	fi
-
+	export enable_livestatus=no
 	export STRIPPROG=/bin/true
+
+	mkdir -p "${S}"/usr/share/check_mk/agents || die
+	cat <<EOF >"${S}"/usr/share/check_mk/agents/Makefile
+all: waitmax
+
+waitmax: waitmax.c
+	\$(CC) \$(CFLAGS) \$< -o \$@ \$(LDFLAGS)
+
+EOF
 }
 
 src_compile() {
 	DESTDIR=${S} ./setup.sh --yes || die "Error while running setup.sh"
 
 	# compile waitmax
-	cd "${S}"/usr/share/check_mk/agents || die "Couldn't cd to ${S}/usr/share/check_mk/agents"
+	pushd "${S}"/usr/share/check_mk/agents &>/dev/null || die
 	if [[ -f waitmax ]]; then
 		rm waitmax || die "Couldn't delete precompiled waitmax file"
 	fi
-	sed -i -e 's#gcc -s -o waitmax waitmax\.c#gcc -o waitmax waitmax.c#' "${S}"/usr/share/check_mk/agents/Makefile || die "Couldn't modify remove strip from waitmax Makefile"
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" || die "Couldn't compile waitmax"
+	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)"
+	popd &>/dev/null || die
 
 	# Fix broken png files
-	pngfix -q --out=out.png "${S}/usr/share/check_mk/web/htdocs/images/icons/bookcase.png"
-	mv -f out.png "${S}/usr/share/check_mk/web/htdocs/images/icons/bookcase.png" || die
-	pngfix -q --out=out.png "${S}/usr/share/check_mk/web/htdocs/images/icon_auditlog.png"
-	mv -f out.png "${S}/usr/share/check_mk/web/htdocs/images/icon_auditlog.png" || die
-	pngfix -q --out=out.png "${S}/usr/share/check_mk/web/htdocs/images/button_auditlog_lo.png"
-	mv -f out.png "${S}/usr/share/check_mk/web/htdocs/images/button_auditlog_lo.png" || die
+	einfo "Fixing broken png files."
+	local x=0;
+	for png in "${S}"/usr/share/check_mk/web/htdocs/images/icons/*.png ; do
+		echo ${png#${S}}
+		pngfix -q --out="${T}"/out.png "${png}" && \
+		mv -f "${T}"/out.png "${png}" || die
+		x=$((x+1))
+	done
+	einfo "$x png files processed."
+
+	# enforce the correct python in these wrapper scripts
+	sed -i -e "/exec/s/python /${EPYTHON} /" usr/bin/{check_mk,mkp} || die
+	sed -i -e "/command_line/s#python /var#${EPYTHON} /var#" \
+		usr/share/check_mk/check_mk_templates.cfg || die
+
+	# fix all shebangs
+	find usr -type f -name \*.py |while read py ; do
+		grep '^#!' ${py} &>/dev/null && \
+		python_fix_shebang ${py}
+	done
 }
 
 src_install() {
@@ -117,19 +148,19 @@ EOF
 		fi
 
 		# check_mk configuration
-		keepdir /etc/check_mk
+		#keepdir /etc/check_mk
 		insinto /etc/check_mk
 		doins etc/check_mk/main.mk
 		doins etc/check_mk/main.mk-${MY_PV}
 		doins etc/check_mk/multisite.mk
 		doins etc/check_mk/multisite.mk-${MY_PV}
-		keepdir /etc/check_mk/conf.d
+		#keepdir /etc/check_mk/conf.d
 		insinto /etc/check_mk/conf.d
 		doins etc/check_mk/conf.d/README
-		keepdir /etc/check_mk/conf.d/wato
+		dodir /etc/check_mk/conf.d/wato
 		touch "${D}"/etc/check_mk/conf.d/distributed_wato.mk
-		keepdir /etc/check_mk/multisite.d
-		keepdir /etc/check_mk/multisite.d/wato
+		#keepdir /etc/check_mk/multisite.d
+		dodir /etc/check_mk/multisite.d/wato
 		touch "${D}"/etc/check_mk/multisite.d/sites.mk
 
 		insinto /etc/${mydaemon}
@@ -141,8 +172,7 @@ EOF
 
 		dobin usr/bin/check_mk
 		dobin usr/bin/mkp
-		insinto /usr/bin
-		doins usr/bin/cmk
+		dosym /usr/bin/check_mk /usr/bin/cmk
 
 		# remove compiled agent_modbus
 		if [[ -f ${S}/usr/share/doc/${PF}/treasures/modbus/agent_modbus ]]; then
@@ -155,16 +185,18 @@ EOF
 		keepdir /var/lib/check_mk/autochecks
 		keepdir /var/lib/check_mk/cache
 		keepdir /var/lib/check_mk/counters
+		keepdir /var/lib/check_mk/inventory
+		keepdir /var/lib/check_mk/log
 		keepdir /var/lib/check_mk/logwatch
 		keepdir /var/lib/check_mk/notify
-		keepdir /var/lib/check_mk/packages
-		insinto /var/lib/check_mk/packages
-		doins var/lib/check_mk/packages/check_mk
 		keepdir /var/lib/check_mk/precompiled
 		keepdir /var/lib/check_mk/snmpwalks
 		keepdir /var/lib/check_mk/tmp
 		keepdir /var/lib/check_mk/wato
 		keepdir /var/lib/check_mk/web
+
+		insinto /var/lib/check_mk/packages
+		doins var/lib/check_mk/packages/check_mk
 
 		# Update check_mk defaults
 		sed -i -e "s#^\(check_mk_automation\s*= 'sudo -u\) portage \(.*\)\$#\1 ${mydaemon} \2#" "${D}"/usr/share/check_mk/modules/defaults || die "Couldn't update check_mk defaults"
@@ -188,6 +220,10 @@ EOF
 		fowners -R root:${mydaemon} /var/lib/check_mk/counters
 		fperms 0775 /var/lib/check_mk/notify
 		fowners -R root:${mydaemon} /var/lib/check_mk/notify
+		fperms 0775 /var/lib/check_mk/inventory
+		fowners -R root:${mydaemon} /var/lib/check_mk/inventory
+		fperms 0775 /var/lib/check_mk/log
+		fowners -R root:${mydaemon} /var/lib/check_mk/log
 		fperms 0775 /var/lib/check_mk/logwatch
 		fowners -R root:${mydaemon} /var/lib/check_mk/logwatch
 		fperms 0775 /var/lib/check_mk/cache
@@ -198,6 +234,8 @@ EOF
 		fowners -R root:apache /var/lib/check_mk/web
 		fperms -R 0775 /var/lib/check_mk/wato
 		fowners -R root:apache /var/lib/check_mk/wato
+		fperms -R 0775 /var/lib/check_mk/
+		fowners -R ${mydaeon}:apache /var/lib/check_mk/
 	fi
 
 	# Install agent related files
@@ -205,35 +243,15 @@ EOF
 	dobin usr/share/check_mk/agents/waitmax
 
 	if use xinetd; then
+		pushd "${S}"/usr/share/check_mk/agents/cfg_examples &>/dev/null || die
 		insinto /etc/xinetd.d
-		newins usr/share/check_mk/agents/xinetd.conf check_mk
+		newins xinetd.conf check_mk
+		systemd_dounit systemd/check_mk@.service systemd/check_mk.socket
+		popd &>/dev/null || die
 	fi
 
 	keepdir /usr/lib/check_mk_agent/local
 	keepdir /usr/lib/check_mk_agent/plugins
-
-	# Install Livestatus
-	if use livestatus; then
-		cat << EOF > "${T}"/livestatus.cfg || die
-define module{
-	module_name		mk-livestatus
-	module_type		neb
-	path			/usr/lib/check_mk/livestatus.o
-	args			/var/lib/${mydaemon}/rw/live
-	}
-EOF
-
-		insinto /etc/${mydaemon}/modules
-		doins "${T}"/livestatus.cfg
-		fowners ${mydaemon}:${mydaemon} /etc/${mydaemon}/modules/livestatus.cfg
-
-		insinto /usr/lib/check_mk
-		doins usr/lib/check_mk/livestatus.o
-
-		dobin usr/bin/unixcat
-
-		keepdir /usr/share/check_mk/livestatus
-	fi
 
 	# Documentation
 	if ! use agent-only; then
@@ -247,7 +265,7 @@ EOF
 	# Install the check_mk_agent logwatch plugin
 	if use logwatch; then
 		insinto /etc/check_mk
-		doins usr/share/check_mk/agents/logwatch.cfg
+		doins usr/share/check_mk/agents/cfg_examples/logwatch.cfg
 		exeinto /usr/lib/check_mk_agent/plugins
 		doexe usr/share/check_mk/agents/plugins/mk_logwatch
 	fi
@@ -293,12 +311,6 @@ EOF
 		exeinto /usr/lib/check_mk_agent/plugins
 		doexe usr/share/check_mk/agents/plugins/nfsexports
 	fi
-
-	# Install the check_mk_agent dmi_sysinfo plugin
-	if use dmi_sysinfo; then
-		exeinto /usr/lib/check_mk_agent/plugins
-		doexe usr/share/check_mk/agents/plugins/dmi_sysinfo
-	fi
 }
 
 pkg_postinst() {
@@ -318,5 +330,21 @@ pkg_postinst() {
 		elog "chown ${mydaemon}: /etc/${mydaemon}/htpasswd.users"
 		elog "chmod 660 /etc/${mydaemon}/htpasswd.users"
 		elog
+		elog "Alternatively with ACLs:"
+		elog "setfacl -m u:apache:rw /etc/${mydaemon}/htpasswd.users"
+		elog "setfacl -m g:apache:rw /etc/${mydaemon}/htpasswd.users"
+		elog
+	fi
+	if use livestatus; then
+		elog "In order for livestatus to work, you need to make sure that"
+		if has_version net-analyzer/nagios-core; then
+			elog "nagios is loading the livestatus broker module.  Please"
+			elog "ensure to add to your nagios.cfg the lines in"
+			elog "/usr/share/mk-livestatus/nagios.cfg"
+		else
+			elog "icigna is loading the livestatus broker module.  Please"
+			elog "include /usr/share/mk-livestatus/icigna.cfg in your"
+			elog "icigna configuration."
+		fi
 	fi
 }

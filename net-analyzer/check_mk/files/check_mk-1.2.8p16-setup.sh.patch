@@ -1,0 +1,35 @@
+--- a/setup.sh	2014-07-04 09:24:45.000000000 +0200
++++ b/setup.sh	2015-08-28 13:22:19.986733809 +0200
+@@ -564,6 +564,17 @@
+ 
+ compile_livestatus ()
+ {
++   echo "Skipping internal compile of livestatus, do it in ebuild instead"
++   cat <<EOF > $SRCDIR/livestatus.src/src/livestatus.h 
++#ifndef livestatus_h
++#define livestatus_h
++#define DEFAULT_SOCKET_PATH "$livesock"
++#endif // livestatus_h
++EOF
++}
++
++avoid_compile_livestatus ()
++{
+    local D=$SRCDIR/livestatus.src
+    rm -rf $D
+    mkdir -p $D
+@@ -1018,9 +1029,11 @@
+            # WATO. Also create an empty and Apache-writable auth.serials
+            serials_file=$DESTDIR${htpasswd_file%/*}/auth.serials &&
+            touch "$serials_file" &&
+-           (chown $wwwuser "$serials_file" || true) &&
+-           (chown $wwwuser "$htpasswd_file" || true) &&
+-	   create_sudo_configuration &&
++           # Permissions will be set within src_install
++           #(chown $wwwuser "$serials_file" || true) &&
++           #(chown $wwwuser "$htpasswd_file" || true) &&
++	   # disable sudo configuration as this will be done within src_install
++	   #create_sudo_configuration &&
+            if [ "$enable_mkeventd" = yes ]
+            then
+ 	       if [ -z "$YES" ] ; then echo -n "(Compiling Event Console binaries..." ; fi
