@@ -1,0 +1,95 @@
+From fe90355a9b8db14ad94cae189ccb90cab0800d5b Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Wed, 10 Feb 2016 14:45:13 -0500
+Subject: [PATCH] Build fixes
+
+---
+ lib/internal/bootstrap_node.js |  2 ++
+ node.gyp                       | 13 ++++++++-----
+ src/node_main.cc               |  2 ++
+ 3 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/lib/internal/bootstrap_node.js b/lib/internal/bootstrap_node.js
+index 9505c7b8a..27d7b9da9 100644
+--- a/lib/internal/bootstrap_node.js
++++ b/lib/internal/bootstrap_node.js
+@@ -50,7 +50,9 @@
+       setupGlobalConsole();
+     }
+ 
++    if (!process.env.ELECTRON_NODE_DISABLE_ASAR_SUPPORT) {
+     setupAsarSupport();
++    }
+ 
+     const _process = NativeModule.require('internal/process');
+ 
+diff --git a/node.gyp b/node.gyp
+index a6f7e6e5b..5b95c5778 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -1,6 +1,7 @@
+ {
+   'variables': {
+     'v8_use_snapshot%': 'false',
++    'v8_gyp_path%': 'deps/v8/tools/gyp/v8.gyp',
+     'node_use_dtrace%': 'false',
+     'node_use_lttng%': 'false',
+     'node_use_etw%': 'false',
+@@ -127,6 +128,8 @@
+ 
+       'dependencies': [
+         'node_js2c#host',
++        '<(v8_gyp_path):v8',
++        '<(v8_gyp_path):v8_libplatform'
+       ],
+ 
+       'include_dirs': [
+@@ -258,8 +261,8 @@
+         }],
+         [ 'node_use_bundled_v8=="true"', {
+           'dependencies': [
+-            'deps/v8/tools/gyp/v8.gyp:v8',
+-            'deps/v8/tools/gyp/v8.gyp:v8_libplatform'
++            '<(v8_gyp_path):v8',
++            '<(v8_gyp_path):v8_libplatform'
+           ],
+         }],
+         [ 'node_use_v8_platform=="true"', {
+@@ -869,13 +872,13 @@
+         }],
+         [ 'node_use_v8_platform=="true"', {
+           'dependencies': [
+-            'deps/v8/tools/gyp/v8.gyp:v8_libplatform',
++            '<(v8_gyp_path):v8_libplatform',
+           ],
+         }],
+         [ 'node_use_bundled_v8=="true"', {
+           'dependencies': [
+-            'deps/v8/tools/gyp/v8.gyp:v8',
+-            'deps/v8/tools/gyp/v8.gyp:v8_libplatform'
++            '<(v8_gyp_path):v8',
++            '<(v8_gyp_path):v8_libplatform'
+           ],
+         }],
+       ]
+diff --git a/src/node_main.cc b/src/node_main.cc
+index bde397562..5b5a6dd99 100644
+--- a/src/node_main.cc
++++ b/src/node_main.cc
+@@ -49,11 +49,13 @@ int wmain(int argc, wchar_t *wargv[]) {
+ }
+ #else
+ // UNIX
++#include <stdlib.h>
+ int main(int argc, char *argv[]) {
+   // Disable stdio buffering, it interacts poorly with printf()
+   // calls elsewhere in the program (e.g., any logging from V8.)
+   setvbuf(stdout, nullptr, _IONBF, 0);
+   setvbuf(stderr, nullptr, _IONBF, 0);
++  putenv("ELECTRON_NODE_DISABLE_ASAR_SUPPORT=1");
+   return node::Start(argc, argv);
+ }
+ #endif
+-- 
+2.11.0
+

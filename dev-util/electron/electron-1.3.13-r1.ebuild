@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,19 +9,20 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils flag-o-matic multilib multiprocessing pax-utils \
-	portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx
+inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib \
+	multiprocessing pax-utils portability python-any-r1 readme.gentoo-r1 \
+	toolchain-funcs versionator virtualx xdg-utils
 
 # Keep this in sync with vendor/brightray/vendor/libchromiumcontent/VERSION
-CHROMIUM_VERSION="47.0.2526.110"
+CHROMIUM_VERSION="52.0.2743.82"
 # Keep this in sync with vendor/brightray
-BRIGHTRAY_COMMIT="9bc1d21b69ac99bed546d42035dc1205ea6b04af"
+BRIGHTRAY_COMMIT="ee26c5218eeec199c54c92a7517a72d2dbd0adbf"
 # Keep this in sync with vendor/node
-NODE_COMMIT="a507a3c3816d6ac085ed46250c489a3d76ab8b3c"
+NODE_COMMIT="c47e9bf9011de682d07c82f7f610a467f30cca60"
 # Keep this in sync with vendor/native_mate
-NATIVE_MATE_COMMIT="e719eab878c264bb03188d0cd6eb9ad6882bc13a"
+NATIVE_MATE_COMMIT="b5e5de626c6a57e44c7e6448d8bbaaac475d493c"
 # Keep this in sync with vendor/brightray/vendor/libchromiumcontent
-LIBCHROMIUMCONTENT_COMMIT="ad63d8ba890bcaad2f1b7e6de148b7992f4d3af7"
+LIBCHROMIUMCONTENT_COMMIT="27add4cfef98f21d5910539bebb47ae175f024c2"
 # Keep this in sync with package.json#devDependencies
 ASAR_VERSION="0.12.1"
 
@@ -149,18 +150,14 @@ DEPEND+=" $(python_gen_any_dep '
 	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/html5lib[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/jsmin[${PYTHON_USEDEP}]
-	dev-python/ply[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
 ')"
 python_check_deps() {
 	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/beautifulsoup:4[${PYTHON_USEDEP}]" &&
+	has_version --host-root ">=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]" &&
 	has_version --host-root "dev-python/html5lib[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	has_version --host-root "dev-python/jsmin[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/ply[${PYTHON_USEDEP}]" &&
 	has_version --host-root "dev-python/simplejson[${PYTHON_USEDEP}]"
 }
 
@@ -257,7 +254,7 @@ src_prepare() {
 	ln -s "${WORKDIR}/${ASAR_P}/node_modules" "${S}/node_modules" || die
 
 	# electron patches
-	epatch "${FILESDIR}/${P}.patch"
+	epatch "${FILESDIR}/${PN}-1.3.6.patch"
 
 	# node patches
 	cd "${NODE_S}" || die
@@ -282,21 +279,27 @@ src_prepare() {
 
 	# brightray patches
 	cd "${BRIGHTRAY_S}" || die
-	epatch "${FILESDIR}/${P}-vendor-brightray.patch"
+	epatch "${FILESDIR}/${PN}-1.3.6-vendor-brightray.patch"
 
 	# libcc patches
 	cd "${LIBCC_S}" || die
-	epatch "${FILESDIR}/${P}-vendor-libchromiumcontent.patch"
+	epatch "${FILESDIR}/${PN}-1.3.6-vendor-libchromiumcontent.patch"
 
 	# chromium patches
 	cd "${S}" || die
-	epatch "${FILESDIR}/chromium-system-ffmpeg-r0.patch"
-	epatch "${FILESDIR}/chromium-system-jinja-r7.patch"
+	epatch "${FILESDIR}/chromium-system-ffmpeg-r2.patch"
 	epatch "${FILESDIR}/chromium-disable-widevine.patch"
+	epatch "${FILESDIR}/chromium-last-commit-position-r0.patch"
+	epatch "${FILESDIR}/chromium-snapshot-toolchain-r1.patch"
 	epatch "${FILESDIR}/chromium-remove-gardiner-mod-font.patch"
-	epatch "${FILESDIR}/chromium-shared-v8.patch"
-	epatch "${FILESDIR}/chromium-lto-fixes.patch"
-
+	epatch "${FILESDIR}/chromium-pdfium-r0.patch"
+	epatch "${FILESDIR}/chromium-system-zlib-r0.patch"
+	epatch "${FILESDIR}/chromium-linker-warnings-r0.patch"
+	epatch "${FILESDIR}/chromium-ffmpeg-license-r0.patch"
+	epatch "${FILESDIR}/chromium-shared-v8-r1.patch"
+	epatch "${FILESDIR}/chromium-lto-fixes-r1.patch"
+	epatch "${FILESDIR}/chromium-icu-58-r1.patch"
+	epatch "${FILESDIR}/chromium-cups-fix.patch"
 	# libcc chromium patches
 	_unnest_patches "${LIBCC_S}/patches"
 
@@ -330,26 +333,29 @@ src_prepare() {
 		'base/third_party/xdg_mime' \
 		'base/third_party/xdg_user_dirs' \
 		'breakpad/src/third_party/curl' \
+		'breakpad/src/third_party/musl' \
 		'chrome/third_party/mozilla_security_manager' \
 		'courgette/third_party' \
-		'crypto/third_party/nss' \
 		'net/third_party/mozilla_security_manager' \
 		'net/third_party/nss' \
 		'third_party/WebKit' \
 		'third_party/analytics' \
 		'third_party/angle' \
 		'third_party/angle/src/third_party/compiler' \
+		'third_party/angle/src/third_party/libXNVCtrl' \
+		'third_party/angle/src/third_party/murmurhash' \
+		'third_party/angle/src/third_party/trace_event' \
 		'third_party/boringssl' \
 		'third_party/brotli' \
 		'third_party/cacheinvalidation' \
 		'third_party/catapult' \
+		'third_party/catapult/third_party/py_vulcanize' \
+		'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin' \
+		'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin' \
 		'third_party/catapult/tracing/third_party/components/polymer' \
 		'third_party/catapult/tracing/third_party/d3' \
 		'third_party/catapult/tracing/third_party/gl-matrix' \
 		'third_party/catapult/tracing/third_party/jszip' \
-		'third_party/catapult/tracing/third_party/tvcm' \
-		'third_party/catapult/tracing/third_party/tvcm/third_party/rcssmin' \
-		'third_party/catapult/tracing/third_party/tvcm/third_party/rjsmin' \
 		'third_party/cld_2' \
 		'third_party/cros_system_api' \
 		'third_party/cython/python_flags.py' \
@@ -363,29 +369,32 @@ src_prepare() {
 		'third_party/google_input_tools/third_party/closure_library/third_party/closure' \
 		'third_party/hunspell' \
 		'third_party/iccjpeg' \
+		'third_party/jinja2' \
 		'third_party/jstemplate' \
 		'third_party/khronos' \
 		'third_party/leveldatabase' \
 		'third_party/libXNVCtrl' \
 		'third_party/libaddressinput' \
 		'third_party/libjingle' \
+		'third_party/libjpeg_turbo' \
 		'third_party/libphonenumber' \
+		'third_party/libpng' \
 		'third_party/libsecret' \
 		'third_party/libsrtp' \
 		'third_party/libudev' \
 		'third_party/libusb' \
-		'third_party/libvpx_new' \
-		'third_party/libvpx_new/source/libvpx/third_party/x86inc' \
-		'third_party/libxml/chromium' \
+		'third_party/libvpx' \
+		'third_party/libvpx/source/libvpx/third_party/x86inc' \
 		'third_party/libwebm' \
+		'third_party/libxml/chromium' \
 		'third_party/libyuv' \
 		'third_party/lss' \
 		'third_party/lzma_sdk' \
+		'third_party/markupsafe' \
 		'third_party/mesa' \
 		'third_party/modp_b64' \
-		'third_party/mojo' \
 		'third_party/mt19937ar' \
-		'third_party/npapi' \
+		'third_party/openh264' \
 		'third_party/openmax_dl' \
 		'third_party/opus' \
 		'third_party/ots' \
@@ -397,11 +406,15 @@ src_prepare() {
 		'third_party/pdfium/third_party/lcms2-2.6' \
 		'third_party/pdfium/third_party/libjpeg' \
 		'third_party/pdfium/third_party/libopenjpeg20' \
+		'third_party/pdfium/third_party/libpng16' \
+		'third_party/pdfium/third_party/libtiff' \
 		'third_party/pdfium/third_party/zlib_v128' \
+		'third_party/ply' \
 		'third_party/polymer' \
 		'third_party/protobuf' \
+		'third_party/protobuf/third_party/six' \
 		'third_party/qcms' \
-		'third_party/readability' \
+		'third_party/re2' \
 		'third_party/sfntly' \
 		'third_party/skia' \
 		'third_party/smhasher' \
@@ -412,6 +425,7 @@ src_prepare() {
 		'third_party/webdriver' \
 		'third_party/webrtc' \
 		'third_party/widevine' \
+		'third_party/woff2' \
 		'third_party/x86inc' \
 		'third_party/zlib/google' \
 		'url/third_party/mozilla' \
@@ -463,14 +477,11 @@ src_configure() {
 		-Duse_system_icu=1
 		-Duse_system_jsoncpp=1
 		-Duse_system_libevent=1
-		-Duse_system_libjpeg=1
-		-Duse_system_libpng=1
 		-Duse_system_libwebp=1
 		-Duse_system_libxml=1
 		-Duse_system_libxslt=1
 		-Duse_system_minizip=1
 		-Duse_system_nspr=1
-		-Duse_system_re2=1
 		-Duse_system_snappy=1
 		-Duse_system_speex=1
 		-Duse_system_xdg_utils=1
@@ -478,6 +489,7 @@ src_configure() {
 
 	# Needed for system icu - we don't need additional data files.
 	myconf+=" -Dicu_use_data_file_flag=0"
+	myconf+=" -Dgenerate_character_data=0"
 
 	# TODO: patch gyp so that this arm conditional is not needed.
 	if ! use arm; then
@@ -527,7 +539,8 @@ src_configure() {
 		-Dhost_clang=0
 		-Dlinux_use_bundled_binutils=0
 		-Dlinux_use_bundled_gold=0
-		-Dlinux_use_gold_flags=0"
+		-Dlinux_use_gold_flags=0
+		-Dsysroot="
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
 	myconf+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
@@ -536,9 +549,12 @@ src_configure() {
 	# Note: these are for Gentoo use ONLY. For your own distribution,
 	# please get your own set of keys. Feel free to contact chromium@gentoo.org
 	# for more info.
-	myconf+=" -Dgoogle_api_key=AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc
-		-Dgoogle_default_client_id=329227923882.apps.googleusercontent.com
-		-Dgoogle_default_client_secret=vgKG0NNv7GoDpbtoFNLxCUXu"
+	local google_api_key="AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc"
+	local google_default_client_id="329227923882.apps.googleusercontent.com"
+	local google_default_client_secret="vgKG0NNv7GoDpbtoFNLxCUXu"
+	myconf+=" -Dgoogle_api_key=${google_api_key}
+		-Dgoogle_default_client_id=${google_default_client_id}
+		-Dgoogle_default_client_secret=${google_default_client_secret}"
 
 	local myarch="$(tc-arch)"
 	if [[ $myarch = amd64 ]] ; then
@@ -547,6 +563,9 @@ src_configure() {
 	elif [[ $myarch = x86 ]] ; then
 		target_arch=ia32
 		ffmpeg_target_arch=ia32
+	elif [[ $myarch = arm64 ]] ; then
+		target_arch=arm64
+		ffmpeg_target_arch=arm64
 	elif [[ $myarch = arm ]] ; then
 		target_arch=arm
 		ffmpeg_target_arch=$(usex neon arm-neon arm)
@@ -554,17 +573,17 @@ src_configure() {
 		local CTARGET=${CTARGET:-${CHOST}}
 		if [[ $(tc-is-softfloat) == "no" ]]; then
 
-			myconf+=" -Darm_float_abi=hard"
+			myconf_gyp+=" -Darm_float_abi=hard"
 		fi
 		filter-flags "-mfpu=*"
-		use neon || myconf+=" -Darm_fpu=${ARM_FPU:-vfpv3-d16}"
+		use neon || myconf_gyp+=" -Darm_fpu=${ARM_FPU:-vfpv3-d16}"
 
 		if [[ ${CTARGET} == armv[78]* ]]; then
-			myconf+=" -Darmv7=1"
+			myconf_gyp+=" -Darmv7=1"
 		else
-			myconf+=" -Darmv7=0"
+			myconf_gyp+=" -Darmv7=0"
 		fi
-		myconf+=" -Dsysroot=
+		myconf_gyp+=" -Dsysroot=
 			$(gyp_use neon arm_neon)
 			-Ddisable_nacl=1"
 	else
@@ -593,7 +612,8 @@ src_configure() {
 
 		# Prevent libvpx build failures. Bug 530248, 544702, 546984.
 		if [[ ${myarch} == amd64 || ${myarch} == x86 ]]; then
-			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx -mno-avx2
+			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 \
+						 -mno-avx -mno-avx2
 		fi
 	fi
 
@@ -630,16 +650,18 @@ src_configure() {
 
 	third_party/libaddressinput/chromium/tools/update-strings.py || die
 
+	touch chrome/test/data/webui/i18n_process_css_test.html || die
+
 	einfo "Configuring bundled nodejs..."
 	pushd vendor/node > /dev/null || die
 	# Make sure gyp_node does not run
 	echo '#!/usr/bin/env python' > tools/gyp_node.py || die
 	# --shared-libuv cannot be used as electron's node fork
 	# patches uv_loop structure.
-	./configure --shared-openssl --shared-http-parser \
-				--shared-zlib --without-npm --with-intl=system-icu \
-				--without-dtrace --dest-cpu=${target_arch} \
-				--prefix="" || die
+	./configure --shared --without-bundled-v8 --shared-openssl \
+				--shared-http-parser --shared-zlib --without-npm \
+				--with-intl=system-icu --without-dtrace \
+				--dest-cpu=${target_arch} --prefix="" || die
 	popd > /dev/null || die
 
 	# libchromiumcontent configuration
@@ -655,7 +677,7 @@ src_configure() {
 
 	myconf+=" -Ivendor/node/config.gypi
 			  -Icommon.gypi
-			  atom.gyp"
+			  electron.gyp"
 
 	egyp_chromium ${myconf} || die
 }
@@ -715,6 +737,8 @@ src_install() {
 	doins -r out/R/resources
 	doins -r out/R/locales
 	dosym "${install_dir}/electron" "/usr/bin/electron${install_suffix}"
+
+	pax-mark -rm "${ED}/${install_dir}/electron"
 
 	# Install Node headers
 	HEADERS_ONLY=1 \
