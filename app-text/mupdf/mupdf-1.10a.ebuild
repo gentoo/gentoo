@@ -23,7 +23,7 @@ LIB_DEPEND="
 	media-libs/harfbuzz[static-libs?]
 	media-libs/jbig2dec[static-libs?]
 	media-libs/libpng:0[static-libs?]
-	media-libs/openjpeg:2[static-libs?]
+	>=media-libs/openjpeg-2.1:2[static-libs?]
 	net-misc/curl[static-libs?]
 	virtual/jpeg[static-libs?]
 	X? ( x11-libs/libX11[static-libs?]
