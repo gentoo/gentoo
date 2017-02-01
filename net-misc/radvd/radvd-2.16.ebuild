@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit systemd user eutils readme.gentoo-r1
+inherit systemd user eutils readme.gentoo-r1 tmpfiles
 
 DESCRIPTION="Linux IPv6 Router Advertisement Daemon"
 HOMEPAGE="http://v6web.litech.org/radvd/"
@@ -29,13 +29,10 @@ DOCS=( CHANGES README TODO radvd.conf.example )
 pkg_setup() {
 	enewgroup radvd
 	enewuser radvd -1 -1 /dev/null radvd
-
-	# force ownership of radvd user and group (bug #19647)
-	[[ -d ${ROOT}/var/run/radvd ]] && chown radvd:radvd "${ROOT}"/var/run/radvd
 }
 
 src_configure() {
-	econf --with-pidfile=/var/run/radvd/radvd.pid \
+	econf --with-pidfile=/run/radvd/radvd.pid \
 		--disable-silent-rules \
 		--with-systemdsystemunitdir=no \
 		$(use_with test check)
@@ -44,9 +41,10 @@ src_configure() {
 src_install() {
 	default
 
-	dohtml INTRO.html
+	insinto /usr/share/doc/${PF}/html
+	doins INTRO.html
 
-	newinitd "${FILESDIR}"/${PN}-1.9.1.init ${PN}
+	newinitd "${FILESDIR}"/${PN}-2.15.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
@@ -59,6 +57,10 @@ src_install() {
 	fi
 
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
 }
 
 DISABLE_AUTOFORMATTING=1
