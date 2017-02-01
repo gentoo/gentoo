@@ -13961,7 +13961,7 @@ media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 0.16.2 17.0.0 17.0.2 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3-r1 2.1.0 2.2.0: Free, open-source, non-linear video editor to create and edit videos and movies
-media-video/orion 1.3.5: Cross-platform Twitch client
+media-video/orion 1.3.5 1.4.0: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/peek 0.8.0: Simple animated Gif screen recorder
