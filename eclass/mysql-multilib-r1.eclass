@@ -319,12 +319,10 @@ mysql-multilib-r1_src_prepare() {
 	if in_iuse tokudb ; then
 		# Don't build bundled xz-utils
 		if [[ -d "${S}/storage/tokudb/ft-index" ]] ; then
-			rm -f "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
-			touch "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
+			echo > "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
 			sed -i 's/ build_lzma//' "${S}/storage/tokudb/ft-index/ft/CMakeLists.txt" || die
 		elif [[ -d "${S}/storage/tokudb/PerconaFT" ]] ; then
-			rm "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
-			touch "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
+			echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
 			sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
 			sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
 		fi
@@ -338,6 +336,11 @@ mysql-multilib-r1_src_prepare() {
 	# There is no CMake flag, it simply checks for existance
 	if [[ -d "${S}"/storage/mroonga/vendor/groonga ]] ; then
 		rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
+	fi
+
+	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
+	if [[ -d "${S}/support-files/SELinux" ]] ; then
+		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
 	if [[ "${EAPI}x" == "5x" ]] ; then
