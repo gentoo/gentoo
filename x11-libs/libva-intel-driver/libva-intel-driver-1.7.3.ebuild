@@ -15,7 +15,7 @@ AUTOTOOLS_AUTORECONF="yes"
 inherit autotools-multilib ${SCM}
 
 DESCRIPTION="HW video decode support for Intel integrated graphics"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/vaapi"
+HOMEPAGE="https://github.com/01org/intel-vaapi-driver"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
 	S="${WORKDIR}/${PN}"
