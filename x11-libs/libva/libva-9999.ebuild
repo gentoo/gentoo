@@ -6,9 +6,9 @@ EAPI=5
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
-	SCM=git-2
+	SCM=git-r3
 	EGIT_BRANCH=master
-	EGIT_REPO_URI="git://anongit.freedesktop.org/vaapi/libva"
+	EGIT_REPO_URI="https://github.com/01org/libva"
 fi
 
 AUTOTOOLS_AUTORECONF="yes"
@@ -18,9 +18,9 @@ DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
-	S="${WORKDIR}/${PN}"
 else
-	SRC_URI="https://www.freedesktop.org/software/vaapi/releases/libva/${P}.tar.bz2"
+	SRC_URI="https://github.com/01org/libva/archive/${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${P}"
 fi
 
 LICENSE="MIT"
