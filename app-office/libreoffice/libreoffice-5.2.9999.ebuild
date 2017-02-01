@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -356,6 +356,14 @@ src_prepare() {
 	if use branding; then
 		# hack...
 		mv -v "${WORKDIR}/branding-intro.png" "${S}/icon-themes/galaxy/brand/intro.png" || die
+	fi
+
+	# Don't list pdfimport support in desktop when built with none, bug # 605464
+	if ! use pdfimport; then
+		sed -i \
+			-e ":MimeType: s:application/pdf;::" \
+			-e ":Keywords: s:pdf;::" \
+			sysui/desktop/menus/draw.desktop || die
 	fi
 }
 
