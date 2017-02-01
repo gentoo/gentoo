@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=media-tv/kodi media-video/rtmpdump sys-devel/make >=dev-util/cmake-3.5.2
-DESCRIPTION=Kodi's RTMP inputstream addon
+DEPEND==dev-libs/libplatform-2* =media-tv/kodi-17* =media-libs/kodi-platform-17* sys-libs/zlib sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Kodi's IPTVSimple client addon
 EAPI=6
-HOMEPAGE=https://github.com/notspiff/inputstream.rtmp
+HOMEPAGE=https://github.com/kodi-pvr/pvr.iptvsimple
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=media-tv/kodi media-video/rtmpdump
+RDEPEND==dev-libs/libplatform-2* =media-tv/kodi-17* =media-libs/kodi-platform-17* sys-libs/zlib
 SLOT=0
-SRC_URI=https://github.com/notspiff/inputstream.rtmp/archive/v1.0.3.tar.gz -> kodi-inputstream-rtmp-1.0.3.tar.gz
+SRC_URI=https://github.com/kodi-pvr/pvr.iptvsimple/archive/2.4.8-Krypton.tar.gz -> kodi-pvr-iptvsimple-2.4.8.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:kodi-addon src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	kodi-addon	ed9d0b2d79a8283ed0f06617b198a601	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=96ce463943999b6b2396caedb8c7bbf5
+_md5_=f4f30f8df58ecb01dc12a5dda5de976e

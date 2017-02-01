@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://nixos.org/releases/nix/nix-1.11.6/nix-1.11.6.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=f2947f9cc59cc5b5c63d1ec2046c63ef
+_md5_=7463152df16cad34b3ce2ca9c8f72f95

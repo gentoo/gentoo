@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=media-tv/kodi media-libs/kodi-platform dev-libs/tinyxml sys-devel/make >=dev-util/cmake-3.5.2 >=dev-vcs/git-1.8.2.1
+DEPEND==media-tv/kodi-9999 =media-libs/kodi-platform-9999 dev-libs/tinyxml sys-devel/make >=dev-util/cmake-3.5.2 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Kodi's MediaPortal TVServer client addon
 EAPI=6
 HOMEPAGE=https://github.com/kodi-pvr/pvr.mediaportal.tvserver
 LICENSE=GPL-2
-RDEPEND=media-tv/kodi media-libs/kodi-platform dev-libs/tinyxml
+RDEPEND==media-tv/kodi-9999 =media-libs/kodi-platform-9999 dev-libs/tinyxml
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:kodi-addon src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	kodi-addon	ed9d0b2d79a8283ed0f06617b198a601	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ded88696de9c0a1ab5f79b11f3c64797
+_md5_=0b6cd82e0f369b0aefb804b879c94579

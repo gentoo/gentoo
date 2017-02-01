@@ -572,6 +572,7 @@ app-crypt/monkeysign 2.0.2-r1: A user-friendly commandline tool to sign OpenGPG 
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nistp224 0.75-r1: nistp224 performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
+app-crypt/nitrokey-app 0.6.3: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.14: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.4.0: onak is an OpenPGP keyserver
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions between 2006 and 2008
@@ -13220,26 +13221,26 @@ media-plugins/kodi-audioencoder-lame 1.2.0 9999: Lame MP3 encoder addon for Kodi
 media-plugins/kodi-audioencoder-vorbis 1.1.0 9999: Vorbis encoder addon for Kodi
 media-plugins/kodi-audioencoder-wav 1.1.0 9999: WAV encoder addon for Kodi
 media-plugins/kodi-game-libretro 1.0.1 9999: Libretro compatibility layer for the Kodi Game API
-media-plugins/kodi-inputstream-adaptive 1.0.6 9999: Kodi's Adaptive inputstream addon
-media-plugins/kodi-inputstream-rtmp 1.0.3 9999: Kodi's RTMP inputstream addon
-media-plugins/kodi-peripheral-joystick 9999: Libretro compatibility layer for the Kodi Game API
-media-plugins/kodi-pvr-argustv 2.5.4 9999: Kodi's ARGUS TV client addon
+media-plugins/kodi-inputstream-adaptive 1.0.6-r1 9999: Kodi's Adaptive inputstream addon
+media-plugins/kodi-inputstream-rtmp 1.0.3-r1 9999: Kodi's RTMP inputstream addon
+media-plugins/kodi-peripheral-joystick 1.2.1 9999: Libretro compatibility layer for the Kodi Game API
+media-plugins/kodi-pvr-argustv 2.5.4-r1 9999: Kodi's ARGUS TV client addon
 media-plugins/kodi-pvr-demo 2.4.3 9999: Demo PVR for Kodi
-media-plugins/kodi-pvr-dvblink 3.3.11 9999: Kodi's DVBLink client addon
-media-plugins/kodi-pvr-dvbviewer 2.4.6 9999: Kodi's DVBViewer client addon
-media-plugins/kodi-pvr-filmon 9999: Kodi's Filmon client addon
+media-plugins/kodi-pvr-dvblink 3.3.11-r1 9999: Kodi's DVBLink client addon
+media-plugins/kodi-pvr-dvbviewer 2.4.6-r1 9999: Kodi's DVBViewer client addon
+media-plugins/kodi-pvr-filmon 1.4.7 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV and Radio PVR client addon for Kodi
-media-plugins/kodi-pvr-iptvsimple 9999: Kodi's IPTVSimple client addon
-media-plugins/kodi-pvr-mediaportal-tvserver 2.4.14 9999: Kodi's MediaPortal TVServer client addon
-media-plugins/kodi-pvr-mythtv 4.12.12-r1 9999: MythTV PVR for Kodi
-media-plugins/kodi-pvr-nextpvr 9999: Kodi's NextPVR client addon
-media-plugins/kodi-pvr-njoy 9999: Kodi's Njoy N7 client addon
-media-plugins/kodi-pvr-pctv 9999: Kodi's PCTV client addon
-media-plugins/kodi-pvr-stalker 9999: Kodi's Stalker client addon
+media-plugins/kodi-pvr-iptvsimple 2.4.8 9999: Kodi's IPTVSimple client addon
+media-plugins/kodi-pvr-mediaportal-tvserver 2.4.16 9999: Kodi's MediaPortal TVServer client addon
+media-plugins/kodi-pvr-mythtv 4.12.12-r2 9999: MythTV PVR for Kodi
+media-plugins/kodi-pvr-nextpvr 2.4.11 9999: Kodi's NextPVR client addon
+media-plugins/kodi-pvr-njoy 2.4.2 9999: Kodi's Njoy N7 client addon
+media-plugins/kodi-pvr-pctv 1.4.5 9999: Kodi's PCTV client addon
+media-plugins/kodi-pvr-stalker 2.8.3 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.0.2 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 9999: Kodi's VuPlus client addon
-media-plugins/kodi-pvr-wmc 9999: Kodi's Windows Media Center client addon
+media-plugins/kodi-pvr-vuplus 2.4.6 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-wmc 1.4.7 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 1.1.0 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 1.1.0 9999: Biogenesis screensaver for Kodi
 media-plugins/kodi-screensaver-crystalmorph 9999: Crystalmorph screensaver for Kodi
@@ -16919,6 +16920,7 @@ sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 0.8.7: Hard disk drive health inspection tool
+sys-apps/guix 0.12.0-r1: GNU package manager (nix sibling)
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
 sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
@@ -17004,7 +17006,7 @@ sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netloc 0.5: Portable Network Locality (netloc)
 sys-apps/netplug 1.2.9.2-r1 1.2.9.2-r2: Brings up/down ethernet ports automatically with cable detection
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
-sys-apps/nix 1.11.6-r1 1.11.6-r2: A purely functional package manager
+sys-apps/nix 1.11.6-r3: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.9 1.0 1.1: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 0.22.4 0.23 0.23.1 0.23.2 9999: OpenRC manages the services, startup and shutdown of a host
