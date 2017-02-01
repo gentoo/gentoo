@@ -2255,7 +2255,7 @@ app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
 app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
-app-text/dvipng 1.14 1.15: Translate DVI files into PNG or GIF graphics
+app-text/dvipng 1.15: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 5.992_p20120701 5.993_p20130530 5.994_p20140525 5.995_p20150521 5.996_p20160523: DVI-to-PostScript translator
 app-text/dvisvgm 1.8.1 1.10 2.0.4 2.1: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
@@ -18853,7 +18853,7 @@ x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord an
 x11-misc/xidle 24102005: xidle monitors inactivity in X and runs the specified program when a timeout occurs.
 x11-misc/xkbd 0.8.15-r1 0.8.16: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5-r1 0.5_p5_p1: User preference utility for XKB extensions for X
-x11-misc/xkeyboard-config 2.14 2.16 2.17 2.18 2.19: X keyboard configuration database
+x11-misc/xkeyboard-config 2.14 2.16 2.17 2.18 2.19 2.20: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r1: GUI frontend to xmodmap
 x11-misc/xlockmore 5.47 5.50: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
