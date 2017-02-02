@@ -37,7 +37,7 @@ src_install() {
 	for i in *.man; do
 		newman "${i}" "${i/.man/.1}"
 	done
-	pushd >/dev/null || die
+	popd >/dev/null || die
 
 	insinto /usr/share/${PN}
 	doins -r benchmarks tutorial intro matrices
