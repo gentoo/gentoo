@@ -80,12 +80,6 @@ dev-lang/go gccgo
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
 
-# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# media-libs/libcaca wasn't stabilized in the past, but now
-# it's ready for the next stable mpv release after the one below.
-=media-video/mpv-0.9.2-r1 libcaca
-
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask stable-masked implementations for python-exec
 dev-lang/python-exec -python_targets_python3_5
