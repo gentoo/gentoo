@@ -14961,7 +14961,7 @@ net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4e: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.6 0.4.7 9999: Automatic open port forwarder using UPnP
 net-misc/axel 2.4-r3 2.12 9999: Light Unix download accelerator
-net-misc/badvpn 1.999.123-r3 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
+net-misc/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-misc/balance 3.57: TCP Load Balancing Port Forwarder
 net-misc/batctl 2013.4.0 2014.2.0: BATMAN advanced control and management tool
 net-misc/batman-adv 2013.4.0 2014.2.0: Better approach to mobile Ad-Hoc networking on layer 2 kernel module
