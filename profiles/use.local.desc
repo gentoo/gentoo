@@ -3388,7 +3388,6 @@ kde-plasma/kdebase-startkde:crash-reporter - Builds a gui tool to submit crash i
 kde-plasma/kdebase-startkde:wallpapers - Install the KDE Plasma wallpapers
 kde-plasma/kdeplasma-addons:attica - Enable support for dev-libs/libattica
 kde-plasma/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-apps/marble
-kde-plasma/kdeplasma-addons:eigen - Build Mandelbrot wallpaper plugin using dev-cpp/eigen using SLOT 2
 kde-plasma/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
 kde-plasma/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
