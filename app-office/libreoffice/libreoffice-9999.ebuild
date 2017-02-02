@@ -89,6 +89,7 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
+	app-crypt/gpgme
 	app-text/hunspell
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
@@ -467,6 +468,7 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
+		--with-system-gpgme \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
