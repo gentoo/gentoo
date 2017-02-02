@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (02 Feb 2017)
+# Upstream missing. Ancient. Unmaintained. No revdeps.
+# Masked for removal in 30 days.
+dev-libs/safestr
+dev-libs/xxl
+
 # Michał Górny <mgorny@gentoo.org> (01 Feb 2017)
 # Fails to compile with USE=static. It is a system package, so a lot
 # of people are hitting this. Furthermore, people keep working it around
