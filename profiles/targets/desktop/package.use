@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (02 Feb 2017)
+# Enable luajit for OSC and youtube-dl support by default.
+media-video/mpv lua luajit
+
 # Mike Gilbert <floppym@gentoo.org> (04 Jan 2017)
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text

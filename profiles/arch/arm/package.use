@@ -1,7 +1,3 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
-# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
-# Enable luajit (for OSC) by default
-media-video/mpv lua luajit
