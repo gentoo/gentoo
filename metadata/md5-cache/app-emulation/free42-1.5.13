@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/pango alsa? ( media-libs/alsa-lib )
+DESCRIPTION=An HP-42S Calculator Simulator
+EAPI=6
+HOMEPAGE=http://thomasokken.com/free42/
+IUSE=alsa
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/pango alsa? ( media-libs/alsa-lib ) x11-libs/libX11 x11-libs/libXmu
+SLOT=0
+SRC_URI=mirror://gentoo/free42-1.5.13.tgz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=afd74f19046303a2c3d126980d297bc0

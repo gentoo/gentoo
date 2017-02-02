@@ -354,7 +354,7 @@ app-backup/bup 0.28.1 0.29 0.29-r1: A highly efficient backup system based on th
 app-backup/burp 1.4.40-r5 1.4.40-r6: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
-app-backup/cdbkup 1.0 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
+app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.4.20 2.4.23 2.4.24 2.5.8 2.5.9: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
 app-backup/deja-dup 34.2 34.3: Simple backup tool using duplicity back-end
@@ -622,7 +622,7 @@ app-crypt/veracrypt 1.19: Disk encryption with strong security based on TrueCryp
 app-crypt/xca 1.3.2 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-neo-manager 1.1.0 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: Cross platform personalization tool for the YubiKey NEO
-app-crypt/zuluCrypt 4.7.7 5.0.1 5.1.0: Front end to cryptsetup
+app-crypt/zuluCrypt 5.0.1 5.1.0: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
 app-dicts/aspell-bg 4.1.0: Bulgarian language dictionary for aspell
@@ -1303,7 +1303,7 @@ app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
 app-emulation/e-uae 0.8.29_rc4-r2: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/flannel 0.5.5 0.6.2: An etcd backed network fabric for containers
-app-emulation/free42 1.5.12: An HP-42S Calculator Simulator
+app-emulation/free42 1.5.12 1.5.13: An HP-42S Calculator Simulator
 app-emulation/fuse 1.0.0 1.1.1: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.1.1: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/ganeti 2.15.2-r5 2.15.2-r6 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
@@ -1967,7 +1967,7 @@ app-misc/xmind 3.4.1.201401221918 3.5.1.201411201906 3.5.3.201506180105-r2 3.6.1
 app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/ytree 1.99_p1: A curses-based file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
-app-misc/zisofs-tools 1.0.6 1.0.8: User utilities for zisofs
+app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 7.0.0 8.0.1: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/bitpim 1.0.6-r2: Program to view and manipulate data on LG VX4400/VX6000 and many Sanyo Sprint mobile phones
@@ -13086,7 +13086,7 @@ media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/e
 media-libs/zimg 2.3 2.4 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.2.0: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 2.0.0 2.0.0-r1 3.1.0: C++ library implementing a real-time convolution matrix
-media-libs/zvbi 0.2.35 0.2.35-r1: VBI Decoding Library for Zapping
+media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
 media-plugins/alsa-plugins 1.0.29 1.0.29-r1 1.1.1: ALSA extra plugins
 media-plugins/alsaequal 0.6-r2: a real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen

@@ -2879,11 +2879,6 @@ developers and volunteer mentors.</description>
       <name>Jonathan Callen</name>
       <role>Developer</role>
     </member>
-    <member>
-      <email>junghans@gentoo.org</email>
-      <name>Christoph Junghans</name>
-      <role>Developer, merge with gx86</role>
-    </member>
   </project>
   <project>
     <email>printing@gentoo.org</email>
