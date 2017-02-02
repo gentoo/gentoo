@@ -12559,7 +12559,7 @@ media-gfx/kgrab 0.1.1: KDE screen grabbing utility
 media-gfx/kgraphviewer 2.2.0: KDE graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.1: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
-media-gfx/krita 3.1.2: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 3.1.2-r1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 2.0.0: Program to create cross stitch patterns
 media-gfx/librecad 2.0.3 2.0.9-r1 2.1.1 2.1.3 9999: Generic 2D CAD program
