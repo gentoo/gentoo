@@ -2,8 +2,8 @@ Fix parallel build
 
 http://bugs.gentoo.org/show_bug.cgi?id=311919
 
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -82,9 +82,10 @@
  all: core 
  
@@ -18,8 +18,8 @@ http://bugs.gentoo.org/show_bug.cgi?id=311919
  
  #.PHONY: $(RIGFILTERS)
  #$(RIGFILTERS): core
---- easel/Makefile.in
-+++ easel/Makefile.in
+--- a/easel/Makefile.in
++++ b/easel/Makefile.in
 @@ -132,7 +132,7 @@
  	esl_wuss.o
  
