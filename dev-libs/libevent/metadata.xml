@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>jer@gentoo.org</email>
-	<name>Jeroen Roovers</name>
-</maintainer>
-<upstream>
-	<remote-id type="cpe">cpe:/a:niels_provos:libevent</remote-id>
-	<remote-id type="github">libevent/libevent</remote-id>
-	<remote-id type="sourceforge">levent</remote-id>
-</upstream>
-<use>
-	<flag name="debug">Support runtime debug mode and malloc hooks (for programmers)</flag>
-	<flag name="malloc-replacement">Enable support for replacing the memory management functions</flag>
-</use>
+	<maintainer type="person">
+		<email>jer@gentoo.org</email>
+		<name>Jeroen Roovers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:niels_provos:libevent</remote-id>
+		<remote-id type="sourceforge">levent</remote-id>
+	</upstream>
+	<use>
+		<flag name="debug">Support runtime debug mode and malloc hooks (for programmers)</flag>
+	</use>
 </pkgmetadata>
