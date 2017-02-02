@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
-DEPEND=dev-lang/perl[ithreads=] >=dev-perl/Apache-Test-1.400.0 >=www-servers/apache-2.0.47 !ithreads? ( www-servers/apache[-apache2_mpms_event,-apache2_mpms_worker,apache2_mpms_prefork] ) dev-perl/Module-Build test? ( >=dev-perl/CGI-3.110.0 dev-perl/Chatbot-Eliza dev-perl/Devel-Symdump dev-perl/HTML-Parser dev-perl/IPC-Run3 dev-perl/libwww-perl www-servers/apache[apache2_modules_version,-apache2_modules_unique_id] ) =www-servers/apache-2* dev-lang/perl:=[-build(-)]
+DEPEND=dev-lang/perl[ithreads=] >=dev-perl/Apache-Test-1.400.0 >=www-servers/apache-2.0.47 !ithreads? ( www-servers/apache[-apache2_mpms_event,-apache2_mpms_worker,apache2_mpms_prefork] ) dev-perl/Module-Build test? ( >=dev-perl/CGI-3.110.0 dev-perl/Chatbot-Eliza dev-perl/Devel-Symdump dev-perl/HTML-Parser dev-perl/IPC-Run3 dev-perl/libwww-perl www-servers/apache[apache2_modules_version,-apache2_modules_unique_id] !www-apache/mpm_itk ) =www-servers/apache-2* dev-lang/perl:=[-build(-)]
 DESCRIPTION=An embedded Perl interpreter for Apache2
 EAPI=5
 HOMEPAGE=https://perl.apache.org/ https://projects.apache.org/project.html?perl-mod_perl
@@ -12,4 +12,4 @@ SLOT=1
 SRC_URI=mirror://apache/perl/mod_perl-2.0.10.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:depend.apache src_unpack:perl-module src_prepare:- src_configure:- src_compile:perl-module src_test:- src_install:-
 _eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=a369c459c085e04e457a55309c194ed6
+_md5_=5abcffa6b5c2d5f69b1406f935dae185
