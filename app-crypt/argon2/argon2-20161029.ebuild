@@ -15,7 +15,6 @@ IUSE="static-libs"
 
 S="${WORKDIR}/phc-winner-${P}"
 PATCHES=(
-	"${FILESDIR}/${P}-makefile-install-target.patch"
 	"${FILESDIR}/${P}-makefile-soname-symlinks.patch"
 	)
 src_prepare() {
