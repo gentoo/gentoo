@@ -1,13 +1,13 @@
-DEFINED_PHASES=configure install prepare unpack
-DEPEND=gtk? ( x11-libs/gtk+:= ) >=sys-apps/pcsc-lite-1.2.9 net-libs/libproxy xpi? ( || ( >=www-client/firefox-bin-3.6.24 >=www-client/firefox-3.6.20 ) ) !app-misc/beid-runtime virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/unzip >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=configure install postinst prepare unpack
+DEPEND=gtk? ( x11-libs/gtk+:* dev-libs/libxml2 net-misc/curl[ssl] net-libs/libproxy !app-misc/eid-viewer-bin ) >=sys-apps/pcsc-lite-1.2.9 p11-kit? ( app-crypt/p11-kit ) xpi? ( || ( >=www-client/firefox-bin-3.6.24 >=www-client/firefox-3.6.20 ) ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/unzip >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Electronic Identity Card middleware supplied by the Belgian Federal Government
 EAPI=6
 HOMEPAGE=http://eid.belgium.be
-IUSE=+gtk +xpi +dialogs
+IUSE=+dialogs +gtk p11-kit +xpi
 LICENSE=LGPL-3
-RDEPEND=gtk? ( x11-libs/gtk+:= ) >=sys-apps/pcsc-lite-1.2.9 net-libs/libproxy xpi? ( || ( >=www-client/firefox-bin-3.6.24 >=www-client/firefox-3.6.20 ) ) !app-misc/beid-runtime
+RDEPEND=gtk? ( x11-libs/gtk+:* dev-libs/libxml2 net-misc/curl[ssl] net-libs/libproxy !app-misc/eid-viewer-bin ) >=sys-apps/pcsc-lite-1.2.9 p11-kit? ( app-crypt/p11-kit ) xpi? ( || ( >=www-client/firefox-bin-3.6.24 >=www-client/firefox-3.6.20 ) )
 REQUIRED_USE=dialogs? ( gtk )
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	libtool	4890219c51da247200223277f993e054	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=0fd6b5f7b650da6ccbddc6acde4736fc
+_md5_=95e7fb28587af9b07e28ece344f7b071
