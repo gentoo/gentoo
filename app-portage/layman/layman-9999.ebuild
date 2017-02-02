@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,7 +37,7 @@ RDEPEND="
 			>=dev-vcs/subversion-1.5.4[webdav-serf]
 		)
 	)
-	gpg? ( =dev-python/pyGPG-9999 )
+	gpg? ( >=dev-python/pyGPG-0.2 )
 	sync-plugin-portage?  ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
 	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
