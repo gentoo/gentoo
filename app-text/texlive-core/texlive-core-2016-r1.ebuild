@@ -235,6 +235,7 @@ src_configure() {
 		--disable-native-texlive-build \
 		--disable-largefile \
 		$(use_enable luajittex) \
+		$(use_enable luajittex mfluajit) \
 		$(use_enable xetex) \
 		$(use_enable cjk ptex) \
 		$(use_enable cjk eptex) \
