@@ -7080,7 +7080,7 @@ dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.4-r1 4.12: Python bindings for the Qt framework
 dev-python/PyQt5 5.5.1 5.6.1_pre1604271126 5.7.1: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
-dev-python/PySocks 1.5.6 1.5.7 1.6.4 1.6.5: SOCKS client module
+dev-python/PySocks 1.5.6 1.5.7 1.6.4 1.6.5 1.6.6: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.1.2: Abtraction layer for PyQt5/PyQt4/PySide
@@ -8070,7 +8070,7 @@ dev-python/pyjwt 1.3.0 1.4.0: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.5.0 1.5.2 9999: Python lib/cli for JSON/YAML schema validation
-dev-python/pylast 1.0.0 1.6.0: Python interface to last.fm and other api-compatible websites
+dev-python/pylast 1.0.0 1.6.0 1.7.0: Python interface to last.fm and other api-compatible websites
 dev-python/pyldap 2.4.20-r1 2.4.20-r2 2.4.21 2.4.25 2.4.25.1: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
@@ -8376,7 +8376,7 @@ dev-python/rfc3986 0.3.1 0.4.1: Validating URI References per RFC 3986
 dev-python/rfc3987 1.3.6 1.3.7: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 dev-python/rlcompleter2 0.98-r1: Python command line completion
 dev-python/rnc2rng 2.4 2.4.1: RELAX NG Compact to regular syntax conversion library
-dev-python/robotframework 2.9 3.0: test automation framework for acceptance testing & test-driven development
+dev-python/robotframework 2.9 3.0 3.0.1: Test automation framework for acceptance testing & test-driven development
 dev-python/robotframework-selenium2library 1.6.0 1.7.2 1.7.4 1.8.0: Web testing library for Robot Framework
 dev-python/robotframework-sshlibrary 2.0.2 2.1.1 2.1.2: A test library for Robot Framework that enables SSH and SFTP
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
@@ -10154,7 +10154,7 @@ dev-util/kdevplatform 1.7.2-r1 1.7.4 5.0.3: KDE development support libraries an
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kscope 1.9.4-r2: Source Editing Environment based on Qt
 dev-util/kup 0.3.4: kernel.org uploader tool
-dev-util/lcov 1.9-r1 1.10 1.11: A graphical front-end for GCC's coverage testing tool gcov
+dev-util/lcov 1.9-r1 1.11 1.13: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 4.0.0_rc1 9999: The LLVM debugger
