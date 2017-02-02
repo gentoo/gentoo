@@ -13,7 +13,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.1.tar.gz"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="color-management fftw +gsl +jpeg openexr pdf +raw tiff vc"
+IUSE="color-management fftw +gsl +jpeg openexr pdf qtmedia +raw tiff vc"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	dev-libs/boost:=
 	media-gfx/exiv2:=
 	media-libs/lcms
-	media-libs/libpng:=
+	media-libs/libpng:0=
 	net-misc/curl
 	sys-libs/zlib
 	virtual/opengl
@@ -58,6 +58,7 @@ COMMON_DEPEND="
 		media-libs/openexr
 	)
 	pdf? ( app-text/poppler[qt5] )
+	qtmedia? ( $(add_qt_dep qtmultimedia) )
 	raw? ( media-libs/libraw:= )
 	tiff? ( media-libs/tiff:0 )
 "
@@ -76,15 +77,16 @@ S="${WORKDIR}/${P}.1"
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_FFTW3=$(usex fftw)
-		-DWITH_GSL=$(usex gsl)
-		-DWITH_JPEG=$(usex jpeg)
-		-DWITH_LibRaw=$(usex raw)
-		-DWITH_OCIO=$(usex color-management)
-		-DWITH_OpenEXR=$(usex openexr)
-		-DWITH_Poppler=$(usex pdf)
-		-DWITH_TIFF=$(usex tiff)
-		-DWITH_Vc=$(usex vc)
+		$(cmake-utils_use_find_package color-management OCIO)
+		$(cmake-utils_use_find_package fftw FFTW3)
+		$(cmake-utils_use_find_package gsl GSL)
+		$(cmake-utils_use_find_package jpeg JPEG)
+		$(cmake-utils_use_find_package openexr OpenEXR)
+		$(cmake-utils_use_find_package pdf Poppler)
+		$(cmake-utils_use_find_package qtmedia Qt5Multimedia)
+		$(cmake-utils_use_find_package raw LibRaw)
+		$(cmake-utils_use_find_package tiff TIFF)
+		$(cmake-utils_use_find_package vc Vc)
 	)
 
 	kde5_src_configure
