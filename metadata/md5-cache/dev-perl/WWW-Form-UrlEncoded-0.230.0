@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Exporter >=dev-perl/Module-Build-0.380.0 test? ( >=dev-perl/JSON-2.0.0 >=virtual/perl-Test-Simple-0.980.0 ) dev-lang/perl:=
+DESCRIPTION=parser and builder for application/x-www-form-urlencoded
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/WWW-Form-UrlEncoded/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Exporter dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/WWW-Form-UrlEncoded-0.23.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=3ce94f556399a63a8078e28cbce80751
