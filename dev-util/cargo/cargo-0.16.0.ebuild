@@ -1,66 +1,79 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-CARGO_SNAPSHOT_DATE="2016-03-21"
-CARGO_INDEX_COMMIT="64a9f2f594cefc2ca652e0cecf7ce6e41c0279ee"
-CRATES="advapi32-sys-0.1.2
-aho-corasick-0.5.1
+CARGO_SNAPSHOT_DATE="2016-09-01"
+CRATES="
+advapi32-sys-0.2.0
+aho-corasick-0.5.3
 bitflags-0.1.1
-bufstream-0.1.1
-cmake-0.1.16
-crossbeam-0.2.8
+bitflags-0.7.0
+bufstream-0.1.2
+cargotest-0.1.0
 cfg-if-0.1.0
-curl-0.3.0
-curl-sys-0.2.0
-docopt-0.6.78
-env_logger-0.3.2
+cmake-0.1.19
+crates-io-0.4.0
+crossbeam-0.2.10
+curl-0.4.1
+curl-sys-0.3.6
+docopt-0.6.86
+env_logger-0.3.5
 filetime-0.1.10
-flate2-0.2.13
-fs2-0.2.3
-gcc-0.3.26
-gdi32-sys-0.1.1
-git2-0.4.3
-git2-curl-0.5.0
+flate2-0.2.14
+fs2-0.3.0
+gcc-0.3.39
+gdi32-sys-0.2.0
+git2-0.6.3
+git2-curl-0.7.0
 glob-0.2.11
-hamcrest-0.1.0
+hamcrest-0.1.1
 idna-0.1.0
-kernel32-sys-0.2.1
-libc-0.2.8
-libgit2-sys-0.4.3
-libressl-pnacl-sys-2.1.6
-libssh2-sys-0.1.37
-libz-sys-1.0.2
-log-0.3.5
-matches-0.1.2
-memchr-0.1.10
+kernel32-sys-0.2.2
+lazy_static-0.2.2
+libc-0.2.18
+libgit2-sys-0.6.5
+libssh2-sys-0.2.4
+libz-sys-1.0.10
+log-0.3.6
+matches-0.1.4
+memchr-0.1.11
 miniz-sys-0.1.7
-miow-0.1.2
-net2-0.2.24
-nom-1.2.2
-num-0.1.31
-num_cpus-0.2.11
-openssl-sys-0.7.8
+miow-0.1.3
+net2-0.2.26
+num-0.1.36
+num-bigint-0.1.35
+num-complex-0.1.35
+num-integer-0.1.32
+num-iter-0.1.32
+num-rational-0.1.35
+num-traits-0.1.36
+num_cpus-1.1.0
+openssl-0.9.1
+openssl-probe-0.1.0
+openssl-sys-0.9.1
 pkg-config-0.3.8
-pnacl-build-helper-1.4.10
+psapi-sys-0.1.0
 rand-0.3.14
-regex-0.1.58
-regex-syntax-0.3.0
-rustc-serialize-0.3.18
-semver-0.2.3
-strsim-0.3.0
-tar-0.4.5
-tempdir-0.3.4
+regex-0.1.80
+regex-syntax-0.3.9
+rustc-serialize-0.3.21
+semver-0.5.1
+semver-parser-0.6.1
+strsim-0.5.1
+tar-0.4.9
+tempdir-0.3.5
 term-0.4.4
-toml-0.1.30
+thread-id-2.0.0
+thread_local-0.2.7
+toml-0.2.1
 unicode-bidi-0.2.3
 unicode-normalization-0.1.2
-url-1.1.0
-user32-sys-0.1.2
+url-1.2.3
+user32-sys-0.2.0
 utf8-ranges-0.1.3
-winapi-0.2.6
+winapi-0.2.8
 winapi-build-0.1.1
 ws2_32-sys-0.2.1
 "
@@ -70,7 +83,6 @@ inherit cargo bash-completion-r1
 DESCRIPTION="The Rust's package manager"
 HOMEPAGE="http://crates.io"
 SRC_URI="https://github.com/rust-lang/cargo/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/rust-lang/crates.io-index/archive/${CARGO_INDEX_COMMIT}.tar.gz -> cargo-registry-${CARGO_INDEX_COMMIT}.tar.gz
 	$(cargo_crate_uris ${CRATES})
 	x86?   (
 		https://static.rust-lang.org/cargo-dist/${CARGO_SNAPSHOT_DATE}/cargo-nightly-i686-unknown-linux-gnu.tar.gz ->
@@ -86,68 +98,23 @@ LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="doc"
+IUSE="doc libressl"
 
 COMMON_DEPEND="sys-libs/zlib
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	net-libs/libssh2
 	net-libs/http-parser"
 RDEPEND="${COMMON_DEPEND}
 	!dev-util/cargo-bin
 	net-misc/curl[ssl]"
 DEPEND="${COMMON_DEPEND}
-	>=dev-lang/rust-1.1.0:stable
+	>=dev-lang/rust-1.9.0:stable
 	dev-util/cmake
 	sys-apps/coreutils
 	sys-apps/diffutils
 	sys-apps/findutils
 	sys-apps/sed"
-
-# Until cargo bootstraps itself with a version based on 0.13.0, this needs
-# to stay (these variables and src_unpack)
-ECARGO_HOME="${WORKDIR}/cargo_home"
-ECARGO_REPO="github.com-88ac128001ac3a9a"
-ECARGO_INDEX="${ECARGO_HOME}/registry/index/${ECARGO_REPO}"
-ECARGO_SRC="${ECARGO_HOME}/registry/src/${ECARGO_REPO}"
-ECARGO_CACHE="${ECARGO_HOME}/registry/cache/${ECARGO_REPO}"
-
-src_unpack() {
-	mkdir -p "${ECARGO_INDEX}" || die
-	mkdir -p "${ECARGO_CACHE}" || die
-	mkdir -p "${ECARGO_SRC}" || die
-	mkdir -p "${S}" || die
-
-	local archive
-	for archive in ${A}; do
-		case "${archive}" in
-			*.crate)
-				ebegin "Unpacking ${archive}"
-				cp "${DISTDIR}"/${archive} "${ECARGO_CACHE}/" || die
-				tar -xf "${DISTDIR}"/${archive} -C "${ECARGO_SRC}/" || die
-				eend $?
-				;;
-			cargo-snapshot*)
-				ebegin "Unpacking ${archive}"
-				mkdir -p "${S}"/target/snapshot
-				tar -xzf "${DISTDIR}"/${archive} -C "${S}"/target/snapshot --strip-components 2 || die
-				# cargo's makefile needs this otherwise it will try to
-				# download it
-				touch "${S}"/target/snapshot/bin/cargo || die
-				eend $?
-				;;
-			cargo-registry*)
-				ebegin "Unpacking ${archive}"
-				tar -xzf "${DISTDIR}"/${archive} -C "${ECARGO_INDEX}" --strip-components 1 || die
-				# prevent cargo from attempting to download this again
-				touch "${ECARGO_INDEX}"/.cargo-index-lock || die
-				eend $?
-				;;
-			*)
-				unpack ${archive}
-				;;
-		esac
-	done
-}
 
 src_configure() {
 	# Cargo only supports these GNU triples:
@@ -167,8 +134,9 @@ src_configure() {
 		--host=${CTARGET}
 		--build=${CTARGET}
 		--target=${CTARGET}
+		--cargo="${WORKDIR}"/${P}/target/snapshot/bin/cargo
 		--enable-optimize
-		--disable-nightly
+#		--release-channel stable
 		--disable-verify-install
 		--disable-debug
 		--disable-cross-tests
