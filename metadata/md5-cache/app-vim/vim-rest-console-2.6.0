@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=a REST console for vim
+EAPI=6
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=5182 https://github.com/diepm/vim-rest-console
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=net-misc/curl || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/diepm/vim-rest-console/archive/v2.6.0.tar.gz -> vim-rest-console-2.6.0.tar.gz
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
+_md5_=3e48f529d346101454af4aa688d07609
