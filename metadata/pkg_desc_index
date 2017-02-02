@@ -12798,7 +12798,7 @@ media-libs/kodi-platform 16_p20150805 16.9999 17.1.0.1 9999: Kodi platform suppo
 media-libs/kvazaar 0.8.3 1.0.0 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
-media-libs/lasi 1.1.1: C++ library for postscript stream output
+media-libs/lasi 1.1.1 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.6-r1 2.7 2.8 2.8-r1: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.1 0.3.2: lensfun: A library for rectifying and simulating photographic lens distortions
