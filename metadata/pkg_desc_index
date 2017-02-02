@@ -8648,7 +8648,7 @@ dev-python/websockify 0.7.0 0.8.0: WebSockets support for any application/server
 dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18 2.0.21: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.9.6 0.10.4 0.11.8 0.11.9 0.11.10 0.11.11: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.9.6 0.10.4 0.11.11 0.11.15: Collection of various utilities for WSGI applications
 dev-python/wheel 0.29.0: A built-package format for Python
 dev-python/whelk 2.7: Pretending python is a shell
 dev-python/whichcraft 0.4.0: This package provides cross-platform cross-python shutil.which functionality
@@ -15266,7 +15266,7 @@ net-misc/spiped 1.5.0-r1 1.5.0-r2: secure pipe daemon
 net-misc/spread 4.1.0-r1 4.3.0-r1: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
-net-misc/sshpass 1.05: Tool for noninteractively performing password authentication with ssh
+net-misc/sshpass 1.05 1.06: Tool for noninteractively performing password authentication with ssh
 net-misc/sshrc 0.6.1: Bring your .bashrc, .vimrc, etc. from your local machine when you ssh
 net-misc/sslh 1.18-r1: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sslwrap 2.0.6-r2: TSL/SSL - Port Wrapper
