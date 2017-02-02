@@ -1,10 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A graphical front-end for GCC's coverage testing tool gcov"
 HOMEPAGE="http://ltp.sourceforge.net/coverage/lcov.php"
