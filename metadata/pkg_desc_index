@@ -2443,7 +2443,7 @@ app-text/teseq 1.1.1: a tool for analyzing files that contain control characters
 app-text/tesseract 3.04.00-r2 3.04.01 3.04.01-r1 4.00.00_alpha 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
-app-text/texlive-core 2012 2012-r1 2012-r3 2013-r1 2013-r3 2014 2014-r1 2014-r3 2014-r4 2015 2015-r1 2016: A complete TeX distribution
+app-text/texlive-core 2012 2012-r1 2012-r3 2013-r1 2013-r3 2014 2014-r1 2014-r3 2014-r4 2015 2015-r1 2016-r1: A complete TeX distribution
 app-text/tidy-html5 5.2.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
