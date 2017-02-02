@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=>=dev-python/setuptools-21.2.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] || ( >=dev-python/twisted-16.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/twisted-core-8.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-python/future[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !<dev-util/buildbot-0.9.0_rc1 test? ( dev-python/mock[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=BuildBot Slave Daemon
+EAPI=5
+HOMEPAGE=http://trac.buildbot.net/ http://code.google.com/p/buildbot/ http://pypi.python.org/pypi/buildbot-slave
+IUSE=test python_targets_python2_7
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=dev-python/setuptools-21.2.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] || ( >=dev-python/twisted-16.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/twisted-core-8.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-python/future[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !<dev-util/buildbot-0.9.0_rc1 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/b/buildbot-worker/buildbot-worker-0.9.0.post1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=9d6450a27daaa36a9a6b2f07dd22b551
