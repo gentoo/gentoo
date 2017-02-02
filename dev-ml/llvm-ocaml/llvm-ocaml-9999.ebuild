@@ -57,9 +57,6 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# Allow custom cmake build types (like 'Gentoo')
-	eapply "${FILESDIR}"/llvm-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
-
 	# User patches
 	eapply_user
 }

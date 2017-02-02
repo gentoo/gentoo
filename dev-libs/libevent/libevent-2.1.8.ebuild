@@ -13,7 +13,7 @@ LICENSE="BSD"
 # libevent-2.1.so.6
 SLOT="0/2.1-6"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug libressl +malloc-replacement +ssl static-libs test +threads"
+IUSE="debug libressl +ssl static-libs test +threads"
 
 DEPEND="
 	ssl? (
@@ -43,14 +43,13 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" \
 	econf \
+		--disable-samples \
 		$(use_enable debug debug-mode) \
 		$(use_enable debug malloc-replacement) \
-		$(use_enable malloc-replacement) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
 		$(use_enable test libevent-regress) \
-		$(use_enable threads thread-support) \
-		--disable-samples
+		$(use_enable threads thread-support)
 }
 
 src_test() {
