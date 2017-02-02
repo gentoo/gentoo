@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--prefix="${D}/usr" \
+		--prefix="${ED}/usr" \
 		$(use_enable mpi)
 }
 
