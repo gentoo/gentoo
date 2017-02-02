@@ -38,13 +38,15 @@ RDEPEND="
 		media-libs/fontconfig:1.0=
 		>=x11-libs/fltk-1.3:1=[opengl,xft]
 		x11-libs/gl2ps:0=
-		virtual/glu )
+		virtual/glu
+	)
 	openssl? ( dev-libs/openssl:0= )
 	portaudio? ( media-libs/portaudio )
 	postscript? (
 		app-text/epstool
 		media-gfx/pstoedit
-		media-gfx/transfig )
+		media-gfx/transfig
+	)
 	qhull? ( media-libs/qhull:0= )
 	qrupdate? ( sci-libs/qrupdate:0= )
 	gui? (
@@ -63,7 +65,8 @@ RDEPEND="
 		sci-libs/cholmod:0=
 		sci-libs/colamd:0=
 		sci-libs/cxsparse:0=
-		sci-libs/umfpack:0= )
+		sci-libs/umfpack:0=
+	)
 	X? ( x11-libs/libX11:0= )"
 DEPEND="${RDEPEND}
 	gui? ( dev-qt/linguist-tools:5 )
@@ -72,8 +75,10 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.6.0 )
 	doc? (
 		virtual/latex-base
+		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-genericrecommended
-		dev-texlive/texlive-metapost )
+		dev-texlive/texlive-metapost
+	)
 	sys-apps/texinfo
 	dev-util/gperf
 	virtual/pkgconfig"
