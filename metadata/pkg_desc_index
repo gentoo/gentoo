@@ -12478,7 +12478,7 @@ media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 1 2 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
-media-gfx/fbida 2.10 2.12 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
+media-gfx/fbida 2.12 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
 media-gfx/feh 2.18: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5: A vector based graphics editor similar to xfig, but simpler
@@ -13662,7 +13662,7 @@ media-sound/musescore 2.0.2-r1 2.0.3 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.1: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.4: Qt4 music player
 media-sound/ncmpc 0.24 0.24-r2 0.25: A ncurses client for the Music Player Daemon (MPD)
-media-sound/ncmpcpp 0.7 0.7.4 0.7.5 0.7.7 9999: featureful ncurses based MPD client inspired by ncmpc
+media-sound/ncmpcpp 0.7.5 0.7.7 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/neroaac 1.5.1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-sound/neutrino 0.8.4: A GNOME application to manage Creative music players using the PDE protocol
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
@@ -14985,7 +14985,7 @@ net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner 
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 49.0.2623.40 52.0.2743.74 55.0.2883.50: access remote computers via Chrome!
-net-misc/chrony 2.2.1 2.3 2.4 2.4.1 3.0 9999: NTP client and server programs
+net-misc/chrony 2.2.1 2.3 2.4 2.4.1 3.0 3.1 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
@@ -15336,7 +15336,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.01.18 2017.01.28 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.12.22 2017.01.28 2017.02.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -15585,7 +15585,7 @@ net-wireless/hackrf-tools 2015.07.2-r1 9999: tools for communicating with HackRF
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 5.0 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
-net-wireless/hostapd 2.5 2.6: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r4 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3 4.7 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
@@ -15621,7 +15621,7 @@ net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breakin
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20160502 20160610: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.5-r1 2.5-r2 2.6 2.6-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.6 2.6-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
 perl-core/CPAN-Meta 2.143.240 2.150.1: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist

@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) html? ( dev-ruby/asciidoctor ) pps? ( net-misc/pps-tools ) virtual/pkgconfig
+DESCRIPTION=NTP client and server programs
+EAPI=6
+HOMEPAGE=http://chrony.tuxfamily.org/
+IUSE=caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc64
+LICENSE=GPL-2
+RDEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) selinux? ( sec-policy/selinux-chronyd )
+REQUIRED_USE=?? ( libedit readline )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.tuxfamily.org/chrony/chrony-3.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=0075d1bd49c4a15563255b2db71ae5b3
