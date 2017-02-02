@@ -9,7 +9,40 @@ inherit autotools readme.gentoo-r1 user
 DESCRIPTION="GNU package manager (nix sibling)"
 HOMEPAGE="https://www.gnu.org/software/guix/"
 
-SRC_URI="mirror://gnu-alpha/${PN}/${P}.tar.gz"
+# taken from gnu/local.mk
+BOOT_GUILE=(
+	"armhf-linux    20150101 guile-2.0.11.tar.xz"
+	"i686-linux     20131110 guile-2.0.9.tar.xz"
+	"mips64el-linux 20131110 guile-2.0.9.tar.xz"
+	"x86_64-linux   20131110 guile-2.0.9.tar.xz"
+)
+
+binary_src_uris() {
+	local system_date_guilep uri
+	for system_date_guilep in "${BOOT_GUILE[@]}"; do
+		# $1              $2       $3
+		# "armhf-linux    20150101 guile-2.0.11.tar.xz"
+		set -- ${system_date_guilep}
+		uri="mirror://gnu-alpha/${PN}/bootstrap/$1/$2/$3"
+		# ${uri} -> guix-bootstrap-armhf-linux-20150101-guile-2.0.11.tar.xz.bootstrap
+		echo "${uri} -> guix-bootstrap-$1-$2-$3.bootstrap"
+	done
+}
+
+# copy bootstrap binaries from DISTDIR to ${S}
+copy_boot_guile_binaries() {
+	local system_date_guilep
+	for system_date_guilep in "${BOOT_GUILE[@]}"; do
+		# $1              $2       $3
+		# "armhf-linux    20150101 guile-2.0.11.tar.xz"
+		set -- ${system_date_guilep}
+		cp "${DISTDIR}"/guix-bootstrap-$1-$2-$3.bootstrap gnu/packages/bootstrap/$1/$3 || die
+	done
+}
+
+SRC_URI="mirror://gnu-alpha/${PN}/${P}.tar.gz
+	$(binary_src_uris)"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -65,9 +98,16 @@ pkg_setup() {
 }
 
 src_prepare() {
+	copy_boot_guile_binaries
+
 	default
 
 	eautoreconf
+}
+
+src_compile() {
+	# guile occasionally fails with 'bad address'
+	emake -j1
 }
 
 src_install() {

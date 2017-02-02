@@ -5,10 +5,6 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>haskell@gentoo.org</email>
-		<name>Gentoo Haskell</name>
-	</maintainer>
 	<use>
 		<flag name="etc_profile">Install /etc/profile.d/ entry to inject nix support for all users.</flag>
 		<flag name="gc">Enable garbage collection in the Nix expression evaluator (use <pkg>dev-libs/boehm-gc</pkg>).</flag>
