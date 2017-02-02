@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}
 		dev-perl/IPC-Run3
 		dev-perl/libwww-perl
 		www-servers/apache[apache2_modules_version,-apache2_modules_unique_id]
+		!www-apache/mpm_itk
 	)
 "
 PDEPEND="
