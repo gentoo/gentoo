@@ -13804,7 +13804,7 @@ media-sound/vitunes 2.3: A curses media indexer and player for vi users
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder
-media-sound/vmpk 0.6.1 0.6.2a: Virtual MIDI Piano Keyboard
+media-sound/vmpk 0.6.2a: Virtual MIDI Piano Keyboard
 media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
 media-sound/volumeicon 0.4.6 0.5.0 0.5.1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
@@ -18199,7 +18199,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 42.0.2393.351 42.0.2393.517: A fast and secure web browser
-www-client/opera-beta 43.0.2442.21 43.0.2442.52: A fast and secure web browser
+www-client/opera-beta 43.0.2442.52 43.0.2442.686: A fast and secure web browser
 www-client/opera-developer 44.0.2475.0 44.0.2487.0: A fast and secure web browser
 www-client/otter 0.9.11 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
