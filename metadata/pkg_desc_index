@@ -519,7 +519,7 @@ app-crypt/dieharder 3.31.1-r1: An advanced suite for testing the randomness of R
 app-crypt/dirmngr 1.1.1-r1: DirMngr is a daemon to handle CRL and certificate requests for GnuPG
 app-crypt/easy-rsa 2.2.2 2.2.2-r1 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.7.0: Tools for manipulating UEFI secure boot platforms
-app-crypt/eid-mw 4.1.4 4.1.9 4.1.18 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
+app-crypt/eid-mw 4.1.4 4.1.9 4.1.18 4.2.0 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.4-r2 1.1.5: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0: Save environment variables in a secret vault
