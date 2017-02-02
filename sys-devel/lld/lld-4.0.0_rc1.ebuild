@@ -9,7 +9,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils
+inherit cmake-utils python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="http://llvm.org/"
@@ -23,7 +23,7 @@ IUSE="test"
 
 RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}
-	test? ( ~dev-python/lit-${PV} )"
+	test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )"
 
 S=${WORKDIR}/${P/_/}.src
 
@@ -32,6 +32,14 @@ RESTRICT="test"
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
+
+python_check_deps() {
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_unpack() {
 	default
