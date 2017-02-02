@@ -8211,7 +8211,7 @@ dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Di
 dev-python/python-discid 1.1.0 1.1.0-r1: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.3.9 0.8: Set of Python bindings for the DjVuLibre library
-dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2: HTML documentation for Python
+dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2 3.6.0: HTML documentation for Python
 dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV files
 dev-python/python-editor 0.4 1.0.3: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
