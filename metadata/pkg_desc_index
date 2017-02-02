@@ -8035,7 +8035,7 @@ dev-python/pyfits 3.3-r1 3.4-r1: Provides an interface to FITS formatted files u
 dev-python/pyflakes 0.7.2 0.8.1 1.0.0 1.2.3: Passive checker for Python programs
 dev-python/pyflann 1.8.4 1.9.1: Python bindings for FLANN artificial neural network library
 dev-python/pyfltk 1.3.0-r2 1.3.3: Python interface to Fltk library
-dev-python/pyformance 0.3.2: Performance metrics, based on Coda Hale's Yammer metrics
+dev-python/pyformance 0.3.2 0.3.4: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.4.0 1.5.1: Python FTP server library
 dev-python/pygal 1.5.1 1.7.0 2.0.0 2.0.1 2.1.1: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2: Python bindings for SDL multimedia library
