@@ -18,11 +18,11 @@ SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 IUSE="berkdb crypt debug doc gdbm gnutls gpg +hcache idn imap kerberos libressl lmdb mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet vanilla"
 REQUIRED_USE="
 	hcache?   ( ^^ ( berkdb gdbm lmdb qdbm tokyocabinet ) )
-	imap?     ( ^^ ( ssl gnutls libressl ) )
-	pop?      ( ^^ ( ssl gnutls libressl ) )
-	nntp?     ( ^^ ( ssl gnutls libressl ) )
-	smime?    ( ^^ ( ssl libressl ) )
-	smtp?     ( ^^ ( ssl gnutls libressl ) )
+	imap?     ( ssl )
+	pop?      ( ssl )
+	nntp?     ( ssl )
+	smime?    ( ssl !gnutls )
+	smtp?     ( ssl )
 	sasl?     ( || ( imap pop smtp nntp ) )
 	kerberos? ( || ( imap pop smtp nntp ) )"
 SLOT="0"
@@ -37,9 +37,13 @@ CDEPEND="
 	qdbm?          ( dev-db/qdbm )
 	tokyocabinet?  ( dev-db/tokyocabinet )
 
-	gnutls?        ( >=net-libs/gnutls-1.0.17:= )
-	libressl?      ( dev-libs/libressl:= )
-	ssl?           ( >=dev-libs/openssl-0.9.6:0= )
+	ssl? (
+		gnutls?    ( >=net-libs/gnutls-1.0.17:= )
+		!gnutls? (
+			libressl? ( dev-libs/libressl:= )
+			!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+		)
+	)
 
 	nls?           ( virtual/libintl )
 	sasl?          ( >=dev-libs/cyrus-sasl-2 )
@@ -123,9 +127,9 @@ src_configure() {
 		"$(use_enable nntp)"
 		"$(use_enable smtp)"
 
-		"$(use_with gnutls)"
-		"$(use libressl || use ssl && echo --with-ssl)"
-		"$(use !libressl && use !ssl && echo --without-ssl)"
+		$(use  ssl && use  gnutls && echo --with-gnutls    --without-ssl)
+		$(use  ssl && use !gnutls && echo --without-gnutls --with-ssl   )
+		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
 		"$(use_with idn)"
 		"$(use_with kerberos gss)"
