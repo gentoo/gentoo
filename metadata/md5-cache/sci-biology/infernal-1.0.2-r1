@@ -10,4 +10,4 @@ RDEPEND=mpi? ( virtual/mpi )
 SLOT=0
 SRC_URI=ftp://selab.janelia.org/pub/software/infernal/infernal-1.0.2.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=39bc41c079e36c1dcb20a57439f15a91
+_md5_=293913c1218949baab67c01d3afdaf44
