@@ -17292,7 +17292,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 0.94.9 9.2.1-r2 10.2.3-r2 10.2.4 10.2.5 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 8.1.1 9.1.1 2016.1.9999 2016.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 8.1.1 9.1.1 9.1.2 2016.1.9999 2016.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.9-r1 1.0.10 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
