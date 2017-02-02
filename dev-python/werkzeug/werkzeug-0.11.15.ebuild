@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 	)"
 
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 python_test() {
 	esetup.py test
