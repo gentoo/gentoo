@@ -493,7 +493,7 @@ app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Re
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
 app-crypt/af_alg 0_pre20120229 0.0.1: af_alg is an openssl crypto engine kernel interface thing
-app-crypt/argon2 20160821: Password hashing software that won the Password Hashing Competition (PHC)
+app-crypt/argon2 20160821 20161029: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
 app-crypt/asedriveiiie-usb 3.5: ASEDriveIIIe USB Card Reader
 app-crypt/asekey 3.7: ASEKey USB SIM Card Reader

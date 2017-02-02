@@ -1954,6 +1954,7 @@ dev-libs/libdivecomputer:tools - Install tools that can be used to test the libr
 dev-libs/libdynd:cuda - Enable NVIDIA CUDA toolkit support
 dev-libs/libdynd:mkl - Enable a plugin for Intel Math Kernel Library sci-libs/mkl
 dev-libs/libevent:debug - Support runtime debug mode and malloc hooks (for programmers)
+dev-libs/libevent:malloc-replacement - Enable support for replacing the memory management functions
 dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
 dev-libs/libflatarray:cuda - Enables plugins for NVIDIA GPUs (e.g. CUDAAllocator)
 dev-libs/libgdata:gnome-online-accounts - Enable net-libs/gnome-online-accounts support
