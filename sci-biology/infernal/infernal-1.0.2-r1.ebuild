@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils
 
@@ -24,12 +24,11 @@ src_prepare() {
 		"${FILESDIR}"/${P}-overflows.patch \
 		"${FILESDIR}"/${P}-perl-5.16-2.patch \
 		"${FILESDIR}"/${P}-ldflags.patch
+	default
 }
 
 src_configure() {
-	econf \
-		--prefix="${ED}/usr" \
-		$(use_enable mpi)
+	econf $(use_enable mpi)
 }
 
 src_install() {
