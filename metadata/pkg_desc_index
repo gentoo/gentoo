@@ -10345,7 +10345,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4: a distributed, interactiv
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1 0.7-r2: GTK+ Frontend for GIT
-dev-vcs/git 2.7.3-r1 2.7.4 2.8.4 2.9.3 2.10.1 2.10.2 2.11.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.7.3-r1 2.7.4 2.8.4 2.9.3 2.10.1 2.10.2 2.11.0 2.11.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419 6.20160923 6.20160923-r1 6.20161031: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
@@ -18099,7 +18099,7 @@ www-apps/davical 1.0.2-r2 1.1.0-r1 1.1.1-r2 1.1.3.1-r2: A CalDAV and CardDAV Ser
 www-apps/dokuwiki 20140505e 20140929d-r1 20150810 20150810a 20160626a: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drraw 2.0.1 2.1.3: drraw is a simple web based presentation front-end for RRDtool
-www-apps/drupal 7.53 8.2.5: PHP-based open-source platform and content management system
+www-apps/drupal 7.53 7.54 8.2.5 8.2.6: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
