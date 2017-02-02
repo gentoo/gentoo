@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 S="${WORKDIR}/${PN}${PV}"
 
-PATCHES=( "${FILESDIR}/gcc433.patch" )
+PATCHES=( "${FILESDIR}/${P}-gcc433.patch" )
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} -DMEPLCONFIG=\\\"/etc/mepl.conf\\\" ${LDFLAGS}" en
