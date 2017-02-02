@@ -1,7 +1,7 @@
 diff -Nuar a/gtk/Makefile b/gtk/Makefile
---- a/gtk/Makefile	2016-10-04 03:45:02.000000000 +0200
-+++ b/gtk/Makefile	2016-11-26 22:06:25.599990576 +0100
-@@ -15,11 +15,10 @@
+--- a/gtk/Makefile	2017-01-22 22:03:38.000000000 +0100
++++ b/gtk/Makefile	2017-02-02 15:08:32.589997985 +0100
+@@ -15,11 +15,11 @@
  # along with this program; if not, see http://www.gnu.org/licenses/.
  ###############################################################################
  
@@ -11,10 +11,11 @@ diff -Nuar a/gtk/Makefile b/gtk/Makefile
  	 -Wno-parentheses \
  	 -Wno-write-strings \
 -	 -g \
++	 -Wno-error=narrowing \
  	 -I/usr/X11R6/include \
  	 $(shell pkg-config --cflags gtk+-2.0) \
  	 -DVERSION="\"$(shell cat ../VERSION)\"" \
-@@ -27,21 +26,25 @@
+@@ -27,21 +27,25 @@
  	 -DDECIMAL_GLOBAL_ROUNDING=1 \
  	 -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
  	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
@@ -31,8 +32,8 @@ diff -Nuar a/gtk/Makefile b/gtk/Makefile
 +	 ${CXXFLAGS}
  
 -LDFLAGS = -L/usr/X11R6/lib
-+MYLDFLAGS = -L/usr/X11R6/lib
 -LIBS = gcc111libbid.a -lXmu $(shell pkg-config --libs gtk+-2.0)
++MYLDFLAGS = -L/usr/X11R6/lib
 +LIBS = gcc111libbid.a -lX11 -ldl -lXmu $(shell pkg-config --libs gtk+-2.0)
  
  ifeq "$(shell uname -s)" "Linux"
@@ -46,7 +47,7 @@ diff -Nuar a/gtk/Makefile b/gtk/Makefile
  SRCS = shell_main.cc shell_skin.cc skins.cc keymap.cc shell_loadimage.cc \
  	shell_spool.cc core_main.cc core_commands1.cc core_commands2.cc \
  	core_commands3.cc core_commands4.cc core_commands5.cc \
-@@ -83,7 +86,7 @@
+@@ -83,7 +87,7 @@
  endif
  
  $(EXE): $(OBJS)
