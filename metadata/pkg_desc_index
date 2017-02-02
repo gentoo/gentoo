@@ -5405,7 +5405,7 @@ dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed exp
 dev-perl/Cairo 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2006 2011.0.0: Canary to check perl compatibility for schmorp's modules
-dev-perl/Capture-Tiny 0.300.0 0.360.0 0.420.0: Capture STDOUT and STDERR from Perl, XS or external programs
+dev-perl/Capture-Tiny 0.360.0 0.420.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
 dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
@@ -7725,7 +7725,7 @@ dev-python/markdown 2.6.1 2.6.3 2.6.4 2.6.5: Python implementation of the markdo
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 1.0.1 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
-dev-python/matplotlib 1.4.3 1.5.0 1.5.1 1.5.3 9999: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 1.4.3 1.5.0 1.5.1 1.5.3-r1 9999: Pure python plotting library with matlab like syntax
 dev-python/maybe 0.3.0 0.4.0: See what a program does before deciding whether you really want it to happen
 dev-python/mccabe 0.2.1 0.3 0.3.1 0.4.0 0.5.2 0.5.3: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
@@ -16308,7 +16308,7 @@ sci-libs/libticables2 1.3.3-r1 1.3.4 1.3.5: Library to handle different link cab
 sci-libs/libticalcs2 1.1.8 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.4 1.1.5: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.6-r1 1.1.7: Library for TI calculator files
-sci-libs/linux-gpib 3.2.21-r1 4.0.3-r1: Kernel module and driver library for GPIB (IEEE 488.2) hardware
+sci-libs/linux-gpib 4.0.3-r1: Kernel module and driver library for GPIB (IEEE 488.2) hardware
 sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lrslib 042c-r1 042c-r2 051: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
