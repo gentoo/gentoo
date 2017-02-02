@@ -1,0 +1,17 @@
+[Unit]
+Description=Wait for chrony to synchronize system clock
+After=chronyd.service
+Requires=chronyd.service
+Before=time-sync.target
+Wants=time-sync.target
+
+[Service]
+Type=oneshot
+# Wait up to ~10 minutes for chronyd to synchronize and the remaining
+# clock correction to be less than 0.1 seconds
+ExecStart=/usr/bin/chronyc -h 127.0.0.1,::1 waitsync 600 0.1 0.0 1
+RemainAfterExit=yes
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target

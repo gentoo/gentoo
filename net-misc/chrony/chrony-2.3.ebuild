@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -110,5 +110,6 @@ src_install() {
 	newins "${FILESDIR}"/chrony-2.2.logrotate chrony
 
 	systemd_newunit "${FILESDIR}"/chronyd.service-r2 chronyd.service
+	systemd_newunit "${FILESDIR}"/chrony-wait.service chrony-wait.service
 	systemd_enable_ntpunit 50-chrony chronyd.service
 }
