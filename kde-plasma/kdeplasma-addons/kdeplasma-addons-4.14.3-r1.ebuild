@@ -42,7 +42,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DDBUS_INTERFACES_INSTALL_DIR="${EPREFIX}/usr/share/dbus-1/interfaces/"
 		-DWITH_Nepomuk=OFF
-		-DCMAKE_DISABLE_FIND_PACKAGE_Eigen2=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_Eigen2=ON
 		$(cmake-utils_use_with attica LibAttica)
 		$(cmake-utils_use_with desktopglobe Marble)
 		$(cmake-utils_use_with exif Kexiv2)
