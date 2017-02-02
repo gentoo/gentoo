@@ -43,6 +43,11 @@ src_prepare() {
 	# Use CHOST-prefixed version of xml2-config for cross-compilation.
 	sed -e "s/AC_CHECK_PROG(XML2_CONFIG,/AC_CHECK_TOOL(XML2_CONFIG,/" -i macros/neon-xml-parser.m4 || die "sed failed"
 
+	# Use OpenSSL <1.1 compatibility code with LibreSSL.
+	# Functions EVP_PKEY_up_ref(), EVP_PKEY_get0_RSA(), RSA_meth_get0_app_data(), RSA_meth_new(), RSA_meth_free(),
+	# RSA_meth_set_priv_enc(), RSA_meth_set0_app_data() are not implemented in LibreSSL 2.5.1.
+	sed -e "s/#if OPENSSL_VERSION_NUMBER < 0x10100000L/& || defined(LIBRESSL_VERSION_NUMBER)/" -i src/ne_openssl.c src/ne_pkcs11.c || die "sed failed"
+
 	eapply_user
 
 	AT_M4DIR="macros" eautoreconf

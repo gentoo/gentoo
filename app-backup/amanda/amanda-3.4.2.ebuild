@@ -170,7 +170,7 @@ src_prepare() {
 	done
 
 	if use minimal; then
-		cat "${MYFILESDIR}"/amanda-amandahosts-server.5.1_p3-r1 > "${T}"/amandahosts || die
+		cat "${MYFILESDIR}"/amanda-amandahosts-server-2.5.1_p3-r1 > "${T}"/amandahosts || die
 	else
 		sed -i -e 's:^\(my $amandahomedir\)=.*:\1 = $localstatedir;:' \
 			server-src/am{addclient,serverconfig}.pl || die
