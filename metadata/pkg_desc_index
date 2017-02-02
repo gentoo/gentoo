@@ -4728,7 +4728,7 @@ dev-libs/liberasurecode 1.0.8-r1: Erasure Code API library written in C with plu
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.15-r1 4.19 4.20 4.22 4.23: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.4.4 1.5.2 1.5.4 1.5.5 1.5.6: Handler library for evdev events
-dev-libs/libevent 2.0.22 2.0.22-r2 2.1.5-r4 2.1.7_rc 9999: A library to execute a function when a specific event occurs on a file descriptor
+dev-libs/libevent 2.0.22 2.0.22-r2 2.1.7_rc 2.1.8 9999: A library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
@@ -15216,7 +15216,7 @@ net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.17: Qt4 blogging client
-net-misc/quagga 1.1.0-r2: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
+net-misc/quagga 1.1.0-r2 1.1.1: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.042.00 8.043.01: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
