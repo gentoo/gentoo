@@ -41,7 +41,6 @@ RDEPEND="
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 	"
 
-
 layman_check_kernel_config() {
 	local CONFIG_CHECK
 	use squashfs && CONFIG_CHECK+=" ~BLK_DEV_LOOP ~SQUASHFS"
