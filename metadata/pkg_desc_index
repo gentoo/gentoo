@@ -14536,7 +14536,7 @@ net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/hangups 9999: Third Party IM Client for Google Hangouts
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
 net-im/jabberd2 2.3.3-r2 2.3.4-r1: Open Source Jabber Server
-net-im/kadu 0.12.3 2.1-r1 3.0: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
+net-im/kadu 2.1-r1 3.0: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
