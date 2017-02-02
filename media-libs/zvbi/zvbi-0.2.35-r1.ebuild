@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc dvb nls static-libs v4l X"
 
-RDEPEND=">=media-libs/libpng-1.5.18[${MULTILIB_USEDEP}]
+RDEPEND=">=media-libs/libpng-1.5.18:0=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] )"
