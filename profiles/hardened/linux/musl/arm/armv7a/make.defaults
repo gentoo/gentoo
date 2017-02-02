@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-CHOST="armv7a-hardfloat-linux-musleabi"
+CHOST="armv7a-unknown-linux-musleabihf"
 CFLAGS="-O2 -pipe -march=armv7-a -mfpu=vfpv3-d16 -mfloat-abi=hard"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"

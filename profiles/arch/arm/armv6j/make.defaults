@@ -1,4 +1,4 @@
-CHOST="armv6j-hardfloat-linux-gnueabi"
+CHOST="armv6j-unknown-linux-gnueabihf"
 CFLAGS="-O2 -pipe -march=armv6j"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
