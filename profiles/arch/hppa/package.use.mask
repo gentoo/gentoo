@@ -4,6 +4,10 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
 
+# Jeroen Roovers <jer@gentoo.org> (3 Feb 2017)
+# net-mail/notmuch is not keyworded
+mail-client/mutt notmuch
+
 # Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
