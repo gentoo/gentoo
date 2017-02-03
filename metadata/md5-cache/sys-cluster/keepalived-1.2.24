@@ -4,11 +4,11 @@ DESCRIPTION=A strong & robust keepalive facility to the Linux Virtual Server pro
 EAPI=6
 HOMEPAGE=http://www.keepalived.org/
 IUSE=debug ipv6 snmp
-KEYWORDS=alpha amd64 ~hppa ia64 ppc ppc64 ~s390 sparc x86
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/popt sys-apps/iproute2 dev-libs/libnl:= dev-libs/openssl:= snmp? ( net-analyzer/net-snmp ) net-libs/libnfnetlink
 SLOT=0
 SRC_URI=http://www.keepalived.org/software/keepalived-1.2.24.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=61dfc3f76a3b007e2b11b2c17906c72b
+_md5_=35cf63ed666faa89b2f75828d6bd8ca1
