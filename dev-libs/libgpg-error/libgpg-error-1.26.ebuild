@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils libtool multilib-minimal toolchain-funcs
 
@@ -31,30 +31,21 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
-	epatch_user
+	default
 	elibtoolize
 }
 
 multilib_src_configure() {
-	local myeconfargs=(
-		CC_FOR_BUILD=$(tc-getBUILD_CC)
-		--enable-threads
-		$(use_enable nls)
-		$(use_enable static-libs static)
-		$(use_enable common-lisp languages)
-	)
-
-	multilib_is_native_abi || myeconfargs+=(
-		--disable-languages
-	)
-
-	ECONF_SOURCE=${S} \
-		econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf \
+		CC_FOR_BUILD=$(tc-getBUILD_CC) \
+		--enable-threads \
+		$(use_enable nls) \
+		$(use_enable static-libs static) \
+		$(use_enable common-lisp languages) \
+		$(multilib_is_native_abi || echo --disable-languages)
 }
 
 multilib_src_install_all() {
 	einstalldocs
-
-	# library has no dependencies, so it does not need the .la file
 	prune_libtool_files --all
 }
