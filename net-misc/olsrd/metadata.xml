@@ -4,4 +4,7 @@
 <maintainer type="person">
   <email>jer@gentoo.org</email>
 </maintainer>
+<use>
+<flag name='pud'>Install the Node Position Update plugin</flag>
+</use>
 </pkgmetadata>
