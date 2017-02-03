@@ -14783,7 +14783,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.17.0 1.18.1 1.19.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.10 0.12.17 4.6.0 4.6.1 6.9.0 6.9.1 6.9.2 6.9.4 7.0.0 7.2.0 7.3.0 7.4.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.10 0.12.17 4.6.0 4.6.1 6.9.4 6.9.5 7.0.0 7.2.0 7.3.0 7.4.0 7.5.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols

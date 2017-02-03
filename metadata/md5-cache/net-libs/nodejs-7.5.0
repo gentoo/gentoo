@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install postinst prepare pretend setup test
-DEPEND=icu? ( >=dev-libs/icu-56:= ) npm? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) >=net-libs/http-parser-2.6.2:= >=dev-libs/libuv-1.9.0:= >=dev-libs/openssl-1.0.2g:0=[-bindist] sys-libs/zlib >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] test? ( net-misc/curl )
+DEPEND=icu? ( >=dev-libs/icu-56:= ) npm? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) >=net-libs/http-parser-2.6.2:= >=dev-libs/libuv-1.9.0:= >=dev-libs/openssl-1.0.2g:0=[-bindist] sys-libs/zlib >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] systemtap? ( dev-util/systemtap ) test? ( net-misc/curl )
 DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
 EAPI=6
 HOMEPAGE=https://nodejs.org/
-IUSE=cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl test python_targets_python2_7
+IUSE=cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl systemtap test python_targets_python2_7
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos
 LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
 RDEPEND=icu? ( >=dev-libs/icu-56:= ) npm? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) >=net-libs/http-parser-2.6.2:= >=dev-libs/libuv-1.9.0:= >=dev-libs/openssl-1.0.2g:0=[-bindist] sys-libs/zlib
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
-SRC_URI=https://nodejs.org/dist/v6.9.1/node-v6.9.1.tar.xz
+SRC_URI=https://nodejs.org/dist/v7.5.0/node-v7.5.0.tar.xz
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=7b2c824dbb1f2961e58063e93f10f968
+_md5_=1c0c0a2e6d49a448f9baca79ab49a4e2
