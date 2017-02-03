@@ -26,10 +26,6 @@ media-video/ffmpeg -nvenc
 # Requires yet unavailable >=media-video/ffmpeg-3.3.
 >=media-video/mpv-0.23.0 cuda
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
-# x11-drivers/nvidia-drivers is available on amd64.
-media-video/mpv -cuda
-
 # Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
 # masked in base, unmask for amd64
 >=sys-devel/gcc-6.3.0 -pie
