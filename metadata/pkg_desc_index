@@ -1325,7 +1325,7 @@ app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
 app-emulation/libvirt 1.3.5-r2 2.1.0-r2 2.3.0 2.5.0-r2 3.0.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 0.2.3 0.2.3-r1 1.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
-app-emulation/lxc 1.0.7 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6-r1: LinuX Containers userspace utilities
+app-emulation/lxc 1.0.7 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6-r1 2.0.7: LinuX Containers userspace utilities
 app-emulation/lxd 2.5 2.7 2.8: Fast, dense and secure container management
 app-emulation/open-vm-tools 10.0.7 10.1.0 10.1.0-r1: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
@@ -19336,7 +19336,8 @@ x11-wm/sawfish 1.9.1-r2 1.11.90: Extensible window manager using a Lisp-based sc
 x11-wm/selectwm 0.4.1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
 x11-wm/spectrwm 2.7.2-r1 3.0.1 3.0.2: Small dynamic tiling window manager for X11
-x11-wm/stumpwm 0.9.9 1.0.0 9999: Stumpwm is a Window Manager written entirely in Common Lisp.
+x11-wm/stumpwm 1.0.0 9999: Stumpwm is a Window Manager written entirely in Common Lisp.
+x11-wm/stumpwm-contrib 20170202 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5 0.4.5-r1: WindowManager that arranges the windows in a tree (not in a list)
 x11-wm/twm 1.0.8 1.0.9: X.Org twm application
