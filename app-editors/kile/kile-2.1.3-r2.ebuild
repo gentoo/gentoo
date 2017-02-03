@@ -25,7 +25,8 @@ RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdebase-data)
 	$(add_kdeapps_dep konsolepart)
 	|| (
-		$(add_kdeapps_dep okular 'pdf?,postscript')
+		kde-apps/okular[pdf?,postscript]
+		app-text/evince
 		app-text/acroread
 	)
 	virtual/latex-base
@@ -39,7 +40,10 @@ RDEPEND="${DEPEND}
 	)
 	png? (
 		app-text/dvipng
-		|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] )
+		|| (
+			media-gfx/imagemagick[png]
+			media-gfx/graphicsmagick[imagemagick,png]
+		)
 	)
 "
 
