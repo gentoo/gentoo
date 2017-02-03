@@ -471,10 +471,6 @@ net-misc/termtter
 # Reverse dependencies need testing, wrt bug #580760
 >=net-libs/rb_libtorrent-1.1.1
 
-# Hans de Graaff <graaff@gentoo.org> (07 Dec 2016)
-# Mask ruby 2.0 for removal, bug 576034
-dev-lang/ruby:2.0
-
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
 # Will likely not be unmasked until future Perls
