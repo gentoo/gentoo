@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install test unpack
+DEPEND=|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )
+DESCRIPTION=Copy data from one file or block device to another with read-error recovery
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/ddrescue/ddrescue.html
+IUSE=static
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86 ~amd64-linux
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=mirror://gnu/ddrescue/ddrescue-1.22.tar.lz
+_eclass_exported_funcs=src_unpack:unpacker src_configure:- src_test:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=ca8db0dbd333a93fb847cd0597b2a27f
