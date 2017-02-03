@@ -21,7 +21,7 @@ DEPEND="app-eselect/eselect-lapack
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/lapack-${PV}"
-PATCHES=( "${FILESDIR}/lapack-fix-build-system.patch" )
+PATCHES=( "${FILESDIR}/${P}-fix-build-system.patch" )
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
