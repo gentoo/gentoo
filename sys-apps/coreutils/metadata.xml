@@ -5,6 +5,8 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<longdescription>Standard GNU file utilities (chmod, cp, dd, dir, ls, ...), text utilities (sort, tr, head, wc, ...), and shell utilities (whoami, who, ...)
+</longdescription>
 <use>
 	<flag name="hostname">Build the hostname program</flag>
 	<flag name="kill">Build the kill program</flag>
