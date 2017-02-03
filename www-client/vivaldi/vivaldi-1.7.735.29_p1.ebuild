@@ -31,6 +31,9 @@ RESTRICT="bindist mirror"
 
 S=${WORKDIR}
 
+DEPEND="
+	virtual/libiconv
+"
 RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
@@ -70,6 +73,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	iconv -c -t UTF-8 usr/share/applications/${VIVALDI_PN}.desktop > "${T}"/${VIVALDI_PN}.desktop || die
+	mv "${T}"/${VIVALDI_PN}.desktop usr/share/applications/${VIVALDI_PN}.desktop || die
+
 	sed -i \
 		-e "s|${VIVALDI_BIN}|${PN}|g" \
 		usr/share/applications/${VIVALDI_PN}.desktop \
