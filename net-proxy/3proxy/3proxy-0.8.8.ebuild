@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=6
-inherit eutils
 
 DESCRIPTION="A really tiny cross-platform proxy servers set"
 HOMEPAGE="http://www.3proxy.ru/"
@@ -14,28 +13,30 @@ IUSE=""
 
 S="${WORKDIR}/${PN}-${P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+)
+
+DOCS=( README cfg )
+HTML_DOCS=( doc/html/. )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	cp Makefile.Linux Makefile || die
 	default
+	cp Makefile.Linux Makefile || die
 }
 
 src_install() {
 	local x
 
-	cd src || die
+	pushd src >/dev/null || die
 	dobin 3proxy
 	for x in proxy socks ftppr pop3p tcppm udppm mycrypt dighosts icqpr smtpp; do
 		newbin ${x} ${PN}-${x}
 		[[ -f "${S}"/man/${x}.8 ]] && newman "${S}"/man/${x}.8 ${PN}-${x}.8
 	done
-	cd ..
+	popd >/dev/null
 
 	doman man/3proxy*.[38]
 
-	dodoc README
-	docinto html
-	dodoc -r doc/html/*
-	docinto cfg
-	dodoc -r cfg/*
+	einstalldocs
 }

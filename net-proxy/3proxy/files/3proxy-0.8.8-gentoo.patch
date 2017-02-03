@@ -1,5 +1,5 @@
---- Makefile.Linux.orig	2016-12-16 20:24:53.809856430 +0200
-+++ Makefile.Linux	2016-12-16 20:26:24.912859170 +0200
+--- a/Makefile.Linux	2016-12-16 20:24:53.809856430 +0200
++++ b/Makefile.Linux	2016-12-16 20:26:24.912859170 +0200
 @@ -10,11 +10,11 @@
  BUILDDIR =
  CC = gcc
@@ -30,8 +30,8 @@
  
  INSTALL		= /usr/bin/install
  INSTALL_BIN	= $(INSTALL) -m 755
---- src/stringtable.c.orig	2016-12-16 20:24:53.811856430 +0200
-+++ src/stringtable.c	2016-12-16 20:26:48.288859873 +0200
+--- a/src/stringtable.c	2016-12-16 20:24:53.811856430 +0200
++++ b/src/stringtable.c	2016-12-16 20:26:48.288859873 +0200
 @@ -38,7 +38,7 @@
  /* 24 */	NULL,
  #ifndef TPROXY_CONF
