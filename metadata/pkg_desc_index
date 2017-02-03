@@ -4835,7 +4835,7 @@ dev-libs/librdkafka 0.9.1 0.9.2-r1 0.9.3: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.7-r1 1.2.10 1.2.12: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
-dev-libs/libressl 2.3.9 2.3.10 2.4.4 2.4.5 2.5.1: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.3.9 2.3.10 2.4.4 2.4.5 2.5.0 2.5.1: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access library
@@ -8096,7 +8096,7 @@ dev-python/pynag 0.9.1: Python modules for Nagios plugins and configuration
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
-dev-python/pyocr 0.4.1 0.4.2 0.4.4 0.4.5: An optical character recognition (OCR) tool wrapper for python
+dev-python/pyocr 0.4.5 0.4.6: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyodbc 3.0.7-r1 3.0.10: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyoembed 0.1.1 9999: Python library for oEmbed with auto-discovered and manually added providers
