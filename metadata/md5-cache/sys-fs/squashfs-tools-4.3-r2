@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/squashfs/squashfs4.3.tar.gz mirror://debian/pool/main/s/squashfs-tools/squashfs-tools_4.3-3.debian.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=0577615e3cec90ebe6c1a26370680d26
+_md5_=539b65173056ec8dc61a76d8048d2fc8

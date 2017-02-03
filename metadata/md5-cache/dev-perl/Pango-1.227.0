@@ -4,11 +4,11 @@ DESCRIPTION=Layout and render international text
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Pango/
 IUSE=examples test minimal
-KEYWORDS=alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1+
 RDEPEND=>=dev-perl/glib-perl-1.220.0 >=dev-perl/Cairo-1.0.0 >=x11-libs/pango-1.0.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Pango-1.227.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:- src_install:-
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=1a10f46376dd82b40f9779836cf36f96
+_md5_=8e61c30381d93a698112678c5b334c1e

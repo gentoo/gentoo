@@ -4,11 +4,11 @@ DESCRIPTION=Comma-separated values manipulation routines
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Text-CSV_XS/
 IUSE=test examples
-KEYWORDS=alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-IO dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.23.tgz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=a0d72506e4884399fbcfffa4f047d201
+_md5_=a77587009298c6780193f8707229e79f

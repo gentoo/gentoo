@@ -4,11 +4,11 @@ DESCRIPTION=Unix process table information
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Proc-ProcessTable/
 IUSE=examples
-KEYWORDS=alpha amd64 ~hppa ia64 ~mips ppc ppc64 sparc x86
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Storable dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JW/JWB/Proc-ProcessTable-0.53.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=250aa9212203f1130128715d2b3bc42b
+_md5_=8faa2e143c169eb24e109e601ca752ea

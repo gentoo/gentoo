@@ -4,11 +4,11 @@ DESCRIPTION=Word wrap text by breaking long lines
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Text-Wrapper/
 IUSE=test minimal examples
-KEYWORDS=amd64 ~hppa ppc ppc64 x86
+KEYWORDS=amd64 hppa ppc ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CJ/CJM/Text-Wrapper-1.05.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=710a9b55c15f16ce32537e2dec3c17e2
+_md5_=bcae9d5c30578b67c668596e6a94e6d5

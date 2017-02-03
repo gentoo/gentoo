@@ -4,11 +4,11 @@ DESCRIPTION=Test strings and data structures and show differences if not ok
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Test-Differences/
 IUSE=test
-KEYWORDS=alpha amd64 ~arm ~hppa ppc ppc64 x86
+KEYWORDS=alpha amd64 ~arm hppa ppc ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Text-Diff-1.430.0 >=virtual/perl-Data-Dumper-2.126.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DC/DCANTRELL/Test-Differences-0.64.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=743489bbfa589d39448c6a60b7d20de0
+_md5_=8eb5d47be1341aa64e124013bfd2a312

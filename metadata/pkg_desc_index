@@ -1548,7 +1548,7 @@ app-i18n/mozc 1.10.1390.102-r1 1.13.1651.102 2.16.2037.102: The Mozc engine for 
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nabi 0.99.11 1.0.0: Simple Hanguk X Input Method
 app-i18n/nkf 2.1.3 2.1.3-r1: Network Kanji code conversion Filter with UTF-8/16 support
-app-i18n/opencc 0.3.0_pre20120819-r1 0.4.3 1.0.4: Libraries for conversion between Traditional and Simplified Chinese
+app-i18n/opencc 1.0.4: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 1.5.5 1.8.5 1.8.7: GUI editor for gettext translations files
 app-i18n/pology 0.11-r1 0.12 9999: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
@@ -17091,7 +17091,7 @@ sys-apps/ucspi-unix 0.36-r2 0.36-r3 0.36-r4: A ucspi implementation for unix soc
 sys-apps/udevil 0.4.4-r1 0.4.4-r2: mount and unmount removable devices without a password
 sys-apps/ultracopier 0.2.0.16: Advanced file copying tool
 sys-apps/unscd 0.52-r2: simple & stable nscd replacement
-sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
+sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbmon 6-r1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7 0.7.1 9999: A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
