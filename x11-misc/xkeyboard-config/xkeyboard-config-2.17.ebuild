@@ -23,6 +23,7 @@ RDEPEND=">=x11-apps/xkbcomp-1.2.3
 	>=x11-libs/libX11-1.4.3"
 DEPEND="${RDEPEND}
 	dev-util/intltool
+	sys-devel/gettext
 	>=x11-proto/xproto-7.0.20"
 
 XORG_CONFIGURE_OPTIONS=(

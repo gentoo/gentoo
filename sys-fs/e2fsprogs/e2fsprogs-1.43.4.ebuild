@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.40-fbsd.patch
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 	"${FILESDIR}"/${PN}-1.43-sysmacros.patch
+
+	# Upstream patches (can usually removed with next version bump)
 )
 
 src_prepare() {

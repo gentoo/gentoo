@@ -1,33 +1,35 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils multilib toolchain-funcs versionator
 
-MY_PV="$(replace_version_separator 3 '-r')"
 DESCRIPTION="An implementation of the Optimized Link State Routing protocol"
 HOMEPAGE="http://www.olsr.org/"
-SRC_URI="http://www.olsr.org/releases/$(get_version_component_range 1-2)/${PN}-${MY_PV}.tar.bz2"
+SRC_URI="http://www.olsr.org/releases/$(get_version_component_range 1-2)/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="BSD LGPL-2.1"
-KEYWORDS="amd64 x86"
-IUSE="gtk"
+KEYWORDS="~amd64 ~x86"
+IUSE="gtk pud"
 DEPEND="
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:2
 	)
+	pud? ( sci-geosciences/gpsd )
 "
-RDEPEND="${DEPEND}"
-S="${WORKDIR}/${PN}-${MY_PV}"
-
+RDEPEND="
+	${DEPEND}
+"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.0.2-gtk.patch
+	"${FILESDIR}"/${PN}-0.9.6-gpsd.patch
+)
 src_prepare() {
-	epatch \
-		"${FILESDIR}/${PN}-0.6.1-build_fix.patch" \
-		"${FILESDIR}/${PN}-0.6.3-make-gtk.patch"
+	default
 
 	# fix parallel make
 	# respect AR
@@ -47,15 +49,23 @@ src_prepare() {
 		lib/pud/nmealib/Makefile lib/pud/wireformat/Makefile || die
 }
 
+src_configure() {
+	if ! use pud; then
+		sed -i -e '/^SUBDIRS/ s|pud||g' Makefile || die
+	fi
+}
+
 src_compile() {
+	tc-export PKG_CONFIG
 	emake \
 		CC="$(tc-getCC)" \
+		VERBOSE=1 \
 		LIBDIR="/usr/$(get_libdir)/${PN}" \
 		OLSRD_LDFLAGS="${LDFLAGS}" \
 		OS=linux \
 		build_all
 	if use gtk; then
-		emake -C "${S}/gui/linux-gtk" LIBDIR="/usr/$(get_libdir)/${PN}" CC="$(tc-getCC)"
+		emake -C gui/linux-gtk LIBDIR="/usr/$(get_libdir)/${PN}" CC="$(tc-getCC)"
 	fi
 }
 
@@ -63,7 +73,7 @@ src_install() {
 	emake OS=linux LIBDIR="${D}/usr/$(get_libdir)/${PN}" \
 		DESTDIR="${D}" STRIP=true install_all
 	if use gtk; then
-		emake -C "${S}/gui/linux-gtk" \
+		emake -C gui/linux-gtk \
 			LIBDIR="${D}/usr/$(get_libdir)/${PN}" DESTDIR="${D}" install
 	fi
 
@@ -71,7 +81,7 @@ src_install() {
 
 	dodoc CHANGELOG \
 		valgrind-howto.txt files/olsrd.conf.default.rfc \
-		files/olsrd.conf.default.lq files/olsrd.conf.default.lq-fisheye \
+		files/olsrd.conf.default.lq \
 		lib/arprefresh/README_ARPREFRESH \
 		lib/bmf/README_BMF \
 		lib/dot_draw/README_DOT_DRAW \
