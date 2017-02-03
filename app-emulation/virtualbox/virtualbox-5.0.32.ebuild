@@ -11,7 +11,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.16-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.32-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	doc? (
+		app-text/docbook-sgml-dtd:4.4
 		dev-texlive/texlive-basic
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexrecommended
@@ -215,10 +216,6 @@ src_configure() {
 
 src_compile() {
 	source ./env.sh || die
-
-	# Force kBuild to respect C[XX]FLAGS and MAKEOPTS (bug #178529)
-	# and strip all flags
-	# strip-flags
 
 	MAKEJOBS=$(echo ${MAKEOPTS} | egrep -o '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+')
 	MAKELOAD=$(echo ${MAKEOPTS} | egrep -o '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+') #'
@@ -383,6 +380,10 @@ src_install() {
 		dosym ${vbox_inst_path}/VBox /usr/bin/vboxwebsrv
 		newinitd "${FILESDIR}"/vboxwebsrv-initd vboxwebsrv
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
+	fi
+
+	if use doc ; then
+		dodoc UserManual.pdf
 	fi
 }
 

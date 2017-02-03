@@ -64,6 +64,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	doc? (
+		app-text/docbook-sgml-dtd:4.4
 		dev-texlive/texlive-basic
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexrecommended
@@ -394,6 +395,10 @@ src_install() {
 		dosym ${vbox_inst_path}/VBox /usr/bin/vboxwebsrv
 		newinitd "${FILESDIR}"/vboxwebsrv-initd vboxwebsrv
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
+	fi
+
+	if use doc ; then
+		dodoc UserManual.pdf
 	fi
 }
 
