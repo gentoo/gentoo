@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit user linux-mod cmake-utils udev
 
 MY_P=${P/-/_}
@@ -35,6 +35,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# do not build and install the kernel module
 	sed -i 's/COMMAND ${tpmd_dev_BUILD_CMD}//' tpmd_dev/CMakeLists.txt || die
 	sed -i 's/install(CODE.*//' tpmd_dev/CMakeLists.txt || die
@@ -42,7 +43,7 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_use ssl OPENSSL)
+		-DUSE_OPENSSL=$(usex ssl)
 	)
 	cmake-utils_src_configure
 
