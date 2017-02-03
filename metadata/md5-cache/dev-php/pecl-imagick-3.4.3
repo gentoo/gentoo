@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=media-gfx/imagemagick-6.2.4:=[-openmp] test? ( >=media-gfx/imagemagick-6.2.4:=[jpeg,png,truetype] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 )
+DESCRIPTION=PHP wrapper for the ImageMagick library
+EAPI=6
+HOMEPAGE=http://pecl.php.net/imagick
+IUSE=examples test php_targets_php5-6 php_targets_php7-0 php_targets_php7-1
+KEYWORDS=~amd64 ~x86
+LICENSE=PHP-3.01
+RDEPEND=>=media-gfx/imagemagick-6.2.4:=[-openmp] php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 )
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 )
+SLOT=0
+SRC_URI=http://pecl.php.net/get/imagick-3.4.3.tgz
+_eclass_exported_funcs=src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:php-ext-source-r3 src_compile:php-ext-source-r3 src_test:php-ext-pecl-r3 src_install:php-ext-pecl-r3
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-pecl-r3	362ad55b4b4b63dd1cf7df6cbca082c3	php-ext-source-r3	a30f64f44cd0439913e37281006faaca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=ba92fa2d51ccc95980ab392bc2c961e6
