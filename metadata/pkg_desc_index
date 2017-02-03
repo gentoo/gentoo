@@ -10056,7 +10056,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20160814 10.2.3 10.2.4: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20160814 10.2.4 10.2.5: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.75 1.0.86 1.0.87: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
@@ -14054,8 +14054,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6-r1 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.8 1.9: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 0.8.8h: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 0.8.8h: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 0.8.8h 1.0.0: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 0.8.8h 1.0.0: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r1: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
