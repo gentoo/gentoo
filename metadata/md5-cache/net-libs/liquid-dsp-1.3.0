@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sci-libs/fftw:3.0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=digital signal processing library for software-defined radios
+EAPI=6
+HOMEPAGE=http://liquidsdr.org
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=sci-libs/fftw:3.0=
+SLOT=0
+SRC_URI=https://github.com/jgaeddert/liquid-dsp/archive/v1.3.0.tar.gz -> liquid-dsp-1.3.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=884716a0d91a8a6d00dd187017d653e1

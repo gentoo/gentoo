@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=virtual/pkgconfig sci-libs/fftw:3.0= dev-libs/boost:= dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtconcurrent:5 net-wireless/gnuradio:= sys-devel/make >=dev-util/cmake-3.5.2 >=dev-vcs/git-1.8.2.1
+DEPEND=virtual/pkgconfig dev-qt/qtconcurrent:5 sci-libs/fftw:3.0= dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 net-libs/liquid-dsp sys-devel/make >=dev-util/cmake-3.5.2 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=a tool for analysing captured signals from software-defined radio receivers
-EAPI=5
+EAPI=6
 HOMEPAGE=https://github.com/miek/inspectrum
 LICENSE=GPL-3+
-RDEPEND=sci-libs/fftw:3.0= dev-libs/boost:= dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtconcurrent:5 net-wireless/gnuradio:=
+RDEPEND=sci-libs/fftw:3.0= dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 net-libs/liquid-dsp
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d6faf63fef3bf035a093129c395897d9
+_md5_=48f382d6b56a4f499f012711e5e3b1f1

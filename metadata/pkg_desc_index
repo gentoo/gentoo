@@ -14767,6 +14767,7 @@ net-libs/libwebsockets 1.7.8 1.7.9 2.0.2: canonical libwebsockets.org websocket 
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
+net-libs/liquid-dsp 1.3.0: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1 1.5.3: Lightweight C Jabber library
 net-libs/mbedtls 2.2.1 2.3.0 2.3.0-r1 2.4.0 2.4.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
@@ -15583,7 +15584,7 @@ net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 5.0 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
-net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers
+net-wireless/inspectrum 0.1.1 0.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r4 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3 4.7 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 2016.07.1-r1 9999: IEEE 802.11 wireless LAN sniffer
