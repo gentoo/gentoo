@@ -63,6 +63,7 @@ dev-python/mwlib-rl
 # Fabian Groffen <grobian@gentoo.org> (31 Jan 2017)
 # Mask upcoming Exim release candidates
 =mail-mta/exim-4.89_rc1
+=mail-mta/exim-4.89_rc2
 
 # David Seifert <soap@gentoo.org> (30 Jan 2017)
 # No maintainer activity since git migration, dated eclass
