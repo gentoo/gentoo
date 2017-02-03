@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Alon Bar-Lev <alonbl@gentoo.org> (06 Feb 2017)
+# Needs openssl-1.1
+>=dev-libs/opencryptoki-3.6
+
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Feb 2017)
 # Drops USE=firebird because it requires not yet packaged Firebird-3.0.
 # Affects libreoffice-base.
