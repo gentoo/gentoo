@@ -4,10 +4,10 @@ DESCRIPTION=Compare two latex files and mark up significant differences
 EAPI=5
 HOMEPAGE=http://www.ctan.org/tex-archive/support/latexdiff/ https://github.com/ftilmann/latexdiff/
 IUSE=test
-KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-3
 RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-genericrecommended dev-perl/Algorithm-Diff
 SLOT=0
 SRC_URI=https://github.com/ftilmann/latexdiff/archive/1.2.0.tar.gz -> latexdiff-1.2.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=0f19a310b8e4dda8c3dcdbbb3552732d
+_md5_=7382dee6c418fd5531285cd789305b4b
