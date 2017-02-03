@@ -1,5 +1,5 @@
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -62,7 +62,7 @@
  #LFLAGS=-g @LDFLAGS@ @LIBS@
  #LFLAGS=-pg ${LFLAGS}
@@ -14,12 +14,12 @@
  
  .version: .version_major .version_minor .version_patch
 -	@/bin/echo -n `cat .version_major`.`cat .version_minor`.`cat \
-+	@echo -n `cat .version_major`.`cat .version_minor`.`cat \
++	@printf "%s" `cat .version_major`.`cat .version_minor`.`cat \
  		.version_patch`  > .version
  
  _version.h: .version
 -	@/bin/echo -e \#define SZ_VERSION \"`cat .version`\"  > _version.h
-+	@echo -e \#define SZ_VERSION \"`cat .version`\"  > _version.h
++	@echo "#define SZ_VERSION \"`cat .version`\""  > _version.h
  
  .PHONY: transmit
  transmit: # distribution-archive
