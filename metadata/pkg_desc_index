@@ -12970,7 +12970,7 @@ media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADS
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 11.0.6 11.0.9 11.2.2 12.0.1 12.0.6 13.0.3 17.0.0_rc2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 11.0.6 11.0.9 11.2.2 12.0.1 12.0.6 13.0.3 13.0.4 17.0.0_rc2 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.0.1 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
