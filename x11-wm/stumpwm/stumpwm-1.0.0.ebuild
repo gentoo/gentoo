@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit common-lisp-3 eutils elisp-common autotools xdg-utils
+inherit common-lisp-3 autotools elisp-common xdg-utils
 
 DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp."
 HOMEPAGE="https://stumpwm.github.io/"
@@ -28,9 +28,10 @@ DEPEND="${RDEPEND}
 		sys-apps/texinfo
 		doc? ( virtual/texi2dvi )"
 
+PDEPEND="contrib? ( x11-wm/stumpwm-contrib )"
+
 SITEFILE=70${PN}-gentoo.el
 CLPKGDIR="${CLSOURCEROOT}/${CLPACKAGE}"
-CONTRIBDIR="${CLPKGDIR}/contrib"
 
 get_lisp() {
 	local lisp
@@ -50,32 +51,18 @@ do_doc() {
 	docinto examples ; dodoc sample-stumpwmrc.lisp
 }
 
-do_contrib() {
-	emake install-modules
-	rm -r "${D}${CONTRIBDIR}"/.git* || die
-}
-
 src_prepare() {
 	default
 	# Upstream didn't change the version before packaging
 	sed -i -e 's/:version "0.9.8"/:version "0.9.9"/' "${PN}.asd" || die
 	# Bug 534592. Does not build with asdf:oos, using require to load the package
 	sed -i "load-${PN}.lisp.in" -e "s/asdf:oos 'asdf:load-op/require/" || die
-	if use contrib ; then
-		# Fix contrib directory
-		sed -i -e "s|@CONTRIB_DIR@|@MODULE_DIR@|" make-image.lisp.in || die
-		sed -i -e "s|\~\/.${CLPACKAGE}\.d/modules|${D}${CONTRIBDIR}|" Makefile.in || die
-		sed -i -e "s|\${HOME}/\.${CLPACKAGE}\.d/modules|${CONTRIBDIR}|" configure.ac || die
-	fi
 	eautoreconf
 }
 
 src_configure() {
-	local moduleconfig
-
 	xdg_environment_reset
-	use contrib && moduleconfig="--with-module-dir=${CONTRIBDIR}/contrib"
-	econf --with-lisp=$(get_lisp sbcl clisp ecl) "${moduleconfig}"
+	econf --with-lisp=$(get_lisp sbcl clisp ecl)
 }
 
 src_compile() {
@@ -93,7 +80,6 @@ src_install() {
 	sed -i -e "/(:directory/c\   (:directory \"${CLPKGDIR}\")" \
 		"${D}${CLPKGDIR}/load-stumpwm.lisp" || die
 	use doc && do_doc
-	use contrib && do_contrib
 }
 
 pkg_postinst() {
