@@ -2023,10 +2023,10 @@ app-office/kmymoney 4.7.2 4.8.0: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 2.6.3-r1 3.1-r1 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.2.3.3-r1 5.2.4.2 5.2.5.1 5.2.9999 5.3.9999 9999: A full office productivity suite
+app-office/libreoffice 5.2.3.3-r1 5.2.4.2 5.2.5.1 5.2.9999 5.3.0.3 5.3.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.2.3.3 5.2.3.3-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.2.3.3 5.2.3.3-r1: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 5.2.3.3 5.2.4.2 5.2.5.1: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 5.2.3.3 5.2.4.2 5.2.5.1 5.3.0.3: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1 2.1.4 2.1.5 2.2.1 2.2.2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
@@ -15318,7 +15318,7 @@ net-misc/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.18: Network utility to retrieve files from the WWW
+net-misc/wget 1.18 1.19: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.14: improved Whois Client

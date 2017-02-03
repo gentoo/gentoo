@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare setup test
+DEPEND=!static? ( idn? ( net-dns/libidn2 ) pcre? ( dev-libs/libpcre ) ssl? ( gnutls? ( net-libs/gnutls:0= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) ) uuid? ( sys-apps/util-linux ) zlib? ( sys-libs/zlib ) ) app-arch/xz-utils virtual/pkgconfig static? ( idn? ( net-dns/libidn2[static-libs(+)] ) pcre? ( dev-libs/libpcre[static-libs(+)] ) ssl? ( gnutls? ( net-libs/gnutls:0=[static-libs(+)] ) !gnutls? ( !libressl? ( dev-libs/openssl:0=[static-libs(+)] ) libressl? ( dev-libs/libressl[static-libs(+)] ) ) ) uuid? ( sys-apps/util-linux[static-libs(+)] ) zlib? ( sys-libs/zlib[static-libs(+)] ) ) test? ( || ( dev-lang/python:3.5 dev-lang/python:3.4 ) dev-lang/perl dev-perl/HTTP-Daemon dev-perl/HTTP-Message dev-perl/IO-Socket-SSL ) nls? ( sys-devel/gettext )
+DESCRIPTION=Network utility to retrieve files from the WWW
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/wget/
+IUSE=debug gnutls idn ipv6 libressl nls ntlm pcre +ssl static test uuid zlib
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-3
+RDEPEND=!static? ( idn? ( net-dns/libidn2 ) pcre? ( dev-libs/libpcre ) ssl? ( gnutls? ( net-libs/gnutls:0= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) ) uuid? ( sys-apps/util-linux ) zlib? ( sys-libs/zlib ) )
+REQUIRED_USE=ntlm? ( !gnutls ssl ) gnutls? ( ssl )
+SLOT=0
+SRC_URI=mirror://gnu/wget/wget-1.19.tar.xz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8e5908fe677d19be7374ebf7106e3a39
