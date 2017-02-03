@@ -16867,7 +16867,7 @@ sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/cobalt-panel-utils 1.0.2: LCD and LED panel utilities for the Sun Cobalts
 sys-apps/collectl 3.7.4 4.0.5 4.1.0: light-weight performance monitoring tool capable of reporting interactively and logging to disk
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
-sys-apps/coreutils 8.25 8.26: Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)
+sys-apps/coreutils 8.25 8.26: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 1.1.6 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20130610 20140123 20150606 20151017: Utility to get detailed information about the CPU(s) using the CPUID instruction
 sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries

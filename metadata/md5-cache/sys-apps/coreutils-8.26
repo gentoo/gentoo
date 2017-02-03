@@ -1,6 +1,6 @@
 DEFINED_PHASES=configure install postinst prepare test
 DEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp:= ) xattr? ( !userland_BSD? ( sys-apps/attr ) ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) static? ( acl? ( sys-apps/acl[static-libs] ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp:=[static-libs] ) xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) ) ) app-arch/xz-utils
-DESCRIPTION=Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)
+DESCRIPTION=Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 EAPI=5
 HOMEPAGE=https://www.gnu.org/software/coreutils/
 IUSE=acl caps gmp hostname kill multicall nls selinux static userland_BSD vanilla xattr
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://gnu/coreutils/coreutils-8.26.tar.xz mirror://gentoo/coreutils-8.26-patches-1.1.tar.xz https://dev.gentoo.org/~polynomial-c/dist/coreutils-8.26-patches-1.1.tar.xz mirror://gentoo/coreutils-8.26-man.tar.xz https://dev.gentoo.org/~polynomial-c/dist/coreutils-8.26-man.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=68270fc936fdec42ac2b5ea3bbce3700
+_md5_=b294aa0ed3f0a11fc8e93ff0023eb339
