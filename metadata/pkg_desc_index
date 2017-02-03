@@ -1470,7 +1470,7 @@ app-i18n/canfep 1.0: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42: A charset conversion tool cstocs and two convenience Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00: Yet another Dictionary server for the SKK Japanese-input software
-app-i18n/enca 1.13-r3 1.14-r1 1.14-r2 1.19-r1: Detect and convert encoding of text files
+app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r1 1.7-r2: Fast terminal emulator for the Linux framebuffer
 app-i18n/fcitx 4.2.9.1 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
@@ -1548,7 +1548,7 @@ app-i18n/mozc 1.10.1390.102-r1 1.13.1651.102 2.16.2037.102: The Mozc engine for 
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nabi 0.99.11 1.0.0: Simple Hanguk X Input Method
 app-i18n/nkf 2.1.3 2.1.3-r1: Network Kanji code conversion Filter with UTF-8/16 support
-app-i18n/opencc 1.0.4: Libraries for conversion between Traditional and Simplified Chinese
+app-i18n/opencc 0.3.0_pre20120819-r1 1.0.4: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 1.5.5 1.8.5 1.8.7: GUI editor for gettext translations files
 app-i18n/pology 0.11-r1 0.12 9999: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
@@ -14785,7 +14785,7 @@ net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
-net-libs/openpgm 5.2.122: Open source implementation of the Pragmatic General Multicast specification
+net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0 2.0.0-r1: An open-source implementation of Service Location Protocol
 net-libs/ortp 0.20.0 0.22.0 0.23.0 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/osptoolkit 3.5.0 4.1.5: Open Settlement Protocol development kit

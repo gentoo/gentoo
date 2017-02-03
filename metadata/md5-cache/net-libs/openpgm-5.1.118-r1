@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Open source implementation of the Pragmatic General Multicast specification
+EAPI=5
+HOMEPAGE=https://github.com/steve-o/openpgm
+IUSE=static-libs
+KEYWORDS=amd64 arm hppa ppc ppc64 x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=https://github.com/steve-o/openpgm/archive/release-5-1-118.tar.gz -> openpgm-5.1.118.tar.gz
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=642b5c880ac9fbaee9a454be0a74427b
