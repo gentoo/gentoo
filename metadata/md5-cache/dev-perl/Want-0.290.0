@@ -3,11 +3,11 @@ DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 DESCRIPTION=A generalisation of wantarray
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Want/
-KEYWORDS=amd64 ~hppa ppc x86 ~ppc-aix
+KEYWORDS=amd64 hppa ppc x86 ~ppc-aix
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RO/ROBIN/Want-0.29.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=907d33f16a96db151208a51f60f878a7
+_md5_=23fd8c3363ce2ad2213fe0bb38d7b51d

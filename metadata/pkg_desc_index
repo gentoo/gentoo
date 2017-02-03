@@ -17597,7 +17597,7 @@ sys-fs/scan-ffs 1.2: Recovers lost disklabel
 sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.1 0.2 9999: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0 11.0-r1: a backup program for disk array for home media centers
-sys-fs/squashfs-tools 3.2_p2 3.4 4.3 4.3-r1 4.3-r2 9999: Tool for creating compressed filesystem type squashfs
+sys-fs/squashfs-tools 3.2_p2 3.4 4.3-r2 9999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1_p20130530 0.1.100: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
