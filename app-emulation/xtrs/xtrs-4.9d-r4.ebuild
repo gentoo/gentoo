@@ -28,12 +28,12 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -i -e 's/$(CC) -o/$(CC) $(LDFLAGS) -o/' Makefile || die
+	eapply_user
 	if use ls-dos; then
 		cd "${WORKDIR}" || die
 		xdelta3 -d -s ld4-631.dsk "${DISTDIR}"/ld4-631l.xd3 out.dsk || die
 		mv out.dsk ld4-631.dsk || die
 	fi
-	eapply_user
 }
 
 src_compile() {
