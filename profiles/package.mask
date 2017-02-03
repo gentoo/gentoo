@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 Feb 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-58
+
 # Michael Palimaka <kensington@gentoo.org> (02 Feb 2017)
 # Upstream missing. Ancient. Unmaintained. No revdeps.
 # Masked for removal in 30 days.
@@ -461,11 +466,6 @@ dev-ruby/activesupport:4.1
 # Still depends on activerecord:4.1. No newer upstream version that
 # depends on a newer version.
 net-misc/termtter
-
-# Mike Gilbert <floppym@gentoo.org> (10 Dec 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-57
 
 # Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
 # Reverse dependencies need testing, wrt bug #580760
