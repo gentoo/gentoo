@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 IUSE="ls-dos"
 RESTRICT="ls-dos? ( bindist )"
 
-RDEPEND="sys-libs/ncurses:0
-	sys-libs/readline:0
+RDEPEND="sys-libs/ncurses:0=
+	sys-libs/readline:0=
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	ls-dos? ( app-arch/unzip dev-util/xdelta:3 )"
