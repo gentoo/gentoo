@@ -1,4 +1,5 @@
 DEFINED_PHASES=install prepare setup unpack
+DEPEND=virtual/libiconv
 DESCRIPTION=A new browser for our friends
 EAPI=5
 HOMEPAGE=http://vivaldi.com/
@@ -8,7 +9,7 @@ LICENSE=Vivaldi
 RDEPEND=dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss >=dev-libs/openssl-1.0.1:0 gnome-base/gconf:2 media-libs/alsa-lib media-libs/fontconfig media-libs/freetype net-misc/curl net-print/cups sys-apps/dbus sys-libs/libcap x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/pango[X]
 RESTRICT=bindist mirror
 SLOT=0
-SRC_URI=amd64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.7.735.11-1_amd64.deb -> vivaldi-1.7.735.11_p1-amd64.deb ) x86? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.7.735.11-1_i386.deb -> vivaldi-1.7.735.11_p1-i386.deb )
+SRC_URI=amd64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.7.735.29-1_amd64.deb -> vivaldi-1.7.735.29_p1-amd64.deb ) x86? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.7.735.29-1_i386.deb -> vivaldi-1.7.735.29_p1-i386.deb )
 _eclass_exported_funcs=pkg_setup:linux-info src_unpack:- src_prepare:- src_install:-
 _eclasses_=chromium-2	c30f482b868782938c772c21d9ede135	eutils	ea170b525f6a38a006be05c9d9429f13	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=5762e81af7b570aa877574084ec30373
+_md5_=54d4b9c75379f0934d011cfec56285b1
