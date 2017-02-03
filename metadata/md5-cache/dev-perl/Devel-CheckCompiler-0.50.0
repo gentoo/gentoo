@@ -3,11 +3,11 @@ DEPEND=virtual/perl-CPAN-Meta >=dev-perl/Module-Build-0.380.0 >=virtual/perl-Tes
 DESCRIPTION=Check the compiler's availability
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Devel-CheckCompiler/
-KEYWORDS=amd64 ~hppa ~ppc ~x86
+KEYWORDS=amd64 hppa ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Exporter virtual/perl-ExtUtils-CBuilder virtual/perl-File-Temp virtual/perl-parent dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SY/SYOHEX/Devel-CheckCompiler-0.05.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=48d09d95001b07d54e1ca2fd52099802
+_md5_=a87f5747c9a06f0c29f42bbb32f9f12b

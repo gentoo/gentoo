@@ -4,11 +4,11 @@ DESCRIPTION=Temporary changing working directory (chdir)
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Cwd-Guard/
 IUSE=test minimal
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~hppa
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-File-Spec virtual/perl-Exporter virtual/perl-if virtual/perl-parent dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/Cwd-Guard-0.05.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=95ce0c8c8412aee2b255832b96717fc8
+_md5_=78444fe3ca0a54e3f80fa3a0968a2b6f
