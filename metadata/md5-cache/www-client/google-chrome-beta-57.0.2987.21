@@ -9,7 +9,7 @@ LICENSE=google-chrome
 RDEPEND=app-arch/bzip2 app-misc/ca-certificates dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss gnome-base/gconf:2 media-libs/alsa-lib media-libs/fontconfig media-libs/freetype:2 net-print/cups sys-apps/dbus sys-libs/libcap x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 >=x11-libs/libX11-1.5.0 x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango x11-misc/xdg-utils
 RESTRICT=bindist mirror strip
 SLOT=0
-SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_56.0.2924.76-1_amd64.deb
+SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_57.0.2987.21-1_amd64.deb
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:- src_install:-
 _eclasses_=chromium-2	c30f482b868782938c772c21d9ede135	eutils	ea170b525f6a38a006be05c9d9429f13	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=2ef7d66582145c8c6873a02fc8d431af
