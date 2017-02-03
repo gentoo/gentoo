@@ -140,7 +140,7 @@ app-admin/logstash-bin 2.4.0-r3 5.1.2: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
-app-admin/lsyncd 2.2.0: Live Syncing (Mirror) Daemon
+app-admin/lsyncd 2.2.0 2.2.1: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 100 117 122: A tool to log and decode Machine Check Exceptions
@@ -4447,7 +4447,7 @@ dev-lang/go 1.7.4 1.7.5 9999: A concurrent garbage collected and typesafe progra
 dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
-dev-lang/hy 0.10.0 0.10.1 0.11.1 0.12.0: A LISP dialect running in python
+dev-lang/hy 0.10.0 0.10.1 0.11.1 0.12.0 0.12.1: A LISP dialect running in python
 dev-lang/icc 13.1.5.192 14.0.3.174 15.0.6.233: Intel C/C++ Compiler
 dev-lang/icon 9.4.3-r5 9.5.0 9.5.0-r1 9.5.1: very high level language
 dev-lang/idb 13.0.5.192 14.0.3.174: Intel C/C++/FORTRAN debugger
