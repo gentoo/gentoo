@@ -95,7 +95,7 @@ start() {
 
 	ebegin "Starting ${CONTAINER}"
 	env -i ${setarch} $(which lxc-start) -l WARN -n ${CONTAINER} -f ${CONFIGFILE} -d -o /var/log/lxc/${CONTAINER}.log
-	sleep 0.5
+	sleep 1
 
 	# lxc-start -d will _always_ report a correct startup, even if it
 	# failed, so rather than trust that, check that the cgroup exists.
