@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=~sys-libs/e2fsprogs-libs-1.43.2 >=sys-apps/util-linux-2.16 fuse? ( sys-fs/fuse ) nls? ( virtual/libintl ) nls? ( sys-devel/gettext ) virtual/pkgconfig sys-apps/texinfo
+DEPEND=~sys-libs/e2fsprogs-libs-1.43.4 >=sys-apps/util-linux-2.16 fuse? ( sys-fs/fuse ) nls? ( virtual/libintl ) nls? ( sys-devel/gettext ) virtual/pkgconfig sys-apps/texinfo
 DESCRIPTION=Standard EXT2/EXT3/EXT4 filesystem utilities
 EAPI=5
 HOMEPAGE=http://e2fsprogs.sourceforge.net/
 IUSE=fuse nls static-libs elibc_FreeBSD
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~m68k-mint
 LICENSE=GPL-2 BSD
-RDEPEND=~sys-libs/e2fsprogs-libs-1.43.2 >=sys-apps/util-linux-2.16 fuse? ( sys-fs/fuse ) nls? ( virtual/libintl )
+RDEPEND=~sys-libs/e2fsprogs-libs-1.43.4 >=sys-apps/util-linux-2.16 fuse? ( sys-fs/fuse ) nls? ( virtual/libintl )
 SLOT=0
-SRC_URI=mirror://sourceforge/e2fsprogs/e2fsprogs-1.43.2.tar.gz mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v1.43.2/e2fsprogs-1.43.2.tar.gz elibc_mintlib? ( mirror://gentoo/e2fsprogs-1.42.9-mint-r1.patch.xz )
+SRC_URI=mirror://sourceforge/e2fsprogs/e2fsprogs-1.43.4.tar.gz mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v1.43.4/e2fsprogs-1.43.4.tar.gz elibc_mintlib? ( mirror://gentoo/e2fsprogs-1.42.9-mint-r1.patch.xz )
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c8d6cc6bf6dbcc294095eaeb47a1d335
+_md5_=c3d53fd0e0f75b4137f201e13661dadf

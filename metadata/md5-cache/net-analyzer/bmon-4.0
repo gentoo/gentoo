@@ -3,11 +3,11 @@ DEPEND=>=sys-libs/ncurses-5.3-r2:0= dev-libs/confuse:= dev-libs/libnl:3 virtual/
 DESCRIPTION=interface bandwidth monitor
 EAPI=6
 HOMEPAGE=http://www.infradead.org/~tgr/bmon/ https://github.com/tgraf/bmon/
-KEYWORDS=amd64 ~arm ~hppa ~ppc ppc64 ~sparc x86
+KEYWORDS=amd64 ~arm hppa ~ppc ppc64 ~sparc x86
 LICENSE=BSD-2 MIT
 RDEPEND=>=sys-libs/ncurses-5.3-r2:0= dev-libs/confuse:= dev-libs/libnl:3
 SLOT=0
 SRC_URI=https://codeload.github.com/tgraf/bmon/tar.gz/v4.0 -> bmon-4.0.tar.gz
 _eclass_exported_funcs=pkg_setup:linux-info src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=edb9083b0a581ab7189b5e464e345859
+_md5_=61180c2dce5c9419da11c0b8475e24ac

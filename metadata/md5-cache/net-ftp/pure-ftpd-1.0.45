@@ -9,7 +9,7 @@ LICENSE=BSD
 RDEPEND=caps? ( sys-libs/libcap ) charconv? ( virtual/libiconv ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd ) dev-libs/libsodium:= net-ftp/ftpbase selinux? ( sec-policy/selinux-ftp )
 REQUIRED_USE=implicittls? ( ssl )
 SLOT=0
-SRC_URI=ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.44.tar.bz2 http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.44.tar.bz2
+SRC_URI=ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.45.tar.bz2 http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.45.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=5236d272b065e4940d8d3e59a5952f2b
