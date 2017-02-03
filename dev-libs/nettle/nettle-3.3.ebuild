@@ -27,6 +27,18 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/nettle/version.h
 )
 
+DOCS=()
+HTML_DOCS=()
+
+pkg_setup() {
+	use doc && DOCS+=(
+		nettle.pdf
+	)
+	use doc && HTML_DOCS+=(
+		nettle.html
+	)
+}
+
 src_prepare() {
 	default
 
@@ -52,12 +64,4 @@ multilib_src_configure() {
 		$(use_enable doc documentation) \
 		$(use_enable neon arm-neon) \
 		$(use_enable cpu_flags_x86_aes x86-aesni)
-}
-
-multilib_src_install_all() {
-	einstalldocs
-	if use doc ; then
-		dohtml nettle.html
-		dodoc nettle.pdf
-	fi
 }
