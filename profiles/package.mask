@@ -427,12 +427,6 @@ x11-libs/gtk+:1
 =app-emulation/ganeti-2.17*
 
 # Michael Orlitzky <mjo@gentoo.org> (02 Jan 2017)
-# Ancient version, dead upstream, no homepage, experiencing
-# build failures, no reverse dependencies -- we've hit all
-# the checkboxes. Masked for removal in 30 days. Bug 604464.
-dev-php/PHPonTrax
-
-# Michael Orlitzky <mjo@gentoo.org> (02 Jan 2017)
 # Ancient versions long forgotten by upstream, and
 # now experiencing build problems. Masked for removal
 # in 30 days. Bug 604462.
