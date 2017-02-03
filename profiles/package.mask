@@ -426,14 +426,6 @@ x11-libs/gtk+:1
 =app-emulation/ganeti-2.16*
 =app-emulation/ganeti-2.17*
 
-# Michael Orlitzky <mjo@gentoo.org> (02 Jan 2017)
-# Ancient versions long forgotten by upstream, and
-# now experiencing build problems. Masked for removal
-# in 30 days. Bug 604462.
-dev-php/propel
-dev-php/propel-generator
-dev-php/propel-runtime
-
 # Daniel Campbell <zlg@gentoo.org> (02 Jan 2017)
 # Google Code shutdown and change of versioning scheme
 # needs 'old' versions masked (v94 -> v1.0.0)
