@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Generic cache interface and implementations"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 x86 ~x86-solaris"
 IUSE=""
 
 RDEPEND="
