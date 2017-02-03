@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ ruby_add_bdepend ">=dev-ruby/hoe-3.7
 	test? ( dev-ruby/minitest:5 )"
 ruby_add_rdepend ">=dev-ruby/nokogiri-1.6
 	>=dev-ruby/net-http-digest_auth-1.1.1
-	>=dev-ruby/net-http-persistent-2.5.2
+	>=dev-ruby/net-http-persistent-2.5.2:0
 	>=dev-ruby/ntlm-http-0.1.1
 	>=dev-ruby/webrobots-0.0.9
 	>=dev-ruby/http-cookie-1.0.2
