@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${LPN}-${LPV}"
-PATCHES=( "${FILESDIR}/lapack-fix-build-system.patch" )
+PATCHES=( "${FILESDIR}/lapack-reference-${LPV}-fix-build-system.patch" )
 
 src_prepare() {
 	epatch "${PATCHES[@]}"

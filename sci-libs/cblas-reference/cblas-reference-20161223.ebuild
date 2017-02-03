@@ -7,7 +7,7 @@ EAPI=6
 inherit eutils fortran-2 cmake-utils multilib flag-o-matic toolchain-funcs
 
 LPN=lapack
-LPV=3.6.0
+LPV=3.7.0
 
 DESCRIPTION="C wrapper interface to the F77 reference BLAS implementation"
 HOMEPAGE="http://www.netlib.org/cblas/"
