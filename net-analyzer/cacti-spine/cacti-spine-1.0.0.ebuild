@@ -37,7 +37,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	sed -i -e 's/^bin_PROGRAMS/sbin_PROGRAMS/' Makefile.am
 	AT_M4DIR="config" eautoreconf
 }
 

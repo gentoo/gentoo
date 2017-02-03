@@ -1,6 +1,11 @@
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -11,5 +11,5 @@
+@@ -7,9 +7,9 @@
+ configdir = $(sysconfdir)
+ config_DATA = spine.conf.dist
+ 
+-bin_PROGRAMS = spine
++sbin_PROGRAMS = spine
  
  man_MANS = spine.1
  
