@@ -16168,19 +16168,19 @@ sci-libs/adolc 2.4.1 2.5.0 2.5.2: Automatic differentiation system for C/C++
 sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 3.4.4 3.6.2 6.200.3 7.500.2-r1: Streamlined C++ linear algebra library
-sci-libs/arpack 3.1.3-r1 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
+sci-libs/arpack 3.1.3-r1 3.1.5 3.4.0: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
 sci-libs/avogadrolibs 0.7.2-r1 0.8.0: Advanced molecule editor and visualizer 2 - libraries
 sci-libs/beagle 3.0.3-r1: Open BEAGLE, a versatile EC/GA/GP framework
-sci-libs/blas-reference 20070226-r4 20151113-r1: Basic Linear Algebra Subprograms F77 reference implementations
+sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra Subprograms F77 reference implementations
 sci-libs/bliss 0.73: A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs
 sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format (http://www.bmrb.wisc.edu/)
 sci-libs/btf 1.1.3 1.2.0: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.2 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
-sci-libs/cblas-reference 20030223-r6 20151113-r2: C wrapper interface to the F77 reference BLAS implementation
+sci-libs/cblas-reference 20030223-r6 20151113-r2 20161223: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4-r1: C++ interface for cfitsio
 sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering algorithm
 sci-libs/ccpn-data 2.3.1_p140425 2.4.0_p140425 2.4.1 2.4.2: The Collaborative Computing Project for NMR - Data
@@ -16272,7 +16272,7 @@ sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and commu
 sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/jmol-acme 1.0: Portions of the Acme collection required for jMol
 sci-libs/klu 1.2.1: Sparse LU factorization for circuit simulation
-sci-libs/lapack-reference 3.2.1-r4 3.6.0: Reference implementation of LAPACK
+sci-libs/lapack-reference 3.2.1-r4 3.6.0 3.7.0: Reference implementation of LAPACK
 sci-libs/ldl 2.0.4 2.1.0: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3-r2: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
@@ -17827,8 +17827,8 @@ virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/ada 1995 2005 2012: Virtual for selecting an appropriate Ada compiler
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
-virtual/blas 1.0 3.6: Virtual for FORTRAN 77 BLAS implementation
-virtual/cblas 1.0 3.6: Virtual for BLAS C implementation
+virtual/blas 1.0 3.6 3.7: Virtual for FORTRAN 77 BLAS implementation
+virtual/cblas 1.0 3.6 3.7: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
 virtual/commonlisp 0: Virtual for Common Lisp
@@ -17858,7 +17858,7 @@ virtual/jdk 1.7.0-r2 1.8.0-r3: Virtual for Java Development Kit (JDK)
 virtual/jpeg 0-r2 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
 virtual/jre 1.7.0-r2 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0 0-r1: Virtual for Kerberos V implementation
-virtual/lapack 3.0 3.1 3.6: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
+virtual/lapack 3.0 3.1 3.6 3.7: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
 virtual/leechcraft-browser 0.6.60 0.6.65 0.6.70 9999: Virtual for LeechCraft plugins providing a web browser
 virtual/leechcraft-downloader-http 0.6.60 0.6.65 0.6.70 9999: Virtual for LeechCraft plugins providing HTTP downloading

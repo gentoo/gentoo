@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://www.netlib.org/lapack/lapack-3.6.0.tgz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:fortran-2 src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=04d51c0871cf11900f4cefb93541f41e
+_md5_=09bc852a9c5fab3da494e5f1736c87ea
