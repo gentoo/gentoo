@@ -7030,9 +7030,6 @@ dev-php/phpdepend 2.3.2: Static code analysis for PHP
 dev-php/phpmd 2.5.0: PHP mess detector
 dev-php/phptal 1.2.2: A templating engine for PHP5 that implements Zope Page Templates syntax
 dev-php/phpunit 3.7.20 4.3.1 4.8.19 5.0.10: A PHP Unit Testing framework
-dev-php/propel 1.6.4: Object Persistence Layer for PHP 5
-dev-php/propel-generator 1.6.4: Object Persistence Layer for PHP 5 (Generator)
-dev-php/propel-runtime 1.6.4: Object Persistence Layer for PHP 5 (Runtime)
 dev-php/psr-log 1.0.2: Common interface for logging libraries
 dev-php/recaptcha 1.1.2-r1: PHP client library for Google's reCAPTCHA service
 dev-php/securimage 3.0.1: PHP captcha creator and validator library
