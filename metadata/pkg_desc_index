@@ -17196,7 +17196,7 @@ sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memor
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
 sys-block/gparted 0.26.1 0.27.0: Gnome Partition Editor
-sys-block/hdrecover 0.4 0.5: Attempts to recover a hard disk that has bad blocks on it
+sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
