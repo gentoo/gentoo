@@ -8428,7 +8428,7 @@ dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files 
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1 1.11.1 1.15.0: package to manage versions by scm tags via setuptools
 dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
-dev-python/sh 1.11 1.11-r1: Python subprocess interface
+dev-python/sh 1.11 1.11-r1 1.12.9: Python subprocess interface
 dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
 dev-python/shm 1.2.2-r1: Python modules to access System V shared memory and semaphores
 dev-python/shortuuid 0.4.2 0.4.3: A generator library for concise, unambiguous and URL-safe UUIDs
