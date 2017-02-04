@@ -1,0 +1,29 @@
+From e82772a6b6d4374e81b7e19a593ffdef16753418 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 21 Dec 2009 09:02:35 -0500
+Subject: [PATCH] restore init.d pause option
+
+---
+ src/rc/runscript.c |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/src/rc/runscript.c b/src/rc/runscript.c
+index 5939dae..7147902 100644
+--- a/src/rc/runscript.c
++++ b/src/rc/runscript.c
+@@ -1316,6 +1316,12 @@ runscript(int argc, char **argv)
+ 			prefix = NULL;
+ 			retval = svc_exec("status", NULL);
+ 		} else {
++			if (strcmp(optarg, "pause") == 0) {
++				ewarn("WARNING: 'pause' is deprecated; please use '--nodeps stop'");
++				deps = false;
++				optarg = "stop";
++			}
++
+ 			if (strcmp(optarg, "conditionalrestart") == 0 ||
+ 			    strcmp(optarg, "condrestart") == 0)
+ 			{
+-- 
+1.6.6.rc3
+
