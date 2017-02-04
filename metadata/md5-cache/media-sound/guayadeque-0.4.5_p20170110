@@ -4,7 +4,7 @@ DESCRIPTION=Music management program designed for all music enthusiasts
 EAPI=6
 HOMEPAGE=http://guayadeque.org/
 IUSE=ayatana ipod +minimal linguas_bg linguas_ca_ES linguas_cs linguas_de linguas_el linguas_es linguas_fr linguas_hr linguas_hu linguas_is linguas_it linguas_ja linguas_nb linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ru linguas_sk linguas_sr linguas_sr@latin linguas_sv linguas_th linguas_tr linguas_uk
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-db/sqlite:3 >=dev-db/wxsqlite3-3.2.1 dev-libs/glib:2 media-libs/flac media-libs/gst-plugins-base:1.0 media-libs/gst-plugins-good:1.0 media-libs/gstreamer:1.0 >=media-libs/taglib-1.6.4 net-misc/curl sys-apps/dbus x11-libs/wxGTK:3.0[X] ayatana? ( >=dev-libs/libindicate-0.7 ) ipod? ( media-libs/libgpod ) !minimal? ( media-libs/gnonlin:1.0 media-plugins/gst-plugins-libav:1.0 media-plugins/gst-plugins-libnice:1.0 media-plugins/gst-plugins-pulse:1.0 media-plugins/gst-plugins-soup:1.0 media-libs/gst-plugins-bad:1.0 media-libs/gst-plugins-ugly:1.0 )
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/anonbeat/guayadeque/archive/9fec4f7b85095fa2d9f8e4d39c0cf5015f7624fa.tar.gz -> guayadeque-0.4.5_p20170110.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
-_md5_=9aa7a1d0d284532a6ca63c94c5a02ae5
+_md5_=d8cd133dc2ba9808e1c117c523c23e89

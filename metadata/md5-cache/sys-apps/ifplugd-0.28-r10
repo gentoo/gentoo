@@ -4,10 +4,10 @@ DESCRIPTION=Brings up/down ethernet ports automatically with cable detection
 EAPI=6
 HOMEPAGE=http://0pointer.de/lennart/projects/ifplugd/
 IUSE=doc selinux
-KEYWORDS=~arm ~amd64 ~hppa ~ppc ~x86
+KEYWORDS=amd64 ~arm ~hppa ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libdaemon-0.5 >=sys-apps/baselayout-1.12 selinux? ( sec-policy/selinux-ifplugd )
 SLOT=0
 SRC_URI=http://0pointer.de/lennart/projects/ifplugd/ifplugd-0.28.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=1b72df2d31671944ac957e6dedb12f48
+_md5_=54f9ea0caeead49161c94917b5270bc0
