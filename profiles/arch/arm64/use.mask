@@ -223,3 +223,6 @@ clvm
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # virtual/opencl is not keyworded
 opencl
+
+# media-libs/x264 works
+-x264
