@@ -55,9 +55,20 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
 
+DOCS=(
+	README.md
+	doc/certtool.cfg
+)
+
+HTML_DOCS=()
+
 pkg_setup() {
 	# bug#520818
 	export TZ=UTC
+
+	use doc && HTML_DOCS+=(
+		doc/gnutls.html
+	)
 }
 
 src_prepare() {
@@ -100,8 +111,7 @@ multilib_src_configure() {
 	# hardware-accell is disabled on OSX because the asm files force
 	#   GNU-stack (as doesn't support that) and when that's removed ld
 	#   complains about duplicate symbols
-	ECONF_SOURCE=${S} \
-	econf \
+	ECONF_SOURCE=${S} econf \
 		--without-included-libtasn1 \
 		$(use_enable cxx) \
 		$(use_enable dane libdane) \
@@ -130,14 +140,6 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	prune_libtool_files --all
-
-	dodoc doc/certtool.cfg
-
-	if use doc; then
-		dohtml doc/gnutls.html
-	else
-		rm -fr "${ED}/usr/share/doc/${PF}/html"
-	fi
 
 	if use examples; then
 		docinto examples
