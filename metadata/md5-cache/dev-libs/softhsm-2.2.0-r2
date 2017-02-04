@@ -11,4 +11,4 @@ SLOT=2
 SRC_URI=http://www.opendnssec.org/files/source/softhsm-2.2.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=1912b6cba9624610a0aa7fcd084d7609
+_md5_=cd9295f33b4e98a1a9482110190f3e22

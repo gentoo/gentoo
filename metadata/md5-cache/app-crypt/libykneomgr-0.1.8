@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install prepare test
+DEFINED_PHASES=configure
 DEPEND=sys-apps/pcsc-lite dev-libs/libzip virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=YubiKey NEO CCID Manager C Library
-EAPI=5
+EAPI=6
 HOMEPAGE=https://developers.yubico.com/libykneomgr/
 IUSE=kernel_linux
 KEYWORDS=~amd64
@@ -9,6 +9,6 @@ LICENSE=LGPL-3
 RDEPEND=sys-apps/pcsc-lite dev-libs/libzip >=app-crypt/ccid-1.4.18[usb]
 SLOT=0
 SRC_URI=https://developers.yubico.com/libykneomgr/Releases/libykneomgr-0.1.8.tar.gz
-_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c
-_md5_=5e0349d83f61b12d6d0570c540fb2225
+_eclass_exported_funcs=src_configure:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c
+_md5_=ab103fbcee82783ab060ea7e92981d2c

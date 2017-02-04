@@ -1,8 +1,8 @@
 DEFINED_PHASES=compile install prepare
 DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-perl/Locale-gettext >=virtual/perl-MIME-Base64-2.12 >=dev-perl/gtk2-perl-1.072 >=sys-apps/sed-4
 DESCRIPTION=Simple Perl/Tk GUI to manage a small certification authority
-EAPI=5
-HOMEPAGE=http://tinyca.sm-zone.net/
+EAPI=6
+HOMEPAGE=https://opsec.eu/src/tinyca/
 IUSE=libressl linguas_en linguas_de linguas_cs linguas_es linguas_sv
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=Artistic
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://tinyca.sm-zone.net/tinyca2-0.7.5.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=3519c75e896ef3563db69fc98628c5f0
+_md5_=a1924db5d4ceb550b322585dc8b612f2

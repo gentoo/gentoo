@@ -1,7 +1,7 @@
 DEFINED_PHASES=install prepare
 DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=app-crypt/trousers-0.2.8 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=This provides a OpenSSL engine that uses private keys stored in TPM hardware
-EAPI=5
+EAPI=6
 HOMEPAGE=http://trousers.sourceforge.net
 IUSE=libressl
 KEYWORDS=~amd64 ~x86
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/trousers/openssl_tpm_engine-0.4.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=dd7d7182f90899fa6e58a2615feff83c
+_md5_=8955b4711785a1788e855868f3c2bd44
