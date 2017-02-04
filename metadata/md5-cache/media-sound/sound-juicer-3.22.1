@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=app-text/iso-codes >=dev-libs/glib-2.49.5:2[dbus] >=x11-libs/gtk+-3.21.6:3 media-libs/libcanberra[gtk3] >=app-cdr/brasero-2.90 sys-apps/dbus gnome-base/gsettings-desktop-schemas >=media-libs/libdiscid-0.4.0 >=media-libs/musicbrainz-5.0.1:5 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0[vorbis?] flac? ( media-plugins/gst-plugins-flac:1.0 ) app-text/yelp-tools dev-libs/appstream-glib gnome-base/gnome-common >=sys-devel/gettext-0.19.6 virtual/pkgconfig test? ( ~app-text/docbook-xml-dtd-4.3 ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=app-text/iso-codes >=dev-libs/glib-2.49.5:2[dbus] >=x11-libs/gtk+-3.21.6:3 media-libs/libcanberra[gtk3] >=app-cdr/brasero-2.90 sys-apps/dbus gnome-base/gsettings-desktop-schemas >=media-libs/libdiscid-0.4.0 >=media-libs/musicbrainz-5.0.1:5= media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0[vorbis?] flac? ( media-plugins/gst-plugins-flac:1.0 ) app-text/yelp-tools dev-libs/appstream-glib gnome-base/gnome-common >=sys-devel/gettext-0.19.6 virtual/pkgconfig test? ( ~app-text/docbook-xml-dtd-4.3 ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=CD ripper for GNOME
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Apps/SoundJuicer
 IUSE=debug flac test vorbis
 KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=GPL-2+
-RDEPEND=app-text/iso-codes >=dev-libs/glib-2.49.5:2[dbus] >=x11-libs/gtk+-3.21.6:3 media-libs/libcanberra[gtk3] >=app-cdr/brasero-2.90 sys-apps/dbus gnome-base/gsettings-desktop-schemas >=media-libs/libdiscid-0.4.0 >=media-libs/musicbrainz-5.0.1:5 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0[vorbis?] flac? ( media-plugins/gst-plugins-flac:1.0 ) gnome-base/gvfs[cdda,udev] || ( media-plugins/gst-plugins-cdparanoia:1.0 media-plugins/gst-plugins-cdio:1.0 ) media-plugins/gst-plugins-meta:1.0
+RDEPEND=app-text/iso-codes >=dev-libs/glib-2.49.5:2[dbus] >=x11-libs/gtk+-3.21.6:3 media-libs/libcanberra[gtk3] >=app-cdr/brasero-2.90 sys-apps/dbus gnome-base/gsettings-desktop-schemas >=media-libs/libdiscid-0.4.0 >=media-libs/musicbrainz-5.0.1:5= media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0[vorbis?] flac? ( media-plugins/gst-plugins-flac:1.0 ) gnome-base/gvfs[cdda,udev] || ( media-plugins/gst-plugins-cdparanoia:1.0 media-plugins/gst-plugins-cdio:1.0 ) media-plugins/gst-plugins-meta:1.0
 SLOT=0
 SRC_URI=mirror://gnome/sources/sound-juicer/3.22/sound-juicer-3.22.1.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=5b7826a13ac522a49be87af9efc27cfa
+_md5_=4976a748fb9900254f58596e2b35203b
