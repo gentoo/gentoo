@@ -1,38 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
-
-if [[ ${PV##*.} = 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="git://git.sv.gnu.org/emacs.git"
-	EGIT_BRANCH="emacs-25"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
-	S="${EGIT_CHECKOUT_DIR}"
-else
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
-		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-	# FULL_VERSION keeps the full version number, which is needed in
-	# order to determine some path information correctly for copy/move
-	# operations later on
-	FULL_VERSION="${PV%%_*}"
-	S="${WORKDIR}/emacs-${FULL_VERSION}"
-	[[ ${FULL_VERSION} != ${PV} ]] && S="${WORKDIR}/emacs"
-fi
+inherit elisp-common flag-o-matic multilib readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
+SRC_URI="mirror://gnu-alpha/emacs/pretest/emacs-${PV/_/-}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="acl alsa aqua athena cairo dbus games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0
+RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
@@ -97,33 +81,25 @@ DEPEND="${RDEPEND}
 		sys-apps/paxctl
 	)"
 
-if [[ ${PV##*.} = 9999 ]]; then
-	DEPEND="${DEPEND}
-	sys-apps/texinfo"
-fi
+RDEPEND="${RDEPEND}
+	!<app-editors/emacs-vcs-${PV}"
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
+# FULL_VERSION keeps the full version number, which is needed in
+# order to determine some path information correctly for copy/move
+# operations later on
+FULL_VERSION="${PV%%_*}"
+S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	if [[ ${PV##*.} = 9999 ]]; then
-		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
-			configure.ac)
-		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
-		einfo "Emacs branch: ${EGIT_BRANCH}"
-		einfo "Commit: ${EGIT_VERSION}"
-		einfo "Emacs version number: ${FULL_VERSION}"
-		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
-			|| die "Upstream version number changed to ${FULL_VERSION}"
-	fi
-
 	eapply_user
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
 
-	AT_M4DIR=m4 eautoreconf
+	#AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
