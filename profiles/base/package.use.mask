@@ -138,10 +138,6 @@ media-plugins/grilo-plugins chromaprint
 # x11-libs/libsvg-cairo is being removed, bug #537918
 dev-ml/cairo-ocaml svg
 
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# net-libs/libzrtpcpp will be removed, bug #528514
-net-libs/ortp zrtp
-
 # Lars Wendler <polynomial-c@gentoo.org> (19 Aug 2016)
 # gnutls is broken for years
 >=net-libs/gsoap-2.8.0 gnutls
@@ -393,12 +389,6 @@ dev-libs/DirectFB swfdec
 # Tim Harder <radhermit@gentoo.org> (10 Oct 2014)
 # Masked since skype isn't stable
 net-im/bitlbee skype
-
-# Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
-# Unsuccessful version bump of net-libs/libzrtpcpp, seems to cause
-# undefined references few layers deeper. Need further investigation,
-# if anybody cares.
-net-libs/ortp zrtp
 
 # Rick Farina <zerochaos@gentoo.org> (26 Aug 2014)
 # mirisdr does not seem to like making releases
