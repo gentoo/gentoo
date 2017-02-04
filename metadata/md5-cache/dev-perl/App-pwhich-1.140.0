@@ -4,11 +4,11 @@ DESCRIPTION=Perl-only 'which'
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/App-pwhich/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~hppa ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/File-Which-1.140.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/App-pwhich-1.14.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=5ec23506d254ea486362c729dbf29b21
+_md5_=e466644b8aa6d56490a03e27cc7e258b
