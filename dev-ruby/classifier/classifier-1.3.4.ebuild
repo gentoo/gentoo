@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.markdown"
@@ -24,6 +24,7 @@ ruby_add_rdepend ">=dev-ruby/fast-stemmer-1.0.0
 
 all_ruby_prepare() {
 	sed -i -e "s/PKG_VERSION/\"${PV}\"/" \
+		-e '/rubyforge/ s:^:#:' \
 		-e "s#PKG_FILES#FileList[ \"lib/**/*\", \"bin/*\", \"test/**/*\", \"[A-Z]*\", \"Rakefile\", \"Gemfile\", \"html/**/*\"]#" Rakefile
 	if use !gsl; then
 		sed -e 's/$GSL = true/$GSL = false/' -i lib/${PN}/lsi.rb || die
