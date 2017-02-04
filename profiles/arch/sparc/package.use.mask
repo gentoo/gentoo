@@ -5,6 +5,7 @@
 # Pacho Ramos <pacho@gentoo.org> (04 Feb 2017)
 # Missing keywords, bug #599572
 net-libs/gnome-online-accounts gnome
+x11-terms/gnome-terminal gnome-shell
 
 # Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
 # Missing keywords, bug #559770
