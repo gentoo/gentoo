@@ -15,7 +15,7 @@ DESCRIPTION="Provide commonly requested regular expressions"
 
 LICENSE="|| ( Artistic Artistic-2 MIT BSD )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
 IUSE="test"
 
 DEPEND="
