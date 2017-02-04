@@ -4540,7 +4540,7 @@ dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/angelscript 2.31.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.10.5 0.10.6: Cross-distro effort for providing metadata for software in the Linux ecosystem
-dev-libs/appstream-glib 0.5.0 0.6.3 0.6.5 0.6.7: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.6.3 0.6.7 0.6.8: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
