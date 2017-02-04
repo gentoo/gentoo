@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils linux-info udev user
+inherit linux-info udev user
 
 DESCRIPTION="Yubico Universal 2nd Factor (U2F) Host C Library"
 HOMEPAGE="https://developers.yubico.com/libu2f-host/"
@@ -34,19 +34,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	autotools-utils_src_prepare
-
+	default
 	sed -e 's:TAG+="uaccess":MODE="0664", GROUP="plugdev":g' \
 		70-u2f.rules > 70-u2f-udev.rules || die
 }
 
-src_configure() {
-	autotools-utils_src_configure
-}
-
 src_install() {
-	autotools-utils_src_install
-
+	default
 	if use kernel_linux; then
 		if use systemd; then
 			udev_dorules 70-u2f.rules

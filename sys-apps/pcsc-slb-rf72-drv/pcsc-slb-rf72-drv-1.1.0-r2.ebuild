@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,10 @@ RDEPEND="sys-apps/pcsc-lite
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+DOCS=(
+	ERRATA README
+)
+
 PATCHES=(
 	"${FILESDIR}/${P}-openct.patch"
 )
@@ -33,7 +37,7 @@ src_install () {
 	local pcscdir="$(pkg-config --variable=usbdropdir libpcsclite)"
 	local conf="/etc/reader.conf.d/${PN}.conf"
 
-	dodoc ERRATA README
+	einstalldocs
 
 	dodir "${pcscdir}/serial"
 	insinto "${pcscdir}/serial"
@@ -44,7 +48,9 @@ src_install () {
 	insinto "$(dirname "${conf}")"
 	newins "${FILESDIR}/reader.conf" "$(basename "${conf}")"
 	sed -i "s#%PCSC_DRIVERS_DIR%#${pcscdir}#g" "${D}/${conf}"
+}
 
+pkg_postinst() {
 	einfo "NOTICE:"
 	einfo "1. modify ${conf}"
 	einfo "2. run update-reader.conf, yes this is a command..."

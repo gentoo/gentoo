@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -21,7 +21,12 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	static? ( dev-libs/openssl:0[static-libs] )"
 
+DOCS=(
+	HISTORY.txt README.txt regedit.txt WinReg.txt
+)
+
 src_prepare() {
+	default
 	sed -i -e '/-o/s:$(CC):$(CC) $(LDFLAGS):' Makefile || die
 
 	if ! use static ; then
@@ -39,11 +44,10 @@ src_compile() {
 }
 
 src_install() {
+	einstalldocs
 	dobin chntpw cpnt reged
 
 	if use static; then
 		dobin {chntpw,reged}.static
 	fi
-
-	dodoc {HISTORY,README,regedit,WinReg}.txt
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils toolchain-funcs autotools
 
@@ -15,10 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-lang/perl"
+DEPEND="
+	dev-lang/perl
+	app-crypt/libmd
+"
 RDEPEND="${DEPEND}
 	>=app-crypt/gnupg-1.3.92
-	app-crypt/libmd
 	dev-perl/GnuPG-Interface
 	dev-perl/Text-Template
 	dev-perl/MIME-tools
@@ -32,9 +34,11 @@ RDEPEND="${DEPEND}
 		dev-perl/Text-Iconv
 		app-text/recode
 	)"
-S=$WORKDIR
+S="${WORKDIR}"
 
 src_prepare() {
+	default
+
 	# app-crypt/keylookup
 	rm -r keylookup || die
 	# media-gfx/springgraph
@@ -63,6 +67,8 @@ src_compile() {
 }
 
 src_install() {
+	einstalldocs
+
 	# Check Makefile when a new tool is introduced to this package.
 	# caff
 	dobin caff/caff caff/pgp-clean caff/pgp-fixkey

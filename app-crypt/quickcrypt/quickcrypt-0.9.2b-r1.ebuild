@@ -19,7 +19,11 @@ DEPEND=">=dev-lang/perl-5.6
 	virtual/perl-Digest-MD5"
 RDEPEND="${DEPEND}"
 
+DOCS=(
+	README BUGS
+)
+
 src_install() {
+	einstalldocs
 	dobin quickcrypt
-	dodoc README BUGS
 }

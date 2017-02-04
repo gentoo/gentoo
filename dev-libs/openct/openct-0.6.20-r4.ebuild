@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic multilib udev user
 
@@ -17,9 +17,9 @@ SLOT="0"
 IUSE="doc pcsc-lite usb debug +udev"
 
 # Drop the libtool dep once libltdl goes stable.
-RDEPEND="pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1 )
+RDEPEND="pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= )
 	usb? ( virtual/libusb:0 )
-	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )"
+	dev-libs/libltdl:0="
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
@@ -56,7 +56,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	prune_libtool_files --all
 	rm "${D}"/usr/$(get_libdir)/openct-ifd.*
 

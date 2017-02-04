@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools multilib flag-o-matic user
 
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
 HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
-SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${PN}-v${PV}.tgz"
+SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${P}.tgz"
 
 # Upstream is looking into relicensing it into CPL-1.0 entirely; the CCA
 # token sources are under CPL-1.0 already.
@@ -18,22 +18,27 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug libressl +tpm"
 
 RDEPEND="tpm? ( app-crypt/trousers )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	>=dev-libs/openssl-1.1.0:0="
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${PN}"
+DOCS=(
+	README AUTHORS FAQ TODO
+	doc/openCryptoki-HOWTO.pdf
+)
 
 # tests right now basically don't exist; the only available thing would
 # test against an installed copy and would kill a running pcscd, all
 # things that we're not interested to.
 RESTRICT=test
 
+S="${WORKDIR}/${PN}"
+
 pkg_setup() {
 	enewgroup pkcs11
 }
 
 src_prepare() {
+	default
 	mv configure.in configure.ac || die
 	eautoreconf
 }
@@ -69,23 +74,21 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="${ED}"
+	default
+	prune_libtool_files --all
 
 	# Install libopencryptoki in the standard directory for libraries.
-	mv "${D}"/usr/$(get_libdir)/opencryptoki/libopencryptoki.so* "${D}"/usr/$(get_libdir) || die
-	rm "${D}"/usr/$(get_libdir)/pkcs11/libopencryptoki.so
+	mv "${ED}"/usr/$(get_libdir)/opencryptoki/libopencryptoki.so* "${ED}"/usr/$(get_libdir) || die
+	rm "${ED}"/usr/$(get_libdir)/pkcs11/libopencryptoki.so
 	dosym ../libopencryptoki.so /usr/$(get_libdir)/pkcs11/libopencryptoki.so
 
 	# Remove compatibility symlinks as we _never_ required those and
 	# they seem unused even upstream.
-	find "${D}" -name 'PKCS11_*' -delete
-
-	# doesn't use libltdl; only dlopen()-based interfaces
-	find "${D}" -name '*.la' -delete
+	find "${ED}" -name 'PKCS11_*' -delete
 
 	# We replace their ld.so and init files (mostly designed for RedHat
 	# as far as I can tell) with our own replacements.
-	rm -rf "${D}"/etc/ld.so.conf.d "${D}"/etc/rc.d
+	rm -rf "${ED}"/etc/ld.so.conf.d "${ED}"/etc/rc.d
 
 	# make sure that we don't modify the init script if the USE flags
 	# are enabled for the needed services.
@@ -95,7 +98,5 @@ src_install() {
 
 	# We create /var dirs at runtime as needed, so don't bother installing
 	# our own.
-	rm -r "${D}"/var/{lib,lock} || die
-
-	dodoc README AUTHORS FAQ TODO doc/openCryptoki-HOWTO.pdf
+	rm -r "${ED}"/var/{lib,lock} || die
 }

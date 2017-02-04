@@ -1,0 +1,26 @@
+From a65e87b8dbc48411b7fcade37612cf6e35be9865 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 3 Feb 2017 21:54:54 +0200
+Subject: [PATCH] build: use ldflags
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tools/buildsharedlib.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/buildsharedlib.sh b/tools/buildsharedlib.sh
+index 9a23592..c90dbc1 100644
+--- a/tools/buildsharedlib.sh
++++ b/tools/buildsharedlib.sh
+@@ -86,7 +86,7 @@ shift
+ 
+ if [ "$($LD -v 2>&1 | grep -c gcc)" -gt 0 ] ; then
+ 	LD_IS_GCC=1 ;
+-	LDFLAGS="-shared -Wl,-soname,libcl.so.$VERS" ;
++	LDFLAGS="-shared -Wl,-soname,libcl.so.$VERS $LDFLAGS" ;
+ fi
+ 
+ # Create the response file to hold the link command
+-- 
+2.10.2
+
