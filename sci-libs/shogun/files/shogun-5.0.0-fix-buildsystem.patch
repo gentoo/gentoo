@@ -1,0 +1,72 @@
+* Remove setting of user flags
+* Remove erroneous bundling of Eigen
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,15 +33,6 @@
+ SET(EIGEN_VERSION_MINIMUM 3.1.2)
+ SET(VIENNACL_VERSION_MINIMUM 1.5.0)
+ 
+-# Store system's or distribution's C[XX]FLAGS.
+-SET(SYSTEM_C_FLAGS "${CMAKE_C_FLAGS}")
+-SET(SYSTEM_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+-STRING(TOUPPER "${CMAKE_BUILD_TYPE}" BUILD_TYPE_UC)
+-IF(NOT ("${BUILD_TYPE_UC}" STREQUAL "DISTRIBUTION"))
+-	SET(CMAKE_C_FLAGS "")
+-	SET(CMAKE_CXX_FLAGS "")
+-ENDIF(NOT ("${BUILD_TYPE_UC}" STREQUAL "DISTRIBUTION"))
+-
+ # CCACHE
+ OPTION(ENABLE_CCACHE "Enable ccache for compilation" ON)
+ FIND_PACKAGE(CCache)
+@@ -174,24 +165,6 @@
+ 	SET(COMPILER_WARNINGS "-Wall -Wno-unused-parameter -Wformat -Wformat-security -Wparentheses -Wshadow -Wno-unknown-pragmas -Wno-deprecated")
+ ENDIF()
+ 
+-IF(CMAKE_COMPILER_IS_GNUCXX)
+-	SET(RELEASE_COMPILER_FLAGS "-fexpensive-optimizations -frerun-cse-after-loop -fcse-follow-jumps -finline-functions -fschedule-insns2 -fthread-jumps -fforce-addr -fstrength-reduce -funroll-loops")
+-	IF (${MACHINE} MATCHES "x86_64" OR ${MACHINE} MATCHES "i686")
+-		SET(RELEASE_COMPILER_FLAGS "${RELEASE_COMPILER_FLAGS} -mfpmath=sse")
+-	ENDIF()
+-ELSEIF(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+-	SET(RELEASE_COMPILER_FLAGS "-funroll-loops")
+-ENDIF()
+-SET(SWIG_CXX_COMPILER_FLAGS "-O0 -g")
+-SET(CMAKE_C_FLAGS "${COMPILER_WARNINGS} ${CMAKE_C_FLAGS}")
+-SET(CMAKE_CXX_FLAGS "${COMPILER_WARNINGS} ${CMAKE_CXX_FLAGS}")
+-SET(CMAKE_C_FLAGS_RELEASE "-O3 ${RELEASE_COMPILER_FLAGS}")
+-SET(CMAKE_CXX_FLAGS_RELEASE "-O3 ${RELEASE_COMPILER_FLAGS}")
+-SET(CMAKE_C_FLAGS_DISTRIBUTION "-O2")
+-SET(CMAKE_CXX_FLAGS_DISTRIBUTION "-O2")
+-SET(CMAKE_C_FLAGS_DEBUG "-g")
+-SET(CMAKE_CXX_FLAGS_DEBUG "-g")
+-
+ OPTION(ENABLE_COVERAGE "Enable code coverage" OFF)
+ IF(ENABLE_COVERAGE)
+ 	IF(NOT CMAKE_COMPILER_IS_GNUCXX)
+@@ -617,13 +590,6 @@
+ 	include(external/Eigen3)
+ 	LIST(APPEND SYSTEM_INCLUDES ${EIGEN_INCLUDE_DIR})
+ ELSE()
+-    # eigen3 bug related to aliasing operators and self-storing.
+-    # TODO put in proper reference and version from when this is fixed
+-    IF(${EIGEN_VERSION} VERSION_GREATER 3.2.90)
+-        MESSAGE(WARNING "The system Eigen3 version ${EIGEN_VERSION} is buggy, manually bundling.")
+-        include(external/Eigen3)
+-    ENDIF()
+-
+ 	LIST(APPEND SYSTEM_INCLUDES ${EIGEN_INCLUDE_DIR})
+ ENDIF()
+ 
+@@ -957,11 +923,6 @@
+ # Respect system's or distribution's C[XX]FLAGS.
+ OPTION(SWIG_WITH_SYSTEM_CFLAGS "Enable system's C[XX]FLAGS for compilation of swig-binaries" ON)
+ 
+-IF(NOT ("${BUILD_TYPE_UC}" STREQUAL "DISTRIBUTION"))
+-	SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SYSTEM_C_FLAGS}")
+-	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SYSTEM_CXX_FLAGS}")
+-ENDIF(NOT ("${BUILD_TYPE_UC}" STREQUAL "DISTRIBUTION"))
+-
+ IF(SWIG_WITH_SYSTEM_CFLAGS)
+ 	SET(SWIG_CXX_COMPILER_FLAGS "${SWIG_CXX_COMPILER_FLAGS} ${SYSTEM_CXX_FLAGS}")
+ ENDIF(SWIG_WITH_SYSTEM_CFLAGS)
