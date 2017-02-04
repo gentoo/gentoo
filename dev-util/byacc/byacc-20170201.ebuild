@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="the best variant of the Yacc parser generator"
 HOMEPAGE="http://invisible-island.net/byacc/byacc.html"
