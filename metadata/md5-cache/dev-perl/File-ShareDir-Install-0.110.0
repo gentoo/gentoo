@@ -4,11 +4,11 @@ DESCRIPTION=Install shared files
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/File-ShareDir-Install/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~hppa ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-IO dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/File-ShareDir-Install-0.11.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=6195e4a33252ffc9f769304eaea93e61
+_md5_=d6c0fbb96a90a91a6f7e7f5f641d633f

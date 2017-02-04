@@ -1006,8 +1006,8 @@ app-editors/editra 0.7.20-r1: Multi-platform text editor supporting over 50 prog
 app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
-app-editors/emacs 18.59-r11 23.4-r14 24.4-r4 24.5-r3 25.1: The extensible, customizable, self-documenting real-time display editor
-app-editors/emacs-vcs 25.1.91 25.1.9999-r2 26.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r11 23.4-r14 24.4-r4 24.5-r3 25.1 25.2_rc1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs-vcs 25.1.91 25.2.9999 26.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor

@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst
-DEPEND=>=app-eselect/eselect-emacs-1.16 sys-libs/ncurses:0 amd64? ( abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_x32(-)?] ) !abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_32(-)] ) ) virtual/pkgconfig
+DEPEND=>=app-eselect/eselect-emacs-1.16 sys-libs/ncurses:0= amd64? ( abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_x32(-)?] ) !abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)] ) ) virtual/pkgconfig
 DESCRIPTION=The extensible self-documenting text editor
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/emacs/
 IUSE=abi_x86_x32
 KEYWORDS=amd64 x86
 LICENSE=GPL-1+ GPL-2+ BSD
-RDEPEND=>=app-eselect/eselect-emacs-1.16 sys-libs/ncurses:0 amd64? ( abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_x32(-)?] ) !abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_32(-)] ) )
+RDEPEND=>=app-eselect/eselect-emacs-1.16 sys-libs/ncurses:0= amd64? ( abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_x32(-)?] ) !abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)] ) )
 SLOT=18
 SRC_URI=ftp://ftp.gnu.org/old-gnu/emacs/emacs-18.59.tar.gz ftp://ftp.splode.com/pub/users/friedman/emacs/emacs-18.59-linux22x-elf-glibc21.diff.gz https://dev.gentoo.org/~ulm/emacs/emacs-18.59-patches-9.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c0470c8a0a36b209012f44abb03fa799
+_md5_=71d82c516e104ef1c64434297f79811b
