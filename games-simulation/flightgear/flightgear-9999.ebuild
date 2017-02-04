@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
 
+# zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
 	>=dev-games/openscenegraph-3.2.0[png]
@@ -25,6 +26,7 @@ COMMON_DEPEND="
 	media-libs/speex
 	media-sound/gsm
 	sys-libs/zlib
+	virtual/glu
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	qt5? (
@@ -35,13 +37,20 @@ COMMON_DEPEND="
 	udev? ( virtual/udev )
 	utils? (
 		media-libs/freeglut
+		media-libs/freetype:2
+		media-libs/glew:0
 		media-libs/libpng:0
 		virtual/opengl
 	)
 "
+# libXi and libXmu are build-only-deps according to FindGLUT.cmake
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
 	>=media-libs/plib-1.8.5
+	utils? (
+		x11-libs/libXi
+		x11-libs/libXmu
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
@@ -51,6 +60,7 @@ DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_FGCANVAS=$(usex qt5 && usex utils)
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
@@ -65,15 +75,16 @@ src_configure() {
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
+		-DENABLE_SIMD=OFF # NOTE dead codepath in Gentoo anyway
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TESTS=$(usex test)
+		-DENABLE_TRAFFIC=$(usex utils)
 		-DENABLE_UIUC_MODEL=ON
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)
 		-DFG_DATA_DIR=/usr/share/${PN}
 		-DJSBSIM_TERRAIN=ON
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
-		-DSIMGEAR_SHARED=ON
 		-DSP_FDMS=ON
 		-DSYSTEM_FLITE=ON
 		-DSYSTEM_HTS_ENGINE=ON
