@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Manage /usr/bin/pinentry symlink"
 HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
@@ -15,9 +15,10 @@ IUSE=""
 
 RDEPEND=">=app-eselect/eselect-lib-bin-symlink-0.1.1"
 
-S=${FILESDIR}
+S="${FILESDIR}"
 
 src_install() {
+	default
 	insinto /usr/share/eselect/modules
 	newins pinentry.eselect-${PV} pinentry.eselect
 }
