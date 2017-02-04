@@ -55,6 +55,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.8.9.1-empty-line-sigsegv.patch" #454348
 	"${FILESDIR}/${PN}-1.8.12-link_with_pthread.patch"
+	"${FILESDIR}/${PN}-1.8.13-NULL-dereference.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
@@ -64,7 +65,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# Ensure we link to -liconv
 	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
@@ -82,12 +83,13 @@ src_prepare() {
 		doc/maintainers.txt || die
 
 	if is-flagq "-O3" ; then
-		echo
+		ewarn
 		ewarn "Compiling with -O3 is known to produce incorrectly"
 		ewarn "optimized code which breaks doxygen."
-		echo
+		ewarn
+		elog
 		elog "Continuing with -O2 instead ..."
-		echo
+		elog
 		replace-flags "-O3" "-O2"
 	fi
 }
