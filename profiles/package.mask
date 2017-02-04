@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
+# Unsecure versions that have been only restored to tree
+# to resolve compatibility problems with mail-filter/amavisd-new
+# Use with caution due to these being removed for CVE-2016-1251
+# Bug: #601144
+# Bug: #604678
+<dev-perl/DBD-mysql-4.41.0
+
 # Alon Bar-Lev <alonbl@gentoo.org> (06 Feb 2017)
 # Needs openssl-1.1
 >=dev-libs/opencryptoki-3.6
