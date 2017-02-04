@@ -4,11 +4,11 @@ DESCRIPTION=High-performance interface between the MTA and content checkers
 EAPI=6
 HOMEPAGE=http://www.ijs.si/software/amavisd/
 IUSE=clamav courier dkim ldap mysql postgres qmail razor snmp spamassassin zmq
-KEYWORDS=amd64 ~hppa ppc64 x86
+KEYWORDS=amd64 hppa ppc64 x86
 LICENSE=GPL-2 BSD-2
 RDEPEND=>=sys-apps/sed-4 >=dev-lang/perl-5.10.0 >=sys-apps/coreutils-5.0-r3 app-arch/cpio app-arch/gzip app-arch/bzip2 app-arch/arc app-arch/cabextract app-arch/freeze app-arch/lha app-arch/lrzip app-arch/lzop app-arch/ncompress app-arch/p7zip app-arch/pax app-arch/unarj app-arch/unrar app-arch/xz-utils app-arch/zoo net-mail/ripole >=dev-perl/Archive-Zip-1.14 >=virtual/perl-IO-Compress-1.35 >=virtual/perl-Compress-Raw-Zlib-2.017 net-mail/tnef virtual/perl-MIME-Base64 >=dev-perl/MIME-tools-5.415 >=dev-perl/MailTools-1.58 >=dev-perl/Net-Server-0.91 virtual/perl-Digest-MD5 dev-perl/IO-stringy virtual/perl-IO-Socket-IP >=virtual/perl-Time-HiRes-1.49 dev-perl/Unix-Syslog dev-perl/Net-LibIDN sys-apps/file >=sys-libs/db-4.4.20 dev-perl/BerkeleyDB dev-perl/Convert-BinHex >=dev-perl/Mail-DKIM-0.31 virtual/perl-File-Temp dev-perl/Net-SSLeay dev-perl/IO-Socket-SSL virtual/mta clamav? ( app-antivirus/clamav ) ldap? ( >=dev-perl/perl-ldap-0.33 ) mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) razor? ( mail-filter/razor ) snmp? ( net-analyzer/net-snmp[perl] ) spamassassin? ( mail-filter/spamassassin dev-perl/Image-Info ) zmq? ( dev-perl/ZMQ-LibZMQ3 )
 SLOT=0
 SRC_URI=http://www.ijs.si/software/amavisd/amavisd-new-2.11.0.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=0c7246ae5d6db86fb735b5339e9321a0
+_md5_=66396ecf0ce19fd823c45a05448d9db6

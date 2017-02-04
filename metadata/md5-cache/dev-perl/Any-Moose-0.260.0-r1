@@ -4,11 +4,11 @@ DESCRIPTION=Use Moose or Mouse modules (DEPRECATED)
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Any-Moose/
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~ppc ~x86
+KEYWORDS=~amd64 hppa ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Moose virtual/perl-version dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Any-Moose-0.26.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=9a66f96cfac824bb51f76d03fd0c2e7a
+_md5_=6cd1324c16640a7eab7edd54e2878bf1

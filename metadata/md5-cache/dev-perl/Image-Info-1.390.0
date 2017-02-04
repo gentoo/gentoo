@@ -4,11 +4,11 @@ DESCRIPTION=The Perl Image-Info Module
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Image-Info/
 IUSE=examples
-KEYWORDS=amd64 ~hppa ppc ppc64 x86
+KEYWORDS=amd64 hppa ppc ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/IO-stringy-1.01 dev-perl/XML-LibXML dev-perl/XML-Simple dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SR/SREZIC/Image-Info-1.39.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=64db8a85dd1f6b9b617ffce7f28bdebf
+_md5_=a4329af531d546eca64ac7a36ffd3f53
