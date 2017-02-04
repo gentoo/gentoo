@@ -102,7 +102,9 @@ src_configure() {
 
 src_install() {
 	# Parallel installation fails from time to time, bug #359123
-	gnome2_src_install -j1 GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
+	# Usually reproducible after removing any gnucash installed copy
+	MAKEOPTS="${MAKEOPTS} -j1" GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF} \
+	gnome2_src_install
 
 	rm -rf "${ED}"/usr/share/doc/${PF}/{examples/,COPYING,INSTALL,*win32-bin.txt,projects.html}
 	mv "${ED}"/usr/share/doc/${PF} "${T}"/cantuseprepalldocs || die
