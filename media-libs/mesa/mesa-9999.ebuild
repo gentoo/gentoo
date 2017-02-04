@@ -13,7 +13,7 @@ fi
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools multilib-minimal python-any-r1 pax-utils ${GIT_ECLASS}
+inherit autotools llvm multilib-minimal python-any-r1 pax-utils ${GIT_ECLASS}
 
 OPENGL_DIR="xorg-x11"
 
@@ -143,8 +143,8 @@ DEPEND="${RDEPEND}
 		) )
 	)
 	opencl? (
-				>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]
-				>=sys-devel/clang-3.4.2:=[${MULTILIB_USEDEP}]
+				>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
+				>=sys-devel/clang-3.6.0:=[${MULTILIB_USEDEP}]
 				>=sys-devel/gcc-4.6
 	)
 	sys-devel/gettext
@@ -188,6 +188,7 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
+	llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
