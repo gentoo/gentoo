@@ -73,7 +73,7 @@ RDEPEND="sys-libs/ncurses:0=
 		gtk? (
 			xwidgets? (
 				x11-libs/gtk+:3
-				net-libs/webkit-gtk:3=
+				net-libs/webkit-gtk:4=
 			)
 			!xwidgets? (
 				gtk3? ( x11-libs/gtk+:3 )
