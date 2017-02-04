@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install postinst setup
-DEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1 ) usb? ( virtual/libusb:0 ) || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+DEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= ) usb? ( virtual/libusb:0 ) dev-libs/libltdl:0= doc? ( app-doc/doxygen ) virtual/pkgconfig
 DESCRIPTION=library for accessing smart card terminals
-EAPI=5
+EAPI=6
 HOMEPAGE=https://github.com/OpenSC/openct/wiki
 IUSE=doc pcsc-lite usb debug +udev
 KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 LICENSE=LGPL-2.1
-RDEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1 ) usb? ( virtual/libusb:0 ) || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) udev? ( virtual/udev ) sys-apps/openrc
+RDEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= ) usb? ( virtual/libusb:0 ) dev-libs/libltdl:0= udev? ( virtual/udev ) sys-apps/openrc
 SLOT=0
 SRC_URI=mirror://sourceforge/opensc/openct/openct-0.6.20.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=dcd19f9d70ad8b5334b6c60145e6a297
+_md5_=7f9037ce9e5d49d97006fbaae43f2c61

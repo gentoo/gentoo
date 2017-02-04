@@ -1,12 +1,12 @@
 DEFINED_PHASES=-
-DEPEND=>=sys-block/parted-2.3 >=sys-libs/ncurses-5.7-r7 virtual/pkgconfig
+DEPEND=>=sys-block/parted-2.3 >=sys-libs/ncurses-5.7-r7:= virtual/pkgconfig
 DESCRIPTION=Securely erase disks using a variety of recognized methods
-EAPI=5
+EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/nwipe/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=sys-block/parted-2.3 >=sys-libs/ncurses-5.7-r7
+RDEPEND=>=sys-block/parted-2.3 >=sys-libs/ncurses-5.7-r7:=
 SLOT=0
 SRC_URI=mirror://sourceforge/nwipe/nwipe-0.14.tar.gz
 _eclass_exported_funcs=-
-_md5_=deeadac78a039f7a3d0113960eda879a
+_md5_=99f71399fa16136917c6bfdf082d533d

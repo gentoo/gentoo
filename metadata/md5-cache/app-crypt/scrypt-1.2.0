@@ -1,10 +1,10 @@
 DEFINED_PHASES=-
 DESCRIPTION=A simple password-based encryption utility using the scrypt key derivation function
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.tarsnap.com/scrypt.html
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
 SLOT=0
 SRC_URI=http://www.tarsnap.com/scrypt/scrypt-1.2.0.tgz
 _eclass_exported_funcs=-
-_md5_=002e78295cc53012caac64593c080478
+_md5_=b2179ce8a5770b7c1b5dda4ff900c50f

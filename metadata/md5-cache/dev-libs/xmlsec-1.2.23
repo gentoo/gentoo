@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 ) gnutls? ( >=net-libs/gnutls-2.8.0 ) nss? ( >=dev-libs/nspr-4.4.1 >=dev-libs/nss-3.9 ) openssl? ( >=dev-libs/openssl-0.9.7:* ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Command line tool for signing, verifying, encrypting and decrypting XML
+EAPI=6
+HOMEPAGE=http://www.aleksey.com/xmlsec
+IUSE=doc gcrypt gnutls nss +openssl static-libs
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 ) gnutls? ( >=net-libs/gnutls-2.8.0 ) nss? ( >=dev-libs/nspr-4.4.1 >=dev-libs/nss-3.9 ) openssl? ( >=dev-libs/openssl-0.9.7:* )
+REQUIRED_USE=|| ( gcrypt gnutls nss openssl ) gnutls? ( gcrypt )
+SLOT=0
+SRC_URI=http://www.aleksey.com/xmlsec/download/xmlsec1-1.2.23.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b1577812fa699aee3387f030879984c1

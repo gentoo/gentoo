@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install prepare test
+DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=gmp? ( >=dev-libs/gmp-5.0:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Low-level cryptographic library
 EAPI=6
@@ -9,6 +9,6 @@ LICENSE=|| ( LGPL-3 LGPL-2.1 )
 RDEPEND=gmp? ( >=dev-libs/gmp-5.0:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r17 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
 SLOT=0/6
 SRC_URI=mirror://gnu/nettle/nettle-3.3.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4c5cf087efae248434058048341fd125
+_md5_=a480c4807c5c3280ec1e289c2a01dbe8

@@ -185,7 +185,7 @@ app-admin/qtpass 1.0.5 1.1.0 1.1.5 9999: multi-platform GUI for pass, the standa
 app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/r10k 1.1.3-r1 1.5.1: Puppet environment and module deployment
 app-admin/radmind 1.14.1 1.14.1-r1: command-line tools and server to remotely administer multiple Unix filesystems
-app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically secure random number generator
+app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/recursos 2.0: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart_services 0.13.0-r1 0.13.1: Tool to manage OpenRC services that need to be restarted
@@ -558,7 +558,7 @@ app-crypt/libsecret 0.18.3 0.18.4 0.18.5: GObject library for accessing the free
 app-crypt/libu2f-host 1.1.1 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.0.1: Yubico Universal 2nd Factor (U2F) server C Library
 app-crypt/libykneomgr 0.1.8: YubiKey NEO CCID Manager C Library
-app-crypt/loop-aes-losetup 2.21 2.26: Loop-AES losetup utility
+app-crypt/loop-aes-losetup 2.26: Loop-AES losetup utility
 app-crypt/manuale 1.0.3 1.1.0: A fully manual Let's Encrypt client
 app-crypt/mcrypt 2.6.8-r2 2.6.8-r3: replacement of the old unix crypt(1)
 app-crypt/md4sum 0.02.03-r1: md4 and edonkey hash algorithm tool
@@ -581,7 +581,7 @@ app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced 
 app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.23.2: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.2 0.23.2-r1: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.3 1.4: OpenPGP key archiver
 app-crypt/pdfcrack 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108: Tools for manipulating signed PE-COFF binaries
@@ -4581,8 +4581,8 @@ dev-libs/confuse 2.7 2.8 3.0: a configuration file parser library
 dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout for ROS-dependent packages.
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/cryptlib 3.4.0-r1 3.4.3-r1: Powerful security toolkit for adding encryption to software
-dev-libs/crypto++ 5.6.2-r3 5.6.4-r2 5.6.4-r4 5.6.5: C++ class library of cryptographic schemes
+dev-libs/cryptlib 3.4.0-r1 3.4.3-r1 3.4.3.1: Powerful security toolkit for adding encryption to software
+dev-libs/crypto++ 5.6.2-r3 5.6.5: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to provide a crude approximation to the C++ vector class
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p10: REINER SCT cyberJack pinpad/e-com USB user space driver library
@@ -4683,7 +4683,7 @@ dev-libs/libRocket 1.2.1_p20130110-r1 1.3.0.0 9999: A HTML/CSS User Interface li
 dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libarcus 1.0.0_pre20160307 2.3.1: This library facilitates communication between Cura and its backend
-dev-libs/libassuan 2.4.3: IPC library used by GnuPG and GPGME
+dev-libs/libassuan 2.4.3 2.4.3-r1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
@@ -4743,7 +4743,7 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.5-r1: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.5-r1 1.7.5-r2: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
@@ -4787,7 +4787,7 @@ dev-libs/libmateweather 1.12.2 1.14.3 1.16.1: MATE library to access weather inf
 dev-libs/libmaxminddb 1.2.0: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5 0.7-r6: Modular Calendar Access Library
-dev-libs/libmcrypt 2.5.8-r3: libmcrypt is a library that provides uniform interface to access several encryption algorithms
+dev-libs/libmcrypt 2.5.8-r3 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmcs 0.7.2: Abstracts the storage of configuration settings away from applications
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcache 1.4.0_rc2-r1: C API for memcached
@@ -4813,7 +4813,7 @@ dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based 
 dev-libs/liborcus 0.11.2 0.12.1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30 0.31: reimplement libdjb - excellent libraries from Dan Bernstein
-dev-libs/libp11 0.2.8-r3 0.2.8-r4 0.4.2: Abstraction layer to simplify PKCS#11 API
+dev-libs/libp11 0.2.8-r3 0.2.8-r4 0.4.2 0.4.4: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 8.39 8.40: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
@@ -4922,10 +4922,10 @@ dev-libs/nss 3.28.1: Mozilla's Network Security Services library that implements
 dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8 2.2.11: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 5.9.5 5.9.5-r1 5.9.6_p1: a regular expression library for different character encodings
-dev-libs/opencryptoki 3.4.1: PKCS#11 provider cryptographic hardware
+dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
-dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0 0.16.0: Libraries and applications to access smartcards
+dev-libs/opensc 0.12.2-r2 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
 dev-libs/openssl 0.9.8z_p8 1.0.2j 1.0.2k 1.1.0d: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5 1.6.2-r6: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
@@ -5027,7 +5027,7 @@ dev-libs/xerces-c 3.1.4-r1: A validating XML parser written in a portable subset
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
-dev-libs/xmlsec 1.2.20: Command line tool for signing, verifying, encrypting and decrypting XML
+dev-libs/xmlsec 1.2.20 1.2.23: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xmlwrapp 0.7.1 0.7.1-r1: modern style C++ library that provides a simple and easy interface to libxml2
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xqilla 2.3.3: An XQuery and XPath 2 library and command line utility written in C++
@@ -16941,7 +16941,7 @@ sys-apps/i2c-tools 3.1.1-r1: I2C tools for bus probing, chip dumping, register-l
 sys-apps/ibm-powerpc-utils 1.1.0 1.2.2 1.2.12 1.2.25 1.2.26: This package provides utilities for the maintainance of the IBM and Apple powerpc platforms.
 sys-apps/ibm-powerpc-utils-papr 1.1.0 1.1.6: This package provides the utilities which are intended for the maintenance of IBM powerpc platforms
 sys-apps/idle3-tools 0.9.1: Read, Set or disable the idle3 timer of Western Digital drives
-sys-apps/ifd-gempc 1.0.6 1.0.7: GemCore based PC/SC reader drivers for pcsc-lite
+sys-apps/ifd-gempc 1.0.7: GemCore based PC/SC reader drivers for pcsc-lite
 sys-apps/ifplugd 0.28-r9 0.28-r10: Brings up/down ethernet ports automatically with cable detection
 sys-apps/input-utils 0.0.1_pre20081014 1.1 1.2: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5 0.5-r1 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
@@ -17018,7 +17018,7 @@ sys-apps/pciutils 3.4.1 3.5.2: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.20: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
-sys-apps/pcsc-tools 1.4.25 1.4.26 1.4.27: PC/SC Architecture smartcard tools
+sys-apps/pcsc-tools 1.4.27: PC/SC Architecture smartcard tools
 sys-apps/pkgcore 0.9.1 0.9.2 0.9.4 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
@@ -17146,7 +17146,7 @@ sys-auth/pam_ldap 183 184 186 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
 sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a user session
 sys-auth/pam_mysql 0.7_rc1-r4 0.7_rc1-r5: pam_mysql is a module for pam to authenticate users with mysql
-sys-auth/pam_p11 0.1.5-r1: PAM module for authenticating against PKCS#11 tokens
+sys-auth/pam_p11 0.1.5-r1 0.1.5-r2: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.4 1.0.5 1.3.0: Stub ebuild to help migrate to newer package name
 sys-auth/pam_pkcs11 0.6.8 0.6.9: PKCS#11 PAM library
 sys-auth/pam_radius 1.3.17-r1: PAM RADIUS authentication module
@@ -17563,7 +17563,7 @@ sys-fs/lde 2.6.1: ext2fs and minix disk editor for linux
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 65 82 82-r1 105-r1: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 sys-fs/libfat 0.3a: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
-sys-fs/loop-aes 3.7b 3.7c 3.7e 3.7f 3.7h: Linux kernel module to encrypt disk partitions with AES cipher
+sys-fs/loop-aes 3.7j: Linux kernel module to encrypt disk partitions with AES cipher
 sys-fs/lsscsi 0.28: SCSI sysfs query tool
 sys-fs/lufis 0.3: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation

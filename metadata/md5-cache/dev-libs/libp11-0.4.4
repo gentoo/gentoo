@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=!libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Abstraction layer to simplify PKCS#11 API
+EAPI=6
+HOMEPAGE=https://github.com/opensc/libp11/wiki
+IUSE=libressl bindist doc static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=!libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= )
+SLOT=0
+SRC_URI=https://github.com/OpenSC/libp11/releases/download/libp11-0.4.4/libp11-0.4.4.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=381e37d744bce81793716793e15dcdac

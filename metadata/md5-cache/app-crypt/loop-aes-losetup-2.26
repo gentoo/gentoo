@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=selinux? ( sys-libs/libselinux ) nls? ( sys-devel/gettext ) virtual/os-headers
 DESCRIPTION=Loop-AES losetup utility
-EAPI=5
+EAPI=6
 HOMEPAGE=https://www.kernel.org/pub/linux/utils/util-linux/
 IUSE=nls selinux static
 KEYWORDS=~amd64 ~arm ~hppa ~ppc ~sparc ~x86
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://kernel/linux/utils/util-linux/v2.26/util-linux-2.26.tar.xz http://loop-aes.sourceforge.net/updates/util-linux-2.26-20150310.diff.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=ea8d541336a9d1d8a0551f8c6488b12c
+_md5_=b1c2e975647e85af2e521adea37ffa18

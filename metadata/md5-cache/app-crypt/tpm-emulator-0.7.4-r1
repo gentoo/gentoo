@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
 DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) !ssl? ( dev-libs/gmp ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) sys-devel/make >=dev-util/cmake-3.5.2 virtual/pkgconfig
 DESCRIPTION=Emulator driver for tpm
-EAPI=5
+EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/tpm-emulator.berlios/
 IUSE=libressl ssl modules kernel_linux
 KEYWORDS=~amd64 ~x86
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/tpm-emulator/tpm_emulator-0.7.4.tar.gz
 _eclass_exported_funcs=pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	linux-mod	0ccff2c1a7d70cf1678059b64bcf9183	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=eb9a30bb020bb0d50469eb770290497c
+_md5_=cdcf24b0f56880eb1cd0d55073b9d20d

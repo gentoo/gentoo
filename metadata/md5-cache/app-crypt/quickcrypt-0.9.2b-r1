@@ -9,4 +9,4 @@ RDEPEND=>=dev-lang/perl-5.6 virtual/perl-Digest-MD5
 SLOT=0
 SRC_URI=http://linux.netpimpz.com/quickcrypt/download/quickcrypt_0.9.2b.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=aa35afbac8b6e8fc28e5864b07d760b6
+_md5_=9719522a4e4c7aa31b4f298fd424f8bd

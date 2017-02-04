@@ -1,10 +1,10 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=-
 DESCRIPTION=Encryption and decryption
-EAPI=3
+EAPI=6
 HOMEPAGE=http://ccrypt.sourceforge.net
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://ccrypt.sourceforge.net/download/ccrypt-1.10.tar.gz
-_eclass_exported_funcs=src_install:-
-_md5_=5a58ac844bfcab72c31cda831b4fc9d2
+_eclass_exported_funcs=-
+_md5_=33d31443dd7881106aa3378c3402099d

@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile install postinst postrm prepare
 DEPEND=>=sys-apps/pcsc-lite-1.4.14 virtual/pkgconfig
 DESCRIPTION=PC/SC Architecture smartcard tools
-EAPI=5
+EAPI=6
 HOMEPAGE=http://ludovic.rousseau.free.fr/softwares/pcsc-tools/
 IUSE=gtk network-cron
 KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://ludovic.rousseau.free.fr/softwares/pcsc-tools/pcsc-tools-1.4.27.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f0983a58c9ec146f7b8d426f50356660
+_md5_=21defa9191f0260b05d4098ddba670c4

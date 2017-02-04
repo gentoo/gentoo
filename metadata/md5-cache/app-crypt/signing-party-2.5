@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-lang/perl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lang/perl app-crypt/libmd !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A collection of several tools related to OpenPGP
-EAPI=5
+EAPI=6
 HOMEPAGE=http://pgp-tools.alioth.debian.org/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-lang/perl >=app-crypt/gnupg-1.3.92 app-crypt/libmd dev-perl/GnuPG-Interface dev-perl/Text-Template dev-perl/MIME-tools net-mail/qprint >=dev-perl/MailTools-1.62 dev-perl/Net-IDN-Encode virtual/mailx virtual/mta || ( dev-perl/libintl-perl dev-perl/Text-Iconv app-text/recode )
+RDEPEND=dev-lang/perl app-crypt/libmd >=app-crypt/gnupg-1.3.92 dev-perl/GnuPG-Interface dev-perl/Text-Template dev-perl/MIME-tools net-mail/qprint >=dev-perl/MailTools-1.62 dev-perl/Net-IDN-Encode virtual/mailx virtual/mta || ( dev-perl/libintl-perl dev-perl/Text-Iconv app-text/recode )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/signing-party/signing-party_2.5.orig.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=860b2a34dcd76ac67f558bfdc93d6465
+_md5_=0c3def11d18286e39feecebb4f102648

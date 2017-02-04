@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install prepare test
+DEFINED_PHASES=compile configure install
 DEPEND=>=sys-apps/pcsc-lite-1.8.3 usb? ( virtual/libusb:1 ) kernel_linux? ( virtual/pkgconfig ) virtual/pkgconfig
 DESCRIPTION=CCID free software driver
-EAPI=5
+EAPI=6
 HOMEPAGE=http://pcsclite.alioth.debian.org/ccid.html
 IUSE=twinserial kobil-midentity +usb
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/pcsc-lite-1.8.3 usb? ( virtual/libusb:1 )
 SLOT=0
 SRC_URI=http://alioth.debian.org/frs/download.php/file/4205/ccid-1.4.26.tar.bz2
-_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:- src_test:autotools-utils src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c
-_md5_=43bdbac889feebce30266aec4d8da215
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c
+_md5_=80eea8ad9ea567f093ed888dc5ff1bd2
