@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit perl-module eutils multilib
+inherit perl-module
 
 DESCRIPTION="A Perl Module for PC/SC SmartCard access"
 HOMEPAGE="http://ludovic.rousseau.free.fr/softwares/pcsc-perl/"
@@ -16,7 +16,3 @@ KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE=""
 
 DEPEND=">=sys-apps/pcsc-lite-1.6.0"
-
-pkg_setup() {
-	myconf="-I/usr/include/ -l/usr/$(get_libdir)"
-}
