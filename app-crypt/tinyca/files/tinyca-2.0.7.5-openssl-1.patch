@@ -1,4 +1,4 @@
---- a/lib/OpenSSL.pm.orig	2013-03-05 15:57:46.332286060 +0100
+--- a/lib/OpenSSL.pm	2013-03-05 15:57:46.332286060 +0100
 +++ b/lib/OpenSSL.pm	2013-03-05 15:57:53.408466038 +0100
 @@ -605,6 +605,8 @@
           # dirty fix (incompleted) --curly
