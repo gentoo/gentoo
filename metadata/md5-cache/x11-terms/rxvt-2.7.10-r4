@@ -3,7 +3,7 @@ DEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXext motif? ( >=x11-libs/moti
 DESCRIPTION=A nice small x11 terminal
 EAPI=5
 HOMEPAGE=http://rxvt.sourceforge.net/ http://www.giga.it.okayama-u.ac.jp/~ishihara/opensource/
-IUSE=motif cjk xgetdefault linuxkeys
+IUSE=motif cjk xgetdefault linguas_ja linuxkeys
 KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXext motif? ( >=x11-libs/motif-2.3:0 )
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/rxvt/rxvt-2.7.10.tar.gz http://www.giga.it.okayama-u.ac.jp/~ishihara/opensource/rxvt-2.7.10-xim-fix.patch.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=832392956ad412df86b221ef096d2b67
+_md5_=cbdd63652e3006f5f03485d8c845dc05
