@@ -6937,7 +6937,7 @@ dev-php/PEAR-XML_RSS 1.0.2 1.1.0_alpha1: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.20.2 0.21.0: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.3.0-r1: XML utility class
 dev-php/PHPMailer 5.2.20: Full-featured email creation and transfer class for PHP
-dev-php/PHP_CodeCoverage 1.1.2 1.2.13: Provides collection, processing, and rendering functionality for PHP code coverage information
+dev-php/PHP_CodeCoverage 1.2.13: Provides collection, processing, and rendering functionality for PHP code coverage information
 dev-php/PHP_CodeSniffer 2.6.2-r2: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5: Utility class for timing
 dev-php/PHP_TokenStream 1.1.3: Wrapper around PHP's tokenizer extension
