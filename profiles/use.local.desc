@@ -6659,7 +6659,6 @@ net-wireless/blueman:thunar - Install the sendto-plugin for xfce-base/thunar
 net-wireless/bluez:deprecated - Build deprecated plugins
 net-wireless/bluez:experimental - Build experimental plugins
 net-wireless/bluez:extra-tools - Install tools that upstream doesn't install on purpose by default. All this tools shouldn't be used. Then, please notify upstream about you still need them to let them know the situation.
-net-wireless/bluez:hid2hci - The HID proxying makes the keyboard / mouse show up as regular USB HID devices, but needs them to be paired before enabling this, otherwise they won't be detected
 net-wireless/bluez:obex - Enable OBEX transfer support.
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
 net-wireless/bluez:user-session - Allow compatibility with user-session semantics for session bus under systemd

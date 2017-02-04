@@ -15554,7 +15554,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware imag
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.1.8: A Bluetooth configuration tool
 net-wireless/blueman 2.0.3 2.0.4 2.1_alpha1 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 4.101-r9 5.39 5.43 5.43-r1: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 5.43-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.271-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
