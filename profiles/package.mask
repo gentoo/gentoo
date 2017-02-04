@@ -381,6 +381,12 @@ x11-misc/ksuperkey
 # Masked for removal in 30 days.
 net-misc/raccess
 
+# Maciej S. Szmigiero <mail@maciej.szmigiero.name> (15 Jan 2017)
+# Any version above 5.100.138 breaks b43 driver in various ways.
+# Also, b43 wiki page says to use 5.100.138.
+# Bug #541080.
+>=sys-firmware/b43-firmware-6.30.163.46
+
 # Ulrich Müller <ulm@gentoo.org> (13 Jan 2017)
 # No longer maintained as a separate package.
 # Use sci-mathematics/maxima with USE=emacs instead.
