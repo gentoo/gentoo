@@ -4,11 +4,11 @@ DESCRIPTION=Acmeist PEG Parser Framework
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Pegex/
 IUSE=test examples
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~hppa ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IN/INGY/Pegex-0.63.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=1dab18304fc4b5dadc35627f48e29aab
+_md5_=ae89de9167cf5aa638e3d2eaa75ab45c
