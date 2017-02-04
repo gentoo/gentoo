@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
+# dev-vcs/subversion not marked stable yet
+subversion
+
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # dev-db/sqlite not marked stable yet
 sqlite
