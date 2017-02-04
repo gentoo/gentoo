@@ -15,7 +15,13 @@
   <upstream>
     <remote-id type="cpan">Apache-AuthCookie</remote-id>
     <remote-id type="cpan-module">Apache2::AuthCookie</remote-id>
+    <remote-id type="cpan-module">Apache2::AuthCookie::Base</remote-id>
+    <remote-id type="cpan-module">Apache2::AuthCookie::Params</remote-id>
+    <remote-id type="cpan-module">Apache2_4::AuthCookie</remote-id>
     <remote-id type="cpan-module">Apache::AuthCookie</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie::Params</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie::Params::Base</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie::Params::CGI</remote-id>
     <remote-id type="cpan-module">Apache::AuthCookie::Util</remote-id>
   </upstream>
 </pkgmetadata>

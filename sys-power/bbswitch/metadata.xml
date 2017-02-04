@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>pacho@gentoo.org</email>
-		<name>Pacho Ramos</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>gentoo@mva.name</email>
 		<name>Vadim A. Misbakh-Soloviov</name>
 	</maintainer>
