@@ -5,6 +5,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michał Zając <manwe@manwe.pl> (04 Feb 2017)
+# Forces exact version of boost, blocking all updates.
+# Bug: #606110
+dev-db/percona-xtrabackup system-boost
+
 # Johannes Huber <johu@gentoo.org) (28 Jan 2017)
 # Unstable dependencies.
 media-plugins/kipi-plugins mediawiki vkontakte
