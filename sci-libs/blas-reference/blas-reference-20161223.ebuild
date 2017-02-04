@@ -63,6 +63,13 @@ src_install() {
 	mkdir -p "${ED}/usr/$(get_libdir)/blas/reference" || die
 	mv "${ED}/usr/$(get_libdir)"/lib* "${ED}/usr/$(get_libdir)/pkgconfig"/* \
 		"${ED}/usr/$(get_libdir)/blas/reference" || die
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# modify install_names accordingly, bug #605214
+		local lib
+		for lib in "${ED}"/usr/$(get_libdir)/blas/reference/*.dylib ; do
+			install_name_tool -id "${lib#${D%/}}" "${lib}"
+		done
+	fi
 	rmdir "${ED}/usr/$(get_libdir)/pkgconfig" || die
 
 	eselect blas add $(get_libdir) "${T}"/eselect.blas.reference ${ESELECT_PROF}
