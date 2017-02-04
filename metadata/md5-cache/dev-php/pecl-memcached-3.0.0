@@ -2,14 +2,14 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=php_targets_php7-0? ( >=dev-libs/libmemcached-1.0.14[sasl?] sys-libs/zlib igbinary? ( dev-php/igbinary[php_targets_php7-0?] ) dev-lang/php:7.0[session?,json?] ) php_targets_php7-1? ( >=dev-libs/libmemcached-1.0.14[sasl?] sys-libs/zlib igbinary? ( dev-php/igbinary[php_targets_php7-0?] ) dev-lang/php:7.1[session?,json?] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 )
 DESCRIPTION=Interface PHP with memcached via libmemcached library
 EAPI=6
-HOMEPAGE=http://pecl.php.net/package/memcached
-IUSE=+session igbinary json sasl php_targets_php5-6 php_targets_php7-0 php_targets_php7-1
+HOMEPAGE=http://pecl.php.net/php-memcached
+IUSE=examples igbinary json sasl +session php_targets_php5-6 php_targets_php7-0 php_targets_php7-1
 KEYWORDS=~amd64 ~x86
 LICENSE=PHP-3
 RDEPEND=php_targets_php7-0? ( >=dev-libs/libmemcached-1.0.14[sasl?] sys-libs/zlib igbinary? ( dev-php/igbinary[php_targets_php7-0?] ) dev-lang/php:7.0[session?,json?] ) php_targets_php7-1? ( >=dev-libs/libmemcached-1.0.14[sasl?] sys-libs/zlib igbinary? ( dev-php/igbinary[php_targets_php7-0?] ) dev-lang/php:7.1[session?,json?] ) php_targets_php5-6? ( dev-php/pecl-memcached:0[php_targets_php5-6] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 )
 REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 )
 SLOT=7
-SRC_URI=https://github.com/php-memcached-dev/php-memcached/archive/e65be324557eda7167c4831b4bfb1ad23a152beb.tar.gz -> pecl-memcached-3.0.0_alpha1_pre20161206.tar.gz
-_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_compile:php-ext-source-r3 src_test:php-ext-source-r3 src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	a30f64f44cd0439913e37281006faaca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=2537a808f3c4a4105e4341ca8c74f937
+SRC_URI=https://github.com/php-memcached-dev/php-memcached/archive/v3.0.0.tar.gz -> pecl-memcached-3.0.0.tar.gz
+_eclass_exported_funcs=src_unpack:php-ext-source-r3 src_prepare:- src_configure:- src_compile:php-ext-source-r3 src_test:php-ext-pecl-r3 src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-pecl-r3	362ad55b4b4b63dd1cf7df6cbca082c3	php-ext-source-r3	a30f64f44cd0439913e37281006faaca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=385c5d1aa9c8effb61594a7482228bf0

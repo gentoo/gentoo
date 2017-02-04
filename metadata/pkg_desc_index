@@ -6991,7 +6991,7 @@ dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.5: This package handles LZF de/compression
 dev-php/pecl-mailparse 2.1.6-r3 2.1.6-r4 3.0.1-r1 3.0.2: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-memcache 2.2.7 3.0.8-r1: PHP extension for using memcached
-dev-php/pecl-memcached 2.2.0-r1 2.2.0-r2 3.0.0_alpha1_pre20161206: Interface PHP with memcached via libmemcached library
+dev-php/pecl-memcached 2.2.0-r1 2.2.0-r2 3.0.0: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.9 1.6.14-r1: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.1.8: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
