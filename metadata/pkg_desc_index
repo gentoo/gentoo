@@ -9185,9 +9185,9 @@ dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait f
 dev-ruby/crack 0.4.2-r1 0.4.3 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
-dev-ruby/cri 2.7.0 2.7.1: Cri is a library for building easy-to-use commandline tools
+dev-ruby/cri 2.7.1: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.4.6 1.4.7: Sass-based Stylesheet Framework
-dev-ruby/curb 0.8.8 0.9.3: Ruby-language bindings for libcurl
+dev-ruby/curb 0.9.3: Ruby-language bindings for libcurl
 dev-ruby/curses 1.0.2 1.1.1: Ruby binding for curses, ncurses, and PDCurses
 dev-ruby/d3_rails 3.5.16 3.5.17 4.1.1: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
