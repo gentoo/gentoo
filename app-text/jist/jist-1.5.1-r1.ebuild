@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -21,10 +21,12 @@ IUSE=""
 
 ruby_add_rdepend "dev-ruby/json:*"
 
-ruby_add_bdepend "test? ( dev-ruby/webmock )"
+ruby_add_bdepend "test? ( dev-ruby/webmock:0 )"
 
 all_ruby_prepare() {
 	# Avoid failing test (due to webmock version?)
 	# We did not run any tests previously
 	rm -f spec/shorten_spec.rb || die
+
+	sed -i -e '1igem "webmock", "~>1.0"' spec/spec_helper.rb || die
 }
