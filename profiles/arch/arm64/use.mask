@@ -4,6 +4,10 @@
 # doomsday ebuild is not available on this architecture
 doomsday
 
+# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
+# net-fs/samba not tested on arm64 yet
+samba
+
 # Mart Raudsepp <leio@gentoo.org> (01 Feb 2017)
 # Unmask systemd since it is keyworded here.
 -systemd
