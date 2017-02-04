@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/rxvt/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 sparc x86"
-IUSE="motif cjk xgetdefault linuxkeys"
+IUSE="motif cjk xgetdefault linguas_ja linuxkeys"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXpm
