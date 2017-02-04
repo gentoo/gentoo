@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	gnome-base/gsettings-desktop-schemas
 
 	>=media-libs/libdiscid-0.4.0
-	>=media-libs/musicbrainz-5.0.1:5
+	>=media-libs/musicbrainz-5.0.1:5=
 
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0[vorbis?]
