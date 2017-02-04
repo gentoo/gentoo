@@ -9999,7 +9999,7 @@ dev-util/buildbot-worker 0.9.0_p1 0.9.1 0.9.2-r1 0.9.3-r1 9999: BuildBot Slave D
 dev-util/buildbot-www 0.9.0_p1 0.9.1 0.9.2 0.9.3: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
-dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc parser generator
+dev-util/byacc 20150711 20160606 20170201: the best variant of the Yacc parser generator
 dev-util/cargo 0.15.0 0.16.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
