@@ -4728,7 +4728,7 @@ dev-libs/liberasurecode 1.0.8-r1: Erasure Code API library written in C with plu
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.15-r1 4.19 4.20 4.22 4.23: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.4.4 1.5.2 1.5.4 1.5.5 1.5.6: Handler library for evdev events
-dev-libs/libevent 2.0.22 2.1.8 9999: A library to execute a function when a specific event occurs on a file descriptor
+dev-libs/libevent 2.0.22 2.0.22-r2 2.1.8 9999: A library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
