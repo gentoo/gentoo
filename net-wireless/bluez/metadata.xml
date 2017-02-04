@@ -14,9 +14,6 @@
     situation.</flag>
   <flag name="test-programs">Install tools for testing of
     various Bluetooth functions</flag>
-  <flag name="hid2hci">The HID proxying makes the keyboard / mouse show up
-    as regular USB HID devices, but needs them to be paired before enabling
-    this, otherwise they won't be detected</flag>
   <flag name="obex">Enable OBEX transfer support.</flag>
   <flag name="user-session">Allow compatibility with user-session semantics for session bus under systemd</flag>
 </use>
