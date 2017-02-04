@@ -1,9 +1,0 @@
-# Copyright 1999-2011 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# the CHOST version number is the version number of the host libc, not the version of the interix SDK package.
-
-ARCH="x86-interix"
-CHOST="i586-pc-interix6.1"
-ACCEPT_KEYWORDS="~x86-interix"

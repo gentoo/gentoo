@@ -1,0 +1,29 @@
+--- a/src/relay.c	2004-11-01 09:19:04.835537536 +0000
++++ b/src/relay.c	2004-11-01 09:19:59.453234384 +0000
+@@ -260,6 +260,7 @@
+ 		    else goto bail;
+ 		    goto nextpkt;
+ 		bail:
++		    ;
+ 		}
+ 	    }	
+ 	}
+--- a/src/ballistics.c	2004-11-01 09:19:33.132235784 +0000
++++ b/src/ballistics.c	2004-11-01 09:20:16.849589736 +0000
+@@ -92,6 +92,7 @@
+ 	    break;
+ 	case WALL_LAST:
+ 	    /* just to satisfy gcc -Wall */
++	    ;
+     }
+ }
+ 
+@@ -210,7 +211,7 @@
+ 		break;
+ 	    case WALL_RANDOM:	/* both of this can't happen, */
+ 	    case WALL_LAST:	/* so they are here to satisfy gcc -Wall */
+-
++	    	;
+ 	}
+     }
+     return FLYING;

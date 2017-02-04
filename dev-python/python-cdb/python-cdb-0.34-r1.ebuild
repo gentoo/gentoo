@@ -14,7 +14,7 @@ HOMEPAGE="http://pilcrow.madison.wi.us/#pycdb"
 SLOT="0"
 IUSE=""
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm ia64 ppc sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm ia64 ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="|| ( dev-db/cdb dev-db/tinycdb )"
 RDEPEND="${DEPEND}"

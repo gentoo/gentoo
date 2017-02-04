@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.libsdl.org/release/SDL-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 # WARNING:
 # If you turn on the custom-cflags use flag in USE and something breaks,
 # you pick up the pieces.  Be prepared for bug reports to be marked INVALID.
@@ -74,12 +74,12 @@ src_prepare() {
 		"${FILESDIR}"/${P}-const-xdata32.patch \
 		"${FILESDIR}"/${P}-caca.patch \
 		"${FILESDIR}"/${P}-SDL_EnableUNICODE.patch
-	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
+	AT_M4DIR="${EPREFIX}/usr/share/aclocal acinclude" eautoreconf
 }
 
 multilib_src_configure() {
 	local myconf=
-	if use !x86 ; then
+	if use !x86 && use !x86-linux ; then
 		myconf="${myconf} --disable-nasm"
 	else
 		myconf="${myconf} --enable-nasm"
@@ -92,7 +92,7 @@ multilib_src_configure() {
 	use joystick || myconf="${myconf} --disable-joystick"
 
 	ECONF_SOURCE="${S}" econf \
-		--disable-rpath \
+		$(use_enable prefix rpath) \
 		--disable-arts \
 		--disable-esd \
 		--enable-events \

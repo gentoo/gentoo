@@ -23,7 +23,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls pam test"
 
-RDEPEND="pam? ( virtual/pam )"
+RDEPEND="pam? ( virtual/pam )
+	app-arch/gzip"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-libs/check )"

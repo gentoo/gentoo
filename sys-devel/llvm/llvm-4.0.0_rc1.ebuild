@@ -9,16 +9,12 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic git-r3 \
+inherit check-reqs cmake-utils flag-o-matic \
 	multilib-minimal pax-utils python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="c329efbc3c94928fb826ed146897aada0459c983"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -36,7 +32,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="0/$(get_major_version)"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug +doc gold libedit +libffi multitarget ncurses test
 	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
@@ -64,6 +60,8 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+
+S=${WORKDIR}/${P/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -127,9 +125,6 @@ src_prepare() {
 
 	# User patches
 	eapply_user
-
-	# Native libdir is used to hold LLVMgold.so
-	NATIVE_LIBDIR=$(get_libdir)
 }
 
 multilib_src_configure() {
@@ -242,9 +237,6 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	if multilib_is_native_abi; then
-		# Install docs.
-		#use doc && dohtml -r "${S}"/docs/_build/html/
-
 		# Symlink the gold plugin.
 		if use gold; then
 			dodir "/usr/${CHOST}/binutils-bin/lib/bfd-plugins"

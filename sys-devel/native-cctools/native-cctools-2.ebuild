@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0"
 
 LD_AIX_V=2
 
-KEYWORDS="~ppc-aix ~x86-interix ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~ppc-aix ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 IUSE=""
 

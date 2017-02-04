@@ -1,32 +1,28 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit vim-plugin eutils
+inherit vim-plugin
 
 DESCRIPTION="vim plugin: enhanced comment creation"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=23"
 
 LICENSE="BSD"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
-IUSE=""
+KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
 
 VIM_PLUGIN_HELPFILES="EnhancedCommentify"
 
-DEPEND="
-	>=sys-apps/sed-4"
+DEPEND="sys-apps/sed"
 
 # See bug #74897.
 RDEPEND="
 	${DEPEND}
 	!app-vim/ctx"
 
-src_prepare() {
-	default
-
+PATCHES=(
 	# See bug #79185.
-	epatch "${FILESDIR}"/${PN}-2.1-gentooisms.patch
-	epatch "${FILESDIR}"/${PN}-2.1-extra-ft-support.patch
-}
+	"${FILESDIR}"/${PN}-2.1-gentooisms.patch
+	"${FILESDIR}"/${PN}-2.1-extra-ft-support.patch
+)

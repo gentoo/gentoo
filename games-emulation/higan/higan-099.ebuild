@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,16 @@ REQUIRED_USE="|| ( ao openal alsa pulseaudio oss )
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
+	icarus? ( x11-libs/gtksourceview:2.0
+			  x11-libs/gtk+:2
+			  x11-libs/pango
+			  dev-libs/atk
+			  x11-libs/cairo
+			  x11-libs/gdk-pixbuf
+			  dev-libs/glib:2
+			  media-libs/fontconfig
+			  media-libs/freetype
+			)
 	ao? ( media-libs/libao )
 	openal? ( media-libs/openal )
 	alsa? ( media-libs/alsa-lib )
@@ -31,8 +41,10 @@ RDEPEND="
 	sdl? ( media-libs/libsdl[X,joystick,video] )
 	udev? ( virtual/udev )
 	!qt4? ( x11-libs/gtk+:2 )
-	qt4? ( >=dev-qt/qtgui-4.5:4 )"
+	qt4? (  dev-qt/qtcore:4
+			>=dev-qt/qtgui-4.5:4 )"
 DEPEND="${RDEPEND}
+	app-arch/p7zip
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}

@@ -134,6 +134,7 @@ src_configure() {
 		--host=${CTARGET}
 		--build=${CTARGET}
 		--target=${CTARGET}
+		--cargo="${WORKDIR}"/${P}/target/snapshot/bin/cargo
 		--enable-optimize
 #		--release-channel stable
 		--disable-verify-install

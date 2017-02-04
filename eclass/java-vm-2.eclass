@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -280,10 +280,8 @@ java-vm_set-pax-markings() {
 	local executables=( "${1}"/bin/* )
 	[[ -d "${1}"/jre ]] && executables+=( "${1}"/jre/bin/* )
 
-	# Ensure a PaX header is created.
-	local pax_markings="C"
-	# Usally disabeling MPROTECT is sufficent.
-	local pax_markings+="m"
+	# Usually disabling MPROTECT is sufficient.
+	local pax_markings="m"
 	# On x86 for heap sizes over 700MB disable SEGMEXEC and PAGEEXEC as well.
 	use x86 && pax_markings+="sp"
 

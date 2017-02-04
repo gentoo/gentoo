@@ -10,7 +10,7 @@ SRC_URI="https://github.com/LibVNC/x11vnc/archive/e191071c1f375d04ba8f955ea0a302
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="crypt fbcon libressl ssl xinerama zeroconf"
 
 RDEPEND=">=net-libs/libvncserver-0.9.8[ssl?]

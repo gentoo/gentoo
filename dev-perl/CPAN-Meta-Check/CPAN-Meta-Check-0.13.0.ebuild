@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Verify requirements in a CPAN::Meta object"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="test"
 
 # CPAN::Meta::Prereqs -> perl-CPAN-Meta

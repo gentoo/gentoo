@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SLOT="0/${PV}"
 KEYWORDS=""
 
 IUSE_SERVERS="dmx kdrive xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} glamor ipv6 libressl minimal selinux +suid systemd tslib +udev unwind wayland"
+IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd tslib +udev unwind wayland"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
@@ -75,6 +75,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	wayland? (
 		>=dev-libs/wayland-1.3.0
 		media-libs/libepoxy
+		>=dev-libs/wayland-protocols-1.1
 	)
 	>=x11-apps/xinit-1.3.3-r1
 	systemd? (
@@ -161,11 +162,10 @@ src_configure() {
 	#	package it somewhere
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
+		$(use_enable debug)
 		$(use_enable dmx)
 		$(use_enable glamor)
 		$(use_enable kdrive)
-		$(use_enable kdrive kdrive-kbd)
-		$(use_enable kdrive kdrive-mouse)
 		$(use_enable kdrive kdrive-evdev)
 		$(use_enable suid install-setuid)
 		$(use_enable tslib)

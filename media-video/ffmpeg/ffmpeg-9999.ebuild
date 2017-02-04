@@ -81,7 +81,7 @@ FFMPEG_FLAG_MAP=(
 		# libavfilter options
 		bs2b:libbs2b chromaprint flite:libflite frei0r
 		fribidi:libfribidi fontconfig ladspa libass truetype:libfreetype
-		rubberband:librubberband zimg:libzimg
+		rubberband:librubberband sofalizer:netcdf zimg:libzimg
 		# libswresample options
 		libsoxr
 		# Threads; we only support pthread for now but ffmpeg supports more
@@ -220,6 +220,10 @@ RDEPEND="
 	samba? ( >=net-fs/samba-3.6.23-r1[${MULTILIB_USEDEP}] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.11-r1[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
+	sofalizer? (
+		>=sci-libs/netcdf-4.3.2-r1[hdf5]
+		>=sci-libs/hdf5-1.8.18[hl]
+	)
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh-0.5.5[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
@@ -336,7 +340,7 @@ multilib_src_configure() {
 
 	# (temporarily) disable non-multilib deps
 	if ! multilib_is_native_abi; then
-		for i in frei0r ; do
+		for i in frei0r netcdf ; do
 			myconf+=( --disable-${i} )
 		done
 	fi

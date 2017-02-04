@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -197,17 +197,15 @@
+   ENDIF(EGL_FOUND)
+ ENDIF(ENABLE_GL_SHARING)
+ 
++OPTION(OCLICD_COMPAT "OCL ICD compatibility mode" ON)
++IF(OCLICD_COMPAT)
+ Find_Package(OCLIcd)
+ IF(OCLIcd_FOUND)
+   MESSAGE(STATUS "Looking for OCL ICD header file - found")
+-  configure_file (
+-    "intel-beignet.icd.in"
+-    "${ICD_FILE_NAME}"
+-  )
+-  install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${ICD_FILE_NAME} DESTINATION /etc/OpenCL/vendors)
+ ELSE(OCLIcd_FOUND)
+   MESSAGE(STATUS "Looking for OCL ICD header file - not found")
+ ENDIF(OCLIcd_FOUND)
++ENDIF(OCLICD_COMPAT)
+ 
+ Find_Package(PythonInterp)
+ 

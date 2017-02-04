@@ -10,19 +10,15 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 # TODO: fix unnecessary dep on Python upstream
-inherit cmake-utils flag-o-matic git-r3 python-any-r1 toolchain-funcs
+inherit cmake-utils flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
-	https://github.com/llvm-mirror/compiler-rt.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="850646edf7e605354c66693c16ab69193e04a078"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0/${PV%.*}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -32,6 +28,8 @@ DEPEND="${RDEPEND}
 	>=sys-devel/llvm-4
 	test? ( ~sys-devel/clang-${PV} )
 	${PYTHON_DEPS}"
+
+S=${WORKDIR}/${P/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo

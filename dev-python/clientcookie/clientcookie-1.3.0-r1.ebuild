@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://wwwsearch.sourceforge.net/ClientCookie/src/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc x86 ~amd64-linux ~ia64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ia64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

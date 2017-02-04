@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -89,6 +89,7 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
+	app-crypt/gpgme
 	app-text/hunspell
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
@@ -356,6 +357,14 @@ src_prepare() {
 		# hack...
 		mv -v "${WORKDIR}/branding-intro.png" "${S}/icon-themes/galaxy/brand/intro.png" || die
 	fi
+
+	# Don't list pdfimport support in desktop when built with none, bug # 605464
+	if ! use pdfimport; then
+		sed -i \
+			-e ":MimeType: s:application/pdf;::" \
+			-e ":Keywords: s:pdf;::" \
+			sysui/desktop/menus/draw.desktop || die
+	fi
 }
 
 src_configure() {
@@ -459,6 +468,7 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
+		--with-system-gpgme \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \

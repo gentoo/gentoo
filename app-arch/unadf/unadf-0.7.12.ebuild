@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://lclevy.free.fr/${MY_PN}/${MY_PN}-${PV}.tar.bz2"
 HOMEPAGE="http://lclevy.free.fr/adflib/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc-macos ~sparc-solaris ~x86 ~x86-interix ~x86-linux ~x86-solaris"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="static-libs"
 DEPEND=""
 RDEPEND=""

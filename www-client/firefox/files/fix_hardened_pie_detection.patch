@@ -1,0 +1,36 @@
+From: Jory A. Pratt <anarchy@gentoo.org>
+
+CFLAGS must contain -fPIC when checking the linker
+
+https://bugs.gentoo.org/show_bug.cgi?id=607350
+
+diff --git a/build/autoconf/compiler-opts.m4 b/build/autoconf/compiler-opts.m4
+--- a/build/autoconf/compiler-opts.m4
++++ b/build/autoconf/compiler-opts.m4
+@@ -263,23 +263,26 @@ fi
+ 
+ MOZ_ARG_ENABLE_BOOL(pie,
+ [  --enable-pie           Enable Position Independent Executables],
+     MOZ_PIE=1,
+     MOZ_PIE= )
+ 
+ if test "$GNU_CC" -a -n "$MOZ_PIE"; then
+     AC_MSG_CHECKING([for PIE support])
++    _SAVE_CFLAGS=$CFLAGS
++    CFLAGS="$CFLAGS -fPIC"
+     _SAVE_LDFLAGS=$LDFLAGS
+     LDFLAGS="$LDFLAGS -pie"
+     AC_TRY_LINK(,,AC_MSG_RESULT([yes])
+                   [MOZ_PROGRAM_LDFLAGS="$MOZ_PROGRAM_LDFLAGS -pie"],
+                   AC_MSG_RESULT([no])
+                   AC_MSG_ERROR([--enable-pie requires PIE support from the linker.]))
+     LDFLAGS=$_SAVE_LDFLAGS
++    CFLAGS=$_SAVE_CFLAGS
+ fi
+ 
+ AC_SUBST(MOZ_PROGRAM_LDFLAGS)
+ 
+ dnl ASan assumes no symbols are being interposed, and when that happens,
+ dnl it's not happy with it. Unconveniently, since Firefox is exporting
+ dnl libffi symbols and Gtk+3 pulls system libffi via libwayland-client,
+ dnl system libffi interposes libffi symbols that ASan assumes are in

@@ -36,15 +36,12 @@ pkg_setup() {
 }
 
 src_configure() {
-	local myconf=""
-	use ldap && myconf=${myconf}" --with-auth-ldap"
-
 	econf \
 		--enable-manpages \
 		--sysconfdir=/etc/dbmail \
 		$(use_enable static) \
 		$(use_with sieve) \
-		${myconf}
+		$(use_with ldap auth-ldap)
 }
 
 src_install() {

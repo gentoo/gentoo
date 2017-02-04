@@ -1,0 +1,32 @@
+commit 6c2d65452bd5fe62723988a1a570789921900d59
+Author: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+Date:   Fri Sep 30 15:39:47 2016 +0200
+
+    address gcc6 build error
+    
+    With gcc6, compiling fails with `stdlib.h: No such file or directory`,
+    as including '-isystem /usr/include' breaks with gcc6, cf.,
+    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129.
+    
+    This commit addresses this issue for this package in the same way
+    it was addressed in various other ROS packages. A list of related
+    commits and pull requests is at:
+    
+      https://github.com/ros/rosdistro/issues/12783
+    
+    Signed-off-by: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+
+diff --git a/image_publisher/CMakeLists.txt b/image_publisher/CMakeLists.txt
+index 8015a45..431109c 100644
+--- a/image_publisher/CMakeLists.txt
++++ b/image_publisher/CMakeLists.txt
+@@ -8,8 +8,7 @@ generate_dynamic_reconfigure_options(cfg/ImagePublisher.cfg)
+ 
+ catkin_package()
+ 
+-# add the executable
+-include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
++include_directories(${catkin_INCLUDE_DIRS})
+ 
+ add_library(${PROJECT_NAME} SHARED src/nodelet/image_publisher_nodelet.cpp)
+ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})

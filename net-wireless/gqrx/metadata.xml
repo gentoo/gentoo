@@ -11,6 +11,9 @@
 	</maintainer>
 	<longdescription lang="en">
 </longdescription>
+	<use>
+		<flag name="gr-audio">Use audio support from <pkg>net-wireless/gnuradio</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">csete/gqrx</remote-id>
 	</upstream>

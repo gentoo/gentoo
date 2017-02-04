@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit kde5 multibuild
 
 DESCRIPTION="Breeze visual style for the Plasma desktop"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/breeze"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="qt4 wayland"
 
 COMMON_DEPEND="

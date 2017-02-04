@@ -47,11 +47,3 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	app-crypt/gnupg
 "
-
-pkg_postinst() {
-	kde5_pkg_postinst
-
-	if ! has_version 'app-crypt/dirmngr' && ! has_version '>=app-crypt/gnupg-2.1'; then
-		elog "For improved key search functionality, install app-crypt/dirmngr."
-	fi
-}

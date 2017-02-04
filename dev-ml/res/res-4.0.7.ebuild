@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	>=dev-ml/findlib-1.5"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="examples"
 
 DOCS=( "AUTHORS.txt" "CHANGES.txt" "README.md" )

@@ -1,0 +1,91 @@
+From dca4a3538f86d8e2e957945a691430573192716d Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Tue, 24 Jan 2017 19:42:19 +0400
+Subject: [PATCH 6/6] connector: do not use get_dbus_connection after
+ GApplication was released.
+
+Fixes: https://github.com/nE0sIghT/chrome-gnome-shell-mirror/issues/27
+---
+ connector/chrome-gnome-shell.py | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/connector/chrome-gnome-shell.py b/connector/chrome-gnome-shell.py
+index 0f6e5f1..ac6740a 100755
+--- a/connector/chrome-gnome-shell.py
++++ b/connector/chrome-gnome-shell.py
+@@ -106,21 +106,26 @@ class ChromeGNOMEShell(Gio.Application):
+             self.hold()
+ 
+     # Is there any way to hook this to shutdown?
+-    def cleanup(self):
+-        debug('Cleanup')
++    def clean_release(self):
++        debug('Release')
+ 
+         if self.shellAppearedId:
+             Gio.bus_unwatch_name(self.shellAppearedId)
+ 
+         if self.shellSignalId:
+-            self.get_dbus_connection().signal_unsubscribe(self.shellSignalId)
++            dbus_connection = self.get_dbus_connection()
++
++            if dbus_connection is not None:
++                dbus_connection.signal_unsubscribe(self.shellSignalId)
++
++        self.release()
+ 
+     def default_exception_hook(self, exception_type, value, tb):
+         log_error("Uncaught exception of type %s occured" % exception_type)
+         traceback.print_tb(tb)
+         log_error("Exception: %s" % value)
+ 
+-        self.release()
++        self.clean_release()
+ 
+     def add_simple_action(self, name, callback, parameter_type):
+         action = Gio.SimpleAction.new(
+@@ -191,7 +196,7 @@ class ChromeGNOMEShell(Gio.Application):
+     # noinspection PyUnusedLocal
+     def on_service_timeout(self, data):
+         debug('On service timeout')
+-        self.release()
++        self.clean_release()
+ 
+         return False
+ 
+@@ -203,7 +208,7 @@ class ChromeGNOMEShell(Gio.Application):
+ 
+         if len(text_length_bytes) == 0:
+             debug('Release condition: %s' % str(condition))
+-            self.release()
++            self.clean_release()
+             return
+ 
+         # Unpack message length as 4 byte integer.
+@@ -255,14 +260,14 @@ class ChromeGNOMEShell(Gio.Application):
+     # noinspection PyUnusedLocal
+     def on_hup(self, source, condition, data):
+         debug('On hup: %s' % str(condition))
+-        self.release()
++        self.clean_release()
+ 
+         return False
+ 
+     # noinspection PyUnusedLocal
+     def on_sigint(self, data):
+         debug('On sigint')
+-        self.release()
++        self.clean_release()
+ 
+         return False
+ 
+@@ -545,6 +550,5 @@ if __name__ == '__main__':
+     app = ChromeGNOMEShell('--gapplication-service' in sys.argv)
+ 
+     app.run(sys.argv)
+-    app.cleanup()
+ 
+     debug('Quit')
+-- 
+2.10.2
+

@@ -447,10 +447,11 @@ _git-r3_set_submodules() {
 			submodule."${subname}".update)
 		[[ ${upd} == none ]] && continue
 
-		# https://github.com/git/git/blob/master/refs.c#L39
-		# for now, we just filter /. because of #572312
-		local enc_subname=${subname//\/.//_}
-		[[ ${enc_subname} == .* ]] && enc_subname=_${enc_subname#.}
+		# https://github.com/git/git/blob/master/refs.c#L31
+		# we are more restrictive than git itself but that should not
+		# cause any issues, #572312, #606950
+		# TODO: check escaped names for collisions
+		local enc_subname=${subname//[^a-zA-Z0-9-]/_}
 
 		submodules+=(
 			"${enc_subname}"

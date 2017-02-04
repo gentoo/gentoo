@@ -1,0 +1,130 @@
+From a65e87b8dbc48411b7fcade37612cf6e35be9865 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 3 Feb 2017 21:54:54 +0200
+Subject: [PATCH] build: use ldflags
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tools/buildsharedlib.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/buildsharedlib.sh b/tools/buildsharedlib.sh
+index 9a23592..c90dbc1 100644
+--- a/tools/buildsharedlib.sh
++++ b/tools/buildsharedlib.sh
+@@ -86,7 +86,7 @@ shift
+ 
+ if [ "$($LD -v 2>&1 | grep -c gcc)" -gt 0 ] ; then
+ 	LD_IS_GCC=1 ;
+-	LDFLAGS="-shared -Wl,-soname,libcl.so.$VERS" ;
++	LDFLAGS="-shared -Wl,-soname,libcl.so.$VERS $LDFLAGS" ;
+ fi
+ 
+ # Create the response file to hold the link command
+-- 
+2.10.2
+
+From 188dce32ea9c58271c8ce48ab02a3b255498bf9f Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 4 Feb 2017 05:08:47 +0200
+Subject: [PATCH] build: allow specify additional CFLAGS
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index cb9884c..827a78a 100644
+--- a/makefile
++++ b/makefile
+@@ -90,7 +90,7 @@ DYLIBNAME = lib$(PROJ).$(MAJ).$(MIN).dylib
+ # Further cc flags are gathered dynamically at runtime via the ccopts.sh
+ # script.
+ 
+-CFLAGS		= -c -D__UNIX__ -DNDEBUG -I.
++CFLAGS		= -c -D__UNIX__ -DNDEBUG -I. $(EXTRA_CFLAGS)
+ CFLAGS_ANALYSE = -c -D__UNIX__ -I.
+ CFLAGS_COVERAGE = -c -D__UNIX__ -I. -ggdb3 -fno-omit-frame-pointer -O1 --coverage -fprofile-arcs -ftest-coverage
+ CFLAGS_DEBUG = -c -D__UNIX__ -I. -ggdb3 -fno-omit-frame-pointer -O0
+-- 
+2.10.2
+
+From 3a084f090f12ebc65cef7b14aeaa28257dacaaaa Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 4 Feb 2017 06:19:51 +0200
+Subject: [PATCH] build: ccopts: detect mutex using pre-processor
+
+this required for proper cross compile detection.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tools/ccopts.sh | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/tools/ccopts.sh b/tools/ccopts.sh
+index e506c6c..8cc87ff 100644
+--- a/tools/ccopts.sh
++++ b/tools/ccopts.sh
+@@ -324,13 +324,14 @@ fi
+ # tend to be somewhat hit-and-miss but we at least indicate their presence
+ # via a define.
+ 
+-if [ -f /usr/include/pthread.h ] ; then
+-	if [ "$(grep -c PTHREAD_MUTEX_RECURSIVE /usr/include/pthread.h)" -gt 0 ] ; then
+-		CCARGS="$CCARGS -DHAS_RECURSIVE_MUTEX" ;
+-	fi ;
+-	if [ "$(grep -c PTHREAD_MUTEX_ROBUST /usr/include/pthread.h)" -gt 0 ] ; then
+-		CCARGS="$CCARGS -DHAS_ROBUST_MUTEX" ;
+-	fi ;
++PTHREAD_OUT="$(echo "#include <pthread.h>" | ${CC} -E - 2> /dev/null)"
++if [ $? -eq 0 ]; then
++	if echo "${PTHREAD_OUT}" | grep -q PTHREAD_MUTEX_RECURSIVE; then
++		CCARGS="$CCARGS -DHAS_RECURSIVE_MUTEX"
++	fi
++	if echo "${PTHREAD_OUT}" | grep -q PTHREAD_MUTEX_ROBUST; then
++		CCARGS="$CCARGS -DHAS_ROBUST_MUTEX"
++	fi
+ fi
+ 
+ # If we're not using gcc, we're done.  This isn't as simple as a straight
+-- 
+2.10.2
+
+From 489a81e89103a7a3c653b9e95e279eefa1514c51 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 4 Feb 2017 06:28:03 +0200
+Subject: [PATCH] build: ccopts: support disable of autodetection
+
+requires for cross-compile and explicit predictable build.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tools/ccopts.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/ccopts.sh b/tools/ccopts.sh
+index 8cc87ff..296bc80 100644
+--- a/tools/ccopts.sh
++++ b/tools/ccopts.sh
+@@ -150,7 +150,7 @@ case $OSNAME in
+ 			HASDYNLOAD=1 ;
+ 		fi ;;
+ esac
+-if [ $HASDYNLOAD -gt 0 ] ; then
++if [ -z $DISABLE_AUTODETECT ] && [ $HASDYNLOAD -gt 0 ] ; then
+ 	if [ -f /usr/include/sql.h ] ; then
+ 		echo "ODBC interface detected, enabling ODBC support." >&2 ;
+ 		CCARGS="$CCARGS -DHAS_ODBC" ;
+@@ -181,7 +181,7 @@ if [ $HASDYNLOAD -gt 0 ] ; then
+ 		CCARGS="$CCARGS -DNCIPHER_PKCS11" ;
+ 	fi
+ fi
+-if [ -d /usr/include/event2 ] && [ -f /usr/include/event2/event.h ] ; then
++if [ -z $DISABLE_AUTODETECT ] && [ -d /usr/include/event2 ] && [ -f /usr/include/event2/event.h ] ; then
+ 	echo "  (Enabling use of libevent)." >&2 ;
+ 	CCARGS="$CCARGS -DHAS_LIBEVENT" ;
+ fi
+-- 
+2.10.2
+

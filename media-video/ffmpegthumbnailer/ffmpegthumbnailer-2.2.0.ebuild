@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dirkvdb/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="gnome gtk jpeg libav png test"
 
 RDEPEND="
@@ -25,7 +25,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
-REQUIRED_USE="gnome? ( gtk )"
+REQUIRED_USE="gnome? ( gtk )
+	test? ( png jpeg )"
 
 DOCS=( AUTHORS ChangeLog README.md )
 

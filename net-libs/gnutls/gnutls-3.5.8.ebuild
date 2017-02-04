@@ -12,7 +12,7 @@ SRC_URI="mirror://gnupg/gnutls/v$(get_version_component_range 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
 IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 sslv2 +sslv3 static-libs test test-full +tls-heartbeat tools valgrind zlib ${IUSE_LINGUAS// / linguas_}"
 
@@ -37,7 +37,7 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	test-full? (
 		app-crypt/dieharder
 		app-misc/datefudge
-		dev-libs/softhsm:2
+		dev-libs/softhsm:2[-bindist]
 		net-dialup/ppp
 		net-misc/socat
 	)
@@ -55,9 +55,20 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
 
+DOCS=(
+	README.md
+	doc/certtool.cfg
+)
+
+HTML_DOCS=()
+
 pkg_setup() {
 	# bug#520818
 	export TZ=UTC
+
+	use doc && HTML_DOCS+=(
+		doc/gnutls.html
+	)
 }
 
 src_prepare() {
@@ -100,8 +111,7 @@ multilib_src_configure() {
 	# hardware-accell is disabled on OSX because the asm files force
 	#   GNU-stack (as doesn't support that) and when that's removed ld
 	#   complains about duplicate symbols
-	ECONF_SOURCE=${S} \
-	econf \
+	ECONF_SOURCE=${S} econf \
 		--without-included-libtasn1 \
 		$(use_enable cxx) \
 		$(use_enable dane libdane) \
@@ -130,14 +140,6 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	prune_libtool_files --all
-
-	dodoc doc/certtool.cfg
-
-	if use doc; then
-		dohtml doc/gnutls.html
-	else
-		rm -fr "${ED}/usr/share/doc/${PF}/html"
-	fi
 
 	if use examples; then
 		docinto examples

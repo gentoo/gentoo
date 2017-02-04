@@ -17,7 +17,7 @@ REQUIRED_USE="
 	xinerama? ( !aqua )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768663#c1
@@ -36,7 +36,6 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	!aqua? (
 		>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg,X,${MULTILIB_USEDEP}]
-		>=x11-libs/gdk-pixbuf-2.30.7:2[introspection?,${MULTILIB_USEDEP}]
 		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]

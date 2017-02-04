@@ -12,7 +12,7 @@ inherit toolchain-funcs perl-module
 DESCRIPTION="Perl Net::DNS - Perl DNS Resolver Module"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="ipv6 test minimal"
 
 PDEPEND="!minimal? ( >=dev-perl/Net-DNS-SEC-1.10.0 )"

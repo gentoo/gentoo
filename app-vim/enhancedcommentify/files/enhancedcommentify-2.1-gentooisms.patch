@@ -1,5 +1,5 @@
---- plugin/EnhancedCommentify.vim.orig	2005-01-27 00:20:00.049461056 -0500
-+++ plugin/EnhancedCommentify.vim	2005-01-27 00:17:57.617073608 -0500
+--- a/plugin/EnhancedCommentify.vim	2005-01-27 00:20:00.049461056 -0500
++++ b/plugin/EnhancedCommentify.vim	2005-01-27 00:17:57.617073608 -0500
 @@ -628,6 +628,10 @@
      " letter.
      if match(synFiletype, '\l\+\u') == 0

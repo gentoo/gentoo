@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,12 +12,14 @@ SRC_URI="https://savannah.nongnu.org/download/quilt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="emacs graphviz"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
+IUSE="emacs graphviz elibc_Darwin elibc_SunOS"
 
 RDEPEND="sys-apps/ed
 	dev-util/diffstat
 	graphviz? ( media-gfx/graphviz )
+	elibc_Darwin? ( app-misc/getopt )
+	elibc_SunOS? ( app-misc/getopt )
 	>=sys-apps/coreutils-8.5"
 
 PDEPEND="emacs? ( app-emacs/quilt-el )"
@@ -47,18 +49,25 @@ src_prepare() {
 	use graphviz || epatch "${FILESDIR}/${P}-no-graphviz.patch"
 }
 
+src_configure() {
+	local myconf=""
+	[[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] && \
+		myconf="${myconf} --with-getopt=${EPREFIX}/usr/bin/getopt-long"
+	econf ${myconf}
+}
+
 src_install() {
 	emake BUILD_ROOT="${D}" install || die "make install failed"
 
-	rm -rf "${D}"/usr/share/doc/${P}
+	rm -rf "${ED}"/usr/share/doc/${P}
 	dodoc AUTHORS TODO doc/README doc/README.MAIL doc/quilt.pdf
 
-	rm -rf "${D}"/etc/bash_completion.d
+	rm -rf "${ED}"/etc/bash_completion.d
 	newbashcomp bash_completion ${PN}
 
 	# Remove the compat symlinks
-	rm -rf "${D}"/usr/share/quilt/compat
+	rm -rf "${ED}"/usr/share/quilt/compat
 
 	# Remove Emacs mode; newer version is in app-emacs/quilt-el, bug 247500
-	rm -rf "${D}"/usr/share/emacs
+	rm -rf "${ED}"/usr/share/emacs
 }

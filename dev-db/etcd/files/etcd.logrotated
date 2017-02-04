@@ -1,5 +1,4 @@
 /var/log/etcd/etcd.log /var/log/etcd/etcd.err {
-	su etcd etcd
 	missingok
 	size 5M
 	rotate 3

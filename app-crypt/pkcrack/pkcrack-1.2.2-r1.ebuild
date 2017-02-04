@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit toolchain-funcs
 
 DESCRIPTION="PkZip cipher breaker"
@@ -17,8 +17,21 @@ IUSE="test"
 DEPEND="test? ( app-arch/zip[crypt] )"
 RDEPEND="!<app-text/html-xml-utils-5.3"
 
+DOCS=(
+	../doc/KNOWN_BUGS
+	../doc/appnote.iz.txt
+	../doc/README.W32
+	../doc/pkzip.ps.gz
+	../doc/CHANGES
+	../doc/LIESMICH
+	../doc/README.html
+	../doc/README
+)
+
+S="${WORKDIR}/${P}/src"
+
 src_prepare() {
-	cd "${S}/src"
+	default
 	sed -i -e "s/^CC=.*/CC=$(tc-getCC)/" \
 		-e "/^CFLAGS=.*/d" \
 		-e "s/CFLAGS/LDFLAGS/" \
@@ -26,34 +39,18 @@ src_prepare() {
 	sed -i -e "s:void main:int main:" *.c
 }
 
-src_compile() {
-	cd "${S}/src"
-	emake
-}
-
 src_test() {
-	cd "${S}/test"
+	cd "${S}/../test"
 	make CC="$(tc-getCC)" all
 }
 
 src_install() {
-	cd "${S}/src"
+	einstalldocs
 	dobin pkcrack zipdecrypt findkey makekey
 	newbin extract "$PN-extract"
-	dodoc "${S}/doc/"*
 }
 
 pkg_postinst() {
-	elog "Author DEMANDS :-) a postcard be sent to:"
-	elog
-	elog "    Peter Conrad"
-	elog "    Am Heckenberg 1"
-	elog "    56727 Mayen"
-	elog "    Germany"
-	elog
-	elog "See: http://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/pkcrack-readme.html"
-
-	ewarn
 	ewarn "Due to file collision, extract utility was renamed to $PN-extract,"
 	ewarn "see bug#247394"
 }

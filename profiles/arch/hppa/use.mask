@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
-# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
 
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2016)
 # USE=xwidgets requires net-libs/webkit-gtk
@@ -310,4 +310,4 @@ bmp
 # Adding h323 to mask. For more information see bug #115798
 h323
 
-# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.

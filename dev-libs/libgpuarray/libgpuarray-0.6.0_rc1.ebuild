@@ -30,7 +30,7 @@ DEPEND="
 	test? ( ${RDEPEND}
 	   dev-libs/check
 	   virtual/pkgconfig
-   )
+	)
 "
 S="${WORKDIR}/${PN}-${MYPV}"
 

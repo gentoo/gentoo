@@ -1,0 +1,13 @@
+Index: image_cb_detector/CMakeLists.txt
+===================================================================
+--- image_cb_detector.orig/CMakeLists.txt
++++ image_cb_detector/CMakeLists.txt
+@@ -24,7 +24,7 @@ catkin_package(INCLUDE_DIRS include
+ 
+ # define some includes
+ include_directories(include)
+-include_directories(SYSTEM ${Boost_INCLUDE_DIRS}
++include_directories(${Boost_INCLUDE_DIRS}
+                            ${catkin_INCLUDE_DIRS}
+                            ${OpenCV_INCLUDE_DIRS}
+ )

@@ -15,7 +15,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+client +clipboard csc cups dec_av2 libav lz4 lzo opengl pulseaudio server sound vpx webp x264 x265"
+IUSE="+client +clipboard csc cups dec_av2 libav lz4 lzo opengl pulseaudio server sound vpx webcam webp x264 x265"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
@@ -35,11 +35,11 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 	x11-libs/libXrandr
 	x11-libs/libXtst
 	csc? (
-		!libav? ( >=media-video/ffmpeg-1.2.2:0= )
+		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
 		libav? ( media-video/libav:0= )
 	)
 	dec_av2? (
-		!libav? ( >=media-video/ffmpeg-2:0= )
+		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
 		libav? ( media-video/libav:0= )
 	)
 	opengl? ( dev-python/pygtkglext )
@@ -50,11 +50,11 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 	vpx? ( media-libs/libvpx virtual/ffmpeg )
 	webp? ( media-libs/libwebp )
 	x264? ( media-libs/x264
-		!libav? ( >=media-video/ffmpeg-1.0.4:0= )
+		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
 		libav? ( media-video/libav:0= )
 	)
 	x265? ( media-libs/x265
-		!libav? ( >=media-video/ffmpeg-2:0= )
+		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
 		libav? ( media-video/libav:0= )
 	)"
 
@@ -75,7 +75,9 @@ RDEPEND="${COMMON_DEPEND}
 	server? ( x11-base/xorg-server[-minimal,xvfb]
 		x11-drivers/xf86-input-void
 		x11-drivers/xf86-video-dummy
-	)"
+	)
+	webcam? ( media-libs/opencv[python]
+		dev-python/pyinotify[${PYTHON_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
@@ -89,7 +91,8 @@ python_prepare_all() {
 
 	epatch \
 		"${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch \
-		"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch
+		"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch \
+		"${FILESDIR}"/${PN}-1.0.1-cflags-param.patch
 
 	if use libav ; then
 		if ! has_version ">=media-video/libav-9" ; then
@@ -115,6 +118,7 @@ python_configure_all() {
 		$(use_with webp)
 		$(use_with x264 enc_x264)
 		$(use_with x265 enc_x265)
+		$(use_with webcam)
 		--with-Xdummy
 		--with-gtk2
 		--without-gtk3
@@ -127,4 +131,6 @@ python_configure_all() {
 	# see https://www.xpra.org/trac/ticket/1080
 	# and http://trac.cython.org/ticket/395
 	append-cflags -fno-strict-aliasing
+
+	export XPRA_SOCKET_DIRS="${EROOT}run/xpra"
 }

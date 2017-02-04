@@ -8,7 +8,6 @@
 	<longdescription>innotop - A text-mode MySQL and InnoDB monitor like mytop,
 but with many more features</longdescription>
 	<upstream>
-		<remote-id type="google-code">innotop</remote-id>
 		<remote-id type="github">innotop/innotop</remote-id>
 	</upstream>
 </pkgmetadata>

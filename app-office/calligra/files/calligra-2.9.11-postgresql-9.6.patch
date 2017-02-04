@@ -1,0 +1,19 @@
+commit 843c41decfa85e351349f7a410893ac85c9d60b7
+Author: Pino Toscano <pino@kde.org>
+Date:   Sat Oct 8 16:17:17 2016 +0200
+
+    cmake: find PostgreSQL 9.6
+
+diff --git a/cmake/modules/FindCalligraPostgreSQL.cmake b/cmake/modules/FindCalligraPostgreSQL.cmake
+index 035508b..98a1e88 100644
+--- a/cmake/modules/FindCalligraPostgreSQL.cmake
++++ b/cmake/modules/FindCalligraPostgreSQL.cmake
+@@ -83,7 +83,7 @@ set(PostgreSQL_ROOT_DIR_MESSAGE "Set the PostgreSQL_ROOT system variable to wher
+ 
+ 
+ set(PostgreSQL_KNOWN_VERSIONS ${PostgreSQL_ADDITIONAL_VERSIONS}
+-    "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
++    "9.6" "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
+ 
+ # Define additional search paths for root directories.
+ foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )

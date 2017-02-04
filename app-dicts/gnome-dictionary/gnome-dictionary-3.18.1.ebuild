@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Dictionary"
 LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 SLOT="0/9" # subslot = suffix of libgdict-1.0.so
 IUSE="+introspection ipv6"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.39:2[dbus]

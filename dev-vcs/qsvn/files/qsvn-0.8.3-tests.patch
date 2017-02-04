@@ -1,7 +1,7 @@
 The included tests are simple, "hello world" style tests
 that do not actually test this package.
---- CMakeLists.txt
-+++ CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -187,7 +187,3 @@
                              /dVcInstallDir=$ENV{VCINSTALLDIR}
                         )

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://stockfishchess.org/"
 SRC_URI="https://stockfish.s3.amazonaws.com/${P}-src.zip"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="armv7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse debug
 	general-32 general-64 +optimize"
 

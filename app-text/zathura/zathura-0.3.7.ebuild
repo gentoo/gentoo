@@ -36,6 +36,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-libs/check )"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-tests.patch
+
+	epatch_user
+}
+
 pkg_setup() {
 	myzathuraconf=(
 		WITH_MAGIC=$(usex magic 1 0)

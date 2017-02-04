@@ -1,0 +1,36 @@
+commit a185bb6d0b61cbf8283467770e646241f7cac03e
+Author: Mike Purvis <mpurvis@clearpathrobotics.com>
+Date:   Fri Jul 15 23:47:45 2016 -0400
+
+    Use std:: namespace for c++11 compat.
+
+diff --git a/include/laser_filters/intensity_filter.h b/include/laser_filters/intensity_filter.h
+index 3f175a0..4c9cfbc 100644
+--- a/include/laser_filters/intensity_filter.h
++++ b/include/laser_filters/intensity_filter.h
+@@ -99,8 +99,8 @@ public:
+       // Calculate histogram
+       if (disp_hist_enabled_){
+         // If intensity value is inf or NaN, skip voting histogram
+-        if( isinf((double)filtered_scan.intensities[i]) ||
+-            isnan((double)filtered_scan.intensities[i]) )
++        if( std::isinf((double)filtered_scan.intensities[i]) ||
++            std::isnan((double)filtered_scan.intensities[i]) )
+           continue;
+ 
+         // Choose bucket to vote on histogram,
+diff --git a/test/test_scan_filter_chain.cpp b/test/test_scan_filter_chain.cpp
+index b661f5f..139da60 100644
+--- a/test/test_scan_filter_chain.cpp
++++ b/test/test_scan_filter_chain.cpp
+@@ -60,8 +60,8 @@ sensor_msgs::LaserScan gen_msg(){
+  */
+ void expect_ranges_eq(const std::vector<float> &a, const std::vector<float> &b) {
+   for( int i=0; i<10; i++) {
+-    if(isnan(a[i])) {
+-      EXPECT_TRUE(isnan(a[i]));
++    if(std::isnan(a[i])) {
++      EXPECT_TRUE(std::isnan(a[i]));
+     }
+     else {
+       EXPECT_NEAR(a[i], b[i], 1e-6);

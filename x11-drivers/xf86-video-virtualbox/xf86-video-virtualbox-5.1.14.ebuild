@@ -56,6 +56,9 @@ PATCHES=(
 
 	# unset useless/problematic checks in configure
 	"${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
+
+	# xorg-1.19 patch from opensuse (bug #602784)
+	"${FILESDIR}/${PN}-5.1.10-xorg119.patch"
 )
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"

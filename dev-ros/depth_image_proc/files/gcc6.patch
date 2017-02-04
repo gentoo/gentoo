@@ -1,0 +1,35 @@
+commit 6c2d65452bd5fe62723988a1a570789921900d59
+Author: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+Date:   Fri Sep 30 15:39:47 2016 +0200
+
+    address gcc6 build error
+    
+    With gcc6, compiling fails with `stdlib.h: No such file or directory`,
+    as including '-isystem /usr/include' breaks with gcc6, cf.,
+    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129.
+    
+    This commit addresses this issue for this package in the same way
+    it was addressed in various other ROS packages. A list of related
+    commits and pull requests is at:
+    
+      https://github.com/ros/rosdistro/issues/12783
+    
+    Signed-off-by: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+
+diff --git a/depth_image_proc/CMakeLists.txt b/depth_image_proc/CMakeLists.txt
+index 0a7c7e2..6ceebfe 100644
+--- a/depth_image_proc/CMakeLists.txt
++++ b/depth_image_proc/CMakeLists.txt
+@@ -10,11 +10,7 @@ catkin_package(
+ find_package(Boost REQUIRED)
+ find_package(Eigen REQUIRED)
+ find_package(OpenCV REQUIRED)
+-include_directories(include
+-        SYSTEM ${BOOST_INCLUDE_DIRS}
+-               ${catkin_INCLUDE_DIRS}
+-               ${EIGEN_INCLUDE_DIRS}
+-)
++include_directories(include ${BOOST_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIRS})
+ 
+ add_library(${PROJECT_NAME} src/nodelets/convert_metric.cpp
+                              src/nodelets/crop_foremost.cpp

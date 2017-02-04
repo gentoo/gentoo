@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,3 +7,7 @@ CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
+
+# moved from 64bit-native, TODO: move it upwards
+SYMLINK_LIB="yes"
+LIBDIR_ppc64="lib64"

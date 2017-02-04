@@ -1,0 +1,44 @@
++CXXNOOPT :=
++CXXDBG :=
+ CXXINC := -I
+ CXXLIB := -L
+ CXXSHR := -fPIC
+ 
+-LDDBG := -g
++LDDBG :=
+ # Reevaluation is required here
+ LDSHR = -shared -Wl,-soname,$(SONAME)
+ 
+--- /var/tmp/portage/media-libs/libnspsl-0.1.0/work/buildsystem-1.5/makefiles/Makefile.clang.orig	2017-01-24 00:54:49.780561144 +0100
++++ /var/tmp/portage/media-libs/libnspsl-0.1.0/work/buildsystem-1.5/makefiles/Makefile.clang	2017-01-24 01:00:44.006333019 +0100
+@@ -3,23 +3,23 @@
+ # as clang being mostly GCC-compatible on the command line
+ 
+ CCDEF := -D
+-CCOPT := -O2
+-CCNOOPT := -O0
+-CCDBG := -g
++CCOPT :=
++CCNOOPT :=
++CCDBG :=
+ CCINC := -I
+ CCLIB := -L
+ CCAS := -xassembler-with-cpp
+ CCSHR := -fPIC
+ 
+ CXXDEF := -D
+-CXXOPT := -O2
+-CXXNOOPT := -O0
+-CXXDBG := -g
++CXXOPT :=
++CXXNOOPT :=
++CXXDBG :=
+ CXXINC := -I
+ CXXLIB := -L
+ CXXSHR := -fPIC
+ 
+-LDDBG := -g
++LDDBG :=
+ # Reevaluation is required here
+ LDSHR = -shared -Wl,-soname,$(SONAME)
+ 

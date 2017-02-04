@@ -23,6 +23,7 @@ SLOT="0"
 IUSE="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]' 'python3*')
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 python_configure_all() {

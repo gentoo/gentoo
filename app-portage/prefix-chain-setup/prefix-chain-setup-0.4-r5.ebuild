@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~ppc-aix ~ia64-hpux ~x86-interix ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=""

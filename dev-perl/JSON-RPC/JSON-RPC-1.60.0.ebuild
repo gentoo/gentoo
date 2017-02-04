@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="JSON RPC 2.0 Server Implementation"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test minimal"
 
 # Plack::Request,Plack::Test -> Plack

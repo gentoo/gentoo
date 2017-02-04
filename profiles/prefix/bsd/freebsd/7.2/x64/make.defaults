@@ -1,9 +1,0 @@
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# retain backwards compatability for freebsd keywords/conditionals
-ARCH="amd64-fbsd"
-CHOST="x86_64-pc-freebsd7.2"
-ACCEPT_KEYWORDS="~x64-freebsd"
-

@@ -20,6 +20,7 @@
 		<flag name="logwatch">Install check_mk-agent logwatch plugin.</flag>
 		<flag name="smart">Install check_mk-agent S.M.A.R.T plugin.</flag>
 		<flag name="mysql">Install check_mk-agent mysql plugin.</flag>
+		<flag name="nagios4">Depend on <pkg>net-analyzer/nagios-core</pkg>-4</flag>
 		<flag name="postgres">Install check_mk-agent postgres plugin.</flag>
 		<flag name="apache_status">Install check_mk-agent apache-status plugin.</flag>
 		<flag name="nfsexports">Install check_mk-agent nfsexports plugin.</flag>

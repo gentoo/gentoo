@@ -1,5 +1,5 @@
---- src/Makefile.am.old	2011-06-10 11:32:03.905618275 +0200
-+++ src/Makefile.am	2011-06-10 11:32:15.539347083 +0200
+--- a/src/Makefile.am	2011-06-10 11:32:03.905618275 +0200
++++ b/src/Makefile.am	2011-06-10 11:32:15.539347083 +0200
 @@ -42,7 +42,7 @@
  heroeslvl_SOURCES = heroeslvl.c
  

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,25 +15,3 @@ USE="multilib"
 MULTILIB_STRICT_DIRS="/lib32 /lib /usr/lib32 /usr/lib /usr/kde/*/lib32 /usr/kde/*/lib /usr/qt/*/lib32 /usr/qt/*/lib /usr/X11R6/lib32 /usr/X11R6/lib"
 MULTILIB_STRICT_DENY="64-bit.*shared object"
 MULTILIB_STRICT_EXEMPT="(perl5|gcc|gcc-lib|binutils|eclipse-3|debug|portage|udev|systemd|clang|python-exec)"
-
-# 64-bit LIBDIR
-LIBDIR_amd64="lib64"
-LIBDIR_amd64_fbsd="lib64"
-LIBDIR_arm64="lib64"
-LIBDIR_n64="lib64"	# MIPS n64
-LIBDIR_ppc64="lib64"
-LIBDIR_s390x="lib64"
-LIBDIR_sparc64="lib64"
-
-# 32-bit LIBDIR
-LIBDIR_arm="lib"
-LIBDIR_x86="lib"
-LIBDIR_x86_fbsd="lib"
-LIBDIR_o32="lib"	# MIPS o32
-LIBDIR_ppc="lib"
-LIBDIR_s390="lib"
-LIBDIR_sparc32="lib"
-
-# Somewhere in-between!
-LIBDIR_x32="libx32"	# x86-64 x32
-LIBDIR_n32="lib32"	# MIPS n32

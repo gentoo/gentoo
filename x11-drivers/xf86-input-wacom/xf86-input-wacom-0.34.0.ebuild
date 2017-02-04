@@ -45,16 +45,30 @@ src_install() {
 pkg_pretend() {
 	linux-info_pkg_setup
 
-	if ! linux_config_exists \
-			|| ! linux_chkconfig_present TABLET_USB_WACOM \
-			|| ! linux_chkconfig_present INPUT_EVDEV; then
-		echo
-		ewarn "If you use a USB Wacom tablet, you need to enable support in your kernel"
-		ewarn "  Device Drivers --->"
-		ewarn "    Input device support --->"
-		ewarn "      <*>   Event interface"
-		ewarn "      [*]   Tablets  --->"
-		ewarn "        <*>   Wacom Intuos/Graphire tablet support (USB)"
-		echo
+	if kernel_is lt 3 17; then
+		if ! linux_config_exists \
+				|| ! linux_chkconfig_present TABLET_USB_WACOM \
+				|| ! linux_chkconfig_present INPUT_EVDEV; then
+			echo
+			ewarn "If you use a USB Wacom tablet, you need to enable support in your kernel"
+			ewarn "  Device Drivers --->"
+			ewarn "    Input device support --->"
+			ewarn "      <*>   Event interface"
+			ewarn "      [*]   Tablets  --->"
+			ewarn "        <*>   Wacom Intuos/Graphire tablet support (USB)"
+			echo
+		fi
+	else
+		if ! linux_config_exists \
+				|| ! linux_chkconfig_present HID_WACOM; then
+			echo
+			ewarn "If you use a USB Wacom tablet, you need to enable support in your kernel"
+			ewarn "  Device Drivers --->"
+			ewarn "    HID support  --->"
+			ewarn "      Special HID drivers  --->"
+			ewarn "        <*> Wacom Intuos/Graphire tablet support (USB)"
+			echo
+		fi
 	fi
+
 }

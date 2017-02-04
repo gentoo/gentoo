@@ -12,7 +12,7 @@ DESCRIPTION="A FastCGI process manager"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"

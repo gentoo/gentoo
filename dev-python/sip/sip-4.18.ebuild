@@ -9,13 +9,13 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Python extension module generator for C and C++ libraries"
-HOMEPAGE="http://www.riverbankcomputing.com/software/sip/intro https://pypi.python.org/pypi/SIP"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
 SRC_URI="mirror://sourceforge/pyqt/${P}.tar.gz"
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
 SLOT="0/11"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc"
 
 RDEPEND="${PYTHON_DEPS}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,6 +14,10 @@ mbrola
 # 2007/08/24 Michael Marineau <marineam@gentoo.org>
 # Xen HVM support requires building 32-bit binaries.
 hvm
+
+# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
+# Mask multilib, since we cannot use it.
+multilib
 
 # 2009/05/11 Doug Goldstein <cardoe@gentoo.org>
 # Mask 32bit since this will always require emulation packages

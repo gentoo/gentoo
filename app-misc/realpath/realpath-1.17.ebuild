@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,14 +13,13 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls"
 
 RDEPEND="!sys-freebsd/freebsd-bin
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
-	x86-interix? ( dev-libs/gnulib )
 	elibc_mintlib? ( virtual/libiconv )"
 
 src_unpack() {
@@ -48,11 +47,6 @@ src_compile() {
 	tc-export CC
 	use nls && use !elibc_glibc && append-libs -lintl
 	[[ ${CHOST} == *-mint* ]] && append-libs "-liconv"
-	if [[ ${CHOST} == *-irix* || ${CHOST} == *-interix[35]* ]] ; then
-		append-flags -I"${EPREFIX}"/usr/$(get_libdir)/gnulib/include
-		append-ldflags -L"${EPREFIX}"/usr/$(get_libdir)/gnulib/$(get_libdir)
-		append-libs -lgnu
-	fi
 
 	local subdir
 	for subdir in src man $(usex nls po ''); do

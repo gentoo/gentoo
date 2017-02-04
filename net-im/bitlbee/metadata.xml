@@ -11,7 +11,6 @@
 		<flag name="otr">Enable support for encrypted conversations</flag>
 		<flag name="plugins">Enable support for plugins</flag>
 		<flag name="purple">Use libpurple instead of the built-in IM protocol support</flag>
-		<flag name="skype">Enable Skype support</flag>
 		<flag name="twitter">Enable Twitter protocol support</flag>
 	</use>
 	<longdescription>

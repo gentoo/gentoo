@@ -51,7 +51,7 @@ SRC_URI="
 	${KERNEL_URI}"
 
 LICENSE="|| ( GPL-2 LGPL-2 )"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 -mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ia64 -mips ~ppc ~ppc64 ~sparc x86"
 SLOT="0"
 IUSE="debug test custom-cflags"
 

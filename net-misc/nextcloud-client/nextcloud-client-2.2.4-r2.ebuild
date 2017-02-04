@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,9 +23,8 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtquickcontrols:5
 	dev-qt/qtsql:5
-	dev-qt/qtwebkit:5[printsupport]
+	dev-qt/qtwebkit:5
 	sys-fs/inotify-tools
 	virtual/libiconv
 	dolphin? (

@@ -30,6 +30,212 @@
 
 #--- END OF EXAMPLES ---
 
+# Alon Bar-Lev <alonbl@gentoo.org> (06 Feb 2017)
+# Needs openssl-1.1
+>=dev-libs/opencryptoki-3.6
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Feb 2017)
+# Drops USE=firebird because it requires not yet packaged Firebird-3.0.
+# Affects libreoffice-base.
+# Bug #586634.
+=app-office/libreoffice-5.3.0.3
+
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 Feb 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-58
+
+# Michael Palimaka <kensington@gentoo.org> (02 Feb 2017)
+# Upstream missing. Ancient. Unmaintained. No revdeps.
+# Masked for removal in 30 days.
+dev-libs/safestr
+dev-libs/xxl
+
+# Michał Górny <mgorny@gentoo.org> (01 Feb 2017)
+# Fails to compile with USE=static. It is a system package, so a lot
+# of people are hitting this. Furthermore, people keep working it around
+# by forcing USE=-static which may defeat its purpose as a rescue tool.
+# Bug #607548.
+=sys-apps/busybox-1.26.2
+
+# Matthias Maier <tamiko@gentoo.org> (31 Jan 2017)
+# Dead upstream (no development since 2010) [1,2], outstanding security
+# issue with newer encfs versions [3], oustanding Gentoo bugs [4,5].
+# Mask for removal in 30 days.
+# [1] https://github.com/tomm/cryptkeeper/commits/master
+# [2] https://github.com/tomm/cryptkeeper/issues/
+# [3] https://bugs.gentoo.org/show_bug.cgi?id=607772
+# [4] https://bugs.gentoo.org/show_bug.cgi?id=448360
+# [5] https://bugs.gentoo.org/show_bug.cgi?id=596832
+app-crypt/cryptkeeper
+
+# Mike Gilbert <floppym@gentoo.org> (31 Jan 2017)
+# Depends on old version of dev-python/pyparsing.
+# Removal in 30 days.
+dev-python/mwlib
+dev-python/mwlib-rl
+
+# Fabian Groffen <grobian@gentoo.org> (31 Jan 2017)
+# Mask upcoming Exim release candidates
+=mail-mta/exim-4.89_rc2
+
+# David Seifert <soap@gentoo.org> (30 Jan 2017)
+# No maintainer activity since git migration, dated eclass
+# Multiple open bugs, with no activity:
+# 499176, 501170, 521072, 538156, 562300, 562476, 563714,
+# 586464, 587862, 588890, 602294, 603556, 607004
+# Masked for removal in 30 days.
+app-leechcraft/laretz
+app-leechcraft/lc-advancednotifications
+app-leechcraft/lc-aggregator
+app-leechcraft/lc-anhero
+app-leechcraft/lc-auscrie
+app-leechcraft/lc-azoth
+app-leechcraft/lc-bittorrent
+app-leechcraft/lc-blasq
+app-leechcraft/lc-blogique
+app-leechcraft/lc-certmgr
+app-leechcraft/lc-core
+app-leechcraft/lc-cpuload
+app-leechcraft/lc-cstp
+app-leechcraft/lc-dbusmanager
+app-leechcraft/lc-deadlyrics
+app-leechcraft/lc-devmon
+app-leechcraft/lc-dolozhee
+app-leechcraft/lc-eleeminator
+app-leechcraft/lc-fenet
+app-leechcraft/lc-gacts
+app-leechcraft/lc-glance
+app-leechcraft/lc-gmailnotifier
+app-leechcraft/lc-historyholder
+app-leechcraft/lc-hotsensors
+app-leechcraft/lc-hotstreams
+app-leechcraft/lc-htthare
+app-leechcraft/lc-imgaste
+app-leechcraft/lc-intermutko
+app-leechcraft/lc-kbswitch
+app-leechcraft/lc-kinotify
+app-leechcraft/lc-knowhow
+app-leechcraft/lc-krigstask
+app-leechcraft/lc-lackman
+app-leechcraft/lc-lastfmscrobble
+app-leechcraft/lc-laughty
+app-leechcraft/lc-launchy
+app-leechcraft/lc-lemon
+app-leechcraft/lc-lhtr
+app-leechcraft/lc-liznoo
+app-leechcraft/lc-lmp
+app-leechcraft/lc-mellonetray
+app-leechcraft/lc-monocle
+app-leechcraft/lc-musiczombie
+app-leechcraft/lc-nacheku
+app-leechcraft/lc-netstoremanager
+app-leechcraft/lc-networkmonitor
+app-leechcraft/lc-newlife
+app-leechcraft/lc-ooronee
+app-leechcraft/lc-otlozhu
+app-leechcraft/lcpackgen
+app-leechcraft/lc-pintab
+app-leechcraft/lc-pogooglue
+app-leechcraft/lc-popishu
+app-leechcraft/lc-poshuku
+app-leechcraft/lc-qrosp
+app-leechcraft/lc-rosenthal
+app-leechcraft/lc-sb2
+app-leechcraft/lc-scroblibre
+app-leechcraft/lc-secman
+app-leechcraft/lc-seekthru
+app-leechcraft/lc-summary
+app-leechcraft/lc-sysnotify
+app-leechcraft/lc-tabsessmanager
+app-leechcraft/lc-tabslist
+app-leechcraft/lc-touchstreams
+app-leechcraft/lc-tpi
+app-leechcraft/lc-vgrabber
+app-leechcraft/lc-vrooby
+app-leechcraft/lc-xproxy
+app-leechcraft/lc-xtazy
+app-leechcraft/leechcraft-meta
+app-leechcraft/liblaretz
+virtual/leechcraft-browser
+virtual/leechcraft-downloader-http
+virtual/leechcraft-notifier
+virtual/leechcraft-quark-sideprovider
+virtual/leechcraft-search-show
+virtual/leechcraft-storage-device-manager
+virtual/leechcraft-task-show
+virtual/leechcraft-trayarea
+virtual/leechcraft-wysiwyg-editor
+
+# Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
+# Alpha release with new features, masked for testing
+=app-text/tesseract-4.00.00_alpha*
+
+# Lars Wendler <polynomial-c@gentoo.org> (27 Jan 2017)
+# Dead upstream since 2013.
+# Superseded by games-rpg/manaplus.
+# Masked for removal in 30 days.
+games-rpg/mana
+games-rpg/tmw
+
+# Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
+# Dead and replaced by media-libs/mesa[video_cards_radeonsi]
+# (or the proprietary amdgpu-pro, which is not in tree).
+# Masked for removal in 30 days.
+# Bug #582406
+x11-drivers/ati-drivers
+x11-libs/amd-adl-sdk
+x11-libs/xvba-video
+
+# Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
+# Pre-release, masked for testing. Major changes since 2.0.4,
+# including dropped support for BlueZ 4.
+=net-wireless/blueman-2.1_alpha*
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Dead. Masked for removal in 30 days.
+# Bug #606132
+x11-drivers/xf86-video-omapfb
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Dead. Masked for removal in 30 days.
+# Bug #606132
+x11-drivers/xf86-video-ivtv
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Last release only supports v4l1 which required kernel support removed in
+# 2.6.38. Doesn't build with >=x11-base/xorg-server-1.17. Masked for removal in
+# 30 days.
+# Bug #606132
+x11-drivers/xf86-video-v4l
+
+# Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
+# Mask 4.0.0 RCs (then final) for initial testing, and updating most
+# important revdeps. Also revdeps that require 4.0.
+=dev-ml/llvm-ocaml-4.0.0*
+=dev-python/lit-4.0.0*
+=dev-util/lldb-4.0.0*
+=sys-devel/clang-4.0.0*
+=sys-devel/clang-runtime-4.0.0*
+=sys-devel/lld-4.0.0*
+=sys-devel/llvm-4.0.0*
+=sys-libs/compiler-rt-4.0.0*
+=sys-libs/compiler-rt-sanitizers-4.0.0*
+=sys-libs/libcxx-4.0.0*
+=sys-libs/libcxxabi-4.0.0*
+=sys-libs/libomp-4.0.0*
+=sys-libs/llvm-libunwind-4.0.0*
+>=dev-libs/libclc-0.2.0_pre20170118
+
+# Matt Turner <mattst88@gentoo.org> (24 Jan 2017)
+# Depends on xorg-server-1.16, which is going away. Unresolved security bug
+# #602764. Maintainer no longer interested in package. Masked for removal in 30
+# days.
+net-misc/x11rdp
+net-misc/xrdp
+=x11-base/xorg-drivers-1.16*
+=x11-base/xorg-server-1.16*
+
 # Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
 # Use "php -a" instead. Masked for removal in 30 days.
 # Bug 606836.
@@ -200,8 +406,9 @@ dev-lang/python:3.6
 app-office/openproj-bin
 
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
-# Places unauthenticated HTTP data into root's SSH authorized_keys
-# file. Nope. Masked for removal in 30 days. Bug 603346.
+# This package has some dangerous quality and security issues, but
+# people may still find it useful. It is masked to prevent accidental
+# use. See bugs 603346 and 604998 for more information.
 app-admin/amazon-ec2-init
 
 # Mart Raudsepp <leio@gentoo.org> (07 Jan 2017)
@@ -229,20 +436,6 @@ x11-libs/gtk+:1
 =app-emulation/ganeti-2.16*
 =app-emulation/ganeti-2.17*
 
-# Michael Orlitzky <mjo@gentoo.org> (02 Jan 2017)
-# Ancient version, dead upstream, no homepage, experiencing
-# build failures, no reverse dependencies -- we've hit all
-# the checkboxes. Masked for removal in 30 days. Bug 604464.
-dev-php/PHPonTrax
-
-# Michael Orlitzky <mjo@gentoo.org> (02 Jan 2017)
-# Ancient versions long forgotten by upstream, and
-# now experiencing build problems. Masked for removal
-# in 30 days. Bug 604462.
-dev-php/propel
-dev-php/propel-generator
-dev-php/propel-runtime
-
 # Daniel Campbell <zlg@gentoo.org> (02 Jan 2017)
 # Google Code shutdown and change of versioning scheme
 # needs 'old' versions masked (v94 -> v1.0.0)
@@ -250,12 +443,6 @@ dev-php/propel-runtime
 =x11-misc/alock-94
 =x11-misc/alock-94-r1
 =x11-misc/alock-94-r2
-
-# David Seifert <soap@gentoo.org> (29 Dec 2016)
-# Ancient codebase, maintenance nightmare, dead
-# upstream, games-emulation/vbam is spiritual successor
-# Removal in 30 days, #598607
-games-emulation/visualboyadvance
 
 # Hans de Graaff <graaff@gentoo.org> (13 Dec 2016)
 # Mask Rails 4.1.x for removal.
@@ -276,44 +463,9 @@ dev-ruby/activesupport:4.1
 # depends on a newer version.
 net-misc/termtter
 
-# David Seifert <soap@gentoo.org> (27 Dec 2016)
-# Fails with more recent boost, dead upstream (bug #600548).
-dev-cpp/luabind
-games-rpg/valyriatear
-
-# Johannes Huber <johu@gentoo.org> (25 Dec 2016)
-# Masked for removal in 30 days. Dead upstream. No reverse dependencies.
-# No maintainer. Was introduced for media-sound/tomahwak. Uses deprecated
-# EAPI.
-net-libs/qtweetlib
-
-# Göktürk Yüksek <gokturk@gentoo.org> (22 Dec 2016)
-# Dead upstream, no more hosted on googlecode
-# No reverse dependencies. Masked for removal in 30 days.
-app-admin/phpsyslogng
-
-# David Seifert <soap@gentoo.org> (20 Dec 2016)
-# Masked for being completely broken and unusable (bug 586356).
-# No reverse dependencies. Masked for removal in 30 days.
-net-analyzer/snips
-
-# Markos Chandras <hwoarang@gentoo.org> (11 Dec 2016)
-# Dead upstream, no maintainer and it hasn't been bumped
-# since 2013. Masking for removal in 30 days (wrt bug #489878)
-sys-power/powerman
-
-# Mike Gilbert <floppym@gentoo.org> (10 Dec 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-57
-
 # Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
 # Reverse dependencies need testing, wrt bug #580760
 >=net-libs/rb_libtorrent-1.1.1
-
-# Hans de Graaff <graaff@gentoo.org> (07 Dec 2016)
-# Mask ruby 2.0 for removal, bug 576034
-dev-lang/ruby:2.0
 
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
@@ -326,6 +478,7 @@ dev-lang/ruby:2.0
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
 # Depends on slotted lua
 =dev-db/redis-3.2.5-r1
+=dev-db/redis-3.2.6-r1
 
 # Ian Stakenvicius (17 Nov 2016)
 # Does not honour LD_LIBRARY_PATH set in the environment, causing
@@ -339,11 +492,6 @@ dev-lang/ruby:2.0
 # over 2G but it 'currently performs 3-5% slower and has 1-2% worse
 # compression'.
 >=dev-util/xdelta-3.1.0
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Nov 2016)
-# Mask until drivers are fixed or adjusted to depend on older versions #599976
-=x11-base/xorg-drivers-1.19*
-=x11-base/xorg-server-1.19*
 
 # Gilles Dartiguelongue <eva@gentoo.org> (12 Nov 2016)
 # Keep shotwell development series masked.
@@ -371,10 +519,6 @@ sci-geosciences/googleearth
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Security issues (#562898)
-=app-admin/lsyncd-2.1.5
 
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Mask new MariaDB alphas for testing
@@ -422,7 +566,7 @@ games-emulation/ppsspp
 
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
-media-video/motion
+<media-video/motion-4.0.1-r1
 
 # Chris Reffett <creffett@gentoo.org> (25 May 2016)
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
@@ -534,9 +678,7 @@ sys-fs/bedup
 =app-emulation/vmware-modules-271*
 
 # Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
-# Masked for testing and other various issues.
-=net-fs/samba-4.3*
-=net-fs/samba-4.4*
+# Masked for testing.
 >=net-fs/samba-4.6.0_rc1
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)

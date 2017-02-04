@@ -10,7 +10,7 @@ SRC_URI="http://www.lightandmatter.com/when/when.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"

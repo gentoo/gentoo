@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ HOMEPAGE="http://confix.sourceforge.net"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix ~ia64-hpux ~x86-interix ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 src_install() {

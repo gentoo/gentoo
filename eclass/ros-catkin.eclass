@@ -47,7 +47,7 @@ if [ -n "${PYTHON_COMPAT}" ] ; then
 	PYTHON_ECLASS="python-r1 python-utils-r1"
 fi
 
-inherit ${SCM} ${PYTHON_ECLASS} cmake-utils
+inherit ${SCM} ${PYTHON_ECLASS} cmake-utils flag-o-matic
 
 CATKIN_DO_PYTHON_MULTIBUILD=""
 if [ -n "${PYTHON_COMPAT}" ] ; then
@@ -146,6 +146,10 @@ ros-catkin_src_prepare() {
 	if [ ! -f "${S}/CMakeLists.txt" ] ; then
 		catkin_init_workspace || die
 	fi
+
+	# Most packages require C++11 these days. Do it here, in src_prepare so that
+	# ebuilds can override it in src_configure.
+	append-cxxflags '-std=c++11'
 }
 
 # @FUNCTION: ros-catkin_src_configure_internal

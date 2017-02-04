@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -71,7 +71,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-python/pyqwt-5.2:5[${PYTHON_USEDEP}]
 		>=dev-qt/qtcore-4.4:4
 		>=dev-qt/qtgui-4.4:4
-		x11-libs/qwt:6
+		x11-libs/qwt:6[qt4(+)]
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.4.3-r1:=[${PYTHON_USEDEP}] )
@@ -183,7 +183,7 @@ src_install() {
 
 	# Install icons, menu items and mime-types for GRC
 	if use grc ; then
-		local fd_path="${S}/grc/scripts/freedesktop/"
+		local fd_path="${S}/grc/scripts/freedesktop"
 		insinto /usr/share/mime/packages
 		doins "${fd_path}/${PN}-grc.xml"
 

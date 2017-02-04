@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ SRC_URI="
 
 SLOT="3.8"
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 IUSE="cairo gnome opengl webkit"
 COMMON=">=dev-libs/glib-2.6

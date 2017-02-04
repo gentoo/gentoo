@@ -1,0 +1,24 @@
+--- zathura-0.3.7/tests/Makefile
++++ zathura-0.3.7/tests/Makefile
+@@ -7,7 +7,11 @@
+ include config.mk
+ 
+ PROJECT = tests
+-SOURCE  = tests.c $(wildcard test_*.c)
++ifneq (${WITH_SQLITE},0)
++	SOURCE  = tests.c $(wildcard test_*.c)
++else
++	SOURCE  = $(filter-out database-sqlite.c,tests.c $(wildcard test_*.c))
++endif
+ OBJECTS       = $(addprefix ${BUILDDIR_RELEASE}/,${SOURCE:.c=.o})
+ OBJECTS_DEBUG = $(addprefix ${BUILDDIR_DEBUG}/,${SOURCE:.c=.o})
+ OBJECTS_GCOV  = $(addprefix ${BUILDDIR_GCOV}/,${SOURCE:.c=.o})
+@@ -23,8 +27,6 @@
+ INCS     += $(SQLITE_INC)
+ LIBS     += $(SQLITE_LIB)
+ CPPFLAGS += -DWITH_SQLITE
+-else
+-SOURCE = $(filter-out database-sqlite.c,$(OSOURCE))
+ endif
+ 
+ ifneq ($(WITH_MAGIC),0)

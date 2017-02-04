@@ -6,8 +6,8 @@ Last-Update: 2016-07-16
 
 ---
 
---- libsidplay-1.36.59.orig/src/samples.cpp
-+++ libsidplay-1.36.59/src/samples.cpp
+--- a/src/samples.cpp
++++ b/src/samples.cpp
 @@ -75,7 +75,7 @@ struct sampleChannel
  sampleChannel ch4, ch5;
  

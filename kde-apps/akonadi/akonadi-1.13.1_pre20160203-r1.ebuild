@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -53,7 +53,7 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
+	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc; then
 		[[ $(gcc-major-version) -lt 4 ]] || \
 			( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]] ) \
 			&& die "Sorry, but gcc-4.6 and earlier won't work (see bug #520102)."

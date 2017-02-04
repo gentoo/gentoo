@@ -9,8 +9,8 @@ Subject: [PATCH] Use shared library when linking Python extensions
 
 diff --git a/miniupnpc/setup.py b/miniupnpc/setup.py
 index 049f670..2533ed4 100644
---- a/miniupnpc/setup.py
-+++ b/miniupnpc/setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -19,6 +19,6 @@ setup(name="miniupnpc",
        description='miniUPnP client',
        ext_modules=[

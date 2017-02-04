@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -66,7 +66,6 @@ GUI_RDEPEND="
 			kde? (
 				kde-frameworks/kdelibs:4
 				kde-frameworks/oxygen-icons:*
-				ayatana? ( kde-misc/plasma-widget-message-indicator )
 			)
 		)
 		phonon? ( || ( media-libs/phonon[qt4] dev-qt/qtphonon:4 ) )

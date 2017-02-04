@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: Wikipedia syntax highlighting"
 HOMEPAGE="http://en.wikipedia.org/wiki/Wikipedia:Text_editor_support#Vim"
 LICENSE="CC-BY-SA-3.0"
-KEYWORDS="amd64 hppa mips ppc ppc64 x86"
+KEYWORDS="amd64 hppa ~mips ppc ppc64 x86"
 IUSE=""
 
 VIM_PLUGIN_HELPTEXT=\

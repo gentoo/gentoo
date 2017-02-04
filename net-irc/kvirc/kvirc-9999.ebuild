@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-PYTHON_DEPEND="python? 2"
+PYTHON_COMPAT=(python2_7)
 
-inherit cmake-utils flag-o-matic multilib python
+inherit cmake-utils flag-o-matic multilib python-single-r1
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -58,6 +58,7 @@ RDEPEND="dev-qt/qtcore:5
 	)
 	perl? ( dev-lang/perl:0= )
 	phonon? ( media-libs/phonon:0[qt5] )
+	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant )
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
@@ -74,14 +75,13 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
-REQUIRED_USE="audiofile? ( oss )"
+REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=(ChangeLog doc/FAQ)
 
 pkg_setup() {
 	if use python; then
-		python_set_active_version 2
-		python_pkg_setup
+		python-single-r1_pkg_setup
 	fi
 }
 

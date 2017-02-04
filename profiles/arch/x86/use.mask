@@ -134,7 +134,6 @@
 -input_devices_vmmouse
 -input_devices_wacom
 -video_cards_nvidia
--video_cards_fglrx
 -video_cards_vmware
 -video_cards_geode
 -video_cards_via

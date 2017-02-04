@@ -10,10 +10,6 @@
 		<name>Luke Dashjr</name>
 	</maintainer>
 	<use>
-		<flag name="1stclassmsg">Enable first-class Bitcoin message tools</flag>
-		<flag name="bitcoin_policy_cltv">Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions</flag>
-		<flag name="bitcoin_policy_cpfp">Child-Pays-For-Parent policy: If you mine, you will give consideration to child transaction fees to pay for their parents</flag>
-		<flag name="bitcoin_policy_dcmp">Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)</flag>
 		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name="bitcoin_policy_spamfilter">Enhanced spam filter policy: Notorious spammers will not be assisted by your node</flag>
 		<flag name="http">Enable support for the JSON-RPC and REST HTTP server (builtin net-p2p/bitcoind)</flag>
@@ -23,7 +19,6 @@
 		<flag name="tor">Enable automatic configuration of a Tor hidden service</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
 		<flag name="wallet">Enable wallet support</flag>
-		<flag name="xt">Enable Mike Hearn's Bitcoin XT patches</flag>
 		<flag name="zeromq">Report blocks and transactions via zeromq</flag>
 	</use>
 	<upstream>

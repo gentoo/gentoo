@@ -4,11 +4,11 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit python-r1
 
-DESCRIPTION="A virtual for the Python functools.singledispatch module"
+DESCRIPTION="A virtual for the Python functools.singledispatch function"
 HOMEPAGE=""
 SRC_URI=""
 

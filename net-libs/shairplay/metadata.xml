@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <longdescription>Apple airplay and raop protocol server</longdescription>
+    <use>
+        <flag name='alac'>Add support for Apple Lossless Audio Codec files</flag>
+        <flag name='static-libs'>Build static versions of dynamic libraries as well</flag>
+        <flag name='tools'>Build and install a binary shairplay in /usr/bin</flag>
+    </use>
+    <maintainer type="person">
+        <email>candrews@integralblue.com</email>
+        <name>Craig Andrews</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <upstream>
+        <bugs-to>https://github.com/juhovh/shairplay</bugs-to>
+        <remote-id type="github">juhovh/shairplay</remote-id>
+    </upstream>
+</pkgmetadata>

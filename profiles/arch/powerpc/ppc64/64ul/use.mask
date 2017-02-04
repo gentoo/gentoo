@@ -76,3 +76,7 @@ audit
 # unregisterised ghc arch for now.
 # no ghci - no TH
 template_haskell
+
+# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
+# Mask multilib, since we cannot use it.
+multilib

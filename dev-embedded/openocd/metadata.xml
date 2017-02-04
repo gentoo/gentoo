@@ -14,6 +14,7 @@
 		<flag name="blaster">Enable support for Altera USE-Blaster</flag>
 		<flag name="cmsis-dap">Support for CMSIS-DAP compliant adapters</flag>
 		<flag name="dummy">Build the dummy port driver</flag>
+		<flag name="jlink"> Build the SEGGER J-Link driver</flag>
 		<flag name="minidriver">Build the dummy minidriver</flag>
 		<flag name="ftd2xx">Enable support for USB FTDI chips via <pkg>dev-embedded/libftd2xx</pkg></flag>
 		<flag name="ftdi">Enable support for USB FTDI chips via <pkg>dev-embedded/libftdi</pkg></flag>

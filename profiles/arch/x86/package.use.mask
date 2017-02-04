@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
+# nvidia drivers are unmasked here
+media-video/ffmpeg -nvenc
+
 # Luca Barbato <lu_zero@gentoo.org> (22 Jan 2017)
 # cuda is not available on x86 nvidia-video-codec depends on it
 media-video/libav nvidia
@@ -139,7 +143,7 @@ app-editors/gvim -luajit -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
 # Works on x86
-sys-apps/hwloc -cuda -gl -opencl
+sys-apps/hwloc -cuda -gl
 
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords missing, bug #478104

@@ -22,7 +22,7 @@ SRC_URI="
 # || ( LGPL-2.1 MPL-1.1 ) for pycairo 1.8.10.
 LICENSE="LGPL-3 || ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples +svg test xcb"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

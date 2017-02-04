@@ -1,0 +1,14 @@
+--- a/setup.py
++++ b/setup.py
+@@ -13,10 +13,7 @@ import re
+ # dependency when projects attempt to unbundle stuff from setuptools and pip.
+ # Though we don't really support that, it makes things easier if we do this and
+ # should hopefully cause less issues for end users.
+-try:
+-    from setuptools import setup
+-except ImportError:
+-    from distutils.core import setup
++from distutils.core import setup
+ 
+ 
+ base_dir = os.path.dirname(__file__)

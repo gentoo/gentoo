@@ -41,7 +41,7 @@ src_prepare() {
 		tools/Makefile.in || die "sed failed"
 
 	# libressl compat
-	eapply "${FILESDIR}"/stunnel-compat-libressl.patch
+	eapply "${FILESDIR}"/${P}-compat-libressl.patch
 
 	echo "CONFIG_PROTECT=\"/etc/stunnel/stunnel.conf\"" > "${T}"/20stunnel
 

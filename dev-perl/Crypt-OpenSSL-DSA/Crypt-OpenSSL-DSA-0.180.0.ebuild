@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION='Digital Signature Algorithm using OpenSSL'
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="libressl"
 
 RDEPEND="

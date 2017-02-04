@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
+# nvidia drivers are unmasked here
+media-video/ffmpeg -nvenc
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
 # Requires yet unavailable >=media-video/ffmpeg-3.3.
 >=media-video/mpv-0.23.0 cuda
@@ -149,7 +153,7 @@ app-editors/gvim -luajit -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
 # Works on amd64
-sys-apps/hwloc -cuda -gl -opencl
+sys-apps/hwloc -cuda -gl
 
 # Michał Górny <mgorny@gentoo.org> (22 Jul 2013)
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).

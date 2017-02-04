@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils multilib-minimal
 
@@ -15,7 +15,7 @@ LICENSE="ISC openssl"
 # we'll try to use the max of either.  However, if either change between
 # versions, we have to change the subslot to trigger rebuild of consumers.
 SLOT="0/39"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="+asm static-libs"
 
 RDEPEND="!dev-libs/openssl:0"
@@ -33,6 +33,8 @@ src_prepare() {
 		-e '/^[ \t]*USER_CFLAGS=/s#-O2 ##' \
 		-e '/^[ \t]*USER_CFLAGS=/s#-O2"#"#' \
 		configure || die "fixing CFLAGS failed"
+
+	eapply_user
 }
 
 multilib_src_configure() {

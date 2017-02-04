@@ -9,19 +9,16 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib git-r3 python-any-r1
+inherit cmake-multilib python-any-r1
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="http://libcxxabi.llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
-	https://github.com/llvm-mirror/libcxxabi.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="0e46ed1f6c22968c91337aa918cdd7dc302829cb"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz
+	http://www.llvm.org/pre-releases/${PV/_//}/libcxx-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="libunwind +static-libs test"
 
 RDEPEND="
@@ -38,6 +35,8 @@ DEPEND="${RDEPEND}
 		~sys-libs/libcxx-${PV}[libcxxabi(-)]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
+S=${WORKDIR}/${P/_/}.src
+
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
@@ -50,15 +49,9 @@ pkg_setup() {
 }
 
 src_unpack() {
-	# we need the headers
-	git-r3_fetch "http://llvm.org/git/libcxx.git
-		https://github.com/llvm-mirror/libcxx.git" \
-		39c36254e55627b5f94d37a453bf97fcd907cd38
-	git-r3_fetch
+	default
 
-	git-r3_checkout http://llvm.org/git/libcxx.git \
-		"${WORKDIR}"/libcxx
-	git-r3_checkout
+	mv libcxx-* libcxx || die
 }
 
 multilib_src_configure() {

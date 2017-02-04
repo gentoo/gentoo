@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A libzmq 3.x wrapper for Perl"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ppc64 x86"
+KEYWORDS="amd64 hppa ~ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND="

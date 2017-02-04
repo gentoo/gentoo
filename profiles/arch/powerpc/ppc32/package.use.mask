@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Bernard Cafarelli <voyageur@gentoo.org> <25 Jan 2017)
+# Requires a Java dependency
+app-text/tesseract scrollview
+
 # Davide Pesavento <pesa@gentoo.org> (21 Jan 2017)
 # Requires unkeyworded dev-python/PyQt5
 dev-python/qscintilla-python qt5

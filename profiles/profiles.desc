@@ -254,7 +254,6 @@ x86		hardened/linux/uclibc/x86				dev
 # Linux Profiles
 amd64-linux		prefix/linux/amd64				exp
 arm-linux		prefix/linux/arm				exp
-ia64-linux		prefix/linux/ia64				exp
 ppc64-linux		prefix/linux/ppc64				exp
 x86-linux		prefix/linux/x86				exp
 
@@ -302,12 +301,7 @@ x64-solaris		prefix/sunos/solaris/5.11/x64			exp
 ppc-aix			prefix/aix/5.2.0.0/ppc				exp
 ppc-aix			prefix/aix/5.3.0.0/ppc				exp
 ppc-aix			prefix/aix/6.1.0.0/ppc				exp
-
-# Interix Profiles
-x86-interix		prefix/windows/interix/3.5/x86			exp
-x86-interix		prefix/windows/interix/5.2/x86			exp
-x86-interix		prefix/windows/interix/6.0/x86			exp
-x86-interix		prefix/windows/interix/6.1/x86			exp
+ppc-aix			prefix/aix/7.1.0.0/ppc				exp
 
 # Windows Profiles
 x86-winnt		prefix/windows/winnt/3.5/x86			exp
@@ -318,37 +312,6 @@ x86-winnt		prefix/windows/winnt/6.1/x86			exp
 # Cygwin Profiles
 x86-cygwin		prefix/windows/cygwin/x86			exp
 x64-cygwin		prefix/windows/cygwin/x64			exp
-
-# HP-UX Profiles
-ia64-hpux		prefix/hpux/B.11.23/ia64			exp
-hppa-hpux		prefix/hpux/B.11.31/hppa2.0			exp
-ia64-hpux		prefix/hpux/B.11.31/ia64			exp
-
-# FreeBSD Profiles
-x86-freebsd		prefix/bsd/freebsd/7.1/x86			exp
-x64-freebsd		prefix/bsd/freebsd/7.1/x64			exp
-x86-freebsd		prefix/bsd/freebsd/7.2/x86			exp
-x64-freebsd		prefix/bsd/freebsd/7.2/x64			exp
-x86-freebsd		prefix/bsd/freebsd/8.0/x86			exp
-x64-freebsd		prefix/bsd/freebsd/8.0/x64			exp
-x86-freebsd		prefix/bsd/freebsd/8.1/x86			exp
-x64-freebsd		prefix/bsd/freebsd/8.1/x64			exp
-sparc64-freebsd		prefix/bsd/freebsd/8.1/sparc64			exp
-x86-freebsd		prefix/bsd/freebsd/8.2/x86			exp
-x64-freebsd		prefix/bsd/freebsd/8.2/x64			exp
-x86-freebsd		prefix/bsd/freebsd/9.0/x86			exp
-x64-freebsd		prefix/bsd/freebsd/9.0/x64			exp
-x86-freebsd		prefix/bsd/freebsd/9.1/x86			exp
-x64-freebsd		prefix/bsd/freebsd/9.1/x64			exp
-
-
-# OpenBSD Profiles
-ppc-openbsd		prefix/bsd/openbsd/4.2/ppc			exp
-x86-openbsd		prefix/bsd/openbsd/4.2/x86			exp
-x64-openbsd		prefix/bsd/openbsd/4.2/x64			exp
-
-# NetBSD Profiles
-x86-netbsd		prefix/bsd/netbsd/4.0/x86			exp
 
 # FreeMiNT
 m68k-mint		prefix/mint/m68k				exp

@@ -1,0 +1,46 @@
+From 7c64454f83f74dbe0dd33e3726906b20740e19a1 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@whissi.de>
+Date: Fri, 27 Jan 2017 13:56:23 +0100
+Subject: [PATCH] configure: Add option to disable automagic dependency on
+ liblz4
+
+Previously, mklove activated lz4 support when lz4 was found. This added
+a so called "automagic" dependency on liblz4 which is a problem from
+distributions.
+
+This commit will add an option which will allow you to explicit disable
+lz4 usage.
+---
+ configure.librdkafka | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/configure.librdkafka b/configure.librdkafka
+index cf47fea..71c29c7 100644
+--- a/configure.librdkafka
++++ b/configure.librdkafka
+@@ -30,6 +30,8 @@ mkl_toggle_option "Development" ENABLE_REFCNT_DEBUG "--enable-refcnt-debug" "Ena
+ 
+ mkl_toggle_option "Development" ENABLE_SHAREDPTR_DEBUG "--enable-sharedptr-debug" "Enable sharedptr debugging" "n"
+ 
++mkl_toggle_option "Feature" ENABLE_LZ4 "--enable-lz4" "Enable LZ4 support" "y"
++
+ mkl_toggle_option "Feature" ENABLE_SSL "--enable-ssl" "Enable SSL support" "y"
+ mkl_toggle_option "Feature" ENABLE_SASL "--enable-sasl" "Enable SASL support" "y"
+ 
+@@ -44,8 +46,11 @@ function checks {
+     mkl_lib_check "zlib" "WITH_ZLIB" disable CC "-lz" \
+                   "#include <zlib.h>"
+     mkl_lib_check "libcrypto" "" disable CC "-lcrypto"
+-    mkl_lib_check "liblz4" "WITH_LZ4" disable CC "-llz4" \
+-                  "#include <lz4frame.h>"
++
++    if [[ "$ENABLE_LZ4" == "y" ]]; then
++        mkl_lib_check "liblz4" "WITH_LZ4" disable CC "-llz4" \
++                      "#include <lz4frame.h>"
++    fi
+ 
+     # Snappy support is built-in
+     mkl_allvar_set WITH_SNAPPY WITH_SNAPPY y
+-- 
+2.11.0
+

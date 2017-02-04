@@ -4,6 +4,35 @@
 # doomsday ebuild is not available on this architecture
 doomsday
 
+# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
+# net-fs/samba not tested on arm64 yet
+samba
+
+# Mart Raudsepp <leio@gentoo.org> (01 Feb 2017)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# dev-libs/wayland not tested on arm64 yet
+wayland
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# dev-util/valgrind not tested on arm64 yet
+# Upstream seems to have architecture support, however
+valgrind
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# media-libs/portaudio not tested on arm64 yet
+portaudio
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# media-sound/pulseaudio not tested on arm64 yet
+pulseaudio
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# dev-libs/libressl not tested as an openssl alternative on arm64 yet
+libressl
+
 # Markus Meier <maekke@gentoo.org> (22 Aug 2010)
 # net-wireless/wimax not tested
 wimax
@@ -194,6 +223,3 @@ clvm
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # virtual/opencl is not keyworded
 opencl
-
-# No arm64 java support yet.
-java

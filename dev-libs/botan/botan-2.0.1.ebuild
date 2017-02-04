@@ -28,8 +28,8 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 	lzma? ( app-arch/xz-utils )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.8g:0[bindist=] )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0=[bindist=] )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}
 	dev-lang/python:*

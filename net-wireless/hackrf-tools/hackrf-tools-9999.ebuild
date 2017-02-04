@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -11,9 +11,9 @@ HOMEPAGE="http://greatscottgadgets.com/hackrf/"
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/mossmann/hackrf.git"
-	inherit git-2
+	inherit git-r3
 	KEYWORDS=""
-	EGIT_SOURCEDIR="${WORKDIR}/hackrf"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/hackrf"
 	S="${WORKDIR}/hackrf/host/hackrf-tools"
 else
 	S="${WORKDIR}/hackrf-${PV}/host/hackrf-tools"
@@ -25,7 +25,8 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-DEPEND="=net-libs/libhackrf-${PV}:="
+DEPEND="=net-libs/libhackrf-${PV}:=
+		sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}"
 
 src_install() {

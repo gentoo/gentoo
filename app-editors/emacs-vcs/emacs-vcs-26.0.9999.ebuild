@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ SLOT="26"
 IUSE="acl alsa aqua athena cairo dbus games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0
+RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
@@ -115,6 +115,8 @@ src_prepare() {
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
+
+		bash -c "autoreconf() { :; }; . autogen.sh --no-check" || die #605400
 	fi
 
 	eapply_user

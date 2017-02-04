@@ -14,13 +14,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="bfsonly">BFS by itself vs the full ck patchset</flag>
-    <flag name="experimental">Allow experimental code. Can break or degrade
-      performance. (UNSUPPORTED)
-    </flag>
-    <flag name="urwlocks">Use upgradable read/write locks in place of the grq
-      spinlock. (EXPERIMENTAL)
-    </flag>
     <flag name="deblob">Remove binary blobs from kernel sources to provide
       libre license compliance.
     </flag>

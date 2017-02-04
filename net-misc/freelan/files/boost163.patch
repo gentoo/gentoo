@@ -1,0 +1,24 @@
+Index: freelan-2.0/libs/freelan/src/core.cpp
+===================================================================
+--- freelan-2.0.orig/libs/freelan/src/core.cpp
++++ freelan-2.0/libs/freelan/src/core.cpp
+@@ -1766,7 +1766,8 @@ namespace freelan
+ 			{
+ 				m_logger(fscp::log_level::information) << "IPv4 address: " << m_configuration.tap_adapter.ipv4_address_prefix_length;
+ 
+-				tap_config.ipv4.network_address = { m_configuration.tap_adapter.ipv4_address_prefix_length.address(), m_configuration.tap_adapter.ipv4_address_prefix_length.prefix_length() };
++				asiotap::base_ip_network_address<boost::asio::ip::address_v4> a(m_configuration.tap_adapter.ipv4_address_prefix_length.address(), m_configuration.tap_adapter.ipv4_address_prefix_length.prefix_length());
++				tap_config.ipv4.network_address = a;
+ 			}
+ 			else
+ 			{
+@@ -1778,7 +1779,8 @@ namespace freelan
+ 			{
+ 				m_logger(fscp::log_level::information) << "IPv6 address: " << m_configuration.tap_adapter.ipv6_address_prefix_length;
+ 
+-				tap_config.ipv6.network_address = { m_configuration.tap_adapter.ipv6_address_prefix_length.address(), m_configuration.tap_adapter.ipv6_address_prefix_length.prefix_length() };
++				asiotap::base_ip_network_address<boost::asio::ip::address_v6> a(m_configuration.tap_adapter.ipv6_address_prefix_length.address(), m_configuration.tap_adapter.ipv6_address_prefix_length.prefix_length());
++				tap_config.ipv6.network_address = a;
+ 			}
+ 			else
+ 			{

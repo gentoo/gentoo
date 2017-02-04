@@ -24,3 +24,4 @@ RDEPEND="
 	>=dev-ros/urdf-1.12.6
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/c11.patch" )

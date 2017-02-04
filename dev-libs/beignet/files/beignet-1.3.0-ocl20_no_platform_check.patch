@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -215,18 +215,6 @@
+ 
+ OPTION(ENABLE_OPENCL_20 "Enable opencl 2.0 support" OFF)
+ IF (ENABLE_OPENCL_20)
+-  Find_Program(LSPCI lspci)
+-  IF (NOT LSPCI)
+-    MESSAGE(FATAL_ERROR "Looking for lspci - not found")
+-  ENDIF (NOT LSPCI)
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/GetGenID.sh"
+-                          RESULT_VARIABLE SUPPORT_OCL20_DEVICE
+-                          OUTPUT_VARIABLE PCI_ID_NOT_USED)
+-
+-  IF (NOT SUPPORT_OCL20_DEVICE EQUAL 1)
+-    MESSAGE(FATAL_ERROR "Only SKL and newer devices support OpenCL 2.0 now, your device don't support.")
+-  ENDIF (NOT SUPPORT_OCL20_DEVICE EQUAL 1)
+-
+   IF (NOT HAVE_DRM_INTEL_BO_SET_SOFTPIN)
+     MESSAGE(FATAL_ERROR "Please update libdrm to version 2.4.66 or later to enable OpenCL 2.0.")
+   ENDIF (NOT HAVE_DRM_INTEL_BO_SET_SOFTPIN)

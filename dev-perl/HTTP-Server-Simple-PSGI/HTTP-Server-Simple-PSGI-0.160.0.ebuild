@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="PSGI handler for HTTP::Server::Simple"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michał Górny <mgorny@gentoo.org> (25 Jan 2017)
+# Masked until dev-lang/python:3.6 is unmasked
+python_targets_python3_6
+python_single_target_python3_6
+
 # Michael Orlitzky <mjo@gentoo.org> (7 Jan 2017)
 # The dev-db/firebird and dev-db/oracle-instantclient* packages
 # only support amd64 and x86.

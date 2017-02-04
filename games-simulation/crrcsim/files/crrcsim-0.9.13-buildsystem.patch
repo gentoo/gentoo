@@ -1,0 +1,62 @@
+--- crrcsim-0.9.11/configure.ac
++++ crrcsim-0.9.11/configure.ac
+@@ -79,8 +79,12 @@
+ dnl Default is: no portaudio present
+ portaudio=0
+ 
++AC_ARG_WITH([portaudio], AS_HELP_STRING([--without-portaudio], [Build without portaudio library (default: test)]))
++
++AS_IF([test "x$with_portaudio" != "xno"], [
+ dnl Check for the Portaudio header file
+ AC_CHECK_HEADER([portaudio.h])
++])
+ 
+ if  (test "x$ac_cv_header_portaudio_h" = "xyes"); then 
+   dnl Check for Portaudio 18
+--- crrcsim-0.9.13/src/mod_misc/filesystools.cpp
++++ crrcsim-0.9.13/src/mod_misc/filesystools.cpp
+@@ -113,8 +113,8 @@
+   // $USERPROFILE/.crrcsim                (WIN32)
+   // $HOME/.crrcsim                       (LINUX)
+   // CRRC_DATA_PATH                       (LINUX)
+-  // /usr/local/share/games/crrcsim       (LINUX)
+-  // /usr/share/games/crrcsim             (LINUX)
++  // /usr/local/share/crrcsim             (LINUX)
++  // /usr/share/crrcsim                   (LINUX)
+ 
+   // cwd
+   if (dirname != "")
+@@ -154,13 +154,13 @@
+     s.append(dirname);
+     pathlist.push_back(s);
+     #endif
+-    s = "/usr/local/share/games/" + appname + "/";
++    s = "/usr/local/share/" + appname + "/";
+     if (s != data_path)    // avoid adding this path twice
+     {
+       s.append(dirname);
+       pathlist.push_back(s);
+     }
+-    s = "/usr/share/games/" + appname + "/";
++    s = "/usr/share/" + appname + "/";
+     if (s != data_path)    // avoid adding this path twice
+     {
+       s.append(dirname);
+@@ -172,13 +172,13 @@
+     #ifdef CRRC_DATA_PATH
+     pathlist.push_back(data_path);
+     #endif
+-    if (data_path != "/usr/local/share/games/" + appname)  // avoid adding this path twice
++    if (data_path != "/usr/local/share/" + appname)  // avoid adding this path twice
+     {
+-      pathlist.push_back("/usr/local/share/games/" + appname);
++      pathlist.push_back("/usr/local/share/" + appname);
+     }
+-    if (data_path != "/usr/share/games/" + appname)  // avoid adding this path twice
++    if (data_path != "/usr/share/" + appname)  // avoid adding this path twice
+     {
+-      pathlist.push_back("/usr/share/games/" + appname);
++      pathlist.push_back("/usr/share/" + appname);
+     }
+   }
+   #endif

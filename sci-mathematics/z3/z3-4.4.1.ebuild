@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Z3Prover/z3/archive/${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc gmp isabelle java python"
+IUSE="doc examples gmp isabelle java python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -27,7 +27,13 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-${P}
 JAVA_SRC_DIR=${S}/src/api/java
 
+SO1="0"
+SO2="1"
+SOVER="${SO1}.${SO2}"
+
 pkg_setup() {
+	python_setup
+
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if [[ $(tc-getCXX)$ == *g++* ]] && ! tc-has-openmp; then
 			ewarn "Please use an openmp compatible compiler"
@@ -51,15 +57,28 @@ src_prepare() {
 		-i scripts/*mk* || die
 
 	sed \
-		-e "s:SLIBEXTRAFLAGS = '':SLIBEXTRAFLAGS = '-Wl,-soname,lib${PN}.so.0.1':" \
+		-e "s:SLIBEXTRAFLAGS = '':SLIBEXTRAFLAGS = '-Wl,-soname,lib${PN}.so.${SOVER}':" \
 		-i scripts/mk_util.py || die
 
 	append-ldflags -fopenmp
+
+	cat <<- EOF > "${S}/src/api/python/__init__.py" || die
+		from .z3 import *
+
+		from . import z3num
+		from . import z3poly
+		from . import z3printer
+		from . import z3rcf
+		from . import z3types
+		from . import z3util
+
+		# generated files
+		from . import z3core
+		from . import z3consts
+	EOF
 }
 
 src_configure() {
-	python_setup
-	python_export PYTHON_SITEDIR
 	export Z3_INSTALL_LIB_DIR="$(get_libdir)"
 	export Z3_INSTALL_INCLUDE_DIR="include/z3"
 	set -- \
@@ -84,11 +103,29 @@ src_install() {
 	dodir /usr/include/${PN}
 	insinto /usr/include/${PN}
 	doins src/api/z3*.h src/api/c++/z3*.h
-	dolib.so build/*.so
+	dolib.so build/lib${PN}.so
+	dosym "/usr/$(get_libdir)/lib${PN}.so" \
+		  "/usr/$(get_libdir)/lib${PN}.so.${SO1}" \
+		  || die "Could not create /usr/$(get_libdir)/lib${PN}.so.${SO1} symlink"
+	dosym "/usr/$(get_libdir)/lib${PN}.so" \
+		  "/usr/$(get_libdir)/lib${PN}.so.${SOVER}" \
+		  || die "Could not create libz3.so soname symlink"
 	dobin build/z3
 
+	if use examples; then
+		insinto /usr/share/${PN}
+		doins -r examples
+	fi
+
 	if use python; then
-		python_foreach_impl python_domodule src/api/python/*.py
+		python_moduleinto "${PN}"
+		instpybind() {
+			python_domodule src/api/python/*.py
+			dosym "/usr/$(get_libdir)/lib${PN}.so" \
+				  "$(python_get_sitedir)/${PN}/lib${PN}.so" \
+				|| die "Could not create $(python_get_sitedir)/lib${PN}.so symlink for python module"
+		}
+		python_foreach_impl instpybind
 	fi
 
 	use java && java-pkg-simple_src_install
@@ -96,7 +133,7 @@ src_install() {
 	if use isabelle; then
 		ISABELLE_HOME="${ROOT}usr/share/Isabelle"
 		dodir "${ISABELLE_HOME}/contrib/${PN}-${PV}/etc"
-		cat <<- EOF >> "${S}/settings"
+		cat <<- EOF >> "${S}/settings" || die
 			Z3_COMPONENT="\$COMPONENT"
 			Z3_HOME="${ROOT}usr/bin"
 			Z3_SOLVER="${ROOT}usr/bin/z3"

@@ -1,0 +1,28 @@
+From 48ded6911e60fb8415190b252ca420b994e6c525 Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Mon, 23 Jan 2017 22:29:12 +0400
+Subject: [PATCH 4/6] connector: assume version 1 for extensions without
+ version in metadata
+
+Bug: https://github.com/nE0sIghT/chrome-gnome-shell-mirror/issues/27
+See-Also: https://git.gnome.org/browse/extensions-web/commit/?id=214f03ee90f0f391d3d4fdec23feedf45e3d0507
+---
+ connector/chrome-gnome-shell.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/connector/chrome-gnome-shell.py b/connector/chrome-gnome-shell.py
+index 0b92d83..0f6e5f1 100755
+--- a/connector/chrome-gnome-shell.py
++++ b/connector/chrome-gnome-shell.py
+@@ -506,7 +506,7 @@ class ChromeGNOMEShell(Gio.Application):
+                         http_request['installed'][uuid] = {
+                             'version': int(extensions[uuid]['version'])
+                         }
+-                    except ValueError:
++                    except (ValueError, KeyError):
+                         http_request['installed'][uuid] = {
+                             'version': 1
+                         }
+-- 
+2.10.2
+

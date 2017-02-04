@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Mike Frysinger <vapier@gentoo.org> (12 Aug 2016)
+# Requires sys-boot/grub:0 which is masked here.
+sys-apps/memtest86+ floppy
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (24 Jun 2012)
 # Disable 32-bit parts of wine, bug #351436
@@ -20,3 +24,7 @@ net-im/skype apulse
 # Tim Harder <radhermit@gentoo.org> (17 Jan 2016)
 # Skype requires multilib support
 net-im/bitlbee skype
+
+# Alexis Ballier <aballier@gentoo.org> (13 Aug 2009)
+# Requires wine
+media-sound/lmms vst

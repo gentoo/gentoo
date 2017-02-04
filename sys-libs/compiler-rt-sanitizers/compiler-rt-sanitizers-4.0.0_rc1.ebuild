@@ -9,19 +9,16 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 python-any-r1
+inherit cmake-utils flag-o-matic python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
-	https://github.com/llvm-mirror/compiler-rt.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="850646edf7e605354c66693c16ab69193e04a078"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/compiler-rt-${PV/_/}.src.tar.xz
+	test? ( http://www.llvm.org/pre-releases/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0/${PV%.*}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 RDEPEND="!<sys-devel/llvm-${PV}"
@@ -37,23 +34,17 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+S=${WORKDIR}/compiler-rt-${PV/_/}.src
+
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_unpack() {
-	if use test; then
-		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git" \
-				c329efbc3c94928fb826ed146897aada0459c983
-	fi
-	git-r3_fetch
+	default
 
 	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+		mv llvm-* llvm || die
 	fi
-	git-r3_checkout
 }
 
 src_configure() {

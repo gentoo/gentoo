@@ -1,0 +1,44 @@
+commit 562332df73781c1e56ce9123542334cc1d91b143
+Author: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+Date:   Thu Oct 6 08:55:27 2016 +0200
+
+    explicitly cast to std::vector<double> to make gcc6 happy
+    
+    With gcc6, compiling image_publisher fails with this error:
+    ```
+    /[...]/image_publisher/src/nodelet/image_publisher_nodelet.cpp: In member function 'virtual void image_publisher::ImagePublisherNodelet::onInit()':
+    /[...]/image_publisher/src/nodelet/image_publisher_nodelet.cpp:180:43: error: ambiguous overload for 'operator=' (operand types are 'sensor_msgs::CameraInfo_<std::allocator<void> >::_D_type {aka std::vector<double>}' and 'boost::assign_detail::generic_list<int>')
+         camera_info_.D = list_of(0)(0)(0)(0)(0);
+    ```
+    
+    After adding an initial explicit type cast for the assignment,
+    compiling fails further with:
+    ```
+    | /[...]/image_publisher/src/nodelet/image_publisher_nodelet.cpp: In member function 'virtual void image_publisher::ImagePublisherNodelet::onInit()':
+    | /[...]/image_publisher/src/nodelet/image_publisher_nodelet.cpp:180:65: error: call of overloaded 'vector(boost::assign_detail::generic_list<int>&)' is ambiguous
+    |      camera_info_.D = std::vector<double> (list_of(0)(0)(0)(0)(0));
+    ```
+    
+    Various sources on the internet [1, 2, 3] point to use the
+    `convert_to_container` method; hence, this commit follows those
+    suggestions and with that image_publisher compiles with gcc6.
+    
+    [1] http://stackoverflow.com/questions/16211410/ambiguity-when-using-boostassignlist-of-to-construct-a-stdvector
+    [2] http://stackoverflow.com/questions/12352692/ambiguous-call-with-list-of-in-vs2010/12362548#12362548
+    [3] http://stackoverflow.com/questions/13285272/using-boostassignlist-of?rq=1
+    
+    Signed-off-by: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+
+diff --git a/image_publisher/src/nodelet/image_publisher_nodelet.cpp b/image_publisher/src/nodelet/image_publisher_nodelet.cpp
+index 4102d0d..26e1352 100644
+--- a/image_publisher/src/nodelet/image_publisher_nodelet.cpp
++++ b/image_publisher/src/nodelet/image_publisher_nodelet.cpp
+@@ -177,7 +177,7 @@ public:
+     camera_info_.width = image_.cols;
+     camera_info_.height = image_.rows;
+     camera_info_.distortion_model = "plumb_bob";
+-    camera_info_.D = list_of(0)(0)(0)(0)(0);
++    camera_info_.D = list_of(0)(0)(0)(0)(0).convert_to_container<std::vector<double> >();
+     camera_info_.K = list_of(1)(0)(camera_info_.width/2)(0)(1)(camera_info_.height/2)(0)(0)(1);
+     camera_info_.R = list_of(1)(0)(0)(0)(1)(0)(0)(0)(1);
+     camera_info_.P = list_of(1)(0)(camera_info_.width/2)(0)(0)(1)(camera_info_.height/2)(0)(0)(0)(1)(0);

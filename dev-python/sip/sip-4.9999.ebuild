@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit python-r1 toolchain-funcs mercurial
 
 DESCRIPTION="Python extension module generator for C and C++ libraries"
-HOMEPAGE="http://www.riverbankcomputing.com/software/sip/intro https://pypi.python.org/pypi/SIP"
-EHG_REPO_URI="http://www.riverbankcomputing.com/hg/sip"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
+EHG_REPO_URI="https://www.riverbankcomputing.com/hg/sip"
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
 SLOT="0/12"

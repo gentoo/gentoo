@@ -1,0 +1,23 @@
+diff --git a/airdcpp-core/airdcpp/ZUtils.cpp b/airdcpp-core/airdcpp/ZUtils.cpp
+index 73217f71..8dbbf293 100644
+--- a/airdcpp-core/airdcpp/ZUtils.cpp
++++ b/airdcpp-core/airdcpp/ZUtils.cpp
+@@ -33,7 +33,7 @@ const double ZFilter::MIN_COMPRESSION_LEVEL = 0.9;
+ ZFilter::ZFilter() : totalIn(0), totalOut(0), compressing(true) {
+ 	memset(&zs, 0, sizeof(zs));
+ 
+-	if(deflateInit(&zs, 3) != Z_OK) {
++	if(deflateInit(&zs, SETTING(MAX_COMPRESSION)) != Z_OK) {
+ 		throw Exception(STRING(COMPRESSION_ERROR));
+ 	}
+ }
+@@ -54,7 +54,8 @@ bool ZFilter::operator()(const void* in, size_t& insize, void* out, size_t& outs
+ 	if(compressing && insize > 0 && outsize > 16 && (totalIn > (64*1024)) && ((static_cast<double>(totalOut) / totalIn) > 0.95)) {
+ 		zs.avail_in = 0;
+ 		zs.avail_out = outsize;
+-		if(deflateParams(&zs, 0, Z_DEFAULT_STRATEGY) != Z_OK) {
++		auto err = ::deflateParams(&zs, 0, Z_DEFAULT_STRATEGY);
++		if (err == Z_STREAM_ERROR) {
+ 			throw Exception(STRING(COMPRESSION_ERROR));
+ 		}
+ 		zs.avail_in = insize;

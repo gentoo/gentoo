@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="engine_pkcs11 is an implementation of an engine for OpenSSL"
-HOMEPAGE="http://www.opensc-project.org/engine_pkcs11"
+HOMEPAGE="https://github.com/opensc/engine_pkcs11/wiki"
 SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

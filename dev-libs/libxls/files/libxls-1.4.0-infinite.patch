@@ -1,0 +1,16 @@
+cellRow and cellCol need to be of a type larger than WORD.
+Otherwise for for documents with 65535 columns condition
+loops forever in the following line:
+    for (cellRow = 0; cellRow <= pWS->rows.lastrow; cellRow++) {
+In this case <= 65535 is always true.
+
+https://bugs.gentoo.org/607094 has an example doc of this kind.
+diff --git a/libxls/src/xls2csv.c b/libxls/src/xls2csv.c
+index b804267..1f0d4b3 100644
+--- a/src/xls2csv.c
++++ b/src/xls2csv.c
+@@ -104,3 +104,3 @@ int main(int argc, char *argv[]) {
+ 	struct st_row_data* row;
+-	WORD cellRow, cellCol;
++	DWORD cellRow, cellCol;
+ 

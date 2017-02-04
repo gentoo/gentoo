@@ -12,7 +12,7 @@ SRC_URI="http://repo.or.cz/llpp.git/snapshot/b51644926dda712aebdc3f075bdc0771f35
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="+ocamlopt static"
 
 LIB_DEPEND=">=app-text/mupdf-1.10a:0=[static-libs]

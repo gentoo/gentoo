@@ -2,6 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (13 Aug 2016)
+# Steam requires amd64 multilib. These are steam-overlay packages.
+dev-util/adobe-air-runtime
+games-util/steam-client-meta
+games-util/steam-games-meta
+games-util/steam-launcher
+games-util/steam-meta
+
+# Andreas K. Huettel <dilfridge@gentoo.org>
+# Novell Groupwise Client sadly needs a 32bit java vm (bundled)
+mail-client/novell-groupwise-client
+
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
 =app-editors/emacs-18*
@@ -26,6 +38,7 @@ dev-lang/idb
 dev-lang/ifc
 dev-perl/Archive-Rar
 dev-python/skype4py
+dev-util/android-ndk
 dev-util/android-sdk-update-manager
 dev-util/android-studio
 dev-util/biew
@@ -38,6 +51,7 @@ games-action/heretic2
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
+games-action/lugaru
 games-action/mutantstorm-demo
 games-action/phobiaii
 games-action/rune
@@ -116,6 +130,7 @@ games-rpg/nwn-data
 games-rpg/nwn-penultima
 games-rpg/nwn-penultimarerolled
 games-rpg/nwn-shadowlordsdreamcatcherdemon
+games-rpg/penumbra-collection
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/nwn-ded

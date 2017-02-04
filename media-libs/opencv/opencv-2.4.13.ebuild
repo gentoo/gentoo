@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Itseez/opencv/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="BSD"
 SLOT="0/2.4"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt4 qt5 testprograms threads tiff v4l vtk xine"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )

@@ -9,16 +9,14 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic git-r3 multilib-minimal \
+inherit check-reqs cmake-utils flag-o-matic multilib-minimal \
 	python-single-r1 toolchain-funcs pax-utils versionator
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/clang.git
-	https://github.com/llvm-mirror/clang.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="3a631d565d41270fa80cb3d1e43a50d24cfc2f20"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/cfe-${PV/_/}.src.tar.xz
+	http://www.llvm.org/pre-releases/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
+	test? ( http://www.llvm.org/pre-releases/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -28,7 +26,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="0/$(get_major_version)"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug default-compiler-rt default-libcxx +doc multitarget python
 	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
@@ -53,6 +51,8 @@ PDEPEND="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+
+S=${WORKDIR}/cfe-${PV/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -104,28 +104,19 @@ pkg_setup() {
 }
 
 src_unpack() {
-	git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
-		https://github.com/llvm-mirror/clang-tools-extra.git" \
-		fc0afbd6e7055b4d7f39998d743585683033c2d4
-	if use test; then
-		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git" \
-			c329efbc3c94928fb826ed146897aada0459c983
-	fi
-	git-r3_fetch
+	default
 
-	git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
-		"${S}"/tools/clang/tools/extra
+	mv clang-tools-extra-* "${S}"/tools/clang-tools-extra || die
 	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+		mv llvm-* llvm || die
 	fi
-	git-r3_checkout
 }
 
 src_prepare() {
 	python_setup
+
+	# fix finding compiler-rt libs
+	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
@@ -257,7 +248,7 @@ src_install() {
 
 	# Remove unnecessary headers on FreeBSD, bug #417171
 	if use kernel_FreeBSD; then
-		rm "${ED}"usr/lib/clang/${PV}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
+		rm "${ED}"usr/lib/clang/${llvm_version}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
 	fi
 }
 

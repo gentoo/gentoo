@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="HTTP Body Parser"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 # HTTP::Headers -> HTTP-Message

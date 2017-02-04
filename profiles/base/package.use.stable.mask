@@ -5,6 +5,24 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Johannes Huber <johu@gentoo.org) (28 Jan 2017)
+# Unstable dependencies.
+media-plugins/kipi-plugins mediawiki vkontakte
+
+# Mike Gilbert <floppym@gentoo.org> (26 Jan 2017)
+# Needs >=media-video/ffmpeg-3
+>=www-client/chromium-56 system-ffmpeg
+
+# Michael Palimaka <kensington@gentoo.org (26 Jan 2017)
+# Requires testing version of media-libs/opencv
+media-libs/mlt opencv
+
+# Johannes Huber <johu@gentoo.org> (25 Jan 2017)
+# Fails to build with dev-lang/ocaml-0.04.0 which
+# needs to be stabilized due to security issue.
+# Bugs: #603050, #581946
+kde-apps/kalzium solver
+
 # Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
 # sys-fs/zfs isn't going to be marked stable anytime soon
 app-emulation/libvirt zfs
@@ -43,10 +61,6 @@ www-servers/uwsgi go pypy
 # Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
 
-# Johannes Huber <johu@gentoo.org> (12 Dec 2016)
-# No stable version available (kde-frameworks/prison).
-kde-plasma/plasma-workspace prison
-
 # Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
 # Not ready to be stabilized yet.
 app-admin/packagekit-base entropy
@@ -73,8 +87,9 @@ app-emulation/ganeti monitoring
 =media-video/mpv-0.9.2-r1 libcaca
 
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
-# Unmask python3.5 for python-exec
+# Unmask stable-masked implementations for python-exec
 dev-lang/python-exec -python_targets_python3_5
+dev-lang/python-exec -python_targets_python3_6
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized

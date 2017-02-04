@@ -16,7 +16,6 @@
 			tracking</flag>
 		<flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for
 			getting ip</flag>
-		<flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting ip</flag>
 		<flag name="json">Enable JSON validation via <pkg>dev-libs/jansson</pkg>
 			in libnm.</flag>
 		<flag name="modemmanager">Enable support for mobile broadband devices

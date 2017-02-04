@@ -312,7 +312,7 @@ src_install() {
 	fi
 
 	if use wayland; then
-		insinto /usr/share/glvnd/egl_vendor.d
+		insinto /usr/share/egl/egl_external_platform.d
 		doins ${NV_X11}/10_nvidia_wayland.json
 	fi
 

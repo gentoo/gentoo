@@ -1,0 +1,82 @@
+Fix from opensuse:
+https://build.opensuse.org/package/view_file/Virtualization/virtualbox/Fix_for_server_1.19.patch
+
+https://bugs.gentoo.org/602784
+
+Index: VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
+===================================================================
+--- VirtualBox-5.1.10.orig/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
++++ VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
+@@ -52,6 +52,10 @@
+ #ifndef _VBOXVIDEO_H_
+ #define _VBOXVIDEO_H_
+ 
++#if XORG_VERSION_CURRENT >= 11900000
++#include <bits/sigset.h>
++typedef __sigset_t sigset_t;
++#endif
+ #include <VBox/VBoxVideoGuest.h>
+ #include <VBox/VBoxVideo.h>
+ #include "version-generated.h"
+Index: VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/helpers.c
+===================================================================
+--- VirtualBox-5.1.10.orig/src/VBox/Additions/x11/vboxvideo/helpers.c
++++ VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/helpers.c
+@@ -82,7 +82,11 @@ void vbvxSetIntegerPropery(ScrnInfoPtr p
+ 
+     property_name = MakeAtom(pszName, strlen(pszName), TRUE);
+     VBVXASSERT(property_name != BAD_RESOURCE, ("Failed to set atom \"%s\"\n", pszName));
++#if XORG_VERSION_CURRENT >= 11900000
++    dixChangeWindowProperty(serverClient, ROOT_WINDOW(pScrn), property_name, XA_INTEGER, 32, PropModeReplace, cData, paData, fSendEvent);
++#else
+     ChangeWindowProperty(ROOT_WINDOW(pScrn), property_name, XA_INTEGER, 32, PropModeReplace, cData, paData, fSendEvent);
++#endif
+ }
+ 
+ void vbvxReprobeCursor(ScrnInfoPtr pScrn)
+Index: VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
+===================================================================
+--- VirtualBox-5.1.10.orig/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
++++ VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
+@@ -1229,7 +1229,11 @@ static Bool VBOXScreenInit(ScreenPtr pSc
+     updateGraphicsCapability(pScrn, TRUE);
+ 
+     /* Register block and wake-up handlers for getting new screen size hints. */
++#if XORG_VERSION_CURRENT >= 11900000
++    RegisterBlockAndWakeupHandlers(vboxBlockHandler, (ServerWakeupHandlerProcPtr)NoopDDA, (pointer)pScrn);
++#else
+     RegisterBlockAndWakeupHandlers(vboxBlockHandler, (WakeupHandlerProcPtr)NoopDDA, (pointer)pScrn);
++#endif
+ 
+     /* software cursor */
+     miDCInitialize(pScreen, xf86GetPointerScreenFuncs());
+Index: VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/pointer.c
+===================================================================
+--- VirtualBox-5.1.10.orig/src/VBox/Additions/x11/vboxvideo/pointer.c
++++ VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/pointer.c
+@@ -15,6 +15,10 @@
+  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+  */
+ 
++#if XORG_VERSION_CURRENT >= 11900000
++#include <bits/sigset.h>
++typedef __sigset_t sigset_t;
++#endif
+ #include <VBox/VBoxGuestLib.h>
+ 
+ #ifndef PCIACCESS
+Index: VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/edid.c
+===================================================================
+--- VirtualBox-5.1.10.orig/src/VBox/Additions/x11/vboxvideo/edid.c
++++ VirtualBox-5.1.10/src/VBox/Additions/x11/vboxvideo/edid.c
+@@ -44,6 +44,10 @@
+  *    Dave Airlie <airlied@redhat.com>
+  */
+ 
++#if XORG_VERSION_CURRENT >= 11900000
++#include <bits/sigset.h>
++typedef __sigset_t sigset_t;
++#endif
+ #include <misc.h>
+ #include <xf86DDC.h>
+ #include <xf86Crtc.h>

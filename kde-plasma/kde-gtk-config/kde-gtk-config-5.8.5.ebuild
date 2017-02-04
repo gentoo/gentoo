@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="KDE Plasma systemsettings kcm to set GTK application look&feel"
 HOMEPAGE="https://projects.kde.org/kde-gtk-config"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+gtk3"
 
 DEPEND="
@@ -36,6 +36,8 @@ RDEPEND="${DEPEND}
 	!kde-base/kde-gtk-config:4
 	!kde-plasma/kde-gtk-config:4
 "
+
+RESTRICT+=" test" # bug 604050
 
 PATCHES=( "${FILESDIR}/${PN}-5.4.2-gtk3-optional.patch" )
 

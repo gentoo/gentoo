@@ -117,13 +117,13 @@ src_compile() {
 	fi
 
 	cd "${S}" && ECONF_SOURCE="${S}"/../dist econf \
-		--prefix=/usr \
-		--mandir=/usr/share/man \
-		--infodir=/usr/share/info \
-		--datadir=/usr/share \
-		--sysconfdir=/etc \
-		--localstatedir=/var/lib \
-		--libdir=/usr/"$(get_libdir)" \
+		--prefix="${EPREFIX}"/usr \
+		--mandir="${EPREFIX}"/usr/share/man \
+		--infodir="${EPREFIX}"/usr/share/info \
+		--datadir="${EPREFIX}"/usr/share \
+		--sysconfdir="${EPREFIX}"/etc \
+		--localstatedir="${EPREFIX}"/var/lib \
+		--libdir="${EPREFIX}"/usr/"$(get_libdir)" \
 		--enable-compat185 \
 		--enable-o_direct \
 		--without-uniquename \
@@ -138,7 +138,7 @@ src_compile() {
 }
 
 src_install() {
-	einstall libdir="${D}/usr/$(get_libdir)" STRIP="true" || die
+	einstall libdir="${ED}/usr/$(get_libdir)" STRIP="true" || die
 
 	db_src_install_usrbinslot
 
@@ -150,13 +150,13 @@ src_install() {
 
 	dodir /usr/sbin
 	# This file is not always built, and no longer exists as of db-4.8
-	[[ -f "${D}"/usr/bin/berkeley_db_svc ]] && \
-	mv "${D}"/usr/bin/berkeley_db_svc "${D}"/usr/sbin/berkeley_db"${SLOT/./}"_svc
+	[[ -f "${ED}"/usr/bin/berkeley_db_svc ]] && \
+	mv "${ED}"/usr/bin/berkeley_db_svc "${ED}"/usr/sbin/berkeley_db"${SLOT/./}"_svc
 
 	if use java; then
-		java-pkg_regso "${D}"/usr/"$(get_libdir)"/libdb_java*.so
-		java-pkg_dojar "${D}"/usr/"$(get_libdir)"/*.jar
-		rm -f "${D}"/usr/"$(get_libdir)"/*.jar
+		java-pkg_regso "${ED}"/usr/"$(get_libdir)"/libdb_java*.so
+		java-pkg_dojar "${ED}"/usr/"$(get_libdir)"/*.jar
+		rm -f "${ED}"/usr/"$(get_libdir)"/*.jar
 	fi
 }
 

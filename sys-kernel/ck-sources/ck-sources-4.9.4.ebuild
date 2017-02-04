@@ -39,6 +39,11 @@ CK_BASE_URL="http://ck.kolivas.org/patches/4.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 
+# solves bug #606866 (Fix build for CONFIG_FREEZER disabled.x)
+FRZR_HASH="7de569950716147ed436b27936628ee3ab5b45cc"
+FRZR_FILE="${PN}-4.9-freezer-fix.patch"
+FRZR_URI="https://github.com/ckolivas/linux/commit/${FRZR_HASH}.patch -> ${FRZR_FILE}"
+
 #-- Build extra incremental patches list --------------------------------------
 
 LX_INCP_URI=""
@@ -64,14 +69,14 @@ POST_CK_FIX=""
 
 #--
 
-SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_URI} ${CK_URI}"
+SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_URI} ${CK_URI} ${FRZR_URI}"
 
-UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}/${CK_FILE} ${CK_INCP_LIST} ${POST_CK_FIX}"
+UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}/${CK_FILE} ${CK_INCP_LIST} ${POST_CK_FIX} ${DISTDIR}/${FRZR_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
 #-- Starting with 4.8, CK patches include BFQ, so exclude genpatches experimental BFQ patches -
 
-K_EXP_GENPATCHES_LIST="5010*_*.patch*"
+K_EXP_GENPATCHES_LIST="5010_*.patch*"
 
 src_prepare() {
 

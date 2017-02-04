@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${P}-gcc4.3.patch \
 		"${FILESDIR}"/${P}-gcc4.7.patch \
-		"${FILESDIR}"/${P}-gcc5.patch \
+		"${FILESDIR}"/${P}-gcc5_6.patch \
 		"${FILESDIR}"/${PN}-7.025-strncasecmp-declaration.patch
 
 	sed \

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -142,7 +142,7 @@ src_install() {
 	if use tools; then
 		local bincmd sbincmd
 		for sbincmd in depmod insmod lsmod modinfo modprobe rmmod; do
-			dosym /bin/kmod /sbin/${sbincmd}
+			dosym ../bin/kmod /sbin/${sbincmd}
 		done
 
 		# These are also usable as normal user

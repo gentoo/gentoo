@@ -1,0 +1,38 @@
+commit 6023041346c79f7ac4105bba2552a82019fae840
+Author: David Thompson <davet@gnu.org>
+Date:   Fri Dec 30 14:15:35 2016 -0500
+
+    import: crate: Do not build when guile-json is not available.
+    
+    * Makefile.am (MODULES): Add 'guix/import/crate.scm' and
+    'guix/scripts/import/crate.scm' only when HAVE_GUILE_JSON.
+
+diff --git a/Makefile.am b/Makefile.am
+index 15939af12..97629f26e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -122,7 +122,6 @@ MODULES =					\
+   guix/import/snix.scm				\
+   guix/import/cabal.scm				\
+   guix/import/cran.scm				\
+-  guix/import/crate.scm				\
+   guix/import/hackage.scm			\
+   guix/import/elpa.scm   			\
+   guix/scripts.scm				\
+@@ -142,7 +141,6 @@ MODULES =					\
+   guix/scripts/lint.scm				\
+   guix/scripts/challenge.scm			\
+   guix/scripts/import/cran.scm			\
+-  guix/scripts/import/crate.scm			\
+   guix/scripts/import/gnu.scm			\
+   guix/scripts/import/nix.scm			\
+   guix/scripts/import/hackage.scm		\
+@@ -162,6 +160,8 @@ if HAVE_GUILE_JSON
+ MODULES +=					\
+   guix/import/github.scm   			\
+   guix/import/json.scm				\
++  guix/import/crate.scm				\
++  guix/scripts/import/crate.scm			\
+   guix/import/pypi.scm				\
+   guix/scripts/import/pypi.scm			\
+   guix/import/cpan.scm				\

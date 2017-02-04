@@ -10,7 +10,4 @@ way for "end-user" applications to abstract some of the details of connection
 managers, to provide a simple way to manipulate a bunch of connection managers
 at once, and to remove the need to have in each program the account
 definitions and credentials.</longdescription>
-<use>
-	<flag name="systemd">Rely on systemd's logind to detect suspend and resume</flag>
-</use>
 </pkgmetadata>

@@ -19,7 +19,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # TODO Add Sage Mathematics Software backend (http://www.sagemath.org)
 # FIXME: $(python_gen_cond_dep 'dev-qt/qtdbus:5' 'python3*')
-RDEPEND="
+DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -52,9 +52,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	R? ( dev-lang/R )
 "
-DEPEND="${RDEPEND}
-	dev-cpp/eigen:2
-"
+RDEPEND="${DEPEND}"
 
 RESTRICT+=" test"
 

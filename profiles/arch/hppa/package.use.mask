@@ -2,7 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
+
+# Jeroen Roovers <jer@gentoo.org> (4 Feb 2017)
+# media-libs/libilbc has not been ported to HPPA
+media-video/ffmpeg libilbc
+
+# Jeroen Roovers <jer@gentoo.org> (3 Feb 2017)
+# net-mail/notmuch is not keyworded
+mail-client/mutt notmuch
 
 # Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
 # unkeyworded rev deps
@@ -183,3 +191,5 @@ app-text/texlive xindy
 # Mart Raudsepp <leio@gentoo.org> (02 Apr 2008)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded
 media-plugins/gst-plugins-meta dvb
+
+# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.

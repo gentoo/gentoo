@@ -12,7 +12,7 @@ DESCRIPTION="Dispatches messages to one or more outputs"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix"
+KEYWORDS="~alpha ~amd64 ~x86 ~ppc-aix"
 IUSE="test"
 
 PERL_RM_FILES=(

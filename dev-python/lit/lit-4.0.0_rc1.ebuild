@@ -1,26 +1,23 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
+MY_P=llvm-${PV/_/}
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="c329efbc3c94928fb826ed146897aada0459c983"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${MY_P}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
-S=${WORKDIR}/${P}/utils/lit
+S=${WORKDIR}/${MY_P}.src/utils/lit
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
 DEPEND="

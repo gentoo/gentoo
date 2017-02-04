@@ -1,5 +1,4 @@
 /var/log/serf/serf.log {
-	su serf serf
 	missingok
 	size 5M
 	rotate 3

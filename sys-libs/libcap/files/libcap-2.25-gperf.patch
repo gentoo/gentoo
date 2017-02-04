@@ -1,0 +1,17 @@
+diff -uNr libcap-2.25.ORIG/libcap/Makefile libcap-2.25/libcap/Makefile
+--- libcap-2.25.ORIG/libcap/Makefile	2017-02-01 09:58:34.966642226 +0000
++++ libcap-2.25/libcap/Makefile	2017-02-01 10:01:49.943651936 +0000
+@@ -44,11 +44,12 @@
+ 	./_makenames > cap_names.h
+ 
+ $(GPERF_OUTPUT): cap_names.list.h
+-	(printf "%b" "struct __cap_token_s { const char *name; int index; };\n%{\nconst struct __cap_token_s *__cap_lookup_name(const char *, unsigned int);\n%}\n%%\n"; \
++	(printf "%b" "struct __cap_token_s { const char *name; int index; };\n%%\n"; \
+ 	$(SED) -e 's:["{}]::g' -e 's:,$$::' $<) | \
+ 	gperf \
+ 		--ignore-case \
+ 		--language=ANSI-C \
++		--includes \
+ 		--readonly \
+ 		--null-strings \
+ 		--global-table \

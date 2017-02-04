@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,15 +9,11 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib git-r3 python-any-r1
+inherit cmake-multilib python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="http://openmp.llvm.org"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/openmp.git
-	https://github.com/llvm-mirror/openmp.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="fc80b280f9b8c6f260f9d5c8913dd2d81937950d"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 # Additional licenses:
 # - MIT-licensed Intel code,
@@ -25,7 +21,7 @@ EGIT_COMMIT="fc80b280f9b8c6f260f9d5c8913dd2d81937950d"
 
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="hwloc ompt test"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
@@ -40,6 +36,8 @@ DEPEND="${RDEPEND}
 		sys-devel/llvm
 		>=sys-devel/clang-3.9.0
 	)"
+
+S=${WORKDIR}/openmp-${PV/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo

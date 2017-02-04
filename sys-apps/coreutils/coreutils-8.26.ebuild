@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ EAPI=5
 inherit eutils flag-o-matic toolchain-funcs
 
 PATCH_VER="1.1"
-DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
+DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz

@@ -1,0 +1,183 @@
+diff -ruN mtink-1.0.16.orig/Makefile.ORG mtink-1.0.16/Makefile.ORG
+--- mtink-1.0.16.orig/Makefile.ORG	2007-08-28 12:52:30.000000000 +0200
++++ mtink-1.0.16/Makefile.ORG	2017-01-29 18:09:40.550182789 +0100
+@@ -4,7 +4,7 @@
+ setUid=1
+ gimpVersion=
+ 
+-DBG = -s -O
++DBG =
+ 
+ # comment this out for Solaris
+ 
+@@ -147,79 +147,79 @@
+ ############## COMMON AND frintends ##################
+ $(SRCDIR)/d4lib.o: $(SRCDIR)/d4lib.c $(SRCDIR)/d4lib.h Makefile
+ 	@echo Compile d4lib.c
+-	@$(CC) -c -o $(SRCDIR)/d4lib.o $(SRCDIR)/d4lib.c $(RDTIMEOUT) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(MACOSCFLG)
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/d4lib.o $(SRCDIR)/d4lib.c $(RDTIMEOUT) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(MACOSCFLG)
+ 
+ $(SRCDIR)/access.o: $(SRCDIR)/access.c  Makefile
+ 	@echo Compile access.c
+-	@$(CC) -c -o $(SRCDIR)/access.o $(SRCDIR)/access.c $(DEBUG) $(MACOSCFLG)
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/access.o $(SRCDIR)/access.c $(DEBUG) $(MACOSCFLG)
+ 
+ $(SRCDIR)/rw.o: $(SRCDIR)/rw.c  Makefile
+ 	@echo Compile rw.c
+-	@$(CC) -c -o $(SRCDIR)/rw.o $(SRCDIR)/rw.c $(DEBUG) $(MACOSCFLG)
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/rw.o $(SRCDIR)/rw.c $(DEBUG) $(MACOSCFLG)
+ 
+ $(SRCDIR)/rcfile.o: $(SRCDIR)/rcfile.c $(SRCDIR)/rcfile.h $(SRCDIR)/mtink.h  Makefile
+ 	@echo Compile rcfile.c
+-	@$(CC) -c -o $(SRCDIR)/rcfile.o $(SRCDIR)/rcfile.c $(CFLAGS) $(MTINK_CFLAGS)   -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/rcfile.o $(SRCDIR)/rcfile.c $(CFLAGS) $(MTINK_CFLAGS)   -DWITH_X=1
+ 
+ $(SRCDIR)/fsb.o: $(SRCDIR)/fsb.c $(SRCDIR)/fsb.h $(SRCDIR)/mtink.h $(SRCDIR)/wheelmouse.h Makefile
+ 	@echo Compile fsb.c
+-	@$(CC) -c -o $(SRCDIR)/fsb.o $(SRCDIR)/fsb.c $(CFLAGS) $(MTINK_CFLAGS)   -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/fsb.o $(SRCDIR)/fsb.c $(CFLAGS) $(MTINK_CFLAGS)   -DWITH_X=1
+ 
+ $(SRCDIR)/scrtxt.o: $(SRCDIR)/scrtxt.c $(SRCDIR)/scrtxt.h $(SRCDIR)/mtink.h $(SRCDIR)/wheelmouse.h Makefile
+ 	@echo Compile scrtxt.c
+-	@$(CC) -c -o $(SRCDIR)/scrtxt.o $(SRCDIR)/scrtxt.c $(CFLAGS) $(MTINK_CFLAGS)   -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/scrtxt.o $(SRCDIR)/scrtxt.c $(CFLAGS) $(MTINK_CFLAGS)   -DWITH_X=1
+ 
+ $(SRCDIR)/cfg1.o: $(SRCDIR)/cfg1.c $(SRCDIR)/cfg1.h $(SRCDIR)/mtink.h $(SRCDIR)/cmd.h $(SRCDIR)/wheelmouse.h $(SRCDIR)/model.h Makefile
+ 	@echo Compile cfg1.c
+-	@$(CC) -c -o $(SRCDIR)/cfg1.o $(SRCDIR)/cfg1.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/cfg1.o $(SRCDIR)/cfg1.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
+ 
+ $(SRCDIR)/micon.o: $(SRCDIR)/micon.c $(SRCDIR)/micon.h  Makefile
+ 	@echo Compile micon.c
+-	@$(CC) -c -o $(SRCDIR)/micon.o $(SRCDIR)/micon.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/micon.o $(SRCDIR)/micon.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
+ 
+ $(SRCDIR)/rdPrtDesc.o: $(SRCDIR)/rdPrtDesc.c $(SRCDIR)/model.c $(SRCDIR)/rdPrtDesc.h $(SRCDIR)/model.h Makefile
+ 	@echo Compile rdPrtDesc.c
+-	@$(CC) -c -o $(SRCDIR)/rdPrtDesc.o $(SRCDIR)/rdPrtDesc.c $(CFLAGS) $(MTINK_CFLAGS) -DBLD_UTIL=0
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/rdPrtDesc.o $(SRCDIR)/rdPrtDesc.c $(CFLAGS) $(MTINK_CFLAGS) -DBLD_UTIL=0
+ 
+ $(SRCDIR)/cfg2.o: $(SRCDIR)/cfg2.c $(SRCDIR)/cfg2.h $(SRCDIR)/mtink.h $(SRCDIR)/cfg1.h $(SRCDIR)/cmd.h  Makefile
+ 	@echo Compile cfg2.c
+-	@$(CC) -c -o $(SRCDIR)/cfg2.o $(SRCDIR)/cfg2.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/cfg2.o $(SRCDIR)/cfg2.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
+ 
+ $(SRCDIR)/alignbt.o: $(SRCDIR)/alignbt.c $(SRCDIR)/alignbt.h $(SRCDIR)/mtink.h $(SRCDIR)/cfg1.h $(SRCDIR)/cmd.h  Makefile
+ 	@echo Compile alignbt.c
+-	@$(CC) -c -o $(SRCDIR)/alignbt.o $(SRCDIR)/alignbt.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/alignbt.o $(SRCDIR)/alignbt.c $(CFLAGS) $(MTINK_CFLAGS)  -DWITH_X=1
+ 
+ $(SRCDIR)/checkenv.o: $(SRCDIR)/checkenv.c $(SRCDIR)/checkenv.h $(SRCDIR)/mtink.h $(SRCDIR)/cfg1.h $(SRCDIR)/cmd.h  Makefile
+ 	@echo Compile checkenv.c
+-	@$(CC) -c -o $(SRCDIR)/checkenv.o $(SRCDIR)/checkenv.c $(CFLAGS) $(MTINK_CFLAGS)
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/checkenv.o $(SRCDIR)/checkenv.c $(CFLAGS) $(MTINK_CFLAGS)
+ 
+ $(SRCDIR)/cmd.o: $(SRCDIR)/cmd.c $(SRCDIR)/d4lib.h $(SRCDIR)/cmd.h $(SRCDIR)/mtink.h $(SRCDIR)/model.h $(SRCDIR)/al820.c  $(SRCDIR)/align.c $(SRCDIR)/alC82.c $(SRCDIR)/bldpcode.c Makefile
+ 	@echo Compile cmd.c
+-	@$(CC) -c -o $(SRCDIR)/cmd.o $(SRCDIR)/cmd.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG) $(RDTIMEOUT) $(WRTIMEOUT) -DWITH_X=1 -DSERVER=0
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/cmd.o $(SRCDIR)/cmd.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG) $(RDTIMEOUT) $(WRTIMEOUT) -DWITH_X=1 -DSERVER=0
+ 
+ $(SRCDIR)/nXcmd.o: $(SRCDIR)/cmd.c $(SRCDIR)/d4lib.h $(SRCDIR)/cmd.h $(SRCDIR)/mtink.h $(SRCDIR)/model.h Makefile $(SRCDIR)/al820.c  $(SRCDIR)/align.c $(SRCDIR)/alC82.c $(SRCDIR)/bldpcode.c
+ 	@echo Compile cmd.c as nXcmd.o
+-	@$(CC) -c -o $(SRCDIR)/nXcmd.o $(SRCDIR)/cmd.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG) $(RDTIMEOUT) $(WRTIMEOUT) -DWITH_X=0 -DSERVER=0
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/nXcmd.o $(SRCDIR)/cmd.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG) $(RDTIMEOUT) $(WRTIMEOUT) -DWITH_X=0 -DSERVER=0
+ 
+ $(SRCDIR)/resource.o: $(SRCDIR)/resource.c $(SRCDIR)/version.h Makefile
+ 	@echo Compile resource.c
+-	@$(CC) -c -o $(SRCDIR)/resource.o $(SRCDIR)/resource.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/resource.o $(SRCDIR)/resource.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
+ 
+ $(SRCDIR)/mtink.o: $(SRCDIR)/mtink.c $(SRCDIR)/d4lib.h $(SRCDIR)/cmd.h $(SRCDIR)/mtink.h $(SRCDIR)/cfg1.h $(SRCDIR)/model.h $(SRCDIR)/checkenv.h Makefile
+ 	@echo Compile mtink.c
+-	@$(CC) -c -o $(SRCDIR)/mtink.o $(SRCDIR)/mtink.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/mtink.o $(SRCDIR)/mtink.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
+ 
+ $(SRCDIR)/ttink.o: $(SRCDIR)/ttink.c $(SRCDIR)/d4lib.h $(SRCDIR)/cmd.h $(SRCDIR)/mtink.h  $(SRCDIR)/model.h Makefile
+ 	@echo Compile ttink.c
+-	@$(CC) -c -o $(SRCDIR)/ttink.o $(SRCDIR)/ttink.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=0
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/ttink.o $(SRCDIR)/ttink.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=0
+ 
+ $(SRCDIR)/tooltip.o: $(SRCDIR)/tooltip.c $(SRCDIR)/tooltip.h Makefile
+ 	@echo Compile tooltip.c
+-	@$(CC) -c -o $(SRCDIR)/tooltip.o $(SRCDIR)/tooltip.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/tooltip.o $(SRCDIR)/tooltip.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
+ 
+ $(SRCDIR)/wheelmouse.o: $(SRCDIR)/wheelmouse.c Makefile
+ 	@echo Compile wheelmouse.c
+-	@$(CC) -c -o $(SRCDIR)/wheelmouse.o $(SRCDIR)/wheelmouse.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
++	@$(CC) $(CFLAGS) -c -o $(SRCDIR)/wheelmouse.o $(SRCDIR)/wheelmouse.c $(CFLAGS) $(MTINK_CFLAGS)  $(DEBUG)  -DWITH_X=1
+ 
+ $(SRCDIR)/rdRes.o: $(SRCDIR)/rdRes.c $(SRCDIR)/tres.c Makefile
+ 	@echo Compile rdRes.c
+@@ -231,59 +231,59 @@
+ 
+ mtink:  $(OBJ) $(SRCDIR)/d4lib.h $(SRCDIR)/alignbt.h $(SRCDIR)/scrtxt.h $(SRCDIR)/cfg1.h $(SRCDIR)/cfg2.h $(SRCDIR)/cmd.h $(SRCDIR)/mtink.h $(SRCDIR)/cfg1.h $(SRCDIR)/version.h
+ 	@echo Link mtink
+-	@$(CC) -o mtink $(OBJ)  $(CFLAGS) $(MTINK_CFLAGS) $(LDFLAGS) $(LFLAGS) $(RDTIMEOUT) $(DEVICE) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) -DWITH_X=1
++	@$(CC) $(LDFLAGS) -o mtink $(OBJ)  $(CFLAGS) $(MTINK_CFLAGS) $(LDFLAGS) $(LFLAGS) $(RDTIMEOUT) $(DEVICE) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) -DWITH_X=1
+ 
+ ttink: $(TTYOBJ) $(SRCDIR)/d4lib.h $(SRCDIR)/cmd.h $(SRCDIR)/mtink.h $(SRCDIR)/model.h $(SRCDIR)/version.h Makefile
+ 	@echo Link ttink
+-	@$(CC) -o ttink $(TTYOBJ) $(CFLAGS) $(MTINK_CFLAGS) $(RDTIMEOUT) $(DEVICE) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(MACOSLDFLG) -DWITH_X=0
++	@$(CC) $(LDFLAGS) -o ttink $(TTYOBJ) $(CFLAGS) $(MTINK_CFLAGS) $(RDTIMEOUT) $(DEVICE) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(MACOSLDFLG) -DWITH_X=0
+ 
+ ############# PLUG-IN #######################
+ gimp-mtink: $(SRCDIR)/gimp-mtink.c Makefile
+ 	@echo Compile and link gimp-mtink.c
+-	@-$(CC) -o gimp-mtink $(SRCDIR)/gimp-mtink.c $(GIMP_INC) $(GIMP_LIB)
++	@-$(CC) $(LDFLAGS) -o gimp-mtink $(SRCDIR)/gimp-mtink.c $(GIMP_INC) $(GIMP_LIB)
+ 
+ ############# SERVER ########################
+ $(SVRDIR)/mtinkd.o: $(SVRDIR)/mtinkd.c Makefile
+ 	@echo Compile mtinkd.c
+-	@$(CC) -c -o $(SVRDIR)/mtinkd.o $(SVRDIR)/mtinkd.c -DSERVER=1 $(CFLAGS) $(MTINK_CFLAGS)
++	@$(CC) $(CFLAGS) -c -o $(SVRDIR)/mtinkd.o $(SVRDIR)/mtinkd.c -DSERVER=1 $(CFLAGS) $(MTINK_CFLAGS)
+ 
+ $(SVRDIR)/d4lib.o: $(SRCDIR)/d4lib.c  Makefile
+ 	@echo Compile d4lib.c
+-	@$(CC) -c -o $(SVRDIR)/d4lib.o $(SRCDIR)/d4lib.c $(RDTIMEOUT) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(CFLAGS) $(MTINK_CFLAGS)
++	@$(CC) $(CFLAGS) -c -o $(SVRDIR)/d4lib.o $(SRCDIR)/d4lib.c $(RDTIMEOUT) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(CFLAGS) $(MTINK_CFLAGS)
+ 
+ $(SVRDIR)/cmd.o: $(SRCDIR)/cmd.c Makefile
+ 	@echo Compile cmd.c
+-	@$(CC) -c -o $(SVRDIR)/cmd.o $(SRCDIR)/cmd.c -DSERVER=1 $(CFLAGS) $(MTINK_CFLAGS)
++	@$(CC) $(CFLAGS) -c -o $(SVRDIR)/cmd.o $(SRCDIR)/cmd.c -DSERVER=1 $(CFLAGS) $(MTINK_CFLAGS)
+ 
+ mtinkd: $(SVR_OBJ) Makefile
+ 	@echo Link mtinkd
+-	@$(CC) -o mtinkd $(SVR_OBJ) $(CFLAGS) $(MTINK_CFLAGS) $(MACOSLDFLG) 
++	@$(CC) $(LDFLAGS) -o mtinkd $(SVR_OBJ) $(CFLAGS) $(MTINK_CFLAGS) $(MACOSLDFLG) 
+ 
+ ########### Chooser ##############
+ 
+ mtinkc: $(CHODIR)/mtinkc.c Makefile
+ 	@echo Compile and link mtinkc.c
+-	@$(CC) -o mtinkc $(CHODIR)/mtinkc.c $(CFLAGS) $(MTINK_CFLAGS) $(LDFLAGS) $(LFLAGS)
++	@$(CC) $(LDFLAGS) -o mtinkc $(CHODIR)/mtinkc.c $(CFLAGS) $(MTINK_CFLAGS) $(LDFLAGS) $(LFLAGS)
+ 
+ ########### printer detection ##############
+ 
+ $(DETDIR)/askPrinter: $(DETDIR)/askPrinter.c
+ 	@echo Compile and link askPrinter.c
+-	@$(CC) -o $(DETDIR)/askPrinter $(DETDIR)/askPrinter.c -I. -I$(DETDIR)
++	@$(CC) $(CFLAGS) $(LDFLAGS) -o $(DETDIR)/askPrinter $(DETDIR)/askPrinter.c -I. -I$(DETDIR)
+ 
+ ########### utilities ######################
+ 
+ $(UTILS)/bldRes: $(UTILS)/bldRes.c
+ 	@echo Compile bldRes.c
+-	@$(CC) -o $(UTILS)/bldRes $(UTILS)/bldRes.c
++	@$(CC) $(LDFLAGS) -o $(UTILS)/bldRes $(UTILS)/bldRes.c
+ 
+ $(UTILS)/rdPrtDesc: $(SRCDIR)/rdPrtDesc.c
+ 	@echo Compile rdPrtDesc.c
+-	@$(CC) -o $(UTILS)/rdPrtDesc $(SRCDIR)/rdPrtDesc.c -I$(SRCDIR)
++	@$(CC) $(LDFLAGS) -o $(UTILS)/rdPrtDesc $(SRCDIR)/rdPrtDesc.c -I$(SRCDIR)
+ 
+ $(UTILS)/chckRes: $(SRCDIR)/rdRes.c
+ 	@echo Compile chckRes
+-	@$(CC) -o $(UTILS)/chckRes $(SRCDIR)/rdRes.c -I$(SRCDIR) -DRESCHECK=1
++	@$(CC) $(LDFLAGS) -o $(UTILS)/chckRes $(SRCDIR)/rdRes.c -I$(SRCDIR) -DRESCHECK=1
+ 
+ install: install-mtink install-ttink install-desc install-plugins install-askPrinter install-mtinkd install-start install-cups install-pyink
+ 

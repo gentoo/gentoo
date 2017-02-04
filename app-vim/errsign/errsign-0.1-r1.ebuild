@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ DESCRIPTION="vim plugin: display marks on lines with errors"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1027"
 
 LICENSE="vim.org"
-KEYWORDS="alpha amd64 ia64 mips ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
 IUSE=""
 
 VIM_PLUGIN_HELPTEXT=\

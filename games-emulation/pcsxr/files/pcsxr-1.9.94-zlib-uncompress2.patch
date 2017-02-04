@@ -1,0 +1,47 @@
+From dabb671947ae26942c7ef8a71fef9831e0c1884d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 26 Jan 2017 18:14:01 +0100
+Subject: [PATCH] Fix build against zlib-1.2.9+ (having uncompress2)
+
+---
+ pcsxr/configure.ac         | 3 +++
+ pcsxr/libpcsxcore/cdriso.c | 2 ++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/pcsxr/configure.ac b/pcsxr/configure.ac
+index 300bb185..128b4f97 100644
+--- a/pcsxr/configure.ac
++++ b/pcsxr/configure.ac
+@@ -113,6 +113,9 @@ if test "x$have_xtest" = xno; then
+ 	AC_MSG_ERROR([unable to find xtest headers])
+ fi
+ 
++AC_CHECK_LIB(z, uncompress2,
++[ AC_DEFINE([HAVE_UNCOMPRESS2], [1], [Define if libz supports uncompress2]) ])
++
+ AM_CONDITIONAL(USE_LIBCDIO, false)
+ 
+ AC_ARG_ENABLE(libcdio, [  --enable-libcdio        use GNU libcdio for CD-ROM support (default=no)],
+diff --git a/pcsxr/libpcsxcore/cdriso.c b/pcsxr/libpcsxcore/cdriso.c
+index 04e866d9..fb7f28a5 100644
+--- a/pcsxr/libpcsxcore/cdriso.c
++++ b/pcsxr/libpcsxcore/cdriso.c
+@@ -1219,6 +1219,7 @@ static int cdread_sub_mixed(FILE *f, unsigned int base, void *dest, int sector)
+ 	return ret;
+ }
+ 
++#ifndef HAVE_UNCOMPRESS2
+ static int uncompress2(void *out, unsigned long *out_size, void *in, unsigned long in_size)
+ {
+ 	static z_stream z;
+@@ -1249,6 +1250,7 @@ static int uncompress2(void *out, unsigned long *out_size, void *in, unsigned lo
+ 	*out_size -= z.avail_out;
+ 	return ret == 1 ? 0 : ret;
+ }
++#endif
+ 
+ static int cdread_compressed(FILE *f, unsigned int base, void *dest, int sector)
+ {
+-- 
+2.11.0
+

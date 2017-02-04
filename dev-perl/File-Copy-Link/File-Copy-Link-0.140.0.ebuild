@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for replacing a link by a copy of the linked file"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa"
 IUSE="test"
 
 RDEPEND="

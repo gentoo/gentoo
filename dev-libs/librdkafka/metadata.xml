@@ -9,4 +9,7 @@
 		<bugs-to>https://github.com/edenhill/librdkafka/issues</bugs-to>
 		<remote-id type="github">edenhill/librdkafka</remote-id>
 	</upstream>
+	<use>
+		<flag name="lz4">Enable support for Kafka's LZ4 compression based on KIP-57 (uses <pkg>app-arch/lz4</pkg>)</flag>
+	</use>
 </pkgmetadata>

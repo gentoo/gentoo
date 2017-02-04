@@ -5,6 +5,31 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
+# nvenc requires nvidia drivers, apply same mask logic
+media-video/ffmpeg nvenc
+
+# Thomas Deutschmann <whissi@gentoo.org> (30 Jan 2017)
+# media-libs/raspberrypi-userland not keyworded
+media-video/motion mmal
+
+# Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
+# x11-drivers/ati-drivers is masked for removal.
+media-gfx/blender opencl
+media-libs/opensubdiv opencl
+
+# Ian Stakenvicius (25 Jan 2017)
+# rust on mozilla packages is experimental
+www-client/firefox rust
+
+# Michał Górny <mgorny@gentoo.org> (25 Jan 2017)
+# Unmask python-exec support for experimental dev-lang/python:3.6
+dev-lang/python-exec -python_targets_python3_6
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# xf86-video-??? masked for removal
+x11-base/xorg-drivers video_cards_v4l
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
 # Requires x11-drivers/nvidia-drivers available on selected few arches.
 media-video/mpv cuda
@@ -131,10 +156,6 @@ dev-java/icedtea shenandoah
 # Johannes Huber <johu@gentoo.org> (10 Jul 2016)
 # Unreleased dependencies.
 >=media-gfx/digikam-5.0.0 addressbook
-
-# Johannes Huber <johu@gentoo.org> (10 Jul 2016)
-# Unreleased dependencies.
->=media-plugins/kipi-plugins-5.0.0 mediawiki vkontakte
 
 # Michał Górny <mgorny@gentoo.org> (05 Jul 2016)
 # Mask system-clang support as it requires llvm-3.4 that is subject

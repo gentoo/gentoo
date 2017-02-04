@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.gnome-look.org/content/files/39179-rezlooks-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.8:2"

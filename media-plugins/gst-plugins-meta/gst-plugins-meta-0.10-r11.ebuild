@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="metapackage"
 SLOT="0.10"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="aac a52 alsa cdda dts dv dvb dvd flac http jack lame libass libvisual mms mp3 modplug mpeg musepack ogg opus oss pulseaudio taglib theora v4l vcd vorbis vpx wavpack X x264 xv xvid"
 REQUIRED_USE="opus? ( ogg ) theora? ( ogg ) vorbis? ( ogg )"
 

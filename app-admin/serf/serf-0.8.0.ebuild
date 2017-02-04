@@ -78,8 +78,11 @@ src_prepare() {
 src_compile() {
 	export GOPATH="${S}"
 	go install -v -work -x ${EGO_BUILD_FLAGS} "github.com/mitchellh/gox/..." || die
-	PATH=${PATH}:${S}/bin XC_ARCH=$(go env GOARCH) XC_OS=$(go env GOOS) \
-		emake -C "${S}/src/${EGO_PN}" bin
+	# The dev target sets causes build.sh to set appropriate XC_OS
+	# and XC_ARCH, and skips generation of an unused zip file,
+	# avoiding a dependency on app-arch/zip.
+	PATH=${PATH}:${S}/bin \
+		emake -C "${S}/src/${EGO_PN}" dev
 }
 
 src_install() {

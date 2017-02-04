@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm hppa ~ppc ppc64 ~sparc x86"
 
 RDEPEND="
-	>=sys-libs/ncurses-5.3-r2:=
+	>=sys-libs/ncurses-5.3-r2:0=
 	dev-libs/confuse:=
 	dev-libs/libnl:3
 "

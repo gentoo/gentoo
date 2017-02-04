@@ -192,17 +192,18 @@ src_compile() {
 src_install() {
 	default
 
-	if use doc; then
-		dohtml -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
-		if use doc-pdf; then
-			insinto /usr/share/doc/${PF}/pdf/
-			doins docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
-		fi
-	fi
-
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README{,.bsd,.linux,.macos,.vmware} \
 		doc/{randpkt.txt,README*}
+
+	if use doc; then
+		docinto /usr/share/doc/${PF}/html
+		dodoc -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
+		if use doc-pdf; then
+			docinto /usr/share/doc/${PF}/pdf/
+			dodoc docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
+		fi
+	fi
 
 	# install headers
 	local wsheader

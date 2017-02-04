@@ -26,6 +26,7 @@ IUSE="ayatana gtk libressl lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/libb64:0=
 	>=dev-libs/libevent-2.0.10:=
 	!mbedtls? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -89,7 +90,7 @@ src_configure() {
 		-DUSE_SYSTEM_MINIUPNPC=ON
 		-DUSE_SYSTEM_NATPMP=ON
 		-DUSE_SYSTEM_UTP=OFF
-		-DUSE_SYSTEM_B64=OFF
+		-DUSE_SYSTEM_B64=ON
 
 		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
 		-DWITH_INOTIFY=ON

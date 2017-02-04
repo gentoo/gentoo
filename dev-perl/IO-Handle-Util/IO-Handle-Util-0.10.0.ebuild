@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Functions for working with IO::Handle like objects"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="

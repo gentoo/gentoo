@@ -1,0 +1,64 @@
+# Patch to fix compiling with ffmpeg-3.
+# Backported from: https://sourceforge.net/p/vice-emu/code/31580/
+
+--- /src/gfxoutputdrv/ffmpeglib.h
++++ /src/gfxoutputdrv/ffmpeglib.h
+@@ -76,6 +76,14 @@
+ #define AVCodecID              CodecID
+ #endif
+
++#if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(55,17,103)
++#define VICE_AV_PIX_FMT_RGB24 PIX_FMT_RGB24
++#define VICE_AV_PixelFormat PixelFormat
++#else
++#define VICE_AV_PIX_FMT_RGB24 AV_PIX_FMT_RGB24
++#define VICE_AV_PixelFormat AVPixelFormat
++#endif
++
+ /* avcodec fucntions */
+ typedef void(*av_init_packet_t)(AVPacket *pkt);
+ typedef int(*avcodec_open2_t)(AVCodecContext*, AVCodec*, AVDictionary **);
+@@ -118,7 +126,7 @@
+
+ /* swscale functions */
+ typedef struct SwsContext * (*sws_getContext_t)(int srcW, int srcH,
+-                                                enum PixelFormat srcFormat, int dstW, int dstH, enum PixelFormat dstFormat,
++                                                enum VICE_AV_PixelFormat srcFormat, int dstW, int dstH, enum VICE_AV_PixelFormat dstFormat,
+                                                 int flags, SwsFilter *srcFilter, SwsFilter *dstFilter, double *param);
+ typedef void (*sws_freeContext_t)(struct SwsContext *swsContext);
+ typedef int (*sws_scale_t)(struct SwsContext *context, uint8_t* srcSlice[],
+
+--- /src/gfxoutputdrv/ffmpegdrv.c
++++ /src/gfxoutputdrv/ffmpegdrv.c
+@@ -671,8 +671,8 @@
+        picture is needed too. It is then converted to the required
+        output format */
+     video_st.tmp_frame = NULL;
+-    if (c->pix_fmt != PIX_FMT_RGB24) {
+-        video_st.tmp_frame = ffmpegdrv_alloc_picture(PIX_FMT_RGB24, c->width, c->height);
++    if (c->pix_fmt != VICE_AV_PIX_FMT_RGB24) {
++        video_st.tmp_frame = ffmpegdrv_alloc_picture(VICE_AV_PIX_FMT_RGB24, c->width, c->height);
+         if (!video_st.tmp_frame) {
+             log_debug("ffmpegdrv: could not allocate temporary picture");
+             return -1;
+@@ -769,9 +769,9 @@
+
+ #ifdef HAVE_FFMPEG_SWSCALE
+     /* setup scaler */
+-    if (c->pix_fmt != PIX_FMT_RGB24) {
++    if (c->pix_fmt != VICE_AV_PIX_FMT_RGB24) {
+         sws_ctx = VICE_P_SWS_GETCONTEXT
+-                      (video_width, video_height, PIX_FMT_RGB24,
++                      (video_width, video_height, VICE_AV_PIX_FMT_RGB24,
+                       video_width, video_height, c->pix_fmt,
+                       SWS_BICUBIC,
+                       NULL, NULL, NULL);
+@@ -948,7 +948,7 @@
+
+     c = video_st.st->codec;
+
+-    if (c->pix_fmt != PIX_FMT_RGB24) {
++    if (c->pix_fmt != VICE_AV_PIX_FMT_RGB24) {
+         ffmpegdrv_fill_rgb_image(screenshot, video_st.tmp_frame);
+
+         if (sws_ctx != NULL) {

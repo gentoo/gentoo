@@ -1,0 +1,16 @@
+diff --git a/perl/Amanda/Changer/aggregate.pm b/perl/Amanda/Changer/aggregate.pm
+index a2bd962..ecf9d28 100644
+--- a/perl/Amanda/Changer/aggregate.pm
++++ b/perl/Amanda/Changer/aggregate.pm
+@@ -391,7 +391,10 @@ sub info_key {
+ 	    my $kid = 0;
+ 	    for (@$kid_results) {
+ 		my ($err, %kid_info) = @$_;
+-		next unless exists($kid_info{'slots'});
++		if (!exists($kid_info{'slots'})){
++		    $kid++;
++		    next;
++		}
+ 		my $kid_slots = $kid_info{'slots'};
+ 		push @slots, map "$kid:$_", @{$kid_slots};
+ 		$kid++;

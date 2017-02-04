@@ -25,7 +25,5 @@ properties of computer languages and protocols.
   <flag name="ledit">Use ledit for the isabelle tty line editor</flag> 
   <flag name="readline">Use readline (rlwrap) for the isabelle tty line
   editor</flag> 
-  <flag name="proofgeneral">Add support for the
-  <pkg>app-emacs/proofgeneral</pkg> proof assistant front end.</flag>
 </use>
 </pkgmetadata>

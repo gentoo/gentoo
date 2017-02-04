@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DOCS=( "AUTHORS.txt" "CHANGES.txt" "README.md" )
 

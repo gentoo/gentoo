@@ -1,5 +1,5 @@
---- origsrc/qsvn-0.8.3/src/svnqt/CMakeLists.txt	2009-07-05 04:56:34.000000000 -0500
-+++ src/qsvn-0.8.3/src/svnqt/CMakeLists.txt	2009-08-25 00:56:52.432416800 -0500
+--- a/svnqt/CMakeLists.txt	2009-07-05 04:56:34.000000000 -0500
++++ b/svnqt/CMakeLists.txt	2009-08-25 00:56:52.432416800 -0500
 @@ -131,7 +131,7 @@ CONFIGURE_FILE(
  SET(INST_HEADERS ${INST_HEADERS} ${CMAKE_CURRENT_BINARY_DIR}/svnqt_defines.hpp)
  INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_BINARY_DIR})

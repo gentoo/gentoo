@@ -15,30 +15,28 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
-IUSE="doc qt5"
+IUSE="doc"
 
 RDEPEND="
 	dev-libs/expat
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwebchannel:5
+	dev-qt/qtwebengine:5[widgets]
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	sci-libs/shapelib:=
 	sys-libs/zlib[minizip]
 	virtual/libusb:0
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtwebchannel:5
-		dev-qt/qtwebengine:5[widgets]
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	doc? (
 		dev-lang/perl
 		dev-libs/libxslt
 		app-text/docbook-xml-dtd:4.1.2
 	)
-	qt5? ( dev-qt/linguist:5 )
 "
 
 DOCS=( AUTHORS README.{contrib,igc,mapconverter,md,xmapwpt} )
@@ -73,26 +71,23 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with doc doc "${S}"/doc/manual) \
-		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '') \
-		$(usex qt5 LUPDATE=$(qt5_get_bindir)/lupdate '') \
-		$(usex qt5 QMAKE=$(qt5_get_bindir)/qmake '') \
+		LRELEASE=$(qt5_get_bindir)/lrelease \
+		LUPDATE=$(qt5_get_bindir)/lupdate \
+		QMAKE=$(qt5_get_bindir)/qmake \
 		--with-zlib=system
 
-	if use qt5; then
-		pushd "${S}/gui" > /dev/null || die
-		lrelease *.ts || die
-		eqmake5
-		popd > /dev/null
-	fi
+	pushd "${S}/gui" > /dev/null || die
+	lrelease *.ts || die
+	eqmake5
+	popd > /dev/null
 }
 
 src_compile() {
 	default
-	if use qt5; then
-		pushd "${S}/gui" > /dev/null || die
-		emake
-		popd > /dev/null
-	fi
+
+	pushd "${S}/gui" > /dev/null || die
+	emake
+	popd > /dev/null
 
 	if use doc; then
 		perl xmldoc/makedoc || die
@@ -101,17 +96,13 @@ src_compile() {
 }
 
 src_install() {
-	if use doc; then
-		HTML_DOCS=( "${S}"/${PN}.html "${S}"/${PN}.org-style3.css )
-	fi
+	use doc && HTML_DOCS=( "${S}"/${PN}.html "${S}"/${PN}.org-style3.css )
 
 	default
 
-	if use qt5; then
-		dobin gui/objects/gpsbabelfe
-		insinto /usr/share/${PN}/translations/
-		doins gui/gpsbabel*_*.qm
-		newicon gui/images/appicon.png ${PN}.png
-		make_desktop_entry gpsbabelfe ${PN} ${PN} "Science;Geoscience"
-	fi
+	dobin gui/objects/gpsbabelfe
+	insinto /usr/share/${PN}/translations/
+	doins gui/gpsbabel*_*.qm
+	newicon gui/images/appicon.png ${PN}.png
+	make_desktop_entry gpsbabelfe ${PN} ${PN} "Science;Geoscience"
 }

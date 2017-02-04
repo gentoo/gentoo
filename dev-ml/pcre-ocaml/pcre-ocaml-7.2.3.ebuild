@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mmottl/pcre-ocaml/releases/download/v${PV}/${P}.tar.
 LICENSE="LGPL-2.1-with-linking-exception"
 IUSE="examples"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 
 RDEPEND=">=dev-libs/libpcre-4.5
 	>=dev-lang/ocaml-4:="

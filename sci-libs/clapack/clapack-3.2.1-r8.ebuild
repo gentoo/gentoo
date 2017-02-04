@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit flag-o-matic cmake-utils
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.netlib.org/${PN}/${P}-CMAKE.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
@@ -29,6 +29,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-findblas-r7.patch"
 )
 
+# bug 433806
+RESTRICT="test"
+
 src_prepare() {
 	rm INCLUDE/f2c.h F2CLIBS/libf2c/f2c.h || die
 	cmake-utils_src_prepare
@@ -38,6 +41,6 @@ src_configure() {
 	filter-flags -ftree-vectorize
 	# causes an internal compiler error with gcc-4.6.2
 
-	local mycmakeargs=( $(cmake-utils_use_enable test TESTS) )
+	local mycmakeargs=( -DENABLE_TESTS=$(usex test) )
 	cmake-utils_src_configure
 }

@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SLOT="0/${PV}"
 fi
 

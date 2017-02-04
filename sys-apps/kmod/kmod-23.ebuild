@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit autotools git-2
 else
 	SRC_URI="mirror://kernel/linux/utils/kernel/kmod/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+	KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 	inherit libtool
 fi
 
@@ -142,7 +142,7 @@ src_install() {
 	if use tools; then
 		local bincmd sbincmd
 		for sbincmd in depmod insmod lsmod modinfo modprobe rmmod; do
-			dosym /bin/kmod /sbin/${sbincmd}
+			dosym ../bin/kmod /sbin/${sbincmd}
 		done
 
 		# These are also usable as normal user

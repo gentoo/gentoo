@@ -84,7 +84,7 @@ src_compile() {
 		--enable-cxx \
 		--enable-compat185 \
 		--enable-dump185 \
-		--prefix=/usr"
+		--prefix=${EPREFIX}/usr"
 
 	# --enable-rpc DOES NOT BUILD
 	# Robin H. Johnson <robbat2@gentoo.org> (18 Oct 2003)
@@ -107,17 +107,17 @@ src_compile() {
 	strip=/bin/true \
 	ECONF_SOURCE="${S}"/dist econf \
 		${conf} ${conf_static} \
-		--libdir=/usr/$(get_libdir) \
+		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--disable-shared \
 		--enable-static || die
 
 	einfo "Configuring ${P} (shared)..."
 	mkdir -p "${S}"/build-shared
 	cd "${S}"/build-shared
-	strip=/bin/true \
+	strip="${ED}"/bin/true \
 	ECONF_SOURCE="${S}"/dist econf \
 		${conf} ${conf_shared} \
-		--libdir=/usr/$(get_libdir) \
+		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--disable-static \
 		--enable-shared || die
 
@@ -125,19 +125,19 @@ src_compile() {
 	MAKEOPTS="${MAKEOPTS} -j1"
 	einfo "Building ${P} (static)..."
 	cd "${S}"/build-static
-	emake strip=/bin/true || die "Static build failed"
+	emake strip="${EPREFIX}"/bin/true || die "Static build failed"
 	einfo "Building ${P} (shared)..."
 	cd "${S}"/build-shared
-	emake strip=/bin/true || die "Shared build failed"
+	emake strip="${EPREFIX}"/bin/true || die "Shared build failed"
 }
 
 src_install () {
 	cd "${S}"/build-shared
 	make libdb=libdb-3.2.a \
 		libcxx=libcxx_3.2.a \
-		prefix="${D}"/usr \
-		libdir="${D}"/usr/$(get_libdir) \
-		strip=/bin/true \
+		prefix="${EPREFIX}"/usr \
+		libdir="${EPREFIX}"/usr/$(get_libdir) \
+		strip="${EPREFIX}"/bin/true \
 		install || die
 
 	cd "${S}"/build-static
@@ -153,7 +153,7 @@ src_install () {
 	# For some reason, db.so's are *not* readable by group or others,
 	# resulting in no one but root being able to use them!!!
 	# This fixes it -- DR 15 Jun 2001
-	cd "${D}"/usr/$(get_libdir)
+	cd "${ED}"/usr/$(get_libdir)
 	chmod go+rx *.so
 	# The .la's aren't readable either
 	chmod go+r *.la

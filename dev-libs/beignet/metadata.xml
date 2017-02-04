@@ -8,5 +8,7 @@
 	<use>
 		<flag name="ocl-icd">Enable compatibility with the
 		<pkg>dev-libs/ocl-icd</pkg> OpenCL ICD loader</flag>
+		<flag name="ocl20">Enable experimental OpenCL 2.0 support on Skylake
+			and newer architectures</flag>
 	</use>
 </pkgmetadata>

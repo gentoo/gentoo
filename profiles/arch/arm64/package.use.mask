@@ -2,6 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
+# dev-libs/snowball-stemmer not keyworded
+dev-libs/appstream-glib stemmer
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# app-admin/hddtemp not keyworded
+app-admin/gkrellm hddtemp
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# media-libs/libcddb not keyworded yet
+dev-libs/libcdio cddb
+
 # Steev Klimaszewski <steev@gentoo.org> (04 March 2016)
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
 www-client/chromium tcmalloc
@@ -11,15 +23,20 @@ www-client/chromium tcmalloc
 net-misc/tlsdate seccomp
 
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
+# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
-net-misc/curl curl_ssl_axtls curl_ssl_polarssl metalink
+net-misc/curl curl_ssl_axtls curl_ssl_libressl curl_ssl_polarssl metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
 
 # Needs testing.
-sys-devel/gcc gcj graphite regression-test
+sys-devel/gcc graphite regression-test
+
+# Roy Bamford <neddyseagoon@gentoo.org> (26 Jan 2017)
+# gcj-6.3 won't bootstrap icedtea 7
+>=sys-devel/gcc-6 gcj
 
 # Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
 # no keyword for media-libs/swfdec and media-libs/libtimidity

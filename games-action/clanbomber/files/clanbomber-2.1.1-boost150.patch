@@ -1,5 +1,5 @@
---- src/MapEntry.cpp.old	2012-11-15 10:55:40.123259605 +0100
-+++ src/MapEntry.cpp	2012-11-15 10:57:35.217379211 +0100
+--- a/src/MapEntry.cpp	2012-11-15 10:55:40.123259605 +0100
++++ b/src/MapEntry.cpp	2012-11-15 10:57:35.217379211 +0100
 @@ -50,7 +50,7 @@
    enabled = true;
  
@@ -9,8 +9,8 @@
  
    // is the file writable?
    if (access(path / filename, W_OK) == 0) {
---- src/Map.cpp.old	2012-11-15 10:52:56.884424228 +0100
-+++ src/Map.cpp	2012-11-15 10:54:16.334992079 +0100
+--- a/src/Map.cpp	2012-11-15 10:52:56.884424228 +0100
++++ b/src/Map.cpp	2012-11-15 10:54:16.334992079 +0100
 @@ -116,7 +116,7 @@
      for (boost::filesystem::directory_iterator dir_iter(path);
           dir_iter != end_iter; dir_iter++) {

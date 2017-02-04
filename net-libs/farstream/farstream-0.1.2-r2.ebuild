@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,9 +36,7 @@ COMMONDEPEND="
 RDEPEND="${COMMONDEPEND}
 	>=media-libs/gst-plugins-good-0.10.17:0.10
 	>=media-libs/gst-plugins-bad-0.10.17:0.10
-	|| (
-		>=media-plugins/gst-plugins-libnice-0.1.0:0.10
-		<=net-libs/libnice-0.1.3[gstreamer] )
+	>=media-plugins/gst-plugins-libnice-0.1.0:0.10
 	!net-libs/farsight2
 "
 # This package is just a rename from farsight2

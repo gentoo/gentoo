@@ -1,0 +1,22 @@
+commit 3a055ea19d5f458ccf06a33c697fbcda7a7f14df
+Author: Aleix Pol <aleixpol@kde.org>
+Date:   Wed Jan 18 12:15:00 2017 +0100
+
+    Fix build
+    
+    frameworks/konsole/src/Session.cpp:839:5: warning: 'not' is not defined,
+    evaluates to 0 [-Wundef]
+
+diff --git a/src/Session.cpp b/src/Session.cpp
+index d63c8a0..482ee0b 100644
+--- a/src/Session.cpp
++++ b/src/Session.cpp
+@@ -836,7 +836,7 @@ void Session::sendTextToTerminal(const QString& text, const QChar& eol) const
+ // Only D-Bus calls this function (via SendText or runCommand)
+ void Session::sendText(const QString& text) const
+ {
+-#if not defined(REMOVE_SENDTEXT_RUNCOMMAND_DBUS_METHODS)
++#if !defined(REMOVE_SENDTEXT_RUNCOMMAND_DBUS_METHODS)
+     if (show_disallow_certain_dbus_methods_message) {
+ 
+         KNotification::event(KNotification::Warning, "Konsole D-Bus Warning",

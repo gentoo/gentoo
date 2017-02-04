@@ -11,7 +11,7 @@
 # <so many, many others, please add yourself>
 # @BLURB: Eclass for kernel packages
 # @DESCRIPTION:
-# This ia the kernel.eclass rewrite for a clean base regarding the 2.6
+# This is the kernel.eclass rewrite for a clean base regarding the 2.6
 # series of kernel with back-compatibility for 2.4
 # Please direct your bugs to the current eclass maintainer :)
 # added functionality:
@@ -22,7 +22,7 @@
 # @DESCRIPTION:
 # When setting the EXTRAVERSION variable, it should
 # add PV to the end.
-# this is useful for thigns like wolk. IE:
+# this is useful for things like wolk. IE:
 # EXTRAVERSION would be something like : -wolk-4.19-r1
 
 # @ECLASS-VARIABLE:  K_NOSETEXTRAVERSION	
@@ -682,7 +682,7 @@ kernel_header_destdir() {
 # @FUNCTION: cross_pre_c_headers
 # @USAGE:
 # @DESCRIPTION: 
-# set use if neccesary for cross compile support 
+# set use if necessary for cross compile support 
 cross_pre_c_headers() {
 	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }

@@ -37,7 +37,7 @@ pkg_setup() {
 
 	fehopts=(
 		DESTDIR="${D}"
-		PREFIX=/usr
+		PREFIX="${EPREFIX}"/usr
 		doc_dir='${main_dir}'/share/doc/${PF}
 		example_dir='${main_dir}'/share/doc/${PF}/examples
 		curl=$(use_feh curl)

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://ocamlgraph.lri.fr/index.en.html"
 SRC_URI="http://ocamlgraph.lri.fr/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	gtk? ( dev-ml/lablgtk:=[gnomecanvas,ocamlopt?] )"
 DEPEND="${RDEPEND}

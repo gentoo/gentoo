@@ -36,7 +36,7 @@ src_compile() {
 }
 
 src_install() {
-	make -C PORT/linux install DESTDIR="${D}" || die
+	make -C PORT/linux install DESTDIR="${ED}" || die
 
 	# binary compat symlink
 	dosym libdb1.so.2 /usr/$(get_libdir)/libdb.so.2 || die

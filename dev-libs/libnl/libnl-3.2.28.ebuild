@@ -15,10 +15,11 @@ DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel int
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 SRC_URI="
 	https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz
+	https://dev.gentoo.org/~jer/libnl-3.2.28-in6.patch.xz
 "
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs python utils"
 
 RDEPEND="
@@ -63,7 +64,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1-vlan-header.patch
-	"${FILESDIR}"/${PN}-3.2.28-in6.patch
+	"${WORKDIR}"/${PN}-3.2.28-in6.patch
 )
 
 src_prepare() {

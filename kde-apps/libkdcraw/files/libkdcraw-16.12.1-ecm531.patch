@@ -1,0 +1,31 @@
+commit 0c7d309289c78631be4b595119d4783fe21cf65b
+Author: Aleix Pol <aleixpol@kde.org>
+Date:   Wed Jan 18 12:13:20 2017 +0100
+
+    Fix build
+    
+    frameworks/libkdcraw/src/kdcraw_p.h:49:5: warning: 'not' is not defined,
+    evaluates to 0
+
+diff --git a/src/kdcraw_p.h b/src/kdcraw_p.h
+index f639ca4..71b36b3 100644
+--- a/src/kdcraw_p.h
++++ b/src/kdcraw_p.h
+@@ -31,7 +31,7 @@
+ #include <QByteArray>
+ 
+ // Pragma directives to reduce warnings from LibRaw header files.
+-#if not defined(__APPLE__) && defined(__GNUC__)
++#if !defined(__APPLE__) && defined(__GNUC__)
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+ #endif
+@@ -46,7 +46,7 @@
+ #include <libraw.h>
+ 
+ // Restore warnings
+-#if not defined(__APPLE__) && defined(__GNUC__)
++#if !defined(__APPLE__) && defined(__GNUC__)
+ #pragma GCC diagnostic pop
+ #endif
+ 
