@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils flag-o-matic toolchain-funcs autotools
 
@@ -25,9 +25,13 @@ RDEPEND="
 	qt4? ( dev-qt/qtgui:4 )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.0-desktop.patch"
+	"${FILESDIR}/${P}-build.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0.0-desktop.patch
-	epatch "${FILESDIR}"/${P}-build.patch
+	default
 	AT_M4DIR="m4" eautoreconf
 }
 
@@ -35,7 +39,6 @@ src_configure() {
 	# bug #595440
 	use qt5 && append-cxxflags -std=c++11
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--with-qt-version=$(use qt5 && echo 5 || echo 4) \
 		$(use_enable doc) \
 		STRIP=true
@@ -49,6 +52,7 @@ src_compile() {
 src_install() {
 	# non standard destdir
 	emake install destdir="${ED}"
+	einstalldocs
 
 	insinto /etc/xca
 	doins misc/*.txt
