@@ -4,11 +4,11 @@ DESCRIPTION=A minimalistic plugin API for video effects
 EAPI=6
 HOMEPAGE=http://www.dyne.org/software/frei0r/
 IUSE=doc +facedetect +scale0tilt
-KEYWORDS=amd64 ~hppa ~ppc x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=amd64 hppa ~ppc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=x11-libs/cairo facedetect? ( >=media-libs/opencv-2.3.0 ) scale0tilt? ( >=media-libs/gavl-1.2.0 )
 SLOT=0
 SRC_URI=http://files.dyne.org/frei0r/releases/frei0r-plugins-1.5.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d3c315689ab9c17a6bd6438e310fcdae
+_md5_=8eacea26fdd8f16eea8df45b6c132723
