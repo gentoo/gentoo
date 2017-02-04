@@ -16,6 +16,10 @@ IUSE=""
 RDEPEND="app-crypt/gpgme"
 DEPEND="${RDEPEND}"
 
+DOCS=(
+	readme.txt
+)
+
 PATCHES=(
 	"${FILESDIR}/${P}-flags.patch"
 )
@@ -25,6 +29,6 @@ src_compile() {
 }
 
 src_install() {
+	einstalldocs
 	dobin nasty
-	dodoc readme.txt
 }
