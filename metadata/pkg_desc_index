@@ -10356,7 +10356,7 @@ dev-vcs/git-flow 1.10.2: Git extensions to provide high-level repository operati
 dev-vcs/git-imerge 0.7.0 0.7.0-r1: Incremental merge for git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
-dev-vcs/git-merge-changelog 20140223: Git merge driver for GNU style ChangeLog files
+dev-vcs/git-merge-changelog 20140223 20170131: Git merge driver for GNU style ChangeLog files
 dev-vcs/git-num 2.0.1: Quickly reference files in Git using numbers
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
 dev-vcs/git-remote-hg 0.2 0.3: Semi-official Mercurial bridge from Git project

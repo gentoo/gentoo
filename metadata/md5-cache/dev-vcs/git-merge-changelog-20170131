@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Git merge driver for GNU style ChangeLog files
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/gnulib/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/git-merge-changelog-20170131.tar.xz
+_eclass_exported_funcs=src_install:-
+_md5_=17b32e4b97811f75d1c19bf932430170
