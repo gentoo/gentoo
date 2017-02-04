@@ -2,29 +2,28 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils flag-o-matic multilib readme.gentoo user versionator
+inherit autotools flag-o-matic user versionator
 
 MY_P=${PN/f/F}-$(replace_version_separator 4 -)
-#MY_P=${PN/f/F}-${PV/_rc/-ReleaseCandidate}
 
-DESCRIPTION="A relational database offering many ANSI SQL:2003 and some SQL:2008 features"
-HOMEPAGE="http://www.firebirdsql.org/"
+DESCRIPTION="Relational database offering many ANSI SQL:2003 and some SQL:2008 features"
+HOMEPAGE="https://www.firebirdsql.org/"
 SRC_URI="
 	mirror://sourceforge/firebird/${MY_P}.tar.bz2
-	doc? (	ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )"
+	doc? ( ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )"
 
 LICENSE="IDPL Interbase-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug doc client examples superserver xinetd"
-REQUIRED_USE="?? ( client superserver xinetd )"
+IUSE="debug doc examples +superserver xinetd"
+REQUIRED_USE="?? ( superserver xinetd )"
 
 CDEPEND="
-	dev-libs/libedit
 	dev-libs/icu:=
+	dev-libs/libedit
 "
 DEPEND="${CDEPEND}
 	>=dev-util/btyacc-3.0-r2
@@ -37,6 +36,11 @@ RDEPEND="${CDEPEND}
 
 RESTRICT="userpriv"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.3.26780.0-deps-flags.patch
+	"${FILESDIR}"/${P}-CVE-2016-1569.patch
+)
+
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
@@ -45,7 +49,7 @@ pkg_setup() {
 }
 
 check_sed() {
-	MSG="sed of $3, required $2 lines modified $1"
+	MSG="sed of $3, required $2 line(s) modified $1"
 	einfo "${MSG}"
 	[[ $1 -ge $2 ]] || die "${MSG}"
 }
@@ -61,12 +65,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	# This patch might be portable, and not need to be duplicated per version
-	# also might no longer be necessary to patch deps or libs, just flags
-	epatch "${FILESDIR}"/${PN}-2.5.3.26780.0-deps-flags.patch
+	! use xinetd && eapply "${FILESDIR}"/${PN}-2.5.1.26351.0-superclassic.patch
 
-	use client && epatch "${FILESDIR}"/${PN}-2.5.1.26351.0-client.patch
-	use superserver || epatch "${FILESDIR}"/${PN}-2.5.1.26351.0-superclassic.patch
+	default
 
 	# Rename references to isql to fbsql
 	# sed vs patch for portability and addtional location changes
@@ -150,8 +151,6 @@ src_install() {
 	insinto /usr/$(get_libdir)/${PN}
 	doins *.msg
 
-	use client && return
-
 	einfo "Renaming isql -> fbsql"
 	mv bin/isql bin/fbsql || die "failed to rename isql -> fbsql"
 
@@ -185,11 +184,13 @@ src_install() {
 	exeinto /usr/$(get_libdir)/firebird/intl
 	dolib.so intl/libfbintl.so
 	dosym ../../libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl
+	dosym libfbintl.so /usr/$(get_libdir)/libfbintl.so.1
 	dosym /etc/firebird/fbintl.conf /usr/$(get_libdir)/${PN}/intl/fbintl.conf
 
 	exeinto /usr/$(get_libdir)/${PN}/plugins
 	dolib.so plugins/libfbtrace.so
 	dosym ../../libfbtrace.so /usr/$(get_libdir)/${PN}/plugins/libfbtrace.so
+	dosym libfbtrace.so /usr/$(get_libdir)/libfbtrace.so.0
 
 	exeinto /usr/$(get_libdir)/${PN}/UDF
 	doexe UDF/*.so
@@ -218,24 +219,18 @@ src_install() {
 
 	diropts -m 755 -o firebird -g firebird
 	dodir /var/log/${PN}
-	dodir /var/run/${PN}
 	keepdir /var/log/${PN}
-	keepdir /var/run/${PN}
 
 	use examples && docinto examples
 }
 
 pkg_postinst() {
-	use client && return
-
 	# Hack to fix ownership/perms
 	chown -fR firebird:firebird "${ROOT}/etc/${PN}" "${ROOT}/usr/$(get_libdir)/${PN}"
 	chmod 750 "${ROOT}/etc/${PN}"
 }
 
 pkg_config() {
-	use client && return
-
 	# if found /etc/security.gdb from previous install, backup, and restore as
 	# /etc/security2.fdb
 	if [[ -f "${ROOT}/etc/firebird/security.gdb" ]] ; then
@@ -285,5 +280,5 @@ pkg_config() {
 	fi
 
 	einfo "If you're using UDFs, please remember to move them"
-	einfo "to /usr/lib/firebird/UDF"
+	einfo "to /usr/$(get_libdir)/firebird/UDF"
 }
