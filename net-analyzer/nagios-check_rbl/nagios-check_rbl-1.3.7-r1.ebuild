@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 
-KEYWORDS="amd64 ~hppa x86"
+KEYWORDS="amd64 hppa x86"
 IUSE=""
 
 # The package's INSTALL/Makefile.PL files specify its dependencies.
