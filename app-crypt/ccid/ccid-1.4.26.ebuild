@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 STUPID_NUM="4205"
 
-inherit eutils toolchain-funcs udev autotools-utils
+inherit eutils toolchain-funcs udev
 
 DESCRIPTION="CCID free software driver"
 HOMEPAGE="http://pcsclite.alioth.debian.org/ccid.html"
@@ -25,25 +25,22 @@ DEPEND="${RDEPEND}
 DOCS=( README AUTHORS )
 
 src_configure() {
-	local myeconfargs=(
-		LEX=:
-		$(use_enable twinserial)
+	econf \
+		LEX=: \
+		$(use_enable twinserial) \
 		$(use_enable usb libusb)
-	)
-
-	autotools-utils_src_configure
 }
 
 src_compile() {
-	autotools-utils_src_compile
-	use kobil-midentity && autotools-utils_src_compile contrib/Kobil_mIDentity_switch
+	default
+	use kobil-midentity && emake -C contrib/Kobil_mIDentity_switch
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	if use kobil-midentity; then
-		dosbin "${BUILD_DIR}"/contrib/Kobil_mIDentity_switch/Kobil_mIDentity_switch
+		dosbin contrib/Kobil_mIDentity_switch/Kobil_mIDentity_switch
 		doman contrib/Kobil_mIDentity_switch/Kobil_mIDentity_switch.8
 	fi
 
