@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-    <name>Gentoo Science Project</name>
-  </maintainer>
-  <longdescription lang="en">
-  SHOGUN - is a new machine learning toolbox with focus on large
-  scale kernel methods and especially on Support Vector Machines
-  (SVM) with focus to bioinformatics. It provides a generic SVM
-  object interfacing to several different SVM implementations. Each
-  of the SVMs can be combined with a variety of the many kernels
-  implemented. It can deal with weighted linear combination of a
-  number of sub-kernels, each of which not necessarily working on the
-  same domain, where  an optimal sub-kernel weighting can be learned
-  using Multiple Kernel Learning.  Apart from SVM 2-class
-  classification and regression problems, a number of linear methods
-  like Linear Discriminant Analysis (LDA), Linear Programming Machine
-  (LPM), (Kernel) Perceptrons and also algorithms to train hidden
-  markov models are implemented. The input feature-objects can be
-  dense, sparse or strings and of type int/short/double/char and can
-  be converted into different feature types. Chains of preprocessors
-  (e.g. substracting the mean) can be attached to each feature object
-  allowing for on-the-fly pre-processing.
-</longdescription>
-  <use>
-    <flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
-    <flag name="octave">Enable support for <pkg>sci-mathematics/octave</pkg></flag>
-  </use>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+	SHOGUN - is a new machine learning toolbox with focus on large
+	scale kernel methods and especially on Support Vector Machines
+	(SVM) with focus to bioinformatics. It provides a generic SVM
+	object interfacing to several different SVM implementations. Each
+	of the SVMs can be combined with a variety of the many kernels
+	implemented. It can deal with weighted linear combination of a
+	number of sub-kernels, each of which not necessarily working on the
+	same domain, where	an optimal sub-kernel weighting can be learned
+	using Multiple Kernel Learning.	Apart from SVM 2-class
+	classification and regression problems, a number of linear methods
+	like Linear Discriminant Analysis (LDA), Linear Programming Machine
+	(LPM), (Kernel) Perceptrons and also algorithms to train hidden
+	markov models are implemented. The input feature-objects can be
+	dense, sparse or strings and of type int/short/double/char and can
+	be converted into different feature types. Chains of preprocessors
+	(e.g. substracting the mean) can be attached to each feature object
+	allowing for on-the-fly pre-processing.
+	</longdescription>
+	<use>
+		<flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
+		<flag name="octave">Enable support for <pkg>sci-mathematics/octave</pkg></flag>
+		<flag name="opencl">Enable support for building against OpenCL</flag>
+	</use>
 </pkgmetadata>
