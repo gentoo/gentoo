@@ -16,10 +16,6 @@ media-video/libav nvidia
 # Requires yet unavailable >=media-video/ffmpeg-3.3.
 >=media-video/mpv-0.23.0 cuda
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
-# x11-drivers/nvidia-drivers is available on x86.
-media-video/mpv -cuda
-
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2016)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (14 Dec 2016)
 # Fails to build with newly unmasked ffmpeg-3, so mask this useflag

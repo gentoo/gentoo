@@ -17,7 +17,6 @@ SRC_URI="
 LICENSE="telegram"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
 QA_PREBUILT="usr/bin/telegram-desktop"
 

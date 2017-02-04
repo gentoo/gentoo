@@ -38,7 +38,7 @@ IUSE+=" cpu_flags_x86_sse4_1"
 REQUIRED_USE="
 	|| ( cli libmpv )
 	aqua? ( opengl )
-	cuda? ( !libav )
+	cuda? ( !libav || ( opengl egl ) )
 	egl? ( || ( gbm X wayland ) )
 	gbm? ( drm egl )
 	lcms? ( || ( opengl egl ) )

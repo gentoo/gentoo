@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (02 Feb 2017)
+# Enable luajit for OSC and youtube-dl support by default.
+# Override default +sdl from desktop profile and disable sdl outputs.
+# These outputs are for systems without a proper audio/video support.
+media-video/mpv lua luajit -sdl
+
 # Mike Gilbert <floppym@gentoo.org> (04 Jan 2017)
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text
@@ -28,12 +34,6 @@ net-libs/libpcap -bluetooth
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]
 # and the X flag is enabled by default in the desktop profile
 x11-libs/libxcb xkb
-
-# Julian Ospald <hasufell@gentoo.org> (19 Apr 2014)
-# Overwrite default +sdl from desktop profile, since
-# this codepath is untested and should not be exposed
-# to regular desktop users wrt #506982
-media-video/mpv -sdl
 
 # Jeremy Olexa <darkside@gentoo.org> (07 Oct 2011)
 # Required by mesa, ultimately by xorg-server (every desktop) bug 385843
