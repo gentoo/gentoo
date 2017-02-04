@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,6 +43,7 @@ pkg_setup() {
 
 all_ruby_prepare() {
 	epatch "${FILESDIR}"/${PN}-5.0.20-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-5.1.1-isnan.patch
 
 	# Change these with sed instead of a patch so that we can easily use
 	# the toolchain-funcs methods.

@@ -25,7 +25,6 @@ IUSE="X debug test"
 RDEPEND="${PYTHON_DEPS}
 	>=sys-libs/libselinux-2.4:=[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.8[${PYTHON_USEDEP}]
-	app-arch/bzip2:=
 	dev-libs/libpcre:=
 	X? (
 		dev-python/PyQt5[gui,widgets]
@@ -44,7 +43,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	sed -i "s/'-Werror', //" "${S}"/setup.py || die "failed to remove Werror"
 
-	use X || local PATCHES=( "${FILESDIR}"/setools-4.0.1-remove-gui.patch )
+	use X || local PATCHES=( "${FILESDIR}"/setools-4.1.0-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 
