@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://www.vanheusden.com/nasty/nasty-0.6.tgz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e1893534b835e947a57d92c6a97f74e8
+_md5_=e51762eefda58c99a868ae1341c79ea1

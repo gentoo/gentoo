@@ -8,5 +8,5 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://gentoo/stan-0.4.1.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=35f50b301da77acbcde1eafd011db38a
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=f76567d518621d974dbd2178abb04d7c

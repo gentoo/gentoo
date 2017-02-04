@@ -1,6 +1,6 @@
 DEFINED_PHASES=install prepare
 DESCRIPTION=a zip password cracker
-EAPI=5
+EAPI=6
 HOMEPAGE=http://oldhome.schmorp.de/marc/fcrackzip.html
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -8,4 +8,4 @@ RDEPEND=app-arch/unzip
 SLOT=0
 SRC_URI=http://oldhome.schmorp.de/marc/data/fcrackzip-1.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=56a20f7689313517c1f12298ffb48a18
+_md5_=91bc6851d4393ac239d9f7a9a5ff2fa7

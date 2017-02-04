@@ -1,12 +1,12 @@
-DEFINED_PHASES=install postinst
-DEPEND=>=sys-apps/pcsc-lite-1.3.0 =virtual/libusb-0* virtual/pkgconfig
+DEFINED_PHASES=postinst
+DEPEND=>=sys-apps/pcsc-lite-1.3.0 virtual/libusb:0 virtual/pkgconfig
 DESCRIPTION=ASEDriveIIIe USB Card Reader
-EAPI=0
+EAPI=6
 HOMEPAGE=http://www.athena-scs.com
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=>=sys-apps/pcsc-lite-1.3.0 =virtual/libusb-0*
+RDEPEND=>=sys-apps/pcsc-lite-1.3.0 virtual/libusb:0
 SLOT=0
 SRC_URI=http://www.athena-scs.com/downloads/asedriveiiie-usb-3.5.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=0847ad35d87d5a2b6005bc3a28866344
+_eclass_exported_funcs=pkg_postinst:-
+_md5_=3999f0bada4aeb487d0f878c384ddf21
