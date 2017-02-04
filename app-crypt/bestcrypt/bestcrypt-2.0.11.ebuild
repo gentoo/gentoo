@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils linux-mod toolchain-funcs versionator
 
@@ -21,6 +21,14 @@ DEPEND="virtual/linux-sources
 RDEPEND=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+DOCS=(
+	HIDDEN_PART README
+)
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.6-build.patch"
+)
 
 pkg_setup() {
 	CONFIG_CHECK="MODULES"
@@ -41,10 +49,6 @@ pkg_setup() {
 		BC_KERNEL_DIR=\"${KERNEL_DIR}\""
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.0.6-build.patch"
-}
-
 src_compile() {
 	MAKEOPTS="-j1" linux-mod_src_compile \
 		CXX="$(tc-getCXX)"
@@ -63,7 +67,6 @@ src_install() {
 
 	newinitd "${FILESDIR}/bcrypt3" bcrypt
 	sed -e '/\(bc_rc6\|bc_serpent\|bc_twofish\)/d' -i "${D}etc/init.d/bcrypt"
-	dodoc HIDDEN_PART README
 }
 
 pkg_postinst() {
