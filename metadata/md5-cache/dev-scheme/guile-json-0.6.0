@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=dev-scheme/guile
+DESCRIPTION=JSON module for Guile
+EAPI=6
+HOMEPAGE=http://savannah.nongnu.org/projects/guile-json/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3+
+RDEPEND=dev-scheme/guile
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/guile-json/guile-json-0.6.0.tar.gz
+_eclass_exported_funcs=-
+_md5_=e6cc256913f1119ce0c61076bb407ac8

@@ -9713,6 +9713,7 @@ dev-scheme/guile 1.8.8-r3 2.0.13-r1: GNU Ubiquitous Intelligent Language for Ext
 dev-scheme/guile-cairo 1.4.0 1.9.91: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1 2.16.1-r1 2.16.2: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-gui 0.2: Guile Scheme code that aims to implement a graphical user interface
+dev-scheme/guile-json 0.6.0: JSON module for Guile
 dev-scheme/guile-lib 0.1.9 0.2.4: An accumulation place for pure-scheme Guile modules
 dev-scheme/guile-www 2.34 2.35: Guile Scheme modules to facilitate HTTP, URL and CGI programming
 dev-scheme/ikarus 0.0.3_p1870: A free optimizing incremental native-code compiler for R6RS Scheme
@@ -14146,7 +14147,7 @@ net-analyzer/monitoring-plugins 2.1.2 2.2: 50+ standard plugins for Icinga, Naem
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
-net-analyzer/mtr 0.86 0.87 9999: My TraceRoute, an Excellent network diagnostic tool
+net-analyzer/mtr 0.86 0.87 0.87-r1 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.0.0-r1 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/munin 2.0.19 2.0.19-r2 2.0.25 2.0.25-r2 2.1.9999: Munin Server Monitoring Tool
 net-analyzer/nagios 4.2.4: The Nagios metapackage
@@ -16370,7 +16371,7 @@ sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting,
 sci-libs/scipy 0.15.1 0.16.0 0.16.1 0.17.0 0.18.1 9999: Scientific algorithms library for Python
 sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.3.0-r1 1.4.0-r1: Library for manipulating ESRI Shapefiles
-sci-libs/shogun 4.1.0: Large Scale Machine Learning Toolbox
+sci-libs/shogun 5.0.0: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.9.1 4.10.2: A mesh and field I/O library and scientific database
 sci-libs/spooles 2.2: SParse Object Oriented Linear Equations Solver
 sci-libs/spqr 1.2.3-r1 1.3.1: Multithreaded multifrontal sparse QR factorization library
