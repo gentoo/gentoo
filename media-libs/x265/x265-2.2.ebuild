@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ else
 	SRC_URI="
 		https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz
 		http://ftp.videolan.org/pub/videolan/x265/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm hppa ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
