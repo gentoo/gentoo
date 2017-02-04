@@ -1,5 +1,5 @@
---- src/data.c.orig	2005-12-05 13:23:44.000000000 +0200
-+++ src/data.c	2005-12-05 13:24:31.000000000 +0200
+--- a/src/data.c	2005-12-05 13:23:44.000000000 +0200
++++ b/src/data.c	2005-12-05 13:24:31.000000000 +0200
 @@ -55,7 +55,9 @@
  #include <stats.h>
  #include <config.h>
@@ -11,8 +11,8 @@
  extern tnode_t **treap;
  extern bnode_t *bintree;
  size_t size = 0;
---- src/stan.c.orig	2005-12-05 13:23:49.000000000 +0200
-+++ src/stan.c	2005-12-05 13:24:57.000000000 +0200
+--- a/src/stan.c	2005-12-05 13:23:49.000000000 +0200
++++ b/src/stan.c	2005-12-05 13:24:57.000000000 +0200
 @@ -46,7 +46,9 @@
  #include <bits.h>
  #include <config.h>

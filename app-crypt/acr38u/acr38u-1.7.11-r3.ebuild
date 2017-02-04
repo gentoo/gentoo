@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit multilib eutils versionator toolchain-funcs udev autotools-utils
+inherit autotools versionator toolchain-funcs udev
 
 MY_P=ACR38_LINUX_$(get_version_component_range 1)00$(get_version_component_range 2)$(get_version_component_range 3)_P
 
@@ -33,11 +33,18 @@ S=${WORKDIR}/${MY_P}
 
 IUSE=""
 
-AUTOTOOLS_AUTORECONF=yes
-PATCHES=( "${FILESDIR}"/${P}-build.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
-	autotools-utils_src_install
+	default
+	prune_libtool_files --modules
 
 	# note: for eudev support this pkg may always need to install rules to /usr
 	udev_newrules "${FILESDIR}"/${PV}-bis.rules 92-pcscd-acr38u.rules
