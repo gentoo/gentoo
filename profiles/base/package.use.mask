@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Ulrich Müller <ulm@gentoo.org> (4 Feb 2017)
+# Uses old and vulnerable net-libs/webkit-gtk:3, bug #584156.
+app-editors/emacs:25 xwidgets
+app-editors/emacs-vcs:25 xwidgets
+
 # Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
 # nvenc requires nvidia drivers, apply same mask logic
 media-video/ffmpeg nvenc
