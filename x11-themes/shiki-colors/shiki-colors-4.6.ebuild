@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	|| ( x11-wm/metacity x11-wm/muffin x11-wm/mutter xfce-base/xfwm4 )
+	|| ( x11-wm/muffin x11-wm/mutter xfce-base/xfwm4 )
 	x11-themes/gtk-engines:2
 "
 DEPEND=""
