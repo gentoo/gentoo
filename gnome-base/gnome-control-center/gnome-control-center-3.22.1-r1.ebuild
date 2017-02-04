@@ -56,10 +56,7 @@ COMMON_DEPEND="
 		>=x11-libs/colord-gtk-0.1.24 )
 	cups? (
 		>=net-print/cups-1.4[dbus]
-		|| (
-			( >=net-fs/samba-3.6.14-r1[smbclient] <net-fs/samba-4.0.0[smbclient] )
-			>=net-fs/samba-4.0.0[client]
-		)
+		>=net-fs/samba-4.0.0[client]
 	)
 	gnome-online-accounts? (
 		>=media-libs/grilo-0.3.0:0.3=
