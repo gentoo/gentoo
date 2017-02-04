@@ -15,7 +15,7 @@ DESCRIPTION="Provide commonly requested regular expressions"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
 IUSE="test"
 
 DEPEND="
