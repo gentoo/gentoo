@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="6"
 
 DESCRIPTION="Encryption and decryption"
 HOMEPAGE="http://ccrypt.sourceforge.net"
@@ -12,10 +12,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
-src_install () {
-	emake \
-		DESTDIR="${D}" \
-		htmldir="${EPREFIX}/usr/share/doc/${PF}" \
-		install || die "emake install failed"
-	dodoc AUTHORS ChangeLog NEWS README
-}
+DOCS=(
+	AUTHORS ChangeLog NEWS README
+)
