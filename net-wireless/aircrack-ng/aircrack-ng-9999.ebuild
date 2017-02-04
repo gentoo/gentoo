@@ -91,9 +91,8 @@ src_test() {
 }
 
 src_install() {
+	einstalldocs
 	emake "${MAKE_COMMON[@]}" install
-
-	dodoc AUTHORS ChangeLog INSTALLING README
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"

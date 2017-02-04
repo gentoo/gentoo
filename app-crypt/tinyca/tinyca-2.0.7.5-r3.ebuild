@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
 MY_P="${PN}${PV/./-}"
 DESCRIPTION="Simple Perl/Tk GUI to manage a small certification authority"
-HOMEPAGE="http://tinyca.sm-zone.net/"
+HOMEPAGE="https://opsec.eu/src/tinyca/"
 SRC_URI="http://tinyca.sm-zone.net/${MY_P}.tar.bz2"
 
 LICENSE="Artistic"
@@ -30,12 +30,16 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.7.3-compositefix.patch"
+	"${FILESDIR}/${P}-openssl-1.patch"
+	"${FILESDIR}/${P}-perl-5.18.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.0.7.3-compositefix.patch"
-	epatch "${FILESDIR}/${P}-openssl-1.patch"
-	epatch "${FILESDIR}/${P}-perl-5.18.patch"
+	default
 	sed -i -e 's:./lib:/usr/share/tinyca/lib:g' \
 		-e 's:./templates:/usr/share/tinyca/templates:g' \
 		-e 's:./locale:/usr/share/locale:g' "${S}/tinyca2" || die
@@ -51,6 +55,7 @@ locale_install() {
 }
 
 src_install() {
+	einstalldocs
 	newbin tinyca2 tinyca
 	insinto /usr/share/tinyca/lib
 	doins lib/*.pm

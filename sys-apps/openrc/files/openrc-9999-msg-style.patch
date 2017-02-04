@@ -1,0 +1,81 @@
+From 1e307244138c8f650ab37bffa7b3cc3e3b39cd64 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 24 Mar 2008 01:48:19 -0400
+Subject: [PATCH] restore old e* func output
+
+Gentoo has always used the sytle:
+ * moo ...                [ ok ]
+Latest openrc now does:
+* moo...                    [ok]
+
+Realistically, 4 spaces out of 80 on reduced terminals doesn't make any
+sort of realistic difference and it's been just fine for the last 10
+years, so keep the default behavior.
+---
+ src/libeinfo/libeinfo.c |   15 ++++++---------
+ 1 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/src/libeinfo/libeinfo.c b/src/libeinfo/libeinfo.c
+index 8a7613c..234b1af 100644
+--- a/src/libeinfo/libeinfo.c
++++ b/src/libeinfo/libeinfo.c
+@@ -643,7 +643,7 @@ static int EINFO_PRINTF(3, 0)
+ 		fprintf(f, "\n");
+ 	if (_eprefix)
+ 		fprintf(f, "%s%s%s|", _ecolor(f, color), _eprefix, _ecolor(f, ECOLOR_NORMAL));
+-	fprintf(f, "%s*%s ", _ecolor(f, color), _ecolor(f, ECOLOR_NORMAL));
++	fprintf(f, " %s*%s ", _ecolor(f, color), _ecolor(f, ECOLOR_NORMAL));
+ 	retval += _eindent(f);
+ 	va_copy(ap, va);
+ 	retval += vfprintf(f, fmt, ap) + 3;
+@@ -800,7 +800,7 @@ ebegin(const char *EINFO_RESTRICT fmt, ...)
+ 	va_start(ap, fmt);
+ 	retval = _einfovn(fmt, ap);
+ 	va_end(ap);
+-	retval += printf("...");
++	retval += printf(" ...");
+ 	if (colour_terminal(stdout))
+ 		retval += printf("\n");
+ 	LASTCMD("ebegin");
+@@ -817,7 +817,7 @@ _eend(FILE * EINFO_RESTRICT fp, int col, ECOLOR color, const char *msg)
+ 	if (!msg)
+ 		return;
+ 
+-	cols = get_term_columns(fp) - (strlen(msg) + 3);
++	cols = get_term_columns(fp) - (strlen(msg) + 5);
+ 
+ 	/* cons25 is special - we need to remove one char, otherwise things
+ 	 * do not align properly at all. */
+@@ -831,18 +831,15 @@ _eend(FILE * EINFO_RESTRICT fp, int col, ECOLOR color, const char *msg)
+ 	if (term_is_cons25)
+ 		cols--;
+ 
+-	/* If extra spacing is required around msg, then please change
+-	 * via a runtime knob and leave this default as is as it saves 2 
+-	 * valuable columns when running on 80 column screens. */
+ 	if (cols > 0 && colour_terminal(fp)) {
+-		fprintf(fp, "%s%s %s[%s%s%s]%s\n", up, tgoto(goto_column, 0, cols),
++		fprintf(fp, "%s%s %s[%s %s %s]%s\n", up, tgoto(goto_column, 0, cols),
+ 		    ecolor(ECOLOR_BRACKET), ecolor(color), msg,
+ 		    ecolor(ECOLOR_BRACKET), ecolor(ECOLOR_NORMAL));
+ 	} else {
+ 		if (col > 0)
+ 			for (i = 0; i < cols - col; i++)
+ 				fprintf(fp, " ");
+-		fprintf(fp, " [%s]\n", msg);
++		fprintf(fp, " [ %s ]\n", msg);
+ 	}
+ }
+ 
+@@ -1030,7 +1027,7 @@ ebeginv(const char *EINFO_RESTRICT fmt, ...)
+ 
+ 	va_start(ap, fmt);
+ 	retval = _einfovn(fmt, ap);
+-	retval += printf("...");
++	retval += printf(" ...");
+ 	if (colour_terminal(stdout))
+ 		retval += printf("\n");
+ 	va_end(ap);
+-- 
+1.6.6.rc3
+

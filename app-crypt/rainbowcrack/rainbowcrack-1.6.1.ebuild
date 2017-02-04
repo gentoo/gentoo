@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils
 
 DESCRIPTION="Hash cracker that precomputes plaintext - ciphertext pairs in advance"
@@ -24,12 +24,18 @@ QA_PRESTRIPPED="${RAINBOW_DESTDIR}/.*"
 
 DEPEND="app-arch/unzip"
 
+DOCS=(
+	readme.txt
+)
+
 src_unpack() {
 	unpack ${A}
 	mv ${P}-linux* "${S}"
 }
 
 src_install() {
+	einstalldocs
+
 	local bin bins="rcrack rt2rtc rtc2rt rtgen rtsort"
 
 	exeinto "/${RAINBOW_DESTDIR}"
@@ -41,6 +47,4 @@ src_install() {
 
 	insinto "/${RAINBOW_DESTDIR}"
 	doins charset.txt
-
-	dodoc readme.txt
 }

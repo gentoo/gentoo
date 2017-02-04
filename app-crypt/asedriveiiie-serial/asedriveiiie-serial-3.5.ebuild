@@ -1,6 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 DESCRIPTION="ASEDriveIIIe Serial Card Reader"
 HOMEPAGE="http://www.athena-scs.com"
@@ -14,11 +16,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_install() {
+	default
+
 	local conf="/etc/reader.conf.d/${PN}.conf"
-
-	emake DESTDIR="${D}" install || die "emake install failed"
-
-	dodoc ChangeLog README
 
 	dodir "$(dirname "${conf}")"
 	insinto "$(dirname "${conf}")"
