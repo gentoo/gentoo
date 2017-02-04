@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
+# dev-libs/snowball-stemmer not keyworded
+dev-libs/appstream-glib stemmer
+
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # app-admin/hddtemp not keyworded
 app-admin/gkrellm hddtemp
