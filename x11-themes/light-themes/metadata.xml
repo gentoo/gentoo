@@ -5,10 +5,6 @@
 		<email>sping@gentoo.org</email>
 		<name>Sebastian Pipping</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>pacho@gentoo.org</email>
-		<name>Pacho Ramos</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
