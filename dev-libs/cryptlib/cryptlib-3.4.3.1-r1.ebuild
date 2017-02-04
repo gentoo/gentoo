@@ -20,7 +20,7 @@ SRC_URI="ftp://ftp.franken.de/pub/crypt/cryptlib/cl${MY_PV}.zip
 LICENSE="Sleepycat"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="doc ldap odbc python"
+IUSE="doc ldap odbc python test"
 
 S="${WORKDIR}"
 
@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 	"${FILESDIR}/${P}-zlib.patch"
+	"${FILESDIR}/${P}-tests.patch"
 )
 
 src_unpack() {
@@ -63,20 +64,10 @@ src_prepare() {
 	# change 'make' to '$(MAKE)'
 	sed -i -e "s:@\?make:\$(MAKE):g" makefile || die "sed makefile failed"
 
-	# NOTICE:
-	# Because of stack execution
-	# assembly parts are disabled.
-	sed -i -e 's:i\[3,4,5,6\]86:___:g' makefile || die "sed makefile failed"
-
-	# Fix version number of shared library.
-	sed -i -e 's/PLV="2"/PLV="3"/' tools/buildall.sh || die "sed tools/buildall.sh failed"
-
 	wrap_python ${FUNCNAME}
 }
 
 src_compile() {
-	local libname="libcl.so.$(get_version_component_range 1-3 ${PV})"
-
 	# At least -O2 is needed.
 	replace-flags -O  -O2
 	replace-flags -O0 -O2
@@ -84,31 +75,25 @@ src_compile() {
 	replace-flags -Os -O2
 	is-flagq -O* || append-flags -O2
 
-	append-flags "-fPIC"
-	append-cppflags "-D__UNIX__ -DOSVERSION=2 -DNDEBUG -I."
-
-	if [ -f /usr/include/pthread.h -a \
-	`grep -c PTHREAD_MUTEX_RECURSIVE /usr/include/pthread.h` -ge 0 ] ; then
-		append-cppflags "-DHAS_RECURSIVE_MUTEX"
-	fi
-	if [ -f /usr/include/pthread.h -a \
-	`grep -c PTHREAD_MUTEX_ROBUST /usr/include/pthread.h` -ge 0 ] ; then
-		append-cppflags "-DHAS_ROBUST_MUTEX"
-	fi
-
 	use ldap && append-cppflags -DHAS_LDAP
 	use odbc && append-cppflags -DHAS_ODBC
 
-	emake directories
-	emake toolscripts
-	emake CC="$(tc-getCC)" CFLAGS="${CPPFLAGS} ${CFLAGS} -c" STRIP=true Linux
+	export DISABLE_AUTODETECT=1
+	emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" default
+	emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" shared
+	use test && emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" stestlib
 
-	emake TARGET=${libname} OBJPATH="./shared-obj/" CC="$(tc-getCC)" \
-		CFLAGS="${CPPFLAGS} ${CFLAGS} -c" STRIP=true Linux
+	#
+	# Without this:
+	# 1. python will link against the static lib
+	# 2. tests will not work find soname.
+	#
+	local libname="libcl.so.$(get_version_component_range 1-3 ${PV})"
+	local solibname="libcl.so.$(get_version_component_range 1-2 ${PV})"
+	ln -s "${libname}" "${solibname}" || die
+	ln -s "${solibname}" libcl.so || die
 
 	if use python; then
-		# Without this python will link against the static lib
-		ln -s libcl.so.${PV} libcl.so || die
 
 		# Python bindings don't work with -O2 and higher.
 		replace-flags -O* -O1
@@ -117,18 +102,18 @@ src_compile() {
 	fi
 }
 
-src_install() {
-	local libname="libcl.so.$(get_version_component_range 1-3 ${PV})"
-	local solibname="libcl.so.$(get_version_component_range 1-2 ${PV})"
+src_test() {
+	LD_LIBRARY_PATH="." ./stestlib || die "test failed"
+}
 
-	dolib.so "${libname}"
-	dosym "${libname}" "/usr/$(get_libdir)/${solibname}"
-	dosym "${solibname}" "/usr/$(get_libdir)/libcl.so"
-	dolib.a "libcl.a"
+src_install() {
+	einstalldocs
 
 	doheader cryptlib.h
 
-	dodoc README
+	dolib.so libcl.so*
+	dolib.a libcl.a
+
 	if use doc; then
 		newdoc "${DOC_PREFIX}-manual.pdf" "manual.pdf"
 	fi
