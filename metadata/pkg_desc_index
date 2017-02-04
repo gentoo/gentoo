@@ -18477,7 +18477,6 @@ x11-libs/gtkmathview 0.8.0-r2: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.20.4 3.22.2: A text widget implementing syntax highlighting and other features
 x11-libs/guile-gtk 2.1-r2 2.1-r3: GTK+ bindings for guile
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
-x11-libs/ige-mac-integration 0.8.2 9999: GTK+ bindings for Mac OS X specific tasks
 x11-libs/libFS 1.0.6 1.0.7: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.8-r1 1.0.9 1.0.9-r1: X.Org Inter-Client Exchange library
