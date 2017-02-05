@@ -3,13 +3,13 @@ DEPEND=virtual/pkgconfig net-misc/curl >=dev-libs/jansson-2.6 virtual/libusb:1[u
 DESCRIPTION=Bitcoin CPU/GPU/FPGA/ASIC miner in C
 EAPI=6
 HOMEPAGE=http://bitcointalk.org/?topic=28402.msg357369 https://github.com/ckolivas/cgminer
-IUSE=doc examples udev hardened ncurses ants1 ants2 ants3 avalon avalon2 avalon4 bab bflsc bitforce bitfury bitmine_A1 blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer sp10 sp30
+IUSE=doc examples udev hardened ncurses ants1 ants2 ants3 avalon avalon2 avalon4 avalon7 avalon-miner bab bflsc bitforce bitfury bitmine_A1 blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer sp10 sp30
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-3
 RDEPEND=net-misc/curl >=dev-libs/jansson-2.6 virtual/libusb:1[udev] ncurses? ( sys-libs/ncurses:0= ) udev? ( virtual/libudev )
-REQUIRED_USE=|| ( ants1 ants2 ants3 avalon avalon2 avalon4 bab bflsc bitforce bitfury bitmine_A1 blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer sp10 sp30 )
+REQUIRED_USE=|| ( ants1 ants2 ants3 avalon avalon2 avalon4 avalon7 avalon-miner bab bflsc bitforce bitfury bitmine_A1 blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer sp10 sp30 )
 SLOT=0
-SRC_URI=http://ck.kolivas.org/apps/cgminer/cgminer-4.9.2.tar.bz2
+SRC_URI=http://ck.kolivas.org/apps/cgminer/cgminer-4.10.0.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=52db7557f07394cff1e7cd93a9670ef0
+_md5_=3f437c092436ff8c09f7594fc63bc6dc

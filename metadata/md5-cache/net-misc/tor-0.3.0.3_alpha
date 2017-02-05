@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos
 LICENSE=BSD GPL-2
 RDEPEND=app-text/asciidoc dev-libs/libevent[ssl] sys-libs/zlib !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) selinux? ( sec-policy/selinux-tor )
 SLOT=0
-SRC_URI=https://www.torproject.org/dist/tor-0.3.0.2-alpha.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.3.0.2-alpha.tar.gz
+SRC_URI=https://www.torproject.org/dist/tor-0.3.0.3-alpha.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.3.0.3-alpha.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=d3740637d65beb9336be9776f7eaeb3b
