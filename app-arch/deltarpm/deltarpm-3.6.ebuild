@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -34,6 +34,9 @@ pkg_setup() {
 		prefix=/usr
 		mandir=/usr/share/man
 		PYTHONS=$(use python && echo python)
+		CFLAGS="${CFLAGS}"
+		LDFLAGS="${LDFLAGS}"
+		CC="$(tc-getCC)"
 	)
 	use system-zlib && MAKE_EXTRA_FLAGS+=(
 		zlibbundled=
@@ -43,10 +46,10 @@ pkg_setup() {
 }
 
 src_compile() {
-	emake "${MAKE_EXTRA_FLAGS[@]}" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" all $(use python && echo python)
+	emake "${MAKE_EXTRA_FLAGS[@]}" all $(use python && echo python)
 }
 
 src_install() {
-	emake "${MAKE_EXTRA_FLAGS[@]}" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" DESTDIR="${ED}" install
+	emake "${MAKE_EXTRA_FLAGS[@]}" DESTDIR="${ED}" install
 	python_optimize
 }
