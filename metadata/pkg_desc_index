@@ -19232,7 +19232,7 @@ x11-themes/lush 0.1.0-r2: Lush KDE icon theme
 x11-themes/mate-backgrounds 1.12.0 1.14.0 1.16.0: A set of backgrounds packaged with the MATE desktop
 x11-themes/mate-icon-theme 1.12.0 1.14.0 1.16.0: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.12.0-r1 1.14.0 1.16.0: Faenza icon theme, that was adapted for MATE desktop
-x11-themes/mate-themes 3.16.3 3.18.3 3.20.10 3.20.11 3.20.13 3.22.2 3.22.4: A set of MATE themes, with sets for users with limited or low vision
+x11-themes/mate-themes 3.16.3 3.18.3 3.20.10 3.20.11 3.20.13 3.22.2 3.22.4 3.22.7: A set of MATE themes, with sets for users with limited or low vision
 x11-themes/mate-themes-meta 3-r1 3-r2: Meta package to facilitate easy use of x11-themes/mate-themes
 x11-themes/murrine-themes 0.98.0: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
