@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 # No sub slot wanted (yet), see #578958
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="+24bpp gcrypt gnutls ipv6 +jpeg libressl +png ssl static-libs systemd test threads +zlib"
+IUSE="+24bpp gcrypt gnutls ipv6 +jpeg libressl +png ssl static-libs systemd test +threads +zlib"
 REQUIRED_USE="!gnutls? ( ssl? ( threads ) )"
 
 DEPEND="
