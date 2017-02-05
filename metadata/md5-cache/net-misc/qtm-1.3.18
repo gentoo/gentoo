@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 virtual/perl-Digest-MD5 x11-proto/xproto dbus? ( dev-qt/qtdbus:5 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Qt blogging client
+EAPI=6
+HOMEPAGE=http://qtm.blogistan.co.uk
+IUSE=dbus debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 virtual/perl-Digest-MD5 x11-proto/xproto dbus? ( dev-qt/qtdbus:5 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://bitbucket.org/IndigoJo/qtm-1.3/downloads/qtm-1.3.18.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=77b7688d308c3d15d239b48c5e5a2bf9

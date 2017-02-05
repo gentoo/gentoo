@@ -15215,7 +15215,7 @@ net-misc/pyhoca-gui 0.5.0.4-r1 0.5.0.5 0.5.0.6: X2Go graphical client applet
 net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
-net-misc/qtm 1.3.17: Qt4 blogging client
+net-misc/qtm 1.3.17 1.3.18: Qt blogging client
 net-misc/quagga 1.1.0-r2 1.1.1: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.042.00 8.043.01: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
