@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Emacs front-end to mpg123 audio player and OggVorbis audio player
+EAPI=6
+HOMEPAGE=http://www.gentei.org/~yuuji/software/mpg123el/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=mpg123-el
+RDEPEND=media-sound/mpg123 media-sound/alsa-utils >=virtual/emacs-23
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/mpg123-el-1.60.tar.xz
+_eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:- src_install:-
+_eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=6d78a5a6fe26f08c0ad90a97e4a34c45

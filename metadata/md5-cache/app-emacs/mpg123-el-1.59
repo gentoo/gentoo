@@ -3,12 +3,11 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=Emacs front-end to mpg123 audio player and OggVorbis audio player
 EAPI=5
 HOMEPAGE=http://www.gentei.org/~yuuji/software/mpg123el/
-IUSE=vorbis
 KEYWORDS=amd64 ppc x86
 LICENSE=mpg123-el
-RDEPEND=media-sound/mpg123 media-sound/alsa-utils vorbis? ( media-sound/vorbis-tools ) >=virtual/emacs-23
+RDEPEND=media-sound/mpg123 media-sound/alsa-utils >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/mpg123-el-1.59.tar.xz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:- src_configure:elisp src_compile:- src_install:-
 _eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f5a62dfc295d8451244edf4814c87c6a
+_md5_=90ab2bb834870d94861611663ae33bdc
