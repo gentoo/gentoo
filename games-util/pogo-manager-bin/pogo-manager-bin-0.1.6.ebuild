@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Wolfsblvt/BlossomsPokemonGoManager/releases/download
 
 LICENSE="CC-BY-NC-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="|| ( dev-java/oracle-jdk-bin:1.8[javafx] dev-java/oracle-jre-bin:1.8[javafx] )"
