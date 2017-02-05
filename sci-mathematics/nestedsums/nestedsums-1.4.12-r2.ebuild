@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="3"
@@ -9,7 +9,7 @@ SRC_URI="http://wwwthep.physik.uni-mainz.de/~stefanw/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RDEPEND=">=sci-mathematics/ginac-1.5"
+RDEPEND=">=sci-mathematics/ginac-1.5 <sci-mathematics/ginac-1.7"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
