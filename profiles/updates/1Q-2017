@@ -1,2 +1,3 @@
 move net-libs/libkpeople kde-frameworks/kpeople
 slotmove dev-libs/kirigami 5 1
+move dev-libs/uchardet app-i18n/uchardet

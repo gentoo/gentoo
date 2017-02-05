@@ -34,7 +34,7 @@
 		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs
 			(Note: these outputs exist for compatibility reasons only, avoid if possible)</flag>
 		<flag name="tools">Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv</flag>
-		<flag name="uchardet">Enable subtitles charset discovery via <pkg>dev-libs/uchardet</pkg></flag>
+		<flag name="uchardet">Enable subtitles charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
 		<flag name="vf-dlopen">Install additional video filters to be used with -vf dlopen</flag>
 	</use>
 	<upstream>

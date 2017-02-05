@@ -46,7 +46,7 @@ gnome-extra/nm-applet teamd
 
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-libs/uchardet lacks sparc keyword. See bug #569114.
+# app-i18n/uchardet lacks sparc keyword. See bug #569114.
 media-video/mpv uchardet
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
