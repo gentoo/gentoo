@@ -21,15 +21,11 @@
 		<description>Proxy maintainer for Nicholas and Anthony</description>
 	</maintainer>
 	<use>
-		<flag name="ntlm">Enable NTLM authentication</flag>
 		<flag name="libcanberra">Enable sound event support using
 			<pkg>media-libs/libcanberra</pkg></flag>
 		<flag name="libproxy">Enable proxy support.</flag>
-		<flag name="plugins">Enable plugin support and installs some
-			built-in plugins</flag>
 		<flag name="plugin-checksum">Build Checksum plugin
 			(needs plugins)</flag>
-	    <flag name="plugin-doat">Build Do At plugin (needs plugins)</flag>
 		<flag name="plugin-fishlim">Build FiSHLiM plugin (needs plugins
 			)</flag>
 		<flag name="plugin-sysinfo">Build SysInfo plugin (needs plugins)
