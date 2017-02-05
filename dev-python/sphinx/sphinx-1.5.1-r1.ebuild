@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/S/${PN^}/${P^}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~x86"
 IUSE="doc latex net test"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND="app-arch/unzip
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~x86"
 IUSE="doc test"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
