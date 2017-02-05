@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,6 +43,7 @@ src_install() {
 	prune_libtool_files --modules
 
 	newinitd "${FILESDIR}"/bluealsa-init.d bluealsa
+	newconfd "${FILESDIR}"/bluealsa-conf.d bluealsa
 }
 
 pkg_postinst() {
