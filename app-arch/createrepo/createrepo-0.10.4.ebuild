@@ -1,18 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='xml'
 
-inherit python-single-r1 bash-completion-r1 eutils
+inherit python-single-r1 bash-completion-r1
 
 DESCRIPTION="Creates a common rpm-metadata repository"
 HOMEPAGE="http://createrepo.baseurl.org/"
-SRC_URI="http://createrepo.baseurl.org/download/${P}.tar.gz
-	https://dev.gentoo.org/~pacho/maintainer-needed/${PN}-0.9.9-head.patch.bz2"
+SRC_URI="http://createrepo.baseurl.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,19 +27,15 @@ RDEPEND=">=dev-python/urlgrabber-2.9.0[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
 DEPEND="${PYTHON_DEPS}"
 
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.10.3-ten-changelog-limit.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
 	python_export PYTHON_SITEDIR
-}
-
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.10.3-ten-changelog-limit.patch"
-}
-
-src_compile() {
-	:
 }
 
 src_install() {
@@ -49,7 +44,7 @@ src_install() {
 		PYTHON=true \
 		compdir="$(get_bashcompdir)" \
 		PKGDIR="${PYTHON_SITEDIR}/${PN}"
-	dodoc ChangeLog README
+	einstalldocs
 	python_fix_shebang "${ED}"
 	python_optimize
 	python_optimize "${ED}/usr/share/createrepo"

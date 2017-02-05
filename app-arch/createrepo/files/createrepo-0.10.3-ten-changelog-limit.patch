@@ -1,5 +1,5 @@
---- createrepo/__init__.py~	2011-01-26 12:14:30.000000000 -0500
-+++ createrepo/__init__.py	2011-01-26 12:34:17.291441719 -0500
+--- a/createrepo/__init__.py	2011-01-26 12:14:30.000000000 -0500
++++ b/createrepo/__init__.py	2011-01-26 12:34:17.291441719 -0500
 @@ -96,7 +96,7 @@
          self.mdtimestamp = 0
          self.directory = None
