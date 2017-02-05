@@ -26,7 +26,7 @@ CDEPEND="
 	$(add_qt_dep qtwidgets)
 	dev-libs/libatasmart
 	sys-apps/util-linux
-	>=sys-block/parted-3
+	>=sys-block/parted-3.2
 "
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
