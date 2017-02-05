@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install
-DEPEND=>=sci-mathematics/ginac-1.5 doc? ( app-doc/doxygen )
+DEPEND=>=sci-mathematics/ginac-1.5 <sci-mathematics/ginac-1.7 doc? ( app-doc/doxygen )
 DESCRIPTION=A GiNaC-based library for symbolic expansion of certain transcendental functions
 EAPI=3
 HOMEPAGE=http://wwwthep.physik.uni-mainz.de/~stefanw/nestedsums/
 IUSE=doc
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=sci-mathematics/ginac-1.5
+RDEPEND=>=sci-mathematics/ginac-1.5 <sci-mathematics/ginac-1.7
 SLOT=0
 SRC_URI=http://wwwthep.physik.uni-mainz.de/~stefanw/download/nestedsums-1.4.12.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=e1102c745a4cb88dadb3c7934c20a9eb
+_md5_=e043cb2399cc0c2ea3f7839266c88701

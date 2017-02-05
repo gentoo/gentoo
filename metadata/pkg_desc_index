@@ -16434,7 +16434,7 @@ sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 28.9 28.10-r1: The Great Internet Mersenne Prime Search
-sci-mathematics/ginac 1.5.8 1.6.1 1.6.2 1.6.6: C++ library and tools for symbolic calculations
+sci-mathematics/ginac 1.5.8 1.6.1 1.6.2 1.6.6 1.7.2: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57 4.60: GNU Linear Programming Kit
 sci-mathematics/gmm 4.2 5.0: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 9999: Elliptic Curve Method for Integer Factorization
@@ -16454,7 +16454,7 @@ sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925: Small yet efficient SAT solver
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
-sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansion of certain transcendental functions
+sci-mathematics/nestedsums 1.4.12-r2 1.5.1: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.6.0: NuSMV: new symbolic model checker
@@ -18848,7 +18848,7 @@ x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 2.20110530.1 3.20150503.1 3.20150503.1-r1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.40.1 1.41 1.42: MS-Explorer-like minimalist file manager for X
-x11-misc/xfishtank 2.1-r1: Turns your root window into an aquarium
+x11-misc/xfishtank 2.1-r1 2.1-r2: Turns your root window into an aquarium
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
