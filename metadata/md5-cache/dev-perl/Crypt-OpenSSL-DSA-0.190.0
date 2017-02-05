@@ -4,11 +4,11 @@ DESCRIPTION=Digital Signature Algorithm using OpenSSL
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Crypt-OpenSSL-DSA/
 IUSE=libressl
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KM/KMX/Crypt-OpenSSL-DSA-0.19.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=586401434d5b3c4664683a7b64da3680
+_md5_=bf6b2dabdc5b6731e677bbb21d2b6e17
