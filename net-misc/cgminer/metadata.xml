@@ -20,6 +20,8 @@
 		<flag name="avalon">Enable support for Avalon ASICs</flag>
 		<flag name="avalon2">Enable support for Avalon2 ASICs</flag>
 		<flag name="avalon4">Enable support for Avalon4 ASICs</flag>
+		<flag name="avalon7">Enable support for Avalon7 ASICs</flag>
+		<flag name="avalon-miner">Enable support for Avalon miner ASICs</flag>
 		<flag name="bab">Enable support for BlackArrow Bitfury</flag>
 		<flag name="bflsc">Enable support for BFL ASICs</flag>
 		<flag name="bitforce">Enable support for mining with ButterFly Labs BitFORCE FPGAs</flag>
@@ -35,7 +37,6 @@
 		<flag name="knc">Enable support for mining with KnC miners</flag>
 		<flag name="minion">Enable support for mining with BlackArrow Bitfury </flag>
 		<flag name="modminer">Enable support for mining with ModMiner FPGAs</flag>
-		<flag name="spondoolies">Enable support for Spondoolies</flag>
 		<flag name="sp10">Enable support for Spondoolies SP10</flag>
 		<flag name="sp30">Enable support for Spondoolies SP30</flag>
 	</use>

@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit eutils flag-o-matic
 
 DESCRIPTION="Bitcoin CPU/GPU/FPGA/ASIC miner in C"
 HOMEPAGE="http://bitcointalk.org/?topic=28402.msg357369 https://github.com/ckolivas/cgminer"
@@ -15,49 +15,33 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-HARDWARE="ants1 ants2 avalon avalon2 avalon4 bab bitmine_A1 bflsc bitforce bitfury blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer spondoolies"
+HARDWARE="ants1 ants2 ants3 avalon avalon2 avalon4 avalon7 avalon-miner bab bflsc bitforce bitfury bitmine_A1 blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer sp10 sp30"
 IUSE="doc examples udev hardened ncurses ${HARDWARE}"
 
 REQUIRED_USE="|| ( ${HARDWARE} )"
 
 RDEPEND="net-misc/curl
 	>=dev-libs/jansson-2.6
-	ncurses? ( sys-libs/ncurses )
-	ants1? ( virtual/libusb:1[udev] )
-	ants2? ( virtual/libusb:1[udev] )
-	avalon? ( virtual/libusb:1[udev] )
-	avalon2? ( virtual/libusb:1[udev] )
-	avalon4? ( virtual/libusb:1[udev] )
-	bflsc? ( virtual/libusb:1[udev] )
-	bitforce? ( virtual/libusb:1[udev] )
-	bitfury? ( virtual/libusb:1[udev] )
-	blockerupter? ( virtual/libusb:1[udev] )
-	cointerra? ( virtual/libusb:1[udev] )
-	drillbit? ( virtual/libusb:1[udev] )
-	hashfast? ( virtual/libusb:1[udev] )
-	hashratio? ( virtual/libusb:1[udev] )
-	icarus? ( virtual/libusb:1[udev] )
-	klondike? ( virtual/libusb:1[udev] )
-	modminer? ( virtual/libusb:1[udev] )
-	spondoolies? ( virtual/libusb:1[udev] )
+	virtual/libusb:1[udev]
+	ncurses? ( sys-libs/ncurses:0= )
 	udev? ( virtual/libudev )"
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.4.2-system-jansson.patch
-	eautoreconf
-}
-
 src_configure() {
 	use hardened && append-cflags "-nopie"
 
+	# PKG_CHECK_MODULES needs PKG_CONFIG for --with-system-jansson.
+	export PKG_CONFIG=/usr/bin/pkg-config
 	econf $(use_with ncurses curses) \
 		$(use_enable ants1) \
 		$(use_enable ants2) \
+		$(use_enable ants3) \
 		$(use_enable avalon) \
 		$(use_enable avalon2) \
 		$(use_enable avalon4) \
+		$(use_enable avalon7) \
+		$(use_enable avalon-miner) \
 		$(use_enable bab) \
 		$(use_enable bitmine_A1) \
 		$(use_enable bflsc) \
@@ -73,10 +57,12 @@ src_configure() {
 		$(use_enable knc) \
 		$(use_enable minion) \
 		$(use_enable modminer) \
-		$(use_enable spondoolies) \
+		$(use_enable sp10) \
+		$(use_enable sp30) \
 		$(use_enable udev) \
 		--disable-forcecombo \
-		--with-system-libusb
+		--with-system-libusb \
+		--with-system-jansson
 	# sanitize directories (is this still needed?)
 	sed -i 's~^\(\#define CGMINER_PREFIX \).*$~\1"'"${EPREFIX}/usr/lib/cgminer"'"~' config.h
 }
