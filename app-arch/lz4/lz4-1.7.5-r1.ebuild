@@ -33,4 +33,7 @@ multilib_src_configure() {
 	)
 
 	cmake-utils_src_configure
+
+	# fix missing version in .pc, #608144
+	sed -i -e "/Version/s:$:${PV}:" "${BUILD_DIR}"/liblz4.pc || die
 }
