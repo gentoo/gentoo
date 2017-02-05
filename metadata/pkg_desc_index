@@ -18834,7 +18834,7 @@ x11-misc/xcalib 0.9.0_p20161210: A tiny monitor calibration loader for X.org
 x11-misc/xcape 1.0 1.1: Utility to make modifier keys send custom key events when pressed on their own
 x11-misc/xcave 2.4.0: View and manage contents of your wine cellar
 x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
-x11-misc/xclip 0.12 0.13: Copy data from standard input to X clipboard
+x11-misc/xclip 0.13: Copy data from standard input to X clipboard
 x11-misc/xcompmgr 1.1.6 1.1.7: X Compositing manager
 x11-misc/xdaliclock 2.41 2.43: Dali Clock is a digital clock. When a digit changes, it melts into its new shape
 x11-misc/xdesktopwaves 1.3-r1: A cellular automata setting the background of your X Windows desktop under water
