@@ -1,0 +1,32 @@
+diff -r -U2 sbcl-1.3.13.orig/src/runtime/Config.x86-64-linux sbcl-1.3.13/src/runtime/Config.x86-64-linux
+--- sbcl-1.3.13.orig/src/runtime/Config.x86-64-linux	2016-12-31 09:38:30.000000000 +0100
++++ sbcl-1.3.13/src/runtime/Config.x86-64-linux	2017-02-05 16:11:54.801938872 +0100
+@@ -58,12 +58,4 @@
+ endif
+ 
+-# The following works for Ubuntu 16.10. There must be a better way to
+-# do this across various flavors of linux.
+-ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e no-pie),)
+-CFLAGS += -fno-pie
+-LINKFLAGS += -no-pie
+-LDFLAGS += -no-pie
+-endif
+-
+ # Nothing to do for after-grovel-headers.
+ .PHONY: after-grovel-headers
+diff -r -U2 sbcl-1.3.13.orig/src/runtime/Config.x86-linux sbcl-1.3.13/src/runtime/Config.x86-linux
+--- sbcl-1.3.13.orig/src/runtime/Config.x86-linux	2016-12-31 09:38:30.000000000 +0100
++++ sbcl-1.3.13/src/runtime/Config.x86-linux	2017-02-05 16:10:16.882945480 +0100
+@@ -50,12 +50,4 @@
+ endif
+ 
+-# The following works for Ubuntu 16.10. There must be a better way to
+-# do this across various flavors of linux.
+-ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e no-pie),)
+-CFLAGS += -fno-pie
+-LINKFLAGS += -no-pie
+-LDFLAGS += -no-pie
+-endif
+-
+ GC_SRC = gencgc.c
+ 
