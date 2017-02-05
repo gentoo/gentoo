@@ -6,6 +6,10 @@
 # Incomplete support, bug #605878.
 net-misc/tor seccomp
 
+# Jeroen Roovers <jer@gentoo.org> <5 Feb 2017>
+# media-libs/libilbc has not been ported to PPC64
+media-video/ffmpeg libilbc
+
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
 dev-db/redis luajit
@@ -80,11 +84,6 @@ sys-cluster/vzctl ploop
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
-
-# Kacper Kowalik <xarthisius@gentoo.org> (09 Mar 2012)
-# Mask media-video/ffmpeg[vpx] and media-video/mplayer[vpx]
-# on ppc64 as there is no stable version yet
-media-video/ffmpeg vpx
 
 # Kacper Kowalik <xarthisius@gentoo.org> (02 Sep 2011)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
