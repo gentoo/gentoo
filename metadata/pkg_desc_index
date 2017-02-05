@@ -10119,7 +10119,7 @@ dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.20.9 3.22.2: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.9: A code search tool
-dev-util/huc 0.1: HTML umlaut conversion tool
+dev-util/huc 0.1 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters

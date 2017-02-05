@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=HTML umlaut conversion tool
+EAPI=6
+HOMEPAGE=http://www.int21.de/huc
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.int21.de/huc/huc-0.1.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=04895a6d469e37ab44f8e9c00692fcc1
