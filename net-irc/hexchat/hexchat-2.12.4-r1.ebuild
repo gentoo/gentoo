@@ -16,7 +16,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/hexchat/hexchat.git"
 else
 	SRC_URI="https://dl.hexchat.net/hexchat/${P}.tar.xz"
-	KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux"
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
