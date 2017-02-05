@@ -4,11 +4,11 @@ DESCRIPTION=tool for automating interactive applications
 EAPI=5
 HOMEPAGE=http://expect.nist.gov/
 IUSE=debug doc threads
-KEYWORDS=alpha amd64 arm hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~m68k-mint ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~m68k-mint ~x86-solaris
 LICENSE=BSD
 RDEPEND=>=dev-lang/tcl-8.2:0[threads?]
 SLOT=0
 SRC_URI=mirror://sourceforge/expect/expect5.45.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=57304f7e2bc5905448381130ea08c895
+_md5_=b67973b8861c6776c73b2d707586c55f
