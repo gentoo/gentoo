@@ -19422,7 +19422,7 @@ xfce-extra/xfce4-volumed 0.1.13: Daemon to control volume up/down and mute keys
 xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.1 0.2.2: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.5.12 0.6.0: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.8.7 0.8.8: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 1.5.0 1.6.0 1.6.2 2.0.3: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 1.6.0 1.7.0 2.1.0: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
 xfce-extra/xfce4-xkb-plugin 0.7.1 0.7.1-r1: XKB layout switching panel plug-in for the Xfce desktop environment
