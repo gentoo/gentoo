@@ -4485,7 +4485,7 @@ dev-lang/ocaml 4.02.3 4.04.0: Fast modern type-inferring functional programming 
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
-dev-lang/orc 0.4.25 0.4.26 0.4.26-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
+dev-lang/orc 0.4.26-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficiently compile and execute bytecode for dynamic languages
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
