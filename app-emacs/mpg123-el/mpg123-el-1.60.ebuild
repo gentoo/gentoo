@@ -20,8 +20,8 @@ RDEPEND="media-sound/mpg123
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o tagput tagput.c || die
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o id3put id3put.c || die
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o tagput tagput.c || die
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o id3put id3put.c || die
 	elisp-compile *.el
 }
 
