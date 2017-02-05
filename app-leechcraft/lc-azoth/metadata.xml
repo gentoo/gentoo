@@ -26,7 +26,6 @@
 	<flag name="murm">Build Murm, the VKontakte messaging support via their native API (instead of XMPP)</flag>
 	<flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
 	<flag name="otroid">Build OTRoid, plugin for the Off-the-Record deniable encryption system</flag>
-	<flag name="p100q">Build p100q, plugin for psto.net microblogging service</flag>
 	<flag name="sarin">Build Sarin, Tox protocol support module. Please add mva overlay to use <pkg>net-libs/tox</pkg></flag>
 	<flag name="shx">Build shell command executor plugin</flag>
 	<flag name="standardstyles">Build support for standard Azoth styles engine</flag>
