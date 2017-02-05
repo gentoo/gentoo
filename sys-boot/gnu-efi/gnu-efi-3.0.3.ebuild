@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://gnu-efi.sourceforge.net/"
@@ -51,6 +51,10 @@ efimake() {
 
 src_compile() {
 	tc-export BUILD_CC AR AS CC LD
+
+	# https://bugs.gentoo.org/607992
+	filter-mfpmath sse
+
 	if [[ ${CHOST} == x86_64* ]]; then
 		use abi_x86_32 && CHOST=i686 ABI=x86 efimake
 		use abi_x86_64 && efimake
