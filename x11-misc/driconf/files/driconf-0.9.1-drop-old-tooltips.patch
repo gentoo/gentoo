@@ -1,0 +1,61 @@
+diff -ur driconf-0.9.1-old/driconf_commonui.py driconf-0.9.1/driconf_commonui.py
+--- a/driconf_commonui.py	2006-09-18 04:03:43.000000000 +0200
++++ b/driconf_commonui.py	2011-01-09 21:09:43.000000000 +0100
+@@ -299,8 +299,7 @@
+             self.label.set_active (page.app.options.has_key (opt.name))
+             self.label.set_sensitive (page.app.device.config.writable)
+             self.label.connect ("clicked", self.checkOpt)
+-        tooltipString = str(opt)
+-        page.tooltips.set_tip (self.label, tooltipString)
++        self.label.set_tooltip_text (str(opt))
+         self.label.show()
+         page.table.attach (self.label, 0, 1, i, i+1,
+                            gtk.EXPAND|gtk.FILL, 0, 5, 5)
+@@ -316,10 +315,10 @@
+         self.resetButton.set_relief (gtk.RELIEF_NONE)
+         self.resetButton.set_sensitive (sensitive)
+         if removable:
+-            page.tooltips.set_tip(self.resetButton, _("Remove"))
++            self.resetButton.set_tooltip_text(_("Remove"))
+             self.resetButton.connect ("clicked", self.removeOpt)
+         else:
+-            page.tooltips.set_tip(self.resetButton, _("Reset to default value"))
++            self.resetButton.set_tooltip_text(_("Reset to default value"))
+             self.resetButton.connect ("clicked", self.resetOpt)
+         self.resetButton.show()
+         page.table.attach (self.resetButton, 2, 3, i, i+1, 0, 0, 5, 5)
+@@ -510,7 +509,6 @@
+         self.optSection = optSection
+         self.app = app
+         self.simple = simple
+-        self.tooltips = gtk.Tooltips()
+         self.table = gtk.Table (len(optSection.optList), 3)
+         self.optLines = []
+         for i in range (len(optSection.optList)):
+diff -ur driconf-0.9.1-old/driconf_complexui.py driconf-0.9.1/driconf_complexui.py
+--- a/driconf_complexui.py	2006-09-18 02:53:44.000000000 +0200
++++ b/driconf_complexui.py	2011-01-09 21:10:29.000000000 +0100
+@@ -41,11 +41,10 @@
+         self.set_label_widget (frameLabel)
+         self.driver = driver
+         self.app = app
+-        tooltips = gtk.Tooltips()
+         table = gtk.Table(2, 2)
+         self.execCheck = WrappingCheckButton (_("Apply only to this executable"))
+         self.execCheck.set_sensitive (app.device.config.writable)
+-        tooltips.set_tip (self.execCheck, _(
++        self.execCheck.set_tooltip_text (_(
+             "Leave this disabled to configure all applications.\n"
+             "Beware that some applications or games are just a shell script "
+             "that starts a real executable with a different name."))
+diff -ur driconf-0.9.1-old/driconf_simpleui.py driconf-0.9.1/driconf_simpleui.py
+--- a/driconf_simpleui.py	2006-09-18 02:49:54.000000000 +0200
++++ b/driconf_simpleui.py	2011-01-09 21:10:51.000000000 +0100
+@@ -342,7 +342,6 @@
+         self.set_policy (gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+         self.driver = driver
+         self.app = app
+-        self.tooltips = gtk.Tooltips()
+         self.table = None
+         self.refreshOptions()
+ 

@@ -1,7 +1,7 @@
 http://cvs.fedoraproject.org/viewvc/rpms/driconf/devel/
 
---- driconf_complexui.py
-+++ driconf_complexui.py
+--- a/driconf_complexui.py
++++ b/driconf_complexui.py
 @@ -838,42 +838,73 @@ class MainWindow (gtk.Window):
          self.paned.show()
          self.toolbar = gtk.Toolbar ()
