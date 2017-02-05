@@ -118,9 +118,11 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 
 	gnome-base/gnome-common
+	sys-devel/autoconf-archive
 "
 # Needed for autoreconf
 #	gnome-base/gnome-common
+#	sys-devel/autoconf-archive
 
 src_prepare() {
 	# Make some panels and dependencies optional; requires eautoreconf
