@@ -57,6 +57,7 @@ RDEPEND="${CDEPEND}
 	"
 
 DOCS=( AUTHORS NEWS README )
+PATCHES=( "${FILESDIR}/fix-gpg-tests.patch" )
 SITEFILE="50${PN}-gentoo.el"
 MY_LD_LIBRARY_PATH="${WORKDIR}/${P}/lib"
 
