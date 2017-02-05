@@ -4,7 +4,7 @@ DESCRIPTION=Mobile shell that supports roaming and intelligent local echo
 EAPI=6
 HOMEPAGE=http://mosh.mit.edu
 IUSE=+client examples +mosh-hardening +server ufw +utempter
-KEYWORDS=amd64 ~arm ~mips ~ppc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos
+KEYWORDS=amd64 ~arm ~mips ppc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos
 LICENSE=GPL-3
 RDEPEND=dev-libs/protobuf:0= sys-libs/ncurses:0= virtual/ssh client? ( dev-lang/perl dev-perl/IO-Tty ) utempter? ( sys-libs/libutempter )
 REQUIRED_USE=|| ( client server ) examples? ( client )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://mosh.mit.edu/mosh-1.2.6.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=0d654fc0e2256b04cfef881b5549dc6f
+_md5_=06a278bb0416de9dabcd9de78e6946c9
