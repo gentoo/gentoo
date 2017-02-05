@@ -4,11 +4,11 @@ DESCRIPTION=Jens Axboe's Flexible IO tester
 EAPI=5
 HOMEPAGE=http://brick.kernel.dk/snaps/
 IUSE=aio glusterfs gnuplot gtk numa rbd rdma static zlib python_targets_python2_7
-KEYWORDS=amd64 ~arm ia64 ppc ppc64 x86
+KEYWORDS=amd64 arm ia64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=!static? ( aio? ( dev-libs/libaio ) glusterfs? ( sys-cluster/glusterfs ) gtk? ( dev-libs/glib:2 ) numa? ( sys-process/numactl ) rbd? ( sys-cluster/ceph ) zlib? ( sys-libs/zlib ) ) gtk? ( x11-libs/gtk+:2 ) gnuplot? ( sci-visualization/gnuplot python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
 SLOT=0
 SRC_URI=http://brick.kernel.dk/snaps/fio-2.15.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=3635097c7936aceaa6efed64339a4fd0
+_md5_=c82a17f30b5c9f4cdcc474996562e6f0

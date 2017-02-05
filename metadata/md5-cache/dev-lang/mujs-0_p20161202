@@ -2,10 +2,10 @@ DEFINED_PHASES=prepare unpack
 DESCRIPTION=lightweight Javascript interpreter
 EAPI=6
 HOMEPAGE=http://mujs.com/
-KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=AGPL-3
 SLOT=0
 SRC_URI=http://git.ghostscript.com/?p=mujs.git;a=snapshot;h=fd003eceda531e13fbdd1aeb6e9c73156496e569;sf=tgz -> mujs-0_p20161202.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=ea396ad1f06ddc57f223057e1da8f10c
+_md5_=0a1a6c461819537449e6253ec1d019cc
