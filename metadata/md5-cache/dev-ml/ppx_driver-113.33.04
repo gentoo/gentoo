@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-ml/ppx_tools:= >=dev-ml/ppx_core-113.33.00:= dev-ml/ocamlbuild:=[ocamlopt?] dev-ml/ppx_optcomp:= dev-ml/opam >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DEPEND=dev-ml/ppx_tools:= >=dev-ml/ppx_core-113.33.00:= dev-ml/ocamlbuild:=[ocamlopt?] dev-ml/ppx_optcomp:= dev-ml/opam dev-ml/js-build-tools >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
 DESCRIPTION=Feature-full driver for OCaml AST transformers
 EAPI=5
 HOMEPAGE=http://www.janestreet.com/ocaml
@@ -11,4 +11,4 @@ SLOT=0/113.33.04
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_driver-113.33.04.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:oasis src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	473d7851a239e10730fd5d1f7301e7ca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f16bbe4b34ce81fa72cf8559c34691a3
+_md5_=5e48cafb3f184a1c5d081acb891bc767
