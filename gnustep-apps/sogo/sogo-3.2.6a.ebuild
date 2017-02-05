@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit gnustep-2 user vcs-snapshot
 
 DESCRIPTION="Groupware server built around OpenGroupware.org and the SOPE application server"
 HOMEPAGE="http://www.sogo.nu"
-SRC_URI="https://github.com/inverse-inc/sogo/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/inverse-inc/sogo/archive/SOGo-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -44,6 +44,8 @@ src_prepare() {
 	gnustep-base_src_prepare
 	sed -e "s/validateArgs$//" -i configure \
 		|| die "GNUstep.conf sed failed"
+
+	default
 }
 
 src_configure() {
