@@ -5110,7 +5110,7 @@ dev-ml/calendar 2.04: An Ocaml library to handle dates and time
 dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
-dev-ml/camlimages 4.2.2: An image manipulation library for ocaml
+dev-ml/camlimages 4.2.2 4.2.3: An image manipulation library for ocaml
 dev-ml/camlp4 4.02.1_p3 4.03_p1 4.04_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.17: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
@@ -8967,40 +8967,40 @@ dev-ros/rostopic 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.1
 dev-ros/rosunit 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: Tool for diagnosing issues with a running ROS system
 dev-ros/rotate_recovery 1.13.0 1.13.1 1.14.0 9999: Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot
-dev-ros/rqt_action 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Introspect all available ROS action (from actionlib) types
-dev-ros/rqt_bag 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for displaying and replaying ROS bag files
-dev-ros/rqt_bag_plugins 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for displaying and replaying ROS bag files
-dev-ros/rqt_console 0.4.3 0.4.4 9999: GUI plugin for displaying and filtering ROS messages
+dev-ros/rqt_action 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Introspect all available ROS action (from actionlib) types
+dev-ros/rqt_bag 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for displaying and replaying ROS bag files
+dev-ros/rqt_bag_plugins 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for displaying and replaying ROS bag files
+dev-ros/rqt_console 0.4.3 0.4.4 0.4.5 9999: GUI plugin for displaying and filtering ROS messages
 dev-ros/rqt_controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 9999: RQT control manager plugin
-dev-ros/rqt_dep 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for visualizing the ROS dependency graph
-dev-ros/rqt_graph 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for visualizing the ROS computation graph
+dev-ros/rqt_dep 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for visualizing the ROS dependency graph
+dev-ros/rqt_graph 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for visualizing the ROS computation graph
 dev-ros/rqt_gui 0.2.14 0.3.1 0.3.2 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
 dev-ros/rqt_gui_cpp 0.2.14 0.3.1 0.3.2 9999: Enables GUI plugins to use the C++ client library for ROS
 dev-ros/rqt_gui_py 0.2.14 0.3.1 0.3.2 9999: Enables GUI plugins to use the Python client library for ROS
-dev-ros/rqt_image_view 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for displaying images using image_transport
-dev-ros/rqt_launch 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Easy view of .launch files
-dev-ros/rqt_logger_level 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for configuring the logger level of ROS nodes
+dev-ros/rqt_image_view 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for displaying images using image_transport
+dev-ros/rqt_launch 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Easy view of .launch files
+dev-ros/rqt_logger_level 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for configuring the logger level of ROS nodes
 dev-ros/rqt_moveit 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Assists monitoring tasks for MoveIt! motion planner
-dev-ros/rqt_msg 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Python GUI plugin for introspecting available ROS message types
+dev-ros/rqt_msg 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Python GUI plugin for introspecting available ROS message types
 dev-ros/rqt_nav_view 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Provides a gui for viewing navigation maps and paths
-dev-ros/rqt_plot 0.4.3 0.4.4 9999: GUI plugin visualizing numeric values in a 2D plot
+dev-ros/rqt_plot 0.4.3 0.4.4 0.4.5 9999: GUI plugin visualizing numeric values in a 2D plot
 dev-ros/rqt_pose_view 0.5.5 0.5.6 9999: GUI plugin for visualizing 3D poses
-dev-ros/rqt_publisher 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for publishing arbitrary messages with fixed or computed field values
-dev-ros/rqt_py_common 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Common functionality for rqt plugins written in Python
-dev-ros/rqt_py_console 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Python GUI plugin providing an interactive Python console
-dev-ros/rqt_reconfigure 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Provides the way to view and edit the parameters that are accessible via dynamic_reconfigure
+dev-ros/rqt_publisher 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for publishing arbitrary messages with fixed or computed field values
+dev-ros/rqt_py_common 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Common functionality for rqt plugins written in Python
+dev-ros/rqt_py_console 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Python GUI plugin providing an interactive Python console
+dev-ros/rqt_reconfigure 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Provides the way to view and edit the parameters that are accessible via dynamic_reconfigure
 dev-ros/rqt_robot_dashboard 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Infrastructure for building robot dashboard plugins in rqt
 dev-ros/rqt_robot_monitor 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
 dev-ros/rqt_robot_steering 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: GUI plugin for steering a robot using Twist messages
 dev-ros/rqt_runtime_monitor 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: GUI plugin viewing DiagnosticsArray messages
 dev-ros/rqt_rviz 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: GUI plugin embedding RViz
-dev-ros/rqt_service_caller 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for calling arbitrary services
-dev-ros/rqt_shell 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin providing an interactive shell
-dev-ros/rqt_srv 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for introspecting available ROS message types
+dev-ros/rqt_service_caller 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for calling arbitrary services
+dev-ros/rqt_shell 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin providing an interactive shell
+dev-ros/rqt_srv 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for introspecting available ROS message types
 dev-ros/rqt_tf_tree 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: GUI plugin for visualizing the ROS TF frame tree
-dev-ros/rqt_top 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: RQT plugin for monitoring ROS processes
-dev-ros/rqt_topic 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for displaying debug information about ROS topics
-dev-ros/rqt_web 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Simple web content viewer for rqt
+dev-ros/rqt_top 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: RQT plugin for monitoring ROS processes
+dev-ros/rqt_topic 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: GUI plugin for displaying debug information about ROS topics
+dev-ros/rqt_web 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Simple web content viewer for rqt
 dev-ros/rviz 1.12.4-r1 9999: 3D visualization tool for ROS
 dev-ros/rviz_plugin_tutorials 0.10.1-r2 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 9999: Tutorials showing how to call into rviz internals from python scripts
@@ -15711,7 +15711,7 @@ ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: JSON API to RO
 ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 0.6.1 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.2.14 0.3.1 0.3.2 9999: Qt-based framework for GUI development for ROS
-ros-meta/rqt_common_plugins 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
+ros-meta/rqt_common_plugins 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
 ros-meta/rqt_robot_plugins 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
 ros-meta/simulators 1.2.0 1.3.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
@@ -16162,7 +16162,7 @@ sci-geosciences/xtide 2.13 2.13.1 2.13.2: XTide provides tide and current predic
 sci-libs/Fiona 1.5.1 9999: OGR's neat, nimble, no-nonsense API
 sci-libs/Rtree 0.8.2: R-Tree spatial index for Python GIS
 sci-libs/Shapely 1.3.0 1.3.2 1.5.17 1.5.17-r1 9999: Geometric objects, predicates, and operations
-sci-libs/ViSP 3.0.0: Visual Servoing Platform: visual tracking and visual servoing library
+sci-libs/ViSP 3.0.0 3.0.1: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/acml 4.1.0-r2: AMD Core Math Library for x86 and amd64 CPUs
 sci-libs/adolc 2.4.1 2.5.0 2.5.2: Automatic differentiation system for C/C++
 sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
@@ -16490,7 +16490,7 @@ sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.3.2 1.3.3 1.3.4 1.6.1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.4.1 4.5.0: An efficient theorem prover
-sci-misc/ViSP-images 2.10.0 3.0.0: ViSP images data set
+sci-misc/ViSP-images 2.10.0 3.0.0 3.0.1: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.2.44-r2 7.4.52-r2 7.6.33-r2: The Berkeley Open Infrastructure for Network Computing
 sci-misc/cdfplayer 10.4.0 11.0.1: Wolfram Player for the interactive Computable Document Format (CDF)
