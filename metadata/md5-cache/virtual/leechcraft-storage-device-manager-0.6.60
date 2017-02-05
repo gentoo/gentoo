@@ -1,8 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for LeechCraft plugins that add support for managing removable storage devices
-EAPI=4
-KEYWORDS=amd64 x86
-RDEPEND=app-leechcraft/lc-vrooby
-SLOT=0
-_eclass_exported_funcs=-
-_md5_=b9ce4f487e3e04f15b6964aac3d166ae

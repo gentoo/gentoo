@@ -742,7 +742,6 @@ app-leechcraft/lc-azoth:metacontacts - Build plugin for metacontacts support
 app-leechcraft/lc-azoth:murm - Build Murm, the VKontakte messaging support via their native API (instead of XMPP)
 app-leechcraft/lc-azoth:nativeemoticons - Build support for native Azoth's emoticons packs
 app-leechcraft/lc-azoth:otroid - Build OTRoid, plugin for the Off-the-Record deniable encryption system
-app-leechcraft/lc-azoth:p100q - Build p100q, plugin for psto.net microblogging service
 app-leechcraft/lc-azoth:sarin - Build Sarin, Tox protocol support module. Please add mva overlay to use net-libs/tox
 app-leechcraft/lc-azoth:shx - Build shell command executor plugin
 app-leechcraft/lc-azoth:standardstyles - Build support for standard Azoth styles engine
@@ -768,7 +767,6 @@ app-leechcraft/lc-lmp:mpris - Enable MPRIS support
 app-leechcraft/lc-lmp:potorchu - Enable the projectM-based visualization effects module for LMP
 app-leechcraft/lc-monocle:fb2 - Enable support for FictionBook format
 app-leechcraft/lc-monocle:mobi - Enable support for MOBI format
-app-leechcraft/lc-monocle:spectre - Enable PostScript backend for Monocle using the app-text/libspectre
 app-leechcraft/lc-musiczombie:acoustid - Use media-libs/chromaprint for acoustic fingerprinting
 app-leechcraft/lc-netstoremanager:googledrive - Support Google Drive storage backend
 app-leechcraft/lc-netstoremanager:yandexdisk - Support Yandex.Disk storage backend

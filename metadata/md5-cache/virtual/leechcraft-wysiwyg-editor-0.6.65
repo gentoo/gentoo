@@ -1,8 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for LeechCraft plugins providing WYSIWYG text editor
-EAPI=4
-KEYWORDS=~amd64 ~x86
-RDEPEND=~app-leechcraft/lc-lhtr-0.6.65
-SLOT=0
-_eclass_exported_funcs=-
-_md5_=ab6ae57a70280dc73c0e19dfe2e2db91
