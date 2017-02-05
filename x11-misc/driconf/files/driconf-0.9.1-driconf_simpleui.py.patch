@@ -1,7 +1,7 @@
 http://cvs.fedoraproject.org/viewvc/rpms/driconf/devel/
 
---- driconf_simpleui.py
-+++ driconf_simpleui.py
+--- a/driconf_simpleui.py
++++ b/driconf_simpleui.py
 @@ -266,8 +266,8 @@
                      j = i
                      break

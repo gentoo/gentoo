@@ -1,7 +1,7 @@
 http://cvs.fedoraproject.org/viewvc/rpms/driconf/devel/
 
---- driconf_simpleui.py
-+++ driconf_simpleui.py
+--- a/driconf_simpleui.py
++++ b/driconf_simpleui.py
 @@ -450,11 +450,13 @@ class MainWindow (gtk.Window):
          else:
              screen = self.screens[0]
