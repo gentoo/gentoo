@@ -5621,12 +5621,9 @@ net-irc/epic5:archive - Use app-arch/libarchive to use zip and tar archives from
 net-irc/epic5:valgrind - Compile against dev-util/valgrind headers to improve memory-leak checking when running epic5 under valgrind.
 net-irc/hexchat:libcanberra - Enable sound event support using media-libs/libcanberra
 net-irc/hexchat:libproxy - Enable proxy support.
-net-irc/hexchat:ntlm - Enable NTLM authentication
 net-irc/hexchat:plugin-checksum - Build Checksum plugin (needs plugins)
-net-irc/hexchat:plugin-doat - Build Do At plugin (needs plugins)
 net-irc/hexchat:plugin-fishlim - Build FiSHLiM plugin (needs plugins )
 net-irc/hexchat:plugin-sysinfo - Build SysInfo plugin (needs plugins)
-net-irc/hexchat:plugins - Enable plugin support and installs some built-in plugins
 net-irc/hexchat:theme-manager - Build the theme manager (mono)
 net-irc/inspircd:geoip - Add geoip support for country and city lookup based on IPs
 net-irc/inspircd:gnutls - Enable TLS support

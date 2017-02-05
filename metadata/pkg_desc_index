@@ -2355,7 +2355,7 @@ app-text/mftrace 1.2.18: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
-app-text/mupdf 1.5-r1 1.8 1.9a 1.10a: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.10a: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
 app-text/nfoview 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -14584,7 +14584,7 @@ net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
-net-irc/hexchat 2.10.2 2.12.2-r1 2.12.4-r1 2.12.4-r2 9999: Graphical IRC client based on XChat
+net-irc/hexchat 2.12.4-r1 2.12.4-r2 9999: Graphical IRC client based on XChat
 net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.20 2.0.21: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
@@ -16101,7 +16101,7 @@ sci-geosciences/geocode-glib 3.18.2 3.20.1: GLib geocoding library that uses the
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
 sci-geosciences/gnome-maps 3.18.4 3.20.3.1 3.22.1 3.22.2: A map application for GNOME
-sci-geosciences/googleearth 7.1.7.2606: A 3D interface to the planet
+sci-geosciences/googleearth 7.1.8.3036: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4 1.5.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.9-r1 3.10 3.16 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
