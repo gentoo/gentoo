@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs readme.gentoo-r1
 [[ ${PV} == 9999* ]] && inherit git-2
 
 DESCRIPTION="Comic book plug-in for zathura with 7zip, rar, tar and zip support"
@@ -24,17 +24,12 @@ KEYWORDS=""
 fi
 IUSE=""
 
-COMMON_DEPEND=">=app-text/zathura-0.3.1
+RDEPEND=">=app-text/zathura-0.3.1
 	dev-libs/glib:2=
 	app-arch/libarchive:=
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:="
-RDEPEND="${COMMON_DEPEND}
-	app-arch/p7zip
-	app-arch/tar
-	app-arch/unrar
-	app-arch/unzip"
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 pkg_setup() {
@@ -53,4 +48,13 @@ src_compile() {
 src_install() {
 	emake "${myzathuraconf[@]}" install
 	dodoc AUTHORS
+	readme.gentoo_create_doc
 }
+
+pkg_postinst() {
+	readme.gentoo_print_elog
+}
+
+FORCE_PRINT_ELOG=1
+DOC_CONTENTS="Consider installing app-arch/p7zip app-arch/tar app-arch/unrar
+app-arch/unzip for additional file support."
