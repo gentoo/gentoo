@@ -1,13 +1,14 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=virtual/mysql-4.0
+DEPEND=virtual/libmysqlclient:=
 DESCRIPTION=C++ API interface to the MySQL database
-EAPI=5
+EAPI=6
 HOMEPAGE=http://tangentsoft.net/mysql++/
-KEYWORDS=alpha amd64 hppa ~mips ppc sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=LGPL-2
-RDEPEND=>=virtual/mysql-4.0
+RDEPEND=virtual/libmysqlclient:=
 SLOT=0/3
-SRC_URI=http://www.tangentsoft.net/mysql++/releases/mysql++-3.2.1.tar.gz
+SRC_URI=http://www.tangentsoft.net/mysql++/releases/mysql++-3.2.3.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=59fbc345b7d6f25f7672b057cbf3305b
+_md5_=a34b48cf9e7ae5f8471bd01ababc8e15
