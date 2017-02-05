@@ -74,7 +74,7 @@ COMMON_DEPEND="
 	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
 	iconv? (
 		virtual/libiconv
-		uchardet? ( dev-libs/uchardet )
+		uchardet? ( app-i18n/uchardet )
 	)
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
