@@ -12455,7 +12455,7 @@ media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
 media-gfx/cura 0.15.04.4 0.15.04.5_rc5 2.1.0_beta 2.3.1: A 3D model slicing application for 3D printing
 media-gfx/curaengine 0.15.04.6 2.1.0_beta 2.3.1: A 3D model slicing engine for 3D printing
-media-gfx/darktable 2.0.7 2.2.1 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 2.0.7 2.2.3 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.3.0-r1: Digital photo management application
@@ -15124,7 +15124,7 @@ net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling s
 net-misc/mobile-broadband-provider-info 20120614 20151214: Database of mobile broadband service providers
 net-misc/modemmanager 1.4.14 1.6.4: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
-net-misc/mosh 1.2.4 1.2.6 9999: Mobile shell that supports roaming and intelligent local echo
+net-misc/mosh 1.2.6 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/mulk 0.6.0 0.7.0: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
