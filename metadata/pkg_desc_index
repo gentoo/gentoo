@@ -14430,7 +14430,7 @@ net-firewall/conntrack-tools 1.4.2 1.4.3 1.4.4: Connection tracking userspace to
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1: Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.3 2.3.1: Command line util for managing firewall rules
-net-firewall/firehol 2.0.3-r1 2.0.4 3.0.1 3.0.1-r1: iptables firewall generator
+net-firewall/firehol 2.0.3-r1 2.0.4 3.0.1 3.0.1-r1 3.1.2: iptables firewall generator
 net-firewall/firewalld 0.4.3.3: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.0.1.3592-r1 5.3.6: A firewall GUI
