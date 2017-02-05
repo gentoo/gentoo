@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=sys-libs/zlib dev-libs/tinyxml2:= >=media-libs/libzen-0.4.34[static-libs=] curl? ( net-misc/curl ) mms? ( >=media-libs/libmms-0.6.1[static-libs=] ) virtual/pkgconfig doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=MediaInfo libraries
+EAPI=6
+HOMEPAGE=http://mediaarea.net/mediainfo/
+IUSE=curl doc mms static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-libs/zlib dev-libs/tinyxml2:= >=media-libs/libzen-0.4.34[static-libs=] curl? ( net-misc/curl ) mms? ( >=media-libs/libmms-0.6.1[static-libs=] )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://mediaarea.net/download/source/libmediainfo/0.7.92.1/libmediainfo_0.7.92.1.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=14f66b2467f6935775d9a157784578f7

@@ -12728,7 +12728,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.36 10.38 10.40: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.36 10.38 10.40 10.41: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
@@ -12886,7 +12886,7 @@ media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1 1.14.0 1.16.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.2.0 1.3.0 1.4.4 1.4.5: Extensible multimedia container format based on EBML
 media-libs/libmediaart 0.7.0 1.9.0 1.9.0-r1: Manages, extracts and handles media art caches
-media-libs/libmediainfo 0.7.91: MediaInfo libraries
+media-libs/libmediainfo 0.7.91 0.7.92.1: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.8 3.3.10: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
@@ -13936,7 +13936,7 @@ media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
 media-video/makemkv 1.10.4: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
-media-video/mediainfo 0.7.91: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 0.7.91 0.7.92.1: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
