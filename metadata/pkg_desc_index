@@ -15072,7 +15072,7 @@ net-misc/iodine 0.7.0-r2: IP over DNS tunnel
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.5-r2 2.0.9 3.0.12 3.1.3 3.1.4 3.1.5: A TCP, UDP, and SCTP network bandwidth measurement tool
-net-misc/iprange 1.0.2: iprange utility
+net-misc/iprange 1.0.3: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r1: ipsvd is a set of internet protocol service daemons for Unix

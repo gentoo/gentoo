@@ -1,6 +1,6 @@
 DEFINED_PHASES=install postinst prepare
 DESCRIPTION=Hibernate script supporting multiple suspend methods
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.tuxonice.net/
 IUSE=vim-syntax
 KEYWORDS=amd64 ppc x86
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://www.tuxonice.net/downloads/all/hibernate-script-2.0.tar.gz mirror://gentoo/hibernate-script-2.0-patches-5.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=a2211095af3b6b91fa122dd7515c61e8
+_md5_=ef46c2e7f86e43af892e340f3b9a93c1

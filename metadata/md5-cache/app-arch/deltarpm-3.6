@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile install setup
 DEPEND=sys-libs/zlib app-arch/xz-utils app-arch/bzip2 <app-arch/rpm-5 python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] )
 DESCRIPTION=tools to create and apply deltarpms
-EAPI=5
+EAPI=6
 HOMEPAGE=http://gitorious.org/deltarpm/deltarpm
 IUSE=python system-zlib python_targets_python2_7
 KEYWORDS=~amd64 ~x86
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://pkgs.fedoraproject.org/repo/pkgs/deltarpm/deltarpm-3.6.tar.bz2/2cc2690bd1088cfc3238c25e59aaaec1/deltarpm-3.6.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9426718396c7623b837061ed7aa5a3b0
+_md5_=b5256d34ae12dc1ebcb0b1bee6f6e644
