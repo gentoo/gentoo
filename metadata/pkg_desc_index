@@ -1027,7 +1027,7 @@ app-editors/jasspa-microemacs 20091011-r2: Jasspa Microemacs
 app-editors/jed 0.99.19: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
-app-editors/joe 4.2 4.3-r1: A free ASCII-Text Screen Editor for UNIX
+app-editors/joe 4.2 4.3-r1 4.4: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs - a light emacs-like editor without LISP bindings
 app-editors/juffed 0.10-r1: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p27 3.1_p30: portable version of JOE's Own Editor
@@ -9136,7 +9136,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 3.2.6 4.1.1 4.2.0 4.2.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.1.4 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5 1.12.6 1.13.7: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.8.9 1.12.5 1.12.6 1.13.7: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.6.1 2.6.2 2.6.3: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
@@ -9187,7 +9187,7 @@ dev-ruby/crack 0.4.2-r1 0.4.3 0.4.3-r1: Really simple JSON and XML parsing, ripp
 dev-ruby/crass 1.0.2: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.7.1: Cri is a library for building easy-to-use commandline tools
-dev-ruby/css_parser 1.4.6 1.4.7: Sass-based Stylesheet Framework
+dev-ruby/css_parser 1.4.6 1.4.7 1.4.8: Sass-based Stylesheet Framework
 dev-ruby/curb 0.9.3: Ruby-language bindings for libcurl
 dev-ruby/curses 1.0.2 1.1.1: Ruby binding for curses, ncurses, and PDCurses
 dev-ruby/d3_rails 3.5.16 3.5.17 4.1.1: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
@@ -9201,7 +9201,7 @@ dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector A
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1 1.1.1: A simple set of utility functions for Hash
 dev-ruby/delayer 0.0.2: Delay the processing
-dev-ruby/delayer-deferred 1.0.3 1.0.4: Ruby implementation of JSDeferred
+dev-ruby/delayer-deferred 1.0.4: Ruby implementation of JSDeferred
 dev-ruby/dep_selector 0.1.1-r1: constraint based package dependency resolver
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
@@ -9216,7 +9216,7 @@ dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/escape_utils 1.2.0 1.2.1: Faster string escaping routines for your ruby apps
-dev-ruby/ethon 0.8.1 0.9.0 0.9.1 0.10.1: Very lightweight libcurl wrapper
+dev-ruby/ethon 0.9.1 0.10.1: Very lightweight libcurl wrapper
 dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous code
 dev-ruby/eventmachine 1.0.9.1 1.2.0.1: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 1.4.0 2.6.0 2.7.0: ExecJS lets you run JavaScript code from Ruby
@@ -9233,7 +9233,7 @@ dev-ruby/faraday_middleware-multi_json 0.0.6: Response JSON parser using MultiJs
 dev-ruby/fast-stemmer 1.0.2-r2: Simple wrapper around multithreaded Porter stemming algorithm
 dev-ruby/fast_gettext 1.0.0 1.1.0 1.2.0 1.3.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
 dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
-dev-ruby/fattr 2.2.2 2.3.0: fattr.rb is a "fatter attr" for ruby
+dev-ruby/fattr 2.3.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ferret 0.11.8.6: A ruby indexing/searching library
 dev-ruby/ffaker 2.1.0 2.4.0: Faster Faker, generates dummy data
@@ -9279,7 +9279,7 @@ dev-ruby/hoe-seattlerb 1.3.4 1.3.5: Hoe plugins providing tasks used by seattle.
 dev-ruby/hpricot 0.8.6-r3 0.8.6-r5: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.0.0 2.1.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
-dev-ruby/http 0.6.3-r1 0.9.8 0.9.8-r1 1.0.2 2.0.0 2.0.1 2.0.2 2.0.3 2.1.0: An easy-to-use client library for making requests from Ruby
+dev-ruby/http 0.6.3-r1 0.9.8 0.9.8-r1 1.0.2 2.0.3 2.1.0 2.2.0: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-cookie 1.0.2-r1 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1-r1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
