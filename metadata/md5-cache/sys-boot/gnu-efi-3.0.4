@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile install prepare
 DEPEND=sys-apps/pciutils
 DESCRIPTION=Library for build EFI Applications
 EAPI=6
@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/gnu-efi/gnu-efi-3.0.4.tar.bz2
-_eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=75721eb71f55afdb8d83bef6027fbdd4
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=4a691cb7a2c71d949f02b1401e69d794
