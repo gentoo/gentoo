@@ -17647,7 +17647,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.44_p48 3.18.46_p50 4.1.35_p41 4.1.37_p43 4.4.32_p43 4.4.39_p50 4.6.7_p14 4.8.14_p9 4.8.15_p10 4.9.4_p2: Full Linux 4.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.70 3.16.39 3.18.47 4.1.38 4.4.46 4.8.17 4.9.7: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.70 3.16.39 3.18.47 4.1.38 4.4.47 4.8.17 4.9.8: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1 1.3-r2: Standalone argp library for use with uclibc
@@ -17667,7 +17667,7 @@ sys-libs/gdbm 1.11 1.12: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r1 2.23-r2 2.23-r3 2.24 9999: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
-sys-libs/kpmcore 2.2.1 3.0.2: Library for managing partitions
+sys-libs/kpmcore 2.2.1 3.0.2 3.0.3: Library for managing partitions
 sys-libs/ldb 1.1.24 1.1.26 1.1.27-r1 1.1.29: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
