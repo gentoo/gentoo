@@ -4581,7 +4581,7 @@ dev-libs/confuse 2.7 2.8 3.0: a configuration file parser library
 dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout for ROS-dependent packages.
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/cryptlib 3.4.0-r1 3.4.3-r1 3.4.3.1-r1: Powerful security toolkit for adding encryption to software
+dev-libs/cryptlib 3.4.0-r1 3.4.3-r1 3.4.3.1-r2: Powerful security toolkit for adding encryption to software
 dev-libs/crypto++ 5.6.2-r3 5.6.5: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to provide a crude approximation to the C++ vector class
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
@@ -18635,7 +18635,7 @@ x11-misc/devilspie2 0.36 0.41 0.42: Devilspie like window matching utility, usin
 x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
-x11-misc/driconf 0.9.1-r1: driconf is a GTK+2 GUI configurator for DRI
+x11-misc/driconf 0.9.1-r1 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
 x11-misc/dsx 0.1: command line selection of your X desktop environment
 x11-misc/dunst 1.1.0: customizable and lightweight notification-daemon
 x11-misc/dxpc 3.9.2-r1: Differential X Protocol Compressor
@@ -18703,7 +18703,7 @@ x11-misc/lightdm-kde 0.3.2.1-r1: LightDM KDE greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1: Linux support for Easy Access and Internet Keyboards
-x11-misc/lndir 1.0.3: create a shadow directory of symbolic links to another directory tree
+x11-misc/lndir 1.0.3 1.0.3-r1: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
 x11-misc/macopix 1.7.4: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system
 x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, depending on orientation
@@ -18721,7 +18721,7 @@ x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon
 x11-misc/notify-osd 0.9.34: Canonical's on-screen-display notification agent
 x11-misc/nts 82-r1: Note Taking made Simple, an intuitive note taking application
 x11-misc/numlockx 1.2: Turns on numlock in X
-x11-misc/obconf 2.0.3_p20111019 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
+x11-misc/obconf 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
 x11-misc/obconf-qt 0.9.0_p20150729: Openbox window manager configuration tool
 x11-misc/obmenu 1.0-r1: Menu editor designed for openbox
 x11-misc/obmenu-generator 0.61 0.66: A fast pipe/static menu generator for the Openbox Window Manager
@@ -18741,7 +18741,7 @@ x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
 x11-misc/py3status 3.4: py3status is an extensible i3status wrapper written in python
-x11-misc/pypanel 2.4-r1: A lightweight panel/taskbar for X11 window managers
+x11-misc/pypanel 2.4-r1 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.0-r1 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
@@ -18756,7 +18756,7 @@ x11-misc/qxkb 0.4.6: Qt4-based keyboard layout switcher
 x11-misc/read-edid 1.4.2 3.0.1 3.0.2: Program that can get information from a PnP monitor
 x11-misc/rednotebook 1.8.0 1.14: Graphical journal with calendar, templates, tags and keyword searching
 x11-misc/redshift 1.10 1.11 1.11-r1: A screen color temperature adjusting software
-x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
+x11-misc/rendercheck 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.2.0 1.3.0 1.3.1: A window switcher, run dialog and dmenu replacement
@@ -18818,7 +18818,7 @@ x11-misc/winswitch 0.12.18-r1: client server tool to start and control virtual d
 x11-misc/wmakerconf 2.12-r2 2.12-r3: X based config tool for the windowmaker X windowmanager
 x11-misc/wmctrl 1.07-r1 1.07-r2: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmiface 2.1: Command line tool allowing user scripting of the running window manager
-x11-misc/wmname 0.1: utility to set the name of your window manager
+x11-misc/wmname 0.1 0.1-r1: utility to set the name of your window manager
 x11-misc/x11vnc 0.9.13_p20150111 0.9.14_p20161013: A VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
@@ -18828,7 +18828,7 @@ x11-misc/xautomation 1.05 1.06 1.09: Control X from command line and find things
 x11-misc/xbatt 1.2.1-r1 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.3 1.4.4 1.4.5 1.4.8: Advanced Power Management battery status display for X
 x11-misc/xbindkeys 1.8.6: Tool for launching commands on keystrokes
-x11-misc/xbitmaps 1.1.1: X.Org bitmaps data
+x11-misc/xbitmaps 1.1.1 1.1.1-r1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r1: A simple interactive calendar program with a notebook capability
 x11-misc/xcalib 0.9.0_p20161210: A tiny monitor calibration loader for X.org
 x11-misc/xcape 1.0 1.1: Utility to make modifier keys send custom key events when pressed on their own
@@ -18875,7 +18875,7 @@ x11-misc/xrootconsole 0.6 0.6-r1: A utility that displays its input in a text bo
 x11-misc/xscreensaver 5.36: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0 9999: command-line program for getting and setting the contents of the X selection
-x11-misc/xsensors 0.70: A hardware health information viewer, interface to lm-sensors
+x11-misc/xsensors 0.70 0.70-r1: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3 0.1.3-r1: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsnap 1.5.10 1.5.11 1.5.15: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 1.42-r1 1.42-r2: let it snow on your desktop and windows

@@ -3,12 +3,13 @@ DEPEND=sys-libs/zlib ldap? ( net-nds/openldap ) odbc? ( dev-db/unixODBC ) python
 DESCRIPTION=Powerful security toolkit for adding encryption to software
 EAPI=6
 HOMEPAGE=http://www.cs.auckland.ac.nz/~pgut001/cryptlib/
-IUSE=doc ldap odbc python test python_targets_pypy python_targets_python2_7
+IUSE=doc ldap odbc python static-libs test python_targets_pypy python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=Sleepycat
 RDEPEND=sys-libs/zlib ldap? ( net-nds/openldap ) odbc? ( dev-db/unixODBC ) python? ( python_targets_pypy? ( virtual/pypy:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] )
+RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.franken.de/pub/crypt/cryptlib/cl3431.zip doc? ( mirror://gentoo/cryptlib-3.4.0-manual.pdf.bz2 )
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=a7ae8a9d4982a34107af26b37f1d671d
+_md5_=4bb7ff3012d0b2b993760360b5cf02c9
