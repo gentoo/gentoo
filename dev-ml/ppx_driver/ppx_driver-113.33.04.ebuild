@@ -20,7 +20,7 @@ DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ocamlbuild:=[ocamlopt?]
 	dev-ml/ppx_optcomp:="
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam"
+DEPEND="${DEPEND} dev-ml/opam dev-ml/js-build-tools"
 
 src_configure() {
 	emake setup.exe
