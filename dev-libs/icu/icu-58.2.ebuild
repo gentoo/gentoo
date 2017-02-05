@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,6 +35,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-58.1-iterator.patch"
 )
 
+pkg_pretend() {
+	if tc-is-gcc ; then
+		if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 9 \
+			|| $(gcc-major-version) -lt 4 ]] ; then
+				die "You need at least sys-devel/gcc-4.8.3"
+		fi
+	fi
+}
+
 src_prepare() {
 	# apply patches
 	default
@@ -62,6 +71,13 @@ src_prepare() {
 src_configure() {
 	# Use C++14
 	append-cxxflags -std=c++14
+
+	if tc-is-gcc ; then
+		if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 9 \
+			|| $(gcc-major-version) -lt 4 ]] ; then
+				die "You need at least sys-devel/gcc-4.8.3"
+		fi
+	fi
 
 	if tc-is-cross-compiler; then
 		mkdir "${WORKDIR}"/host || die
