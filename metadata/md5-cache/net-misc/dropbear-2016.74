@@ -4,7 +4,7 @@ DESCRIPTION=small SSH 2 client/server designed for small memory environments
 EAPI=5
 HOMEPAGE=http://matt.ucc.asn.au/dropbear/dropbear.html
 IUSE=bsdpty minimal multicall pam +shadow static +syslog zlib savedconfig
-KEYWORDS=alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=!static? ( zlib? ( sys-libs/zlib ) dev-libs/libtommath ) pam? ( virtual/pam ) pam? ( >=sys-auth/pambase-20080219.1 )
 REQUIRED_USE=pam? ( !static )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://matt.ucc.asn.au/dropbear/releases/dropbear-2016.74.tar.bz2 http://matt.ucc.asn.au/dropbear/testing/dropbear-2016.74.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:savedconfig src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=dbdbd428ce0518831113e764a9268456
+_md5_=46e9da45a957b21c3c2e8321587bc473
