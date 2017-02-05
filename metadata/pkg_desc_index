@@ -11313,7 +11313,7 @@ games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.3.6.3: Gaming platform for GNU/Linux
 games-util/mcrcon 0.0.5 0.0.5-r1: Remote connection client for Minecraft servers
 games-util/nml 0.4.2-r1 0.4.4 0.4.4-r1: Compiler of NML files into grf/nfo files
-games-util/pogo-manager-bin 0.1.4 0.1.5 0.1.6: Pokemon Go manager
+games-util/pogo-manager-bin 0.1.6: Pokemon Go manager
 games-util/pyfa 1.21.3 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.1.0: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11: Server statics collector supporting many FPS games

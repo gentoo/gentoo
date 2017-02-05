@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-57.0.2987.21.tar.xz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	chromium-2	c30f482b868782938c772c21d9ede135	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	pax-utils	4c2654a34ebe732e85fda354f6ee642f	portability	bb1a0ed8ea152b957d17339f01d4d7f5	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=e040451b25b41c2ca77fd6755b14b67a
+_md5_=25033544183dd7bb82f5e6b83ae9434a
