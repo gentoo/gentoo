@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Alternate application launcher for Xfce"
 HOMEPAGE="https://gottcode.org/xfce4-whiskermenu-plugin"
-SRC_URI="https://github.com/gottcode/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,8 +17,8 @@ IUSE=""
 
 RDEPEND="
 	virtual/libintl:=
-	x11-libs/gtk+:2=
-	xfce-base/exo:=
+	x11-libs/gtk+:3=
+	>=xfce-base/exo-0.11.0:=
 	xfce-base/garcon:=
 	xfce-base/libxfce4ui:=
 	xfce-base/libxfce4util:=
