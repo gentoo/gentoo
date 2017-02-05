@@ -20,7 +20,7 @@ SRC_URI="ftp://ftp.franken.de/pub/crypt/cryptlib/cl${MY_PV}.zip
 LICENSE="Sleepycat"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="doc ldap odbc python test"
+IUSE="doc ldap odbc python static-libs test"
 
 S="${WORKDIR}"
 
@@ -34,8 +34,10 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 	"${FILESDIR}/${P}-zlib.patch"
-	"${FILESDIR}/${P}-tests.patch"
 )
+
+# test access the network
+RESTRICT="test"
 
 src_unpack() {
 	# we need the -a option, so we can not use 'unpack'
@@ -68,19 +70,12 @@ src_prepare() {
 }
 
 src_compile() {
-	# At least -O2 is needed.
-	replace-flags -O  -O2
-	replace-flags -O0 -O2
-	replace-flags -O1 -O2
-	replace-flags -Os -O2
-	is-flagq -O* || append-flags -O2
-
 	use ldap && append-cppflags -DHAS_LDAP
 	use odbc && append-cppflags -DHAS_ODBC
 
 	export DISABLE_AUTODETECT=1
-	emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" default
 	emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" shared
+	use static-libs && emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" default
 	use test && emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" stestlib
 
 	#
@@ -94,10 +89,6 @@ src_compile() {
 	ln -s "${solibname}" libcl.so || die
 
 	if use python; then
-
-		# Python bindings don't work with -O2 and higher.
-		replace-flags -O* -O1
-
 		wrap_python ${FUNCNAME}
 	fi
 }
@@ -112,7 +103,7 @@ src_install() {
 	doheader cryptlib.h
 
 	dolib.so libcl.so*
-	dolib.a libcl.a
+	use static-libs && dolib.a libcl.a
 
 	if use doc; then
 		newdoc "${DOC_PREFIX}-manual.pdf" "manual.pdf"

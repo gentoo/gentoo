@@ -1,0 +1,9 @@
+--- a/driconf.desktop	2006-09-18 04:41:45.000000000 +0300
++++ b/driconf.desktop	2017-02-05 13:14:11.319444931 +0200
+@@ -5,5 +5,5 @@
+ Exec=driconf
+ Icon=/usr/local/share/driconf/driconf-icon.png
+ Type=Application
+-Categories=GNOME;Application;Settings;AdvancedSettings;
++Categories=GNOME;Settings;HardwareSettings;
+ StartupNotify=true
