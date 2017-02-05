@@ -20,7 +20,7 @@ DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ppx_core:="
 
 RDEPEND="${DEPEND}"
-DEPEND="${RDEPEND} dev-ml/opam"
+DEPEND="${RDEPEND} dev-ml/opam dev-ml/js-build-tools"
 
 src_configure() {
 	emake setup.exe
