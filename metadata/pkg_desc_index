@@ -11466,7 +11466,7 @@ gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.1 0.6.2: An IDE for GNUstep
 gnustep-apps/remotedesk 0.1: GNUstep remote windows access tool
 gnustep-apps/simpleagenda 0.42.2 0.43: a simple calendar and agenda application
-gnustep-apps/sogo 2.3.2 3.0.2 3.2.0 3.2.1: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-apps/sogo 3.2.1 3.2.6a: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/sudoku 0.7: Sudoku generator for GNUstep
 gnustep-apps/systempreferences 1.0.2 1.1.0 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/terminal 0.9.7 0.9.8: A terminal emulator for GNUstep
@@ -11492,7 +11492,7 @@ gnustep-libs/pantomime 1.2.0 1.2.2: A set of Objective-C classes that model a ma
 gnustep-libs/performance 0.4.0 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/prefsmodule 1.1.1_pre20061204-r1: Preferences is the GNUstep program with which you define your own personal user experience
 gnustep-libs/renaissance 0.9.0: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/sope 2.3.2 3.0.1 3.0.2 3.2.0 3.2.1: A set of frameworks forming a complete Web application server environment
+gnustep-libs/sope 3.2.1 3.2.6a: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.7.0 1.8.1: GNUstep lightweight database abstraction layer
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
