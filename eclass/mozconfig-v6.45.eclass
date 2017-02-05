@@ -120,7 +120,7 @@ RDEPEND=">=app-text/hunspell-1.2:=
 	system-cairo? ( >=x11-libs/cairo-1.12[X,xcb] >=x11-libs/pixman-0.19.2 )
 	system-icu? ( >=dev-libs/icu-51.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
-	system-libevent? ( =dev-libs/libevent-2.0*:0= )
+	system-libevent? ( >=dev-libs/libevent-2.0:0= )
 	system-sqlite? ( >=dev-db/sqlite-3.9.1:3[secure-delete,debug=] )
 	system-harfbuzz? ( >=media-libs/harfbuzz-1.1.3:0=[graphite,icu] >=media-gfx/graphite2-1.3.8 )
 "

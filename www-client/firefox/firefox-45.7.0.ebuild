@@ -25,7 +25,7 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-45.0-patches-10"
+PATCH="${PN}-45.0-patches-11"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 # Kill gtk3 support since gtk+-3.20 breaks it hard prior to 48.0
