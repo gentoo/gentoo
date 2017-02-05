@@ -1203,7 +1203,7 @@ app-emacs/nxml-gentoo-schemas 20160312 20160506: Extension for nxml-mode with Ge
 app-emacs/nxml-libvirt-schemas 0.9.7 1.2.1: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 3.12.1 3.12.1-r1 4.00.1: Emacs mode for OCaml
-app-emacs/org-mode 8.2.6 8.3.2-r1 9.0.1: An Emacs mode for notes and project planning
+app-emacs/org-mode 8.2.6 8.3.2-r1 9.0.1 9.0.4: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/php-mode 1.5.0: GNU Emacs major mode for editing PHP code
@@ -4826,7 +4826,7 @@ dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 4.0.1: C++ client API for PostgreSQL. The standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 3.0.0 3.1.0: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0 3.1.0: Framework to easy access to the Prelude database
-dev-libs/libproccpuinfo 0.0.8 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
+dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.1 0.3 0.3-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.3.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 1.3.0 2.0.0: A Qt implementation of XDG standards
@@ -9236,13 +9236,13 @@ dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
 dev-ruby/fattr 2.3.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ferret 0.11.8.6: A ruby indexing/searching library
-dev-ruby/ffaker 2.1.0 2.4.0: Faster Faker, generates dummy data
+dev-ruby/ffaker 2.4.0: Faster Faker, generates dummy data
 dev-ruby/ffi 1.9.6-r2 1.9.10 1.9.14 1.9.17: Ruby extension for programmatically loading dynamic libraries
-dev-ruby/file-tail 1.1.0 1.1.1: A small ruby library that allows it to 'tail' files in Ruby
+dev-ruby/file-tail 1.1.1: A small ruby library that allows it to 'tail' files in Ruby
 dev-ruby/filesize 0.1.1: small ruby class for handling filesizes with both the SI and binary prefixes
 dev-ruby/fivemat 1.3.2: MiniTest/RSpec/Cucumber formatter that gives each test file its own line of dots
-dev-ruby/flexmock 1.3.3-r1 2.1.0 2.3.0 2.3.1 2.3.2 2.3.4: Simple mock object library for Ruby unit testing
-dev-ruby/flickraw 0.9.8 0.9.9: A library to access flickr api in a simple way
+dev-ruby/flexmock 1.3.3-r1 2.3.2 2.3.4: Simple mock object library for Ruby unit testing
+dev-ruby/flickraw 0.9.9: A library to access flickr api in a simple way
 dev-ruby/flog 4.3.2 4.4.0 4.4.1 4.5.0: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0: Forwardable with hash, and instance variable extensions
@@ -9262,7 +9262,7 @@ dev-ruby/haml-rails 0.9.0: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 0.3.0 0.3.1 0.3.2: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
-dev-ruby/hashicorp-checkpoint 0.1.4 0.1.4-r1: Internal HashiCorp service to check version information
+dev-ruby/hashicorp-checkpoint 0.1.4-r1: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2-r1 3.4.4 3.4.4-r1 3.4.6 3.5.1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
