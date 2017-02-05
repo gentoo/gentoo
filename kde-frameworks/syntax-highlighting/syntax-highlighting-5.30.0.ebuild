@@ -18,8 +18,8 @@ RDEPEND="
 	$(add_qt_dep qtxmlpatterns)
 "
 DEPEND="${RDEPEND}
+	$(add_qt_dep linguist-tools)
 	dev-lang/perl
-	test? ( $(add_qt_dep qtwidgets) )
 "
 
 src_install() {
