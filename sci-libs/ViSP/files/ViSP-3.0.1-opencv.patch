@@ -1,0 +1,12 @@
+Index: visp-3.0.1/modules/core/CMakeLists.txt
+===================================================================
+--- visp-3.0.1.orig/modules/core/CMakeLists.txt
++++ visp-3.0.1/modules/core/CMakeLists.txt
+@@ -182,6 +182,7 @@ if(USE_OPENCV)
+   if(OpenCV_INCLUDE_DIRS)
+     list(APPEND opt_incs ${OpenCV_INCLUDE_DIRS})
+   endif()
++  list(APPEND opt_libs ${OpenCV_LIBS})
+ endif(USE_OPENCV)
+ 
+ if(USE_YARP)
