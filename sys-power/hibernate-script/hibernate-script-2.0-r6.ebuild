@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -22,9 +22,14 @@ IUSE="vim-syntax"
 DEPEND=""
 RDEPEND="!<media-gfx/splashutils-1.5.2"
 
-DOCS=( CHANGELOG README SCRIPTLET-API hibernate.vim )
+DOCS=(
+	CHANGELOG
+	README
+	SCRIPTLET-API
+)
 
 src_prepare() {
+	default
 	epatch "${WORKDIR}/${PV}/"*.patch
 }
 
