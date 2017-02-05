@@ -25,6 +25,11 @@ RDEPEND=""
 QA_EXECSTACK="usr/*/lib*efi.a:* usr/*/crt*.o"
 RESTRICT="strip"
 
+src_prepare() {
+	sed -i -e "s/-Werror//" Make.defaults || die
+	default
+}
+
 efimake() {
 	local arch=
 	case ${CHOST} in
