@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,8 +30,8 @@ src_configure() {
 		$(use_with gtk gdk-pixbuf2) \
 		$(use_with jpeg) \
 		$(use_with png) \
-		--disable-python \
-		--with-bashcompletiondir=$(get_bashcompdir)
+		--with-bashcompletiondir=$(get_bashcompdir) \
+		--disable-python
 }
 
 src_test() {
