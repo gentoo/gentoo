@@ -7605,7 +7605,7 @@ dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when test
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.2 4.3.1 4.4.1 4.5.2: IPython Kernel for Jupyter
 dev-python/ipyparallel 4.1.0 5.0.1 5.1.1 5.2.0: Interactive Parallel Computing with IPython
-dev-python/ipython 3.2.1-r1 4.0.1 4.0.3 4.1.1 4.1.2 4.2.0-r1 5.1.0: Advanced interactive shell for Python
+dev-python/ipython 3.2.1-r1 4.0.1 4.0.3 4.1.1 4.1.2 4.2.0-r1 5.1.0-r1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1 5.1.5 5.2.2: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 15.0.2 15.0.6: IRC client framework written in Python
@@ -7692,7 +7692,7 @@ dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
 dev-python/libvirt-python 1.3.5 2.1.0 2.3.0 2.5.0-r1 3.0.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.3: Library for managing Bugzilla bug reports from the CLI
-dev-python/line_profiler 1.0 1.0-r1 9999: Line-by-line profiler
+dev-python/line_profiler 1.0 1.0-r1 2.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 4.0.0_rc1 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
@@ -18780,7 +18780,7 @@ x11-misc/slim 1.3.6-r3 1.3.6-r5 9999: Simple Login Manager
 x11-misc/slock 1.4: simple X display locker
 x11-misc/slop 4.3.21: An application that queries the user for a selection for printing
 x11-misc/spacefm 1.0.4 1.0.4-r1 1.0.5-r1 1.0.5-r2 9999: A multi-panel tabbed file manager
-x11-misc/spnavcfg 0.2.1 0.3: GTK-based GUI to configure a space navigator device
+x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1 0.1-r1: a simple X property utility
 x11-misc/sselp 0.2 9999: Simple X selection printer
 x11-misc/stalonetray 0.8.1 0.8.3: System tray utility including support for KDE system tray icons
