@@ -50,7 +50,10 @@ python_test() {
 
 python_install_all() {
 	doman man/{pylint,pyreverse}.1
-	use examples && local EXAMPLES=( examples/. )
+	if use examples ; then
+		docinto examples
+		dodoc -r examples/.
+	fi
 	use doc && local HTML_DOCS=( doc/_build/singlehtml/. )
 	distutils-r1_python_install_all
 }
