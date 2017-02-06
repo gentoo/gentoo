@@ -1,11 +1,11 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 pidfile="/var/run/bluealsa.pid"
 command="/usr/bin/bluealsa"
-command_args="--disable-hsp"
+command_args="${BLUEALSA_CONF}"
 command_background="true"
 
 depend() {
