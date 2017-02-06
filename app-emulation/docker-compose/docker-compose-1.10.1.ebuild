@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 python3_4 )
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit bash-completion-r1 distutils-r1 vcs-snapshot
 
@@ -22,10 +22,12 @@ CDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cached-property-1.2.0[${PYTHON_USEDEP}]
 	<dev-python/cached-property-2[${PYTHON_USEDEP}]
+	>=dev-python/colorama-0.3.7[${PYTHON_USEDEP}]
+	<dev-python/colorama-0.4[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	<dev-python/dockerpty-0.5[${PYTHON_USEDEP}]
-	>=dev-python/docker-py-1.10.6[${PYTHON_USEDEP}]
-	<dev-python/docker-py-2.0[${PYTHON_USEDEP}]
+	>=dev-python/docker-py-2.0.2[${PYTHON_USEDEP}]
+	<dev-python/docker-py-3.0[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	<dev-python/docopt-0.7[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.5.1[${PYTHON_USEDEP}]
