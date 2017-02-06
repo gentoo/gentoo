@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Virtual Memory Toucher, portable file system cache diagnostics and control
+EAPI=6
+HOMEPAGE=http://hoytech.com/vmtouch/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/hoytech/vmtouch/archive/v1.2.0.tar.gz -> vmtouch-1.2.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=51c45a1c923c0ad7247f96f67d8064b8
