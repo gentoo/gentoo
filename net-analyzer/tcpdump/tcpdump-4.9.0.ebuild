@@ -12,8 +12,8 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://dev.gentoo.org/~jer/${P}.tar.gz
-	https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz
 "
+#	https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
