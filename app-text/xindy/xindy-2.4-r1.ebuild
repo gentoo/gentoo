@@ -4,11 +4,11 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="A Flexible Indexing System"
 HOMEPAGE="http://www.xindy.org/"
-SRC_URI="http://www.xindy.org/xindy-2.4.tar.gz"
+SRC_URI="http://www.xindy.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
