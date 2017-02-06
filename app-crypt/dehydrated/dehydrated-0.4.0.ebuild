@@ -15,9 +15,9 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="app-shells/bash"
 
 src_install() {
-	default
 	dobin "${PN}"
 	insinto "/etc/${PN}"
 	doins docs/examples/{config,domains.txt,hook.sh}
 	dodoc docs/*.md
+	default
 }
