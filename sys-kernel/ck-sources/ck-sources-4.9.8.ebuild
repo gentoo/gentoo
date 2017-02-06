@@ -85,12 +85,3 @@ src_prepare() {
 	# linux-info eclass cannot handle recursively expanded variables in Makefile #490328
 	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile" || die
 }
-
-pkg_postinst() {
-
-	kernel-2_pkg_postinst
-
-	elog
-	elog "For more info on this patchset, see: https://forums.gentoo.org/viewtopic-t-941030-start-0.html"
-	elog
-}
