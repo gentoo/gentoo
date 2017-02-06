@@ -25,6 +25,15 @@ src_prepare() {
 
 	# for Solaris .so
 	elibtoolize
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# fix standards conflict
+		sed -i \
+			-e '/_XOPEN_SOURCE/s/500/600/' \
+			-e 's/_XOPEN_SOURCE_EXTENDED/_NO&/' \
+			-e 's/__EXTENSIONS__/_NO&/' \
+			configure || die
+	fi
 }
 
 src_configure() {
