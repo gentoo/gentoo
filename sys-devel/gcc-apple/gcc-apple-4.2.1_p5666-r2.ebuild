@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ LICENSE="GPL-2 GPL-3"
 
 SLOT="42"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-IUSE="fortran nls +openmp objc objc++ +cxx"
+IUSE="bootstrap fortran nls +openmp objc objc++ +cxx"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
 	>=sys-libs/ncurses-5.2-r2
