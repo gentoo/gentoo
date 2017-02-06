@@ -79,7 +79,7 @@ RDEPEND="
 		x265? ( >=media-libs/x265-1.2:=[${MULTILIB_USEDEP}] )
 		xvid? ( >=media-libs/xvid-1.3.2-r1[${MULTILIB_USEDEP}] )
 	)
-	nvidia? ( media-video/nvidia-video-codec[${MULTILIB_USEDEP}] )
+	nvidia? ( media-video/nvidia-video-codec )
 	fdk? ( >=media-libs/fdk-aac-0.1.2[${MULTILIB_USEDEP}] )
 	frei0r? ( media-plugins/frei0r-plugins )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
