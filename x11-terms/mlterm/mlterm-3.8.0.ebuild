@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -62,10 +62,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--disable-static
-		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
-		--enable-optimize-redrawing
-		--enable-vt52
 		$(use_enable bidi fribidi)
 		$(use_enable canna)
 		$(use_enable debug)
@@ -79,16 +75,20 @@ src_configure() {
 		$(use_enable skk)
 		$(use_enable uim)
 		$(use_enable utempter utmp)
+		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
+		--enable-optimize-redrawing
+		--enable-vt52
+		--disable-static
 	)
 
 	local scrollbars="sample,extra"
 	local tools="mlclient,mlcc,mlfc,mlmenu,mlterm-zoom"
 	if use gtk; then
-		myconf+=(--with-imagelib=gdk-pixbuf)
+		myconf+=( --with-imagelib=gdk-pixbuf )
 		if has_version x11-libs/gtk+:3; then
-			myconf+=(--with-gtk=3.0)
+			myconf+=( --with-gtk=3.0 )
 		else
-			myconf+=(--with-gtk=2.0)
+			myconf+=( --with-gtk=2.0 )
 		fi
 		scrollbars+=",pixmap_engine"
 		tools+=",mlconfig,mlimgloader"
@@ -96,8 +96,8 @@ src_configure() {
 	if use regis; then
 		tools+=",registobmp"
 	fi
-	myconf+=(--with-scrollbars="${scrollbars}")
-	myconf+=(--with-tools="${tools}")
+	myconf+=( --with-scrollbars="${scrollbars}" )
+	myconf+=( --with-tools="${tools}" )
 
 	addpredict /dev/ptmx
 	econf "${myconf[@]}"
