@@ -581,10 +581,6 @@ games-emulation/ppsspp
 # Use at your own risk.
 =app-text/xiphos-4.0.4-r1
 
-# Luca Barbato <lu_zero@gentoo.org> (23 May 2016)
-# Masked for testing, vlc-2.2 configure rejects it.
-=media-video/libav-12*
-
 # Kent Fredric <kentfredric@gmail.com> (15 May 2016)
 # Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2016)
 # Has been broken since app-arch/rar-5.0.0 due to List()
