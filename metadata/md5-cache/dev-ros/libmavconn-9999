@@ -8,5 +8,5 @@ LICENSE=GPL-3 LGPL-3 BSD
 RDEPEND=>=dev-ros/mavlink-gbp-release-2016.7.7 dev-libs/boost:= dev-libs/console_bridge dev-util/catkin dev-python/empy
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
-_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	ros-catkin	5d7f690679dfb6a4ac14c1bd25f098cd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	b602fb1ae4bc807a6756bb8b187fbe54	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	ros-catkin	5d7f690679dfb6a4ac14c1bd25f098cd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=999e4554fa1d8cee7fb4279371143e14

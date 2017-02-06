@@ -517,7 +517,7 @@ app-crypt/coolkey 1.1.0-r6 1.1.0-r7: Linux Driver support for the CoolKey and CA
 app-crypt/crackpkcs12 0.2.9 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/cryptkeeper 0.9.5: EncFS system tray applet for GNOME
 app-crypt/debian-archive-keyring 2014.3: GnuPG archive keys of the Debian archive
-app-crypt/dehydrated 0.3.1: a client for signing certificates with an ACME-server
+app-crypt/dehydrated 0.3.1 0.4.0: a client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r1: An advanced suite for testing the randomness of RNG's
 app-crypt/dirmngr 1.1.1-r1: DirMngr is a daemon to handle CRL and certificate requests for GnuPG
 app-crypt/easy-rsa 2.2.2 2.2.2-r1 3.0.1-r1: Small RSA key management package, based on OpenSSL
