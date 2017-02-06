@@ -2484,7 +2484,7 @@ app-text/xdvik 22.85-r1 22.86 22.87 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
-app-text/xindy 2.4: A Flexible Indexing System
+app-text/xindy 2.4 2.4-r1: A Flexible Indexing System
 app-text/xiphos 4.0.4 4.0.4-r1: A bible study frontend for Sword (formerly known as GnomeSword)
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xlsx2csv 0.6 0.7 0.7.2: Convert MS Office xlsx files to CSV
