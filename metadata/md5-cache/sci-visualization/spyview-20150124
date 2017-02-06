@@ -1,12 +1,13 @@
-DEFINED_PHASES=configure prepare unpack
+DEFINED_PHASES=prepare unpack
 DEPEND=dev-libs/boost:= media-libs/netpbm x11-libs/fltk:1[opengl] app-text/ghostscript-gpl virtual/glu sys-apps/groff !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=2D and 3D data visualization and analysis program
 EAPI=6
 HOMEPAGE=http://nsweb.tn.tudelft.nl/~gsteele/spyview/
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=dev-libs/boost:= media-libs/netpbm x11-libs/fltk:1[opengl] app-text/ghostscript-gpl virtual/glu sci-visualization/gnuplot
 SLOT=0
 SRC_URI=https://github.com/gsteele13/spyview/archive/966012afae2fbb77262bd96a7e530e81b0ed3b90.tar.gz -> spyview-20150124.tgz
-_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:-
+_eclass_exported_funcs=src_unpack:- src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b0d772e9c9d9c520245784b43cd0419f
+_md5_=af0ee4657966e81e90ea17c4e6d6a57a
