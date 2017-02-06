@@ -13961,7 +13961,7 @@ media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.18.0-r1 0.22.0-r1 0.23.0-r1 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r2: Mark commercial breaks in VDR recordings
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
-media-video/nvidia-video-codec 7.0.1: Redistributable headers to build cuvid and nvenc
+media-video/nvidia-video-codec 7.0.1 7.1.9: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 0.16.2 17.0.0 17.0.2 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
