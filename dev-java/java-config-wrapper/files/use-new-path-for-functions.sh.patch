@@ -1,0 +1,21 @@
+--- src/shell/java-check-environment.orig	2016-02-18 14:15:04.280160760 -0200
++++ src/shell/java-check-environment	2016-02-18 14:15:59.931158298 -0200
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+
+-source /etc/init.d/functions.sh
++source /lib/gentoo/functions.sh
+
+ # Used to update the global result.
+ update_result() {
+
+--- src/shell/java-1.5-fixer.orig	2016-02-18 14:15:18.989160109 -0200
++++ src/shell/java-1.5-fixer	2016-02-18 14:15:44.121158997 -0200
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+
+-source "/etc/init.d/functions.sh"
++source "/lib/gentoo/functions.sh"
+
+ EXCLUDED_JARS="
+ /usr/share/hibernate-annotations-3.0/lib/hibernate-annotations.jar
