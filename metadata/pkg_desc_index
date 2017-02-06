@@ -364,6 +364,7 @@ app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.6.19 0.6.24 0.8.0: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A handy backup script utilizing tar
+app-backup/genbackupdata 1.9: Generate test data for backup software testing.
 app-backup/hdup 2.0.14: Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
 app-backup/holland 1.0.10: Holland Core Plugins
 app-backup/holland-backup-example 1.0.10: Holland Example Plugin
@@ -385,6 +386,7 @@ app-backup/mylvmbackup 0.14: mylvmbackup is a tool for quickly creating backups 
 app-backup/obnam 1.19.1 1.21: A backup program that supports encryption and deduplication
 app-backup/pdumpfs 1.3-r2: A daily backup system similar to Plan9's dumpfs
 app-backup/qt4-fsarchiver 0.6.19.6 0.6.19.7: Qt4 frontend for fsarchiver
+app-backup/rdedup 1.0.2: data deduplication with compression and public key encryption
 app-backup/rdiff-backup 1.3.3-r1 1.3.3-r2: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
