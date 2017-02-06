@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,6 +28,7 @@ RDEPEND="
 	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	app-text/asciidoc
 	net-misc/sshpass
 	virtual/ssh
 "
