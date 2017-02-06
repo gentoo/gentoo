@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=6
 
 DESCRIPTION="A tray menu for the Fluxbox toolbar"
 HOMEPAGE="http://ftmenu.sourceforge.net/"
@@ -20,17 +20,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	x11-wm/fluxbox"
 
-src_compile() {
-	emake CFLAGS="${CFLAGS}" || die "emake failed"
-}
-
-src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS NEWS README ChangeLog || die
-}
-
 pkg_postinst() {
-	echo
+	einfo
 	einfo "To use ftmenu, edit your ~/.fluxbox/menu file and modify the [begin]"
 	einfo "line to contain the path to an icon of your choice."
 	einfo
@@ -38,5 +29,5 @@ pkg_postinst() {
 	einfo "   [begin] (Fluxbox-0.9.12) </usr/share/ftmenu/fb.xpm>"
 	einfo
 	einfo "Next, add 'ftmenu &' to your X startup file (~/.xinitrc or ~/.xsession)."
-	echo
+	einfo
 }

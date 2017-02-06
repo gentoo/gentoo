@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="A full-screen task-switcher providing Apple Expose-like functionality"
 HOMEPAGE="http://thegraveyard.org/skippy.php"
@@ -11,7 +11,7 @@ SRC_URI="http://thegraveyard.org/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="media-libs/imlib2[X]
@@ -25,25 +25,21 @@ DEPEND="${RDEPEND}
 	x11-proto/xineramaproto
 	virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-pointer-size.patch \
-		"${FILESDIR}"/${P}-Makefile.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-pointer-size.patch
+	"${FILESDIR}"/${P}-Makefile.patch
+)
+
+DOCS=( CHANGELOG skippyrc-default )
 
 src_compile() {
 	tc-export CC
-	emake || die
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc CHANGELOG skippyrc-default
+	default
 }
 
 pkg_postinst() {
-	echo
+	elog
 	elog "You should copy skippyrc-default from /usr/share/doc/${PF} to"
 	elog "~/.skippyrc and edit the keysym used to invoke skippy."
 	elog "Use x11-apps/xev to find out the keysym."
-	echo
+	elog
 }

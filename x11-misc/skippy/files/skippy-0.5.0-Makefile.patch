@@ -1,7 +1,7 @@
 Don't use LDFLAGS to pass libraries.
 
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,14 +1,12 @@
 -PREFIX = /usr/local
 +PREFIX = /usr
