@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
@@ -39,6 +39,6 @@ python_test() {
 
 python_install_all() {
 	local HTML_DOCS=( doc/. )
-	use examples && local EXAMPLES=( example/. )
+	use examples && dodoc -r example
 	distutils-r1_python_install_all
 }
