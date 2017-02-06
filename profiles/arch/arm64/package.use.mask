@@ -259,3 +259,6 @@ media-video/vlc projectm chromaprint opencv
 # Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
+
+# missing keyword for dev-libs/pkcs11-helper
+net-misc/openvpn pkcs11
