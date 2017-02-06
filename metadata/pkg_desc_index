@@ -1817,7 +1817,7 @@ app-misc/hello 2.8 2.9 2.10: GNU "Hello, world" application
 app-misc/hexcompare 1.0.1 1.0.4: ncurses-based visual comparison of binary files
 app-misc/hilite 1.5-r1: A utility which highlights stderr text in red
 app-misc/hivex 1.3.11-r1: Library for reading and writing Windows Registry 'hive' binary files
-app-misc/i2bits 0.0.2: Utility to convert hex or dec to binary format
+app-misc/i2bits 0.0.2 0.1.0: Utility to convert hex or dec to binary format
 app-misc/icdiff 1.7.3: Colourized diff that supports side-by-side diffing
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.20.0 2.24.2: Memorization aid based on the Leitner flashcard system
@@ -12942,7 +12942,7 @@ media-libs/libsfml 2.3.2-r1 2.4.0 2.4.1: Simple and Fast Multimedia Library (SFM
 media-libs/libshout 2.3.1 2.3.1-r1 2.4.1: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r1 1.36.59-r2 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 0.3.8 1.1.0 1.8.0 1.8.1: A library for the sidplay2 fork with resid-fp
-media-libs/libsixel 1.6.1 1.7.2: A lightweight, fast implementation of DEC SIXEL graphics codec
+media-libs/libsixel 1.7.2 1.7.3: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
 media-libs/libsndfile 1.0.26 1.0.27-r1: A C library for reading and writing files containing sampled sound
 media-libs/libsoundio 1.0.0 1.0.2 1.1.0: C library for cross-platform real-time audio input and output
