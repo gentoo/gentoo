@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=media-libs/freeglut sys-libs/zlib !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GUI for sci-biology/maq, a short read mapping assembler
+EAPI=6
+HOMEPAGE=http://maq.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/freeglut sys-libs/zlib sci-biology/maq
+SLOT=0
+SRC_URI=mirror://sourceforge/maq/maqview-0.2.5.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=256ef3644c427c65d344620e8533c95c
