@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="A Flexible Indexing System"
 HOMEPAGE="http://www.xindy.org/"
