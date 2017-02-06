@@ -61,8 +61,8 @@ MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.49 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas-v2
 
-PATCHFF="firefox-49.0-patches-03"
-PATCH="${PN}-2.46-patches-01"
+PATCHFF="firefox-49.0-patches-04"
+PATCH="${PN}-2.46-patches-02"
 EMVER="1.9.6.1"
 
 DESCRIPTION="Seamonkey Web Browser"
@@ -135,13 +135,11 @@ src_unpack() {
 src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}"/seamonkey
-	eapply "${FILESDIR}"/${PN}-2.46-configure_regexp.patch
 
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
 	rm -f "${WORKDIR}"/firefox/2000-firefox_gentoo_install_dirs.patch
 	eapply "${WORKDIR}"/firefox
-	eapply	"${FILESDIR}"/firefox-52-curve.patch
 	popd &>/dev/null || die
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889
