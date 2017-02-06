@@ -13,5 +13,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-scheme/guile"
+RDEPEND=">=dev-scheme/guile-2.0.0"
 DEPEND="${RDEPEND}"
