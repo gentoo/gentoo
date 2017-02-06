@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-libs/expat >=sci-physics/clhep-2.3.3.0:2= dawn? ( media-gfx/dawn ) gdml? ( dev-libs/xerces-c ) motif? ( x11-libs/motif:0 ) opengl? ( virtual/opengl ) inventor? ( media-libs/SoXt ) qt4? ( dev-qt/qtgui:4 opengl? ( dev-qt/qtopengl:4 ) ) raytracerx? ( x11-libs/libX11 x11-libs/libXmu ) zlib? ( sys-libs/zlib ) prefix? ( app-shells/tcsh ) sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Toolkit for simulation of passage of particles through matter
+EAPI=6
+HOMEPAGE=http://geant4.cern.ch/
+IUSE=+data dawn doc examples gdml geant3 inventor motif opengl raytracerx qt4 static-libs vrml zlib threads
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=geant4
+PDEPEND=data? ( ~sci-physics/geant-data-4.10.03 ) doc? ( ~app-doc/geant-docs-4.10.03 )
+RDEPEND=dev-libs/expat >=sci-physics/clhep-2.3.3.0:2= dawn? ( media-gfx/dawn ) gdml? ( dev-libs/xerces-c ) motif? ( x11-libs/motif:0 ) opengl? ( virtual/opengl ) inventor? ( media-libs/SoXt ) qt4? ( dev-qt/qtgui:4 opengl? ( dev-qt/qtopengl:4 ) ) raytracerx? ( x11-libs/libX11 x11-libs/libXmu ) zlib? ( sys-libs/zlib )
+SLOT=4
+SRC_URI=http://geant4.cern.ch/support/source/geant4.10.03.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c4d82c0ec3c208005979e8285c0d583b
