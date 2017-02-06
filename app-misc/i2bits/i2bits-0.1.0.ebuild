@@ -13,15 +13,3 @@ SRC_URI="http://unixdev.ru/src/${P}.tar.gz"
 LICENSE="WTFPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-src_configure() {
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
-}
-
-src_install() {
-	cmake-utils_src_install
-}
