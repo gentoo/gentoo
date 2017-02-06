@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="GTK-based GUI to configure a space navigator device"
 HOMEPAGE="http://spacenav.sourceforge.net/"
@@ -21,15 +21,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	app-misc/spacenavd[X]"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-custom-flags.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-custom-flags.patch )
 
 src_compile() {
-	emake CC=$(tc-getCC) || die "Make failed."
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
-	dodoc README || die
+	emake CC=$(tc-getCC)
 }
