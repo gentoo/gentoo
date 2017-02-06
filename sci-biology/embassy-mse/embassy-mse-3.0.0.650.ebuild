@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ AUTOTOOLS_AUTORECONF=1
 
 inherit emboss-r1
 
-KEYWORDS="amd64 ~ppc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86 ~x86-linux ~ppc-macos"
 IUSE+=" ncurses"
 
 RDEPEND+=" ncurses? ( sys-libs/ncurses )"
