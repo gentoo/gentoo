@@ -4,13 +4,13 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils eutils
 
-MY_P="openMittsu-${PV}"
+MY_PN="openMittsu"
 DESCRIPTION="An open source chat client for Threema-style end-to-end encrypted chat networks"
 HOMEPAGE="https://github.com/blizzard4591/openMittsu"
-# git-archive-all.sh snapshot of https://github.com/blizzard4591/openMittsu.git
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${MY_P}.tar.xz"
+# git-archive-all.sh snapshot of https://github.com/blizzard4591/${MY_PN}.git
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="GPL-2+ BitstreamVera OFL-1.1 Apache-2.0 CC0-1.0 MIT"
 SLOT="0"
@@ -25,12 +25,12 @@ DEPEND=">=dev-libs/libsodium-1.0.11:=
 	>=media-gfx/qrencode-3.4.4-r1"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 DOCS=(
-	"README.md"
-	"Example-client-configuration-file.ini"
-	"Example-contacts-file.txt"
+	README.md
+	Example-client-configuration-file.ini
+	Example-contacts-file.txt
 )
 
 src_prepare() {
@@ -46,4 +46,10 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=("-DOPENMITTSU_DISABLE_VERSION_UPDATE_CHECK=ON")
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	newicon resources/icon.png ${MY_PN}.png
+	make_desktop_entry ${MY_PN} ${MY_PN} ${MY_PN}
 }
