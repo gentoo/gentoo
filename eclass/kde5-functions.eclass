@@ -39,7 +39,10 @@ case ${CATEGORY} in
 		if ! [[ $(get_version_component_range 2) -le 8 && $(get_version_component_range 3) -lt 50 ]]; then
 			: ${QT_MINIMAL:=5.7.1}
 		fi
-		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
+		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+			: ${FRAMEWORKS_MINIMAL:=9999}
+			: ${QT_MINIMAL:=5.7.1}
+		fi
 		;;
 esac
 
