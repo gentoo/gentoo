@@ -8,7 +8,7 @@ inherit autotools eutils
 PATCH_LEVEL=12
 MY_PN=${PN/gtk-engines-}
 
-DESCRIPTION="A derivative of the standard Clearlooks GTK+ 2.x engine with more orange approach"
+DESCRIPTION="A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel"
 HOMEPAGE="http://packages.ubuntu.com/search?keywords=gtk2-engines-ubuntulooks"
 SRC_URI="mirror://ubuntu/pool/main/u/${MY_PN}/${MY_PN}_${PV}.orig.tar.gz
 	mirror://ubuntu/pool/main/u/${MY_PN}/${MY_PN}_${PV}-${PATCH_LEVEL}.diff.gz"
