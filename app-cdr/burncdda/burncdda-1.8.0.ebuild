@@ -1,6 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 DESCRIPTION="Console app for copying burning audio cds"
 HOMEPAGE="http://www.thenktor.homepage.t-online.de/burncdda"
@@ -11,24 +13,28 @@ SLOT="0"
 KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE="flac mp3 vorbis"
 
-DEPEND="dev-util/dialog
+RDEPEND="
 	app-cdr/cdrdao
-	virtual/cdrtools
-	mp3? ( media-sound/mpg123
-		media-sound/mp3_check )
-	vorbis? ( media-sound/vorbis-tools )
-	flac? ( media-libs/flac )
+	dev-util/dialog
 	media-sound/normalize
-	media-sound/sox"
+	media-sound/sox
+	virtual/cdrtools
+	flac? ( media-libs/flac )
+	mp3? (
+		media-sound/mpg123
+		media-sound/mp3_check
+	)
+	vorbis? ( media-sound/vorbis-tools )
+"
 
 src_install() {
-	dobin ${PN} || die "dobin failed."
+	dobin ${PN}
 
 	insinto /usr/lib/${PN}
-	doins *.func || die "doins failed."
+	doins *.func
 
 	insinto /etc
-	doins ${PN}.conf || die "doins failed."
+	doins ${PN}.conf
 
 	dodoc CHANGELOG
 	doman burncdda.1.gz
