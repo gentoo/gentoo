@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=2
 
 inherit base toolchain-funcs
 
-DESCRIPTION="Libpurple (Pidgin) plug-in supporting microblog services like Twitter or identi.ca"
+DESCRIPTION="Pidgin plug-in supporting microblog services like Twitter or identi.ca"
 HOMEPAGE="https://code.google.com/p/microblog-purple/"
 MY_P="${P/pidgin-/}"
 SRC_URI="https://microblog-purple.googlecode.com/files/${MY_P}.tar.gz"

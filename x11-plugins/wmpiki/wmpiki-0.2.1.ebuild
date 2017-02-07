@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils
 
 IUSE=""
 
-DESCRIPTION="Wmpiki is a dockapp which checks and displays small leds for indicate hosts activity"
+DESCRIPTION="Dockapp which checks and displays small leds for indicate hosts activity"
 HOMEPAGE="http://clay.ll.pl/projects.html#dockapps"
 SRC_URI="http://clay.ll.pl/download/${P}.tar.gz"
 

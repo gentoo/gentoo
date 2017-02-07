@@ -5,7 +5,7 @@
 EAPI=4
 inherit autotools eutils gnome2-utils
 
-DESCRIPTION="Tango icons for iPod Digital Audio Player (DAP) devices and the Dell Pocket DJ DAP"
+DESCRIPTION="Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP"
 HOMEPAGE="http://tango.freedesktop.org"
 SRC_URI="http://tango.freedesktop.org/releases/${P}.tar.gz"
 

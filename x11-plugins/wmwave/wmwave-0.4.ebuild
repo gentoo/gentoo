@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=3
 IUSE=""
 S=${WORKDIR}/wmwave
 KEYWORDS="ppc x86"
-DESCRIPTION="a dockapp that displays quality, link, level and noise of an iee802.11 (wavelan) connection"
+DESCRIPTION="Dockapp that displays quality, link, level and noise of an iee802.11 connection"
 SRC_URI="mirror://sourceforge/wmwave/${PN}-0-4.tgz"
 HOMEPAGE="http://wmwave.sourceforge.net/"
 LICENSE="GPL-2"

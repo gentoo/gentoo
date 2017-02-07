@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit toolchain-funcs
 
-DESCRIPTION="a swallowable applet monitors the utilization level of memory, cache and swap space"
+DESCRIPTION="Monitor the utilization level of memory, cache and swap space"
 HOMEPAGE="http://www.tigr.net"
 SRC_URI="http://www.tigr.net/afterstep/download/asmem/${P}.tar.gz"
 

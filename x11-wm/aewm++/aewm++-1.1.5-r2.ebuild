@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs
 
-DESCRIPTION="A window manager with more modern features than aewm but with the same look and feel"
+DESCRIPTION="A window manager with more modern features than aewm"
 HOMEPAGE="https://github.com/frankhale/aewmpp"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

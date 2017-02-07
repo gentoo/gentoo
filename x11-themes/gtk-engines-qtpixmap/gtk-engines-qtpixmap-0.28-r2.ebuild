@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit autotools eutils gnome2
 
 MY_P="QtPixmap-${PV}"
 
-DESCRIPTION="A modified version of the original GTK pixmap engine which follows the KDE color scheme"
+DESCRIPTION="A modified version of the original GTK pixmap engine with the KDE color scheme"
 HOMEPAGE="http://www.kde-look.org/content/show.php?content=7043"
 SRC_URI="http://www.cpdrummond.freeuk.com/${MY_P}.tar.gz"
 
