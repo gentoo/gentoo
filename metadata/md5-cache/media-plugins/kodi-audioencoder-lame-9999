@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=media-tv/kodi media-sound/lame sys-devel/make >=dev-util/cmake-3.5.2 >=dev-vcs/git-1.8.2.1
+DEPEND=media-tv/kodi media-sound/lame sys-devel/make >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Lame MP3 encoder addon for Kodi
 EAPI=6
 HOMEPAGE=https://github.com/xbmc/audioencoder.lame
@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=media-tv/kodi media-sound/lame
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:kodi-addon src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	b602fb1ae4bc807a6756bb8b187fbe54	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	kodi-addon	ed9d0b2d79a8283ed0f06617b198a601	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	kodi-addon	ed9d0b2d79a8283ed0f06617b198a601	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=4ac16a2db7ae81c2016834bbfcef83e9

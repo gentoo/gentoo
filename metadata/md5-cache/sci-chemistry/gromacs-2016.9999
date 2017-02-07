@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare pretend test unpack
-DEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 ) fftw? ( sci-libs/fftw:3.0 ) hwloc? ( sys-apps/hwloc ) lapack? ( virtual/lapack ) mkl? ( sci-libs/mkl ) mpi? ( virtual/mpi ) virtual/pkgconfig doc? ( app-doc/doxygen dev-texlive/texlive-latex dev-texlive/texlive-latexextra media-gfx/imagemagick ) dev-libs/tinyxml2 dev-util/ninja >=dev-util/cmake-3.5.2 >=dev-vcs/git-1.8.2.1
+DEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 ) fftw? ( sci-libs/fftw:3.0 ) hwloc? ( sys-apps/hwloc ) lapack? ( virtual/lapack ) mkl? ( sci-libs/mkl ) mpi? ( virtual/mpi ) virtual/pkgconfig doc? ( app-doc/doxygen dev-texlive/texlive-latex dev-texlive/texlive-latexextra media-gfx/imagemagick ) dev-libs/tinyxml2 dev-util/ninja >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=The ultimate molecular dynamics simulation package
 EAPI=6
 HOMEPAGE=http://www.gromacs.org/
@@ -9,5 +9,5 @@ RDEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/bl
 REQUIRED_USE=|| ( single-precision double-precision ) cuda? ( single-precision ) mkl? ( !blas !fftw !lapack )
 SLOT=0/2016.9999
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	b602fb1ae4bc807a6756bb8b187fbe54	cuda	f150e667cc5826799d86be0fff518252	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	014267c4475c1a625ecec5b16e0db1e6	cuda	f150e667cc5826799d86be0fff518252	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=f6001f941b69a294caa90c7a898a26c2
