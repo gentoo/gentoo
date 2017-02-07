@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit eutils python-single-r1 toolchain-funcs udev user versionator
 
 MY_PV=$(get_version_component_range 1-2)
 
-DESCRIPTION="Application that rotates tablet pc's screen automatically, depending on orientation"
+DESCRIPTION="Application that rotates tablet pc's screen automatically, based on orientation"
 HOMEPAGE="https://launchpad.net/magick-rotation"
 SRC_URI="https://launchpad.net/magick-rotation/trunk/${MY_PV}/+download/${P}.tar.bz2"
 
