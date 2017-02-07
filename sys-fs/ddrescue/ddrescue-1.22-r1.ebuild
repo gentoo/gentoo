@@ -24,11 +24,8 @@ src_configure() {
 	# not a normal configure script
 	econf \
 		--prefix="${EPREFIX}"/usr \
-		--enable-linux \
-		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
 		CPPFLAGS="${CPPFLAGS}" \
-		CFLAGS="${CFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 }
