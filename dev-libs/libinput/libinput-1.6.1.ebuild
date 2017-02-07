@@ -18,7 +18,7 @@ IUSE="input_devices_wacom test"
 RESTRICT="test"
 
 RDEPEND="
-	input_devices_wacom? ( >=dev-libs/libwacom-0.12 )
+	input_devices_wacom? ( >=dev-libs/libwacom-0.20 )
 	>=dev-libs/libevdev-0.4
 	>=sys-libs/mtdev-1.1
 	virtual/libudev
