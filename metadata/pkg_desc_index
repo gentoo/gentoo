@@ -4192,7 +4192,7 @@ dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r1: Kunststoff Look&Feel
 dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
-dev-java/laf-plugin 0.2-r1: A generic plugin framework for look-and-feels
+dev-java/laf-plugin 0.2-r1 1.1: A generic plugin framework for look-and-feels
 dev-java/ldapsdk 4.1.7-r4: Netscape Directory SDK for Java
 dev-java/leiningen-bin 2.7.0 2.7.1: Automate Clojure projects without setting your hair on fire
 dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife for OSGi
@@ -14556,7 +14556,7 @@ net-im/psimedia 1.0.3-r3: Psi plugin for voice/video calls
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
-net-im/qtox 1.6.0 1.7.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
+net-im/qtox 1.6.0 1.7.0 1.8.1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/qutim 0.3.2 0.3.3_p1: Qt4-based multi-protocol instant messenger
 net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
