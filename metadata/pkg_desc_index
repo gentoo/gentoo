@@ -3402,7 +3402,7 @@ dev-haskell/fingertree 0.1.1.0: Generic finger-tree structure, with example inst
 dev-haskell/fmlist 0.9: FoldMap lists
 dev-haskell/foldl 1.0.7 1.1.3: Composable, streaming, and efficient left folds
 dev-haskell/free 4.2 4.5 4.9 4.10.0.1 4.11 4.12.4: Monads for free
-dev-haskell/frown 0.6.1-r1 0.6.2.3: LALR(k) parser generator
+dev-haskell/frown 0.6.2.3: LALR(k) parser generator
 dev-haskell/fsnotify 0.0.11 0.1.0.3 0.2.1: Cross platform library for file change notification
 dev-haskell/generic-deriving 1.6.3 1.7.0: Generic programming library for generalised deriving
 dev-haskell/geniplate 0.6.0.5: Use Template Haskell to generate Uniplate-like functions
