@@ -1,6 +1,6 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=>=dev-libs/glib-2 x11-libs/gtk+:2 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=A derivative of the standard Clearlooks GTK+ 2.x engine with more orange approach
+DESCRIPTION=A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
 EAPI=4
 HOMEPAGE=http://packages.ubuntu.com/search?keywords=gtk2-engines-ubuntulooks
 KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=mirror://ubuntu/pool/main/u/ubuntulooks/ubuntulooks_0.9.12.orig.tar.gz mirror://ubuntu/pool/main/u/ubuntulooks/ubuntulooks_0.9.12-12.diff.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=61a3819311a7fa64bfb0867d1b1f7d9f
+_md5_=0dc243aa10eba3553485d59c1ebb4cb5

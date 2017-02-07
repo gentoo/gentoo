@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare
 DEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm x11-proto/xextproto
-DESCRIPTION=Hacked version of WMACPILoad, a dockapp to monitor CPU temp and battery time on ACPI kernels
+DESCRIPTION=WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels
 EAPI=2
 HOMEPAGE=http://wmacpiload.tuxfamily.org/
 IUSE=debug
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://wmacpiload.tuxfamily.org/download/wmacpiload-0.2.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=8aa34172b801361184d21c3c63921dc0
+_md5_=efad295d188e2c2e4d5136c215b3ff18

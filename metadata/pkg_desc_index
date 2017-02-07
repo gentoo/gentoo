@@ -13242,7 +13242,7 @@ media-plugins/kodi-pvr-njoy 2.4.2 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 1.4.5 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 2.8.3 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.0.2 9999: Kodi's VBox Home TV Gateway PVR client addon
-media-plugins/kodi-pvr-vdr-vnsi 9999: Kodi PVR addon VNSI
+media-plugins/kodi-pvr-vdr-vnsi 2.6.17 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 2.4.6 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 1.4.7 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 1.1.0 9999: Asteroids screensaver for Kodi
@@ -18462,7 +18462,7 @@ x11-libs/compizconfig-backend-kconfig4 0.8.8: Compizconfig Kconfig Backend
 x11-libs/dnd 1.1-r1: OffiX' Drag'n'drop library
 x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and lines environments
 x11-libs/fltk 1.3.3-r3 1.3.3-r5 1.3.9999: C++ user interface toolkit for X and OpenGL
-x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ based Toolkit for developing Graphical User Interfaces easily and effectively
+x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.34.0 2.36.2: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
@@ -18538,7 +18538,7 @@ x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
-x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applications with easy-to-code scene setup and selection
+x11-libs/liboglappth 0.98 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
 x11-libs/libqxt 0.6.2-r2: Extension library providing cross-platform utility classes for the Qt toolkit
@@ -18591,7 +18591,7 @@ x11-libs/xcb-util-renderutil 0.3.9-r1: X C-language Bindings sample implementati
 x11-libs/xcb-util-wm 0.4.1-r1: X C-language Bindings sample implementations
 x11-libs/xcb-util-xrm 1.0 1.2: X C-language Bindings sample implementations
 x11-libs/xforms 1.0.93_p1-r1 1.2.4: A graphical user interface toolkit for X
-x11-libs/xosd 2.2.14-r1 2.2.14-r2 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI
+x11-libs/xosd 2.2.14-r1 2.2.14-r2 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
 x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
 x11-libs/xpyb 1.3.1-r2 1.3.1-r3: XCB-based Python bindings for the X Window System
 x11-libs/xtrans 1.3.5: X.Org xtrans library
@@ -18669,7 +18669,7 @@ x11-misc/gigolo 0.4.2: a frontend to easily manage connections to remote filesys
 x11-misc/gmrun 0.9.2-r1: A GTK-2 based launcher box with bash style auto completion!
 x11-misc/googsystray 1.3.1-r1: System tray application for Google Voice, GMail, Calendar, Reader, and Wave
 x11-misc/gpaste 3.18.3 3.20.3: Clipboard management system
-x11-misc/grabc 1.1-r1: determine the color string in hex (or RGB components) by clicking on a pixel on the screen
+x11-misc/grabc 1.1-r1 1.1-r2: Identify color of a pixel on the screen by clicking on a pixel on the screen
 x11-misc/gromit 20041213-r1: GRaphics Over MIscellaneous Things, a presentation helper
 x11-misc/grsync 1.2.4 1.2.5 1.2.6: A gtk frontend to rsync
 x11-misc/grub2-theme-preview 1.1 1.2 1.2.1 1.3.0 1.3.1: Preview a GRUB 2.x theme using KVM/QEMU
@@ -18709,17 +18709,17 @@ x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1: Linux support for Easy Access and Internet Keyboards
 x11-misc/lndir 1.0.3 1.0.3-r1: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
-x11-misc/macopix 1.7.4: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system
-x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, depending on orientation
+x11-misc/macopix 1.7.4: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
+x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, based on orientation
 x11-misc/makedepend 1.0.5: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.12.1 1.14.1 1.16.1: MATE Notification daemon
-x11-misc/menulibre 2.0.7 2.1.3 13.01.4 13.01.4-r1 13.04.17: An advanced menu editor that provides modern features in a clean, easy-to-use interface
+x11-misc/menulibre 2.0.7 2.1.3 13.01.4 13.01.4-r1 13.04.17: An advanced menu editor that provides modern features in a easy-to-use interface
 x11-misc/menumaker 0.99.9 0.99.10: Utility that scans through the system and generates a menu of installed programs
 x11-misc/mgm 1.2: Moaning Goat Meter: load and status meter written in Perl
-x11-misc/mixer_app 1.8.0: mixer utility that has three volume controllers that can be configured to handle any sound source
+x11-misc/mixer_app 1.8.0: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.12.0-r1 1.14.1 1.16.0-r1: Mozo menu editor for MATE
-x11-misc/netwmpager 2.05: EWMH (NetWM) compatible pager. Works with Openbox and other EWMH compliant window managers
+x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.5.2 1.6.0: A background browser and setter for X
 x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon
 x11-misc/notify-osd 0.9.34: Canonical's on-screen-display notification agent
@@ -18801,7 +18801,7 @@ x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using li
 x11-misc/touchcal 0.50 0.80: Touchscreen calibration utility
 x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
 x11-misc/trayer 1.0-r1: Lightweight GTK+ based systray for UNIX desktop
-x11-misc/trayer-srg 1.1.5 1.1.6: trayer fork with multi monitor support, cleaned up codebase and other fancy stuff
+x11-misc/trayer-srg 1.1.5 1.1.6: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/treeline 1.4.1-r1 1.9.4: TreeLine is a structured information storage program
 x11-misc/unclutter 8-r2 8-r3: Hides mouse pointer while not in use
 x11-misc/urxvt-font-size 1.1 9999: Perl extension for rxvt-unicode to change the font size on the fly
@@ -18857,7 +18857,7 @@ x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
 x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord and X
-x11-misc/xidle 24102005: xidle monitors inactivity in X and runs the specified program when a timeout occurs.
+x11-misc/xidle 24102005: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.15-r1 0.8.16: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5-r1 0.5_p5_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.14 2.16 2.17 2.18 2.19 2.20: X keyboard configuration database
@@ -18874,11 +18874,11 @@ x11-misc/xpad 4.2 4.5.0: a sticky note application for jotting down things to re
 x11-misc/xplanet 1.3.0 1.3.1: Render images of the earth into the X root window
 x11-misc/xplanetFX 2.6.7 2.6.12: GUI to configure, run or daemonize xplanet with HQ capabilities
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
-x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipulating the CIA World data bank
+x11-misc/xrmap 2.33-r1: Xrmap displays portions of the Earth using the huge CIA world map
 x11-misc/xrootconsole 0.6 0.6-r1: A utility that displays its input in a text box on your root window
 x11-misc/xscreensaver 5.36: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
-x11-misc/xsel 1.2.0 9999: command-line program for getting and setting the contents of the X selection
+x11-misc/xsel 1.2.0 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70 0.70-r1: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3 0.1.3-r1: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsnap 1.5.10 1.5.11 1.5.15: Program to interactively take a 'snapshot' of a region of the screen
@@ -18898,7 +18898,7 @@ x11-misc/xvfb-run 1.17.2_p2 1.18.4_p2: Run a command in a virtual X server envir
 x11-misc/xvkbd 3.6 3.7: virtual keyboard for X window system
 x11-misc/xwinwrap 0_p4 0_p4-r1: replace a desktop background with a movie or screensaver
 x11-misc/xwit 3.4 3.4-r1: A collection of simple routines to call some of those X11 functions
-x11-misc/xwrits 2.26: Reminds you to take wrist breaks, which will hopefully help you prevent repetitive stress injury
+x11-misc/xwrits 2.26: Reminds you to take wrist breaks to help you prevent repetitive stress injury
 x11-misc/xxkb 1.11-r3 1.11.1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
 x11-misc/zim 0.65: A desktop wiki
@@ -18945,14 +18945,14 @@ x11-plugins/gkrellsun 1.0.0-r1 1.0.0-r3 1.0.0-r4: A GKrellM plugin that shows su
 x11-plugins/gkrelltop 2.2.13-r1: a GKrellM2 plugin which displays the top three processes
 x11-plugins/gkrellweather 2.0.8: GKrellM2 Plugin that monitors a METAR station and displays weatherinfo
 x11-plugins/gkwebmon 0.2 0.2-r1: A web monitor plugin for GKrellM2
-x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for the open source instant message client pidgin
+x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for pidgin
 x11-plugins/hexchat-javascript 0.3.1 0.3.2: Javascript interface for HexChat
 x11-plugins/i8krellm 2.5 2.5-r1: GKrellM2 Plugin for the Dell Inspiron and Latitude notebooks
 x11-plugins/monto 0.1.1-r1: a simple manual device mounter (up to four devices)
 x11-plugins/pidgin-birthday-reminder 1.7 1.7-r1: Plugin for Pidgin that reminds you of your buddies birthdays
 x11-plugins/pidgin-bot-sentry 1.3.0: Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam
 x11-plugins/pidgin-encryption 3.1: Pidgin IM Encryption PlugIn
-x11-plugins/pidgin-extprefs 0.7-r1: Extra preferences that are desired but not are not considered worthy of inclusion in Pidgin itself
+x11-plugins/pidgin-extprefs 0.7-r1: Extra preferences that are desired but are not worthy for Pidgin
 x11-plugins/pidgin-funyahoo-plusplus 9999: Yahoo! (2016) Protocol Plugin for Pidgin
 x11-plugins/pidgin-gnome-keyring 2.0: Integrates Pidgin (and libpurple) with the system keyring
 x11-plugins/pidgin-gpg 0.9 0.9.3: Pidgin GPG/OpenPGP (XEP-0027) plugin
@@ -18961,9 +18961,9 @@ x11-plugins/pidgin-indicator 0.9 1.0: Indicator plugin for Pidgin
 x11-plugins/pidgin-latex 1.5.0: Pidgin plugin that renders latex formulae
 x11-plugins/pidgin-led-notification 0.1: Pidgin plugin to notify by writing user defined strings to (led control) files
 x11-plugins/pidgin-libnotify 0.14-r1: pidgin-libnotify provides popups for pidgin via a libnotify interface
-x11-plugins/pidgin-mbpurple 0.3.0-r2: Libpurple (Pidgin) plug-in supporting microblog services like Twitter or identi.ca
+x11-plugins/pidgin-mbpurple 0.3.0-r2: Pidgin plug-in supporting microblog services like Twitter or identi.ca
 x11-plugins/pidgin-mpris 0.2.6: Gets current song from MPRIS-aware media players
-x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening to in your status message
+x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening
 x11-plugins/pidgin-opensteamworks 1.4 1.6.1: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
@@ -18974,7 +18974,7 @@ x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List 
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/purple-facebook 20160107 20160118 20160409: Facebook protocol plugin for libpurple
-x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch, inspired by Pidgin-libnotify and Guifications
+x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/qled 0.6.2: Custom Led widget plugin for Qt-Designer
 x11-plugins/thinkhdaps 0.2.1: A PyGTK based HDAPS monitor
@@ -18988,8 +18988,8 @@ x11-plugins/wmSpaceWeather 1.04_p19: dockapp showing weather at geosynchronous o
 x11-plugins/wmSun 1.03-r1 1.05: dockapp which displays the rise/set time of the sun
 x11-plugins/wmXName 0.1: dock-app showing you status of your XName hosted zones
 x11-plugins/wmacpi 1.34 2.2_rc1 2.3: DockApp ACPI status monitor for laptops
-x11-plugins/wmacpiload-ac 0.2.0 0.2.0-r1: Hacked version of WMACPILoad, a dockapp to monitor CPU temp and battery time on ACPI kernels
-x11-plugins/wmacpimon 0.2.1: WMaker DockApp that monitors the temperature and Speedstep features in new ACPI-based systems
+x11-plugins/wmacpiload-ac 0.2.0 0.2.0-r1: WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels
+x11-plugins/wmacpimon 0.2.1: DockApp monitors the temperature and Speedstep features in ACPI-based systems
 x11-plugins/wmail 2.0-r3 2.0-r4: Window Maker dock application showing incoming mail
 x11-plugins/wmapm 3.1-r1: WindowMaker DockApp: Battery/Power status monitor for laptops
 x11-plugins/wmapmload 0.3.4: dockapp that monitors your apm battery status
@@ -19062,7 +19062,7 @@ x11-plugins/wmnetselect 0.8-r1: WindowMaker browser launcher docklet
 x11-plugins/wmpager 1.2-r1: A simple pager docklet for the WindowMaker window manager
 x11-plugins/wmpasman 0.8.4.1 0.8.5.3: Password storage/retrieval in a dockapp
 x11-plugins/wmpeople 1.3: Nice, highly configurable WMaker DockApp that monitors your mail boxes
-x11-plugins/wmpiki 0.2.1: Wmpiki is a dockapp which checks and displays small leds for indicate hosts activity
+x11-plugins/wmpiki 0.2.1: Dockapp which checks and displays small leds for indicate hosts activity
 x11-plugins/wmpinboard 1.0: Window Maker dock applet resembling a miniature pinboard
 x11-plugins/wmping 0.2.1: a simple host status monitoring dockapp
 x11-plugins/wmpop3 0.5.6a 0.5.6a-r1: dockapp for checking pop3 accounts
@@ -19085,7 +19085,7 @@ x11-plugins/wmtop 0.9.0-r1 0.85: dockapp for monitoring the top three processes 
 x11-plugins/wmtz 0.7: dockapp that shows the time in multiple timezones
 x11-plugins/wmudmount 2.2 2.2-r1: A filesystem mounter that uses udisks to handle notification and mounting
 x11-plugins/wmupmon 0.1.3-r1: wmUpMon is a program to monitor your Uptime
-x11-plugins/wmwave 0.4: a dockapp that displays quality, link, level and noise of an iee802.11 (wavelan) connection
+x11-plugins/wmwave 0.4: Dockapp that displays quality, link, level and noise of an iee802.11 connection
 x11-plugins/wmweather 2.4.4 2.4.5 2.4.6: a dockable weather monitor for standard METAR stations using ICAO location
 x11-plugins/wmweather+ 2.13 2.15 2.16: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
 x11-plugins/wmwifi 0.6: wireless network interface monitor dockapp
@@ -19126,7 +19126,7 @@ x11-proto/xf86rushproto 1.1.2-r1: X.Org XF86Rush protocol headers
 x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
 x11-proto/xproto 7.0.27 7.0.28 7.0.29 7.0.31: X.Org xproto protocol headers
-x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well as rxvt backwards compatibility
+x11-terms/aterm 1.0.1-r2: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
 x11-terms/gnome-terminal 3.20.3 3.22.1: The Gnome Terminal
@@ -19137,7 +19137,7 @@ x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte t
 x11-terms/mate-terminal 1.12.1 1.14.1 1.16.1-r1: The MATE Terminal
 x11-terms/mlterm 3.4.5 3.7.2 3.8.0: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
-x11-terms/multi-aterm 0.2.1-r1: Terminal emulator with transparency support as well as rxvt backwards compatibility with tab support
+x11-terms/multi-aterm 0.2.1-r1: rxvt compatible terminal emulator with transparency and tab support
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
 x11-terms/qterminal 0.6.0-r1 0.7.0 0.7.1 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
@@ -19213,10 +19213,10 @@ x11-themes/gtk-engines-experience 0.10.4 0.10.5: GTK+ Experience Theme Engine
 x11-themes/gtk-engines-flat 2.0-r3: GTK+ Flat Theme Engine
 x11-themes/gtk-engines-murrine 0.98.2-r1: Murrine GTK+2 Cairo Engine
 x11-themes/gtk-engines-nodoka 0.7.5: GTK+ engine and themes developed by the Fedora Project
-x11-themes/gtk-engines-qtpixmap 0.28-r2: A modified version of the original GTK pixmap engine which follows the KDE color scheme
+x11-themes/gtk-engines-qtpixmap 0.28-r2: A modified version of the original GTK pixmap engine with the KDE color scheme
 x11-themes/gtk-engines-quartz 0.2: OSX GTK+ Theme Engine
 x11-themes/gtk-engines-rezlooks 0.6: Rezlooks GTK+ Engine
-x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange approach
+x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
 x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+ 3.x theming engine
 x11-themes/gtk-engines-xfce 3.2.0-r200 3.2.0-r300: A port of Xfce engine to GTK+ 3.x
 x11-themes/gtk-theme-switch 2.1.0: Utility to switch and preview GTK+ theme
@@ -19258,7 +19258,7 @@ x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
 x11-themes/qtcurve 1.8.18-r1 9999: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/sawfish-themes 0.0.1-r3: Some nice themes for Sawfish
-x11-themes/shiki-colors 4.6: Shiki-Colors mixes the elegance of a dark theme with the usability of a light theme
+x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
 x11-themes/silver-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/skinenigmang-logos 20070214-r1 20131008: VDR - Skin Plugin: enigma-ng logos
 x11-themes/skulpture 0.2.4-r1: Classical style and window decorations for KDE
@@ -19272,7 +19272,7 @@ x11-themes/tactile 0_pre20060612: Nice, calm and dark low contrast GTK+ theme
 x11-themes/tactile3 3.1: The third evolution of Tactile theme series
 x11-themes/tangerine-icon-theme 0.27: a derivative of the standard Tango theme, using a more orange approach
 x11-themes/tango-icon-theme 0.8.90: SVG and PNG icon theme from the Tango project
-x11-themes/tango-icon-theme-extras 0.1.0-r1: Tango icons for iPod Digital Audio Player (DAP) devices and the Dell Pocket DJ DAP
+x11-themes/tango-icon-theme-extras 0.1.0-r1: Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP
 x11-themes/ubuntu-wallpapers 16.10.2: Ubuntu wallpapers
 x11-themes/vanilla-dmz-aa-xcursors 0.4: Style neutral scalable cursor theme
 x11-themes/vanilla-dmz-xcursors 0.4: Style neutral scalable cursor theme
@@ -19296,7 +19296,7 @@ x11-themes/zukini 20120806: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, me
 x11-themes/zukitwo 2013.12.10 2014.10.22 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2013.12.10 2014.10.22 2016.08.08: Transition package to zuki-themes
 x11-wm/aewm 1.3.12: A minimalistic X11 window manager
-x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm but with the same look and feel
+x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
 x11-wm/awesome 3.5.6-r2 3.5.7 3.5.8 3.5.9: A dynamic floating and tiling window manager
@@ -19324,7 +19324,7 @@ x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
 x11-wm/marco 1.12.1 1.14.2 1.16.0: MATE default window manager
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.8.5 3.0.5 3.2.0: Compositing window manager forked from Mutter for use with Cinnamon
-x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
+x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.20.3 3.22.2: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager

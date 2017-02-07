@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11 x11-proto/xproto
+DESCRIPTION=Identify color of a pixel on the screen by clicking on a pixel on the screen
+EAPI=6
+HOMEPAGE=https://www.muquit.com/muquit/software/grabc/grabc.html
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=https://www.muquit.com/muquit/software/grabc/grabc1.1.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=c5b77667f23efdf4a87a9e95d949b1ac
