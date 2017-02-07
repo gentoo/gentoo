@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,3 +26,12 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/garden-${PV}"
 
 PATCHES=( "${FILESDIR}/remove_bat.patch" )
+
+src_prepare() {
+	distutils-r1_src_prepare
+	mv "${S}/bin/garden" "${S}/bin/kivy-garden"
+}
+
+pkg_postinst() {
+	einfo "Kivy's garden tool is installed as kivy-garden"
+}
