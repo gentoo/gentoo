@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,14 +21,16 @@ HOMEPAGE="http://x265.org/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/104"
-IUSE="+10bit +12bit numa pic test"
+SLOT="0/108"
+IUSE="+10bit +12bit neon numa pic test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	abi_x86_32? ( ${ASM_DEPEND} )
 	abi_x86_64? ( ${ASM_DEPEND} )"
+
+PATCHES=( "${FILESDIR}/arm.patch" "${FILESDIR}/neon.patch" )
 
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
@@ -79,6 +81,10 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = x86 ]] ; then
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
+			if [[ ${ABI} = arm ]] ; then
+				# 589674
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -88,6 +94,10 @@ x265_variant_src_configure() {
 				-DENABLE_CLI=OFF
 			)
 			if [[ ${ABI} = x86 ]] ; then
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			fi
+			if [[ ${ABI} = arm ]] ; then
+				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
 			;;
@@ -134,6 +144,8 @@ multilib_src_configure() {
 	elif [[ ${ABI} = x32 ]] ; then
 		# bug #510890
 		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+	elif [[ ${ABI} = arm ]] ; then
+		mycmakeargs+=( -DENABLE_ASSEMBLY=$(usex neon ON OFF) )
 	fi
 
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
