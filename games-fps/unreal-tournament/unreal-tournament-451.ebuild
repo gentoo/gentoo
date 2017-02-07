@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,9 +7,9 @@ EAPI=5
 inherit eutils unpacker cdrom games
 
 DESCRIPTION="Futuristic FPS"
-HOMEPAGE="http://www.unrealtournament.com/ http://utpg.org/"
-SRC_URI="http://www.ibiblio.org/osg/Downloads/Linux/Installers/ut-install-436.run
-	http://utpg.org/patches/UTPGPatch${PV}.tar.bz2"
+HOMEPAGE="http://www.oldunreal.com/"
+SRC_URI="http://www.ut-files.com/Patches/ut-install-436.run
+	http://www.ut-files.com/Patches/utpgpatch${PV}.tar.bz2 -> UTPGPatch${PV}.tar.bz2"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
