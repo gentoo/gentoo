@@ -26,6 +26,12 @@ MY_PN=${PN/-community/}
 
 QA_PREBUILT="*"
 
+src_prepare() {
+	default
+
+	rm -rf jre || die
+}
+
 src_install() {
 	insinto /opt/${PN}
 	doins -r *
