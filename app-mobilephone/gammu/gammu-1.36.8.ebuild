@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,19 +15,25 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bluetooth curl dbi debug irda mysql nls postgres usb"
 
-# TODO: figure out a way to disable gudev
-RDEPEND="dev-libs/glib:2=
+COMMON_DEPEND="
+	dev-libs/glib:2=
 	virtual/libgudev:=
 	bluetooth? ( net-wireless/bluez:= )
 	curl? ( net-misc/curl:= )
 	dbi? ( >=dev-db/libdbi-0.8.3:= )
 	mysql? ( virtual/mysql:= )
-	postgres? ( dev-db/postgresql:=[server] )
+	postgres? ( dev-db/postgresql:= )
 	usb? ( virtual/libusb:1= )
-	dev-util/dialog"
-DEPEND="${RDEPEND}
+"
+DEPEND="
+	${COMMON_DEPEND}
 	irda? ( virtual/os-headers )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	dev-util/dialog
+"
 
 # sys-devel/gettext is needed for creating .mo files
 # Supported languages and translated documentation
