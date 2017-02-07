@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 inherit eutils python-r1
 
-DESCRIPTION="Configurable and full featured FVWM theme, with lots of transparency and freedesktop compatible menu"
+DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
 HOMEPAGE="http://fvwm-crystal.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
