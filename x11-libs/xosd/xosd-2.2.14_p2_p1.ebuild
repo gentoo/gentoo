@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ MY_PV=$(get_version_component_range 1-3)
 MY_PATCH_MAJ=$(get_version_component_range 4)
 MY_PATCH_MIN=$(get_version_component_range 5)
 
-DESCRIPTION="Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI"
+DESCRIPTION="Library for overlaying text in X-Windows X-On-Screen-Display"
 HOMEPAGE="https://sourceforge.net/projects/libxosd/"
 SRC_URI="mirror://debian/pool/main/x/xosd/${PN}_${MY_PV}.orig.tar.gz
 	mirror://debian/pool/main/x/xosd/${PN}_${MY_PV}-${MY_PATCH_MAJ/p/}.${MY_PATCH_MIN/p/}.debian.tar.xz
