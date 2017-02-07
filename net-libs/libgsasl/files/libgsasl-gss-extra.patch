@@ -1,6 +1,6 @@
 Gentoo bug #359005
---- gl/m4/gss-extra.m4.orig	2010-12-14 12:57:08.000000000 +0000
-+++ gl/m4/gss-extra.m4	2011-11-05 21:11:54.000000000 +0000
+--- a/gl/m4/gss-extra.m4
++++ b/gl/m4/gss-extra.m4
 @@ -19,7 +19,16 @@
      AC_CHECK_FUNCS([gss_decapsulate_token])
      AC_CHECK_FUNCS([gss_oid_equal])

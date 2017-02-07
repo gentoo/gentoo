@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
 inherit autotools eutils
 
@@ -23,8 +23,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!net-misc/gsasl"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-gss-extra.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-gss-extra.patch"
+	default
 	sed -i -e 's/ -Werror//' configure.ac || die
 	eautoreconf
 }
@@ -35,14 +39,16 @@ src_configure() {
 		krb5_impl="--with-gssapi-impl="
 		krb5_impl+=$(has_version app-crypt/mit-krb5 && echo "mit" || echo "heimdal")
 	fi
-	econf \
-		$(use_with gcrypt libgcrypt) \
-		$(use_with idn stringprep) \
-		$(use_enable kerberos gssapi) \
-		${krb5_impl} \
-		$(use_enable nls) \
-		$(use_enable ntlm) \
+	local myeconfargs=(
+		$(use_with gcrypt libgcrypt)
+		$(use_with idn stringprep)
+		$(use_enable kerberos gssapi)
+		${krb5_impl}
+		$(use_enable nls)
+		$(use_enable ntlm)
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
