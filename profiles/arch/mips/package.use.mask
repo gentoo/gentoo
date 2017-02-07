@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
+# dev-python/gmpy fails tests about sizeof (conch), bug 608496
+# dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
+# dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
+dev-python/twisted conch crypt http2 soap test
+
 # Felix Janda <felix.janda@posteo.de> (24 Sep 2016)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack
