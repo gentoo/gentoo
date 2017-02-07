@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,9 @@ IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext alsa altivec coreaudio int-qual
 
 # No MULTILIB_USEDEP here since we only build libmpg123 for non native ABIs.
 RDEPEND="app-eselect/eselect-mpg123
-	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
+	dev-libs/libltdl:0
 	alsa? ( media-libs/alsa-lib )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	nas? ( media-libs/nas )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
