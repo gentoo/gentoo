@@ -95,7 +95,7 @@ DEPEND="
 	>=dev-libs/oniguruma-5.9.5:=
 	>=dev-util/ctags-5.8
 	>=dev-util/electron-1.3.5:${ELECTRON_SLOT}
-"
+	x11-libs/libxkbfile"
 RDEPEND="
 	${DEPEND}
 	!sys-apps/apmd
