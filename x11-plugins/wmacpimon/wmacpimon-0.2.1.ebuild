@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=2
 inherit eutils
 
-DESCRIPTION="WMaker DockApp that monitors the temperature and Speedstep features in new ACPI-based systems"
+DESCRIPTION="DockApp monitors the temperature and Speedstep features in ACPI-based systems"
 HOMEPAGE="http://www.vrlteam.org/wmacpimon/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
