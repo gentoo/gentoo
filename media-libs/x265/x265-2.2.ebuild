@@ -145,7 +145,8 @@ multilib_src_configure() {
 		# bug #510890
 		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	elif [[ ${ABI} = arm ]] ; then
-		mycmakeargs+=( -DENABLE_ASSEMBLY=$(usex neon ON OFF) )
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=$(usex pic OFF $(usex neon ON OFF)) )
+		use neon && use pic && ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
 	fi
 
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
