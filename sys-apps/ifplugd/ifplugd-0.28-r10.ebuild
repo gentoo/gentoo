@@ -10,7 +10,7 @@ SRC_URI="http://0pointer.de/lennart/projects/ifplugd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~arm hppa ~ppc ~x86"
 IUSE="doc selinux"
 
 DEPEND="virtual/pkgconfig
