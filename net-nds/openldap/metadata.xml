@@ -12,6 +12,7 @@
 		<flag name="smbkrb5passwd">Enable overlay for syncing ldap, unix and
 			lanman passwords</flag>
 		<flag name="minimal">Build libraries &amp; userspace tools only. Does not install any server code.</flag>
+		<flag name="pbkdf2">Enable support for pbkdf2 passwords</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:openldap:openldap</remote-id>
