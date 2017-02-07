@@ -1,12 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs
 
-DESCRIPTION="xidle monitors inactivity in X and runs the specified program when
-a timeout occurs."
+DESCRIPTION="Monitors inactivity in X and runs the specified program when a timeout occurs"
 HOMEPAGE="http://www.freebsdsoftware.org/x11/xidle.html"
 SRC_URI="mirror://freebsd/ports/local-distfiles/novel/${P}.tar.bz2"
 
