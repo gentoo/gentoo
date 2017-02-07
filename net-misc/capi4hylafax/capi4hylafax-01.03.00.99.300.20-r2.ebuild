@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit eutils versionator autotools
+inherit autotools eutils versionator
 
 FAX_SPOOL_DIR="${ROOT}/var/spool/fax"
 
@@ -23,14 +23,15 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"
 
-RDEPEND="
+DEPEND="
 	app-shells/bash:0
-	net-libs/libcapi
 	media-libs/tiff:0
-	virtual/jpeg:0
+	net-libs/libcapi
 	sys-libs/zlib
+	virtual/jpeg:0
 "
-DEPEND="${RDEPEND}
+RDEPEND="
+	${DEPEND}
 	dev-util/dialog
 "
 

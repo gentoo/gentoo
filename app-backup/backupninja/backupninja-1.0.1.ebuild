@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools
 
@@ -16,13 +16,12 @@ SRC_URI="https://labs.riseup.net/code/attachments/download/${NODE_NUMBER}/${P}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-DEPEND="dev-util/dialog"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-util/dialog"
 
 DOCS=( AUTHORS FAQ TODO README NEWS )
 
 src_prepare() {
+	default
 	eautoreconf
 }
