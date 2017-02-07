@@ -61,7 +61,7 @@ FOX_APPS="adie calculator pathfinder shutterbug"
 # @DESCRIPTION:
 # Set this to add additional configuration options during src_configure
 
-DESCRIPTION="C++ based Toolkit for developing Graphical User Interfaces easily and effectively"
+DESCRIPTION="C++ Toolkit for developing Graphical User Interfaces easily and effectively"
 HOMEPAGE="http://www.fox-toolkit.org/"
 SRC_URI="ftp://ftp.fox-toolkit.org/pub/fox-${FOX_PV}.tar.gz"
 
