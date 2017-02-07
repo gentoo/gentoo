@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=4
 
 inherit toolchain-funcs vcs-snapshot
 
-DESCRIPTION="trayer fork with multi monitor support, cleaned up codebase and other fancy stuff"
+DESCRIPTION="trayer fork with multi monitor support and cleaned up codebase"
 HOMEPAGE="https://github.com/sargon/trayer-srg"
 SRC_URI="https://github.com/sargon/${PN}/tarball/${P/-srg/} -> ${P}.tar.gz"
 
