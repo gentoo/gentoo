@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit autotools
 
-DESCRIPTION="A Pidgin now playing plugin to publicise the songs you are listening to in your status message"
+DESCRIPTION="A Pidgin now playing plugin to publicise the songs you are listening"
 HOMEPAGE="https://code.google.com/p/pidgin-musictracker/"
 SRC_URI="https://pidgin-musictracker.googlecode.com/files/${P}.tar.bz2"
 
