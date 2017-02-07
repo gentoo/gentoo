@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit eutils savedconfig toolchain-funcs
 
-DESCRIPTION="A simple dynamic window manager for X, with features nicked from
-ratpoison and dwm"
+DESCRIPTION="A simple dynamic window manager, with features nicked from ratpoison and dwm"
 HOMEPAGE="https://launchpad.net/musca"
 SRC_URI="mirror://gentoo/${P}.tgz"
 
