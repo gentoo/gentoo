@@ -3,8 +3,8 @@ bug.
 
 See https://github.com/jabberd2/jabberd2/issues/34
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -23,13 +23,6 @@
      LIBS="$LIBS $lt_cv_dlopen_libs"
  fi
