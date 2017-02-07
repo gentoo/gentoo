@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ FLAGS_VER=2.9
 ANTHEMS_VER=1.3
 HYMNS_VER=1.4
 FACTBOOK_VER=2008
-DESCRIPTION="a X client for generating images of the Earth and manipulating the CIA World data bank"
+DESCRIPTION="Xrmap displays portions of the Earth using the huge CIA world map"
 HOMEPAGE="http://frmas.free.fr/li_1.htm#_Xrmap_"
 SRC_URI="ftp://ftp.ac-grenoble.fr/ge/geosciences/${PN}/${P}.tar.bz2
 		 ftp://ftp.ac-grenoble.fr/ge/geosciences/${PN}/data/factbook_html_${FACTBOOK_VER}.tar.bz2
