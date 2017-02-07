@@ -5,7 +5,7 @@
 EAPI=3
 inherit flag-o-matic eutils
 
-DESCRIPTION="A terminal emulator with transparency support as well as rxvt backwards compatibility"
+DESCRIPTION="rxvt compatible terminal emulator with transparency support"
 HOMEPAGE="http://aterm.sourceforge.net"
 SRC_URI="ftp://ftp.afterstep.org/apps/${PN}/${P}.tar.bz2"
 
