@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit eutils gnome2-utils distutils-r1
 
-DESCRIPTION="An advanced menu editor that provides modern features in a clean, easy-to-use interface"
+DESCRIPTION="An advanced menu editor that provides modern features in a easy-to-use interface"
 HOMEPAGE="http://www.smdavis.us/projects/menulibre/"
 SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.tar.gz"
 
