@@ -30,8 +30,7 @@ RDEPEND=">=dev-python/cryptography-0.8[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.4.1[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	virtual/python-dnspython"
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND} dev-python/nose[${PYTHON_USEDEP}] )
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
 
