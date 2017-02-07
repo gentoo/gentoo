@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 MY_P=${P/-ac}
-DESCRIPTION="Hacked version of WMACPILoad, a dockapp to monitor CPU temp and battery time on ACPI kernels"
+DESCRIPTION="WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels"
 HOMEPAGE="http://wmacpiload.tuxfamily.org/"
 SRC_URI="http://wmacpiload.tuxfamily.org/download/${MY_P}.tar.bz2"
 
