@@ -139,7 +139,7 @@ multilib_src_configure() {
 		$(tc-has-tls || echo --disable-tls)
 	)
 	ECONF_SOURCE=${S} \
-	econf "${myeconfargs[@]}" "${myconf[@]}"
+	econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {

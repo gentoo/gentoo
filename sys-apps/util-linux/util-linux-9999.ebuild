@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -93,42 +93,48 @@ multilib_src_configure() {
 	tc-is-cross-compiler && export scanf_cv_alloc_modifier=ms
 	export ac_cv_header_security_pam_misc_h=$(multilib_native_usex pam) #485486
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
-	ECONF_SOURCE=${S} \
-	econf \
-		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin" \
-		--docdir='${datarootdir}'/doc/${PF} \
-		$(multilib_native_use_enable nls) \
-		--enable-agetty \
-		--with-bashcompletiondir="$(get_bashcompdir)" \
-		--enable-bash-completion \
-		$(multilib_native_use_enable caps setpriv) \
-		--disable-chfn-chsh \
-		$(multilib_native_use_enable cramfs) \
-		$(multilib_native_use_enable fdformat) \
-		--with-ncurses=$(multilib_native_usex ncurses $(usex unicode auto yes) no) \
-		$(use_enable kill) \
-		--disable-login \
-		$(multilib_native_use_enable tty-helpers mesg) \
-		--disable-nologin \
-		--enable-partx \
-		$(multilib_native_use_with python) \
-		--enable-raw \
-		$(multilib_native_use_with readline) \
-		--enable-rename \
-		--disable-reset \
-		--enable-schedutils \
-		--disable-su \
-		$(multilib_native_use_enable tty-helpers wall) \
-		$(multilib_native_use_enable tty-helpers write) \
-		$(multilib_native_use_enable suid makeinstall-chown) \
-		$(multilib_native_use_enable suid makeinstall-setuid) \
-		$(use_with selinux) \
-		$(multilib_native_use_with slang) \
-		$(use_enable static-libs static) \
-		$(multilib_native_use_with systemd) \
-		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_unitdir)" "no") \
-		$(multilib_native_use_with udev) \
+
+	local myeconfargs=(
+		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
+		--docdir='${datarootdir}'/doc/${PF}
+		$(multilib_native_use_enable nls)
+		--enable-agetty
+		--with-bashcompletiondir="$(get_bashcompdir)"
+		--enable-bash-completion
+		$(multilib_native_use_enable caps setpriv)
+		--disable-chfn-chsh
+		$(multilib_native_use_enable cramfs)
+		$(multilib_native_use_enable fdformat)
+		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
+		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
+		$(usex ncurses '' '--without-tinfo')
+		$(use_enable unicode widechar)
+		$(use_enable kill)
+		--disable-login
+		$(multilib_native_use_enable tty-helpers mesg)
+		--disable-nologin
+		--enable-partx
+		$(multilib_native_use_with python)
+		--enable-raw
+		$(multilib_native_use_with readline)
+		--enable-rename
+		--disable-reset
+		--enable-schedutils
+		--disable-su
+		$(multilib_native_use_enable tty-helpers wall)
+		$(multilib_native_use_enable tty-helpers write)
+		$(multilib_native_use_enable suid makeinstall-chown)
+		$(multilib_native_use_enable suid makeinstall-setuid)
+		$(use_with selinux)
+		$(multilib_native_use_with slang)
+		$(use_enable static-libs static)
+		$(multilib_native_use_with systemd)
+		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_unitdir)" "no")
+		$(multilib_native_use_with udev)
 		$(tc-has-tls || echo --disable-tls)
+	)
+	ECONF_SOURCE=${S} \
+	econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
