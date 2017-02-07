@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ MY_P=${PN}-${MY_PV}
 MY_P2=${PN}-${MY_PV2}
 
 DESCRIPTION="library to use arbitrary fonts in OpenGL applications"
-HOMEPAGE="http://ftgl.wiki.sourceforge.net/"
+HOMEPAGE="http://ftgl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
