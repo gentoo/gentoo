@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,13 +6,13 @@ EAPI=5
 inherit games
 
 DESCRIPTION="Futuristic FPS (bonus packs)"
-HOMEPAGE="http://www.unrealtournament.com/"
+HOMEPAGE="http://www.oldunreal.com/"
 # UT has 4 official bonus packs ...
 # [UTBonusPack]  -> loki put into games-fps/unreal-tournament
 # [UTBonusPack2] -> loki put into games-fps/unreal-tournament
 # [UTiNoxxPack]  -> loki put into games-fps/unreal-tournament
 # [UTBonusPack4] -> none of this is in games-fps/unreal-tournament
-SRC_URI="http://fpsnetwork.com/downloads/ut99/bonuspacks/UTBonusPack4.zip"
+SRC_URI="http://www.ut-files.com/Patches/utbonuspack4.zip -> UTBonusPack4.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
