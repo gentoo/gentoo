@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=4
 
 inherit eutils
 
-DESCRIPTION="Terminal emulator with transparency support as well as rxvt backwards compatibility with tab support"
+DESCRIPTION="rxvt compatible terminal emulator with transparency and tab support"
 HOMEPAGE="http://www.nongnu.org/materm/materm.html"
 SRC_URI="http://www.nongnu.org/materm/${P}.tar.gz"
 
