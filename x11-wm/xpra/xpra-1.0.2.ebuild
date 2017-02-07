@@ -15,7 +15,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+client +clipboard csc cups dec_av2 ffmpeg libav lz4 lzo opengl pulseaudio server sound vpx webcam webp x264 x265"
+IUSE="+client +clipboard csc cups dec_av2 enc_ffmpeg libav lz4 lzo opengl pulseaudio server sound vpx webcam webp x264 x265"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
@@ -42,7 +42,7 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 		!libav? ( >=media-video/ffmpeg-2:0= )
 		libav? ( media-video/libav:0= )
 	)
-	ffmpeg? (
+	enc_ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
 		libav? ( media-video/libav:0= )
 	)
@@ -118,7 +118,7 @@ python_configure_all() {
 		$(use_with csc csc_swscale)
 		$(use_with cups printing)
 		$(use_with dec_av2 dec_avcodec2)
-		$(use_with ffmpeg enc_ffmpeg)
+		$(use_with enc_ffmpeg)
 		$(use_with opengl)
 		$(use_with server shadow)
 		$(use_with server)
