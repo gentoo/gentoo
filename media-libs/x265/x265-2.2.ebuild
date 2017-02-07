@@ -145,7 +145,7 @@ multilib_src_configure() {
 		# bug #510890
 		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	elif [[ ${ABI} = arm ]] ; then
-		mycmakeargs+=( -DENABLE_ASSEMBLY=$(usex neon ON OFF) )
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=$(usex neon ON OFF) )
 	fi
 
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
