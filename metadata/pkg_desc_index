@@ -112,7 +112,7 @@ app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.10: Single process stack of various system 
 app-admin/glance 12.0.0 13.0.0 2016.1.9999 2016.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/graylog2 2.1.2: Free and open source log management
-app-admin/grubconfig 1.28-r1 1.28-r2: Simple Tool to configure Grub-Bootloader
+app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
 app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool for Linux systems
@@ -2261,7 +2261,7 @@ app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
 app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
 app-text/dvipng 1.15: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 5.992_p20120701 5.993_p20130530 5.994_p20140525 5.995_p20150521 5.996_p20160523: DVI-to-PostScript translator
-app-text/dvisvgm 1.8.1 1.10 2.0.4 2.1: Converts DVI files to SVG
+app-text/dvisvgm 1.8.1 1.10 2.0.4 2.1 2.1.1: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.1: EditorConfig core library written in C
 app-text/enchant 1.6.0: Spellchecker wrapping library
