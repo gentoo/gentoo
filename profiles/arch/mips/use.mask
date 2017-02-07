@@ -5,6 +5,10 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
+# dev-libs/libappindicator not tested
+ayatana
+
 # Anthony G. Basile <blueness@gentoo.org> (01 Aug 2015)
 # There is no luajit support on mips.  Bug #554376.
 luajittex
