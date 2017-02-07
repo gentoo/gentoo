@@ -254,7 +254,7 @@ app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.17.27 1.18.15 1.18.18: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.18.18 1.18.22: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45 0.4.46: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.12.0-r1 1.14.1 1.16.0-r1: Engrampa archive manager for MATE
@@ -10069,7 +10069,7 @@ dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
 dev-util/deskzilla 1.7.1-r1: A desktop client for Mozilla's Bugzilla bug tracking system
 dev-util/devhelp 3.20.0 3.22.0: An API documentation browser for GNOME
-dev-util/dialog 1.2.20150920 1.3.20160424 1.3.20160828: tool to display dialog boxes from a shell
+dev-util/dialog 1.3.20160424 1.3.20160828 1.3.20170131: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
@@ -10225,7 +10225,7 @@ dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
-dev-util/promu 0.1.0_p20161031: Prometheus Utility Tool
+dev-util/promu 0.1.0_p20161031 0.1.0_p20170130: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2016.1.3 2016.1.4 2016.2.1 2016.2.2 2016.2.3 2016.3.1 2016.3.2: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2016.1.3 2016.1.4 2016.2.1 2016.2.2 2016.2.3: Intelligent Python IDE with unique code assistance and analysis
@@ -14249,7 +14249,7 @@ net-analyzer/prelude-correlator 3.0.1-r1 3.1.0: Real time correlator of events r
 net-analyzer/prelude-lml 3.0.0 3.1.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 3.1.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
-net-analyzer/prometheus 1.5.0: Prometheus monitoring system and time series database
+net-analyzer/prometheus 1.5.0 1.5.1: Prometheus monitoring system and time series database
 net-analyzer/prometheus-node_exporter 0.14.0_rc1: Prometheus exporter for machine metrics
 net-analyzer/pypacker 2.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
