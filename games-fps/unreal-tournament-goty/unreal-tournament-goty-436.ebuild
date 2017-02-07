@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,9 +7,9 @@ EAPI=5
 inherit eutils unpacker cdrom games
 
 DESCRIPTION="Futuristic FPS (Game Of The Year edition)"
-HOMEPAGE="http://www.unrealtournament.com/"
-SRC_URI="ftp://ftp.lokigames.com/pub/beta/ut/ut-install-${PV}-GOTY.run
-	ftp://ftp.lokigames.com/pub/patches/ut/IpDrv-${PV}-Linux-08-20-02.zip"
+HOMEPAGE="http://www.oldunreal.com/"
+SRC_URI="http://www.ut-files.com/Patches/ut-install-${PV}-GOTY.run
+	http://www.ut-files.com/Patches/ipdrv-${PV}-linux-08-20-02.zip -> IpDrv-${PV}-Linux-08-20-02.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
