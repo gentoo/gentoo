@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_COMMIT_HASH}.tar.gz -> ${P}
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~mips ~x86 ~amd64-linux ~x64-macos"
 IUSE="debug libressl idleconn"
 
 RDEPEND="!libressl? ( dev-libs/openssl:0= )
