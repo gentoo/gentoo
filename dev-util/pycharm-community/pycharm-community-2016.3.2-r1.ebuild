@@ -19,12 +19,18 @@ RDEPEND=">=virtual/jre-1.8"
 DEPEND=""
 
 RESTRICT="mirror strip"
-QA_PREBUILT="/opt/${PN}/bin/fsnotifier
-	/opt/${PN}/bin/fsnotifier64"
+
+QA_PREBUILT="opt/${PN}/bin/fsnotifier
+	opt/${PN}/bin/fsnotifier64
+	opt/${PN}/bin/fsnotifier-arm"
 
 MY_PN=${PN/-community/}
 
-QA_PREBUILT="*"
+src_prepare() {
+	default
+
+	rm -rf jre || die
+}
 
 src_install() {
 	insinto /opt/${PN}
