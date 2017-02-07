@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 
-DESCRIPTION="Provide libnotify interface to Pidgin and Finch, inspired by Pidgin-libnotify and Guifications"
+DESCRIPTION="Provide libnotify interface to Pidgin and Finch"
 HOMEPAGE="http://purple-libnotify-plus.sardemff7.net/"
 SRC_URI="mirror://github/sardemff7/${PN}/${P}.tar.xz"
 
