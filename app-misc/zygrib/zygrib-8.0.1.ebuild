@@ -46,6 +46,7 @@ src_prepare() {
 	sed -i "/QWTDIR/d" Makefile
 	#use jpeg2k || sed -i '/^DEFS=/ s/-DUSE_JPEG2000//' src/g2clib/makefile
 	sed -i '/^DEFS=/ s/-DUSE_JPEG2000//' src/g2clib/makefile
+	sed -i '/^LIBS +=/ s/-ljasper//' src/zyGrib.pro
 	epatch "${FILESDIR}/${P}-libs.patch"
 	default
 }
