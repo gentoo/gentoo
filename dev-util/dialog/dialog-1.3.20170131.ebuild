@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils multilib versionator
 
-MY_PV="$(get_version_component_range 1-2)-$(get_version_component_range 3)"
-S=${WORKDIR}/${PN}-${MY_PV}
+MY_P="${PN}-$(replace_version_separator 2 '-')"
+S="${WORKDIR}/${MY_P}"
 DESCRIPTION="tool to display dialog boxes from a shell"
 HOMEPAGE="http://invisible-island.net/dialog/dialog.html"
-SRC_URI="ftp://invisible-island.net/${PN}/${PN}-${MY_PV}.tgz"
+SRC_URI="ftp://invisible-island.net/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+SLOT="0/14"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="examples minimal nls static-libs unicode"
 
 RDEPEND="
@@ -27,6 +27,7 @@ DEPEND="
 "
 
 src_prepare() {
+	default
 	sed -i -e '/LIB_CREATE=/s:${CC}:& ${LDFLAGS}:g' configure || die
 	sed -i '/$(LIBTOOL_COMPILE)/s:$: $(LIBTOOL_OPTS):' makefile.in || die
 }
