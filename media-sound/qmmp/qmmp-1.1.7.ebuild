@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,9 +14,7 @@ if [ "$PV" != "9999" ]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	QMMP_DEV_BRANCH="1.1"
-	SRC_URI=""
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
-	KEYWORDS=""
 fi
 
 LICENSE="GPL-2"
