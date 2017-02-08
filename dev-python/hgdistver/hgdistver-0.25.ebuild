@@ -17,7 +17,11 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~
 IUSE="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-vcs/git
+		dev-vcs/mercurial
+	)"
 RDEPEND=""
 
 python_test() {
