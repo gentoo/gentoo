@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (07 Mar 2017)
+# Only ever use system ffmpeg, allow kodi bundled ffmpeg
+# only for debug pruposes.
+media-tv/kodi system-ffmpeg
+
 # Sam Jorna <wraeth@gentoo.org> (15 Dec 2016)
 # Known to build unbootable EFI binaries on some systems when built with
 # UDK. Forcing use of gnu-efi until it's more stable.
