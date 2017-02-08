@@ -6,7 +6,7 @@
 		<name>Crypto</name>
 	</maintainer>
 	<use>
-		<flag name="asm">Enable assebly modules</flag>
+		<flag name="asm">Enable assembly modules</flag>
 		<flag name="cpu_flags_x86_padlock">Use VIA padlock instructions,
 		detected at run time, code still works on non-padlock processors</flag>
 	</use>
