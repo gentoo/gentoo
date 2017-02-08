@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Converts Apple DMG files to standard HFS+ images"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/openssl
+RDEPEND="dev-libs/openssl:0=
 	app-arch/bzip2
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
@@ -30,7 +30,7 @@ src_compile() {
 }
 
 src_install() {
-	dosbin dmg2img vfdecrypt
+	dobin dmg2img vfdecrypt
 	dodoc README
 	doman vfdecrypt.1
 }
