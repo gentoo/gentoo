@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils multilib python-r1 toolchain-funcs versionator xdg-utils
+inherit autotools eutils multilib python-r1 toolchain-funcs versionator xdg-utils
 
 MY_PV=$(get_version_component_range 1-2)
 
@@ -28,10 +28,15 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/0.10.4-typelibdir.patch
+)
+
 src_prepare() {
 	xdg_environment_reset
 	tc-export CXX
 	default
+	eautoreconf
 }
 
 src_configure() {
