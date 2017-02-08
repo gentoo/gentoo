@@ -35,6 +35,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kpackage)
+	qt4? ( dev-util/automoc:0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep breeze-icons)
