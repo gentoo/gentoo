@@ -1494,7 +1494,7 @@ app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanj
 app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12 1.5.13 1.5.14: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese input method Anthy IMEngine for IBus Framework
 app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
-app-i18n/ibus-chewing 1.4.7 1.5.1: The Chewing IMEngine for IBus Framework
+app-i18n/ibus-chewing 1.5.1: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 0.9.1: ibus-fbterm is a input method for FbTerm based on iBus
 app-i18n/ibus-handwrite 2.1.4-r1: hand write recognition/input using ibus IM engine
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
@@ -12500,7 +12500,7 @@ media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to 
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
-media-gfx/gimp 2.8.14-r2 2.8.14-r3 2.8.16-r1 2.8.16-r2 2.8.18 2.8.18-r1 2.9.2-r2 2.9.2-r3 2.9.4-r1 2.9.4-r2 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.14-r2 2.8.14-r3 2.8.16-r1 2.8.16-r2 2.8.18 2.8.18-r1 2.8.20 2.9.2-r2 2.9.2-r3 2.9.4-r1 2.9.4-r2 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
