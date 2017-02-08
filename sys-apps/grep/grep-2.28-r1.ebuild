@@ -27,7 +27,12 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-multiple_pattern_fix.patch
+)
+
 src_prepare() {
+	epatch "${PATCHES[@]}"
 	sed -i \
 		-e "s:@SHELL@:${EPREFIX}/bin/sh:g" \
 		src/egrep.sh || die #523898
