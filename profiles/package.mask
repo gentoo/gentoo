@@ -435,8 +435,8 @@ dev-php/Savant3-Plugin-Form
 
 # Mart Raudsepp <leio@gentoo.org> (06 Jan 2017)
 # No releases of this API version since April 2001, abandoned
-# in favour of gtk+:2 for 14 years.
-# Masked for removal in 30 days. Bug 604862.
+# in favour of gtk+:2 for 14 years; bug 604862.
+# Removed at 2017-02-08, mask kept for longer display to users.
 x11-libs/gtk+:1
 
 # Robin H. Johnson <robbat2@gentoo.org> (05 Jan 2017)
