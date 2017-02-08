@@ -34,7 +34,8 @@ REQUIRED_USE="cxx? ( sasl )"
 # always list newer first
 # Do not add any AGPL-3 BDB here!
 # See bug 525110, comment 15.
-BDB_SLOTS='5.3 5.1 4.8 4.7 4.6 4.5 4.4'
+# Advanced usage: OPENLDAP_BDB_SLOTS in the environment can be used to force a slot during build.
+BDB_SLOTS="${OPENLDAP_BDB_SLOTS:=5.3 5.1 4.8 4.7 4.6 4.5 4.4}"
 BDB_PKGS=''
 for _slot in $BDB_SLOTS; do BDB_PKGS="${BDB_PKGS} sys-libs/db:${_slot}" ; done
 
