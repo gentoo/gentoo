@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,6 +36,7 @@ DOCS=( AUTHORS ChangeLog README resources/help.text )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.49.2-desktop.patch
+	"${FILESDIR}"/${PN}-0.49.3-gcc6.patch
 )
 
 src_configure() {
