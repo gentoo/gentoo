@@ -13718,7 +13718,7 @@ media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 0.9.5: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
-media-sound/qtractor 0.7.7 0.7.8 0.7.9 0.8.0: Qtractor is an Audio/MIDI multi-track sequencer
+media-sound/qtractor 0.8.0: Qtractor is an Audio/MIDI multi-track sequencer
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.3.2 1.4.0: A Qt4 client for the music player daemon (MPD) written in C++
@@ -13787,7 +13787,7 @@ media-sound/timidity-freepats 20060219-r1: Free and open set of instrument patch
 media-sound/tk707 0.8-r1: An "7x7" type midi drum sequencer for Linux
 media-sound/tomahawk 0.9.0_pre20161029 9999: Multi-source social music player
 media-sound/toolame 02l-r3 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
-media-sound/traverso 0.49.2-r1 0.49.3: Professional Audio Tools for GNU/Linux
+media-sound/traverso 0.49.3: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
 media-sound/tunapie 2.1.17: Directory browser for Radio and TV streams
