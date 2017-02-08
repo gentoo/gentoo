@@ -20,11 +20,10 @@ DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]
 	tk? ( dev-ml/labltk:= )"
 RDEPEND="${DEPEND}"
 
-ocamlfind_destdir="${EPREFIX}/usr/$(get_libdir)/ocaml"
-stublibs="${ocamlfind_destdir}/stublibs"
-
 src_prepare() {
 	epatch "${FILESDIR}/externalmeta4.patch"
+	export ocamlfind_destdir="${EPREFIX}/usr/$(get_libdir)/ocaml"
+	export stublibs="${ocamlfind_destdir}/stublibs"
 }
 
 src_configure() {
