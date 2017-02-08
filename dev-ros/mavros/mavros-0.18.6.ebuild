@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-ros/eigen_conversions
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	>=dev-ros/mavros_msgs-0.18.1[${CATKIN_MESSAGES_CXX_USEDEP}]
+	>=dev-ros/mavros_msgs-0.18.6[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
