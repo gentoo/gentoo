@@ -18125,7 +18125,7 @@ www-apps/jekyll-sitemap 0.11.0: Automatically generate a sitemap.xml for your Je
 www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.8: A powerful Open Source Content Management System
 www-apps/kibana-bin 4.6.3 4.6.4 5.1.1 5.1.2: Explore and visualize data
-www-apps/klaus 0.9.1 1.0.1 1.1.0: A simple, easy-to-set-up Git web viewer
+www-apps/klaus 1.0.1 1.1.0: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
