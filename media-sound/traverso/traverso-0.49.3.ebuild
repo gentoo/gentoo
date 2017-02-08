@@ -24,7 +24,7 @@ RDEPEND=">=media-libs/flac-1.1.2
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
+	jack? ( virtual/jack )
 	lame? ( media-sound/lame )
 	lv2? ( media-libs/lilv )
 	mad? ( >=media-libs/libmad-0.15.0 )
