@@ -5,26 +5,23 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit virtualx autotools eutils gnome2 fdo-mime multilib python-single-r1 git-r3
-
-EGIT_REPO_URI="git://git.gnome.org/gimp"
+inherit versionator virtualx autotools eutils gnome2 fdo-mime multilib python-single-r1
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
-SRC_URI=""
-
+SRC_URI="https://www.hartwork.org/public/${P}-r1.tar.xz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
-IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev wmf xpm"
+IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev vector-icons wmf xpm"
 
 for lang in ${LANGS}; do
 	IUSE+=" linguas_${lang}"
 done
 
-RDEPEND=">=dev-libs/glib-2.40.0:2
+RDEPEND=">=dev-libs/glib-2.30.2:2
 	>=dev-libs/atk-2.2.0
 	>=x11-libs/gtk+-2.24.10:2
 	dev-util/gtk-update-icon-cache
@@ -35,13 +32,14 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	>=media-libs/freetype-2.1.7
 	>=media-libs/harfbuzz-0.9.19
 	>=media-libs/gexiv2-0.6.1
+	>=media-libs/libmypaint-1.3.0_beta0[gegl]
 	>=media-libs/fontconfig-2.2.0
 	sys-libs/zlib
 	dev-libs/libxml2
 	dev-libs/libxslt
 	x11-themes/hicolor-icon-theme
-	>=media-libs/babl-0.1.14
-	>=media-libs/gegl-0.3.4:0.3[cairo]
+	>=media-libs/babl-0.1.18
+	>=media-libs/gegl-0.3.8:0.3[cairo]
 	>=dev-libs/glib-2.43
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
@@ -57,6 +55,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	python?	(
 		${PYTHON_DEPS}
 		>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
+		>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
 	)
 	>=media-libs/tiff-3.5.7:0
 	>=gnome-base/librsvg-2.36.0:2
@@ -68,18 +67,18 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	postscript? ( app-text/ghostscript-gpl )
 	udev? ( virtual/libgudev:= )"
 DEPEND="${RDEPEND}
-	dev-util/gdbus-codegen
 	sys-apps/findutils
 	virtual/pkgconfig
 	>=dev-util/intltool-0.40.1
 	>=sys-devel/gettext-0.19
 	doc? ( >=dev-util/gtk-doc-1 )
 	>=sys-devel/libtool-2.2
-	>=sys-devel/autoconf-2.54
 	>=sys-devel/automake-1.11
 	dev-util/gtk-doc-am"  # due to our call to eautoreconf below (bug #386453)
 
 DOCS="AUTHORS ChangeLog* HACKING NEWS README*"
+
+S="${WORKDIR}"/${P}-r1
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -100,10 +99,12 @@ pkg_setup() {
 		$(use_enable python) \
 		$(use_enable smp mp) \
 		$(use_enable cpu_flags_x86_sse sse) \
+		--with-librsvg \
 		$(use_with udev gudev) \
 		$(use_with wmf) \
 		--with-xmc \
 		$(use_with xpm libxpm) \
+		$(use_enable vector-icons) \
 		--without-xvfb-run"
 
 	if use python; then
@@ -112,26 +113,22 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.9.2-no-deprecation.patch  # bug 395695, comment 9 and 16
+
+	# Bug 589394
+	rm icons/Symbolic-Inverted/Makefile.in || die
+	epatch "${FILESDIR}"/${PN}-2.9.4-mkdir-makefile.patch
+
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
-
-	echo '#!/bin/sh' > py-compile
-	chmod a+x py-compile || die
-	sed -i -e 's:\$srcdir/configure:#:g' autogen.sh
-	local myconf
-	if ! use doc; then
-	    myconf="${myconf} --disable-gtk-doc"
-	fi
-	./autogen.sh ${myconf} || die
-
-	# Fix "libtoolize --force" of autogen.sh (bug #476626)
-	rm install-sh ltmain.sh || die
-	_elibtoolize --copy --install || die
+	eautoreconf  # If you remove this: remove dev-util/gtk-doc-am from DEPEND, too
 
 	gnome2_src_prepare
 }
 
 src_configure() {
-	GEGL=/usr/bin/gegl-0.3 gnome2_src_configure
+	gnome2_src_configure \
+			GEGL=/usr/bin/gegl-0.3 \
+			GDBUS_CODEGEN=/bin/false
 }
 
 src_compile() {
@@ -179,7 +176,8 @@ src_install() {
 	prune_libtool_files --all
 
 	# Prevent dead symlink gimp-console.1 from downstream man page compression (bug #433527)
-	mv "${ED}"/usr/share/man/man1/gimp-console{-*,}.1 || die
+	local gimp_app_version=$(get_version_component_range 1-2)
+	mv "${ED}"/usr/share/man/man1/gimp-console{-${gimp_app_version},}.1 || die
 
 	_clean_up_locales
 }
