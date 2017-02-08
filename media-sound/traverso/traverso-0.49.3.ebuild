@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ RDEPEND=">=media-libs/flac-1.1.2
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
+	jack? ( virtual/jack )
 	lame? ( media-sound/lame )
 	lv2? ( media-libs/lilv )
 	mad? ( >=media-libs/libmad-0.15.0 )
@@ -36,6 +36,7 @@ DOCS=( AUTHORS ChangeLog README resources/help.text )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.49.2-desktop.patch
+	"${FILESDIR}"/${PN}-0.49.3-gcc6.patch
 )
 
 src_configure() {
