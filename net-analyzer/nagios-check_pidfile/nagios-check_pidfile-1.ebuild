@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=net-analyzer/nagios-plugins-1.4.13-r1"
+DEPEND="|| ( >=net-analyzer/nagios-plugins-1.4.13-r1 net-analyzer/monitoring-plugins )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/check_pidfile-${PV}

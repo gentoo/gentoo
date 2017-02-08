@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND="net-analyzer/nagios-plugins
+DEPEND="|| ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins )
 		net-libs/ldns"
 RDEPEND="${DEPEND}"
 
