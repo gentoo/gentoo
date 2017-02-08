@@ -995,7 +995,7 @@ app-editors/XML-XSH2 2.1.6-r1: XML Editing Shell
 app-editors/adie 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
-app-editors/atom 1.12.2: A hackable text editor for the 21st Century
+app-editors/atom 1.12.7 1.13.1: A hackable text editor for the 21st Century
 app-editors/beaver 0.4.1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.6 2.2.8 2.2.9: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.3.2-r2 1.4.0_alpha: display-oriented editor for binary files, based on the vi texteditor
@@ -9084,7 +9084,7 @@ dev-ruby/actionmailer 4.2.6 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Framework for designing
 dev-ruby/actionpack 4.2.6 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.1.1 1.2.0: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2 2.0.0: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actionview 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/actionview 4.2.6 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.6 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Job framework with pluggable queues
 dev-ruby/activeldap 4.0.6: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 4.2.6 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Toolkit for building modeling frameworks like Active Record and Active Resource
@@ -10089,7 +10089,7 @@ dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
-dev-util/electron 0.36.12-r4 0.37.8-r1 1.3.6: Cross platform application development framework based on web technologies
+dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 16.12 17.01: A full featured Python IDE using PyQt and QScintilla
