@@ -2446,7 +2446,7 @@ app-text/teseq 1.1.1: a tool for analyzing files that contain control characters
 app-text/tesseract 3.04.00-r2 3.04.01 3.04.01-r1 4.00.00_alpha 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
-app-text/texlive-core 2012 2012-r1 2012-r3 2013-r1 2013-r3 2014 2014-r1 2014-r3 2014-r4 2015 2015-r1 2016-r2: A complete TeX distribution
+app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r2: A complete TeX distribution
 app-text/tidy-html5 5.2.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -9833,7 +9833,7 @@ dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/notoccite 20000720: Stop citations in figures, tables and contents changing citation order
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
-dev-tex/pgf 3.0.1: pgf -- The TeX Portable Graphic Format
+dev-tex/pgf 3.0.1 3.0.1-r1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/ppower4 0.9.6: Post-process presentations in PDF format which were prepared using (La)TeX to add dynamic effects
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
@@ -9858,7 +9858,7 @@ dev-tex/tipa 1.3: International Phonetic Alphabet package for LaTeX
 dev-tex/translator 1.00: A package for translating words in TeX
 dev-tex/tth 3.77: Translate TEX into HTML
 dev-tex/vc 0.5: The vc (version control) bundle
-dev-tex/xcolor 2.11: xcolor -- easy driver-independent access to colors
+dev-tex/xcolor 2.11 2.12: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
 dev-texlive/texlive-basic 2012 2013 2014 2015 2016: TeXLive Essential programs and files
 dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015 2016: TeXLive BibTeX additional styles
@@ -18190,7 +18190,7 @@ www-client/firefox 45.6.0-r1 45.7.0 51.0: Firefox Web Browser
 www-client/firefox-bin 45.6.0 45.7.0 51.0: Firefox Web Browser
 www-client/google-chrome 56.0.2924.87: The web browser from Google
 www-client/google-chrome-beta 57.0.2987.21: The web browser from Google
-www-client/google-chrome-unstable 57.0.2987.19: The web browser from Google
+www-client/google-chrome-unstable 58.0.3004.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18240,7 +18240,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 24.0.0.194: Adobe Flash Player
-www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.19_alpha 57.0.2987.21_beta: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.21_beta 58.0.3004.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
