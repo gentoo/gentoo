@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1:=[ppx] dev-ml/ppx_deriving:= dev-ml/calendar:= dev-ml/lwt:= dev-ml/opam >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=User interface widgets for Ocsigen applications
+EAPI=6
+HOMEPAGE=https://github.com/ocsigen/ocsigen-toolkit
+IUSE=+ocamlopt debug
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1:=[ppx] dev-ml/ppx_deriving:= dev-ml/calendar:= dev-ml/lwt:=
+SLOT=0/1.0.0
+SRC_URI=https://github.com/ocsigen/ocsigen-toolkit/archive/1.0.0.tar.gz -> ocsigen-toolkit-1.0.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
+_md5_=9891f482c63b35744c47077b0c9102f9
