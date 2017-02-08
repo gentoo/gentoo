@@ -1,13 +1,13 @@
 DEFINED_PHASES=prepare
-DEPEND=net-analyzer/nagios-plugins net-libs/ldns !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=|| ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins ) net-libs/ldns !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=check_dnssec is a set of Nagios plugins to monitor DNSSEC services
 EAPI=4
 HOMEPAGE=https://svn.durchmesser.ch/trac/check_dnssec
 KEYWORDS=~x86 ~amd64
 LICENSE=GPL-3
-RDEPEND=net-analyzer/nagios-plugins net-libs/ldns
+RDEPEND=|| ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins ) net-libs/ldns
 SLOT=0
 SRC_URI=mirror://gentoo/check_dnssec-0.1_p28.tar.bz2
 _eclass_exported_funcs=src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=458d3b8093779652072535ed8c929e93
+_md5_=2225f8d7ab3da21ae95e87b34fd75997
