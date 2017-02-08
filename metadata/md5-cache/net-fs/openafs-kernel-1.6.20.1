@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=The OpenAFS distributed file system kernel module
+EAPI=6
+HOMEPAGE=https://www.openafs.org/
+IUSE=debug kernel_linux
+KEYWORDS=~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=IBM BSD openafs-krb5-a APSL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://openafs.org/dl/openafs/1.6.20.1/openafs-1.6.20.1-src.tar.bz2 https://dev.gentoo.org/~bircoph/afs/openafs-patches-20160801-2.tar.xz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:linux-mod pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	linux-mod	0ccff2c1a7d70cf1678059b64bcf9183	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=2205cca6d81b3d688e1f98097bdfc957
