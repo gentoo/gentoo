@@ -97,6 +97,12 @@ pkg_setup() {
 	done
 }
 
+src_configure() {
+	# to be compatible with guix from /gnu/store
+	econf \
+		--localstatedir="${EPREFIX}"/var
+}
+
 src_prepare() {
 	copy_boot_guile_binaries
 
@@ -116,6 +122,7 @@ src_install() {
 
 	readme.gentoo_create_doc
 
+	keepdir                /etc/guix
 	# TODO: will need a tweak for prefix
 	keepdir                /gnu/store
 	fowners root:guixbuild /gnu/store
