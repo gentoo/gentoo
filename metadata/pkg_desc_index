@@ -6945,9 +6945,6 @@ dev-php/PHP_CodeSniffer 2.6.2-r2: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5: Utility class for timing
 dev-php/PHP_TokenStream 1.1.3: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.3.234_p0: SabreAMF is a Flash Remoting server and client for PHP
-dev-php/Savant2 2.4.3-r1: The simple PHP template alternative to Smarty
-dev-php/Savant3 3.0.1-r1: The simple PHP template alternative to Smarty
-dev-php/Savant3-Plugin-Form 0.2.1: The Form Plugin for Savant3
 dev-php/Text_Template 1.1.1: Simple template engine
 dev-php/YAML 1.0.6-r1: The Symfony YAML Component
 dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source framework for developing Web Applications
@@ -7238,7 +7235,7 @@ dev-python/cherrypy 3.3.0 3.7.0 3.8.0: CherryPy is a pythonic, object-oriented H
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/chump 1.5.1 1.5.2: API wrapper for Pushover
 dev-python/cliapp 1.20140315 1.20150305 1.20160724-r1: Framework for Unix-like command line programs
-dev-python/click 6.6: A Python package for creating beautiful command line interfaces
+dev-python/click 6.6 6.7: A Python package for creating beautiful command line interfaces
 dev-python/click-log 0.1.3 0.1.4 0.1.8: Logging integration for Click.
 dev-python/click-threading 0.1.2 0.3.0: Multithreaded Click apps made easy.
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
@@ -11170,7 +11167,7 @@ games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.7.1.7 1.7.1.21 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.1.21 1.7.2.4 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -13712,7 +13709,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.3.10 0.4.0 0.4.1-r2 0.4.2 0.4.3-r1 0.4.4: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.3.9 0.6.1 0.6.3: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 0.10.5 0.10.6 1.0.10-r1 1.1.5 1.1.6 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 0.10.5 0.10.6 1.0.10-r1 1.1.6 1.1.7 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r1 1.2.2-r2: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.4.0-r1 0.4.1 0.4.2: A graphical frontend to the LinuxSampler engine
