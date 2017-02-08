@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=virtual/w3m >=virtual/emacs-23 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=emacs-w3m is an interface program of w3m on Emacs
+EAPI=6
+HOMEPAGE=http://emacs-w3m.namazu.org/
+IUSE=l10n_ja
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2+
+RDEPEND=virtual/w3m >=virtual/emacs-23
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/emacs-w3m-1.4.570_pre20170203.tar.xz
+_eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b23283f0e7dba620726a9833edb723cb

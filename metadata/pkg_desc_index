@@ -1137,7 +1137,7 @@ app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modell
 app-emacs/emacs-common-gentoo 1.5 1.6: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
-app-emacs/emacs-w3m 1.4.513_pre20130204 1.4.528_pre20140213: emacs-w3m is an interface program of w3m on Emacs
+app-emacs/emacs-w3m 1.4.528_pre20140213 1.4.570_pre20170203: emacs-w3m is an interface program of w3m on Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emacs-wiki 2.72-r2: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/emacs-wiki-blog 0.5: Emacs-Wiki add-on for maintaining a weblog
