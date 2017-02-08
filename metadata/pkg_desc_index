@@ -10142,7 +10142,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.7.4 2.11 2.17 2.19.1 2.19.4 2.26 2.27 2.28 2.32.1 2.32.2 2.33 2.38 2.42: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.7.4 2.11 2.17 2.19.1 2.19.4 2.26 2.27 2.28 2.32.1 2.32.2 2.33 2.38 2.42 2.45: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
@@ -18471,7 +18471,7 @@ x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.8.17-r2 0.10.29 0.10.31 0.10.32: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.2: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 1.2.10-r13 2.24.31 2.24.31-r1 3.20.9 3.22.5: Gimp ToolKit +
+x11-libs/gtk+ 2.24.31 2.24.31-r1 3.20.9 3.22.5: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.0 3.3.3: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
