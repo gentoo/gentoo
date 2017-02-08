@@ -2153,7 +2153,7 @@ app-shells/fish 2.4.0 2.5.0: fish is the Friendly Interactive SHell
 app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, repoman, layman, etc)
 app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
-app-shells/hstr 1.21 1.21-r1: shell history suggest box
+app-shells/hstr 1.21 1.21-r1 1.22: shell history suggest box
 app-shells/ksh 93.20140625 93.20160110: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52 52b 52c 53a 9999: MirBSD Korn Shell
