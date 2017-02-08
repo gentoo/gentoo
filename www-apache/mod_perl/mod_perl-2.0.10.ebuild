@@ -29,6 +29,7 @@ RDEPEND="
 	dev-lang/perl[ithreads=]
 	>=dev-perl/Apache-Test-1.400.0
 	>=www-servers/apache-2.0.47
+	>=dev-libs/apr-util-1.4
 	!ithreads? ( www-servers/apache[-apache2_mpms_event,-apache2_mpms_worker,apache2_mpms_prefork] )
 "
 DEPEND="${RDEPEND}
