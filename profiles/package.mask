@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (08 Feb 2017)
+# Broken with multiple -e patterns (bug #608644)
+=sys-apps/grep-2.28
+
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
