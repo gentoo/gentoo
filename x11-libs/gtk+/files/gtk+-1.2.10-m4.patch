@@ -1,9 +1,0 @@
-Fix aclocal warnings:
-/usr/share/aclocal/gtk.m4:7: warning: underquoted definition of AM_PATH_GTK
---- gtk+-1.2.10/gtk.m4
-+++ gtk+-1.2.10/gtk.m4
-@@ -6,3 +6,3 @@
- dnl
--AC_DEFUN(AM_PATH_GTK,
-+AC_DEFUN([AM_PATH_GTK],
- [dnl 
