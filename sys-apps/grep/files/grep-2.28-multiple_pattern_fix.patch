@@ -1,0 +1,97 @@
+From 6e4c8728f0e75af57f839625d0bd51b0a02d091e Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Wed, 8 Feb 2017 13:00:11 -0800
+Subject: grep: do not mishandle \. in multiple patterns
+
+Problem reported by Lars Wendler (Bug#25655).
+* NEWS: Document this.
+* src/grep.c (try_fgrep_pattern): Fix typo that prevented
+keys from being properly updated.
+* tests/foad1: Test for the bug.
+---
+ src/grep.c  | 15 ++++++++-------
+ tests/foad1 |  7 +++++++
+ 3 files changed, 20 insertions(+), 7 deletions(-)
+
+diff --git a/src/grep.c b/src/grep.c
+index 81654c3..74acb0b 100644
+--- a/src/grep.c
++++ b/src/grep.c
+@@ -2361,11 +2361,12 @@ try_fgrep_pattern (int matcher, char *keys, size_t *len_p)
+   size_t len = *len_p;
+   char *new_keys = xmalloc (len + 1);
+   char *p = new_keys;
++  char const *q = keys;
+   mbstate_t mb_state = { 0 };
+ 
+   while (len != 0)
+     {
+-      switch (*keys)
++      switch (*q)
+         {
+         case '$': case '*': case '.': case '[': case '^':
+           goto fail;
+@@ -2377,7 +2378,7 @@ try_fgrep_pattern (int matcher, char *keys, size_t *len_p)
+ 
+         case '\\':
+           if (1 < len)
+-            switch (keys[1])
++            switch (q[1])
+               {
+               case '\n':
+               case 'B': case 'S': case 'W': case'\'': case '<':
+@@ -2391,7 +2392,7 @@ try_fgrep_pattern (int matcher, char *keys, size_t *len_p)
+                   goto fail;
+                 /* Fall through.  */
+               default:
+-                keys++, len--;
++                q++, len--;
+                 break;
+               }
+           break;
+@@ -2401,20 +2402,20 @@ try_fgrep_pattern (int matcher, char *keys, size_t *len_p)
+         size_t n;
+         if (match_icase)
+           {
+-            int ni = fgrep_icase_charlen (keys, len, &mb_state);
++            int ni = fgrep_icase_charlen (q, len, &mb_state);
+             if (ni < 0)
+               goto fail;
+             n = ni;
+           }
+         else
+           {
+-            n = mb_clen (keys, len, &mb_state);
++            n = mb_clen (q, len, &mb_state);
+             if (MB_LEN_MAX < n)
+               goto fail;
+           }
+ 
+-        p = mempcpy (p, keys, n);
+-        keys += n;
++        p = mempcpy (p, q, n);
++        q += n;
+         len -= n;
+       }
+     }
+diff --git a/tests/foad1 b/tests/foad1
+index 286c449..0163f1a 100755
+--- a/tests/foad1
++++ b/tests/foad1
+@@ -137,6 +137,13 @@ grep_test "$x2" "$y2" -F -w --color=always bc
+ grep_test "$x3" "$y3" -E -w --color=always bc
+ grep_test "$x3" "$y3" -F -w --color=always bc
+ 
++# Bug#25655
++grep_test .tar/ .tar/ -e '\.tar' -e '\.tbz'
++grep_test .tar/ .tar/ -o -e '\.tar' -e 'tar'
++grep_test '$*.[^\/' '$*.[^\/' -o -e '\$\*\.\[\^\\' -e abc
++grep_test '$*.[^\/(+?{|/' '$*.[^\/(+?{|/' -o -E \
++          -e '\$\*\.\[\^\\' -e '\(\+\?\{\|'
++
+ # Skip the rest of the tests - known to fail. TAA.
+ Exit $failures
+ 
+-- 
+cgit v1.0-41-gc330
+
