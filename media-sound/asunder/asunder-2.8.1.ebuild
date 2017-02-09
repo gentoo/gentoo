@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis, FLAC and Opus"
 HOMEPAGE="http://littlesvr.ca/asunder/"
@@ -33,5 +33,6 @@ RDEPEND="${COMMON_DEPEND}
 DOCS="AUTHORS ChangeLog README TODO" # NEWS is dummy
 
 src_prepare() {
+	default
 	sed -i -e 's:cd syslogng && $(MAKE) install:true:' "${S}"/Makefile.in
 }

@@ -51,6 +51,12 @@ toolchain-glibc_src_install() {
 		cp -a elf/ld.so "${ED}"$(alt_libdir)/$(scanelf -qSF'%S#F' elf/ld.so) || die "copying nptl interp"
 	fi
 
+	# Newer versions get fancy with libm linkage to include vectorized support.
+	# While we don't really need a ldscript here, portage QA checks get upset.
+	if [[ -e ${ED}$(alt_usrlibdir)/libm-${PV}.a ]] ; then
+		dosym ../../$(get_libdir)/libm-${PV}.so $(alt_usrlibdir)/libm-${PV}.so
+	fi
+
 	# We'll take care of the cache ourselves
 	rm -f "${ED}"/etc/ld.so.cache
 
