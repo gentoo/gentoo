@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,13 +22,13 @@ if [[ ${PV} = 9999* ]]; then
 	KEYWORDS=""
 	SRC_URI=""
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-	SRC_URI="https://github.com/anholt/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	SRC_URI="https://github.com/anholt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="test"
 RESTRICT="test" # FIXME: tests fail when run from portage.
 
 DEPEND="${PYTHON_DEPS}
