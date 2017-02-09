@@ -39,7 +39,10 @@ src_prepare() {
 			config.h \
 			|| die "sed failed"
 	fi
+}
 
+src_configure() {
+	tc-ld-disable-gold #580212
 	tc-export AS CC LD
 }
 
