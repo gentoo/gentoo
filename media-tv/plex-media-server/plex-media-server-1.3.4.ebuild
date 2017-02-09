@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,8 @@ EAPI=6
 
 inherit eutils user systemd unpacker
 
-MINOR1="2987"
-MINOR2="1bef33a"
+MINOR1="3285"
+MINOR2="b46e0ea"
 
 _APPNAME="plexmediaserver"
 _USERNAME="plex"
