@@ -46,9 +46,9 @@ src_install() {
 	newconfd "${FILESDIR}"/grafana.confd grafana
 	newinitd "${FILESDIR}"/grafana.initd.2 grafana
 
-	keepdir /var/{lib,log}/grafana
-	fowners grafana:grafana /var/{lib,log}/grafana
-	fperms 0750 /var/{lib,log}/grafana
+	keepdir /var/{lib,log}/grafana /var/lib/grafana/dashboards
+	fowners grafana:grafana /var/{lib,log}/grafana /var/lib/grafana/dashboards
+	fperms 0750 /var/{lib,log}/grafana /var/lib/grafana/dashboards
 
 	# Logrotation
 	insinto /etc/logrotate.d
