@@ -10,7 +10,7 @@ inherit autotools eutils gnome2
 
 MY_P="QtPixmap-${PV}"
 
-DESCRIPTION="A modified version of the original GTK pixmap engine with the KDE color scheme"
+DESCRIPTION="Theme engine based on GTK pixmap engine using the Plasma color scheme"
 HOMEPAGE="http://www.kde-look.org/content/show.php?content=7043"
 SRC_URI="http://www.cpdrummond.freeuk.com/${MY_P}.tar.gz"
 

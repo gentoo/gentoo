@@ -98,7 +98,7 @@ src_prepare() {
 
 	if use systemd; then
 		local systemdutildir="$(systemd_get_utildir)"
-		local systemdsystemunitdir="$(systemd_get_unitdir)"
+		local systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		local systemdsystemconfdir="$("$(tc-getPKG_CONFIG)" systemd \
 			--variable=systemdsystemconfdir)"
 		[[ ${systemdsystemconfdir} ]] \
@@ -130,7 +130,7 @@ src_configure() {
 	)
 
 	if use systemd; then
-		myconf+=( --systemdsystemunitdir="$(systemd_get_unitdir)" )
+		myconf+=( --systemdsystemunitdir="$(systemd_get_systemunitdir)" )
 	fi
 
 	econf "${myconf[@]}"
