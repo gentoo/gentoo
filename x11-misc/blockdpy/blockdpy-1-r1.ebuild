@@ -1,7 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Tool to block access via the physical display while x11vnc is running"
@@ -20,30 +21,33 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}
 
 src_unpack() {
-	cp "${DISTDIR}"/blockdpy.c blockdpy.c
+	cp "${DISTDIR}"/blockdpy.c blockdpy.c || die
+}
 
+src_prepare() {
+	default
 	# Add includes to avoid QA warnings.
-	sed -i '/#include <stdio.h>/i#include <stdlib.h>' blockdpy.c
-	sed -i '/#include <stdio.h>/i#include <string.h>' blockdpy.c
+	sed -i '/#include <stdio.h>/i#include <stdlib.h>' blockdpy.c || die
+	sed -i '/#include <stdio.h>/i#include <string.h>' blockdpy.c || die
 }
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o blockdpy blockdpy.c -lX11 -lXext ||
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o blockdpy blockdpy.c -lX11 -lXext ||
 		die "compile failed"
 
 	# Create README from head comment in source.
-	sed -n '1,/^ *\*\//s/^[ -]*\*[ \/]*//p' < blockdpy.c > README
+	sed -n '1,/^ *\*\//s/^[ -]*\*[ \/]*//p' < blockdpy.c > README || die
 }
 
 src_install() {
-	dobin blockdpy || die "install failed"
-	dodoc README
+	dobin blockdpy
+	einstalldocs
 }
 
 pkg_postinst() {
 	# Just warn about missing xlock instead of requiring it in case
 	# the user wants to use something else.
-	if ! [ -x /usr/bin/xlock ]; then
+	if [[ ! -x ${EPREFIX}/usr/bin/xlock ]]; then
 		ewarn 'The xlock executable was not found.'
 		ewarn 'blockdpy runs "xlock" as the screen-lock program by default.'
 		ewarn 'You should either install x11-misc/xlockmore or override the'
