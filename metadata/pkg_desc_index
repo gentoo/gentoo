@@ -18620,7 +18620,7 @@ x11-misc/bbppp 0.2.5 0.2.5-r1: blackbox ppp frontend/monitor
 x11-misc/bbrun 1.6-r1: blackbox program execution dialog box
 x11-misc/bbtime 0.1.5: blackbox time watcher
 x11-misc/bbweather 0.6.3-r1: blackbox weather monitor
-x11-misc/blockdpy 1: Tool to block access via the physical display while x11vnc is running
+x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.3 0.3.4: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
@@ -18637,9 +18637,9 @@ x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autosta
 x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
 x11-misc/driconf 0.9.1-r1 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
-x11-misc/dsx 0.1: command line selection of your X desktop environment
+x11-misc/dsx 0.1 0.1-r1: Command line selection of your X desktop environment
 x11-misc/dunst 1.1.0: customizable and lightweight notification-daemon
-x11-misc/dxpc 3.9.2-r1: Differential X Protocol Compressor
+x11-misc/dxpc 3.9.2-r1 3.9.2-r2: Differential X Protocol Compressor
 x11-misc/dzen 0.9.5-r1: a general purpose messaging, notification and menuing program for X11
 x11-misc/e16keyedit 0.7: Key binding editor for enlightenment 16
 x11-misc/e16menuedit2 0.0.3: Menu editor for enlightenment DR16 written in GTK2
@@ -18792,7 +18792,7 @@ x11-misc/sxhkd 0.5.3 0.5.4 0.5.5 0.5.6 0.5.7: Simple X hotkey daemon
 x11-misc/synergy 1.6.3 1.8.1-r3 1.8.2 1.8.5 1.8.6: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 0.11-r2 0.12.3 0.12.12: tint2 is a lightweight panel/taskbar for Linux.
-x11-misc/tintwizard 0.3.4-r1: GUI wizard which generates config files for tint2 panels
+x11-misc/tintwizard 0.3.4-r1 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
 x11-misc/touchcal 0.50 0.80: Touchscreen calibration utility
@@ -18811,7 +18811,7 @@ x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessio
 x11-misc/vym 2.3.22 2.3.24 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r2: Wayv is hand-writing/gesturing recognition software for X
 x11-misc/wbar 2.3.4-r1 2.3.4-r2: A fast, lightweight quick launch bar
-x11-misc/wbarconf 0.7.2.2-r1: Configuration GUI for x11-misc/wbar
+x11-misc/wbarconf 0.7.2.2-r1 0.7.2.2-r2: Configuration GUI for x11-misc/wbar
 x11-misc/wdm 1.28-r3 1.28-r4: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7 0.7-r1: An X app that follows your pointer providing information about the windows below
@@ -19210,7 +19210,7 @@ x11-themes/gtk-engines-experience 0.10.4 0.10.5: GTK+ Experience Theme Engine
 x11-themes/gtk-engines-flat 2.0-r3: GTK+ Flat Theme Engine
 x11-themes/gtk-engines-murrine 0.98.2-r1: Murrine GTK+2 Cairo Engine
 x11-themes/gtk-engines-nodoka 0.7.5: GTK+ engine and themes developed by the Fedora Project
-x11-themes/gtk-engines-qtpixmap 0.28-r2: A modified version of the original GTK pixmap engine with the KDE color scheme
+x11-themes/gtk-engines-qtpixmap 0.28-r2: Theme engine based on GTK pixmap engine using the Plasma color scheme
 x11-themes/gtk-engines-quartz 0.2: OSX GTK+ Theme Engine
 x11-themes/gtk-engines-rezlooks 0.6: Rezlooks GTK+ Engine
 x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
