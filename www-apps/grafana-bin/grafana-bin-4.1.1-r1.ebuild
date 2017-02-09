@@ -48,7 +48,7 @@ src_install() {
 
 	keepdir /var/{lib,log}/grafana /var/lib/grafana/dashboards
 	fowners grafana:grafana /var/{lib,log}/grafana /var/lib/grafana/dashboards
-	fperms 0750 /var/{lib,log}/grafana /var/lib/grafana/dashboards
+	fperms 0755 /var/{lib,log}/grafana /var/lib/grafana/dashboards
 
 	# Logrotation
 	insinto /etc/logrotate.d
