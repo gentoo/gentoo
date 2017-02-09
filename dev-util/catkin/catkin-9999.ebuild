@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -58,7 +58,11 @@ src_prepare() {
 }
 
 catkin_src_configure_internal() {
-	mycmakeargs+=( -DPYTHON_EXECUTABLE="${PYTHON}" )
+	local sitedir="$(python_get_sitedir)"
+	mycmakeargs+=(
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
+	)
 	python_export PYTHON_SCRIPTDIR
 	cmake-utils_src_configure
 }
