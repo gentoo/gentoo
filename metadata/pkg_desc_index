@@ -12522,6 +12522,7 @@ media-gfx/graphite2 1.3.5 1.3.8 1.3.9: Library providing rendering capabilities 
 media-gfx/graphviz 2.26.3-r4 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r1: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
+media-gfx/gscan2pdf 1.7.1: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.4.3 3.4.4.1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK

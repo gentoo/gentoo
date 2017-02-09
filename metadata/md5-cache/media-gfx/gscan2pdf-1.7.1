@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-lang/perl:=
+DESCRIPTION=Scan documents, perform OCR, produce PDFs and DjVus
+EAPI=6
+HOMEPAGE=http://gscan2pdf.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-perl/Config-General dev-perl/Date-Calc dev-perl/Data-UUID dev-perl/Filesys-Df dev-perl/glib-perl dev-perl/Goo-Canvas dev-perl/Gtk2-Ex-PodViewer dev-perl/Gtk2-Ex-Simple-List dev-perl/Gtk2-ImageView dev-perl/gtk2-perl dev-perl/HTML-Parser dev-perl/Locale-gettext dev-perl/List-MoreUtils dev-perl/Log-Log4perl dev-perl/PDF-API2 dev-perl/Proc-ProcessTable dev-perl/Readonly dev-perl/Sane dev-perl/Set-IntSpan dev-perl/Try-Tiny virtual/perl-Archive-Tar virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-threads virtual/perl-threads-shared media-gfx/gtkimageview media-gfx/imagemagick[png,tiff,perl] media-gfx/sane-backends media-libs/tiff dev-lang/perl:=
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/gscan2pdf/gscan2pdf-1.7.1.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b4582bb56b1ad87241e9305a79650267
