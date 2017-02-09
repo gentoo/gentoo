@@ -10,9 +10,14 @@ inherit multiprocessing
 test-makeopts_loadavg() {
 	local exp=$1; shift
 	tbegin "makeopts_loadavg($1${2+; inf=${2}}) == ${exp}"
-	local act=$(makeopts_loadavg "$@")
-	[[ ${act} == "${exp}" ]]
-	tend $? "Got back: ${act}"
+	local indirect=$(MAKEOPTS="$*" makeopts_loadavg)
+	local direct=$(makeopts_loadavg "$@")
+	if [[ "${direct}" != "${indirect}" ]] ; then
+		tend 1 "Mismatch between MAKEOPTS/cli: '${indirect}' != '${direct}'"
+	else
+		[[ ${direct} == "${exp}" ]]
+		tend $? "Got back: ${act}"
+	fi
 }
 
 tests=(

@@ -96,7 +96,7 @@ get_nproc() {
 # no way to represent infinity, we return ${inf} (defaults to 999) if the user
 # has -j without a number.
 makeopts_jobs() {
-	[[ $# -eq 0 ]] && set -- ${MAKEOPTS}
+	[[ $# -eq 0 ]] && set -- "${MAKEOPTS}"
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
 	local jobs=$(echo " $* " | sed -r -n \
@@ -117,7 +117,7 @@ makeopts_jobs() {
 # If no limit is specified or --load-average is used without a number, ${inf}
 # (defaults to 999) is returned.
 makeopts_loadavg() {
-	[[ $# -eq 0 ]] && set -- ${MAKEOPTS}
+	[[ $# -eq 0 ]] && set -- "${MAKEOPTS}"
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
 	local lavg=$(echo " $* " | sed -r -n \
