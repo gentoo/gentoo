@@ -29,7 +29,6 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="test" # FIXME: tests fail when run from portage.
 
 DEPEND="${PYTHON_DEPS}
 	media-libs/mesa[egl,${MULTILIB_USEDEP}]
