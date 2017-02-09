@@ -1293,7 +1293,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.26.1 1.27.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.12.6 1.13.0 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.12.6 1.13.0 1.13.1 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.10.0 1.10.1: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2 0.9.0: Machine management for a container-centric world
@@ -15428,7 +15428,7 @@ net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin
 net-p2p/litecoind 0.10.2.2-r4 0.10.4.0: Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. It's based on Bitcoin and not so widely adapted.
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
-net-p2p/mldonkey 3.1.5-r1 3.1.6: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
+net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
 net-p2p/multibit 0.5.18: Secure, lightweight, international Bitcoin wallet written in Java
 net-p2p/myster 8.0-r1: Myster is a decentralized file sharing network
 net-p2p/ncdc 1.18.1 1.19 1.19.1 9999: ncurses directconnect client
@@ -17385,7 +17385,7 @@ sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1 20161212: NetBSD's portable make
+sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1 20161212 20170201: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.0-r100 3.9.1-r100 4.0.0_rc1 9999: C language family frontend for LLVM
