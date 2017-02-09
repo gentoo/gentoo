@@ -9,5 +9,5 @@ RDEPEND=>=dev-perl/glib-perl-1.320.0 >=dev-libs/gobject-introspection-1.0 >=dev-
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.040.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=ba8cd8980c2bf7e854f6d849910584b4

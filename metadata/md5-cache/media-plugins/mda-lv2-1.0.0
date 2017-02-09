@@ -9,5 +9,5 @@ RDEPEND=media-libs/lv2
 SLOT=0
 SRC_URI=http://download.drobilla.net/mda-lv2-1.0.0.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_configure:waf-utils src_compile:waf-utils src_install:waf-utils
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=18444342e7afbf546573f944bcf5c698

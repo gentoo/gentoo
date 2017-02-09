@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 x11-libs/libxcb
 SLOT=0
 SRC_URI=https://bitbucket.org/raymonad/xss-lock/get/1e158fb20108058dbd62bd51d8e8c003c0a48717.tar.bz2 -> xss-lock-0.3.0_p20140302.tar.bz2
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=ab51a7018c5881e327663e085573a71b

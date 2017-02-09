@@ -10,5 +10,5 @@ RDEPEND=dev-perl/Config-INI >=dev-perl/Config-MVP-2 dev-perl/Moose virtual/perl-
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Config-MVP-Reader-INI-2.101463.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
 _md5_=b6a03fe34dc6766158cbb421a85c7f3a

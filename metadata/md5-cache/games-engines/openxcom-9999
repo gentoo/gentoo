@@ -8,5 +8,5 @@ LICENSE=GPL-3+ CC-BY-SA-4.0
 RDEPEND=>=dev-cpp/yaml-cpp-0.5.1 media-libs/libsdl[opengl,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[flac,mikmod,vorbis]
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	git-r3	6efc2d7de07a77bf72c7207b48d0e123	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	git-r3	6efc2d7de07a77bf72c7207b48d0e123	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=19a1b42482f6dca2fbee0e7048f1eed9

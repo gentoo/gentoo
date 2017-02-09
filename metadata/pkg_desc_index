@@ -6898,7 +6898,7 @@ dev-php/PEAR-Net_URL2 2.0.5 2.2.1-r1: Easy parsing of URLs (PHP5 port of PEAR-Ne
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web browser, version, and platform from an HTTP user agent string
 dev-php/PEAR-Numbers_Roman 1.0.2: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals in words
-dev-php/PEAR-OLE 0.6.1 1.0.0_rc2-r1: Package for reading and writing OLE containers
+dev-php/PEAR-OLE 1.0.0_rc2-r1: Package for reading and writing OLE containers
 dev-php/PEAR-PEAR 1.9.4 1.10.1-r1: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
 dev-php/PEAR-PEAR_PackageFileManager 1.7.2: Updates an existing package.xml file with a new filelist and changelog
@@ -6924,7 +6924,7 @@ dev-php/PEAR-System_Command 1.0.8 1.0.8-r1: PHP command-line execution interface
 dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
 dev-php/PEAR-Text_CAPTCHA 0.5.0 1.0.2: Generation of CAPTCHAs
 dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers in order to prove that bots using it are human
-dev-php/PEAR-Text_Figlet 1.0.2 1.0.2-r1: Render text using FIGlet fonts
+dev-php/PEAR-Text_Figlet 1.0.2-r1: Render text using FIGlet fonts
 dev-php/PEAR-Text_Highlighter 0.7.3-r1: A package for syntax highlighting
 dev-php/PEAR-Text_Password 1.1.1 1.2.1: Creating passwords with PHP
 dev-php/PEAR-Text_Wiki 1.2.2: Abstracts parsing and rendering rules for Wiki markup in structured plain text
