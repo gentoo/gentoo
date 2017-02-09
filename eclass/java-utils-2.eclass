@@ -1,4 +1,4 @@
-# Copyright 2004-2015 Gentoo Foundation
+# Copyright 2004-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -338,7 +338,7 @@ java-pkg_dojar() {
 		if [[ -e "${jar}" ]] ; then
 			# Don't overwrite if jar has already been installed with the same
 			# name
-			local dest="${D}${JAVA_PKG_JARDEST}/${jar_basename}"
+			local dest="${ED}${JAVA_PKG_JARDEST}/${jar_basename}"
 			if [[ -e "${dest}" ]]; then
 				ewarn "Overwriting ${dest}"
 			fi
@@ -352,13 +352,13 @@ java-pkg_dojar() {
 					insinto "${JAVA_PKG_JARDEST}"
 					doins "${jar}"
 				) || die "failed to install ${jar}"
-				java-pkg_append_ JAVA_PKG_CLASSPATH "${JAVA_PKG_JARDEST}/${jar_basename}"
-				debug-print "installed ${jar} to ${D}${JAVA_PKG_JARDEST}"
+				java-pkg_append_ JAVA_PKG_CLASSPATH "${EPREFIX}/${JAVA_PKG_JARDEST}/${jar_basename}"
+				debug-print "installed ${jar} to ${ED}${JAVA_PKG_JARDEST}"
 			# make a symlink to the original jar if it's symlink
 			else
 				# TODO use dosym, once we find something that could use it
 				# -nichoj
-				ln -s "$(readlink "${jar}")" "${D}${JAVA_PKG_JARDEST}/${jar_basename}"
+				ln -s "$(readlink "${jar}")" "${ED}${JAVA_PKG_JARDEST}/${jar_basename}"
 				debug-print "${jar} is a symlink, linking accordingly"
 			fi
 		else
@@ -828,7 +828,7 @@ java-pkg_dolauncher() {
 	echo "gjl_package=${JAVA_PKG_NAME}" >> "${target}"
 	cat "${var_tmp}" >> "${target}"
 	rm -f "${var_tmp}"
-	echo "source /usr/share/java-config-2/launcher/launcher.bash" >> "${target}"
+	echo "source ${EPREFIX}/usr/share/java-config-2/launcher/launcher.bash" >> "${target}"
 
 	if [[ -n "${target_dir}" ]]; then
 		(
@@ -1745,7 +1745,7 @@ java-pkg_register-ant-task() {
 	local TASK_NAME="${1:-${JAVA_PKG_NAME}}"
 
 	dodir /usr/share/ant/${TASKS_DIR}
-	touch "${D}/usr/share/ant/${TASKS_DIR}/${TASK_NAME}"
+	touch "${ED}/usr/share/ant/${TASKS_DIR}/${TASK_NAME}"
 }
 
 # @FUNCTION: java-pkg_ant-tasks-depend
@@ -2339,9 +2339,9 @@ java-pkg_init_paths_() {
 
 	JAVA_PKG_SHAREPATH="/usr/share/${JAVA_PKG_NAME}"
 	JAVA_PKG_SOURCESPATH="${JAVA_PKG_SHAREPATH}/sources/"
-	JAVA_PKG_ENV="${D}${JAVA_PKG_SHAREPATH}/package.env"
+	JAVA_PKG_ENV="${ED}${JAVA_PKG_SHAREPATH}/package.env"
 	JAVA_PKG_VIRTUALS_PATH="/usr/share/java-config-2/virtuals"
-	JAVA_PKG_VIRTUAL_PROVIDER="${D}/${JAVA_PKG_VIRTUALS_PATH}/${JAVA_PKG_NAME}"
+	JAVA_PKG_VIRTUAL_PROVIDER="${ED}${JAVA_PKG_VIRTUALS_PATH}/${JAVA_PKG_NAME}"
 
 	[[ -z "${JAVA_PKG_JARDEST}" ]] && JAVA_PKG_JARDEST="${JAVA_PKG_SHAREPATH}/lib"
 	[[ -z "${JAVA_PKG_LIBDEST}" ]] && JAVA_PKG_LIBDEST="/usr/$(get_libdir)/${JAVA_PKG_NAME}"
