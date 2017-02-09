@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
+EAPI=6
+HOMEPAGE=https://github.com/fearedbliss/bliss-initramfs
+KEYWORDS=-* ~amd64
+LICENSE=GPL-3+
+RDEPEND=>=dev-lang/python-3.3 app-arch/cpio virtual/udev
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/fearedbliss/bliss-initramfs/archive/7.0.1.tar.gz -> bliss-initramfs-7.0.1.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=63ef6d3f7c73ba1c02ee0eee4a33f753

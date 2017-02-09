@@ -7799,10 +7799,6 @@ sys-kernel/aufs-sources:deblob - Remove binary blobs from kernel sources to prov
 sys-kernel/aufs-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 sys-kernel/aufs-sources:module - Patch kernel to allow aufs being build as a module.
 sys-kernel/aufs-sources:vanilla - Use vanilla kernel sources without applying genpatches. WARNING: This flag will drop all support from the Gentoo Kernel Security team
-sys-kernel/bliss-initramfs:luks - Encryption support
-sys-kernel/bliss-initramfs:lvm - Logical Volume support
-sys-kernel/bliss-initramfs:raid - RAID support
-sys-kernel/bliss-initramfs:zfs - ZFS support
 sys-kernel/ck-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/dracut:debug - Module installing additional tools like strace, file editor, ssh and more
 sys-kernel/genkernel:crypt - Obsolete USE flag. Use cryptsetup for LUKS support. (bug ##414523)
