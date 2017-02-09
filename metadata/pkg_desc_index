@@ -10031,7 +10031,7 @@ dev-util/codeblocks 16.01 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.12.0 0.13.0.3 0.13.0.4: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
-dev-util/complexity 1.5 1.10: a tool designed for analyzing the complexity of C program functions
+dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
 dev-util/conan 0.16.1 0.17.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
