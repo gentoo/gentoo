@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) >=app-misc/pax-utils-0.1.10 !<sys-apps/sandbox-1.6 !<sys-apps/portage-2.1.2 >=sys-devel/binutils-2.24 >=sys-devel/gcc-4.7 virtual/os-headers sys-devel/gnuconfig virtual/pkgconfig dev-vcs/git
 DESCRIPTION=GNU libc6 (also called glibc2) C library
-EAPI=4
+EAPI=5
 HOMEPAGE=https://www.gnu.org/software/libc/libc.html
 IUSE=audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only
 LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
@@ -12,4 +12,4 @@ SLOT=2.2
 SRC_URI=multilib? ( mirror://gentoo/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~azarah/glibc/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 )
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-2	7af5d170bfc02983b4bcd3167dc5edd4	gnuconfig	3920de1188fc7bfee873515453ed1d10	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	prefix	99dcca42e6528d8fe3c214bf5731aaf2	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9668af62922583a07cdfd2fb6891f070
+_md5_=eba5167ad2601dd25d95dc6a83f257bc

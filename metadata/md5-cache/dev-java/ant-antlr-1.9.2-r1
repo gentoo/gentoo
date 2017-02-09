@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/ant/source/apache-ant-1.9.2-src.tar.bz2 https://dev.gentoo.org/~tomwij/files/dist/ant-1.9.2-gentoo.tar.bz2
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_unpack:ant-tasks src_prepare:java-pkg-2 src_configure:java-ant-2 src_compile:ant-tasks src_install:-
-_eclasses_=ant-tasks	835fd8e281e4c51482eb1a6d178c936f	eutils	ea170b525f6a38a006be05c9d9429f13	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	5224658aa82a59d93cbe0ebf78adf4c2	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=ant-tasks	835fd8e281e4c51482eb1a6d178c936f	eutils	ea170b525f6a38a006be05c9d9429f13	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	8cefdc020b528862da5737e2a230f708	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=d2233407520078626a05da9e19725d43
