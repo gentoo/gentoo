@@ -10,14 +10,20 @@ inherit multiprocessing
 test-makeopts_jobs() {
 	local exp=$1; shift
 	tbegin "makeopts_jobs($1${2+; inf=${2}}) == ${exp}"
-	local act=$(makeopts_jobs "$@")
-	[[ ${act} == "${exp}" ]]
-	tend $? "Got back: ${act}"
+	local indirect=$(MAKEOPTS="$*" makeopts_jobs)
+	local direct=$(makeopts_jobs "$@")
+	if [[ "${direct}" != "${indirect}" ]] ; then
+		tend 1 "Mismatch between MAKEOPTS/cli: '${indirect}' != '${direct}'"
+	else
+		[[ ${direct} == "${exp}" ]]
+		tend $? "Got back: ${act}"
+	fi
 }
 
 tests=(
 	999 "-j"
 	999 "--jobs"
+	999 "-j -l9"
 	1 ""
 	1 "-l9 -w"
 	1 "-l9 -w-j4"
