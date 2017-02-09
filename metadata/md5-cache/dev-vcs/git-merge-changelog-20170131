@@ -7,4 +7,4 @@ LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/git-merge-changelog-20170131.tar.xz
 _eclass_exported_funcs=src_install:-
-_md5_=17b32e4b97811f75d1c19bf932430170
+_md5_=9dcb2d8208db095d1a9db9d55c84c9a9
