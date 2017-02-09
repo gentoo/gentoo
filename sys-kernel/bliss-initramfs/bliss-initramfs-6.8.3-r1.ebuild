@@ -16,23 +16,11 @@ RESTRICT="strip"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="luks raid lvm zfs"
 
 RDEPEND="
 	>=dev-lang/python-3.3
 	app-arch/cpio
-	virtual/udev
-
-	luks? ( sys-fs/cryptsetup
-			app-crypt/gnupg )
-
-	raid? ( sys-fs/mdadm )
-
-	lvm? ( sys-fs/lvm2 )
-
-	zfs? ( sys-kernel/spl
-		   sys-fs/zfs
-		   sys-fs/zfs-kmod )"
+	virtual/udev"
 
 S="${WORKDIR}/${GITHUB_REPO}-${GITHUB_TAG}"
 
