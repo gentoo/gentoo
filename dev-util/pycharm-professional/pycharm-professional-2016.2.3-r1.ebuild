@@ -12,7 +12,7 @@ SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
 
 LICENSE="PyCharm_Academic PyCharm_Classroom PyCharm PyCharm_OpenSource PyCharm_Preview"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.8
