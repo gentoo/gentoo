@@ -299,7 +299,6 @@ multilib_src_configure() {
 		--enable-dri \
 		--enable-glx \
 		--enable-shared-glapi \
-		--disable-shader-cache \
 		$(use_enable !bindist texture-float) \
 		$(use_enable d3d9 nine) \
 		$(use_enable debug) \
