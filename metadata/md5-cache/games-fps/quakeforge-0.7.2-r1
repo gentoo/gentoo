@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=media-libs/libsamplerate net-misc/curl virtual/opengl alsa? ( media-libs/alsa-lib ) dga? ( x11-libs/libXxf86dga ) flac? ( media-libs/flac ) ncurses? ( sys-libs/ncurses:0 ) png? ( media-libs/libpng:0 ) sdl? ( media-libs/libsdl[video] ) vorbis? ( media-libs/libogg media-libs/libvorbis ) wildmidi? ( media-sound/wildmidi ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) zlib? ( sys-libs/zlib ) cdinstall? ( games-fps/quake1-data ) >=sys-devel/bison-2.6 sys-devel/flex virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=New 3d engine based off of id Softwares's Quake and QuakeWorld game engine
+EAPI=6
+HOMEPAGE=http://www.quakeforge.net/
+IUSE=alsa cdinstall debug dga fbcon flac ipv6 ncurses oss png sdl vorbis wildmidi X xdg xv zlib
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsamplerate net-misc/curl virtual/opengl alsa? ( media-libs/alsa-lib ) dga? ( x11-libs/libXxf86dga ) flac? ( media-libs/flac ) ncurses? ( sys-libs/ncurses:0 ) png? ( media-libs/libpng:0 ) sdl? ( media-libs/libsdl[video] ) vorbis? ( media-libs/libogg media-libs/libvorbis ) wildmidi? ( media-sound/wildmidi ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) zlib? ( sys-libs/zlib )
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://sourceforge/quake/quakeforge-0.7.2.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=adc8232e9a0ea50c675e8e116881fc52

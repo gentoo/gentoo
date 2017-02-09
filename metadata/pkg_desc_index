@@ -10856,7 +10856,7 @@ games-fps/quake3-threewave 1.7-r1: Quake III Threewave CTF - Threewave CTF
 games-fps/quake4-bin 1.4.2-r1: Sequel to Quake 2, an id Software 3D first-person shooter
 games-fps/quake4-data 1.0.2147.12: sequel to Quake 2, an id 3D first-person shooter
 games-fps/quake4-demo 1.0-r1: Sequel to Quake 2, an Id 3D first-person shooter
-games-fps/quakeforge 0.7.2: new 3d engine based off of id Softwares's Quake and QuakeWorld game engine
+games-fps/quakeforge 0.7.2 0.7.2-r1: New 3d engine based off of id Softwares's Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1: red-blue Quake II ! play quake2 w/3d glasses !
 games-fps/rott 1.1.2: Rise of the Triad for Linux!
