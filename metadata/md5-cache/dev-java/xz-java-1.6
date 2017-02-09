@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=>=virtual/jdk-1.4 app-arch/unzip >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=Implementation of xz data compression in pure java
+EAPI=6
+HOMEPAGE=http://tukaani.org/xz/java.html
+IUSE=elibc_FreeBSD doc examples source elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=http://tukaani.org/xz/xz-java-1.6.zip
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:- src_configure:java-ant-2 src_compile:java-pkg-2 src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	8cefdc020b528862da5737e2a230f708	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=4e61f6d749a043f9ca69a1f6be054c26

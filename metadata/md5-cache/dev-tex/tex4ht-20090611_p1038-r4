@@ -10,5 +10,5 @@ RDEPEND=app-text/ghostscript-gpl media-gfx/imagemagick dev-libs/kpathsea java? (
 SLOT=0
 SRC_URI=http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/tex4ht-1.0.2009_06_11_1038.tar.gz mirror://gentoo/tex4ht-texlive-2015-08-03.tar.xz
 _eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_postrm:latex-package pkg_postinst:- pkg_setup:java-pkg-opt-2 src_unpack:base src_prepare:- src_configure:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	8cefdc020b528862da5737e2a230f708	latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	8cefdc020b528862da5737e2a230f708	latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=aa020db5eed05ac609e186c40d8c2317
