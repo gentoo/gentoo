@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-RUBY_FAKEGEM_RECIPE_TEST="rspec3"
+RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
 inherit ruby-fakegem
 
@@ -15,11 +15,11 @@ HOMEPAGE="https://github.com/camertron/arel-helpers"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 ruby_add_rdepend "|| (
-			dev-ruby/activerecord:4.1
+			dev-ruby/activerecord:5.0
 			dev-ruby/activerecord:4.2 )"
 
 ruby_add_bdepend "test? (
