@@ -16,7 +16,6 @@
 		<flag name="idleconn">Build with the idleconn program</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">httperf</remote-id>
 		<remote-id type="github">httperf/httperf</remote-id>
 	</upstream>
 </pkgmetadata>
