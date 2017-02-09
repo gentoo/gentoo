@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-d category contains libraries and utilities relevant to the
+		D programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-d enthält Bibliotheken und Werkzeuge für die 
+		Programmiersprache D.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-d contiene librerias y utilidades referentes al
+		lenguaje de programación D.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-d カテゴリーにはDプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-d categorie bevat bibliotheken en hulpmiddelen voor het gebruik van
+		de D programmeertaal.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-d chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình D.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-d contiene librerie ed utilità per il linguaggio D.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-d contém bibliotecas e utilitários relevantes
+		para a linguagem de programação D.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-d zawiera biblioteki i narzędzia związane z językiem
+		programowania D.
+	</longdescription>
+</catmetadata>
