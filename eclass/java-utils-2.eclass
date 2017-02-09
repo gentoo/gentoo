@@ -23,8 +23,8 @@ IUSE="elibc_FreeBSD"
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
 
-# Prefix variables is only available for EAPI>=3
-!use prefix && has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
+# Prefix variables are only available for EAPI>=3
+has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
 
 # @VARIABLE: JAVA_PKG_PORTAGE_DEP
 # @INTERNAL
