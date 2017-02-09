@@ -2,8 +2,8 @@
 * Fix ncurses underlinking caused by missing "-ltinfo" in $LIBS
 https://bugs.gentoo.org/show_bug.cgi?id=561718
 
---- a/configure.ac
-+++ b/configure.ac
+--- a/configure.in
++++ b/configure.in
 @@ -3,7 +3,7 @@
  
  AC_INIT([bwm-ng],[0.6.1],[bwmng@gropp.org],[bwm-ng])
