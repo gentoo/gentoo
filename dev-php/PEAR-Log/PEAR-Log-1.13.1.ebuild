@@ -12,7 +12,7 @@ HOMEPAGE="http://pear.php.net/package/${MY_PN}"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="examples test"
 
 # The DB, Mail, and MDB2 dependencies are technically optional, but
