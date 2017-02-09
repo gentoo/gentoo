@@ -11,7 +11,6 @@ inherit ruby-fakegem versionator
 
 DESCRIPTION="Native PostgreSQL data types and querying extensions for ActiveRecord and Arel"
 HOMEPAGE="https://github.com/dockyard/postgres_ext"
-SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
 SLOT="$(get_version_component_range 1)"
