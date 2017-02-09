@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit linux-info systemd toolchain-funcs udev vcs-snapshot
+inherit linux-info systemd toolchain-funcs udev vcs-snapshot toolchain-funcs
 
 DESCRIPTION="Device mapper target autoconfig"
 HOMEPAGE="http://christophe.varoqui.free.fr/"
@@ -66,6 +66,7 @@ src_compile() {
 	# LIBDM_API_FLUSH involves grepping files in /usr/include,
 	# so force the test to go the way we want #411337.
 	emake \
+		CC="$(tc-getCC)" \
 		LIBDM_API_FLUSH=1 SYSTEMD="$(get_systemd_pv)"
 }
 
