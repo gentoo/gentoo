@@ -22,6 +22,8 @@
 <use>
   <flag name="athena">Enable the MIT Athena widget set
     (<pkg>x11-libs/libXaw</pkg>)</flag>
+  <flag name="dynamic-loading">Enable loading of dynamic libraries at
+    runtime</flag>
   <flag name="games">Support shared score files for games</flag>
   <flag name="gconf">Use <pkg>gnome-base/gconf</pkg> to read the system
     font name</flag>
@@ -40,6 +42,7 @@
   <flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
   <flag name="source">Install C source files and make them available for
     find-function</flag>
+  <flag name="threads">Add elisp threading support</flag>
   <flag name="toolkit-scroll-bars">Use the selected toolkit's scrollbars in
     preference to Emacs' own scrollbars</flag>
   <flag name="wide-int">Prefer wide Emacs integers (typically 62-bit).

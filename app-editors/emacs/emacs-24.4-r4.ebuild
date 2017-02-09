@@ -70,10 +70,7 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? (
-		sys-apps/attr
-		sys-apps/paxctl
-	)"
+	pax_kernel? ( sys-apps/attr )"
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"
