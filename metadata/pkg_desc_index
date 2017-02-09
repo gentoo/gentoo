@@ -8354,7 +8354,7 @@ dev-python/regions 0.1: Astropy affiliated package for region handling
 dev-python/rencode 1.0.3 1.0.3-r1 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0 1.8.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1 3.3.0 3.3.0-r1: Tools for generating printable PDF documents from any data source
-dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
+dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
 dev-python/reproject 0.2 0.3.1: Reproject astronomical images with Python
