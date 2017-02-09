@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}"
 
 src_install() {
 	emake DESTDIR="${D}" install
-	sed -n "/README/{h;:x;n;/^#/!{H;bx};g;s/\n*$//;\
-		s:/usr/local:${EPREFIX}/usr:g;p;q}" gllib/git-merge-changelog.c \
+	sed -n "/README/{h;:x;n;/^#/!{H;bx;};g;s/\n*$//;\
+		s:/usr/local:${EPREFIX}/usr:g;p;q;}" gllib/git-merge-changelog.c \
 		| newdoc - README; assert
 }
