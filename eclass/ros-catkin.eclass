@@ -157,7 +157,12 @@ ros-catkin_src_prepare() {
 # Internal decoration of cmake-utils_src_configure to handle multiple python installs.
 ros-catkin_src_configure_internal() {
 	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-		local mycmakeargs=("${mycmakeargs[@]}" -DPYTHON_EXECUTABLE="${PYTHON}")
+		local sitedir="$(python_get_sitedir)"
+		local mycmakeargs=(
+			"${mycmakeargs[@]}"
+			-DPYTHON_EXECUTABLE="${PYTHON}"
+			-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
+		)
 		python_export PYTHON_SCRIPTDIR
 	fi
 	cmake-utils_src_configure "${@}"
