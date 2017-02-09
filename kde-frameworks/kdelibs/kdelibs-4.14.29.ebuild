@@ -11,7 +11,7 @@ OPENGL_REQUIRED="optional"
 WEBKIT_REQUIRED="optional"
 inherit kde4-base fdo-mime multilib toolchain-funcs flag-o-matic
 
-APPS_VERSION="16.12.0" # Don't forget to bump this
+APPS_VERSION="16.12.2" # Don't forget to bump this
 
 DESCRIPTION="KDE libraries needed by all KDE programs"
 [[ ${KDE_BUILD_TYPE} != live ]] && \

@@ -36,7 +36,7 @@ RDEPEND="${CDEPEND}
 		sys-libs/libsepol
 		sec-policy/selinux-dracut
 	)
-	"
+	!>=app-shells/bash-4.4"
 DEPEND="${CDEPEND}
 	app-text/asciidoc
 	>=dev-libs/libxslt-1.1.26

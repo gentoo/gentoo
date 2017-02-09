@@ -1,0 +1,80 @@
+diff -urN dracut-044.orig/modules.d/50drm/module-setup.sh dracut-044/modules.d/50drm/module-setup.sh
+--- dracut-044.orig/modules.d/50drm/module-setup.sh	2015-11-25 16:22:28.000000000 +0300
++++ dracut-044/modules.d/50drm/module-setup.sh	2016-09-28 02:50:08.914967926 +0300
+@@ -24,9 +24,9 @@
+             local _fname _fcont
+             while read _fname || [ -n "$_fname" ]; do
+                 case "$_fname" in
+-                    *.ko)    _fcont="$(<        $_fname)" ;;
+-                    *.ko.gz) _fcont="$(gzip -dc $_fname)" ;;
+-                    *.ko.xz) _fcont="$(xz -dc   $_fname)" ;;
++                    *.ko)    _fcont="$(<        $_fname tr -d \\0)" ;;
++                    *.ko.gz) _fcont="$(gzip -dc $_fname | tr -d \\0)" ;;
++                    *.ko.xz) _fcont="$(xz -dc   $_fname | tr -d \\0)" ;;
+                 esac
+                 [[   $_fcont =~ $_drm_drivers
+                 && ! $_fcont =~ iw_handler_get_spy ]] \
+diff -urN dracut-044.orig/modules.d/90kernel-modules/module-setup.sh dracut-044/modules.d/90kernel-modules/module-setup.sh
+--- dracut-044.orig/modules.d/90kernel-modules/module-setup.sh	2015-11-25 16:22:28.000000000 +0300
++++ dracut-044/modules.d/90kernel-modules/module-setup.sh	2016-09-28 02:49:11.725390294 +0300
+@@ -10,9 +10,9 @@
+             function bmf1() {
+                 local _f
+                 while read _f || [ -n "$_f" ]; do case "$_f" in
+-                    *.ko)    [[ $(<         $_f) =~ $_blockfuncs ]] && echo "$_f" ;;
+-                    *.ko.gz) [[ $(gzip -dc <$_f) =~ $_blockfuncs ]] && echo "$_f" ;;
+-                    *.ko.xz) [[ $(xz -dc   <$_f) =~ $_blockfuncs ]] && echo "$_f" ;;
++                    *.ko)    [[ $(<         $_f tr -d \\0) =~ $_blockfuncs ]] && echo "$_f" ;;
++                    *.ko.gz) [[ $(gzip -dc <$_f | tr -d \\0) =~ $_blockfuncs ]] && echo "$_f" ;;
++                    *.ko.xz) [[ $(xz -dc   <$_f | tr -d \\0) =~ $_blockfuncs ]] && echo "$_f" ;;
+                     esac
+                 done
+                 return 0
+diff -urN dracut-044.orig/modules.d/90kernel-network-modules/module-setup.sh dracut-044/modules.d/90kernel-network-modules/module-setup.sh
+--- dracut-044.orig/modules.d/90kernel-network-modules/module-setup.sh	2015-11-25 16:22:28.000000000 +0300
++++ dracut-044/modules.d/90kernel-network-modules/module-setup.sh	2016-09-28 02:51:08.202422231 +0300
+@@ -26,9 +26,9 @@
+             while read _fname; do
+                 [[ $_fname =~ $_unwanted_drivers ]] && continue
+                 case "$_fname" in
+-                    *.ko)    _fcont="$(<        $_fname)" ;;
+-                    *.ko.gz) _fcont="$(gzip -dc $_fname)" ;;
+-                    *.ko.xz) _fcont="$(xz -dc   $_fname)" ;;
++                    *.ko)    _fcont="$(<        $_fname tr -d \\0)" ;;
++                    *.ko.gz) _fcont="$(gzip -dc $_fname | tr -d \\0)" ;;
++                    *.ko.xz) _fcont="$(xz -dc   $_fname | tr -d \\0)" ;;
+                 esac
+                 [[   $_fcont =~ $_net_drivers
+                 && ! $_fcont =~ iw_handler_get_spy ]] \
+diff -urN dracut-044.orig/modules.d/90multipath/module-setup.sh dracut-044/modules.d/90multipath/module-setup.sh
+--- dracut-044.orig/modules.d/90multipath/module-setup.sh	2015-11-25 16:22:28.000000000 +0300
++++ dracut-044/modules.d/90multipath/module-setup.sh	2016-09-28 02:49:11.726390235 +0300
+@@ -58,9 +58,9 @@
+             local _f
+             while read _f || [ -n "$_f" ]; do
+                 case "$_f" in
+-                    *.ko)    [[ $(<         $_f) =~ $_funcs ]] && echo "$_f" ;;
+-                    *.ko.gz) [[ $(gzip -dc <$_f) =~ $_funcs ]] && echo "$_f" ;;
+-                    *.ko.xz) [[ $(xz -dc   <$_f) =~ $_funcs ]] && echo "$_f" ;;
++                    *.ko)    [[ $(<         $_f tr -d \\0) =~ $_funcs ]] && echo "$_f" ;;
++                    *.ko.gz) [[ $(gzip -dc <$_f | tr -d \\0) =~ $_funcs ]] && echo "$_f" ;;
++                    *.ko.xz) [[ $(xz -dc   <$_f | tr -d \\0) =~ $_funcs ]] && echo "$_f" ;;
+                 esac
+             done
+             return 0
+diff -urN dracut-044.orig/modules.d/95iscsi/module-setup.sh dracut-044/modules.d/95iscsi/module-setup.sh
+--- dracut-044.orig/modules.d/95iscsi/module-setup.sh	2015-11-25 16:22:28.000000000 +0300
++++ dracut-044/modules.d/95iscsi/module-setup.sh	2016-09-28 02:49:11.726390235 +0300
+@@ -168,9 +168,9 @@
+             local _f
+             while read _f || [ -n "$_f" ]; do
+                 case "$_f" in
+-                    *.ko)    [[ $(<         $_f) =~ $_funcs ]] && echo "$_f" ;;
+-                    *.ko.gz) [[ $(gzip -dc <$_f) =~ $_funcs ]] && echo "$_f" ;;
+-                    *.ko.xz) [[ $(xz -dc   <$_f) =~ $_funcs ]] && echo "$_f" ;;
++                    *.ko)    [[ $(<         $_f tr -d \\0) =~ $_funcs ]] && echo "$_f" ;;
++                    *.ko.gz) [[ $(gzip -dc <$_f | tr -d \\0) =~ $_funcs ]] && echo "$_f" ;;
++                    *.ko.xz) [[ $(xz -dc   <$_f | tr -d \\0) =~ $_funcs ]] && echo "$_f" ;;
+                 esac
+             done
+             return 0
