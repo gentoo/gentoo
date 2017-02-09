@@ -13,7 +13,7 @@ SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01
 	examples? ( GPL-2+ OFL-1.1 )"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples"
 
 RDEPEND="dev-lang/php:*
