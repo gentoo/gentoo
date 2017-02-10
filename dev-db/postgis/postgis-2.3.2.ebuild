@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-POSTGRES_COMPAT=( 9.{1,2,3,4,5} )
+POSTGRES_COMPAT=( 9.{1,2,3,4,5,6} )
 
 inherit autotools eutils versionator
 
@@ -21,6 +21,7 @@ IUSE="doc gtk static-libs test"
 
 RDEPEND="
 		|| (
+			dev-db/postgresql:9.6[server]
 			dev-db/postgresql:9.5[server]
 			dev-db/postgresql:9.4[server]
 			dev-db/postgresql:9.3[server]
