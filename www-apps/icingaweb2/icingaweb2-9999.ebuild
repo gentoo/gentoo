@@ -13,12 +13,13 @@ EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apache2 ldap mysql nginx postgres"
+IUSE="apache2 ldap mysql nginx pdf postgres"
 REQUIRED_USE="^^ ( apache2 nginx )"
 KEYWORDS=""
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
+		pdf? ( media-gfx/imagemagick[png] )
 		apache2? (
 			>=www-servers/apache-2.4.0
 			|| (
