@@ -10,7 +10,7 @@ DESCRIPTION="A powerful declarative parser for binary data"
 HOMEPAGE="http://construct.wikispaces.com/ https://pypi.python.org/pypi/construct"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
-LICENSE="public-domain"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
