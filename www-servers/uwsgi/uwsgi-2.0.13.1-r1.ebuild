@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21"
 
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php5-5 php5-6 php7-0" # deps must be registered separately below
+USE_PHP="php5-6 php7-0" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
@@ -113,7 +113,6 @@ CDEPEND="sys-libs/zlib
 	mono? ( =dev-lang/mono-2* )
 	perl? ( dev-lang/perl:= )
 	php? (
-		php_targets_php5-5? ( dev-lang/php:5.5[embed] )
 		php_targets_php5-6? ( dev-lang/php:5.6[embed] )
 		php_targets_php7-0? ( dev-lang/php:7.0[embed] )
 	)
