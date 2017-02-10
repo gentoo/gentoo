@@ -4,7 +4,7 @@ DESCRIPTION=GPS daemon and library for USB/serial GPS devices and GPS/mapping cl
 EAPI=5
 HOMEPAGE=http://catb.org/gpsd/
 IUSE=gpsd_protocols_aivdm gpsd_protocols_ashtech gpsd_protocols_earthmate gpsd_protocols_evermore gpsd_protocols_fury gpsd_protocols_fv18 gpsd_protocols_garmin gpsd_protocols_garmintxt gpsd_protocols_geostar gpsd_protocols_gpsclock gpsd_protocols_itrax gpsd_protocols_mtk3301 gpsd_protocols_navcom gpsd_protocols_nmea0183 gpsd_protocols_nmea2000 gpsd_protocols_ntrip gpsd_protocols_oceanserver gpsd_protocols_oncore gpsd_protocols_passthrough gpsd_protocols_rtcm104v2 gpsd_protocols_rtcm104v3 gpsd_protocols_sirf gpsd_protocols_superstar2 gpsd_protocols_tnt gpsd_protocols_tripmate gpsd_protocols_tsip gpsd_protocols_ublox bluetooth cxx debug dbus ipv6 latency_timing ncurses ntp python qt4 +shm +sockets static test udev usb X python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 arm ppc ppc64 ~x86
 LICENSE=BSD
 RDEPEND=X? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ncurses? ( sys-libs/ncurses:= ) bluetooth? ( net-wireless/bluez ) usb? ( virtual/libusb:1 ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) ntp? ( || ( net-misc/ntp net-misc/chrony ) ) qt4? ( dev-qt/qtgui:4 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
 REQUIRED_USE=X? ( python ) gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm ) python? ( || ( python_targets_python2_7 ) )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://nongnu/gpsd/gpsd-3.16.tar.gz
 _eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	scons-utils	d42c1726f481bb5812cc2ce1f236db1d	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c	user	80aaa71614ced86f02ee1a513821dc87	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=d27660b23f48c40f16ab9c8265984072
+_md5_=7ba229730b76ca4969cd2dc68fdaf8a8
