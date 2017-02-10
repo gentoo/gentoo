@@ -10921,6 +10921,7 @@ games-kids/tuxmathscrabble 0.8.1 0.8.1-r1: math-version of the popular board gam
 games-kids/tuxtype 1.8.1 1.8.1-r1: Typing tutorial with lots of eye-candy
 games-misc/OilWar 1.2.1-r1 1.2.1-r2: Evil army is attacking your country and tries to steal your oil
 games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
+games-misc/ballerburg 1.2.0: Linux port of the classical Atari ST game Ballerburg
 games-misc/bsd-games 2.17-r5: collection of games from NetBSD
 games-misc/bsod 0.1 0.1-r1: This program will let your UNIX user experience the authentic Microsoft Windows experience
 games-misc/c++robots 0 0-r1: ongoing 'King of the Hill' (KotH) tournament
