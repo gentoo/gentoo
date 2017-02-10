@@ -97,6 +97,14 @@ multilib_src_configure() {
 	fi
 }
 
+src_configure() {
+	tc-export_build_env BUILD_{CC,CPP}
+	export CC_FOR_BUILD="${BUILD_CC}"
+	export CPP_FOR_BUILD="${BUILD_CPP}"
+
+	multilib-minimal_src_configure
+}
+
 multilib_src_compile() {
 	if multilib_is_native_abi; then
 		default
