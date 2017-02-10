@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-06">
+  <title>Graphviz: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Graphviz and the extent
+    of these vulnerabilities are unspecified.
+  </synopsis>
+  <product type="ebuild">graphviz</product>
+  <announced>2017-02-10</announced>
+  <revised>2017-02-10: 1</revised>
+  <bug>497274</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/graphviz" auto="yes" arch="*">
+      <unaffected range="ge">2.36.0</unaffected>
+      <vulnerable range="lt">2.36.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Graphviz is an open source graph visualization software.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities in Graphviz were discovered. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to control input matched against a regular
+      expression or by enticing a user to process a specially crafted file,
+      could cause unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Graphviz users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/graphviz-2.36.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0978">CVE-2014-0978</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1235">CVE-2014-1235</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1236">CVE-2014-1236</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T01:53:41Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-10T23:14:56Z">b-man</metadata>
+</glsa>
