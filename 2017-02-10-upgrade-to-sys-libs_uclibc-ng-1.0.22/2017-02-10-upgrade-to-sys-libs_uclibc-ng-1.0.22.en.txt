@@ -1,0 +1,77 @@
+Title: Upgrade to =sys-libs/uclibc-ng-1.0.22
+Author: Anthony G. Basile <blueness@gentoo.org>
+Content-Type: text/plain
+Posted: 2017-02-10
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: sys-libs/uclibc-ng
+Display-If-Profile: default/linux/uclibc/amd64
+Display-If-Profile: hardened/linux/uclibc/amd64
+Display-If-Profile: default/linux/uclibc/arm/armv7a
+Display-If-Profile: hardened/linux/uclibc/arm/armv7a
+Display-If-Profile: default/linux/uclibc/mips
+Display-If-Profile: hardened/linux/uclibc/mips
+Display-If-Profile: default/linux/uclibc/mips/mipsel
+Display-If-Profile: hardened/linux/uclibc/mips/mipsel
+Display-If-Profile: default/linux/uclibc/ppc
+Display-If-Profile: hardened/linux/uclibc/ppc
+Display-If-Profile: default/linux/uclibc/x86
+Display-If-Profile: hardened/linux/uclibc/x86
+
+There have been two major changes in uclibc-ng which need special
+attention when upgrading. Version 1.0.19 restructured the breakout
+libraries, libcrypt.so.0, libdl.so.0, and friends.  The functions in
+those libraries are now included in libuClibc-0.1.0.19.so.  Version
+1.0.21 and above removed libc support for obstack, expecting packages to
+use their bundled GNU lib code. Both changes require special upgrade
+procedures which we outline below: 
+
+0. Because of changes in the library structure in previous versions,
+make sure you are working with 1.0.19 and rebuild world using
+
+    emerge -e @world
+
+This will make sure all the executables link directly against libc.so.0
+(as reported by `readelf -d`) rather than via symlinks like libdl.so.0
+-> libc.so.0.  Then upgrade from 1.0.19 to 1.0.20 without symlink-compat:
+
+    USE="-symlink-compat" emerge =sys-libs/uclibc-ng-1.0.20
+
+1. Get rid of the obstack.h header since it's used by configure scripts
+to look for function prototypes and macros.
+
+    mv /usr/include/obstack.h ~
+
+2. We also need to force the use of any bundled gnu lib code.  We can do
+this by removing the definition of _GNU_OBSTACK_INTERFACE_VERSION from
+gnu-version.h
+
+    cp /usr/include/gnu-versions.h ~
+    sed -i -e '/#define _GNU_OBSTACK/d' /usr/include/gnu-versions.h
+
+3. We need to tell stdio.h that __UCLIBC_HAS_OBSTACK__ is false.  We do
+this via the uClibc_config.h file.
+
+    cp /usr/include/bits/uClibc_config.h ~
+    sed -i -e '/__UCLIBC_HAS_OBSTACK__/ s/1/0/' \
+     /usr/include/bits/uClibc_config.h
+
+4. To be safe, you may want to back up your entire /lib directory so
+you can fall back should something go wrong:
+
+    cp -a /lib /lib.bak
+
+5. Now when we rebuild @world, all packages will use their bundled
+obstack code rather than depending on libc to provide it.
+
+    ac_cv_func_obstack_vprintf=no emerge --keep-going --exclude \
+     sys-libs/uclibc-ng -e @world
+
+6. Finally update uclibc-ng to the latest
+
+    emerge =sys-libs/uclibc-ng-1.0.22
+
+7. For good measure, rebuild the entire system
+
+    emerge —e @world
+
