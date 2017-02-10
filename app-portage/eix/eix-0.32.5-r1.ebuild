@@ -5,7 +5,7 @@
 EAPI=6
 
 PLOCALES="de ru"
-inherit bash-completion-r1 l10n systemd
+inherit autotools bash-completion-r1 l10n systemd flag-o-matic
 
 DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
@@ -19,8 +19,8 @@ IUSE="debug doc nls sqlite"
 BOTHDEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
 RDEPEND="${BOTHDEPEND}
-	app-shells/push
-	app-shells/quoter"
+	>=app-shells/push-2.0-r1
+	>=app-shells/quoter-3.0_p2-r1"
 DEPEND="${BOTHDEPEND}
 	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
@@ -36,6 +36,13 @@ pkg_setup() {
 src_prepare() {
 	default
 	sed -i -e "s:/:${EPREFIX}/:" tmpfiles.d/eix.conf || die
+
+	sed -e "/eixf_source=/s:push.sh:cat \"${EROOT}usr/share/push/push.sh\":" \
+		-e "/eixf_source=/s:quoter_pipe.sh:cat \"${EROOT}usr/share/quoter/quoter_pipe.sh\":" \
+		-i src/eix-functions.sh.in || die
+	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EROOT}usr/share/eix/eix-functions.sh\\\\\":" \
+		-i src/Makefile.am || die
+	eautoreconf
 }
 
 src_configure() {
@@ -68,6 +75,9 @@ src_configure() {
 		--disable-strong-security
 	)
 
+	# https://github.com/vaeth/eix/issues/35
+	append-cxxflags -std=c++11
+
 	econf "${myconf[@]}"
 }
 
@@ -75,6 +85,10 @@ src_install() {
 	default
 	dobashcomp bash/eix
 	systemd_dotmpfilesd tmpfiles.d/eix.conf
+
+	insinto /usr/share/${PN}
+	doins "${ED}"/usr/bin/eix-functions.sh
+	rm -r "${ED}"/usr/bin/eix-functions.sh || die
 
 	keepdir /var/cache/eix
 }
