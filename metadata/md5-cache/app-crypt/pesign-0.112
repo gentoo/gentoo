@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/nspr !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-apps/util-linux sys-apps/help2man sys-boot/gnu-efi sys-libs/efivar virtual/pkgconfig
+DESCRIPTION=Tools for manipulating signed PE-COFF binaries
+EAPI=6
+HOMEPAGE=https://github.com/vathpela/pesign
+IUSE=libressl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/nspr !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-apps/util-linux
+SLOT=0
+SRC_URI=https://github.com/vathpela/pesign/archive/0.112.tar.gz -> pesign-0.112.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=55093dd8d11644b0a9c626ac699b3958
