@@ -15,18 +15,19 @@ SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="ldap python"
+IUSE="gssapi ldap python"
 # Testcases are pretty useless as they are built for RedHat users/groups and kernels.
 RESTRICT="test"
 
-RDEPEND="ldap? ( net-nds/openldap )
-		sys-libs/libcap-ng"
+RDEPEND="gssapi? ( virtual/krb5 )
+	ldap? ( net-nds/openldap )
+	sys-libs/libcap-ng"
 DEPEND="${RDEPEND}
-		>=sys-kernel/linux-headers-2.6.34
-		python? (
-			${PYTHON_DEPS}
-			dev-lang/swig:0
-		)"
+	>=sys-kernel/linux-headers-2.6.34
+	python? (
+		${PYTHON_DEPS}
+		dev-lang/swig:0
+	)"
 # Do not use os-headers as this is linux specific
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -77,6 +78,7 @@ multilib_src_configure() {
 	local ECONF_SOURCE=${S}
 	econf \
 		--sbindir="${EPREFIX}/sbin" \
+		$(use_enable gssapi gssapi-krb5) \
 		--enable-systemd \
 		--without-python \
 		--without-python3
