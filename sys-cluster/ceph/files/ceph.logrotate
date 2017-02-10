@@ -1,8 +1,4 @@
-/var/log/ceph/admin.log
-/var/log/ceph/ceph.log
-/var/log/ceph/ceph-mon.*.log
-/var/log/ceph/ceph-mds.*.log
-/var/log/ceph/ceph-osd.*.log
+/var/log/ceph/*.log
 {
     rotate 7
     daily
