@@ -76,7 +76,7 @@ src_prepare() {
 multilib_src_configure() {
 	local ECONF_SOURCE=${S}
 	econf \
-		--sbindir=/sbin \
+		--sbindir="${EPREFIX}/sbin" \
 		--enable-systemd \
 		--without-python \
 		--without-python3
@@ -192,9 +192,9 @@ multilib_src_install_all() {
 
 	fperms 644 "$(systemd_get_systemunitdir)"/auditd.service # 556436
 
-	[ -f "${D}"/sbin/audisp-remote ] && \
+	[ -f "${ED}"/sbin/audisp-remote ] && \
 	dodir /usr/sbin && \
-	mv "${D}"/{sbin,usr/sbin}/audisp-remote || die
+	mv "${ED}"/{sbin,usr/sbin}/audisp-remote || die
 
 	# Gentoo rules
 	insinto /etc/audit/
@@ -205,7 +205,7 @@ multilib_src_install_all() {
 	keepdir /var/log/audit/
 
 	# Security
-	lockdown_perms "${D}"
+	lockdown_perms "${ED}"
 
 	prune_libtool_files --modules
 }
@@ -216,15 +216,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	lockdown_perms "${ROOT}"
+	lockdown_perms "${EROOT}"
 	# Preserve from the audit-1 series
 	preserve_old_lib_notify /$(get_libdir)/libaudit.so.0
 }
 
 lockdown_perms() {
-	# upstream wants these to have restrictive perms
-	# should not || die, maybe not all paths exist
-	basedir="$1"
+	# Upstream wants these to have restrictive perms.
+	# Should not || die as not all paths may exist.
+	local basedir="$1"
 	chmod 0750 "${basedir}"/sbin/au{ditctl,report,dispd,ditd,search,trace} 2>/dev/null
 	chmod 0750 "${basedir}"/var/log/audit/ 2>/dev/null
 	chmod 0640 "${basedir}"/etc/{audit/,}{auditd.conf,audit.rules*} 2>/dev/null
