@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=app-arch/bzip2 dev-db/postgresql:= dev-libs/expat dev-libs/boost sci-libs/geos sci-libs/proj sys-libs/zlib lua? ( dev-lang/lua:= ) sys-devel/make >=dev-util/cmake-3.6.3 dev-vcs/git
+DEPEND=app-arch/bzip2 dev-db/postgresql:= dev-libs/expat dev-libs/boost <sci-libs/geos-3.6.0 sci-libs/proj sys-libs/zlib lua? ( dev-lang/lua:= ) sys-devel/make >=dev-util/cmake-3.6.3 dev-vcs/git
 DESCRIPTION=Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 EAPI=5
 HOMEPAGE=http://wiki.openstreetmap.org/wiki/Osm2pgsql
 IUSE=+lua
 LICENSE=GPL-2
-RDEPEND=app-arch/bzip2 dev-db/postgresql:= dev-libs/expat dev-libs/boost sci-libs/geos sci-libs/proj sys-libs/zlib lua? ( dev-lang/lua:= )
+RDEPEND=app-arch/bzip2 dev-db/postgresql:= dev-libs/expat dev-libs/boost <sci-libs/geos-3.6.0 sci-libs/proj sys-libs/zlib lua? ( dev-lang/lua:= )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=547fd4317f4f6aa04ab7cd722d5aab9d
+_md5_=657aa5e91dfaff4db5b27a58a99bf077
