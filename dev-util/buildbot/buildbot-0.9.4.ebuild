@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python2_7 )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
-[[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
 MY_PV="${PV/_p/p}"
@@ -16,15 +15,14 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
 HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
+	http://dev.gentoo.org/~dolsen/distfiles/buildbot-0.9.4.docs.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-if [[ ${PV} == *9999 ]]; then
-	KEYWORDS=""
-else
-	KEYWORDS="~amd64"
-fi
+KEYWORDS="~amd64"
 
 IUSE="crypt doc examples irc mail manhole test"
 
@@ -71,6 +69,7 @@ DEPEND="${RDEPEND}
 		dev-python/pyenchant[${PYTHON_USEDEP}]
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
+		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
@@ -92,7 +91,12 @@ DEPEND="${RDEPEND}
 	)"
 
 S=${WORKDIR}/${MY_P}
-[[ ${PV} == *9999 ]] && S=${S}/master
+
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+	cd ${MY_P}
+	unpack buildbot-0.9.4.docs.tar.xz
+}
 
 pkg_setup() {
 	enewuser buildbot
@@ -103,14 +107,19 @@ pkg_setup() {
 		The scripts can	run as a different user if desired."
 }
 
+python_prepare_all() {
+	if use doc; then
+		epatch "${FILESDIR}/buildbot-0.9.4.docs.patch"
+	fi
+}
+
 src_compile() {
 	distutils-r1_src_compile
 
 	if use doc; then
 		einfo "Generation of documentation"
 		pushd docs > /dev/null
-		#'man' target is currently broken
-		emake html
+		EPYTHON="python2.7" emake html
 		popd > /dev/null
 	fi
 }
