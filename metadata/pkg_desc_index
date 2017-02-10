@@ -7402,7 +7402,7 @@ dev-python/edpwd 0.0.7 0.0.7-r1: Encrypt/Decrypt Password Library that wraps up 
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
 dev-python/elasticsearch-curator 4.1.2 4.2.5 4.2.6: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 1.4.0 2.3.0 2.4.0 5.0.0 5.0.1: official Python low-level client for Elasticsearch
+dev-python/elasticsearch-py 2.3.0 2.4.0 2.4.1 5.0.0 5.0.1 5.1.0: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/eliot 0.4.0: Logging as Storytelling
@@ -15998,7 +15998,7 @@ sci-chemistry/p3d 0.4.3 9999: Python module for structural bioinformatics
 sci-chemistry/parassign 20130522: Assign protein nuclei solely on the basis of pseudocontact shifts (PCS)
 sci-chemistry/pdb-tools 0.2.1-r1 0.2.1-r2: Tools for manipulating and doing calculations on wwPDB macromolecule structure files
 sci-chemistry/pdb2pqr 1.9.0-r1: An automated pipeline for performing Poisson-Boltzmann electrostatics calculations
-sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using commonly available tools such as Perl, awk, etc
+sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using tools such as Perl, awk, etc
 sci-chemistry/pdbcns 2.0.010504: Convert atom names for common amino acids and nucleic acid bases from PDB format to CNS or back
 sci-chemistry/pdbmat 3.89: Calculate Tirion's model from pdb structures
 sci-chemistry/platon 20151001: Versatile, SHELX-97 compatible, multipurpose crystallographic tool
