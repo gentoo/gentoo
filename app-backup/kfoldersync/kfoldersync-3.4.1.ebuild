@@ -12,7 +12,7 @@ HOMEPAGE="https://www.linux-apps.com/p/1127677/"
 SRC_URI="https://dl.opendesktop.org/api/files/download/id/1485353737/${P}.tar.xz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 RDEPEND="
 	$(add_frameworks_dep kconfig)
