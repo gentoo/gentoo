@@ -15,7 +15,7 @@ SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="gssapi ldap python"
+IUSE="gssapi ldap python static-libs"
 # Testcases are pretty useless as they are built for RedHat users/groups and kernels.
 RESTRICT="test"
 
@@ -79,6 +79,7 @@ multilib_src_configure() {
 	econf \
 		--sbindir="${EPREFIX}/sbin" \
 		$(use_enable gssapi gssapi-krb5) \
+		$(use_enable static-libs static) \
 		--enable-systemd \
 		--without-python \
 		--without-python3
