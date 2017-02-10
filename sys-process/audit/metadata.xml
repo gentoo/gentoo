@@ -4,4 +4,7 @@
   <maintainer type="person">
     <email>robbat2@gentoo.org</email>
   </maintainer>
+<use>
+	<flag name="gssapi">Enable GSSAPI support</flag>
+</use>
 </pkgmetadata>
