@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=!static? ( pcre? ( >=dev-libs/libpcre-7.8-r1 ) ) nls? ( virtual/libintl ) virtual/libiconv virtual/pkgconfig nls? ( sys-devel/gettext ) static? ( pcre? ( >=dev-libs/libpcre-7.8-r1[static-libs(+)] ) )
+DESCRIPTION=GNU regular expression matcher
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/grep/
+IUSE=nls pcre static
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-3
+RDEPEND=!static? ( pcre? ( >=dev-libs/libpcre-7.8-r1 ) ) nls? ( virtual/libintl ) virtual/libiconv
+SLOT=0
+SRC_URI=mirror://gnu/grep/grep-3.0.tar.xz mirror://gentoo/grep-3.0.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=a80619b0fa943202814c6ef558fb0f36
