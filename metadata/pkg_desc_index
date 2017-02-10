@@ -9090,7 +9090,7 @@ dev-ruby/activerecord 4.2.6 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Implements the ActiveRe
 dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate old-style finder option hashes in Active Record
 dev-ruby/activeresource 4.0.0 4.1.0: Think Active Record for web resources
 dev-ruby/activesupport 4.2.6 4.2.6-r1 4.2.7 4.2.7.1 5.0.0.1 5.0.1: Utility Classes and Extension to the Standard Library
-dev-ruby/acts_as_list 0.7.7 0.8.1 0.8.2 0.9.0 0.9.1: Capabilities for sorting and reordering a number of objects in a list
+dev-ruby/acts_as_list 0.8.2 0.9.1 0.9.2: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.3.6 2.3.8 2.3.8-r1 2.4.0 2.4.0-r1 2.5.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
@@ -9380,7 +9380,7 @@ dev-ruby/narray 0.6.1.1 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
 dev-ruby/neovim-ruby-client 0.3.0 0.3.1: Ruby bindings for Neovim
-dev-ruby/net-http-digest_auth 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
+dev-ruby/net-http-digest_auth 1.4-r2 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.1.2-r1 1.2.1: A pure Ruby implementation of the SCP client protocol

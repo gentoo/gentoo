@@ -4,7 +4,7 @@ DESCRIPTION=The database layer for Metasploit
 EAPI=5
 HOMEPAGE=https://github.com/rapid7/metasploit_data_models
 IUSE=test elibc_FreeBSD ruby_targets_ruby21 doc test test
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=~amd64 ~arm
 LICENSE=BSD
 RDEPEND=!dev-ruby/metasploit_data_models:0 ruby_targets_ruby21? ( >=dev-ruby/activerecord-4.2.6:4.2[ruby_targets_ruby21,postgres] >=dev-ruby/activesupport-4.2.6:4.2[ruby_targets_ruby21] dev-ruby/pg[ruby_targets_ruby21] dev-ruby/postgres_ext[ruby_targets_ruby21] >=dev-ruby/railties-4.2.6:4.2[ruby_targets_ruby21] >=dev-ruby/recog-2.0.0:*[ruby_targets_ruby21] dev-ruby/arel-helpers[ruby_targets_ruby21] >=dev-ruby/metasploit-concern-2.0.0[ruby_targets_ruby21] >=dev-ruby/metasploit-model-2.0.0[ruby_targets_ruby21] <dev-ruby/thor-2.0[ruby_targets_ruby21] ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] )
 REQUIRED_USE=|| ( ruby_targets_ruby21 )
@@ -13,4 +13,4 @@ SLOT=2.0.0
 SRC_URI=mirror://rubygems/metasploit_data_models-2.0.0.gem
 _eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	java-utils-2	8cefdc020b528862da5737e2a230f708	multilib	165fc17c38d1b11dac2008280dab6e80	ruby-fakegem	2b249022d4895a29827658b7d630c461	ruby-ng	934780d41ab18a9ff091703f511371be	ruby-utils	382c3a262907e1219a21618dfd1a01a0	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=56a48945aa97f02ac5f6fcd108f5fce2
+_md5_=7ec806de6dbe3a800df934e06446f735
