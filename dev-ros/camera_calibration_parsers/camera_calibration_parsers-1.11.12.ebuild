@@ -6,6 +6,7 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/image_common"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
+PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
@@ -15,8 +16,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-libs/boost:=[python]
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-ros/rosconsole
 	>=dev-cpp/yaml-cpp-0.5
 "
