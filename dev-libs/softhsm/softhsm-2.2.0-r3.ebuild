@@ -41,10 +41,11 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-static \
+		--localstatedir="${EROOT}var" \
 		--with-crypto-backend=openssl \
 		--disable-p11-kit \
 		$(use_enable !bindist ecc) \
-		$(use_enable !libressl ghost) \
+		$(use_enable !libressl gost) \
 		$(use_with migration-tool migrate)
 }
 
