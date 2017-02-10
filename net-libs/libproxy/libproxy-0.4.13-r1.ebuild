@@ -73,6 +73,7 @@ multilib_src_configure() {
 		"-DWITH_PERL=$(multilib_is_native_abi && usex perl || echo 'OFF')"
 		"-DWITH_PYTHON=$(multilib_is_native_abi	&& usex python || echo 'OFF')"
 		"-DWITH_MOZJS=$(multilib_is_native_abi && usex spidermonkey || echo 'OFF')"
+		"-DWITH_WEBKIT=OFF"
 		"-DWITH_WEBKIT3=$(multilib_is_native_abi && usex webkit || echo 'OFF')"
 		"-DBUILD_TESTING=$(usex test)"
 	)
