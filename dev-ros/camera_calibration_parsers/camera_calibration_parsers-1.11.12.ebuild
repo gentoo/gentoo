@@ -6,7 +6,7 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/image_common"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit ros-catkin
 
@@ -25,3 +25,4 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-python/nose )
 "
+PATCHES=( "${FILESDIR}/boostpython.patch" )
