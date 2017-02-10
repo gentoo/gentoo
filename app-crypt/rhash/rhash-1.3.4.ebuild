@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,5 +63,5 @@ multilib_src_install_all() {
 
 multilib_src_test() {
 	cd tests || die
-	./test_rhash.sh --full ../rhash_shared || die "tests failed"
+	LD_LIBRARY_PATH=$(pwd)/../librhash ./test_rhash.sh --full ../rhash_shared || die "tests failed"
 }
