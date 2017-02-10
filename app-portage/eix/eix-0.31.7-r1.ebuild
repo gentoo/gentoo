@@ -19,7 +19,7 @@ IUSE="debug +dep doc nls optimization +required-use security strong-optimization
 BOTHDEPEND="sqlite? ( >=dev-db/sqlite-3 )
 	nls? ( virtual/libintl )"
 RDEPEND="${BOTHDEPEND}
-	app-shells/push"
+	<app-shells/push-2.0-r1"
 DEPEND="${BOTHDEPEND}
 	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"

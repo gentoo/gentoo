@@ -19,8 +19,8 @@ IUSE="debug doc nls sqlite"
 BOTHDEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
 RDEPEND="${BOTHDEPEND}
-	>=app-shells/push-2.0
-	>=app-shells/quoter-3.0"
+	=app-shells/push-2.0
+	=app-shells/quoter-3.0_p2"
 DEPEND="${BOTHDEPEND}
 	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
