@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm ppc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="dev-libs/libpcre
-	sys-libs/ncurses"
+	sys-libs/ncurses:0="
 
 RDEPEND="${DEPEND}"
 
