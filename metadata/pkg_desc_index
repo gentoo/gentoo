@@ -8773,7 +8773,7 @@ dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpfu
 dev-ros/calibration_msgs 0.10.13 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
 dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
 dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
-dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Routines for reading and writing camera calibration parameters
+dev-ros/camera_calibration_parsers 1.11.12 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.3.5 0.3.6 9999: ROS-independent package for loading plugins
