@@ -1,7 +1,0 @@
-# $Id$
-
-# Configuration file for /etc/init.d/rarpd
-
-# To start rarpd only for a given interface, set the
-# following variable
-# RARPD_ONLY_INTERFACE="rl0"
