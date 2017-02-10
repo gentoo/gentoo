@@ -23,7 +23,10 @@ RDEPEND="!<sys-apps/util-linux-2.20.1-r2
 		>=dev-libs/libgcrypt-1.2.2:0
 		>=net-libs/gnutls-1.4.4
 	)
-	external-fuse? ( >=sys-fs/fuse-2.8.0 )"
+	external-fuse? (
+		>=sys-fs/fuse-2.8.0
+		<sys-fs/fuse-3.0.0_pre
+	)"
 DEPEND="${RDEPEND}
 	sys-apps/attr
 	virtual/pkgconfig"
