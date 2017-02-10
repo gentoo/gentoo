@@ -3921,7 +3921,7 @@ dev-java/commons-vfs 1.0-r1 2.0-r1: A single API for accessing various different
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
 dev-java/cortado 0.6.0-r1: Multimedia framework for Java written by Fluendo
 dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables, shared and static libraries
-dev-java/cssparser 0.9.19 0.9.20: API for parsing CSS 2 in Java
+dev-java/cssparser 0.9.20 0.9.21: API for parsing CSS 2 in Java
 dev-java/db4o-jdk11 7.4: Core files for the object database for java
 dev-java/db4o-jdk12 7.4: Core files for the object database for java
 dev-java/db4o-jdk5 7.4: Core files for the object database for java
@@ -7638,7 +7638,7 @@ dev-python/jmespath 0.9.0 0.9.1: JSON Matching Expressions
 dev-python/joblib 0.8.4 0.9.2 0.9.3 0.9.4 0.10.0: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.10-r1 0.11 0.12 0.13: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
 dev-python/jplephem 2.6: Python version of NASA DE4xx ephemerides for Astronomical Alamanac
-dev-python/jpype 0.6.1: JPype is an effort to allow Python programs full access to Java class librairies
+dev-python/jpype 0.6.1 0.6.2: JPype is an effort to allow Python programs full access to Java class librairies
 dev-python/jsmin 2.1.1 2.1.2 2.1.6 2.2.0 2.2.1: JavaScript minifier
 dev-python/json-rpc 1.10.1: JSON-RPC transport implementation for python
 dev-python/json-tools 0.3.3 0.4.0: A set of tools to manipulate JSON: diff, patch, and pretty-printing

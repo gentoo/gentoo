@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] >=virtual/jdk-1.6 >=dev-java/java-config-2.2.0-r3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+DESCRIPTION=JPype is an effort to allow Python programs full access to Java class librairies
+EAPI=5
+HOMEPAGE=https://github.com/originell/jpype
+IUSE=doc examples elibc_FreeBSD python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-1.1
+RDEPEND=>=dev-java/java-config-2.2.0-r3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 )
+SLOT=0
+SRC_URI=https://github.com/originell/jpype/archive/v0.6.2.zip -> jpype-0.6.2.zip
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	8cefdc020b528862da5737e2a230f708	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=6eaa05b142a1cf53764133941829a733
