@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-05">
+  <title>Lsyncd: Remote execution of arbitrary code</title>
+  <synopsis>A vulnerability in Lsyncd allows execution of arbitrary code.</synopsis>
+  <product type="ebuild">lsyncd</product>
+  <announced>2017-02-10</announced>
+  <revised>2017-02-10: 1</revised>
+  <bug>529678</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-admin/lsyncd" auto="yes" arch="*">
+      <unaffected range="ge">2.1.6</unaffected>
+      <vulnerable range="lt">2.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A daemon to synchronize local directories using rsync.</p>
+  </background>
+  <description>
+    <p>default-rsyncssh.lua in Lsyncd performed insufficient sanitising of
+      filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, able to control files processed by Lsyncd, could possibly
+      execute arbitrary code with the privileges of the process or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Lsyncd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/lsyncd-2.1.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8990">CVE-2014-8990</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-01T09:30:15Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-10T23:08:07Z">whissi</metadata>
+</glsa>
