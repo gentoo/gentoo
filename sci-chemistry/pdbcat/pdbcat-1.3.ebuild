@@ -6,7 +6,7 @@ EAPI=6
 
 inherit cmake-utils
 
-DESCRIPTION="Manipulate and process PDB files using commonly available tools such as Perl, awk, etc"
+DESCRIPTION="Manipulate and process PDB files using tools such as Perl, awk, etc"
 HOMEPAGE="http://www.ks.uiuc.edu/Development/MDTools/pdbcat/"
 SRC_URI="http://www.ks.uiuc.edu/Development/MDTools/${PN}/files/${P}.tar.gz"
 
