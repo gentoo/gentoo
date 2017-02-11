@@ -12,7 +12,7 @@ inherit kde5 python-r1
 
 DESCRIPTION="Interface for doing mathematics and scientific computing"
 HOMEPAGE="https://www.kde.org/applications/education/cantor https://edu.kde.org/cantor"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="analitza julia lua postscript python qalculate +R"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -56,11 +56,7 @@ RDEPEND="${RDEPEND}"
 
 RESTRICT+=" test"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-bashism.patch
-	"${FILESDIR}"/${P}-python-kf-5.31.patch
-	"${FILESDIR}"/${P}-julia-kf-5.31.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-16.12.2-bashism.patch )
 
 pkg_pretend() {
 	kde5_pkg_pretend
