@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=sys-apps/gawk >=dev-lang/ocaml-3.10[ocamlopt]
+DESCRIPTION=generator of sandwich OCR pdf files
+EAPI=5
+HOMEPAGE=http://www.tobias-elze.de/pdfsandwich
+IUSE=png
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-text/tesseract-3.00 media-gfx/exact-image app-text/unpaper app-text/ghostscript-gpl virtual/imagemagick-tools[png?]
+SLOT=0
+SRC_URI=mirror://sourceforge/pdfsandwich/pdfsandwich-0.1.4.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_md5_=d7f5b4846718d28e5ff4de951d024518

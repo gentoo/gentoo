@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Set of scripts to easily install and use Windows games and software
+EAPI=5
+HOMEPAGE=http://playonlinux.com/
+IUSE=winbind python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-emulation/wine app-arch/cabextract app-arch/p7zip app-arch/unzip app-crypt/gnupg dev-python/wxpython:2.8[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] net-misc/wget x11-apps/mesa-progs x11-terms/xterm media-gfx/icoutils || ( net-analyzer/netcat net-analyzer/netcat6 ) virtual/imagemagick-tools winbind? ( net-fs/samba[winbind] ) games-misc/games-envd
+SLOT=0
+SRC_URI=http://www.playonlinux.com/script_files/PlayOnLinux/4.2.4/PlayOnLinux_4.2.4.tar.gz
+_eclass_exported_funcs=pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:base src_prepare:- src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	games	2cf0d67d765e6358b435ccda30c13ad8	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=1695282b161cd9f006a1843e850a4440

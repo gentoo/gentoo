@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!graphicsmagick? ( media-gfx/imagemagick:= ) graphicsmagick? ( media-gfx/graphicsmagick:= ) sys-devel/make >=dev-util/cmake-3.6.3
+DESCRIPTION=An enterprise quality OCR engine by Cognitive Technologies
+EAPI=6
+HOMEPAGE=https://launchpad.net/cuneiform-linux
+IUSE=debug graphicsmagick
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=!graphicsmagick? ( media-gfx/imagemagick:= ) graphicsmagick? ( media-gfx/graphicsmagick:= )
+SLOT=0
+SRC_URI=https://launchpad.net/cuneiform-linux/1.1/1.1/+download/cuneiform-linux-1.1.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=6548a3183a289b1f0f357b42677810fc

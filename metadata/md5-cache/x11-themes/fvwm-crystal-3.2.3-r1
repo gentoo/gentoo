@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Configurable FVWM theme with transparency and freedesktop compatible menu
+EAPI=5
+HOMEPAGE=http://fvwm-crystal.sourceforge.net/
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=x11-wm/fvwm-2.6.5[png] virtual/imagemagick-tools || ( >=x11-misc/stalonetray-0.6.2-r2 x11-misc/trayer ) || ( x11-misc/hsetroot media-gfx/feh ) sys-apps/sed sys-devel/bc virtual/awk x11-apps/xwd
+SLOT=0
+SRC_URI=mirror://sourceforge/fvwm-crystal/fvwm-crystal-3.2.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=016554ecc62067a35716e3f4d644dd43

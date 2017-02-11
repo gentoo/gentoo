@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND==dev-lang/python-2*
+DESCRIPTION=Gallery generator
+EAPI=4
+HOMEPAGE=http://furius.ca/curator/
+KEYWORDS=amd64 ~hppa ~mips ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-python/pillow virtual/imagemagick-tools =dev-lang/python-2*
+SLOT=0
+SRC_URI=mirror://gentoo/curator-3.0_pf078f1686a78.tar.xz
+_eclass_exported_funcs=pkg_setup:- src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=2555e59cf3c90041052c99e4e2e35dc8

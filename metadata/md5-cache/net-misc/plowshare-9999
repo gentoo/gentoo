@@ -5,8 +5,8 @@ EAPI=6
 HOMEPAGE=https://github.com/mcrapet/plowshare
 IUSE=bash-completion +javascript view-captcha
 LICENSE=GPL-3
-RDEPEND=>=app-shells/bash-4 || ( app-text/recode ( dev-lang/perl dev-perl/HTML-Parser ) ) dev-vcs/git || ( media-gfx/imagemagick[tiff] media-gfx/graphicsmagick[imagemagick,tiff] ) net-misc/curl sys-apps/util-linux javascript? ( || ( dev-lang/spidermonkey:0 dev-java/rhino ) ) view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) )
+RDEPEND=>=app-shells/bash-4 || ( app-text/recode ( dev-lang/perl dev-perl/HTML-Parser ) ) dev-vcs/git net-misc/curl sys-apps/util-linux virtual/imagemagick-tools[tiff] javascript? ( || ( dev-lang/spidermonkey:0 dev-java/rhino ) ) view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9b0b4e8b705557e39ad595c6113df0f7
+_md5_=a2b7b9b10d760f72851ed167b7f33e73

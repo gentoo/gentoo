@@ -1,0 +1,14 @@
+DEFINED_PHASES=prepare
+DEPEND=media-video/mplayer media-video/mjpegtools[png] media-video/dvdauthor virtual/imagemagick-tools libav? ( media-video/libav ) !libav? ( media-video/ffmpeg:0 )
+DESCRIPTION=A package to convert movies to DVD format and to build DVDs with
+EAPI=5
+HOMEPAGE=http://videotrans.sourceforge.net/
+IUSE=libav
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=media-video/mplayer media-video/mjpegtools[png] media-video/dvdauthor virtual/imagemagick-tools libav? ( media-video/libav ) !libav? ( media-video/ffmpeg:0 ) www-client/lynx app-shells/bash sys-devel/bc
+SLOT=0
+SRC_URI=mirror://sourceforge/videotrans/videotrans-1.6.1.tar.bz2
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=ee97b2960f6c47c10e8b900bc71d6f02

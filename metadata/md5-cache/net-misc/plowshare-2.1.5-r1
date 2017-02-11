@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare test
+DESCRIPTION=Command-line downloader and uploader for file-sharing websites
+EAPI=6
+HOMEPAGE=https://github.com/mcrapet/plowshare
+IUSE=bash-completion +javascript view-captcha
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-shells/bash-4 || ( app-text/recode ( dev-lang/perl dev-perl/HTML-Parser ) ) dev-vcs/git net-misc/curl sys-apps/util-linux virtual/imagemagick-tools[tiff] javascript? ( || ( dev-lang/spidermonkey:0 dev-java/rhino ) ) view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) )
+SLOT=0
+SRC_URI=https://github.com/mcrapet/plowshare/archive/v2.1.5.tar.gz -> plowshare-2.1.5.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=4464de5f60800b1ea2f054dbfae7b45f

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Converts pdf files to odf
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/pdf2oo/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-arch/zip >=app-text/poppler-0.12.3-r3[utils] virtual/imagemagick-tools
+SLOT=0
+SRC_URI=mirror://sourceforge/pdf2oo/pdf2oo-20090715.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=ef1884ed158a068aba41037075f8a044

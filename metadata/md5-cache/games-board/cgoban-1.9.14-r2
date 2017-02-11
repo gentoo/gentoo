@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=virtual/imagemagick-tools x11-libs/libX11 x11-libs/libXt x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A Go-frontend
+EAPI=6
+HOMEPAGE=http://cgoban1.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/imagemagick-tools x11-libs/libX11 x11-libs/libXt
+SLOT=0
+SRC_URI=mirror://sourceforge/cgoban1/cgoban-1.9.14.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8cf55d86b2432f26fe45926254a3698a

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Feature-rich screenshot program
+EAPI=6
+HOMEPAGE=http://shutter-project.org/
+IUSE=drawing
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl drawing? ( dev-perl/Goo-Canvas ) dev-perl/libxml-perl dev-perl/gnome2-canvas dev-perl/gnome2-perl dev-perl/gnome2-wnck dev-perl/Gtk2-Unique dev-perl/Gtk2-ImageView dev-perl/File-DesktopEntry dev-perl/File-HomeDir dev-perl/File-Which dev-perl/JSON dev-perl/File-Copy-Recursive dev-perl/File-MimeInfo dev-perl/Locale-gettext dev-perl/Net-DBus dev-perl/Proc-Simple dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/WWW-Mechanize dev-perl/X11-Protocol dev-perl/XML-Simple dev-perl/libwww-perl virtual/imagemagick-tools[perl]
+SLOT=0
+SRC_URI=http://shutter-project.org/wp-content/uploads/releases/tars/shutter-0.93.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=a1a54e8ebd7f73b4c47f545b354b6a04

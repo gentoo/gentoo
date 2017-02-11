@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for imagemagick command line tools
+EAPI=6
+IUSE=jpeg perl png svg tiff
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86
+RDEPEND=|| ( media-gfx/imagemagick[jpeg?,perl?,png?,svg?,tiff?] media-gfx/graphicsmagick[imagemagick,jpeg?,perl?,png?,svg?,tiff?] )
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=509e1b89d16919889b501ebaf42f72d6
