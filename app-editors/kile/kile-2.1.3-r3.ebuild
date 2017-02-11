@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,6 +29,7 @@ RDEPEND="${DEPEND}
 		app-text/evince
 		app-text/acroread
 	)
+	virtual/imagemagick-tools[png?]
 	virtual/latex-base
 	virtual/tex-base
 	pdf? (
@@ -38,13 +39,7 @@ RDEPEND="${DEPEND}
 		)
 		app-text/ghostscript-gpl
 	)
-	png? (
-		app-text/dvipng
-		|| (
-			media-gfx/imagemagick[png]
-			media-gfx/graphicsmagick[imagemagick,png]
-		)
-	)
+	png? ( app-text/dvipng )
 "
 
 S=${WORKDIR}/${MY_P}
