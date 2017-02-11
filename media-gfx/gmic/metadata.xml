@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="cli">Build CLI interface</flag>
-		<flag name="graphicsmagick">Enable support for many common image file formats using the GraphicsMagick++ library</flag>
 		<flag name="opencv">Enable support for webcams using the OpenCV library</flag>
 	</use>
 	<upstream>
