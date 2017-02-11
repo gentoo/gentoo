@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,18 +15,23 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
-IUSE="contrib doc +imagemagick imlib"
+IUSE="contrib doc graphicsmagick +imagemagick imlib"
 
-REQUIRED_USE="imagemagick? ( !imlib )
-	imlib? ( !imagemagick )"
-
-RDEPEND=">=media-video/vdr-1.6.0
-	imagemagick? ( || ( media-gfx/imagemagick[cxx] media-gfx/graphicsmagick[cxx] ) )
-	imlib? ( media-libs/imlib2 >=media-video/vdr-1.6.0[-graphtft] )"
+RDEPEND="
+	>=media-video/vdr-1.6.0
+	imagemagick? (
+		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
+	)
+	!imagemagick? (
+		imlib? (
+			media-libs/imlib2
+			>=media-video/vdr-1.6.0[-graphtft]
+		)
+	)"
 DEPEND="${RDEPEND}
-	imagemagick? ( virtual/pkgconfig )
-	imlib? ( virtual/pkgconfig )
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 KEEP_I18NOBJECT="yes"
 
@@ -42,17 +47,19 @@ src_prepare() {
 	fi
 
 	if use imagemagick; then
-		# Prefer imagemagick over graphicsmagick
-		if has_version "media-gfx/imagemagick"; then
-			imagelib="imagemagick"
-		elif has_version "media-gfx/graphicsmagick"; then
+		if use graphicsmagick; then
 			imagelib="graphicsmagick"
+		else
+			imagelib="imagemagick"
 		fi
-	elif use imlib; then
-		imagelib="imlib2"
 	else
-		imagelib="none"
+		if use imlib; then
+			imagelib="imlib2"
+		else
+			imagelib="none"
+		fi
 	fi
+
 	sed -i -e "s:\(IMAGELIB[[:space:]]*=\) .*:\1 ${imagelib}:" Makefile || die
 
 	vdr-plugin-2_src_prepare
