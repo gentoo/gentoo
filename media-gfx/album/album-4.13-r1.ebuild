@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,8 @@ IUSE="doc ffmpeg plugins themes"
 
 DEPEND=""
 RDEPEND="dev-lang/perl
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
 	media-gfx/jhead
+	virtual/imagemagick-tools
 	ffmpeg? ( virtual/ffmpeg )"
 
 src_install() {
