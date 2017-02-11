@@ -112,7 +112,7 @@ src_unpack() {
 	git-r3_fetch
 
 	git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
-		"${S}"/tools/clang/tools/extra
+		"${S}"/tools/extra
 	if use test; then
 		git-r3_checkout http://llvm.org/git/llvm.git \
 			"${WORKDIR}"/llvm
@@ -179,7 +179,7 @@ multilib_src_configure() {
 		)
 	else
 		mycmakeargs+=(
-			-DLLVM_EXTERNAL_CLANG_TOOLS_EXTRA_BUILD=OFF
+			-DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD=OFF
 		)
 	fi
 
@@ -208,6 +208,7 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
+	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
 }
 
 src_install() {
