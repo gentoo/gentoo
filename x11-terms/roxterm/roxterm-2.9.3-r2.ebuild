@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	dev-python/lockfile
 	virtual/pkgconfig
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	virtual/imagemagick-tools
 	nls? ( app-text/po4a sys-devel/gettext )"
 
 src_configure() {
