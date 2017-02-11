@@ -1,0 +1,31 @@
+Gentoo-bug: 608300
+
+From dd9a089cfaefb24f012a137618e00005a48b6009 Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Wed, 8 Feb 2017 18:11:31 +0100
+Subject: [PATCH] Stop linking X11_Xcursor_LIB in KScreenLocker
+
+It's not used.
+
+BUG: 376068
+
+Differential Revision: https://phabricator.kde.org/D4505
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef4bc6b..ec04a4d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -144,7 +144,6 @@ PRIVATE
+    KF5::ConfigGui
+    KF5::WindowSystem
+    ${X11_LIBRARIES}
+-   ${X11_Xcursor_LIB}
+    XCB::XCB
+    XCB::KEYSYMS
+    KF5::WaylandServer
+-- 
+2.10.2
+
