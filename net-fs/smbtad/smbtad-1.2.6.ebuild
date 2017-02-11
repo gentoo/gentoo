@@ -13,7 +13,7 @@ SRC_URI="http://morelias.org/smbta/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE=""
 
 DEPEND="
 	dev-db/libdbi
@@ -35,14 +35,6 @@ src_prepare() {
 	sed -i \
 		-e '/CMAKE_C_FLAGS/d' \
 		CMakeLists.txt || die
-}
-
-src_configure() {
-	local mycmakeargs=(
-		-DDebug=$(usex debug)
-	)
-
-	cmake-utils_src_configure
 }
 
 src_install() {
