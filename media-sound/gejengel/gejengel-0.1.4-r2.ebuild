@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils multilib flag-o-matic
+EAPI=4
+inherit eutils multilib flag-o-matic
 
 DESCRIPTION="Lightweight audio player"
 HOMEPAGE="https://github.com/dirkvdb/gejengel"
@@ -18,8 +18,7 @@ RDEPEND="dev-cpp/gtkmm:2.4
 	dev-cpp/pangomm:1.4
 	media-libs/taglib
 	dev-db/sqlite:3
-	|| ( media-gfx/imagemagick[cxx]
-	media-gfx/graphicsmagick[imagemagick] )
+	media-gfx/imagemagick[cxx]
 	mad? ( media-libs/libmad )
 	flac? ( media-libs/flac[cxx] )
 	ffmpeg? ( >=virtual/ffmpeg-9 )
@@ -41,20 +40,14 @@ src_prepare() {
 		"${FILESDIR}"/${P}-ffmpeg.patch \
 		"${FILESDIR}"/${P}-ffmpeg-1.patch \
 		"${FILESDIR}"/${P}-libav9.patch \
-		"${FILESDIR}"/${P}-ffmpeg2.patch \
-		"${FILESDIR}"/${PV}-flac_ln.patch \
-		"${FILESDIR}"/bckport-debug.patch
-
+		"${FILESDIR}"/${P}-ffmpeg2.patch
 	# Remove Vesion and Encoding from the desktop file
 	sed -i -e "/Version/d" -e "/Encoding/d" \
 		data/${PN}.desktop.in || die "sed failed"
 	append-cxxflags "-D__STDC_CONSTANT_MACROS"
-
-	eautoreconf
 }
 
 src_configure() {
-	append-cxxflags -std=c++11
 	econf \
 		--disable-shared \
 		$(use_enable syslog logging) \
