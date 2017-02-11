@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,7 @@ IUSE="gnome"
 
 RDEPEND=">=x11-wm/fvwm-2.6.2"
 DEPEND="${RDEPEND}
-	gnome? ( || (
-		media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )	)"
+	gnome? ( virtual/imagemagick-tools )"
 
 src_prepare() {
 	epatch \
