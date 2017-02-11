@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/arrow[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/m2crypto[${PYTHON_USEDEP}]' 'python2*')
 "
 DEPEND="${RDEPEND}"
