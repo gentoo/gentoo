@@ -5,6 +5,6 @@
          license='MIT',
          packages=['garden'],
 -        scripts=['bin/garden', 'bin/garden.bat'],
-+        scripts=['bin/garden'],
++        scripts=['bin/kivy-garden'],
          install_requires=['requests'],
          )

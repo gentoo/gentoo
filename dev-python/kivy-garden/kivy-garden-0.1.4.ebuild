@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/garden-${PV}"
 
-PATCHES=( "${FILESDIR}/remove_bat.patch" )
+PATCHES=( "${FILESDIR}/remove_bat-${PV}.patch" )
 
 src_prepare() {
 	distutils-r1_src_prepare
