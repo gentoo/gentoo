@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,9 +19,9 @@ RDEPEND="
 	>=app-shells/bash-4
 	|| ( app-text/recode ( dev-lang/perl dev-perl/HTML-Parser ) )
 	dev-vcs/git
-	|| ( media-gfx/imagemagick[tiff] media-gfx/graphicsmagick[imagemagick,tiff] )
 	net-misc/curl
 	sys-apps/util-linux
+	virtual/imagemagick-tools[tiff]
 	javascript? ( || ( dev-lang/spidermonkey:0 dev-java/rhino ) )
 	view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) )"
 DEPEND=""
