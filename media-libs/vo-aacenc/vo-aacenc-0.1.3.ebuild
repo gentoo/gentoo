@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	AUTOTOOLS_AUTORECONF=yes
 fi
 
-inherit autotools-multilib ${SCM}
+inherit autotools-multilib flag-o-matic ${SCM}
 
 DESCRIPTION="VisualOn AAC encoder library"
 HOMEPAGE="https://sourceforge.net/projects/opencore-amr/"
@@ -34,6 +34,7 @@ IUSE="examples static-libs neon"
 AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 
 src_configure() {
+	use neon && append-flags '-mfpu=neon'
 	local myeconfargs=(
 		"$(use_enable examples example)"
 		"$(use_enable neon armv7neon)"
