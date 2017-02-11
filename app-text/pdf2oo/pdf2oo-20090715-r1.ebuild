@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,8 +14,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="app-arch/zip
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
-	>=app-text/poppler-0.12.3-r3[utils]"
+	>=app-text/poppler-0.12.3-r3[utils]
+	virtual/imagemagick-tools"
 
 S=${WORKDIR}/${PN}
 
