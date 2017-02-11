@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="dev-scheme/guile[regex,deprecated]"
+RDEPEND=">=dev-scheme/guile-2.0.12[regex,deprecated]"
 DEPEND="${RDEPEND} !<dev-libs/g-wrap-1.9.8"
 
 src_install() {
