@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,9 +15,9 @@ LICENSE="GPL-2"
 RDEPEND="|| ( net-print/cups net-print/lprng )
 	app-text/ghostscript-gpl
 	>=app-text/psutils-1.17
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
 	>=app-text/a2ps-4.13b-r4
 	virtual/awk
+	virtual/imagemagick-tools
 	virtual/mta"
 DEPEND="${RDEPEND}"
 
