@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit eutils gnome2 virtualx
+inherit flag-o-matic gnome2 virtualx
 
 DESCRIPTION="GNOME webbrowser based on Webkit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Web"
@@ -24,13 +24,14 @@ COMMON_DEPEND="
 	>=dev-libs/libxslt-1.1.7
 	>=gnome-base/gsettings-desktop-schemas-0.0.1
 	>=net-dns/avahi-0.6.22[dbus]
-	>=net-libs/webkit-gtk-2.14.2:4=
+	>=net-libs/webkit-gtk-2.13.2:4=
 	>=net-libs/libsoup-2.48:2.4
 	>=x11-libs/gtk+-3.19.1:3
 	>=x11-libs/libnotify-0.5.1:=
 	gnome-base/gnome-desktop:3=
 
 	dev-db/sqlite:3
+	x11-libs/libwnck:3
 	x11-libs/libX11
 "
 # epiphany-extensions support was removed in 3.7; let's not pretend it still works
@@ -39,10 +40,12 @@ RDEPEND="${COMMON_DEPEND}
 	!www-client/epiphany-extensions
 "
 # paxctl needed for bug #407085
+# eautoreconf requires gnome-common-3.5.5
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
 	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
+	dev-util/itstool
 	sys-apps/paxctl
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -57,7 +60,13 @@ PATCHES=(
 )
 
 src_configure() {
+	# https://bugzilla.gnome.org/show_bug.cgi?id=778495
+	append-cflags -std=gnu11
+
+	# Many years have passed since gecko based epiphany went away,
+	# hence, stop relying on nss for migrating from that versions.
 	gnome2_src_configure \
+		--disable-nss \
 		--enable-shared \
 		--disable-static \
 		--with-distributor-name=Gentoo \
