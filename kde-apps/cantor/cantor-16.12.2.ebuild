@@ -84,6 +84,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use julia && addpredict /proc/self/mem # bug 602894
+
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package analitza Analitza5)
 		$(cmake-utils_use_find_package julia Julia)
