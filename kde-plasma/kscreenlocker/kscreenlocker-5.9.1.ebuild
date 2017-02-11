@@ -53,6 +53,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${PN}-5.9.1-deps.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 
