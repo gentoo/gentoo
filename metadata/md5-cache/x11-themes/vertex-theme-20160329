@@ -4,11 +4,11 @@ DESCRIPTION=Vertex theme for GTK+ based desktops
 EAPI=6
 HOMEPAGE=https://github.com/horst3180/vertex-theme
 IUSE=cinnamon gnome-shell mate xfce
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=x11-themes/gnome-themes-standard x11-themes/gtk-engines-murrine cinnamon? ( >=x11-libs/gtk+-3.20:3 ) gnome-shell? ( >=x11-libs/gtk+-3.20:3 )
 SLOT=0
 SRC_URI=https://github.com/horst3180/vertex-theme/archive/20160329.tar.gz -> vertex-theme-20160329.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=ca61a9dafa448da2385e0ff667a7e83c
+_md5_=3731917f941de45e098858c1564f374b
