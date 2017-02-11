@@ -16,6 +16,11 @@
   <longdescription lang="en">
     comprehensive password hashing framework supporting over 20 schemes
   </longdescription>
+	<use>
+		<flag name="bcrypt">bcrpyt hash algoryptm support</flag>
+		<flag name="totp">time based one time password support</flag>
+		<flag name="scrypt">accelerated scrypt algoythm support</flag>
+	</use>
   <upstream>
     <remote-id type="pypi">passlib</remote-id>
     <remote-id type="bitbucket">ecollins/passlib</remote-id>
