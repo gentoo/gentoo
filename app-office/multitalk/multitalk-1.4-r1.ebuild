@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,8 +20,10 @@ DEPEND=">=media-libs/libsdl-1.2.7
 	>=media-libs/sdl-gfx-2.0.13"
 
 RDEPEND="${DEPEND}
-	latex? ( virtual/latex-base
-		|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )"
+	latex? (
+		virtual/imagemagick-tools
+		virtual/latex-base
+	)"
 
 S="${WORKDIR}/${PN}"
 
