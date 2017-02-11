@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,34 +16,30 @@ KEYWORDS="amd64 x86"
 IUSE="modperl extras graphviz mysql postgres sqlite test"
 REQUIRED_USE=" || ( mysql postgres sqlite )"
 
-# sorting is identical to upstream MYMETA.json, please dont change
 COMMON_DEPS="
-	dev-lang/perl
+	>=dev-lang/perl-5.10.1
 	>=dev-perl/CGI-3.510.0
-	>=dev-perl/DBI-1.614.0
-	>=dev-perl/TimeDate-2.230.0
-	>=dev-perl/DateTime-0.750.0
-	>=dev-perl/DateTime-TimeZone-1.640.0
 	virtual/perl-Digest-SHA
+	>=dev-perl/DateTime-0.500.0
+	>=dev-perl/DateTime-TimeZone-0.710.0
+	>=dev-perl/DBI-1.601.0
+	>=dev-perl/Template-Toolkit-2.22
+	>=dev-perl/Email-Send-2.40.0
 	>=dev-perl/Email-MIME-1.904.0
-	>=dev-perl/Email-Sender-1.300.11
-	>=dev-perl/File-Slurp-9999.130.0
-	>=dev-perl/JSON-XS-2.10.0
-	>=dev-perl/List-MoreUtils-0.320.0
-	>=dev-perl/Math-Random-ISAAC-1.0.1
-	>=dev-perl/Template-Toolkit-2.240.0
-	>=dev-perl/URI-1.550.0
+	dev-perl/URI
+	>=dev-perl/List-MoreUtils-0.329.0
+	dev-perl/Math-Random-ISAAC
 "
 
-DEPEND="test? ( dev-perl/Pod-Coverage ${COMMON_DEPS} )"
+DEPEND="test? ( dev-perl/Pod-Coverage${COMMON_DEPS} )"
 RDEPEND="
 	virtual/httpd-cgi
 	${COMMON_DEPS}
-	postgres? ( >=dev-perl/DBD-Pg-1.49 )
+	postgres? ( >=dev-perl/DBD-Pg-1.49.0 )
 	mysql? ( >=dev-perl/DBD-mysql-4.0.5 )
 	sqlite? ( >=dev-perl/DBD-SQLite-1.290.0 )
 	extras? (
-		>=dev-perl/GD-2.350.0[png,truetype]
+		>=dev-perl/GD-2.35[png,truetype]
 		>=dev-perl/Chart-2.4.1
 		dev-perl/Template-GD
 		dev-perl/GDTextUtil
@@ -59,21 +55,21 @@ RDEPEND="
 		dev-perl/JSON-RPC
 		>=dev-perl/JSON-XS-2.0.0
 		dev-perl/Test-Taint
-		>=dev-perl/HTML-Parser-3.670.0
+		>=dev-perl/HTML-Parser-3.67.0
 		dev-perl/HTML-Scrubber
-		>=virtual/perl-Encode-2.210.0
+		>=virtual/perl-Encode-2.21.0
 		dev-perl/Encode-Detect
 		dev-perl/Email-MIME-Attachment-Stripper
 		dev-perl/Email-Reply
 		dev-perl/TheSchwartz
 		dev-perl/Daemon-Generic
 		dev-perl/File-MimeInfo
-		|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick,perl] )
+		virtual/imagemagick-tools[perl]
 		dev-perl/MIME-tools
 	)
 	modperl? (
 		www-apache/mod_perl:1
-		>=dev-perl/Apache-SizeLimit-0.960.0
+		>=dev-perl/Apache-SizeLimit-0.96.0
 	)
 	graphviz? ( media-gfx/graphviz )
 "
