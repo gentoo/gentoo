@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,13 +23,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="vorbis oss imagemagick"
 
 DEPEND=">=media-video/vdr-1.6
-		media-libs/libmad
-		media-libs/libid3tag
-		sys-libs/zlib
-		media-libs/libsndfile
-		vorbis? ( media-libs/libvorbis )
-		imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
-		!imagemagick? ( media-libs/imlib2 )"
+	media-libs/libmad
+	media-libs/libid3tag
+	sys-libs/zlib
+	media-libs/libsndfile
+	vorbis? ( media-libs/libvorbis )
+	imagemagick? ( virtual/imagemagick-tools )
+	!imagemagick? ( media-libs/imlib2 )"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
