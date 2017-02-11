@@ -68,7 +68,7 @@ src_install() {
 	cmake-utils_src_install
 	docompress -x /usr/share/doc/awesome/doc
 
-	pax-mark m "${ED%/}"/usr/bin/awesome || die
+	pax-mark m "${ED%/}"/usr/bin/awesome
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
