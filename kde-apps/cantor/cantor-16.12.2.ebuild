@@ -56,7 +56,10 @@ RDEPEND="${RDEPEND}"
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}"/${P}-bashism.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-bashism.patch
+	"${FILESDIR}"/${P}-python-kf-5.31.patch
+)
 
 pkg_pretend() {
 	kde5_pkg_pretend
