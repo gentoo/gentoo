@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,13 +17,13 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="libvisual matroska nls ogg theora" # static-libs
 
 RDEPEND="media-video/mplayer
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
 	dev-lang/perl
 	>=dev-libs/glib-2.14
 	>=x11-libs/gtk+-2.16:2
 	media-libs/libsdl
 	media-libs/libv4l
 	virtual/ffmpeg
+	virtual/imagemagick-tools
 	virtual/jpeg
 	media-sound/sox
 	virtual/cdrtools
