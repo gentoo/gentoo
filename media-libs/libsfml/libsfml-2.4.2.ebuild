@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=6
 
 inherit cmake-utils versionator
 
-MY_P=SFML-${PV}
+MY_P="SFML-${PV}"
 
 DESCRIPTION="Simple and Fast Multimedia Library (SFML)"
 HOMEPAGE="http://www.sfml-dev.org/ https://github.com/SFML/SFML"
@@ -17,12 +17,13 @@ SLOT="0/$(get_version_component_range 1-2)"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples"
 
-RDEPEND="media-libs/freetype:2
-	media-libs/libpng:0=
-	media-libs/mesa
+RDEPEND="
 	media-libs/flac
+	media-libs/freetype:2
+	media-libs/libpng:0=
 	media-libs/libogg
 	media-libs/libvorbis
+	media-libs/mesa
 	media-libs/openal
 	sys-libs/zlib
 	virtual/jpeg:0
@@ -31,17 +32,20 @@ RDEPEND="media-libs/freetype:2
 	x11-libs/libX11
 	x11-libs/libXrandr
 	x11-libs/libxcb
-	x11-libs/xcb-util-image"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+	x11-libs/xcb-util-image
+"
+DEPEND="
+	${RDEPEND}
+	doc? ( app-doc/doxygen )
+"
 
-DOCS="changelog.txt readme.txt"
+DOCS=( changelog.txt readme.txt )
 
-S=${WORKDIR}/${MY_P}
+PATCHES=( "${FILESDIR}"/${PN}-2.2-no-docs.patch )
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	local PATCHES=( "${FILESDIR}"/${PN}-2.2-no-docs.patch )
-
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
 		doc/CMakeLists.txt || die
 

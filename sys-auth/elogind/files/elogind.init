@@ -16,7 +16,7 @@ start() {
 	# elogind needs a /run/systemd directory
 	if [[ ! -e /run/systemd ]]; then
 		mkdir -p /run/systemd
-		chmod 644 /run/systemd
+		chmod 755 /run/systemd
 	fi
 
 	start-stop-daemon --start --quiet --background \

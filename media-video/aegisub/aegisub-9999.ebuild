@@ -41,7 +41,7 @@ RDEPEND="
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
 	spell? ( app-text/hunspell:= )
-	uchardet? ( dev-libs/uchardet )
+	uchardet? ( app-i18n/uchardet )
 "
 DEPEND="${RDEPEND}
 	dev-util/intltool

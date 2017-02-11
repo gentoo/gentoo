@@ -74,7 +74,7 @@ COMMON_DEPEND="
 		virtual/libiconv
 		enca? ( app-i18n/enca )
 		libguess? ( >=app-i18n/libguess-1.0 )
-		uchardet? ( dev-libs/uchardet )
+		uchardet? ( app-i18n/uchardet )
 	)
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )

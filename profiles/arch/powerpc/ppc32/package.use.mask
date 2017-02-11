@@ -49,7 +49,7 @@ kde-plasma/libksysguard detailedmemory
 
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-libs/uchardet lacks ppc32 keyword. See bug #569114.
+# app-i18n/uchardet lacks ppc32 keyword. See bug #569114.
 media-video/mpv uchardet
 
 # James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)

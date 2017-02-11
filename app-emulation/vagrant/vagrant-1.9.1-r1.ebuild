@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
@@ -51,7 +51,7 @@ all_ruby_prepare() {
 	rm Gemfile || die
 
 	# loosen dependencies
-	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp\|rake/s/~>/>=/' \
+	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp\|rake\|childprocess/s/~>/>=/' \
 		-e '/ruby_dep/s/<=/>=/' \
 		-e '/nokogiri/s/=/>=/' \
 		-i ${PN}.gemspec || die

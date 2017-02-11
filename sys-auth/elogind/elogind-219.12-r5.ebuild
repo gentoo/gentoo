@@ -7,8 +7,8 @@ EAPI=6
 inherit autotools linux-info pam udev
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
-HOMEPAGE="https://github.com/wingo/elogind"
-SRC_URI="https://github.com/wingo/elogind/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/elogind/elogind"
+SRC_URI="https://github.com/elogind/elogind/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-login1-perms.patch"
 	"${FILESDIR}/${P}-gperf.patch"
 	"${FILESDIR}/${P}-glibc.patch" # bug 605744
+	"${FILESDIR}/${P}-runtime.patch"
 )
 
 pkg_setup() {

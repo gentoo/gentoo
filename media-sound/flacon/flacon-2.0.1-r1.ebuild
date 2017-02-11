@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE="aac flac mac mp3 opus qt5 replaygain test tta vorbis wavpack"
 
 COMMON_DEPEND="
-	dev-libs/uchardet
+	app-i18n/uchardet
 	!qt5? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

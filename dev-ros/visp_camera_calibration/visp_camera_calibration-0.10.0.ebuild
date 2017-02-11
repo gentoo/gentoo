@@ -8,7 +8,7 @@ KEYWORDS="~amd64 ~arm"
 VER_PREFIX="kinetic-"
 ROS_SUBDIR=${PN}
 CATKIN_HAS_MESSAGES=yes
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/sensor_msgs dev-ros/std_msgs"
 
 inherit ros-catkin
