@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,12 +32,7 @@ DEPEND="${RDEPEND}
 	x11-proto/inputproto
 	virtual/pkgconfig
 	sys-devel/gettext
-	gnome? (
-		|| (
-			media-gfx/imagemagick[jpeg,png]
-			media-gfx/graphicsmagick[imagemagick,jpeg,png]
-		)
-	)
+	gnome? ( virtual/imagemagick-tools[jpeg,png] )
 "
 
 # This needs RECORD extension from X.org server which isn't necessarily
