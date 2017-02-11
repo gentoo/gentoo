@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,7 +47,7 @@ RDEPEND="${NLS_RDEPEND}
 	dts? ( media-libs/libdca )
 	dxr3? ( media-libs/libfame )
 	flac? ( media-libs/flac )
-	fusionsound? ( || ( >=media-libs/FusionSound-1.1.1 >=dev-libs/DirectFB-1.7.1[fusionsound] ) )
+	fusionsound? ( >=dev-libs/DirectFB-1.7.1[fusionsound] )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick ) )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
