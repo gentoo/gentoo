@@ -232,13 +232,10 @@ gnome2_src_configure() {
 
 # @FUNCTION: gnome2_src_compile
 # @DESCRIPTION:
-# Only default src_compile for now
+# Only default src_compile for now, but we cannot call "default" because it
+# doesn't allow to set variables, bug #606826
 gnome2_src_compile() {
-	if has ${EAPI:-0} 4 5; then
-		emake
-	else
-		default
-	fi
+	emake
 }
 
 # @FUNCTION: gnome2_src_install
@@ -259,14 +256,15 @@ gnome2_src_install() {
 		dodir "${sk_tmp_dir}" || die "dodir failed"
 		emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED}${sk_tmp_dir} " "$@" install || die "install failed"
 	else
-		default
+		emake DESTDIR="${D}" "$@" install || die "install failed"
 	fi
 
 	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
 	# Handle documentation as 'default' for eapi5, bug #373131
-	# Since eapi6 this is handled by default on its own plus MAINTAINERS and HACKING
-	# files that are really common in gnome packages (bug #573390)
+	# Since eapi6 we also install MAINTAINERS and HACKING files as they are really common in gnome packages (bug #573390)
+	# Please remember we cannot rely on default_src_install because it
+	# doesn't allow to set variables, bug #606826
 	if has ${EAPI:-0} 4; then
 		# Manual document installation
 		if [[ -n "${DOCS}" ]]; then
@@ -275,6 +273,7 @@ gnome2_src_install() {
 	elif has ${EAPI:-0} 5; then
 		einstalldocs
 	else
+		einstalldocs
 		local d
 		for d in HACKING MAINTAINERS; do
 			[[ -s "${d}" ]] && dodoc "${d}"
