@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	>=gnome-base/librsvg-2.34
-	|| ( media-gfx/imagemagick[png?] media-gfx/graphicsmagick[imagemagick,png?] )
+	virtual/imagemagick-tools[png?]
 	sys-devel/gettext
 	>=x11-misc/icon-naming-utils-0.8.90"
 
