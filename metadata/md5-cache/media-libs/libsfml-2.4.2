@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/flac media-libs/freetype:2 media-libs/libpng:0= media-libs/libogg media-libs/libvorbis media-libs/mesa media-libs/openal sys-libs/zlib virtual/jpeg:0 virtual/libudev:0 virtual/opengl x11-libs/libX11 x11-libs/libXrandr x11-libs/libxcb x11-libs/xcb-util-image doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-3.6.3
+DESCRIPTION=Simple and Fast Multimedia Library (SFML)
+EAPI=6
+HOMEPAGE=http://www.sfml-dev.org/ https://github.com/SFML/SFML
+IUSE=debug doc examples
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB
+RDEPEND=media-libs/flac media-libs/freetype:2 media-libs/libpng:0= media-libs/libogg media-libs/libvorbis media-libs/mesa media-libs/openal sys-libs/zlib virtual/jpeg:0 virtual/libudev:0 virtual/opengl x11-libs/libX11 x11-libs/libXrandr x11-libs/libxcb x11-libs/xcb-util-image
+SLOT=0/2.4
+SRC_URI=https://github.com/SFML/SFML/archive/2.4.2.tar.gz -> libsfml-2.4.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=557bc00d83d4920dfe1358d1abb6a0ae

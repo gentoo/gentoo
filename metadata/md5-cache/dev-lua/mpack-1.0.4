@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test
+DEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2= ) virtual/pkgconfig test? ( dev-lua/busted )
+DESCRIPTION=Lua bindings for libmpack
+EAPI=6
+HOMEPAGE=https://github.com/tarruda/libmpack/
+IUSE=luajit test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2= )
+SLOT=0
+SRC_URI=https://github.com/tarruda/libmpack/archive/1.0.4.tar.gz -> mpack-1.0.4.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=85578b6f930f3723704a3b05cfc65742
