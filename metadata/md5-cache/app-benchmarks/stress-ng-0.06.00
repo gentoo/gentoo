@@ -1,4 +1,4 @@
-DEFINED_PHASES=-
+DEFINED_PHASES=install
 DEPEND=sys-apps/keyutils sys-apps/attr
 DESCRIPTION=A tool to load and stress a computer system
 EAPI=6
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/keyutils sys-apps/attr
 SLOT=0
 SRC_URI=http://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.06.00.tar.gz
-_eclass_exported_funcs=-
-_md5_=dbafef10da096261fa62d993e3024579
+_eclass_exported_funcs=src_install:-
+_md5_=f9782da9761b3be39141d3ab5686fd0d
