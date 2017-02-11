@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="graphical scanning frontend"
@@ -10,6 +10,7 @@ HOMEPAGE="http://www.xsane.org/"
 SRC_URI="
 	http://www.xsane.org/download/${P}.tar.gz
 	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-0.998-patches-2.tar.xz
+	https://dev.gentoo.org/~pacho/${PN}/${PN}-256x256.png
 "
 
 LICENSE="GPL-2"
@@ -21,21 +22,21 @@ RDEPEND="
 	media-gfx/sane-backends
 	x11-libs/gtk+:2
 	x11-misc/xdg-utils
-	jpeg? ( virtual/jpeg )
-	png? ( media-libs/libpng )
-	tiff? ( media-libs/tiff )
+	jpeg? ( virtual/jpeg:0 )
+	png? ( media-libs/libpng:0= )
+	tiff? ( media-libs/tiff:0 )
 	gimp? ( media-gfx/gimp )
 	lcms? ( media-libs/lcms:2 )
 "
-
 PDEPEND="ocr? ( app-text/gocr )"
 
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
 	virtual/pkgconfig
 "
 
 src_prepare() {
+	default
+
 	# Apply multiple fixes from different distributions
 	# Drop included patch and reuse patchset from prior version
 	rm "${WORKDIR}/${PN}-0.998-patches-2"/005-update-param-crash.patch || die
@@ -49,7 +50,9 @@ src_prepare() {
 	tc-export AR
 
 	# Add support for lcms-2 (from Fedora)
-	epatch "${FILESDIR}/${PN}-0.999-lcms2.patch"
+	eapply "${FILESDIR}/${PN}-0.999-lcms2.patch"
+
+	mv configure.in configure.ac || die
 	AT_M4DIR="m4" eautoreconf
 }
 
@@ -83,5 +86,5 @@ src_install() {
 		dosym /usr/bin/xsane "${plugindir#${EPREFIX}}"/xsane
 	fi
 
-	newicon src/xsane-48x48.png ${PN}.png
+	newicon "${DISTDIR}/${PN}-256x256.png" "${PN}".png
 }
