@@ -32,7 +32,7 @@ CDEPEND="x11-libs/libX11
 RDEPEND="${CDEPEND}
 	x11-misc/xdg-utils
 	app-text/gv
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	virtual/imagemagick-tools
 	sys-apps/less
 	media-sound/timidity++"
 DEPEND="${CDEPEND}
