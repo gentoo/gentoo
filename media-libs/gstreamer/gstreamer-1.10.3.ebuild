@@ -17,7 +17,7 @@ IUSE="+caps +introspection nls +orc test unwind"
 
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
-	caps? ( sys-libs/libcap )
+	caps? ( sys-libs/libcap[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
 	unwind? ( >=sys-libs/libunwind-1.2_rc1[${MULTILIB_USEDEP}] )
 "
