@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI="5"
 POSTGRES_COMPAT=( 9.{1,2,3,4,5} )
 
 inherit autotools eutils versionator
@@ -40,10 +40,7 @@ DEPEND="${RDEPEND}
 				app-text/docbook-xsl-stylesheets
 				app-text/docbook-xml-dtd:4.5
 				dev-libs/libxslt
-				|| (
-					media-gfx/imagemagick[png]
-					media-gfx/graphicsmagick[imagemagick,png]
-				)
+				virtual/imagemagick-tools[png]
 		)
 		virtual/pkgconfig
 		test? ( dev-util/cunit )
@@ -96,8 +93,6 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-2.2.0-arflags.patch"
 
-	eapply_user
-
 	local AT_M4DIR="macros"
 	eautoreconf
 }
@@ -141,5 +136,5 @@ pkg_postinst() {
 	postgresql-config update
 
 	elog "To finish installing PostGIS, follow the directions detailed at:"
-	elog "http://postgis.net/docs/manual-${PGIS}/postgis_installation.html#create_new_db_extensions"
+	elog "http://postgis.net/docs/manual-${MY_PV}/postgis_installation.html#create_new_db_extensions"
 }
