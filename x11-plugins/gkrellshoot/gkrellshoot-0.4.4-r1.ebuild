@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,4 +15,4 @@ SLOT="2"
 KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE=""
 
-RDEPEND="|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )"
+RDEPEND="virtual/imagemagick-tools"
