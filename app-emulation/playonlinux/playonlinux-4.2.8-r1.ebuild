@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,12 +27,12 @@ RDEPEND="app-emulation/wine
 	app-arch/unzip
 	app-crypt/gnupg
 	dev-python/wxpython:2.8[${PYTHON_USEDEP}]
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
 	net-misc/wget
 	x11-apps/mesa-progs
 	x11-terms/xterm
 	media-gfx/icoutils
 	|| ( net-analyzer/netcat net-analyzer/netcat6 )
+	virtual/imagemagick-tools
 	winbind? ( net-fs/samba[winbind] ) "
 
 S=${WORKDIR}/${PN}
