@@ -9,7 +9,7 @@ HOMEPAGE="http://gnome-look.org/content/show.php/Zukitwo?content=140562"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnome-shell"
 
 RDEPEND="x11-themes/zuki-themes[gnome-shell?]"
