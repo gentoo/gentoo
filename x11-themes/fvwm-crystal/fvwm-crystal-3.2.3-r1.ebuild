@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="${PYTHON_DEPS}
 	>=x11-wm/fvwm-2.6.5[png]
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	virtual/imagemagick-tools
 	|| ( >=x11-misc/stalonetray-0.6.2-r2 x11-misc/trayer )
 	|| ( x11-misc/hsetroot media-gfx/feh )
 	sys-apps/sed
