@@ -14,8 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+exif +gd imagemagick"
 
 DEPEND=""
-RDEPEND="imagemagick? ( || ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] ) )
+RDEPEND="
+	imagemagick? ( virtual/imagemagick-tools )
 	dev-lang/php[ctype,exif?,gd?,filter,iconv,json,mysqli]
 	>=virtual/mysql-5.0
 	virtual/httpd-php"
