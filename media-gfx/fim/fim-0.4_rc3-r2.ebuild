@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND="media-fonts/terminus-font
 	exif? ( media-libs/libexif )
 	gif? ( media-libs/giflib )
 	graphicsmagick? ( media-gfx/graphicsmagick )
-	imagemagick? ( || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick ) )
+	imagemagick? ( virtual/imagemagick-tools )
 	jpeg? ( virtual/jpeg:0 )
 	pdf? ( >=app-text/poppler-0.31 )
 	png? ( media-libs/libpng:0 )
