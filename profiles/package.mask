@@ -408,11 +408,6 @@ media-video/nvidia-settings
 # Masked pending testing and eclass/profile support.
 dev-lang/python:3.6
 
-# Chris Reffett <creffett@gentoo.org> (08 Jan 2017)
-# Superseded by projectlibre-bin, please migrate to that.
-# Masked for removal in 30 days.
-app-office/openproj-bin
-
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
 # This package has some dangerous quality and security issues, but
 # people may still find it useful. It is masked to prevent accidental
