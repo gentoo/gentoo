@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE multi-protocol IM client"
 HOMEPAGE="https://kopete.kde.org https://www.kde.org/applications/internet/kopete"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug ssl v4l"
 
 # tests hang, last checked for 4.2.96
@@ -67,9 +67,9 @@ COMMONDEPEND="
 	$(add_kdeapps_dep kdepimlibs)
 	dev-libs/libpcre
 	>=dev-qt/qtgui-4.4.0:4[mng]
-	kde-frameworks/kdelibs:4[zeroconf?]
 	media-libs/phonon[qt4]
 	media-libs/qimageblitz
+	kde-frameworks/kdelibs:4[zeroconf?]
 	!aqua? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
@@ -81,7 +81,7 @@ COMMONDEPEND="
 		dev-libs/openssl:0
 		>=media-libs/mediastreamer-2.3.0
 		media-libs/speex
-		net-libs/libsrtp
+		net-libs/libsrtp:=
 		net-libs/ortp:=
 	)
 	meanwhile? ( net-libs/meanwhile )
@@ -102,10 +102,7 @@ COMMONDEPEND="
 "
 RDEPEND="${COMMONDEPEND}
 	latex? (
-		|| (
-			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
-		)
+		virtual/imagemagick-tools
 		virtual/latex-base
 	)
 	ssl? ( app-crypt/qca:2[ssl] )
@@ -115,8 +112,6 @@ DEPEND="${COMMONDEPEND}
 	jingle? ( dev-libs/jsoncpp )
 	!aqua? ( x11-proto/scrnsaverproto )
 "
-
-PATCHES=( "${FILESDIR}/${P}-CVE-2017-5593.patch" )
 
 src_configure() {
 	local x x2
