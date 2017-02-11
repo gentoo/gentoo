@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python{3_4,3_5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 eutils versionator
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 		dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'pypy*' 'python2*')
-		dev-python/typing[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' 'pypy*' 'python2*' python3_4 )
 	)"
 
 S="${WORKDIR}/${P^}"
