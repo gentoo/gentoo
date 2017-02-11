@@ -123,6 +123,7 @@ gnutls - Add support for net-libs/gnutls (TLS 1.0 and SSL 3.0 support)
 gphoto2 - Add digital camera support
 gpm - Add support for sys-libs/gpm (Console-based mouse driver)
 gps - Add support for Global Positioning System
+graphicsmagick - Enable support for the GraphicsMagick image converter (fork of media-gfx/imagemagick)
 graphviz - Add support for the Graphviz library
 gsl - Use the GNU scientific library for calculations
 gsm - Add support for the gsm lossy speech compression codec
@@ -141,7 +142,7 @@ icq - Enable ICQ IM protocol support
 icu - Enable ICU (Internationalization Components for Unicode) support, using dev-libs/icu
 idn - Enable support for Internationalized Domain Names
 ieee1394 - Enable FireWire/iLink IEEE1394 support (dv, camera, ...)
-imagemagick - Enable support for Imagemagick (image converter)
+imagemagick - Enable support for the ImageMagick image converter
 imap - Add support for IMAP (Internet Mail Application Protocol)
 imlib - Add support for imlib, an image loading and rendering library
 infiniband - Enable Infiniband RDMA transport support
