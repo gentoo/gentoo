@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,8 +38,8 @@ CDEPEND="dev-libs/glib:2
 
 DEPEND="${CDEPEND}
 	test? (
-		|| ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick )
 		sci-electronics/gerbv
+		virtual/imagemagick-tools
 	)
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
