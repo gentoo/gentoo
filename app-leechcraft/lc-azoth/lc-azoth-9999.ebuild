@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,10 +43,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	crypt? ( app-crypt/qca:2[gpg] )
 	latex? (
-		|| (
-			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
-		)
+		virtual/imagemagick-tools
 		virtual/latex-base
 	)
 	spell? (
