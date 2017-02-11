@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,12 +37,7 @@ RDEPEND="${COMMON_DEPEND}
 	cdr? ( >=app-cdr/brasero-2.32.1:0= )
 	gajim? ( net-im/gajim:0 )
 	gksu? ( x11-libs/gksu )
-	image-converter? (
-		|| (
-			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
-		)
-	)
+	image-converter? ( virtual/imagemagick-tools )
 	pidgin? ( net-im/pidgin )"
 
 DEPEND="${COMMON_DEPEND}
