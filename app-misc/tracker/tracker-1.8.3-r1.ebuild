@@ -38,13 +38,11 @@ RDEPEND="
 	>=dev-libs/glib-2.40:2
 	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=
-	|| (
-		>=media-gfx/imagemagick-5.2.1[png,jpeg?]
-		media-gfx/graphicsmagick[imagemagick,png,jpeg?] )
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/libmediaart-1.9:2.0
 	sys-apps/util-linux
 	>=x11-libs/pango-1:=
+	virtual/imagemagick-tools[png,jpeg?]
 
 	cue? ( media-libs/libcue )
 	elibc_glibc? ( >=sys-libs/glibc-2.12 )
