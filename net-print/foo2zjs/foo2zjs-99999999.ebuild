@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -74,4 +74,9 @@ src_install() {
 	dodir /usr/share/ppd
 
 	emake DESTDIR="${D}" -j1 install install-hotplug
+}
+
+src_test() {
+	# see bug 419787
+	: ;
 }
