@@ -18,7 +18,7 @@ IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.38:2
 	media-video/ffmpeg[X,encode]
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	virtual/imagemagick-tools
 	>=x11-libs/gtk+-3.14:3"
 
 DEPEND="${RDEPEND}
