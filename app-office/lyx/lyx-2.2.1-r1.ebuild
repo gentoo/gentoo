@@ -14,32 +14,34 @@ FONT_S="${S}/lib/fonts"
 FONT_SUFFIX="ttf"
 DESCRIPTION="WYSIWYM frontend for LaTeX, DocBook, etc."
 HOMEPAGE="http://www.lyx.org/"
-SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.0.x/${MY_P}.tar.xz
-	ftp://ftp.lyx.org/pub/lyx/devel/lyx-2.0/${PV}/${MY_P}.tar.xz"
+SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.2.x/${MY_P}.tar.xz
+	ftp://ftp.lyx.org/pub/lyx/devel/lyx-2.2/${MY_P}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x64-macos ~x86-macos"
-IUSE="cups debug nls +latex monolithic-build html rtf dot docbook dia subversion rcs svg gnumeric +hunspell aspell enchant"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-macos"
+IUSE="cups debug nls +latex monolithic-build html rtf dot docbook dia subversion rcs svg gnumeric +hunspell aspell enchant +qt4 qt5"
 
-LANGS="ar ca cs de da el en es eu fi fr gl he hu ia id it ja nb nn pl pt ro ru sk sr sv tr uk zh_CN zh_TW"
+LANGS="ar ca cs da de el en es eu fi fr gl he hu ia id it ja nb nn pl pt_BR pt_PT ro ru sk sr sv tr uk zh_CN zh_TW"
 
 for X in ${LANGS}; do
 	IUSE="${IUSE} linguas_${X}"
 done
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	qt4? ( !qt5 )
+	qt5? ( !qt4 )"
 
 DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 
-COMMONDEPEND="dev-qt/qtgui:4
-	dev-qt/qtcore:4
-	>=dev-libs/boost-1.34
-	${PYTHON_DEPS}"
+COMMONDEPEND=">=dev-libs/boost-1.34:=
+	${PYTHON_DEPS}
+	qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 dev-qt/qtsvg:4 )
+	qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtsvg:5 dev-qt/qtconcurrent:5 )"
 
 RDEPEND="${COMMONDEPEND}
 	dev-texlive/texlive-fontsextra
-	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png] )
+	virtual/imagemagick-tools[png,svg?]
 	cups? ( net-print/cups )
 	latex? (
 		app-text/texlive
@@ -71,11 +73,9 @@ RDEPEND="${COMMONDEPEND}
 	docbook? ( app-text/sgmltools-lite )
 	dot? ( media-gfx/graphviz )
 	dia? ( app-office/dia )
-	subversion? ( <dev-vcs/subversion-1.7.0 )
+	subversion? ( dev-vcs/subversion )
 	rcs? ( dev-vcs/rcs )
-	svg? (  || ( media-gfx/imagemagick[svg] media-gfx/graphicsmagick[svg] )
-			|| ( gnome-base/librsvg media-gfx/inkscape )
-		)
+	svg? ( || ( gnome-base/librsvg media-gfx/inkscape ) )
 	gnumeric? ( app-office/gnumeric )
 	hunspell? ( app-text/hunspell )
 	aspell? ( app-text/aspell )
@@ -91,14 +91,25 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/2.0.8-python.patch
+	epatch "${FILESDIR}"/2.1-python.patch
 	sed "s:python -tt:${EPYTHON} -tt:g" -i lib/configure.py || die
+	if use qt4; then
+		export QT_SELECT=qt4
+	elif use qt5; then
+		export QT_SELECT=qt5
+	fi
 }
 
 src_configure() {
 	tc-export CXX
 	#bug 221921
 	export VARTEXFONTS=${T}/fonts
+	local qt_flag=""
+	if use qt4; then
+		qt_flag=""
+	elif use qt5; then
+		qt_flag="--enable-qt5"
+	fi
 
 	econf \
 		$(use_enable nls) \
@@ -107,6 +118,7 @@ src_configure() {
 		$(use_with hunspell) \
 		$(use_with aspell) \
 		$(use_with enchant) \
+		${qt_flag} \
 		--without-included-boost \
 		--disable-stdlib-debug \
 		--with-packaging=posix
@@ -126,7 +138,6 @@ src_install() {
 	newicon -s 32 "${S}/development/Win32/packaging/icons/lyx_32x32.png" ${PN}.png
 	doicon -s 48 "${S}/lib/images/lyx.png"
 	doicon -s scalable "${S}/lib/images/lyx.svg"
-	make_desktop_entry ${PN} "LyX" "${PN}" "Office" "MimeType=application/x-lyx;"
 
 	# fix for bug 91108
 	if use latex ; then

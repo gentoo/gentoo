@@ -39,7 +39,7 @@ COMMONDEPEND="dev-qt/qtgui:4
 
 RDEPEND="${COMMONDEPEND}
 	dev-texlive/texlive-fontsextra
-	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png] )
+	virtual/imagemagick-tools[png,svg?]
 	cups? ( net-print/cups )
 	latex? (
 		app-text/texlive
@@ -73,9 +73,7 @@ RDEPEND="${COMMONDEPEND}
 	dia? ( app-office/dia )
 	subversion? ( dev-vcs/subversion )
 	rcs? ( dev-vcs/rcs )
-	svg? (  || ( media-gfx/imagemagick[svg] media-gfx/graphicsmagick[svg] )
-			|| ( gnome-base/librsvg media-gfx/inkscape )
-		)
+	svg? ( || ( gnome-base/librsvg media-gfx/inkscape ) )
 	gnumeric? ( app-office/gnumeric )
 	hunspell? ( app-text/hunspell )
 	aspell? ( app-text/aspell )
