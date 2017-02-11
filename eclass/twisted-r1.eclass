@@ -135,9 +135,10 @@ twisted-r1_python_test() {
 	distutils_install_for_testing || die
 
 	if [[ ${TEST_DIR} != ${BUILD_DIR}/test ]]; then
-		eqawarn "twisted-r1 integrity check failed."
-		eqawarn "TEST_DIR: ${TEST_DIR}"
-		eqawarn "expected: ${BUILD_DIR}/test"
+		eerror "twisted-r1 integrity check failed."
+		eerror "TEST_DIR: ${TEST_DIR}"
+		eerror "expected: ${BUILD_DIR}/test"
+		die "TEST_DIR integrity check failed"
 	fi
 
 	cd "${TEST_DIR}"/lib || die
