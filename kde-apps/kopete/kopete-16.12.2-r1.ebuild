@@ -116,6 +116,8 @@ DEPEND="${COMMONDEPEND}
 	!aqua? ( x11-proto/scrnsaverproto )
 "
 
+PATCHES=( "${FILESDIR}/${P}-CVE-2017-5593.patch" )
+
 src_configure() {
 	local x x2
 	# Handle common stuff
