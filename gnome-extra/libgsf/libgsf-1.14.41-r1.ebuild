@@ -20,7 +20,7 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	gtk? (
 		x11-libs/gdk-pixbuf:2
-		|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+		virtual/imagemagick-tools
 		)
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
 "
