@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -30,7 +30,7 @@ IUSE=""
 # _calls_ the commands. But when we run tests we're going to need tiff
 # and jpeg support at a minimum.
 RDEPEND+=" media-gfx/imagemagick"
-DEPEND+=" test? ( media-gfx/imagemagick[tiff,jpeg,png] >=media-gfx/graphicsmagick-1.3.20[tiff,jpeg,png] )"
+DEPEND+=" test? ( virtual/imagemagick-tools[jpeg,png,tiff] )"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha dev-ruby/posix-spawn )"
 
