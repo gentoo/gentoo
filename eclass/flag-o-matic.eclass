@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -562,27 +562,8 @@ get-flag() {
 	return 1
 }
 
-# @FUNCTION: has_m64
-# @DESCRIPTION:
-# This doesn't test if the flag is accepted, it tests if the flag actually
-# WORKS. Non-multilib gcc will take both -m32 and -m64. If the flag works
-# return code is 0, else the return code is 1.
 has_m64() {
-	eqawarn "${FUNCNAME}: don't use this anymore"
-
-	# this doesnt test if the flag is accepted, it tests if the flag
-	# actually -WORKS-. non-multilib gcc will take both -m32 and -m64!
-	# please dont replace this function with test_flag in some future
-	# clean-up!
-
-	local temp="$(emktemp)"
-	echo "int main() { return(0); }" > "${temp}".c
-	MY_CC=$(tc-getCC)
-	${MY_CC/ .*/} -m64 -o "$(emktemp)" "${temp}".c > /dev/null 2>&1
-	local ret=$?
-	rm -f "${temp}".c
-	[[ ${ret} != 1 ]] && return 0
-	return 1
+	die "${FUNCNAME}: don't use this anymore"
 }
 
 has_m32() {
