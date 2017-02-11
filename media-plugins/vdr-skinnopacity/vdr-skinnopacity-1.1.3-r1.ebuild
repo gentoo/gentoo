@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,7 @@ VERSION="1743"
 
 inherit vdr-plugin-2
 
-DESCRIPTION="VDR Skin Plugin: highly customizable native true color skin for
-the Video Disc Recorder"
+DESCRIPTION="VDR Skin Plugin: customizable native true color skin for the Video Disc Recorder"
 HOMEPAGE="http://projects.vdr-developer.org/projects/skin-nopacity/"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
@@ -21,7 +20,7 @@ IUSE=""
 
 RDEPEND="net-misc/curl
 	dev-libs/libxml2
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick )
+	virtual/imagemagick-tools
 	media-plugins/vdr-epgsearch"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
