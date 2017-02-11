@@ -10647,7 +10647,7 @@ games-board/gamazons 0.83: A chess/go hybrid
 games-board/gambit 1.0.1 1.0.3 1.0.3-r1: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r1 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.18.0 3.20.1 3.22.0 3.22.2: Play the classic two-player boardgame of chess
-games-board/gnome-hearts 0.3.1-r1: A clone of classic hearts card game
+games-board/gnome-hearts 0.3.1-r1 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.18.0 3.20.0 3.22.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
 games-board/gnome-mines 3.20.1 3.22.1 3.22.2: Clear hidden mines from a minefield
