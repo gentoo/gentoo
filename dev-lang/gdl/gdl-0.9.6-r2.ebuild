@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/gnudatalanguage/${P}v2.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+eigen fftw grib gshhs hdf hdf5 imagemagick netcdf openmp
+IUSE="+eigen fftw graphicsmagick grib gshhs hdf hdf5 +imagemagick netcdf openmp
 	  png proj postscript python static-libs udunits wxwidgets"
 
 RDEPEND="
@@ -33,10 +33,8 @@ RDEPEND="
 	hdf? ( sci-libs/hdf:0= )
 	hdf5? ( sci-libs/hdf5:0= )
 	imagemagick? (
-		|| (
-			media-gfx/graphicsmagick[cxx]
-			media-gfx/imagemagick[cxx]
-			)
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
+		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	netcdf? ( sci-libs/netcdf )
 	proj? ( sci-libs/proj )
@@ -47,7 +45,6 @@ RDEPEND="
 	)
 	udunits? ( sci-libs/udunits )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
-
 DEPEND="${RDEPEND}
 	dev-java/antlr:0[java(+),script(+)]
 	virtual/pkgconfig
@@ -69,9 +66,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	use openmp && [[ $(tc-getCXX)$ == *g++* ]] && \
-		[[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp && \
-		die "You are using gcc but without OpenMP capabilities that you requested"
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -82,10 +81,12 @@ src_prepare() {
 	# https://sourceforge.net/tracker/?func=detail&atid=618685&aid=3465878&group_id=97659
 	rm -r src/antlr || die
 	einfo "Regenerating grammar"
-	pushd src > /dev/null
+	pushd src >/dev/null || die
 	local i
-	for i in *.g; do antlr ${i} || die ; done
-	popd > /dev/null
+	for i in *.g; do
+		antlr ${i} || die
+	done
+	popd >/dev/null || die
 
 	# gentoo: avoid install files in datadir directory
 	# and manually install them in src_install
@@ -114,8 +115,9 @@ src_configure() {
 		-DUDUNITS="$(usex udunits)"
 		-DWXWIDGETS="$(usex wxwidgets)"
 	)
+
 	if use imagemagick; then
-		if has_version media-gfx/graphicsmagick[cxx]; then
+		if use graphicsmagick; then
 			mycmakeargs+=( -DGRAPHICSMAGICK=ON -DMAGICK=OFF )
 		else
 			mycmakeargs+=( -DGRAPHICSMAGICK=OFF -DMAGICK=ON )
@@ -123,6 +125,7 @@ src_configure() {
 	else
 		mycmakeargs+=( -DGRAPHICSMAGICK=OFF -DMAGICK=OFF )
 	fi
+
 	configuration() {
 		mycmakeargs+=( $@ )
 		cmake-utils_src_configure
@@ -152,6 +155,6 @@ src_install() {
 		dodoc PYTHON.txt
 	fi
 	#dodoc AUTHORS README
-	echo "GDL_PATH=\"+${EROOT%/}/usr/share/gnudatalanguage\"" > 50gdl
+	echo "GDL_PATH=\"+${EPREFIX}/usr/share/gnudatalanguage\"" > 50gdl || die
 	doenvd 50gdl
 }
