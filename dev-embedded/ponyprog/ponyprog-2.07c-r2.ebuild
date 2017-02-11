@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="x11-libs/libXaw
 	x11-libs/libX11
 	x11-misc/xdg-utils"
 DEPEND="${RDEPEND}
-	|| ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick )"
+	virtual/imagemagick-tools"
 
 S="${WORKDIR}/PonyProg2000-${PV}"
 
