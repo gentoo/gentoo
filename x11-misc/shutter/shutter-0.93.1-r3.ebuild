@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="drawing"
 
 RDEPEND="dev-lang/perl
-	drawing? ( dev-perl/Goo-Canvas  )
-	|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick,perl] )
+	drawing? ( dev-perl/Goo-Canvas )
 	dev-perl/libxml-perl
 	dev-perl/gnome2-canvas
 	dev-perl/gnome2-perl
@@ -37,7 +36,8 @@ RDEPEND="dev-lang/perl
 	dev-perl/WWW-Mechanize
 	dev-perl/X11-Protocol
 	dev-perl/XML-Simple
-	dev-perl/libwww-perl"
+	dev-perl/libwww-perl
+	virtual/imagemagick-tools[perl]"
 
 src_prepare() {
 	default
