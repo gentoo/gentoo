@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit cmake-utils fortran-2
 
@@ -20,11 +20,14 @@ S="${WORKDIR}"/Source_RTB2011
 
 src_prepare() {
 	cp "${FILESDIR}"/CMakeLists.txt . || die
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
-	mycmakeargs=(
-		$(cmake-utils_use examples EXAMPLES)
+	local mycmakeargs=(
+		-DEXAMPLES=$(usex examples)
 	)
+
 	cmake-utils_src_configure
 }
