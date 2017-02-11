@@ -2373,6 +2373,9 @@ dev-python/pandas:R - Enable support for R via dev-python/rpy
 dev-python/pandas:excel - Pull a few Python packages for Microsoft Excel i/o
 dev-python/pandas:full-support - Pull all packages to give pandas full support
 dev-python/pandas:html - Enable HTML i/o via dev-python/beautifulsoup
+dev-python/passlib:bcrypt - bcrpyt hash algoryptm support
+dev-python/passlib:scrypt - accelerated scrypt algoythm support
+dev-python/passlib:totp - time based one time password support
 dev-python/paste:flup - enable support for flup (and therefore for various wgsi servers and middleware)
 dev-python/paste:openid - enable OpenID support
 dev-python/pillow:webp - Enable support for webp image format.
