@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ DEPEND="media-sound/sox
 	dev-qt/qtgui:4[debug?]
 	dev-qt/qtopengl:4[debug?]
 	dev-qt/qtwebkit:4[debug?]
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )"
+	virtual/imagemagick-tools"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
