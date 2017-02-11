@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit cmake-utils
 
@@ -27,9 +27,11 @@ RDEPEND="${DEPEND}
 	)
 "
 
-DOCS="README AUTHORS"
+DOCS=( README AUTHORS )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -i \
 		-e '/CMAKE_C_FLAGS/d' \
 		CMakeLists.txt || die
@@ -37,7 +39,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use debug)
+		-DDebug=$(usex debug)
 	)
 
 	cmake-utils_src_configure
