@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,10 +41,7 @@ DEPEND="${RDEPEND}
 				app-text/docbook-xsl-stylesheets
 				app-text/docbook-xml-dtd:4.5
 				dev-libs/libxslt
-				|| (
-					media-gfx/imagemagick[png]
-					media-gfx/graphicsmagick[imagemagick,png]
-				)
+				virtual/imagemagick-tools[png]
 		)
 		virtual/pkgconfig
 		test? ( dev-util/cunit )
