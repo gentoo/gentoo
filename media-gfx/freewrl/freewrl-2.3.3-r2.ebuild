@@ -6,14 +6,22 @@ EAPI=5
 
 inherit autotools nsplugins eutils flag-o-matic java-pkg-opt-2 multilib
 
+if [[ ${PV} == "9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="git://git.code.sf.net/p/freewrl/git"
+	S="${WORKDIR}/${P}/freex3d"
+	SRC_URI=
+	KEYWORDS=
+else
+	SRC_URI="mirror://sourceforge/freewrl/${P}.1.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="VRML97 and X3D compliant browser, library, and web-browser plugin"
 HOMEPAGE="http://freewrl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/freewrl/${P}.1.tar.bz2"
-
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="curl debug +glew java libeai motif +nsplugin osc +sox static-libs"
+IUSE="curl debug java libeai motif +nsplugin opencl osc +sox static-libs"
 
 COMMONDEPEND="x11-libs/libXau
 	x11-libs/libXdmcp
@@ -22,7 +30,6 @@ COMMONDEPEND="x11-libs/libXau
 	motif? ( x11-libs/motif:0= )
 	!motif? ( x11-libs/libXaw )
 	media-libs/mesa
-	glew? ( media-libs/glew:0= )
 	virtual/opengl
 	media-libs/libpng:0=
 	virtual/jpeg:0=
@@ -31,6 +38,7 @@ COMMONDEPEND="x11-libs/libXau
 	media-libs/fontconfig
 	curl? ( net-misc/curl )
 	osc? ( media-libs/liblo )
+	opencl? ( virtual/opencl )
 	dev-lang/spidermonkey:0="
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig
@@ -38,52 +46,33 @@ DEPEND="${COMMONDEPEND}
 	nsplugin? ( net-misc/npapi-sdk )"
 RDEPEND="${COMMONDEPEND}
 	media-fonts/dejavu
-	|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )
 	app-arch/unzip
+	virtual/imagemagick-tools
 	java? ( >=virtual/jre-1.4 )
 	sox? ( media-sound/sox )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-fontconfig-match.patch
-	if has_version ">=dev-lang/spidermonkey-1.8.7:0" ; then
-		epatch "${FILESDIR}"/${P}-mozjs187-config.patch
-	fi
-	epatch "${FILESDIR}"/${P}-desktop.patch
-	epatch "${FILESDIR}"/${P}-java-fix.patch
-	epatch "${FILESDIR}"/${PN}-2.3.3-ld.gold.patch
+	epatch "${FILESDIR}"/${P}-ld.gold.patch
+	epatch_user
 	eautoreconf
 }
 
 src_configure() {
+	# list of js libs without .pc support, to disable ./configure auto-checking
+	local spidermonkeys=( mozilla-js xulrunner-js firefox-js firefox2-js seamonkey-js )
+	# list of .pc supported spidermonkeys, to disable ./configure auto-checking
+	local spidermonkeys_pc=( mozjs187 mozjs185 )
+
 	local myconf="--enable-fontconfig
 		--without-expat
 		--with-x
 		--with-imageconvert=/usr/bin/convert
-		--with-unzip=/usr/bin/unzip"
-	if use motif; then
-		myconf+=" --with-target=motif --with-statusbar=standard"
-	else
-		myconf+=" --with-target=x11 --with-statusbar=hud"
-	fi
-	if use nsplugin; then
-		myconf+=" --with-plugindir=/usr/$(get_libdir)/${PLUGINS_DIR}"
-		myconf+=" --disable-mozilla-plugin --disable-xulrunner-plugin"
-	fi
-	if use sox; then
-		myconf+=" --with-soundconv=/usr/bin/sox"
-	fi
-	# disable the checks for other js libs, in case they are installed
-	if has_version ">=dev-lang/spidermonkey-1.8.5:0" ; then
-		# spidermonkey-1.8.5 provides a .pc to pkg-config, it should be findable via mozjs185
-		for x in mozilla-js xulrunner-js firefox-js firefox2-js seamonkey-js; do
-			myconf+=" --disable-${x}"
-		done
-	else
-		for x in mozjs187 mozjs185 mozilla-js xulrunner-js firefox-js seamonkey-js; do
-			myconf+=" --disable-${x}"
-		done
+		--with-unzip=/usr/bin/unzip
+		${spidermonkeys[@]/#/ --disable-}"
+
+	if has_version "<dev-lang/spidermonkey-1.8.5" ; then
 		# spidermonkey pre-1.8.5 has no pkg-config, so override ./configure
+		myconf+="${spidermonkeys_pc[@]/#/ --disable-}"
 		JAVASCRIPT_ENGINE_CFLAGS="-I/usr/include/js -DXP_UNIX"
 		if has_version ">=dev-lang/spidermonkey-1.8:0" ; then
 			# spidermonkey-1.8 changed the name of the lib
@@ -98,16 +87,23 @@ src_configure() {
 		export JAVASCRIPT_ENGINE_CFLAGS
 		export JAVASCRIPT_ENGINE_LIBS
 	fi
+	if use nsplugin; then
+		myconf+=" --with-plugindir=/usr/$(get_libdir)/${PLUGINS_DIR}"
+		myconf+=" --disable-mozilla-plugin --disable-xulrunner-plugin"
+	fi
 	econf	${myconf} \
 		$(use_enable curl libcurl) \
-		$(use_with glew) \
+		$(use_with opencl OpenCL) \
 		$(use_enable debug) $(use_enable debug thread_colorized) \
 		$(use_enable libeai) \
 		$(use_enable java) \
 		$(use_enable nsplugin plugin) \
 		$(use_enable osc) \
 		$(use_enable static-libs static) \
-		$(use_enable sox sound)
+		$(use_enable sox sound) \
+		$(usex sox "--with-soundconv=/usr/bin/sox") \
+		$(usex motif "--with-target=motif" "--with-target=x11") \
+		$(usex motif "--with-statusbar=standard" "--with-statusbar=hud")
 }
 
 src_install() {

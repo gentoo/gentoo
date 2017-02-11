@@ -53,9 +53,8 @@ DEPEND="${COMMONDEPEND}
 	nsplugin? ( net-misc/npapi-sdk )"
 RDEPEND="${COMMONDEPEND}
 	media-fonts/dejavu
-	|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )
 	app-arch/unzip
+	virtual/imagemagick-tools
 	java? ( >=virtual/jre-1.4 )
 	sox? ( media-sound/sox )"
 
