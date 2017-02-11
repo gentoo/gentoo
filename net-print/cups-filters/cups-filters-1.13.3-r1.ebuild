@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ GENTOO_DEPEND_ON_PERL=no
 inherit eutils perl-module systemd
 
 if [[ "${PV}" == "9999" ]] ; then
-	inherit bzr
+	inherit bzr autotools
 	EBZR_REPO_URI="http://bzr.linuxfoundation.org/openprinting/cups-filters"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
@@ -48,6 +48,11 @@ DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 "
 
+src_prepare() {
+	default
+	[[ "${PV}" == "9999" ]] && eautoreconf
+}
+
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
@@ -85,6 +90,11 @@ src_compile() {
 
 src_install() {
 	default
+
+	if use foomatic; then
+		# workaround: some printer drivers still require this, bug 501466
+		dosym /usr/bin/foomatic-rip /usr/libexec/cups/filter/foomatic-rip
+	fi
 
 	if use perl; then
 		pushd "${S}/scripting/perl" > /dev/null
