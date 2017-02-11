@@ -1,30 +1,31 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit autotools eutils udev vcs-snapshot
 
 MY_PV="v_${PV//./_}"
 DESCRIPTION="library to add support for consumer fingerprint readers"
 HOMEPAGE="https://cgit.freedesktop.org/libfprint/libfprint/"
-SRC_URI="https://cgit.freedesktop.org/${PN}/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://cgit.freedesktop.org/${PN}/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
+	https://dev.gentoo.org/~patrick/libfprint-0.5.1-add-vfs5011-driver.patch"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="debug static-libs"
 
 RDEPEND="virtual/libusb:1
+	dev-libs/glib:2
 	dev-libs/nss
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] x11-libs/gdk-pixbuf )"
+	|| ( virtual/imagemagick-tools x11-libs/gdk-pixbuf )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-automake-1.13.patch"
-	epatch "${FILESDIR}/${P}-support-147e_2020.patch"
+	epatch "${DISTDIR}/${P}-add-vfs5011-driver.patch" || die
 	eautoreconf
 }
 
