@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 MY_P="${P/vdr-}"
 
-VERSION="1701"
+VERSION="1627"
 
 inherit vdr-plugin-2
 
@@ -19,8 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="|| ( media-gfx/imagemagick media-gfx/graphicsmagick )
-	media-plugins/vdr-epgsearch"
+RDEPEND="
+	media-plugins/vdr-epgsearch
+	virtual/imagemagick-tools"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
