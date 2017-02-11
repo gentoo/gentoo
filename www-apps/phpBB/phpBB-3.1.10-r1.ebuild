@@ -16,7 +16,7 @@ IUSE="ftp gd imagemagick mssql mysqli postgres sqlite xml zlib"
 PHPV="5*:*"
 RDEPEND="=virtual/httpd-php-${PHPV}
 	=dev-lang/php-${PHPV}[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml?,zlib?]
-	imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )"
+	imagemagick? ( virtual/imagemagick-tools )"
 
 need_httpd_cgi
 
