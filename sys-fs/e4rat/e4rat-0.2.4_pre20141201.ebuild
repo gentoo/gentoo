@@ -19,7 +19,7 @@ RDEPEND="
 	dev-lang/perl:=
 	>=dev-libs/boost-1.42:=
 	sys-fs/e2fsprogs
-	sys-process/audit
+	sys-process/audit[static-libs(+)]
 	sys-process/lsof
 "
 DEPEND="${DEPEND}"
