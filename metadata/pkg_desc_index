@@ -11376,7 +11376,7 @@ gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types databas
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
 gnome-extra/chrome-gnome-shell 7.1 8-r1: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 2.8.8-r1 3.0.6-r1 3.0.7-r1 3.0.7-r2 3.2.0-r2 3.2.6-r1 3.2.7-r1: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 2.8.1 3.0.1 3.2.0: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-control-center 2.8.1 3.0.1 3.2.0 3.2.1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.8.1 3.0.2 3.2.0 3.2.4: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.8.0 3.0.2 3.2.0: Cinnamon's library for the Desktop Menu fd.o specification
 gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1 3.2.2 3.2.2-r1 3.2.6 3.2.13-r1 3.2.13-r2: Screensaver for Cinnamon
