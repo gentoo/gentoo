@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,xml"
 inherit cmake-utils python-r1
 
-DESCRIPTION="C++ computer vision library with emphasis on customizable algorithms and data structures"
-HOMEPAGE="http://hci.iwr.uni-heidelberg.de/vigra/"
+DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
+HOMEPAGE="https://ukoethe.github.io/vigra/"
 SRC_URI="https://github.com/ukoethe/vigra/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/boost-1.52.0-r6:=[python?,${PYTHON_USEDEP}]
 	fftw? ( sci-libs/fftw:3.0 )
 	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi?] )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	openexr? ( media-libs/openexr:= )
 	png? ( media-libs/libpng:0= )
 	python? ( ${PYTHON_DEPS} dev-python/numpy[${PYTHON_USEDEP}] )
