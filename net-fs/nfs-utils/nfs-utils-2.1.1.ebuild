@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -58,7 +58,6 @@ DEPEND="${DEPEND_COMMON}
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
 	epatch "${FILESDIR}"/${PN}-1.2.8-cross-build.patch
-	epatch "${FILESDIR}"/${PN}-1.3.3-sysmacros.patch #579884
 
 	sed \
 		-e "/^sbindir/s:= := \"${EPREFIX}\":g" \
@@ -137,17 +136,16 @@ src_install() {
 
 	systemd_dounit systemd/*.{mount,service,target}
 	if ! use nfsv4 || ! use kerberos ; then
-		rm "${D}$(systemd_get_unitdir)"/rpc-{gssd,svcgssd}.service || die
+		rm "${ED}$(systemd_get_unitdir)"/rpc-{gssd,svcgssd}.service || die
 	fi
 	if ! use nfsv41 ; then
-		rm "${D}$(systemd_get_unitdir)"/nfs-blkmap.* || die
+		rm "${ED}$(systemd_get_unitdir)"/nfs-blkmap.* || die
 	fi
-	rm "${D}$(systemd_get_unitdir)"/nfs-config.service || die
 	sed -i -r \
 		-e "/^EnvironmentFile=/s:=.*:=${EPREFIX}/etc/conf.d/nfs:" \
 		-e '/^(After|Wants)=nfs-config.service$/d' \
 		-e 's:/usr/sbin/rpc.statd:/sbin/rpc.statd:' \
-		"${D}$(systemd_get_unitdir)"/* || die
+		"${ED}$(systemd_get_unitdir)"/* || die
 }
 
 pkg_postinst() {
