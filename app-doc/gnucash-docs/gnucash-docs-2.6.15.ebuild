@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/gnucash/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2 FDL-1.1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="test"
 
 RDEPEND="!<=app-office/gnucash-2.2.1"

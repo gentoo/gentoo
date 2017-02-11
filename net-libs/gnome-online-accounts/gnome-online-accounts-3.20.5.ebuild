@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
 LICENSE="LGPL-2+"
 SLOT="0/1"
 IUSE="debug gnome +introspection kerberos" # telepathy"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # pango used in goaeditablelabel
 # libsoup used in goaoauthprovider
