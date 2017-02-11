@@ -18,7 +18,7 @@ RDEPEND=">=x11-themes/tango-icon-theme-0.8.90"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=gnome-base/librsvg-2.34
-	|| ( media-gfx/imagemagick[png?] media-gfx/graphicsmagick[imagemagick,png?] )
+	virtual/imagemagick-tools[png?]
 	>=x11-misc/icon-naming-utils-0.8.90"
 
 RESTRICT="binchecks strip"
