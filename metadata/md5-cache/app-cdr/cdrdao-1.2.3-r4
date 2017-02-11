@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=virtual/cdrtools encode? ( >=media-sound/lame-3.99 ) mad? ( media-libs/libmad media-libs/libao ) vorbis? ( media-libs/libvorbis media-libs/libao ) !app-cdr/cue2toc !dev-util/pccts virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Burn CDs in disk-at-once mode -- with optional GUI frontend
+EAPI=6
+HOMEPAGE=http://cdrdao.sourceforge.net/
+IUSE=encode mad vorbis
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=virtual/cdrtools encode? ( >=media-sound/lame-3.99 ) mad? ( media-libs/libmad media-libs/libao ) vorbis? ( media-libs/libvorbis media-libs/libao ) !app-cdr/cue2toc !dev-util/pccts
+SLOT=0
+SRC_URI=mirror://sourceforge/cdrdao/cdrdao-1.2.3.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8f13c2b38a3e88ce5e0394723c0ba058
