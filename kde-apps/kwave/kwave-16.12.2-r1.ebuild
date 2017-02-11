@@ -56,8 +56,8 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep poxml)
 	$(add_qt_dep qtconcurrent)
-	|| ( media-gfx/imagemagick[png,svg] media-gfx/graphicsmagick[imagemagick,png,svg] )
 	sys-devel/gettext
+	virtual/imagemagick-tools[png,svg]
 "
 RDEPEND="${COMMON_DEPEND}
 	!media-sound/kwave:4
