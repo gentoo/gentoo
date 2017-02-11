@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,10 +17,7 @@ RDEPEND=">=app-text/tesseract-3.00
 	media-gfx/exact-image
 	app-text/unpaper
 	app-text/ghostscript-gpl
-	|| (
-	   media-gfx/imagemagick[png?]
-	   media-gfx/graphicsmagick[png?]
-	)"
+	virtual/imagemagick-tools[png?]"
 DEPEND="sys-apps/gawk
 	>=dev-lang/ocaml-3.10[ocamlopt]"
 
