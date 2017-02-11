@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,13 +34,11 @@ RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=
-	|| (
-		>=media-gfx/imagemagick-5.2.1[png,jpeg?]
-		media-gfx/graphicsmagick[imagemagick,png,jpeg?] )
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/libmediaart-1.9:2.0
 	>=x11-libs/pango-1:=
 	sys-apps/util-linux
+	virtual/imagemagick-tools[png,jpeg?]
 
 	cue? ( media-libs/libcue )
 	elibc_glibc? ( >=sys-libs/glibc-2.12 )
