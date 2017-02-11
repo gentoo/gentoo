@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -50,11 +50,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
-	X? (
-		|| ( media-gfx/imagemagick[png,tiff]
-			media-gfx/graphicsmagick[imagemagick,png,tiff]
-		)
-	)
+	X? ( virtual/imagemagick-tools[png,tiff] )
 "
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
