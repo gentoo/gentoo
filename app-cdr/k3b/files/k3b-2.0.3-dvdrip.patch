@@ -1,0 +1,33 @@
+From 9f109bbc7fe718135da402535f6ca7ca5c105d4d Mon Sep 17 00:00:00 2001
+From: Martin Koller <kollix@aon.at>
+Date: Mon, 26 Oct 2015 22:12:35 +0100
+Subject: revert "fix" which adds literal quote chars to the filename
+
+commit 2786d19f added explicit quote characters around the filename,
+which is wrong since the filename is passed into a QStringList,
+which passes all its separate arguments to the started process.
+Adding quote chars would lead to the filename having the
+quote chars as part of the filename.
+
+BUG: 350403
+REVIEW: 125804
+---
+ libk3b/jobs/k3bvideodvdtitletranscodingjob.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libk3b/jobs/k3bvideodvdtitletranscodingjob.cpp b/libk3b/jobs/k3bvideodvdtitletranscodingjob.cpp
+index 95e4811..4b721ff 100644
+--- a/libk3b/jobs/k3bvideodvdtitletranscodingjob.cpp
++++ b/libk3b/jobs/k3bvideodvdtitletranscodingjob.cpp
+@@ -303,7 +303,7 @@ void K3b::VideoDVDTitleTranscodingJob::startTranscode( int pass )
+         }
+ 
+         // the output filename
+-        *d->process << "-o" << QString("\"%1\"").arg(m_filename);
++        *d->process << "-o" << m_filename;
+     }
+     else {
+         // gather information about the video stream, ignore audio
+-- 
+cgit v0.11.2
+

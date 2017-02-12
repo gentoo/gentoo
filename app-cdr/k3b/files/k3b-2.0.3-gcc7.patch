@@ -1,0 +1,60 @@
+From 1777236203f21eed7a9baade632472094c8081d3 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 4 Feb 2017 10:48:45 +0100
+Subject: ffmpeg: fix/simplify metadata conversion to string
+
+Comparing a pointer with an integer value is (correctly) an error with
+GCC 7.
+---
+ plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp | 21 +++------------------
+ 1 file changed, 3 insertions(+), 18 deletions(-)
+
+diff --git a/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp b/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp
+index a4fc784..22928b2 100644
+--- a/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp
++++ b/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp
+@@ -259,12 +259,7 @@ QString K3bFFMpegFile::title() const
+ {
+     // FIXME: is this UTF8 or something??
+     AVDictionaryEntry *ade = av_dict_get( d->formatContext->metadata, "TITLE", NULL, 0 );
+-    if( ade == NULL )
+-        return QString();
+-    if( ade->value != '\0' )
+-        return QString::fromLocal8Bit( ade->value );
+-    else
+-        return QString();
++    return ade && ade->value[0] != '\0' ? QString::fromLocal8Bit( ade->value ) : QString();
+ }
+ 
+ 
+@@ -272,12 +267,7 @@ QString K3bFFMpegFile::author() const
+ {
+     // FIXME: is this UTF8 or something??
+     AVDictionaryEntry *ade = av_dict_get( d->formatContext->metadata, "ARTIST", NULL, 0 );
+-    if( ade == NULL )
+-        return QString();
+-    if( ade->value != '\0' )
+-        return QString::fromLocal8Bit( ade->value );
+-    else
+-        return QString();
++    return ade && ade->value[0] != '\0' ? QString::fromLocal8Bit( ade->value ) : QString();
+ }
+ 
+ 
+@@ -285,12 +275,7 @@ QString K3bFFMpegFile::comment() const
+ {
+     // FIXME: is this UTF8 or something??
+     AVDictionaryEntry *ade = av_dict_get( d->formatContext->metadata, "COMMENT", NULL, 0 );
+-    if( ade == NULL )
+-        return QString();
+-    if( ade->value != '\0' )
+-        return QString::fromLocal8Bit( ade->value );
+-    else
+-        return QString();
++    return ade && ade->value[0] != '\0' ? QString::fromLocal8Bit( ade->value ) : QString();
+ }
+ 
+ 
+-- 
+cgit v0.11.2
+
