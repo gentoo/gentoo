@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
+# Use dev-php/phpDocumentor instead. Masked for removal
+# in 30 days. Bug 609138.
+dev-php/PEAR-PhpDocumentor
+
+# Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
 # Use PHP's FILTER_VALIDATE_IP instead. Masked for removal
 # in 30 days. Bug 609128.
 dev-php/PEAR-Net_CheckIP
