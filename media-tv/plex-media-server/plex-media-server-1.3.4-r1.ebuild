@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils user systemd unpacker
+inherit eutils user systemd unpacker pax-utils
 
 MINOR1="3285"
 MINOR2="b46e0ea"
@@ -25,9 +25,8 @@ LICENSE="Plex"
 RESTRICT="mirror bindist strip"
 KEYWORDS="-* ~amd64"
 
-DEPEND="
-	net-dns/avahi
-	sys-apps/fix-gnustack"
+DEPEND="sys-apps/fix-gnustack"
+RDEPEND="net-dns/avahi"
 
 QA_DESKTOP_FILE="usr/share/applications/plexmediamanager.desktop"
 QA_PREBUILT="*"
@@ -37,6 +36,7 @@ QA_MULTILIB_PATHS=(
 )
 
 EXECSTACKED_BINS=( "${ED%/}/usr/lib/plexmediaserver/libgnsdk_dsp.so*" )
+BINS_TO_PAX_MARK=( "${ED%/}/usr/lib/plexmediaserver/Plex Script Host" )
 
 S="${WORKDIR}"
 
@@ -85,6 +85,7 @@ src_install() {
 	systemd_newunit "${INIT}" "${INIT_NAME}"
 
 	_remove_execstack_markings
+	_add_pax_markings
 }
 
 pkg_postinst() {
@@ -105,10 +106,17 @@ _handle_multilib() {
 	doenvd "${T}"/66plex
 }
 
-# Remove execstack flag from library so that it works in hardened setups.
+# Remove execstack flags from some libraries/executables so that it works in hardened setups.
 _remove_execstack_markings() {
 	for f in "${EXECSTACKED_BINS[@]}"; do
 		# Unquoting 'f' so that expansion works.
 		fix-gnustack -f ${f} > /dev/null
+	done
+}
+
+# Add pax markings to some binaries so that they work on hardened setup.
+_add_pax_markings() {
+	for f in "${BINS_TO_PAX_MARK[@]}"; do
+		pax-mark m "${f}"
 	done
 }
