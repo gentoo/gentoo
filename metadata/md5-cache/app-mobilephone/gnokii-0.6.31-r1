@@ -4,11 +4,11 @@ DESCRIPTION=User space driver and tools for use with mobile phones
 EAPI=6
 HOMEPAGE=http://www.gnokii.org/
 IUSE=bluetooth debug ical irda mysql nls +pcsc-lite postgres sms usb X linguas_cs linguas_de linguas_et linguas_fi linguas_fr linguas_it linguas_nl linguas_pl linguas_pt linguas_sk linguas_sl linguas_sv linguas_zh_CN
-KEYWORDS=amd64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=!app-mobilephone/smstools bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) ical? ( dev-libs/libical:= ) pcsc-lite? ( sys-apps/pcsc-lite ) sms? ( dev-libs/glib:2 postgres? ( dev-db/postgresql:* ) mysql? ( virtual/mysql:= ) ) usb? ( virtual/libusb:0 ) X? ( x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=http://www.gnokii.org/download/gnokii/gnokii-0.6.31.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=da22ce29461c9e060798e94e1b10b947
+_md5_=9fa64ba85e2cd340b917446cdfeaaf81

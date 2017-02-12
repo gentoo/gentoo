@@ -16421,7 +16421,7 @@ sci-mathematics/coq 8.5 8.5_p3 8.6: Proof assistant written in O'Caml
 sci-mathematics/cvc3 2.4.1 2.4.1-r1: CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
-sci-mathematics/drgeo 1.1.0: Interactive geometry package
+sci-mathematics/drgeo 1.1.0-r1: Interactive geometry package
 sci-mathematics/dunshire 0.1.1: Python library to solve linear games over symmetric cones
 sci-mathematics/e 1.5 1.6 1.8 1.8-r1: E is a theorem prover for full first-order logic with equality
 sci-mathematics/ent 101202: Pseudorandom number sequence test
