@@ -12,7 +12,7 @@ SRC_URI="http://suckless.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DOCS=( README )
 
