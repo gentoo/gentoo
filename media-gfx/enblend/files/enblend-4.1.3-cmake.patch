@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt	2017-02-12 13:43:46.862787952 +0100
++++ b/CMakeLists.txt	2017-02-12 13:50:03.461229021 +0100
+@@ -185,7 +185,6 @@
+ FIND_PACKAGE(TIFF REQUIRED)
+ FIND_PACKAGE(Perl REQUIRED)
+ # this one is needed in doc. (Especially the program "convert")
+-FIND_PACKAGE(ImageMagick REQUIRED)
+ FIND_PACKAGE(GSL REQUIRED)
+ include_directories(${GSL_INCLUDE_DIR})
+ LIST(APPEND common_libs ${LCMS2_LIBRARIES} ${TIFF_LIBRARIES} ${GSL_LIBRARIES})
+@@ -394,8 +393,9 @@
+ add_subdirectory(src)
+ 
+ # you really should have perl installed, when creating doc's
+-if (PERL_FOUND AND IMAGEMAGICK_FOUND AND DOC)
+-  # this should be set from comman line
++if (PERL_FOUND AND DOC)
++  FIND_PACKAGE(ImageMagick REQUIRED)
++  # this should be set from command line
+   # Possible values like described in README: @smallbook @afivepaper @afourpaper @afourwide @afourlatex
+   # @letter is default
+   set(EXTRATEXI2DVIFLAGS "@afourpaper" CACHE STRING "Papersize: @letter @smallbook @afivepaper @afourpaper @afourwide @afourlatex")
