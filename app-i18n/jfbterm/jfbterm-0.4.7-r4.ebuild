@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-sigchld-debian.patch"
 	epatch "${FILESDIR}/${P}-no-kernel-headers.patch"
 	epatch "${FILESDIR}/${P}-gentoo.patch"
+	epatch "${FILESDIR}/${P}-wrong-inline-gcc5.patch"
 
 	eautoreconf
 }
