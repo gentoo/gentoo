@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 inherit eutils
 
 DESCRIPTION="Compiz Configuration System"
@@ -24,6 +24,9 @@ DEPEND="${RDEPEND}
 	x11-proto/xproto"
 
 RESTRICT="test"
+
+#602286
+PATCHES=( "${FILESDIR}/${P}-avoid-using-templates-in-c-code.patch" )
 
 src_configure() {
 	econf \
