@@ -1612,7 +1612,7 @@ app-laptop/pommed 1.39-r1: Manage special features such as screen and keyboard b
 app-laptop/powerprefs 0.8.0: program to interface with pbbuttonsd (Powerbook/iBook) keys
 app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon graphics cards
 app-laptop/spicctrl 1.9-r1: tool for the sonypi-Device (found in Sony Vaio Notebooks)
-app-laptop/thinkfan 0.9.2-r1 0.9.3: simple fan control program for thinkpads
+app-laptop/thinkfan 0.9.3: simple fan control program for thinkpads
 app-laptop/tp_smapi 0.41 0.42-r1: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpacpi-bat 1.1-r1 2.1 3.0 3.0-r1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
@@ -6875,7 +6875,7 @@ dev-php/PEAR-Net_CheckIP 1.2.2: Check the syntax of IPv4 addresses
 dev-php/PEAR-Net_DIME 1.0.2: The PEAR::Net_DIME class implements DIME encoding
 dev-php/PEAR-Net_DNS 1.0.7: Resolver library used to communicate with a DNS server
 dev-php/PEAR-Net_DNS2 1.3.1 1.4.2: Object-oriented PHP5 resolver library used to communicate with a DNS server
-dev-php/PEAR-Net_DNSBL 1.3.7 1.3.7-r1: PHP library to query DNS blacklists
+dev-php/PEAR-Net_DNSBL 1.3.7-r1: PHP library to query DNS blacklists
 dev-php/PEAR-Net_FTP 1.3.7-r1 1.4.0_alpha3: Provides an OO interface to the PHP FTP functions
 dev-php/PEAR-Net_IDNA2 0.1.1: Punycode encoding and decoding
 dev-php/PEAR-Net_IMAP 1.1.3: Provides an implementation of the IMAP protocol
@@ -6937,7 +6937,7 @@ dev-php/PEAR-VersionControl_SVN 0.5.2: Simple OO wrapper interface for the Subve
 dev-php/PEAR-XML_Beautifier 1.2.2-r1: Adds indentation and linebreaks, replace entities, formats comments and makes XML easier to read
 dev-php/PEAR-XML_Feed_Parser 1.0.5-r1: Provides an unified API for handling Atom/RSS
 dev-php/PEAR-XML_Parser 1.3.4-r1 1.3.7: XML parsing class based on PHP's SAX parser
-dev-php/PEAR-XML_RSS 1.0.2 1.1.0_alpha1: PHP parser for RDF and RSS documents
+dev-php/PEAR-XML_RSS 1.1.0_alpha1: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.20.2 0.21.0: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.3.0-r1: XML utility class
 dev-php/PHPMailer 5.2.20: Full-featured email creation and transfer class for PHP
@@ -10227,8 +10227,8 @@ dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
 dev-util/promu 0.1.0_p20161031 0.1.0_p20170130: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2016.1.3 2016.3.2-r1: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 2016.1.3 2016.2.3-r1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2016.3.2-r1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2016.2.3-r1: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.5 1.5.2 1.6.1 1.7.0: Cross-platform build tool
 dev-util/qdevicemonitor 1.0.1 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
@@ -11699,7 +11699,7 @@ kde-apps/konsolekalendar 4.4.2016.01 4.14.11_pre20160211 16.12.2: Command line i
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 4.4.2016.01 4.14.11_pre20160211 16.12.2: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 16.12.2: Library for embedding KParts in a Kontact component
-kde-apps/kopete 16.12.0-r1 16.12.2-r2: KDE multi-protocol IM client
+kde-apps/kopete 16.12.2-r2: KDE multi-protocol IM client
 kde-apps/korganizer 4.4.2016.01 4.14.11_pre20160211 16.12.2: Organizational assistant, providing calendars and other similar functionality
 kde-apps/kpasswdserver 16.04.3: KDED Password Module
 kde-apps/kpat 16.08.3 16.12.2: KDE patience game
@@ -11833,7 +11833,7 @@ kde-frameworks/kcrash 5.29.0 5.31.0: Framework for intercepting and handling app
 kde-frameworks/kdbusaddons 5.29.0 5.31.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.29.0 5.31.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.29.0 5.31.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs 4.14.24 4.14.28 4.14.29: KDE libraries needed by all KDE programs
+kde-frameworks/kdelibs 4.14.28 4.14.29: KDE libraries needed by all KDE programs
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.29.0 5.31.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.29.0 5.31.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
@@ -18825,7 +18825,7 @@ x11-misc/winswitch 0.12.18-r1: client server tool to start and control virtual d
 x11-misc/wmakerconf 2.12-r2 2.12-r3: X based config tool for the windowmaker X windowmanager
 x11-misc/wmctrl 1.07-r1 1.07-r2: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmiface 2.1: Command line tool allowing user scripting of the running window manager
-x11-misc/wmname 0.1 0.1-r1: utility to set the name of your window manager
+x11-misc/wmname 0.1-r1: utility to set the name of your window manager
 x11-misc/x11vnc 0.9.13_p20150111 0.9.14_p20161013: A VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
