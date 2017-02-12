@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (12 Feb 2017)
+# Old gstreamer 0.10 version. Use gstreamer:1.0 with
+# media-plugins/gst-plugins-libav instead (it mainly
+# works with media-video/ffmpeg too).
+# Masked for removal in 30 days. Bug #594878
+media-plugins/gst-plugins-ffmpeg
+
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
