@@ -93,7 +93,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/exim-4.69-r1.27021.patch
 	epatch "${FILESDIR}"/exim-4.74-radius-db-ENV-clash.patch # 287426
 	epatch "${FILESDIR}"/exim-4.82-makefile-freebsd.patch # 235785
-	epatch "${FILESDIR}"/exim-4.88-as-needed-ldflags.patch # 352265, 391279
+	epatch "${FILESDIR}"/exim-4.89-as-needed-ldflags.patch # 352265, 391279
 	epatch "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 
 	if use maildir ; then
