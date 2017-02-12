@@ -49,4 +49,6 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	dev-libs/kdiagram:5
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-common-libs:4
+"
