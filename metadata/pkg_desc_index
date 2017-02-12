@@ -1852,7 +1852,7 @@ app-misc/livecd-tools 2.0.4 2.1 2.2 9999: Gentoo LiveCD tools for autoconfigurat
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
-app-misc/lsx 0.1 0.1-r1: list executables
+app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
@@ -4858,7 +4858,7 @@ dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
 dev-libs/libtasn1 4.5 4.8 4.9-r1 4.10: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
-dev-libs/libtermkey 0.17 0.18: Library for easy processing of keyboard entry from terminal-based programs
+dev-libs/libtermkey 0.17 0.18 0.19: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
 dev-libs/libtommath 0.42.0-r1 1.0: highly optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
