@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="The Sane module allows you to access SANE-compatible scanners in a Perl"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND=">=media-gfx/sane-backends-1.0.19"

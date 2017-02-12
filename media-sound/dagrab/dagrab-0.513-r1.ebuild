@@ -13,7 +13,7 @@ SRC_URI="http://ashtray.jz.gts.cz/~smsti/archiv/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S=${WORKDIR}/${MY_P}
 PATCHES=(

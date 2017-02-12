@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 #-sparc: 0.3: static audio on local daemon. No audio when client connects to amd64 daemon
-KEYWORDS="amd64 ~ppc -sparc ~x86"
+KEYWORDS="amd64 ~ppc -sparc x86"
 
 IUSE=""
 DEPEND=">=media-libs/libmad-0.15.0b-r1"
