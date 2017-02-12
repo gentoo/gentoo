@@ -29,6 +29,7 @@ REQUIRED_USE="
 	dialogs? ( gtk )"
 
 RDEPEND="gtk? (
+		x11-libs/gdk-pixbuf[jpeg]
 		x11-libs/gtk+:*
 		dev-libs/libxml2
 		net-misc/curl[ssl]
