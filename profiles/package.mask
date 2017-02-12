@@ -36,7 +36,7 @@
 media-libs/iulib
 
 # Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
-# Dead upstream. Unmaintained. Problems with multicode CPUs.
+# Dead upstream. Unmaintained. Problems with multicore CPUs.
 # Masked for removal in 30 days.
 sys-power/cpudyn
 
