@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
+# Use PHP's FILTER_VALIDATE_IP instead. Masked for removal
+# in 30 days. Bug 609128.
+dev-php/PEAR-Net_CheckIP
+
 # Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
 # Build failures. Dead upstream. No revdeps. Unmaintained.
 # Masked for removal in 30 days. Bug #594826 and 597872.
