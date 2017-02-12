@@ -31,6 +31,12 @@
 #--- END OF EXAMPLES ---
 
 # Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
+# This has been superseded by both dev-php/PEAR-Net_LDAP2
+# and dev-php/PEAR-Net_LDAP3. Masked for removal in 30 days.
+# Bug 609142.
+dev-php/PEAR-Net_LDAP
+
+# Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
 # Use dev-php/phpDocumentor instead. Masked for removal
 # in 30 days. Bug 609138.
 dev-php/PEAR-PhpDocumentor
