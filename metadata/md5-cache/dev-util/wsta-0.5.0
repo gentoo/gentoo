@@ -10,5 +10,5 @@ RDEPEND=dev-libs/openssl:*
 SLOT=0
 SRC_URI=https://github.com/esphen/wsta/archive/0.5.0.tar.gz -> wsta-0.5.0.tar.gz
 _eclass_exported_funcs=src_unpack:cargo src_compile:- src_test:- src_install:-
-_eclasses_=cargo	ffa40d249354cbebd1cc0e99f0ff962a
+_eclasses_=cargo	b7aeaafffb20698bf508a63fa7a18226
 _md5_=a9251631308b7e11c0f8ba53aff32e8c
