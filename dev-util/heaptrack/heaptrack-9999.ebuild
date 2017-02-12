@@ -1,27 +1,51 @@
-# Copyright 2015-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="git://anongit.kde.org/heaptrack"
-[[ ${PV} = 9999 ]] && inherit git-r3
-inherit cmake-utils
+KDE_AUTODEPS="false"
+KDE_TEST="forceoptional"
+inherit kde5
 
 DESCRIPTION="A fast heap memory profiler"
 HOMEPAGE="http://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
-[[ ${PV} = 9999 ]] || SRC_URI="${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-# Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
-[[ ${PV} = 9999 ]] || \
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS=""
+IUSE="+qt5"
 
-RDEPEND="sys-libs/libunwind
-	>=dev-libs/boost-1.41.0"
-DEPEND="${RDEPEND}"
+COMMON_DEPEND="
+	dev-libs/boost:=
+	sys-libs/libunwind
+	sys-libs/zlib
+	qt5? (
+		$(add_frameworks_dep kconfig)
+		$(add_frameworks_dep kconfigwidgets)
+		$(add_frameworks_dep kcoreaddons)
+		$(add_frameworks_dep ki18n)
+		$(add_frameworks_dep kio)
+		$(add_frameworks_dep kitemmodels)
+		$(add_frameworks_dep kwidgetsaddons)
+		$(add_frameworks_dep threadweaver)
+		$(add_qt_dep qtcore)
+		$(add_qt_dep qtgui)
+		$(add_qt_dep qtwidgets)
+		dev-libs/kdiagram:5
+	)
+"
+DEPEND="${COMMON_DEPEND}
+	$(add_frameworks_dep extra-cmake-modules)
+"
+RDEPEND="${COMMON_DEPEND}
+	qt5? ( >=kde-frameworks/kf-env-4 )
+"
 
-DOCS=()
-[[ ${PV} = 9999 ]] || DOCS+=( ChangeLog )
+src_configure() {
+	local mycmakeargs=(
+		-DHEAPTRACK_BUILD_GUI=$(usex qt5)
+	)
+
+	kde5_src_configure
+}
