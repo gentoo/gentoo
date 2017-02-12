@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>maksbotan@gentoo.org</email>
-    <name>Maxim Koltsov</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>leechcraft@gentoo.org</email>
-    <name>LeechCraft</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">kypeli/kQOAuth</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>0xd34df00d@gmail.com</email>
+		<name>Georg Rudoy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<description>Proxy Maintainers</description>
+	</maintainer>
 </pkgmetadata>
