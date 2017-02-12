@@ -1,10 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="6"
-
-inherit multilib
+EAPI=6
 
 DESCRIPTION="Tools for Flash-Friendly File System (F2FS)"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/about/"
@@ -15,15 +13,15 @@ SLOT="0/1"
 KEYWORDS="~amd64 ~arm ~mips ~x86"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	sys-apps/util-linux
 	sys-libs/libselinux"
+DEPEND="$RDEPEND"
 
 src_configure() {
 	#This is required to install to /sbin, bug #481110
 	econf \
-		--prefix=/ \
-		--includedir=/usr/include \
+		--bindir="${EPREFIX}"/sbin
 		--disable-static
 }
 
