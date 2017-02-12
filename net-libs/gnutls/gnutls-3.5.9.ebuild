@@ -48,10 +48,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.11.6
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	sys-devel/gcc[cxx?]
-	doc? (
-		sys-apps/texinfo
-		dev-util/gtk-doc
-	)
+	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
 
@@ -82,13 +79,6 @@ src_prepare() {
 	local file
 	for file in $(grep -l AutoGen-ed src/*.c) ; do
 		rm src/$(basename ${file} .c).{c,h} || die
-	done
-
-	# force regeneration of makeinfo files
-	# have no idea why on some system these files are not
-	# accepted as-is, see bug#520818
-	for file in $(grep -l "produced by makeinfo" doc/*.info) ; do
-		rm "${file}" || die
 	done
 
 	eautoreconf
