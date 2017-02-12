@@ -15,7 +15,7 @@ SRC_URI="http://www.qutim.org/dwnl/80/${PN}-${MY_PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # general USE
 IUSE="doc +sound tools"
