@@ -66,7 +66,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libass-0.13.4
 	media-libs/mesa[egl]
 	>=media-libs/taglib-1.11.1
-	>=media-video/ffmpeg-3.1.6:=[encode]
+	>=media-video/ffmpeg-3.1.6:=[encode,postproc]
 	mysql? ( virtual/mysql )
 	>=net-misc/curl-7.51.0
 	nfs? ( net-fs/libnfs:= )
