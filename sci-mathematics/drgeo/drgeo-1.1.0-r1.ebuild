@@ -1,14 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils
 
-DOCN="${PN}-doc"
-DOCV="1.5"
-DOC="${DOCN}-${DOCV}"
+DOC="${PN}-doc-1.5"
 
 DESCRIPTION="Interactive geometry package"
 HOMEPAGE="http://www.ofset.org/drgeo"
@@ -18,22 +16,22 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls"
 
 RDEPEND="
 	x11-libs/gtk+:2
 	gnome-base/libglade:2.0
 	dev-libs/libxml2:2
-	|| (
-		>=dev-scheme/guile-1.8[deprecated]
-		=dev-scheme/guile-1.6*
-	)"
+	>=dev-scheme/guile-1.8[deprecated]
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc45.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc45.patch
+	default
 }
 
 src_configure() {
@@ -41,16 +39,15 @@ src_configure() {
 	# Can't make the documentation as it depends on Hyperlatex which isn't
 	# yet in portage. Fortunately HTML is already compiled for us in the
 	# tarball and so can be installed. Just create the make install target.
-	cd "${WORKDIR}"/${DOC}
+	cd "${WORKDIR}"/${DOC} || die
 	econf
 }
 
 src_install() {
+	sed -i -e "s/gnome-drgenius.png/${PN}/" \
+		-e '/^Categories=/s/Application;//' \
+		${PN}.desktop || die
 	default
-	if use nls; then
-		cd "${WORKDIR}"/${DOC}
-	else
-		cd "${WORKDIR}"/${DOC}/c
-	fi
-	emake install DESTDIR="${D}"
+	emake -C "${WORKDIR}"/${DOC}/$(usex nls "" c) install DESTDIR="${D}"
+	doicon glade/${PN}.png
 }

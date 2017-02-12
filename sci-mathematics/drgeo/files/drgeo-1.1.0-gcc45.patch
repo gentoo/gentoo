@@ -3,8 +3,8 @@ Fix build with GCC 4.5, fix random SIGSEGV
 http://bugs.gentoo.org/show_bug.cgi?id=322211
 https://bugzilla.redhat.com/show_bug.cgi?id=454045
 
---- geo/drgeo_figure.h
-+++ geo/drgeo_figure.h
+--- a/geo/drgeo_figure.h
++++ b/geo/drgeo_figure.h
 @@ -322,4 +322,11 @@
    gboolean showGrid;
  };
@@ -17,8 +17,8 @@ https://bugzilla.redhat.com/show_bug.cgi?id=454045
 +drgeoDialogData;
 +
  #endif
---- geo/drgeo_figure.cc
-+++ geo/drgeo_figure.cc
+--- a/geo/drgeo_figure.cc
++++ b/geo/drgeo_figure.cc
 @@ -48,13 +48,6 @@
  #include "drgeo_dialog.h"
  #include "traite.h"
@@ -42,8 +42,8 @@ https://bugzilla.redhat.com/show_bug.cgi?id=454045
  }
  
  void
---- geo/drgeo_dialog.cc
-+++ geo/drgeo_dialog.cc
+--- a/geo/drgeo_dialog.cc
++++ b/geo/drgeo_dialog.cc
 @@ -38,14 +38,6 @@
  // Used in the style dialod callback, I know it's ugly, but so easy
  static drgeoFigure *selected_figure;
