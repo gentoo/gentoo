@@ -18096,7 +18096,7 @@ www-apps/blohg-tumblelog 0.2 9999: A blohg extension with reStructuredText direc
 www-apps/browser-config 1.1: A lightweight modular configurable http url handler/browser launcher
 www-apps/bugzilla 4.4.12-r1 5.0.3-r1: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
-www-apps/cgit 0.12 9999: a fast web-interface for git repositories
+www-apps/cgit 0.12 1.1 9999: a fast web-interface for git repositories
 www-apps/chromedriver-bin 2.24: WebDriver for Chrome
 www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data collected by collectd
 www-apps/curator 3.0_p20110120-r1: Gallery generator

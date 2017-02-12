@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare prerm setup
+DEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl:0 virtual/httpd-cgi highlight? ( || ( dev-python/pygments app-text/highlight ) ) lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) ) !<www-apps/cgit-0.8.3.3 doc? ( app-text/docbook-xsl-stylesheets >=app-text/asciidoc-8.5.1 ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=a fast web-interface for git repositories
+EAPI=5
+HOMEPAGE=http://git.zx2c4.com/cgit/about
+IUSE=doc +highlight +lua +jit vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl:0 virtual/httpd-cgi highlight? ( || ( dev-python/pygments app-text/highlight ) ) lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) ) >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=mirror://kernel/software/scm/git/git-2.10.2.tar.xz http://git.zx2c4.com/cgit/snapshot/cgit-1.1.tar.xz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=ff6364d43d2253bd6f3f99d982f024a9
