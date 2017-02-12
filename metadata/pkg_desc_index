@@ -17536,7 +17536,7 @@ sys-fs/dosfstools 4.0-r1 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdo
 sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10 0.11_beta4: Btrfs deduplication utility
 sys-fs/e2fsprogs 1.43.3-r1 1.43.4: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
-sys-fs/e4rat 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
+sys-fs/e4rat 0.2.4_pre20141201 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108: eCryptfs userspace utilities
 sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1 1.9 1.9.1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem

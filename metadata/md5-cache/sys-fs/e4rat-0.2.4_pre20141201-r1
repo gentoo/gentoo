@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=sys-devel/make >=dev-util/cmake-3.6.3
+DESCRIPTION=Toolset to accelerate the boot process and application startup
+EAPI=6
+HOMEPAGE=http://e4rat.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl:= >=dev-libs/boost-1.42:= sys-fs/e2fsprogs sys-process/audit[static-libs(+)] sys-process/lsof
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~pacho/e4rat/e4rat-0.2.4_pre20141201.tar.xz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=3e67c749a5d9c46decaf336bc57d236b
