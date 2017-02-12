@@ -47,6 +47,7 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.11.6
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	sys-devel/gcc[cxx?]
 	doc? (
 		sys-apps/texinfo
 		dev-util/gtk-doc
@@ -94,9 +95,6 @@ src_prepare() {
 
 	# Use sane .so versioning on FreeBSD.
 	elibtoolize
-
-	# bug 497472
-	use cxx || epunt_cxx
 }
 
 multilib_src_configure() {
