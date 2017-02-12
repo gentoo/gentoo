@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ inherit distutils-r1 eutils fdo-mime flag-o-matic versionator
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="http://www.pymol.org/"
 SRC_URI="
-	https://dev.gentoo.org/~jlec/distfiles/${PN}-1.7.0.0.png.xz
+	https://dev.gentoo.org/~jlec/distfiles/${P}.png.xz
 	mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 1-2)/${PN}-v${PV}.tar.bz2
 	"
 # git archive -v --prefix=${P}/ master -o ${P}.tar.xz
@@ -85,7 +85,7 @@ python_install_all() {
 
 	doenvd "${T}"/20pymol
 
-	newicon "${WORKDIR}"/${PN}-1.7.0.0.png ${PN}.png
+	newicon "${WORKDIR}"/${P}.png ${PN}.png
 	make_desktop_entry ${PN} PyMol ${PN} \
 		"Graphics;Education;Science;Chemistry;" \
 		"MimeType=chemical/x-pdb;chemical/x-mdl-molfile;chemical/x-mol2;chemical/seq-aa-fasta;chemical/seq-na-fasta;chemical/x-xyz;chemical/x-mdl-sdf;"
