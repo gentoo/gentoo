@@ -31,6 +31,16 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
+# Build failures. Dead upstream. No revdeps. Unmaintained.
+# Masked for removal in 30 days. Bug #594826 and 597872.
+media-libs/iulib
+
+# Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
+# Dead upstream. Unmaintained. Problems with multicode CPUs.
+# Masked for removal in 30 days.
+sys-power/cpudyn
+
+# Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
 # Potential licensing issues. Masked for removal in 30 days.
 # Bug 608954 and 609052
 games-arcade/mari0
