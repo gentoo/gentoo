@@ -90,7 +90,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-sound/dcadec
 	pulseaudio? ( media-sound/pulseaudio )
 	media-sound/wavpack
-	>=media-video/ffmpeg-2.6:=[encode]
+	>=media-video/ffmpeg-2.6:=[encode,postproc]
 	rtmp? ( media-video/rtmpdump )
 	nfs? ( net-fs/libnfs:= )
 	webserver? ( net-libs/libmicrohttpd[messages] )
