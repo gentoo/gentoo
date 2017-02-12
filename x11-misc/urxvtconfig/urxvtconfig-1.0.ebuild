@@ -14,7 +14,7 @@ SRC_URI="https://github.com/daedreth/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
