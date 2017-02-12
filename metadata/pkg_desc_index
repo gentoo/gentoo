@@ -11893,7 +11893,7 @@ kde-misc/adjustableclock 4.1.4: Plasmoid to show date and time in adjustable for
 kde-misc/akonadi-ews 0.8.1: Akonadi resource for Microsoft Exchange Web Services
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
 kde-misc/baloo-kcmadv 2014.04.27: Alternative configuration module for the Baloo search framework
-kde-misc/basket 1.81: A DropDrawers clone. Multiple information organizer
+kde-misc/basket 1.81 2.49a: A DropDrawers clone. Multiple information organizer
 kde-misc/bkodama 0.3.1: Friendly Kodama (Japanese ghost) wandering on your desktop
 kde-misc/chromi 0.2_p20141209: Titlebar-less decoration inspired by Google Chrome and Nitrogen minimal mod
 kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
