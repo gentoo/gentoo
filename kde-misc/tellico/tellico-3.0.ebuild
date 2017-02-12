@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,16 +9,15 @@ KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="A collection manager for the KDE environment"
+DESCRIPTION="A collection manager based on KDE Frameworks"
 HOMEPAGE="http://tellico-project.org/"
 SRC_URI="http://tellico-project.org/files/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
-SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug discid pdf scanner semantic-desktop taglib v4l xmp yaz"
+IUSE="cddb discid pdf scanner semantic-desktop taglib v4l xmp yaz"
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcompletion)
@@ -51,6 +50,7 @@ RDEPEND="
 	dev-libs/btparse
 	dev-libs/libxml2
 	dev-libs/libxslt
+	cddb? ( $(add_kdeapps_dep libkcddb) )
 	discid? ( media-libs/libdiscid )
 	pdf? ( app-text/poppler[qt5] )
 	scanner? ( $(add_kdeapps_dep libksane) )
@@ -59,10 +59,12 @@ RDEPEND="
 	v4l? ( >=media-libs/libv4l-0.8.3 )
 	xmp? ( >=media-libs/exempi-2 )
 	yaz? ( >=dev-libs/yaz-2:0 )
-	!kde-misc/tellico:4
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
+"
+RDEPEND="${COMMON_DEPEND}
+	!kde-misc/tellico:4
 "
 
 # tests need network access
@@ -70,17 +72,18 @@ RESTRICT="test"
 
 DOCS=( AUTHORS ChangeLog README )
 
+PATCHES=( "${FILESDIR}"/${P}-kf5cddb.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Csv=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Cddb=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_Libkcddb=ON
-		-DENABLE_WEBCAM=$(usex v4l)
+		$(cmake-utils_use_find_package cddb KF5Cddb)
 		$(cmake-utils_use_find_package discid DiscID)
 		$(cmake-utils_use_find_package pdf PopplerQt5)
 		$(cmake-utils_use_find_package scanner KF5Sane)
 		$(cmake-utils_use_find_package semantic-desktop KF5FileMetaData)
 		$(cmake-utils_use_find_package taglib Taglib)
+		-DENABLE_WEBCAM=$(usex v4l)
 		$(cmake-utils_use_find_package xmp Exempi)
 		$(cmake-utils_use_find_package yaz Yaz)
 	)
