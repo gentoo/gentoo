@@ -104,7 +104,7 @@ multilib_src_configure() {
 
 	# remove magic of library detection
 	# bug#438222
-	libconf=($("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g'))
+	local libconf=($("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g'))
 
 	# TPM needs to be tested before being enabled
 	# hardware-accell is disabled on OSX because the asm files force
@@ -131,7 +131,7 @@ multilib_src_configure() {
 		$(use_with zlib) \
 		$(use_with idn) \
 		--without-tpm \
-		--with-unbound-root-key-file=/etc/dnssec/root-anchors.txt \
+		--with-unbound-root-key-file="${EROOT}etc/dnssec/root-anchors.txt" \
 		"${libconf[@]}" \
 		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
 }
