@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_PN}"
 
+RESTRICT="mirror"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.58_rc1-icu.patch
 	"${FILESDIR}"/${PN}-0.58_rc1-curl.patch
