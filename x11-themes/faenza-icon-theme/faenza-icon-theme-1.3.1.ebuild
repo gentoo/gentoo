@@ -17,7 +17,7 @@ RESTRICT="binchecks strip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="minimal"
 
 RDEPEND="!minimal? ( x11-themes/adwaita-icon-theme )
