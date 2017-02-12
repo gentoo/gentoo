@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 # Somehow based on init.d file shipped with mt-daapd itself.
@@ -17,7 +17,7 @@ if [ -f /lib/librc.so -o -f /etc/init.d/sysfs -o -f /lib/rc/version ]; then
 fi
 
 CONF="${myservice##*.}"
-if [[ -n ${CONF} && ${myservice} != "mt-daapd" ]]; then
+if [ -n ${CONF} -a ${myservice} != "mt-daapd" ]; then
 	PIDFILE="/var/run/mt-daapd.${CONF}.pid"
 	CONFFILE="/etc/mt-daapd.d/${CONF}.conf"
 else
