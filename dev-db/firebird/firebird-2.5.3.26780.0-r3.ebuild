@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="debug doc client examples superserver xinetd"
-REQUIRED_USE="^^ ( client superserver xinetd )"
+REQUIRED_USE="?? ( client superserver xinetd )"
 
 CDEPEND="
 	dev-libs/libedit
@@ -78,6 +78,11 @@ src_prepare() {
 		-e 's:isql :fbsql :w /dev/stdout' \
 		-e 's:ISQL :FBSQL :w /dev/stdout' \
 		src/msgs/messages2.sql | wc -l)" "6" "src/msgs/messages2.sql" # 6 lines
+
+	# Fix libfbintl SONAME which clashes with libintl
+	check_sed "$(sed -i -e \
+		's:LIB_LINK_SONAME,libintl.\$(SHRLIB_EXT):LIB_LINK_SONAME,libfbintl.\$(SHRLIB_EXT):w /dev/stdout' \
+		builds/posix/make.defaults | wc -l)" "1" "builds/posix/make.defaults" # 1 line
 
 	find "${S}" -name \*.sh -exec chmod +x {} + || die
 	rm -r "${S}"/extern/{btyacc,editline,icu} || die
@@ -167,7 +172,7 @@ src_install() {
 		dosbin bin/{fbguard,fb_smp_server}
 
 		#Temp should not be necessary, need to patch/fix
-		dosym usr/$(get_libdir)/libib_util.so /usr/$(get_libdir)/${PN}/lib/libib_util.so
+		dosym ../../libib_util.so /usr/$(get_libdir)/${PN}/lib/libib_util.so
 	fi
 
 	exeinto /usr/bin/${PN}
@@ -179,12 +184,12 @@ src_install() {
 
 	exeinto /usr/$(get_libdir)/firebird/intl
 	dolib.so intl/libfbintl.so
-	dosym usr/$(get_libdir)/libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl
-	dosym etc/firebird/fbintl.conf /usr/$(get_libdir)/${PN}/intl/fbintl.conf
+	dosym ../../libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl
+	dosym /etc/firebird/fbintl.conf /usr/$(get_libdir)/${PN}/intl/fbintl.conf
 
 	exeinto /usr/$(get_libdir)/${PN}/plugins
 	dolib.so plugins/libfbtrace.so
-	dosym usr/$(get_libdir)/libfbtrace.so /usr/$(get_libdir)/${PN}/plugins/libfbtrace.so
+	dosym ../../libfbtrace.so /usr/$(get_libdir)/${PN}/plugins/libfbtrace.so
 
 	exeinto /usr/$(get_libdir)/${PN}/UDF
 	doexe UDF/*.so
