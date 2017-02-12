@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ CDEPEND=">=dev-libs/libuv-1.2.0
 		dev-lua/LuaBitOp
 	)
 	tui? (
-		>=dev-libs/libtermkey-0.17
+		>=dev-libs/libtermkey-0.19
 		>=dev-libs/unibilium-1.1.1
 	)
 	dev-libs/libvterm
