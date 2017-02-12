@@ -26,6 +26,8 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/kQOAuth-${PV}"
 
 src_prepare() {
+	default
+
 	# prevent tests from beeing built at src_compile
 	sed -i -e '/SUBDIRS/s/ tests//' ${PN}.pro || die "sed on ${PN}.pro failed"
 	# respect libdir
@@ -34,8 +36,6 @@ src_prepare() {
 	sed \
 		-e "s/TARGET = kqoauth/TARGET = kqoauth-qt5/g" \
 		-i src/src.pro || die
-
-	default
 }
 
 src_compile() {
