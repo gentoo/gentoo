@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,13 +22,17 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	dev-util/desktop-file-utils
 	dev-libs/libxslt
-	media-gfx/imagemagick[xml,png,svg]
+	|| (
+		gnome-base/librsvg[tools]
+		media-gfx/imagemagick[xml,png,svg]
+	)
 	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-turbomole.patch
 	"${FILESDIR}"/${P}-pigz.patch
 	"${FILESDIR}"/${P}-namespace-svg.patch
+	"${FILESDIR}"/${P}-rsvg-convert.patch
 	)
 
 src_prepare() {

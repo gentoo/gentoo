@@ -27,7 +27,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/dbus
-	!sys-auth/systemd
+	!sys-apps/systemd
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.2

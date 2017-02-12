@@ -30,6 +30,38 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
+# This has been superseded by both dev-php/PEAR-Net_LDAP2
+# and dev-php/PEAR-Net_LDAP3. Masked for removal in 30 days.
+# Bug 609142.
+dev-php/PEAR-Net_LDAP
+
+# Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
+# Use dev-php/phpDocumentor instead. Masked for removal
+# in 30 days. Bug 609138.
+dev-php/PEAR-PhpDocumentor
+
+# Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
+# Use PHP's FILTER_VALIDATE_IP instead. Masked for removal
+# in 30 days. Bug 609128.
+dev-php/PEAR-Net_CheckIP
+
+# Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
+# Build failures. Dead upstream. No revdeps. Unmaintained.
+# Masked for removal in 30 days. Bug #594826 and 597872.
+media-libs/iulib
+
+# Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
+# Dead upstream. Unmaintained. Problems with multicore CPUs.
+# Masked for removal in 30 days.
+sys-power/cpudyn
+
+# Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
+# Potential licensing issues. Masked for removal in 30 days.
+# Bug 608954 and 609052
+games-arcade/mari0
+games-action/openlierox
+
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
@@ -85,7 +117,7 @@ dev-python/mwlib-rl
 
 # Fabian Groffen <grobian@gentoo.org> (31 Jan 2017)
 # Mask upcoming Exim release candidates
-=mail-mta/exim-4.89_rc3
+=mail-mta/exim-4.89_rc4
 
 # David Seifert <soap@gentoo.org> (30 Jan 2017)
 # No maintainer activity since git migration, dated eclass

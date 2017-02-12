@@ -56,6 +56,12 @@ RDEPEND="${RDEPEND}"
 
 RESTRICT+=" test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-bashism.patch
+	"${FILESDIR}"/${P}-python-kf-5.31.patch
+	"${FILESDIR}"/${P}-julia-kf-5.31.patch
+)
+
 pkg_pretend() {
 	kde5_pkg_pretend
 
@@ -67,6 +73,12 @@ pkg_pretend() {
 		einfo "Alternatively, install one of these:"
 		einfo "    # emerge sci-mathematics/maxima"
 		einfo "    # emerge sci-mathematics/octave"
+		einfo
+	fi
+
+	if ! has_version virtual/latex-base; then
+		einfo "For LaTeX support:"
+		einfo "    # emerge virtual/latex-base"
 	fi
 }
 
@@ -84,6 +96,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use julia && addpredict /proc/self/mem # bug 602894
+
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package analitza Analitza5)
 		$(cmake-utils_use_find_package julia Julia)

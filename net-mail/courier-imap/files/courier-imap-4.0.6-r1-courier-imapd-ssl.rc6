@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,19 +8,19 @@ depend() {
 	use famd
 }
 
-source /etc/courier-imap/imapd-ssl
+. /etc/courier-imap/imapd-ssl
 
 checkconfig() {
-	if [[ ! -e /etc/courier-imap/imapd-ssl ]] ; then
+	if [ ! -e /etc/courier-imap/imapd-ssl ] ; then
 		eerror "You need an /etc/courier-imap/imapd-ssl file to run courier-imapd-ssl"
 		return 1
 	fi
-	source /etc/courier-imap/imapd-ssl || {
+	. /etc/courier-imap/imapd-ssl || {
 		eerror "There are syntax errors in /etc/courier-imap/imapd-ssl"
 		eerror "Please correct them before trying to start courier-imapd-ssl"
 		return 3
 	}
-	if [[ ! -e "${TLS_CERTFILE}" ]] ; then
+	if [ ! -e "${TLS_CERTFILE}" ] ; then
 		eerror "You need to create a SSL certificate to use IMAP over SSL"
 		eerror "Edit /etc/courier-imap/imapd.cnf, then run: mkimapdcert"
 		return 2

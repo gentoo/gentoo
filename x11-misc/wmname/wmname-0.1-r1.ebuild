@@ -12,7 +12,7 @@ SRC_URI="http://dl.suckless.org/tools/wmname-0.1.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"

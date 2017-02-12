@@ -245,6 +245,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
+
+	# TODO: upstream
+	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
 )
 
 pkg_pretend() {
