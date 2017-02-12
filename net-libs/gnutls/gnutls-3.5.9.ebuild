@@ -47,10 +47,8 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.11.6
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-	doc? (
-		sys-apps/texinfo
-		dev-util/gtk-doc
-	)
+	sys-devel/gcc[cxx?]
+	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
 
@@ -83,20 +81,10 @@ src_prepare() {
 		rm src/$(basename ${file} .c).{c,h} || die
 	done
 
-	# force regeneration of makeinfo files
-	# have no idea why on some system these files are not
-	# accepted as-is, see bug#520818
-	for file in $(grep -l "produced by makeinfo" doc/*.info) ; do
-		rm "${file}" || die
-	done
-
 	eautoreconf
 
 	# Use sane .so versioning on FreeBSD.
 	elibtoolize
-
-	# bug 497472
-	use cxx || epunt_cxx
 }
 
 multilib_src_configure() {

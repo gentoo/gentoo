@@ -1,0 +1,28 @@
+From ef2ce428dc1607563273d1258f56d9083dcf99d4 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Wed, 19 Nov 2014 22:50:43 +0100
+Subject: FLAC plugin's function seekToFrame may not work properly
+
+BUGS: 341077
+
+Patch by Vitaly <vitfunk@yandex.ru>
+---
+ plugins/decoder/flac/k3bflacdecoder.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/decoder/flac/k3bflacdecoder.cpp b/plugins/decoder/flac/k3bflacdecoder.cpp
+index 2931f76..6dc21d3 100644
+--- a/plugins/decoder/flac/k3bflacdecoder.cpp
++++ b/plugins/decoder/flac/k3bflacdecoder.cpp
+@@ -121,7 +121,7 @@ protected:
+ };
+ 
+ bool K3bFLACDecoder::Private::seekToFrame(int frame) {
+-    FLAC__uint64 sample = frame * rate / 75;
++    FLAC__uint64 sample = static_cast<FLAC__uint64>(frame) * rate / 75;
+     return seek_absolute(sample);
+ }
+ 
+-- 
+cgit v0.11.2
+
