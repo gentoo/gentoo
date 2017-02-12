@@ -13848,7 +13848,7 @@ media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital
 media-tv/mythtv 0.27.6_p20160318 0.28: Homebrew PVR project
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/plex-media-server 1.3.3 1.3.4: A free media library that is intended for use with a plex client.
+media-tv/plex-media-server 1.3.3 1.3.4-r1: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.0.9 9999: Tvheadend is a TV streaming server and digital video recorder
@@ -14285,7 +14285,7 @@ net-analyzer/snort 2.9.4.6-r1 2.9.7.0 2.9.7.2 2.9.7.3 2.9.7.5 2.9.8.0 2.9.8.2 2.
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.50-r1 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 0.9.9-r1: flow-based network traffic analyser capable of Cisco NetFlow data export
-net-analyzer/speedtest-cli 0.3.4-r1 1.0.1: Command line interface for testing internet bandwidth using speedtest.net
+net-analyzer/speedtest-cli 0.3.4-r1 1.0.1 1.0.2: Command line interface for testing internet bandwidth using speedtest.net
 net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
@@ -15949,7 +15949,7 @@ sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and
 sci-chemistry/burrow-owl 1.5.1: Visualize multidimensional nuclear magnetic resonance (NMR) spectra
 sci-chemistry/cara-bin 1.8.4-r1: Analysis of NMR spectra and Computer Aided Resonance Assignment
 sci-chemistry/ccpn 2.4.1_p150226 2.4.2 2.4.2_p150325 2.4.2_p150413 2.4.2_p150421: The Collaborative Computing Project for NMR
-sci-chemistry/chemical-mime-data 0.1.94 0.1.94-r1 0.1.94-r2 0.1.94-r3: A collection of data files to add support for chemical MIME types
+sci-chemistry/chemical-mime-data 0.1.94-r2 0.1.94-r3: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231 1.3.081231-r1: Build lists of collections of interacting items
@@ -16901,7 +16901,7 @@ sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement;
 sys-apps/etckeeper 1.18.1 1.18.4 1.18.5 1.18.6: A collection of tools to let /etc be stored in a repository
 sys-apps/ethtool 2.6.39 3.0 3.4.2 3.8 3.10 3.12.1 3.13 3.14 3.15 3.16 3.18 4.0 4.2 4.5 4.6 4.8: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring root privileges
-sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
+sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2 1.20.2-r1: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.25 5.29 5.30 9999: identify a file's format by scanning binary data for patterns
@@ -17631,7 +17631,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 0.6.5.9 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 3.18.44 3.18.45-r1 3.18.47 4.4.26 4.4.28 4.4.39-r1 4.4.40 4.4.41 4.4.42 4.4.43 4.4.44 4.4.45 4.8.14 4.8.15 4.8.16 4.8.17 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.44 3.18.45-r1 3.18.47 3.18.48 4.4.44 4.4.45 4.4.46 4.4.47 4.4.48 4.9.4 4.9.5 4.9.6 4.9.6-r1 4.9.7 4.9.8 4.9.9: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r1 7.0.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.4 4.9.5 4.9.6 4.9.6-r1 4.9.7 4.9.8 4.9.9: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.9
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
