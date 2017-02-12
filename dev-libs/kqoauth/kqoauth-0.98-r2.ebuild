@@ -38,10 +38,10 @@ src_prepare() {
 		-i src/src.pro || die
 }
 
-src_compile() {
+src_configure() {
 	eqmake5
 }
 
-src_install () {
+src_install() {
 	emake INSTALL_ROOT="${D}" install
 }
