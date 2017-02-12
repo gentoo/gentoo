@@ -52,11 +52,6 @@ net-fs/samba system-heimdal
 # Mask assembly optimisations that are platform-specific
 dev-libs/libsecp256k1 asm
 
-# Patrice Clement <monsieurp@gentoo.org> (26 Dec 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# Requires masked media-video/libav-12. See bug #603726.
->=media-video/mpv-0.23.0 libav
-
 # Robin H. Johnson <robbat2@gentoo.org> (04 Dec 2016)
 # Additional HAProxy functionality waiting for related stuff to land in the
 # tree.
