@@ -17,7 +17,7 @@ SRC_URI="https://github.com/lwindolf/${PN}/releases/download/v${PV}/${MY_P}.tar.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 
 IUSE="ayatana libnotify"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
