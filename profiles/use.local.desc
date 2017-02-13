@@ -7762,6 +7762,7 @@ sys-fs/lvm2:device-mapper-only - Build only device-mapper and not the rest of LV
 sys-fs/lvm2:lvm1 - Allow users to build lvm2 with lvm1 support
 sys-fs/lvm2:lvm2create_initrd - Install lvm2create_initrd script and pull in sys-apps/makedev for the /sbin/MAKEDEV command
 sys-fs/lvm2:openais - Openais support for clustered lvm
+sys-fs/lvm2:sanlock - Enable lvmlockd with support for sanlock
 sys-fs/lvm2:thin - Support for thin volumes
 sys-fs/mtpfs:mad - Enable handling of MP3's metadata
 sys-fs/multipath-tools:rbd - Enable Rados block device support via sys-cluster/ceph
