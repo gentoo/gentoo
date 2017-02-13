@@ -550,7 +550,6 @@ app-emulation/qemu:systemtap - Enable SystemTAP/DTrace tracing
 app-emulation/qemu:tci - Enable the TCG Interpreter which can speed up or slowdown workloads depending on the host and guest CPUs being emulated. In the future it will be a runtime option but for now its compile time.
 app-emulation/qemu:usb - Enable USB passthrough via dev-libs/libusb
 app-emulation/qemu:usbredir - Use sys-apps/usbredir to redirect USB devices to another machine over TCP
-app-emulation/qemu:uuid - Enable UUID support in the vdi block driver
 app-emulation/qemu:vde - Enable VDE-based networking
 app-emulation/qemu:vhost-net - Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet
 app-emulation/qemu:virgl - Enable experimental Virgil 3d (virtual software GPU)
