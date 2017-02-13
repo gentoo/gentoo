@@ -35,6 +35,7 @@ COMMON_DEPEND="
 	>=gnome-base/gnome-desktop-2.91.3:3=
 	>=gnome-base/gsettings-desktop-schemas-2.91.92
 	>=gnome-extra/evolution-data-server-${PV}:=[gtk,weather?]
+	<gnome-extra/evolution-data-server-3.23
 	>=media-libs/libcanberra-0.25[gtk3]
 	>=net-libs/libsoup-2.42:2.4
 	>=net-libs/webkit-gtk-2.13.90:4
