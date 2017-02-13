@@ -41,6 +41,7 @@ done
 
 CDEPEND="
 	app-text/libpaper
+	sys-libs/zlib
 	acl? (
 		kernel_linux? (
 			sys-apps/acl
