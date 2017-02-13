@@ -34,7 +34,7 @@ src_install() {
 	keepdir "/var/log/${MY_PN}"
 
 	insinto "/usr/share/${MY_PN}"
-	newins "${FILESDIR}/agent.conf.sample2" agent.conf
+	newins "${FILESDIR}/agent.conf.sample" agent.conf
 
 	insinto "/opt/${MY_PN}"
 	doins -r .
@@ -43,8 +43,8 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${MY_PN}.logrotate" "${MY_PN}"
 
-	newconfd "${FILESDIR}/${MY_PN}.confd2" "${MY_PN}"
-	newinitd "${FILESDIR}/${MY_PN}.initd4" "${MY_PN}"
+	newconfd "${FILESDIR}/${MY_PN}.confd" "${MY_PN}"
+	newinitd "${FILESDIR}/${MY_PN}.initd" "${MY_PN}"
 }
 
 pkg_postinst() {
