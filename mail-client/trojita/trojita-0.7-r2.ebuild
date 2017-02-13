@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( README LICENSE )
 
-PATCHES=( "${FILESDIR}/${P}-gpgme.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gpgme.patch"
+	"${FILESDIR}/${P}-gpg-tests.patch"
+	)
 
 src_prepare() {
 	cmake-utils_src_prepare
