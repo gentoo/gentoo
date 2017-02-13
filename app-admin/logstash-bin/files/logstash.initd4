@@ -64,7 +64,7 @@ start_pre() {
 
 stop() {
 	ebegin "Stopping logstash"
-	if [ "${KILL_ON_STOP_TIMEOUT}" == "1" ]; then
+	if [ "${KILL_ON_STOP_TIMEOUT}" = "1" ]; then
 		start-stop-daemon --stop \
 			--pidfile=${pidfile} \
 			--retry=TERM/5/KILL/5
