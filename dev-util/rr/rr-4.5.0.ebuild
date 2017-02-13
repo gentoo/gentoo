@@ -29,6 +29,10 @@ DEPEND+="
 	)
 	${PYTHON_DEPS}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-sysmacros.patch
+)
+
 pkg_setup() {
 	if use kernel_linux; then
 		CONFIG_CHECK="SECCOMP"
