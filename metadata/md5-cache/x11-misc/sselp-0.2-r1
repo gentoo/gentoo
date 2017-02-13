@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/libX11
+DESCRIPTION=Simple X selection printer
+EAPI=6
+HOMEPAGE=http://tools.suckless.org/x/sselp
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=http://dl.suckless.org/tools/sselp-0.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=7d4a787b41828caa0bf376d9bacddda6
