@@ -614,6 +614,7 @@ src_install() {
 		emake DESTDIR="${ED}" install
 
 		# Install binfmt handler init script for user targets.
+		generate_initd
 		doinitd "${T}/qemu-binfmt"
 	fi
 
@@ -646,9 +647,6 @@ src_install() {
 	# Install config file example for qemu-bridge-helper
 	insinto "/etc/qemu"
 	doins "${FILESDIR}/bridge.conf"
-
-	# Remove the docdir placed qmp-commands.txt
-	mv "${ED}/usr/share/doc/${PF}/html/qmp-commands.txt" "${S}/docs/" || die
 
 	cd "${S}"
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
