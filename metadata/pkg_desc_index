@@ -2373,8 +2373,8 @@ app-text/openlp 2.4.2: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r4: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6: Conversion between markup formats
-app-text/paperwork 0.3.2-r1 1.0.5 1.0.6-r1 1.1: a personal document manager for scanned documents (and PDFs)
-app-text/paperwork-backend 1.0.5 1.0.6-r1 1.1: Backend part of Paperwork (Python API, no UI)
+app-text/paperwork 0.3.2-r1 1.0.5 1.0.6-r1 1.1-r1 1.1.1: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork-backend 1.0.5 1.0.6-r1 1.1-r1 1.1.1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
@@ -14546,6 +14546,7 @@ net-im/kadu 2.1-r1 3.0: An open source Gadu-Gadu and Jabber/XMPP protocol Instan
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
+net-im/mattermost-desktop-bin 3.5.0: Mattermost Desktop application
 net-im/mcabber 1.0.4 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
