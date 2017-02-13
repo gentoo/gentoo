@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit git-2 toolchain-funcs
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="lightweight EWMH window switcher with features and looks of dmenu"
 HOMEPAGE="https://github.com/seanpringle/simpleswitcher"
@@ -17,7 +17,8 @@ IUSE=""
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXft
-	x11-libs/libXinerama"
+	x11-libs/libXinerama
+	x11-libs/libXres"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -29,5 +30,4 @@ src_compile() {
 src_install() {
 	default
 	doman ${PN}.1
-	dodoc README.md
 }
