@@ -463,14 +463,6 @@ x11-libs/gtk+:1
 =app-emulation/ganeti-2.16*
 =app-emulation/ganeti-2.17*
 
-# Daniel Campbell <zlg@gentoo.org> (02 Jan 2017)
-# Google Code shutdown and change of versioning scheme
-# needs 'old' versions masked (v94 -> v1.0.0)
-# Masked for removal in 30 days.
-=x11-misc/alock-94
-=x11-misc/alock-94-r1
-=x11-misc/alock-94-r2
-
 # Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
 # Reverse dependencies need testing, wrt bug #580760
 >=net-libs/rb_libtorrent-1.1.1
