@@ -5391,7 +5391,6 @@ net-fs/samba:winbind - Enables support for the winbind auth daemon
 net-fs/smbnetfs:gnome - Use the gnome-base/gnome-keyring for password management.
 net-ftp/frox:transparent - Enable transparent proxying of data connections
 net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
-net-ftp/lftp:openssl - Use dev-libs/openssl for SSL connections
 net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
 net-ftp/proftpd:authfile - Enable support for the auth-file module
 net-ftp/proftpd:ban - Enable support for the mod_ban module

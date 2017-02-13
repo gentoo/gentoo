@@ -411,7 +411,7 @@ app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6 2.0.6-r1: Performance Test of Filesystem I/O using standard C library calls
 app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark suite
 app-benchmarks/bootchart2 0.14.7-r1: Performance analysis and visualization of the system boot process
-app-benchmarks/contest 0.61 0.61-r1: Test system responsiveness to compare different kernels
+app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
@@ -1899,7 +1899,7 @@ app-misc/ranger 1.7.2 1.8.0 1.8.1 9999: A vim-inspired file manager for the cons
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.19.5-r1: A personal full text search package
-app-misc/regex-markup 0.10.0 0.10.0-r1: A tool to color syslog files as well
+app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/relevation 1.3: a command-line searcher for the Revelation password manager
 app-misc/remind 03.01.15: Ridiculously functional reminder program
@@ -2192,7 +2192,7 @@ app-text/adiff 1.4: wordwise diff
 app-text/agrep 2.04 2.04-r1: agrep is a tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.3 2.4: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.4: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
@@ -10689,7 +10689,7 @@ games-board/qcheckers 20091230 20091230-r1: Qt4 based checkers game
 games-board/qgo 1.5.4_p20100322 1.5.4_p20100322-r1: An ancient boardgame, very common in Japan, China and Korea
 games-board/scid 4.6.2 4.6.2-r1: a free chess database application
 games-board/simsu 1.2.3 1.2.3-r1: A basic sudoku game
-games-board/sirius 0.8.0 0.8.0-r1: A program for playing the game of othello/reversi
+games-board/sirius 0.8.0-r1: A program for playing the game of othello/reversi
 games-board/sjeng 11.2-r1: Console based chess interface
 games-board/spider 1.2_p4-r1: Spider Solitaire
 games-board/stockfish 8: Free UCI chess engine, claimed to be the strongest in the world
@@ -13501,10 +13501,10 @@ media-sound/coquillo 1.12: GUI audio tagger based on Qt4 and taglib
 media-sound/cplay 1.50: A Curses front-end for various audio players
 media-sound/csound 6.08.0 9999: A sound design and signal processing system providing facilities for composition and performance
 media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recognition system
-media-sound/dagrab 0.513 0.513-r1: fixed point cd ripper
+media-sound/dagrab 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3: A live audio streamer
 media-sound/darksnow 0.7.1: Streaming GTK+ Front-End based in Darkice Ice Streamer
-media-sound/daudio 0.3 0.3-r1: Distributed audio on the local network
+media-sound/daudio 0.3-r1: Distributed audio on the local network
 media-sound/dbmeasure 0.0.20100217: ALSA Volume Control Attenuation Measurement Tool
 media-sound/dcadec 0.2.0: DTS Coherent Acoustics decoder with support for HD extensions
 media-sound/dcaenc 2 2-r1 9999: DTS Coherent Acoustics audio encoder
@@ -14408,7 +14408,7 @@ net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.3.3: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33: Internationalized Domain Names (IDN) implementation
-net-dns/libidn2 0.11 0.15 0.16: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
+net-dns/libidn2 0.11 0.15 0.16 0.16-r1: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r1 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
@@ -14503,7 +14503,7 @@ net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
 net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
-net-ftp/lftp 4.6.5 4.7.3 4.7.4 4.7.5 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
+net-ftp/lftp 4.7.3 4.7.4 4.7.5 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.5-r3 3.2.6: An extremely configurable ftp client
 net-ftp/netkit-ftpd 0.17-r9: The netkit FTP server with optional SSL support
@@ -14577,7 +14577,7 @@ net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
 net-im/toxic 0.7.1: A curses-based client for Tox.
 net-im/turses 0.2.13-r1 0.2.23: Command line twitter client
 net-im/vacuum 1.2.4 9999: Qt4 Crossplatform Jabber client
-net-im/ysm 2.9.9.1 2.9.9.1-r1: A console ICQ client supporting versions 7/8
+net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
 net-irc/atheme-services 6.0.11-r1 7.0.6-r1 9999: A portable and secure set of open-source and modular IRC services
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
@@ -14666,7 +14666,7 @@ net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.17 1.0.18: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.20.5 3.22.3: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.26 3.5.8 3.5.9: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.26 3.5.8 3.5.9-r1: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
@@ -15504,7 +15504,7 @@ net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-print/xerox-drivers 0_p20080123: PPD files of XEROX printers (CopyCentre, DocuPrint, Phaser, WorkCentre) for CUPS printing system
 net-proxy/3proxy 0.5.3k 0.7.1.2 0.7.1.4 0.8.6 0.8.8 0.8.9: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid that intercepts advertising, page counters and some web bugs
-net-proxy/bfilter 1.1.4-r2 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
+net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
 net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP server
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
@@ -15594,7 +15594,7 @@ net-wireless/horst 4.2 5.0 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 0.2 9999: a tool for analysing captured signals from software-defined radio receivers
-net-wireless/irda-utils 0.9.18-r4 0.9.18-r6: IrDA management and handling utilities
+net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3 4.7 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 2016.07.1-r1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 9999: Provides basic bluetooth support in kismet
@@ -18749,7 +18749,7 @@ x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
 x11-misc/py3status 3.4: py3status is an extensible i3status wrapper written in python
-x11-misc/pypanel 2.4-r1 2.4-r2: A lightweight panel/taskbar for X11 window managers
+x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.0-r1 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
@@ -18799,7 +18799,7 @@ x11-misc/sxhkd 0.5.3 0.5.4 0.5.5 0.5.6 0.5.7: Simple X hotkey daemon
 x11-misc/synergy 1.6.3 1.8.1-r3 1.8.2 1.8.5 1.8.6: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 0.11-r2 0.12.3 0.12.12: tint2 is a lightweight panel/taskbar for Linux.
-x11-misc/tintwizard 0.3.4-r1 0.3.4-r2: GUI wizard which generates config files for tint2 panels
+x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
 x11-misc/touchcal 0.50 0.80: Touchscreen calibration utility
@@ -18884,7 +18884,7 @@ x11-misc/xrootconsole 0.6 0.6-r1: A utility that displays its input in a text bo
 x11-misc/xscreensaver 5.36: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0 9999: Command-line program for getting and setting the contents of the X selection
-x11-misc/xsensors 0.70 0.70-r1: A hardware health information viewer, interface to lm-sensors
+x11-misc/xsensors 0.70-r1: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3 0.1.3-r1: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsnap 1.5.10 1.5.11 1.5.15: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 1.42-r1 1.42-r2: let it snow on your desktop and windows
