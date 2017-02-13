@@ -31,6 +31,7 @@ S="${WORKDIR}"
 src_prepare() {
 	cp -r Ambiance/ Ambiance-Gentoo || die
 	cp -r Radiance/ Radiance-Gentoo || die
+	ln -sfT ../../Ambiance-Gentoo/gtk-3.0/assets Radiance-Gentoo/gtk-3.0/assets || die
 	sed -i -e 's/Ambiance/Ambiance-Gentoo/g' Ambiance-Gentoo/index.theme \
 		Ambiance-Gentoo/metacity-1/metacity-theme-1.xml || die
 	sed -i -e 's/Radiance/Radiance-Gentoo/g' Radiance-Gentoo/index.theme \
