@@ -48,9 +48,9 @@ src_prepare() {
 }
 
 src_configure() {
- 	local mycmakeargs=(
- 		-DBUILD_TESTS=$(usex test)
- 	)
+	local mycmakeargs=(
+		-DBUILD_TESTS=$(usex test)
+	)
 
- 	cmake-utils_src_configure
+	cmake-utils_src_configure
 }

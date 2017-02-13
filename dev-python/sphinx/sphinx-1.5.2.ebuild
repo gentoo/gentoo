@@ -26,6 +26,7 @@ RDEPEND="
 	>=dev-python/pygments-2.0.1-r1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.5[${PYTHON_USEDEP}]
 	>=dev-python/Babel-2.1.1[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	>=dev-python/sphinx_rtd_theme-0.1[${PYTHON_USEDEP}]
 	<dev-python/sphinx_rtd_theme-2.0[${PYTHON_USEDEP}]
@@ -35,21 +36,20 @@ RDEPEND="
 		app-text/dvipng
 	)
 	net? (
-		>=dev-python/requests-2.4.0[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-0.9[${PYTHON_USEDEP}]
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/simplejson[${PYTHON_USEDEP}]' pypy)
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-0.9[${PYTHON_USEDEP}]
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'pypy*' 'python2*')
 		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' 'pypy*' 'python2*' python3_4 )
 	)"
