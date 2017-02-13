@@ -6,49 +6,49 @@ EAPI=6
 
 inherit eutils gnome2-utils
 
+MY_PN="${PN%-*}"
+
 DESCRIPTION="Mattermost Desktop application"
 HOMEPAGE="https://about.mattermost.com/"
-SRC_URI="https://github.com/mattermost/desktop/archive/v${PV}.tar.gz -> ${PV}.tar.gz
-		 amd64? ( https://releases.mattermost.com/desktop/3.5.0/mattermost-desktop-${PV}-linux-x64.tar.gz )
-		 x86? ( https://releases.mattermost.com/desktop/3.5.0/mattermost-desktop-${PV}-linux-ia32.tar.gz )
+
+SRC_URI="
+https://github.com/mattermost/desktop/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	amd64? ( https://releases.mattermost.com/desktop/3.5.0/mattermost-desktop-${PV}-linux-x64.tar.gz )
+	x86?   ( https://releases.mattermost.com/desktop/3.5.0/mattermost-desktop-${PV}-linux-ia32.tar.gz )
 "
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
+
 RESTRICT="mirror"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 S="${WORKDIR}/mattermost-desktop-${PV}"
-QA_PREBUILT="opt/mattermost-desktop/mattermost-desktop
+
+QA_PREBUILT="
+	opt/mattermost-desktop/mattermost-desktop
 	opt/mattermost-desktop/libnode.so
 	opt/mattermost-desktop/libffmpeg.so
 "
 
 src_install() {
-	insinto /opt/mattermost-desktop/locales
+	insinto "/opt/${MY_PN}/locales"
 	doins locales/*.pak
 
-	insinto /opt/mattermost-desktop/resources
+	insinto "/opt/${MY_PN}/resources"
 	doins resources/*.asar
 
-	insinto /opt/mattermost-desktop
-	doins *.pak
-	doins *.bin
-	doins *.dat
+	insinto "/opt/${MY_PN}"
+	doins *.pak *.bin *.dat
 
-	exeinto /opt/mattermost-desktop
+	exeinto "/opt/${MY_PN}"
 
-	doexe *.so
-	doexe mattermost-desktop
+	doexe *.so "${MY_PN}"
 
-	dosym /opt/mattermost-desktop/mattermost-desktop /opt/bin/mattermost-desktop
+	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 
-	newicon "${S}/icon.png" mattermost-desktop.png
-	make_desktop_entry mattermost-desktop Mattermost mattermost-desktop
+	newicon "${S}/icon.png" "${MY_PN}.png"
+	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
 }
 
 pkg_preinst() {
