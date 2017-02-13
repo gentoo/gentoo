@@ -5,4 +5,8 @@
 		<email>0xd34df00d@gmail.com</email>
 		<name>Georg Rudoy</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<description>Proxy Maintainers</description>
+	</maintainer>
 </pkgmetadata>
