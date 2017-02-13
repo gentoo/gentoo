@@ -13,10 +13,6 @@
 sys-fs/eudev
 sys-fs/udev
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (26 Oct 2014)
-# package is masked for bugs #526762 and #526802 on non-systemd systems.
--=x11-apps/xinit-1.3.4
-
 # sys-kernel/genkernel is not compatible with Systemd, you need
 # to use sys-kernel/genkernel-next instead
 sys-kernel/genkernel
