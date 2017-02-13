@@ -38,7 +38,7 @@ DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	=dev-cpp/eigen-3.2*:3
+	>=dev-cpp/eigen-3.2:3
 	sci-libs/cln
 	gsl? ( sci-libs/gsl:= )
 	qalculate? ( >=sci-libs/libqalculate-0.9.5:= )
