@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/prawnpdf/pdf-core/"
 
 LICENSE="|| ( Ruby GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( =dev-ruby/pdf-inspector-1*
