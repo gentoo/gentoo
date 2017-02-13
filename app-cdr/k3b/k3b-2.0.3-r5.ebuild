@@ -5,7 +5,6 @@
 EAPI=6
 
 MULTIMEDIA_REQUIRED="always"
-WEBKIT_REQUIRED="always"
 KDE_HANDBOOK="optional"
 
 KDE_LINGUAS="ast be bg bs ca ca@valencia cs csb da de el en_GB eo es et eu fi fr
@@ -68,11 +67,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libav-11.patch
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-flac.patch
+	"${FILESDIR}"/${P}-fixuifiles.patch
 	"${FILESDIR}"/${P}-sndfile.patch
 	"${FILESDIR}"/${P}-ffmpeg-3.patch
 	"${FILESDIR}"/${P}-gcc7.patch
-	# master
 	"${FILESDIR}"/${P}-dvdrip.patch
+	# TODO: upstream
+	"${FILESDIR}"/${P}-no-webkit.patch
 )
 
 src_prepare() {
