@@ -34,3 +34,9 @@ pkg_setup() {
 	fi
 	python-single-r1_pkg_setup
 }
+
+src_prepare() {
+	default
+
+	sed -i 's:-Werror::' CMakeLists.txt || die #609192
+}
