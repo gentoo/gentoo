@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,24 +6,21 @@ EAPI=6
 
 inherit user
 
-MY_PN="${PN/-bin}"
+MY_PN="${PN%-bin}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="!all-plugins? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz )
-	all-plugins? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_PN}-all-plugins-${PV}.tar.gz )"
+SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="all-plugins"
 
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
 
-DEPEND=""
-RDEPEND="|| ( virtual/jre:1.8 virtual/jre:1.7 )"
+RDEPEND="virtual/jre:1.8"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -37,7 +34,7 @@ src_install() {
 	keepdir "/var/log/${MY_PN}"
 
 	insinto "/usr/share/${MY_PN}"
-	doins "${FILESDIR}/agent.conf.sample"
+	newins "${FILESDIR}/agent.conf.sample" agent.conf
 
 	insinto "/opt/${MY_PN}"
 	doins -r .
@@ -53,7 +50,7 @@ src_install() {
 pkg_postinst() {
 	ewarn "The default user changed from root to ${MY_PN}. If you wish to run as root (for"
 	ewarn "example to read local logs), be sure to change LS_USER and LS_GROUP in"
-	ewarn "/etc/conf.d/${MY_PN}"
+	ewarn "${EROOT%/}/etc/conf.d/${MY_PN}"
 	einfo
 	einfo "Getting started with logstash:"
 	einfo "  https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html"
