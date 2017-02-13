@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 
 inherit distutils-r1
 
@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="~app-text/paperwork-backend-${PV}[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' python2_7 )
 	dev-python/libpillowfight[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
