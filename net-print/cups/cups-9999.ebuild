@@ -55,7 +55,6 @@ CDEPEND="
 	pam? ( virtual/pam )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (
-		>=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}]
 		>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
 	)
 	systemd? ( sys-apps/systemd )
