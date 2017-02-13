@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
@@ -22,7 +22,6 @@ RDEPEND="${CDEPEND}
 	dev-python/h5py[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/sympy[${PYTHON_USEDEP}]"
-#	dev-python/pyx[${PYTHON_USEDEP}]
 DEPEND="${CDEPEND}
 	>=dev-python/cython-0.24[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-20.0[${PYTHON_USEDEP}]
@@ -36,7 +35,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	pushd "${BUILD_DIR}"/lib > /dev/null
-	nosetests -sv || die "Tests fail with ${EPYTHON} ${PWD}"
-	popd > /dev/null
+	pushd "${BUILD_DIR}"/lib >/dev/null || die
+	nosetests -sv --exclude=test_flake8 || die "Tests fail with ${EPYTHON} ${PWD}"
+	popd >/dev/null || die
 }
