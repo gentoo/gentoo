@@ -19,7 +19,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/pexpect[${PYTHON_USEDEP}]
-		dev-libs/libpfm
 		sys-libs/zlib
 		${PYTHON_DEPS}"
 
