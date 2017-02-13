@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses:0= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=ftp://ftp.bitwizard.nl/mtr/mtr-0.87.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b80bad1b71440d7813fa909b5c8958e4

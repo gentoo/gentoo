@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( sna uxa )
 SLOT=0
 SRC_URI=https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/169c74fa6c2cd9c28dd7bfacd9639cd245b8c8a8.tar.xz -> xf86-video-intel-2.99.917_p20161206.tar.xz
 _eclass_exported_funcs=pkg_postrm:xorg-2 pkg_postinst:- pkg_setup:linux-info src_unpack:xorg-2 src_prepare:xorg-2 src_configure:- src_compile:xorg-2 src_test:autotools-utils src_install:xorg-2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xorg-2	31212c92baf2018dd17d89e5fd7faed4
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xorg-2	31212c92baf2018dd17d89e5fd7faed4
 _md5_=387ffe17e4f0588176f236fdcc6763ad

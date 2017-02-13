@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://www.process-one.net/downloads/ejabberd/16.09/ejabberd-16.09.tgz -> ejabberd-16.09.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:rebar src_install:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	e0ef2bf8bb6a54693e146ab4085a5ec8	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	rebar	98c3519ff55e51c3d222cde7f9f5d2e9	ssl-cert	b031e94f4c7c34e1d677376b8929821a	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	rebar	98c3519ff55e51c3d222cde7f9f5d2e9	ssl-cert	b031e94f4c7c34e1d677376b8929821a	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=379a06f3c671249447e770d10eae08e6
