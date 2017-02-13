@@ -19,6 +19,7 @@ DOCS="NEWS README.md ChangeLog"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0-docs-install.patch
+	"${FILESDIR}"/${PN}-1.6.21-cflags.patch
 )
 
 src_prepare() {
