@@ -52,14 +52,14 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
-		# TODO: fix rpaths
-		#-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=ON
 
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 		# TODO: fix detecting pthread upstream in stand-alone build
 		-DPTHREAD_LIB='-lpthread'
 	)
 	use test && mycmakeargs+=(
+		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 	)

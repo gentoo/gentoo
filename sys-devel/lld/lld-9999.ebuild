@@ -62,6 +62,7 @@ src_configure() {
 		-DPTHREAD_LIB='-lpthread'
 	)
 	use test && mycmakeargs+=(
+		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 	)
