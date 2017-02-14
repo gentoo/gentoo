@@ -33,7 +33,7 @@ parse_full() {
 
 start() {
 	checkpath -d -q -m 0750 -o root:root /run/swatchdog
-	if [ "${PARSE_FULL}" == "YES" ]; then
+	if [ "${PARSE_FULL}" = "YES" ]; then
 		parse_full
 	fi
 	gen_script --tail-file
