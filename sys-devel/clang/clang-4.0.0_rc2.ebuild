@@ -114,7 +114,7 @@ src_unpack() {
 
 	default
 
-	mv clang-tools-extra-* "${S}"/tools/clang-tools-extra || die
+	mv clang-tools-extra-* "${S}"/tools/extra || die
 	if use test; then
 		mv llvm-* "${WORKDIR}"/llvm || die
 	fi
@@ -126,6 +126,9 @@ src_prepare() {
 
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
+
+	# kill extraneous deps
+	sed -i -e '/FileCheck/d' tools/extra/test/CMakeLists.txt || die
 
 	# User patches
 	eapply_user
@@ -172,6 +175,9 @@ multilib_src_configure() {
 			-DLLVM_BUILD_DOCS=$(usex doc)
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
+
+			# workaround pthread
+			-DPTHREAD_LIB=-pthread
 		)
 		use doc && mycmakeargs+=(
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
@@ -179,7 +185,7 @@ multilib_src_configure() {
 		)
 	else
 		mycmakeargs+=(
-			-DLLVM_EXTERNAL_CLANG_TOOLS_EXTRA_BUILD=OFF
+			-DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD=OFF
 		)
 	fi
 
@@ -209,6 +215,7 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
+	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
 }
 
 src_install() {
