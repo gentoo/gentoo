@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer app-arch/unzip
+DESCRIPTION=Rise of the Triad for Linux!
+EAPI=6
+HOMEPAGE=http://www.icculus.org/rott/
+IUSE=demo
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer
+SLOT=0
+SRC_URI=http://www.icculus.org/rott/releases/rott-1.1.2.tar.gz demo? ( http://filesingularity.timedoctor.org/swdata.zip )
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=fc8cb6437315e91ea2072e65ea2f8d8f
