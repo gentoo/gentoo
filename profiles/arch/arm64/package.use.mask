@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Robin Johnson <robbat2@gentoo.org> (14 Feb 2017)
+# Not tk for this arch yet
+dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
+
 # Thomas Deutschmann <whissi@gentoo.org> (14 Feb 2017)
 # No lua keyworded for this arch yet
 # libpcre jit is not (yet?) support on this arch
