@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="ACPI monitor for X11"
 HOMEPAGE="http://bbacpi.sourceforge.net"
@@ -18,18 +19,24 @@ DEPEND="
 	sys-power/acpi
 	sys-power/acpid
 	x11-libs/libX11
-	x11-misc/xdialog
-"
+	x11-misc/xdialog"
 RDEPEND="
 	${DEPEND}
-	media-fonts/font-adobe-100dpi
-"
+	media-fonts/font-adobe-100dpi"
 
-DOCS=( AUTHORS ChangeLog README )
+DOCS=( AUTHORS ChangeLog NEWS README data/README.bbacpi )
+PATCHES=(
+	"${FILESDIR}"/${P}-noextraquals.diff
+	"${FILESDIR}"/${P}-overflows.diff
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-noextraquals.diff \
-		"${FILESDIR}"/${P}-overflows.diff
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
+}
+
+src_install() {
+	default
+	rm "${ED%/}"/usr/share/bbtools/README.bbacpi || die
 }
