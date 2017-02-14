@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-libs/glib:2 net-libs/libvncserver x11-libs/libxkbfile x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 virtual/freedesktop-icon-theme ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) rdp? ( ~net-misc/freerdp-2.0.0_pre20161219 ) gnome-keyring? ( app-crypt/libsecret ) spice? ( net-misc/spice-gtk[gtk3] ) ssh? ( net-libs/libssh[sftp] x11-libs/vte:2.91 ) telepathy? ( net-libs/telepathy-glib ) zeroconf? ( net-dns/avahi[gtk3] ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.6.3 >=sys-apps/sed-4
+DESCRIPTION=A GTK+ RDP, VNC, XDMCP and SSH client
+EAPI=6
+HOMEPAGE=http://remmina.org/
+IUSE=ayatana crypt rdp gnome-keyring nls spice ssh telepathy zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/glib:2 net-libs/libvncserver x11-libs/libxkbfile x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 virtual/freedesktop-icon-theme ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) rdp? ( ~net-misc/freerdp-2.0.0_pre20161219 ) gnome-keyring? ( app-crypt/libsecret ) spice? ( net-misc/spice-gtk[gtk3] ) ssh? ( net-libs/libssh[sftp] x11-libs/vte:2.91 ) telepathy? ( net-libs/telepathy-glib ) zeroconf? ( net-dns/avahi[gtk3] )
+SLOT=0
+SRC_URI=https://github.com/FreeRDP/Remmina/archive/v1.2.0-rcgit.18.tar.gz -> remmina-1.2.0_rc18.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=3493fc36ee1de823e606c71fdb529c68

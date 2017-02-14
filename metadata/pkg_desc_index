@@ -4822,7 +4822,7 @@ dev-libs/libp11 0.2.8-r3 0.2.8-r4 0.4.2 0.4.4: Abstraction layer to simplify PKC
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 8.39 8.40: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
-dev-libs/libpcre2 10.22: Perl-compatible regular expression library
+dev-libs/libpcre2 10.22 10.23: Perl-compatible regular expression library
 dev-libs/libpeas 1.18.0 1.20.0: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0 4.8.0: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.2.5 1.3.1 1.4.0 1.4.1: a pipeline manipulation library
@@ -7604,8 +7604,8 @@ dev-python/ipdb 0.8 0.8.1 0.8.2 0.9.0 0.10.1: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.2 4.3.1 4.4.1 4.5.2: IPython Kernel for Jupyter
-dev-python/ipyparallel 4.1.0 5.0.1 5.1.1 5.2.0: Interactive Parallel Computing with IPython
-dev-python/ipython 3.2.1-r1 4.0.1 4.0.3 4.1.1 4.1.2 4.2.0-r1 5.1.0-r1: Advanced interactive shell for Python
+dev-python/ipyparallel 4.1.0 5.0.1 5.1.1 5.2.0 6.0.1: Interactive Parallel Computing with IPython
+dev-python/ipython 3.2.1-r1 4.0.3 4.1.2 4.2.0-r1 5.1.0-r1 5.2.2: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1 5.1.5 5.2.2: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 15.0.2 15.0.6: IRC client framework written in Python
@@ -7651,7 +7651,7 @@ dev-python/jsonrpclib 0_pre20110820-r1 0_pre20150305 0.1.7 9999: python implemen
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema validation for Python
 dev-python/jupyter 1.0.0 1.0.0-r1: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1 4.2.2 4.3.0 4.4.0: Jupyter protocol implementation and client libraries
-dev-python/jupyter_console 4.0.3 4.1.1 5.0.0: A terminal-based console frontend for Jupyter kernels
+dev-python/jupyter_console 4.0.3 4.1.1 5.0.0 5.1.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.0.6 4.1.0 4.2.0 4.2.1: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
@@ -7812,7 +7812,7 @@ dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.0 0.1.1: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10 1.0.11: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 4.0.6 4.1.0 4.2.3 4.3.0 4.3.2: Jupyter Interactive Notebook
+dev-python/notebook 4.0.6 4.1.0 4.2.3 4.3.2 4.4.1: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3: Python interface to DBus notifications.
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0 0.30.0: NumPy aware dynamic Python compiler using LLVM
@@ -15235,7 +15235,7 @@ net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git exten
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc17: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc17 1.2.0_rc18: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
