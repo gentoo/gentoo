@@ -79,13 +79,6 @@ for X in ${LANGS} ; do
 	IUSE="${IUSE} l10n_${X}"
 done
 
-#pkg_setup() {
-#	if use djvu; then
-#		ewarn "With USE=\"djvu\", distribution of binaries is restricted!"
-#		ewarn "See http://djvu.sourceforge.net/gsdjvu/COPYING for details on licensing issues."
-#	fi
-#}
-
 src_prepare() {
 	default
 
