@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=dev-perl/Data-UUID-1.148.0 >=dev-perl/Sub-Exporter-0.900.0 >=dev-perl/Sub-Install-0.30.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Simple interface for generating and using globally unique identifiers
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Data-GUID/
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=dev-perl/Data-UUID-1.148.0 >=dev-perl/Sub-Exporter-0.900.0 >=dev-perl/Sub-Install-0.30.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Data-GUID-0.049.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=3a5b0953b153faad15671d9acd9e1d27

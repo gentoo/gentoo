@@ -5566,7 +5566,7 @@ dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.20.0-r1 2.22.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0: details of the floating point data type
 dev-perl/Data-FormValidator 4.810.0-r1: Validates user input (usually from an HTML form) based on input profile
-dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
+dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
@@ -5784,7 +5784,7 @@ dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r1 3.200.0-r2: Provide Perl API for libsmbclient.so
-dev-perl/Filter 1.540.0 1.550.0: Interface for creation of Perl Filters
+dev-perl/Filter 1.540.0 1.550.0 1.570.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
@@ -6274,7 +6274,7 @@ dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.220.0 1.230.0: Flexible system for validation of method/function call parameters
-dev-perl/Params-ValidationCompiler 0.220.0: Build an optimized subroutine parameter validator once, use it forever
+dev-perl/Params-ValidationCompiler 0.230.0: Build an optimized subroutine parameter validator once, use it forever
 dev-perl/Parse-ErrorString-Perl 0.220.0: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
 dev-perl/Parse-RecDescent 1.967.13: Generate Recursive-Descent Parsers
@@ -6405,7 +6405,7 @@ dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
 dev-perl/Sort-Versions 1.620.0: A perl 5 module for sorting of revision-like numbers
-dev-perl/Specio 0.310.0 0.320.0: Type constraints and coercions for Perl
+dev-perl/Specio 0.310.0 0.320.0 0.350.0: Type constraints and coercions for Perl
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
 dev-perl/Sphinx-Config 0.100.0: Sphinx search engine configuration file read/modify/write
 dev-perl/Sphinx-Search 0.290.0: Perl API client for Sphinx search engine
@@ -6652,7 +6652,7 @@ dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Rel
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
 dev-perl/Validate-Tiny 1.551 1.600: Minimalistic data validation
-dev-perl/Variable-Magic 0.590.0 0.600.0: Associate user-defined magic to variables from Perl
+dev-perl/Variable-Magic 0.590.0 0.600.0 0.610.0: Associate user-defined magic to variables from Perl
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
@@ -9667,9 +9667,9 @@ dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the obje
 dev-ruby/travis 1.8.2-r1: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.5 1.6.8: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.1.2: Trollop is a commandline option parser for Ruby
-dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
+dev-ruby/ttfunk 1.2.1 1.4.0 1.5.0: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
-dev-ruby/twitter 5.16.0: Ruby wrapper around the Twitter API
+dev-ruby/twitter 5.16.0 5.17.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.2 1.14.5: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 1.1.0 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
