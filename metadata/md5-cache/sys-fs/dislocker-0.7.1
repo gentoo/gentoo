@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-fs/fuse || ( net-libs/polarssl net-libs/mbedtls ) ruby? ( dev-lang/ruby:2.1 ) sys-devel/make >=dev-util/cmake-3.6.3
+DESCRIPTION=Dislocker is used to read BitLocker encrypted partitions.
+EAPI=5
+HOMEPAGE=https://github.com/Aorimn/dislocker
+IUSE=ruby
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=sys-fs/fuse || ( net-libs/polarssl net-libs/mbedtls ) ruby? ( dev-lang/ruby:2.1 )
+SLOT=0
+SRC_URI=https://github.com/Aorimn/dislocker/archive/v0.7.1.tar.gz -> dislocker-0.7.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=afa2d9729619222b879f2d35506052fe
