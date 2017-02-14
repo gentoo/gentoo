@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rails/rails-deprecated_sanitizer"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~amd64-linux"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/activesupport-4.2"

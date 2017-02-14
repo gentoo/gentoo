@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ DESCRIPTION="An extension of CSS3, adding nested rules, variables, mixins, and m
 HOMEPAGE="http://sass-lang.com/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~ppc64 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~amd64-linux"
 SLOT="$(get_version_component_range 1-2)"
 IUSE=""
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,13 +20,13 @@ SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${PV}/${MY_P}-src.
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+rar +ssl unzip +yenc"
+IUSE="+rar unzip +yenc"
 
 # Sabnzbd is installed to /usr/share/ as upstream makes it clear they should not
 # be in python's sitedir.  See:  http://wiki.sabnzbd.org/unix-packaging
 
-# TODO:  still bundled but not in protage:
-# kronos, rsslib, ssmtplib, listquote, json-py, msgfmt
+# TODO:  still bundled but not in portage:
+# kronos, rsslib, ssmtplib, listquote, json-py, msgfmt, happyeyeballs
 # pynewsleecher
 #
 # Also note that cherrypy is still bundled.  It's near impossible to find
@@ -46,7 +46,6 @@ RDEPEND="
 	dev-python/rarfile
 	net-misc/wget
 	rar? ( || ( app-arch/unrar app-arch/rar ) )
-	ssl? ( dev-python/pyopenssl )
 	unzip? ( >=app-arch/unzip-5.5.2 )
 	yenc? ( dev-python/yenc )
 "

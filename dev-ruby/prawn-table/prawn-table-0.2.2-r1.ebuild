@@ -14,7 +14,7 @@ DESCRIPTION="Provides support for tables in Prawn"
 HOMEPAGE="http://prawn.majesticseacreature.com/"
 LICENSE="|| ( GPL-2+ Ruby )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/mocha

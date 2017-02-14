@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,6 +20,6 @@ DESCRIPTION="Fast Gherkin lexer and parser"
 HOMEPAGE="https://github.com/cucumber/gherkin"
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64"
 SLOT="4"
 IUSE=""
