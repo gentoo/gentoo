@@ -14751,7 +14751,7 @@ net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmo-netif 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libosmocore 0.6.6 0.8.0 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
-net-libs/libpcap 1.8.0 1.8.1 9999: A system-independent library for user-level network packet capture
+net-libs/libpcap 1.8.1 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15 1.5.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.9 2.0.10: A library that performs application layer protocol identification for flows
