@@ -5184,7 +5184,6 @@ net-analyzer/wireshark:doc-pdf - Build documentation in pdf format (US and a4 pa
 net-analyzer/wireshark:libssh - Use net-libs/libssh (for sshdump)
 net-analyzer/wireshark:netlink - Use dev-libs/libnl
 net-analyzer/wireshark:pcap - Use net-libs/libpcap for network packet capturing (build dumpcap, rawshark)
-net-analyzer/wireshark:qt4 - Build the wireshark executable with an experimental Qt UI instead of GTK+.
 net-analyzer/wireshark:randpkt - Install randpkt, a utility for creating pcap trace files full of random packets
 net-analyzer/wireshark:randpktdump - Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)
 net-analyzer/wireshark:sbc - Use media-libs/sbc for playing back SBC encoded packets

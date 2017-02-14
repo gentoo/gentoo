@@ -8602,7 +8602,7 @@ dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv m
 dev-python/unidecode 0.04.18 0.04.19 0.04.20: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uranium 2.1.0_beta-r2 2.3.1: A Python framework for building 3D printing related applications
-dev-python/urdf_parser_py 0.3.2: URDF parser for Python
+dev-python/urdf_parser_py 0.3.2 0.3.3: URDF parser for Python
 dev-python/uritemplate 0.6 3.0.0: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
 dev-python/urllib3 1.12 1.16 1.19.1 1.20: HTTP library with thread-safe connection pooling, file post, and more
@@ -14297,7 +14297,7 @@ net-analyzer/suricata 2.0.11 3.0.1 3.1.3 3.2 3.2-r1: High performance Network ID
 net-analyzer/symon 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
-net-analyzer/tcpdump 4.8.0 4.8.1 4.9.0 9999: A Tool for network monitoring and data acquisition
+net-analyzer/tcpdump 4.8.1 4.9.0 9999: A Tool for network monitoring and data acquisition
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
@@ -14325,7 +14325,7 @@ net-analyzer/vnstat 1.13 1.15 1.16: Console-based network traffic monitor that k
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.2 2.2.4 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.4 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -18247,7 +18247,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 24.0.0.194: Adobe Flash Player
+www-plugins/adobe-flash 24.0.0.194 24.0.0.221: Adobe Flash Player
 www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.21_beta 58.0.3004.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
