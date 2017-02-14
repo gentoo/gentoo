@@ -1445,7 +1445,7 @@ app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to acce
 app-forensics/examiner 0.5-r2: Application that utilizes the objdump command to disassemble and comment foreign executable binaries
 app-forensics/foremost 0.69 1.5.7-r1 1.5.7-r2: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 0.7 0.8 0.8-r1: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 0.7 0.8 0.8-r1 0.9: A general purpose fuzzer with feedback support
 app-forensics/libbfio 0.0.20120425_alpha 0.0.20130609_alpha 0.0.20130721: Library for providing a basic file input/output abstraction layer
 app-forensics/libewf 20130128 20130416 20130416-r1 20131210 20140227 20140406 20140427 20140608: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 1.6.4 2.1.0 2.1.1: Security and system auditing tool
@@ -5043,7 +5043,7 @@ dev-libs/zookeeper-c 3.4.8 3.4.9: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.60-r1 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
-dev-lisp/asdf 1.89 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7 3.2.0: ASDF is Another System Definition Facility for Common Lisp
+dev-lisp/asdf 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7 3.2.0 3.2.0-r1: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
 dev-lisp/cl-ppcre 1.2.10 1.2.11 1.2.12 1.2.13 1.2.14 1.2.15 1.2.16 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
@@ -13546,7 +13546,7 @@ media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music P
 media-sound/gmorgan 0.39 0.70: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmtp 1.3.10: A simple MTP client for MP3 players
-media-sound/gmusicbrowser 1.1.13 1.1.15 1.1.15-r1 1.1.15-r2 9999: An open-source jukebox for large collections of mp3/ogg/flac files
+media-sound/gmusicbrowser 1.1.13 1.1.15 1.1.15-r1 1.1.15-r2 1.1.15-r3 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnac 0.2.4.1: Audio converter for GNOME
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.20.2-r1 3.22.1 3.22.2: Music management for Gnome
@@ -13962,7 +13962,7 @@ media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
 media-video/mplayer 1.2.1 1.3.0 9999: Media Player for Linux
 media-video/mplayer-resume 2.0: MPlayer wrapper script to save/resume playback position
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
-media-video/mpv 0.18.0-r1 0.22.0-r1 0.23.0-r1 9999: Media player based on MPlayer and mplayer2
+media-video/mpv 0.18.0-r1 0.22.0-r2 0.24.0 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r2: Mark commercial breaks in VDR recordings
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia-video-codec 7.0.1 7.1.9: Redistributable headers to build cuvid and nvenc
