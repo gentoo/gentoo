@@ -56,20 +56,17 @@ python_prepare_all() {
 	export SCIPY_FCONFIG="config_fc --noopt --noarch"
 
 	# use system joblib
-	rm -r sklearn/externals/joblib/* || die
-	echo "from joblib import *" > sklearn/externals/joblib/__init__.py
-	sed -i -e '/joblib\/test/d' sklearn/externals/setup.py || die
-	sed -i -e 's/..externals.joblib/ joblib/g' \
-		sklearn/cross_validation.py \
-		sklearn/decomposition/tests/test_sparse_pca.py \
-		sklearn/metrics/pairwise.py || die
+	rm -r sklearn/externals/joblib || die
+	sed -i -e '/joblib/d' sklearn/externals/setup.py || die
+	for f in sklearn/{*/,}*.py; do
+		sed -r -e 's/from (sklearn|\.|)\.externals\.joblib/from joblib/' -i $f || die
+	done
 
 	rm sklearn/externals/funcsigs.py || die
 	rm sklearn/externals/odict.py || die
-	sed -e 's:from ..externals.funcsigs import signature:from funcsigs import signature:g' \
-		-i sklearn/utils/fixes.py || die
-	sed -e 's:from sklearn.externals.funcsigs import signature:from funcsigs import signature:g' \
-		-i sklearn/gaussian_process/{tests/test_,}kernels.py || die
+	for f in sklearn/{utils/fixes.py,gaussian_process/{tests/test_,}kernels.py}; do
+		sed -r -e 's/from (sklearn|\.|)\.externals\.funcsigs/from funcsigs/' -i $f || die
+	done
 
 	distutils-r1_python_prepare_all
 }
