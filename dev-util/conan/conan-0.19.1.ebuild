@@ -45,6 +45,6 @@ DEPEND="
 "
 
 python_test() {
-	cd ${BUILD_DIR}/lib
+	cd "${BUILD_DIR}"/lib || die
 	PYTHONPATH=. nosetests -v . || die
 }
