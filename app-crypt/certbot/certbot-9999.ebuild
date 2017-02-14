@@ -25,7 +25,7 @@ IUSE="test"
 CDEPEND=">=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
 RDEPEND="
 	${CDEPEND}
-	=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
+	~app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-0.7[${PYTHON_USEDEP}]
@@ -44,7 +44,6 @@ DEPEND="
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pep8[${PYTHON_USEDEP}]
-		>=dev-python/psutil-2.2.1[${PYTHON_USEDEP}]
 		>=dev-python/pylint-1.4.2[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
 	)"
