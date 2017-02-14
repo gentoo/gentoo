@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-07">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, the worst of
+    which might allow attackers to access sensitive information.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2017-02-14</announced>
+  <revised>2017-02-14: 1</revised>
+  <bug>607318</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2k</unaffected>
+      <vulnerable range="lt">1.0.2k</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker is able to crash applications linked against OpenSSL
+      or could obtain sensitive private-key information via an attack against
+      the Diffie-Hellman (DH) ciphersuite.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2k"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7055">CVE-2016-7055</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3730">CVE-2017-3730</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3731">CVE-2017-3731</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3732">CVE-2017-3732</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-13T01:30:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-14T12:34:58Z">whissi</metadata>
+</glsa>
