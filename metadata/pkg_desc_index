@@ -508,8 +508,8 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.24 1.4.25 1.4.26: CCID free software driver
 app-crypt/ccrypt 1.9 1.10: Encryption and decryption
-app-crypt/certbot 0.10.1 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.10.1 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.10.1 0.11.1 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.10.1 0.11.1 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.10.1 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -2871,7 +2871,7 @@ dev-cpp/pangomm 2.40.1: C++ interface for pango
 dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
-dev-cpp/pstreams 0.7.0 0.8.1 1.0.0: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
+dev-cpp/pstreams 0.7.0 0.8.1 1.0.0 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
 dev-cpp/rudiments 0.46 0.51: C++ class library for daemons, clients and servers
 dev-cpp/sparsehash 1.10 2.0.2 2.0.3: An extremely memory-efficient hash_map implementation
@@ -5043,7 +5043,7 @@ dev-libs/zookeeper-c 3.4.8 3.4.9: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.60-r1 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
-dev-lisp/asdf 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7 3.2.0 3.2.0-r1: ASDF is Another System Definition Facility for Common Lisp
+dev-lisp/asdf 1.89 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7 3.2.0 3.2.0-r1: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
 dev-lisp/cl-ppcre 1.2.10 1.2.11 1.2.12 1.2.13 1.2.14 1.2.15 1.2.16 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
@@ -17330,6 +17330,7 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 9999: C++ runtime system for parallel 
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.2-r4 1.2.15 1.2.19 1.2.22 1.2.23 1.2.24: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
+sys-cluster/kubectl 1.5.2: CLI to run commands against Kubernetes clusters
 sys-cluster/legion 16.08.0-r1 16.10.0: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
