@@ -59,7 +59,8 @@ python_prepare_all() {
 	rm -r sklearn/externals/joblib || die
 	sed -i -e '/joblib/d' sklearn/externals/setup.py || die
 	for f in sklearn/{*/,}*.py; do
-		sed -r -e 's/from (sklearn|\.|)\.externals\.joblib/from joblib/' -i $f || die
+		sed -r -e '/^from/s/(sklearn|\.|)\.externals\.joblib/joblib/' \
+			-e 's/from (sklearn|\.|)\.externals import/import/' -i $f || die
 	done
 
 	rm sklearn/externals/funcsigs.py || die
