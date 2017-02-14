@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE="debug nls openssl static-libs"
 
 RDEPEND="openssl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )"

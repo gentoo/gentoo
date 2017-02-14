@@ -36,7 +36,6 @@
 		<flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
 		<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
-		<flag name="qt4">Build the wireshark executable with an experimental Qt UI instead of GTK+.</flag>
 		<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 		<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 		<flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
