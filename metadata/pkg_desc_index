@@ -7158,7 +7158,7 @@ dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and la
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.4 0.5: Backport of Python 3.5's 'collections.abc' module
 dev-python/backports-functools-lru-cache 1.2.1 1.3: Backport of functools.lru_cache from Python 3.3
-dev-python/backports-lzma 0.0.6: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
+dev-python/backports-lzma 0.0.6 0.0.8: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-shutil_which 3.5.1: Backport of shutil.which from Python 3.3
 dev-python/backports-ssl-match-hostname 3.4.0.2 3.5.0.1-r1: Backport of the ssl.match_hostname function
@@ -7168,7 +7168,7 @@ dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/batinfo 0.3: A simple Python lib to retreive battery information
 dev-python/bcolz 0.10.0 0.11.3 0.12.1 1.1.0: Provides columnar and compressed data containers
-dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0 3.1.1: Modern password hashing for software and servers
+dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0 3.1.1 3.1.2: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.5.1 4.5.3: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
@@ -7811,7 +7811,7 @@ dev-python/nose2 0.6.4 0.6.5: nose2 is the next generation of nicer testing for 
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.0 0.1.1: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
-dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
+dev-python/nosexcover 1.0.10 1.0.11: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 4.0.6 4.1.0 4.2.3 4.3.0 4.3.2: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3: Python interface to DBus notifications.
@@ -8377,7 +8377,7 @@ dev-python/rlcompleter2 0.98-r1: Python command line completion
 dev-python/rnc2rng 2.4 2.4.1: RELAX NG Compact to regular syntax conversion library
 dev-python/robotframework 2.9 3.0 3.0.1: Test automation framework for acceptance testing & test-driven development
 dev-python/robotframework-selenium2library 1.6.0 1.7.2 1.7.4 1.8.0: Web testing library for Robot Framework
-dev-python/robotframework-sshlibrary 2.0.2 2.1.1 2.1.2: A test library for Robot Framework that enables SSH and SFTP
+dev-python/robotframework-sshlibrary 2.0.2 2.1.1 2.1.2 2.1.3: A test library for Robot Framework that enables SSH and SFTP
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
 dev-python/root_numpy 3.2.0 3.3.0 3.3.1 4.4.0: Interface between ROOT and numpy
 dev-python/rootpy 0.7.1 0.8.0 0.8.3: Pythonic layer on top of the ROOT framework's PyROOT bindings
