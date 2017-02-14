@@ -13,8 +13,6 @@
     <email>proxy-maint@gentoo.org</email>
   </maintainer>
 <use>
-  <flag name="additions">Install Guest System Tools ISO</flag>
-  <flag name="extensions">Install extension module packages</flag>
   <flag name="headless">Build without any graphic frontend</flag>
   <flag name="lvm">Build VBoxVolInfo that needs devicemapper from <pkg>sys-fs/lvm2</pkg>.</flag>
   <flag name="sdk">Enable building of SDK</flag>
