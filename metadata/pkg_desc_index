@@ -4486,7 +4486,7 @@ dev-lang/nim 0.14.2 0.15.0-r1 0.15.2 0.16.0: compiled, garbage-collected systems
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.10 2016.11 2016.12 2017.01 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
-dev-lang/ocaml 4.02.3 4.04.0: Fast modern type-inferring functional programming language descended from the ML family
+dev-lang/ocaml 4.04.0: Fast modern type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
@@ -5115,7 +5115,7 @@ dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlimages 4.2.2 4.2.3: An image manipulation library for ocaml
-dev-ml/camlp4 4.02.1_p3 4.03_p1 4.04_p1: System for writing extensible parsers for programming languages
+dev-ml/camlp4 4.04_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.17: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
@@ -5139,7 +5139,7 @@ dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values 
 dev-ml/extlib 1.6.1-r1 1.7.1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/fieldslib 113.33.03: Folding over record fields
-dev-ml/findlib 1.5.6 1.7.1: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
@@ -5156,7 +5156,7 @@ dev-ml/jsonm 1.0.0: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
-dev-ml/labltk 8.06.0 8.06.1 8.06.2: OCaml interface to the Tcl/Tk GUI framework
+dev-ml/labltk 8.06.2: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.10.1-r1: A cross-platform library for manipulating the terminal
 dev-ml/llvm-ocaml 4.0.0_rc1 9999: OCaml bindings for LLVM
 dev-ml/lwt 2.4.3 2.7.0: Cooperative light-weight thread library for OCaml
