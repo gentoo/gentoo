@@ -20,6 +20,7 @@ IUSE="doc examples gtk +ocamlopt"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.8.6-installfindlib.patch"
+	epatch "${FILESDIR}/${P}-test.patch"
 }
 
 src_compile() {
