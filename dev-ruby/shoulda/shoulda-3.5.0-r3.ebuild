@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/thoughtbot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~hppa"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc"
 IUSE=""
 
 # This now more or less a meta-gem and it only contains features for
