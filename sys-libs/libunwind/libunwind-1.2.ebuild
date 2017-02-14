@@ -45,6 +45,8 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.2-coredump-regs.patch #586092
+
 	# These tests like to fail.  bleh.
 	echo 'int main(){return 0;}' > tests/Gtest-dyn1.c
 	echo 'int main(){return 0;}' > tests/Ltest-dyn1.c
