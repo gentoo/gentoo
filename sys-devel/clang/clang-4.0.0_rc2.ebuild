@@ -114,7 +114,7 @@ src_unpack() {
 
 	default
 
-	mv clang-tools-extra-* "${S}"/tools/clang-tools-extra || die
+	mv clang-tools-extra-* "${S}"/tools/extra || die
 	if use test; then
 		mv llvm-* "${WORKDIR}"/llvm || die
 	fi
@@ -126,6 +126,9 @@ src_prepare() {
 
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
+
+	# kill extraneous deps
+	sed -i -e '/FileCheck/d' tools/extra/test/CMakeLists.txt || die
 
 	# User patches
 	eapply_user
