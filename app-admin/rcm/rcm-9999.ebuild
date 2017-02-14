@@ -13,7 +13,6 @@ EGIT_REPO_URI="https://github.com/thoughtbot/rcm.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 DEPEND="dev-ruby/mustache"
 RDEPEND="${DEPEND}"

@@ -11,7 +11,3 @@ SRC_URI="https://thoughtbot.github.io/rcm/dist/rcm-1.3.1.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
