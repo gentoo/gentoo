@@ -1320,7 +1320,7 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
-app-emulation/kompose 0.1.2_p20161207: Tool to move from docker-compose to Kubernetes
+app-emulation/kompose 0.2.0_p20170214: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.4.2: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.28.5-r2: Tools for accessing, inspect and modifying virtual machine (VM) disk images
@@ -18616,17 +18616,17 @@ x11-misc/apwal 0.4.5-r1 0.4.5-r2: A simple application launcher and combined edi
 x11-misc/arandr 0.1.7.1 0.1.8 0.1.9: Another XRandR GUI
 x11-misc/autocutsel 0.9.0 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
 x11-misc/basqet 0.2.0: Keep your notes, pictures, ideas, and information in Baskets
-x11-misc/bbacpi 0.1.5-r1 0.1.5-r2: ACPI monitor for X11
+x11-misc/bbacpi 0.1.5-r1 0.1.5-r3: ACPI monitor for X11
 x11-misc/bbappconf 0.0.2: utility that allows you to specify window properties in blackbox
-x11-misc/bbcd 0.3.1-r1: Basic CD Player for blackbox wm
-x11-misc/bbdate 0.2.4-r1: blackbox date display
-x11-misc/bbkeys 0.9.0-r1 0.9.1: Use keyboard shortcuts in the blackbox wm
+x11-misc/bbcd 0.3.1-r1 0.3.1-r2: Basic CD Player for blackbox wm
+x11-misc/bbdate 0.2.4-r1 0.2.4-r2: blackbox date display
+x11-misc/bbkeys 0.9.0-r1 0.9.1-r1: Use keyboard shortcuts in the blackbox wm
 x11-misc/bblaunch 0.0.3: An application launcher for Blackbox type window managers
-x11-misc/bbmail 0.9.3: blackbox mail notification
-x11-misc/bbpager 0.4.7: An understated pager for Blackbox
+x11-misc/bbmail 0.9.3 0.9.3-r1: blackbox mail notification
+x11-misc/bbpager 0.4.7 0.4.7-r1: An understated pager for Blackbox
 x11-misc/bbppp 0.2.5 0.2.5-r1: blackbox ppp frontend/monitor
 x11-misc/bbrun 1.6-r1: blackbox program execution dialog box
-x11-misc/bbtime 0.1.5: blackbox time watcher
+x11-misc/bbtime 0.1.5 0.1.5-r1: blackbox time watcher
 x11-misc/bbweather 0.6.3-r1: blackbox weather monitor
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
@@ -18805,7 +18805,7 @@ x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
 x11-misc/touchcal 0.50 0.80: Touchscreen calibration utility
 x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
-x11-misc/trayer 1.0-r1: Lightweight GTK+ based systray for UNIX desktop
+x11-misc/trayer 1.0-r1 1.0-r2: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.5 1.1.6: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/treeline 1.4.1-r1 1.9.4: TreeLine is a structured information storage program
 x11-misc/unclutter 8-r2 8-r3: Hides mouse pointer while not in use
@@ -18978,7 +18978,7 @@ x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1 1.21.1 1.22.0: Pidgin Plug-in SIPE (Sip
 x11-plugins/pidgin-skypeweb 1.1 1.2 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
-x11-plugins/pidgintex 1.1.1 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
+x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/purple-facebook 20160107 20160118 20160409: Facebook protocol plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple

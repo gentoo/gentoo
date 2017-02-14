@@ -1,4 +1,5 @@
-DEFINED_PHASES=-
+DEFINED_PHASES=prepare
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a backup program for disk array for home media centers
 EAPI=6
 HOMEPAGE=http://snapraid.sourceforge.net/
@@ -7,5 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://github.com/amadvance/snapraid/releases/download/v11.0/snapraid-11.0.tar.gz
-_eclass_exported_funcs=-
-_md5_=fc0fff12b65a94dea0e9a8e7e94ad18f
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=98ebea2496782332a8db0d5cb7065118

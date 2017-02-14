@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Tool to move from docker-compose to Kubernetes
+EAPI=6
+HOMEPAGE=https://github.com/kubernetes-incubator/kompose
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0/0.2.0_p20170214
+SRC_URI=https://github.com/kubernetes-incubator/kompose/archive/d20a42e4472dbf519da01889c4b6b76b1352097f.tar.gz -> kompose-0.2.0_p20170214.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
+_md5_=7aed77b6332f00fec7e053ef77a01afa
