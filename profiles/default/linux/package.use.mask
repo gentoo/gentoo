@@ -2,11 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Brian Dolbec <dolsen@gentoo.org> (13 Feb 2017)
-# Mask g-sorcery use flag, not as fully developed
-# not currently being developed
-app-portage/layman g-sorcery
-
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -cgroups
