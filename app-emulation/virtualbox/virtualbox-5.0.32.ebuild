@@ -68,6 +68,7 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
+		app-text/docbook-sgml-dtd:4.4
 	)
 	!headless? ( x11-libs/libXinerama )
 	java? ( >=virtual/jre-1.6:= )
