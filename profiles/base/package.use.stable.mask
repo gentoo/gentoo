@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Brian Dolbec <dolsen@gentoo.org> (14 Feb 2017)
+# This is stable masked as g-sorcery is being not actively developed.
+app-portage/layman g-sorcery
+
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2017)
 # No stable multilib supporting sys-libs/libunwind yet,
 # temporarily masked to let stabilization #601354 proceed.
