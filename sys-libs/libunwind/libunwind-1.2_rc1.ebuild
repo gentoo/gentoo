@@ -24,8 +24,6 @@ RDEPEND="lzma? ( app-arch/xz-utils )"
 DEPEND="${RDEPEND}
 	libatomic? ( dev-libs/libatomic_ops )"
 
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
-
 QA_DT_NEEDED_x86_fbsd="usr/lib/libunwind.so.7.0.0"
 
 S="${WORKDIR}/${MY_P}"
@@ -57,7 +55,6 @@ src_prepare() {
 	sed -i -e '/^SUBDIRS/s:tests::' Makefile.in || die
 
 	elibtoolize
-	multilib_copy_sources
 }
 
 multilib_src_configure() {
@@ -67,6 +64,7 @@ multilib_src_configure() {
 	# conservative-checks: validate memory addresses before use; as of 1.0.1,
 	# only x86_64 supports this, yet may be useful for debugging, couple it with
 	# debug useflag.
+	ECONF_SOURCE="${S}" \
 	ac_cv_header_atomic_ops_h=$(usex libatomic) \
 	econf \
 		--enable-cxx-exceptions \
