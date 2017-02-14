@@ -52,6 +52,7 @@ CONFIG_CHECK="~TUN"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-external-cmocka.patch"
+	"${FILESDIR}/${PN}-2.4.0-fix-libressl.patch"
 )
 
 pkg_setup()  {
