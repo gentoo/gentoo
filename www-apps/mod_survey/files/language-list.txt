@@ -1,5 +1,0 @@
-en
-de
-fr
-it
-sw
