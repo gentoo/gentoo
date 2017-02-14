@@ -7,7 +7,6 @@ mimeTeX or mathTeX to render LaTeX expressions in messages and chat. It is
 intended for math but mathTeX is fully compatible with LaTeX and any package can
 be used and mimeTeX also supports many other features.</longdescription>
 	<upstream>
-		<remote-id type="google-code">pidgintex</remote-id>
 		<remote-id type="github">Micket/pidgintex</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="a backup program for disk array for home media centers"
 HOMEPAGE="http://snapraid.sourceforge.net/"
 SRC_URI="https://github.com/amadvance/${PN}/releases/download/v${PV}/${P}.tar.gz"
@@ -16,3 +18,8 @@ IUSE="test"
 DOCS=( "AUTHORS" "HISTORY" "README" "TODO" "snapraid.conf.example" )
 
 PATCHES=( "${FILESDIR}/${P}-minor.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}

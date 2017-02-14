@@ -1,6 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 DESCRIPTION="Use keyboard shortcuts in the blackbox wm"
 HOMEPAGE="http://bbkeys.sourceforge.net"
@@ -16,10 +18,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	rm -rf "${D}"/usr/share/doc
-	dodoc AUTHORS BUGS ChangeLog NEWS README || die
+	emake DESTDIR="${D}" install
+	rm -rf "${ED%/}"/usr/share/doc || die
+	einstalldocs
 
-	echo PRELINK_PATH_MASK=/usr/bin/bbkeys > "${T}"/99bbkeys
-	doenvd "${T}"/99bbkeys || die
+	echo PRELINK_PATH_MASK=\""${EPREFIX}"/usr/bin/bbkeys\" > "${T}"/99bbkeys || die
+	doenvd "${T}"/99bbkeys
 }
