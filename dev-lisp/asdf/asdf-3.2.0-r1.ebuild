@@ -29,7 +29,7 @@ PDEPEND="~dev-lisp/uiop-${PV}"
 
 install_docs() {
 	# Not installing info file at the moment, see bug #605752
-	(cd doc ; dodoc *.{html,css,ico,png} "${PN}.pdf" ; dodoc -r asdf ; doinfo "${PN}.info")
+	(cd doc ; dodoc *.{html,css,ico,png} "${PN}.pdf" ; dodoc -r asdf)
 }
 
 src_compile() {
