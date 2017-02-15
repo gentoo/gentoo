@@ -12,7 +12,7 @@ HOMEPAGE="https://www.openmittsu.de/"
 # git-archive-all.sh snapshot of https://github.com/blizzard4591/${MY_PN}.git
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${MY_PN}-${PV}.tar.xz"
 
-LICENSE="GPL-2+ BitstreamVera OFL-1.1 Apache-2.0 CC0-1.0 MIT"
+LICENSE="GPL-2+ BitstreamVera OFL-1.1 Apache-2.0 CC0-1.0 MIT BSD-2 Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
