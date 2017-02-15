@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-libs/readline:0= dev-libs/libpcre[jit?] jemalloc? ( dev-libs/jemalloc ) sys-libs/ncurses:0= dev-python/docutils virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Varnish is a state-of-the-art, high-performance HTTP accelerator
+EAPI=5
+HOMEPAGE=http://www.varnish-cache.org/
+IUSE=jemalloc jit static-libs python_targets_pypy python_targets_python2_7 python_targets_python3_4
+KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=BSD-2 GPL-2
+RDEPEND=python_targets_pypy? ( virtual/pypy:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-)] sys-libs/readline:0= dev-libs/libpcre[jit?] jemalloc? ( dev-libs/jemalloc ) sys-libs/ncurses:0= sys-devel/gcc
+REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 python_targets_python3_4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://repo.varnish-cache.org/source/varnish-4.1.5.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=d4a457752a17c394199a77a306d6f867
