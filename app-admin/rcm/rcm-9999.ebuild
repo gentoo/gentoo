@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 
 DEPEND="dev-ruby/mustache"
-RDEPEND="${DEPEND}"
+RDEPEND=""
 
 src_prepare () {
 	./autogen.sh || die
