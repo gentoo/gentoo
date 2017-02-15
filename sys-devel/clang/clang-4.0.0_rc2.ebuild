@@ -9,7 +9,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic multilib-minimal \
+inherit check-reqs cmake-utils flag-o-matic llvm multilib-minimal \
 	python-single-r1 toolchain-funcs pax-utils versionator
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -25,16 +25,15 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
-SLOT="0/$(get_major_version)"
+SLOT="$(get_major_version)"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="debug default-compiler-rt default-libcxx +doc multitarget python
+IUSE="debug default-compiler-rt default-libcxx +doc multitarget
 	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
-	~sys-devel/llvm-${PV}:=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
+	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
 	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
-	!<sys-devel/llvm-${PV}
 	${PYTHON_DEPS}"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
@@ -43,16 +42,20 @@ DEPEND="${RDEPEND}
 	xml? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
+RDEPEND="${RDEPEND}
+	!<sys-devel/llvm-4.0.0_rc:0
+	!sys-devel/clang:0"
 PDEPEND="
 	~sys-devel/clang-runtime-${PV}
-	default-compiler-rt? ( sys-libs/compiler-rt )
+	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
 	default-libcxx? ( sys-libs/libcxx )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
 
-S=${WORKDIR}/cfe-${PV/_/}.src
+# We need extra level of indirection for CLANG_RESOURCE_DIR
+S=${WORKDIR}/x/y/cfe-${PV/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -100,26 +103,32 @@ pkg_pretend() {
 pkg_setup() {
 	check_space
 
+	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
 
 src_unpack() {
+	# create extra parent dirs for CLANG_RESOURCE_DIR
+	mkdir -p x/y || die
+	cd x/y || die
+
 	default
 
-	mv clang-tools-extra-* "${S}"/tools/clang-tools-extra || die
+	mv clang-tools-extra-* "${S}"/tools/extra || die
 	if use test; then
-		mv llvm-* llvm || die
+		mv llvm-* "${WORKDIR}"/llvm || die
 	fi
 }
 
 src_prepare() {
-	python_setup
-
 	# fix finding compiler-rt libs
 	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
+
+	# kill extraneous deps
+	sed -i -e '/FileCheck/d' tools/extra/test/CMakeLists.txt || die
 
 	# User patches
 	eapply_user
@@ -128,11 +137,13 @@ src_prepare() {
 multilib_src_configure() {
 	local llvm_version=$(llvm-config --version) || die
 	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
+
 	local mycmakeargs=(
 		# ensure that the correct llvm-config is used
-		-DLLVM_CONFIG="${EPREFIX}/usr/bin/${CHOST}-llvm-config"
+		-DLLVM_CONFIG="$(type -P "${CHOST}-llvm-config")"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		# relative to bindir
-		-DCLANG_RESOURCE_DIR="../lib/clang/${clang_version}"
+		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
@@ -191,8 +202,9 @@ multilib_src_compile() {
 	cmake-utils_src_compile
 
 	# provide a symlink for tests
-	if [[ $(get_libdir) != lib ]]; then
-		ln -s "../$(get_libdir)/clang" lib/clang || die
+	if [[ ! -L ${WORKDIR}/lib/clang ]]; then
+		mkdir -p "${WORKDIR}"/lib || die
+		ln -s "${BUILD_DIR}/$(get_libdir)/clang" "${WORKDIR}"/lib/clang || die
 	fi
 }
 
@@ -210,13 +222,15 @@ src_install() {
 	multilib-minimal_src_install
 
 	# Move runtime headers to /usr/lib/clang, where they belong
-	dodir /usr/lib
-	mv "${ED}usr/include/clangrt" "${ED}usr/lib/clang" || die
+	mv "${ED%/}"/usr/include/clangrt "${ED%/}"/usr/lib/clang || die
+	# move (remaining) wrapped headers back
+	mv "${ED%/}"/usr/include "${ED%/}"/usr/lib/llvm/${SLOT}/include || die
 
 	# Apply CHOST and version suffix to clang tools
 	# note: we use two version components here (vs 3 in runtime path)
 	local llvm_version=$(llvm-config --version) || die
 	local clang_version=$(get_version_component_range 1-2 "${llvm_version}")
+	local clang_full_version=$(get_version_component_range 1-3 "${llvm_version}")
 	local clang_tools=( clang clang++ clang-cl clang-cpp )
 	local abi i
 
@@ -230,9 +244,9 @@ src_install() {
 	# - clang, clang++, clang-cl, clang-cpp -> clang*-X.Y
 	# also in CHOST variant
 	for i in "${clang_tools[@]:1}"; do
-		rm "${ED%/}/usr/bin/${i}" || die
-		dosym "clang-${clang_version}" "/usr/bin/${i}-${clang_version}"
-		dosym "${i}-${clang_version}" "/usr/bin/${i}"
+		rm "${ED%/}/usr/lib/llvm/${SLOT}/bin/${i}" || die
+		dosym "clang-${clang_version}" "/usr/lib/llvm/${SLOT}/bin/${i}-${clang_version}"
+		dosym "${i}-${clang_version}" "/usr/lib/llvm/${SLOT}/bin/${i}"
 	done
 
 	# now create target symlinks for all supported ABIs
@@ -240,40 +254,31 @@ src_install() {
 		local abi_chost=$(get_abi_CHOST "${abi}")
 		for i in "${clang_tools[@]}"; do
 			dosym "${i}-${clang_version}" \
-				"/usr/bin/${abi_chost}-${i}-${clang_version}"
+				"/usr/lib/llvm/${SLOT}/bin/${abi_chost}-${i}-${clang_version}"
 			dosym "${abi_chost}-${i}-${clang_version}" \
-				"/usr/bin/${abi_chost}-${i}"
+				"/usr/lib/llvm/${SLOT}/bin/${abi_chost}-${i}"
 		done
 	done
 
 	# Remove unnecessary headers on FreeBSD, bug #417171
 	if use kernel_FreeBSD; then
-		rm "${ED}"usr/lib/clang/${llvm_version}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
+		rm "${ED}"usr/lib/clang/${clang_full_version}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
 	fi
 }
 
 multilib_src_install() {
 	cmake-utils_src_install
 
-	# move headers to include/ to get them checked for ABI mismatch
-	# (then to the correct directory in src_install())
-	insinto /usr/include/clangrt
-	doins -r "${ED}usr/$(get_libdir)/clang"/.
-	rm -r "${ED}usr/$(get_libdir)/clang" || die
+	# move headers to /usr/include for wrapping & ABI mismatch checks
+	# (also drop the version suffix from runtime headers)
+	rm -rf "${ED%/}"/usr/include || die
+	mv "${ED%/}"/usr/lib/llvm/${SLOT}/include "${ED%/}"/usr/include || die
+	mv "${ED%/}"/usr/lib/llvm/${SLOT}/$(get_libdir)/clang "${ED%/}"/usr/include/clangrt || die
 }
 
 multilib_src_install_all() {
-	if use python ; then
-		pushd bindings/python/clang >/dev/null || die
-
-		python_moduleinto clang
-		python_domodule *.py
-
-		popd >/dev/null || die
-	fi
-
 	python_fix_shebang "${ED}"
 	if use static-analyzer; then
-		python_optimize "${ED}"usr/share/scan-view
+		python_optimize "${ED}"usr/lib/llvm/${SLOT}/share/scan-view
 	fi
 }
