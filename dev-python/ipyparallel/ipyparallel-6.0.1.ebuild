@@ -53,14 +53,10 @@ python_prepare_all() {
 python_compile_all() {
 	if use doc; then
 		emake -C docs html
-		HTML_DOCS=( "${BUILD_DIR}"/docs/build/html/. )
+		HTML_DOCS=( docs/build/html/. )
 	fi
 }
 
 python_test() {
 	iptest --coverage xml ipyparallel.tests -- -vsx || die
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
 }
