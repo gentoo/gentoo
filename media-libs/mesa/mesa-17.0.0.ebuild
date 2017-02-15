@@ -201,7 +201,9 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
-	LLVM_MAX_SLOT=4 llvm_pkg_setup
+	if use llvm || use opencl; then
+		LLVM_MAX_SLOT=4 llvm_pkg_setup
+	fi
 	python-any-r1_pkg_setup
 }
 
