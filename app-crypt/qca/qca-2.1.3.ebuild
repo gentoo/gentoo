@@ -56,8 +56,6 @@ DOCS=( README TODO )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-disable-pgp-test.patch"
-	"${FILESDIR}/${P}-libressl-230-sslv3.patch"
-	"${FILESDIR}/${P}-libressl-230-sha0.patch"
 )
 
 qca_plugin_use() {
