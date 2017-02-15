@@ -1498,6 +1498,7 @@ dev-haskell/gtk:gio - Depend on GIO package, thereby enabling certain features.
 dev-haskell/gtk2hs-buildtools:closuresignals - Use the the GClosure-based signals implementation.
 dev-haskell/gtk3:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY.
 dev-haskell/gtk3:gio - Depend on GIO package, thereby enabling certain features.
+dev-haskell/hackage-security:use-network-uri - Get Network.URI from the network-uri package.
 dev-haskell/happstack-server:network-uri - Get Network.URI from the network-uri package
 dev-haskell/happstack-server:template_haskell - Description: Template Haskell is available on this system
 dev-haskell/hashed-storage:diff - Provide the Storage.Hashed.Diff module.
