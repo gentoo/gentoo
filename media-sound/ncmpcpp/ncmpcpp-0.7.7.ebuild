@@ -5,8 +5,8 @@
 EAPI=6
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
-HOMEPAGE="http://ncmpcpp.rybczak.net/"
-SRC_URI="http://ncmpcpp.rybczak.net/stable/${P}.tar.bz2"
+HOMEPAGE="https://rybczak.net/ncmpcpp/"
+SRC_URI="${HOMEPAGE}stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
