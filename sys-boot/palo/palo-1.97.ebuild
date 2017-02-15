@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,11 +11,10 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* hppa"
+KEYWORDS="-* ~hppa"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.95-toolchain.patch
-	"${FILESDIR}"/${PN}-1.95-iplboot-gcc-4.9.patch
+	"${FILESDIR}"/${PN}-1.96-toolchain.patch
 )
 
 src_compile() {
@@ -30,7 +29,7 @@ src_install() {
 	dosbin palo/palo
 
 	doman palo.8
-	dodoc Changes TODO debian/changelog README.html
+	dodoc TODO debian/changelog README.html
 
 	insinto /etc
 	doins "${FILESDIR}"/palo.conf
