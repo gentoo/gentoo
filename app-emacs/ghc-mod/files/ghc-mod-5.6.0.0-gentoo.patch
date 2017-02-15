@@ -1,0 +1,5 @@
+--- a/ghc-mod.cabal.org	2016-07-29 09:18:31.000000000 -0400
++++ b/ghc-mod.cabal	2016-08-08 23:16:00.171679823 -0400
+@@ -29,2 +29,0 @@
+-Data-Files:             elisp/Makefile
+-                        elisp/*.el
