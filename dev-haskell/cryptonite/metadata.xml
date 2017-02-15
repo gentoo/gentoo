@@ -34,5 +34,6 @@
 		<flag name="support_pclmuldq">Allow compilation with pclmuldq on architecture that supports it</flag>
 		<flag name="integer-gmp">Whether or not to use GMP for some functions</flag>
 		<flag name="support_deepseq">add deepseq instances for cryptographic types</flag>
+		<flag name="support_blake2_sse">Use SSE optimized version of BLAKE2</flag>
 	</use>
 </pkgmetadata>
