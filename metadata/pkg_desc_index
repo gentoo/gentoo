@@ -18249,7 +18249,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 24.0.0.194 24.0.0.221: Adobe Flash Player
+www-plugins/adobe-flash 24.0.0.221: Adobe Flash Player
 www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.37_beta 58.0.3004.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
@@ -18387,7 +18387,7 @@ x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.16.4-r5 1.17.4 1.18.4 1.19.1 9999: X.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.134 304.134-r1 340.101 340.101-r1 346.96-r6 346.96-r7 352.79-r4 352.79-r5 355.11-r4 355.11-r5 358.16-r5 358.16-r6 361.42 361.42-r1 361.45.18 361.45.18-r1 364.19-r1 364.19-r2 367.57-r1 367.57-r2 370.28-r1 370.28-r2 375.26 375.26-r3 378.09: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.134 304.134-r1 304.135 340.101 340.101-r1 340.102 346.96-r6 346.96-r7 352.79-r4 352.79-r5 355.11-r4 355.11-r5 358.16-r5 358.16-r6 361.42 361.42-r1 361.45.18 361.45.18-r1 364.19-r1 364.19-r2 367.57-r1 367.57-r2 370.28-r1 370.28-r2 375.26 375.26-r3 375.39 378.13: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
