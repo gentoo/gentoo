@@ -3274,7 +3274,7 @@ dev-haskell/bytestring-show 0.3.5.6 0.3.5.6-r1: Efficient conversion of values i
 dev-haskell/bzlib 0.5.0.5: Compression and decompression in the bzip2 format
 dev-haskell/c2hs 0.16.4 0.16.5 0.17.2 0.20.1 0.25.2 0.27.1: C->Haskell FFI tool that gives some cross-language type safety
 dev-haskell/cabal 1.18.1.2 1.18.1.3 1.18.1.5 1.20.0.2 1.22.8.0 1.24.2.0: A framework for packaging Haskell software
-dev-haskell/cabal-helper 0.6.1.0 0.6.3.1: Simple interface to some of Cabal's configuration state used by ghc-mod
+dev-haskell/cabal-helper 0.6.1.0 0.6.3.1 0.7.3.0: Simple interface to some of Cabal's configuration state used by ghc-mod
 dev-haskell/cabal-install 1.18.1.0 1.20.0.3-r2 1.22.7.0 1.24.0.2: The command-line interface for Cabal and Hackage
 dev-haskell/cairo 0.12.5.3 0.13.1.1: Binding to the Cairo library
 dev-haskell/case-insensitive 1.0.0.2-r1 1.1.0.3 1.2.0.5: Case insensitive string comparison
@@ -3427,9 +3427,9 @@ dev-haskell/gtk 0.12.5.7.2 0.13.9: Binding to the Gtk+ graphical user interface 
 dev-haskell/gtk2hs-buildtools 0.12.5.1-r1 0.13.0.4-r3: Tools to build the Gtk2Hs suite of User Interface libraries
 dev-haskell/gtk3 0.13.7: Binding to the Gtk+ graphical user interface library
 dev-haskell/hackage-security 0.5.2.2: Hackage security library
-dev-haskell/haddock 2.14.3.0.7.8.3 2.16.1: A documentation-generation tool for Haskell libraries
-dev-haskell/haddock-api 2.16.1: A documentation-generation tool for Haskell libraries
-dev-haskell/haddock-library 1.1.1 1.2.1: Library exposing some functionality of Haddock
+dev-haskell/haddock 2.14.3.0.7.8.3 2.16.1 2.17.2: A documentation-generation tool for Haskell libraries
+dev-haskell/haddock-api 2.16.1 2.17.3: A documentation-generation tool for Haskell libraries
+dev-haskell/haddock-library 1.1.1 1.2.1 1.4.2: Library exposing some functionality of Haddock
 dev-haskell/hamlet 1.1.9.2 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/happstack-server 7.1.7.1 7.3.9 7.4.5 7.4.6.1: Web related tools and services
 dev-haskell/happy 1.19.4 1.19.5: Happy is a parser generator for Haskell
@@ -10277,7 +10277,7 @@ dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and prog
 dev-util/squashdelta 0.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/staruml-bin 2.8.0: A sophisticated software modeler
-dev-util/strace 4.9 4.13 4.14 4.15 9999: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.13 4.15 4.16 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.7_p1 1.0.8: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
@@ -10348,7 +10348,7 @@ dev-vcs/cvsq 0.4.4: A tool that enables developers to work comfortably offline w
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
-dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4: a distributed, interactive, smart revision control system
+dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1 0.7-r2: GTK+ Frontend for GIT
