@@ -1,0 +1,15 @@
+diff --git a/Distribution/Client/IndexUtils.hs b/Distribution/Client/IndexUtils.hs
+index 95545fc..a9c8417 100644
+--- a/Distribution/Client/IndexUtils.hs
++++ b/Distribution/Client/IndexUtils.hs
+@@ -345,2 +345,6 @@ extractPrefs :: Tar.Entry -> Maybe [Dependency]
+ extractPrefs entry = case Tar.entryContent entry of
++{-
++ -- get rid of hackage's preferred-versions
++ -- I'd like to have bleeding-edge packages in system and I don't fear of
++ -- broken packages with improper depends
+   Tar.NormalFile content _
+@@ -351,2 +355,3 @@ extractPrefs entry = case Tar.entryContent entry of
+       prefs     = parsePreferredVersions content
++-}
+   _ -> Nothing
