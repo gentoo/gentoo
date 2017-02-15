@@ -23,7 +23,7 @@ RDEPEND="
 	!app-crypt/qca-logger
 	!app-crypt/qca-ossl
 	!app-crypt/qca-pkcs11
-	botan? ( dev-libs/botan )
+	botan? ( dev-libs/botan:0 )
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
 	nss? ( dev-libs/nss )
