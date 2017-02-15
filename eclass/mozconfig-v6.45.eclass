@@ -70,7 +70,7 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v4
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
 # use-flags common among all mozilla ebuilds
-IUSE="${IUSE} dbus debug ffmpeg +gstreamer gstreamer-0 +jemalloc3 neon pulseaudio selinux startup-notification system-cairo
+IUSE="${IUSE} dbus debug ffmpeg +gstreamer +jemalloc3 neon pulseaudio selinux startup-notification system-cairo
 	system-harfbuzz system-icu system-jpeg system-libevent system-sqlite system-libvpx"
 
 # some notes on deps:
@@ -105,10 +105,6 @@ RDEPEND=">=app-text/hunspell-1.2:=
 		>=media-libs/gst-plugins-base-1.4.5:1.0
 		>=media-libs/gst-plugins-good-1.4.5:1.0
 		>=media-plugins/gst-plugins-libav-1.4.5:1.0
-	)
-	gstreamer-0? (
-		>=media-libs/gstreamer-0.10.25:0.10
-		media-plugins/gst-plugins-meta:0.10[ffmpeg]
 	)
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -190,10 +186,8 @@ DEPEND="app-arch/zip
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mozilla )"
 
-# only one of gstreamer and gstreamer-0 can be enabled at a time, so set REQUIRED_USE to signify this.
-# also force system-icu if system-harfbuzz is set to avoid any potential ABI issues
+# force system-icu if system-harfbuzz is set to avoid any potential ABI issues
 REQUIRED_USE="
-	?? ( gstreamer gstreamer-0 )
 	system-harfbuzz? ( system-icu )"
 
 # only one of gtk3 or qt5 should be permitted to be selected, since only one will be used.
@@ -340,9 +334,6 @@ mozconfig_config() {
 	if use gstreamer ; then
 		use ffmpeg && einfo "${PN} will not use ffmpeg unless gstreamer:1.0 is not available at runtime"
 		mozconfig_annotate '+gstreamer' --enable-gstreamer=1.0
-	elif use gstreamer-0 ; then
-		use ffmpeg && einfo "${PN} will not use ffmpeg unless gstreamer:0.10 is not available at runtime"
-		mozconfig_annotate '+gstreamer-0' --enable-gstreamer=0.10
 	else
 		mozconfig_annotate '' --disable-gstreamer
 	fi
