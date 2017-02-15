@@ -8,11 +8,11 @@ inherit cmake-utils eutils
 
 MY_PN="openMittsu"
 DESCRIPTION="An open source chat client for Threema-style end-to-end encrypted chat networks"
-HOMEPAGE="https://github.com/blizzard4591/openMittsu"
+HOMEPAGE="https://www.openmittsu.de/"
 # git-archive-all.sh snapshot of https://github.com/blizzard4591/${MY_PN}.git
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${MY_PN}-${PV}.tar.xz"
 
-LICENSE="GPL-2+ BitstreamVera OFL-1.1 Apache-2.0 CC0-1.0 MIT"
+LICENSE="GPL-2+ BitstreamVera OFL-1.1 Apache-2.0 CC0-1.0 MIT BSD-2 Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -38,6 +38,7 @@ src_prepare() {
 	sed -i "/git_describe_checkout/\
 		s/.*/set(OPENMITTSU_GIT_VERSION_STRING \"${PV/_p/-}-00000000\")/" \
 		CMakeLists.txt || die
+	eapply "${FILESDIR}"/${P}-fmt.patch
 	cmake-utils_src_prepare
 }
 
