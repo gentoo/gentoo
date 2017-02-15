@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,6 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="audit +gtk +introspection kde qt4 qt5 +gnome"
-REQUIRED_USE="|| ( gtk kde )"
 
 COMMON_DEPEND="audit? ( sys-process/audit )
 	>=dev-libs/glib-2.32.3:2
@@ -57,7 +56,7 @@ src_prepare() {
 
 	einfo "Fixing the session-wrapper variable in lightdm.conf"
 	sed -i -e \
-		"/session-wrapper/s@^.*@session-wrapper=/etc/${PN}/Xsession@" \
+		"/^#session-wrapper/s@^.*@session-wrapper=/etc/${PN}/Xsession@" \
 		data/lightdm.conf || die "Failed to fix lightdm.conf"
 
 	# use correct version of qmake. bug #566950
@@ -101,8 +100,7 @@ src_configure() {
 		$(use_enable qt5 liblightdm-qt5) \
 		--with-user-session=${_session} \
 		--with-greeter-session=${_greeter} \
-		--with-greeter-user=${_user} \
-		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF}/html
+		--with-greeter-user=${_user}
 }
 
 src_install() {
