@@ -7,4 +7,5 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~mgorny/dist/unsandbox.c
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_md5_=319b697c713eb2b86ae69e72f8204e56
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=1eca41528e070faac3bb42139d6d541a
