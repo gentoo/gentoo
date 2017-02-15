@@ -10176,7 +10176,7 @@ dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 1.2.2 9999: A collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.16.2 3.16.3 3.16.4: A graphical diff and merge tool
+dev-util/meld 3.16.4: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.36.0 0.37.1 0.38.0 0.38.1 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
@@ -11344,13 +11344,13 @@ games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.26.0 0.26.0-r1: Simple low-level configuration system
 gnome-base/dconf-editor 3.20.3 3.22.1: Graphical tool for editing the dconf configuration database
-gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
+gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.20.1 3.22.1-r1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.20.0 3.22.0: Meta package for GNOME 3, merge this package to install
-gnome-base/gnome-common 3.14.0-r1 3.18.0 3.18.0-r1: Common files for development of Gnome packages
-gnome-base/gnome-control-center 3.20.1-r1 3.20.2-r1 3.22.1-r1: GNOME's main interface to configure various aspects of the desktop
+gnome-base/gnome-common 3.18.0 3.18.0-r1: Common files for development of Gnome packages
+gnome-base/gnome-control-center 3.20.2-r1 3.22.1-r1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.20.0 3.22.0: Sub-meta package for the core applications integrated with GNOME 3
-gnome-base/gnome-core-libs 3.20.0 3.20.0-r1 3.22.0: Sub-meta package for the core libraries of GNOME 3
+gnome-base/gnome-core-libs 3.20.0-r1 3.22.0: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.20.2 3.22.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.20.0 3.22.0: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.20.0: Password and keyring managing daemon
@@ -11358,7 +11358,7 @@ gnome-base/gnome-light 3.20.0 3.22.0: Meta package for GNOME-Light, merge this p
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-session 3.20.2 3.22.2: Gnome session manager
-gnome-base/gnome-settings-daemon 3.20.1 3.20.2 3.22.1: Gnome Settings Daemon
+gnome-base/gnome-settings-daemon 3.20.2 3.22.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.20.4 3.22.2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.20.0 3.22.0: Collection of GSettings schemas for GNOME desktop
@@ -11375,7 +11375,7 @@ gnome-base/libgnomeprintui 2.18.6-r1 2.18.6-r2: User interface libraries for gno
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.34.1 2.34.2: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.16: Scalable Vector Graphics (SVG) rendering library
-gnome-base/nautilus 3.20.3 3.20.4 3.22.1 3.22.2: A file manager for the GNOME desktop
+gnome-base/nautilus 3.20.4 3.22.2: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
@@ -11392,7 +11392,7 @@ gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.2.0: Translation data for Cinnam
 gnome-extra/cjs 2.8.0 3.0.1 3.2.0: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.20.5 3.20.6 3.22.3 3.22.4: Evolution groupware backend
+gnome-extra/evolution-data-server 3.20.6 3.22.4: Evolution groupware backend
 gnome-extra/evolution-ews 3.20.5 3.22.1 3.22.2 3.22.3 3.22.4: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
@@ -12531,7 +12531,7 @@ media-gfx/graphite2 1.3.5 1.3.8 1.3.9: Library providing rendering capabilities 
 media-gfx/graphviz 2.26.3-r4 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r1: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gscan2pdf 1.7.1: Scan documents, perform OCR, produce PDFs and DjVus
+media-gfx/gscan2pdf 1.7.1 1.7.2: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.4.3 3.4.4.1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
