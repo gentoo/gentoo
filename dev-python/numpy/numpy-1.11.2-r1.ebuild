@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.1-no-hardcode-blas.patch
-
+	"${FILESDIR}"/${PN}-1.11.2-blas_rec_inc_dir.patch
 	# This has been fixed upstream but no new release yet
 	# https://github.com/numpy/numpy/commit/5d0ce36e5be134bb5ead03cab1edeaa60fa355aa
 	"${FILESDIR}"/${P}-import-module-fix.patch
