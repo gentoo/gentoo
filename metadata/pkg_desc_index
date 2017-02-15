@@ -5515,7 +5515,7 @@ dev-perl/Crypt-IDEA 1.100.0: Parse and save PGP packet streams
 dev-perl/Crypt-OpenPGP 1.70.0 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2 0.60.0 0.70.0: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.150.0-r1 0.180.0 0.190.0: Digital Signature Algorithm using OpenSSL
-dev-perl/Crypt-OpenSSL-RSA 0.280.0-r2: Crypt::OpenSSL::RSA module for perl
+dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3: Crypt::OpenSSL::RSA module for perl
 dev-perl/Crypt-OpenSSL-Random 0.40.0-r2 0.110.0: OpenSSL/LibreSSL pseudo-random number generator access
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-Primes 0.500.0-r1: Provable Prime Number Generator suitable for Cryptographic Applications
