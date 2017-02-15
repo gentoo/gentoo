@@ -9,7 +9,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1 toolchain-funcs
+inherit cmake-utils llvm python-single-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="http://llvm.org/"
@@ -43,6 +43,11 @@ S=${WORKDIR}/${P/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+pkg_setup() {
+	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
+	python-single-r1_pkg_setup
+}
+
 src_unpack() {
 	default
 
@@ -52,7 +57,6 @@ src_unpack() {
 }
 
 src_configure() {
-	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLLDB_DISABLE_CURSES=$(usex !ncurses)
 		-DLLDB_DISABLE_LIBEDIT=$(usex !libedit)
@@ -61,10 +65,10 @@ src_configure() {
 
 		-DLLVM_BUILD_TESTS=$(usex test)
 		# compilers for lit tests
-		-DLLDB_TEST_C_COMPILER="${EPREFIX}/usr/bin/clang"
-		-DLLDB_TEST_CXX_COMPILER="${EPREFIX}/usr/bin/clang++"
+		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
+		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
 		# compiler for ole' python tests
-		-DLLDB_TEST_COMPILER="${EPREFIX}/usr/bin/clang"
+		-DLLDB_TEST_COMPILER="$(type -P clang)"
 
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON

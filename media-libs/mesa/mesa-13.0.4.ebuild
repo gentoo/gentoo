@@ -99,9 +99,9 @@ RDEPEND="
 	llvm? (
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
-			vulkan? ( >=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}] )
+			vulkan? ( >=sys-devel/llvm-3.9.0:0=[${MULTILIB_USEDEP}] )
 		)
-		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
+		>=sys-devel/llvm-3.6.0:0=[${MULTILIB_USEDEP}]
 	)
 	nettle? ( dev-libs/nettle:=[${MULTILIB_USEDEP}] )
 	!nettle? (
@@ -151,8 +151,8 @@ DEPEND="${RDEPEND}
 		) )
 	)
 	opencl? (
-				>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]
-				>=sys-devel/clang-3.4.2:=[${MULTILIB_USEDEP}]
+				>=sys-devel/llvm-3.4.2:0=[${MULTILIB_USEDEP}]
+				>=sys-devel/clang-3.4.2:0=[${MULTILIB_USEDEP}]
 				>=sys-devel/gcc-4.6
 	)
 	sys-devel/gettext

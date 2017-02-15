@@ -53,7 +53,10 @@ DOCS="ChangeLog README TODO"
 src_prepare() {
 	epatch "${FILESDIR}"/${P}+libav-9.patch \
 		"${FILESDIR}"/${P}-ffmpeg2.patch
-	has_version '>=media-video/ffmpeg-2.9' && epatch "${FILESDIR}"/${P}-ffmpeg29.patch
+	if has_version '>=media-video/ffmpeg-2.9' ||
+		has_version '>=media-video/libav-12'; then
+		epatch "${FILESDIR}"/${P}-ffmpeg29.patch
+	fi
 
 	for FILE in lqt_ffmpeg.c video.c audio.c ; do
 		sed -i -e "s:CODEC_ID_:AV_&:g" "${S}/plugins/ffmpeg/${FILE}" || die

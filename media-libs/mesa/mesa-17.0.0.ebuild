@@ -13,7 +13,7 @@ fi
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools multilib-minimal python-any-r1 pax-utils ${GIT_ECLASS}
+inherit autotools llvm multilib-minimal python-any-r1 pax-utils ${GIT_ECLASS}
 
 OPENGL_DIR="xorg-x11"
 
@@ -99,9 +99,16 @@ RDEPEND="
 	llvm? (
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
-			vulkan? ( >=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}] )
+			vulkan? (
+				|| (
+					sys-devel/llvm:4
+					>=sys-devel/llvm-3.9.0:0[${MULTILIB_USEDEP}] ) )
 		)
-		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
+		|| (
+			sys-devel/llvm:4
+			>=sys-devel/llvm-3.6.0:0[${MULTILIB_USEDEP}]
+		)
+		<sys-devel/llvm-5:=
 	)
 	opencl? (
 				app-eselect/eselect-opencl
@@ -143,9 +150,15 @@ DEPEND="${RDEPEND}
 		) )
 	)
 	opencl? (
-				>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]
-				>=sys-devel/clang-3.4.2:=[${MULTILIB_USEDEP}]
-				>=sys-devel/gcc-4.6
+		|| (
+			sys-devel/llvm:4
+			>=sys-devel/llvm-3.6.0:0[${MULTILIB_USEDEP}]
+		)
+		|| (
+			sys-devel/clang:4
+			>=sys-devel/clang-3.6.0:0[${MULTILIB_USEDEP}]
+		)
+		>=sys-devel/gcc-4.6
 	)
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -188,6 +201,7 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
+	LLVM_MAX_SLOT=4 llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 

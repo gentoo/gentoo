@@ -60,7 +60,7 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
-		-DLIBOMP_TEST_COMPILER="${EPREFIX}/usr/bin/${CHOST}-clang"
+		-DLIBOMP_TEST_COMPILER="$(type -P "${CHOST}-clang")"
 	)
 	cmake-utils_src_configure
 }
