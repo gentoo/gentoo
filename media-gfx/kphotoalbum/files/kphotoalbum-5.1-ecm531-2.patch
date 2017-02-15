@@ -1,0 +1,39 @@
+commit 8cc8951ba21b1e54a7cd62e50075e09e8e2f9901
+Author: Raymond Wooninck <tittiatcoke@gmail.com>
+Date:   Tue Jan 24 21:06:31 2017 +0100
+
+    Some more fixes for -fno-operator-names
+
+diff --git a/AnnotationDialog/Dialog.cpp b/AnnotationDialog/Dialog.cpp
+index 50e18e70..c44d88dc 100644
+--- a/AnnotationDialog/Dialog.cpp
++++ b/AnnotationDialog/Dialog.cpp
+@@ -1504,7 +1504,7 @@ void AnnotationDialog::Dialog::addTagToCandidateList(QString category, QString t
+ void AnnotationDialog::Dialog::removeTagFromCandidateList(QString category, QString tag)
+ {
+     // Is the deselected tag the last selected positionable tag?
+-    if (m_lastSelectedPositionableTag.first == category and m_lastSelectedPositionableTag.second == tag) {
++    if (m_lastSelectedPositionableTag.first == category && m_lastSelectedPositionableTag.second == tag) {
+         m_lastSelectedPositionableTag = QPair<QString, QString>();
+     }
+ 
+@@ -1534,7 +1534,7 @@ void AnnotationDialog::Dialog::slotShowAreas(bool showAreas)
+ void AnnotationDialog::Dialog::positionableTagRenamed(QString category, QString oldTag, QString newTag)
+ {
+     // Is the renamed tag the last selected positionable tag?
+-    if (m_lastSelectedPositionableTag.first == category and m_lastSelectedPositionableTag.second == oldTag) {
++    if (m_lastSelectedPositionableTag.first == category && m_lastSelectedPositionableTag.second == oldTag) {
+         m_lastSelectedPositionableTag.second = newTag;
+     }
+ 
+@@ -1576,8 +1576,8 @@ void AnnotationDialog::Dialog::checkProposedTagData(
+     foreach (ResizableFrame *area, areas())
+     {
+         if (area != areaToExclude
+-            and area->proposedTagData() == tagData
+-            and area->tagData().first.isEmpty()) {
++            && area->proposedTagData() == tagData
++            && area->tagData().first.isEmpty()) {
+             area->removeProposedTagData();
+         }
+     }
