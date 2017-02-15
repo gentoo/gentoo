@@ -515,7 +515,7 @@ app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
 app-crypt/codecrypt 1.4.1 1.6 1.7.2 1.7.5: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
-app-crypt/coolkey 1.1.0-r6 1.1.0-r7: Linux Driver support for the CoolKey and CAC products
+app-crypt/coolkey 1.1.0-r7: Linux Driver support for the CoolKey and CAC products
 app-crypt/crackpkcs12 0.2.9 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/cryptkeeper 0.9.5: EncFS system tray applet for GNOME
 app-crypt/debian-archive-keyring 2014.3: GnuPG archive keys of the Debian archive
@@ -1243,7 +1243,7 @@ app-emacs/scss-mode 20130215 20150107: Major mode for editing SCSS files in Emac
 app-emacs/semi 1.14.6-r2: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.3a: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
-app-emacs/slime 2.0_p20080731 2.0_p20080731-r1 2.0_p20101103 2.11 2.12 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
+app-emacs/slime 2.0_p20101103 2.11 2.12 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 5.0 6.1-r1 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Directory tracking and special character handling support for SSH sessions in Emacs shell buffers
@@ -1816,7 +1816,7 @@ app-misc/hachoir-urwid 1.1-r1: Binary file explorer using Hachoir and urwid libr
 app-misc/hatools 2.14: High availability environment tools for shell scripting
 app-misc/hddled 0.3: Show hard disk activity using the scroll lock LED
 app-misc/hello 2.8 2.9 2.10: GNU "Hello, world" application
-app-misc/hexcompare 1.0.1 1.0.4: ncurses-based visual comparison of binary files
+app-misc/hexcompare 1.0.4: ncurses-based visual comparison of binary files
 app-misc/hilite 1.5-r1: A utility which highlights stderr text in red
 app-misc/hivex 1.3.11-r1: Library for reading and writing Windows Registry 'hive' binary files
 app-misc/i2bits 0.0.2 0.1.0: Utility to convert hex or dec to binary format
@@ -13874,7 +13874,7 @@ media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
 media-video/bdsup2sub 4.0.0-r1: A tool to convert and tweak bitmap based subtitle streams
 media-video/bdsup2sub++ 1.0.2: C++ port of BDSup2Sub
 media-video/binkplayer 1.99w: Bink Video! Player
-media-video/bino 1.3.0 1.6.1-r2: Stereoscopic and multi-display media player
+media-video/bino 1.6.1-r2: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/blinkentools 2.9: blinkentools is a set of commandline utilities related to Blinkenlights
@@ -18199,7 +18199,7 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 45.6.0-r1 45.7.0 51.0: Firefox Web Browser
 www-client/firefox-bin 45.6.0 45.7.0 51.0: Firefox Web Browser
 www-client/google-chrome 56.0.2924.87: The web browser from Google
-www-client/google-chrome-beta 57.0.2987.21: The web browser from Google
+www-client/google-chrome-beta 57.0.2987.37: The web browser from Google
 www-client/google-chrome-unstable 58.0.3004.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18250,7 +18250,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 24.0.0.194 24.0.0.221: Adobe Flash Player
-www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.21_beta 58.0.3004.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.37_beta 58.0.3004.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
