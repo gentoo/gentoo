@@ -38,6 +38,7 @@ src_prepare() {
 	sed -i "/git_describe_checkout/\
 		s/.*/set(OPENMITTSU_GIT_VERSION_STRING \"${PV/_p/-}-00000000\")/" \
 		CMakeLists.txt || die
+	eapply "${FILESDIR}"/${P}-fmt.patch
 	cmake-utils_src_prepare
 }
 
