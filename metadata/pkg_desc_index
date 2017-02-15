@@ -4734,7 +4734,7 @@ dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.8-r1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10: Library for some string essentials
-dev-libs/libev 4.15-r1 4.19 4.20 4.22 4.23: A high-performance event loop/event model with lots of feature
+dev-libs/libev 4.15-r1 4.19 4.20 4.22 4.23 4.24: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.4.4 1.5.2 1.5.4 1.5.5 1.5.6: Handler library for evdev events
 dev-libs/libevent 2.0.22 2.0.22-r2 2.1.8 9999: A library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
@@ -17792,7 +17792,7 @@ sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.5 2.6 2.7 2.8 2.9 2.10: utility to checkpoint/restore a process tree
+sys-process/criu 2.5 2.6 2.7 2.8 2.9 2.10 2.11: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
