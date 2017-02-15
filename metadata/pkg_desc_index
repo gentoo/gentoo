@@ -2280,7 +2280,7 @@ app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
 app-text/freepwing 1.4.3: FreePWING is a free JIS X 4081 (subset of EPWING V1) formatter
 app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
 app-text/getxbook 1.0-r1: Download books from google, amazon, barnes and noble
-app-text/ghostscript-gpl 9.15-r1 9.19 9.20-r1: Ghostscript is an interpreter for the PostScript language and for PDF
+app-text/ghostscript-gpl 9.15-r1 9.20-r1: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glark 1.10.5-r1: File searcher similar to grep but with fancy output
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
@@ -2407,7 +2407,7 @@ app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (pos
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1 2.3.3: A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML
 app-text/q-text-as-data 1.5.0: q: Text as Data is a CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 5.1.1-r1 5.1.2-r1 5.1.3-r1 6.0.0-r1: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 5.1.1-r1 5.1.3-r1 6.0.0-r1: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/queequeg 0.91: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r2 0.8.1-r3: A documentation metadata library
@@ -15470,7 +15470,7 @@ net-print/apsfilter 7.2.5 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extrao
 net-print/c2esp 25c 26: A cups filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.10 3.20: Common files for Canon drivers
 net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
-net-print/cups 2.1.4 2.2.2-r1 9999: The Common Unix Printing System
+net-print/cups 2.1.4 2.2.2-r1 2.2.2-r2 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.5.0 1.13.3 1.13.3-r1 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1 3.0.0: Provides a virtual printer for CUPS to produce PDF files
