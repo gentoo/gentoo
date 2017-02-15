@@ -2831,7 +2831,7 @@ dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2: C++ interface for the ATK library
-dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
+dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.5.0 1.5.6 1.5.7 1.5.8 1.6.0 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r2: C++ library offering portable support for system-related services
@@ -2839,12 +2839,12 @@ dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file f
 dev-cpp/ctemplate 2.2_p129 2.3 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 2.0.17 3.2.8-r2 3.2.9 3.2.10 3.3.1 3.3.2: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20131217: XML output extension to GCC
-dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
+dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.48.1 2.50.0: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4 0.3.4-r1: Google's C++ logging library
 dev-cpp/gmock 1.7.0-r1: Google's C++ mocking framework
-dev-cpp/gnome-vfsmm 2.26.0 2.26.0-r1: C++ bindings for gnome-vfs
+dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0 1.7.0-r1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
@@ -2856,10 +2856,10 @@ dev-cpp/libassa 3.5.1-r1: A networking library based on Adaptive Communication P
 dev-cpp/libbinio 1.4 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.2_pre20160820 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
-dev-cpp/libglademm 2.6.7-r1 2.6.7-r2: C++ bindings for libglade
+dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
-dev-cpp/libgnomemm 2.30.0 2.30.0-r1: C++ bindings for libgnome
-dev-cpp/libgnomeuimm 2.28.0-r1 2.28.0-r2: C++ bindings for libgnomeui
+dev-cpp/libgnomemm 2.30.0-r1: C++ bindings for libgnome
+dev-cpp/libgnomeuimm 2.28.0-r2: C++ bindings for libgnomeui
 dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 0.7.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r2: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.0 3.0.1: C++ wrapper for the libxml2 XML parser library
@@ -4637,7 +4637,7 @@ dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.7 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.45.4 1.46.0: Javascript bindings for GNOME
 dev-libs/glib 2.44.1-r1 2.48.2 2.50.2: The GLib library of C routines
-dev-libs/gmime 2.6.20-r3 2.6.22 2.6.23: Utilities for creating and parsing messages using MIME
+dev-libs/gmime 2.6.20-r3 2.6.23: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2016.12.21.08.39.01 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
@@ -4715,7 +4715,7 @@ dev-libs/libcli 1.9.4-r1 1.9.7: Cisco-style (telnet) command-line interface libr
 dev-libs/libclsync 0.4.1 0.4.2: Control and monitoring library for clsync
 dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
-dev-libs/libcroco 0.6.8-r1 0.6.9 0.6.10 0.6.11: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
+dev-libs/libcroco 0.6.11: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.6.1: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r1 0.14-r2: Simple library for creating daemon processes in C
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
@@ -4752,8 +4752,8 @@ dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.5-r1 1.7.5-r2: General purpose crypto library based on the code used in GnuPG
-dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
-dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
+dev-libs/libgdata 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgee 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
@@ -4761,7 +4761,7 @@ dev-libs/libgpg-error 1.24 1.25 1.26: Contains error handling functions used by 
 dev-libs/libgpuarray 0.6.0_rc1: Library to manipulate tensors on the GPU
 dev-libs/libgudev 230-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
-dev-libs/libgweather 3.20.3 3.20.4: Library to access weather information from online services
+dev-libs/libgweather 3.20.4: Library to access weather information from online services
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libhome 0.10.2-r1: libhome is a library providing a getpwnam() emulation
 dev-libs/libhtmlparse 0.1.13-r1: HTML parsing library. It takes HTML tags, text, and calls callbacks for each type of token
@@ -4894,7 +4894,7 @@ dev-libs/libxslt 1.1.28-r5 1.1.29 1.1.29-r1: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzip 1.0.1 1.1.3: Library for manipulating zip archives
-dev-libs/link-grammar 5.3.7 5.3.9 5.3.10 5.3.11: A Syntactic English parser
+dev-libs/link-grammar 5.3.10 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4cplus 1.1.3_rc7 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.0 1.1: Library of C++ classes for flexible logging to files, syslog and other destinations
@@ -4999,7 +4999,7 @@ dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, re
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded webapplicationserver extensible with C++
-dev-libs/totem-pl-parser 3.10.6 3.10.7: Playlist parsing library
+dev-libs/totem-pl-parser 3.10.7: Playlist parsing library
 dev-libs/tre 0.8.0: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tut 2013.12.18 2016.12.19: C++ Template Unit Test Framework
 dev-libs/tvision 2.1.0_pre2-r3: Text User Interface that implements the well known CUA widgets
@@ -7981,7 +7981,7 @@ dev-python/pyamg 2.1.0 2.2.1 3.0.2: Algebraic multigrid solvers in Python
 dev-python/pyao 0.82-r3: Python bindings for the libao library
 dev-python/pyasn1 0.1.7 0.1.8 0.1.9: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.6 0.0.7 0.0.8: pyasn1 modules
-dev-python/pyatspi 2.20.2 2.20.3: Python binding to at-spi library
+dev-python/pyatspi 2.20.3: Python binding to at-spi library
 dev-python/pyaudio 0.2.8 0.2.9: Python bindings for PortAudio
 dev-python/pyavm 0.9.2: Python module for Astronomy Visualization Metadata i/o
 dev-python/pybloomfiltermmap 0.3.11-r1 0.3.14: A Bloom filter (bloomfilter) for Python built on mmap
