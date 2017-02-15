@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-[ -e /etc/conf.d/nfs ] && source /etc/conf.d/nfs
+[ -e /etc/conf.d/nfs ] && . /etc/conf.d/nfs
 
 rpc_bin=/usr/sbin/rpc.rquotad
 
