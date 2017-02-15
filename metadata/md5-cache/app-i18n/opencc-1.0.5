@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-3.6.3
+DESCRIPTION=Libraries for conversion between Traditional and Simplified Chinese
+EAPI=6
+HOMEPAGE=https://github.com/BYVoid/OpenCC
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/BYVoid/OpenCC/archive/ver.1.0.5.tar.gz -> opencc-1.0.5.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=150378f62c9798f1afd8400017ed2238
