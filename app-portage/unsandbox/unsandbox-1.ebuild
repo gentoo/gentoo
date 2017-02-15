@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="The Sandbox escapist tool"
 HOMEPAGE="http://dev.gentoo.org/~mgorny/dist/unsandbox.c"
 SRC_URI="http://dev.gentoo.org/~mgorny/dist/unsandbox.c"
@@ -20,6 +22,7 @@ src_unpack() {
 }
 
 src_compile() {
+	tc-export CC
 	emake LDLIBS=-ldl unsandbox
 }
 
