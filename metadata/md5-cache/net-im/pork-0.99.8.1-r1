@@ -4,11 +4,11 @@ DESCRIPTION=Console based AIM client that looks like ircII
 EAPI=6
 HOMEPAGE=http://dev.ojnk.net/
 IUSE=perl
-KEYWORDS=~alpha amd64 ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=alpha amd64 ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=perl? ( dev-lang/perl ) sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/ojnk/pork-0.99.8.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=53293d2578e203d2d9b6b7a24a09413e
+_md5_=bd2d39e7ef54a6b312ad8bdc2ae1cc0a
