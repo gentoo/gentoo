@@ -1,0 +1,19 @@
+commit ea36a73b1e36dc5cf5ca6d78db9491c40c1d6d4c
+Author: Jonathan Riddell <jr@jriddell.org>
+Date:   Fri Jan 27 15:32:22 2017 +0000
+
+    More fixes for -fno-operator-names
+
+diff --git a/AnnotationDialog/ResizableFrame.cpp b/AnnotationDialog/ResizableFrame.cpp
+index 2251b2e2..e1afbc00 100644
+--- a/AnnotationDialog/ResizableFrame.cpp
++++ b/AnnotationDialog/ResizableFrame.cpp
+@@ -427,7 +427,7 @@ void AnnotationDialog::ResizableFrame::setTagData(QString category, QString tag,
+     if (changeOrigin == ManualChange) {
+         m_changed = true;
+ 
+-        if (m_detectedFace and ! m_trained and m_previewWidget->automatedTraining()) {
++        if (m_detectedFace && ! m_trained && m_previewWidget->automatedTraining()) {
+             m_preview->trainRecognitionDatabase(m_actualCoordinates, m_tagData);
+             m_trained = true;
+         }
