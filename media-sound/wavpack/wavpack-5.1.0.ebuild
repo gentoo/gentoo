@@ -4,6 +4,7 @@
 
 EAPI=5
 AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
+AUTOTOOLS_AUTORECONF=yes
 inherit autotools-multilib
 
 DESCRIPTION="Hybrid lossless audio compression tools"
@@ -21,6 +22,7 @@ RDEPEND=">=virtual/libiconv-0-r1
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README )
+PATCHES=( "${FILESDIR}/${P}-armv7.patch" )
 
 multilib_src_configure() {
 	local myeconfargs=(
