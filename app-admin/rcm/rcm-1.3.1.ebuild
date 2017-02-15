@@ -6,7 +6,7 @@ EAPI=6
 
 DESCRIPTION="rc file (dotfile) management"
 HOMEPAGE="https://github.com/thoughtbot/rcm"
-SRC_URI="https://thoughtbot.github.io/rcm/dist/rcm-1.3.1.tar.gz"
+SRC_URI="https://thoughtbot.github.io/${PN}/dist/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
