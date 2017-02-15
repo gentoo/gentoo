@@ -32,10 +32,10 @@
     <name>AMD64 Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:AMD64</url>
     <description>The AMD64 Project is devoted to providing stable, secure and up-to-date releases of Gentoo for the AMD64 and EM64T processor families.</description>
-    <member>
+    <member is-lead="1">
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Developer</role>
+      <role>Lead</role>
     </member>
     <member>
       <email>chainsaw@gentoo.org</email>
