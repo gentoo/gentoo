@@ -14,7 +14,7 @@ SRC_URI="https://developer.nvidia.com/video-sdk-$(replace_all_version_separators
 
 LICENSE="MIT tools? ( NVIDIA-CODEC-SDK )"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="tools"
 
 RDEPEND="
