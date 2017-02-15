@@ -8,7 +8,7 @@ inherit cmake-utils eutils
 
 MY_PN="openMittsu"
 DESCRIPTION="An open source chat client for Threema-style end-to-end encrypted chat networks"
-HOMEPAGE="https://github.com/blizzard4591/openMittsu"
+HOMEPAGE="https://www.openmittsu.de/"
 # git-archive-all.sh snapshot of https://github.com/blizzard4591/${MY_PN}.git
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${MY_PN}-${PV}.tar.xz"
 
