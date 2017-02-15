@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Vim support files for LLVM
+EAPI=6
+HOMEPAGE=http://llvm.org/
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=UoI-NCSA
+RDEPEND=!sys-devel/llvm:0
+SLOT=0
+SRC_URI=http://www.llvm.org/pre-releases/4.0.0/rc2/llvm-4.0.0rc2.src.tar.xz
+_eclass_exported_funcs=src_install:-
+_md5_=c4355dcad39e7e93d1ee9fb9a2b485aa
