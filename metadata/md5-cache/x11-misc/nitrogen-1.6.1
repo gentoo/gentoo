@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm prepare
+DEPEND=>=dev-cpp/gtkmm-2.10:2.4 >=gnome-base/librsvg-2.20:2 >=x11-libs/gtk+-2.10:2 xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig nls? ( sys-devel/gettext ) xinerama? ( x11-proto/xineramaproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A background browser and setter for X
+EAPI=6
+HOMEPAGE=http://projects.l3ib.org/nitrogen/
+IUSE=nls xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-cpp/gtkmm-2.10:2.4 >=gnome-base/librsvg-2.20:2 >=x11-libs/gtk+-2.10:2 xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://projects.l3ib.org/nitrogen/files/nitrogen-1.6.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=4741ac62035457dd36ec4abc2fae92a3
