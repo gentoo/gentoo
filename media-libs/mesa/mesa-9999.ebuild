@@ -188,7 +188,9 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
-	llvm_pkg_setup
+	if use llvm || use opencl; then
+		llvm_pkg_setup
+	fi
 	python-any-r1_pkg_setup
 }
 
