@@ -18,6 +18,6 @@ DEPEND="dev-ruby/mustache"
 RDEPEND=""
 
 src_prepare () {
-	./autogen.sh || die
 	default
+	./autogen.sh || die
 }
