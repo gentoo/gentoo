@@ -263,7 +263,7 @@ app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.20.3 3.20.4 3.22.1 3.22.2: Archive manager for GNOME
 app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
-app-arch/gcab 0.6 0.7: Library and tool for working with Microsoft Cabinet (CAB) files
+app-arch/gcab 0.7: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.1.1: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.6 1.7 1.8: Standard GNU compressor
@@ -358,7 +358,7 @@ app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore fro
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.4.20 2.4.23 2.4.24 2.5.8 2.5.9: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
-app-backup/deja-dup 34.2 34.3: Simple backup tool using duplicity back-end
+app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.7.10 0.7.11: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1: A shell frontend for duplicity
@@ -559,7 +559,7 @@ app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libmd 0.0.0: Message Digest functions from BSD systems
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
-app-crypt/libsecret 0.18.3 0.18.4 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
+app-crypt/libsecret 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.1 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.0.1: Yubico Universal 2nd Factor (U2F) server C Library
 app-crypt/libykneomgr 0.1.8: YubiKey NEO CCID Manager C Library
@@ -964,7 +964,7 @@ app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.9.6 4.10.0 4.10.03 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
-app-doc/gnucash-docs 2.6.13 2.6.15: Documentation package for GnuCash
+app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1: yet another free document preparation system
 app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition, folklore, and humor
 app-doc/kicad-doc 4.0.1 4.0.4 4.0.5: Electronic Schematic and PCB design tools manuals
@@ -1021,7 +1021,7 @@ app-editors/focuswriter 1.5.5 1.6.2 1.6.3: A fullscreen and distraction-free wor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.20.2 3.22.0: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.20.0 3.22.0: Official plugins for gedit
-app-editors/ghex 3.18.2 3.18.3: GNOME hexadecimal editor
+app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.2.5 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.0.0106 9999: GUI version of the Vim text editor
@@ -1798,7 +1798,7 @@ app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.5 4.18.6: A index/query system to search a large set of files quickly
 app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
-app-misc/gnote 3.20.1 3.20.2 3.22.0 3.22.1: Desktop note-taking application
+app-misc/gnote 3.20.2 3.22.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/golly 2.7-r1: simulator for Conway's Game of Life and other cellular automata
@@ -1948,7 +1948,7 @@ app-misc/towitoko 2.0.7-r2: This library provides a driver for using Towitoko sm
 app-misc/tpconfig 3.1.3-r1 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
-app-misc/tracker 1.8.0-r1 1.8.3-r1 1.10.1-r1: A tagging metadata database, search tool and indexer
+app-misc/tracker 1.8.3-r1 1.10.1-r1: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2 0.16.12.29: Python scripts to manipulate trash cans via the command line
 app-misc/ttyrec 1.0.8-r1: tty recorder
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
@@ -2013,7 +2013,7 @@ app-office/dia2code 0.8.8: Convert UML diagrams produced with Dia to various sou
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.9.7 0.9.8: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
 app-office/glabels 3.4.0: Program for creating labels and business cards
-app-office/gnucash 2.6.13 2.6.13-r1 2.6.15 2.6.15-r1: A personal finance manager
+app-office/gnucash 2.6.15 2.6.15-r1: A personal finance manager
 app-office/gnumeric 1.12.29 1.12.31 1.12.32: The GNOME Spreadsheet
 app-office/grisbi 1.0.0-r1: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
@@ -2212,7 +2212,7 @@ app-text/blogc 0.12.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 1.20 2.70.0 2.73.0 2.78.0: Ebook management application
+app-text/calibre 2.78.0: Ebook management application
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.5.0: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
@@ -12048,7 +12048,7 @@ kde-plasma/libtaskmanager 4.11.22: A library that provides basic taskmanager fun
 kde-plasma/milou 0.1 5.8.5 5.9.2: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.8.5 5.9.2: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.8.5-r1 5.9.2: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.8.5-r1 5.8.5-r2 5.9.2: KDE Plasma desktop
 kde-plasma/plasma-integration 5.8.5-r1 5.9.2: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.8.5 5.9.2: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 0.9.3.6 5.8.5 5.9.2: KDE Plasma applet for NetworkManager
@@ -12570,7 +12570,7 @@ media-gfx/kgrab 0.1.1: KDE screen grabbing utility
 media-gfx/kgraphviewer 2.2.0: KDE graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.1: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
-media-gfx/krita 3.1.2-r1: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 3.1.2-r1 3.1.2-r2: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 2.0.0: Program to create cross stitch patterns
 media-gfx/librecad 2.0.3 2.0.9-r1 2.1.1 2.1.3 9999: Generic 2D CAD program
