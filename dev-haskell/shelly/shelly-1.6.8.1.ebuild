@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,6 +39,15 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/hunit-1.2
 		>=dev-haskell/text-0.11 )
 "
+
+PATCHES=("${FILESDIR}"/${P}-ghc-8.0.2_rc1.patch)
+
+src_prepare() {
+	default
+
+	cabal_chdeps \
+		'directory                 >= 1.1.0.0 && < 1.3.0.0' 'directory                 >= 1.1.0.0'
+}
 
 src_configure() {
 	haskell-cabal_src_configure \

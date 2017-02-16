@@ -1,0 +1,8 @@
+diff --git a/git-annex.cabal b/git-annex.cabal
+index 5b95a16..f03024d 100644
+--- a/git-annex.cabal
++++ b/git-annex.cabal
+@@ -326,2 +326,3 @@ Executable git-annex
+    case-insensitive,
++   crypto-api,
+    random,
