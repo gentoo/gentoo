@@ -206,11 +206,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
       <role>Developer</role>
@@ -523,11 +518,6 @@
     <name>Cjk</name>
     <url>https://wiki.gentoo.org/wiki/Project:Cjk</url>
     <description>Chinese/Japanese/Korean support packages.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member (Japanese Support)</role>
-    </member>
     <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
@@ -1828,11 +1818,6 @@
     <name>Gentoo Kernel Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Kernel</url>
     <description>The Gentoo Kernel Project aims to deliver the best possible experience from its sources across all supported architectures.</description>
-    <member is-lead="1">
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Leader (Kernel, gentoo-sources, genpatches)</role>
-    </member>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
@@ -2214,10 +2199,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Mentors</url>
     <description>The Mentors project acts as a matchmaking service between prospective
 developers and volunteer mentors.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-    </member>
     <member>
       <email>gokturk@gentoo.org</email>
       <name>Göktürk Yüksek</name>
@@ -2949,11 +2930,6 @@ developers and volunteer mentors.</description>
     <url>https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers</url>
     <description>Proxy Maintainers facilitates high quality user contributions and works to enhance user-developer cooperation in maintaining packages.</description>
     <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
       <role>Member</role>
@@ -3057,10 +3033,6 @@ developers and volunteer mentors.</description>
       <name>Alex Legler</name>
     </member>
     <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-    </member>
-    <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
     </member>
@@ -3097,11 +3069,6 @@ developers and volunteer mentors.</description>
     <name>Python</name>
     <url>https://wiki.gentoo.org/wiki/Project:Python</url>
     <description>The Python project maintains dev-lang/python and most of dev-python/*.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member</role>
-    </member>
     <member>
       <email>alunduil@gentoo.org</email>
       <name>Alex Brandt</name>
