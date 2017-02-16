@@ -18,6 +18,7 @@ KEYWORDS=""
 IUSE="+compiler-rt libcxx openmp +sanitize"
 
 RDEPEND="
+	~sys-devel/clang-${PV}:${SLOT}
 	compiler-rt? (
 		~sys-libs/compiler-rt-${PV}:${CLANG_PV}
 		sanitize? ( ~sys-libs/compiler-rt-sanitizers-${PV}:${CLANG_PV} )
