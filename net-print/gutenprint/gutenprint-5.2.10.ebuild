@@ -15,9 +15,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="cups foomaticdb gimp gtk nls readline ppds static-libs"
 
-RDEPEND="app-text/ghostscript-gpl
+RDEPEND="<=app-text/ghostscript-gpl-9.15-r1
 	dev-lang/perl
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0= )
 	cups? ( >=net-print/cups-1.1.14 )
 	foomaticdb? ( net-print/foomatic-db-engine )
 	gimp? ( >=media-gfx/gimp-2.2 x11-libs/gtk+:2 )
