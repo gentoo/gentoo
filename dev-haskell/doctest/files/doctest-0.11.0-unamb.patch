@@ -1,0 +1,35 @@
+commit c3194e5e874bf7da4d9d1db3f435e902eeb60993
+Author: Sergei Trofimovich <siarheit@google.com>
+Date:   Wed Apr 13 09:35:29 2016 +0100
+
+    fix tests when config-value is present in system
+    
+    ghci fails to disambiguate 'Config' in this case as:
+    
+      src/Help.hs:8:18:
+        Ambiguous module name ‘Config’:
+          it was found in multiple packages:
+          config-value-0.4.0.1@confi_JzUyuyr9gPE2bcxdUwNhUS ghc-7.10.3
+    
+    Fixed by explicitly importing moduls from 'ghc' package.
+    
+    Signed-off-by: Sergei Trofimovich <siarheit@google.com>
+
+diff --git a/src/Help.hs b/src/Help.hs
+index b8e76cf..4c11f85 100644
+--- a/src/Help.hs
++++ b/src/Help.hs
+@@ -1,3 +1,4 @@
++{-# LANGUAGE PackageImports #-}
+ module Help (
+   usage
+ , printVersion
+@@ -5,7 +6,7 @@ module Help (
+ 
+ import           Paths_doctest (version)
+ import           Data.Version (showVersion)
+-import           Config as GHC
++import "ghc"     Config as GHC
+ import           Interpreter (ghc)
+ 
+ usage :: String

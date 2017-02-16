@@ -1,0 +1,26 @@
+diff --git a/src/GhcUtil.hs b/src/GhcUtil.hs
+index baa9193..1792227 100644
+--- a/src/GhcUtil.hs
++++ b/src/GhcUtil.hs
+@@ -1,2 +1,3 @@
+ {-# LANGUAGE CPP #-}
++{-# LANGUAGE PackageImports #-}
+ module GhcUtil (withGhc) where
+@@ -12,3 +13,3 @@ import           DynFlags (gopt_set)
+ #endif
+-import           Panic (throwGhcException)
++import "ghc"     Panic (throwGhcException)
+ 
+diff --git a/src/Run.hs b/src/Run.hs
+index fa9096f..dca590a 100644
+--- a/src/Run.hs
++++ b/src/Run.hs
+@@ -1,2 +1,3 @@
+ {-# LANGUAGE CPP #-}
++{-# LANGUAGE PackageImports #-}
+ module Run (
+@@ -23,3 +24,3 @@ import           System.IO
+ import qualified Control.Exception as E
+-import           Panic
++import "ghc"     Panic
+ 

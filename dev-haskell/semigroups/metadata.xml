@@ -43,6 +43,8 @@
 		USE=-unordered-containers. Disabling this is an unsupported
 		configuration, but it may be useful for accelerating builds in
 		sandboxes for expert users.</flag>
+		<flag name="binary">provide instances for binary package</flag>
+		<flag name="transformers">provide instances for transformers package.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ekmett/semigroups</remote-id>

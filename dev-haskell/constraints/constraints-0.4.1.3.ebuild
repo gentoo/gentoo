@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,3 +24,7 @@ RDEPEND=">=dev-haskell/newtype-0.2:=[profile?] <dev-haskell/newtype-0.3:=[profil
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-ghc-8.patch
+}

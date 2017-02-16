@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		When you&#39;ve caught all the exceptions that can be handled safely,
+		this is what you&#39;re left with.
+		
+		It is intended that you use qualified imports with this library.
+		
+		&gt; import UnexceptionalIO (UIO)
+		&gt; import qualified UnexceptionalIO as UIO
+	</longdescription>
+</pkgmetadata>
