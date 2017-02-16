@@ -7,10 +7,10 @@ EAPI=6
 inherit autotools multilib readme.gentoo-r1 systemd user
 
 if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="git://github.com/Bumblebee-Project/Bumblebee.git"
 	EGIT_BRANCH="develop"
 	KEYWORDS=""
-	inherit git-r3
 else
 	COMMIT="c322bd849aabe6e48b4304b8d13cc4aadc36a30d"
 	SRC_URI="https://github.com/Bumblebee-Project/Bumblebee/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -84,6 +84,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newenvd "${FILESDIR}"/${PN}.envd 99${PN}
@@ -93,8 +94,3 @@ src_install() {
 		You may need to setup your /etc/bumblebee/bumblebee.conf"
 	readme.gentoo_create_doc
 }
-#
-#pkg_preinst() {
-#	use video_cards_nvidia || rm "${ED}"/etc/bumblebee/xorg.conf.nvidia
-#	use video_cards_nouveau || rm "${ED}"/etc/bumblebee/xorg.conf.nouveau
-#}
