@@ -1,0 +1,9 @@
+diff --git a/src/Shelly/Pipe.hs b/src/Shelly/Pipe.hs
+index 7fe7d98..cc5668d 100644
+--- a/src/Shelly/Pipe.hs
++++ b/src/Shelly/Pipe.hs
+@@ -121,3 +121,3 @@ import Data.Text as T hiding (concat, all, find, cons)
+ 
+-default (T.Text)
++-- default (T.Text)
+ 
