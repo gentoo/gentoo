@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="makes cpio-format archives and deals somewhat gracefully with input data corruption"
+DESCRIPTION="Makes cpio-format archives and deals gracefully with input data corruption"
 HOMEPAGE="http://freshmeat.net/projects/afio/"
 SRC_URI="http://members.brabant.chello.nl/~k.holtman/${P}.tgz"
 
