@@ -22,12 +22,13 @@ LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
 SLOT="5.0.0"
 KEYWORDS=""
-IUSE="test"
+IUSE="+clang test"
 
 LLVM_SLOT=${SLOT%%.*}
 # llvm-4 needed for --cmakedir
 DEPEND="
 	>=sys-devel/llvm-4
+	clang? ( sys-devel/clang )
 	test? ( =sys-devel/clang-${PV%_*}*:${LLVM_SLOT} )
 	${PYTHON_DEPS}"
 
@@ -43,7 +44,13 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	if ! test_compiler; then
+	if use clang; then
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		# ensure we can use clang before installing compiler-rt
+		local -x LDFLAGS="${LDFLAGS} -nodefaultlibs -lc"
+		strip-unsupported-flags
+	elif ! test_compiler; then
 		local extra_flags=( -nodefaultlibs -lc )
 		if test_compiler "${extra_flags[@]}"; then
 			local -x LDFLAGS="${LDFLAGS} ${extra_flags[*]}"
