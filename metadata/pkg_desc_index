@@ -7215,7 +7215,7 @@ dev-python/case 1.2.3 1.5.2: Python unittest Utilities
 dev-python/cassandra-driver 2.7.2: DataStax python driver for Apache Cassandra
 dev-python/castellan 0.4.0: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
-dev-python/catkin_pkg 0.2.10 0.3.1 9999: Standalone Python library for the catkin package system
+dev-python/catkin_pkg 0.2.10 0.3.1-r1 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/ccdproc 1.1.0 1.2.0: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
@@ -8956,7 +8956,7 @@ dev-ros/rosmaster 1.12.6 9999: ROS Master implementation
 dev-ros/rosmsg 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: Command-line tools for displaying information about message and services
 dev-ros/rosnode 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: System-wide logging mechanism for messages sent to the /rosout topic
-dev-ros/rospack 2.3.1-r1 9999: Retrieves information about ROS packages available on the filesystem
+dev-ros/rospack 2.3.1-r1 2.3.2 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.12.6 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.12.6 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 0.7.0 0.7.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
@@ -9024,7 +9024,7 @@ dev-ros/smach_ros 2.0.0 9999: Extensions for the SMACH library to integrate it t
 dev-ros/smclib 1.7.16 1.7.17 1.7.18 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
 dev-ros/sound_play 0.3.1 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
-dev-ros/std_msgs 0.5.10 9999: Standard ROS Messages
+dev-ros/std_msgs 0.5.10 0.5.11 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.12.19-r1 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 1.12.5 9999: Messages specific to stereo processing, such as disparity images
@@ -10014,7 +10014,7 @@ dev-util/byacc 20150711 20160606 20170201: the best variant of the Yacc parser g
 dev-util/cargo 0.15.0 0.16.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/catkin 0.7.4-r1 9999: Cmake macros and associated python code used to build some parts of ROS
+dev-util/catkin 0.7.4-r1 0.7.5 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 3.2.4 3.2.5 3.2.7 3.3.3: fast compiler cache
 dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
