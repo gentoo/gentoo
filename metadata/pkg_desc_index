@@ -14281,7 +14281,7 @@ net-analyzer/sguil-sensor 0.8.0 0.9.0: Sensor part of sguil Network Security Mon
 net-analyzer/sguil-server 0.8.0 0.9.0: Daemon for Sguil Network Security Monitoring
 net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
 net-analyzer/siphon 666-r1: A portable passive network mapping suite
-net-analyzer/slurm 0.3.3-r1 0.3.3-r2: Realtime network interface monitor based on FreeBSD's pppstatus
+net-analyzer/slurm 0.3.3-r2: Realtime network interface monitor based on FreeBSD's pppstatus
 net-analyzer/smokeping 2.6.9 2.6.10 2.6.11: A powerful latency measurement tool
 net-analyzer/sniffit 0.3.7-r4: Interactive Packet Sniffer
 net-analyzer/snmptt 1.2 1.4: SNMP Trap Translator
