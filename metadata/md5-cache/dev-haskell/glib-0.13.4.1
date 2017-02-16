@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/text-1.0.0.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-haskell/utf8-string-0.2:=[profile?] <dev-haskell/utf8-string-1.1:=[profile?] >=dev-lang/ghc-7.4.1:= dev-libs/glib:2 >=dev-haskell/cabal-1.24 virtual/pkgconfig doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Binding to the GLIB library for Gtk2Hs
+EAPI=6
+HOMEPAGE=http://projects.haskell.org/gtk2hs/
+IUSE=+closure_signals doc hscolour profile
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-haskell/text-1.0.0.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-haskell/utf8-string-0.2:=[profile?] <dev-haskell/utf8-string-1.1:=[profile?] >=dev-lang/ghc-7.4.1:= dev-libs/glib:2
+SLOT=0/0.13.4.1
+SRC_URI=mirror://hackage/packages/archive/glib/0.13.4.1/glib-0.13.4.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=d06a19168350c3207b4e2b95bcefaf0d

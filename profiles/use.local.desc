@@ -1526,6 +1526,7 @@ dev-haskell/http:conduit10 - Use version 1.0.x or below of the conduit package (
 dev-haskell/http:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/http-api-data:use-text-show - Use text-show library for efficient ToHttpApiData implementations
 dev-haskell/http-client:network-uri - Get Network.URI from the network-uri package.
+dev-haskell/http-streams:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/httpd-shed:buildexamples - Build example executables.
 dev-haskell/httpd-shed:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hxt:network-uri - Get Network.URI from the network-uri package.
@@ -1610,6 +1611,7 @@ dev-haskell/skein:big-endian - When manually selecting the endianness, use big-e
 dev-haskell/skein:force-endianness - Use a manually selected endian when compiling (see flag 'big-endian').
 dev-haskell/skein:reference - Use the reference implementation instead of the optimized one.
 dev-haskell/snap-core:portable - No non-haskell unportable code.
+dev-haskell/snap-server:build-pong - Build a server that just returns "PONG"
 dev-haskell/snap-server:openssl - enable https support using dev-haskell/hsopenssl
 dev-haskell/snap-server:portable - no non-haskell unportable code.
 dev-haskell/tagsoup:download - Build with Download module.
