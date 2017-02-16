@@ -1,0 +1,7 @@
+--- a/config.h
++++ b/config.h
+@@ -1,2 +1,2 @@
+-#define PACKAGE_VERSION "0.4.3+git"
+-#define VERSION "0.4.3+git"
++#define PACKAGE_VERSION "0.4.3"
++#define VERSION "0.4.3"
