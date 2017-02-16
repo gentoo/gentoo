@@ -14,12 +14,20 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		libwebsockets is a C library designed to make development of websockets clients and servers easier (possible).
+		libwebsockets is a C library for lightweight websocket clients and servers.
 	</longdescription>
 	<use>
+		<flag name="access-log">Support generating Apache-compatible access logs</flag>
+		<flag name="cgi">Include CGI (spawn process with network-connected stdin/out/err) APIs</flag>
 		<flag name="client">The client part of the library and libwebsockets-test-client</flag>
+		<flag name="generic-sessions">With the Generic Sessions plugin</flag>
 		<flag name="http2">Support the HTTP/2 protocol</flag>
+		<flag name="http-proxy">Support for rewriting HTTP proxying</flag>
+		<flag name="lejp">With the Lightweight JSON Parser</flag>
 		<flag name="libev">Support event loops via dev-libs/libev</flag>
 		<flag name="libuv">Support asynchronous I/O via dev-libs/libuv</flag>
+		<flag name="server-status">Support json + jscript server monitoring</flag>
+		<flag name="smtp">Provide SMTP support</flag>
+		<flag name="sqlite3">Require SQLITE3 support</flag>
 	</use>
 </pkgmetadata>
