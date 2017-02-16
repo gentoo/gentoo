@@ -37,7 +37,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )
 "
-PATCHES=( "${FILESDIR}/catkin_prefix.patch" )
+PATCHES=( "${FILESDIR}/catkin_prefix.patch" "${FILESDIR}/argparse.patch" )
 
 python_test() {
 	nosetests -s --tests test || die
