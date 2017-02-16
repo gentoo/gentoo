@@ -31,13 +31,14 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )
 "
-PATCHES=( "${FILESDIR}/catkin_prefix.patch" )
+PATCHES=( "${FILESDIR}/catkin_prefix.patch" "${FILESDIR}/argparse.patch" )
 
 python_test() {
 	nosetests -s --tests test || die
