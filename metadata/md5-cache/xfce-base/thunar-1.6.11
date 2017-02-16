@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure test
+DEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= >=x11-libs/gtk+-2.24:2= >=xfce-base/exo-0.10:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10.1:= >=xfce-base/xfconf-4.10:= dbus? ( >=dev-libs/dbus-glib-0.100:= ) exif? ( >=media-libs/libexif-0.6.19:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) pcre? ( >=dev-libs/libpcre-6:= ) udisks? ( virtual/libgudev:= ) xfce_plugins_trash? ( >=xfce-base/xfce4-panel-4.10:= ) dev-util/intltool sys-devel/gettext virtual/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=File manager for the Xfce desktop environment
+EAPI=6
+HOMEPAGE=http://www.xfce.org/projects/ http://thunar.xfce.org/
+IUSE=+dbus exif libnotify pcre test udisks +xfce_plugins_trash test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2 LGPL-2
+RDEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= >=x11-libs/gtk+-2.24:2= >=xfce-base/exo-0.10:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10.1:= >=xfce-base/xfconf-4.10:= dbus? ( >=dev-libs/dbus-glib-0.100:= ) exif? ( >=media-libs/libexif-0.6.19:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) pcre? ( >=dev-libs/libpcre-6:= ) udisks? ( virtual/libgudev:= ) xfce_plugins_trash? ( >=xfce-base/xfce4-panel-4.10:= ) >=dev-util/desktop-file-utils-0.20-r1 x11-misc/shared-mime-info dbus? ( >=gnome-base/gvfs-1.18.3 ) udisks? ( virtual/udev >=gnome-base/gvfs-1.18.3[udisks,udev] ) xfce_plugins_trash? ( >=gnome-base/gvfs-1.18.3 )
+REQUIRED_USE=xfce_plugins_trash? ( dbus )
+SLOT=0
+SRC_URI=mirror://xfce/src/xfce/thunar/1.6/Thunar-1.6.11.tar.bz2
+_eclass_exported_funcs=src_configure:- src_test:-
+_eclasses_=virtualx	86c9305a59b3e0459e7fbef3a5f30b96
+_md5_=af06269627d2f1ed3a0268971e7ae769
