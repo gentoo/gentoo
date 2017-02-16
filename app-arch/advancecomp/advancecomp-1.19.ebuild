@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="Recompress ZIP, PNG and MNG using deflate 7-Zip, considerably improving compression"
+DESCRIPTION="Recompress ZIP, PNG and MNG, considerably improving compression"
 HOMEPAGE="http://advancemame.sourceforge.net/comp-readme.html"
 SRC_URI="mirror://sourceforge/project/advancemame/${PN}/${PV}/${P}.tar.gz"
 
