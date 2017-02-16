@@ -36,6 +36,9 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 	append-flags -std=gnu99
+	# Workaround silly logic that breaks cross-compiles.
+	# https://github.com/vasi/pixz/issues/67
+	export ac_cv_file_src_pixz_1=$([[ -f src/pixz.1 ]] && echo yes || echo no)
 	econf
 }
 
