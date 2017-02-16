@@ -11,7 +11,7 @@ SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~mips ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="alsa debug +keybinder oss"
 
 COMMON_DEPEND=">=dev-libs/glib-2.24
