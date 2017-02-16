@@ -12775,7 +12775,7 @@ media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.5 1.0.7 1.0.10: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
-media-libs/gnonlin 0.10.17 1.4.0 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
+media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r3 0.10.23-r4 1.8.3-r1 1.10.3: Less plugins for GStreamer
@@ -13195,7 +13195,7 @@ media-plugins/gst-plugins-shout2 0.10.31-r1 1.8.3 1.10.3: Icecast server sink pl
 media-plugins/gst-plugins-sidplay 0.10.19-r1 1.8.3 1.10.3: Sid decoder plugin for GStreamer
 media-plugins/gst-plugins-smoothstreaming 1.8.3 1.10.3: Smooth Streaming plugin for GStreamer
 media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.8.3 1.10.3: Beats-per-minute detection and pitch controlling plugin for GStreamer
-media-plugins/gst-plugins-soup 0.10.31-r1 0.10.31-r2 1.8.3 1.10.3: HTTP client source/sink plugin for GStreamer
+media-plugins/gst-plugins-soup 0.10.31-r2 1.8.3 1.10.3: HTTP client source/sink plugin for GStreamer
 media-plugins/gst-plugins-speex 0.10.31-r1 1.8.3 1.10.3: Speex encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-srtp 1.8.3-r1 1.10.3: SRTP encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-taglib 0.10.31-r1 1.8.3 1.10.3: ID3v2/APEv2 tagger plugin for GStreamer
@@ -13216,7 +13216,7 @@ media-plugins/gst-plugins-x265 1.8.3 1.10.3: H.265 encoder plugin for GStreamer
 media-plugins/gst-plugins-ximagesrc 0.10.31-r1 0.10.31-r2 1.8.3 1.10.3: X11 video capture stream plugin for GStreamer
 media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
 media-plugins/gst-plugins-xvideo 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-transcoder 1.8.2 1.8.2-r1: GStreamer Transcoding API
+media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
 media-plugins/hexter 1.0.2 1.0.3: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.4.7 1.4.8 9999: image loader plugins for Imlib 2
 media-plugins/ir_lv2 1.3 1.3.2: LV2 convolver plugin especially for creating reverb effects
@@ -14677,7 +14677,7 @@ net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open sour
 net-libs/gssdp 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.4 0.6.0: VNC viewer widget for GTK
 net-libs/gupnp 0.20.18: An object-oriented framework for creating UPnP devs and control points
-net-libs/gupnp-av 0.12.8 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
+net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
@@ -14697,7 +14697,7 @@ net-libs/libbluedevil 2.1: Qt wrapper for bluez used in the KDE bluetooth stack
 net-libs/libbtbb 2015.09.2-r1 2015.10.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
-net-libs/libdmapsharing 2.9.36 2.9.37: A library that implements the DMAP family of protocols
+net-libs/libdmapsharing 2.9.37: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.1: implementation of the W3C DOM, written in C
 net-libs/libeXosip 3.5.0 4.0.0: library that hides the complexity of using the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
@@ -15057,7 +15057,7 @@ net-misc/grive 0.4.0_pre20150905 0.4.0_pre20150905-r1 0.4.0_pre20151011 0.5.1_pr
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gsutil 3.42 4.19 4.20: command line tool for interacting with cloud storage services
 net-misc/guacamole-server 0.9.9-r1: This is the proxy-daemon used by www-apps/guacamole
-net-misc/gupnp-tools 0.8.12 0.8.13: Free replacements of Intel UPnP tools that use GUPnP
+net-misc/gupnp-tools 0.8.13: Free replacements of Intel UPnP tools that use GUPnP
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
 net-misc/gwget 1.0.4: GTK2 WGet Frontend
 net-misc/gwhois 20120626: generic whois
@@ -15134,7 +15134,7 @@ net-misc/minidlna 1.1.4 1.1.5 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20160301 1.5.20161216: MiniSSDP Daemon
 net-misc/miniupnpd 2.0 2.0.20161216: MiniUPnP IGD Daemon
 net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
-net-misc/mobile-broadband-provider-info 20120614 20151214: Database of mobile broadband service providers
+net-misc/mobile-broadband-provider-info 20151214: Database of mobile broadband service providers
 net-misc/modemmanager 1.4.14 1.6.4: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.2.6 9999: Mobile shell that supports roaming and intelligent local echo
@@ -15165,14 +15165,14 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.4.0-r1 1.4.4 1.4.4-r1: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.4.0-r1 1.4.4-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-fortisslvpn 1.2.2: NetworkManager Fortinet SSLVPN compatible plugin
-net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2 1.2.4: NetworkManager OpenConnect plugin
+net-misc/networkmanager-openconnect 1.2.4: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
-net-misc/networkmanager-openvpn 1.0.8 1.2.2 1.2.4 1.2.6: NetworkManager OpenVPN plugin
-net-misc/networkmanager-pptp 1.0.8 1.2.2 1.2.4: NetworkManager PPTP plugin
+net-misc/networkmanager-openvpn 1.2.6: NetworkManager OpenVPN plugin
+net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-misc/networkmanager-vpnc 1.0.8 1.2.2 1.2.4: NetworkManager VPNC plugin
+net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
 net-misc/nextcloud-client 2.2.4-r2: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
@@ -17205,7 +17205,7 @@ sys-block/fio 2.2.9 2.2.10 2.2.13 2.5 2.6 2.8 2.15 2.16: Jens Axboe's Flexible I
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
-sys-block/gparted 0.26.1 0.27.0: Gnome Partition Editor
+sys-block/gparted 0.27.0: Gnome Partition Editor
 sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
@@ -18483,7 +18483,7 @@ x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening 
 x11-libs/goffice 0.8.17-r2 0.10.29 0.10.31 0.10.32: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.2: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 2.24.31 2.24.31-r1 3.20.9 3.22.5: Gimp ToolKit +
-x11-libs/gtk+extra 3.3.0 3.3.3: Useful Additional GTK+ widgets
+x11-libs/gtk+extra 3.3.3: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
 x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
@@ -19305,8 +19305,8 @@ x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
 x11-themes/zuki-themes 3.20: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120806: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
-x11-themes/zukitwo 2013.12.10 2014.10.22 2016.08.08: Transition package to zuki-themes
-x11-themes/zukitwo-shell 2013.12.10 2014.10.22 2016.08.08: Transition package to zuki-themes
+x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
+x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
 x11-wm/aewm 1.3.12: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
