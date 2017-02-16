@@ -5,18 +5,13 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# This file is only for generic masks. For arch-specific masks (i.e.
+# mask everywhere, unmask on arch/*) use arch/base.
+
 # Ulrich Müller <ulm@gentoo.org> (4 Feb 2017)
 # Uses old and vulnerable net-libs/webkit-gtk:3, bug #584156.
 app-editors/emacs:25 xwidgets
 app-editors/emacs-vcs:25 xwidgets
-
-# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
-# nvenc requires nvidia drivers, apply same mask logic
-media-video/ffmpeg nvenc
-
-# Thomas Deutschmann <whissi@gentoo.org> (30 Jan 2017)
-# media-libs/raspberrypi-userland not keyworded
-media-video/motion mmal
 
 # Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
 # x11-drivers/ati-drivers is masked for removal.
@@ -40,17 +35,9 @@ x11-base/xorg-drivers video_cards_v4l
 net-fs/samba system-heimdal
 
 # Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
-# Mask it globally, unmask it on supported arch
->=sys-devel/gcc-6.2.0 pie
-
-# Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
 # Adding the mask so that end users and devlopers are notified of the removal and have some
 # time to migrate. There is no support for gcj in gcc-7
 >=sys-devel/gcc-6.3.0 gcj
-
-# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
-# Mask assembly optimisations that are platform-specific
-dev-libs/libsecp256k1 asm
 
 # Robin H. Johnson <robbat2@gentoo.org> (04 Dec 2016)
 # Additional HAProxy functionality waiting for related stuff to land in the
@@ -78,19 +65,11 @@ net-libs/opal capi
 # and as for now we have only stable mate versions
 mate-base/mate bluetooth
 
-# Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
-# Enable gambit and scm only on supported arches
->=dev-scheme/slib-3.2.5 gambit scm
-
 # Ulrich Müller <ulm@gentoo.org> (15 Oct 2016)
 # The --with-cairo option is considered as experimental by upstream
 # and causes problems with updating the X window, bug #592238
 app-editors/emacs cairo
 app-editors/emacs-vcs cairo
-
-# Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
-# Dependency is only keyworded on amd64 and x86
-app-admin/collectd collectd_plugins_mqtt
 
 # Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
 # Requires unreleased dependency dev-qt/qtspeech.
@@ -106,14 +85,6 @@ kde-frameworks/ktextwidgets speech
 # It's no longer available in -9999 line, and it won't be in 3.9.0
 # either unless somebody steps up to fix it.
 >=sys-devel/llvm-3.9.0_rc lldb
-
-# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
-# It's only supported on amd64, ia64, powerpc and x86
-dev-db/percona-server numa
-
-# Brian Evans <grknight@gentoo.org> (23 Aug 2016)
-# It's only supported on amd64
-dev-db/percona-server tokudb tokudb-backup-plugin
 
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # Depends on masked, end-of-life php versions
@@ -133,20 +104,12 @@ dev-ml/cairo-ocaml svg
 # gnutls is broken for years
 >=net-libs/gsoap-2.8.0 gnutls
 
-# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
-# Mask jdbc as most arches don't support java
-dev-db/mariadb jdbc
-
 # Brian Dolbec <dolsen@gentoo.org> (9 Aug 2016)
 # Mask doc use flag due to needed sphinx pkg update
 ~dev-util/buildbot-0.9.0_p1 doc
 ~dev-util/buildbot-0.9.1 doc
 ~dev-util/buildbot-0.9.2 doc
 ~dev-util/buildbot-0.9.3 doc
-
-# James Le Cuirot <chewi@gentoo.org> (26 Jul 2016)
-# Only available on amd64.
-dev-java/icedtea shenandoah
 
 # Johannes Huber <johu@gentoo.org> (10 Jul 2016)
 # Unreleased dependencies.
@@ -156,10 +119,6 @@ dev-java/icedtea shenandoah
 # Mask system-clang support as it requires llvm-3.4 that is subject
 # to security bug cleanup, #585102.
 dev-util/intel-ocl-sdk system-clang
-
-# Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
-# This flag only has meaning on amd64
-sys-boot/grub:2 grub_platforms_xen-32
 
 # Matthew Brewer <tomboy64@sina.cn> (02 June 2016)
 # Acked-by: Amy Winston <amynka@gentoo.org>
@@ -205,12 +164,6 @@ dev-cpp/eigen:2 doc
 # you're doing. This has upstream's approval.
 dev-java/icedtea cacao jamvm
 
-# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# Raspberry Pi support is only available on arm.
-# Mask raspberry-pi USE globally, unmask on arm.
-media-video/mpv raspberry-pi
-
 # Maciej Mrozowski <reavertm@gmail.com> (23 Mar 2016)
 # Experimental cairo-qt backend (see bug #568000).
 app-text/poppler cairo-qt
@@ -234,18 +187,9 @@ kde-plasma/plasma-sdk plasmate
 # Unsastified dependencies are upsetting repoman. Needs investigation.
 app-arch/cfv bittorrent
 
-# Alexis Ballier <aballier@gentoo.org> (14 Nov 2015)
-# MMAL is only available on the Raspberry Pi:
-# Mask it globally, unmask it on arm.
-media-video/ffmpeg mmal
-
 # Rick Farina <zerochaos@gentoo.org> (06 Oct 2015)
 # forward porting this patch is non-trivial, mask for now
 >=net-wireless/wpa_supplicant-2.5 wimax
-
-# Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
-# git useflag requires dev-libs/libgit2 which few arches support
-dev-util/geany-plugins git
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Sep 2015)
 # Upstream gtk3 support is experimental:
@@ -257,10 +201,6 @@ www-client/chromium gtk3
 # https://bugs.gentoo.org/show_bug.cgi?id=533876
 >=sci-libs/vtk-6.1.0 examples
 
-# Brian Evans <grknight@gentoo.org (14 Sep 2015)
-# Mask new USE flags for mariadb which all arches do not yet have dependencies
->=dev-db/mariadb-10.1.0 mroonga sst-xtrabackup galera
-
 # Fabian Groffen <grobian@gentoo.org> (08 Sep 2015)
 # GnuTLS support is currently broken/causes hang, bug #559834
 # http://dev.mutt.org/trac/ticket/3772
@@ -270,10 +210,6 @@ www-client/chromium gtk3
 # This is for cgmanager which is linux only.
 # Unmasked in default/linux/package.use.mask.
 sys-auth/consolekit cgroups
-
-# Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
-# sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd gnuefi
 
 # Manuel Rüger <mrueg@gentoo.org> (03 Sep 2015)
 # Mask USE=ruby for packages that solely rely on the soon to be deprecated
@@ -304,11 +240,6 @@ dev-java/gcj-jdk awt
 # Gentoo bug: 554484
 >=dev-lang/mono-3.12.1 doc
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
-# JavaFX and the browser plugin are not included on some platforms.
-dev-java/oracle-jdk-bin javafx nsplugin
-dev-java/oracle-jre-bin javafx nsplugin
-
 # Manuel Rüger <mrueg@gentoo.org> (05 Jul 2015)
 # app-text/migemo is masked because it fails for ruby20
 app-text/cmigemo emacs
@@ -337,22 +268,10 @@ games-strategy/freeciv system-lua
 dev-db/mariadb cluster
 dev-db/mysql cluster
 
-# Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
-# Mask bdplus support and unmask on arches where libbdplus is keyworded.
-media-libs/libbluray bdplus
-
-# Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
-# pidgin-opensteamworks is only available for amd64, ppc32 and x86
-net-im/telepathy-connection-managers steam
-
 # Andrew Savchenko <bircoph@gentoo.org> (11 Feb 2015)
 # Cluster code is still under development, only base functionality
 # is implemented. Masking for testing and evaluation.
 app-admin/clsync cluster mhash
-
-# Ben de Groot <yngwin@gentoo.org> (07 Feb 2015)
-# Mask for all arches, can be unmasked on arm once keyworded there
-games-board/stockfish armv7
 
 # Michał Górny <mgorny@gentoo.org> (25 Dec 2014)
 # Requires non-keyworded >=libevent-2.1, bug #533540.
@@ -380,10 +299,6 @@ sys-devel/gcc sanitize
 # swfdec is masked for removal, bug #525834
 dev-libs/DirectFB swfdec
 
-# Tim Harder <radhermit@gentoo.org> (10 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
-
 # Rick Farina <zerochaos@gentoo.org> (26 Aug 2014)
 # mirisdr does not seem to like making releases
 <net-wireless/gr-osmosdr-9999 mirisdr
@@ -391,10 +306,6 @@ net-im/bitlbee skype
 # Maxim Koltsov <maksbotan@gentoo.org> (05 Aug 2014)
 # net-libs/tox is in mva overlay only ATM
 app-leechcraft/lc-azoth sarin
-
-# Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
-# Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer_spi satamv
 
 # Brian Evans <grknight@gentoo.org> (30 Jul 2014)
 # Mask embedded due to upstream not supporting
@@ -427,21 +338,9 @@ net-analyzer/metasploit development test
 # Tracked in Gentoo bug #509602.
 dev-java/jboss-logging doc
 
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (24 Apr 2014)
-# It's only supported on amd64
-dev-db/mariadb tokudb
-
-# Lars Wendler <polynomial-c@gentoo.org> (23 Apr 2014)
-# Not working on 64bit systems
-media-sound/lmms vst
-
 # Markos Chandras <hwoarang@gentoo.org> (20 Apr 2014)
 # Fails to build with recent polarssl (>=1.3). Bug #503604
 media-video/rtmpdump polarssl
-
-# Alexey Shvetsov <alexxy@gentoo.org> (16 Apr 2014)
-# libehca only works on ppc*
-sys-fabric/ofed ofed_drivers_ehca
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (12 Apr 2014)
 # Upstream regularly forgets to update the bindings after changes in API,
@@ -461,14 +360,6 @@ media-sound/podcatcher bittorrent
 # Mike Frysinger <vapier@gentoo.org> (03 Feb 2014)
 # Upstream says to not use this for now.
 dev-libs/elfutils threads
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (4 Jan 2014)
-# Mask until dependencies are keyworded (bug 497068)
-dev-vcs/git mediawiki
-
-# Sergey Popov <pinkbyte@gentoo.org> (27 Dec 2013)
-# Mask because Boost.Context library does not work on most of arches
-dev-libs/boost context
 
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2013)
 # Gstreamer support fails to build due to libtool shortcomings when using
@@ -494,11 +385,6 @@ dev-python/pypy3 sandbox
 # luajit is in ~arch, prepare for minetest stabilization
 games-action/minetest luajit
 
-# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
-# Dependency (media-libs/libsidplayfp) only keyworded
-# on x86 and amd64. Will unmask there.
->=media-plugins/audacious-plugins-3.4 sid
-
 # Julian Ospald <hasufell@gentoo.org> (31 Aug 2013)
 # Randomly breaks consumers at runtime. Do not report
 # gentoo bugs.
@@ -507,16 +393,6 @@ media-libs/libsdl2 custom-cflags
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # Causes build to fail, issue is being discussed with upstream
 >=www-plugins/gnash-0.8.10_p20130822 openvg
-
-# Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
-# Related deps dev-lang/luajit and dev-scheme/racket are not keyworded by most arches.
-app-editors/vim luajit racket
-app-editors/gvim luajit racket
-
-# Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
-# Doesn't work on most profiles. Easier to mask here and
-# unmask in particular profiles
-sys-apps/hwloc cuda gl opencl
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
 # GL/GLES support in cairo is mutually exclusive, bug #428770.
@@ -554,11 +430,6 @@ media-sound/google-musicmanager log
 # Experimental, masked until it compiles and works.
 media-libs/avidemux-core system-ffmpeg
 
-# Justin Lecher <jlec@gentoo.org> (21 Feb 2013)
-# cuda only works on x86 and amd64
-sci-libs/cholmod cuda
-sci-libs/flann cuda
-
 # Julian Ospald <hasufell@gentoo.org> (20 Feb 2013)
 # Unsupported and experimental.
 # NP-Hardass <NP-Hardass@gentoo.org> (18 Jun 2015)
@@ -570,14 +441,6 @@ sci-libs/flann cuda
 # Mask it until upstream fixes it. Bug #417869
 <media-sound/audacity-2.1.0 ffmpeg
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# chromium is keyworded only on a few arches
-gnome-extra/zeitgeist-datasources chromium
-
-# Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
-# cuda/mkl only works on x86/amd64
-sci-chemistry/gromacs cuda mkl
-
 # Jory A. Pratt <anarchy@gentoo.org> (15 Dec 2012)
 # PGO is known to be busted with most configurations
 www-client/firefox pgo
@@ -585,10 +448,6 @@ www-client/firefox pgo
 # Sergey Popov <pinkbyte@gentoo.org> (26 Nov 2012)
 # PDF docs building failed with sandbox violation
 media-libs/opencolorio pdf
-
-# Diego Elio Pettenò <flameeyes@gentoo.org> (3 Nov 2012)
-# Requires net-dns/unbound which is not keyworded by most arches
-net-libs/gnutls dane
 
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.
@@ -598,22 +457,6 @@ net-analyzer/net-snmp pci
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp prevent-removal
 
-# Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
-# fontconfig-infinality dependency not yet keyworded on most arches
-media-libs/freetype infinality
-
-# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
-# Mask this in conjunction with the above.
-dev-java/icedtea infinality
-
-# Rick Farina <zerochaos@gentoo.org> (05 July 2012)
-# cuda is available on x86/amd64 only
-app-crypt/johntheripper cuda
-
-# Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
-# sys-fs/zfs is not available everywhere.
-sys-boot/grub libzfs
-
 # Michael Weber<xmw@gentoo.org>  (02 Jun 2012)
 # Not fit for production (bug 404403, comment #5)
 dev-db/firebird client
@@ -621,22 +464,6 @@ dev-db/firebird client
 # Andreas K. Huettel <dilfridge@gentoo.org> (25 Mai 2012)
 # Requires icc which does not emerge (distfile unavailable)
 media-libs/opencv ipp
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection doctool
-
-# Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
-# JIT compilation in libzpaq generates code for x86/amd64.
-app-arch/zpaq jit
-
-# Arun Raghavan <ford_prefect@gentoo.org> (28 Mar 2012)
-# webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
-# added.
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
-media-sound/pulseaudio webrtc-aec xen
 
 # Samuli Suominen <ssuominen@gentoo.org> (20 Mar 2012)
 # This is for udev-acl. Unmasked in default/linux/package.use.mask.
@@ -650,54 +477,15 @@ www-plugins/gnash directfb
 # libobjc2/clang experimental support
 >=gnustep-base/gnustep-make-2.6.2 libobjc2
 
-# Christoph Junghans <junghans@gentoo.org> (04 Feb 2012)
-# mips only use flags
->=sci-libs/fftw-3 zbus
-
 # Samuli Suominen <ssuominen@gentoo.org> (10 Jan 2012)
 # This is required only for Linux, so mask it here and unmask in
 # default/linux/package.use.mask. Bug 354923.
 app-arch/libarchive e2fsprogs
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
-# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
-# it's masked here and unmasked in individual profiles (bug #396313).
-net-libs/webkit-gtk jit
-www-client/midori jit
-
 # Mike Frysinger <vapier@gentoo.org> (06 Dec 2011)
 # No one should be mucking with libssp unless they really know what they're
 # doing.  Force extra work on the smart peeps to protect the not-so-smart.
 sys-devel/gcc libssp
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Dec 2011)
-# NuppelVideo is available on x86 only
-media-video/transcode nuv pic
-
-# Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
-# The QML (V4) and JSC JITs are supported only on amd64/arm/x86, so
-# mask the flag here and unmask it in the appropriate arch profiles.
-dev-qt/qtdeclarative jit
-dev-qt/qtscript jit
-dev-qt/qtwebkit jit
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Nov 2011)
-# Expose USE="suid" for USE="svga" only for x86 users,
-# see arch/x86/package.use.mask
-www-client/links suid
-
-# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
-# Mask libbluray support here, and enable it per arch instead
-gnome-base/gvfs bluray
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
-# Systemtap is not keyworded on anything except amd64/x86
-# Temporarily mask instead of dropping keywords, bug 384647
-dev-libs/glib systemtap
-
-# Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
-# PPS should work on all arches, but only keyworded on amd64/x86
->=net-misc/ntp-4.2.6_p3-r1 parse-clocks
 
 # Andrey Grozin <grozin@gentoo.org> (29 Mar 2011)
 # dev-lang/swig-2.0.2 with -octave generated .cpp files
@@ -721,10 +509,6 @@ net-dns/pdnsd isdn urandom
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
-# Masked because tools pulled in are not supported on most archs.
-sys-power/pm-utils video_cards_intel video_cards_radeon
-
 # Diego E. Pettenò <flameeyes@gmail.com> (18 Jan 2010)
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
@@ -740,41 +524,12 @@ media-sound/pulseaudio system-wide
 # Mask very experimental mpi use flag dfor gamess
 sci-chemistry/gamess mpi
 
-# Mounir Lamouri <volkmar@gentoo.org> (07 Nov 2009)
-# Mask cuda for k3d. Works only on amd64/x86. Bug 267264
-media-gfx/k3d cuda
-
-# Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
-# X use flag only for amd64/x86, bug 285951.
-media-gfx/iscan X
-
-# Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
-# mask cuda for boinc. Works only on amd64 and x86
-sci-misc/boinc cuda
-
-# Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
-# TLS needs dev-libs/cryptlib, which is x86 only
-dev-python/kaa-base tls
-
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-# Java is not supported in most of the arches enchant is keyworded
-app-text/enchant zemberek
-
 # These are for BSD only
 net-proxy/squid ipf-transparent pf-transparent
 app-admin/sshguard ipfilter
-
-# Raúl Porcel <armin76@gentoo.org> (09 Nov 2008)
-# CPU opts: This needs amd64, x86 and ppc on some of them
-# dvdnav: hard masked dependency
-media-video/mplayer cpudetection
 
 # Alexis Ballier <aballier@gentoo.org> <16 Feb 2011>
 # Win32 specific useflags for vlc. Can be used for cross-compiling.
 media-video/vlc directx dxva2
 # Mac OSX / iPhone OS specific useflags
 media-video/vlc audioqueue macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
-
-# Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
-# Mask raspberry-pi except on arm.
-dev-libs/libcec raspberry-pi
