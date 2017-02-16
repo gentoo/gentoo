@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND="
-	sys-libs/ncurses
+	sys-libs/ncurses:*
 "
 DEPEND="
 	${RDEPEND}
