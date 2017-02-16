@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="2"
 
-DESCRIPTION="(pseudo) incremental backup with different exclude lists using hardlinks and rsync"
+DESCRIPTION="Pseudo incremental backup with different exclude lists using hardlinks and rsync"
 HOMEPAGE="http://www.nico.schottelius.org/software/ccollect/"
 SRC_URI="http://www.nico.schottelius.org/software/${PN}/download/${P}.tar.bz2"
 
