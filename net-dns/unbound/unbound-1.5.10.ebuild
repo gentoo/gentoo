@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://unbound.net/downloads/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~mips ppc ppc64 ~x86"
 IUSE="debug dnstap +ecdsa gost libressl python selinux static-libs test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
