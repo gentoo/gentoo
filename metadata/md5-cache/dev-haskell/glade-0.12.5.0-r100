@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-haskell/glib-0.12.5.0:0=[profile?] >=dev-haskell/gtk-0.12.5.0:2=[profile?] >=dev-lang/ghc-6.10.4:= gnome-base/libglade:2.0 >=dev-haskell/gtk2hs-buildtools-0.12.5.1-r1:0= >=dev-haskell/cabal-1.24 virtual/pkgconfig doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Binding to the glade library
+EAPI=5
+HOMEPAGE=http://projects.haskell.org/gtk2hs/
+IUSE=doc hscolour profile
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-haskell/glib-0.12.5.0:0=[profile?] >=dev-haskell/gtk-0.12.5.0:2=[profile?] >=dev-lang/ghc-6.10.4:= gnome-base/libglade:2.0
+SLOT=2/0.12.5.0
+SRC_URI=mirror://hackage/packages/archive/glade/0.12.5.0/glade-0.12.5.0.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=edb7fc7fde884793a8490fce92abe563
