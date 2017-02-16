@@ -1,11 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils
+EAPI=6
 
-DESCRIPTION="A libpcap-based tool to collect network traffic data and emit it as NetFlow flows"
+DESCRIPTION="libpcap-based tool to collect network traffic data and emit it as NetFlow flows"
 HOMEPAGE="http://fprobe.sourceforge.net"
 LICENSE="GPL-2"
 
@@ -15,15 +14,16 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE="debug messages"
 
-DEPEND="net-libs/libpcap"
-
-src_prepare() {
-	# The pidfile should be created by the parent process, before the
-	# setuid/chroot is executed.
-	epatch "${FILESDIR}"/fprobe-1.1-pidfile-sanity.patch
-	# This seems to fail, uncertain why.
-	epatch "${FILESDIR}"/fprobe-1.1-setgroups.patch
-}
+DEPEND="
+	net-libs/libpcap
+"
+RDEPEND="
+	${DEPEND}
+"
+PATCHES=(
+	"${FILESDIR}"/fprobe-1.1-pidfile-sanity.patch
+	"${FILESDIR}"/fprobe-1.1-setgroups.patch
+)
 
 src_configure() {
 	econf \
