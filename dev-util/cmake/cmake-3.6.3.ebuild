@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-FindBoost-python.patch
 	"${FILESDIR}"/${PN}-3.0.2-FindLAPACK.patch
 	"${FILESDIR}"/${PN}-3.5.2-FindQt4.patch
+	"${FILESDIR}"/${PN}-3.6.3-FindCUDA.patch
 
 	# respect python eclasses
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
