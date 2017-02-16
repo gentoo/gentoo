@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit toolchain-funcs
 
-DESCRIPTION="automatically monitor system logs and mail security violations on a periodic basis"
+DESCRIPTION="Automatically monitor system logs and mail security violations"
 # Seems that the project has been discontinued by CISCO?
 HOMEPAGE="https://sourceforge.net/projects/sentrytools/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
