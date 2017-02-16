@@ -12,7 +12,7 @@ DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="http://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="http://git.ardour.org/ardour/ardour.git"
+	EGIT_REPO_URI="git://git.ardour.org/ardour/ardour.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
