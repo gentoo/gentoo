@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit eutils
 
-DESCRIPTION="diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP"
+DESCRIPTION="A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP"
 #HOMEPAGE="http://research.iat.sfu.ca/custom-software/diradm/"
 #SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
 HOMEPAGE="http://orbis-terrarum.net/~robbat2/"
