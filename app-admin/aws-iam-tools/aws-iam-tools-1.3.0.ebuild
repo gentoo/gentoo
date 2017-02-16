@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="2"
 
-DESCRIPTION="The Command Line Interface (CLI) for the AWS Identity and Access Management (IAM) Service"
+DESCRIPTION="The Command Line Interface for the AWS Identity and Access Management Service"
 HOMEPAGE="http://aws.amazon.com/developertools/AWS-Identity-and-Access-Management/4143"
 SRC_URI="mirror://sabayon/${CATEGORY}/IAMCli-${PV}.zip"
 
