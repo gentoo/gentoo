@@ -1,0 +1,17 @@
+diff --git a/Data/Constraint.hs b/Data/Constraint.hs
+index 84d67c0..a104f51 100644
+--- a/Data/Constraint.hs
++++ b/Data/Constraint.hs
+@@ -79,3 +79,7 @@ import Data.Data
+ #endif
++#if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 707
++import GHC.Exts (Constraint)
++#else
+ import GHC.Prim (Constraint)
++#endif
+ 
+@@ -375,3 +379,3 @@ instance Class () (b :=> a) where cls = Sub Dict
+ instance Class b a => () :=> Class b a where ins = Sub Dict
+-instance (b :=> a) => () :=> b :=> a where ins = Sub Dict
++instance (b :=> a) => () :=> (b :=> a) where ins = Sub Dict
+ 
