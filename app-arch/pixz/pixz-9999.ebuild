@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs flag-o-matic autotools
+inherit flag-o-matic autotools
 
 DESCRIPTION="Parallel Indexed XZ compressor"
 HOMEPAGE="https://github.com/vasi/pixz"
@@ -40,14 +40,4 @@ src_configure() {
 	# https://github.com/vasi/pixz/issues/67
 	export ac_cv_file_src_pixz_1=$([[ -f src/pixz.1 ]] && echo yes || echo no)
 	econf
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)" OPT=""
-}
-
-src_install() {
-	dobin src/pixz
-	doman src/pixz.1
-	dodoc NEWS README.md TODO
 }
