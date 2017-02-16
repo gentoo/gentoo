@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit flag-o-matic autotools
+inherit flag-o-matic
 
 DESCRIPTION="Parallel Indexed XZ compressor"
 HOMEPAGE="https://github.com/vasi/pixz"
@@ -16,21 +16,21 @@ LIB_DEPEND=">=app-arch/libarchive-2.8:=[static-libs(+)]
 	>=app-arch/xz-utils-5[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )
-	app-text/asciidoc"
+	static? ( ${LIB_DEPEND} )"
+[[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc"
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/vasi/${PN}.git"
-	inherit git-r3
+	inherit git-r3 autotools
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/vasi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/vasi/pixz/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 src_prepare() {
 	default
-	eautoreconf
+	[[ ${PV} == "9999" ]] && eautoreconf
 }
 
 src_configure() {
