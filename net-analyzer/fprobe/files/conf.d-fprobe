@@ -23,7 +23,7 @@ IFACE=eth0
 #LOCALIP=
 
 # SNMP iface id
-SNMP_IFACE="${IFACE//eth}"
+SNMP_IFACE="${IFACE#eth}"
 
 # Maximum number of concurrent flows to track
 # using a specified amount of memory
