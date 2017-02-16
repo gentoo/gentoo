@@ -12079,7 +12079,7 @@ kde-plasma/libtaskmanager 4.11.22: A library that provides basic taskmanager fun
 kde-plasma/milou 0.1 5.8.5 5.9.2: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.8.5 5.9.2: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.8.5-r1 5.8.5-r2 5.9.2: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.8.5-r2 5.9.2: KDE Plasma desktop
 kde-plasma/plasma-integration 5.8.5-r1 5.9.2: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.8.5 5.9.2: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 0.9.3.6 5.8.5 5.9.2: KDE Plasma applet for NetworkManager
