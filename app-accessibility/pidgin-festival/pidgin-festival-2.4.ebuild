@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=2
 
-DESCRIPTION="A plugin for pidgin which enables text-to-speech output of conversations using festival"
+DESCRIPTION="A plugin which enables text-to-speech output of conversations using festival"
 HOMEPAGE="https://sourceforge.net/projects/pidgin-festival/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
