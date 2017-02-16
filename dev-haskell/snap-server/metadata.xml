@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
+		<flag name="build-pong">Build a server that just returns "PONG"</flag>
 		<flag name="openssl">enable https support using <pkg>dev-haskell/hsopenssl</pkg></flag>
 		<flag name="portable">no non-haskell unportable code.</flag>
 	</use>
