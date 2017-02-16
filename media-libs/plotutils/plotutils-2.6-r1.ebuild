@@ -19,7 +19,7 @@ DEPEND="
 	!<media-libs/plotutils-${PV}
 	media-libs/libxmi
 	png? (
-		media-libs/libpng
+		media-libs/libpng:0=
 		sys-libs/zlib )
 	X? (
 		x11-libs/libXaw
