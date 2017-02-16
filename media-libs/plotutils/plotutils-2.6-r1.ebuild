@@ -19,7 +19,7 @@ DEPEND="
 	!<media-libs/plotutils-${PV}
 	media-libs/libxmi
 	png? (
-		media-libs/libpng
+		media-libs/libpng:0=
 		sys-libs/zlib )
 	X? (
 		x11-libs/libXaw
@@ -35,7 +35,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-2.5.1-rangecheck.patch \
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${P}-libpng-1.5.patch \
-		"${FILESDIR}"/${P}-libxmi.patch
+		"${FILESDIR}"/${P}-libxmi.patch \
+		"${FILESDIR}"/${P}-format-security.patch
 	eautoreconf
 	elibtoolize
 }

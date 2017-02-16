@@ -113,18 +113,13 @@ pkg_setup() {
 			ewarn "Can't check the linux kernel configuration."
 			ewarn "You might have some incompatible options enabled."
 		else
-			# recheck that we don't have usblp to collide with libusb
+			# recheck that we don't have usblp to collide with libusb; this should now work in most cases (bug 501122)
 			if use usb; then
 				if linux_chkconfig_present USB_PRINTER; then
-					eerror "Your usb printers will be managed via libusb. In this case, "
-					eerror "${P} requires the USB_PRINTER support disabled."
-					eerror "Please disable it:"
-					eerror "    CONFIG_USB_PRINTER=n"
-					eerror "in /usr/src/linux/.config or"
-					eerror "    Device Drivers --->"
-					eerror "        USB support  --->"
-					eerror "            [ ] USB Printer support"
-					eerror "Alternatively, just disable the usb useflag for cups (your printer will still work)."
+					elog "Your USB printers will be managed via libusb. In case you run into problems, "
+					elog "please try disabling USB_PRINTER support in your kernel or blacklisting the"
+					elog "usblp kernel module."
+					elog "Alternatively, just disable the usb useflag for cups (your printer will still work)."
 				fi
 			else
 				#here we should warn user that he should enable it so he can print

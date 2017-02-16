@@ -112,7 +112,7 @@ src_compile() {
 	if use doc; then
 		einfo "Generating Documentation"
 		# use build dir from last compile command
-		BUILD_DIR="${VIGRA_BUILD_DIR}" cmake-utils_src_make doc
+		VARTEXFONTS="${T}/fonts" BUILD_DIR="${VIGRA_BUILD_DIR}" cmake-utils_src_make doc
 	fi
 }
 
