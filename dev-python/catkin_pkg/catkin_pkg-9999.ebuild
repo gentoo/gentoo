@@ -31,6 +31,7 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
