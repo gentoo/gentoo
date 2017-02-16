@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure postinst postrm prepare setup
+DEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/cairo-1.6 x11-libs/gtk+:3 ffmpeg? ( !libav? ( media-video/ffmpeg:0= ) libav? ( media-video/libav:0= ) ) imagemagick? ( media-gfx/imagemagick:0= ) pdf? ( app-text/poppler:0= ) postscript? ( app-text/libspectre:0= ) virtual/pkgconfig
+DESCRIPTION=Modern rewrite of Quick Image Viewer
+EAPI=6
+HOMEPAGE=https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/
+IUSE=ffmpeg imagemagick kernel_linux libav pdf postscript
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/cairo-1.6 x11-libs/gtk+:3 ffmpeg? ( !libav? ( media-video/ffmpeg:0= ) libav? ( media-video/libav:0= ) ) imagemagick? ( media-gfx/imagemagick:0= ) pdf? ( app-text/poppler:0= ) postscript? ( app-text/libspectre:0= )
+SLOT=0
+SRC_URI=https://github.com/phillipberndt/pqiv/archive/2.7.4.tar.gz -> pqiv-2.7.4.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c67d78afa857ec0374fb6e627de17ebd
