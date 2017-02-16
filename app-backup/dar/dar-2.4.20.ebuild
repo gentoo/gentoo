@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 inherit flag-o-matic
 
-DESCRIPTION="A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)"
+DESCRIPTION="A full featured backup tool, aimed for disks"
 HOMEPAGE="http://dar.linux.free.fr/"
 SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
 
