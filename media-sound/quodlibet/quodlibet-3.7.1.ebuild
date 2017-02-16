@@ -19,6 +19,7 @@ RDEPEND="dev-libs/keybinder:3[introspection]
 	dev-python/feedparser[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=media-libs/mutagen-1.32[${PYTHON_USEDEP}]
+	net-libs/libsoup
 	x11-libs/gtk+[introspection]
 	gstreamer? (
 		media-libs/gstreamer:1.0
