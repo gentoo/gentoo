@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/aeson-0.6.2:=[profile?] <dev-haskell/aeson-1.1:=[profile?] >=dev-haskell/deepseq-generics-0.1:=[profile?] >=dev-haskell/quickcheck-2:2=[profile?] >=dev-haskell/syb-0.1:=[profile?] <dev-haskell/syb-0.7:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/hunit-1.2 <dev-haskell/hunit-1.6 >=dev-haskell/quickcheck-2.4 <dev-haskell/quickcheck-2.10 ~dev-haskell/string-qq-0.0.2 >=dev-haskell/test-framework-0.3 <dev-haskell/test-framework-0.9 >=dev-haskell/test-framework-hunit-0.2 <dev-haskell/test-framework-hunit-0.4 >=dev-haskell/test-framework-quickcheck2-0.2.9 <dev-haskell/test-framework-quickcheck2-0.4 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Types for representing a structured document
+EAPI=6
+HOMEPAGE=http://johnmacfarlane.net/pandoc
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/aeson-0.6.2:=[profile?] <dev-haskell/aeson-1.1:=[profile?] >=dev-haskell/deepseq-generics-0.1:=[profile?] >=dev-haskell/quickcheck-2:2=[profile?] >=dev-haskell/syb-0.1:=[profile?] <dev-haskell/syb-0.7:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/1.17.0.4
+SRC_URI=mirror://hackage/packages/archive/pandoc-types/1.17.0.4/pandoc-types-1.17.0.4.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=5351e8ab70e4f331cbe1a03098eb98f1

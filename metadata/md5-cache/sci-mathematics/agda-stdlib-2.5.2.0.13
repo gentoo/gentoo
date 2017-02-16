@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=sci-mathematics/agda-2.5.2:=[profile?] ffi? ( sci-mathematics/agda-lib-ffi ) >=dev-haskell/cabal-1.16.0 >=dev-haskell/filemanip-0.3.6.2[profile?] <dev-haskell/filemanip-0.4[profile?] >=dev-lang/ghc-7.6.3
+DESCRIPTION=Agda standard library
+EAPI=6
+HOMEPAGE=http://wiki.portal.chalmers.se/agda/
+IUSE=profile +ffi
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=sci-mathematics/agda-2.5.2:=[profile?] ffi? ( sci-mathematics/agda-lib-ffi )
+SLOT=0
+SRC_URI=https://github.com/agda/agda-stdlib/archive/v0.13.tar.gz -> agda-stdlib-2.5.2.0.13.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:- src_test:- src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	ea170b525f6a38a006be05c9d9429f13	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b32cf3b3631a1f85ec8b22eef06b4584

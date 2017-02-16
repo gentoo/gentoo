@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/hashable-1.2.1:=[profile?] <dev-haskell/hashable-1.3:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/hunit-1.2 <dev-haskell/hunit-1.6 >=dev-haskell/quickcheck-2.7 <dev-haskell/quickcheck-2.10 dev-haskell/tagged >=dev-haskell/test-framework-0.8 <dev-haskell/test-framework-0.9 >=dev-haskell/test-framework-hunit-0.3 <dev-haskell/test-framework-hunit-0.4 >=dev-haskell/test-framework-quickcheck2-0.3 <dev-haskell/test-framework-quickcheck2-0.4 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Pure priority search queues
+EAPI=6
+HOMEPAGE=http://hackage.haskell.org/package/psqueues
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/hashable-1.2.1:=[profile?] <dev-haskell/hashable-1.3:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.2.2.3
+SRC_URI=mirror://hackage/packages/archive/psqueues/0.2.2.3/psqueues-0.2.2.3.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=655c6a1c0cc25e5e43a6cb7e6e14441a
