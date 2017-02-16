@@ -1745,7 +1745,7 @@ app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintend
 app-misc/dailystrips 1.0.28-r2: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
 app-misc/dateutils 0.3.5 0.4.0 0.4.1: command line date and time utilities
-app-misc/datovka 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
+app-misc/datovka 3.0.3-r1 4.7.1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105: DDCControl monitor database
@@ -2109,7 +2109,7 @@ app-portage/g-octave 0.4.1-r5: A tool that generates and installs ebuilds for Oc
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.3.0.8-r2 0.3.0.9-r2 0.3.1.1 0.3.2 0.3.2-r1 0.3.3 9999: Collection of administration scripts for Gentoo
-app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 9999: Collection of developer scripts for Gentoo
+app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 0.3.1 9999: Collection of developer scripts for Gentoo
 app-portage/gentoopm 0.2.9 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
@@ -14102,7 +14102,7 @@ net-analyzer/flent 0.15.0: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.5.1-r2 0.68.5.1-r9: library and programs to process reports from NetFlow data
 net-analyzer/flowgrind 0.7.1 0.8.0: Network performance measurement tool
 net-analyzer/fping 2.4_beta2_p161-r2 3.10 3.13: A utility to ping multiple hosts at once
-net-analyzer/fprobe 1.1 1.1-r2: A libpcap-based tool to collect network traffic data and emit it as NetFlow flows
+net-analyzer/fprobe 1.1 1.1-r3: libpcap-based tool to collect network traffic data and emit it as NetFlow flows
 net-analyzer/fragroute 1.2.6: Testing of network intrusion detection systems, firewalls and TCP/IP stacks
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
 net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
