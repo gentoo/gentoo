@@ -6,7 +6,7 @@ EAPI=6
 
 inherit toolchain-funcs eutils
 
-DESCRIPTION="Files which haven't been accessed in a given period of time are removed from specified directories"
+DESCRIPTION="Files which haven't been accessed are removed from specified directories"
 HOMEPAGE="https://fedorahosted.org/tmpwatch/"
 SRC_URI="https://fedorahosted.org/releases/t/m/${PN}/${P}.tar.bz2"
 
