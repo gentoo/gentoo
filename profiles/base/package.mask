@@ -1,7 +1,3 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
-# Johannes Huber <johu@gentoo.org> (23 Jul 2015)
-# Needs sys-apps/systemd. Masked for non systemd profiles.
-app-admin/calamares
