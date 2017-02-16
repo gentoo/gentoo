@@ -91,11 +91,6 @@ src_compile() {
 src_install() {
 	default
 
-	if use foomatic; then
-		# workaround: some printer drivers still require this, bug 501466
-		dosym /usr/bin/foomatic-rip /usr/libexec/cups/filter/foomatic-rip
-	fi
-
 	if use perl; then
 		pushd "${S}/scripting/perl" > /dev/null
 		perl-module_src_install
