@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Mike Gilbert <floppym@gentoo.org> (16 Feb 2017)
+# Multiple test failures.
+sys-boot/grub:2 test
+
 # Ulrich Müller <ulm@gentoo.org> (4 Feb 2017)
 # Uses old and vulnerable net-libs/webkit-gtk:3, bug #584156.
 app-editors/emacs:25 xwidgets
