@@ -4598,7 +4598,7 @@ dev-libs/botan 1.10.14 1.10.15 1.10.15-r1 2.0.1: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
@@ -7199,7 +7199,7 @@ dev-python/bandit 0.13.2-r1 1.0.1 1.1.0 1.2.0 1.3.0 1.4.0: A security linter fro
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/batinfo 0.3: A simple Python lib to retreive battery information
-dev-python/bcolz 0.10.0 0.11.3 0.12.1 1.1.0: Provides columnar and compressed data containers
+dev-python/bcolz 0.10.0 0.11.3 0.12.1 1.1.0 1.1.2: Provides columnar and compressed data containers
 dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0 3.1.1 3.1.2: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
@@ -7338,6 +7338,7 @@ dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/discogs-client 2.0.2 2.2.0 2.2.1: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.1-r1 0.2.2: Distribution utilities
+dev-python/distro 1.0.2: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.3.0 0.4.0: Use Database URLs in your Django Application
 dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.8.14 1.9.9 1.10: High-level Python web framework
 dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2 0.8.7: This is django application that try to eliminate annoying things in Django framework
@@ -7848,7 +7849,7 @@ dev-python/nosexcover 1.0.10 1.0.11: Extends nose.plugins.cover to add Cobertura
 dev-python/notebook 4.0.6 4.1.0 4.2.3 4.3.2 4.4.1: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3: Python interface to DBus notifications.
-dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0 0.30.0: NumPy aware dynamic Python compiler using LLVM
+dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0 0.30.0 0.30.1: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5 2.6.1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.2-r1 9999: Fast array and numerical python library
@@ -10068,7 +10069,7 @@ dev-util/colm 0.12.0 0.13.0.3 0.13.0.4: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
-dev-util/conan 0.16.1 0.17.1: Distributed C/C++ package manager
+dev-util/conan 0.17.1 0.19.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.5.0 1.5.1: Command-line utility to create projects from cookiecutters (project templates)
