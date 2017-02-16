@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc +ocamlopt"
 S="${WORKDIR}/ocaml-${P}"
 
