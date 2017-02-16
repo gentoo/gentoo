@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 inherit autotools eutils user
 
-DESCRIPTION="A speech server that allows emacspeak and other screen readers to interact with festival lite"
+DESCRIPTION="A speech server that allows screen readers to interact with festival lite"
 HOMEPAGE="http://eflite.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
