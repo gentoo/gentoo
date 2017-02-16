@@ -25,6 +25,7 @@ app-admin/ansible:keyczar - Enable accelerated mode for old ssh clients/servers
 app-admin/bcfg2:cheetah - Include dev-python/cheetah support
 app-admin/bcfg2:genshi - Include dev-python/genshi support
 app-admin/bcfg2:server - Installs scripts to be used on the server-side of this app
+app-admin/calamares:pythonqt - Enable PythonQt-based module interface
 app-admin/clsync:cgroups - Use cgroups to limit /dev access.
 app-admin/clsync:cluster - Enable clustering support (allows master-master clsync on multiple hosts). Not fully implemented yet.
 app-admin/clsync:control-socket - Enable AF_UNIX control socket support.
