@@ -68,6 +68,7 @@ catkin_src_configure_internal() {
 }
 
 src_configure() {
+	export PYTHONPATH="${S}/python"
 	local mycmakeargs=(
 		"$(cmake-utils_use test CATKIN_ENABLE_TESTING)"
 		"-DCATKIN_BUILD_BINARY_PACKAGE=ON"
