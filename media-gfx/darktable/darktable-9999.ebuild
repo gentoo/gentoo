@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,6 +34,7 @@ CDEPEND="
 	>=media-libs/lensfun-0.2.3:0=
 	media-libs/libpng:0=
 	media-libs/tiff:0
+	net-libs/libsoup:2.4
 	net-misc/curl
 	virtual/jpeg:0
 	virtual/glu

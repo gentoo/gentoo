@@ -38,6 +38,7 @@ CDEPEND="
 	>=media-libs/lensfun-0.2.3:0=
 	media-libs/libpng:0=
 	media-libs/tiff:0
+	net-libs/libsoup:2.4
 	net-misc/curl
 	virtual/jpeg:0
 	virtual/glu
