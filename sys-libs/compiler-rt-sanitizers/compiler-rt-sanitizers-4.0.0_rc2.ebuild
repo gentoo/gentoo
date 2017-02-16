@@ -74,7 +74,9 @@ src_configure() {
 
 		# same flags are passed for build & tests, so we need to strip
 		# them down to a subset supported by clang
-		filter-flags -msahf -frecord-gcc-switches
+		CC=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang \
+		CXX=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang++ \
+		strip-unsupported-flags
 	fi
 
 	cmake-utils_src_configure
