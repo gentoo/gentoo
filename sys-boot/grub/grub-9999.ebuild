@@ -120,7 +120,7 @@ RDEPEND+="
 
 DEPEND+=" !!=media-libs/freetype-2.5.4"
 
-RESTRICT="strip test"
+RESTRICT="strip !test? ( test )"
 
 QA_EXECSTACK="usr/bin/grub*-emu* usr/lib/grub/*"
 QA_WX_LOAD="usr/lib/grub/*"

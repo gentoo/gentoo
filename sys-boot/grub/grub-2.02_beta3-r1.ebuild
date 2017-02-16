@@ -115,7 +115,7 @@ RDEPEND+="
 DEPEND+=" !!=media-libs/freetype-2.5.4"
 
 STRIP_MASK="*/grub/*/*.{mod,img}"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 QA_EXECSTACK="
 	usr/bin/grub*-emu*
