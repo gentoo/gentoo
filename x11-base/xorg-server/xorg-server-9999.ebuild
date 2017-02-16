@@ -108,6 +108,7 @@ DEPEND="${CDEPEND}
 	>=x11-proto/xineramaproto-1.1.3
 	>=x11-proto/xproto-7.0.31
 	>=x11-proto/presentproto-1.0
+	>=x11-proto/dri2proto-2.8
 	>=x11-proto/dri3proto-1.0
 	dmx? (
 		>=x11-proto/dmxproto-2.2.99.1
@@ -121,7 +122,6 @@ DEPEND="${CDEPEND}
 	)
 	!minimal? (
 		>=x11-proto/xf86driproto-2.1.0
-		>=x11-proto/dri2proto-2.8
 	)"
 
 RDEPEND="${CDEPEND}
