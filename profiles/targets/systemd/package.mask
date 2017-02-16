@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Johannes Huber <johu@gentoo.org> (23 Jul 2015)
-# Needs sys-apps/systemd, masked in base for non systemd profiles.
--app-admin/calamares
-
 # Pacho Ramos <pacho@gentoo.org> (21 Apr 2015)
 # This is for running sys-apps/systemd and also helps
 # portage to not try to pull in other providers leading to
