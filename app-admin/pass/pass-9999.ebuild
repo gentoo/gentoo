@@ -8,7 +8,7 @@ inherit bash-completion-r1 git-2 elisp-common
 
 DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git"
 HOMEPAGE="http://www.passwordstore.org/"
-EGIT_REPO_URI="http://git.zx2c4.com/password-store"
+EGIT_REPO_URI="https://git.zx2c4.com/password-store"
 
 SLOT="0"
 LICENSE="GPL-2"
