@@ -17,7 +17,7 @@ SRC_URI="http://xsb.sourceforge.net/downloads/${MY_P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="curl debug iodbc java mysql odbc pcre threads xml"
 
 RDEPEND="curl? ( net-misc/curl )
