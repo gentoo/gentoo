@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=virtual/pkgconfig test? ( dev-libs/check ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=command-line utility to show process environment
+EAPI=6
+HOMEPAGE=https://github.com/jamesodhunt/procenv
+IUSE=test
+KEYWORDS=~amd64 ~hppa ~ppc64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/jamesodhunt/procenv/archive/0.47.tar.gz -> procenv-0.47.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=3de686e45b69d97a013d421531a5d0d9
