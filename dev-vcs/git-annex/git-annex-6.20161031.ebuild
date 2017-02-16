@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ RESTRICT="test"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
-IUSE="+assistant benchmark +concurrentoutput +cryptonite doc +dbus +magicmime +network-uri +pairing +s3 +torrentparser +webapp +webdav +xmpp"
+IUSE="+assistant benchmark +concurrentoutput +cryptonite doc +dbus +magicmime +network-uri +pairing s3 +torrentparser +webapp +webdav +xmpp"
 
 RDEPEND="dev-haskell/aeson:=
 	dev-haskell/async:=
