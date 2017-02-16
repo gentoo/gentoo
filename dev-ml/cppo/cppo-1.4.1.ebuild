@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mjambon/cppo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 LICENSE="BSD"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 
 IUSE="examples"
 
