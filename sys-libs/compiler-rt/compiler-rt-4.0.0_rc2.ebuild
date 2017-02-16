@@ -19,7 +19,7 @@ SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz"
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="test"
+IUSE="+clang test"
 
 LLVM_SLOT=${SLOT%%.*}
 RDEPEND="!=sys-libs/compiler-rt-${SLOT}*:0"
@@ -43,7 +43,13 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	if ! test_compiler; then
+	if use clang; then
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		# ensure we can use clang before installing compiler-rt
+		local -x LDFLAGS="${LDFLAGS} -nodefaultlibs -lc"
+		strip-unsupported-flags
+	elif ! test_compiler; then
 		local extra_flags=( -nodefaultlibs -lc )
 		if test_compiler "${extra_flags[@]}"; then
 			local -x LDFLAGS="${LDFLAGS} ${extra_flags[*]}"
