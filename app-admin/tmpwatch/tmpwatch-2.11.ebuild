@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit toolchain-funcs
 
-DESCRIPTION="Files which haven't been accessed in a given period of time are removed from specified directories"
+DESCRIPTION="Files which haven't been accessed are removed from specified directories"
 HOMEPAGE="https://fedorahosted.org/tmpwatch/"
 SRC_URI="https://fedorahosted.org/releases/t/m/${PN}/${P}.tar.bz2"
 
