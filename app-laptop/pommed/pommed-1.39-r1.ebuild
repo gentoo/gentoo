@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs linux-info systemd
 
-DESCRIPTION="Manage special features such as screen and keyboard backlight on Apple MacBook Pro/PowerBook"
+DESCRIPTION="Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook"
 HOMEPAGE="http://technologeek.org/projects/pommed/index.html"
 ALIOTH_NUMBER="3583"
 SRC_URI="http://alioth.debian.org/frs/download.php/${ALIOTH_NUMBER}/${P}.tar.gz"
