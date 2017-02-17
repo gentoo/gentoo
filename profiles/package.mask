@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
+# Live ebuilds only. Committed in 2012 with no maintenance afterwards.
+# One of the last packages to block distutils.eclass removal, #599838
+# and #599840. Furthermore, lio-utils is broken, #565824. Removal
+# in 30 days.
+sys-block/lio-utils
+sys-block/rtsadmin
+
 # Thomas Deutschmann <whissi@gentoo.org> (17 Feb 2017)
 # Unpatched security vulnerability per bug #576868
 # Removal in 30 days.
