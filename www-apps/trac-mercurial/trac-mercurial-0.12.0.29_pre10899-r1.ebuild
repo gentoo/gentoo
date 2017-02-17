@@ -1,14 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=6
 
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+PYTHON_COMPAT=( python2_7 )
 
-inherit distutils
+inherit distutils-r1
 
 MY_PN="TracMercurial"
 MY_P="${MY_PN}-${PV/_pre/dev-r}"
@@ -22,8 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools"
-RDEPEND=">=www-apps/trac-0.12
-	>=dev-vcs/mercurial-1.1"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND=">=www-apps/trac-0.12[${PYTHON_USEDEP}]
+	>=dev-vcs/mercurial-1.1[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"

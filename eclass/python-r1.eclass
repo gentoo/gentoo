@@ -30,22 +30,8 @@
 # https://wiki.gentoo.org/wiki/Project:Python/python-r1
 
 case "${EAPI:-0}" in
-	0|1|2|3)
+	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	4)
-		# EAPI=4 is only allowed on legacy packages
-		if [[ ${CATEGORY}/${P} == dev-python/pyelftools-0.2[123] ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == sys-apps/file-5.22 ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == sys-apps/i2c-tools-3.1.1 ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == sys-libs/cracklib-2.9.[12] ]]; then
-			:
-		else
-			die "Unsupported EAPI=${EAPI:-4} (too old, allowed only on restricted set of packages) for ${ECLASS}"
-		fi
 		;;
 	5|6)
 		# EAPI=5 is required for sane USE_EXPAND dependencies

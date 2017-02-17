@@ -1,13 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.* *-jython"
+EAPI=6
 
-inherit distutils
+PYTHON_COMPAT=( python2_7 )
+
+inherit distutils-r1
 
 DESCRIPTION="A Python package for implementing SCGI servers"
 HOMEPAGE="https://pypi.python.org/pypi/scgi http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/"
@@ -22,10 +21,6 @@ DEPEND=""
 RDEPEND=""
 
 pkg_postinst() {
-	distutils_pkg_postinst
-
-	elog
 	elog "This package does not install mod_scgi!"
 	elog "Please install www-apache/mod_scgi if you need it."
-	elog
 }
