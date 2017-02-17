@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	abi_x86_32? ( ${ASM_DEPEND} )
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
-PATCHES=( "${FILESDIR}/arm.patch" "${FILESDIR}/neon.patch" )
+PATCHES=( "${FILESDIR}/arm.patch" "${FILESDIR}/neon.patch" "${FILESDIR}/ppc64.patch" )
 
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
@@ -85,6 +85,10 @@ x265_variant_src_configure() {
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
+			if [[ ${ABI} = ppc64 ]] ; then
+				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
+			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -99,6 +103,10 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = arm ]] ; then
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			fi
+			if [[ ${ABI} = ppc64 ]] ; then
+				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
 			fi
 			;;
 		"main")
