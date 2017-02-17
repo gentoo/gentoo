@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-lang/ocaml:=[ocamlopt?] dev-ml/ocamlbuild dev-ml/topkg dev-ml/findlib test? ( dev-ml/ounit )
+DESCRIPTION=OCaml library for manipulation of IP (and MAC) address representations
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-ipaddr
+IUSE=+ocamlopt test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-lang/ocaml:=[ocamlopt?]
+SLOT=0/2.7.2
+SRC_URI=https://github.com/mirage/ocaml-ipaddr/archive/2.7.2.tar.gz -> ocaml-ipaddr-2.7.2.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_md5_=c59270fda3d59920d4582f0a26815517
