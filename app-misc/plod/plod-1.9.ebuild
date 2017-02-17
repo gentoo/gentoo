@@ -1,9 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-DESCRIPTION="PLOD is a tool designed to help administrators (and others) keep
-track of their daily activities."
+DESCRIPTION="A tool designed to help administrators keep track of their daily activities"
 HOMEPAGE="http://www.deer-run.com/~hal/"
 SRC_URI="http://www.far2wise.net/plod/${P}.tar.gz"
 
