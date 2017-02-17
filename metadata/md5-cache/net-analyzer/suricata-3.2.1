@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-libs/jansson-2.2 dev-libs/libpcre dev-libs/libyaml net-libs/libnet:* net-libs/libnfnetlink dev-libs/nspr dev-libs/nss >=net-libs/libhtp-0.5.20 net-libs/libpcap sys-apps/file cuda? ( dev-util/nvidia-cuda-toolkit ) geoip? ( dev-libs/geoip ) lua? ( dev-lang/lua:* ) luajit? ( dev-lang/luajit:* ) nflog? ( net-libs/libnetfilter_log ) nfqueue? ( net-libs/libnetfilter_queue ) redis? ( dev-libs/hiredis ) logrotate? ( app-admin/logrotate ) sys-libs/libcap-ng !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=High performance Network IDS, IPS and Network Security Monitoring engine
+EAPI=5
+HOMEPAGE=http://suricata-ids.org/
+IUSE=+af-packet control-socket cuda debug +detection geoip hardened logrotate lua luajit nflog +nfqueue redis +rules test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/jansson-2.2 dev-libs/libpcre dev-libs/libyaml net-libs/libnet:* net-libs/libnfnetlink dev-libs/nspr dev-libs/nss >=net-libs/libhtp-0.5.20 net-libs/libpcap sys-apps/file cuda? ( dev-util/nvidia-cuda-toolkit ) geoip? ( dev-libs/geoip ) lua? ( dev-lang/lua:* ) luajit? ( dev-lang/luajit:* ) nflog? ( net-libs/libnetfilter_log ) nfqueue? ( net-libs/libnetfilter_queue ) redis? ( dev-libs/hiredis ) logrotate? ( app-admin/logrotate ) sys-libs/libcap-ng
+SLOT=0
+SRC_URI=http://www.openinfosecfoundation.org/download/suricata-3.2.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=22e8d9795f62b87d2d6eded82457aba6
