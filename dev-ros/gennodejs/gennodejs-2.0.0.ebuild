@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit ros-catkin
 
 DESCRIPTION="Javascript ROS message and service generators"
-HOMEPAGE="http://wiki.ros.org/genpy"
+HOMEPAGE="http://wiki.ros.org/gennodejs"
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 IUSE=""
