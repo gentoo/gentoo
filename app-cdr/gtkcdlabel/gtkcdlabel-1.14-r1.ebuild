@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
 
-DESCRIPTION="a GUI frontend to cdlabelgen which is a program that can generate a variety of CD tray covers"
+DESCRIPTION="A GUI for cdlabelgen that generates CD labels"
 HOMEPAGE="http://gtkcdlabel.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
