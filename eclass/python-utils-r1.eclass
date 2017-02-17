@@ -415,9 +415,9 @@ python_export() {
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
-						PYTHON_PKG_DEP='virtual/pypy:0=';;
+						PYTHON_PKG_DEP='>=virtual/pypy-5:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='virtual/pypy3:0=';;
+						PYTHON_PKG_DEP='>=virtual/pypy3-5:0=';;
 					jython2.7)
 						PYTHON_PKG_DEP='dev-java/jython:2.7';;
 					*)
