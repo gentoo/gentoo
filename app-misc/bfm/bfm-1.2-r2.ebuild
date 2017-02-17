@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="File manager and first person shooter written in Java3D, you remove files by shooting at them"
+DESCRIPTION="File manager and first person shooter written in Java3D, shoot to remove files"
 HOMEPAGE="http://bfm.webhop.net"
 SRC_URI="http://bfm.webhop.net/releases/${P}.tar.gz"
 
