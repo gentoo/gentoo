@@ -95,7 +95,7 @@ src_configure() {
 		--with-virtualhosts
 		--enable-largefile
 	)
-	econf "${myeconfargs[@]}" "${my_conf}"
+	econf "${myeconfargs[@]}" ${my_conf}
 }
 
 src_install() {
