@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-PYTHON_DEPEND="2"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit distutils
+inherit distutils-r1
 
 DESCRIPTION="A function plotter program written in PyGTK"
 HOMEPAGE="http://lybniz2.sourceforge.net/"
@@ -16,16 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/pygtk:2"
+DEPEND="dev-python/pygtk:2[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
 
 src_prepare() {
 	sed -i \
 		-e 's/Education;/Education;Math;/' \
 		${PN}.desktop || die
+
+	distutils-r1_src_prepare
 }
