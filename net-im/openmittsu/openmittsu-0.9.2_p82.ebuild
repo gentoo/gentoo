@@ -35,7 +35,7 @@ DOCS=(
 
 src_prepare() {
 	# set version manually, since autodetection works only with git
-le	sed -i "/git_describe_checkout/\
+	sed -i "/git_describe_checkout/\
 		s/.*/set(OPENMITTSU_GIT_VERSION_STRING \"${PV/_p/-}-00000000\")/" \
 		CMakeLists.txt || die
 	cmake-utils_src_prepare
