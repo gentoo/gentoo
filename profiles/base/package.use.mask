@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
+# Python 2 package relies on gedit[python] which is py3 only.
+dev-vcs/rabbitvcs gedit
+
 # Mike Gilbert <floppym@gentoo.org> (16 Feb 2017)
 # Multiple test failures.
 sys-boot/grub:2 test
