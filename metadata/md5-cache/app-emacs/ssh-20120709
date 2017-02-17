@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
-DESCRIPTION=Directory tracking and special character handling support for SSH sessions in Emacs shell buffers
+DESCRIPTION=Directory tracking and special character handling support for SSH sessions
 EAPI=5
 HOMEPAGE=http://www.splode.com/~friedman/software/emacs-lisp/index.html#ssh
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/ssh-20120709.el.xz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:elisp src_install:elisp
 _eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=6a516abe2c16002e49e9b949223b86c4
+_md5_=1052caa2eb4e11b9f1b23809687decf2

@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare unpack
-DESCRIPTION=Compression library programmed in C to perform very good, but slow, deflate or zlib compression
+DESCRIPTION=Very good, but slow, deflate or zlib compression
 EAPI=5
 HOMEPAGE=https://github.com/Hello71/zopfli/
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
@@ -8,4 +8,4 @@ SLOT=0/1
 SRC_URI=https://github.com/Hello71/zopfli/archive/1c07f374419ccb352412fd6403acc2b59ab6cce7.tar.gz -> zopfli-1.0.0_p20140705.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=cc7f9838bfe78d49e0474332bdaf0d07
+_md5_=6e5a0167c9c54b7087a0eb63fcf1208d

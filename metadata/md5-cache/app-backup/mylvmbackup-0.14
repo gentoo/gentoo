@@ -1,5 +1,5 @@
 DEFINED_PHASES=install unpack
-DESCRIPTION=mylvmbackup is a tool for quickly creating backups of MySQL server's data files using LVM snapshots
+DESCRIPTION=Tool for creating backups of MySQL server's data files using LVM snapshots
 EAPI=0
 HOMEPAGE=http://lenzg.net/mylvmbackup/
 KEYWORDS=~amd64 ~ppc ~x86
@@ -8,4 +8,4 @@ RDEPEND=dev-perl/Config-IniFiles >=sys-fs/lvm2-2.02.06 dev-perl/DBD-mysql virtua
 SLOT=0
 SRC_URI=http://lenzg.net/mylvmbackup/mylvmbackup-0.14.tar.gz
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=92ecbf136f6e164db7401deb94ee4701
+_md5_=ec00dfea01eafcb82839070644e17591

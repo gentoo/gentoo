@@ -1,6 +1,6 @@
 DEFINED_PHASES=configure install postinst prepare
 DEPEND=>=app-accessibility/flite-1.4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=A speech server that allows emacspeak and other screen readers to interact with festival lite
+DESCRIPTION=A speech server that allows screen readers to interact with festival lite
 EAPI=5
 HOMEPAGE=http://eflite.sourceforge.net
 IUSE=+16k_voice
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/eflite/eflite-0.4.1.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=5cfd65f11db3761759d07775b22be688
+_md5_=9b4ffd49eeb0cb0f0c911aeaecc288dd

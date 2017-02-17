@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install postinst postrm prepare unpack
 DEPEND=dev-vcs/git
-DESCRIPTION=Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
+DESCRIPTION=Stores, retrieves, generates, and synchronizes passwords securely
 EAPI=5
 HOMEPAGE=http://www.passwordstore.org/
 IUSE=+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin
@@ -9,4 +9,4 @@ RDEPEND=app-crypt/gnupg app-admin/pwgen >=app-text/tree-1.7.0 git? ( dev-vcs/git
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:git-2 src_prepare:- src_compile:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=76aae0d8a29a584766820e0f47097d2c
+_md5_=c2affa5ce8a4ff6a7091014ab0955384

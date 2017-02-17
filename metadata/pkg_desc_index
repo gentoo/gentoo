@@ -5,7 +5,7 @@ app-accessibility/at-spi2-core 2.20.2 2.22.0: D-Bus accessibility specifications
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.20 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.5.1: editor, browser, and mail client using the /bin/ed interface
-app-accessibility/eflite 0.4.1-r3: A speech server that allows emacspeak and other screen readers to interact with festival lite
+app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
 app-accessibility/epos 2.5.37-r2: language independent text-to-speech system
@@ -20,12 +20,12 @@ app-accessibility/festival-ru 0.5: Russian voices for Festival
 app-accessibility/flite 1.4-r4: Flite text to speech engine
 app-accessibility/freetts 1.2.1-r2 1.2.2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
-app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes sample voices
+app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74 7.74-r1: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.20.3-r1 3.22.1 3.22.2: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
-app-accessibility/pidgin-festival 2.4: A plugin for pidgin which enables text-to-speech output of conversations using festival
-app-accessibility/pocketsphinx 0.8: Large open source vocabulary, speaker-independent continuous speech recognition engine
+app-accessibility/pidgin-festival 2.4: A plugin which enables text-to-speech output of conversations using festival
+app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/simon 0.4.1: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
@@ -50,19 +50,19 @@ app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-as-tools 1.0.49.1: The API tools serve as the client interface to the Auto Scaling web service
 app-admin/aws-cw-tools 1.0.12.1: The API tools serve as the client interface to the Amazon CloudWatch web service
 app-admin/aws-elb-tools 1.0.15.1 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
-app-admin/aws-iam-tools 1.3.0: The Command Line Interface (CLI) for the AWS Identity and Access Management (IAM) Service
+app-admin/aws-iam-tools 1.3.0: The Command Line Interface for the AWS Identity and Access Management Service
 app-admin/aws-rds-tools 1.6.001: The Command Line Toolkit for the Amazon Relational Database Service
 app-admin/bastille 3.0.9-r1 3.0.9-r2: Bastille-Linux is a security hardening tool
 app-admin/bcfg2 1.2.4-r1: Configuration management tool
 app-admin/calamares 2.4.6 3.0.1: Distribution-independent installer framework
-app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon, a daemon to receive output from the Linux netconsole driver
+app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r3 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 4.4.1: A usable configuration management system
 app-admin/cgmanager 0.39 0.41: Control Group manager daemon
 app-admin/checkrestart 0.47-r3 0.47-r4: the sysadmin's rolling upgrade tool
 app-admin/checksec 1.7.2 1.7.3 1.7.4 1.7.5: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4: a tool to chroot any dynamically linked application in a safe and sane manner
-app-admin/chrootuid 1.3 1.3-r1: run a network service at low privilege level and with restricted file system access
+app-admin/chrootuid 1.3 1.3-r1: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF executables
 app-admin/cli53 0.8.4 0.8.7 9999: Command line tool for Amazon Route 53
 app-admin/clog 1.1.0: A colorized log tail utility
@@ -81,7 +81,7 @@ app-admin/cronolog 1.6.2-r3 1.6.2-r4: Cronolog apache logfile rotator
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
 app-admin/diamond 4.0-r1 9999: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2: dio - Device I/O monitoring tool
-app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
+app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/drush 6.7.0 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
@@ -121,7 +121,7 @@ app-admin/hddtemp 0.3_beta15-r7 0.3_beta15-r26: A simple utility to read the tem
 app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
-app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of passwords and related information
+app-admin/kedpm 0.4.0-r2: Helps to manage large amounts of passwords and related information
 app-admin/keepass 2.34 2.34-r1 2.35 2.35-r1: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/keepassxc 2.1.1 9999: KeePassXC - KeePass Cross-platform Community Edition
@@ -135,7 +135,7 @@ app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale f
 app-admin/logcheck 1.3.15-r1 1.3.15-r2 1.3.16 1.3.17: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.9.2 3.9.2-r2 3.10.0 3.11.0: Rotates, compresses, and mails system logs
-app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
+app-admin/logsentry 1.1.1 1.1.1-r1: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
 app-admin/logstash-bin 5.1.2 5.2.0: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
@@ -150,7 +150,7 @@ app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.5 0.2.6: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.10 3.0.14 3.2.11 3.2.12 3.4.1 3.4.2: A high-performance, open source, schema-free document-oriented database
-app-admin/monit 5.20.0: a utility for monitoring and managing daemons or similar programs running on a Unix system
+app-admin/monit 5.20.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 0_pre20161108: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/needrestart 2.8-r1 2.9-r1 2.10 2.11 9999: Restart daemons after library updates
@@ -161,7 +161,7 @@ app-admin/packagekit 0.8.15 1.0.11-r1 1.1.1 1.1.4 1.1.5: PackageKit Package Mana
 app-admin/packagekit-base 0.8.15-r1 1.0.11 1.1.1 1.1.4 1.1.5: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-gtk 0.8.15 1.0.11 1.1.1 1.1.4 1.1.5: Gtk3 PackageKit backend library
 app-admin/packagekit-qt 0.9.6: Qt PackageKit backend library
-app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
+app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/passwordsafe 1.00_beta 1.01_beta: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
@@ -200,7 +200,7 @@ app-admin/setools 3.3.8-r7 4.0.1 4.1.0 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/sshguard 1.7.1 1.99.0-r1: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.2-r1: GNU Stow is a symlink farm manager
-app-admin/sud 1.3-r1: A daemon to execute processes with special (and customizable) privileges in a nosuid environment
+app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
 app-admin/sudo 1.8.18_p1 1.8.19_p2 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supernova 2.0.9 2.1.0 2.2.0: novaclient wrapper for multiple nova environments
@@ -220,17 +220,17 @@ app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13 1.6.13-r1: A utility for removing files based on when they were last accessed
-app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed in a given period of time are removed from specified directories
+app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.1 2.4.3.2: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/vault 0.5.3 0.6.2: A tool for managing secrets
 app-admin/verynice 1.1-r2 1.1-r3: A tool for dynamically adjusting the nice-level of processes
-app-admin/watchfolder 0.3.3: Watches directories and processes files, similar to the watchfolder option of Acrobat Distiller
+app-admin/watchfolder 0.3.3: Watches directories and processes files
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.52-r1 1.53-r2 1.54-r1 1.54-r2 9999: Gentoo's installer for web-based applications
 app-admin/webmin 1.791: A web-based Unix systems administration interface
-app-admin/whowatch 1.8.5: interactive who-like program that displays information about users currently logged on in real time
+app-admin/whowatch 1.8.5: Displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
@@ -239,7 +239,7 @@ app-antivirus/clamav 0.98.7 0.98.7-r1 0.99 0.99.1 0.99.2: Clam Anti-Virus Scanne
 app-antivirus/clamav-unofficial-sigs 3.7.2 5.4.1: Download and install third-party clamav signatures
 app-antivirus/skyldav 0.5-r2 0.6: Skyld AV: on-access scanning daemon for ClamAV using fanotify
 app-arch/advancecomp 1.15 1.19 1.20: Recompress ZIP, PNG and MNG, considerably improving compression
-app-arch/afio 2.5 2.5.1: makes cpio-format archives and deals somewhat gracefully with input data corruption
+app-arch/afio 2.5 2.5.1: Makes cpio-format archives and deals gracefully with input data corruption
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5 3.10.22-r7: Utility for opening arj archives
@@ -278,7 +278,7 @@ app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.614 0.621 0.630: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p106-r1 0_p120 0_p131 0_p131-r1 1.7.5-r1 9999: Extremely Fast Compression algorithm
 app-arch/lzip 1.16 1.18 1.19_pre1: lossless data compressor based on the LZMA algorithm
-app-arch/lziprecover 1.17 1.18 1.19_pre2: Lziprecover is a data recovery tool and decompressor for files in the lzip compressed data format
+app-arch/lziprecover 1.17 1.18 1.19_pre2: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzlib 1.6 1.7 1.8: Library for lzip compression
 app-arch/lzma 9.20-r1: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.03: Utility for fast (even real-time) compression/decompression
@@ -327,7 +327,7 @@ app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for 
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4: InstallShield CAB file extractor
 app-arch/unzip 6.0_p20: unzipper for pkzip-compressed files
-app-arch/upx-bin 3.91: Ultimate Packer for eXecutables (binary version with proprietary NRV compression)
+app-arch/upx-bin 3.91: Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
 app-arch/xar 1.5.2-r1 1.5.2-r2 1.6.1: An easily extensible archive format
@@ -353,11 +353,11 @@ app-backup/boxbackup 0.11.1-r1 0.11.1-r2: A completely automatic on-line backup 
 app-backup/btrbk 0.23.3 0.24.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.28.1 0.29 0.29-r1: A highly efficient backup system based on the git packfile format
 app-backup/burp 1.4.40-r5 1.4.40-r6: Network backup and restore client and server for Unix and Windows
-app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude lists using hardlinks and rsync
+app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.4.20 2.4.23 2.4.24 2.5.8 2.5.9: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
+app-backup/dar 2.4.20 2.4.23 2.4.24 2.5.8 2.5.9: A full featured backup tool, aimed for disks
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.7.10 0.7.11: Secure backup system using gnupg to encrypt data
@@ -383,7 +383,7 @@ app-backup/kbackup 0.8-r1 1.0: Program that lets you back up any directories or 
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
 app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
-app-backup/mylvmbackup 0.14: mylvmbackup is a tool for quickly creating backups of MySQL server's data files using LVM snapshots
+app-backup/mylvmbackup 0.14: Tool for creating backups of MySQL server's data files using LVM snapshots
 app-backup/obnam 1.19.1 1.21: A backup program that supports encryption and deduplication
 app-backup/pdumpfs 1.3-r2: A daily backup system similar to Plan9's dumpfs
 app-backup/qt4-fsarchiver 0.6.19.6 0.6.19.7: Qt4 frontend for fsarchiver
@@ -391,7 +391,7 @@ app-backup/rdedup 1.0.2: data deduplication with compression and public key encr
 app-backup/rdiff-backup 1.3.3-r1 1.3.3-r2: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
-app-backup/rear 1.15-r1 1.17.0 1.17.1: Fully automated disaster recovery, suppors broad variety of backup strategies and scenarios.
+app-backup/rear 1.15-r1 1.17.0 1.17.1: A setup-and-forget Linux bare metal disaster recovery solution
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/restic 0.4.0: restic is a backup program that is fast, efficient and secure
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
@@ -472,7 +472,7 @@ app-cdr/gtkcdlabel 1.14-r1 1.15: A GUI for cdlabelgen that generates CD labels
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
 app-cdr/isomaster 1.3.5 1.3.9-r1 1.3.11 1.3.13: Graphical CD image editor for reading, modifying and writing ISO images
 app-cdr/k3b 2.0.3-r2 2.0.3-r3 2.0.3-r5: Full-featured burning and ripping application by KDE
-app-cdr/k9copy 2.3.8-r1: k9copy is a DVD backup utility which allows the copy of one or more titles from a DVD9 to a DVD5
+app-cdr/k9copy 2.3.8-r1: DVD backup utility which allows the copy of titles from a DVD9 to a DVD5
 app-cdr/kcdemu 0.5.0 0.7.2: Frontend to cdemu daemon based on KDE Frameworks
 app-cdr/mirage2iso 0.4.1-r1 9999: CD/DVD image converter using libmirage
 app-cdr/mkcdtoc 1.0: command-line utility to create toc-files for cdrdao
@@ -547,7 +547,7 @@ app-crypt/hashcat 3.30: World's fastest and most advanced password recovery util
 app-crypt/heimdal 1.5.3-r2 7.1.0: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 1.0 9999: Supporting tools for IMA and EVM
-app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, RIPEMD*, SHA*, TIGER*, WHIRLPOOL
+app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
 app-crypt/jetring 0.21: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
@@ -558,7 +558,7 @@ app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libmd 0.0.0: Message Digest functions from BSD systems
-app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
+app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.1 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.0.1: Yubico Universal 2nd Factor (U2F) server C Library
@@ -576,11 +576,11 @@ app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT K
 app-crypt/monkeysign 2.0.2-r1: A user-friendly commandline tool to sign OpenGPG keys
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
-app-crypt/nistp224 0.75-r1: nistp224 performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
+app-crypt/nistp224 0.75-r1: Performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
 app-crypt/nitrokey-app 0.6.3: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.14: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.4.0 0.5.0: onak is an OpenPGP keyserver
-app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions between 2006 and 2008
+app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/openssl-tpm-engine 0.4.1 0.4.2: This provides a OpenSSL engine that uses private keys stored in TPM hardware
 app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
@@ -602,7 +602,7 @@ app-crypt/rainbowcrack 1.6.1: Hash cracker that precomputes plaintext - cipherte
 app-crypt/rhash 1.3.4: Console utility and library for computing and verifying file hash sums
 app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntool 0.6-r1 0.8: Utilities for signing and verifying files for UEFI Secure Boot
-app-crypt/scrypt 1.2.0: A simple password-based encryption utility using the scrypt key derivation function
+app-crypt/scrypt 1.2.0: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.4.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.18.0 3.20.0: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
@@ -671,7 +671,7 @@ app-dicts/aspell-uk 1.4.0.0: Ukrainian language dictionary for aspell
 app-dicts/aspell-vi 0.01.1.1: Vietnamese language dictionary for aspell
 app-dicts/bookview 3.2.1: NDTP client written in Tcl/Tk
 app-dicts/canna-2ch 20030827 20040519: Japanese Canna dictionary for 2channelers
-app-dicts/canna-cannadic 0.95c: Japanese dictionary as a supplement/replacement to the dictionaries distributed with Canna3.5b2
+app-dicts/canna-cannadic 0.95c: Japanese dictionary as a supplement/replacement to Canna3.5b2
 app-dicts/dictd-devils 0-r1: The Devil's Dictionary for dict
 app-dicts/dictd-dicts 1.0: A package to simplify installation of all dictd dictionaries
 app-dicts/dictd-elements 2000.22.07-r1: The elements database for dict
@@ -855,7 +855,7 @@ app-dicts/sword-heretics 1.1: Heretics by Gilbert K. Chesterton (1874-1936)
 app-dicts/sword-hitchcock 1.3: Hitchcock's Bible Names
 app-dicts/sword-hnv 1.8: Hebrew Names Version of the World English Bible
 app-dicts/sword-hunkar 1.7: Hungarian Karoli
-app-dicts/sword-hunuj 1.2: New Translation Bible of the Hungarian Bible Society (Magyar Bibliatarsulat Ujforditasu Bibliaja)
+app-dicts/sword-hunuj 1.2: New Translation Bible of the Hungarian Bible Society
 app-dicts/sword-icelandic 1.1: Icelandic Bible
 app-dicts/sword-institutes 1.2: Calvin's Institutes
 app-dicts/sword-isbe 1.6: International Standard Bible Encyclopedia
@@ -966,7 +966,7 @@ app-doc/geant-docs 4.9.6 4.10.0 4.10.03 4.10.1 4.10.2: User documentation for Ge
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1: yet another free document preparation system
-app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition, folklore, and humor
+app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.1 4.0.4 4.0.5: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1: the Linkers and Loaders book
@@ -980,7 +980,7 @@ app-doc/mkdoxy 1.0.0: mkDoxy generates Doxygen-compatible HTML documentation for
 app-doc/motif-reference-manual 2.3.0-r1: Motif Reference Manual
 app-doc/php-docs 20101029-r1: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68: A Hacker magazine by the community, for the community
-app-doc/phrack-all 68: Hacker magazine by the community, for the community (this will install *all* issues of phrack)
+app-doc/phrack-all 68: Hacker magazine by the community, for the community (all issues)
 app-doc/pms 6_p20151113 9999: Gentoo Package Manager Specification (draft)
 app-doc/podbrowser 0.12-r3: PodBrowser is a documentation browser for Perl
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
@@ -989,7 +989,7 @@ app-doc/selfhtml 8.1.2: "The" German HTML/XHTML/CSS/XML/DHTML/CGI/Perl/JavaScrip
 app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
 app-doc/single-unix-specification 3 4_p2: The Single UNIX Specification, Version 4, 2016 Edition
 app-doc/tldp-howto 20100701 20120707: The Linux Documentation Project HOWTOs
-app-doc/vilearn 1.0: vilearn is an interactive vi tutorial comprised of 5 tutorials for the vi-impaired
+app-doc/vilearn 1.0: An interactive vi tutorial comprised of 5 tutorials for the vi-impaired
 app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
 app-doc/zeal 0.2.1 0.3.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
@@ -1033,7 +1033,7 @@ app-editors/jed 0.99.19: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
 app-editors/joe 4.2 4.3-r1 4.4: A free ASCII-Text Screen Editor for UNIX
-app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs - a light emacs-like editor without LISP bindings
+app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs, a light emacs-like editor without LISP bindings
 app-editors/juffed 0.10-r1: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p27 3.1_p30: portable version of JOE's Own Editor
 app-editors/kakoune 0_pre20160620 0_pre20161111 9999: Selection-oriented code editor inspired by vim
@@ -1043,7 +1043,7 @@ app-editors/le 1.14.3 1.16.1 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
 app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
-app-editors/lfhex 0.42: A fast, efficient hex-editor with support for large files and comparing binary files
+app-editors/lfhex 0.42: A fast hex-editor with support for large files and comparing binary files
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20160421 20161005: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
@@ -1072,7 +1072,7 @@ app-editors/vile 9.8k 9.8n 9.8o 9.8p 9.8r: VI Like Emacs -- yet another full-fea
 app-editors/vim 8.0.0106 9999: Vim, an improved vi-style text editor
 app-editors/vim-core 7.4.769 7.4.2102 8.0.0005 8.0.0005-r1 8.0.0106 9999: vim and gvim shared files
 app-editors/vim-qt 20150102-r1: Qt GUI version of the Vim text editor
-app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor for programmers
+app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
 app-editors/xemacs 21.4.22-r4 21.4.24 21.5.31 21.5.33 21.5.34-r2 21.5.34-r3 21.5.34-r4: highly customizable open source text editor and application development system
 app-editors/xmlcopyeditor 1.2.1.3: XML Copy Editor is a fast, free, validating XML editor
@@ -1107,7 +1107,7 @@ app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in ec
 app-emacs/cmail 2.62-r1: A simple mail management system for Emacs
 app-emacs/color-browser 0.3-r1: A utility for designing Emacs color themes
 app-emacs/color-moccur 2.73: Major mode for color moccur
-app-emacs/color-theme 6.6.0-r1: Install color themes (includes many themes and allows you to share your own with the world)
+app-emacs/color-theme 6.6.0-r1: Install color themes (includes many themes)
 app-emacs/company-mode 0.6.14 0.7: In-buffer completion front-end
 app-emacs/crontab-mode 1.20: Mode for editing crontab files
 app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encrypted files
@@ -1199,7 +1199,7 @@ app-emacs/mpg123-el 1.59 1.60: Emacs front-end to mpg123 audio player and OggVor
 app-emacs/mu-cite 8.1_p200709030413 8.1_p201202272330: Message citation utilities for emacsen
 app-emacs/multi-term 1.3: Manage multiple terminal buffers in Emacs
 app-emacs/multiple-cursors 1.3.0: Multiple cursors for Emacs
-app-emacs/muse 3.20: Muse-mode is similar to EmacsWikiMode, but more focused on publishing to various formats
+app-emacs/muse 3.20: Similar to EmacsWikiMode, but more focused on publishing to various formats
 app-emacs/nagios-mode 0.3: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 20080922: Add support for DocBook 5 schemas to NXML
@@ -1246,8 +1246,8 @@ app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.0_p20101103 2.11 2.12 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 5.0 6.1-r1 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
-app-emacs/ssh 20120709: Directory tracking and special character handling support for SSH sessions in Emacs shell buffers
-app-emacs/stripes 0.2-r1: An Emacs mode which highlights every even line with an alternative background color
+app-emacs/ssh 20120709: Directory tracking and special character handling support for SSH sessions
+app-emacs/stripes 0.2-r1: Emacs mode which highlights every even line with an alternative background color
 app-emacs/sumibi 0.5.2: Statistical Japanese input method using the Internet as a large corpus
 app-emacs/tdtd 0.7.1-r1: Emacs Major Mode for SGML and XML DTDs
 app-emacs/teco 7-r1: TECO interpreter for GNU Emacs
@@ -1363,7 +1363,7 @@ app-emulation/virt-what 1.12: Detects if the current machine is running in a vir
 app-emulation/virtio-win 0.1.96 0.1.117 0.1.118 0.1.126: VirtIO drivers for Windows virtual machines running on KVM
 app-emulation/virtualbox 5.0.16-r1 5.0.32 5.1.12 5.1.14: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 5.0.16 5.0.32 5.1.12 5.1.14: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 5.0.16.105871-r1 5.0.32.112930 5.1.12.112440 5.1.14.112924: Family of powerful x86 virtualization products for enterprise as well as home use
+app-emulation/virtualbox-bin 5.0.16.105871-r1 5.0.32.112930 5.1.12.112440 5.1.14.112924: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-extpack-oracle 5.0.16.105871 5.0.32.112930 5.1.12.112440 5.1.14.112924: PUEL extensions for VirtualBox
 app-emulation/virtualbox-guest-additions 5.0.16 5.0.32 5.1.12 5.1.14: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 5.0.16 5.0.32 5.1.12 5.1.14: Kernel Modules for Virtualbox
@@ -1374,7 +1374,7 @@ app-emulation/vmware-player 7.1.2.2780323-r1 12.1.0.3272444-r2: Emulate a comple
 app-emulation/vmware-tools 9.2.3.1031769 9.6.5.2700073 9.9.3.2780323 9.9.4.3206955: VMware Tools for guest operating systems
 app-emulation/vmware-vix 1.11.4.744019: VMware VIX API for Linux
 app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-r4 11.1.3.3206955-r3 11.1.3.3206955-r4 12.1.0.3272444-r2: Emulate a complete PC without the performance overhead of most emulators
-app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
+app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 1.8-r3 1.8.1-r3 1.8.2-r2 1.8.3 1.8.3-r1 1.8.4 1.8.5 1.8.6 1.9.4-r3 1.9.5-r3 1.9.6-r3 1.9.7-r3 1.9.8-r2 1.9.9-r3 1.9.10-r3 1.9.11-r3 1.9.12-r2 1.9.13-r2 1.9.14-r2 1.9.15-r1 1.9.16 1.9.17 1.9.18 1.9.19-r1 1.9.20 1.9.21 1.9.22 1.9.23 2.0 9999: Free implementation of Windows(tm) on Unix
 app-emulation/winetricks 20160724 99999999: Easy way to install DLLs needed to work around problems in Wine
@@ -1442,7 +1442,7 @@ app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
 app-forensics/chkrootkit 0.49 0.50 0.51: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
-app-forensics/examiner 0.5-r2: Application that utilizes the objdump command to disassemble and comment foreign executable binaries
+app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 0.69 1.5.7-r1 1.5.7-r2: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 0.7 0.8 0.8-r1 0.9: A general purpose fuzzer with feedback support
@@ -1452,7 +1452,7 @@ app-forensics/lynis 1.6.4 2.1.0 2.1.1: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
-app-forensics/openscap 1.0.8-r1 1.1.1 1.2.0 1.2.1 1.2.5 9999: Framework which enables integration with the Security Content Automation Protocol (SCAP)
+app-forensics/openscap 1.0.8-r1 1.1.1 1.2.0 1.2.1 1.2.5 9999: Framework which enables integration with Security Content Automation Protocol
 app-forensics/ovaldi 5.10.1.4: Free implementation of OVAL
 app-forensics/pasco 20040505_p1 20040505_p1-r1: IE Activity Parser
 app-forensics/quickfuzz 0.1_p20160920 9999: An experimental grammar fuzzer in Haskell using QuickCheck
@@ -1462,7 +1462,7 @@ app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.2: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/scalpel 2.0: A high performance file carver
 app-forensics/sleuthkit 4.0.2 4.1.0 4.1.2 4.1.3: A collection of file system and media management forensic analysis tools
-app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs or other technique
+app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/volatility 2.4.1: Framework for analyzing volatile memory
 app-forensics/yasat 526 700 755 839: Security and system auditing tool
 app-forensics/zzuf 0.13-r1 0.15: Transparent application input fuzzer
@@ -15391,7 +15391,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.02.07 2017.02.14 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.12.22 2017.02.14 2017.02.17 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18654,7 +18654,7 @@ x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0 1.0-r1: OpenGL-based 3D File Manager
 x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PPC based computers
-x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
+x11-misc/accessx 0951-r1 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
 x11-misc/albert 0.8.11 0.9.3: Desktop agnostic launcher
@@ -18688,7 +18688,7 @@ x11-misc/chgres 0.1-r1: A very simple command line utility for changing X resolu
 x11-misc/colord 1.2.12 1.3.3 1.3.4: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p4 2.2.2_p4-r1: Digital clock for the X window system
-x11-misc/devilspie 0.22: A Window Matching utility similar to Sawfish's Matched Windows feature
+x11-misc/devilspie 0.22 0.23: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.36 0.41 0.42: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
@@ -18913,7 +18913,7 @@ x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
 x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord and X
 x11-misc/xidle 24102005: Monitors inactivity in X and runs the specified program when a timeout occurs
-x11-misc/xkbd 0.8.15-r1 0.8.16: onscreen soft keyboard for X11
+x11-misc/xkbd 0.8.15-r1 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5-r1 0.5_p5_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.14 2.16 2.17 2.18 2.19 2.20: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r1: GUI frontend to xmodmap

@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DESCRIPTION=Ultimate Packer for eXecutables (binary version with proprietary NRV compression)
+DESCRIPTION=Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 EAPI=5
 HOMEPAGE=http://upx.sourceforge.net/
 KEYWORDS=~amd64 ~ppc ~x86
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=x86? ( http://upx.sourceforge.net/download/upx-3.91-i386_linux.tar.bz2 ) amd64? ( http://upx.sourceforge.net/download/upx-3.91-amd64_linux.tar.bz2 ) ppc? ( http://upx.sourceforge.net/download/upx-3.91-powerpc_linux.tar.bz2 ) arm? ( http://upx.sourceforge.net/download/upx-3.91-armeb_linux.tar.bz2 ) mips? ( http://upx.sourceforge.net/download/upx-3.91-mipsel_linux.tar.bz2 )
 _eclass_exported_funcs=src_install:-
 _eclasses_=pax-utils	4c2654a34ebe732e85fda354f6ee642f
-_md5_=c3801b889613266858d2d2a6fd177b4b
+_md5_=f520fcbf0a3188473c1f650a105137a1
