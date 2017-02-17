@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="2"
 inherit eutils
 
-DESCRIPTION="scim-uim is an input module for Smart Common Input Method (SCIM) which uses uim as backend"
+DESCRIPTION="An input module for Smart Common Input Method (SCIM) which uses uim as backend"
 HOMEPAGE="http://www.scim-im.org/"
 SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
 
