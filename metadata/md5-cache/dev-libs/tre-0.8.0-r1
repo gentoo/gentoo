@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare test
+DEPEND=!app-misc/glimpse !app-text/agrep virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Lightweight, robust, and efficient POSIX compliant regexp matching library
+EAPI=6
+HOMEPAGE=http://laurikari.net/tre/ https://github.com/laurikari/tre/
+IUSE=nls static-libs
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=BSD-2
+RDEPEND=!app-misc/glimpse !app-text/agrep
+SLOT=0
+SRC_URI=http://laurikari.net/tre/tre-0.8.0.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=ea78c812b62fd52a9345e6c232d8d0e3
