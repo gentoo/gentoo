@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1
 
-DESCRIPTION="Detection of weak openvpn keys produced by certain debian versions between 2006 and 2008"
+DESCRIPTION="Detection of weak openvpn keys produced by certain debian versions in 2006-2008"
 HOMEPAGE="http://packages.debian.org/sid/openvpn-blacklist"
 SRC_URI="mirror://debian/pool/main/o/${PN}/${PN}_${PV}.tar.gz"
 
