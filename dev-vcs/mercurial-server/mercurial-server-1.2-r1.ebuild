@@ -1,11 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-PYTHON_DEPEND="2"
+EAPI=6
 
-inherit distutils eutils user
+# force single impl to avoid python-exec wrapping
+DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python2_7 )
+
+inherit distutils-r1 user
 
 if [[ "${PV}" = "9999" ]]; then
 	inherit mercurial
@@ -35,45 +38,43 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	enewgroup hg
 	enewuser hg -1 /bin/bash "/var/lib/${PN}" hg
+	python-single-r1_pkg_setup
 }
 
-src_prepare() {
+python_prepare_all() {
 	# remove useless makefile
-	rm Makefile
+	rm Makefile || die
 
 	# fix installation paths
 	sed -i -e "s|'init'|'share/${PN}/init'|" setup.py \
 		|| die 'sed setup.py failed.'
 
-	# fix documentation
-	if [[ "${PV}" = "1.1" ]]; then
-		epatch "${FILESDIR}/${P}_documentation.patch"
-	fi
+	distutils-r1_python_prepare_all
 }
 
-src_compile() {
-	distutils_src_compile
-
+python_compile_all() {
 	# build documentation
 	if use doc; then
 		xsltproc --nonet -o manual.html \
-		/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl \
-		doc/manual.docbook || die "xsltproc failed"
+			/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl \
+			doc/manual.docbook || die "xsltproc failed"
 	fi
 }
 
-src_install() {
-	distutils_src_install --install-scripts="/usr/share/${PN}"
+python_install() {
+	distutils-r1_python_install --install-scripts="/usr/share/${PN}"
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
 
 	# install configuration files
 	insinto "/etc/${PN}"
-	doins -r src/init/conf/*
+	doins -r src/init/conf/.
 	keepdir /etc/mercurial-server/keys/{root,users}
 
 	# install documentation
-	if use doc; then
-		dohtml manual.html
-	fi
+	use doc && dodoc manual.html
 
 	# install hg home directory
 	keepdir "/var/lib/${PN}"
