@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit elisp
 
-DESCRIPTION="An Emacs mode which highlights every even line with an alternative background color"
+DESCRIPTION="Emacs mode which highlights every even line with an alternative background color"
 HOMEPAGE="http://www.emacswiki.org/emacs/StripesMode"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
