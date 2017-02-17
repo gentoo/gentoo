@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-DESCRIPTION="vilearn is an interactive vi tutorial comprised of 5 tutorials for the vi-impaired"
+DESCRIPTION="An interactive vi tutorial comprised of 5 tutorials for the vi-impaired"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
