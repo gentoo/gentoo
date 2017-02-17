@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 
 SYSTEMD_UNITS_TAG="gentoo-01"
 
-DESCRIPTION="Emulate a complete PC on your PC without the usual performance overhead of most emulators"
+DESCRIPTION="Emulate a complete PC without the performance overhead of most emulators"
 HOMEPAGE="http://www.vmware.com/products/workstation/"
 BASE_URI="https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${MY_PV}/${PV_BUILD}/linux/core/"
 SRC_URI="
