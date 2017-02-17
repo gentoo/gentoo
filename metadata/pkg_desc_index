@@ -296,7 +296,7 @@ app-arch/pdlzip 1.5 1.6 1.7: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.3.3 2.3.4: A parallel implementation of gzip
-app-arch/pixz 1.0.3 1.0.6 9999: Parallel Indexed XZ compressor
+app-arch/pixz 1.0.6 9999: Parallel Indexed XZ compressor
 app-arch/plzip 1.3 1.4 1.5: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20110811 9999: parallel LZMA compressor (no parallel decompression!)
@@ -14461,7 +14461,7 @@ net-dns/maradns 2.0.09-r1 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 3.2.22 4.1.13 4.1.14: An authoritative only, high performance, open source name server
+net-dns/nsd 4.1.14 4.1.15: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2 3.8.1: A framework for managing DNS information
@@ -16928,7 +16928,7 @@ sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
 sys-apps/daemonize 1.7.4 1.7.5 1.7.6: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 4-r1 5-r1 6-r1 7 8 9 10 11: Miscellaneous commands used on macOS, Sierra 10.12
-sys-apps/dbus 1.10.12 1.10.14: A message bus system, a simple way for applications to talk to each other
+sys-apps/dbus 1.10.12 1.10.14 1.10.16: A message bus system, a simple way for applications to talk to each other
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.7 4.8 4.8.1: A selection of tools from Debian
