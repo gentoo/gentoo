@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 MY_P="${P/1.0/9libs}"
 
-DESCRIPTION="An emulation of ACME, Plan9's hybrid window system, shell and editor for programmers"
+DESCRIPTION="An emulation of ACME, Plan9's hybrid window system, shell and editor"
 HOMEPAGE="http://www.netlib.org/research/9libs/"
 SRC_URI="ftp://www.netlib.org/research/9libs/${MY_P}.tar.gz"
 
