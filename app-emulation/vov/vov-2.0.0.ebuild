@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit flag-o-matic
 
-DESCRIPTION="vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine"
+DESCRIPTION="A tool that emulates the behavior of a Von-Neumann machine"
 HOMEPAGE="http://home.gna.org/vov/"
 SRC_URI="http://download.gna.org/vov/${P}.tar.gz"
 
