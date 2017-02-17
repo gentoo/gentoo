@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	abi_x86_32? ( ${ASM_DEPEND} )
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
-PATCHES=( "${FILESDIR}/arm.patch" "${FILESDIR}/neon.patch" )
+PATCHES=( "${FILESDIR}/arm.patch" "${FILESDIR}/neon.patch" "${FILESDIR}/ppc64.patch" )
 
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
