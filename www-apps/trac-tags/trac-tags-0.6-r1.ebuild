@@ -1,14 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=6
 
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+PYTHON_COMPAT=( python2_7 )
 
-inherit distutils
+inherit distutils-r1
 
 MY_REV="9901"
 MY_DIR="tagsplugin/tags/${PV}"
@@ -23,11 +21,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-CDEPEND=">=dev-python/genshi-0.6"
+CDEPEND=">=dev-python/genshi-0.6[${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	app-arch/unzip"
 RDEPEND="${CDEPEND}
-	>=www-apps/trac-0.11"
+	>=www-apps/trac-0.11[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_DIR}"
