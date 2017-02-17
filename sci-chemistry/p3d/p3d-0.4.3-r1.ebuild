@@ -1,13 +1,12 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=6
 
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
+PYTHON_COMPAT=( python2_7 )
 
-inherit distutils versionator
+inherit distutils-r1 vcs-snapshot versionator
 
 MY_P="${PN}-$(replace_version_separator 3 -)"
 GITHUB_ID="gb8b9a75"
@@ -21,15 +20,11 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-3"
 IUSE="examples"
 
-src_prepare() {
-	mv fu* ${P}
-	distutils_src_prepare
-}
-
 src_install() {
-	distutils_src_install
+	distutils-r1_src_install
+
 	if use examples; then
 		insinto /usr/share/${PN}
-		doins -r pdbs exampleScripts || die
+		doins -r pdbs exampleScripts
 	fi
 }
