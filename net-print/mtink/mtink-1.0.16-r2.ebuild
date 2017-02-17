@@ -27,7 +27,11 @@ PATCHES=(
 )
 
 src_configure() {
-	./Configure || die
+	if use X ; then
+		./Configure || die
+	else
+		./Configure -x || die
+	fi
 }
 
 src_compile() {
