@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
+# Reported to be broken. Last real upstream activity in 2011 with
+# a quick hack-fix in 2013. Removal in 30 days. Bug #591506.
+net-misc/orbited
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # Last release in 2004, broken at least since 2010. Seems to require
 # complex patches, no effective maintainer, still uses old distutils
 # eclass. Removal in 30 days. Bug #298850.
