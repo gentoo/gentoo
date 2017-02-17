@@ -28,7 +28,9 @@ RDEPEND="
 	postgres? ( dev-db/postgresql[server] dev-python/pygresql[${PYTHON_USEDEP}] )
 	snmp?     ( net-analyzer/net-snmp dev-python/pysnmp[${PYTHON_USEDEP}] )
 	xml?      ( dev-python/jaxml[${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}"
+# CUPS required because of cups-config call, #563402
+DEPEND="${RDEPEND}
+	net-print/cups"
 
 python_prepare_all() {
 	sed -i -e 's:from pysqlite2 import dbapi2:import sqlite3:' \
