@@ -7,8 +7,7 @@
   </synopsis>
   <product type="ebuild">imagemagick</product>
   <announced>2017-02-17</announced>
-  <revised>2017-02-17: 1</revised>
-  <bug>596004</bug>
+  <revised>2017-02-17: 2</revised>
   <bug>599744</bug>
   <bug>606654</bug>
   <access>remote</access>
@@ -55,7 +54,6 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10146">
       CVE-2016-10146
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7906">CVE-2016-7906</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9298">CVE-2016-9298</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5506">CVE-2017-5506</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5507">CVE-2017-5507</uri>
@@ -65,5 +63,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5511">CVE-2017-5511</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-21T00:45:48Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2017-02-17T08:00:43Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-17T08:09:06Z">b-man</metadata>
 </glsa>
