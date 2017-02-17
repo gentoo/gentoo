@@ -85,6 +85,10 @@ x265_variant_src_configure() {
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
+			if [[ ${ABI} = ppc64 ]] ; then
+				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
+			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -99,6 +103,10 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = arm ]] ; then
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			fi
+			if [[ ${ABI} = ppc64 ]] ; then
+				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
 			fi
 			;;
 		"main")
