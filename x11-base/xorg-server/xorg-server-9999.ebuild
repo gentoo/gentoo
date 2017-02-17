@@ -75,7 +75,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	wayland? (
 		>=dev-libs/wayland-1.3.0
 		media-libs/libepoxy
-		>=dev-libs/wayland-protocols-1.1
+		>=dev-libs/wayland-protocols-1.7
 	)
 	>=x11-apps/xinit-1.3.3-r1
 	systemd? (
