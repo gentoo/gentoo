@@ -7420,7 +7420,7 @@ dev-python/djangocms-video 0.1 1.0.0 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301 1.15.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.10.6 2.0.1 2.0.2: Python client for Docker
+dev-python/docker-py 1.2.2 1.10.6 2.0.1 2.0.2 2.1.0: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you smile
@@ -9846,7 +9846,7 @@ dev-tex/culmus-latex 0.7: Culmus fonts support for latex
 dev-tex/currvita 0.9i-r1: A LaTeX package for typesetting a curriculum vitae
 dev-tex/curve 1.16: LaTeX style for a CV (curriculum vitae) with flavour option
 dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
-dev-tex/dot2tex 2.8.7 2.9.0: A Graphviz to LaTeX converter
+dev-tex/dot2tex 2.9.0: A Graphviz to LaTeX converter
 dev-tex/dot2texi 3.0: Create graphs within LaTeX using the dot2tex tool
 dev-tex/dvi2gr 0.4: DVI to Grace translator
 dev-tex/dvi2tty 5.3.4: Preview dvi-files on text-only devices
@@ -10434,7 +10434,7 @@ dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 2.2.9: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 3.8.4 3.9.2 4.0 4.0.1 4.0.2 4.1 9999: Scalable distributed SCM
-dev-vcs/mercurial-server 1.2 9999: Mercurial authentication and authorization tools
+dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20150503 1.20160123: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
@@ -10443,7 +10443,7 @@ dev-vcs/qbzr 0.23.0 0.23.1: Qt frontend for Bazaar
 dev-vcs/qct 1.7-r1: PyQt based commit tool for many VCSs
 dev-vcs/qgit 2.6: Qt GUI for git repositories
 dev-vcs/qsvn 0.8.3: GUI frontend to the Subversion revision system
-dev-vcs/rabbitvcs 0.16: Integrated version control support for your desktop
+dev-vcs/rabbitvcs 0.16-r1: Integrated version control support for your desktop
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files

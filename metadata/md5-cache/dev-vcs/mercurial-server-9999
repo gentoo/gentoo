@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile install postinst postrm prepare setup unpack
-DEPEND=dev-vcs/mercurial doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt ) =dev-lang/python-2* dev-vcs/mercurial
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-vcs/mercurial doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-vcs/mercurial
 DESCRIPTION=Mercurial authentication and authorization tools
-EAPI=3
+EAPI=6
 HOMEPAGE=http://www.lshift.net/mercurial-server.html
-IUSE=doc
+IUSE=doc python_targets_python2_7
 LICENSE=GPL-2
-RDEPEND=dev-vcs/mercurial =dev-lang/python-2*
+RDEPEND=dev-vcs/mercurial >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
 SLOT=0
-_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils pkg_setup:- src_unpack:mercurial src_prepare:- src_compile:- src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	ea170b525f6a38a006be05c9d9429f13	mercurial	66da6d1ccacd123e28d2c64821052a9a	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=579aa046a700eb985093be497f5bf22f
+_eclass_exported_funcs=pkg_setup:- src_unpack:mercurial src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	mercurial	66da6d1ccacd123e28d2c64821052a9a	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=a9c2d11a61c807fa7f0b9d74e14d0206
