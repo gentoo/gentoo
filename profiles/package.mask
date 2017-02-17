@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
+# No longer works with current Twisted versions. Abandoned. Multiple
+# ebuild issues. Removal in 30 days. Bug #449716.
+net-nntp/hellanzb
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # Both reported not to work with current Amazon servers and abandoned
 # upstream. Removal in 30 days. Bug #542442.
 net-misc/clamz
