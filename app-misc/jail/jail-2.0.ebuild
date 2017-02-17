@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils flag-o-matic
 
-DESCRIPTION="a tool that builds a chroot and configures all the required files, directories and libraries"
+DESCRIPTION="Builds a chroot and configures all the required files, directories and libraries"
 HOMEPAGE="https://github.com/spiculator/jail"
 SRC_URI="https://github.com/spiculator/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
