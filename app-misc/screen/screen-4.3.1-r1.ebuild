@@ -6,7 +6,7 @@ EAPI=5
 
 inherit autotools eutils flag-o-matic pam toolchain-funcs user
 
-DESCRIPTION="Full-screen window manager that multiplexes physical terminals between several processes"
+DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
