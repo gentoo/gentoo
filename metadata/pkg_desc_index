@@ -13748,7 +13748,7 @@ media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
 media-sound/podracer 1.4: A simple podcast aggregator, designed for cron
-media-sound/positron 1.1: Synchronization manager for the Neuros Audio Computer (www.neurosaudio.com) portable music player
+media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/potamus 16: A lightweight audio player with a simple interface and an emphasis on high audio quality
 media-sound/pragha 1.3.1-r1: A lightweight music player (with support for the Xfce desktop environment)
 media-sound/projectm-jack 2.0.1 2.1.0: A Qt based GUI for projectM that visualizes your JACK output
@@ -14651,8 +14651,8 @@ net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for se
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
 net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.17 2.18: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 0.8.21 1.0.0 9999: A modular textUI IRC client with IPv6 support
-net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
+net-irc/irssi 0.8.21 1.0.0 1.0.1 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
