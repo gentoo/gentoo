@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alon Bar-Lev <alonbl@gentoo.org> (17 Feb 2017)
+# Replaced by dev-libs/libp11.
+# Bug#609668. Removal in 30 days.
+dev-libs/engine_pkcs11
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # Live ebuilds only. Committed in 2012 with no maintenance afterwards.
 # One of the last packages to block distutils.eclass removal, #599838
