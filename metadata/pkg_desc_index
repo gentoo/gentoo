@@ -234,7 +234,7 @@ app-admin/whowatch 1.8.5: interactive who-like program that displays information
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
-app-admin/yadm 1.04 1.05 1.06: A dotfile manager for the config files in your home folder
+app-admin/yadm 1.05 1.06: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.98.7 0.98.7-r1 0.99 0.99.1 0.99.2: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2 5.4.1: Download and install third-party clamav signatures
 app-antivirus/skyldav 0.5-r2 0.6: Skyld AV: on-access scanning daemon for ClamAV using fanotify
@@ -18307,7 +18307,7 @@ www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to em
 www-plugins/lightspark 0.7.2_p20150318 0.7.2_p20160107 9999: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
-www-plugins/pdfjs 1.6.210: A PDF reader in JavaScript
+www-plugins/pdfjs 1.7.225: A PDF reader in JavaScript
 www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.31-r1 2.2.32 2.4.25: The Apache Web Server
