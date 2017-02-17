@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit toolchain-funcs
 
-DESCRIPTION="Temperature logging and reporting using Dallas Semiconductor's iButtons and 1-Wire protocol"
+DESCRIPTION="Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol"
 HOMEPAGE="http://www.digitemp.com/ http://www.ibutton.com/"
 SRC_URI="http://www.digitemp.com/software/linux/${P}.tar.gz"
 
