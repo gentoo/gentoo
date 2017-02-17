@@ -33,8 +33,8 @@ SRC_URI="
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-# IUSE="cups dbus djvu gtk idn l10n_de static-libs tiff X"
-IUSE="cups dbus gtk idn l10n_de static-libs tiff X"
+# IUSE="cups dbus djvu gtk l10n_de static-libs tiff unicode X"
+IUSE="cups dbus gtk l10n_de static-libs tiff unicode X"
 # RESTRICT="djvu? ( bindist )"
 
 COMMON_DEPEND="
@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.3.8 )
 	dbus? ( sys-apps/dbus )
 	gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) )
-	idn? ( net-dns/libidn )
+	unicode? ( net-dns/libidn )
 	tiff? ( >=media-libs/tiff-4.0.1:0= )
 	X? ( x11-libs/libXt x11-libs/libXext )
 "
@@ -188,7 +188,7 @@ src_configure() {
 		$(use_enable dbus) \
 		$(use_enable gtk) \
 		$(use_with cups pdftoraster) \
-		$(use_with idn libidn) \
+		$(use_with unicode libidn) \
 		$(use_with tiff system-libtiff) \
 		$(use_with X x)
 
