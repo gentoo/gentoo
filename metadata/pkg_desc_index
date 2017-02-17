@@ -15542,7 +15542,7 @@ net-print/lm1100 1.0.2a-r1: The Tim Engler's Lexmark 1100 driver
 net-print/lprng 3.8.35-r3: Extended implementation of the Berkeley LPR print spooler
 net-print/magicfilter 2.3h: Customizable, extensible automatic printer filter
 net-print/mtink 1.0.16-r1 1.0.16-r2: mtink is a status monitor and inkjet cartridge changer for some Epson printers
-net-print/npadmin 0.8.7: Network printer command-line adminstration tool
+net-print/npadmin 0.8.7 0.8.7-r1: Network printer command-line adminstration tool
 net-print/pkpgcounter 3.50-r2: Generic PDL (Page Description Language) parser in Python
 net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series
 net-print/poster 20060221 20060221-r1: small utility for making a poster from an EPS file or a one-page PS document
