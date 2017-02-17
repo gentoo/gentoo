@@ -4,6 +4,10 @@
 # doomsday ebuild is not available on this architecture
 doomsday
 
+# Mart Raudsepp <leio@gentoo.org> (17 Feb 2017)
+# x11-misc/colord not tested on arm64 yet
+colord
+
 # Mart Raudsepp <leio@gentoo.org> (05 Feb 2017)
 # dev-libs/DirectFB not tested on arm64 (and we probably don't want it)
 directfb

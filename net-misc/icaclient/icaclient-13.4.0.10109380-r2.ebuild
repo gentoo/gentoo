@@ -83,7 +83,7 @@ src_unpack() {
 }
 
 src_install() {
-	local tmpl
+	local tmpl dest
 
 	dodir "${ICAROOT}"
 
@@ -99,12 +99,13 @@ src_install() {
 		dosym "${ICAROOT}"/npica.so /usr/$(get_libdir)/nsbrowser/plugins/npica.so
 	fi
 
-	insinto "${ICAROOT}"
-	doins nls/en.UTF-8/eula.txt
-	doins -r usb
+	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
+		insinto "${dest}"
+		doins nls/en.UTF-8/eula.txt
+	done
 
-	insinto "${ICAROOT}"/nls/en
-	doins nls/en.UTF-8/eula.txt
+	insinto "${ICAROOT}"
+	doins -r usb
 
 	insinto "${ICAROOT}"/config
 	doins config/* config/.* nls/en/*.ini
