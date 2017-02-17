@@ -6,6 +6,7 @@
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
 xfce-extra/xfce4-taskmanager gksu gtk3
+net-wireless/blueman appindicator
 
 # Robin Johnson <robbat2@gentoo.org> (14 Feb 2017)
 # Not tk for this arch yet
