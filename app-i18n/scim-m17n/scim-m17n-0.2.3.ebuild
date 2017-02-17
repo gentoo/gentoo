@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-DESCRIPTION="scim-m17n is an input module for Smart Common Input Method (SCIM) which uses m17n as backend"
+DESCRIPTION="An input module for Smart Common Input Method (SCIM) which uses m17n as backend"
 HOMEPAGE="http://www.scim-im.org/projects/imengines"
 SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
 
