@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile install postinst postrm prepare unpack
-DEPEND=dev-vcs/git =dev-lang/python-2*
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Python module for structural bioinformatics
-EAPI=3
+EAPI=6
 HOMEPAGE=http://p3d.fufezan.net/
-IUSE=examples
+IUSE=examples python_targets_python2_7
 LICENSE=GPL-3
-RDEPEND==dev-lang/python-2*
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
-_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils src_unpack:git-2 src_prepare:distutils src_compile:distutils src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	ea170b525f6a38a006be05c9d9429f13	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9bd403ea31425d31f9c9a94ba830028f
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:-
+_eclasses_=distutils-r1	ff7a6238714c20c6b0ba05d9956b5ad8	eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	python-r1	1f16d4a5e3af0ebb79bbe131576e0618	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=8e2ad6fc9e4e333aee2c0c2f1ceb720b
