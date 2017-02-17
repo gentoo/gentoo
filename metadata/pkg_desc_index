@@ -15543,10 +15543,10 @@ net-print/lprng 3.8.35-r3: Extended implementation of the Berkeley LPR print spo
 net-print/magicfilter 2.3h: Customizable, extensible automatic printer filter
 net-print/mtink 1.0.16-r1 1.0.16-r2: mtink is a status monitor and inkjet cartridge changer for some Epson printers
 net-print/npadmin 0.8.7: Network printer command-line adminstration tool
-net-print/pkpgcounter 3.50-r1: pkpgcounter is a python generic PDL (Page Description Language) parser
+net-print/pkpgcounter 3.50-r2: Generic PDL (Page Description Language) parser in Python
 net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series
 net-print/poster 20060221 20060221-r1: small utility for making a poster from an EPS file or a one-page PS document
-net-print/pykota 1.26: Flexible print quota and accounting package for use with CUPS and lpd
+net-print/pykota 1.26-r1: Flexible print quota and accounting package for use with CUPS and lpd
 net-print/splix 2.0.0_p20111206 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-print/xerox-drivers 0_p20080123: PPD files of XEROX printers (CopyCentre, DocuPrint, Phaser, WorkCentre) for CUPS printing system
@@ -15662,7 +15662,7 @@ net-wireless/osmobts 9999: Osmocom BTS-Side code (Abis, scheduling)
 net-wireless/osmocom-bb 9999: OsmocomBB MS-side GSM Protocol stack (L1, L2, L3) excluding firmware
 net-wireless/portapack-firmware 20160728-r1: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/pyrit 0.4.0-r1 0.5.0: GPU-accelerated attack against WPA-PSK authentication
-net-wireless/python-wifi 0.5.0-r1 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
+net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
 net-wireless/reaver 1.4-r3: Brute force attack against Wifi Protected Setup
 net-wireless/rfcat 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5 0.5-r1: Tool to read and control rfkill status through /dev/rfkill
