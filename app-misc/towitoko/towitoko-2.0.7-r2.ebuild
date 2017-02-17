@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 IUSE="moneyplex"
 
-DESCRIPTION="This library provides a driver for using Towitoko smartcard readers under UNIX environment"
+DESCRIPTION="Provides a driver for using Towitoko smartcard readers under UNIX environment"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 HOMEPAGE="https://www.gentoo.org/"
 
