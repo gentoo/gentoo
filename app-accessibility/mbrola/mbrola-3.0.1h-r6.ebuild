@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ IUSE="l10n_de l10n_es l10n_fr l10n_it l10n_la l10n_pl l10n_ro l10n_sv"
 
 S=${WORKDIR}
 
-DESCRIPTION="Speech synthesizer based on the concatenation of diphones. Includes sample voices"
+DESCRIPTION="Speech synthesizer based on the concatenation of diphones. Includes samples"
 HOMEPAGE="http://tcts.fpms.ac.be/synthesis/mbrola.html"
 MY_PV=${PV//./}
 TCTS="http://tcts.fpms.ac.be/synthesis"

@@ -6,7 +6,7 @@ EAPI=5
 
 inherit readme.gentoo elisp
 
-DESCRIPTION="Install color themes (includes many themes and allows you to share your own with the world)"
+DESCRIPTION="Install color themes (includes many themes)"
 HOMEPAGE="http://www.nongnu.org/color-theme/"
 SRC_URI="http://download.savannah.gnu.org/releases-noredirect/${PN}/${P}.tar.gz"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="the CA NetConsole Daemon, a daemon to receive output from the Linux netconsole driver"
+DESCRIPTION="the CA NetConsole Daemon receives output from the Linux netconsole driver"
 HOMEPAGE="http://oss.oracle.com/projects/cancd/"
 SRC_URI="http://oss.oracle.com/projects/cancd/dist/files/source/${P}.tar.gz"
 

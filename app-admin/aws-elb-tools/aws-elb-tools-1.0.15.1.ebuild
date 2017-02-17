@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="2"
 
-DESCRIPTION="The API tools serve as the client interface to the Elastic Load Balancing web service"
+DESCRIPTION="Serves as the client interface to the Elastic Load Balancing web service"
 HOMEPAGE="http://aws.amazon.com/developertools/Amazon-EC2/2536"
 SRC_URI="mirror://sabayon/${CATEGORY}/ElasticLoadBalancing-${PV}.zip"
 

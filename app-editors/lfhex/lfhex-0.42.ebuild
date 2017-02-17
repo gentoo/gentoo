@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 inherit eutils qt4-r2
 
-DESCRIPTION="A fast, efficient hex-editor with support for large files and comparing binary files"
+DESCRIPTION="A fast hex-editor with support for large files and comparing binary files"
 HOMEPAGE="http://stoopidsimple.com/lfhex"
 SRC_URI="http://stoopidsimple.com/files/${P}.tar.gz"
 

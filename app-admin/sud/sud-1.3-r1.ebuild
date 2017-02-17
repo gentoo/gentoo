@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=2
 
 inherit eutils flag-o-matic
 
-DESCRIPTION="A daemon to execute processes with special (and customizable) privileges in a nosuid environment"
+DESCRIPTION="A daemon to execute processes with special privileges in a nosuid environment"
 HOMEPAGE="http://s0ftpj.org/projects/sud/index.htm"
 SRC_URI="http://s0ftpj.org/projects/sud/${P}.tar.gz"
 

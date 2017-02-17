@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit toolchain-funcs
 
-DESCRIPTION="A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs or other technique"
+DESCRIPTION="A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs"
 HOMEPAGE="http://www.unhide-forensics.info"
 SRC_URI="mirror://sourceforge/${PN}/files/${P}.tgz"
 

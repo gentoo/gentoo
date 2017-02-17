@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (17 Feb 2017)
+# Unpatched security vulnerability per bug #576868
+# Removal in 30 days.
+www-apps/roundup
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # No longer works with current Twisted versions. Abandoned. Multiple
 # ebuild issues. Removal in 30 days. Bug #449716.

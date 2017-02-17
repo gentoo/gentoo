@@ -5,7 +5,7 @@
 EAPI=6
 inherit pam systemd
 
-DESCRIPTION="a utility for monitoring and managing daemons or similar programs running on a Unix system"
+DESCRIPTION="Monitoring and managing daemons or similar programs running on a Unix system"
 HOMEPAGE="http://mmonit.com/monit/"
 SRC_URI="http://mmonit.com/monit/dist/${P}.tar.gz"
 
