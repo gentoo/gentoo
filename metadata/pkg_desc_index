@@ -17638,7 +17638,7 @@ sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to
 sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2 0.6.4: Device mapper target autoconfig
 sys-fs/ncdu 1.11 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2016.2.22-r1 2016.2.22-r2: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2016.2.22-r2: Open source read-write NTFS driver that runs under FUSE
 sys-fs/ocfs2-tools 1.8.2-r1: Support programs for the Oracle Cluster Filesystem 2
 sys-fs/owfs 2.7_p21-r4 3.1_p1 3.1_p4: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
@@ -18218,7 +18218,7 @@ www-apps/pyblosxom 1.4.3-r1: Lightweight weblog system
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
 www-apps/redmine 3.2.1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
-www-apps/roundup 1.4.20 1.5.0: Simple-to-use and -install issue-tracking system with command-line, web, and e-mail interfaces
+www-apps/roundup 1.4.20 1.5.0 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.2.12-r1 4.4.1: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.4-r1: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
