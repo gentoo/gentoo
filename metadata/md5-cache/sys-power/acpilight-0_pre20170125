@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Replacement for xbacklight that uses the ACPI interface to set brightness
+EAPI=6
+HOMEPAGE=https://github.com/wavexx/acpilight/
+IUSE=python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=virtual/udev python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] !x11-apps/xbacklight
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 )
+SLOT=0
+SRC_URI=https://github.com/wavexx/acpilight/archive/9a96203cb09564d7753b14d37d7d4f8ac893f569.tar.gz -> acpilight-0_pre20170125.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_install:-
+_eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
+_md5_=3d26a274467c85fa93f4d2f66e0b3bce
