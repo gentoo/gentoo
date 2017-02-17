@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils fdo-mime multilib
 
-DESCRIPTION="Program to view and manipulate data on LG VX4400/VX6000 and many Sanyo Sprint mobile phones"
+DESCRIPTION="View and manipulate data on LG VX4400/VX6000 and Sanyo Sprint mobile phones"
 HOMEPAGE="http://www.bitpim.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
