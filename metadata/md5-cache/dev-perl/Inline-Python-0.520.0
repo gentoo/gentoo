@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NI/NINE/Inline-Python-0.52.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=bcc2babe2a38568f9fbc0806a6174308
