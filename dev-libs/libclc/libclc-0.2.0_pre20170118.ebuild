@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	./configure.py \
-		--with-llvm-config="${EPREFIX}/usr/bin/llvm-config" \
+		--with-llvm-config="$(type -P llvm-config)" \
 		--prefix="${EPREFIX}/usr" || die
 }
 
