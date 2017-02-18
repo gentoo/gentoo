@@ -159,14 +159,14 @@ src_prepare() {
 src_configure() {
 	local FONTPATH
 	for path in \
-		/usr/share/fonts/urw-fonts \
-		/usr/share/fonts/Type1 \
-		/usr/share/fonts \
-		/usr/share/poppler/cMap/Adobe-CNS1 \
-		/usr/share/poppler/cMap/Adobe-GB1 \
-		/usr/share/poppler/cMap/Adobe-Japan1 \
-		/usr/share/poppler/cMap/Adobe-Japan2 \
-		/usr/share/poppler/cMap/Adobe-Korea1
+		"${EPREFIX}"/usr/share/fonts/urw-fonts \
+		"${EPREFIX}"/usr/share/fonts/Type1 \
+		"${EPREFIX}"/usr/share/fonts \
+		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-CNS1 \
+		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-GB1 \
+		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-Japan1 \
+		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-Japan2 \
+		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-Korea1
 	do
 		FONTPATH="$FONTPATH${FONTPATH:+:}${EPREFIX}$path"
 	done
@@ -237,9 +237,9 @@ src_install() {
 	done
 
 	# install the CMaps from poppler-data properly, bug #409361
-	dosym /usr/share/poppler/cMaps /usr/share/ghostscript/${PVM}/Resource/CMap
+	dosym "${EPREFIX}/usr/share/poppler/cMaps" "/usr/share/ghostscript/${PVM}/Resource/CMap"
 
-	use static-libs || prune_libtool_files --all
+	use static-libs || find "${ED}" -name '*.la' -delete
 
 	if ! use l10n_de; then
 		rm -r "${ED}"/usr/share/man/de || die
