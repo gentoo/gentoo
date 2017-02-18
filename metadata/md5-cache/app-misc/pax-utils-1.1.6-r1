@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=caps? ( >=sys-libs/libcap-2.24 ) python? ( dev-python/pyelftools ) seccomp? ( sys-libs/libseccomp ) caps? ( virtual/pkgconfig ) seccomp? ( virtual/pkgconfig ) app-arch/xz-utils
-DESCRIPTION=ELF related utils for ELF 32/64 binaries that can check files for security relevant properties
+DESCRIPTION=ELF utils that can check files for security relevant properties
 EAPI=4
 HOMEPAGE=https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities
 IUSE=caps debug python seccomp
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://gentoo/pax-utils-1.1.6.tar.xz https://dev.gentoo.org/~solar/pax/pax-utils-1.1.6.tar.xz https://dev.gentoo.org/~vapier/dist/pax-utils-1.1.6.tar.xz
 _eclass_exported_funcs=src_unpack:unpacker src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=494404a65388ea00b32358b5b8039420
+_md5_=4ee818a65e39126e96ddfa4f6d4550b3

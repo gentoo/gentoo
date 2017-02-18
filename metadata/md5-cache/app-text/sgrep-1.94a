@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DESCRIPTION=Use structural criteria to grep and index text, SGML, XML and HTML and filter text streams
+DESCRIPTION=Use structural criteria to grep and index text, SGML, XML and HTML and filter
 EAPI=4
 HOMEPAGE=http://www.cs.helsinki.fi/u/jjaakkol/sgrep.html
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/sgrep-1.94a.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=98b44fc79654f8e50b01d69509b6fc9a
+_md5_=b39950145349ba0798c6fb25ff64f758

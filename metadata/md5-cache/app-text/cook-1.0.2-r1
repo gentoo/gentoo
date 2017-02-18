@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst
-DESCRIPTION=Embedded language which can be used as a macro preprocessor and for similar text processing
+DESCRIPTION=Embedded language which can be used as a macro preprocessor
 EAPI=0
 HOMEPAGE=http://cook.sourceforge.net/
 KEYWORDS=~amd64 ppc x86 ~x86-linux ~ppc-macos ~sparc-solaris
@@ -8,4 +8,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/cook/cook-1.0.2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=ecaa157cb8b9faddd497028757c16418
+_md5_=85d9f7785c4a03f281a46f7e0873c98b

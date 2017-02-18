@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install setup
+DEPEND=app-dicts/wordnet
+DESCRIPTION=A checker for English grammar, for people who are not native English
+EAPI=6
+HOMEPAGE=http://queequeg.sourceforge.net/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-dicts/wordnet
+SLOT=0
+SRC_URI=mirror://sourceforge/queequeg/queequeg-0.91.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=038e3a5d255134509cac82648be1e6b9

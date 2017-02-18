@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install prepare setup
 DEPEND=media-libs/alsa-lib x86? ( sys-apps/pciutils ) amd64? ( sys-apps/pciutils ) dev-libs/confuse >=sys-apps/dbus-1.1 dev-libs/dbus-glib sys-libs/zlib media-libs/audiofile gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXpm ) virtual/pkgconfig virtual/pkgconfig
-DESCRIPTION=Manage special features such as screen and keyboard backlight on Apple MacBook Pro/PowerBook
+DESCRIPTION=Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
 EAPI=5
 HOMEPAGE=http://technologeek.org/projects/pommed/index.html
 IUSE=gtk X
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://alioth.debian.org/frs/download.php/3583/pommed-1.39.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=509141f80ce460c206295de5636bfdd4
+_md5_=4d9b7883bd3a8eb3beb6300efeabe500

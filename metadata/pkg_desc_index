@@ -1470,7 +1470,7 @@ app-i18n/atokx3 3.0.0-r11: ATOK X3 for Linux - The most famous Japanese Input Me
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
 app-i18n/canfep 1.0: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2: A client-server based Kana-Kanji conversion system
-app-i18n/cstools 3.42: A charset conversion tool cstocs and two convenience Perl modules for Czech language
+app-i18n/cstools 3.42: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00: Yet another Dictionary server for the SKK Japanese-input software
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
@@ -1562,13 +1562,13 @@ app-i18n/scim-anthy 1.2.7-r1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-bridge 0.4.16-r3: Yet another IM-client of SCIM
 app-i18n/scim-hangul 0.3.2 0.4.0: Hangul IMEngine for SCIM ported from imhangul
 app-i18n/scim-input-pad 0.1.3 0.1.3.1: Input pad for SCIM used to input symbols and special characters
-app-i18n/scim-m17n 0.2.3: scim-m17n is an input module for Smart Common Input Method (SCIM) which uses m17n as backend
+app-i18n/scim-m17n 0.2.3: An input module for Smart Common Input Method (SCIM) which uses m17n as backend
 app-i18n/scim-pinyin 0.5.91-r3 0.5.92: Smart Common Input Method (SCIM) Smart Pinyin Input Method
 app-i18n/scim-sayura 0.3.3: Sayura Sinhala input method for SCIM
 app-i18n/scim-sunpinyin 2.0.3-r2: The SunPinyin IMEngine for Smart Common Input Method (SCIM)
 app-i18n/scim-tables 0.5.13: Smart Common Input Method (SCIM) Generic Table Input Method Server
 app-i18n/scim-tomoe 0.6.0 0.6.0-r3: Japanese input method Tomoe IMEngine for SCIM
-app-i18n/scim-uim 0.2.0-r2: scim-uim is an input module for Smart Common Input Method (SCIM) which uses uim as backend
+app-i18n/scim-uim 0.2.0-r2: An input module for Smart Common Input Method (SCIM) which uses uim as backend
 app-i18n/scim-wijesekera 0.3.3-r1: Wijesekara keyboard for Sinhala input using scim
 app-i18n/scim-wnn 0.2.4 1.0.0-r1: Japanese input method Wnn IMEngine for SCIM
 app-i18n/skk-jisyo 201101 201605 999999: Jisyo (dictionary) files for the SKK Japanese-input software
@@ -1605,9 +1605,9 @@ app-laptop/lphdisk 0.9.1-r2: utility for preparing a hibernation partition for A
 app-laptop/mbpfan 1.9.1 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
 app-laptop/nvidiabl 0.83 0.87: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pbbuttonsd 0.8.1-r3 0.8.1-r4: Handles power management and special keys on laptops
-app-laptop/pommed 1.39-r1: Manage special features such as screen and keyboard backlight on Apple MacBook Pro/PowerBook
+app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
 app-laptop/powerprefs 0.8.0: program to interface with pbbuttonsd (Powerbook/iBook) keys
-app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon graphics cards
+app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon cards
 app-laptop/spicctrl 1.9-r1: tool for the sonypi-Device (found in Sony Vaio Notebooks)
 app-laptop/thinkfan 0.9.3: simple fan control program for thinkpads
 app-laptop/tp_smapi 0.41 0.42-r1: IBM ThinkPad SMAPI BIOS driver
@@ -1648,7 +1648,7 @@ app-leechcraft/lc-krigstask 9999: The taskbar quark for LeechCraft
 app-leechcraft/lc-lackman 9999: LeechCraft Package Manager for extensions, scripts, themes etc
 app-leechcraft/lc-lastfmscrobble 9999: Last.FM scrobbler plugin for LeechCraft
 app-leechcraft/lc-laughty 9999: The LeechCraft notification daemon
-app-leechcraft/lc-launchy 9999: Allows one to launch third-party applications (as well as LeechCraft plugins) from LeechCraft
+app-leechcraft/lc-launchy 9999: Allows one to launch third-party applications from LeechCraft
 app-leechcraft/lc-lemon 9999: Network monitor plugin for LeechCraft
 app-leechcraft/lc-lhtr 9999: LeechCraft HTML Text editoR component
 app-leechcraft/lc-liznoo 9999: UPower-based power manager for LeechCraft
@@ -1657,7 +1657,7 @@ app-leechcraft/lc-mellonetray 9999: System tray quark for LeechCraft
 app-leechcraft/lc-monocle 9999: Monocle, the modular document viewer for LeechCraft
 app-leechcraft/lc-musiczombie 9999: MusicBrainz client plugin for LeechCraft
 app-leechcraft/lc-nacheku 9999: Monitors selected directory and clipboard for downloadable entities
-app-leechcraft/lc-netstoremanager 9999: LeechCraft plugin for supporting and managing Internet data storages like Yandex.Disk
+app-leechcraft/lc-netstoremanager 9999: Plugin for supporting and managing Internet data storages like Yandex.Disk
 app-leechcraft/lc-networkmonitor 9999: NetworkMonitor watches HTTP requests in for LeechCraft
 app-leechcraft/lc-newlife 9999: New Life imports settings from various other applications into LeechCraft
 app-leechcraft/lc-ooronee 9999: Quark handling text and images droppend onto it
@@ -1668,13 +1668,13 @@ app-leechcraft/lc-popishu 9999: Popishu, the text editor with IDE features for L
 app-leechcraft/lc-poshuku 9999: Poshuku, the full-featured web browser plugin for LeechCraft
 app-leechcraft/lc-qrosp 9999: Qrosp, scrpting support for LeechCraft via Qross
 app-leechcraft/lc-rosenthal 9999: Spellchecking support for LeechCraft
-app-leechcraft/lc-sb2 9999: Next-generation sidebar for LeechCraft with combined launcher and tab switcher, as well as tray area
+app-leechcraft/lc-sb2 9999: Sidebar with combined launcher and tab switcher, as well as tray area
 app-leechcraft/lc-scroblibre 9999: Submissions API 1.2-compliant scrobbler for services like libre.fm
 app-leechcraft/lc-secman 9999: Security and personal data manager for LeechCraft
 app-leechcraft/lc-seekthru 9999: OpenSearch support for LeechCraft
 app-leechcraft/lc-summary 9999: Summary plugin for Leechcraft
 app-leechcraft/lc-sysnotify 9999: Notifications via system libnotify daemon for LeechCraft
-app-leechcraft/lc-tabsessmanager 9999: Provides session restore between LeechCraft runs as well as manual saves/restores
+app-leechcraft/lc-tabsessmanager 9999: Provides session restore between LeechCraft runs and manual saves/restores
 app-leechcraft/lc-tabslist 9999: Quick navigation between tabs in LeechCraft
 app-leechcraft/lc-touchstreams 9999: VKontakte music source plugin for LeechCraft
 app-leechcraft/lc-tpi 9999: Task progress indicator quark for LeechCraft
@@ -1698,10 +1698,10 @@ app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy
 app-misc/away 0.9.5-r1: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
 app-misc/bb 1.3.0_rc1-r3 1.3.0_rc1-r4: Demonstration program for visual effects of aalib
-app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition and SQL support
+app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition, SQL support
 app-misc/beanstalkd 1.4.6-r1 1.9-r1 1.10: A simple, fast work queue
 app-misc/beep 1.3-r1: The advanced PC speaker beeper
-app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, you remove files by shooting at them
+app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
 app-misc/bijiben 3.20.2 3.21.2: Note editor designed to remain simple to use
@@ -1778,8 +1778,8 @@ app-misc/fslint 2.44-r2: A utility to find various forms of lint on a filesystem
 app-misc/fslurp 2.1.4: Read and display data from Fronius IG and IG Plus inverters
 app-misc/fsniper 1.3.1-r1 1.3.1-r2: Monitors a given set of directories for new files
 app-misc/fujiplay 1.33: Utility for Fujifilm/Leica digital cameras (via serial port)
-app-misc/g15composer 3.1 3.2: A library to render text and shapes into a buffer usable by the Logitech G15 keyboard
-app-misc/g15daemon 1.9.5.3-r13 1.9.5.3-r21 9999: G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
+app-misc/g15composer 3.1 3.2: A library to render text and shapes into a buffer usable by the Logitech G15
+app-misc/g15daemon 1.9.5.3-r13 1.9.5.3-r21 9999: Takes control of the G15 keyboard, through the linux kernel uinput device driver
 app-misc/g15macro 1.0.3-r1: Macro recording plugin to G15daemon
 app-misc/g15message 1.0.0: A simple message/alert client for G15daemon
 app-misc/g15mpd 1.0.0-r1: MPD (music player daemon) plugin to G15daemon
@@ -1826,7 +1826,7 @@ app-misc/inputlircd 0.0.1_pre11 0.0.1_pre11-r2 0.0.1_pre15-r1 0.0.1_pre15-r2: In
 app-misc/interceptty 0.6 0.6-r1: a program that can sit between a serial port and an application
 app-misc/irtrans-irclient 6.01.05: IRTrans Server
 app-misc/irtrans-irserver 6.09.04: IRTrans Server
-app-misc/jail 2.0: a tool that builds a chroot and configures all the required files, directories and libraries
+app-misc/jail 2.0: Builds a chroot and configures all the required files, directories and libraries
 app-misc/jira-cli 2.1.5: Simple command line utility to interact with your jira instance
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
@@ -1886,7 +1886,7 @@ app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4: a small utility that measures throughput between stdin and stdout
-app-misc/plod 1.9: PLOD is a tool designed to help administrators (and others) keep track of their daily activities.
+app-misc/plod 1.9: A tool designed to help administrators keep track of their daily activities
 app-misc/ps3pf_utils 2.1.1 2.2.0 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r2 0.2.0-r3: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multiple ISPs
@@ -1902,7 +1902,7 @@ app-misc/relevation 1.3: a command-line searcher for the Revelation password man
 app-misc/remind 03.01.15: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9 0.9.2: Resolve GCC flag -march=native
-app-misc/rioutil 1.5.0-r2: Command line tool for transfering mp3s to and from a Rio 600, 800, Rio Riot, and Nike PSA/Play
+app-misc/rioutil 1.5.0-r2: Tool for transfering mp3s to and from a Rio 600, 800, Riot, and Nike PSA/Play
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
@@ -1942,7 +1942,7 @@ app-misc/tmux 2.2 2.3 2.3-r1 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/todo 2.10: A CLI-based TODO list manager
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
-app-misc/towitoko 2.0.7-r2: This library provides a driver for using Towitoko smartcard readers under UNIX environment
+app-misc/towitoko 2.0.7-r2: Provides a driver for using Towitoko smartcard readers under UNIX environment
 app-misc/tpconfig 3.1.3-r1 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
@@ -1973,7 +1973,7 @@ app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monit
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 7.0.0 8.0.1: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
-app-mobilephone/bitpim 1.0.6-r2: Program to view and manipulate data on LG VX4400/VX6000 and many Sanyo Sprint mobile phones
+app-mobilephone/bitpim 1.0.6-r2: View and manipulate data on LG VX4400/VX6000 and Sanyo Sprint mobile phones
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
 app-mobilephone/dfu-util 0.7 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/esms 0.9.5: A small console program to send SMS messages to Spanish cellular phones
@@ -1985,7 +1985,7 @@ app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of yo
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/kannel 1.4.3-r2 1.5.0-r3: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
-app-mobilephone/lightblue 0.4-r1: Cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
+app-mobilephone/lightblue 0.4-r1: API for Python which provides simple access to Bluetooth operations
 app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
 app-mobilephone/obexftp 0.23-r2 0.24-r1: File transfer over OBEX for mobile phones
 app-mobilephone/past 0.0.4: Simple SMS tool
@@ -2068,13 +2068,13 @@ app-officeext/ooofbtools 2.38 2.47 2.48: OpenOffice extension for the FictionBoo
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
 app-officeext/texmaths 0.37-r1 0.41 0.42: LaTeX Equation Editor for LibreOffice
 app-pda/barry 0.18.3: Sync, backup, program management, and charging for BlackBerry devices
-app-pda/dynamite 0.1.1_p20120512: A tool (and library) for decompressing data compressed with PKWARE Data Compression Library
+app-pda/dynamite 0.1.1_p20120512: A tool for decompressing data compressed with PKWARE Data Compression Library
 app-pda/fusepod 0.5.2: A userspace filesystem which mounts your iPod into a directory
 app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
 app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
 app-pda/ideviceinstaller 1.0.1 1.1.0: A tool to interact with the installation_proxy of an Apple's iDevice
 app-pda/ifuse 1.1.3: Mount Apple iPhone/iPod Touch file systems for backup purposes
-app-pda/iripdb 0.1.3b: iRipDB allows generating the DB files necessary for the iRiver iHP-1xx series of MP3/Ogg HD Players
+app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver iHP-1xx
 app-pda/jpilot 1.8.0 1.8.1 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 1.12: Support library to deal with Apple Property Lists (Binary & XML)
@@ -2082,7 +2082,7 @@ app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod To
 app-pda/p3nfs 5.19-r2 5.19-r3: Symbian to Unix and Linux communication program
 app-pda/pilot-link 0.12.5-r1: suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
-app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update with safe automatic updating functionality
+app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
 app-portage/cpuid2cpuflags 1 2: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating source-archives.
@@ -2123,7 +2123,7 @@ app-portage/layman 2.0.0-r1 2.0.0-r3 2.2.0-r7 2.4.1-r1 2.4.2 9999: Tool to manag
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 9999: metadata.xml generator for ebuilds
 app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
-app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl
+app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.62 0.63 0.64: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
@@ -2149,7 +2149,7 @@ app-shells/dash 0.5.8.2 0.5.9 0.5.9.1-r1: Debian Almquist Shell
 app-shells/dsh 0.25.10: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.4.0 2.5.0: fish is the Friendly Interactive SHell
-app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, repoman, layman, etc)
+app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
 app-shells/hstr 1.21 1.21-r1 1.22-r1: Shell history suggest box
@@ -2186,12 +2186,12 @@ app-text/a2ps 4.14-r5 4.14-r6: Any to PostScript filter
 app-text/acroread 9.5.5-r3: Adobe's PDF reader
 app-text/active-dvi 1.10.2-r1: A DVI previewer and a presenter for slides written in LaTeX
 app-text/adiff 1.4: wordwise diff
-app-text/agrep 2.04 2.04-r1: agrep is a tool for the fast searching of text allowing for errors in the search pattern
+app-text/agrep 2.04 2.04-r1: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
 app-text/ansifilter 2.4: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
-app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
+app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r1 8.6.9-r2 8.6.9-r3 9999: AsciiDoc is a plain text human readable/writable document format
@@ -2202,8 +2202,8 @@ app-text/barcode 0.98-r1: barcode generator
 app-text/bdf2psf 1.104 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.11.4 2.17: BibTeX bibliography prettyprinter and syntax checker
 app-text/bibletime 2.10.1-r1: Qt Bible study application using the SWORD library
-app-text/bibus 1.5.2-r2: Bibliographic and reference management software, integrates with L/OO.o and MS Word
-app-text/bibutils 4.12: Interconverts between various bibliography formats using a common XML intermediate
+app-text/bibus 1.5.2-r2: Bibliographic and reference management software, integrates with LO and MS Word
+app-text/bibutils 4.12: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
 app-text/blogc 0.12.0 9999: A blog compiler
@@ -2223,7 +2223,7 @@ app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation
 app-text/code2html 0.9.1-r1 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 2.0: convert filenames to utf8 or any other charset
-app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor and for similar text processing
+app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor
 app-text/cpdf 2.1.1-r1: A command line tool for manipulating PDF files
 app-text/crf++ 0.54 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for spam filtering
@@ -2267,7 +2267,7 @@ app-text/editorconfig-core-c 0.12.1: EditorConfig core library written in C
 app-text/enchant 1.6.0: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.5.3 0.6.0 0.6.1 0.6.2 0.6.3: GUI and command-line converter for [e]ps and pdf
-app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes,converts to bitmaps
+app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
 app-text/evince 3.20.1 3.22.1: Simple document viewer for GNOME
 app-text/expander 2.0.5-r1: Expander is a utility that acts as a filter for text editors
 app-text/fbless 0.2.2-r1 9999: Python-based console fb2 reader with less-like interface
@@ -2294,7 +2294,7 @@ app-text/gtkspell 2.0.16 3.0.7: Spell checking widget for GTK
 app-text/gtranslator 2.91.7: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
-app-text/highlight 3.17 3.33 3.34: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
+app-text/highlight 3.17 3.33 3.34: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 6.9 6.9-r1 7.0 7.1: A number of simple utilities for manipulating HTML and XML files
@@ -2322,7 +2322,7 @@ app-text/kchmviewer 7.7: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/krop 0.4.7 0.4.8 0.4.9 0.4.11: A tool to crop PDF files
-app-text/landslide 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
+app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
 app-text/languagetool 3.5-r1: A proof-reading tool for many languages
 app-text/lcdf-typetools 2.106: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83: a preprocessor for less
@@ -2351,10 +2351,10 @@ app-text/lout 3.38-r1 3.39: high-level language for document formatting
 app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.13.4: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
-app-text/mathtex 1.04: MathTeX lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
-app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge PDF files, extract information from, and update the metadata in PDF files
+app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
+app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/mecab 0.996: Yet Another Part-of-Speech and Morphological Analyzer
-app-text/mftrace 1.2.18: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
+app-text/mftrace 1.2.18-r1: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
@@ -2394,7 +2394,7 @@ app-text/po4a 0.45-r3 0.45-r4 0.47: Tools for helping translation of documentati
 app-text/podofo 0.9.2 0.9.3 0.9.4 0.9.5: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.45.0 0.51.0 0.52.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
-app-text/ps2eps 1.68: Generate Encapsulated Postscript Format (EPS,EPSF) files from one-page Postscript documents
+app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.5_p20130530 1.5_p20140525 1.7_p20150521 1.8_p20160523: Tool that converts a PostScript type1 font into a corresponding TeX PK font
 app-text/psiconv 0.8.3-r1: An interpreter for Psion 5(MX) file formats
 app-text/pspdftool 0.03 9999: Tool for prepress preparation of PDF and PostScript documents
@@ -2403,11 +2403,11 @@ app-text/pstotext 1.9-r3: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r2: PostScript Utilities
 app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (possibly gzipped)
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
-app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1 2.3.3: A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML
-app-text/q-text-as-data 1.5.0: q: Text as Data is a CLI tool that allows direct execution of SQL-like queries on text
+app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1 2.3.3: A Python port of Textile, A humane web text generator
+app-text/q-text-as-data 1.5.0: A CLI tool that allows direct execution of SQL-like queries on text
 app-text/qpdf 5.1.1-r1 5.1.3-r1 6.0.0-r1: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16: A tabbed document viewer
-app-text/queequeg 0.91: A checker for English grammar, for people who are not native English
+app-text/queequeg 0.91-r1: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r2 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
@@ -2430,7 +2430,7 @@ app-text/sdcv 0.5.0_beta2 0.5.0_beta2-r1: Console version of Stardict program
 app-text/searchmonkey 0.8.1 2.0.0: Powerful text searches using regular expressions
 app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
-app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter text streams
+app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
 app-text/sigil 0.8.7-r1 0.9.5-r2 0.9.6: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
@@ -2440,9 +2440,9 @@ app-text/sword 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
 app-text/tabler 2: A utility to create text art tables from delimited input
-app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped or otherwise humorous dialect
+app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
-app-text/teseq 1.1.1: a tool for analyzing files that contain control characters and terminal control sequences
+app-text/teseq 1.1.1: A tool for analyzing files that contain control characters and sequences
 app-text/tesseract 3.04.00-r2 3.04.01 3.04.01-r1 4.00.00_alpha 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
@@ -2450,7 +2450,7 @@ app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r2: A complet
 app-text/tidy-html5 5.2.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
-app-text/tofrodos 1.7.12a: text file conversion utility that converts ASCII files between the MSDOS format and the Unix format
+app-text/tofrodos 1.7.12a: Utility that converts ASCII files between the MSDOS and the Unix format
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.7.0: Lists directories recursively, and produces an indented listing of files
@@ -2459,14 +2459,14 @@ app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/tuxcards 2.2.1: A hierarchical notebook
 app-text/txt2man 1.5.6: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
-app-text/txt2tags 2.6-r1: A tool for generating marked up documents (HTML, SGML, ...) from a plain text file with markup
+app-text/txt2tags 2.6-r1: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 0.8.4: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 5.1 6.1 6.1-r1 9999: Post-processor for scanned and photocopied book pages
 app-text/unrtf 0.21.9: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r1 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/uvconv 1.1.3b-r1: A small utility that converts among Vietnamese charsets
-app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed to get the best out of incorrect html
+app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2: Create a diff disregarding formatting
 app-text/webgen 1.4.0: A template-based static website generator
@@ -2494,7 +2494,7 @@ app-text/xmldiff 0.6.10-r1: A tool that figures out the differences between two 
 app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.4.2 1.5.0 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.26-r1 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
-app-text/xournal 0.4.8 0.4.8-r1 9999: Xournal is an application for notetaking, sketching, and keeping a journal using a stylus
+app-text/xournal 0.4.8 0.4.8-r1 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yagf 0.9.2 0.9.3.2: Graphical front-end for cuneiform and tesseract OCR tools
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
 app-text/yodl 3.08.01 3.08.02: Your Own Document Language: a pre-document language and tools to process it
@@ -2656,7 +2656,7 @@ app-vim/uptime 1.3-r1: vim plugin: display vim uptimes
 app-vim/vcscommand 1.99.47: vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugin
 app-vim/vim-addon-mw-utils 20121105: vim plugin: interpret a file by function and cache file automatically
 app-vim/vim-flake8 1.6: vim plugin: runs the currently open file through flake8
-app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
+app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: A comprehensive set of tools to view, edit and compile LaTeX documents
 app-vim/vim-misc 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-r 1.0 1.2.6: vim plugin: integrate vim with R
 app-vim/vim-rest-console 2.3.0 2.4.0 2.5.0 2.6.0: a REST console for vim

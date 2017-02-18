@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install postinst postrm prepare setup
 DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-office/libreoffice dev-python/wxpython:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-db/sqliteodbc dev-db/unixODBC mysql? ( dev-python/mysql-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-db/myodbc )
-DESCRIPTION=Bibliographic and reference management software, integrates with L/OO.o and MS Word
+DESCRIPTION=Bibliographic and reference management software, integrates with LO and MS Word
 EAPI=5
 HOMEPAGE=http://bibus-biblio.sourceforge.net/
 IUSE=mysql python_targets_python2_7
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/bibus-biblio/bibus_1.5.2.orig.tar.gz https://dev.gentoo.org/~jlec/distfiles/bibus-1.5.2-lo-4.patch.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	1f16d4a5e3af0ebb79bbe131576e0618	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=08d903194661f3d462e2e4f1f90f5220
+_md5_=3ed224356bcb8b21f22888c81d2e5aa8

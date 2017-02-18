@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-perl/MIME-tools dev-lang/perl[-build(-)]
-DESCRIPTION=A charset conversion tool cstocs and two convenience Perl modules for Czech language
+DESCRIPTION=A charset conversion tool cstocs and two Perl modules for Czech language
 EAPI=5
 HOMEPAGE=http://www.adelton.com/perl/Cstools/
 KEYWORDS=amd64 x86
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://www.adelton.com/perl/Cstools/Cstools-3.42.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-app	11f61997f1d4923276dd72a750617c7d	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=5a7db158798f276d5ce01dc2cf9928e1
+_md5_=edbc669e59d30765d22eabbeeccf1765

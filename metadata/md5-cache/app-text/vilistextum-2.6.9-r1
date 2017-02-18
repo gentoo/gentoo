@@ -1,6 +1,6 @@
 DEFINED_PHASES=configure install prepare test
 DEPEND=virtual/libiconv !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=Html to ascii converter specifically programmed to get the best out of incorrect html
+DESCRIPTION=Html to ascii converter specifically programmed to handle incorrect html
 EAPI=5
 HOMEPAGE=http://bhaak.dyndns.org/vilistextum/
 IUSE=unicode
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://bhaak.dyndns.org/vilistextum/vilistextum-2.6.9.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=681e8bb10e8e23b624aba7cf3af3c12e
+_md5_=f85fb4bb94267d4c02030bb5d93dbba6

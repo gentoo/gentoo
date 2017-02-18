@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
 DEPEND=virtual/libusb:0 >=dev-libs/libg15-9999 >=dev-libs/libg15render-9999 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
+DESCRIPTION=Takes control of the G15 keyboard, through the linux kernel uinput device driver
 EAPI=5
 HOMEPAGE=http://g15daemon.sourceforge.net/
 IUSE=perl python static-libs python_targets_python2_7
@@ -10,4 +10,4 @@ REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:subversion pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	python-r1	1f16d4a5e3af0ebb79bbe131576e0618	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	subversion	750f91bd0705a41b26ba01bcee93aaad	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e2a4948797f9090d2adb7d1fdfe26af9
+_md5_=9217908f0e3c91460d659f20c5ace895
