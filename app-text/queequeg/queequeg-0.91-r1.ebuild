@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-PYTHON_DEPEND="2"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit python
+inherit python-single-r1
 
 DESCRIPTION="A checker for English grammar, for people who are not native English"
 HOMEPAGE="http://queequeg.sourceforge.net/"
@@ -19,15 +19,6 @@ IUSE=""
 DEPEND="app-dicts/wordnet"
 RDEPEND="${DEPEND}"
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
-
-src_prepare() {
-	python_convert_shebangs -r ${PYTHON_ABI} .
-}
-
 src_compile() {
 	local dictdir=/usr/dict
 
@@ -35,28 +26,24 @@ src_compile() {
 		dictdir=/usr/share/wordnet/dict
 	fi
 
-	emake dict WORDNETDICT=${dictdir} || die
+	emake dict WORDNETDICT=${dictdir}
+
+	python_fix_shebang qq
 }
 
 src_install() {
-	local prefix=$(python_get_sitedir)/${PN}
+	local prefix=/usr/lib/queequeg
 
-	insinto ${prefix}
-	doins *.py
+	python_moduleinto "${prefix}"
+	python_domodule *.py
+	insinto "${prefix}"
 	[[ -f "dict.txt" ]] && doins dict.txt || doins dict.cdb
 
-	exeinto ${prefix}
+	exeinto "${prefix}"
 	doexe qq
-	dosym ${prefix}/qq /usr/bin/qq
+	dodir /usr/bin
+	dosym ../lib/queequeg/qq /usr/bin/qq
 
 	dodoc README TODO
-	dohtml htdocs/*
-}
-
-pkg_postinst() {
-	python_mod_optimize queequeg
-}
-
-pkg_postrm() {
-	python_mod_cleanup queequeg
+	dodoc htdocs/*
 }
