@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-PYTHON_DEPEND="python? 2"
-LANGS="de fr ja ru uk zh_TW"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python qmake-utils qt4-r2
+inherit eutils python-single-r1 qmake-utils
 
 DESCRIPTION="Cross platform GUI for several code formatters, beautifiers and indenters"
 HOMEPAGE="http://universalindent.sourceforge.net/"
@@ -32,20 +31,20 @@ RDEPEND="${DEPEND}
 	)
 	perl? ( dev-perl/Perl-Tidy )
 	php? ( dev-php/PEAR-PHP_Beautifier )
+	python? ( ${PYTHON_DEPS} )
 	ruby? ( dev-lang/ruby )
 	xml? ( dev-util/xmlindent )
 "
 
-DOCS="CHANGELOG.txt readme.html"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	if use python; then
-		python_set_active_version 2
-		python_pkg_setup
-	fi
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
+	default
+
 	# correct translation binaries
 	sed -e "s|lupdate-qt4|$(qt4_get_bindir)/lupdate|" \
 		-e "s|lrelease-qt4|$(qt4_get_bindir)/lrelease|" \
@@ -85,7 +84,7 @@ src_prepare() {
 		UEXAMPLES="${UEXAMPLES} py"
 		UINDENTERS="${UINDENTERS} pindent.py"
 		UIGUIFILES="${UIGUIFILES} pindent"
-		python_convert_shebangs -r 2 .
+		python_fix_shebang .
 	fi
 
 	if use ruby; then
@@ -102,7 +101,7 @@ src_prepare() {
 	local IFILES= I=
 	for I in ${UINDENTERS}; do
 		IFILES="${IFILES} indenters/${I}"
-		chmod +x indenters/${I}
+		chmod +x indenters/${I} || die
 	done
 
 	for I in ${UIGUIFILES}; do
@@ -114,31 +113,26 @@ src_prepare() {
 		die ".pro patching failed"
 	sed -i -e "s:indenters/uigui_\*\.ini:${IFILES}:" UniversalIndentGUI.pro ||
 		die ".pro patching failed"
+}
 
-	local lang
-	for lang in ${LANGS}; do
-		if ! use linguas_${lang}; then
-			sed -e "/_${lang}.ts/d" -e "/_${lang}.qm/d" \
-				-i UniversalIndentGUI.pro || die "failed while disabling ${lang}"
-		fi
-	done
-
-	qt4-r2_src_prepare
+src_configure() {
+	eqmake4 UniversalIndentGUI.pro
 }
 
 src_install() {
-	qt4-r2_src_install
+	emake install INSTALL_ROOT="${D}"
+	dodoc CHANGELOG.txt readme.html
 
 	doman doc/${PN}.1.gz
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
+		docinto examples
 		local I
 		for I in ${UEXAMPLES}; do
-			doins indenters/example.${I}
+			dodoc indenters/example.${I}
 		done
 	fi
 
-	newicon resources/universalIndentGUI_512x512.png ${PN}
+	newicon resources/universalIndentGUI_512x512.png ${PN}.png
 	make_desktop_entry ${PN} UniversalIndentGUI ${PN} "Qt;Development"
 }
