@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    This component provides an extended PSR-6 implementation for adding
+    cache to your applications. It is designed to have a low overhead so
+    that caching is fastest. It ships with a few caching adapters for
+    the most widespread and suited to caching backends.
+    It also provides a doctrine/cache proxy adapter to cover more
+    advanced caching needs and a proxy adapter for greater
+    interoperability between PSR-6 implementations.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/cache</remote-id>
+  </upstream>
+</pkgmetadata>
