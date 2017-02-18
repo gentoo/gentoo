@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ GCONF_DEBUG=no
 
 inherit gnome2
 
-DESCRIPTION="Xournal is an application for notetaking, sketching, and keeping a journal using a stylus"
+DESCRIPTION="An application for notetaking, sketching, and keeping a journal using a stylus"
 HOMEPAGE="http://xournal.sourceforge.net/"
 
 LICENSE="GPL-2"

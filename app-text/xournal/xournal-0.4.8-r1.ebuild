@@ -8,7 +8,7 @@ GCONF_DEBUG=no
 
 inherit gnome2
 
-DESCRIPTION="Xournal is an application for notetaking, sketching, and keeping a journal using a stylus"
+DESCRIPTION="An application for notetaking, sketching, and keeping a journal using a stylus"
 HOMEPAGE="http://xournal.sourceforge.net/"
 
 LICENSE="GPL-2"
