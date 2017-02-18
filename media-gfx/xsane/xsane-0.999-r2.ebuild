@@ -37,6 +37,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 
+	strip-linguas -i po/ #609672
+
 	# Apply multiple fixes from different distributions
 	# Drop included patch and reuse patchset from prior version
 	rm "${WORKDIR}/${PN}-0.998-patches-2"/005-update-param-crash.patch || die
