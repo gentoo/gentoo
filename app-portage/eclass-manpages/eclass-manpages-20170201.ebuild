@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -10,7 +9,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE=""
 
 S=${WORKDIR}
@@ -27,8 +26,8 @@ src_compile() {
 	# the main eclassdir last so that its output will clobber anything
 	# that might have come from overlays.  Main tree wins!
 	local o e
-	for o in ${PORTDIR_OVERLAY} ; do
-		e="${o}/eclass"
+	for o in $(portageq get_repos /) ; do
+		e="$(portageq get_repo_path / ${o})/eclass"
 		[[ -d ${e} ]] || continue
 		genit "${e}" || die
 	done
