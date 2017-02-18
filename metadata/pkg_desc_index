@@ -4541,7 +4541,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficientl
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.3_rc4 5.24.1_rc4 5.24.1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.29 5.6.30 7.0.15 7.1.1: The PHP language runtime engine
+dev-lang/php 5.6.30 7.0.15 7.1.1: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 3.4.5 3.5.2 3.6.0: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.4.3 2.4.4 2.4.5 9999: Python script wrapper
@@ -7017,7 +7017,7 @@ dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in 
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.9.4 1.10.1-r1: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.7.1 1.8.0_beta2: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 4.0.11 5.1.5 5.1.7: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 4.0.7-r1 4.0.11 5.1.8: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
@@ -7026,7 +7026,7 @@ dev-php/pecl-crack 0.4-r4 0.4-r5: PHP interface to the cracklib libraries
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.0.9: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.1: PHP wrapper for libeio library
-dev-php/pecl-event 1.11.1-r1 2.2.1: PHP wrapper for libevent2
+dev-php/pecl-event 2.2.1: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r2: PHP extension for using gearmand
 dev-php/pecl-geoip 1.1.1-r2: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0: PHP wrapper around the gpgme library
