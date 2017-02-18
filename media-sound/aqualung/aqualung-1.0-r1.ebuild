@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
 MY_PV=${PV/_/-}
 
 DESCRIPTION="Music player for a wide range of formats designed for gapless playback"
-HOMEPAGE="http://aqualung.factorial.hu/"
+HOMEPAGE="http://aqualung.jeremyevans.net/ https://github.com/jeremyevans/aqualung"
 SRC_URI="mirror://sourceforge/aqualung/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
@@ -19,74 +19,76 @@ IUSE="alsa cdda cddb debug flac ffmpeg ifp jack ladspa lame libsamplerate lua
 	mac modplug mp3 musepack oss podcast pulseaudio sndfile speex systray
 	vorbis wavpack"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="
 	app-arch/bzip2
 	dev-libs/libxml2
+	sys-libs/zlib
 	x11-libs/gtk+:2
 	alsa? ( media-libs/alsa-lib )
-	jack? ( media-sound/jack-audio-connection-kit )
-	pulseaudio? ( media-sound/pulseaudio )
-	flac? ( media-libs/flac )
-	lame? ( media-sound/lame )
+	cdda? ( dev-libs/libcdio-paranoia )
+	cddb? ( media-libs/libcddb )
 	ffmpeg? ( >=virtual/ffmpeg-0.6.90 )
+	flac? ( media-libs/flac )
+	ifp? ( media-libs/libifp )
+	jack? ( media-sound/jack-audio-connection-kit )
+	ladspa? ( media-libs/liblrdf )
+	lame? ( media-sound/lame )
+	libsamplerate? ( media-libs/libsamplerate )
+	lua? ( dev-lang/lua:0= )
 	mac? ( media-sound/mac )
 	modplug? ( media-libs/libmodplug )
-	musepack? ( >=media-sound/musepack-tools-444 )
 	mp3? ( media-libs/libmad )
+	musepack? ( >=media-sound/musepack-tools-444 )
+	pulseaudio? ( media-sound/pulseaudio )
 	sndfile? ( media-libs/libsndfile )
 	speex? ( media-libs/speex media-libs/liboggz media-libs/libogg )
 	vorbis? ( media-libs/libvorbis media-libs/libogg )
 	wavpack? ( media-sound/wavpack )
-	ladspa? ( media-libs/liblrdf )
-	libsamplerate? ( media-libs/libsamplerate )
-	ifp? ( media-libs/libifp )
-	cdda? ( dev-libs/libcdio-paranoia )
-	cddb? ( media-libs/libcddb )
-	lua? ( dev-lang/lua:0= )"
-
+"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
-src_prepare() {
-	epatch "${FILESDIR}/ffmpeg29.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-ffmpeg3.patch"
+	"${FILESDIR}/${P}-mac.patch"
+)
 
 src_configure() {
 	econf \
-		--enable-nls \
 		--disable-rpath \
+		--enable-loop \
+		--enable-nls \
+		--enable-transcoding \
 		$(use_enable debug) \
 		$(use_enable podcast) \
 		$(use_enable systray) \
-		--enable-transcoding \
 		$(use_enable jack jack-mgmt) \
-		--enable-loop \
 		$(use_with alsa) \
-		$(use_with jack) \
-		$(use_with oss) \
-		$(use_with pulseaudio pulse) \
-		$(use_with flac) \
-		$(use_with lame) \
+		$(use_with cdda) \
+		$(use_with cddb) \
 		$(use_with ffmpeg lavc) \
+		$(use_with flac) \
+		$(use_with ifp) \
+		$(use_with jack) \
+		$(use_with ladspa) \
+		$(use_with lame) \
+		$(use_with libsamplerate src) \
+		$(use_with lua) \
 		$(use_with mac) \
 		$(use_with modplug mod) \
-		$(use_with musepack mpc) \
 		$(use_with mp3 mpeg) \
+		$(use_with musepack mpc) \
+		$(use_with oss) \
+		$(use_with pulseaudio pulse) \
 		$(use_with sndfile) \
 		$(use_with speex) \
 		$(use_with vorbis vorbis) \
 		$(use_with vorbis vorbisenc) \
-		$(use_with wavpack) \
-		$(use_with ladspa) \
-		$(use_with libsamplerate src) \
-		$(use_with cdda) \
-		$(use_with ifp) \
-		$(use_with cddb) \
-		$(use_with lua) \
-		--docdir=/usr/share/doc/${PF}
+		$(use_with wavpack)
 }
 
 src_install() {
