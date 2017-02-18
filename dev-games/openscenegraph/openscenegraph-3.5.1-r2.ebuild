@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,11 +15,11 @@ HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
 SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
-SLOT="0/34" # Subslot consists of major + minor version number
+SLOT="0/35" # Subslot consists of major + minor version number
 KEYWORDS="~amd64 ~x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
-jpeg2k las lua openexr openinventor osgapps pdf png qt5 sdl sdl2 svg tiff truetype
-vnc wxwidgets xine xrandr zlib"
+jpeg2k las libav lua openexr openinventor osgapps pdf png qt5 sdl sdl2 svg tiff
+truetype vnc wxwidgets xine xrandr zlib"
 
 REQUIRED_USE="sdl2? ( sdl )"
 
@@ -39,7 +39,10 @@ RDEPEND="
 		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		libav? ( media-video/libav:0= )
+		!libav? ( media-video/ffmpeg:0= )
+	)
 	gdal? ( sci-libs/gdal )
 	gif? ( media-libs/giflib:= )
 	gstreamer? (
@@ -89,6 +92,7 @@ DOCS=( AUTHORS.txt ChangeLog NEWS.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-cmake.patch
+	"${FILESDIR}"/${P}-ffmpeg-3.patch
 )
 
 src_configure() {
