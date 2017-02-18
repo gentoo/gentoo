@@ -1,0 +1,12 @@
+--- a/jack_functions.py
++++ b/jack_functions.py
+@@ -219,9 +219,9 @@
+     ff = blocks % CDDA_BLOCKS_PER_SECOND
+     return mm, ss, ff, blocks
+
+-def starts_with(str, with):
+-    "checks whether str starts with with"
+-    return str[0:len(with)] == with
++def starts_with(str, withstr):
++    "checks whether str starts with withstr"
++    return str[0:len(withstr)] == withstr
