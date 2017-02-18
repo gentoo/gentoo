@@ -16,7 +16,7 @@ SRC_URI="http://dev.gentoo.org/~mgorny/dist/${P}.tar.lz"
 IUSE="doc pbins pink python ruby search-index test +xml"
 LICENSE="GPL-2 vim"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=app-admin/eselect-1.2.13
