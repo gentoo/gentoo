@@ -35,6 +35,7 @@ src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
 		eautoreconf
 	fi
+	epatch "${FILESDIR}"/${P}-minimal.patch #591026
 	epatch_user
 }
 
