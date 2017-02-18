@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils autotools
 
-DESCRIPTION="Html to ascii converter specifically programmed to get the best out of incorrect html"
+DESCRIPTION="Html to ascii converter specifically programmed to handle incorrect html"
 HOMEPAGE="http://bhaak.dyndns.org/vilistextum/"
 SRC_URI="http://bhaak.dyndns.org/${PN}/${P}.tar.bz2"
 
