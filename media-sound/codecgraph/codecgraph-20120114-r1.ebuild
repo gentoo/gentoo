@@ -1,15 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-PYTHON_DEPEND="2"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit base python
+inherit python-single-r1
 
 DESCRIPTION="Generates a graph based on the ALSA description of an HD Audio codec"
 HOMEPAGE="http://helllabs.org/codecgraph/"
 SRC_URI="http://helllabs.org/codecgraph/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -21,8 +22,11 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${PV}-makefile-prefix.diff" )
 
+src_configure() {
+	python_fix_shebang *.py
+}
+
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc codecs.txt README BUGS IDEAS
-	python_convert_shebangs -r 2 "${ED}"
+	default
+	dodoc codecs.txt IDEAS
 }
