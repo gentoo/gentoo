@@ -32,6 +32,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/1.15.0-test_manytests_to_one_import_error.patch
+)
+
 python_test() {
 	find -name __pycache__ -exec rm -r '{}' + || die
 	py.test -vv || die "Tests failed under ${EPYTHON}"

@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
+RESTRICT="test"
+
 DOCS=( README.rst )
 
 python_test() {
