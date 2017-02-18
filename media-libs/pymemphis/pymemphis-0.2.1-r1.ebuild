@@ -1,17 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI=6
 
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-PYTHON_EXPORT_PHASE_FUNCTIONS="1"
-RESTRICT_PYTHON_ABIS="3.* *-jython 2.7-pypy-*"
+PYTHON_COMPAT=( python2_7 )
 
 AT_M4DIR="build/autotools/"
 
-inherit autotools python
+inherit autotools python-single-r1
 
 DESCRIPTION="Python bindings for the libmemphis library"
 HOMEPAGE="http://gitorious.net/pymemphis"
@@ -23,22 +20,20 @@ LICENSE="LGPL-2.1"
 IUSE=""
 
 RDEPEND="
-	dev-python/pycairo
-	dev-python/pygobject:2
+	dev-python/pycairo[${PYTHON_USEDEP}]
+	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	media-libs/memphis"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${PN}-mainline
 
 src_prepare() {
+	default
 	eautoreconf
-	echo "#!${EPREFIX}/bin/sh" > py-compile
 	sed 's:0.1:0.2:g' -i pymemphis.pc.in || die
-	python_src_prepare
 }
 
 src_install() {
-	python_src_install
-	python_clean_installation_image
-	dodoc AUTHORS ChangeLog README || die
+	default
+	find "${D}" -name '*.la' -delete || die
 }
