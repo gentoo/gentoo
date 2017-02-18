@@ -1,5 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 inherit cmake-utils toolchain-funcs versionator
@@ -55,7 +56,7 @@ src_configure() {
 		-DNO_OMP=$(usex !openmp)
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
-		-DNO_REGRESSION=1 # The don't work with certain settings
+		-DNO_REGRESSION=1 # They don't work with certain settings
 		-DNO_EXAMPLES=$(usex !examples)
 		-DNO_TUTORIALS=$(usex !tutorials)
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
