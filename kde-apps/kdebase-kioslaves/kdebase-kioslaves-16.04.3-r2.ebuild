@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ DEPEND="
 	bzip2? ( app-arch/bzip2 )
 	exif? ( media-gfx/exiv2:= )
 	openexr? ( media-libs/openexr:= )
-	samba? ( || ( <net-fs/samba-4.0.0_alpha1[smbclient] >=net-fs/samba-4.0.0_alpha1[client] ) )
+	samba? ( >=net-fs/samba-4.0.0_alpha1[client] )
 	sftp? ( >=net-libs/libssh-0.4.0:=[sftp] )
 "
 RDEPEND="${DEPEND}
