@@ -31,6 +31,12 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
+# Requiers a dead and vulnerable webkit-gtk version. Bug #608602.
+# Masked for removal in 30 days.
+dev-dotnet/webkit-sharp
+net-news/blam
+
+# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
 # Fails to build. Bug #608940. Masked for removal in 30 days.
 net-ftp/bareftp
 
