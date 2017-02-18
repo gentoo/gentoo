@@ -17,10 +17,9 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Krypton"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.dvbviewer/archive/${PV}-${CODENAME}.tar.gz -> ${P}-${CODENAME}.tar.gz"
-	S="${WORKDIR}/pvr.dvbviewer-${PV}-${CODENAME}"
+	S="${WORKDIR}/pvr.dvbviewer-${PV}"
+	SRC_URI="https://github.com/kodi-pvr/pvr.dvbviewer/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	;;
 esac
 
