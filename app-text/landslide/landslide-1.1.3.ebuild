@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 vcs-snapshot
 
-DESCRIPTION="Landslide generates a slideshow using the slides that power the html5-slides presentation"
+DESCRIPTION="Generates a slideshow using the slides that power the html5-slides presentation"
 HOMEPAGE="https://github.com/adamzap/landslide"
 SRC_URI="https://github.com/adamzap/landslide/tarball/v${PV} -> ${P}.tar.gz"
 
