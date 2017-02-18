@@ -445,26 +445,6 @@ x11-themes/smaragd
 # Masked for removal in 30 days. Bug #574564, #593248, #601912.
 dev-ml/ocamlgsl
 
-# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
-# Relies on dead gstreamer:0.10. Dead upstream.
-# Masked for removal in 30 days. Bug #603270.
-media-video/flumotion
-
-# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
-# Obsolete. Use app-admin/filebeat instead.
-# Masked for removal in 30 days. Bug #603292.
-app-admin/filebeat-bin
-
-# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
-# Fails to build with ffmpeg-3. Dead upstream.
-# Masked for removal in 30 days. Bug #602946.
-app-cdr/k9copy
-
-# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
-# Obsolete - now a native feature in Plasma 5.8
-# Masked for removal in 30 days
-x11-misc/ksuperkey
-
 # Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
 # Masked, Vulnerable due to RGW Denial of Service (bug #598206)
 # We mask it instead of removing them, due user may need them while
