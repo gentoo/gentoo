@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-PYTHON_DEPEND="python? 2:2.5"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python toolchain-funcs
+inherit eutils multilib python-single-r1 toolchain-funcs
 
 DESCRIPTION="A fast, modern and generic image processing library"
 HOMEPAGE="http://www.exactcode.de/site/open_source/exactimage/"
@@ -26,6 +26,7 @@ RDEPEND="x11-libs/agg[truetype]
 	php? ( dev-lang/php )
 	perl? ( dev-lang/perl )
 	png? ( >=media-libs/libpng-1.2.43 )
+	python? ( ${PYTHON_DEPS} )
 	ruby? ( dev-lang/ruby )
 	tiff? ( media-libs/tiff )
 	truetype? ( >=media-libs/freetype-2 )
@@ -40,21 +41,19 @@ DEPEND="${RDEPEND}
 	swig? ( dev-lang/swig )"
 
 pkg_setup() {
-	if use python; then
-		python_set_active_version 2
-	fi
-	python_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch \
+	eapply \
 		"${FILESDIR}"/${PN}-0.7.5-libpng14.patch \
 		"${FILESDIR}"/${P}-libpng15.patch
+	eapply_user
 
 	# fix python hardcoded path wrt bug #327171
-	sed -i -e "s:python2.5:python$(python_get_version):" \
+	sed -i -e "s:python2.5:${EPYTHON}:" \
 		-e "s:\$(libdir):usr/$(get_libdir):" \
-		"${S}"/api/python/Makefile
+		"${S}"/api/python/Makefile || die
 
 	# Respect user CFLAGS/CXXFLAGS.
 	sed -i \
