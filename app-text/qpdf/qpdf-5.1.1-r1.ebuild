@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils
 
-DESCRIPTION="A command-line program that does structural, content-preserving transformations on PDF files"
+DESCRIPTION="Command-line tool for structural, content-preserving transformation of PDF files"
 HOMEPAGE="http://qpdf.sourceforge.net/"
 SRC_URI="mirror://sourceforge/qpdf/${P}.tar.gz"
 
