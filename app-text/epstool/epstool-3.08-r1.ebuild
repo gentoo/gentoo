@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Creates or extracts preview images in EPS files, fixes bounding boxes,converts to bitmaps"
+DESCRIPTION="Creates or extracts preview images in EPS files, fixes bounding boxes"
 HOMEPAGE="http://www.cs.wisc.edu/~ghost/gsview/epstool.htm"
 SRC_URI="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${P}.tar.gz"
 
