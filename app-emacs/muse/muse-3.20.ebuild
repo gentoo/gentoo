@@ -6,7 +6,7 @@ EAPI=4
 
 inherit elisp
 
-DESCRIPTION="Similar to EmacsWikiMode, but more focused on publishing to various formats"
+DESCRIPTION="An authoring and publishing environment for Emacs"
 HOMEPAGE="http://mwolson.org/projects/EmacsMuse.html"
 SRC_URI="http://download.gna.org/muse-el/${P}.tar.gz"
 
