@@ -13279,12 +13279,12 @@ media-plugins/kodi-audioencoder-vorbis 1.1.0 9999: Vorbis encoder addon for Kodi
 media-plugins/kodi-audioencoder-wav 1.1.0 9999: WAV encoder addon for Kodi
 media-plugins/kodi-game-libretro 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-inputstream-adaptive 1.0.6-r1 9999: Kodi's Adaptive inputstream addon
-media-plugins/kodi-inputstream-rtmp 1.0.3-r1 9999: Kodi's RTMP inputstream addon
+media-plugins/kodi-inputstream-rtmp 1.0.4 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.2.1 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-pvr-argustv 2.5.4-r1 9999: Kodi's ARGUS TV client addon
 media-plugins/kodi-pvr-demo 2.4.3 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 3.3.11-r1 9999: Kodi's DVBLink client addon
-media-plugins/kodi-pvr-dvbviewer 2.4.6-r1 9999: Kodi's DVBViewer client addon
+media-plugins/kodi-pvr-dvbviewer 2.4.7 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 1.4.7 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 2.4.8 9999: Kodi's IPTVSimple client addon
