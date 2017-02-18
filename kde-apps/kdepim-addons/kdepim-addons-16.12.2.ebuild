@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	google? ( net-libs/libkgapi:5 )
+	google? ( $(add_kdeapps_dep libkgapi '' 5.3.1) )
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-crypt/gpgme-1.7.1[cxx,qt5]

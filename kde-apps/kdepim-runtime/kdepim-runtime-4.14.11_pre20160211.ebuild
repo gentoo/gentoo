@@ -26,7 +26,7 @@ DEPEND="
 	dev-libs/libxslt
 	kde-apps/akonadi:4
 	x11-misc/shared-mime-info
-	google? ( >=net-libs/libkgapi-2.0:4 )
+	google? ( $(add_kdeapps_dep libkgapi '' 2.0) )
 "
 RDEPEND="${DEPEND}
 	kde-frameworks/oxygen-icons:5

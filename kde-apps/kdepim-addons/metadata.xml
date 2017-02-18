@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="google">Google service integration via <pkg>net-libs/libkgapi</pkg></flag>
+		<flag name="google">Google service integration via <pkg>kde-apps/libkgapi</pkg></flag>
 	</use>
 </pkgmetadata>
