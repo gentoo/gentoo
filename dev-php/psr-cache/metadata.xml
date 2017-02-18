@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    This is not a Cache implementation of its own.
+    It is merely an interface that describes a Cache implementation.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">php-fig/cache</remote-id>
+  </upstream>
+</pkgmetadata>
