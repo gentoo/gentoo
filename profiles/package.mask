@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
+# Dead upstream. Relies on dead udisks:0. Bug #601356.
+# Masked for removal in 30 days.
+sys-fs/udisks-glue
+
+# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
 # Fails at runtime. Dead upstream. Unmaintained. Bug #602008.
 # Masked for removal in 30 days.
 dev-util/weblint
