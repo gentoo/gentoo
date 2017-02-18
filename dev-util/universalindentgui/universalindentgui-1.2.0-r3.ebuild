@@ -133,6 +133,6 @@ src_install() {
 		done
 	fi
 
-	newicon resources/universalIndentGUI_512x512.png ${PN}
+	newicon resources/universalIndentGUI_512x512.png ${PN}.png
 	make_desktop_entry ${PN} UniversalIndentGUI ${PN} "Qt;Development"
 }
