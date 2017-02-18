@@ -1,5 +1,5 @@
---- kodilib/linux/Makefile
-+++ kodilib/linux/Makefile
+--- a/kodilib/linux/Makefile
++++ b/kodilib/linux/Makefile
 @@ -21,7 +21,7 @@
  
  INCLUDES = $(KODI_INCLUDES) $(X11_INCLUDES) $(SDL_INCLUDES)
@@ -9,8 +9,8 @@
  
  src =  \
  	$(KODISRCDIR)/handler/KEventHandler.cpp \
---- linux/Makefile
-+++ linux/Makefile
+--- a/linux/Makefile
++++ b/linux/Makefile
 @@ -14,11 +14,7 @@
  
  GLLIBS = -lglut -lGLU -lGL
