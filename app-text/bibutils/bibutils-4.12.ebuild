@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=2
 inherit toolchain-funcs
 
 MY_P="${PN}_${PV}"
-DESCRIPTION="Interconverts between various bibliography formats using a common XML intermediate"
+DESCRIPTION="Interconverts between various bibliography formats using common XML intermediate"
 HOMEPAGE="http://www.scripps.edu/~cdputnam/software/bibutils/"
 SRC_URI="http://www.scripps.edu/~cdputnam/software/bibutils/${MY_P}_src.tgz"
 
