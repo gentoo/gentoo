@@ -83,6 +83,9 @@
 		<flag name="openvdb" restrict="&gt;=media-gfx/blender-2.77">
 			Add GPU preview rendering. Only works with nVidia cards.
 		</flag>
+		<flag name="osl" restrict="&gt;=media-gfx/blender-2.78b">
+			Add support for OpenShadingLanguage scripting.
+		</flag>
 		<flag name="player">
 			Build the Blender Player. THis requires the Game engine.
 		</flag>

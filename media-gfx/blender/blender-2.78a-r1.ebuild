@@ -69,7 +69,7 @@ RDEPEND="${PYTHON_DEPS}
 	jack? ( media-sound/jack-audio-connection-kit )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:0 )
-	llvm? ( sys-devel/llvm )
+	llvm? ( sys-devel/llvm:= )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
@@ -121,7 +121,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# we don't want static glew, but it's scattered across
 	# multiple files that differ from version to version
@@ -208,6 +208,7 @@ src_compile() {
 	if use doc; then
 		# Workaround for binary drivers.
 		addpredict /dev/ati
+		addpredict /dev/dri
 		addpredict /dev/nvidiactl
 
 		einfo "Generating Blender C/C++ API docs ..."
