@@ -10057,7 +10057,7 @@ dev-util/cargo 0.15.0 0.16.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.4-r1 0.7.5 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/ccache 3.2.4 3.2.5 3.2.7 3.3.3: fast compiler cache
+dev-util/ccache 3.2.4 3.2.5 3.2.7 3.3.3 3.3.4: fast compiler cache
 dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace
