@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 inherit autotools eutils
 
-DESCRIPTION="A tool (and library) for decompressing data compressed with PKWARE Data Compression Library"
+DESCRIPTION="A tool for decompressing data compressed with PKWARE Data Compression Library"
 HOMEPAGE="https://github.com/twogood/dynamite https://sourceforge.net/projects/synce/"
 SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
