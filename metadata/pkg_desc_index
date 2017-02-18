@@ -1084,7 +1084,7 @@ app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/anything 1.3.2: Open anything - QuickSilver-like candidate-selection framework
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1: A Portable Emacs Library is a library for making portable Emacs Lisp programs
-app-emacs/auctex 11.88 11.89 11.90: Extended support for (La)TeX, Texinfo and BibTeX files
+app-emacs/auctex 11.88 11.89 11.90: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/auto-complete 1.3.1: Auto-complete package
 app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.3: Basic edit toolkit
@@ -1197,7 +1197,7 @@ app-emacs/mpg123-el 1.59 1.60: Emacs front-end to mpg123 audio player and OggVor
 app-emacs/mu-cite 8.1_p200709030413 8.1_p201202272330: Message citation utilities for emacsen
 app-emacs/multi-term 1.3: Manage multiple terminal buffers in Emacs
 app-emacs/multiple-cursors 1.3.0: Multiple cursors for Emacs
-app-emacs/muse 3.20: Similar to EmacsWikiMode, but more focused on publishing to various formats
+app-emacs/muse 3.20: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 20080922: Add support for DocBook 5 schemas to NXML
@@ -1244,8 +1244,8 @@ app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.0_p20101103 2.11 2.12 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 5.0 6.1-r1 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
-app-emacs/ssh 20120709: Directory tracking and special character handling support for SSH sessions
-app-emacs/stripes 0.2-r1: Emacs mode which highlights every even line with an alternative background color
+app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
+app-emacs/stripes 0.2-r1: An Emacs mode that alternates the background color of lines
 app-emacs/sumibi 0.5.2: Statistical Japanese input method using the Internet as a large corpus
 app-emacs/tdtd 0.7.1-r1: Emacs Major Mode for SGML and XML DTDs
 app-emacs/teco 7-r1: TECO interpreter for GNU Emacs

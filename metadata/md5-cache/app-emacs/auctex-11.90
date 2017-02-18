@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=virtual/latex-base preview-latex? ( app-text/dvipng app-text/ghostscript-gpl ) >=virtual/emacs-23
-DESCRIPTION=Extended support for (La)TeX, Texinfo and BibTeX files
+DESCRIPTION=Extensible package for writing and formatting TeX files in Emacs
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/auctex/
 IUSE=preview-latex
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://gnu/auctex/auctex-11.90.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:- src_compile:- src_install:-
 _eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74
-_md5_=4932a3ad4e7ae17bdc05f206c8535590
+_md5_=efd63a76b10863465d0f50d3bd336822
