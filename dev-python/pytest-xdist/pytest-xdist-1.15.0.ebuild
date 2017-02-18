@@ -37,6 +37,6 @@ PATCHES=(
 )
 
 python_test() {
-	find -name __pycache__ -exec rm -r '{}' + || die
+	distutils_install_for_testing
 	py.test -vv || die "Tests failed under ${EPYTHON}"
 }
