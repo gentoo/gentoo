@@ -45,7 +45,7 @@ python_prepare_all() {
 python_compile_all() {
 	if use doc; then
 		emake -C docs html
-		HTML_DOCS=( docs/build/html/. )
+		HTML_DOCS=( docs/_build/html/. )
 	fi
 }
 
