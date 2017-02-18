@@ -4700,7 +4700,7 @@ dev-libs/hiredis 0.11.0-r1 0.13.1 0.13.3: Minimalistic C client library for the 
 dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 55.1 57.1 58.1-r1 58.2: International Components for Unicode
+dev-libs/icu 58.1-r1 58.2: International Components for Unicode
 dev-libs/icu-layoutex 58.1 58.2: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
@@ -4978,7 +4978,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2j 1.0.2k 1.1.0e: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2k 1.1.0e: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5 1.6.2-r6: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
@@ -13508,7 +13508,7 @@ media-sound/ams 2.1.2: Alsa Modular Software Synthesizer
 media-sound/amsynth 1.3.2 1.5.1 1.6.4 1.7.0: Virtual analogue synthesizer
 media-sound/apetag 1.12: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.6-r1 0.1.7: PulseAudio emulation for ALSA
-media-sound/aqualung 1.0_rc1 1.0: Music player for a wide range of formats designed for gapless playback
+media-sound/aqualung 1.0_rc1 1.0-r1: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 2.8.16 4.7 5.3 5.5 5.6 9999: Digital Audio Workstation
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
