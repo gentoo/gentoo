@@ -31,6 +31,10 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
+# Fails to build. Bug #608940. Masked for removal in 30 days.
+net-ftp/bareftp
+
+# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
 # Fails to build. Use dev-libs/DirectFB[fusionsound] instead.
 # Bug #602674, 543728, 542000, 456770. Masked for removal in 30 days.
 media-libs/FusionSound
