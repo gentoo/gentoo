@@ -13627,7 +13627,7 @@ media-sound/id3ed 1.10.4: ID3 tag editor for mp3 files
 media-sound/id3ted 1.0_beta3: A Command-line ID3 Tag Editor
 media-sound/id3tool 1.2a: A command line utility for easy manipulation of the ID3 tags present in MPEG Layer 3 audio files
 media-sound/id3v2 0.1.12: A command line editor for id3v2 tags
-media-sound/ifp-gnome 0.7: Gnome front-end for file management on iRiver iFP MP3 players
+media-sound/ifp-gnome 0.7-r1: Gnome front-end for file management on iRiver iFP MP3 players
 media-sound/imp3sh 0.2.4: flexible playlist manipulation shell and song player/streamer
 media-sound/jaaa 0.4.2 0.6.0 0.8.4: The JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
 media-sound/jack 3.1.1-r1: A frontend for several cd-rippers and mp3 encoders
@@ -16518,7 +16518,7 @@ sci-mathematics/otter 3.3-r1 3.3-r2: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
 sci-mathematics/pari 2.3.5 2.5.0-r3 2.5.1 2.5.1-r1 2.5.2 2.5.3 2.5.4 2.7.0 2.7.1: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20120726: Data sets for pari
-sci-mathematics/polymake 2.14-r1 3.0_p2: research tool for polyhedral geometry and combinatorics
+sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2 3.0.2-r1: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
 sci-mathematics/pspp 0.10.1 0.10.2: Program for statistical analysis of sampled data
