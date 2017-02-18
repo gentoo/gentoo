@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=4
 
 inherit leechcraft
 
-DESCRIPTION="LeechCraft plugin for supporting and managing Internet data storages like Yandex.Disk"
+DESCRIPTION="Plugin for supporting and managing Internet data storages like Yandex.Disk"
 
 SLOT="0"
 KEYWORDS=""

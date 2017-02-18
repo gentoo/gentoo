@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit toolchain-funcs
 
-DESCRIPTION="MathTeX lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc"
+DESCRIPTION="Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc"
 HOMEPAGE="http://www.forkosh.com/mathtex.html"
 SRC_URI="mirror://gentoo/${P}.zip"
 

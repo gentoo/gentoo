@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/trunk/${PN}-wip"
 
 inherit eutils linux-info perl-module python-r1 base subversion autotools
 
-DESCRIPTION="G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver"
+DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="http://g15daemon.sourceforge.net/"
 [[ ${PV} = *9999* ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit toolchain-funcs qt4-r2 flag-o-matic
 
-DESCRIPTION="converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight"
+DESCRIPTION="Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight"
 HOMEPAGE="http://www.andre-simon.de/"
 SRC_URI="http://www.andre-simon.de/zip/${P}.tar.bz2"
 

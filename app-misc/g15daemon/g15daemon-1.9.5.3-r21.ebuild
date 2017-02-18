@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ GENTOO_DEPEND_ON_PERL="no"
 
 inherit eutils linux-info perl-module python-r1 base
 
-DESCRIPTION="G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver"
+DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="http://g15daemon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

@@ -6,7 +6,7 @@ EAPI="4"
 
 inherit eutils toolchain-funcs unpacker
 
-DESCRIPTION="ELF related utils for ELF 32/64 binaries that can check files for security relevant properties"
+DESCRIPTION="ELF utils that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities"
 SRC_URI="mirror://gentoo/${P}.tar.xz
 	https://dev.gentoo.org/~solar/pax/${P}.tar.xz

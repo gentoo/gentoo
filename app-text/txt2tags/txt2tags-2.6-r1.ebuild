@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="tk?"
 
 inherit eutils elisp-common python-single-r1
 
-DESCRIPTION="A tool for generating marked up documents (HTML, SGML, ...) from a plain text file with markup"
+DESCRIPTION="Generate marked up documents (HTML, etc.)from a plain text file with markup"
 HOMEPAGE="http://txt2tags.org/"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tgz"
 
