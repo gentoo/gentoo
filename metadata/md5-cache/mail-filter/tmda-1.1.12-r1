@@ -1,0 +1,14 @@
+DEFINED_PHASES=install setup
+DEPEND=virtual/mta
+DESCRIPTION=Python-based SPAM reduction system
+EAPI=6
+HOMEPAGE=http://www.tmda.net/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/mta
+SLOT=0
+SRC_URI=mirror://sourceforge/tmda/tmda-1.1.12.tgz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=fe2cbb631d2b2a63738e5ed95bf5ab6b
