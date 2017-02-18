@@ -81,7 +81,7 @@ case ${EAPI} in
 	0|1)
 		die "Unsupported EAPI=${EAPI} (too old) for ruby-ng.eclass" ;;
 	2|3) ;;
-	4|5)
+	4|5|6)
 		# S is no longer automatically assigned when it doesn't exist.
 		S="${WORKDIR}"
 		;;
@@ -263,7 +263,7 @@ ruby_get_use_targets() {
 # confuse this function with ruby_implementation_depend().
 #
 # @EXAMPLE:
-# EAPI=4
+# EAPI=6
 # RUBY_OPTIONAL=yes
 #
 # inherit ruby-ng
@@ -286,7 +286,7 @@ if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
 
 	case ${EAPI:-0} in
-		4|5)
+		4|5|6)
 			REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
 			;;
 	esac
@@ -295,7 +295,7 @@ fi
 _ruby_invoke_environment() {
 	old_S=${S}
 	case ${EAPI} in
-		4|5)
+		4|5|6)
 			if [ -z "${RUBY_S}" ]; then
 				sub_S=${P}
 			else
@@ -433,6 +433,12 @@ ruby-ng_src_prepare() {
 	find . -name '._*' -delete
 
 	_ruby_invoke_environment all _ruby_apply_patches
+
+	case ${EAPI} in
+		6)
+			eapply_user
+			;;
+	esac
 
 	_PHASE="source copy" \
 		_ruby_each_implementation _ruby_source_copy
