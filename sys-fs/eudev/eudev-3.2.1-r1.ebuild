@@ -35,7 +35,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.20
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
 DEPEND="${COMMON_DEPEND}
-	<dev-util/gperf-3.1
+	>=dev-util/gperf-3.1
 	virtual/os-headers
 	virtual/pkgconfig
 	>=sys-devel/make-3.82-r4
@@ -86,6 +86,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# upstream fix for new gperf versions
+	epatch  "${FILESDIR}/${PN}-fix-new-gperf.patch"
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
 	|| die "failed to change group dialout to uucp"
