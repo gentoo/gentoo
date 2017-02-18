@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    The Stopwatch component provides an easy and consistent way
+    to measure execution time of certain parts of code so that
+    you don't constantly have to parse microtime by yourself.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/stopwatch</remote-id>
+  </upstream>
+</pkgmetadata>
