@@ -6,7 +6,7 @@ EAPI=6
 
 inherit elisp
 
-DESCRIPTION="Extended support for (La)TeX, Texinfo and BibTeX files"
+DESCRIPTION="Extensible package for writing and formatting TeX files in Emacs"
 HOMEPAGE="https://www.gnu.org/software/auctex/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
