@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup
+DESCRIPTION=Command-line ape 2.0 tagger
+EAPI=6
+HOMEPAGE=http://muth.org/Robert/Apetag/
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 ~ppc64 x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://muth.org/Robert/Apetag/apetag.1.12.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8af101423a82bf4d29fcb0719185a6b6

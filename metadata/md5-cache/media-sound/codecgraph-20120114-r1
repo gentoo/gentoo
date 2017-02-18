@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install setup
+DEPEND=media-gfx/graphviz media-gfx/imagemagick
+DESCRIPTION=Generates a graph based on the ALSA description of an HD Audio codec
+EAPI=6
+HOMEPAGE=http://helllabs.org/codecgraph/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=media-gfx/graphviz
+SLOT=0
+SRC_URI=http://helllabs.org/codecgraph/codecgraph-20120114.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_configure:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=a0de4ae76b6ae8e2af33dbb313088f42
