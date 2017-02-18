@@ -69,7 +69,7 @@ app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
 app-admin/collectd 5.5.2 5.6.1-r1 5.6.2: Collects system statistics and provides mechanisms to store the values
-app-admin/conky 1.9.0-r3 1.10.4 1.10.6: An advanced, highly configurable system monitor for X
+app-admin/conky 1.9.0-r3 1.10.4 1.10.6 1.10.6-r1: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
@@ -2337,7 +2337,7 @@ app-text/liblangtag 0.6.2: An interface library to access tags for identifying l
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.8 0.3.9 0.3.10 9999: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and libwpg
-app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
+app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.2 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.9.9 0.10.1: WordPerfect Document import/export library
@@ -2405,7 +2405,7 @@ app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (pos
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1 2.3.3: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 1.5.0: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 5.1.1-r1 5.1.3-r1 6.0.0-r1: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 5.1.1-r1 5.1.3-r1 6.0.0-r1 6.0.0-r2: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/queequeg 0.91-r1: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r2 0.8.1-r3: A documentation metadata library
@@ -4924,7 +4924,7 @@ dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20151022 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.18 0.22 0.23: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.18 0.22 0.23 0.24: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.0: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -12590,7 +12590,7 @@ media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.7.4 6.9.7.6 6.9.7.8 7.0.4.9: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 0.9.2 1.0.0 1.2.0 1.3.0: Utility for image scaling and processing
 media-gfx/imv 2.1.3 9999: Minimal image viewer designed for tiling window manager users
-media-gfx/inkscape 0.48.5-r1 0.91 0.91-r1 0.91-r2 0.91-r3: A SVG based generic vector-drawing program
+media-gfx/inkscape 0.48.5-r1 0.91-r3: A SVG based generic vector-drawing program
 media-gfx/ipe 7.1.2 7.1.3: Drawing editor for creating figures in PDF or PS formats
 media-gfx/iscan 2.26.2 2.29.1.5 2.30.1.1: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.22.0.1 1.36.0.1: Image Scan! for Linux data files
@@ -15520,7 +15520,7 @@ net-print/cndrvcups-common-lb 3.10 3.20: Common files for Canon drivers
 net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4 2.2.2-r1 2.2.2-r2 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.13.3 1.13.3-r2 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.13.3-r2 1.13.4 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1 3.0.0: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -18469,7 +18469,7 @@ x11-drivers/xf86-video-geode 2.11.17 2.11.18 2.11.19: AMD Geode GX2 and LX video
 x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
 x11-drivers/xf86-video-i740 1.3.5 1.3.6: Intel i740 video driver
-x11-drivers/xf86-video-intel 2.99.917-r2 2.99.917_p20160621-r1 2.99.917_p20161206: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.99.917-r2 2.99.917_p20160621-r1 2.99.917_p20161206 2.99.917_p20170216: X.Org driver for Intel cards
 x11-drivers/xf86-video-ivtv 1.1.2-r2: X.Org driver for TV-out on ivtvdev cards
 x11-drivers/xf86-video-mach64 6.9.5: ATI Mach64 video driver
 x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4 1.6.5: Matrox video driver
@@ -18709,7 +18709,7 @@ x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on
 x11-misc/fbpager 20090221 20090221-r1: A Pager for fluxbox
 x11-misc/fbpanel 6.1-r2: light-weight X11 desktop panel
 x11-misc/fireflies 2.07-r1 2.07-r2 2.08 2.08-r1: Fireflies screensaver: Wicked cool eye candy
-x11-misc/flow-pomodoro 1.1.1 1.1.2: A pomodoro app that blocks distractions while you work
+x11-misc/flow-pomodoro 1.1.2 1.2.0: A pomodoro app that blocks distractions while you work
 x11-misc/fluxter 0.1.0: workspace pager dockapp, particularly useful with the Fluxbox window manager
 x11-misc/fpm2 0.79: A GUI password manager utility with password generator
 x11-misc/fracplanet 0.4.0: Fractal planet and terrain generator
