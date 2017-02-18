@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="audit debug ncurses pam newnet prefix +netifrc selinux static-libs
-	tools unicode kernel_linux kernel_FreeBSD"
+	unicode kernel_linux kernel_FreeBSD"
 
 COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -28,7 +28,6 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 		sys-auth/pambase
 		virtual/pam
 	)
-	tools? ( dev-lang/perl )
 	audit? ( sys-process/audit )
 	kernel_linux? (
 		sys-process/psmisc
@@ -80,8 +79,7 @@ src_compile() {
 		MKSELINUX=$(usex selinux)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
-		MKSTATICLIBS=$(usex static-libs)
-		MKTOOLS=$(usex tools)"
+		MKSTATICLIBS=$(usex static-libs)"
 
 	local brand="Unknown"
 	if use kernel_linux ; then
