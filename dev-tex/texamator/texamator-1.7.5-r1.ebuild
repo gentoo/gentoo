@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-PYTHON_DEPEND="2"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit multilib python
+inherit python-single-r1
 
 MY_PN=TeXamator
 
@@ -19,30 +19,23 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-text/dvipng
-	dev-python/PyQt4
+	dev-python/PyQt4[${PYTHON_USEDEP}]
 	virtual/latex-base"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_PN}
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
+src_compile() {
+	cat >> ${PN} <<-_EOF_ || die
+		#!/bin/sh
+		cd /usr/lib/${MY_PN} &&
+		exec "${EPYTHON}" ${MY_PN}.py
+	_EOF_
 }
 
 src_install() {
-	python_need_rebuild
+	dobin ${PN}
 
-	dobin "${FILESDIR}"/${PN}
-
-	insinto /usr/$(get_libdir)/${MY_PN}
-	doins -r ${MY_PN}.py partielatormods {ts,ui}_files
-}
-
-pkg_postinst() {
-	python_mod_optimize /usr/$(get_libdir)/${MY_PN}
-}
-
-pkg_postrm() {
-	python_mod_cleanup /usr/$(get_libdir)/${MY_PN}
+	python_moduleinto /usr/lib/${MY_PN}
+	python_domodule ${MY_PN}.py partielatormods {ts,ui}_files
 }
