@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0x0E2548BBC607E5AE 1487429259 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1487429259-6777c1ab015e873a786f
+pusher 0BBEEA1FEA4843A4 1487430493 -0500
+pushee ssh://git.gentoo.org/repo/gentoo.git
+nonce 1487430492-2a0c8ba9f58d6f65a7d1
 
-d55a71dfdf7956f984b8dd02f9b85c545515efbd db12ac3a9c3cb6d724133b02af0cda8c1bbdb64e refs/heads/master
+db12ac3a9c3cb6d724133b02af0cda8c1bbdb64e a052fd61ac2f9a50128ab32a76daae6e95274802 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSpOxaxaZikKNVNlsYOJUi7xgflrgUCWKheiwAKCRAOJUi7xgfl
-ruT9AP9mFqS+I3Rpzw2lCBckS3KncOY9Q6Ir8JBP4DAqFu6c9QD/RWo6mj7lrCQ7
-K5zEWbEcsGZxdympm6OrjctUIDBTM3I=
-=RENt
+iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWKhjXQAKCRBHG+cz7yka
+P0Q6AP0UJbOHiurMo3Rc7OpSKdpeQwSoUxyNlkBVAhpP7ZbBZQD/TUKjhM2vviPS
+x7sb0nwAZncML5Qe6Mi/dDxLzrchfPU=
+=th5+
 -----END PGP SIGNATURE-----
