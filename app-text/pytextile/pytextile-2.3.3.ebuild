@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN="python-textile"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML"
+DESCRIPTION="A Python port of Textile, A humane web text generator"
 HOMEPAGE="https://github.com/textile/python-textile"
 SRC_URI="https://github.com/textile/python-textile/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
