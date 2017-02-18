@@ -1,6 +1,9 @@
 ARM asm is armv7 only in wavpack. Restrict based on host cpu.
 https://bugs.gentoo.org/show_bug.cgi?id=609168
 
+Upstream PR:
+https://github.com/dbry/WavPack/pull/20
+
 Index: wavpack-5.1.0/configure.ac
 ===================================================================
 --- wavpack-5.1.0.orig/configure.ac
