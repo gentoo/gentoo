@@ -9,7 +9,7 @@ GENTOO_DEPEND_ON_PERL=no
 inherit eutils perl-module systemd
 
 if [[ "${PV}" == "9999" ]] ; then
-	inherit bzr
+	inherit bzr autotools
 	EBZR_REPO_URI="http://bzr.linuxfoundation.org/openprinting/cups-filters"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
@@ -47,6 +47,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 "
+
+src_prepare() {
+	default
+	[[ "${PV}" == "9999" ]] && eautoreconf
+}
 
 src_configure() {
 	econf \

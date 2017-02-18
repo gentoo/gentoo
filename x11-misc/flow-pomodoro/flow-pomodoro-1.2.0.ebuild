@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -15,11 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
-	dev-qt/qtquickcontrols:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5"
+DEPEND=">=dev-qt/qtcore-5.6:5
+	>=dev-qt/qtdbus-5.6:5
+	>=dev-qt/qtdeclarative-5.6:5
+	>=dev-qt/qtgui-5.6:5
+	>=dev-qt/qtquickcontrols-5.6:5
+	>=dev-qt/qtnetwork-5.6:5
+	>=dev-qt/qtwidgets-5.6:5"
 RDEPEND="${DEPEND}"
