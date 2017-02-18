@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 MY_P=${P/iripdb/iRipDB}
 S=${WORKDIR}/${PN}
 
-DESCRIPTION="iRipDB allows generating the DB files necessary for the iRiver iHP-1xx series of MP3/Ogg HD Players"
+DESCRIPTION="Allows generating the DB files necessary for the iRiver iHP-1xx"
 HOMEPAGE="http://www.fataltourist.com/iripdb/"
 SRC_URI="http://www.fataltourist.com/iripdb/${MY_P}.zip"
 
