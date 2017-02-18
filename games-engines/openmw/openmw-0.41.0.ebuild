@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# We don't install license files
 	sed -e '/LICDIR/d' \
