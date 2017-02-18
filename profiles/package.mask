@@ -460,11 +460,6 @@ app-admin/filebeat-bin
 # Masked for removal in 30 days. Bug #602946.
 app-cdr/k9copy
 
-# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
-# Obsolete - now a native feature in Plasma 5.8
-# Masked for removal in 30 days
-x11-misc/ksuperkey
-
 # Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
 # Masked, Vulnerable due to RGW Denial of Service (bug #598206)
 # We mask it instead of removing them, due user may need them while
