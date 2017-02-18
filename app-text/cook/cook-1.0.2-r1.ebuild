@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit toolchain-funcs
 
-DESCRIPTION="Embedded language which can be used as a macro preprocessor and for similar text processing"
+DESCRIPTION="Embedded language which can be used as a macro preprocessor"
 HOMEPAGE="http://cook.sourceforge.net/"
 SRC_URI="mirror://sourceforge/cook/${P}.tar.gz"
 
