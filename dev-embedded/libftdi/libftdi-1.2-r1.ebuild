@@ -10,7 +10,7 @@ inherit cmake-utils python-single-r1
 MY_P="${PN}1-${PV}"
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://developer.intra2net.com/${PN}"
-	inherit git-r3
+	inherit git-2
 else
 	SRC_URI="http://www.intra2net.com/en/developer/${PN}/download/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"

@@ -1,10 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=6
 
-inherit cmake-utils python eutils
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+inherit cmake-utils python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://developer.intra2net.com/${PN}"
@@ -23,28 +24,37 @@ IUSE="cxx doc examples python"
 
 RDEPEND="virtual/libusb:0
 	cxx? ( dev-libs/boost )
-	python? ( dev-lang/python )"
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )
 	doc? ( app-doc/doxygen )"
 
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_prepare() {
-	sed -i \
-		-e "s:[$]{PYTHON_LIB_INSTALL}/../site-packages:$(python_get_sitedir):" \
-		bindings/CMakeLists.txt || die
+	if use python; then
+		sed -i \
+			-e "s:[$]{PYTHON_LIB_INSTALL}/../site-packages:$(python_get_sitedir):" \
+			bindings/CMakeLists.txt || die
+	fi
 	sed -i \
 		-e '/SET(LIB_SUFFIX /d' \
 		CMakeLists.txt || die
 
-	epatch "${FILESDIR}"/${P}-cmake-{include,version}.patch
+	eapply "${FILESDIR}"/${P}-cmake-{include,version}.patch
+	eapply_user
 }
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use cxx FTDIPP)
-		$(cmake-utils_use doc DOCUMENTATION)
-		$(cmake-utils_use examples EXAMPLES)
-		$(cmake-utils_use python PYTHON_BINDINGS)
+		-DFTDIPP=$(usex cxx)
+		-DDOCUMENTATION=$(usex doc)
+		-DEXAMPLES=$(usex examples)
+		-DPYTHON_BINDINGS=$(usex python)
 		-DCMAKE_SKIP_BUILD_RPATH=ON
 	)
 	cmake-utils_src_configure
@@ -52,6 +62,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
+	use python && python_optimize
 	dodoc ChangeLog README
 
 	if use doc ; then
@@ -59,7 +70,7 @@ src_install() {
 		rm -vf "${CMAKE_BUILD_DIR}"/doc/man/man3/{_,usb_,deprecated}*
 
 		doman "${CMAKE_BUILD_DIR}"/doc/man/man3/*
-		dohtml "${CMAKE_BUILD_DIR}"/doc/html/*
+		dodoc -r "${CMAKE_BUILD_DIR}"/doc/html
 	fi
 	if use examples ; then
 		docinto examples
