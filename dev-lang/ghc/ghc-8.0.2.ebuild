@@ -245,7 +245,6 @@ ghc_setup_cflags() {
 		# hardened users try '-pie' in USE=ghcbootstrap mode.
 		append-ghc-cflags persistent compile link -no-pie
 	fi
-	gcc-specs-ssp && append-ghc-cflags persistent compile      -fno-stack-protector
 
 	# prevent from failind building unregisterised ghc:
 	# http://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
