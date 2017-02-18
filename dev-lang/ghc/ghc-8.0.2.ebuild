@@ -243,9 +243,8 @@ ghc_setup_cflags() {
 		# gcc-6.3 has support for -no-pie upstream, but spelling differs from
 		# gentoo-specific '-nopie'. We enable it in non-bootstrap to allow
 		# hardened users try '-pie' in USE=ghcbootstrap mode.
-		append-ghc-cflags persistent compile link -no-pie
+		append-ghc-cflags compile link -no-pie
 	fi
-	gcc-specs-ssp && append-ghc-cflags persistent compile      -fno-stack-protector
 
 	# prevent from failind building unregisterised ghc:
 	# http://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
