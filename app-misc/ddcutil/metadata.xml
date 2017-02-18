@@ -19,7 +19,7 @@
 	</longdescription>
 
 	<use>
-		<flag name="enable-api-libs" restrict="&gt;=app-misc/ddcutil-0.7.0">
+		<flag name="api-libs" restrict="&gt;=app-misc/ddcutil-0.7.0">
 			Enables the C/C++ API.
 		</flag>
 		<flag name="user-permissions">
