@@ -21,9 +21,9 @@ DOCS=( README.md )
 RDEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
+	$(add_kdeapps_dep libkgapi '' 5.3.1)
 	$(add_qt_dep qtwidgets)
 	dev-libs/qtkeychain:=[qt5]
-	>=net-libs/libkgapi-5.3.1:5
 "
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtgui)
