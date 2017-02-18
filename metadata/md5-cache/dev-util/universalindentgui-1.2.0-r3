@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtscript:4 x11-libs/qscintilla[qt4(-)]
+DESCRIPTION=Cross platform GUI for several code formatters, beautifiers and indenters
+EAPI=6
+HOMEPAGE=http://universalindent.sourceforge.net/
+IUSE=debug examples html perl php python ruby xml python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtscript:4 x11-libs/qscintilla[qt4(-)] dev-util/astyle dev-util/bcpp dev-util/indent html? ( app-text/htmltidy perl? ( dev-lang/perl ) ) perl? ( dev-perl/Perl-Tidy ) php? ( dev-php/PEAR-PHP_Beautifier ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby ) xml? ( dev-util/xmlindent )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/universalindent/universalindentgui-1.2.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=2bef59dd6a0a69f96002142803ebb725

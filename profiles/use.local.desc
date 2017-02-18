@@ -1109,6 +1109,7 @@ app-text/pandoc:https - Enable support for downloading of resources over https.
 app-text/pandoc:make-pandoc-man-pages - Build program to regenerate pandoc man pages from README.
 app-text/pandoc:network-uri - Get Network.URI from the network-uri package.
 app-text/pandoc:trypandoc - Build trypandoc cgi executable.
+app-text/pandoc:weigh-pandoc - Build weigh-pandoc to measure memory usage.
 app-text/pastebinit:crypt - Install pbputs for gpg-encrypted pastes
 app-text/pdfgrep:unac - Removing accents and ligatures before search
 app-text/pelican:markdown - Markdown support
@@ -1611,6 +1612,7 @@ dev-haskell/simple-sendfile:allow-bsd - Allow use of BSD sendfile (disable on GN
 dev-haskell/skein:big-endian - When manually selecting the endianness, use big-endian (default is little-endian).
 dev-haskell/skein:force-endianness - Use a manually selected endian when compiling (see flag 'big-endian').
 dev-haskell/skein:reference - Use the reference implementation instead of the optimized one.
+dev-haskell/skylighting:executable - Build the skylighting executable.
 dev-haskell/snap-core:portable - No non-haskell unportable code.
 dev-haskell/snap-server:build-pong - Build a server that just returns "PONG"
 dev-haskell/snap-server:openssl - enable https support using dev-haskell/hsopenssl
