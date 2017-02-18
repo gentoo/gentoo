@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 
-DESCRIPTION="Use structural criteria to grep and index text, SGML, XML and HTML and filter text streams"
+DESCRIPTION="Use structural criteria to grep and index text, SGML, XML and HTML and filter"
 SRC_URI="ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/${P}.tar.gz"
 HOMEPAGE="http://www.cs.helsinki.fi/u/jjaakkol/sgrep.html"
 
