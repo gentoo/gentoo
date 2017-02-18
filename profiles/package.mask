@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (18 Feb 2017)
+# Renamed upstream to Monitoring::Plugin due to Trademark dispute.
+# Please use dev-perl/Monitoring-Plugin instead. Bug #575986.
+# Masked for removal in 30 days.
+dev-perl/Nagios-Plugin
+
 # Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
 # Dead upstream. Relies on vala slot. Unmaintained. Bug #601346.
 # Masked for removal in 30 days.
