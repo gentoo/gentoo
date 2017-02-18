@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-DESCRIPTION="Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl"
+DESCRIPTION="Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl"
 HOMEPAGE="https://www.gentoo.org/proj/en/perl/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	https://dev.gentoo.org/~tove/files/${P}.tar.gz"
