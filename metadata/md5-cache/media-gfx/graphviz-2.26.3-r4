@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=>=dev-libs/expat-2.0.0 >=dev-libs/glib-2.11.1 >=media-libs/fontconfig-2.3.95 >=media-libs/freetype-2.1.10 >=media-libs/gd-2.0.28[fontconfig,jpeg,png,truetype,zlib] >=media-libs/libpng-1.4 virtual/jpeg:0 virtual/libiconv cairo? ( x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10[svg] ) gtk? ( x11-libs/gtk+:2 x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10 ) lasi? ( media-libs/lasi ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby ) tcl? ( >=dev-lang/tcl-8.3:0 ) virtual/pkgconfig sys-devel/flex java? ( dev-lang/swig ) nls? ( >=sys-devel/gettext-0.14.5 ) perl? ( dev-lang/swig ) python? ( dev-lang/swig ) ruby? ( dev-lang/swig ) tcl? ( dev-lang/swig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* )
+DESCRIPTION=Open Source Graph Visualization Software
+EAPI=3
+HOMEPAGE=http://www.graphviz.org/
+IUSE=cairo doc examples gtk java lasi nls perl python ruby static-libs tcl elibc_FreeBSD
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
+LICENSE=CPL-1.0
+RDEPEND=>=dev-libs/expat-2.0.0 >=dev-libs/glib-2.11.1 >=media-libs/fontconfig-2.3.95 >=media-libs/freetype-2.1.10 >=media-libs/gd-2.0.28[fontconfig,jpeg,png,truetype,zlib] >=media-libs/libpng-1.4 virtual/jpeg:0 virtual/libiconv cairo? ( x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10[svg] ) gtk? ( x11-libs/gtk+:2 x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10 ) lasi? ( media-libs/lasi ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby ) tcl? ( >=dev-lang/tcl-8.3:0 ) python? ( =dev-lang/python-2* )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.graphviz.org/pub/graphviz/ARCHIVE/graphviz-2.26.3.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=688aa64ae1d6ea83c6a90882121b1225

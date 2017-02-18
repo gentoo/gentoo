@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
+DESCRIPTION=Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
+EAPI=6
+HOMEPAGE=http://wxglade.sourceforge.net/
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=MIT
+RDEPEND=dev-python/wxpython:2.8[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=mirror://sourceforge/wxglade/wxGlade-0.6.3.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=de9f6a77d134e1689d76cca5a2a5e822
