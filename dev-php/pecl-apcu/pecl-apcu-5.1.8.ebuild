@@ -1,22 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="apcu"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-DOCS="NOTICE README.md TECHNOTES.txt TODO"
+DOCS=( NOTICE README.md TECHNOTES.txt TODO )
 
 # Define 5.6 here so we get the USE and REQUIRED_USE from the eclass
 # This allows us to depend on the other slot
-USE_PHP="php5-6 php7-0"
+USE_PHP="php5-6 php7-0 php7-1"
 
-inherit php-ext-pecl-r2 confutils
+inherit php-ext-pecl-r3
 
-# However, we only really build for 7.0; so redefine it here
-USE_PHP="php7-0"
+# However, we only really build for 7.x; so redefine it here
+USE_PHP="php7-0 php7-1"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -39,18 +39,30 @@ IUSE+=" ${LUSE/lock_pthreadrw/+lock_pthreadrw}"
 
 REQUIRED_USE="^^ ( $LUSE )"
 
+src_prepare() {
+	if use php_targets_php7-0 || use php_targets_php7-1 ; then
+		php-ext-source-r3_src_prepare
+	else
+		eapply_user
+	fi
+}
+
 src_configure() {
-	my_conf="--enable-apcu"
-	use mmap || my_conf+=" --disable-apcu-mmap"
+	if use php_targets_php7-0 || use php_targets_php7-1 ; then
+		local PHP_EXT_ECONF_ARGS=(
+			--enable-apcu
+			$(use_enable mmap apcu-mmap)
+			$(use_enable lock_pthreadrw apcu-rwlocks)
+			$(use_enable lock_spinlock apcu-spinlocks)
+		)
 
-	enable_extension_enable "apcu-rwlocks" "lock_pthreadrw" 0
-
-	php-ext-source-r2_src_configure
+		php-ext-source-r3_src_configure
+	fi
 }
 
 src_install() {
-	if use php_targets_php7-0 ; then
-		php-ext-pecl-r2_src_install
+	if use php_targets_php7-0 || use php_targets_php7-1 ; then
+		php-ext-pecl-r3_src_install
 
 		insinto /usr/share/php7/apcu
 		doins apc.php
@@ -58,7 +70,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use php_targets_php7-0 ; then
+	if use php_targets_php7-0 || use php_targets_php7-1 ; then
 		elog "The apc.php file shipped with this release of pecl-apcu was"
 		elog "installed into ${EPREFIX}/usr/share/php7/apcu/."
 		elog
