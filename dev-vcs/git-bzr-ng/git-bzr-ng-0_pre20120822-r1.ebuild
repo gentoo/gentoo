@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
-PYTHON_DEPEND="2"
+PYTHON_COMPAT=( python2_7 )
 
-inherit python
+inherit python-single-r1
 
 DESCRIPTION="Git subcommand providing a bidirectional bridge to Bazaar repositories"
 HOMEPAGE="https://github.com/termie/git-bzr-ng"
@@ -19,17 +19,12 @@ IUSE=""
 
 RDEPEND=">=dev-vcs/bzr-2.2
 	dev-vcs/git
-	>=dev-vcs/bzr-fastimport-0.10
-	dev-python/python-fastimport"
+	>=dev-vcs/bzr-fastimport-0.10"
 DEPEND="app-arch/xz-utils"
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
-
 src_prepare() {
-	python_convert_shebangs 2 git-bzr
+	eapply_user
+	python_fix_shebang git-bzr
 }
 
 src_install() {
