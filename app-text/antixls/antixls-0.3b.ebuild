@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-DESCRIPTION="It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format"
+DESCRIPTION="Print out an XLS file with minimal formatting, or extract the data into CSV"
 HOMEPAGE="http://www.af0.net/~dan/?antixls"
 SRC_URI="http://www.af0.net/~dan/repos/${P}.perl"
 LICENSE="public-domain"
