@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 
 inherit eutils fdo-mime multilib python-r1 versionator
 
-DESCRIPTION="Bibliographic and reference management software, integrates with L/OO.o and MS Word"
+DESCRIPTION="Bibliographic and reference management software, integrates with LO and MS Word"
 HOMEPAGE="http://bibus-biblio.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}-biblio/${PN}_${PV}.orig.tar.gz
