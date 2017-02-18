@@ -15346,7 +15346,7 @@ net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 sup
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.6.0-r2 1.7.0 1.7.1: Remote desktop viewer display system
+net-misc/tigervnc 1.7.1: Remote desktop viewer display system
 net-misc/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
