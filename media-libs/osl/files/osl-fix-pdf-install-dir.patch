@@ -1,0 +1,15 @@
+diff -Naur a/src/doc/CMakeLists.txt b/src/doc/CMakeLists.txt
+--- a/src/doc/CMakeLists.txt	2016-06-10 17:28:32.408898519 +0930
++++ b/src/doc/CMakeLists.txt	2016-06-10 17:38:45.649889630 +0930
+@@ -1,7 +1,9 @@
+ set (public_docs osl-languagespec.pdf)
+ # Some day: CLA-INDIVIDUAL CLA-CORPORATE
+ 
+-install (FILES ${public_docs} DESTINATION doc COMPONENT documentation)
++if (INSTALL_DOCS)
++	install (FILES ${public_docs} DESTINATION ${DOC_INSTALL_DIR} COMPONENT documentation)
++endif ()
+ 
+ install ( FILES "${PROJECT_SOURCE_DIR}/LICENSE"
+                 "${PROJECT_SOURCE_DIR}/INSTALL"
+
