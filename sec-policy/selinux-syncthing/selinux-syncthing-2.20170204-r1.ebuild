@@ -4,11 +4,11 @@
 EAPI="6"
 
 IUSE=""
-MODS="samba"
+MODS="syncthing"
 
 inherit selinux-policy-2
 
-DESCRIPTION="SELinux policy for samba"
+DESCRIPTION="SELinux policy for syncthing"
 
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
