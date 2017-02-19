@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=6
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Digital clock for the X window system"
 HOMEPAGE="http://packages.qa.debian.org/d/dclock.html"
@@ -33,10 +33,10 @@ DEPEND="
 
 S=${WORKDIR}/${P/_p*/}
 
-src_prepare() {
-	EPATCH_FORCE=yes EPATCH_SUFFIX=diff epatch "${WORKDIR}"/debian/patches
-	epatch "${FILESDIR}"/${P}-include.patch
-}
+PATCHES=(
+	"${WORKDIR}"/debian/patches
+	"${FILESDIR}"/${P}-include.patch
+)
 
 src_configure() {
 	if use xft; then
@@ -55,17 +55,17 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
+		CPPFLAGS="${CPPFLAGS}" \
 		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install{,.man}
+	default
+	emake DESTDIR="${D}" install.man
 
 	insinto /usr/share/sounds
 	doins sounds/*
 
 	insinto /usr/share/X11/app-defaults
 	newins Dclock.ad DClock
-
-	dodoc README TODO
 }
