@@ -16,7 +16,7 @@ SRC_URI="https://pypi.io/packages/source/${PN:0:1}/${PN}/${P,,}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cairo camera doc examples garden gstreamer +sdl spell test"
 
 RDEPEND="
