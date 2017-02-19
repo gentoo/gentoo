@@ -490,11 +490,6 @@ x11-themes/nitrogen
 x11-themes/skulpture
 x11-themes/smaragd
 
-# David Seifert <soap@gentoo.org> (18 Jan 2017)
-# Dead upstream, spiritual successor is dev-ml/gsl-ocaml
-# Masked for removal in 30 days. Bug #574564, #593248, #601912.
-dev-ml/ocamlgsl
-
 # Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
 # Masked, Vulnerable due to RGW Denial of Service (bug #598206)
 # We mask it instead of removing them, due user may need them while
