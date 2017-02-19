@@ -29,6 +29,10 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/test_funcs-too-slow.patch
+)
+
 python_test() {
 	py.test -v -v || die
 }

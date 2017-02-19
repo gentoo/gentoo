@@ -42,6 +42,9 @@ src_configure() {
 	# see bug #178499
 	filter-flags -ftree-vectorize
 
+	# see bug #608190
+	replace-flags -ggdb[3-9] -ggdb2
+
 	econf \
 		--disable-error-on-warning \
 		--disable-rpath \
