@@ -4,7 +4,7 @@
 
 EAPI=6
 
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
 
 DESCRIPTION="PEAR - PHP Extension and Application Repository"
 HOMEPAGE="http://pear.php.net/"
