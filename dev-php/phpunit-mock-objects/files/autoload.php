@@ -54,8 +54,9 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 	__DIR__
 );
 
+// Dependencies
 \Fedora\Autoloader\Dependencies::required(array(
-  '/usr/share/php/Doctrine/Instantiator/autoload.php',
-  '/usr/share/php/SebastianBergmann/Exporter/autoload.php',
-  '/usr/share/php/Text/Template/autoload.php',
+  $vendorDir . '/SebastianBergmann/TextTemplate/autoload.php',
+  $vendorDir . '/Doctrine/Instantiator/autoload.php',
+  $vendorDir . '/SebastianBergmann/Exporter/autoload.php',
 ));
