@@ -16,14 +16,17 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=dev-vcs/bzr-2.2
+RDEPEND="
+	>=dev-vcs/bzr-2.2
 	dev-vcs/git
-	>=dev-vcs/bzr-fastimport-0.10"
+	>=dev-vcs/bzr-fastimport-0.10
+	${PYTHON_DEPS}"
 DEPEND="app-arch/xz-utils"
 
 src_prepare() {
-	eapply_user
+	default
 	python_fix_shebang git-bzr
 }
 
