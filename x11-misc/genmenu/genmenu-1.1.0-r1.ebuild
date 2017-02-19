@@ -1,10 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="menu generator for *box, WindowMaker, and Enlightenment"
 HOMEPAGE="http://f00l.de/genmenu/"
@@ -17,11 +15,12 @@ IUSE=""
 
 RDEPEND="app-shells/bash"
 
-src_prepare() {
-	epatch "${FILESDIR}"/genmenu-1.0.2.patch
-}
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-1.0.2.patch
+	"${FILESDIR}"/"${P}"-remove-openbox-support.patch
+)
 
 src_install() {
 	dobin genmenu
-	dodoc ChangeLog README
+	einstalldocs
 }
