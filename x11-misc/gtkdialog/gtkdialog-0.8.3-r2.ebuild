@@ -26,11 +26,6 @@ DEPEND="
 	virtual/yacc
 "
 
-DOCS=(
-	AUTHORS
-	ChangeLog
-	TODO
-)
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.3-optdeps.patch
 )
@@ -48,4 +43,5 @@ src_configure() {
 src_install() {
 	# Stop make install from running gtk-update-icon-cache
 	emake DESTDIR="${D}" UPDATE_ICON_CACHE=true install
+	einstalldocs
 }
