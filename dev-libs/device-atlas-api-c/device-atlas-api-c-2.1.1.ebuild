@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit unpacker cmake-multilib
+inherit cmake-multilib
 
 MY_P="deviceatlas-enterprise-c-${PV}"
 
@@ -17,8 +17,6 @@ KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="doc examples"
 
 RDEPEND="dev-libs/libpcre[${MULTILIB_USEDEP}]"
-DEPEND="app-arch/unzip
-	${RDEPEND}"
 
 RESTRICT="fetch mirror bindist"
 
@@ -27,7 +25,7 @@ S="${WORKDIR}/${MY_P}"
 pkg_nofetch() {
 	eerror "Please go to https://deviceatlas.com/deviceatlas-haproxy-module"
 	eerror "And download DeviceAtlas C API"
-	eerror "Then place the file in ${DISTDIR}/${MY_P}.zip"
+	eerror "Then place the file in ${DISTDIR}/${MY_P}.tgz"
 }
 
 multilib_src_install_all() {
