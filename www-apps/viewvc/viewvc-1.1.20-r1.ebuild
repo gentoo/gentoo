@@ -1,13 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.* *-jython"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit confutils eutils python webapp
+inherit confutils eutils python-single-r1 webapp
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -22,42 +20,46 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="cvs cvsgraph mod_wsgi mysql pygments +subversion"
 
 DEPEND=""
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	cvs? ( dev-vcs/rcs )
-	subversion? ( >=dev-vcs/subversion-1.3.1[python] )
+	subversion? ( >=dev-vcs/subversion-1.3.1[python,${PYTHON_USEDEP}] )
 
-	mod_wsgi? ( www-apache/mod_wsgi )
+	mod_wsgi? ( www-apache/mod_wsgi[${PYTHON_USEDEP}] )
 	!mod_wsgi? ( virtual/httpd-cgi )
 
 	cvsgraph? ( >=dev-vcs/cvsgraph-1.5.0 )
-	mysql? ( >=dev-python/mysql-python-0.9.0 )
+	mysql? ( >=dev-python/mysql-python-0.9.0[${PYTHON_USEDEP}] )
 	pygments? (
-		dev-python/pygments
+		dev-python/pygments[${PYTHON_USEDEP}]
 		app-misc/mime-types
 	)
 "
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 pkg_setup() {
-	python_pkg_setup
+	python-single-r1_pkg_setup
 	webapp_pkg_setup
 
 	confutils_require_any cvs subversion
 }
 
 src_prepare() {
+	eapply_user
+
 	find bin/ -type f -print0 | xargs -0 sed -i \
-		-e "s|\(^LIBRARY_DIR\)\(.*\$\)|\1 = \"$(python_get_sitedir -f)/${PN}\"|g" \
-		-e "s|\(^CONF_PATHNAME\)\(.*\$\)|\1 = \"../conf/viewvc.conf\"|g"
+		-e "s|\(^LIBRARY_DIR\)\(.*\$\)|\1 = \"$(python_get_sitedir)/${PN}\"|g" \
+		-e "s|\(^CONF_PATHNAME\)\(.*\$\)|\1 = \"../conf/viewvc.conf\"|g" || die
 
 	sed -i -e "s|\(self\.options\.template_dir\)\(.*\$\)|\1 = \"${MY_APPDIR}/templates\"|" \
-		lib/config.py
+		lib/config.py || die
 
-	sed -i -e "s|^template_dir.*|#&|" conf/viewvc.conf.dist
-	sed -i -e "s|^#mime_types_files =.*|mime_types_files = /etc/mime.types|" conf/viewvc.conf.dist
-	mv conf/viewvc.conf{.dist,}
-	mv conf/cvsgraph.conf{.dist,}
+	sed -i -e "s|^template_dir.*|#&|" conf/viewvc.conf.dist || die
+	sed -i -e "s|^#mime_types_files =.*|mime_types_files = /etc/mime.types|" conf/viewvc.conf.dist || die
+	mv conf/viewvc.conf{.dist,} || die
+	mv conf/cvsgraph.conf{.dist,} || die
 
-	python_convert_shebangs -r 2 .
+	python_fix_shebang .
 }
 
 src_install() {
@@ -67,11 +69,8 @@ src_install() {
 
 	dodoc CHANGES COMMITTERS INSTALL README
 
-	installation() {
-		insinto $(python_get_sitedir)/${PN}
-		doins -r lib/*
-	}
-	python_execute_function installation
+	python_moduleinto viewvc
+	python_domodule lib/.
 
 	insinto "${MY_APPDIR}"
 	doins -r templates/ || die "doins failed"
@@ -110,11 +109,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_optimize viewvc
 	webapp_pkg_postinst
 	elog "Now read INSTALL in /usr/share/doc/${PF} to configure ${PN}"
-}
-
-pkg_postrm() {
-	python_mod_cleanup viewvc
 }
