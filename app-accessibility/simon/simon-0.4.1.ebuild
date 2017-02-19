@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	x11-libs/libX11
 	x11-libs/libXtst
-	x11-libs/qwt:6
+	x11-libs/qwt:6[qt4(+)]
 	libsamplerate? ( media-libs/libsamplerate )
 	nls? (
 		kde-apps/kde4-l10n
