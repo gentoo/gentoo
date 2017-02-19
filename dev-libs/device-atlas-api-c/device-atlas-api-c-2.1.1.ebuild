@@ -36,7 +36,7 @@ multilib_src_install_all() {
 	fi
 
 	if use examples ; then
-		insinto /usr/share/doc/${P}/Examples
+		insinto /usr/share/doc/${P}/examples
 		doins Examples/daexutil.h
 		doins Examples/example{0,1,2,3,4}.c
 		doins Examples/util.c
