@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,41 +7,44 @@ EAPI=6
 MY_PN="lib${PN}"
 MY_P="${MY_PN}-${PV}"
 
-inherit multilib eutils
-
 DESCRIPTION="A complete Spatial DBMS in a nutshell built upon sqlite"
-HOMEPAGE="http://www.gaia-gis.it/gaia-sins/"
-SRC_URI="http://www.gaia-gis.it/gaia-sins/${MY_PN}-sources/${MY_P}.tar.gz"
+HOMEPAGE="https://www.gaia-gis.it/gaia-sins/"
+SRC_URI="https://www.gaia-gis.it/gaia-sins/${MY_PN}-sources/${MY_P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="+geos iconv +proj +xls"
+IUSE="+geos iconv +proj test +xls +xml"
 
-RDEPEND=">=dev-db/sqlite-3.7.5:3[extensions(+)]
-	geos? ( >=sci-libs/geos-3.3 )
+RDEPEND="
+	>=dev-db/sqlite-3.7.5:3[extensions(+)]
+	sys-libs/zlib
+	geos? ( >=sci-libs/geos-3.4 )
 	proj? ( sci-libs/proj )
 	xls? ( dev-libs/freexl )
+	xml? ( dev-libs/libxml2 )
 "
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+REQUIRED_USE="test? ( iconv )"
+
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	econf \
-		--disable-static \
-		--enable-geocallbacks \
-		--enable-epsg \
 		--disable-examples \
+		--disable-static \
+		--enable-epsg \
+		--enable-geocallbacks \
 		$(use_enable geos) \
 		$(use_enable geos geosadvanced) \
 		$(use_enable iconv) \
 		$(use_enable proj) \
-		$(use_enable xls freexl)
+		$(use_enable xls freexl) \
+		$(use_enable xml libxml2)
 }
 
 src_install() {
 	default
-
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
