@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6
 "
 
+PATCHES=("${FILESDIR}"/${P}-no-LDFLAGS.patch)
+
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
