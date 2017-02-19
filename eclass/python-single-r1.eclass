@@ -197,7 +197,7 @@ _python_single_set_globals() {
 		# variables without PYTHON_SINGLE_TARGET.
 		PYTHON_REQUIRED_USE="${flags_mt[*]}"
 		python_export "${_PYTHON_SUPPORTED_IMPLS[0]}" PYTHON_PKG_DEP
-		PYTHON_DEPS="${PYTHON_PKG_DEP} "
+		PYTHON_DEPS="${flags_mt[*]}? ( ${PYTHON_PKG_DEP} ) "
 		# Force on the python_single_target_* flag for this impl, so
 		# that any dependencies that inherit python-single-r1 and
 		# happen to have multiple implementations will still need
