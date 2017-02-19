@@ -5,7 +5,7 @@
 EAPI=6
 
 DIST_AUTHOR=DROLSKY
-DIST_VERSION=1.10
+DIST_VERSION=1.12
 DIST_EXAMPLES=("eg/*")
 inherit perl-module
 
