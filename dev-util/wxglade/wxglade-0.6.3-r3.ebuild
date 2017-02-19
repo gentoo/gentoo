@@ -18,18 +18,15 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
-
-RDEPEND="dev-python/wxpython:2.8[${PYTHON_USEDEP}]"
-DEPEND="${PYTHON_DEPS}"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
+	dev-python/wxpython:2.8[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	eapply "${FILESDIR}"/${P}-wxversion.patch
-	eapply_user
-}
+PATCHES=( "${FILESDIR}"/${P}-wxversion.patch )
 
 src_compile() {
 	python_fix_shebang wxglade.py
