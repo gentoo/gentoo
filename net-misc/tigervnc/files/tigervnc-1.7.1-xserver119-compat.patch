@@ -1,0 +1,446 @@
+From 3fed95eda27dfbeee6535f987f5d14a66f64749b Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Wed, 5 Oct 2016 11:15:27 +0200
+Subject: [PATCH] Add xorg-xserver 1.19 support
+
+---
+ unix/xserver/hw/vnc/XserverDesktop.cc | 183 ++++++++++++++++++++++++++++++++++
+ unix/xserver/hw/vnc/XserverDesktop.h  |   7 ++
+ unix/xserver/hw/vnc/vncBlockHandler.c |  19 ++++
+ unix/xserver/hw/vnc/vncExtInit.cc     |  13 +++
+ unix/xserver/hw/vnc/vncExtInit.h      |   5 +
+ unix/xserver/hw/vnc/vncHooks.c        |  21 +++-
+ unix/xserver/hw/vnc/xorg-version.h    |   4 +-
+ unix/xserver119.patch                 |  95 ++++++++++++++++++
+ 8 files changed, 343 insertions(+), 4 deletions(-)
+ create mode 100644 unix/xserver119.patch
+
+diff --git a/unix/xserver/hw/vnc/XserverDesktop.cc b/unix/xserver/hw/vnc/XserverDesktop.cc
+index 4f82a54..8cc0b0b 100644
+--- a/unix/xserver/hw/vnc/XserverDesktop.cc
++++ b/unix/xserver/hw/vnc/XserverDesktop.cc
+@@ -90,6 +90,30 @@ class FileHTTPServer : public rfb::HTTPServer {
+   XserverDesktop* desktop;
+ };
+ 
++#if XORG >= 119
++extern "C" {
++/*
++ * xserver NotifyFd callbacks. Note we also expect write notifies to work,
++ * which only works with xserver >= 1.19.
++ */
++#include "os.h"
++
++static void HandleListenFd(int fd, int xevents, void *data)
++{
++  XserverDesktop *desktop = (XserverDesktop *)data;
++
++  desktop->handleListenFd(fd);
++}
++
++static void HandleSocketFd(int fd, int xevents, void *data)
++{
++  XserverDesktop *desktop = (XserverDesktop *)data;
++
++  desktop->handleSocketFd(fd, xevents);
++}
++
++}
++#endif
+ 
+ XserverDesktop::XserverDesktop(int screenIndex_,
+                                std::list<network::TcpListener*> listeners_,
+@@ -111,15 +135,35 @@ XserverDesktop::XserverDesktop(int screenIndex_,
+ 
+   if (!httpListeners.empty ())
+     httpServer = new FileHTTPServer(this);
++
++#if XORG >= 119
++  for (std::list<TcpListener*>::iterator i = listeners.begin();
++       i != listeners.end();
++       i++) {
++    SetNotifyFd((*i)->getFd(), HandleListenFd, X_NOTIFY_READ, this);
++  }
++
++  for (std::list<TcpListener*>::iterator i = httpListeners.begin();
++       i != httpListeners.end();
++       i++) {
++    SetNotifyFd((*i)->getFd(), HandleListenFd, X_NOTIFY_READ, this);
++  }
++#endif
+ }
+ 
+ XserverDesktop::~XserverDesktop()
+ {
+   while (!listeners.empty()) {
++#if XORG >= 119
++    RemoveNotifyFd(listeners.back()->getFd());
++#endif
+     delete listeners.back();
+     listeners.pop_back();
+   }
+   while (!httpListeners.empty()) {
++#if XORG >= 119
++    RemoveNotifyFd(listeners.back()->getFd());
++#endif
+     delete httpListeners.back();
+     httpListeners.pop_back();
+   }
+@@ -389,6 +433,140 @@ void XserverDesktop::add_copied(const rfb::Region &dest, const rfb::Point &delta
+   }
+ }
+ 
++#if XORG >= 119
++void XserverDesktop::handleListenFd(int fd)
++{
++  std::list<TcpListener*>::iterator i;
++  SocketServer *fd_server = NULL;
++  bool is_http = false;
++
++  for (i = listeners.begin(); i != listeners.end(); i++) {
++    if ((*i)->getFd() == fd) {
++      fd_server = server;
++      break;
++    }
++  }
++  if (httpServer && !fd_server) {
++    for (i = httpListeners.begin(); i != httpListeners.end(); i++) {
++      if ((*i)->getFd() == fd) {
++        fd_server = httpServer;
++        is_http = true;
++        break;
++      }
++    }
++  }
++  if (!fd_server) {
++    vlog.error("XserverDesktop::handleListenFd: Error cannot find fd");
++    return;
++  }
++
++  Socket* sock = (*i)->accept();
++  sock->outStream().setBlocking(false);
++  vlog.debug("new %sclient, sock %d", is_http ? "http " : "", sock->getFd());
++  fd_server->addSocket(sock);
++  SetNotifyFd(sock->getFd(), HandleSocketFd, X_NOTIFY_READ, this);
++}
++
++void XserverDesktop::handleSocketFd(int fd, int xevents)
++{
++  std::list<Socket*> sockets;
++  std::list<Socket*>::iterator i;
++  SocketServer *fd_server = NULL;
++  bool is_http = false;
++
++  server->getSockets(&sockets);
++  for (i = sockets.begin(); i != sockets.end(); i++) {
++    if ((*i)->getFd() == fd) {
++      fd_server = server;
++      break;
++    }
++  }
++  if (httpServer && !fd_server) {
++    httpServer->getSockets(&sockets);
++    for (i = sockets.begin(); i != sockets.end(); i++) {
++      if ((*i)->getFd() == fd) {
++        fd_server = httpServer;
++        is_http = true;
++        break;
++      }
++    }
++  }
++  if (!fd_server) {
++    vlog.error("XserverDesktop::handleSocketFd: Error cannot find fd");
++    return;
++  }
++
++  if (xevents & X_NOTIFY_READ)
++    fd_server->processSocketReadEvent(*i);
++
++  if (xevents & X_NOTIFY_WRITE)
++    fd_server->processSocketWriteEvent(*i);
++
++  if ((*i)->isShutdown()) {
++    vlog.debug("%sclient gone, sock %d", is_http ? "http " : "", fd);
++    RemoveNotifyFd(fd);
++    fd_server->removeSocket(*i);
++    if (!is_http)
++      vncClientGone(fd);
++    delete (*i);
++  }
++}
++
++void XserverDesktop::blockHandler(int* timeout)
++{
++  // We don't have a good callback for when we can init input devices[1],
++  // so we abuse the fact that this routine will be called first thing
++  // once the dix is done initialising.
++  // [1] Technically Xvnc has InitInput(), but libvnc.so has nothing.
++  vncInitInputDevice();
++
++  try {
++    std::list<Socket*> sockets;
++    std::list<Socket*>::iterator i;
++    server->getSockets(&sockets);
++    for (i = sockets.begin(); i != sockets.end(); i++) {
++      int fd = (*i)->getFd();
++      if ((*i)->isShutdown()) {
++        vlog.debug("client gone, sock %d",fd);
++        server->removeSocket(*i);
++        vncClientGone(fd);
++        delete (*i);
++      } else {
++        /* Update existing NotifyFD to listen for write (or not) */
++        if ((*i)->outStream().bufferUsage() > 0)
++          SetNotifyFd(fd, HandleSocketFd, X_NOTIFY_READ | X_NOTIFY_WRITE, this);
++        else
++          SetNotifyFd(fd, HandleSocketFd, X_NOTIFY_READ, this);
++      }
++    }
++    if (httpServer) {
++      httpServer->getSockets(&sockets);
++      for (i = sockets.begin(); i != sockets.end(); i++) {
++        int fd = (*i)->getFd();
++        if ((*i)->isShutdown()) {
++          vlog.debug("http client gone, sock %d",fd);
++          httpServer->removeSocket(*i);
++          delete (*i);
++        } else {
++          /* Update existing NotifyFD to listen for write (or not) */
++          if ((*i)->outStream().bufferUsage() > 0)
++            SetNotifyFd(fd, HandleSocketFd, X_NOTIFY_READ | X_NOTIFY_WRITE, this);
++          else
++            SetNotifyFd(fd, HandleSocketFd, X_NOTIFY_READ, this);
++        }
++      }
++    }
++
++    int nextTimeout = server->checkTimeouts();
++    if (nextTimeout > 0 && (*timeout == -1 || nextTimeout < *timeout))
++      *timeout = nextTimeout;
++  } catch (rdr::Exception& e) {
++    vlog.error("XserverDesktop::blockHandler: %s",e.str());
++  }
++}
++
++#else
++
+ void XserverDesktop::readBlockHandler(fd_set* fds, struct timeval ** timeout)
+ {
+   // We don't have a good callback for when we can init input devices[1],
+@@ -603,10 +781,15 @@ void XserverDesktop::writeWakeupHandler(fd_set* fds, int nfds)
+   }
+ }
+ 
++#endif
++
+ void XserverDesktop::addClient(Socket* sock, bool reverse)
+ {
+   vlog.debug("new client, sock %d reverse %d",sock->getFd(),reverse);
+   server->addSocket(sock, reverse);
++#if XORG >= 119
++  SetNotifyFd(sock->getFd(), HandleSocketFd, X_NOTIFY_READ, this);
++#endif
+ }
+ 
+ void XserverDesktop::disconnectClients()
+diff --git a/unix/xserver/hw/vnc/XserverDesktop.h b/unix/xserver/hw/vnc/XserverDesktop.h
+index c069028..9e77627 100644
+--- a/unix/xserver/hw/vnc/XserverDesktop.h
++++ b/unix/xserver/hw/vnc/XserverDesktop.h
+@@ -38,6 +38,7 @@
+ #include <rfb/VNCServerST.h>
+ #include <rdr/SubstitutingInStream.h>
+ #include "Input.h"
++#include "xorg-version.h"
+ 
+ namespace rfb {
+   class VNCServerST;
+@@ -69,10 +70,16 @@ class XserverDesktop : public rfb::SDesktop, public rfb::FullFramePixelBuffer,
+                  const unsigned char *rgbaData);
+   void add_changed(const rfb::Region &region);
+   void add_copied(const rfb::Region &dest, const rfb::Point &delta);
++#if XORG >= 119
++  void handleListenFd(int fd);
++  void handleSocketFd(int fd, int xevents);
++  void blockHandler(int* timeout);
++#else
+   void readBlockHandler(fd_set* fds, struct timeval ** timeout);
+   void readWakeupHandler(fd_set* fds, int nfds);
+   void writeBlockHandler(fd_set* fds, struct timeval ** timeout);
+   void writeWakeupHandler(fd_set* fds, int nfds);
++#endif
+   void addClient(network::Socket* sock, bool reverse);
+   void disconnectClients();
+ 
+diff --git a/unix/xserver/hw/vnc/vncBlockHandler.c b/unix/xserver/hw/vnc/vncBlockHandler.c
+index 4e44478..baebc3d 100644
+--- a/unix/xserver/hw/vnc/vncBlockHandler.c
++++ b/unix/xserver/hw/vnc/vncBlockHandler.c
+@@ -30,6 +30,23 @@
+ 
+ #include "vncExtInit.h"
+ #include "vncBlockHandler.h"
++#include "xorg-version.h"
++
++#if XORG >= 119
++
++static void vncBlockHandler(void* data, void* timeout)
++{
++  vncCallBlockHandlers(timeout);
++}
++
++void vncRegisterBlockHandlers(void)
++{
++  if (!RegisterBlockAndWakeupHandlers(vncBlockHandler,
++                                      (ServerWakeupHandlerProcPtr)NoopDDA, 0))
++    FatalError("RegisterBlockAndWakeupHandlers() failed\n");
++}
++
++#else
+ 
+ static void vncBlockHandler(void * data, OSTimePtr t, void * readmask);
+ static void vncWakeupHandler(void * data, int nfds, void * readmask);
+@@ -144,3 +161,5 @@ static void vncWriteWakeupHandlerFallback(void)
+ 
+   vncWriteWakeupHandler(ret, &fallbackFds);
+ }
++
++#endif
+diff --git a/unix/xserver/hw/vnc/vncExtInit.cc b/unix/xserver/hw/vnc/vncExtInit.cc
+index dea3cb8..9d70e44 100644
+--- a/unix/xserver/hw/vnc/vncExtInit.cc
++++ b/unix/xserver/hw/vnc/vncExtInit.cc
+@@ -249,6 +249,17 @@ int vncExtensionIsActive(int scrIdx)
+   return (desktop[scrIdx] != NULL);
+ }
+ 
++#if XORG >= 119
++
++void vncCallBlockHandlers(int* timeout)
++{
++  for (int scr = 0; scr < vncGetScreenCount(); scr++)
++    if (desktop[scr])
++      desktop[scr]->blockHandler(timeout);
++}
++
++#else
++
+ void vncCallReadBlockHandlers(fd_set * fds, struct timeval ** timeout)
+ {
+   for (int scr = 0; scr < vncGetScreenCount(); scr++)
+@@ -277,6 +288,8 @@ void vncCallWriteWakeupHandlers(fd_set * fds, int nfds)
+       desktop[scr]->writeWakeupHandler(fds, nfds);
+ }
+ 
++#endif
++
+ int vncGetAvoidShiftNumLock(void)
+ {
+   return (bool)avoidShiftNumLock;
+diff --git a/unix/xserver/hw/vnc/vncExtInit.h b/unix/xserver/hw/vnc/vncExtInit.h
+index 9785d11..3164528 100644
+--- a/unix/xserver/hw/vnc/vncExtInit.h
++++ b/unix/xserver/hw/vnc/vncExtInit.h
+@@ -22,6 +22,7 @@
+ #include <stdint.h>
+ #include <stddef.h>
+ #include <sys/select.h>
++#include "xorg-version.h"
+ 
+ // Only from C++
+ #ifdef __cplusplus
+@@ -50,10 +51,14 @@ extern int vncInetdSock;
+ void vncExtensionInit(void);
+ int vncExtensionIsActive(int scrIdx);
+ 
++#if XORG >= 119
++void vncCallBlockHandlers(int* timeout);
++#else
+ void vncCallReadBlockHandlers(fd_set * fds, struct timeval ** timeout);
+ void vncCallReadWakeupHandlers(fd_set * fds, int nfds);
+ void vncCallWriteBlockHandlers(fd_set * fds, struct timeval ** timeout);
+ void vncCallWriteWakeupHandlers(fd_set * fds, int nfds);
++#endif
+ 
+ int vncGetAvoidShiftNumLock(void);
+ 
+diff --git a/unix/xserver/hw/vnc/vncHooks.c b/unix/xserver/hw/vnc/vncHooks.c
+index 22ea9ea..29f3f8b 100644
+--- a/unix/xserver/hw/vnc/vncHooks.c
++++ b/unix/xserver/hw/vnc/vncHooks.c
+@@ -128,9 +128,11 @@ static Bool vncHooksDisplayCursor(DeviceIntPtr pDev,
+ #if XORG <= 112
+ static void vncHooksBlockHandler(int i, pointer blockData, pointer pTimeout,
+                                  pointer pReadmask);
+-#else
++#elif XORG <= 118
+ static void vncHooksBlockHandler(ScreenPtr pScreen, void * pTimeout,
+                                  void * pReadmask);
++#else
++static void vncHooksBlockHandler(ScreenPtr pScreen, void * pTimeout);
+ #endif
+ #ifdef RENDER
+ static void vncHooksComposite(CARD8 op, PicturePtr pSrc, PicturePtr pMask, 
+@@ -716,9 +718,11 @@ static Bool vncHooksDisplayCursor(DeviceIntPtr pDev,
+ #if XORG <= 112
+ static void vncHooksBlockHandler(int i, pointer blockData, pointer pTimeout,
+                                  pointer pReadmask)
+-#else
++#elif XORG <= 118
+ static void vncHooksBlockHandler(ScreenPtr pScreen_, void * pTimeout,
+                                  void * pReadmask)
++#else
++static void vncHooksBlockHandler(ScreenPtr pScreen_, void * pTimeout)
+ #endif
+ {
+ #if XORG <= 112
+@@ -731,8 +735,10 @@ static void vncHooksBlockHandler(ScreenPtr pScreen_, void * pTimeout,
+ 
+ #if XORG <= 112
+   (*pScreen->BlockHandler) (i, blockData, pTimeout, pReadmask);
+-#else
++#elif XORG <= 118
+   (*pScreen->BlockHandler) (pScreen, pTimeout, pReadmask);
++#else
++  (*pScreen->BlockHandler) (pScreen, pTimeout);
+ #endif
+ 
+   vncHooksScreen->ignoreHooks--;
+@@ -1033,12 +1039,21 @@ static void vncHooksCopyClip(GCPtr dst, GCPtr src) {
+ 
+ // Unwrap and rewrap helpers
+ 
++#if XORG >= 116
++#define GC_OP_PROLOGUE(pGC, name)\
++    vncHooksGCPtr pGCPriv = vncHooksGCPrivate(pGC);\
++    const GCFuncs *oldFuncs = pGC->funcs;\
++    pGC->funcs = pGCPriv->wrappedFuncs;\
++    pGC->ops = pGCPriv->wrappedOps; \
++    DBGPRINT((stderr,"vncHooks" #name " called\n"))
++#else
+ #define GC_OP_PROLOGUE(pGC, name)\
+     vncHooksGCPtr pGCPriv = vncHooksGCPrivate(pGC);\
+     GCFuncs *oldFuncs = pGC->funcs;\
+     pGC->funcs = pGCPriv->wrappedFuncs;\
+     pGC->ops = pGCPriv->wrappedOps; \
+     DBGPRINT((stderr,"vncHooks" #name " called\n"))
++#endif
+ 
+ #define GC_OP_EPILOGUE(pGC)\
+     pGCPriv->wrappedOps = pGC->ops;\
+diff --git a/unix/xserver/hw/vnc/xorg-version.h b/unix/xserver/hw/vnc/xorg-version.h
+index 60610cb..9d1c0eb 100644
+--- a/unix/xserver/hw/vnc/xorg-version.h
++++ b/unix/xserver/hw/vnc/xorg-version.h
+@@ -50,8 +50,10 @@
+ #define XORG 117
+ #elif XORG_VERSION_CURRENT < ((1 * 10000000) + (18 * 100000) + (99 * 1000))
+ #define XORG 118
++#elif XORG_VERSION_CURRENT < ((1 * 10000000) + (19 * 100000) + (99 * 1000))
++#define XORG 119
+ #else
+-#error "X.Org newer than 1.18 is not supported"
++#error "X.Org newer than 1.19 is not supported"
+ #endif
+ 
+ #endif
