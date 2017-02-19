@@ -1879,7 +1879,7 @@ app-misc/openastro 1.1.48: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 3.1.1 4.0.4 4.0.5: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 3.1.1 4.0.6: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
@@ -17375,7 +17375,7 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 9999: C++ runtime system for parallel 
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.2-r4 1.2.15 1.2.19 1.2.22 1.2.23 1.2.24: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kubectl 1.5.2: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.5.2 1.5.3: CLI to run commands against Kubernetes clusters
 sys-cluster/legion 16.08.0-r1 16.10.0: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
