@@ -36,13 +36,19 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+python_prepare_all() {
+	# Requires network access
+	sed -i -e 's/test_set_default_verify_paths/_&/' tests/test_ssl.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile_all() {
 	use doc && emake -C doc html
 }
 
 python_test() {
 	# FIXME: for some reason, no-ops on PyPy
-	esetup.py test
+	py.test -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
