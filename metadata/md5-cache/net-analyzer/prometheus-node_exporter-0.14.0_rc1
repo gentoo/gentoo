@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare setup test unpack
-DEPEND=dev-util/promu >=dev-lang/go-1.4.2:=
+DEPEND=dev-util/promu >=dev-lang/go-1.7:=
 DESCRIPTION=Prometheus exporter for machine metrics
 EAPI=6
 HOMEPAGE=https://github.com/prometheus/prometheus
@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/prometheus/node_exporter/archive/v0.14.0-rc.1.tar.gz -> prometheus-node_exporter-0.14.0_rc1.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:-
-_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=golang-base	a42b7e0ca33d7ab0c0fa52699435b816	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a	user	80aaa71614ced86f02ee1a513821dc87
 _md5_=011b1b54478aa5cf92ba407c00b5738c

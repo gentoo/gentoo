@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=>=dev-lang/go-1.4.2:=
+DEPEND=>=dev-lang/go-1.7:=
 DESCRIPTION=A daemon to control runC
 EAPI=6
 HOMEPAGE=https://containerd.tools
@@ -10,5 +10,5 @@ RDEPEND=>=app-emulation/runc-1.0.0_rc2 seccomp? ( sys-libs/libseccomp )
 SLOT=0
 SRC_URI=https://github.com/docker/containerd/archive/v0.2.5.tar.gz -> containerd-0.2.5.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
-_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=golang-base	a42b7e0ca33d7ab0c0fa52699435b816	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=bcfd106b61a311b98336d54e4db0ef14
