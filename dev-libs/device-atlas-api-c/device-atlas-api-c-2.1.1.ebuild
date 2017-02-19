@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="doc examples"
 
 RDEPEND="dev-libs/libpcre[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 RESTRICT="fetch mirror bindist"
 
