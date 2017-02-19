@@ -9,7 +9,7 @@ FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD=95
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils fortran-2 java-pkg-opt-2 python-single-r1 toolchain-funcs virtualx wxwidgets
+inherit cmake-utils flag-o-matic fortran-2 java-pkg-opt-2 python-single-r1 toolchain-funcs virtualx wxwidgets
 
 DESCRIPTION="Multi-language scientific plotting library"
 HOMEPAGE="http://plplot.sourceforge.net/"
@@ -138,6 +138,10 @@ src_configure() {
 	#   * Qt4 has been disabled, as it is deprecated and unsupported upstream
 	# - DPLD_* drivers need to use ON/OFF instead of the usex defaults yes/no, as
 	#   the testsuite performs a string comparison to determine which tests to run
+
+	# Octave bindings now require C++11 support, #609980
+	append-cxxflags -std=c++11
+
 	local mycmakeargs=(
 		## Features
 		-DBUILD_DOC=OFF
