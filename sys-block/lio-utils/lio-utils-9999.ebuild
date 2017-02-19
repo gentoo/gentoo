@@ -1,15 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
+PYTHON_COMPAT=( python2_7 )
 
 EGIT_REPO_URI="git://linux-iscsi.org/lio-utils.git"
-PYTHON_DEPEND="2"
-RESTRICT_PYTHON_ABIS="3.*"
-SUPPORT_PYTHON_ABIS="1"
 
-inherit eutils distutils git-2 python linux-info
+inherit eutils distutils-r1 git-2 linux-info
 
 DESCRIPTION="Tools for controlling target_core_mod/ConfigFS"
 HOMEPAGE="http://linux-iscsi.org/"
@@ -27,7 +25,7 @@ CONFIG_CHECK="~TARGET_CORE"
 
 pkg_setup() {
 	linux-info_pkg_setup
-	python_pkg_setup
+	python-r1_pkg_setup
 }
 
 src_prepare(){
@@ -35,7 +33,7 @@ src_prepare(){
 
 	for module in tcm-py lio-py; do
 		cd ${module}
-		distutils_src_prepare
+		distutils-r1_src_prepare
 		cd ..
 	done
 	epatch "${FILESDIR}"/tools-makefile.patch
@@ -47,7 +45,7 @@ src_compile(){
 
 	for module in tcm-py lio-py; do
 		cd ${module}
-		distutils_src_compile
+		distutils-r1_src_compile
 		cd ..
 	done
 	cd tools/
@@ -65,7 +63,7 @@ src_install(){
 
 	for module in tcm-py lio-py; do
 		cd ${module}
-		distutils_src_install
+		distutils-r1_src_install
 		cd ..
 	done
 	cd tools/
@@ -73,22 +71,22 @@ src_install(){
 	cd ..
 
 	symlink_to_sbin(){
-		local ver=$(python_get_version) sitedir="$(python_get_sitedir)"
+		local sitedir="$(python_get_sitedir)"
 		ln -s "${sitedir}"/lio_dump.py \
 				"${ED}"/usr/sbin/lio_dump-${ver}
-		python_convert_shebangs "${ver}" "${D}${sitedir}"/lio_dump.py
+		python_fix_shebangs "${D}${sitedir}"/lio_dump.py
 		ln -s "${sitedir}"/lio_node.py \
 				"${ED}"/usr/sbin/lio_node-${ver}
-		python_convert_shebangs "${ver}" "${D}${sitedir}"/lio_node.py
+		python_fix_shebangs "${D}${sitedir}"/lio_node.py
 		ln -s "${sitedir}"/tcm_dump.py \
 			"${ED}"/usr/sbin/tcm_dump-${ver}
-		python_convert_shebangs "${ver}" "${D}${sitedir}"/tcm_dump.py
+		python_fix_shebangs "${D}${sitedir}"/tcm_dump.py
 		ln -s "${sitedir}"/tcm_node.py \
 			"${ED}"/usr/sbin/tcm_node-${ver}
-		python_convert_shebangs "${ver}" "${D}${sitedir}"/tcm_node.py
+		python_fix_shebangs "${D}${sitedir}"/tcm_node.py
 		ln -s "${sitedir}"/tcm_fabric.py \
 			"${ED}"/usr/sbin/tcm_fabric-${ver}
-		python_convert_shebangs "${ver}" "${D}${sitedir}"/tcm_fabric.py
+		python_fix_shebangs "${D}${sitedir}"/tcm_fabric.py
 	}
 	python_execute_function --action-message "Making symlinks to /usr/sbin" symlink_to_sbin
 	python_generate_wrapper_scripts "${ED}"/usr/sbin/{lio_dump,lio_node,tcm_node,tcm_dump,tcm_fabric}
