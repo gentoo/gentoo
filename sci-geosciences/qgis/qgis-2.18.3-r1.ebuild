@@ -61,7 +61,7 @@ COMMON_DEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		<dev-python/sip-4.19:=[${PYTHON_USEDEP}]
+		dev-python/sip:=[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	)
@@ -81,6 +81,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${P}-app-icon.patch
 	"${FILESDIR}"/${P}-webkit.patch
+	"${FILESDIR}"/${P}-sip-4.19.patch
 )
 
 pkg_setup() {
