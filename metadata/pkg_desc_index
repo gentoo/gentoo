@@ -121,7 +121,7 @@ app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/kedpm 0.4.0-r2: Helps to manage large amounts of passwords and related information
-app-admin/keepass 2.34 2.34-r1 2.35 2.35-r1: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.35-r1: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/keepassxc 2.1.1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
@@ -2074,7 +2074,7 @@ app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
 app-pda/ideviceinstaller 1.0.1 1.1.0: A tool to interact with the installation_proxy of an Apple's iDevice
 app-pda/ifuse 1.1.3: Mount Apple iPhone/iPod Touch file systems for backup purposes
 app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver iHP-1xx
-app-pda/jpilot 1.8.0 1.8.1 1.8.2: Desktop Organizer Software for the Palm Pilot
+app-pda/jpilot 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 1.12: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
@@ -17005,7 +17005,7 @@ sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter M
 sys-apps/inxi 2.3.0_p20160807 2.3.4_p20161104: Commandline script to print hardware information for irc and administration
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
-sys-apps/ipmiutil 2.8.5 3.0.0 3.0.1: IPMI Management Utilities
+sys-apps/ipmiutil 2.8.5 3.0.1 3.0.2: IPMI Management Utilities
 sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 0.56 1.0.4 1.0.5-r1 1.0.6 1.0.7 1.0.7-r1 1.0.9 1.0.9-r1 1.1.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
