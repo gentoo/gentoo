@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 
 SLOT=6
 SRC_URI=mirror://sourceforge/eric-ide/eric6/stable/17.01/eric6-17.01.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	5c5af07ec8e4e5c18c2e46681b6bf91f	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	6793fc854691a2320226801400573568	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=1f96d6905f094d52ae33276e0744ea00
