@@ -2821,11 +2821,6 @@ developers and volunteer mentors.</description>
       <name>Jack Morgan</name>
     </member>
     <member>
-      <email>pacho@gentoo.org</email>
-      <name>Pacho Ramos</name>
-      <role>ppc/ppc64 keywording/stabilization</role>
-    </member>
-    <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
       <role>ppc/ppc64 keywording/stabilization</role>
@@ -3564,11 +3559,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>jmorgan@gentoo.org</email>
       <name>Jack Morgan</name>
-      <role>Member ( Gentoo/SPARC )</role>
-    </member>
-    <member>
-      <email>pacho@gentoo.org</email>
-      <name>Pacho Ramos</name>
       <role>Member ( Gentoo/SPARC )</role>
     </member>
     <member>
