@@ -15133,7 +15133,7 @@ net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r1: ipsvd is a set of internet protocol service daemons for Unix
 net-misc/iputils 20121221-r1 20121221-r2 20151218 20160308 99999999: Network monitoring tools including ping and ping6
-net-misc/ipv6calc 0.94.1 0.97.4 0.99.0 0.99.1: IPv6 address calculator
+net-misc/ipv6calc 0.97.4 0.99.0 0.99.1 0.99.2: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
@@ -17665,7 +17665,7 @@ sys-fs/udev 216 225-r1 228 229-r2 230-r1 232-r2 9999: Linux dynamic and persiste
 sys-fs/udev-init-scripts 27 29 30 31 32 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10 1.1 1.2 1.3: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r1 2.1.4 2.1.7 2.1.7-r1 2.1.8: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r1 2.1.8: Daemon providing interfaces to work with storage devices
 sys-fs/udisks-glue 1.3.5: A tool to associate udisks events to user-defined actions
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 9999: Self-syncing tree-merging file system based on FUSE
@@ -18897,7 +18897,7 @@ x11-misc/xdaliclock 2.41 2.43: Dali Clock is a digital clock. When a digit chang
 x11-misc/xdesktopwaves 1.3-r1 1.3-r2: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.15: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
-x11-misc/xdg-utils 1.1.1 1.1.1-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+x11-misc/xdg-utils 1.1.1-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016 1.51: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.3 0.4 0.5: Small X utility to perform elementary actions on windows
