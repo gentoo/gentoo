@@ -38,7 +38,7 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
-	sysvipc systemd test tidy +tokenizer truetype unicode wddx webp
+	sysvipc systemd tidy +tokenizer truetype unicode wddx webp
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 # The supported (that is, autodetected) versions of BDB are listed in
@@ -77,7 +77,7 @@ COMMON_DEPEND="
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
 	gmp? ( dev-libs/gmp:0 )
 	iconv? ( virtual/libiconv )
-	imap? ( virtual/imap-c-client[ssl=] )
+	imap? ( virtual/imap-c-client[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
@@ -102,7 +102,7 @@ COMMON_DEPEND="
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)
-	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
+	tidy? ( app-text/htmltidy )
 	truetype? (
 		=media-libs/freetype-2*
 		!gd? (
@@ -131,12 +131,12 @@ RDEPEND="${COMMON_DEPEND}
 		selinux? ( sec-policy/selinux-phpfpm )
 		systemd? ( sys-apps/systemd ) )"
 
-# Bison isn't actually needed when building from a release tarball
-# However, the configure script will warn if it's absent or if you
-# have an incompatible version installed. See bug 593278.
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
-	>=sys-devel/bison-3.0.1"
+	>=sys-devel/bison-3.0.1
+	sys-devel/flex
+	>=sys-devel/m4-1.4.3
+	>=sys-devel/libtool-1.5.18"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
