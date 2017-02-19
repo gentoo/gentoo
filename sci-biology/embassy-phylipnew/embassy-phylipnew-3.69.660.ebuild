@@ -2,16 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EBO_DESCRIPTION="The Phylogeny Inference Package"
 
-AUTOTOOLS_AUTORECONF=1
+EBO_EAUTORECONF=1
 
-inherit emboss-r1
+inherit emboss-r2
 
 LICENSE+=" freedist"
 
-KEYWORDS="amd64 x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 
-PATCHES=( "${FILESDIR}"/${P}_fix-build-system.patch )
+S="${WORKDIR}/PHYLIPNEW-3.69.650"
+PATCHES=( "${FILESDIR}"/${PN}-3.69.650_fix-build-system.patch )

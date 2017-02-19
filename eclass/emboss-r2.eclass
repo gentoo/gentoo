@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: emboss-r1.eclass
+# @ECLASS: emboss-r2.eclass
 # @MAINTAINER:
 # sci-biology@gentoo.org
 # jlec@gentoo.org
@@ -13,17 +13,17 @@
 # Next gen author: Ted Tanberry <ted.tanberry@gmail.com>
 # @BLURB: Use this to easy install EMBOSS and EMBASSY programs (EMBOSS add-ons).
 # @DESCRIPTION:
-# The inheriting ebuild must set at least EAPI=5 and provide EBO_DESCRIPTION before the inherit line.
+# The inheriting ebuild must set at least EAPI=6 and provide EBO_DESCRIPTION before the inherit line.
 # KEYWORDS should be set. Additionally "(R|P)DEPEND"encies and other standard
 # ebuild variables can be extended (FOO+=" bar").
 #
 # Example:
 #
-# EAPI="5"
+# EAPI=6
 #
 # EBO_DESCRIPTION="applications from the CBS group"
 #
-# inherit emboss-r1
+# inherit emboss-r2
 
 # @ECLASS-VARIABLE: EBO_DESCRIPTION
 # @DEFAULT_UNSET
@@ -36,17 +36,16 @@
 #
 # Defaults to the upstream name of the module.
 
-# @ECLASS-VARIABLE: EBO_EXTRA_ECONF
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Extra config options passed to econf.
+if [[ ! ${_EMBOSS_R2} ]]; then
 
 case ${EAPI:-0} in
-	5) ;;
-	*) die "this eclass doesn't support < EAPI 5" ;;
+	6) ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-inherit autotools-utils eutils flag-o-matic
+inherit autotools flag-o-matic
+
+EXPORT_FUNCTIONS src_prepare src_configure src_install
 
 HOMEPAGE="http://emboss.sourceforge.net/"
 LICENSE="LGPL-2 GPL-2"
@@ -54,17 +53,16 @@ LICENSE="LGPL-2 GPL-2"
 SLOT="0"
 IUSE="mysql pdf png postgres static-libs X"
 
-DEPEND="
+RDEPEND="
 	dev-libs/expat
 	dev-libs/libpcre:3
-	sci-libs/plplot
+	sci-libs/plplot:=
 	sys-libs/zlib
 	mysql? ( virtual/mysql )
-	pdf? ( media-libs/libharu )
-	png? ( media-libs/gd[png] )
+	pdf? ( media-libs/libharu:= )
+	png? ( media-libs/gd:2=[png] )
 	postgres? ( dev-db/postgresql:= )
 	X? ( x11-libs/libXt )"
-RDEPEND="${DEPEND}"
 
 if [[ ${PN} == embassy-* ]]; then
 	EMBASSY_PACKAGE=yes
@@ -72,48 +70,66 @@ if [[ ${PN} == embassy-* ]]; then
 	EN=${PN:8}
 	# The full name and version of the EMBASSY package (excluding the Gentoo
 	# revision number)
-	EF=$(echo ${EN} | tr "[:lower:]" "[:upper:]")-${PV}
-	: ${EBO_DESCRIPTION:=${EN}}
-	DESCRIPTION="EMBOSS integrated version of ${EBO_DESCRIPTION}"
-	SRC_URI="ftp://emboss.open-bio.org/pub/EMBOSS/${EF}.tar.gz -> embassy-${EN}-${PVR}.tar.gz"
-	DEPEND+=" >=sci-biology/emboss-6.6.0[mysql=,pdf=,png=,postgres=,static-libs=,X=]"
+	EF="${EN^^}-${PV}"
 
-	S="${WORKDIR}"/${EF}
+	[[ ${EBO_DESCRIPTION} ]] || die "EBO_DESCRIPTION was not set before inheriting emboss-r2.eclass"
+
+	DESCRIPTION="EMBOSS integrated version of ${EBO_DESCRIPTION}"
+	SRC_URI="ftp://emboss.open-bio.org/pub/EMBOSS/${EF}.tar.gz -> embassy-${EN}-${PV}.tar.gz"
+	RDEPEND+=" >=sci-biology/emboss-6.6.0-r1[mysql=,pdf=,png=,postgres=,static-libs=,X=]"
+
+	S="${WORKDIR}/${EF}"
 fi
 
-# @FUNCTION: emboss-r1_src_prepare
+DEPEND="${RDEPEND}"
+
+# @ECLASS-VARIABLE: EBO_EAUTORECONF
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, run eautoreconf from autotools.eclass after applying patches
+# in emboss-r2_src_prepare.
+
+# @FUNCTION: emboss-r2_src_prepare
 # @DESCRIPTION:
 # Does the following things
 #
 #  1. Renames configure.in to configure.ac, if possible
-#  2. Applies ${PATCHES[@]} and runs autotools via autotools-utils.eclass
+#  2. Calls default_src_prepare (i.e.
+#     applies Gentoo and user patches in EAPI>=6)
+#  3. If EBO_EAUTORECONF is set, run eautoreconf
 #
 
-emboss-r1_src_prepare() {
+emboss-r2_src_prepare() {
 	if [[ -e configure.in ]]; then
 		mv configure.{in,ac} || die
 	fi
 
-	autotools-utils_src_prepare
+	default
+	[[ ${EBO_EAUTORECONF} ]] && eautoreconf
 }
 
-# @FUNCTION: emboss-r1_src_configure
+# @FUNCTION: emboss-r2_src_configure
 # @DESCRIPTION:
 # runs econf with following options.
 #
+#  --enable-shared
+#  $(use_enable static-libs static)
 #  $(use_with X x)
 #  $(use_with png pngdriver)
 #  $(use_with pdf hpdf)
 #  $(use_with mysql mysql)
 #  $(use_with postgres postgresql)
-#  $(use_enable static-libs static)
 #  --enable-large
 #  --without-java
 #  --enable-systemlibs
-#  ${EBO_EXTRA_ECONF}
+#
+#  can be appended to like econf, e.g.
+#    emboss-r2_src_configure --disable-shared
 
-emboss-r1_src_configure() {
-	local myeconfargs=(
+emboss-r2_src_configure() {
+	local myconf=(
+		--enable-shared
+		$(use_enable static-libs static)
 		$(use_with X x)
 		$(use_with png pngdriver "${EPREFIX}/usr")
 		$(use_with pdf hpdf "${EPREFIX}/usr")
@@ -122,13 +138,27 @@ emboss-r1_src_configure() {
 		--enable-large
 		--without-java
 		--enable-systemlibs
-		${EBO_EXTRA_ECONF}
 	)
 
 	[[ ${EMBASSY_PACKAGE} == yes ]] && \
 		append-cppflags "-I${EPREFIX}/usr/include/emboss"
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}" "$@"
 }
 
-EXPORT_FUNCTIONS src_prepare src_configure
+# @FUNCTION: emboss-r2_src_install
+# @DESCRIPTION:
+# Installs the package into the staging area and removes
+# extraneous .la files, if USE="-static-libs"
+
+emboss-r2_src_install() {
+	default
+
+	# delete .la files
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
+}
+
+_EMBOSS_R2=1
+fi

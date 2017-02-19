@@ -8,7 +8,7 @@ SRC_URI="ftp://ftp.ebi.ac.uk/pub/databases/${PN}/${PN}32.tar.Z"
 LICENSE="public-domain"
 
 SLOT="3"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emboss minimal"
 # Minimal build keeps only the indexed files (if applicable) and the documentation.
 # The non-indexed database is not installed.

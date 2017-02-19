@@ -2,14 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EBO_DESCRIPTION="Protein domain analysis add-on package"
 
-AUTOTOOLS_AUTORECONF=1
+EBO_EAUTORECONF=1
 
-inherit emboss-r1
+inherit emboss-r2
 
-KEYWORDS="amd64 x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 
-PATCHES=( "${FILESDIR}"/${P}_fix-build-system.patch )
+S="${WORKDIR}/DOMAINATRIX-0.1.650"
+PATCHES=( "${FILESDIR}"/${PN}-0.1.650_fix-build-system.patch )
