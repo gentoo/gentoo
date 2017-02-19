@@ -5659,7 +5659,7 @@ dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0 1.700.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.100.0: Localization support for DateTime
+dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.120.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.70.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0 1.60.0: A date object, with as little code as possible
@@ -6279,7 +6279,7 @@ dev-perl/PAR 1.10.0 1.12.0 1.14.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
-dev-perl/PDF-API2 2.27.0: Facilitates the creation and modification of PDF files
+dev-perl/PDF-API2 2.27.0 2.31.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0 1.410.0: Create PDF documents in Perl
 dev-perl/PDL 2.4.11 2.17.0: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
@@ -6598,7 +6598,7 @@ dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styl
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.720.0 0.760.0 0.770.0 0.780.0: A Perl library for reading, parsing, and processing BibTeX files
-dev-perl/Text-CSV 1.330.0: Manipulate comma-separated value strings
+dev-perl/Text-CSV 1.330.0 1.910.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 1.230.0 1.260.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
