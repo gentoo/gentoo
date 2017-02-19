@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-10">
+  <title>NTFS-3G: Privilege escalation</title>
+  <synopsis>A vulnerability in NTFS-3G allows local users to gain root
+    privileges.
+  </synopsis>
+  <product type="ebuild">ntfs-3g</product>
+  <announced>2017-02-19</announced>
+  <revised>2017-02-19: 1</revised>
+  <bug>607912</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/ntfs3g" auto="yes" arch="*">
+      <unaffected range="ge">2016.2.22-r2</unaffected>
+      <vulnerable range="lt">2016.2.22-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTFS-3G is a stable, full-featured, read-write NTFS driver for various
+      operating systems.
+    </p>
+  </background>
+  <description>
+    <p>The NTFS-3G driver does not properly clear environment variables before
+      invoking mount or umount.
+    </p>
+    
+    <p>This flaw is similar to the vulnerability described in
+      “GLSA-201701-19” and “GLSA-201603-04” referenced below but is now
+      implemented in the NTFS-3G driver itself.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local user could gain root privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time. However, on Gentoo when the
+      “suid” USE flag is not set (which is the default) an attacker cannot
+      exploit the flaw.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All NTFS-3G users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/ntfs3g-2016.2.22-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0358">CVE-2017-0358</uri>
+    <uri link="https://security.gentoo.org/glsa/201603-04">GLSA-201603-04</uri>
+    <uri link="https://security.gentoo.org/glsa/201701-19">GLSA-201701-19</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-04T11:49:00Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-19T12:03:15Z">whissi</metadata>
+</glsa>
