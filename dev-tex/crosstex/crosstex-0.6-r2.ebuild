@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
@@ -15,8 +16,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-python/ply[${PYTHON_USEDEP}]"
+RDEPEND="${PYTHON_DEPS}
+	dev-python/ply[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 src_install() {
