@@ -5,6 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
+
 inherit python-single-r1
 
 DESCRIPTION="Gnome front-end for file management on iRiver iFP MP3 players"
@@ -15,8 +16,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=dev-python/libgnome-python-2[${PYTHON_USEDEP}]
+RDEPEND="${PYTHON_DEPS}
+	>=dev-python/libgnome-python-2[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2[${PYTHON_USEDEP}]
 	>=dev-python/pyifp-0.2.2[${PYTHON_USEDEP}]"
 DEPEND=""
