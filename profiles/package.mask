@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (19 Feb 2017)
+# Dead upstream for >3 years. Closed source. Bundles outdated
+# libraries that certainly have known security issues (e.g.,
+# icu-36 (!) or curl). Use at your own risk.
+app-text/acroread
+media-fonts/acroread-asianfonts
+
 # Hans de Graaff <graaff@gentoo.org> (19 Feb 2017)
 # Mask old jenkins lts version for removal in 30 days due to
 # security bugs: bug 607932. Please migrate to jenkins 2.x.
