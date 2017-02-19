@@ -73,7 +73,14 @@
 # (e.g. selenium's firefox driver extension). When set this argument is
 # passed to "grep -E" to remove reporting of these shared objects.
 
-inherit eutils java-utils-2 multilib toolchain-funcs ruby-utils
+local inherits=""
+case ${EAPI} in
+	2|3|4|5)
+		inherits="eutils"
+		;;
+esac
+
+inherit ${inherits} java-utils-2 multilib toolchain-funcs ruby-utils
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
@@ -399,15 +406,24 @@ ruby-ng_src_unpack() {
 }
 
 _ruby_apply_patches() {
-	for patch in "${RUBY_PATCHES[@]}"; do
-		if [ -f "${patch}" ]; then
-			epatch "${patch}"
-		elif [ -f "${FILESDIR}/${patch}" ]; then
-			epatch "${FILESDIR}/${patch}"
-		else
-			die "Cannot find patch ${patch}"
-		fi
-	done
+	case ${EAPI} in
+		2|3|4|5)
+			for patch in "${RUBY_PATCHES[@]}"; do
+				if [ -f "${patch}" ]; then
+					epatch "${patch}"
+				elif [ -f "${FILESDIR}/${patch}" ]; then
+					epatch "${FILESDIR}/${patch}"
+				else
+					die "Cannot find patch ${patch}"
+				fi
+			done
+			;;
+		6)
+			if [[ -n ${RUBY_PATCHES[@]} ]]; then
+			   eqawarn "RUBY_PATCHES is no longer supported, use PATCHES instead"
+			fi
+			;;
+	esac
 
 	# This is a special case: instead of executing just in the special
 	# "all" environment, this will actually copy the effects on _all_
@@ -432,13 +448,14 @@ ruby-ng_src_prepare() {
 	# almost every other ebuild.
 	find . -name '._*' -delete
 
-	_ruby_invoke_environment all _ruby_apply_patches
-
+	# Handle PATCHES and user supplied patches via the default phase
 	case ${EAPI} in
 		6)
-			eapply_user
+			_ruby_invoke_environment all default
 			;;
 	esac
+
+	_ruby_invoke_environment all _ruby_apply_patches
 
 	_PHASE="source copy" \
 		_ruby_each_implementation _ruby_source_copy
