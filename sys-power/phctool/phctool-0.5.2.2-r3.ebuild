@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-PYTHON_DEPEND="2"
-inherit eutils python user
+PYTHON_COMPAT=( python2_7 )
+inherit python-single-r1 user
 
 DESCRIPTION="Processor Hardware Control userland configuration tool"
 HOMEPAGE="http://www.linux-phc.org/"
@@ -16,9 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc sudo"
 
-RDEPEND="dev-python/egg-python
-	dev-python/pygtk:2
+DEPEND="${PYTHON_DEPS}
+	dev-python/egg-python[${PYTHON_USEDEP}]
+	dev-python/pygtk:2[${PYTHON_USEDEP}]"
+RDEPEND="${DEPEND}
 	sudo? ( app-admin/sudo )"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${PV%.*}-${PV##*.}/${PN}"
 
@@ -28,19 +32,21 @@ pkg_setup() {
 		MY_GROUPNAME="phcusers"
 		enewgroup ${MY_GROUPNAME}
 	fi
-	python_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}_all_paths_tray.patch
+	eapply "${FILESDIR}"/${P}_all_paths_tray.patch
 	if use sudo ; then
-		epatch "${FILESDIR}"/${P}_all_paths_tool_sudo.patch
+		eapply "${FILESDIR}"/${P}_all_paths_tool_sudo.patch
 	else
-		epatch "${FILESDIR}"/${P}_all_paths_tool_no_sudo.patch
+		eapply "${FILESDIR}"/${P}_all_paths_tool_no_sudo.patch
 	fi
-	epatch "${FILESDIR}"/${P}_kernel_2.6.36.patch
-	epatch "${FILESDIR}"/${P}_gui_kernel_2.6.38.patch
+	eapply "${FILESDIR}"/${P}_kernel_2.6.36.patch
+	eapply "${FILESDIR}"/${P}_gui_kernel_2.6.38.patch
+	eapply_user
 	find . -name "*.pyc" -delete || die
+	python_fix_shebang .
 }
 
 src_install() {
@@ -49,8 +55,8 @@ src_install() {
 
 	exeinto ${MY_PROGDIR}
 	doexe phc{tool,tray}.py subphctool.sh
-	insinto ${MY_PROGDIR}
-	doins -r inc
+	python_moduleinto ${MY_PROGDIR}
+	python_domodule inc
 
 	if use sudo ; then
 		fowners -R ":${MY_GROUPNAME}" "${MY_PROGDIR}"
@@ -63,7 +69,8 @@ src_install() {
 
 	dodoc CHANGELOG
 	if use doc; then
-		dohtml -r doc/docfiles doc/index.htm
+		docinto html
+		dodoc -r doc/docfiles doc/index.htm
 	fi
 }
 
