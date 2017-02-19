@@ -17,5 +17,6 @@ IUSE="libcxx openmp"
 
 # compiler-rt is installed unconditionally
 RDEPEND="
+	~sys-devel/clang-${PV}
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
 	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"

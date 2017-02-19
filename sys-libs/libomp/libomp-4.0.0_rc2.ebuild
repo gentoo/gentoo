@@ -28,13 +28,13 @@ RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
-# - sys-devel/clang provides the compiler to run tests
+# - sys-devel/clang-runtime pulls the compiler to run tests
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		sys-devel/llvm
-		>=sys-devel/clang-3.9.0
+		sys-devel/clang-runtime[compiler-rt]
 	)"
 
 S=${WORKDIR}/openmp-${PV/_/}.src
@@ -60,6 +60,7 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
+		# use compiler-rt since clang does not link libatomic for libgcc
 		-DLIBOMP_TEST_COMPILER="$(type -P "${CHOST}-clang")"
 	)
 	cmake-utils_src_configure
