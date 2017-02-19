@@ -17688,7 +17688,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 64 65: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.9999 3.14.58-r1 3.14.79-r1 3.18.25-r1 3.18.44 3.18.45-r1 3.18.47 3.18.48 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.4.39 4.4.44 4.4.45 4.4.46 4.4.47 4.4.48 4.4.49 4.4.50 4.9.4 4.9.5 4.9.6 4.9.6-r1 4.9.7 4.9.8 4.9.9 4.9.10 4.9.11: Full sources including the Gentoo patchset for the 4.9 kernel tree
 sys-kernel/git-sources 4.10_rc1 4.10_rc2 4.10_rc3 4.10_rc4 4.10_rc5 4.10_rc6 4.10_rc7 4.10_rc8: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.9 4.9.10: Hardened kernel sources (kernel series 4.9)
+sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.9 4.9.10 4.9.11: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
@@ -18228,7 +18228,7 @@ www-apps/trac-mercurial 0.12.0.29_pre10899-r1 1.0.0.3_pre20130206-r1: A Mercuria
 www-apps/trac-tags 0.6-r1: Tags plugin for Trac
 www-apps/tt-rss 20160527 20160930: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911: A feed aggregator application
-www-apps/viewvc 1.1.20: ViewVC, a web interface to CVS and Subversion
+www-apps/viewvc 1.1.20-r1: ViewVC, a web interface to CVS and Subversion
 www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
@@ -18692,7 +18692,7 @@ x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autosta
 x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
 x11-misc/driconf 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
-x11-misc/dsx 0.1 0.1-r1: Command line selection of your X desktop environment
+x11-misc/dsx 0.1-r1: Command line selection of your X desktop environment
 x11-misc/dunst 1.1.0: customizable and lightweight notification-daemon
 x11-misc/dxpc 3.9.2-r1 3.9.2-r2: Differential X Protocol Compressor
 x11-misc/dzen 0.9.5-r1: a general purpose messaging, notification and menuing program for X11
