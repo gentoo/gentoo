@@ -17813,7 +17813,7 @@ sys-power/nvram-reboot 2004.10.03: PowerOff Boot-Images for nvram-wakeup (not ne
 sys-power/nvram-wakeup 1.0 1.1: read and write the WakeUp time in the BIOS
 sys-power/phc-intel 0.3.2.12.15.1 0.3.2.12.16 0.3.2.12.17 0.3.2.12.21: Processor Hardware Control for Intel CPUs
 sys-power/phc-k8 0.4.3 0.4.4: Processor Hardware Control for AMD K8 CPUs
-sys-power/phctool 0.5.2.2-r2: Processor Hardware Control userland configuration tool
+sys-power/phctool 0.5.2.2-r3: Processor Hardware Control userland configuration tool
 sys-power/pm-quirks 20100619: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20071116 20110323 20110323-r1: Collection of tools for ACPI and power management
@@ -18149,7 +18149,7 @@ www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 0.12 1.1 9999: a fast web-interface for git repositories
 www-apps/chromedriver-bin 2.24: WebDriver for Chrome
 www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data collected by collectd
-www-apps/curator 3.0_p20110120-r1: Gallery generator
+www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/cvsweb 1.112 3.0.5 3.0.6 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.0.2-r2 1.1.0-r1 1.1.1-r2 1.1.3.1-r2: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20140505e 20140929d-r1 20150810 20150810a 20160626a: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
