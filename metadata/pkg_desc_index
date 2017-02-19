@@ -12970,7 +12970,7 @@ media-libs/libogg 1.3.0 1.3.1 1.3.2: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libomxil-bellagio 0.9.3: Open Source implementation of the OpenMAX Integration Layer
 media-libs/libopendaap 0.4.0: A library which enables applications to discover and connect to iTunes(R) music shares
-media-libs/libopenraw 0.0.9: A decoding library for RAW image formats
+media-libs/libopenraw 0.0.9 0.1.0: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.2 0.1.3: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.0.6 0.1.2-r1: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.3-r1 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
