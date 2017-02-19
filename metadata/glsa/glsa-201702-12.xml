@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-12">
+  <title>MuPDF: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MuPDF, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">mupdf</product>
+  <announced>2017-02-19</announced>
+  <revised>2017-02-19: 1</revised>
+  <bug>589826</bug>
+  <bug>590480</bug>
+  <bug>608702</bug>
+  <bug>608712</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/mupdf" auto="yes" arch="*">
+      <unaffected range="ge">1.10a-r1</unaffected>
+      <vulnerable range="lt">1.10a-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A lightweight PDF, XPS, and E-book viewer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MuPDF. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PDF
+      document using MuPDF possibly resulting in the execution of arbitrary
+      code, with the privileges of the process, or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MuPDF users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/mupdf-1.10a-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6265">CVE-2016-6265</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6525">CVE-2016-6525</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5896">CVE-2017-5896</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-05T22:42:31Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-19T12:47:00Z">whissi</metadata>
+</glsa>
