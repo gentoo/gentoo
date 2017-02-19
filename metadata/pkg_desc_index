@@ -2181,7 +2181,7 @@ app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn s
 app-shells/zsh-completions 0.22.0 0.23.0 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
-app-text/a2ps 4.14-r5 4.14-r6: Any to PostScript filter
+app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/acroread 9.5.5-r3: Adobe's PDF reader
 app-text/active-dvi 1.10.2-r1: A DVI previewer and a presenter for slides written in LaTeX
 app-text/adiff 1.4: wordwise diff
@@ -16462,7 +16462,7 @@ sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda
 sci-mathematics/agda-stdlib 2.4.2.5 2.5.2.0.13: Agda standard library
 sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
-sci-mathematics/cado-nfs 1.1 2.0 2.1 2.1.1 2.2.0: Number Field Sieve (NFS) implementation for factoring integers
+sci-mathematics/cado-nfs 2.2.0: Number Field Sieve (NFS) implementation for factoring integers
 sci-mathematics/calc 2.12.2.2 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.3 4.3-r1 4.8-r1: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.5 8.5_p3 8.6: Proof assistant written in O'Caml
@@ -16484,7 +16484,7 @@ sci-mathematics/frobby 0.9.0-r1: Software system and project for computations wi
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra 4.1.120.0: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
-sci-mathematics/gfan 0.5 0.5-r1: computes Groebner fans and tropical varities
+sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 28.9 28.10-r1: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.5.8 1.6.1 1.6.2 1.6.6 1.7.2: C++ library and tools for symbolic calculations
