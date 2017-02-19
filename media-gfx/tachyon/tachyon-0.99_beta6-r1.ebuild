@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -106,6 +106,7 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-ldflags.patch \
 		"${FILESDIR}"/${P}-shared.patch
+	eapply_user
 }
 
 src_compile() {
@@ -117,7 +118,7 @@ src_install() {
 	dodoc Changes README
 
 	insinto /usr/include/${PN}
-	doheader src/*.h
+	doins src/*.h
 
 	use doc && dohtml docs/tachyon/*
 
