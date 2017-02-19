@@ -37,15 +37,13 @@ COMMON_DEPEND="
 	dev-qt/qtscript:4
 	dev-qt/qtsvg:4
 	dev-qt/qtsql:4
-	>=sci-libs/gdal-1.6.1:=[geos,oracle?,python?,${PYTHON_USEDEP}]
+	sci-libs/gdal:=[geos,oracle?,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
 	sci-libs/proj
 	x11-libs/qscintilla:=[qt4(-)]
-	|| (
-		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) >=x11-libs/qwtpolar-1[qt4(+)] )
-		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
-	)
+	>=x11-libs/qwt-6.1.2:6=[svg,qt4(-)]
+	>=x11-libs/qwtpolar-1[qt4(-)]
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( >=sci-geosciences/grass-7.0.0:= )
 	mapserver? ( dev-libs/fcgi )
@@ -80,7 +78,10 @@ RDEPEND="${COMMON_DEPEND}
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${P}-app-icon.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-app-icon.patch
+	"${FILESDIR}"/${P}-webkit.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -99,6 +100,8 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		-DQGIS_LIB_SUBDIR=$(get_libdir)
 		-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis
+		-DQWT_INCLUDE_DIR=/usr/include/qwt6
+		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt4.so
 		-DWITH_INTERNAL_DATEUTIL=OFF
 		-DWITH_INTERNAL_FUTURE=OFF
 		-DWITH_INTERNAL_HTTPLIB2=OFF
@@ -122,16 +125,6 @@ src_configure() {
 		-DWITH_SERVER="$(usex mapserver)"
 		-DWITH_QTWEBKIT="$(usex webkit)"
 	)
-
-	if has_version '>=x11-libs/qwtpolar-1' &&  has_version 'x11-libs/qwt:5' ; then
-		elog "Both >=x11-libs/qwtpolar-1 and x11-libs/qwt:5 installed. Force build with qwt6"
-		mycmakeargs+=( "-DQWT_INCLUDE_DIR=/usr/include/qwt6" )
-		if has_version '>=x11-libs/qwt-6.1.2' ; then
-			mycmakeargs+=( "-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt4.so" )
-		else
-			mycmakeargs+=( "-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6.so" )
-		fi
-	fi
 
 	cmake-utils_src_configure
 }
