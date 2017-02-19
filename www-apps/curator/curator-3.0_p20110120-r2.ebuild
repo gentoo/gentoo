@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-PYTHON_DEPEND="2"
+PYTHON_COMPAT=( python2_7 )
 
-inherit python
+inherit python-single-r1
 
 DESCRIPTION="Gallery generator"
 HOMEPAGE="http://furius.ca/curator/"
@@ -19,21 +19,20 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-python/pillow
+	${PYTHON_DEPS}
+	dev-python/pillow[${PYTHON_USEDEP}]
 	virtual/imagemagick-tools"
+
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 S="${WORKDIR}/curator-3.0_pf078f1686a78"
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
 src_compile() {
-	:
+	python_fix_shebang hs/curator-hs
 }
 
 src_install() {
 	dobin hs/curator-hs
-	insinto /usr/share/curator/hs
-	doins -r hs/*
+	insinto /usr/share/curator
+	doins -r hs
 }
