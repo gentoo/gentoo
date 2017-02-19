@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
@@ -15,8 +16,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="app-dicts/wordnet"
+DEPEND="${PYTHON_DEPS}
+	app-dicts/wordnet"
 RDEPEND="${DEPEND}"
 
 src_compile() {

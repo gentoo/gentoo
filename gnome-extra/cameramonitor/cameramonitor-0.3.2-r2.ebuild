@@ -18,8 +18,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-python/gconf-python:2[${PYTHON_USEDEP}]
+RDEPEND="${PYTHON_DEPS}
+	dev-python/gconf-python:2[${PYTHON_USEDEP}]
 	dev-python/notify-python[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]

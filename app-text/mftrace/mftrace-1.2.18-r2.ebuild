@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1 toolchain-funcs
@@ -16,11 +17,13 @@ KEYWORDS="amd64 ~hppa ppc x86 ~x86-fbsd"
 # SLOT 1 was used in pktrace ebuild
 SLOT="1"
 IUSE="test truetype"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/t1utils-1.25
 	|| ( media-gfx/potrace >=media-gfx/autotrace-0.30 )
 	truetype? ( media-gfx/fontforge )
-	virtual/latex-base"
+	virtual/latex-base
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	test? ( media-gfx/fontforge )"
 

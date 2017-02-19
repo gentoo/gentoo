@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="expat jpeg jpeg2k lua openexr php perl png python ruby swig tiff truetype X"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="x11-libs/agg[truetype]
 	sys-libs/zlib

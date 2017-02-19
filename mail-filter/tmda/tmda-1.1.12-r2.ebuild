@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
@@ -15,8 +16,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="virtual/mta"
+DEPEND="
+	virtual/mta
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
