@@ -25,11 +25,6 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-src_prepare() {
-	cp "${FILESDIR}/${P}" "${PN}" || die
-	default
-}
-
 src_install() {
-	python_doscript "${WORKDIR}/${PN}"
+	python_newscript "${FILESDIR}/${P}" "${PN}"
 }
