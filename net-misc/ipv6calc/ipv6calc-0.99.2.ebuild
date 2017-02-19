@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-inherit fixheadtails
+EAPI="6"
 
 DESCRIPTION="IPv6 address calculator"
 HOMEPAGE="http://www.deepspace6.net/projects/ipv6calc.html"
@@ -11,28 +10,41 @@ SRC_URI="ftp://ftp.bieringer.de/pub/linux/IPv6/ipv6calc/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ppc sparc x86 ~amd64-linux ~x86-linux"
-IUSE="geoip test"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="geoip libressl test"
 
 RDEPEND="
+	!libressl? ( dev-libs/openssl:= )
+	libressl? ( dev-libs/libressl:= )
 	geoip? ( >=dev-libs/geoip-1.4.7 )
 "
 DEPEND="${RDEPEND}
-	test? ( dev-perl/Digest-SHA1 )"
+	test? ( dev-perl/Digest-SHA1 )
+"
 
 #dev-perl/URI is needed for web interface, that is not installed now
 
-src_prepare() {
-	ht_fix_file configure
-}
-
 src_configure() {
+	# These options are broken.  You can't disable them.  That's
+	# okay because we want then force enabled.
+	# --disable-db-as-registry
+	# --disable-db-cc-registry
 	if use geoip; then
 		myconf=$(use_enable geoip)
-		myconf+=" --with-geoip-ipv4-default-file=${EPREFIX}/usr/share/GeoIP/GeoIP.dat"
-		myconf+=" --with-geoip-ipv6-default-file=${EPREFIX}/usr/share/GeoIP/GeoIPv6.dat"
+		myconf+=" --with-geoip-db=${EPREFIX}/usr/share/GeoIP"
 	fi
-	econf ${myconf}
+	econf \
+		--disable-bundled-getopt \
+		--disable-bundled-md5 \
+		--enable-shared \
+		--enable-dynamic-load \
+		--enable-db-ieee \
+		--enable-db-ipv4 \
+		--enable-db-ipv6 \
+		--disable-dbip \
+		--disable-external \
+		--disable-ip2location \
+		${myconf}
 }
 
 src_compile() {
