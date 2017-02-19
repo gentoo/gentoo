@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (19 Feb 2017)
+# Revdeps need patching.
+>=media-gfx/libopenraw-0.1.0
+
 # David Seifert <soap@gentoo.org> (18 Feb 2017)
 # Awful codebase, pointer-to-int-casts, SDL1
 # Masked for removal in 30 days
