@@ -28,7 +28,10 @@ RDEPEND="
 S="${WORKDIR}/${PN}"
 PATCHES=( "${FILESDIR}"/${P}-install.patch )
 
+src_compile() {
+	python_fix_shebang wbarconf
+}
+
 src_install() {
 	./install.sh "${ED%/}/usr" || die "./install.sh failed."
-	python_doscript wbarconf
 }
