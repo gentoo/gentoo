@@ -4540,7 +4540,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficientl
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.3_rc4 5.24.1_rc4 5.24.1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.30 7.0.15 7.1.1: The PHP language runtime engine
+dev-lang/php 5.6.30 5.6.30-r1 7.0.16 7.1.2: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 3.4.5 3.5.2 3.6.0: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.4.3 2.4.4 2.4.5 9999: Python script wrapper
@@ -15332,7 +15332,7 @@ net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamlink 0.1.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/strongswan 5.3.4 5.5.1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
-net-misc/stunnel 5.36 5.37 5.38 5.39: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.36 5.37 5.38 5.39 5.40: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10 3.5_p8 3.5_p9 3.5_p10: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
@@ -17908,7 +17908,7 @@ virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
 virtual/httpd-fastcgi 0-r1: Virtual for FastCGI-enabled webservers
 virtual/httpd-php 5.6 7.0 7.1: Virtual to provide PHP-enabled webservers
 virtual/imagemagick-tools 0: Virtual for imagemagick command line tools
-virtual/imap-c-client 0 1: Virtual for IMAP c-client
+virtual/imap-c-client 0 1 2: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 0: Virtual for JACK Audio Connection Kit
 virtual/jdk 1.7.0-r2 1.8.0-r3: Virtual for Java Development Kit (JDK)

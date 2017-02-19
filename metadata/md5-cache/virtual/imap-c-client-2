@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for IMAP c-client
+EAPI=6
+IUSE=kerberos ssl
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+RDEPEND=|| ( net-libs/c-client[kerberos=,ssl=] net-mail/uw-imap[kerberos=,ssl=] )
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=a0ed383cae516e5b8fe9f44d24c7294c
