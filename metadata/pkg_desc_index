@@ -3599,7 +3599,7 @@ dev-haskell/mutable-containers 0.3.2 0.3.2.1 0.3.3: Abstactions and concrete imp
 dev-haskell/mwc-random 0.12.0.1 0.13.3.2 0.13.4.0: Fast, high quality pseudo random number generation
 dev-haskell/nanospec 0.1.0 0.2.0 0.2.1: A lightweight implementation of a subset of Hspec's API
 dev-haskell/nats 0.1.2 0.2 1: Natural numbers
-dev-haskell/network 2.4.1.2 2.4.2.2 2.5.0.0 2.6.2.1 2.6.3.1: Low-level networking interface
+dev-haskell/network 2.4.1.2 2.4.2.2 2.5.0.0 2.6.2.1 2.6.3.1-r1: Low-level networking interface
 dev-haskell/network-bytestring 0.1.3.4: Fast, memory-efficient, low-level networking
 dev-haskell/network-conduit 1.0.0-r1 1.0.2.2 1.1.0: Stream socket data using conduits. (deprecated)
 dev-haskell/network-data 0.5.3: Library for network data structures and their serialization
@@ -3826,7 +3826,7 @@ dev-haskell/wx 0.92.2.0: wxHaskell
 dev-haskell/wxc 0.92.2.0: wxHaskell C++ wrapper
 dev-haskell/wxcore 0.92.2.0: wxHaskell core
 dev-haskell/wxdirect 0.90.1.1 0.92.2.0 0.92.2.0-r1: helper tool for building wxHaskell
-dev-haskell/x11 1.6.1.1 1.6.1.2 1.8: A binding to the X11 graphics library
+dev-haskell/x11 1.6.1.1 1.6.1.2 1.8-r1: A binding to the X11 graphics library
 dev-haskell/x11-xft 0.3.1 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
 dev-haskell/x509 1.4.11 1.5.1 1.6.3 1.6.5: X509 reader and writer
 dev-haskell/x509-store 1.4.4 1.5.0 1.6.1 1.6.2: X.509 collection accessing and storing methods
