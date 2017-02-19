@@ -34,7 +34,7 @@ LICENSE="MIT"
 SLOT="0"
 RESTRICT="!bindist? ( bindist )"
 
-INTEL_CARDS="i915 i965 ilo intel"
+INTEL_CARDS="i915 i965 intel"
 RADEON_CARDS="r100 r200 r300 r600 radeon radeonsi"
 VIDEO_CARDS="${INTEL_CARDS} ${RADEON_CARDS} freedreno imx nouveau vc4 vivante vmware"
 for card in ${VIDEO_CARDS}; do
@@ -63,7 +63,6 @@ REQUIRED_USE="
 	video_cards_intel?  ( classic )
 	video_cards_i915?   ( || ( classic gallium ) )
 	video_cards_i965?   ( classic )
-	video_cards_ilo?    ( gallium )
 	video_cards_imx?    ( gallium )
 	video_cards_nouveau? ( || ( classic gallium ) )
 	video_cards_radeon? ( || ( classic gallium )
@@ -261,7 +260,6 @@ multilib_src_configure() {
 		gallium_enable video_cards_vmware svga
 		gallium_enable video_cards_nouveau nouveau
 		gallium_enable video_cards_i915 i915
-		gallium_enable video_cards_ilo ilo
 		gallium_enable video_cards_imx imx
 		if ! use video_cards_i915 && \
 			! use video_cards_i965; then
