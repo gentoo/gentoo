@@ -7240,7 +7240,7 @@ dev-python/botocore 1.4.60 1.4.62 1.4.65: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/brython 3.2.8 3.2.9 3.3.0: A Python 3 implementation for client-side web programming
+dev-python/brython 3.3.0 3.3.1: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.1.1 6.2.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
