@@ -35,6 +35,7 @@
 # libraries that certainly have known security issues (e.g.,
 # icu-36 (!) or curl). Use at your own risk.
 app-text/acroread
+media-fonts/acroread-asianfonts
 
 # Hans de Graaff <graaff@gentoo.org> (19 Feb 2017)
 # Mask old jenkins lts version for removal in 30 days due to
