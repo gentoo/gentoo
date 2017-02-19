@@ -15,8 +15,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="media-gfx/graphviz"
+RDEPEND="${PYTHON_DEPS}
+	media-gfx/graphviz"
 DEPEND="${RDEPEND}
 	media-gfx/imagemagick"
 

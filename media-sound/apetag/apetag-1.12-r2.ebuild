@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,11 +16,15 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-S=${WORKDIR}/Apetag
+RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
+
+S=${WORKDIR}/${PN^}
 
 src_prepare() {
-	eapply_user
+	default
 	sed -i \
 		-e 's:CXXDEBUG:LDFLAGS:' \
 		Makefile || die
@@ -44,5 +48,5 @@ src_install() {
 	dosym ../lib/apetag/rmid3tag.py /usr/bin/rmid3tag.py
 	dosym ../lib/apetag/tagdir.py /usr/bin/tagdir.py
 
-	dodoc 00readme
+	newdoc 00readme README
 }
