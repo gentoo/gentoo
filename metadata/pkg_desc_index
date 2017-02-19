@@ -12364,7 +12364,7 @@ media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic an
 media-fonts/heuristica 0.2.1: A font based on Adobe Utopia
 media-fonts/hkscs-ming 1.0_pre20030919-r2: Hong Kong SAR Government Official Reference Chinese Font that implements ISO10646 and HKSCS-2001
 media-fonts/hunkyfonts 0.3.1: Hunky Fonts are free TrueType fonts based on Bitstream's Vera fonts with additional letters
-media-fonts/inconsolata 20090222 20140821: A beautiful sans-serif monotype font designed for code listings
+media-fonts/inconsolata 20140821: A beautiful sans-serif monotype font designed for code listings
 media-fonts/inconsolata-hellenic 1.19: Hellenisation of the wonderful, monospace, open/free font Inconsolata by Raph Levien
 media-fonts/infinality-ultimate-meta 1: Meta package for infinality-ultimate with fonts
 media-fonts/intlfonts 1.2.1: International X11 fixed fonts
@@ -12438,10 +12438,10 @@ media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
 media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
 media-fonts/signika 1.001: A sans-serif with gentle character designed for signage
-media-fonts/sil-abyssinica 1.0 1.200: SIL Opentype Unicode fonts for Ethiopic languages
+media-fonts/sil-abyssinica 1.200: SIL Opentype Unicode fonts for Ethiopic languages
 media-fonts/sil-arabicfonts 1.005: SIL Opentype Unicode fonts for Arabic Languages
 media-fonts/sil-charis 4.110 5.000: Serif typeface for Roman and Cyrillic languages
-media-fonts/sil-doulos 4.106 4.110 5.000: Serif font for Roman and Cyrillic languages with comprehensive orthographic support
+media-fonts/sil-doulos 4.110 5.000: Serif font for Roman and Cyrillic languages with comprehensive orthographic support
 media-fonts/sil-ezra 2.51: SIL Ezra - Unicode Opentype fonts for Biblical Hebrew
 media-fonts/sil-galatia 2.1: The Galatia SIL Greek Unicode Fonts package
 media-fonts/sil-gentium 1.508 5.000: Gentium Plus unicode font for Latin and Greek languages
