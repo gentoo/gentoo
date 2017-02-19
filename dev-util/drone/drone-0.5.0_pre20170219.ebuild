@@ -6,16 +6,16 @@ EAPI=5
 inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/drone/drone/..."
-EGIT_COMMIT="84f1bb45289f249e484ac0a36ae886dbc3a75464"
+EGIT_COMMIT="99eb89be1ccc06eccb489083f66398d653e448b2"
 ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="A Continuous Delivery platform built on Docker, written in Go"
 HOMEPAGE="https://github.com/drone/drone"
 SRC_URI="${ARCHIVE_URI}
-	https://github.com/drone/mq/archive/1a62dafd7863c0e0b256edec7db73716a8e17dde.tar.gz -> drone-mq-1a62dafd7863c0e0b256edec7db73716a8e17dde.tar.gz
-	https://github.com/tidwall/redlog/archive/54086c8553cd23aba652513a87d2b085ea961541.tar.gz -> tidwall-redlog-54086c8553cd23aba652513a87d2b085ea961541.tar.gz
-	https://github.com/golang/crypto/archive/b8a2a83acfe6e6770b75de42d5ff4c67596675c0.tar.gz -> golang-crypto-b8a2a83acfe6e6770b75de42d5ff4c67596675c0.tar.gz"
+	https://github.com/drone/mq/archive/280af2a3b9c7d9ce90d625150dfff972c6c190b8.tar.gz -> drone-mq-280af2a3b9c7d9ce90d625150dfff972c6c190b8.tar.gz
+	https://github.com/tidwall/redlog/archive/550629ebbfa9925a73f69cce7cdd2e8dae52c713.tar.gz -> tidwall-redlog-550629ebbfa9925a73f69cce7cdd2e8dae52c713.tar.gz
+	https://github.com/golang/crypto/archive/453249f01cfeb54c3d549ddb75ff152ca243f9d8.tar.gz -> golang-crypto-453249f01cfeb54c3d549ddb75ff152ca243f9d8.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
