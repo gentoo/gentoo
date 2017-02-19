@@ -18692,7 +18692,7 @@ x11-misc/devilspie2 0.36 0.41 0.42: Devilspie like window matching utility, usin
 x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
-x11-misc/driconf 0.9.1-r1 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
+x11-misc/driconf 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
 x11-misc/dsx 0.1 0.1-r1: Command line selection of your X desktop environment
 x11-misc/dunst 1.1.0: customizable and lightweight notification-daemon
 x11-misc/dxpc 3.9.2-r1 3.9.2-r2: Differential X Protocol Compressor
