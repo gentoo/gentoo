@@ -9,7 +9,7 @@ MY_P="deviceatlas-enterprise-c-${PV}"
 
 DESCRIPTION="API to detect devices based on the User-Agent HTTP header"
 HOMEPAGE="https://deviceatlas.com"
-SRC_URI="${MY_P}.zip"
+SRC_URI="${MY_P}.tgz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -23,10 +23,6 @@ DEPEND="app-arch/unzip
 RESTRICT="fetch mirror bindist"
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	"${FILESDIR}/${PV}-cmake-install.patch"
-)
 
 pkg_nofetch() {
 	eerror "Please go to https://deviceatlas.com/deviceatlas-haproxy-module"
