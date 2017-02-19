@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
@@ -17,10 +18,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="app-text/dvipng
 	dev-python/PyQt4[${PYTHON_USEDEP}]
-	virtual/latex-base"
+	virtual/latex-base
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_PN}
