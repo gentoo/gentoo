@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+XORG_STATIC=no
 inherit xorg-2
 
 DESCRIPTION="create dependencies in makefiles using 'gcc -M'"
