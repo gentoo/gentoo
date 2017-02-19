@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,14 +16,14 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="gstreamer"
 
 RDEPEND="app-text/poppler:=[cairo]
 	dev-libs/glib:2
 	dev-libs/libgee:0.8
 	gnome-base/librsvg
-	media-libs/gstreamer:1.0
-	media-libs/gst-plugins-base:1.0
+	gstreamer? ( media-libs/gstreamer:1.0
+	media-libs/gst-plugins-base:1.0 )
 	sys-apps/dbus
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
@@ -38,6 +38,7 @@ src_prepare() {
 src_configure(){
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}/etc"
+		-DMOVIES=$(usex gstreamer on off)
 	)
 	cmake-utils_src_configure
 }
