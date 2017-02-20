@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-14">
+  <title>PyCrypto: Remote execution of arbitrary code</title>
+  <synopsis>A heap-based buffer overflow in PyCrypto might allow remote
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">pycrypto</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>576494</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/pycrypto" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1-r2</unaffected>
+      <vulnerable range="lt">2.6.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Python Cryptography Toolkit (PyCrypto) is a collection of both
+      secure hash functions (such as SHA256 and RIPEMD160), and various
+      encryption algorithms (AES, DES, RSA, ElGamal, etc.).
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow vulnerability has been discovered in
+      PyCrypto. Please review the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to control the mode of operation in PyCrypto’s
+      AES module, could possibly execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PyCrypto users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pycrypto-2.6.1-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7459">CVE-2013-7459</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-06T00:09:22Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:17:13Z">whissi</metadata>
+</glsa>
