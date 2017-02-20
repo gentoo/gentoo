@@ -140,12 +140,12 @@ pkg_postinst() {
 	# Update PEAR/PECL channels as needed, add new ones to the list if needed
 	elog "Updating PEAR/PECL channels"
 	local pearchans="pear.php.net pecl.php.net pear.phing.info "
-	pearchans+="pear.symfony-project.com pear.agavi.org"
+	pearchans+="pear.symfony-project.com"
 
 	for chan in ${pearchans} ; do
 		# The first command may fail if, for example, the channels have
 		# already been initialized.
 		pear channel-discover ${chan}
-		pear channel-update ${chan} || die "failed to update channels"
+		pear channel-update ${chan} || die "failed to update channels: ${chan}"
 	done
 }
