@@ -33,13 +33,15 @@ src_install() {
 	cmake-utils_src_install
 	if [[ ${PV} != "9999" ]] ; then
 		insinto /usr/share/hackrf
-		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb_rom_to_ram.bin" hackrf_jawbreaker_usb_rom_to_ram-${PV}.bin
-		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb_ram.dfu" hackrf_jawbreaker_usb_ram-${PV}.dfu
-		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_one_usb_rom_to_ram.bin" hackrf_one_usb_rom_to_ram-${PV}.bin
-		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_one_usb_ram.dfu" hackrf_one_usb_ram-${PV}.dfu
-		newins "${WORKDIR}/hackrf-${PV}/firmware/cpld/sgpio_if/default.xsvf" hackrf_cpld_default-${PV}.xsvf
-		ln -s hackrf_one_usb_rom_to_ram-${PV}.bin "${ED}/usr/share/hackrf/hackrf_one_usb_rom_to_ram.bin"
-		ln -s hackrf_one_usb_ram-${PV}.dfu "${ED}/usr/share/hackrf/hackrf_one_usb_ram.dfu"
+		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb.bin" hackrf_jawbreaker_usb-${PV}.bin
+		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb.dfu" hackrf_jawbreaker_usb-${PV}.dfu
+		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_one_usb.bin" hackrf_one_usb-${PV}.bin
+		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_one_usb.dfu" hackrf_one_usb-${PV}.dfu
+		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_cpld_default.xsvf" hackrf_cpld_default-${PV}.xsvf
+		ln -s hackrf_one_usb-${PV}.bin "${ED}/usr/share/hackrf/hackrf_one_usb_rom_to_ram.bin"
+		ln -s hackrf_one_usb-${PV}.bin "${ED}/usr/share/hackrf/hackrf_one_usb.bin"
+		ln -s hackrf_one_usb-${PV}.dfu "${ED}/usr/share/hackrf/hackrf_one_usb_ram.dfu"
+		ln -s hackrf_one_usb-${PV}.dfu "${ED}/usr/share/hackrf/hackrf_one_usb.dfu"
 	else
 		ewarn "The compiled firmware files are only available in the versioned releases, you are on your own for this."
 	fi
