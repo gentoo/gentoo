@@ -9,7 +9,7 @@ EAPI=5
 inherit eutils libtool multilib multilib-minimal
 
 DESCRIPTION="Library for manipulation of TIFF (Tag Image File Format) images"
-HOMEPAGE="http://www.remotesensing.org/libtiff/"
+HOMEPAGE="http://libtiff.maptools.org"
 SRC_URI="ftp://ftp.remotesensing.org/pub/libtiff/${P}.tar.gz"
 
 LICENSE="libtiff"
