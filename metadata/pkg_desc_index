@@ -15462,7 +15462,7 @@ net-print/mtink 1.0.16-r1 1.0.16-r2: mtink is a status monitor and inkjet cartri
 net-print/npadmin 0.8.7 0.8.7-r1: Network printer command-line adminstration tool
 net-print/pkpgcounter 3.50-r2: Generic PDL (Page Description Language) parser in Python
 net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series
-net-print/poster 20060221 20060221-r2: Small utility for making a poster from an EPS file or a one-page PS document
+net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
 net-print/pykota 1.26-r1: Flexible print quota and accounting package for use with CUPS and lpd
 net-print/splix 2.0.0_p20111206 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
@@ -15735,7 +15735,7 @@ sci-biology/ApE 2.0.7-r1: A Plasmid Editor
 sci-biology/GBrowse 2.48-r1: Generic Model Organism Database Project - The Generic Genome Browser
 sci-biology/aaindex 9.1: Amino acid indices and similarity matrices
 sci-biology/abyss 2.0.2-r1: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
-sci-biology/allpathslg 42337 52488-r2: De novo assembly of whole-genome shotgun microreads
+sci-biology/allpathslg 52488-r2: De novo assembly of whole-genome shotgun microreads
 sci-biology/amap 2.2-r2: Protein multiple-alignment-based sequence annealing
 sci-biology/amos 3.1.0 3.1.0-r2: A Modular, Open-Source whole genome assembler
 sci-biology/arb 5.1-r1 5.2 5.3: Tools for DNA/RNA sequence database handling and phylogenetic analysis
