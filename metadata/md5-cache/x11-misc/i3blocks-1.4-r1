@@ -9,4 +9,4 @@ RDEPEND=app-admin/sysstat media-sound/playerctl sys-apps/lm_sensors sys-power/ac
 SLOT=0
 SRC_URI=https://github.com/vivien/i3blocks/archive/1.4.tar.gz -> i3blocks-1.4.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=ffdfd4b0ae2c510c635f73e254a96baa
+_md5_=24f555b7a06ce8f16361fa594fd307c3

@@ -14675,7 +14675,7 @@ net-libs/libgmail 0.1.11-r1: Python bindings to access Google's gmail service
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4: exports a gssapi interface which calls other random gssapi libraries
-net-libs/libhackrf 2014.04.1 2014.08.1 2015.07.2 9999: library for communicating with HackRF SDR platform
+net-libs/libhackrf 2014.04.1 2014.08.1 2015.07.2 2017.02.1 9999: library for communicating with HackRF SDR platform
 net-libs/libhtp 0.5.18 0.5.22: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32: A small library to interface to the Ident protocol server
@@ -15553,7 +15553,7 @@ net-wireless/gr-paint 9999: paints monochrome images into the waterfall of a rec
 net-wireless/gr-rds 9999: gnuradio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
 net-wireless/gr-scan 20160104: Frequency scanner for GNU Radio
-net-wireless/hackrf-tools 2015.07.2-r1 9999: tools for communicating with HackRF SDR platform
+net-wireless/hackrf-tools 2015.07.2-r1 2017.02.1 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 5.0 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
@@ -16320,7 +16320,7 @@ sci-libs/pastix 5.2.2.22-r1: Parallel solver for very large sparse linear system
 sci-libs/pcl 1.8.0 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r6: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
-sci-libs/plplot 5.11.1-r1 5.12.0: Multi-language scientific plotting library
+sci-libs/plplot 5.11.1-r1 5.12.0-r1: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r1 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
@@ -18651,7 +18651,7 @@ x11-misc/gtkdialog 0.8.3-r2: A small utility for fast and easy GUI building
 x11-misc/gxmessage 2.20.1 2.20.3 3.4.2 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r1 0.2.5-r2: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2: Tool which allows you to compose wallpapers ('root pixmaps') for X
-x11-misc/i3blocks 1.4: highly flexible status line for the i3 window manager
+x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.6 2.7 2.8: Simple screen locker
 x11-misc/i3status 2.7 2.10-r1 2.11: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
