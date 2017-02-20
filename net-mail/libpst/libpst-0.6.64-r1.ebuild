@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_DEPEND="python? 2"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python
+inherit autotools python-single-r1
 
 DESCRIPTION="Tools and library for reading Outlook files (.pst format)"
 HOMEPAGE="http://www.five-ten-sg.com/libpst/"
@@ -13,30 +13,30 @@ SRC_URI="http://www.five-ten-sg.com/${PN}/packages/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="debug dii doc python static-libs"
 
-RDEPEND="dii? ( media-gfx/imagemagick[png] )
-	gnome-extra/libgsf"
+RDEPEND="dii? ( media-gfx/imagemagick:=[png] )
+	python? ( >=dev-libs/boost-1.48:=[python]
+		${PYTHON_DEPS} )
+	gnome-extra/libgsf:="
 DEPEND="${RDEPEND}
 	virtual/libiconv
 	virtual/pkgconfig
-	dii? ( media-libs/gd[png] )
-	python? ( >=dev-libs/boost-1.48[python] )"
+	dii? ( media-libs/gd[png] )"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	if use python; then
-		python_set_active_version 2
-		python_pkg_setup
-	fi
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	# don't build the static python library
-	epatch "${FILESDIR}"/${PN}-0.6.52-no-static-python-lib.patch
+	eapply "${FILESDIR}"/${PN}-0.6.52-no-static-python-lib.patch
 
 	# fix pkgconfig file for static linking
-	epatch "${FILESDIR}"/${PN}-0.6.53-pkgconfig-static.patch
+	eapply "${FILESDIR}"/${PN}-0.6.53-pkgconfig-static.patch
 
 	# conditionally install the extra documentation
 	use doc || { sed -i -e "/SUBDIRS/s: html::" Makefile.am || die; }
@@ -44,6 +44,7 @@ src_prepare() {
 	# don't install duplicate docs
 	sed -i -e "/^html_DATA =/d" Makefile.am || die
 
+	eapply_user
 	eautoreconf
 }
 
@@ -54,10 +55,10 @@ src_configure() {
 		$(use_enable dii) \
 		$(use_enable python) \
 		$(use_enable static-libs static) \
-		$(use python && echo --with-boost-python=boost_python-${PYTHON_ABI})
+		$(use python && echo --with-boost-python=boost_python-${EPYTHON#python})
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
