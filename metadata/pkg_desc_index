@@ -12667,7 +12667,7 @@ media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
 media-gfx/pornview 0.2.2 0.2.2-r1: Image viewer/manager with optional support for MPEG movies
 media-gfx/postr 0.13.1: Flickr uploader for GNOME
-media-gfx/potrace 1.13: Transforming bitmaps into vector graphics
+media-gfx/potrace 1.13 1.14: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.2 2.6 2.7.4: Modern rewrite of Quick Image Viewer
