@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jiixyj/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="amd64 ~arm hppa ~ppc64 x86"
+KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 x86"
 IUSE="static-libs test"
 
 DEPEND="test? ( app-arch/unzip
