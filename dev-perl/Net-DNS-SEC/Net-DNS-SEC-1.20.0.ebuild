@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION='DNSSEC extensions to Net::DNS'
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
 IUSE="test"
 
 RDEPEND="
