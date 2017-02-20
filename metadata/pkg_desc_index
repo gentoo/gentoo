@@ -13521,7 +13521,7 @@ media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1d 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/baudline 1.08-r1: A time-frequency browser designed for scientific visualization of the spectral domain
-media-sound/beets 1.3.13-r1: A media library management system for obsessive-compulsive music geeks
+media-sound/beets 1.3.13-r1 1.3.19 1.4.3: A media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11: Qt4 MPD client with experimental UI
 media-sound/bitmeter 1.2-r1: Diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
@@ -13694,6 +13694,7 @@ media-sound/mp3report 1.0.2: Perl script to create an HTML report of MP3 files i
 media-sound/mp3splt 2.6.1a 2.6.2: a command line utility to split mp3 and ogg files without decoding
 media-sound/mp3splt-gtk 0.9.2 0.9.2-r1: a GTK+ based utility to split mp3 and ogg files without decoding
 media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 files between different encodings
+media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
@@ -15405,7 +15406,7 @@ net-nds/jxplorer 3.3.1 3.3.1.1 3.3.1.2: A fully functional ldap browser written 
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
 net-nds/nsscache 0.30 0.30-r2 0.31 0.32: commandline tool to sync directory services to local cache
-net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1 2.4.43 2.4.43-r1 2.4.44 2.4.44-r1: LDAP suite of application and development tools
+net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.44 2.4.44-r1: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
 net-nds/rpcbind 0.2.3-r1 0.2.3-r2 0.2.4 9999: portmap replacement which supports RPC over various protocols
@@ -17686,7 +17687,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 3.5.0.6 3.5.0.8 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.9999 3.14.58-r1 3.14.79-r1 3.18.25-r1 3.18.44 3.18.45-r1 3.18.47 3.18.48 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.4.39 4.4.44 4.4.45 4.4.46 4.4.47 4.4.48 4.4.49 4.4.50 4.9.4 4.9.5 4.9.6 4.9.6-r1 4.9.7 4.9.8 4.9.9 4.9.10 4.9.11: Full sources including the Gentoo patchset for the 4.9 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.9999 3.14.58-r1 3.14.79-r1 3.18.25-r1 3.18.44 3.18.45-r1 3.18.47 3.18.48 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.4.39 4.4.44 4.4.45 4.4.46 4.4.47 4.4.48 4.4.49 4.4.50 4.9.4 4.9.5 4.9.6 4.9.6-r1 4.9.7 4.9.8 4.9.9 4.9.10 4.9.11 4.10.0: Full sources including the Gentoo patchset for the 4.10 kernel tree
 sys-kernel/git-sources 4.10_rc1 4.10_rc2 4.10_rc3 4.10_rc4 4.10_rc5 4.10_rc6 4.10_rc7 4.10_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.9 4.9.10 4.9.11: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files

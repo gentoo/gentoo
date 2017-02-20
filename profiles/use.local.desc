@@ -4321,14 +4321,17 @@ media-sound/audacity:soundtouch - Enables soundtouch library support for pitch a
 media-sound/audacity:twolame - Enables twolame support (MPEG Audio Layer 2 encoder)
 media-sound/audacity:vamp - Enables vamp plugins support (Audio analysing plugins)
 media-sound/audacity:vst - Enable VST plugin support
+media-sound/beets:badfiles - Validate MP3 & FLAC files.
 media-sound/beets:bpd - Enable support for media-sound/mpd server emulation
 media-sound/beets:chroma - Enable support for acoustic fingerprinting plugin using media-libs/chromaprint
 media-sound/beets:convert - Enable support for the convert plugin which makes it possible to transcode files
 media-sound/beets:discogs - Enable support for the discogs API plugin
 media-sound/beets:lastgenre - Enable support for importing music genres from last.fm tags
+media-sound/beets:lastimport - Enable support for importing your last.fm playcounts
 media-sound/beets:mpdstats - Enable support for collecting statistic about listening habits from media-sound/mpd
 media-sound/beets:opus - Enable opus support in gstreamer-based replaygain
 media-sound/beets:replaygain - Enable support for Replay Gain metadata calculation during import
+media-sound/beets:thumbnails - Generate thumbnails for albums
 media-sound/beets:web - Enable embedded webserver support through dev-python/flask
 media-sound/bluez-alsa:hcitop - Enable top-like monitoring tool for HCI
 media-sound/cantata:http-server - Enable internal HTTP server to play non-MPD files
