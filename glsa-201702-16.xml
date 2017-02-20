@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-16">
+  <title>Redis: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Redis, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">redis</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>551274</bug>
+  <bug>565188</bug>
+  <bug>595730</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/redis" auto="yes" arch="*">
+      <unaffected range="ge">3.2.5</unaffected>
+      <unaffected range="ge">3.0.7</unaffected>
+      <vulnerable range="lt">3.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Redis is an open source (BSD licensed), in-memory data structure store,
+      used as a database, cache and message broker.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Redis. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to connect to a Redis instance, could issue
+      malicious commands possibly resulting in the execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Redis 3.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/redis-3.0.7"
+    </code>
+    
+    <p>All Redis 3.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/redis-3.2.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4335">CVE-2015-4335</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8080">CVE-2015-8080</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8339">CVE-2016-8339</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T02:05:41Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:26:41Z">whissi</metadata>
+</glsa>
