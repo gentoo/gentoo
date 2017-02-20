@@ -24,7 +24,7 @@ RESTRICT="test" #315573
 DEPEND_COMMON="tcpd? ( sys-apps/tcp-wrappers )
 	caps? ( sys-libs/libcap )
 	sys-libs/e2fsprogs-libs
-	>=net-nds/rpcbind-0.2.0-r1
+	>=net-nds/rpcbind-0.2.4
 	net-libs/libtirpc:=
 	libmount? ( sys-apps/util-linux )
 	nfsdcld? ( >=dev-db/sqlite-3.3 )
