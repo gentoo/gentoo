@@ -1,5 +1,5 @@
---- work/Heartbeat-3-0-STABLE-3.0.4/configure.in	2010-12-09 21:09:47.000000000 +0100
-+++ work2/Heartbeat-3-0-STABLE-3.0.4/configure.in	2010-12-28 17:37:45.080773140 +0100
+--- Heartbeat-3-0-STABLE-3.0.4/configure.in	2010-12-09 21:09:47.000000000 +0100
++++ Heartbeat-3-0-STABLE-3.0.4/configure.in	2010-12-28 17:37:45.080773140 +0100
 @@ -243,9 +243,9 @@
  mandir=`var "$mandir" "$exec_prefix/man"`
  dnl docdir is available in autoconf 2.60+, for older versions preseed
@@ -97,8 +97,8 @@
  
  dnl *************************************************************************
  PATH="$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin"
---- work/Heartbeat-3-0-STABLE-3.0.5/configure.in	2011-12-28 11:51:05.601673071 +0100
-+++ work2/Heartbeat-3-0-STABLE-3.0.5/configure.in	2011-12-28 11:54:34.223094385 +0100
+--- Heartbeat-3-0-STABLE-3.0.5/configure.in	2011-12-28 11:51:05.601673071 +0100
++++ Heartbeat-3-0-STABLE-3.0.5/configure.in	2011-12-28 11:54:34.223094385 +0100
 @@ -2002,7 +2002,7 @@
  fi
  
