@@ -57,3 +57,9 @@ src_configure() {
 	)
 	cmake-utils_src_configure
 }
+
+src_install() {
+	cmake-utils_src_install
+	newicon "${S}"/icons/sigrok-logo-notext.png ${PN}.png
+	domenu "${FILESDIR}"/${PN}.desktop
+}
