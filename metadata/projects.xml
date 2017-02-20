@@ -273,10 +273,6 @@
     <name>BSD Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:BSD</url>
     <description>Porting of Gentoo facilities on BSD systems.</description>
-    <member>
-      <email>NP-Hardass@gentoo.org</email>
-      <name>NP-Hardass</name>
-    </member>
   </project>
   <project>
     <email>base-system@gentoo.org</email>
