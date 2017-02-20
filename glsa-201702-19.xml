@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-19">
+  <title>TigerVNC: Buffer overflow</title>
+  <synopsis>A buffer overflow in TigerVNC might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">tigervnc</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>606998</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/tigervnc" auto="yes" arch="*">
+      <unaffected range="ge">1.7.1</unaffected>
+      <vulnerable range="lt">1.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TigerVNC is a high-performance VNC server/client.</p>
+  </background>
+  <description>
+    <p>A buffer overflow vulnerability in ModifiablePixelBuffer::fillRect in
+      vncviewer was found.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, utilizing a malicious VNC server, could execute
+      arbitrary code with the privileges of the user running the client or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TigerVNC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/tigervnc-1.7.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5581">CVE-2017-5581</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-13T02:16:26Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:29:04Z">whissi</metadata>
+</glsa>
