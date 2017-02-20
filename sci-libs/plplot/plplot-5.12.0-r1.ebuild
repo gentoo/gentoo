@@ -143,6 +143,10 @@ src_configure() {
 	append-cxxflags -std=c++11
 
 	local mycmakeargs=(
+		# The build system does not honour CMAKE_INSTALL_LIBDIR as a
+		# relative dir, which is against the spirit of GNUInstallDirs, #610066
+		-DCMAKE_INSTALL_LIBDIR="${EPREFIX}"/usr/$(get_libdir)
+
 		## Features
 		-DBUILD_DOC=OFF
 		-DBUILD_DOX_DOC=OFF
@@ -268,6 +272,6 @@ src_install() {
 
 	if use java; then
 		java-pkg_dojar "${BUILD_DIR}"/examples/java/${PN}.jar
-		java-pkg_regso /usr/$(get_libdir)/jni/plplotjavac_wrap.so
+		java-pkg_regso "${EPREFIX}"/usr/$(get_libdir)/jni/plplotjavac_wrap.so
 	fi
 }
