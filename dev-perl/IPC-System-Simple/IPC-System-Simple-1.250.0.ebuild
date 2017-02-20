@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Run commands simply, with detailed diagnostics"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa x86"
 IUSE="test"
 
 RDEPEND="
