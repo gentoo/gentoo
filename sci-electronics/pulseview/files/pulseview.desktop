@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Pulseview
+GenericName=Pulseview
+Comment=Qt based logic analyzer GUI for sigrok
+Exec=pulseview
+Icon=pulseview
+Terminal=false
+Type=Application
+Categories=Development;Electronics;
