@@ -35,7 +35,6 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
-	http? ( net-libs/libmicrohttpd )
 "
 #	yubikey? ( sys-auth/libyubikey )
 
