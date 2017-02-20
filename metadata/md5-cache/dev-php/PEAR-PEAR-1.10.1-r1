@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:*[cli,xml,zlib] >=dev-php/PEAR-Archive_Tar-1.4.0 >=dev-php/
 SLOT=0
 SRC_URI=http://pear.php.net/get/PEAR-1.10.1.tgz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
-_md5_=3b729d392bf3b8688bc641498fcf5eb9
+_md5_=ee10ef0c1993c08e017e13c46b7f76d3
