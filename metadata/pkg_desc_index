@@ -11938,45 +11938,20 @@ kde-frameworks/solid 5.29.0 5.31.0: Provider for platform independent hardware d
 kde-frameworks/sonnet 5.29.0 5.31.0: Framework for providing spell-checking through abstraction of popular backends
 kde-frameworks/syntax-highlighting 5.29.0 5.31.0: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.29.0 5.31.0: Framework for managing threads using job and queue-based interfaces
-kde-misc/about-distro 1.1.0: KCM displaying distribution and system information
-kde-misc/adjustableclock 4.1.4: Plasmoid to show date and time in adjustable format using rich text
 kde-misc/akonadi-ews 0.8.1: Akonadi resource for Microsoft Exchange Web Services
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
-kde-misc/baloo-kcmadv 2014.04.27: Alternative configuration module for the Baloo search framework
 kde-misc/basket 1.81 2.49a: A DropDrawers clone. Multiple information organizer
-kde-misc/bkodama 0.3.1: Friendly Kodama (Japanese ghost) wandering on your desktop
-kde-misc/chromi 0.2_p20141209: Titlebar-less decoration inspired by Google Chrome and Nitrogen minimal mod
 kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
 kde-misc/colord-kde 0.5.0: Provides interfaces and session daemon to colord
-kde-misc/commandwatch 0.1.1: Plasmoid which periodically runs a system command and displays its output
-kde-misc/cpuload 0.3.2: Plasma 4 plasmoid that shows CPU load on the screen
-kde-misc/customizable-weather 1.12.1: KDE Plasma 4 weather plasmoid. It aims to be highly customizable.
-kde-misc/drop2ftp 0.6: Plasmoid to add files over KIO supported protocols, like ftp and ssh
-kde-misc/emerging-plasmoid 1.0.3: Portage emerge progress plasmoid
-kde-misc/eventlist 0.6-r1: Plasmoid showing the events from Akonadi resources
-kde-misc/eyesaver 0.4: Plasmoid, which reminds us to take our eyes off the screen
-kde-misc/fancytasks 1.1.2-r1: Task and launch representation plasmoid
-kde-misc/geekclock 1.0: Geeky Clock Plasmoid
 kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
-kde-misc/gx-mail-notify 0.4.4: Plasmoid for checking unread mail
-kde-misc/hdaps_monitor 0.3-r1: KDE-based monitor for the IBM HDAPS system
-kde-misc/homerun 1.2.5: Application launcher for KDE Plasma desktop
 kde-misc/kanyremote 6.3.5: KDE frontend to Anyremote
 kde-misc/kbiff 4.0: New mail notification utility
-kde-misc/kbstateapplet 0_p1268845: Plasmoid that shows the state of keyboard leds
-kde-misc/kcm-grub2 0.6.4-r2: KCModule for configuring the GRUB2 bootloader
-kde-misc/kcm-touchpad 1.1: KCM, daemon and applet for touchpad
-kde-misc/kcm-ufw 0.4.3-r1: KCM module to control the Uncomplicated Firewall
 kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
-kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
 kde-misc/kdeconnect 1.0.3: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.97-r2 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 3.0-r1 3.1.2: GUI equivalent to the du command based on KDE Frameworks
-kde-misc/kdmthemegenerator 0.8: Generates kdm theme from your current plasma theme and wallpaper
-kde-misc/kepas 0.9.3: A zeroconf Plasma 4 filetransfer tool
 kde-misc/kfilebox 0.4.9: KDE dropbox client
-kde-misc/kgrubeditor 0.8.5: A KDE utility that edits GRUB configuration files
 kde-misc/kim4 0.9.5-r1: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
@@ -11991,121 +11966,67 @@ kde-misc/kookie 0.1.1: Manage recipes and shopping lists
 kde-misc/kopete-antispam 0.5: Antispam filter for Kopete instant messenger
 kde-misc/kopete-thinklight 0.50: A thinkpad's light flash on every incoming message
 kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
-kde-misc/kprayertime 4.01: Islamic Prayer Times Plasmoid
-kde-misc/kraidmonitor 0.5: Indicator widget for raid arrays
 kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
 kde-misc/krecipes 2.0.0: A recipe application by KDE
 kde-misc/krename 4.0.9-r3 4.0.9-r4: KRename - a very powerful batch file renamer
-kde-misc/krunner-googletranslate 0.1: Krunner plug-in for Google translate service
-kde-misc/krunner-kopete-contacts 0.4: A krunner plug-in that allows you to open conversation with your contact
 kde-misc/krusader 2.5.0 2.5.0-r2: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.0: Shutdown manager for desktop environmenmts like KDE Plasma
-kde-misc/ksplasher 2.0_beta2-r2: A KSplashX engine (KDE4) Splash Screen Creator
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
-kde-misc/ktrafficanalyzer 0.5.4.1: A network traffic visualizer
-kde-misc/kvkbd 0.6-r1: A virtual keyboard for KDE
 kde-misc/kwebkitpart 1.3.4-r1 1.4.0_pre20170128: WebKit KPart for Konqueror
-kde-misc/miniplayer 2.5-r1: Multimedia player plasmoid
-kde-misc/nightmode 0.3-r1: kwin plugin that makes the entire screen darker
-kde-misc/nvdevmon 0.1.2: A device monitor for NVIDIA cards
 kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
-kde-misc/plasma-applet-daisy 0.0.4.26-r1: Simple application launcher for KDE 4's plasma desktop
 kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-redshift-control 1.0.17: Plasma 5 applet for controlling redshift
 kde-misc/plasma-applet-weather-widget 1.6.8: Plasma 5 applet for weather forecasts
-kde-misc/plasma-emergelog 0.0.2-r1: Plasmoid for monitoring emerge progress
-kde-misc/plasma-lionmail 0_p20121020: Plasma widget displaying new and important email
-kde-misc/plasma-mpd-nowplaying 0.3: Plasmoid attached to MPD displaying currently played item
-kde-misc/plasma-network-status 0.1.1: Plasma applet to monitor the network interface status
-kde-misc/plasma-photooftheday 2.1.1: Photo of the Day plasmoid
-kde-misc/plasma-widget-menubar 0.2.0: A Plasma widget to display menubar of application windows
-kde-misc/plasma-widget-message-indicator 0.5.8: Plasmoid for displaying Ayatana indications
-kde-misc/plasma-wifi 0.5-r1: Plasmoid which displays the currect signal strength
-kde-misc/plasmatvgr 0.47: Plasmoid which shows greek TV program
-kde-misc/plasmoid-workflow 0.4.1: Integrates Activities, Virtual Desktops and Tasks in one component
-kde-misc/pyrad 0.7.1: A wheel type command interface for KDE, heavily inspired by Kommando
 kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
-kde-misc/quickaccess 0.8.2-r1: Plasmoid for the panel provides quick access to the most used folders
-kde-misc/redshift-plasmoid 1.0: KDE4 plasmoid for redshift
 kde-misc/rsibreak 0.12.4 0.12.5: Small utility which bothers you at certain intervals
 kde-misc/semantik 0.9.5: Mindmapping-like tool for document generation
-kde-misc/serverstatuswidget 1.5.1: KDE plasma widget used for monitoring servers via ping or tcp connect
 kde-misc/skanlite 2.0.1: KDE image scanning application
-kde-misc/smooth-tasks 0_p20120130: Alternate taskbar KDE plasmoid, similar to Windows 7
-kde-misc/stdin-plasmoid 0.2_beta1: Plasmoid for executing a process and capturing its stderr and stdout
-kde-misc/steamcompanion 0.5.4-r1: Connector for web Steam service from Valve
-kde-misc/stock-quote 2.1-r2: Displays stock quotes pulled from the Yahoo! servers
-kde-misc/synaptiks 0.8.1-r4: Touchpad configuration and management tool for KDE
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 2.3.10 2.3.11 3.0: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
-kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 3.0.2: Quake-style terminal emulator based on konsole
-kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
-kde-plasma/bluedevil 2.1.1 5.8.5 5.9.2: Bluetooth stack for KDE Plasma
+kde-plasma/bluedevil 5.8.5 5.9.2: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.8.5 5.9.2: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.8.5 5.9.2: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.8.5 5.9.2: Official GTK+ port of KDE's Breeze widget style
 kde-plasma/breeze-plymouth 5.8.5 5.9.2: Breeze theme for Plymouth
-kde-plasma/freespacenotifier 4.11.22: A module that monitors free disk space on the home dir
 kde-plasma/kactivitymanagerd 5.8.5 5.9.2: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kcheckpass 4.11.22-r1: A simple password checker, used by any software in need of user authentication
-kde-plasma/kcminit 4.11.22: Runs startups initialization for KDE Plasma Control Modules
 kde-plasma/kde-cli-tools 5.8.5 5.9.2: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 2.2.1 5.8.5 5.9.2: KDE Plasma systemsettings kcm to set GTK application look&feel
-kde-plasma/kdebase-cursors 4.11.22: Oxygen cursors for KDE Plasma
-kde-plasma/kdebase-pam 10: pam.d files used by several KDE components
-kde-plasma/kdebase-startkde 4.11.22-r2: Script which starts a complete Plasma session, and associated scripts
+kde-plasma/kde-gtk-config 5.8.5 5.9.2: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.8.5 5.9.2: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 4.14.3-r1 5.8.5 5.9.2: Extra Plasma applets and engines
-kde-plasma/kdm 4.11.22: Login manager by KDE, similar to xdm and gdm
-kde-plasma/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
+kde-plasma/kdeplasma-addons 5.8.5 5.9.2: Extra Plasma applets and engines
 kde-plasma/kgamma 5.8.5 5.9.2: Screen gamma values kcontrol module
-kde-plasma/khotkeys 4.11.22 5.8.5 5.9.2: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 4.11.22 5.8.5 5.9.2: A utility that provides information about a computer system
-kde-plasma/klipper 4.11.22: Applet for KDE Plasma and X clipboard management
-kde-plasma/kmenuedit 4.11.22 5.8.5 5.9.2: KDE Plasma menu editor
-kde-plasma/krunner 4.11.22: KDE Plasma Command Runner
-kde-plasma/kscreen 1.0.71_p20150824 5.8.5 5.9.2: KDE Plasma screen management
+kde-plasma/khotkeys 5.8.5 5.9.2: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.8.5 5.9.2: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.8.5 5.9.2: KDE Plasma menu editor
+kde-plasma/kscreen 5.8.5 5.9.2: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.8.5 5.9.2: Library and components for secure lock screen architecture
-kde-plasma/kscreensaver 4.11.22: KDE Plasma screensaver framework
-kde-plasma/ksmserver 4.11.22: The reliable Plasma session manager that talks the standard X11R6
-kde-plasma/ksplash 4.11.22: KDE Plasma splashscreen framework
-kde-plasma/ksshaskpass 0.5.3-r1 5.8.5 5.9.2: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/kstartupconfig 4.11.22: Utility to launch applications with special window properties
-kde-plasma/kstyles 4.11.22: A set of different KDE Plasma styles
-kde-plasma/ksysguard 4.11.22 5.8.5 5.9.2: Network-enabled task manager and system monitor
-kde-plasma/ksystraycmd 4.11.22: Embeds applications given as argument into the system tray
+kde-plasma/ksshaskpass 5.8.5 5.9.2: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.8.5 5.9.2: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.8.5 5.9.2: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.8.5 5.9.2: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 4.11.22 5.8.5 5.9.2: KDE window manager
-kde-plasma/kwrited 4.11.22 5.8.5 5.9.2: KDE Plasma daemon listening for wall and write messages
-kde-plasma/libkgreeter 4.11.22: Conversation widgets for KDM greeter
-kde-plasma/libkscreen 1.0.5_p20150822 5.8.5 5.9.2: Plasma screen management library
+kde-plasma/kwin 5.8.5 5.9.2: KDE window manager
+kde-plasma/kwrited 5.8.5 5.9.2: KDE Plasma daemon listening for wall and write messages
+kde-plasma/libkscreen 5.8.5 5.9.2: Plasma screen management library
 kde-plasma/libksysguard 5.8.5 5.9.2: Task management and system monitoring library
 kde-plasma/libkworkspace 4.11.22: A library for Plasma desktop applications
-kde-plasma/liboxygenstyle 4.11.22: Library to support the Oxygen style in KDE Plasma
-kde-plasma/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
-kde-plasma/libplasmagenericshell 4.11.22: Libraries for the KDE Plasma shell
-kde-plasma/libtaskmanager 4.11.22: A library that provides basic taskmanager functionality
-kde-plasma/milou 0.1 5.8.5 5.9.2: Dedicated search application built on top of Baloo
+kde-plasma/milou 5.8.5 5.9.2: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.8.5 5.9.2: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 kde-plasma/plasma-desktop 5.8.5-r2 5.9.2: KDE Plasma desktop
 kde-plasma/plasma-integration 5.8.5-r1 5.9.2: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.8.5 5.9.2: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 0.9.3.6 5.8.5 5.9.2: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-nm 5.8.5 5.9.2: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.8.5 5.9.2: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.8.5 5.9.2: Useful applications for Plasma development
-kde-plasma/plasma-workspace 4.11.22 5.8.5 5.9.2: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.8.5 5.9.2: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.8.5 5.9.2: Additional wallpapers for the Plasma workspace
 kde-plasma/polkit-kde-agent 5.8.5 5.9.2: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 4.11.22 5.8.5 5.9.2: Power management for KDE Plasma Shell
+kde-plasma/powerdevil 5.8.5 5.9.2: Power management for KDE Plasma Shell
 kde-plasma/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Plasma
 kde-plasma/sddm-kcm 5.8.5 5.9.2: KDE Plasma control module for SDDM
-kde-plasma/solid-actions-kcm 4.11.22: KDE Plasma control module for Solid actions
-kde-plasma/systemsettings 4.11.22-r2 5.8.5 5.9.2: System settings utility
+kde-plasma/systemsettings 5.8.5 5.9.2: System settings utility
 kde-plasma/user-manager 5.8.5 5.9.2: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.5 0.6.2 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
@@ -14737,7 +14658,6 @@ net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from Open
 net-libs/libasyncns 0.8-r3 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.13.1 0.13.2 9999: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation of getblocktemplate (BIP 22)
-net-libs/libbluedevil 2.1: Qt wrapper for bluez used in the KDE bluetooth stack
 net-libs/libbtbb 2015.09.2-r1 2015.10.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
@@ -14770,7 +14690,6 @@ net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: Mobile Broadband Interface M
 net-libs/libmediawiki 5.0.0_pre20170128: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrohttpd 0.9.47 0.9.49 0.9.51 0.9.52: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
-net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
@@ -14788,7 +14707,6 @@ net-libs/libnftnl 1.0.5 1.0.6 1.0.7: Netlink API to the in-kernel nf_tables subs
 net-libs/libnice 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
-net-libs/libnm-qt 0.9.8.4: NetworkManager bindings for Qt
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.1 1.0.3: C library implementing the OAuth secure authentication protocol
@@ -19223,7 +19141,6 @@ x11-themes/comix-xcursors 0.7.3 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4: Fedora official background artwork
-x11-themes/dekorator 0.5.1-r1: A window decoration engine for KDE
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
 x11-themes/elementary-xfce-icon-theme 0.7_p20160321: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/emerald-themes 0.5.2: Emerald window decorator themes
@@ -19296,7 +19213,6 @@ x11-themes/mate-themes-meta 3-r1 3-r2: Meta package to facilitate easy use of x1
 x11-themes/murrine-themes 0.98.0: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
-x11-themes/nitrogen 3.3.3: A window decoration for KDE
 x11-themes/noia 1.0-r1: The Noia icon theme
 x11-themes/notify-osd-icons 0.7: Icons for on-screen-display notification agent
 x11-themes/nou-icon-theme 09.02.08: A scalable icon theme called Nou
@@ -19316,9 +19232,7 @@ x11-themes/sawfish-themes 0.0.1-r3: Some nice themes for Sawfish
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
 x11-themes/silver-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/skinenigmang-logos 20070214-r1 20131008: VDR - Skin Plugin: enigma-ng logos
-x11-themes/skulpture 0.2.4-r1: Classical style and window decorations for KDE
 x11-themes/slim-themes 1.2.3a-r7: SLiM (Simple Login Manager) themes pack
-x11-themes/smaragd 0.0.7: KWin theme engine that uses Emerald themes
 x11-themes/smplayer-skins 15.2.0: Skins for SMPlayer
 x11-themes/smplayer-themes 14.9.0 15.12.0 16.5.2 16.6.0 16.8.0: Icon themes for smplayer
 x11-themes/solar-backgrounds 0.92.0.5: Fedora official background artwork

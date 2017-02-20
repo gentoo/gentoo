@@ -3398,42 +3398,23 @@ kde-frameworks/plasma:egl - Enable EGL support
 kde-frameworks/plasma:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-frameworks/sonnet:aspell - Enable the app-text/aspell spell-checking backend
 kde-frameworks/sonnet:hunspell - Enable the app-text/hunspell spell-checking backend
-kde-misc/kcm-grub2:hwinfo - Used to work out supported framebuffer resolutions
-kde-misc/kcm-grub2:imagemagick - Create splash images compatible with GRUB2
 kde-misc/kdeconnect:app - Enable experimental kcapp frontend
 kde-misc/kdeconnect:wayland - Enable kwin_wayland support for mousepad plugin using kde-frameworks/kwayland
-kde-misc/kepas:oscar - Enables ICQ (AIM) support.
 kde-misc/kimtoy:scim - Enable Smart Common Input Method support
 kde-misc/kio-gdrive:dolphin - Enable integration with kde-apps/dolphin
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-misc/tellico:discid - Add support for reading disc IDs from audio CDs
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kde-gtk-config:gtk3 - Add support for gtk+3-based applications.
-kde-plasma/kdebase-startkde:crash-reporter - Builds a gui tool to submit crash information to the upstream backtracker
-kde-plasma/kdebase-startkde:wallpapers - Install the KDE Plasma wallpapers
-kde-plasma/kdeplasma-addons:attica - Enable support for dev-libs/libattica
-kde-plasma/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-apps/marble
-kde-plasma/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
-kde-plasma/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
-kde-plasma/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
-kde-plasma/kdeplasma-addons:oauth - Enable OAuth support via dev-libs/qoauth
-kde-plasma/kdeplasma-addons:pim - KDE PIM integration via kde-apps/kdepimlibs
-kde-plasma/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
-kde-plasma/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt SLOT 5
-kde-plasma/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
-kde-plasma/kdm:consolekit - Enables support for authorization using consolekit
 kde-plasma/kinfocenter:egl - Retrieve information about OpenGL via EGL
 kde-plasma/kinfocenter:gles2 - Show OpenGL ES information in kinfocenter
 kde-plasma/kinfocenter:pci - Show advanced PCI information
-kde-plasma/klipper:prison - Enable support for barcodes/QRcodes
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
 kde-plasma/kwallet-pam:oldwallet - Enable legacy support for kde-apps/kwalletd
-kde-plasma/kwin:gles - Enable support for GLES
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
-kde-plasma/libplasmaclock:pim - KDE PIM integration via kde-apps/kdepimlibs
 kde-plasma/plasma-desktop:appstream - Enable AppStream software metadata support
 kde-plasma/plasma-desktop:gtk2 - Add support for gtk+2-based applications using legacy xembed systray icons via libappindicator.
 kde-plasma/plasma-desktop:gtk3 - Add support for gtk+3-based applications using legacy xembed systray icons via libappindicator.
@@ -3455,15 +3436,11 @@ kde-plasma/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-plasma/plasma-nm:teamd - Enable Teamd control support
 kde-plasma/plasma-sdk:plasmate - IDE for writing Plasma/KWin components (themes, plasmoids, runners, data engines)
 kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location information
-kde-plasma/plasma-workspace:json - Enable JSON support via dev-libs/qjson
-kde-plasma/plasma-workspace:pim - KDE PIM integration via kde-apps/kdepimlibs
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-plasma/powerdevil:elogind - Use sys-auth/elogind for session tracking.
-kde-plasma/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
-kde-plasma/systemsettings:kscreen - Use kde-plasma/kscreen for screen management
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
 lxde-base/lxdm:gtk3 - Use GTK+3 instead of 2
 lxde-base/lxterminal:gtk3 - Use GTK+3 instead of GTK+2
@@ -5763,7 +5740,6 @@ net-libs/libmicrohttpd:messages - enable error messages
 net-libs/libnftnl:json - Supports parsing of JSON
 net-libs/libnids:glib - Use dev-libs/glib for multiprocessing support
 net-libs/libnids:libnet - Include code requiring net-libs/libnet
-net-libs/libnm-qt:modemmanager - Enable support for mobile broadband devices
 net-libs/liboauth:bindist - Alias for the nss USE flag, since there are license compliancy trouble when using OpenSSL.
 net-libs/liboauth:curl - If enabled, net-misc/curl is used thorugh the libcurl library; if it's not, the curl command is used instead. Some features are only available when using the library, but using it as library requires matching SSL implementations.
 net-libs/liboauth:nss - Use Mozilla NSS (dev-libs/nss) as hash library; if this is disabled, dev-libs/openssl is used instead.
