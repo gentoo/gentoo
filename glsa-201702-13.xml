@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-13">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Thunderbird,
+    the worst of which could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">thunderbird</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>607310</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">45.7.0</unaffected>
+      <vulnerable range="lt">45.7.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">45.7.0</unaffected>
+      <vulnerable range="lt">45.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Thunderbird.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by enticing a user to open a specially crafted email
+      or web page, could possibly execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-45.7.0"
+    </code>
+    
+    <p>All Mozilla Thunderbird binary users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-45.7.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5373">CVE-2017-5373</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5375">CVE-2017-5375</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5376">CVE-2017-5376</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5378">CVE-2017-5378</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5380">CVE-2017-5380</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5383">CVE-2017-5383</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5390">CVE-2017-5390</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5396">CVE-2017-5396</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2017-03/">
+      Mozilla Foundation Security Advisory 2017-03
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-10T22:02:00Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:12:29Z">whissi</metadata>
+</glsa>
