@@ -1,5 +1,5 @@
---- cts/Makefile.am
-+++ cts/Makefile.am
+--- a/cts/Makefile.am
++++ b/cts/Makefile.am
 @@ -21,7 +21,7 @@
  
  ctsdir		= @HA_NOARCHDATAHBDIR@/cts

@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
-PYTHON_DEPEND="2"
-inherit python autotools multilib eutils base
+PYTHON_COMPAT=( python2_7 )
+inherit autotools python-single-r1
 
 DESCRIPTION="Heartbeat high availability cluster manager"
 HOMEPAGE="http://www.linux-ha.org/wiki/Heartbeat"
@@ -21,6 +21,7 @@ RDEPEND="sys-cluster/cluster-glue
 	virtual/ssh
 	net-libs/gnutls
 	snmp? ( net-analyzer/net-snmp )
+	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -28,6 +29,8 @@ DEPEND="${RDEPEND}
 	doc? ( dev-libs/libxslt app-text/docbook-xsl-stylesheets )"
 
 PDEPEND="sys-cluster/resource-agents"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S=${WORKDIR}/Heartbeat-3-0-STABLE-${PV}
 
@@ -39,49 +42,46 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
+	python-single-r1_pkg_setup
 
 	ewarn "If you're upgrading from heartbeat-2.x please follow:"
 	ewarn "https://www.gentoo.org/proj/en/cluster/ha-cluster/heartbeat-upgrade.xml"
 }
 
 src_prepare() {
-	base_src_prepare
+	default
 	eautoreconf
 
-	cp "${FILESDIR}"/heartbeat-init "${T}" || die
+	cp "${FILESDIR}"/heartbeat-init "${WORKDIR}" || die
 	sed -i \
 		-e "/ResourceManager/ s/lib/share/" \
 		-e "s:lib:$(get_libdir):g" \
-		"${T}"/heartbeat-init || die
+		"${WORKDIR}"/heartbeat-init || die
 }
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-fatal-warnings \
 		$(use_enable static-libs static) \
 		$(use_enable doc) \
 		--disable-tipc \
 		--enable-dopd \
-		--libdir=/usr/$(get_libdir) \
-		--localstatedir=/var \
-		--docdir=/usr/share/doc/${PF} \
 		$(use_enable snmp)
 }
 
 src_install() {
-	base_src_install
+	default
 
-	newinitd "${T}/heartbeat-init" heartbeat || die
+	newinitd "${WORKDIR}/heartbeat-init" heartbeat
 
 	# fix collisions
-	rm -rf "${D}"/usr/include/heartbeat/{compress,ha_msg}.h
+	rm -rf "${D}"/usr/include/heartbeat/{compress,ha_msg}.h || die
 
-	use static-libs || find "${D}"/usr/$(get_libdir) -name "*.la" -delete
+	if ! use static-libs; then
+		find "${D}" -name "*.la" -delete || die
+	fi
 
 	if use doc ; then
-		dodoc README doc/*.txt doc/AUTHORS  || die
+		dodoc README doc/*.txt doc/AUTHORS || die
 	fi
 }
