@@ -44,6 +44,9 @@ all_ruby_prepare() {
 
 	# Relax temple version check (already fixed upstream)
 	sed -i -e 's/0.7.6/0.7/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '/s\.files/ s/git ls-files/find . -type f -print/' \
+		-e '/s\.executables/ s:git ls-files -- bin/\*:find bin -type f -print:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_prepare() {
