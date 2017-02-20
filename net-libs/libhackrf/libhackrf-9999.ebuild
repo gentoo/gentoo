@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}"
 
 src_configure(){
 	mycmakeargs=(
-		$(cmake-utils_use_enable udev INSTALL_UDEV_RULES)
+		-DENABLE_INSTALL_UDEV_RULES="$(usex udev)"
 	)
 	if use udev; then
 		mycmakeargs+=(
