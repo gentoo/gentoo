@@ -15,6 +15,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
+S="${WORKDIR}/${PN}"
+
+DOCS=( Changelog README )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.13-makefile.patch"
+)
+
 pkg_setup() {
 	enewgroup mail 12
 }
@@ -38,10 +46,4 @@ src_configure() {
 		grp=$(id -g)
 	fi
 	econf --with-mailgroup=${grp} --enable-shared
-}
-
-src_install() {
-	dodir /usr/{bin,include,$(get_libdir)} /usr/share/man/{man1,man3}
-	emake ROOT="${D}" install
-	dodoc README Changelog
 }
