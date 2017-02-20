@@ -4,7 +4,7 @@ DESCRIPTION=General-purpose cryptography library
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/beecrypt/
 IUSE=+threads java cxx python static-libs doc elibc_FreeBSD java python_targets_python2_7
-KEYWORDS=alpha amd64 arm hppa ~ia64 ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos
+KEYWORDS=alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2 LGPL-2
 RDEPEND=java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.2.0-r3 )
 REQUIRED_USE=cxx? ( threads ) python? ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/beecrypt/beecrypt-4.2.1.tar.gz
 _eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	8cefdc020b528862da5737e2a230f708	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	6793fc854691a2320226801400573568	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=304982ec3a10cd868b62c8aa9ee877ec
+_md5_=b6589030056928f679fa4a5ff59b456d
