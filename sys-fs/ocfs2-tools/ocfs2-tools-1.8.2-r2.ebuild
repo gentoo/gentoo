@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-PYTHON_DEPEND="gtk? 2"
-inherit autotools eutils python
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
+inherit autotools python-single-r1
 
 DESCRIPTION="Support programs for the Oracle Cluster Filesystem 2"
 HOMEPAGE="http://oss.oracle.com/projects/ocfs2-tools/"
@@ -16,24 +16,28 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug external gtk"
 
 RDEPEND="
-	dev-libs/libaio
-	sys-apps/util-linux
+	dev-libs/libaio:=
+	sys-apps/util-linux:=
 	sys-cluster/libcman
 	external? (
 		sys-cluster/libdlm
 		sys-cluster/pacemaker[-heartbeat]
 		)
 	sys-fs/e2fsprogs
-	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/e2fsprogs-libs:=
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
 	sys-process/psmisc
 	gtk? (
-		dev-python/pygtk
+		${PYTHON_DEPS}
+		dev-python/pygtk[${PYTHON_USEDEP}]
 	)
 "
 # 99% of deps this thing has is automagic
 # specialy cluster things corosync/pacemaker
 DEPEND="${RDEPEND}"
+
+REQUIRED_USE="gtk? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=(
 	"${S}/documentation/samples/cluster.conf"
@@ -48,8 +52,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
+	use gtk && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -58,9 +61,10 @@ src_prepare() {
 	sed -e 's:"/dlm/":"/sys/kernel/dlm":g' \
 		-i libo2dlm/o2dlm_test.c \
 		-i libocfs2/dlm.c || die "sed failed"
-	epatch "${PATCHES[@]}"
-	rm -f aclocal.m4
+	default
+	rm -f aclocal.m4 || die
 	AT_M4DIR=. eautoreconf
+	use gtk && python_fix_shebang .
 }
 
 src_configure() {
@@ -74,6 +78,7 @@ src_configure() {
 
 src_install() {
 	default
+	use gtk && python_optimize
 	newinitd "${FILESDIR}/ocfs2.initd" ocfs2
 	newconfd "${FILESDIR}/ocfs2.confd" ocfs2
 }

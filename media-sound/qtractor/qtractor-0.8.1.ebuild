@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}
 DOCS="README ChangeLog TODO AUTHORS"
 
 src_configure() {
+	append-cxxflags '-std=c++11'
 	econf \
 		$(use_enable mad libmad) \
 		$(use_enable libsamplerate) \
