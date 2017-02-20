@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-18">
+  <title>MariaDB: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MariaDB, the worst of
+    which could lead to privilege escalation.
+  </synopsis>
+  <product type="ebuild">mariadb</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>606258</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/mariadb" auto="yes" arch="*">
+      <unaffected range="ge">10.0.29</unaffected>
+      <vulnerable range="lt">10.0.29</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MariaDB is an enhanced, drop-in replacement for MySQL.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MariaDB. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker could possibly escalate privileges, gain access to critical
+      data or complete access to all MariaDB Server accessible data, or cause a
+      Denial of Service condition via unspecified vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MariaDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mariadb-10.0.29"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6664">CVE-2016-6664</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3238">CVE-2017-3238</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3243">CVE-2017-3243</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3244">CVE-2017-3244</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3257">CVE-2017-3257</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3258">CVE-2017-3258</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3265">CVE-2017-3265</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3291">CVE-2017-3291</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3312">CVE-2017-3312</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3317">CVE-2017-3317</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3318">CVE-2017-3318</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-13T00:33:47Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:27:31Z">whissi</metadata>
+</glsa>
