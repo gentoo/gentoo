@@ -1,12 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-PYTHON_DEPEND="2:2.6"
-RESTRICT_PYTHON_ABIS="3.*"
-inherit autotools base eutils python
+PYTHON_COMPAT=( python2_7 )
+inherit autotools python-single-r1
 
 DESCRIPTION="Qt4 interface for RecordMyDesktop"
 HOMEPAGE="http://recordmydesktop.sourceforge.net/"
@@ -24,10 +23,14 @@ IUSE=""
 # much care...
 RESTRICT="test"
 
-RDEPEND=">=media-video/recordmydesktop-0.3.8
-	x11-apps/xwininfo"
-DEPEND="${RDEPEND}
-	>=dev-python/PyQt4-4.1[X]"
+RDEPEND="
+	>=dev-python/PyQt4-4.1[X,${PYTHON_USEDEP}]
+	>=media-video/recordmydesktop-0.3.8
+	x11-apps/xwininfo
+	${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
@@ -37,23 +40,12 @@ PATCHES=(
 	"${FILESDIR}/${P}-pyqt4.patch"
 )
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
-
 src_prepare() {
-	base_src_prepare
-	eautoreconf
+	default
 
 	# these deps are required by PyQt4, not this package
 	sed -e '/^PKG_CHECK_MODULES/d' -i configure.ac || die "sed failed"
 	eautoreconf
 
-	python_convert_shebangs 2 src/qt-recordMyDesktop.in
-
-	sed -e 's/@ALL_LINGUAS@//' -i po/Makefile.in.in \
-		|| die "respect linguas sed failed"
-	strip-linguas -i po
-	echo ${LINGUAS} | tr ' ' '\n' > po/LINGUAS
+	python_fix_shebang src/qt-recordMyDesktop.in
 }
