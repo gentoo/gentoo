@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -33,7 +33,7 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}/var" \
 		--with-os=gentoo \
-		--with-initscript=$(usex systemd systemd sysv) \
+		--with-initscript=$(usex systemd systemd none) \
 		$(use_with selinux) \
 		$(use_with debug gssidebug)
 }
