@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="Program to interactively take a 'snapshot' of a region of the screen"
 HOMEPAGE="ftp://ftp.ac-grenoble.fr/ge/Xutils/"
@@ -34,9 +34,10 @@ DEPEND="
 "
 
 DOCS=( AUTHORS Changelog README )
+PATCHES=( "${FILESDIR}"/${P}-root_name.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-root_name.patch
+	default
 
 	sed -i \
 		-e 's|/usr/share/locale|$(LOCALEDIR)|g' \
