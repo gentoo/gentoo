@@ -26,3 +26,4 @@ DEPEND="${RDEPEND}
 		dev-ros/rosbash
 	)
 "
+PATCHES=( "${FILESDIR}/gcc6.patch" )
