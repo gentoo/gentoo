@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=6
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
-DESCRIPTION="An advanced twin-panel (commander-style) file-manager with many extras"
+DESCRIPTION="Advanced twin-panel (commander-style) file-manager with many extras"
 HOMEPAGE="https://krusader.org/"
 [[ ${KDE_BUILD_TYPE} = release ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
@@ -55,3 +55,18 @@ PATCHES=(
 	"${FILESDIR}/${P}"-browse-iso.patch
 	"${FILESDIR}/${P}"-hardcode-krarc-mime.patch
 )
+
+pkg_postinst() {
+	kde5_pkg_postinst
+
+	if ! has_version kde-apps/thumbnailers:${SLOT} ||
+			! has_version kde-apps/ffmpegthumbs:${SLOT} ; then
+		elog "For PDF/PS, RAW and video thumbnails support, install:"
+		elog "   kde-apps/thumbnailers:${SLOT}"
+		elog "   kde-apps/ffmpegthumbs:${SLOT}"
+	fi
+
+	if ! has_version kde-apps/keditbookmarks:${SLOT} ; then
+		elog "For bookmarks support, install kde-apps/keditbookmarks:${SLOT}"
+	fi
+}
