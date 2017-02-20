@@ -11392,7 +11392,7 @@ gnome-base/gdm 3.20.1 3.22.1-r1: GNOME Display Manager for managing graphical di
 gnome-base/gnome 3.20.0 3.22.0: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.18.0 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.20.2-r1 3.22.1-r1: GNOME's main interface to configure various aspects of the desktop
-gnome-base/gnome-core-apps 3.20.0 3.22.0: Sub-meta package for the core applications integrated with GNOME 3
+gnome-base/gnome-core-apps 3.20.0 3.22.0 3.22.2: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.20.0-r1 3.22.2: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.20.2 3.22.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.20.0 3.22.0: Sub-meta package for the applications of GNOME 3
@@ -14838,14 +14838,14 @@ net-mail/isync 1.0.6 1.2.0 1.2.1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.39 0.39-r1 0.41 0.42: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
-net-mail/libpst 0.6.64 0.6.66: Tools and library for reading Outlook files (.pst format)
+net-mail/libpst 0.6.64-r1 0.6.66-r1: Tools and library for reading Outlook files (.pst format)
 net-mail/list-remote-forwards 0.0.1-r1: List all remote forwards for mail accounts stored in a database
 net-mail/mailbase 1 1.1: MTA layout package
 net-mail/mailbox-count 0.0.2-r1: Count mailboxes in a SQL database
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailfront 0.88 0.98 1.12 1.16: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.20 2.1.23: A python-based mailing list server with an extensive web interface
+net-mail/mailman 2.1.23: A python-based mailing list server with an extensive web interface
 net-mail/mailshears 0.0.2-r1: Mangle your mail garden
 net-mail/mailsync 5.2.1: A mailbox synchronizer
 net-mail/mailutils 2.99.98-r1 3.1.1: A useful collection of mail servers, clients, and filters
