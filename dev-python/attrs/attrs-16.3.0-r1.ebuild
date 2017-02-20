@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="dev-python/zope-interface[${PYTHON_USEDEP}]"
@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 		>=dev-python/hypothesis-3.6.0[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/test_funcs-too-slow.patch
+)
 
 python_test() {
 	py.test -v -v || die

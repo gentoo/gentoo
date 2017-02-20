@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 hppa ppc x86"
+KEYWORDS="amd64 ~arm hppa ppc x86"
 IUSE="test"
 
 RDEPEND="
@@ -26,13 +26,25 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
-		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 		dev-python/readme[${PYTHON_USEDEP}]
 	)
 "
 
+# Optional test dep:
+# dev-python/pexpect[${PYTHON_USEDEP}]
+
+PATCHES=(
+	"${FILESDIR}"/1.15.0-test_manytests_to_one_import_error.patch
+)
+
+python_prepare_all() {
+	# pexpect fail
+	sed -i -e 's/test_xfail_passes/_&/' testing/test_looponfail.py
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
-	find -name __pycache__ -exec rm -r '{}' + || die
+	distutils_install_for_testing
 	py.test -vv || die "Tests failed under ${EPYTHON}"
 }

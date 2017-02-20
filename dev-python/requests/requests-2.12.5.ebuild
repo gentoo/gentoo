@@ -22,7 +22,7 @@ RDEPEND="
 	app-misc/ca-certificates
 	>=dev-python/chardet-2.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
-	>=dev-python/idna-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/idna-2.0[${PYTHON_USEDEP}]
 	dev-python/ndg-httpsclient[${PYTHON_USEDEP}]
 	>=dev-python/py-1.4.30[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[$(python_gen_usedep 'python*' pypy)]

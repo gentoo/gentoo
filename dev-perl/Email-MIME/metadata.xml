@@ -12,5 +12,6 @@
     <remote-id type="cpan-module">Email::MIME::Encode</remote-id>
     <remote-id type="cpan-module">Email::MIME::Header</remote-id>
     <remote-id type="cpan-module">Email::MIME::Modifier</remote-id>
+    <remote-id type="github">rjbs/Email-MIME</remote-id>
   </upstream>
 </pkgmetadata>

@@ -28,4 +28,9 @@ src_configure() {
 	tc-ld-disable-gold
 	export libdir="/usr/$(get_libdir)"
 	unset LIBS # Bug 562004
+
+	if [[ -n ${GCC_SPECS} ]]; then
+		# The environment overrides the command line.
+		GCC_SPECS+=":${S}/gcc.specs"
+	fi
 }

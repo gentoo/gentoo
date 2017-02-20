@@ -6,9 +6,6 @@ sys-libs/uclibc
 sys-libs/uclibc-ng
 sys-libs/glibc
 
-# Hopelessly broken, bug #525136
-dev-libs/pth
-
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev

@@ -1,8 +1,0 @@
-/var/log/kdm.log {
-    maxage 365
-    size=+1024k
-    notifempty
-    missingok
-    compress
-    copytruncate
-}

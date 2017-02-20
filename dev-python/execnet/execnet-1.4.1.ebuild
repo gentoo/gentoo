@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 	test? (	dev-python/pytest[${PYTHON_USEDEP}]	)"
 
 #PATCHES=( "${FILESDIR}"/1.2.0-tests.patch )
+RESTRICT="test"
 
 python_prepare_all() {
 	# Remove doctest that access an i'net site

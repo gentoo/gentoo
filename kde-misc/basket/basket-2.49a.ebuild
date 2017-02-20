@@ -54,6 +54,8 @@ DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-deps.patch )
+
 src_prepare() {
 	kde5_src_prepare
 	if ! use test; then

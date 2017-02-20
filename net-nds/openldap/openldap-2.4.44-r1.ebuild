@@ -21,7 +21,7 @@ LICENSE="OPENLDAP GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
-IUSE_DAEMON="crypt icu samba slp tcpd experimental minimal"
+IUSE_DAEMON="crypt samba slp tcpd experimental minimal"
 IUSE_BACKEND="+berkdb"
 IUSE_OVERLAY="overlays perl"
 IUSE_OPTIONAL="gnutls iodbc sasl ssl odbc debug ipv6 libressl +syslog selinux static-libs"
@@ -42,7 +42,7 @@ BDB_PKGS=''
 for _slot in $BDB_SLOTS; do BDB_PKGS="${BDB_PKGS} sys-libs/db:${_slot}" ; done
 
 # openssl is needed to generate lanman-passwords required by samba
-CDEPEND="icu? ( dev-libs/icu:= )
+CDEPEND="
 	ssl? (
 		!gnutls? (
 			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
@@ -401,8 +401,8 @@ multilib_src_configure() {
 
 	use debug && myconf+=( $(use_enable debug) )
 
-	# ICU usage is not configurable
-	export ac_cv_header_unicode_utypes_h="$(multilib_is_native_abi && use icu && echo yes || echo no)"
+	# ICU exists only in the configure, nowhere in the codebase, bug #510858
+	export ac_cv_header_unicode_utypes_h=no ol_cv_lib_icu=no
 
 	if ! use minimal && multilib_is_native_abi; then
 		local CPPFLAGS=${CPPFLAGS}

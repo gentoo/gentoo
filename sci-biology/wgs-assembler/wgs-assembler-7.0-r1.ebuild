@@ -4,9 +4,7 @@
 
 EAPI=4
 
-PYTHON_DEPEND=2
-
-inherit eutils python toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG"
 HOMEPAGE="https://sourceforge.net/projects/wgs-assembler/"
@@ -25,11 +23,6 @@ RDEPEND="${DEPEND}
 	dev-perl/Log-Log4perl"
 
 S="${WORKDIR}/wgs-${PV}"
-
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
 
 src_prepare() {
 	epatch \
