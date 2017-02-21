@@ -590,13 +590,13 @@ java-pkg_sointo() {
 java-pkg_dohtml() {
 	debug-print-function ${FUNCNAME} $*
 
-	[[ ${#} -lt 1 ]] &&  die "At least one argument required for ${FUNCNAME}"
+	[[ ${#} -lt 1 ]] && die "At least one argument required for ${FUNCNAME}"
 
-	# from /usr/lib/portage/bin/dohtml -h
-	#  -f   Set list of allowed extensionless file names.
-	dohtml -f package-list "$@"
+	# Do away with dohtml and rely on dodoc instead to do the deed.
+	docinto html
+	dodoc "$@"
 
-	# this probably shouldn't be here but it provides
+	# This probably shouldn't be here but it provides
 	# a reasonable way to catch # docs for all of the
 	# old ebuilds.
 	java-pkg_recordjavadoc
