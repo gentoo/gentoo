@@ -20,4 +20,3 @@ IUSE="numpy tk"
 
 RDEPEND="numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
-
