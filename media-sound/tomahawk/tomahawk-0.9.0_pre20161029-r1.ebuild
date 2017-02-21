@@ -7,7 +7,8 @@ EAPI=6
 inherit kde5
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	SRC_URI="http://download.tomahawk-player.org/${P}.tar.bz2"
+	# SRC_URI="http://download.tomahawk-player.org/${P}.tar.bz2"
+	SRC_URI="http://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="git://github.com/tomahawk-player/${PN}.git"
