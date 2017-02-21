@@ -341,6 +341,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-10028.patch  #603444
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-10155.patch  #606720
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-2615.patch   #608034
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-2630.patch   #609396
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5525-1.patch #606264
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5525-2.patch
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5552.patch   #606722
@@ -351,6 +352,10 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5857.patch   #608038
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5898.patch   #608520
 	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5931.patch   #608728
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5973.patch   #609334
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5987.patch   #609398
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-6058.patch   #609638
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-2620.patch   #609206
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
