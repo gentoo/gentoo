@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -71,6 +71,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 
 	gnome-base/gnome-common
+	sys-devel/autoconf-archive
 "
 # Needed for autoreconf
 #	gnome-base/gnome-common

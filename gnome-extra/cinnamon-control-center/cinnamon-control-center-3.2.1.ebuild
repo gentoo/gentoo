@@ -71,10 +71,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 
 	gnome-base/gnome-common
+	sys-devel/autoconf-archive
 "
-# Needed for autoreconf
-#	gnome-base/gnome-common
-
 src_prepare() {
 	# make some panels optional
 	eapply "${FILESDIR}"/${PN}-2.8.0-optional.patch

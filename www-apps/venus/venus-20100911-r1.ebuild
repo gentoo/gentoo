@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-PYTHON_DEPEND="2:2.5"
-SUPPORT_PYTHON_ABIS="1"
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit webapp python
+inherit webapp python-single-r1
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -19,42 +18,44 @@ KEYWORDS="amd64 x86"
 IUSE="django genshi redland test"
 SLOT="0"
 
-DEPEND="
-		test? ( =dev-lang/python-2*[berkdb] )
-		"
-RDEPEND="django? ( dev-python/django )
-		genshi? ( dev-python/genshi )
-		redland? ( dev-python/rdflib[redland] )
-		dev-python/chardet
-		dev-python/httplib2
-		dev-python/utidylib
-"
-RESTRICT_PYTHON_ABIS="3.*"
+RDEPEND="
+	dev-python/bsddb3[${PYTHON_USEDEP}]
+	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/httplib2[${PYTHON_USEDEP}]
+	dev-python/utidylib[${PYTHON_USEDEP}]
+	django? ( dev-python/django[${PYTHON_USEDEP}] )
+	genshi? ( dev-python/genshi[${PYTHON_USEDEP}] )
+	redland? ( dev-python/rdflib[redland,${PYTHON_USEDEP}] )
+	${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}"/${PN}
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+	webapp_pkg_setup
+}
+
 src_prepare() {
-	python_convert_shebangs -r 2 .
+	eapply "${FILESDIR}"/venus-bsddb3.patch
+	eapply_user
+	python_fix_shebang .
 }
 
 src_test() {
-	testing() {
-		PYTHONPATH="build-${PYTHON_ABI}/lib" "$(PYTHON)" runtests.py
-	}
-	python_execute_function testing
+	"${PYTHON}" runtests.py || die
 }
 
 src_install() {
 	webapp_src_preinst
 
 	dodoc AUTHORS README TODO
-	dohtml -r docs/*
+	dodoc -r docs
 
-	installation() {
-		insinto "$(python_get_sitedir)/${PN}"
-		doins -r *py {filters,planet}
-	}
-	python_execute_function installation
+	python_moduleinto venus
+	python_domodule *.py filters planet
 
 	insinto "${MY_APPDIR}"
 	doins -r themes
@@ -68,12 +69,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_optimize venus
 	webapp_pkg_postinst
 	elog "Installation instructions can be found at /usr/share/doc/${PF}/html/
 		or http://intertwingly.net/code/venus/docs/index.html"
-}
-
-pkg_postrm() {
-	python_mod_cleanup venus
 }
