@@ -1,10 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python
+inherit eutils python-single-r1
 
 DESCRIPTION="a package for multitrack audio processing"
 HOMEPAGE="http://ecasound.seul.org/ecasound"
@@ -15,7 +16,7 @@ SLOT="1"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="alsa audiofile debug doc jack libsamplerate mikmod ncurses vorbis oss python ruby sndfile"
 
-RDEPEND="python? ( dev-lang/python )
+RDEPEND="python? ( ${PYTHON_DEPS} )
 	jack? ( media-sound/jack-audio-connection-kit )
 	media-libs/ladspa-sdk
 	audiofile? ( media-libs/audiofile )
@@ -30,15 +31,17 @@ RDEPEND="python? ( dev-lang/python )
 	sys-libs/readline"
 DEPEND="${RDEPEND}"
 
-src_configure() {
-	local PYConf
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-	if use python; then
-		PYConf="--enable-pyecasound=c
-			--with-python-includes=$(python_get_includedir)
-			--with-python-modules=$(python_get_libdir)"
-	else
-		PYConf="$myconf --disable-pyecasound"
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
+src_configure() {
+	local pyconf=()
+
+	if use python ; then
+		pyconf=( "--with-python-modules=${EPREFIX}/usr/$(get_libdir)/${EPYTHON}" )
 	fi
 
 	econf \
@@ -50,28 +53,18 @@ src_configure() {
 		$(use_enable libsamplerate) \
 		$(use_enable ncurses) \
 		$(use_enable oss) \
+		$(use_enable python pyecasound c) \
 		$(use_enable ruby rubyecasound) \
 		$(use_enable sndfile) \
 		--enable-shared \
 		--with-largefile \
 		--enable-sys-readline \
-		${PYConf} || die "econf failed"
+		"${pyconf[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc BUGS NEWS README TODO Documentation/*.txt
-	use doc && dohtml Documentation/*.html
-}
-
-pkg_postinst() {
-	if use python; then
-		python_mod_optimize ecacontrol.py eci.py pyeca.py
-	fi
-}
-
-pkg_postrm() {
-	if use python; then
-		python_mod_cleanup ecacontrol.py eci.py pyeca.py
-	fi
+	emake DESTDIR="${D}" install
+	use python && python_optimize
+	dodoc BUGS NEWS README TODO
+	use doc && dodoc Documentation/*.html
 }
