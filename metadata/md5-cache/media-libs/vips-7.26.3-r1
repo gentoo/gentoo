@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.6:2 >=dev-libs/liboil-0.3 dev-libs/libxml2 sys-libs/zl
 SLOT=1
 SRC_URI=http://www.vips.ecs.soton.ac.uk/supported/7.26/vips-7.26.3.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python	8b7143ec94293338ed5da8a7ef97cfdb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=c3b674d6d53055a6c04847a2c36b3cbd
