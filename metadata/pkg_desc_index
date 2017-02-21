@@ -13762,7 +13762,7 @@ media-sound/timidity++ 2.14.0-r2: A handy MIDI to WAV converter with OSS and ALS
 media-sound/timidity-eawpatches 12-r5: Eric Welsh's GUS patches for TiMidity
 media-sound/timidity-freepats 20060219-r1: Free and open set of instrument patches
 media-sound/tk707 0.8-r1: An "7x7" type midi drum sequencer for Linux
-media-sound/tomahawk 0.9.0_pre20161029 9999: Multi-source social music player
+media-sound/tomahawk 0.9.0_pre20161029-r1 9999: Multi-source social music player
 media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
 media-sound/traverso 0.49.3: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
