@@ -14033,8 +14033,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.8 1.9: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 0.8.8h 1.0.0 1.0.1 1.0.2: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 0.8.8h 1.0.0 1.0.1 1.0.2: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 0.8.8h 1.0.0 1.0.1 1.0.2 1.0.3: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 0.8.8h 1.0.0 1.0.1 1.0.2 1.0.3: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r1: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
@@ -14291,7 +14291,7 @@ net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/tsung 1.6.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
-net-analyzer/vnstat 1.13 1.15 1.16: Console-based network traffic monitor that keeps statistics of network usage
+net-analyzer/vnstat 1.15 1.16 1.17: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
@@ -14426,7 +14426,7 @@ net-firewall/nftables 0.6-r4 0.7: Linux kernel (3.13+) firewall, NAT and packet 
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.7-r2: Tool for real-time display of active states and rule statistics for pf
 net-firewall/pglinux 2.3.1: Privacy oriented firewall application
-net-firewall/psad 2.2.5 2.4.1 2.4.2 2.4.3: Port Scanning Attack Detection daemon
+net-firewall/psad 2.2.5 2.4.3 2.4.4: Port Scanning Attack Detection daemon
 net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)

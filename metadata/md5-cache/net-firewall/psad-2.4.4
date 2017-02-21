@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Port Scanning Attack Detection daemon
+EAPI=6
+HOMEPAGE=http://www.cipherdyne.org/psad
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Bit-Vector dev-perl/Date-Calc dev-perl/NetAddr-IP dev-perl/Unix-Syslog net-firewall/iptables net-misc/whois virtual/logger virtual/mailx virtual/perl-Storable dev-lang/perl:=
+SLOT=0
+SRC_URI=http://www.cipherdyne.org/psad/download/psad-2.4.4.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=f5705a84f1e6ba4995208e0775e0c0ea
