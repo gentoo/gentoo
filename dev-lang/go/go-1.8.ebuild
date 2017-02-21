@@ -79,7 +79,7 @@ QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 
 # Do not strip this package. Stripping is unsupported upstream and may
 # fail.
-RESTRICT+="strip"
+RESTRICT+=" strip"
 
 DOCS=(
 AUTHORS
