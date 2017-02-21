@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,8 +13,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-DEPEND="net-libs/libpcap"
-RDEPEND="${DEPEND}"
+DEPEND="
+	net-libs/libpcap
+	sys-libs/zlib
+"
+RDEPEND="
+	${DEPEND}
+"
 
 DARKSTAT_CHROOT_DIR=${DARKSTAT_CHROOT_DIR:-/var/lib/darkstat}
 
