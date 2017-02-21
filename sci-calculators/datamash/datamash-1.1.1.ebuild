@@ -11,14 +11,13 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls openssl"
+IUSE="nls"
 
 CDEPEND="
 	nls? ( sys-devel/gettext )
 "
 RDEPEND="
 	nls? ( virtual/libintl )
-	openssl? ( dev-libs/openssl:0 )
 "
 DEPEND="
 	${CDEPEND}
@@ -26,7 +25,5 @@ DEPEND="
 "
 
 src_configure() {
-	econf \
-		$(use_enable nls) \
-		$(use_with openssl)
+	econf $(use_enable nls) --with-openssl=no
 }
