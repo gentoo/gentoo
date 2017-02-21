@@ -33,6 +33,7 @@ LICENSE="kvirc"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -45,6 +46,7 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtxml:5
 	sys-libs/zlib:0=
 	x11-libs/libX11
+	x11-libs/libXScrnSaver
 	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtdbus:5 )
 	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
@@ -69,13 +71,11 @@ RDEPEND="dev-qt/qtcore:5
 	webkit? ( dev-qt/qtwebkit:5 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/scrnsaverproto
 	doc? ( app-doc/doxygen )
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
 	nls? ( sys-devel/gettext )"
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
-REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=(ChangeLog doc/FAQ)
 

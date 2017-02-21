@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -367,7 +367,7 @@ subversion_fetch() {
 # Apply patches in ${ESVN_PATCHES} and run ${ESVN_BOOTSTRAP} if specified.
 # Removed in EAPI 6 and later.
 subversion_bootstrap() {
-	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME[1]} is removed from subversion.eclass in EAPI 6 and later"
+	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
 
 	if has "export" ${ESVN_RESTRICT}; then
 		return
@@ -447,7 +447,7 @@ subversion_src_unpack() {
 # Default src_prepare. Bootstrap.
 # Removed in EAPI 6 and later.
 subversion_src_prepare() {
-	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME[1]} is removed from subversion.eclass in EAPI 6 and later"
+	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
 	subversion_bootstrap || die "${ESVN}: unknown problem occurred in subversion_bootstrap."
 }
 
