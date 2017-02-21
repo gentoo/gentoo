@@ -14191,7 +14191,7 @@ net-analyzer/nrpe 2.15-r2 2.15-r3: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r3: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
-net-analyzer/ntop 4.0.3 4.1.0 5.0.1-r2: Network traffic analyzer with web interface
+net-analyzer/ntop 5.0.1-r2: Network traffic analyzer with web interface
 net-analyzer/ntopng 2.4: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/odhcploc 20111021: Open DHCP Locator
@@ -15533,7 +15533,7 @@ net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.271-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
-net-wireless/chirp 20160513 20160717 99999999: Free open-source tool for programming your amateur radio
+net-wireless/chirp 20160513 20160717 20170217 99999999: Free open-source tool for programming your amateur radio
 net-wireless/cpyrit-cuda 0.5.0: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.5.0: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
