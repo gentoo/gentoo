@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-simulation/gazebo_ros_pkgs"
 KEYWORDS="~amd64"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 CATKIN_HAS_MESSAGES=yes
 ROS_SUBDIR=${PN}
 
@@ -29,8 +29,8 @@ RDEPEND="
 	dev-ros/urdf
 	dev-ros/tf
 	dev-ros/tf2_ros
-	dev-ros/dynamic_reconfigure
-	dev-ros/driver_base
+	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/driver_base[${PYTHON_USEDEP}]
 	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/trajectory_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pcl_conversions
