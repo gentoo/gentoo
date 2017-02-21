@@ -35,7 +35,7 @@ ruby_add_rdepend "!minimal? (
 ruby_add_bdepend "test? (
 	>=dev-ruby/mocha-0.13
 	dev-ruby/minitest
-	=dev-ruby/rdoc-4*
+	dev-ruby/rdoc
 	dev-ruby/systemu
 	dev-ruby/vcr
 	dev-ruby/webmock
