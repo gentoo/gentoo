@@ -14267,7 +14267,7 @@ net-analyzer/suricata 2.0.11 3.0.1 3.1.3 3.2 3.2-r1 3.2.1: High performance Netw
 net-analyzer/symon 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
-net-analyzer/tcpdump 4.8.1 4.9.0 9999: A Tool for network monitoring and data acquisition
+net-analyzer/tcpdump 4.9.0 9999: A Tool for network monitoring and data acquisition
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
@@ -18176,7 +18176,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 42.0.2393.517 43.0.2442.806: A fast and secure web browser
 www-client/opera-beta 43.0.2442.52 43.0.2442.686: A fast and secure web browser
-www-client/opera-developer 44.0.2487.0 44.0.2494.0: A fast and secure web browser
+www-client/opera-developer 44.0.2494.0 44.0.2505.0: A fast and secure web browser
 www-client/otter 0.9.11 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -18215,7 +18215,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 24.0.0.221: Adobe Flash Player
+www-plugins/adobe-flash 24.0.0.221 24.0.0.221-r1: Adobe Flash Player
 www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.54_beta 58.0.3013.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
