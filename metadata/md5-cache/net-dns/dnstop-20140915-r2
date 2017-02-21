@@ -9,5 +9,5 @@ RDEPEND=sys-libs/ncurses:0 net-libs/libpcap
 SLOT=0
 SRC_URI=http://dnstop.measurement-factory.com/src/dnstop-20140915.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=6c5bc4e5b0f26ad0122bad1bb30829c3
