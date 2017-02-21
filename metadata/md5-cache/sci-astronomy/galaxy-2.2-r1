@@ -9,5 +9,5 @@ RDEPEND=x11-libs/gtk+:3 x11-misc/xdg-utils
 SLOT=0
 SRC_URI=http://www.kornelix.com/uploads/1/3/0/3/13035936/galaxy-2.2.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=16abd272df626d1c1a5c818b391a2a1e

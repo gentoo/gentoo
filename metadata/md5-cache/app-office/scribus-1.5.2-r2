@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7 tk? ( scripts )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/scribus/scribus-devel/1.5.2/scribus-1.5.2.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	f3d2dfb12521ff699df43be5d9a51dc4	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	python-single-r1	6793fc854691a2320226801400573568	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	python-single-r1	6793fc854691a2320226801400573568	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=2383afb4509daa3e3eeca7789452e168
