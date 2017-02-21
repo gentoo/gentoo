@@ -96,7 +96,7 @@ RDEPEND=">=dev-libs/nss-3.25
 		=app-crypt/gnupg-1.4* ) )"
 
 DEPEND="${RDEPEND}
-	!elibc_glibc? ( !elibc_uclibc?  ( dev-libs/libexecinfo ) )
+	!elibc_glibc? ( !elibc_uclibc? ( !elibc_musl? ( dev-libs/libexecinfo ) ) )
 	crypt? ( dev-lang/perl )
 	amd64? ( ${ASM_DEPEND}
 		virtual/opengl )
