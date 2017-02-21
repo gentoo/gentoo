@@ -1,0 +1,16 @@
+DEFINED_PHASES=prepare setup
+DEPEND=>=dev-python/PyQt4-4.1[X,python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=media-video/recordmydesktop-0.3.8 x11-apps/xwininfo python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Qt4 interface for RecordMyDesktop
+EAPI=6
+HOMEPAGE=http://recordmydesktop.sourceforge.net/
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-python/PyQt4-4.1[X,python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=media-video/recordmydesktop-0.3.8 x11-apps/xwininfo python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/recordmydesktop/qt-recordmydesktop-0.3.8.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	6793fc854691a2320226801400573568	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=322891706bf090e36fa563e5960375f8
