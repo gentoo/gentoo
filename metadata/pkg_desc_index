@@ -4678,7 +4678,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.7 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.45.4 1.46.0: Javascript bindings for GNOME
-dev-libs/glib 2.44.1-r1 2.48.2 2.50.2: The GLib library of C routines
+dev-libs/glib 2.44.1-r1 2.48.2 2.50.3: The GLib library of C routines
 dev-libs/gmime 2.6.20-r3 2.6.23: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2016.12.21.08.39.01 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -10151,7 +10151,7 @@ dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 1
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.48.2 2.50.2: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.48.2 2.50.3: GDBus code and documentation generator
 dev-util/geany 1.28 1.29-r1: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.28-r1: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
