@@ -20,7 +20,7 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug doc headless java libressl lvm pam pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc headless java libressl lvm pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -75,6 +75,7 @@ DEPEND="${RDEPEND}
 	!headless? ( x11-libs/libXinerama )
 	java? ( >=virtual/jre-1.6:= )
 	pam? ( sys-libs/pam )
+	pax_kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
@@ -181,6 +182,11 @@ src_prepare() {
 	# Only add nopie patch when we're on hardened
 	if ! gcc-specs-pie ; then
 		rm "${WORKDIR}"/patches/050_${PN}-*-nopie.patch || die
+	fi
+
+	# Only add paxmark patch when we're on pax_kernel
+	if use pax_kernel ; then
+		epatch "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch || die
 	fi
 
 	eapply "${WORKDIR}/patches"
