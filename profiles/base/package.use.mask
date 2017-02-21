@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Alexis Ballier <aballier@gentoo.org> (21 Feb 2017)
+# spacetime is only supported on amd64 at the moment.
+# https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
+dev-lang/ocaml spacetime
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # Python 2 package relies on gedit[python] which is py3 only.
 dev-vcs/rabbitvcs gedit
