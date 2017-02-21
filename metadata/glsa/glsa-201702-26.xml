@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-26">
+  <title>Nagios: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Nagios, the worst of
+    which could lead to privilege escalation.
+  </synopsis>
+  <product type="ebuild">nagios</product>
+  <announced>2017-02-21</announced>
+  <revised>2017-02-21: 1</revised>
+  <bug>595194</bug>
+  <bug>598104</bug>
+  <bug>600864</bug>
+  <bug>602216</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-analyzer/nagios-core" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4</unaffected>
+      <vulnerable range="lt">4.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nagios is an open source host, service and network monitoring program.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Nagios. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker, who either is already Nagios’s system user or
+      belongs to Nagios’s group, could potentially escalate privileges.
+    </p>
+    
+    <p>In addition, a remote attacker could read or write to arbitrary files by
+      spoofing a crafted response from the Nagios RSS feed server.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Nagios users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/nagios-core-4.2.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4796">CVE-2008-4796</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7313">CVE-2008-7313</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8641">CVE-2016-8641</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9565">CVE-2016-9565</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9566">CVE-2016-9566</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T01:56:03Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-21T00:04:00Z">b-man</metadata>
+</glsa>

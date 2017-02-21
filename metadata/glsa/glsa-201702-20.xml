@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-20">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">flash</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>605314</bug>
+  <bug>609330</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">24.0.0.221</unaffected>
+      <vulnerable range="lt">24.0.0.221</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-24.0.0.221"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2925">CVE-2017-2925</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2926">CVE-2017-2926</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2927">CVE-2017-2927</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2928">CVE-2017-2928</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2930">CVE-2017-2930</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2931">CVE-2017-2931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2932">CVE-2017-2932</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2933">CVE-2017-2933</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2934">CVE-2017-2934</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2935">CVE-2017-2935</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2936">CVE-2017-2936</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2937">CVE-2017-2937</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2938">CVE-2017-2938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2982">CVE-2017-2982</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2984">CVE-2017-2984</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2985">CVE-2017-2985</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2986">CVE-2017-2986</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2987">CVE-2017-2987</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2988">CVE-2017-2988</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2990">CVE-2017-2990</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2991">CVE-2017-2991</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2992">CVE-2017-2992</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2993">CVE-2017-2993</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2994">CVE-2017-2994</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2995">CVE-2017-2995</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2996">CVE-2017-2996</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-16T12:43:25Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:44:37Z">whissi</metadata>
+</glsa>

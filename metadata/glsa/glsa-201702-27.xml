@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-27">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could lead to the execution of arbitrary code on the host system.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2017-02-21</announced>
+  <revised>2017-02-21: 1</revised>
+  <bug>607840</bug>
+  <bug>609160</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.7.1-r5</unaffected>
+      <vulnerable range="lt">4.7.1-r5</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.7.1-r6</unaffected>
+      <vulnerable range="lt">4.7.1-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers and Xen Security Advisory referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could potentially execute arbitrary code with
+      privileges of Xen (QEMU) process on the host, gain privileges on the host
+      system, cause a Denial of Service condition, or obtain sensitive
+      information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.7.1-r5"
+    </code>
+    
+    <p>All Xen Tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.7.1-r6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2615">CVE-2017-2615</uri>
+    <uri link="https://xenbits.xen.org/xsa/advisory-207.html">XSA-207</uri>
+    <uri link="https://xenbits.xen.org/xsa/advisory-208.html">XSA-208</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-16T18:01:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-21T00:04:19Z">whissi</metadata>
+</glsa>
