@@ -74,9 +74,9 @@ src_prepare() {
 
 	# Respect LDFLAGS
 	eapply "${FILESDIR}/${PN}-2007f-ldflags.patch"
-	sed -e "s/CC=cc/CC=$(tc-getCC)/" \
-		-e "s/ARRC=ar/ARRC=$(tc-getAR)/" \
-		-e "s/RANLIB=ranlib/RANLIB=$(tc-getRANLIB)/" \
+	sed -e "s:CC=cc:CC=$(tc-getCC):" \
+		-e "s:ARRC=ar:ARRC=$(tc-getAR):" \
+		-e "s:RANLIB=ranlib:RANLIB=$(tc-getRANLIB):" \
 		-i src/osdep/unix/Makefile \
 		|| die "failed to fix build flags support in the Makefile"
 
