@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,9 @@ SRC_URI="https://${EGO_PN%/*}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/go-asn1-ber/asn1-ber/archive/4e86f4367175e39f69d9358a5f17b4dda270378d.tar.gz -> go-asn1-ber-asn1-ber-4e86f4367175e39f69d9358a5f17b4dda270378d.tar.gz
 	https://github.com/fsnotify/fsnotify/archive/629574ca2a5df945712d3079857300b5e4da0236.tar.gz -> fsnotify-fsnotify-629574ca2a5df945712d3079857300b5e4da0236.tar.gz
 	https://github.com/go-mgo/mgo/archive/3f83fa5005286a7fe593b055f0d7771a7dce4655.tar.gz -> go-mgo-mgo-3f83fa5005286a7fe593b055f0d7771a7dce4655.tar.gz
-	https://github.com/go-yaml/yaml/archive/a5b47d31c556af34a302ce5d659e6fea44d90de0.tar.gz -> go-yaml-yaml-a5b47d31c556af34a302ce5d659e6fea44d90de0.tar.gz"
+	https://github.com/go-yaml/yaml/archive/a5b47d31c556af34a302ce5d659e6fea44d90de0.tar.gz -> go-yaml-yaml-a5b47d31c556af34a302ce5d659e6fea44d90de0.tar.gz
+	https://github.com/golang/crypto/archive/453249f01cfeb54c3d549ddb75ff152ca243f9d8.tar.gz -> golang-crypto-453249f01cfeb54c3d549ddb75ff152ca243f9d8.tar.gz
+	https://github.com/golang/sys/archive/075e574b89e4c2d22f2286a7e2b919519c6f3547.tar.gz -> golang-sys-075e574b89e4c2d22f2286a7e2b919519c6f3547.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Docker Registry 2 authentication server"
@@ -32,9 +34,6 @@ HOMEPAGE="http://github.com/cesanta/docker_auth"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-
-DEPEND="dev-go/go-crypto:=
-	dev-go/go-sys:="
 
 _golang-include-src() {
 	local VENDORPN=$1 TARBALL=$2
@@ -66,6 +65,8 @@ src_unpack() {
 	_golang-include-src gopkg.in/fsnotify.v1 fsnotify-fsnotify-*.tar.gz
 	_golang-include-src gopkg.in/mgo.v2 go-mgo-*.tar.gz
 	_golang-include-src gopkg.in/yaml.v2 go-yaml-*.tar.gz
+	_golang-include-src golang.org/x/crypto golang-crypto-*.tar.gz
+	_golang-include-src golang.org/x/sys golang-sys-*.tar.gz
 }
 
 src_prepare() {
@@ -76,7 +77,7 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN%/*}/auth_server || die
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" go build -o "bin/auth_server" || die
+	GOPATH="${WORKDIR}/${P}" go build -o "bin/auth_server" || die
 	popd || die
 }
 
