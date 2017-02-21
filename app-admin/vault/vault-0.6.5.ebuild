@@ -20,7 +20,7 @@ IUSE=""
 
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.6:="
+DEPEND=">=dev-lang/go-1.7:="
 RDEPEND=""
 
 FILECAPS=(
