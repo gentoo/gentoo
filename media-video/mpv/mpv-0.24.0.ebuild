@@ -55,6 +55,7 @@ REQUIRED_USE="
 	xscreensaver? ( X )
 	xv? ( X )
 	zsh-completion? ( cli )
+	${PYTHON_REQUIRED_USE}
 "
 
 COMMON_DEPEND="

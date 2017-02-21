@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Multi-source social music player"
-HOMEPAGE="http://tomahawk-player.org/"
+HOMEPAGE="https://tomahawk-player.org/"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"
@@ -22,7 +22,6 @@ IUSE="+hatchet telepathy xmpp"
 
 CDEPEND="
 	$(add_frameworks_dep attica)
-	$(add_qt_dep designer)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
@@ -38,7 +37,6 @@ CDEPEND="
 	dev-libs/boost:=
 	dev-libs/qtkeychain:=[qt5]
 	>=dev-libs/quazip-0.7.2[qt5]
-	>=media-libs/libechonest-2.3.1:=[qt5]
 	media-libs/liblastfm[qt5]
 	>=media-libs/taglib-1.8.0
 	media-video/vlc:=[flac,dvbpsi,ffmpeg,mp3]
@@ -49,6 +47,7 @@ CDEPEND="
 	xmpp? ( net-libs/jreen[qt5] )
 "
 DEPEND="${CDEPEND}
+	$(add_qt_dep designer)
 	$(add_qt_dep linguist-tools)
 	$(add_qt_dep qtconcurrent)
 "

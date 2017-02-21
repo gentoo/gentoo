@@ -32,7 +32,6 @@ RDEPEND="
 	media-libs/lcms:2
 	>=net-print/cups-1.7.3
 	!<=net-print/cups-1.5.9999
-	sys-devel/bc
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )

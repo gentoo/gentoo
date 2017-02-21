@@ -1,7 +1,7 @@
 http://code.google.com/p/libkate/issues/detail?id=15
 
---- tools/kpng.c
-+++ tools/kpng.c
+--- a/tools/kpng.c
++++ b/tools/kpng.c
 @@ -179,13 +179,13 @@
      }
    }
