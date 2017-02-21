@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,10 +15,12 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 fi
 
-DEPEND="
+RDEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	$(add_qt_dep linguist-tools)
+"
