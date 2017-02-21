@@ -7,11 +7,12 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 RUBY_VER=2.3
 
-inherit bash-completion-r1 cmake-utils python-single-r1 user
+inherit bash-completion-r1 cmake-utils python-single-r1 user vcs-snapshot
 
 DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
-SRC_URI="http://dev.gentoo.org/~mgorny/dist/${P}.tar.lz"
+SRC_URI="https://git.exherbo.org/paludis/paludis.git/snapshot/paludis-1bbd4440fe4fb82a9ebd61d3f17b9ffa259eb17f.tar.xz
+	-> ${P}.tar.xz"
 
 IUSE="doc pbins pink python ruby search-index test +xml"
 LICENSE="GPL-2 vim"
@@ -32,7 +33,7 @@ COMMON_DEPEND="
 	xml? ( >=dev-libs/libxml2-2.6:= )"
 
 DEPEND="${COMMON_DEPEND}
-	app-arch/lzip
+	app-arch/xz-utils
 	>=app-text/asciidoc-8.6.3
 	app-text/htmltidy
 	app-text/xmlto
@@ -71,14 +72,6 @@ pkg_setup() {
 	enewuser "paludisbuild" -1 -1 "/var/tmp/paludis" "paludisbuild,tty"
 
 	use python && python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	default
-
-	ebegin "Unpacking ${P}.tar.lz"
-	tar -x < <(lzip -c -d "${DISTDIR}/${P}.tar.lz") || die
-	eend ${?}
 }
 
 src_prepare() {
