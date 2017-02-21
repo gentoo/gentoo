@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile prepare
 DEPEND=media-libs/libpng:0 virtual/jpeg:0 x11-libs/libX11 x11-libs/libXft x11-libs/libXpm app-text/rman dev-lang/perl x11-misc/imake x11-proto/xproto
 DESCRIPTION=Program to interactively take a 'snapshot' of a region of the screen
-EAPI=5
+EAPI=6
 HOMEPAGE=ftp://ftp.ac-grenoble.fr/ge/Xutils/
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux
 LICENSE=GPL-3+
@@ -9,5 +9,5 @@ RDEPEND=media-libs/libpng:0 virtual/jpeg:0 x11-libs/libX11 x11-libs/libXft x11-l
 SLOT=0
 SRC_URI=ftp://ftp.ac-grenoble.fr/ge/Xutils/xsnap-1.5.15.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=6dded0108d17deb6d6202464a9c15268
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=70eeeb75a5f35fa8f5ccddb5fd82e8e6
