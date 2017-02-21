@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 #PERL_EXPORT_PHASE_FUNCTIONS=no
-inherit eutils perl-module toolchain-funcs
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="Port Scanning Attack Detection daemon"
 SRC_URI="http://www.cipherdyne.org/psad/download/${P}.tar.bz2"
@@ -26,9 +26,12 @@ RDEPEND="
 	virtual/mailx
 	virtual/perl-Storable
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.4-var-run.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.2.4-var-run.patch
+	default
 
 	sed -i \
 		-e 's|/usr/bin/gcc|$(CC)|g' \

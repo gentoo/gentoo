@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit toolchain-funcs user
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
@@ -11,7 +11,7 @@ SRC_URI="http://humdi.net/vnstat/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gd selinux test"
 
 COMMON_DEPEND="
@@ -32,6 +32,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	tc-export CC
 
 	sed -i \
@@ -45,12 +47,12 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" $(usex gd all '')
+	emake ${PN} ${PN}d $(usex gd ${PN}i '')
 }
 
 src_install() {
-	use gd && dobin src/vnstati
-	dobin src/vnstat src/vnstatd
+	use gd && dobin vnstati
+	dobin vnstat vnstatd
 
 	exeinto /etc/cron.hourly
 	newexe "${FILESDIR}"/vnstat.cron vnstat
