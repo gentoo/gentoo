@@ -16984,7 +16984,7 @@ sys-apps/nix 1.11.6-r3: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.9 1.0 1.1: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 0.22.4 0.23.2 9999: OpenRC manages the services, startup and shutdown of a host
-sys-apps/opentmpfiles 0.1 9999: A standalone utility to process systemd-style tmpfiles.d files
+sys-apps/opentmpfiles 0.1 0.1.1 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.4.0-r1 2.6.0 3.0.0_pre20170219 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
