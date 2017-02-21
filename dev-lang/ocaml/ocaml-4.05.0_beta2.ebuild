@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit flag-o-matic eutils multilib versionator toolchain-funcs
 
-PATCHLEVEL="8"
+PATCHLEVEL="9"
 MY_P="${P/_/-}"
 DESCRIPTION="Type-inferring functional programming language descended from the ML family"
 HOMEPAGE="http://www.ocaml.org/"
@@ -17,12 +17,13 @@ LICENSE="QPL-1.0 LGPL-2"
 # Everytime ocaml is updated to a new version, everything ocaml must be rebuilt,
 # so here we go with the subslot.
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="emacs flambda latex ncurses +ocamlopt X xemacs"
+#KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+IUSE="emacs +flambda latex ncurses +ocamlopt spacetime X xemacs"
 
 RDEPEND="
 	sys-libs/binutils-libs:=
 	ncurses? ( sys-libs/ncurses:0= )
+	spacetime? ( sys-libs/libunwind:= )
 	X? ( x11-libs/libX11 x11-proto/xproto )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -62,6 +63,7 @@ src_configure() {
 	use ncurses || myconf="${myconf} -no-curses"
 	use X || myconf="${myconf} -no-graph"
 	use flambda && myconf="${myconf} -flambda"
+	use spacetime && myconf="${myconf} -spacetime"
 
 	# ocaml uses a home-brewn configure script, preventing it to use econf.
 	RAW_LDFLAGS="$(raw-ldflags)" ./configure \

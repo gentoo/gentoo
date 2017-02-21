@@ -18,6 +18,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexis Ballier <aballier@gentoo.org> (21 Feb 2017)
+# spacetime works on amd64
+# https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
+dev-lang/ocaml -spacetime
+
 # Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
 # nvidia drivers are unmasked here
 media-video/ffmpeg -nvenc
