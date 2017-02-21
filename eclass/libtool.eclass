@@ -144,7 +144,7 @@ elibtoolize() {
 	local deptoremove=
 	local do_shallow="no"
 	local force="false"
-	local elt_patches="install-sh ltmain portage relink max_cmd_len sed test tmp cross as-needed target-nm"
+	local elt_patches="install-sh ltmain portage relink max_cmd_len sed test tmp cross as-needed target-nm ppc64le"
 
 	for x in "$@" ; do
 		case ${x} in
@@ -414,6 +414,10 @@ elibtoolize() {
 					ret=$?
 					;;
 				target-nm)
+					ELT_walk_patches "${d}/configure" "${p}"
+					ret=$?
+					;;
+				ppc64le)
 					ELT_walk_patches "${d}/configure" "${p}"
 					ret=$?
 					;;

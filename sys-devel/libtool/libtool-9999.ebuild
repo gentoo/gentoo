@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI="5"
 
 LIBTOOLIZE="true" #225559
 WANT_LIBTOOL="none"
@@ -27,7 +26,8 @@ IUSE="vanilla"
 # Pull in libltdl directly until we convert packages to the new dep.
 RDEPEND="sys-devel/gnuconfig
 	>=sys-devel/autoconf-2.69
-	>=sys-devel/automake-1.13"
+	>=sys-devel/automake-1.13
+	dev-libs/libltdl:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 [[ ${PV} == "9999" ]] && DEPEND+=" sys-apps/help2man"
@@ -65,6 +65,10 @@ src_configure() {
 	# cause problems for people who switch /bin/sh on the fly to other
 	# shells, so just force libtool to use /bin/bash all the time.
 	export CONFIG_SHELL=/bin/bash
+
+	# Do not bother hardcoding the full path to sed.  Just rely on $PATH. #574550
+	export ac_cv_path_SED=$(basename "$(type -P sed)")
+
 	ECONF_SOURCE=${S} econf --disable-ltdl-install
 }
 
