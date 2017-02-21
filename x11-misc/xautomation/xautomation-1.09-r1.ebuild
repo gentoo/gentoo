@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Control X from command line and find things on screen"
 HOMEPAGE="http://hoopajoo.net/projects/xautomation.html"
@@ -24,5 +24,3 @@ DEPEND="
 	x11-proto/xextproto
 	x11-proto/xproto
 "
-
-DOCS="AUTHORS ChangeLog"

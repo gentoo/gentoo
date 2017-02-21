@@ -1,0 +1,24 @@
+--- a/xidle.c	2015-05-26 08:22:15.000000000 +0300
++++ b/xidle.c	2017-02-20 20:28:02.693153198 +0200
+@@ -43,7 +43,7 @@
+ #endif
+ 
+ #ifndef PATH_PROG
+-#define PATH_PROG	"/usr/X11R6/bin/xlock"
++#define PATH_PROG	"/usr/bin/xlock"
+ #endif
+ 
+ 
+@@ -98,10 +98,10 @@
+ void	parse_opts(int, char **, Display **, int *, int *, int *, int *,
+ 	    char **);
+ int	str2pos(const char *);
+-__dead void	usage(void);
++void	usage(void);
+ 
+ 
+-__dead void
++void
+ usage()
+ {
+ 	fprintf(stderr, "Usage:\n%s %s\n", __progname,

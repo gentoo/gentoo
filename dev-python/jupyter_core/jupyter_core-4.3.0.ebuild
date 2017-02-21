@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/ipython-4.0.1[${PYTHON_USEDEP}]
 	)
 	"
@@ -40,16 +40,14 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		emake -C docs html
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
 	distutils_install_for_testing
 	cd "${TEST_DIR}"/lib || die
 	py.test jupyter_core || die
-}
-
-python_install_all() {
-	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }
