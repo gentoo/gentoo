@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (19 Feb 2017)
+# Doesn't work. Dead upstream. Unmaintained.
+# Masked for removal on 30 days. Bug #609754.
+x11-misc/bbappconf
+
 # Michał Górny <mgorny@gentoo.org> (20 Feb 2017)
 # The Gentoo packages are roughly 300 releases behind upstream, and are
 # unmaintained. They do not build anymore, #545148, #558570, #597312.
