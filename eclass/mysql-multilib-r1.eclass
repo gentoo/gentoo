@@ -785,7 +785,7 @@ mysql-multilib-r1_pkg_config() {
 	mysql_init_vars
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
-	if ! built_with_use ${CATEGORY}/${PN} server ; then
+	if [[ ! -x "${EROOT}/usr/sbin/mysqld" ]] ; then
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 
