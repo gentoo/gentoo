@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit eutils confutils flag-o-matic
+inherit eutils flag-o-matic
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
@@ -47,27 +47,6 @@ src_configure() {
 	sed -e "s:# define MAX_USER_LENGTH 32U:# define MAX_USER_LENGTH 127U:" \
 		-i "${S}/src/ftpd.h" || die "sed failed"
 
-	# required for confutils.eclass
-	local my_conf=""
-
-	# Let's configure the USE-enabled stuff
-	enable_extension_without	"capabilities"		"caps"
-	enable_extension_with		"rfc2640"		"charconv"		0
-	enable_extension_with		"ldap"			"ldap"			0
-	enable_extension_with		"mysql"			"mysql"			0
-	enable_extension_with		"pam"			"pam"			0
-	enable_extension_with		"paranoidmsg"		"paranoidmsg"		0
-	enable_extension_with		"pgsql"			"postgres"		0
-	enable_extension_with		"tls"			"ssl"			0
-	enable_extension_with		"implicittls"		"implicittls"		0
-	enable_extension_with		"virtualchroot"		"vchroot"		0
-	enable_extension_with		"sysquotas"		"sysquota"		0
-	enable_extension_without	"inetd"			"xinetd"
-
-	# noiplog is a negative flag, we don't want that enabled by default,
-	# so we handle it manually, as confutils can't do that
-	use noiplog && my_conf+=" --without-iplogging"
-
 	# Those features are only configurable like this, see bug #179375.
 	use anondel && append-cppflags -DANON_CAN_DELETE
 	use anonperm && append-cppflags -DANON_CAN_CHANGE_PERMS
@@ -79,6 +58,7 @@ src_configure() {
 	export ax_cv_check_cflags___fstack_protector_all=no
 
 	local myeconfargs=(
+		--enable-largefile
 		--with-altlog
 		--with-cookie
 		--with-diraliases
@@ -93,9 +73,21 @@ src_configure() {
 		--with-throttling
 		--with-uploadscript
 		--with-virtualhosts
-		--enable-largefile
+		$(use_with charconv rfc2640)
+		$(use_with ldap)
+		$(use_with mysql)
+		$(use_with pam)
+		$(use_with paranoidmsg)
+		$(use_with postgres pgsql)
+		$(use_with ssl tls)
+		$(use_with implicittls)
+		$(use_with vchroot virtualchroot)
+		$(use_with sysquota sysquotas)
+		$(usex caps '' '--without-capabilities')
+		$(usex noiplog '--without-iplogging' '')
+		$(usex xinetd '' '--without-inetd')
 	)
-	econf "${myeconfargs[@]}" ${my_conf}
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
