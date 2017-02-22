@@ -1,0 +1,31 @@
+From 1c0d575f7c058f227d27b1cb92d3936d0c170a5f Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 21 Feb 2017 17:34:28 -0500
+Subject: [PATCH] test_daemon: xfail test_notify_with_socket if bind() fails
+
+This bind() call may fail if TMPDIR is too long.
+
+Bug: https://bugs.gentoo.org/610368
+---
+ systemd/test/test_daemon.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/systemd/test/test_daemon.py b/systemd/test/test_daemon.py
+index e827e1d..7733552 100644
+--- a/systemd/test/test_daemon.py
++++ b/systemd/test/test_daemon.py
+@@ -238,7 +238,10 @@ def test_notify_bad_socket():
+ def test_notify_with_socket(tmpdir):
+     path = tmpdir.join('socket').strpath
+     sock = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
+-    sock.bind(path)
++    try:
++        sock.bind(path)
++    except socket.error as e:
++        pytest.xfail('failed to bind socket (%s)' % e)
+     # SO_PASSCRED is not defined in python2.7
+     SO_PASSCRED = getattr(socket, 'SO_PASSCRED', 16)
+     sock.setsockopt(socket.SOL_SOCKET, SO_PASSCRED, 1)
+-- 
+2.11.1
+
