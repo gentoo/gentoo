@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst preinst prepare
-DEPEND=net-libs/libpcap !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libbsd net-libs/libpcap sys-libs/zlib !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Network traffic analyzer with cute web interface
-EAPI=5
+EAPI=6
 HOMEPAGE=http://unix4lyfe.org/darkstat/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=net-libs/libpcap
+RDEPEND=dev-libs/libbsd net-libs/libpcap sys-libs/zlib
 SLOT=0
 SRC_URI=http://unix4lyfe.org/darkstat/darkstat-3.0.719.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=384a025f4cc8bf02eb2fa541329381fc
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=175d746c47785589b3506a4c982f9499
