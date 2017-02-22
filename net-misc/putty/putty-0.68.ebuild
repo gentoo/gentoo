@@ -3,17 +3,19 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils gnome2-utils git-r3 toolchain-funcs
+inherit autotools eutils gnome2-utils toolchain-funcs
 
 DESCRIPTION="A Free Telnet/SSH Client"
 HOMEPAGE="http://www.chiark.greenend.org.uk/~sgtatham/putty/"
-EGIT_REPO_URI="git://git.tartarus.org/simon/putty.git"
-SRC_URI="https://dev.gentoo.org/~jer/${PN}-icons.tar.bz2"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc +gtk ipv6 kerberos"
+SRC_URI="
+	https://dev.gentoo.org/~jer/${PN}-icons.tar.bz2
+	http://the.earth.li/~sgtatham/${PN}/latest/${P}.tar.gz
+"
 
 RDEPEND="
 	!net-misc/pssh
@@ -28,15 +30,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	app-doc/halibut
 	dev-lang/perl
 	virtual/pkgconfig
 "
-
-src_unpack() {
-	git-r3_src_unpack
-	default
-}
 
 src_prepare() {
 	default
@@ -45,8 +41,6 @@ src_prepare() {
 		-e '/AM_PATH_GTK(/d' \
 		-e 's|-Werror||g' \
 		configure.ac || die
-
-	./mkfiles.pl || die
 
 	eautoreconf
 }
@@ -59,8 +53,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C "${S}"/doc
-	emake -C "${S}"/unix AR=$(tc-getAR) $(usex ipv6 '' COMPAT=-DNO_IPV6)
+	cd "${S}"/unix || die
+	emake AR=$(tc-getAR) $(usex ipv6 '' COMPAT=-DNO_IPV6)
 }
 
 src_install() {
