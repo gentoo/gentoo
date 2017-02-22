@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -54,7 +54,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-util/intltool"
 
-DOCS=( README NEWS )
+DOCS=( README.md NEWS.md )
 
 src_prepare() {
 	distutils-r1_src_prepare
