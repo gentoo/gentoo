@@ -9152,7 +9152,7 @@ dev-ruby/amqp 1.6.0 1.7.0: AMQP client implementation in Ruby/EventMachine
 dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all the time
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
-dev-ruby/arel 5.0.1.20140414130214 6.0.3 7.1.1 7.1.3 7.1.4: Arel is a Relational Algebra for Ruby
+dev-ruby/arel 5.0.1.20140414130214 6.0.3 7.1.4 8.0.0: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.3.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.4 1.5.5 1.5.5-r1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
@@ -9317,7 +9317,7 @@ dev-ruby/hashicorp-checkpoint 0.1.4-r1: Internal HashiCorp service to check vers
 dev-ruby/hashie 2.1.2-r1 3.4.6 3.5.1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.6 3.1.2 3.2.0 3.2.1 3.2.2: A simple pluggable Hierarchical Database
+dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.6 3.1.2 3.2.0 3.2.1 3.2.2 3.3.0: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.1.0: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
@@ -9337,7 +9337,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.13.7 0.14.0 0.14.0-r1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.2.4 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2 0.8.0: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2 0.8.0 0.8.1: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
 dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
