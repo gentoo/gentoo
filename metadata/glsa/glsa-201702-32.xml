@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-32">
+  <title>Ruby Archive::Tar::Minitar: Directory traversal</title>
+  <synopsis>Ruby Archive::Tar::Minitar is vulnerable to a directory traversal
+    attack.
+  </synopsis>
+  <product type="ebuild">archive-tar-minitar</product>
+  <announced>2017-02-22</announced>
+  <revised>2017-02-22: 1</revised>
+  <bug>607110</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/archive-tar-minitar" auto="yes" arch="*">
+      <unaffected range="ge">0.6.1</unaffected>
+      <vulnerable range="lt">0.6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Archive::Tar::Minitar is a pure-Ruby library and command-line utility
+      that provides the ability to deal with POSIX tar(1) archive files.
+    </p>
+  </background>
+  <description>
+    <p>Michal Marek discovered that Ruby Archive::Tar::Minitar is vulnerable to
+      a directory traversal vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or an automated system to process
+      a specially crafted archive using Ruby Archive::Tar::Minitar possibly
+      allowing the writing of arbitrary files with the privileges of the
+      process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ruby Archive::Tar::Minitar users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-ruby/archive-tar-minitar-0.6.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10173">
+      CVE-2016-10173
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-21T18:53:16Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-22T11:12:42Z">whissi</metadata>
+</glsa>
