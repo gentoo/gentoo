@@ -8022,6 +8022,7 @@ www-client/chromium:system-ffmpeg - Use system ffmpeg instead of the bundled one
 www-client/chromium:system-libvpx - Use system libvpx instead of the bundled one
 www-client/chromium:tcmalloc - Use bundled tcmalloc instead of system malloc
 www-client/chromium:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
+www-client/dooble:qt4 - Build using qt4 instead of qt5
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gc - Enable garbage collection support via dev-libs/boehm-gc
