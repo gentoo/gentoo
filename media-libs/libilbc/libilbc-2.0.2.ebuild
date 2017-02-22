@@ -8,7 +8,6 @@ if [[ ${PV} == 9999 ]] ; then
 	SCM="autotools git-2"
 	EGIT_REPO_URI="https://github.com/TimothyGu/libilbc"
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
 else
 	SRC_URI="https://github.com/TimothyGu/libilbc/releases/download/v${PV}/${P}.tar.bz2"
 	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
