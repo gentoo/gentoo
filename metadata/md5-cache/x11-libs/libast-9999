@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=!sci-astronomy/ast x11-libs/libXt x11-proto/xproto x11-libs/libICE x11-libs/libSM x11-libs/libX11 =media-libs/freetype-2* imlib? ( media-libs/imlib2 ) pcre? ( dev-libs/libpcre )
 SLOT=0
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	cvs	e94c89c58918dff87fa3db1e817c25be	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	cvs	e94c89c58918dff87fa3db1e817c25be	eutils	708f85bc1bf00876604e223fb56e062a	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=fa5968799581c6a791e5096bd44b1ec2

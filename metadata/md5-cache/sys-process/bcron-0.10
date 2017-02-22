@@ -9,5 +9,5 @@ RDEPEND=>=sys-process/cronbase-0.3.2 virtual/mta sys-apps/ucspi-unix virtual/dae
 SLOT=0
 SRC_URI=http://untroubled.org/bcron/archive/bcron-0.10.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_prepare:- src_configure:- src_install:-
-_eclasses_=cron	3d3a6a85df42b2dbf24b5f9b97b0f55c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=cron	3d3a6a85df42b2dbf24b5f9b97b0f55c	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=fe7d3d631fdb7d7394fb937cb6342f53

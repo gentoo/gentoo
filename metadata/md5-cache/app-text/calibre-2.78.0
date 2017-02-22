@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://download.calibre-ebook.com/2.78.0/calibre-2.78.0.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	6793fc854691a2320226801400573568	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	708f85bc1bf00876604e223fb56e062a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	6793fc854691a2320226801400573568	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=e14c6638e398eb1042df3d26c4897179

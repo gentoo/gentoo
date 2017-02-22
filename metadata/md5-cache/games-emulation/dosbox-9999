@@ -9,5 +9,5 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( 
 SLOT=0
 SRC_URI=glide? ( https://raw.githubusercontent.com/voyageur/openglide/3722fc563b737d2d7933df6a771651c2154e6f7b/platform/dosbox/dosbox_glide.diff -> dosbox_glide-3722fc563b737d2d7933df6a771651c2154e6f7b.diff )
 _eclass_exported_funcs=pkg_preinst:subversion pkg_postinst:- src_unpack:subversion src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	35067884fbff37bc0c8e7421c5315558	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	352e2f8415dd2e3c297d2d2e32670deb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	352e2f8415dd2e3c297d2d2e32670deb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=82ab327b4f7396036eb30c27838aef32

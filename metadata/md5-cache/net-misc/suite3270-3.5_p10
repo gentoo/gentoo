@@ -10,5 +10,5 @@ RDEPEND=ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libX11 x11-libs/libXaw x11-li
 SLOT=0
 SRC_URI=mirror://sourceforge/x3270/suite3270-3.5ga10-src.tgz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:font src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=1717a2a351ee53d76b9e0ff5f64429d9

@@ -10,5 +10,5 @@ RDEPEND=net-libs/libpcap net-libs/libnet:1.1 !net-misc/iputils[arping(+)]
 SLOT=2
 SRC_URI=http://www.habets.pp.se/synscan/files/arping-2.18.tar.gz
 _eclass_exported_funcs=pkg_postinst:fcaps
-_eclasses_=fcaps	6a1091a98b1dde01cc26ab3252da1a9b
+_eclasses_=fcaps	660bea720798c7f21931349757636576
 _md5_=1fcb4574dd8d011bd1ebdf1f83b61242

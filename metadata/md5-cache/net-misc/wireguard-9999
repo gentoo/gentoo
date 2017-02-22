@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=tools? ( net-libs/libmnl ) kernel_linux? ( virtual/modutils )
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:- pkg_setup:- src_unpack:git-r3 src_compile:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	linux-mod	0ccff2c1a7d70cf1678059b64bcf9183	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	708f85bc1bf00876604e223fb56e062a	git-r3	6efc2d7de07a77bf72c7207b48d0e123	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	linux-mod	0ccff2c1a7d70cf1678059b64bcf9183	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=3d27c688f2a5d2153881471fe82af622

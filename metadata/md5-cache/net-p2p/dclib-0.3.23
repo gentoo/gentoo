@@ -10,5 +10,5 @@ RDEPEND=app-arch/bzip2 sys-libs/zlib dev-libs/libxml2 socks5? ( net-proxy/dante 
 SLOT=0
 SRC_URI=mirror://sourceforge/wxdcgui/dclib-0.3.23.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	708f85bc1bf00876604e223fb56e062a	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=fe92b3010334c01e4a292e20597c9ce4

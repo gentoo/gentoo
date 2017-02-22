@@ -10,5 +10,5 @@ RDEPEND=media-libs/libmikmod media-libs/libogg >=media-libs/libpng-1.4:0 media-l
 SLOT=0
 SRC_URI=mirror://sourceforge/sc2/uqm-0.7.0-source.tgz mirror://sourceforge/sc2/uqm-0.7.0-content.uqm music? ( mirror://sourceforge/sc2/uqm-0.7.0-3domusic.uqm ) voice? ( mirror://sourceforge/sc2/uqm-0.7.0-voice.uqm ) remix? ( mirror://sourceforge/sc2/uqm-remix-disc1.uqm mirror://sourceforge/sc2/uqm-remix-disc2.uqm mirror://sourceforge/sc2/uqm-remix-disc3.uqm mirror://sourceforge/sc2/uqm-remix-disc4.uqm )
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	708f85bc1bf00876604e223fb56e062a	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	e10ccb95af96d45f86016fa982a949bb
 _md5_=d95c2f5c773bbd7950a5d043d4f48ffb

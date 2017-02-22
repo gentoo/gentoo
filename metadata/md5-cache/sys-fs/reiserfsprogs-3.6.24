@@ -7,5 +7,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://kernel/linux/utils/fs/reiserfs/reiserfsprogs-3.6.24.tar.xz mirror://kernel/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reiserfsprogs-3.6.24.tar.xz
 _eclass_exported_funcs=src_configure:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=2766b2b681b0cc97d5a62946a0eaa9b5

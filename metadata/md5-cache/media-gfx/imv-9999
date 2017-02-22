@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf media-libs/freeimage
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:git-r3
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=cba9f2ce7a7248402ee62a006da9c5d6

@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%200.7.x/lxpanel-0.7.0.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	708f85bc1bf00876604e223fb56e062a	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=52743254a8213a2315713d6ccb48478e

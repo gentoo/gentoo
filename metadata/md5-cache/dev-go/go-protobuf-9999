@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/golang/protobuf
 LICENSE=BSD
 SLOT=0/9999
 _eclass_exported_funcs=src_unpack:golang-vcs src_compile:golang-build src_test:golang-build src_install:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	golang-base	a42b7e0ca33d7ab0c0fa52699435b816	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs	c46e447dc94466eabb5ce867f21b85bf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	golang-base	a42b7e0ca33d7ab0c0fa52699435b816	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs	c46e447dc94466eabb5ce867f21b85bf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=ce2f4a820faff3a2e54c05db3fe31971

@@ -11,5 +11,5 @@ RESTRICT=faac? ( bindist )
 SLOT=0
 SRC_URI=!truetype? ( mirror://mplayer/releases/fonts/font-arial-iso-8859-1.tar.bz2 mirror://mplayer/releases/fonts/font-arial-iso-8859-2.tar.bz2 mirror://mplayer/releases/fonts/font-arial-cp1250.tar.bz2 )
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	352e2f8415dd2e3c297d2d2e32670deb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	352e2f8415dd2e3c297d2d2e32670deb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=6cfeb0988096afbc6cf065d3d4000e9f

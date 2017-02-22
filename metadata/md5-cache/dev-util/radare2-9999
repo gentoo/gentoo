@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_configure:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=5552fc462bb4c7fb48e892c99b0ff2c4

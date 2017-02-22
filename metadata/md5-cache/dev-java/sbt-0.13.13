@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=!binary? ( https://dev.gentoo.org/~gienah/snapshots/sbt-0.13.13-src.tar.xz https://dev.gentoo.org/~gienah/snapshots/sbt-0.13.13-ivy2-deps.tar.xz https://dev.gentoo.org/~gienah/snapshots/sbt-0.13.13-sbt-deps.tar.xz http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.13/sbt-launch.jar -> sbt-launch-0.13.13.jar ) binary? ( https://dev.gentoo.org/~gienah/files/dist/sbt-0.13.13-gentoo-binary.tar.xz )
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	8cefdc020b528862da5737e2a230f708	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	8cefdc020b528862da5737e2a230f708	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=996ee038b46f04a95787c02c9cf8398c

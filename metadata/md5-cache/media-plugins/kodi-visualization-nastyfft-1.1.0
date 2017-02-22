@@ -9,5 +9,5 @@ RDEPEND=media-tv/kodi virtual/opengl
 SLOT=0
 SRC_URI=https://github.com/notspiff/visualization.nastyfft/archive/v1.1.0.tar.gz -> kodi-visualization-nastyfft-1.1.0.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:kodi-addon src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	35067884fbff37bc0c8e7421c5315558	kodi-addon	ed9d0b2d79a8283ed0f06617b198a601	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	kodi-addon	ed9d0b2d79a8283ed0f06617b198a601	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=222005c184ef27618abe25e9f9f12a5d
