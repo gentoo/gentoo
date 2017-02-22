@@ -12745,7 +12745,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r3 0.10.23-r4 1.8.3-r1 1.10.3: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r4 1.8.3-r1 1.10.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.8.3-r1 1.10.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r2 1.8.3 1.10.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.8.3 1.10.3: Basepack of plugins for gstreamer
