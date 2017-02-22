@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Meatier versions of caller"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ppc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ppc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="dev-perl/PadWalker"
