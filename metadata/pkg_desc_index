@@ -12707,7 +12707,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.36 10.38 10.40 10.41 10.42: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.36 10.38 10.40 10.41 10.42 10.43: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
@@ -17781,7 +17781,7 @@ sys-process/parallel 20150522 20160622 20160722 20160822: A shell tool for execu
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
-sys-process/procenv 0.45 0.46 0.47: command-line utility to show process environment
+sys-process/procenv 0.45 0.46 0.47 0.49: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
 sys-process/procps 3.3.12: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
