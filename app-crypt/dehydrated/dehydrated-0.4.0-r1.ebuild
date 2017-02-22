@@ -22,7 +22,7 @@ RDEPEND="
 
 src_configure() {
 	default
-	sed -i  's,^#CONFIG_D=.*",CONFIG_D="/etc/dehydrated/config.d",' docs/examples/config || die "could not set config"
+	sed -i  's,^#CONFIG_D=.*,CONFIG_D="/etc/dehydrated/config.d",' docs/examples/config || die "could not set config"
 }
 
 src_install() {
