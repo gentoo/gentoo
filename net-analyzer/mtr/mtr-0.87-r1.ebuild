@@ -52,6 +52,8 @@ src_configure() {
 }
 
 pkg_postinst() {
+	fcaps_pkg_postinst
+
 	if use prefix && [[ ${CHOST} == *-darwin* ]] ; then
 		ewarn "mtr needs root privileges to run.  To grant them:"
 		ewarn " % sudo chown root ${EPREFIX}/usr/sbin/mtr"
