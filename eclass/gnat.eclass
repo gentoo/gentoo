@@ -1,7 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-#
+
+# @DEAD
+# Removal on 2017-03-24.
+
 # Author: George Shapovalov <george@gentoo.org>
 # No maintainer <maintainer-needed@gentoo.org>
 #
