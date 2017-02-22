@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="5"
 EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
 EGIT_PROJECT="leechcraft-${PV}"
 
-inherit eutils confutils leechcraft
+inherit eutils leechcraft
 
 DESCRIPTION="Core of LeechCraft, the modular network client"
 
