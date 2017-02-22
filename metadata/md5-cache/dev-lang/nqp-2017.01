@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( java moar )
 SLOT=0
 SRC_URI=https://github.com/perl6/nqp/tarball/2017.01 -> nqp-2017.01.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:java-pkg-opt-2 pkg_setup:java-pkg-opt-2 src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	8cefdc020b528862da5737e2a230f708	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	b31a7fe19a47c6a2d901f6de949e5209	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=53dc0cb7da6b2c00dd9057a1986b9cc5

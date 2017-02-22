@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=|| ( >=virtual/jre-1.6 dev-java/sun-jaf:0 dev-java/gnu-jaf:1 ) >=dev-java/java-config-2.1.8 >=dev-java/java-config-2.2.0-r3
 SLOT=0
 _eclass_exported_funcs=src_install:java-virtuals-2
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-utils-2	8cefdc020b528862da5737e2a230f708	java-virtuals-2	4e7b6c8dc299f8ed614351173d815482	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-utils-2	b31a7fe19a47c6a2d901f6de949e5209	java-virtuals-2	4e7b6c8dc299f8ed614351173d815482	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=8980ba383b41144f9a96cbac405f6bfe
