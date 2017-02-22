@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 # Portage only has versions of request >= minimum border
