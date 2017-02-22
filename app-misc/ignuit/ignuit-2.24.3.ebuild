@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}.testing"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="examples latex"
 
 RDEPEND="
