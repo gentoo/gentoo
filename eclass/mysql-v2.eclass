@@ -699,7 +699,7 @@ mysql-v2_pkg_config() {
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
 
-	if built_with_use ${CATEGORY}/${PN} minimal ; then
+	if [[ ! -x "${EROOT}/usr/sbin/mysqld" ]] ; then
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 
