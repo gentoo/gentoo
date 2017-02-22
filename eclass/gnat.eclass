@@ -3,7 +3,7 @@
 # $Id$
 #
 # Author: George Shapovalov <george@gentoo.org>
-# Belongs to: ada herd <ada@gentoo.org>
+# No maintainer <maintainer-needed@gentoo.org>
 #
 # This eclass provides the framework for ada lib installation with the split and
 # SLOTted gnat compilers (gnat-xxx, gnatbuild.eclass). Each lib gets built once
