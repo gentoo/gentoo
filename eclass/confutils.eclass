@@ -4,7 +4,7 @@
 
 # @ECLASS: confutils.eclass
 # @MAINTAINER:
-# Benedikt Böhm <hollow@gentoo.org>
+# No maintainer <maintainer-needed@gentoo.org>
 # @BLURB: utility functions to help with configuring a package
 # @DESCRIPTION:
 # The confutils eclass contains functions to handle use flag dependencies and

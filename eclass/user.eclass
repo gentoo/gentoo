@@ -5,8 +5,6 @@
 # @ECLASS: user.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
-# usata@gentoo.org (OS X)
-# Aaron Walker <ka0ttic@gentoo.org> (FreeBSD)
 # @BLURB: user management in ebuilds
 # @DESCRIPTION:
 # The user eclass contains a suite of functions that allow ebuilds

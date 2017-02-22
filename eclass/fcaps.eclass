@@ -4,7 +4,6 @@
 
 # @ECLASS: fcaps.eclass
 # @MAINTAINER:
-# Constanze Hausner <constanze@gentoo.org>
 # base-system@gentoo.org
 # @BLURB: function to set POSIX file-based capabilities
 # @DESCRIPTION:

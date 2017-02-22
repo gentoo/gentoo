@@ -881,8 +881,6 @@ _eutils_eprefix_init() {
 
 # @FUNCTION: validate_desktop_entries
 # @USAGE: [directories]
-# @MAINTAINER:
-# Carsten Lohrke <carlo@gentoo.org>
 # @DESCRIPTION:
 # Validate desktop entries using desktop-file-utils
 validate_desktop_entries() {
