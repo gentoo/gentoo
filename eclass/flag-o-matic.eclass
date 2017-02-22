@@ -116,7 +116,7 @@ _filter-var() {
 		done
 		new+=( "${f}" )
 	done
-	eval export ${var}=\""${new[*]}"\"
+	export ${var}="${new[*]}"
 }
 
 # @FUNCTION: filter-flags
@@ -270,7 +270,7 @@ replace-flags() {
 			[[ ${f} == ${1} ]] && f=${2}
 			new+=( "${f}" )
 		done
-		eval export ${var}=\""${new[*]}"\"
+		export ${var}="${new[*]}"
 	done
 
 	return 0
@@ -295,9 +295,8 @@ replace-cpu-flags() {
 }
 
 _is_flagq() {
-	local x var
-	eval var=\""\${$1[*]}"\"
-	for x in ${var} ; do
+	local x var="$1[*]"
+	for x in ${!var} ; do
 		[[ ${x} == $2 ]] && return 0
 	done
 	return 1
@@ -411,7 +410,7 @@ strip-flags() {
 		if [[ ${!var} != "${new[*]}" ]] ; then
 			einfo "strip-flags: ${var}: changed '${!var}' to '${new[*]}'"
 		fi
-		eval export ${var}=\""${new[*]}"\"
+		export ${var}="${new[*]}"
 	done
 
 	set +f	# re-enable pathname expansion
