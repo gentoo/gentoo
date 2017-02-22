@@ -18,11 +18,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pep8-1.3[${PYTHON_USEDEP}]
 	>=dev-python/pytest-2.4.2[${PYTHON_USEDEP}]
 	dev-python/pytest-cache[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/1.0.6-MANIFEST.patch
+)
 
 python_test() {
 	${EPYTHON} test_pep8.py || die
