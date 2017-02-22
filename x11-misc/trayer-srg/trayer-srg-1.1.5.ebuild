@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="x11-libs/gdk-pixbuf:2
+RDEPEND="x11-libs/gdk-pixbuf:2[X]
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXmu"
