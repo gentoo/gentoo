@@ -31,7 +31,7 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-	idn? ( >=net-dns/libidn2-0.16-r1[${MULTILIB_USEDEP}] )
+	idn? ( >=net-dns/libidn2-0.11[${MULTILIB_USEDEP}] )
 	valgrind? ( dev-util/valgrind )
 	test-full? (
 		app-crypt/dieharder
@@ -118,6 +118,7 @@ multilib_src_configure() {
 		$(use_with pkcs11 p11-kit) \
 		$(use_with zlib) \
 		$(use_with idn) \
+		$(use_with idn libidn2) \
 		--without-tpm \
 		--with-unbound-root-key-file="${EROOT}etc/dnssec/root-anchors.txt" \
 		"${libconf[@]}" \
