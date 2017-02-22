@@ -32,7 +32,7 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	executable? ( dev-haskell/pretty-show:=[profile?] )
 "
 DEPEND="${RDEPEND}
-	>=dev-haskell/cabal-1.18.1.3
+	>=dev-haskell/cabal-1.24.2.0
 	test? ( dev-haskell/diff
 		dev-haskell/hunit
 		dev-haskell/random
