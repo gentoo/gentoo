@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/pycairo[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-gfx/imagemagick:= media-libs/lcms:2 dev-python/pillow[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig app-text/ghostscript-gpl python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Commandline tool for popular vector formats convertion
+EAPI=6
+HOMEPAGE=http://sk1project.org/modules.php?name=Products&product=uniconvertor https://code.google.com/p/uniconvertor/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2 LGPL-2
+RDEPEND=dev-python/pycairo[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-gfx/imagemagick:= media-libs/lcms:2 dev-python/pillow[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/uniconvertor-2.0_pre379.tar.xz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	ff7a6238714c20c6b0ba05d9956b5ad8	eutils	708f85bc1bf00876604e223fb56e062a	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	python-r1	1f16d4a5e3af0ebb79bbe131576e0618	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=d7e152a57de7e3b6d149a3c0b49b0282
