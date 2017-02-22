@@ -12608,7 +12608,7 @@ media-gfx/qrencode-python 1.01-r1 1.02_pre140921: A simple wrapper for the C qre
 media-gfx/quat 1.20: A 3D quaternionic fractal generator
 media-gfx/qvv 4.02: QVV Image Viewer and Browser
 media-gfx/raw-thumbnailer 0.2.1: A lightweight and fast raw image thumbnailer
-media-gfx/rawtherapee 4.0.9-r1 4.0.10 4.0.11 4.0.12 4.1 4.2 4.2-r1: A powerful cross-platform raw image processing program
+media-gfx/rawtherapee 4.2-r1: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.0-r2 2.1.1-r1 2.2.1-r1 2.2.2-r1 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/replicatorg 37-r2 40-r1: ReplicatorG is a simple, open source 3D printing program
 media-gfx/ristretto 0.8.0-r1 0.8.1 0.8.2: A fast and lightweight picture viewer for the Xfce desktop environment
@@ -12642,7 +12642,7 @@ media-gfx/tintii 2.10.0: A photo editor for selective color, saturation, and hue
 media-gfx/transfig 3.2.5d-r1 3.2.5e: A set of tools for creating TeX documents with graphics
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
-media-gfx/ufraw 0.20-r1 0.21 0.21-r1 0.22: RAW Image format viewer and GIMP plugin
+media-gfx/ufraw 0.21-r1 0.22: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1: Commandline tool for popular vector formats convertion
 media-gfx/valentina 0.4.2-r3 0.4.5 9999: Cloth patternmaking software
 media-gfx/videorbits 2.201 2.205: a collection of programs for creating high dynamic range images
