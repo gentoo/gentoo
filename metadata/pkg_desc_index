@@ -16833,7 +16833,7 @@ sys-apps/cciss_vol_status 1.03 1.09 1.09-r1 1.10 1.11: Shows status of logical d
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
 sys-apps/checkpolicy 2.5 2.6 9999: SELinux policy compiler
 sys-apps/checkservice 1.2.0: Check the status of services running on local/remote machines
-sys-apps/chname 1.0-r2: Run a command with a new system hostname
+sys-apps/chname 1.0-r2 1.1: Run a command with a new system hostname
 sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/cobalt-panel-utils 1.0.2: LCD and LED panel utilities for the Sun Cobalts
