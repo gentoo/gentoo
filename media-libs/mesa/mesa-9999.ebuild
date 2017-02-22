@@ -232,7 +232,7 @@ multilib_src_configure() {
 	if use gallium; then
 		myconf+="
 			$(use_enable d3d9 nine)
-			$(use_enable llvm gallium-llvm)
+			$(use_enable llvm)
 			$(use_enable openmax omx)
 			$(use_enable vaapi va)
 			$(use_enable vdpau)
