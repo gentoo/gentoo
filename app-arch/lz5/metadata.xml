@@ -8,6 +8,6 @@
 		<name>Manuel Rüger</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">cesanta/docker_auth</remote-id>
+		<remote-id type="github">inikep/lz5</remote-id>
 	</upstream>
 </pkgmetadata>
