@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
@@ -352,22 +352,22 @@ cvs_fetch() {
 	fi
 
 	# Commands to run
-	cmdlogin="${run} ${ECVS_CVS_COMMAND} -d \"${cvsroot_pass}\" login"
-	cmdupdate="${run} ${ECVS_CVS_COMMAND} -d \"${cvsroot_nopass}\" update ${ECVS_UP_OPTS} ${ECVS_LOCALNAME}"
-	cmdcheckout="${run} ${ECVS_CVS_COMMAND} -d \"${cvsroot_nopass}\" checkout ${ECVS_CO_OPTS} ${ECVS_MODULE}"
+	cmdlogin=( ${run} ${ECVS_CVS_COMMAND} -d "${cvsroot_pass}" login )
+	cmdupdate=( ${run} ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" update ${ECVS_UP_OPTS} ${ECVS_LOCALNAME} )
+	cmdcheckout=( ${run} ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" checkout ${ECVS_CO_OPTS} ${ECVS_MODULE} )
 
 	# Execute commands
 
 	cd "${ECVS_TOP_DIR}"
 	if [[ ${ECVS_AUTH} == "pserver" ]] ; then
-		einfo "Running ${cmdlogin}"
-		eval ${cmdlogin} || die "cvs login command failed"
+		einfo "Running ${cmdlogin[*]}"
+		"${cmdlogin[@]}" || die "cvs login command failed"
 		if [[ ${mode} == "update" ]] ; then
-			einfo "Running ${cmdupdate}"
-			eval ${cmdupdate} || die "cvs update command failed"
+			einfo "Running ${cmdupdate[*]}"
+			"${cmdupdate[@]}" || die "cvs update command failed"
 		elif [[ ${mode} == "checkout" ]] ; then
-			einfo "Running ${cmdcheckout}"
-			eval ${cmdcheckout} || die "cvs checkout command failed"
+			einfo "Running ${cmdcheckout[*]}"
+			"${cmdcheckout[@]}" || die "cvs checkout command failed"
 		fi
 	elif [[ ${ECVS_AUTH} == "ext" || ${ECVS_AUTH} == "no" ]] ; then
 		# Hack to support SSH password authentication
@@ -461,11 +461,11 @@ EOF
 		fi
 
 		if [[ ${mode} == "update" ]] ; then
-			einfo "Running ${cmdupdate}"
-			eval ${cmdupdate} || die "cvs update command failed"
+			einfo "Running ${cmdupdate[*]}"
+			"${cmdupdate[@]}" || die "cvs update command failed"
 		elif [[ ${mode} == "checkout" ]] ; then
-			einfo "Running ${cmdcheckout}"
-			eval ${cmdcheckout} || die "cvs checkout command failed"
+			einfo "Running ${cmdcheckout[*]}"
+			"${cmdcheckout[@]}" || die "cvs checkout command failed"
 		fi
 
 		# Restore environment variable values
