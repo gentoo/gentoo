@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -71,7 +71,7 @@ src_prepare() {
 
 src_compile() {
 	unset ARCH
-	emake V=1 CC=$(tc-getCC) LD=$(tc-getLD) KSRC="${KV_OUT_DIR}" DESTDIR="${D}" DAHDI_MODULES_EXTRA="cwain.o qozap.o ztgsm.o" all
+	emake V=1 CC=$(tc-getCC) LD=$(tc-getLD) KSRC="${KV_OUT_DIR}" DESTDIR="${D}" DAHDI_MODULES_EXTRA="cwain.o qozap.o ztgsm.o" LDFLAGS="$(raw-ldflags)" all
 }
 
 src_install() {
