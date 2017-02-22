@@ -4,11 +4,11 @@ DESCRIPTION=A client implementation of Secure Socket Tunneling Protocol (SSTP)
 EAPI=6
 HOMEPAGE=http://sstp-client.sourceforge.net/
 IUSE=static
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libevent-2.0.10 dev-libs/openssl:0 net-dialup/ppp:=
 SLOT=0
 SRC_URI=mirror://sourceforge/sstp-client/sstp-client-1.0.10.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	708f85bc1bf00876604e223fb56e062a	libtool	84763589a795fb127b537cac01e5359f	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	e10ccb95af96d45f86016fa982a949bb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=50dc3ff62c441a746e47157908c59ce2
+_md5_=375d72f7d522c929a8af23d2042c2551
