@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit confutils flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="A full featured backup tool, aimed for disks"
 HOMEPAGE="http://dar.linux.free.fr/"
