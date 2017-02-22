@@ -136,12 +136,6 @@
     </member>
   </project>
   <project>
-    <email>ada@gentoo.org</email>
-    <name>Gentoo Resources for Ada</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Ada</url>
-    <description>This project provides support for Ada compilers and libraries in Portage. At present two gnat compilers are provided, gnat-gcc by FSF and gnat-gpl by AdaCore.</description>
-  </project>
-  <project>
     <email>alpha@gentoo.org</email>
     <name>Gentoo Linux Alpha Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:Alpha</url>
@@ -2921,7 +2915,6 @@ developers and volunteer mentors.</description>
     <name>Gentoo Programming Language Support Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Programming</url>
     <description>The project provides coverage for Gentoo-specific issues associated with various programming languages that can be found in Portage.</description>
-    <subproject ref="ada@gentoo.org"/>
     <subproject ref="haskell@gentoo.org"/>
     <subproject ref="ruby@gentoo.org"/>
   </project>
