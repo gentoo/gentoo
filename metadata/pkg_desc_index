@@ -1380,7 +1380,7 @@ app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulato
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.7.1-r5 4.8.0-r2: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.7.1-r1 4.8.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.7.1-r6 4.8.0-r2: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.7.1-r6 4.7.1-r7 4.8.0-r2 4.8.0-r3: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r3 4.9d-r4: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
@@ -14544,7 +14544,7 @@ net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
-net-im/toxic 0.7.1: A curses-based client for Tox.
+net-im/toxic 0.7.1 0.7.2: A curses-based client for Tox.
 net-im/turses 0.2.13-r1 0.2.23: Command line twitter client
 net-im/vacuum 1.2.4 9999: Qt4 Crossplatform Jabber client
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
@@ -14940,7 +14940,6 @@ net-misc/balance 3.57: TCP Load Balancing Port Forwarder
 net-misc/batctl 2013.4.0 2014.2.0: BATMAN advanced control and management tool
 net-misc/batman-adv 2013.4.0 2014.2.0: Better approach to mobile Ad-Hoc networking on layer 2 kernel module
 net-misc/bfgminer 3.10.5 3.10.10 4.10.3 4.10.4 5.3.0 5.4.0 5.4.1 5.4.2: Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C
-net-misc/bgpq 1.0.9.9: Generate access-lists for Cisco/Juniper routers
 net-misc/bgpq3 0.1.21 0.1.22: Generate access-lists for Cisco/Juniper routers, successor of bgpq
 net-misc/bird 1.4.5 1.5.0 1.6.0 1.6.1 1.6.2 1.6.3: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
 net-misc/blinkperl 20030301-r2: blinkperl is a telnet server, which plays BlinkenLight movies
@@ -17754,7 +17753,7 @@ sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.5 2.6 2.7 2.8 2.9 2.10 2.11: utility to checkpoint/restore a process tree
+sys-process/criu 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.11.1: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
