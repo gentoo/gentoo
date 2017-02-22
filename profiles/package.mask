@@ -476,11 +476,6 @@ x11-libs/gtk+:1
 # Masked for testing
 =sys-fs/fuse-3.0.0*
 
-# Sergey Popov <pinkbyte@gentoo.org> (01 Nov 2016)
-# Project is dead.
-# Please migrate to it's successor - net-misc/bgpq3
-net-misc/bgpq
-
 # Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
 # Mask all unfetchable versions and those with tons of random
 # bugs and segfaults (all). Don't ask for a version bump unless
