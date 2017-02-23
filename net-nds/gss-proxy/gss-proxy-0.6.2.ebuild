@@ -6,8 +6,8 @@ EAPI="5"
 MY_P="${PN/-}-${PV}"
 
 DESCRIPTION="daemon to proxy GSSAPI context establishment and channel handling"
-HOMEPAGE="https://fedorahosted.org/gss-proxy/"
-SRC_URI="https://fedorahosted.org/released/gss-proxy/${MY_P}.tar.gz"
+HOMEPAGE="https://pagure.io/gssproxy"
+SRC_URI="http://releases.pagure.org/gssproxy/${MY_P}.tar.gz"
 
 LICENSE="BSD-1"
 SLOT="0"
