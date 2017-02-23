@@ -33,14 +33,14 @@ COMMON="
 	app-eselect/eselect-opencl
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 	tools? (
-		dev-libs/atk[${MULTILIB_USEDEP}]
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:2[${MULTILIB_USEDEP}]
-		x11-libs/libX11[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/pango[X,${MULTILIB_USEDEP}]
-		x11-libs/pangox-compat[${MULTILIB_USEDEP}]
+		dev-libs/atk
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf[X]
+		x11-libs/gtk+:2
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/pango[X]
+		x11-libs/pangox-compat
 	)
 	X? (
 		>=app-eselect/eselect-opengl-1.0.9
