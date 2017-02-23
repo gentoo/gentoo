@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application"
 HOMEPAGE="http://rosegray.sakura.ne.jp/macopix/index-e.html"
@@ -27,7 +27,7 @@ MY_MASCOTS="
 "
 
 for i in ${MY_MASCOTS} ; do
-	SRC_URI="${SRC_URI} ${BASE_URI}/${i}.tar.gz"
+	SRC_URI+=" ${BASE_URI}/${i}.tar.gz"
 done
 
 # programme itself is GPL-2, and mascots are free-noncomm
@@ -39,8 +39,8 @@ IUSE="gnutls nls"
 RDEPEND="
 	dev-libs/glib:2
 	media-libs/libpng:0=
+	sys-devel/gettext
 	x11-libs/gtk+:2
-	nls? ( >=sys-devel/gettext-0.10 )
 	gnutls? ( net-libs/gnutls )
 	!gnutls? ( dev-libs/openssl:0= )
 "
@@ -48,20 +48,20 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}"/${P}-windres.patch
+)
 
 src_prepare() {
 	default
 
-	sed -i -e 's|HAVE_WINDRES_TRUE|HAVE_WINDRES_FALSE|g' src/Makefile.in || die
-
-	append-libs -lX11
+	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--with-gtk2 \
-		$(use_enable nls) \
-		$(use_with gnutls)
+	append-libs -lX11
+
+	econf $(use_with gnutls)
 }
 
 src_install() {
