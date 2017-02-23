@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 	DEPEND="app-text/asciidoc"
 else
 	SRC_URI="https://sources.archlinux.org/other/packages/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 DESCRIPTION="Profile based network connection tool from Arch Linux"
