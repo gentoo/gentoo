@@ -296,7 +296,7 @@ pkg_setup() {
 	# Bug #322787
 	if use minimal && ! has_version "net-nds/openldap" ; then
 		einfo "No datadir scan needed, openldap not installed"
-	elif use minimal && has_version "net-nds/openldap" && built_with_use net-nds/openldap minimal ; then
+	elif use minimal && has_version 'net-nds/openldap[minimal]' ; then
 		einfo "Skipping scan for previous datadirs as requested by minimal useflag"
 	else
 		openldap_find_versiontags
