@@ -49,7 +49,7 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	|| (
 		sys-devel/gcc[cxx?]
-		sys-devel/clang:=[${MULTILIB_USEDEP}]
+		sys-devel/clang[${MULTILIB_USEDEP}]
 	)
 	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
