@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=Convert file extensions to MIME types
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-magic-mime
+IUSE=+ocamlopt debug
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/1.0.0
+SRC_URI=https://github.com/mirage/ocaml-magic-mime/archive/v1.0.0.tar.gz -> ocaml-magic-mime-1.0.0.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	708f85bc1bf00876604e223fb56e062a	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	499613ee74720fb765beb189ebc56a2a	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=7f387cc16b73d9443c82982c560f29a0

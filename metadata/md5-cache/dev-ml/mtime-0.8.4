@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) dev-ml/opam dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib
+DESCRIPTION=OCaml module to access monotonic wall-clock time
+EAPI=5
+HOMEPAGE=http://erratique.ch/software/mtime https://github.com/dbuenzli/mtime
+IUSE=javascript test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= )
+SLOT=0/0.8.4
+SRC_URI=http://erratique.ch/software/mtime/releases/mtime-0.8.4.tbz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=ea7972b3952f0fa011493af8a14fe1a4
