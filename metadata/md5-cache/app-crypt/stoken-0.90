@@ -4,11 +4,11 @@ DESCRIPTION=Software Token for Linux/UNIX
 EAPI=6
 HOMEPAGE=https://github.com/cernekee/stoken
 IUSE=gtk
-KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86
+KEYWORDS=amd64 arm ~arm64 ppc64 x86
 LICENSE=LGPL-2.1+
 RDEPEND=|| ( dev-libs/nettle dev-libs/libtomcrypt ) gtk? ( >=x11-libs/gtk+-3.12:3 )
 SLOT=0
 SRC_URI=https://github.com/cernekee/stoken/archive/v0.90.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=514b23fcc8fd67569f47b484d574884c
+_md5_=967766acf314bacb09c02dcc7158c1a8
