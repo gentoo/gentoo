@@ -9,7 +9,11 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="person">
+		<email>kentnl@gentoo.org</email>
+		<name>Kent Fredric</name>
+	</maintainer>
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

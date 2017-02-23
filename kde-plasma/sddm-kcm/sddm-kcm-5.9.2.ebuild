@@ -14,12 +14,15 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 COMMON_DEPEND="
+	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kauth)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
+	$(add_frameworks_dep knewstuff)
+	$(add_frameworks_dep kwidgetsaddons)
 	$(add_qt_dep qtdeclarative 'widgets')
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
