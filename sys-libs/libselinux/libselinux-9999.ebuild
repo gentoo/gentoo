@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -67,9 +67,7 @@ multilib_src_compile() {
 
 	if multilib_is_native_abi && use python; then
 		building() {
-			python_export PYTHON_INCLUDEDIR PYTHON_LIBPATH
 			emake \
-				PYINC="-I${PYTHON_INCLUDEDIR}" \
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
@@ -101,16 +99,18 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-		emake DESTDIR="${D}" \
-			LIBDIR="\$(PREFIX)/$(get_libdir)" \
-			SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
-			USE_PCRE2="$(usex pcre2 y n)" \
-			install
+	emake DESTDIR="${D}" \
+		LIBDIR="\$(PREFIX)/$(get_libdir)" \
+		SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
+		LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
+		USE_PCRE2="$(usex pcre2 y n)" \
+		install
 
 	if multilib_is_native_abi && use python; then
 		installation() {
 			emake DESTDIR="${D}" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
+				LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
 				USE_PCRE2="$(usex pcre2 y n)" \
 				install-pywrap
 			python_optimize # bug 531638
@@ -125,6 +125,7 @@ multilib_src_install() {
 			rm src/selinuxswig_ruby_wrap.lo
 			emake DESTDIR="${D}" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
+				LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
 				RUBY=${1} \
 				USE_PCRE2="$(usex pcre2 y n)" \
 				install-rubywrap

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -62,9 +62,10 @@ src_compile() {
 
 src_install() {
 	installation() {
-		emake -C "${BUILD_DIR}" DESTDIR="${D}" \
+		emake -C "${BUILD_DIR}" \
+			DESTDIR="${D}" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \
-			PYLIBVER="${EPYTHON}" \
+			LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
 			install
 		python_optimize
 	}
