@@ -18733,7 +18733,7 @@ x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you qu
 x11-misc/qxkb 0.4.6: Qt4-based keyboard layout switcher
 x11-misc/read-edid 1.4.2 3.0.1 3.0.2: Program that can get information from a PnP monitor
 x11-misc/rednotebook 1.8.0 1.14: Graphical journal with calendar, templates, tags and keyword searching
-x11-misc/redshift 1.10 1.11 1.11-r1: A screen color temperature adjusting software
+x11-misc/redshift 1.11-r1: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
