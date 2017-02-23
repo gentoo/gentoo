@@ -15,7 +15,7 @@ inherit php-ext-pecl-r3
 
 USE_PHP="php5-6"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="A reusable, property proxy API for PHP"
 LICENSE="BSD-2"

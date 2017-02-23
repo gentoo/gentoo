@@ -16,7 +16,7 @@ inherit php-ext-pecl-r3
 # Only really build for 7.x
 USE_PHP="php7-0 php7-1"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="A reusable property proxy API for PHP"
 LICENSE="BSD-2"
