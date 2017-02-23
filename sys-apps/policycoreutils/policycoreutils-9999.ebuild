@@ -64,7 +64,6 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 
 # pax-utils for scanelf used by rlpkg
 RDEPEND="${DEPEND}
-	dev-python/sepolgen
 	app-misc/pax-utils
 	!<sys-apps/openrc-0.14"
 
@@ -139,7 +138,6 @@ src_install() {
 			INOTIFYH="$(usex dbus)" \
 			SESANDBOX="n" \
 			AUDIT_LOG_PRIV="y" \
-			PYLIBVER="${EPYTHON}" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \
 			install
 		python_optimize
@@ -147,7 +145,11 @@ src_install() {
 
 	installation-extras() {
 		einfo "Installing policycoreutils-extra"
-		emake -C "${BUILD_DIR}" DESTDIR="${D}" INOTIFYH="$(usex dbus)" SHLIBDIR="${D}$(get_libdir)/rc" install
+		emake -C "${BUILD_DIR}" \
+			DESTDIR="${D}" \
+			INOTIFYH="$(usex dbus)" \
+			SHLIBDIR="${D}$(get_libdir)/rc" \
+			install
 		python_optimize
 	}
 
@@ -169,15 +171,9 @@ src_install() {
 	keepdir /var/lib/selinux
 
 	# Set version-specific scripts
-	for pyscript in audit2allow sepolgen-ifgen sepolicy chcat; do
-	  python_replicate_script "${ED}/usr/bin/${pyscript}"
-	done
-	for pyscript in semanage rlpkg; do
+	for pyscript in rlpkg; do
 	  python_replicate_script "${ED}/usr/sbin/${pyscript}"
 	done
-
-	dodir /usr/share/doc/${PF}/mcstrans/examples
-	cp -dR "${S1}"/mcstrans/share/examples/* "${D}/usr/share/doc/${PF}/mcstrans/examples" || die
 }
 
 pkg_postinst() {
