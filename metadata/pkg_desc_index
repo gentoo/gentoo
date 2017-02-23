@@ -189,7 +189,7 @@ app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographi
 app-admin/recursos 2.0-r1: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart_services 0.13.0-r1 0.13.1: Tool to manage OpenRC services that need to be restarted
-app-admin/rex 1.3.3 1.4.0-r1 1.4.1: (R)?ex is a small script to ease the execution of remote commands
+app-admin/rex 1.3.3 1.4.0-r1 1.4.1 9999: (R)?ex is a small script to ease the execution of remote commands
 app-admin/rsyslog 8.16.0-r1 8.19.0 8.22.0 8.23.0 8.24.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
@@ -18165,7 +18165,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.2: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 56.0.2924.76-r1 57.0.2987.21 57.0.2987.54 58.0.3004.3 58.0.3013.3: Open-source version of Google Chrome web browser
+www-client/chromium 56.0.2924.76-r1 57.0.2987.21 57.0.2987.54 58.0.3013.3 58.0.3018.3: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
@@ -18177,7 +18177,7 @@ www-client/firefox 45.7.0 51.0.1: Firefox Web Browser
 www-client/firefox-bin 45.7.0 51.0.1: Firefox Web Browser
 www-client/google-chrome 56.0.2924.87: The web browser from Google
 www-client/google-chrome-beta 57.0.2987.74: The web browser from Google
-www-client/google-chrome-unstable 58.0.3013.3: The web browser from Google
+www-client/google-chrome-unstable 58.0.3018.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18227,7 +18227,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 24.0.0.221 24.0.0.221-r1: Adobe Flash Player
-www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.74_beta 58.0.3013.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.74_beta 58.0.3018.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
