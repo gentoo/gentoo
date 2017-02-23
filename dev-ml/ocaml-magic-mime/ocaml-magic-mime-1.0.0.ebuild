@@ -10,7 +10,7 @@ DESCRIPTION="Convert file extensions to MIME types"
 HOMEPAGE="https://github.com/mirage/ocaml-magic-mime"
 SRC_URI="https://github.com/mirage/ocaml-magic-mime/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ISC"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
