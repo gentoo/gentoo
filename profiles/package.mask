@@ -423,10 +423,6 @@ dev-php/PEAR-PHP_Shell
 # Use x11-drivers/nvidia-drivers[tools] instead.
 media-video/nvidia-settings
 
-# Mike Gilbert <floppym@gentoo.org> (08 Jan 2017)
-# Masked pending testing and eclass/profile support.
-dev-lang/python:3.6
-
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
 # This package has some dangerous quality and security issues, but
 # people may still find it useful. It is masked to prevent accidental
