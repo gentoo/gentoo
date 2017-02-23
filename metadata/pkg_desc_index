@@ -12593,7 +12593,7 @@ media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.13 1.14: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.2 2.6 2.7.4: Modern rewrite of Quick Image Viewer
+media-gfx/pqiv 2.2 2.7.4-r1 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/printrun 20140730: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your desktop
