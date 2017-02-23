@@ -3174,7 +3174,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 2016.4.4 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.17.2 0.18.0 0.18.1: A general purpose tile map editor
+dev-games/tiled 0.17.2 0.18.0 0.18.1 0.18.2: A general purpose tile map editor
 dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
@@ -11992,7 +11992,7 @@ kde-misc/rsibreak 0.12.4 0.12.5: Small utility which bothers you at certain inte
 kde-misc/semantik 0.9.5: Mindmapping-like tool for document generation
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
-kde-misc/tellico 2.3.10 2.3.11 3.0: A collection manager based on KDE Frameworks
+kde-misc/tellico 2.3.10 2.3.11 3.0 3.0.1: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
@@ -16867,7 +16867,7 @@ sys-apps/dog 1.7-r4 1.7-r5: Dog is better than cat
 sys-apps/dstat 0.7.3: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.4.1 1.4.1-r1 1.4.2 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 9999: A library and suite of tools for inspecting disk usage
-sys-apps/ed 1.13 1.14.1 1.14.1a: Your basic line editor
+sys-apps/ed 1.13 1.14.1a 1.14.2: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
 sys-apps/elfix 0.9.2 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/entropy 302: Entropy Package Manager foundation library
