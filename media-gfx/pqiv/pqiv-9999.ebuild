@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="Modern rewrite of Quick Image Viewer"
+DESCRIPTION="powerful GTK 3 based command-line image viewer with a minimal UI"
 HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/"
 
 LICENSE="GPL-2"

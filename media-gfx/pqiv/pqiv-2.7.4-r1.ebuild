@@ -5,7 +5,7 @@
 EAPI=6
 inherit linux-info flag-o-matic toolchain-funcs fdo-mime
 
-DESCRIPTION="Modern rewrite of Quick Image Viewer"
+DESCRIPTION="powerful GTK 3 based command-line image viewer with a minimal UI"
 HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/"
 SRC_URI="https://github.com/phillipberndt/pqiv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
