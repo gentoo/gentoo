@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-ExtUtils-MakeMaker-6.170.0 test? ( >=virtual/perl-Test-Simple-0.470.0 ) dev-lang/perl:=
+DESCRIPTION=An exporter with the features of Sub::Exporter but only core dependencies
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Exporter-Tiny/
+IUSE=test examples
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TO/TOBYINK/Exporter-Tiny-0.044.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=e37517a186a7ff650a5bb3214446b75e

@@ -5396,7 +5396,7 @@ dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.800 1.290.900: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.2.2: BSON serialization and deserialization
-dev-perl/BZ-Client 1.72.0 4.400.0: A client for the Bugzilla web services API.
+dev-perl/BZ-Client 1.72.0 4.400.0 4.400.100: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1 1.700.0: Regular expression-based Perl Parser for NCBI Entrez Gene
@@ -5757,7 +5757,7 @@ dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception 
 dev-perl/Expect 1.320.0-r1 1.330.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.20.0-r1 0.80.0: Lightweight exporting of variables
-dev-perl/Exporter-Tiny 0.42.0: An exporter with the features of Sub::Exporter but only core dependencies
+dev-perl/Exporter-Tiny 0.42.0 0.44.0: An exporter with the features of Sub::Exporter but only core dependencies
 dev-perl/ExtUtils-AutoInstall 0.630.0-r1: Allows module writers to specify a more sophisticated form of dependency information
 dev-perl/ExtUtils-CChecker 0.90.0 0.100.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.7.0 0.8.0: A wrapper for perl's configuration
@@ -10130,6 +10130,7 @@ dev-util/distro-info 0.14: Provides information about the Debian distributions' 
 dev-util/distro-info-data 0.29 0.32: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
+dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/drone 0.5.0_pre20170219: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-ui 0_pre20170103: React front-end for the Drone continuous integration server
