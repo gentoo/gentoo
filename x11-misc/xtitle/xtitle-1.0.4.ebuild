@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Set window title and icon name for an X11 terminal window"
 HOMEPAGE="https://kinzler.com/me/xtitle/"
@@ -16,7 +16,7 @@ IUSE=""
 DEPEND="x11-misc/imake"
 RDEPEND=""
 
-DOCS=( README )
+HTML_DOCS=( xtitle.html )
 
 src_compile() {
 	xmkmf || die
@@ -26,5 +26,5 @@ src_compile() {
 src_install() {
 	default
 	newman "${PN}.man" "${PN}.1"
-	dohtml "${PN}.html"
+	einstalldocs
 }
