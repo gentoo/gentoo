@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit cron eutils pam systemd user
+inherit autotools cron eutils pam systemd user
 
 DESCRIPTION="Cronie is a standard UNIX daemon cron based on the original vixie-cron"
-SRC_URI="https://fedorahosted.org/releases/c/r/cronie/${P}.tar.gz"
-HOMEPAGE="https://fedorahosted.org/cronie/wiki"
+HOMEPAGE="https://github.com/cronie-crond/cronie"
+SRC_URI="https://github.com/cronie-crond/cronie/archive/${P}.tar.gz"
 
 LICENSE="ISC BSD BSD-2 GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -21,13 +21,20 @@ RDEPEND="${DEPEND}"
 #cronie supports /etc/crontab
 CRON_SYSTEM_CRONTAB="yes"
 
-pkg_setup() {
-	enewgroup crontab
-}
+S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
 	"${FILESDIR}/cronie-systemd.patch"
 )
+
+pkg_setup() {
+	enewgroup crontab
+}
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	SPOOL_DIR="/var/spool/cron/crontabs" \
