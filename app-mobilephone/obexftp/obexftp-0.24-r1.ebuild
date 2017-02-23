@@ -23,7 +23,7 @@ RDEPEND="
 	net-wireless/bluez
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.1 dev-lang/ruby:2.0 ) )
+	ruby? ( dev-lang/ruby:2.1 )
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="
