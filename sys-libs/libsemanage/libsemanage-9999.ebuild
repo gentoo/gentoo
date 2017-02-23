@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -88,8 +88,7 @@ multilib_src_compile() {
 
 	if multilib_is_native_abi && use python; then
 		building_py() {
-			python_export PYTHON_INCLUDEDIR PYTHON_LIBPATH
-			emake CC="$(tc-getCC)" PYINC="-I${PYTHON_INCLUDEDIR}" PYTHONLBIDIR="${PYTHON_LIBPATH}" PYPREFIX="${EPYTHON##*/}" "$@"
+			emake "$@"
 		}
 		python_foreach_impl building_py swigify
 		python_foreach_impl building_py pywrap
@@ -104,8 +103,11 @@ multilib_src_install() {
 
 	if multilib_is_native_abi && use python; then
 		installation_py() {
-			emake DESTDIR="${ED}" LIBDIR="${ED}/usr/$(get_libdir)" \
-				SHLIBDIR="${ED}/usr/$(get_libdir)" install-pywrap
+			emake DESTDIR="${ED}" \
+				LIBDIR="${ED}/usr/$(get_libdir)" \
+				SHLIBDIR="${ED}/usr/$(get_libdir)" \
+				LIBSEPOLA="${EPREFIX%/}/usr/$(get_libdir)/libsepol.a" \
+				install-pywrap
 			python_optimize # bug 531638
 		}
 		python_foreach_impl installation_py
