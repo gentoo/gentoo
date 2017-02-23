@@ -1,6 +1,6 @@
-diff -urN skyldav-0.6.orig/examples/etc/skyldav.conf skyldav-0.6/examples/etc/skyldav.conf
---- skyldav-0.6.orig/examples/etc/skyldav.conf	2016-04-13 00:55:28.000000000 +0200
-+++ skyldav-0.6/examples/etc/skyldav.conf	2016-04-22 10:18:56.631146410 +0200
+diff -urN skyldav-0.7.orig/examples/etc/skyldav.conf skyldav-0.7/examples/etc/skyldav.conf
+--- skyldav-0.7.orig/examples/etc/skyldav.conf	2016-06-12 18:39:51.000000000 +0200
++++ skyldav-0.7/examples/etc/skyldav.conf	2017-02-21 15:12:06.875945224 +0100
 @@ -22,6 +22,9 @@
  
  # Directories that shall not be scanned (including subdirectories)

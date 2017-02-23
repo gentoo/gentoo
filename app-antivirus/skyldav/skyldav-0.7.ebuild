@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,9 +47,8 @@ AUTOTOOLS_AUTORECONF="1"
 AUTOTOOLS_IN_SOURCE_BUILD="1"
 DOCS=( AUTHORS NEWS README )
 PATCHES=(
-	"${FILESDIR}/${P}-syslog.patch"
-	"${FILESDIR}/${P}-examples.patch"
-	"${FILESDIR}/${P}-conf-r1.patch"
+	"${FILESDIR}/${PN}-examples.patch"
+	"${FILESDIR}/${PN}-conf.patch"
 )
 
 pkg_setup() {
