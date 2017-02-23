@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,11 +13,10 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-2
 	EGIT_REPO_URI="git://github.com/${PN/-//}.git"
 	SRC_URI=""
-	KEYWORDS=""
 else
 	GIT_COMMIT="dff5760"
 	SRC_URI="https://github.com/raspberrypi/userland/tarball/${GIT_COMMIT} -> ${P}.tar.gz"
-	KEYWORDS="~arm"
+	KEYWORDS="arm"
 	S="${WORKDIR}/raspberrypi-userland-${GIT_COMMIT}"
 fi
 

@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/TimothyGu/libilbc/releases/download/v${PV}/${P}.tar.bz2"
-	KEYWORDS="amd64 ~arm ppc ppc64 x86"
+	KEYWORDS="amd64 arm ppc ppc64 x86"
 fi
 
 inherit eutils multilib ${SCM} autotools-multilib
