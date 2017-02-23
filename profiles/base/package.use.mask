@@ -464,10 +464,6 @@ net-analyzer/net-snmp pci
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp prevent-removal
 
-# Michael Weber<xmw@gentoo.org>  (02 Jun 2012)
-# Not fit for production (bug 404403, comment #5)
-dev-db/firebird client
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (25 Mai 2012)
 # Requires icc which does not emerge (distfile unavailable)
 media-libs/opencv ipp
