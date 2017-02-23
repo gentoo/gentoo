@@ -7966,7 +7966,7 @@ dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata wr
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
-dev-python/pluggy 0.3.1 0.4.0: plugin and hook calling mechanisms for python
+dev-python/pluggy 0.4.0: plugin and hook calling mechanisms for python
 dev-python/plumbum 1.5.0 1.6.0 1.6.3: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9 3.10: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
