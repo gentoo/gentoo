@@ -50,14 +50,18 @@ RDEPEND="
 	${COMMON}
 	acpi? ( sys-power/acpid )
 	tools? (
-		dev-libs/atk[${MULTILIB_USEDEP}]
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
-		gtk2? ( >=x11-libs/gtk+-2.4:2[${MULTILIB_USEDEP}] )
-		gtk3? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
-		x11-libs/libX11[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/pango[X,${MULTILIB_USEDEP}]
+		dev-libs/atk
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf
+		gtk2? (
+			>=x11-libs/gtk+-2.4:2
+		)
+		gtk3? (
+			x11-libs/gtk+:3
+		)
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/pango[X]
 	)
 	X? (
 		<x11-base/xorg-server-1.18.99:=
