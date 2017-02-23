@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,12 +6,11 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
-inherit python-r1 udev vcs-snapshot
+inherit python-r1 udev
 
-VCS_COMMIT="7c01b2fc0271603809b67c7d3015f4b7b3d9a96e"
 DESCRIPTION="Replacement for xbacklight that uses the ACPI interface to set brightness"
 HOMEPAGE="https://github.com/wavexx/acpilight/"
-SRC_URI="https://github.com/wavexx/acpilight/archive/${VCS_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wavexx/acpilight/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -26,6 +25,7 @@ DOCS=( README.rst )
 src_install() {
 	python_foreach_impl python_doscript xbacklight
 	udev_dorules "${S}"/90-backlight.rules
+	doman xbacklight.1
 	einstalldocs
 }
 
