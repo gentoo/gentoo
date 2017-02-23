@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -325,7 +325,14 @@ _ruby_invoke_environment() {
 				;;
 		esac
 		pushd "${WORKDIR}"/all &>/dev/null || die
-		sub_S=$(eval ls -d "${sub_S}" 2>/dev/null)
+		# use an array to trigger filename expansion
+		# fun fact: this expansion fails in src_unpack() but the original
+		# code did not have any checks for failed expansion, so we can't
+		# really add one now without redesigning stuff hard.
+		sub_S=( ${sub_S} )
+		if [[ ${#sub_S[@]} -gt 1 ]]; then
+			die "sub_S did expand to multiple paths: ${sub_S[*]}"
+		fi
 		popd &>/dev/null || die
 	fi
 
