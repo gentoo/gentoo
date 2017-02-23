@@ -14587,7 +14587,7 @@ net-irc/loqui 0.5.4: a graphical IRC client for GNOME2 on UNIX like operating sy
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
 net-irc/muh 2.2a: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif
-net-irc/ngircd 23-r1: An IRC server written from scratch
+net-irc/ngircd 23-r1 24: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
