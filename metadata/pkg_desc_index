@@ -8993,11 +8993,11 @@ dev-ros/roscpp_serialization 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 9999: Code for serial
 dev-ros/roscpp_traits 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 9999: Message traits code
 dev-ros/roscpp_tutorials 0.6.1 0.7.0 0.7.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/roscreate 1.14.0 9999: Tool that assists in the creation of ROS filesystem resources
-dev-ros/rosgraph 1.12.6 1.12.7 9999: Prints information about the ROS Computation Graph
+dev-ros/rosgraph 1.12.7 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.2 9999: Messages relating to ROS comm
 dev-ros/roslang 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 9999: Common package for all ROS client libraries
 dev-ros/roslaunch 1.12.6 1.12.7 9999: Tool for easily launching multiple ROS nodes
-dev-ros/roslib 1.13.4 1.13.5 1.14.0 9999: Base dependencies and support libraries for ROS
+dev-ros/roslib 1.14.0 9999: Base dependencies and support libraries for ROS
 dev-ros/roslint 0.11.0 9999: Performs static checking of Python or C++ source code for errors and standards compliance
 dev-ros/roslisp 1.9.19 1.9.20 9999: Lisp client library for ROS
 dev-ros/roslz4 1.12.7 9999: Python and C++ implementation of the LZ4 streaming format
@@ -9008,7 +9008,7 @@ dev-ros/rosnode 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12
 dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 1.12.7 9999: System-wide logging mechanism for messages sent to the /rosout topic
 dev-ros/rospack 2.3.1-r1 2.3.2 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.12.6 1.12.7 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
-dev-ros/rospy 1.12.6 1.12.7 9999: Python client library for ROS
+dev-ros/rospy 1.12.7 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 0.7.0 0.7.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/rosserial_arduino 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
 dev-ros/rosserial_client 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 9999: Generalized client side source for rosserial
@@ -9023,7 +9023,7 @@ dev-ros/rosservice 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1
 dev-ros/rostest 1.12.6 1.12.7 9999: Integration test suite based on roslaunch that is compatible with xUnit frameworks
 dev-ros/rostime 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 9999: Time and Duration implementations for C++ libraries
 dev-ros/rostopic 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 1.12.7 9999: Command-line tool for displaying debug information about ROS Topics
-dev-ros/rosunit 1.13.4 1.13.5 1.14.0 9999: Unit-testing package for ROS
+dev-ros/rosunit 1.14.0 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.12.7 9999: Tool for diagnosing issues with a running ROS system
 dev-ros/rotate_recovery 1.13.0 1.13.1 1.14.0 9999: Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot
 dev-ros/rqt_action 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 9999: Introspect all available ROS action (from actionlib) types
