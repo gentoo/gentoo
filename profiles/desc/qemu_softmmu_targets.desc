@@ -21,6 +21,7 @@ mipsel - system emulation target
 mips - system emulation target
 moxie - moxielogic system emulation target
 nios2 - system emulation target
+or1k - OpenRISC system emulation target
 or32 - OpenRISC system emulation target
 ppc64 - system emulation target
 ppcemb - system emulation target

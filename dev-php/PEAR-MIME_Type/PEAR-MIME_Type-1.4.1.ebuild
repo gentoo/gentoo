@@ -9,7 +9,7 @@ SRC_URI="https://pear.php.net/get/${P#PEAR-}.tgz"
 DESCRIPTION="Utility class for dealing with MIME types"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 RDEPEND=">=dev-lang/php-5.4:*
 	>=dev-php/pear-1.9

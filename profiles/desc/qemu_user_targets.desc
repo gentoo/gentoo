@@ -23,6 +23,7 @@ mipsn32el - MIPS N32 ABI LE userspace emulation target
 mipsn32 - MIPS N32 ABI userspace emulation target
 mips - userspace emulation target
 nios2 - userspace emulation target
+or1k - OpenRISC system emulation target
 or32 - OpenRISC userspace emulation target
 ppc64abi32 - userspace emulation target
 ppc64le - PowerPC 64-bit little endian userspace emulation target
