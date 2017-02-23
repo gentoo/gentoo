@@ -31,5 +31,6 @@
     <remote-id type="cpan-module">BZ::Client::XMLRPC::boolean</remote-id>
     <remote-id type="cpan-module">BZ::Client::XMLRPC::double</remote-id>
     <remote-id type="cpan-module">BZ::Client::XMLRPC::int</remote-id>
+    <remote-id type="github">djzort/BZ-Client</remote-id>
   </upstream>
 </pkgmetadata>
