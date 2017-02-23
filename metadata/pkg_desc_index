@@ -86,7 +86,7 @@ app-admin/doas 6.0: Run commands as super user or another user, alternative to s
 app-admin/drush 6.7.0 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6-r1: Command-line tools that serve as client interface to the Amazon EC2 web service
-app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.1 9999: Clean up old and stale kernel files
+app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.3 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.15 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.15: Rebuild Emacs packages
 app-admin/entr 3.6: Run arbitrary commands when files change
@@ -5184,7 +5184,7 @@ dev-ml/dose3 5.0.1: Library and a collection of tools to perform la large spectr
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
 dev-ml/eliom 6.1.0 6.2.0 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
-dev-ml/extlib 1.6.1-r1 1.7.1: Standard library extensions for O'Caml
+dev-ml/extlib 1.7.1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/fieldslib 113.33.03: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
@@ -10417,6 +10417,7 @@ dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new
 dev-vcs/git-deps 9999: git commit dependency analysis tool
 dev-vcs/git-flow 1.10.2: Git extensions to provide high-level repository operations
 dev-vcs/git-imerge 0.7.0 0.7.0-r1: Incremental merge for git
+dev-vcs/git-lfs 1.5.6 9999: command line extension and specification for managing large files with Git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20140223 20170131: Git merge driver for GNU style ChangeLog files
