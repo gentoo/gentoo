@@ -18,9 +18,7 @@ EGIT_BRANCH="develop"
 LICENSE="ZLIB"
 SLOT="0"
 if ! [[ ${PV} == 9999* ]]; then
-KEYWORDS="~amd64 ~x86"
-else
-KEYWORDS=""
+KEYWORDS="~amd64 arm ~x86"
 fi
 IUSE=""
 
