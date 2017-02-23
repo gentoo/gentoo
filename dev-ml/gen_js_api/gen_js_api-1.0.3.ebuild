@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/LexiFi/gen_js_api"
 SRC_URI="https://github.com/LexiFi/gen_js_api/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
