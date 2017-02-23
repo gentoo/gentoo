@@ -218,6 +218,11 @@ ros-catkin_src_compile() {
 # Decorator around cmake-utils_src_test to ensure tests are built before running them.
 ros-catkin_src_test_internal() {
 	cd "${BUILD_DIR}" || die
+	# Regenerate env for tests, PYTHONPATH is not set properly otherwise...
+	if [ -f catkin_generated/generate_cached_setup.py ] ; then
+		einfo "Regenerating setup_cached.sh for tests"
+		${PYTHON:-python} catkin_generated/generate_cached_setup.py || die
+	fi
 	# Using cmake-utils_src_make with nonfatal does not work and breaks e.g.
 	# dev-ros/rviz.
 	if nonfatal emake tests -n &> /dev/null ; then
