@@ -212,27 +212,26 @@ QA_WX_LOAD="usr/bin/qemu-i386
 	usr/bin/qemu-s390x
 	usr/bin/qemu-unicore32"
 
-DOC_CONTENTS="If you don't have kvm compiled into the kernel, make sure
-you have the kernel module loaded before running kvm. The easiest way to
-ensure that the kernel module is loaded is to load it on boot.\n
-For AMD CPUs the module is called 'kvm-amd'.\n
-For Intel CPUs the module is called 'kvm-intel'.\n
-Please review /etc/conf.d/modules for how to load these.\n\n
-Make sure your user is in the 'kvm' group\n
-Just run 'gpasswd -a <USER> kvm', then have <USER> re-login.\n\n
-For brand new installs, the default permissions on /dev/kvm might not let you
-access it.  You can tell udev to reset ownership/perms:\n
-udevadm trigger -c add /dev/kvm"
+DOC_CONTENTS="If you don't have kvm compiled into the kernel, make sure you have the
+kernel module loaded before running kvm. The easiest way to ensure that the
+kernel module is loaded is to load it on boot.
+	For AMD CPUs the module is called 'kvm-amd'.
+	For Intel CPUs the module is called 'kvm-intel'.
+Please review /etc/conf.d/modules for how to load these.
 
-qemu_support_kvm() {
-	if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 \
-		use qemu_softmmu_targets_ppc || use qemu_softmmu_targets_ppc64 \
-		use qemu_softmmu_targets_s390x; then
-		return 0
-	fi
+Make sure your user is in the 'kvm' group. Just run
+	$ gpasswd -a <USER> kvm
+then have <USER> re-login.
 
-	return 1
-}
+For brand new installs, the default permissions on /dev/kvm might not let
+you access it.  You can tell udev to reset ownership/perms:
+	$ udevadm trigger -c add /dev/kvm
+
+If you want to register binfmt handlers for qemu user targets:
+For openrc:
+	# rc-update add qemu-binfmt
+For systemd:
+	# ln -s /usr/share/qemu/binfmt.d/qemu.conf /etc/binfmt.d/qemu.conf"
 
 pkg_pretend() {
 	if use kernel_linux && kernel_is lt 2 6 25; then
@@ -702,13 +701,14 @@ src_install() {
 		fi
 	fi
 
-	qemu_support_kvm && readme.gentoo_create_doc
+	DISABLE_AUTOFORMATTING=true
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	if qemu_support_kvm; then
-		readme.gentoo_print_elog
-	fi
+	DISABLE_AUTOFORMATTING=true
+	FORCE_PRINT_ELOG=1 # remove for next version bump
+	readme.gentoo_print_elog
 
 	if [[ -n ${softmmu_targets} ]] && use kernel_linux; then
 		udev_reload
