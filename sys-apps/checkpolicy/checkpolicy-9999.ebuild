@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,11 +37,16 @@ DEPEND=">=sys-libs/libsepol-${SEPOL_VER}
 RDEPEND=">=sys-libs/libsemanage-${SEMNG_VER}"
 
 src_compile() {
-	emake CC="$(tc-getCC)" YACC="bison -y" LIBDIR="\$(PREFIX)/$(get_libdir)"
+	emake \
+		CC="$(tc-getCC)" \
+		YACC="bison -y" \
+		LIBDIR="\$(PREFIX)/$(get_libdir)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" \
+		LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
+		install
 
 	if use debug; then
 		dobin "${S}/test/dismod"
