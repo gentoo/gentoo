@@ -30,7 +30,7 @@ src_configure() {
 }
 
 src_install() {
-	into /
+	into /usr
 	newbin "${PN}" "${PN}sh"
 	newman "${PN}.1" "${PN}sh.1"
 	einstalldocs
