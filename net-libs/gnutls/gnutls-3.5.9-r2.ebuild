@@ -47,7 +47,10 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.11.6
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-	sys-devel/gcc[cxx?]
+	|| (
+		sys-devel/gcc[cxx?]
+		sys-devel/clang:=[${MULTILIB_USEDEP}]
+	)
 	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
