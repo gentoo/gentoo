@@ -34,7 +34,7 @@ static-user systemtap tci test +threads usb usbredir vde +vhost-net \
 virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
-mips64 mips64el mipsel nios2 or32 ppc ppc64 s390x sh4 sh4eb sparc sparc64
+mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc sparc64
 x86_64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} lm32 moxie ppcemb tricore unicore32 xtensa xtensaeb"
 IUSE_USER_TARGETS="${COMMON_TARGETS} armeb hppa mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
@@ -80,7 +80,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	bluetooth? ( net-wireless/bluez )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -199,7 +199,7 @@ QA_WX_LOAD="usr/bin/qemu-i386
 	usr/bin/qemu-microblazeel
 	usr/bin/qemu-mips
 	usr/bin/qemu-mipsel
-	usr/bin/qemu-or32
+	usr/bin/qemu-or1k
 	usr/bin/qemu-ppc
 	usr/bin/qemu-ppc64
 	usr/bin/qemu-ppc64abi32
