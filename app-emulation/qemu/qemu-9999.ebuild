@@ -563,12 +563,15 @@ qemu_python_install() {
 	python_doscript "${S}/scripts/qmp/qemu-ga-client"
 }
 
-# Generate the /etc/init.d/qemu-binfmt script which registers the user handlers.
+# Generate binfmt support files.
+#   - /etc/init.d/qemu-binfmt script which registers the user handlers (openrc)
+#   - /usr/share/qemu/binfmt.d/qemu.conf (for use with systemd-binfmt)
 generate_initd() {
 	local out="${T}/qemu-binfmt"
+	local out_systemd="${T}/qemu.conf"
 	local d="${T}/binfmt.d"
 
-	einfo "Generating qemu init.d script"
+	einfo "Generating qemu binfmt scripts and configuration files"
 
 	# Generate the debian fragments first.
 	mkdir -p "${d}"
@@ -604,6 +607,9 @@ generate_initd() {
 		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
 	fi
 EOF
+
+		echo ":${package}:M::${magic}:${mask}:${interpreter}:OC" >>"${out_systemd}"
+
 	done
 	cat "${FILESDIR}"/qemu-binfmt.initd.tail >>"${out}" || die
 }
@@ -616,6 +622,10 @@ src_install() {
 		# Install binfmt handler init script for user targets.
 		generate_initd
 		doinitd "${T}/qemu-binfmt"
+
+		# Install binfmt/qemu.conf.
+		insinto "/usr/share/qemu/binfmt.d"
+		doins "${T}/qemu.conf"
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
