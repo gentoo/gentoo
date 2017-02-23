@@ -1,0 +1,15 @@
+Pass --install-lib to setup.py install.
+pypy installs in /usr/site-packages otherwise...
+
+Index: catkin-0.7.6/cmake/templates/python_distutils_install.sh.in
+===================================================================
+--- catkin-0.7.6.orig/cmake/templates/python_distutils_install.sh.in
++++ catkin-0.7.6/cmake/templates/python_distutils_install.sh.in
+@@ -30,4 +30,6 @@ echo_and_run /usr/bin/env \
+     build --build-base "@CMAKE_CURRENT_BINARY_DIR@" \
+     install \
+     $DESTDIR_ARG \
+-    @SETUPTOOLS_ARG_EXTRA@ --prefix="@CMAKE_INSTALL_PREFIX@" --install-scripts="${PYTHON_SCRIPTDIR:-@CMAKE_INSTALL_PREFIX@/@CATKIN_GLOBAL_BIN_DESTINATION@}"
++    @SETUPTOOLS_ARG_EXTRA@ --prefix="@CMAKE_INSTALL_PREFIX@" \
++    --install-scripts="${PYTHON_SCRIPTDIR:-@CMAKE_INSTALL_PREFIX@/@CATKIN_GLOBAL_BIN_DESTINATION@}" \
++    --install-lib="@CMAKE_INSTALL_PREFIX@/@PYTHON_INSTALL_DIR@"
