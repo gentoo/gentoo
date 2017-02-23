@@ -34,10 +34,10 @@ static-user systemtap tci test +threads usb usbredir vde +vhost-net \
 virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
-mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc sparc64
+mips64 mips64el mipsel or32 ppc ppc64 s390x sh4 sh4eb sparc sparc64
 x86_64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} lm32 moxie ppcemb tricore unicore32 xtensa xtensaeb"
-IUSE_USER_TARGETS="${COMMON_TARGETS} armeb hppa mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
+IUSE_USER_TARGETS="${COMMON_TARGETS} armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
@@ -80,7 +80,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	bluetooth? ( net-wireless/bluez )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -199,7 +199,7 @@ QA_WX_LOAD="usr/bin/qemu-i386
 	usr/bin/qemu-microblazeel
 	usr/bin/qemu-mips
 	usr/bin/qemu-mipsel
-	usr/bin/qemu-or1k
+	usr/bin/qemu-or32
 	usr/bin/qemu-ppc
 	usr/bin/qemu-ppc64
 	usr/bin/qemu-ppc64abi32
@@ -334,6 +334,27 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
+	epatch "${FILESDIR}"/${PN}-2.7.0-CVE-2016-8669-1.patch #597108
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-9908.patch   #601826
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-9912.patch   #602630
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-10028.patch  #603444
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-10155.patch  #606720
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-2615.patch   #608034
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-2630.patch   #609396
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5525-1.patch #606264
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5525-2.patch
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5552.patch   #606722
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5578.patch   #607000
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5579.patch   #607100
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5667.patch   #607766
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5856.patch   #608036
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5857.patch   #608038
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5898.patch   #608520
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5931.patch   #608728
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5973.patch   #609334
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-5987.patch   #609398
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-6058.patch   #609638
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2017-2620.patch   #609206
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
@@ -612,7 +633,6 @@ EOF
 	done
 	cat "${FILESDIR}"/qemu-binfmt.initd.tail >>"${out}" || die
 }
-
 src_install() {
 	if [[ -n ${user_targets} ]]; then
 		cd "${S}/user-build"
@@ -656,6 +676,9 @@ src_install() {
 	# Install config file example for qemu-bridge-helper
 	insinto "/etc/qemu"
 	doins "${FILESDIR}/bridge.conf"
+
+	# Remove the docdir placed qmp-commands.txt
+	mv "${ED}/usr/share/doc/${PF}/html/qmp-commands.txt" "${S}/docs/" || die
 
 	cd "${S}"
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
