@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit eutils multilib-build linux-info linux-mod systemd toolchain-funcs versionator pax-utils
 
 DESCRIPTION="Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets"
-HOMEPAGE="http://www.amd.com"
+HOMEPAGE="http://www.amd.com https://wiki.gentoo.org/wiki/Fglrx"
 BUILD_VER=15.302
 RUN="${WORKDIR}/fglrx-${BUILD_VER}/amd-driver-installer-${BUILD_VER}-x86.x86_64.run"
 SLOT="1"
@@ -235,7 +235,7 @@ pkg_setup() {
 	elog
 	elog "If your card is older then use ${CATEGORY}/xf86-video-ati"
 	elog "For migration informations please refer to:"
-	elog "https://www.gentoo.org/proj/en/desktop/x/x11/ati-migration-guide.xml"
+	elog "https://wiki.gentoo.org/wiki/Fglrx"
 	einfo
 }
 
