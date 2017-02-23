@@ -14,7 +14,7 @@ SRC_URI="http://www.ibiblio.org/pub/Linux/X11/demos/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-linux"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
