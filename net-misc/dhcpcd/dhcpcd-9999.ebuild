@@ -1,11 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 if [[ ${PV} == "9999" ]]; then
-	FOSSIL_URI="http://roy.marples.name/projects/dhcpcd"
+	EGIT_REPO_URI="git://roy.marples.name/dhcpcd"
+	inherit git-r3
 else
 	MY_P="${P/_alpha/-alpha}"
 	MY_P="${MY_P/_beta/-beta}"
@@ -26,29 +27,6 @@ IUSE="elibc_glibc +embedded ipv6 kernel_linux +udev"
 COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-
-if [[ ${PV} == "9999" ]]; then
-	DEPEND+=" dev-vcs/fossil"
-
-	src_unpack()
-	{
-		local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
-		local repo=${distdir}/fossil/${PN}.fossil
-
-		addwrite "${distdir}"
-
-		if [[ -e "${repo}" ]]; then
-			fossil pull "${FOSSIL_URI}" -R "${repo}" || die
-		else
-			mkdir -p "${distdir}/fossil" || die
-			fossil clone "${FOSSIL_URI}" "${repo}" || die
-		fi
-
-		mkdir -p "${S}" || die
-		cd "${S}" || die
-		fossil open "${repo}" || die
-	}
-fi
 
 src_configure()
 {
