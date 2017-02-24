@@ -16,9 +16,12 @@ K_GENPATCHES_VER="11"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
-inherit kernel-2
+PYTHON_COMPAT=( python2_7 )
+inherit python-any-r1 kernel-2
 detect_version
 detect_arch
+
+DEPEND="deblob? ( ${PYTHON_DEPS} )"
 
 K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
 
@@ -77,6 +80,11 @@ UNIPATCH_STRICTORDER="yes"
 #-- Starting with 4.8, CK patches include BFQ, so exclude genpatches experimental BFQ patches -
 
 K_EXP_GENPATCHES_LIST="5010_*.patch*"
+
+pkg_setup() {
+	use deblob && python-any-r1_pkg_setup
+	kernel-2_pkg_setup
+}
 
 src_prepare() {
 
