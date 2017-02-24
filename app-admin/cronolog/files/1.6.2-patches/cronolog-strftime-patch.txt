@@ -1,5 +1,5 @@
---- cronolog-1.6.1/src/cronoutils.c	Mon Dec 20 00:34:44 1999
-+++ cronolog-1.6.1.new/src/cronoutils.c	Mon Feb 11 03:19:32 2002
+--- a/src/cronoutils.c	Mon Dec 20 00:34:44 1999
++++ b/src/cronoutils.c	Mon Feb 11 03:19:32 2002
 @@ -204,9 +204,21 @@
      {
  	if (ch == '%')
