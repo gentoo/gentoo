@@ -1,17 +1,13 @@
 certificate version 0.1
-pusher Christoph Junghans <junghans@gentoo.org> 1487960335 -0700
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1487960335-dd241ce8f5984518e865
+pusher 0BBEEA1FEA4843A4 1487961965 -0500
+pushee ssh://git.gentoo.org/repo/gentoo.git
+nonce 1487961965-02fa4651072f2f4823df
 
-6defd77ee0c914b3c55b5a2228220f1ea1537558 a2631536e40da5aad081cd4b69ea008ce91a9ecb refs/heads/master
+a2631536e40da5aad081cd4b69ea008ce91a9ecb d8a3f27913af1c4e5d7a70992e5d0fc9b41efa34 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQExBAABCAAbBQJYsHkPFBxqdW5naGFuc0BnZW50b28ub3JnAAoJEOeBhlrCAAWG
-yYEH/3r8lSg70I8FABRt8ZP5jFMvzGHQpNpHg2rVrkVjuy2Yi/ptHrkiSbfRhcmM
-MZhW4tJyqkV5l0RS8OQHKrp7gpHES1pUX2IgugoD+BdBPBWXpls0wM5EP8eMZrh2
-8PdlusEh+IWGu+GRsVwWj9RgNENyASvnfQNJtTDZJsUEd55sotjwDXhFKpEOWymG
-Jn9pKy+OOfOTBCTioAE5aHntHCMj/MhKJ2FuzCYW6sOT+WpeXkTPx+6PMdDBzLJS
-4jzzF9JES+16aadiTa+INPx5ojZUdHwwePQY2dMBswj+awBg8KB/AbjKyoZX0BX/
-SfbOhB95OxQ2LYI1EP02mMyB3Bo=
-=W38f
+iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWLB/bQAKCRBHG+cz7yka
+P5lSAQCTm3JrAd9L7g8rNKoYXAjAuHN7RooX6/cKqrNHaBcsQQD6A+tK/4/ARzXt
+RCDrjOsFEKAbs2a6NZ6rntiNuqxlY4k=
+=XyI4
 -----END PGP SIGNATURE-----
