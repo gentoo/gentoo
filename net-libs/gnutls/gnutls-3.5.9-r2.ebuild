@@ -119,7 +119,7 @@ multilib_src_configure() {
 		$(use_with idn) \
 		$(use_with idn libidn2) \
 		--without-tpm \
-		--with-unbound-root-key-file="${EPREFIX}etc/dnssec/root-anchors.txt" \
+		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt" \
 		"${libconf[@]}" \
 		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
 }
