@@ -1,6 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 inherit flag-o-matic toolchain-funcs
 
@@ -14,10 +16,6 @@ SRC_URI="mirror://sourceforge/heirloom/${P}.tar.bz2"
 LICENSE="CDDL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 src_compile() {
 	append-cppflags -D_GNU_SOURCE
@@ -26,7 +24,7 @@ src_compile() {
 		"CPPFLAGS=${CPPFLAGS}" \
 		"LDFLAGS=${LDFLAGS}" \
 		"LARGEF=" \
-		"CC=$(tc-getCC)" || die
+		"CC=$(tc-getCC)"
 }
 
 src_install() {
