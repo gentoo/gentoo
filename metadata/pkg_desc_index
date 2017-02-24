@@ -12999,7 +12999,7 @@ media-libs/portmidi 217-r1: A library for real time MIDI input and output
 media-libs/ptex 2.1.28: Per-Face Texture Mapping for Production Rendering
 media-libs/pyliblo 0.10.0: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1-r2: Python bindings for the libmemphis library
-media-libs/qhull 2012.1-r1 2012.1-r3 2012.1-r4: Geometry library
+media-libs/qhull 2012.1-r4: Geometry library
 media-libs/qimageblitz 0.0.6-r1 0.0.6-r2: Graphical effect and filter library by KDE
 media-libs/qt-gstreamer 1.2.0-r2: C++ bindings for GStreamer with a Qt-style API
 media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
