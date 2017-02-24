@@ -4,11 +4,11 @@ DESCRIPTION=A clone of the classic Eliza program
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Chatbot-Eliza/
 IUSE=test
-KEYWORDS=alpha amd64 x86
+KEYWORDS=alpha amd64 ~arm ~ppc ~ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NE/NEILB/Chatbot-Eliza-1.06.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=2b4671dc9c8fa483c7bb42f213384d44
+_md5_=77f667fa52c89c36a67360bc89671467
