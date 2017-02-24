@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-su-snprintf.patch
 	"${FILESDIR}"/${P}-prototypes.patch
 	"${FILESDIR}"/${P}-load_defaults.patch
+	"${FILESDIR}"/${P}-CVE-2017-2616.patch #610804
 )
 
 src_prepare() {
