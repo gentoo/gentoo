@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=6
 inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="code.gitea.io/gitea/..."
-EGIT_COMMIT="6aacf4d2f09631359b99df562b4bf31dcef44ea3"
+EGIT_COMMIT="e2c8d6fcb2c4073ed5cf164d88e7b5d44d95943c"
 ARCHIVE_URI="https://github.com/go-gitea/gitea/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm"
 
@@ -43,14 +43,14 @@ src_prepare() {
 
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} generate
-	TAGS="bindata pam sqlite" LDFLAGS="" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} build
+	TAGS="bindata pam sqlite" LDFLAGS="" CGO_LDFLAGS="-fno-PIC" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} build
 }
 
 src_install() {
 	pushd src/${EGO_PN%/*} || die
 	dobin gitea
 	insinto /var/lib/gitea/conf
-	doins conf/app.ini
+	newins conf/app.ini app.ini.example
 	popd || die
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/gitea.logrotated gitea
@@ -58,4 +58,13 @@ src_install() {
 	newconfd "${FILESDIR}"/gitea.confd gitea
 	keepdir /var/log/gitea /var/lib/gitea/data
 	fowners -R git:git /var/log/gitea /var/lib/gitea/
+}
+
+pkg_postinst() {
+	if [[ ! -e ${EROOT}/var/lib/gitea/conf/app.ini ]]; then
+		elog "No app.ini found, copying the example over"
+		cp "${EROOT}"/var/lib/gitea/conf/app.ini{.example,} || die
+	else
+		elog "app.ini found, please check example file for possible changes"
+	fi
 }
