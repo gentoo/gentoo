@@ -8079,7 +8079,7 @@ dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
 dev-python/pydvdread 1.0-r1: A set of Python bindings for the libdvdread library
 dev-python/pyee 1.0.2: A port of node.js's EventEmitter to python
 dev-python/pyelemental 1.2.0-r1: Python bindings for libelemental (sci-chemistry/gelemental)
-dev-python/pyelftools 0.22 0.23-r1 0.24: pure-Python library for analyzing ELF files and DWARF debugging information
+dev-python/pyelftools 0.24: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyemf 2.0.0: Pure Python Enhanced Metafile Library
 dev-python/pyenchant 1.6.6 1.6.8: Python bindings for the Enchant spellchecking system
 dev-python/pyev 0.8.1 0.9.0: Python libev interface, an event loop
