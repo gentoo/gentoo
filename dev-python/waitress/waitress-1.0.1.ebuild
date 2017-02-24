@@ -23,10 +23,6 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-src_prepare() {
-	distutils-r1_src_prepare
-}
-
 python_test() {
 	nosetests || die "Tests fail with ${EPYTHON}"
 }
