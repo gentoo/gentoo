@@ -18,9 +18,9 @@ DESCRIPTION="Advanced audio player based on KDE framework"
 HOMEPAGE="http://amarok.kde.org/"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 else
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
