@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-DOCS=( HISTORY README.md doc/{FAQ,MySQLdb}.rst )
+DOCS=( README.md doc/{FAQ,MySQLdb}.rst )
 
 python_compile_all() {
 	use doc && sphinx-build -b html doc doc/_build/
