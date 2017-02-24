@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,8 @@ SLOT="0"
 IUSE="+seccomp"
 
 DEPEND=">=dev-lang/go-1.4:="
-RDEPEND="seccomp? ( sys-libs/libseccomp )"
+RDEPEND="seccomp? ( sys-libs/libseccomp )
+	!app-emulation/docker-runc"
 
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
