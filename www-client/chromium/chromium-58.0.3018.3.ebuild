@@ -512,6 +512,10 @@ src_configure() {
 	tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn} use_allocator=\"none\"" || die
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 	out/Release/gn gen --args="${myconf_gn}" out/Release || die
+	
+	if tc-is-clang; then
+		sed -i "s:../../../../../../../../../usr/bin/clang:clang:g" out/Release/clang_x64/toolchain.ninja
+	fi
 }
 
 eninja() {
