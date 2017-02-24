@@ -506,7 +506,7 @@ app-crypt/bestcrypt 2.0.11: commercially licensed transparent filesystem encrypt
 app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU Privacy Guard) into files
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.24 1.4.25 1.4.26: CCID free software driver
-app-crypt/ccrypt 1.9 1.10: Encryption and decryption
+app-crypt/ccrypt 1.10: Encryption and decryption
 app-crypt/certbot 0.11.1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.11.1 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.11.1 9999: Nginx plugin for certbot (Let's Encrypt Client)
@@ -5278,7 +5278,7 @@ dev-ml/parmap 1.0_rc7-r1: Library allowing to exploit multicore architectures fo
 dev-ml/pcre-ocaml 7.2.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
-dev-ml/pomap 3.0.5-r1 3.0.6: Partially Ordered Map ADT for O'Caml
+dev-ml/pomap 3.0.6: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 4.0.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.33.00 113.33.03: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_bench 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
@@ -9874,7 +9874,7 @@ dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
 dev-tex/glossaries 3.04 4.07 4.11 4.12-r1: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/herm-pic 1.0.2: LaTeX class for creating ERM and HER diagramms
-dev-tex/hevea 2.03 2.28 2.29: HeVeA is a quite complete and fast LaTeX to HTML translator
+dev-tex/hevea 2.29: HeVeA is a quite complete and fast LaTeX to HTML translator
 dev-tex/hlatex 1.0.1: HLaTeX is a LaTeX package to use Hangul with LaTeX
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425: Show hyphenations in DVI files
@@ -17636,7 +17636,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.44_p48 3.18.46_p50 4.1.35_p41 4.1.37_p43 4.4.32_p43 4.4.39_p50 4.6.7_p14 4.8.14_p9 4.8.15_p10 4.9.4_p2 4.9.6_p4: Full Linux 4.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.105 3.12.70 3.16.39 3.18.48 4.1.38 4.4.51 4.8.17 4.9.12 4.10.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.85 3.4.113 3.10.105 3.12.70 3.16.40 3.18.48 4.1.38 4.4.51 4.8.17 4.9.12 4.10.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1 1.3-r2: Standalone argp library for use with uclibc

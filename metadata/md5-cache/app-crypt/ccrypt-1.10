@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://ccrypt.sourceforge.net/download/ccrypt-1.10.tar.gz
 _eclass_exported_funcs=-
-_md5_=fd3cb0f43fd246bfb416ad1275ef2f1e
+_md5_=908d815a866a81ccbbf5a7d5ca440041
