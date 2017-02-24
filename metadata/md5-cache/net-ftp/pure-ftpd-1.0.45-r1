@@ -4,7 +4,7 @@ DESCRIPTION=Fast, production-quality, standard-conformant FTP server
 EAPI=6
 HOMEPAGE=http://www.pureftpd.org/
 IUSE=anondel anonperm anonren anonres caps charconv implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86
 LICENSE=BSD
 RDEPEND=caps? ( sys-libs/libcap ) charconv? ( virtual/libiconv ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd ) dev-libs/libsodium:= net-ftp/ftpbase selinux? ( sec-policy/selinux-ftp )
 REQUIRED_USE=implicittls? ( ssl )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.45.tar.bz2 http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.45.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=95c8f3febd1e414ca9442b44fd1059b7
+_md5_=fb8842704e74fdb79af0e3aaab06f2c3
