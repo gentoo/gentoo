@@ -10,7 +10,7 @@ SRC_URI="http://fishshell.com/files/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE=""
+IUSE="nls"
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.21[pcre32]
@@ -19,8 +19,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	sys-devel/bc
-	sys-devel/gettext
+	nls? ( sys-devel/gettext )
 "
+
+PATCHES=( "${FILESDIR}/${P}-honor-linguas.patch" )
 
 src_configure() {
 	# Set things up for fish to be a default shell.
@@ -29,7 +31,8 @@ src_configure() {
 	econf \
 		docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--bindir="${EPREFIX}"/bin \
-		--without-included-pcre2
+		--without-included-pcre2 \
+		$(use_with nls gettext)
 }
 
 src_test() {
