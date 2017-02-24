@@ -47,10 +47,6 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.11.6
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-	|| (
-		sys-devel/gcc[cxx?]
-		sys-devel/clang[${MULTILIB_USEDEP}]
-	)
 	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
@@ -123,7 +119,7 @@ multilib_src_configure() {
 		$(use_with idn) \
 		$(use_with idn libidn2) \
 		--without-tpm \
-		--with-unbound-root-key-file="${EROOT}etc/dnssec/root-anchors.txt" \
+		--with-unbound-root-key-file="${EPREFIX}etc/dnssec/root-anchors.txt" \
 		"${libconf[@]}" \
 		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
 }
