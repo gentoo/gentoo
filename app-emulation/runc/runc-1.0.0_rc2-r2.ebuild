@@ -26,6 +26,7 @@ IUSE="apparmor hardened +seccomp"
 RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	seccomp? ( sys-libs/libseccomp )
+	!app-emulation/docker-runc
 "
 
 S=${WORKDIR}/${P}/src/${EGO_PN}

@@ -13,7 +13,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	MY_PV="${PV/_/-}"
-	DOCKER_GITCOMMIT="49bf474"
+	DOCKER_GITCOMMIT="092cba3"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -60,7 +60,7 @@ RDEPEND="
 	>=app-arch/xz-utils-4.9
 
 	>=app-emulation/containerd-0.2.5
-	app-emulation/runc[apparmor?,seccomp?]
+	app-emulation/docker-runc[apparmor?,seccomp?]
 	app-emulation/docker-proxy
 	container-init? ( >=sys-process/tini-0.13.0[static] )
 "

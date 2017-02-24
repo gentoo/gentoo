@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="sqlite"
 
 RDEPEND=">=dev-libs/elfutils-0.142
@@ -56,6 +56,9 @@ src_prepare() {
 		testsuite/systemtap.base/sdt.exp \
 		scripts/kprobes_test/gen_code.py \
 		|| die "Failed to clean up sources"
+
+	default
+
 	eautoreconf
 }
 

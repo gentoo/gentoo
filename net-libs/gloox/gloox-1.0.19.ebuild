@@ -1,10 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-
-inherit eutils
 
 MY_P="${P/_/-}"
 DESCRIPTION="A portable high-level Jabber/XMPP library for C++"
@@ -12,7 +10,7 @@ HOMEPAGE="http://camaya.net/gloox"
 SRC_URI="http://camaya.net/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
-SLOT="0/15"
+SLOT="0/16"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~ia64 ~sparc ~x86"
 IUSE="debug gnutls idn libressl ssl static-libs test zlib"
 
@@ -26,13 +24,13 @@ DEPEND="idn? ( net-dns/libidn )
 
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	# Examples are not installed anyway, so - why should we build them?
 	econf \
 		--without-examples \
-		$(use debug && echo "--enable-debug") \
+		$(usex debug "--enable-debug" '') \
 		$(use_enable static-libs static) \
 		$(use_with idn libidn) \
 		$(use_with gnutls) \
@@ -43,5 +41,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }

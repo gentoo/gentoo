@@ -3,20 +3,20 @@
 # $Id$
 
 EAPI=6
-EGO_PN="github.com/opencontainers/${PN}"
+EGO_PN="github.com/docker/${PN/docker-}"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit golang-vcs
 else
 	MY_PV="${PV/_/-}"
-	EGIT_COMMIT="bd2f9c52cd3b766d993924ae6eba72b82998f3bd"
-	RUNC_COMMIT="bd2f9c" # Change this when you update the ebuild
+	EGIT_COMMIT="9df8b306d01f59d3a8029be411de015b7304dd8f"
+	RUNC_COMMIT="9df8b3" # Change this when you update the ebuild
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 
-DESCRIPTION="runc container cli tools"
+DESCRIPTION="runc container cli tools (docker fork)"
 HOMEPAGE="http://runc.io"
 
 LICENSE="Apache-2.0"
@@ -26,10 +26,12 @@ IUSE="apparmor hardened +seccomp"
 RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	seccomp? ( sys-libs/libseccomp )
-	!app-emulation/docker-runc
+	!app-emulation/runc
 "
 
 S=${WORKDIR}/${P}/src/${EGO_PN}
+
+RESTRICT="test"
 
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
