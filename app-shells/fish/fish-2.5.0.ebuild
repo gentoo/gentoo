@@ -33,13 +33,6 @@ src_configure() {
 		--without-included-pcre2
 }
 
-src_install() {
-	default
-
-	insinto /usr/share/fish/vendor_conf.d
-	newins "${FILESDIR}/profile-env.fish" 00-profile-env.fish
-}
-
 src_test() {
 	if has_version ~${CATEGORY}/${P} ; then
 		emake test
@@ -52,10 +45,10 @@ pkg_postinst() {
 	elog "fish is now installed on your system."
 	elog "To run fish, type 'fish' in your terminal."
 	elog
-	elog "To use fish as your login shell:"
-	elog "* add the line '${EPREFIX}/bin/${PN}'"
-	elog "* to the file '${EPREFIX}/etc/shells'."
-	elog "* use the command 'chsh -s ${EPREFIX}/bin/${PN}'."
+	elog "It is advised not to set fish as a default login shell."
+	elog "see bug #545830 for more details."
+	elog "Executing fish using ~/.bashrc is an alternative"
+	elog "see https://wiki.gentoo.org/wiki/Fish#Caveats for details"
 	elog
 	elog "To set your colors, run 'fish_config'"
 	elog "To scan your man pages for completions, run 'fish_update_completions'"
