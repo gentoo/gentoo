@@ -272,7 +272,7 @@ app-arch/ipkg-utils 1.7.050831-r2: Tools for working with the ipkg binary packag
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i-r7 114i-r8: Utility for creating and opening lzh archives
-app-arch/libarchive 3.2.2 3.2.2-r1: BSD tar command
+app-arch/libarchive 3.2.2-r1 3.3.0: BSD tar command
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.614 0.621 0.630: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p106-r1 0_p120 0_p131 0_p131-r1 1.7.5-r1 9999: Extremely Fast Compression algorithm
@@ -1291,13 +1291,14 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.26.1 1.27.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.12.6 1.13.0 1.13.1 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.12.6 1.13.1 1.13.1-r1 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.10.0 1.10.1 1.11.1 1.11.2: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2 0.9.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
 app-emulation/docker-registry 2.5.1 2.6.0: Docker Registry 2.0
+app-emulation/docker-runc 1.0.0_rc2_p20170201: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20130107-r3: DOS Emulator
@@ -4054,7 +4055,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.3.0 7.2.6.8: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.2.0 3.3.0 7.2.6.8: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.3.0 7.2.6.8: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -7764,7 +7765,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.6.0 3.6.4-r1 3.7.0 3.7.1: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.6.0 3.6.4-r1 3.7.1 3.7.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0 0.24.0 0.25.1-r2: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -10341,7 +10342,7 @@ dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
 dev-util/sysdig 0.12.1 0.13.0 0.14.0: A system exploration and troubleshooting tool
 dev-util/sysprof 1.2.0 3.22.2: System-wide Linux Profiler
-dev-util/systemtap 2.4-r1 2.5 2.9: A linux trace/probe tool
+dev-util/systemtap 2.4-r1 2.9 3.1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
 dev-util/ticpp 0_p20120423 9999: A completely new interface to TinyXML that uses MANY of the C++ strengths
 dev-util/tinlink 1.0.0: a tool to create very small elf binary from pure binary files
@@ -11233,7 +11234,7 @@ games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.7.1.21 1.7.2.4 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.2.4 1.7.2.18 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -12791,7 +12792,7 @@ media-libs/lasi 1.1.1 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.6-r1 2.7 2.8 2.8-r1: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.1 0.3.2: lensfun: A library for rectifying and simulating photographic lens distortions
-media-libs/leptonica 1.71 1.71-r1 1.74 1.74.1: C library for image processing and analysis
+media-libs/leptonica 1.74.1: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/libXcm 0.5.2-r1 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
@@ -13018,7 +13019,7 @@ media-libs/sampleicc 1.6.6 1.6.8: C++ library for reading, writing, manipulating
 media-libs/sbc 1.3: An audio codec to connect bluetooth high quality audio devices like headphones or loudspeakers
 media-libs/schroedinger 1.0.11-r1: C-based libraries for the Dirac video codec
 media-libs/sdif 3.8.6 3.11.4: Sound Description Interchange Format Library for audio and wave processing
-media-libs/sdl-gfx 2.0.25: Graphics drawing primitives library for SDL
+media-libs/sdl-gfx 2.0.25 2.0.26: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r1: image file loading library
 media-libs/sdl-mixer 1.2.12-r4: Simple Direct Media Layer Mixer Library
 media-libs/sdl-net 1.2.8-r1: Simple Direct Media Layer Network Support Library
@@ -13026,7 +13027,7 @@ media-libs/sdl-pango 0.1.2: connect the text rendering engine of GNOME to SDL
 media-libs/sdl-sound 1.0.3-r1: A library that handles the decoding of sound file formats
 media-libs/sdl-terminal 1.1.3-r1: library that provides a pseudo-ansi color terminal that can be used with any SDL application
 media-libs/sdl-ttf 2.0.11-r1: library that allows you to use TrueType fonts in SDL applications
-media-libs/sdl2-gfx 1.0.1: Graphics drawing primitives library for SDL2
+media-libs/sdl2-gfx 1.0.1 1.0.3: Graphics drawing primitives library for SDL2
 media-libs/sdl2-image 2.0.1: Image file loading library
 media-libs/sdl2-mixer 2.0.1: Simple Direct Media Layer Mixer Library
 media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
@@ -14646,7 +14647,7 @@ net-libs/enet 1.2.2 1.3.7 1.3.13: relatively thin, simple and robust network com
 net-libs/farstream 0.1.2-r2 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP protocol
 net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
-net-libs/gloox 1.0.9 1.0.17 1.0.18: A portable high-level Jabber/XMPP library for C++
+net-libs/gloox 1.0.9 1.0.18 1.0.19: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.5 3.22.3: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.26 3.5.8 3.5.9-r2: A TLS 1.2 and SSL 3.0 implementation for the GNU project
