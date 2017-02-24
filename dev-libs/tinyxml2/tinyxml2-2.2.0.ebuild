@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/leethomason/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="ZLIB"
 SLOT="0/2"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE="static-libs test"
 
 PATCHES=(

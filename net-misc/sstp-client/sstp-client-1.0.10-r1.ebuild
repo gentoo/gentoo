@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/sstp-client/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="static"
 
 RDEPEND=">=dev-libs/libevent-2.0.10
