@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,9 +18,9 @@ DESCRIPTION="Advanced audio player based on KDE framework"
 HOMEPAGE="http://amarok.kde.org/"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 else
-	KEYWORDS=""
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-2"
