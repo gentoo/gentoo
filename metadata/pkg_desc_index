@@ -13144,7 +13144,7 @@ media-plugins/gst-plugins-jpeg 0.10.31-r1 1.8.3 1.10.3: JPEG image encoder/decod
 media-plugins/gst-plugins-kate 1.8.3 1.10.3: Kate overlay codec suppport plugin for GStreamer
 media-plugins/gst-plugins-ladspa 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.8.3 1.10.3: MP3 encoder plugin for GStreamer
-media-plugins/gst-plugins-libav 1.8.3 1.10.3: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.8.3 1.10.3 1.10.4: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.8.3 1.10.3: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 0.10.23-r1 1.8.3 1.10.3: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
