@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils linux-info systemd
+EAPI=6
+inherit linux-info systemd
 
 DESCRIPTION="LogMeIn Hamachi VPN tunneling engine"
 HOMEPAGE="https://www.vpn.net/"
