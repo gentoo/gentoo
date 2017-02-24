@@ -21,6 +21,6 @@ RDEPEND="dev-vcs/git"
 
 src_prepare() {
 	default
-	rm README* screenshot.png || die
+	rm LICENCE README* screenshot.png || die
 	rm -rf test || die
 }

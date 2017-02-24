@@ -9,7 +9,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="git://github.com/airblade/vim-gitgutter.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="vim plugin: shows a git diff in the sign column and stages/reverts hunks"
