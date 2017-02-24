@@ -18094,7 +18094,7 @@ www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
-www-apps/gitea 1.0.0-r2 1.0.1: A painless self-hosted Git service, written in Go
+www-apps/gitea 1.0.2: A painless self-hosted Git service, written in Go
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/grafana-bin 4.0.1 4.1.0 4.1.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
@@ -18317,7 +18317,7 @@ x11-apps/xdbedizzy 1.1.0: X.Org xdbedizzy application
 x11-apps/xditview 1.0.3 1.0.4: display ditroff output
 x11-apps/xdm 1.1.11-r3: X.Org xdm application
 x11-apps/xdpyinfo 1.3.1 1.3.2: Display information utility for X
-x11-apps/xdriinfo 1.0.4 1.0.5: query configuration information of DRI drivers
+x11-apps/xdriinfo 1.0.5: query configuration information of DRI drivers
 x11-apps/xedit 1.2.1 1.2.2: simple text editor for X
 x11-apps/xev 1.2.1 1.2.2: Print contents of X events
 x11-apps/xeyes 1.1.1: X.Org xeyes application
@@ -18332,7 +18332,7 @@ x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5: A generic touchscreen calibration program for X.Org
 x11-apps/xkbcomp 1.3.0 1.3.1: compile XKB keyboard description
 x11-apps/xkbevd 1.1.3 1.1.4: XKB event daemon
-x11-apps/xkbprint 1.0.3 1.0.4: Print an XKB keyboard description
+x11-apps/xkbprint 1.0.4: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
 x11-apps/xkill 1.0.4: kill a client by its X resource
 x11-apps/xload 1.1.2: system load average display for X
