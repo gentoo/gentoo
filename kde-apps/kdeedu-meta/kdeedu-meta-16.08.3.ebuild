@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,7 @@ RDEPEND="
 	$(add_kdeapps_dep kturtle)
 	$(add_kdeapps_dep kwordquiz)
 	$(add_kdeapps_dep libkeduvocdocument)
-	|| ( $(add_kdeapps_dep marble) kde-apps/marble:4 )
+	$(add_kdeapps_dep marble)
 	$(add_kdeapps_dep minuet '' 16.04.3)
 	$(add_kdeapps_dep parley)
 	$(add_kdeapps_dep rocs)
