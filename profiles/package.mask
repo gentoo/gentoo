@@ -353,8 +353,6 @@ games-rpg/tmw
 # Masked for removal in 30 days.
 # Bug #582406
 x11-drivers/ati-drivers
-x11-libs/amd-adl-sdk
-x11-libs/xvba-video
 
 # Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
 # Pre-release, masked for testing. Major changes since 2.0.4,
