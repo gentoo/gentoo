@@ -58,7 +58,3 @@ dev-libs/protobuf python
 net-fs/netatalk tracker
 app-office/homebank ofx
 net-libs/aqbanking ofx
-
-# Michael Palimaka <kensington@gentoo.org> (11 Dec 2014)
-# Dependencies not yet stable
-kde-plasma/systemsettings kscreen
