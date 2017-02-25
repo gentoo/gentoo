@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/roslz4 dev-ros/xmlrpcpp dev-ros/roswtf dev-ros/message_filters dev-ros/rosbag dev-ros/rosbag_storage dev-ros/rosconsole dev-ros/rosgraph dev-ros/roslaunch dev-ros/rosmaster dev-ros/rosmsg dev-ros/rosnode dev-ros/rosout dev-ros/rosparam dev-ros/rosservice dev-ros/rostest dev-ros/rostopic dev-ros/topic_tools dev-ros/roscpp dev-ros/rospy dev-ros/test_rosbag dev-ros/test_rosbag_storage dev-ros/test_roscpp dev-ros/test_rosgraph dev-ros/test_roslaunch dev-ros/test_roslib_comm dev-ros/test_rosmaster dev-ros/test_rosparam dev-ros/test_rospy dev-ros/test_rosservice sys-devel/make >=dev-util/cmake-3.6.3 dev-util/catkin dev-python/empy
+DESCRIPTION=ROS communications-related packages
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/ros_comm
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-ros/roslz4 dev-ros/xmlrpcpp dev-ros/roswtf dev-ros/message_filters dev-ros/rosbag dev-ros/rosbag_storage dev-ros/rosconsole dev-ros/rosgraph dev-ros/roslaunch dev-ros/rosmaster dev-ros/rosmsg dev-ros/rosnode dev-ros/rosout dev-ros/rosparam dev-ros/rosservice dev-ros/rostest dev-ros/rostopic dev-ros/topic_tools dev-ros/roscpp dev-ros/rospy dev-ros/test_rosbag dev-ros/test_rosbag_storage dev-ros/test_roscpp dev-ros/test_rosgraph dev-ros/test_roslaunch dev-ros/test_roslib_comm dev-ros/test_rosmaster dev-ros/test_rosparam dev-ros/test_rospy dev-ros/test_rosservice dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros/ros_comm/archive/1.13.0.tar.gz -> ros_comm-1.13.0.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	ros-catkin	eeeb3fcf54161794ff029da2f7b381f5	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=2cba8ee565265ed39d0215caff83dc53
