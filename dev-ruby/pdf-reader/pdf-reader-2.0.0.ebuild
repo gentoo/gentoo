@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,12 +6,12 @@ EAPI=5
 
 GITHUB_USER=yob
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.rdoc TODO"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md TODO"
 
 inherit ruby-fakegem
 
@@ -23,8 +23,8 @@ HOMEPAGE="https://github.com/yob/pdf-reader/"
 SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+SLOT="2"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/afm-0.2.1
