@@ -124,6 +124,7 @@ src_prepare() {
 		|| die "unable to sed ctags.1"
 
 	AT_M4DIR=m4 eautoreconf
+	touch src/stamp-h.in || die
 }
 
 src_configure() {
