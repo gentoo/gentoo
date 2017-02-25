@@ -14,16 +14,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
-MY_PATCHES=(
-	"${FILESDIR}/${PV}-patches"/*.txt
-	"${FILESDIR}/${P}-umask.patch"
-)
-
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README TODO )
 
 src_prepare() {
 	default
-	epatch "${MY_PATCHES[@]}"
+	epatch "${FILESDIR}/${PV}-patches"/*.txt "${FILESDIR}/${P}-umask.patch"
 	eautoreconf
 }
 
