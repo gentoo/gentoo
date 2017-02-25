@@ -2,8 +2,8 @@ Fix build with --as-needed
 
 https://bugs.gentoo.org/268094
 
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -289,7 +289,7 @@
  if test "$enable_pthreads" = yes; then
      echo "Using PTHREADS"
