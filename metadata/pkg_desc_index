@@ -957,7 +957,7 @@ app-doc/cppman 0.4.6 0.4.8: C++ man pages for Linux, with source from cplusplus.
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.10-r1 1.8.11-r2 1.8.12 1.8.13-r1 9999: Documentation system for most programming languages
+app-doc/doxygen 1.8.12 1.8.13-r1 9999: Documentation system for most programming languages
 app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.9.6 4.10.0 4.10.03 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
@@ -13183,7 +13183,7 @@ media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.8.3 1.10.3: MPEG2 encoder plugin for GStreamer
 media-plugins/gst-plugins-uvch264 1.8.3 1.10.3 1.10.4: UVC compliant H264 encoding cameras plugin for GStreamer
 media-plugins/gst-plugins-v4l2 0.10.31-r1 1.8.3 1.10.3 1.10.4: plugin for gstreamer
-media-plugins/gst-plugins-vaapi 1.8.3 1.10.3: Hardware accelerated video decoding through VA-API plugin for GStreamer
+media-plugins/gst-plugins-vaapi 1.10.3 1.10.4: Hardware accelerated video decoding through VA-API plugin for GStreamer
 media-plugins/gst-plugins-voaacenc 1.8.3 1.10.3 1.10.4: AAC encoder plugin for GStreamer
 media-plugins/gst-plugins-voamrwbenc 1.8.3 1.10.3 1.10.4: AMR-WB audio encoder plugin for GStreamer
 media-plugins/gst-plugins-vorbis 0.10.36-r1: plugin for gstreamer
@@ -15835,7 +15835,7 @@ sci-biology/mummer 3.9.4_alpha 3.20 3.21 3.22-r1: A rapid whole genome aligner
 sci-biology/muscle 3.8.31: Multiple sequence comparison by log-expectation
 sci-biology/ncbi-tools 2.2.26-r2: Development toolkit and applications for computational biology, including BLAST
 sci-biology/newick-utils 1.6: Tools for processing phylogenetic trees
-sci-biology/njplot 2.3 2.3-r1: A phylogenetic tree drawing program which supports tree rooting
+sci-biology/njplot 2.3-r2: A phylogenetic tree drawing program which supports tree rooting
 sci-biology/pals 1.0: Pairwise Aligner for Long Sequences
 sci-biology/paml 4.4c-r1: Phylogenetic Analysis by Maximum Likelihood
 sci-biology/phrap 1.080812-r2: Shotgun assembly and alignment utilities
