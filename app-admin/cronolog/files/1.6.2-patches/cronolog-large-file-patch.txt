@@ -1,5 +1,5 @@
---- tmp/cronolog.c	2003-10-13 12:35:17.000000000 +0000
-+++ src/cronolog.c	2003-10-13 12:36:36.000000000 +0000
+--- a/src/cronolog.c	2003-10-13 12:35:17.000000000 +0000
++++ b/src/cronolog.c	2003-10-13 12:36:36.000000000 +0000
 @@ -82,6 +82,8 @@
   * written to "file" (e.g. /dev/console) or to stderr if "file" is "-".
   */

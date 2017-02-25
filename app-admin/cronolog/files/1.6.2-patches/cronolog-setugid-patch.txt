@@ -1,6 +1,6 @@
 diff -Naur cronolog-1.6.2/configure cronolog-1.6.2-new/configure
---- cronolog-1.6.2/configure	Thu May  3 17:44:22 2001
-+++ cronolog-1.6.2-new/configure	Mon Jun  3 00:38:32 2002
+--- a/configure	Thu May  3 17:44:22 2001
++++ b/configure	Mon Jun  3 00:38:32 2002
 @@ -1757,15 +1757,49 @@
  
  fi
