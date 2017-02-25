@@ -353,30 +353,11 @@ games-rpg/tmw
 # Masked for removal in 30 days.
 # Bug #582406
 x11-drivers/ati-drivers
-x11-libs/amd-adl-sdk
-x11-libs/xvba-video
 
 # Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
 # Pre-release, masked for testing. Major changes since 2.0.4,
 # including dropped support for BlueZ 4.
 =net-wireless/blueman-2.1_alpha*
-
-# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
-# Dead. Masked for removal in 30 days.
-# Bug #606132
-x11-drivers/xf86-video-omapfb
-
-# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
-# Dead. Masked for removal in 30 days.
-# Bug #606132
-x11-drivers/xf86-video-ivtv
-
-# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
-# Last release only supports v4l1 which required kernel support removed in
-# 2.6.38. Doesn't build with >=x11-base/xorg-server-1.17. Masked for removal in
-# 30 days.
-# Bug #606132
-x11-drivers/xf86-video-v4l
 
 # Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
 # Mask 4.0.0 RCs (then final) for initial testing, and updating most
@@ -398,15 +379,6 @@ x11-drivers/xf86-video-v4l
 =sys-libs/libomp-4.0.0*
 =sys-libs/llvm-libunwind-4.0.0*
 >=dev-libs/libclc-0.2.0_pre20170118
-
-# Matt Turner <mattst88@gentoo.org> (24 Jan 2017)
-# Depends on xorg-server-1.16, which is going away. Unresolved security bug
-# #602764. Maintainer no longer interested in package. Masked for removal in 30
-# days.
-net-misc/x11rdp
-net-misc/xrdp
-=x11-base/xorg-drivers-1.16*
-=x11-base/xorg-server-1.16*
 
 # Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
 # Use "php -a" instead. Masked for removal in 30 days.
