@@ -399,15 +399,6 @@ x11-drivers/xf86-video-v4l
 =sys-libs/llvm-libunwind-4.0.0*
 >=dev-libs/libclc-0.2.0_pre20170118
 
-# Matt Turner <mattst88@gentoo.org> (24 Jan 2017)
-# Depends on xorg-server-1.16, which is going away. Unresolved security bug
-# #602764. Maintainer no longer interested in package. Masked for removal in 30
-# days.
-net-misc/x11rdp
-net-misc/xrdp
-=x11-base/xorg-drivers-1.16*
-=x11-base/xorg-server-1.16*
-
 # Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
 # Use "php -a" instead. Masked for removal in 30 days.
 # Bug 606836.
