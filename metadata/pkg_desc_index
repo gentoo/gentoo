@@ -15803,7 +15803,7 @@ sci-biology/embassy-topo 2.0.660: EMBOSS integrated version of Transmembrane pro
 sci-biology/embassy-vienna 1.7.2.660: EMBOSS integrated version of Vienna RNA package - RNA folding
 sci-biology/emboss 6.6.0-r1: The European Molecular Biology Open Software Suite - A sequence analysis package
 sci-biology/eugene 4.1 4.1d: Prokaryotic and Eukaryotic gene predictor
-sci-biology/exonerate 2.2.0-r1: Generic tool for pairwise sequence comparison
+sci-biology/exonerate 2.2.0-r2: Generic tool for pairwise sequence comparison
 sci-biology/express 0.9.5-r1 1.5.1: Streaming RNA-Seq Analysis
 sci-biology/fasta 35.4.10 36.3.5e: FASTA is a DNA and Protein sequence alignment software package
 sci-biology/fasttree 2.1.7 2.1.8: Fast inference of approximately-maximum-likelihood phylogenetic trees
@@ -15820,7 +15820,7 @@ sci-biology/hmmer 2.3.2-r3 2.3.2-r4 3.1_beta2: Sequence analysis using profile h
 sci-biology/iedera 1.04 1.05-r1: A subset seed design tool for DNA sequence alignment
 sci-biology/infernal 1.0.2-r1: Inference of RNA alignments
 sci-biology/iqpnni 3.3.1 3.3.2-r1: Important Quartet Puzzling and NNI Operation
-sci-biology/kalign 2.03 2.03-r1: Global and progressive multiple sequence alignment
+sci-biology/kalign 2.03 2.03-r1 2.03-r2: Global and progressive multiple sequence alignment
 sci-biology/lagan 2.0-r3: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
 sci-biology/last 230 299: Genome-scale comparison of biological sequences
 sci-biology/mafft 7.050 7.215 7.305: Multiple sequence alignments using a variety of algorithms
