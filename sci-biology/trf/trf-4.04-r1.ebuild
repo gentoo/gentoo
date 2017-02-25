@@ -1,10 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
-inherit eutils
+EAPI=6
 
 MY_P="${PN}404"
 
@@ -17,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 RESTRICT="mirror bindist"
 
-S="${WORKDIR}"
+S=${WORKDIR}
 
 QA_PREBUILT="opt/${PN}/.*"
 
@@ -29,9 +27,4 @@ src_install() {
 	exeinto /opt/${PN}
 	doexe trf404.linux.exe
 	dosym /opt/${PN}/${MY_P}.linux.exe /opt/bin/trf
-	# GTK version (http://tandem.bu.edu/trf/downloads/trf400.linuxgtk.exe) has broken linking
-	#if use gtk; then
-	#	doexe trf400.linuxgtk.exe || die
-	#	make_desktop_entry /opt/${PN}/trf400.linuxgtk.exe "Tandem Repeats Finder" || die
-	#fi
 }
