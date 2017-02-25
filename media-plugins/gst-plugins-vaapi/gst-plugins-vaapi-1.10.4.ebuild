@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,13 +13,13 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="+drm egl opengl wayland +X"
 REQUIRED_USE="|| ( drm opengl wayland X )"
 
 RDEPEND="
-	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
 	>=media-libs/gstreamer-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${PV}:${SLOT}[opengl?,${MULTILIB_USEDEP}]
