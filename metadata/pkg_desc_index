@@ -2055,7 +2055,7 @@ app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.4.1-r1 4.5 4.5-r1: A nice LaTeX-IDE
-app-office/texstudio 2.11.0 2.11.2-r1 2.12.0 2.12.2: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.11.2-r1 2.12.2: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.1.134: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -5009,7 +5009,7 @@ dev-libs/qrosscore 0.3.1 0.3.2 9999: KDE-free version of Kross (core libraries a
 dev-libs/qrosspython 0.3.1 0.3.2 9999: Python scripting backend for Qross
 dev-libs/qtkeychain 0.7.0: Qt API for storing passwords securely
 dev-libs/quantlib 1.6 1.7.1: A comprehensive software framework for quantitative finance
-dev-libs/quazip 0.7.1 0.7.2-r1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
+dev-libs/quazip 0.7.2-r1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/radlib 2.12.0-r1: Rapid Application Development Library
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
@@ -7874,7 +7874,7 @@ dev-python/notify2 0.3: Python interface to DBus notifications.
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0 0.30.0 0.30.1: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
-dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5 2.6.1: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.6.1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.2-r1 9999: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -12758,7 +12758,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r4 1.8.3-r1 1.10.3: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r4 1.8.3-r1 1.10.3 1.10.4: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.8.3-r1 1.10.3 1.10.4: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r2 1.8.3 1.10.3 1.10.4: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.8.3 1.10.3: Basepack of plugins for gstreamer
@@ -12967,7 +12967,7 @@ media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStre
 media-libs/mesa 11.0.6 11.0.9 11.2.2 12.0.1 12.0.6 13.0.4 13.0.5 17.0.0 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r1: Open source multimedia framework for television broadcasting
-media-libs/musicbrainz 3.0.3 5.0.1 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
+media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.27 1.31 1.35.1 1.36.1 1.36.2: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
@@ -13117,18 +13117,18 @@ media-plugins/gst-plugins-a52dec 0.10.19-r1 1.8.3 1.10.3: ATSC A/52 audio decode
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.8.3 1.10.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
 media-plugins/gst-plugins-annodex 0.10.31-r1: GStreamer plugin for annodex stream manipulation
-media-plugins/gst-plugins-assrender 0.10.23-r1 1.8.3 1.10.3: ASS/SSA rendering with effects support plugin for GStreamer
-media-plugins/gst-plugins-bluez 1.8.3 1.10.3: AVDTP source/sink and A2DP sink plugin for GStreamer
+media-plugins/gst-plugins-assrender 0.10.23-r1 1.8.3 1.10.3 1.10.4: ASS/SSA rendering with effects support plugin for GStreamer
+media-plugins/gst-plugins-bluez 1.8.3 1.10.3 1.10.4: AVDTP source/sink and A2DP sink plugin for GStreamer
 media-plugins/gst-plugins-cdio 0.10.19-r1 1.8.3 1.10.3: CD Audio Source (cdda) plugin for GStreamer
 media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.8.3 1.10.3 1.10.4: CD Audio Source (cdda) plugin for GStreamer
-media-plugins/gst-plugins-dash 1.8.3 1.10.3: MPEG-DASH plugin for GStreamer
-media-plugins/gst-plugins-dtls 1.8.3 1.10.3: DTLS encoder/decoder with SRTP support plugin for GStreamer
-media-plugins/gst-plugins-dts 0.10.23-r1 1.8.3 1.10.3: DTS audio decoder plugin for Gstreamer
+media-plugins/gst-plugins-dash 1.8.3 1.10.3 1.10.4: MPEG-DASH plugin for GStreamer
+media-plugins/gst-plugins-dtls 1.8.3 1.10.3 1.10.4: DTLS encoder/decoder with SRTP support plugin for GStreamer
+media-plugins/gst-plugins-dts 0.10.23-r1 1.8.3 1.10.3 1.10.4: DTS audio decoder plugin for Gstreamer
 media-plugins/gst-plugins-dv 0.10.31-r1 1.8.3 1.10.3 1.10.4: DV demuxer and decoder plugin for GStreamer
-media-plugins/gst-plugins-dvb 0.10.23-r1 1.8.3 1.10.3: plugin for gstreamer
+media-plugins/gst-plugins-dvb 0.10.23-r1 1.8.3 1.10.3 1.10.4: plugin for gstreamer
 media-plugins/gst-plugins-dvdread 0.10.19-r1 1.8.3 1.10.3: DVD read plugin for GStreamer
-media-plugins/gst-plugins-faac 0.10.23-r1 1.8.3 1.10.3: AAC audio encoder plugin for GStreamer
-media-plugins/gst-plugins-faad 0.10.23-r2 1.8.3 1.10.3: AAC audio decoder plugin.
+media-plugins/gst-plugins-faac 0.10.23-r1 1.8.3 1.10.3 1.10.4: AAC audio encoder plugin for GStreamer
+media-plugins/gst-plugins-faad 0.10.23-r2 1.8.3 1.10.3 1.10.4: AAC audio decoder plugin.
 media-plugins/gst-plugins-ffmpeg 0.10.13_p201211-r5: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-flac 0.10.31-r1 1.8.3 1.10.3 1.10.4: FLAC encoder/decoder/tagger plugin for GStreamer
 media-plugins/gst-plugins-gconf 0.10.31-r1: GStreamer plugin for wrapping GConf audio/video settings
@@ -13137,62 +13137,62 @@ media-plugins/gst-plugins-gio 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-gl 0.10.3-r1: GStreamer OpenGL plugins
 media-plugins/gst-plugins-gnomevfs 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-gsm 0.10.23-r1: GStreamer plugin for GSM audio decoding/encoding
-media-plugins/gst-plugins-hls 1.8.3 1.10.3: HTTP live streaming plugin for GStreamer
+media-plugins/gst-plugins-hls 1.8.3 1.10.3 1.10.4: HTTP live streaming plugin for GStreamer
 media-plugins/gst-plugins-ivorbis 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-jack 0.10.31-r1 1.8.3 1.10.3 1.10.4: plugin for gstreamer
 media-plugins/gst-plugins-jpeg 0.10.31-r1 1.8.3 1.10.3 1.10.4: JPEG image encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-kate 1.8.3 1.10.3: Kate overlay codec suppport plugin for GStreamer
+media-plugins/gst-plugins-kate 1.8.3 1.10.3 1.10.4: Kate overlay codec suppport plugin for GStreamer
 media-plugins/gst-plugins-ladspa 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.8.3 1.10.3: MP3 encoder plugin for GStreamer
 media-plugins/gst-plugins-libav 1.8.3 1.10.3 1.10.4: FFmpeg based gstreamer plugin
-media-plugins/gst-plugins-libde265 1.8.3 1.10.3: H.265 decoder plugin for GStreamer
-media-plugins/gst-plugins-libmms 0.10.23-r1 1.8.3 1.10.3: Microsoft Multi Media Server source plugin for GStreamer
+media-plugins/gst-plugins-libde265 1.8.3 1.10.3 1.10.4: H.265 decoder plugin for GStreamer
+media-plugins/gst-plugins-libmms 0.10.23-r1 1.8.3 1.10.3 1.10.4: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.8.3 1.10.3 1.10.4: PNG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.8.3 1.10.3 1.10.4: Visualization elements for GStreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.8.3 1.10.3: MP3 decoder plugin for GStreamer
 media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.3: Meta ebuild to pull in gst plugins for apps
-media-plugins/gst-plugins-modplug 0.10.23-r1 1.8.3 1.10.3: MOD audio decoder plugin for GStreamer
+media-plugins/gst-plugins-modplug 0.10.23-r1 1.8.3 1.10.3 1.10.4: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.8.3 1.10.3: MPEG2 decoder plugin for GStreamer
-media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.8.3 1.10.3: MPEG-1/2 video encoding plugin for GStreamer
+media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.8.3 1.10.3 1.10.4: MPEG-1/2 video encoding plugin for GStreamer
 media-plugins/gst-plugins-mpg123 1.8.3 1.10.3: MP3 decoder plugin for GStreamer
-media-plugins/gst-plugins-mplex 0.10.23-r1 1.8.3 1.10.3: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
+media-plugins/gst-plugins-mplex 0.10.23-r1 1.8.3 1.10.3 1.10.4: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
 media-plugins/gst-plugins-musepack 0.10.23-r1: plugin for gstreamer
-media-plugins/gst-plugins-neon 0.10.23-r1 1.8.3 1.10.3: HTTP client source plugin for GStreamer
-media-plugins/gst-plugins-ofa 0.10.23-r1 1.8.3 1.10.3: MusicIP audio fingerprinting plugin for GStreamer
+media-plugins/gst-plugins-neon 0.10.23-r1 1.8.3 1.10.3 1.10.4: HTTP client source plugin for GStreamer
+media-plugins/gst-plugins-ofa 0.10.23-r1 1.8.3 1.10.3 1.10.4: MusicIP audio fingerprinting plugin for GStreamer
 media-plugins/gst-plugins-ogg 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-opencv 1.8.3 1.10.3: OpenCV elements for Gstreamer
-media-plugins/gst-plugins-openh264 1.8.3 1.10.3: H.264 encoder/decoder plugin for GStreamer.
+media-plugins/gst-plugins-opencv 1.8.3 1.10.3 1.10.4: OpenCV elements for Gstreamer
+media-plugins/gst-plugins-openh264 1.8.3 1.10.3 1.10.4: H.264 encoder/decoder plugin for GStreamer.
 media-plugins/gst-plugins-opus 0.10.23-r1 1.8.3-r1 1.10.3 1.10.4: Opus audio parser plugin for GStreamer
 media-plugins/gst-plugins-oss 0.10.31-r1 1.8.3 1.10.3 1.10.4: OSS (Open Sound System) support plugin for GStreamer
 media-plugins/gst-plugins-pango 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-pulse 0.10.31-r2 1.8.3 1.10.3 1.10.4: PulseAudio sound server plugin for GStreamer
 media-plugins/gst-plugins-raw1394 0.10.31-r1 1.8.3 1.10.3 1.10.4: Fiwewire DV/HDV capture plugin for GStreamer
-media-plugins/gst-plugins-resindvd 0.10.23-r1 1.8.3 1.10.3: DVD playback support plugin for GStreamer
-media-plugins/gst-plugins-rtmp 0.10.23-r1 1.8.3 1.10.3: RTMP source/sink plugin for GStreamer
-media-plugins/gst-plugins-schroedinger 0.10.23-r1 1.8.3 1.10.3: Dirac encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-resindvd 0.10.23-r1 1.8.3 1.10.3 1.10.4: DVD playback support plugin for GStreamer
+media-plugins/gst-plugins-rtmp 0.10.23-r1 1.8.3 1.10.3 1.10.4: RTMP source/sink plugin for GStreamer
+media-plugins/gst-plugins-schroedinger 0.10.23-r1 1.8.3 1.10.3 1.10.4: Dirac encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-shout2 0.10.31-r1 1.8.3 1.10.3 1.10.4: Icecast server sink plugin for GStreamer
 media-plugins/gst-plugins-sidplay 0.10.19-r1 1.8.3 1.10.3: Sid decoder plugin for GStreamer
-media-plugins/gst-plugins-smoothstreaming 1.8.3 1.10.3: Smooth Streaming plugin for GStreamer
-media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.8.3 1.10.3: Beats-per-minute detection and pitch controlling plugin for GStreamer
+media-plugins/gst-plugins-smoothstreaming 1.8.3 1.10.3 1.10.4: Smooth Streaming plugin for GStreamer
+media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.8.3 1.10.3 1.10.4: Beats-per-minute detection and pitch controlling plugin for GStreamer
 media-plugins/gst-plugins-soup 0.10.31-r2 1.8.3 1.10.3 1.10.4: HTTP client source/sink plugin for GStreamer
 media-plugins/gst-plugins-speex 0.10.31-r1 1.8.3 1.10.3 1.10.4: Speex encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-srtp 1.8.3-r1 1.10.3: SRTP encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-srtp 1.8.3-r1 1.10.3 1.10.4: SRTP encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-taglib 0.10.31-r1 1.8.3 1.10.3 1.10.4: ID3v2/APEv2 tagger plugin for GStreamer
 media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.8.3 1.10.3: MPEG2 encoder plugin for GStreamer
-media-plugins/gst-plugins-uvch264 1.8.3 1.10.3: UVC compliant H264 encoding cameras plugin for GStreamer
+media-plugins/gst-plugins-uvch264 1.8.3 1.10.3 1.10.4: UVC compliant H264 encoding cameras plugin for GStreamer
 media-plugins/gst-plugins-v4l2 0.10.31-r1 1.8.3 1.10.3 1.10.4: plugin for gstreamer
 media-plugins/gst-plugins-vaapi 1.8.3 1.10.3: Hardware accelerated video decoding through VA-API plugin for GStreamer
-media-plugins/gst-plugins-voaacenc 1.8.3 1.10.3: AAC encoder plugin for GStreamer
-media-plugins/gst-plugins-voamrwbenc 1.8.3 1.10.3: AMR-WB audio encoder plugin for GStreamer
+media-plugins/gst-plugins-voaacenc 1.8.3 1.10.3 1.10.4: AAC encoder plugin for GStreamer
+media-plugins/gst-plugins-voamrwbenc 1.8.3 1.10.3 1.10.4: AMR-WB audio encoder plugin for GStreamer
 media-plugins/gst-plugins-vorbis 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-vp8 0.10.23-r3: GStreamer decoder for vpx video format
 media-plugins/gst-plugins-vpx 1.8.3 1.10.3 1.10.4: VP8/VP9 video encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-wavpack 0.10.31-r1 1.8.3 1.10.3 1.10.4: Wavpack audio encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-x 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-x264 0.10.19-r1 1.8.3 1.10.3: H.264 encoder plugin for GStreamer
-media-plugins/gst-plugins-x265 1.8.3 1.10.3: H.265 encoder plugin for GStreamer
+media-plugins/gst-plugins-x265 1.8.3 1.10.3 1.10.4: H.265 encoder plugin for GStreamer
 media-plugins/gst-plugins-ximagesrc 0.10.31-r1 0.10.31-r2 1.8.3 1.10.3 1.10.4: X11 video capture stream plugin for GStreamer
 media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
 media-plugins/gst-plugins-xvideo 0.10.36-r1: plugin for gstreamer
@@ -15316,10 +15316,8 @@ net-misc/wireguard 0.0.20170223 9999: Simple yet fast and modern VPN that utiliz
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
-net-misc/x11rdp 0.8.0.1.9.5: A X11 server for RDP clients (used by xrdp)
 net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1: The X2Go Qt client
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
-net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2016.12.22 2017.02.17 2017.02.22 99999999: Download videos from YouTube.com (and more sites...)
@@ -15993,7 +15991,7 @@ sci-chemistry/prodecomp 3.0-r1: Decomposition-based analysis of NMR projections
 sci-chemistry/prody 1.6: Protein Dynamics Analysis
 sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
-sci-chemistry/pymol 1.7.6.0 1.7.7.2 1.8.2.1 1.8.4.0-r1: A Python-extensible molecular graphics system
+sci-chemistry/pymol 1.8.4.0-r1: A Python-extensible molecular graphics system
 sci-chemistry/pymol-plugins-bni-tools 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways from buried cavities to outside solvent in protein structures
 sci-chemistry/pymol-plugins-dssp 110430-r1: DSSP Plugin for PyMOL
@@ -16290,7 +16288,7 @@ sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0 0.4.0 9999: provide basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.3.0 0.4.0 0.4.1 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.1 1.8.5 1.8.5-r1: General framework for developing spatial indices
-sci-libs/libsvm 3.17-r1 3.17-r3 3.21: Library for Support Vector Machines
+sci-libs/libsvm 3.21: Library for Support Vector Machines
 sci-libs/libticables2 1.3.3-r1 1.3.4 1.3.5: Library to handle different link cables for TI calculators
 sci-libs/libticalcs2 1.1.8 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.4 1.1.5: Charset conversion library for TI calculators
@@ -18363,8 +18361,8 @@ x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.6: dump an image of an X window
 x11-apps/xwininfo 1.1.3: window information utility for X
 x11-apps/xwud 1.0.4: image displayer for X
-x11-base/xorg-drivers 1.12 1.15 1.16 1.17 1.18-r1 1.19 9999: Meta package containing deps on all xorg drivers
-x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.16.4-r5 1.17.4 1.18.4 1.19.1 9999: X.Org X servers
+x11-base/xorg-drivers 1.12 1.15 1.17 1.18-r1 1.19 9999: Meta package containing deps on all xorg drivers
+x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.17.4 1.18.4 1.19.1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
@@ -18402,7 +18400,6 @@ x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1 1.2.9: GLINT/Permedia video dr
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
 x11-drivers/xf86-video-i740 1.3.5 1.3.6: Intel i740 video driver
 x11-drivers/xf86-video-intel 2.99.917-r2 2.99.917_p20160621-r1 2.99.917_p20161206 2.99.917_p20170216: X.Org driver for Intel cards
-x11-drivers/xf86-video-ivtv 1.1.2-r2: X.Org driver for TV-out on ivtvdev cards
 x11-drivers/xf86-video-mach64 6.9.5: ATI Mach64 video driver
 x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4 1.6.5: Matrox video driver
 x11-drivers/xf86-video-modesetting 0.8.1 0.9.0: Unaccelerated generic driver for kernel modesetting
@@ -18411,7 +18408,6 @@ x11-drivers/xf86-video-newport 0.2.3 0.2.4: Newport video driver
 x11-drivers/xf86-video-nouveau 1.0.11 1.0.12 1.0.13: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.20-r1 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-omap 0.4.2 0.4.3 0.4.4 0.4.5: OMAP video driver
-x11-drivers/xf86-video-omapfb 0.1.1.1_p1: X.org driver for TI OMAP framebuffers
 x11-drivers/xf86-video-openchrome 0.3.3 0.4.0 0.5.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-opentegra 0.7.0: X.Org video driver for NVIDIA Tegra
 x11-drivers/xf86-video-qxl 0.1.3 0.1.4 0.1.4-r1 0.1.5: QEMU QXL paravirt video driver
@@ -18433,13 +18429,11 @@ x11-drivers/xf86-video-tdfx 1.4.6 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-tga 1.2.2 1.2.2-r1: X.Org driver for tga cards
 x11-drivers/xf86-video-trident 1.3.7 1.3.8: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
-x11-drivers/xf86-video-v4l 0.2.0: video4linux driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
 x11-drivers/xf86-video-virtualbox 5.0.16 5.0.32 5.1.12 5.1.14: VirtualBox X11 video driver for Gentoo guest
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0 13.2.1: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
-x11-libs/amd-adl-sdk 6.0-r1 8.0 10.1: API to access display driver functionality for ATI graphics cards
 x11-libs/c++-gtk-utils 2.0.27 2.0.29 2.0.30 2.0.31 2.0.31.1 2.2.10 2.2.12 2.2.13 2.2.14 2.2.14.1: A number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.14.2 1.14.6 1.14.8 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
@@ -18454,7 +18448,7 @@ x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.34.0 2.36.2 2.36.5: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
-x11-libs/gl2ps 1.3.8 1.3.9: OpenGL to PostScript printing library
+x11-libs/gl2ps 1.3.9: OpenGL to PostScript printing library
 x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.8.17-r2 0.10.29 0.10.31 0.10.32: A library of document-centric objects and utilities
@@ -18582,7 +18576,6 @@ x11-libs/xosd 2.2.14-r1 2.2.14-r2 2.2.14_p2_p1: Library for overlaying text in X
 x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
 x11-libs/xpyb 1.3.1-r2 1.3.1-r3: XCB-based Python bindings for the X Window System
 x11-libs/xtrans 1.3.5: X.Org xtrans library
-x11-libs/xvba-video 0.8.0-r3 9999: XVBA Backend for Video Acceleration (VA) API
 x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0 1.0-r1: OpenGL-based 3D File Manager

@@ -6411,7 +6411,6 @@ net-misc/wireguard:module - Compile the actual WireGuard kernel module. Most cer
 net-misc/wireguard:module-src - Install the module source code to /usr/src, in case you like building kernel modules yourself.
 net-misc/wireguard:tools - Compile the wg(8) tool and related helpers. You probably want this enabled.
 net-misc/x2goserver:fuse - Use net-fs/sshfs to allow shared folders
-net-misc/xrdp:fuse - Enable clipboard file / device redirection via sys-fs/fuse
 net-misc/youtube-viewer:gtk - Install the gtk GUI, called gtk-youtube-viewer
 net-nds/389-ds-base:auto-dn-suffix - Enable auto bind with auto dn suffix over unix domain socket (LDAPI) support
 net-nds/389-ds-base:autobind - Enable auto bind over unix domain socket (LDAPI) support
