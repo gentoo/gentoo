@@ -8,7 +8,7 @@ inherit toolchain-funcs flag-o-matic git-2
 
 DESCRIPTION="library wrapping the interix lib-c to make it less buggy"
 HOMEPAGE="http://suacomp.sf.net"
-EGIT_REPO_URI="http://git.code.sf.net/p/suacomp/git"
+EGIT_REPO_URI="https://git.code.sf.net/p/suacomp/git"
 
 LICENSE="BEER-WARE"
 SLOT="0"

@@ -28,7 +28,7 @@ DEPEND="
 	${RDEPEND}
 	x11-proto/xproto"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 DOCS=( ChangeLog README )
 
