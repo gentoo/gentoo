@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=configure install
 DESCRIPTION=A program to align cDNA and genomic DNA
-EAPI=0
+EAPI=6
 HOMEPAGE=http://globin.cse.psu.edu/html/docs/sim4.html
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://globin.cse.psu.edu/ftp/dist/sim4/sim4.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
+_eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e1e0b2ce50bc94c54d2fb0ef73b85af3
+_md5_=f2763a156e4cea98e9bbfefc06fbc776
