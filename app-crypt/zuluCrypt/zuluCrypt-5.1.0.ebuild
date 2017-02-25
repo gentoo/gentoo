@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,22 +13,22 @@ SRC_URI="https://github.com/mhogomchungu/zuluCrypt/releases/download/${PV}/zuluC
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome +gui kde udev"
+IUSE="gnome kwallet +qt5 udev"
 
-REQUIRED_USE="kde? ( gui )"
+REQUIRED_USE="kwallet? ( qt5 )"
 
 CDEPEND="
 	dev-libs/libgcrypt:0=
 	sys-apps/util-linux
 	sys-fs/cryptsetup
 	gnome? ( app-crypt/libsecret )
-	gui? (
+	qt5? (
 		dev-libs/libpwquality
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
-		kde? ( kde-frameworks/kwallet:5 )
+		kwallet? ( kde-frameworks/kwallet:5 )
 	)
 "
 RDEPEND="${CDEPEND}
@@ -41,8 +41,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIB_SUFFIX="$(get_libdir)"
 		-DNOGNOME=$(usex !gnome)
-		-DNOGUI=$(usex !gui)
-		-DNOKDE=$(usex !kde)
+		-DNOKDE=$(usex !kwallet)
+		-DNOGUI=$(usex !qt5)
 		-DUDEVSUPPORT=$(usex udev)
 	)
 

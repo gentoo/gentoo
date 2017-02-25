@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
+# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
+# kwallet integration split from kde to distinct flag
+kwallet
+
 # Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
 # We currently do not have the resources to AT qt5 packages.
 # This may change when/if qt4 goes away.

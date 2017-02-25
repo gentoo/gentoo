@@ -22,10 +22,6 @@ net-proxy/dante upnp
 # libcap-ng is for Linux only
 net-analyzer/tcpdump drop-root
 
-# Richard Yao <ryao@gentoo.org> (09 Nov 2012)
-# pm-utils is Linux-specific
-kde-plasma/powerdevil pm-utils
-
 # Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
 # No dev-util/source-highlight or media-sound/lilypond here, yet (bug #356069, bug #344289)
 app-text/asciidoc test highlight
