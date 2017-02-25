@@ -19,14 +19,14 @@ DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="http://cairographics.org/"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-IUSE="X aqua debug directfb gles2 +glib opengl static-libs +svg valgrind xcb xlib-xcb"
+IUSE="X aqua debug directfb gles2 +glib opengl static-libs +svg utils valgrind xcb xlib-xcb"
 # gtk-doc regeneration doesn't seem to work with out-of-source builds
 #[[ ${PV} == *9999* ]] && IUSE="${IUSE} doc" # API docs are provided in tarball, no need to regenerate
 
 # Test causes a circular depend on gtk+... since gtk+ needs cairo but test needs gtk+ so we need to block it
 RESTRICT="test"
 
-RDEPEND=">=dev-libs/lzo-2.06-r1[${MULTILIB_USEDEP}]
+RDEPEND="
 	>=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
 	>=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}]
@@ -37,6 +37,7 @@ RDEPEND=">=dev-libs/lzo-2.06-r1[${MULTILIB_USEDEP}]
 	gles2? ( >=media-libs/mesa-9.1.6[gles2,${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
 	opengl? ( || ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] media-libs/opengl-apple ) )
+	utils? ( >=dev-libs/lzo-2.06-r1[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
@@ -129,6 +130,9 @@ multilib_src_configure() {
 		$(use_enable opengl gl) \
 		$(use_enable static-libs static) \
 		$(use_enable svg) \
+		$(use_enable utils interpreter) \
+		$(use_enable utils script) \
+		$(use_enable utils trace) \
 		$(use_enable valgrind) \
 		$(use_enable xcb) \
 		$(use_enable xcb xcb-shm) \
