@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
 inherit leechcraft
 
@@ -13,12 +13,17 @@ KEYWORDS=""
 IUSE="debug acoustid"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtxml:5
 	acoustid? ( media-libs/chromaprint )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	local mycmakeargs="
-		$(cmake-utils_use_with acoustid MUSICZOMBIE_CHROMAPRINT)
-	"
+	local mycmakeargs=(
+		-DWITH_MUSICZOMBIE_CHROMAPRINT=$(usex acoustid)
+	)
 	cmake-utils_src_configure
 }

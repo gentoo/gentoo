@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit leechcraft
 
@@ -13,5 +13,5 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
-		dev-qt/qtdbus:4"
+		dev-qt/qtdbus:5"
 RDEPEND="${DEPEND}"

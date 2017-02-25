@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-DESCRIPTION="Virtual for LeechCraft plugins that add support for managing removable storage devices"
+DESCRIPTION="Virtual for LeechCraft plugins for managing removable storage devices"
 HOMEPAGE=""
 SRC_URI=""
 
