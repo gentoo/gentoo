@@ -98,6 +98,7 @@ src_prepare() {
 
 	mv configure.in configure.ac || die
 	eautoreconf
+	touch src/stamp-h.in || die
 }
 
 src_configure() {
