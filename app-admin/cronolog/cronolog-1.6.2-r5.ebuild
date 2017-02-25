@@ -10,19 +10,13 @@ DESCRIPTION="Log rotation software"
 HOMEPAGE="https://github.com/fordmason/cronolog"
 SRC_URI="http://cronolog.org/download/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ Apache-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-patches/${PN}-define-strptime.patch.txt
-	"${FILESDIR}"/${PV}-patches/${PN}-doc.patch.txt
-	"${FILESDIR}"/${PV}-patches/${PN}-getopt-long.patch.txt
-	"${FILESDIR}"/${PV}-patches/${PN}-large-file-patch.txt
-	"${FILESDIR}"/${PV}-patches/${PN}-missing-symlink-patch.txt
-	"${FILESDIR}"/${PV}-patches/${PN}-setugid-patch.txt
-	"${FILESDIR}"/${PV}-patches/${PN}-sigusr1-patch.txt
-	"${FILESDIR}"/${PV}-patches/${PN}-strftime-patch.txt
+	"${FILESDIR}"/${PV}-patches
+	# rename and move into ${PV}-patches after -r3 removal
 	"${FILESDIR}"/${P}-umask.patch
 )
 
@@ -30,5 +24,6 @@ DOCS=( AUTHORS ChangeLog INSTALL NEWS README TODO )
 
 src_prepare() {
 	default
+	mv configure.in configure.ac || die
 	eautoreconf
 }
