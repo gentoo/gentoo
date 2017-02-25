@@ -26,7 +26,9 @@ src_test() {
 }
 
 src_install() {
-	newbin "${PN}.sh" "${PN}"
-	newbashcomp "${PN}_completion" "${PN}"
+	# Renaming occur due to a clash with another package.
+	# See bug 610862.
+	newbin "${PN}.sh" "${PN}txt"
+	newbashcomp "${PN}_completion" "${PN}txt"
 	einstalldocs
 }
