@@ -25,7 +25,7 @@ SRC_URI+=" https://github.com/QupZilla/${PN}-plugins/archive/${PLUGINS_HASH}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="dbus debug gnome-keyring kde libressl nonblockdialogs"
+IUSE="dbus debug gnome-keyring kwallet libressl nonblockdialogs"
 
 RDEPEND="
 	>=dev-qt/qtconcurrent-5.6:5
@@ -42,7 +42,7 @@ RDEPEND="
 	x11-libs/libxcb:=
 	dbus? ( >=dev-qt/qtdbus-5.6:5 )
 	gnome-keyring? ( gnome-base/gnome-keyring )
-	kde? ( kde-frameworks/kwallet:5 )
+	kwallet? ( kde-frameworks/kwallet:5 )
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0 )
 "
@@ -81,7 +81,7 @@ src_configure() {
 		DEBUG_BUILD=$(usex debug true '') \
 		DISABLE_DBUS=$(usex dbus '' true) \
 		GNOME_INTEGRATION=$(usex gnome-keyring true '') \
-		KDE_INTEGRATION=$(usex kde true '') \
+		KDE_INTEGRATION=$(usex kwallet true '') \
 		NONBLOCK_JS_DIALOGS=$(usex nonblockdialogs true '')
 
 	eqmake5
