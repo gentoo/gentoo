@@ -361,11 +361,6 @@ x11-libs/xvba-video
 # including dropped support for BlueZ 4.
 =net-wireless/blueman-2.1_alpha*
 
-# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
-# Dead. Masked for removal in 30 days.
-# Bug #606132
-x11-drivers/xf86-video-omapfb
-
 # Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
 # Mask 4.0.0 RCs (then final) for initial testing, and updating most
 # important revdeps. Also revdeps that require 4.0.
