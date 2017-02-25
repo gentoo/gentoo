@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile install
 DEPEND=emboss? ( sci-biology/emboss )
 DESCRIPTION=A database of eucaryotic transcription factors
-EAPI=0
+EAPI=6
 HOMEPAGE=http://www.gene-regulation.com/pub/databases.html
 IUSE=emboss minimal
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
@@ -10,4 +10,4 @@ RDEPEND=emboss? ( sci-biology/emboss )
 SLOT=3
 SRC_URI=ftp://ftp.ebi.ac.uk/pub/databases/transfac/transfac32.tar.Z
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=c27225d57b45470ee505311f78a72c37
+_md5_=56b51d757fad328b618c00f2e3a0d196
