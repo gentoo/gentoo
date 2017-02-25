@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/ginatrapani/todo.txt-cli/archive/v2.10.tar.gz -> todo-2.10.tar.gz
 _eclass_exported_funcs=src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=138ce07e4982bbdccf3aa5649de7adf7
+_md5_=454ed4f9e87c9a309b38f71ce2807ba0
