@@ -8,7 +8,7 @@
     <email>eras@gentoo.org</email>
     <name>Eray Aslan</name>
   </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>kerberos@gentoo.org</email>
     <name>Kerberos</name>
   </maintainer>
