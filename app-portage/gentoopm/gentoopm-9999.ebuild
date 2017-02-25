@@ -19,9 +19,9 @@ IUSE="doc"
 
 RDEPEND="
 	|| (
-		sys-apps/pkgcore[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.9.4[${PYTHON_USEDEP}]
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
-		>=sys-apps/paludis-2.6.0[python,${PYTHON_USEDEP}] )"
+		>=sys-apps/paludis-3.0.0_pre20170219[python,${PYTHON_USEDEP}] )"
 DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep python2_7)] )"
 PDEPEND="app-eselect/eselect-package-manager"
 
