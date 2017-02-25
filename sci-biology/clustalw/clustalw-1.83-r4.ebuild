@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="General purpose multiple alignment program for DNA and proteins"
 HOMEPAGE="http://www.embl-heidelberg.de/~seqanal/"
@@ -17,8 +17,10 @@ IUSE=""
 
 S="${WORKDIR}"/${PN}${PV}
 
+PATCHES=( "${FILESDIR}"/${PV}-as-needed.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-as-needed.patch
+	default
 
 	sed \
 		-e "/^CC/s:cc:$(tc-getCC):g" \
@@ -30,7 +32,5 @@ src_prepare() {
 
 src_install() {
 	dobin clustalw
-	dodoc README clustalv.doc clustalw.doc clustalw.ms
-	insinto /usr/share/doc/${PF}
-	doins clustalw_help
+	dodoc README clustalv.doc clustalw{.doc,.ms,_help}
 }
