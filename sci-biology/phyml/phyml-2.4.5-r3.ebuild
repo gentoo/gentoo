@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -19,16 +19,13 @@ IUSE=""
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	sed -e 's/^hello !!!//' \
-		-e 's/$(CC) -o/$(CC) $(LDFLAGS) -o/' \
-		-i Makefile || die
-}
+PATCHES=( "${FILESDIR}"/${PN}-2.4.5-fix-build-system.patch )
 
-src_compile() {
-	emake -e CC="$(tc-getCC)" || die
+src_prepare() {
+	default
+	tc-export CC
 }
 
 src_install() {
-	dobin phyml || die
+	dobin phyml
 }
