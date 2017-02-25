@@ -16,7 +16,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 	http://llvm.org/releases/${PV}/${P/abi/}.src.tar.xz"
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="elibc_musl libunwind +static-libs test"
 
 RDEPEND="
