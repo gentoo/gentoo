@@ -41,7 +41,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="color-management +crypt +eigen +exif fftw +fontconfig freetds +glew +glib
-+gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms marble mysql +okular openexr
++gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms mysql +okular openexr
 +pdf +pim postgres spacenav sybase test tiff +threads +truetype vc xbase +xml"
 
 # Don't use Active, it's broken on desktops.
@@ -95,7 +95,6 @@ RDEPEND="
 		media-libs/lcms:2
 		x11-libs/libX11
 	)
-	marble? ( $(add_kdeapps_dep marble) )
 	mysql? ( virtual/mysql )
 	okular? ( kde-apps/okular:4=[aqua=] )
 	openexr? ( media-libs/openexr:= )
@@ -177,6 +176,7 @@ src_configure() {
 		-DPACKAGERS_BUILD=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_KActivities=OFF
+		-DWITH_CalligraMarble=OFF
 		-DWITH_Iconv=ON
 		-DWITH_OCIO=$(usex color-management)
 		-DWITH_QCA2=$(usex crypt)
@@ -198,7 +198,6 @@ src_configure() {
 		-DWITH_OpenJPEG=$(usex jpeg2k)
 		-DWITH_Kdcraw=$(usex kdcraw)
 		-DWITH_LCMS2=$(usex lcms)
-		-DWITH_CalligraMarble=$(usex marble)
 		-DWITH_MySQL=$(usex mysql)
 		-DWITH_Okular=$(usex okular)
 		-DWITH_OpenEXR=$(usex openexr)
