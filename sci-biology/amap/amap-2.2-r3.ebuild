@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=6
 
-inherit eutils toolchain-funcs java-pkg-opt-2 java-ant-2
+inherit java-pkg-opt-2 java-ant-2 toolchain-funcs
 
 MY_P=${PN}.${PV}
 
@@ -22,29 +22,36 @@ DEPEND="java? ( >=virtual/jdk-1.5 )"
 
 S=${WORKDIR}/${PN}-align
 
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-includes.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-makefile.patch \
-		"${FILESDIR}"/${P}-includes.patch
+	default
+	java-pkg-opt-2_src_prepare
 }
 
 src_compile() {
-	emake -C align CXX="$(tc-getCXX)" \
-		OPT_CXXFLAGS="${CXXFLAGS}" || die "make failed"
+	emake -C align CXX="$(tc-getCXX)" OPT_CXXFLAGS="${CXXFLAGS}"
 
 	if use java; then
-		pushd "${S}"/display
+		pushd display >/dev/null || die
 		eant -Ddisplay all || die
-		popd
+		popd >/dev/null || die
 	fi
 }
 
 src_install() {
-	dobin align/${PN} || die
-	dodoc align/{README,PROBCONS.README} || die
+	dobin align/${PN}
+
+	dodoc align/{README,PROBCONS.README}
+
 	insinto /usr/share/${PN}/examples
-	doins examples/* || die
+	doins -r examples/.
+
 	if use java; then
-		java-pkg_newjar "${S}"/display/AmapDisplay.jar amapdisplay.jar
+		java-pkg_newjar display/AmapDisplay.jar amapdisplay.jar
 		java-pkg_dolauncher amapdisplay --jar amapdisplay.jar
 	fi
 }
