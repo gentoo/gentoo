@@ -371,13 +371,6 @@ x11-drivers/xf86-video-omapfb
 # Bug #606132
 x11-drivers/xf86-video-ivtv
 
-# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
-# Last release only supports v4l1 which required kernel support removed in
-# 2.6.38. Doesn't build with >=x11-base/xorg-server-1.17. Masked for removal in
-# 30 days.
-# Bug #606132
-x11-drivers/xf86-video-v4l
-
 # Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
 # Mask 4.0.0 RCs (then final) for initial testing, and updating most
 # important revdeps. Also revdeps that require 4.0.
