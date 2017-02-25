@@ -9481,7 +9481,7 @@ dev-ruby/patron 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1 0.6.5 0.7.1 0.8.0: Patron is a R
 dev-ruby/pcaprub 0.11.3-r2 0.12.1 0.12.4: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.6.1 0.6.1-r1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1 1.2.1-r1: A tool for analyzing PDF output
-dev-ruby/pdf-reader 1.3.3 1.4.0 1.4.1 1.4.1-r1: PDF parser conforming as much as possible to the PDF specification from Adobe
+dev-ruby/pdf-reader 1.4.1 1.4.1-r1 2.0.0: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
 dev-ruby/pg 0.17.1-r1 0.18.4 0.18.4-r1: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r1 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
@@ -9613,7 +9613,7 @@ dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documen
 dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
 dev-ruby/ruby-ldap 0.9.17 0.9.18 0.9.19: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.9 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
-dev-ruby/ruby-net-ldap 0.14.0 0.15.0: Pure ruby LDAP client implementation
+dev-ruby/ruby-net-ldap 0.14.0 0.15.0 0.16.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.8 2.2.1 2.2.2 2.2.3: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1 0.99998: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.10.1: An oEmbed consumer library written in Ruby.
@@ -9658,7 +9658,7 @@ dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6: Official Ruby-
 dev-ruby/sawyer 0.7.0 0.7.0-r1 0.8.0 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.6: Advanced seed data handling for Rails
-dev-ruby/selenium-webdriver 2.53.4-r1 3.0.7 3.0.8 3.1.0: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.53.4-r1 3.0.7 3.0.8 3.1.0 3.2.1: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 0.1.3: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
