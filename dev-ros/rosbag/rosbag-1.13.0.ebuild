@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ros/xmlrpcpp
 	dev-libs/boost:=
 	app-arch/bzip2
+	dev-ros/std_srvs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/genpy[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
