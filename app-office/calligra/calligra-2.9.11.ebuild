@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,7 +41,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="attica color-management +crypt +eigen +exif fftw +fontconfig freetds
-+glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms marble mysql
++glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms mysql
 +okular openexr +pdf +pim postgres spacenav sybase test tiff +threads
 +truetype vc xbase +xml"
 
@@ -97,7 +97,6 @@ RDEPEND="
 		media-libs/lcms:2
 		x11-libs/libX11
 	)
-	marble? ( $(add_kdeapps_dep marble) )
 	mysql? ( virtual/mysql )
 	okular? ( >=kde-apps/okular-4.4:4=[aqua=] )
 	opengl? (
@@ -181,7 +180,8 @@ src_configure() {
 		"-DCREATIVEONLY=OFF"
 		"-DPACKAGERS_BUILD=OFF"
 		"-DWITH_Soprano=OFF"
-		"-DWITH_KActivities=OFF"	# deprecated Plasma 4 activities integration
+		"-DWITH_KActivities=OFF"
+		"-DWITH_CalligraMarble=OFF"
 	)
 
 	# regular options
@@ -207,7 +207,6 @@ src_configure() {
 		$(cmake-utils_use_with jpeg2k OpenJPEG)
 		$(cmake-utils_use_with kdcraw Kdcraw)
 		$(cmake-utils_use_with lcms LCMS2)
-		$(cmake-utils_use_with marble CalligraMarble)
 		$(cmake-utils_use_with mysql MySQL)
 		$(cmake-utils_use_with okular Okular)
 		$(cmake-utils_use_with openexr OpenEXR)
