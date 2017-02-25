@@ -101,7 +101,7 @@ kde-apps/marble	gps
 # These need stable kdelibs-4.
 app-i18n/uim kde
 app-arch/p7zip kde
-dev-vcs/subversion kde
+dev-vcs/subversion kwallet
 media-video/vlc kde
 net-libs/libproxy kde
 

@@ -20,28 +20,29 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Subversion GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="apache2 berkdb ctypes-python debug doc +dso extras gnome-keyring +http java kde nls perl python ruby sasl test vim-syntax"
+IUSE="apache2 berkdb ctypes-python debug doc +dso extras gnome-keyring +http java kwallet nls perl python ruby sasl test vim-syntax"
 
-COMMON_DEPEND=">=dev-db/sqlite-3.7.12
+COMMON_DEPEND="
+	app-arch/bzip2
+	>=dev-db/sqlite-3.7.12
 	>=dev-libs/apr-1.3:1
 	>=dev-libs/apr-util-1.3:1
 	dev-libs/expat
 	sys-apps/file
 	sys-libs/zlib
-	app-arch/bzip2
 	berkdb? ( >=sys-libs/db-4.0.14:= )
 	ctypes-python? ( ${PYTHON_DEPS} )
 	gnome-keyring? ( dev-libs/glib:2 sys-apps/dbus gnome-base/libgnome-keyring )
-	kde? ( sys-apps/dbus dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 kde-frameworks/kdelibs:4 )
+	http? ( >=net-libs/serf-1.2.1 )
+	kwallet? ( sys-apps/dbus dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 kde-frameworks/kdelibs:4 )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )
-	sasl? ( dev-libs/cyrus-sasl )
-	http? ( >=net-libs/serf-1.2.1 )"
+	sasl? ( dev-libs/cyrus-sasl )"
 RDEPEND="${COMMON_DEPEND}
 	apache2? ( www-servers/apache[apache2_modules_dav] )
 	java? ( >=virtual/jre-1.5 )
-	kde? ( kde-apps/kwalletd:4 )
+	kwallet? ( kde-apps/kwalletd:4 )
 	nls? ( virtual/libintl )
 	perl? ( dev-perl/URI )"
 # Note: ctypesgen doesn't need PYTHON_USEDEP, it's used once
@@ -52,7 +53,7 @@ DEPEND="${COMMON_DEPEND}
 	gnome-keyring? ( virtual/pkgconfig )
 	http? ( virtual/pkgconfig )
 	java? ( >=virtual/jdk-1.5 )
-	kde? ( virtual/pkgconfig )
+	kwallet? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
 	test? ( ${PYTHON_DEPS} )"
 
@@ -235,7 +236,7 @@ src_configure() {
 		$(use_with gnome-keyring) \
 		$(use_enable java javahl) \
 		$(use_with java jdk "${JAVA_HOME}") \
-		$(use_with kde kwallet) \
+		$(use_with kwallet) \
 		$(use_enable nls) \
 		$(use_with sasl) \
 		$(use_with http serf) \
