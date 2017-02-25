@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="kate libav"
 
 RDEPEND="
-	!libav? ( media-video/ffmpeg:0= )
+	!libav? ( media-video/ffmpeg:0=[postproc] )
 	libav? ( media-libs/libpostproc:0=
 		media-video/libav:0= )
 	>=media-libs/libvorbis-1.1
