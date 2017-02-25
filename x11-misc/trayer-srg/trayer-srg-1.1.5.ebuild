@@ -10,12 +10,12 @@ DESCRIPTION="trayer fork with multi monitor support and cleaned up codebase"
 HOMEPAGE="https://github.com/sargon/trayer-srg"
 SRC_URI="https://github.com/sargon/${PN}/tarball/${P/-srg/} -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="MIT GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="x11-libs/gdk-pixbuf:2
+RDEPEND="x11-libs/gdk-pixbuf:2[X]
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXmu"
