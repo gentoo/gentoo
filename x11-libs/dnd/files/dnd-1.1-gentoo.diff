@@ -1,5 +1,5 @@
---- DragAndDrop.c.orig	Tue Sep 25 21:14:11 2001
-+++ DragAndDrop.c	Tue Sep 25 21:14:16 2001
+--- a/DragAndDrop.c	Tue Sep 25 21:14:11 2001
++++ b/DragAndDrop.c	Tue Sep 25 21:14:16 2001
 @@ -81,23 +81,23 @@
  
  static CursorData DndCursor[DndEND]={
