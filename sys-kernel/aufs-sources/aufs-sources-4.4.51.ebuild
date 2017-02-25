@@ -17,7 +17,7 @@ AUFS_URI="https://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
 
 KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/"
-IUSE="deblob experimental module vanilla"
+IUSE="experimental module vanilla"
 
 DESCRIPTION="Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support"
 SRC_URI="
