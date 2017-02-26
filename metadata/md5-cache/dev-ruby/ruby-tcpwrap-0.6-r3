@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=net-libs/libident sys-apps/tcp-wrappers ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
+DEPEND=net-libs/libident sys-apps/tcp-wrappers ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
 DESCRIPTION=A TCP wrappers library for Ruby
 EAPI=5
 HOMEPAGE=http://raa.ruby-lang.org/list.rhtml?name=ruby-tcpwrap
-IUSE=elibc_FreeBSD ruby_targets_ruby20 ruby_targets_ruby21
+IUSE=elibc_FreeBSD ruby_targets_ruby21
 KEYWORDS=amd64 ~hppa ~mips ~ppc x86
 LICENSE=BSD
-RDEPEND=net-libs/libident sys-apps/tcp-wrappers ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
-REQUIRED_USE=|| ( ruby_targets_ruby20 ruby_targets_ruby21 )
+RDEPEND=net-libs/libident sys-apps/tcp-wrappers ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
+REQUIRED_USE=|| ( ruby_targets_ruby21 )
 SLOT=0
 SRC_URI=http://shugo.net/archive/ruby-tcpwrap/ruby-tcpwrap-0.6.tar.gz
 _eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
 _eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-utils-2	b31a7fe19a47c6a2d901f6de949e5209	multilib	165fc17c38d1b11dac2008280dab6e80	ruby-ng	70882a6b5354712e3ef87632e3d99f75	ruby-utils	382c3a262907e1219a21618dfd1a01a0	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=301e0bf5276b062733d3a2a188ac6912
+_md5_=b2fcb411b7b1af9474d52ac8b23b07e8
