@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Davide Pesavento <pesa@gentoo.org> (25 Feb 2017)
+# Library name changed in 2.10, breaking many consumers.
+# Needs full revdep testing.
+>=dev-python/qscintilla-python-2.10
+>=x11-libs/qscintilla-2.10
+
 # Michael Palimaka <kensington@gentoo.org> (22 Feb 2017)
 # Fails to build. Dead upstream.
 # Masked for removal in 30 days. Bug #520890.
