@@ -160,7 +160,7 @@ app-admin/packagekit 1.0.11-r1 1.1.1 1.1.4 1.1.5: PackageKit Package Manager int
 app-admin/packagekit-base 1.0.11 1.1.1 1.1.4 1.1.5: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-gtk 1.0.11 1.1.1 1.1.4 1.1.5: Gtk3 PackageKit backend library
 app-admin/packagekit-qt 0.9.6: Qt PackageKit backend library
-app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely
+app-admin/pass 1.6.5 1.7 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/passwordsafe 1.00_beta 1.01_beta: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
@@ -2340,7 +2340,7 @@ app-text/libmwaw 0.3.8 0.3.9 0.3.10 9999: Library parsing many pre-OSX MAC text 
 app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
-app-text/libstaroffice 0.0.2 9999: Import filter for old StarOffice documents
+app-text/libstaroffice 0.0.2 0.0.3 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.9.9 0.10.1: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.4-r1 0.4.5: Microsoft Works file word processor format import filter library
@@ -17155,7 +17155,7 @@ sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklo
 sys-auth/polkit-qt 0.112.0-r1: PolicyKit Qt4 API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r1 0.11-r2: Realtime Policy and Watchdog Daemon
-sys-auth/skey 1.1.5-r10 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
+sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/sssd 1.12.1 1.12.4 1.12.5 1.13.0 1.13.1: System Security Services Daemon provides access to identity and authentication
 sys-auth/tfm-fingerprint 1.0: TouchChip TFM/ESS FingerPrint BSP
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
