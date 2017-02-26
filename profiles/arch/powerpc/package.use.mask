@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2017)
+# Requires dev-qt/qtwebengine, not keyworded on ppc
+sci-geosciences/gpsbabel gui
+
 # James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
