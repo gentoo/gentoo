@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">indi</remote-id>
+		<remote-id type="github">indilib/indi</remote-id>
 	</upstream>
 </pkgmetadata>
