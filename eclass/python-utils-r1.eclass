@@ -985,18 +985,18 @@ python_wrapper_setup() {
 			_EOF_
 			chmod +x "${workdir}"/bin/${x} || die
 		done
-
-		# Now, set the environment.
-		# But note that ${workdir} may be shared with something else,
-		# and thus already on top of PATH.
-		if [[ ${PATH##:*} != ${workdir}/bin ]]; then
-			PATH=${workdir}/bin${PATH:+:${PATH}}
-		fi
-		if [[ ${PKG_CONFIG_PATH##:*} != ${workdir}/pkgconfig ]]; then
-			PKG_CONFIG_PATH=${workdir}/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
-		fi
-		export PATH PKG_CONFIG_PATH
 	fi
+
+	# Now, set the environment.
+	# But note that ${workdir} may be shared with something else,
+	# and thus already on top of PATH.
+	if [[ ${PATH##:*} != ${workdir}/bin ]]; then
+		PATH=${workdir}/bin${PATH:+:${PATH}}
+	fi
+	if [[ ${PKG_CONFIG_PATH##:*} != ${workdir}/pkgconfig ]]; then
+		PKG_CONFIG_PATH=${workdir}/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
+	fi
+	export PATH PKG_CONFIG_PATH
 }
 
 # @FUNCTION: python_is_python3
