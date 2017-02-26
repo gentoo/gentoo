@@ -4803,7 +4803,7 @@ dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.24 1.25 1.26: Contains error handling functions used by GnuPG software
-dev-libs/libgpuarray 0.6.0_rc1: Library to manipulate tensors on the GPU
+dev-libs/libgpuarray 0.6.0: Library to manipulate tensors on the GPU
 dev-libs/libgudev 230-r1 231: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
 dev-libs/libgweather 3.20.4: Library to access weather information from online services
@@ -7134,7 +7134,7 @@ dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.5.6 1.5.7 1.6.4 1.6.5 1.6.6: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
-dev-python/QtPy 1.1.2: Abtraction layer for PyQt5/PyQt4/PySide
+dev-python/QtPy 1.1.2 1.2.1: Abtraction layer for PyQt5/PyQt4/PySide
 dev-python/ReParser 1.4.3: simple regex-based lexer/parser for inline markup
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
@@ -7186,6 +7186,7 @@ dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-nam
 dev-python/astlib 0.8.0: Python astronomy modules for image and coordinate manipulation
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
+dev-python/astrodendro 0.2.0: Python package for computation of astronomical dendrograms
 dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3 1.4.4 1.4.5 1.4.6 1.4.7 1.4.8: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
@@ -7235,7 +7236,7 @@ dev-python/biplist 0.8 0.9 1.0.1: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.2 1.4.3: A screamingly fast Python WSGI server written in C
-dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1 0.10.0 0.10.1 0.10.2: Next generation Python numpy
+dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1 0.10.0 0.10.1 0.10.2 0.11.2: Next generation Python numpy
 dev-python/bleach 1.4.3 1.5.0: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.3 1.4: Fast, simple object-to-object and broadcast signaling
@@ -7251,6 +7252,7 @@ dev-python/botocore 1.4.60 1.4.62 1.4.65: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/breathe 4.6.0: Sphinx Doxygen renderer
 dev-python/brython 3.3.0 3.3.1: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.1.1 6.2.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
@@ -7570,14 +7572,14 @@ dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Geve
 dev-python/gevent-websocket 0.9.3 0.9.5: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.3.1: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages branch
-dev-python/ginga 2.6.0 2.6.1: Astronomical image toolkit for Python
+dev-python/ginga 2.6.1 2.6.2: Astronomical image toolkit for Python
 dev-python/git-python 0.3.6 1.0.0 1.0.1 1.0.2 2.0.5 2.0.6: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/github3 0.9.3: A wrapper for the GitHub API written in python
 dev-python/glance_store 0.13.1 0.18.0: A library for glance
 dev-python/globre 0.1.2-r1 0.1.3 0.1.4: A glob matching library, providing an interface similar to the 're' module
-dev-python/glueviz 0.8.2 0.9.1: Python library to explore relationships within and among related datasets
+dev-python/glueviz 0.9.1 0.10.0: Python library to explore relationships within and among related datasets
 dev-python/gmpy 2.0.4 2.0.6 2.0.7 2.0.8: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-keyring-python 2.32.0-r1: Python bindings for the interfacing with the GNOME keyring
 dev-python/gnome-python-base 2.28.1-r1: Provides the base files for the gnome-python bindings
@@ -7884,7 +7886,7 @@ dev-python/oauthlib 0.7.2 1.0.1 1.0.3 1.1.2: Spec-compliant and thorough impleme
 dev-python/objgraph 1.7.2 1.8.1: Draws Python object reference graphs with graphviz
 dev-python/oct2py 1.3.0-r1 3.3.3 3.6.0: Python to GNU Octave bridge
 dev-python/odfpy 0.9.6-r1 1.3.1 1.3.2: Python API and tools to manipulate OpenDocument files
-dev-python/odo 0.3.2 0.3.3 0.4.0 0.4.2 0.5.0: Data migration in python
+dev-python/odo 0.3.2 0.3.3 0.4.0 0.4.2 0.5.0 0.5.0-r1: Data migration in python
 dev-python/openpyxl 2.2.3 2.3.0 2.3.3 9999: Pure python reader and writer of Excel OpenXML files
 dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output for nosetests
 dev-python/openstacksdk 0.8.2 0.9.5: A collection of libraries for building applications to work with OpenStack.
@@ -8104,7 +8106,7 @@ dev-python/pygments 2.1.1 2.1.3 2.2.0: Pygments is a syntax highlighting package
 dev-python/pygobject 2.28.6-r55 3.20.1 3.22.0: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
-dev-python/pygpu 0.6.0_rc1: Python bindings to libgpuarray
+dev-python/pygpu 0.6.0: Python bindings to libgpuarray
 dev-python/pygraphviz 1.2 1.3.1: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 4.1.1 4.1.1-r1 4.1.1-r2 4.2: A Python interface for the PostgreSQL database
 dev-python/pygsl 0.9.5-r1 2.1.1: Python interface for the GNU scientific library (gsl)
@@ -8221,6 +8223,7 @@ dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2 3.3.0: Hierarchical datas
 dev-python/pyte 0.4.9 0.4.10 0.5.1 0.5.2 0.5.2-r1: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.2 3.0.2 3.0.3 3.0.5 3.0.6 9999: simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
+dev-python/pytest-arraydiff 0.1: pytest plugin to facilitate comparison of arrays
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.1 1.2.0 1.2.1 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
@@ -8366,7 +8369,7 @@ dev-python/pyutmp 0.2.1: Python UTMP wrapper for Un*x systems
 dev-python/pyuv 1.2.0: Python interface for libuv
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyvtk 0.4.74: Tools for manipulating VTK files in Python
-dev-python/pywavelets 0.2.2-r1 0.3.0 0.4.0: Python module for discrete, stationary, and packet wavelet transforms
+dev-python/pywavelets 0.2.2-r1 0.3.0 0.4.0 0.5.1: Discrete Wavelet Transforms in Python
 dev-python/pywebdav 0.9.8-r1: WebDAV server written in Python
 dev-python/pywebkitgtk 1.1.8-r1: Python bindings for the WebKit GTK+ port
 dev-python/pyx 0.12.1-r1 0.13 0.14 0.14.1: Python package for the generation of encapsulated PostScript figures
@@ -8408,7 +8411,7 @@ dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2015.07.12 2015.07.19 2016.01.10: Alternative regular expression module to replace re
-dev-python/regions 0.1: Astropy affiliated package for region handling
+dev-python/regions 0.1 0.2: Astropy affiliated package for region handling
 dev-python/rencode 1.0.3 1.0.3-r1 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0 1.8.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1 3.3.0 3.3.0-r1: Tools for generating printable PDF documents from any data source
