@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,6 +63,9 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		x11-libs/xcb-util-keysyms
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
+	)
+	xnest? (
+		x11-libs/xcb-util-keysyms
 	)
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
