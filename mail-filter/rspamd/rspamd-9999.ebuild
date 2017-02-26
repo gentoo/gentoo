@@ -28,7 +28,8 @@ RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	dev-util/ragel
 	sys-apps/file
 	virtual/libiconv
-	gd? ( media-libs/gd[jpeg] )"
+	gd? ( media-libs/gd[jpeg] )
+	dev-libs/icu"
 DEPEND="dev-util/ragel
 	${RDEPEND}"
 
