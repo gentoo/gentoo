@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Language defining a data description protocol"
-HOMEPAGE="https://github.com/ContinuumIO/datashape"
-SRC_URI="https://github.com/ContinuumIO/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/blaze/datashape"
+SRC_URI="https://github.com/blaze/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
