@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for LeechCraft plugins capable of visually notifying the user
-EAPI=5
-RDEPEND=|| ( app-leechcraft/lc-kinotify app-leechcraft/lc-dbusmanager )
+EAPI=6
+RDEPEND=|| ( ~app-leechcraft/lc-kinotify-9999 ~app-leechcraft/lc-dbusmanager-9999 )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1769078127afe46bd0675760c986063c
+_md5_=09fb5e31b4ea03ca273514077a673ab6

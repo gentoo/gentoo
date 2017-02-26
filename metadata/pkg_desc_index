@@ -1635,7 +1635,7 @@ app-leechcraft/lc-eleeminator 9999: Embedded LeechCraft Terminal Emulator
 app-leechcraft/lc-fenet 9999: LeechCraft WM and compositor manager
 app-leechcraft/lc-gacts 9999: Allows other LeechCraft modules to register global shortcuts
 app-leechcraft/lc-glance 9999: Glance, quick thumbnailed overview of opened tabs in LeechCraft
-app-leechcraft/lc-gmailnotifier 9999: Notifier about new mail in a GMail inbox for LeechCraft
+app-leechcraft/lc-gmailnotifier 9999: Notifies about new mail in a GMail inbox for LeechCraft
 app-leechcraft/lc-historyholder 9999: HistoryHolder keeps track of stuff downloaded in LeechCraft
 app-leechcraft/lc-hotsensors 9999: Temperature sensors monitor plugin for LeechCraft
 app-leechcraft/lc-hotstreams 9999: Provides some cool radio streams to music players like LMP
@@ -1649,7 +1649,7 @@ app-leechcraft/lc-krigstask 9999: The taskbar quark for LeechCraft
 app-leechcraft/lc-lackman 9999: LeechCraft Package Manager for extensions, scripts, themes etc
 app-leechcraft/lc-lastfmscrobble 9999: Last.FM scrobbler plugin for LeechCraft
 app-leechcraft/lc-laughty 9999: The LeechCraft notification daemon
-app-leechcraft/lc-launchy 9999: Allows one to launch third-party applications from LeechCraft
+app-leechcraft/lc-launchy 9999: Allows launching external applications (and LeechCraft plugins) from LeechCraft
 app-leechcraft/lc-lemon 9999: Network monitor plugin for LeechCraft
 app-leechcraft/lc-lhtr 9999: LeechCraft HTML Text editoR component
 app-leechcraft/lc-liznoo 9999: UPower-based power manager for LeechCraft
@@ -1658,7 +1658,7 @@ app-leechcraft/lc-mellonetray 9999: System tray quark for LeechCraft
 app-leechcraft/lc-monocle 9999: Monocle, the modular document viewer for LeechCraft
 app-leechcraft/lc-musiczombie 9999: MusicBrainz client plugin for LeechCraft
 app-leechcraft/lc-nacheku 9999: Monitors selected directory and clipboard for downloadable entities
-app-leechcraft/lc-netstoremanager 9999: Plugin for supporting and managing Internet data storages like Yandex.Disk
+app-leechcraft/lc-netstoremanager 9999: LeechCraft plugin for supporting cloud data storages like Google Drive
 app-leechcraft/lc-networkmonitor 9999: NetworkMonitor watches HTTP requests in for LeechCraft
 app-leechcraft/lc-newlife 9999: New Life imports settings from various other applications into LeechCraft
 app-leechcraft/lc-ooronee 9999: Quark handling text and images droppend onto it
@@ -1669,13 +1669,13 @@ app-leechcraft/lc-popishu 9999: Popishu, the text editor with IDE features for L
 app-leechcraft/lc-poshuku 9999: Poshuku, the full-featured web browser plugin for LeechCraft
 app-leechcraft/lc-qrosp 9999: Qrosp, scrpting support for LeechCraft via Qross
 app-leechcraft/lc-rosenthal 9999: Spellchecking support for LeechCraft
-app-leechcraft/lc-sb2 9999: Sidebar with combined launcher and tab switcher, as well as tray area
+app-leechcraft/lc-sb2 9999: Sidebar for LeechCraft supporting quarks like tab switcher, tray area and so on
 app-leechcraft/lc-scroblibre 9999: Submissions API 1.2-compliant scrobbler for services like libre.fm
 app-leechcraft/lc-secman 9999: Security and personal data manager for LeechCraft
 app-leechcraft/lc-seekthru 9999: OpenSearch support for LeechCraft
 app-leechcraft/lc-summary 9999: Summary plugin for Leechcraft
 app-leechcraft/lc-sysnotify 9999: Notifications via system libnotify daemon for LeechCraft
-app-leechcraft/lc-tabsessmanager 9999: Provides session restore between LeechCraft runs and manual saves/restores
+app-leechcraft/lc-tabsessmanager 9999: Tabs sessions manager
 app-leechcraft/lc-tabslist 9999: Quick navigation between tabs in LeechCraft
 app-leechcraft/lc-touchstreams 9999: VKontakte music source plugin for LeechCraft
 app-leechcraft/lc-tpi 9999: Task progress indicator quark for LeechCraft
@@ -14934,7 +14934,7 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
-net-misc/apt-cacher-ng 1 2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
 net-misc/aria2 1.30.0 1.31.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
@@ -17852,9 +17852,9 @@ virtual/latex-base 1.0: Virtual for basic LaTeX binaries
 virtual/leechcraft-browser 9999: Virtual for LeechCraft plugins providing a web browser
 virtual/leechcraft-downloader-http 9999: Virtual for LeechCraft plugins providing HTTP downloading
 virtual/leechcraft-notifier 9999: Virtual for LeechCraft plugins capable of visually notifying the user
-virtual/leechcraft-quark-sideprovider 9999: Virtual for LeechCraft plugins, displaying quarks in small size somewhere near screen end
+virtual/leechcraft-quark-sideprovider 9999: Virtual for LeechCraft plugins displaying quarks near window edges
 virtual/leechcraft-search-show 9999: Virtual for LeechCraft plugins providing UI for search plugins
-virtual/leechcraft-storage-device-manager 9999: Virtual for LeechCraft plugins that add support for managing removable storage devices
+virtual/leechcraft-storage-device-manager 9999: Virtual for LeechCraft plugins for managing removable storage devices
 virtual/leechcraft-task-show 9999: Virtual for plugins that can show IDownloads and IJobHolders
 virtual/leechcraft-trayarea 9999: Virtual for LeechCraft plugins providing a tray area
 virtual/leechcraft-wysiwyg-editor 9999: Virtual for LeechCraft plugins providing WYSIWYG text editor

@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for LeechCraft plugins providing HTTP downloading
-EAPI=4
-RDEPEND=app-leechcraft/lc-cstp
+EAPI=6
+RDEPEND=~app-leechcraft/lc-cstp-9999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=f9134638d126ddb5242ed9406f00f8fe
+_md5_=3e739db7de8758b1ab09344b3d53932d

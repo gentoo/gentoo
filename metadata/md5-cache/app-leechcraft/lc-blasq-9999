@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile configure install prepare pretend test unpack
-DEPEND=~app-leechcraft/lc-core-9999 deathnote? ( dev-qt/qtxmlpatterns:4 ) spegnersi? ( dev-libs/kqoauth ) vangog? ( dev-libs/qjson ) sys-devel/make >=dev-util/cmake-3.6.3 dev-vcs/git
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=~app-leechcraft/lc-core-9999 dev-qt/qtwidgets:5 dev-qt/qtnetwork:5 dev-qt/qtdeclarative:5 rappor? ( dev-qt/qtxml:5 ) deathnote? ( dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 ) spegnersi? ( dev-libs/kqoauth dev-qt/qtxml:5 ) vangog? ( dev-qt/qtxml:5 ) sys-devel/make >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Cloud image storage services client (like Flickr or Picasa)
-EAPI=5
-HOMEPAGE=http://leechcraft.org/
+EAPI=6
+HOMEPAGE=https://leechcraft.org/
 IUSE=debug +deathnote +rappor +spegnersi +vangog
 LICENSE=Boost-1.0
-RDEPEND=~app-leechcraft/lc-core-9999 deathnote? ( dev-qt/qtxmlpatterns:4 ) spegnersi? ( dev-libs/kqoauth ) vangog? ( dev-libs/qjson )
+RDEPEND=~app-leechcraft/lc-core-9999 dev-qt/qtwidgets:5 dev-qt/qtnetwork:5 dev-qt/qtdeclarative:5 rappor? ( dev-qt/qtxml:5 ) deathnote? ( dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 ) spegnersi? ( dev-libs/kqoauth dev-qt/qtxml:5 ) vangog? ( dev-qt/qtxml:5 )
 SLOT=0
-_eclass_exported_funcs=pkg_pretend:leechcraft src_unpack:git-2 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-2	7af5d170bfc02983b4bcd3167dc5edd4	leechcraft	31c814e6a5231038f3abd13d747fefaf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=f85213039e6b09756aa30f29643c3aac
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-r3	6efc2d7de07a77bf72c7207b48d0e123	leechcraft	0185774735a677e0410b41506f5bb52c	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8eef217fd1547554891d40141f783080
