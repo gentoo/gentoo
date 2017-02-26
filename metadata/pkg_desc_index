@@ -2564,7 +2564,7 @@ app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
 app-vim/fugitive 2.2 9999: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
-app-vim/gentoo-syntax 20160530 99999999: Gentoo and portage related syntax highlighting, filetype, and indent settings
+app-vim/gentoo-syntax 20160530 20170225 99999999: Gentoo and portage related syntax highlighting, filetype, and indent settings
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.3: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
@@ -17387,7 +17387,7 @@ sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1: utility to manage compilers
 sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 7.12 7.12.1 9999: GNU debugger
-sys-devel/gdb-apple 563 768-r1 960 962 966 1344 1346 1461 1518 1705 1708 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
+sys-devel/gdb-apple 768-r1 966 1461 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.7 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20160402 20161104 20170101 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
