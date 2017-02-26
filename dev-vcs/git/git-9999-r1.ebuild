@@ -43,7 +43,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs +gpg gtk highlight +iconv libressl libsecret mediawiki mediawiki-experimental +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs +gpg highlight +iconv libressl libsecret mediawiki mediawiki-experimental +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -75,12 +75,8 @@ RDEPEND="${CDEPEND}
 			cvs? ( >=dev-vcs/cvsps-2.1:0 dev-perl/DBI dev-perl/DBD-SQLite )
 			subversion? ( dev-vcs/subversion[-dso,perl] dev-perl/libwww-perl dev-perl/TermReadKey )
 			)
-	python? ( gtk?
-	(
-		>=dev-python/pygtk-2.8[${PYTHON_USEDEP}]
-		>=dev-python/pygtksourceview-2.10.1-r1:2[${PYTHON_USEDEP}]
-	)
-		${PYTHON_DEPS} )"
+	python? ( ${PYTHON_DEPS} )
+"
 
 # This is how info docs are created with Git:
 #   .txt/asciidoc --(asciidoc)---------> .xml/docbook
@@ -112,7 +108,6 @@ REQUIRED_USE="
 	mediawiki-experimental? ( mediawiki )
 	subversion? ( perl )
 	webdav? ( curl )
-	gtk? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
@@ -421,11 +416,6 @@ src_install() {
 		# can do a conditional loading
 		touch "${ED}${SITELISP}/${PN}/compat/.nosearch"
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
-	fi
-
-	if use python && use gtk ; then
-		python_doscript "${S}"/contrib/gitview/gitview
-		dodoc "${S}"/contrib/gitview/gitview.txt
 	fi
 
 	#dobin contrib/fast-import/git-p4 # Moved upstream
