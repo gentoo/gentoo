@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="6"
 
 inherit toolchain-funcs eutils
 
@@ -38,6 +37,8 @@ src_prepare() {
 		"${S}"/adv_cmds-${MD_VER}/md/md.c || die
 	cp "${DISTDIR}"/adv_cmds-md-${MD_VER}.1 \
 		"${S}"/adv_cmds-${MD_VER}/md/md.1 || die
+
+	eapply_user
 }
 
 src_compile() {
