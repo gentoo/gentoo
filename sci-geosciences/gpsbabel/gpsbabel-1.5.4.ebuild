@@ -7,7 +7,7 @@ EAPI=6
 inherit autotools qmake-utils
 
 DESCRIPTION="GPS waypoints, tracks and routes converter"
-HOMEPAGE="http://www.gpsbabel.org/"
+HOMEPAGE="http://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
 SRC_URI="
 	https://dev.gentoo.org/~asturm/${P}.tar.gz
 	doc? ( http://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
@@ -15,28 +15,30 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="amd64 x86 ~x86-fbsd"
-IUSE="doc"
+IUSE="doc +gui"
 
 RDEPEND="
 	dev-libs/expat
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwebchannel:5
-	dev-qt/qtwebengine:5[widgets]
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
 	sci-libs/shapelib:=
 	sys-libs/zlib[minizip]
 	virtual/libusb:0
+	gui? (
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtwebchannel:5
+		dev-qt/qtwebengine:5[widgets]
+		dev-qt/qtwidgets:5
+		dev-qt/qtxml:5
+	)
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
 	doc? (
+		app-text/docbook-xml-dtd:4.1.2
 		dev-lang/perl
 		dev-libs/libxslt
-		app-text/docbook-xml-dtd:4.1.2
 	)
+	gui? ( dev-qt/linguist:5 )
 "
 
 DOCS=( AUTHORS README.{contrib,igc,mapconverter,md,xmapwpt} )
@@ -76,18 +78,21 @@ src_configure() {
 		QMAKE=$(qt5_get_bindir)/qmake \
 		--with-zlib=system
 
-	pushd "${S}/gui" > /dev/null || die
-	lrelease *.ts || die
-	eqmake5
-	popd > /dev/null
+	if use gui; then
+		pushd "${S}/gui" > /dev/null || die
+		lrelease *.ts || die
+		eqmake5
+		popd > /dev/null
+	fi
 }
 
 src_compile() {
 	default
-
-	pushd "${S}/gui" > /dev/null || die
-	emake
-	popd > /dev/null
+	if use gui; then
+		pushd "${S}/gui" > /dev/null || die
+		emake
+		popd > /dev/null
+	fi
 
 	if use doc; then
 		perl xmldoc/makedoc || die
@@ -100,9 +105,11 @@ src_install() {
 
 	default
 
-	dobin gui/objects/gpsbabelfe
-	insinto /usr/share/${PN}/translations/
-	doins gui/gpsbabel*_*.qm
-	newicon gui/images/appicon.png ${PN}.png
-	make_desktop_entry gpsbabelfe ${PN} ${PN} "Science;Geoscience"
+	if use gui; then
+		dobin gui/objects/gpsbabelfe
+		insinto /usr/share/${PN}/translations/
+		doins gui/gpsbabel*_*.qm
+		newicon gui/images/appicon.png ${PN}.png
+		make_desktop_entry gpsbabelfe ${PN} ${PN} "Science;Geoscience"
+	fi
 }
