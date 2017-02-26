@@ -12769,7 +12769,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.3.3 0.3.3-r1: libhal stub forwarding to UDisks for Adobe Flash to play DRM content
 media-libs/hamlib 1.2.15.3-r1 3.0 3.0.1 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.3.1 1.3.4 1.4.1 1.4.2 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.3.1 1.3.4 1.4.2 1.4.3 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -14770,7 +14770,7 @@ net-libs/net6 1.3.14 1.3.14-r1: Network access framework for IPv4/IPv6 written i
 net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
-net-libs/nghttp2 1.10.0 1.17.0 1.18.1 1.19.0 9999: HTTP/2 C Library
+net-libs/nghttp2 1.10.0 1.18.1 1.19.0 1.20.0 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.10 0.12.17 4.6.0 4.6.1 6.9.4 6.9.5 6.10.0 7.0.0 7.2.0 7.3.0 7.4.0 7.5.0 7.6.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -17001,7 +17001,7 @@ sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.4.0-r1 2.6.0 3.0.0_pre20170219 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.1 1.2 1.2.1: PaX flags maintenance daemon
-sys-apps/pciutils 3.4.1 3.5.2 3.5.3: Various utilities dealing with the PCI bus
+sys-apps/pciutils 3.4.1 3.5.3 3.5.4: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.20: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
