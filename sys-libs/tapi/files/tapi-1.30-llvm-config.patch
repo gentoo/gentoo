@@ -1,0 +1,11 @@
+--- libtapi-1.30/lib/Core/Symbol.cpp.orig	2017-02-11 21:51:53.000000000 +0100
++++ libtapi-1.30/lib/Core/Symbol.cpp	2017-02-11 21:52:00.000000000 +0100
+@@ -9,7 +9,7 @@
+ 
+ #include "tapi/Core/Symbol.h"
+ #include "tapi/Core/LLVM.h"
+-#include "llvm/Config/config.h"
++#include "llvm/Config/llvm-config.h"
+ #include "llvm/Support/raw_ostream.h"
+ 
+ #if HAVE_CXXABI_H
