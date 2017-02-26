@@ -1,49 +1,52 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
-inherit confutils leechcraft
+inherit leechcraft
 
 DESCRIPTION="Poshuku, the full-featured web browser plugin for LeechCraft"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="+autosearch debug +dcac +cleanweb +fatape +filescheme +fua +idn +keywords +onlinebookmarks
-		+pcre postgres qrd +sqlite wyfv"
+IUSE="+autosearch debug +dcac +cleanweb +fatape +filescheme +foc +fua +idn +keywords +onlinebookmarks
+	  postgres qrd +speeddial +sqlite webengine +webkit"
 
 DEPEND="~app-leechcraft/lc-core-${PV}[postgres?,sqlite?]
-		dev-qt/qtwebkit:4
-		idn? ( net-dns/libidn )
-		onlinebookmarks? ( >=dev-libs/qjson-0.7.1-r1 )
-		pcre? ( >=dev-libs/libpcre-8.12 )
-		qrd? ( media-gfx/qrencode )
+	dev-qt/qtwidgets:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtxml:5
+	dev-qt/qtprintsupport:5
+	cleanweb? ( dev-qt/qtconcurrent:5 )
+	idn? ( net-dns/libidn )
+	qrd? ( media-gfx/qrencode )
+	webkit? ( dev-qt/qtwebkit:5 )
+	webengine? ( dev-qt/qtwebengine:5 )
 "
 RDEPEND="${DEPEND}
-		virtual/leechcraft-downloader-http"
+	virtual/leechcraft-downloader-http"
 
-REQUIRED_USE="pcre? ( cleanweb )"
-
-pkg_setup() {
-	confutils_require_any postgres sqlite
-}
+REQUIRED_USE="|| ( postgres sqlite )
+	|| ( webkit webengine )"
 
 src_configure() {
-	local mycmakeargs="
-		$(cmake-utils_use_enable autosearch POSHUKU_AUTOSEARCH)
-		$(cmake-utils_use_enable cleanweb POSHUKU_CLEANWEB)
-		$(cmake-utils_use_enable dcac POSHUKU_DCAC)
-		$(cmake-utils_use_enable fatape POSHUKU_FATAPE)
-		$(cmake-utils_use_enable filescheme POSHUKU_FILESCHEME)
-		$(cmake-utils_use_enable fua POSHUKU_FUA)
-		$(cmake-utils_use_enable idn IDN)
-		$(cmake-utils_use_enable keywords POSHUKU_KEYWORDS)
-		$(cmake-utils_use_enable onlinebookmarks POSHUKU_ONLINEBOOKMARKS)
-		$(cmake-utils_use_enable qrd POSHUKU_QRD)
-		$(cmake-utils_use_enable pcre POSHUKU_CLEANWEB_PCRE)
-		$(cmake-utils_use_enable wyfv POSHUKU_WYFV)
-		"
+	local mycmakeargs=(
+		-DENABLE_POSHUKU_AUTOSEARCH=$(usex autosearch)
+		-DENABLE_POSHUKU_CLEANWEB=$(usex cleanweb)
+		-DENABLE_POSHUKU_DCAC=$(usex dcac)
+		-DENABLE_POSHUKU_FATAPE=$(usex fatape)
+		-DENABLE_POSHUKU_FILESCHEME=$(usex filescheme)
+		-DENABLE_POSHUKU_FOC=$(usex foc)
+		-DENABLE_POSHUKU_FUA=$(usex fua)
+		-DENABLE_IDN=$(usex idn)
+		-DENABLE_POSHUKU_KEYWORDS=$(usex keywords)
+		-DENABLE_POSHUKU_ONLINEBOOKMARKS=$(usex onlinebookmarks)
+		-DENABLE_POSHUKU_QRD=$(usex qrd)
+		-DENABLE_POSHUKU_SPEEDDIAL=$(usex speeddial)
+		-DENABLE_POSHUKU_WEBKITVIEW=$(usex webkitview)
+		-DENABLE_POSHUKU_WEBENGINEVIEW=$(usex webengineview)
+	)
 
 	cmake-utils_src_configure
 }

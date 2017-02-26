@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="The Laretz sync server"
 HOMEPAGE="http://leechcraft.org"
@@ -10,7 +10,7 @@ HOMEPAGE="http://leechcraft.org"
 EGIT_REPO_URI="git://github.com/0xd34df00d/laretz.git"
 EGIT_PROJECT="laretz"
 
-inherit cmake-utils git-2
+inherit cmake-utils git-r3
 
 LICENSE="Boost-1.0"
 SLOT="0"
