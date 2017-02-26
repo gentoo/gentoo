@@ -2,8 +2,8 @@ Fixing as-needed issues, provide shared libs
 
 https://bugs.gentoo.org/show_bug.cgi?id=294971
 
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1,440 +1,92 @@
  ACLOCAL_AMFLAGS = -I m4
  
@@ -516,8 +516,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=294971
 +	type_trait.hh
 +libsnpfile_la_LIBADD = $(BOOST_PROGRAM_OPTIONS_LIB) $(BOOST_SIGNALS_LIB)
 +
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -1,10 +1,11 @@
  AC_INIT(snpfile, 2.0.1, mailund@birc.au.dk)
  AM_INIT_AUTOMAKE
