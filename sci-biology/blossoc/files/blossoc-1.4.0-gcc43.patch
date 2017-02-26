@@ -3,8 +3,8 @@ Fixes build with >=GCC-4.3
 http://bugs.gentoo.org/show_bug.cgi?id=292949
 
 Patch written by Sebastian Luther <SebastianLuther@gmx.de>
---- pph.cc
-+++ pph.cc
+--- a/pph.cc
++++ b/pph.cc
 @@ -23,6 +23,7 @@
   */
  
