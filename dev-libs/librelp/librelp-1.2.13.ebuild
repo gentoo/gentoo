@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI="6"
 
 inherit autotools
 
@@ -13,7 +13,7 @@ SRC_URI="http://download.rsyslog.com/${PN}/${P}.tar.gz"
 LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 
 # subslot = soname version
-SLOT="0/0.1.0"
+SLOT="0/0.2.0"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 IUSE="debug doc +ssl static-libs"
