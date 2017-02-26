@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=net-misc/curl sci-libs/cfitsio sci-libs/gsl sci-libs/libnova sys-libs/zlib virtual/jpeg:0 virtual/libusb:0 sys-kernel/linux-headers sys-devel/make >=dev-util/cmake-3.6.3 virtual/pkgconfig
+DESCRIPTION=INDI Astronomical Control Protocol library
+EAPI=6
+HOMEPAGE=http://www.indilib.org/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2
+RDEPEND=net-misc/curl sci-libs/cfitsio sci-libs/gsl sci-libs/libnova sys-libs/zlib virtual/jpeg:0 virtual/libusb:0
+SLOT=0/1
+SRC_URI=https://github.com/indilib/indi/releases/download/v1.4.0/libindi_1.4.0.tar.gz -> indilib-1.4.0.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=f8281f94eb9811df19cca7678690a5d1
