@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,6 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java opengl
 	postscript +qhull +qrupdate readline +sparse static-libs X zlib"
-REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
@@ -31,8 +30,10 @@ RDEPEND="
 	gnuplot? ( sci-visualization/gnuplot )
 	gui? ( x11-libs/qscintilla:=[qt4(-)] )
 	hdf5? ( sci-libs/hdf5:0= )
-	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
-	imagemagick? ( media-gfx/imagemagick:=[cxx] )
+	imagemagick? (
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
+		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
+	)
 	java? ( >=virtual/jre-1.6.0:* )
 	opengl? (
 		media-libs/freetype:2=
@@ -117,6 +118,7 @@ src_configure() {
 		$(use_enable fftw fftw-threads)
 		$(use_with glpk)
 		$(use_with hdf5)
+		$(use_with imagemagick magick $(usex graphicsmagick GraphicsMagick ImageMagick))
 		$(use_with opengl)
 		$(use_with qhull)
 		$(use_with qrupdate)
@@ -129,13 +131,6 @@ src_configure() {
 		$(use_with X x)
 		$(use_with zlib z)
 	)
-	if use graphicsmagick; then
-		myeconfargs+=( "--with-magick=GraphicsMagick" )
-	elif use imagemagick; then
-		myeconfargs+=( "--with-magick=ImageMagick" )
-	else
-		myeconfargs+=( "--without-magick" )
-	fi
 	autotools-utils_src_configure
 }
 

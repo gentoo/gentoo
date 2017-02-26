@@ -14,7 +14,6 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java opengl openssl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse static-libs X zlib"
-REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
@@ -30,8 +29,10 @@ RDEPEND="
 	glpk? ( sci-mathematics/glpk:0= )
 	gnuplot? ( sci-visualization/gnuplot )
 	hdf5? ( sci-libs/hdf5:0= )
-	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
-	imagemagick? ( media-gfx/imagemagick:=[cxx] )
+	imagemagick? (
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
+		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
+	)
 	java? ( >=virtual/jre-1.6.0:* )
 	opengl? (
 		media-libs/freetype:2=
@@ -115,16 +116,7 @@ src_configure() {
 	use hdf5 && has_version sci-libs/hdf5[mpi] && \
 		export CXX=mpicxx CC=mpicc FC=mpif77 F77=mpif77
 
-	local myconf=()
-	if use graphicsmagick; then
-		myconf+=( --with-magick=GraphicsMagick )
-	elif use imagemagick; then
-		myconf+=( --with-magick=ImageMagick )
-	else
-		myconf+=( --without-magick )
-	fi
-
-	econf "${myconf[@]}" \
+	econf \
 		--localstatedir="${EPREFIX}/var/state/octave" \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
@@ -144,6 +136,7 @@ src_configure() {
 		$(use_enable fftw fftw-threads) \
 		$(use_with glpk) \
 		$(use_with hdf5) \
+		$(use_with imagemagick magick $(usex graphicsmagick GraphicsMagick ImageMagick)) \
 		$(use_with opengl) \
 		$(use_with opengl fltk) \
 		$(use_with openssl) \
