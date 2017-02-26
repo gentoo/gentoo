@@ -11,5 +11,8 @@
 		<flag name="multitarget">Compile for non-standard target
 			architectures (ppc and ppc64) -- experimental, Gentoo
 			only</flag>
+		<flag name="classic">Use nm, otool, etc. from this ebuild
+			instead of llvm-based tools</flag>
+		<flag name="tapi">Build against <pkg>sys-libs/tapi</pkg></flag>
 	</use>
 </pkgmetadata>
