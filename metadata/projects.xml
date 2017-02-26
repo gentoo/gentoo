@@ -1972,16 +1972,6 @@
     </member>
   </project>
   <project>
-    <email>leechcraft@gentoo.org</email>
-    <name>LeechCraft</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LeechCraft</url>
-    <description>A project to maintain LeechCraft applications in Gentoo.</description>
-    <member is-lead="1">
-      <email>maksbotan@gentoo.org</email>
-      <name>Maxim Koltsov</name>
-    </member>
-  </project>
-  <project>
     <email>gentoo-yeeloong@gentoo.org</email>
     <name>Lemote Yeeloong Gentoo Desktop</name>
     <url>https://wiki.gentoo.org/wiki/Project:Lemote_Yeeloong_Gentoo_Desktop</url>
