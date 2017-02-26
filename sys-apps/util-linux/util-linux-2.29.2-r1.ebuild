@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit eutils toolchain-funcs libtool flag-o-matic bash-completion-r1 \
-	python-single-r1 multilib-minimal systemd
+	pam python-single-r1 multilib-minimal systemd
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
@@ -181,8 +181,8 @@ multilib_src_install_all() {
 	prune_libtool_files
 
 	if use pam; then
-		dopamd "${FILESDIR}/runuser.pamd" runuser
-		dopamd "${FILESDIR}/runuser-l.pamd" runuser-l
+		newpamd "${FILESDIR}/runuser.pamd" runuser
+		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
 	fi
 }
 
