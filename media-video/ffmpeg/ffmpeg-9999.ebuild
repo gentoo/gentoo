@@ -105,6 +105,7 @@ IUSE="
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
 ARM_CPU_FEATURES=( armv5te armv6 armv6t2 neon armvfp:vfp )
+ARM_CPU_REQUIRED_USE="arm64? ( neon )"
 MIPS_CPU_FEATURES=( mipsdspr1 mipsdspr2 mipsfpu )
 PPC_CPU_FEATURES=( altivec )
 X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
@@ -126,7 +127,6 @@ X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_3dnowext?  ( cpu_flags_x86_3dnow )
 	cpu_flags_x86_3dnow?  ( cpu_flags_x86_mmx )
 "
-ARM_CPU_REQUIRED_USE="arm64? ( neon )"
 
 IUSE="${IUSE}
 	${ARM_CPU_FEATURES[@]%:*}
