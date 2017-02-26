@@ -63,3 +63,6 @@ DEPEND="${DEPEND}
 !!<dev-texlive/texlive-langturkmen-2016
 !!<dev-texlive/texlive-langvietnamese-2016
 "
+RDEPEND="${RDEPEND}
+	!<dev-texlive/texlive-latex-2016
+"
