@@ -18469,7 +18469,7 @@ x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.8-r1 1.0.9 1.0.9-r1: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.6.1 2.6.2 2.6.3 2.6.4: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.2-r1: X.Org Session Management library
-x11-libs/libX11 1.6.2 1.6.3 1.6.4: X.Org X11 library
+x11-libs/libX11 1.6.2 1.6.3 1.6.4 1.6.5: X.Org X11 library
 x11-libs/libXCalibrate 0.1_pre20081207-r1: X.Org Calibrate client-side protocol library
 x11-libs/libXScrnSaver 1.2.2-r1: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1: X.Org XTrap library
