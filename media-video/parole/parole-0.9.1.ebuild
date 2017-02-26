@@ -18,7 +18,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 	media-libs/gstreamer:1.0=
 	media-libs/gst-plugins-base:1.0=
 	sys-apps/dbus:0=
-	>=x11-libs/gtk+-3.2:3=
+	>=x11-libs/gtk+-3.14:3=
 	x11-libs/libX11:0=
 	>=xfce-base/libxfce4ui-4.11:0=[gtk3(+)]
 	>=xfce-base/libxfce4util-4.11:0=
@@ -26,6 +26,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 	clutter? (
 		>=media-libs/clutter-1.16.4:1.0=
 		>=media-libs/clutter-gtk-1.4.4:1.0=
+		<x11-libs/gtk+-3.22:3
 	)
 	libnotify? ( >=x11-libs/libnotify-0.7:0= )
 	taglib? ( >=media-libs/taglib-1.6:0= )"
