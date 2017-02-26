@@ -89,7 +89,7 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	app-crypt/gpgme
+	app-crypt/gpgme[cxx]
 	app-text/hunspell
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
@@ -112,6 +112,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
+	dev-libs/libassuan
+	dev-libs/libgpg-error
 	>=dev-libs/liborcus-0.12.1
 	dev-libs/librevenge
 	dev-libs/nspr
@@ -244,7 +246,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 PATCHES=(
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
@@ -434,6 +436,7 @@ src_configure() {
 	# --disable-report-builder: too much java packages pulled in without pkgs
 	# --without-system-sane: just sane.h header that is used for scan in writer,
 	#   not linked or anything else, worthless to depend on
+	# --disable-pdfium: not yet packaged
 	econf \
 		--with-system-dicts \
 		--with-system-epoxy \
@@ -454,6 +457,7 @@ src_configure() {
 		--disable-fetch-external \
 		--disable-gstreamer-0-10 \
 		--disable-online-update \
+		--disable-pdfium \
 		--disable-report-builder \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
 		--with-build-version="Gentoo official package" \
@@ -471,7 +475,7 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
-		--with-system-gpgme \
+		--with-system-gpgmepp \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
