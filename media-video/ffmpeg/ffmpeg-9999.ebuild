@@ -126,6 +126,7 @@ X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_3dnowext?  ( cpu_flags_x86_3dnow )
 	cpu_flags_x86_3dnow?  ( cpu_flags_x86_mmx )
 "
+ARM_CPU_REQUIRED_USE="arm64? ( neon )"
 
 IUSE="${IUSE}
 	${ARM_CPU_FEATURES[@]%:*}
@@ -135,6 +136,7 @@ IUSE="${IUSE}
 "
 
 CPU_REQUIRED_USE="
+	${ARM_CPU_REQUIRED_USE}
 	${X86_CPU_REQUIRED_USE}
 "
 
