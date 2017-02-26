@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 	)"
 
 DOCS=( AUTHORS.rst CONTRIBUTING.rst README.rst )
+PATCHES=( "${FILESDIR}"/${P}-libressl-2.5.1.patch )
 
 python_test() {
 	distutils_install_for_testing
