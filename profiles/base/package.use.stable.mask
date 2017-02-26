@@ -32,10 +32,6 @@ net-misc/asterisk osplookup
 # Unstable dependencies.
 media-plugins/kipi-plugins mediawiki vkontakte
 
-# Mike Gilbert <floppym@gentoo.org> (26 Jan 2017)
-# Needs >=media-video/ffmpeg-3
->=www-client/chromium-56 system-ffmpeg
-
 # Michael Palimaka <kensington@gentoo.org (26 Jan 2017)
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
