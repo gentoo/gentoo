@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=Miscellaneous commands used on Darwin/Mac OS X systems, Snow Leopard 10.6.3
-EAPI=3
+EAPI=6
 HOMEPAGE=http://www.opensource.apple.com/
 KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
 LICENSE=BSD
@@ -8,4 +8,4 @@ SLOT=0
 SRC_URI=http://www.opensource.apple.com/darwinsource/tarballs/other/misc_cmds-27.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/shell_cmds-149.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/developer_cmds-53.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e126b7d26cd1fc2edd1c446df9cfdc58
+_md5_=122a100378e8a1296a364447e87679dd
