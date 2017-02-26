@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 inherit cmake-utils eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="Professional Audio Tools for GNU/Linux"
@@ -14,15 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug jack lame lv2 mad pulseaudio"
 
-RDEPEND=">=media-libs/flac-1.1.2
+RDEPEND="
+	dev-qt/qtcore:4
+	dev-qt/qtgui:4
+	>=media-libs/flac-1.1.2
 	>=media-libs/libogg-1.1.2
 	media-libs/libsamplerate
 	>=media-libs/libsndfile-1.0.12
 	>=media-libs/libvorbis-1.1.2
 	>=media-sound/wavpack-4.40.0
 	>=sci-libs/fftw-3
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	jack? ( virtual/jack )
 	lame? ( media-sound/lame )
@@ -43,13 +44,13 @@ src_configure() {
 	use lv2 && append-cppflags "$($(tc-getPKG_CONFIG) --cflags slv2)" #415165
 
 	local mycmakeargs=(
-		$(cmake-utils_use_want jack JACK)
-		$(cmake-utils_use_want alsa ALSA)
-		$(cmake-utils_use_want pulseaudio PULSEAUDIO)
-		$(cmake-utils_use_want lv2 LV2)
-		$(cmake-utils_use_want mad MP3_DECODE)
-		$(cmake-utils_use_want lame MP3_ENCODE)
-		$(cmake-utils_use_want debug TRAVERSO_DEBUG)
+		-DWANT_ALSA=$(usex alsa)
+		-DWANT_TRAVERSO_DEBUG=$(usex debug)
+		-DWANT_JACK=$(usex jack)
+		-DWANT_MP3_ENCODE=$(usex lame)
+		-DWANT_LV2=$(usex lv2)
+		-DWANT_MP3_DECODE=$(usex mad)
+		-DWANT_PULSEAUDIO=$(usex pulseaudio)
 	)
 	cmake-utils_src_configure
 }
