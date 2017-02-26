@@ -1,11 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-inherit distutils-r1 eutils
+
+inherit distutils-r1 eutils virtualx fdo-mime
 
 DESCRIPTION="Python library to explore relationships within and among related datasets"
 HOMEPAGE="http://www.glueviz.org/"
@@ -16,31 +17,33 @@ LICENSE="BSD MIT"
 SLOT="0"
 IUSE="test"
 
-# too much work to fix
+# as of 0.10.0; broken
 RESTRICT="test"
 
-DOCS=( README.md CHANGES.md )
+DOCS=( README.rst CHANGES.md )
 
 RDEPEND="
 	dev-python/astropy[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
-	|| (
-		  dev-python/PyQt4[${PYTHON_USEDEP}]
-		  dev-python/pyside[${PYTHON_USEDEP}]
-		  dev-python/PyQt5[${PYTHON_USEDEP}]
-	   )"
+	dev-python/QtPy[${PYTHON_USEDEP},designer,gui]
+"
 
 DEPEND="${RDEPEND}
 	dev-python/astropy-helpers[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		  dev-python/ipython[${PYTHON_USEDEP}]
 		  dev-python/mock[${PYTHON_USEDEP}]
-		  dev-python/pytest[${PYTHON_USEDEP}] )"
+		  dev-python/pytest[${PYTHON_USEDEP}]
+		  dev-python/qtconsole[${PYTHON_USEDEP}]
+		  dev-python/QtPy[${PYTHON_USEDEP},designer,gui,testlib]
+	)
+"
 
 python_test() {
-	esetup.py test
+	virtx esetup.py test
 }
 
 pkg_postinst() {
@@ -56,5 +59,12 @@ pkg_postinst() {
 	optfeature "Support HDF5 files" dev-python/h5py
 	optfeature "Image processing calculations" sci-libs/scipy
 	optfeature "Read popular image formats" sci-libs/scikits_image
+	optfeature "Interact with Ginga viewer" dev-python/ginga
 	optfeature "Export plots to plot.ly" dev-python/plotly
+	optfeature "Support Excel reading" dev-python/xlrd
+	optfeature "Used to read in spectral cubes" dev-python/spectral-cube
+	optfeature "Support astronomy dendograms" dev-python/astrodendro
+
+	# Update mimedb for the new .desktop file
+	fdo-mime_desktop_database_update
 }
