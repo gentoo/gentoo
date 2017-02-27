@@ -18,9 +18,10 @@ HOMEPAGE="https://github.com/openrc/opentmpfiles"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE=""
+IUSE="selinux"
 
-RDEPEND="!<sys-apps/openrc-0.23"
+RDEPEND="!<sys-apps/openrc-0.23
+	selinux? ( sec-policy/selinux-base-policy )"
 
 src_install() {
 	default
