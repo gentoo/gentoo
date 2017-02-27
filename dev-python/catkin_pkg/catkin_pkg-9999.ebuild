@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -19,10 +19,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="
-		http://download.ros.org/downloads/${PN}/${P}.tar.gz
-		https://github.com/ros-infrastructure/catkin_pkg/archive/${PV}.tar.gz -> ${P}.tar.gz
-		"
+	SRC_URI="https://github.com/ros-infrastructure/catkin_pkg/archive/${PV}.tar.gz -> ${P}-gh.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 
