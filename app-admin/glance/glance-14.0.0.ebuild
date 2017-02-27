@@ -4,16 +4,15 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
-inherit distutils-r1 git-r3 user
+inherit distutils-r1 user
 
 DESCRIPTION="Services for discovering, registering, and retrieving VM images"
 HOMEPAGE="https://launchpad.net/glance"
-EGIT_REPO_URI="https://github.com/openstack/glance.git"
-EGIT_BRANCH="stable/ocata"
+SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc mysql postgres +sqlite +swift"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
