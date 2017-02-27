@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils
+EAPI=6
 
 MY_PN="input"
 MY_P="${MY_PN}-${PV}"
@@ -21,14 +20,6 @@ DEPEND=""
 RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	# Ported from Debian
-	#epatch "${FILESDIR}"/input-utils-0.0.1_pre20081014.patch
-	# version check stuff
-	#epatch "${FILESDIR}"/input-utils-0.0.1-protocol-mismatch-fix.patch
-	:
-}
 
 src_install() {
 	make install bindir="${D}"/usr/bin mandir="${D}"/usr/share/man STRIP="" || die "make install failed"
