@@ -10,10 +10,6 @@
 subversion
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# dev-db/sqlite not marked stable yet
-sqlite
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # sys-apps/dbus not marked stable yet
 dbus
 
