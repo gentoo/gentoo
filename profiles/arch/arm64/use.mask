@@ -109,7 +109,6 @@ ctypes-python
 sasl
 libproxy
 pkcs11
-gnutls
 bazaar
 darcs
 mercurial
