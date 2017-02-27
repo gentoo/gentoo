@@ -56,7 +56,7 @@ RDEPEND="
 	>=dev-python/oslo-config-3.14.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-config-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.8.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-context-2.12.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-context-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.17.1[${PYTHON_USEDEP}]
 	>=dev-python/futurist-0.11.0[${PYTHON_USEDEP}]
