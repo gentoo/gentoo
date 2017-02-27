@@ -54,14 +54,6 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( ChangeLog README )
 
-PATCHES=(
-	"${FILESDIR}/${P}-ecm531-1.patch"
-	"${FILESDIR}/${P}-ecm531-2.patch"
-	"${FILESDIR}/${P}-ecm531-3.patch"
-	"${FILESDIR}/${P}-ecm531-4.patch"
-	"${FILESDIR}/${P}-ecm531-5.patch"
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PLAYGROUND=ON
