@@ -7,7 +7,7 @@ EAPI=6
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic eutils toolchain-funcs multilib perl-module python-single-r1
+inherit autotools flag-o-matic eutils gnome2 toolchain-funcs multilib perl-module python-single-r1
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
@@ -226,10 +226,7 @@ src_configure() {
 }
 
 src_install() {
-	# mimicking gnome2_src_install as that one is banned for >=EAPI-6 (*sigh*)
-	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
-	emake DESTDIR="${D}" install
-	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
+	gnome2_src_install
 
 	if use gtk; then
 		# Fix tray pathes for kde-3.5, e16 (x11-wm/enlightenment) and other
