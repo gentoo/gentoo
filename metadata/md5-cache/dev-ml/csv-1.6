@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=lwt? ( dev-ml/lwt:= ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=A pure OCaml library to read and write CSV files
+EAPI=5
+HOMEPAGE=https://github.com/Chris00/ocaml-csv
+IUSE=+lwt +ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=lwt? ( dev-ml/lwt:= ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/1.6
+SRC_URI=https://github.com/Chris00/ocaml-csv/releases/download/1.6/csv-1.6.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	708f85bc1bf00876604e223fb56e062a	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	499613ee74720fb765beb189ebc56a2a	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=1e2f522dd07c4d04d487c48f1caf44a6
