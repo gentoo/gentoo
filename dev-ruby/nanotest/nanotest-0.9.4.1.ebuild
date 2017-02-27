@@ -14,7 +14,7 @@ DESCRIPTION="Extremely mynymal test framework"
 HOMEPAGE="https://github.com/mynyml/nanotest"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~arm ~ppc"
 SLOT="0"
 IUSE=""
 
