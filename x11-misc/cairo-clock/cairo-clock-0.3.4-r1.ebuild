@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="An analog clock displaying the system-time"
-HOMEPAGE="http://macslow.net/?page_id=23"
+HOMEPAGE="https://launchpad.net/cairo-clock"
 SRC_URI="http://macslow.thepimp.net/projects/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -23,9 +25,12 @@ DEPEND="${DEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
 
-DOCS=( AUTHORS NEWS README TODO )
+PATCHES=(
+	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${P}-linker.patch
+)
 
 src_prepare() {
-	# cc: error: unrecognized option '--export-dynamic'
-	sed -i -e '/cairo_clock_LDFLAGS/s:=.*:= -rdynamic:' src/Makefile.in || die
+	default
+	eautoreconf
 }
