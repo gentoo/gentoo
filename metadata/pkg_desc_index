@@ -2656,6 +2656,7 @@ app-vim/unite 4.0-r1: vim plugin: unite all sources
 app-vim/uptime 1.3-r1: vim plugin: display vim uptimes
 app-vim/vcscommand 1.99.47: vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugin
 app-vim/vim-addon-mw-utils 20121105: vim plugin: interpret a file by function and cache file automatically
+app-vim/vim-autoclose 2.0: vim plugin: open-close pair of characters
 app-vim/vim-flake8 1.6: vim plugin: runs the currently open file through flake8
 app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: A comprehensive set of tools to view, edit and compile LaTeX documents
 app-vim/vim-misc 1.17.6: vim plugin: miscellaneous auto-load scripts
