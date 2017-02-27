@@ -29,6 +29,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use sctp || export ac_cv_header_netinet_sctp_h=no
 	econf $(use_enable static-libs static)
 }
 
