@@ -108,7 +108,7 @@ app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsyn
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2: Backup and recovery utilities for GitHub Enterprise
 app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.10: Single process stack of various system monitors
-app-admin/glance 12.0.0 13.0.0 2016.1.9999 2016.2.9999: Services for discovering, registering, and retrieving VM images
+app-admin/glance 12.0.0 13.0.0 14.0.0 2016.1.9999 2016.2.9999 2017.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/graylog2 2.1.2: Free and open source log management
 app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
@@ -7140,7 +7140,7 @@ dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3-r1 0.5.7: A simple Python object interface to a MySQL database schema
 dev-python/URLObject 2.4.0 2.4.2: A utility class for manipulating URLs
-dev-python/WSME 0.8.0: Simplify the writing of REST APIs, and extend them with additional protocols.
+dev-python/WSME 0.8.0 0.9.1: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
 dev-python/aadict 0.2.2: An auto-attribute dict (and a couple of other useful dict functions)
@@ -7156,7 +7156,7 @@ dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of t
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7 1.1.2: django CMS plugins for bootstrap3 markup
 dev-python/aldryn-common 1.0.3 1.0.4: django CMS plugins with common utilities
 dev-python/aldryn-search 0.2.12 0.3.0: An extension to django CMS to provide multilingual Haystack indexes
-dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5 0.8.6 0.8.7 0.8.8: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5 0.8.6 0.8.7 0.8.8 0.8.10: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
@@ -7577,7 +7577,7 @@ dev-python/git-python 0.3.6 1.0.0 1.0.1 1.0.2 2.0.5 2.0.6: Library used to inter
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/github3 0.9.3: A wrapper for the GitHub API written in python
-dev-python/glance_store 0.13.1 0.18.0: A library for glance
+dev-python/glance_store 0.13.1 0.18.0 0.20.0: A library for glance
 dev-python/globre 0.1.2-r1 0.1.3 0.1.4: A glob matching library, providing an interface similar to the 're' module
 dev-python/glueviz 0.9.1 0.10.0: Python library to explore relationships within and among related datasets
 dev-python/gmpy 2.0.4 2.0.6 2.0.7 2.0.8: Python bindings for GMP, MPC, MPFR and MPIR libraries
@@ -8335,7 +8335,7 @@ dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and wor
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
 dev-python/python-socketio 0.9.1 1.6.0 1.6.3: Python implementation of the Socket.IO realtime server.
 dev-python/python-spidermonkey 0.0.10: JavaScript / Python bridge
-dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16 0.1.18 0.1.19 0.2.1: A non-validating SQL parser module for Python
+dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16 0.1.18 0.1.19 0.2.1 0.2.2: A non-validating SQL parser module for Python
 dev-python/python-stdnum 0.9 1.1 1.3 1.4 1.5: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.0.0 3.1.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 230 233: Python module for native access to the systemd facilities
@@ -8480,7 +8480,7 @@ dev-python/seaborn 0.5.1 0.6.0 0.7.0 0.7.1: Statistical data visualization
 dev-python/secretstorage 2.3.1: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selectors34 1.1: Backport of the selectors module from Python 3.4
 dev-python/selenium 2.46.0 2.47.1 2.49.0 3.0.2: Python language binding for Selenium Remote Control
-dev-python/semantic_version 2.4.2: Python library providing a few tools handling SemVer in Python.
+dev-python/semantic_version 2.4.2 2.6.0: Python library providing a few tools handling SemVer in Python.
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
 dev-python/sepolgen 1.2.3 2.6 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11 1.12: A simple serialization library based on ast.literal_eval
@@ -8583,7 +8583,7 @@ dev-python/sympy 0.7.6.1-r1 1.0-r1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.2 0.7.3 0.7.5 0.7.7: Pretty-print tabular data
 dev-python/tagpy 2013.1: Python Bindings for TagLib
-dev-python/taskflow 1.30.0 2.6.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
+dev-python/taskflow 1.30.0 2.6.0 2.9.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tdaemon 0.1.6: Test Daemon
 dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
 dev-python/tempest-lib 1.0.0: Functional or integrated test suites for OpenStack projects
