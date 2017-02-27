@@ -8448,7 +8448,7 @@ dev-python/rope_py3k 0.9.4: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
-dev-python/rosdistro 0.4.7 0.5.0 0.6.1 9999: Tools to work with catkinized rosdistro files
+dev-python/rosdistro 0.6.1 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.1.0 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2 2.3.1 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
@@ -8995,7 +8995,7 @@ dev-ros/rosboost_cfg 1.14.0 9999: Tool for determining cflags/lflags/etc. of boo
 dev-ros/rosbridge_library 0.7.15 0.7.16 0.7.17 9999: Core rosbridge package responsible for interpreting JSON and performing the appropriate ROS action
 dev-ros/rosbridge_server 0.7.13-r2 0.7.14 0.7.15 0.7.16 0.7.17 9999: A WebSocket interface to rosbridge
 dev-ros/rosbuild 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 9999: Scripts for managing the CMake-based build system for ROS
-dev-ros/rosclean 1.13.4 1.13.5 1.14.0 9999: Cleanup filesystem resources (e.g. log files)
+dev-ros/rosclean 1.14.0 9999: Cleanup filesystem resources (e.g. log files)
 dev-ros/rosconsole 1.12.5 1.12.6 1.12.7 1.13.0 9999: ROS console output library
 dev-ros/rosconsole_bridge 0.4.2 0.4.3 0.4.4 9999: Connects console_bridge-based logging to rosconsole-based logging
 dev-ros/roscpp 1.12.7 1.13.0 9999: C++ implementation of ROS
@@ -9017,7 +9017,7 @@ dev-ros/rosmsg 1.13.0 9999: Command-line tools for displaying information about 
 dev-ros/rosnode 1.13.0 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 1.12.7 1.13.0 9999: System-wide logging mechanism for messages sent to the /rosout topic
 dev-ros/rospack 2.3.1-r1 2.3.2 2.4.0 9999: Retrieves information about ROS packages available on the filesystem
-dev-ros/rosparam 1.12.6 1.12.7 1.13.0 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
+dev-ros/rosparam 1.13.0 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.13.0 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 0.7.0 0.7.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/rosserial_arduino 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
@@ -9139,7 +9139,7 @@ dev-ros/visp_tracker 0.10.0 9999: Wraps the ViSP moving edge tracker provided by
 dev-ros/visualization_marker_tutorials 0.9.2 0.10.1 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.3 1.12.4 1.12.5 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 9999: Implementation of an efficient 3D voxel grid
-dev-ros/xacro 1.11.0 1.11.1 9999: XML macro language
+dev-ros/xacro 1.11.1 9999: XML macro language
 dev-ros/xmlrpcpp 1.12.6 1.12.7 1.13.0 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.2.1-r2 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.4: Allows to embed C/C++ in Ruby code
