@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit qt4-r2
+inherit qmake-utils
 
 DESCRIPTION="Keep your notes, pictures, ideas, and information in Baskets"
 HOMEPAGE="https://bitbucket.org/ridderby/basqet"
@@ -22,8 +22,11 @@ S=${WORKDIR}/release_${PV}
 
 PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
 
-src_prepare() {
-	qt4-r2_src_prepare
+src_configure() {
+	eqmake4 ${PN}.pro PREFIX="${EPREFIX}"/usr
+}
 
-	sed -i 's:PREFIX = /usr/local:PREFIX = /usr:' ${PN}.pro || die
+src_install() {
+	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 }

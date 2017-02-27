@@ -1,5 +1,5 @@
---- basqet.desktop
-+++ basqet.desktop
+--- a/basqet.desktop
++++ b/basqet.desktop
 @@ -1,9 +1,9 @@
  [Desktop Entry]
 -Version=0.2.0
