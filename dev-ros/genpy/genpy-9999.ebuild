@@ -6,7 +6,7 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/genpy"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
 inherit ros-catkin
 
@@ -23,12 +23,3 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
-
-python_test() {
-	cd "${BUILD_DIR}"
-	PYTHONPATH="${S}/src" nosetests --verbose -w "${S}/test" || die
-}
-
-src_test() {
-	python_foreach_impl python_test
-}
