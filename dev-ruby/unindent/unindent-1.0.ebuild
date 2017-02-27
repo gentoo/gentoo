@@ -14,7 +14,7 @@ DESCRIPTION="Ruby method to unindent strings"
 HOMEPAGE="https://github.com/mynyml/unindent"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~ppc"
+KEYWORDS="~amd64 arm ppc ppc64"
 SLOT="0"
 IUSE=""
 

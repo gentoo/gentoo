@@ -17,7 +17,7 @@ DESCRIPTION="Cucumber steps for driving out command line applications"
 HOMEPAGE="https://github.com/cucumber/aruba"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 SLOT="0"
 IUSE=""
 
