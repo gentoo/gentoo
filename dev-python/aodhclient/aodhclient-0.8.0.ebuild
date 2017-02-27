@@ -31,9 +31,3 @@ RDEPEND="
 	>=dev-python/debtcollector-1.3.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 "
-
-python_prepare_all() {
-	# built in...
-	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
-}
