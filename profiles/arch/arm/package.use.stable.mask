@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Weber <xmw@gentoo.org> (27 Feb 2017)
+# Stable mask dev-ruby/haml test till rails is stabilized.
+dev-ruby/haml test
+
 # Brian Evans <grknight@gentoo.org> (17 Jan 2017)
 # Stable mask galera since dev-libs/asio is not stable on arm
 dev-db/mariadb galera
