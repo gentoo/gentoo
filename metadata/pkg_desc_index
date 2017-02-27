@@ -7701,7 +7701,7 @@ dev-python/json-rpc 1.10.1: JSON-RPC transport implementation for python
 dev-python/json-tools 0.3.3 0.4.0: A set of tools to manipulate JSON: diff, patch, and pretty-printing
 dev-python/jsonfield 1.0.3: Reusable Django field that allows you to store validated JSON in your model
 dev-python/jsonmerge 1.1.0: Merge a series of JSON documents.
-dev-python/jsonpatch 1.9 1.13: Apply JSON-Patches according to http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.9 1.13 1.15: Apply JSON-Patches according to http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 0.8.0 0.9.1 0.9.2 0.9.3: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 1.7 1.10: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
