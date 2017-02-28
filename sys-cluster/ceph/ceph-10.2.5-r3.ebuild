@@ -135,7 +135,7 @@ user_setup() {
 }
 
 emake_python_bindings() {
-	local action="${1}" params binding
+	local action="${1}" params binding module
 	shift
 	params=("${@}")
 
@@ -144,8 +144,15 @@ emake_python_bindings() {
 		emake "${params[@]}" PYTHON="${EPYTHON}" "${binding}-pybind-${action}"
 
 		# these don't work and aren't needed on python3
-		if [[ ${EBUILD_PHASE} == install ]] && python_is_python3; then
-			rm -f "${ED}/$(python_get_sitedir)"/ceph_{argparse,volume_client}.py
+		if [[ ${EBUILD_PHASE} == install ]]; then
+			for module in "${S}"/src/pybind/*.py; do
+				module_basename="$(basename "${module}")"
+				if [[ ${module_basename} == ceph_volume_client.py ]] && ! use cephfs; then
+					continue
+				elif [[ ! -e "${ED}/$(python_get_sitedir)/${module_basename}" ]]; then
+					python_domodule ${module}
+				fi
+			done
 		fi
 	}
 
