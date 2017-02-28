@@ -41,7 +41,8 @@ src_prepare() {
 		"${FILESDIR}"/mozjs38-1269317.patch \
 		"${FILESDIR}"/mozjs38-fix-tracelogger.patch \
 		"${FILESDIR}"/mozjs38-copy-headers.patch \
-		"${FILESDIR}"/mozjs38-pkg-config-version.patch
+		"${FILESDIR}"/mozjs38-pkg-config-version.patch \
+		"${FILESDIR}"/mozilla_configure_regexp_esr38.patch
 
 	eapply_user
 
