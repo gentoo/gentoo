@@ -1323,6 +1323,11 @@
       <name>Mike Frysinger</name>
       <role>Lead ( Team Lead )</role>
     </member>
+    <member>
+      <email>wizardedit@gentoo.org</email>
+      <name>Austin English</name>
+      <role>Member ( general, eclass cleanup )</role>
+    </member>
   </project>
   <project>
     <email>genkernel@gentoo.org</email>
