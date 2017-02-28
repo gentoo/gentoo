@@ -133,7 +133,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
-	x11-libs/cairo[X,-xlib-xcb]
+	x11-libs/cairo[X,-xlib-xcb(-)]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
