@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/plib-1.8.0 x11-libs/libX11 x11-libs/libICE x11-libs/libSM x
 SLOT=0
 SRC_URI=mirror://sourceforge/tuxkart/tuxkart-0.4.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=4604a5a0cd363aecd10df18c18a546ab
+_md5_=cdb48fe718c7a16dcc2695a4845442fa

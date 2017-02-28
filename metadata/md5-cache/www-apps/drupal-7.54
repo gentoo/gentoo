@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=7.54
 SRC_URI=https://ftp.drupal.org/files/projects/drupal-7.54.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:- pkg_setup:webapp src_install:-
-_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=0e551fefdd9bbedfdc9beabcf3b04224
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=08daf77dea6c7572d469063736688065

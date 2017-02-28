@@ -10,4 +10,4 @@ RDEPEND=emboss? ( sci-biology/emboss )
 SLOT=0
 SRC_URI=mirror://gentoo/aaindex-9.1.tar.bz2
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=4d6b4148026d75cbe012cfa4d4375818
+_md5_=416040c81e5246e2fd1669dcb03c9a3d

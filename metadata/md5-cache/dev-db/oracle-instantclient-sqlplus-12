@@ -7,4 +7,4 @@ LICENSE=metapackage
 RDEPEND=>=dev-db/oracle-instantclient-basic-12 >=dev-db/oracle-instantclient-12[sqlplus]
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=9fc3ee7edd731d53db9eb7bdf2128786
+_md5_=290631d9357e5735918e61e691117897

@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 
 RDEPEND=|| ( sys-apps/less sys-apps/more sys-apps/most sys-apps/util-linux[ncurses] app-text/lv app-editors/vim[vim-pager] )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=7088b905bff2a5f25f22cb2b3e38abd9
+_md5_=61ba5495e1b3c02c0e5c7b61c4b7024b

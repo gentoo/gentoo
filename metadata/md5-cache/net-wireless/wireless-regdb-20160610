@@ -7,4 +7,4 @@ LICENSE=ISC
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-2016.06.10.tar.xz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=246c430e0418e4d85b1bf7dc0868f5a8
+_md5_=99945b10048b53e26849eac8f81c8bb2

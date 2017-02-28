@@ -9,4 +9,4 @@ RDEPEND=!sci-biology/emboss x11-libs/libX11
 SLOT=0
 SRC_URI=http://www.xdr.com/dash/xbomber-101.tgz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=9d6b5ca19d646d151e392715c97e117d
+_md5_=94633892ecfcc18ffabf16b32fd47ae6

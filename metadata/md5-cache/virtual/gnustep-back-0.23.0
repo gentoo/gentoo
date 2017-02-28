@@ -5,4 +5,4 @@ KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-s
 RDEPEND=|| ( ~gnustep-base/gnustep-back-cairo-0.23.0 ~gnustep-base/gnustep-back-art-0.23.0 ~gnustep-base/gnustep-back-xlib-0.23.0 )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=6214a3c0518dc108065b59de6f3b0ada
+_md5_=35c5549dae8200ed0cd03783a20bd3d4

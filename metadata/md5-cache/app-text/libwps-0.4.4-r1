@@ -10,4 +10,4 @@ RDEPEND=app-text/libwpd:0.10 dev-libs/librevenge
 SLOT=0
 SRC_URI=mirror://sourceforge/libwps/libwps-0.4.4.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=122942c9925a16c8fc60742675bccd7c
+_md5_=83824fe032cd24bb9fa7f716e23fb2ee

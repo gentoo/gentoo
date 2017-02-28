@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AM/AMBS/btparse/btparse-0.35.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=846099bc76fb260b223a692b23496158
+_md5_=755fb6611ec73d1ab418cc8ae364dbbb

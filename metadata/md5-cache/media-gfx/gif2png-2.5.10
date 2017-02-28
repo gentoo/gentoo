@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/libpng-1.2:0 sys-libs/zlib
 SLOT=0
 SRC_URI=http://catb.org/~esr/gif2png/gif2png-2.5.10.tar.gz
 _eclass_exported_funcs=-
-_md5_=185edaeaa52d63b714124c5eb30bd8d9
+_md5_=e772a14e7b22de425cc79ffcdba5bdbd

@@ -7,4 +7,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://sourceforge/samtools/samtools-0.1.12a.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=dbd13692bde5f1bc8aca3971e257d35e
+_md5_=a6e636ceb88d36b5c34ddf51607ec4bf

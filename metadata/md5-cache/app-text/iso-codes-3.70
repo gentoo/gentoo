@@ -10,5 +10,5 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-3.70.tar.xz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	l10n	e26ea0642846685782f1813642e7ff0f	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	50dad5f912d4c16c130f5679777f25e8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=70ade1e388bbfc761a57139fed9ee68e
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	l10n	8f52d9ce1814aca2ed1a46920084ea66	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	110f340b55387d928bb3f8ee3157d5da	python-utils-r1	316c531873247e48befb99900e5aa2ed	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=47fff85d7357e1324a83bf8e7a0925f9

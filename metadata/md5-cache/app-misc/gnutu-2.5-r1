@@ -9,4 +9,4 @@ RDEPEND=>=dev-lang/mono-1.2.5.1-r1 || ( ( >=dev-dotnet/gtk-sharp-2.10.0 >=dev-do
 SLOT=0
 SRC_URI=http://gnutu.devnull.pl/download/sources/gnutu-2.5.tar.gz
 _eclass_exported_funcs=-
-_md5_=65d38748d51464f8d53299ccbeae862e
+_md5_=b8b86a22799a17edc7ccd237d4e82867

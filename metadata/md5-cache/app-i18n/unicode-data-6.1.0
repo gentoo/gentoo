@@ -8,4 +8,4 @@ LICENSE=unicode
 SLOT=0
 SRC_URI=mirror://debian/pool/main/u/unicode-data/unicode-data_6.1.0.orig.tar.gz
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=1c4bdbced2e0722dec5f966f2d4465f5
+_md5_=fbe59703f10cb9d28ceae69e21bac76a

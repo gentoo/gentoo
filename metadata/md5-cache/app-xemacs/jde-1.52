@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/cc-mode app-xemacs/semantic app-xemacs/debug app-xemacs/speed
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/jde-1.52-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
-_md5_=76db63075c9ec0520e0c3e844bf783cc
+_eclasses_=xemacs-packages	6af894e52080fe5d8bd91371a8a6a735
+_md5_=1b3c528d9ab6916c8e801c37c222a2f6

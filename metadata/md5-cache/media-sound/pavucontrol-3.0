@@ -10,5 +10,5 @@ RDEPEND=>=dev-cpp/gtkmm-3.0:3.0 >=dev-libs/libsigc++-2.2:2 >=media-libs/libcanbe
 SLOT=0
 SRC_URI=https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-3.0.tar.xz
 _eclass_exported_funcs=src_configure:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=6f0154093c9957c1333f3b112225ff85
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=85662b2f4a83fba13d244652016f47b6

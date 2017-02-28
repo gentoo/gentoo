@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2.1 Princeton myspell-en_CA-KevinAtkinson
 SLOT=0
 SRC_URI=https://extensions.libreoffice.org/extensions/english-dictionaries/2016.09.01/@@download/file/dict-en.oxt -> dict-en-20160901.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_install:myspell-r2
-_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
-_md5_=ed7a35a949565f8bf59592cd09e07827
+_eclasses_=myspell-r2	f771bf8a3f42be87a117b6f96d641724
+_md5_=28d1228af31d8a5f28efd4504ff03dd9

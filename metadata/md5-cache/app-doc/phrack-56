@@ -7,4 +7,4 @@ LICENSE=phrack
 SLOT=56
 SRC_URI=http://www.phrack.org/archives/tgz/phrack56.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=230d49218b9bf77b803639e62ea53086
+_md5_=461796e269353966d6d1c02a54f0a26f

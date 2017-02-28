@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1
 SLOT=0/10
 SRC_URI=http://download.videolan.org/pub/libdvbpsi/1.3.0/libdvbpsi-1.3.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_md5_=2b8dc0b6fb25e6861be2097333676c36
+_md5_=092aaf53f05bf00bb4ca8fafbcac041d

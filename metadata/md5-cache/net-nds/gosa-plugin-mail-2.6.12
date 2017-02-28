@@ -8,4 +8,4 @@ RDEPEND=~net-nds/gosa-core-2.6.12 ~net-nds/gosa-plugin-systems-2.6.12
 SLOT=0
 SRC_URI=ftp://oss.gonicus.de/pub/gosa/gosa-plugins-mail-2.6.12.tar.bz2 http://oss.gonicus.de/pub/gosa/gosa-plugins-mail-2.6.12.tar.bz2 ftp://oss.gonicus.de/pub/gosa/archive/gosa-plugins-mail-2.6.12.tar.bz2 http://oss.gonicus.de/pub/gosa/archive/gosa-plugins-mail-2.6.12.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=66b9090645ed2d68ec75192966e7433a
+_md5_=b0e91fc48ff32cd7b5ef5edae5d38378

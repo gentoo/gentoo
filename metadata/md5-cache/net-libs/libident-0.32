@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=http://people.via.ecp.fr/~rem/libident/libident-0.32.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=df9c5d5a33b27f59caf2e94be3592e6d
+_md5_=fd5e5ffc4f02bb2c0a55a2659c52279d

@@ -10,4 +10,4 @@ RDEPEND=sys-libs/readline:0=
 SLOT=0
 SRC_URI=http://utopia.knoware.nl/~hlub/uck/rlwrap/rlwrap-0.42.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=8b722524f64b0049263565c69c09159b
+_md5_=7a3ab665d45df1ae88e8d5cfbbcc5918

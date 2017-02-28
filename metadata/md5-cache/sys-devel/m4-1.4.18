@@ -9,4 +9,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://gnu/m4/m4-1.4.18.tar.xz
 _eclass_exported_funcs=src_configure:- src_test:- src_install:-
-_md5_=864642cfa0be49b7c5040f336816a2bf
+_md5_=a809645ed03f723a8f77fb95d5a8ed75

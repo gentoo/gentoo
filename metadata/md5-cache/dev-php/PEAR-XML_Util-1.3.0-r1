@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[pcre(+)]
 SLOT=0
 SRC_URI=http://pear.php.net/get/XML_Util-1.3.0.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=b2cb817a19c68beb1c961cc71e637d7c
+_md5_=2872da0e5b9109ea244173c6418cf985

@@ -7,4 +7,4 @@ LICENSE=metapackage
 RDEPEND=dev-ros/libmavconn dev-ros/mavros dev-ros/mavros_extras dev-ros/mavros_msgs
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=44d23b157b834e0682da8b7a7c29df05
+_md5_=c9d81a47116bdedba59055b50e4a6455

@@ -9,4 +9,4 @@ RDEPEND=>=x11-libs/gtk+-2.10.14:2 dev-libs/libxml2 >=dev-libs/glib-2.16 x11-libs
 SLOT=2
 SRC_URI=http://als.regnet.cz/fpm2/download/fpm2-0.79.tar.bz2
 _eclass_exported_funcs=src_prepare:-
-_md5_=914575ea2d0eae401d311c125bce5505
+_md5_=7a7b9d70117247426966730b611417a2

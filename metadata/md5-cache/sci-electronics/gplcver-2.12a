@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.pragmatic-c.com/gpl-cver/downloads/gplcver-2.12a.src.tar.bz2
 _eclass_exported_funcs=src_unpack:- src_compile:- src_test:- src_install:-
-_md5_=754b6f1561174b7471bd952e9c1e0901
+_md5_=2c0af5ee1cd111fb2939ce85d024720a

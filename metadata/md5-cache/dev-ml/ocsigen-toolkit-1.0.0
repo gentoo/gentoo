@@ -10,5 +10,5 @@ RDEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1
 SLOT=0/1.0.0
 SRC_URI=https://github.com/ocsigen/ocsigen-toolkit/archive/1.0.0.tar.gz -> ocsigen-toolkit-1.0.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=9891f482c63b35744c47077b0c9102f9
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=c47898cf48ea4d670c398655bb6bb58e

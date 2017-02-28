@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://nongnu/texi2html/texi2html-5.0.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_install:-
-_md5_=f930c9c853e30e61042d03654443e1b8
+_md5_=8093461636d0bd47b666c0914a30793e

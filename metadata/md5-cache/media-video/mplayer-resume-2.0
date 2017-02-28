@@ -9,4 +9,4 @@ RDEPEND=lirc? ( app-misc/lirc media-video/mplayer[lirc] ) dev-lang/php[cli] || (
 SLOT=0
 SRC_URI=http://spaceparanoids.org/downloads/mplayer-resume/mplayer-resume-2.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
-_md5_=9367cc34565a7b2928563efd1b1f3089
+_md5_=67099d167fdc238fecb5b0f3dc6825cf

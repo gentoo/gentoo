@@ -8,4 +8,4 @@ LICENSE=CC-BY-SA-3.0
 SLOT=3
 SRC_URI=http://dev.gentoo.org/~monsieurp/packages/diveintopython-3.tar.gz pdf? ( http://dev.gentoo.org/~monsieurp/packages/diveintopython-3-pdf.tar.gz )
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=ae4f352ae378761d7581eb8126bdb87e
+_md5_=077102ffbdeb42ec046edbce483d6fdf

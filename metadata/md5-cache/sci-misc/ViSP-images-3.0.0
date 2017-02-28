@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://visp-doc.inria.fr/download/dataset/ViSP-images-3.0.0.zip
 _eclass_exported_funcs=src_install:-
-_md5_=22a38225ee4b4f199d6c146242528910
+_md5_=8f99bfddb714739ea4c663a47b822827

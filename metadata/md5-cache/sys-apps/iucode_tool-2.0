@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://gitlab.com/iucode-tool/releases/raw/master/iucode-tool_2.0.tar.xz
 _eclass_exported_funcs=-
-_md5_=e76af01359280762ca52d7abb9954ef7
+_md5_=36a015af914946e9b7403f3ba37c44a2

@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( hddtemp lm_sensors acpi )
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-sensors-plugin/1.2/xfce4-sensors-plugin-1.2.97.tar.bz2
 _eclass_exported_funcs=src_configure:-
-_md5_=e5e54e71b3459afccc722644fcb5f01d
+_md5_=2689c6d7331b72cbda8e6900372bc68b

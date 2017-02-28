@@ -8,5 +8,5 @@ LICENSE=FraunhoferFDK
 SLOT=0/1
 SRC_URI=mirror://sourceforge/opencore-amr/fdk-aac-0.1.4.tar.gz https://dev.gentoo.org/~soap/distfiles/fdk-aac-0.1.4_p20160914-fix-c++14.patch.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
-_eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	e7442c2d848733064a6639b5d73d3b74	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=5b956d92734de4ecba639e3701d7a786
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=03ca394a2d8a87b7514edaaad44dbc67

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/gputils/gputils-0.14.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=0a82715aeadd010bc5adbeab7708cd44
+_md5_=6f8472e074e98d21e9d32fa46bef2a4f

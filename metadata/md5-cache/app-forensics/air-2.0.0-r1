@@ -10,4 +10,4 @@ RDEPEND=userland_GNU? ( sys-apps/coreutils ) app-arch/mt-st net-analyzer/netcat 
 SLOT=0
 SRC_URI=mirror://sourceforge/air-imager/air-2.0.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=3ce097b8c2e3f0d2839640ebda9805aa
+_md5_=8929f7cf967b884385d11f0f6938f42c

@@ -7,4 +7,4 @@ LICENSE=Hauppauge-Firmware
 SLOT=0
 SRC_URI=mirror://gentoo/ivtv-firmware-20080701.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=8c3e77503f0bd29f1c96d4fc43ae3a37
+_md5_=d294deb96dc0cf2dfaa36bade480741a

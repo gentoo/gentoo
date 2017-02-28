@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/togl/Togl2.0-src.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=cbba5e7bcca5060142888aef56a15c60
+_md5_=bea9fdacc5aabfa80d46b1b8214d3779

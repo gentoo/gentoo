@@ -9,4 +9,4 @@ RDEPEND=>=app-i18n/ibus-table-1.2.0.20090912
 SLOT=0
 SRC_URI=https://ibus.googlecode.com/files/ibus-table-latin-1.2.0.20100305.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=9c307941619965e35f7e5978e500eb57
+_md5_=c9eca89513351a46b2dc8b2bc56a4f8b

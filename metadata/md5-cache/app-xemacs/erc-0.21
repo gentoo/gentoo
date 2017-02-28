@@ -9,5 +9,5 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/erc-0.21-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
-_md5_=3a349cfff75614559c6173076a6752db
+_eclasses_=xemacs-packages	6af894e52080fe5d8bd91371a8a6a735
+_md5_=1f01c417f297ae1e6484487e5da2a6a0

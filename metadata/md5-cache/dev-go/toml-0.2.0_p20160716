@@ -9,5 +9,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/BurntSushi/toml/archive/99064174e013895bbd9b025c31100bd1d9b590ca.tar.gz -> toml-0.2.0_p20160716.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
-_eclasses_=golang-base	a42b7e0ca33d7ab0c0fa52699435b816	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
-_md5_=94c18c18be7b438a195073d67e8b07ea
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-vcs-snapshot	f834ea1d0152290fd9b1b79950f615c2
+_md5_=072e6846b668319a1f6ed99a8d147187

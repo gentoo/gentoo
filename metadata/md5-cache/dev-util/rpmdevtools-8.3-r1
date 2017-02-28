@@ -10,4 +10,4 @@ RDEPEND=app-arch/rpm[python] net-misc/curl emacs? ( app-emacs/rpm-spec-mode ) de
 SLOT=0
 SRC_URI=https://fedorahosted.org/releases/r/p/rpmdevtools/rpmdevtools-8.3.tar.xz
 _eclass_exported_funcs=src_install:-
-_md5_=27ffb900faa551e23ffa1f5e5c4e4630
+_md5_=71ddc947edda154e7f74017683dd9f4c

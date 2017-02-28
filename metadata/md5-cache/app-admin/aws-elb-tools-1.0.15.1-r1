@@ -10,4 +10,4 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=mirror://sabayon/app-admin/ElasticLoadBalancing-1.0.15.1.zip
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_md5_=8b54ba6aad5a6b0576dea6db0b9cdc47
+_md5_=42ac66001db0e3fe363031a9797ae762

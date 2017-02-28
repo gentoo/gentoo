@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=vdr? ( >=media-video/vdr-1.6.0 libextractor? ( >=media-libs/libextractor-0.5.20 ) caps? ( sys-libs/libcap ) ) xine? ( ( >=media-libs/xine-lib-1.2 virtual/ffmpeg ) fbcon? ( jpeg? ( virtual/jpeg:* ) ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) dbus? ( dev-libs/dbus-glib dev-libs/glib:2 ) vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2 ) jpeg? ( virtual/jpeg:* ) bluray? ( media-libs/libbluray ) opengl? ( virtual/opengl ) ) ) cec? ( dev-libs/libcec ) vdr? ( >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2 )
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:vdr-plugin-2 pkg_postinst:vdr-plugin-2 pkg_setup:- src_unpack:cvs src_prepare:- src_configure:- src_compile:vdr-plugin-2 src_install:-
-_eclasses_=cvs	e94c89c58918dff87fa3db1e817c25be	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	vdr-plugin-2	793155a4c77b7ce10630747d0afcac0c
-_md5_=7683f5c38ef42cc7bf627936708456bd
+_eclasses_=cvs	4814eddfdfb9010cb9cf4b46e9ddff6b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	unpacker	76ddf385f3c212c12857bb8ec2a8bd35	vdr-plugin-2	786b4f5aa9f17e2d5cec5e628f462c01
+_md5_=5d10283916b8b2dc26f871063004d186

@@ -8,4 +8,4 @@ LICENSE=|| ( MIT Unlicense )
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~radhermit/dist/ripgrep-0.4.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
-_md5_=1b7aac9ef1f9325a1c82542758a814e5
+_md5_=4d6b5838f7827db98547791a88078b4f

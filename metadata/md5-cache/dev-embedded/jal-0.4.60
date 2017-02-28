@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/jal/jal-0.4.60.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=b7a76e924c72c9976672a1268e9c5775
+_md5_=2643ed8ee406f25d5cb08efd08b4f0ff

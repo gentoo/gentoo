@@ -10,5 +10,5 @@ RDEPEND=dev-libs/boost
 SLOT=0
 SRC_URI=https://github.com/quinoacomputing/BoostMPLCartesianProduct/archive/aeb0266b3a89f32c390dff51cb73a454d5d7a745.tar.gz -> boost-mpl-cartesian_product-20161205.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_compile:- src_test:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=f4a6d6183f1ff4b203d04c2d0e3178fa
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=c527e49ce1fd5ec3d58f8d1f58a52ca3

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=app-eselect/eselect-lib-bin-symlink
 SLOT=0
 _eclass_exported_funcs=src_install:-
-_md5_=bd145e4aa2ef77cb20ca7c79f5f6f6bc
+_md5_=e3613c2522c7d8b3ea8a52ab47b7ba29

@@ -8,4 +8,4 @@ RDEPEND=>=app-accessibility/festival-1.4.3 media-sound/sox virtual/libiconv
 SLOT=0
 SRC_URI=http://www.freebsoft.org/pub/projects/festival-freebsoft-utils/festival-freebsoft-utils-0.10.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=fa1668340b6528b3bfadebdfb65d846d
+_md5_=bdc1960b17ae5a3519889b4ff883f8ab

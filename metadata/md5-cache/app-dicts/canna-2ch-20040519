@@ -9,5 +9,5 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~naota/files/canna-2ch-20040519.tar.gz
 _eclass_exported_funcs=pkg_postrm:cannadic pkg_postinst:cannadic pkg_setup:cannadic src_compile:- src_install:cannadic
-_eclasses_=cannadic	ce62a23ce863000e8ee601a3ae189731	eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4f7861e7174c692ea84163061e5593ea
+_eclasses_=cannadic	a60869e5823b1040630e89ede36797bf	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=1660f743ee34e618ef23426e1343c88f

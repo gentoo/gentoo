@@ -10,4 +10,4 @@ RDEPEND=tcpd? ( sys-apps/tcp-wrappers )
 SLOT=0
 SRC_URI=mirror://sourceforge/ser2net/ser2net-2.10.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=794c383afb7b8e1fe3528b65b778d5d2
+_md5_=4491478b42c57d43d35da35a74fc2a90

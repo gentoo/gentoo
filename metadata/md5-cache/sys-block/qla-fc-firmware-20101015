@@ -8,4 +8,4 @@ RDEPEND=!sys-kernel/linux-firmware
 SLOT=0
 SRC_URI=mirror://gentoo/qla-fc-firmware-20101015.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=e348b2b51b6f3b2fd065ce6d9e22c074
+_md5_=b2a389419a7a2f42b7797ea39a7a8054

@@ -10,4 +10,4 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=http://www.cara.nmr-software.org/downloads/cara_1.8.4_linux.gz https://dev.gentoo.org/~jlec/distfiles//Start1.2.cara.xz
 _eclass_exported_funcs=src_install:-
-_md5_=c3d293bc0a81a1f3a6907441b4365964
+_md5_=a3db6a9ce9e58ca7b5d739c5f5cba2ec

@@ -7,4 +7,4 @@ LICENSE=CC-BY-2.0
 SLOT=0
 SRC_URI=http://gnome-look.org/CONTENT/content-files/40771-Tactile.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=5b5d327d58030a1819b3cd364b3eb9b9
+_md5_=d9b6499783c59bfcc4f14605b3c3f30f

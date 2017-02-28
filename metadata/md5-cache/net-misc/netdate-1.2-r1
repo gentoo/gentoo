@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=ftp://ftp.suse.com/pub/people/kukuk/ipv6/netdate-1.2.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=fc2f9b639b042a9f06537204a47c71ba
+_md5_=c7afbb7718af58b9f6c2740da0351dcc

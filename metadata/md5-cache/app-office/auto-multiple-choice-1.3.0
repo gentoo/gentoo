@@ -9,5 +9,5 @@ RDEPEND=app-text/texlive[doc,dvi2tty,dvipdfm,extra,graphics,png,pstricks,science
 SLOT=0
 SRC_URI=http://download.gna.org/auto-qcm/auto-multiple-choice_1.3.0_sources.tar.gz
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_compile:- src_install:-
-_eclasses_=latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	perl-functions	aac50de73be0a80ebe780e0b20850130	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=latex-package	00777e2de6c20be92a1adce060eeafa4	multilib	0236be304ee52e7f179ed2f337075515	perl-functions	ca1237f4863eb3e83ab1462927f981c2	toolchain-funcs	53b75b4a49cf3e61530a523804045432
 _md5_=759d8663a7f7b1d5ffaca63d2691e1f3

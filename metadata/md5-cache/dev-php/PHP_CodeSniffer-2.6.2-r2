@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[cli,tokenizer,xmlwriter]
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/PHP_CodeSniffer-2.6.2.tgz
 _eclass_exported_funcs=src_test:- src_install:-
-_md5_=10df0f21574f888555a3a75ba06762b0
+_md5_=6908250270d7bab823cb24d95df64c6b

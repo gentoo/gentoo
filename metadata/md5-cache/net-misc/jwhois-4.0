@@ -10,4 +10,4 @@ RDEPEND=idn? ( net-dns/libidn )
 SLOT=0
 SRC_URI=mirror://gnu/jwhois/jwhois-4.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=da5232691f1e7fb02a235bb597e6b944
+_md5_=7d49197923364bfec94d8f097461b53d

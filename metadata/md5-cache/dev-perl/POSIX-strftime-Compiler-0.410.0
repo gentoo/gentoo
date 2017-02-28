@@ -10,5 +10,5 @@ RDEPEND=!minimal? ( dev-perl/Time-TZOffset ) virtual/perl-Carp virtual/perl-Expo
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.41.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
-_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=c57bb5a3239124953254162fd08e822a
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=6ad6c16b7040874575130d8f72037f34

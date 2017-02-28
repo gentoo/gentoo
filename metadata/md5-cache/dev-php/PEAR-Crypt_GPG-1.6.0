@@ -10,4 +10,4 @@ RDEPEND=app-crypt/gnupg dev-lang/php:*[posix,unicode] dev-php/PEAR-Console_Comma
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Crypt_GPG-1.6.0.tgz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_md5_=c3b0ba80c4aad55382c0eb02cfa0c048
+_md5_=ebb0d622969a6293229583d0af4ff421

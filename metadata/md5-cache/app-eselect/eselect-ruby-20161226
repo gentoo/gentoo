@@ -8,4 +8,4 @@ RDEPEND=>=app-admin/eselect-1.0.2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~flameeyes/ruby-team/ruby.eselect-20161226.xz
 _eclass_exported_funcs=src_install:-
-_md5_=3591bb5d99793afb6a2835cd8e663deb
+_md5_=6e6e955b288a43bd93039fd97deb0a36

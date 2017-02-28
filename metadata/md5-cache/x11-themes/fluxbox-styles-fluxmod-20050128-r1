@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/fluxbox-styles-fluxmod-20050128.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_md5_=26922305a8a6c4ca1fa8a010167837aa
+_md5_=2f82b81562de6eb2a69a8e672d21afed

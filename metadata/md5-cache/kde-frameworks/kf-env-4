@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=x11-misc/xdg-utils-1.1.1-r1
 SLOT=5
 _eclass_exported_funcs=src_install:-
-_md5_=df61e627c3615c5f5583d590f712471f
+_md5_=4d9e48a82de5ce2241df65391a47b824

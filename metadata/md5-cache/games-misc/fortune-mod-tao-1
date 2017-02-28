@@ -8,4 +8,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://gentoo/fortune-tao.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=e527599ba4efa1aa3d2ff882c0295a3e
+_md5_=6707f9c405a8bbcf9a5df06358cb3c1c

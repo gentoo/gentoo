@@ -10,4 +10,4 @@ RDEPEND=|| ( net-print/cups net-print/lprng ) app-text/ghostscript-gpl >=app-tex
 SLOT=0
 SRC_URI=http://www.apsfilter.org/download/apsfilter-7.2.8.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=5d7be2340810d66da85f27ebc594b4c7
+_md5_=c15518796df4d8b3d0d7868de10c842f

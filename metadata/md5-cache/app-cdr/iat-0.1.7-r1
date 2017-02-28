@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/iat-0.1.7.tar.bz2
 _eclass_exported_funcs=src_configure:-
-_md5_=b5dc70893c1a0e828179af7294e064a7
+_md5_=a05f66532c4161793034bfa02d1d8cfd

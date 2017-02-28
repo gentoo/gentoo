@@ -8,4 +8,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=http://mlmmj.org/releases/mlmmj-1.2.19.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_md5_=b0c8c9dc3869c8c4207ed15ae352c111
+_md5_=4eb2f27fd168134981111306e1af2388

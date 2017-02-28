@@ -8,4 +8,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://sourceforge/fortune-mod-fvl/fortune-mod-thomas.ogrisegg-20030120.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=37ee4b1812b99504812b08a712fa70e7
+_md5_=1b93b160ba20af78bc4c2313527f056b

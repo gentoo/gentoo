@@ -9,4 +9,4 @@ RDEPEND=>=app-i18n/sunpinyin-2.0.4_pre20130108
 SLOT=0
 SRC_URI=https://open-gram.googlecode.com/files/dict.utf8-20120830.tar.bz2 https://open-gram.googlecode.com/files/lm_sc.t3g.arpa-20121025.tar.bz2
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_md5_=72fd8720b5e7da0beeb6277a4db7c8d3
+_md5_=336d71b67754c47137f5c68285c38ccd

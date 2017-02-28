@@ -8,5 +8,5 @@ LICENSE=CC-BY-SA-2.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/devmanual-0_pre20141116.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=2bf837d58e5aad9b3945c29de1332119
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	readme.gentoo	589f4c6d735919e293942dd66311dc40	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=34783414d587d5bcdfae0d3ae904b25c

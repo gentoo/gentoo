@@ -10,5 +10,5 @@ RDEPEND=app-arch/zip app-arch/unzip virtual/httpd-cgi dev-lang/php[calendar,cli,
 SLOT=4.0.97
 SRC_URI=mirror://sourceforge/group-office/groupoffice-com-4.0.97.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
-_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=2260f1df091856eea3cf25306c459303
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=c25909850f4c729ed63463a0735a3dd1

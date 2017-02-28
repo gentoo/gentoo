@@ -9,4 +9,4 @@ RDEPEND=dev-lang/php:*[bzip2,cli?,tokenizer] dev-php/PEAR-Archive_Tar dev-php/PE
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/PHP_Beautifier-0.1.15.tgz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=b422e5c45960eb1a38ea91260a7be602
+_md5_=beb96d94d6adac5b0b486d131b92dfe9

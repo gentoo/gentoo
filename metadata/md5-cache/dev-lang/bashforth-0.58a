@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://forthfreak.net/bashforth.versions/bashforth-0.58a
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=60f3f813a4395cd72edf3b6dab998ec0
+_md5_=c3a8040f166ae18d3511f57afbeac034

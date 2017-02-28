@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libxml2 >=media-libs/libshout-2.2 media-libs/libvorbis taglib? 
 SLOT=0
 SRC_URI=http://downloads.xiph.org/releases/ezstream/ezstream-0.6.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=5cebedf3127f778c71b0b4e24e393619
+_md5_=454575678196617468868d536cb7aba8

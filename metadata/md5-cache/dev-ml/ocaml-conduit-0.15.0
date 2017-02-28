@@ -9,5 +9,5 @@ RDEPEND=dev-lang/ocaml:= dev-ml/sexplib:= dev-ml/stringext:= dev-ml/ocaml-uri:= 
 SLOT=0/0.15.0
 SRC_URI=https://github.com/mirage/ocaml-conduit/archive/v0.15.0.tar.gz -> ocaml-conduit-0.15.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=6c750c79a5294e7196616935313352b6
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=5b9be47c4c7f02893be1523496dec724

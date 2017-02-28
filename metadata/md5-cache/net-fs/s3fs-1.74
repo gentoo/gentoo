@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/s3fs-fuse/s3fs-fuse/archive/v1.74.tar.gz -> s3fs-1.74.tar.gz
 _eclass_exported_funcs=-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4be51add0f6f2d0d7f3a4174415c6501
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=dfb661f01df93767351045b0fb9d7b2f

@@ -11,5 +11,5 @@ REQUIRED_USE=!openssl? ( ^^ ( gcrypt mhash ) )
 SLOT=0
 SRC_URI=mirror://gentoo/cvsync-2014.08.24.014706.tar.xz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9cf49fc3decf0bae5aee46b1cf8b7d6e
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=0c9f8dc226a043caf4987b18bfd352f0

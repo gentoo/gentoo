@@ -9,4 +9,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://www.ie.lspace.org/ftp-lspace/words/pqf/pqf-6.0
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=6894d9a69cb5532503a775255f414d0c
+_md5_=3da42b505067bcf1917900a64eaa2f90

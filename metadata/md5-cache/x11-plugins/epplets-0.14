@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext media-libs/freeglut media-libs/imlib2 >
 SLOT=0
 SRC_URI=mirror://sourceforge/enlightenment/epplets-0.14.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=4368c8262b4e55957c4d7cd8de2b6439
+_md5_=4d17274346cc84232bb2bda5b097fd0c

@@ -7,4 +7,4 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=https://github.com/mgorny/cpuid2cpuflags/releases/download/v2/cpuinfo2cpuflags-2.tar.bz2
 _eclass_exported_funcs=-
-_md5_=25f8c64ad5559b46d8b33039a23b1aeb
+_md5_=3ffc5d9bc33e2f1fba4a37a1a7252123

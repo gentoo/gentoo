@@ -9,4 +9,4 @@ RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/System_Command-1.0.8.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=0088fee5edcec84f226c1d809a256737
+_md5_=6fdcf4e24f319c2b4249ff3214a8e6e4

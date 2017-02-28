@@ -8,4 +8,4 @@ RDEPEND=media-video/smplayer
 SLOT=0
 SRC_URI=mirror://sourceforge/smplayer/smplayer-skins-15.2.0.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=aabd278e4af2c5b1c5e12272ce51f97c
+_md5_=7a9aa866ecb4ab51927ba63b30f91046

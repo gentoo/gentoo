@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://bitbucket.org/mgorny/mirage2iso/downloads/mirage2iso-0.4.1.tar.bz2 test? ( https://bitbucket.org/mgorny/mirage2iso/downloads/mirage2iso-0.3-tests.tar.xz )
 _eclass_exported_funcs=src_configure:- src_test:-
-_md5_=175f54689745f2cb982dd1e19008b8fe
+_md5_=10f42203191c94459053d9d5949b6dcf

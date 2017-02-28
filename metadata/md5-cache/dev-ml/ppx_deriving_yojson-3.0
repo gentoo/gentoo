@@ -10,4 +10,4 @@ RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/yojson:= dev-ml/result:= >=dev-ml/ppx
 SLOT=0/3.0
 SRC_URI=https://github.com/whitequark/ppx_deriving_yojson/archive/v3.0.tar.gz -> ppx_deriving_yojson-3.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=40c4623636aeb7d112983f71a995ae00
+_md5_=c2cd6d9217bb7373e877e7297a159bbc

@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=http://scratchbox.org/download/files/sbox-releases/hathor/tarball/scratchbox-devkit-doctools-1.0.14-i386.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=0cff5f152678ece56c353a4440804e2a
+_md5_=00a9ce50202c3fc79329a06b770399f6

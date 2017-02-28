@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://www.eblong.com/zarf/ftp/xzip182.tar.Z
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=656475660d7bd594ab3694c83f425fc6
+_md5_=e50b9baca7a5c86fa13ef2a5ca1b7e87

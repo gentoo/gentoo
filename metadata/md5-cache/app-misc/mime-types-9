@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/mime-types-9.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=08c318ac3814dfc87e010ef71d2203f4
+_md5_=4737c8d50b203ea00b92772aef839460

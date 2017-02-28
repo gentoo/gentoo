@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/imapsync/imapsync-1.607.tgz
 _eclass_exported_funcs=src_prepare:- src_compile:-
-_md5_=fd62faa142a2f565751b513763034e4d
+_md5_=ef19d16598c80e767e9e9af3d955baed

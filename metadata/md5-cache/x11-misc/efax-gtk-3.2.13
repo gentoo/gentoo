@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.10 media-libs/tiff:0= x11-libs/libX11 x11-libs/c++-gtk
 SLOT=0
 SRC_URI=mirror://sourceforge/efax-gtk/efax-gtk-3.2.13.src.tgz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_md5_=e1031058bb68ee00f98fedadd805aab8
+_md5_=23303127c8138adcfac932b3e0cee5dd

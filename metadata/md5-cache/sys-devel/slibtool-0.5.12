@@ -7,4 +7,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=http://git.midipix.org/cgit.cgi/slibtool/snapshot/slibtool-0.5.12.tar.xz
 _eclass_exported_funcs=src_configure:-
-_md5_=a7d130097bfbec50e48dc3adff618344
+_md5_=bc6ea1e135c494813945a09cd5c5bac7

@@ -10,4 +10,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://www.gentoogeek.org/files/adjtime.zip
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_md5_=9e615fa5fd981453ccb2d840b48ad09d
+_md5_=975cb1eb15bb7a8cb54eb83e0f55e81b

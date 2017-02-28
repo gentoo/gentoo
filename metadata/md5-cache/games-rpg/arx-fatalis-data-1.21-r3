@@ -13,5 +13,5 @@ RESTRICT=binchecks mirror gog? ( fetch )
 SLOT=0
 SRC_URI=cdinstall? ( http://download.zenimax.com/arxfatalis/patches/1.21/ArxFatalis_1.21_MULTILANG.exe ) gog? ( setup_arx_fatalis_2.0.0.7.exe )
 _eclass_exported_funcs=pkg_pretend:check-reqs pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:- src_prepare:base src_configure:games src_compile:games src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cdrom	d59e7a8a50d875e095c60654bbe22273	check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	708f85bc1bf00876604e223fb56e062a	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	portability	bb1a0ed8ea152b957d17339f01d4d7f5	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	e10ccb95af96d45f86016fa982a949bb
-_md5_=49ed1f1dd60ad6e333e0da6342fb4724
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	cdrom	0ab58b9ff75f89271f112d7c1e0e5bd0	check-reqs	0aae1fa61c78fb91cb66cd09f3450029	eutils	3c847a0129fed780bd709b98e426f89c	games	2bb3ede665927a68ffdb7c41eec7efde	multilib	0236be304ee52e7f179ed2f337075515	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=8a88ea924266abd2588f0bb0930fca98

@@ -9,4 +9,4 @@ RDEPEND=>=app-text/dictd-1.5.5
 SLOT=0
 SRC_URI=ftp://ftp.dict.org/pub/dict/pre/elements-20001107-pre.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=b9b4b36d2ac53a3c7492fe6ae6cb2e0a
+_md5_=95b52eff371a0a3b066e163e2e41bf23

@@ -11,4 +11,4 @@ REQUIRED_USE=test? ( abyss curl cxx ) tools? ( curl )
 SLOT=0
 SRC_URI=mirror://sourceforge/xmlrpc-c/xmlrpc-c-1.39.11.tgz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
-_md5_=13b07dd78fe75ad03fbb4b7d3e7e2259
+_md5_=b7f1ccde4515607ae793d1a1d23d3221

@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/openssl-0.9.7 gnutls? ( >=net-libs/gnutls-1.4.4 ) nss? ( dev-
 SLOT=0
 SRC_URI=mirror://sourceforge/opensc/pkcs11-helper/pkcs11-helper-1.11.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=81f9432b1807fcf09f6e20d5f724af3e
+_md5_=2e22ae2a3be76d115a04658c11fb035d

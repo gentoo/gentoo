@@ -9,4 +9,4 @@ RDEPEND=app-cdr/cdrdao dev-util/dialog media-sound/normalize media-sound/sox vir
 SLOT=0
 SRC_URI=http://www.thenktor.homepage.t-online.de/burncdda/download/burncdda-1.8.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=0d08784e60695b38340c50ef1e02360f
+_md5_=97aa1555c957ae9e312b1fe25097a362

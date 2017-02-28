@@ -9,4 +9,4 @@ RDEPEND=gnome-base/libglade:2.0 x11-libs/gtk+:2 dev-libs/libxml2:2 sci-chemistry
 SLOT=0
 SRC_URI=mirror://sourceforge/gtk-gamess/gtk-gamess-2.00.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=15e895e3ca904153099cf13c382b9c0e
+_md5_=02014091cb3a1ed935b48b392ab40602

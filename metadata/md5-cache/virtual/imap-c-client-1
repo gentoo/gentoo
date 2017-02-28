@@ -6,4 +6,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd
 RDEPEND=|| ( net-libs/c-client[ssl=] net-mail/uw-imap[ssl=] )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=cb223c90bc5867d3bb701c4e2c221622
+_md5_=62f8832ce917f0e7d2979dcdd92dd676

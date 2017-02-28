@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=http://www.rillion.net/squidview/squidview-0.80.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=e2d87041fb210ce091d35c3e7eabecb8
+_md5_=eb699b10096ddc13469a1795a81e1a4e

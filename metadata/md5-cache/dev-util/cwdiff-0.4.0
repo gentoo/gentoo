@@ -10,4 +10,4 @@ RDEPEND=sys-apps/sed app-shells/bash app-text/wdiff sys-apps/diffutils mercurial
 SLOT=0
 SRC_URI=https://github.com/junghans/cwdiff/archive/v0.4.0.tar.gz -> cwdiff-0.4.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=76eba5e16cab217093eef6200cfd4607
+_md5_=98f4f2900804307f10b48b8f18b6e195

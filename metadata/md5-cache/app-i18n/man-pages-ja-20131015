@@ -8,4 +8,4 @@ RDEPEND=virtual/man
 SLOT=0
 SRC_URI=http://linuxjm.sourceforge.jp/man-pages-ja-20131015.tar.gz https://dev.gentoo.org/~hattya/distfiles/portage-man-pages-ja-20060415.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_md5_=68a8bd6d593646e4b5b56523919a5d7c
+_md5_=94b81d9ff79cf70f30c4efddfded9335

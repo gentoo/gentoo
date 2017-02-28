@@ -9,4 +9,4 @@ RDEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2 media-libs/taglib net-libs/li
 SLOT=0
 SRC_URI=mirror://sourceforge/musicpd/gmpc-mserver-0.20.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=35b7d1a4a06ca845e244eb537fe35402
+_md5_=923d28e98cd46e24485e79da27bf965e

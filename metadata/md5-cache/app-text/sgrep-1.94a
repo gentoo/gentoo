@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/sgrep-1.94a.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=b39950145349ba0798c6fb25ff64f758
+_md5_=748ee547eb0b5d3e86897f4ff978e180

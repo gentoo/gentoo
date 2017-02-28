@@ -7,4 +7,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://supercat.nosredna.net/supercat-0.5.5.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=1374b4dcf02b44fc76d29fca2adc4bfc
+_md5_=ef50e9e0d95746556f5c0b32620a555f

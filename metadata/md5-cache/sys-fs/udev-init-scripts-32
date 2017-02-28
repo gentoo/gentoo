@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~williamh/dist/udev-init-scripts-32.tar.gz
 _eclass_exported_funcs=pkg_postinst:-
-_md5_=d1c5b732a7b2b3d45fd7ecd0502fb270
+_md5_=f2acf4b37459ce62c4c171ebbec47bde

@@ -10,4 +10,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://gentoo/gentoo-forums-20041207.gz offensive? ( mirror://gentoo/gentoo-forums-offensive-20041207.gz )
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=c5ed8b6321fc1cd79f61e089460e51bf
+_md5_=a913f96ea2b7d033774ebec3afb2aa76

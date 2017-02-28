@@ -8,4 +8,4 @@ RDEPEND=dev-java/japitools dev-java/java-config
 SLOT=0
 SRC_URI=https://github.com/gentoo/java-apicheck/archive/0_p20150907.tar.gz -> java-apicheck-0_p20150907.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=6a4a46bb6588013ab28572c82f60c178
+_md5_=ec2abe84c6585f61f67841324d147a3c

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://users.skynet.be/solaris/linuxaudio/downloads/stops-0.3.0.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=cd1771029a27649e43d3b73f4e7ef035
+_md5_=0be90a3c3d16d6b04510e8867e0330fc

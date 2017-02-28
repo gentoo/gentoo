@@ -8,4 +8,4 @@ LICENSE=public-domain
 RDEPEND=>=app-eselect/eselect-opengl-1.0.8-r1 x11-proto/glproto
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
-_md5_=b87441f4818aae897fe6bf6fbd48c698
+_md5_=499e068e73afd95b5ac34428f29c1434

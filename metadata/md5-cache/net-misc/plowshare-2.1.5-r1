@@ -9,5 +9,5 @@ RDEPEND=>=app-shells/bash-4 || ( app-text/recode ( dev-lang/perl dev-perl/HTML-P
 SLOT=0
 SRC_URI=https://github.com/mcrapet/plowshare/archive/v2.1.5.tar.gz -> plowshare-2.1.5.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4464de5f60800b1ea2f054dbfae7b45f
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=788c9538bf926fc5e498de081e2619a5

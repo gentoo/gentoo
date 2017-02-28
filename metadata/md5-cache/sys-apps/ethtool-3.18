@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://kernel/software/network/ethtool/ethtool-3.18.tar.xz
 _eclass_exported_funcs=-
-_md5_=70a6a4ba40922ab88e2299d254ffa1d1
+_md5_=ed640dfb960bd79caef86674a59b118b

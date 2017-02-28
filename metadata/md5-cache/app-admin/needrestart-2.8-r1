@@ -9,4 +9,4 @@ RDEPEND=>=sys-apps/sed-4.2.2 dev-perl/libintl-perl dev-perl/Module-Find dev-perl
 SLOT=0
 SRC_URI=https://github.com/liske/needrestart/archive/v2.8.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=38cecd236f4b9e3d2137eee96e90f662
+_md5_=00b7eaa2d625bcd2fbff118b2a77c00d

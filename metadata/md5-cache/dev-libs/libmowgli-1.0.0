@@ -7,4 +7,4 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=http://distfiles.atheme.org/libmowgli-1.0.0.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=e7284e392cddcccb8c57473475833565
+_md5_=c9aab333b04bc8118ddbcef781b3a992

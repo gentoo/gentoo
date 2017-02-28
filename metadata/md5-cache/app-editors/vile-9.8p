@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/ncurses-5.2:0 perl? ( dev-lang/perl )
 SLOT=0
 SRC_URI=ftp://invisible-island.net/vile/current/vile-9.8p.tgz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
-_md5_=9e7312fa9e65ba542324c170529c8494
+_md5_=efaa2257d97fd6e1ec30ca5bca3264f9

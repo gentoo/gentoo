@@ -10,5 +10,5 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=mirror://gentoo/stumpwm-contrib-20170202.tar.gz
 _eclass_exported_funcs=src_compile:common-lisp-3 src_install:-
-_eclasses_=common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=58a11494e001ae52d656b79029985869
+_eclasses_=common-lisp-3	bd9283c567014f1b21a44c91a53f44ca	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=a94871bffb15b746819c2687220a40e6

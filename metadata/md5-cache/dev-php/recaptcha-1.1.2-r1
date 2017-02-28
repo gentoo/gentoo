@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php
 SLOT=0
 SRC_URI=https://github.com/google/recaptcha/archive/1.1.2.tar.gz -> recaptcha-1.1.2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_test:- src_install:-
-_md5_=937229ac57ac2a71207c17d72d684a2d
+_md5_=2d14e4b17adcd551fe0bfad1310e6adc

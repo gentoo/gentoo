@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libp11-0.2.5 !libressl? ( >=dev-libs/openssl-0.9.7d:0 ) libre
 SLOT=0
 SRC_URI=http://www.opensc-project.org/files/engine_pkcs11/engine_pkcs11-0.1.8.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=592d853f7e13ae55f5d5274e9e7101a4
+_md5_=4eb4034ed98567261b4a91094097ed92

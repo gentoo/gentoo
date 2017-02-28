@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=http://scratchbox.org/download/files/sbox-releases/stable/tarball/scratchbox-devkit-apt-https-1.0.10-i386.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=8d8398c58a296fdc9f818b6818438390
+_md5_=85731479c24ed66cf3555047a5848d9b

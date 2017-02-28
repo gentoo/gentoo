@@ -9,4 +9,4 @@ RDEPEND=!x11-themes/clearlooks-phenix:3.4 !x11-themes/clearlooks-phenix:0 >=x11-
 SLOT=3.6
 SRC_URI=http://jpfleury.indefero.net/p/clearlooks-phenix/source/download/3.0.15/ -> clearlooks-phenix-3.0.15.zip
 _eclass_exported_funcs=src_install:-
-_md5_=c9c705affa013849ce6f14db8ab381a2
+_md5_=e9b4e9e447d2fb452d92f9363b9af517

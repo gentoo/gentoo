@@ -8,4 +8,4 @@ LICENSE=Openwall BSD public-domain
 RDEPEND=sys-auth/passwdqc[pam]
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=05089a91c265e4db27819bfd20821117
+_md5_=f5394b01b3e6d93693af2fe315c8f8b0

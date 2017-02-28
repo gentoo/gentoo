@@ -8,4 +8,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=http://scratchbox.org/download/files/sbox-releases/stable/tarball/scratchbox-devkit-qemu-0.10.0-0sb10-i386.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=a0598fc07d62ca8fac2a0c9fe1b416cc
+_md5_=eb501d8f812d79386a3cd15438dc485f

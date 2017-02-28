@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.suspectclass.com/~sgifford/interceptty/files/interceptty-0.6.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=cbb1dd155e8af66215163aee61ff8a2f
+_md5_=558069e781c0320da92caa3d5980bde7

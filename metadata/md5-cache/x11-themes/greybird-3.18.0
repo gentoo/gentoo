@@ -10,4 +10,4 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/shimmerproject/Greybird/archive/v3.18.0.tar.gz -> greybird-3.18.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=ffdc2287688defc7e0cd7fa80a5616be
+_md5_=6f133c39dda01c5e847b0e77ba34880d

@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/uchar:= utftrip? ( dev-ml/cmdl
 SLOT=0/1.0.0
 SRC_URI=http://erratique.ch/software/uutf/releases/uutf-1.0.0.tbz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=907f8af9322ac537a588dfb4570e3bc6
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=bcae900032103fb48cb85bcde07a599c

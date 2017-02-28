@@ -9,4 +9,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=https://slepnoga.googlecode.com/files/gentoo-ru-0.26.gz http://maryasin.name/fortunes-gentoo-ru/gentoo-ru-0.26.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=e4573bf32969aadd62bb6394961954ea
+_md5_=338ff71f91f3f5eafce4f17a34f86e25

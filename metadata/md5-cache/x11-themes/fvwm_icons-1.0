@@ -8,4 +8,4 @@ RDEPEND=>=x11-wm/fvwm-2.6.2
 SLOT=0
 SRC_URI=http://www.fvwm.org/generated/icon_download/fvwm_icons.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=830ba7fb93174806a2305ab6d699cc5c
+_md5_=eec5a644ab469dbec76b272811a99552

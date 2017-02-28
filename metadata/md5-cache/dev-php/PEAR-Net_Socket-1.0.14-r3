@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Net_Socket-1.0.14.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=30926bf4ea70612892190f2a0c5d29b3
+_md5_=f5ba647611bd15951c017e9d7c49e42a

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/yydecode/yydecode-0.2.10.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_md5_=4c7ce54737bfce1795a87f719f0cd2bb
+_md5_=fbf58c3db41be4a3aed141517d5604cc

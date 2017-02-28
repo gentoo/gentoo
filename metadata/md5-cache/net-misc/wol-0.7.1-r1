@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/ahh/wol-0.7.1.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=8da3e55adca75ff5d57b1f34b49f941b
+_md5_=0b1fa676b9185c90e6cd55ceb9d6a85c

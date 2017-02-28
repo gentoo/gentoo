@@ -8,4 +8,4 @@ LICENSE=LGPL-2
 SLOT=0
 SRC_URI=http://downloads.asterisk.org/pub/telephony/libiax/iax-0.2.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=6f3a2591f179ca9075b4063579211cd9
+_md5_=fbcd93294eda886d2588116402220c51

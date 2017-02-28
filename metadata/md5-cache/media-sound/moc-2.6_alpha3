@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libltdl-2:0 dev-libs/popt sys-libs/ncurses:0=[unicode?] aac? 
 SLOT=0
 SRC_URI=http://ftp.daper.net/pub/soft/moc/unstable/moc-2.6-alpha3.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=c71768f4677017a4aa86f477c3fb8b48
+_md5_=a830fc9af307c0b8da4a9fd88eb7fcd4

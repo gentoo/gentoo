@@ -10,4 +10,4 @@ RDEPEND=net-libs/libesmtp !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-lib
 SLOT=0
 SRC_URI=mirror://sourceforge/esmtp/esmtp-1.2.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=4a37b4f4f6e1f4362e37290050dbf196
+_md5_=4390fd2e6483055370420ed352d3fe50

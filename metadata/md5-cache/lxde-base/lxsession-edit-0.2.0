@@ -9,4 +9,4 @@ RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 lxde-base/lxde-common lxde-base/lxsessio
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/lxsession-edit-0.2.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=ec8632ae08f30c823b78701705db29ce
+_md5_=df6a2cd5732b681a837d36f5a17e6e04

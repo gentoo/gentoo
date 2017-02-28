@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-f
 RDEPEND=|| ( mail-filter/procmail mail-filter/maildrop mail-mta/postfix mail-mta/courier mail-mta/mini-qmail mail-mta/netqmail mail-mta/qmail-ldap mail-mta/citadel )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=6f26783e2d739130c3a82f0c8656d814
+_md5_=f7123ae181d53228e8b4cce1357adf32

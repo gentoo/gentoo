@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXaw x11-libs/
 SLOT=0
 SRC_URI=ftp://sipb.mit.edu/pub/xrn/xrn-9.02.tgz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=6ee16ac2505d8a7a6716e6b0f289ead3
+_md5_=c2057f594d4fdea450ae28dc8ffe3d36

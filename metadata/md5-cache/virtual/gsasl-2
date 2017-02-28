@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x
 RDEPEND=|| ( net-libs/libgsasl net-misc/gsasl )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=3e7bf7b2e86fc7f6de3333f06459660c
+_md5_=843e54094687e5df8fde520f8de81f18

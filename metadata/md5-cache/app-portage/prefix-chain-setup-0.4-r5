@@ -6,5 +6,5 @@ KEYWORDS=~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=GPL-3
 SLOT=0
 _eclass_exported_funcs=src_install:-
-_eclasses_=prefix	99dcca42e6528d8fe3c214bf5731aaf2
-_md5_=917a643a43528e5becfb90696c819c3d
+_eclasses_=prefix	df8265631f8bf5f5df387e9b987121f9
+_md5_=e3ee92f913bd8402ad84b536e6769299

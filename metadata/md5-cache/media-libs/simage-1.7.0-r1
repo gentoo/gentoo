@@ -11,4 +11,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://bitbucket.org/Coin3D/coin/downloads/simage-1.7.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=ca3bef25a35c4ebaf20abfc0e8baccf0
+_md5_=527bd888d8e7aff3307ab90a2c155850

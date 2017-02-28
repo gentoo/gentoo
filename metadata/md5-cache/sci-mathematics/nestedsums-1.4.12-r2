@@ -10,4 +10,4 @@ RDEPEND=>=sci-mathematics/ginac-1.5 <sci-mathematics/ginac-1.7
 SLOT=0
 SRC_URI=http://wwwthep.physik.uni-mainz.de/~stefanw/download/nestedsums-1.4.12.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=e043cb2399cc0c2ea3f7839266c88701
+_md5_=90017fb1860ada7419a6f54188f9eae5

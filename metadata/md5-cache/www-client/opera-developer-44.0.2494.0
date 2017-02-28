@@ -9,5 +9,5 @@ RDEPEND=dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss gnome-base/gco
 SLOT=0
 SRC_URI=amd64? ( http://get.geo.opera.com/pub/opera-developer/44.0.2494.0/linux/opera-developer_44.0.2494.0_amd64.deb ) x86? ( http://get.geo.opera.com/pub/opera-developer/44.0.2494.0/linux/opera-developer_44.0.2494.0_i386.deb )
 _eclass_exported_funcs=pkg_setup:linux-info src_unpack:- src_prepare:- src_install:-
-_eclasses_=chromium-2	c30f482b868782938c772c21d9ede135	eutils	708f85bc1bf00876604e223fb56e062a	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=405c058976927c6703053e6d519e8d3d
+_eclasses_=chromium-2	0668536c674abbd0cfa509b879fc1b74	eutils	3c847a0129fed780bd709b98e426f89c	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	unpacker	76ddf385f3c212c12857bb8ec2a8bd35	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=6f82f1d19cda18f76cc4f6328156486d

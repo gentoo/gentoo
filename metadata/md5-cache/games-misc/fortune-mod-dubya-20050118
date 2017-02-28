@@ -8,4 +8,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://seiler.us/wiki/images/8/8c/Dubya-20050118.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=9e28a7104ebc45a6815979d02b1ac6e8
+_md5_=f6ca35c8da8289fa73d56e8af172ecf2

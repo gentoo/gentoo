@@ -8,4 +8,4 @@ RDEPEND=>=media-video/transcode-0.6.2[dvd] >=dev-lang/perl-5.8.0-r12 >=media-vid
 SLOT=0
 SRC_URI=http://www.lallafa.de/bp/files/cpdvd-1.10.gz
 _eclass_exported_funcs=src_install:-
-_md5_=c1061ed1a8d561e6ec27feaed1c2d2f6
+_md5_=e1d1c7f4cee3c739d2424253341b8a58

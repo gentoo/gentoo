@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/yosucker/YoSucker-pr77.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=e59faef90cbbab40e9c2f4b023f3f126
+_md5_=cb3fe5336dd3a8cb43b780b8601186d1

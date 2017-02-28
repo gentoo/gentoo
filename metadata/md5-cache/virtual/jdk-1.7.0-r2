@@ -5,4 +5,4 @@ KEYWORDS=amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-mac
 RDEPEND=|| ( dev-java/icedtea-bin:7 dev-java/icedtea:7 )
 SLOT=1.7
 _eclass_exported_funcs=-
-_md5_=63ed116421df8bf94b50a21ed3ce2195
+_md5_=61c51d0c892224d27b9ed57e97a3367e

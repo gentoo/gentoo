@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/perl-5.005 >=www-apache/mod_perl-2.0 dev-perl/DBI dev-perl/DB
 SLOT=6.1.6-r1
 SRC_URI=http://download.metadot.com/metadot6.1.6.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
-_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=96f884d02d524fda1d354a27bb7d821a
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=2f8d5b3243086e32b88af908652ad243

@@ -10,4 +10,4 @@ RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sy
 SLOT=0
 SRC_URI=https://www.tarsnap.com/download/tarsnap-autoconf-1.0.35.tgz
 _eclass_exported_funcs=src_configure:-
-_md5_=578b84c48428df36b7d4398a8cf223cf
+_md5_=4f488df426cf49358bb576bf0484ecdf

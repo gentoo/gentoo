@@ -9,4 +9,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://gentoo/nuvoX_07.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=c674c4a0c0addea5e27939471b9abc30
+_md5_=ae9c30156daef1cb183903481bc9f326

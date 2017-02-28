@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ~ppc64 s390 sh sparc x86 ~ppc-
 RDEPEND=>=dev-libs/libffi-3.0.11
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=15fecded54cb7a164e2335e813d9f066
+_md5_=c8507c06fe072ea02f8ac60b35c4a603

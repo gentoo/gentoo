@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/libvterm-0.0_pre20151022 dev-libs/glib:2 x11-libs/cairo x11-l
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~tranquility/distfiles/pangoterm-0.0_pre20151022.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=76108c48cee391873e9fca4b88ac5268
+_md5_=15fa82732d32f8f766c9b45cbd34fe81

@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/libbinio/libbinio-1.4.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=43a87cf8b155719c6c08c3386b5d59ce
+_md5_=6a3119f500ca840b65955bc1f9e1e020

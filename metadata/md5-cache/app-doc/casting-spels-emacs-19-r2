@@ -9,5 +9,5 @@ RDEPEND=virtual/emacs
 SLOT=0
 SRC_URI=https://casting-spels-emacs.googlecode.com/files/casting-spels-emacs-v19.zip
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74
-_md5_=b239a12bb0281977edd22d5ec1fbefcc
+_eclasses_=elisp-common	f49d14e575e158ccab82cf05b315a180
+_md5_=b8057b817f8de614e9a213831ab2eef9

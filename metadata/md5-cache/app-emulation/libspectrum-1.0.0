@@ -10,4 +10,4 @@ RDEPEND=zlib? ( sys-libs/zlib ) bzip2? ( >=app-arch/bzip2-1.0 ) >=dev-libs/glib-
 SLOT=0
 SRC_URI=mirror://sourceforge/fuse-emulator/libspectrum-1.0.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_md5_=2c5813ec2ff316ce6876549bba22515d
+_md5_=64926fe74927699e78ff927acba4014f

@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/xemacs-eterm app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/eshell-1.18-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
-_md5_=1e408340f1a05a271736d08927e10469
+_eclasses_=xemacs-packages	6af894e52080fe5d8bd91371a8a6a735
+_md5_=6f79cce8d817a3e0bd155f733657c2c7

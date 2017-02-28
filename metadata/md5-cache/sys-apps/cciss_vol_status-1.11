@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/cciss/cciss_vol_status-1.11.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=efdd515e75e943594ed8f19f16d9da1c
+_md5_=baefa03b5d6017f680a3c3b6f85d26b9

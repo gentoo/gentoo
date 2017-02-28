@@ -9,4 +9,4 @@ LICENSE=Artistic
 SLOT=0
 SRC_URI=mirror://sourceforge/qstat/qstat-2.11.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=2badbc322132a39f02ff72d8fd5cc425
+_md5_=54af0563f8a2ac70778873a2979e9132

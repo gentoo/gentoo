@@ -8,4 +8,4 @@ RDEPEND=net-dns/bind-tools net-firewall/iptables virtual/logger
 SLOT=0
 SRC_URI=ftp://muse.linuxmafia.org/pub/gShield/v2/gShield-2.8.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=0eb77cc23c46ccb642f733ec7d36e0ff
+_md5_=5f10bb60e942f1d225b9fa3229debb24

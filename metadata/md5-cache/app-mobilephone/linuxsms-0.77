@@ -8,4 +8,4 @@ RDEPEND=>=dev-lang/perl-5.6.1
 SLOT=0
 SRC_URI=mirror://sourceforge/linuxsms/linuxsms-0.77.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=cf7c974d32cf58ec95f10e4d4fdc8b60
+_md5_=b40aab3ac2153ae54b2bff68901009e2

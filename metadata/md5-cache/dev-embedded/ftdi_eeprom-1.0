@@ -7,4 +7,4 @@ LICENSE=LGPL-2
 RDEPEND=dev-embedded/libftdi:1[tools]
 SLOT=0
 _eclass_exported_funcs=pkg_setup:-
-_md5_=afbe3285a628e6cc3278d0ab5c3e7f15
+_md5_=04f8594e4e20e3917e8ccd69273c0ba2

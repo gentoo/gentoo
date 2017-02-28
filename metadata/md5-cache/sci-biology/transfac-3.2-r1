@@ -10,4 +10,4 @@ RDEPEND=emboss? ( sci-biology/emboss )
 SLOT=3
 SRC_URI=ftp://ftp.ebi.ac.uk/pub/databases/transfac/transfac32.tar.Z
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=56b51d757fad328b618c00f2e3a0d196
+_md5_=d8fcea543b5af9fc877c63800e1bd6d3

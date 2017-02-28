@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:*[ldap] dev-php/PEAR-Net_LDAP2
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/PEAR-Net_LDAP3-1.0.5_pre20160405.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=13c1e1392af460dc56e9cd7d2ccf86d6
+_md5_=5bb2e6975cc39d772dcb3f06b92c3b9a

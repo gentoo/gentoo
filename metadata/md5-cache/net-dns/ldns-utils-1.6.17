@@ -10,4 +10,4 @@ RDEPEND=>=net-libs/ldns-1.6.17[dane?,ecdsa?,gost?,ssl?] examples? ( net-libs/lib
 SLOT=0
 SRC_URI=http://www.nlnetlabs.nl/downloads/ldns/ldns-1.6.17.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_md5_=b327fd03e2651740a3b8e904a9e68120
+_md5_=c579187a94f8386a62f9df018db9a3d0

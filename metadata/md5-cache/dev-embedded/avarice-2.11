@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/avarice/avarice-2.11.tar.bz2
 _eclass_exported_funcs=-
-_md5_=a1adb2ada2a777a7294ebee0c6665091
+_md5_=71b1d4a25e47f2393edc35344f522805

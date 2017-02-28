@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=ftp://invisible-island.net/byacc/byacc-20170201.tgz
 _eclass_exported_funcs=src_configure:-
-_md5_=221bbc85eaba96488bfda5bd9b38544f
+_md5_=70de3a98bf93a31b5dab55ee9dc0de3a

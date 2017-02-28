@@ -9,4 +9,4 @@ RDEPEND=dev-perl/Config-General dev-perl/GD dev-perl/Math-Bezier dev-perl/Math-R
 SLOT=0
 SRC_URI=http://mkweb.bcgsc.ca/circos/distribution/circos-0.55.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=8f1ab0c12599910a6bbf5746c6e20f81
+_md5_=eb4c5931e7b9f712391914369aa771fd

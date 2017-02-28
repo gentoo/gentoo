@@ -9,4 +9,4 @@ RDEPEND=dev-libs/xapian:0/1.2.22 dev-lang/perl dev-libs/libpcre sys-libs/zlib
 SLOT=0
 SRC_URI=http://www.oligarchy.co.uk/xapian/1.2.24/xapian-omega-1.2.24.tar.xz
 _eclass_exported_funcs=src_install:-
-_md5_=8849203a9d2084db8b1f971dc35c1297
+_md5_=76cc067fd92135ef417d26783aa55834

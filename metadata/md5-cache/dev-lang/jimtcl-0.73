@@ -9,4 +9,4 @@ LICENSE=LGPL-2
 SLOT=0
 SRC_URI=https://github.com/msteveb/jimtcl/zipball/0.73 -> jimtcl-0.73.zip
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_md5_=5dd2e8f8b392c9b3eed538cb7e6d0472
+_md5_=0736d04c56f8da1c29a70bb843da7234

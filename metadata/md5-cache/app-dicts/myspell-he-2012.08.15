@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2
 SLOT=0
 SRC_URI=https://extensions.libreoffice.org/extensions/hebrew-he-spell-check-dictionary/2012-08-15/@@download/file/dict-he-2012-08-15.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_install:myspell-r2
-_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
-_md5_=9aa6ddb7852c20e255d4a689676e5787
+_eclasses_=myspell-r2	f771bf8a3f42be87a117b6f96d641724
+_md5_=2a1383d7d0f91ed095108f775faa2419

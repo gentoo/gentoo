@@ -7,4 +7,4 @@ LICENSE=OFL-1.1
 RDEPEND==media-fonts/lohit-assamese-2* =media-fonts/lohit-bengali-2* =media-fonts/lohit-devanagari-2* =media-fonts/lohit-gujarati-2* =media-fonts/lohit-gurmukhi-2* =media-fonts/lohit-kannada-2* =media-fonts/lohit-malayalam-2* =media-fonts/lohit-marathi-2* =media-fonts/lohit-nepali-2* =media-fonts/lohit-odia-2* =media-fonts/lohit-tamil-2* =media-fonts/lohit-tamil-classical-2* =media-fonts/lohit-telugu-2*
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1b54ab3c21c310ff5540fd17b1866d06
+_md5_=651bedc23d1ebeacb0809779ed9411a3

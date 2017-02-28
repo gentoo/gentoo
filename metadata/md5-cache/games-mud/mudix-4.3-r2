@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses:0
 SLOT=0
 SRC_URI=http://dw.nl.eu.org/mudix/mudix-4.3.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=fe5d7a1f91463713653da4a64930e643
+_md5_=aab4628e8d9bc9d10de4db7442d1ec3b

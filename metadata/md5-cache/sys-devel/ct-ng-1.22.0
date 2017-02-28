@@ -9,5 +9,5 @@ RDEPEND=net-misc/curl dev-util/gperf dev-vcs/cvs dev-vcs/subversion
 SLOT=0
 SRC_URI=http://ymorin.is-a-geek.org/download/crosstool-ng/crosstool-ng-1.22.0.tar.bz2
 _eclass_exported_funcs=src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=fddedf09dea8e261653e2a77e3bbc6b0
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=db899ece3fc487665b65012a6bcc2947

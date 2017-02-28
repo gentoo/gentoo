@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/bashdb/bashdb-4.3-0.91.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_md5_=c308524b387aa36e36993053bd985564
+_md5_=83f56f974ada4ccfa4a8e4c7a16a5a61

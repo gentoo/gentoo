@@ -9,4 +9,4 @@ RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXres x11-libs/libXext
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/wininfo/wininfo-0.7.tar.gz
 _eclass_exported_funcs=-
-_md5_=35be6058ccf6b0ca7a46afe008f46509
+_md5_=653181ffdeedb1b9676a97daf7948839

@@ -10,4 +10,4 @@ RDEPEND=json? ( dev-libs/jansson ) xml? ( dev-libs/libxml2:2 ) yaml? ( dev-libs/
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~radhermit/vim/ctags-20161028.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_md5_=aa6e90dd7cfa60d45974e8c0f7dec9de
+_md5_=cce17d09154391cf81dbb52a4d3aad99

@@ -8,4 +8,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://humorix.org/downloads/humorixfortunes-1.4.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=65b70074dda2c3172180344d5bbdc4b0
+_md5_=78a9fc76fff2f4ea4c157dc6c2f3e8ce

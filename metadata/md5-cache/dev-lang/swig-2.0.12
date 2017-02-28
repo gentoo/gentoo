@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/swig/swig-2.0.12.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=bf9f9d7dccf2dececc65cd236416fbee
+_md5_=fe7a28cc1999505b8754fb159010e84c

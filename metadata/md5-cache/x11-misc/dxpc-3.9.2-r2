@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXt >=dev-libs/lzo-2
 SLOT=0
 SRC_URI=http://www.vigor.nu/dxpc/dxpc-3.9.2.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=82d27b59b401f025f28665a67a7e8ade
+_md5_=2acb2dfc98a034b5698aa8b665a215dc

@@ -11,4 +11,4 @@ RESTRICT=binchecks
 SLOT=0
 SRC_URI=mirror://kernel/linux/docs/man-pages/Archive/man-pages-4.09.tar.xz mirror://kernel/linux/docs/man-pages/man-pages-4.09.tar.xz mirror://gentoo/man-pages-gentoo-2.tar.bz2 https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-2.tar.bz2
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_md5_=d47f2fc6e01a968f00a504da7501e378
+_md5_=dd3e486298b704e365f24877ce1d06fa

@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
 SLOT=0
 SRC_URI=https://github.com/Seldaek/cli-prompt/archive/1.0.0.tar.gz -> cli-prompt-1.0.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=cc67a69105b2945ce0d78cc0a974ea60
+_md5_=5b64df8ad164552d4708d8255651439b

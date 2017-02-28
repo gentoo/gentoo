@@ -10,4 +10,4 @@ RDEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:
 SLOT=0
 SRC_URI=mirror://sourceforge/fldigi/fldigi-3.23.19.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=7d6604ed00f715596a8dda985936c0cc
+_md5_=4dbbdfe08d53be8092b60de46261882b

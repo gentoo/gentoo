@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib sys-libs/db:= !libressl? ( dev-libs/openssl:0= ) libressl?
 SLOT=0
 SRC_URI=http://boxbackup.org/svn/box/packages/boxbackup-0.11.1.tgz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_compile:- src_install:-
-_eclasses_=user	e10ccb95af96d45f86016fa982a949bb
-_md5_=22a1636ed63e4a4f433c364277832c39
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=6a26695347cc86880d92fc00fd557e22

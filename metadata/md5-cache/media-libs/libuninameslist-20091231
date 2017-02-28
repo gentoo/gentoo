@@ -7,4 +7,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/libuninameslist/libuninameslist-20091231.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=23684b635e30fae628f50c4b5e0eb151
+_md5_=3108faf122deba22a1392a2c8c67c1b8

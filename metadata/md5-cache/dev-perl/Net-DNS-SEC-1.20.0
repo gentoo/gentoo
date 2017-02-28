@@ -10,5 +10,5 @@ RDEPEND=>=dev-perl/Crypt-OpenSSL-Bignum-0.40.0 >=dev-perl/Crypt-OpenSSL-DSA-0.14
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NL/NLNETLABS/Net-DNS-SEC-1.02.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=23f5f49c6a0aad373072e8474606648b
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=446d0217de1c72a5eb48a198b267efa6

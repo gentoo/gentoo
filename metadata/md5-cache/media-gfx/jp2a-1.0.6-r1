@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses virtual/jpeg curl? ( net-misc/curl )
 SLOT=0
 SRC_URI=mirror://sourceforge/jp2a/jp2a-1.0.6.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=eb7ce6736a25ab0c3cd5222fb04f7d88
+_md5_=16be95a182c0bb4a9703c7c90d304c17

@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://j3e.de/linux/convmv/convmv-2.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_md5_=92f1433296a53b98723f334ffd27d8d4
+_md5_=3323199bf2202a739f968ed69672be56

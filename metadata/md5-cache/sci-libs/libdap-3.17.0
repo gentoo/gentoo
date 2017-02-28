@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://www.opendap.org/pub/source/libdap-3.17.0.tar.gz
 _eclass_exported_funcs=-
-_md5_=e6eab18d7a16f2407600c630daba7ffc
+_md5_=d3e63dd50cba6e289c76a166aab3f497

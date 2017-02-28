@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/gerbv/gerbv-2.6.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
-_eclasses_=fdo-mime	92d07846ea8ea54172f8c0112a47ae3d
-_md5_=7990c30a552a4e1b88204a3e33d07689
+_eclasses_=fdo-mime	21ef5adf81836863efa968f2a25cff64
+_md5_=b322ca6030de9fd6e6bcd453d240f3a8

@@ -10,5 +10,5 @@ RDEPEND=apparmor? ( sys-libs/libapparmor ) seccomp? ( sys-libs/libseccomp ) !app
 SLOT=0
 SRC_URI=https://github.com/opencontainers/runc/archive/v1.0.0-rc2.tar.gz -> runc-1.0.0_rc2.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
-_eclasses_=golang-base	a42b7e0ca33d7ab0c0fa52699435b816	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
-_md5_=6ee9a4a3a578f901f8724810020748a4
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-vcs-snapshot	f834ea1d0152290fd9b1b79950f615c2
+_md5_=6256d2b3767aa0126c99360e4d41e4ca

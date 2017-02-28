@@ -10,4 +10,4 @@ RDEPEND=flac? ( media-libs/flac ) mac? ( media-sound/mac ) sox? ( media-sound/so
 SLOT=0
 SRC_URI=http://www.etree.org/shnutils/shntool/dist/src/shntool-3.0.10.tar.gz
 _eclass_exported_funcs=-
-_md5_=dced0dfaa2929a1a9301fe24c5972275
+_md5_=eb3929503bd1666a01b72d1cf1f6420f

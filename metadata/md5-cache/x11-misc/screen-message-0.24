@@ -9,4 +9,4 @@ RDEPEND=x11-libs/gtk+:3 x11-libs/cairo >=x11-libs/pango-1.16 !<net-im/jabberd2-2
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/screen-message/screen-message_0.24.orig.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=88a72d610bb117c42c71c9c8db01364b
+_md5_=0877e534d5f9bb52d69fa0daf463f234

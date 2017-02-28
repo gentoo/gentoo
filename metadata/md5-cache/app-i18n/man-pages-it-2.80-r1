@@ -8,4 +8,4 @@ RDEPEND=virtual/man
 SLOT=0
 SRC_URI=ftp://ftp.pluto.it/pub/pluto/ildp/man/man-pages-it-2.80.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=eb39025ce8f7ce8f7d08a8212e0ae676
+_md5_=7a964ad5233c978c8a18ae0e057bcbf5

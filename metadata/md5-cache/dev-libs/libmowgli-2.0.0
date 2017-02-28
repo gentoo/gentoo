@@ -10,4 +10,4 @@ RDEPEND=ssl? ( dev-libs/openssl )
 SLOT=2
 SRC_URI=http://atheme.org/downloads/libmowgli-2.0.0.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=6ef383ade60b63274101205ebdc120b8
+_md5_=1211cbee0e63442681d7e0212b1214b6

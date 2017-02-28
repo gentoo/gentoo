@@ -7,4 +7,4 @@ KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
 LICENSE=public-domain
 SLOT=0
 _eclass_exported_funcs=src_install:-
-_md5_=549d716561361aba900d72e5bca230c1
+_md5_=563c075b17c106bb0e0fa92f516e1d40

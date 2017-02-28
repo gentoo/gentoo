@@ -8,4 +8,4 @@ RDEPEND=app-shells/bash net-analyzer/rrdtool[graph] virtual/imagemagick-tools
 SLOT=0
 SRC_URI=mirror://gentoo/recursos-2.0.tbz2
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=66b70b41e9633d0450a166cce3cc98af
+_md5_=b0c71a9a0ab32d8809e71d8b422eb1c4

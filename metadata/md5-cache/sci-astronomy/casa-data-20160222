@@ -7,4 +7,4 @@ LICENSE=LGPL-3
 SLOT=0
 SRC_URI=ftp://ftp.astron.nl/outgoing/Measures/WSRT_Measures_20160222-000001.ztar -> casa-data-20160222.tar.Z
 _eclass_exported_funcs=src_install:-
-_md5_=786d16a634a1067cced1068e7bfb8891
+_md5_=f6dd55fdfe13ca50e3f150d0ddbc6acc

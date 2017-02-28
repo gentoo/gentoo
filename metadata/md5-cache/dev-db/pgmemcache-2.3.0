@@ -9,4 +9,4 @@ RDEPEND=dev-db/postgresql dev-libs/cyrus-sasl >=dev-libs/libmemcached-1.0.18[sas
 SLOT=0
 SRC_URI=https://github.com/ohmu/pgmemcache/archive/2.3.0.tar.gz -> pgmemcache-2.3.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=61149d9cc9b937349e00b677578dd9a3
+_md5_=1d5cdcd9ffa3c977dcebd6a031f2efda

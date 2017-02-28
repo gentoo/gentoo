@@ -9,5 +9,5 @@ RESTRICT=splitdebug
 SLOT=0
 SRC_URI=amd64? ( http://staruml.io/download/release/v2.8.0/StarUML-v2.8.0-64-bit.deb ) x86? ( http://staruml.io/download/release/v2.8.0/StarUML-v2.8.0-32-bit.deb )
 _eclass_exported_funcs=src_unpack:- src_install:-
-_eclasses_=unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=2d3429ce23321cfa6f7f16b673afec78
+_eclasses_=unpacker	76ddf385f3c212c12857bb8ec2a8bd35
+_md5_=c08118a94b44e8bb9cf0f754efd68eb2

@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/symfony/dependency-injection/archive/v2.8.15.tar.gz -> symfony-dependency-injection-2.8.15.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_md5_=76edad891d5a9b4e52fddea0abbb0108
+_md5_=c2e31107058a6785dd6ee36138acdee9

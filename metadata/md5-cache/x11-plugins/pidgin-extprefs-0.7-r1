@@ -9,4 +9,4 @@ RDEPEND=net-im/pidgin[gtk]
 SLOT=0
 SRC_URI=mirror://sourceforge/gaim-extprefs/pidgin-extprefs-0.7.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=dc859a2e0f8ea3880c2b3bfaee912ab7
+_md5_=483302546187e6f33ecd18985082abfd

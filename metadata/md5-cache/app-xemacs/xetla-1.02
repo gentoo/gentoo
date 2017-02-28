@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/ediff app-xemacs/xemacs-base app-xemacs/jde app-xemacs/mail-l
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/xetla-1.02-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
-_md5_=95f6aaf480de3fbc00016759cb360df2
+_eclasses_=xemacs-packages	6af894e52080fe5d8bd91371a8a6a735
+_md5_=55a7c06dc55a7726b4037162caa56705

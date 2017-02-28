@@ -7,4 +7,4 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=app-dicts/myspell-es
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=12e02a4de2d4991e21d099378159239f
+_md5_=67eb4e0af4da04120bb43e3aba4b86bd

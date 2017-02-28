@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libX11 xrender? ( x11-libs/libXrender )
 SLOT=0
 SRC_URI=mirror://gentoo/fbpager-20090221.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:-
-_md5_=183d9cde9e578b1ae10ac28804e73571
+_md5_=f82bd11d9c50f69e382b168a6645f781

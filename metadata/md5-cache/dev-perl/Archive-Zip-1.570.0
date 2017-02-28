@@ -10,5 +10,5 @@ RDEPEND=>=virtual/perl-Compress-Raw-Zlib-2.17.0 virtual/perl-File-Path >=virtual
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PH/PHRED/Archive-Zip-1.57.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=5bcf42c0d5c0a288838af7c5d7fd0ba8
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=e1bb7f2c2d0d1e5687ab0062b5f11bc3

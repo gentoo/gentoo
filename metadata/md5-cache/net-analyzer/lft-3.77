@@ -9,4 +9,4 @@ RDEPEND=net-libs/libpcap
 SLOT=0
 SRC_URI=http://pwhois.org/get/lft-3.77.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_md5_=a3e3c064b3a47c8a38878e8615aaad64
+_md5_=85142ed1d6f8eda9d248d8eceba11652

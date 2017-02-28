@@ -9,5 +9,5 @@ RDEPEND=>=dev-php/PEAR-MDB2-2.5.0_beta3 || ( dev-lang/php[oci8] dev-lang/php[oci
 SLOT=0
 SRC_URI=http://pear.php.net/get/MDB2_Driver_oci8-1.5.0b4.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:php-pear-r1
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=fe98306cb4d2bbbb83b3e0e54b6eef02
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=8b24260e963d3e904f8252faee9e2366

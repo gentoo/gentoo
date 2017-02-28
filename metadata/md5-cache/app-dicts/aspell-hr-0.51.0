@@ -9,5 +9,5 @@ RDEPEND=>=app-text/aspell-0.50
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/hr/aspell-hr-0.51-0.tar.bz2
 _eclass_exported_funcs=src_compile:aspell-dict src_install:aspell-dict
-_eclasses_=aspell-dict	5e1fcef2869735a5ddd48c0d8fb4f48a
-_md5_=33ff1be2362295d226f638e1dbe9cae5
+_eclasses_=aspell-dict	812651366b0e714c782a007c82fb3098
+_md5_=67cd4995cd97fea34c2765614a2b12af

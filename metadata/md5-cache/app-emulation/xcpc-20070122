@@ -8,4 +8,4 @@ RDEPEND=app-emulation/libdsk
 SLOT=0
 SRC_URI=http://sourceforge.net/projects/xcpc/files/xcpc/xcpc-20070122/xcpc-20070122.tar.gz
 _eclass_exported_funcs=-
-_md5_=402cf65f8e6dcdf74832da68d5d62b3f
+_md5_=e395855f32a11502b05de845feb2c7d1

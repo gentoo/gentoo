@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/quvi/libquvi-scripts-0.9.20131130.tar.xz
 _eclass_exported_funcs=src_configure:-
-_md5_=85960920b90cc93198392ae386a8fb79
+_md5_=b2f366d45ba73c0623f3b821487b9331

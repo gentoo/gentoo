@@ -9,5 +9,5 @@ RDEPEND=sys-libs/readline:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/fuzz/fuzz-0.6.tar.gz mirror://debian/pool/main/f/fuzz/fuzz_0.6-7.3.diff.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=8b0d296fbca2992e3bbbb2bfe6be81bf
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=76e57cd7cc7fec8e7a0e52a7f98e7845

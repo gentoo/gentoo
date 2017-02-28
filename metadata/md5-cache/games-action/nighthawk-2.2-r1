@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXpm
 SLOT=0
 SRC_URI=ftp://metalab.unc.edu/pub/Linux/games/arcade/nighthawk-2.2-1.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_md5_=2fe2a4424f01ed8f17176a64d669293d
+_md5_=8d8849fb56ab9191293d488aabebc178

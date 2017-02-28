@@ -10,4 +10,4 @@ RDEPEND=ssl? ( dev-libs/openssl:0 )
 SLOT=0
 SRC_URI=http://gotbnc.com/files/bnc2.9.4.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_md5_=286e1c8de3a3d618354cbc7b096d0777
+_md5_=e93e2591536a9bc85150ad9c0a98f6f7

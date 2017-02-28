@@ -9,4 +9,4 @@ RDEPEND=sys-fs/fuse media-libs/libid3tag media-libs/flac media-sound/lame media-
 SLOT=0
 SRC_URI=mirror://github/khenriks/mp3fs/mp3fs-0.32.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=6d5cce358ba1886552681074a1a007f3
+_md5_=2bf4df8d0808c8fc3f10b4d8914cc730

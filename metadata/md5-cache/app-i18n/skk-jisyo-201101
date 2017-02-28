@@ -10,4 +10,4 @@ RDEPEND=cdb? ( dev-db/cdb ) !app-i18n/skk-jisyo-extra !app-i18n/skk-jisyo-cdb
 SLOT=0
 SRC_URI=mirror://gentoo/skk-jisyo-201101.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=c88cacb24f92cb1510cdef90020c02cf
+_md5_=0594bddb9c666e3d300496f35272f3ac

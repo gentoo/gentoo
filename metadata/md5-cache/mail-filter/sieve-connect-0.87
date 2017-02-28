@@ -9,4 +9,4 @@ RDEPEND=>=dev-lang/perl-5 >=dev-perl/Authen-SASL-2.11 dev-perl/IO-Socket-INET6 >
 SLOT=0
 SRC_URI=https://github.com/syscomet/sieve-connect/releases/download/v0.87/sieve-connect-0.87.tar.bz2
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=8f56edfe00764e0886ee6af489f2de14
+_md5_=e0f0f5b6dfe31c0e3ea0b76b10c1a94a

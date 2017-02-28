@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[filter,gd,json,simplexml,xml,zlib] >=net-analyzer/rrdtool
 SLOT=0
 SRC_URI=mirror://sourceforge/pnp4nagios/PNP-0.6/pnp4nagios-0.6.25.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_install:-
-_md5_=36df3493c99447de63c6354363e80f44
+_md5_=e3ba92cd512a9d108b647e38c21c04a9

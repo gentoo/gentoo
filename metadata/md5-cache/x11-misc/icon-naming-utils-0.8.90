@@ -9,4 +9,4 @@ RDEPEND=>=dev-perl/XML-Simple-2 >=dev-lang/perl-5
 SLOT=0
 SRC_URI=http://tango.freedesktop.org/releases/icon-naming-utils-0.8.90.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=3d14c5c2bd9156cab91b5a63bd2350f5
+_md5_=75a66d5e329853e1fe155d08591db1d7

@@ -9,4 +9,4 @@ RDEPEND=>=dev-lang/perl-5.10.0 app-text/delta dev-perl/Benchmark-Timer dev-perl/
 SLOT=0
 SRC_URI=http://embed.cs.utah.edu/creduce/creduce-2.4.0.tar.gz
 _eclass_exported_funcs=-
-_md5_=02e37a77d476569c3632dab40873b42f
+_md5_=39d0e4352af0f38e8c2903897f8906cd

@@ -8,5 +8,5 @@ RDEPEND=app-shells/bash dev-lang/perl || ( ( sys-apps/portage app-portage/portag
 SLOT=0
 SRC_URI=mirror://gentoo/perl-cleaner-2.23.tar.bz2 https://dev.gentoo.org/~dilfridge/distfiles/perl-cleaner-2.23.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=prefix	99dcca42e6528d8fe3c214bf5731aaf2
-_md5_=6428d2ccfbcd10926e9b3cbb4e729ebb
+_eclasses_=prefix	df8265631f8bf5f5df387e9b987121f9
+_md5_=92e938e8b473a0fe766b98c4724ef07f

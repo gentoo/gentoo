@@ -9,4 +9,4 @@ RDEPEND=>=sci-geosciences/libtcd-2.2.4
 SLOT=0
 SRC_URI=ftp://ftp.flaterco.com/xtide/tcd-utils-20120115.tar.bz2
 _eclass_exported_funcs=-
-_md5_=303c5e10b45244b73326166f739c9bb6
+_md5_=85a72bc9a747406b83f41525af7bcc61

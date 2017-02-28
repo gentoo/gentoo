@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXinerama
 SLOT=0
 SRC_URI=http://www.lcdf.org/xwrits/xwrits-2.26.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=e042f7b3aaa31e8fecc260df1aed2b8e
+_md5_=b2f3e6061f5ad9cb7e4de8d1915b432f

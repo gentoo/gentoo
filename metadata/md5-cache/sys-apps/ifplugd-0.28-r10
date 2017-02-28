@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libdaemon-0.5 >=sys-apps/baselayout-1.12 selinux? ( sec-polic
 SLOT=0
 SRC_URI=http://0pointer.de/lennart/projects/ifplugd/ifplugd-0.28.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=dd12b05913bd4e858828aa71d0805ae6
+_md5_=36974149ff147b3de9059ba04506863d

@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses:0=[unicode]
 SLOT=0
 SRC_URI=http://dev.yorhel.nl/download/ncdu-1.12.tar.gz
 _eclass_exported_funcs=-
-_md5_=3b38d4a67fa594eb34fde22759fc6f24
+_md5_=d00385762fbc09561f42b99b7eb86a71

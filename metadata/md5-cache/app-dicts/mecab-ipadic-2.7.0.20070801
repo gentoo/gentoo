@@ -9,4 +9,4 @@ LICENSE=ipadic
 SLOT=0
 SRC_URI=mirror://sourceforge/mecab/mecab-ipadic-2.7.0-20070801.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=f6b84c6f3d613c280a3142b4579c1ce2
+_md5_=47d1d8a3362ada81e529616b593bddad

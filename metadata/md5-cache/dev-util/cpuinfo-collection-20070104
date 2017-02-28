@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=http://www.deater.net/weave/vmwprod/linux_logo/test_proc-04January2007.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=9c2483029d01a895f717733ac66648b8
+_md5_=8de65e707eee0812b840c393b6d1fdea

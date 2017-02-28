@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl dev-perl/Clone dev-perl/Crypt-Rijndael dev-perl/TermReadKe
 SLOT=0
 SRC_URI=http://downloads.sourceforge.net/project/kpcli/kpcli-3.0.pl
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_md5_=fafe1735b1cfba179d4ba164c68d7b61
+_md5_=c416df6019ed17d0ad034f9986fd0d0b

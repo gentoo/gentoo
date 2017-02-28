@@ -10,4 +10,4 @@ RDEPEND=X? ( x11-libs/libX11 x11-libs/libXt )
 SLOT=0
 SRC_URI=http://www.lcdf.org/~eddietwo/gifsicle/gifsicle-1.70.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=a02a3cde2ce1092ca0a4ec50e7b92187
+_md5_=8b8398df13a96bb355bd8c3e362e53e9

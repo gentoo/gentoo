@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/nettle-2.7.1
 SLOT=0
 SRC_URI=mirror://sourceforge/libkpass/libkpass-6.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=0b35fcfe18dacf8f8213ae4ee5e27941
+_md5_=89b53b4ad80dc0681bc280c1d6454015

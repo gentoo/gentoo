@@ -8,4 +8,4 @@ LICENSE=fping
 SLOT=0
 SRC_URI=http://fping.org/dist/fping-3.10.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=d9afe0a5036fcc3554def34002960c13
+_md5_=f01f1d9fc0fdbf28962fdb9ff4c417c7

@@ -10,5 +10,5 @@ RDEPEND=>=dev-erlang/p1_utils-1.0.5 >=dev-lang/erlang-17.1 dev-libs/expat dev-la
 SLOT=0
 SRC_URI=https://github.com/processone/fast_xml/archive/1.1.15.tar.gz -> fast_xml-1.1.15.tar.gz
 _eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
-_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=f917f01dff831cc1998484986c30bf43
+_eclasses_=rebar	10b899da50920d20ab79f1ab7b66ea93
+_md5_=a31c90a0df2ac83735f56b0cd34c6dd2

@@ -9,4 +9,4 @@ RDEPEND=dev-libs/glib:2 x11-libs/libfm-extra
 SLOT=0/2
 SRC_URI=mirror://sourceforge/lxde/menu-cache-1.0.0.tar.xz
 _eclass_exported_funcs=-
-_md5_=7c552fdbbe9b828cabd22022df8eb835
+_md5_=f9e48efee5ec7de8c314a9ab2ab955df

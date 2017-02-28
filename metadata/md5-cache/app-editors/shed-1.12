@@ -8,4 +8,4 @@ RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=mirror://sourceforge/shed/shed-1.12.tar.gz
 _eclass_exported_funcs=src_compile:-
-_md5_=3010162f6f58d951109d6812bb7e9639
+_md5_=fb70f0bebc978c11d02d54beef7e2593

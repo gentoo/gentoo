@@ -9,5 +9,5 @@ RDEPEND=>=net-libs/wvstreams-4.4 net-dialup/ppp:=
 SLOT=0
 SRC_URI=https://wvstreams.googlecode.com/files/wvdial-1.61.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_eclasses_=readme.gentoo-r1	03878c06495db70bc36bd717383c09f7
-_md5_=271fff7897237e814fbe214b8c7b2340
+_eclasses_=readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
+_md5_=c1ca1fa0d6bcbd4b25321e884cddf18f

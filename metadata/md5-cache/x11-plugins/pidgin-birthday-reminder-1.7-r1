@@ -10,4 +10,4 @@ RDEPEND=net-im/pidgin[gtk]
 SLOT=0
 SRC_URI=https://launchpad.net/pidgin-birthday-reminder/trunk/1.7/+download/pidgin-birthday-reminder-1.7.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=4f91fc1b3978c6dd2c95718630a26c26
+_md5_=e8421e4eefb5eabeb50eef3b0972c05e

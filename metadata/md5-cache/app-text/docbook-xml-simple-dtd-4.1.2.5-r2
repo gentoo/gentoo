@@ -9,5 +9,5 @@ RDEPEND=>=app-text/build-docbook-catalog-1.6
 SLOT=4.1.2.5
 SRC_URI=http://www.nwalsh.com/docbook/simple/4.1.2.5/simple4125.zip
 _eclass_exported_funcs=pkg_prerm:sgml-catalog pkg_postrm:- pkg_postinst:- src_unpack:base src_compile:sgml-catalog src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9ed399d1a5473ca6cdf591b6887549e8
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	sgml-catalog	013e5c68335c5b4df8f1b72d7d7ad25d	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=d99f48b9c5a54ecad68bc5492e21304a

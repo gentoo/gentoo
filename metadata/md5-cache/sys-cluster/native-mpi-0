@@ -6,4 +6,4 @@ KEYWORDS=~amd64-linux ~x86-linux
 LICENSE=GPL-3
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=4bde02d3c69d532811dbb1b39f1da10d
+_md5_=dc2bde9d965ee21f46eddd5be1b5e04e

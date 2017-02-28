@@ -9,4 +9,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=https://www.musicpd.org/download/libmpdclient/2/libmpdclient-2.10.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=cb568c87e4bfc1fbf52fae0909f802a1
+_md5_=3f21f35a25834e94b55ec75fd13f9254

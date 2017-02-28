@@ -9,4 +9,4 @@ RDEPEND=>=x11-libs/gtk+-2.8.0:2 gnome-base/libglade x11-libs/gtkglext virtual/op
 SLOT=0
 SRC_URI=mirror://sourceforge/desmume/desmume-0.9.11.tar.gz
 _eclass_exported_funcs=-
-_md5_=c97d8cbd0972ed9019795a14b52c69b6
+_md5_=74f633c552b8e582314f28d15872e3f8

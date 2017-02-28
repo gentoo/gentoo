@@ -8,4 +8,4 @@ RDEPEND=>=dev-lang/perl-5.6 virtual/perl-Getopt-Long >=virtual/mysql-3.23
 SLOT=0
 SRC_URI=https://github.com/major/MySQLTuner-perl/archive/1.6.0.tar.gz -> mysqltuner-1.6.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=58a70b4d6dadb26eb165d0f56c3bd09e
+_md5_=caf55ce6e35347b6a3c6c93030ad283d

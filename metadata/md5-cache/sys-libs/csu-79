@@ -7,4 +7,4 @@ LICENSE=APSL-2
 SLOT=0
 SRC_URI=http://www.opensource.apple.com/tarballs/Csu/Csu-79.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=7e059334582e9915b4eaba2c700f970b
+_md5_=dceab77d086d6d6697d2de70402108a3

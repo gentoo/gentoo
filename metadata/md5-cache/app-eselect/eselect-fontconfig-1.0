@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=app-admin/eselect >=media-libs/fontconfig-2.4
 SLOT=0
 _eclass_exported_funcs=src_install:-
-_md5_=50210dedc4fcf1cf6810fbf4792bdf9f
+_md5_=b83d78f797c74b0b65f526b25b70a6e4

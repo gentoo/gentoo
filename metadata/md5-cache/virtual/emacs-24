@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbs
 RDEPEND=app-editors/emacs:24
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=393ece59b9b54cbc556138edfc98181b
+_md5_=5f932df5bc7254ee6e383793cee5a12d

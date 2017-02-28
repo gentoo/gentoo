@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/weblint-1.020.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=fd70e1880d6bf2713415bf895c010075
+_md5_=67fce62ae513a3e3658890551256f19b

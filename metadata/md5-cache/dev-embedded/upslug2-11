@@ -7,4 +7,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://sourceforge/nslu/upslug2-11.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=cafa94edd9f55cba81eef12f90d47b89
+_md5_=33c34318e4dffe66375af7e4917c6891

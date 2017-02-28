@@ -10,4 +10,4 @@ RDEPEND=sci-libs/colamd
 SLOT=0
 SRC_URI=http://dev.gentooexperimental.org/~scarabeus/lpsolve-5.5.2.0.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=3d3250446146dfddf7c97d314bc9fd5c
+_md5_=2ec2a48445541c74216716279e4b2285

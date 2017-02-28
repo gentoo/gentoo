@@ -11,4 +11,4 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/cutg-160.tar.xz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=84128d2fa1f9689d4b8519b665fa4a49
+_md5_=bbbd347ac6eafe2416778cd68a45bf1a

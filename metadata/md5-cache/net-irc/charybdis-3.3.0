@@ -10,5 +10,5 @@ RDEPEND=ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=http://www.stack.nl/~jilles/irc/charybdis-3.3.0.tbz2 https://dev.gentoo.org/~binki/distfiles/net-irc/charybdis/charybdis-3.3.0-patches.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	708f85bc1bf00876604e223fb56e062a	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	e10ccb95af96d45f86016fa982a949bb
-_md5_=c9cd6196f0171acc9f7c96f83abd909f
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=a561d794ccb5378fe4863cf0f38fd76c

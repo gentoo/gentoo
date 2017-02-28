@@ -10,5 +10,5 @@ RDEPEND=app-text/ghostscript-gpl virtual/latex-base media-libs/netpbm dev-lang/p
 SLOT=0
 SRC_URI=http://saftsack.fs.uni-bayreuth.de/~latex2ht/current/latex2html-2008.tar.gz https://dev.gentoo.org/~dilfridge/distfiles/latex2html-match-multiline.patch.bz2
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=691098714300a306401cbdc275338825
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=7470f8312aa1028675bbc4566b5db280

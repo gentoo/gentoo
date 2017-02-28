@@ -9,4 +9,4 @@ RDEPEND=net-nds/openldap sys-fs/fuse >=sys-libs/libhx-3.12
 SLOT=0
 SRC_URI=mirror://sourceforge/ldapfuse/ldapfuse-1.0.tar.xz
 _eclass_exported_funcs=-
-_md5_=9961023fc85de8b842e166e6a18475e4
+_md5_=89954667099cbdb853447ecd5b9af68a

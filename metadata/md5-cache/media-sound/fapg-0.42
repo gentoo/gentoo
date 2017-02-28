@@ -10,4 +10,4 @@ RDEPEND=xspf? ( >=dev-libs/uriparser-0.6.3 )
 SLOT=0
 SRC_URI=http://royale.zerezo.com/fapg/fapg-0.42.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=42929ac781f78986ccd0c9af1a10ed21
+_md5_=423118f2a614f8f7d11e427e2001441c

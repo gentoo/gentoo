@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/sofia-sip/sofia-sip-1.12.11.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=9f916084269b2d5fdefeaf0365596221
+_md5_=b5d2c26120d13c60484c77a3b1ada5c9

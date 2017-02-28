@@ -9,4 +9,4 @@ RDEPEND=dev-vcs/git
 SLOT=0
 SRC_URI=https://github.com/AGWA/git-crypt/archive/0.5.0.tar.gz -> git-crypt-0.5.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=8b7be257c26dcdd4468ec7c7f61c385e
+_md5_=2b49e13163400df570678549518ef4bf

@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl dev-perl/IO-Socket-Timeout
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/updatedd/updatedd_2.6.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=56fdcc3f4e7d3626ffcebed0e25dc3db
+_md5_=398b0a7ecf158d08cd758bdef9dd7d3e

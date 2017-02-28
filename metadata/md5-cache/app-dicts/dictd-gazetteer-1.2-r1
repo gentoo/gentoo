@@ -9,4 +9,4 @@ RDEPEND=>=app-text/dictd-1.5.5
 SLOT=0
 SRC_URI=ftp://ftp.dict.org/pub/dict/pre/dict-gazetteer-1.2-pre.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=27b8b3a2222cd094ff430220aa7a5d78
+_md5_=1fb04efab23a36cb7ca459cedb140859

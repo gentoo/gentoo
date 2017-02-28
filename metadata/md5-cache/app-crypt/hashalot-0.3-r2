@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.paranoiacs.org/~sluskyb/hacks/hashalot/hashalot-0.3.tar.gz
 _eclass_exported_funcs=src_test:- src_install:-
-_md5_=fcb25240ed11a62cbce0a769857f4884
+_md5_=64293c7be0a69348cc128ac8055d9435

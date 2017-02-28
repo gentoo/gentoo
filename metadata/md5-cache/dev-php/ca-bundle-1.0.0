@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
 SLOT=0
 SRC_URI=https://github.com/composer/ca-bundle/archive/1.0.0.tar.gz -> ca-bundle-1.0.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=6a852742a25513166080940c22a72aeb
+_md5_=41409bd43d67e5df25cbf05e169a6474

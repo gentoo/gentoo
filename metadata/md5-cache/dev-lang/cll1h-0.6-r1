@@ -8,4 +8,4 @@ RDEPEND=sys-devel/gcc
 SLOT=0
 SRC_URI=http://gpl.arachne.cz/download/cll1h-0.6.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=8017f69e35eb4d887f3d9ed48ead1d3f
+_md5_=f53266dbfee37742f732075aedc4e915

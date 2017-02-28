@@ -7,4 +7,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://hyperdex.org/src/libpo6-0.6.0.tar.gz
 _eclass_exported_funcs=-
-_md5_=ee15b3ef06b091f6155ab3ff659ae602
+_md5_=8853ce94a5f2aef837b445dddf0bf179

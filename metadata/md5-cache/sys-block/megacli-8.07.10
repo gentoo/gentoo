@@ -10,5 +10,5 @@ RESTRICT=mirror fetch
 SLOT=0
 SRC_URI=http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/8.07.10_MegaCLI_Linux.zip
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=3fe66b37a794a60ac830acd9454faaae
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=8814218ad31a35a7e8515ff05e9c80f4

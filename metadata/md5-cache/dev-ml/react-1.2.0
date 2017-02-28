@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/1.2.0
 SRC_URI=http://erratique.ch/software/react/releases/react-1.2.0.tbz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=db7378450b229f75f61476bb1bcf356d
+_md5_=ced66c5e1416b4ea30b359c80274bd60

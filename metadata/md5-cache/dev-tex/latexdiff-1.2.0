@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-genericrecomm
 SLOT=0
 SRC_URI=https://github.com/ftilmann/latexdiff/archive/1.2.0.tar.gz -> latexdiff-1.2.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=7382dee6c418fd5531285cd789305b4b
+_md5_=5842665e9610324c405272659bd33244

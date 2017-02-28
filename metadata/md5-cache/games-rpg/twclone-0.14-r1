@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/twclone/twclone-source-0.14.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=2cd2a41a81da6ca3ca3b146bfdc26c2d
+_md5_=5932726df7d4bde9922d11ea908c44eb

@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/libextractor/libextractor-1.3.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=9e4e0a171652c62cfce0f0282790e17a
+_md5_=a8f581a95691125721c83373a94c87a7

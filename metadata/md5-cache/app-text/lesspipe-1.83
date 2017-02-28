@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl !<sys-apps/less-483-r1
 SLOT=0
 SRC_URI=https://www-zeuthen.desy.de/~friebel/unix/less/lesspipe-1.83.tar.gz
 _eclass_exported_funcs=pkg_preinst:- src_configure:- src_compile:- src_install:-
-_md5_=d70778aa5f688ff3b6cbbd6e07960618
+_md5_=028d6a6eefc195692f64b8b67aab161b

@@ -8,4 +8,4 @@ RDEPEND=!x11-themes/etheme-BlueSteel !x11-themes/etheme-BrushedMetal-Tigert !x11
 SLOT=0
 SRC_URI=mirror://sourceforge/enlightenment/e16-themes-1.0.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=4989aaa73a1dc0bbda9800c32db546bb
+_md5_=bfdc211316ad3e968c5821cdb261cfac

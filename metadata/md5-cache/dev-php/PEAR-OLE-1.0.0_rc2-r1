@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/OLE-1.0.0RC2.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=f9910a5758fd3b904b6c9a7d227750b2
+_md5_=874a472515bdffd099679af2fe267a4a

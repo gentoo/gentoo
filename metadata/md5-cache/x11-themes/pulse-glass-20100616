@@ -7,4 +7,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://kde-look.org/CONTENT/content-files/124442-Pulse-Glass.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=d669e541924e78a9f3fe3945868de811
+_md5_=e78ab74ee374027abde696f880ab005a

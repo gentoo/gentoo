@@ -10,4 +10,4 @@ RDEPEND=x11-libs/gtk+:2 >=x11-wm/windowmaker-0.95.2 imlib? ( media-libs/imlib ) 
 SLOT=0
 SRC_URI=mirror://sourceforge/wmakerconf/wmakerconf_2.12.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_md5_=16062c4a806cc08a94fcce14713ea445
+_md5_=0c5d44f7b31c07bc8f43f92df5d64bed

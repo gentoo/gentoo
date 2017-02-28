@@ -11,5 +11,5 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://kernel/linux/libs/klibc/2.0/klibc-2.0.4.tar.xz mirror://debian/pool/main/k/klibc/klibc_2.0.4-9.debian.tar.xz mirror://kernel/linux/kernel/v4.x/linux-4.4.tar.xz mirror://kernel/linux/kernel/v4.x/testing/linux-4.4.tar.xz
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=3a2028338e23220672b723d9ac02e0ef
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=88612f57d81164143ba3740fbe9e09c5

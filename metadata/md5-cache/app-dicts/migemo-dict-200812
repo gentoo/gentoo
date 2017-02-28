@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/migemo-dict-200812.tar.bz2
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=23107885a0bed78413359fe18f920068
+_md5_=ac8aac35f502681d0759d7be2f838b8d

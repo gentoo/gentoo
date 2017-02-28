@@ -9,5 +9,5 @@ RDEPEND=>=x11-libs/libdockapp-0.7:= x11-libs/libX11 x11-libs/libXext x11-libs/li
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/wmppp.app-1.3.2.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=8c00180a53f5fcc332be63fe2d056b59
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=223a088c42b8644a6269ca50a1a368a7

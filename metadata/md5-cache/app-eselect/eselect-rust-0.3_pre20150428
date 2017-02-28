@@ -8,4 +8,4 @@ RDEPEND=app-admin/eselect
 SLOT=0
 SRC_URI=https://github.com/jauhien/eselect-rust/archive/0.3_pre20150428.tar.gz -> eselect-rust-0.3_pre20150428.tar.gz
 _eclass_exported_funcs=pkg_prerm:- pkg_preinst:- pkg_postinst:-
-_md5_=34547a52d4b366d9b591d5926f8420c8
+_md5_=597c492942d13df020cbc55cba270148

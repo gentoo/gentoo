@@ -10,4 +10,4 @@ RDEPEND=dev-lang/tcl:0 media-libs/freeglut media-libs/giflib media-libs/libpng:0
 SLOT=0
 SRC_URI=mirror://sourceforge/gracer/gracer-0.1.5.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=166d9e7ffc8273269f538d5a005abf43
+_md5_=a75c27edadc3103a488770970a89e92e

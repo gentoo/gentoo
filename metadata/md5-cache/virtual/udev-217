@@ -6,4 +6,4 @@ KEYWORDS=alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh spar
 RDEPEND=!systemd? ( || ( >=sys-fs/eudev-2.1.1 >=sys-fs/udev-217 ) ) systemd? ( >=sys-apps/systemd-217:0 )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1eb83142eba2a08bba1b9b61cb806784
+_md5_=6efe5bc7e9b40ada2e8e375650a3283c

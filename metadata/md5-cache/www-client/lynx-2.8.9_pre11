@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/zlib nls? ( virtual/libintl ) ssl
 SLOT=0
 SRC_URI=http://invisible-mirror.net/archives/lynx/tarballs/lynx2.8.9dev.11.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
-_md5_=89cac5df3b119201440eb02b1a415f9f
+_md5_=9251f47a4e71a4908706288d06e9740a

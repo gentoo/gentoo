@@ -9,4 +9,4 @@ RDEPEND=>=x11-libs/gtk+-2.2.4:2
 SLOT=0
 SRC_URI=mirror://gentoo/xvid4conf-1.12.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=5083bd820d2030789703edc7539cb61d
+_md5_=a1639cadb57953c7c799bf55314fd747

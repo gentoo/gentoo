@@ -10,4 +10,4 @@ RDEPEND=>=media-libs/libpng-1.2:0 media-libs/jasper
 SLOT=0
 SRC_URI=mirror://sourceforge/icns/libicns-0.8.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=90843de16442d77c20512633e4771d05
+_md5_=8874300363e1d6e0252e750d1c9890df

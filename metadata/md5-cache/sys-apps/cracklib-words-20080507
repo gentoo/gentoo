@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=mirror://sourceforge/cracklib/cracklib-words-20080507.gz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=74e19619152137e93f987d6fff6401cd
+_md5_=5304d180e34149a1211fdf4127f23081

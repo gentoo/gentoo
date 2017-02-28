@@ -9,4 +9,4 @@ RDEPEND=>=sys-apps/portage-2.1 >=app-portage/portage-utils-0.55 app-shells/bash 
 SLOT=0
 SRC_URI=mirror://gentoo/crossdev-20160602.tar.xz https://dev.gentoo.org/~vapier/dist/crossdev-20160602.tar.xz
 _eclass_exported_funcs=src_install:-
-_md5_=8daa79160edc3b2b95b4ec4f921d4b9e
+_md5_=a3bd27064b61cbd6d1f14781556971a9

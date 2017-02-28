@@ -9,4 +9,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://fauxascii.com/linux/data/slack-fortunes-all-1.15.tgz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
-_md5_=6ebcad60e3a3da668a6e4b8b85986b90
+_md5_=29aa46980764316238e3e5edb6bb6ae6

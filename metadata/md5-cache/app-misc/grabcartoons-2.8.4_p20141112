@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/zzamboni/grabcartoons/archive/cb230f01fb288a0b9f0fc437545b97d06c846bd3.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=6986a351bf801e7b7238434761b98f1c
+_md5_=8aa7fb89f2b59bf5e211401d2ffc09d9

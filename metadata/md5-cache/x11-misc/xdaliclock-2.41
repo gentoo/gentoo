@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt
 SLOT=0
 SRC_URI=http://www.jwz.org/xdaliclock/xdaliclock-2.41.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=ccf8f0cd1cecde75d891a7cc98d56018
+_md5_=e79ac11e6a66d421e06f9d785ffa48c9

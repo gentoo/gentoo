@@ -10,4 +10,4 @@ RDEPEND=idn? ( net-dns/libidn ) gnutls? ( net-libs/gnutls ) ssl? ( !libressl? ( 
 SLOT=0/17
 SRC_URI=http://camaya.net/download/gloox-1.0.20.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=9ffac7d66451beaa3063f0a1fc216939
+_md5_=5fd7d5caf14f60d37625064913bc4fe1

@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/libpng-1.2:0 x11-libs/libX11 x11-libs/libXi x11-libs/libXts
 SLOT=0
 SRC_URI=http://hoopajoo.net/static/projects/xautomation-1.09.tar.gz
 _eclass_exported_funcs=-
-_md5_=82571f320ad425c16b4319734fe9ff53
+_md5_=118903fc2e1ea67ed3affad64207e1d9

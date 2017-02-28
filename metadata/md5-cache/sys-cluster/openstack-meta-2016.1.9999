@@ -7,4 +7,4 @@ LICENSE=Apache-2.0
 RDEPEND=keystone? ( ~sys-auth/keystone-2016.1.9999 ) swift? ( ~sys-cluster/swift-2.9.0 ) neutron? ( ~sys-cluster/neutron-2016.1.9999 ) glance? ( ~app-admin/glance-2016.1.9999 ) cinder? ( ~sys-cluster/cinder-2016.1.9999 ) nova? ( ~sys-cluster/nova-2016.1.9999 )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=951835151262831757f01f5fe423fd16
+_md5_=1045d6b371146bc8061c1c0a2612d70b

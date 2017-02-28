@@ -9,4 +9,4 @@ RDEPEND=>=app-text/dictd-1.5.5
 SLOT=0
 SRC_URI=mirror://gnu/vera/vera-1.22.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=0c99605b3abb98ed4289f825ca74901a
+_md5_=5ce6613b4df77910588a108d7c6692b6

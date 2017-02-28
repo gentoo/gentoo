@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-3.10[ocamlopt?] dev-ml/gsl-ocaml dev-ml/lablgl[glut] de
 SLOT=0
 SRC_URI=mirror://gentoo/flashdot-1.1.4.tar.bz2 https://dev.gentoo.org/~tomka/files/flashdot-1.1.4.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=f7bc8bad0f4eaaad2fa3731c900e13cb
+_md5_=0116275040884ebfc5f42361a3c1c3be

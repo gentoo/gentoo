@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/http-fetcher-1.0.1
 SLOT=0
 SRC_URI=mirror://sourceforge/fetch/fetch-1.0.tar.gz
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=e4e666a68969b0da6aa345a53cd50c07
+_md5_=da58e019de0a1b95128f30df89aae735

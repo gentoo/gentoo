@@ -10,4 +10,4 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=html? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/html/Linux-html-HOWTOs-20120707.tar.bz2 ) htmlsingle? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/html_single/Linux-html-single-HOWTOs-20120707.tar.bz2 ) pdf? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/pdf/Linux-pdf-HOWTOs-20120707.tar.bz2 ) text? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/Linux-HOWTOs-20120707.tar.bz2 )
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=5da8ce8e06fab479c304c89d10bb0d3f
+_md5_=3dc3a5513920fb63470b34dcc133a2a2

@@ -8,4 +8,4 @@ RDEPEND=mail-filter/procmail
 SLOT=0
 SRC_URI=mirror://nongnu/procmail-lib/procmail-lib-2009.1202.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=44ee8ff5cbb7c8dda24f64fa1f89262e
+_md5_=ef79f141cdc044bc1976f59cddca49b3

@@ -7,4 +7,4 @@ LICENSE=phrack
 SLOT=28
 SRC_URI=http://www.phrack.org/archives/tgz/phrack28.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=0d92a94c20d7aeaec1ddd52948c380cf
+_md5_=71bbc66ae03785e1de6abf169eef059c

@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/lde/lde-2.6.1.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=0456a689ef468d05d835a4a31088064a
+_md5_=62fd03a974b0c0530587312aff02223e

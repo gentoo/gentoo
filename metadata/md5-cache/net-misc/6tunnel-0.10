@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://toxygen.net/6tunnel/6tunnel-0.10.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=03074080fca729a794bfee057b244b44
+_md5_=801e54b519d7af871b17ab77d3f70013

@@ -8,4 +8,4 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=ftp://ftp.snobol4.org/snobol4/beta/snobol4-0.99.44.tar.gz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_md5_=bfc54f9d7ad431d9d872ab7c86446ac2
+_md5_=7a254d8af88bf57b2b3e6e92ca3b50dd

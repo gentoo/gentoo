@@ -8,4 +8,4 @@ RDEPEND=|| ( >=net-analyzer/nagios-plugins-1.4.13-r1 >=net-analyzer/monitoring-p
 SLOT=0
 SRC_URI=https://labs.consol.de/assets/downloads/nagios/check_logfiles-3.7.3.1.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=cbccc924497bc08d2355f6c814a34586
+_md5_=8a4d631c263d8c9de4e98ceebd9a0fdb

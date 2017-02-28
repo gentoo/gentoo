@@ -11,4 +11,4 @@ REQUIRED_USE=gksu? ( !gtk3 )
 SLOT=0
 SRC_URI=mirror://xfce/src/apps/xfce4-taskmanager/1.2/xfce4-taskmanager-1.2.0.tar.bz2
 _eclass_exported_funcs=src_configure:-
-_md5_=9da8aad22ff65a986b2ca04644b9a27f
+_md5_=3e47eb8b964d9e7878c51529b31c5d2a

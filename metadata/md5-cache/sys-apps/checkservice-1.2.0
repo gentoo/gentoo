@@ -8,4 +8,4 @@ RDEPEND=>=dev-lang/perl-5.8 >=dev-perl/MailTools-1.58 >=dev-perl/File-Find-Rule-
 SLOT=0
 SRC_URI=http://www.linvision.com/checkservice/files/checkservice-1.2.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
-_md5_=36c54782b78f27ee66a76da33cf0dd71
+_md5_=f83f43e4b3857128ce583fabb24741d9

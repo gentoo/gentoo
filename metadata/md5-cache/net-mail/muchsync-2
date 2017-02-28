@@ -9,4 +9,4 @@ RDEPEND=dev-db/sqlite:3 dev-libs/openssl:0= <dev-libs/xapian-1.3 net-mail/notmuc
 SLOT=0
 SRC_URI=http://www.muchsync.org/src/muchsync-2.tar.gz
 _eclass_exported_funcs=-
-_md5_=ad121b685532113e70978eb883068f29
+_md5_=917410e714b830061170de2b2d9bdb1d

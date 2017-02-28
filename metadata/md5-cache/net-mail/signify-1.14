@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/signify/signify_1.14-1.tar.gz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_md5_=f30b8bf75b237455b6ff78e0bf03a24c
+_md5_=e557f1051e3653e4ce31603d86f46c50

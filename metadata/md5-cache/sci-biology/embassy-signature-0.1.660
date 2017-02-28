@@ -10,5 +10,5 @@ RDEPEND=dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot:= sys-libs/zlib mysql?
 SLOT=0
 SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/SIGNATURE-0.1.660.tar.gz -> embassy-signature-0.1.660.tar.gz
 _eclass_exported_funcs=src_prepare:emboss-r2 src_configure:emboss-r2 src_install:emboss-r2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	emboss-r2	2c9ee1a35ab52638295d46448a2d2ede	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=a3d2107d481622edb12b1ea107a339db
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	emboss-r2	e6c8236c06e1e543b4feef45c31dd618	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=4cb685046b5a39b624eb3467b815c2c4

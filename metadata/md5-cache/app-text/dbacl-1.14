@@ -10,4 +10,4 @@ RDEPEND=interactive? ( sys-libs/slang:= sys-libs/readline:= sys-libs/ncurses:= )
 SLOT=0
 SRC_URI=http://www.lbreyer.com/gpl/dbacl-1.14.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_md5_=567d924406eb9bebf5583c76a7d99d46
+_md5_=f8541a9e469b0a1605c04191f4d74bea

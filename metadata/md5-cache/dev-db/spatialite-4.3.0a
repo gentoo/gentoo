@@ -11,4 +11,4 @@ REQUIRED_USE=test? ( iconv )
 SLOT=0
 SRC_URI=https://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-4.3.0a.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=9f852f2d30c9b575f8e926d154b5c63b
+_md5_=b368de76c5d85fb70e3df321e7349b5f

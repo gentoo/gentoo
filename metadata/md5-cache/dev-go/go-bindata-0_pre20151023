@@ -8,5 +8,5 @@ LICENSE=CC-PD
 SLOT=0/0_pre20151023
 SRC_URI=https://github.com/jteeuwen/go-bindata/archive/a0ff2567cfb70903282db057e799fd826784d41d.tar.gz -> go-bindata-0_pre20151023.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:golang-build src_test:golang-build src_install:-
-_eclasses_=golang-base	a42b7e0ca33d7ab0c0fa52699435b816	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
-_md5_=ff90f5ef00578428dd96c3e0b9f9dbd7
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	f834ea1d0152290fd9b1b79950f615c2
+_md5_=dc973713e115fe7a023c8e5e5e6f9033

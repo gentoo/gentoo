@@ -10,4 +10,4 @@ RDEPEND=net-libs/tox:0/0.1[av?] dev-libs/libconfig media-gfx/qrencode net-misc/c
 SLOT=0
 SRC_URI=https://github.com/JFreegman/toxic/archive/v0.7.2.tar.gz -> toxic-0.7.2.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=e7fbad269a6dd43eaf9491789aae3b89
+_md5_=f39ce94b96eb5a1cd96138ce9119fda7

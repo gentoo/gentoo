@@ -1127,7 +1127,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.31 1.31-r1 1.32: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.31 1.31-r1 1.32 1.33: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -2027,7 +2027,7 @@ app-office/kmymoney 4.7.2 4.8.0: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 2.6.3-r1 3.1-r1 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.2.3.3-r1 5.2.5.1 5.2.9999 5.3.0.3 5.3.9999 9999: A full office productivity suite
+app-office/libreoffice 5.2.3.3-r1 5.2.5.1 5.2.6.2 5.3.0.3 5.3.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.2.3.3 5.2.3.3-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.2.3.3 5.2.3.3-r1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.2.3.3 5.2.5.1 5.3.0.3: Translations for the Libreoffice suite

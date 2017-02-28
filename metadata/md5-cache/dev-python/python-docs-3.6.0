@@ -7,4 +7,4 @@ LICENSE=PSF-2
 SLOT=3.6
 SRC_URI=mirror://gentoo/python-3.6.0-docs-html.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=5cf345aa7b2f35f6cea55207166d0731
+_md5_=804d57854803c3c326b862ee5336a8ac

@@ -8,4 +8,4 @@ RESTRICT=mirror fetch
 SLOT=0
 SRC_URI=ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=6dd8fdb160ff12bb7a12db352608804f
+_md5_=501641f54b7f3d99b2203546a10c7c8c

@@ -8,4 +8,4 @@ RDEPEND=|| ( www-client/google-chrome www-client/chromium )
 SLOT=0
 SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip ) x86? ( https://chromedriver.storage.googleapis.com/2.24/chromedriver_linux32.zip )
 _eclass_exported_funcs=src_install:-
-_md5_=60e353a98ab529809595e7e2792b54e0
+_md5_=947813e85a7c9894051f24bcfa1f40d9

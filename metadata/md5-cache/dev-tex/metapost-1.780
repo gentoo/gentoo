@@ -9,4 +9,4 @@ RDEPEND=dev-libs/kpathsea >=app-eselect/eselect-mpost-0.3 x11-libs/cairo x11-lib
 SLOT=0
 SRC_URI=http://foundry.supelec.fr/gf/download/frsrelease/395/1879/metapost-1.780-src.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_install:-
-_md5_=e04065d150d4322ef7ead7e85e11d7c4
+_md5_=6823afeae9afcf62b5e81ec4e66622f1

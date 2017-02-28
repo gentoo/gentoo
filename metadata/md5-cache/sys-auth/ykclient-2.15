@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://opensource.yubico.com/yubico-c-client/releases/ykclient-2.15.tar.gz
 _eclass_exported_funcs=-
-_md5_=55e74a749fdd0c3bb45177bbf2824fca
+_md5_=08ff4347542daf4711fc809c4128f9fb

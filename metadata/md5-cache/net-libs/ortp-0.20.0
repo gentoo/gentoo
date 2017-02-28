@@ -10,5 +10,5 @@ RDEPEND=srtp? ( net-libs/libsrtp ) ssl? ( dev-libs/openssl )
 SLOT=0
 SRC_URI=mirror://nongnu/linphone/ortp/sources/ortp-0.20.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=8f2166dd9b8701f4ce55c99c86df8341
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=3018732d7282d6862960e1ec30f56396

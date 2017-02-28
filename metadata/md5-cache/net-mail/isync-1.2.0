@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/db-4.2:* sys-libs/zlib sasl? ( dev-libs/cyrus-sasl ) ssl? ( >
 SLOT=0
 SRC_URI=mirror://sourceforge/isync/isync/1.2.0/isync-1.2.0.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=74250a903f08d39136cf4aa3b096ee3d
+_md5_=fcaa1b94b6fd5016a8b0b9b60494f6cb

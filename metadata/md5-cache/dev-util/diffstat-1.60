@@ -7,4 +7,4 @@ LICENSE=HPND
 SLOT=0
 SRC_URI=ftp://invisible-island.net/diffstat/diffstat-1.60.tgz
 _eclass_exported_funcs=src_configure:-
-_md5_=25c23b8147d5217091bcec2f0bfb00c9
+_md5_=89bfbf6c2eacbe833cc3b07f17d92d6e

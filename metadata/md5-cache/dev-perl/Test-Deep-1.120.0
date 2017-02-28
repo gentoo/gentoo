@@ -10,5 +10,5 @@ RDEPEND=>=virtual/perl-Scalar-List-Utils-1.90.0 virtual/perl-Test-Simple dev-lan
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Test-Deep-1.120.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
-_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=e8897c224071b5e7cad660e8c7b055ed
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=8b66f91e8923850914279b2c8460b1cc

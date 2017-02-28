@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/dssi-0.9.0 x11-libs/gtk+:2 >=media-libs/liblo-0.12 >=media-
 SLOT=0
 SRC_URI=mirror://sourceforge/dssi/fluidsynth-dssi-1.0.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=163172089abba8f921d579846d9cd01c
+_md5_=9ebf921ae0ea3d274989dd7e6dae7d50

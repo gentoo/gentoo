@@ -9,4 +9,4 @@ RDEPEND=sys-libs/libservicelog virtual/logger
 SLOT=0
 SRC_URI=mirror://sourceforge/linux-diag/servicelog-1.1.14.tar.gz
 _eclass_exported_funcs=-
-_md5_=56f5b3b6fcce22fd9fa35446ba2c7572
+_md5_=2e884c1d9453d24025f44a499afec6a3

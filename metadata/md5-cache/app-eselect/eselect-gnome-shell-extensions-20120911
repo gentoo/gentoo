@@ -9,4 +9,4 @@ RDEPEND=app-admin/eselect >=dev-libs/glib-2.26:2 gnome-base/gsettings-desktop-sc
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~tetromino/distfiles/eselect-gnome-shell-extensions/eselect-gnome-shell-extensions-20120911.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=55d90022faeea08723ae29a333d4c456
+_md5_=bf3a8de8bc1f9f155216b3514b60a2c1

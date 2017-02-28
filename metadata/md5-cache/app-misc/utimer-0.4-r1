@@ -9,4 +9,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://utimer.codealpha.net/dl.php?file=utimer-0.4.tar.gz -> utimer-0.4.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=0c80db8c18a6ccaabfed7ac4b6a79a23
+_md5_=a1a45dce1d79c5709cacc54b9e1b6509

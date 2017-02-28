@@ -10,4 +10,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://wh0rd.org/books/linkers-and-loaders-1.tar.lzma
 _eclass_exported_funcs=src_install:-
-_md5_=b7f2764fc6773b9a7fb6e04b79a3e3ef
+_md5_=4982aa3fd9347c497e199a5a9734fe6c

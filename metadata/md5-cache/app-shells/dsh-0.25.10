@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libdshconfig virtual/ssh
 SLOT=0
 SRC_URI=http://www.netfort.gr.jp/~dancer/software/downloads/dsh-0.25.10.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=792655817f4bd8362c304ffa1fccc9f7
+_md5_=1fd017b0d5215ad4454f677d2ff874f3

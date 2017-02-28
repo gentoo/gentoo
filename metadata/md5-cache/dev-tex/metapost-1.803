@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/kpathsea-6.1.0_p20120701 >=app-eselect/eselect-mpost-0.3 >=x1
 SLOT=0
 SRC_URI=https://foundry.supelec.fr/frs/download.php/file/15750/metapost-1.803-src.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_install:-
-_md5_=001368d4c4a52ddf1b9fb5ce4145c094
+_md5_=d86f827736306cc8f9934e18c198b938

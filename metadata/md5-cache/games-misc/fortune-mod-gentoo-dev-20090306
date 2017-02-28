@@ -10,4 +10,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://gentoo/fortune-gentoo-dev-20090306.tar.bz2 https://dev.gentoo.org/~robbat2/distfiles/fortune-gentoo-dev-20090306.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=20deaec95f0eb62a4f7ab9e5f600f670
+_md5_=60edfa4b586ffc5ecebbf224667b183b

@@ -9,5 +9,5 @@ RDEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] dev-ml/cmdliner:=[o
 SLOT=0/0.8.0
 SRC_URI=http://erratique.ch/software/fmt/releases/fmt-0.8.0.tbz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=9e563eca87dd038ef2e4786f4a6f36cd
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=a685a8badf72f16967ef52842210ac29

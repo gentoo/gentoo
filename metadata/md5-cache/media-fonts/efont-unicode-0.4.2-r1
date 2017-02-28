@@ -10,5 +10,5 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://openlab.jp/efont/dist/unicode-bdf/efont-unicode-bdf-0.4.2.tar.bz2
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_compile:font-ebdftopcf src_install:font
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	font	cd7790315ca5b8c505e1e0513df6acce	font-ebdftopcf	75e211ccd3dfa06a230e846535451fdb	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=7b82299c27592ac92ee4bc9d1b003a7e
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	font	82836641e7d4639329d8c195234ad0e3	font-ebdftopcf	e23db122fd578442f37e3e79267eedd8	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=098498066987e6ddb210c4c8c9fbce6b

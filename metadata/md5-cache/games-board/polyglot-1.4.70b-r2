@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 SLOT=0
 SRC_URI=http://hardy.uhasselt.be/Toga/polyglot-release/polyglot-1.4.70b.tar.gz
 _eclass_exported_funcs=-
-_md5_=9542014589ca601f2588ad3bdfb74a43
+_md5_=78baf8254cfb91ef1920d51fd88e4f5b

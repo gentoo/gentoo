@@ -9,4 +9,4 @@ RDEPEND=net-libs/libgssglue
 SLOT=0
 SRC_URI=http://www.citi.umich.edu/projects/nfsv4/linux/librpcsecgss/librpcsecgss-0.19.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=6c09e9b14a95f97a64638bac20c08ff2
+_md5_=fe237f8e5c9d518675bd185cca2ee167

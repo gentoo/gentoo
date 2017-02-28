@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXt
 SLOT=0
 SRC_URI=http://www.cs.unm.edu/~mccune/otter/otter-3.3.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=6c4e47c0a30353fd691caa25a026e23c
+_md5_=426db6667030fcb91e7563b63c86d603

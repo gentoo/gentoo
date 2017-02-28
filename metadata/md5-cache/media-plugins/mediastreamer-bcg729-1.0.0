@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/mediastreamer-2.8.2:= >=net-libs/ortp-0.16.0:=
 SLOT=0
 SRC_URI=mirror://nongnu/linphone/plugins/sources/bcg729-1.0.0.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=bd8dd3b464d5ac5ca4e5d7fddee46427
+_md5_=eabf338bed594dcc47fa8c65e00a297c

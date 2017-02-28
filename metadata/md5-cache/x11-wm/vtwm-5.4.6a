@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-libs
 SLOT=0
 SRC_URI=ftp://ftp.visi.com/users/hawkeyd/X/vtwm-5.4.6a.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=d43cca2879320f9eefb0c776b389d474
+_md5_=316da0e331380d3829243cec9b47bcad

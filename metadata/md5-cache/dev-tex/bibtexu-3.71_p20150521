@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/kpathsea-6.2.1:= >=dev-libs/icu-4.4:= !<app-text/texlive-core
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20150521-source.tar.xz mirror://gentoo/texlive-module-bibtex8-2015.tar.xz mirror://gentoo/texlive-module-bibtexu-2015.tar.xz doc? ( mirror://gentoo/texlive-module-bibtex8.doc-2015.tar.xz mirror://gentoo/texlive-module-bibtexu.doc-2015.tar.xz )
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=43d6ff7d6765a81c7cd1bf758c3fa34f
+_md5_=c0f533bc30cf27e7ce37b81826c9c32d

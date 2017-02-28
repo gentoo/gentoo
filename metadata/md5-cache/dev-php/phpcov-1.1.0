@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php[phar] dev-php/xdebug
 SLOT=0
 SRC_URI=https://phar.phpunit.de/phpcov-1.1.0.phar
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=f81d0c5bf7573511f71a356255d28894
+_md5_=aef32645877115962f295c05e393f52a

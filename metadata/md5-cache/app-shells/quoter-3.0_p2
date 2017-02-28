@@ -7,5 +7,5 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/vaeth/quoter/archive/v3.0_p2.tar.gz -> quoter-3.0_p2.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_install:-
-_eclasses_=vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
+_eclasses_=vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
 _md5_=844ef984612d767f13ae86cc34a0729e

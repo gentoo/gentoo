@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR dev-php/PEAR-XML_Parser
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/XML_RSS-1.1.0a1.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=fd2bf762f4a99738ea7b8e4273affa97
+_md5_=c75ede56958ed520a613e0da39572b26

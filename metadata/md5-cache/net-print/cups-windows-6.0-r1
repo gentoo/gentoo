@@ -9,4 +9,4 @@ RDEPEND=>=net-print/cups-1.2
 SLOT=0
 SRC_URI=mirror://gentoo/cups-windows-6.0-source.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=abc50c51e0fc7a351209826ea94d5ada
+_md5_=2bd68f123940f6a51ebfaa2b20a33179

@@ -9,4 +9,4 @@ RDEPEND=!sys-fabric/dapl
 SLOT=0
 SRC_URI=https://bitbucket.org/hroptatyr/dateutils/downloads/dateutils-0.4.0.tar.xz
 _eclass_exported_funcs=src_configure:- src_compile:- src_test:-
-_md5_=e05e4caf8c4d60ee033a76b311469cd9
+_md5_=8af478e072b493f3b372c83dbb13d974

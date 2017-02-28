@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx
 SLOT=0
 SRC_URI=https://github.com/mgorny/pshs/releases/download/v0.3/pshs-0.3.tar.bz2
 _eclass_exported_funcs=src_configure:-
-_md5_=25d3b898eb2b1aa9151fa9c3c873b7be
+_md5_=4cb2f7b7aacd5eeaf9dba1160e9844bd

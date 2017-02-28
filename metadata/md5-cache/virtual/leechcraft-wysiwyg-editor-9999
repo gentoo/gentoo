@@ -4,4 +4,4 @@ EAPI=6
 RDEPEND=~app-leechcraft/lc-lhtr-9999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=bf51cce39795c651e852fb90782e4010
+_md5_=8274e3399d825db282dd23775c08424b

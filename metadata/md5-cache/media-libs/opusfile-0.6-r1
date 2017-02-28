@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( fixed-point float )
 SLOT=0
 SRC_URI=http://downloads.xiph.org/releases/opus/opusfile-0.6.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=0d9b339f077b27415792a7ac9b444251
+_md5_=7d96de90592f2cca24011db67ea82e96

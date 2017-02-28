@@ -8,4 +8,4 @@ RDEPEND=virtual/man
 SLOT=0
 SRC_URI=ftp://ftp.win.tue.nl/pub/linux-local/manpages/translations/man-pages-fr-2.39.0.tar.bz2
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=ab9a977dd72740f300d5b7889f7041d2
+_md5_=f146c434290fa77ec385649896f8ef6a

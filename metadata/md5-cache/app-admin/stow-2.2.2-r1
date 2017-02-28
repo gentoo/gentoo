@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://gnu/stow/stow-2.2.2.tar.gz
 _eclass_exported_funcs=src_configure:-
-_eclasses_=perl-functions	aac50de73be0a80ebe780e0b20850130
-_md5_=4941129067803737595c0f7169510858
+_eclasses_=perl-functions	ca1237f4863eb3e83ab1462927f981c2
+_md5_=654aae07bf3f181ea20449d63cf54934

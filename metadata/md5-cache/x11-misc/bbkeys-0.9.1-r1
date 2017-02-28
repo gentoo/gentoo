@@ -9,4 +9,4 @@ RDEPEND=>=x11-wm/blackbox-0.70.0
 SLOT=0
 SRC_URI=mirror://sourceforge/bbkeys/bbkeys-0.9.1.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=34e96d67862c5d6d7f299582066951dd
+_md5_=5fe1a7022911673cd4c8ae53533c3e14

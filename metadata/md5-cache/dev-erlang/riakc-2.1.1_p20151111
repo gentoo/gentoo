@@ -9,5 +9,5 @@ RDEPEND=>=dev-erlang/riak_pb-2.1.0.7 >=dev-lang/erlang-17.1 <dev-lang/erlang-19 
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/dev-erlang/riakc/riakc-2.1.1_p20151111.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:rebar src_test:rebar src_install:rebar
-_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=e1f3970e7120e1df8a18a807175b79bd
+_eclasses_=rebar	10b899da50920d20ab79f1ab7b66ea93
+_md5_=2c692d27120204ef75ad6f1bcf2eeb8d

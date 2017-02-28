@@ -10,4 +10,4 @@ RDEPEND=libedit? ( dev-libs/libedit )
 SLOT=0
 SRC_URI=http://pecl.php.net/get/xdebug-2.5.0.tgz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=23c11c8ab07a70e533f6de3fc9004b49
+_md5_=e8b64399adfe35c7a72a7fe86f337f4f

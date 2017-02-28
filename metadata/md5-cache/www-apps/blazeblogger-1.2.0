@@ -10,4 +10,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=https://blazeblogger.googlecode.com/files/blazeblogger-1.2.0.tar.gz doc? ( https://blazeblogger.googlecode.com/files/blazeblogger-doc-1.2.0.tar.gz )
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=a7cba6ea4c66fac7c3ba1844a5604aa4
+_md5_=eb48aa3f2b9e02d6739378b275811e42

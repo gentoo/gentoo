@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://web.taranis.org/shmux/dist/shmux-1.0.tgz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=ef5017e9b625f93c2aa66b130a613ab3
+_md5_=609b59a7b8af1391ac517cb8eb8754bf

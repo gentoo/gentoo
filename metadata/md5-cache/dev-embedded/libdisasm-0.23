@@ -7,4 +7,4 @@ LICENSE=Clarified-Artistic
 SLOT=0
 SRC_URI=mirror://sourceforge/project/bastard/libdisasm/0.23/libdisasm-0.23.tar.gz
 _eclass_exported_funcs=-
-_md5_=fcd9f1fb5ebac634d74447ef9bea53af
+_md5_=9531ff5fa7bc1132eb5d15d5c8ab0b6d

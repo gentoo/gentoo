@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libsigc++:2 >=net-libs/gnutls-1.2.10
 SLOT=0
 SRC_URI=http://releases.0x539.de/net6/net6-1.3.14.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=6f50ab16089f12356ec381a5684e49c2
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=386c5ef8fc1b6e42632979516b85f75b

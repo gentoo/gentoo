@@ -9,4 +9,4 @@ RDEPEND=|| ( dev-lang/php:5.6[phar,xml] dev-lang/php:7.0[phar,xml] )
 SLOT=0
 SRC_URI=https://phar.phpunit.de/phpunit-5.0.10.phar
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
-_md5_=cc689e23e31ec9a99e971296c1be02fa
+_md5_=7121950adc4b3c9035e905ab44b8de0f

@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 SLOT=0
 SRC_URI=http://mednafen.fobby.net/releases/files/mednafen-server-0.5.2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_md5_=b842238b0f0d7759016db646bd8d079b
+_md5_=2fde62915ef59ddab55484dce9a1cb67

@@ -10,4 +10,4 @@ RDEPEND=perl? ( dev-lang/perl ) =app-editors/vile-9.8r >=x11-libs/libX11-1.0.0 >
 SLOT=0
 SRC_URI=ftp://invisible-island.net/vile/current/vile-9.8r.tgz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=e51ab222a6b571313268a922b33b85b7
+_md5_=9423da01b7507a0e899e9b6a498772d5

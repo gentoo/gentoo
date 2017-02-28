@@ -7,4 +7,4 @@ LICENSE=PSF-2
 SLOT=3.3
 SRC_URI=http://www.python.org/ftp/python/doc/3.3.5/python-3.3.5-docs-html.tar.bz2
 _eclass_exported_funcs=pkg_postrm:- src_install:-
-_md5_=2f8b2e6ecc1b4d6ff4a48a3b0a156753
+_md5_=f0d2ae2d0fd0b7f863c3c3717a4b31ce

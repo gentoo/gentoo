@@ -8,4 +8,4 @@ RDEPEND=sys-apps/gentoo-functions || ( >=sys-apps/portage-2.1.6 >=sys-apps/palud
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/python-updater-0.12.tar.bz2
 _eclass_exported_funcs=src_compile:-
-_md5_=a6a205591068dc77d35fa78ff5536806
+_md5_=44cd05d18f510baade541e6ddaff0225

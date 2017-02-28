@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=https://github.com/ildar-shaimordanov/logmerge/archive/v0.5.2b.tar.gz -> logmerge-0.5.2b.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=4aabad8b7318565bbd6fe120d6c945fc
+_md5_=cb7bbe18c816e4ff396ba1dd1c0f34af

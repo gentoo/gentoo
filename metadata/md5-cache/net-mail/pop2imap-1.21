@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl dev-perl/Mail-POP3Client dev-perl/Mail-IMAPClient dev-perl
 SLOT=0
 SRC_URI=http://www.linux-france.org/prj/pop2imap/dist/pop2imap-1.21.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=bc23c7f7931414243e5638559bb706ae
+_md5_=f6a4934dd80cebf986b5f9b6f34a8b4a

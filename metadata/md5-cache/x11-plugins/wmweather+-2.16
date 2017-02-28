@@ -9,4 +9,4 @@ RDEPEND=dev-libs/libpcre >=net-misc/curl-7.17.1 x11-libs/libXpm x11-libs/libXext
 SLOT=0
 SRC_URI=mirror://sourceforge/wmweatherplus/wmweather+-2.16.tar.gz
 _eclass_exported_funcs=-
-_md5_=5e476f6a2fd8928910c681ec5b0c0532
+_md5_=503612d7db6431c01d4b14639aae9e8f

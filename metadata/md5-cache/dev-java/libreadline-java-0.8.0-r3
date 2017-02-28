@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/java-readline/libreadline-java-0.8.0-src.tar.gz
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	b31a7fe19a47c6a2d901f6de949e5209	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ecdc3c223cd23e97fc21c13a3a9981c7
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=802acd8a871f3afa4629642b60481906

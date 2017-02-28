@@ -8,4 +8,4 @@ LICENSE=Artistic
 SLOT=0
 SRC_URI=mirror://sourceforge/sourceforge/amphetadesk/amphetadesk-src-v0.93.1.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=59ce847ec5dde21e317617181a7b9816
+_md5_=a5765f5ebf695314ccf8f591334f6156

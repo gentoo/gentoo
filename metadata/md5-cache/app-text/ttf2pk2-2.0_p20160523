@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/kpathsea-6.2.1 media-libs/freetype:2 sys-libs/zlib !media-lib
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20160523-source.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=e3549f4a81182b1028551739991fe726
+_md5_=09966063a7af0c3f611920e99e64a706

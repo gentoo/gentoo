@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/efl-1.13.1 >=media-libs/elementary-1.13.1
 SLOT=0
 SRC_URI=https://download.enlightenment.org/rel/apps/terminology/terminology-0.8.0.tar.xz
 _eclass_exported_funcs=-
-_md5_=ada8003fc40b037400f7c0c1bceeee7d
+_md5_=d60fbbb943ccc6daa1bffc4262b75299

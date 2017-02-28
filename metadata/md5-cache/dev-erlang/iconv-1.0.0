@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/erlang-17.1 virtual/libiconv dev-lang/erlang
 SLOT=0
 SRC_URI=https://github.com/processone/iconv/archive/1.0.0.tar.gz -> iconv-1.0.0.tar.gz
 _eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
-_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=c562b709e85751ca43896199f0c435aa
+_eclasses_=rebar	10b899da50920d20ab79f1ab7b66ea93
+_md5_=724af23dab7be08b815951edadf54e8b

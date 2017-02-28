@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl dev-perl/Algorithm-Diff dev-perl/Regexp-Common virtual/per
 SLOT=0
 SRC_URI=https://github.com/AlDanial/cloc/releases/download/v1.72/cloc-1.72.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=806dcba5f3ce15b27d5dbbcfe229084b
+_md5_=6bb03aa858fbe6de33ad2bae41f9699a

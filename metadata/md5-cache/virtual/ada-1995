@@ -5,4 +5,4 @@ KEYWORDS=amd64 ppc x86
 RDEPEND=|| ( =dev-lang/gnat-gcc-4.2* =dev-lang/gnat-gcc-4.1* =dev-lang/gnat-gcc-3.4* )
 SLOT=1995
 _eclass_exported_funcs=-
-_md5_=8ecc8c011811e7571b1733b0fb16d55a
+_md5_=0ad69e04f4f517583f9a1df365a50c29

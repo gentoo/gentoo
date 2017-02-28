@@ -8,4 +8,4 @@ RDEPEND=!sci-astronomy/sextractor
 SLOT=0
 SRC_URI=http://spatula.net/software/sex/sex-1.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=3d767d36c4d120079354544af7aa27d4
+_md5_=9a67c8779ca3e00203db2884429d118a

@@ -8,5 +8,5 @@ LICENSE=vim
 PDEPEND=!minimal? ( app-vim/gentoo-syntax )
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf
-_md5_=b977c0e26a23d55d85b9a1f78b12bc57
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	multilib	0236be304ee52e7f179ed2f337075515	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0	vim-doc	af2c81a1feeb0a99e91bee3e20769edb
+_md5_=58efc16dca262c27904a1f374d744a92

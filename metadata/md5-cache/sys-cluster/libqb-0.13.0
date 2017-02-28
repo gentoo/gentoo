@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2
 SLOT=0
 SRC_URI=http://fedorahosted.org/releases/q/u/quarterback/libqb-0.13.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	708f85bc1bf00876604e223fb56e062a	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c4e998dd95e7fe1c07a02c490c6c60f2
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=0719c93b73c0a9d5403dc58c3eafc61f

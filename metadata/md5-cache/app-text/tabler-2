@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/tabler/tabler-2.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=9cef089eb9dcf6164a289a2c39d64ae1
+_md5_=c5857b10cbbca29b44a7966b219abce2

@@ -9,4 +9,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://ftp.wagner.pp.ru/pub/catdoc/catdoc-0.95.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_md5_=06b1204086457ae1f274608f784be47c
+_md5_=5aa3034ae2067e5ea6c42addb4d04461

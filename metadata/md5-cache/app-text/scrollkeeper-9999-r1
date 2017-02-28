@@ -8,4 +8,4 @@ LICENSE=metapackage
 PDEPEND=app-text/rarian
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=9ef9ed4c722d28b41bc7f2a51d22f969
+_md5_=d256a1bd6f0afe790c01e5e17f654a84

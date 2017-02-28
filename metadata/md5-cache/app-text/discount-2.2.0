@@ -8,4 +8,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://www.pell.portland.or.us/~orc/Code/discount/discount-2.2.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
-_md5_=272e5749b9ad01a9155615e1ef241b3e
+_md5_=83ce2b838a1f6c2760438a49460a8888

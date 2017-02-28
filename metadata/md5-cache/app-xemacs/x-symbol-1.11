@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/auctex app-xemacs/mail-lib app-editors
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/x-symbol-1.11-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
-_md5_=8c858ffd31fd16a36326d1b303416bb0
+_eclasses_=xemacs-packages	6af894e52080fe5d8bd91371a8a6a735
+_md5_=ea68c4878d952b6e93f92a90696350f2

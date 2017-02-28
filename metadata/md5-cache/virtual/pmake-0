@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ia64 ~mips ppc sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-f
 RDEPEND=kernel_linux? ( sys-devel/pmake ) kernel_SunOS? ( sys-devel/pmake ) kernel_Darwin? ( sys-devel/bsdmake )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=506e1625d37ee7de32cc3705185355a9
+_md5_=0c58bb0ef6962e6703ef7869765c6f65

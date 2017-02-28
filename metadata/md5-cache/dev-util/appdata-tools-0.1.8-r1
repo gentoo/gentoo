@@ -7,4 +7,4 @@ LICENSE=metapackage
 RDEPEND=>=dev-libs/appstream-glib-0.3.2
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=de441aa039be2a98bfc1839decbdc2a4
+_md5_=3a158d1ca606b577cc894ae2c026f1e4

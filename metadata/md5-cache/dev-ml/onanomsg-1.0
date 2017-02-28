@@ -10,5 +10,5 @@ RDEPEND=dev-libs/nanomsg:= dev-lang/ocaml:=[ocamlopt?] dev-ml/ocaml-ctypes:= dev
 SLOT=0/1.0
 SRC_URI=https://github.com/rgrinberg/onanomsg/archive/1.0.tar.gz -> onanomsg-1.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=25ed8f18a2d09efe25024b2a74785d71
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=63f096cf0a546a0ddb3fcb7edd1d96b6

@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://sourceforge/httptype/httptype-1.3.9.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=fd4f3947d7f95f2b45afb2e4ff2f2cad
+_md5_=1cd93fc1f6dd40038da26cd850e60fc1

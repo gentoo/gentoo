@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.furuba.net/~buckminst/gentoo/netprofiles-ims-0.1.0134.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=383768408d4c9973633879cdb76b844c
+_md5_=7ae4c3f05d36e7dc22292b72bc1290f1

@@ -9,4 +9,4 @@ RDEPEND=app-cdr/cdrtools sys-fs/dosfstools <sys-boot/syslinux-5
 SLOT=0
 SRC_URI=mirror://gentoo/gnap-tools-2.0.tar.bz2 !minimal? ( mirror://gentoo/gnap-core-2.0.tar )
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=5e5ee38557fc30965549a313ea7d5fda
+_md5_=e6835eb6b2a62d792309269b014abe3d

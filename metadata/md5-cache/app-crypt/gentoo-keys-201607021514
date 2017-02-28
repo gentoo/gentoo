@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dolsen/releases/keyrings/gentoo-keys-201607021514.tar.xz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=bc774af5e7e2fc09cca4efc0572375d2
+_md5_=b749cbf59ad9d452f37631debdd2dd9a

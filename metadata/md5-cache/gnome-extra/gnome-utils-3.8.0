@@ -7,4 +7,4 @@ LICENSE=metapackage
 RDEPEND=>=app-admin/gnome-system-log-3.8.0 >=app-dicts/gnome-dictionary-3.8.0 >=gnome-extra/gnome-search-tool-3.6.0 >=media-gfx/gnome-font-viewer-3.8.0 >=media-gfx/gnome-screenshot-3.8.0 >=sys-apps/baobab-3.8.0
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=ac48145dbce82242b3aa7a31fa999127
+_md5_=bc170a614a56adbb18b94f513eb650a3

@@ -9,4 +9,4 @@ LICENSE=freedist
 SLOT=0
 SRC_URI=http://www.fortune-it.net/download/fortune-it-1.99.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=f9dc086fd348d0db4a6429cf229812b7
+_md5_=3021146c4629f0e0f7da2964b9f46de3

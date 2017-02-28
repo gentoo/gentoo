@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Var_Dump-1.0.4.tgz
 _eclass_exported_funcs=src_test:- src_install:-
-_md5_=85076afab0008ca605ecc681f9560c4c
+_md5_=03004d714ffb1c73f240709c0865de01

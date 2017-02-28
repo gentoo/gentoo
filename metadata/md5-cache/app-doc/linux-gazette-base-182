@@ -7,4 +7,4 @@ LICENSE=OPL
 SLOT=0
 SRC_URI=mirror://gentoo/lg-base-182.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=eba718cbf0dac8a38e953b638eb0aea7
+_md5_=b8fb5c474fab0275753dfbd3d168929c

@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=http://www.blfh.de/gentoo/distfiles/lib-compat-loki-0.2.tar.bz2 https://dev.gentoo.org/~wolf31o2/sources/lib-compat-loki/lib-compat-loki-0.2.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=98014883c786234fcf563a41ca53be06
+_md5_=1cac90a9b05de71c5ee15c86d5349809

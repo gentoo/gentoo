@@ -9,4 +9,4 @@ RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Text_Figlet-1.0.2.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=bed4bbed18c1cfcd9b337371253db996
+_md5_=77031f4642dd015a7dea53f4d9cbac46

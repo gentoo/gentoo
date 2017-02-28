@@ -8,4 +8,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://sourceforge/fortune-mod-fvl/fortune-mod-rss-20030120.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=7ab29d75f77fee78276807748cc88100
+_md5_=1d2ba4c8c6bfcadfd2189a0b78c9b179

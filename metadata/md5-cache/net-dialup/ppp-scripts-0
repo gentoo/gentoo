@@ -9,4 +9,4 @@ RDEPEND=!<net-dialup/ppp-2.4.7-r1
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~pinkbyte/distfiles/ppp-scripts-0.tar.xz
 _eclass_exported_funcs=src_install:-
-_md5_=16e6e8d441b551538242d71743c0ca0e
+_md5_=89dc0ce7bbaf0164068407084215379b

@@ -10,4 +10,4 @@ RDEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts
 SLOT=0
 SRC_URI=http://download.evolonline.org/manaplus/download/1.7.2.18/manaplus-1.7.2.18.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
-_md5_=e796a2ae63ac72ea428c77242c5aee1f
+_md5_=15e6c36897a32cd1f8ef6f65800fac46

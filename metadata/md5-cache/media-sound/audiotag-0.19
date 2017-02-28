@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl flac? ( media-libs/flac ) vorbis? ( media-sound/vorbis-too
 SLOT=0
 SRC_URI=https://github.com/downloads/Daenyth/audiotag/audiotag-0.19.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=ae1244025ff5debb2f9c880e7a8a9e54
+_md5_=094bb00298bea87e003b2cef0a40c07c

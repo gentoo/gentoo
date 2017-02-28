@@ -9,4 +9,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://download.adaptec.com/raid/storage_manager/arcconf_v1_2_20618.zip
 _eclass_exported_funcs=src_install:-
-_md5_=411d545df75f6d9bcb3bac0d137ba3cb
+_md5_=14007e46d08bce06f3c6f265f99d5254

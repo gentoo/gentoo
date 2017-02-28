@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl >=dev-perl/gtk2-perl-1.040
 SLOT=0
 SRC_URI=http://downloads.tlhiv.com/xgame/xgame-gtk2-2.0.2.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=ad3026e2a977b5c741d6d6b5ad89a6e8
+_md5_=11bcdf6f5f91e037ad00da4c3f92568c

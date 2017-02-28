@@ -9,4 +9,4 @@ RDEPEND=net-misc/openssh virtual/cdrtools virtual/eject !app-misc/cdcat
 SLOT=0
 SRC_URI=mirror://sourceforge/cdbkup/cdbkup-1.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=b7caf3cf7dc1b802bef56602ed96401e
+_md5_=898520483187052a8cd1248b82457e4a

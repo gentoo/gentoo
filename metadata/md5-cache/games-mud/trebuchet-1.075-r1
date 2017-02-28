@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/trebuchet/trebuchet-1.075.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=b1c446aed625b573c57fa6a0c88dfbda
+_md5_=97fc24407a7376c59344e2990643769b

@@ -8,4 +8,4 @@ RDEPEND=>=dev-lang/perl-5 dev-perl/GD[png]
 SLOT=0
 SRC_URI=mirror://sourceforge/ltp/lcov-1.13.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=3e1f58e787995c3ea08a49914ad606c5
+_md5_=bc6d31ebb86cab2e82da7f4c7283962f

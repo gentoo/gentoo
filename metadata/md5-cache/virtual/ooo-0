@@ -6,4 +6,4 @@ KEYWORDS=amd64 x86
 RDEPEND=|| ( app-office/libreoffice[java?] app-office/libreoffice-bin[java?] app-office/openoffice-bin[java?] )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1fe683a6b551652e1c5b8c8807b21081
+_md5_=db0e4c629cc30396aefaa15e9e647c71

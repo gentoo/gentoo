@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[unicode]
 SLOT=0
 SRC_URI=https://github.com/smarty-php/smarty/archive/v3.1.30.tar.gz -> smarty-3.1.30.tar.gz doc? ( http://www.smarty.net/files/docs/manual-en.3.1.14.zip )
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=0d2a7369b4fa8f73da939a9144c71f08
+_md5_=6abbfcbec27cb3a77757264bf46e0afa

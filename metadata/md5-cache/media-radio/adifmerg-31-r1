@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://jaakko.home.cern.ch/jaakko/Soft/adifmerg31.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=d7ef7af2ad02df21aaa6dd28cafb8312
+_md5_=bc81871904caf6478888d1d4226703e4

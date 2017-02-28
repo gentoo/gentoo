@@ -7,4 +7,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/yasat/yasat-526.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=84e527fb032cb894ebaf665ab649ca36
+_md5_=a5aec0b05bcbfffd1710837cb24dfc65

@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.marcuscom.com/downloads/libvolume_id-0.81.0.tar.bz2
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=5efcd8492897a9a4665ce95c629c5442
+_md5_=228f986e80bbfe8b5218a8235d8cd286

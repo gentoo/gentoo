@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/jal/jal-0.4.62.tar.gz
 _eclass_exported_funcs=-
-_md5_=351a4de905b1b5aebd4b2c65d2bd2bea
+_md5_=9aeeb33635f993b77683beaa12e046dc

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://freedict.sourceforge.net/download/linux/fra-eng.tar.gz
 _eclass_exported_funcs=src_install:freedict
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	freedict	1cdd6e607bc12d575b61200cc2898bc9	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=d500b957f27825d8aac2556288c06398
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	freedict	14704eb3fb7a3bb4f8132df44039f3c0	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=8ad3dd65bf2b7f325f5eb92b5bb39eca

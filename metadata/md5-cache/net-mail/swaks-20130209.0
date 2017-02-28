@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/perl-5.8.8 >=dev-perl/Net-DNS-0.65 ssl? ( >=dev-perl/Net-SSLe
 SLOT=0
 SRC_URI=http://www.jetmore.org/john/code/swaks/swaks-20130209.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=cf03ecbf6f710f9d807e7631d422ff5f
+_md5_=72332a93cb475504775abb6b9fb18123

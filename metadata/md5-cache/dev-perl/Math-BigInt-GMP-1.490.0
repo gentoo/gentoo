@@ -10,5 +10,5 @@ RDEPEND=>=virtual/perl-Math-BigInt-1.999.714 >=virtual/perl-XSLoader-0.20.0 >=de
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PJ/PJACKLAM/Math-BigInt-GMP-1.49.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=e4e4d92bc7b5bab73b0cd3f299a0a5b9
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=9e4a52069afc6bbe1a8c80f26abca5d5

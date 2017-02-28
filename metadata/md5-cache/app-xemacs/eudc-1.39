@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/fsf-compat app-xemacs/xemacs-base app-xemacs/bbdb app-xemacs/
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/eudc-1.39-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
-_md5_=078b27d5524a8a7d49b3bab7ad945f18
+_eclasses_=xemacs-packages	6af894e52080fe5d8bd91371a8a6a735
+_md5_=9263119a4fe0d9724785d3188aa76424

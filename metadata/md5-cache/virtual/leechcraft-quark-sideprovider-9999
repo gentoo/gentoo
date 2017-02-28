@@ -4,4 +4,4 @@ EAPI=6
 RDEPEND=~app-leechcraft/lc-sb2-9999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=837395900c73ce424cee9fa610e9d9d7
+_md5_=0fbd6fa41b67e97bb37efdb571c9302d

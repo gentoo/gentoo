@@ -9,5 +9,5 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/hanwen/go-fuse/archive/ffed29ec8b88f61c1b8954134cc48ef03bb26ce1.tar.gz -> go-fuse-0_p20150422.tar.gz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=2b9c588c2e983a473a3e25107da2c9d1
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=ce5ce5b7f99b31d49e7b4afd23324311

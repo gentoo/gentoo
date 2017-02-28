@@ -10,4 +10,4 @@ RDEPEND=sys-fs/fuse
 SLOT=0
 SRC_URI=https://github.com/restic/restic/archive/v0.4.0.tar.gz -> restic-0.4.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=9fc2cafb8c8338b4f71b6fa2251c1f87
+_md5_=bbf66bcb457810848d9f9b0d9a73adce

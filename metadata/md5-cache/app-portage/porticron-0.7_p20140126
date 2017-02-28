@@ -8,5 +8,5 @@ RDEPEND=app-portage/gentoolkit net-dns/bind-tools
 SLOT=0
 SRC_URI=https://github.com/hollow/porticron/tarball/df727fe -> porticron-0.7_p20140126.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=189ec56b18cc021e06e5516b5220fa05
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=576ae157a0b12ab15d70d45762bbcf40

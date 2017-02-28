@@ -9,4 +9,4 @@ RDEPEND=sys-apps/keyutils sys-apps/attr
 SLOT=0
 SRC_URI=http://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.06.00.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=f9782da9761b3be39141d3ab5686fd0d
+_md5_=5141bbe9506a74dcfea1e730aecf1c59

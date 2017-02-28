@@ -10,4 +10,4 @@ RDEPEND=>=media-sound/gmpc-0.20.0 media-sound/vorbis-tools[ogg123] dev-libs/libx
 SLOT=0
 SRC_URI=mirror://sourceforge/musicpd/gmpc-shout-0.20.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=b4b65cd664f0267f683dad35d60ce818
+_md5_=0fe6e4662227ac2d1fabc878a611f3f2

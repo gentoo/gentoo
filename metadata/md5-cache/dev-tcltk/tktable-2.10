@@ -9,4 +9,4 @@ RDEPEND=>=dev-lang/tk-8.0
 SLOT=0
 SRC_URI=mirror://sourceforge/tktable/Tktable2.10.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=23996e5c63b6ac2a3a2b3dc1a2ea84f5
+_md5_=3363f18712c2952012cbf403c90e5375

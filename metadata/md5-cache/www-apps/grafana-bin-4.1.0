@@ -8,5 +8,5 @@ RDEPEND=>=dev-lang/go-1.5 net-libs/nodejs
 SLOT=0
 SRC_URI=https://grafanarel.s3.amazonaws.com/builds/grafana-4.1.0-1484127817.linux-x64.tar.gz -> grafana-bin-4.1.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_install:-
-_eclasses_=user	e10ccb95af96d45f86016fa982a949bb
-_md5_=95b849e8fb1f501a9ec18cbef09ff1ee
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=bf80c86f7ed047f1d106bf166bf53937

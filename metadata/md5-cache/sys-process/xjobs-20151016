@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.maier-komor.de/xjobs/xjobs-20151016.tgz
 _eclass_exported_funcs=-
-_md5_=63e1cc4319835f6236dc0d78bc9e9fff
+_md5_=2405db8e6d1986ea1d0ab946cc9c69cd

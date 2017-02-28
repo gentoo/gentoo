@@ -5,4 +5,4 @@ KEYWORDS=amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-mac
 RDEPEND=virtual/jdk:1.7
 SLOT=1.7
 _eclass_exported_funcs=-
-_md5_=96a249bc720988be60585d3f2b730b35
+_md5_=096a984d46c036939a4199730ef83839

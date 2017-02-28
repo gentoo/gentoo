@@ -8,4 +8,4 @@ RDEPEND=media-gfx/xv || ( x11-wm/fluxbox x11-wm/blackbox x11-wm/openbox )
 SLOT=0
 SRC_URI=mirror://gentoo/commonbox-styles-extra-0.2.tar.bz2 http://mkeadle.org/distfiles/commonbox-styles-extra-0.2.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=4f463f6a84c408bb57c459c5720bfe22
+_md5_=ccfdc7a034210c28cec2825c8c4ded0c

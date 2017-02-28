@@ -8,4 +8,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://debian/pool/main/d/distro-info-data/distro-info-data_0.32.tar.xz
 _eclass_exported_funcs=-
-_md5_=fbb2b1c3d610f4ce8f6f5fbf4f2629c5
+_md5_=99f2cc7c524f3b117d0645051f1f9c66

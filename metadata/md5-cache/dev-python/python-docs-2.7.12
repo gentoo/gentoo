@@ -7,4 +7,4 @@ LICENSE=PSF-2
 SLOT=2.7
 SRC_URI=https://www.python.org/ftp/python/doc/2.7.12/python-2.7.12-docs-html.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=b32e002037b90c3838dd5f96f702f743
+_md5_=301c3acc216fc0390480db9f43609d79

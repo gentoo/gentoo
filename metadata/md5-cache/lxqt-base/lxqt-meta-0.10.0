@@ -9,4 +9,4 @@ RDEPEND=>=lxde-base/lxmenu-data-0.1.2 =lxqt-base/lxqt-common-0.10* ~lxqt-base/lx
 REQUIRED_USE=oxygen? ( icons )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=c1c3655942added9727d95581fac8df0
+_md5_=9d3062b5d52fcf2ae2faf178340250cb

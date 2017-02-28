@@ -11,5 +11,5 @@ REQUIRED_USE=!clearpasswd? ( ssl )
 SLOT=0
 SRC_URI=ftp://ftp.cac.washington.edu/imap/imap-2007f.tar.Z
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=03b6eb80e4422a794af54b069e1073ea
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	ssl-cert	68c8dc51fe1bb63d933af89d431e9132	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=8ffbe83b101beb95173aca41eb31f3b5

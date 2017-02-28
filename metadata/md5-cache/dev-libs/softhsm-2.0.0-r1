@@ -10,4 +10,4 @@ RDEPEND=dev-db/sqlite:3 dev-libs/botan[threads,-bindist]
 SLOT=2
 SRC_URI=http://www.opendnssec.org/files/source/softhsm-2.0.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=d60c3f1d3e5b085a0959beb038df9b4e
+_md5_=61da13f2a4e2eea434b21326509af419

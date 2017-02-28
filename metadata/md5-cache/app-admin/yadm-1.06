@@ -10,4 +10,4 @@ RDEPEND=dev-vcs/git app-crypt/gnupg
 SLOT=0
 SRC_URI=https://github.com/TheLocehiliosan/yadm/archive/1.06.tar.gz -> yadm-1.06.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=8a3a9a45dff49b4501199873dbc292a8
+_md5_=3fbf568216ce7d2c9eaeabb42f9d7536

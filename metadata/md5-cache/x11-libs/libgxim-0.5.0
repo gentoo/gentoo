@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/check-0.9.4 >=dev-libs/dbus-glib-0.74 >=dev-libs/glib-2.32 >=
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/libgxim/downloads/libgxim-0.5.0.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=947f8549c5c15ff3b55829c6b89bc9cd
+_md5_=3dfad61aadda1db33dbd41c16d26bf9c

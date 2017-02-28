@@ -5,4 +5,4 @@ KEYWORDS=~amd64 ~x86
 RDEPEND=dev-lang/rakudo
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=e67a0e3960b783263179aae07266b0d8
+_md5_=0d759cfc89a72bd6167e6e04086d7cc8

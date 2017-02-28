@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 media-libs/libid3tag media-libs/libmad media-libs/libmtp
 SLOT=0
 SRC_URI=http://www.adebenham.com/debian/mtpfs-1.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:-
-_md5_=d69c2ac962011fd4d9a69a18a45a1558
+_md5_=2bd6ba496efa949ee977e1cb890752d4

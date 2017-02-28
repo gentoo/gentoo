@@ -9,4 +9,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://docs.avagotech.com/docs-and-downloads/legacy-host-bus-adapters/legacy-host-bus-adapters-common-files/LSIUtil_1-62.zip
 _eclass_exported_funcs=src_install:-
-_md5_=7999c9f9068a58abf9bc91c4c5176fd7
+_md5_=f9bf784ea84550fa8bde8b1a686c3b4c

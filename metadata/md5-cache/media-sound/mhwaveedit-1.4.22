@@ -10,4 +10,4 @@ RDEPEND=x11-libs/gtk+:2 x11-libs/pango sndfile? ( >=media-libs/libsndfile-1.0.10
 SLOT=0
 SRC_URI=http://download.gna.org/mhwaveedit/mhwaveedit-1.4.22.tar.bz2
 _eclass_exported_funcs=src_configure:-
-_md5_=97245caa813d3b34ff4494bc24d16a66
+_md5_=8a46175fb4bf4aa2b47b1738b258183b

@@ -9,5 +9,5 @@ RDEPEND=dev-lang/ocaml:= dev-ml/pgocaml:= dev-ml/macaque:= dev-ml/ocaml-safepass
 SLOT=0/0.99
 SRC_URI=https://github.com/ocsigen/ocsigen-start/archive/v0.99.tar.gz -> ocsigen-start-0.99.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=ab9c43cffbb4c04742ad8299f9cb36ec
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=dcd58e5e4ca39f364a798c44bfaeea4b

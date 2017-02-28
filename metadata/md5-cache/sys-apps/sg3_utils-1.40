@@ -10,5 +10,5 @@ PDEPEND=>=sys-apps/rescan-scsi-bus-1.24
 SLOT=0
 SRC_URI=http://sg.danny.cz/sg/p/sg3_utils-1.40.tgz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=52e93e20cb080517c92fb3ee20850280
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=5174c1cc76de5c7fb0f433a264846ffd

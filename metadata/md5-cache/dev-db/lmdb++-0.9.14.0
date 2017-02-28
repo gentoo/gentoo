@@ -8,4 +8,4 @@ RDEPEND=dev-db/lmdb
 SLOT=0
 SRC_URI=mirror://sourceforge/lmdbxx/0.9.14.0/lmdbxx-0.9.14.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=13d6cd91f561c08a7cf05eaad6a6453e
+_md5_=9d1450042627992c01b6e2f9af32d01a

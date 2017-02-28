@@ -8,4 +8,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://sourceforge/bodr/bodr-9.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_md5_=0ecb8aa25ae504ee17182562bd936799
+_md5_=659ed1b6d9656c9b9ac73eb1e2b9e2e7

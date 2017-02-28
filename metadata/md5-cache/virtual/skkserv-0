@@ -5,4 +5,4 @@ KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 RDEPEND=|| ( app-i18n/skkserv app-i18n/mecab-skkserv app-i18n/multiskkserv app-i18n/yaskkserv )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=b1b407c6e72b3fb755519bec8a4cbce9
+_md5_=f1753036e316664534eb9742aea332d9

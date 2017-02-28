@@ -8,4 +8,4 @@ RDEPEND=>=dev-lang/perl-5.8.0
 SLOT=0
 SRC_URI=https://github.com/simple-evcorr/sec/releases/download/2.7.10/sec-2.7.10.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=91ecd7010a9f832f12e96a187e394473
+_md5_=4f63cfd8c88e63570b4e3f3333c29335

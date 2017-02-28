@@ -9,4 +9,4 @@ RDEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2
 SLOT=0
 SRC_URI=mirror://sourceforge/musicpd/gmpc-extraplaylist-0.20.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=ad4cbd52e38b6975500a4a0378f37ab1
+_md5_=a6044c0c4c34e2d48761df6e91a7acc5

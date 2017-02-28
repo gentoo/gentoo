@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-xsl-1.79.0.tar.bz2
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_compile:- src_test:- src_install:-
-_md5_=739532b51cf1d4cc5667957ae38b859b
+_md5_=98c77b6bc33253c369bdf0365228f87c

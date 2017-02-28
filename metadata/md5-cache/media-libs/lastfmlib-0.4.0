@@ -10,4 +10,4 @@ RDEPEND=net-misc/curl
 SLOT=0
 SRC_URI=https://github.com/dirkvdb/lastfmlib/archive/lastfmlib-0.4.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=d3beb65deec1fec3c3fdd2a0be8344d4
+_md5_=64678a7cf8e6156be9bd0ff9df6001bc

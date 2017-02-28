@@ -7,4 +7,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://spice-space.org/download/releases/spice-protocol-0.12.12.tar.bz2
 _eclass_exported_funcs=-
-_md5_=75fdef39dbdc1a73401a923fee9533fa
+_md5_=0f458e5f6bc5398940e59a0e24307461

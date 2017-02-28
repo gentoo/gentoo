@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.4
 SLOT=0
 _eclass_exported_funcs=src_install:-
-_md5_=059a857cb6aa8c5475ecba8047209280
+_md5_=ad43066ad7d95b31fe83aa6c08f4d417

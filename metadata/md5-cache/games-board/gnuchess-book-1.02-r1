@@ -10,4 +10,4 @@ RESTRICT=userpriv
 SLOT=0
 SRC_URI=mirror://gnu/chess/book_1.02.pgn.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=f9a6006cb44ad566455db2d364e50fba
+_md5_=7f8f0597c3e937f92071fe07d9fd9fbf

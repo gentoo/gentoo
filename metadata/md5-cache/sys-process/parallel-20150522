@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-
 SLOT=0
 SRC_URI=mirror://gnu/parallel/parallel-20150522.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_md5_=4f2a485fd521e7d0fd7b5b9910fa34f9
+_md5_=005913c8a79e87a89e5333d417687488

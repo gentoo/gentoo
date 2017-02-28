@@ -9,4 +9,4 @@ RDEPEND=!<app-text/texlive-core-2010 !app-text/ptex >=dev-libs/kpathsea-6.1.0_p2
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20130530-source.tar.xz
 _eclass_exported_funcs=src_configure:-
-_md5_=043333106bff4db2c60094594f6506f1
+_md5_=e0aa59d51f03f07e21784efc9b0d8ca9

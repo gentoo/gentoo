@@ -9,4 +9,4 @@ RDEPEND=dev-lang/php:*[cli,xml,xslt,zip?] dev-php/symfony-yaml !minimal? ( dev-p
 SLOT=0
 SRC_URI=http://www.phing.info/get/phing-2.16.0.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=5a59a4e505691ba4eb4b7d24f4b7feba
+_md5_=7404517b57efae83b620760f9b56beb4

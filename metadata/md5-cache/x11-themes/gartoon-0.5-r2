@@ -8,4 +8,4 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://gentoo/gartoon-0.5.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
-_md5_=f779c88065ce9d166f865604471ec8fe
+_md5_=785cb8185dfd272036ea2cf97d982e23

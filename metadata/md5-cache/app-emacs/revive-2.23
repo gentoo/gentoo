@@ -9,5 +9,5 @@ RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://enise.org/users/victor/share/distfiles/revive-2.23.el.xz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:- src_install:elisp
-_eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74
-_md5_=34b3c7f2a1d54403c92cb49cb5bf451a
+_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180
+_md5_=918930817db0ab20f37a0a0a60a2f889

@@ -9,4 +9,4 @@ PDEPEND=app-admin/sagan
 SLOT=0
 SRC_URI=http://sagan.quadrantsec.com/rules/sagan-rules-06172014.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=7a626c906ab865e23ff12ab42b39f8fc
+_md5_=ebe8c37243f8145664d362b525d0a6cd

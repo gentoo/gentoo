@@ -10,4 +10,4 @@ RDEPEND=nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=http://kldp.net/frs/download.php/5855/libhangul-0.0.12.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=88b9b434698142424338c48cc451d19d
+_md5_=ebb7aae308909acaded6dd9fabfd23cc

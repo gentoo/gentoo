@@ -6,4 +6,4 @@ KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=6dde85c40ee8dfc28e6a0c3a50f77f4f
+_md5_=e29fb12649aa96e318c76a442432ad04

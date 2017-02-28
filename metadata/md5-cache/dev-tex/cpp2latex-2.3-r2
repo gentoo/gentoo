@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.arnoldarts.de/files/cpp2latex/cpp2latex-2.3.tar.gz
 _eclass_exported_funcs=-
-_md5_=38b637f0483dfb60a4a791213f9b021d
+_md5_=b70081f5605df63692e045bed60b7585

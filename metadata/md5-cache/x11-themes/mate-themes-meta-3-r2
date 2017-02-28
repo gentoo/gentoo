@@ -8,4 +8,4 @@ LICENSE=metapackage
 RDEPEND=|| ( gtk2-only? ( !!x11-libs/gtk+:3 x11-themes/mate-themes:0 ) ( =x11-libs/gtk+-3.16*:3 =x11-themes/mate-themes-3.16*:0/3.16 ) ( =x11-libs/gtk+-3.18*:3 =x11-themes/mate-themes-3.18*:0/3.18 ) ( =x11-libs/gtk+-3.20*:3 =x11-themes/mate-themes-3.20*:0/3.20 ) ( =x11-libs/gtk+-3.22*:3 =x11-themes/mate-themes-3.22*:0/3.22 ) )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=49eef577faa4e65fe56d6b4d8513e18f
+_md5_=e9634e559973264ecc86c13b155336e0

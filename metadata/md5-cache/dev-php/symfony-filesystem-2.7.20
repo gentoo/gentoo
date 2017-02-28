@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
 SLOT=0
 SRC_URI=https://github.com/symfony/filesystem/archive/v2.7.20.tar.gz -> symfony-filesystem-2.7.20.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=8abdef6df8f392ca5de9b71a66b2b44e
+_md5_=67c540208bc94d37a74563ccef9a0b4f

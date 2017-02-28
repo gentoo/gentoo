@@ -8,4 +8,4 @@ LICENSE=unicode
 SLOT=0
 SRC_URI=http://www.unicode.org/Public/zipped/9.0.0/UCD.zip -> unicode-data-9.0.0-UCD.zip http://www.unicode.org/Public/zipped/9.0.0/Unihan.zip -> unicode-data-9.0.0-Unihan.zip
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=bc4c3f09f3bffb55e49dcf0cffa50a54
+_md5_=ccbea5a1d7f3a53845427b6b7c564635

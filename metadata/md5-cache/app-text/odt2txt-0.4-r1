@@ -9,5 +9,5 @@ RDEPEND=!app-office/unoconv sys-libs/zlib virtual/libiconv
 SLOT=0
 SRC_URI=http://stosberg.net/odt2txt/odt2txt-0.4.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=168cac9fbc026e5af17773249b14b556
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=fdd7d3f8631a782a0a256a55900ec233

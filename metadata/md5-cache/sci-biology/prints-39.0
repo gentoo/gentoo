@@ -10,4 +10,4 @@ RDEPEND=emboss? ( sci-biology/emboss )
 SLOT=0
 SRC_URI=mirror://gentoo/prints-39.0.tar.bz2
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=abfe2ca3466d22c63ac666737b3b9f10
+_md5_=662924d1f18d2f83d3215fa86b909328

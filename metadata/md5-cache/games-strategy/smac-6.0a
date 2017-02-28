@@ -12,5 +12,5 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=x86? ( mirror://lokigames/smac/smac-6.0a-x86.run ) amd64? ( mirror://lokigames/smac/smac-6.0a-x86.run ) ppc? ( http://mirrors.dotsrc.org/lokigames/installers/smac/smac-install-ppc.run )
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:- src_prepare:base src_configure:games src_compile:games src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cdrom	d59e7a8a50d875e095c60654bbe22273	eutils	708f85bc1bf00876604e223fb56e062a	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	portability	bb1a0ed8ea152b957d17339f01d4d7f5	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	user	e10ccb95af96d45f86016fa982a949bb
-_md5_=64a798c292697c17330a6c8443a7ccf9
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	cdrom	0ab58b9ff75f89271f112d7c1e0e5bd0	eutils	3c847a0129fed780bd709b98e426f89c	games	2bb3ede665927a68ffdb7c41eec7efde	multilib	0236be304ee52e7f179ed2f337075515	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	53b75b4a49cf3e61530a523804045432	unpacker	76ddf385f3c212c12857bb8ec2a8bd35	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=e8738994eea33e78db8330f5b96bee49

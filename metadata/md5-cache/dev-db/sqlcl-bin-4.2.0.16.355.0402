@@ -9,4 +9,4 @@ RESTRICT=bindist fetch mirror
 SLOT=0
 SRC_URI=sqlcl-4.2.0.16.355.0402-no-jre.zip
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=efa40aa48437c50d0b9c349b2ab2543e
+_md5_=fd0e630c194e68a8839888b20df61f26

@@ -8,4 +8,4 @@ RDEPEND=!sys-apps/sysvinit >=sys-apps/systemd-201 >=sys-apps/util-linux-2.24.1-r
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/systemd/systemd-217.tar.xz
 _eclass_exported_funcs=src_install:-
-_md5_=267944ed76870cc33f98d23dbe9be26b
+_md5_=689b53bc180665bfa43024168638f4cc

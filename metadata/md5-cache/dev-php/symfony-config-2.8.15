@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
 SLOT=0
 SRC_URI=https://github.com/symfony/config/archive/v2.8.15.tar.gz -> symfony-config-2.8.15.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_md5_=df27ee74abca578bca9b5dd0e0033012
+_md5_=20710a1b762155618a169618e13d541c

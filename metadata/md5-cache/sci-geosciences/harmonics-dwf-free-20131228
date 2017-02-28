@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=ftp://ftp.flaterco.com/xtide/harmonics-dwf-20131228-free.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=ea836e8cc55cdefdae94efbac0159b68
+_md5_=5f1a9c1b3643c4976786fbd4c497fa07

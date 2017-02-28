@@ -8,4 +8,4 @@ LICENSE=CC-BY-NC-SA-2.5 MIT
 SLOT=0
 SRC_URI=http://www.linuxfromscratch.org/lfs/downloads/7.10/LFS-BOOK-7.10.tar.bz2 http://www.linuxfromscratch.org/lfs/downloads/7.10/lfs-bootscripts-20150222.tar.bz2 htmlsingle? ( http://www.linuxfromscratch.org/lfs/downloads/7.10/LFS-BOOK-7.10-NOCHUNKS.html ) pdf? ( http://www.linuxfromscratch.org/lfs/downloads/7.10/LFS-BOOK-7.10.pdf )
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=29be8990bec4d3e092149388b04811ff
+_md5_=a93cc828d303f64cb89ed1a2927bb0be

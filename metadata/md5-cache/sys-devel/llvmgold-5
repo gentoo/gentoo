@@ -6,4 +6,4 @@ LICENSE=public-domain
 RDEPEND=sys-devel/llvm:5[gold] !sys-devel/llvm:0
 SLOT=0
 _eclass_exported_funcs=src_install:-
-_md5_=1b3e472d336ab07fdffa4ff375d1ebe9
+_md5_=fb2a05532106ad9dfb38904fa9bd9cee

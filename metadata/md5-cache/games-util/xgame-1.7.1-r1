@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://downloads.tlhiv.com/xgame/xgame-1.7.1.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=a25648011ff4d6cb1b99df176f565a38
+_md5_=720f8db3a24ae7c9a4af841533b31a2c

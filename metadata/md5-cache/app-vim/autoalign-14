@@ -9,5 +9,5 @@ RDEPEND=>=app-vim/align-30 >=app-vim/cecutil-4 || ( >=app-editors/vim-7.3 >=app-
 SLOT=0
 SRC_URI=mirror://gentoo/autoalign-14.tar.xz http://dev.gentoo.org/~chutzpah/vim/autoalign-14.tar.xz
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
-_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
-_md5_=a71b135854e5d8465789a0a58e8b6c40
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=bf340e63d3b2e3ffadb20321283a2945

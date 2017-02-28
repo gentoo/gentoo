@@ -9,5 +9,5 @@ RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/dominikh/go-mode.el/archive/v1.4.0.tar.gz -> go-mode-1.4.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:elisp src_install:elisp
-_eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74
-_md5_=8995f0cf6319315678165e68b6b4e344
+_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180
+_md5_=247235d1f8ad0bf07c308ffb4e5faa7b

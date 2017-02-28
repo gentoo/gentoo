@@ -9,4 +9,4 @@ RDEPEND=>=sys-devel/m4-1.4.6 dev-lang/perl !~sys-devel/autoconf-2.64:2.5 >=sys-d
 SLOT=2.64
 SRC_URI=mirror://gnu/autoconf/autoconf-2.64.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=e1c3cddffca6e57dd7d4ddc122e172ce
+_md5_=b0544e9af286c3e64039a1f203ff3ed1

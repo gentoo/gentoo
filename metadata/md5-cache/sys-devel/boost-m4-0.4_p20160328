@@ -7,4 +7,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~soap/distfiles/boost-m4-0.4_p20160328.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_md5_=846e059134b761d00153e7d27c770fa4
+_md5_=c324db54323b6ceb83328a40893c5997

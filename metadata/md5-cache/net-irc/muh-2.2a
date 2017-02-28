@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/muh/muh-2.2a.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
-_md5_=1a8de8e8d3a2e41628e3001bd9027651
+_md5_=5d8a395255a20bd19fb19015105404b6

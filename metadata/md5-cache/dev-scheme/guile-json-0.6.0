@@ -9,4 +9,4 @@ RDEPEND=>=dev-scheme/guile-2.0.0
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/guile-json/guile-json-0.6.0.tar.gz
 _eclass_exported_funcs=-
-_md5_=bff8ff49cf468d90385a1a7ea1884acf
+_md5_=5f0302672cadcbae33a188f0c65b0af2

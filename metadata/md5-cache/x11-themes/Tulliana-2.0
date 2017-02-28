@@ -8,4 +8,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://cekirdek.pardus.org.tr/~caglar/Tulliana-2.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=29597ca553c72e5fbae10cdc14c5c9d7
+_md5_=cece681a3642752c8e006a390b1382f3

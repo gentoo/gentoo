@@ -10,5 +10,5 @@ RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_configure:- src_compile:- src_install:-
-_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f4ebac9295d44d9b879e0a4b29e7a9ee
+_eclasses_=check-reqs	0aae1fa61c78fb91cb66cd09f3450029	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=e8d4e3b2b09da979350616de8369f86d

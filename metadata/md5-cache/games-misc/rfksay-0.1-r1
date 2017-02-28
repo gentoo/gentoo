@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://gentoo/rfksay.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=3b38415d62f312ee32b7a091bd54e31b
+_md5_=9ba146167c29fe6f0ea194feb6ee754e

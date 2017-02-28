@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl virtual/perl-Digest-MD5 !sci-biology/emboss
 SLOT=2.2
 SRC_URI=http://www.dsmit.com/cons/stable/cons-2.2.0.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=cc76c2b8838b6f804bd85d1b23de6114
+_md5_=d8b080ae7835e1c3abdebdc95e96b61f

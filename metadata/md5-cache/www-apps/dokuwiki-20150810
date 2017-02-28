@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] 
 SLOT=20150810
 SRC_URI=http://download.dokuwiki.org/src/dokuwiki/dokuwiki-2015-08-10.tgz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_prepare:- src_install:-
-_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=801f4a86eb873d61ba4734f7c6e13874
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=4fc9ef3e2e8a02ce26c0421418ddd719

@@ -8,4 +8,4 @@ RDEPEND=dev-lang/php:* dev-php/PEAR-HTTP
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/HTTP_Header-1.2.1.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=f8e6fe424fe93f4898f10ecbba82872a
+_md5_=63f3a31b7ca6bae0f4a1cece3a1ca2b9

@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd
 RDEPEND=|| ( media-libs/glu <media-libs/mesa-9 media-libs/opengl-apple )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=b2328a65d294bf6077accac782e8fd90
+_md5_=05113e2afd72460cb0d1c89f36501ce8

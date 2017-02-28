@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/Seldaek/jsonlint/archive/1.4.0.tar.gz -> jsonlint-1.4.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_md5_=c819bced078f65fc6bc3347558028c35
+_md5_=196221f3189263ed3ae2dfa58b47aeb3

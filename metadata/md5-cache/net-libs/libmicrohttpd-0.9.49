@@ -10,4 +10,4 @@ RDEPEND=ssl? ( dev-libs/libgcrypt:0= net-libs/gnutls )
 SLOT=0/12
 SRC_URI=mirror://gnu/libmicrohttpd/libmicrohttpd-0.9.49.tar.gz
 _eclass_exported_funcs=src_configure:- src_test:- src_install:-
-_md5_=6f7dd975952ba0801f93331a46ea9c50
+_md5_=be01f58ac638159e01c70dc51716dffd

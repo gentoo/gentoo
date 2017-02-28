@@ -10,5 +10,5 @@ RDEPEND=examples? ( dev-perl/Config-Auto >=virtual/perl-Getopt-Long-2.400.0 >=de
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CA/CAPOEIRAB/WWW-Shorten-3.093.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	eb9be4b678c4e71f3f530a767df31912	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=dbb0d3f78d44aae6fdf2c6735ab8a223
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=58fa508f3273c7e2b413d8c0042458a4

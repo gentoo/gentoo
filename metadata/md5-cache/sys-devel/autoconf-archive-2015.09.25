@@ -8,4 +8,4 @@ RDEPEND=!=gnome-base/gnome-common-3.14.0 !>=gnome-base/gnome-common-3.14.0-r1[-a
 SLOT=0
 SRC_URI=mirror://gnu/autoconf-archive/autoconf-archive-2015.09.25.tar.xz
 _eclass_exported_funcs=src_install:-
-_md5_=f1ed2ef9acaaf339210a9e33cfa74d66
+_md5_=c0a92930ef2fed4e16a31229cd3cfc46

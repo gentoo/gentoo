@@ -5,4 +5,4 @@ KEYWORDS=amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-mac
 RDEPEND=|| ( virtual/jdk:1.8 dev-java/oracle-jre-bin:1.8 )
 SLOT=1.8
 _eclass_exported_funcs=-
-_md5_=c3352cbd810111e346b826a0a91eda3e
+_md5_=3ddd3ede4739bd96ed58640911d91327
