@@ -99,14 +99,14 @@ RDEPEND="
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
 			vulkan? (
 				|| (
-					sys-devel/llvm:4
+					sys-devel/llvm:4[${MULTILIB_USEDEP}]
 					>=sys-devel/llvm-3.9.0:0[${MULTILIB_USEDEP}] ) )
 		)
 		|| (
-			sys-devel/llvm:4
+			sys-devel/llvm:4[${MULTILIB_USEDEP}]
 			>=sys-devel/llvm-3.6.0:0[${MULTILIB_USEDEP}]
 		)
-		<sys-devel/llvm-5:=
+		<sys-devel/llvm-5:=[${MULTILIB_USEDEP}]
 	)
 	opencl? (
 				app-eselect/eselect-opencl
@@ -149,11 +149,11 @@ DEPEND="${RDEPEND}
 	)
 	opencl? (
 		|| (
-			sys-devel/llvm:4
+			sys-devel/llvm:4[${MULTILIB_USEDEP}]
 			>=sys-devel/llvm-3.6.0:0[${MULTILIB_USEDEP}]
 		)
 		|| (
-			sys-devel/clang:4
+			sys-devel/clang:4[${MULTILIB_USEDEP}]
 			>=sys-devel/clang-3.6.0:0[${MULTILIB_USEDEP}]
 		)
 		>=sys-devel/gcc-4.6

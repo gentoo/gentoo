@@ -29,7 +29,7 @@ S=${WORKDIR}/${MY_P}
 
 python_compile_all() {
 	if use doc; then
-		"${PYTHON}" setup.py build_sphinx || die
+		esetup.py build_sphinx
 	fi
 }
 
