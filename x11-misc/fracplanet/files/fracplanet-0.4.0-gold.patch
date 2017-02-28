@@ -1,5 +1,5 @@
---- triangle_mesh_viewer.h
-+++ triangle_mesh_viewer.h
+--- a/triangle_mesh_viewer.h
++++ b/triangle_mesh_viewer.h
 @@ -24,6 +24,7 @@
  #ifndef _triangle_mesh_viewer_h_
  #define _triangle_mesh_viewer_h_
@@ -9,8 +9,8 @@
  #include "random.h"
  #include "triangle_mesh.h"
 
---- fracplanet.pro
-+++ fracplanet.pro
+--- a/fracplanet.pro
++++ b/fracplanet.pro
 @@ -8,7 +8,7 @@
  
  HEADERS += $$system(ls *.h)

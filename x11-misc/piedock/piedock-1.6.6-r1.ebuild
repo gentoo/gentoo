@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A little bit like the famous OS X dock but in shape of a pie menu"
 HOMEPAGE="http://markusfisch.de/PieDock"
-SRC_URI="http://markusfisch.de/downloads/${P}.tar.bz2"
+SRC_URI="http://markusfisch.de/downloads/${P}.tar.bz2
+	https://github.com/markusfisch/PieDock/commit/a7fda1896f1cc6966ba0fa8912e9b404c1b0be97.patch -> ${P}-gcc6.patch"
 
 LICENSE="MIT"
 SLOT="0"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gtk kde"
 
 RDEPEND="
-	media-libs/libpng
+	media-libs/libpng:0=
 	x11-libs/libX11
 	x11-libs/libXft
 	x11-libs/libXmu
@@ -36,9 +36,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( res/${PN}rc.sample AUTHORS ChangeLog NEWS )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.6.1-signals.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.1-signals.patch
+	"${DISTDIR}"/${P}-gcc6.patch
+)
 
 src_configure() {
 	econf \

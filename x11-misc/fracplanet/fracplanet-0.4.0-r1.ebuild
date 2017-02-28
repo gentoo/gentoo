@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit qt4-r2
+EAPI=6
+inherit qmake-utils
 
 DESCRIPTION="Fractal planet and terrain generator"
 HOMEPAGE="https://sourceforge.net/projects/fracplanet/"
@@ -14,28 +14,38 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/boost
-	virtual/glu
-	virtual/opengl
+RDEPEND="
+	dev-libs/boost:=
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	dev-qt/qtopengl:4"
+	dev-qt/qtopengl:4
+	virtual/glu
+	virtual/opengl
+"
 DEPEND="${RDEPEND}
 	dev-libs/libxslt"
 
 S=${WORKDIR}/${PN}
 
-PATCHES=( "${FILESDIR}/${P}-gold.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gold.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
+)
+
+HTML_DOCS=( fracplanet.{htm,css} )
+
+src_configure() {
+	eqmake4 fracplanet.pro
+}
 
 src_compile() {
 	xsltproc -stringparam version ${PV} -html htm_to_qml.xsl fracplanet.htm \
-		| sed 's/"/\\"/g' | sed 's/^/"/g' | sed 's/$/\\n"/g'> usage_text.h
-	qt4-r2_src_compile
+		| sed 's/"/\\"/g' | sed 's/^/"/g' | sed 's/$/\\n"/g'> usage_text.h || die
+	default
 }
 
 src_install() {
 	dobin ${PN}
 	doman man/man1/${PN}.1
-	dodoc BUGS NEWS README THANKS TODO
-	dohtml *.{css,htm}
+	einstalldocs
 }

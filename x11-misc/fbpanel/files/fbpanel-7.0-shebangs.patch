@@ -1,0 +1,135 @@
+diff -u -r a/.config/help b/.config/help
+--- a/.config/help	2015-12-05 08:34:19.000000000 +0200
++++ b/.config/help	2017-02-25 15:18:46.328392853 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ 
+ import re, os, sys, textwrap
+ # Formats help message
+diff -u -r a/.config/repl.py b/.config/repl.py
+--- a/.config/repl.py	2015-12-05 08:34:19.000000000 +0200
++++ b/.config/repl.py	2017-02-25 15:18:46.331392804 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ 
+ import re, sys
+ 
+diff -u -r a/.config/tar.py b/.config/tar.py
+--- a/.config/tar.py	2015-12-05 08:34:19.000000000 +0200
++++ b/.config/tar.py	2017-02-25 15:18:46.338392687 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ 
+ import subprocess as sp
+ import re, tempfile
+diff -u -r a/configure b/configure
+--- a/configure	2015-12-05 08:34:19.000000000 +0200
++++ b/configure	2017-02-25 15:18:46.444390923 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ 
+ import sys
+ if sys.version_info < (2, 7):
+diff -u -r a/exec/make_profile.in b/exec/make_profile.in
+--- a/exec/make_profile.in	2015-12-05 08:34:19.000000000 +0200
++++ b/exec/make_profile.in	2017-02-25 15:18:46.324392920 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ umask 0077
+ # new profile directory
+diff -u -r a/exec/xlogout b/exec/xlogout
+--- a/exec/xlogout	2015-12-05 08:34:19.000000000 +0200
++++ b/exec/xlogout	2017-02-25 15:18:46.325392903 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ # xlogout - logs user out of its X session
+ # Linux specific since uses /proc
+diff -u -r a/scripts/endianess.sh b/scripts/endianess.sh
+--- a/scripts/endianess.sh	2015-12-05 08:34:19.000000000 +0200
++++ b/scripts/endianess.sh	2017-02-25 15:18:46.205394900 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ # When cross compiling, you may put cross compiler directory 
+ # in PATH before native gcc (aka spoofing), or you may set CC 
+diff -u -r a/scripts/install_locale.sh b/scripts/install_locale.sh
+--- a/scripts/install_locale.sh	2015-12-05 08:34:19.000000000 +0200
++++ b/scripts/install_locale.sh	2017-02-25 15:18:46.204394917 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ dir=/tmp/lo-$$
+ mkdir $dir
+diff -u -r a/scripts/install_locale.sh.in b/scripts/install_locale.sh.in
+--- a/scripts/install_locale.sh.in	2015-12-05 08:34:19.000000000 +0200
++++ b/scripts/install_locale.sh.in	2017-02-25 15:18:46.207394867 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ dir=/tmp/lo-$$
+ mkdir $dir
+diff -u -r a/scripts/install.sh b/scripts/install.sh
+--- a/scripts/install.sh	2015-12-05 08:34:19.000000000 +0200
++++ b/scripts/install.sh	2017-02-25 15:18:46.199395000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ usage () 
+ {
+diff -u -r a/scripts/mk_tar b/scripts/mk_tar
+--- a/scripts/mk_tar	2015-12-05 08:34:19.000000000 +0200
++++ b/scripts/mk_tar	2017-02-25 15:18:46.196395050 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ 
+ function info()
+diff -u -r a/scripts/rfs-pkg-config b/scripts/rfs-pkg-config
+--- a/scripts/rfs-pkg-config	2015-12-05 08:34:19.000000000 +0200
++++ b/scripts/rfs-pkg-config	2017-02-25 15:18:46.200394984 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ # Tt runs pkg-config in a way that everything is searched under RFS
+ # but reported including full path. Suitable for cross-compiling
+diff -u -r a/scripts/update-proj.sh b/scripts/update-proj.sh
+--- a/scripts/update-proj.sh	2015-12-05 08:34:19.000000000 +0200
++++ b/scripts/update-proj.sh	2017-02-25 15:18:46.190395150 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ function usage () 
+ {
+diff -u -r a/www/plugins/mk_gallery b/www/plugins/mk_gallery
+--- a/www/plugins/mk_gallery	2015-12-05 08:34:19.000000000 +0200
++++ b/www/plugins/mk_gallery	2017-02-25 15:18:46.214394751 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/usr/bin/env sh
+ 
+ echo > "$1"
+ #echo '<table cellpadding="0" cellspacing="0" border="0" align="left" bgcolor="#ffffff">' >> "$1"
+diff -u -r a/www/shots/mk_gallery b/www/shots/mk_gallery
+--- a/www/shots/mk_gallery	2015-12-05 08:34:19.000000000 +0200
++++ b/www/shots/mk_gallery	2017-02-25 15:18:46.244394251 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/usr/bin/env sh
+ 
+ function help ()
+ {
