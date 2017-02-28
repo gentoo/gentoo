@@ -4,9 +4,7 @@
 
 EAPI=6
 WANT_AUTOCONF="2.1"
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
-inherit autotools toolchain-funcs multilib python-any-r1 versionator pax-utils mozcoreconf-v4
+inherit autotools toolchain-funcs pax-utils mozcoreconf-v4
 
 MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_/.}"
@@ -22,7 +20,6 @@ IUSE="debug +jit minimal static-libs +system-icu test"
 RESTRICT="ia64? ( test )"
 
 S="${WORKDIR}/${MY_P%.rc*}"
-#S="${WORKDIR}/mozjs-38.0.0"
 BUILDDIR="${S}/js/src"
 
 RDEPEND=">=dev-libs/nspr-4.10.10
@@ -30,10 +27,7 @@ RDEPEND=">=dev-libs/nspr-4.10.10
 	sys-libs/readline:0=
 	>=sys-libs/zlib-1.2.3
 	system-icu? ( >=dev-libs/icu-51.1:= )"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-	app-arch/zip
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 pkg_setup(){
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
@@ -42,8 +36,11 @@ pkg_setup(){
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-38-jsapi-tests.patch
-	eapply "${FILESDIR}"/mozjs45-1266366.patch
+	eapply "${FILESDIR}"/${PN}-38-jsapi-tests.patch \
+		"${FILESDIR}"/mozjs45-1266366.patch \
+		"${FILESDIR}"/mozjs38-pkg-config-version.patch
+
+	# apply relevant (modified) patches from gentoo's firefox-45 patchset
 	eapply "${FILESDIR}"/ff45
 
 	eapply_user
@@ -58,7 +55,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export SHELL=/bin/sh
+	export SHELL="${SHELL:-${EPREFIX%/}/bin/bash}"
 	cd "${BUILDDIR}" || die
 
 	econf \
@@ -113,7 +110,7 @@ src_compile() {
 			host_jsoplengen.o || die
 	fi
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" \
 	emake \
 		MOZ_OPTIMIZE_FLAGS="" MOZ_DEBUG_FLAGS="" \
 		HOST_OPTIMIZE_FLAGS="" MODULE_OPTIMIZE_FLAGS="" \
@@ -129,12 +126,15 @@ src_install() {
 	cd "${BUILDDIR}" || die
 	emake DESTDIR="${D}" install
 
+	# re-slot due to upstream stripping out most of the slotting
+	mv "${ED}"usr/bin/js-config{,${SLOT}} || die
+	mv "${ED}"usr/bin/js{,${SLOT}} || die
 	if ! use minimal; then
 		if use jit; then
-			pax-mark m "${ED}/usr/bin/js${SLOT}"
+			pax-mark m "${ED}"usr/bin/js${SLOT}
 		fi
 	else
-		rm -f "${ED}/usr/bin/js${SLOT}"
+		rm -f "${ED}"usr/bin/js${SLOT}
 	fi
 
 	if ! use static-libs; then
