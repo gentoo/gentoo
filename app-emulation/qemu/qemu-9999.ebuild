@@ -187,7 +187,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 )
 
-
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
 
 QA_PREBUILT="
