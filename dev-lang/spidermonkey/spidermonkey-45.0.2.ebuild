@@ -72,6 +72,12 @@ src_configure() {
 		$(use_enable jit ion) \
 		$(use_enable static-libs static) \
 		$(use_enable test tests)
+
+	# An unfortunate hack to undo header install symlinking, but
+	# necessary until the function that generates this file can be
+	# determined and fixed
+	sed -i -e 's/^1/2/' \
+		"${BUILDDIR}"/_build_manifests/install/dist_include || die
 }
 
 cross_make() {

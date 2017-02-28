@@ -30,11 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ian Stakenvicius <axs@gentoo.org> (28 Feb 2017)
-# Installs symlinks to ${S} instead of copies of files,
-# will unmask once fixed
-dev-lang/spidermonkey:45
-
 # Matt Turner <mattst88@gentoo.org> (26 Feb 2017)
 # Integrated into xorg-server since 1.17. Removal in 30 days.
 # Bug #611058
