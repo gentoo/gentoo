@@ -29,8 +29,8 @@ IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt
 	glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl sdl2 selinux smartcard snappy
-	spice ssh static systemtap tci test +threads usb usbredir vde
-	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
+	spice ssh static static-user systemtap tci test +threads usb usbredir
+	vde +vhost-net virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc
@@ -53,7 +53,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_ppc64? ( fdt )
 	sdl2? ( sdl )
-	static? ( !alsa !pulseaudio !bluetooth !opengl !gtk !gtk2 )
+	static? ( static-user !alsa !bluetooth !gtk !gtk2 !opengl !pulseaudio )
 	virtfs? ( xattr )
 	vte? ( gtk )"
 
@@ -174,6 +174,7 @@ DEPEND="${CDEPEND}
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
 	gtk? ( nls? ( sys-devel/gettext ) )
 	static? ( ${TARGETS_DEPEND} )
+	static-user? ( ${TARGETS_DEPEND} )
 	test? (
 		dev-libs/glib[utils]
 		sys-devel/bc
@@ -449,6 +450,7 @@ qemu_src_configure() {
 			--disable-blobs
 			--disable-tools
 		)
+		local static_flag="static-user"
 		;;
 	softmmu)
 		# audio options
@@ -466,6 +468,7 @@ qemu_src_configure() {
 		)
 		use gtk && conf_opts+=( --with-gtkabi=$(usex gtk2 2.0 3.0) )
 		use sdl && conf_opts+=( --with-sdlabi=$(usex sdl2 2.0 1.2) )
+		local static_flag="static"
 		;;
 	tools)
 		conf_opts+=(
@@ -475,6 +478,7 @@ qemu_src_configure() {
 			--enable-tools
 			$(use_enable bzip2)
 		)
+		local static_flag="static"
 		;;
 	esac
 
@@ -487,7 +491,7 @@ qemu_src_configure() {
 	# We always want to attempt to build with PIE support as it results
 	# in a more secure binary. But it doesn't work with static or if
 	# the current GCC doesn't have PIE support.
-	if use static; then
+	if use ${static_flag}; then
 		conf_opts+=( --static --disable-pie )
 	else
 		gcc-specs-pie && conf_opts+=( --enable-pie )

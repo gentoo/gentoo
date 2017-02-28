@@ -13,7 +13,7 @@ inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
-	inherit git-2
+	inherit git-r3
 	SRC_URI=""
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
