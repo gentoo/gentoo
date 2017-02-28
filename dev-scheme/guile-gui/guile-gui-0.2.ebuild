@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Guile Scheme code that aims to implement a graphical user interface"
 HOMEPAGE="http://www.ossau.uklinux.net/guile/"

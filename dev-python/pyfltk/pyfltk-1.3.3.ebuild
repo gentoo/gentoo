@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # FIXME: MakeSwig.py execution should be made work from pyfltk-1.1.5.ebuild
 

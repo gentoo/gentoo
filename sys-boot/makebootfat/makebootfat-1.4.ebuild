@@ -1,6 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Command line utility able to create bootable USB disks"
 HOMEPAGE="http://advancemame.sourceforge.net/boot-readme.html"

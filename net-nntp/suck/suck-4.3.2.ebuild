@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Grab news from a remote NNTP server and feed them to another"
 HOMEPAGE="http://home.comcast.net/~bobyetman/"

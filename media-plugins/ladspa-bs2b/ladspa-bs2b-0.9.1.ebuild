@@ -1,6 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="LADSPA plugin for bs2b headphone filter"
 HOMEPAGE="http://bs2b.sourceforge.net/"

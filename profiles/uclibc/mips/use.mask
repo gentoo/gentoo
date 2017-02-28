@@ -1,4 +1,3 @@
-# $Id$
 
 # Henrik Brix Andersen <brix@gentoo.org>
 # According to the mips herd, we currently have no way of testing

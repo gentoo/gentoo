@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # NOTE: The comments in this file are for instruction and documentation.
 # They're not meant to appear with your final, production ebuild.  Please

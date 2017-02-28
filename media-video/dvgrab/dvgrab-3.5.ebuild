@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Digital Video (DV) grabber for GNU/Linux"
 HOMEPAGE="http://www.kinodv.org/"

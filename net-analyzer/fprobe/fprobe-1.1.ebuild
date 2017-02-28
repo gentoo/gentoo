@@ -1,6 +1,5 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A libpcap-based tool to collect network traffic data and emit it as NetFlow flows"
 HOMEPAGE="http://fprobe.sourceforge.net"

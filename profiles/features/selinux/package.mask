@@ -1,4 +1,3 @@
-# $Id$
 
 # Göktürk Yüksek <gokturk@gentoo.org> (09 Nov 2016)
 # On behalf of proxy-maint

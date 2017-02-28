@@ -1,6 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # this package is ONLY available inside the Zope tarball!!!
 ZOPE_PV=2.6.1

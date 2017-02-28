@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MY_PN=${PN#osc-}
 DESCRIPTION="replacement for mpirun, integrates MPI with PBS"

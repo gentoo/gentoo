@@ -1,7 +1,6 @@
 #!/bin/bash
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # people who were here:
 # (drobbins, 06 Jun 2003)
@@ -56,7 +55,7 @@ v_echo() {
 	env "$@"
 }
 
-cvsver="$Id$"
+cvsver="$Id$" # TODO: FIXME for Git era
 cvsver=${cvsver##*,v }
 cvsver=${cvsver%%Exp*}
 cvsyear=${cvsver#* }

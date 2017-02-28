@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Synchronise the two copy/paste buffers mainly used by X applications"
 HOMEPAGE="http://www.nongnu.org/autocutsel/"

@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Copies data while enforcing a specified maximum transfer rate"
 HOMEPAGE="http://www.fourmilab.ch/webtools/valve/"

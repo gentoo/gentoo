@@ -1,6 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 #set
 DESCRIPTION="3ware Command Line Interface Tool"

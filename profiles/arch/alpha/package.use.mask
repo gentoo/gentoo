@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Tobias Klausmann <klausman@gentoo.org> (27 Jan 2016)
 # USE=test transitively pulls in greenlet, which is not available on alpha.

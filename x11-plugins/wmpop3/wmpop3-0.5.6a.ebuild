@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="dockapp for checking pop3 accounts"
 HOMEPAGE="http://www.cs.mun.ca/~scotth/"

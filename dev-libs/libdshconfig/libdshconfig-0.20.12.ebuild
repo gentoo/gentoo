@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Library for parsing dsh.style configuration files"
 HOMEPAGE="http://www.netfort.gr.jp/~dancer/software/downloads/"

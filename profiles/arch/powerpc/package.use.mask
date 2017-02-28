@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2017)
 # Requires dev-qt/qtwebengine, not keyworded on ppc

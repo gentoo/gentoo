@@ -1,6 +1,5 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MY_P=dict-gazetteer-${PV}-pre
 DESCRIPTION="The original U.S. Gazetteer Place and Zipcode Files for dict"

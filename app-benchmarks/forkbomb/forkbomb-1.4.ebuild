@@ -1,6 +1,5 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Controlled fork() bomber for testing heavy system load"
 HOMEPAGE="http://home.tiscali.cz:8080/~cz210552/forkbomb.html"

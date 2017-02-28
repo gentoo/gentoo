@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # At some point URW++ released fonts under GPL license. After that they were took
 # and improved by Valek Filippov and this work was somehow related with AFPL...

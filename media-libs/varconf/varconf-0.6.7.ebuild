@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A configuration system designed for the STAGE server"
 SRC_URI="mirror://sourceforge/worldforge/${P}.tar.bz2"

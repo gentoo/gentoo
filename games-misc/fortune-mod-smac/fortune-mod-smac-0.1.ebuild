@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 EAPI=5
 DESCRIPTION="Quotes from the Alpha Centauri: Alien Crossfire tech tree"
 HOMEPAGE="http://progsoc.org/~curious/"

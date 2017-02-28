@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Unconditional dependency of gcc.  Keep this set to 0.
 EAPI="0"

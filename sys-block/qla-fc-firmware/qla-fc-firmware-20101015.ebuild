@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards"
 HOMEPAGE="ftp://ftp.qlogic.com/outgoing/linux/firmware/"

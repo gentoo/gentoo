@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Database for the m17n library"
 HOMEPAGE="https://savannah.nongnu.org/projects/m17n"

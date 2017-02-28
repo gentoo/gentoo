@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A tool to parse smaps statistics"
 HOMEPAGE="http://bmaurer.blogspot.de/2006/03/memory-usage-with-smaps.html"

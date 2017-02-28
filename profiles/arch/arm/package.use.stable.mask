@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Michael Weber <xmw@gentoo.org> (27 Feb 2017)
 # Stable mask dev-ruby/haml test till rails is stabilized.

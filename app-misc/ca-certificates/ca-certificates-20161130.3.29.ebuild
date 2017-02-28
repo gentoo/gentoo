@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # The Debian ca-certificates package merely takes the CA database as it exists
 # in the nss package and repackages it for use by openssl.

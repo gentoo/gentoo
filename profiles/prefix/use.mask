@@ -1,6 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Mask all glibc/linux combination, unmasked in the appropriate profiles
 elibc_glibc

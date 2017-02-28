@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 # This appears it should really be entitled Audio-CD
 # There are * QA Notice: errors on building however the HOMEPAGE gives no source repo in which to file
 # prob. not worth the trouble for this little script.
