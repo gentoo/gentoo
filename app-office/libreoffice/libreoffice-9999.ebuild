@@ -137,7 +137,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
-	x11-libs/cairo[X,-xlib-xcb]
+	x11-libs/cairo[X,-xlib-xcb(-)]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
