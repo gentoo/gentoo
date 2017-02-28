@@ -42,7 +42,7 @@ pkg_setup(){
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-38-jsapi-tests-makefile.patch \
+	eapply "${FILESDIR}"/${PN}-38-jsapi-tests.patch \
 		"${FILESDIR}"/mozjs38-1269317.patch \
 		"${FILESDIR}"/mozjs38-fix-tracelogger.patch
 
