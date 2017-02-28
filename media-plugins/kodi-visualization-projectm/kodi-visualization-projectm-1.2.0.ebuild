@@ -28,7 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
+	=media-tv/kodi-17*
+	=media-libs/kodi-platform-17*
 	media-libs/libprojectm
 	virtual/opengl
 	"
