@@ -14760,7 +14760,7 @@ net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
-net-libs/libtrace 3.0.22 4.0.0: A library and tools for trace processing
+net-libs/libtrace 3.0.22 4.0.0 4.0.0-r1: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.8.0: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 1.7.8 1.7.9 2.0.2: canonical libwebsockets.org websocket library
