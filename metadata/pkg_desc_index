@@ -7720,7 +7720,7 @@ dev-python/kafka-python 1.1.1 1.2.0 1.2.1: Kafka protocol support in Python
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 9.3.1 10.0.2-r1 10.1 10.1-r1 10.2: Provides access to the system keyring service
+dev-python/keyring 9.3.1 10.0.2-r1 10.1 10.1-r1 10.2 10.3: Provides access to the system keyring service
 dev-python/keyrings_alt 1.1 1.1.1 2.0: Alternate keyring implementations
 dev-python/keystoneauth 2.4.1 2.4.2 2.12.3 2.18.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.4.1 4.9.1 4.14.0: A middleware for the OpenStack Keystone API
@@ -17337,7 +17337,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 8.3.0 9.1.1 9.2.0 10.0.0 2016.1.9999 2016.2.9999 2017.1.9999: A virtual network service for Openstack
-sys-cluster/nova 13.1.2 14.0.3 14.0.4 15.0.0 2016.1.9999 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 13.1.2 13.1.3 14.0.3 14.0.4 15.0.0 2016.1.9999 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
