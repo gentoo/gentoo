@@ -15,13 +15,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="designer gui svg testlib webkit"
+IUSE="designer gui opengl svg testlib webkit"
 
 RDEPEND="
 	|| (
-		  dev-python/PyQt5[${PYTHON_USEDEP},designer=,svg=,webkit=]
-		  dev-python/PyQt4[${PYTHON_USEDEP},designer=,svg=,webkit=]
-		  dev-python/pyside[${PYTHON_USEDEP},designer=,svg=,webkit=]
+		  dev-python/PyQt5[${PYTHON_USEDEP},designer=,opengl=,svg=,webkit=]
+		  dev-python/PyQt4[${PYTHON_USEDEP},designer=,opengl=,svg=,webkit=]
+		  dev-python/pyside[${PYTHON_USEDEP},designer=,opengl=,svg=,webkit=]
 	   )
 	gui? ( || (
 		  dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]

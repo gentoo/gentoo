@@ -20,3 +20,5 @@ DEPEND="
 	$(add_kdeapps_dep kcontacts)
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-directory-traversal.patch" )
