@@ -1,5 +1,4 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
 # DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
 

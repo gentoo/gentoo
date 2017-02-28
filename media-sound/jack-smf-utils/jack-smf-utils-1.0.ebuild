@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Utilities for MIDI streams and files using Jack MIDI"
 HOMEPAGE="http://pin.if.uz.zgora.pl/~trasz/jack-smf-utils/"

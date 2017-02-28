@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="command-line utility to create toc-files for cdrdao"
 HOMEPAGE="https://sourceforge.net/projects/mkcdtoc/"

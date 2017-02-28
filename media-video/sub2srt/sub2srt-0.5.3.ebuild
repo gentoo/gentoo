@@ -1,6 +1,5 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Tool to convert several subtitle formats into subviewer srt"
 HOMEPAGE="http://www.robelix.com/sub2srt/"

@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MY_P=test_proc-${PV:6:2}January${PV:0:4}
 DESCRIPTION="huge collection of /proc/cpuinfo files"

@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Bridge the old SLOT=5[/5] ebuild to the new SLOT=0/5 since the slotmove
 # functionality does not handle implicit subslots correctly. #558856

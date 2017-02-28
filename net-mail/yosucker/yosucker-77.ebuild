@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MY_P="YoSucker-pr${PV}"
 S=${WORKDIR}/${MY_P}

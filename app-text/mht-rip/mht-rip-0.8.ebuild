@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="convert mht/mhtml files to something usable"
 HOMEPAGE="http://www.loganowen.com/mht-rip/"

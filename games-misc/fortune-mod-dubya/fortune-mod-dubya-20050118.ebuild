@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 EAPI=5
 DESCRIPTION="Quotes from George W. Bush"
 HOMEPAGE="http://dubya.seiler.us/"

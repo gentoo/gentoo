@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Micro Linux distro to boot from a CD and play every video file localized in the CD root"
 HOMEPAGE="http://movix.sourceforge.net"

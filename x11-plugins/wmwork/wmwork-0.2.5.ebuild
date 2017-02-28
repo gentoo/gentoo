@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="a dockapp that lets you easily track time spent on different projects"
 HOMEPAGE="http://www.godisch.de/debian/wmwork"

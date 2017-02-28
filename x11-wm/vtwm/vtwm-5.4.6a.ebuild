@@ -1,6 +1,5 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="one of many TWM descendants and implements a Virtual Desktop"
 HOMEPAGE="http://www.vtwm.org/"

@@ -1,6 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Measures the speed of stdin/stdout communication"
 HOMEPAGE="http://www.habets.pp.se/synscan/programs.php?prog=pipebench"

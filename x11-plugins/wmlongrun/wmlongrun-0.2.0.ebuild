@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A dockapp to monitor LongRun on a Transmeta Crusoe processor"
 HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/38"

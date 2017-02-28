@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="lib for D-Bus daemon messages, querying HAL or PolicyKit privileges"
 HOMEPAGE="https://freedesktop.org/wiki/Software/liblazy"

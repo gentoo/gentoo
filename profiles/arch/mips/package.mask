@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Mask pam_ldap and nss_ldap - openldap dep missing.
 sys-auth/pam_ldap

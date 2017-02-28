@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Davide Pesavento <pesa@gentoo.org> (21 Jan 2017)
 # Requires unkeyworded dev-python/PyQt5

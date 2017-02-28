@@ -1,6 +1,5 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 JAVA_PKG_IUSE="doc source"
 WANT_AUTOMAKE="1.9"

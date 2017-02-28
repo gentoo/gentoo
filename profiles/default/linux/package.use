@@ -1,6 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Mike Frysinger <vapier@gentoo.org> (12 Nov 2015)
 # We want busybox statically linked by default as it is the system rescue shell.

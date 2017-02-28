@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A cross-compilation toolkit designed to make embedded Linux application development easier"
 HOMEPAGE="http://www.scratchbox.org/"

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Alexey Shvetsov <alexxy@gentoo.org> (21 May 2012)
 # Need deps pecl-apc and pecl-uploadprogress bug #416897

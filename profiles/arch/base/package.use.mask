@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Alexis Ballier <aballier@gentoo.org> (21 Feb 2017)
 # spacetime is only supported on amd64 at the moment.

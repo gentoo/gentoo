@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="GTK+2 themes which copy and improve the look of XP Luna"
 HOMEPAGE="https://art.gnome.org/themes/gtk2/1058"

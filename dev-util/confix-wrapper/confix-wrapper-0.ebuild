@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Wrapper to select either confix1.py or confix2.py"
 HOMEPAGE="http://confix.sourceforge.net"

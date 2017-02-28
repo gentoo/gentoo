@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 USE_EXPAND_UNPREFIXED="ARCH"
 USE_EXPAND_IMPLICIT="ARCH"

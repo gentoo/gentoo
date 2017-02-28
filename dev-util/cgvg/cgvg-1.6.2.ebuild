@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A tiny version of cscope that is much more useful in certian instances"
 HOMEPAGE="http://uzix.org/cgvg.html"

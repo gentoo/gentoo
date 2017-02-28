@@ -1,6 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MY_PN=${PN/-xcursors/}
 DESCRIPTION="A simple crispy dark-grey xcursor theme"

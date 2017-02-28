@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Force system-libevent use flag on mozilla packages, since the building of
 # bundled libevent cannot accomodate a system without sysctl.h

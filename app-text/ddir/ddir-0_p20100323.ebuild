@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A perl implementation of the tree(1) program"
 HOMEPAGE="http://freshmeat.net/projects/ddir"

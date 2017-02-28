@@ -1,5 +1,4 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
 # Anthony G. Basile <blueness@gentoo.org> (01 Aug 2015)
 # There is no luajit support on ppc64 userland.  Bug #554376.
