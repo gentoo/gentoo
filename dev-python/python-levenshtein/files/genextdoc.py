@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # Simple Python extension module doc generator.
-# @(#) $Id$
 # Written by Yeti <yeti@physics.muni.cz>
 # This program is in the public domain.
 import re, sys, types, inspect

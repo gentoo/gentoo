@@ -1,4 +1,3 @@
-# $Id$
 ifplugin Mail::SpamAssassin::Plugin::GoogleSafeBrowsing
 
 # Replace DEADBEEF with your API key

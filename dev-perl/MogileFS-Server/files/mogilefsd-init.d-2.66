@@ -1,5 +1,4 @@
 #!/sbin/openrc-run
-# $Id$
 
 NAME="mogilefsd"
 BINARY="/usr/bin/mogilefsd"

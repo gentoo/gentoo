@@ -1,4 +1,3 @@
-# $Id$
 #
 # rc-addon-script for plugin scheduler
 #

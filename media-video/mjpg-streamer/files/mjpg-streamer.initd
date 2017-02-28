@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MJPG_STREAMER_PIDFILE="${MJPG_STREAMER_PIDFILE:-/var/run/${SVCNAME}.pid}"
 MY_NAME=${SVCNAME//-/_}

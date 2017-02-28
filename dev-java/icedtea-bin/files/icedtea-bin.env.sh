@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 VERSION="IcedTea JDK ${PV}$(multilib_is_native_abi || printf ' ('${ABI}')')"
 JAVA_HOME="${EPREFIX}/opt/icedtea-bin-${PV}$(multilib_is_native_abi || printf -- -${ABI})"

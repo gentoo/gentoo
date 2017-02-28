@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 SENSORD_PIDFILE=${SENSORD_PIDFILE:-"/run/sensord.pid"}
 SENSORD_SSDARGS=${SENSORD_SSDARGS:-"--wait 1000"}

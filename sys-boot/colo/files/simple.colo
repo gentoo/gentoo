@@ -1,7 +1,6 @@
 #:CoLo:#
 #
 # Simple CoLo boot script.
-# $Id$
 
 # Turn serial on; if possible
 # - means: "ignore any failure", so if the machine has no serial device (such as

@@ -37,7 +37,9 @@ pkg_setup(){
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-38-jsapi-tests.patch \
 		"${FILESDIR}"/mozjs45-1266366.patch \
-		"${FILESDIR}"/mozjs38-pkg-config-version.patch
+		"${FILESDIR}"/mozjs38-pkg-config-version.patch \
+		"${FILESDIR}"/mozilla_configure_regexp_esr.patch \
+		"${FILESDIR}"/${PN}-${SLOT}-dont-symlink-non-objfiles.patch
 
 	# apply relevant (modified) patches from gentoo's firefox-45 patchset
 	eapply "${FILESDIR}"/ff45
@@ -71,12 +73,6 @@ src_configure() {
 		$(use_enable jit ion) \
 		$(use_enable static-libs static) \
 		$(use_enable test tests)
-
-	# An unfortunate hack to undo header install symlinking, but
-	# necessary until the function that generates this file can be
-	# determined and fixed
-	sed -i -e 's/^1/2/' \
-		"${BUILDDIR}"/_build_manifests/install/dist_include || die
 }
 
 cross_make() {
@@ -145,6 +141,6 @@ src_install() {
 	if ! use static-libs; then
 		# We can't actually disable building of static libraries
 		# They're used by the tests and in a few other places
-		find "${D}" -iname '*.a' -delete || die
+		find "${D}" -iname '*.a' -o -iname '*.ajs' -delete || die
 	fi
 }

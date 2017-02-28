@@ -10,7 +10,6 @@
 # Modified by:  Robin H. Johnson, <robbat2@gentoo.org>
 # Modified by:  William Hubbs, <williamh@gentoo.org>
 #
-# $Id$
 
 # Default runlevel.
 id:3:initdefault:

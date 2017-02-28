@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 #
-# $Id$
-#
 # Time-stamp: <02/02/05 10:00:12 dhellmann>
 #
 # Copyright 2001 Doug Hellmann.

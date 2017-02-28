@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 command=/usr/bin/groonga
 command_args="-d --pid-path ${GROONGA_PID:-/run/groonga/groonga.pid} --config-path=${CONFIG_FILE:-/etc/groonga/groonga.conf} ${DATABASE}"

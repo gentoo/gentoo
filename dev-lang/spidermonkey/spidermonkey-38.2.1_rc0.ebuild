@@ -140,6 +140,6 @@ src_install() {
 	if ! use static-libs; then
 		# We can't actually disable building of static libraries
 		# They're used by the tests and in a few other places
-		find "${D}" -iname '*.a' -delete || die
+		find "${D}" -iname '*.a' -o -iname '*.ajs' -delete || die
 	fi
 }

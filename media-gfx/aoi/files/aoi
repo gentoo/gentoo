@@ -2,7 +2,6 @@
 # Art Of Illusion Launch Script
 # Author: Dylan Carlson
 # May 2003
-# $Id$
 
 JAVA_HOME=`/usr/bin/java-config --jdk-home`
 if [ -z "${JAVA_HOME}" ] ; then

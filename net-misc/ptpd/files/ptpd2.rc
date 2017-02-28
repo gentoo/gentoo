@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 PTPD_CONFIGFILE=${PTPD_CONFIGFILE:-/etc/${RC_SVCNAME}.conf}
 PTPD_STATEFILE_DIR=${PTPD_STATEFILE_DIR:-/var/run}

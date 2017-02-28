@@ -1,7 +1,5 @@
 #!/usr/bin/perl -w
 #
-#   $Id$
-#
 #   xpptp_fe.pl.pl, graphical user interface for PPTP configuration
 #   Copyright (C) 2001  Smoot Carl-Mitchell (smoot@tic.com)
 #

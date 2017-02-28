@@ -1,6 +1,5 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # User to run ushare daemon (if none, root will be used)
 USHARE_USER="ushare"

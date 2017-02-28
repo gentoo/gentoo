@@ -1,5 +1,4 @@
-/* # $Id$
-
+/*
    Convert external TAI64N timestamps to fractional seconds since epoch.
 
    Written by Russ Allbery <rra@stanford.edu>

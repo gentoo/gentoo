@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright (c) 2008 Saleem Abdulrasool <compnerd@compnerd.org>
 # Distributed under the terms of the GNU General Purpose License v2
-# $Id$
 
 description="NetworkManager daemon. The service is marked as started only \
 when a network connection is established."
