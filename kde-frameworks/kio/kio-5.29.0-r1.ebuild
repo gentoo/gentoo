@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KDE_TEST="forceoptional-recursive"
+KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -65,6 +65,8 @@ RDEPEND="${COMMON_DEPEND}"
 
 # tests hang
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-sanitize-url.patch" )
 
 src_configure() {
 	local mycmakeargs=(
