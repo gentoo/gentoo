@@ -1,0 +1,14 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 5a5ca35..6c0a8f2 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -1,6 +1,7 @@
+ lib_LTLIBRARIES = libtrace.la
+-include_HEADERS = libtrace.h dagformat.h lt_inttypes.h daglegacy.h \
+-        rt_protocol.h erftypes.h libtrace_parallel.h \
++include_HEADERS = libtrace.h libtrace_parallel.h
++pkginclude_HEADERS = dagformat.h lt_inttypes.h daglegacy.h \
++        rt_protocol.h erftypes.h \
+         data-struct/ring_buffer.h data-struct/object_cache.h \
+         data-struct/vector.h data-struct/message_queue.h \
+         data-struct/deque.h data-struct/linked_list.h \
