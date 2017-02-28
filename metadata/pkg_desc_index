@@ -1127,7 +1127,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.31 1.31-r1 1.32 1.33: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.31-r1 1.32 1.33: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -10245,7 +10245,7 @@ dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make r
 dev-util/mdds 1.2.2 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.4: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.36.0 0.37.1 0.38.0 0.38.1 9999: Open source build system
+dev-util/meson 0.36.0 0.37.1 0.38.1 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1: Free Win64 runtime and import library definitions
