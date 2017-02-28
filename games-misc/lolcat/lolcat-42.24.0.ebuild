@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,14 +12,14 @@ RUBY_FAKEGEM_GEMSPEC="lolcat.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Rainbows and unicorns!"
+DESCRIPTION="Rainbows and unicorns, with no unicorns!"
 HOMEPAGE="https://github.com/busyloop/lolcat"
 
-LICENSE="WTFPL-2"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-vcs/git"
 
 ruby_add_rdepend ">=dev-ruby/trollop-2.1.2:2
-	>=dev-ruby/paint-1.0"
+	>=dev-ruby/paint-2.0.0"
