@@ -10285,7 +10285,7 @@ dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Serv
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
-dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4: Userland tools for Linux Performance Counters
+dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4 4.9.13: Userland tools for Linux Performance Counters
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/pkgcheck 0.5.3 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 1.1.0 1.2.2 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
