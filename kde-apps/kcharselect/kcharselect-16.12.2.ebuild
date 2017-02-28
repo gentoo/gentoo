@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
+	$(add_frameworks_dep kbookmarks)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
