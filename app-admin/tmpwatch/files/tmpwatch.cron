@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id$
 # vim: ft=sh
 
 # This cron script contains several (commented out) examples.  You may use

@@ -1,5 +1,4 @@
 #!/sbin/openrc-run
-# $Id$
 
 REDIS_DIR=${REDIS_DIR:-/var/lib/redis}
 REDIS_CONF=${REDIS_CONF:-/etc/redis.conf}

@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 BIN_CORRELATOR=/usr/bin/prelude-correlator
 PID_CORRELATOR=/run/prelude-correlator/prelude-correlator.pid

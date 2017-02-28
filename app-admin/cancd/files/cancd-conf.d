@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # user to run as, root strongly discouraged
 # user should have /bin/false for a shell

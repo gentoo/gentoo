@@ -1,5 +1,3 @@
-// $Id$
-
 global {
 	perm_cache=512;
 	cache_dir=;

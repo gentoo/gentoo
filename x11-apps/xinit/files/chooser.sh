@@ -2,7 +2,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
 # Author:  Martin Schlemmer <azarah@gentoo.org>
-# $Id$
 
 # Find a match for $XSESSION in /etc/X11/Sessions
 GENTOO_SESSION=""

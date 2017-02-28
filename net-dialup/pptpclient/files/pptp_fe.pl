@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 #
-#   $Id$
-#
 #   pptp_fe.pl, privileged portion of xpptp_fe.pl
 #   Copyright (C) 2001  Smoot Carl-Mitchell (smoot@tic.com)
 #

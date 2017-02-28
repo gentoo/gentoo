@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 description="Real-time monitor and web admin for Celery distributed task queue"
 pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}

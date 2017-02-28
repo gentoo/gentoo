@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 959e57aa22fc41f7b2db595bee5abc8765ec6999 $
 
 EAPI=6
 inherit ssl-cert systemd user versionator

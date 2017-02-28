@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Simple test to make sure our new glibc isnt completely broken.
 # Make sure we don't test with statically built binaries since
