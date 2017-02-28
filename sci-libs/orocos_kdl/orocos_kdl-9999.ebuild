@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,6 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="examples? ( models )"
 
 DOCS=( README )
-PATCHES=( "${FILESDIR}/gentoo.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/orocos_kdl
@@ -66,4 +65,8 @@ src_install() {
 	cd "${BUILD_DIR}"
 	use doc && dohtml -r doc/api/html/*
 	use examples && dobin "${BUILD_DIR}/examples/"{geometry,trajectory_example,chainiksolverpos_lma_demo}
+
+	# Need to have package.xml in our custom gentoo path
+	insinto /usr/share/ros_packages/${PN}
+	doins "${ED}/usr/share/${PN}/package.xml"
 }
