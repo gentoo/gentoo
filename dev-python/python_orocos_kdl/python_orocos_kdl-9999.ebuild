@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,6 @@ RDEPEND="
 	dev-python/sip[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/gentoo.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/python_orocos_kdl
@@ -54,4 +53,8 @@ src_test() {
 
 src_install() {
 	python_foreach_impl cmake-utils_src_install
+
+	# Need to have package.xml in our custom gentoo path
+	insinto /usr/share/ros_packages/${PN}
+	doins "${ED}/usr/share/${PN}/package.xml"
 }
