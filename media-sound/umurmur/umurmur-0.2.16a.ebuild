@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,8 +23,8 @@ DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2
 RDEPEND="${DEPEND}"
 
 DOC_CONTENTS="
-	A configuration file has been installed at /etc/umurmur.conf - you may
-	want to review it. See also\n
+	A configuration file has been installed at /etc/umurmur/umurmur.conf - you
+	may	want to review it. See also\n
 	https://github.com/umurmur/umurmur/wiki/Configuration "
 
 pkg_setup() {
