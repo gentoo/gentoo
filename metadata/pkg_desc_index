@@ -11907,7 +11907,7 @@ kde-frameworks/kcrash 5.29.0 5.31.0: Framework for intercepting and handling app
 kde-frameworks/kdbusaddons 5.29.0 5.31.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.29.0 5.31.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.29.0 5.31.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs 4.14.28 4.14.29: KDE libraries needed by all KDE programs
+kde-frameworks/kdelibs 4.14.28 4.14.29-r1: KDE libraries needed by all KDE programs
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.29.0 5.31.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.29.0 5.31.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
@@ -16452,7 +16452,7 @@ sci-mathematics/nestedsums 1.4.12-r2 1.5.1: A GiNaC-based library for symbolic e
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.6.0: NuSMV: new symbolic model checker
-sci-mathematics/octave 3.6.4-r1 3.8.2-r3 4.2.0-r4: High-level interactive language for numerical computations
+sci-mathematics/octave 3.6.4-r1 3.8.2-r3 4.2.0-r4 4.2.1: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.3 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r1 3.3-r2: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
@@ -19219,7 +19219,7 @@ x11-themes/kfaenza 0.8.9-r1: Faenza-Cupertino icon theme for KDE
 x11-themes/korilla 1.3.5: Kool Gorilla Icon Set for KDE
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3: Fedora official background artwork
-x11-themes/leonidas-backgrounds 11.0.0.2: Fedora official background artwork
+x11-themes/leonidas-backgrounds 11.0.0.2 11.0.0.2-r1: Fedora official background artwork
 x11-themes/light-themes 17.04_p20161205 17.04_p20161205-r1: GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
 x11-themes/lovelock-backgrounds 14.91.1.1: Fedora official background artwork
 x11-themes/lush 0.1.0-r2: Lush KDE icon theme
@@ -19253,7 +19253,7 @@ x11-themes/skinenigmang-logos 20070214-r1 20131008: VDR - Skin Plugin: enigma-ng
 x11-themes/slim-themes 1.2.3a-r7: SLiM (Simple Login Manager) themes pack
 x11-themes/smplayer-skins 15.2.0: Skins for SMPlayer
 x11-themes/smplayer-themes 14.9.0 15.12.0 16.5.2 16.6.0 16.8.0: Icon themes for smplayer
-x11-themes/solar-backgrounds 0.92.0.5: Fedora official background artwork
+x11-themes/solar-backgrounds 0.92.0.5 0.92.0.5-r1: Fedora official background artwork
 x11-themes/sound-theme-freedesktop 0.8: Default freedesktop.org sound theme following the XDG theming specification
 x11-themes/tactile 0_pre20060612: Nice, calm and dark low contrast GTK+ theme
 x11-themes/tactile3 3.1: The third evolution of Tactile theme series

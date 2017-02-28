@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EL/ELMEX/AnyEvent-HTTPD-0.93.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=5d4fc7e641e175ed31b239145f0d783c
+_md5_=e4b6a7e9e268433f1fe53f3e448ed7b9

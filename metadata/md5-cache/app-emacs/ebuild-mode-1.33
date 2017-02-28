@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/ebuild-mode-1.33.tar.xz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:elisp src_install:elisp
 _eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
-_md5_=54013b559eb4052f2b634ad1660a1d39
+_md5_=994e35633c78cff9ba0023473d5580b6
