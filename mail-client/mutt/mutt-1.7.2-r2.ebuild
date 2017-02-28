@@ -73,6 +73,8 @@ src_prepare() {
 		# apply patches
 		export EPATCH_FORCE="yes"
 		export EPATCH_SUFFIX="patch"
+		# http://hg.code.sf.net/p/gentoomutt/code/file/gentoo-1.7
+		# http://hg.code.sf.net/p/gentoomuttpatches/code/file/mutt-1.7
 		local patches=(
 			patches-mutt
 			bugs-gentoo
