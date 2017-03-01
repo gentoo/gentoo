@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -148,19 +148,20 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # @CODE
 
 _python_any_set_globals() {
-	local usestr i PYTHON_PKG_DEP
+	local usestr deps i PYTHON_PKG_DEP
 	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
 
 	_python_set_impls
 
-	PYTHON_DEPS=
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		python_export "${i}" PYTHON_PKG_DEP
 
 		# note: need to strip '=' slot operator for || deps
-		PYTHON_DEPS="${PYTHON_PKG_DEP%=} ${PYTHON_DEPS}"
+		deps="${PYTHON_PKG_DEP%=} ${deps}"
 	done
-	PYTHON_DEPS="|| ( ${PYTHON_DEPS})"
+	deps="|| ( ${deps})"
+
+	PYTHON_DEPS=${deps}
 	readonly PYTHON_DEPS
 }
 _python_any_set_globals
