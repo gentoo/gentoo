@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A networking library based on Adaptive Communication Patterns"
 HOMEPAGE="http://libassa.sourceforge.net/"
@@ -17,12 +16,10 @@ RDEPEND="net-libs/libtirpc"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
-
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.5.0-fix-tests.patch \
-		"${FILESDIR}"/${P}-gcc47.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5.0-fix-tests.patch
+	"${FILESDIR}"/${PN}-3.5.1-gcc47.patch
+)
 
 src_configure() {
 	econf \
@@ -32,5 +29,6 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name "*.la" -exec rm -rf {} + || die "failed to delete .la files"
+
+	find "${D}" -name '*.la' -delete || die
 }
