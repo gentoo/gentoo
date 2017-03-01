@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
+# Requires not yet stabilised dev-db/oracle-instantclient.
+sci-geosciences/qgis oracle
+
 # Christoph Junghans <junghans@gentoo.org> (26 Feb 2017)
 # Stable mask some fabrics (bug #525534)
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
