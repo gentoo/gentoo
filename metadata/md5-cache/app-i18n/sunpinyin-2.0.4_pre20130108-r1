@@ -10,5 +10,5 @@ RDEPEND=dev-db/sqlite:3
 SLOT=0/1
 SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-2.0.4_pre20130108.tar.xz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	110f340b55387d928bb3f8ee3157d5da	python-utils-r1	316c531873247e48befb99900e5aa2ed	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	74bf184baf9facd72c7baa58cab21385	python-utils-r1	316c531873247e48befb99900e5aa2ed	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	53b75b4a49cf3e61530a523804045432
 _md5_=ef06960939661c2337d68ab5013eef5a
