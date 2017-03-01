@@ -114,21 +114,22 @@ _python_set_impls() {
 		_python_impl_supported "${i}"
 	done
 
-	_PYTHON_SUPPORTED_IMPLS=()
-	_PYTHON_UNSUPPORTED_IMPLS=()
+	local supp=() unsupp=()
 
 	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
 		if has "${i}" "${PYTHON_COMPAT[@]}"; then
-			_PYTHON_SUPPORTED_IMPLS+=( "${i}" )
+			supp+=( "${i}" )
 		else
-			_PYTHON_UNSUPPORTED_IMPLS+=( "${i}" )
+			unsupp+=( "${i}" )
 		fi
 	done
 
-	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 0 ]]; then
+	if [[ ! ${supp[@]} ]]; then
 		die "No supported implementation in PYTHON_COMPAT."
 	fi
 
+	_PYTHON_SUPPORTED_IMPLS=( "${supp[@]}" )
+	_PYTHON_UNSUPPORTED_IMPLS=( "${unsupp[@]}" )
 	readonly _PYTHON_SUPPORTED_IMPLS _PYTHON_UNSUPPORTED_IMPLS
 }
 
