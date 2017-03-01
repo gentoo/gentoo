@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Weber <xmw@gentoo.org> (01 Mar 2017)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
 # Michael Weber <xmw@gentoo.org> (27 Feb 2017)
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test

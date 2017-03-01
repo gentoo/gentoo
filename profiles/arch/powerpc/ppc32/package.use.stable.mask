@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Weber <xmw@gentoo.org> (01 Mar 2017)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
 net-misc/connman l2tp openconnect
