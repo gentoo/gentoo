@@ -1420,7 +1420,7 @@ app-eselect/eselect-pinentry 0.4 0.5 0.6 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20140125-r2 20160516 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
-app-eselect/eselect-rails 0.21 0.22: Manages Ruby on Rails symlinks
+app-eselect/eselect-rails 0.21 0.22 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.4 0.6: Manages renpy symlink
 app-eselect/eselect-ruby 20131227 20151229 20161226: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
