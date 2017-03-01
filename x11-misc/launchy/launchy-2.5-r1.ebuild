@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit fdo-mime gnome2-utils qt4-r2
+EAPI=6
+inherit fdo-mime gnome2-utils qmake-utils
 
 DESCRIPTION="utility that merges application menus, your desktop and even your file manager"
 HOMEPAGE="http://www.launchy.net/"
@@ -13,17 +13,27 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-qt/qtgui:4"
+RDEPEND="
+	dev-qt/qtgui:4
+	x11-libs/libX11
+"
 DEPEND="${RDEPEND}
-	dev-libs/boost"
+	dev-libs/boost
+	x11-proto/xproto
+"
 
-PATCHES=( "${FILESDIR}"/${P}-underlink.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-prefix-and-libdir.patch
+)
 
-src_prepare() {
-	sed -i -e "s:lib/launchy:$(get_libdir)/launchy:" src/src.pro \
-		platforms/unix/unix.pro \
-		plugins/*/*.pro || die "sed failed"
-	qt4-r2_src_prepare
+src_configure() {
+	eqmake4 Launchy.pro PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)"
+}
+
+src_install() {
+	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 }
 
 pkg_preinst() {
