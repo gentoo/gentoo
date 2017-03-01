@@ -534,7 +534,7 @@ app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
 app-crypt/gnupg 1.4.21 2.1.15 2.1.18 2.1.19: The GNU Privacy Guard, a GPL OpenPGP implementation
-app-crypt/gnupg-pkcs11-scd 0.7.4: PKCS#11 support for GnuPG
+app-crypt/gnupg-pkcs11-scd 0.7.5: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.9 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
@@ -16145,7 +16145,7 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r3 2.18.3-r1: User friendly Geographic Information System
+sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r3 2.18.3-r1 2.18.4: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
