@@ -165,14 +165,13 @@ inherit multibuild python-utils-r1
 # @CODE
 
 _python_set_globals() {
-	PYTHON_DEPS=
-	local i PYTHON_PKG_DEP
+	local deps i PYTHON_PKG_DEP
 
 	_python_set_impls
 
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		python_export "${i}" PYTHON_PKG_DEP
-		PYTHON_DEPS+="python_targets_${i}? ( ${PYTHON_PKG_DEP} ) "
+		deps+="python_targets_${i}? ( ${PYTHON_PKG_DEP} ) "
 	done
 
 	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
@@ -186,10 +185,8 @@ _python_set_globals() {
 
 	local flags_st=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/-python_single_target_}" )
 	optflags+=,${flags_st[@]/%/(-)}
-
-	IUSE=${flags[*]}
-	PYTHON_REQUIRED_USE="|| ( ${flags[*]} )"
-	PYTHON_USEDEP=${optflags// /,}
+	local requse="|| ( ${flags[*]} )"
+	local usedep=${optflags// /,}
 
 	# 1) well, python-exec would suffice as an RDEP
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
@@ -198,8 +195,13 @@ _python_set_globals() {
 	if [[ ${_PYTHON_WANT_PYTHON_EXEC2} == 0 ]]; then
 		die "python-exec:0 is no longer supported, please fix your ebuild to work with python-exec:2"
 	else
-		PYTHON_DEPS+=">=dev-lang/python-exec-2:=[${PYTHON_USEDEP}]"
+		deps+=">=dev-lang/python-exec-2:=[${usedep}]"
 	fi
+
+	PYTHON_DEPS=${deps}
+	IUSE=${flags[*]}
+	PYTHON_REQUIRED_USE=${requse}
+	PYTHON_USEDEP=${usedep}
 	readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_USEDEP
 }
 _python_set_globals
