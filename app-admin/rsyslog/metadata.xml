@@ -15,6 +15,7 @@
 		<flag name="kafka">Build the Apache Kafka output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
 		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
 		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> for building the rfc5424hmac modify module (requires rfc5424hmac USE flag)</flag>
+		<flag name="mdblookup">Build the MaxMind DB lookup message modify plugin using <pkg>dev-libs/libmaxminddb</pkg></flag>
 		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/libmongo-client</pkg>)</flag>
 		<flag name="mysql">Build the MySQL database output module (requires <pkg>virtual/mysql</pkg>)</flag>
 		<flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
