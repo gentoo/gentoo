@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -195,14 +195,10 @@ _python_set_globals() {
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
 	# 2) python-exec should be built with all targets forced anyway
 	# but if new targets were added, we may need to force a rebuild
-	# 3) use whichever python-exec slot installed in EAPI 5. For EAPI 4,
-	# just fix :2 since := deps are not supported.
 	if [[ ${_PYTHON_WANT_PYTHON_EXEC2} == 0 ]]; then
 		die "python-exec:0 is no longer supported, please fix your ebuild to work with python-exec:2"
-	elif [[ ${EAPI} != 4 ]]; then
-		PYTHON_DEPS+=">=dev-lang/python-exec-2:=[${PYTHON_USEDEP}]"
 	else
-		PYTHON_DEPS+="dev-lang/python-exec:2[${PYTHON_USEDEP}]"
+		PYTHON_DEPS+=">=dev-lang/python-exec-2:=[${PYTHON_USEDEP}]"
 	fi
 	readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_USEDEP
 }
