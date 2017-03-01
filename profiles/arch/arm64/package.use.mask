@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
+# Unkeyworded depedencies
+app-admin/rsyslog grok kafka mongodb normalize rabbitmq
+
 # Michael Weber <xmw@gentoo.org> (01 Mar 2017)
 # untested dependencies
 net-libs/libpcap bluetooth
