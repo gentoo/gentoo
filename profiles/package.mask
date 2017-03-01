@@ -585,10 +585,6 @@ dev-java/spring-instrument
 # Unpatched security vulnerability per bug #512356.
 =app-forensics/chkrootkit-0.49
 
-# Eray Aslan <eras@gentoo.org> (22 Feb 2016)
-# Mask experimental software
-=mail-mta/postfix-3.2*
-
 # James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
 # Masked until 2.0 final arrives, which hopefully won't depend on
 # commons-dbcp:0 as that requires Java 6. Note that the 2.0 in the
