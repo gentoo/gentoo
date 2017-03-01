@@ -211,7 +211,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.4.0 11.4.2 11.4.3 11.5.3 11.5.4: System performance tools for Linux
+app-admin/sysstat 11.4.0 11.4.2 11.4.3 11.5.3 11.5.4 11.5.5: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
@@ -8067,6 +8067,7 @@ dev-python/pyconstruct 2.5.2: A powerful declarative parser for binary data
 dev-python/pycountry 1.20 16.11.8: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.16-r1 2.17: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1 2.6.1-r1 2.6.1-r2: Python Cryptography Toolkit
+dev-python/pycryptodome 3.4.5: A self-contained cryptographic library for Python
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.72 1.9.73 1.9.73-r1: Python bindings for the CUPS API
@@ -8230,7 +8231,7 @@ dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
 dev-python/pytest-arraydiff 0.1: pytest plugin to facilitate comparison of arrays
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
-dev-python/pytest-catchlog 1.1 1.2.0 1.2.1 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
+dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
 dev-python/pytest-fixture-config 1.2.2: Virtualenv fixture for py.test
