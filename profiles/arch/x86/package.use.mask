@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
+# dev-libs/libmaxminddb is keyworded on x86
+app-admin/rsyslog -mdblookup
+
 # David Seifert <soap@gentoo.org> (10 Feb 2017)
 # Requires dev-lua/ldoc for building documentation,
 # which is only keyworded for amd64

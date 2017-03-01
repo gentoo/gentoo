@@ -1,7 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
-EAPI=6
+EAPI="6"
 
 inherit autotools eutils linux-info systemd
 
@@ -56,11 +57,11 @@ fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mongodb mysql normalize omhttpfs"
+IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mdblookup mongodb mysql normalize omhttpfs"
 IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid zeromq"
 
 RDEPEND="
-	>=dev-libs/libfastjson-0.99.2:=
+	>=dev-libs/libfastjson-0.99.3:=
 	>=dev-libs/libestr-0.1.9
 	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
@@ -71,6 +72,7 @@ RDEPEND="
 	jemalloc? ( >=dev-libs/jemalloc-3.3.1:= )
 	kafka? ( >=dev-libs/librdkafka-0.9.0.99:= )
 	kerberos? ( virtual/krb5 )
+	mdblookup? ( dev-libs/libmaxminddb:= )
 	mongodb? ( >=dev-libs/libmongo-client-0.1.4 )
 	mysql? ( virtual/mysql )
 	normalize? (
@@ -183,6 +185,7 @@ src_configure() {
 		--enable-mmfields
 		--enable-mmjsonparse
 		--enable-mmpstrucdata
+		--enable-mmrm1stspace
 		--enable-mmsequence
 		--enable-mmutf8fix
 		# Output Modification Plugins without dependencies
@@ -216,6 +219,7 @@ src_configure() {
 		$(use_enable kafka omkafka)
 		$(use_enable kerberos gssapi-krb5)
 		$(use_enable normalize mmnormalize)
+		$(use_enable mdblookup mmdblookup)
 		$(use_enable grok mmgrok)
 		$(use_enable omhttpfs)
 		$(use_enable omudpspoof)

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
+# dev-libs/libmaxminddb is keyworded on amd64
+app-admin/rsyslog -mdblookup
+
 # Alexis Ballier <aballier@gentoo.org> (21 Feb 2017)
 # spacetime works on amd64
 # https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
