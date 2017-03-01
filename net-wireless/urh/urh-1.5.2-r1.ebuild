@@ -23,4 +23,5 @@ DEPEND="${PYTHON_DEPS}
 		net-libs/libhackrf
 		net-wireless/rtl-sdr"
 RDEPEND="${DEPEND}
-		dev-python/PyQt5[${PYTHON_USEDEP}]"
+		dev-python/PyQt5[${PYTHON_USEDEP}]
+		net-wireless/gr-osmosdr"
