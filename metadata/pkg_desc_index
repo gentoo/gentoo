@@ -2836,7 +2836,7 @@ dev-cpp/catch 1.5.0 1.5.6 1.5.7 1.5.8 1.6.0 9999: Modern C++ header-only framewo
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r2: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
-dev-cpp/ctemplate 2.2_p129 2.3 2.3-r1: A simple but powerful template language for C++
+dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 2.0.17 3.2.8-r2 3.2.9 3.2.10 3.3.1 3.3.2: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
@@ -2852,8 +2852,8 @@ dev-cpp/gtkmm 2.24.5 3.20.1 3.22.0: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
-dev-cpp/libassa 3.5.1-r1: A networking library based on Adaptive Communication Patterns
-dev-cpp/libbinio 1.4 1.4-r1: Binary I/O stream class library
+dev-cpp/libassa 3.5.1-r2: A networking library based on Adaptive Communication Patterns
+dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.2_pre20160820 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
