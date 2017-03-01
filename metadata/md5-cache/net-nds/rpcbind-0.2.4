@@ -4,11 +4,11 @@ DESCRIPTION=portmap replacement which supports RPC over various protocols
 EAPI=5
 HOMEPAGE=https://sourceforge.net/projects/rpcbind/
 IUSE=debug selinux systemd tcpd warmstarts
-KEYWORDS=alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86
+KEYWORDS=alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86
 LICENSE=BSD
 RDEPEND=>=net-libs/libtirpc-1.0:= systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-rpcbind )
 SLOT=0
 SRC_URI=mirror://sourceforge/rpcbind/rpcbind-0.2.4.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	53b75b4a49cf3e61530a523804045432
-_md5_=933ca869327da9bcacc810866f850c87
+_md5_=685b0e9ff9c9d45786bd483445ee672d
