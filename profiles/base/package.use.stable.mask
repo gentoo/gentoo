@@ -5,10 +5,9 @@
 # Please use the same syntax as in package.use.mask
 
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Feb 2017)
-# Requires not yet stabilised dev-db/oracle-instantclient,
-# also depends on sci-libs/gdal-2.0.3 stable (bug #606414).
-# sci-geosciences/grass not stable, probably needs bump
-sci-geosciences/qgis grass oracle
+# Requires not yet stabilised sci-geosciences/grass,
+# which probably needs bump to solve several issues.
+sci-geosciences/qgis grass
 
 # Brian Dolbec <dolsen@gentoo.org> (14 Feb 2017)
 # This is stable masked as g-sorcery is being not actively developed.

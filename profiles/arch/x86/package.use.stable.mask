@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
+# Requires not yet stabilised dev-db/oracle-instantclient.
+sci-geosciences/qgis oracle
+
 # Brian Evans <grknight@gentoo.org> (17 Jan 2017)
 # Stable mask groonga on mariadb as I don't know how stable
 # the dependencies really are
