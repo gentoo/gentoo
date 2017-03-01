@@ -20,7 +20,7 @@ RDEPEND="
 	!net-misc/pssh
 	gtk? (
 		dev-libs/glib:2
-		x11-libs/gdk-pixbuf
+		x11-libs/gdk-pixbuf[X]
 		x11-libs/gtk+:3
 		x11-libs/libX11
 		x11-libs/pango
