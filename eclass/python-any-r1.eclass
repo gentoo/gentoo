@@ -57,8 +57,6 @@ fi
 
 EXPORT_FUNCTIONS pkg_setup
 
-if [[ ! ${_PYTHON_ANY_R1} ]]; then
-
 # @ECLASS-VARIABLE: PYTHON_COMPAT
 # @REQUIRED
 # @DESCRIPTION:
@@ -161,11 +159,22 @@ _python_any_set_globals() {
 	done
 	deps="|| ( ${deps})"
 
-	PYTHON_DEPS=${deps}
-	readonly PYTHON_DEPS
+	if [[ ${PYTHON_DEPS+1} ]]; then
+		if [[ ${PYTHON_DEPS} != "${deps}" ]]; then
+			eerror "PYTHON_DEPS have changed between inherits (PYTHON_REQ_USE?)!"
+			eerror "Before: ${PYTHON_DEPS}"
+			eerror "Now   : ${deps}"
+			die "PYTHON_DEPS integrity check failed"
+		fi
+	else
+		PYTHON_DEPS=${deps}
+		readonly PYTHON_DEPS
+	fi
 }
 _python_any_set_globals
 unset -f _python_any_set_globals
+
+if [[ ! ${_PYTHON_ANY_R1} ]]; then
 
 # @FUNCTION: python_gen_any_dep
 # @USAGE: <dependency-block>
