@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils qt4-r2
+inherit eutils qmake-utils
 
 DESCRIPTION="Visual process manager - Qt version of ps/top"
 HOMEPAGE="http://qps.kldp.net/projects/qps/"
@@ -20,13 +20,18 @@ DEPEND="dev-qt/qtcore:4
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i -e '/strip/d' ${PN}.pro || die "sed failed"
+}
+
+src_configure() {
+	eqmake4 ${PN}.pro
 }
 
 src_install() {
 	dobin ${PN}
 	doman ${PN}.1
-	dodoc CHANGES
+	einstalldocs
 
 	newicon icon/icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} ${PN} ${PN} "System;"
