@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare pretend setup
+DEPEND=>=dev-libs/protobuf-c-1.0.0_rc2 dev-libs/libconfig polarssl? ( >=net-libs/polarssl-1.0.0 ) gnutls? ( !polarssl? ( >=net-libs/gnutls-3.0.0 ) ) libressl? ( !polarssl? ( !gnutls? ( dev-libs/libressl ) ) ) !gnutls? ( !polarssl? ( !libressl? ( dev-libs/openssl:0 ) ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Minimalistic Murmur (Mumble server)
+EAPI=6
+HOMEPAGE=https://github.com/umurmur/umurmur
+IUSE=gnutls libressl polarssl shm
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/protobuf-c-1.0.0_rc2 dev-libs/libconfig polarssl? ( >=net-libs/polarssl-1.0.0 ) gnutls? ( !polarssl? ( >=net-libs/gnutls-3.0.0 ) ) libressl? ( !polarssl? ( !gnutls? ( dev-libs/libressl ) ) ) !gnutls? ( !polarssl? ( !libressl? ( dev-libs/openssl:0 ) ) )
+SLOT=0
+SRC_URI=https://github.com/umurmur/umurmur/archive/0.2.17rc1.tar.gz -> umurmur-0.2.17_rc1.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=d56af533335f64dc4590eee337c2a418
