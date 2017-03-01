@@ -126,25 +126,6 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # 	dev-lang/python:2.6[gdbm] )
 # @CODE
 
-_python_any_set_globals() {
-	local usestr i PYTHON_PKG_DEP
-	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
-
-	_python_set_impls
-
-	PYTHON_DEPS=
-	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		python_export "${i}" PYTHON_PKG_DEP
-
-		# note: need to strip '=' slot operator for || deps
-		PYTHON_DEPS="${PYTHON_PKG_DEP%=} ${PYTHON_DEPS}"
-	done
-	PYTHON_DEPS="|| ( ${PYTHON_DEPS})"
-	readonly PYTHON_DEPS
-}
-_python_any_set_globals
-unset -f _python_any_set_globals
-
 # @ECLASS-VARIABLE: PYTHON_USEDEP
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
@@ -165,6 +146,25 @@ unset -f _python_any_set_globals
 # @CODE
 # python_targets_python2_7(-)?,python_single_target_python2_7(+)?
 # @CODE
+
+_python_any_set_globals() {
+	local usestr i PYTHON_PKG_DEP
+	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
+
+	_python_set_impls
+
+	PYTHON_DEPS=
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		python_export "${i}" PYTHON_PKG_DEP
+
+		# note: need to strip '=' slot operator for || deps
+		PYTHON_DEPS="${PYTHON_PKG_DEP%=} ${PYTHON_DEPS}"
+	done
+	PYTHON_DEPS="|| ( ${PYTHON_DEPS})"
+	readonly PYTHON_DEPS
+}
+_python_any_set_globals
+unset -f _python_any_set_globals
 
 # @FUNCTION: python_gen_any_dep
 # @USAGE: <dependency-block>
