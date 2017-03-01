@@ -128,9 +128,25 @@ _python_set_impls() {
 		die "No supported implementation in PYTHON_COMPAT."
 	fi
 
-	_PYTHON_SUPPORTED_IMPLS=( "${supp[@]}" )
-	_PYTHON_UNSUPPORTED_IMPLS=( "${unsupp[@]}" )
-	readonly _PYTHON_SUPPORTED_IMPLS _PYTHON_UNSUPPORTED_IMPLS
+	if [[ ${_PYTHON_SUPPORTED_IMPLS[@]} ]]; then
+		# set once already, verify integrity
+		if [[ ${_PYTHON_SUPPORTED_IMPLS[@]} != ${supp[@]} ]]; then
+			eerror "Supported impls (PYTHON_COMPAT) changed between inherits!"
+			eerror "Before: ${_PYTHON_SUPPORTED_IMPLS[*]}"
+			eerror "Now   : ${supp[*]}"
+			die "_PYTHON_SUPPORTED_IMPLS integrity check failed"
+		fi
+		if [[ ${_PYTHON_UNSUPPORTED_IMPLS[@]} != ${unsupp[@]} ]]; then
+			eerror "Unsupported impls changed between inherits!"
+			eerror "Before: ${_PYTHON_UNSUPPORTED_IMPLS[*]}"
+			eerror "Now   : ${unsupp[*]}"
+			die "_PYTHON_UNSUPPORTED_IMPLS integrity check failed"
+		fi
+	else
+		_PYTHON_SUPPORTED_IMPLS=( "${supp[@]}" )
+		_PYTHON_UNSUPPORTED_IMPLS=( "${unsupp[@]}" )
+		readonly _PYTHON_SUPPORTED_IMPLS _PYTHON_UNSUPPORTED_IMPLS
+	fi
 }
 
 # @ECLASS-VARIABLE: PYTHON
