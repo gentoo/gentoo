@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (01 Mar 2017)
+# Mask experimental software
+=mail-mta/postfix-3.3*
+
 # Matt Turner <mattst88@gentoo.org> (26 Feb 2017)
 # Integrated into xorg-server since 1.17. Removal in 30 days.
 # Bug #611058
@@ -580,10 +584,6 @@ dev-java/spring-instrument
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #512356.
 =app-forensics/chkrootkit-0.49
-
-# Eray Aslan <eras@gentoo.org> (22 Feb 2016)
-# Mask experimental software
-=mail-mta/postfix-3.2*
 
 # James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
 # Masked until 2.0 final arrives, which hopefully won't depend on
