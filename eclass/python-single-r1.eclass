@@ -56,8 +56,6 @@ fi
 
 EXPORT_FUNCTIONS pkg_setup
 
-if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
-
 # @ECLASS-VARIABLE: PYTHON_COMPAT
 # @REQUIRED
 # @DESCRIPTION:
@@ -232,13 +230,39 @@ _python_single_set_globals() {
 		deps+=">=dev-lang/python-exec-2:=[${usedep}]"
 	fi
 
-	PYTHON_DEPS=${deps}
-	PYTHON_REQUIRED_USE=${requse}
-	PYTHON_USEDEP=${usedep}
-	readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_USEDEP
+	if [[ ${PYTHON_DEPS+1} ]]; then
+		if [[ ${PYTHON_DEPS} != "${deps}" ]]; then
+			eerror "PYTHON_DEPS have changed between inherits (PYTHON_REQ_USE?)!"
+			eerror "Before: ${PYTHON_DEPS}"
+			eerror "Now   : ${deps}"
+			die "PYTHON_DEPS integrity check failed"
+		fi
+
+		# these two are formality -- they depend on PYTHON_COMPAT only
+		if [[ ${PYTHON_REQUIRED_USE} != ${requse} ]]; then
+			eerror "PYTHON_REQUIRED_USE have changed between inherits!"
+			eerror "Before: ${PYTHON_REQUIRED_USE}"
+			eerror "Now   : ${requse}"
+			die "PYTHON_REQUIRED_USE integrity check failed"
+		fi
+
+		if [[ ${PYTHON_USEDEP} != "${usedep}" ]]; then
+			eerror "PYTHON_USEDEP have changed between inherits!"
+			eerror "Before: ${PYTHON_USEDEP}"
+			eerror "Now   : ${usedep}"
+			die "PYTHON_USEDEP integrity check failed"
+		fi
+	else
+		PYTHON_DEPS=${deps}
+		PYTHON_REQUIRED_USE=${requse}
+		PYTHON_USEDEP=${usedep}
+		readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_USEDEP
+	fi
 }
 _python_single_set_globals
 unset -f _python_single_set_globals
+
+if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
 # @FUNCTION: python_gen_usedep
 # @USAGE: <pattern> [...]
