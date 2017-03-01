@@ -101,8 +101,11 @@ RDEPEND="
 	gstreamer? ( ${GSTRDEPEND} )
 "
 
-OPREFIX="/usr/$(get_libdir)"
 QA_PREBUILT="*"
+
+pkg_setup() {
+	OPREFIX="/usr/$(get_abi_LIBDIR)"
+}
 
 src_unpack() {
 	unpack ${A}
