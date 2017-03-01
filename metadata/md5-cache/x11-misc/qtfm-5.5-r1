@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=sys-apps/file dev-qt/qtgui:4
+DESCRIPTION=A small, lightweight file manager for desktops based on pure Qt
+EAPI=6
+HOMEPAGE=http://www.qtfm.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/file dev-qt/qtgui:4
+SLOT=0
+SRC_URI=http://www.qtfm.org/qtfm-5.5.tar.gz?attredirects=0 -> qtfm-5.5.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	fdo-mime	21ef5adf81836863efa968f2a25cff64	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=bac7d14ab30982f627156fde2373488e

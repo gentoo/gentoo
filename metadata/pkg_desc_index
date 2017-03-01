@@ -2940,7 +2940,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.54 5.6.35: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.54-r1 5.6.35: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2 3.2.3: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2 6.1.9 6.1.9-r1: C client library for MariaDB/MySQL
@@ -14888,7 +14888,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.21 0.22.2-r1 0.23.3 0.23.5: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.21 0.22.2-r1 0.23.3 0.23.5 0.23.7: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.10 7.0.12 7.0.13: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
@@ -18603,7 +18603,7 @@ x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r1 0.4.5-r2: A simple application launcher and combined editor
 x11-misc/arandr 0.1.7.1 0.1.8 0.1.9: Another XRandR GUI
 x11-misc/autocutsel 0.9.0 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
-x11-misc/basqet 0.2.0: Keep your notes, pictures, ideas, and information in Baskets
+x11-misc/basqet 0.2.0-r1: Keep your notes, pictures, ideas, and information in Baskets
 x11-misc/bbacpi 0.1.5-r1 0.1.5-r3: ACPI monitor for X11
 x11-misc/bbappconf 0.0.2: utility that allows you to specify window properties in blackbox
 x11-misc/bbcd 0.3.1-r1 0.3.1-r2: Basic CD Player for blackbox wm
@@ -18618,7 +18618,7 @@ x11-misc/bbtime 0.1.5 0.1.5-r1: blackbox time watcher
 x11-misc/bbweather 0.6.3-r1: blackbox weather monitor
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
-x11-misc/cairo-clock 0.3.3 0.3.4: An analog clock displaying the system-time
+x11-misc/cairo-clock 0.3.3 0.3.4-r1: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
 x11-misc/cbatticon 1.3.2 1.6.4 1.6.5: A lightweight and fast battery icon that sits in your system tray
 x11-misc/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
@@ -18690,7 +18690,7 @@ x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
 x11-misc/kronometer 2.1.2 2.1.3 2.1.4: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
+x11-misc/launchy 2.5-r1: utility that merges application menus, your desktop and even your file manager
 x11-misc/libinput-gestures 2.15 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.7.0 1.7.0-r1: A simple locker using lightdm
 x11-misc/lightdm 1.18.3 1.21.4 1.21.5: A lightweight display manager
@@ -18741,11 +18741,11 @@ x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.0-r1 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
-x11-misc/qps 1.10.16: Visual process manager - Qt version of ps/top
+x11-misc/qps 1.10.16-r1: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
 x11-misc/qt5ct 0.30: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.5.12-r1 0.7.1: A BBS client for Linux
-x11-misc/qtfm 5.5: A small, lightweight file manager for desktops based on pure Qt
+x11-misc/qtfm 5.5 5.5-r1: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
 x11-misc/qxkb 0.4.6: Qt4-based keyboard layout switcher
@@ -18869,7 +18869,7 @@ x11-misc/xplanetFX 2.6.7 2.6.12: GUI to configure, run or daemonize xplanet with
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrmap 2.33-r2: Xrmap displays portions of the Earth using the huge CIA world map
 x11-misc/xrootconsole 0.6 0.6-r1: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.36: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.36 5.36-r1: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70-r1: A hardware health information viewer, interface to lm-sensors
