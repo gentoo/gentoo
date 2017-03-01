@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Weber <xmw@gentoo.org> (01 Mar 2017)
+# untested dependencies
+net-libs/libpcap bluetooth
+
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
