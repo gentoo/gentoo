@@ -40,6 +40,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/fio-2.2.13-libmtd.patch
+	"${FILESDIR}"/fio-2.2.15-rdma.patch #542640
 )
 
 src_prepare() {
@@ -66,6 +67,7 @@ src_configure() {
 		$(usex gtk '--enable-gfio' '') \
 		$(usex numa '' '--disable-numa') \
 		$(usex rbd '' '--disable-rbd') \
+		$(usex rdma '' '--disable-rdma') \
 		$(usex static '--build-static' '')
 	echo "$@"
 	"$@" || die 'configure failed'
