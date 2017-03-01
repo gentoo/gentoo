@@ -19,13 +19,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" \
-		econf \
+	ECONF_SOURCE="${S}" econf \
 		$(use_enable static-libs static)
 }
 
 multilib_src_install_all() {
-	if ! use static-libs; then
-		find "${ED}" -name "*.la" -delete || die
-	fi
+	einstalldocs
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }
