@@ -5171,7 +5171,7 @@ dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF file
 dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1: OCaml code generator plugin for the Cap'n Proto serialization framework
-dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
+dev-ml/cmdliner 0.9.8 1.0.0: Declarative definition of command line interfaces for OCaml
 dev-ml/core 113.33.02: Jane Street's alternative to the standard library
 dev-ml/core_bench 113.33.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.33.00: Jane Street's alternative to the standard library
