@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="A more feature-full replacement of the Alt-Tab window switching behavior"
 HOMEPAGE="https://code.google.com/p/superswitcher/"
@@ -13,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/dbus-glib
+RDEPEND="
+	dev-libs/dbus-glib
 	dev-libs/glib:2
 	>=gnome-base/gconf-2:2
 	x11-libs/gtk+:2
@@ -22,19 +24,21 @@ RDEPEND="dev-libs/dbus-glib
 	x11-libs/libXinerama
 	x11-libs/libXrender"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	gnome-base/gnome-common"
+	gnome-base/gnome-common
+	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-wnck-workspace.patch
+	"${FILESDIR}"/${PN}-0.6-glib-single-include.patch
+)
 
 src_prepare() {
+	default
 	sed -i \
 		-e '/-DG.*_DISABLE_DEPRECATED/d' \
 		src/Makefile.am || die #338906
 
-	epatch "${FILESDIR}"/${P}-wnck-workspace.patch
-	epatch "${FILESDIR}"/${PN}-0.6-glib-single-include.patch
-	eautoreconf
-}
+	mv configure.{in,ac} || die #426262
 
-src_install() {
-	MAKEOPTS=-j1 default
+	eautoreconf
 }
