@@ -1,0 +1,21 @@
+From e03e4fd470fbc8d4304d860d7b3b523c5d78373d Mon Sep 17 00:00:00 2001
+From: "John C. Frickson" <jfrickson@nagios.com>
+Date: Thu, 2 Mar 2017 10:24:24 -0600
+Subject: [PATCH] every 15sec /var/log/messages is flooded with "nagios:
+ set_environment_var"
+
+Fix for https://github.com/NagiosEnterprises/nagioscore/issues/337
+diff --git a/base/utils.c b/base/utils.c
+index 733fdef..19e20c7 100644
+--- a/base/utils.c
++++ b/base/utils.c
+@@ -872,9 +872,6 @@ int set_environment_var(char *name, char *value, int set) {
+ 
+ 	/* set the environment variable */
+ 	if(set == TRUE) {
+-		log_debug_info(DEBUGL_EVENTS, 0, "set_environment_var '%s'='%s'\n", name, value);
+-		syslog(LOG_DAEMON|LOG_INFO, "set_environment_var '%s'='%s'\n", name, value);
+-
+ #ifdef HAVE_SETENV
+ 		setenv(name, (value == NULL) ? "" : value, 1);
+ #else
