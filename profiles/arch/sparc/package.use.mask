@@ -167,10 +167,6 @@ dev-haskell/haskell-src-exts test
 dev-haskell/text test
 dev-haskell/vector test
 
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
-# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
-sys-apps/systemd xkb
-
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2014)
 # Missing keywords, bug #524352
 >=app-accessibility/orca-3.12.3 braille

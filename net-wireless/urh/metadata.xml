@@ -11,6 +11,10 @@
 	</maintainer>
 	<longdescription lang="en">
 </longdescription>
+	<use>
+		<flag name="hackrf">use native backend which directly uses <pkg>net-libs/libhackrf</pkg></flag>
+		<flag name="rtlsdr">use native backend which directly uses <pkg>net-wireless/rtl-sdr</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">jopohl/urh</remote-id>
 	</upstream>

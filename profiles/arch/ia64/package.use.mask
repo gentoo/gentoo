@@ -141,10 +141,6 @@ dev-haskell/vector test
 # Missing keywords, bug #523686
 >=dev-libs/libgdata-0.16.1 test
 
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
-# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
-sys-apps/systemd xkb
-
 # Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf

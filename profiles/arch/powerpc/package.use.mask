@@ -118,10 +118,6 @@ dev-haskell/text test
 dev-haskell/vector test
 dev-util/bnfc test
 
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
-# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
-sys-apps/systemd xkb
-
 # Anthony G. Basile <blueness@gentoo.org> (17 Aug 2014)
 # This pulls in qemu[smartcard] which is masked
 net-misc/spice-gtk smartcard
