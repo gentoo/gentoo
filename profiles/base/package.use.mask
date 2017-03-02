@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (02 Mar 2017)
+# Known build issue with system libvpx:
+# https://bugs.gentoo.org/show_bug.cgi?id=611394
+>=www-client/chromium-58.0.3026.3 system-libvpx
+
 # Matt Turner <mattst88@gentoo.org> (25 Feb 2017)
 # Has caused no end of problems. See bugs 441878, 476306, 477444, 477530,
 # 508232.
