@@ -21,6 +21,7 @@ COMMON_DEPEND="
 	media-libs/netpbm
 	x11-apps/appres
 	x11-apps/xwininfo
+	x11-libs/gdk-pixbuf:2[X]
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
