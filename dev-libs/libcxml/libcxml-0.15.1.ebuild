@@ -18,6 +18,19 @@ IUSE=""
 
 RDEPEND="dev-cpp/libxmlpp:2.6
 	dev-libs/boost"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/waf
+	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.15.1-respect-cxxflags.patch )
+
+src_prepare() {
+	rm -v waf || die
+	export WAF_BINARY="${EROOT}usr/bin/waf"
+
+	default
+}
+
+src_test() {
+	./run-tests.sh || die
+}
