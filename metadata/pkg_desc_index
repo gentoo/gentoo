@@ -12700,7 +12700,7 @@ media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD playe
 media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
 media-libs/alsa-lib 1.0.29 1.1.2 1.1.3: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
-media-libs/alure 1.2 1.2-r1: The OpenAL Utility Toolkit
+media-libs/alure 1.2-r1: The OpenAL Utility Toolkit
 media-libs/assimp 3.0.1270 3.1.1 3.2-r2 3.2-r3 3.3.1: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
 media-libs/aubio 0.4.1 0.4.2 0.4.3 0.4.4: Library for audio labelling
@@ -15331,7 +15331,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0: The X2Go
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.02.17 2017.02.22 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.12.22 2017.02.22 2017.02.28 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
