@@ -7025,7 +7025,7 @@ dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.9.4 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
-dev-php/pecl-amqp 1.7.1 1.8.0_beta2: PHP Bindings for AMQP 0-9-1 compatible brokers
+dev-php/pecl-amqp 1.8.0: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.7-r1 4.0.11 5.1.8: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
