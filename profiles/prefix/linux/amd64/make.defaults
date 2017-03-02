@@ -3,18 +3,9 @@
 
 #Note: this is Gentoo Prefix specific! (13 Jul 2008, darkside)
 
-ARCH="amd64"
-CHOST="x86_64-pc-linux-gnu"
 # The base profile sets ACCEPT_KEYWORDS=amd64 and we don't have that in prefix.
 ACCEPT_KEYWORDS="-amd64 ~amd64-linux"
 
-# We don't have lib64 in prefix so, remove it here.
+# We don't have lib64 or multilib in prefix, but single ABI, so remove it here.
 SYMLINK_LIB=""
-LIBDIR_amd64="lib"
-
-# multilib build stuff, single ABI (no multilib)
-MULTILIB_ABIS="amd64"
-DEFAULT_ABI="amd64"
-ABI="amd64"
-IUSE_IMPLICIT="abi_x86_64"
 LIBDIR_amd64="lib"

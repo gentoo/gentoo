@@ -1,18 +1,9 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-ARCH="x86"
-CHOST="i686-pc-linux-gnu"
 # The base profile sets ACCEPT_KEYWORDS=x86 and we don't have that in prefix.
 ACCEPT_KEYWORDS="-x86 ~x86-linux"
 
 # in case we are bootstrapping with the host compiler on an amd64 linux host:
 CFLAGS="${CFLAGS} -m32"
 CXXFLAGS="${CXXFLAGS} -m32"
-
-# multilib build stuff, single ABI (no multilib)
-MULTILIB_ABIS="x86"
-DEFAULT_ABI="x86"
-ABI="x86"
-IUSE_IMPLICIT="abi_x86_32"
-LIBDIR_x86="lib"
