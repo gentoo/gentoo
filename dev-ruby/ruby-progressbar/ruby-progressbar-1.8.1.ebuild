@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~hppa ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86
 
 IUSE="test"
 
-ruby_add_bdepend "test? ( dev-ruby/rspectacular )"
+ruby_add_bdepend "test? ( dev-ruby/rspectacular dev-ruby/timecop )"
 
 all_ruby_prepare() {
 	sed -i -e '/warning_filter/ s:^:#:' \
