@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=system-boost? ( =dev-libs/boost-1.59.0 ) app-editors/vim-core dev-libs/libaio dev-libs/libev dev-libs/libgcrypt:0= dev-libs/libgpg-error dev-python/sphinx net-misc/curl sys-libs/zlib
+DESCRIPTION=Hot backup utility for MySQL based servers
+EAPI=6
+HOMEPAGE=https://www.percona.com/software/mysql-database/percona-xtrabackup
+IUSE=system-boost
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=system-boost? ( =dev-libs/boost-1.59.0 ) app-editors/vim-core dev-libs/libaio dev-libs/libev dev-libs/libgcrypt:0= dev-libs/libgpg-error dev-python/sphinx net-misc/curl sys-libs/zlib !dev-db/xtrabackup-bin dev-perl/DBD-mysql
+SLOT=0
+SRC_URI=https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.4.6/source/tarball/percona-xtrabackup-2.4.6.tar.gz !system-boost? ( http://jenkins.percona.com/downloads/boost/boost_1_59_0.tar.gz )
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=074779224ca889bf3753b6545b868229
