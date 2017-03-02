@@ -7,7 +7,7 @@ HOMEPAGE="http://www.3proxy.ru/"
 SRC_URI="https://github.com/z3APA3A/3proxy/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 IUSE=""
 
 PATCHES=(
