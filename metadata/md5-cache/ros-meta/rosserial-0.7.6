@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/rosserial_arduino dev-ros/rosserial_client dev-ros/rosserial_embeddedlinux dev-ros/rosserial_msgs dev-ros/rosserial_python dev-ros/rosserial_server dev-ros/rosserial_tivac dev-ros/rosserial_windows dev-ros/rosserial_xbee sys-devel/make >=dev-util/cmake-3.6.3 dev-util/catkin dev-python/empy
+DESCRIPTION=Metapackage for core of rosserial
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/rosserial
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-ros/rosserial_arduino dev-ros/rosserial_client dev-ros/rosserial_embeddedlinux dev-ros/rosserial_msgs dev-ros/rosserial_python dev-ros/rosserial_server dev-ros/rosserial_tivac dev-ros/rosserial_windows dev-ros/rosserial_xbee dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros-drivers/rosserial/archive/0.7.6.tar.gz -> rosserial-0.7.6.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	ros-catkin	63c6a35c2092972e4c2b80437e1f15a7	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=905a0532653519e9ea3b7e4a4963b668
