@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
+# libilbc has not been ported to alpha and likely never will be.
+media-video/ffmpeg libilbc
+
+# Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
 # BSON requires pymongo and assorted other packages that are not available on
 # alpha.
 app-portage/g-sorcery bson
