@@ -186,10 +186,6 @@ media-video/vlc opencv
 # Missing keywords, bug #523686
 >=dev-libs/libgdata-0.16.1 test
 
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
-# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
-sys-apps/systemd xkb
-
 # Tobias Klausmann <klausman@gentoo.org> (11 Oct 2014)
 # app-emulation/qemu is not keyworded on alpha, masking flag that triggers
 # dependency
