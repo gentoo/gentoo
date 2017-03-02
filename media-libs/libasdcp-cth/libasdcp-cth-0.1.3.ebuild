@@ -19,7 +19,15 @@ IUSE=""
 RDEPEND="dev-libs/boost
 	dev-libs/openssl:0"
 DEPEND="${RDEPEND}
+	dev-util/waf
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.1.1-no-ldconfig.patch
 	"${FILESDIR}"/${PN}-0.1.2-respect-cxxflags.patch)
+
+src_prepare() {
+	rm -r waf aclocal.m4 m4 configure{,.ac} Makefile.{am,in} || die
+	export WAF_BINARY=${EROOT}usr/bin/waf
+
+	default
+}
