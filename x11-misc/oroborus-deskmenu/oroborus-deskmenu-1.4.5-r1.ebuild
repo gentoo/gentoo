@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 MY_PN=${PN/oroborus-//}
 
@@ -19,7 +21,4 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README TODO example_rc || die
-}
+DOCS=( AUTHORS ChangeLog NEWS README TODO example_rc )
