@@ -2340,7 +2340,7 @@ app-text/libmwaw 0.3.8 0.3.9 0.3.10 9999: Library parsing many pre-OSX MAC text 
 app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
-app-text/libstaroffice 0.0.2 0.0.3 9999: Import filter for old StarOffice documents
+app-text/libstaroffice 0.0.3 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.9.9 0.10.1: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.4-r1 0.4.5: Microsoft Works file word processor format import filter library
@@ -2989,8 +2989,8 @@ dev-db/rethinkdb 2.3.5: The open-source database for the realtime web.
 dev-db/rqlite 2.1 3.0.1 9999: Replicated SQLite using the Raft consensus protocol
 dev-db/slony1 2.1.3 2.1.4 2.2.0 2.2.1 2.2.2 2.2.3 2.2.4 2.2.5: A replication system for the PostgreSQL Database Management System
 dev-db/soci 3.2.2 3.2.3: A db access library for C++ that makes the illusion of embedding SQL queries in the regular C++ code
-dev-db/spatialite 2.4.0_rc4 3.0.1 4.3.0-r1 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
-dev-db/spatialite-tools 3.1.0 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
+dev-db/spatialite 4.3.0-r1 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
+dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.3.0 3.4.0: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 4.2.0.16.355.0402: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.0.2.15.21 4.1.3.20.78-r1 4.1.5.21.78: Oracle SQL Developer is a graphical tool for database development
@@ -4798,13 +4798,13 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.5-r1 1.7.5-r2: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.5-r2 1.7.6: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
-dev-libs/libgpg-error 1.24 1.25 1.26: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.24 1.27: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0: Library to manipulate tensors on the GPU
 dev-libs/libgudev 230-r1 231: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
@@ -10849,7 +10849,7 @@ games-engines/gemrb 0.8.3 0.8.3-r1: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r1 0.8.0 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom and Doom II
-games-engines/openmw 0.39.0-r1 0.41.0: Open source reimplementation of TES III: Morrowind
+games-engines/openmw 0.41.0: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0 1.0.0-r1 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 2.1.7: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.17.7 6.99.6: Visual novel engine written in python
@@ -14172,7 +14172,7 @@ net-analyzer/nagios-check_mysql_health 2.1.9.2 2.2.2: A nagios plugin for checki
 net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.3.7-r1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 3.5.1 4.2.4 4.3.1: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 3.5.1 4.2.4 4.3.1-r1: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.0.3-r2 2.1.4: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
@@ -16106,7 +16106,7 @@ sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map provide
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
 sci-geosciences/gnome-maps 3.18.4 3.20.3.1 3.22.1 3.22.2: A map application for GNOME
 sci-geosciences/googleearth 7.1.8.3036: A 3D interface to the planet
-sci-geosciences/gpsbabel 1.4.3 1.4.4 1.5.4: GPS waypoints, tracks and routes converter
+sci-geosciences/gpsbabel 1.4.4 1.5.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.10 3.16 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
@@ -16152,7 +16152,7 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r3 2.18.3-r1 2.18.4: User friendly Geographic Information System
+sci-geosciences/qgis 2.18.3-r1 2.18.4: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
@@ -16375,7 +16375,7 @@ sci-libs/scikits_optimization 0.3: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.15.1 0.16.0 0.16.1 0.17.0 0.18.1 9999: Scientific algorithms library for Python
 sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
-sci-libs/shapelib 1.3.0-r1 1.4.0-r1: Library for manipulating ESRI Shapefiles
+sci-libs/shapelib 1.4.0-r1: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.9.1 4.10.2: A mesh and field I/O library and scientific database
 sci-libs/spooles 2.2: SParse Object Oriented Linear Equations Solver
@@ -18572,9 +18572,9 @@ x11-libs/pixman 0.32.8 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.9.2-r1 2.9.4 2.10: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.6.0-r1 0.7.0 0.7.1 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
-x11-libs/qwt 5.2.3-r2 6.1.0 6.1.2-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
+x11-libs/qwt 5.2.3-r2 6.1.0 6.1.3-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
-x11-libs/qwtpolar 0.1.0-r1 1.0.0 1.1.0 1.1.1-r1: Library for displaying values on a polar coordinate system
+x11-libs/qwtpolar 1.1.1-r1: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0 0.7.0-r1: Multi platform Qt notification framework
