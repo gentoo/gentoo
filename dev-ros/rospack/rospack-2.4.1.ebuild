@@ -22,7 +22,7 @@ RDEPEND="dev-libs/boost:=
 	dev-libs/tinyxml2:=
 	"
 DEPEND="${RDEPEND}
-	dev-ros/cmake_modules
+	>=dev-ros/cmake_modules-0.4.1
 	test? (
 		dev-cpp/gtest
 		dev-python/nose
