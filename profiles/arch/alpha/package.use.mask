@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
+# BSON requires pymongo and assorted other packages that are not available on
+# alpha.
+app-portage/g-sorcery bson
+
 # Tobias Klausmann <klausman@gentoo.org> (27 Jan 2016)
 # USE=test transitively pulls in greenlet, which is not available on alpha.
 dev-python/pyquery test
@@ -110,11 +115,6 @@ dev-qt/qtchooser test
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
-
-# Tobias Klausmann <klausman@gentoo.org> (19 Sep 2015)
-# app-portage/g-sorcery pulls in pymongo and a whole host of deps that don't
-# work on alpha. Mask USE flag for layman accordingly
-app-portage/layman g-sorcery
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (10 Sep 2015)
 # Requires wifi USE flag, which is masked for this arch
