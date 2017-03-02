@@ -1,0 +1,11 @@
+--- libcxml-0.15.1/wscript
++++ libcxml-0.15.1/wscript
+@@ -12,7 +12,7 @@
+ 
+ def configure(conf):
+     conf.load('compiler_cxx')
+-    conf.env.append_value('CXXFLAGS', ['-Wall', '-Wextra', '-O2'])
++    conf.env.append_value('CXXFLAGS', ['-Wall', '-Wextra'])
+ 
+     conf.env.TARGET_WINDOWS = conf.options.target_windows
+     conf.env.STATIC = conf.options.static
