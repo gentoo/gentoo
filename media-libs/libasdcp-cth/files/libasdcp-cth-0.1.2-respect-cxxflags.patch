@@ -1,0 +1,14 @@
+--- libasdcp-cth-0.1.2/wscript
++++ libasdcp-cth-0.1.2/wscript
+@@ -38,11 +38,6 @@
+     else:
+         boost_lib_suffix = ''
+ 
+-    if conf.options.enable_debug:
+-        conf.env.append_value('CXXFLAGS', '-g')
+-    else:
+-        conf.env.append_value('CXXFLAGS', '-O2')
+-
+     conf.check_cxx(fragment="""
+                             #include <boost/version.hpp>\n
+                             #if BOOST_VERSION < 104500\n
