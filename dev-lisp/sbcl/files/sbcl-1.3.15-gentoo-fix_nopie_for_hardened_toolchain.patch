@@ -1,0 +1,19 @@
+diff -U3 -r sbcl-1.3.15.orig/src/runtime/GNUmakefile sbcl-1.3.15/src/runtime/GNUmakefile
+--- sbcl-1.3.15.orig/src/runtime/GNUmakefile	2017-02-28 20:51:29.000000000 +0100
++++ sbcl-1.3.15/src/runtime/GNUmakefile	2017-03-02 18:22:13.959257937 +0100
+@@ -46,13 +46,13 @@
+ include Config
+ 
+ # Disable PIE when possible
+-ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e no-pie),)
++ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e '[^f]no-pie'),)
+ CFLAGS += -fno-pie
+ LINKFLAGS += -no-pie
+ LDFLAGS += -no-pie
+ __LDFLAGS__ += -no-pie
+ endif
+-ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e nopie),)
++ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e '[^f]nopie'),)
+ CFLAGS += -fno-pie
+ LINKFLAGS += -nopie
+ LDFLAGS += -nopie
