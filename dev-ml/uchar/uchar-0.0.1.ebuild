@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4.03:="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND} dev-ml/ocamlbuild"
 
 src_compile() {
 	ocaml pkg/build.ml \
