@@ -12,7 +12,7 @@ USE_PHP="php5-6 php7-0 php7-1"
 
 inherit php-ext-source-r3
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="A fast drop-in replacement for the standard PHP serialize"
 HOMEPAGE="https://github.com/${PN}/${PN}"
