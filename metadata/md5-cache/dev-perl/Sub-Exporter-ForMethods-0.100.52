@@ -4,11 +4,11 @@ DESCRIPTION=Helper routines for using Sub::Exporter to build methods
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Sub-Exporter-ForMethods/
 IUSE=test
-KEYWORDS=amd64 hppa ppc ~x86
+KEYWORDS=amd64 hppa ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Scalar-List-Utils >=dev-perl/Sub-Exporter-0.978.0 dev-perl/Sub-Name dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Sub-Exporter-ForMethods-0.100052.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=9188d96f677159b1888731117ae0ed02
+_md5_=9d24ab07d97adaa4e1136b743fdb84e3
