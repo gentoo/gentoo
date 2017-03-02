@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/sekrit-twc/zimg"
 
 if [ "${PV#9999}" = "${PV}" ] ; then
 	SRC_URI="https://github.com/sekrit-twc/zimg/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm ppc ppc64 x86"
+	KEYWORDS="~alpha amd64 arm ppc ppc64 x86"
 	S="${WORKDIR}/${PN}-release-${PV}/"
 fi
 
