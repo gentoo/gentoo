@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=~dev-util/nvidia-cuda-toolkit-8.0.61 media-libs/freeglut examples? ( media-libs/freeimage media-libs/glew:0= >=x11-drivers/nvidia-drivers-375.26[uvm] mpi? ( virtual/mpi ) )
+DESCRIPTION=NVIDIA CUDA Software Development Kit
+EAPI=6
+HOMEPAGE=https://developer.nvidia.com/cuda-zone
+IUSE=+cuda debug +doc +examples opencl mpi
+KEYWORDS=~amd64 ~amd64-linux
+LICENSE=CUDPP
+RDEPEND=~dev-util/nvidia-cuda-toolkit-8.0.61 media-libs/freeglut examples? ( media-libs/freeimage media-libs/glew:0= >=x11-drivers/nvidia-drivers-375.26[uvm] mpi? ( virtual/mpi ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run -> cuda_8.0.61_375.26_linux.run
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=cuda	626969678b9c5735753d8a380c6f295b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	53b75b4a49cf3e61530a523804045432	unpacker	76ddf385f3c212c12857bb8ec2a8bd35	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=83ec1bd3dd5c1985da3918ce52fc0dc2
