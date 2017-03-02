@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Utility functions for checking references"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~x86"
 LICENSE="MIT"
 IUSE="test"
 
