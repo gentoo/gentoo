@@ -13962,7 +13962,7 @@ media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r2: Mark commercial breaks in VDR recor
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia-video-codec 7.0.1 7.1.9: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
-media-video/obs-studio 0.16.2 17.0.0 17.0.2 9999: Software for Recording and Streaming Live Video Content
+media-video/obs-studio 0.16.2 17.0.0 17.0.2 18.0.0 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3-r1 2.1.0 2.2.0: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/orion 1.3.5 1.4.0: Cross-platform Twitch client
@@ -18596,7 +18596,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.8.11 0.9.3: Desktop agnostic launcher
+x11-misc/albert 0.8.11 0.9.3 0.9.4: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
