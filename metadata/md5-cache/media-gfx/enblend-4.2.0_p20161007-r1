@@ -4,7 +4,7 @@ DESCRIPTION=Image Blending with Multiresolution Splines
 EAPI=6
 HOMEPAGE=http://enblend.sourceforge.net/
 IUSE=debug doc openmp tcmalloc cpu_flags_x86_sse2
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2 VIGRA
 RDEPEND=media-libs/lcms:2 media-libs/openexr:= media-libs/tiff:0 media-libs/vigra[openexr] sci-libs/gsl:= debug? ( dev-libs/dmalloc ) tcmalloc? ( dev-util/google-perftools )
 REQUIRED_USE=tcmalloc? ( !debug )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~soap/distfiles/enblend-4.2.0_p20161007.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=92b21231dba89b8ff6ba23d68e628396
+_md5_=547b1281442b1237997ebc90d2db98ef

@@ -3,11 +3,11 @@ DEPEND=dev-perl/Term-ProgressBar-Quiet virtual/perl-ExtUtils-MakeMaker dev-lang/
 DESCRIPTION=Simple progess bars
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Term-ProgressBar-Simple/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Term-ProgressBar-Quiet dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EV/EVDB/Term-ProgressBar-Simple-0.03.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	ca1237f4863eb3e83ab1462927f981c2	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=6c476ecf640eff6c844da512bc1186be
+_md5_=f6396a10c0e7ce2c6bd410416a4edb9f
