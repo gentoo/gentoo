@@ -36,7 +36,6 @@ src_prepare() {
 
 src_install() {
 	keepdir /etc/${PN}
-	dodir /etc/${PN}/scripts
 
 	insinto /etc/${PN}
 	doins config/*

@@ -60,7 +60,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}.init7" "${PN}"
 	newconfd "${FILESDIR}/${PN}.conf3" "${PN}"
-	systemd_newunit "${FILESDIR}"/${PN}.service5 "${PN}.service"
+	systemd_newunit "${FILESDIR}"/${PN}.service6 "${PN}.service"
 }
 
 pkg_postinst() {
