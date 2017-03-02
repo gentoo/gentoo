@@ -5107,7 +5107,7 @@ dev-lisp/flexi-streams 1.0.15: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
-dev-lisp/sbcl 1.3.0 1.3.11 1.3.12 1.3.13 1.3.14: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.3.0 1.3.11 1.3.12 1.3.13 1.3.14 1.3.15: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 9999 20081102: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7 3.2.0: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
@@ -7737,6 +7737,7 @@ dev-python/lazy-object-proxy 1.2.1: A fast and thorough lazy object proxy
 dev-python/ldap3 0.9.9 0.9.9.1 0.9.9.2 1.0.1 1.0.2 1.0.3 1.4.0: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 1.0 2.0.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.11.1: A compiler written in Python for the LESS language
+dev-python/libarchive-c 2.7: A Python interface to libarchive
 dev-python/libasyncns-python 0.7.1-r1: Python bindings for libasyncns
 dev-python/libbonobo-python 2.28.1-r1: Python bindings for the Bonobo framework
 dev-python/libcloud 0.14.1 0.15.0 0.15.1 0.17.0 1.2.1: Unified Interface to the Cloud - python support libs
@@ -8751,7 +8752,7 @@ dev-python/xvfbwrapper 0.2.2 0.2.4 0.2.8: Python wrapper for running a display i
 dev-python/yappi 0.93 0.94: Yet Another Python Profiler
 dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
 dev-python/yapsy 1.10.423 1.11.023 1.11.223 1.11.223-r1: A fat-free DIY Python plugin management toolkit
-dev-python/yaql 1.1.1: YAQL: Yet Another Query Language
+dev-python/yaql 1.1.1 1.1.3: YAQL: Yet Another Query Language
 dev-python/yarl 0.7.0 0.8.1: Yet another URL library
 dev-python/yenc 0.4.0-r1: Module providing raw yEnc encoding/decoding
 dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
@@ -10145,6 +10146,7 @@ dev-util/devhelp 3.20.0 3.22.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20160828 1.3.20170131: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
+dev-util/diffoscope 78: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
