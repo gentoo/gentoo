@@ -1,0 +1,56 @@
+--- libdcp-1.3.4/wscript
++++ libdcp-1.3.4/wscript
+@@ -133,13 +133,6 @@
+     else:
+         boost_lib_suffix = ''
+ 
+-    if conf.options.enable_debug:
+-        conf.env.append_value('CXXFLAGS', '-g')
+-    else:
+-        # Somewhat experimental use of -O2 rather than -O3 to see if
+-        # Windows builds are any more reliable
+-        conf.env.append_value('CXXFLAGS', '-O2')
+-
+     conf.check_cxx(fragment="""
+                             #include <boost/version.hpp>\n
+                             #if BOOST_VERSION < 104500\n
+--- libdcp-1.4.4/src/wscript
++++ libdcp-1.4.4/src/wscript
+@@ -196,7 +196,7 @@
+         obj.uselib = 'BOOST_FILESYSTEM BOOST_SIGNALS2 BOOST_DATETIME OPENSSL SIGC++ LIBXML++ OPENJPEG CXML XMLSEC1 ASDCPLIB_CTH'
+         obj.use = 'libkumu-libdcp%s libasdcp-libdcp%s' % (bld.env.API_VERSION, bld.env.API_VERSION)
+         obj.source = source
+-        obj.cppflags = ['-fprofile-arcs', '-ftest-coverage', '-fno-inline', '-fno-default-inline', '-fno-elide-constructors', '-g', '-O0']
++        obj.cppflags = ['-fprofile-arcs', '-ftest-coverage', '-fno-inline', '-fno-default-inline', '-fno-elide-constructors']
+ 
+     bld.install_files('${PREFIX}/include/libdcp%s/dcp' % bld.env.API_VERSION, headers)
+     if bld.env.STATIC:
+--- libdcp-1.4.4/test/wscript
++++ libdcp-1.4.4/test/wscript
+@@ -52,7 +52,7 @@
+     obj = bld(features='cxx cxxprogram')
+     obj.name   = 'tests'
+     obj.uselib = 'BOOST_TEST BOOST_FILESYSTEM BOOST_DATETIME OPENJPEG CXML XMLSEC1 SNDFILE OPENMP ASDCPLIB_CTH LIBXML++ OPENSSL'
+-    obj.cppflags = ['-fno-inline', '-fno-default-inline', '-fno-elide-constructors', '-g', '-O0']
++    obj.cppflags = ['-fno-inline', '-fno-default-inline', '-fno-elide-constructors']
+     if bld.is_defined('HAVE_GCOV'):
+         obj.use = 'libdcp%s_gcov' % bld.env.API_VERSION
+         obj.lib = ['gcov']
+@@ -101,7 +101,7 @@
+     obj = bld(features='cxx cxxprogram')
+     obj.name   = 'subs_in_out'
+     obj.uselib = 'BOOST_TEST BOOST_FILESYSTEM OPENJPEG CXML OPENMP ASDCPLIB_CTH XMLSEC1 OPENSSL'
+-    obj.cppflags = ['-fno-inline', '-fno-default-inline', '-fno-elide-constructors', '-g', '-O0']
++    obj.cppflags = ['-fno-inline', '-fno-default-inline', '-fno-elide-constructors']
+     if bld.is_defined('HAVE_GCOV'):
+         obj.use = 'libdcp%s_gcov' % bld.env.API_VERSION
+         obj.lib = ['gcov']
+@@ -116,7 +116,7 @@
+     obj = bld(features='cxx cxxprogram')
+     obj.name   = 'rewrite_subs'
+     obj.uselib = 'BOOST_TEST BOOST_FILESYSTEM OPENJPEG CXML OPENMP ASDCPLIB_CTH XMLSEC1 OPENSSL'
+-    obj.cppflags = ['-fno-inline', '-fno-default-inline', '-fno-elide-constructors', '-g', '-O0']
++    obj.cppflags = ['-fno-inline', '-fno-default-inline', '-fno-elide-constructors']
+     if bld.is_defined('HAVE_GCOV'):
+         obj.use = 'libdcp%s_gcov' % bld.env.API_VERSION
+         obj.lib = ['gcov']
