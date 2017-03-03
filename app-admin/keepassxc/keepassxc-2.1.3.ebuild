@@ -28,7 +28,6 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	net-libs/libmicrohttpd
 	sys-libs/zlib
 	autotype? (
 		dev-qt/qtx11extras:5
@@ -36,7 +35,7 @@ RDEPEND="
 		x11-libs/libXtst
 	)
 "
-	#yubikey? ( sys-auth/libyubikey )
+#	yubikey? ( sys-auth/libyubikey )
 
 DEPEND="
 	${RDEPEND}
