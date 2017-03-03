@@ -10,7 +10,7 @@ SRC_URI="http://fishshell.com/files/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE=""
+IUSE="nls"
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.21[pcre32]
@@ -19,8 +19,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	sys-devel/bc
-	sys-devel/gettext
+	nls? ( sys-devel/gettext )
 "
+
+PATCHES=( "${FILESDIR}/${P}-honor-linguas.patch" )
 
 src_configure() {
 	# Set things up for fish to be a default shell.
@@ -29,14 +31,8 @@ src_configure() {
 	econf \
 		docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--bindir="${EPREFIX}"/bin \
-		--without-included-pcre2
-}
-
-src_install() {
-	default
-
-	insinto /usr/share/fish/vendor_conf.d
-	newins "${FILESDIR}/profile-env.fish" 00-profile-env.fish
+		--without-included-pcre2 \
+		$(use_with nls gettext)
 }
 
 src_test() {
@@ -51,10 +47,10 @@ pkg_postinst() {
 	elog "fish is now installed on your system."
 	elog "To run fish, type 'fish' in your terminal."
 	elog
-	elog "To use fish as your login shell:"
-	elog "* add the line '${EPREFIX}/bin/${PN}'"
-	elog "* to the file '${EPREFIX}/etc/shells'."
-	elog "* use the command 'chsh -s ${EPREFIX}/bin/${PN}'."
+	elog "It is advised not to set fish as a default login shell."
+	elog "see bug #545830 for more details."
+	elog "Executing fish using ~/.bashrc is an alternative"
+	elog "see https://wiki.gentoo.org/wiki/Fish#Caveats for details"
 	elog
 	elog "To set your colors, run 'fish_config'"
 	elog "To scan your man pages for completions, run 'fish_update_completions'"
