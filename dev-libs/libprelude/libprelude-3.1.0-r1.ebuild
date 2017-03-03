@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,6 +63,7 @@ src_configure() {
 		--enable-easy-bindings \
 		--with-swig \
 		$(use_with perl) \
+		$(use_with perl perl-installdirs vendor) \
 		$(use_enable doc gtk-doc) \
 		$(use_with lua) \
 		$(use_with ruby) \
