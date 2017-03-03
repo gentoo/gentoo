@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (03 Mar 2017)
+# Masked for removal in 30 days.
+# Bindings for old webkit versions that have open security
+# issues. No reverse dependencies. Bug #608608
+dev-ruby/ruby-webkit-gtk
+dev-ruby/ruby-webkit-gtk2
+
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2017)
 # Masked for removal in 30 days. Reported to be broken;
 # QA issues, fails to build with GCC-5, ffmpeg-3
