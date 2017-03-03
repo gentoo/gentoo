@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,8 +27,7 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE_VIDEO_CARDS="video_cards_intel video_cards_v4l"
-IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg lcms rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor webp +X xwayland ${IUSE_VIDEO_CARDS}"
+IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg lcms rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor webp +X xwayland"
 
 REQUIRED_USE="
 	drm? ( gles2 )
@@ -131,10 +130,10 @@ src_configure() {
 		$(use_enable systemd systemd-notify) \
 		$(use_enable xwayland) \
 		$(use_enable xwayland xwayland-test) \
-		$(use_enable video_cards_intel simple-dmabuf-intel-client) \
-		$(use_enable video_cards_v4l simple-dmabuf-v4l-client) \
 		$(use_with jpeg) \
 		$(use_with webp) \
+		--disable-simple-dmabuf-intel-client \
+		--disable-simple-dmabuf-v4l-client \
 		${myconf}
 }
 
