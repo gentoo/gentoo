@@ -3,6 +3,7 @@
 
 EAPI=5
 
+XORG_EAUTORECONF=true
 XORG_DOC=doc
 inherit xorg-2 multilib versionator flag-o-matic
 EGIT_REPO_URI="git://anongit.freedesktop.org/xorg/xserver"
