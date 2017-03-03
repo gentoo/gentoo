@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install
-DEPEND=>=dev-lang/ocaml-4.04_beta:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DEPEND=>=dev-lang/ocaml-4.04_beta:=[ocamlopt?] dev-ml/ocamlbuild
 DESCRIPTION=System for writing extensible parsers for programming languages
 EAPI=5
 HOMEPAGE=https://github.com/ocaml/camlp4
@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-4.04_beta:=[ocamlopt?] !<dev-lang/ocaml-4.02 !<dev-ml/f
 SLOT=0/4.04_p1
 SRC_URI=https://github.com/ocaml/camlp4/archive/4.04+1.tar.gz -> camlp4-4.04_p1.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_md5_=38a4d1f51692f5106a24bb0f0c1975fd
+_md5_=397196dde8d91407d7537786712f4023
