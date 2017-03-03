@@ -1,5 +1,5 @@
---- src/common/AbstractLogger.cc.orig	2009-04-25 20:39:35.815053524 +0100
-+++ src/common/AbstractLogger.cc	2009-04-25 20:40:01.240595176 +0100
+--- a/src/common/AbstractLogger.cc.orig	2009-04-25 20:39:35.815053524 +0100
++++ b/src/common/AbstractLogger.cc	2009-04-25 20:40:01.240595176 +0100
 @@ -19,6 +19,7 @@
  #include <config.h>
  
