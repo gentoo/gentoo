@@ -6964,7 +6964,7 @@ dev-php/PEAR-PHP_Beautifier 0.1.15-r2: Code Beautifier for PHP
 dev-php/PEAR-PHP_CompatInfo 1.9.0: Find out the minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
 dev-php/PEAR-PHP_Shell 0.3.2: A shell for PHP with history and tab-completion
-dev-php/PEAR-Pager 2.4.9: Data paging class
+dev-php/PEAR-Pager 2.4.9 2.4.9-r1: Data paging class
 dev-php/PEAR-PhpDocumentor 1.4.3-r1: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/PEAR-SOAP 0.13.0: SOAP Client/Server for PHP 4
 dev-php/PEAR-Services_Amazon 0.8.0: Provides access to Amazon's retail and associate web services
@@ -6988,7 +6988,7 @@ dev-php/PEAR-Text_Wiki_BBCode 0.0.4-r2: BBCode parser for Text_Wiki
 dev-php/PEAR-Text_Wiki_Mediawiki 0.2.0-r1: Mediawiki parser for Text_Wiki
 dev-php/PEAR-Translation2 2.0.4: Class for multilingual applications management
 dev-php/PEAR-Validate 0.8.5: Validation class
-dev-php/PEAR-Var_Dump 1.0.4-r2: Dump structured information about a variable
+dev-php/PEAR-Var_Dump 1.0.4-r2 1.0.4-r3: Dump structured information about a variable
 dev-php/PEAR-VersionControl_SVN 0.5.2: Simple OO wrapper interface for the Subversion command-line client
 dev-php/PEAR-XML_Beautifier 1.2.2-r1: Adds indentation and linebreaks, replace entities, formats comments and makes XML easier to read
 dev-php/PEAR-XML_Feed_Parser 1.0.5-r1: Provides an unified API for handling Atom/RSS
@@ -7032,7 +7032,7 @@ dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions vi
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.2.2: DataStax PHP Driver for Apache Cassandra
-dev-php/pecl-crack 0.4-r4 0.4-r5: PHP interface to the cracklib libraries
+dev-php/pecl-crack 0.4-r4 0.4-r5 0.4-r6: PHP interface to the cracklib libraries
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.0.9: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.1: PHP wrapper for libeio library
@@ -7968,7 +7968,7 @@ dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/phonenumbers 7.2.3 7.2.8: Python port of Google's libphonenumber
-dev-python/photutils 0.2.2 0.3: Python package for image astronomical photometry
+dev-python/photutils 0.3 0.3.1: Python package for image astronomical photometry
 dev-python/pickleshare 0.7.3 0.7.4: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.1.1: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15-r1: Cross-media, cross-platform 2D graphics package
