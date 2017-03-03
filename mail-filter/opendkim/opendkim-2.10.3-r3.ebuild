@@ -105,7 +105,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with gnutls) \
 		$(use_with memcached libmemcached) \
-		${myconf[@]} \
+		"${myconf[@]}" \
 		--enable-filter \
 		--enable-atps \
 		--enable-identity_header \
