@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2017)
+# Masked for removal in 30 days. Reported to be broken;
+# QA issues, fails to build with GCC-5, ffmpeg-3
+# Bugs #608408, #569958, #610746
+media-video/lives
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2017)
+# Masked for removal in 30 days. Dead upstream, Qt4Webkit,
+# fails to build. Bug #602260
+x11-misc/andromeda
+
 # Kristian Fiskerstrand <k_f@gentoo.org> (03 Mar 2017)
 # Masked until fixing Gentoo-Bug: 611440
 =dev-libs/libgpg-error-1.27

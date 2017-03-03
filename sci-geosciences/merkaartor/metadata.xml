@@ -8,6 +8,7 @@
 	<use>
 		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for getting the HTTP/HTTPS/SOCKS proxy configuration</flag>
 		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
+		<flag name="webengine">Enable <pkg>dev-qt/qtwebengine</pkg> in some plugins</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">openstreetmap/merkaartor</remote-id>

@@ -206,7 +206,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eapply "${FILESDIR}"/${PN}-17-clover-Work-around-build-failure-with-AltiVec.patch
+
+	eautoreconf
+
 	eapply_user
 }
 

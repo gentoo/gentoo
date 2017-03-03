@@ -1,0 +1,70 @@
+From 71a2b2e8a580d2c0bee84b898d8531b27f3c7811 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Thu, 2 Mar 2017 04:43:21 +0000
+Subject: [PATCH] clover: Work around build failure with AltiVec.
+
+Bugzilla: https://bugs.gentoo.org/show_bug.cgi?id=587210
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=68504
+Acked-by: Francisco Jerez <currojerez@riseup.net>
+(cherry picked from commit 7d1195c1e4d071fe796bf5f210c468ea1cc86225)
+---
+ configure.ac                                  | 14 ++++++++++++++
+ src/gallium/state_trackers/clover/Makefile.am |  3 +++
+ 2 files changed, 17 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index fd78fbb..3646e45 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1974,6 +1974,20 @@ if test "x$enable_opencl" = xyes; then
+     if test "x$have_libelf" != xyes; then
+        AC_MSG_ERROR([Clover requires libelf])
+     fi
++
++    if test "x${ac_cv_cxx_compiler_gnu}" = xyes; then
++        altivec_enabled=no
++        AC_COMPILE_IFELSE([AC_LANG_SOURCE([
++        #if !defined(__VEC__) || !defined(__ALTIVEC__)
++        #error "AltiVec not enabled"
++        #endif
++        ])], altivec_enabled=yes)
++
++        if test "$altivec_enabled" = yes; then
++            CLOVER_STD_OVERRIDE="-std=gnu++11"
++        fi
++        AC_SUBST([CLOVER_STD_OVERRIDE])
++    fi
+ fi
+ AM_CONDITIONAL(HAVE_CLOVER, test "x$enable_opencl" = xyes)
+ AM_CONDITIONAL(HAVE_CLOVER_ICD, test "x$enable_opencl_icd" = xyes)
+diff --git a/src/gallium/state_trackers/clover/Makefile.am b/src/gallium/state_trackers/clover/Makefile.am
+index 8abcfec..edf1e26 100644
+--- a/src/gallium/state_trackers/clover/Makefile.am
++++ b/src/gallium/state_trackers/clover/Makefile.am
+@@ -33,6 +33,7 @@ noinst_LTLIBRARIES = libclover.la libcltgsi.la libclllvm.la
+ 
+ libcltgsi_la_CXXFLAGS = \
+ 	-std=c++11 \
++	$(CLOVER_STD_OVERRIDE) \
+ 	$(VISIBILITY_CXXFLAGS)
+ 
+ libcltgsi_la_SOURCES = $(TGSI_SOURCES)
+@@ -41,6 +42,7 @@ libclllvm_la_CXXFLAGS = \
+ 	-std=c++11 \
+ 	$(VISIBILITY_CXXFLAGS) \
+ 	$(LLVM_CXXFLAGS) \
++	$(CLOVER_STD_OVERRIDE) \
+ 	$(DEFINES) \
+ 	$(LIBELF_CFLAGS) \
+ 	-DLIBCLC_INCLUDEDIR=\"$(LIBCLC_INCLUDEDIR)/\" \
+@@ -51,6 +53,7 @@ libclllvm_la_SOURCES = $(LLVM_SOURCES)
+ 
+ libclover_la_CXXFLAGS = \
+ 	-std=c++11 \
++	$(CLOVER_STD_OVERRIDE) \
+ 	$(VISIBILITY_CXXFLAGS)
+ 
+ libclover_la_LIBADD = \
+-- 
+2.10.2
+
