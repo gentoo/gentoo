@@ -123,7 +123,7 @@ app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8)
 app-admin/kedpm 0.4.0-r2: Helps to manage large amounts of passwords and related information
 app-admin/keepass 2.35-r1: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
-app-admin/keepassxc 2.1.1 2.1.2 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.1.2 2.1.3 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.2: Binary component required by the LastPass Password Manager browser extension
@@ -577,9 +577,9 @@ app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nistp224 0.75-r1: Performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
 app-crypt/nitrokey-app 0.6.3: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.14: Securely erase disks using a variety of recognized methods
-app-crypt/onak 0.4.0 0.5.0: onak is an OpenPGP keyserver
+app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
-app-crypt/openssl-tpm-engine 0.4.1 0.4.2: This provides a OpenSSL engine that uses private keys stored in TPM hardware
+app-crypt/openssl-tpm-engine 0.4.2: This provides a OpenSSL engine that uses private keys stored in TPM hardware
 app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
@@ -4968,7 +4968,7 @@ dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2: library for multiple-precisio
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.8 0.9 1.0.0: High-performance messaging interface for distributed applications
-dev-libs/nettle 3.2 3.2-r1 3.3: Low-level cryptographic library
+dev-libs/nettle 3.2 3.2-r1 3.3 3.3-r1: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.2 1.3: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
@@ -14669,7 +14669,7 @@ net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.18 1.0.19 1.0.20: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.5 3.22.3: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.26 3.5.8 3.5.9-r2: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.26 3.5.9-r2: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
@@ -15547,7 +15547,7 @@ net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepat
 net-voip/vidyodesktop 3.6.3.017 3.6.7.010: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
-net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc3 1.2_rc4 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
+net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
 net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
@@ -17154,7 +17154,7 @@ sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a use
 sys-auth/pam_mysql 0.7_rc1-r4 0.7_rc1-r5: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.1.5-r1 0.1.5-r2: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.4 1.0.5 1.3.0: Stub ebuild to help migrate to newer package name
-sys-auth/pam_pkcs11 0.6.8 0.6.9: PKCS#11 PAM library
+sys-auth/pam_pkcs11 0.6.9: PKCS#11 PAM library
 sys-auth/pam_radius 1.3.17-r1: PAM RADIUS authentication module
 sys-auth/pam_require 0.7: Allows you to require a special group or user to access a service
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
