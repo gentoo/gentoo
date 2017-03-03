@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}/findlib.patch"
+	has_version '>=dev-lang/ocaml-4.05.0_beta' && epatch "${FILESDIR}/ocaml405.patch"
 }
 
 src_configure() {
