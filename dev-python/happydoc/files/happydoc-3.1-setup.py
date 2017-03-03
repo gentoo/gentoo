@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 #
+# $Id: setup.py,v 1.11 2002/02/05 19:59:36 doughellmann Exp $
+#
 # Time-stamp: <02/02/05 10:00:12 dhellmann>
 #
 # Copyright 2001 Doug Hellmann.
