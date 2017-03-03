@@ -22,7 +22,6 @@ RDEPEND="
 src_configure() {
 	default
 	sed -i  's,^#CONFIG_D=.*,CONFIG_D="/etc/dehydrated/config.d",' docs/examples/config || die "could not set config (CONFIG_D)"
-	sed -i  's,^#DOMAINS_TXT=.*,DOMAINS_TXT="/etc/dehydrated/domains.txt",' docs/examples/config || die "could not set config (DOMAINS_TXT)"
 }
 
 src_install() {
