@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
+# Tobias Klausmann <klausman@gentoo.org> (03 March 2017)
+# There is no luajit support on alpha. Bugs #554376, #608322.
+luajit
+luajittex
+
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
 # kwallet integration split from kde to distinct flag
 kwallet
@@ -9,10 +14,6 @@ kwallet
 # We currently do not have the resources to AT qt5 packages.
 # This may change when/if qt4 goes away.
 qt5
-
-# Tobias Klausmann <klausman@gentoo.org> (23 May 2016)
-# There is no luajit support on alpha.  Bug #554376.
-luajittex
 
 # Tobias Klausmann <klausman@gentoo.org> (05 Feb 2016)
 # Newer versions of libgadu depend on protobuf-c, which doesn't
