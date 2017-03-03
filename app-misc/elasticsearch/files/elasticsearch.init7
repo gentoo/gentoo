@@ -63,11 +63,11 @@ start() {
 	ebegin "Starting ${SVCNAME}"
 
 	if [ -n "${MAX_LOCKED_MEMORY}" ]; then
-		rc_ulimit="${rc_ulimit} -l ${MAX_LOCKED_MEMORY}"
+		ulimit -l "${MAX_LOCKED_MEMORY}"
 	fi
 
 	if [ -n "${MAX_OPEN_FILES}" ]; then
-		rc_ulimit="${rc_ulimit} -n ${MAX_OPEN_FILES}"
+		ulimit -n "${MAX_OPEN_FILES}"
 	fi
 
 	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "/var/lib/elasticsearch"
