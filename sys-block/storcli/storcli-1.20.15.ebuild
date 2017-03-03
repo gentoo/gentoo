@@ -12,7 +12,7 @@ SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-cont
 
 LICENSE="Avago LSI BSD"
 SLOT="0/6.12"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND=""
