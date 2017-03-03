@@ -476,6 +476,7 @@ _python_obtain_impls() {
 
 	MULTIBUILD_VARIANTS=()
 
+	local impl
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		has "${impl}" "${PYTHON_COMPAT[@]}" && \
 		use "python_targets_${impl}" && MULTIBUILD_VARIANTS+=( "${impl}" )
