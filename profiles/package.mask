@@ -28,6 +28,29 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
+# Unused Plasma 4 runtime cleanup, masked for removal in 30 days.
+kde-apps/attica
+kde-apps/drkonqi
+kde-apps/kcontrol
+kde-apps/kdebase-desktoptheme
+kde-apps/kdebase-menu
+kde-apps/kdebase-menu-icons
+kde-apps/kdebugdialog
+kde-apps/kdesu
+kde-apps/kglobalaccel
+kde-apps/kiconfinder
+kde-apps/kimgio
+kde-apps/knetattach
+kde-apps/kpasswdserver
+kde-apps/kquitapp
+kde-apps/kstart
+kde-apps/kuiserver
+kde-apps/kurifilter-plugins
+kde-apps/plasma-apps
+kde-apps/renamedlg-plugins
+kde-apps/solid-runtime
+sys-auth/polkit-kde-agent
 
 # Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
 # Follow-up to 16.12.3 stabilisation - the remaining split
