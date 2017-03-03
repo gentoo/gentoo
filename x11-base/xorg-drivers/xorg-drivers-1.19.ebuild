@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -174,6 +174,7 @@ PDEPEND="
 
 	!<x11-drivers/xf86-input-evdev-2.10.4
 	!<x11-drivers/xf86-input-joystick-1.6.3
+	!<x11-drivers/xf86-input-libinput-0.20.0
 	!<x11-drivers/xf86-video-amdgpu-1.2.0
 	!<x11-drivers/xf86-video-ati-7.8.0
 	!<x11-drivers/xf86-video-chips-1.2.7
