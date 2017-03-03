@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}
 	!<dev-lang/ocaml-4.02
 	!<dev-ml/findlib-1.5.5-r1"
 DEPEND="${DEPEND}
-	|| ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )"
+	dev-ml/ocamlbuild"
 
 S=${WORKDIR}/${P/_p/-}
 
