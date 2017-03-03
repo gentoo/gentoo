@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=dev-lang/perl >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Multiple Repository management tool
+EAPI=6
+HOMEPAGE=https://myrepos.branchable.com/
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/libwww-perl dev-perl/HTML-Parser
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=8784fc99120b60d630eeb4624ea7fe14
