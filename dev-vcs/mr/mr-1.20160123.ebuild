@@ -7,7 +7,7 @@ MY_P="myrepos-${PV}"
 
 DESCRIPTION="Multiple Repository management tool"
 HOMEPAGE="https://myrepos.branchable.com/"
-SRC_URI="https://github.com/joeyh/myrepos/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~tamiko/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
