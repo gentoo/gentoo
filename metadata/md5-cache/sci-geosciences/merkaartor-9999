@@ -1,13 +1,12 @@
 DEFINED_PHASES=configure postinst postrm preinst prepare unpack
-DEPEND=!qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4] dev-qt/qtsvg:4 dev-qt/qtwebkit:4 ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) dev-qt/qtsingleapplication[X,qt5?] >=sci-libs/gdal-1.6.0 >=sci-libs/proj-4.6 sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.13[cxx] ) libproxy? ( net-libs/libproxy ) qrcode? ( media-gfx/zbar[qt4] ) qt5? ( dev-qt/linguist-tools:5 ) virtual/pkgconfig >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
-DESCRIPTION=A Qt based map editor for the openstreetmap.org project
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/gdal sci-libs/proj sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.13[cxx] ) libproxy? ( net-libs/libproxy ) webengine? ( dev-qt/qtwebengine:5 ) dev-qt/linguist-tools:5 virtual/pkgconfig >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Qt based map editor for the openstreetmap.org project
 EAPI=6
 HOMEPAGE=http://www.merkaartor.be https://github.com/openstreetmap/merkaartor
-IUSE=debug exif gps libproxy qrcode qt5 linguas_ar linguas_cs linguas_de linguas_en linguas_es linguas_et linguas_fr linguas_hr linguas_hu linguas_id_ID linguas_it linguas_ja linguas_nl linguas_pl linguas_pt_BR linguas_pt linguas_ru linguas_sk linguas_sv linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW
+IUSE=debug exif gps libproxy webengine linguas_ar linguas_cs linguas_de linguas_en linguas_es linguas_et linguas_fr linguas_hr linguas_hu linguas_id_ID linguas_it linguas_ja linguas_nl linguas_pl linguas_pt_BR linguas_pt linguas_ru linguas_sk linguas_sv linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW
 LICENSE=GPL-2
-RDEPEND=!qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4] dev-qt/qtsvg:4 dev-qt/qtwebkit:4 ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) dev-qt/qtsingleapplication[X,qt5?] >=sci-libs/gdal-1.6.0 >=sci-libs/proj-4.6 sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.13[cxx] ) libproxy? ( net-libs/libproxy ) qrcode? ( media-gfx/zbar[qt4] )
-REQUIRED_USE=qrcode? ( !qt5 )
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/gdal sci-libs/proj sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.13[cxx] ) libproxy? ( net-libs/libproxy ) webengine? ( dev-qt/qtwebengine:5 )
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:- src_prepare:- src_configure:-
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	fdo-mime	21ef5adf81836863efa968f2a25cff64	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	l10n	8f52d9ce1814aca2ed1a46920084ea66	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	53b75b4a49cf3e61530a523804045432	xdg-utils	178a84136f416b8ea1a857717eacd21c
-_md5_=14f7a7970cc2f6020c6744bb1d127d46
+_md5_=0e29644dba082e767b97747b31ede44d
