@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (03 Mar 2017)
+# Segfaults at runtime. Dead upstream. Unmaintained.
+# Masked for removal in 30 days. Bug #611406.
+x11-misc/oroborus-desklaunch
+
 # Alexis Ballier <aballier@gentoo.org> (03 Mar 2017)
 # Beta release, some packages fail to build.
 >=dev-lang/ocaml-4.05.0_beta2
