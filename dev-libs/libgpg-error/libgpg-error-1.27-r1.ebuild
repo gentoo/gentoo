@@ -27,6 +27,7 @@ MULTILIB_CHOST_TOOLS=(
 )
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/gpg-error.h
+	/usr/include/gpgrt.h
 )
 
 src_prepare() {

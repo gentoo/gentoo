@@ -40,10 +40,6 @@ media-video/lives
 # fails to build. Bug #602260
 x11-misc/andromeda
 
-# Kristian Fiskerstrand <k_f@gentoo.org> (03 Mar 2017)
-# Masked until fixing Gentoo-Bug: 611440
-=dev-libs/libgpg-error-1.27
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2017)
 # Mask experimental software
 =mail-mta/postfix-3.3*
