@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -56,15 +56,21 @@ CMAKE_USE_DIR=${S}/third_party/ycmd/cpp
 VIM_PLUGIN_HELPFILES="${PN}"
 
 src_prepare() {
-	if ! use test ; then
+	if ! use test; then
 		sed -i '/^add_subdirectory( tests )/d' third_party/ycmd/cpp/ycm/CMakeLists.txt || die
 	fi
+
 	for third_party_module in requests pythonfutures; do
-		rm -r "${S}"/third_party/${third_party_module} || die "Failed to remove third party module ${third_party_module}"
+		if [[ -d "${third_party_module}" ]]; then
+			rm -r "${S}"/third_party/${third_party_module} || die "Failed to remove third party module ${third_party_module}"
+		fi
 	done
+
 	# Argparse is included in python 2.7
 	for third_party_module in argparse bottle jedi waitress sh requests; do
-		rm -r "${S}"/third_party/ycmd/third_party/${third_party_module} || die "Failed to remove third party module ${third_party_module}"
+		if [[ -d "${third_party_module}" ]]; then
+			rm -r "${S}"/third_party/ycmd/third_party/${third_party_module} || die "Failed to remove third party module ${third_party_module}"
+		fi
 	done
 }
 
