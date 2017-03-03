@@ -133,7 +133,6 @@ video_cards_tdfx
 video_cards_tga
 video_cards_trident
 video_cards_tseng
-video_cards_v4l
 video_cards_vesa
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)

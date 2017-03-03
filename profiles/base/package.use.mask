@@ -39,10 +39,6 @@ media-libs/opensubdiv opencl
 # rust on mozilla packages is experimental
 www-client/firefox rust
 
-# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
-# xf86-video-??? masked for removal
-x11-base/xorg-drivers video_cards_v4l
-
 # Lars Wendler <polynomial-c@gentoo.org> (19 Jan 2017)
 # Masked until system heimdal can finally be used with AD DC
 net-fs/samba system-heimdal
