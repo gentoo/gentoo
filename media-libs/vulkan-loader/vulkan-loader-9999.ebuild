@@ -27,8 +27,6 @@ DEPEND="${PYTHON_DEPS}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? ( x11-libs/libX11:=[${MULTILIB_USEDEP}] )"
 
-DOCS=( README.md LICENSE.txt )
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
@@ -48,13 +46,5 @@ multilib_src_configure() {
 multilib_src_install() {
 	keepdir /etc/vulkan/icd.d
 
-	cd "${BUILD_DIR}/loader" || die
-	dolib libvulkan.so.1.*
-	dosym libvulkan.so.1.* /usr/$(get_libdir)/libvulkan.so.1
-	dosym libvulkan.so.1.* /usr/$(get_libdir)/libvulkan.so
-
-	cd "${S}" || die
-	insinto /usr/include/vulkan
-	doins include/vulkan/*.h
-	einstalldocs
+	default
 }
