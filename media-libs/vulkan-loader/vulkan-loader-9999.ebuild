@@ -16,16 +16,16 @@ fi
 inherit python-any-r1 cmake-multilib
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
-HOMEPAGE="https://www.khronos.org/vulkan/"
+HOMEPAGE="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="wayland X"
 
-DEPEND="${PYTHON_DEPS}"
 RDEPEND=""
-
-DOCS=( README.md LICENSE.txt )
+DEPEND="${PYTHON_DEPS}
+	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
+	X? ( x11-libs/libX11:=[${MULTILIB_USEDEP}] )"
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -36,6 +36,9 @@ multilib_src_configure() {
 		-DBUILD_VKJSON=False
 		-DBUILD_LOADER=True
 		-DBUILD_WSI_MIR_SUPPORT=False
+		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
+		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
+		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 	)
 	cmake-utils_src_configure
 }
@@ -43,13 +46,5 @@ multilib_src_configure() {
 multilib_src_install() {
 	keepdir /etc/vulkan/icd.d
 
-	cd "${BUILD_DIR}/loader"
-	dolib libvulkan.so.1.*
-	dosym libvulkan.so.1.* /usr/$(get_libdir)/libvulkan.so.1
-	dosym libvulkan.so.1.* /usr/$(get_libdir)/libvulkan.so
-
-	cd "${S}"
-	insinto /usr/include/vulkan
-	doins include/vulkan/*.h
-	einstalldocs
+	default
 }
