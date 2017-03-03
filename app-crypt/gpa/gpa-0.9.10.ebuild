@@ -9,7 +9,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE_LINGUAS=" ar cs de es fr ja nl pl pt_BR ru sv tr zh_TW"
 IUSE="nls ${IUSE_LINGUAS// / linguas_}"
 
