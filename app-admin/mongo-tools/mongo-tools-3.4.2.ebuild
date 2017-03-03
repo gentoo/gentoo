@@ -15,7 +15,7 @@ SRC_URI="https://github.com/mongodb/mongo-tools/archive/r${MY_PV}.tar.gz -> mong
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="sasl ssl"
+IUSE="sasl ssl libressl"
 
 # Maintainer note:
 # openssl DEPEND constraint, see:
@@ -26,7 +26,10 @@ DEPEND="${RDEPEND}
 	dev-lang/go:=
 	net-libs/libpcap
 	sasl? ( dev-libs/cyrus-sasl )
-	ssl? ( dev-libs/openssl )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 
 S=${WORKDIR}/${MY_P}
 
