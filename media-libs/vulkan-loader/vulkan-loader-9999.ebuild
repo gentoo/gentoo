@@ -20,10 +20,12 @@ HOMEPAGE="https://www.khronos.org/vulkan/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="wayland X"
 
-DEPEND="${PYTHON_DEPS}"
 RDEPEND=""
+DEPEND="${PYTHON_DEPS}
+	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
+	X? ( x11-libs/libX11:=[${MULTILIB_USEDEP}] )"
 
 DOCS=( README.md LICENSE.txt )
 
@@ -36,6 +38,9 @@ multilib_src_configure() {
 		-DBUILD_VKJSON=False
 		-DBUILD_LOADER=True
 		-DBUILD_WSI_MIR_SUPPORT=False
+		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
+		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
+		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 	)
 	cmake-utils_src_configure
 }
