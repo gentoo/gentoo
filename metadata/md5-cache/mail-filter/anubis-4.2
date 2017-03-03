@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install setup test
+DEPEND=sys-libs/gdbm crypt? ( >=app-crypt/gpgme-1.8.0 ) guile? ( >=dev-scheme/guile-1.8 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:*[server] ) nls? ( sys-devel/gettext ) pcre? ( >=dev-libs/libpcre-3.9 ) sasl? ( virtual/gsasl ) gnutls? ( net-libs/gnutls ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) test? ( dev-util/dejagnu )
+DESCRIPTION=GNU Anubis is an outgoing mail processor
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/anubis/
+IUSE=crypt guile mysql postgres nls pam pcre sasl socks5 +gnutls tcpd test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/gdbm crypt? ( >=app-crypt/gpgme-1.8.0 ) guile? ( >=dev-scheme/guile-1.8 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:*[server] ) nls? ( sys-devel/gettext ) pcre? ( >=dev-libs/libpcre-3.9 ) sasl? ( virtual/gsasl ) gnutls? ( net-libs/gnutls ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+REQUIRED_USE=mysql? ( sasl ) postgres? ( sasl )
+SLOT=0
+SRC_URI=mirror://gnu/anubis/anubis-4.2.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_configure:- src_test:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=8d197d5a5f6718c4fdb91c5b77f63da1

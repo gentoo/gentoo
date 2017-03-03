@@ -12123,7 +12123,7 @@ mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.9.1-r2 2.10.1 2.10.1-r4 2.11.0-r2 2.11.0-r3: High-performance interface between the MTA and content checkers
 mail-filter/anomy-sanitizer 1.76-r1: Perl based e-mail filtering tool, sensitive to html tags, mime types and attachments
-mail-filter/anubis 4.1.1 4.1.1-r1: GNU Anubis is an outgoing mail processor
+mail-filter/anubis 4.1.1 4.1.1-r1 4.2: GNU Anubis is an outgoing mail processor
 mail-filter/ask 2.4.1 2.5.3: Active Spam Killer: A program to filter spam
 mail-filter/assp 1.8.5.9 1.9.4.7 1.9.4.8 1.9.4.9 1.9.8.13030: Anti-Spam SMTP Proxy written in Perl
 mail-filter/bmf 0.9.4-r2: A fast and small Bayesian spam filter
@@ -17236,7 +17236,7 @@ sys-block/sedutil 1.12: The Drive Trust Alliance Self Encrypting Drive Utility
 sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/smp_utils 0.97 0.98: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
-sys-block/storcli 1.19.04 1.20.15: MegaRAID StorCLI (successor of the MegaCLI)
+sys-block/storcli 1.19.04 1.20.15 1.21.06: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli 3.0_pre4 9999: CLI and shell for the Linux SCSI target
 sys-block/targetcli-fb 2.1.44-r1 2.1.45: Command shell for managing Linux LIO kernel target
