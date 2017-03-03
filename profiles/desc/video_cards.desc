@@ -35,7 +35,6 @@ nsc - VIDEO_CARDS setting to build driver for nsc video cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards
-omapfb - VIDEO_CARDS setting to build framebuffer driver for TI OMAP video cards
 qxl - VIDEO_CARDS setting to build driver for qxl (QEMU virtual GPU)
 r100 - VIDEO_CARDS setting to build only r100 based chips code for radeon
 r128 - VIDEO_CARDS setting to build driver for ATI r128 video cards
@@ -63,7 +62,6 @@ tegra - VIDEO_CARDS setting to build driver for tegra video cards
 tga - VIDEO_CARDS setting to build driver for tga video cards
 trident - VIDEO_CARDS setting to build driver for trident video cards
 tseng - VIDEO_CARDS setting to build driver for tseng video cards
-v4l - VIDEO_CARDS setting to build driver for v4l video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
 via - VIDEO_CARDS setting to build driver for via video cards

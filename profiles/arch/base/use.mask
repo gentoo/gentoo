@@ -117,7 +117,6 @@ video_cards_virtualbox
 video_cards_exynos
 video_cards_freedreno
 video_cards_omap
-video_cards_omapfb
 video_cards_tegra
 video_cards_vc4
 video_cards_vivante

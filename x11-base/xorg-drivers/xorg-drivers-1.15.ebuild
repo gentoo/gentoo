@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -50,7 +50,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_nouveau
 	video_cards_nv
 	video_cards_omap
-	video_cards_omapfb
 	video_cards_qxl
 	video_cards_r128
 	video_cards_radeon
@@ -71,7 +70,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_tga
 	video_cards_trident
 	video_cards_tseng
-	video_cards_v4l
 	video_cards_vesa
 	video_cards_via
 	video_cards_virtualbox
@@ -120,7 +118,6 @@ PDEPEND="
 	video_cards_nouveau?       ( x11-drivers/xf86-video-nouveau )
 	video_cards_nv?            ( x11-drivers/xf86-video-nv )
 	video_cards_omap?          ( x11-drivers/xf86-video-omap )
-	video_cards_omapfb?        ( x11-drivers/xf86-video-omapfb )
 	video_cards_qxl?           ( x11-drivers/xf86-video-qxl )
 	video_cards_nvidia?        ( x11-drivers/nvidia-drivers )
 	video_cards_fglrx?         ( x11-drivers/ati-drivers )
@@ -142,7 +139,6 @@ PDEPEND="
 	video_cards_tga?           ( x11-drivers/xf86-video-tga )
 	video_cards_trident?       ( x11-drivers/xf86-video-trident )
 	video_cards_tseng?         ( x11-drivers/xf86-video-tseng )
-	video_cards_v4l?           ( x11-drivers/xf86-video-v4l )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-virtualbox )

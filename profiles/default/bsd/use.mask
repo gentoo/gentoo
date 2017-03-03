@@ -62,7 +62,6 @@ input_devices_synaptics
 input_devices_vmmouse
 video_cards_newport
 video_cards_sisusb
-video_cards_v4l
 video_cards_vmware
 video_cards_nvidia
 video_cards_nouveau
