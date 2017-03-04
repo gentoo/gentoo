@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/vstakhov/rspamd"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="fann jemalloc +jit libressl pcre2"
+IUSE="fann +gd jemalloc +jit libressl pcre2"
 
 RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
@@ -24,10 +24,10 @@ RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	dev-libs/libevent
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-libs/gmime
 	<dev-util/ragel-7.0
 	sys-apps/file
-	virtual/libiconv"
+	gd? ( media-libs/gd[jpeg] )
+	dev-libs/icu"
 DEPEND="dev-util/ragel
 	${RDEPEND}"
 
