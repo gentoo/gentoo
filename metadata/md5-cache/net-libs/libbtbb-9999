@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=pcap? ( net-libs/libpcap[static-libs?] ) wireshark-plugins? ( >=net-analyzer/wireshark-1.8.3-r1:= ) wireshark-plugins? ( dev-libs/glib virtual/pkgconfig ) sys-devel/make >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=extras? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) wireshark-plugins? ( >=net-analyzer/wireshark-1.8.3-r1:= ) wireshark-plugins? ( dev-libs/glib virtual/pkgconfig ) sys-devel/make >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A library to decode Bluetooth baseband packets
-EAPI=5
+EAPI=6
 HOMEPAGE=http://libbtbb.sourceforge.net/
-IUSE=+pcap static-libs +wireshark-plugins
+IUSE=extras static-libs wireshark-plugins python_targets_python2_7
 LICENSE=GPL-2
-RDEPEND=pcap? ( net-libs/libpcap[static-libs?] ) wireshark-plugins? ( >=net-analyzer/wireshark-1.8.3-r1:= )
+RDEPEND=extras? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) wireshark-plugins? ( >=net-analyzer/wireshark-1.8.3-r1:= )
+REQUIRED_USE=extras? ( python_targets_python2_7 )
 SLOT=0/9999
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=6d2ce4032129b762f25887b1abba697a
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-single-r1	4346485bdd137b2d301e993dad734668	python-utils-r1	316c531873247e48befb99900e5aa2ed	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=2591885add6dff9c7acefd047d9e5cd7

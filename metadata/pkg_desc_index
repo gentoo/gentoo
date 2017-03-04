@@ -14692,7 +14692,7 @@ net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from Open
 net-libs/libasyncns 0.8-r3 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.13.1 0.13.2 9999: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation of getblocktemplate (BIP 22)
-net-libs/libbtbb 2015.09.2-r1 2015.10.1 9999: A library to decode Bluetooth baseband packets
+net-libs/libbtbb 2015.10.1 2017.03.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.37: A library that implements the DMAP family of protocols
@@ -15564,7 +15564,7 @@ net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.271-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
-net-wireless/chirp 20160513 20160717 20170217 99999999: Free open-source tool for programming your amateur radio
+net-wireless/chirp 20170222 99999999: Free open-source tool for programming your amateur radio
 net-wireless/cpyrit-cuda 0.5.0: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.5.0: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
@@ -15593,7 +15593,7 @@ net-wireless/inspectrum 0.1.1 0.2 9999: a tool for analysing captured signals fr
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3 4.7 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 2016.07.1-r1 9999: IEEE 802.11 wireless LAN sniffer
-net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 9999: Provides basic bluetooth support in kismet
+net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 2017.03.1 9999: Provides basic bluetooth support in kismet
 net-wireless/lorcon 0.0_p20150109 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
 net-wireless/madwimax 0.1.1-r1: A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip
@@ -15616,7 +15616,7 @@ net-wireless/rfcat 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5 0.5-r1: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.0 0.5.3 0.5.3-r1 0.5.3_p20150730 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
-net-wireless/ubertooth 2015.10.1 9999: open source wireless development platform suitable for Bluetooth experimentation
+net-wireless/ubertooth 2015.10.1 2017.03.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.8.2 3.8.5: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/urh 1.5.5: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.5 0.7.6: Ncurses based monitor for IEEE 802.11 wireless LAN cards
