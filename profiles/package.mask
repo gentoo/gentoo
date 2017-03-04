@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (04 Mar 2017)
+# The program is abandoned upstream and reported to no longer work with
+# Twitch and multiple other streaming sites. Working alternatives are
+# net-misc/streamlink (which is a maintained fork) or media-video/orion.
+# Removal in 30 days. Bug #604858.
+net-misc/livestreamer
+
 # Michael Palimaka <kensington@gentoo.org> (03 Mar 2017)
 # Segfaults at runtime. Dead upstream. Unmaintained.
 # Masked for removal in 30 days. Bug #611406.
