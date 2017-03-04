@@ -22,9 +22,11 @@ IUSE="X doc test"
 
 DEPEND="sys-devel/bison
 	sys-devel/flex
-	X? ( >=x11-libs/libxcb-1.10[${MULTILIB_USEDEP},xkb] )
-	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	>=x11-proto/kbproto-1.0.6-r1[${MULTILIB_USEDEP}]
+	X? (
+		>=x11-libs/libxcb-1.10[${MULTILIB_USEDEP},xkb]
+		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
+		>=x11-proto/kbproto-1.0.6-r1[${MULTILIB_USEDEP}]
+	)
 	doc? ( app-doc/doxygen )"
 RDEPEND=""
 
