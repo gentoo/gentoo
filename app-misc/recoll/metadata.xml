@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-	<flag name="camelcase">Enable indexing for camelCase sentences and words</flag>
-	<flag name="chm">Index chm files</flag>
-	<flag name="dvi">Index dvi files</flag>
-	<flag name="ics">Index iCalendar files</flag>
-	<flag name="info">Index GNU info files</flag>
-	<flag name="inotify">Use the Linux Kernel notification subsystem for monitoring file alterations in realtime</flag>
-	<flag name="lyx">Index Latex lyx files</flag>
-	<flag name="msdoc">Index Microsoft Word documents</flag>
-	<flag name="msppt">Index Microsoft PowerPoint documents</flag>
-	<flag name="msxls">Index Microsoft Excel documents</flag>
-	<flag name="pdf">Index PDF documents</flag>
-	<flag name="rtf">Index Microsoft RTF documents</flag>
-	<flag name="session">Stop monitoring file alterations when X11 session terminates</flag>
-	<flag name="sound">Index audio files</flag>
-	<flag name="tex">Index TeX files</flag>
-	<flag name="wordperfect">Index WordPerfect documents</flag>
-	<flag name="xml">Index several XML-based formats (Abiword, FictionBook, Kword, Office OpenXML, OpenDocument, SVG)</flag>
-</use>
+	<maintainer type="person">
+		<email>ppurka@gmail.com</email>
+		<name>Punarbasu 'ppurka' Purkayastha</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers Project</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>jfd@recoll.org</email>
+			<name>Jean-Francois Dockes</name>
+		</maintainer>
+		<bugs-to>https://bitbucket.org/medoc/recoll/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="camelcase">Enable indexing for camelCase sentences and words</flag>
+		<flag name="chm">Index chm files</flag>
+		<flag name="dvi">Index dvi files</flag>
+		<flag name="ics">Index iCalendar files</flag>
+		<flag name="info">Index GNU info files</flag>
+		<flag name="inotify">Use the Linux Kernel notification subsystem for monitoring file alterations in realtime</flag>
+		<flag name="lyx">Index Latex lyx files</flag>
+		<flag name="msdoc">Index Microsoft Word documents</flag>
+		<flag name="msppt">Index Microsoft PowerPoint documents</flag>
+		<flag name="msxls">Index Microsoft Excel documents</flag>
+		<flag name="pdf">Index PDF documents</flag>
+		<flag name="rtf">Index Microsoft RTF documents</flag>
+		<flag name="session">Stop monitoring file alterations when X11 session terminates</flag>
+		<flag name="sound">Index audio files</flag>
+		<flag name="tex">Index TeX files</flag>
+		<flag name="wordperfect">Index WordPerfect documents</flag>
+		<flag name="xml">Index several XML-based formats (Abiword, FictionBook, Kword, Office OpenXML, OpenDocument, SVG)</flag>
+	</use>
+	<longdescription lang="en">
+		Recoll is a desktop full-text search tool. It can search most document
+		formats. You may need external applications for text extraction. It
+		can reach any storage place: files, archive members, email attachments,
+		transparently handling decompression.
+	</longdescription>
 </pkgmetadata>
