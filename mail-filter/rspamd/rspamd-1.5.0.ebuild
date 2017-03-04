@@ -3,15 +3,15 @@
 
 EAPI=5
 
-inherit cmake-utils user systemd git-r3 pax-utils
+inherit cmake-utils pax-utils user systemd
 
 DESCRIPTION="Rapid spam filtering system"
+SRC_URI="https://rspamd.com/downloads/${P}.tar.xz"
 HOMEPAGE="https://github.com/vstakhov/rspamd"
-EGIT_REPO_URI="https://github.com/vstakhov/rspamd.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="fann +gd jemalloc +jit libressl pcre2"
 
 RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
@@ -24,7 +24,7 @@ RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	dev-libs/libevent
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-util/ragel
+	<dev-util/ragel-7.0
 	sys-apps/file
 	gd? ( media-libs/gd[jpeg] )
 	dev-libs/icu"
@@ -48,7 +48,6 @@ src_configure() {
 		-DENABLE_FANN=$(usex fann ON OFF)
 		-DENABLE_PCRE2=$(usex pcre2 ON OFF)
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
-		-DENABLE_GD=$(usex gd ON OFF)
 	)
 	cmake-utils_src_configure
 }
