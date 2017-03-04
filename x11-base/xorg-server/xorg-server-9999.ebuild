@@ -152,6 +152,13 @@ pkg_pretend() {
 		die "Sorry, but gcc earlier than 4.0 will not work for xorg-server."
 }
 
+pkg_setup() {
+	if use wayland && ! use glamor; then
+		ewarn "glamor is necessary for acceleration under Xwayland."
+		ewarn "Performance may be unacceptable without it."
+	fi
+}
+
 src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
