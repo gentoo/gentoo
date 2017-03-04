@@ -1918,7 +1918,7 @@ app-misc/sl 5.02: sophisticated graphical program which corrects your miss typin
 app-misc/sleepyhead 0.9.2.2 0.9.2.2-r1 0.9.3 9999: Software used to analyze data from CPAP machines
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
-app-misc/socnetv 0.90 2.2: Qt Social Network Visualizer
+app-misc/socnetv 2.2: Qt Social Network Visualizer
 app-misc/solaar 0.9.2-r3: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/sonypid 1.9: tool to use the Sony Vaios jog-dial as a mouse-wheel
 app-misc/spacenavd 0.5-r2 0.5-r4 0.5-r5 0.5-r6 0.6: The spacenavd daemon provides free alternative to the 3dxserv daemon
