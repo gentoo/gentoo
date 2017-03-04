@@ -20,10 +20,9 @@ SLOT="0"
 
 RDEPEND="!<x11-apps/xkbcomp-1.2.3
 	!<x11-libs/libX11-1.4.3"
-DEPEND="${RDEPEND}
-	dev-util/intltool
+DEPEND="
 	sys-devel/gettext
-	>=x11-proto/xproto-7.0.20"
+	dev-util/intltool"
 
 XORG_CONFIGURE_OPTIONS=(
 	--with-xkb-base="${EPREFIX}/usr/share/X11/xkb"
