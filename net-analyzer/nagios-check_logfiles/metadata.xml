@@ -11,11 +11,6 @@
 		<name>Chris Reffett</name>
 		<description>Proxy maintainer. CC him on bugs.</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>nvinson234@gmail.com</email>
-		<name>Nicholas Vinson</name>
-		<description>Proxied maintainer</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

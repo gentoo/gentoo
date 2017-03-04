@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nvinson234@gmail.com</email>
-		<name>Nicholas Vinson</name>
-		<description>Proxied maintainer</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>anthonyryan1@gmail.com</email>
 		<name>Anthony Ryan</name>
 		<description>Proxied maintainer</description>
