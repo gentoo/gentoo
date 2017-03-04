@@ -17,7 +17,7 @@ SRC_URI="ftp://ftp.franken.de/pub/crypt/cryptlib/cl${MY_PV}.zip
 	doc? ( mirror://gentoo/${DOC_PREFIX}-manual.pdf.bz2 )"
 
 LICENSE="Sleepycat"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="doc ldap odbc python static-libs test"
 
