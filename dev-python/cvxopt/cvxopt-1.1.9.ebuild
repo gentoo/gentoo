@@ -83,7 +83,6 @@ python_prepare_all(){
 	distutils-r1_python_prepare_all
 }
 
-
 python_compile_all() {
 	use doc && VARTEXFONTS="${T}/fonts" emake -C doc -B html
 }
