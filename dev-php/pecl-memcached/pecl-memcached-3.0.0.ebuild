@@ -15,7 +15,7 @@ DESCRIPTION="Interface PHP with memcached via libmemcached library"
 SRC_URI="https://github.com/php-memcached-dev/php-memcached/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="PHP-3"
 SLOT="7"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples igbinary json sasl +session "
 
 COMMON_DEPEND=">=dev-libs/libmemcached-1.0.14[sasl?]

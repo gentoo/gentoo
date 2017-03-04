@@ -11,7 +11,7 @@ SRC_URI="https://github.com/josteink/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 SITEFILE="50${PN}-gentoo.el"
 
