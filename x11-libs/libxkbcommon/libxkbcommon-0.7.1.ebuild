@@ -27,7 +27,7 @@ DEPEND="sys-devel/bison
 		>=x11-proto/kbproto-1.0.6-r1[${MULTILIB_USEDEP}]
 	)
 	doc? ( app-doc/doxygen )"
-RDEPEND=""
+RDEPEND="X? ( >=x11-libs/libxcb-1.10[${MULTILIB_USEDEP},xkb] )"
 
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
