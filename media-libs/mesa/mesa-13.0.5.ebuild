@@ -56,8 +56,7 @@ REQUIRED_USE="
 	gles2?  ( egl )
 	vaapi? ( gallium )
 	vdpau? ( gallium )
-	vulkan? ( || ( video_cards_i965 video_cards_radeonsi )
-	          video_cards_radeonsi? ( llvm ) )
+	vulkan? ( video_cards_i965 )
 	wayland? ( egl gbm )
 	xa?  ( gallium )
 	video_cards_freedreno?  ( gallium )
@@ -97,7 +96,6 @@ RDEPEND="
 	llvm? (
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
-			vulkan? ( >=sys-devel/llvm-3.9.0:0=[${MULTILIB_USEDEP}] )
 		)
 		>=sys-devel/llvm-3.6.0:0=[${MULTILIB_USEDEP}]
 	)
@@ -276,7 +274,9 @@ multilib_src_configure() {
 
 	if use vulkan; then
 		vulkan_enable video_cards_i965 intel
-		vulkan_enable video_cards_radeonsi radeon
+
+		# radv is disabled due to dependence on >=llvm-3.9, bug 607660
+		#vulkan_enable video_cards_radeonsi radeon
 	fi
 
 	# x86 hardened pax_kernel needs glx-rts, bug 240956

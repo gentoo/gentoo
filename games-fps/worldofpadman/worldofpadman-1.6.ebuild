@@ -17,7 +17,10 @@ IUSE="+curl dedicated maps +openal +theora +vorbis"
 RDEPEND="sys-libs/zlib
 	!dedicated? (
 		|| (
-			media-libs/speexdsp
+			(
+				>=media-libs/speex-1.2.0
+				media-libs/speexdsp
+			)
 			<media-libs/speex-1.2.0
 		)
 		virtual/jpeg:0
