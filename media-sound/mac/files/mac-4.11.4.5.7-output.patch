@@ -1,0 +1,27 @@
+--- a/src/Console/Console.cpp
++++ b/src/Console/Console.cpp
+@@ -60,7 +60,7 @@ Displays the proper usage for MAC.exe
+ ***************************************************************************************/
+ void DisplayProperUsage(FILE * pFile) 
+ {
+-	_ftprintf(pFile, _T("Proper Usage: [EXE] [Input File] [Output File] [Mode]\n\n"));
++	_ftprintf(pFile, _T("Proper Usage: [Input File] [Output File] [Mode]\n\n"));
+ 
+ 	_ftprintf(pFile, _T("Modes: \n"));
+ 	_ftprintf(pFile, _T("    Compress (fast): '-c1000'\n"));
+@@ -76,11 +76,11 @@ void DisplayProperUsage(FILE * pFile)
+ 	_ftprintf(pFile, _T("    Convert: '-nXXXX'\n\n"));
+ 
+ 	_ftprintf(pFile, _T("Examples:\n"));
+-	_ftprintf(pFile, _T("    Compress: mac.exe \"Metallica - One.wav\" \"Metallica - One.ape\" -c2000\n"));
+-	_ftprintf(pFile, _T("    Decompress: mac.exe \"Metallica - One.ape\" \"Metallica - One.wav\" -d\n"));
+-	_ftprintf(pFile, _T("    Verify: mac.exe \"Metallica - One.ape\" -v\n"));
++	_ftprintf(pFile, _T("    Compress: mac \"Metallica - One.wav\" \"Metallica - One.ape\" -c2000\n"));
++	_ftprintf(pFile, _T("    Decompress: mac \"Metallica - One.ape\" \"Metallica - One.wav\" -d\n"));
++	_ftprintf(pFile, _T("    Verify: mac \"Metallica - One.ape\" -v\n"));
+ #ifdef SHNTOOL
+-	_ftprintf(pFile, _T("    Quick verify: mac.exe \"Metallica - One.ape\" -q\n"));
++	_ftprintf(pFile, _T("    Quick verify: mac \"Metallica - One.ape\" -q\n"));
+ #endif
+ 	_ftprintf(pFile, _T("    (note: int filenames must be put inside of quotations)\n"));
+ }

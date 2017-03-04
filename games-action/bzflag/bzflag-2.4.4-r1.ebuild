@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic autotools
 
 DESCRIPTION="3D tank combat simulator game"
 HOMEPAGE="http://www.bzflag.org/"
@@ -28,6 +28,11 @@ RDEPEND=${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-configure.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myconf
