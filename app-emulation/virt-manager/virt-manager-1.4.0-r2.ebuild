@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -31,7 +31,7 @@ IUSE="gnome-keyring gtk policykit sasl ${VM_LINGUAS[@]/#/linguas_}"
 
 RDEPEND="!app-emulation/virtinst
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
-	>=app-emulation/libvirt-glib-0.0.9[introspection,python,${PYTHON_USEDEP}]
+	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	${PYTHON_DEPS}
 	dev-libs/libxml2[python,${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]

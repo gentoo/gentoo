@@ -1,0 +1,10 @@
+--- a/src/storage/storage_backend_fs.c
++++ b/src/storage/storage_backend_fs.c
+@@ -30,6 +30,7 @@
+ #include <dirent.h>
+ #include <errno.h>
+ #include <fcntl.h>
++#include <paths.h>
+ #include <unistd.h>
+ #include <string.h>
+ 
