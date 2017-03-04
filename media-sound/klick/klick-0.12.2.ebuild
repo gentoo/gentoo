@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit scons-utils toolchain-funcs
 
@@ -23,7 +23,10 @@ RDEPEND="dev-libs/boost
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-sconstruct.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-sconstruct.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 HTML_DOCS=( doc/manual.html )
 
