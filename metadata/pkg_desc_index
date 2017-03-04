@@ -8929,7 +8929,7 @@ dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communicat
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 0.11.4 9999: Interface for enforcing joint limits
-dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 9999: Tool for setting and publishing joint state values for a given URDF
+dev-ros/joint_state_publisher 1.12.7 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.12.6 1.12.7 9999: Constructs a KDL tree from an XML robot representation in URDF
