@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 if [[ ${PV} == "99999999" ]] ; then
@@ -24,12 +24,14 @@ else
 fi
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="radioreference"
 
-DEPEND="dev-python/pyserial
+DEPEND="${PYTHON_DEPS}
+	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-libs/libxml2[python]"
 RDEPEND="${DEPEND}
-	dev-python/pygtk"
+	dev-python/pygtk[${PYTHON_USEDEP}]
+	radioreference? ( dev-python/suds[${PYTHON_USEDEP}] )"
 
 src_prepare() {
 	sed -i -e "/share\/doc\/chirp/d" setup.py || die
