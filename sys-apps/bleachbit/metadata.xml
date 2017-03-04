@@ -11,7 +11,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">bleachbit</remote-id>
+		<remote-id type="github">bleachbit/bleachbit</remote-id>
 		<bugs-to>https://bugs.launchpad.net/bleachbit</bugs-to>
 	</upstream>
 </pkgmetadata>
