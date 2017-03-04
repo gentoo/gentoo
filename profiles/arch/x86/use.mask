@@ -142,9 +142,6 @@
 # Modular X: mask for architectures on which they aren't available
 video_cards_newport
 
-#codec support
--x264
-
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Unmask the flags for PHP that are available only on x86
 #

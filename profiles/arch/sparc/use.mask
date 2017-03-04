@@ -238,9 +238,6 @@ alsa_cards_sbawe
 alsa_cards_sscape
 alsa_cards_wavefront
 
-# Enable H264 with x264
--x264
-
 # Copied over from default-linux/sparc/sparc64
 -vis
 

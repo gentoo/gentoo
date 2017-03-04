@@ -105,10 +105,6 @@
 # nVidia XvMC support works on amd64
 -nvidia
 
-# 2006/03/03 - Luca Barbato <lu_zero@gentoo.org>
-# codec support x264
--x264
-
 # 2006/01/28 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics

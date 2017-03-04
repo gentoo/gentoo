@@ -163,9 +163,6 @@ mpd
 # USE=d seems to break gcc-4.1.2 (#178896)
 d
 
-# This works
--x264
-
 # uses gnat/ada which is too big to support currently
 topal
 
