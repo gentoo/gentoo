@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (4 Mar 2017)
+# gst-plugins-x264 is not stable on ia64
+media-plugins/gst-plugins-meta x264
+
 # Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
 # Missing keywords, bug #559770
 >=net-misc/networkmanager-1.4.4 consolekit

@@ -6,9 +6,6 @@
 # profile (such as the selinux profiles) have a USE flag associated with
 # them.
 
-# ppc and x86/amd64
-x264
-
 # Diego Elio Pettenò <flameeyes@gentoo.org> (27 Aug 2012)
 # netlink is a Linux-specific interface
 -netlink
