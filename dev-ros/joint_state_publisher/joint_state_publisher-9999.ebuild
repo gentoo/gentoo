@@ -19,5 +19,4 @@ RDEPEND="${DEPEND}
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/python_qt_binding[${PYTHON_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
