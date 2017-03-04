@@ -32,8 +32,5 @@
 # Modular X: mask for architectures on which they aren't available
 video_cards_newport
 
-#codec support
--x264
-
 # ibm is only used for ppc64 stuff
 ibm

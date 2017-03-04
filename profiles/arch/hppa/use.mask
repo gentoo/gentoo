@@ -59,10 +59,6 @@ llvm
 # No known OpenCL providers (bug #482096)
 opencl
 
-# Jeroen Roovers <jer@gentoo.org> (19 Jun 2013)
-# media-libs/x264 works
--x264
-
 # Samuli Suominen <ssuominen@gentoo.org> (12 Mar 2013)
 # NVIDIA Cg toolkit for binary drivers
 cg
