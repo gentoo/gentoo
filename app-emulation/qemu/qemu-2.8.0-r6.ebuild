@@ -413,10 +413,10 @@ qemu_src_configure() {
 	# Disable options not used by user targets as the default configure
 	# options will autoprobe and try to link in a bunch of unused junk.
 	conf_softmmu() {
-		if [[ ${buildtype} == "user" ]] ; then
-			echo "--disable-${2:-$1}"
-		else
+		if [[ ${buildtype} == "softmmu" ]] ; then
 			use_enable "$@"
+		else
+			echo "--disable-${2:-$1}"
 		fi
 	}
 	conf_opts+=(
