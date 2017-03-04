@@ -19,12 +19,11 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~x86"
-IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks udisks_legacy wiimote"
+IUSE="amazoncloud box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio skydrive test +udisks wiimote"
 IUSE+="${LANGS// / linguas_}"
 
 REQUIRED_USE="
 	udisks? ( dbus )
-	udisks_legacy? ( dbus )
 	wiimote? ( dbus )
 "
 
@@ -64,8 +63,7 @@ COMMON_DEPEND="
 # 06-fix-numeric-locale.patch
 # 08-stdlib.h-for-rand.patch
 RDEPEND="${COMMON_DEPEND}
-	dbus? ( udisks? ( sys-fs/udisks:2 )
-	        udisks_legacy? ( sys-fs/udisks:0 ) )
+	dbus? ( udisks? ( sys-fs/udisks:0 ) )
 	mms? ( media-plugins/gst-plugins-libmms:1.0 )
 	mtp? ( gnome-base/gvfs[mtp] )
 	media-plugins/gst-plugins-meta:1.0
@@ -78,10 +76,10 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	dev-qt/qttest:4
 	dev-cpp/gmock
+	amazoncloud? ( dev-cpp/sparsehash )
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
 	googledrive? ( dev-cpp/sparsehash )
-	seafile? ( dev-cpp/sparsehash )
 	pulseaudio? ( media-sound/pulseaudio )
 	skydrive? ( dev-cpp/sparsehash )
 	test? ( gnome-base/gsettings-desktop-schemas )
@@ -94,6 +92,9 @@ S="${WORKDIR}/${MY_P^}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch
+	"${FILESDIR}"/${P}-fix-desktop-file.patch
+	"${FILESDIR}"/${P}-chromaprint14.patch #603662
+	"${FILESDIR}"/${P}-libechonest_removal.patch
 )
 
 src_prepare() {
@@ -115,10 +116,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		-DLINGUAS="${langs}"
+		-DENABLE_AMAZON_CLOUD_DRIVE="$(usex amazoncloud)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_DBUS="$(usex dbus)"
-		-DENABLE_UDISKS2="$(usex udisks)"
-		-DENABLE_DEVICEKIT="$(usex udisks_legacy)"
+		-DENABLE_DEVICEKIT="$(usex udisks)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBLASTFM="$(usex lastfm)"
 		-DENABLE_LIBMTP="$(usex mtp)"
@@ -130,7 +131,6 @@ src_configure() {
 		-DENABLE_DROPBOX="$(usex dropbox)"
 		-DENABLE_GOOGLE_DRIVE="$(usex googledrive)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
-		-DENABLE_SEAFILE="$(usex seafile)"
 		-DENABLE_SKYDRIVE="$(usex skydrive)"
 		-DENABLE_SPOTIFY_BLOB=OFF
 		-DENABLE_BREAKPAD=OFF  #< disable crash reporting
@@ -143,6 +143,8 @@ src_configure() {
 		-DCRYPTOPP_FOUND=ON
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
+		# see https://github.com/clementine-player/Clementine/issues/5591
+		-DENABLE_VK=OFF
 		)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
