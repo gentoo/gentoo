@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ DESCRIPTION="Blu-ray playback libraries"
 HOMEPAGE="http://www.videolan.org/developers/libbluray.html"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/2"
 IUSE="aacs bdplus +fontconfig java static-libs +truetype udf utils +xml"
 
 COMMON_DEPEND="

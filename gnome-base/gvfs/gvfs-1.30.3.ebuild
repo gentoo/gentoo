@@ -30,7 +30,7 @@ RDEPEND="
 	net-misc/openssh
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
-	bluray? ( media-libs/libbluray )
+	bluray? ( media-libs/libbluray:= )
 	fuse? ( >=sys-fs/fuse-2.8.0 )
 	gnome-keyring? ( app-crypt/libsecret )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1:= )

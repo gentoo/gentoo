@@ -34,7 +34,7 @@ LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
 if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
 
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
@@ -68,7 +68,7 @@ RDEPEND="
 		libav? ( media-video/libav:0= )
 	)
 	bidi? ( dev-libs/fribidi:0 )
-	bluray? ( >=media-libs/libbluray-0.3:0 )
+	bluray? ( >=media-libs/libbluray-0.3:0= )
 	cddb? ( >=media-libs/libcddb-1.2:0 )
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	dbus? ( >=sys-apps/dbus-1.6:0 )

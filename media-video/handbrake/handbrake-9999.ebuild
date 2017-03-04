@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/jansson
 	media-libs/a52dec
 	media-libs/libass:=
-	media-libs/libbluray
+	media-libs/libbluray:=
 	media-libs/libdvdnav
 	media-libs/libdvdread
 	media-libs/libsamplerate

@@ -68,7 +68,7 @@ RDEPEND="
 		libav? ( media-video/libav:0= )
 	)
 	bidi? ( dev-libs/fribidi:0 )
-	bluray? ( >=media-libs/libbluray-0.6.2:0 )
+	bluray? ( >=media-libs/libbluray-0.6.2:0= )
 	cddb? ( >=media-libs/libcddb-1.2:0 )
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	chromecast? ( >=dev-libs/protobuf-2.5.0 )
