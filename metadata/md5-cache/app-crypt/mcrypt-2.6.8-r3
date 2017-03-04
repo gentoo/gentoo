@@ -4,10 +4,10 @@ DESCRIPTION=replacement of the old unix crypt(1)
 EAPI=6
 HOMEPAGE=http://mcrypt.sourceforge.net/
 IUSE=nls
-KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~x86-macos
+KEYWORDS=amd64 ~ppc ~sparc ~x86 ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libmcrypt-2.5.8 >=app-crypt/mhash-0.9.9 sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://sourceforge/mcrypt/mcrypt-2.6.8.tar.gz
 _eclass_exported_funcs=src_configure:-
-_md5_=25d717a3eb02ffabcd6318519271aa83
+_md5_=abbbbd5e26498c1961b08acf636acc3a
