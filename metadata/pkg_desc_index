@@ -8757,7 +8757,7 @@ dev-python/yarl 0.7.0 0.8.1: Yet another URL library
 dev-python/yenc 0.4.0-r1: Module providing raw yEnc encoding/decoding
 dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
 dev-python/yolk-portage 0.1-r1: Gentoo Portage plugin for yolk
-dev-python/yubiotp 0.2.1: Python library for verifying YubiKey OTP tokens, both locally and through a Yubico web service
+dev-python/yubiotp 0.2.1: Library for verifying YubiKey OTP tokens, both locally and through a Yubico web service
 dev-python/zake 0.2.1: Set of testing utilities for the kazoo library
 dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
 dev-python/zc-buildout 2.3.1 2.5.3: System for managing development buildouts
@@ -9273,6 +9273,7 @@ dev-ruby/dalli 2.7.6: A high performance pure Ruby client for accessing memcache
 dev-ruby/database_cleaner 1.5.1 1.5.2 1.5.3: Strategies for cleaning databases
 dev-ruby/date_validator 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 2.0.8 2.0.13 3.0.8 3.1.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/ddplugin 1.0.1: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1 1.1.1: A simple set of utility functions for Hash
@@ -9473,7 +9474,7 @@ dev-ruby/nokogumbo 1.4.7 1.4.9: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2 0.5.1: A RubyGem for implementing both OAuth clients and servers
-dev-ruby/oauth2 1.2.0 1.2.0-r1 1.3.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
+dev-ruby/oauth2 1.2.0 1.2.0-r1 1.3.0 1.3.1: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.4.1 4.6.2: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.3.1 1.3.2 1.4.0 1.6.0: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
@@ -9550,7 +9551,7 @@ dev-ruby/rbnacl 4.0.1: Provides a high-level toolkit for building cryptographic 
 dev-ruby/rbpdf 1.19.0: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0-r1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
-dev-ruby/rcairo 1.14.3 1.15.2 1.15.3 1.15.4 1.15.5: Ruby bindings for cairo
+dev-ruby/rcairo 1.14.3 1.15.4 1.15.5: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.2.0 4.2.2 4.3.0 5.0.0 5.0.0-r1 5.0.0-r2 5.0.0-r3 5.1.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
@@ -13994,7 +13995,7 @@ media-video/rovclock 0.6e: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20131018 2.4_p20161210 9999: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shrip 0.6.0: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/smplayer 14.9.0-r1 16.1.0 16.4.0-r2 16.9.0 16.11.0: Great Qt GUI front-end for mplayer/mpv
+media-video/smplayer 16.1.0 16.11.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 16.1.0 16.3.0 16.6.0 16.6.0-r1 16.7.0 17.1.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
@@ -16477,7 +16478,7 @@ sci-mathematics/pymc 2.3.6: Markov Chain Monte Carlo sampling toolkit
 sci-mathematics/pymc3 3.0_rc6: Bayesian Modeling and Probabilistic Machine Learning in Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
-sci-mathematics/relational 2.4: Educational tool for relational algebra
+sci-mathematics/relational 2.4 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1 0.6.5: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136: IDE for the R language
