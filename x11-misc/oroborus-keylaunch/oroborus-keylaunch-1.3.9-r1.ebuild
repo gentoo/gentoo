@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MY_PN=${PN/oroborus-//}
 
@@ -20,13 +20,15 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
+DOCS=( README docs/example_rc debian/changelog )
+
 src_prepare() {
+	default
 	sed -e "s: -g -O2 -Wall::" \
 		-e "/^install:/s/install-docs//" \
 		-i Makefile.in || die
 }
 
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc README docs/example_rc debian/changelog
+src_compile() {
+	emake VERBOSE=1
 }
