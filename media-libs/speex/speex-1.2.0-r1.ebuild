@@ -19,7 +19,7 @@ IUSE="armv5te cpu_flags_x86_sse static-libs utils +vbr"
 RDEPEND="
 	utils? (
 		media-libs/libogg:=
-		media-libs/speexdsp
+		media-libs/speexdsp[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
