@@ -12,7 +12,7 @@ inherit kde5
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
 LICENSE="GPL-2 LGPL-2"
 IUSE="+cxx +gdbui +ninja okteta +plasma +qmake qthelp"
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="amd64 ~x86"
+[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep kcmutils)
