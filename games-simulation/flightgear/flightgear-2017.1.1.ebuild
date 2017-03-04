@@ -21,7 +21,10 @@ COMMON_DEPEND="
 	~dev-games/simgear-${PV}
 	media-libs/openal
 	|| (
-		media-libs/speexdsp
+		(
+			>=media-libs/speex-1.2.0
+			media-libs/speexdsp
+		)
 		<media-libs/speex-1.2.0
 	)
 	media-sound/gsm
