@@ -6,8 +6,11 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-  ColPack is a package comprising of implementations of algorithms for
-  the specialized vertex coloring problems as well as algorithms for a
-  variety of related supporting tasks in derivative computation.
-</longdescription>
+    ColPack is a package comprising of implementations of algorithms for
+    the specialized vertex coloring problems as well as algorithms for a
+    variety of related supporting tasks in derivative computation.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">CSCsw/ColPack</remote-id>
+  </upstream>
 </pkgmetadata>
