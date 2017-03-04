@@ -25,7 +25,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="extras static-libs +wireshark-plugins"
+IUSE="extras static-libs wireshark-plugins"
 
 RDEPEND="extras? ( ${PYTHON_DEPS} )
 	wireshark-plugins? (
