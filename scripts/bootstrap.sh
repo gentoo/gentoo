@@ -272,7 +272,7 @@ for atom in portage.settings.packages:
 [[ -z ${myBINUTILS}   ]] && myBINUTILS="binutils"
 [[ -z ${myGCC}        ]] && myGCC="gcc"
 [[ -z ${myGETTEXT}    ]] && myGETTEXT="gettext"
-[[ -z ${myLIBC}       ]] && myLIBC="virtual/libc"
+[[ -z ${myLIBC}       ]] && myLIBC="$(portageq expand_virtual / virtual/libc)"
 [[ -z ${myTEXINFO}    ]] && myTEXINFO="sys-apps/texinfo"
 [[ -z ${myZLIB}       ]] && myZLIB="zlib"
 [[ -z ${myNCURSES}    ]] && myNCURSES="ncurses"
