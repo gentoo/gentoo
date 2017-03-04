@@ -10,5 +10,5 @@ RDEPEND=>=app-eselect/eselect-emacs-1.15 X? ( x11-libs/libXau ) !!app-emacs/gnus
 SLOT=0
 SRC_URI=http://meltin.net/hacks/emacs/src/gnuserv-3.12.8.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:elisp src_unpack:elisp src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	eutils	3c847a0129fed780bd709b98e426f89c	fdo-mime	21ef5adf81836863efa968f2a25cff64	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	19ff54b35acd0bf2a14831a308a57753	eutils	3c847a0129fed780bd709b98e426f89c	fdo-mime	21ef5adf81836863efa968f2a25cff64	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
 _md5_=6f6969bcde2bdcc014515b7c7c93ce65

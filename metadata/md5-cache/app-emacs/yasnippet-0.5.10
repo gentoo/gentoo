@@ -10,5 +10,5 @@ RDEPEND=>=app-emacs/dropdown-list-20080316 >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://yasnippet.googlecode.com/files/yasnippet-0.5.10.tar.bz2 doc? ( https://yasnippet.googlecode.com/files/yasnippet-doc-0.5.10.tar.bz2 )
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:- pkg_setup:elisp src_unpack:- src_compile:elisp src_install:-
-_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	19ff54b35acd0bf2a14831a308a57753	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
 _md5_=ee8110662d59ce8a9069c867f0e21d7a

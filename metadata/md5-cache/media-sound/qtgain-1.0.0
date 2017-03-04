@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-qt/qtgui:4
+DESCRIPTION=A simple frontend to mp3gain, vorbisgain and metaflac
+EAPI=6
+HOMEPAGE=https://www.linux-apps.com/content/show.php/QtGain?content=56842
+IUSE=flac mp3 mp4 vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=https://dl.opendesktop.org/api/files/download/id/1466640864/56842-QtGain_1.0.0.zip
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=cbd74cfdf081bce9bac2bf3529165d5d
