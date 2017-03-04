@@ -1480,7 +1480,7 @@
     <email>hppa@gentoo.org</email>
     <name>Gentoo Linux HPPA Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:HPPA</url>
-    <description>Gentoo/HPPA is a Gentoo project designed to bring the Gentoo GNU/Linux operating system to the HP Precision Architecture platforms. Gentoo/HPPA aims to provide a usable computing environment for your various HPPA related endeavours.</description>
+    <description>The Gentoo HPPA project is designed to bring the Gentoo GNU/Linux operating system to the HP Precision Architecture platforms. We aim to provide a usable computing environment for your various HPPA related endeavors.</description>
     <member>
       <email>jer@gentoo.org</email>
       <name>Jeroen Roovers</name>
