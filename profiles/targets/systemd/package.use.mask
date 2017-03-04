@@ -1,6 +1,10 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.org> (04 Mar 2017)
+# requires libusb[static-libs] which requires libudev[static-libs], all masked
+net-wireless/ubertooth static-libs
+
 # Rick Farina <zerochaos@gentoo.org> (03 Feb 2016)
 # dev-libs/libusb[static-libs] requires libudev[static-libs] which is masked below
 dev-libs/libusb static-libs

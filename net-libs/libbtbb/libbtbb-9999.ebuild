@@ -1,9 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit multilib cmake-utils
+PYTHON_COMPAT=( python2_7 )
+DISTUTILS_OPTIONAL=1
+
+inherit multilib cmake-utils python-single-r1
 
 DESCRIPTION="A library to decode Bluetooth baseband packets"
 HOMEPAGE="http://libbtbb.sourceforge.net/"
@@ -22,10 +25,9 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="+pcap static-libs +wireshark-plugins"
+IUSE="extras static-libs wireshark-plugins"
 
-RDEPEND="
-	pcap? ( net-libs/libpcap[static-libs?] )
+RDEPEND="extras? ( ${PYTHON_DEPS} )
 	wireshark-plugins? (
 		>=net-analyzer/wireshark-1.8.3-r1:=
 	)
@@ -34,10 +36,14 @@ DEPEND="${RDEPEND}
 	wireshark-plugins? ( dev-libs/glib
 			virtual/pkgconfig )"
 
+REQUIRED_USE="extras? ( ${PYTHON_REQUIRED_USE} )"
+
 get_PV() { local pv=$(best_version $1); pv=${pv#$1-}; pv=${pv%-r*}; pv=${pv//_}; echo ${pv}; }
 
 which_plugins() {
-	if has_version '>=net-analyzer/wireshark-1.12.0'; then
+	if has_version '>=net-analyzer/wireshark-2.2.0'; then
+		plugins=""
+	elif has_version '>=net-analyzer/wireshark-1.12.0'; then
 		plugins="btbb btbredr"
 	elif has_version '<net-analyzer/wireshark-1.12.0'; then
 		plugins="btbb btle btsm"
@@ -69,11 +75,9 @@ src_configure() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
 	local mycmakeargs=(
-		-DENABLE_PYTHON=false
-		-DPACKAGE_MANAGER=true
-		$(cmake-utils_use pcap PCAPDUMP)
-		$(cmake-utils_use pcap USE_PCAP)
-		$(cmake-utils_use static-libs BUILD_STATIC_LIB)
+		-DENABLE_PYTHON=$(usex extras)
+		-DBUILD_STATIC_LIB=$(usex static-libs)
+		-DBUILD_ROOT="${ED}"
 	)
 	cmake-utils_src_configure
 
