@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=dev-libs/libxml2:2 >=app-emulation/libvirt-1.2.6:= >=dev-libs/glib-2.38.0:2 introspection? ( >=dev-libs/gobject-introspection-0.10.8:= ) dev-util/gtk-doc-am >=dev-util/intltool-0.35.0 virtual/pkgconfig vala? ( || ( dev-lang/vala:0.34 dev-lang/vala:0.32 dev-lang/vala:0.30 dev-lang/vala:0.28 dev-lang/vala:0.26 ) ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GLib and GObject mappings for libvirt
+EAPI=6
+HOMEPAGE=http://libvirt.org/git/?p=libvirt-glib.git
+IUSE=+introspection nls +vala
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libxml2:2 >=app-emulation/libvirt-1.2.6:= >=dev-libs/glib-2.38.0:2 introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
+REQUIRED_USE=vala? ( introspection )
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://libvirt.org/libvirt/glib/libvirt-glib-1.0.0.tar.gz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	d37ffcd1731600f2d196e77cd77ed727	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	vala	45cd5c637ea9287eeaf983960768e17c	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	178a84136f416b8ea1a857717eacd21c
+_md5_=822bde9359fa2a5cb3ea004fcdacf182
