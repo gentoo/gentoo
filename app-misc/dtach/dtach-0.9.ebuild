@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Emulates the detach feature of screen"
-HOMEPAGE="http://dtach.sourceforge.net/"
+HOMEPAGE="http://dtach.sourceforge.net/ https://github.com/crigler/dtach"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 SLOT="0"
