@@ -75,7 +75,6 @@ RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1-unused-deps.patch"
-	"${FILESDIR}/${P}-kconfig-5.30.patch"
 )
 
 src_prepare() {
