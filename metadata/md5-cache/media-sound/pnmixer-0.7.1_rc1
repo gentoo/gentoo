@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-libs/glib:2 media-libs/alsa-lib >=x11-libs/gtk+-3.12:3 x11-libs/libX11 libnotify? ( x11-libs/libnotify ) sys-devel/gettext virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.6.3 >=sys-apps/sed-4
+DESCRIPTION=Volume mixer for the system tray
+EAPI=5
+HOMEPAGE=https://github.com/nicklan/pnmixer
+IUSE=libnotify
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2 media-libs/alsa-lib >=x11-libs/gtk+-3.12:3 x11-libs/libX11 libnotify? ( x11-libs/libnotify )
+SLOT=0
+SRC_URI=https://github.com/nicklan/pnmixer/archive/v0.7.1-rc1.tar.gz -> pnmixer-0.7.1_rc1.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	178a84136f416b8ea1a857717eacd21c
+_md5_=22afc62c51e749baaddf97ea50298453

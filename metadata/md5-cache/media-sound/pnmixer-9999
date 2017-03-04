@@ -1,12 +1,12 @@
-DEFINED_PHASES=configure postinst postrm preinst prepare unpack
-DEPEND=dev-libs/glib:2 media-libs/alsa-lib >=x11-libs/gtk+-3.6:3 x11-libs/libX11 libnotify? ( x11-libs/libnotify ) dev-util/intltool virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=dev-libs/glib:2 media-libs/alsa-lib >=x11-libs/gtk+-3.12:3 x11-libs/libX11 libnotify? ( x11-libs/libnotify ) sys-devel/gettext virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.6.3 >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Volume mixer for the system tray
-EAPI=5
+EAPI=6
 HOMEPAGE=https://github.com/nicklan/pnmixer
-IUSE=debug libnotify
+IUSE=libnotify
 LICENSE=GPL-3
-RDEPEND=dev-libs/glib:2 media-libs/alsa-lib >=x11-libs/gtk+-3.6:3 x11-libs/libX11 libnotify? ( x11-libs/libnotify )
+RDEPEND=dev-libs/glib:2 media-libs/alsa-lib >=x11-libs/gtk+-3.12:3 x11-libs/libX11 libnotify? ( x11-libs/libnotify )
 SLOT=0
-_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	xdg-utils	178a84136f416b8ea1a857717eacd21c
-_md5_=bbd1cc7dbfbd2c103592765bec66ceb2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	178a84136f416b8ea1a857717eacd21c
+_md5_=3f2e10a3798609d46f3ed930d8fa665c

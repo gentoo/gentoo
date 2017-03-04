@@ -1845,7 +1845,7 @@ app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1 0.7.1-r1: Linux Serial Protocol Analyser
-app-misc/lirc 0.9.0-r6 0.9.4a-r2 0.9.4c: decode and send infra-red signals of many commonly used remote controls
+app-misc/lirc 0.9.0-r6 0.9.4a-r2 0.9.4c 0.9.4d: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.2 2.3 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
@@ -13699,7 +13699,7 @@ media-sound/pithos 1.0.1 1.1.1 9999: Pandora.com client for the GNOME desktop
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
 media-sound/pms 0.42-r2 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
-media-sound/pnmixer 0.6_pre20111213 0.6 9999: Volume mixer for the system tray
+media-sound/pnmixer 0.6_pre20111213 0.7.1_rc1 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
