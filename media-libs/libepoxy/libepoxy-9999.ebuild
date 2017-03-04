@@ -1,9 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-AUTOTOOLS_AUTORECONF=yes
+EAPI=6
 
 EGIT_REPO_URI="git://github.com/anholt/libepoxy.git"
 
@@ -13,7 +11,7 @@ fi
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='xml(+)'
-inherit autotools-multilib ${GIT_ECLASS} python-any-r1
+inherit autotools ${GIT_ECLASS} multilib-minimal python-any-r1
 
 DESCRIPTION="Epoxy is a library for handling OpenGL function pointer management for you"
 HOMEPAGE="https://github.com/anholt/libepoxy"
@@ -27,15 +25,26 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE="test X"
 
 DEPEND="${PYTHON_DEPS}
 	media-libs/mesa[egl,${MULTILIB_USEDEP}]
 	x11-misc/util-macros
-	x11-libs/libX11[${MULTILIB_USEDEP}]"
+	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
 RDEPEND=""
 
 src_unpack() {
 	default
 	[[ $PV = 9999* ]] && git-r3_src_unpack
+}
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+multilib_src_configure() {
+	ECONF_SOURCE=${S} \
+	econf \
+		$(use_enable X glx)
 }
