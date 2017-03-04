@@ -27,6 +27,7 @@ RDEPEND="
 	>=x11-libs/libdrm-2.4.52[video_cards_intel]
 	dri3? (
 		>=x11-base/xorg-server-1.18
+		!<=media-libs/mesa-12.0.4
 	)
 	sna? (
 		>=x11-base/xorg-server-1.10
@@ -85,12 +86,5 @@ pkg_postinst() {
 		ewarn "	      i915 driver"
 		ewarn "      [*]       Enable modesetting on intel by default"
 		echo
-	fi
-	if use dri3; then
-		ewarn "There are reports of crashes when using DRI3, we recommend"
-		ewarn "to be careful when enabling this option. Check the following"
-		ewarn "bugs for discussion and a workaround patch for libdrm:"
-		ewarn "https://bugs.freedesktop.org/show_bug.cgi?id=71759"
-		ewarn "https://bugs.gentoo.org/show_bug.cgi?id=582544"
 	fi
 }
