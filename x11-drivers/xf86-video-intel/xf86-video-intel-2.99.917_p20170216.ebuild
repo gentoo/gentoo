@@ -10,7 +10,7 @@ inherit linux-info xorg-2 flag-o-matic
 DESCRIPTION="X.Org driver for Intel cards"
 
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd -x86-fbsd"
-IUSE="debug dri3 +sna +udev uxa xvmc"
+IUSE="debug dri3 +sna tools +udev uxa xvmc"
 COMMIT_ID="860c3664fe79c1fe92095ff345068f1fc7e4e651"
 SRC_URI="https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"
 
@@ -24,12 +24,24 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXScrnSaver
 	>=x11-libs/pixman-0.27.1
-	>=x11-libs/libdrm-2.4.29[video_cards_intel]
+	>=x11-libs/libdrm-2.4.52[video_cards_intel]
 	dri3? (
 		>=x11-base/xorg-server-1.18
+		!<=media-libs/mesa-12.0.4
 	)
 	sna? (
 		>=x11-base/xorg-server-1.10
+	)
+	tools? (
+		x11-libs/libX11
+		x11-libs/libxcb
+		x11-libs/libXcursor
+		x11-libs/libXdamage
+		x11-libs/libXinerama
+		x11-libs/libXrandr
+		x11-libs/libXrender
+		x11-libs/libxshmfence
+		x11-libs/libXtst
 	)
 	udev? (
 		virtual/udev
@@ -54,6 +66,7 @@ src_configure() {
 		$(use_enable dri dri3)
 		$(usex dri3 "--with-default-dri=3")
 		$(use_enable sna)
+		$(use_enable tools)
 		$(use_enable udev)
 		$(use_enable uxa)
 		$(use_enable xvmc)
@@ -73,12 +86,5 @@ pkg_postinst() {
 		ewarn "	      i915 driver"
 		ewarn "      [*]       Enable modesetting on intel by default"
 		echo
-	fi
-	if use dri3; then
-		ewarn "There are reports of crashes when using DRI3, we recommend"
-		ewarn "to be careful when enabling this option. Check the following"
-		ewarn "bugs for discussion and a workaround patch for libdrm:"
-		ewarn "https://bugs.freedesktop.org/show_bug.cgi?id=71759"
-		ewarn "https://bugs.gentoo.org/show_bug.cgi?id=582544"
 	fi
 }
