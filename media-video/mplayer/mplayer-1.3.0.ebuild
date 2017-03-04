@@ -64,7 +64,7 @@ RDEPEND+="
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
 	bidi? ( dev-libs/fribidi )
-	bluray? ( >=media-libs/libbluray-0.2.1 )
+	bluray? ( >=media-libs/libbluray-0.2.1:= )
 	bs2b? ( media-libs/libbs2b )
 	cdio? ( dev-libs/libcdio:0= dev-libs/libcdio-paranoia )
 	cdparanoia? ( !cdio? ( media-sound/cdparanoia ) )
