@@ -15,13 +15,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
+DOCS=( INSTALL README )
+
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	dobin detachtty attachtty
-	doman detachtty.1
+	dobin "${PN}" attachtty
+	doman "${PN}.1"
 	dosym /usr/share/man/man1/detachtty.1 /usr/share/man/man1/attachtty.1
-	dodoc INSTALL README
+	einstalldocs
 }
