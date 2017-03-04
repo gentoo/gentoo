@@ -38,10 +38,3 @@ src_prepare() {
 		intltoolize --copy --automake || die
 	fi
 }
-
-src_compile() {
-	# cleanup to make sure .dir files are regenerated
-	# bug #328455 c#26
-	xorg-2_src_compile clean
-	xorg-2_src_compile
-}
