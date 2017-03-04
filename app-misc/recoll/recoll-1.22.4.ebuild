@@ -47,6 +47,14 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 pkg_setup() {
+	if has_version "<app-misc/recoll-1.20"; then
+		einfo "Installing ${PV} over an 1.19 index is possible,"
+		einfo "but there have been small changes in the way"
+		einfo "compound words are indexed. So it is best to reset"
+		einfo "the index. The best method to reset the index is to"
+		einfo "quit all recoll programs and delete the index directory"
+		einfo "rm -rf ~/.recoll/xapiandb, then start recoll or recollindex."
+	fi
 	if use inotify; then
 		CONFIG_CHECK="~INOTIFY_USER"
 		check_extra_config
@@ -94,14 +102,6 @@ src_install() {
 }
 
 pkg_postinst() {
-
-	einfo "Installing 1.22 over an 1.19 index is possible,"
-	einfo "but there have been small changes in the way"
-	einfo "compound words are indexed. So it is best to reset"
-	einfo "the index. The best method to reset the index is to"
-	einfo "quit all recoll programs and delete the index directory"
-	einfo "rm -rf ~/.recoll/xapiandb, then start recoll or recollindex"
-	einfo ""
 	einfo "In order to extract the full functionality of "
 	einfo "recoll, the following packages should be installed "
 	einfo "to get the corresponding document support."
