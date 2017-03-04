@@ -7337,7 +7337,7 @@ dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.1.23-r1 0.2.9 0.2.10 0.2.11: Curses-like terminal wrapper, with colored strings
-dev-python/cvxopt 1.1.6-r2 1.1.8: Python package for convex optimization
+dev-python/cvxopt 1.1.6-r2 1.1.8 1.1.9: Python package for convex optimization
 dev-python/cx_Freeze 4.3.3 4.3.4: Create standalone executables from Python scripts
 dev-python/cycler 0.9.0 0.10.0: Composable style cycles
 dev-python/cython 0.22 0.24.1 0.25.1 0.25.2: A Python to C compiler
@@ -16440,7 +16440,7 @@ sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 28.9 28.10-r1: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.5.8 1.6.1 1.6.2 1.6.6 1.7.2: C++ library and tools for symbolic calculations
-sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57 4.60: GNU Linear Programming Kit
+sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57 4.60 4.61: GNU Linear Programming Kit
 sci-mathematics/gmm 4.2 5.0: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
