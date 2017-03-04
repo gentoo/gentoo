@@ -56,7 +56,10 @@ DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep linguist-tools)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.3.2-libdir.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.3.2-libdir.patch"
+	"${FILESDIR}/${PN}-3.4.4-deps.patch"
+)
 
 src_prepare() {
 	# overengineered upstream build system
