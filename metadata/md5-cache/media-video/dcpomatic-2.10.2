@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-cpp/cairomm dev-cpp/glibmm:2 dev-cpp/libxmlpp:2.6 dev-cpp/pangomm:1.4 dev-libs/boost dev-libs/glib:2 dev-libs/icu dev-libs/libcxml dev-libs/libzip dev-libs/openssl:0 || ( media-gfx/graphicsmagick media-gfx/imagemagick ) media-libs/fontconfig:1.0 >=media-libs/libdcp-1.4.1:1.0 media-libs/libsamplerate media-libs/libsndfile >=media-libs/libsub-1.2.1:1.0 >=media-video/ffmpeg-3:= net-libs/libssh net-misc/curl gtk? ( x11-libs/gtk+:2 x11-libs/wxGTK:3.0 ) dev-util/waf virtual/pkgconfig
+DESCRIPTION=create Digital Cinema Packages (DCPs) from videos, images and sound files
+EAPI=6
+HOMEPAGE=http://dcpomatic.com/
+IUSE=+gtk
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-cpp/cairomm dev-cpp/glibmm:2 dev-cpp/libxmlpp:2.6 dev-cpp/pangomm:1.4 dev-libs/boost dev-libs/glib:2 dev-libs/icu dev-libs/libcxml dev-libs/libzip dev-libs/openssl:0 || ( media-gfx/graphicsmagick media-gfx/imagemagick ) media-libs/fontconfig:1.0 >=media-libs/libdcp-1.4.1:1.0 media-libs/libsamplerate media-libs/libsndfile >=media-libs/libsub-1.2.1:1.0 >=media-video/ffmpeg-3:= net-libs/libssh net-misc/curl gtk? ( x11-libs/gtk+:2 x11-libs/wxGTK:3.0 )
+SLOT=0
+SRC_URI=http://dcpomatic.com/downloads/2.10.2/dcpomatic-2.10.2.tar.bz2
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:waf-utils src_test:- src_install:waf-utils
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	74bf184baf9facd72c7baa58cab21385	python-utils-r1	316c531873247e48befb99900e5aa2ed	toolchain-funcs	53b75b4a49cf3e61530a523804045432	waf-utils	d1ea2758053cbb7c5b38b8f88654468d	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_md5_=1a292e0e1220560521fbe260e86374d8
