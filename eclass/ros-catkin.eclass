@@ -191,7 +191,7 @@ ros-catkin_src_configure_internal() {
 # @DESCRIPTION:
 # Configures a catkin-based package.
 ros-catkin_src_configure() {
-	export CMAKE_PREFIX_PATH="${EPREFIX}/usr"
+	export CATKIN_PREFIX_PATH="${EPREFIX}/usr"
 	export ROS_ROOT="${EPREFIX}/usr/share/ros"
 	if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 		ROS_LANG_DISABLE=""
