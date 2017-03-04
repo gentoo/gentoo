@@ -3,17 +3,15 @@
 
 EAPI=6
 
-inherit cmake-utils bash-completion-r1 git-r3
+inherit cmake-utils bash-completion-r1
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="http://www.flightgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
-	git://mapserver.flightgear.org/${PN}"
-EGIT_BRANCH="next"
+SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
 
 # zlib is some strange auto-dep from simgear
@@ -39,8 +37,6 @@ COMMON_DEPEND="
 	udev? ( virtual/udev )
 	utils? (
 		media-libs/freeglut
-		media-libs/freetype:2
-		media-libs/glew:0
 		media-libs/libpng:0
 		virtual/opengl
 	)
@@ -62,7 +58,6 @@ DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_FGCANVAS=$(usex qt5 && usex utils)
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
@@ -77,10 +72,8 @@ src_configure() {
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
-		-DENABLE_SIMD=OFF # NOTE dead codepath in Gentoo anyway
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TESTS=$(usex test)
-		-DENABLE_TRAFFIC=$(usex utils)
 		-DENABLE_UIUC_MODEL=ON
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)

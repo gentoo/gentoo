@@ -3,13 +3,13 @@
 
 EAPI=6
 
-KDE_HANDBOOK="true"
+KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Classical hangman game by KDE"
 HOMEPAGE="https://www.kde.org/applications/education/khangman
 https://edu.kde.org/khangman"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -34,4 +34,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdeedu-data)
+	$(add_qt_dep qtgraphicaleffects)
+	$(add_qt_dep qtmultimedia)
+	$(add_qt_dep qtquickcontrols)
 "
