@@ -188,7 +188,7 @@ export ORIGUSE=$(portageq envvar USE)
 
 # Check for 'build' or 'bootstrap' in USE ...
 INVALID_USE=$(gawk -v ORIGUSE="${ORIGUSE}" '
-	BEGIN { 
+	BEGIN {
 		if (ORIGUSE ~ /[[:space:]](build|bootstrap)[[:space:]]/)
 			print "yes"
 	}')
@@ -326,7 +326,7 @@ export USE="-* bootstrap ${ALLOWED_USE} ${BOOTSTRAP_USE}"
 
 # We can't unmerge headers which may or may not exist yet. If your
 # trying to use nptl, it may be needed to flush out any old headers
-# before fully bootstrapping. 
+# before fully bootstrapping.
 if [ ${BOOTSTRAP_STAGE} -le 2 ] ; then
 	show_status 3 Emerging packages
 	if [[ ${RESUME} -eq 1 ]] ; then
