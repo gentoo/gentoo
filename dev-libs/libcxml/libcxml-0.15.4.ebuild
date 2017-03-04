@@ -17,7 +17,8 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-cpp/libxmlpp:2.6
-	dev-libs/boost"
+	dev-libs/boost
+	dev-libs/locked_sstream"
 DEPEND="${RDEPEND}
 	dev-util/waf
 	virtual/pkgconfig"
