@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ inherit php-ext-pecl-r3
 
 USE_PHP="php5-6"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DESCRIPTION="Interface PHP with memcached via libmemcached library"
 LICENSE="PHP-3"
