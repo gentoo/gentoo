@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Attach/detach from interactive processes across the network
+EAPI=6
+HOMEPAGE=http://packages.debian.org/unstable/admin/detachtty
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d/detachtty/detachtty_9.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=04ad23a82afd136e0900aea864691759
