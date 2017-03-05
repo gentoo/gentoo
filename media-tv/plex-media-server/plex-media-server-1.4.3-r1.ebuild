@@ -59,7 +59,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/virtualenvize_start_pms.patch
+	eapply "${FILESDIR}"/virtualenv_start_pms.patch
 	eapply "${FILESDIR}"/plexmediamanager.desktop.patch
 	default
 }
