@@ -1,6 +1,6 @@
 DEFINED_PHASES=install
 DESCRIPTION=iptables firewall configuration system
-EAPI=5
+EAPI=6
 HOMEPAGE=http://muse.linuxmafia.org/gshield.html
 KEYWORDS=~amd64 ~ppc x86
 LICENSE=GPL-2
@@ -8,4 +8,4 @@ RDEPEND=net-dns/bind-tools net-firewall/iptables virtual/logger
 SLOT=0
 SRC_URI=ftp://muse.linuxmafia.org/pub/gShield/v2/gShield-2.8.tgz
 _eclass_exported_funcs=src_install:-
-_md5_=5f10bb60e942f1d225b9fa3229debb24
+_md5_=7e82371893bfc4bd659a9b1124409bb3
