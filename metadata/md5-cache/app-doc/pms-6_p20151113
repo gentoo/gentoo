@@ -9,4 +9,4 @@ LICENSE=CC-BY-SA-3.0
 SLOT=0
 SRC_URI=!binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-6_p20151113.tar.xz ) binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-6_p20151113-prebuilt.tar.xz )
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=26fb9efc07353d7c1e27e5a6dc0d9221
+_md5_=1690c98579d5239bb097ac4b7fc706e4
