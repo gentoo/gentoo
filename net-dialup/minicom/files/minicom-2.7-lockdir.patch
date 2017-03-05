@@ -1,0 +1,14 @@
+--- minicom-2.7.orig/configure.in	2013-12-31 07:14:09.000000000 -0800
++++ minicom-2.7/configure.in	2017-03-05 11:25:01.379020326 -0800
+@@ -217,7 +217,10 @@
+ 
+ if test "x$UUCPLOCK" != x
+ then
+-	if test -d $UUCPLOCK
++	dnl If a lock directory was manually specified, do not test it actually
++	dnl exists, as that might not be true during a chroot build, and the
++	dnl packager is responsible for making sure it exists at runtime.
++	if true
+ 	then
+ 		AC_MSG_RESULT($UUCPLOCK)
+ 		AC_DEFINE_UNQUOTED(UUCPLOCK, "$UUCPLOCK", [Lock directory])
