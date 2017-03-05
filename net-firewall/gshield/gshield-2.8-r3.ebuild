@@ -32,7 +32,7 @@ src_install() {
 	dodir /usr/share/gshield/routables
 	for q in gShield-version gShield.rc tools sourced routables/routable.rules
 	do
-		mv "${D}"/etc/gshield/$q "${D}"/usr/share/gshield/ || die
+		mv "${D}"/etc/gshield/$q "${D}"/usr/share/gshield/$q || die
 		dosym /usr/share/gshield/$q /etc/gshield/$q
 	done
 	chmod -R u+rwX "${D}"/etc/gshield || die
