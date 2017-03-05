@@ -1,0 +1,101 @@
+commit 0b684a86d8cf918a4c2ab047a4d6c3034a93c12b
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Mar 5 18:28:45 2017 +0100
+
+    Adapt to >=gpgme-1.8.0, need for -phtread is gone
+
+diff --git a/cmake/modules/FindGpgme.cmake b/cmake/modules/FindGpgme.cmake
+index 5da9a60..268314a 100644
+--- a/cmake/modules/FindGpgme.cmake
++++ b/cmake/modules/FindGpgme.cmake
+@@ -11,12 +11,12 @@
+ #    - GPGME_INCLUDES is the same for all of the above
+ #    - GPGME_FOUND is set if any of the above was found
+ #  - *nix:
+-#    There's also three variants: gpgme{,-pthread,-pth}.
++#    There's also two variants: gpgme{,-pth}.
+ #    - The variant used determines the multithreaded use possible:
+-#      - gpgme:         no multithreading support available
+-#      - gpgme-pthread: multithreading available using POSIX threads
++#      - gpgme:         >=GpgME-1.8.0 multithreading support available
+ #      - gpgme-pth:     multithreading available using GNU PTH (cooperative multithreading)
+-#    - GPGME_{VANILLA,PTH,PTHREAD}_{FOUND,LIBRARIES} will be set for each of the above
++#    - GPGME_{VANILLA,PTH}_{FOUND,LIBRARIES} will be set for each of the above
++#    - GPGME_PTHREAD_{FOUND,LIBRARIES} will be set for legacy compatibility
+ #    - GPGME_INCLUDES is the same for all of the above
+ #    - GPGME_FOUND is set if any of the above was found
+ #
+@@ -164,7 +164,7 @@ else() # not WIN32
+   if ( _seem_to_have_cached_gpgme )
+ 
+     macro_bool_to_bool( GPGME_VANILLA_LIBRARIES GPGME_VANILLA_FOUND )
+-    macro_bool_to_bool( GPGME_PTHREAD_LIBRARIES GPGME_PTHREAD_FOUND )
++    macro_bool_to_bool( GPGME_VANILLA_LIBRARIES GPGME_PTHREAD_FOUND )
+     macro_bool_to_bool( GPGME_PTH_LIBRARIES     GPGME_PTH_FOUND     )
+ 
+     if ( GPGME_VANILLA_FOUND OR GPGME_PTHREAD_FOUND OR GPGME_PTH_FOUND )
+@@ -189,7 +189,7 @@ else() # not WIN32
+ 
+       exec_program( ${_GPGMECONFIG_EXECUTABLE} ARGS --version OUTPUT_VARIABLE GPGME_VERSION )
+ 
+-      set( _GPGME_MIN_VERSION "1.1.7" )
++      set( _GPGME_MIN_VERSION "1.7.99" )
+       if( ${GPGME_VERSION} VERSION_GREATER ${_GPGME_MIN_VERSION} )
+         set( _GPGME_INSTALLED_VERSION_OK TRUE )
+       endif()
+@@ -207,7 +207,7 @@ else() # not WIN32
+ 	  set( _gpgme_config_vanilla_libs )
+ 	endif()
+ 
+-        exec_program( ${_GPGMECONFIG_EXECUTABLE} ARGS --thread=pthread --libs OUTPUT_VARIABLE _gpgme_config_pthread_libs RETURN_VALUE _ret )
++        exec_program( ${_GPGMECONFIG_EXECUTABLE} ARGS                  --libs OUTPUT_VARIABLE _gpgme_config_pthread_libs RETURN_VALUE _ret )
+ 	if ( _ret )
+ 	  set( _gpgme_config_pthread_libs )
+ 	endif()
+@@ -294,7 +294,7 @@ else() # not WIN32
+           # This comment above doesn't make sense, the four following lines seem to do nothing. Alex
+           set( GPGME_INCLUDES          ${GPGME_INCLUDES} )
+           set( GPGME_VANILLA_LIBRARIES ${GPGME_VANILLA_LIBRARIES} )
+-          set( GPGME_PTHREAD_LIBRARIES ${GPGME_PTHREAD_LIBRARIES} )
++          set( GPGME_PTHREAD_LIBRARIES ${GPGME_VANILLA_LIBRARIES} )
+           set( GPGME_PTH_LIBRARIES     ${GPGME_PTH_LIBRARIES} )
+ 
+           if ( GPGME_VANILLA_FOUND OR GPGME_PTHREAD_FOUND OR GPGME_PTH_FOUND )
+@@ -319,7 +319,7 @@ else() # not WIN32
+ 
+   macro_bool_to_01( GPGME_FOUND         HAVE_GPGME         )
+   macro_bool_to_01( GPGME_VANILLA_FOUND HAVE_GPGME_VANILLA )
+-  macro_bool_to_01( GPGME_PTHREAD_FOUND HAVE_GPGME_PTHREAD )
++  macro_bool_to_01( GPGME_VANILLA_FOUND HAVE_GPGME_PTHREAD )
+   macro_bool_to_01( GPGME_PTH_FOUND     HAVE_GPGME_PTH     )
+ 
+ endif() # WIN32 | Unix
+diff --git a/cmake/modules/FindQGpgme.cmake b/cmake/modules/FindQGpgme.cmake
+index 50013eb..4d94af6 100644
+--- a/cmake/modules/FindQGpgme.cmake
++++ b/cmake/modules/FindQGpgme.cmake
+@@ -12,13 +12,8 @@ find_package(Gpgme QUIET)
+ 
+ if(GPGME_FOUND)
+ 
+-   if ( WIN32 )
+-      find_library(_QGPGME_EXTRA_LIBRARY gpgme++
+-                   HINTS ${GPGME_LIBRARY_DIR})
+-   else ( WIN32 )
+-      find_library(_QGPGME_EXTRA_LIBRARY gpgme++-pthread
+-                   HINTS ${GPGME_LIBRARY_DIR})
+-   endif()
++   find_library(_QGPGME_EXTRA_LIBRARY gpgme++
++                HINTS ${GPGME_LIBRARY_DIR})
+ 
+    find_library(QGPGME_LIBRARY qgpgme
+                 HINTS ${GPGME_LIBRARY_DIR})
+@@ -34,7 +29,7 @@ if(GPGME_FOUND)
+    if ( WIN32 )
+       set(QGPGME_LIBRARIES ${QGPGME_LIBRARY} ${_QGPGME_EXTRA_LIBRARY} ${GPGME_VANILLA_LIBRARIES} ${GPGME_QT_LIBRARIES})
+    else ( WIN32 )
+-      set(QGPGME_LIBRARIES ${QGPGME_LIBRARY} ${_QGPGME_EXTRA_LIBRARY} ${GPGME_PTHREAD_LIBRARIES})
++      set(QGPGME_LIBRARIES ${QGPGME_LIBRARY} ${_QGPGME_EXTRA_LIBRARY} ${GPGME_VANILLA_LIBRARIES})
+    endif()
+ 
+ endif()
