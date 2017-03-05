@@ -561,7 +561,7 @@ app-crypt/libsecret 0.18.5: GObject library for accessing the freedesktop.org Se
 app-crypt/libu2f-host 1.1.1 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.0.1: Yubico Universal 2nd Factor (U2F) server C Library
 app-crypt/libykneomgr 0.1.8: YubiKey NEO CCID Manager C Library
-app-crypt/loop-aes-losetup 2.26: Loop-AES losetup utility
+app-crypt/loop-aes-losetup 2.28.2: Loop-AES losetup utility
 app-crypt/manuale 1.0.3 1.1.0: A fully manual Let's Encrypt client
 app-crypt/mcrypt 2.6.8-r2 2.6.8-r3: replacement of the old unix crypt(1)
 app-crypt/md4sum 0.02.03-r1: md4 and edonkey hash algorithm tool
