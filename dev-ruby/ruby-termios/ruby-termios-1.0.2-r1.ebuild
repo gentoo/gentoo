@@ -11,6 +11,8 @@ RUBY_FAKEGEM_EXTRADOC="README.md termios.rd"
 # with a normal TTY, bug 340575.
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit multilib ruby-fakegem
 
 DESCRIPTION="A Ruby interface to termios"

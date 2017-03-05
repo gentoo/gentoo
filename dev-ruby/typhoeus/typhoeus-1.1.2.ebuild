@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md UPGRADE.md"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -16,7 +16,7 @@ DESCRIPTION="Runs HTTP requests in parallel while cleanly encapsulating handling
 HOMEPAGE="https://github.com/typhoeus/typhoeus"
 
 LICENSE="Ruby"
-SLOT="0"
+SLOT="1"
 KEYWORDS="~amd64"
 IUSE=""
 

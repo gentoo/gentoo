@@ -1,5 +1,7 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit depend.apache
 
@@ -9,15 +11,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
+KEYWORDS="~amd64 ~ppc ~x86"
 
 need_apache
 
+DOCS=( AUTHORS BUGS ChangeLog NEWS README TODO )
+
 src_install() {
-	make DESTDIR="${D}" install || die "install failed"
-	dodoc AUTHORS BUGS ChangeLog NEWS README TODO
+	default
+	emake DESTDIR="${D}" install
+	einstalldocs
 }
