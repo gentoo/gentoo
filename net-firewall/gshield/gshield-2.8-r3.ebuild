@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="iptables firewall configuration system"
 HOMEPAGE="http://muse.linuxmafia.org/gshield.html"
@@ -23,7 +23,7 @@ src_install() {
 	# install config files
 	dodir /etc/gshield
 	cp -pPR * "${D}"/etc/gshield || die
-	ln -s gshield "${D}"/etc/firewall || die
+	dosym gshield /etc/firewall
 
 	# get rid of docs from config
 	rm -r "${D}"/etc/gshield/{Changelog,INSTALL,LICENSE,docs} || die
@@ -33,7 +33,7 @@ src_install() {
 	for q in gShield-version gShield.rc tools sourced routables/routable.rules
 	do
 		mv "${D}"/etc/gshield/$q "${D}"/usr/share/gshield/ || die
-		ln -s /usr/share/gshield/$q "${D}"/etc/gshield/$q || die
+		dosym /usr/share/gshield/$q /etc/gshield/$q
 	done
 	chmod -R u+rwX "${D}"/etc/gshield || die
 
