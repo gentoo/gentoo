@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,36 +31,37 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # qwtplot3d much modified from original upstream
 # >=x11-libs/qwt-5.3 they are using trunk checkouts
-CDEPEND="
-	media-libs/libemf
-	dev-qt/qthelp:4
-	dev-qt/qtgui:4
-	dev-qt/qtopengl:4
-	dev-qt/qt3support:4
-	dev-qt/qthelp:4[compat]
-	dev-qt/qtsvg:4
-	>=x11-libs/gl2ps-1.3.5[png]
+RDEPEND="
 	>=dev-cpp/muParser-1.32
 	>=dev-libs/boost-1.35.0:=
 	dev-libs/quazip[qt4]
+	dev-qt/qt3support:4
+	dev-qt/qtgui:4
+	dev-qt/qthelp:4
+	dev-qt/qthelp:4[compat]
+	dev-qt/qtopengl:4
+	dev-qt/qtsvg:4
+	media-libs/libemf
 	media-libs/libpng:=
 	sci-libs/alglib:=
 	>=sci-libs/gsl-2
 	sci-libs/tamu_anova
+	>=x11-libs/gl2ps-1.3.5[png]
 	latex? ( dev-tex/qtexengine )
 	mono? ( dev-dotnet/libgdiplus )
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/PyQt4-4.11.3[X,${PYTHON_USEDEP}]
-		)"
-DEPEND="${CDEPEND}
+	)
+"
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? ( >=dev-python/sip-4.16.5[${PYTHON_USEDEP}] )
 	doc? (
 		>=app-text/docbook-sgml-utils-0.6.14-r1
-		>=app-text/docbook-xml-dtd-4.4-r2:4.4 )"
-
-RDEPEND="${CDEPEND}"
+		>=app-text/docbook-xml-dtd-4.4-r2:4.4
+	)
+	python? ( >=dev-python/sip-4.16.5[${PYTHON_USEDEP}] )
+"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-origin.patch
@@ -77,7 +78,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-sip-4.15.patch
 	"${FILESDIR}"/${P}-PyQt4-4.11.3.patch
 	"${FILESDIR}"/${P}-gsl-2.patch
-	)
+	"${FILESDIR}"/${P}-sip-4.19.patch
+)
 
 RESTRICT="!bindist? ( bindist )"
 
