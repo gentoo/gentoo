@@ -16553,7 +16553,7 @@ sci-physics/root 5.34.36 6.04.06: C++ data analysis framework and interpreter fr
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
-sci-physics/xfoil 6.97-r1: Design and analysis of subsonic isolated airfoils
+sci-physics/xfoil 6.97-r1 6.99: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.4.0 1.6.5: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55-r1: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.11 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
