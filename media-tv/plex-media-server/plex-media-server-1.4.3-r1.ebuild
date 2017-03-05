@@ -26,7 +26,7 @@ SRC_URI="
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="mirror bindist strip"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 
 IUSE="pax_kernel dlna"
 
