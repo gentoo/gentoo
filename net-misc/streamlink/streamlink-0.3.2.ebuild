@@ -13,7 +13,7 @@ HOMEPAGE="https://streamlink.github.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
-LICENSE="BSD-2 MIT"
+LICENSE="BSD-2 Apache-2.0"
 SLOT="0"
 IUSE="doc test"
 
