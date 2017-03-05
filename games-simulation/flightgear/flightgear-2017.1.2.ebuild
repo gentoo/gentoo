@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
 
 # zlib is some strange auto-dep from simgear
@@ -20,13 +20,8 @@ COMMON_DEPEND="
 	>=dev-games/openscenegraph-3.2.0[png]
 	~dev-games/simgear-${PV}
 	media-libs/openal
-	|| (
-		(
-			>=media-libs/speex-1.2.0
-			media-libs/speexdsp
-		)
-		<media-libs/speex-1.2.0
-	)
+	>=media-libs/speex-1.2.0:0
+	media-libs/speexdsp:0
 	media-sound/gsm
 	sys-libs/zlib
 	virtual/glu
@@ -40,8 +35,11 @@ COMMON_DEPEND="
 	udev? ( virtual/udev )
 	utils? (
 		media-libs/freeglut
+		media-libs/freetype:2
+		media-libs/glew:0
 		media-libs/libpng:0
 		virtual/opengl
+		qt5? ( >=dev-qt/qtwebsockets-5.4.1:5 )
 	)
 "
 # libXi and libXmu are build-only-deps according to FindGLUT.cmake
@@ -64,6 +62,7 @@ src_configure() {
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
+		-DENABLE_FGQCANVAS=$(usex qt5 && usex utils)
 		-DENABLE_FGVIEWER=$(usex utils)
 		-DENABLE_FLITE=OFF
 		-DENABLE_GPSSMOOTH=$(usex utils)
@@ -77,6 +76,7 @@ src_configure() {
 		-DENABLE_RTI=OFF
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TESTS=$(usex test)
+		-DENABLE_TRAFFIC=$(usex utils)
 		-DENABLE_UIUC_MODEL=ON
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)
