@@ -1,0 +1,69 @@
+Install headers needed by Kopete's cryptography plugin.
+
+--- /libkleo/CMakeLists.txt
++++ /libkleo/CMakeLists.txt
+@@ -118,3 +118,64 @@
+ install(TARGETS kleo ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ install ( FILES libkleopatrarc.desktop DESTINATION ${CONFIG_INSTALL_DIR} RENAME libkleopatrarc )
++
++install( FILES
++    kleo/abstractimportjob.h
++    kleo/adduseridjob.h
++    kleo/changeexpiryjob.h
++    kleo/changeownertrustjob.h
++    kleo/cryptobackend.h
++    kleo/cryptobackendfactory.h
++    kleo/cryptoconfig.h
++    kleo/cryptplug.h
++    kleo/cryptplugfactory.h
++    kleo/cryptplugwrapper.h
++    kleo/cryptplugwrapperlist.h
++    kleo/decryptjob.h
++    kleo/decryptverifyjob.h
++    kleo/deletejob.h
++    kleo/dn.h
++    kleo/downloadjob.h
++    kleo/encryptjob.h
++    kleo/enum.h
++    kleo/exportjob.h
++    kleo/hierarchicalkeylistjob.h
++    kleo/importfromkeyserverjob.h
++    kleo/importjob.h
++    kleo/job.h
++    kleo/kconfigbasedkeyfilter.h
++    kleo/keyfilter.h
++    kleo/keyfiltermanager.h
++    kleo/keygenerationjob.h
++    kleo/keylistjob.h
++    kleo/kleo_export.h
++    kleo/multideletejob.h
++    kleo/oidmap.h
++    kleo/refreshkeysjob.h
++    kleo/signencryptjob.h
++    kleo/signjob.h
++    kleo/signkeyjob.h
++    kleo/specialjob.h
++    kleo/verifydetachedjob.h
++    kleo/verifyopaquejob.h
++    DESTINATION ${INCLUDE_INSTALL_DIR}/kleo COMPONENT Devel)
++
++install ( FILES
++    ui/adddirectoryservicedialogimpl.h
++    ui/backendconfigwidget.h
++    ui/cryptoconfigdialog.h
++    ui/cryptoconfigmodule.h
++    ui/cryptoconfigmodule_p.h
++    ui/directoryserviceswidget.h
++    ui/dnattributeorderconfigwidget.h
++    ui/filenamerequester.h
++    ui/kdhorizontalline.h
++    ui/keyapprovaldialog.h
++    ui/keylistview.h
++    ui/keyrequester.h
++    ui/keyselectiondialog.h
++    ui/messagebox.h
++    ui/messagebox_p.h
++    ui/progressbar.h
++    ui/progressdialog.h
++    DESTINATION ${INCLUDE_INSTALL_DIR}/kleo/ui COMPONENT Devel)
