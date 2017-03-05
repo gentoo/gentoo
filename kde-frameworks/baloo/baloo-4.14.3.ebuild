@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit kde4-base
 
 DESCRIPTION="Framework for searching and managing metadata"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="debug minimal"
+IUSE="debug +minimal"
 
 DEPEND="
 	$(add_kdeapps_dep kdepimlibs)

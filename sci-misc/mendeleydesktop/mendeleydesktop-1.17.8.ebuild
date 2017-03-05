@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,20 +22,26 @@ LICENSE="Mendeley-terms"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="fetch"
 
 DEPEND=""
-RDEPEND="${PYTHON_DEPS}
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
-	dev-qt/qtsvg:4
-	dev-qt/qtwebkit:4
-	dev-qt/qtxmlpatterns:4
+RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtpositioning:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwebengine:5[widgets]
+	dev-qt/qtwebkit:5
+	dev-qt/qtxml:5
+	sys-libs/zlib
+	virtual/opengl
 	x11-libs/libX11
-	"
+	${PYTHON_DEPS}"
 
 QA_PREBUILT="/opt/mendeleydesktop/.*"
 

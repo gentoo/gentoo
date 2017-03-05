@@ -7,7 +7,7 @@ KDE_TEST="forceoptional-recursive"
 inherit kde5
 
 DESCRIPTION="A mail client by KDE"
-HOMEPAGE="https://www.kde.org/applications/games/kubrick/"
+HOMEPAGE="https://kube.kde.org/"
 SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.xz"
 KEYWORDS="~amd64"
 
