@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22"
 
 # The tests are dangerous and shouldn't be run by anyone!
 # They mess with your local postgres databases.
