@@ -38,7 +38,7 @@ src_install() {
 	dodoc pms.pdf eapi-cheatsheet.pdf
 	if use html; then
 		docinto html
-		dodoc *.html pms.css $(shopt -s nullglob; echo *.png)
+		dodoc *.html pms.css
 		dosym {..,/usr/share/doc/${PF}/html}/eapi-cheatsheet.pdf
 	fi
 }
