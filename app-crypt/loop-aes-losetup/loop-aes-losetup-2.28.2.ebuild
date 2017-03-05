@@ -3,17 +3,17 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs libtool flag-o-matic
+inherit eutils autotools toolchain-funcs libtool flag-o-matic
 
 MY_PV="${PV/_/-}"
 MY_P="util-linux-${MY_PV}"
-LOOPAES_PV="${PV}-20150310"
+LOOPAES_P="loop-AES-v3.7j"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Loop-AES losetup utility"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
 SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz
-	http://loop-aes.sourceforge.net/updates/util-linux-${LOOPAES_PV}.diff.bz2"
+	http://loop-aes.sourceforge.net/loop-AES/${LOOPAES_P}.tar.bz2"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
@@ -27,8 +27,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	epatch "${WORKDIR}"/util-linux-*.diff
-	elibtoolize
+	epatch "${WORKDIR}/${LOOPAES_P}/util-linux-${PV}.diff"
+	eautoreconf
 }
 
 lfs_fallocate_test() {
@@ -57,6 +57,7 @@ src_configure() {
 	econf \
 		--libdir='${prefix}/'"$(get_libdir)" \
 		--disable-all-programs \
+		--disable-pylibmount \
 		--enable-libsmartcols \
 		--enable-losetup \
 		--without-ncurses \
