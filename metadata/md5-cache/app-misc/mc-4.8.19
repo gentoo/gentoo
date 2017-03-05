@@ -1,0 +1,16 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=>=dev-libs/glib-2.26.0:2 gpm? ( sys-libs/gpm ) kernel_linux? ( sys-fs/e2fsprogs ) samba? ( net-fs/samba ) sftp? ( net-libs/libssh2 ) slang? ( >=sys-libs/slang-2 ) !slang? ( sys-libs/ncurses:0= ) spell? ( app-text/aspell ) X? ( x11-libs/libX11 x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM ) app-arch/xz-utils virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( dev-libs/check ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GNU Midnight Commander is a text based file manager
+EAPI=6
+HOMEPAGE=http://www.midnight-commander.org
+IUSE=+edit gpm mclib nls samba sftp +slang spell test X +xdg
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/glib-2.26.0:2 gpm? ( sys-libs/gpm ) kernel_linux? ( sys-fs/e2fsprogs ) samba? ( net-fs/samba ) sftp? ( net-libs/libssh2 ) slang? ( >=sys-libs/slang-2 ) !slang? ( sys-libs/ncurses:0= ) spell? ( app-text/aspell ) X? ( x11-libs/libX11 x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM )
+REQUIRED_USE=spell? ( edit )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://ftp.midnight-commander.org/mc-4.8.19.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=82153bdf2f6be872d6cab7a8238b29fa
