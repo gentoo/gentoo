@@ -4056,7 +4056,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.3.0 7.2.6.8: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.3.0 7.2.6.8: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.3.0 3.3.0-r1 7.2.6.8: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -4667,7 +4667,7 @@ dev-libs/expat 2.2.0-r1: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r2: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
-dev-libs/fddl 20111124: Free Decision Diagram Library
+dev-libs/fddl 20111124 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13 3.0.13-r1: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5: foreign function call libraries
 dev-libs/flatbuffers 1.6.0: Memory efficient serialization library
