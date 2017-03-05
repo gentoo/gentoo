@@ -1,0 +1,26 @@
+From f12e2bd72b238da2dbf3bd0f882d977073cca282 Mon Sep 17 00:00:00 2001
+From: John Jawed <jawed@php.net>
+Date: Thu, 24 Jul 2014 15:19:18 +0000
+Subject: [PATCH] Bug #67658 (configure does not detect missing pcre.h)
+
+git-svn-id: https://svn.php.net/repository/pecl/oauth/trunk@334377 c90b9560-bf6c-de11-be94-00142212c4b1
+---
+ config.m4 | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config.m4 b/config.m4
+index 48e2608..53a5ea8 100644
+--- a/config.m4
++++ b/config.m4
+@@ -14,6 +14,8 @@ if test "$PHP_OAUTH" != "no"; then
+   PHP_NEW_EXTENSION(oauth, oauth.c provider.c, $ext_shared)
+   CFLAGS="$CFLAGS -Wall -g"
+ 
++  AC_CHECK_HEADERS(pcre.h)
++
+   AS_IF([test "x$with_curl" != "xno"],
+       [
+         AC_MSG_CHECKING(for cURL in default path)
+-- 
+2.1.4
+
