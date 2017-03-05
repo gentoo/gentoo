@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,6 @@ RDEPEND="
 	dev-python/twisted-core
 	dev-python/twisted-conch
 	dev-python/twisted-web
-	dev-python/PyQt4[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	debug? ( dev-lang/perl )"
 DEPEND="${RDEPEND}
@@ -43,7 +42,7 @@ pkg_setup() {
 	if use modules ; then
 		CONFIG_CHECK+=" ~!OPENVSWITCH"
 		kernel_is ge 3 10 0 || die "Linux >= 3.10.0 and <= 4.8 required for userspace modules"
-		kernel_is le 4 7 999 || die "Linux >= 3.10.0 and <= 4.8 required for userspace modules"
+		kernel_is le 4 9 999 || die "Linux >= 3.10.0 and <= 4.8 required for userspace modules"
 		linux-mod_pkg_setup
 	else
 		CONFIG_CHECK+=" ~OPENVSWITCH"
@@ -62,9 +61,9 @@ src_prepare() {
 
 src_configure() {
 	set_arch_to_kernel
-	#monitor ist statically enabled for bug 596206
-	#use monitor || export ovs_cv_python="no"
-	#pyside is staticly disabled
+	# monitor is statically enabled for bug 596206
+	use monitor || export ovs_cv_python="no"
+	# pyside is staticly disabled
 	export ovs_cv_pyuic4="no"
 
 	local linux_config
@@ -89,24 +88,19 @@ src_install() {
 	default
 
 	local SCRIPT
-	for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
-		sed -e '1s|^.*$|#!/usr/bin/python|' -i utilities/"${SCRIPT}" || die
-		python_foreach_impl python_doscript utilities/"${SCRIPT}"
-	done
-
-	python_foreach_impl python_optimize "${ED%/}"/usr/share/ovsdbmonitor
-
-	rm -r "${ED%/}"/usr/share/openvswitch/python || die
+	if use monitor; then
+		for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpdump,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
+			sed -e '1s|^.*$|#!/usr/bin/python|' -i utilities/"${SCRIPT}"
+			python_foreach_impl python_doscript utilities/"${SCRIPT}"
+		done
+		rm -r "${ED%/}"/usr/share/openvswitch/python || die
+	fi
 
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
 
 	rm -rf "${ED%/}"/var/run || die
-	# monitor is statically enabled for bug 596206
-	#if ! use monitor ; then
-	#	rm -r "${ED%/}"/usr/share/ovsdbmonitor || die
-	#fi
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
 	newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd
