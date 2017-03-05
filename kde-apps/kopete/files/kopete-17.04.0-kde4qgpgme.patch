@@ -1,0 +1,56 @@
+--- /CMakeLists.txt
++++ /CMakeLists.txt
+@@ -98,8 +98,8 @@
+ macro_optional_find_package(QJSON)
+ macro_log_feature(QJSON_FOUND "QJSON" "JSON handling library for Qt" "http://qjson.sourceforge.net/" FALSE "" "Required for the Jabber protocol")
+ 
+-macro_optional_find_package(QGpgme)
+-macro_log_feature(QGPGME_FOUND "QGpgme" "QGpgME library (from kdepimlibs)" "http://www.kde.org/" FALSE "" "Required for the Cryptography plugin")
++macro_optional_find_package(KDE4_QGpgme)
++macro_log_feature(KDE4_QGPGME_FOUND "KDE4_QGpgme" "KDE4_QGpgME library (from kdepimlibs)" "http://www.kde.org/" FALSE "" "Required for the Cryptography plugin")
+ 
+ macro_optional_find_package(Sqlite)
+ macro_log_feature(SQLITE_FOUND "Sqlite" "SQLite is a Binary-Database" "http://www.sqlite.org/" FALSE "" "Required for the Statistic plugin")
+--- /plugins/CMakeLists.txt
++++ /plugins/CMakeLists.txt
+@@ -74,6 +74,6 @@
+ if (WITH_otr AND LIBOTR_FOUND)
+   add_subdirectory ( otr )
+ endif (WITH_otr AND LIBOTR_FOUND)
+-if (WITH_cryptography AND KLEOPATRA_FOUND AND QGPGME_FOUND)
++if (WITH_cryptography AND KLEOPATRA_FOUND AND KDE4_QGPGME_FOUND)
+   add_subdirectory ( cryptography )
+-endif (WITH_cryptography AND KLEOPATRA_FOUND AND QGPGME_FOUND)
++endif (WITH_cryptography AND KLEOPATRA_FOUND AND KDE4_QGPGME_FOUND)
+--- /plugins/cryptography/CMakeLists.txt
++++ /plugins/cryptography/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ 
+ kde4_add_plugin(kopete_cryptography ${kopete_cryptography_PART_SRCS})
+ 
+-target_link_libraries(kopete_cryptography ${QT_QTGUI_LIBRARY}  ${KDE4_KDECORE_LIBS} kopete ${KLEOPATRA_LIBRARIES} ${KDE4_KABC_LIBS} ${QGPGME_LIBRARIES} )
++target_link_libraries(kopete_cryptography ${QT_QTGUI_LIBRARY}  ${KDE4_KDECORE_LIBS} kopete ${KLEOPATRA_LIBRARIES} ${KDE4_KABC_LIBS} ${KDE4_QGPGME_LIBRARIES} )
+ 
+ install(TARGETS kopete_cryptography  DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+--- /plugins/cryptography/cryptographyplugin.cpp
++++ /plugins/cryptography/cryptographyplugin.cpp
+@@ -52,12 +52,12 @@
+ #include <kleo/signjob.h>
+ #include <kleo/keylistjob.h>
+ #include <kleo/job.h>
+-#include <gpgme++/decryptionresult.h>
+-#include <gpgme++/verificationresult.h>
+-#include <gpgme++/keylistresult.h>
+-#include <gpgme++/signingresult.h>
+-#include <gpgme++/encryptionresult.h>
+-#include <gpgme++/key.h>
++#include <kde4_gpgme++/decryptionresult.h>
++#include <kde4_gpgme++/verificationresult.h>
++#include <kde4_gpgme++/keylistresult.h>
++#include <kde4_gpgme++/signingresult.h>
++#include <kde4_gpgme++/encryptionresult.h>
++#include <kde4_gpgme++/key.h>
+ 
+ // kabc stuff
+ #include <kabc/addressbook.h>
