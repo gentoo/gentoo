@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (05 Mar 2017)
+# Part of dev-util/hxtools (and collides with it)
+# Removal in 30 days. Bug #445436
+app-misc/ofl
+
 # Michał Górny <mgorny@gentoo.org> (04 Mar 2017)
 # The program is abandoned upstream and reported to no longer work with
 # Twitch and multiple other streaming sites. Working alternatives are
