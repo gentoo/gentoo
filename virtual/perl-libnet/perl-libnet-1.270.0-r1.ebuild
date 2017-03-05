@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Some important notes about detecting libnet version
 # https://dev.gentoo.org/~zlogene/perl-libnet-mantainer-notes

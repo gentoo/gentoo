@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: python-single-r1.eclass
 # @MAINTAINER:
@@ -32,28 +31,8 @@
 # https://wiki.gentoo.org/wiki/Project:Python/python-single-r1
 
 case "${EAPI:-0}" in
-	0|1|2|3)
+	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	4)
-		# EAPI=4 is only allowed on legacy packages
-		if [[ ${CATEGORY}/${P} == app-arch/threadzip-1.2 ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == media-libs/lv2-1.8.0 ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == media-libs/lv2-1.10.0 ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == sys-apps/paludis-1* ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == sys-apps/paludis-2.[02].0 ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == sys-apps/util-linux-2.2[456]* ]]; then
-			:
-		elif [[ ${CATEGORY}/${P} == */gdb-7.[78]* ]]; then
-			:
-		else
-			die "Unsupported EAPI=${EAPI:-4} (too old, allowed only on restricted set of packages) for ${ECLASS}"
-		fi
 		;;
 	5|6)
 		# EAPI=5 is required for sane USE_EXPAND dependencies
@@ -217,7 +196,7 @@ _python_single_set_globals() {
 		# variables without PYTHON_SINGLE_TARGET.
 		PYTHON_REQUIRED_USE="${flags_mt[*]}"
 		python_export "${_PYTHON_SUPPORTED_IMPLS[0]}" PYTHON_PKG_DEP
-		PYTHON_DEPS="${PYTHON_PKG_DEP} "
+		PYTHON_DEPS="${flags_mt[*]}? ( ${PYTHON_PKG_DEP} ) "
 		# Force on the python_single_target_* flag for this impl, so
 		# that any dependencies that inherit python-single-r1 and
 		# happen to have multiple implementations will still need

@@ -3,7 +3,7 @@ player: make ffmpeg/libav version check non-fatal
 We already enforce mpv rebuilds when ffmpeg/libav SONAME changes.
 
 diff --git a/player/main.c b/player/main.c
-index 67dde34..ee133a9 100644
+index 67dde3449..696d2e716 100644
 --- a/player/main.c
 +++ b/player/main.c
 @@ -419,13 +419,12 @@ int mp_initialize(struct MPContext *mpctx, char **options)
@@ -20,9 +20,9 @@ index 67dde34..ee133a9 100644
 +        print_libav_versions(mpctx->log, MSGL_WARN);
 +        MP_WARN(mpctx, "\nmpv was compiled against a different version of "
 +                "FFmpeg/Libav than the shared\nlibrary it is linked against. "
-+                "This is most likely a broken build and could\nresult in "
-+                "misbehavior and crashes.\n\nUpstream does not support this "
-+                "configuration.\nPlease rebuild mpv in case of any problems.\n");
++                "This could result in misbehavior and crashes.\n\n"
++                "Upstream does not support this configuration.\n"
++                "Please rebuild mpv in case of any problems.\n");
      }
 
      if (opts->dump_stats && opts->dump_stats[0]) {

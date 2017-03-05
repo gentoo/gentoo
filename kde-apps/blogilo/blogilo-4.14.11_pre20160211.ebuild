@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -20,7 +19,7 @@ IUSE="debug"
 DEPEND="
 	$(add_kdeapps_dep kdepim-common-libs)
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
-	>=net-libs/libkgapi-2.2.0:4
+	$(add_kdeapps_dep libkgapi '' 2.2.0)
 "
 RDEPEND="${DEPEND}"
 

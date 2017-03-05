@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
@@ -19,7 +18,7 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 
 # configure checks for gtk:3, but only uses it for demos which are not installed
 RDEPEND="

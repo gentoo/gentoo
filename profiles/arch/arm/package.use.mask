@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Christoph Junghans <junghans@gentoo.org> (05 Feb 2017)
 # Mask some fabrics
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -23,10 +22,6 @@ games-emulation/dosbox glide
 # Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
 >=sci-libs/gdal-2.0.3 mdb
-
-# Christoph Junghans <junghans@gentoo.org> (11 Sep 2016)
-# Missing keywords on openmpi deps
-sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
 
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
 # Missing keywords on media-libs/grilo - bug #521972
@@ -137,10 +132,6 @@ www-client/chromium system-ffmpeg
 # Markus Meier <maekke@gentoo.org> (10 Oct 2015)
 # unkeyworded deps, bug #552330
 app-portage/g-sorcery bson
-
-# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
-# media-libs/rubberband lacks arm keyword, bug 548446
-media-video/mpv rubberband
 
 # Markos Chandras <hwoarang@gentoo.org> (18 Apr 2015)
 # samba-4 not keyworded on arm
@@ -410,7 +401,6 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
-kde-plasma/kdeplasma-addons fcitx oauth
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
@@ -474,7 +464,7 @@ net-misc/mediatomb lastfm
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-4 stable
-dev-vcs/subversion kde
+dev-vcs/subversion kwallet
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded

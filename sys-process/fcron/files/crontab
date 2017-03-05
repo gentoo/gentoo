@@ -1,5 +1,4 @@
 # for fcron 
-# $Id$
 
 # fcron:
 # This is NOT the system crontab! fcron does not support a system crontab.

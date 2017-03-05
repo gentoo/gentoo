@@ -1,12 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit bash-completion-r1
 
-DESCRIPTION="Gentoo-specific bash command-line completions (emerge, ebuild, equery, repoman, layman, etc)"
+DESCRIPTION="Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)"
 HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.bz2"
 

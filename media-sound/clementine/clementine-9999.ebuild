@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -20,7 +19,7 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~x86"
-IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks udisks_legacy vkontakte wiimote"
+IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks udisks_legacy wiimote"
 IUSE+="${LANGS// / linguas_}"
 
 REQUIRED_USE="
@@ -133,7 +132,6 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_SEAFILE="$(usex seafile)"
 		-DENABLE_SKYDRIVE="$(usex skydrive)"
-		-DENABLE_VK="$(usex vkontakte)"
 		-DENABLE_SPOTIFY_BLOB=OFF
 		-DENABLE_BREAKPAD=OFF  #< disable crash reporting
 		-DUSE_BUILTIN_TAGLIB=OFF
@@ -143,6 +141,8 @@ src_configure() {
 		# force to find crypto++ see bug #548544
 		-DCRYPTOPP_LIBRARIES="crypto++"
 		-DCRYPTOPP_FOUND=ON
+		# avoid automagically enabling of ccache (bug #611010)
+		-DCCACHE_EXECUTABLE=OFF
 		)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT

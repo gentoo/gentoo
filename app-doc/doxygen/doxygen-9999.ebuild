@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -29,7 +28,7 @@ RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
 	media-libs/libpng:0=
 	virtual/libiconv
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:= )
 	dot? (
 		media-gfx/graphviz
 		media-libs/freetype

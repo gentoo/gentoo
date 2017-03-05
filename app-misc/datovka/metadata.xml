@@ -7,6 +7,9 @@
 	(300/2008 Coll.) and implied documents.
 </longdescription>
 <maintainer type="person">
+        <email>amynka@gentoo.org</email>
+</maintainer>
+<maintainer type="person">
 	<email>scarabeus@gentoo.org</email>
 </maintainer>
 </pkgmetadata>

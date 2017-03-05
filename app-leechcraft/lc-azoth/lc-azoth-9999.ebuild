@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit leechcraft
 
@@ -15,25 +14,41 @@ IUSE="debug doc astrality +acetamide +adiumstyles +autoidler +autopaste +birthda
 		+juick +keeso +lastseen	+metacontacts media +murm +latex +nativeemoticons
 		+otroid +spell sarin shx +standardstyles +vader velvetbird +woodpecker +xmpp +xtazy"
 
-COMMON_DEPEND="~app-leechcraft/lc-core-${PV}
-		dev-libs/qjson
-		dev-qt/qtwebkit:4
-		autoidler? ( x11-libs/libXScrnSaver )
-		astrality? ( net-libs/telepathy-qt )
-		otroid? ( net-libs/libotr )
-		media? ( dev-qt/qt-mobility[multimedia] )
-		woodpecker? ( dev-libs/kqoauth )
-		xmpp? (
-			=net-libs/qxmpp-9999
-			media? ( =net-libs/qxmpp-9999[speex] )
-		)
-		xtazy? (
-			~app-leechcraft/lc-xtazy-${PV}
-			dev-qt/qtdbus:4
-		)
-		crypt? ( app-crypt/qca:2[qt4(+)] )
-		sarin? ( net-libs/tox )
-"
+COMMON_DEPEND="
+	~app-leechcraft/lc-core-${PV}
+	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5
+	dev-qt/qtwebkit:5
+	dev-qt/qtxml:5
+	dev-qt/qtdbus:5
+	crypt? ( app-crypt/qca:2[qt5] )
+	media? (
+		dev-qt/qtmultimedia:5
+	)
+	sarin? (
+		dev-qt/qtconcurrent:5
+		net-libs/tox
+	)
+	lastseen? (
+		dev-qt/qtconcurrent:5
+	)
+	otroid? (
+		dev-qt/qtconcurrent:5
+	)
+	autoidler? (
+		dev-qt/qtx11extras:5
+		x11-libs/libXScrnSaver
+	)
+	astrality? ( net-libs/telepathy-qt[qt5] )
+	otroid? ( net-libs/libotr )
+	woodpecker? ( dev-libs/kqoauth )
+	xmpp? (
+		>=net-libs/qxmpp-0.9.3[qt5]
+		media? ( >=net-libs/qxmpp-0.9.3[qt5,speex] )
+	)
+	xtazy? (
+		~app-leechcraft/lc-xtazy-${PV}
+	)"
 DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen[dot] )"
 RDEPEND="${COMMON_DEPEND}
@@ -43,52 +58,49 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	crypt? ( app-crypt/qca:2[gpg] )
 	latex? (
-		|| (
-			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
-		)
+		virtual/imagemagick-tools
 		virtual/latex-base
 	)
 	spell? (
-		app-leechcraft/lc-rosenthal
+		~app-leechcraft/lc-rosenthal-${PV}
 	)"
 
 REQUIRED_USE="|| ( standardstyles adiumstyles )"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable crypt CRYPT)
-		$(cmake-utils_use_with doc DOCS)
-		$(cmake-utils_use_enable acetamide AZOTH_ACETAMIDE)
-		$(cmake-utils_use_enable adiumstyles AZOTH_ADIUMSTYLES)
-		$(cmake-utils_use_enable astrality AZOTH_ASTRALITY)
-		$(cmake-utils_use_enable autoidler AZOTH_AUTOIDLER)
-		$(cmake-utils_use_enable autopaste AZOTH_AUTOPASTE)
-		$(cmake-utils_use_enable birthdaynotifier AZOTH_BIRTHDAYNOTIFIER)
-		$(cmake-utils_use_enable chathistory AZOTH_CHATHISTORY)
-		$(cmake-utils_use_enable depester AZOTH_DEPESTER)
-		$(cmake-utils_use_enable embedmedia AZOTH_EMBEDMEDIA)
-		$(cmake-utils_use_enable herbicide AZOTH_HERBICIDE)
-		$(cmake-utils_use_enable hili AZOTH_HILI)
-		$(cmake-utils_use_enable isterique AZOTH_ISTERIQUE)
-		$(cmake-utils_use_enable juick AZOTH_JUICK)
-		$(cmake-utils_use_enable keeso AZOTH_KEESO)
-		$(cmake-utils_use_enable lastseen AZOTH_LASTSEEN)
-		$(cmake-utils_use_enable metacontacts AZOTH_METACONTACTS)
-		$(cmake-utils_use_enable media MEDIACALLS)
-		$(cmake-utils_use_enable latex AZOTH_MODNOK)
-		$(cmake-utils_use_enable murm AZOTH_MURM)
-		$(cmake-utils_use_enable nativeemoticons AZOTH_NATIVEEMOTICONS)
-		$(cmake-utils_use_enable otroid AZOTH_OTROID)
-		$(cmake-utils_use_enable sarin AZOTH_SARIN)
-		$(cmake-utils_use_enable spell AZOTH_ROSENTHAL)
-		$(cmake-utils_use_enable shx AZOTH_SHX)
-		$(cmake-utils_use_enable standardstyles AZOTH_STANDARDSTYLES)
-		$(cmake-utils_use_enable vader AZOTH_VADER)
-		$(cmake-utils_use_enable velvetbird AZOTH_VELVETBIRD)
-		$(cmake-utils_use_enable woodpecker AZOTH_WOODPECKER)
-		$(cmake-utils_use_enable xmpp AZOTH_XOOX)
-		$(cmake-utils_use_enable xtazy AZOTH_XTAZY)
+		-DENABLE_CRYPT=$(usex crypt)
+		-DWITH_DOCS=$(usex doc)
+		-DENABLE_AZOTH_ACETAMIDE=$(usex acetamide)
+		-DENABLE_AZOTH_ADIUMSTYLES=$(usex adiumstyles)
+		-DENABLE_AZOTH_ASTRALITY=$(usex astrality)
+		-DENABLE_AZOTH_AUTOIDLER=$(usex autoidler)
+		-DENABLE_AZOTH_AUTOPASTE=$(usex autopaste)
+		-DENABLE_AZOTH_BIRTHDAYNOTIFIER=$(usex birthdaynotifier)
+		-DENABLE_AZOTH_CHATHISTORY=$(usex chathistory)
+		-DENABLE_AZOTH_DEPESTER=$(usex depester)
+		-DENABLE_AZOTH_EMBEDMEDIA=$(usex embedmedia)
+		-DENABLE_AZOTH_HERBICIDE=$(usex herbicide)
+		-DENABLE_AZOTH_HILI=$(usex hili)
+		-DENABLE_AZOTH_ISTERIQUE=$(usex isterique)
+		-DENABLE_AZOTH_JUICK=$(usex juick)
+		-DENABLE_AZOTH_KEESO=$(usex keeso)
+		-DENABLE_AZOTH_LASTSEEN=$(usex lastseen)
+		-DENABLE_AZOTH_METACONTACTS=$(usex metacontacts)
+		-DENABLE_MEDIACALLS=$(usex media)
+		-DENABLE_AZOTH_MODNOK=$(usex latex)
+		-DENABLE_AZOTH_MURM=$(usex murm)
+		-DENABLE_AZOTH_NATIVEEMOTICONS=$(usex nativeemoticons)
+		-DENABLE_AZOTH_OTROID=$(usex otroid)
+		-DENABLE_AZOTH_SARIN=$(usex sarin)
+		-DENABLE_AZOTH_ROSENTHAL=$(usex spell)
+		-DENABLE_AZOTH_SHX=$(usex shx)
+		-DENABLE_AZOTH_STANDARDSTYLES=$(usex standardstyles)
+		-DENABLE_AZOTH_VADER=$(usex vader)
+		-DENABLE_AZOTH_VELVETBIRD=$(usex velvetbird)
+		-DENABLE_AZOTH_WOODPECKER=$(usex woodpecker)
+		-DENABLE_AZOTH_XOOX=$(usex xmpp)
+		-DENABLE_AZOTH_XTAZY=$(usex xtazy)
 	)
 
 	cmake-utils_src_configure

@@ -2,7 +2,6 @@ scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 
 " Default configuration file for gvim
-" $Id$
 "
 " Written by Aron Griffis <agriffis@gentoo.org>
 "

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit autotools
@@ -24,6 +23,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9-64bit.patch
 	"${FILESDIR}"/${P}-cflags.patch
+	"${FILESDIR}"/${P}-sysmacros.patch
 	)
 DOCS=( AUTHORS ChangeLog NEWS README )
 

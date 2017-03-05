@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit toolchain-funcs
 
-DESCRIPTION="Lziprecover is a data recovery tool and decompressor for files in the lzip compressed data format"
+DESCRIPTION="Lziprecover is a data recovery tool and decompressor for lzip compressed files"
 HOMEPAGE="http://www.nongnu.org/lzip/lziprecover.html"
 SRC_URI="http://download.savannah.gnu.org/releases-noredirect/lzip/${PN}/${P/_/-}.tar.gz"
 LICENSE="GPL-2+"

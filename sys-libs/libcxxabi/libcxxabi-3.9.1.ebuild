@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -16,7 +15,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 	http://llvm.org/releases/${PV}/${P/abi/}.src.tar.xz"
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="elibc_musl libunwind +static-libs test"
 
 RDEPEND="

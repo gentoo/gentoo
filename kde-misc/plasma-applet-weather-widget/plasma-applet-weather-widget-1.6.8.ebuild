@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -22,7 +21,7 @@ IUSE=""
 
 DEPEND="
 	$(add_frameworks_dep plasma)
-	$(add_qt_dep qtdeclarative)
+	$(add_qt_dep qtdeclarative 'xml')
 "
 RDEPEND="${DEPEND}"
 

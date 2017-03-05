@@ -1,13 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils user toolchain-funcs
 
 DESCRIPTION="Merging locate is an utility to index and quickly search for files"
-HOMEPAGE="https://fedorahosted.org/mlocate/"
-SRC_URI="https://fedorahosted.org/releases/m/l/mlocate/${P}.tar.xz"
+HOMEPAGE="https://pagure.io/mlocate"
+SRC_URI="http://releases.pagure.org/mlocate/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

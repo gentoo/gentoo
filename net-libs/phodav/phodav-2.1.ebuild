@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
@@ -12,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/phodav"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 arm ppc ppc64 x86"
 IUSE="spice systemd zeroconf"
 
 RDEPEND="
@@ -48,7 +47,7 @@ src_install() {
 		if ! use systemd ; then
 			newinitd "${FILESDIR}/spice-webdavd.initd" spice-webdavd
 			udev_dorules "${FILESDIR}/70-spice-webdavd.rules"
-			rm -r "${D}$(systemd_get_unitdir)" || die
+			rm -r "${D}$(systemd_get_systemunitdir)" || die
 		fi
 	else
 		rm -r "${D}"{/usr/sbin,$(get_udevdir),$(systemd_get_systemunitdir)} || die

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -40,7 +39,7 @@ RDEPEND="
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
 	spell? ( app-text/hunspell:= )
-	uchardet? ( dev-libs/uchardet )
+	uchardet? ( app-i18n/uchardet )
 "
 DEPEND="${RDEPEND}
 	dev-util/intltool

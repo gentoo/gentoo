@@ -1,0 +1,11 @@
+--- a/src/cronoutils.c	2003-10-13 12:44:59.000000000 +0000
++++ b/src/cronoutils.c	2003-10-13 12:45:08.000000000 +0000
+@@ -199,7 +199,7 @@
+     {
+ 	unlink(prevlinkname);
+     }
+-    if (stat(linkname, &stat_buf) == 0)
++    if (lstat(linkname, &stat_buf) == 0)
+     {
+ 	if (prevlinkname) {
+ 	    rename(linkname, prevlinkname);

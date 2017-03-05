@@ -1,6 +1,6 @@
 diff -urpN src.orig/db/com/cdegroot/db/hash/EntryPage.java src/db/com/cdegroot/db/hash/EntryPage.java
---- src.orig/db/com/cdegroot/db/hash/EntryPage.java	2005-02-06 00:40:17.191151504 +0100
-+++ src/db/com/cdegroot/db/hash/EntryPage.java	2005-02-06 00:54:14.045930240 +0100
+--- a/src/db/com/cdegroot/db/hash/EntryPage.java	2005-02-06 00:40:17.191151504 +0100
++++ b/src/db/com/cdegroot/db/hash/EntryPage.java	2005-02-06 00:54:14.045930240 +0100
 @@ -25,7 +25,7 @@ final class EntryPage extends PageHeader
      /**
       *  Constructs a page view from the indicated block.
@@ -20,8 +20,8 @@ diff -urpN src.orig/db/com/cdegroot/db/hash/EntryPage.java src/db/com/cdegroot/d
  	if (view != null && view instanceof EntryPage)
  	    return (EntryPage) view;
 diff -urpN src.orig/db/com/cdegroot/db/recman/BlockIo.java src/db/com/cdegroot/db/recman/BlockIo.java
---- src.orig/db/com/cdegroot/db/recman/BlockIo.java	2005-02-06 00:40:17.192151352 +0100
-+++ src/db/com/cdegroot/db/recman/BlockIo.java	2005-02-06 00:58:02.990125432 +0100
+--- a/src/db/com/cdegroot/db/recman/BlockIo.java	2005-02-06 00:40:17.192151352 +0100
++++ b/src/db/com/cdegroot/db/recman/BlockIo.java	2005-02-06 00:58:02.990125432 +0100
 @@ -31,7 +31,7 @@ package com.cdegroot.db.recman;
   *  @see java.io.DataInput
   *  @see java.io.DataOutput
@@ -114,8 +114,8 @@ diff -urpN src.orig/db/com/cdegroot/db/recman/BlockIo.java src/db/com/cdegroot/d
  	data[pos+1] = (byte)(0xff & (value >> 48));
  	data[pos+2] = (byte)(0xff & (value >> 40));
 diff -urpN src.orig/db/com/cdegroot/db/recman/BlockView.java src/db/com/cdegroot/db/recman/BlockView.java
---- src.orig/db/com/cdegroot/db/recman/BlockView.java	2005-02-06 00:40:17.193151200 +0100
-+++ src/db/com/cdegroot/db/recman/BlockView.java	2005-02-06 00:47:57.632153832 +0100
+--- a/src/db/com/cdegroot/db/recman/BlockView.java	2005-02-06 00:40:17.193151200 +0100
++++ b/src/db/com/cdegroot/db/recman/BlockView.java	2005-02-06 00:47:57.632153832 +0100
 @@ -28,5 +28,5 @@ package com.cdegroot.db.recman;
   *
   *  @see BlockIo.setView()
@@ -124,8 +124,8 @@ diff -urpN src.orig/db/com/cdegroot/db/recman/BlockView.java src/db/com/cdegroot
 +public interface BlockView {
  }
 diff -urpN src.orig/db/com/cdegroot/db/recman/Magic.java src/db/com/cdegroot/db/recman/Magic.java
---- src.orig/db/com/cdegroot/db/recman/Magic.java	2005-02-06 00:40:17.193151200 +0100
-+++ src/db/com/cdegroot/db/recman/Magic.java	2005-02-06 00:44:22.164909832 +0100
+--- a/src/db/com/cdegroot/db/recman/Magic.java	2005-02-06 00:40:17.193151200 +0100
++++ b/src/db/com/cdegroot/db/recman/Magic.java	2005-02-06 00:44:22.164909832 +0100
 @@ -25,7 +25,7 @@ package com.cdegroot.db.recman;
  /**
   *  This interface contains magic cookies.
@@ -143,8 +143,8 @@ diff -urpN src.orig/db/com/cdegroot/db/recman/Magic.java src/db/com/cdegroot/db/
 +    int SZ_BYTE = 1;
  }
 diff -urpN src.orig/db/com/cdegroot/db/recman/PageHeader.java src/db/com/cdegroot/db/recman/PageHeader.java
---- src.orig/db/com/cdegroot/db/recman/PageHeader.java	2005-02-06 00:40:17.193151200 +0100
-+++ src/db/com/cdegroot/db/recman/PageHeader.java	2005-02-06 00:50:10.236994832 +0100
+--- a/src/db/com/cdegroot/db/recman/PageHeader.java	2005-02-06 00:40:17.193151200 +0100
++++ b/src/db/com/cdegroot/db/recman/PageHeader.java	2005-02-06 00:50:10.236994832 +0100
 @@ -28,15 +28,15 @@ import java.io.*;
   *  This class represents a page header. It is the common superclass for
   *  all different page views.
@@ -183,8 +183,8 @@ diff -urpN src.orig/db/com/cdegroot/db/recman/PageHeader.java src/db/com/cdegroo
  	if (view != null && view instanceof PageHeader)
  	    return (PageHeader) view;
 diff -urpN src.orig/db/com/cdegroot/db/recman/RecordFile.java src/db/com/cdegroot/db/recman/RecordFile.java
---- src.orig/db/com/cdegroot/db/recman/RecordFile.java	2005-02-06 00:40:17.193151200 +0100
-+++ src/db/com/cdegroot/db/recman/RecordFile.java	2005-02-06 00:45:38.616287456 +0100
+--- a/src/db/com/cdegroot/db/recman/RecordFile.java	2005-02-06 00:40:17.193151200 +0100
++++ b/src/db/com/cdegroot/db/recman/RecordFile.java	2005-02-06 00:45:38.616287456 +0100
 @@ -33,7 +33,7 @@ import java.util.*;
   *  The set of dirty records on the in-use list constitutes a transaction. 
   *  Later on, we will send these records to some recovery thingy.

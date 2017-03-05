@@ -1,15 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.savannah.nongnu.org/ranger.git"
+	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
 	inherit git-r3
 else
 	SRC_URI="http://nongnu.org/${PN}/${P}.tar.gz"

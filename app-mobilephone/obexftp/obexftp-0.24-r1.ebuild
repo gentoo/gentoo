@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -23,7 +22,7 @@ RDEPEND="
 	net-wireless/bluez
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.1 dev-lang/ruby:2.0 ) )
+	ruby? ( dev-lang/ruby:2.1 )
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="

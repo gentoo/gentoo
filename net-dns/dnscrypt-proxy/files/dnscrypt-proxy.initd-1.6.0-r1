@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DNSCRYPT_LOGFILE=${DNSCRYPT_LOGFILE:-/var/log/dnscrypt-proxy.log}
 DNSCRYPT_RESOLVERS_LIST=${DNSCRYPT_RESOLVERS_LIST:-/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv}

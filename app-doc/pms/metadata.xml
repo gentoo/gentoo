@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
-  <email>pms-bugs@gentoo.org</email>
+  <email>pms@gentoo.org</email>
   <name>Package Manager Specification</name>
 </maintainer>
 <use>

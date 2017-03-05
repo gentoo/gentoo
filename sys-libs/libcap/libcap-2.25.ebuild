@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -16,6 +15,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="pam static-libs"
 
+# While the build system optionally uses gperf, we don't DEPEND on it because
+# the build automatically falls back when it's unavailable.  #604802
 RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]
 	pam? ( virtual/pam )"
 DEPEND="${RDEPEND}

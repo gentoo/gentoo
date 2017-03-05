@@ -1,5 +1,4 @@
 #!/sbin/openrc-run
-# $Id$
 
 depend() {
 	need net

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -95,6 +94,11 @@ RDEPEND="dev-haskell/abstract-par:=
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-ghc-8.0.2_rc1.patch
+	"${FILESDIR}"/${P}-directory-1.3.patch
+)
 
 # $1 - target tarball name (not including extension)
 make_snapshot() {

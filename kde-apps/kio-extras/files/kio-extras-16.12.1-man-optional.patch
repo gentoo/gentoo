@@ -1,0 +1,48 @@
+From c9f618e75f4d84a8c48cb321a477c68c6dbf9f08 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Mon, 2 Jan 2017 02:35:08 +0100
+Subject: [PATCH 2/2] Make KF5KHtml dependency optional, only used by man
+
+REVIEW: 129783
+---
+ CMakeLists.txt | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5ac418b..7de37ea 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,7 +34,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     IconThemes
+     I18n
+     KIO
+-    KHtml
+     KDELibs4Support
+     Solid
+     Bookmarks
+@@ -124,6 +123,11 @@ if(UNIX)
+     if(NOT OFFT_IS_64BIT)
+         message(FATAL_ERROR "Large file support is not enabled.")
+     endif()
++
++    find_package(KF5KHtml QUIET)
++    set_package_properties(KF5KHtml PROPERTIES TYPE OPTIONAL
++                           PURPOSE "Needed to build the man kioslave"
++                           )
+ else()
+     # FIXME: on windows we ignore support until trash gets integrated
+ endif()
+@@ -158,7 +162,9 @@ if (MTP_FOUND)
+ endif()
+ 
+ if(NOT WIN32)
+-   add_subdirectory( man )
++   if(KF5KHtml_FOUND)
++     add_subdirectory( man )
++   endif()
+    check_include_files(rpc/rpc.h HAVE_RPC_RPC_H)
+    add_feature_info("NFS kioslave" HAVE_RPC_RPC_H "The RPC library is needed to build the NFS kioslave")
+    if(HAVE_RPC_RPC_H)
+-- 
+2.10.2
+

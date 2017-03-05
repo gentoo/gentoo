@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -23,7 +22,7 @@ DEPEND="
 	dev-db/postgresql:=
 	dev-libs/libxml2:2
 	dev-libs/boost
-	sci-libs/geos
+	<sci-libs/geos-3.6.0
 	sci-libs/proj
 	sys-libs/zlib
 	lua? ( dev-lang/lua:= )

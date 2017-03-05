@@ -1,5 +1,4 @@
 # /etc/conf.d/metalog
-# $Id$
 
 # Some useful options:
 #  -a   Log with buffering

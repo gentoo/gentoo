@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -14,7 +13,7 @@ else
 	SRC_URI="https://github.com/teleshoes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
-DESCRIPTION="Control battery thresholds of recent ThinkPads, which are not supported by tp_smapi"
+DESCRIPTION="Control battery thresholds of recent ThinkPads, not supported by tp_smapi"
 HOMEPAGE="https://github.com/teleshoes/tpacpi-bat"
 
 LICENSE="GPL-3"

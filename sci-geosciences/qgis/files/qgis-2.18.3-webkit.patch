@@ -1,0 +1,112 @@
+commit 222ae663e6ee6f718e45faafd63758c319fec135
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Feb 19 12:51:48 2017 +0100
+
+    Fix QtWebKit automagic
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3936521..4268019 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -288,6 +288,10 @@ ELSE()
+   MESSAGE(STATUS "Found Qt version: ${QTVERSION}")
+ ENDIF()
+ 
++IF(WITH_QTWEBKIT)
++    SET(OPTIONAL_QTWEBKIT ${QT_QTWEBKIT_LIBRARY})
++ENDIF(WITH_QTWEBKIT)
++
+ IF (WITH_QTMOBILITY)
+     FIND_PACKAGE(QtMobility 1.1.0)
+ ENDIF (WITH_QTMOBILITY)
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index 15579de..b6ef545 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -609,7 +609,7 @@ TARGET_LINK_LIBRARIES(qgis_app
+   ${QWT_LIBRARY}
+   ${QT_QTSQL_LIBRARY}
+   ${QT_QTUITOOLS_LIBRARY}
+-  ${QT_QTWEBKIT_LIBRARY}
++  ${OPTIONAL_QTWEBKIT}
+   #should only be needed for win
+   ${QT_QTMAIN_LIBRARY}
+   ${QWTPOLAR_LIBRARY}
+diff --git a/src/browser/CMakeLists.txt b/src/browser/CMakeLists.txt
+index e53c1de..1a72070 100644
+--- a/src/browser/CMakeLists.txt
++++ b/src/browser/CMakeLists.txt
+@@ -80,7 +80,7 @@ TARGET_LINK_LIBRARIES(qbrowser
+   ${QT_QTNETWORK_LIBRARY}
+   ${QT_QTSVG_LIBRARY}
+   ${QT_QTXML_LIBRARY}
+-  ${QT_QTWEBKIT_LIBRARY}
++  ${OPTIONAL_QTWEBKIT}
+   ${QT_QTMAIN_LIBRARY}
+   ${SQLITE3_LIBRARY}
+ )
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index e2d9ae8..cd8e305 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -981,7 +981,7 @@ TARGET_LINK_LIBRARIES(qgis_core
+   ${QT_QTGUI_LIBRARY}
+   ${QT_QTNETWORK_LIBRARY}
+   ${QT_QTSVG_LIBRARY}
+-  ${QT_QTWEBKIT_LIBRARY}
++  ${OPTIONAL_QTWEBKIT}
+   ${QT_QTSQL_LIBRARY}
+   ${QCA_LIBRARY}
+ 
+diff --git a/src/helpviewer/CMakeLists.txt b/src/helpviewer/CMakeLists.txt
+index cec5ad1..ffd0966 100644
+--- a/src/helpviewer/CMakeLists.txt
++++ b/src/helpviewer/CMakeLists.txt
+@@ -68,7 +68,7 @@ TARGET_LINK_LIBRARIES(qgis_help
+   ${QT_QTNETWORK_LIBRARY}
+   ${QT_QTSVG_LIBRARY}
+   ${QT_QTXML_LIBRARY}
+-  ${QT_QTWEBKIT_LIBRARY}
++  ${OPTIONAL_QTWEBKIT}
+   ${QT_QTMAIN_LIBRARY}
+   ${SQLITE3_LIBRARY}
+ )
+diff --git a/tests/bench/CMakeLists.txt b/tests/bench/CMakeLists.txt
+index b605a6a..aa45a27 100644
+--- a/tests/bench/CMakeLists.txt
++++ b/tests/bench/CMakeLists.txt
+@@ -35,7 +35,7 @@ TARGET_LINK_LIBRARIES(qgis_bench
+   ${QT_QTNETWORK_LIBRARY}
+   ${QT_QTSVG_LIBRARY}
+   ${QT_QTXML_LIBRARY}
+-  ${QT_QTWEBKIT_LIBRARY}
++  ${OPTIONAL_QTWEBKIT}
+   ${QT_QTMAIN_LIBRARY}
+   ${QT_QTTEST_LIBRARY}
+ )
+diff --git a/tests/src/gui/CMakeLists.txt b/tests/src/gui/CMakeLists.txt
+index f1c823a..94d8692 100644
+--- a/tests/src/gui/CMakeLists.txt
++++ b/tests/src/gui/CMakeLists.txt
+@@ -102,7 +102,7 @@ MACRO (ADD_QGIS_TEST testname testsrc)
+     ${QT_QTSVG_LIBRARY}
+     ${QT_QTTEST_LIBRARY}
+     ${QT_QTNETWORK_LIBRARY}
+-    ${QT_QTWEBKIT_LIBRARY}
++    ${OPTIONAL_QTWEBKIT}
+     ${QT_QTMAIN_LIBRARY}
+     ${PROJ_LIBRARY}
+     ${GEOS_LIBRARY}
+diff --git a/tests/src/providers/CMakeLists.txt b/tests/src/providers/CMakeLists.txt
+index 7e8b2e9..0388150 100644
+--- a/tests/src/providers/CMakeLists.txt
++++ b/tests/src/providers/CMakeLists.txt
+@@ -124,7 +124,7 @@ IF(UNIX AND NOT ANDROID AND CMAKE_BUILD_TYPE MATCHES Debug)
+     ${QT_QTNETWORK_LIBRARY}
+     ${QT_QTSVG_LIBRARY}
+     ${QT_QTXML_LIBRARY}
+-    ${QT_QTWEBKIT_LIBRARY}
++    ${OPTIONAL_QTWEBKIT}
+     ${QT_QTMAIN_LIBRARY}
+     ${QT_QTSCRIPT_LIBRARY}
+     qgis_core

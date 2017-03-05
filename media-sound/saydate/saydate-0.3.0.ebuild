@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="A Linux shell program that talks the date and system uptime"

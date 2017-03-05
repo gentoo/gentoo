@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 IUSE=""
 DESCRIPTION="Simple application launcher for the Window Maker dock"

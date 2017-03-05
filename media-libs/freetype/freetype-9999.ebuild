@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -57,10 +56,10 @@ PATCHES=(
 src_fetch() {
 	if [[ "${PV}" = 9999 ]] ; then
 		local EGIT_REPO_URI
-		EGIT_REPO_URI="http://git.savannah.gnu.org/r/freetype/freetype2.git"
+		EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2.git"
 		git-r3_src_fetch
 		if use utils ; then
-			EGIT_REPO_URI="http://git.savannah.gnu.org/r/freetype/freetype2-demos.git"
+			EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2-demos.git"
 			git-r3_src_fetch
 		fi
 	else

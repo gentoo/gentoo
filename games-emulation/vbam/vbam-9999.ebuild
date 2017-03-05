@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 WX_GTK_VER="3.0"
@@ -40,7 +39,7 @@ RDEPEND=">=media-libs/libpng-1.4:0=
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	)"
 DEPEND="${RDEPEND}
-	wxwidgets? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
+	wxwidgets? ( virtual/imagemagick-tools )
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"

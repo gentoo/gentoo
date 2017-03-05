@@ -1,7 +1,5 @@
-
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -70,7 +68,7 @@ RDEPEND="
 		libav? ( media-video/libav:0= )
 	)
 	bidi? ( dev-libs/fribidi:0 )
-	bluray? ( >=media-libs/libbluray-0.6.2:0 )
+	bluray? ( >=media-libs/libbluray-0.6.2:0= )
 	cddb? ( >=media-libs/libcddb-1.2:0 )
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	chromecast? ( >=dev-libs/protobuf-2.5.0 )
@@ -203,7 +201,7 @@ REQUIRED_USE="
 	sdl? ( X )
 	skins? ( truetype X xml || ( qt4 qt5 ) )
 	vaapi? ( avcodec X )
-	vdpau? ( xcb )
+	vdpau? ( X )
 	vlm? ( encode )
 	xv? ( xcb )
 "

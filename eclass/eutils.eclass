@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
@@ -881,8 +880,6 @@ _eutils_eprefix_init() {
 
 # @FUNCTION: validate_desktop_entries
 # @USAGE: [directories]
-# @MAINTAINER:
-# Carsten Lohrke <carlo@gentoo.org>
 # @DESCRIPTION:
 # Validate desktop entries using desktop-file-utils
 validate_desktop_entries() {

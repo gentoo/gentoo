@@ -51,12 +51,12 @@ permitted only if each of the following conditions of 1-6 are met:
    The name "sendmail" is a registered trademark and service mark of
    Sendmail, Inc.
 
-5. We reserve the right to cancel this license if you do not comply with 
-   the terms.  This license is governed by California law and both of us 
-   agree that for any dispute arising out of or relating to this Software, 
-   that jurisdiction and venue is proper in San Francisco or Alameda 
-   counties.  These license terms and conditions reflect the complete 
-   agreement for the license of the Software (which means this supercedes 
+5. We reserve the right to cancel this license if you do not comply with
+   the terms.  This license is governed by California law and both of us
+   agree that for any dispute arising out of or relating to this Software,
+   that jurisdiction and venue is proper in San Francisco or Alameda
+   counties.  These license terms and conditions reflect the complete
+   agreement for the license of the Software (which means this supercedes
    prior or contemporaneous agreements or representations).  If any term
    or condition under this license is found to be invalid, the remaining
    terms and conditions still apply.
@@ -74,4 +74,4 @@ permitted only if each of the following conditions of 1-6 are met:
    WITHOUT LIMITATION NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
    USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-$Revision: 1.1 $ $Date: 2006/07/15 21:16:12 $
+$Revision: 1.1 $ $Date: 2004/06/01 18:16:20 $

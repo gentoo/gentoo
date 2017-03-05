@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="uchardet">Enable charset discovery via <pkg>dev-libs/uchardet</pkg></flag>
+		<flag name="uchardet">Enable charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>http://devel.aegisub.org/wiki/NewTicket</bugs-to>

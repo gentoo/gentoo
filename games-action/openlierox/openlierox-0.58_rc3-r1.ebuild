@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -31,6 +30,8 @@ DEPEND="${RDEPEND}
 	X? ( x11-proto/xproto )"
 
 S="${WORKDIR}/${MY_PN}"
+
+RESTRICT="mirror"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.58_rc1-icu.patch

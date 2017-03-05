@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit perl-module
 
-DESCRIPTION="Finance performance calculation engine with full data acquisition and SQL support"
+DESCRIPTION="Finance performance calculation engine with full data acquisition, SQL support"
 HOMEPAGE="http://dirk.eddelbuettel.com/code/beancounter.html"
 SRC_URI="http://eddelbuettel.com/dirk/code/${PN}/${PN}_${PV}.tar.gz"
 

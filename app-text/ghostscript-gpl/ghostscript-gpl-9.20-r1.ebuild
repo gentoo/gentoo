@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -32,7 +31,7 @@ SRC_URI="
 
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 # IUSE="cups dbus djvu gtk idn l10n_de static-libs tiff X"
 IUSE="cups dbus gtk idn l10n_de static-libs tiff X"
 # RESTRICT="djvu? ( bindist )"
@@ -78,13 +77,6 @@ LANGS="ja ko zh-CN zh-TW"
 for X in ${LANGS} ; do
 	IUSE="${IUSE} l10n_${X}"
 done
-
-#pkg_setup() {
-#	if use djvu; then
-#		ewarn "With USE=\"djvu\", distribution of binaries is restricted!"
-#		ewarn "See http://djvu.sourceforge.net/gsdjvu/COPYING for details on licensing issues."
-#	fi
-#}
 
 src_prepare() {
 	default

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -13,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="acoustid flac kde mp3 mp4 +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"
@@ -58,7 +57,10 @@ DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep linguist-tools)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.3.2-libdir.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.3.2-libdir.patch"
+	"${FILESDIR}/${PN}-3.4.4-deps.patch"
+)
 
 src_prepare() {
 	# overengineered upstream build system

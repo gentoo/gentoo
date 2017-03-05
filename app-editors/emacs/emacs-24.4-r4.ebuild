@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -70,10 +69,7 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? (
-		sys-apps/attr
-		sys-apps/paxctl
-	)"
+	pax_kernel? ( sys-apps/attr )"
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"

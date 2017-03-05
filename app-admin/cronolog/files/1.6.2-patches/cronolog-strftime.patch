@@ -1,0 +1,26 @@
+--- a/src/cronoutils.c	Mon Dec 20 00:34:44 1999
++++ b/src/cronoutils.c	Mon Feb 11 03:19:32 2002
+@@ -204,9 +204,21 @@
+     {
+ 	if (ch == '%')
+ 	{
+-	    ch = *spec++;
+-	    if (!ch) break;
++	    do {
++		ch = *spec++;
++		if (!ch) break;
+ 	    
++		switch(ch) {
++		case '_':
++		case '-':
++		case '0':
++		    continue;
++		}
++		break;
++	    } while(1);
++
++	    if(!ch) break;
++
+ 	    switch (ch)
+ 	    {
+ 	    case 'y':		/* two digit year */

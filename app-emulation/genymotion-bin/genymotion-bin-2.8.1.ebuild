@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -35,7 +34,7 @@ RDEPEND="|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5
 	>=dev-libs/libffi-3.0.13-r1
 	media-libs/gstreamer[orc]
 "
-RESTRICT="fetch"
+RESTRICT="bindist fetch"
 
 pkg_nofetch() {
 	einfo

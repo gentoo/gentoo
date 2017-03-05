@@ -1,0 +1,49 @@
+From 399adb1ace87ab25525922f422e5cad3b30f5b60 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Sun, 22 Nov 2015 11:48:36 +0100
+Subject: Use FindPkgConfig instead of UsePkgConfig
+
+UsePkgConfig is marked as obsolete and doesn't handle differently
+named pkg-config executables, like architecture or toolchain prefixed
+ones, well. The FindPkgConfig module respects the PKG_CONFIG env
+variable and sets PKG_CONFIG_EXECUTABLE accordingly.
+
+REVIEW: 126135
+---
+ cmake/modules/FindSndfile.cmake | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/cmake/modules/FindSndfile.cmake b/cmake/modules/FindSndfile.cmake
+index c5d21b5..8a6fe2b 100644
+--- a/cmake/modules/FindSndfile.cmake
++++ b/cmake/modules/FindSndfile.cmake
+@@ -21,22 +21,20 @@ endif ( SNDFILE_INCLUDE_DIR AND SNDFILE_LIBRARIES )
+ IF (NOT WIN32)
+   # use pkg-config to get the directories and then use these values
+   # in the FIND_PATH() and FIND_LIBRARY() calls
+-  INCLUDE(UsePkgConfig)
++  include(FindPkgConfig)
+ 
+-  PKGCONFIG(sndfile _SndfileIncDir _SndfileLinkDir _SndfileLinkFlags _SndfileCflags)
++  pkg_check_modules(_pc_SNDFILE sndfile)
+ ENDIF (NOT WIN32)
+ 
+ 
+ FIND_PATH(SNDFILE_INCLUDE_DIR
+   NAMES sndfile.h
+-  PATHS ${_SndfileIncDir}
+-  NO_DEFAULT_PATH
++  HINTS ${_pc_SNDFILE_INCLUDE_DIRS}
+ )
+ 
+ FIND_LIBRARY(SNDFILE_LIBRARIES 
+   NAMES sndfile
+-  PATHS ${_SndfileLinkDir}
+-  NO_DEFAULT_PATH
++  HINTS ${_pc_SNDFILE_LIBRARY_DIRS}
+ )
+ 
+ include(FindPackageHandleStandardArgs)
+-- 
+cgit v0.11.2
+

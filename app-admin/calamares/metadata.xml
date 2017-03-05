@@ -5,6 +5,10 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mudler@gentoo.org</email>
+		<name>Ettore Di Giacinto</name>
+	</maintainer>
 	<longdescription>
 		Calamares is a distribution-independent system installer, with an
 		advanced partitioning feature for both manual and automated
@@ -17,4 +21,7 @@
 	<upstream>
 		<remote-id type="github">calamares/calamares</remote-id>
 	</upstream>
+	<use>
+		<flag name="pythonqt">Enable PythonQt-based module interface</flag>
+	</use>
 </pkgmetadata>

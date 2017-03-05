@@ -6,7 +6,9 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="activities">Enable activities kioslave and fileitem plugin</flag>
 		<flag name="htmlthumbs">Enable HTML thumbnail previews via <pkg>dev-qt/qtwebengine</pkg></flag>
+		<flag name="man">Enable manpages kioslave</flag>
 		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
 		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>
 	</use>

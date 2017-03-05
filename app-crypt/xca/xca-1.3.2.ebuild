@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests and revokation lists"
+DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests etc"
 HOMEPAGE="http://xca.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
@@ -16,7 +15,7 @@ SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="cdr dia dbus exif gnome imagemagick openmp postscript inkjar jpeg latex"
 IUSE+=" lcms nls spell static-libs visio wpg"
 

@@ -1,5 +1,11 @@
 --- a/init-scripts/psad-init.gentoo
 +++ b/init-scripts/psad-init.gentoo
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ ## Copyright 2006 Michael Rash
+ # Distributed under the terms of the GNU General Public License v2
+ # Author: Michael Rash
 @@ -19,6 +19,10 @@
  
  start() {

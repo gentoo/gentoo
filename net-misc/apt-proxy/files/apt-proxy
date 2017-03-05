@@ -1,6 +1,5 @@
 # default: off
 # description: this is a proxy for debian packages.  
-# $Id$
 
 service apt-proxy
 {

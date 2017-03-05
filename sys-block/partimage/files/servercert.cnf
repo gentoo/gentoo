@@ -1,4 +1,3 @@
-# $Id$
 # Robin H. Johnson <robbat2@gentoo.org> - October 17, 2003
 # This is the openssl config file to generate keys for partimage
 # It is read by mkservercert

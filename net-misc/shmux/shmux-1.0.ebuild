@@ -1,6 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Program for executing the same command on many hosts in parallel"
 HOMEPAGE="http://web.taranis.org/shmux/"

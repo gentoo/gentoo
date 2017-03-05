@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -143,6 +142,8 @@ src_configure() {
 		# force to find crypto++ see bug #548544
 		-DCRYPTOPP_LIBRARIES="crypto++"
 		-DCRYPTOPP_FOUND=ON
+		# avoid automagically enabling of ccache (bug #611010)
+		-DCCACHE_EXECUTABLE=OFF
 		)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT

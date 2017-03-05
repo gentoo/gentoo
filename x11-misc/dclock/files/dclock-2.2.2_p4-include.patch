@@ -1,5 +1,5 @@
---- dclock.c
-+++ dclock.c
+--- a/dclock.c
++++ b/dclock.c
 @@ -7,6 +7,7 @@
   * manager: *Dclock.seconds: on
   */

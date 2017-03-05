@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,17 +13,16 @@ IUSE="doc +ocamlopt tk"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]
 	tk? ( dev-ml/labltk:= )"
 RDEPEND="${DEPEND}"
 
-ocamlfind_destdir="${EPREFIX}/usr/$(get_libdir)/ocaml"
-stublibs="${ocamlfind_destdir}/stublibs"
-
 src_prepare() {
 	epatch "${FILESDIR}/externalmeta4.patch"
+	export ocamlfind_destdir="${EPREFIX}/usr/$(get_libdir)/ocaml"
+	export stublibs="${ocamlfind_destdir}/stublibs"
 }
 
 src_configure() {

@@ -1,8 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
+
+inherit autotools
 
 DESCRIPTION="a backup program for disk array for home media centers"
 HOMEPAGE="http://snapraid.sourceforge.net/"
@@ -16,3 +17,8 @@ IUSE="test"
 DOCS=( "AUTHORS" "HISTORY" "README" "TODO" "snapraid.conf.example" )
 
 PATCHES=( "${FILESDIR}/${P}-minor.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}

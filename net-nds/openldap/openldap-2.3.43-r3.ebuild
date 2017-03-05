@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="2"
 
@@ -180,7 +179,7 @@ pkg_setup() {
 		die "Please set ssl useflag"
 	fi
 
-	if use minimal && has_version "net-nds/openldap" && built_with_use net-nds/openldap minimal ; then
+	if use minimal && has_version 'net-nds/openldap[minimal]' ; then
 		einfo
 		einfo "Skipping scan for previous datadirs as requested by minimal useflag"
 		einfo

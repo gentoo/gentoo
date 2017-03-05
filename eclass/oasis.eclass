@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: oasis.eclass
 # @MAINTAINER: 
@@ -63,7 +62,7 @@ IUSE="+ocamlopt"
 [ -n "${OASIS_BUILD_TESTS}" ] && IUSE="${IUSE} test"
 
 DEPEND="${RDEPEND}
-	|| ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )"
+	dev-ml/ocamlbuild"
 
 # @FUNCTION: oasis_use_enable
 # @USAGE: < useflag > < variable >

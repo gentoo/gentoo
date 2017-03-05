@@ -1,0 +1,49 @@
+--- a/examples/c/Makefile.examples.in
++++ b/examples/c/Makefile.examples.in
+@@ -25,9 +25,6 @@
+ CC = @CC@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+-
+ @extXdrawable_true@extXdrawable_EXECUTABLES_list = \
+ @extXdrawable_true@	extXdrawable_demo$(EXEEXT)
+ 
+--- a/examples/c++/Makefile.examples.in
++++ b/examples/c++/Makefile.examples.in
+@@ -25,10 +25,7 @@
+ CXX = @CXX@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+ @qt_gui_true@QT_MOC_EXECUTABLE = @QT_MOC_EXECUTABLE@
+-@qt_gui_true@qt_RPATHCMD = @qt_RPATHCMD@
+ 
+ @wxwidgets_true@PLPLOTWXWIDGETS_EXECUTABLES_list = \
+ @wxwidgets_true@	@wxdemo_name@$(EXEEXT)
+--- a/examples/f95/Makefile.examples.in
++++ b/examples/f95/Makefile.examples.in
+@@ -25,9 +25,6 @@
+ F95 = @FC@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-FORTRAN_RPATHCMD = @FORTRAN_RPATHCMD@
+-
+ EXECUTABLES_list = \
+ 		 x00f$(EXEEXT) \
+ 		 x01f$(EXEEXT) \
+--- a/examples/tk/Makefile.examples.in
++++ b/examples/tk/Makefile.examples.in
+@@ -24,9 +24,6 @@
+ CC = @CC@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-plplottcltk_Main_RPATHCMD = @plplottcltk_Main_RPATHCMD@
+-
+ EXECUTABLES_list = xtk01$(EXEEXT)
+ # Second and fourth examples depend on itk.
+ @itk_true@itk_EXECUTABLES_list = xtk02$(EXEEXT) xtk04$(EXEEXT)

@@ -1,6 +1,5 @@
-diff -Naur libsmbios-2.2.19.orig/src/bin/dellMediaDirectCtl.cpp libsmbios-2.2.19/src/bin/dellMediaDirectCtl.cpp
---- libsmbios-2.2.19.orig/src/bin/dellMediaDirectCtl.cpp	2009-02-26 14:29:03.000000000 +0000
-+++ libsmbios-2.2.19/src/bin/dellMediaDirectCtl.cpp	2011-01-20 06:55:48.000000000 +0000
+--- libsmbios-2.2.19/src/bin/dellMediaDirectCtl.cpp
++++ libsmbios-2.2.19/src/bin/dellMediaDirectCtl.cpp
 @@ -183,16 +183,21 @@
  {
      iopl(3);

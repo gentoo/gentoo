@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -35,6 +34,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kpackage)
+	qt4? ( dev-util/automoc:0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep breeze-icons)

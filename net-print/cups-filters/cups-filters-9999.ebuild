@@ -1,15 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit eutils perl-module autotools systemd
+inherit eutils perl-module systemd
 
 if [[ "${PV}" == "9999" ]] ; then
-	inherit bzr
+	inherit bzr autotools
 	EBZR_REPO_URI="http://bzr.linuxfoundation.org/openprinting/cups-filters"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
@@ -20,12 +19,11 @@ HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/pdf_as_standard_print_jo
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic jpeg ldap perl png +postscript static-libs tiff zeroconf"
+IUSE="dbus +foomatic jpeg ldap pdf perl png +postscript static-libs tiff zeroconf"
 
 RDEPEND="
-	app-text/mupdf
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
-	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils,xpdf-headers(+)]
+	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils]
 	>=app-text/qpdf-3.0.2:=
 	dev-libs/glib:2
 	media-libs/fontconfig
@@ -33,12 +31,12 @@ RDEPEND="
 	media-libs/lcms:2
 	>=net-print/cups-1.7.3
 	!<=net-print/cups-1.5.9999
-	sys-devel/bc
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
 	ldap? ( net-nds/openldap )
+	pdf? ( app-text/mupdf )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
@@ -50,7 +48,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	eautoreconf
+	[[ "${PV}" == "9999" ]] && eautoreconf
 }
 
 src_configure() {
@@ -63,6 +61,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable foomatic) \
 		$(use_enable ldap) \
+		$(use_enable pdf mutool) \
 		$(use_enable postscript ghostscript) \
 		$(use_enable postscript ijs) \
 		--with-fontdir="fonts/conf.avail" \
@@ -105,7 +104,7 @@ src_install() {
 
 	prune_libtool_files --all
 
-	cp "${FILESDIR}"/cups-browsed.init.d "${T}"/cups-browsed || die
+	cp "${FILESDIR}"/cups-browsed.init.d-r1 "${T}"/cups-browsed || die
 
 	if ! use zeroconf ; then
 		sed -i -e 's:need cupsd avahi-daemon:need cupsd:g' "${T}"/cups-browsed || die

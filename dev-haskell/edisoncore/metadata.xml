@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides the core Edison data structure implementations,
+		including multiple sequence, set, bag, and finite map concrete
+		implementations with various performance characteristics. The
+		implementations in this package have no dependencies other than those
+		commonly bundled with Haskell compilers.
+	</longdescription>
+</pkgmetadata>

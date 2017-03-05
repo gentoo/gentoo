@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -14,7 +13,7 @@ if [[ $PV == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="http://www.gnokii.org/download/${PN}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 DESCRIPTION="User space driver and tools for use with mobile phones"
 

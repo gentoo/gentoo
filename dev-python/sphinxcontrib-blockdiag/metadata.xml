@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>i.tkomiya@gmail.com</email>
+			<name>Takeshi KOMIYA</name>
+		</maintainer>
+	</upstream>
+	<longdescription></longdescription>
+</pkgmetadata>

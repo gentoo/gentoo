@@ -1,5 +1,5 @@
---- src/rmdPrefsWidget.py.orig	2008-11-23 16:09:14.000000000 +0100
-+++ src/rmdPrefsWidget.py	2010-05-24 16:23:30.255865721 +0200
+--- a/src/rmdPrefsWidget.py	2008-11-23 16:09:14.000000000 +0100
++++ b/src/rmdPrefsWidget.py	2010-05-24 16:23:30.255865721 +0200
 @@ -302,9 +302,29 @@
      def remPort(self,lwi):
          self.jack_lsp_listSave.takeItem(self.jack_lsp_listSave.row(lwi))

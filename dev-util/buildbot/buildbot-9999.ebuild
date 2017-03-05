@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 PYTHON_REQ_USE="sqlite"
@@ -60,10 +59,18 @@ RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
+	dev-python/pyjwt[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	doc? ( >=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}] )
+	doc? (
+		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
+		dev-python/pyenchant[${PYTHON_USEDEP}]
+		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
+		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
+	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
@@ -82,13 +89,6 @@ DEPEND="${RDEPEND}
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)"
-
-# still yet to be added deps
-# doc? (     'sphinxcontrib-blockdiag',
-#            'sphinxcontrib-spelling',
-#            'pyenchant',
-#            'docutils>=0.8',
-#            'sphinx-jinja',)
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master

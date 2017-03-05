@@ -1,7 +1,7 @@
 Fixes errors reported by desktop-file-validate.
 
---- src/qt-recordmydesktop.desktop
-+++ src/qt-recordmydesktop.desktop
+--- a/src/qt-recordmydesktop.desktop
++++ b/src/qt-recordmydesktop.desktop
 @@ -1,12 +1,11 @@
  [Desktop Entry]
  Version=1.0

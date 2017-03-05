@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -18,7 +17,6 @@ IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd t
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl )
-	media-libs/freetype
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
@@ -108,6 +106,7 @@ DEPEND="${CDEPEND}
 	>=x11-proto/xineramaproto-1.1.3
 	>=x11-proto/xproto-7.0.31
 	>=x11-proto/presentproto-1.0
+	>=x11-proto/dri2proto-2.8
 	>=x11-proto/dri3proto-1.0
 	dmx? (
 		>=x11-proto/dmxproto-2.2.99.1
@@ -121,7 +120,6 @@ DEPEND="${CDEPEND}
 	)
 	!minimal? (
 		>=x11-proto/xf86driproto-2.1.0
-		>=x11-proto/dri2proto-2.8
 	)"
 
 RDEPEND="${CDEPEND}
@@ -154,6 +152,13 @@ pkg_pretend() {
 		die "Sorry, but gcc earlier than 4.0 will not work for xorg-server."
 }
 
+pkg_setup() {
+	if use wayland && ! use glamor; then
+		ewarn "glamor is necessary for acceleration under Xwayland."
+		ewarn "Performance may be unacceptable without it."
+	fi
+}
+
 src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
@@ -166,7 +171,6 @@ src_configure() {
 		$(use_enable dmx)
 		$(use_enable glamor)
 		$(use_enable kdrive)
-		$(use_enable kdrive kdrive-evdev)
 		$(use_enable suid install-setuid)
 		$(use_enable tslib)
 		$(use_enable unwind libunwind)

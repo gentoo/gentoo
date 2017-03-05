@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -106,7 +105,11 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT=test
 # bug 366505
 
-PATCHES=( "${FILESDIR}/${P}-db-lock.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-db-lock.patch"
+	"${FILESDIR}/${P}-clang.patch"
+	"${FILESDIR}/${P}-kf-5.31.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="WindowMaker DockApp: Battery/Power status monitor for laptops"
 SRC_URI="http://dockapps.windowmaker.org/download.php/id/25/${P}.tar.gz"

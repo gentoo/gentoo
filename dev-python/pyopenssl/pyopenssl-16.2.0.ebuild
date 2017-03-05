@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 flag-o-matic
@@ -36,13 +35,19 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+python_prepare_all() {
+	# Requires network access
+	sed -i -e 's/test_set_default_verify_paths/_&/' tests/test_ssl.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile_all() {
 	use doc && emake -C doc html
 }
 
 python_test() {
 	# FIXME: for some reason, no-ops on PyPy
-	esetup.py test
+	py.test -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {

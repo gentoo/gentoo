@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 depend() {
 	need net
@@ -16,7 +15,7 @@ start() {
 		if [ $ret -eq 0 ]; then
 			TGT_MAC="$(LC_ALL=C arp -an -i ${DEVICE} ${TGT_IP} |egrep -v 'incomplete|no match' | awk '{print $4}')"
 		fi
-	elif [ "${TGT_MAC}" == "broadcast" ]; then
+	elif [ "${TGT_MAC}" = "broadcast" ]; then
 		TGT_MAC=''
 	fi
 	ebegin "Starting netconsole ${SRC_IP}:${SRC_PORT}(${DEVICE}) -> ${TGT_IP}:${TGT_PORT} ${TGT_MAC}"

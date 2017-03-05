@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -8,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 inherit eutils distutils-r1
 
-DESCRIPTION="Large open source vocabulary, speaker-independent continuous speech recognition engine"
+DESCRIPTION="Speaker-independent large vocabulary with continuous speech recognizer"
 HOMEPAGE="https://sourceforge.net/projects/cmusphinx/"
 SRC_URI="mirror://sourceforge/cmusphinx/${P}.tar.gz"
 

@@ -1,5 +1,5 @@
---- setup.py.orig	2007-12-18 11:13:36.439046250 +0100
-+++ setup.py	2007-12-18 11:14:05.216844750 +0100
+--- a/setup.py	2007-12-18 11:13:36.439046250 +0100
++++ b/setup.py	2007-12-18 11:14:05.216844750 +0100
 @@ -73,9 +73,7 @@
      # we want to move the web script files as well, so we sneak them
      # in here.

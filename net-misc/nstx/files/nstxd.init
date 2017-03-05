@@ -3,7 +3,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # (Written  by Phillip Berndt <phillip.berndt at gmail dot com>)
 # (Modified by Steven Brudenell <steven dot brudenell at gmail>)
-# $Id$
 
 depend() {
     if [ ! -z "${BIND_INTERFACE}" ] ; then

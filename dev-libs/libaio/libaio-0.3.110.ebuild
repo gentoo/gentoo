@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit eutils multilib-minimal toolchain-funcs flag-o-matic
 
 DESCRIPTION="Asynchronous input/output library that uses the kernels native interface"
-HOMEPAGE="https://git.fedorahosted.org/cgit/libaio.git/  http://lse.sourceforge.net/io/aio.html"
-SRC_URI="https://fedorahosted.org/releases/${PN:0:1}/${PN:1:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="http://lse.sourceforge.net/io/aio.html"
+SRC_URI="mirror://debian/pool/main/liba/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

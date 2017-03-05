@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -133,7 +132,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
-	x11-libs/cairo[X,-xlib-xcb]
+	x11-libs/cairo[X,-xlib-xcb(-)]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
@@ -245,6 +244,9 @@ PATCHES=(
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.2-system-pyuno.patch"
+
+	# TODO: upstream
+	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
 )
 
 pkg_pretend() {

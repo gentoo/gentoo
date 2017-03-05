@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 description="Prosody is a server for Jabber/XMPP written in Lua."
 description_reload="Reload configuration and reopen log files."

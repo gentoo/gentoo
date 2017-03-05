@@ -1,0 +1,12 @@
+diff --git a/atom-application.js.orig b/atom-application.js
+index 92d985f..9a120e6 100644
+--- a/build/app/src/main-process/atom-application.js
++++ b/build/app/src/main-process/atom-application.js
+@@ -1178,6 +1178,7 @@
+     AtomApplication.prototype.restart = function() {
+       var args;
+       args = [];
++      args.push("--app=" + this.resourcePath);
+       if (this.safeMode) {
+         args.push("--safe");
+       }

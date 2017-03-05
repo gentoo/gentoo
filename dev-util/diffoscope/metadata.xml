@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>grozin@gentoo.org</email>
+  <name>Andrey Grozin</name>
+</maintainer>
+<longdescription>
+  diffoscope will try to get to the bottom of what makes files or directories different.
+  It will recursively unpack archives of many kinds and transform various binary formats
+  into more human readable form to compare them.
+  It can compare two tarballs, ISO images, or PDF just as easily.
+</longdescription>
+<upstream>
+  <remote-id type="pypi">diffoscope</remote-id>
+</upstream>
+</pkgmetadata>

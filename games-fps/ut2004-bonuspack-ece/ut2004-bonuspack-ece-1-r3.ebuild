@@ -1,6 +1,5 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,10 +10,7 @@ inherit games games-mods
 
 MY_P="ut2004megapack-linux.tar.bz2"
 HOMEPAGE="http://www.unrealtournament2004.com/"
-SRC_URI="mirror://3dgamers/unrealtourn2k4/Missions/${MY_P}
-	http://0day.icculus.org/ut2004/${MY_P}
-	ftp://ftp.games.skynet.be/pub/misc/${MY_P}
-	http://sonic-lux.net/data/mirror/ut2004/${MY_P}
+SRC_URI="http://ut2004.ut-files.com/BonusPacks/${MY_P}
 	http://unrealmassdestruction.com/downloads/ut2k4/essentials/UT2004-ONSBonusMapPack.zip"
 
 LICENSE="ut2003"

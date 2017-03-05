@@ -133,7 +133,7 @@ index 0873b33..dab77d9 100644
   Build-Depends: base >= 3 && < 5,
                 mtl, HUnit,
 -               QuickCheck >= 2.1.0.3 && < 2.8
-+               QuickCheck >= 2.1.0.3 && < 2.9
++               QuickCheck >= 2.1.0.3
  
   If flag(splitBase)
     Build-Depends: base >= 3 && < 5, containers, random

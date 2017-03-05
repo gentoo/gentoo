@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="6"
 
@@ -12,7 +11,7 @@ SRC_URI="http://linux.netpimpz.com/quickcrypt/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64 ~ia64 ~hppa ~mips"
+KEYWORDS="alpha amd64 ~hppa ~ia64 ~mips ~ppc sparc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/perl-5.6

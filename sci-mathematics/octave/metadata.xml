@@ -10,7 +10,6 @@
 	</longdescription>
 	<use>
 		<flag name="glpk">Add support for <pkg>sci-mathematics/glpk</pkg> for linear programming</flag>
-		<flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg></flag>
 		<flag name="gui">Enable the graphical user interface</flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for low level hash functions</flag>
 		<flag name="qhull">Add support for <pkg>media-libs/qhull</pkg>, to allow `delaunay', `convhull', and related functions</flag>

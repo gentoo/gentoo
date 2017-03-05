@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -24,7 +23,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	dev-util/desktop-file-utils
 	dev-libs/libxslt
-	media-gfx/imagemagick[xml]
+	media-gfx/imagemagick[xml,png,svg]
 	media-gfx/inkscape
 	virtual/pkgconfig"
 

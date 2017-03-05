@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -18,9 +17,10 @@ HOMEPAGE="https://github.com/openrc/opentmpfiles"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE=""
+IUSE="selinux"
 
-RDEPEND="!<sys-apps/openrc-0.23"
+RDEPEND="!<sys-apps/openrc-0.23
+	selinux? ( sec-policy/selinux-base-policy )"
 
 src_install() {
 	default
@@ -40,6 +40,8 @@ add_service() {
 }
 
 pkg_postinst() {
-	add_service opentmpfiles-dev sysinit
-	add_service opentmpfiles-setup boot
+	if [[ -z $REPLACING_VERSIONS ]]; then
+		add_service opentmpfiles-dev sysinit
+		add_service opentmpfiles-setup boot
+	fi
 }

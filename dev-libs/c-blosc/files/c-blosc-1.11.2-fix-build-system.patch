@@ -1,0 +1,21 @@
+Make the build system respect CFLAGS
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -244,16 +244,6 @@
+ endif()
+ 
+ # flags
+-# @TODO: set -Wall
+-# @NOTE: -O3 is enabled in Release mode (CMAKE_BUILD_TYPE="Release")
+-
+-# Set the "-msse2" build flag only if the CMAKE_C_FLAGS is not already set.
+-# Probably "-msse2" should be appended to CMAKE_C_FLAGS_RELEASE.
+-if(CMAKE_C_COMPILER_ID STREQUAL GNU OR CMAKE_C_COMPILER_ID STREQUAL Clang OR CMAKE_C_COMPILER_ID STREQUAL Intel)
+-     if(NOT CMAKE_C_FLAGS AND COMPILER_SUPPORT_SSE2)
+-         set(CMAKE_C_FLAGS -msse2 CACHE STRING "C flags." FORCE)
+-     endif(NOT CMAKE_C_FLAGS AND COMPILER_SUPPORT_SSE2)
+-endif(CMAKE_C_COMPILER_ID STREQUAL GNU OR CMAKE_C_COMPILER_ID STREQUAL Clang OR CMAKE_C_COMPILER_ID STREQUAL Intel)
+ 
+ if(MSVC)
+     if(NOT CMAKE_C_FLAGS)

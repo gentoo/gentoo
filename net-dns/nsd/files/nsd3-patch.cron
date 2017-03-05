@@ -1,9 +1,0 @@
-#!/bin/sh
-# Copyright 1999-2013 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Cron job: merge zone transfer changes back to zone files
-# Needed for nsd3 only
-
-/etc/init.d/nsd --quiet status && /etc/init.d/nsd patch >/dev/null

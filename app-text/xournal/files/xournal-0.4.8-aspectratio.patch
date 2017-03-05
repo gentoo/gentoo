@@ -1,0 +1,74 @@
+Forward-port upstream patch submission
+https://sourceforge.net/p/xournal/patches/58/
+https://sourceforge.net/p/xournal/patches/_discuss/thread/f1d7a1d7/4c10/attachment/xournal-0.4.5-dawb-aspectratio.patch
+
+It applies cleanly, just to xo-selection.c instead of xo-paint.c.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Narpu --exclude '*.orig' --exclude '*.rej' --exclude '*~' xournal-0.4.8.orig/src/xo-selection.c xournal-0.4.8/src/xo-selection.c
+--- xournal-0.4.8.orig/src/xo-selection.c	2014-06-06 16:41:45.000000000 -0700
++++ xournal-0.4.8/src/xo-selection.c	2017-02-09 15:31:08.960817336 -0800
+@@ -347,6 +347,12 @@ gboolean start_resizesel(GdkEvent *event
+     ui.selection->new_x2 = ui.selection->bbox.right;
+     gnome_canvas_item_set(ui.selection->canvas_item, "dash", NULL, NULL);
+     update_cursor_for_resize(pt);
++
++    // Check whether we should preserve the aspect ratio
++    if (event->button.button == 3)
++    	ui.cur_brush->tool_options |= TOOLOPT_SELECT_PRESERVE;
++    else
++    	ui.cur_brush->tool_options &= ~TOOLOPT_SELECT_PRESERVE;
+     return TRUE;
+   }
+   return FALSE;
+@@ -498,6 +504,38 @@ void continue_resizesel(GdkEvent *event)
+   if (ui.selection->resizing_left) ui.selection->new_x1 = pt[0];
+   if (ui.selection->resizing_right) ui.selection->new_x2 = pt[0];
+ 
++  if (ui.cur_brush->tool_options & TOOLOPT_SELECT_PRESERVE) {
++	  double aspectratio = (ui.selection->bbox.top - ui.selection->bbox.bottom)/(ui.selection->bbox.right - ui.selection->bbox.left);
++	  double newheight = ui.selection->new_y1 - ui.selection->new_y2;
++	  double newwidth = ui.selection->new_x2 - ui.selection->new_x1;
++	  gboolean boundheight;
++
++	  // Resizing from top or bottom only
++	  if ((ui.selection->resizing_top || ui.selection->resizing_bottom) && !(ui.selection->resizing_left || ui.selection->resizing_right))
++		  boundheight = 0;
++	  // Resizing from right or left only
++	  else if (!(ui.selection->resizing_top || ui.selection->resizing_bottom) && (ui.selection->resizing_left || ui.selection->resizing_right))
++		  boundheight = 1;
++	  // Resizing from a corner
++	  else if (newheight/aspectratio > newwidth)
++		  boundheight = 0;
++	  else
++		  boundheight = 1;
++
++	  if (boundheight) {
++		  // Bound the height
++		  newheight = newwidth*aspectratio;
++		  if (ui.selection->resizing_top) ui.selection->new_y1 = ui.selection->new_y2 + newheight;
++		  else ui.selection->new_y2 = ui.selection->new_y1 - newheight;
++	  }
++	  else {
++		  // Bound the width
++		  newwidth = newheight/aspectratio;
++		  if (ui.selection->resizing_left) ui.selection->new_x1 = ui.selection->new_x2 - newwidth;
++		  else ui.selection->new_x2 = ui.selection->new_x1 + newwidth;
++	  }
++  }
++
+   gnome_canvas_item_set(ui.selection->canvas_item, 
+     "x1", ui.selection->new_x1, "x2", ui.selection->new_x2,
+     "y1", ui.selection->new_y1, "y2", ui.selection->new_y2, NULL);
+diff -Narpu --exclude '*.orig' --exclude '*.rej' --exclude '*~' xournal-0.4.8.orig/src/xournal.h xournal-0.4.8/src/xournal.h
+--- xournal-0.4.8.orig/src/xournal.h	2014-06-28 12:47:20.000000000 -0700
++++ xournal-0.4.8/src/xournal.h	2017-02-09 15:29:08.866517375 -0800
+@@ -154,6 +154,7 @@ extern guint predef_bgcolors_rgba[COLOR_
+ #define TOOLOPT_ERASER_STANDARD     0
+ #define TOOLOPT_ERASER_WHITEOUT     1
+ #define TOOLOPT_ERASER_STROKES      2
++#define TOOLOPT_SELECT_PRESERVE     1 // Preserve the aspect ratio of the selection when resizing
+ 
+ extern double predef_thickness[NUM_STROKE_TOOLS][THICKNESS_MAX];
+ 

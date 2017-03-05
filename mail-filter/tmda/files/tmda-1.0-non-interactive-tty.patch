@@ -1,5 +1,5 @@
---- TMDA/Pending.py.bak.20041011	2004-10-11 15:50:13.014474866 -0400
-+++ TMDA/Pending.py	2004-10-11 16:06:02.640603837 -0400
+--- a/TMDA/Pending.py	2004-10-11 15:50:13.014474866 -0400
++++ b/TMDA/Pending.py	2004-10-11 16:06:02.640603837 -0400
 @@ -64,6 +64,7 @@
          self.verbose = verbose
          self.younger = younger

@@ -24,6 +24,8 @@
     <remote-id type="cpan-module">Specio::Constraint::Role::Interface</remote-id>
     <remote-id type="cpan-module">Specio::Constraint::Role::IsaType</remote-id>
     <remote-id type="cpan-module">Specio::Constraint::Simple</remote-id>
+    <remote-id type="cpan-module">Specio::Constraint::Structurable</remote-id>
+    <remote-id type="cpan-module">Specio::Constraint::Structured</remote-id>
     <remote-id type="cpan-module">Specio::Constraint::Union</remote-id>
     <remote-id type="cpan-module">Specio::Declare</remote-id>
     <remote-id type="cpan-module">Specio::DeclaredAt</remote-id>
@@ -34,10 +36,15 @@
     <remote-id type="cpan-module">Specio::Library::Numeric</remote-id>
     <remote-id type="cpan-module">Specio::Library::Perl</remote-id>
     <remote-id type="cpan-module">Specio::Library::String</remote-id>
+    <remote-id type="cpan-module">Specio::Library::Structured</remote-id>
+    <remote-id type="cpan-module">Specio::Library::Structured::Dict</remote-id>
+    <remote-id type="cpan-module">Specio::Library::Structured::Map</remote-id>
+    <remote-id type="cpan-module">Specio::Library::Structured::Tuple</remote-id>
     <remote-id type="cpan-module">Specio::OO</remote-id>
     <remote-id type="cpan-module">Specio::PartialDump</remote-id>
     <remote-id type="cpan-module">Specio::Registry</remote-id>
     <remote-id type="cpan-module">Specio::Role::Inlinable</remote-id>
+    <remote-id type="cpan-module">Specio::Subs</remote-id>
     <remote-id type="cpan-module">Specio::TypeChecks</remote-id>
     <remote-id type="cpan-module">Test::Specio</remote-id>
   </upstream>

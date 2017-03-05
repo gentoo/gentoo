@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit autotools eutils fcaps flag-o-matic git-r3
@@ -60,6 +59,8 @@ src_configure() {
 }
 
 pkg_postinst() {
+	fcaps_pkg_postinst
+
 	if use prefix && [[ ${CHOST} == *-darwin* ]] ; then
 		ewarn "mtr needs root privileges to run.  To grant them:"
 		ewarn " % sudo chown root ${EPREFIX}/usr/sbin/mtr"

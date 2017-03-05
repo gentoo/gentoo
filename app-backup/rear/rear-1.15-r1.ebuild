@@ -1,12 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 inherit eutils
 
-DESCRIPTION="Fully automated disaster recovery supporting a broad variety of backup strategies and scenarios"
+DESCRIPTION="A setup-and-forget Linux bare metal disaster recovery solution"
 HOMEPAGE="http://relax-and-recover.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

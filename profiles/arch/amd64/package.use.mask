@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -17,6 +16,15 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
+# dev-libs/libmaxminddb is keyworded on amd64
+app-admin/rsyslog -mdblookup
+
+# Alexis Ballier <aballier@gentoo.org> (21 Feb 2017)
+# spacetime works on amd64
+# https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
+dev-lang/ocaml -spacetime
 
 # Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
 # nvidia drivers are unmasked here

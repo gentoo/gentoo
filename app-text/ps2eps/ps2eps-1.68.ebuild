@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 inherit toolchain-funcs
 
-DESCRIPTION="Generate Encapsulated Postscript Format (EPS,EPSF) files from one-page Postscript documents"
+DESCRIPTION="Generate Encapsulated Postscript Format files from one-page Postscript documents"
 HOMEPAGE="http://www.tm.uka.de/~bless/ps2eps"
 SRC_URI="http://www.tm.uka.de/~bless/${P}.tar.gz"
 

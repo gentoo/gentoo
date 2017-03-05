@@ -20,11 +20,11 @@
  | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  |
  | CVS information:
- |  $RCSfile: tvbrowser-9999-build.xml,v $
- |   $Source: /var/cvsroot/gentoo-x86/media-tv/tvbrowser/files/tvbrowser-9999-build.xml,v $
- |     $Date: 2015/05/31 00:56:25 $
- |   $Author: monsieurp $
- | $Revision: 1.1 $
+ |  $RCSfile$
+ |   $Source$
+ |     $Date: 2014-12-09 22:04:57 +0100 (Tue, 09 Dec 2014) $
+ |   $Author: ds10 $
+ | $Revision: 8377 $
  |
  | Author: Til Schneider, www.murfman.de
  +-->

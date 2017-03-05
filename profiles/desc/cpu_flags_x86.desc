@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Whenever the flag name does not correspond to /proc/cpuinfo flags,
 # please put the cpuinfo flag in square brackets. If more than one flag

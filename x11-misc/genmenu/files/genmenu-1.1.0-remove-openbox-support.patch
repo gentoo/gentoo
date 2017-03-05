@@ -1,0 +1,28 @@
+Openbox config files have changed. Genmenu doesn't work anymore with openbox
+--- a/genmenu	2012-03-01 20:34:08.000000000 +0200
++++ b/genmenu	2017-02-19 11:38:53.687593570 +0200
+@@ -111,7 +111,7 @@
+ 
+ # Window managers to check for
+ 
+-WINDOWMANAGERS="blackbox fluxbox openbox waimea wmaker enlightenment sawfish metacity afterstep icewm xfce 9wm aewm amaterus amiwm ctwm flwm fvwm fvwm2 fvwm95 gwm ion kwin kwm larswm lwm mwm olvwm olwm oroborus phluid pwm qvwn ratpoision sapphire scwm twm ude vtwm wm2 golem"
++WINDOWMANAGERS="blackbox fluxbox waimea wmaker enlightenment sawfish metacity afterstep icewm xfce 9wm aewm amaterus amiwm ctwm flwm fvwm fvwm2 fvwm95 gwm ion kwin kwm larswm lwm mwm olvwm olwm oroborus phluid pwm qvwn ratpoision sapphire scwm twm ude vtwm wm2 golem"
+ 
+ # Fonts to check for 
+ 
+@@ -935,15 +935,6 @@
+ 		}
+ 	}
+ 
+-	findprog openbox && {
+-		yesno "Generate Openbox menu?" && {
+-			WM="openbox"
+-			MENUITEMS="$tmp_menuitems $BLACKBOX_APPS"
+-			realmenu
+-			bb_interactive openbox .openbox/rc
+-		}
+-	}
+-
+ 	findprog wmaker && {
+ 		yesno "Generate Window Maker menu?" && {
+ 			WM="wmaker"

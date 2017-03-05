@@ -1,9 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{4,5})
+PYTHON_COMPAT=( python2_7 python3_{4,5,6})
 PYTHON_REQ_USE="threads(+)"
 TWISTED_PN="Twisted"
 
@@ -15,7 +14,7 @@ SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2"
 
 # Dropped keywords due to new deps not keyworded
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-KEYWORDS="~amd64 ~hppa ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~x86"
 IUSE="conch crypt http2 serial +soap test"
 
 RDEPEND=">=dev-python/zope-interface-4.0.2[${PYTHON_USEDEP}]

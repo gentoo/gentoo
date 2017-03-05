@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Unmask the flag which corresponds to ARCH.
 -amd64
@@ -105,10 +104,6 @@
 # 2005/09/14 - Diego Pettenò <flameeyes@gentoo.org>
 # nVidia XvMC support works on amd64
 -nvidia
-
-# 2006/03/03 - Luca Barbato <lu_zero@gentoo.org>
-# codec support x264
--x264
 
 # 2006/01/28 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: unmask for architectures on which they are available

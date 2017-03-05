@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -27,6 +26,8 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-http.patch
+
 	cabal_chdeps \
 		'attoparsec >= 0.10.4.0 && < 0.12' 'attoparsec >= 0.10.4.0' \
 		'http-types >= 0.8.0 && < 0.9' 'http-types >= 0.8.0'

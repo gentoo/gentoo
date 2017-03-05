@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 inherit elisp
 
-DESCRIPTION="Extended support for (La)TeX, Texinfo and BibTeX files"
+DESCRIPTION="Extensible package for writing and formatting TeX files in Emacs"
 HOMEPAGE="https://www.gnu.org/software/auctex/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 

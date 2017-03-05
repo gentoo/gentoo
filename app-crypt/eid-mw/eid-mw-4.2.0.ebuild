@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -29,6 +28,7 @@ REQUIRED_USE="
 	dialogs? ( gtk )"
 
 RDEPEND="gtk? (
+		x11-libs/gdk-pixbuf[jpeg]
 		x11-libs/gtk+:*
 		dev-libs/libxml2
 		net-misc/curl[ssl]

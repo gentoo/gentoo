@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">djvu</remote-id>
 	</upstream>
+	<use>
+		<flag name="unicode">Add support for unicode passwords via <pkg>net-dns/libidn</pkg></flag>
+	</use>
 </pkgmetadata>

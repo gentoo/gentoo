@@ -12,7 +12,6 @@
   <use>
     <flag name="acoustid">Enable support for acoustic fingerprinting plugin using
       (<pkg>media-libs/chromaprint</pkg>)</flag>
-	<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg> or <pkg>dev-qt/qtphonon</pkg></flag>
   </use>
   <upstream>
     <bugs-to>https://sourceforge.net/tracker/?group_id=70849</bugs-to>

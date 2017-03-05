@@ -1,12 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 # Don't block arm. See bug #600134.
 #MULTILIB_COMPAT=( abi_ppc_64 abi_x86_{32,64} )
-KEYWORDS="-* amd64 ~arm x86"
+KEYWORDS="-* amd64 ~arm ppc64 x86"
 
 inherit java-vm-2 multilib-build toolchain-funcs
 
@@ -15,7 +14,7 @@ SRC_URI="doc? ( ${BASE_URI}/${PN}-doc-${PV}.tar.xz )
 	source? ( ${BASE_URI}/${PN}-src-${PV}.tar.xz )
 	multilib? ( amd64? ( abi_x86_32? ( ${BASE_URI}/${PN}-core-${PV}-x86.tar.xz ) ) )"
 
-for abi in amd64 arm x86; do
+for abi in amd64 arm ppc64 x86; do
 	SRC_URI+="
 		${abi}? (
 			${BASE_URI}/${PN}-core-${PV}-${abi}.tar.xz

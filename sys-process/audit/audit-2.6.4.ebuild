@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="6"
 
@@ -15,18 +14,19 @@ SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="ldap python"
+IUSE="gssapi ldap python static-libs"
 # Testcases are pretty useless as they are built for RedHat users/groups and kernels.
 RESTRICT="test"
 
-RDEPEND="ldap? ( net-nds/openldap )
-		sys-libs/libcap-ng"
+RDEPEND="gssapi? ( virtual/krb5 )
+	ldap? ( net-nds/openldap )
+	sys-libs/libcap-ng"
 DEPEND="${RDEPEND}
-		>=sys-kernel/linux-headers-2.6.34
-		python? (
-			${PYTHON_DEPS}
-			dev-lang/swig:0
-		)"
+	>=sys-kernel/linux-headers-2.6.34
+	python? (
+		${PYTHON_DEPS}
+		dev-lang/swig:0
+	)"
 # Do not use os-headers as this is linux specific
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -76,7 +76,9 @@ src_prepare() {
 multilib_src_configure() {
 	local ECONF_SOURCE=${S}
 	econf \
-		--sbindir=/sbin \
+		--sbindir="${EPREFIX}/sbin" \
+		$(use_enable gssapi gssapi-krb5) \
+		$(use_enable static-libs static) \
 		--enable-systemd \
 		--without-python \
 		--without-python3
@@ -95,6 +97,14 @@ multilib_src_configure() {
 
 		use python && python_foreach_impl python_configure
 	fi
+}
+
+src_configure() {
+	tc-export_build_env BUILD_{CC,CPP}
+	export CC_FOR_BUILD="${BUILD_CC}"
+	export CPP_FOR_BUILD="${BUILD_CPP}"
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_compile() {
@@ -184,9 +194,9 @@ multilib_src_install_all() {
 
 	fperms 644 "$(systemd_get_systemunitdir)"/auditd.service # 556436
 
-	[ -f "${D}"/sbin/audisp-remote ] && \
+	[ -f "${ED}"/sbin/audisp-remote ] && \
 	dodir /usr/sbin && \
-	mv "${D}"/{sbin,usr/sbin}/audisp-remote || die
+	mv "${ED}"/{sbin,usr/sbin}/audisp-remote || die
 
 	# Gentoo rules
 	insinto /etc/audit/
@@ -197,7 +207,7 @@ multilib_src_install_all() {
 	keepdir /var/log/audit/
 
 	# Security
-	lockdown_perms "${D}"
+	lockdown_perms "${ED}"
 
 	prune_libtool_files --modules
 }
@@ -208,15 +218,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	lockdown_perms "${ROOT}"
+	lockdown_perms "${EROOT}"
 	# Preserve from the audit-1 series
 	preserve_old_lib_notify /$(get_libdir)/libaudit.so.0
 }
 
 lockdown_perms() {
-	# upstream wants these to have restrictive perms
-	# should not || die, maybe not all paths exist
-	basedir="$1"
+	# Upstream wants these to have restrictive perms.
+	# Should not || die as not all paths may exist.
+	local basedir="$1"
 	chmod 0750 "${basedir}"/sbin/au{ditctl,report,dispd,ditd,search,trace} 2>/dev/null
 	chmod 0750 "${basedir}"/var/log/audit/ 2>/dev/null
 	chmod 0640 "${basedir}"/etc/{audit/,}{auditd.conf,audit.rules*} 2>/dev/null

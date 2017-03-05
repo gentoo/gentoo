@@ -18,6 +18,6 @@
     <flag name="systray">Enable system tray support</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">aqualung</remote-id>
+    <remote-id type="github">jeremyevans/aqualung</remote-id>
   </upstream>
 </pkgmetadata>

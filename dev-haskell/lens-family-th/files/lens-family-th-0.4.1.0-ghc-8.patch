@@ -1,0 +1,40 @@
+diff --git a/Lens/Family/THCore.hs b/Lens/Family/THCore.hs
+index d4f2740..2f53db6 100644
+--- a/Lens/Family/THCore.hs
++++ b/Lens/Family/THCore.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE CPP #-}
+ {-# LANGUAGE TemplateHaskell #-}
+@@ -52,4 +53,9 @@ extractLensTypeInfo datatype = do
+   return $ case i of
++#if MIN_VERSION_template_haskell(2,11,0)
++    TyConI (DataD    _ n ts _ _ _) -> (n, ts)
++    TyConI (NewtypeD _ n ts _ _ _) -> (n, ts)
++#else
+     TyConI (DataD    _ n ts _ _) -> (n, ts)
+     TyConI (NewtypeD _ n ts _ _) -> (n, ts)
++#endif
+     _ -> error $ "Can't derive Lens for: "  ++ datatypeStr
+@@ -63,2 +69,8 @@ extractConstructorFields datatype = do
+   return $ case i of
++#if MIN_VERSION_template_haskell(2,11,0)
++    TyConI (DataD    _ _ _ _ [RecC _ fs] _) -> fs
++    TyConI (NewtypeD _ _ _ _ (RecC _ fs) _) -> fs
++    TyConI (DataD    _ _ _ _ [_]         _) ->
++      error $ "Can't derive Lens without record selectors: " ++ datatypeStr
++#else
+     TyConI (DataD    _ _ _ [RecC _ fs] _) -> fs
+@@ -67,2 +79,3 @@ extractConstructorFields datatype = do
+       error $ "Can't derive Lens without record selectors: " ++ datatypeStr
++#endif
+     TyConI NewtypeD{} ->
+@@ -134,4 +147,9 @@ extractConstructorInfo datatype = do
+   return $ case i of
++#if MIN_VERSION_template_haskell(2,11,0)
++    TyConI (DataD    _ _ _ _ fs _) -> fs
++    TyConI (NewtypeD _ _ _ _ f  _) -> [f]
++#else
+     TyConI (DataD    _ _ _ fs _) -> fs
+     TyConI (NewtypeD _ _ _ f  _) -> [f]
++#endif
+     _ -> error $ "Can't derive traversal for: " ++ datatypeStr

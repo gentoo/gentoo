@@ -27,6 +27,9 @@
     shockingly simple if you know a little Python.
   </longdescription>
   <use>
+    <flag name="badfiles">
+      Validate MP3 &amp; FLAC files.
+    </flag>
     <flag name="bpd">
       Enable support for <pkg>media-sound/mpd</pkg> server emulation
     </flag>
@@ -37,11 +40,13 @@
     <flag name="discogs">Enable support for the discogs API plugin</flag>
     <flag name="lastgenre">Enable support for importing music genres from
       last.fm tags</flag>
+    <flag name="lastimport">Enable support for importing your last.fm playcounts</flag>
     <flag name="mpdstats">Enable support for collecting statistic about
       listening habits from <pkg>media-sound/mpd</pkg></flag>
     <flag name="opus">Enable opus support in gstreamer-based replaygain</flag>
     <flag name="replaygain">Enable support for Replay Gain metadata calculation
       during import</flag>
+	<flag name="thumbnails">Generate thumbnails for albums</flag>
     <flag name="web">
       Enable embedded webserver support through <pkg>dev-python/flask</pkg>
     </flag>

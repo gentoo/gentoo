@@ -6,18 +6,12 @@ Subject: [PATCH] llvm-config: Clean up exported values, update for shared
 
 Gentoo-specific fixup for llvm-config, including:
 - wiping build-specific CFLAGS, CXXFLAGS,
-- updating library suffixes for shared libs,
-- making --src-root return invalid path (/dev/null),
-- making --build-mode return "Release" rather than "Gentoo".
+- making --src-root return invalid path (/dev/null).
 
 Thanks to Steven Newbury for the initial patch.
 
 Bug: https://bugs.gentoo.org/565358
 Bug: https://bugs.gentoo.org/501684
----
- tools/llvm-config/CMakeLists.txt  | 11 ++++++++---
- tools/llvm-config/llvm-config.cpp |  9 +++++++--
- 2 files changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/tools/llvm-config/CMakeLists.txt b/tools/llvm-config/CMakeLists.txt
 index 744fa4e44d1..593788aaef3 100644
@@ -42,16 +36,6 @@ diff --git a/tools/llvm-config/llvm-config.cpp b/tools/llvm-config/llvm-config.c
 index d780094861c..c61c72ff48c 100644
 --- a/tools/llvm-config/llvm-config.cpp
 +++ b/tools/llvm-config/llvm-config.cpp
-@@ -531,7 +531,8 @@ int main(int argc, char **argv) {
-       } else if (Arg == "--host-target") {
-         OS << Triple::normalize(LLVM_DEFAULT_TARGET_TRIPLE) << '\n';
-       } else if (Arg == "--build-mode") {
--        OS << build_mode << '\n';
-+        // force Release since we force non-standard Gentoo build mode
-+        OS << "Release" << '\n';
-       } else if (Arg == "--assertion-mode") {
- #if defined(NDEBUG)
-         OS << "OFF\n";
 @@ -549,7 +550,11 @@ int main(int argc, char **argv) {
        } else if (Arg == "--obj-root") {
          OS << ActivePrefix << '\n';

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit gnome2
@@ -11,11 +10,9 @@ SRC_URI="http://pawsa.fedorapeople.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-IUSE="crypt gnome gtkhtml gnome-keyring kerberos ldap libnotify libressl rubrica
-spell sqlite webkit xface"
-REQUIRED_USE="gtkhtml? ( !webkit )"
+IUSE="crypt gnome gnome-keyring kerberos ldap libnotify libressl rubrica spell sqlite webkit xface"
 
 # TODO: esmtp can be optional, do we want it?
 RDEPEND="
@@ -30,7 +27,6 @@ RDEPEND="
 	crypt? ( >=app-crypt/gpgme-1.2.0:= )
 	gnome? ( >=x11-libs/gtksourceview-3.2.0:3.0 )
 	gnome-keyring? ( app-crypt/libsecret )
-	gtkhtml? ( gnome-extra/gtkhtml:4.0 )
 	sqlite? ( >=dev-db/sqlite-2.8:= )
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	!libressl? ( dev-libs/openssl:0= )
@@ -63,26 +59,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-
-	if use crypt ; then
-		myconf+=" --with-gpgme=gpgme-config"
-	else
-		myconf+=" --without-gpgme"
-	fi
-
-	if use webkit || use gtkhtml; then
-		if use gtkhtml ; then
-			myconf+=" --with-html-widget=gtkhtml4"
-		else
-			myconf+=" --with-html-widget=webkit2"
-		fi
-	else
-		myconf+=" --with-html-widget=no"
-	fi
-
 	gnome2_src_configure \
 		--with-canberra \
+		$(usex crypt --with-gpgme=gpgme-config --without-gpgme) \
 		$(use_with gnome) \
 		$(use_with gnome gtksourceview) \
 		$(use_with gnome-keyring libsecret) \
@@ -93,5 +72,5 @@ src_configure() {
 		$(usex spell --with-spell-checker=gspell --with-spell-checker=no) \
 		$(use_with sqlite) \
 		$(use_with xface compface) \
-		${myconf}
+		$(usex webkit --with-html-widget=webkit2 --with-html-widget=no)
 }

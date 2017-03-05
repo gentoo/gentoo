@@ -1,0 +1,51 @@
+From 61c761bc2c35fb244d46fbbde97161f5927071dc Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@us.ibm.com>
+Date: Tue, 25 Oct 2016 15:09:49 -0400
+Subject: [PATCH] dracut-install: preserve extended attributes when copying
+ files
+
+Preserve extended attributes when copying files using dracut-install.
+
+The copying of extended attributes avoids file execution denials when
+the Linux Integrity Measurement's Appraisal mode is active. In that mode
+executables need their file signatures copied. In particular, this patch
+solves the problem that dependent libaries are not included in the
+initramfs since the copied programs could not be executed due to missing
+signatures. The following audit record shows the type of failure that
+is now prevented:
+
+type=INTEGRITY_DATA msg=audit(1477409025.492:30065): pid=922 uid=0
+ auid=4294967295 ses=4294967295
+ subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+ op="appraise_data" cause="IMA-signature-required"
+ comm="ld-linux-x86-64"
+ name="/var/tmp/dracut.R6ySa4/initramfs/usr/bin/journalctl"
+ dev="dm-0" ino=37136 res=0
+
+Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+---
+ install/dracut-install.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/install/dracut-install.c b/install/dracut-install.c
+index fe30bba..c0f1c17 100644
+--- a/install/dracut-install.c
++++ b/install/dracut-install.c
+@@ -294,7 +294,7 @@ static int cp(const char *src, const char *dst)
+  normal_copy:
+         pid = fork();
+         if (pid == 0) {
+-                execlp("cp", "cp", "--reflink=auto", "--sparse=auto", "--preserve=mode,timestamps", "-fL", src, dst,
++                execlp("cp", "cp", "--reflink=auto", "--sparse=auto", "--preserve=mode,timestamps,xattr", "-fL", src, dst,
+                        NULL);
+                 _exit(EXIT_FAILURE);
+         }
+@@ -302,7 +302,7 @@ static int cp(const char *src, const char *dst)
+         while (waitpid(pid, &ret, 0) < 0) {
+                 if (errno != EINTR) {
+                         ret = -1;
+-                        log_error("Failed: cp --reflink=auto --sparse=auto --preserve=mode,timestamps -fL %s %s", src,
++                        log_error("Failed: cp --reflink=auto --sparse=auto --preserve=mode,timestamps,xattr -fL %s %s", src,
+                                   dst);
+                         break;
+                 }

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Pacho Ramos <pacho@gentoo.org> (04 Feb 2017)
 # Missing keywords, bug #599572
@@ -46,7 +45,7 @@ gnome-extra/nm-applet teamd
 
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-libs/uchardet lacks sparc keyword. See bug #569114.
+# app-i18n/uchardet lacks sparc keyword. See bug #569114.
 media-video/mpv uchardet
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
@@ -167,10 +166,6 @@ dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
 dev-haskell/text test
 dev-haskell/vector test
-
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
-# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
-sys-apps/systemd xkb
 
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2014)
 # Missing keywords, bug #524352

@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4} pypy )
@@ -10,7 +9,7 @@ inherit distutils-r1
 MY_PN="textile"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML"
+DESCRIPTION="A Python port of Textile, A humane web text generator"
 HOMEPAGE="https://github.com/ikirudennis/python-textile"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -79,8 +78,13 @@ src_configure() {
 		$(usex python --python "") \
 		$(usex java --java "")
 	elog ./configure "$@"
-	./configure "$@" || die
-	${EPYTHON} scripts/mk_make.py || die
+	# LANG=C to force external tools to output ascii text only
+	# otherwise configure crashes as:
+	#    File "scripts/mk_make.py", line 21, in <module>
+	#    UnicodeEncodeError: 'ascii' codec can't encode characters in position 80-82: ordinal not in range(128)
+	LANG=C ./configure "$@" || die
+	elog ${EPYTHON} scripts/mk_make.py "$@"
+	LANG=C ${EPYTHON} scripts/mk_make.py || die
 }
 
 src_compile() {

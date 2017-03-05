@@ -1,0 +1,28 @@
+From e835e6a379969f5f188d02843257fa581ade083b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 21 Feb 2017 21:56:10 -0500
+Subject: [PATCH] fix handling of compiler settings
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 77e5731641ac..5b8485b6d849 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,9 @@
+-CFLAGS:=-Wall
++CFLAGS += -Wall
+ 
+ all: chname
+ 
+ chname: chname.c
+-	$(CC) $(CFLAGS) -o chname chname.c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o chname chname.c
+ 
+ clean:
+ 	$(RM) chname
+-- 
+2.11.1
+

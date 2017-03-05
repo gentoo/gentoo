@@ -7,7 +7,6 @@
 </maintainer>
 <use>
 <flag name="convert-mozilla-cookies">Install the convert-mozilla-cookies script and its run-time dependencies</flag>
-<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for SSL connections</flag>
 <flag name="verify-file">Install the verify-file script and its run-time dependencies</flag>
 </use>
 </pkgmetadata>

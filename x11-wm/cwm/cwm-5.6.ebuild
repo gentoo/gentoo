@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,7 +13,7 @@ SRC_URI="vanilla? ( http://chneukirchen.org/releases/${P}.tar.gz -> ${P}-chneuki
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE="vanilla"
 
 RDEPEND="x11-libs/libXft

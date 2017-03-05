@@ -1,15 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # NOTE: The comments in this file are for instruction and documentation.
 # They're not meant to appear with your final, production ebuild.  Please
 # remember to remove them before submitting or committing your ebuild.  That
 # doesn't mean you can't add your own comments though.
-
-# The 'Id' on the third line should just be left alone.  When your ebuild
-# will be committed to git, the details on that line will be automatically
-# generated to contain the correct data.
 
 # The EAPI variable tells the ebuild format in use.
 # It is suggested that you use the latest EAPI approved by the Council.

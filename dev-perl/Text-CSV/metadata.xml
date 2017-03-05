@@ -5,6 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="xs">Install <pkg>dev-perl/Text-CSV_XS</pkg> for accelerated decoding</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">Text-CSV</remote-id>
     <remote-id type="cpan-module">Text::CSV</remote-id>

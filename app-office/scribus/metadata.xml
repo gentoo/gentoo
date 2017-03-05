@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="boost">Enable support for Boost based enhancement</flag>
-    <flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg></flag>
     <flag name="hunspell">Enable support for spell checking with <pkg>app-text/hunspell</pkg></flag>
     <flag name="minimal">Don't install headers (only required for e.g. plug-in developers)</flag>
     <flag name="osg">3D redering via <pkg>dev-games/openscenegraph</pkg></flag>

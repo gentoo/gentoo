@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -74,7 +73,7 @@ COMMON_DEPEND="
 		virtual/libiconv
 		enca? ( app-i18n/enca )
 		libguess? ( >=app-i18n/libguess-1.0 )
-		uchardet? ( dev-libs/uchardet )
+		uchardet? ( app-i18n/uchardet )
 	)
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )

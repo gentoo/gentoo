@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="802.11b Wireless Packet Sniffer/WEP Cracker"
 HOMEPAGE="http://airsnort.shmoo.com/"

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
 # unkeyworded notmuch dependency, bug #587560
@@ -21,10 +20,6 @@ net-proxy/dante upnp
 # Naohiro Aota <naota@gentoo.org> (14 Oct 2013)
 # libcap-ng is for Linux only
 net-analyzer/tcpdump drop-root
-
-# Richard Yao <ryao@gentoo.org> (09 Nov 2012)
-# pm-utils is Linux-specific
-kde-plasma/powerdevil pm-utils
 
 # Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
 # No dev-util/source-highlight or media-sound/lilypond here, yet (bug #356069, bug #344289)

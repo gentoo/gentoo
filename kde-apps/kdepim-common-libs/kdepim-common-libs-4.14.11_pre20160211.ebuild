@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -23,7 +22,7 @@ DEPEND="
 	dev-libs/grantlee:0
 	kde-apps/akonadi:4
 	kde-frameworks/baloo:4
-	google? ( net-libs/libkgapi:4 )
+	google? ( $(add_kdeapps_dep libkgapi '' 2.2.0) )
 "
 RDEPEND="${DEPEND}
 	!kde-apps/libkdepim:4

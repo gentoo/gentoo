@@ -1,6 +1,5 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -19,9 +18,9 @@ IUSE="doc +ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	media-libs/gd
-	virtual/jpeg
+	virtual/jpeg:0
 	sys-libs/zlib
-	media-libs/libpng
+	media-libs/libpng:0=
 	media-libs/freetype:2"
 RDEPEND="${DEPEND}"
 

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -43,7 +42,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( README LICENSE )
 
-PATCHES=( "${FILESDIR}/${P}-gpgme.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gpgme.patch"
+	"${FILESDIR}/${P}-gpg-tests.patch"
+	)
 
 src_prepare() {
 	cmake-utils_src_prepare

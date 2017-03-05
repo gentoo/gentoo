@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
-# Copyright 1999-2010 Gentoo Technologies, Inc.
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Id$
 
 MEM_SIZE=1048576
 DAEMON=/usr/sbin/ietd

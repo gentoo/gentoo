@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -18,7 +17,7 @@ SLOT="2"
 KEYWORDS=""
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
-IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev webkit wmf xpm"
+IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev wmf xpm"
 
 for lang in ${LANGS}; do
 	IUSE+=" linguas_${lang}"
@@ -47,7 +46,6 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	alsa? ( media-libs/alsa-lib )
 	aqua? ( x11-libs/gtk-mac-integration )
 	gnome? ( gnome-base/gvfs )
-	webkit? ( >=net-libs/webkit-gtk-1.6.1:2 )
 	virtual/jpeg:0
 	jpeg2k? ( media-libs/jasper:= )
 	>=media-libs/lcms-2.2:2
@@ -91,7 +89,7 @@ pkg_setup() {
 		$(use_with aalib aa) \
 		$(use_with alsa) \
 		$(use_enable altivec) \
-		$(use_with webkit) \
+		--without-webkit \
 		$(use_with jpeg2k libjasper) \
 		$(use_with postscript gs) \
 		$(use_enable cpu_flags_x86_mmx mmx) \

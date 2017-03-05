@@ -1,0 +1,11 @@
+--- a/js/src/jit/AtomicOperations.h	2016-03-12 13:42:27.914524205 -0500
++++ b/js/src/jit/AtomicOperations.h	2016-03-12 13:42:15.644573630 -0500
+@@ -311,6 +311,8 @@
+   // top of the file for more guidance.
+ # if defined(__ppc64__) || defined(__PPC64__) || defined(__ppc64le__) || defined(__PPC64LE__)
+ #  include "jit/none/AtomicOperations-ppc.h"
++# elif defined(__i386__) || defined(__x86_64__)
++#  include "jit/x86-shared/AtomicOperations-x86-shared.h"
+ # else
+ #  include "jit/none/AtomicOperations-none.h" // These MOZ_CRASH() always
+ # endif

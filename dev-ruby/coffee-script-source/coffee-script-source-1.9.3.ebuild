@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22"
@@ -15,6 +14,6 @@ HOMEPAGE="http://jashkenas.github.io/coffee-script/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 arm ppc ppc64 x86 ~x64-macos ~x86-solaris"
 
 IUSE=""

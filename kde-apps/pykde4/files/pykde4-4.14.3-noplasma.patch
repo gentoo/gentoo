@@ -1,0 +1,27 @@
+--- a/CMakeLists.txt	2017-03-04 13:20:17.605591238 +0100
++++ b/CMakeLists.txt	2017-03-04 13:39:59.460248598 +0100
+@@ -87,7 +87,6 @@
+     ${QT_QTSQL_INCLUDE_DIR}
+     ${QT_QTXML_INCLUDE_DIR}
+     ${QT_QTSVG_INCLUDE_DIR}
+-    ${QT_QTWEBKIT_INCLUDE_DIR}
+     ${KDE4_INCLUDE_DIR}
+     ${KDE4_INCLUDE_DIR}/solid
+     ${KDE4_INCLUDE_DIR}/kio
+@@ -196,15 +195,11 @@
+ set(SIP_EXTRA_FILES_DEPEND ${phonon_files_sip})
+ add_sip_python_module(PyKDE4.phonon sip/phonon/phononmod.sip ${PHONON_LIBS} ${QT_QTDBUS_LIBRARY} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+ 
+-file(GLOB plasma_files_sip sip/plasma/*.sip)
+-set(SIP_EXTRA_FILES_DEPEND ${plasma_files_sip})
+-add_sip_python_module(PyKDE4.plasma sip/plasma/plasmamod.sip ${KDE4_PLASMA_LIBS} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTUITOOLS_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_KDECORE_LIBRARY} ${KDE4_KDEUI_LIBRARY})
+-
+ file(GLOB kterminal_files_sip sip/kterminal/*.sip)
+ set(SIP_EXTRA_FILES_DEPEND ${kterminal_files_sip})
+ add_sip_python_module(PyKDE4.kterminal sip/kterminal/kterminalmod.sip ${KDE4_TERMINAL_LIBS} ${KDE4_KPARTS_LIBS} ${KDE4_KDEUI_LIBS} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+ 
+-set(PYKDE_MODULES "kdecore solid kdeui kio kutils kparts ktexteditor dnssd phonon plasma kterminal")
++set(PYKDE_MODULES "kdecore solid kdeui kio kutils kparts ktexteditor dnssd phonon kterminal")
+ 
+ if(Soprano_FOUND)
+     include_directories(${SOPRANO_INCLUDE_DIR})

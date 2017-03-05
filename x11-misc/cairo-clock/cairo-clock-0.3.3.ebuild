@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=2
 
 inherit autotools base
 
 DESCRIPTION="An analog clock displaying the system-time"
-HOMEPAGE="http://macslow.thepimp.net/?page_id=23"
+HOMEPAGE="https://launchpad.net/cairo-clock"
 SRC_URI="http://macslow.thepimp.net/projects/${PN}/${PN}_${PV}-1.tar.gz"
 
 LICENSE="GPL-2"

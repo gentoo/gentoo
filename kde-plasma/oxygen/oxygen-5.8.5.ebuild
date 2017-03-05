@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -36,7 +35,10 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kservice)
-	qt4? ( virtual/pkgconfig )
+	qt4? (
+		dev-util/automoc:0
+		virtual/pkgconfig
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)

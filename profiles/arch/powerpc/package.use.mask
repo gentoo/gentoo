@@ -1,6 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2017)
+# Requires dev-qt/qtwebengine, not keyworded on ppc
+sci-geosciences/gpsbabel gui
 
 # James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
 # DOSBox + OpenGLide is untested on this arch.
@@ -22,7 +25,7 @@ dev-python/PyQt5 bluetooth location webengine
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
 app-misc/hachoir-metadata kde
-dev-vcs/subversion kde
+dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
 kde-apps/katepart handbook
 kde-frameworks/kdelibs handbook policykit
@@ -114,10 +117,6 @@ dev-haskell/haskell-src-exts test
 dev-haskell/text test
 dev-haskell/vector test
 dev-util/bnfc test
-
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
-# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
-sys-apps/systemd xkb
 
 # Anthony G. Basile <blueness@gentoo.org> (17 Aug 2014)
 # This pulls in qemu[smartcard] which is masked

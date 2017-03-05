@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -53,9 +52,8 @@ DEPEND="${COMMONDEPEND}
 	nsplugin? ( net-misc/npapi-sdk )"
 RDEPEND="${COMMONDEPEND}
 	media-fonts/dejavu
-	|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )
 	app-arch/unzip
+	virtual/imagemagick-tools
 	java? ( >=virtual/jre-1.4 )
 	sox? ( media-sound/sox )"
 

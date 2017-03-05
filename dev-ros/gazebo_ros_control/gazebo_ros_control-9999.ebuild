@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-simulation/gazebo_ros_pkgs"
@@ -22,10 +21,11 @@ RDEPEND="
 	dev-ros/hardware_interface
 	dev-ros/transmission_interface
 	dev-ros/pluginlib
-	dev-ros/joint_limits_interface
-	dev-ros/urdf
-	sci-electronics/gazebo:=
+	>=dev-ros/joint_limits_interface-0.11.0
+	>=dev-ros/urdf-1.12.3-r1
 	dev-libs/urdfdom:=
+	sci-electronics/gazebo:=
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/urdfdom1.patch" )

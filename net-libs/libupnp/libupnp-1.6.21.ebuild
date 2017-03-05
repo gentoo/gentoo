@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -19,6 +18,7 @@ DOCS="NEWS README ChangeLog"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.19-docs-install.patch
+	"${FILESDIR}"/${PN}-1.6.21-cflags.patch
 )
 
 src_prepare() {

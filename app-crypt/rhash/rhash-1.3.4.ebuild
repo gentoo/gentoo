@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE="debug nls openssl static-libs"
 
 RDEPEND="openssl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )"
@@ -63,5 +62,5 @@ multilib_src_install_all() {
 
 multilib_src_test() {
 	cd tests || die
-	./test_rhash.sh --full ../rhash_shared || die "tests failed"
+	LD_LIBRARY_PATH=$(pwd)/../librhash ./test_rhash.sh --full ../rhash_shared || die "tests failed"
 }

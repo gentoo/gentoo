@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit cmake-utils linux-info readme.gentoo-r1
@@ -19,7 +18,7 @@ RDEPEND="
 	dev-lang/perl:=
 	>=dev-libs/boost-1.42:=
 	sys-fs/e2fsprogs
-	sys-process/audit
+	sys-process/audit[static-libs(+)]
 	sys-process/lsof
 "
 DEPEND="${DEPEND}"

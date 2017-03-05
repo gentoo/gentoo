@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -21,7 +20,7 @@ HOMEPAGE="http://x265.org/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/108"
+SLOT="0/111"
 IUSE="+10bit +12bit neon numa pic test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
@@ -30,7 +29,7 @@ DEPEND="${RDEPEND}
 	abi_x86_32? ( ${ASM_DEPEND} )
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
-PATCHES=( "${FILESDIR}/arm.patch" "${FILESDIR}/neon.patch" )
+PATCHES=( "${FILESDIR}/arm.patch" "${FILESDIR}/neon.patch" "${FILESDIR}/ppc64.patch" )
 
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
@@ -85,6 +84,10 @@ x265_variant_src_configure() {
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
+			if [[ ${ABI} = ppc64 ]] ; then
+				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
+			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -99,6 +102,10 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = arm ]] ; then
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			fi
+			if [[ ${ABI} = ppc64 ]] ; then
+				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
 			fi
 			;;
 		"main")

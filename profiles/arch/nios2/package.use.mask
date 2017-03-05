@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
@@ -136,7 +135,6 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
-kde-plasma/kdeplasma-addons fcitx oauth qwt scim
 kde-apps/okular ebook chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy

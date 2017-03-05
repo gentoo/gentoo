@@ -1,8 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
 inherit git-r3
 
@@ -24,7 +23,7 @@ DEPEND="dev-tex/leaflet
 	|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
 	html? (
 		app-text/recode
-		>=dev-tex/tex4ht-20090115_p0029
+		>=dev-tex/tex4ht-20090611_p1038-r5
 	)"
 RDEPEND=""
 

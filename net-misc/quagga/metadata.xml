@@ -22,6 +22,9 @@
 			Apply unofficial patch to enable classless prefixes for BGP. Patch and information to be found
 			at http://hasso.linux.ee/doku.php/english:network:quagga
 		</flag>
+		<flag name="fpm">
+			Enable Forwarding Plane Manager support
+		</flag>
 		<flag name="multipath">
 			Enable multipath routes support for any number of routes
 		</flag>

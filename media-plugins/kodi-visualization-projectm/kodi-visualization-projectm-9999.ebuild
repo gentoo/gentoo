@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -28,7 +27,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
+	=media-tv/kodi-9999
+	=media-libs/kodi-platform-9999
 	media-libs/libprojectm
 	virtual/opengl
 	"

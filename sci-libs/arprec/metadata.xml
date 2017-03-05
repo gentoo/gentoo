@@ -2,17 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-  <email>grozin@gentoo.org</email>
-  <name>Andrey Grozin</name>
-</maintainer>
-<maintainer type="project">
-  <email>sci@gentoo.org</email>
-  <name>Gentoo Science Project</name>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
   </maintainer>
-<longdescription>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
   Arbitrary precision library for float arithmetics and mathematical functions.
 </longdescription>
-<use>
-  <flag name="qd">Use <pkg>sci-libs/qd</pkg> for quad-double datatype</flag>
-</use>
+  <use>
+    <flag name="qd">Use <pkg>sci-libs/qd</pkg> for quad-double datatype</flag>
+  </use>
 </pkgmetadata>

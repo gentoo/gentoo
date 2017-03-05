@@ -1,6 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Utilities for controlling SCSI media changers and tape drives"
 HOMEPAGE="http://mtx.sourceforge.net/"

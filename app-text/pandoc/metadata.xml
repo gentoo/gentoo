@@ -21,5 +21,6 @@
     <flag name="https">Enable support for downloading of resources over https.</flag>
     <flag name="make-pandoc-man-pages">Build program to regenerate pandoc man pages from README.</flag>
     <flag name="network-uri">Get Network.URI from the network-uri package.</flag>
+    <flag name="weigh-pandoc">Build weigh-pandoc to measure memory usage.</flag>
   </use>
 </pkgmetadata>

@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A replacement master boot record for IBM-PC compatible computers"
 HOMEPAGE="http://www.chiark.greenend.org.uk/~neilt/mbr/"

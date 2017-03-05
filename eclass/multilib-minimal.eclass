@@ -1,10 +1,9 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: multilib-minimal.eclass
 # @MAINTAINER:
-# Julian Ospald <hasufell@gentoo.org>
+# Multilib team <multilib@gentoo.org>
 # @BLURB: wrapper for multilib builds providing convenient multilib_src_* functions
 # @DESCRIPTION:
 #

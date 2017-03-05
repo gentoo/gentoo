@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -22,7 +21,7 @@ RDEPEND="
 	app-misc/ca-certificates
 	>=dev-python/chardet-2.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
-	>=dev-python/idna-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/idna-2.0[${PYTHON_USEDEP}]
 	dev-python/ndg-httpsclient[${PYTHON_USEDEP}]
 	>=dev-python/py-1.4.30[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[$(python_gen_usedep 'python*' pypy)]

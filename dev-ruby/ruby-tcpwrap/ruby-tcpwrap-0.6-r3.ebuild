@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 # ruby22 -> Does not compile
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21"
 
 inherit ruby-ng
 

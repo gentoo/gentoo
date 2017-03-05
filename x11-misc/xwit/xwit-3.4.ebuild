@@ -1,12 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=2
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A collection of simple routines to call some of those X11 functions"
-HOMEPAGE="http://ftp.x.org/contrib/utilities/xwit-3.4.README"
+HOMEPAGE="https://tracker.debian.org/pkg/xwit"
 SRC_URI="http://ftp.x.org/contrib/utilities/${P}.tar.gz"
 
 LICENSE="public-domain HPND"

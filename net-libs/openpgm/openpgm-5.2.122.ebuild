@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -17,7 +16,7 @@ SRC_URI="https://github.com/steve-o/${PN}/archive/release-${MY_PV}.tar.gz -> ${P
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm arm64 hppa ppc ppc64 x86 ~x86-fbsd"
 IUSE="static-libs"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

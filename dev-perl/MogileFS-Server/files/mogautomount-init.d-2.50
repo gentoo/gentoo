@@ -1,5 +1,4 @@
 #!/sbin/openrc-run
-# $Id$
 
 NAME="mogautomount"
 BINARY="/usr/bin/mogautomount"

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit eutils flag-o-matic toolchain-funcs
@@ -11,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~hppa"
+KEYWORDS="-* hppa"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.96-toolchain.patch

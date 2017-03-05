@@ -1,12 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
 inherit multilib
 
-DESCRIPTION="Kerberos 5 PAM Authentication Module"
+DESCRIPTION="Kerberos V PAM Authentication Module"
 HOMEPAGE="http://www.eyrie.org/~eagle/software/pam-krb5"
 SRC_URI="http://archives.eyrie.org/software/kerberos/pam-krb5-${PV}.tar.gz"
 
@@ -15,9 +14,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd"
 IUSE=""
 
-DEPEND="virtual/krb5
-		virtual/pam"
-
+DEPEND="
+	virtual/krb5
+	virtual/pam"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P/_/-}"

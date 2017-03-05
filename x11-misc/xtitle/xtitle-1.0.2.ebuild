@@ -1,12 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
 DESCRIPTION="Set window title and icon name for an X11 terminal window"
-HOMEPAGE="http://www.cs.indiana.edu/~kinzler/xtitle/"
-SRC_URI="http://www.cs.indiana.edu/~kinzler/${PN}/${P}.tgz"
+HOMEPAGE="https://kinzler.com/me/xtitle/"
+SRC_URI="https://kinzler.com/me/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

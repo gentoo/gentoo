@@ -1,12 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 PYTHON_COMPAT=(
 	pypy
-	python3_3 python3_4 python3_5
+	python3_3 python3_4 python3_5 python3_6
 	python2_7
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
@@ -17,9 +16,9 @@ DESCRIPTION="Portage is the package management and distribution system for Gento
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 SLOT="0"
-IUSE="build doc epydoc +ipc linguas_ru native-extensions selinux xattr"
+IUSE="build doc epydoc +ipc linguas_ru +native-extensions selinux xattr"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
@@ -44,6 +43,7 @@ RDEPEND="
 	)
 	elibc_FreeBSD? ( sys-freebsd/freebsd-bin )
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
+	elibc_musl? ( >=sys-apps/sandbox-2.2 )
 	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	>=app-misc/pax-utils-0.1.17
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
@@ -129,7 +129,10 @@ python_prepare_all() {
 			-i cnf/make.globals || die "sed failed"
 
 		einfo "Adjusting repos.conf ..."
-		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
+		sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
+			-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
+			-e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
+			-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
 			-i cnf/repos.conf || die "sed failed"
 
 		einfo "Adding FEATURES=force-prefix to make.globals ..."
@@ -236,6 +239,12 @@ pkg_preinst() {
 		USERPRIV_UPGRADE=false
 		USERSYNC_UPGRADE=false
 		REPOS_CONF_UPGRADE=false
+	fi
+	if has_version ">=${CATEGORY}/${PN}-2.3.1" && \
+		has_version "<${CATEGORY}/${PN}-2.3.3"; then
+		SYNC_DEPTH_UPGRADE=true
+	else
+		SYNC_DEPTH_UPGRADE=false
 	fi
 }
 
@@ -357,9 +366,11 @@ pkg_postinst() {
 		fi
 	fi
 
-	ewarn "Please note that this release no longer respects sync-depth for"
-	ewarn "git repositories.  There have been too many problems and"
-	ewarn "performance issues.  See bugs 552814, 559008"
+	if ${SYNC_DEPTH_UPGRADE}; then
+		ewarn "Please note that this release no longer respects sync-depth for"
+		ewarn "git repositories.  There have been too many problems and"
+		ewarn "performance issues.  See bugs 552814, 559008"
+	fi
 	einfo ""
 	einfo "This release of portage NO LONGER contains the repoman code base."
 	einfo "Repoman has its own ebuild and release package."

@@ -1,8 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
+
+# Jeroen Roovers <jer@gentoo.org> (26 Feb 2017)
+# app-crypt/libsecret is not keyworded for HPPA
+dev-vcs/git libsecret
 
 # Jeroen Roovers <jer@gentoo.org> (4 Feb 2017)
 # media-libs/libilbc has not been ported to HPPA

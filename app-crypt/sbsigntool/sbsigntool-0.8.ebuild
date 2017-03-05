@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -13,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~tamiko/distfiles/${P}.tar.gz
 
 LICENSE="GPL-3 LGPL-3 LGPL-2.1 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="libressl"
 
 RDEPEND="
@@ -31,9 +30,10 @@ S="${WORKDIR}"
 src_prepare() {
 	local iarch
 	case ${ARCH} in
+		amd64) iarch=x86_64 ;;
+		arm64) iarch=aarch64 ;;
 		ia64)  iarch=ia64 ;;
 		x86)   iarch=ia32 ;;
-		amd64) iarch=x86_64 ;;
 		*)     die "unsupported architecture: ${ARCH}" ;;
 	esac
 	sed -i "/^EFI_ARCH=/s:=.*:=${iarch}:" configure.ac || die

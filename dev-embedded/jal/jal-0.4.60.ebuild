@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A high-level language for a number of Microchip PIC and Ubicom SX microcontrollers"
 HOMEPAGE="http://jal.sourceforge.net/"

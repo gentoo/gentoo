@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Minimalist Object Orientation (with Moose compatiblity)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
 IUSE="test"
 
 # needs Scalar::Util

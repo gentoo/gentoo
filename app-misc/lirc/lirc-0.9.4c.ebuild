@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -27,6 +26,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="audio doc ftdi gtk inputlirc static-libs systemd usb X"
 
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	gtk? ( X )
 "
 

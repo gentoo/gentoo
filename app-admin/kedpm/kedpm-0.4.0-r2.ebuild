@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -8,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils
 
-DESCRIPTION="Ked Password Manager helps to manage large amounts of passwords and related information"
+DESCRIPTION="Helps to manage large amounts of passwords and related information"
 HOMEPAGE="http://kedpm.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

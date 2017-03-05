@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -115,7 +114,7 @@ RDEPEND+="
 DEPEND+=" !!=media-libs/freetype-2.5.4"
 
 STRIP_MASK="*/grub/*/*.{mod,img}"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 QA_EXECSTACK="
 	usr/bin/grub*-emu*

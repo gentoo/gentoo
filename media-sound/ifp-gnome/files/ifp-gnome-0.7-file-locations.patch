@@ -1,5 +1,5 @@
---- ifp-gnome.py
-+++ ifp-gnome.py
+--- a/ifp-gnome.py
++++ b/ifp-gnome.py
 @@ -21,7 +21,7 @@
  
  class GiRiverApp:

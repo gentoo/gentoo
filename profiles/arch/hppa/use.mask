@@ -1,7 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
 # DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
+# kwallet integration split from kde to distinct flag
+kwallet
 
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2016)
 # USE=xwidgets requires net-libs/webkit-gtk
@@ -55,10 +58,6 @@ llvm
 # Jeroen Roovers <jer@gentoo.org> (22 Aug 2013)
 # No known OpenCL providers (bug #482096)
 opencl
-
-# Jeroen Roovers <jer@gentoo.org> (19 Jun 2013)
-# media-libs/x264 works
--x264
 
 # Samuli Suominen <ssuominen@gentoo.org> (12 Mar 2013)
 # NVIDIA Cg toolkit for binary drivers

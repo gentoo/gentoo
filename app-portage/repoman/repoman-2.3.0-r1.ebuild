@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 PYTHON_COMPAT=(
 	pypy
-	python3_3 python3_4 python3_5
+	python3_3 python3_4 python3_5 python3_6
 	python2_7
 )
 PYTHON_REQ_USE='bzip2(+)'

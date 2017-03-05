@@ -1,6 +1,5 @@
 # Provided by ftpbase (dont remove this line!)
 # /etc/ftpusers: list of users disallowed FTP access
-# $Id$
 
 halt
 operator

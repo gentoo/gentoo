@@ -1,0 +1,12 @@
+Don't persist LDFLAGS into package database.
+
+https://bugs.gentoo.org/609624
+diff --git a/X11.buildinfo.in b/X11.buildinfo.in
+index 6925939..6a18b58 100644
+--- a/X11.buildinfo.in
++++ b/X11.buildinfo.in
+@@ -5,3 +5,3 @@ buildable: @BUILD_PACKAGE_BOOL@
+ cc-options: @X_CFLAGS@ @CPPFLAGS@
+-ld-options: @X_LIBS@ @LDFLAGS@
++ld-options: @X_LIBS@
+ extra-libraries: @EXTRA_LIBRARIES@

@@ -1,14 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit bash-completion-r1 elisp-common
 
-DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git"
-HOMEPAGE="http://www.passwordstore.org/"
-SRC_URI="http://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
+DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely"
+HOMEPAGE="https://www.passwordstore.org/"
+SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-2"

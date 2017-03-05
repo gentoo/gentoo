@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -20,6 +19,7 @@ IUSE="doc examples gtk +ocamlopt"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.8.6-installfindlib.patch"
+	epatch "${FILESDIR}/${P}-test.patch"
 }
 
 src_compile() {

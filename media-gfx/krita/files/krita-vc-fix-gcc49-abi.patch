@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt	2017-02-13 11:12:47.866321035 -0200
++++ b/CMakeLists.txt	2017-02-13 11:18:55.769657370 -0200
+@@ -533,9 +533,9 @@
+     include (VcMacros)
+ 
+     if(Vc_COMPILER_IS_CLANG)
+-        set(ADDITIONAL_VC_FLAGS "-Wabi -ffp-contract=fast -fPIC")
++        add_compile_options(-Wabi -ffp-contract=fast -fPIC)
+     elseif (NOT MSVC)
+-        set(ADDITIONAL_VC_FLAGS "-Wabi -fabi-version=0 -ffp-contract=fast -fPIC")
++        add_compile_options(-Wabi -fabi-version=0 -ffp-contract=fast -fPIC)
+     endif()
+ 
+     #Handle Vc master

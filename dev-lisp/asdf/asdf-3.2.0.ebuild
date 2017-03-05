@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -25,12 +24,8 @@ DEPEND="!dev-lisp/cl-${PN}
 RDEPEND=""
 PDEPEND="~dev-lisp/uiop-${PV}"
 
-#S="${WORKDIR}"
-
 install_docs() {
-	# Not installing info file at the moment, see bug #605752
-	#(cd doc ; dodoc *.{html,css,ico,png} "${PN}.pdf" ; dodoc -r asdf ; doinfo "${PN}.info")
-	(cd doc ; dodoc *.{html,css,ico,png} "${PN}.pdf" ; dodoc -r asdf)
+	(cd doc ; dodoc *.{html,css,ico,png} "${PN}.pdf" ; dodoc -r asdf ; doinfo "${PN}.info")
 }
 
 src_compile() {

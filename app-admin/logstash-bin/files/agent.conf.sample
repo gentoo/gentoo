@@ -13,8 +13,7 @@ output {
     stdout {
         codec => rubydebug
     }
-  
+
     elasticsearch {
-        hosts => localhost
     }
 }

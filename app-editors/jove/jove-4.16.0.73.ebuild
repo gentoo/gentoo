@@ -1,12 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Jonathan's Own Version of Emacs - a light emacs-like editor without LISP bindings"
+DESCRIPTION="Jonathan's Own Version of Emacs, a light emacs-like editor without LISP bindings"
 HOMEPAGE="ftp://ftp.cs.toronto.edu/cs/ftp/pub/hugh/jove-dev/"
 SRC_URI="ftp://ftp.cs.toronto.edu/cs/ftp/pub/hugh/jove-dev/${PN}${PV}.tgz"
 
