@@ -1,0 +1,8 @@
+--- ./usr/share/applications/plexmediamanager.desktop	2016-09-13 09:35:36.795386571 +0200
++++ ./usr/share/applications/plexmediamanager.desktop	2016-09-13 09:35:49.607281179 +0200
+@@ -6,4 +6,4 @@
+ Icon=plexmediamanager
+ Terminal=false
+ Type=Application
+-Categories=Audio;Music;Video;Player;Media;
++Categories=Audio;Music;Video;Player;AudioVideo;
