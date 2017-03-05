@@ -14,11 +14,3 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 need_apache
-
-DOCS=( AUTHORS BUGS ChangeLog NEWS README TODO )
-
-src_install() {
-	default
-	emake DESTDIR="${D}" install
-	einstalldocs
-}
