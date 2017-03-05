@@ -3,8 +3,6 @@
 
 EAPI=5
 
-# bogus commit to force manifest regeneration #596462
-
 XORG_DOC=doc
 XORG_EAUTORECONF=yes
 XORG_MULTILIB=yes
