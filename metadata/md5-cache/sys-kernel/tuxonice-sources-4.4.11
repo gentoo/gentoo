@@ -11,5 +11,5 @@ RESTRICT=binchecks strip
 SLOT=4.4.11
 SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.4.tar.xz mirror://gentoo/genpatches-4.4-13.base.tar.xz mirror://gentoo/genpatches-4.4-13.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.4-13.experimental.tar.xz ) http://tuxonice.nigelcunningham.com.au/downloads/all/tuxonice-for-linux-4.4.8-2016-04-21.patch.bz2
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:kernel-2 pkg_setup:kernel-2 src_unpack:kernel-2 src_prepare:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	kernel-2	abc330f11d050042bbf6d28df4a1d86d	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	74bf184baf9facd72c7baa58cab21385	python-utils-r1	316c531873247e48befb99900e5aa2ed	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	kernel-2	0d4dfd0e1ca6257711d35206fc8e44ff	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	74bf184baf9facd72c7baa58cab21385	python-utils-r1	316c531873247e48befb99900e5aa2ed	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=f1c5cfc3415694dadc6727fabfab0e66
