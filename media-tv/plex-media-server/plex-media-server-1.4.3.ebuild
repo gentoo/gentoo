@@ -3,10 +3,11 @@
 
 EAPI=6
 
-inherit eutils user systemd unpacker pax-utils
+PYTHON_COMPAT=( python2_7 )
+inherit eutils user systemd unpacker pax-utils python-single-r1
 
-MINOR1="3285"
-MINOR2="b46e0ea"
+MINOR1="3433"
+MINOR2="03e4cfa35"
 
 _APPNAME="plexmediaserver"
 _USERNAME="plex"
@@ -17,15 +18,19 @@ URI="https://downloads.plex.tv/plex-media-server"
 
 DESCRIPTION="A free media library that is intended for use with a plex client."
 HOMEPAGE="http://www.plex.tv/"
-SRC_URI="
-	amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64.deb )"
+SRC_URI="amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64.deb )"
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="mirror bindist strip"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 
-DEPEND="sys-apps/fix-gnustack"
-RDEPEND="net-dns/avahi"
+DEPEND="
+	sys-apps/fix-gnustack
+	dev-python/virtualenv[${PYTHON_USEDEP}]"
+
+RDEPEND="
+	net-dns/avahi
+	${PYTHON_DEPS}"
 
 QA_DESKTOP_FILE="usr/share/applications/plexmediamanager.desktop"
 QA_PREBUILT="*"
@@ -38,10 +43,13 @@ EXECSTACKED_BINS=( "${ED%/}/usr/lib/plexmediaserver/libgnsdk_dsp.so*" )
 BINS_TO_PAX_MARK=( "${ED%/}/usr/lib/plexmediaserver/Plex Script Host" )
 
 S="${WORKDIR}"
+PATCHES=( "${FILESDIR}/virtualenv_start_pms.patch" )
 
 pkg_setup() {
 	enewgroup ${_USERNAME}
-	enewuser ${_USERNAME} -1 /bin/bash /var/lib/${_APPNAME} ${_USERNAME}
+	enewuser ${_USERNAME} -1 /bin/bash /var/lib/${_APPNAME} "${_USERNAME},video"
+
+	python-single-r1_pkg_setup
 }
 
 src_unpack() {
@@ -49,18 +57,19 @@ src_unpack() {
 }
 
 src_install() {
-	# Copy main files over to image and preserve permissions so it is portable
-	cp -rp usr/ "${ED}" || die
-
 	# Move the config to the correct place
-	local CONFIG_VANILLA="${S}/etc/default/plexmediaserver"
+	local CONFIG_VANILLA="/etc/default/plexmediaserver"
 	local CONFIG_PATH="/etc/${_SHORTNAME}"
 	dodir "${CONFIG_PATH}"
 	insinto "${CONFIG_PATH}"
-	doins "${CONFIG_VANILLA}"
+	doins "${CONFIG_VANILLA#/}"
+	sed -e "s#${CONFIG_VANILLA}#${CONFIG_PATH}#g" -i "${S}"/usr/sbin/start_pms || die
 
 	# Remove Debian specific files
-	rm -rf "${ED%/}/usr/share/doc" || die
+	rm -rf "usr/share/doc" || die
+
+	# Copy main files over to image and preserve permissions so it is portable
+	cp -rp usr/ "${ED}" || die
 
 	# Make sure the logging directory is created
 	local LOGGING_DIR="/var/log/pms"
@@ -85,11 +94,17 @@ src_install() {
 
 	_remove_execstack_markings
 	_add_pax_markings
+
+	einfo "Configuring virtualenv"
+	virtualenv -v --no-pip --no-setuptools --no-wheel "${ED}"usr/lib/plexmediaserver/Resources/Python || die
+	pushd "${ED}"usr/lib/plexmediaserver/Resources/Python &>/dev/null || die
+	find . -type f -exec sed -i -e "s#${D}##g" {} + || die
+	popd &>/dev/null || die
 }
 
 pkg_postinst() {
 	einfo ""
-	elog "Plex Media Server is now installed. Please check the configuration file in /etc/plex/${_SHORTNAME} to verify the default settings."
+	elog "Plex Media Server is now installed. Please check the configuration file in /etc/${_SHORTNAME}/${_APPNAME} to verify the default settings."
 	elog "To start the Plex Server, run 'rc-config start plex-media-server', you will then be able to access your library at http://<ip>:32400/web/"
 }
 
