@@ -22,7 +22,7 @@ SRC_URI="
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="mirror bindist strip"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 DEPEND="sys-apps/fix-gnustack"
 RDEPEND="net-dns/avahi"
