@@ -14454,7 +14454,7 @@ net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with
 net-firewall/fwbuilder 5.0.1.3592-r1 5.3.6: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/fwknop 2.6.9: Single Packet Authorization and Port Knocking application
-net-firewall/gshield 2.8-r3: iptables firewall configuration system
+net-firewall/gshield 2.8-r4: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r2 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24 6.29 6.30: IPset tool for iptables, successor to ippool
@@ -16514,7 +16514,7 @@ sci-misc/gato 1.2.2: Graph Animation Toolbox
 sci-misc/gt-itm 19961004-r2: Routines to generate / analyze graphs using models for internetwork topology
 sci-misc/h5utils 1.12.1-r2: Utilities for visualization and conversion of HDF5 files
 sci-misc/lttoolbox 3.3.3: Toolbox for lexical processing, morphological analysis and generation of words
-sci-misc/mendeleydesktop 1.16.3: Research management tool for desktop and web
+sci-misc/mendeleydesktop 1.17.8: Research management tool for desktop and web
 sci-misc/nco 3.9.9 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.7: X-based viewer for netCDF files
 sci-misc/netlogo-bin 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
