@@ -1,12 +1,11 @@
 DEFINED_PHASES=install prepare
-DEPEND=>=dev-libs/http-fetcher-1.0.1
+DEPEND=dev-libs/http-fetcher
 DESCRIPTION=HTTP download tool built atop the HTTP fetcher library
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/fetch/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1
-RDEPEND=>=dev-libs/http-fetcher-1.0.1
 SLOT=0
 SRC_URI=mirror://sourceforge/fetch/fetch-1.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=c05d7d01d35f5215bc74397c85bba0a5
+_md5_=2f5d36a0242c34ebc04cdf1b1c8283f9
