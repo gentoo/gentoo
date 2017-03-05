@@ -9649,7 +9649,7 @@ dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.1-r2 2.2.2: A Ruby interface to libshout2
 dev-ruby/ruby-tcpwrap 0.6-r3: A TCP wrappers library for Ruby
-dev-ruby/ruby-termios 1.0.0-r1 1.0.2: A Ruby interface to termios
+dev-ruby/ruby-termios 1.0.0-r1 1.0.2-r1: A Ruby interface to termios
 dev-ruby/ruby-vte 3.0.8: Ruby vte bindings
 dev-ruby/ruby-vte3 3.0.8-r1: Ruby VTE bindings
 dev-ruby/ruby-webkit-gtk 3.0.8: Ruby WebKitGtk bindings
@@ -9742,7 +9742,7 @@ dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
-dev-ruby/travis 1.8.2-r1: Travis CI Client (CLI and Ruby library)
+dev-ruby/travis 1.8.2-r1 1.8.6: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.5 1.6.8: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.2.1 1.4.0 1.5.0: A TrueType font parser written in pure ruby
@@ -9750,7 +9750,7 @@ dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
 dev-ruby/twitter 5.16.0 5.17.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.2 1.14.5: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
-dev-ruby/typhoeus 0.6.9 1.1.0 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
+dev-ruby/typhoeus 0.6.9 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.52 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 2.7.2 3.0.4 3.1.1 3.1.3: Ruby wrapper for UglifyJS JavaScript compressor
@@ -15303,7 +15303,7 @@ net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 sup
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.7.1 1.7.1-r1: Remote desktop viewer display system
+net-misc/tigervnc 1.7.1 1.7.1-r1 1.7.1-r2: Remote desktop viewer display system
 net-misc/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
@@ -18243,7 +18243,7 @@ www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI sup
 www-misc/gurlchecker 0.13.1-r1 0.13.1-r2: Gnome tool that checks links on web pages/sites
 www-misc/htdig 3.2.0_beta6-r3 3.2.0_beta6-r4: HTTP/HTML indexing and searching system
 www-misc/litmus 0.13: WebDAV server protocol compliance test suite
-www-misc/log-toolkit 0.9.6: set of tools to manipulate and maintain webserver logfiles
+www-misc/log-toolkit 0.9.6-r1: set of tools to manipulate and maintain webserver logfiles
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.5.1 3.8.1-r1 3.9.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r1: multisort takes any number of httpd logfiles in the Common Log Format and merges them together
