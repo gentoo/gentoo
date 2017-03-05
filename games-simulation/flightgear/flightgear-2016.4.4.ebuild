@@ -20,7 +20,13 @@ COMMON_DEPEND="
 	>=dev-games/openscenegraph-3.2.0[png]
 	~dev-games/simgear-${PV}
 	media-libs/openal
-	media-libs/speex
+	|| (
+		(
+			>=media-libs/speex-1.2.0:0
+			media-libs/speexdsp:0
+		)
+		<media-libs/speex-1.2.0:0
+	)
 	media-sound/gsm
 	sys-libs/zlib
 	virtual/glu
