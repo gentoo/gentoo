@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -91,7 +90,7 @@ src_install() {
 		newdoc "${docdir}"/doc/dg/dg.pdf developer_guide.pdf
 		newdoc "${docdir}"/doc/ug/ug.pdf user_guide.pdf
 		for i in "${docdir}/doc/tutorials/python"/*/[0-9]*.pdf; do
-		 	newdoc "${i}" "tutorial_${i##*/}"
+			newdoc "${i}" "tutorial_${i##*/}"
 		done
 		dodoc -r ${CMAKE_BUILD_DIR}/doc/doxygen/html
 	fi
