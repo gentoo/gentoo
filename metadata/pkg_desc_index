@@ -12250,7 +12250,7 @@ media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
 media-fonts/clearsans 1.00: OpenType font optimized for readability on small screens
 media-fonts/cm-unicode 0.7.0: Computer Modern Unicode fonts
-media-fonts/comic-neue 2.2: Typographically savvy casual script typeface
+media-fonts/comic-neue 2.2 2.3: Typographically savvy casual script typeface
 media-fonts/corefonts 1-r7: Microsoft's TrueType core fonts
 media-fonts/courier-prime 1.203: A redesign of Courier
 media-fonts/cronyx-fonts 2.3.1-r2 2.3.8: Cronyx Cyrillic bitmap fonts for X
