@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils linux-info multilib
+inherit autotools eutils linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="http://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -12,23 +12,23 @@ SRC_URI="https://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~arm-linux ~x86-linux"
-IUSE="+acl +ads +caps +caps-ng creds"
+IUSE="+acl +ads +caps +caps-ng creds pam"
 
-DEPEND="!net-fs/mount-cifs
+RDEPEND="
+	!net-fs/mount-cifs
 	!<net-fs/samba-3.6_rc1
+	sys-apps/keyutils
 	ads? (
-		sys-apps/keyutils
 		sys-libs/talloc
 		virtual/krb5
 	)
 	caps? ( !caps-ng? ( sys-libs/libcap ) )
 	caps? ( caps-ng? ( sys-libs/libcap-ng ) )
-	creds? ( sys-apps/keyutils )"
-PDEPEND="${DEPEND}
-	acl? ( || (
-		=net-fs/samba-3.6*[winbind]
-		>=net-fs/samba-4.0.0_alpha1
-	) )
+	pam? ( virtual/pam )
+"
+DEPEND="${RDEPEND}"
+PDEPEND="
+	acl? ( >=net-fs/samba-4.0.0_alpha1 )
 "
 
 REQUIRED_USE="acl? ( ads )"
@@ -50,6 +50,11 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	ROOTSBINDIR="${EPREFIX}"/sbin \
 	econf \
@@ -57,7 +62,9 @@ src_configure() {
 		$(use_enable ads cifsupcall) \
 		$(use caps && use_with !caps-ng libcap || echo --without-libcap) \
 		$(use caps && use_with caps-ng libcap-ng || echo --without-libcap-ng) \
-		$(use_enable creds cifscreds)
+		$(use_enable creds cifscreds) \
+		$(use_enable pam) \
+		$(use_with pam pamdir $(getpam_mod_dir))
 }
 
 src_install() {
