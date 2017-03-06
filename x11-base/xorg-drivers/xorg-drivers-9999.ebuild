@@ -145,6 +145,7 @@ PDEPEND="
 	!<x11-drivers/xf86-input-evdev-2.10.4
 	!<x11-drivers/xf86-input-joystick-1.6.3
 	!<x11-drivers/xf86-input-libinput-0.20.0
+	!<x11-drivers/xf86-input-wacom-0.34.0
 	!<x11-drivers/xf86-video-amdgpu-1.2.0
 	!<x11-drivers/xf86-video-ati-7.8.0
 	!<x11-drivers/xf86-video-glint-1.2.9
