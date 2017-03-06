@@ -1,0 +1,190 @@
+From d075cbaa80ce0b484c8422be27c5b5680f6abee4 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Fri, 3 Mar 2017 16:05:45 -0700
+Subject: [PATCH] cmake: install all shared libs in back in libdir
+
+some libraries weren't installed and the python module path
+isn't in the LD_LIBRARY_PATH and hence partly revert
+80ad49e954f4a6590707fd86e4fd586682ad626d
+---
+ CMakeLists.txt                            | 4 ++++
+ src/core/CMakeLists.txt                   | 4 ++--
+ src/core/actor/CMakeLists.txt             | 4 ++--
+ src/core/constraints/CMakeLists.txt       | 1 +
+ src/core/correlators/CMakeLists.txt       | 1 +
+ src/core/immersed_boundary/CMakeLists.txt | 4 ++--
+ src/core/object-in-fluid/CMakeLists.txt   | 2 +-
+ src/core/observables/CMakeLists.txt       | 1 +
+ src/core/scafacos/CMakeLists.txt          | 2 +-
+ src/core/shapes/CMakeLists.txt            | 1 +
+ src/core/utils/CMakeLists.txt             | 1 +
+ src/script_interface/CMakeLists.txt       | 1 +
+ 12 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cf49c40..7a8bc15 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -238,6 +238,10 @@ if (NOT DEFINED DATA)
+   set(DATA "share/espresso")
+ endif(NOT DEFINED DATA)
+ 
++if (NOT DEFINED LIBDIR)
++  set(LIBDIR "lib")
++endif(NOT DEFINED LIBDIR)
++
+ if (NOT DEFINED BINDIR)
+   set(BINDIR "bin")
+ endif(NOT DEFINED BINDIR)
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index 9982a54..13bb052 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -23,7 +23,7 @@ add_custom_target(EspressoConfig DEPENDS config-features.hpp config-features.cpp
+ add_dependencies(EspressoConfig myconfig)
+ 
+ add_library(EspressoCore SHARED ${EspressoCore_SRC} config-features.cpp config-version.cpp)
+-install(TARGETS EspressoCore LIBRARY DESTINATION ${PYTHON_INSTDIR})
++install(TARGETS EspressoCore LIBRARY DESTINATION ${LIBDIR})
+ add_dependencies(EspressoCore EspressoConfig)
+ 
+ target_link_libraries(EspressoCore ${LIBRARIES} Actor ObjectInFluid ImmersedBoundary Shapes Constraints EspressoUtils Correlators Observables)
+@@ -43,7 +43,7 @@ if(CUDA)
+   cuda_include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+   cuda_add_library(EspressoCuda SHARED ${EspressoCuda_SRC})
+-  install(TARGETS EspressoCuda DESTINATION ${PYTHON_INSTDIR})
++  install(TARGETS EspressoCuda DESTINATION ${PYTHON_INSTDIR}/espressomd)
+   add_dependencies(EspressoCuda EspressoConfig)
+ 
+   set_target_properties(EspressoCuda PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/core/actor/CMakeLists.txt b/src/core/actor/CMakeLists.txt
+index 0421243..1b5eafe 100644
+--- a/src/core/actor/CMakeLists.txt
++++ b/src/core/actor/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ file(GLOB Actor_SRC *.cpp)
+ 
+ add_library(Actor SHARED ${Actor_SRC})
+-install(TARGETS Actor LIBRARY DESTINATION ${PYTHON_INSTDIR} ARCHIVE DESTINATION ${PYTHON_INSTDIR})
++install(TARGETS Actor LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+ add_dependencies(Actor EspressoConfig)
+ 
+ set_target_properties(Actor PROPERTIES MACOSX_RPATH TRUE)
+@@ -9,7 +9,7 @@ set_target_properties(Actor PROPERTIES MACOSX_RPATH TRUE)
+ if(CUDA)
+   file(GLOB ActorCuda_SRC *.cu)
+   cuda_add_library(ActorCuda SHARED ${ActorCuda_SRC})
+-  install(TARGETS ActorCuda DESTINATION ${PYTHON_INSTDIR})
++  install(TARGETS ActorCuda DESTINATION ${PYTHON_INSTDIR}/espressomd)
+   add_dependencies(ActorCuda EspressoConfig)
+ 
+   add_dependencies(Actor ActorCuda)
+diff --git a/src/core/constraints/CMakeLists.txt b/src/core/constraints/CMakeLists.txt
+index 0f5c043..d07ad77 100644
+--- a/src/core/constraints/CMakeLists.txt
++++ b/src/core/constraints/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ file(GLOB Constraints_SRC Constraint.cpp)
+ add_library(Constraints SHARED ${Constraints_SRC})
++install(TARGETS Constraints LIBRARY DESTINATION ${LIBDIR})
+ add_dependencies(Constraints EspressoConfig)
+ set_target_properties(Constraints PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/core/correlators/CMakeLists.txt b/src/core/correlators/CMakeLists.txt
+index c5ff02f..fcc3611 100644
+--- a/src/core/correlators/CMakeLists.txt
++++ b/src/core/correlators/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ file(GLOB Correlators_SRC *.?pp)
+ add_library(Correlators SHARED ${Correlators_SRC})
++install(TARGETS Correlators LIBRARY DESTINATION ${LIBDIR})
+ add_dependencies(Correlators EspressoConfig)
+ set_target_properties(Correlators PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/core/immersed_boundary/CMakeLists.txt b/src/core/immersed_boundary/CMakeLists.txt
+index ec7fb85..8e7285f 100644
+--- a/src/core/immersed_boundary/CMakeLists.txt
++++ b/src/core/immersed_boundary/CMakeLists.txt
+@@ -1,13 +1,13 @@
+ file(GLOB ImmersedBoundary_SRC *.cpp)
+ add_library(ImmersedBoundary SHARED ${ImmersedBoundary_SRC})
+ set_target_properties(ImmersedBoundary PROPERTIES MACOSX_RPATH TRUE)
+-install(TARGETS ImmersedBoundary LIBRARY DESTINATION ${PYTHON_INSTDIR} ARCHIVE DESTINATION ${PYTHON_INSTDIR})
++install(TARGETS ImmersedBoundary LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+ add_dependencies(ImmersedBoundary EspressoConfig)
+ 
+ if(CUDA)
+   file(GLOB ImmersedBoundaryCuda_SRC *.cu)
+   cuda_add_library(ImmersedBoundaryCuda SHARED ${ImmersedBoundaryCuda_SRC})
+-  install(TARGETS ImmersedBoundaryCuda DESTINATION ${PYTHON_INSTDIR})
++  install(TARGETS ImmersedBoundaryCuda DESTINATION ${PYTHON_INSTDIR}/espressomd)
+   add_dependencies(ImmersedBoundaryCuda EspressoConfig)
+ 
+   set_target_properties(ImmersedBoundaryCuda PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/core/object-in-fluid/CMakeLists.txt b/src/core/object-in-fluid/CMakeLists.txt
+index 7154486..c25228a 100644
+--- a/src/core/object-in-fluid/CMakeLists.txt
++++ b/src/core/object-in-fluid/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ file(GLOB ObjectInFluid_SRC *.cpp)
+ add_library(ObjectInFluid SHARED ${ObjectInFluid_SRC})
+-install(TARGETS ObjectInFluid LIBRARY DESTINATION ${PYTHON_INSTDIR} ARCHIVE DESTINATION ${PYTHON_INSTDIR})
++install(TARGETS ObjectInFluid LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+ add_dependencies(ObjectInFluid EspressoConfig)
+ set_target_properties(ObjectInFluid PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/core/observables/CMakeLists.txt b/src/core/observables/CMakeLists.txt
+index 9813d86..51ab79d 100644
+--- a/src/core/observables/CMakeLists.txt
++++ b/src/core/observables/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ file(GLOB Observables_SRC *.?pp)
+ add_library(Observables SHARED ${Observables_SRC})
++install(TARGETS Observables LIBRARY DESTINATION ${LIBDIR})
+ add_dependencies(Observables EspressoConfig)
+ set_target_properties(Observables PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/core/scafacos/CMakeLists.txt b/src/core/scafacos/CMakeLists.txt
+index 1479683..3028ca0 100644
+--- a/src/core/scafacos/CMakeLists.txt
++++ b/src/core/scafacos/CMakeLists.txt
+@@ -2,7 +2,7 @@ include_directories(${SCAFACOS_INCLUDE_DIRS})
+ 
+ file(GLOB Scafacos_SRC *.cpp)
+ add_library(Scafacos SHARED ${Scafacos_SRC})
+-install(TARGETS Scafacos DESTINATION ${PYTHON_INSTDIR})
++install(TARGETS Scafacos DESTINATION ${PYTHON_INSTDIR}/espressomd)
+ add_dependencies(Scafacos EspressoConfig)
+ 
+ target_link_libraries(Scafacos ${SCAFACOS_LDFLAGS})
+diff --git a/src/core/shapes/CMakeLists.txt b/src/core/shapes/CMakeLists.txt
+index 0e5ecaa..5be3a9d 100644
+--- a/src/core/shapes/CMakeLists.txt
++++ b/src/core/shapes/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ file(GLOB Shapes_SRC *.cpp)
+ add_library(Shapes SHARED ${Shapes_SRC})
++install(TARGETS Shapes LIBRARY DESTINATION ${LIBDIR})
+ add_dependencies(Shapes EspressoConfig)
+ set_target_properties(Shapes PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/core/utils/CMakeLists.txt b/src/core/utils/CMakeLists.txt
+index ec0f6f7..4cd8ada 100644
+--- a/src/core/utils/CMakeLists.txt
++++ b/src/core/utils/CMakeLists.txt
+@@ -1,3 +1,4 @@
+ file(GLOB EspressoUtils_SRC *.cpp)
+ add_library(EspressoUtils SHARED ${EspressoUtils_SRC})
++install(TARGETS EspressoUtils LIBRARY DESTINATION ${LIBDIR})
+ set_target_properties(EspressoUtils PROPERTIES MACOSX_RPATH TRUE)
+diff --git a/src/script_interface/CMakeLists.txt b/src/script_interface/CMakeLists.txt
+index 8aff034..59c1c9d 100644
+--- a/src/script_interface/CMakeLists.txt
++++ b/src/script_interface/CMakeLists.txt
+@@ -28,6 +28,7 @@ if(H5MD)
+         )
+ endif(H5MD)
+ add_library(EspressoScriptInterface SHARED ${EspressoScriptInterface_SRC})
++install(TARGETS EspressoScriptInterface LIBRARY DESTINATION ${LIBDIR})
+ add_dependencies(EspressoScriptInterface EspressoConfig EspressoConfig)
+ set_target_properties(EspressoScriptInterface PROPERTIES MACOSX_RPATH TRUE)
+ target_link_libraries(EspressoScriptInterface EspressoCore)
+-- 
+2.10.2
+
