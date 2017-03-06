@@ -32,7 +32,7 @@ ruby_add_rdepend "
 	>=dev-ruby/listen-3.1.5
 	>=dev-ruby/hashicorp-checkpoint-0.1.1
 	>=dev-ruby/log4r-1.1.9 <dev-ruby/log4r-1.1.11
-	>=dev-ruby/net-ssh-3.0.1
+	>=dev-ruby/net-ssh-3.0.1:*
 	>=dev-ruby/net-sftp-2.1
 	>=dev-ruby/net-scp-1.1.0
 	|| ( >=dev-ruby/rest-client-1.6.0:0 dev-ruby/rest-client:2 )
