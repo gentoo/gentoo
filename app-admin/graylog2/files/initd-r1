@@ -1,0 +1,55 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+export JAVA_HOME=`java-config --jre-home`
+
+checkconfig() {
+  if [ ! -r "${GRAYLOG_CONFIG_FILE}" ]; then
+    eerror "GRAYLOG_CONFIG_FILE doesn't point to a readable config file"
+  fi
+}
+
+depend() {
+  need net
+}
+
+start() {
+  checkconfig || return 1
+
+  [ -e `dirname "$GRAYLOG_PID_FILE"` ] || \
+    install -d -o${GRAYLOG_USER} -g${GRAYLOG_GROUP} -m750 `dirname "$GRAYLOG_PID_FILE"`
+
+  [ -e "$GRAYLOG_LOG_DIR" ] || \
+    install -d -o${GRAYLOG_USER} -g${GRAYLOG_GROUP} -m750 "$GRAYLOG_LOG_DIR"
+
+  ebegin "Starting Graylog"
+
+  checkpath -d -o "${GRAYLOG_USER}:${GRAYLOG_GROUP}" -m750 "${GRAYLOG_DATA_DIR}"
+  checkpath -d -o "${GRAYLOG_USER}:${GRAYLOG_GROUP}" -m750 "${GRAYLOG_DATA_DIR}/data"
+  checkpath -d -o "${GRAYLOG_USER}:${GRAYLOG_GROUP}" -m750 "${GRAYLOG_DATA_DIR}/data/contentpacks"
+  checkpath -d -o "${GRAYLOG_USER}:${GRAYLOG_GROUP}" -m750 "${GRAYLOG_DATA_DIR}/data/journal"
+
+  start-stop-daemon \
+    --start \
+    --exec "${JAVA_HOME}/bin/java" \
+    --user ${GRAYLOG_USER} \
+    --group ${GRAYLOG_GROUP} \
+    --background \
+    --chdir ${GRAYLOG_INSTALL_DIR} \
+    --stdout ${GRAYLOG_LOG_DIR}/graylog.stdout.log \
+    --stderr ${GRAYLOG_LOG_DIR}/graylog.stderr.log \
+    -- ${JAVA_OPTS} -jar ${GRAYLOG_INSTALL_DIR}/graylog.jar server -f "${GRAYLOG_CONFIG_FILE}" -p "${GRAYLOG_PID_FILE}" ${GRAYLOG_OPTIONS}
+  
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping Graylog"
+
+  start-stop-daemon \
+    --stop \
+    --pidfile "${GRAYLOG_PID_FILE}"
+
+  eend $?
+}
