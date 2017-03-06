@@ -14,21 +14,14 @@ inherit fortran-2 toolchain-funcs
 # metis?
 
 # package id: change every version, see the link on inriaforge
-PID=35070
-# commit id: change every version
-#CID=351ef60
-# leave empty if this is not a post release bug fix
-#PPV=bugfix9_
-#MYPN=pastix_release
-#SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${MYPN}_${PPV}${CID}.tar.bz2"
-
+PID=218
 DESCRIPTION="Parallel solver for very large sparse linear systems"
 HOMEPAGE="http://pastix.gforge.inria.fr"
-SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${PN}_${PV}.tar.bz2"
+SRC_URI="https://gforge.inria.fr/frs/download.php/latestfile/${PID}/${PN}_${PV}.tar.bz2"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc int64 mpi +smp starpu static-libs"
 
 RDEPEND="
@@ -40,10 +33,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}/${P}-nosmp-undefined-variable.patch"
-	"${FILESDIR}/${P}-isnan-floating-point-cast.patch"
-)
 S="${WORKDIR}/${PN}_${PV}/src"
 
 src_prepare() {
@@ -115,6 +104,7 @@ src_compile() {
 
 src_test() {
 	# both test and tests targets are defined and do not work
+	emake examples
 	echo
 }
 
