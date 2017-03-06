@@ -1789,7 +1789,7 @@ app-misc/gcal 3.6.3: The GNU Calendar - a replacement for cal
 app-misc/gcalcli 3.2 3.3.2: Google Calendar Command Line Interface
 app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
-app-misc/geneweb 6.07 6.08 6.08-r1: Genealogy software program with a Web interface
+app-misc/geneweb 6.07 6.08-r1: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.6 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/geoclue 0.12.99 2.4.4: A geoinformation D-Bus service
 app-misc/getopt 1.1.6: getopt(1) replacement supporting GNU-style long options
@@ -14800,6 +14800,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.18.1 1.19.0 1.20.0 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.10 0.12.17 4.6.0 4.6.1 6.9.4 6.9.5 6.10.0 7.0.0 7.2.0 7.3.0 7.4.0 7.5.0 7.6.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/ntirpc 1.4.1: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
@@ -16449,7 +16450,7 @@ sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 28.9 28.10-r1: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.5.8 1.6.1 1.6.2 1.6.6 1.7.2: C++ library and tools for symbolic calculations
-sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57 4.60 4.61: GNU Linear Programming Kit
+sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57 4.60 4.61-r1: GNU Linear Programming Kit
 sci-mathematics/gmm 4.2 5.0: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
