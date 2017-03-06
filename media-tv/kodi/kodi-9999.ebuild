@@ -57,6 +57,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/yajl-2
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-libs/libcdio
+	dev-libs/libfmt
 	gles? ( media-libs/mesa[gles2] )
 	libusb? ( virtual/libusb:1 )
 	media-fonts/corefonts
