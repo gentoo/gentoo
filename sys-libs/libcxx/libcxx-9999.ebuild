@@ -32,7 +32,7 @@ if [[ ${PV} != 9999 ]] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="elibc_glibc elibc_musl libcxxabi +libcxxrt libunwind +static-libs test"
+IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
 
