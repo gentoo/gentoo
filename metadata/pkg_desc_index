@@ -1127,7 +1127,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.31-r1 1.32 1.33: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.31-r1 1.33 1.34: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -10186,7 +10186,7 @@ dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.48.2 2.50.3: GDBus code and documentation generator
-dev-util/geany 1.28 1.29-r1: GTK+ based fast and lightweight IDE
+dev-util/geany 1.28 1.29-r1 1.30: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.28-r1: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0: Gertty is a console-based interface to the Gerrit Code Review system.
