@@ -44,8 +44,8 @@ src_configure() {
 		myconf="--disable-dl"
 	fi
 
-	econf ${myconf}
-\		$(use_enable mysql) \
+	econf ${myconf} \
+		$(use_enable mysql) \
 		$(use_enable odbc) \
 		$(use_enable static-libs static) \
 		$(use_with gmp)
