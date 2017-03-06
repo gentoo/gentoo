@@ -197,7 +197,7 @@ case ${EAPI:-0} in
 	0|1)
 		EXPORT_FUNCTIONS src_{unpack,compile,install,test} \
 			pkg_{setup,preinst,postinst,postrm} ;;
-	2|3|4|5)
+	2|3|4|5|6)
 		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
 			pkg_{setup,preinst,postinst,postrm} ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
