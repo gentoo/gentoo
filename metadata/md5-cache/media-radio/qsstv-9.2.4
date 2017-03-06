@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4 media-libs/hamlib media-libs/openjpeg:2 media-libs/alsa-lib media-sound/pulseaudio media-libs/libv4l sci-libs/fftw:3.0=
+DESCRIPTION=Amateur radio SSTV software
+EAPI=5
+HOMEPAGE=http://users.telenet.be/on4qz/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4 media-libs/hamlib media-libs/openjpeg:2 media-libs/alsa-lib media-sound/pulseaudio media-libs/libv4l sci-libs/fftw:3.0= x11-misc/xdg-utils
+SLOT=0
+SRC_URI=http://users.telenet.be/on4qz/qsstv/downloads/qsstv_9.2.4.tar.gz
+_eclass_exported_funcs=src_unpack:qt4-r2 src_prepare:- src_configure:qt4-r2 src_compile:qt4-r2 src_install:qt4-r2
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	qt4-r2	b7985a3197fbc3a22d059f19904e735b	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=6c7c027658bd8618103bac3c611baec6
