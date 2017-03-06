@@ -6,7 +6,7 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="monitor system console messages with X"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 RDEPEND="x11-libs/libXaw
 	x11-libs/libXmu
