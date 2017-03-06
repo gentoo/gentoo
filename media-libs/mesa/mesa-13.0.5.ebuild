@@ -96,6 +96,12 @@ RDEPEND="
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
 		)
+		video_cards_r600? (
+			virtual/libelf:0=[${MULTILIB_USEDEP}]
+		)
+		video_cards_radeon? (
+			virtual/libelf:0=[${MULTILIB_USEDEP}]
+		)
 		>=sys-devel/llvm-3.6.0:0=[${MULTILIB_USEDEP}]
 	)
 	nettle? ( dev-libs/nettle:=[${MULTILIB_USEDEP}] )
