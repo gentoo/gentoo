@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,6 @@ inherit cargo
 DESCRIPTION="Tool to find and fix Rust formatting issues"
 HOMEPAGE="https://github.com/rust-lang-nursery/rustfmt"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
-RESTRICT="mirror"
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
