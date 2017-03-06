@@ -13445,7 +13445,7 @@ media-radio/unixcw 3.4.2 3.5.0 3.5.0-r1: A package of programs that fit together
 media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
 media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.4.2 2.4.3 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
-media-radio/xlog 2.0.13 2.0.14: An amateur radio logging program
+media-radio/xlog 2.0.14: An amateur radio logging program
 media-radio/xwxapt 2.4 2.7: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r1: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r1: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
