@@ -4,7 +4,7 @@
 # Vagrant installation directory. This sets up proper environmental variables
 # so that everything loads and compiles to proper directories.
 
-VAGRANT_DIR="$( ruby -e 'print Gem::default_path[-1] + "/gems/vagrant-1.8.7"' )"
+VAGRANT_DIR="$( ruby -e 'print Gem::default_path[-1] + "/gems/vagrant-1.9.2"' )"
 
 # Export GEM_HOME based on VAGRANT_HOME
 #
@@ -37,10 +37,9 @@ OS=$(uname -s 2>/dev/null)
 export VAGRANT_DETECTED_OS="${OS}"
 
 VAGRANT_EXECUTABLE="${VAGRANT_DIR}/bin/vagrant"
-VAGRANT_LAUNCHER="${VAGRANT_DIR}/lib/vagrant/pre-rubygems.rb"
 
 # Export the VAGRANT_EXECUTABLE so that pre-rubygems can optimize a bit
 export VAGRANT_EXECUTABLE
 
 # Call the actual Vagrant bin with our arguments
-exec ruby "${VAGRANT_LAUNCHER}" "$@"
+exec ruby "${VAGRANT_EXECUTABLE}" "$@"
