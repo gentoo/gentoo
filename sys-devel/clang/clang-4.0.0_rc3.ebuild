@@ -126,8 +126,15 @@ src_prepare() {
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
 
-	# kill extraneous deps
-	sed -i -e '/FileCheck/d' tools/extra/test/CMakeLists.txt || die
+	# fix value of ATOMIC_*_LOCK_FREE
+	# (backport, temporary reverted upstream because of FreeBSD issues)
+	eapply "${FILESDIR}"/4.0.0/0001-Frontend-Correct-values-of-ATOMIC_-_LOCK_FREE-to-mat.patch
+
+	cd tools/extra || die
+	# fix stand-alone test build for extra tools
+	eapply "${FILESDIR}"/4.0.0/extra/0001-test-Fix-test-dependencies-when-using-installed-tool.patch
+	eapply "${FILESDIR}"/4.0.0/extra/0002-test-Fix-clang-library-dir-in-LD_LIBRARY_PATH-For-st.patch
+	cd - >/dev/null || die
 
 	# User patches
 	eapply_user
