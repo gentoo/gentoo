@@ -1,0 +1,50 @@
+From b3c973612f5cfcd97d9921330ee606ab9c8cd269 Mon Sep 17 00:00:00 2001
+From: Chocobo1 <Chocobo1@users.noreply.github.com>
+Date: Sat, 4 Mar 2017 15:48:37 +0800
+Subject: [PATCH] =?UTF-8?q?Fix=20compile=20error:=20=E2=80=98escape?=
+ =?UTF-8?q?=E2=80=99=20is=20not=20a=20member=20of=20=E2=80=98Qt=E2=80=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ src/base/utils/string.cpp | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/src/base/utils/string.cpp b/src/base/utils/string.cpp
+index 7d76d9a..6c713b1 100644
+--- a/src/base/utils/string.cpp
++++ b/src/base/utils/string.cpp
+@@ -34,6 +34,7 @@
+ #include <QByteArray>
+ #include <QtGlobal>
+ #include <QLocale>
++
+ #ifdef QBT_USES_QT5
+ #include <QCollator>
+ #endif
+@@ -217,6 +218,23 @@ QString Utils::String::toHtmlEscaped(const QString &str)
+ #ifdef QBT_USES_QT5
+     return str.toHtmlEscaped();
+ #else
+-    return Qt::escape(str);
++    // code from Qt
++    QString rich;
++    const int len = str.length();
++    rich.reserve(int(len * 1.1));
++    for (int i = 0; i < len; ++i) {
++        if (str.at(i) == QLatin1Char('<'))
++            rich += QLatin1String("&lt;");
++        else if (str.at(i) == QLatin1Char('>'))
++            rich += QLatin1String("&gt;");
++        else if (str.at(i) == QLatin1Char('&'))
++            rich += QLatin1String("&amp;");
++        else if (str.at(i) == QLatin1Char('"'))
++            rich += QLatin1String("&quot;");
++        else
++            rich += str.at(i);
++    }
++    rich.squeeze();
++    return rich;
+ #endif
+ }

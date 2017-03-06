@@ -23,7 +23,6 @@ HOMEPAGE="https://www.mesa3d.org/"
 
 if [[ $PV == 9999 ]]; then
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
@@ -87,6 +86,7 @@ RDEPEND="
 	gallium? ( app-eselect/eselect-mesa )
 	>=app-eselect/eselect-opengl-1.3.0
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
+	>=sys-libs/zlib-1.2.8[${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libXdamage-1.1.4-r1:=[${MULTILIB_USEDEP}]
@@ -98,6 +98,12 @@ RDEPEND="
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
 			vulkan? ( >=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}] )
+		)
+		video_cards_r600? (
+			virtual/libelf:0=[${MULTILIB_USEDEP}]
+		)
+		video_cards_radeon? (
+			virtual/libelf:0=[${MULTILIB_USEDEP}]
 		)
 		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
 	)
