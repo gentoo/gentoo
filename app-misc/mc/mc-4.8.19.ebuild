@@ -18,8 +18,6 @@ IUSE="+edit gpm mclib nls samba sftp +slang spell test X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
 
-RESTRICT=test # fails rar test
-
 RDEPEND=">=dev-libs/glib-2.26.0:2
 	gpm? ( sys-libs/gpm )
 	kernel_linux? ( sys-fs/e2fsprogs )
@@ -50,6 +48,10 @@ src_prepare() {
 	[[ -n ${LIVE_EBUILD} ]] && ./autogen.sh
 
 	default
+
+	# These tests fail, so disable them instead of disabling the entire
+	# test suite. Please check on each bump if this is still necessary.
+	rm tests/src/vfs/extfs/helpers-list/data/{u7z,urar}.* || die
 
 	eautoreconf
 }
