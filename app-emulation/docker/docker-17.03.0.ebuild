@@ -12,7 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	MY_PV="${PV/_/-}"
-	DOCKER_GITCOMMIT="092cba3"
+	DOCKER_GITCOMMIT="60ccb22"
 	EGIT_COMMIT="v${MY_PV}-ce"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
