@@ -9345,7 +9345,7 @@ dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes 
 dev-ruby/hashdiff 0.3.0 0.3.1 0.3.2: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4-r1: Internal HashiCorp service to check version information
-dev-ruby/hashie 2.1.2-r1 3.4.6 3.5.1: Hashie is a small collection of tools that make hashes more powerful
+dev-ruby/hashie 2.1.2-r1 3.4.6 3.5.1 3.5.5: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.6 3.1.2 3.2.0 3.2.1 3.2.2 3.3.0: A simple pluggable Hierarchical Database
@@ -9677,7 +9677,7 @@ dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6: Official Ruby-
 dev-ruby/sawyer 0.7.0 0.7.0-r1 0.8.0 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.6: Advanced seed data handling for Rails
-dev-ruby/selenium-webdriver 2.53.4-r1 3.0.7 3.0.8 3.1.0 3.2.1: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.53.4-r1 3.0.7 3.0.8 3.1.0 3.2.1 3.2.2: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 0.1.3: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
