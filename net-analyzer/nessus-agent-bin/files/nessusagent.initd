@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	ebegin "Starting nessusagent"
+	start-stop-daemon --start --quiet --exec /opt/nessus_agent/sbin/nessus-service -- -D --quiet
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping nessusagent"
+	start-stop-daemon --stop --quiet --exec /opt/nessus_agent/sbin/nessus-service
+	einfo "Waiting for the environment to be sane"
+	while [ -n "$RUNNING" ] ; do
+		sleep 1
+		RUNNING=$(ps aux | grep -m 1 nessusd: | grep -v grep)
+	done
+	sleep 3
+	eend $?
+}
