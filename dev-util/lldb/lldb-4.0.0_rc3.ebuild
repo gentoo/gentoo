@@ -55,6 +55,13 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	# fix tests in stand-alone build
+	eapply "${FILESDIR}"/4.0.0/0001-test-Fix-finding-LLDB-tools-when-building-stand-alon.patch
+
+	eapply_user
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLLDB_DISABLE_CURSES=$(usex !ncurses)

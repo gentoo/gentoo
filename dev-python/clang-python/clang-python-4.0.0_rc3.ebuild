@@ -18,7 +18,7 @@ IUSE="test"
 # The module is opening libclang.so directly, and doing some blasphemy
 # on top of it.
 RDEPEND="
-	>=sys-devel/clang-${PV}
+	>=sys-devel/clang-${PV}:*
 	!sys-devel/llvm:0[clang(-),python(-)]
 	!sys-devel/clang:0[python(-)]
 	${PYTHON_DEPS}"

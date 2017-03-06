@@ -49,6 +49,13 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# fix atomic tests with gcc
+	eapply "${FILESDIR}"/4.0.0/0001-test-Try-to-link-latomic-to-provide-atomics-when-ava.patch
+
+	eapply_user
+}
+
 multilib_src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(

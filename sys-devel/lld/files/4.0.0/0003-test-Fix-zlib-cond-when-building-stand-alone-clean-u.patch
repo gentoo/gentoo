@@ -1,0 +1,82 @@
+From a7fe305520085cff8e4bec0110d323c4f1ccbcab Mon Sep 17 00:00:00 2001
+From: Michal Gorny <mgorny@gentoo.org>
+Date: Wed, 8 Feb 2017 20:08:29 +0000
+Subject: [PATCH 3/3] [test] Fix zlib cond when building stand-alone, clean up
+
+Fix the test zlib conditional to use LLVM_ENABLE_ZLIB value when
+building stand-alone. The HAVE_LIBZ is not available when performing
+a stand-alone build. Since the zlib support is a feature of
+the underlying LLVM library, it exports the actual status as the final
+value of LLVM_ENABLE_ZLIB in LLVMConfig.
+
+While at it, canonicalize the boolean value into 0/1 and remove unused
+CMake definitions (most likely copied from clang).
+
+Differential Revision: https://reviews.llvm.org/D29340
+
+git-svn-id: https://llvm.org/svn/llvm-project/lld/trunk@294508 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ test/CMakeLists.txt  | 19 ++++++++++++-------
+ test/lit.cfg         |  2 +-
+ test/lit.site.cfg.in |  2 +-
+ 3 files changed, 14 insertions(+), 9 deletions(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index ede92c13d..962274160 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -3,13 +3,18 @@ set(LLVM_BINARY_DIR "${LLVM_BINARY_DIR}")
+ set(LLVM_BUILD_MODE "%(build_mode)s")
+ set(LLVM_TOOLS_DIR "${LLVM_TOOLS_BINARY_DIR}/%(build_config)s")
+ set(LLVM_LIBS_DIR "${LLVM_BINARY_DIR}/lib${LLVM_LIBDIR_SUFFIX}/%(build_config)s")
+-set(CLANG_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
+-set(CLANG_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
+-if(BUILD_SHARED_LIBS)
+-  set(ENABLE_SHARED 1)
+-else()
+-  set(ENABLE_SHARED 0)
+-endif(BUILD_SHARED_LIBS)
++
++if(LLD_BUILT_STANDALONE)
++  # Set HAVE_LIBZ according to recorded LLVM_ENABLE_ZLIB value. This
++  # value is forced to 0 if zlib was not found, so it is fine to use it
++  # instead of HAVE_LIBZ (not recorded).
++  if(LLVM_ENABLE_ZLIB)
++    set(HAVE_LIBZ 1)
++  endif()
++endif()
++
++llvm_canonicalize_cmake_booleans(
++  HAVE_LIBZ)
+ 
+ configure_lit_site_cfg(
+   ${CMAKE_CURRENT_SOURCE_DIR}/lit.site.cfg.in
+diff --git a/test/lit.cfg b/test/lit.cfg
+index 8dff2fb4e..85469ff6f 100644
+--- a/test/lit.cfg
++++ b/test/lit.cfg
+@@ -202,7 +202,7 @@ if execute_external:
+     config.available_features.add('shell')
+ 
+ # zlib compression library
+-if config.have_zlib == "1":
++if config.have_zlib:
+     config.available_features.add("zlib")
+ 
+ # Running on Darwin OS
+diff --git a/test/lit.site.cfg.in b/test/lit.site.cfg.in
+index 9dcb48174..1fb8d3690 100644
+--- a/test/lit.site.cfg.in
++++ b/test/lit.site.cfg.in
+@@ -10,7 +10,7 @@ config.lld_libs_dir = "@LLVM_LIBRARY_OUTPUT_INTDIR@"
+ config.lld_tools_dir = "@LLVM_RUNTIME_OUTPUT_INTDIR@"
+ config.target_triple = "@TARGET_TRIPLE@"
+ config.python_executable = "@PYTHON_EXECUTABLE@"
+-config.have_zlib = "@HAVE_LIBZ@"
++config.have_zlib = @HAVE_LIBZ@
+ 
+ # Support substitution of the tools and libs dirs with user parameters. This is
+ # used when we can't determine the tool dir at configuration time.
+-- 
+2.12.0
+

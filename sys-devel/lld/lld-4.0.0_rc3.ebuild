@@ -26,9 +26,6 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P/_/}.src
 
-# TODO: fix test suite to build stand-alone
-RESTRICT="test"
-
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
@@ -47,6 +44,15 @@ src_unpack() {
 	if use test; then
 		mv llvm-* llvm || die
 	fi
+}
+
+src_prepare() {
+	# backport stand-alone build test fixes from master
+	eapply "${FILESDIR}/4.0.0/0001-cmake-Support-running-tests-in-stand-alone-builds.patch"
+	eapply "${FILESDIR}/4.0.0/0002-test-Use-LLD-specific-binary-library-dirs-when-build.patch"
+	eapply "${FILESDIR}/4.0.0/0003-test-Fix-zlib-cond-when-building-stand-alone-clean-u.patch"
+
+	eapply_user
 }
 
 src_configure() {

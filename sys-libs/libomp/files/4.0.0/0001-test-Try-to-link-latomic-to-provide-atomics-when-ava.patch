@@ -1,0 +1,94 @@
+From 7bd70635240f69fcd4da4d98a4aca8aaa779dd11 Mon Sep 17 00:00:00 2001
+From: Michal Gorny <mgorny@gentoo.org>
+Date: Fri, 24 Feb 2017 22:15:24 +0000
+Subject: [PATCH] [test] Try to link -latomic to provide atomics when available
+
+When using -rtlib=libgcc, the fallback implementation of __atomic_*
+builtins is provided via libatomic (included in GCC). However, neither
+GCC itself nor clang link libatomic implicitly, and it seems that GCC
+upstream expects projects to link it explicitly as necessary.
+
+Since compiler-rt provides __atomic_* builtins directly in the main
+library, check if they are provided by the default libraries first.
+If they are not, check if -latomic is available to provide them
+and add explicit -latomic for tests in this case.
+
+This fixes unresolved __atomic_load() references when running openmp
+tests on i386 with libgcc backend.
+
+Differential Revision: https://reviews.llvm.org/D30083
+
+git-svn-id: https://llvm.org/svn/llvm-project/openmp/trunk@296183 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ runtime/test/CMakeLists.txt  | 13 +++++++++++++
+ runtime/test/lit.cfg         |  2 ++
+ runtime/test/lit.site.cfg.in |  2 +-
+ 3 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/runtime/test/CMakeLists.txt b/runtime/test/CMakeLists.txt
+index 8162855..88c02c8 100644
+--- a/runtime/test/CMakeLists.txt
++++ b/runtime/test/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ # CMakeLists.txt file for unit testing OpenMP Library
+ include(FindPythonInterp)
+ include(CheckTypeSize)
++include(CheckFunctionExists)
+ include(CheckLibraryExists)
+ 
+ if(NOT PYTHONINTERP_FOUND)
+@@ -11,6 +12,17 @@ endif()
+ 
+ # Some tests use math functions
+ check_library_exists(m sqrt "" LIBOMP_HAVE_LIBM)
++# When using libgcc, -latomic may be needed for atomics
++# (but when using compiler-rt, the atomics will be built-in)
++# Note: we can not check for __atomic_load because clang treats it
++# as special built-in and that breaks CMake checks
++check_function_exists(__atomic_load_1 LIBOMP_HAVE_BUILTIN_ATOMIC)
++if(NOT LIBOMP_HAVE_BUILTIN_ATOMIC)
++  check_library_exists(atomic __atomic_load_1 "" LIBOMP_HAVE_LIBATOMIC)
++else()
++  # not needed
++  set(LIBOMP_HAVE_LIBATOMIC 0)
++endif()
+ 
+ macro(pythonize_bool var)
+   if (${var})
+@@ -25,6 +37,7 @@ pythonize_bool(LIBOMP_OMPT_SUPPORT)
+ pythonize_bool(LIBOMP_OMPT_BLAME)
+ pythonize_bool(LIBOMP_OMPT_TRACE)
+ pythonize_bool(LIBOMP_HAVE_LIBM)
++pythonize_bool(LIBOMP_HAVE_LIBATOMIC)
+ 
+ set(LIBOMP_TEST_CFLAGS "" CACHE STRING
+   "Extra compiler flags to send to the test compiler")
+diff --git a/runtime/test/lit.cfg b/runtime/test/lit.cfg
+index 7f18da4..bef61d4 100644
+--- a/runtime/test/lit.cfg
++++ b/runtime/test/lit.cfg
+@@ -52,6 +52,8 @@ config.test_cflags = config.test_openmp_flag + \
+ libs = ""
+ if config.has_libm:
+     libs += " -lm"
++if config.has_libatomic:
++    libs += " -latomic"
+ 
+ # Allow XFAIL to work
+ config.target_triple = [ ]
+diff --git a/runtime/test/lit.site.cfg.in b/runtime/test/lit.site.cfg.in
+index 448132e..b0d57ce 100644
+--- a/runtime/test/lit.site.cfg.in
++++ b/runtime/test/lit.site.cfg.in
+@@ -12,7 +12,7 @@ config.hwloc_library_dir = "@LIBOMP_HWLOC_LIBRARY_DIR@"
+ config.using_hwloc = @LIBOMP_USE_HWLOC@
+ config.has_ompt = @LIBOMP_OMPT_SUPPORT@ and @LIBOMP_OMPT_BLAME@ and @LIBOMP_OMPT_TRACE@
+ config.has_libm = @LIBOMP_HAVE_LIBM@
++config.has_libatomic = @LIBOMP_HAVE_LIBATOMIC@
+ 
+ # Let the main config do the real work.
+ lit_config.load_config(config, "@LIBOMP_BASE_DIR@/test/lit.cfg")
+-
+-- 
+2.12.0
+
