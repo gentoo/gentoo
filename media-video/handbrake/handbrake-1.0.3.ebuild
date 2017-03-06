@@ -38,6 +38,7 @@ RDEPEND="
 	media-libs/libtheora
 	media-libs/libvorbis
 	media-libs/libvpx
+	media-libs/opus
 	media-libs/x264:=
 	media-sound/lame
 	sys-libs/zlib
