@@ -27,6 +27,10 @@ RDEPEND="dev-libs/libwacom
 DEPEND="${RDEPEND}
 	x11-proto/randrproto"
 
+PATCHES=(
+	"${FILESDIR}/${P}-xorg-server-1.19-support.patch"
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 

@@ -1,0 +1,49 @@
+From f0dedf7a610ac97bc45738492b98ce4f1e0514ec Mon Sep 17 00:00:00 2001
+From: Jason Gerecke <killertofu@gmail.com>
+Date: Wed, 18 Jan 2017 09:00:10 -0800
+Subject: [PATCH] tests: Fix compilation under ABI 25 and greater
+
+The X server recently deprecated xf86BlockSIGIO and xf86UnblockSIGIO and
+simultaneously defined them inline within xf86.h. The new inline definition
+causes problems both because fake-symbols.c will end up redefining them,
+and because the function bodies reference a symbol that does not get included
+when building the tests. To fix these errors, update fake-symbols.c with
+updated include guards and a definition of the undefined symbols.
+
+Signed-off-by: Jason Gerecke <jason.gerecke@wacom.com>
+Reviewed-by: Peter Hutterer <peter.hutterer@who-t.net>
+---
+ test/fake-symbols.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/test/fake-symbols.c b/test/fake-symbols.c
+index 6f2c10a..e649fb9 100644
+--- a/test/fake-symbols.c
++++ b/test/fake-symbols.c
+@@ -493,6 +493,7 @@ void TimerFree(OsTimerPtr timer)
+ {
+ }
+ 
++#if GET_ABI_MAJOR(ABI_XINPUT_VERSION) < 24
+ int
+ xf86BlockSIGIO (void)
+ {
+@@ -503,6 +504,15 @@ void
+ xf86UnblockSIGIO (int wasset)
+ {
+ }
++#else
++void input_lock (void)
++{
++}
++
++void input_unlock (void)
++{
++}
++#endif
+ 
+ /* This is not the same as the X server one, but it'll do for the tests */
+ #if GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 14
+-- 
+2.10.2
+
