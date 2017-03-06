@@ -7,9 +7,11 @@ USE_RUBY="ruby21 ruby22"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
+RUBY_FAKEGEM_EXTRAINSTALL="assets"
+
 inherit bash-completion-r1 ruby-fakegem
 
-DESCRIPTION="Travis CI Client (CLI and Ruby library) "
+DESCRIPTION="Travis CI Client (CLI and Ruby library)"
 HOMEPAGE="https://github.com/travis-ci/travis.rb"
 
 LICENSE="MIT"
