@@ -110,6 +110,7 @@ python_prepare_all() {
 	if use doc; then
 		epatch "${FILESDIR}/buildbot-0.9.4.docs.patch"
 	fi
+	distutils-r1_python_prepare_all
 }
 
 src_compile() {
