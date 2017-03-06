@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MY_P=${P/g/G}
 
-inherit eutils qt4-r2
+inherit qmake-utils
 
-DESCRIPTION="QT-Frontend to load and convert gps tracks with gpsbabel"
+DESCRIPTION="Qt-Frontend to load and convert gps tracks with gpsbabel"
 HOMEPAGE="http://gebabbel.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}-Src.tar.gz"
 
@@ -24,21 +24,25 @@ RDEPEND="${DEPEND}
 	sci-geosciences/gpsbabel
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.3-gcc45.patch
-)
+DOCS=( CHANGELOG CREDITS )
+
+PATCHES=( "${FILESDIR}"/${PN}-0.3-gcc45.patch )
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	qt4-r2_src_prepare
+	default
 	# do not mess with cflags
 	sed \
 		-e "/QMAKE_CXXFLAGS/s:=.*$:= ${CXXFLAGS}:g" \
 		-i *.pro || die
 }
 
+src_configure() {
+	eqmake4 Gebabbel.pro
+}
+
 src_install() {
 	dobin bin/${PN}
-	dodoc CHANGELOG CREDITS
+	einstalldocs
 }

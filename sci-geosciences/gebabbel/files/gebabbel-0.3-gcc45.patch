@@ -2,8 +2,8 @@ Fixing build with gcc 4.5
 
 http://bugs.gentoo.org/show_bug.cgi?id=318579
 
---- src/MyMainWindow.cpp
-+++ src/MyMainWindow.cpp
+--- a/src/MyMainWindow.cpp
++++ b/src/MyMainWindow.cpp
 @@ -219,7 +219,7 @@
  
  		// Creating the toolbar
