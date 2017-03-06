@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/libinput-1.5.0:0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-d
 DESCRIPTION=X.org input driver based on libinput
 EAPI=5
 HOMEPAGE=https://www.x.org/wiki/
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MIT
 RDEPEND=>=dev-libs/libinput-1.5.0:0= x11-base/xorg-server:= x11-base/xorg-server[xorg]
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/driver/xf86-input-libinput-0.24.0.tar.bz2
 _eclass_exported_funcs=pkg_pretend:- pkg_postrm:xorg-2 pkg_postinst:xorg-2 pkg_setup:linux-info src_unpack:xorg-2 src_prepare:xorg-2 src_configure:xorg-2 src_compile:xorg-2 src_test:autotools-utils src_install:xorg-2
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	libtool	48b1b9f6194d2842456514d1184ca72e	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xorg-2	85b1e64779a3286b1224aef7dcfbca28
-_md5_=4dcd9c18cc3070b74ad008081c8fca83
+_md5_=991bd62b6c17bee67aee08f0952843b1
