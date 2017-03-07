@@ -1,5 +1,5 @@
---- adolclib.pc.in.orig	2014-05-21 09:09:10.060824555 -0700
-+++ adolclib.pc.in	2014-05-21 09:09:10.060824555 -0700
+--- a/adolclib.pc.in	2014-05-21 09:09:10.060824555 -0700
++++ b/adolclib.pc.in	2014-05-21 09:09:10.060824555 -0700
 @@ -7,5 +7,5 @@
  Version: @PACKAGE_VERSION@
  Description: Algorithmic Differentiation Library for C/C++
