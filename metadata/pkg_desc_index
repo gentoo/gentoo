@@ -533,7 +533,7 @@ app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.21 2.1.15 2.1.18 2.1.19 2.1.19-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.1.15 2.1.18 2.1.19-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.5: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -18215,8 +18215,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.7.0 51.0.1: Firefox Web Browser
 www-client/firefox-bin 45.7.0 51.0.1: Firefox Web Browser
 www-client/google-chrome 56.0.2924.87: The web browser from Google
-www-client/google-chrome-beta 57.0.2987.74: The web browser from Google
-www-client/google-chrome-unstable 58.0.3018.3: The web browser from Google
+www-client/google-chrome-beta 57.0.2987.88: The web browser from Google
+www-client/google-chrome-unstable 58.0.3026.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18266,7 +18266,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 24.0.0.221 24.0.0.221-r1: Adobe Flash Player
-www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.74_beta 58.0.3018.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 56.0.2924.87 57.0.2987.88_beta 58.0.3026.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
