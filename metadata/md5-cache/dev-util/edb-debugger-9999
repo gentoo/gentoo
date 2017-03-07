@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-libs/boost-1.35.0 virtual/pkgconfig >=dev-libs/capstone-3.0 graphviz? ( >=media-gfx/graphviz-2.38.0 ) dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 dev-qt/qtnetwork:5 dev-qt/qtconcurrent:5 dev-qt/qtgui:5 dev-qt/qtcore:5 sys-devel/make >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
+EAPI=6
+HOMEPAGE=https://github.com/eteran/edb-debugger
+IUSE=debug graphviz
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/capstone-3.0 graphviz? ( >=media-gfx/graphviz-2.38.0 ) dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 dev-qt/qtnetwork:5 dev-qt/qtconcurrent:5 dev-qt/qtgui:5 dev-qt/qtcore:5
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=4bb6910d419036554ef78dbc480f09c0

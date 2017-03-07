@@ -10174,7 +10174,7 @@ dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
-dev-util/edb-debugger 0.9.21: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
+dev-util/edb-debugger 0.9.21 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
 dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1: Cross platform application development framework based on web technologies
@@ -13945,7 +13945,7 @@ media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using 
 media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 4.6.1-r3: Java subtitle editor
-media-video/kaffeine 2.0.5 2.0.6: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.5 2.0.6 2.0.8: Media player with digital TV support by KDE
 media-video/kamerka 0.10: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.2 3.2.2: Application to take pictures and videos from your webcam by KDE
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
@@ -14514,7 +14514,7 @@ net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
 net-ftp/bareftp 0.3.12: Mono based file transfer client
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.12.0.2 3.14.1 3.24.0 3.24.1: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.12.0.2 3.14.1 3.24.0 3.24.1-r1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
@@ -18211,7 +18211,7 @@ www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.20.3 3.20.7 3.22.4: GNOME webbrowser based on Webkit
-www-client/fetch 1.0-r2: HTTP download tool built atop the HTTP fetcher library
+www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.7.0 51.0.1: Firefox Web Browser
 www-client/firefox-bin 45.7.0 51.0.1: Firefox Web Browser
 www-client/google-chrome 56.0.2924.87: The web browser from Google
