@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,8 +41,8 @@ IUSE="clang debug doc libcxx +system-llvm"
 REQUIRED_USE="libcxx? ( clang )"
 
 RDEPEND="libcxx? ( sys-libs/libcxx )
-	system-llvm? ( >=sys-devel/llvm-3.8.1-r2
-		<sys-devel/llvm-3.10.0 )
+	system-llvm? ( >=sys-devel/llvm-3.8.1-r2:0
+		<sys-devel/llvm-3.10.0:0 )
 "
 
 DEPEND="${RDEPEND}

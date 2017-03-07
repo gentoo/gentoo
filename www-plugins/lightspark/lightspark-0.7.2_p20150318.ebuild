@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,8 +20,8 @@ RDEPEND=">=dev-cpp/libxmlpp-2.33.1:2.6
 	media-libs/libpng
 	media-libs/libsdl
 	>=sys-devel/gcc-4.6.0[cxx]
-	<sys-devel/llvm-3.7
-	>=sys-devel/llvm-3.4
+	<sys-devel/llvm-3.7:0
+	>=sys-devel/llvm-3.4:0
 	x11-libs/cairo
 	x11-libs/gtk+:2
 	x11-libs/libX11
