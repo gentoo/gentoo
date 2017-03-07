@@ -1,0 +1,157 @@
+From 76381835be19da2f8f1fc501445e31d32e6d83e4 Mon Sep 17 00:00:00 2001
+From: Arvid Norberg <arvid.norberg@gmail.com>
+Date: Sun, 12 Feb 2017 21:05:22 -0500
+Subject: [PATCH] fix ABI compatibility issue introduced with preformatted
+ entry type (#1702)
+
+fix ABI compatibility issue introduced with preformatted entry type
+---
+ ChangeLog                              |  2 ++
+ bindings/python/src/create_torrent.cpp |  2 +-
+ include/libtorrent/create_torrent.hpp  |  6 ++++++
+ src/create_torrent.cpp                 | 31 ++++++++++++++++++++++++++++---
+ src/torrent.cpp                        | 11 ++++++++---
+ test/test_create_torrent.cpp           |  2 +-
+ 6 files changed, 46 insertions(+), 8 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index 9b501ce..9defe7c 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,5 @@
++	* fix ABI compatibility issue introduced with preformatted entry type
++
+ 1.0.11 release
+ 
+ 	* updating super seeding would include the torrent in state_update_alert
+diff --git a/bindings/python/src/create_torrent.cpp b/bindings/python/src/create_torrent.cpp
+index 55b6b51..31abb07 100644
+--- a/bindings/python/src/create_torrent.cpp
++++ b/bindings/python/src/create_torrent.cpp
+@@ -127,7 +127,7 @@ void bind_create_torrent()
+ 
+     class_<create_torrent>("create_torrent", no_init)
+         .def(init<file_storage&>())
+-        .def(init<torrent_info const&>(arg("ti")))
++        .def(init<torrent_info const&, int>((arg("ti"), arg("version") = LIBTORRENT_VERSION_NUM)))
+         .def(init<file_storage&, int, int, int>((arg("storage"), arg("piece_size") = 0
+             , arg("pad_file_limit") = -1, arg("flags") = int(libtorrent::create_torrent::optimize))))
+ 
+diff --git a/include/libtorrent/create_torrent.hpp b/include/libtorrent/create_torrent.hpp
+index 05dc6ca..d55e86a 100644
+--- a/include/libtorrent/create_torrent.hpp
++++ b/include/libtorrent/create_torrent.hpp
+@@ -42,6 +42,7 @@ POSSIBILITY OF SUCH DAMAGE.
+ #include "libtorrent/utf8.hpp"
+ #include "libtorrent/allocator.hpp"
+ #include "libtorrent/file.hpp" // for combine_path etc.
++#include "libtorrent/version.hpp"
+ 
+ #include <vector>
+ #include <string>
+@@ -171,9 +172,12 @@ namespace libtorrent
+ 		// ``alignment`` is used when pad files are enabled. This is the size
+ 		// eligible files are aligned to. The default is -1, which means the
+ 		// piece size of the torrent.
++		// The ``use_preformatted`` parameter can be set to true to preserve
++		// invalid encoding of the .torrent file.
+ 		create_torrent(file_storage& fs, int piece_size = 0
+ 			, int pad_file_limit = -1, int flags = optimize, int alignment = -1);
+ 		create_torrent(torrent_info const& ti);
++		create_torrent(torrent_info const& ti, bool use_preformatted);
+ 
+ 		// internal
+ 		~create_torrent();
+@@ -290,6 +294,8 @@ namespace libtorrent
+ 
+ 	private:
+ 
++		void load_from_torrent_info(torrent_info const& ti, bool const use_preformatted);
++
+ 		file_storage& m_files;
+ 		// if m_info_dict is initialized, it is 
+ 		// used instead of m_files to generate
+diff --git a/src/create_torrent.cpp b/src/create_torrent.cpp
+index df4c759..aab5574 100644
+--- a/src/create_torrent.cpp
++++ b/src/create_torrent.cpp
+@@ -330,6 +330,24 @@ namespace libtorrent
+ 		, m_include_symlinks(false)
+ 		, m_calculate_file_hashes(false)
+ 	{
++		load_from_torrent_info(ti, false);
++	}
++
++	create_torrent::create_torrent(torrent_info const& ti, bool const use_preformatted)
++		: m_files(const_cast<file_storage&>(ti.files()))
++		, m_creation_date(time(0))
++		, m_multifile(ti.num_files() > 1)
++		, m_private(ti.priv())
++		, m_merkle_torrent(ti.is_merkle_torrent())
++		, m_include_mtime(false)
++		, m_include_symlinks(false)
++		, m_calculate_file_hashes(false)
++	{
++		load_from_torrent_info(ti, use_preformatted);
++	}
++
++	void create_torrent::load_from_torrent_info(torrent_info const& ti, bool const use_preformatted)
++	{
+ 		TORRENT_ASSERT(ti.is_valid());
+ 		if (!ti.is_valid()) return;
+ 
+@@ -361,9 +379,16 @@ namespace libtorrent
+ 		m_piece_hash.resize(m_files.num_pieces());
+ 		for (int i = 0; i < num_pieces(); ++i) set_hash(i, ti.hash_for_piece(i));
+ 
+-		boost::shared_array<char> const info = ti.metadata();
+-		int const size = ti.metadata_size();
+-		m_info_dict.preformatted().assign(&info[0], &info[0] + size);
++		if (use_preformatted)
++		{
++			boost::shared_array<char> const info = ti.metadata();
++			int const size = ti.metadata_size();
++			m_info_dict.preformatted().assign(&info[0], &info[0] + size);
++		}
++		else
++		{
++			m_info_dict = bdecode(&ti.metadata()[0], &ti.metadata()[0] + ti.metadata_size());
++		}
+ 		m_info_hash = ti.info_hash();
+ 	}
+ 
+diff --git a/src/torrent.cpp b/src/torrent.cpp
+index 75f0cc7..ef05dfd 100644
+--- a/src/torrent.cpp
++++ b/src/torrent.cpp
+@@ -5601,9 +5601,14 @@ namespace libtorrent
+ 		{
+ 			if (m_magnet_link || (m_save_resume_flags & torrent_handle::save_info_dict))
+ 			{
+-				boost::shared_array<char> const info = torrent_file().metadata();
+-				int const size = torrent_file().metadata_size();
+-				ret["info"].preformatted().assign(&info[0], &info[0] + size);
++				ret["info"] = bdecode(&torrent_file().metadata()[0]
++					, &torrent_file().metadata()[0] + torrent_file().metadata_size());
++// TODO: re-enable this code once there's a non-inlined encoder function. Or
++// perhaps this should not be used until saving resume_data via
++// add_torrent_params and a free function, similar to read_resume_data
++//				boost::shared_array<char> const info = torrent_file().metadata();
++//				int const size = torrent_file().metadata_size();
++//				ret["info"].preformatted().assign(&info[0], &info[0] + size);
+ 			}
+ 		}
+ 
+diff --git a/test/test_create_torrent.cpp b/test/test_create_torrent.cpp
+index 0a87c08..33fd3e8 100644
+--- a/test/test_create_torrent.cpp
++++ b/test/test_create_torrent.cpp
+@@ -51,7 +51,7 @@ int test_main()
+ 
+ 	lt::torrent_info info(test_torrent, sizeof(test_torrent) - 1);
+ 
+-	lt::create_torrent t(info);
++	lt::create_torrent t(info, true);
+ 
+ 	std::vector<char> buffer;
+ 	lt::bencode(std::back_inserter(buffer), t.generate());
