@@ -1,6 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (07 Mar 2017)
+# Unmask clang runtimes that are supported on this arch.
+sys-devel/clang -default-compiler-rt
+sys-devel/clang-runtime -compiler-rt -openmp -sanitize
+sys-devel/llvm -default-compiler-rt
+sys-libs/libcxx -libcxxrt
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # Unkeyworded depedencies
 app-admin/rsyslog grok kafka mongodb normalize rabbitmq

@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (07 Mar 2017)
+# Unmask clang runtimes that are supported on this arch.
+sys-devel/clang -default-compiler-rt
+sys-devel/clang-runtime -compiler-rt -openmp -sanitize
+sys-devel/llvm -default-compiler-rt
+
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
 # dev-python/gmpy fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570

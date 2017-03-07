@@ -1,6 +1,15 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (07 Mar 2017)
+# Most of the clang runtime libraries can be built for a few
+# architectures only. Mask the relevant flags here and unmask in arch
+# profiles where they are supported.
+sys-devel/clang default-compiler-rt
+sys-devel/clang-runtime compiler-rt openmp sanitize
+sys-devel/llvm default-compiler-rt
+sys-libs/libcxx libcxxrt
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
 app-admin/rsyslog mdblookup
