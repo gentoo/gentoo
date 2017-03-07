@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Punycode encoding and decoding
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Net_IDNA2
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Net_IDNA2-0.2.0.tgz
+_eclass_exported_funcs=pkg_postrm:php-pear-r2 pkg_postinst:php-pear-r2 src_install:php-pear-r2
+_eclasses_=php-pear-r2	6566af3a3c4392595873a44415abe0ff
+_md5_=9e52d4b5add1d4dada0043aeb7c45d9b
