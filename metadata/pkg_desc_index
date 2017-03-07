@@ -495,7 +495,7 @@ app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.1.0 0.11.1 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
-app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
+app-crypt/aespipe 2.4d: Encrypts data from stdin to stdout
 app-crypt/af_alg 0_pre20120229 0.0.1: af_alg is an openssl crypto engine kernel interface thing
 app-crypt/argon2 20160821 20161029: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
@@ -536,7 +536,7 @@ app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a speci
 app-crypt/gnupg 1.4.21 2.1.15 2.1.18 2.1.19 2.1.19-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.5: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
-app-crypt/gpa 0.9.4 0.9.9 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
+app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
 app-crypt/gpgme 1.5.5 1.6.0 1.8.0-r2: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
