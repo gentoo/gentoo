@@ -11,14 +11,12 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="dev-libs/http-fetcher"
+RDEPEND="dev-libs/http-fetcher"
+DEPEND="${RDEPEND}"
+
+HTML_DOCS=( docs/fetch.html )
 
 src_prepare() {
 	default
 	sed -i -e "/^ld_rpath/d" configure || die "sed failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc -r docs/*.html README INSTALL
 }

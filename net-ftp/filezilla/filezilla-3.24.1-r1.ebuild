@@ -37,6 +37,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${PN}-${MY_PV}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.22.1-debug.patch
+	"${FILESDIR}"/${P}-desktop_entry.patch #466206
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if ! test-flag-CXX -std=c++14; then
@@ -49,7 +54,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.22.1-debug.patch
+	epatch "${PATCHES[@]}"
 	eautoreconf
 }
 

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <maintainer type="person">
-                <email>petross404@gmail.com</email>
-                <name>Petros S</name>
-                <description>Proxied Maintainer</description>
-        </maintainer>
-        <maintainer type="project">
-                <email>proxy-maint@gentoo.org</email>
-                <name>Proxy Maintainers</name>
-        </maintainer>
+	<maintainer type="person">
+		<email>petross404@gmail.com</email>
+		<name>Petros S</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 	<flag name="legacy-mem-write">Probe if writes to /proc/PID/mem are broken.</flag>
 	<flag name="graphviz">Add support for the Graphviz library</flag>
