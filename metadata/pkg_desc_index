@@ -10174,6 +10174,7 @@ dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
+dev-util/edb-debugger 0.9.21: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
 dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1: Cross platform application development framework based on web technologies
