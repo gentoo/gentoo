@@ -12,7 +12,7 @@ USE_PHP="php5-6 php7-0 php7-1"
 inherit php-ext-pecl-r3
 
 USE_PHP="php5-6"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DESCRIPTION="PHP extension for parsing RFC822 and RFC2045 (MIME) messages"
 LICENSE="PHP-2.02"
