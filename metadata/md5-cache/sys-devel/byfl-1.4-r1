@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure prepare
-DEPEND=>=sys-devel/clang-3.7.0 >=sys-devel/llvm-3.7.0 <sys-devel/llvm-3.8 sys-devel/binutils:* dev-lang/perl:= dev-perl/Switch hdf5? ( sci-libs/hdf5[cxx] ) sqlite? ( dev-db/sqlite:3 )
+DEPEND=>=sys-devel/clang-3.7.0:0 >=sys-devel/llvm-3.7.0:0 <sys-devel/llvm-3.8:0 sys-devel/binutils:* dev-lang/perl:= dev-perl/Switch hdf5? ( sci-libs/hdf5[cxx] ) sqlite? ( dev-db/sqlite:3 )
 DESCRIPTION=Compiler-based Application Analysis
 EAPI=6
 HOMEPAGE=https://github.com/lanl/Byfl
 IUSE=hdf5 static-libs sqlite
 KEYWORDS=~amd64 ~amd64-linux
 LICENSE=BSD
-RDEPEND=>=sys-devel/clang-3.7.0 >=sys-devel/llvm-3.7.0 <sys-devel/llvm-3.8 sys-devel/binutils:* dev-lang/perl:= dev-perl/Switch hdf5? ( sci-libs/hdf5[cxx] ) sqlite? ( dev-db/sqlite:3 )
+RDEPEND=>=sys-devel/clang-3.7.0:0 >=sys-devel/llvm-3.7.0:0 <sys-devel/llvm-3.8:0 sys-devel/binutils:* dev-lang/perl:= dev-perl/Switch hdf5? ( sci-libs/hdf5[cxx] ) sqlite? ( dev-db/sqlite:3 )
 SLOT=0
 SRC_URI=https://github.com/lanl/Byfl/releases/download/v1.4-llvm-3.7.0/byfl-1.4-llvm-3.7.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
-_md5_=4b2d5522684ea06c45b8efb88b5d6407
+_md5_=953e2648705d3b7ff705c87e9e511e6d
