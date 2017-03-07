@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
-inherit distutils-r1 eutils versionator
+inherit distutils-r1 versionator
 
 MY_P=libtorrent-rasterbar-${PV} # TODO: rename, bug 576126
 MY_PV=$(replace_all_version_separators _)
@@ -19,15 +19,14 @@ SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_
 
 LICENSE="BSD"
 SLOT="0/8"
-KEYWORDS="~amd64 arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="debug +dht doc examples +geoip libressl python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-libs/boost:=[threads]
 	virtual/libiconv
-	examples? ( !net-p2p/mldonkey )
 	geoip? ( dev-libs/geoip )
 	python? (
 		${PYTHON_DEPS}
@@ -38,16 +37,22 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:= )
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	sys-devel/libtool
+"
+RDEPEND="${COMMON_DEPEND}
+	examples? ( !net-p2p/mldonkey )
 "
 
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.9-test_torrent_parse.patch"
+	# RC_1_0 branch
+	"${FILESDIR}/${P}-fix-abicompat.patch"
+	"${FILESDIR}/${P}-move-header.patch"
 	# master branch
-	"${FILESDIR}/${PN}-1.0.11-fix-test_ssl.patch"
+	"${FILESDIR}/${P}-fix-test_ssl.patch"
 )
 
 src_prepare() {
@@ -110,5 +115,5 @@ src_install() {
 	}
 	use python && distutils-r1_src_install
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
