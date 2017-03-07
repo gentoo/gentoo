@@ -1,8 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
-EAPI="5"
+EAPI="6"
 SLOT="7"
 
 inherit check-reqs gnome2-utils java-pkg-2 java-vm-2 multiprocessing pax-utils prefix versionator virtualx
@@ -11,13 +12,13 @@ ICEDTEA_VER=$(get_version_component_range 2-4)
 ICEDTEA_BRANCH=$(get_version_component_range 2-3)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
-CORBA_TARBALL="9e002eaf26ed.tar.bz2"
-JAXP_TARBALL="3369fa5a875b.tar.bz2"
-JAXWS_TARBALL="26bcf28b3a60.tar.bz2"
-JDK_TARBALL="52225839bbea.tar.bz2"
-LANGTOOLS_TARBALL="545e512eb4de.tar.bz2"
-OPENJDK_TARBALL="653c2662034d.tar.bz2"
-HOTSPOT_TARBALL="223f6c442d49.tar.bz2"
+CORBA_TARBALL="737fd3fbf139.tar.bz2"
+JAXP_TARBALL="aa1c302a99fb.tar.bz2"
+JAXWS_TARBALL="ea96df8beff4.tar.bz2"
+JDK_TARBALL="ce87b1399385.tar.bz2"
+LANGTOOLS_TARBALL="dd8e22d986c8.tar.bz2"
+OPENJDK_TARBALL="2dd04ef37829.tar.bz2"
+HOTSPOT_TARBALL="9fc0d63c2a74.tar.bz2"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.gz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -54,7 +55,7 @@ SRC_URI="
 LICENSE="Apache-1.1 Apache-2.0 GPL-1 GPL-2 GPL-2-with-linking-exception LGPL-2 MPL-1.0 MPL-1.1 public-domain W3C"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt infinality
+IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt
 	jamvm javascript +jbootstrap kerberos libressl nsplugin nss pax_kernel
 	pulseaudio sctp selinux smartcard source +sunec test +webstart zero"
 
@@ -89,7 +90,7 @@ COMMON_DEP="
 	>=dev-libs/glib-2.26:2
 	>=dev-util/systemtap-1
 	media-libs/fontconfig
-	>=media-libs/freetype-2.5.3:2=[infinality?]
+	>=media-libs/freetype-2.5.3:2=
 	>=media-libs/lcms-2.5
 	>=sys-libs/zlib-1.2.3:=
 	virtual/jpeg:0=
@@ -187,15 +188,13 @@ src_unpack() {
 	unpack ${SRC_PKG}
 }
 
-java_prepare() {
+src_configure() {
 	# For bootstrap builds as the sandbox control file might not yet exist.
 	addpredict /proc/self/coredump_filter
 
 	# icedtea doesn't like some locales. #330433 #389717
 	export LANG="C" LC_ALL="C"
-}
 
-src_configure() {
 	local cacao_config config hotspot_port jamvm_config use_cacao use_jamvm use_zero zero_config
 	local vm=$(java-pkg_get-current-vm)
 
@@ -293,13 +292,13 @@ src_configure() {
 		--disable-downloading --disable-Werror --disable-tests \
 		--enable-system-lcms --enable-system-jpeg \
 		--enable-system-zlib --disable-systemtap-tests \
+		--enable-improved-font-rendering \
 		$(use_enable !headless-awt system-gif) \
 		$(use_enable !headless-awt system-png) \
 		$(use_enable !debug optimizations) \
 		$(use_enable cups system-cups) \
 		$(use_enable doc docs) \
 		$(use_enable gtk system-gtk) \
-		$(use_enable infinality) \
 		$(use_enable kerberos system-kerberos) \
 		$(use_enable nss) \
 		$(use_with pax_kernel pax "${EPREFIX}/usr/sbin/paxmark.sh") \
