@@ -5330,7 +5330,7 @@ dev-ml/topkg 0.8.1: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 113.33.03: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 113.33.00 113.33.03: Runtime types for OCaml (Extended)
-dev-ml/tyxml 4.0.1: A libary to build xml trees typechecked by OCaml
+dev-ml/tyxml 4.0.1 4.1.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.19.3: A new toplevel for OCaml with completion and colorization
