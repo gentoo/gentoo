@@ -30,7 +30,6 @@ DEPEND="
 PATCHES=(
 		"${FILESDIR}"/${PN}-3.0.20-autoconf-1.13.patch
 		"${FILESDIR}"/${PN}-3.0.20-tinfo.patch
-		"${FILESDIR}"/${PN}-4.0.0-headers.patch
 		"${FILESDIR}"/${PN}-4.0.0-no-examples.patch
 		"${FILESDIR}"/${PN}-4.0.0-with-numa.patch
 )
