@@ -17129,7 +17129,7 @@ sys-apps/which 2.21: Prints out location of specified executables that are in yo
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
-sys-apps/yarn 0.19.0 9999: Fast, reliable, and secure node dependency management
+sys-apps/yarn 0.21.3: Fast, reliable, and secure node dependency management
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
