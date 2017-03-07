@@ -21,6 +21,7 @@ PATCHES=(
 	"${FILESDIR}"/0003-makefile-fix-SONAME-symlink-it-should-not-be-a-full-.patch
 	"${FILESDIR}"/0004-makefile-add-CFLAGS-to-linking-command.patch
 	"${FILESDIR}"/0005-makefile-fix-install-rule-dependency.patch
+	"${FILESDIR}"/${PN}-2.6.2-darwin.patch
 )
 
 src_prepare() {
@@ -30,7 +31,7 @@ src_prepare() {
 }
 
 multilib_src_compile() {
-	emake CFLAGS_FAST="${CFLAGS}" library
+	emake PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" CFLAGS_FAST="${CFLAGS}" library
 	use static-libs && emake CFLAGS_FAST="${CFLAGS}" package
 }
 
