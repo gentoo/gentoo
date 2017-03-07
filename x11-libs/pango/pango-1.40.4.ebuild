@@ -40,7 +40,7 @@ src_prepare() {
 	default
 	# This should be updated if next release fails to pre-generate the manpage as well, or src_prepare removed if is properly generated
 	# https://bugzilla.gnome.org/show_bug.cgi?id=779704
-	cp -v "${FILESDIR}"/${PV}-pango-view.1.in "${S}/pango-view/pango-view.1.in"
+	cp -v "${FILESDIR}"/${PV}-pango-view.1.in "${S}/pango-view/pango-view.1.in" || die
 }
 
 multilib_src_configure() {
