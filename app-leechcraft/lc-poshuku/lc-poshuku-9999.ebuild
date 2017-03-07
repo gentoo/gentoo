@@ -43,8 +43,8 @@ src_configure() {
 		-DENABLE_POSHUKU_ONLINEBOOKMARKS=$(usex onlinebookmarks)
 		-DENABLE_POSHUKU_QRD=$(usex qrd)
 		-DENABLE_POSHUKU_SPEEDDIAL=$(usex speeddial)
-		-DENABLE_POSHUKU_WEBKITVIEW=$(usex webkitview)
-		-DENABLE_POSHUKU_WEBENGINEVIEW=$(usex webengineview)
+		-DENABLE_POSHUKU_WEBKITVIEW=$(usex webkit)
+		-DENABLE_POSHUKU_WEBENGINEVIEW=$(usex webengine)
 	)
 
 	cmake-utils_src_configure
