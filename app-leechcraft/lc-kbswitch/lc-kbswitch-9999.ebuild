@@ -3,13 +3,13 @@
 
 EAPI=6
 
-inherit leechcraft
+inherit eutils leechcraft
 
 DESCRIPTION="Provides plugin- or tab-grained keyboard layout control"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug quark"
+IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
 	dev-qt/qtnetwork:5
@@ -19,4 +19,9 @@ DEPEND="~app-leechcraft/lc-core-${PV}
 "
 RDEPEND="${DEPEND}
 	x11-apps/setxkbmap
-	quark? ( ~virtual/leechcraft-quark-sideprovider-${PV} )"
+	"
+
+pkg_postinst() {
+	elog "Consider installing the following for additional features:"
+	optfeature "display layout indicator in LeechCraft tray" virtual/leechcraft-quark-sideprovider
+}
