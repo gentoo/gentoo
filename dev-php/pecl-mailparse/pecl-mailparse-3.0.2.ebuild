@@ -16,7 +16,7 @@ inherit php-ext-pecl-r3
 # Only build for 7.x
 USE_PHP="php7-0 php7-1"
 
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DESCRIPTION="PHP extension for parsing and working with RFC822 and MIME compliant messages"
 LICENSE="PHP-3.01"
