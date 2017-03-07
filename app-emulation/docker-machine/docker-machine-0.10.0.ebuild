@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGO_PN=github.com/docker/machine/...
+EGO_PN=github.com/docker/machine
 
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
@@ -16,14 +16,14 @@ fi
 inherit golang-build
 
 DESCRIPTION="Machine management for a container-centric world"
-HOMEPAGE="https://docs.docker.com/machine/ "
+HOMEPAGE="https://docs.docker.com/machine/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 RESTRICT="test"
 DEPEND=">=dev-lang/go-1.7:="
 RDEPEND=""
-S=${WORKDIR}/${P}/src/${EGO_PN%/*}
+S=${WORKDIR}/${P}/src/${EGO_PN}
 
 src_prepare() {
 	eapply_user
