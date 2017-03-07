@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-apps/sed cpu_flags_x86_mmx? ( dev-lang/yasm )
+DESCRIPTION=Monkey's Audio Codecs
+EAPI=6
+HOMEPAGE=http://etree.org/shnutils/shntool/
+IUSE=cpu_flags_x86_mmx static-libs
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86
+LICENSE=mac
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://etree.org/shnutils/shntool/support/formats/ape/unix/3.99-u4-b5-s7/mac-3.99-u4-b5-s7.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=72e1418c3300ceb53699b1f602cc64ea

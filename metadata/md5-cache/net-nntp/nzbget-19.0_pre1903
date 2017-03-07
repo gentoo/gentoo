@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses:0= ) ssl? ( gnutls? ( net-libs/gnutls:= dev-libs/nettle:= ) !gnutls? ( dev-libs/openssl:0= ) ) zlib? ( sys-libs/zlib )
 SLOT=0
-SRC_URI=https://github.com/nzbget/nzbget/releases/download/v18.0-r1820/nzbget-18.0-testing-r1820-src.tar.gz -> nzbget-18.0_pre1820.tar.gz
+SRC_URI=https://github.com/nzbget/nzbget/releases/download/v19.0-r1903/nzbget-19.0-testing-r1903-src.tar.gz -> nzbget-19.0_pre1903.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=ea9ef354262a4d0e26ee8461f0273a35
+_md5_=1e9ede91c29c96835ea07979479f62bf
