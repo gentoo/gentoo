@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,8 +77,6 @@ src_configure() {
 		--with-tlslib=$(usex gnutls GnuTLS OpenSSL)
 }
 
-# Tests fail with USE=-ssl
-# https://github.com/nzbget/nzbget/issues/303
 src_test() {
 	./nzbget --tests || die "Tests failed"
 }

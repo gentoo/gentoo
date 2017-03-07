@@ -1,12 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Opensource software rhythm station"
 HOMEPAGE="http://gmorgan.sourceforge.net/"
@@ -22,11 +19,25 @@ RDEPEND="media-libs/alsa-lib
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-DOCS=(AUTHORS ChangeLog NEWS README)
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-gettext-version-check.patch
+	"${FILESDIR}"/${P}-manpages.patch
+	"${FILESDIR}"/${P}-remove-dirs.patch
+	"${FILESDIR}"/${P}-remove-old-docs.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
-PATCHES=( "${FILESDIR}/${P}-cxxflags.patch" )
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
 		$(use_enable nls)
+}
+
+src_install() {
+	default
+	doman man/${PN}.1
 }
