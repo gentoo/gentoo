@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils rpm
+inherit eutils pax-utils rpm
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
 HOMEPAGE="https://www.skype.com/"
@@ -96,16 +96,11 @@ src_install() {
 	domenu usr/share/applications/skypeforlinux.desktop
 
 	if use pax_kernel; then
-		paxctl -Cm "${ED%/}"/opt/skypeforlinux/skypeforlinux || die
+		pax-mark -Cm "${ED%/}"/opt/skypeforlinux/skypeforlinux
 		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
 		eqawarn "you suspect that ${PN} is being broken by this modification,"
 		eqawarn "please open a bug."
 	fi
-}
-
-pkg_postinst() {
-	einfo "See https://support.skype.com/en/faq/FA34656"
-	einfo "for more information about Skype for Linux Alpha."
 }
