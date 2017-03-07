@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
+		<email>chainsaw@gentoo.org</email>
+		<name>Tony Vroon</name>
 	</maintainer>
 	<longdescription lang="en">
 		bgpq3 allows to generate different config entries with prefix lists, useful for Cisco/Juniper routers and their software analogs, such as Quagga.
