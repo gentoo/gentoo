@@ -34,7 +34,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="5"
 KEYWORDS=""
-IUSE="debug +doc gold libedit +libffi multitarget ncurses test
+IUSE="debug +doc gold libedit +libffi ncurses test
 	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
@@ -65,8 +65,7 @@ PDEPEND="app-vim/llvm-vim
 	gold? ( sys-devel/llvmgold )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )
-	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+	|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
