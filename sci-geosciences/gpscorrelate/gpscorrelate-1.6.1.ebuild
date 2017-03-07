@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Tool for adjusting EXIF tags of your photos with a recorded GPS trace"
-HOMEPAGE="http://freefoote.dview.net/linux_gpscorr.html"
+HOMEPAGE="https://github.com/freefoote/gpscorrelate"
 SRC_URI="http://freefoote.dview.net/linux/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -24,9 +24,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.6.1-makefile.patch"
-}
+PATCHES=( "${FILESDIR}/${PN}-1.6.1-makefile.patch" )
 
 src_compile() {
 	tc-export CC CXX
