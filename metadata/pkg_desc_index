@@ -215,7 +215,7 @@ app-admin/sysstat 11.4.0 11.4.2 11.4.3 11.5.3 11.5.4 11.5.5: System performance 
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -6864,7 +6864,7 @@ dev-php/File_Iterator 1.3.1 1.3.4: FilterIterator implementation that filters fi
 dev-php/PEAR-Archive_Tar 1.4.2-r2: Tar file management class
 dev-php/PEAR-Auth 1.6.4: Provides methods for creating an authentication system using PHP
 dev-php/PEAR-Auth_HTTP 2.1.8: Create HTTP authentication systems similar to Apache's realm-based .htaccess mechanism
-dev-php/PEAR-Auth_SASL 1.0.6 1.0.6-r1: Abstraction of various SASL mechanism responses
+dev-php/PEAR-Auth_SASL 1.0.6 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Benchmark 1.2.9: Framework to benchmark PHP scripts or function calls
 dev-php/PEAR-Cache 1.5.6: Framework for caching of arbitrary data
 dev-php/PEAR-Cache_Lite 1.7.16 1.8.0: Fast and safe little cache system
