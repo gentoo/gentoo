@@ -16111,7 +16111,7 @@ sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the mana
 sci-geosciences/congen 1.6.2 1.6.2-r1: Generate the speeds, equilibrium arguments, and node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.0.0-r1 2.1.0: GDAL plugin to access GRASS data
-sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gpsbabel
+sci-geosciences/gebabbel 0.4: Qt-Frontend to load and convert gps tracks with gpsbabel
 sci-geosciences/geocode-glib 3.18.2 3.20.1: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
