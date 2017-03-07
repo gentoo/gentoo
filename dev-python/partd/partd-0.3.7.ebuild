@@ -26,8 +26,7 @@ DEPEND="${RDEPEND}
 	  dev-python/pytest[${PYTHON_USEDEP}]
 	  dev-python/pyzmq[${PYTHON_USEDEP}]
 	  dev-python/toolz[${PYTHON_USEDEP}]
-   )
-"
+	)"
 
 python_test() {
 	py.test partd --verbose || die
