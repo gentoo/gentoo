@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=C++ algorithms for specialized vertex coloring problems
+EAPI=6
+HOMEPAGE=http://cscapes.cs.purdue.edu/coloringpage/
+IUSE=openmp static-libs
+KEYWORDS=~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3 LGPL-3
+SLOT=0
+SRC_URI=https://github.com/CSCsw/ColPack/archive/v1.0.10.tar.gz -> colpack-1.0.10.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=fe5f5e4286b2f5bd9e2f8e8f0a8cf58f

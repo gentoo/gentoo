@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=doc? ( app-doc/doxygen[dot,latex] ) test? ( dev-libs/gmp:0 dev-libs/mpfr:0 media-libs/freeglut media-libs/glew sci-libs/adolc[sparse] sci-libs/cholmod sci-libs/fftw:3.0 sci-libs/pastix sci-libs/umfpack sci-libs/scotch sci-libs/spqr sci-libs/superlu dev-qt/qtcore:4 virtual/opengl virtual/pkgconfig cuda? ( dev-util/nvidia-cuda-toolkit ) ) sys-devel/make >=dev-util/cmake-3.6.3 test? ( virtual/fortran )
+DESCRIPTION=C++ template library for linear algebra
+EAPI=6
+HOMEPAGE=http://eigen.tuxfamily.org/
+IUSE=altivec c++11 cuda debug doc neon openmp test cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_f16c cpu_flags_x86_fma3 cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_ssse3
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=MPL-2.0
+RDEPEND=!dev-cpp/eigen:0
+SLOT=3
+SRC_URI=https://bitbucket.org/eigen/eigen/get/3.3.3.tar.bz2 -> eigen-3.3.3.tar.bz2
+_eclass_exported_funcs=pkg_setup:fortran-2 src_unpack:- src_prepare:- src_configure:cmake-utils src_compile:- src_test:- src_install:-
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	cuda	626969678b9c5735753d8a380c6f295b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	fortran-2	9773a6296d565bc8cf241891112a9705	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=2b979136f1e42a0b3f973bf8018b5116
