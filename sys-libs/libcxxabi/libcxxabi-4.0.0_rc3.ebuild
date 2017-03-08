@@ -18,7 +18,7 @@ SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="libunwind +static-libs test"
+IUSE="+libunwind +static-libs test"
 
 RDEPEND="
 	libunwind? (

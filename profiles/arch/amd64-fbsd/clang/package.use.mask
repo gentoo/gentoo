@@ -1,7 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Disable libcxxabi since it collides with forced libcxxrt
 # Build libcxxrt over libgcc_s since that is what clang defaults to.
+sys-libs/libcxx libcxxabi libunwind
 sys-libs/libcxxrt libunwind
 
 # Needs to be fixed: cxx useflag enables plugins and gold.

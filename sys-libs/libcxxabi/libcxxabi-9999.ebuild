@@ -19,7 +19,7 @@ EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="libunwind +static-libs test"
+IUSE="+libunwind +static-libs test"
 
 RDEPEND="
 	libunwind? (

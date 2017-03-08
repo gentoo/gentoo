@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ if [ "${PV%9999}" = "${PV}" ] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="libunwind +static-libs"
+IUSE="+libunwind +static-libs"
 
 RDEPEND="libunwind? ( || ( >=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
 		sys-libs/llvm-libunwind[static-libs?,${MULTILIB_USEDEP}] ) )"
