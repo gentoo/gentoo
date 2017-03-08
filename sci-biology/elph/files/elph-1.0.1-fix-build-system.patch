@@ -1,0 +1,55 @@
+Make build system respect user variables
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,42 +1,26 @@
+-CLASSDIR := .
+-
+-# Directories to search for header files
+-SEARCHDIRS := -I- -I${CLASSDIR}
+-
+-
+-SYSTYPE :=     $(shell uname)
+-
+-# C compiler
+-
+-CC      := g++
+-CFLAGS  = -Wall ${SEARCHDIRS} -fno-exceptions -fno-rtti -D_REENTRANT -g
++my_CPPFLAGS = -D_REENTRANT -I.
+ 
+ %.o : %.c
+-	${CC} ${CFLAGS} -c $< -o $@
++	$(CC) -Wall $(CFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ %.o : %.cc
+-	${CC} ${CFLAGS} -c $< -o $@
++	$(CXX) -Wall $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ %.o : %.C
+-	${CC} ${CFLAGS} -c $< -o $@
++	$(CXX) -Wall $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ %.o : %.cpp
+-	${CC} ${CFLAGS} -c $< -o $@
++	$(CXX) -Wall $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ %.o : %.cxx
+-	${CC} ${CFLAGS} -c $< -o $@
++	$(CXX) -Wall $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ # C/C++ linker
+-
+-LINKER    := g++
+-LDFLAGS    =
+-LOADLIBES := 
+-
+ .PHONY : all
+ all:    elph
+ 
+-elph:  ./elph.o ${CLASSDIR}/motif.o ${CLASSDIR}/GBase.o ${CLASSDIR}/GString.o ${CLASSDIR}/GArgs.o
+-	${LINKER} ${LDFLAGS} -o $@ ${filter-out %.a %.so, $^} ${LOADLIBES}
++elph: elph.o motif.o GBase.o GString.o GArgs.o
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $@ $^
+ 
+ # target for removing all object files
+ 
