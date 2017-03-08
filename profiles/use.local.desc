@@ -2256,7 +2256,6 @@ dev-php/PEAR-HTTP_Request2:fileinfo - Force dev-lang/php to be compiled with fil
 dev-php/PEAR-HTTP_Request2:ssl - Force dev-lang/php to be compiled with ssl extension
 dev-php/PEAR-HTTP_Request2:zlib - Force dev-lang/php to be compiled with zlib extension
 dev-php/PEAR-PHP_Beautifier:cli - Require dev-lang/php to be built with the "cli" SAPI and install the php_beautifier script.
-dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php/ZendFramework:cli - Enables the CLI
 dev-php/ZendFramework:doc - Installs the documentation
 dev-php/ZendFramework:examples - Installs the examples

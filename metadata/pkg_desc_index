@@ -6970,7 +6970,6 @@ dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4: Various methods to check fil
 dev-php/PEAR-PHP_Beautifier 0.1.15-r2: Code Beautifier for PHP
 dev-php/PEAR-PHP_CompatInfo 1.9.0: Find out the minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
-dev-php/PEAR-PHP_Shell 0.3.2: A shell for PHP with history and tab-completion
 dev-php/PEAR-Pager 2.4.9 2.4.9-r1: Data paging class
 dev-php/PEAR-PhpDocumentor 1.4.3-r1: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/PEAR-SOAP 0.13.0: SOAP Client/Server for PHP 4
