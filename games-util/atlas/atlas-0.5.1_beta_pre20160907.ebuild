@@ -1,17 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils games
+inherit autotools eutils
 
-MY_PN=Atlas
-MY_PV=${PV/_p/.cvs}
+MY_PN=atlas-hgcode
+MY_PV=e183e3b3a0412b504edcb3664445b3e04fd484a2
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Chart Program to use with Flightgear Flight Simulator"
 HOMEPAGE="http://atlas.sourceforge.net/"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~reavertm/${MY_P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,12 +20,12 @@ IUSE=""
 
 COMMON_DEPEND="
 	media-libs/freeglut
-	media-libs/glew
-	>=media-libs/libpng-1.5
+	media-libs/glew:0
+	>=media-libs/libpng-1.5:0
 	net-misc/curl
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg
+	virtual/jpeg:*
 	virtual/opengl
 "
 DEPEND="${COMMON_DEPEND}
@@ -36,42 +36,27 @@ RDEPEND="${COMMON_DEPEND}
 	>=games-simulation/flightgear-3.0.0
 "
 
-S=${WORKDIR}/${MY_PN}
+S=${WORKDIR}/${MY_P}
+
+DOCS=(AUTHORS NEWS README)
 
 src_prepare() {
+	default_src_prepare
 	eautoreconf
 }
 
 src_configure() {
-	egamesconf \
-		--datadir="${GAMES_DATADIR}"/flightgear \
+	econf \
+		--datadir=/usr/share/flightgear \
 		--disable-dependency-tracking \
 		--enable-simgear-shared \
-		--with-fgbase="${GAMES_DATADIR}"/flightgear
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS NEWS README
-	prepgamesdirs
+		--with-fgbase=/usr/share/flightgear
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-	elog "You now can make the maps with the following commands:"
-	elog "${GAMES_BINDIR}/Map --atlas=${GAMES_DATADIR}/flightgear/Atlas"
-	elog
 	elog "To run Atlas concurrently with FlightGear use the following:"
 	elog "Atlas --path=[path of map images] --udp=[port number]"
 	elog "and start fgfs with the following switch (or in .fgfsrc):"
 	elog "--nmea=socket,out,0.5,[host that you run Atlas on],[port number],udp"
-	echo
-}
-
-pkg_postrm() {
-	elog "You must manually remove the maps if you don't want them around."
-	elog "They are found in the following directory:"
-	echo
-	elog "${GAMES_DATADIR}/flightgear/Atlas"
 	echo
 }

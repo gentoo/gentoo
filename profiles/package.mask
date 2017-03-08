@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Mrozowski <reavertm@gmail.com> (08 Mar 2017)
+# Fails to build against simgear, with recent compilers, bug 611980
+games-util/atlas
+
 # Matt Turner <mattst88@gentoo.org> (05 Mar 2017)
 # Part of dev-util/hxtools (and collides with it)
 # Removal in 30 days. Bug #445436
