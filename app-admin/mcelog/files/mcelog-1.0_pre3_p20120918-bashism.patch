@@ -2,8 +2,8 @@ From: Julian Ospald <hasufell@gentoo.org>
 Date: Sat Jan 26 17:40:22 UTC 2013
 Subject: remove bashisms
 
---- triggers/cache-error-trigger
-+++ triggers/cache-error-trigger
+--- a/triggers/cache-error-trigger
++++ b/triggers/cache-error-trigger
 @@ -1,4 +1,4 @@
 -#!/bin/bash
 +#!/bin/sh
