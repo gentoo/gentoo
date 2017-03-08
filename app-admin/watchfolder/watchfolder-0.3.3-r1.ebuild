@@ -22,7 +22,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-fortify-sources.patch
 )
 
-src_prepare() { 
+src_prepare() {
 	default
 	sed -i \
 		-e '/-c -o/s:OPT:CFLAGS:' \
@@ -36,7 +36,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin watchd 
+	dobin watchd
 	insinto /etc
 	doins watchd.conf
 	dodoc README doc/*
