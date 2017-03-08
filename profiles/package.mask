@@ -44,7 +44,7 @@
 >=dev-libs/gjs-1.47
 >=dev-libs/glib-2.51
 >=dev-cpp/glibmm-2.51
->=x11-themes/gnome-backgrounds-2.23
+>=x11-themes/gnome-backgrounds-3.23
 >=gnome-extra/gnome-boxes-3.23
 >=gnome-extra/gnome-calculator-3.23
 >=gnome-extra/gnome-calendar-3.23
