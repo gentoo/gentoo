@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic
 
 DESCRIPTION="protects hosts from brute force attacks against ssh"
 HOMEPAGE="http://sshguard.sourceforge.net/"
@@ -28,9 +27,8 @@ RDEPEND="
 
 DOCS=(
 	CHANGELOG.rst
+	CONTRIBUTING.rst
 	README.rst
-	doc/developers.rst
-	doc/setup.rst
 	examples/net.sshguard.plist
 	examples/sshguard.service
 	examples/whitelistfile.example

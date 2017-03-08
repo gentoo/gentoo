@@ -75,7 +75,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.72"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.74"
 # keep correct libdrm and dri2proto dep
 # keep blocks in rdepend for binpkg
 RDEPEND="
@@ -277,8 +277,9 @@ multilib_src_configure() {
 		gallium_enable video_cards_r600 r600
 		gallium_enable video_cards_radeonsi radeonsi
 		if ! use video_cards_r300 && \
-				! use video_cards_r600; then
-			gallium_enable video_cards_radeon r300 r600
+				! use video_cards_r600 && \
+				! use video_cards_radeonsi; then
+			gallium_enable video_cards_radeon r300 r600 radeonsi
 		fi
 
 		gallium_enable video_cards_freedreno freedreno
