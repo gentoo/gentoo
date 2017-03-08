@@ -1,23 +1,6 @@
- blat/makefile             |    2 +-
- gfClient/makefile         |    2 +-
- gfServer/makefile         |    2 +-
- hg/pslPretty/makefile     |    2 +-
- hg/pslReps/makefile       |    2 +-
- hg/pslSort/makefile       |    2 +-
- inc/common.mk             |   11 +++--------
- makefile                  |   28 ++++++++++++++--------------
- utils/faToNib/makefile    |    2 +-
- utils/faToTwoBit/makefile |    2 +-
- utils/nibFrag/makefile    |    2 +-
- utils/twoBitInfo/makefile |    2 +-
- utils/twoBitToFa/makefile |    2 +-
- 13 files changed, 28 insertions(+), 33 deletions(-)
-
-diff --git a/blat/makefile b/blat/makefile
-index b889c7b..739503a 100644
 --- a/blat/makefile
 +++ b/blat/makefile
-@@ -7,7 +7,7 @@ MYLIBS =  $(MYLIBDIR)/jkOwnLib.a $(MYLIBDIR)/jkweb.a
+@@ -7,7 +7,7 @@
  O = blat.o
  
  blat: $O $(MYLIBS)
@@ -26,22 +9,18 @@ index b889c7b..739503a 100644
  	${STRIP} ${BINDIR}/blat${EXE}
  
  all:
-diff --git a/gfClient/makefile b/gfClient/makefile
-index c3288de..36e957e 100644
 --- a/gfClient/makefile
 +++ b/gfClient/makefile
-@@ -8,5 +8,5 @@ O = gfClient.o
+@@ -8,5 +8,5 @@
  X = gfClient
  
  gfClient: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
 +	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
  	${STRIP} ${BINDIR}/$X${EXE}
-diff --git a/gfServer/makefile b/gfServer/makefile
-index c06b3a5..f042d22 100644
 --- a/gfServer/makefile
 +++ b/gfServer/makefile
-@@ -8,7 +8,7 @@ O = gfServer.o
+@@ -8,7 +8,7 @@
  X = gfServer
  
  gfServer: $O $(MYLIBS)
@@ -50,11 +29,9 @@ index c06b3a5..f042d22 100644
  	${STRIP} ${BINDIR}/$X${EXE}
  
  test:
-diff --git a/hg/pslPretty/makefile b/hg/pslPretty/makefile
-index c780b96..cbbcd0d 100644
 --- a/hg/pslPretty/makefile
 +++ b/hg/pslPretty/makefile
-@@ -8,7 +8,7 @@ MYLIBS =  $(MYLIBDIR)/jkweb.a
+@@ -8,7 +8,7 @@
  O = pslPretty.o
  
  pslPretty: $O $(MYLIBS)
@@ -63,11 +40,9 @@ index c780b96..cbbcd0d 100644
  
  test:: testRna testDnax
  
-diff --git a/hg/pslReps/makefile b/hg/pslReps/makefile
-index 6e8f6d7..2b73b60 100644
 --- a/hg/pslReps/makefile
 +++ b/hg/pslReps/makefile
-@@ -9,7 +9,7 @@ MYLIBS =  $(MYLIBDIR)/jkweb.a
+@@ -9,7 +9,7 @@
  O = pslReps.o 
  
  pslReps: $O $(MYLIBS)
@@ -76,11 +51,9 @@ index 6e8f6d7..2b73b60 100644
  
  lib:
  	cd ../../lib && ${MAKE}
-diff --git a/hg/pslSort/makefile b/hg/pslSort/makefile
-index 81fe083..eb63257 100644
 --- a/hg/pslSort/makefile
 +++ b/hg/pslSort/makefile
-@@ -8,7 +8,7 @@ MYLIBS =  $(MYLIBDIR)/jkweb.a
+@@ -8,7 +8,7 @@
  O = pslSort.o
  
  pslSort: $O $(MYLIBS)
@@ -89,8 +62,6 @@ index 81fe083..eb63257 100644
  
  
  lib:
-diff --git a/inc/common.mk b/inc/common.mk
-index 1823163..3a04e2b 100644
 --- a/inc/common.mk
 +++ b/inc/common.mk
 @@ -1,20 +1,15 @@
@@ -116,7 +87,7 @@ index 1823163..3a04e2b 100644
    endif
  endif
  # Apply the stronger checks to all code on our development machine:
-@@ -37,7 +32,7 @@ ifeq (${BINDIR},)
+@@ -37,7 +32,7 @@
  endif
  MKDIR=mkdir -p
  ifeq (${STRIP},)
@@ -125,8 +96,28 @@ index 1823163..3a04e2b 100644
  endif
  CVS=cvs
  
-diff --git a/makefile b/makefile
-index 6f9fddf..dded1cd 100644
+--- a/jkOwnLib/makefile
++++ b/jkOwnLib/makefile
+@@ -9,7 +9,7 @@
+ T = ../lib/$(MACHTYPE)/jkOwnLib.a
+ 
+ $(T): $(O) ../lib/$(MACHTYPE)
+-	ar rcus $(T) $(O)
++	$(AR) rcus $(T) $(O)
+ 
+ ../lib/$(MACHTYPE):
+ 	mkdir ../lib/$(MACHTYPE)
+--- a/lib/makefile
++++ b/lib/makefile
+@@ -32,7 +32,7 @@
+ 
+ 
+ $(MACHTYPE)/jkweb.a: $(O) $(MACHTYPE)
+-	ar rcus $(MACHTYPE)/jkweb.a $(O)
++	$(AR) rcus $(MACHTYPE)/jkweb.a $(O)
+ 
+ $(MACHTYPE):
+ 	mkdir $(MACHTYPE)
 --- a/makefile
 +++ b/makefile
 @@ -1,18 +1,18 @@
@@ -162,21 +153,17 @@ index 6f9fddf..dded1cd 100644
  
  clean:
  	rm -f */*.o */*/*.o
-diff --git a/utils/faToNib/makefile b/utils/faToNib/makefile
-index fd0e3eb..63a1593 100644
 --- a/utils/faToNib/makefile
 +++ b/utils/faToNib/makefile
-@@ -8,4 +8,4 @@ MYLIBS =  $(MYLIBDIR)/jkweb.a
+@@ -8,4 +8,4 @@
  O = faToNib.o
  
  faToNib: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/faToNib $O $(MYLIBS) $L
 +	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/faToNib $O $(MYLIBS) $L
-diff --git a/utils/faToTwoBit/makefile b/utils/faToTwoBit/makefile
-index b1b44a9..1e8c1c8 100644
 --- a/utils/faToTwoBit/makefile
 +++ b/utils/faToTwoBit/makefile
-@@ -7,7 +7,7 @@ MYLIBS =  ${MYLIBDIR}/jkweb.a
+@@ -7,7 +7,7 @@
  O = faToTwoBit.o
  
  faToTwoBit: $O ${MYLIBS}
@@ -185,11 +172,9 @@ index b1b44a9..1e8c1c8 100644
  	${STRIP} ${BINDIR}/faToTwoBit${EXE}
  
  clean:
-diff --git a/utils/nibFrag/makefile b/utils/nibFrag/makefile
-index 260a6f3..e37b9ab 100755
 --- a/utils/nibFrag/makefile
 +++ b/utils/nibFrag/makefile
-@@ -4,7 +4,7 @@ include ../../inc/common.mk
+@@ -4,7 +4,7 @@
  O = nibFrag.o 
  
  nibFrag: $(O)
@@ -198,11 +183,9 @@ index 260a6f3..e37b9ab 100755
  
  
  
-diff --git a/utils/twoBitInfo/makefile b/utils/twoBitInfo/makefile
-index 649784f..9434d1c 100644
 --- a/utils/twoBitInfo/makefile
 +++ b/utils/twoBitInfo/makefile
-@@ -7,7 +7,7 @@ MYLIBS =  ${MYLIBDIR}/jkweb.a
+@@ -7,7 +7,7 @@
  O = twoBitInfo.o
  
  twoBitInfo: $O ${MYLIBS}
@@ -211,11 +194,9 @@ index 649784f..9434d1c 100644
  	${STRIP} ${BINDIR}/twoBitInfo${EXE}
  
  clean:
-diff --git a/utils/twoBitToFa/makefile b/utils/twoBitToFa/makefile
-index cf979f2..081f3b8 100644
 --- a/utils/twoBitToFa/makefile
 +++ b/utils/twoBitToFa/makefile
-@@ -8,7 +8,7 @@ MYLIBS =  ${MYLIBDIR}/jkweb.a
+@@ -8,7 +8,7 @@
  O = twoBitToFa.o
  
  twoBitToFa: $O ${MYLIBS}
