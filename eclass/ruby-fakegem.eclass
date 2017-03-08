@@ -521,9 +521,8 @@ all_fakegem_install() {
 
 		if [[ -d "${bindir}" ]]; then
 			pushd "${bindir}" &>/dev/null || die
-			local binaries=$(eval ls ${RUBY_FAKEGEM_BINWRAP})
-			for binary in $binaries; do
-				ruby_fakegem_binwrapper $binary
+			for binary in ${RUBY_FAKEGEM_BINWRAP}; do
+				ruby_fakegem_binwrapper "${binary}"
 			done
 			popd &>/dev/null || die
 		fi

@@ -275,7 +275,7 @@ perl_check_env() {
 		errored=1
 
 		# Read ENV Value
-		eval "value=\$$i";
+		value=${!i};
 
 		# Print ENV name/value pair
 		if [ -n "${I_KNOW_WHAT_I_AM_DOING}" ]; then

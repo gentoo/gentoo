@@ -160,16 +160,12 @@ java-ant_bsfix() {
 
 	find_args="${find_args} -type f ( -name ${JAVA_PKG_BSFIX_NAME// / -o -name } )"
 
-	# This voodoo is done for paths with spaces
-	local bsfix_these
-	while read line; do
-		[[ -z ${line} ]] && continue
-		bsfix_these="${bsfix_these} '${line}'"
-	done <<-EOF
-			$(find . ${find_args})
-		EOF
+	local bsfix_these=() line
+	while IFS= read -r -d $'\0' line; do
+		bsfix_these+=( "${line}" )
+	done < <(find . ${find_args} -print0)
 
-	[[ "${bsfix_these// /}" ]] && eval java-ant_bsfix_files ${bsfix_these}
+	[[ "${bsfix_these[@]}" ]] && java-ant_bsfix_files "${bsfix_these[@]}"
 
 	popd > /dev/null || die
 }
@@ -227,7 +223,7 @@ java-ant_bsfix_files() {
 		eerror "Please file a bug about this on bugs.gentoo.org"
 		die "Could not find valid -source/-target values"
 	else
-		local files
+		local files=()
 
 		for file in "${@}"; do
 			debug-print "${FUNCNAME}: ${file}"
@@ -240,7 +236,7 @@ java-ant_bsfix_files() {
 				chmod u+w "${file}" || die "chmod u+w ${file} failed"
 			fi
 
-			files="${files} -f '${file}'"
+			files+=( -f "${file}" )
 		done
 
 		# for javadoc target and all in one pass, we need the new rewriter.
@@ -254,7 +250,7 @@ java-ant_bsfix_files() {
 		if [[ -x ${rewriter4} && ${JAVA_ANT_ENCODING} ]]; then
 			[[ ${JAVA_ANT_REWRITE_CLASSPATH} ]] && local gcp="-g"
 			[[ ${JAVA_ANT_ENCODING} ]] && local enc="-e ${JAVA_ANT_ENCODING}"
-			eval echo "cElementTree rewriter"
+			echo "cElementTree rewriter"
 			debug-print "${rewriter4} extra args: ${gcp} ${enc}"
 			${rewriter4} ${gcp} ${enc} \
 				-c "${JAVA_PKG_BSFIX_SOURCE_TAGS}" source ${want_source} \
@@ -262,31 +258,31 @@ java-ant_bsfix_files() {
 				"${@}" || die "build-xml-rewrite failed"
 		elif [[ ! -f ${rewriter3} ]]; then
 			debug-print "Using second generation rewriter"
-			eval echo "Rewriting source attributes"
-			eval xml-rewrite-2.py ${files} \
+			echo "Rewriting source attributes"
+			xml-rewrite-2.py "${files[@]}" \
 				-c -e ${JAVA_PKG_BSFIX_SOURCE_TAGS// / -e } \
 				-a source -v ${want_source} || _bsfix_die "xml-rewrite2 failed: ${file}"
 
-			eval echo "Rewriting target attributes"
-			eval xml-rewrite-2.py ${files} \
+			echo "Rewriting target attributes"
+			xml-rewrite-2.py "${files[@]}" \
 				-c -e ${JAVA_PKG_BSFIX_TARGET_TAGS// / -e } \
 				-a target -v ${want_target} || _bsfix_die "xml-rewrite2 failed: ${file}"
 
-			eval echo "Rewriting nowarn attributes"
-			eval xml-rewrite-2.py ${files} \
+			echo "Rewriting nowarn attributes"
+			xml-rewrite-2.py "${files[@]}" \
 				-c -e ${JAVA_PKG_BSFIX_TARGET_TAGS// / -e } \
 				-a nowarn -v yes || _bsfix_die "xml-rewrite2 failed: ${file}"
 
 			if [[ ${JAVA_ANT_REWRITE_CLASSPATH} ]]; then
-				eval echo "Adding gentoo.classpath to javac tasks"
-				eval xml-rewrite-2.py ${files} \
+				echo "Adding gentoo.classpath to javac tasks"
+				xml-rewrite-2.py "${files[@]}" \
 					 -c -e javac -e xjavac -a classpath -v \
 					 '\${gentoo.classpath}' \
 					 || _bsfix_die "xml-rewrite2 failed"
 			fi
 		else
 			debug-print "Using third generation rewriter"
-			eval echo "Rewriting attributes"
+			echo "Rewriting attributes"
 			local bsfix_extra_args=""
 			# WARNING KEEP THE ORDER, ESPECIALLY FOR CHANGED ATTRIBUTES!
 			if [[ -n ${JAVA_ANT_REWRITE_CLASSPATH} ]]; then
@@ -333,7 +329,7 @@ java-ant_bsfix_files() {
 
 			debug-print "bsfix_extra_args: ${bsfix_extra_args}"
 
-			eval ${rewriter3}  ${files} \
+			${rewriter3} "${files[@]}" \
 				-c --source-element ${JAVA_PKG_BSFIX_SOURCE_TAGS// / --source-element } \
 				--source-attribute source --source-value ${want_source} \
 				--target-element   ${JAVA_PKG_BSFIX_TARGET_TAGS// / --target-element }  \

@@ -29,6 +29,71 @@
 
 #--- END OF EXAMPLES ---
 
+# Gnome Team <gnome@gentoo.org> (08 Mar 2017)
+# GNOME 3.24 mask (#611270)
+>=x11-themes/adwaita-icon-theme-3.23
+>=app-accessibility/at-spi2-core-2.23
+>=dev-libs/atk-2.23
+>=dev-cpp/atkmm-2.25
+>=sys-apps/baobab-3.23
+>=media-gfx/eog-3.23
+>=www-client/epiphany-3.23
+>=gnome-extra/evolution-data-server-3.23
+>=gnome-base/gdm-3.23
+>=sci-geosciences/geocode-glib-3.23
+>=dev-libs/gjs-1.47
+>=dev-libs/glib-2.51
+>=dev-cpp/glibmm-2.51
+>=x11-themes/gnome-backgrounds-2.23
+>=gnome-extra/gnome-boxes-3.23
+>=gnome-extra/gnome-calculator-3.23
+>=gnome-extra/gnome-calendar-3.23
+>=gnome-extra/gnome-clocks-3.23
+>=gnome-base/gnome-control-center-3.23
+>=gnome-base/gnome-desktop-3.23
+>=sys-apps/gnome-disk-utility-3.23
+>=gnome-extra/gnome-logs-3.23
+>=sci-geosciences/gnome-maps-3.23
+>=net-libs/gnome-online-accounts-3.23
+>=media-gfx/gnome-photos-3.23
+>=gnome-base/gnome-session-3.23
+>=gnome-base/gnome-settings-daemon-3.23
+>=gnome-base/gnome-shell-3.23
+>=gnome-extra/gnome-shell-extensions-3.23
+>=gnome-extra/gnome-software-3.23
+>=gnome-extra/gnome-system-monitor-3.23
+>=x11-terms/gnome-terminal-3.23
+>=dev-libs/gobject-introspection-1.51
+>=gnome-base/gsettings-desktop-schemas-3.23
+>=app-text/gspell-1.3
+>=net-libs/gtk-vnc-0.7
+>=x11-libs/gtksourceview-3.23
+>=gnome-base/gvfs-1.31
+>=dev-libs/libgee-0.19
+>=gnome-base/libgtop-2.35
+>=net-libs/libsoup-2.57
+>=x11-wm/mutter-3.23
+>=gnome-base/nautilus-3.23
+>=app-accessibility/orca-3.23
+>=dev-cpp/pangomm-2.41
+>=media-video/totem-3.23
+>=app-misc/tracker-1.11
+>=dev-lang/vala-0.35
+>=x11-libs/vte-0.47
+>=gnome-base/dconf-editor-3.23
+>=dev-util/devhelp-3.23
+>=mail-client/evolution-3.23
+>=dev-vcs/gitg-3.23
+>=gnome-extra/gnome-builder-3.23
+>=games-board/gnome-mines-3.23
+>=media-sound/gnome-music-3.23
+>=games-arcade/gnome-nibbles-3.23
+>=games-puzzle/hitori-3.23
+>=games-puzzle/lightsoff-3.23
+>=net-irc/polari-3.23
+>=net-misc/rygel-0.33
+>=games-puzzle/swell-foop-3.23
+
 # Maciej Mrozowski <reavertm@gmail.com> (08 Mar 2017)
 # Fails to build against simgear, with recent compilers, bug 611980
 games-util/atlas

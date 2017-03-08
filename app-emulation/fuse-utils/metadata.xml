@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jmfo1982@yahoo.es</email>
-		<name>José Manuel Ferrer Ortiz</name>
-		<description>Proxied Maintainer. Please assign on bugs.</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> for low-level crypto of some
 		features, including logfiles.</flag>

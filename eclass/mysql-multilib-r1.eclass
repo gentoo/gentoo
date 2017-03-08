@@ -941,19 +941,19 @@ mysql-multilib-r1_pkg_config() {
         if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && version_is_at_least "5.7.6" ; then
 		# --initialize-insecure will not set root password
 		# --initialize would set a random one in the log which we don't need as we set it ourselves
-		cmd="${EROOT}usr/sbin/mysqld"
+		cmd=( "${EROOT}usr/sbin/mysqld" )
 		initialize_options="--initialize-insecure  '--init-file=${sqltmp}'"
 		sqltmp="" # the initialize will take care of it
 	else
-		cmd="${EROOT}usr/share/mysql/scripts/mysql_install_db"
-		[[ -f "${cmd}" ]] || cmd="${EROOT}usr/bin/mysql_install_db"
+		cmd=( "${EROOT}usr/share/mysql/scripts/mysql_install_db" )
+		[[ -f "${cmd}" ]] || cmd=( "${EROOT}usr/bin/mysql_install_db" )
 		if [[ -r "${help_tables}" ]] ; then
 			cat "${help_tables}" >> "${sqltmp}"
 		fi
 	fi
-	cmd="'$cmd' '--basedir=${EPREFIX}/usr' ${options} '--datadir=${ROOT}/${MY_DATADIR}' '--tmpdir=${ROOT}/${MYSQL_TMPDIR}' ${initialize_options}"
-	einfo "Command: $cmd"
-	eval $cmd \
+	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT}/${MY_DATADIR}" "--tmpdir=${ROOT}/${MYSQL_TMPDIR}" ${initialize_options} )
+	einfo "Command: ${cmd[*]}"
+	"${cmd[@]}" \
 		>"${TMPDIR}"/mysql_install_db.log 2>&1
 	if [ $? -ne 0 ]; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2
