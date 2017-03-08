@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=dev-cpp/glibmm-2.32.0 >=dev-cpp/gtkmm-2.16:2.4 >=dev-cpp/libgnomecanvasmm-2.26:2.6 dev-libs/boost:= >=dev-libs/glib-2.10.1:2 dev-libs/libsigc++:2 >=dev-libs/libxml2-2.6:2 dev-libs/libxslt >=gnome-base/libgnomecanvas-2 media-libs/alsa-lib media-libs/aubio media-libs/flac media-libs/freetype:2 media-libs/libart_lgpl media-libs/liblo >=media-libs/liblrdf-0.4.0-r20 >=media-libs/libsamplerate-0.1 >=media-libs/libsndfile-1.0.18 >=media-libs/libsoundtouch-1.6.0 media-libs/raptor:2 >=media-libs/rubberband-1.6.0 >=media-libs/taglib-1.7 media-libs/vamp-plugin-sdk net-misc/curl sys-libs/readline:0= sci-libs/fftw:3.0[threads] virtual/libusb:0 x11-libs/cairo >=x11-libs/gtk+-2.8.1:2 x11-libs/pango jack? ( virtual/jack ) >=media-libs/slv2-0.6.1 media-libs/lilv media-libs/sratom dev-libs/sord >=media-libs/suil-0.6.10 >=media-libs/lv2-1.4.0 || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) jack? ( >=media-sound/jack-audio-connection-kit-0.120 ) sys-devel/gettext virtual/pkgconfig doc? ( app-doc/doxygen[dot] )
+DESCRIPTION=Digital Audio Workstation
+EAPI=6
+HOMEPAGE=http://ardour.org/
+IUSE=altivec doc jack cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-cpp/glibmm-2.32.0 >=dev-cpp/gtkmm-2.16:2.4 >=dev-cpp/libgnomecanvasmm-2.26:2.6 dev-libs/boost:= >=dev-libs/glib-2.10.1:2 dev-libs/libsigc++:2 >=dev-libs/libxml2-2.6:2 dev-libs/libxslt >=gnome-base/libgnomecanvas-2 media-libs/alsa-lib media-libs/aubio media-libs/flac media-libs/freetype:2 media-libs/libart_lgpl media-libs/liblo >=media-libs/liblrdf-0.4.0-r20 >=media-libs/libsamplerate-0.1 >=media-libs/libsndfile-1.0.18 >=media-libs/libsoundtouch-1.6.0 media-libs/raptor:2 >=media-libs/rubberband-1.6.0 >=media-libs/taglib-1.7 media-libs/vamp-plugin-sdk net-misc/curl sys-libs/readline:0= sci-libs/fftw:3.0[threads] virtual/libusb:0 x11-libs/cairo >=x11-libs/gtk+-2.8.1:2 x11-libs/pango jack? ( virtual/jack ) >=media-libs/slv2-0.6.1 media-libs/lilv media-libs/sratom dev-libs/sord >=media-libs/suil-0.6.10 >=media-libs/lv2-1.4.0
+SLOT=5
+SRC_URI=mirror://gentoo/Ardour-5.8.0.tar.bz2 -> ardour-5.8.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:waf-utils src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=e9bb82b0f4ff13613427f75c83bc7340
