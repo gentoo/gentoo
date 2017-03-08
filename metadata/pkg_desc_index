@@ -197,7 +197,7 @@ app-admin/salt 2015.5.10 2015.8.13 2016.3.5 2016.11.2 9999: Salt is a remote exe
 app-admin/serf 0.8.0: Service orchestration and management tool
 app-admin/setools 3.3.8-r7 4.0.1 4.1.0 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
-app-admin/sshguard 1.7.1 1.99.0-r1: protects hosts from brute force attacks against ssh
+app-admin/sshguard 1.7.1 2.0.0: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.2-r1: GNU Stow is a symlink farm manager
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
 app-admin/sudo 1.8.18_p1 1.8.19_p2 9999: Allows users or groups to run commands as other users
