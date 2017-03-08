@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils eutils
 
 DESCRIPTION="edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg"
 HOMEPAGE="https://github.com/eteran/edb-debugger"
@@ -34,6 +34,13 @@ DEPEND="
 	${RDEPEND}"
 
 src_prepare(){
+	#Remove this in a future version; There won't be any edb48-logo.png
+	sed -i  '/edb48-logo/d' CMakeLists.txt || die
+
+	#Make the desktop's entries somewhat cuter
+	sed -i -e 's/GenericName=edb debugger/GenericName=Evan\x27s Debugger/' edb.desktop || die
+	sed -i -e 's/Comment=edb debugger/Comment=edb is a cross platform x86\/x86-64 debugger/' edb.desktop || die
+
 	if ! use graphviz; then
 		sed -i '/pkg_check_modules(GRAPHVIZ/d' CMakeLists.txt || die
 	fi
@@ -52,6 +59,12 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cd src/images/ || die
+	newicon "edb48-logo.png" "edb.png"
+	cmake-utils_src_install
 }
 
 pkg_postinst() {
