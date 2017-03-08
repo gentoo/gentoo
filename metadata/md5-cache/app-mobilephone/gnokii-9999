@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=!app-mobilephone/smstools bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) ical? ( dev-libs/libical:= ) pcsc-lite? ( sys-apps/pcsc-lite ) sms? ( dev-libs/glib:2 postgres? ( dev-db/postgresql:* ) mysql? ( virtual/mysql:= ) ) usb? ( virtual/libusb:0 ) X? ( x11-libs/gtk+:2 )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_unpack:git-r3 src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	libtool	48b1b9f6194d2842456514d1184ca72e	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	libtool	48b1b9f6194d2842456514d1184ca72e	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=13adbcd43d9e2a251be75be1e26b6020

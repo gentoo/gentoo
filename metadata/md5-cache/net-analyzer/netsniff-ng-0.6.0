@@ -9,5 +9,5 @@ RDEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu n
 SLOT=0
 SRC_URI=http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=a3348b5e5a26476121f5b55c863b2faa

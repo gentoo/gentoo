@@ -7,5 +7,5 @@ LICENSE=CC-BY-SA-3.0
 SLOT=0
 SRC_URI=https://github.com/ellelstone/elles_icc_profiles/archive/20160501-0932EST.tar.gz -> elles_icc_profiles-20160501.0932.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=49211fafcf2e7f20dd260b79ed1ce60b

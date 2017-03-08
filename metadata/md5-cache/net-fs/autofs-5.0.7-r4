@@ -11,5 +11,5 @@ REQUIRED_USE=sasl? ( ldap )
 SLOT=0
 SRC_URI=mirror://kernel/linux/daemons/autofs/v5/autofs-5.0.7.tar.bz2 https://dev.gentoo.org/~jlec/distfiles/autofs-5.0.7-patches-3.tar.lzma
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=158a62718868eed0bdf5955384ae1658

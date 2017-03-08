@@ -10,5 +10,5 @@ RDEPEND=dev-ml/bin-prot:= dev-ml/core_kernel:= dev-ml/fieldslib:= dev-ml/ppx_ass
 SLOT=0/113.33.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.33/files/bignum-113.33.00.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:oasis src_install:-
-_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	findlib	45d6030075064a68da8d7143726a1150	multilib	0236be304ee52e7f179ed2f337075515	oasis	66245953a092e9be817112a37f1c1301	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	findlib	45d6030075064a68da8d7143726a1150	multilib	0236be304ee52e7f179ed2f337075515	oasis	66245953a092e9be817112a37f1c1301	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=1fb9c570e65d08b9d4a36c97754ca269

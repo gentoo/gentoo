@@ -10,5 +10,5 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/larsenwork/monoid/archive/0.60.tar.gz -> monoid-0.60.tar.gz
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_compile:- src_install:font
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	font	82836641e7d4639329d8c195234ad0e3	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	font	82836641e7d4639329d8c195234ad0e3	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=53f713ef721292e2f3348d94dab372fd

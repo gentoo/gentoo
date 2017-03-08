@@ -7,5 +7,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://tsx-11.mit.edu/pub/linux/sources/sbin/setserial-2.17.tar.gz ftp://ftp.sunsite.org.uk/Mirrors/tsx-11.mit.edu/pub/linux/sources/sbin/setserial-2.17.tar.gz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=e6e39495150eb0d1f10f48180ccef1a9

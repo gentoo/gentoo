@@ -10,5 +10,5 @@ RDEPEND=dev-qt/qtquickcontrols:5 dev-qt/qtsvg:5 dev-qt/qtwebengine:5 mpv? ( medi
 SLOT=0
 SRC_URI=https://github.com/alamminsalo/orion/archive/1.4.0.tar.gz -> orion-1.4.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=f001a83fe47aa9237d06a9a656f5f61f

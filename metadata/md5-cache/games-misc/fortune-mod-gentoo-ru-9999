@@ -7,5 +7,5 @@ LICENSE=fairuse
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 _eclass_exported_funcs=src_unpack:mercurial src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	mercurial	4d80fb11f07e24cf9827196e4f45fd18	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	mercurial	4d80fb11f07e24cf9827196e4f45fd18	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=278a0ea8c622a3e12e6da02996375411

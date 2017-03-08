@@ -10,5 +10,5 @@ RDEPEND=sqlite? ( >=dev-db/sqlite-3 ) nls? ( virtual/libintl ) <app-shells/push-
 SLOT=0
 SRC_URI=https://github.com/vaeth/eix/releases/download/v0.31.7/eix-0.31.7.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	l10n	8f52d9ce1814aca2ed1a46920084ea66	multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	l10n	8f52d9ce1814aca2ed1a46920084ea66	multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=ef6fc15fa2d8834f5a92be53432d413c

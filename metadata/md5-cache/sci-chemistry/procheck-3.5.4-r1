@@ -11,5 +11,5 @@ RESTRICT=fetch
 SLOT=0
 SRC_URI=procheck-3.5.4.tar.gz procheck-3.5.4-README doc? ( procheck-3.5.4-manual.tar.gz )
 _eclass_exported_funcs=pkg_setup:fortran-2 src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	fortran-2	9773a6296d565bc8cf241891112a9705	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	fortran-2	9773a6296d565bc8cf241891112a9705	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=94aa35e4c713795afdc986d1e9c98780

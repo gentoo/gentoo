@@ -10,5 +10,5 @@ RDEPEND=async? ( >=dev-ml/async-112.24.00:= ) lwt? ( >=dev-ml/lwt-2.4.7:= dev-ml
 SLOT=0/0.19.0
 SRC_URI=https://github.com/mirage/ocaml-dns/archive/v0.19.0.tar.gz -> ocaml-dns-0.19.0.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:oasis src_test:oasis src_install:oasis
-_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	findlib	45d6030075064a68da8d7143726a1150	multilib	0236be304ee52e7f179ed2f337075515	oasis	66245953a092e9be817112a37f1c1301	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	findlib	45d6030075064a68da8d7143726a1150	multilib	0236be304ee52e7f179ed2f337075515	oasis	66245953a092e9be817112a37f1c1301	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=f92df7ce98b82615e8de40b02fc862a9

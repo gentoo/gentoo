@@ -11,5 +11,5 @@ RESTRICT=strip mirror
 SLOT=0
 SRC_URI=x86? ( https://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.243.1116-r0_i386.deb ) amd64? ( https://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.243.1116-r0_amd64.deb )
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	unpacker	76ddf385f3c212c12857bb8ec2a8bd35
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
 _md5_=e60f5a4536016f409b78b10b6c262f7a

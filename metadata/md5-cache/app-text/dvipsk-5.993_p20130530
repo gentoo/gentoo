@@ -10,5 +10,5 @@ RDEPEND=!<app-text/texlive-core-2010 !<dev-texlive/texlive-basic-2009 !app-text/
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20130530-source.tar.xz mirror://gentoo/texlive-module-dvips-2013.tar.xz doc? ( mirror://gentoo/texlive-module-dvips.doc-2013.tar.xz )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	texlive-common	f68a634c367f10b9fbb8fb02195ba411	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	texlive-common	f68a634c367f10b9fbb8fb02195ba411	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=157959d7c98163839c7c0f52734e063e

@@ -10,5 +10,5 @@ RDEPEND=net-libs/libpcap
 SLOT=0
 SRC_URI=http://www.metre.net/files/sancp-1.6.1.tar.gz http://sancp.sourceforge.net/sancp-1.6.1.fix200511.a.patch http://sancp.sourceforge.net/sancp-1.6.1.fix200511.b.patch http://sancp.sourceforge.net/sancp-1.6.1.fix200601.c.patch http://sancp.sourceforge.net/sancp-1.6.1.fix200606.d.patch
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=e49684a801af0885d6fc0631129edae9

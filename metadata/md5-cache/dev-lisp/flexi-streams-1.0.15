@@ -10,5 +10,5 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/edicl/flexi-streams/archive/v1.0.15.tar.gz -> flexi-streams-1.0.15.tar.gz
 _eclass_exported_funcs=src_compile:common-lisp-3 src_install:-
-_eclasses_=common-lisp-3	bd9283c567014f1b21a44c91a53f44ca	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=common-lisp-3	bd9283c567014f1b21a44c91a53f44ca	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=fd0aa54b98c84bdf16a59135c0ecc21f
