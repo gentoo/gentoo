@@ -1,0 +1,15 @@
+Remove version checks using pipdated.
+
+Patch by Marius Brehler <marbre@linux.sungazer.de>
+--- a/matplotlib2tikz/__init__.py
++++ b/matplotlib2tikz/__init__.py
+@@ -15,9 +15,3 @@ from matplotlib2tikz.__about__ import (
+         )
+ 
+ from matplotlib2tikz.save import save
+-
+-import pipdated
+-if pipdated.needs_checking('matplotlib2tikz'):
+-    msg = pipdated.check('matplotlib2tikz', __version__)
+-    if msg:
+-        print(msg)
