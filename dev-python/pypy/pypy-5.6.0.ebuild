@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,6 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
 inherit check-reqs eutils multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
 
+# note: remember to update this to newest dev-lang/python:2.7 on bump
 CPY_PATCHSET_VERSION="2.7.11-0"
 MY_P=pypy2-v${PV}
 
