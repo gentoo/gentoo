@@ -15803,7 +15803,7 @@ sci-biology/bioperl-network 1.6.9 9999-r1: Perl tools for bioinformatics - Analy
 sci-biology/bioperl-run 1.6.9 9999-r1: Perl wrapper modules for key bioinformatics applications
 sci-biology/biopython 1.68: Python modules for computational molecular biology
 sci-biology/bioruby 1.4.3.0001-r1 9999: An integrated environment for bioinformatics using the Ruby language
-sci-biology/biosql 1.0.1: A generic bioinformatics relational database model
+sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
 sci-biology/blat 34 34-r1: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/blossoc 1.4.0-r1: A linkage disequilibrium association mapping tool
 sci-biology/bowtie 1.1.2 1.1.2-r1 2.2.6 2.2.9: Popular short read aligner for Next-generation sequencing data
@@ -15819,7 +15819,7 @@ sci-biology/cutg 160-r1: Codon usage tables calculated from GenBank
 sci-biology/dialign-tx 1.0.2-r1: Greedy and progressive approaches for segment-based multiple sequence alignment
 sci-biology/dialign2 2.2.1: Multiple sequence alignment
 sci-biology/diya 1.0_rc4: Do It Yourself Annotation, tools & libraries for sequence assembly & annotation
-sci-biology/elph 0.1.5 1.0.1: Estimated Locations of Pattern Hits - Motif finder program
+sci-biology/elph 0.1.5 1.0.1 1.0.1-r1: Estimated Locations of Pattern Hits - Motif finder program
 sci-biology/embassy 6.6.0-r1: A meta-package for installing all EMBASSY packages (EMBOSS add-ons)
 sci-biology/embassy-cbstools 1.0.0.660: EMBOSS integrated version of Applications from the CBS group
 sci-biology/embassy-clustalomega 1.1.0.660: EMBOSS integrated version of Clustal Omega - Multiple Sequence Alignment
@@ -15887,7 +15887,7 @@ sci-biology/plink 1.07-r1 1.90_pre140514: Whole genome association analysis tool
 sci-biology/poa 2-r1: Fast multiple sequence alignments using partial-order graphs
 sci-biology/prank 140603: Probabilistic Alignment Kit
 sci-biology/primer3 2.3.5 2.3.6 2.3.7: Primer Design for PCR reactions
-sci-biology/prints 39.0: A protein motif fingerprint database
+sci-biology/prints 39.0-r1: A protein motif fingerprint database
 sci-biology/probcons 1.12-r1: Probabilistic Consistency-based Multiple Alignment of Amino Acid Sequences
 sci-biology/prodigal 2.6.3: Prokaryotic Dynamic Programming Genefinding Algorithm
 sci-biology/profphd 1.0.39 1.0.40: Secondary structure and solvent accessibility predictor
