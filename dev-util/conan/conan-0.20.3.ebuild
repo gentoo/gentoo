@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,9 +18,9 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
-	>=dev-python/boto-2.38[${PYTHON_USEDEP}]
 	>=dev-python/bottle-0.12.8[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.3[${PYTHON_USEDEP}]
+	>=dev-python/distro-1.0.2[${PYTHON_USEDEP}]
 	>=dev-python/fasteners-0.14.1[${PYTHON_USEDEP}]
 	>=dev-python/passlib-1.6.5[${PYTHON_USEDEP}]
 	>=dev-python/patch-1.16[${PYTHON_USEDEP}]
@@ -44,5 +44,6 @@ DEPEND="
 "
 
 python_test() {
-	PYTHONPATH=${BUILD_DIR}/lib nosetests -v || die
+	cd "${BUILD_DIR}"/lib || die
+	PYTHONPATH=. nosetests -v . || die
 }
