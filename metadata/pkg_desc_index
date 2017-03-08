@@ -5336,7 +5336,7 @@ dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.19.3: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.6: OCaml module implementing 128 bits universally unique identifiers
-dev-ml/uutf 1.0.0-r1: Non-blocking streaming Unicode codec for OCaml
+dev-ml/uutf 1.0.0-r1 1.0.1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 113.33.03: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/xmlm 1.2.0: Ocaml XML manipulation module
