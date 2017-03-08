@@ -432,4 +432,9 @@ pkg_preinst() {
 			rm -f "${symlink}" || die
 		fi
 	done
+
+	# some ancient installs still have boost cruft lying around
+	# for unknown reasons, causing havoc for reverse dependencies
+	# Bug: 607734
+	rm -rf "${EROOT%/}"/usr/include/boost-1_[3-5]? || die
 }
