@@ -1,5 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
 EAPI="6"
@@ -280,6 +281,13 @@ src_configure() {
 		config+=" --disable-ccache"
 	fi
 
+	# PaX breaks pch, bug #601016
+	if use pch && ! host-is-pax; then
+		config+=" --enable-precompiled-headers"
+	else
+		config+=" --disable-precompiled-headers"
+	fi
+
 	config+=" --with-parallel-jobs=$(makeopts_jobs)"
 
 	unset JAVA_HOME JDK_HOME CLASSPATH JAVAC JAVACFLAGS
@@ -310,7 +318,6 @@ src_configure() {
 		$(use_enable doc docs) \
 		$(use_enable kerberos system-kerberos) \
 		$(use_with pax_kernel pax "${EPREFIX}/usr/sbin/paxmark.sh") \
-		$(use_enable pch precompiled-headers) \
 		$(use_enable sctp system-sctp) \
 		$(use_enable smartcard system-pcsc) \
 		$(use_enable sunec) \
