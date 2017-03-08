@@ -56,7 +56,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/ce12af00283eb90d9281956524250d6e-xmlsec1-1.2.20.tar.gz" # modifies source code
+	"${ADDONS_URI}/86b1daaa438f5a7bea9a52d7b9799ac0-xmlsec1-1.2.23.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -83,7 +83,8 @@ $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+#KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -97,6 +98,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.1
 	>=app-text/libodfgen-0.1.0
+	app-text/libstaroffice
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
@@ -105,11 +107,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
 	dev-lang/perl
-	>=dev-libs/boost-1.55:=
+	dev-libs/boost:=
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
-	=dev-libs/liborcus-0.11*
+	>=dev-libs/liborcus-0.12.1
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
@@ -120,27 +122,28 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=media-libs/glew-1.10:=
-	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
+	media-libs/harfbuzz:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
 	>=media-libs/libpng-1.4:0=
 	>=media-libs/libvisio-0.1.0
+	media-libs/libzmf
 	net-libs/neon
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
-	virtual/jpeg:0
 	x11-libs/cairo[X,-xlib-xcb(-)]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	virtual/glu
+	virtual/jpeg:0
 	virtual/opengl
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
-	collada? ( >=media-libs/opencollada-1.2.2_p20150207 )
+	collada? ( media-libs/opencollada )
 	cups? ( net-print/cups )
 	dbus? ( dev-libs/dbus-glib )
 	eds? (
@@ -161,7 +164,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	gtk3? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
-		>=x11-libs/gtk+-3.8:3
+		x11-libs/gtk+:3
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
@@ -204,7 +207,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-1.2.0:1=
+	>=dev-util/mdds-1.2.2:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
@@ -239,11 +242,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(
-	# from master branch
-	"${FILESDIR}/${PN}-5.2-icu58.patch"
-
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-5.2-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
@@ -423,6 +423,7 @@ src_configure() {
 	fi
 
 	# system headers/libs/...: enforce using system packages
+	# --disable-breakpad: requires not-yet-in-tree dev-utils/breakpad
 	# --enable-cairo: ensure that cairo is always required
 	# --enable-graphite: disabling causes build breakages
 	# --enable-*-link: link to the library rather than just dlopen on runtime
@@ -447,13 +448,12 @@ src_configure() {
 		--enable-python=system \
 		--enable-randr \
 		--enable-release-build \
+		--disable-breakpad \
 		--disable-ccache \
-		--disable-crashdump \
 		--disable-dependency-tracking \
 		--disable-epm \
 		--disable-fetch-external \
 		--disable-gstreamer-0-10 \
-		--disable-hardlink-deliver \
 		--disable-online-update \
 		--disable-report-builder \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
@@ -472,7 +472,6 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
-		--without-sun-templates \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
