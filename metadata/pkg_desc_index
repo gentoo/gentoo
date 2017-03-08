@@ -8196,7 +8196,7 @@ dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 5.6.0 9999: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-bin 5.6.0: Pre-built version of PyPy
-dev-python/pypy3 5.5.0_alpha 9999: A fast, compliant alternative implementation of Python 3
+dev-python/pypy3 5.5.0_alpha 9999: A fast, compliant alternative implementation of the Python (3.3) language
 dev-python/pypy3-bin 5.5.0_alpha: A fast, compliant alternative implementation of Python 3.3 (binary package)
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.9.9 0.9.10 0.10.0: a pure-python graphics and GUI library built on PyQt/PySide and numpy
