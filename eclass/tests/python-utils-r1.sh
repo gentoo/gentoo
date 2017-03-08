@@ -167,8 +167,10 @@ test_is "_python_impl_supported python2_6" 1
 test_is "_python_impl_supported python2_7" 0
 test_is "_python_impl_supported python3_1" 1
 test_is "_python_impl_supported python3_2" 1
-test_is "_python_impl_supported python3_3" 0
+test_is "_python_impl_supported python3_3" 1
 test_is "_python_impl_supported python3_4" 0
+test_is "_python_impl_supported python3_5" 0
+test_is "_python_impl_supported python3_6" 0
 test_is "_python_impl_supported pypy1_8" 1
 test_is "_python_impl_supported pypy1_9" 1
 test_is "_python_impl_supported pypy2_0" 1
