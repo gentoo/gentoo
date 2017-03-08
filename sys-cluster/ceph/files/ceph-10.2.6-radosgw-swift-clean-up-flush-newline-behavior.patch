@@ -1,0 +1,92 @@
+From 39848e41b7c517cc5faab1ccf77c2804fd7d2628 Mon Sep 17 00:00:00 2001
+From: Marcus Watts <mwatts@redhat.com>
+Date: Wed, 11 Jan 2017 00:06:15 -0500
+Subject: [PATCH] radosgw/swift: clean up flush / newline behavior.
+
+The current code emits a newline after swift errors, but fails
+to account for it when it calculates 'content-length'.  This results in
+some clients (go github.com/ncw/swift) producing complaints about the
+unsolicited newline such as this,
+	Unsolicited response received on idle HTTP channel starting with "\n"; err=<nil>
+
+This logic eliminates the newline on flush.  This makes the content length
+calculation correct and eliminates the stray newline.
+
+There was already existing separator logic in the rgw plain formatter
+that can emit a newline at the correct point.  It had been checking
+"len" to decide if previous data had been emitted, but that's reset to 0
+by flush().  So, this logic adds a new per-instance variable to separately
+track state that it emitted a previous item (and should emit a newline).
+
+Fixes: http://tracker.ceph.com/issues/18473
+Signed-off-by: Marcus Watts <mwatts@redhat.com>
+Signed-off-by: Matt Benjamin <mbenjamin@redhat.com>
+(cherry picked from commit 5f229d6a33eae4906f22cdb90941835e47ee9f02)
+---
+ src/rgw/rgw_formats.cc | 11 +++++++----
+ src/rgw/rgw_formats.h  |  1 +
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/rgw/rgw_formats.cc b/src/rgw/rgw_formats.cc
+index 698ec96..61e9b66 100644
+--- a/src/rgw/rgw_formats.cc
++++ b/src/rgw/rgw_formats.cc
+@@ -25,6 +25,7 @@ RGWFormatter_Plain::RGWFormatter_Plain(const bool ukv)
+   : buf(NULL),
+     len(0),
+     max_len(0),
++    wrote_something(false),
+     min_stack_level(0),
+     use_kv(ukv)
+ {
+@@ -41,7 +42,7 @@ void RGWFormatter_Plain::flush(ostream& os)
+     return;
+ 
+   if (len) {
+-    os << buf << "\n";
++    os << buf;
+     os.flush();
+   }
+ 
+@@ -156,13 +157,14 @@ void RGWFormatter_Plain::dump_format_va(const char *name, const char *ns, bool q
+   vsnprintf(buf, LARGE_SIZE, fmt, ap);
+ 
+   const char *eol;
+-  if (len) {
++  if (wrote_something) {
+     if (use_kv && entry.is_array && entry.size > 1)
+       eol = ", ";
+     else
+       eol = "\n";
+   } else
+     eol = "";
++  wrote_something = true;
+ 
+   if (use_kv && !entry.is_array)
+     write_data("%s%s: %s", eol, name, buf);
+@@ -268,10 +270,11 @@ void RGWFormatter_Plain::dump_value_int(const char *name, const char *fmt, ...)
+   va_end(ap);
+ 
+   const char *eol;
+-  if (len)
++  if (wrote_something) {
+     eol = "\n";
+-  else
++  } else
+     eol = "";
++  wrote_something = true;
+ 
+   if (use_kv && !entry.is_array)
+     write_data("%s%s: %s", eol, name, buf);
+diff --git a/src/rgw/rgw_formats.h b/src/rgw/rgw_formats.h
+index 9df5251..1c5afd1 100644
+--- a/src/rgw/rgw_formats.h
++++ b/src/rgw/rgw_formats.h
+@@ -56,6 +56,7 @@ class RGWFormatter_Plain : public Formatter {
+   std::list<struct plain_stack_entry> stack;
+   size_t min_stack_level;
+   bool use_kv;
++  bool wrote_something;
+ };
+ 
+ class RGWFormatterFlusher {
