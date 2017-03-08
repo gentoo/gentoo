@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ fi
 DESCRIPTION="Accelerated Open Source driver for nVidia cards"
 HOMEPAGE="https://nouveau.freedesktop.org/"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/libdrm-2.4.60[video_cards_nouveau]

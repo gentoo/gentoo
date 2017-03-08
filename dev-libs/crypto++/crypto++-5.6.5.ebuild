@@ -11,7 +11,7 @@ SRC_URI="https://www.cryptopp.com/cryptopp${PV//.}.zip"
 
 LICENSE="Boost-1.0"
 SLOT="0/5.6" # subslot is so version
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86 ~x64-macos"
 IUSE="static-libs"
 
 DEPEND="app-arch/unzip"
