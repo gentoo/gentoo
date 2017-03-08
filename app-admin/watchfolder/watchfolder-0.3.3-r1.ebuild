@@ -1,29 +1,29 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Watches directories and processes files"
+DESCRIPTION="watches directories and processes files"
 HOMEPAGE="http://freshmeat.net/projects/watchd/"
 SRC_URI="http://dstunrea.sdf-eu.org/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
-IUSE=""
-DEPEND=""
 
 S="${WORKDIR}/${P/folder/d}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+PATCHES=(
 	# patch to remove warnings on 64 bit systems
-	epatch "${FILESDIR}"/${PV}-64bit.patch || die
+	"${FILESDIR}"/${PV}-64bit.patch
 	# and a gcc 4.3.3 / fortify_sources fix
-	epatch "${FILESDIR}"/${PV}-fortify-sources.patch || die
+	"${FILESDIR}"/${PV}-fortify-sources.patch
+)
 
+src_prepare() {
+	default
 	sed -i \
 		-e '/-c -o/s:OPT:CFLAGS:' \
 		-e 's:(\(LD\)\?OPT):(LDFLAGS) $(CFLAGS):' \
@@ -32,11 +32,11 @@ src_unpack() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin watchd || die "dobin failed"
+	dobin watchd
 	insinto /etc
 	doins watchd.conf
 	dodoc README doc/*
