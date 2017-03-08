@@ -1835,7 +1835,7 @@ app-misc/joy2key 1.6.3: An application that translates joystick events to keyboa
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r2: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0: A CalDAV based calendar
+app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
@@ -14689,9 +14689,9 @@ net-libs/gnome-online-accounts 3.20.5 3.22.3: GNOME framework for accessing onli
 net-libs/gnutls 3.3.26 3.3.27 3.5.9-r2 3.5.10: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
-net-libs/gssdp 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
+net-libs/gssdp 0.14.16 1.0.1: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.4 0.6.0: VNC viewer widget for GTK
-net-libs/gupnp 0.20.18: An object-oriented framework for creating UPnP devs and control points
+net-libs/gupnp 0.20.18 1.0.1: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
