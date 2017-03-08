@@ -1692,7 +1692,7 @@ app-misc/acdctl 1.1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
-app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36 2.0.41: A spaced-repetition memory training program (flash cards)
+app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36 2.0.41 2.0.43: A spaced-repetition memory training program (flash cards)
 app-misc/asciinema 1.3.0: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r1 5.40-r2 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
@@ -18447,7 +18447,7 @@ x11-drivers/xf86-video-newport 0.2.3 0.2.4: Newport video driver
 x11-drivers/xf86-video-nouveau 1.0.11 1.0.12 1.0.13: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.20-r1 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-omap 0.4.2 0.4.3 0.4.4 0.4.5: OMAP video driver
-x11-drivers/xf86-video-openchrome 0.3.3 0.4.0 0.5.0: X.Org driver for VIA/S3G cards
+x11-drivers/xf86-video-openchrome 0.3.3 0.4.0 0.5.0 0.6.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-opentegra 0.7.0: X.Org video driver for NVIDIA Tegra
 x11-drivers/xf86-video-qxl 0.1.3 0.1.4 0.1.4-r1 0.1.5: QEMU QXL paravirt video driver
 x11-drivers/xf86-video-r128 6.9.2 6.10.0 6.10.1 6.10.2: ATI Rage128 video driver
