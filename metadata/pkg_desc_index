@@ -10104,7 +10104,7 @@ dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.16.13 2.17.0 2.17.1: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.16.13 2.17.1 2.17.2: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
@@ -10450,7 +10450,7 @@ dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new
 dev-vcs/git-deps 9999: git commit dependency analysis tool
 dev-vcs/git-flow 1.10.2: Git extensions to provide high-level repository operations
 dev-vcs/git-imerge 0.7.0 0.7.0-r1: Incremental merge for git
-dev-vcs/git-lfs 1.5.6 2.0.0 9999: command line extension and specification for managing large files with Git
+dev-vcs/git-lfs 1.5.6 2.0.1 9999: command line extension and specification for managing large files with Git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20140223 20170131: Git merge driver for GNU style ChangeLog files
