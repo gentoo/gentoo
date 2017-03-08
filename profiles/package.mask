@@ -506,11 +506,6 @@ x11-drivers/ati-drivers
 =sys-libs/llvm-libunwind-4.0.0*
 >=dev-libs/libclc-0.2.0_pre20170118
 
-# Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
-# Use "php -a" instead. Masked for removal in 30 days.
-# Bug 606836.
-dev-php/PEAR-PHP_Shell
-
 # Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
 # Masked, Vulnerable due to RGW Denial of Service (bug #598206)
 # We mask it instead of removing them, due user may need them while
