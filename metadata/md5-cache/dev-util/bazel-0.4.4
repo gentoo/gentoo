@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install preinst prepare setup test
+DEPEND=virtual/jdk:1.8 app-arch/unzip >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=Fast and correct automated build system
+EAPI=6
+HOMEPAGE=http://bazel.io/
+IUSE=examples tools zsh-completion elibc_FreeBSD
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=virtual/jdk:1.8 >=dev-java/java-config-2.2.0-r3
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/bazelbuild/bazel/releases/download/0.4.4/bazel-0.4.4-dist.zip
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:- src_prepare:java-pkg-2 src_compile:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	eutils	3c847a0129fed780bd709b98e426f89c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ca1dda8497fe0e981b71356f1ca43f34
