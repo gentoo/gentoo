@@ -5,12 +5,10 @@ EAPI=6
 
 MULTIMEDIA_REQUIRED="always"
 KDE_HANDBOOK="optional"
-
 KDE_LINGUAS="ast be bg bs ca ca@valencia cs csb da de el en_GB eo es et eu fi fr
 ga gl he hi hne hr hu is it ja kk km ko ku lt lv mai mr ms nb nds nl nn oc pa pl
 pt pt_BR ro ru se sk sl sr sr@ijekavian sr@ijekavianlatin sr@latin sv th tr ug uk
 zh_CN zh_TW"
-
 inherit kde4-base
 
 DESCRIPTION="Full-featured burning and ripping application by KDE"
