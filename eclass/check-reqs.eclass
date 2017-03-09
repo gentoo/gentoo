@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -214,7 +214,7 @@ check-reqs_get_number() {
 # @FUNCTION: check-reqs_get_unit
 # @INTERNAL
 # @DESCRIPTION:
-# Internal function that return the unit without the numerical value.
+# Internal function that returns the unit without the numerical value.
 # Returns "GiB" for "1G" or "TiB" for "150T".
 check-reqs_get_unit() {
 	debug-print-function ${FUNCNAME} "$@"
