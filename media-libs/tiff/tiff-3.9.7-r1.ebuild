@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -9,7 +8,7 @@ EAPI=5
 inherit eutils libtool multilib multilib-minimal
 
 DESCRIPTION="Library for manipulation of TIFF (Tag Image File Format) images"
-HOMEPAGE="http://www.remotesensing.org/libtiff/"
+HOMEPAGE="http://libtiff.maptools.org"
 SRC_URI="ftp://ftp.remotesensing.org/pub/libtiff/${P}.tar.gz"
 
 LICENSE="libtiff"

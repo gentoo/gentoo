@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils git-2
+inherit cmake-utils git-r3
 
 EGIT_REPO_URI="git://github.com/openstreetmap/osm2pgsql.git"
 
@@ -21,10 +20,25 @@ DEPEND="
 	app-arch/bzip2
 	dev-db/postgresql:=
 	dev-libs/expat
-	dev-libs/boost
 	<sci-libs/geos-3.6.0
 	sci-libs/proj
 	sys-libs/zlib
 	lua? ( dev-lang/lua:= )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	dev-libs/boost
+"
+RDEPEND="${COMMON_DEPEND}
+	dev-db/postgis
+"
+
+# Tries to connect to local postgres server and other shenanigans
+RESTRICT="test"
+
+src_configure() {
+	local mycmakeargs=(
+		-DWITH_LUA=$(usex lua)
+		-DBUILD_TESTS=OFF
+	)
+	cmake-utils_src_configure
+}

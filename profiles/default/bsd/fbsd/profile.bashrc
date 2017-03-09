@@ -1,6 +1,5 @@
 #!/bin/bash
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
 type -P gmake  > /dev/null && alias make=gmake
 type -P gpatch > /dev/null && alias patch=gpatch

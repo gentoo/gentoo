@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/files/mongodb.initd-r2,v 1.2 2014/05/26 08:03:45 ultrabug Exp $
 
 config_file=${config_file:-/etc/amc/config/gunicorn_config.py}
 run_dir=${run_dir:-/run}

@@ -1,4 +1,3 @@
-# $Id$
 # PIDFILE is not yet used, pending upstream still
 #PIDFILE="/var/run/perlbal.pid"
 PERLBAL_OPTS="--daemon --config=/etc/perlbal/perlbal.conf"

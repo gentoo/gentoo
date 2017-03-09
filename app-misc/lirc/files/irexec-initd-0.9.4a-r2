@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 : ${IREXEC_USER:=root}
 

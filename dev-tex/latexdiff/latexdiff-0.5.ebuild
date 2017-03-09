@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Compare two latex files and mark up significant differences"
 HOMEPAGE="http://www.ctan.org/tex-archive/support/latexdiff/"

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -13,7 +12,7 @@ SRC_URI="https://github.com/systemd/python-systemd/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ppc ppc64 sparc x86"
 IUSE="test"
 
 COMMON_DEPEND="
@@ -25,6 +24,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!sys-apps/systemd[python(-)]
 "
+
+PATCHES=(
+	"${FILESDIR}"/233-xfail-bind.patch
+)
 
 python_test() {
 	pushd "${BUILD_DIR}/lib" > /dev/null || die

@@ -1,0 +1,43 @@
+Backport of:
+
+commit b8c8b94e9f642e52ca0cd1f8b125606b9ef13b78
+Author: Daniel Bünzli <daniel.buenzli@erratique.ch>
+Date:   Wed Feb 8 15:07:13 2017 +0100
+
+    Avoid name clash with next version of cmdliner.
+
+
+Index: opam-1.3.0/src/client/opamArg.ml
+===================================================================
+--- opam-1.3.0.orig/src/client/opamArg.ml
++++ opam-1.3.0/src/client/opamArg.ml
+@@ -436,9 +436,9 @@ let mk_flag ?section flags doc =
+   let doc = Arg.info ?docs:section ~doc flags in
+   Arg.(value & flag & doc)
+ 
+-let mk_opt ?section ?vopt flags value doc conv default =
++let mk_opt ?section ?vopt flags value doc kind default =
+   let doc = Arg.info ?docs:section ~docv:value ~doc flags in
+-  Arg.(value & opt ?vopt conv default & doc)
++  Arg.(value & opt ?vopt kind default & doc)
+ 
+ let mk_tristate_opt ?section flags value doc =
+   let doc = Arg.info ?docs:section ~docv:value ~doc flags in
+@@ -510,13 +510,13 @@ let term_info title ~doc ~man =
+   let man = man @ help_sections in
+   Term.info ~sdocs:global_option_section ~docs:"COMMANDS" ~doc ~man title
+ 
+-let arg_list name doc conv =
++let arg_list name doc kind =
+   let doc = Arg.info ~docv:name ~doc [] in
+-  Arg.(value & pos_all conv [] & doc)
++  Arg.(value & pos_all kind [] & doc)
+ 
+-let nonempty_arg_list name doc conv =
++let nonempty_arg_list name doc kind =
+   let doc = Arg.info ~docv:name ~doc [] in
+-  Arg.(non_empty & pos_all conv [] & doc)
++  Arg.(non_empty & pos_all kind [] & doc)
+ 
+ (* Common flags *)
+ let print_short_flag =

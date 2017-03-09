@@ -1,0 +1,13 @@
+Source https://github.com/percona/percona-toolkit/pull/84
+Adapted to current version
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,7 +1,7 @@
+ use ExtUtils::MakeMaker;
+
+ WriteMakefile(
+-    NAME      => 'percona-toolkit',
++    NAME      => 'Percona::Toolkit',
+     VERSION   => '2.2.20',
+     EXE_FILES => [ <bin/*> ],
+     MAN1PODS  => {

@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Id$
 
 # Hint: We don't use start-stop-daemon, because pidfile is the same
 # for every irattach instance. So it isn't reliable if we have more

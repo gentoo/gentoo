@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit eutils libtool multilib
@@ -69,7 +68,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	if has_version '>=media-video/ffmpeg-2.8' ; then
+	if has_version '>=media-video/ffmpeg-2.8' ||
+		has_version '>=media-video/libav-12'; then
 		PATCHES+=( "${FILESDIR}"/${P}-ffmpeg29.patch )
 	fi
 

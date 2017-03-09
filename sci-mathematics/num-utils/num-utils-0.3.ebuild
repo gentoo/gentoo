@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A set of programs for dealing with numbers from the command line"
 SRC_URI="http://suso.suso.org/programs/num-utils/downloads/${P}.tar.gz"

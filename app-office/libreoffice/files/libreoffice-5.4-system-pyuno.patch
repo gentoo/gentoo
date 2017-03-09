@@ -1,0 +1,42 @@
+--- a/desktop/scripts/soffice.sh	
++++ a/desktop/scripts/soffice.sh	
+@@ -147,6 +147,9 @@ if echo "$checks" | grep -q "cc" ; then
+     exit 1;
+ fi
+ 
++PYTHONPATH=$sd_prog${PYTHONPATH+:$PYTHONPATH}
++export PYTHONPATH
++
+ case "$(uname -s)" in
+ NetBSD|OpenBSD|DragonFly)
+ # this is a temporary hack until we can live with the default search paths
+--- a/pyuno/source/module/uno.py	
++++ a/pyuno/source/module/uno.py	
+@@ -16,11 +16,16 @@ 
+ #   except in compliance with the License. You may obtain a copy of
+ #   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+ #
++import os
+ import pyuno
+ import sys
+ import traceback
+ import warnings
+ 
++sys.path.append('%eprefix%/usr/%libdir%/libreoffice/program')
++if getattr(os.environ, 'URE_BOOTSTRAP', None) is None:
++    os.environ['URE_BOOTSTRAP'] = "vnd.sun.star.pathname:%eprefix%/usr/%libdir%/libreoffice/program/fundamentalrc"
++
+ # since on Windows sal3.dll no longer calls WSAStartup
+ import socket
+ 
+--- a/pyuno/source/officehelper.py	
++++ a/pyuno/source/officehelper.py	
+@@ -45,7 +45,7 @@ def bootstrap():
+         if "UNO_PATH" in os.environ:
+             sOffice = os.environ["UNO_PATH"]
+         else:
+-            sOffice = "" # lets hope for the best
++            sOffice = "%eprefix%/usr/%libdir%/libreoffice/program"
+         sOffice = os.path.join(sOffice, "soffice")
+         if platform.startswith("win"):
+             sOffice += ".exe"

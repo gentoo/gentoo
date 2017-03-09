@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -124,6 +123,7 @@ src_prepare() {
 		|| die "unable to sed ctags.1"
 
 	AT_M4DIR=m4 eautoreconf
+	touch src/stamp-h.in || die
 }
 
 src_configure() {

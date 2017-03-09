@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -14,7 +13,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -25,11 +24,6 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-src_prepare() {
-	cp "${FILESDIR}/${P}" "${PN}" || die
-	default
-}
-
 src_install() {
-	python_doscript "${WORKDIR}/${PN}"
+	python_newscript "${FILESDIR}/${P}" "${PN}"
 }

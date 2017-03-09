@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="a program that can sit between a serial port and an application"
 HOMEPAGE="http://www.suspectclass.com/~sgifford/interceptty/"

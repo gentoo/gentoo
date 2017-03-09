@@ -1,7 +1,6 @@
 #!/bin/bash
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 if ! source /lib/gentoo/functions.sh ; then
 	echo "Missing functions.sh.  Please install sys-apps/gentoo-functions!" 1>&2

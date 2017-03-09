@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit autotools eutils toolchain-funcs
@@ -36,6 +35,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
+
+	strip-linguas -i po/ #609672
 
 	# Apply multiple fixes from different distributions
 	# Drop included patch and reuse patchset from prior version

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Enable the GPU targets matching the default VIDEO_CARDS

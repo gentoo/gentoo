@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Eblit informing a user when they try to apply two machine patches to the
 # same tree.  Most machine patches are exclusive to avoid conflicts.

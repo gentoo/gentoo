@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -56,6 +55,7 @@ REQUIRED_USE="
 	xscreensaver? ( X )
 	xv? ( X )
 	zsh-completion? ( cli )
+	${PYTHON_REQUIRED_USE}
 "
 
 COMMON_DEPEND="

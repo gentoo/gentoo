@@ -1,4 +1,3 @@
-# $Id$
 # Sample auto.master file
 # This is an automounter map and it has the following format
 # key [ -mount-options-separated-by-comma ] location

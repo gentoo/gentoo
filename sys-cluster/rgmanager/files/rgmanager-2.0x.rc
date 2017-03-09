@@ -3,7 +3,6 @@
 # Adaption of the original RedHat script
 # Original Copyright (C) 2003 Red Hat, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 depend() {
 	use net

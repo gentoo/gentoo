@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 [ -z "${CONF}" ] && CONF="/etc/sguil/sguild.conf"
 [ -z "${AUTOCAT}" ] && AUTOCAT="/etc/sguil/autocat.conf"

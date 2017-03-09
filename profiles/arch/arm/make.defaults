@@ -17,4 +17,4 @@ CHOST_arm="${CHOST}"
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="exynos fbdev omap omapfb"
+VIDEO_CARDS="exynos fbdev omap"

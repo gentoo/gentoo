@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nvinson234@gmail.com</email>
-		<name>Nicholas Vinson</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
 	</maintainer>

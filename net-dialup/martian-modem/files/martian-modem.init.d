@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 daemon=/usr/sbin/martian_modem
 description="Initscript to run the userspace daemon for winmodems supported by martian-modem driver"

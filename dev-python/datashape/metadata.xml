@@ -10,6 +10,6 @@
   the NumPy dtype with an emphasis on cross language support.
 </longdescription>
   <upstream>
-    <remote-id type="github">ContinuumIO/datashape</remote-id>
+    <remote-id type="github">blaze/datashape</remote-id>
   </upstream>
 </pkgmetadata>

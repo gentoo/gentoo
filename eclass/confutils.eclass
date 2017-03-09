@@ -1,10 +1,9 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: confutils.eclass
 # @MAINTAINER:
-# Benedikt Böhm <hollow@gentoo.org>
+# No maintainer <maintainer-needed@gentoo.org>
 # @BLURB: utility functions to help with configuring a package
 # @DESCRIPTION:
 # The confutils eclass contains functions to handle use flag dependencies and

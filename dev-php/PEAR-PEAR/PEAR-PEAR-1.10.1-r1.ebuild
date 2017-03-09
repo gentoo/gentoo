@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ DESCRIPTION="PEAR Base System"
 HOMEPAGE="http://pear.php.net/package/${MY_PN}"
 SRC_URI="http://pear.php.net/get/${MY_P}.tgz"
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 SLOT="0"
 IUSE=""
 
@@ -140,12 +139,12 @@ pkg_postinst() {
 	# Update PEAR/PECL channels as needed, add new ones to the list if needed
 	elog "Updating PEAR/PECL channels"
 	local pearchans="pear.php.net pecl.php.net pear.phing.info "
-	pearchans+="pear.symfony-project.com pear.agavi.org"
+	pearchans+="pear.symfony-project.com"
 
 	for chan in ${pearchans} ; do
 		# The first command may fail if, for example, the channels have
 		# already been initialized.
 		pear channel-discover ${chan}
-		pear channel-update ${chan} || die "failed to update channels"
+		pear channel-update ${chan} || die "failed to update channels: ${chan}"
 	done
 }

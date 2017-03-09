@@ -1,0 +1,41 @@
+From 8d09661398f14102703e19418f15e9cf3f3707d1 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Mon, 6 Mar 2017 21:19:15 +0200
+Subject: [PATCH] build: export only needed symbols
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/Makefile.am     | 3 ++-
+ src/pam_p11.exports | 6 ++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+ create mode 100644 src/pam_p11.exports
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 8bfb0bd..83a3e3d 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,7 +3,8 @@
+ MAINTAINERCLEANFILES = Makefile.in
+ 
+ AM_CFLAGS = -Wall -fno-strict-aliasing $(OPENSSL_CFLAGS) $(LIBP11_CFLAGS)
+-AM_LDFLAGS = -module -avoid-version
++AM_LDFLAGS = -module -avoid-version -shared -no-undefined \
++	-export-symbols "$(srcdir)/pam_p11.exports"
+ 
+ lib_LTLIBRARIES = pam_p11_openssh.la  pam_p11_opensc.la 
+ 
+diff --git a/src/pam_p11.exports b/src/pam_p11.exports
+new file mode 100644
+index 0000000..416cde1
+--- /dev/null
++++ b/src/pam_p11.exports
+@@ -0,0 +1,6 @@
++pam_sm_authenticate
++pam_sm_setcred
++pam_sm_acct_mgmt
++pam_sm_open_session
++pam_sm_close_session
++pam_sm_chauthtok
+-- 
+2.10.2
+

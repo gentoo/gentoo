@@ -1,6 +1,5 @@
 # default: off
 # description: Vsftpd is an FTP server, designed to be secure.
-# $Id$
 
 service ftp
 {

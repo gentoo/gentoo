@@ -1,6 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # This file contains descriptions of VIDEO_CARDS USE_EXPAND flags.
 
@@ -24,7 +23,6 @@ i128 - VIDEO_CARDS setting to build driver for Number 9 I128 video cards
 i740 - VIDEO_CARDS setting to build driver for Intel i740 video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
-ilo - VIDEO_CARDS setting to build unofficial gallium driver for Intel gen6/7 video cards
 imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 mach64 - VIDEO_CARDS setting to build driver for mach64 video cards
@@ -37,7 +35,6 @@ nsc - VIDEO_CARDS setting to build driver for nsc video cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards
-omapfb - VIDEO_CARDS setting to build framebuffer driver for TI OMAP video cards
 qxl - VIDEO_CARDS setting to build driver for qxl (QEMU virtual GPU)
 r100 - VIDEO_CARDS setting to build only r100 based chips code for radeon
 r128 - VIDEO_CARDS setting to build driver for ATI r128 video cards
@@ -65,7 +62,6 @@ tegra - VIDEO_CARDS setting to build driver for tegra video cards
 tga - VIDEO_CARDS setting to build driver for tga video cards
 trident - VIDEO_CARDS setting to build driver for trident video cards
 tseng - VIDEO_CARDS setting to build driver for tseng video cards
-v4l - VIDEO_CARDS setting to build driver for v4l video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
 via - VIDEO_CARDS setting to build driver for via video cards

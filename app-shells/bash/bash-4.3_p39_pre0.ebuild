@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Old ebuild to help with people doing live upgrades w/old portage versions.
 # We use the bundled versions of readline & termcap to avoid external deps

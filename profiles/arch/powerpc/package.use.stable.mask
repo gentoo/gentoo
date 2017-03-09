@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -35,7 +34,7 @@ media-video/vlc opencv
 # Dependencies not stable
 app-arch/p7zip kde
 app-i18n/uim kde
-dev-vcs/subversion kde
+dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
 media-video/vlc kde
 net-irc/quassel kde
@@ -58,7 +57,3 @@ dev-libs/protobuf python
 net-fs/netatalk tracker
 app-office/homebank ofx
 net-libs/aqbanking ofx
-
-# Michael Palimaka <kensington@gentoo.org> (11 Dec 2014)
-# Dependencies not yet stable
-kde-plasma/systemsettings kscreen

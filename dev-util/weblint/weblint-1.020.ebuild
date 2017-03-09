@@ -1,6 +1,5 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="syntax and minimal style checker for HTML by Neil Bowers"
 SRC_URI="mirror://gentoo/${P}.tar.gz"

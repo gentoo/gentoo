@@ -1,5 +1,4 @@
 # default: off
-# $Id$
 # description: The netkit ftp daemon with optional SSL support.
 
 service ftp

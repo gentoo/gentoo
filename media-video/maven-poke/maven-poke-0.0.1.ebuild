@@ -1,6 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Matrox utility to read and set maven registers (tune tvout)"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/"

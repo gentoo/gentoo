@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="6"
 
@@ -26,7 +25,7 @@ REQUIRED_USE="mydns? ( mysql ) ?? ( lua luajit )"
 RDEPEND="
 	dev-libs/openssl:=
 	>=dev-libs/boost-1.35:=
-	botan? ( =dev-libs/botan-1.10* )
+	botan? ( =dev-libs/botan-1.10*[threads] )
 	lua? ( dev-lang/lua:= )
 	luajit? ( dev-lang/luajit:= )
 	mysql? ( virtual/mysql )

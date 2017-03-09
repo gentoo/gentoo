@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit autotools eutils flag-o-matic pam qmake-utils readme.gentoo-r1 systemd versionator xdg-utils
@@ -13,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 IUSE="audit +gtk +introspection kde qt4 qt5 +gnome"
 REQUIRED_USE="|| ( gtk kde )"
 

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -49,8 +48,7 @@ RDEPEND="${DEPEND}
 	|| ( sys-boot/grub:2 sys-boot/systemd-boot )
 	sys-boot/os-prober
 	sys-fs/squashfs-tools
-	sys-fs/udisks:2[systemd]
-	virtual/udev[systemd]
+	virtual/udev
 	networkmanager? ( net-misc/networkmanager )
 	upower? ( sys-power/upower )
 "

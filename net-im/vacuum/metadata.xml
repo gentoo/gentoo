@@ -2,17 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nikoli@gmx.us</email>
-		<name>Nikoli</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <use>
     <flag name="adiummessagestyle">Use UI styles created for Adium</flag>
     <flag name="annotations">Enable adding comments to the contacts in the roster</flag>

@@ -1,0 +1,23 @@
+From 26ad58f68927186a1216ca8ae4596a8132191dcf Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sat, 30 Jan 2016 15:06:35 +0100
+Subject: [PATCH] Fix #15 by making the output predictably sorted
+
+Fixes https://github.com/Fuuzetsu/torrentinfo/issues/15
+---
+ src/torrentinfo.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/torrentinfo.py b/src/torrentinfo.py
+index a8ffea4..07b653b 100755
+--- a/src/torrentinfo.py
++++ b/src/torrentinfo.py
+@@ -569,7 +569,7 @@ def list_files(config, torrent, detailed=False):
+ 
+             config.formatter.string_format(TextFormatter.NORMAL, config, '\n')
+             if detailed:
+-                for kwrd in filestorrent[index]:
++                for kwrd in sorted(filestorrent[index], reverse=True):
+                     start_line(config, kwrd, 3, postfix='\n')
+                     dump(filestorrent[index][kwrd], config, 4)
+             else:

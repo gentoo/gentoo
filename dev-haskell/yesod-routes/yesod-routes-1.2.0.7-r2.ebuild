@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -21,7 +20,7 @@ IUSE=""
 RDEPEND=">=dev-haskell/path-pieces-0.1:=[profile?]
 	>=dev-haskell/text-0.5:=[profile?]
 	>=dev-haskell/vector-0.8:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:= <dev-lang/ghc-8
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

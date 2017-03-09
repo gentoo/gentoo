@@ -1,6 +1,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Unmask arm specific USE flags
+-neon
+-armvfp
+
 # doomsday ebuild is not available on this architecture
 doomsday
 
@@ -105,7 +109,6 @@ ctypes-python
 sasl
 libproxy
 pkcs11
-gnutls
 bazaar
 darcs
 mercurial

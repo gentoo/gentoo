@@ -1,6 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A text filtering pipe that marks each line with a timestamp"
 HOMEPAGE="http://math.smsu.edu/~erik/software.php?id=95"

@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: mysql-v2.eclass
 # @MAINTAINER:
@@ -699,7 +698,7 @@ mysql-v2_pkg_config() {
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
 
-	if built_with_use ${CATEGORY}/${PN} minimal ; then
+	if [[ ! -x "${EROOT}/usr/sbin/mysqld" ]] ; then
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 

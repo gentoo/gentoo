@@ -1,6 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+# Matt Turner <mattst88@gentoo.org> (25 Feb 2017)
+# Needs libepoxy keywording, bug #510940
+x11-base/xorg-server glamor wayland
+x11-drivers/xf86-video-ati glamor
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974

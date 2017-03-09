@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # To recreate this tarball, just grab latest rpm5 release:
 #	http://rpm5.org/files/rpm/

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -23,7 +22,7 @@ DEPEND="${RDEPEND}
 	dev-util/desktop-file-utils
 	dev-libs/libxslt
 	|| (
-		gnome-base/librsvg[tools]
+		gnome-base/librsvg
 		media-gfx/imagemagick[xml,png,svg]
 	)
 	virtual/pkgconfig"

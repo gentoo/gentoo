@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -45,3 +44,5 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	x11-proto/xproto
 "
+
+PATCHES=( "${FILESDIR}/${P}-kf-5.31.patch" )

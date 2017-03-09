@@ -1,0 +1,17 @@
+--- sbcl-1.3.14-orig/src/runtime/GNUmakefile	2017-01-23 06:43:20.000000000 +1100
++++ sbcl-1.3.14/src/runtime/GNUmakefile	2017-02-28 12:44:37.627161988 +1100
+@@ -40,12 +40,12 @@
+ include Config
+ 
+ # Disable PIE when possible
+-ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e no-pie),)
++ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e '[^f]no-pie'),)
+ CFLAGS += -fno-pie
+ LINKFLAGS += -no-pie
+ LDFLAGS += -no-pie
+ endif
+-ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e -nopie),)
++ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e '[^f]nopie'),)
+ CFLAGS += -fno-pie
+ LINKFLAGS += -nopie
+ LDFLAGS += -nopie

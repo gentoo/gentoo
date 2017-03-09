@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 SHOREWALLRC_FILE="@GENTOO_PORTAGE_EPREFIX@/usr/share/shorewall/shorewallrc"
 CONFIG_FILE="@GENTOO_PORTAGE_EPREFIX@/etc/conf.d/${SVCNAME}"

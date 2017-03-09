@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib

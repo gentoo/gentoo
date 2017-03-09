@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -22,6 +21,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}/findlib.patch"
+	has_version '>=dev-lang/ocaml-4.05.0_beta' && epatch "${FILESDIR}/ocaml405.patch"
 }
 
 src_configure() {

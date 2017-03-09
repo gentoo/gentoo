@@ -1,5 +1,5 @@
---- phctool-0.5.2-2/phctool/inc/libs/cpuinfo.py
-+++ phctool-0.5.2-2/phctool/inc/libs/cpuinfo.py
+--- phctool/inc/libs/cpuinfo.py
++++ phctool/inc/libs/cpuinfo.py
 @@ -14,33 +14,49 @@
  
  

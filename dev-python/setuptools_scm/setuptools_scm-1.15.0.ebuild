@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -26,5 +25,6 @@ DEPEND="
 	)"
 
 python_test() {
+	distutils_install_for_testing
 	py.test -v -v -x || die "tests failed under ${EPYTHON}"
 }

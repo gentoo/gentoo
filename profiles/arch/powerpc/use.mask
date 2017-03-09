@@ -13,10 +13,6 @@ gnuefi
 # dependencies not keyworded yet
 ayatana
 
-# Anthony G. Basile <blueness@gentoo.org> (10 Jul 2014)
-# codec support x264, bug #516856
--x264
-
 #Klibc does not work
 klibc
 

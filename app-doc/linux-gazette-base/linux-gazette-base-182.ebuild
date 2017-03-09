@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # the SRC_URI always has the same file name ... make sure you
 # `rm ${DISTDIR}/lg-base.tar.gz` and make a new digest with

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -21,7 +20,8 @@ RDEPEND="
 	net-analyzer/tcpdump
 	gnuplot? ( dev-python/gnuplot-py[${PYTHON_USEDEP}] )
 	pyx? ( dev-python/pyx[${PYTHON_USEDEP}] )
-	crypt? ( dev-python/pycrypto[${PYTHON_USEDEP}] )
+	crypt? ( || ( dev-python/pycryptodome[${PYTHON_USEDEP}]
+	              dev-python/pycrypto[${PYTHON_USEDEP}] ) )
 	graphviz? ( media-gfx/graphviz )
 	imagemagick? ( virtual/imagemagick-tools )
 	visual? ( dev-python/visual )

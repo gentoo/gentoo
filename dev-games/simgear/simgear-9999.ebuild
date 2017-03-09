@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -40,7 +39,7 @@ src_configure() {
 		-DENABLE_DNS=$(usex dns)
 		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
-		-DENABLE_SIMD=OFF
+		-DENABLE_SIMD=ON
 		-DENABLE_SOUND=ON
 		-DENABLE_TESTS=$(usex test)
 		-DSIMGEAR_HEADLESS=OFF

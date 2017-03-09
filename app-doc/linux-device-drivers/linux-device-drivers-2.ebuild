@@ -1,6 +1,5 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="howto write linux device drivers (updated for Linux 2.4)"
 HOMEPAGE="http://www.oreilly.com/catalog/linuxdrive2/"

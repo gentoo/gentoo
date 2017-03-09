@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A simple console LiveJournal entry system"
 HOMEPAGE="http://umlautllama.com/projects/perl/#jlj"

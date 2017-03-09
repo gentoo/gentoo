@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MY_P=${P/-ac}
 DESCRIPTION="WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels"

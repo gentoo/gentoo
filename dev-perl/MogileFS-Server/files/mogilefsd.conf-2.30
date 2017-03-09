@@ -1,5 +1,3 @@
-# $Id$
-
 # System user
 user = mogile
 # These are set inside the Gentoo conf.d/mogilefsd

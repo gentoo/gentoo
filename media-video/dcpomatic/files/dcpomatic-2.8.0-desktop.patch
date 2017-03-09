@@ -1,0 +1,32 @@
+--- dcpomatic-2.8.0/platform/linux/dcpomatic.desktop.in
++++ dcpomatic-2.8.0/platform/linux/dcpomatic.desktop.in
+@@ -7,4 +7,4 @@
+ Name=DCP-o-matic 2
+ Icon=dcpomatic2
+ Comment=DCP generator
+-Categories=AudioVideo;Video
++Categories=AudioVideo;Video;
+--- dcpomatic-2.8.0/platform/linux/dcpomatic_server.desktop.in
++++ dcpomatic-2.8.0/platform/linux/dcpomatic_server.desktop.in
+@@ -7,4 +7,4 @@
+ Name=DCP-o-matic 2 Encode Server
+ Icon=dcpomatic2_server
+ Comment=DCP generator
+-Categories=AudioVideo;Video
++Categories=AudioVideo;Video;
+--- dcpomatic-2.8.0/platform/linux/dcpomatic_kdm.desktop.in
++++ dcpomatic-2.8.0/platform/linux/dcpomatic_kdm.desktop.in
+@@ -7,4 +7,4 @@
+ Name=DCP-o-matic 2 KDM Creator
+ Icon=dcpomatic2_kdm
+ Comment=DCP generator
+-Categories=AudioVideo;Video
++Categories=AudioVideo;Video;
+--- dcpomatic-2.8.0/platform/linux/dcpomatic_batch.desktop.in
++++ dcpomatic-2.8.0/platform/linux/dcpomatic_batch.desktop.in
+@@ -7,4 +7,4 @@
+ Name=DCP-o-matic 2 Batch Converter
+ Icon=dcpomatic2_batch
+ Comment=DCP generator
+-Categories=AudioVideo;Video
++Categories=AudioVideo;Video;

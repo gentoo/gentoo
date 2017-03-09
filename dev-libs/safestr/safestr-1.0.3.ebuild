@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="provide a standards compatible yet secure string implementation"
 HOMEPAGE="http://www.zork.org/safestr/"

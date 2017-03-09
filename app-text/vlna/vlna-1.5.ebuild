@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Add nonbreakable spaces after some prepositions in Czech texts"
 HOMEPAGE="http://math.feld.cvut.cz/olsak/cstex/"

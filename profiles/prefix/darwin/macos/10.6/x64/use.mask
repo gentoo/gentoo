@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # This file masks out USE flags that are simply NOT allowed in the default
 # x86 profile.  This works, for example, if another architecture's
@@ -32,9 +31,6 @@
 
 # Modular X: mask for architectures on which they aren't available
 video_cards_newport
-
-#codec support
--x264
 
 # ibm is only used for ppc64 stuff
 ibm

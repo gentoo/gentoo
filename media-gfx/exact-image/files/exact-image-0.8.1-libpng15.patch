@@ -1,5 +1,5 @@
---- codecs/png.cc
-+++ codecs/png.cc
+--- a/codecs/png.cc
++++ b/codecs/png.cc
 @@ -16,6 +16,7 @@
   */
  

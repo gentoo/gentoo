@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>sound@gentoo.org</email>
-  <name>Gentoo Sound project</name>
-</maintainer>
-<upstream>
-  <remote-id type="cpe">cpe:/a:xiph:speex</remote-id>
-</upstream>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:xiph:speex</remote-id>
+  </upstream>
+  <use>
+    <flag name="armv5te">Enables optimizations for armv5te processors.</flag>
+    <flag name="utils">Enables speex commandline utilities (speexenc, speexdec).</flag>
+    <flag name="vbr">Enable VBR support.</flag>
+  </use>
 </pkgmetadata>

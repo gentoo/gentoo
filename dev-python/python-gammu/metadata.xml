@@ -8,13 +8,4 @@
 		<remote-id type="pypi">python-gammu</remote-id>
 		<remote-id type="github">gammu/python-gammu</remote-id>
 	</upstream>
-	<maintainer type="person">
-		<email>awilfox.gentoo@foxkit.us</email>
-		<name>Andrew Wilcox</name>
-		<description>Proxy (user) maintainer, bugs to be assigned to him</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 </pkgmetadata>

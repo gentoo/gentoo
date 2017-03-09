@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,7 +11,7 @@ SRC_URI="http://gva.noekeon.org/${PN}/${P}-src.tar.gz"
 
 LICENSE="BSD CC-BY-3.0 ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="doc"
 
 RDEPEND="dev-libs/xerces-c"

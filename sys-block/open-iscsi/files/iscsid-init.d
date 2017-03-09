@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2015 Gentoo Foundation, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Id$
 
 command="/usr/sbin/iscsid"
 command_args="${OPTS}"

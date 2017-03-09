@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -32,7 +31,6 @@ RDEPEND="
 	media-libs/lcms:2
 	>=net-print/cups-1.7.3
 	!<=net-print/cups-1.5.9999
-	sys-devel/bc
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )

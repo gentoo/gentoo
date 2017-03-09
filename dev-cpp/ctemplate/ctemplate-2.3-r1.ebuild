@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -14,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc emacs vim-syntax static-libs test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"

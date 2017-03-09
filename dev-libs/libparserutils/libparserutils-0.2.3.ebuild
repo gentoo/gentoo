@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,7 +11,7 @@ HOMEPAGE="http://www.netsurf-browser.org/projects/libparserutils/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~ppc x86 ~m68k-mint"
 IUSE="iconv test"
 
 DEPEND="test? (	dev-lang/perl )"

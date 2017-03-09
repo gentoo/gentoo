@@ -1,7 +1,6 @@
 @version: 3.7
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # https://bugs.gentoo.org/show_bug.cgi?id=426814
 @include "scl.conf"

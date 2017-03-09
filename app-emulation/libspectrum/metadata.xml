@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jmfo1982@yahoo.es</email>
-		<name>José Manuel Ferrer Ortiz</name>
-		<description>Proxied Maintainer. Please CC on bugs.</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 libspectrum is a library designed to make the input and output of some ZX
 Spectrum emulator files slightly easier. It is intended to be usable on Unix

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -28,8 +27,8 @@ fi
 
 COMMON="${PYTHON_DEPS}
 	media-libs/mesa
-	sys-devel/clang
-	>=sys-devel/llvm-3.5
+	sys-devel/clang:0
+	>=sys-devel/llvm-3.5:0
 	>=x11-libs/libdrm-2.4.70[video_cards_intel]
 	x11-libs/libXext
 	x11-libs/libXfixes"

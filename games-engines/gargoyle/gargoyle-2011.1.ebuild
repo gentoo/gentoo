@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Regarding licenses: libgarglk is licensed under the GPLv2. Bundled
 # interpreters are licensed under GPLv2, BSD or MIT license, except:

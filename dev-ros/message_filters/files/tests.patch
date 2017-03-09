@@ -1,0 +1,132 @@
+Index: message_filters/test/test_approximate_time_policy.cpp
+===================================================================
+--- message_filters.orig/test/test_approximate_time_policy.cpp
++++ message_filters/test/test_approximate_time_policy.cpp
+@@ -106,8 +106,8 @@ public:
+   {
+     //printf("Call_back called\n");
+     //printf("Call back: <%f, %f>\n", p->header.stamp.toSec(), q->header.stamp.toSec());
+-    ASSERT_TRUE(p);
+-    ASSERT_TRUE(q);
++    ASSERT_TRUE(p!=NULL);
++    ASSERT_TRUE(q!=NULL);
+     ASSERT_LT(output_position_, output_.size());
+     EXPECT_EQ(output_[output_position_].first, p->header.stamp);
+     EXPECT_EQ(output_[output_position_].second, q->header.stamp);
+@@ -164,10 +164,10 @@ public:
+   {
+     //printf("Call_back called\n");
+     //printf("Call back: <%f, %f>\n", p->header.stamp.toSec(), q->header.stamp.toSec());
+-    ASSERT_TRUE(p);
+-    ASSERT_TRUE(q);
+-    ASSERT_TRUE(r);
+-    ASSERT_TRUE(s);
++    ASSERT_TRUE(p!=NULL);
++    ASSERT_TRUE(q!=NULL);
++    ASSERT_TRUE(r!=NULL);
++    ASSERT_TRUE(s!=NULL);
+     ASSERT_LT(output_position_, output_.size());
+     EXPECT_EQ(output_[output_position_].time[0], p->header.stamp);
+     EXPECT_EQ(output_[output_position_].time[1], q->header.stamp);
+Index: message_filters/test/test_chain.cpp
+===================================================================
+--- message_filters.orig/test/test_chain.cpp
++++ message_filters/test/test_chain.cpp
+@@ -148,8 +148,8 @@ TEST(Chain, retrieveFilter)
+ 
+   c.addFilter(boost::make_shared<PassThrough<Msg> >());
+ 
+-  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0));
+-  ASSERT_FALSE(c.getFilter<PassThrough<Msg> >(1));
++  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0) != NULL);
++  ASSERT_FALSE(c.getFilter<PassThrough<Msg> >(1) != NULL);
+ }
+ 
+ TEST(Chain, retrieveFilterThroughBaseClass)
+@@ -161,8 +161,8 @@ TEST(Chain, retrieveFilterThroughBaseCla
+ 
+   c.addFilter(boost::make_shared<PassThrough<Msg> >());
+ 
+-  ASSERT_TRUE(cb->getFilter<PassThrough<Msg> >(0));
+-  ASSERT_FALSE(cb->getFilter<PassThrough<Msg> >(1));
++  ASSERT_TRUE(cb->getFilter<PassThrough<Msg> >(0) != NULL);
++  ASSERT_FALSE(cb->getFilter<PassThrough<Msg> >(1) != NULL);
+ }
+ 
+ struct PTDerived : public PassThrough<Msg>
+@@ -174,8 +174,8 @@ TEST(Chain, retrieveBaseClass)
+ {
+   Chain<Msg> c;
+   c.addFilter(boost::make_shared<PTDerived>());
+-  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0));
+-  ASSERT_TRUE(c.getFilter<PTDerived>(0));
++  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0) != NULL);
++  ASSERT_TRUE(c.getFilter<PTDerived>(0) != NULL);
+ }
+ 
+ int main(int argc, char **argv){
+Index: message_filters/test/test_exact_time_policy.cpp
+===================================================================
+--- message_filters.orig/test/test_exact_time_policy.cpp
++++ message_filters/test/test_exact_time_policy.cpp
+@@ -187,8 +187,8 @@ TEST(ExactTime, eventInEventOut)
+   sync.add<0>(evt);
+   sync.add<1>(evt);
+ 
+-  ASSERT_TRUE(h.e1_.getMessage());
+-  ASSERT_TRUE(h.e2_.getMessage());
++  ASSERT_TRUE(h.e1_.getMessage()!=NULL);
++  ASSERT_TRUE(h.e2_.getMessage()!=NULL);
+   ASSERT_EQ(h.e1_.getReceiptTime(), evt.getReceiptTime());
+   ASSERT_EQ(h.e2_.getReceiptTime(), evt.getReceiptTime());
+ }
+Index: message_filters/test/test_subscriber.cpp
+===================================================================
+--- message_filters.orig/test/test_subscriber.cpp
++++ message_filters/test/test_subscriber.cpp
+@@ -152,7 +152,7 @@ TEST(Subscriber, singleNonConstCallback)
+ 
+   ros::spinOnce();
+ 
+-  ASSERT_TRUE(h.msg_);
++  ASSERT_TRUE(h.msg_!=NULL);
+   ASSERT_EQ(msg.get(), h.msg_.get());
+ }
+ 
+@@ -169,8 +169,8 @@ TEST(Subscriber, multipleNonConstCallbac
+ 
+   ros::spinOnce();
+ 
+-  ASSERT_TRUE(h.msg_);
+-  ASSERT_TRUE(h2.msg_);
++  ASSERT_TRUE(h.msg_ !=NULL);
++  ASSERT_TRUE(h2.msg_!=NULL);
+   EXPECT_NE(msg.get(), h.msg_.get());
+   EXPECT_NE(msg.get(), h2.msg_.get());
+   EXPECT_NE(h.msg_.get(), h2.msg_.get());
+@@ -189,8 +189,8 @@ TEST(Subscriber, multipleCallbacksSomeFi
+ 
+   ros::spinOnce();
+ 
+-  ASSERT_TRUE(h.msg_);
+-  ASSERT_TRUE(h2.msg_);
++  ASSERT_TRUE(h.msg_ != NULL);
++  ASSERT_TRUE(h2.msg_!= NULL);
+   EXPECT_NE(msg.get(), h.msg_.get());
+   EXPECT_NE(msg.get(), h2.msg_.get());
+   EXPECT_NE(h.msg_.get(), h2.msg_.get());
+Index: message_filters/test/time_synchronizer_unittest.cpp
+===================================================================
+--- message_filters.orig/test/time_synchronizer_unittest.cpp
++++ message_filters/test/time_synchronizer_unittest.cpp
+@@ -516,8 +516,8 @@ TEST(TimeSynchronizer, eventInEventOut)
+   sync.add<0>(evt);
+   sync.add<1>(evt);
+ 
+-  ASSERT_TRUE(h.e1_.getMessage());
+-  ASSERT_TRUE(h.e2_.getMessage());
++  ASSERT_TRUE(h.e1_.getMessage()!=NULL);
++  ASSERT_TRUE(h.e2_.getMessage()!=NULL);
+   ASSERT_EQ(h.e1_.getReceiptTime(), evt.getReceiptTime());
+   ASSERT_EQ(h.e2_.getReceiptTime(), evt.getReceiptTime());
+ }

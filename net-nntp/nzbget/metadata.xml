@@ -5,6 +5,14 @@
 		<email>swegener@gentoo.org</email>
 		<name>Sven Wegener</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sautier.louis@gmail.com</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>A command-line based binary newsgrabber supporting .nzb files.</longdescription>
 	<use>
 		<flag name="parcheck">Enable support for checking PAR archives</flag>

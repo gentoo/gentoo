@@ -1,0 +1,6 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Temporary mask because of app-crypt/gpgme-1.8.0 stabilisation
+# which collides with kde-apps/kdepimlibs:4, bug #611470
+app-crypt/gpgme cxx qt5

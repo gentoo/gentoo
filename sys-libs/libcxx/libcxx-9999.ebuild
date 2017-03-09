@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -33,7 +32,7 @@ if [[ ${PV} != 9999 ]] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="elibc_glibc elibc_musl libcxxabi +libcxxrt libunwind +static-libs test"
+IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
 

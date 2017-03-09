@@ -1,0 +1,181 @@
+From: Peter Levine <plevine457@gmail.com>
+--- mac-3.99-u4-b5-s7/src/Shared/NoWindows.h.old	2016-09-18 21:37:56.049105791 -0400
++++ mac-3.99-u4-b5-s7/src/Shared/NoWindows.h	2016-09-18 21:55:29.666295506 -0400
+@@ -39,8 +39,8 @@
+ typedef const wchar_t *     LPCWSTR;
+ 
+ #define ZeroMemory(POINTER, BYTES) memset(POINTER, 0, BYTES);
+-#define max(a,b)    (((a) > (b)) ? (a) : (b))
+-#define min(a,b)    (((a) < (b)) ? (a) : (b))
++#define max_macro(a,b)    (((a) > (b)) ? (a) : (b))
++#define min_macro(a,b)    (((a) < (b)) ? (a) : (b))
+ 
+ #define __stdcall
+ #define CALLBACK
+--- mac-3.99-u4-b5-s7/src/Shared/CircleBuffer.cpp.old	2016-09-18 21:43:44.270495095 -0400
++++ mac-3.99-u4-b5-s7/src/Shared/CircleBuffer.cpp	2016-09-18 21:44:47.960148731 -0400
+@@ -45,7 +45,7 @@
+ 
+     if (pBuffer != NULL && nBytes > 0)
+     {
+-        int nHeadBytes = min(m_nEndCap - m_nHead, nBytes);
++        int nHeadBytes = min_macro(m_nEndCap - m_nHead, nBytes);
+         int nFrontBytes = nBytes - nHeadBytes;
+ 
+         memcpy(&pBuffer[0], &m_pBuffer[m_nHead], nHeadBytes);
+@@ -72,7 +72,7 @@
+ 
+ int CCircleBuffer::RemoveHead(int nBytes)
+ {
+-    nBytes = min(MaxGet(), nBytes);
++    nBytes = min_macro(MaxGet(), nBytes);
+     m_nHead += nBytes;
+     if (m_nHead >= m_nEndCap)
+         m_nHead -= m_nEndCap;
+@@ -81,7 +81,7 @@
+ 
+ int CCircleBuffer::RemoveTail(int nBytes)
+ {
+-    nBytes = min(MaxGet(), nBytes);
++    nBytes = min_macro(MaxGet(), nBytes);
+     m_nTail -= nBytes;
+     if (m_nTail < 0)
+         m_nTail += m_nEndCap;
+--- mac-3.99-u4-b5-s7/src/MACLib/APECompress.cpp.old	2016-09-18 21:48:40.916547811 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/APECompress.cpp	2016-09-18 21:51:43.670733601 -0400
+@@ -117,7 +117,7 @@
+             return ERROR_UNDEFINED;
+         
+         // calculate how many bytes to copy and add that much to the buffer
+-        int nBytesToProcess = min(nBytesAvailable, nBytes - nBytesDone);
++        int nBytesToProcess = min_macro(nBytesAvailable, nBytes - nBytesDone);
+         memcpy(pBuffer, &pData[nBytesDone], nBytesToProcess);
+                         
+         // unlock the buffer (fail if not successful)
+@@ -162,7 +162,7 @@
+         
+         while ((m_nBufferTail - m_nBufferHead) >= nThreshold)
+         {
+-            int nFrameBytes = min(m_spAPECompressCreate->GetFullFrameBytes(), m_nBufferTail - m_nBufferHead);
++            int nFrameBytes = min_macro(m_spAPECompressCreate->GetFullFrameBytes(), m_nBufferTail - m_nBufferHead);
+             
+             if (nFrameBytes == 0)
+                 break;
+--- mac-3.99-u4-b5-s7/src/MACLib/APEDecompress.cpp.old	2016-09-18 21:46:56.962072960 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/APEDecompress.cpp	2016-09-18 22:01:14.402044817 -0400
+@@ -35,8 +35,8 @@
+     m_bErrorDecodingCurrentFrame = FALSE;
+ 
+     // set the "real" start and finish blocks
+-    m_nStartBlock = (nStartBlock < 0) ? 0 : min(nStartBlock, GetInfo(APE_INFO_TOTAL_BLOCKS));
+-    m_nFinishBlock = (nFinishBlock < 0) ? GetInfo(APE_INFO_TOTAL_BLOCKS) : min(nFinishBlock, GetInfo(APE_INFO_TOTAL_BLOCKS));
++    m_nStartBlock = (nStartBlock < 0) ? 0 : min_macro(nStartBlock, GetInfo(APE_INFO_TOTAL_BLOCKS));
++    m_nFinishBlock = (nFinishBlock < 0) ? GetInfo(APE_INFO_TOTAL_BLOCKS) : min_macro(nFinishBlock, GetInfo(APE_INFO_TOTAL_BLOCKS));
+     m_bIsRanged = (m_nStartBlock != 0) || (m_nFinishBlock != GetInfo(APE_INFO_TOTAL_BLOCKS));
+ }
+ 
+@@ -85,7 +85,7 @@
+ 
+     // cap
+     int nBlocksUntilFinish = m_nFinishBlock - m_nCurrentBlock;
+-    const int nBlocksToRetrieve = min(nBlocks, nBlocksUntilFinish);
++    const int nBlocksToRetrieve = min_macro(nBlocks, nBlocksUntilFinish);
+     
+     // get the data
+     unsigned char * pOutputBuffer = (unsigned char *) pBuffer;
+@@ -99,7 +99,7 @@
+ 
+         // analyze how much to remove from the buffer
+         const int nFrameBufferBlocks = m_nFrameBufferFinishedBlocks;
+-        nBlocksThisPass = min(nBlocksLeft, nFrameBufferBlocks);
++        nBlocksThisPass = min_macro(nBlocksLeft, nFrameBufferBlocks);
+ 
+         // remove as much as possible
+         if (nBlocksThisPass > 0)
+@@ -182,7 +182,7 @@
+ 
+         int nFrameOffsetBlocks = m_nCurrentFrameBufferBlock % GetInfo(APE_INFO_BLOCKS_PER_FRAME);
+         int nFrameBlocksLeft = nFrameBlocks - nFrameOffsetBlocks;
+-        int nBlocksThisPass = min(nFrameBlocksLeft, nBlocksLeft);
++        int nBlocksThisPass = min_macro(nFrameBlocksLeft, nBlocksLeft);
+ 
+         // start the frame if we need to
+         if (nFrameOffsetBlocks == 0)
+--- mac-3.99-u4-b5-s7/src/MACLib/APESimple.cpp.old	2016-09-18 21:47:16.972925909 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/APESimple.cpp	2016-09-18 21:52:39.022779503 -0400
+@@ -193,7 +193,7 @@
+     nBytesRead = 1;
+     while ((nBytesLeft > 0) && (nBytesRead > 0))
+     {
+-        int nBytesToRead = min(16384, nBytesLeft);
++        int nBytesToRead = min_macro(16384, nBytesLeft);
+         if (pIO->Read(spBuffer, nBytesToRead, &nBytesRead) != ERROR_SUCCESS)
+             return ERROR_IO_READ;
+ 
+--- mac-3.99-u4-b5-s7/src/MACLib/APETag.cpp.old	2016-09-18 21:55:53.331533348 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/APETag.cpp	2016-09-18 21:58:21.508345586 -0400
+@@ -16,7 +16,7 @@
+     memcpy(m_spFieldNameUTF16, pFieldName, (wcslen(pFieldName) + 1) * sizeof(str_utf16));
+     
+     // data (we'll always allocate two extra bytes and memset to 0 so we're safely NULL terminated)
+-    m_nFieldValueBytes = max(nFieldBytes, 0);
++    m_nFieldValueBytes = max_macro(nFieldBytes, 0);
+     m_spFieldValue.Assign(new char [m_nFieldValueBytes + 2], TRUE);
+     memset(m_spFieldValue, 0, m_nFieldValueBytes + 2);
+     if (m_nFieldValueBytes > 0)
+--- mac-3.99-u4-b5-s7/src/MACLib/BitArray.cpp.old	2016-09-18 21:53:24.090030009 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/BitArray.cpp	2016-09-18 22:00:13.500083252 -0400
+@@ -113,7 +113,7 @@
+         m_nCurrentBitIndex = (m_nCurrentBitIndex & 31);
+         
+         // zero the rest of the memory (may not need the +1 because of frame byte alignment)
+-        memset(&m_pBitArray[1], 0, min(nBytesToWrite + 1, BIT_ARRAY_BYTES - 1));
++        memset(&m_pBitArray[1], 0, min_macro(nBytesToWrite + 1, BIT_ARRAY_BYTES - 1));
+     }
+     
+     // return a success
+@@ -247,7 +247,7 @@
+         BitArrayState.k++;
+ 
+     // figure the pivot value
+-    int nPivotValue = max(nOriginalKSum / 32, 1);
++    int nPivotValue = max_macro(nOriginalKSum / 32, 1);
+     int nOverflow = nEncode / nPivotValue;
+     int nBase = nEncode - (nOverflow * nPivotValue);
+ 
+--- mac-3.99-u4-b5-s7/src/MACLib/MACProgressHelper.cpp.old	2016-09-18 21:56:44.606337012 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/MACProgressHelper.cpp	2016-09-18 21:59:55.854310134 -0400
+@@ -35,7 +35,7 @@
+         m_nCurrentStep = nCurrentStep;
+ 
+     // figure the percentage done
+-    float fPercentageDone = float(m_nCurrentStep) / float(max(m_nTotalSteps, 1));
++    float fPercentageDone = float(m_nCurrentStep) / float(max_macro(m_nTotalSteps, 1));
+     int nPercentageDone = (int) (fPercentageDone * 1000 * 100);
+     if (nPercentageDone > 100000) nPercentageDone = 100000;
+ 
+--- mac-3.99-u4-b5-s7/src/MACLib/Prepare.cpp.old	2016-09-18 21:56:29.974394222 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/Prepare.cpp	2016-09-18 21:59:28.214726465 -0400
+@@ -177,9 +177,9 @@
+ 
+             if (LPeak == 0) { *pSpecialCodes |= SPECIAL_FRAME_LEFT_SILENCE; }
+             if (RPeak == 0) { *pSpecialCodes |= SPECIAL_FRAME_RIGHT_SILENCE; }
+-            if (max(LPeak, RPeak) > *pPeakLevel) 
++            if (max_macro(LPeak, RPeak) > *pPeakLevel) 
+             {
+-                *pPeakLevel = max(LPeak, RPeak);
++                *pPeakLevel = max_macro(LPeak, RPeak);
+             }
+ 
+             // check for pseudo-stereo files
+--- mac-3.99-u4-b5-s7/src/MACLib/UnBitArray.cpp.old	2016-09-18 21:56:16.548445898 -0400
++++ mac-3.99-u4-b5-s7/src/MACLib/UnBitArray.cpp	2016-09-18 21:58:56.148161050 -0400
+@@ -110,7 +110,7 @@
+     if (m_nVersion >= 3990)
+     {
+         // figure the pivot value
+-        int nPivotValue = max(BitArrayState.nKSum / 32, 1);
++        int nPivotValue = max_macro(BitArrayState.nKSum / 32, 1);
+         
+         // get the overflow
+         int nOverflow = 0;

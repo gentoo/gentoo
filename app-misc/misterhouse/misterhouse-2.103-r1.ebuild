@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Mister House, an open source home automation program with X10 support"
 HOMEPAGE="http://misterhouse.sf.net/"

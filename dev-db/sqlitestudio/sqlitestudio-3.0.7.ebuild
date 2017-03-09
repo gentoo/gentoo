@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Upstream guide: http://wiki.sqlitestudio.pl/index.php/Compiling_application_from_sources
 

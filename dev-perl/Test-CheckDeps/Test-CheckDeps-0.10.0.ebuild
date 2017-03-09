@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION='Check for presence of dependencies'
 
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ppc ~x86"
+KEYWORDS="amd64 ~arm hppa ppc x86"
 IUSE="test"
 
 # rdep Test::Builder -> perl-Test-Simple

@@ -1,4 +1,3 @@
-# $Id$
 # lighttpd logrotate script for Gentoo
 
 /var/log/cherokee/cherokee.access /var/log/cherokee/cherokee.error {

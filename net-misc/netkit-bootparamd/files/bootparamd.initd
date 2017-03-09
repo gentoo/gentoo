@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 [ -e /etc/conf.d/bootparamd ] && . /etc/conf.d/bootparamd
 

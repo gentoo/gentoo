@@ -1,0 +1,16 @@
+Makefile: set install_name on Darwin
+
+https://bugs.gentoo.org/show_bug.cgi?id=546098
+https://github.com/nodejs/http-parser/issues/356
+
+--- http-parser-2.6.2/Makefile
++++ http-parser-2.6.2/Makefile
+@@ -62,6 +62,8 @@
+ ifneq (darwin,$(PLATFORM))
+ # TODO(bnoordhuis) The native SunOS linker expects -h rather than -soname...
+ LDFLAGS_LIB += -Wl,-soname=$(SONAME)
++else
++LDFLAGS_LIB += -Wl,-install_name,$(LIBDIR)/$(SONAME)
+ endif
+ 
+ test: test_g test_fast

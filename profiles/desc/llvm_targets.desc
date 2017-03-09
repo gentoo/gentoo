@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 AArch64 - AArch64 CPU target (arm64 in Gentoo)
 AMDGPU - AMDGPU target (supports R600 and GCN GPUs)

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit toolchain-funcs
@@ -30,7 +29,10 @@ src_configure() {
 	# econf doesn't work
 	tc-export CC
 	./configure --prefix=/usr || die
+}
 
+src_compile() {
+	emake V=2
 }
 
 src_install() {

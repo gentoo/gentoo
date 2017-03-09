@@ -1,11 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Id$
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
 # This file contains a list of useflags that cannot be used on sparc.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
+# kwallet integration split from kde to distinct flag
+kwallet
 
 # Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
 # no LibreSSL support yet
@@ -234,9 +237,6 @@ alsa_cards_sb16
 alsa_cards_sbawe
 alsa_cards_sscape
 alsa_cards_wavefront
-
-# Enable H264 with x264
--x264
 
 # Copied over from default-linux/sparc/sparc64
 -vis

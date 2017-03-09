@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: flag-o-matic.eclass
 # @MAINTAINER:
@@ -25,7 +24,7 @@ all-flag-vars() {
 setup-allowed-flags() {
 	ALLOWED_FLAGS=(
 		-pipe -O '-O[12sg]' -mcpu -march -mtune
-		'-fstack-protector*' '-fsanitize*' '-fstack-check*'
+		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
 		-fbounds-check -fbounds-checking -fno-strict-overflow
 		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
 		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+
@@ -117,7 +116,7 @@ _filter-var() {
 		done
 		new+=( "${f}" )
 	done
-	eval export ${var}=\""${new[*]}"\"
+	export ${var}="${new[*]}"
 }
 
 # @FUNCTION: filter-flags
@@ -271,7 +270,7 @@ replace-flags() {
 			[[ ${f} == ${1} ]] && f=${2}
 			new+=( "${f}" )
 		done
-		eval export ${var}=\""${new[*]}"\"
+		export ${var}="${new[*]}"
 	done
 
 	return 0
@@ -296,9 +295,8 @@ replace-cpu-flags() {
 }
 
 _is_flagq() {
-	local x var
-	eval var=\""\${$1[*]}"\"
-	for x in ${var} ; do
+	local x var="$1[*]"
+	for x in ${!var} ; do
 		[[ ${x} == $2 ]] && return 0
 	done
 	return 1
@@ -412,7 +410,7 @@ strip-flags() {
 		if [[ ${!var} != "${new[*]}" ]] ; then
 			einfo "strip-flags: ${var}: changed '${!var}' to '${new[*]}'"
 		fi
-		eval export ${var}=\""${new[*]}"\"
+		export ${var}="${new[*]}"
 	done
 
 	set +f	# re-enable pathname expansion

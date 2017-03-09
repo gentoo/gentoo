@@ -3,18 +3,14 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="gnome">Enable support for the freedesktop.org
-			Secret Service API via <pkg>app-crypt/libsecret</pkg>.
-			This does not control the gui!
+		<flag name="gnome">
+			Enable support for the freedesktop.org Secret Service API via <pkg>app-crypt/libsecret</pkg>
 		</flag>
-		<flag name="gui">Whether to build the QT gui. Highly recommended.
+		<flag name="kwallet">
+			Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg>
 		</flag>
-		<flag name="kde">Enable support for KDE, e.g. via
-			<pkg>kde-apps/kwalletd</pkg>. This does not control the gui,
-			but NEEDS GUI ENABLED!
-		</flag>
-		<flag name="udev">Whether udev will be consulted when deciding
-			if a volume is system or not.
+		<flag name="udev">
+			Whether udev will be consulted when deciding if a volume is system or not
 		</flag>
 	</use>
 	<upstream>

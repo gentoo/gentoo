@@ -1,5 +1,3 @@
-# $Id$
-
 # Configures the CG Runtime environment for Bourne shell and compatible shells
 CG_COMPILER_EXE=@GENTOO_PORTAGE_EPREFIX@/opt/bin/cgc
 CG_INC_PATH=@GENTOO_PORTAGE_EPREFIX@/opt/nvidia-cg-toolkit/include

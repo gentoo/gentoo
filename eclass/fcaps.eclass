@@ -1,10 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: fcaps.eclass
 # @MAINTAINER:
-# Constanze Hausner <constanze@gentoo.org>
 # base-system@gentoo.org
 # @BLURB: function to set POSIX file-based capabilities
 # @DESCRIPTION:

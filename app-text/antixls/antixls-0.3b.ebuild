@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Print out an XLS file with minimal formatting, or extract the data into CSV"
 HOMEPAGE="http://www.af0.net/~dan/?antixls"

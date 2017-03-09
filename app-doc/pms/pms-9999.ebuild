@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -37,7 +36,7 @@ src_install() {
 	dodoc pms.pdf eapi-cheatsheet.pdf
 	if use html; then
 		docinto html
-		dodoc *.html pms.css $(shopt -s nullglob; echo *.png)
+		dodoc *.html pms.css
 		dosym {..,/usr/share/doc/${PF}/html}/eapi-cheatsheet.pdf
 	fi
 }

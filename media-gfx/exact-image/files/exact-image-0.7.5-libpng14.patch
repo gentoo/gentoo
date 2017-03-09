@@ -1,5 +1,5 @@
---- codecs/png.cc
-+++ codecs/png.cc
+--- a/codecs/png.cc
++++ b/codecs/png.cc
 @@ -71,7 +71,7 @@
    /* Allocate/initialize the memory for image information.  REQUIRED. */
    info_ptr = png_create_info_struct(png_ptr);

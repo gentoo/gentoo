@@ -1,0 +1,46 @@
+*** a/src/cronolog.c.orig	2001-05-03 17:42:48.000000000 +0100
+--- b/src/cronolog.c	2003-08-15 14:03:17.000000000 +0100
+***************
+*** 84,95 ****
+--- 84,97 ----
+  
+  #include "cronoutils.h"
+  #include "getopt.h"
++ #include <signal.h>
+  
+  
+  /* Forward function declaration */
+  
+  int	new_log_file(const char *, const char *, mode_t, const char *,
+  		     PERIODICITY, int, int, char *, size_t, time_t, time_t *);
++ void  terminate_self(int);
+  
+  
+  /* Definition of version and usage messages */
+***************
+*** 306,311 ****
+--- 308,317 ----
+      DEBUG(("Rotation period is per %d %s\n", period_multiple, periods[periodicity]));
+  
+  
++     /* set up signal handlers to catch USR1 and HUP when restarting Apache */
++     signal(SIGUSR1, terminate_self);
++     signal(SIGHUP, terminate_self);
++ 
+      /* Loop, waiting for data on standard input */
+  
+      for (;;)
+***************
+*** 416,418 ****
+--- 422,432 ----
+      }
+      return log_fd;
+  }
++ 
++ void terminate_self(int sig)
++ {
++     time_t time_now = time(NULL);
++     DEBUG(("%s (%d): received signal USR1; terminating.\n",
++ 		timestamp(time_now), time_now));
++     exit(6);
++ }

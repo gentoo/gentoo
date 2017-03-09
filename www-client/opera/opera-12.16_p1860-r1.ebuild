@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit eutils fdo-mime gnome2-utils multilib pax-utils versionator
@@ -102,8 +101,11 @@ RDEPEND="
 	gstreamer? ( ${GSTRDEPEND} )
 "
 
-OPREFIX="/usr/$(get_libdir)"
 QA_PREBUILT="*"
+
+pkg_setup() {
+	OPREFIX="/usr/$(get_abi_LIBDIR)"
+}
 
 src_unpack() {
 	unpack ${A}

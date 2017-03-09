@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
 # nvidia drivers are unmasked here
