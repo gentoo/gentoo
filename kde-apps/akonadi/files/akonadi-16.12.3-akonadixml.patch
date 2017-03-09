@@ -1,0 +1,22 @@
+commit 2fe8bf8b73b9f5f5d19c87099b71a71f2595e70f
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sat Feb 11 21:29:05 2017 +0100
+
+    Build akonadixml unconditionally
+    
+    It makes more sense now that akonadiconsole depends on it.
+    
+    REVIEW: 129941
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4141947..4e79dc0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -16,6 +16,4 @@ add_subdirectory(core)
+ add_subdirectory(agentbase)
+ add_subdirectory(widgets)
+ add_subdirectory(selftest)
+-if(BUILD_TOOLS)
+-    add_subdirectory(xml)
+-endif()
++add_subdirectory(xml)
