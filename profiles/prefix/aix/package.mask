@@ -8,7 +8,7 @@
 =sys-devel/gcc-4.5*
 =sys-devel/gcc-4.6*
 =sys-devel/gcc-4.7*
->=sys-devel/gcc-4.9
+>=sys-devel/gcc-4.8.5
 
 # Michael Haubenwallner <haubi@gentoo.org> (14 Apr 2014)
 # Endless loop while compiling gcc-4.2.4 for yet unknown reason.
