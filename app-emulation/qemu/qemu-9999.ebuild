@@ -657,7 +657,7 @@ src_install() {
 
 	# Disable mprotect on the qemu binaries as they use JITs to be fast #459348
 	pushd "${ED}"/usr/bin >/dev/null
-	pax-mark m "${softmmu_bins[@]}" "${user_bins[@]}"
+	pax-mark mr "${softmmu_bins[@]}" "${user_bins[@]}" # bug 575594
 	popd >/dev/null
 
 	# Install config file example for qemu-bridge-helper
