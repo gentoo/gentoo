@@ -120,7 +120,7 @@ src_install() {
 	# install zebra as a file, symlink the rest
 	newinitd "${FILESDIR}"/quagga-services.init.3 zebra
 
-	for service in bgpd isisd nhrpd ospfd pimd ripd $(use ipv6 && echo ospf6d ripngd); do
+	for service in bgpd isisd ospfd pimd ripd $(use ipv6 && echo ospf6d ripngd) $(use nhrpd && echo nhrpd); do
 		dosym zebra /etc/init.d/${service}
 		systemd_dounit "${FILESDIR}/systemd/${service}.service"
 	done
