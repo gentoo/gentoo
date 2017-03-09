@@ -7207,7 +7207,7 @@ dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy p
 dev-python/async 0.6.2: Async Framework
 dev-python/async_timeout 1.0.0 1.1.0: Timeout context manager for asyncio programs
 dev-python/atom 0.3.10: Memory efficient Python objects
-dev-python/atomicwrites 0.1.8 0.1.9 1.1.5-r1: Atomic file writes.
+dev-python/atomicwrites 0.1.8 0.1.9 1.1.5-r2: Atomic file writes.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 15.2.0 16.3.0 16.3.0-r1: Attributes without boilerplate
