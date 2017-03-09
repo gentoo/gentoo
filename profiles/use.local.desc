@@ -275,7 +275,6 @@ app-cdr/cdrkit:hfs - Provide building of HFS (Apple) CD-images
 app-cdr/cuetools:extras - Install additional script that tag files based on cue/toc file information
 app-cdr/dvdisaster:debug - Enable memory debugging.
 app-cdr/gaffitter:scripts - Install additional gaffitter scripts for external programs
-app-cdr/k3b:emovix - Enable burning support for eMoviX images
 app-cdr/mirage2iso:pinentry - Support app-crypt/pinentry password input backend.
 app-crypt/aespipe:asm - Enable assembly modules
 app-crypt/aespipe:cpu_flags_x86_padlock - Use VIA padlock instructions, detected at run time, code still works on non-padlock processors
@@ -3289,6 +3288,7 @@ kde-apps/dolphin-plugins:dropbox - Enable support for the dropbox fileviewer plu
 kde-apps/dolphin-plugins:git - Enable support for the git VCS
 kde-apps/dolphin-plugins:mercurial - Enable support for the mercurial VCS
 kde-apps/gwenview:kipi - Support for the KDE Image Plugin Interface
+kde-apps/k3b:emovix - Enable burning support for eMoviX images
 kde-apps/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
 kde-apps/kaddressbook:prison - Enable support for QRcodes in contacts
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
