@@ -64,19 +64,25 @@ src_unpack() {
 }
 
 src_prepare() {
+	# patch launcher script
+	epatch "${FILESDIR}/${PN}-1.17_libdir.patch"
+	epatch "${FILESDIR}/${PN}-1.17_qt5plugins.patch"
+	epatch "${FILESDIR}/${PN}-1.17_unix-distro-build.patch"
+
 	# remove bundled Qt libraries
 	rm -r lib/mendeleydesktop/plugins \
 		|| die "failed to remove plugin directory"
 	rm -r lib/qt || die "failed to remove qt libraries"
 
-	# force use of system Qt libraries
-	sed -i "s:sys\.argv\.count(\"--force-system-qt\") > 0:True:" \
-		bin/mendeleydesktop || die "failed to patch startup script"
+	# fix qt library path
+	sed -i \
+		-e "s:lib/qt5/plugins:$(get_libdir)/qt5/plugins:g" \
+		bin/mendeleydesktop || die "failed to patch plugin path"
 
 	# fix library paths
 	sed -i \
 		-e "s:lib/mendeleydesktop:$(get_libdir)/mendeleydesktop:g" \
-		-e "s:MENDELEY_BASE_PATH + \"/lib/\":MENDELEY_BASE_PATH + \"/$(get_libdir)/\":g" \
+		-e "s:MENDELEY_BASE'] + \"/lib/\":MENDELEY_BASE'] + \"/$(get_libdir)/\":g" \
 		bin/mendeleydesktop || die "failed to patch library path"
 
 	default
@@ -114,8 +120,7 @@ src_install() {
 	doins -r share/mendeleydesktop
 
 	# install launch script
-	into /opt
-	make_wrapper ${PN} "/opt/${PN}/bin/${PN} --unix-distro-build"
+	dosym /opt/mendeleydesktop/bin/mendeleydesktop /opt/bin/mendeleydesktop
 }
 
 pkg_postinst() {
