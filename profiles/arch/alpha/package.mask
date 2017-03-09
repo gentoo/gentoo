@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tobias Klausmann <klausman@gentoo.org> (09 Mar 2017)
+# warning "__NR_copy_file_range not defined for your architecture"
+=sys-fs/udev-233
+
 # Alexey Shvetsov <alexxy@gentoo.org> (21 May 2012)
 # Need deps pecl-apc and pecl-uploadprogress bug #416897
 >=www-apps/drupal-7.14
