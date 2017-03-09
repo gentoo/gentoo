@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test webtools"
+IUSE="doc test webtools"
 
 RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]
@@ -25,6 +25,11 @@ RDEPEND="
 	webtools? ( net-libs/nodejs[npm] )
 	"
 DEPEND="${RDEPEND}
+	doc? (
+		dev-python/recommonmark[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+	)
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -40,6 +45,13 @@ DEPEND="${RDEPEND}
 python_configure_all() {
 	if ! use webtools; then
 		mydistutilsargs=( --skip-npm )
+	fi
+}
+
+python_compile_all() {
+	if use doc; then
+		emake -C docs html
+		HTML_DOCS=( docs/build/html/. )
 	fi
 }
 

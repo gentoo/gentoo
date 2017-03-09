@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 KMNAME="kdepim"
 KMMODULE="kresources"
@@ -31,10 +31,10 @@ KMLOADLIBS="libkdepim"
 src_prepare() {
 	local kconfig_compiler="${EKDEDIR}/bin/kconfig_compiler"
 
-	pushd kaddressbook/common
+	pushd kaddressbook/common > /dev/null
 	# create the kabprefs_base.h file
 	"${kconfig_compiler}" kaddressbook.kcfg kabprefs_base.kcfgc
-	popd
+	popd > /dev/null
 
 	kde4-meta_src_prepare
 }
