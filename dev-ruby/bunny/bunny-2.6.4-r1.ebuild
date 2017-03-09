@@ -11,6 +11,8 @@ RUBY_FAKEGEM_TASK_TEST=""
 
 RUBY_FAKEGEM_EXTRADOC="ChangeLog.md README.md"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="Another synchronous Ruby AMQP client"
