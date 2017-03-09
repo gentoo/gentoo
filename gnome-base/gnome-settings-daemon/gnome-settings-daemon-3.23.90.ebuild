@@ -82,9 +82,7 @@ DEPEND="${COMMON_DEPEND}
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 		gnome-base/gnome-session )
-	app-text/docbook-xsl-stylesheets
 	dev-libs/libxml2:2
-	dev-libs/libxslt
 	sys-devel/gettext
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
@@ -112,7 +110,6 @@ src_prepare() {
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
-		--enable-man \
 		$(use_enable colord color) \
 		$(use_enable cups) \
 		$(use_enable debug) \
