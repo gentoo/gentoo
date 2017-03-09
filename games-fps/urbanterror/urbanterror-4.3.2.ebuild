@@ -89,7 +89,7 @@ src_compile() {
 
 	emake \
 		ARCH=$(usex amd64 "x86_64" "i386") \
-		DEFAULT_BASEDIR="${ED}/usr/share/${PN}" \
+		DEFAULT_BASEDIR="/usr/share/${PN}" \
 		BUILD_CLIENT=$(nobuildit dedicated) \
 		BUILD_CLIENT_SMP=$(usex smp "$(nobuildit dedicated)" "0") \
 		BUILD_SERVER=$(usex dedicated "1" "$(buildit server)") \
