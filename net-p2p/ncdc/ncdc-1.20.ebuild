@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit autotools git-r3 toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
 HOMEPAGE="http://dev.yorhel.nl/ncdc"
-EGIT_REPO_URI="git://g.blicky.net/ncdc.git"
+SRC_URI="http://dev.yorhel.nl/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="geoip"
 
 RDEPEND="app-arch/bzip2
@@ -25,13 +25,8 @@ DEPEND="${RDEPEND}
 	dev-util/makeheaders
 	virtual/pkgconfig"
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
-	econf --enable-git-version \
+	econf \
 		$(use_with geoip)
 }
 
