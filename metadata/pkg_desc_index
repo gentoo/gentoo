@@ -15452,7 +15452,7 @@ net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Tr
 net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
 net-p2p/multibit 0.5.18: Secure, lightweight, international Bitcoin wallet written in Java
 net-p2p/myster 8.0-r1: Myster is a decentralized file sharing network
-net-p2p/ncdc 1.18.1 1.19 1.19.1 9999: ncurses directconnect client
+net-p2p/ncdc 1.19.1 1.20 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.2.16-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/phxd 0.1.0_pre23092005: Next generation Hotline server in python. kang's branch
@@ -17606,7 +17606,7 @@ sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, N
 sys-fs/mtools 4.0.15 4.0.17 4.0.18 4.0.18-r1: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2 0.6.4: Device mapper target autoconfig
-sys-fs/ncdu 1.11 1.12: NCurses Disk Usage
+sys-fs/ncdu 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2: Open source read-write NTFS driver that runs under FUSE
 sys-fs/ocfs2-tools 1.8.2-r2: Support programs for the Oracle Cluster Filesystem 2
