@@ -8427,7 +8427,7 @@ dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2015.07.12 2015.07.19 2016.01.10: Alternative regular expression module to replace re
 dev-python/regions 0.1 0.2: Astropy affiliated package for region handling
-dev-python/rencode 1.0.3 1.0.3-r1 1.0.5: similar to bencode from the BitTorrent project
+dev-python/rencode 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0 1.8.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1 3.3.0 3.3.0-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
@@ -12953,7 +12953,7 @@ media-libs/libptp2 1.1.10: Library and client for communicating with PTP enabled
 media-libs/libquicktime 1.2.4 1.2.4-r1: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
-media-libs/libraw 0.17.2 0.18.0 0.18.1: LibRaw is a library for reading RAW files obtained from digital photo cameras
+media-libs/libraw 0.17.2 0.18.1 0.18.2: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.2-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.8-r1 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
