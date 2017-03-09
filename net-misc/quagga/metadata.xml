@@ -28,6 +28,9 @@
 		<flag name="multipath">
 			Enable multipath routes support for any number of routes
 		</flag>
+		<flag name="nhrpd">
+			Build Next Hop Resolution Protocol daemon
+		</flag>
 		<flag name="ospfapi">
 			Enable OSPFAPI support for client applications accessing the OSPF link state database
 		</flag>

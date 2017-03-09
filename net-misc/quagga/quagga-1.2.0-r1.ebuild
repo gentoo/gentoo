@@ -16,10 +16,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~s390 ~sparc ~x86"
 
-IUSE="bgpclassless caps fpm doc elibc_glibc ipv6 multipath ospfapi pam protobuf +readline snmp tcp-zebra"
+IUSE="bgpclassless caps fpm doc elibc_glibc ipv6 multipath nhrpd ospfapi pam protobuf +readline snmp tcp-zebra"
 
 COMMON_DEPEND="
 	caps? ( sys-libs/libcap )
+	nhrpd? ( net-dns/c-ares:0= )
 	protobuf? ( dev-libs/protobuf-c:0= )
 	readline? (
 		sys-libs/readline:0=
@@ -91,6 +92,7 @@ src_configure() {
 		$(usex ospfapi '--enable-opaque-lsa --enable-ospf-te --enable-ospfclient' '' '' '') \
 		$(use_enable readline vtysh) \
 		$(use_with pam libpam) \
+		$(use_enable nhrpd) \
 		$(use_enable protobuf) \
 		$(use_enable ipv6 ripngd) \
 		$(use_enable ipv6 ospf6d) \
