@@ -45,7 +45,7 @@ IUSE="6-pieces"
 
 # there is no use-conditional mirror restriction,
 # so depend on another slot of the same package instead
-PDEPEND="6-pieces? ( ~${CATEGORY}/${P}:nofetch )"
+RDEPEND="6-pieces? ( ~${CATEGORY}/${P}:nofetch )"
 
 S="${WORKDIR}"
 CHECKREQS_DISK_USR="939M"
