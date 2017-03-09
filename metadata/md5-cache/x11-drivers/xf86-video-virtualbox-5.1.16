@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=x11-base/xorg-server-1.7:=[-minimal] x11-libs/libXcomposite python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=dev-lang/yasm-0.6.2 >=dev-util/kbuild-0.1.9998_pre20131130 sys-power/iasl x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/resourceproto x11-proto/scrnsaverproto x11-proto/xextproto x11-proto/xineramaproto x11-proto/xproto x11-libs/libXdmcp x11-libs/libXau x11-libs/libX11 x11-libs/libXfixes x11-libs/libXext dri? ( x11-proto/xf86driproto >=x11-libs/libdrm-2.4.5 )
+DESCRIPTION=VirtualBox X11 video driver for Gentoo guest
+EAPI=6
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=dri python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=dri? ( ~app-emulation/virtualbox-guest-additions-5.1.16 )
+RDEPEND=>=x11-base/xorg-server-1.7:=[-minimal] x11-libs/libXcomposite
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=http://download.virtualbox.org/virtualbox/5.1.16/VirtualBox-5.1.16.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=86c868985e6afdce13ab60b16fb91ac6
