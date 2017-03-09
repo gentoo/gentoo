@@ -65,7 +65,10 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
-	rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 )
+	rdp? (
+		>=net-misc/freerdp-1.1.0_beta1_p20130710
+		<net-misc/freerdp-2.0.0_pre20161219
+	)
 	rpi? (
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
