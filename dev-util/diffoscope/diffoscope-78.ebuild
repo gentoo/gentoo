@@ -12,5 +12,5 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND="dev-python/python-magic
-	dev-python/libarchive-c"
+RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
+	dev-python/libarchive-c[${PYTHON_USEDEP}]"
