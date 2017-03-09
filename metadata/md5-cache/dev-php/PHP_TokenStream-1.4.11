@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Wrapper around PHP's tokenizer extension
+EAPI=6
+HOMEPAGE=http://phpunit.de
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-php/fedora-autoloader || ( dev-lang/php:5.6[tokenizer] dev-lang/php:7.0[tokenizer] dev-lang/php:7.1[tokenizer] )
+SLOT=0
+SRC_URI=https://github.com/sebastianbergmann/php-token-stream/archive/1.4.11.tar.gz -> PHP_TokenStream-1.4.11.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=f250d407440b9522a2aa99428b9acc86
