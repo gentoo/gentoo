@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3, and setup.py not python3.2 compat
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 eutils flag-o-matic user
+inherit distutils-r1 eutils flag-o-matic user tmpfiles
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
@@ -85,16 +85,19 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch
+	"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch )
+
 pkg_postinst() {
 	enewgroup ${PN}
+	tmpfiles_process /usr/lib/tmpfiles.d/xpra.conf
 }
 
 python_prepare_all() {
 	rm -rf rencode || die
 
-	epatch \
-		"${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch \
-		"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch
+	sed -e "s:/var/run/xpra:${EROOT}run/xpra:" \
+		-i tmpfiles.d/xpra.conf
 
 	if use libav ; then
 		if ! has_version ">=media-video/libav-9" ; then
