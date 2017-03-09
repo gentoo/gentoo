@@ -5259,7 +5259,7 @@ dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.2: RFC3986 URI parsing library for OCaml
-dev-ml/ocamlbuild 0.10.1: Generic build tool with built-in rules for building OCaml library and programs
+dev-ml/ocamlbuild 0.10.1 0.11.0: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0-r1: A dependency sorter for OCaml source files
 dev-ml/ocamlgraph 1.8.7: O'Caml Graph library
