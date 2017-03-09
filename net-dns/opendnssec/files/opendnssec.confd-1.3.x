@@ -1,6 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Variables containing default binaries used in the opendnssec
 # initscript. You can alter them to another applications/paths

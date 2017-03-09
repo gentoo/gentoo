@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="implementation of rpcsec_gss (RFC 2203) for secure rpc communication"
 HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux/"

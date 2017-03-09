@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 PYTHON_REQ_USE="sqlite"
@@ -111,6 +110,7 @@ python_prepare_all() {
 	if use doc; then
 		epatch "${FILESDIR}/buildbot-0.9.4.docs.patch"
 	fi
+	distutils-r1_python_prepare_all
 }
 
 src_compile() {

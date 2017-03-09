@@ -3,8 +3,8 @@ Add umask support to cronolog.
 Patch-by: Mike Doty <kingtaco@gentoo.org>
 Signed-off-By: Robin H. Johnson <robbat2@gentoo.org>
 
---- src/cronolog.c.orig	2010-01-22 16:49:41.000000000 -0800
-+++ src/cronolog.c	2010-01-22 17:31:50.000000000 -0800
+--- a/src/cronolog.c.orig	2010-01-22 16:49:41.000000000 -0800
++++ b/src/cronolog.c	2010-01-22 17:31:50.000000000 -0800
 @@ -106,7 +106,8 @@
  
  #ifndef _WIN32

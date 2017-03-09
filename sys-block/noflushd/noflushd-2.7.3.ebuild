@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A daemon to spin down your disks and force accesses to be cached"
 HOMEPAGE="http://noflushd.sourceforge.net"

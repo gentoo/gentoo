@@ -1,7 +1,3 @@
-dnl
-dnl $Id$
-dnl
-
 PHP_LIBDIR=lib
 
 PHP_ARG_WITH(ming, for MING support,

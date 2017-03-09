@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="The Cluster Command and Control (C3) tool suite"
 HOMEPAGE="http://www.csm.ornl.gov/torc/C3/"

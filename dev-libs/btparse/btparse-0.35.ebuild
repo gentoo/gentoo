@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A C library to parse Bibtex files"
 HOMEPAGE="http://www.gerg.ca/software/btOOL/"

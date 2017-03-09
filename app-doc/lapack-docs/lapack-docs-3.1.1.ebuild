@@ -1,6 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Documentation reference and man pages for lapack implementations"
 HOMEPAGE="http://www.netlib.org/lapack"

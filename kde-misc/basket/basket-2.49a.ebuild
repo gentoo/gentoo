@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -53,6 +52,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
+
+PATCHES=( "${FILESDIR}"/${P}-deps.patch )
 
 src_prepare() {
 	kde5_src_prepare

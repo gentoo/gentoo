@@ -1,0 +1,107 @@
+From d646361528717fb0a9134394c62cc2d729b69d39 Mon Sep 17 00:00:00 2001
+From: Timo Tambet <ttambet@gmail.com>
+Date: Sun, 26 Feb 2017 01:04:05 +0200
+Subject: [PATCH 4/4] Fix some absolute paths to be appropriate for Gentoo
+
+Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
+Signed-off-by: Alexandre Rostovtsev <tetromino@gentoo.org>
+[Updated for 3.23.90; printer panel /usr/share path went away with print testpage button]
+Signed-off-by: Timo Tambet <ttambet@gmail.com>
+---
+ panels/datetime/Makefile.am      | 1 +
+ panels/datetime/test-endianess.c | 4 ++--
+ panels/datetime/test-timezone.c  | 2 +-
+ panels/datetime/tz.h             | 4 ++--
+ panels/printers/Makefile.am      | 3 +++
+ panels/printers/pp-host.c        | 2 +-
+ 6 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/panels/datetime/Makefile.am b/panels/datetime/Makefile.am
+index a003f0bce..c43062e98 100644
+--- a/panels/datetime/Makefile.am
++++ b/panels/datetime/Makefile.am
+@@ -23,6 +23,7 @@ AM_CPPFLAGS =						\
+ 	$(DATETIME_PANEL_CFLAGS)			\
+ 	-DGNOMELOCALEDIR="\"$(datadir)/locale\""	\
+ 	-DGNOMECC_DATA_DIR="\"$(pkgdatadir)\""		\
++	-DREALDATADIR="\"$(datadir)\""                  \
+ 	$(NULL)
+ 
+ # test-timezone is still too noisy
+diff --git a/panels/datetime/test-endianess.c b/panels/datetime/test-endianess.c
+index 06b26131b..eb52bb637 100644
+--- a/panels/datetime/test-endianess.c
++++ b/panels/datetime/test-endianess.c
+@@ -26,11 +26,11 @@ test_endianess (void)
+ 	GDir *dir;
+ 	const char *name;
+ 
+-	dir = g_dir_open ("/usr/share/i18n/locales/", 0, NULL);
++	dir = g_dir_open (REALDATADIR "/i18n/locales/", 0, NULL);
+ 	if (dir == NULL) {
+ 		/* Try with /usr/share/locale/
+ 		 * https://bugzilla.gnome.org/show_bug.cgi?id=646780 */
+-		dir = g_dir_open ("/usr/share/locale/", 0, NULL);
++		dir = g_dir_open (REALDATADIR "/locale/", 0, NULL);
+ 		if (dir == NULL) {
+ 			g_assert_not_reached ();
+ 		}
+diff --git a/panels/datetime/test-timezone.c b/panels/datetime/test-timezone.c
+index db5c0307e..7ef5cef37 100644
+--- a/panels/datetime/test-timezone.c
++++ b/panels/datetime/test-timezone.c
+@@ -2,7 +2,7 @@
+ #include <gtk/gtk.h>
+ #include "cc-timezone-map.h"
+ 
+-#define TZ_DIR "/usr/share/zoneinfo/"
++#define TZ_DIR REALDATADIR "/zoneinfo/"
+ 
+ static GList *
+ get_timezone_list (GList *tzs,
+diff --git a/panels/datetime/tz.h b/panels/datetime/tz.h
+index 93905b3ab..1ba918c74 100644
+--- a/panels/datetime/tz.h
++++ b/panels/datetime/tz.h
+@@ -28,9 +28,9 @@
+ #include <glib.h>
+ 
+ #ifndef __sun
+-#  define TZ_DATA_FILE "/usr/share/zoneinfo/zone.tab"
++#  define TZ_DATA_FILE REALDATADIR "/zoneinfo/zone.tab"
+ #else
+-#  define TZ_DATA_FILE "/usr/share/lib/zoneinfo/tab/zone_sun.tab"
++#  define TZ_DATA_FILE REALDATADIR "/lib/zoneinfo/tab/zone_sun.tab"
+ #endif
+ 
+ typedef struct _TzDB TzDB;
+diff --git a/panels/printers/Makefile.am b/panels/printers/Makefile.am
+index 575cda38c..d5da0bf68 100644
+--- a/panels/printers/Makefile.am
++++ b/panels/printers/Makefile.am
+@@ -9,6 +9,9 @@ AM_CPPFLAGS = 						\
+ 	-I$(top_srcdir)/shell/				\
+ 	-DGNOMELOCALEDIR="\"$(datadir)/locale\""	\
+ 	-DTEST_SRCDIR=\""$(srcdir)/"\"			\
++	-DREALDATADIR="\"$(datadir)\""                  \
++	-DPREFIX="\"$(prefix)\""                        \
++	-DLIBEXECDIR="\"$(libexecdir)\""                \
+ 	$(NULL)
+ 
+ noinst_LTLIBRARIES = libprinters.la
+diff --git a/panels/printers/pp-host.c b/panels/printers/pp-host.c
+index 8af77e9a9..bb6df7880 100644
+--- a/panels/printers/pp-host.c
++++ b/panels/printers/pp-host.c
+@@ -267,7 +267,7 @@ _pp_host_get_snmp_devices_thread (GSimpleAsyncResult *res,
+   data->devices->devices = NULL;
+ 
+   argv = g_new0 (gchar *, 3);
+-  argv[0] = g_strdup ("/usr/lib/cups/backend/snmp");
++  argv[0] = g_strdup (LIBEXECDIR "/cups/backend/snmp");
+   argv[1] = g_strdup (priv->hostname);
+ 
+   /* Use SNMP to get printer's informations */
+-- 
+2.11.1
+

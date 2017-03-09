@@ -1,0 +1,39 @@
+From 6f42992b4f1110f44d2db57cd6fe42559cfffdc2 Mon Sep 17 00:00:00 2001
+From: Cedric BAIL <cedric@osg.samsung.com>
+Date: Wed, 21 Sep 2016 10:33:44 -0700
+Subject: [PATCH] eet: fix gnutls support with newer version.
+
+---
+ src/lib/eet/eet_cipher.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/lib/eet/eet_cipher.c b/src/lib/eet/eet_cipher.c
+index a34fdff..cf9ef71 100644
+--- a/src/lib/eet/eet_cipher.c
++++ b/src/lib/eet/eet_cipher.c
+@@ -679,7 +679,6 @@ eet_identity_check(const void   *data_base,
+    gnutls_datum_t datum;
+    gnutls_datum_t signature;
+    gnutls_pubkey_t pubkey;
+-   gnutls_digest_algorithm_t hash_algo;
+    unsigned char *hash;
+    gcry_md_hd_t md;
+    int err;
+@@ -717,10 +716,10 @@ eet_identity_check(const void   *data_base,
+    if (gnutls_pubkey_import_x509(pubkey, cert, 0) < 0)
+      goto on_error;
+ 
+-   if (gnutls_pubkey_get_verify_algorithm(pubkey, &signature, &hash_algo) < 0)
+-     goto on_error;
+-
+-   if (gnutls_pubkey_verify_hash(pubkey, 0, &datum, &signature) < 0)
++   if (gnutls_pubkey_verify_hash2(pubkey,
++                                  gnutls_x509_crt_get_signature_algorithm(cert),
++                                  0,
++                                  &datum, &signature) < 0)
+      goto on_error;
+ 
+    if (sha1)
+-- 
+2.10.2
+

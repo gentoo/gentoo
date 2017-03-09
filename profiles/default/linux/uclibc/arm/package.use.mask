@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Davide Pesavento <pesa@gentoo.org> (19 Dec 2016)
 # Various unkeyworded deps: >=sys-devel/clang-3.9 (#591822),

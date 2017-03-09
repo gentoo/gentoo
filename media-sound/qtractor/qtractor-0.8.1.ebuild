@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -49,6 +48,7 @@ DEPEND="${RDEPEND}
 DOCS="README ChangeLog TODO AUTHORS"
 
 src_configure() {
+	append-cxxflags '-std=c++11'
 	econf \
 		$(use_enable mad libmad) \
 		$(use_enable libsamplerate) \

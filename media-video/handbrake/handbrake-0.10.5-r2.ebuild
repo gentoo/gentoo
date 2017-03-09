@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -32,7 +31,7 @@ RDEPEND="
 	dev-libs/jansson
 	media-libs/a52dec
 	media-libs/libass:=
-	media-libs/libbluray
+	media-libs/libbluray:=
 	media-libs/libdvdnav
 	media-libs/libdvdread
 	media-libs/libsamplerate

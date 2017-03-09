@@ -2,7 +2,6 @@ scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 
 " Default configuration file for Vim
-" $Id$
 
 " Written by Aron Griffis <agriffis@gentoo.org>
 " Modified by Ryan Phillips <rphillips@gentoo.org>

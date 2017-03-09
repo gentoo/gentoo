@@ -1,5 +1,4 @@
 # sample diald.filter
-# $Id$
 #
 # connect policy during office hours on weekdays
 restrict 8:00:00 17:59:59 1-5 * *

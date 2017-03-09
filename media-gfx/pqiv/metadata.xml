@@ -12,4 +12,7 @@
     </maintainer>
     <remote-id type="github">phillipberndt/pqiv</remote-id>
   </upstream>
+  <use>
+    <flag name="archive">Enable support for images in archives and cbX comic book files</flag>
+  </use>
 </pkgmetadata>

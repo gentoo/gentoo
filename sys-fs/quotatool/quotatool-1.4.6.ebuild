@@ -1,6 +1,5 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="command-line utility for filesystem quotas"
 HOMEPAGE="http://quotatool.ekenberg.se/"

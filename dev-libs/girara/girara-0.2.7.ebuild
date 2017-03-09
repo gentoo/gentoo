@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -18,9 +17,7 @@ EGIT_BRANCH="develop"
 LICENSE="ZLIB"
 SLOT="3"
 if ! [[ ${PV} == 9999* ]]; then
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-else
-KEYWORDS=""
+KEYWORDS="~amd64 arm ~x86 ~amd64-linux ~x86-linux"
 fi
 IUSE="libnotify static-libs test"
 

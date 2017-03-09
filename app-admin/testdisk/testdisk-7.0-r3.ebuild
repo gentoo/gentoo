@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,7 +13,7 @@ SRC_URI="http://www.cgsecurity.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ~hppa ppc x86"
 IUSE="ewf jpeg ntfs reiserfs static qt4"
 
 REQUIRED_USE="static? ( !qt4 )"

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
@@ -55,6 +54,9 @@ PATCHES=(
 
 	# https://github.com/libproxy/libproxy/issues/27
 	"${FILESDIR}/${PN}-0.4.12-macosx.patch"
+
+	# bug 600254
+	"${FILESDIR}/${P}-cmake-37.patch"
 )
 
 multilib_src_configure() {

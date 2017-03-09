@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A software synthesizer plugin for the DSSI Soft Synth Interface"
 HOMEPAGE="http://dssi.sourceforge.net/download.html#Xsynth-DSSI"

@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="This is a configuration file control system and IDS"
 HOMEPAGE="https://sourceforge.net/projects/filewatcher/"

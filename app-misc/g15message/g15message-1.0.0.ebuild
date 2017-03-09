@@ -1,6 +1,5 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A simple message/alert client for G15daemon"
 HOMEPAGE="http://g15daemon.sourceforge.net/"

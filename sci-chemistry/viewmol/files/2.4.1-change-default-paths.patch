@@ -1,7 +1,7 @@
 diff --git a/source/getrc.c b/source/getrc.c
 index a39b436..c130096 100644
---- a/source/getrc.c
-+++ b/source/getrc.c
+--- a/getrc.c
++++ b/getrc.c
 @@ -87,7 +87,7 @@ extern XtAppContext app;
  
  static char viewmolpath[MAXLENLINE];
@@ -13,8 +13,8 @@ index a39b436..c130096 100644
  {
 diff --git a/source/install b/source/install
 index 580865b..f136af3 100755
---- a/source/install
-+++ b/source/install
+--- a/install
++++ b/install
 @@ -54,24 +54,27 @@ fi
  cp $dirorig/viewmol $ROOT/bin
  chmod 711 $ROOT/bin/viewmol

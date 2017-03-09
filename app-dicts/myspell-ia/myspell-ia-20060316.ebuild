@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MYSPELL_SPELLING_DICTIONARIES=(
 "ia,ANY,ia,Interlingua (ANY locale),ia_ANY.zip"

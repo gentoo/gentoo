@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -41,7 +40,7 @@ RDEPEND="${NLS_RDEPEND}
 	aac? ( media-libs/faad2 )
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
-	bluray? ( >=media-libs/libbluray-0.2.1 )
+	bluray? ( >=media-libs/libbluray-0.2.1:= )
 	css? ( >=media-libs/libdvdcss-1.2.10 )
 	directfb? ( dev-libs/DirectFB )
 	dts? ( media-libs/libdca )

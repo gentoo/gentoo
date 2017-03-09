@@ -14,6 +14,10 @@
 # must be selected either with eselect pinentry or adding an entry to
 # $HOME/.gnupg/gpg-agent.conf such as "pinentry-program /usr/bin/pinentry-qt4".
 #
+# If using gnupg-2.1 or later with gpg-agent for ssh instead of ssh-agent,
+# $HOME/.gnupg/gpg-agent.conf must be edited to include "enable-ssh-support".
+# See bug #547544 for details of why.
+#
 # pinentry-curses or pinentry-tty will not work because the agent started here
 # is in a different tty than where it is used, so the agent does not know where
 # to request the passphrase and fails.

@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -23,7 +22,7 @@ RDEPEND="=dev-haskell/path-pieces-0.1*:=[profile?]
 		<dev-haskell/text-0.12:=[profile?]
 		>=dev-haskell/vector-0.8:=[profile?]
 		<dev-haskell/vector-0.11:=[profile?]
-		>=dev-lang/ghc-6.10.4:="
+		>=dev-lang/ghc-6.10.4:= <dev-lang/ghc-8"
 DEPEND="${RDEPEND}
 		test? ( >=dev-haskell/hspec-1.3
 			=dev-haskell/hunit-1.2*

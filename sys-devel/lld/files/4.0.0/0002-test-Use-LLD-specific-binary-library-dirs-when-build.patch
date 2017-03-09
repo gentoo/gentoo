@@ -1,0 +1,97 @@
+From 72b099306f586382a32cb0b37ad6a07dc7cddcf9 Mon Sep 17 00:00:00 2001
+From: Michal Gorny <mgorny@gentoo.org>
+Date: Wed, 8 Feb 2017 20:08:25 +0000
+Subject: [PATCH 2/3] [test] Use LLD-specific binary&library dirs when building
+ stand-alone
+
+Use both LLD- and LLVM-specific binary&library directories when LLD is
+being built stand-alone. This ensures that the freshly built tools and
+libraries are found and used correctly.
+
+Without this patch, the test suite uses LLVM_TOOLS_DIR and LLVM_LIBS_DIR
+to locate lld, and set PATH and LD_LIBRARY_PATH. When doing
+a stand-alone builds, these variables represent the installed LLVM.
+As a result, tests either fail due to missing lld executables/libraries
+or use an earlier installed LLD version rather than the one being built.
+
+To solve this, an additional LLD_TOOLS_DIR and LLD_LIBS_DIR variables
+are added that are populated using LLVM_*_OUTPUT_INTDIR. Those variables
+are populated with directories used to output built executables
+and libraries. In stand-alone builds, they represent the directories
+used by LLD. In integrated builds, they have the same values as
+LLVM_*_DIR and therefore using them does not harm.
+
+The new variables are prepended to PATH and LD_LIBRARY_PATH to ensure
+that freshly built binaries are preferred over potentially earlier
+installed ones. Furthermore, the resulting PATH is used to locate tools
+for substitutions since the search includes both tools built as part of
+LLD and of LLVM.
+
+Differential Revision: https://reviews.llvm.org/D29335
+
+git-svn-id: https://llvm.org/svn/llvm-project/lld/trunk@294507 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ test/lit.cfg         | 14 ++++++++++----
+ test/lit.site.cfg.in |  2 ++
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/test/lit.cfg b/test/lit.cfg
+index 0db879312..8dff2fb4e 100644
+--- a/test/lit.cfg
++++ b/test/lit.cfg
+@@ -66,18 +66,24 @@ config.llvm_obj_root = getattr(config, 'llvm_obj_root', None)
+ 
+ # Tweak the PATH to include the tools dir and the scripts dir.
+ if lld_obj_root is not None:
++    lld_tools_dir = getattr(config, 'lld_tools_dir', None)
++    if not lld_tools_dir:
++        lit_config.fatal('No LLD tools dir set!')
+     llvm_tools_dir = getattr(config, 'llvm_tools_dir', None)
+     if not llvm_tools_dir:
+         lit_config.fatal('No LLVM tools dir set!')
+-    path = os.path.pathsep.join((llvm_tools_dir, config.environment['PATH']))
++    path = os.path.pathsep.join((lld_tools_dir, llvm_tools_dir, config.environment['PATH']))
+     path = os.path.pathsep.join((os.path.join(getattr(config, 'llvm_src_root', None),'test','Scripts'),path))
+ 
+     config.environment['PATH'] = path
+ 
++    lld_libs_dir = getattr(config, 'lld_libs_dir', None)
++    if not lld_libs_dir:
++        lit_config.fatal('No LLD libs dir set!')
+     llvm_libs_dir = getattr(config, 'llvm_libs_dir', None)
+     if not llvm_libs_dir:
+         lit_config.fatal('No LLVM libs dir set!')
+-    path = os.path.pathsep.join((llvm_libs_dir,
++    path = os.path.pathsep.join((lld_libs_dir, llvm_libs_dir,
+                                  config.environment.get('LD_LIBRARY_PATH','')))
+     config.environment['LD_LIBRARY_PATH'] = path
+ 
+@@ -174,10 +180,10 @@ for pattern in tool_patterns:
+                           pattern)
+     tool_pipe = tool_match.group(2)
+     tool_name = tool_match.group(4)
+-    tool_path = lit.util.which(tool_name, llvm_tools_dir)
++    tool_path = lit.util.which(tool_name, config.environment['PATH'])
+     if not tool_path:
+         # Warn, but still provide a substitution.
+-        lit_config.note('Did not find ' + tool_name + ' in ' + llvm_tools_dir)
++        lit_config.note('Did not find ' + tool_name + ' in ' + path)
+         tool_path = llvm_tools_dir + '/' + tool_name
+     config.substitutions.append((pattern, tool_pipe + tool_path))
+ 
+diff --git a/test/lit.site.cfg.in b/test/lit.site.cfg.in
+index 5293f24c1..9dcb48174 100644
+--- a/test/lit.site.cfg.in
++++ b/test/lit.site.cfg.in
+@@ -6,6 +6,8 @@ config.llvm_tools_dir = "@LLVM_TOOLS_DIR@"
+ config.llvm_libs_dir = "@LLVM_LIBS_DIR@"
+ config.lit_tools_dir = "@LLVM_LIT_TOOLS_DIR@"
+ config.lld_obj_root = "@LLD_BINARY_DIR@"
++config.lld_libs_dir = "@LLVM_LIBRARY_OUTPUT_INTDIR@"
++config.lld_tools_dir = "@LLVM_RUNTIME_OUTPUT_INTDIR@"
+ config.target_triple = "@TARGET_TRIPLE@"
+ config.python_executable = "@PYTHON_EXECUTABLE@"
+ config.have_zlib = "@HAVE_LIBZ@"
+-- 
+2.12.0
+

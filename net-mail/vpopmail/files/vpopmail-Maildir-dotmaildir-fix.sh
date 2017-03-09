@@ -1,7 +1,6 @@
 #!/bin/bash
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 # Written by Robin H. Johnson, robbat2@gentoo.org
 
 OLDNAME='Maildir'

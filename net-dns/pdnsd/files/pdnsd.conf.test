@@ -1,4 +1,4 @@
-// $Id$
+// $Id: pdnsd.conf.in,v 1.4 2000/11/11 20:32:58 thomas Exp $
 
 global {
 	perm_cache=512;

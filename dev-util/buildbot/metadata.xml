@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hwoarang@gentoo.org</email>
-		<name>Markos Chandras</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>dolsen@gentoo.org</email>
 		<name>Brian Dolbec</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
 	</maintainer>
 	<longdescription lang="en">The BuildBot is a system to automate the compile/test cycle required
     by most software projects to validate code changes.

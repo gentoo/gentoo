@@ -1,0 +1,12 @@
+--- libdcp-1.3.3/wscript
++++ libdcp-1.3.3/wscript
+@@ -206,8 +206,7 @@
+         sys.exit(-1)
+ 
+ def post(ctx):
+-    if ctx.cmd == 'install':
+-        ctx.exec_command('/sbin/ldconfig')
++    pass
+ 
+ def tags(bld):
+     os.system('etags src/*.cc src/*.h')

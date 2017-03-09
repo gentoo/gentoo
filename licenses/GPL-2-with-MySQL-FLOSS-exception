@@ -8,7 +8,7 @@ Exception Intent
 We want specified Free/Libre and Open Source Software ("FLOSS") applications
 to be able to use specified GPL-licensed MySQL client libraries (the
 "Program") despite the fact that not all FLOSS licenses are compatible with
-version 2 of the GNU General Public License (the "GPL"). 
+version 2 of the GNU General Public License (the "GPL").
 
 
 Legal Terms and Conditions
@@ -22,7 +22,7 @@ GPL:
     a. You obey the GPL in all respects for the Program and the Derivative
        Work, except for identifiable sections of the Derivative Work which
        are not derived from the Program, and which can reasonably be
-       considered independent and separate works in themselves, 
+       considered independent and separate works in themselves,
 
     b. all identifiable sections of the Derivative Work which are not
        derived from the Program, and which can reasonably be considered
@@ -30,7 +30,7 @@ GPL:
 
         (i) are distributed subject to one of the FLOSS licenses listed
             below, and
-           
+
        (ii) the object code or executable form of those sections are
             accompanied by the complete corresponding machine-readable
             source code for those sections on the same medium and under the
@@ -94,9 +94,9 @@ the FLOSS Exception notice from that work and comply with the GPL in all
 respects, including by retaining all GPL notices.  You may choose to
 redistribute a copy of the Program exclusively under the terms of the GPL by
 removing the FLOSS Exception notice from that copy of the Program, provided
-that the copy has never been modified by you or any third party.  
+that the copy has never been modified by you or any third party.
 
-$Id$
+$Id: FLOSS-exception.txt,v 1.5 2004/07/15 15:24:19 z Exp $
 
 			GNU GENERAL PUBLIC LICENSE
 		       Version 2, June 1991
@@ -438,5 +438,3 @@ proprietary programs.  If your program is a subroutine library, you may
 consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Library General
 Public License instead of this License.
-
-

@@ -5,6 +5,9 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<use>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> instead of <pkg>dev-qt/qtwebkit</pkg></flag>
+	</use>
 	<upstream>
 		<bugs-to>mailto:webmaster@molspaces.com</bugs-to>
 	</upstream>

@@ -1,0 +1,237 @@
+commit 718581ffb12b723f9a3c0ae01b7ec2d8aed9d4bb
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Sat Feb 11 21:02:05 2017 +0100
+
+    adapt bindings to sip 4.19 (fixes #16071)
+
+diff --git a/python/analysis/analysis.sip b/python/analysis/analysis.sip
+index ceb5056..bd90e10 100644
+--- a/python/analysis/analysis.sip
++++ b/python/analysis/analysis.sip
+@@ -1,5 +1,4 @@
+ %Module(name=qgis._analysis,
+-        version=0,
+         keyword_arguments="Optional")
+ 
+ %Import QtCore/QtCoremod.sip
+diff --git a/python/analysis/network/networkanalysis.sip b/python/analysis/network/networkanalysis.sip
+index fb446d1..d2c192b 100644
+--- a/python/analysis/network/networkanalysis.sip
++++ b/python/analysis/network/networkanalysis.sip
+@@ -1,5 +1,4 @@
+ %Module(name=qgis._networkanalysis,
+-        version=0,
+         keyword_arguments="Optional")
+ 
+ %Import QtCore/QtCoremod.sip
+diff --git a/python/core/conversions.sip b/python/core/conversions.sip
+index 564d4de..f07d3ab 100644
+--- a/python/core/conversions.sip
++++ b/python/core/conversions.sip
+@@ -747,7 +747,7 @@ template<TYPE>
+ 
+ // QMap<qint64, TYPE> is implemented as a Python dictionary.
+ template<TYPE>
+-%MappedType QMap<qint64, TYPE> /DocType="dict-of-qint64-TYPE"/
++%MappedType QMap<qint64, TYPE>
+ {
+ %TypeHeaderCode
+ #include <qmap.h>
+@@ -1873,7 +1873,7 @@ template <TYPE>
+ };
+ 
+ // QList<QgsField> is implemented as a Python list of QgsField.
+-%MappedType QList<QgsField> /DocType="list-of-qgsfield"/
++%MappedType QList<QgsField>
+ {
+ %TypeHeaderCode
+ #include <qgsfield.h>
+@@ -1978,7 +1978,7 @@ template <TYPE>
+ 
+ %If (QVECTORINT_CONVERSION)
+ // QVector<int> is implemented as a Python list of integers.
+-%MappedType QVector<int> /DocType="list-of-int"/
++%MappedType QVector<int>
+ {
+ %TypeHeaderCode
+ #include <qvector.h>
+diff --git a/python/core/core.sip b/python/core/core.sip
+index 577c4c1..8f0b6af 100644
+--- a/python/core/core.sip
++++ b/python/core/core.sip
+@@ -1,5 +1,4 @@
+ %Module(name=qgis._core,
+-        version=0,
+         keyword_arguments="Optional")
+ 
+ %Feature QT5_SUPPORT
+diff --git a/python/core/qgscoordinatetransform.sip b/python/core/qgscoordinatetransform.sip
+index c14ba53..f9b7854 100644
+--- a/python/core/qgscoordinatetransform.sip
++++ b/python/core/qgscoordinatetransform.sip
+@@ -15,6 +15,7 @@
+ class QgsCoordinateTransform : QObject
+ {
+ %TypeHeaderCode
++extern PyObject *sipExportedExceptions__core[2];  // workaround: sipExportedExceptions__core is only defined in the first sip part
+ #include <qgscoordinatetransform.h>
+ %End
+ 
+@@ -215,5 +216,5 @@ class QgsCoordinateTransform : QObject
+ 
+   signals:
+     /** Signal when an invalid pj_transform() has occurred */
+-    void  invalidTransformInput() const;
++    void invalidTransformInput() const;
+ };
+diff --git a/python/core/qgsfeature.sip b/python/core/qgsfeature.sip
+index 596f8a8..4009b50 100644
+--- a/python/core/qgsfeature.sip
++++ b/python/core/qgsfeature.sip
+@@ -4,7 +4,7 @@ typedef QMap<int, QVariant> QgsAttributeMap;
+ typedef QVector<QVariant> QgsAttributes;
+ 
+ // QgsAttributes is implemented as a Python list of Python objects.
+-%MappedType QgsAttributes /DocType="list-of-attributes"/
++%MappedType QgsAttributes
+ {
+ %TypeHeaderCode
+ #include <qgsfeature.h>
+diff --git a/python/core/qgspallabeling.sip b/python/core/qgspallabeling.sip
+index 488b58b..3d99555 100644
+--- a/python/core/qgspallabeling.sip
++++ b/python/core/qgspallabeling.sip
+@@ -1,5 +1,5 @@
+ // QMap<QgsPalLayerSettings::DataDefinedProperties, QgsDataDefined*> is implemented as a Python dictionary.
+-%MappedType QMap<QgsPalLayerSettings::DataDefinedProperties, QgsDataDefined*> /DocType="dict-of-QgsPalLayerSettings.DataDefinedProperties-QgsDataDefined*"/
++%MappedType QMap<QgsPalLayerSettings::DataDefinedProperties, QgsDataDefined*>
+ {
+ %TypeHeaderCode
+ #include <qmap.h>
+diff --git a/python/core/qgsvectorlayerfeatureiterator.sip b/python/core/qgsvectorlayerfeatureiterator.sip
+index 0685e20..ad3431c 100644
+--- a/python/core/qgsvectorlayerfeatureiterator.sip
++++ b/python/core/qgsvectorlayerfeatureiterator.sip
+@@ -70,5 +70,6 @@ class QgsVectorLayerFeatureIterator : QgsAbstractFeatureIterator
+     //void updateFeatureGeometry( QgsFeature& f );
+ 
+   private:
+-    QgsVectorLayerFeatureIterator();
++    QgsVectorLayerFeatureIterator( const QgsVectorLayerFeatureIterator &rhs );
++
+ };
+diff --git a/python/core/raster/qgsrasterprojector.sip b/python/core/raster/qgsrasterprojector.sip
+index 47bb697..40b9a10 100644
+--- a/python/core/raster/qgsrasterprojector.sip
++++ b/python/core/raster/qgsrasterprojector.sip
+@@ -55,7 +55,7 @@ class QgsRasterProjector : QgsRasterInterface
+ 
+     int bandCount() const;
+ 
+-    int dataType( int bandNo ) const;
++    QGis::DataType dataType( int bandNo ) const;
+ 
+     /** \brief set source and destination CRS */
+     void setCRS( const QgsCoordinateReferenceSystem & theSrcCRS, const QgsCoordinateReferenceSystem & theDestCRS,
+diff --git a/python/gui/editorwidgets/qgsdatetimeedit.sip b/python/gui/editorwidgets/qgsdatetimeedit.sip
+index deda76d..be658a1 100644
+--- a/python/gui/editorwidgets/qgsdatetimeedit.sip
++++ b/python/gui/editorwidgets/qgsdatetimeedit.sip
+@@ -37,6 +37,7 @@ class QgsDateTimeEdit : QDateTimeEdit
+ 
+   protected:
+     virtual void resizeEvent( QResizeEvent* event );
+-
+     void mousePressEvent( QMouseEvent*event );
++    virtual void fixup(QString & input) const;
++    virtual QValidator::State validate(QString &text, int &pos) const;
+ };
+diff --git a/python/gui/editorwidgets/qgsdoublespinbox.sip b/python/gui/editorwidgets/qgsdoublespinbox.sip
+index 1666a02..58f589d 100644
+--- a/python/gui/editorwidgets/qgsdoublespinbox.sip
++++ b/python/gui/editorwidgets/qgsdoublespinbox.sip
+@@ -80,4 +80,5 @@ class QgsDoubleSpinBox : QDoubleSpinBox
+   protected:
+     virtual void changeEvent( QEvent* event );
+     virtual void paintEvent( QPaintEvent* event );
++    virtual void fixup(QString & input) const;
+ };
+diff --git a/python/gui/editorwidgets/qgsspinbox.sip b/python/gui/editorwidgets/qgsspinbox.sip
+index d560641..c953470 100644
+--- a/python/gui/editorwidgets/qgsspinbox.sip
++++ b/python/gui/editorwidgets/qgsspinbox.sip
+@@ -78,7 +78,7 @@ class QgsSpinBox : QSpinBox
+     virtual QValidator::State validate( QString & input, int & pos ) const;
+ 
+   protected:
+-
+     virtual void changeEvent( QEvent* event );
+     virtual void paintEvent( QPaintEvent* event );
++    virtual void fixup(QString &input) const;
+ };
+diff --git a/python/gui/gui.sip b/python/gui/gui.sip
+index 240c636..727ac70 100644
+--- a/python/gui/gui.sip
++++ b/python/gui/gui.sip
+@@ -1,5 +1,4 @@
+ %Module(name=qgis._gui,
+-        version=0,
+         keyword_arguments="Optional")
+ 
+ %Feature HAVE_QSCI_SIP
+diff --git a/python/gui/qgslonglongvalidator.sip b/python/gui/qgslonglongvalidator.sip
+index 9def830..7500357 100644
+--- a/python/gui/qgslonglongvalidator.sip
++++ b/python/gui/qgslonglongvalidator.sip
+@@ -8,7 +8,7 @@ class QgsLongLongValidator : QValidator
+     QgsLongLongValidator( qint64 bottom, qint64 top, QObject *parent );
+     ~QgsLongLongValidator();
+ 
+-    QValidator::State validate( QString &input, int& ) const;
++    virtual QValidator::State validate( QString &input, int& ) const;
+ 
+     void setBottom( qint64 bottom );
+     void setTop( qint64 top );
+@@ -17,4 +17,6 @@ class QgsLongLongValidator : QValidator
+ 
+     qint64 bottom() const;
+     qint64 top() const;
++
++    virtual void fixup(QString &input) const;
+ };
+diff --git a/python/server/qgswmsconfigparser.sip b/python/server/qgswmsconfigparser.sip
+index f05752c..d231637 100644
+--- a/python/server/qgswmsconfigparser.sip
++++ b/python/server/qgswmsconfigparser.sip
+@@ -115,7 +115,7 @@ class QgsWMSConfigParser
+     virtual void setScaleDenominator( double denom ) = 0;
+     virtual void addExternalGMLData( const QString& layerName, QDomDocument* gmlDoc ) = 0;
+ 
+-    virtual QList< QPair< QString, QgsLayerCoordinateTransform > > layerCoordinateTransforms() const = 0;
++    // virtual QList< QPair< QString, QgsLayerCoordinateTransform > > layerCoordinateTransforms() const = 0;
+ 
+     virtual int nLayers() const = 0;
+ 
+diff --git a/python/server/qgswmsprojectparser.sip b/python/server/qgswmsprojectparser.sip
+index f6dd579..13fea73 100644
+--- a/python/server/qgswmsprojectparser.sip
++++ b/python/server/qgswmsprojectparser.sip
+@@ -63,7 +63,7 @@ class QgsWMSProjectParser : public QgsWMSConfigParser
+     void setScaleDenominator( double )  /*override*/;
+     void addExternalGMLData( const QString&, QDomDocument* )  /*override*/ ;
+ 
+-    QList< QPair< QString, QgsLayerCoordinateTransform > > layerCoordinateTransforms() const  /*override*/ ;
++    // QList< QPair< QString, QgsLayerCoordinateTransform > > layerCoordinateTransforms() const  /*override*/ ;
+ 
+     /** Fills a layer and a style list. The two list have the same number of entries and the style and the layer at a position belong together (similar to the HTTP parameters 'Layers' and 'Styles'. Returns 0 in case of success*/
+     int layersAndStyles( QStringList& layers, QStringList& styles ) const  /*override*/ ;
+diff --git a/python/server/server.sip b/python/server/server.sip
+index 537cd0b..355d3fa 100644
+--- a/python/server/server.sip
++++ b/python/server/server.sip
+@@ -1,5 +1,4 @@
+ %Module(name=qgis._server,
+-        version=0,
+         keyword_arguments="Optional")
+ 
+ 

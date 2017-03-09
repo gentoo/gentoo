@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Alan Hourihane <alanh@fairlite.co.uk> (11 Mar 2014)
 # plays havoc with GNU pth bug #503764

@@ -1,6 +1,5 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A collection of small tools for accessing netgroup contents"
 HOMEPAGE="ftp://ftp.hungry.com/pub/hungry/ng-utils"

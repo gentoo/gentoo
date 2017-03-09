@@ -39,8 +39,8 @@ RDEPEND+="
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	#epatch "${FILESDIR}"/fio-2.8-sysmacros.patch #580592
 	epatch "${FILESDIR}"/fio-2.2.13-libmtd.patch
+	epatch "${FILESDIR}"/fio-2.2.15-rdma.patch #542640
 	sed -i '/^DEBUGFLAGS/s: -D_FORTIFY_SOURCE=2::g' Makefile || die
 	epatch_user
 
@@ -64,6 +64,7 @@ src_configure() {
 		$(usex gtk '--enable-gfio' '') \
 		$(usex numa '' '--disable-numa') \
 		$(usex rbd '' '--disable-rbd') \
+		$(usex rdma '' '--disable-rdma') \
 		$(usex static '--build-static' '')
 	echo "$@"
 	"$@" || die 'configure failed'

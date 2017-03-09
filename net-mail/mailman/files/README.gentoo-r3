@@ -1,6 +1,5 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 Follow these instructions to finish setting up mailman. This file and the
 original ebuild were tweaked by me <lamer@gentoo.org> but were graciously

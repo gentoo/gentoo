@@ -1,5 +1,4 @@
 # default: off
-# $Id$
 # description: The IMAPS service allows remote users to access their mail \
 #	       using an IMAP client with SSL support such as Netscape \
 #	       Communicator or fetchmail.

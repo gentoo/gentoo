@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: unpacker.eclass
 # @MAINTAINER:
@@ -219,30 +218,30 @@ unpack_makeself() {
 		debug-print "Detected Makeself version ${ver} ... using ${skip} as offset"
 	fi
 	case ${exe} in
-		tail)	exe="tail -n +${skip} '${src}'";;
-		dd)		exe="dd ibs=${skip} skip=1 if='${src}'";;
+		tail)	exe=( tail -n +${skip} "${src}" );;
+		dd)		exe=( dd ibs=${skip} skip=1 if="${src}" );;
 		*)		die "makeself cant handle exe '${exe}'"
 	esac
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
 	local filetype tmpfile="${T}/${FUNCNAME}"
-	eval ${exe} 2>/dev/null | head -c 512 > "${tmpfile}"
+	"${exe[@]}" 2>/dev/null | head -c 512 > "${tmpfile}"
 	filetype=$(file -b "${tmpfile}") || die
 	case ${filetype} in
 		*tar\ archive*)
-			eval ${exe} | tar --no-same-owner -xf -
+			"${exe[@]}" | tar --no-same-owner -xf -
 			;;
 		bzip2*)
-			eval ${exe} | bzip2 -dc | tar --no-same-owner -xf -
+			"${exe[@]}" | bzip2 -dc | tar --no-same-owner -xf -
 			;;
 		gzip*)
-			eval ${exe} | tar --no-same-owner -xzf -
+			"${exe[@]}" | tar --no-same-owner -xzf -
 			;;
 		compress*)
-			eval ${exe} | gunzip | tar --no-same-owner -xf -
+			"${exe[@]}" | gunzip | tar --no-same-owner -xf -
 			;;
 		XZ*)
-			eval ${exe} | unxz | tar --no-same-owner -xf -
+			"${exe[@]}" | unxz | tar --no-same-owner -xf -
 			;;
 		*)
 			eerror "Unknown filetype \"${filetype}\" ?"

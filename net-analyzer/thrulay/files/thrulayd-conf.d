@@ -1,6 +1,5 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # The default window size is 4194304 bytes
 #THRULAYD_WINDOW="4194304"

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,7 +12,7 @@ LICENSE="public-domain"
 # Minimal build keeps only the indexed files (if applicable) and the
 # documentation. The non-indexed database is not installed.
 IUSE="emboss minimal"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="emboss? ( sci-biology/emboss )"
 RDEPEND="${DEPEND}"

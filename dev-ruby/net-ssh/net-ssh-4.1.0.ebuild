@@ -1,0 +1,35 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=5
+
+USE_RUBY="ruby22 ruby23"
+
+RUBY_FAKEGEM_TASK_TEST=""
+
+RUBY_FAKEGEM_DOCDIR="doc"
+RUBY_FAKEGEM_EXTRADOC="CHANGES.txt README.rdoc THANKS.txt"
+RUBY_FAKEGEM_EXTRAINSTALL="support"
+
+inherit ruby-fakegem
+
+DESCRIPTION="Non-interactive SSH processing in pure Ruby"
+HOMEPAGE="https://github.com/net-ssh/net-ssh"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> net-ssh-git-${PV}.tgz"
+
+LICENSE="GPL-2"
+SLOT="4"
+KEYWORDS="~amd64"
+IUSE="sodium test"
+
+ruby_add_rdepend "virtual/ruby-ssl sodium? ( dev-ruby/rbnacl dev-ruby/bcrypt_pbkdf )"
+ruby_add_bdepend "test? ( dev-ruby/test-unit:2 >=dev-ruby/mocha-0.13 )"
+
+all_ruby_prepare() {
+	# Don't use a ruby-bundled version of libsodium
+	sed -i -e '/rbnacl\/libsodium/ s:^:#:' lib/net/ssh/authentication/ed25519.rb || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:test test/test_all.rb || die "Tests failed."
+}

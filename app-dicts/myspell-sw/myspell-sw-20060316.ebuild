@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 MYSPELL_SPELLING_DICTIONARIES=(
 "sw,KE,sw_KE,Kiswahili (Africa),sw_KE.zip"

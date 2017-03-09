@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -29,7 +28,7 @@ SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( http://download.zeroc.com/Ice/$(get_version_component_range 1-2)/${P}.pdf )"
 LICENSE="GPL-2"
 SLOT="0/36"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc examples libressl +ncurses mono php python ruby test debug"
 
 RDEPEND=">=dev-libs/expat-2.0.1

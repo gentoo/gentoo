@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 EAPI="3"
 DESCRIPTION="A GiNaC-based library for symbolic expansion of certain transcendental functions"
 HOMEPAGE="http://wwwthep.physik.uni-mainz.de/~stefanw/nestedsums/"

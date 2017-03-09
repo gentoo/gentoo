@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -13,14 +12,14 @@ HOMEPAGE="http://qwt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV/_/-}/${MY_P}.tar.bz2"
 
 LICENSE="qwt mathml? ( LGPL-2.1 Nokia-Qt-LGPL-Exception-1.1 )"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 SLOT="6/1.3"
 IUSE="designer doc examples mathml opengl qt4 qt5 static-libs svg"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
 
 DEPEND="
-	!<x11-libs/qwt-5.2.3
+	opengl? ( virtual/opengl )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
@@ -38,10 +37,12 @@ DEPEND="
 		opengl? ( dev-qt/qtopengl:5 )
 		svg? ( dev-qt/qtsvg:5 )
 	)
+"
+RDEPEND="${DEPEND}
+	!<x11-libs/qwt-5.2.3
+	!x11-libs/qwt:5[doc]
 	doc? ( !<media-libs/coin-3.1.3[doc] )
-	opengl? ( virtual/opengl )
-	"
-RDEPEND="${DEPEND}"
+"
 
 S="${WORKDIR}"/${MY_P}
 
@@ -50,7 +51,7 @@ DOCS=( CHANGES-6.1 README )
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2-invalid-read.patch
 	"${FILESDIR}"/${PN}-6.1.1-pc-destdir.patch
-	)
+)
 
 src_prepare() {
 	cat > qwtconfig.pri <<-EOF

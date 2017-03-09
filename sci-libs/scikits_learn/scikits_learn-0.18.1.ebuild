@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -46,6 +45,8 @@ DEPEND="
 
 S="${WORKDIR}/${MYP}"
 
+PATCHES=( "${FILESDIR}/${P}-system-cblas.patch" )
+
 python_prepare_all() {
 	# bug #397605
 	[[ ${CHOST} == *-darwin* ]] \
@@ -54,6 +55,9 @@ python_prepare_all() {
 
 	# scikits-learn now uses the horrible numpy.distutils automagic
 	export SCIPY_FCONFIG="config_fc --noopt --noarch"
+
+	# remove bundled cblas
+	rm -r sklearn/src || die
 
 	# use system joblib
 	rm -r sklearn/externals/joblib || die

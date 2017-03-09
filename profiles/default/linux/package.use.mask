@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is masked in base/package.use.mask as Linux only.

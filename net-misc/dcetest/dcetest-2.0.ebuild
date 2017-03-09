@@ -1,6 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="dcetest is a clone of the Windows rpcinfo"
 HOMEPAGE="http://www.atstake.com/research/tools/info_gathering/"

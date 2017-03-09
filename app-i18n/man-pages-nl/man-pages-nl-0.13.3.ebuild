@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A somewhat comprehensive collection of Dutch Linux man pages"
 HOMEPAGE="http://doc.nl.linux.org/MANPAGE/"

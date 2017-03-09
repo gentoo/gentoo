@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 EGO_PN="github.com/opencontainers/${PN}"
@@ -26,6 +25,7 @@ IUSE="apparmor hardened +seccomp"
 RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	seccomp? ( sys-libs/libseccomp )
+	!app-emulation/docker-runc
 "
 
 S=${WORKDIR}/${P}/src/${EGO_PN}

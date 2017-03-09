@@ -1,0 +1,42 @@
+Removes forced march setting and align-functions on x86, as they would
+override user's CFLAGS.
+
+--- qemacs-orig/Makefile
++++ qemacs/Makefile
+@@ -29,35 +29,11 @@
+     cmd  := 
+ endif
+ 
+-ifeq ($(CC),gcc)
+-  CFLAGS  += -Wall -g -O2 -funsigned-char
+-  # do not warn about zero-length formats.
+-  CFLAGS   += -Wno-format-zero-length
+-  LDFLAGS  += -g
+-endif
+-
+-#include local compiler configuration file
+--include $(DEPTH)/cflags.mk
+-
+-ifdef TARGET_GPROF
+-  CFLAGS  += -p
+-  LDFLAGS += -p
+-endif
+-
+ #TCFLAGS := -DCONFIG_TINY -m32 $(CFLAGS) -Os
+ #TLDFLAGS := -m32 $(LDFLAGS)
+-TCFLAGS := -DCONFIG_TINY $(CFLAGS) -Os
++TCFLAGS := -DCONFIG_TINY $(CFLAGS)
+ TLDFLAGS := $(LDFLAGS)
+ 
+-ifdef TARGET_ARCH_X86
+-  #CFLAGS+=-fomit-frame-pointer
+-  ifeq ($(GCC_MAJOR),2)
+-    CFLAGS += -m386 -malign-functions=0
+-  else
+-    CFLAGS += -march=i386 -falign-functions=0
+-  endif
+-endif
+-
+ DEFINES=-DHAVE_QE_CONFIG_H
+ 
+ ########################################################

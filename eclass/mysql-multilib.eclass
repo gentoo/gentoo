@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
@@ -943,14 +942,8 @@ mysql-multilib_pkg_config() {
 	mysql_init_vars
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
-	if [[ ${HAS_TOOLS_PATCH} ]] ; then
-		if ! built_with_use ${CATEGORY}/${PN} server ; then
-			die "Minimal builds do NOT include the MySQL server"
-		fi
-	else
-		if built_with_use ${CATEGORY}/${PN} minimal ; then
-			die "Minimal builds do NOT include the MySQL server"
-		fi
+	if [[ ! -x "${EROOT}/usr/sbin/mysqld" ]] ; then
+		die "Minimal builds do NOT include the MySQL server"
 	fi
 
 	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]]; then

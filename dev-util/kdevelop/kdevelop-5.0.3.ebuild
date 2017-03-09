@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -47,7 +46,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtxml)
 	>=dev-util/kdevplatform-${PV}:5
 	x11-misc/shared-mime-info
-	cxx? ( >=sys-devel/clang-3.5.0 )
+	cxx? ( >=sys-devel/clang-3.5.0:0 )
 	gdbui? ( $(add_plasma_dep libksysguard) )
 	okteta? ( $(add_kdeapps_dep okteta) )
 	plasma? (

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,14 +11,14 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://cairographics.org/releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="http://cairographics.org/"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-IUSE="X aqua debug directfb gles2 +glib opengl static-libs +svg valgrind xcb xlib-xcb"
+IUSE="X aqua debug directfb gles2 +glib opengl static-libs +svg valgrind xcb"
 # gtk-doc regeneration doesn't seem to work with out-of-source builds
 #[[ ${PV} == *9999* ]] && IUSE="${IUSE} doc" # API docs are provided in tarball, no need to regenerate
 
@@ -63,7 +62,6 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="
 	gles2? ( !opengl )
-	xlib-xcb? ( xcb )
 "
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -133,7 +131,6 @@ multilib_src_configure() {
 		$(use_enable valgrind) \
 		$(use_enable xcb) \
 		$(use_enable xcb xcb-shm) \
-		$(use_enable xlib-xcb) \
 		--enable-ft \
 		--enable-pdf \
 		--enable-png \
@@ -142,22 +139,11 @@ multilib_src_configure() {
 		--disable-gallium \
 		--disable-qt \
 		--disable-vg \
+		--disable-xlib-xcb \
 		${myopts}
 }
 
 multilib_src_install_all() {
 	prune_libtool_files --all
 	einstalldocs
-}
-
-pkg_postinst() {
-	if use !xlib-xcb; then
-		if has_version net-misc/nxserver-freenx \
-				|| has_version net-misc/x2goserver; then
-			ewarn "cairo-1.12 is known to cause GTK+ errors with NX servers."
-			ewarn "Enable USE=\"xlib-xcb\" if you notice incorrect behavior in GTK+"
-			ewarn "applications that are running inside NX sessions. For details, see"
-			ewarn "https://bugs.gentoo.org/441878 or https://bugs.freedesktop.org/59173"
-		fi
-	fi
 }

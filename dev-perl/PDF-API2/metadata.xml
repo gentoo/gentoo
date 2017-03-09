@@ -106,7 +106,7 @@
     <remote-id type="cpan-module">PDF::API2::Resource::XObject::Image::PNG</remote-id>
     <remote-id type="cpan-module">PDF::API2::Resource::XObject::Image::PNM</remote-id>
     <remote-id type="cpan-module">PDF::API2::Resource::XObject::Image::TIFF</remote-id>
-    <remote-id type="cpan-module">PDF::API2::Resource::XObject::Image::Tiff::File</remote-id>
+    <remote-id type="cpan-module">PDF::API2::Resource::XObject::Image::TIFF::File</remote-id>
     <remote-id type="cpan-module">PDF::API2::UniWrap</remote-id>
     <remote-id type="cpan-module">PDF::API2::Util</remote-id>
     <remote-id type="cpan-module">PDF::API2::Win32</remote-id>

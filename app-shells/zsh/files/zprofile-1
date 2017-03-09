@@ -1,5 +1,4 @@
 # @GENTOO_PORTAGE_EPREFIX@/etc/zsh/zprofile
-# $Id$
 
 # Load environment settings from profile.env, which is created by
 # env-update from the files in /etc/env.d

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="A tool designed to help administrators keep track of their daily activities"
 HOMEPAGE="http://www.deer-run.com/~hal/"

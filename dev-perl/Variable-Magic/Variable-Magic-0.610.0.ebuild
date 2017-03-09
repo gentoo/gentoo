@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Associate user-defined magic to variables from Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~x86 ~ppc-aix ~x86-fbsd ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~x86 ~ppc-aix ~x86-fbsd ~x64-macos"
 IUSE="test"
 
 RDEPEND="

@@ -1,5 +1,5 @@
---- configure.in.orig	2011-01-19 20:43:35.000000000 +0100
-+++ configure.in	2012-02-21 11:14:51.047974999 +0100
+--- a/configure.in	2011-01-19 20:43:35.000000000 +0100
++++ b/configure.in	2012-02-21 11:14:51.047974999 +0100
 @@ -265,7 +265,6 @@
          cpg_package=openais
      fi
@@ -65,8 +65,8 @@
  fi
  AC_SUBST(AIS_LDFLAGS)
 
---- ocfs2_controld/Makefile.orig	2012-02-21 11:49:36.248974932 +0100
-+++ ocfs2_controld/Makefile	2012-02-21 11:49:47.943974980 +0100
+--- a/ocfs2_controld/Makefile	2012-02-21 11:49:36.248974932 +0100
++++ b/ocfs2_controld/Makefile	2012-02-21 11:49:47.943974980 +0100
 @@ -14,7 +14,7 @@
  ifneq ($(BUILD_PCMK_SUPPORT),)
  SBIN_PROGRAMS += ocfs2_controld.pcmk

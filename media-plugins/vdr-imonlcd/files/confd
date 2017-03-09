@@ -1,5 +1,3 @@
-# $Id$
-
 #IMONLCD_DEVICE=/dev/lcd0
 
 # Protocol of lcd-device (see lsusb)

@@ -1,5 +1,4 @@
 # for cronie
-# $Id$
 
 # Global variables
 SHELL=/bin/bash

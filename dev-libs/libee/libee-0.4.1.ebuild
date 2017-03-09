@@ -1,6 +1,5 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
@@ -12,7 +11,7 @@ SRC_URI="http://www.libee.org/files/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa x86 ~amd64-linux"
+KEYWORDS="amd64 arm hppa x86 ~amd64-linux"
 IUSE="debug static-libs"
 
 DEPEND="dev-libs/libxml2

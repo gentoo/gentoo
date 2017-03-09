@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -20,7 +19,7 @@ EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="libunwind +static-libs test"
+IUSE="+libunwind +static-libs test"
 
 RDEPEND="
 	libunwind? (

@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Id$
 
 # This files contains a small list of packages that define a 
 # minimal FreeBSD system. DO NOT change this without contacting

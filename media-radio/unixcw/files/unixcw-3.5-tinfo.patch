@@ -1,0 +1,21 @@
+--- configure.ac.old	2017-03-07 13:31:46.074580930 +0100
++++ configure.ac	2017-03-07 13:33:25.640924331 +0100
+@@ -355,6 +355,7 @@
+     AC_CHECK_LIB(curses, initscr)
+     if test $ac_cv_lib_curses_initscr = 'yes' ; then
+ 	WITH_CWCP='yes'
++	PKG_CHECK_MODULES(ncurses, ncurses, [NCURSES_LIB="$ncurses_LIBS"], )
+     else
+ 	WITH_CWCP='no'
+ 	AC_MSG_WARN([Cannot find libcurses - unable to build cwcp])
+--- src/cwcp/Makefile.am.old	2017-03-07 13:30:10.813167002 +0100
++++ src/cwcp/Makefile.am	2017-03-07 13:30:28.950864931 +0100
+@@ -26,7 +26,7 @@
+ # target-specific preprocessor flags (#defs and include dirs)
+ #cwcp_CPPFLAGS = -I$(top_srcdir)/src/cwutils/ -I$(top_srcdir)/src/libcw/
+ # target-specific linker flags (objects to link)
+-cwcp_LDADD = -lcurses -L$(top_builddir)/src/libcw/.libs -lcw $(top_builddir)/src/cwutils/lib_cwcp.a
++cwcp_LDADD = $(ncurses_LIBS) -L$(top_builddir)/src/libcw/.libs -lcw $(top_builddir)/src/cwutils/lib_cwcp.a
+ 
+ 
+ # copy man page to proper directory during installation

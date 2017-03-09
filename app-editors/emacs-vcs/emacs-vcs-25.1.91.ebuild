@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
+inherit elisp-common flag-o-matic multilib readme.gentoo-r1
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -120,7 +119,7 @@ src_prepare() {
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
 
-	AT_M4DIR=m4 eautoreconf
+	#AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {

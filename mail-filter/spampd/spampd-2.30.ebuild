@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="spampd is a program to scan messages for possible Unsolicited Commercial E-mail content"
 HOMEPAGE="http://www.worlddesign.com/index.cfm/rd/mta/spampd.htm"

@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Brian Dolbec <dolsen@gentoo.org> (17 Sep 2014)
 # mask pypy for several utilities due to incompatibility with libselinux

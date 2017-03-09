@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="a dockapp for monitoring memory and swap"
 HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/37"

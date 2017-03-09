@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 GST_ORG_MODULE=gst-plugins-good
@@ -8,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPTION="Fiwewire DV/HDV capture plugin for GStreamer"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="

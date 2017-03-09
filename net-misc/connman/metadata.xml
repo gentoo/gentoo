@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nvinson234@gmail.com</email>
-		<name>Nicholas Vinson</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 		<description>Co Maintainer, CC bugs</description>

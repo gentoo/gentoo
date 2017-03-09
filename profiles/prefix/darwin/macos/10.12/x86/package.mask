@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # The Carbon interface has been removed entirely in Lion, only tk-8.6
 # will come with Cocoa support.  If you must have tk, you'll have to

@@ -1,0 +1,13 @@
+Index: tools/gn/bootstrap/bootstrap.py
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 38cfb117d29c3895291379f00d8dc8c8b0727474..679170e610f8292bcbeb76508fd247d322a69c79 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -385,6 +385,7 @@ def write_gn_ninja(path, root_gen_dir, options):
+       'base/base_switches.cc',
+       'base/build_time.cc',
+       'base/callback_internal.cc',
++      'base/callback_helpers.cc',
+       'base/command_line.cc',
+       'base/debug/activity_tracker.cc',
+       'base/debug/alias.cc',

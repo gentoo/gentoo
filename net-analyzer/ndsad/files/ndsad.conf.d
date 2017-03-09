@@ -1,6 +1,5 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # See config file /etc/ndsad.conf for configuration options.
 

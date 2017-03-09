@@ -27,7 +27,4 @@
 
 		This package also includes the webcheckout command.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">joeyh/myrepos</remote-id>
-	</upstream>
 </pkgmetadata>

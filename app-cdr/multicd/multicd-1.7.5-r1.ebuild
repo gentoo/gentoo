@@ -1,6 +1,5 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DESCRIPTION="Tool for making direct copies of your files to multiple cd's"
 HOMEPAGE="http://danborn.net/multicd/"

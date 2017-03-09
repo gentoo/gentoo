@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,7 +11,7 @@ SRC_URI="https://github.com/algernon/${PN}/archive/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa x86"
+KEYWORDS="amd64 arm hppa x86"
 IUSE="doc"
 
 DEPEND="${RDEPEND}

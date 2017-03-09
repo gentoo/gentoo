@@ -24,7 +24,6 @@
   <flag name="cacao">Use the CACAO virtual machine rather than HotSpot.</flag>
   <flag name="cups">Link against the CUPS library at compile time, rather than using it dynamically at runtime.</flag>
   <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
-  <flag name="infinality">Enable better font rendering using fontconfig.</flag>
   <flag name="jamvm">Use the JamVM virtual machine rather than HotSpot.</flag>
   <flag name="jbootstrap">If possible, recompile the final IcedTea executables with itself.</flag>
   <flag name="nss">Enable NSS security provider support.</flag>

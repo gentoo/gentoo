@@ -1,6 +1,5 @@
 # Copyright 2016 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # This file contains descriptions of NGINX_MODULES_STREAM USE_EXPAND flags.
 

@@ -10,16 +10,16 @@
     <name>Gentoo Mathematics Project</name>
   </maintainer>
   <longdescription lang="en">
-  statsmodels is a Python module that allows users to explore data,
-  estimate statistical models, and perform statistical tests. An
-  extensive list of descriptive statistics, statistical tests,
-  plotting functions, and result statistics are available for
-  different types of data and each estimator. Researchers across
-  fields may find that statsmodels fully meets their needs for
-  statistical computing and data analysis in Python.
+    statsmodels is a Python module that allows users to explore data,
+    estimate statistical models, and perform statistical tests. An
+    extensive list of descriptive statistics, statistical tests,
+    plotting functions, and result statistics are available for
+    different types of data and each estimator. Researchers across
+    fields may find that statsmodels fully meets their needs for
+    statistical computing and data analysis in Python.
   </longdescription>
   <upstream>
     <remote-id type="pypi">statsmodels</remote-id>
-    <remote-id type="sourceforge">statsmodels</remote-id>
+    <remote-id type="github">statsmodels</remote-id>
   </upstream>
 </pkgmetadata>

@@ -2,7 +2,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or
 # later
-# $Id$
 
 DAEMON=/usr/sbin/bitlbee
 PIDFILE=/var/run/bitlbee/bitlbee.pid

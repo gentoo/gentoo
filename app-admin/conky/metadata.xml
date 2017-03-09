@@ -22,7 +22,6 @@
 		<flag name="ical">Enable support for events from iCalendar (RFC 5545) files using <pkg>dev-libs/libical</pkg></flag>
 		<flag name="iostats">Enable support for per-task I/O statistics</flag>
 		<flag name="irc">Enable support for displaying everything from an irc channel using <pkg>net-libs/libircclient</pkg></flag>
-		<flag name="lua">Enable if you want Lua scripting support</flag>
 		<flag name="lua-cairo">Enable if you want Lua Cairo bindings</flag>
 		<flag name="lua-imlib">Enable if you want Lua Imlib2 bindings</flag>
 		<flag name="lua-rsvg">Enable if you want Lua RSVG bindings</flag>

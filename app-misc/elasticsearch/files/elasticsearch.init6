@@ -82,6 +82,7 @@ start() {
 	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${PID_DIR}"
 	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${ES_BASE_PATH}"
 	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${LOG_DIR}"
+	checkpath -d -o root:root -m755 "${CONF_DIR}/scripts"
 
 	start-stop-daemon --start \
 		--background \

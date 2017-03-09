@@ -1,0 +1,14 @@
+--- libsub-1.1.13/wscript
++++ libsub-1.1.13/wscript
+@@ -24,11 +24,6 @@
+     conf.env.DISABLE_TESTS = conf.options.disable_tests
+     conf.env.API_VERSION = API_VERSION
+ 
+-    if conf.options.enable_debug:
+-        conf.env.append_value('CXXFLAGS', '-g')
+-    else:
+-        conf.env.append_value('CXXFLAGS', '-O3')
+-
+     # Disable libxml++ deprecation warnings for now
+     conf.env.append_value('CXXFLAGS', ['-Wno-deprecated-declarations'])
+ 

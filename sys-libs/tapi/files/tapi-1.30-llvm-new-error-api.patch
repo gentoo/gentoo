@@ -1,0 +1,65 @@
+--- libtapi-1.30/lib/Core/MachODylibReader.cpp.orig	2017-02-11 21:36:40.000000000 +0100
++++ libtapi-1.30/lib/Core/MachODylibReader.cpp	2017-02-11 21:48:25.000000000 +0100
+@@ -37,7 +37,11 @@
+   }
+ 
+   auto binaryOrErr = createBinary(bufferRef);
++#if LLVM_NEW_ERROR_API
++  if (binaryOrErr.takeError())
++#else
+   if (binaryOrErr.getError())
++#endif
+     return FileType::Invalid;
+ 
+   Binary &bin = *binaryOrErr.get();
+@@ -49,7 +53,11 @@
+   for (auto OI = UB->begin_objects(), OE = UB->end_objects(); OI != OE; ++OI) {
+     auto objOrErr = OI->getAsObjectFile();
+     // Ignore archives.
++#if LLVM_NEW_ERROR_API
++    if (objOrErr.takeError())
++#else
+     if (objOrErr.getError())
++#endif
+       continue;
+ 
+     auto &obj = *objOrErr.get();
+@@ -228,7 +236,11 @@
+                      ? SymbolFlags::WeakReferenced
+                      : SymbolFlags::None;
+     auto symbolName = symbol.getName();
++#if LLVM_NEW_ERROR_API
++    if (symbolName.takeError())
++#else
+     if (symbolName.getError())
++#endif
+       continue;
+ 
+     StringRef name;
+@@ -244,8 +256,14 @@
+   file->setPath(memBuffer.getBufferIdentifier());
+ 
+   auto binaryOrErr = createBinary(memBuffer);
++// no way to figure this out from the headers :-(
++#if LLVM_NEW_ERROR_API
++  if (auto ec = binaryOrErr.takeError()) {
++    file->setErrorCode(llvm::errorToErrorCode(std::move(ec)));
++#else
+   if (auto ec = binaryOrErr.getError()) {
+     file->setErrorCode(ec);
++#endif
+     return std::move(file);
+   }
+ 
+@@ -263,7 +281,11 @@
+     auto objOrErr = OI->getAsObjectFile();
+ 
+     // Ignore archives.
++#if LLVM_NEW_ERROR_API
++    if (objOrErr.takeError())
++#else
+     if (objOrErr.getError())
++#endif
+       continue;
+ 
+     auto &object = *objOrErr.get();

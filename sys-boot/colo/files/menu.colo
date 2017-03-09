@@ -1,7 +1,6 @@
 #:CoLo:#
 # Example configuration file for CoLo, version 1.16 or above.
 # 
-# $Id$
 
 # Turn on the serial port; if possible.  - means to ignore the error and keep
 # going.  Without this, execution would halt here if this command failed (e.g.

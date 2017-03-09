@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: kernel-2.eclass
 # @MAINTAINER: 
@@ -198,7 +197,7 @@ case ${EAPI:-0} in
 	0|1)
 		EXPORT_FUNCTIONS src_{unpack,compile,install,test} \
 			pkg_{setup,preinst,postinst,postrm} ;;
-	2|3|4|5)
+	2|3|4|5|6)
 		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
 			pkg_{setup,preinst,postinst,postrm} ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
@@ -1055,6 +1054,12 @@ postinst_sources() {
 	#  And now the general message.
 	if [[ -n ${K_SECURITY_UNSUPPORTED} ]]; then
 		ewarn "This means that it is likely to be vulnerable to recent security issues."
+		echo
+		ewarn "Upstream kernel developers recommend always running the latest "
+		ewarn "release of any current long term supported Linux kernel version."
+		ewarn "To see a list of these versions, their most current release and "
+		ewarn "long term support status, please go to https://www.kernel.org ."
+		echo
 		ewarn "For specific information on why this kernel is unsupported, please read:"
 		ewarn "https://wiki.gentoo.org/wiki/Project:Kernel_Security"
 	fi

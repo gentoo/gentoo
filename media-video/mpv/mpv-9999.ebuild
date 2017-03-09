@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -55,6 +54,7 @@ REQUIRED_USE="
 	xscreensaver? ( X )
 	xv? ( X )
 	zsh-completion? ( cli )
+	${PYTHON_REQUIRED_USE}
 "
 
 COMMON_DEPEND="
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
-	bluray? ( >=media-libs/libbluray-0.3.0 )
+	bluray? ( >=media-libs/libbluray-0.3.0:= )
 	cdda? ( dev-libs/libcdio-paranoia )
 	cuda? ( >=media-video/ffmpeg-3.3:0 )
 	drm? ( x11-libs/libdrm )

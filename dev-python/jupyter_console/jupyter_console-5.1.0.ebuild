@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -45,7 +44,7 @@ python_prepare_all() {
 python_compile_all() {
 	if use doc; then
 		emake -C docs html
-		HTML_DOCS=( docs/build/html/. )
+		HTML_DOCS=( docs/_build/html/. )
 	fi
 }
 

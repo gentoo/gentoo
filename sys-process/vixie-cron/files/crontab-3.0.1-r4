@@ -1,5 +1,4 @@
 # for vixie cron
-# $Id$
 
 # Global variables
 SHELL=/bin/bash

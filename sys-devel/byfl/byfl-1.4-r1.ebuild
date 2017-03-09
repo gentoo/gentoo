@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -27,9 +26,9 @@ LICENSE="BSD"
 IUSE="hdf5 static-libs sqlite"
 
 RDEPEND="
-	>=sys-devel/clang-${LLVM_VERSION}
-	>=sys-devel/llvm-${LLVM_VERSION}
-	<sys-devel/llvm-3.8
+	>=sys-devel/clang-${LLVM_VERSION}:0
+	>=sys-devel/llvm-${LLVM_VERSION}:0
+	<sys-devel/llvm-3.8:0
 	sys-devel/binutils:*
 	dev-lang/perl:=
 	dev-perl/Switch

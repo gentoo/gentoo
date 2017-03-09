@@ -1,0 +1,22 @@
+commit e1dc386f93eb4613dc7e89cc76a031aeee5022ba
+Author: Oleh Prypin <oleh@pryp.in>
+Date:   Thu Jul 21 18:33:25 2016 +0300
+
+    pybind: Make CephFS bindings and tests compatible with Python 3
+    
+    Signed-off-by: Oleh Prypin <oleh@pryp.in>
+
+diff --git a/src/pybind/cephfs/cephfs.pyx b/src/pybind/cephfs/cephfs.pyx
+index ac17ada1a1..bd14de3b16 100644
+--- a/src/pybind/cephfs/cephfs.pyx
++++ b/src/pybind/cephfs/cephfs.pyx
+@@ -613,8 +613,7 @@ cdef class LibCephFS(object):
+ 
+         if not isinstance(mode, int):
+             raise TypeError('mode must be an int')
+-        if isinstance(flags, basestring):
+-            flags = cstr(flags, 'flags')
++        if isinstance(flags, str_type):
+             cephfs_flags = 0
+             if flags == '':
+                 cephfs_flags = os.O_RDONLY

@@ -1,5 +1,4 @@
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Nice value used to launch collectd, to change priority of the process. As
 # you usually we want to run it in background, a default of 5 is used.

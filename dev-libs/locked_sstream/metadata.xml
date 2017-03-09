@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+<email>xmw@gentoo.org</email>
+<name>Michael Weber</name>
+</maintainer>
+<longdescription lang="en">
+locked_sstream is a tiny C++ library which wraps std::stringstream in a mutex to attempt to fix crashes on OS X when multiple threads simultaneously use different stringstreams. It remains to be seen whether it fixes the problem completely, but it certainly helps.
+</longdescription>
+</pkgmetadata>

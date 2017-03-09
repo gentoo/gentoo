@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 description="UCARP is a portable implementation of the CARP protocol"
 description_logstatus="Logs the status of ${SVCNAME} to syslog"
