@@ -45,6 +45,10 @@ RDEPEND="
 
 QA_PREBUILT="/opt/mendeleydesktop/.*"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.17.8-libdir.patch
+	"${FILESDIR}"/${PN}-1.17.8-qt5plugins.patch
+	"${FILESDIR}"/${PN}-1.17.8-unix-distro-build.patch )
+
 pkg_nofetch() {
 	elog "Please download ${A} from:"
 	elog "http://www.mendeley.com/download-mendeley-desktop/"
@@ -64,22 +68,21 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	# remove bundled Qt libraries
 	rm -r lib/mendeleydesktop/plugins \
 		|| die "failed to remove plugin directory"
-	rm -r lib/qt || die "failed to remove qt libraries"
+	rm -r lib/qt || die
 
-	# force use of system Qt libraries
-	sed -i "s:sys\.argv\.count(\"--force-system-qt\") > 0:True:" \
-		bin/mendeleydesktop || die "failed to patch startup script"
+	# fix qt library path
+	sed -e "s:/usr/lib/qt5/plugins:${EROOT}usr/$(get_libdir)/qt5/plugins:g" \
+		-i bin/mendeleydesktop || die
 
 	# fix library paths
-	sed -i \
-		-e "s:lib/mendeleydesktop:$(get_libdir)/mendeleydesktop:g" \
-		-e "s:MENDELEY_BASE_PATH + \"/lib/\":MENDELEY_BASE_PATH + \"/$(get_libdir)/\":g" \
-		bin/mendeleydesktop || die "failed to patch library path"
-
-	default
+	sed -e "s:lib/mendeleydesktop:$(get_libdir)/mendeleydesktop:g" \
+		-e "s:MENDELEY_BASE'] + \"/lib/\":MENDELEY_BASE'] + \"/$(get_libdir)/\":g" \
+		-i bin/mendeleydesktop || die
 }
 
 src_install() {
@@ -113,9 +116,8 @@ src_install() {
 	insinto /opt/${PN}/share
 	doins -r share/mendeleydesktop
 
-	# install launch script
-	into /opt
-	make_wrapper ${PN} "/opt/${PN}/bin/${PN} --unix-distro-build"
+	# symlink launch script
+	dosym /opt/mendeleydesktop/bin/mendeleydesktop /opt/bin/mendeleydesktop
 }
 
 pkg_postinst() {
