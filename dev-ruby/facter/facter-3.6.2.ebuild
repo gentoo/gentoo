@@ -41,7 +41,6 @@ src_prepare() {
 	sed -i "s/\ lib)/\ $(get_libdir))/g" lib/CMakeLists.txt || die
 	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die
 	# patches
-	epatch "${FILESDIR}/facter-3.5.0-jar.patch"
 	epatch_user
 }
 
