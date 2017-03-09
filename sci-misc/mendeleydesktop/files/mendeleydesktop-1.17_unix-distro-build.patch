@@ -1,0 +1,16 @@
+Patch to force --unix-distro-build.
+
+Patch by Marius Brehler <marbre@linux.sungazer.de>
+--- a/bin/mendeleydesktop
++++ b/bin/mendeleydesktop
+@@ -159,10 +167,7 @@ def mendeley_desktop_arguments():
+     """ Returns a list with the argumetns to be appended to Mendeley Desktop. """
+     extra_args = sys.argv[1:]
+ 
+-    if is_linux_distro_build():
+-        # Enable Linux distro specific changes (eg. in auto-update
+-        # handling)
+-        extra_args = extra_args + ["--unix-distro-build"]
++    extra_args = extra_args + ["--unix-distro-build"]
+ 
+     use_debugger = sys.argv.count("--debug") > 0
