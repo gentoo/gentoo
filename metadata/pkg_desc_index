@@ -11755,14 +11755,14 @@ kde-apps/kiten 16.08.3 16.12.2: KDE Japanese dictionary and reference
 kde-apps/kjots 4.4.2016.01 4.14.11_pre20160211 5.0.2: Note taking utility by KDE
 kde-apps/kjumpingcube 16.08.3 16.12.2: Tactical one or two player game
 kde-apps/kldap 16.12.2: Library for interacting with LDAP servers
-kde-apps/kleopatra 4.4.2016.01 4.4.2016.01-r1 4.14.11_pre20160211 4.14.11_pre20160211-r1 16.12.2: Certificate manager and GUI for OpenPGP and CMS cryptography
+kde-apps/kleopatra 4.4.2016.01-r1 4.14.11_pre20160211 4.14.11_pre20160211-r1 16.12.2: Certificate manager and GUI for OpenPGP and CMS cryptography
 kde-apps/klettres 16.08.3 16.12.2: Alphabet learning application
 kde-apps/klickety 16.08.3 16.12.2: A game almost the same as ksame, but a bit different by KDE
 kde-apps/klines 16.08.3 16.12.2: A little KDE game about balls and how to get rid of them
 kde-apps/klinkstatus 16.08.3 16.12.2: KDE web development - link validity checker
 kde-apps/kmag 16.08.3 16.12.2: KDE screen magnifier
 kde-apps/kmahjongg 16.08.3 16.12.2: A tile matching game for one or two players
-kde-apps/kmail 4.4.2016.01 4.4.2016.01-r1 4.14.11_pre20160211 4.14.11_pre20160211-r1 16.12.2: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail 4.4.2016.01-r1 4.14.11_pre20160211 4.14.11_pre20160211-r1 16.12.2: Email client, supporting POP3 and IMAP mailboxes.
 kde-apps/kmail-account-wizard 16.12.2: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 16.12.2: Mail transport service
 kde-apps/kmbox 16.12.2: Library for accessing MBox format mail storages
