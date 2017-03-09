@@ -79,8 +79,7 @@ src_unpack() {
 	fi
 }
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-build.patch
-	! use curl && eapply "${FILESDIR}"/${P}-nocurl.patch
+	eapply "${FILESDIR}"/${P}-{build,nocurl}.patch
 	eapply_user
 }
 
@@ -101,7 +100,7 @@ src_compile() {
 		USE_CURL_DLOPEN=0 \
 		USE_CODEC_VORBIS=$(buildit vorbis) \
 		USE_ALTGAMMA=$(buildit altgamma) \
-		USE_LOCAL_HEADERS=1 \
+		USE_LOCAL_HEADERS=0 \
 		Q="" \
 		$(usex debug "debug" "release")
 }
@@ -115,7 +114,7 @@ src_install() {
 
 	insinto /usr/share/${PN}/q3ut4
 	doins "${S_DATA}"/q3ut4/*.pk3
-	
+
 	if use !dedicated ; then
 		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT$(usex smp "-smp" "").${my_arch} ${PN}
 		doicon -s scalable "${DISTDIR}"/${PN}.svg
