@@ -116,9 +116,9 @@ multilib_src_install() {
 	fi
 
 	if use ppapi; then
-		exeinto /usr/$(get_libdir)/chromium-browser/PepperFlash
+		exeinto /usr/$(get_libdir)/chromium/PepperFlash
 		doexe libpepflashplayer.so
-		insinto /usr/$(get_libdir)/chromium-browser/PepperFlash
+		insinto /usr/$(get_libdir)/chromium/PepperFlash
 		doins manifest.json
 
 		if multilib_is_native_abi; then
