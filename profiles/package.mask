@@ -276,12 +276,6 @@ net-misc/pymazon
 # a quick hack-fix in 2013. Removal in 30 days. Bug #591506.
 net-misc/orbited
 
-# Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
-# Last release in 2004, broken at least since 2010. Seems to require
-# complex patches, no effective maintainer, still uses old distutils
-# eclass. Removal in 30 days. Bug #298850.
-media-sound/jack
-
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Old gstreamer 0.10 version, which is security vulnerable.
 # Use gstreamer:1.0 with media-plugins/gst-plugins-libav
