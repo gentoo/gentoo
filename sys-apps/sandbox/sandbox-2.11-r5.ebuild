@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 #
@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
 DEPEND="app-arch/xz-utils
@@ -32,9 +32,11 @@ sandbox_death_notice() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-memory-corruption.patch #568714
-	epatch "${FILESDIR}"/${P}-disable-same.patch
-	epatch "${FILESDIR}"/${P}-fix-opendir.patch #553092
+	epatch "${FILESDIR}"/${P}-execvpe.patch #578516
+	epatch "${FILESDIR}"/${P}-exec-hash.patch #578524
+	epatch "${FILESDIR}"/${P}-exec-prelink.patch #599894
+	epatch "${FILESDIR}"/${PN}-2.10-fix-opendir.patch #553092
+	epatch "${FILESDIR}"/${P}-symlinkat-renameat.patch #612202
 	epatch_user
 }
 

@@ -18,3 +18,5 @@ RDEPEND="${DEPEND}"
 
 # bug 579592
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-revert-kf5-dep.patch" )
