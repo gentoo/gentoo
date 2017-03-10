@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -30,6 +30,8 @@ src_prepare() {
 	sed -i -e "s:mkdir:mkdir -p:" mkinstalldirs || die
 
 	epatch "${FILESDIR}"/${P}-locking.patch # https://crbug.com/508713
+	epatch "${FILESDIR}"/${P}-attr.patch # https://crbug.com/644387
+	epatch "${FILESDIR}"/${P}-memset.patch
 }
 
 src_configure() {
