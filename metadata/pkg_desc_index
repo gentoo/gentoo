@@ -7686,7 +7686,7 @@ dev-python/ip-associations-python-novaclient-ext 0.2: Disk Config extension for 
 dev-python/ipaddr 2.1.10-r1 2.1.11 2.1.11-r1: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.17-r1 1.0.18: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipcalc 1.1.3: IP subnet calculator
-dev-python/ipdb 0.8 0.8.1 0.8.2 0.9.0 0.10.1: IPython-enabled pdb
+dev-python/ipdb 0.8 0.8.1 0.8.2 0.9.0 0.10.1 0.10.2: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.2 4.3.1 4.4.1 4.5.2: IPython Kernel for Jupyter
@@ -8476,7 +8476,7 @@ dev-python/robotframework-sshlibrary 2.0.2 2.1.1 2.1.2 2.1.3: A test library for
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
 dev-python/root_numpy 3.2.0 3.3.0 3.3.1 4.4.0: Interface between ROOT and numpy
 dev-python/rootpy 0.7.1 0.8.0 0.8.3: Pythonic layer on top of the ROOT framework's PyROOT bindings
-dev-python/rope 0.10.3: Python refactoring library
+dev-python/rope 0.10.3 0.10.5: Python refactoring library
 dev-python/rope_py3k 0.9.4: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
@@ -8497,7 +8497,7 @@ dev-python/rtslib-fb 2.1.57 2.1.58 2.1.61 2.1.62: A Python object API for managi
 dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Functions
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 4.0 4.5 4.10: Component-based Software-defined Networking Framework
-dev-python/s3transfer 0.1.4 0.1.5 0.1.7 0.1.8 0.1.9: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.1.4 0.1.5 0.1.7 0.1.8 0.1.9 0.1.10: An Amazon S3 Transfer Manager
 dev-python/safety 0.5.1: Checks your installed dependencies for known security vulnerabilities
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
