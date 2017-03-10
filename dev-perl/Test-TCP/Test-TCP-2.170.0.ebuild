@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Testing TCP program"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
