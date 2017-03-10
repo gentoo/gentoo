@@ -5,7 +5,7 @@ EAPI=5
 
 inherit user
 MY_PN=${PN/-bin/}
-MY_PV="4.1.0-1484127817"
+MY_PV="4.1.2-1486989747"
 S=${WORKDIR}/${MY_PN}-${MY_PV}
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
