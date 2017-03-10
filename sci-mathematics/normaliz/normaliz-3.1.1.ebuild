@@ -9,7 +9,7 @@ MYPV=$(get_version_component_range 1-2)
 MYP="Normaliz${MYPV}"
 
 DESCRIPTION="Tool for computations in affine monoids and more"
-HOMEPAGE="www.mathematik.uni-osnabrueck.de/normaliz/"
+HOMEPAGE="http://www.mathematik.uni-osnabrueck.de/normaliz/"
 SRC_URI="https://www.normaliz.uni-osnabrueck.de/wp-content/uploads/2016/04/Normaliz${PV}.zip"
 
 LICENSE="GPL-3"
