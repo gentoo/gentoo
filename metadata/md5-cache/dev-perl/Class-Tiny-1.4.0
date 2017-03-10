@@ -4,11 +4,11 @@ DESCRIPTION=Minimalist class construction
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Class-Tiny/
 IUSE=test minimal
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=Apache-2.0
 RDEPEND=virtual/perl-Carp dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Class-Tiny-1.004.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=2672245c4ad00d13956608e5397b0e23
+_md5_=505c93e6aed51f436e5d5ba5e857d98e

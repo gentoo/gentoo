@@ -4,11 +4,11 @@ DESCRIPTION=PSGI adapter for CGI
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/CGI-Emulate-PSGI/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/CGI-3.630.0 dev-perl/HTTP-Message dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/CGI-Emulate-PSGI-0.22.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=c34ec3c72b76226c49a85e5e629f90ea
+_md5_=b7c2e30d1245960c4cec1bf2e950ec72

@@ -4,11 +4,11 @@ DESCRIPTION=Extract data from Macintosh BinHex files
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Convert-BinHex/
 IUSE=test
-KEYWORDS=alpha amd64 hppa ppc ppc64 x86
+KEYWORDS=alpha amd64 hppa ppc ppc64 ~sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Exporter dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/ST/STEPHEN/Convert-BinHex-1.124.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=ead1565fa08033da5681c90acb71b2d4
+_md5_=5ffb03f376e3bf57a60a287822d09f13

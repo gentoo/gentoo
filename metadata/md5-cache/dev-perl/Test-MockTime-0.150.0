@@ -3,11 +3,11 @@ DEPEND=virtual/perl-Time-Piece virtual/perl-Time-Local virtual/perl-Test-Simple 
 DESCRIPTION=Replaces actual time with simulated time
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Test-MockTime/
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Time-Piece virtual/perl-Time-Local virtual/perl-Test-Simple dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DD/DDICK/Test-MockTime-0.15.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=42bea2dacdc29dd585c367d299abebd3
+_md5_=d09127a5445e57e3913844b703246ccf

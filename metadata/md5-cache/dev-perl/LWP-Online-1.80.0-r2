@@ -4,11 +4,11 @@ DESCRIPTION=Does your process have access to the web
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/LWP-Online/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/libwww-perl-5.805.0 >=dev-perl/URI-1.350.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/LWP-Online-1.08.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=9bf4d144ba2c0b070ba4710d4848f5ba
+_md5_=db2853d4683bab950166de705f864e7d

@@ -4,11 +4,11 @@ DESCRIPTION=process runner with RAII pattern
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Proc-Guard/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Class-Accessor-Lite-0.50.0 >=virtual/perl-Exporter-5.630.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/Proc-Guard-0.07.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=7bd2de7026baf7b14807fbb00a8be0db
+_md5_=5f4abe89af25ba6c36413275217c1c8f

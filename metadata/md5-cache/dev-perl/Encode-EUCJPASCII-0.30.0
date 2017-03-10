@@ -3,11 +3,11 @@ DEPEND=>=virtual/perl-Encode-1.140.0 virtual/perl-ExtUtils-MakeMaker dev-lang/pe
 DESCRIPTION=An eucJP-open mapping
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Encode-EUCJPASCII/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Encode-1.140.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NE/NEZUMI/Encode-EUCJPASCII-0.03.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=4f38ad882f0a094944cf02c6ffec344e
+_md5_=4a76af11b0f995d6bbfb482aabdf4c1b
