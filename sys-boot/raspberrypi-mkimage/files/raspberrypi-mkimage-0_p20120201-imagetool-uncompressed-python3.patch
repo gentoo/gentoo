@@ -1,5 +1,5 @@
---- mkimage/imagetool-uncompressed.py
-+++ mkimage/imagetool-uncompressed.py
+--- a/imagetool-uncompressed.py
++++ b/imagetool-uncompressed.py
 @@ -46,7 +47,7 @@
  f = open(args.bootimage, "wb")
  
