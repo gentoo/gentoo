@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ IUSE="python setproctitle"
 
 RDEPEND="dev-libs/protobuf-c
 	dev-libs/libnl:3
+	net-libs/libnet:1.1
 	sys-libs/libcap
 	python? ( ${PYTHON_DEPS} )
 	setproctitle? ( dev-libs/libbsd )"
@@ -37,9 +38,8 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/2.2/${PN}-2.2-flags.patch
-	"${FILESDIR}"/2.4/${PN}-2.4-makefile.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-no-git.patch
-	"${FILESDIR}"/2.5/${PN}-2.5-automagic-libbsd.patch
+	"${FILESDIR}"/${PN}-2.8-automagic-libbsd.patch
 	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-aarch64.patch
 )
