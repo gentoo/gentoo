@@ -6,7 +6,7 @@ EAPI="5"
 inherit xorg-2
 
 DESCRIPTION="Intel GPU userland tools"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test-programs unwind video_cards_nouveau"
 RESTRICT="test"
 
