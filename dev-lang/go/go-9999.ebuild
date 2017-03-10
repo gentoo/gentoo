@@ -58,7 +58,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE="gccgo"
 
-DEPEND="gccgo? ( >=sys-devel/gcc-5[go] )"
+DEPEND="gccgo? ( >=sys-devel/gcc-6[go] )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
@@ -162,10 +162,10 @@ src_compile()
 	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os)-$(go_arch)-bootstrap
 	if use gccgo; then
 		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
-		local go_binary=$(gcc-config --get-bin-path)/go-5
+		local go_binary=$(gcc-config --get-bin-path)/go-6
 		[[ -x ${go_binary} ]] || go_binary=$(
-			find "${EPREFIX}"/usr/${CHOST}/gcc-bin/*/go-5 | sort -V | tail -n1)
-		[[ -x ${go_binary} ]] || die "go-5: command not found"
+			find "${EPREFIX}"/usr/${CHOST}/gcc-bin/*/go-6 | sort -V | tail -n1)
+		[[ -x ${go_binary} ]] || die "go-6: command not found"
 		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
 	fi
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
