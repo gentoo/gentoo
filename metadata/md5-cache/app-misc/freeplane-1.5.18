@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test
+DEPEND=>=virtual/jdk-1.8 dev-java/gradle-bin test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Java application for Mind Mapping, Knowledge and Project Management
+EAPI=6
+HOMEPAGE=https://www.freeplane.org/
+IUSE=elibc_FreeBSD test
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=virtual/jre-1.8
+SLOT=0
+SRC_URI=mirror://sourceforge/freeplane/freeplane%20stable/freeplane_src-1.5.18.tar.gz http://dev.gentoo.org/~xmw/distfiles/freeplane-1.5.18-gradle-cache.tar.xz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066
+_md5_=484c32da5417391de073aa939cd2e193

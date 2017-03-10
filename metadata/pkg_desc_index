@@ -1774,6 +1774,7 @@ app-misc/fdutils 5.4.20020222-r1 5.5-r2 5.5.20060227: utilities for configuring 
 app-misc/figlet 2.2.5: program for making large letters out of ordinary text
 app-misc/flasm 1.63: Command line assembler/disassembler of Flash ActionScript bytecode
 app-misc/freemind 1.0.1-r2: Mind-mapping software written in Java
+app-misc/freeplane 1.5.18: Java application for Mind Mapping, Knowledge and Project Management
 app-misc/fslint 2.44-r2: A utility to find various forms of lint on a filesystem
 app-misc/fslurp 2.1.4: Read and display data from Fronius IG and IG Plus inverters
 app-misc/fsniper 1.3.1-r1 1.3.1-r2: Monitors a given set of directories for new files
@@ -12788,7 +12789,7 @@ media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and r
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4-r1: Image library supporting many formats
-media-libs/freetype 2.6.3-r1 2.6.5 2.7.1-r1 9999: A high-quality and portable font engine
+media-libs/freetype 2.6.3-r1 2.6.5 2.7.1-r1 2.7.1-r2 9999: A high-quality and portable font engine
 media-libs/freeverb3 2.6.6 3.1.1 3.1.1-r1 3.1.2_pre20151102 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution library including Audacious/JACK plugins
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.0-r1 0.6.1: Video game music file emulators
