@@ -11,7 +11,7 @@ DESCRIPTION="Replaces random number generation with non-random number generation
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test minimal examples"
 
 RDEPEND="

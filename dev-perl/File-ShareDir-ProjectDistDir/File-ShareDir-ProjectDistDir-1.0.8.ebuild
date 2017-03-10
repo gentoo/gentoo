@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Simple set-and-forget using of a '/share' directory in your projects root"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test minimal"
 
 RDEPEND="

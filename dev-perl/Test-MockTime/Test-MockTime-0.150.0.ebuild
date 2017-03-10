@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Replaces actual time with simulated time"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="

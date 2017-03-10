@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl-only 'which'"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

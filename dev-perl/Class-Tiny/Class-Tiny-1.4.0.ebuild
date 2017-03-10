@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Minimalist class construction"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="Apache-2.0"
 IUSE="test minimal"
 

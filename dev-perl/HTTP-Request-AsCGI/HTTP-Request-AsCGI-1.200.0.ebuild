@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Set up a CGI environment from an HTTP::Request"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples"
 
 RDEPEND="

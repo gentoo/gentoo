@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 pypy )
 
@@ -29,6 +29,8 @@ S="${WORKDIR}/${MY_P}"
 python_prepare_all() {
 	# Disable tests broken with named tuples.
 	sed -e "s/additional_tests/_&/" -i test_decorators.py || die "sed failed"
+
+	distutils-r1_python_prepare_all
 }
 
 python_test() {

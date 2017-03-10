@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl YAML Serialization using XS and libyaml"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND=""
