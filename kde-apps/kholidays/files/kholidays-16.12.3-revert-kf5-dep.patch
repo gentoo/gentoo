@@ -1,0 +1,55 @@
+commit b59aa106fedbfa17f1675a20990564d79c1ec090
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Fri Mar 10 13:33:10 2017 +0100
+
+    Revert depfreeze breaking merge (KF5_VERSION, cmake, PIM_VERSION)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 05164db..e0b67b8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,28 +1,28 @@
+-cmake_minimum_required(VERSION 3.0)
+-set(PIM_VERSION "5.4.40")
++cmake_minimum_required(VERSION 2.8.12)
+ 
+-project(KHolidays VERSION ${PIM_VERSION})
++project(KHolidays)
+ 
+ # ECM setup
+-set(KF5_VERSION "5.31.0")
++set(KF5_VERSION "5.28.0")
+ find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ 
+ include(GenerateExportHeader)
+ include(ECMGenerateHeaders)
+ include(ECMGeneratePriFile)
+-include(CMakePackageConfigHelpers)
++include(ECMPackageConfigHelpers)
+ include(ECMSetupVersion)
+ include(ECMPoQmTools)
+ include(FeatureSummary)
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+-include(ECMCoverageOption)
++
++set(PIM_VERSION "5.4.3")
+ 
+ set(KHOLIDAYS_LIB_VERSION ${PIM_VERSION})
+ 
+-ecm_setup_version(PROJECT VARIABLE_PREFIX KHOLIDAYS
++ecm_setup_version(${KHOLIDAYS_LIB_VERSION} VARIABLE_PREFIX KHOLIDAYS
+                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kholidays_version.h"
+                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5HolidaysConfigVersion.cmake"
+                         SOVERSION 5
+@@ -50,7 +50,7 @@ endif()
+ ########### CMake Config Files ###########
+ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Holidays")
+ 
+-configure_package_config_file(
++ecm_configure_package_config_file(
+   "${CMAKE_CURRENT_SOURCE_DIR}/KF5HolidaysConfig.cmake.in"
+   "${CMAKE_CURRENT_BINARY_DIR}/KF5HolidaysConfig.cmake"
+   INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
