@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Wrap OP check callbacks"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE=""
 
 RDEPEND="virtual/perl-parent"
