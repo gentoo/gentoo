@@ -4478,7 +4478,7 @@ dev-lang/cfortran 4.4-r2 4.4-r3: Header file allowing to call Fortran routines f
 dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming based on ANSI C
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
-dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
+dev-lang/closure-compiler-bin 20150126 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.11.1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/crystal 0.20.4-r1 0.20.5 0.20.5-r1 0.20.5-r2 0.21.0 0.21.1: The Crystal Programming Language
@@ -7171,7 +7171,7 @@ dev-python/URLObject 2.4.0 2.4.2: A utility class for manipulating URLs
 dev-python/WSME 0.8.0 0.9.1: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
-dev-python/aadict 0.2.2: An auto-attribute dict (and a couple of other useful dict functions)
+dev-python/aadict 0.2.2 0.2.3: An auto-attribute dict (and a couple of other useful dict functions)
 dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
