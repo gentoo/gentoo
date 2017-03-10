@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The Twofish Encryption Algorithm"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ia64 ~ppc ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 SRC_TEST="do"
