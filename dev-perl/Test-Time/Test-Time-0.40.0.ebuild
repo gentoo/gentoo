@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Overrides the time() and sleep() core functions for testing"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND=""
