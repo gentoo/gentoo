@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Show timezone offset strings like +0900"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
