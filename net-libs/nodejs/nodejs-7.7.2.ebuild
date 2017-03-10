@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+RESTRICT="test"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
@@ -15,16 +16,17 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl test"
+IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl systemtap test"
 
 RDEPEND="icu? ( >=dev-libs/icu-56:= )
 	npm? ( ${PYTHON_DEPS} )
 	>=net-libs/http-parser-2.6.2:=
-	>=dev-libs/libuv-1.9.0:=
+	>=dev-libs/libuv-1.11.0:=
 	>=dev-libs/openssl-1.0.2g:0=[-bindist]
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )"
 
 S="${WORKDIR}/node-v${PV}"
@@ -108,7 +110,7 @@ src_configure() {
 	"${PYTHON}" configure \
 		--prefix="${EPREFIX}"/usr \
 		--dest-cpu=${myarch} \
-		--without-dtrace \
+		$(use_with systemtap dtrace) \
 		"${myconf[@]}" || die
 }
 
