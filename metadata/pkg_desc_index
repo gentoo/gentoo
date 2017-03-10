@@ -17623,7 +17623,7 @@ sys-fs/mdadm 3.3.1-r2 3.4 4.0: A useful tool for running RAID systems - it can b
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
-sys-fs/mtools 4.0.15 4.0.17 4.0.18 4.0.18-r1: utilities to access MS-DOS disks from Unix without mounting them
+sys-fs/mtools 4.0.15 4.0.17 4.0.18 4.0.18-r2: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2 0.6.4: Device mapper target autoconfig
 sys-fs/ncdu 1.12: NCurses Disk Usage
