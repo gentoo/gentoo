@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Parse Palm database files"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test examples"
 
 # This package is split upstream from "Palm"
