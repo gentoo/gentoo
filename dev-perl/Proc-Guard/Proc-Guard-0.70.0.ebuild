@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="process runner with RAII pattern"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="
