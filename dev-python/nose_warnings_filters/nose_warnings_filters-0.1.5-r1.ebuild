@@ -19,7 +19,6 @@ IUSE="test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}"
 
 python_test() {
 	# nose_warnings_filters doesn't have a proper
