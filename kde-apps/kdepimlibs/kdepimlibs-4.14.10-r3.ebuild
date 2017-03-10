@@ -9,7 +9,7 @@ EGIT_BRANCH="KDE/4.14"
 inherit kde4-base
 
 DESCRIPTION="Common library for KDE PIM apps"
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="debug ldap prison"
 
