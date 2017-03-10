@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Deal with RFC 2047 encoded words (improved)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
 PERL_RM_FILES=("t/pod.t")
 RDEPEND="
