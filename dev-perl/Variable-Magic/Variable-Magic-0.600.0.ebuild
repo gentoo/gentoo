@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Associate user-defined magic to variables from Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~x86 ~ppc-aix ~x86-fbsd ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~ppc-aix ~x86-fbsd ~x64-macos"
 IUSE="test"
 
 RDEPEND="
