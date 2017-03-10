@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Refresh %INC files when updated on disk"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="test"
 
 RDEPEND=""
