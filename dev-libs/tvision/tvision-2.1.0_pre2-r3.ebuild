@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils multilib
@@ -24,6 +24,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-gcc44.patch
 	epatch "${FILESDIR}"/${P}-ldconfig.patch
 	epatch "${FILESDIR}"/${P}-flags.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_compile() {
