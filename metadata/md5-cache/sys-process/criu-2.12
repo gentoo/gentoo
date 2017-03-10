@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install setup test
+DEPEND=dev-libs/protobuf-c dev-libs/libnl:3 net-libs/libnet:1.1 sys-libs/libcap python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) setproctitle? ( dev-libs/libbsd ) app-text/asciidoc app-text/xmlto
+DESCRIPTION=utility to checkpoint/restore a process tree
+EAPI=6
+HOMEPAGE=http://criu.org/
+IUSE=python setproctitle python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~arm64
+LICENSE=GPL-2
+RDEPEND=dev-libs/protobuf-c dev-libs/libnl:3 net-libs/libnet:1.1 sys-libs/libcap python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) setproctitle? ( dev-libs/libbsd ) python? ( dev-libs/protobuf[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ipaddr[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.openvz.org/criu/criu-2.12.tar.bz2
+_eclass_exported_funcs=pkg_setup:linux-info src_compile:- src_test:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=7e30aed36a24417639f5223a2bceb193
