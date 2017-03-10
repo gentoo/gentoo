@@ -8,7 +8,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-LoaderAndValidationLayers-sdk-${PV}"
 fi
