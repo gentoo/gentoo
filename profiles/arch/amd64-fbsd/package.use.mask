@@ -1,5 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (07 Mar 2017)
+# Unmask clang runtimes that are supported on this arch.
+sys-devel/clang -default-compiler-rt
+sys-devel/clang-runtime -compiler-rt -openmp -sanitize
+sys-devel/llvm -default-compiler-rt
+sys-libs/libcxx -libcxxrt
 
 # Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
 # nvidia drivers are unmasked here

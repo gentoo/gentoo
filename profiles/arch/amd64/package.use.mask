@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (07 Mar 2017)
+# Unmask clang runtimes that are supported on this arch.
+sys-devel/clang -default-compiler-rt
+sys-devel/clang-runtime -compiler-rt -openmp -sanitize
+sys-devel/llvm -default-compiler-rt
+sys-libs/libcxx -libcxxrt
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is keyworded on amd64
 app-admin/rsyslog -mdblookup

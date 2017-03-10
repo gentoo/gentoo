@@ -1,6 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (07 Mar 2017)
+# Unmask clang runtimes that are supported on this arch.
+sys-devel/clang -default-compiler-rt
+sys-devel/clang-runtime -compiler-rt -openmp -sanitize
+sys-devel/llvm -default-compiler-rt
+sys-libs/libcxx -libcxxrt
+
 # Pacho Ramos <pacho@gentoo.org> (04 Feb 2017)
 # Missing keywords, bug #599572
 net-libs/gnome-online-accounts gnome
