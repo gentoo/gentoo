@@ -1,6 +1,5 @@
-diff -ur PyProtocols.orig/src/protocols/tests/__init__.py PyProtocols/src/protocols/tests/__init__.py
---- src/protocols/tests/__init__.py	2007-04-25 12:15:46.000000000 +0800
-+++ src/protocols/tests/__init__.py	2013-04-10 19:22:28.720647271 +0800
+--- a/src/protocols/tests/__init__.py
++++ b/src/protocols/tests/__init__.py
 @@ -256,22 +256,6 @@
          makeSuite(GenerationTests,'check'),
      ]

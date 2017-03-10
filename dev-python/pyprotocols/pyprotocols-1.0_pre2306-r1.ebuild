@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic eutils
+inherit distutils-r1 flag-o-matic
 
 MY_PN="PyProtocols"
 MY_P="${MY_PN}-${PV/_pre/a0dev_r}"
@@ -26,12 +27,14 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_PN}"
 
+PATCHES=( "${FILESDIR}"/SkipTests.patch )
 DOCS=( CHANGES.txt README.txt UPGRADING.txt )
 
 python_prepare_all() {
 	# Rm peripheral & rogue failing tests
 	rm -f src//protocols/tests/{test_twisted.py,test_zope.py} || die
-	epatch "${FILESDIR}"/SkipTests.patch
+
+	distutils-r1_python_prepare_all
 }
 
 python_configure_all() {
@@ -39,6 +42,5 @@ python_configure_all() {
 }
 
 python_test() {
-	esetup.py test && einfo "Tests passed under ${EPYTHON}" \
-		|| die "Tests failed under ${EPYTHON}"
+	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
