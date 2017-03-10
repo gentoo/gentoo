@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/libatomic_ops dev-libs/libtommath dev-libs/libuv jit? ( dev-lang/lua:0[deprecated] dev-lua/LuaBitOp ) virtual/libffi clang? ( >=sys-devel/clang-3.1 ) dev-lang/perl
+DESCRIPTION=A 6model-based VM for NQP and Rakudo Perl 6
+EAPI=6
+HOMEPAGE=http://moarvm.org
+IUSE=asan clang debug doc +jit static-libs optimize ubsan
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=dev-libs/libatomic_ops dev-libs/libtommath dev-libs/libuv jit? ( dev-lang/lua:0[deprecated] dev-lua/LuaBitOp ) virtual/libffi
+RESTRICT=test
+SLOT=0
+SRC_URI=http://moarvm.org/releases/MoarVM-2017.02.tar.gz
+_eclass_exported_funcs=src_configure:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=c237863ada098581aa0b86896cae79aa
