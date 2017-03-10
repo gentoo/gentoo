@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-i18n/libcangjie python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/cython[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The Python bindings to libcangjie
+EAPI=6
+HOMEPAGE=http://cangjians.github.io
+IUSE=python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
+KEYWORDS=amd64 x86
+LICENSE=LGPL-3+
+RDEPEND=app-i18n/libcangjie python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
+SLOT=0
+SRC_URI=https://github.com/Cangjians/pycangjie/releases/download/v1.2/cangjie-1.2.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=26c321c024dc65344b6f0f31329fdbe3

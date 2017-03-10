@@ -7287,7 +7287,7 @@ dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling byt
 dev-python/cached-property 0.1.5 1.0.0 1.2.0 1.3.0: A cached-property for decorating methods in classes
 dev-python/cachetools 1.1.5: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.7.2: CFFI-based drop-in replacement for Pycairo
-dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
+dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
 dev-python/capturer 2.1 2.1.1: Easily capture stdout/stderr of the current process and subprocesses
 dev-python/carbon 0.9.13 0.9.13-r1 0.9.14-r1 0.9.15-r1: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
@@ -7476,7 +7476,7 @@ dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.9.9 0.12.0-r1 0.13.0 0.14.1: Pure-Python implementation of the Git file formats and protocols
-dev-python/dynd-python 0.6.5 0.6.6 0.7.2: Python exposure of multidimensionnal array library libdynd
+dev-python/dynd-python 0.6.5 0.6.6 0.7.2-r1: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2 2.3: Easy thumbnails for Django
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
@@ -7898,7 +7898,7 @@ dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their 
 dev-python/nose-testconfig 0.9 0.10: Test Configuration plugin for nosetests
 dev-python/nose2 0.6.4 0.6.5: nose2 is the next generation of nicer testing for Python
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
-dev-python/nose_warnings_filters 0.1.0 0.1.1 0.1.5-r1: A python module to inject warning filters during nosetest
+dev-python/nose_warnings_filters 0.1.0 0.1.1 0.1.5-r2: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10 1.0.11: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 4.0.6 4.1.0 4.2.3 4.3.2 4.4.1: Jupyter Interactive Notebook
