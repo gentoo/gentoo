@@ -14,7 +14,7 @@ SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~axs/distfiles/samba-disable-python-patches-4.6.0.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/samba-4.6.0-disable-python-patches.tar.xz"
 [[ ${PV} = *_rc* ]] || \
 KEYWORDS="~amd64 ~hppa ~x86"
 
@@ -49,12 +49,12 @@ CDEPEND="
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.0.0[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.1.27[ldap(+)?,python(+)?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.1.29[ldap(+)?,python(+)?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.1.8[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.10[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.9[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.12[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.9.31-r1[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
