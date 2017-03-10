@@ -1,6 +1,6 @@
-diff -ur xlwt-1.0.0.orig/docs/conf.py xlwt-1.0.0/docs/conf.py
---- docs/conf.py	2015-04-16 04:43:57.000000000 +0800
-+++ docs/conf.py	2015-05-11 11:13:22.320470128 +0800
+diff -Nur xlwt-1.0.0.orig xlwt-1.0.0
+--- xlwt-1.0.0.orig/docs/conf.py
++++ xlwt-1.0.0/docs/conf.py
 @@ -4,7 +4,7 @@
  on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
  pkg_info = pkginfo.Develop(os.path.join(os.path.dirname(__file__), os.pardir))
