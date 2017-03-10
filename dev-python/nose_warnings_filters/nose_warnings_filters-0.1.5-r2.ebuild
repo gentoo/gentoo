@@ -16,9 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+RDEPEND="dev-python/nose[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? ( ${RDEPEND} )"
 
 python_test() {
 	# nose_warnings_filters doesn't have a proper
