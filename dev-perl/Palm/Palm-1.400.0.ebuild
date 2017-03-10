@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Read & write Palm OS databases (both PDB and PRC)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test examples"
 
 # Palm::Raw -> Palm-PDB
