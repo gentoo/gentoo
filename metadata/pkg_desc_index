@@ -11728,13 +11728,13 @@ kde-apps/kdenlive 16.08.3 16.12.3: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 16.08.3: KDE GUI for passwd
 kde-apps/kdepim-addons 16.12.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 16.12.3: Libraries for KDE PIM applications
-kde-apps/kdepim-common-libs 4.14.11_pre20160211 4.14.11_pre20160211-r1: Common libraries for KDE PIM apps
+kde-apps/kdepim-common-libs 4.14.11_pre20160211-r1: Common libraries for KDE PIM apps
 kde-apps/kdepim-kresources 4.4.2016.01 4.14.11_pre20160211: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1 16.08.3 16.12.3: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2016.01 4.14.11_pre20160211 16.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 4.14.11_pre20160211 16.12.3: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2016.01: KDE PIM wizards (noakonadi branch)
-kde-apps/kdepimlibs 4.14.10-r2 4.14.10-r3 4.14.11_pre20160211-r2 4.14.11_pre20160211-r3: Common library for KDE PIM apps
+kde-apps/kdepimlibs 4.14.10-r3 4.14.11_pre20160211-r3: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.08.3 16.12.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 16.08.3 16.12.3: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 16.08.3 16.12.3: Thumbnail generator for PO files
@@ -11776,14 +11776,14 @@ kde-apps/kiten 16.08.3 16.12.3: KDE Japanese dictionary and reference
 kde-apps/kjots 4.4.2016.01 4.14.11_pre20160211 5.0.2: Note taking utility by KDE
 kde-apps/kjumpingcube 16.08.3 16.12.3: Tactical one or two player game
 kde-apps/kldap 16.12.3: Library for interacting with LDAP servers
-kde-apps/kleopatra 4.4.2016.01-r1 4.14.11_pre20160211 4.14.11_pre20160211-r1 16.12.3: Certificate manager and GUI for OpenPGP and CMS cryptography
+kde-apps/kleopatra 4.4.2016.01-r1 4.14.11_pre20160211-r1 16.12.3: Certificate manager and GUI for OpenPGP and CMS cryptography
 kde-apps/klettres 16.08.3 16.12.3: Alphabet learning application
 kde-apps/klickety 16.08.3 16.12.3: A game almost the same as ksame, but a bit different by KDE
 kde-apps/klines 16.08.3 16.12.3: A little KDE game about balls and how to get rid of them
 kde-apps/klinkstatus 16.08.3 16.12.3: KDE web development - link validity checker
 kde-apps/kmag 16.08.3 16.12.3: KDE screen magnifier
 kde-apps/kmahjongg 16.08.3 16.12.3: A tile matching game for one or two players
-kde-apps/kmail 4.4.2016.01-r1 4.14.11_pre20160211 4.14.11_pre20160211-r1 16.12.3: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail 4.4.2016.01-r1 4.14.11_pre20160211-r1 16.12.3: Email client, supporting POP3 and IMAP mailboxes.
 kde-apps/kmail-account-wizard 16.12.3: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 16.12.3: Mail transport service
 kde-apps/kmbox 16.12.3: Library for accessing MBox format mail storages
