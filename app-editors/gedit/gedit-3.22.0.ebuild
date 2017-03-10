@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5} )
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit eutils gnome2 multilib python-r1 vala virtualx
+inherit eutils gnome2 multilib python-single-r1 vala virtualx
 
 DESCRIPTION="A text editor for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit"
@@ -16,12 +16,7 @@ LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 
 IUSE="+introspection +python spell vala"
-# python-single-r1 would request disabling PYTHON_TARGETS on libpeas
-# we need to fix that
-REQUIRED_USE="
-	python? ( introspection )
-	python? ( ^^ ( $(python_gen_useflags '*') ) )
-"
+REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 
@@ -61,7 +56,7 @@ DEPEND="${COMMON_DEPEND}
 # yelp-tools, gnome-common needed to eautoreconf
 
 pkg_setup() {
-	use python && [[ ${MERGE_TYPE} != binary ]] && python_setup
+	use python && [[ ${MERGE_TYPE} != binary ]] && python-single-r1_pkg_setup
 }
 
 src_prepare() {
