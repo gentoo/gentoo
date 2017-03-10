@@ -1490,7 +1490,7 @@ app-i18n/fcitx-sunpinyin 0.4.0 0.4.1: Sunpinyin module for fcitx
 app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie and Quick
 app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
-app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12 1.5.13 1.5.14: Intelligent Input Bus for Linux / Unix OS
+app-i18n/ibus 1.5.5 1.5.12 1.5.14 1.5.15: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese input method Anthy IMEngine for IBus Framework
 app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.5.1: The Chewing IMEngine for IBus Framework
@@ -12838,7 +12838,7 @@ media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate images in the JPEG format
 media-libs/kodi-platform 16_p20150805 16.9999 17.1.0.1 9999: Kodi platform support library
-media-libs/kvazaar 0.8.3 1.0.0 9999: An open-source HEVC encoder
+media-libs/kvazaar 0.8.3 1.0.0 1.1.0 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.1 1.1.2: C++ library for postscript stream output
@@ -19390,7 +19390,7 @@ x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manage
 x11-wm/wmii 3.9.2-r4 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13: Third party extensions for xmonad
-x11-wm/xpra 0.14.27 0.14.36 1.0.3-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 1.0.3-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.6 0.10.7 0.11.1 0.11.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.12.1-r2 4.13.0 4.13.1: Unified widget and session management libs for Xfce
