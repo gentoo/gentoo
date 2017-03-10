@@ -19130,7 +19130,7 @@ x11-plugins/wmudmount 2.2 2.2-r1 2.2-r2: A filesystem mounter that uses udisks t
 x11-plugins/wmupmon 0.1.3-r1: wmUpMon is a program to monitor your Uptime
 x11-plugins/wmwave 0.4: Dockapp that displays quality, link, level and noise of an iee802.11 connection
 x11-plugins/wmweather 2.4.4 2.4.5 2.4.6: a dockable weather monitor for standard METAR stations using ICAO location
-x11-plugins/wmweather+ 2.13 2.15 2.16: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
+x11-plugins/wmweather+ 2.13 2.15 2.16 2.17: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
 x11-plugins/wmwifi 0.6: wireless network interface monitor dockapp
 x11-plugins/wmwork 0.2.5: a dockapp that lets you easily track time spent on different projects
 x11-plugins/wmxkb 1.2.2: Dockable keyboard layout switcher for Window Maker
