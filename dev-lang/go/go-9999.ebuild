@@ -162,10 +162,12 @@ src_compile()
 	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os)-$(go_arch)-bootstrap
 	if use gccgo; then
 		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
-		local go_binary=$(gcc-config --get-bin-path)/go-5
+		local go_binary=$(gcc-config --get-bin-path)/go-$(gcc-major-version)
 		[[ -x ${go_binary} ]] || go_binary=$(
-			find "${EPREFIX}"/usr/${CHOST}/gcc-bin/*/go-5 | sort -V | tail -n1)
-		[[ -x ${go_binary} ]] || die "go-5: command not found"
+			find "${EPREFIX}"/usr/${CHOST}/gcc-bin/*/go-$(gcc-major-version) |
+				sort -V | tail -n1)
+		[[ -x ${go_binary} ]] ||
+			die "go-$(gcc-major-version): command not found"
 		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
 	fi
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
