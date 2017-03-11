@@ -123,7 +123,7 @@ multilib_src_install() {
 
 		if multilib_is_native_abi; then
 			dodir /etc/chromium
-			sed "${FILESDIR}"/pepper-flash \
+			sed "${FILESDIR}"/pepper-flash-r1 \
 				-e "s|@FP_LIBDIR@|$(get_libdir)|g" \
 				-e "s|@FP_PV@|${PV}|g" \
 				> "${D}"/etc/chromium/pepper-flash \
