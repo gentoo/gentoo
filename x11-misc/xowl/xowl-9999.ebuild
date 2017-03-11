@@ -4,7 +4,7 @@
 EAPI=6
 inherit flag-o-matic git-r3 savedconfig toolchain-funcs
 
-DESCRIPTION="An obstinate, asymmetric, tiling, window manager for X"
+DESCRIPTION="X11 Obstinate Window Lister"
 HOMEPAGE="https://github.com/seanpringle/xowl"
 EGIT_REPO_URI="https://github.com/seanpringle/xowl"
 
