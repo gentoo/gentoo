@@ -241,12 +241,12 @@ java-ant_bsfix_files() {
 		else
 			debug-print "Using third generation rewriter"
 			echo "Rewriting attributes"
-			local bsfix_extra_args=""
+			local bsfix_extra_args=()
 			# WARNING KEEP THE ORDER, ESPECIALLY FOR CHANGED ATTRIBUTES!
 			if [[ -n ${JAVA_ANT_REWRITE_CLASSPATH} ]]; then
 				local cp_tags="${JAVA_ANT_CLASSPATH_TAGS// / -e }"
-				bsfix_extra_args="${bsfix_extra_args} -g -e ${cp_tags}"
-				bsfix_extra_args="${bsfix_extra_args} -a classpath -v '\${gentoo.classpath}'"
+				bsfix_extra_args+=( -g -e ${cp_tags} )
+				bsfix_extra_args+=( -a classpath -v '${gentoo.classpath}' )
 			fi
 			if [[ -n ${JAVA_ANT_JAVADOC_INPUT_DIRS} ]]; then
 				if [[ -n ${JAVA_ANT_JAVADOC_OUTPUT_DIR} ]]; then
@@ -270,12 +270,12 @@ java-ant_bsfix_files() {
 								die "You must specify directories for javadoc input/output dirs."
 							fi
 						done
-						bsfix_extra_args="${bsfix_extra_args} --javadoc --source-directory "
+						bsfix_extra_args+=( --javadoc --source-directory )
 						# filter third/double spaces
 						JAVA_ANT_JAVADOC_INPUT_DIRS=${JAVA_ANT_JAVADOC_INPUT_DIRS//   /}
 						JAVA_ANT_JAVADOC_INPUT_DIRS=${JAVA_ANT_JAVADOC_INPUT_DIRS//  /}
-						bsfix_extra_args="${bsfix_extra_args} ${JAVA_ANT_JAVADOC_INPUT_DIRS// / --source-directory }"
-						bsfix_extra_args="${bsfix_extra_args} --output-directory ${JAVA_ANT_JAVADOC_OUTPUT_DIR}"
+						bsfix_extra_args+=( ${JAVA_ANT_JAVADOC_INPUT_DIRS// / --source-directory } )
+						bsfix_extra_args+=( --output-directory "${JAVA_ANT_JAVADOC_OUTPUT_DIR}" )
 					fi
 				else
 					die "You need to have doc in IUSE when using JAVA_ANT_JAVADOC_INPUT_DIRS"
@@ -283,9 +283,9 @@ java-ant_bsfix_files() {
 			fi
 
 			[[ -n ${JAVA_ANT_BSFIX_EXTRA_ARGS} ]] \
-				&& bsfix_extra_args="${bsfix_extra_args} ${JAVA_ANT_BSFIX_EXTRA_ARGS}"
+				&& bsfix_extra_args+=( ${JAVA_ANT_BSFIX_EXTRA_ARGS} )
 
-			debug-print "bsfix_extra_args: ${bsfix_extra_args}"
+			debug-print "bsfix_extra_args: ${bsfix_extra_args[*]}"
 
 			${rewriter3} "${files[@]}" \
 				-c --source-element ${JAVA_PKG_BSFIX_SOURCE_TAGS// / --source-element } \
@@ -293,7 +293,7 @@ java-ant_bsfix_files() {
 				--target-element   ${JAVA_PKG_BSFIX_TARGET_TAGS// / --target-element }  \
 				--target-attribute target --target-value ${want_target} \
 				--target-attribute nowarn --target-value yes \
-				${bsfix_extra_args} \
+				"${bsfix_extra_args[@]}" \
 				|| die "xml-rewrite-3 failed: ${file}"
 		fi
 
