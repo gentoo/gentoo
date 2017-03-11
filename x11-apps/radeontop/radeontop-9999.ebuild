@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs git-r3
+EAPI=6
+inherit toolchain-funcs git-r3
 
 DESCRIPTION="Utility to view Radeon GPU utilization"
 HOMEPAGE="https://github.com/clbr/radeontop"
@@ -14,23 +14,24 @@ KEYWORDS=""
 IUSE="nls"
 
 RDEPEND="
-	sys-libs/ncurses
-	x11-libs/libpciaccess
+	sys-libs/ncurses:0=
 	x11-libs/libdrm
-	nls? ( sys-libs/ncurses[unicode] virtual/libintl )
+	x11-libs/libpciaccess
+	x11-libs/libxcb
+	nls? (
+		sys-libs/ncurses:0=[unicode]
+		virtual/libintl
+	)
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
 
-src_prepare() {
-	epatch_user
-}
-
 src_configure() {
 	tc-export CC
 	export nls=$(usex nls 1 0)
+	export xcb=1
 	# Do not add -g or -s to CFLAGS
 	export plain=1
 }
