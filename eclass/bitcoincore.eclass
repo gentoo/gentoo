@@ -37,7 +37,7 @@ fi
 
 EXPORT_FUNCTIONS src_prepare src_test src_install
 
-if in_bcc_iuse ljr || in_bcc_iuse 1stclassmsg || in_bcc_iuse zeromq || [ -n "$BITCOINCORE_POLICY_PATCHES" ]; then
+if in_bcc_iuse ljr || in_bcc_iuse knots || in_bcc_iuse 1stclassmsg || in_bcc_iuse zeromq || [ -n "$BITCOINCORE_POLICY_PATCHES" ]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
@@ -53,7 +53,7 @@ if [[ ! ${_BITCOINCORE_ECLASS} ]]; then
 
 # @ECLASS-VARIABLE: BITCOINCORE_LJR_DATE
 # @DESCRIPTION:
-# Set this variable before the inherit line, to the datestamp of the ljr
+# Set this variable before the inherit line, to the datestamp of the Knots
 # patchset.
 
 # @ECLASS-VARIABLE: BITCOINCORE_POLICY_PATCHES
@@ -72,6 +72,7 @@ WALLET_DEPEND="sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]"
 LIBEVENT_DEPEND=""
 UNIVALUE_DEPEND=""
 BITCOINCORE_LJR_NAME=ljr
+BITCOINCORE_KNOTS_USE=knots
 [ -n "${BITCOINCORE_LJR_PV}" ] || BITCOINCORE_LJR_PV="${PV}"
 
 case "${PV}" in
@@ -87,8 +88,11 @@ case "${PV}" in
 	LIBSECP256K1_DEPEND="=dev-libs/libsecp256k1-0.0.0_pre20151118[recovery]"
 	UNIVALUE_DEPEND="dev-libs/univalue"
 	BITCOINCORE_LJR_NAME=knots
+	if in_bcc_iuse ljr; then
+		BITCOINCORE_KNOTS_USE=ljr
+	fi
 	if in_bcc_policy spamfilter; then
-		REQUIRED_USE="${REQUIRED_USE} bitcoin_policy_spamfilter? ( ljr )"
+		REQUIRED_USE="${REQUIRED_USE} bitcoin_policy_spamfilter? ( ${BITCOINCORE_KNOTS_USE} )"
 	fi
 	;;
 9999*)
@@ -201,9 +205,9 @@ DEPEND="${DEPEND} ${BITCOINCORE_COMMON_DEPEND}
 if [ "${BITCOINCORE_NEED_LEVELDB}" = "1" ]; then
 	RDEPEND="${RDEPEND} virtual/bitcoin-leveldb"
 fi
-if in_bcc_iuse ljr; then
+if in_bcc_iuse ${BITCOINCORE_KNOTS_USE}; then
 	if [ "${BITCOINCORE_LJR_NAME}" = "knots" ]; then
-		DEPEND="${DEPEND} ljr? ( dev-lang/perl )"
+		DEPEND="${DEPEND} ${BITCOINCORE_KNOTS_USE}? ( dev-lang/perl )"
 	fi
 fi
 
@@ -220,7 +224,7 @@ bitcoincore_policymsg() {
 
 bitcoincore_pkg_pretend() {
 	bitcoincore_policymsg_flag=false
-	if use_if_iuse ljr || use_if_iuse 1stclassmsg || use_if_iuse addrindex || use_if_iuse xt || { use_if_iuse zeromq && [ "${BITCOINCORE_MINOR}" -lt 12 ]; }; then
+	if use_if_iuse ${BITCOINCORE_KNOTS_USE} || use_if_iuse 1stclassmsg || use_if_iuse addrindex || use_if_iuse xt || { use_if_iuse zeromq && [ "${BITCOINCORE_MINOR}" -lt 12 ]; }; then
 		einfo "Extra functionality improvements to Bitcoin Core are enabled."
 		bitcoincore_policymsg_flag=true
 		if use_if_iuse addrindex addrindex; then
@@ -279,7 +283,7 @@ bitcoincore_prepare() {
 	else
 		epatch "$(LJR_PATCH syslibs)"
 	fi
-	if use_if_iuse ljr; then
+	if use_if_iuse ${BITCOINCORE_KNOTS_USE}; then
 		if [ "${BITCOINCORE_LJR_NAME}" = "knots" ]; then
 			bitcoincore_predelete_patch "$(LJR_PATCH f)"
 			bitcoincore_predelete_patch "$(LJR_PATCH branding)"
