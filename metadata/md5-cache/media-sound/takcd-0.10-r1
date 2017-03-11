@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Command line CD player
+EAPI=6
+HOMEPAGE=http://bard.sytes.net/takcd/
+KEYWORDS=alpha amd64 ~hppa ia64 ~mips ~ppc sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://bard.sytes.net/takcd/takcd-0.10.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=5b1c2a436f051f6ba2b30c06e70e6185

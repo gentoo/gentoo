@@ -4497,6 +4497,7 @@ dev-lang/gdl 0.9.6-r2: GNU Data Language
 dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.8.4 7.10.3 8.0.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1 4.9.3: GNAT Ada Compiler - gcc version
+dev-lang/gnat-gpl 2016: GNAT Ada Compiler - GPL version
 dev-lang/gnu-smalltalk 3.2.5: GNU Smalltalk
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.7.4 1.7.5 1.8 9999: A concurrent garbage collected and typesafe programming language
@@ -13479,7 +13480,7 @@ media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information
 media-radio/xdx 2.4.2 2.4.3 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.14: An amateur radio logging program
 media-radio/xwxapt 2.4 2.7: GTK+ linux weather satellite APT image decoder software
-media-sound/SmarTagger 0.1-r1: Perl script for renaming and tagging mp3s
+media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r1: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
@@ -13488,7 +13489,7 @@ media-sound/abcm2ps 8.12.9 8.13.0 8.13.2 8.13.3 8.13.5: A program to convert abc
 media-sound/abcmidi 2016.09.25: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
-media-sound/alac_decoder 0.1.3 0.2.0: Basic decoder for Apple Lossless Audio Codec files (ALAC)
+media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.0.28 1.0.29 1.1.0 1.1.3: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.0.29 1.1.2 1.1.3: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixer-app 0.1: AlsaMixer.app is a simple mixer dockapp
@@ -13777,7 +13778,7 @@ media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/redoflacs 0.15 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
 media-sound/retrovol 0.12 0.13: Systemtray volume mixer applet from PuppyLinux
-media-sound/rexima 1.4: A curses-based interactive mixer which can also be used from the command-line
+media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rezound 0.12.3_beta-r2: Sound editor and recorder
 media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Replay Gain information
 media-sound/rhythmbox 3.4.1: Music management and playback software for GNOME
@@ -13822,7 +13823,7 @@ media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other 
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r1: a simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
-media-sound/takcd 0.10: Command line CD player
+media-sound/takcd 0.10-r1: Command line CD player
 media-sound/tap-reverbed 0 0-r1: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
 media-sound/tapestrea 0.1.0.5-r1: Techniques + Paradigms for Expressive Synthesis, Transformation, Rendering of Environmental Audio
 media-sound/tapiir 0.7.2 0.7.3: a flexible audio effects processor, inspired on the classical magnetic tape delay systems
@@ -13859,7 +13860,7 @@ media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from s
 media-sound/volumeicon 0.4.6 0.5.0 0.5.1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
 media-sound/vorbis-tools 1.4.0-r2: tools for using the Ogg Vorbis sound file format
-media-sound/vorbisgain 0.37-r1: Calculator of perceived sound level for Ogg Vorbis files
+media-sound/vorbisgain 0.37-r2: Calculator of perceived sound level for Ogg Vorbis files
 media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/waheela 0.3: Amarok Fullscreen Player
 media-sound/wav2json 0.4: Generate waveformjs.org compatible json data out of wav files
