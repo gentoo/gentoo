@@ -42,7 +42,7 @@ src_compile() {
 
 src_install() {
 	dobin xoat
-	dodoc xoat.md status
+	dodoc status xinitrc xoat.md xoatrc
 	doman xoat.1
 	save_config config.h
 }
