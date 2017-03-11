@@ -15,7 +15,9 @@
 	</maintainer>
 	<use>
 		<flag name="cli">Enables the CLI interface</flag>
+		<flag name="audio_modem">Enable plugin to support Audio Modem</flag>
 		<flag name="cosign">Enable plugin to support multisig wallets between multiple Electrum clients</flag>
+		<flag name="digitalbitbox">Enable plugin to support Digital Bitbox hardware wallet</flag>
 		<flag name="email">Enable plugin to support emailing invoices</flag>
 		<flag name="fiat">Enable plugin for looking up fiat values of bitcoin</flag>
 		<flag name="greenaddress_it">Enable plugin to verify GreenAddress.it instant transactions</flag>
