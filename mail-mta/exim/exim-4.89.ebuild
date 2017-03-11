@@ -490,7 +490,7 @@ src_install () {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/exim.logrotate" exim
 
-	newinitd "${FILESDIR}"/exim.rc9 exim
+	newinitd "${FILESDIR}"/exim.rc10 exim
 	newconfd "${FILESDIR}"/exim.confd exim
 
 	systemd_dounit "${FILESDIR}"/{exim.service,exim.socket,exim-submission.socket}
