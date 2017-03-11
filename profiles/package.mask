@@ -31,7 +31,7 @@
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
 # Fails since upgrade to dev-lang/perl-5.12 (!).
-# Removal in 30 days.
+# Removal in 30 days. Bug 336898.
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest
 dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing
 
@@ -42,7 +42,7 @@ dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing
 # application against >=dev-perl/Text-BibTeX-0.780.0-r1
 # (this should happen automatically with tellico, the
 # only reverse dependency in the main tree).
-# Removal in 30 days.
+# Removal in 30 days. Bug 599710.
 dev-libs/btparse
 
 # Patrice Clement <monsieurp@gentoo.org> (11 Mar 2017)
