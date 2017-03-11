@@ -7307,7 +7307,7 @@ dev-python/certifi 2016.9.26 2017.1.23: Python package for providing Mozilla's C
 dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0 1.8.3 1.9.1: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
-dev-python/cgkit 2.0.0: Python library for creating 3D images
+dev-python/cgkit 2.0.0 2.0.0-r1: Python library for creating 3D images
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chaco 4.5.0: Enthought Tool Suite: Interactive plotting toolkit
 dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
