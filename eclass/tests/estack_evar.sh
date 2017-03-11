@@ -1,10 +1,10 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 source tests-common.sh
 
-inherit eutils
+inherit estack
 
 tbegin "simple push/pop"
 VAR=1
