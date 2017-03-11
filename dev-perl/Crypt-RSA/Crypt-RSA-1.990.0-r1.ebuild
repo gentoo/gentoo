@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="RSA public-key cryptosystem"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ~ppc x86 ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ~mips x86 ~x86-solaris"
 IUSE=""
 
 DEPEND="dev-perl/Class-Loader
