@@ -5,15 +5,15 @@ EAPI=6
 
 PLOCALES="cs_CZ de_DE el es fr ia it ja pt_BR ru sv zh_CN zh_TW"
 
-inherit eutils git-r3 l10n qmake-utils
+inherit eutils l10n qmake-utils
 
 DESCRIPTION="View Your Mind, a mindmap tool"
 HOMEPAGE="http://www.insilmaril.de/vym/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="dbus"
 
 RDEPEND="
@@ -28,10 +28,17 @@ DEPEND="
 	dev-qt/linguist-tools:5
 "
 
-DOCS=( README.md )
+DOCS=( README.md doc/vym.pdf )
 
 src_prepare() {
 	default
+
+	if use linguas_es ; then
+		DOCS+=( doc/vym_es.pdf )
+	fi
+	if use linguas_fr ; then
+		DOCS+=( doc/vym_fr.pdf )
+	fi
 
 	remove_locale() {
 		sed -i \
