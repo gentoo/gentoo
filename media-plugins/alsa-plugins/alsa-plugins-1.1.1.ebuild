@@ -10,7 +10,7 @@ SRC_URI="mirror://alsaproject/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux"
 IUSE="debug ffmpeg jack libav libsamplerate pulseaudio speex"
 
 RDEPEND="
