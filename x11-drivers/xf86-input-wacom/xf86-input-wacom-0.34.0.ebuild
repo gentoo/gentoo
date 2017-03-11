@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://git.code.sf.net/p/linuxwacom/${PN}"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="mirror://sourceforge/linuxwacom/${PN}/${P}.tar.bz2"
 
-KEYWORDS="alpha amd64 arm ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE="debug"
 
 # depend on libwacom for its udev rules, bug #389633

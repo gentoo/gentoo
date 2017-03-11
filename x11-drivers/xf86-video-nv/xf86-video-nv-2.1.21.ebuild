@@ -6,7 +6,7 @@ inherit xorg-2
 
 DESCRIPTION="Nvidia 2D only video driver"
 
-KEYWORDS="alpha amd64 ~ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND="x11-base/xorg-server
