@@ -5,7 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="minimal">Disable install of various KDE SC 4 based packages</flag>
-	</use>
 </pkgmetadata>
