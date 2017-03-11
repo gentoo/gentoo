@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Diffie-Hellman key exchange system"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ~mips ~ppc x86"
+KEYWORDS="amd64 hppa ~mips x86"
 IUSE=""
 
 RDEPEND="
