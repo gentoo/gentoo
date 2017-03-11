@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=dev-perl/Net-Netmask >=dev-perl/Danga-Socket-1.610.0 >=dev-perl/Sys-Syscall-0.220.0 >=dev-perl/Perlbal-1.790 >=dev-perl/IO-AIO-4 dev-perl/libwww-perl >=dev-perl/MogileFS-Client-1.170.0 >=dev-perl/MogileFS-Utils-2.280.0 dev-perl/Cache-Memcached mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Server for the MogileFS distributed file system
+EAPI=5
+HOMEPAGE=http://www.danga.com/mogilefs/ http://search.cpan.org/dist/MogileFS-Server/
+IUSE=mysql sqlite postgres
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=dev-perl/Net-Netmask >=dev-perl/Danga-Socket-1.610.0 >=dev-perl/Sys-Syscall-0.220.0 >=dev-perl/Perlbal-1.790 >=dev-perl/IO-AIO-4 dev-perl/libwww-perl >=dev-perl/MogileFS-Client-1.170.0 >=dev-perl/MogileFS-Utils-2.280.0 dev-perl/Cache-Memcached mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DO/DORMANDO/MogileFS-Server-2.70.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:perl-module src_prepare:- src_configure:perl-module src_compile:- src_test:perl-module src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=abe693266d394ec6098ad4f6c0664d5e
