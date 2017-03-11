@@ -1,17 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils
+inherit toolchain-funcs
 
 DESCRIPTION="An Automated Deduction System"
 HOMEPAGE="http://www.cs.unm.edu/~mccune/otter/"
 SRC_URI="http://www.cs.unm.edu/~mccune/otter/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 LICENSE="otter"
 SLOT="0"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 RDEPEND="
@@ -20,24 +20,23 @@ RDEPEND="
 	x11-libs/libXt"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-gold.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-gold.patch
+)
 
 src_compile() {
-	cd source
-	CC=$(tc-getCC) emake
-	cd "${S}"/mace2
-	CC=$(tc-getCC) emake
+	tc-export CC
+
+	emake -C source
+	emake -C mace2
 }
 
 src_install() {
 	dobin bin/* source/formed/formed
-	dodoc README* Legal Changelog Contents
-	insinto /usr/share/doc/${PF}
-	doins documents/*.pdf
-	insinto /usr/share/${PN}/
+
+	dodoc README* Legal Changelog Contents documents/*.pdf
+
+	insinto /usr/share/${PN}
 	doins -r examples examples-mace2
 }
