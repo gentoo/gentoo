@@ -71,6 +71,8 @@ pkg_setup() {
 src_prepare() {
 	rm -r libpcap/ || die
 
+	cat "${FILESDIR}"/nls.m4 >> "${S}"/acinclude.m4 || die
+
 	default
 
 	if use nls; then
