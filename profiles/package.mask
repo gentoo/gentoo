@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
+# Dead upstream; the library has been picked up by
+# dev-perl/Text-BibTeX and is further developed there.
+# Please uninstall dev-libs/btparse and re-build your
+# application against >=dev-perl/Text-BibTeX-0.780.0-r1
+# (this should happen automatically with tellico, the
+# only reverse dependency in the main tree).
+# Removal in 30 days.
+dev-libs/btparse
+
 # Patrice Clement <monsieurp@gentoo.org> (11 Mar 2017)
 # Upstream dead: no update since 2003. Ebuild is outdated and buggy.
 # Removal in 30 days. Bug #279088
