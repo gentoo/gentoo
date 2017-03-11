@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses?"
 
-inherit eutils distutils-r1 gnome2-utils
+inherit distutils-r1 gnome2-utils
 
 MY_P="Electrum-${PV}"
 DESCRIPTION="User friendly Bitcoin client"
@@ -16,19 +16,20 @@ SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LINGUAS="ar_SA cs_CZ de_DE eo_UY fr_FR hy_AM it_IT ky_KG nb_NO no_NO pt_BR ro_RO sk_SK ta_IN vi_VN bg_BG da_DK el_GR es_ES hu_HU id_ID ja_JP lv_LV nl_NL pl_PL pt_PT ru_RU sl_SI th_TH zh_CN"
+LINGUAS="ar_SA bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL no_NO pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH tr_TR vi_VN zh_CN"
 
-IUSE="cli cosign email +fiat greenaddress_it gtk3 ncurses qrcode +qt4 sync trustedcoin_com vkb"
+IUSE="audio_modem cli cosign digitalbitbox email greenaddress_it ncurses qrcode +qt4 sync trustedcoin_com vkb"
 
 for lingua in ${LINGUAS}; do
 	IUSE+=" linguas_${lingua}"
 done
 
 REQUIRED_USE="
-	|| ( cli gtk3 ncurses qt4 )
+	|| ( cli ncurses qt4 )
+	audio_modem? ( qt4 )
 	cosign? ( qt4 )
+	digitalbitbox? ( qt4 )
 	email? ( qt4 )
-	fiat? ( qt4 )
 	greenaddress_it? ( qt4 )
 	qrcode? ( qt4 )
 	sync? ( qt4 )
@@ -40,8 +41,6 @@ RDEPEND="
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
-	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/PySocks[${PYTHON_USEDEP}]
 	dev-python/qrcode[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
@@ -52,10 +51,6 @@ RDEPEND="
 	dev-libs/protobuf[python,${PYTHON_USEDEP}]
 	virtual/python-dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[python,v4l,${PYTHON_USEDEP}] )
-	gtk3? (
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		x11-libs/gtk+:3[introspection]
-	)
 	qt4? (
 		dev-python/PyQt4[X,${PYTHON_USEDEP}]
 	)
@@ -67,13 +62,13 @@ S="${WORKDIR}/${MY_P}"
 DOCS="RELEASE-NOTES"
 
 src_prepare() {
+	eapply "${FILESDIR}/${PV}-no-user-root.patch"
+
 	# Don't advise using PIP
 	sed -i "s/On Linux, try 'sudo pip install zbar'/Re-emerge Electrum with the qrcode USE flag/" lib/qrscanner.py || die
 
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons/d' setup.py || die
-
-	validate_desktop_entries
 
 	# Remove unrequested localization files:
 	for lang in ${LINGUAS}; do
@@ -84,8 +79,7 @@ src_prepare() {
 	local wordlist=
 	for wordlist in  \
 		$(usex linguas_ja_JP '' japanese) \
-		$(usex linguas_pt_BR '' portuguese) \
-		$(usex linguas_pt_PT '' portuguese) \
+		$(usex linguas_pt_BR '' $(usex linguas_pt_PT '' portuguese)) \
 		$(usex linguas_es_ES '' spanish) \
 		$(usex linguas_zh_CN '' chinese_simplified) \
 	; do
@@ -94,40 +88,57 @@ src_prepare() {
 	done
 
 	# Remove unrequested GUI implementations:
-	rm -rf gui/kivy*
-	local gui
+	local gui setup_py_gui
 	for gui in  \
 		$(usex cli      '' stdio)  \
+		kivy \
+		$(usex qt4      '' qt   )  \
 		$(usex ncurses  '' text )  \
 	; do
 		rm gui/"${gui}"* -r || die
-	sed -i '/icons/d' setup.py || die
 	done
 
-	if ! use qt4; then
-		sed -i "s/'electrum_gui\\.qt',//" setup.py || die
+	# And install requested ones...
+	for gui in  \
+		$(usex qt4      qt   '')  \
+	; do
+		setup_py_gui="${setup_py_gui}'electrum_gui.${gui}',"
+	done
+
+	sed -i "s/'electrum_gui\\.qt',/${setup_py_gui}/" setup.py || die
+
+	local bestgui
+	if use qt4; then
+		bestgui=qt
+	elif use ncurses; then
+		bestgui=text
+	else
+		bestgui=stdio
 	fi
+	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' electrum || die
 
 	local plugin
-	# btchipwallet requires python btchip module (and dev-python/pyusb)
 	# trezor requires python trezorlib module
 	# keepkey requires trezor
 	for plugin in  \
-		$(usex cosign        '' cosigner_pool   ) \
+		$(usex audio_modem     '' audio_modem          ) \
+		$(usex cosign          '' cosigner_pool        ) \
+		$(usex digitalbitbox   '' digitalbitbox        ) \
+		$(usex email           '' email_requests       ) \
+		$(usex greenaddress_it '' greenaddress_instant ) \
 		hw_wallet \
 		ledger \
-		$(usex email         '' email_requests  ) \
-		$(usex fiat          '' exchange_rate   ) \
-		$(usex greenaddress_it '' greenaddress_instant)  \
 		keepkey \
-		$(usex sync          '' labels          )  \
+		$(usex sync            '' labels               ) \
 		trezor  \
-		$(usex trustedcoin_com '' trustedcoin   )  \
-		$(usex vkb           '' virtualkeyboard )  \
+		$(usex trustedcoin_com '' trustedcoin          ) \
+		$(usex vkb             '' virtualkeyboard      ) \
 	; do
 		rm -r plugins/"${plugin}"* || die
 		sed -i "/${plugin}/d" setup.py || die
 	done
+
+	eapply_user
 
 	distutils-r1_src_prepare
 }

@@ -1,13 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib cmake-utils multilib-minimal
+inherit cmake-utils multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://tls.mbed.org/"
-SRC_URI="https://github.com/ARMmbed/mbedtls/archive/mbedtls-${PV}.tar.gz"
+SRC_URI="https://github.com/ARMmbed/mbedtls/archive/${P}.tar.gz"
+S=${WORKDIR}/${PN}-${P}
 
 LICENSE="Apache-2.0"
 SLOT="0/10" # slot for libmbedtls.so
@@ -24,8 +25,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen media-gfx/graphviz )
 	test? ( dev-lang/perl )"
 
-S=${WORKDIR}/${PN}-${P}
-
 enable_mbedtls_option() {
 	local myopt="$@"
 	# check that config.h syntax is the same at version bump
@@ -40,15 +39,16 @@ src_prepare() {
 	use havege && enable_mbedtls_option MBEDTLS_HAVEGE_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_PTHREAD
+
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		$(multilib_is_native_abi && cmake-utils_use_enable programs PROGRAMS \
-			|| echo -DENABLE_PROGRAMS=OFF)
-		$(cmake-utils_use_enable zlib ZLIB_SUPPORT)
+		-DENABLE_PROGRAMS=$(multilib_native_usex programs)
+		-DENABLE_ZLIB_SUPPORT=$(usex zlib)
 		-DUSE_STATIC_MBEDTLS_LIBRARY=OFF
-		$(cmake-utils_use_enable test TESTING)
+		-DENABLE_TESTING=$(usex test)
 		-DUSE_SHARED_MBEDTLS_LIBRARY=ON
 		-DINSTALL_MBEDTLS_HEADERS=ON
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
@@ -72,9 +72,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
+	use doc && HTML_DOCS=( apidoc )
 
-	use doc && dohtml -r apidoc
+	einstalldocs
 
 	if use programs ; then
 		# avoid file collisions with sys-apps/coreutils
