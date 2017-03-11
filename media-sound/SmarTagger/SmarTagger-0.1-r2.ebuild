@@ -1,7 +1,7 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Perl script for renaming and tagging mp3s"
 HOMEPAGE="http://freshmeat.net/projects/smartagger/"
@@ -12,14 +12,11 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86"
 IUSE=""
 
-RDEPEND="dev-lang/perl
+RDEPEND="
+	dev-lang/perl
 	dev-perl/MP3-Info"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_install() {
 	dobin ${PN}

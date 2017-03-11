@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="awt">Useful only when building GCJ, this enables Abstract
+			Window Toolkit (AWT) peer support on top of GTK+</flag>
+		<flag name="cilk">Support the Cilk Plus language (C/C++ based languages for parallel programming)</flag>
+		<flag name="fixed-point">Enable fixed-point arithmetic support for MIPS
+			targets in gcc (Warning: significantly increases compile time!)
+		</flag>
+		<flag name="go">Build the GCC Go language frontend.</flag>
+		<flag name="graphite">Add support for the framework for loop
+			optimizations based on a polyhedral intermediate representation</flag>
+		<flag name="libssp">Build SSP support into a dedicated library rather
+			than use the code in the C library (DO NOT ENABLE THIS IF YOU DON'T
+			KNOW WHAT IT DOES)</flag>
+		<flag name="nopie">Disable PIE support (NOT FOR GENERAL USE)</flag>
+		<flag name="nossp">Disable SSP support (NOT FOR GENERAL USE)</flag>
+		<flag name="objc">Build support for the Objective C code language
+		</flag>
+		<flag name="objc++">Build support for the Objective C++ language</flag>
+		<flag name="objc-gc">Build support for the Objective C code language
+			Garbage Collector</flag>
+		<flag name="regression-test">Run the testsuite and install the results
+			(requires FEATURES=test)</flag>
+		<flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
+		<flag name="vtv">Build support for virtual table verification (a C++ hardening feature)</flag>
+	</use>
+</pkgmetadata>
