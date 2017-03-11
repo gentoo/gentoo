@@ -9376,7 +9376,7 @@ dev-ruby/hashicorp-checkpoint 0.1.4-r1: Internal HashiCorp service to check vers
 dev-ruby/hashie 2.1.2-r1 3.4.6 3.5.1 3.5.5: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.6 3.1.2 3.2.0 3.2.1 3.2.2 3.3.0: A simple pluggable Hierarchical Database
+dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.6 3.1.2 3.2.0 3.2.1 3.2.2 3.3.0 3.3.1: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.1.0: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
@@ -9472,7 +9472,7 @@ dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing
 dev-ruby/mixlib-shellout 2.2.7: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1.2.0 1.2.1: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/modernizr 2.6.2: Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
-dev-ruby/moneta 0.8.0 0.8.1: A unified interface to key/value stores
+dev-ruby/moneta 0.8.1 1.0.0: A unified interface to key/value stores
 dev-ruby/mongo 2.0.6: A Ruby driver for MongoDB
 dev-ruby/msgpack 0.7.6 1.0.1 1.0.2 1.0.3 1.1.0: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.9.3 1.11.2 1.12.1: A gem to provide swappable JSON backends
@@ -9782,7 +9782,7 @@ dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Array
 dev-ruby/typhoeus 0.6.9 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.52 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
-dev-ruby/uglifier 2.7.2 3.0.4 3.1.1 3.1.3: Ruby wrapper for UglifyJS JavaScript compressor
+dev-ruby/uglifier 2.7.2 3.0.4 3.1.1 3.1.3 3.1.6: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.1 0.0.7.2: Unicode Normalization Form support library for CRuby
