@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (11 Mar 2017)
+# Fails to build. Dead upstream.
+# Masked for removal in 30 days. Bug #592184.
+dev-scheme/schoca
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
 # Fails since upgrade to dev-lang/perl-5.12 (!).
 # Removal in 30 days. Bug 336898.
