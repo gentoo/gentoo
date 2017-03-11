@@ -30,7 +30,7 @@ MY_PN="google-chrome-${SLOT}"
 MY_P="${MY_PN}_${MY_PV}"
 
 SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 LICENSE="google-chrome"
 IUSE="+widevine"
