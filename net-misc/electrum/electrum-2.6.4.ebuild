@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -72,8 +72,6 @@ src_prepare() {
 
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons/d' setup.py || die
-
-	validate_desktop_entries
 
 	# Remove unrequested localization files:
 	for lang in ${LINGUAS}; do
