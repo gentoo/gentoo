@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_4} pypy )
 
-inherit user autotools-utils eutils systemd python-r1
+inherit user autotools eutils systemd python-r1
 
 DESCRIPTION="Varnish is a state-of-the-art, high-performance HTTP accelerator"
 HOMEPAGE="http://www.varnish-cache.org/"
@@ -39,8 +39,6 @@ RESTRICT="test" #315725
 
 DOCS=( README.rst doc/changes.rst )
 
-AUTOTOOLS_AUTORECONF="yes"
-
 pkg_setup() {
 	ebegin "Creating varnish user and group"
 	enewgroup varnish
@@ -56,20 +54,20 @@ src_prepare() {
 	# Remove -Werror bug #528354
 	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac
 
-	autotools-utils_src_prepare
+	eapply_user
+
+	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
-		$(use_enable static-libs static)
-		$(use_enable jit pcre-jit )
+	econf \
+		$(use_enable static-libs static) \
+		$(use_enable jit pcre-jit ) \
 		$(use_with jemalloc)
-	)
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	python_replicate_script "${D}/usr/share/varnish/vmodtool.py"
 
@@ -86,7 +84,6 @@ src_install() {
 	newins "${FILESDIR}/varnishd.logrotate-r2" varnishd
 
 	diropts -m750
-
 	dodir /var/log/varnish/
 
 	systemd_dounit "${FILESDIR}/${PN}d.service"
@@ -98,10 +95,4 @@ src_install() {
 	fowners root:varnish /etc/varnish/
 	fowners varnish:varnish /var/lib/varnish/
 	fperms 0750 /var/lib/varnish/ /etc/varnish/
-}
-
-pkg_postinst () {
-	elog "No demo-/sample-configfile is included in the distribution.  Please"
-	elog "read the man-page for more info.  A sample configuration proxying"
-	elog "localhost:8080 for localhost:80 is given in /etc/conf.d/varnishd."
 }
