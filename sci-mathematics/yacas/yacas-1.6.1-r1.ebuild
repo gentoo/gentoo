@@ -1,8 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=6
 
-CMAKE_IN_SOURCE_BUILD=0
+CMAKE_IN_SOURCE_BUILD=1
 
 inherit java-pkg-opt-2 cmake-utils
 
@@ -15,26 +16,32 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc gui java +jupyter static-libs"
 
-DEPEND="
+COMMON_DEPEND="
+	gui? (
+		dev-qt/qtcore:5[icu]
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtwebkit:5
+		dev-qt/qtmultimedia:5
+		dev-qt/qtsql:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtopengl:5
+		dev-qt/qtprintsupport:5
+	)
+	jupyter? (
+		dev-python/jupyter
+		dev-libs/boost:=
+		dev-libs/jsoncpp:=
+		dev-libs/openssl:0=
+		net-libs/zeromq
+		>=net-libs/zmqpp-4.1.2
+	)"
+DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/sphinx )
-	gui? (	>=dev-qt/qtcore-5.5[icu]
-			>=dev-qt/qtgui-5.5
-			>=dev-qt/qtwidgets-5.5
-			>=dev-qt/qtnetwork-5.5
-			>=dev-qt/qtwebkit-5.5
-			>=dev-qt/qtmultimedia-5.5
-			>=dev-qt/qtsql-5.5
-			>=dev-qt/qtprintsupport-5.5
-			>=dev-qt/qtopengl-5.5
-			>=dev-qt/qtprintsupport-5.5 )
-	jupyter? (	dev-python/jupyter
-				dev-libs/boost
-				dev-libs/jsoncpp
-				dev-libs/openssl:0
-				net-libs/zeromq
-				>=net-libs/zmqpp-4.1.2 )
 	java? ( >=virtual/jdk-1.6 )"
-RDEPEND="java? ( >=virtual/jre-1.6 )"
+RDEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jre-1.6 )"
 
 src_configure() {
 	local mycmakeargs=(
