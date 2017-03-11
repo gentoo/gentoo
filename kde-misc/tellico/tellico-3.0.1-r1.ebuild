@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-libs/btparse
+	>=dev-perl/Text-BibTeX-0.780.0-r1
 	dev-libs/libxml2
 	dev-libs/libxslt
 	cddb? ( $(add_kdeapps_dep libkcddb) )
@@ -70,8 +70,6 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 DOCS=( AUTHORS ChangeLog README )
-
-PATCHES=( "${FILESDIR}"/${P}-kf5cddb.patch )
 
 src_configure() {
 	local mycmakeargs=(

@@ -29,6 +29,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
+# Fails since upgrade to dev-lang/perl-5.12 (!).
+# Removal in 30 days. Bug 336898.
+dev-perl/Net-Google-SafeBrowsing-UpdateRequest
+dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
+# Dead upstream; the library has been picked up by
+# dev-perl/Text-BibTeX and is further developed there.
+# Please uninstall dev-libs/btparse and re-build your
+# application against >=dev-perl/Text-BibTeX-0.780.0-r1
+# (this should happen automatically with tellico, the
+# only reverse dependency in the main tree).
+# Removal in 30 days. Bug 599710.
+dev-libs/btparse
+
 # Patrice Clement <monsieurp@gentoo.org> (11 Mar 2017)
 # Upstream dead: no update since 2003. Ebuild is outdated and buggy.
 # Removal in 30 days. Bug #279088
@@ -559,14 +575,6 @@ games-emulation/ppsspp
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
 # Use at your own risk.
 =app-text/xiphos-4.0.4-r1
-
-# Kent Fredric <kentfredric@gmail.com> (15 May 2016)
-# Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2016)
-# Has been broken since app-arch/rar-5.0.0 due to List()
-# format changing. Will require upstream revision bump
-# or some helpful person to supply a parser patch.
-# Bug #483888
-<=dev-perl/Archive-Rar-2.20.0-r1
 
 # Lars Wendler <polynomial-c@gentoo.org> (2 May 2016)
 # Broken reverse deps. At least one header file has been moved around.
