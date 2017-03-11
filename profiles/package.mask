@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (11 Mar 2017)
+# Masked for removal in 30 days.  No longer supported
+# upstream.  Use net-proxy/obfs4proxy instread.
+net-proxy/obfsproxy
+
 # Gnome Team <gnome@gentoo.org> (08 Mar 2017)
 # GNOME 3.24 mask (#611270)
 >=x11-themes/adwaita-icon-theme-3.23
