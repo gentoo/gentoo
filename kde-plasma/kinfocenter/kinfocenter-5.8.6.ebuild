@@ -50,9 +50,9 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
-	!kde-base/kcontrol:4
-	!kde-plasma/kinfocenter:4
+	!kde-apps/kcontrol:4
 	!kde-misc/about-distro
+	!kde-plasma/kinfocenter:4
 "
 
 src_configure() {

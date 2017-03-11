@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Fast, compact, powerful binary (de-)serialization"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

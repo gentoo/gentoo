@@ -92,7 +92,10 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install-{config,headers,lib,man,nls}
 
 	if multilib_is_native_abi && use doc; then
-		dohtml -r doc/html/
+		(
+			docinto html
+			dodoc -r doc/html/*
+		)
 	fi
 }
 

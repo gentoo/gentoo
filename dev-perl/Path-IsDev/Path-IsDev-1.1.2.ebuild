@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Determine if a given Path resembles a development source tree"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test minimal"
 
 RDEPEND="

@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">blessings</remote-id>
     <remote-id type="github">erikrose/blessings</remote-id>
+    <bugs-to>https://github.com/erikrose/blessings/issues</bugs-to>
   </upstream>
 </pkgmetadata>

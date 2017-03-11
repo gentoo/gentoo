@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils git-2 toolchain-funcs
+inherit autotools git-r3 toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
 HOMEPAGE="http://dev.yorhel.nl/ncdc"
@@ -26,13 +26,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch_user
+	default
 	eautoreconf
 }
 
 src_configure() {
 	econf --enable-git-version \
-		 $(use_with geoip)
+		$(use_with geoip)
 }
 
 src_compile() {

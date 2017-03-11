@@ -12,11 +12,9 @@
 	<flag name="client">Build client-side code</flag>
 	<flag name="clipboard">Enable clipboard support</flag>
 	<flag name="csc">Enable csc softscaler support</flag>
-	<flag name="dec_av">Enable dec_avcodec support</flag>
 	<flag name="dec_av2">Enable dec_avcodec2 support</flag>
 	<flag name="enc_ffmpeg">Enable advanced ffmpeg/libav encoder support</flag>
 	<flag name="lz4">Enable support for lz4 compression</flag>
-	<flag name="rencode">Enable rencode support</flag>
 	<flag name="server">Build server-side code</flag>
 	<flag name="vpx">Enable vpx image format support</flag>
 	<flag name="webp">Enable webp image format support</flag>

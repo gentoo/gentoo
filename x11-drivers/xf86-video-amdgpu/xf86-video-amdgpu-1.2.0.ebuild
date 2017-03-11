@@ -7,9 +7,9 @@ inherit xorg-2
 
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="amd64 x86"
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Accelerated Open Source driver for AMDGPU cards"

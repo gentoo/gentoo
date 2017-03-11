@@ -1,0 +1,51 @@
+From e8437f906ca86fd5b1cac20d240a0e114c5df7a9 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 9 Mar 2017 16:06:54 -0800
+Subject: [PATCH] fix unused attribute in func definition
+
+UNUSED is for wrapping variable decls, not for variables in a function
+definition.  It will insert a semi-colon into the mix which makes clang
+upset:
+x86_64-cros-linux-gnu-clang  -DHAVE_CONFIG_H -DSYSCONFDIR=\"/etc/mtools\" \
+	-DCPU_x86_64 -DVENDOR_cros -DOS_linux_gnu -O2 -pipe -O2 -pipe \
+	-march=x86-64 -msse3 -g -fno-exceptions -fno-unwind-tables \
+	-fno-asynchronous-unwind-tables  -clang-syntax -Wall \
+	-fno-strict-aliasing -I.  -I.  -c mainloop.c
+mainloop.c:89:15: error: expected ')'
+int unix_loop(UNUSED(Stream_t *Stream), MainParam_t *mp, char *arg,
+              ^
+./sysincludes.h:106:47: note: expanded from macro 'UNUSED'
+                                              ^
+
+Arguably this should fail on gcc too, but it doesn't today.
+
+URL: https://crbug.com/644387
+---
+ mainloop.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mainloop.c b/mainloop.c
+index f5f8349f1472..69af9a80c3e4 100644
+--- a/mainloop.c
++++ b/mainloop.c
+@@ -86,7 +86,7 @@ static const char *fix_mcwd(char *ans)
+ }
+ 
+ int unix_dir_loop(Stream_t *Stream, MainParam_t *mp); 
+-int unix_loop(UNUSED(Stream_t *Stream), MainParam_t *mp, char *arg,
++int unix_loop(Stream_t *Stream UNUSEDP, MainParam_t *mp, char *arg,
+ 	      int follow_dir_link);
+ 
+ static int _unix_loop(Stream_t *Dir, MainParam_t *mp,
+@@ -95,7 +95,7 @@ static int _unix_loop(Stream_t *Dir, MainParam_t *mp,
+ 	return unix_dir_loop(Dir, mp);
+ }
+ 
+-int unix_loop(UNUSED(Stream_t *Stream), MainParam_t *mp,
++int unix_loop(Stream_t *Stream UNUSEDP, MainParam_t *mp,
+ 	      char *arg, int follow_dir_link)
+ {
+ 	int ret;
+-- 
+2.12.0
+

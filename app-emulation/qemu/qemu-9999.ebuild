@@ -389,57 +389,70 @@ qemu_src_configure() {
 		$(use_enable xattr attr)
 	)
 
-	# Disable options not used by user targets as the default configure
-	# options will autoprobe and try to link in a bunch of unused junk.
-	conf_softmmu() {
-		if [[ ${buildtype} == "softmmu" ]] ; then
-			use_enable "$@"
-		else
+	# Disable options not used by user targets. This simplifies building
+	# static user targets (USE=static-user) considerably.
+	conf_notuser() {
+		if [[ ${buildtype} == "user" ]] ; then
 			echo "--disable-${2:-$1}"
+		else
+			use_enable "$@"
 		fi
 	}
 	conf_opts+=(
-		$(conf_softmmu accessibility brlapi)
-		$(conf_softmmu aio linux-aio)
-		$(conf_softmmu bzip2)
-		$(conf_softmmu bluetooth bluez)
-		$(conf_softmmu caps cap-ng)
-		$(conf_softmmu curl)
-		$(conf_softmmu fdt)
-		$(conf_softmmu glusterfs)
-		$(conf_softmmu gnutls)
-		$(conf_softmmu gnutls nettle)
-		$(conf_softmmu gtk)
-		$(conf_softmmu infiniband rdma)
-		$(conf_softmmu iscsi libiscsi)
-		$(conf_softmmu jpeg vnc-jpeg)
-		$(conf_softmmu kernel_linux kvm)
-		$(conf_softmmu lzo)
-		$(conf_softmmu ncurses curses)
-		$(conf_softmmu nfs libnfs)
-		$(conf_softmmu numa)
-		$(conf_softmmu opengl)
-		$(conf_softmmu png vnc-png)
-		$(conf_softmmu rbd)
-		$(conf_softmmu sasl vnc-sasl)
-		$(conf_softmmu sdl)
-		$(conf_softmmu seccomp)
-		$(conf_softmmu smartcard)
-		$(conf_softmmu snappy)
-		$(conf_softmmu spice)
-		$(conf_softmmu ssh libssh2)
-		$(conf_softmmu usb libusb)
-		$(conf_softmmu usbredir usb-redir)
-		$(conf_softmmu vde)
-		$(conf_softmmu vhost-net)
-		$(conf_softmmu virgl virglrenderer)
-		$(conf_softmmu virtfs)
-		$(conf_softmmu vnc)
-		$(conf_softmmu vte)
-		$(conf_softmmu xen)
-		$(conf_softmmu xen xen-pci-passthrough)
-		$(conf_softmmu xfs xfsctl)
+		$(conf_notuser accessibility brlapi)
+		$(conf_notuser aio linux-aio)
+		$(conf_notuser bzip2)
+		$(conf_notuser bluetooth bluez)
+		$(conf_notuser caps cap-ng)
+		$(conf_notuser curl)
+		$(conf_notuser fdt)
+		$(conf_notuser glusterfs)
+		$(conf_notuser gnutls)
+		$(conf_notuser gnutls nettle)
+		$(conf_notuser gtk)
+		$(conf_notuser infiniband rdma)
+		$(conf_notuser iscsi libiscsi)
+		$(conf_notuser jpeg vnc-jpeg)
+		$(conf_notuser kernel_linux kvm)
+		$(conf_notuser lzo)
+		$(conf_notuser ncurses curses)
+		$(conf_notuser nfs libnfs)
+		$(conf_notuser numa)
+		$(conf_notuser opengl)
+		$(conf_notuser png vnc-png)
+		$(conf_notuser rbd)
+		$(conf_notuser sasl vnc-sasl)
+		$(conf_notuser sdl)
+		$(conf_notuser seccomp)
+		$(conf_notuser smartcard)
+		$(conf_notuser snappy)
+		$(conf_notuser spice)
+		$(conf_notuser ssh libssh2)
+		$(conf_notuser usb libusb)
+		$(conf_notuser usbredir usb-redir)
+		$(conf_notuser vde)
+		$(conf_notuser vhost-net)
+		$(conf_notuser virgl virglrenderer)
+		$(conf_notuser virtfs)
+		$(conf_notuser vnc)
+		$(conf_notuser vte)
+		$(conf_notuser xen)
+		$(conf_notuser xen xen-pci-passthrough)
+		$(conf_notuser xfs xfsctl)
 	)
+
+	if [[ ! ${buildtype} == "user" ]] ; then
+		# audio options
+		local audio_opts="oss"
+		use alsa && audio_opts="alsa,${audio_opts}"
+		use sdl && audio_opts="sdl,${audio_opts}"
+		use pulseaudio && audio_opts="pa,${audio_opts}"
+		conf_opts+=(
+			--audio-drv-list="${audio_opts}"
+		)
+		use gtk && conf_opts+=( --with-gtkabi=$(usex gtk2 2.0 3.0) )
+		use sdl && conf_opts+=( --with-sdlabi=$(usex sdl2 2.0 1.2) )
+	fi
 
 	case ${buildtype} in
 	user)
@@ -452,21 +465,12 @@ qemu_src_configure() {
 		local static_flag="static-user"
 		;;
 	softmmu)
-		# audio options
-		local audio_opts="oss"
-		use alsa && audio_opts="alsa,${audio_opts}"
-		use sdl && audio_opts="sdl,${audio_opts}"
-		use pulseaudio && audio_opts="pa,${audio_opts}"
-
 		conf_opts+=(
 			--disable-linux-user
 			--enable-system
 			--disable-tools
 			--with-system-pixman
-			--audio-drv-list="${audio_opts}"
 		)
-		use gtk && conf_opts+=( --with-gtkabi=$(usex gtk2 2.0 3.0) )
-		use sdl && conf_opts+=( --with-sdlabi=$(usex sdl2 2.0 1.2) )
 		local static_flag="static"
 		;;
 	tools)
@@ -475,7 +479,6 @@ qemu_src_configure() {
 			--disable-system
 			--disable-blobs
 			--enable-tools
-			$(use_enable bzip2)
 		)
 		local static_flag="static"
 		;;
@@ -654,7 +657,7 @@ src_install() {
 
 	# Disable mprotect on the qemu binaries as they use JITs to be fast #459348
 	pushd "${ED}"/usr/bin >/dev/null
-	pax-mark m "${softmmu_bins[@]}" "${user_bins[@]}"
+	pax-mark mr "${softmmu_bins[@]}" "${user_bins[@]}" # bug 575594
 	popd >/dev/null
 
 	# Install config file example for qemu-bridge-helper

@@ -7,4 +7,9 @@
 	<upstream>
 		<remote-id type="sourceforge">firehol</remote-id>
 	</upstream>
+	<use>
+		<flag name="ipset">
+			Use <pkg>net-firewall/ipset</pkg>.
+		</flag>
+	</use>
 </pkgmetadata>

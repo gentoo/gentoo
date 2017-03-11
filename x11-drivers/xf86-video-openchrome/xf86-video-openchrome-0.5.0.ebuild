@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ DESCRIPTION="X.Org driver for VIA/S3G cards"
 HOMEPAGE="https://www.freedesktop.org/wiki/Openchrome/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug viaregtool"
 
 RDEPEND=">=x11-base/xorg-server-1.9"

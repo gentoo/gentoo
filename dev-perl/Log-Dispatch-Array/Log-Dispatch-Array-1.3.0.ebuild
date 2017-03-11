@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="log events to an array (reference)"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

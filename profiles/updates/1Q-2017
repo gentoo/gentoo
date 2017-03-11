@@ -3,3 +3,4 @@ slotmove dev-libs/kirigami 5 1
 move dev-libs/uchardet app-i18n/uchardet
 move net-libs/libkgapi kde-apps/libkgapi
 slotmove =dev-ruby/typhoeus-1.1.2 0 1
+move app-cdr/k3b kde-apps/k3b

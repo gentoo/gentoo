@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="alpha ~amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="
 	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 crypt doc doc-pdf
 	geoip +gtk kerberos lua +netlink +pcap portaudio +qt5 sbc selinux smi

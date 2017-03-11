@@ -3,6 +3,7 @@
 
 EAPI=6
 
+KDE_BLOCK_SLOT4="false"
 KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
 inherit kde5

@@ -1,0 +1,31 @@
+From a660e3de422731b94d4a134d27555430cbb6fb39 Mon Sep 17 00:00:00 2001
+From: Werner Lemberg <wl@gnu.org>
+Date: Fri, 26 Aug 2016 00:23:27 +0200
+Subject: [PATCH] [type1] Fix heap buffer overflow.
+
+Reported as
+
+  https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=36
+
+* src/type1/t1load.c (parse_charstrings): Reject fonts that don't
+contain glyph names.
+---
+diff --git a/src/type1/t1load.c b/src/type1/t1load.c
+index c981adcf..f8bf3132 100644
+--- a/src/type1/t1load.c
++++ b/src/type1/t1load.c
+@@ -1776,6 +1776,12 @@
+       }
+     }
+ 
++    if ( !n )
++    {
++      error = FT_THROW( Invalid_File_Format );
++      goto Fail;
++    }
++
+     loader->num_glyphs = n;
+ 
+     /* if /.notdef is found but does not occupy index 0, do our magic. */
+-- 
+2.12.0

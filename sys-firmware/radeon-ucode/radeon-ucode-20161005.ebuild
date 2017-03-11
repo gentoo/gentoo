@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${RADEON_UCODE_LINUX_FIRMWARE}.tar.xz"
 
 LICENSE="radeon-ucode"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="!sys-kernel/linux-firmware[-savedconfig]"

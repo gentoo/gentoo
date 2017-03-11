@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="An NTLM authentication module"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ppc x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND=">=virtual/perl-MIME-Base64-3.00

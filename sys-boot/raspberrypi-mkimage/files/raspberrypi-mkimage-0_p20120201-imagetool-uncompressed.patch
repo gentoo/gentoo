@@ -1,6 +1,5 @@
-diff -ru raspberrypi-mkimage-0_p20120201.orig/imagetool-uncompressed.py raspberrypi-mkimage-0_p20120201/imagetool-uncompressed.py
---- raspberrypi-mkimage-0_p20120201.orig/imagetool-uncompressed.py	2013-07-19 15:11:23.373837900 +0200
-+++ raspberrypi-mkimage-0_p20120201/imagetool-uncompressed.py	2013-07-19 15:31:56.495421758 +0200
+--- a/imagetool-uncompressed.py
++++ b/imagetool-uncompressed.py
 @@ -3,15 +3,23 @@
  import os
  import re

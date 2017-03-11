@@ -7,7 +7,7 @@ inherit autotools-utils xorg-2
 
 DESCRIPTION="X authority file utility"
 
-KEYWORDS="alpha ~amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
 
 IUSE="ipv6 test"
 

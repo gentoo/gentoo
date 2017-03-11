@@ -68,6 +68,8 @@ src_unpack() {
 src_prepare() {
 	rm -r libpcap/ || die
 
+	cat "${FILESDIR}"/nls.m4 >> "${S}"/acinclude.m4 || die
+
 	epatch \
 		"${FILESDIR}"/${PN}-5.10_beta1-string.patch \
 		"${FILESDIR}"/${PN}-5.21-python.patch \

@@ -276,12 +276,6 @@ net-misc/pymazon
 # a quick hack-fix in 2013. Removal in 30 days. Bug #591506.
 net-misc/orbited
 
-# Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
-# Last release in 2004, broken at least since 2010. Seems to require
-# complex patches, no effective maintainer, still uses old distutils
-# eclass. Removal in 30 days. Bug #298850.
-media-sound/jack
-
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Old gstreamer 0.10 version, which is security vulnerable.
 # Use gstreamer:1.0 with media-plugins/gst-plugins-libav
@@ -373,94 +367,6 @@ app-crypt/cryptkeeper
 # Removal in 30 days.
 dev-python/mwlib
 dev-python/mwlib-rl
-
-# David Seifert <soap@gentoo.org> (30 Jan 2017)
-# No maintainer activity since git migration, dated eclass
-# Multiple open bugs, with no activity:
-# 499176, 501170, 521072, 538156, 562300, 562476, 563714,
-# 586464, 587862, 588890, 602294, 603556, 607004
-# Masked for removal in 30 days.
-app-leechcraft/laretz
-app-leechcraft/lc-advancednotifications
-app-leechcraft/lc-aggregator
-app-leechcraft/lc-anhero
-app-leechcraft/lc-auscrie
-app-leechcraft/lc-azoth
-app-leechcraft/lc-bittorrent
-app-leechcraft/lc-blasq
-app-leechcraft/lc-blogique
-app-leechcraft/lc-certmgr
-app-leechcraft/lc-core
-app-leechcraft/lc-cpuload
-app-leechcraft/lc-cstp
-app-leechcraft/lc-dbusmanager
-app-leechcraft/lc-deadlyrics
-app-leechcraft/lc-devmon
-app-leechcraft/lc-dolozhee
-app-leechcraft/lc-eleeminator
-app-leechcraft/lc-fenet
-app-leechcraft/lc-gacts
-app-leechcraft/lc-glance
-app-leechcraft/lc-gmailnotifier
-app-leechcraft/lc-historyholder
-app-leechcraft/lc-hotsensors
-app-leechcraft/lc-hotstreams
-app-leechcraft/lc-htthare
-app-leechcraft/lc-imgaste
-app-leechcraft/lc-intermutko
-app-leechcraft/lc-kbswitch
-app-leechcraft/lc-kinotify
-app-leechcraft/lc-knowhow
-app-leechcraft/lc-krigstask
-app-leechcraft/lc-lackman
-app-leechcraft/lc-lastfmscrobble
-app-leechcraft/lc-laughty
-app-leechcraft/lc-launchy
-app-leechcraft/lc-lemon
-app-leechcraft/lc-lhtr
-app-leechcraft/lc-liznoo
-app-leechcraft/lc-lmp
-app-leechcraft/lc-mellonetray
-app-leechcraft/lc-monocle
-app-leechcraft/lc-musiczombie
-app-leechcraft/lc-nacheku
-app-leechcraft/lc-netstoremanager
-app-leechcraft/lc-networkmonitor
-app-leechcraft/lc-newlife
-app-leechcraft/lc-ooronee
-app-leechcraft/lc-otlozhu
-app-leechcraft/lcpackgen
-app-leechcraft/lc-pintab
-app-leechcraft/lc-pogooglue
-app-leechcraft/lc-popishu
-app-leechcraft/lc-poshuku
-app-leechcraft/lc-qrosp
-app-leechcraft/lc-rosenthal
-app-leechcraft/lc-sb2
-app-leechcraft/lc-scroblibre
-app-leechcraft/lc-secman
-app-leechcraft/lc-seekthru
-app-leechcraft/lc-summary
-app-leechcraft/lc-sysnotify
-app-leechcraft/lc-tabsessmanager
-app-leechcraft/lc-tabslist
-app-leechcraft/lc-touchstreams
-app-leechcraft/lc-tpi
-app-leechcraft/lc-vgrabber
-app-leechcraft/lc-vrooby
-app-leechcraft/lc-xproxy
-app-leechcraft/lc-xtazy
-app-leechcraft/leechcraft-meta
-app-leechcraft/liblaretz
-virtual/leechcraft-browser
-virtual/leechcraft-downloader-http
-virtual/leechcraft-notifier
-virtual/leechcraft-quark-sideprovider
-virtual/leechcraft-search-show
-virtual/leechcraft-storage-device-manager
-virtual/leechcraft-task-show
-virtual/leechcraft-trayarea
-virtual/leechcraft-wysiwyg-editor
 
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
 # Alpha release with new features, masked for testing
