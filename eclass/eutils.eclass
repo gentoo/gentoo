@@ -17,12 +17,12 @@
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
 0|1|2|3|4|5|6)
-	inherit epatch estack
+	inherit epatch estack multilib
 	;;
 esac
 
