@@ -4,9 +4,9 @@
 EAPI=6
 inherit flag-o-matic git-r3 savedconfig toolchain-funcs
 
-DESCRIPTION="X Obstinate Asymmetric Tiler"
-HOMEPAGE="https://github.com/seanpringle/xoat"
-EGIT_REPO_URI="https://github.com/seanpringle/xoat"
+DESCRIPTION="X11 Obstinate Window Lister"
+HOMEPAGE="https://github.com/seanpringle/xowl"
+EGIT_REPO_URI="https://github.com/seanpringle/xowl"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,7 +19,6 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!savedconfig? ( x11-misc/dmenu )
 "
 
 src_prepare() {
@@ -34,15 +33,15 @@ src_configure() {
 src_compile() {
 	XOAT_COMPILE=(
 		${CC} -o ${PN} ${PN}.c ${CFLAGS} -std=c99 ${LDFLAGS}
-		$(${PKG_CONFIG} --cflags --libs x11 xinerama xft)
+		$(${PKG_CONFIG} --cflags --libs x11 xft xinerama)
 	)
 	echo ${XOAT_COMPILE[@]}
 	${XOAT_COMPILE[@]} || die
 }
 
 src_install() {
-	dobin xoat
-	dodoc status xinitrc xoat.md xoatrc
-	doman xoat.1
+	dobin xowl
+	dodoc xowl.md
+	doman xowl.1
 	save_config config.h
 }
