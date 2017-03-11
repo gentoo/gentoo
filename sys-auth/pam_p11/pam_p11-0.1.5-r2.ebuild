@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/opensc/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~hppa ia64 ~ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="virtual/pam
