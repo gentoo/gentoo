@@ -10,6 +10,7 @@
 		<name>Luke Dashjr</name>
 	</maintainer>
 	<use>
+		<flag name="knots">Build enhanced Bitcoin Knots version, rather than Bitcoin Core</flag>
 		<flag name="ljr">Enable Luke Dashjr's patches</flag>
 	</use>
 	<upstream>
