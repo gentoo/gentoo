@@ -32,13 +32,6 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	idn? ( >=net-dns/libidn2-0.16-r1[${MULTILIB_USEDEP}] )
 	valgrind? ( dev-util/valgrind )
-	test-full? (
-		app-crypt/dieharder
-		app-misc/datefudge
-		dev-libs/softhsm:2[-bindist]
-		net-dialup/ppp
-		net-misc/socat
-	)
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20140508
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
@@ -48,7 +41,13 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
-	test? ( app-misc/datefudge )"
+	test-full? (
+		app-crypt/dieharder
+		app-misc/datefudge
+		dev-libs/softhsm:2[-bindist]
+		net-dialup/ppp
+		net-misc/socat
+	)"
 
 DOCS=(
 	README.md
