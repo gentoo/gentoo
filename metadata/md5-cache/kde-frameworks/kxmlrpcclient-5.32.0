@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=kde-frameworks/kcoreaddons-5.32:5 >=kde-frameworks/ki18n-5.32:5 >=kde-frameworks/kio-5.32:5 >=dev-qt/qtxml-5.6.1:5 sys-devel/make >=dev-util/cmake-3.6.3 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info >=kde-frameworks/extra-cmake-modules-5.32:5 test? ( >=dev-qt/qttest-5.6.1:5 ) >=dev-qt/qtcore-5.6.1:5 dev-util/desktop-file-utils app-arch/xz-utils
+DESCRIPTION=Framework providing client-side support for the XML-RPC protocol
+EAPI=6
+HOMEPAGE=https://www.kde.org/
+IUSE=debug test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD-2
+RDEPEND=>=kde-frameworks/kcoreaddons-5.32:5 >=kde-frameworks/ki18n-5.32:5 >=kde-frameworks/kio-5.32:5 >=dev-qt/qtxml-5.6.1:5 >=kde-frameworks/kf-env-4 !<kde-apps/kde4-l10n-15.12.3-r1 >=dev-qt/qtcore-5.6.1:5
+SLOT=5/5.32
+SRC_URI=mirror://kde/stable/frameworks/5.32/kxmlrpcclient-5.32.0.tar.xz
+_eclass_exported_funcs=pkg_preinst:kde5 pkg_postrm:kde5 pkg_postinst:kde5 pkg_setup:kde5 src_unpack:kde5 src_prepare:kde5 src_configure:kde5 src_compile:kde5 src_test:kde5 src_install:kde5
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	kde5	dff0f6dcdbfeaf03dac4c286032f1622	kde5-functions	4d549f753da6d754874f9f755e2d6794	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=b860b8dc821435ef05004916c24d1cf6

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare test
+DESCRIPTION=Standard GNU database libraries
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/gdbm/
+IUSE=+berkdb exporter nls static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-3
+RDEPEND=abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r4 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
+SLOT=0
+SRC_URI=mirror://gnu/gdbm/gdbm-1.13.tar.gz exporter? ( mirror://gnu/gdbm/gdbm-1.8.3.tar.gz )
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	48b1b9f6194d2842456514d1184ca72e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=06d1ef76aa233964e71faac89b7d0f49
