@@ -11,7 +11,7 @@ SRC_URI="http://craz.net/programs/itunes/files/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~ppc-macos ~x86-solaris"
 IUSE=""
 
 S=${WORKDIR}/${PN}
