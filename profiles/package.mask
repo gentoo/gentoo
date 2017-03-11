@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (11 Mar 2017)
+# Upstream dead: no update since 2003. Ebuild is outdated and buggy.
+# Removal in 30 days. Bug #279088
+dev-java/jusb
+
 # Anthony G. Basile <blueness@gentoo.org> (11 Mar 2017)
 # Masked for removal in 30 days.  No longer supported
 # upstream.  Use net-proxy/obfs4proxy instread.
