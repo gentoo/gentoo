@@ -1,7 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils autotools
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="Command line CD player"
 HOMEPAGE="http://bard.sytes.net/takcd/"
@@ -12,15 +14,15 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~hppa ia64 ~mips ~ppc sparc x86"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-overflow.patch
+PATCHES=( "${FILESDIR}"/${P}-overflow.patch )
+
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
+	default
 	doman *.1
-	dodoc AUTHORS ChangeLog NEWS README README.takmulti TODO
 }
