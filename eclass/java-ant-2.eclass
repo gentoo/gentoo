@@ -170,19 +170,6 @@ java-ant_bsfix() {
 	popd > /dev/null || die
 }
 
-_bsfix_die() {
-	if has_version dev-python/pyxml; then
-		eerror "If the output above contains:"
-		eerror "ImportError:"
-		eerror "/usr/lib/python2.4/site-packages/_xmlplus/parsers/pyexpat.so:"
-		eerror "undefined symbol: PyUnicodeUCS2_DecodeUTF8"
-		eerror "Try re-emerging dev-python/pyxml"
-		die ${1} " Look at the eerror message above"
-	else
-		die ${1}
-	fi
-}
-
 # @FUNCTION: java-ant_bsfix_files
 # @USAGE: <path/to/first/build.xml> [path/to/second.build.xml ...]
 # @DESCRIPTION:
@@ -239,12 +226,7 @@ java-ant_bsfix_files() {
 			files+=( -f "${file}" )
 		done
 
-		# for javadoc target and all in one pass, we need the new rewriter.
-		local rewriter3="${EPREFIX}/usr/share/javatoolkit/xml-rewrite-3.py"
-		if [[ ! -f ${rewriter3} ]]; then
-			rewriter3="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-3.py"
-		fi
-
+		local rewriter3="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-3.py"
 		local rewriter4="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/build-xml-rewrite"
 
 		if [[ -x ${rewriter4} && ${JAVA_ANT_ENCODING} ]]; then
@@ -256,30 +238,6 @@ java-ant_bsfix_files() {
 				-c "${JAVA_PKG_BSFIX_SOURCE_TAGS}" source ${want_source} \
 				-c "${JAVA_PKG_BSFIX_TARGET_TAGS}" target ${want_target} \
 				"${@}" || die "build-xml-rewrite failed"
-		elif [[ ! -f ${rewriter3} ]]; then
-			debug-print "Using second generation rewriter"
-			echo "Rewriting source attributes"
-			xml-rewrite-2.py "${files[@]}" \
-				-c -e ${JAVA_PKG_BSFIX_SOURCE_TAGS// / -e } \
-				-a source -v ${want_source} || _bsfix_die "xml-rewrite2 failed: ${file}"
-
-			echo "Rewriting target attributes"
-			xml-rewrite-2.py "${files[@]}" \
-				-c -e ${JAVA_PKG_BSFIX_TARGET_TAGS// / -e } \
-				-a target -v ${want_target} || _bsfix_die "xml-rewrite2 failed: ${file}"
-
-			echo "Rewriting nowarn attributes"
-			xml-rewrite-2.py "${files[@]}" \
-				-c -e ${JAVA_PKG_BSFIX_TARGET_TAGS// / -e } \
-				-a nowarn -v yes || _bsfix_die "xml-rewrite2 failed: ${file}"
-
-			if [[ ${JAVA_ANT_REWRITE_CLASSPATH} ]]; then
-				echo "Adding gentoo.classpath to javac tasks"
-				xml-rewrite-2.py "${files[@]}" \
-					 -c -e javac -e xjavac -a classpath -v \
-					 '\${gentoo.classpath}' \
-					 || _bsfix_die "xml-rewrite2 failed"
-			fi
 		else
 			debug-print "Using third generation rewriter"
 			echo "Rewriting attributes"
@@ -336,7 +294,7 @@ java-ant_bsfix_files() {
 				--target-attribute target --target-value ${want_target} \
 				--target-attribute nowarn --target-value yes \
 				${bsfix_extra_args} \
-				|| _bsfix_die "xml-rewrite2 failed: ${file}"
+				|| die "xml-rewrite-3 failed: ${file}"
 		fi
 
 		if [[ -n "${JAVA_PKG_DEBUG}" ]]; then
