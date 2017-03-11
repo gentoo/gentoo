@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -47,6 +47,7 @@ RDEPEND="
 python_prepare_all() {
 	echo VERSION="${PV}" "${PYTHON}" setup.py set_version
 	VERSION="${PV}" "${PYTHON}" setup.py set_version
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
