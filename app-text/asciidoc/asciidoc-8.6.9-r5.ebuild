@@ -3,9 +3,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 readme.gentoo-r1
+inherit python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://asciidoc.org/"
@@ -25,9 +25,9 @@ RDEPEND="
 	graphviz? ( media-gfx/graphviz )
 	highlight? (
 		|| (
-			app-text/highlight
-			dev-python/pygments[${PYTHON_USEDEP}]
 			dev-util/source-highlight
+			dev-python/pygments[${PYTHON_USEDEP}]
+			app-text/highlight
 		)
 	)"
 DEPEND="
@@ -51,32 +51,21 @@ src_prepare() {
 	# Only needed for prefix - harmless (does nothing) otherwise
 	sed -i -e "s:^CONF_DIR=.*:CONF_DIR='${EPREFIX}/etc/asciidoc':" \
 		"${S}/asciidoc.py" || die
-	python_copy_sources
 }
 
 src_configure() {
-	myconfigure() {
-		econf --sysconfdir="${EPREFIX}"/usr/share
-	}
-	python_foreach_impl run_in_build_dir myconfigure
-}
-
-src_compile() {
-	python_foreach_impl run_in_build_dir default
+	econf --sysconfdir="${EPREFIX}"/usr/share
 }
 
 src_test() {
-	mytest() {
-		local -x ASCIIDOC_PY=asciidoc.py
-		"${EPYTHON}" tests/test${PN}.py update || die
-		"${EPYTHON}" tests/test${PN}.py run || die
-	}
-	python_foreach_impl run_in_build_dir mytest
+	local -x ASCIIDOC_PY=asciidoc.py
+	"${EPYTHON}" tests/test${PN}.py update || die
+	"${EPYTHON}" tests/test${PN}.py run || die
 }
 
 src_install() {
-	python_foreach_impl run_in_build_dir default
-	python_replicate_script "${ED%/}"/usr/bin/*.py
+	default
+	python_fix_shebang "${ED%/}"/usr/bin/*.py
 
 	readme.gentoo_create_doc
 	dodoc CHANGELOG docbook-xsl/asciidoc-docbook-xsl.txt \
