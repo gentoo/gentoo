@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ml/ocaml-re:= dev-ml/stringext:= dev-ml/ocaml-uri:= dev-ml/fieldslib:= dev-ml/sexplib:= dev-ml/ppx_fields_conv:= dev-ml/ppx_sexp_conv:= dev-ml/ocaml-base64:= lwt? ( dev-ml/lwt:= dev-ml/logs:=[fmt,lwt] dev-ml/cmdliner:= dev-ml/ocaml-conduit:= dev-ml/ocaml-magic-mime:= ) async? ( dev-ml/ocaml-conduit:= dev-ml/logs:=[fmt] dev-ml/ocaml-magic-mime:= dev-ml/fmt:= ) javascript? ( dev-ml/js_of_ocaml:=[ppx] ) test? ( dev-ml/ounit dev-ml/alcotest ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=Very lightweight HTTP server using Lwt or Async
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-cohttp
+IUSE=async javascript +lwt +ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-ml/ocaml-re:= dev-ml/stringext:= dev-ml/ocaml-uri:= dev-ml/fieldslib:= dev-ml/sexplib:= dev-ml/ppx_fields_conv:= dev-ml/ppx_sexp_conv:= dev-ml/ocaml-base64:= lwt? ( dev-ml/lwt:= dev-ml/logs:=[fmt,lwt] dev-ml/cmdliner:= dev-ml/ocaml-conduit:= dev-ml/ocaml-magic-mime:= ) async? ( dev-ml/ocaml-conduit:= dev-ml/logs:=[fmt] dev-ml/ocaml-magic-mime:= dev-ml/fmt:= ) javascript? ( dev-ml/js_of_ocaml:=[ppx] ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/0.22.0
+SRC_URI=https://github.com/mirage/ocaml-cohttp/archive/v0.22.0.tar.gz -> ocaml-cohttp-0.22.0.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	findlib	45d6030075064a68da8d7143726a1150	multilib	0236be304ee52e7f179ed2f337075515	oasis	66245953a092e9be817112a37f1c1301	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=e2e90dd6c1cc7b082502bf8dae1676b9
