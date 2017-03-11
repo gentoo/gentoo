@@ -25,3 +25,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
+PATCHES=( "${FILESDIR}/envhook.patch" )
