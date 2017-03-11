@@ -262,9 +262,8 @@ multilib_src_configure() {
 		gallium_enable video_cards_r600 r600
 		gallium_enable video_cards_radeonsi radeonsi
 		if ! use video_cards_r300 && \
-				! use video_cards_r600 && \
-				! use video_cards_radeonsi; then
-			gallium_enable video_cards_radeon r300 r600 radeonsi
+				! use video_cards_r600; then
+			gallium_enable video_cards_radeon r300 r600
 		fi
 
 		gallium_enable video_cards_freedreno freedreno
