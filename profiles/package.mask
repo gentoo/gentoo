@@ -29,7 +29,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Michael Palimaka <kensington@gentoo.org> (03 Mar 2017)
+# Michael Palimaka <kensington@gentoo.org> (11 Mar 2017)
 # Fails to build. Dead upstream.
 # Masked for removal in 30 days. Bug #592184.
 dev-scheme/schoca
