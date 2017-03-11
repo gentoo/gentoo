@@ -275,7 +275,7 @@ src_install() {
 	mv "${ED}usr/bin/idle" "${ED}usr/bin/idle${SLOT}"
 	rm -f "${ED}usr/bin/smtpd.py"
 
-	use berkdb || rm -r "${libdir}/"{bsddb,dbhash.py{,c,o},test/test_bsddb*} || die
+	use berkdb || rm -r "${libdir}/"{bsddb,dbhash.py*,test/test_bsddb*} || die
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
 	use tk || rm -r "${ED}usr/bin/idle${SLOT}" "${libdir}/"{idlelib,lib-tk} || die
 	use elibc_uclibc && rm -fr "${libdir}/"{bsddb/test,test}
