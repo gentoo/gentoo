@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eutils.eclass
@@ -883,6 +883,9 @@ _eutils_eprefix_init() {
 # @DESCRIPTION:
 # Validate desktop entries using desktop-file-utils
 validate_desktop_entries() {
+	eqawarn "validate_desktop_entries is deprecated and should be not be used."
+	eqawarn ".desktop file validation is done implicitly by Portage now."
+
 	_eutils_eprefix_init
 	if [[ -x "${EPREFIX}"/usr/bin/desktop-file-validate ]] ; then
 		einfo "Checking desktop entry validity"
