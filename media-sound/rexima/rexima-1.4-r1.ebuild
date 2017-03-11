@@ -1,5 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -12,18 +14,22 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses"
-DEPEND="${RDEPEND}"
+RDEPEND="sys-libs/ncurses:0="
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	echo "LDLIBS=-lncurses" > Makefile
-	echo "all: rexima" >> Makefile
-	emake || die "emake failed"
+
+	cat > Makefile <<- _EOF_ || die
+		LDLIBS=$($(tc-getPKG_CONFIG) --libs ncurses)
+		all: rexima
+	_EOF_
 }
 
 src_install () {
-	dobin rexima || die
-	doman rexima.1 || die
-	dodoc NEWS README ChangeLog
+	dobin rexima
+
+	einstalldocs
+	doman rexima.1
 }
