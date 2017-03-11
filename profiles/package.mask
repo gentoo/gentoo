@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
+# Fails since upgrade to dev-lang/perl-5.12 (!).
+# Removal in 30 days.
+dev-perl/Net-Google-SafeBrowsing-UpdateRequest
+dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
 # Dead upstream; the library has been picked up by
 # dev-perl/Text-BibTeX and is further developed there.
 # Please uninstall dev-libs/btparse and re-build your
