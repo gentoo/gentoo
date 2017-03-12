@@ -8,7 +8,7 @@ MY_P="TalkSoup-${PV}"
 
 DESCRIPTION="IRC client for GNUstep"
 HOMEPAGE="http://gap.nongnu.org/talksoup/"
-SRC_URI="http://savannah.nongnu.org/download/gap/TalkSoup-1.1.tar.gz"
+SRC_URI="http://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
