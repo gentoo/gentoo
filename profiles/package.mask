@@ -414,7 +414,6 @@ dev-python/mwlib-rl
 # Superseded by games-rpg/manaplus.
 # Masked for removal in 30 days.
 games-rpg/mana
-games-rpg/tmw
 
 # Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
 # Dead and replaced by media-libs/mesa[video_cards_radeonsi]
