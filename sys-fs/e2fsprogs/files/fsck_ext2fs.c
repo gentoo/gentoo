@@ -6,7 +6,7 @@
  *
  * $FreeBSD: ports/sysutils/e2fsprogs/files/fsck_ext2fs.c,v 1.5 2006/07/04 15:47:51 leeym Exp $
  *
- * Upstream: $Id$
+ * Upstream: $Id: fsck_ext2fs.c,v 1.6 2006/07/02 11:37:49 emma Exp $
  *
  * format: gindent -kr
  */
