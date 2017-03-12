@@ -19,7 +19,7 @@ DEPEND="
 	sys-libs/ncurses:0
 	sys-libs/zlib
 	!dedicated? (
-		media-libs/libsdl[joystick,sound,video]
+		media-libs/libsdl2[joystick,sound,video]
 		virtual/glu
 		virtual/opengl )
 	upnp? ( net-libs/miniupnpc )"
