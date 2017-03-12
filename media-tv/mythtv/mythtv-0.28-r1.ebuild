@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -71,7 +71,7 @@ COMMON="
 	fftw? ( sci-libs/fftw:3.0= )
 	hls? (
 		media-libs/faac:=
-		<media-libs/libvpx-1.5.0:=
+		<media-libs/libvpx-1.6.0:=
 		>=media-libs/x264-0.0.20111220:=
 	)
 	ieee1394? (
