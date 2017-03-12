@@ -112,6 +112,7 @@ src_configure() {
 
 	# now turn off stuff we really don't want
 	busybox_config_option n DMALLOC
+	busybox_config_option n FEATURE_2_4_MODULES #607548
 	busybox_config_option n FEATURE_SUID_CONFIG
 	busybox_config_option n BUILD_AT_ONCE
 	busybox_config_option n BUILD_LIBBUSYBOX
