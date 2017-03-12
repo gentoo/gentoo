@@ -399,11 +399,6 @@ dev-libs/xxl
 # [5] https://bugs.gentoo.org/show_bug.cgi?id=596832
 app-crypt/cryptkeeper
 
-# Mike Gilbert <floppym@gentoo.org> (31 Jan 2017)
-# Depends on old version of dev-python/pyparsing.
-# Removal in 30 days.
-dev-python/mwlib
-
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
 # Alpha release with new features, masked for testing
 =app-text/tesseract-4.00.00_alpha*

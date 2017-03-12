@@ -1,7 +1,0 @@
-/var/log/mwlib/mw-qserve.log {
-    su mwlib mwlib
-    missingok
-    postrotate
-        /etc/init.d/mw-qserve restart > /dev/null 2>&1
-    endscript
-}
