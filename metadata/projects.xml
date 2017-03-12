@@ -2272,11 +2272,6 @@ developers and volunteer mentors.</description>
       <name>Michał Górny</name>
       <role>Lead</role>
     </member>
-    <member>
-      <email>pacho@gentoo.org</email>
-      <name>Pacho Ramos</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>mysql-bugs@gentoo.org</email>

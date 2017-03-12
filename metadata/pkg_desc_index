@@ -15069,7 +15069,7 @@ net-misc/dropbear 2016.73 2016.74: small SSH 2 client/server designed for small 
 net-misc/dropbox 20.3.18 21.3.18: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
-net-misc/electrum 2.1.1 2.7.15 2.8.0: User friendly Bitcoin client
+net-misc/electrum 2.7.15 2.8.0: User friendly Bitcoin client
 net-misc/elliptics 2.19.2.6: Elliptics network is a fault tolerant key/value storage without dedicated metadata servers
 net-misc/elliptics-eblob 0.22.16: The elliptics network - eblob backend
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
