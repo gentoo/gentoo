@@ -5,16 +5,15 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_4,3_5} )
 
-inherit git-r3 python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
 HOMEPAGE="https://github.com/bulletmark/${PN}"
-EGIT_REPO_URI="https://github.com/bulletmark/${PN}.git"
-SRC_URI=""
+SRC_URI="https://github.com/bulletmark/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk kde"
 
 RDEPEND="${PYTHON_DEPS}
