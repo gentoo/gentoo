@@ -1,7 +1,0 @@
-/var/log/mwlib/nserve.log {
-    su mwlib mwlib
-    missingok
-    postrotate
-        /etc/init.d/nserve restart > /dev/null 2>&1
-    endscript
-}

@@ -245,6 +245,21 @@ wine_compiler_check() {
 wine_build_environment_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
 
+	if use abi_x86_64; then
+		if tc-is-gcc && [[ $(gcc-major-version) -lt 4 || ( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 4 ) ]]; then
+			eerror "You need gcc-4.4+ to compile 64-bit wine"
+			die
+		elif tc-is-clang && [[ $(clang-major-version) -lt 3 || ( $(clang-major-version) -eq 3 && $(clang-minor-version) -lt 8 ) ]]; then
+			eerror "You need clang-3.8+ to compile 64-bit wine"
+			die
+		fi
+	fi
+	if tc-is-gcc && [[ $(gcc-major-version) -eq 5 && $(gcc-minor-version) -le 3 ]]; then
+		ewarn "GCC-5.0-5.3 suffered from compiler bugs and are no longer supported by"
+		ewarn "Gentoo's Toolchain Team. If your ebuild fails the compiler checks in"
+		ewarn "the configure phase, either update your compiler or switch to <5.0 || >=5.4"
+	fi
+
 	if use abi_x86_32 && use opencl && [[ "$(eselect opencl show 2> /dev/null)" == "intel" ]]; then
 		eerror "You cannot build wine with USE=opencl because intel-ocl-sdk is 64-bit only."
 		eerror "See https://bugs.gentoo.org/487864 for more details."
@@ -275,7 +290,6 @@ wine_env_vcs_vars() {
 }
 
 pkg_pretend() {
-	wine_compiler_check || die
 	wine_build_environment_check || die
 
 	# Verify OSS support
@@ -391,6 +405,8 @@ src_prepare() {
 }
 
 src_configure() {
+	wine_compiler_check || die
+
 	export LDCONFIG=/bin/true
 	use custom-cflags || strip-flags
 
