@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (12 Mar 2017)
+# Bundles half of glibc, unmaintained upstream,
+# not really necessary anymore with 64-bit flash
+# Masked for removal in 30 days. Bug #609258.
+www-plugins/nspluginwrapper
+
+# David Seifert <soap@gentoo.org> (12 Mar 2017)
 # Awful codebase, lots of widechars stored in chars,
 # invokes undefined behaviour, last release in 2004.
 # Masked for removal in 30 days. Bug #593976.
