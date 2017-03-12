@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit confutils user systemd
+inherit user systemd
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
 HOMEPAGE="https://otrs.org/"
