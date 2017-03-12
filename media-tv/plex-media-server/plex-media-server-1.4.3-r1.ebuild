@@ -1,5 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
@@ -18,18 +19,20 @@ URI="https://downloads.plex.tv/plex-media-server"
 
 DESCRIPTION="A free media library that is intended for use with a plex client."
 HOMEPAGE="http://www.plex.tv/"
-SRC_URI="amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64.deb )"
+SRC_URI="
+	amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64.deb )"
+#	x86? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_i386.deb )"
+
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="mirror bindist strip"
 KEYWORDS="-* ~amd64"
 
-DEPEND="
-	sys-apps/fix-gnustack
-	dev-python/virtualenv[${PYTHON_USEDEP}]"
+IUSE="pax_kernel dlna"
 
-RDEPEND="
-	net-dns/avahi
+DEPEND="pax_kernel? ( "sys-apps/fix-gnustack" )
+	dev-python/virtualenv[${PYTHON_USEDEP}]"
+RDEPEND="dlna? ( "net-dns/avahi" )
 	${PYTHON_DEPS}"
 
 QA_DESKTOP_FILE="usr/share/applications/plexmediamanager.desktop"
@@ -41,9 +44,9 @@ QA_MULTILIB_PATHS=(
 
 EXECSTACKED_BINS=( "${ED%/}/usr/lib/plexmediaserver/libgnsdk_dsp.so*" )
 BINS_TO_PAX_MARK=( "${ED%/}/usr/lib/plexmediaserver/Plex Script Host" )
+BINS_TO_PAX_CREATE_FLAGS=( "${ED%/}/usr/lib/plexmediaserver/Resources/Python/bin/python" )
 
 S="${WORKDIR}"
-PATCHES=( "${FILESDIR}/virtualenv_start_pms.patch" )
 
 pkg_setup() {
 	enewgroup ${_USERNAME}
@@ -56,6 +59,12 @@ src_unpack() {
 	unpack_deb ${A}
 }
 
+src_prepare() {
+	eapply "${FILESDIR}"/virtualenvize_start_pms.patch
+	eapply "${FILESDIR}"/plexmediamanager.desktop.patch
+	default
+}
+
 src_install() {
 	# Move the config to the correct place
 	local CONFIG_VANILLA="/etc/default/plexmediaserver"
@@ -63,7 +72,8 @@ src_install() {
 	dodir "${CONFIG_PATH}"
 	insinto "${CONFIG_PATH}"
 	doins "${CONFIG_VANILLA#/}"
-	sed -e "s#${CONFIG_VANILLA}#${CONFIG_PATH}#g" -i "${S}"/usr/sbin/start_pms || die
+	sed -e "s#${CONFIG_VANILLA}#${CONFIG_PATH}#g" \
+		-i "${S}"/usr/sbin/start_pms || die
 
 	# Remove Debian specific files
 	rm -rf "usr/share/doc" || die
@@ -81,8 +91,16 @@ src_install() {
 	dodir "${DEFAULT_LIBRARY_DIR}"
 	chown "${_USERNAME}":"${_USERNAME}" "${ED%/}/${DEFAULT_LIBRARY_DIR}" || die
 
-	# Install the OpenRC init/conf files
-	doinitd "${FILESDIR}/init.d/${PN}"
+	# Install the OpenRC init/conf files depending on dlna.
+    if use dlna; then
+	    doinitd "${FILESDIR}/init.d/${PN}"
+    else
+		cp "${FILESDIR}/init.d/${PN}" "${S}/init.d/${PN}";
+		sed -e '/need/ s/^#*/#/' -i "${S}/init.d/${PN}"
+    	doinitd "${FILESDIR}/init.d/${PN}"
+    fi
+
+
 	doconfd "${FILESDIR}/conf.d/${PN}"
 
 	_handle_multilib
@@ -92,14 +110,20 @@ src_install() {
 	local INIT="${FILESDIR}/systemd/${INIT_NAME}"
 	systemd_newunit "${INIT}" "${INIT_NAME}"
 
-	_remove_execstack_markings
-	_add_pax_markings
-
 	einfo "Configuring virtualenv"
 	virtualenv -v --no-pip --no-setuptools --no-wheel "${ED}"usr/lib/plexmediaserver/Resources/Python || die
 	pushd "${ED}"usr/lib/plexmediaserver/Resources/Python &>/dev/null || die
 	find . -type f -exec sed -i -e "s#${D}##g" {} + || die
 	popd &>/dev/null || die
+
+# Add PaX marking for hardened systems
+    if use pax_kernel; then
+    _remove_execstack_markings
+    _add_pax_markings
+    _add_pax_flags
+	fi
+	
+
 }
 
 pkg_postinst() {
@@ -132,5 +156,12 @@ _remove_execstack_markings() {
 _add_pax_markings() {
 	for f in "${BINS_TO_PAX_MARK[@]}"; do
 		pax-mark m "${f}"
+	done
+}
+
+# Create default PaX markings on virtualenvironment's pythin
+_add_pax_flags() {
+	for f in "${BINS_TO_PAX_CREATE_FLAGS[@]}"; do
+		pax-mark c "${F}"
 	done
 }
