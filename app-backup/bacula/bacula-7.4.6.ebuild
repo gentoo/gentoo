@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -20,7 +20,7 @@ IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logw
 DEPEND="
 	dev-libs/gmp:0
 	!bacula-clientonly? (
-		postgres? ( dev-db/postgresql:*[threads] )
+		postgres? ( dev-db/postgresql:=[threads] )
 		mysql? ( virtual/mysql )
 		sqlite? ( dev-db/sqlite:3 )
 		!bacula-nodir? ( virtual/mta )
@@ -133,6 +133,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-openssl-1.patch
 
 	epatch "${FILESDIR}"/7.2.0/${PN}-7.2.0-fix-static.patch
+
+	# fix soname in libbaccat.so bug #602952
+	epatch "${FILESDIR}/bacula-fix-sonames.patch"
 
 	# do not strip binaries
 	sed -i -e "s/strip /# strip /" src/filed/Makefile.in || die
@@ -338,7 +341,7 @@ src_install() {
 		# copy over init script and config to a temporary location
 		# so we can modify them as needed
 		cp "${FILESDIR}/${script}".confd "${T}/${script}".confd || die "failed to copy ${script}.confd"
-		cp "${FILESDIR}/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
+		cp "${FILESDIR}/newscripts/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
 
 		# now set the database dependancy for the director init script
 		case "${script}" in
