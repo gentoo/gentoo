@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (12 Mar 2017)
+# Awful codebase, lots of widechars stored in chars,
+# invokes undefined behaviour, last release in 2004.
+# Masked for removal in 30 days. Bug #593976.
+app-i18n/x-unikey
+
 # Michael Palimaka <kensington@gentoo.org> (11 Mar 2017)
 # Fails to build. Dead upstream.
 # Masked for removal in 30 days. Bug #592184.
