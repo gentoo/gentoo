@@ -59,6 +59,7 @@ cpu_flags_x86_xop
 # ppc arch specific USE flags
 altivec
 ppcsha1
+power8
 
 # mips arch specific USE flags
 fixed-point
