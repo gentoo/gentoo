@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="x11-libs/wxGTK:${WX_GTK_VER}=[X]
+	virtual/libusb:1
 	virtual/udev"
 DEPEND="${RDEPEND}
 	app-editors/vim-core"
