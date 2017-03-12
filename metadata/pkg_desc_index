@@ -11570,6 +11570,7 @@ gnustep-apps/cynthiune 1.0.0: Free software and romantic music player for GNUste
 gnustep-apps/displaycalibrator 0.7: Frontend to xgamma
 gnustep-apps/easydiff 0.4.0: GNUstep app that lets you easily see the differences between two text files
 gnustep-apps/fisicalab 0.3.0 0.3.2 0.3.4 0.3.5: educational application to solve physics problems
+gnustep-apps/ftp 0.5: FTP client for GNUstep
 gnustep-apps/gemas 0.3 0.4: a simple code editor for GNUstep
 gnustep-apps/gmines 0.1-r2 0.2: The well-known minesweeper game
 gnustep-apps/gnumail 1.2.0 1.2.2: A fully featured mail application for GNUstep
@@ -11591,6 +11592,7 @@ gnustep-apps/simpleagenda 0.42.2 0.43: a simple calendar and agenda application
 gnustep-apps/sogo 3.2.1 3.2.6a: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/sudoku 0.7: Sudoku generator for GNUstep
 gnustep-apps/systempreferences 1.0.2 1.1.0 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
+gnustep-apps/talksoup 1.1: IRC client for GNUstep
 gnustep-apps/terminal 0.9.7 0.9.8: A terminal emulator for GNUstep
 gnustep-apps/textedit 0.95_pre20100427 0.95_pre20100427-r1: A text editor with font, color, and style capabilities for GNUstep
 gnustep-apps/zipper 1.3 1.4 1.5: Zipper is a tool for inspecting and extracting compressed archives
