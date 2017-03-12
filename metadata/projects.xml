@@ -1619,15 +1619,20 @@
       <name>Akinori Hattori</name>
       <role>Member ( Gentoo/IA-64 )</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>jmorgan@gentoo.org</email>
       <name>Jack Morgan</name>
+      <role>Lead</role>
+    </member>
+    <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
       <role>Member ( Gentoo/IA-64 )</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member</role>
+      <role>Member ( Gentoo/IA-64 )</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
@@ -2824,6 +2829,12 @@ developers and volunteer mentors.</description>
     <member is-lead="1">
       <email>jmorgan@gentoo.org</email>
       <name>Jack Morgan</name>
+      <role>Lead</role>
+    </member>
+    <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
+      <role>ppc/ppc64 keywording/stabilization</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
@@ -3575,9 +3586,14 @@ developers and volunteer mentors.</description>
       <name>Jeroen Roovers</name>
       <role>Member ( Porting )</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>jmorgan@gentoo.org</email>
       <name>Jack Morgan</name>
+      <role>Lead</role>
+    </member>
+    <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
       <role>Member ( Gentoo/SPARC )</role>
     </member>
     <member>
