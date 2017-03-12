@@ -982,9 +982,10 @@ prune_libtool_files() {
 							for arg in ${libs}; do
 								if [[ ${arg} == -l* ]]; then
 									if [[ ${arg} == '*$*' ]]; then
-										eqawarn "${FUNCNAME}: variable substitution likely failed in ${pc}"
-										eqawarn "(arg: ${arg})"
-										eqawarn "Most likely, you need to add virtual/pkgconfig to DEPEND."
+										eerror "${FUNCNAME}: variable substitution likely failed in ${pc}"
+										eerror "(arg: ${arg})"
+										eerror "Most likely, you need to add virtual/pkgconfig to DEPEND."
+										die "${FUNCNAME}: unsubstituted variable found in .pc"
 									fi
 
 									pc_libs+=( lib${arg#-l}.la )
