@@ -113,7 +113,8 @@ src_prepare() {
 		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 
-		bash -c "autoreconf() { :; }; . autogen.sh --no-check" || die #605400
+		#605400
+		bash -c 'autoreconf() { :; }; . $0 "$@"' autogen.sh --no-check || die
 	fi
 
 	eapply_user
