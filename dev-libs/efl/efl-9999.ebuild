@@ -22,7 +22,7 @@ inherit enlightenment pax-utils
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
-IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio raw scim sdl sound systemd tga tiff tslib v4l valgrind wayland webp X xim xine xpm"
+IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio raw scim sdl sound systemd tga tiff tslib unwind v4l valgrind wayland webp X xim xine xpm"
 
 REQUIRED_USE="
 	pulseaudio?	( sound )
@@ -76,6 +76,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	tiff? ( media-libs/tiff:0= )
 	tslib? ( x11-libs/tslib )
+	unwind? ( sys-libs/libunwind )
 	valgrind? ( dev-util/valgrind )
 	wayland? (
 		>=dev-libs/wayland-1.8.0
@@ -174,6 +175,13 @@ src_prepare() {
 		-e '/^#### Work around bug in automake check macro$/,/^#### Info$/d' \
 		-e '/BARF_OK=/s:=.*:=:' \
 		configure || die
+
+	# Upstream doesn't offer a configure flag. #611108
+	if ! use unwind ; then
+		sed -i \
+			-e 's:libunwind libunwind-generic:xxxxxxxxxxxxxxxx:' \
+			configure || die
+	fi
 }
 
 src_configure() {
