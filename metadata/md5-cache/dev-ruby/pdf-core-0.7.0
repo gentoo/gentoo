@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby21? ( test? ( =dev-ruby/pdf-inspector-1*[ruby_targets_ruby21] >=dev-ruby/pdf-reader-1.2[ruby_targets_ruby21] =dev-ruby/pdf-reader-1*[ruby_targets_ruby21] ) ) ruby_targets_ruby22? ( test? ( =dev-ruby/pdf-inspector-1*[ruby_targets_ruby22] >=dev-ruby/pdf-reader-1.2[ruby_targets_ruby22] =dev-ruby/pdf-reader-1*[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( test? ( =dev-ruby/pdf-inspector-1*[ruby_targets_ruby23] >=dev-ruby/pdf-reader-1.2[ruby_targets_ruby23] =dev-ruby/pdf-reader-1*[ruby_targets_ruby23] ) ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby21? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby21] ) ) ruby_targets_ruby22? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby23] ) ) ruby_targets_ruby21? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby21] ) ) ruby_targets_ruby22? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby23] ) ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) test? ( ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) )
+DESCRIPTION=Implements low level PDF features for Prawn
+EAPI=5
+HOMEPAGE=https://github.com/prawnpdf/pdf-core/
+IUSE=test elibc_FreeBSD ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 doc test test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
+LICENSE=|| ( Ruby GPL-2 GPL-3 )
+RDEPEND=ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] )
+REQUIRED_USE=|| ( ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 )
+SLOT=0
+SRC_URI=https://github.com/prawnpdf/pdf-core/archive/0.7.0.tar.gz -> pdf-core-0.7.0.tar.gz
+_eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	multilib	0236be304ee52e7f179ed2f337075515	ruby-fakegem	bd2b045dcb535cf179f7cc08a893a27b	ruby-ng	2abd9e38aac141db06ae38bf32e748cd	ruby-utils	e9d0baddf239294b286da449ae7ac6a3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=46480b2c0e78e81d76bf99fce6c4ede1
