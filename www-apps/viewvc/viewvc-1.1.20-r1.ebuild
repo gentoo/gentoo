@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit confutils eutils python-single-r1 webapp
+inherit eutils python-single-r1 webapp
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -34,13 +34,12 @@ RDEPEND="${PYTHON_DEPS}
 	)
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	|| ( cvs subversion )"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
 	webapp_pkg_setup
-
-	confutils_require_any cvs subversion
 }
 
 src_prepare() {
