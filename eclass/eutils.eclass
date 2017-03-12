@@ -898,7 +898,6 @@ prune_libtool_files() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local removing_all removing_modules opt
-	_eutils_eprefix_init
 	for opt; do
 		case "${opt}" in
 			--all)
@@ -1008,7 +1007,7 @@ prune_libtool_files() {
 			einfo "Removing unnecessary ${f#${D%/}} (${reason})"
 			queue+=( "${f}" )
 		fi
-	done < <(find "${ED}" -xtype f -name '*.la' -print0)
+	done < <(find "${D}" -xtype f -name '*.la' -print0)
 
 	if [[ ${queue[@]} ]]; then
 		rm -f "${queue[@]}"
