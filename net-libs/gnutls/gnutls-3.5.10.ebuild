@@ -100,6 +100,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable guile) \
 		$(multilib_native_use_enable test tests) \
 		$(multilib_native_use_enable valgrind valgrind-tests) \
+		$(multilib_native_use_enable !valgrind full-test-suite) \
 		$(use_enable nls) \
 		$(use_enable openssl openssl-compatibility) \
 		$(use_enable tls-heartbeat heartbeat-support) \
