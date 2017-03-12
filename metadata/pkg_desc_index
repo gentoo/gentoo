@@ -5089,7 +5089,7 @@ dev-libs/xerces-c 3.1.4-r1: A validating XML parser written in a portable subset
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
-dev-libs/xmlsec 1.2.20 1.2.23: Command line tool for signing, verifying, encrypting and decrypting XML
+dev-libs/xmlsec 1.2.23: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xmlwrapp 0.7.1 0.7.1-r1: modern style C++ library that provides a simple and easy interface to libxml2
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xqilla 2.3.3: An XQuery and XPath 2 library and command line utility written in C++
@@ -14710,7 +14710,7 @@ net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.18 1.0.19 1.0.20: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.5 3.22.3: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.26 3.3.27 3.5.9-r2 3.5.10: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.26 3.3.27 3.5.10: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.16 1.0.1: A GObject-based API for handling resource discovery and announcement over SSDP
