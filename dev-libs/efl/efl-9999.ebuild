@@ -247,7 +247,6 @@ src_configure() {
 		--disable-gstreamer
 		--enable-xinput2
 		--disable-xinput22
-		--disable-multisense
 		--enable-libmount
 
 		# external lz4 support currently broken because of unstable ABI/API
