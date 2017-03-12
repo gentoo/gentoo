@@ -21,7 +21,7 @@ HOMEPAGE="http://x265.org/"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/102"
-IUSE="+10bit +12bit neon numa pic test"
+IUSE="+10bit +12bit neon numa pic power8 test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -139,6 +139,8 @@ multilib_src_configure() {
 		$(cmake-utils_use_enable test TESTS)
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
+		-DCPU_POWER8=$(usex power8 ON OFF)
+		-DENABLE_ALTIVEC=$(usex power8 ON OFF)
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 
