@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=KMX
-DIST_VERSION=0.06
+DIST_VERSION=0.08
 inherit perl-module
 
 DESCRIPTION="OpenSSL's multiprecision integer arithmetic"
@@ -17,4 +17,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/perl-ExtUtils-MakeMaker
+	virtual/pkgconfig
+"

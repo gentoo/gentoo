@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,13 +6,13 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
 # git diff --relative=mythtv v0.27.6.. > ~/mythtv-0.27.6/patches/mythtv.patch
-BACKPORTS="3543e74534a39c150e956e2f07f50ed9f873a84e"
+BACKPORTS="b6ae90c071a9a8eac9873fae988d5eb2434f3160"
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
 inherit flag-o-matic multilib eutils python-single-r1 user systemd vcs-snapshot
 
-MYTHTV_BRANCH="fixes/0.28"
+MYTHTV_BRANCH="fixes/0.27"
 
 DESCRIPTION="Homebrew PVR project"
 HOMEPAGE="http://www.mythtv.org"
@@ -20,11 +20,11 @@ SRC_URI="https://github.com/MythTV/mythtv/archive/${BACKPORTS}.tar.gz -> ${P}.ta
 
 SLOT="0/${PV}"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE="alsa altivec libass autostart bluray cec crystalhd debug dvb dvd \
-egl fftw +hls ieee1394 jack lcd lirc +mythlogserver perl pulseaudio python systemd +theora \
+egl fftw +hls ieee1394 jack lcd lirc perl pulseaudio python +theora \
 vaapi vdpau +vorbis +wrapper +xml xmltv +xvid zeroconf ${IUSE_INPUT_DEVICES}"
 
 REQUIRED_USE="
@@ -42,17 +42,21 @@ COMMON="
 	x11-libs/libXv:=
 	x11-libs/libXrandr:=
 	x11-libs/libXxf86vm:=
-	dev-qt/qtcore:5=
-	dev-qt/qtdbus:5=
-	dev-qt/qtgui:5=
-	dev-qt/qtscript:5=
-	dev-qt/qtsql:5=[mysql]
-	dev-qt/qtopengl:5=
-	dev-qt/qtwebkit:5=
+	>=dev-qt/qtcore-4.7.2:4=
+	>=dev-qt/qtdbus-4.7.2:4=
+	>=dev-qt/qtgui-4.7.2:4=
+	>=dev-qt/qtscript-4.7.2:4=
+	>=dev-qt/qtsql-4.7.2:4=[mysql]
+	>=dev-qt/qtopengl-4.7.2:4=[egl?]
+	>=dev-qt/qtwebkit-4.7.2:4=
 	x11-misc/wmctrl:=
 	virtual/mysql
 	virtual/opengl:=
 	alsa? ( >=media-libs/alsa-lib-1.0.24:= )
+	zeroconf? (
+		dev-libs/openssl:0=
+		net-dns/avahi[mdnsresponder-compat]
+	)
 	bluray? (
 		dev-libs/libcdio:=
 		media-libs/libbluray:=
@@ -71,7 +75,7 @@ COMMON="
 	fftw? ( sci-libs/fftw:3.0= )
 	hls? (
 		media-libs/faac:=
-		<media-libs/libvpx-1.5.0:=
+		<media-libs/libvpx-1.6.0:=
 		>=media-libs/x264-0.0.20111220:=
 	)
 	ieee1394? (
@@ -108,12 +112,7 @@ COMMON="
 	!x11-themes/mythtv-themes
 	media-libs/taglib:=
 	dev-libs/glib:=
-	systemd? ( sys-apps/systemd:= )
-	zeroconf? (
-	        dev-libs/openssl:0=
-		net-dns/avahi[mdnsresponder-compat]
-	)
-"
+	"
 
 RDEPEND="${COMMON}
 	media-fonts/corefonts
@@ -158,7 +157,8 @@ src_prepare() {
 
 	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
 
-#	epatch "${FILESDIR}/libdir-27.patch"
+	epatch "${FILESDIR}/libdir-27.patch"
+	epatch "${FILESDIR}/${PN}-0.27.6-libvpx-1.5.0.patch"
 
 	epatch_user
 }
@@ -251,9 +251,6 @@ src_configure() {
 	has distcc ${FEATURES} || myconf="${myconf} --disable-distcc"
 	has ccache ${FEATURES} || myconf="${myconf} --disable-ccache"
 
-	myconf="${myconf} $(use_enable systemd systemd_notify)"
-	use systemd || myconf="${myconf} $(use_enable mythlogserver)"
-
 	chmod +x ./external/FFmpeg/version.sh
 
 	einfo "Running ./configure ${myconf}"
@@ -264,7 +261,6 @@ src_configure() {
 		--extra-cflags="${CFLAGS}" \
 		--extra-cxxflags="${CXXFLAGS}" \
 		--extra-ldflags="${LDFLAGS}" \
-		--qmake="/usr/lib/qt5/bin/qmake" \
 		${myconf} || die "configure died"
 }
 
@@ -277,7 +273,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/mythbackend.init-r2 mythbackend
 	newconfd "${FILESDIR}"/mythbackend.conf-r1 mythbackend
-	systemd_newunit "${FILESDIR}"/mythbackend.service-28 mythbackend.service
+	systemd_dounit "${FILESDIR}"/mythbackend.service
 
 	dodoc keys.txt
 
