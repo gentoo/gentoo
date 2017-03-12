@@ -403,7 +403,6 @@ app-crypt/cryptkeeper
 # Depends on old version of dev-python/pyparsing.
 # Removal in 30 days.
 dev-python/mwlib
-dev-python/mwlib-rl
 
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
 # Alpha release with new features, masked for testing
