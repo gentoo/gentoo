@@ -15,7 +15,6 @@
     <flag name="glib">Compile with GLib Object System support</flag>
     <flag name="utils">Build support for Cairo script and trace utilities</flag>
     <flag name="valgrind">Built-in support to mark memory regions</flag>
-    <flag name="xlib-xcb">Use XCB renderer backend for acceleration over xlib. Enabling this may solve or introduce display corruption problems.</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:cairographics:cairo</remote-id>
