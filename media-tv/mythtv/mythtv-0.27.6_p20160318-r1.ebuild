@@ -75,7 +75,7 @@ COMMON="
 	fftw? ( sci-libs/fftw:3.0= )
 	hls? (
 		media-libs/faac:=
-		<media-libs/libvpx-1.5.0:=
+		<media-libs/libvpx-1.6.0:=
 		>=media-libs/x264-0.0.20111220:=
 	)
 	ieee1394? (
@@ -158,6 +158,7 @@ src_prepare() {
 	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
 
 	epatch "${FILESDIR}/libdir-27.patch"
+	epatch "${FILESDIR}/${PN}-0.27.6-libvpx-1.5.0.patch"
 
 	epatch_user
 }
