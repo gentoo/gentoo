@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="5"
 
 inherit prefix
 
@@ -23,6 +23,7 @@ S=${WORKDIR}
 src_install() {
 	newbin "${FILESDIR}"/${PN}-${PV} ${PN}
 	use prefix && eprefixify "${ED}"/usr/bin/${PN}
+	sed -i "s:@PV@:${PVR}:g" "${ED}"/usr/bin/${PN} || die
 	doman "${FILESDIR}"/${PN}.8
 
 	insinto /usr/share/eselect/modules
