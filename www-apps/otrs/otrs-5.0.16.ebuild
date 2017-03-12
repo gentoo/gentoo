@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit confutils user systemd
+inherit user systemd
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
 HOMEPAGE="https://otrs.org/"
@@ -13,6 +13,8 @@ LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="apache2 fastcgi +gd ldap mod_perl +mysql pdf postgres soap"
 SLOT="0"
+
+REQUIRED_USE="|| ( mysql postgres )"
 
 DEPEND="media-libs/libpng:0"
 
@@ -69,11 +71,10 @@ pkg_setup() {
 	enewgroup apache 81
 	enewuser apache 81 -1 /var/www apache
 	enewuser otrs -1 -1 ${OTRS_HOME} apache
-	confutils_require_any mysql postgres
 }
 
 src_prepare() {
-	rm -r "${S}/scripts"/{auto_*,redhat*,suse*,*.spec} || die
+	rm -r "${S}/scripts"/auto_* || die
 
 	pushd Kernel >/dev/null || die
 	for i in *.dist; do

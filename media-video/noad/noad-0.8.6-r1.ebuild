@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils toolchain-funcs confutils
+inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Mark commercial breaks in VDR recordings"
 HOMEPAGE="http://noad.net23.net/"
@@ -34,7 +34,6 @@ src_prepare() {
 }
 
 src_configure() {
-	confutils_require_any ffmpeg libmpeg2
 	econf \
 		$(usex imagemagick '--with-magick') \
 		$(usex ffmpeg '' '--without-ffmpeg') \
