@@ -382,11 +382,6 @@ games-action/openlierox
 # experimental features and accept a more unstable release.
 >=www-client/chromium-58
 
-# Michael Palimaka <kensington@gentoo.org> (02 Feb 2017)
-# Upstream missing. Ancient. Unmaintained. No revdeps.
-# Masked for removal in 30 days.
-dev-libs/safestr
-
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
 # Alpha release with new features, masked for testing
 =app-text/tesseract-4.00.00_alpha*
