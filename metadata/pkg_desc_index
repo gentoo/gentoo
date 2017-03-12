@@ -11609,7 +11609,7 @@ gnustep-libs/dbuskit 0.1 0.1.1: framework that interfaces Objective-C applicatio
 gnustep-libs/gsldap 0.0.1_pre20070219: GNUstep LDAP library for open ldap C libraries
 gnustep-libs/highlighterkit 0.1.2 0.1.3: Syntax highlighter framework
 gnustep-libs/iconkit 0.4.1: framework used to create icons using different elements
-gnustep-libs/netclasses 1.06-r1: An asynchronous networking library for GNUstep
+gnustep-libs/netclasses 1.06-r1 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.0 1.2.2: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.4.0 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/prefsmodule 1.1.1_pre20061204-r1: Preferences is the GNUstep program with which you define your own personal user experience
