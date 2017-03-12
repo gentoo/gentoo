@@ -150,6 +150,7 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
+		"${FILESDIR}/233-0001-Avoid-strict-DM-interface-version-dependencies-5519.patch"
 	)
 
 	if ! use vanilla; then
