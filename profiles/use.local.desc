@@ -8534,7 +8534,9 @@ x11-wm/enlightenment:enlightenment_modules_tasks - Gadget to allow you to switch
 x11-wm/enlightenment:enlightenment_modules_teamwork - Enable teamwork module
 x11-wm/enlightenment:enlightenment_modules_temperature - Temperature monitor
 x11-wm/enlightenment:enlightenment_modules_tiling - Positions/resizes your windows tilingly
+x11-wm/enlightenment:enlightenment_modules_time - Time related gadgets
 x11-wm/enlightenment:enlightenment_modules_winlist - A module to show the list of client applications presently running
+x11-wm/enlightenment:enlightenment_modules_wireless - WiFi monitoring
 x11-wm/enlightenment:enlightenment_modules_wizard - First Run Wizard
 x11-wm/enlightenment:enlightenment_modules_wl-desktop-shell - Enlightenment Wayland Desktop Shell
 x11-wm/enlightenment:enlightenment_modules_wl-drm - Wayland DRM (Direct Rendering Manager) compositing module

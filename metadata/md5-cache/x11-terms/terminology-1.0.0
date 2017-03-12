@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-libs/efl-1.18 virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Feature rich terminal emulator using the Enlightenment Foundation Libraries
+EAPI=5
+HOMEPAGE=https://www.enlightenment.org/p.php?p=about/terminology
+IUSE=nls doc
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/efl-1.18 nls? ( sys-devel/gettext )
+SLOT=0
+SRC_URI=https://download.enlightenment.org/rel/apps/terminology/terminology-1.0.0.tar.xz
+_eclass_exported_funcs=src_unpack:enlightenment src_prepare:enlightenment src_configure:enlightenment src_compile:enlightenment src_install:enlightenment
+_eclasses_=enlightenment	42f6911f082b9a4dc4fc880fa75b910e	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=4b88f351ea3aec9269362d3f3446edb9
