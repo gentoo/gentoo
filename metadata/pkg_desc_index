@@ -346,7 +346,7 @@ app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and F
 app-backup/backup-manager 0.7.5 0.7.10.1-r2 0.7.12-r1 0.7.13: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r4: High-performance backups to a server's disk
-app-backup/bacula 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.3 7.4.3-r1 7.4.4 7.4.4-r1 7.4.4-r2: Featureful client/server network backup suite
+app-backup/bacula 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.4-r2 7.4.6: Featureful client/server network backup suite
 app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2 16.2.4: Featureful client/server network backup suite
 app-backup/borgbackup 1.0.9 1.0.10 9999: Deduplicating backup program with compression and authenticated encryption.
 app-backup/boxbackup 0.11.1-r1 0.11.1-r2: A completely automatic on-line backup system
@@ -2447,7 +2447,7 @@ app-text/teseq 1.1.1: A tool for analyzing files that contain control characters
 app-text/tesseract 3.04.00-r2 3.04.01 3.04.01-r1 4.00.00_alpha 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
-app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r4: A complete TeX distribution
+app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5: A complete TeX distribution
 app-text/tidy-html5 5.2.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
