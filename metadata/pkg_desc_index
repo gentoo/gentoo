@@ -2350,7 +2350,7 @@ app-text/llpp 23: graphical PDF viewer which aims to superficially resemble less
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
 app-text/lout 3.38-r1 3.39: high-level language for document formatting
 app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
-app-text/mandoc 1.13.4 1.14.1: Suite of tools compiling mdoc and man
+app-text/mandoc 1.14.1-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
@@ -10182,7 +10182,7 @@ dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extende
 dev-util/diffoscope 78: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
-dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
+dev-util/dirdiff 2.1-r2 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29 0.32: Information about the Debian distributions' releases (data files)
@@ -10235,7 +10235,7 @@ dev-util/gtk-update-icon-cache 3.20.9 3.22.2: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.9: A code search tool
 dev-util/huc 0.1 0.1-r1: HTML umlaut conversion tool
-dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
+dev-util/hxd 0.70.02-r1 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
 dev-util/icmake 7.22.01 9.00.00 9.02.02: Hybrid between a make utility and a shell scripting language
