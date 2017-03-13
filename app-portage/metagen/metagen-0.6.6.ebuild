@@ -16,10 +16,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE=""
 DEPEND=">=dev-python/jaxml-3.01[${PYTHON_USEDEP}]
-	|| (
-		( >=sys-apps/portage-2.3.0_rc1[${PYTHON_USEDEP}] app-portage/repoman[${PYTHON_USEDEP}] )
-		<sys-apps/portage-2.3.0_rc1[${PYTHON_USEDEP}]
-	)"
+	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 python_install() {
