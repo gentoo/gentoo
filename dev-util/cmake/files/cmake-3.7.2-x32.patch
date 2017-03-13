@@ -1,0 +1,843 @@
+Backports from 3.9
+
+Gentoo-bug: 426936
+
+From 503f25d490e56dfc1d3dc894e1fc1bd3e7e89e81 Mon Sep 17 00:00:00 2001
+From: Christian Schmidbauer <ch.schmidbauer@gmail.com>
+Date: Sat, 25 Feb 2017 19:47:49 +0100
+Subject: [PATCH] find_library: Allow custom lib suffix be used as find path
+
+Add a new `CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX` variable to allow use
+of a custom suffix on `lib` directory names.  This is a more general
+option than that added by commit v3.7.0-rc1~504^2 (Teach find_library
+and find_package to search lib32 paths, 2016-06-10).  It allows the find
+path to be more deterministic on custom setups.
+
+See discussion in #10287 and #15994.
+---
+ Help/command/find_library.rst                      |  7 ++++++
+ Help/manual/cmake-variables.7.rst                  |  1 +
+ Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst     |  2 ++
+ Help/prop_gbl/FIND_LIBRARY_USE_LIB64_PATHS.rst     |  2 ++
+ .../release/dev/find_library-custom-lib-suffix.rst |  6 +++++
+ .../CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst       | 11 +++++++++
+ Source/cmFindLibraryCommand.cxx                    | 28 ++++++++++++----------
+ Tests/CMakeOnly/find_library/CMakeLists.txt        | 15 +++++++++++-
+ .../CMakeOnly/find_library/lib/A/libXYZ/libtest2.a |  0
+ Tests/CMakeOnly/find_library/lib/XYZ/libtest1.a    |  0
+ .../CMakeOnly/find_library/libXYZ/A/lib/libtest4.a |  0
+ .../find_library/libXYZ/A/libXYZ/libtest5.a        |  0
+ Tests/CMakeOnly/find_library/libXYZ/A/libtest6.a   |  0
+ Tests/CMakeOnly/find_library/libXYZ/libtest7.a     |  0
+ 14 files changed, 58 insertions(+), 14 deletions(-)
+ create mode 100644 Help/release/dev/find_library-custom-lib-suffix.rst
+ create mode 100644 Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst
+ create mode 100644 Tests/CMakeOnly/find_library/lib/A/libXYZ/libtest2.a
+ create mode 100644 Tests/CMakeOnly/find_library/lib/XYZ/libtest1.a
+ create mode 100644 Tests/CMakeOnly/find_library/libXYZ/A/lib/libtest4.a
+ create mode 100644 Tests/CMakeOnly/find_library/libXYZ/A/libXYZ/libtest5.a
+ create mode 100644 Tests/CMakeOnly/find_library/libXYZ/A/libtest6.a
+ create mode 100644 Tests/CMakeOnly/find_library/libXYZ/libtest7.a
+
+diff --git a/Help/command/find_library.rst b/Help/command/find_library.rst
+index 1eb50f7..e912040 100644
+--- a/Help/command/find_library.rst
++++ b/Help/command/find_library.rst
+@@ -49,6 +49,13 @@ path to the framework ``<fullPath>/A.framework``.  When a full path to a
+ framework is used as a library, CMake will use a ``-framework A``, and a
+ ``-F<fullPath>`` to link the framework to the target.
+ 
++If the :variable:`CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX` variable is set all
++search paths will be tested as normal, with the suffix appended, and with
++all matches of ``lib/`` replaced with
++``lib${CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX}/``.  This variable overrides
++the :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS`
++and :prop_gbl:`FIND_LIBRARY_USE_LIB64_PATHS` global properties.
++
+ If the :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS` global property is set
+ all search paths will be tested as normal, with ``32/`` appended, and
+ with all matches of ``lib/`` replaced with ``lib32/``.  This property is
+diff --git a/Help/manual/cmake-variables.7.rst b/Help/manual/cmake-variables.7.rst
+index 259d87b..a25efe7 100644
+--- a/Help/manual/cmake-variables.7.rst
++++ b/Help/manual/cmake-variables.7.rst
+@@ -130,6 +130,7 @@ Variables that Change Behavior
+    /variable/CMAKE_SYSROOT
+    /variable/CMAKE_FIND_APPBUNDLE
+    /variable/CMAKE_FIND_FRAMEWORK
++   /variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX
+    /variable/CMAKE_FIND_LIBRARY_PREFIXES
+    /variable/CMAKE_FIND_LIBRARY_SUFFIXES
+    /variable/CMAKE_FIND_NO_INSTALL_PREFIX
+diff --git a/Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst b/Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst
+index ce18b65..8396026 100644
+--- a/Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst
++++ b/Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst
+@@ -8,3 +8,5 @@ Whether the :command:`find_library` command should automatically search
+ :command:`find_library` command should automatically search the ``lib32``
+ variant of directories called ``lib`` in the search path when building 32-bit
+ binaries.
++
++See also the :variable:`CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX` variable.
+diff --git a/Help/prop_gbl/FIND_LIBRARY_USE_LIB64_PATHS.rst b/Help/prop_gbl/FIND_LIBRARY_USE_LIB64_PATHS.rst
+index e52f8eb..ed343ba 100644
+--- a/Help/prop_gbl/FIND_LIBRARY_USE_LIB64_PATHS.rst
++++ b/Help/prop_gbl/FIND_LIBRARY_USE_LIB64_PATHS.rst
+@@ -8,3 +8,5 @@ FIND_LIBRARY_USE_LIB64_PATHS is a boolean specifying whether the
+ :command:`find_library` command should automatically search the lib64
+ variant of directories called lib in the search path when building
+ 64-bit binaries.
++
++See also the :variable:`CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX` variable.
+diff --git a/Help/release/dev/find_library-custom-lib-suffix.rst b/Help/release/dev/find_library-custom-lib-suffix.rst
+new file mode 100644
+index 0000000..824b27e
+--- /dev/null
++++ b/Help/release/dev/find_library-custom-lib-suffix.rst
+@@ -0,0 +1,6 @@
++find_library-custom-lib-suffix
++------------------------------
++
++* A :variable:`CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX` variable was added to
++  tell the :command:`find_library` command to search in a ``lib<suffix>``
++  directory before each ``lib`` directory that would normally be searched.
+diff --git a/Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst b/Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst
+new file mode 100644
+index 0000000..f7c6524
+--- /dev/null
++++ b/Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst
+@@ -0,0 +1,11 @@
++CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX
++------------------------------------
++
++Specify a ``<suffix>`` to tell the :command:`find_library` command to
++search in a ``lib<suffix>`` directory before each ``lib`` directory that
++would normally be searched.
++
++This overrides the behavior of related global properties:
++
++* :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS`
++* :prop_gbl:`FIND_LIBRARY_USE_LIB64_PATHS`
+diff --git a/Source/cmFindLibraryCommand.cxx b/Source/cmFindLibraryCommand.cxx
+index 2feedf3..c506d66 100644
+--- a/Source/cmFindLibraryCommand.cxx
++++ b/Source/cmFindLibraryCommand.cxx
+@@ -43,20 +43,22 @@ bool cmFindLibraryCommand::InitialPass(std::vector<std::string> const& argsIn,
+     return true;
+   }
+ 
+-  if (this->Makefile->GetState()->GetGlobalPropertyAsBool(
+-        "FIND_LIBRARY_USE_LIB32_PATHS")) {
+-    // add special 32 bit paths if this is a 32 bit compile.
+-    if (this->Makefile->PlatformIs32Bit()) {
+-      this->AddArchitecturePaths("32");
+-    }
++  // add custom lib<qual> paths instead of using fixed lib32 or lib64
++  if (const char* customLib = this->Makefile->GetDefinition(
++        "CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX")) {
++    this->AddArchitecturePaths(customLib);
+   }
+-
+-  if (this->Makefile->GetState()->GetGlobalPropertyAsBool(
+-        "FIND_LIBRARY_USE_LIB64_PATHS")) {
+-    // add special 64 bit paths if this is a 64 bit compile.
+-    if (this->Makefile->PlatformIs64Bit()) {
+-      this->AddArchitecturePaths("64");
+-    }
++  // add special 32 bit paths if this is a 32 bit compile.
++  else if (this->Makefile->PlatformIs32Bit() &&
++           this->Makefile->GetState()->GetGlobalPropertyAsBool(
++             "FIND_LIBRARY_USE_LIB32_PATHS")) {
++    this->AddArchitecturePaths("32");
++  }
++  // add special 64 bit paths if this is a 64 bit compile.
++  else if (this->Makefile->PlatformIs64Bit() &&
++           this->Makefile->GetState()->GetGlobalPropertyAsBool(
++             "FIND_LIBRARY_USE_LIB64_PATHS")) {
++    this->AddArchitecturePaths("64");
+   }
+ 
+   std::string library = this->FindLibrary();
+diff --git a/Tests/CMakeOnly/find_library/CMakeLists.txt b/Tests/CMakeOnly/find_library/CMakeLists.txt
+index 9958650..9c1aad8 100644
+--- a/Tests/CMakeOnly/find_library/CMakeLists.txt
++++ b/Tests/CMakeOnly/find_library/CMakeLists.txt
+@@ -24,7 +24,7 @@ endmacro()
+ macro(test_find_library_subst expected)
+   get_filename_component(dir ${expected} PATH)
+   get_filename_component(name ${expected} NAME)
+-  string(REGEX REPLACE "lib/?64" "lib" dir "${dir}")
++  string(REGEX REPLACE "lib/?[36X][24Y][Z]*" "lib" dir "${dir}")
+   test_find_library(", searched as ${dir}" "${expected}"
+     NAMES ${name}
+     PATHS ${CMAKE_CURRENT_SOURCE_DIR}/${dir}
+@@ -79,3 +79,16 @@ test_find_library("" A/libtestA.a
+   NAMES testB testA NAMES_PER_DIR
+   PATHS ${CMAKE_CURRENT_SOURCE_DIR}/A ${CMAKE_CURRENT_SOURCE_DIR}/B
+   )
++
++set(CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX "XYZ")
++foreach(libXYZ
++    lib/XYZ/libtest1.a
++    lib/A/libXYZ/libtest2.a
++    lib/libtest3.a
++    libXYZ/A/lib/libtest4.a
++    libXYZ/A/libXYZ/libtest5.a
++    libXYZ/A/libtest6.a
++    libXYZ/libtest7.a
++    )
++  test_find_library_subst(${libXYZ})
++endforeach()
+diff --git a/Tests/CMakeOnly/find_library/lib/A/libXYZ/libtest2.a b/Tests/CMakeOnly/find_library/lib/A/libXYZ/libtest2.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/lib/XYZ/libtest1.a b/Tests/CMakeOnly/find_library/lib/XYZ/libtest1.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libXYZ/A/lib/libtest4.a b/Tests/CMakeOnly/find_library/libXYZ/A/lib/libtest4.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libXYZ/A/libXYZ/libtest5.a b/Tests/CMakeOnly/find_library/libXYZ/A/libXYZ/libtest5.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libXYZ/A/libtest6.a b/Tests/CMakeOnly/find_library/libXYZ/A/libtest6.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libXYZ/libtest7.a b/Tests/CMakeOnly/find_library/libXYZ/libtest7.a
+new file mode 100644
+index 0000000..e69de29
+-- 
+2.10.2
+
+From 462cf254270fbd56bffc73b00dc28882fdb0bdd6 Mon Sep 17 00:00:00 2001
+From: Steven Newbury <steve@snewbury.org.uk>
+Date: Mon, 27 Feb 2017 21:06:51 +0000
+Subject: [PATCH 1/4] Add support for x32-abi
+
+Detect x32-abi through CMakeCompilerABI infrastruture and use this
+information at runtime to determine the correct library paths with
+`FIND_LIBRARY_USE_LIBX32_PATHS`.
+
+Fixes: #15994
+---
+ Help/command/find_library.rst                          | 10 +++++++++-
+ Help/manual/cmake-properties.7.rst                     |  1 +
+ Help/prop_gbl/FIND_LIBRARY_USE_LIBX32_PATHS.rst        | 12 ++++++++++++
+ Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst |  1 +
+ Modules/CMakeCompilerABI.h                             |  4 ++++
+ Modules/FindPkgConfig.cmake                            |  4 ++++
+ Modules/Platform/UnixPaths.cmake                       |  1 +
+ Source/cmExportInstallFileGenerator.cxx                |  4 +++-
+ Source/cmFindLibraryCommand.cxx                        |  9 ++++++++-
+ Source/cmFindPackageCommand.cxx                        | 11 +++++++++++
+ Source/cmFindPackageCommand.h                          |  1 +
+ Source/cmMakefile.cxx                                  | 17 +++++++++++++++++
+ Source/cmMakefile.h                                    |  2 ++
+ 13 files changed, 74 insertions(+), 3 deletions(-)
+ create mode 100644 Help/prop_gbl/FIND_LIBRARY_USE_LIBX32_PATHS.rst
+
+diff --git a/Help/command/find_library.rst b/Help/command/find_library.rst
+index e912040..f774f17 100644
+--- a/Help/command/find_library.rst
++++ b/Help/command/find_library.rst
+@@ -53,7 +53,8 @@ If the :variable:`CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX` variable is set all
+ search paths will be tested as normal, with the suffix appended, and with
+ all matches of ``lib/`` replaced with
+ ``lib${CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX}/``.  This variable overrides
+-the :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS`
++the :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS`,
++:prop_gbl:`FIND_LIBRARY_USE_LIBX32_PATHS`,
+ and :prop_gbl:`FIND_LIBRARY_USE_LIB64_PATHS` global properties.
+ 
+ If the :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS` global property is set
+@@ -63,6 +64,13 @@ automatically set for the platforms that are known to need it if at
+ least one of the languages supported by the :command:`project` command
+ is enabled.
+ 
++If the :prop_gbl:`FIND_LIBRARY_USE_LIBX32_PATHS` global property is set
++all search paths will be tested as normal, with ``x32/`` appended, and
++with all matches of ``lib/`` replaced with ``libx32/``.  This property is
++automatically set for the platforms that are known to need it if at
++least one of the languages supported by the :command:`project` command
++is enabled.
++
+ If the :prop_gbl:`FIND_LIBRARY_USE_LIB64_PATHS` global property is set
+ all search paths will be tested as normal, with ``64/`` appended, and
+ with all matches of ``lib/`` replaced with ``lib64/``.  This property is
+diff --git a/Help/manual/cmake-properties.7.rst b/Help/manual/cmake-properties.7.rst
+index 5bd6365..2157ba5 100644
+--- a/Help/manual/cmake-properties.7.rst
++++ b/Help/manual/cmake-properties.7.rst
+@@ -26,6 +26,7 @@ Properties of Global Scope
+    /prop_gbl/ENABLED_LANGUAGES
+    /prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS
+    /prop_gbl/FIND_LIBRARY_USE_LIB64_PATHS
++   /prop_gbl/FIND_LIBRARY_USE_LIBX32_PATHS
+    /prop_gbl/FIND_LIBRARY_USE_OPENBSD_VERSIONING
+    /prop_gbl/GLOBAL_DEPENDS_DEBUG_MODE
+    /prop_gbl/GLOBAL_DEPENDS_NO_CYCLES
+diff --git a/Help/prop_gbl/FIND_LIBRARY_USE_LIBX32_PATHS.rst b/Help/prop_gbl/FIND_LIBRARY_USE_LIBX32_PATHS.rst
+new file mode 100644
+index 0000000..b87b09b
+--- /dev/null
++++ b/Help/prop_gbl/FIND_LIBRARY_USE_LIBX32_PATHS.rst
+@@ -0,0 +1,12 @@
++FIND_LIBRARY_USE_LIBX32_PATHS
++-----------------------------
++
++Whether the :command:`find_library` command should automatically search
++``libx32`` directories.
++
++``FIND_LIBRARY_USE_LIBX32_PATHS`` is a boolean specifying whether the
++:command:`find_library` command should automatically search the ``libx32``
++variant of directories called ``lib`` in the search path when building
++x32-abi binaries.
++
++See also the :variable:`CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX` variable.
+diff --git a/Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst b/Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst
+index f7c6524..ada8955 100644
+--- a/Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst
++++ b/Help/variable/CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX.rst
+@@ -9,3 +9,4 @@ This overrides the behavior of related global properties:
+ 
+ * :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS`
+ * :prop_gbl:`FIND_LIBRARY_USE_LIB64_PATHS`
++* :prop_gbl:`FIND_LIBRARY_USE_LIBX32_PATHS`
+diff --git a/Modules/CMakeCompilerABI.h b/Modules/CMakeCompilerABI.h
+index f2714b4..ad481d6 100644
+--- a/Modules/CMakeCompilerABI.h
++++ b/Modules/CMakeCompilerABI.h
+@@ -25,6 +25,10 @@ const char info_sizeof_dptr[] = {
+ #elif defined(__GNU__) && defined(__ELF__) && defined(__ARMEL__)
+ #define ABI_ID "ELF ARM"
+ 
++#elif defined(__linux__) && defined(__ELF__) && defined(__amd64__) &&         \
++  defined(__ILP32__)
++#define ABI_ID "ELF X32"
++
+ #elif defined(__ELF__)
+ #define ABI_ID "ELF"
+ #endif
+diff --git a/Modules/FindPkgConfig.cmake b/Modules/FindPkgConfig.cmake
+index a69081f..54572f0 100644
+--- a/Modules/FindPkgConfig.cmake
++++ b/Modules/FindPkgConfig.cmake
+@@ -312,6 +312,10 @@ macro(_pkg_check_modules_internal _is_required _is_silent _no_cmake_path _no_cma
+           if(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+             list(APPEND _lib_dirs "lib64/pkgconfig")
+           endif()
++          get_property(uselibx32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS)
++          if(uselibx32 AND CMAKE_INTERNAL_PLATFORM_ABI STREQUAL "ELF X32")
++            list(APPEND _lib_dirs "libx32/pkgconfig")
++          endif()
+         endif()
+       endif()
+       list(APPEND _lib_dirs "lib/pkgconfig")
+diff --git a/Modules/Platform/UnixPaths.cmake b/Modules/Platform/UnixPaths.cmake
+index b216d03..c1d2c03 100644
+--- a/Modules/Platform/UnixPaths.cmake
++++ b/Modules/Platform/UnixPaths.cmake
+@@ -86,3 +86,4 @@ list(APPEND CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES
+ # Enable use of lib32 and lib64 search path variants by default.
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS TRUE)
++set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS TRUE)
+diff --git a/Source/cmExportInstallFileGenerator.cxx b/Source/cmExportInstallFileGenerator.cxx
+index 64ea3c8..3b76a87 100644
+--- a/Source/cmExportInstallFileGenerator.cxx
++++ b/Source/cmExportInstallFileGenerator.cxx
+@@ -195,8 +195,10 @@ void cmExportInstallFileGenerator::GenerateImportPrefix(std::ostream& os)
+        << " \"${CMAKE_CURRENT_LIST_FILE}\" PATH)\n";
+     if (cmHasLiteralPrefix(absDestS.c_str(), "/lib/") ||
+         cmHasLiteralPrefix(absDestS.c_str(), "/lib64/") ||
++        cmHasLiteralPrefix(absDestS.c_str(), "/libx32/") ||
+         cmHasLiteralPrefix(absDestS.c_str(), "/usr/lib/") ||
+-        cmHasLiteralPrefix(absDestS.c_str(), "/usr/lib64/")) {
++        cmHasLiteralPrefix(absDestS.c_str(), "/usr/lib64/") ||
++        cmHasLiteralPrefix(absDestS.c_str(), "/usr/libx32/")) {
+       // Handle "/usr move" symlinks created by some Linux distros.
+       /* clang-format off */
+       os <<
+diff --git a/Source/cmFindLibraryCommand.cxx b/Source/cmFindLibraryCommand.cxx
+index 69f9078..e92d672 100644
+--- a/Source/cmFindLibraryCommand.cxx
++++ b/Source/cmFindLibraryCommand.cxx
+@@ -43,7 +43,8 @@ bool cmFindLibraryCommand::InitialPass(std::vector<std::string> const& argsIn,
+     return true;
+   }
+ 
+-  // add custom lib<qual> paths instead of using fixed lib32 or lib64
++  // add custom lib<qual> paths instead of using fixed lib32, lib64 or
++  // libx32
+   if (const char* customLib = this->Makefile->GetDefinition(
+         "CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX")) {
+     this->AddArchitecturePaths(customLib);
+@@ -60,6 +61,12 @@ bool cmFindLibraryCommand::InitialPass(std::vector<std::string> const& argsIn,
+              "FIND_LIBRARY_USE_LIB64_PATHS")) {
+     this->AddArchitecturePaths("64");
+   }
++  // add special 32 bit paths if this is an x32 compile.
++  else if (this->Makefile->PlatformIsx32() &&
++           this->Makefile->GetState()->GetGlobalPropertyAsBool(
++             "FIND_LIBRARY_USE_LIBX32_PATHS")) {
++    this->AddArchitecturePaths("x32");
++  }
+ 
+   std::string library = this->FindLibrary();
+   if (library != "") {
+diff --git a/Source/cmFindPackageCommand.cxx b/Source/cmFindPackageCommand.cxx
+index 60de74f..4b29837 100644
+--- a/Source/cmFindPackageCommand.cxx
++++ b/Source/cmFindPackageCommand.cxx
+@@ -92,6 +92,7 @@ cmFindPackageCommand::cmFindPackageCommand()
+   this->DebugMode = false;
+   this->UseLib32Paths = false;
+   this->UseLib64Paths = false;
++  this->UseLibx32Paths = false;
+   this->PolicyScope = true;
+   this->VersionMajor = 0;
+   this->VersionMinor = 0;
+@@ -173,6 +174,13 @@ bool cmFindPackageCommand::InitialPass(std::vector<std::string> const& args,
+     this->UseLib64Paths = true;
+   }
+ 
++  // Lookup whether libx32 paths should be used.
++  if (this->Makefile->PlatformIsx32() &&
++      this->Makefile->GetState()->GetGlobalPropertyAsBool(
++        "FIND_LIBRARY_USE_LIBX32_PATHS")) {
++    this->UseLibx32Paths = true;
++  }
++
+   // Check if User Package Registry should be disabled
+   if (this->Makefile->IsOn("CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY")) {
+     this->NoUserRegistry = true;
+@@ -2002,6 +2010,9 @@ bool cmFindPackageCommand::SearchPrefix(std::string const& prefix_in)
+   if (this->UseLib64Paths) {
+     common.push_back("lib64");
+   }
++  if (this->UseLibx32Paths) {
++    common.push_back("libx32");
++  }
+   common.push_back("lib");
+   common.push_back("share");
+ 
+diff --git a/Source/cmFindPackageCommand.h b/Source/cmFindPackageCommand.h
+index d454892..61a8dd6 100644
+--- a/Source/cmFindPackageCommand.h
++++ b/Source/cmFindPackageCommand.h
+@@ -169,6 +169,7 @@ private:
+   bool DebugMode;
+   bool UseLib32Paths;
+   bool UseLib64Paths;
++  bool UseLibx32Paths;
+   bool PolicyScope;
+   std::string LibraryArchitecture;
+   std::vector<std::string> Names;
+diff --git a/Source/cmMakefile.cxx b/Source/cmMakefile.cxx
+index c75d101..da32dd7 100644
+--- a/Source/cmMakefile.cxx
++++ b/Source/cmMakefile.cxx
+@@ -2149,6 +2149,12 @@ bool cmMakefile::IsSet(const std::string& name) const
+ 
+ bool cmMakefile::PlatformIs32Bit() const
+ {
++  if (const char* plat_abi =
++        this->GetDefinition("CMAKE_INTERNAL_PLATFORM_ABI")) {
++    if (strcmp(plat_abi, "ELF X32") == 0) {
++      return false;
++    }
++  }
+   if (const char* sizeof_dptr = this->GetDefinition("CMAKE_SIZEOF_VOID_P")) {
+     return atoi(sizeof_dptr) == 4;
+   }
+@@ -2163,6 +2169,17 @@ bool cmMakefile::PlatformIs64Bit() const
+   return false;
+ }
+ 
++bool cmMakefile::PlatformIsx32() const
++{
++  if (const char* plat_abi =
++        this->GetDefinition("CMAKE_INTERNAL_PLATFORM_ABI")) {
++    if (strcmp(plat_abi, "ELF X32") == 0) {
++      return true;
++    }
++  }
++  return false;
++}
++
+ bool cmMakefile::PlatformIsAppleIos() const
+ {
+   std::string sdkRoot;
+diff --git a/Source/cmMakefile.h b/Source/cmMakefile.h
+index 4d5ce98..4e48c88 100644
+--- a/Source/cmMakefile.h
++++ b/Source/cmMakefile.h
+@@ -436,6 +436,8 @@ public:
+ 
+   /** Return whether the target platform is 64-bit.  */
+   bool PlatformIs64Bit() const;
++  /** Return whether the target platform is x32.  */
++  bool PlatformIsx32() const;
+ 
+   /** Return whether the target platform is Apple iOS.  */
+   bool PlatformIsAppleIos() const;
+-- 
+2.10.2
+
+
+From bed9c73decfcda0366984d990045e588928440ec Mon Sep 17 00:00:00 2001
+From: Steven Newbury <steve@snewbury.org.uk>
+Date: Mon, 27 Feb 2017 21:17:28 +0000
+Subject: [PATCH 2/4] Modules: Add x32-abi support to hard-coded paths
+
+Update hard-coded library paths in bundled CMake Modules for libx32 as
+used with x32-abi.
+---
+ Modules/CPackRPM.cmake         | 2 +-
+ Modules/FindDevIL.cmake        | 6 +++---
+ Modules/FindGLEW.cmake         | 2 +-
+ Modules/FindGTK2.cmake         | 2 ++
+ Modules/FindIce.cmake          | 2 +-
+ Modules/FindKDE3.cmake         | 2 ++
+ Modules/FindOpenAL.cmake       | 2 +-
+ Modules/GetPrerequisites.cmake | 2 +-
+ 8 files changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/Modules/CPackRPM.cmake b/Modules/CPackRPM.cmake
+index 722ee15..b32feb5 100644
+--- a/Modules/CPackRPM.cmake
++++ b/Modules/CPackRPM.cmake
+@@ -1044,7 +1044,7 @@ function(cpack_rpm_prepare_content_list)
+   endif()
+ 
+   if(NOT DEFINED CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST)
+-    set(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST /etc /etc/init.d /usr /usr/share /usr/share/doc /usr/bin /usr/lib /usr/lib64 /usr/include)
++    set(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST /etc /etc/init.d /usr /usr/share /usr/share/doc /usr/bin /usr/lib /usr/lib64 /usr/libx32 /usr/include)
+     if(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION)
+       if(CPACK_RPM_PACKAGE_DEBUG)
+         message("CPackRPM:Debug: Adding ${CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION} to builtin omit list.")
+diff --git a/Modules/FindDevIL.cmake b/Modules/FindDevIL.cmake
+index 45fab82..4b868a2 100644
+--- a/Modules/FindDevIL.cmake
++++ b/Modules/FindDevIL.cmake
+@@ -45,7 +45,7 @@ find_path(IL_INCLUDE_DIR il.h
+ 
+ find_library(IL_LIBRARIES
+   NAMES IL DEVIL
+-  PATH_SUFFIXES lib64 lib lib32
++  PATH_SUFFIXES libx32 lib64 lib lib32
+   DOC "The file that corresponds to the base il library."
+ )
+ 
+@@ -53,7 +53,7 @@ find_library(IL_LIBRARIES
+ 
+ find_library(ILUT_LIBRARIES
+   NAMES ILUT
+-  PATH_SUFFIXES lib64 lib lib32
++  PATH_SUFFIXES libx32 lib64 lib lib32
+   DOC "The file that corresponds to the il (system?) utility library."
+ )
+ 
+@@ -61,7 +61,7 @@ find_library(ILUT_LIBRARIES
+ 
+ find_library(ILU_LIBRARIES
+   NAMES ILU
+-  PATH_SUFFIXES lib64 lib lib32
++  PATH_SUFFIXES libx32 lib64 lib lib32
+   DOC "The file that corresponds to the il utility library."
+ )
+ 
+diff --git a/Modules/FindGLEW.cmake b/Modules/FindGLEW.cmake
+index d8609e6..11e8724 100644
+--- a/Modules/FindGLEW.cmake
++++ b/Modules/FindGLEW.cmake
+@@ -27,7 +27,7 @@
+ find_path(GLEW_INCLUDE_DIR GL/glew.h)
+ 
+ if(NOT GLEW_LIBRARY)
+-  find_library(GLEW_LIBRARY_RELEASE NAMES GLEW glew32 glew glew32s PATH_SUFFIXES lib64)
++  find_library(GLEW_LIBRARY_RELEASE NAMES GLEW glew32 glew glew32s PATH_SUFFIXES lib64 libx32)
+   find_library(GLEW_LIBRARY_DEBUG NAMES GLEWd glew32d glewd PATH_SUFFIXES lib64)
+ 
+   include(${CMAKE_CURRENT_LIST_DIR}/SelectLibraryConfigurations.cmake)
+diff --git a/Modules/FindGTK2.cmake b/Modules/FindGTK2.cmake
+index 20d7924..2eca5f9 100644
+--- a/Modules/FindGTK2.cmake
++++ b/Modules/FindGTK2.cmake
+@@ -292,8 +292,10 @@ function(_GTK2_FIND_INCLUDE_DIR _var _hdr)
+     find_path(GTK2_${_var}_INCLUDE_DIR ${_hdr}
+         PATHS
+             ${_gtk2_arch_dir}
++            /usr/local/libx32
+             /usr/local/lib64
+             /usr/local/lib
++            /usr/libx32
+             /usr/lib64
+             /usr/lib
+             /usr/X11R6/include
+diff --git a/Modules/FindIce.cmake b/Modules/FindIce.cmake
+index a61d4a8..e0286ee 100644
+--- a/Modules/FindIce.cmake
++++ b/Modules/FindIce.cmake
+@@ -198,7 +198,7 @@ function(_Ice_FIND)
+   endif()
+   # Generic 64-bit and 32-bit directories
+   list(APPEND ice_binary_suffixes "bin${_x64}" "bin")
+-  list(APPEND ice_library_suffixes "${_lib64}" "lib${_x64}" "lib")
++  list(APPEND ice_library_suffixes "libx32" "${_lib64}" "lib${_x64}" "lib")
+   list(APPEND ice_include_suffixes "include")
+   list(APPEND ice_slice_suffixes "slice")
+ 
+diff --git a/Modules/FindKDE3.cmake b/Modules/FindKDE3.cmake
+index 62e2a50..03216a5 100644
+--- a/Modules/FindKDE3.cmake
++++ b/Modules/FindKDE3.cmake
+@@ -221,6 +221,8 @@ get_filename_component(KDE3_LIB_DIR ${KDE3_KDECORE_LIBRARY} PATH )
+ if(NOT KDE3_LIBTOOL_DIR)
+    if(KDE3_KDECORE_LIBRARY MATCHES lib64)
+      set(KDE3_LIBTOOL_DIR /lib64/kde3)
++   elseif(KDE3_KDECORE_LIBRARY MATCHES libx32)
++     set(KDE3_LIBTOOL_DIR /libx32/kde3)
+    else()
+      set(KDE3_LIBTOOL_DIR /lib/kde3)
+    endif()
+diff --git a/Modules/FindOpenAL.cmake b/Modules/FindOpenAL.cmake
+index 8622b4c..c3d202e 100644
+--- a/Modules/FindOpenAL.cmake
++++ b/Modules/FindOpenAL.cmake
+@@ -79,7 +79,7 @@ find_library(OPENAL_LIBRARY
+   NAMES OpenAL al openal OpenAL32
+   HINTS
+     ENV OPENALDIR
+-  PATH_SUFFIXES lib64 lib libs64 libs ${_OpenAL_ARCH_DIR}
++  PATH_SUFFIXES libx32 lib64 lib libs64 libs ${_OpenAL_ARCH_DIR}
+   PATHS
+   ~/Library/Frameworks
+   /Library/Frameworks
+diff --git a/Modules/GetPrerequisites.cmake b/Modules/GetPrerequisites.cmake
+index 417af7c..a3b97ab 100644
+--- a/Modules/GetPrerequisites.cmake
++++ b/Modules/GetPrerequisites.cmake
+@@ -521,7 +521,7 @@ function(gp_resolved_file_type original_file file exepath dirs type_var)
+     string(TOLOWER "${resolved_file}" lower)
+ 
+     if(UNIX)
+-      if(resolved_file MATCHES "^(/lib/|/lib32/|/lib64/|/usr/lib/|/usr/lib32/|/usr/lib64/|/usr/X11R6/|/usr/bin/)")
++      if(resolved_file MATCHES "^(/lib/|/lib32/|/libx32/|/lib64/|/usr/lib/|/usr/lib32/|/usr/libx32/|/usr/lib64/|/usr/X11R6/|/usr/bin/)")
+         set(is_system 1)
+       endif()
+     endif()
+-- 
+2.10.2
+
+
+From 5b6d354f70e1faddb006a7c98479f5d655a07b87 Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Mon, 6 Mar 2017 11:15:00 -0500
+Subject: [PATCH 3/4] Help: Add notes for topic 'x32-abi'
+
+---
+ Help/release/dev/x32-abi.rst | 6 ++++++
+ 1 file changed, 6 insertions(+)
+ create mode 100644 Help/release/dev/x32-abi.rst
+
+diff --git a/Help/release/dev/x32-abi.rst b/Help/release/dev/x32-abi.rst
+new file mode 100644
+index 0000000..7571fac
+--- /dev/null
++++ b/Help/release/dev/x32-abi.rst
+@@ -0,0 +1,6 @@
++x32-abi
++-------
++
++* The :command:`find_library` command learned to search ``libx32`` paths
++  when the build targets the ``x32`` ABI.  See the
++  :prop_gbl:`FIND_LIBRARY_USE_LIBX32_PATHS` global property.
+-- 
+2.10.2
+
+
+From d9bdcf34efa79dcdea4ded8e90b80a55db69fbf6 Mon Sep 17 00:00:00 2001
+From: Steven Newbury <steve@snewbury.org.uk>
+Date: Wed, 8 Mar 2017 17:13:29 +0000
+Subject: [PATCH 4/4] Tests: Add x32 tests to test suite
+
+---
+ Tests/CMakeOnly/find_library/CMakeLists.txt              | 16 ++++++++++++++++
+ Tests/CMakeOnly/find_library/lib/A/libx32/libtest3.a     |  0
+ Tests/CMakeOnly/find_library/lib/x32/libtest2.a          |  0
+ Tests/CMakeOnly/find_library/libx32/A/lib/libtest2.a     |  0
+ Tests/CMakeOnly/find_library/libx32/A/libtest1.a         |  0
+ Tests/CMakeOnly/find_library/libx32/A/libx32/libtest1.a  |  0
+ Tests/CMakeOnly/find_library/libx32/libtest1.a           |  0
+ .../FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake             |  5 ++++-
+ .../FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake             |  5 ++++-
+ .../FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake     |  5 ++++-
+ ...Config_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake |  5 ++++-
+ .../FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake     |  5 ++++-
+ .../FindPkgConfig/pc-bar/libx32/pkgconfig/.placeholder   |  0
+ .../FindPkgConfig/pc-foo/libx32/pkgconfig/.placeholder   |  0
+ 14 files changed, 36 insertions(+), 5 deletions(-)
+ create mode 100644 Tests/CMakeOnly/find_library/lib/A/libx32/libtest3.a
+ create mode 100644 Tests/CMakeOnly/find_library/lib/x32/libtest2.a
+ create mode 100644 Tests/CMakeOnly/find_library/libx32/A/lib/libtest2.a
+ create mode 100644 Tests/CMakeOnly/find_library/libx32/A/libtest1.a
+ create mode 100644 Tests/CMakeOnly/find_library/libx32/A/libx32/libtest1.a
+ create mode 100644 Tests/CMakeOnly/find_library/libx32/libtest1.a
+ create mode 100644 Tests/RunCMake/FindPkgConfig/pc-bar/libx32/pkgconfig/.placeholder
+ create mode 100644 Tests/RunCMake/FindPkgConfig/pc-foo/libx32/pkgconfig/.placeholder
+
+diff --git a/Tests/CMakeOnly/find_library/CMakeLists.txt b/Tests/CMakeOnly/find_library/CMakeLists.txt
+index 9c1aad8..749cf42 100644
+--- a/Tests/CMakeOnly/find_library/CMakeLists.txt
++++ b/Tests/CMakeOnly/find_library/CMakeLists.txt
+@@ -33,9 +33,11 @@ endmacro()
+ 
+ set(CMAKE_FIND_LIBRARY_PREFIXES "lib")
+ set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
++set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS TRUE)
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS TRUE)
+ 
++set(CMAKE_INTERNAL_PLATFORM_ABI "ELF")
+ set(CMAKE_SIZEOF_VOID_P 4)
+ foreach(lib
+     lib/32/libtest5.a
+@@ -67,6 +69,20 @@ foreach(lib64
+   test_find_library_subst(${lib64})
+ endforeach()
+ 
++set(CMAKE_INTERNAL_PLATFORM_ABI "ELF X32")
++set(CMAKE_SIZEOF_VOID_P 4)
++foreach(libx32
++    lib/x32/libtest2.a
++    lib/A/libx32/libtest3.a
++    lib/libtest3.a
++    libx32/A/lib/libtest2.a
++    libx32/A/libx32/libtest1.a
++    libx32/A/libtest1.a
++    libx32/libtest1.a
++    )
++  test_find_library_subst(${libx32})
++endforeach()
++
+ test_find_library("" A/libtestA.a
+   NAMES testA testB
+   PATHS ${CMAKE_CURRENT_SOURCE_DIR}/A ${CMAKE_CURRENT_SOURCE_DIR}/B
+diff --git a/Tests/CMakeOnly/find_library/lib/A/libx32/libtest3.a b/Tests/CMakeOnly/find_library/lib/A/libx32/libtest3.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/lib/x32/libtest2.a b/Tests/CMakeOnly/find_library/lib/x32/libtest2.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libx32/A/lib/libtest2.a b/Tests/CMakeOnly/find_library/libx32/A/lib/libtest2.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libx32/A/libtest1.a b/Tests/CMakeOnly/find_library/libx32/A/libtest1.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libx32/A/libx32/libtest1.a b/Tests/CMakeOnly/find_library/libx32/A/libx32/libtest1.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/libx32/libtest1.a b/Tests/CMakeOnly/find_library/libx32/libtest1.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake
+index 4a41533..2687efe 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake
+@@ -30,9 +30,12 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     endif()
+   else()
+     # not debian, check the FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS properties
++    get_property(uselibx32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS)
+     get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++    if(uselibx32 AND CMAKE_INTERNAL_PLATFORM_ABI STREQUAL "ELF X32")
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake
+index b66d02f..74cda25 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake
+@@ -30,9 +30,12 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     endif()
+   else()
+     # not debian, check the FIND_LIBRARY_USE_LIB64_PATHS and FIND_LIBRARY_USE_LIB64_PATHS properties
++    get_property(uselibx32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS)
+     get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++    if(uselibx32 AND CMAKE_INTERNAL_PLATFORM_ABI STREQUAL "ELF X32")
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
+index bdecb8a..1defde8 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
+@@ -30,9 +30,12 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     endif()
+   else()
+     # not debian, check the FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS propertie
++    get_property(uselibx32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS)
+     get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++    if(uselibx32 AND CMAKE_INTERNAL_PLATFORM_ABI STREQUAL "ELF X32")
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
+index df67235..166a617 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
+@@ -30,9 +30,12 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     endif()
+   else()
+     # not debian, check the FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS properties
++    get_property(uselibx32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS)
+     get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++    if(uselibx32 AND CMAKE_INTERNAL_PLATFORM_ABI STREQUAL "ELF X32")
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
++    elseif(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
+     elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
+index 1351b6f..e4673b3 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
+@@ -30,9 +30,12 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     endif()
+   else()
+     # not debian, check the FIND_LIBRARY_USE_LIB64_PATHS and FIND_LIBRARY_USE_LIB32_PATHS properties
++    get_property(uselibx32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIBX32_PATHS)
+     get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++    if(uselibx32 AND CMAKE_INTERNAL_PLATFORM_ABI STREQUAL "ELF X32")
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/libx32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+diff --git a/Tests/RunCMake/FindPkgConfig/pc-bar/libx32/pkgconfig/.placeholder b/Tests/RunCMake/FindPkgConfig/pc-bar/libx32/pkgconfig/.placeholder
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/RunCMake/FindPkgConfig/pc-foo/libx32/pkgconfig/.placeholder b/Tests/RunCMake/FindPkgConfig/pc-foo/libx32/pkgconfig/.placeholder
+new file mode 100644
+index 0000000..e69de29
+-- 
+2.10.2
+
