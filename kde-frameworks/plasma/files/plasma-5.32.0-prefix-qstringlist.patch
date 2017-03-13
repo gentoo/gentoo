@@ -1,0 +1,43 @@
+From 547a34d346695295ce05499ae355203414412993 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Fri, 10 Mar 2017 09:49:47 +0000
+Subject: Handle applyPrefixes with an empty string
+
+Summary:
+When setting an empty QStringList as prefix, it can lead to unexpected results, such as the prefix not changing.
+
+BUG: 377441
+
+Reviewers: #plasma
+
+Subscribers: plasma-devel, #frameworks
+
+Tags: #plasma, #frameworks
+
+Differential Revision: https://phabricator.kde.org/D5000
+---
+ src/declarativeimports/core/framesvgitem.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/declarativeimports/core/framesvgitem.cpp b/src/declarativeimports/core/framesvgitem.cpp
+index 81f9e63..8e6225f 100644
+--- a/src/declarativeimports/core/framesvgitem.cpp
++++ b/src/declarativeimports/core/framesvgitem.cpp
+@@ -556,7 +556,13 @@ void FrameSvgItem::updateDevicePixelRatio()
+ 
+ void FrameSvgItem::applyPrefixes()
+ {
+-    if (m_prefixes.isEmpty() || m_frameSvg->imagePath().isEmpty()) {
++
++    if (m_frameSvg->imagePath().isEmpty()) {
++        return;
++    }
++
++    if (m_prefixes.isEmpty()) {
++        m_frameSvg->setElementPrefix(QString());
+         return;
+     }
+ 
+-- 
+cgit v0.11.2
+
