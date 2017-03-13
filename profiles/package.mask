@@ -386,27 +386,6 @@ x11-drivers/ati-drivers
 # including dropped support for BlueZ 4.
 =net-wireless/blueman-2.1_alpha*
 
-# Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
-# Mask 4.0.0 RCs (then final) for initial testing, and updating most
-# important revdeps. Also revdeps that require 4.0.
-=app-vim/llvm-vim-4.0.0*
-=dev-ml/llvm-ocaml-4.0.0*
-=dev-python/clang-python-4.0.0*
-=dev-python/lit-4.0.0*
-=dev-util/lldb-4.0.0*
-=sys-devel/clang-4.0.0*
-=sys-devel/clang-runtime-4.0.0*
-=sys-devel/lld-4.0.0*
-=sys-devel/llvm-4.0.0*
-=sys-devel/llvmgold-4
-=sys-libs/compiler-rt-4.0.0*
-=sys-libs/compiler-rt-sanitizers-4.0.0*
-=sys-libs/libcxx-4.0.0*
-=sys-libs/libcxxabi-4.0.0*
-=sys-libs/libomp-4.0.0*
-=sys-libs/llvm-libunwind-4.0.0*
->=dev-libs/libclc-0.2.0_pre20170118
-
 # Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
 # Masked, Vulnerable due to RGW Denial of Service (bug #598206)
 # We mask it instead of removing them, due user may need them while
