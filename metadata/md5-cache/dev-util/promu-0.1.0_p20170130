@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/prometheus/promu/archive/8a62dcf16adcf41f855ebb1a3c883fb61de1d030.tar.gz -> promu-0.1.0_p20170130.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
-_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	5a791584cef71ee0259d5fb11f628d46
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
 _md5_=2952f89952ed7e2e936312efb20b0d9f

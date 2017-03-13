@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/docker/runc/archive/9df8b306d01f59d3a8029be411de015b7304dd8f.tar.gz -> docker-runc-1.0.0_rc2_p20170201.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
-_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-vcs-snapshot	5a791584cef71ee0259d5fb11f628d46
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
 _md5_=84899b0d941350eaa41e1abb3f556355
