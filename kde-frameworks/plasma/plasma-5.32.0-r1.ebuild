@@ -55,6 +55,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-prefix-qstringlist.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package egl EGL)
