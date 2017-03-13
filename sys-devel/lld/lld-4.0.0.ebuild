@@ -12,8 +12,8 @@ inherit cmake-utils llvm python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz
-	test? ( http://www.llvm.org/pre-releases/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
+SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
