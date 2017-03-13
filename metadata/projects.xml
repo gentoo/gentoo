@@ -3269,6 +3269,11 @@ developers and volunteer mentors.</description>
       <role>Lead</role>
     </member>
     <member>
+      <email>soap@gentoo.org</email>
+      <name>David Seifert</name>
+      <role>Developer</role>
+    </member>
+    <member>
       <email>tommy@gentoo.org</email>
       <name>Thomas Sachau</name>
       <role>Developer</role>
