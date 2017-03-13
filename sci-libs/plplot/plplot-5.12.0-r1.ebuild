@@ -46,7 +46,7 @@ RDEPEND="
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtsvg:5
-		dev-qt/qtprintsupport
+		dev-qt/qtprintsupport:5
 	)
 	shapefile? ( sci-libs/shapelib:0= )
 	tcl? (
