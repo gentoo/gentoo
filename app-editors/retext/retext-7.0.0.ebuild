@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5} )
 
 PLOCALES="ca cs cy da de es et eu fr hu it ja pl pt pt_BR ru sk sr sr@latin uk zh_TW"
 
-inherit distutils-r1 l10n
+inherit distutils-r1 l10n eutils
 
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
@@ -24,7 +24,7 @@ IUSE="+spell"
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
-	>=dev-python/markups-2[${PYTHON_USEDEP}]
+	>=dev-python/markups-2.0[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,network,printsupport,webkit,widgets,${PYTHON_USEDEP}]
@@ -43,6 +43,9 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_install_all
+
+	newicon {icons/,}${PN}.png
+	newicon {icons/,}${PN}.svg
 
 	l10n_for_each_disabled_locale_do remove_locale
 
