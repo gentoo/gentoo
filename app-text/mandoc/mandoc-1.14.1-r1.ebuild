@@ -54,6 +54,7 @@ MANM_MDOC=mandoc_mdoc
 MANM_ROFF=mandoc_roff
 MANM_EQN=mandoc_eqn
 MANM_TBL=mandoc_tbl
+MANM_MANCONF=mman.conf
 
 HAVE_SQLITE3="$(usex sqlite 1 0)"
 
