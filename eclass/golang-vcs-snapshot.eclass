@@ -105,11 +105,11 @@ golang-vcs-snapshot_src_unpack() {
 			lib=(${lib})
 			if [[ -n ${lib[2]} ]]; then
 				einfo "Vendoring ${lib[0]} ${lib[2]//\//-}-${lib[1]}.tar.gz"
-				_golang-vcs-snapshot_dovendor "${VENDOR_PATH}" ${lib[0]} \
+				_golang-vcs-snapshot_dovendor "${vendor_path}" ${lib[0]} \
 					${lib[2]//\//-}-${lib[1]}.tar.gz
 			else
 				einfo "Vendoring ${lib[0]} ${lib[0]//\//-}-${lib[1]}.tar.gz"
-				_golang-vcs-snapshot_dovendor "${VENDOR_PATH}" ${lib[0]} \
+				_golang-vcs-snapshot_dovendor "${vendor_path}" ${lib[0]} \
 				${lib[0]//\//-}-${lib[1]}.tar.gz
 			fi
 		done
