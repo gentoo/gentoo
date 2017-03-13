@@ -8,7 +8,7 @@ inherit python-r1
 
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/cfe-${PV/_/}.src.tar.xz"
+SRC_URI="http://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
