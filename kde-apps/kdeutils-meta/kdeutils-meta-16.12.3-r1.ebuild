@@ -19,7 +19,7 @@ RDEPEND="
 	$(add_kdeapps_dep kcharselect)
 	$(add_kdeapps_dep kdebugsettings)
 	$(add_kdeapps_dep kdf)
-	$(add_kdeapps_dep kgpg)
+	kde-apps/kgpg:*
 	$(add_kdeapps_dep kteatime)
 	$(add_kdeapps_dep ktimer)
 	$(add_kdeapps_dep kwalletmanager)

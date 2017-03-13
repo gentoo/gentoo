@@ -20,7 +20,7 @@ RDEPEND="
 	$(add_kdeapps_dep kdenetwork-meta)
 	$(add_kdeapps_dep kdeutils-meta)
 	accessibility? ( $(add_kdeapps_dep kdeaccessibility-meta) )
-	pim? ( $(add_kdeapps_dep kdepim-meta) )
+	pim? ( kde-apps/kdepim-meta:* )
 	sdk? (
 		$(add_kdeapps_dep kdesdk-meta)
 		$(add_kdeapps_dep kdewebdev-meta)
