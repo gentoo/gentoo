@@ -38,4 +38,5 @@ src_compile() {
 
 src_install() {
 	dobin bin/*
+	dodoc src/${EGO_PN%/*}/{README,CHANGELOG}.md
 }
