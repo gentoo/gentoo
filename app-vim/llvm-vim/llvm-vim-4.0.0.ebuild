@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Vim support files for LLVM"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/llvm-${PV/_/}.src.tar.xz"
+SRC_URI="http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
