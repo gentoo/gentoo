@@ -21,7 +21,7 @@ DEPEND="app-text/poppler[qt5]
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras"
+	dev-qt/qtx11extras:5"
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
