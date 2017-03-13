@@ -12,8 +12,8 @@ inherit cmake-multilib python-any-r1
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="http://libcxxabi.llvm.org/"
-SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz
-	http://www.llvm.org/pre-releases/${PV/_//}/libcxx-${PV/_/}.src.tar.xz"
+SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	http://releases.llvm.org/${PV/_//}/libcxx-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
