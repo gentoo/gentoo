@@ -13,9 +13,9 @@ inherit check-reqs cmake-utils flag-o-matic llvm multilib-minimal \
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/cfe-${PV/_/}.src.tar.xz
-	http://www.llvm.org/pre-releases/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
-	test? ( http://www.llvm.org/pre-releases/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
+SRC_URI="http://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz
+	http://releases.llvm.org/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
+	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
