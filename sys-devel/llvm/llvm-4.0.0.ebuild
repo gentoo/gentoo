@@ -13,7 +13,7 @@ inherit check-reqs cmake-utils flag-o-matic \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz"
+SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
