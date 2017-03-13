@@ -12,8 +12,8 @@ inherit cmake-utils flag-o-matic python-any-r1 versionator
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/compiler-rt-${PV/_/}.src.tar.xz
-	test? ( http://www.llvm.org/pre-releases/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
+SRC_URI="http://releases.llvm.org/${PV/_//}/compiler-rt-${PV/_/}.src.tar.xz
+	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
