@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,6 +49,7 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/zenity:0
+	>=mate-base/mate-desktop-1.9[gtk3(-)=]
 "
 
 DEPEND="${COMMON_DEPEND}
