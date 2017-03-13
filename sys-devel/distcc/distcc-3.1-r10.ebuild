@@ -113,10 +113,6 @@ src_install() {
 		fi
 	done
 
-	# create the distccd pid directory
-	keepdir /var/run/distccd
-	fowners distcc:daemon /var/run/distccd
-
 	if use gtk; then
 		einfo "Renaming /usr/bin/distccmon-gnome to /usr/bin/distccmon-gui"
 		einfo "This is to have a little sensability in naming schemes between distccmon programs"
