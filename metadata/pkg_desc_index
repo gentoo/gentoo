@@ -8227,7 +8227,7 @@ dev-python/pyregion 1.1.4 1.2: Python module to parse ds9 region file
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 0.2 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyringe 1.0.2: Debugger capable of attaching and injecting code
-dev-python/pyro 3.16-r1 4.25 4.39 4.40 4.41: Distributed object middleware for Python (RPC)
+dev-python/pyro 3.16-r1 4.25 4.39 4.40 4.41 4.47: Distributed object middleware for Python (RPC)
 dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyroute2 0.4.12: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
