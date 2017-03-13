@@ -348,11 +348,6 @@ dev-php/PEAR-Net_CheckIP
 # Masked for removal in 30 days. Bug #594826 and 597872.
 media-libs/iulib
 
-# Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
-# Dead upstream. Unmaintained. Problems with multicore CPUs.
-# Masked for removal in 30 days.
-sys-power/cpudyn
-
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
