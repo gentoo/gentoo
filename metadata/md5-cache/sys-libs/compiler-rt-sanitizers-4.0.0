@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=>=sys-devel/llvm-4 test? ( app-portage/unsandbox || ( ( >=dev-lang/python-2.7.5-r2:2.7 ~dev-python/lit-4.0.0_rc3[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) =sys-devel/clang-4.0.0*:4 sys-libs/compiler-rt:4.0.0 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.7.0-r1
+DEPEND=>=sys-devel/llvm-4 test? ( app-portage/unsandbox || ( ( >=dev-lang/python-2.7.5-r2:2.7 ~dev-python/lit-4.0.0[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) =sys-devel/clang-4.0.0*:4 sys-libs/compiler-rt:4.0.0 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.7.0-r1
 DESCRIPTION=Compiler runtime libraries for clang (sanitizers & xray)
 EAPI=6
 HOMEPAGE=http://llvm.org/
@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=|| ( UoI-NCSA MIT )
 RDEPEND=!=sys-libs/compiler-rt-sanitizers-4.0.0*:0
 SLOT=4.0.0
-SRC_URI=http://www.llvm.org/pre-releases/4.0.0/rc3/compiler-rt-4.0.0rc3.src.tar.xz test? ( http://www.llvm.org/pre-releases/4.0.0/rc3/llvm-4.0.0rc3.src.tar.xz )
+SRC_URI=http://releases.llvm.org/4.0.0/compiler-rt-4.0.0.src.tar.xz test? ( http://releases.llvm.org/4.0.0/llvm-4.0.0.src.tar.xz )
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:- src_install:cmake-utils
 _eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=3b710a78d0dfaa939fff0c905a91f962
+_md5_=933e116e688b953601ad68941316fe47
