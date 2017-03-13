@@ -12,8 +12,8 @@ DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
-IUSE_SERVERS="dmx kdrive xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd tslib +udev unwind wayland"
+IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
+IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd tslib +udev unwind"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
@@ -56,7 +56,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		x11-libs/libXv
 	)
 	xephyr? (
-		x11-libs/libxcb
+		x11-libs/libxcb[xkb]
 		x11-libs/xcb-util
 		x11-libs/xcb-util-image
 		x11-libs/xcb-util-keysyms
