@@ -29,11 +29,7 @@ DOCS="AUTHORS.txt NEWS.txt"
 
 DOC_CONTENTS="If you are upgrading Picard and it does not start,
 try removing Picard's settings:
-    rm ~/.config/MusicBrainz/Picard.conf
-
-You should set the environment variable BROWSER to something like
-    firefox '%s' &
-to let python know which browser to use."
+	rm ~/.config/MusicBrainz/Picard.conf"
 
 src_compile() {
 	distutils-r1_src_compile $(use nls || echo "--disable-locales")
