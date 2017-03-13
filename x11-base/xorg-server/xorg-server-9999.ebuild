@@ -55,7 +55,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		x11-libs/libXv
 	)
 	xephyr? (
-		x11-libs/libxcb
+		x11-libs/libxcb[xkb]
 		x11-libs/xcb-util
 		x11-libs/xcb-util-image
 		x11-libs/xcb-util-keysyms
