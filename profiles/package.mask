@@ -343,11 +343,6 @@ dev-php/PEAR-PhpDocumentor
 # in 30 days. Bug 609128.
 dev-php/PEAR-Net_CheckIP
 
-# Michael Palimaka <kensington@gentoo.org> (12 Feb 2017)
-# Build failures. Dead upstream. No revdeps. Unmaintained.
-# Masked for removal in 30 days. Bug #594826 and 597872.
-media-libs/iulib
-
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
