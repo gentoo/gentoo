@@ -1,0 +1,21 @@
+commit 2dfd834840a9de8ce3866af1cf8f3aff9b1a15e8
+Author: Michael Haubenwallner <michael.haubenwallner@ssi-schaefer.com>
+Date:   Wed Mar 2 15:06:48 2016 +0100
+
+    AIX: Stop exporting any _GLOBAL__ symbol.
+    
+    * m4/libtool.m4 (_LT_LINKER_SHLIBS): On AIX, GNU g++ generates
+    _GLOBAL__* symbols as, amongst others, landing pads for C++ exceptions.
+    These symbols must not be exported from shared libraries, or exception
+    handling may break for applications with runtime linking enabled.
+
+--- configure
++++ configure
+@@ -5446,6 +5447,7 @@ _LT_EOF
+ 	# symbols only, and the '-p' flag disables sorting to improve
+ 	# performance.  For the weak symbol handling see the CXX tag.
+ 	export_symbols_cmds='$NM -gp $libobjs $convenience | $global_symbol_pipe | $EGREP -v " ($exclude_expsyms)$" | awk '\''{ kw = "" } /^([[CVWZ]]|[[BDLT]]\*) / { kw = " weak" } { print $ 3 kw }'\'' | sort -u > $export_symbols'
++	exclude_expsyms='_GLOBAL_OFFSET_TABLE_|_GLOBAL__.*'
+ 	aix_use_runtimelinking=no
+ 
+ 	# Test if we are trying to use run time linking or normal
