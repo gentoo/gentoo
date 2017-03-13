@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ HOMEPAGE="http://gurlchecker.labs.libre-entreprise.org/"
 SRC_URI="http://labs.libre-entreprise.org/frs/download.php/857/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 SLOT="0"
 IUSE="clamav json sqlite ssl tidy"
 
