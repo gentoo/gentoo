@@ -549,7 +549,7 @@ app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
 app-crypt/kencfs 1.6.2 1.6.4: GUI frontend for encfs
-app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17 1.0.17-r1 1.0.18: Client for keybase.io
+app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17 1.0.17-r1 1.0.18 1.0.20: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
@@ -10129,7 +10129,7 @@ dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that ad
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
-dev-util/cmake 3.6.3 3.7.2 3.8.0_rc2: Cross platform Make
+dev-util/cmake 3.6.3 3.7.2 3.7.2-r10 3.8.0_rc2: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.0: A unit testing framework for C
@@ -12820,7 +12820,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.3.3 0.3.3-r1: libhal stub forwarding to UDisks for Adobe Flash to play DRM content
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.3.1 1.3.4 1.4.3 1.4.4 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.3.1 1.3.4 1.4.3 1.4.5 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
