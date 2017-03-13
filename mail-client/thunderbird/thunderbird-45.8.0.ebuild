@@ -302,9 +302,9 @@ src_install() {
 	fi
 
 	if use crypt ; then
-		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' /usr/share/enigmail/install.rdf)
+		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EPREFIX}"/usr/share/enigmail/install.rdf)
 		if [[ -n ${emid} ]]; then
-			dosym /usr/share/enigmail ${MOZILLA_FIVE_HOME}/extensions/${emid}
+			dosym "${EPREFIX}"/usr/share/enigmail ${MOZILLA_FIVE_HOME}/extensions/${emid}
 		else
 			die "<EM:ID> tag for installed enigmail could not be found!"
 		fi
@@ -325,6 +325,20 @@ src_install() {
 
 pkg_preinst() {
 	gnome2_icon_savelist
+
+	# Because PM's dont seem to properly merge a symlink replacing a directory
+	if use crypt ; then
+		local emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EPREFIX}"/usr/share/enigmail/install.rdf)
+		if [[ -d "${EPREFIX}${MOZILLA_FIVE_HOME}/extensions/${emid}" ]] ; then
+			rm -Rf "${EPREFIX}${MOZILLA_FIVE_HOME}/extensions/${emid}" || (
+			eerror "Could not remove enigmail directory from previous installation,"
+			eerror "You must remove this by hand and rename the symbolic link yourself:"
+			eerror
+			eerror "\t cd ${EPREFIX}${MOZILLA_FIVE_HOME}/extensions"
+			eerror "\t rm -Rf ${emid}"
+			eerror "\t mv ${emid}.backup* ${emid}" )
+		fi
+	fi
 }
 
 pkg_postinst() {
