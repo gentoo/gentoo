@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
+# Testing x32 patch backports from 3.9
+=dev-util/cmake-3.7.2-r10
+
 # David Seifert <soap@gentoo.org> (12 Mar 2017)
 # Bundles half of glibc, unmaintained upstream,
 # not really necessary anymore with 64-bit flash
