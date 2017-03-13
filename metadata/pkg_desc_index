@@ -11698,7 +11698,7 @@ kde-apps/kcolorchooser 16.08.3 16.12.3: KDE color selector/editor
 kde-apps/kcontacts 16.12.3: Address book API based on KDE Frameworks
 kde-apps/kcontrol 16.04.3: The KDE Control Center
 kde-apps/kcron 16.08.3 16.12.3: KDE Task Scheduler
-kde-apps/kde-apps-meta 16.08.3 16.12.3: Meta package for the KDE Applications collection
+kde-apps/kde-apps-meta 16.08.3 16.12.3-r1: Meta package for the KDE Applications collection
 kde-apps/kde-dev-scripts 16.08.3 16.12.3: KDE Development Scripts
 kde-apps/kde-dev-utils 16.08.3 16.12.3: KDE Development Utilities
 kde-apps/kde-l10n 16.08.3 16.12.3: KDE internationalization package
@@ -11739,7 +11739,7 @@ kde-apps/kdesdk-kioslaves 16.08.3 16.12.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 16.08.3 16.12.3: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 16.08.3 16.12.3: Thumbnail generator for PO files
 kde-apps/kdesu 16.04.3: KDE gui for su(1)
-kde-apps/kdeutils-meta 16.08.3 16.12.3: kdeutils - merge this to pull in all kdeutils-derived packages
+kde-apps/kdeutils-meta 16.08.3 16.12.3-r1: kdeutils - merge this to pull in all kdeutils-derived packages
 kde-apps/kdewebdev-meta 16.08.3 16.12.3: KDE WebDev - merge this to pull in all kdewebdev-derived packages
 kde-apps/kdf 16.08.3 16.12.3: KDE free disk space utility
 kde-apps/kdialog 16.08.3 16.12.3: Can be used to show nice dialog boxes from shell scripts
@@ -14013,7 +14013,7 @@ media-video/openshot 1.4.3-r1 2.1.0 2.2.0: Free, open-source, non-linear video e
 media-video/orion 1.3.5 1.4.0: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 0.8.0-r1 0.8.1 0.9.1: A simple Xfce4 media player using GStreamer
-media-video/peek 0.8.0-r1: Simple animated Gif screen recorder
+media-video/peek 0.8.0-r1 1.0.0: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 1.9.91-r1 2.1.0: Movie slideshow creator using Ken Burns effect
 media-video/pitivi 0.97.1: A non-linear video editor using the GStreamer multimedia framework

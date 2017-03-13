@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta package for the KDE Applications collection
+EAPI=6
+HOMEPAGE=https://www.kde.org/
+IUSE=accessibility pim sdk
+KEYWORDS=~amd64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/kate-16.12.3 >=kde-apps/kdeadmin-meta-16.12.3 >=kde-apps/kdecore-meta-16.12.3 >=kde-apps/kdeedu-meta-16.12.3 >=kde-apps/kdegames-meta-16.12.3 >=kde-apps/kdegraphics-meta-16.12.3 >=kde-apps/kdemultimedia-meta-16.12.3 >=kde-apps/kdenetwork-meta-16.12.3 >=kde-apps/kdeutils-meta-16.12.3 accessibility? ( >=kde-apps/kdeaccessibility-meta-16.12.3 ) pim? ( kde-apps/kdepim-meta:* ) sdk? ( >=kde-apps/kdesdk-meta-16.12.3 >=kde-apps/kdewebdev-meta-16.12.3 )
+SLOT=5
+_eclass_exported_funcs=-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	kde5-functions	4d549f753da6d754874f9f755e2d6794	kde5-meta-pkg	2940961e373d151224f818926d9ec927	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=77b0f51335dc0e9769bbd409644ae6e1
