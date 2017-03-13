@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=activefilter? ( net-libs/libpcap ) atm? ( net-dialup/linux-atm ) pam? ( virtual/pam ) gtk? ( x11-libs/gtk+:2 ) eap-tls? ( net-misc/curl !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) )
+DESCRIPTION=Point-to-Point Protocol (PPP)
+EAPI=5
+HOMEPAGE=http://www.samba.org/ppp
+IUSE=activefilter atm dhcp eap-tls gtk ipv6 libressl pam radius
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD GPL-2
+PDEPEND=net-dialup/ppp-scripts
+RDEPEND=activefilter? ( net-libs/libpcap ) atm? ( net-dialup/linux-atm ) pam? ( virtual/pam ) gtk? ( x11-libs/gtk+:2 ) eap-tls? ( net-misc/curl !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) )
+SLOT=0/2.4.7
+SRC_URI=ftp://ftp.samba.org/pub/ppp/ppp-2.4.7.tar.gz https://dev.gentoo.org/~polynomial-c/ppp-2.4.7-patches-5.tar.xz http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=0937ec4719219b749dd7fcca15c0b3ac
