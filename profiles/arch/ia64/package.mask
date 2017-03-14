@@ -3,9 +3,8 @@
 
 # Alexis Ballier <aballier@gentoo.org> (27 Jun 2013)
 # TeX Live 2013 mask.
-# kpathsea has to be there because it has config files without /usr/share/texmf
+# kpathsea should be there because it has config files without /usr/share/texmf
 # and thus will break anything before TeX Live 2013.
->=dev-libs/kpathsea-6.1.1_p20130530
 >=app-text/texlive-core-2013
 >=dev-tex/luatex-0.74
 >=app-text/texlive-2013
