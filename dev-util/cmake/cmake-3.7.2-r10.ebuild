@@ -10,7 +10,8 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="http://www.cmake.org/"
-SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz"
+SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz
+https://dev.gentoo.org/~kensington/distfiles/${PN}-3.7.2-x32.patch.xz"
 
 LICENSE="CMake"
 SLOT="0"
@@ -62,7 +63,7 @@ PATCHES=(
 	# upstream fixes (can usually be removed with a version bump)
 
 	# testing 3.9 backports - bug #426936
-	"${FILESDIR}"/${PN}-3.7.2-x32.patch
+	"${WORKDIR}"/${PN}-3.7.2-x32.patch
 )
 
 cmake_src_bootstrap() {
