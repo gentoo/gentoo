@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="http://git.1wt.eu/web?p=${PN}.git;a=snapshot;h=v${PV};sf=tbz2 -> ${P}.t
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 arm ppc ~x86"
 IUSE="static-libs tools"
 
 DEPEND=""
