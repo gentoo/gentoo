@@ -21,7 +21,7 @@ inherit enlightenment pax-utils
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
-IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png postscript +ppm +psd pulseaudio raw scim sdl sound systemd tga tiff tslib unwind v4l valgrind wayland webp X xim xine xpm"
+IUSE="+bmp cpu_flags_arm_neon debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl oldlua opengl ssl physics pixman +png postscript +ppm +psd pulseaudio raw scim sdl sound systemd tga tiff tslib unwind v4l valgrind wayland webp X xim xine xpm"
 
 REQUIRED_USE="
 	pulseaudio?	( sound )
@@ -208,6 +208,7 @@ src_configure() {
 
 		$(use_enable bmp image-loader-bmp)
 		$(use_enable bmp image-loader-wbmp)
+		$(use_enable cpu_flags_arm_neon neon)
 		$(use_enable drm)
 		$(use_enable doc)
 		$(use_enable eet image-loader-eet)
@@ -221,7 +222,6 @@ src_configure() {
 		$(use_enable ico image-loader-ico)
 		$(use_enable ibus)
 		$(use_enable jpeg2k image-loader-jp2k)
-		$(use_enable neon)
 		$(use_enable nls)
 		$(use_enable oldlua lua-old)
 		$(use_enable physics)
