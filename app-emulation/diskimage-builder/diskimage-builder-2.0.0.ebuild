@@ -26,4 +26,5 @@ RDEPEND="${CDEPEND}
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	app-emulation/qemu
 	sys-block/parted
-	sys-fs/multipath-tools"
+	sys-fs/multipath-tools
+	!dev-python/dib-utils[${PYTHON_USEDEP}]"
