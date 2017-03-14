@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Michael Weber <xmw@gentoo.org> (15 Mar 2017)
+# Cannot test non-free dependency dev-libs/device-atlas-api-c
+net-proxy/haproxy device-atlas
+
 # Bernard Cafarelli <voyageur@gentoo.org> <25 Jan 2017)
 # Requires a Java dependency
 app-text/tesseract scrollview
