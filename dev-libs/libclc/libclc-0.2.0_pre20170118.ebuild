@@ -15,7 +15,7 @@ else
 	GIT_ECLASS="vcs-snapshot"
 fi
 
-inherit python-any-r1 ${GIT_ECLASS}
+inherit python-any-r1 toolchain-funcs ${GIT_ECLASS}
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="http://libclc.llvm.org/"
@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	./configure.py \
+		--with-cxx-compiler="$(tc-getCXX)" \
 		--with-llvm-config="$(type -P llvm-config)" \
 		--prefix="${EPREFIX}/usr" || die
 }
