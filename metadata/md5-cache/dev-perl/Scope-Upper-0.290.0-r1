@@ -3,11 +3,11 @@ DEPEND=dev-lang/perl:=
 DESCRIPTION=Act on upper scopes
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Scope-Upper/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/V/VP/VPIT/Scope-Upper-0.29.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
-_md5_=980a8ea0eae7489b546c9b6f125f030e
+_md5_=2039be94de1cabffee1a1d519fb6ecd9
