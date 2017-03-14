@@ -19,6 +19,10 @@ IUSE=""
 S_ROOT="${WORKDIR}/${MY_P}.src"
 S="${S_ROOT}/lib/Fuzzer"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-32-bit.patch #612656
+)
+
 src_prepare() {
 	cmake-utils_src_prepare
 	sed -i '/CMAKE_CXX_FLAGS/d' CMakeLists.txt || die
