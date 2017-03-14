@@ -12,14 +12,14 @@ SRC_URI="http://www.memtest.org/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="floppy serial"
+IUSE="floppy iso serial"
 
 BOOTDIR=/boot/memtest86plus
 QA_PRESTRIPPED="${BOOTDIR}/memtest.netbsd"
 QA_FLAGS_IGNORED="${BOOTDIR}/memtest.netbsd"
 
 RDEPEND="floppy? ( >=sys-boot/grub-0.95:0 sys-fs/mtools )"
-DEPEND=""
+DEPEND="iso? ( app-cdr/cdrtools )"
 
 src_prepare() {
 	sed -i -e 's,0x10000,0x100000,' memtest.lds || die
@@ -32,6 +32,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-C-headers.patch #592638
 	epatch "${FILESDIR}"/${P}-test-random-cflags.patch #590974
 
+	sed -i 's:genisoimage:mkisofs:' makeiso.sh || die
 	if use serial ; then
 		sed -i \
 			-e '/^#define SERIAL_CONSOLE_DEFAULT/s:0:1:' \
@@ -45,10 +46,18 @@ src_configure() {
 	tc-export AS CC LD
 }
 
+src_compile() {
+	emake
+	if use iso ; then
+		./makeiso.sh || die
+	fi
+}
+
 src_test() { :; }
 
 src_install() {
 	insinto ${BOOTDIR}
+	use iso && newins mt*.iso memtest.iso
 	newins memtest.bin memtest
 	newins memtest memtest.netbsd
 	dosym memtest ${BOOTDIR}/memtest.bin
