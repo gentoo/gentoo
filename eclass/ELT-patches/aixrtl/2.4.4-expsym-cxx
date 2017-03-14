@@ -15,7 +15,7 @@ Date:   Wed Mar 2 15:06:48 2016 +0100
      # '[[BDLT]]*' with AIX nm in default mode (POSIX like)
      # '[[CVW]]'   with GNU nm in either BSD or POSIX mode
      export_symbols_cmds_CXX='$NM -gp $libobjs $convenience | $global_symbol_pipe | $EGREP -v " ($exclude_expsyms)$" | awk '\''{ kw = "" } /^([[CVWZ]]|[[BDLT]]\*) / { kw = " weak" } { print $ 3 kw }'\'' | sort -u > $export_symbols'
-+    exclude_expsyms_CXX='_GLOBAL_OFFSET_TABLE_|_GLOBAL__.*'
++    exclude_expsyms_CXX='_GLOBAL_OFFSET_TABLE_|_GLOBAL__F[ID]_.*|_GLOBAL__[FID]_.*'
      ;;
    pw32*)
      export_symbols_cmds_CXX=$ltdll_cmds
