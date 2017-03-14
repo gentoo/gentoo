@@ -34,7 +34,7 @@ src_install() {
 	cp -r "${S}/pkg" "${D}/opt/${PN}" || die
 
 	# Copy documentation files
-	dodoc CHANGES README USAGE
+	dodoc README USAGE
 
 	# Make a symbolic link: /sbin/bliss-initramfs
 	dosym "/opt/${PN}/${executable}" "/sbin/${PN}"
