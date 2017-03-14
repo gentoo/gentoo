@@ -16,3 +16,7 @@ LIBDIR_arm64="lib64"
 
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
+
+# Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
+# Unhide the ARM-specific USE_EXPANDs.
+USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"

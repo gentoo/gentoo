@@ -18,3 +18,7 @@ CHOST_arm="${CHOST}"
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
 VIDEO_CARDS="exynos fbdev omap"
+
+# Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
+# Unhide the ARM-specific USE_EXPANDs.
+USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"

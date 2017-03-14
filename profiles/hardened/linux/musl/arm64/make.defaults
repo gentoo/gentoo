@@ -17,3 +17,7 @@ DEFAULT_ABI="arm64"
 MULTILIB_ABIS="arm64"
 CHOST_arm64="${CHOST}"
 LIBDIR_arm64="lib"
+
+# Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
+# Unhide the ARM-specific USE_EXPANDs.
+USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
