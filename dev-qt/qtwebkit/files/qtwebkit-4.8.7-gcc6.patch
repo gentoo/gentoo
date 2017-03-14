@@ -1,0 +1,142 @@
+Patches Qtwebkit to allow building with GCC 6.
+Parts taken from: https://aur.tuna.tsinghua.edu.cn/packages/mingw-w64-qt4
+See also: https://bugs.gentoo.org/show_bug.cgi?id=583744
+
+--- a/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp
++++ b/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp
+@@ -157,7 +157,7 @@
+ {
+     if (m_previous) {
+         if (m_nameInPrevious)
+-            m_previous->table.remove(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(m_nameInPrevious.get()), m_attributesInPrevious), m_specificValueInPrevious);
++            m_previous->table.remove(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(m_nameInPrevious.get()), +m_attributesInPrevious), m_specificValueInPrevious);
+         else
+             m_previous->table.removeAnonymousSlotTransition(m_anonymousSlotsInPrevious);
+ 
+--- a/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h
++++ b/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h
+@@ -317,7 +317,7 @@
+         TransitionTable* transitionTable = new TransitionTable;
+         setTransitionTable(transitionTable);
+         if (existingTransition)
+-            add(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(existingTransition->m_nameInPrevious.get()), existingTransition->m_attributesInPrevious), existingTransition, existingTransition->m_specificValueInPrevious);
++            add(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(existingTransition->m_nameInPrevious.get()), +existingTransition->m_attributesInPrevious), existingTransition, existingTransition->m_specificValueInPrevious);
+     }
+ } // namespace JSC
+ 
+--- a/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h
++++ b/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h
+@@ -257,7 +257,7 @@
+ 
+     using std::swap;
+ 
+-#if !COMPILER(MSVC) && !OS(QNX) && !defined(_LIBCPP_VERSION)
++#if !COMPILER(MSVC) && !OS(QNX) && !defined(_LIBCPP_VERSION) && __GLIBCXX__ < 20160501
+     // The Dinkumware C++ library (used by MSVC and QNX) and clang's libc++ have a swap for pairs defined.
+ 
+     // swap pairs by component, in case of pair members that specialize swap
+--- a/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h
++++ b/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h
+@@ -25,7 +25,7 @@
+ #include "Platform.h"
+ 
+ #if (defined(__GLIBCXX__) && (__GLIBCXX__ >= 20070724) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || (defined(_MSC_VER) && (_MSC_VER >= 1600))
+-#include <type_traits>
++#include <tr1/type_traits>
+ #endif
+ 
+ namespace WTF {
+--- a/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp
++++ b/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp
+@@ -719,7 +719,7 @@
+ 
+     constructor.setupOffsets();
+ 
+-    return false;
++    return NULL;
+ };
+ 
+ 
+--- a/src/3rdparty/webkit/Source/JavaScriptCore/wtf/HashSet.h
++++ b/src/3rdparty/webkit/Source/JavaScriptCore/wtf/HashSet.h
+@@ -92,12 +92,12 @@
+         friend void deleteAllValues<>(const HashSet&);
+         friend void fastDeleteAllValues<>(const HashSet&);
+ 
+-#if COMPILER(MSVC) && _MSC_VER >= 1700
++#if (COMPILER(MSVC) && _MSC_VER >= 1700) || (__cplusplus >= 201103L)
+         // MSVC2012/MSVC2013 has trouble constructing a HashTableConstIteratorAdapter from a
+         // HashTableIterator despite the existence of a const_iterator cast method on the latter class.
+         pair<iterator, bool> iterator_const_cast(const pair<typename HashTableType::iterator, bool>& p)
+         {
+-            return make_pair(iterator(HashTableType::const_iterator(p.first)), p.second);
++            return make_pair(iterator(typename HashTableType::const_iterator(p.first)), p.second);
+         }
+ #endif
+         HashTableType m_impl;
+@@ -185,7 +185,7 @@
+     template<typename T, typename U, typename V>
+     inline pair<typename HashSet<T, U, V>::iterator, bool> HashSet<T, U, V>::add(const ValueType& value)
+     {
+-#if COMPILER(MSVC) && _MSC_VER >= 1700
++#if (COMPILER(MSVC) && _MSC_VER >= 1700) || (__cplusplus >= 201103L)
+         return iterator_const_cast(m_impl.add(value));
+ #else
+         return m_impl.add(value);
+@@ -198,7 +198,7 @@
+     HashSet<Value, HashFunctions, Traits>::add(const T& value)
+     {
+         typedef HashSetTranslatorAdapter<ValueType, ValueTraits, T, HashTranslator> Adapter;
+-#if COMPILER(MSVC) && _MSC_VER >= 1700
++#if (COMPILER(MSVC) && _MSC_VER >= 1700) || (__cplusplus >= 201103L)
+         return iterator_const_cast(m_impl.template addPassingHashCode<T, T, Adapter>(value, value));
+ #else
+         return m_impl.template addPassingHashCode<T, T, Adapter>(value, value);
+--- a/src/3rdparty/webkit/Source/JavaScriptCore/wtf/TypeTraits.h
++++ b/src/3rdparty/webkit/Source/JavaScriptCore/wtf/TypeTraits.h
+@@ -25,7 +25,7 @@
+ #include "Platform.h"
+ 
+ #if (defined(__GLIBCXX__) && (__GLIBCXX__ >= 20070724) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || (defined(_MSC_VER) && (_MSC_VER >= 1600))
+-#include <type_traits>
++#include <tr1/type_traits>
+ #endif
+ 
+ namespace WTF {
+--- a/src/3rdparty/webkit/Source/JavaScriptCore/wtf/unicode/UTF8.cpp
++++ b/src/3rdparty/webkit/Source/JavaScriptCore/wtf/unicode/UTF8.cpp
+@@ -233,8 +233,8 @@
+ // Magic values subtracted from a buffer value during UTF8 conversion.
+ // This table contains as many values as there might be trailing bytes
+ // in a UTF-8 sequence.
+-static const UChar32 offsetsFromUTF8[6] = { 0x00000000UL, 0x00003080UL, 0x000E2080UL, 
+-            0x03C82080UL, 0xFA082080UL, 0x82082080UL };
++static const UChar32 offsetsFromUTF8[6] = { (UChar32)0x00000000UL, (UChar32)0x00003080UL, (UChar32)0x000E2080UL, 
++                                            (UChar32)0x03C82080UL, (UChar32)0xFA082080UL, (UChar32)0x82082080UL };
+ 
+ static inline UChar32 readUTF8Sequence(const char*& sequence, unsigned length)
+ {
+--- a/src/3rdparty/webkit/Source/WebCore/dom/Element.cpp
++++ b/src/3rdparty/webkit/Source/WebCore/dom/Element.cpp
+@@ -1080,7 +1080,7 @@
+ {
+     // Ref currentStyle in case it would otherwise be deleted when setRenderStyle() is called.
+     RefPtr<RenderStyle> currentStyle(renderStyle());
+-    bool hasParentStyle = parentNodeForRenderingAndStyle() ? parentNodeForRenderingAndStyle()->renderStyle() : false;
++    bool hasParentStyle = parentNodeForRenderingAndStyle() ? static_cast<bool>(parentNodeForRenderingAndStyle()->renderStyle()) : false;
+     bool hasDirectAdjacentRules = currentStyle && currentStyle->childrenAffectedByDirectAdjacentRules();
+     bool hasIndirectAdjacentRules = currentStyle && currentStyle->childrenAffectedByForwardPositionalRules();
+ 
+--- a/src/xmlpatterns/api/qcoloroutput_p.h
++++ b/src/xmlpatterns/api/qcoloroutput_p.h
+@@ -70,8 +70,8 @@
+             ForegroundShift = 10,
+             BackgroundShift = 20,
+             SpecialShift    = 20,
+-            ForegroundMask  = ((1 << ForegroundShift) - 1) << ForegroundShift,
+-            BackgroundMask  = ((1 << BackgroundShift) - 1) << BackgroundShift
++            ForegroundMask  = 0x1f << ForegroundShift,
++            BackgroundMask  = 0x7 << BackgroundShift
+         };
+ 
+     public:

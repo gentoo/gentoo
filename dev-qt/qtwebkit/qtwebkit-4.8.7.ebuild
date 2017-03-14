@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/4.8.2-javascriptcore-x32.patch"
+	"${FILESDIR}/${PN}-4.8.7-gcc6.patch"
 )
 
 QT4_TARGET_DIRECTORIES="
