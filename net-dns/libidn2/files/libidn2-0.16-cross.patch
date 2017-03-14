@@ -1,0 +1,28 @@
+https://gitlab.com/jas/libidn2/issues/6
+
+the release ships with this source file, so don't regen it on every build.
+doing so breaks cross-compilation currently.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -66,7 +66,8 @@
+ noinst_PROGRAMS = gentr46map
+ gentr46map_LDADD = $(LTLIBUNISTRING)
+ 
+-tr46map_data.c: gentr46map.c gentr46map$(EXEEXT) $(TR46MAP) $(NFCQC)
++tr46map_data.c: $(srcdir)/gentr46map.c $(TR46MAP) $(NFCQC)
++	$(MAKE) gentr46map$(EXEEXT)
+ 	$(builddir)/gentr46map$(EXEEXT) > $@.new
+ 	mv $@.new $@
+ 
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -34,7 +34,7 @@
+ dist_man_MANS = idn2.1 $(gdoc_MANS)
+ CLEANFILES = $(dist_man_MANS) lookup.c register.c stamp-vti version.texi $(srcdir)/libidn2.info
+ 
+-idn2.1: $(top_srcdir)/src/idn2.c $(top_srcdir)/src/idn2.ggo $(top_srcdir)/configure.ac
++idn2.1: $(top_srcdir)/src/idn2.c $(top_srcdir)/src/idn2.ggo
+ 	$(HELP2MAN) \
+ 		--name="Libidn2 Internationalized Domain Names (IDNA2008/TR46) conversion" \
+ 		--output=$@ \
