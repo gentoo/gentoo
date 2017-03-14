@@ -19191,7 +19191,7 @@ x11-terms/sakura 3.3.4 3.4.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.6-r1 0.7 9999: simple terminal implementation for X
 x11-terms/terminator 0.97-r1 0.98 1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1 1.0.0 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
-x11-terms/tilda 0.9.6: A drop down terminal, similar to the consoles found in first person shooters
+x11-terms/tilda 0.9.6 0.9.6-r1: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/valaterm 0.6 0.6-r1: A lightweight vala based terminal
 x11-terms/xfce4-terminal 0.6.3 0.6.90 0.6.92 0.8.0 0.8.1 0.8.3 0.8.4: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 314 320 325 326 327: Terminal Emulator for X Windows

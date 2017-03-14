@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=x11-libs/vte:0 >=dev-libs/glib-2.8.4:2 dev-libs/confuse gnome-base/libglade virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A drop down terminal, similar to the consoles found in first person shooters
+EAPI=6
+HOMEPAGE=http://tilda.sourceforge.net
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=x11-libs/vte:0 >=dev-libs/glib-2.8.4:2 dev-libs/confuse gnome-base/libglade
+SLOT=0
+SRC_URI=mirror://sourceforge/tilda/tilda-0.9.6.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=19fb108d76ec3392dce82717520ff8f5
