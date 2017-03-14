@@ -342,11 +342,6 @@ dev-php/PEAR-Net_LDAP
 # in 30 days. Bug 609138.
 dev-php/PEAR-PhpDocumentor
 
-# Michael Orlitzky <mjo@gentoo.org> (12 Feb 2017)
-# Use PHP's FILTER_VALIDATE_IP instead. Masked for removal
-# in 30 days. Bug 609128.
-dev-php/PEAR-Net_CheckIP
-
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
