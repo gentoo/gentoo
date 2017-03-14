@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.12-Werror.patch
 	"${FILESDIR}"/${PN}-0.12-examples.patch
 	"${FILESDIR}"/${PN}-0.16-gengetopt.patch
+	"${FILESDIR}"/${PN}-0.16-cross.patch
 	"${FILESDIR}"/${PN}-pkgconfig.diff
 )
 
