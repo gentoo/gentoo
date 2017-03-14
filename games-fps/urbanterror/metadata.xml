@@ -9,6 +9,10 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="altgamma">Clearskies - X11-based gamma for Linux</flag>
 		<flag name="server">Build server target</flag>
