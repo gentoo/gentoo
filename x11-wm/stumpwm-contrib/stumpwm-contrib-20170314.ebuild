@@ -9,7 +9,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/stumpwm/${PN}"
 else
-	SRC_URI="mirror://gentoo/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~nimiux/${CATEGORY}/${PN}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 
