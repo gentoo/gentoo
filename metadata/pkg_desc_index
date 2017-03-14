@@ -106,7 +106,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-perl-helpers 0.1.0 0.2.0 0.2.1: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
-app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2: Backup and recovery utilities for GitHub Enterprise
+app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.10: Single process stack of various system monitors
 app-admin/glance 12.0.0 13.0.0 14.0.0 2016.1.9999 2016.2.9999 2017.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
@@ -1354,7 +1354,7 @@ app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
 app-emulation/vagrant 1.8.6 1.8.7 1.9.1-r1: A tool for building and distributing development environments
 app-emulation/vice 2.4.22 2.4.27 2.4.27-r2 2.4.27-r3 2.4.31: The Versatile Commodore 8-bit Emulator
-app-emulation/virt-manager 1.4.0-r3 9999: A graphical tool for administering virtual machines
+app-emulation/virt-manager 1.4.0-r3 1.4.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 3.1 4.0 5.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.96 0.1.117 0.1.118 0.1.126: VirtIO drivers for Windows virtual machines running on KVM
@@ -18288,7 +18288,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 24.0.0.221 25.0.0.127: Adobe Flash Player
+www-plugins/adobe-flash 25.0.0.127: Adobe Flash Player
 www-plugins/chrome-binary-plugins 57.0.2987.98_beta 57.0.2987.98 58.0.3029.14_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
