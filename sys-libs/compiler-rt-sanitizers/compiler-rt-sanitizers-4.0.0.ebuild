@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic python-any-r1 versionator
+inherit cmake-utils flag-o-matic llvm python-any-r1 versionator
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="http://llvm.org/"
@@ -36,6 +36,11 @@ S=${WORKDIR}/compiler-rt-${PV/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
+
+pkg_setup() {
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 src_unpack() {
 	default

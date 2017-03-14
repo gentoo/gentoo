@@ -9,7 +9,7 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 # TODO: fix unnecessary dep on Python upstream
-inherit cmake-utils flag-o-matic git-r3 python-any-r1 toolchain-funcs
+inherit cmake-utils flag-o-matic git-r3 llvm python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="http://llvm.org/"
@@ -33,6 +33,11 @@ DEPEND="
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
+
+pkg_setup() {
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 test_compiler() {
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c - \

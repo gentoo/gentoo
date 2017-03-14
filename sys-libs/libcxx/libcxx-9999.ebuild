@@ -14,7 +14,7 @@ PYTHON_COMPAT=( python2_7 )
 
 [[ ${PV} == 9999 ]] && SCM="git-r3" || SCM=""
 
-inherit ${SCM} cmake-multilib python-any-r1 toolchain-funcs
+inherit ${SCM} cmake-multilib llvm python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="http://libcxx.llvm.org/"
@@ -65,6 +65,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 
 	if ! use libcxxabi && ! use libcxxrt && ! tc-is-gcc ; then
