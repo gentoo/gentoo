@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources including the Gentoo patchset for the 4.1 kernel tree
+EAPI=5
+HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches
+IUSE=experimental symlink build
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2 freedist
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=4.1.39
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.1.tar.xz mirror://gentoo/genpatches-4.1-46.base.tar.xz mirror://gentoo/genpatches-4.1-46.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.1-46.experimental.tar.xz )
+_eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:- pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_prepare:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	kernel-2	238dd55384300d94154aad9048ac2028	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a2ef1e35a692f7eaa268ce11cf410f2b
