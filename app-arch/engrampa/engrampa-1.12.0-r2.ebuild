@@ -15,32 +15,37 @@ DESCRIPTION="Engrampa archive manager for MATE"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="caja magic packagekit"
+IUSE="caja gtk3 magic packagekit"
 
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-libs/glib-2.32.0:2
 	>=dev-libs/json-glib-0.14:0
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango:0
 	virtual/libintl:0
-	caja? ( >=mate-base/caja-1.1.0 )
-	>=x11-libs/gtk+-3.14:3
+	caja? ( >=mate-base/caja-1.8[gtk3(-)=] )
+	!gtk3? ( >=x11-libs/gtk+-2.24.0:2 )
+	gtk3? ( >=x11-libs/gtk+-3.0:3[X] )
 	magic? ( sys-apps/file )
 	packagekit? ( app-admin/packagekit-base )
 	!!app-arch/mate-file-archiver"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/yelp-tools
 	>=dev-util/intltool-0.50.1:*
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.10.2-p7zip-15.09-compat.patch"
+	"${FILESDIR}/${PN}-1.10.2-p7zip-15.14-compat.patch"
+)
+
 src_configure() {
 	mate_src_configure \
 		--disable-run-in-place \
 		--disable-deprecations \
+		--with-gtk=$(usex gtk3 3.0 2.0) \
 		$(use_enable caja caja-actions) \
 		$(use_enable magic) \
 		$(use_enable packagekit)

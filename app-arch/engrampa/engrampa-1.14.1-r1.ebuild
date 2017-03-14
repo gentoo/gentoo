@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	virtual/libintl:0
 	caja? ( >=mate-base/caja-1.8[gtk3(-)=] )
 	!gtk3? ( >=x11-libs/gtk+-2.24.0:2 )
-	gtk3? ( >=x11-libs/gtk+-3.0:3 )
+	gtk3? ( >=x11-libs/gtk+-3.0:3[X] )
 	magic? ( sys-apps/file )
 	packagekit? ( app-admin/packagekit-base )
 	!!app-arch/mate-file-archiver"
