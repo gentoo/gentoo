@@ -15,7 +15,7 @@ Date:   Wed Mar 2 15:06:48 2016 +0100
  	# symbols only, and the '-p' flag disables sorting to improve
  	# performance.  For the weak symbol handling see the CXX tag.
  	export_symbols_cmds='$NM -gp $libobjs $convenience | $global_symbol_pipe | $EGREP -v " ($exclude_expsyms)$" | awk '\''{ kw = "" } /^([[CVWZ]]|[[BDLT]]\*) / { kw = " weak" } { print $ 3 kw }'\'' | sort -u > $export_symbols'
-+	exclude_expsyms='_GLOBAL_OFFSET_TABLE_|_GLOBAL__.*'
++	exclude_expsyms='_GLOBAL_OFFSET_TABLE_|_GLOBAL__F[ID]_.*|_GLOBAL__[FID]_.*'
  	aix_use_runtimelinking=no
  
  	# Test if we are trying to use run time linking or normal
