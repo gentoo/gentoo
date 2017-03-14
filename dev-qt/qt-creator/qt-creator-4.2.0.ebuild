@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -150,7 +150,7 @@ src_prepare() {
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
-		$(use clangcodemodel && echo LLVM_INSTALL_DIR="${EPREFIX}/usr") \
+		$(use clangcodemodel && echo LLVM_INSTALL_DIR="$(llvm-config --prefix)") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
 		CONFIG+=qbs_disable_rpath \
 		CONFIG+=qbs_enable_project_file_updates \
