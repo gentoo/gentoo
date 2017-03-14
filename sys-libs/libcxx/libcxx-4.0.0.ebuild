@@ -10,7 +10,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib python-any-r1 toolchain-funcs
+inherit cmake-multilib llvm python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="http://libcxx.llvm.org/"
@@ -54,6 +54,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 
 	if ! use libcxxabi && ! use libcxxrt && ! tc-is-gcc ; then
