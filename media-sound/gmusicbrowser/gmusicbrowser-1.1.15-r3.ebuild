@@ -11,7 +11,7 @@ SRC_URI="http://${PN}.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="dbus doc extras gstreamer libnotify mplayer"
 
 GSTREAMER_DEPEND="dev-perl/Glib-Object-Introspection"
