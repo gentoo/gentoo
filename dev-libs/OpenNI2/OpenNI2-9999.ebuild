@@ -24,7 +24,7 @@ DESCRIPTION="OpenNI2 SDK"
 HOMEPAGE="http://structure.io/openni"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc java neon opengl static-libs"
+IUSE="cpu_flags_arm_neon doc java opengl static-libs"
 
 RDEPEND="
 	virtual/libusb:1
@@ -51,7 +51,7 @@ src_prepare() {
 }
 
 src_compile() {
-	use neon && export CFLAGS="${CFLAGS} -DXN_NEON"
+	use cpu_flags_arm_neon && export CFLAGS="${CFLAGS} -DXN_NEON"
 	emake \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
