@@ -4,7 +4,7 @@ DESCRIPTION=A TCP/HTTP reverse proxy for high availability environments
 EAPI=6
 HOMEPAGE=http://haproxy.1wt.eu
 IUSE=+crypt doc examples libressl slz net_ns +pcre pcre-jit ssl tools vim-syntax +zlib lua device-atlas 51degrees wurfl
-KEYWORDS=~amd64 ~arm ~ppc ~x86
+KEYWORDS=~amd64 arm ppc ~x86
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) ssl? ( !libressl? ( dev-libs/openssl:0=[zlib?] ) libressl? ( dev-libs/libressl:0= ) ) slz? ( dev-libs/libslz:= ) zlib? ( sys-libs/zlib ) lua? ( dev-lang/lua:5.3 ) device-atlas? ( dev-libs/device-atlas-api-c )
 REQUIRED_USE=pcre-jit? ( pcre ) ?? ( slz zlib )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://haproxy.1wt.eu/download/1.6/src/haproxy-1.6.11.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=734211fdd25afeb51083efeaf744c5f6
+_md5_=de426d3d93854e896512e3dfdc1d9945

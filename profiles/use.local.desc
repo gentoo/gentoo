@@ -7331,6 +7331,7 @@ sys-apps/lm_sensors:sensord - Enable sensord - a daemon that can be used to peri
 sys-apps/man-db:manpager - Enable manpager wrapper for colorizing output
 sys-apps/memtest86:serial - Compile with serial console support
 sys-apps/memtest86+:floppy - Install a script to create floppy disks containing memtest86+ binaries.
+sys-apps/memtest86+:iso - Compile an ISO image
 sys-apps/memtest86+:serial - Compile with serial console support
 sys-apps/moreutils:perl - Install scripts written in Perl
 sys-apps/net-tools:arp - build the arp and rarp tools (for manipulating the ARP cache)
