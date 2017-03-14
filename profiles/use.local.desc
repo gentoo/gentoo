@@ -557,6 +557,7 @@ app-emulation/qemu:vte - Enable terminal support (x11-libs/vte) in the GTK+ inte
 app-emulation/qemu:xattr - Add support for getting and setting POSIX extended attributes, through sys-apps/attr. Requisite for the virtfs backend.
 app-emulation/qemu:xen - Enables support for Xen backends
 app-emulation/qemu:xfs - Support xfsctl() notification and syncing for XFS backed virtual disks.
+app-emulation/qt-virt-manager:smartcard - Enable smartcard remoting using app-emulation/libcacard
 app-emulation/rkt:actool - Install the actool for ACI manipulation
 app-emulation/rkt:rkt_stage1_coreos - Download and use a prebuilt stage1.aci from CoreOS
 app-emulation/rkt:rkt_stage1_fly - Build stage1-fly.aci
