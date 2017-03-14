@@ -25,6 +25,7 @@ RDEPEND="!=sys-libs/compiler-rt-${SLOT}*:0"
 # llvm-4 needed for --cmakedir
 DEPEND="
 	>=sys-devel/llvm-4
+	clang? ( sys-devel/clang )
 	test? ( =sys-devel/clang-${PV%_*}*:${LLVM_SLOT} )
 	${PYTHON_DEPS}"
 
