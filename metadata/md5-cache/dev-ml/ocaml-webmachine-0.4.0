@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ml/calendar:= dev-ml/ocaml-cohttp:=[ocamlopt?] dev-ml/ocaml-dispatch:=[ocamlopt?] dev-ml/ocaml-re:=[ocamlopt?] dev-ml/ocaml-uri:=[ocamlopt?] test? ( dev-ml/ounit[ocamlopt?] ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=A REST toolkit for OCaml
+EAPI=5
+HOMEPAGE=https://github.com/inhabitedtype/ocaml-webmachine
+IUSE=+ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ml/calendar:= dev-ml/ocaml-cohttp:=[ocamlopt?] dev-ml/ocaml-dispatch:=[ocamlopt?] dev-ml/ocaml-re:=[ocamlopt?] dev-ml/ocaml-uri:=[ocamlopt?] >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/0.4.0
+SRC_URI=https://github.com/inhabitedtype/ocaml-webmachine/archive/0.4.0.tar.gz -> ocaml-webmachine-0.4.0.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	findlib	45d6030075064a68da8d7143726a1150	multilib	0236be304ee52e7f179ed2f337075515	oasis	66245953a092e9be817112a37f1c1301	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=f0d962bde2f79c3af094c477c0e87174

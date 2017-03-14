@@ -5239,13 +5239,14 @@ dev-ml/ocaml-containers 0.22.1 1.0 1.1: A modular standard library focused on da
 dev-ml/ocaml-cstruct 2.3.1 2.3.2: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
+dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
 dev-ml/ocaml-dns 0.18.1 0.19.0 0.19.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-extunix 0.1.4: Thin bindings to various low-level system APIs
 dev-ml/ocaml-fileutils 0.5.1: Pure OCaml functions to manipulate real file (POSIX like) and filename
-dev-ml/ocaml-gettext 0.3.5-r1: Provides support for internationalization of OCaml program
+dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.7.1 2.7.2: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0: Convert file extensions to MIME types
@@ -5262,6 +5263,7 @@ dev-ml/ocaml-stdint 0.3.0: Various signed and unsigned integers for OCaml
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.2: RFC3986 URI parsing library for OCaml
+dev-ml/ocaml-webmachine 0.4.0: A REST toolkit for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0-r1: A dependency sorter for OCaml source files
