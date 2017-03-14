@@ -33,12 +33,6 @@ sys-fs/dmraid dietlibc klibc
 # Missing stable
 dev-db/mariadb jdbc
 
-# Davide Pesavento <pesa@gentoo.org> (08 Jun 2016)
-# The corresponding Qt5 modules are not stable on arm, and we don't
-# want to stabilize them solely because of PyQt5 while there are no
-# other in-tree users.
-dev-python/PyQt5 bluetooth serialport websockets
-
 # Ian Delaney <idella4@gentoo.org> (13 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # media-libs/raspberrypi-userland isn't stable yet
