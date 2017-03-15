@@ -45,7 +45,7 @@ COMMON_DEPEND="
 		$(add_qt_dep qtsql)
 	)
 	exif? ( media-gfx/exiv2:= )
-	htmlthumbs? ( $(add_qt_dep qtwebengine) )
+	htmlthumbs? ( $(add_qt_dep qtwebengine 'widgets') )
 	man? ( $(add_frameworks_dep khtml) )
 	mtp? ( media-libs/libmtp:= )
 	openexr? ( media-libs/openexr )
