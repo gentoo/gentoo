@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ KMNAME="kdepim"
 EGIT_BRANCH="KDE/4.14"
 inherit kde4-meta
 
-DESCRIPTION="Personal alarm message, command and email scheduler for KDE"
+DESCRIPTION="Personal alarm message, command and email scheduler by KDE"
 HOMEPAGE+=" https://userbase.kde.org/KAlarm"
 COMMIT_ID="2aec255c6465676404e4694405c153e485e477d9"
 SRC_URI="https://quickgit.kde.org/?p=kdepim.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${KMNAME}-${PV}.tar.gz"
