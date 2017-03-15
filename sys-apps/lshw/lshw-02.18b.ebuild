@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="5"
 
 PLOCALES='fr'
 
@@ -33,11 +33,13 @@ RDEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-02.18b-gentoo.patch
+	"${FILESDIR}"/${PN}-02.18b-gettext-array.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-fat.patch \
-		"${FILESDIR}"/${P}-musl.patch
+	epatch "${PATCHES[@]}"
 
 	l10n_find_plocales_changes "src/po" "" ".po" || die
 	sed -i \
@@ -60,8 +62,11 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install $(usex gtk 'install-gui' '')
-	dodoc README docs/*
+	dodoc README.md docs/*
 	if use gtk ; then
-		make_desktop_entry /usr/sbin/gtk-lshw "Hardware Lister" "/usr/share/lshw/artwork/logo.svg"
+		newicon -s scalable src/gui/artwork/logo.svg gtk-lshw.svg
+		make_desktop_entry \
+			"${EPREFIX}"/usr/sbin/gtk-lshw \
+			"${DESCRIPTION}"
 	fi
 }
