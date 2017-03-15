@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE="debug crypt"
 
 DEPEND="
 	$(add_kdeapps_dep kdepimlibs)
-	media-libs/qimageblitz
+	media-libs/qimageblitz[-qt5(-)]
 	x11-libs/libX11
 	crypt? ( >=app-crypt/gpgme-1.0 )
 "

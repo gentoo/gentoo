@@ -19,6 +19,6 @@ IUSE=""
 RDEPEND="
 	media-libs/libv4l
 	media-libs/phonon[qt4]
-	media-libs/qimageblitz
+	media-libs/qimageblitz[-qt5(-)]
 "
 DEPEND="${RDEPEND}"

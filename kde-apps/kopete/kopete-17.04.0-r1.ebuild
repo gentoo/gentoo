@@ -69,7 +69,7 @@ COMMONDEPEND="
 	>=dev-qt/qtgui-4.4.0:4[mng]
 	kde-frameworks/kdelibs:4[zeroconf?]
 	media-libs/phonon[qt4]
-	media-libs/qimageblitz
+	media-libs/qimageblitz[-qt5(-)]
 	!aqua? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
