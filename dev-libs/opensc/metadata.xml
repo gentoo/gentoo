@@ -16,10 +16,6 @@
     card.
   </longdescription>
 	<use>
-		<flag name="libtool">
-      Use <pkg>sys-devel/libtool</pkg> for dynamically loading libraries
-      rather than the host libdl/dlopen helpers.
-    </flag>
 		<flag name="openct">
       Use <pkg>dev-libs/openct</pkg> (and CT-API) for accessing
       Smartcard hardware.
