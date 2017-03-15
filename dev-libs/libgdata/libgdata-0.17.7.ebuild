@@ -41,8 +41,10 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	# https://bugzilla.gnome.org/show_bug.cgi?id=780081
-	eapply -R "${FILESDIR}/${PV}"-streams-https-tests.patch
+	# https://bugzilla.gnome.org/show_bug.cgi?id=780081 - remove with 0.17.8
+	if use test && ! has_version '>=net-libs/libsoup-2.55.90:2.4'; then
+		eapply -R "${FILESDIR}/${PV}"-streams-https-tests.patch
+	fi
 	# x86 test fix from upstream git post-0.17.7
 	eapply "${FILESDIR}/${PV}"-fix-x86-tests.patch
 
