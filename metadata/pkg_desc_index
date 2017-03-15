@@ -89,7 +89,7 @@ app-admin/ec2-ami-tools 1.5.6-r1: Command-line tools that serve as client interf
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.3 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.15 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.15: Rebuild Emacs packages
-app-admin/entr 3.6: Run arbitrary commands when files change
+app-admin/entr 3.6 3.7: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
 app-admin/eselect 1.4.5 1.4.7 1.4.8 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
@@ -2449,7 +2449,7 @@ app-text/tesseract 3.04.00-r2 3.04.01 3.04.01-r1 3.05.00 4.00.00_alpha 9999: An 
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
 app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5: A complete TeX distribution
-app-text/tidy-html5 5.2.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
+app-text/tidy-html5 5.2.0 5.4.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
 app-text/tofrodos 1.7.12a: Utility that converts ASCII files between the MSDOS and the Unix format
@@ -17030,7 +17030,7 @@ sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20150503 1.3.4_p20160615: an (often faster than gawk) awk-interpreter
 sys-apps/memtest86 3.3 4.3.6 4.3.7: A stand alone memory test for x86 computers
-sys-apps/memtest86+ 2.01 4.00 4.20-r1 4.20-r3 5.01-r2: Memory tester based on memtest86
+sys-apps/memtest86+ 2.01 4.00 4.20-r1 4.20-r3 5.01-r2 5.01-r3: Memory tester based on memtest86
 sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
 sys-apps/microcode-ctl 1.23 1.27 1.28 1.28-r1: Intel processor microcode update utility
 sys-apps/miller 4.0.0 4.2.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
