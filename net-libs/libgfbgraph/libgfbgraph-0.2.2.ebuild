@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,10 +17,10 @@ IUSE="+introspection"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/json-glib
+	dev-libs/json-glib[introspection]
 	net-libs/libsoup:2.4
 	net-libs/gnome-online-accounts
-	net-libs/rest:0.7
+	net-libs/rest:0.7[introspection]
 	introspection? ( >=dev-libs/gobject-introspection-1.30 )
 "
 DEPEND="${RDEPEND}
