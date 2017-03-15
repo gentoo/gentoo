@@ -1,5 +1,5 @@
---- plugins/scripting/cunixsocket.cpp
-+++ plugins/scripting/cunixsocket.cpp
+--- a/plugins/scripting/cunixsocket.cpp
++++ b/plugins/scripting/cunixsocket.cpp
 @@ -40,12 +40,21 @@
    varlist = 0;
    connected = false;
