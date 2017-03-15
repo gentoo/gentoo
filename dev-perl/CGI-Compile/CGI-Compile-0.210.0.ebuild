@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Compile .cgi scripts to a code reference like ModPerl::Registry"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="IMAP client module for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test ntlm md5 ssl zlib"
 
 PATCHES=(

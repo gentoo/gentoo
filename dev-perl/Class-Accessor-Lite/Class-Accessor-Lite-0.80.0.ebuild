@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A minimalistic variant of Class::Accessor"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND=""

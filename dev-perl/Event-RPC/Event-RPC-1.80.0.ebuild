@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Event based transparent Client/Server RPC framework"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 # Note: Storable not listed in final alternation like it is

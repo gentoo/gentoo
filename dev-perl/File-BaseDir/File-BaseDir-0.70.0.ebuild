@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use the Freedesktop.org base directory specification"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris"
 IUSE="test"
 
 RDEPEND="
