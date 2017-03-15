@@ -21,15 +21,14 @@ REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # sys-libs/db is only required for migrating from <3.13 versions
-# gdata-0.15.1 is required for google tasks
 # gdata-0.17.7 soft required for new gdata_feed_get_next_page_token API to handle more than 100 google tasks
 # berkdb needed only for migrating old calendar data, bug #519512
+gdata_depend=">=dev-libs/libgdata-0.17.7:="
 RDEPEND="
 	>=app-crypt/gcr-3.4
 	>=app-crypt/libsecret-0.5[crypt]
 	>=dev-db/sqlite-3.7.17:=
 	>=dev-libs/glib-2.46:2
-	>=dev-libs/libgdata-0.10:=
 	>=dev-libs/libical-0.43:=
 	>=dev-libs/libxml2-2
 	>=dev-libs/nspr-4.4:=
@@ -47,10 +46,12 @@ RDEPEND="
 	)
 	google? (
 		>=dev-libs/json-glib-1.0.4
-		>=dev-libs/libgdata-0.17.7:=
 		>=net-libs/webkit-gtk-2.11.91:4
+		${gdata_depend}
 	)
-	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:= )
+	gnome-online-accounts? (
+		>=net-libs/gnome-online-accounts-3.8:=
+		${gdata_depend} )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 	kerberos? ( virtual/krb5:= )
 	ldap? ( >=net-nds/openldap-2:= )
@@ -86,6 +87,12 @@ src_configure() {
 	# /usr/include/db.h is always db-1 on FreeBSD
 	# so include the right dir in CPPFLAGS
 	use berkdb && append-cppflags "-I$(db_includedir)"
+	local gdata_flag
+	if use google || use gnome-online-accounts; then
+		gdata_flag="--enable-google"
+	else
+		gdata_flag="--disable-google"
+	fi
 
 	# phonenumber does not exist in tree
 	gnome2_src_configure \
@@ -95,7 +102,7 @@ src_configure() {
 		$(use_enable gnome-online-accounts goa) \
 		$(use_enable gtk) \
 		$(use_enable google google-auth) \
-		$(use_enable google) \
+		${gdata_flag} \
 		$(use_enable introspection) \
 		$(use_enable ipv6) \
 		$(use_with kerberos krb5 "${EPREFIX}"/usr) \
