@@ -358,13 +358,6 @@ media-plugins/gst-plugins-ffmpeg
 # Alpha release with new features, masked for testing
 =app-text/tesseract-4.00.00_alpha*
 
-# Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
-# Dead and replaced by media-libs/mesa[video_cards_radeonsi]
-# (or the proprietary amdgpu-pro, which is not in tree).
-# Masked for removal in 30 days.
-# Bug #582406
-x11-drivers/ati-drivers
-
 # Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
 # Pre-release, masked for testing. Major changes since 2.0.4,
 # including dropped support for BlueZ 4.
