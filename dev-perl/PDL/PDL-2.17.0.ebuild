@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ DESCRIPTION="Perl Data Language for scientific computing"
 
 LICENSE="|| ( Artistic GPL-1+ ) public-domain PerlDL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 IUSE="+badval doc fortran gd gsl hdf netpbm pdl2 pgplot threads"
 
