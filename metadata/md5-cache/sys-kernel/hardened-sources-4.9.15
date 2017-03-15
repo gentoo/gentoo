@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Hardened kernel sources (kernel series 4.9)
+EAPI=5
+HOMEPAGE=http://www.gentoo.org/proj/en/hardened/
+IUSE=deblob symlink build deblob
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2 !deblob? ( freedist )
+RDEPEND=>=sys-devel/gcc-4.5 !build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=4.9.15
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.9.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-4.9 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-check -> deblob-check-4.9 ) http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-4.9.15-1.extras.tar.bz2 mirror://gentoo/genpatches-4.9-15.base.tar.xz
+_eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_prepare:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	kernel-2	238dd55384300d94154aad9048ac2028	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=42575c103cc2a896d18faf4774f0f7f7
