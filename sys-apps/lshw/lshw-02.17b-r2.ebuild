@@ -43,10 +43,13 @@ src_prepare() {
 	sed -i \
 		-e "/^LANGUAGES =/ s/=.*/= $(l10n_get_locales)/" \
 		src/po/Makefile || die
+	sed -i \
+		-e 's:\<pkg-config\>:${PKG_CONFIG}:' \
+		src/Makefile src/gui/Makefile || die
 }
 
 src_compile() {
-	tc-export CC CXX AR
+	tc-export CC CXX AR PKG_CONFIG
 	use static && append-ldflags -static
 
 	# Need two sep make statements to avoid parallel build issues. #588174
