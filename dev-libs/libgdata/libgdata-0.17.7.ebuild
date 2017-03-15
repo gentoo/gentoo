@@ -41,6 +41,11 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	# https://bugzilla.gnome.org/show_bug.cgi?id=780081
+	eapply -R "${FILESDIR}/${PV}"-streams-https-tests.patch
+	# x86 test fix from upstream git post-0.17.7
+	eapply "${FILESDIR}/${PV}"-fix-x86-tests.patch
+
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 }
