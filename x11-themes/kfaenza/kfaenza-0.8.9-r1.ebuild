@@ -1,14 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MY_PN="KFaenza"
 DESCRIPTION="Faenza-Cupertino icon theme for KDE"
 HOMEPAGE="http://kde-look.org/content/show.php/KFaenza?content=143890 http://kde-look.org/content/show.php/KFaenza+icon+patch?content=153813 http://kde-look.org/content/show.php/Additional+KFaenza+Icons?content=147483"
 #That is upstream location, not reupload. Don't fix
 SRC_URI="http://ompldr.org/vYjR0NQ/${P}.tar.gz
-	http://kde-look.org/CONTENT/content-files/153813-kfaenza-icon-patch-0.3.tar.gz
+	http://kde-look.org/CONTENT/content-files/153813-${PN}-icon-patch-0.3.tar.gz
 	additional? ( http://kde-look.org/CONTENT/content-files/147483-additional-KFaenza.tar.gz )"
 
 LICENSE="GPL-3"
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+additional branding"
 
-S="${WORKDIR}"/"${MY_PN}"
+S="${WORKDIR}/${MY_PN}"
 RESTRICT="binchecks strip"
 
 src_unpack() {
@@ -30,6 +30,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	use branding || return
 
 	local res
