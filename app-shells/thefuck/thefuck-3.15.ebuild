@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,14 +15,14 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 
-RDEPEND="virtual/python-pathlib[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]
+RDEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7)"
 DEPEND="test? ( ${RDEPEND}
-	dev-python/pytest[${PYTHON_USEDEP}] )
+	dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/pytest-mock[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
