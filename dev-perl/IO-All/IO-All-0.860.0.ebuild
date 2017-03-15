@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="unified IO operations"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ~sparc x86"
 IUSE=""
 
 # needs Scalar::Util
