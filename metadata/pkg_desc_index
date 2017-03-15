@@ -11501,7 +11501,7 @@ gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.2.0: Translation data for Cinnam
 gnome-extra/cjs 2.8.0 3.0.1 3.2.0: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.20.6 3.22.4 3.22.6: Evolution groupware backend
+gnome-extra/evolution-data-server 3.20.6 3.22.4 3.22.6-r1: Evolution groupware backend
 gnome-extra/evolution-ews 3.20.5 3.22.4 3.22.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
@@ -14709,7 +14709,7 @@ net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP proto
 net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.18 1.0.19 1.0.20: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.20.5 3.22.3: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.20.5 3.22.3 3.22.5: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.26 3.3.27 3.5.10: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
