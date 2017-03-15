@@ -5,6 +5,10 @@
 		<email>fdsfgs@krutt.org</email>
 		<name>soredake</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 	Glances is a cross-platform curses-based monitoring tool written in Python.
 </longdescription>
