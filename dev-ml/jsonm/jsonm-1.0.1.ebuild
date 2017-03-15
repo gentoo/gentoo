@@ -11,7 +11,7 @@ SRC_URI="http://erratique.ch/software/jsonm/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 RDEPEND=">=dev-ml/uutf-1.0.0:=
