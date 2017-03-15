@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/FreeOrion_v0.4.
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cg"
+IUSE=""
 
 # Needs it's own version of GG(dev-games/gigi) which it ships.
 # The split version dev-games/gigi is not used anymore as of 0.4.3
