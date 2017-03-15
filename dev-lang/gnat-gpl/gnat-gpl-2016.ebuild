@@ -29,13 +29,16 @@ MYP=gcc-${REL}-gpl-${PV}-src
 
 DESCRIPTION="GNAT Ada Compiler - GPL version"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI+=" mirror://libreadacore/57399304c7a447658e0aff7f -> ${P}-src.tar.gz
-	mirror://libreadacore/573992d4c7a447658d00e1db -> ${MYP}.tar.gz
-	mirror://libreadacore/57399232c7a447658e0aff7d
-	-> gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
+SRC_URI+="
+	http://mirrors.cdn.adacore.com/art/57399304c7a447658e0aff7f
+		-> ${P}-src.tar.gz
+	http://mirrors.cdn.adacore.com/art/573992d4c7a447658d00e1db
+		-> ${MYP}.tar.gz
+	http://mirrors.cdn.adacore.com/art/57399232c7a447658e0aff7d
+		-> gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
 
 LICENSE+=" GPL-2 GPL-3"
-SLOT="${PV}"
+SLOT="${TOOLCHAIN_GCC_PV}"
 KEYWORDS="~amd64"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
@@ -54,8 +57,11 @@ GCC_A_FAKEIT="${P}-src.tar.gz
 
 pkg_setup() {
 	GCC=${ADA:-$(tc-getCC)}
-	local gnatmake=${GCC/gcc/gnatmake}
-	if [[ -z "$(type ${gnatmake} 2>/dev/null)" ]] ; then
+	local path=$(dirname ${GCC})
+	local base=$(basename ${GCC})
+	GNATMAKE="${path}/${base/gcc/gnatmake}"
+	GNATBIND="${path}/${base/gcc/gnatbind}"
+	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
 		eerror "1) use gcc-config to select the right compiler or"
 		eerror "2) set the ADA variable to the c/c++/ada compiler"
@@ -66,6 +72,14 @@ pkg_setup() {
 src_prepare() {
 	mv ../gnat-gpl-${PV}-src/src/ada gcc/ || die
 	mv ../gcc-interface-${REL}-gpl-${PV}-src gcc/ada/gcc-interface || die
+
+	sed -i \
+		-e "s:gnatmake:${GNATMAKE}:g" \
+		gcc/ada/Make-generated.in || die "sed failed"
+
+	sed -i \
+		-e "/xoscons/s:gnatmake:${GNATMAKE}:g" \
+		gcc/ada/gcc-interface/Makefile.in || die "sed failed"
 
 	mv ../${FSFGCC}/gcc/doc/gcc.info gcc/doc/ || die
 	mv ../${FSFGCC}/libjava . || die
@@ -91,10 +105,12 @@ src_prepare() {
 }
 
 src_configure() {
-	export PATH=/opt/gnat-gpl-bin-2016/bin:${PATH}
-	export PATH=/opt/gnat-gpl-bin-2015/bin:${PATH}
-	export PATH=/opt/gnat-gpl-bin-2014/bin:${PATH}
-	toolchain_src_configure --enable-languages=ada --disable-libada
+	toolchain_src_configure \
+		--enable-languages=ada \
+		--disable-libada \
+		CC=${GCC} \
+		GNATBIND=${GNATBIND} \
+		GNATMAKE=yes
 }
 
 src_compile() {
