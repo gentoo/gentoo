@@ -112,9 +112,6 @@ src_prepare() {
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
-
-		#605400
-		bash -c 'autoreconf() { :; }; . $0 "$@"' autogen.sh --no-check || die
 	fi
 
 	eapply_user
@@ -123,6 +120,8 @@ src_prepare() {
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
 
+	bash -c 'autoreconf() { echo nope; }; . $0 "$@"' \
+		./autogen.sh --no-check || die	#605400
 	AT_M4DIR=m4 eautoreconf
 	touch src/stamp-h.in || die
 }
