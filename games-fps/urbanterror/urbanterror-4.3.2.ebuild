@@ -2,7 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit check-reqs eutils gnome2-utils pax-utils
+inherit check-reqs eutils gnome2-utils
+
+# TODO:
+# - compile with -wformat-security #545966
+# - unbundle zlib and jpeg #457014
+# - get rid of old security holes a.k.a. "Scheunentore" #606702
+# --> consider migration to ioQ3 (from 2017) based engine:
+#     https://github.com/mickael9/ioq3
 
 ENGINE_PV=${PV}
 
@@ -27,9 +34,13 @@ unset MY_CTR
 
 LICENSE="GPL-2 Q3AEULA-20000111 urbanterror-4.2-maps"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="+altgamma +curl debug dedicated openal pax_kernel +sdl server smp vorbis"
+KEYWORDS="~amd64 ~x86"
+IUSE="+altgamma +curl debug dedicated openal +sdl server smp vorbis"
 RESTRICT="mirror"
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-nocurl.patch
+)
 
 RDEPEND="
 	!dedicated? (
@@ -48,8 +59,8 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	dedicated? ( curl? ( net-misc/curl ) )"
 
-S=${WORKDIR}/ioq3-for-UrbanTerror-4-release-${ENGINE_PV}
-S_DATA=${WORKDIR}/UrbanTerror43
+S="${WORKDIR}"/ioq3-for-UrbanTerror-4-release-${ENGINE_PV}
+S_DATA="${WORKDIR}"/UrbanTerror43
 
 CHECKREQS_DISK_BUILD="3300M"
 CHECKREQS_DISK_USR="1550M"
@@ -78,10 +89,6 @@ src_unpack() {
 		done
 	fi
 }
-src_prepare() {
-	eapply "${FILESDIR}"/${P}-{build,nocurl}.patch
-	eapply_user
-}
 
 src_compile() {
 	buildit() { use $1 && echo 1 || echo 0 ; }
@@ -108,7 +115,7 @@ src_compile() {
 src_install() {
 	local my_arch=$(usex amd64 "x86_64" "i386")
 	# docs from ioq3 by barbatos via github
-	dodoc "${S}"/ChangeLog README md4-readme.txt
+	dodoc ChangeLog README md4-readme.txt
 	# docs from urbanterror by frozensand
 	dodoc "${S_DATA}"/q3ut4/readme43.txt
 
@@ -118,7 +125,8 @@ src_install() {
 	if use !dedicated ; then
 		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT$(usex smp "-smp" "").${my_arch} ${PN}
 		doicon -s scalable "${DISTDIR}"/${PN}.svg
-		make_desktop_entry ${PN} "UrbanTerror"
+		# Shooter as defined in https://specifications.freedesktop.org/menu-spec/latest/apas02.html
+		make_desktop_entry ${PN} "UrbanTerror" ${PN} Games;Shooter
 	fi
 
 	if use dedicated || use server ; then
@@ -126,11 +134,6 @@ src_install() {
 		docinto examples
 		dodoc "${S_DATA}"/q3ut4/{server_example.cfg,mapcycle_example.txt}
 	fi
-
-	if use pax_kernel; then
-		pax-mark m "${D}""${GAMES_BINDIR}"/${PN} || die
-	fi
-
 }
 
 pkg_preinst() {
@@ -139,13 +142,15 @@ pkg_preinst() {
 
 pkg_postinst() {
 	use dedicated || gnome2_icon_cache_update
-
-	if use openal && ! use dedicated ; then
-		einfo
-		elog "You might need to set:"
-		elog "  seta s_useopenal \"1\""
-		elog "in your ~/.q3a/q3ut4/q3config.cfg for openal to work."
-		einfo
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+		if use openal && ! use dedicated ; then
+			einfo
+			elog "You might need to set:"
+			elog "  seta s_useopenal \"1\""
+			elog "in your ~/.q3a/q3ut4/q3config.cfg for openal to work."
+			einfo
+		fi
 	fi
 }
 
