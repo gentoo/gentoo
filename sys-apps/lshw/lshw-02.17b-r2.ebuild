@@ -49,7 +49,10 @@ src_compile() {
 	tc-export CC CXX AR
 	use static && append-ldflags -static
 
-	emake SQLITE=$(usex sqlite 1 0) all $(usex gtk 'gui' '')
+	# Need two sep make statements to avoid parallel build issues. #588174
+	local sqlite=$(usex sqlite 1 0)
+	emake SQLITE=${sqlite} all
+	use gtk && emake SQLITE=${sqlite} gui
 }
 
 src_install() {
