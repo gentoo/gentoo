@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ KMNAME="kdepim"
 KDE_HANDBOOK=optional
 inherit kde4-meta
 
-DESCRIPTION="A Personal Organizer for KDE (noakonadi branch)"
+DESCRIPTION="A Personal Organizer by KDE (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
