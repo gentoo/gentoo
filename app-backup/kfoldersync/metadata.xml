@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<upstream>
+		<maintainer status="active">
+			<email>vindex17@outlook.it</email>
+			<name>Lorenzo Porta</name>
+		</maintainer>
+		<changelog>https://goo.gl/8UZZFU</changelog>
+	</upstream>
 	<maintainer type="person">
 		<email>vindex17@outlook.it</email>
 		<name>Lorenzo Porta</name>
