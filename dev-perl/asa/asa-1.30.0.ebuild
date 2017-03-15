@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Lets your class/object say it works like something else"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND=""
