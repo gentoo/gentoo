@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-lang/lua-5.1:0 dev-libs/glib:2 >=dev-libs/libxdg-basedir-1 >=dev-lua/lgi-0.7 x11-libs/cairo[xcb] x11-libs/gdk-pixbuf:2 >=x11-libs/libxcb-1.6 >=x11-libs/pango-1.19.3[introspection] >=x11-libs/startup-notification-0.10_p20110426 >=x11-libs/xcb-util-0.3.8 x11-libs/xcb-util-cursor >=x11-libs/xcb-util-keysyms-0.3.4 >=x11-libs/xcb-util-wm-0.3.8 >=x11-libs/xcb-util-xrm-1.0 x11-libs/libXcursor x11-libs/libxkbcommon[X] >=x11-libs/libX11-1.3.99.901 dbus? ( >=sys-apps/dbus-1 ) elibc_FreeBSD? ( dev-libs/libexecinfo ) >=app-text/asciidoc-8.4.5 app-text/xmlto dev-util/gperf virtual/pkgconfig media-gfx/imagemagick[png] >=x11-proto/xcb-proto-1.5 >=x11-proto/xproto-7.0.15 doc? ( dev-lua/ldoc ) luajit? ( dev-lang/luajit:2 ) sys-devel/make >=dev-util/cmake-3.6.3
+DESCRIPTION=A dynamic floating and tiling window manager
+EAPI=6
+HOMEPAGE=https://awesomewm.org/
+IUSE=dbus doc elibc_FreeBSD gnome luajit
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/lua-5.1:0 dev-libs/glib:2 >=dev-libs/libxdg-basedir-1 >=dev-lua/lgi-0.7 x11-libs/cairo[xcb] x11-libs/gdk-pixbuf:2 >=x11-libs/libxcb-1.6 >=x11-libs/pango-1.19.3[introspection] >=x11-libs/startup-notification-0.10_p20110426 >=x11-libs/xcb-util-0.3.8 x11-libs/xcb-util-cursor >=x11-libs/xcb-util-keysyms-0.3.4 >=x11-libs/xcb-util-wm-0.3.8 >=x11-libs/xcb-util-xrm-1.0 x11-libs/libXcursor x11-libs/libxkbcommon[X] >=x11-libs/libX11-1.3.99.901 dbus? ( >=sys-apps/dbus-1 ) elibc_FreeBSD? ( dev-libs/libexecinfo )
+SLOT=0
+SRC_URI=https://github.com/awesomeWM/awesome-releases/raw/master/awesome-4.0.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=e0f79d9fd3a99606f6e4e9890239c00e
