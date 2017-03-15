@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=AMBS
-DIST_VERSION=0.78
+DIST_VERSION=0.79
 DIST_EXAMPLES=( "examples/*" "scripts/*" )
 
 inherit perl-module
@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A Perl library for reading, parsing, and processing BibTeX files"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -34,4 +34,10 @@ src_prepare() {
 	sed -i -e "/#include <stdio.h>/a #include <string.h>"\
 		btparse/tests/{tex,purify,postprocess,name,macro}_test.c || die
 	perl-module_src_prepare
+}
+
+src_install() {
+	perl-module_src_install
+	doheader btparse/src/btparse.h
+	doheader btparse/src/bt_config.h
 }
