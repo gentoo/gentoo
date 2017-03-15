@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=app-arch/libarchive-3.2.0 >=dev-libs/glib-2.35.6:2 gtk? ( >=x11-libs/gtk+-3.2:3 ) introspection? ( >=dev-libs/gobject-introspection-1.30.0:= ) >=dev-util/gtk-doc-am-1.14 gnome-base/gnome-common virtual/pkgconfig vala? ( || ( dev-lang/vala:0.34[vapigen(+)] dev-lang/vala:0.32[vapigen(+)] dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] ) ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Automatic archives creating and extracting library
+EAPI=6
+HOMEPAGE=https://git.gnome.org/browse/gnome-autoar
+IUSE=gtk +introspection vala
+KEYWORDS=~alpha ~amd64 ~x86
+LICENSE=LGPL-2+ GPL-2+
+RDEPEND=>=app-arch/libarchive-3.2.0 >=dev-libs/glib-2.35.6:2 gtk? ( >=x11-libs/gtk+-3.2:3 ) introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
+REQUIRED_USE=vala? ( introspection )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-autoar/0.2/gnome-autoar-0.2.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	d37ffcd1731600f2d196e77cd77ed727	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	vala	45cd5c637ea9287eeaf983960768e17c	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=6b7ddde95adf11fdf3f363c55b39c503
