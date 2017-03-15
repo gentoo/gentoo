@@ -61,7 +61,7 @@ src_install() {
 	doins memtest memtest.bin
 
 	exeinto /etc/grub.d
-	doexe "${FILESDIR}"/39_memtest86+
+	newexe "${FILESDIR}"/39_${PN}-r1 39_${PN}
 
 	dodoc README README.build-process FAQ changelog
 
@@ -73,10 +73,9 @@ src_install() {
 
 pkg_postinst() {
 	mount-boot_pkg_postinst
-	elog
-	elog "memtest has been installed in ${BOOTDIR}/"
-	elog "You may wish to update your bootloader configs"
-	elog "by adding these lines:"
+
+	elog "memtest86+ has been installed in ${BOOTDIR}/"
+	elog "You may wish to update your bootloader configs by adding these lines:"
 	elog " - For grub2 just run grub-mkconfig, a configuration file is installed"
 	elog "   as /etc/grub.d/39_${PN}"
 	elog " - For grub legacy: (replace '?' with correct numbers for your boot partition)"
@@ -86,5 +85,6 @@ pkg_postinst() {
 	elog " - For lilo:"
 	elog "    > image  = ${BOOTDIR}/memtest.bin"
 	elog "    > label  = ${PN}"
-	elog
+	elog ""
+	elog "Note: For older configs, you might have to change from 'memtest' to 'memtest.bin'."
 }
