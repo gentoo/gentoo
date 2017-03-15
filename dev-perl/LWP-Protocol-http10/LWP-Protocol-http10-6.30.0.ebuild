@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Legacy HTTP/1.0 support for LWP"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="
