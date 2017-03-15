@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="dri"
 
-RDEPEND=">=x11-base/xorg-server-1.7:=[-minimal]
+RDEPEND="<x11-base/xorg-server-1.19:=[-minimal]
 	x11-libs/libXcomposite"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
