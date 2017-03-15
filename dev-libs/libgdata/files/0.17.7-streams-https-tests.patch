@@ -1,0 +1,204 @@
+From 106937d394fe3b8edbfb506273ae429d7ded2c2c Mon Sep 17 00:00:00 2001
+From: Philip Withnall <philip.withnall@collabora.co.uk>
+Date: Tue, 20 Sep 2016 17:04:33 -0700
+Subject: core: Assert that all downloads, uploads and queries are HTTPS
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+All callers should be using HTTPS already — for peace of mind, let’s
+assert that’s the case.
+---
+ gdata/gdata-download-stream.c |  7 ++++---
+ gdata/gdata-service.c         |  4 +++-
+ gdata/gdata-upload-stream.c   | 10 ++++++++--
+ gdata/tests/general.c         |  6 +++---
+ gdata/tests/streams.c         | 26 ++++++++++++++++++++------
+ 5 files changed, 38 insertions(+), 15 deletions(-)
+
+diff --git a/gdata/gdata-download-stream.c b/gdata/gdata-download-stream.c
+index 67a3514..7613fd2 100644
+--- a/gdata/gdata-download-stream.c
++++ b/gdata/gdata-download-stream.c
+@@ -233,7 +233,7 @@ gdata_download_stream_class_init (GDataDownloadStreamClass *klass)
+ 	/**
+ 	 * GDataDownloadStream:download-uri:
+ 	 *
+-	 * The URI of the file to download.
++	 * The URI of the file to download. This must be HTTPS.
+ 	 *
+ 	 * Since: 0.5.0
+ 	 **/
+@@ -355,9 +355,10 @@ gdata_download_stream_constructor (GType type, guint n_construct_params, GObject
+ 		priv->cancellable = g_cancellable_new ();
+ 	priv->network_cancellable_id = g_cancellable_connect (priv->cancellable, (GCallback) cancellable_cancel_cb, priv->network_cancellable, NULL);
+ 
+-	/* Build the message */
++	/* Build the message. The URI must be HTTPS. */
+ 	_uri = soup_uri_new (priv->download_uri);
+ 	soup_uri_set_port (_uri, _gdata_service_get_https_port ());
++	g_assert_cmpstr (soup_uri_get_scheme (_uri), ==, SOUP_URI_SCHEME_HTTPS);
+ 	priv->message = soup_message_new_from_uri (SOUP_METHOD_GET, _uri);
+ 	soup_uri_free (_uri);
+ 
+@@ -928,7 +929,7 @@ reset_network_thread (GDataDownloadStream *self)
+  * gdata_download_stream_new:
+  * @service: a #GDataService
+  * @domain: (allow-none): the #GDataAuthorizationDomain to authorize the download, or %NULL
+- * @download_uri: the URI to download
++ * @download_uri: the URI to download; this must be HTTPS
+  * @cancellable: (allow-none): a #GCancellable for the entire download stream, or %NULL
+  *
+  * Creates a new #GDataDownloadStream, allowing a file to be downloaded from a GData service using standard #GInputStream API.
+diff --git a/gdata/gdata-service.c b/gdata/gdata-service.c
+index 2433339..9db75ba 100644
+--- a/gdata/gdata-service.c
++++ b/gdata/gdata-service.c
+@@ -581,9 +581,11 @@ _gdata_service_build_message (GDataService *self, GDataAuthorizationDomain *doma
+ 	GDataServiceClass *klass;
+ 	SoupURI *_uri;
+ 
+-	/* Create the message. Allow changing the HTTPS port just for testing. */
++	/* Create the message. Allow changing the HTTPS port just for testing,
++	 * but require that the URI is always HTTPS for privacy. */
+ 	_uri = soup_uri_new (uri);
+ 	soup_uri_set_port (_uri, _gdata_service_get_https_port ());
++	g_assert_cmpstr (soup_uri_get_scheme (_uri), ==, SOUP_URI_SCHEME_HTTPS);
+ 	message = soup_message_new_from_uri (method, _uri);
+ 	soup_uri_free (_uri);
+ 
+diff --git a/gdata/gdata-upload-stream.c b/gdata/gdata-upload-stream.c
+index bb52ac8..c8340be 100644
+--- a/gdata/gdata-upload-stream.c
++++ b/gdata/gdata-upload-stream.c
+@@ -307,7 +307,7 @@ gdata_upload_stream_class_init (GDataUploadStreamClass *klass)
+ 	/**
+ 	 * GDataUploadStream:upload-uri:
+ 	 *
+-	 * The URI to upload the data and metadata to.
++	 * The URI to upload the data and metadata to. This must be HTTPS.
+ 	 *
+ 	 * Since: 0.5.0
+ 	 **/
+@@ -428,11 +428,17 @@ gdata_upload_stream_constructed (GObject *object)
+ {
+ 	GDataUploadStreamPrivate *priv;
+ 	GDataServiceClass *service_klass;
++	SoupURI *uri = NULL;
+ 
+ 	/* Chain up to the parent class */
+ 	G_OBJECT_CLASS (gdata_upload_stream_parent_class)->constructed (object);
+ 	priv = GDATA_UPLOAD_STREAM (object)->priv;
+ 
++	/* The upload URI must be HTTPS. */
++	uri = soup_uri_new (priv->upload_uri);
++	g_assert_cmpstr (soup_uri_get_scheme (uri), ==, SOUP_URI_SCHEME_HTTPS);
++	soup_uri_free (uri);
++
+ 	/* Create a #GCancellable for the entire upload operation if one wasn't specified for #GDataUploadStream:cancellable during construction */
+ 	if (priv->cancellable == NULL)
+ 		priv->cancellable = g_cancellable_new ();
+@@ -1300,7 +1306,7 @@ create_network_thread (GDataUploadStream *self, GError **error)
+  * @service: a #GDataService
+  * @domain: (allow-none): the #GDataAuthorizationDomain to authorize the upload, or %NULL
+  * @method: the HTTP method to use
+- * @upload_uri: the URI to upload
++ * @upload_uri: the URI to upload, which must be HTTPS
+  * @entry: (allow-none): the entry to upload as metadata, or %NULL
+  * @slug: the file's slug (filename)
+  * @content_type: the content type of the file being uploaded
+diff --git a/gdata/tests/general.c b/gdata/tests/general.c
+index 070d34c..2420629 100644
+--- a/gdata/tests/general.c
++++ b/gdata/tests/general.c
+@@ -1425,7 +1425,7 @@ test_service_network_error (void)
+ 	service = g_object_new (GDATA_TYPE_SERVICE, NULL);
+ 
+ 	/* Try a query which should always fail due to errors resolving the hostname */
+-	g_assert (gdata_service_query (service, NULL, "http://thisshouldnotexist.invalid", NULL, GDATA_TYPE_ENTRY,
++	g_assert (gdata_service_query (service, NULL, "https://thisshouldnotexist.invalid", NULL, GDATA_TYPE_ENTRY,
+ 	                               NULL, NULL, NULL, &error) == NULL);
+ 	g_assert_error (error, GDATA_SERVICE_ERROR, GDATA_SERVICE_ERROR_NETWORK_ERROR);
+ 	g_clear_error (&error);
+@@ -1434,11 +1434,11 @@ test_service_network_error (void)
+ 	 * Filed as bgo#632354. */
+ #if 0
+ 	/* Try one with a bad proxy set */
+-	proxy_uri = soup_uri_new ("http://thisshouldalsonotexist.invalid/proxy");
++	proxy_uri = soup_uri_new ("https://thisshouldalsonotexist.invalid/proxy");
+ 	gdata_service_set_proxy_uri (service, proxy_uri);
+ 	soup_uri_free (proxy_uri);
+ 
+-	g_assert (gdata_service_query (service, "http://google.com", NULL, GDATA_TYPE_ENTRY, NULL, NULL, NULL, &error) == NULL);
++	g_assert (gdata_service_query (service, "https://google.com", NULL, GDATA_TYPE_ENTRY, NULL, NULL, NULL, &error) == NULL);
+ 	g_assert_error (error, GDATA_SERVICE_ERROR, GDATA_SERVICE_ERROR_PROXY_ERROR);
+ 	g_clear_error (&error);
+ #endif
+diff --git a/gdata/tests/streams.c b/gdata/tests/streams.c
+index 91b35c6..1de8e50 100644
+--- a/gdata/tests/streams.c
++++ b/gdata/tests/streams.c
+@@ -161,6 +161,7 @@ create_server (SoupServerCallback callback, gpointer user_data, GMainLoop **main
+ 	GMainContext *context;
+ 	SoupServer *server;
+ #ifdef HAVE_LIBSOUP_2_47_3
++	gchar *cert_path = NULL, *key_path = NULL;
+ 	GError *error = NULL;
+ #else /* if !HAVE_LIBSOUP_2_47_3 */
+ 	union {
+@@ -178,12 +179,21 @@ create_server (SoupServerCallback callback, gpointer user_data, GMainLoop **main
+ #ifdef HAVE_LIBSOUP_2_47_3
+ 	server = soup_server_new (NULL, NULL);
+ 
++	cert_path = g_test_build_filename (G_TEST_DIST, "cert.pem", NULL);
++	key_path = g_test_build_filename (G_TEST_DIST, "key.pem", NULL);
++
++	soup_server_set_ssl_cert_file (server, cert_path, key_path, &error);
++	g_assert_no_error (error);
++
++	g_free (key_path);
++	g_free (cert_path);
++
+ 	soup_server_add_handler (server, NULL, callback, user_data, NULL);
+ 
+ 	g_main_context_push_thread_default (context);
+ 
+ 	soup_server_listen_local (server, 0  /* random port */,
+-	                          0  /* no options */, &error);
++	                          SOUP_SERVER_LISTEN_HTTPS, &error);
+ 	g_assert_no_error (error);
+ 
+ 	g_main_context_pop_thread_default (context);
+@@ -216,20 +226,24 @@ build_server_uri (SoupServer *server)
+ {
+ #ifdef HAVE_LIBSOUP_2_47_3
+ 	GSList *uris;  /* owned */
++	GSList *l;  /* unowned */
+ 	gchar *retval = NULL;  /* owned */
+ 
+ 	uris = soup_server_get_uris (server);
+-	if (uris == NULL) {
+-		return NULL;
+-	}
+ 
+-	retval = soup_uri_to_string (uris->data, FALSE);
++	for (l = uris; l != NULL && retval == NULL; l = l->next) {
++		if (soup_uri_get_scheme (l->data) == SOUP_URI_SCHEME_HTTPS) {
++			retval = soup_uri_to_string (l->data, FALSE);
++		}
++	}
+ 
+ 	g_slist_free_full (uris, (GDestroyNotify) soup_uri_free);
+ 
++	g_assert (retval != NULL);
++
+ 	return retval;
+ #else /* if !HAVE_LIBSOUP_2_47_3 */
+-	return g_strdup_printf ("http://%s:%u/",
++	return g_strdup_printf ("https://%s:%u/",
+ 	                        soup_address_get_physical (soup_socket_get_local_address (soup_server_get_listener (server))),
+ 	                        soup_server_get_port (server));
+ #endif /* !HAVE_LIBSOUP_2_47_3 */
+-- 
+cgit v0.12
+

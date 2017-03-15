@@ -1,0 +1,29 @@
+From 2e1bd073426b42a7e207314f1cef1402509ce12a Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Mon, 6 Mar 2017 06:28:32 +0100
+Subject: tests: Fix setting properties on i686
+
+Without the cast, an integer literal will have to wrong size for a
+64-bit integer parameter.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=779641
+---
+ gdata/tests/general.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdata/tests/general.c b/gdata/tests/general.c
+index 6b41f25..75232de 100644
+--- a/gdata/tests/general.c
++++ b/gdata/tests/general.c
+@@ -1309,7 +1309,7 @@ test_query_properties (void)
+ 		g_assert_##cmptype (gdata_query_get_##name_underscores (query), ==, new_val); \
+  \
+ 		notification_received = FALSE; \
+-		g_object_set (query, name_hyphens, new_val2, NULL); \
++		g_object_set (query, name_hyphens, (val_type) new_val2, NULL); \
+ 		g_assert (notification_received == TRUE); \
+  \
+ 		g_assert_##cmptype (gdata_query_get_##name_underscores (query), ==, new_val2); \
+-- 
+cgit v0.12
+

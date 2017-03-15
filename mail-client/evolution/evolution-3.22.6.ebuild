@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,9 +13,9 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
 SLOT="2.0"
 
-IUSE="+bogofilter crypt geolocation highlight ldap spamassassin spell ssl +weather"
+IUSE="archive +bogofilter crypt geolocation highlight ldap spamassassin spell ssl +weather"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~x86"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
 # password from inside evolution, bug 160302
@@ -25,7 +25,6 @@ PINENTRY_DEPEND="|| ( app-crypt/pinentry[gnome-keyring] app-crypt/pinentry[gtk] 
 # pst is not mature enough and changes API/ABI frequently
 # dconf explicitely needed for backup plugin
 # gnome-desktop support is optional with --enable-gnome-desktop
-# gnome-autoar (currently disabled because no release has been made)
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.4:=
 	>=app-text/enchant-1.1.7
@@ -50,6 +49,7 @@ COMMON_DEPEND="
 	x11-libs/libSM
 	x11-libs/libICE
 
+	archive? ( >=app-arch/gnome-autoar-0.1.1[gtk] )
 	crypt? (
 		>=app-crypt/gnupg-1.4
 		${PINENTRY_DEPEND}
@@ -98,11 +98,11 @@ src_configure() {
 	# Use NSS/NSPR only if 'ssl' is enabled.
 	gnome2_src_configure \
 		--without-glade-catalog \
-		--disable-autoar \
 		--disable-code-coverage \
 		--disable-installed-tests \
 		--disable-pst-import \
 		--enable-canberra \
+		$(use_enable archive autoar) \
 		$(use_enable crypt libcryptui) \
 		$(use_enable highlight text-highlight) \
 		$(use_enable geolocation contact-maps) \
