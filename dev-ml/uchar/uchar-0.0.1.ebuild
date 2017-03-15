@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml/uchar/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4.03:="

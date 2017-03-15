@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rdicosmo/parmap/archive/${MY_PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]"
