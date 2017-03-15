@@ -29,7 +29,7 @@ RDEPEND="
 	>=net-libs/libsoup-2.42.0:2.4[introspection?]
 	>=x11-libs/gdk-pixbuf-2.14:2
 	crypt? ( app-crypt/gcr:= )
-	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:=[introspection?] )
+	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.7:= )
 "
 DEPEND="${RDEPEND}
