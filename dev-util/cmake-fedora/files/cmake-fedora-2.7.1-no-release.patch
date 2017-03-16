@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a0b8c7a..2738be0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -148,17 +148,6 @@ ADD_CUSTOM_TARGET_COMMAND(module-only
+ # Release
+ #
+ 
+-ADD_DEPENDENCIES(upload tag_push)
+-INCLUDE(ManageRelease)
+-IF(CMAKE_FEDORA_ENABLE_FEDORA_BUILD)
+-    INCLUDE(ManageReleaseFedora)
+-    RELEASE_FEDORA(fedora epel7 el6)
+-    # "Off" Warning is displayed if mock is not installed.
+-    MANAGE_RELEASE(upload tag_push release_fedora)
+-ELSE(CMAKE_FEDORA_ENABLE_FEDORA_BUILD)
+-    MANAGE_RELEASE(upload tag_push)
+-ENDIF(CMAKE_FEDORA_ENABLE_FEDORA_BUILD)
+-
+ ####################################################################
+ # Test Suites.
+ #

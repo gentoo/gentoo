@@ -7,8 +7,8 @@ MY_P="${P}-Source"
 inherit cmake-utils
 
 DESCRIPTION="Provides cmake helper macros and targets for linux, especially fedora developers"
-HOMEPAGE="https://fedorahosted.org/cmake-fedora/#Getcmake-fedora"
-SRC_URI="https://fedorahosted.org/releases/c/m/cmake-fedora/${MY_P}.tar.gz"
+HOMEPAGE="https://pagure.io/cmake-fedora"
+SRC_URI="https://releases.pagure.org/cmake-fedora/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,3 +23,13 @@ CMAKE_IN_SOURCE_BUILD=1
 
 # fails 1 of 7
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${P}-no-release.patch" )
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_FEDORA_ENABLE_FEDORA_BUILD=0
+		-DMANAGE_DEPENDENCY_PACKAGE_EXISTS_CMD=true
+	)
+	cmake-utils_src_configure
+}
