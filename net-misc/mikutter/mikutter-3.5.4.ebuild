@@ -62,10 +62,10 @@ all_ruby_unpack() {
 each_ruby_install() {
 	local rubyversion
 
-	if use ruby_targets_ruby22; then
+	if use ruby_targets_ruby23; then
+		rubyversion=ruby23
+	elif use ruby_targets_ruby22; then
 		rubyversion=ruby22
-	elif use ruby_targets_ruby21; then
-		rubyversion=ruby21
 	fi
 
 	exeinto /usr/share/mikutter
