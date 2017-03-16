@@ -9890,8 +9890,8 @@ dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development en
 dev-tex/aastex 5.2: LaTeX package used to mark up manuscripts for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2: LaTeX macros for writing documents following the ABNT norms
 dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
-dev-tex/biber 2.4 2.5: A BibTeX replacement for users of biblatex
-dev-tex/biblatex 3.3 3.4 3.4-r1: Reimplementation of the bibliographic facilities provided by LaTeX
+dev-tex/biber 2.5: A BibTeX replacement for users of biblatex
+dev-tex/biblatex 3.4-r1 3.7: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 6.6: APA style for BibLaTeX
 dev-tex/bibtex2html 1.98: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20120701 3.71_p20130530 3.71_p20140525 3.71_p20150521 3.71_p20160523: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
@@ -11721,7 +11721,7 @@ kde-apps/kdebugdialog 16.04.3: Dialog box for setting preferences for debug outp
 kde-apps/kdebugsettings 16.08.3 16.12.3: Application to enable/disable qCDebug
 kde-apps/kdecore-meta 16.08.3 16.12.3: kdecore - merge this to pull in the most basic applications
 kde-apps/kdeedu-data 16.08.3 16.12.3: Shared icons, artwork and data files for educational applications
-kde-apps/kdeedu-meta 16.08.3 16.12.3: KDE educational apps - merge this to pull in all kdeedu-derived packages
+kde-apps/kdeedu-meta 16.08.3 16.12.3-r1: KDE educational apps - merge this to pull in all kdeedu-derived packages
 kde-apps/kdegames-meta 16.08.3 16.12.3: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 16.08.3 16.12.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 16.08.3 16.12.3: Library to support mobipocket ebooks
@@ -14516,7 +14516,7 @@ net-fs/cifs-utils 6.4 6.6-r2 6.7: Tools for Managing Linux CIFS Client Filesyste
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.1.19 2.1.20.0_p05 9999: HTTP read-only file system for distributing software
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
-net-fs/docker-volume-netshare 0.32_p20161024: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
+net-fs/docker-volume-netshare 0.32_p20161024 0.33_p20170209: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 9999: Client library for accessing NFS shares over a network
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.8 3.1.10: Open Source AFP server
