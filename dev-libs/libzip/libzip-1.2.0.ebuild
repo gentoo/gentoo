@@ -18,18 +18,22 @@ RDEPEND="
 	sys-libs/zlib
 	elibc_musl? ( sys-libs/fts-standalone )
 "
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
-"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS.md API-CHANGES THANKS )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.1.3-headers.patch"
-	"${FILESDIR}/${PN}-1.1.3-fts.patch"
+	"${FILESDIR}/${P}-headers.patch"
+	"${FILESDIR}/${P}-fts.patch"
 )
 
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_install() {
+	default
+	use static-libs || rm "${D}"/usr/lib64/libzip.a || die
+	find "${D}" -name '*.la' -delete || die
 }
