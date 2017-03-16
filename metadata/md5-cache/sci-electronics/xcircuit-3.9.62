@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-text/ghostscript-gpl dev-lang/tk:0 media-libs/fontconfig:1.0 sys-libs/zlib x11-libs/cairo x11-libs/libX11 x11-libs/libXt x11-libs/libXpm x11-libs/libSM x11-libs/libICE !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Circuit drawing and schematic capture program
+EAPI=5
+HOMEPAGE=http://opencircuitdesign.com/xcircuit
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=app-text/ghostscript-gpl dev-lang/tk:0 media-libs/fontconfig:1.0 sys-libs/zlib x11-libs/cairo x11-libs/libX11 x11-libs/libXt x11-libs/libXpm x11-libs/libSM x11-libs/libICE
+RESTRICT=test
+SLOT=0
+SRC_URI=http://opencircuitdesign.com/xcircuit/archive/xcircuit-3.9.62.tgz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=bca59ed4fdbe60002335b9008ebeb332
