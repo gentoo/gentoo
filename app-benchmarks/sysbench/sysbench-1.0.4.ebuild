@@ -3,16 +3,13 @@
 
 EAPI="6"
 
-inherit git-r3
-
 DESCRIPTION="System performance benchmark"
 HOMEPAGE="https://github.com/akopytov/sysbench"
-
-EGIT_REPO_URI="https://github.com/akopytov/sysbench.git"
+SRC_URI="https://github.com/akopytov/sysbench/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="aio mysql postgres test"
 
 RDEPEND="aio? ( dev-libs/libaio )
@@ -29,6 +26,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
+
+	sed -i -e "/^htmldir =/s:=.*:=/usr/share/doc/${PF}/html:" doc/Makefile.am || die
 
 	# remove bundled libs
 	rm -r third_party/luajit/luajit third_party/concurrency_kit/ck third_party/cram || die
