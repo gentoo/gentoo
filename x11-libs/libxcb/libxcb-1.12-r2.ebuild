@@ -17,7 +17,7 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/libxcb"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="https://xcb.freedesktop.org/dist/${P}.tar.bz2"
 
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc selinux test xkb"
 SLOT="0/1.12" # Locked down for now to 1.12 to avoid further rebuilds on no ABI changes (e.g with any upcoming 1.12.1 bugfix release), bug 576890
 
