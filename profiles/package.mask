@@ -272,7 +272,6 @@ x11-misc/bbappconf
 # Also, the first ebuild blocks python.eclass removal, #599866,
 # and is one huge QA mystery. Removal in 30 days.
 net-misc/elliptics
-net-misc/elliptics-eblob
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (19 Feb 2017)
 # Dead upstream for >3 years. Closed source. Bundles outdated
