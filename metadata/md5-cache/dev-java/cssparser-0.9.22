@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=dev-java/sac:0 >=virtual/jdk-1.6 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+DESCRIPTION=API for parsing CSS 2 in Java
+EAPI=6
+HOMEPAGE=http://cssparser.sourceforge.net/
+IUSE=elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-java/sac:0 >=virtual/jre-1.6 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=mirror://sourceforge/cssparser/cssparser-0.9.22-sources.jar -> cssparser-0.9.22.jar
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:java-pkg-simple src_install:java-pkg-simple
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3e71074eb6884746b37b70b2c9c881f4	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=5802b5e22645ac00e83256ec8cac0b62
