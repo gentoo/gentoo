@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=>=dev-libs/wlc-0.0.5[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] ) virtual/pkgconfig app-text/asciidoc sys-devel/make >=dev-util/cmake-3.6.3
+DEPEND=>=dev-libs/wlc-0.0.8[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland sys-libs/libcap x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] ) virtual/pkgconfig app-text/asciidoc sys-devel/make >=dev-util/cmake-3.6.3
 DESCRIPTION=i3-compatible Wayland window manager
 EAPI=6
 HOMEPAGE=http://swaywm.org/
 IUSE=+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=>=dev-libs/wlc-0.0.5[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )
+RDEPEND=>=dev-libs/wlc-0.0.8[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland sys-libs/libcap x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )
 SLOT=0
-SRC_URI=https://github.com/SirCmpwn/sway/archive/0.10.tar.gz -> sway-0.10.tar.gz
+SRC_URI=https://github.com/SirCmpwn/sway/archive/0.12.1.tar.gz -> sway-0.12.1.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=f4bce986cf7adf70985d6c87041a5c28
+_md5_=df1aea56254f4a5ecd037cbd3d2244c8

@@ -1682,7 +1682,7 @@ app-leechcraft/lc-vgrabber 9999: Allows to find, stream and save audio and video
 app-leechcraft/lc-vrooby 9999: Vrooby, removable device manager for LeechCraft
 app-leechcraft/lc-xproxy 9999: Provides advanced proxy support features for LeechCraft
 app-leechcraft/lc-xtazy 9999: Fetches info about current tune and provides it to other plugins
-app-leechcraft/lcpackgen 1.3: Package creator for app-leechcraft/lc-lackman package manager
+app-leechcraft/lcpackgen 1.3 1.3.1: Package creator for app-leechcraft/lc-lackman package manager
 app-leechcraft/leechcraft-meta 9999: Metapackage containing all ready-to-use LeechCraft plugins
 app-leechcraft/liblaretz 0.1.0 9999: Shared library to be used by the Laretz sync server and its clients
 app-misc/abduco 0.4 0.5: lightweight session manager with {de,at}tach support
@@ -5050,7 +5050,7 @@ dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multico
 dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
-dev-libs/sway 0.10 0.11-r3 9999: i3-compatible Wayland window manager
+dev-libs/sway 0.11-r3 0.12.1 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
@@ -5081,7 +5081,7 @@ dev-libs/vc 0.7.4 1.2.0 1.3.0 1.3.1: SIMD Vector Class Library for C++
 dev-libs/wayland 1.7.0 1.9.0 1.11.0 1.12.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.3 1.4 1.5 1.7 9999: Wayland protocol files
 dev-libs/weston 1.9.0 1.11.0 1.12.0 9999: Wayland reference compositor
-dev-libs/wlc 0.0.5 0.0.6 0.0.7 9999: A helper library for Wayland compositors
+dev-libs/wlc 0.0.7 0.0.8 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.22 1.2.24 1.4.3: Xapian Probabilistic Information Retrieval library
@@ -7695,7 +7695,7 @@ dev-python/ipykernel 4.2.2 4.3.1 4.4.1 4.5.2: IPython Kernel for Jupyter
 dev-python/ipynb 0.5: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 4.1.0 5.0.1 5.1.1 5.2.0 6.0.2: Interactive Parallel Computing with IPython
 dev-python/ipython 3.2.1-r1 4.0.3 4.1.2 4.2.0-r1 5.1.0-r1 5.2.2 5.3.0: Advanced interactive shell for Python
-dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
+dev-python/ipython_genutils 0.1.0 0.2.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1 5.1.5 5.2.2 6.0.0: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 15.0.2 15.0.6: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
@@ -7877,7 +7877,7 @@ dev-python/nautilus-python 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/nbconvert 4.1.0 4.2.0 4.3.0: Converting Jupyter Notebooks
 dev-python/nbdime 0.1.2 0.2.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 4.0.1 4.1.0 4.2.0 4.3.0: Reference implementation of the Jupyter Notebook format
-dev-python/nbsphinx 0.2.8: Jupyter Notebook Tools for Sphinx
+dev-python/nbsphinx 0.2.8 0.2.13: Jupyter Notebook Tools for Sphinx
 dev-python/ndg-httpsclient 0.4.0 0.4.2: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2 0.1.5 0.1.7 0.1.9 0.1.11 0.1.12: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network address representation and manipulation library
@@ -8303,7 +8303,7 @@ dev-python/python-ddp 0.1.5: An event driven ddp client
 dev-python/python-debian 0.1.26 0.1.27 0.1.28: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.0.0 2.3.0 2.6.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
-dev-python/python-discid 1.1.0 1.1.0-r1: Python bindings for libdiscid
+dev-python/python-discid 1.1.0 1.1.0-r1 1.1.1: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.3.9 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2 3.6.0: HTML documentation for Python
@@ -14613,7 +14613,7 @@ net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 1.17.0.1 5.0.0.5: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
-net-im/slack-bin 2.1.2 2.3.4 2.4.2: Team collaboration tool
+net-im/slack-bin 2.1.2 2.3.4 2.4.2 2.5.2: Team collaboration tool
 net-im/telegram-desktop-bin 1.0.5 1.0.14: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
@@ -18151,7 +18151,7 @@ www-apps/davical 1.0.2-r2 1.1.0-r1 1.1.1-r2 1.1.3.1-r2: A CalDAV and CardDAV Ser
 www-apps/dokuwiki 20140505e 20140929d-r1 20150810 20150810a 20160626a: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drraw 2.0.1 2.1.3: drraw is a simple web based presentation front-end for RRDtool
-www-apps/drupal 7.53 7.54 8.2.5 8.2.6: PHP-based open-source platform and content management system
+www-apps/drupal 7.53 7.54 8.2.7: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
@@ -18354,7 +18354,7 @@ x11-apps/mkfontdir 1.0.7: create an index of X font files in a directory
 x11-apps/mkfontscale 1.1.1 1.1.2: create an index of scalable font files for X
 x11-apps/oclock 1.0.3: round X clock
 x11-apps/python-whiteboard 20101012-r1: Build and operate a electronic whiteboard Wiimote and IR Pen
-x11-apps/radeontop 0.9 9999: Utility to view Radeon GPU utilization
+x11-apps/radeontop 1.0 9999: Utility to view Radeon GPU utilization
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5: X.Org rstart application
 x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
@@ -18384,7 +18384,7 @@ x11-apps/xdriinfo 1.0.5: query configuration information of DRI drivers
 x11-apps/xedit 1.2.1 1.2.2: simple text editor for X
 x11-apps/xev 1.2.1 1.2.2: Print contents of X events
 x11-apps/xeyes 1.1.1: X.Org xeyes application
-x11-apps/xf86dga 1.0.3: test program for the XFree86-DGA extension
+x11-apps/xf86dga 1.0.3: Test program for the XFree86-DGA extension
 x11-apps/xfd 1.1.2: X.Org xfd application
 x11-apps/xfontsel 1.0.5: point and click selection of X11 font names
 x11-apps/xgamma 1.0.5 1.0.6: Alter a monitor's gamma correction through the X server
