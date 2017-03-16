@@ -17567,7 +17567,7 @@ sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryptsetup 1.7.2 1.7.3: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.2 1.7.3 1.7.4: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99-r1 1.99.5: Similar to dd but can copy from source with errors
@@ -19408,7 +19408,7 @@ xfce-base/xfce4-session 4.12.1 4.12.1-r1: A session manager for the Xfce desktop
 xfce-base/xfce4-settings 4.12.0 4.12.0-r1 4.12.0-r2 4.12.1 4.13.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1: A flexible, easy-to-use configuration management system for Xfce
 xfce-base/xfdesktop 4.12.2 4.12.3: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.12.3 4.12.3-r1: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.12.3 4.12.3-r1 4.12.4: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.2 0.3: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.3.1-r1 0.3.1-r2: Archive plug-in for the Thunar filemanager
