@@ -2344,7 +2344,7 @@ app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.3 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.9.9 0.10.1: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
-app-text/libwps 0.4.4-r1 0.4.5: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.4-r1 0.4.5 0.4.6: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 23: graphical PDF viewer which aims to superficially resemble less(1)
