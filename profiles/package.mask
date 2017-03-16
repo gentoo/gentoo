@@ -300,7 +300,6 @@ dev-libs/engine_pkcs11
 # One of the last packages to block distutils.eclass removal, #599838
 # and #599840. Furthermore, lio-utils is broken, #565824. Removal
 # in 30 days.
-sys-block/lio-utils
 sys-block/rtsadmin
 
 # Thomas Deutschmann <whissi@gentoo.org> (17 Feb 2017)
