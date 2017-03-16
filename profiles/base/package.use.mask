@@ -16,11 +16,6 @@ x11-apps/xauth test
 # https://bugs.gentoo.org/show_bug.cgi?id=611394
 >=www-client/chromium-58.0.3026.3 system-libvpx
 
-# Matt Turner <mattst88@gentoo.org> (25 Feb 2017)
-# Has caused no end of problems. See bugs 441878, 476306, 477444, 477530,
-# 508232.
-x11-libs/cairo xlib-xcb
-
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # Python 2 package relies on gedit[python] which is py3 only.
 dev-vcs/rabbitvcs gedit
