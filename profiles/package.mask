@@ -309,11 +309,6 @@ sys-block/rtsadmin
 www-apps/roundup
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
-# Both reported not to work with current Amazon servers and abandoned
-# upstream. Removal in 30 days. Bug #542442.
-net-misc/clamz
-
-# Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # Reported to be broken. Last real upstream activity in 2011 with
 # a quick hack-fix in 2013. Removal in 30 days. Bug #591506.
 net-misc/orbited
