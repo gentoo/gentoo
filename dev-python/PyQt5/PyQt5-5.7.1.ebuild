@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 arm ~ppc64 ~x86"
 
 # TODO: QtNfc
 IUSE="bluetooth dbus debug declarative designer doc examples gles2 gui help location
