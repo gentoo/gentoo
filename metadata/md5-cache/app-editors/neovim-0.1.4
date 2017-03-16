@@ -4,11 +4,11 @@ DESCRIPTION=Vim-fork focused on extensibility and agility.
 EAPI=5
 HOMEPAGE=https://neovim.io
 IUSE=+nvimpager perl python +jemalloc
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0 vim
 RDEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 >=dev-libs/libuv-1.2.0 >=dev-libs/msgpack-1.0.0 >=dev-libs/unibilium-1.1.1 dev-libs/libvterm dev-lua/lpeg[luajit] dev-lua/mpack[luajit] jemalloc? ( dev-libs/jemalloc ) perl? ( dev-lang/perl ) python? ( dev-python/neovim-python-client )
 SLOT=0
 SRC_URI=https://github.com/neovim/neovim/archive/v0.1.4.tar.gz -> neovim-0.1.4.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=de6bc25c682e4df54d1e56bad7d24fa0
+_md5_=c764cdc8d4c96d67d1c9c8ac489febc1
