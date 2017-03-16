@@ -5680,12 +5680,12 @@ dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
-dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0 1.700.0: Parse and Format DateTimes using Strptime
+dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0 1.700.0 1.730.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.120.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
-dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.70.0: Time zone object base class and factory
+dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.100.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0 1.60.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
 dev-perl/Debug-Client 0.290.0: Client side code for perl debugger
@@ -6179,7 +6179,7 @@ dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
-dev-perl/Moose 2.60.400-r1 2.160.400 2.160.500 2.180.600 2.180.700: A postmodern object system for Perl 5
+dev-perl/Moose 2.60.400-r1 2.160.400 2.160.500 2.180.600 2.180.700 2.200.400: A postmodern object system for Perl 5
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.270.0: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attributes from a configfile
@@ -6506,7 +6506,7 @@ dev-perl/Sub-Exporter-GlobExporter 0.5.0: export shared globs with Sub::Exporter
 dev-perl/Sub-Exporter-Progressive 0.1.11: Only use Sub::Exporter if you need it
 dev-perl/Sub-Identify 0.120.0: Retrieve names of code references
 dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
-dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
+dev-perl/Sub-Name 0.50.0-r1 0.150.0 0.210.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
 dev-perl/Sub-Quote 2.3.1: efficient generation of subroutines via string eval
 dev-perl/Sub-Uplevel 0.250.0 0.260.0: Apparently run a function in a higher stack frame
