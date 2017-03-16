@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=DROLSKY
-DIST_VERSION=2.07
+DIST_VERSION=2.10
 inherit perl-module
 
 DESCRIPTION="Time zone object base class and factory"
