@@ -1,0 +1,11 @@
+--- main.py.orig	2015-12-20 19:25:31.000000000 +0000
++++ main.py	2015-12-20 19:25:45.000000000 +0000
+@@ -11,7 +11,7 @@
+ # ensure minimal wx version
+ if not hasattr(sys, 'frozen'):
+     import wxversion
+-    wxversion.ensureMinimal("2.6")
++    wxversion.select("2.8")
+
+ import wx
+ from widget_properties import *

@@ -1,0 +1,11 @@
+--- install/update-po.py.orig	2015-12-29 23:33:23.000000000 +0000
++++ install/update-po.py	2015-12-29 23:33:57.000000000 +0000
+@@ -252,7 +252,7 @@
+     option['domain'] = None
+     option['moTarget'] = None
+     try:
+-	    optionList,pargs = getopt.getopt(sys.argv[1:],validOptions,validLongOptions):
++	    optionList,pargs = getopt.getopt(sys.argv[1:],validOptions,validLongOptions)
+     except getopt.GetoptError, e:
+         printUsage(e[0])
+         sys.exit(1)       
