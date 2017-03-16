@@ -11,7 +11,7 @@ SRC_URI="http://www.thibault.org/fonts/essays/${P}-1-ttf.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 OFL-1.1 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x64-macos"
 IUSE=""
 
 DEPEND=""
