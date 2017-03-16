@@ -4789,7 +4789,7 @@ dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.8-r1 1.1.1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.23 4.24: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.4.4 1.5.2 1.5.4 1.5.5 1.5.6: Handler library for evdev events
+dev-libs/libevdev 1.5.6: Handler library for evdev events
 dev-libs/libevent 2.0.22 2.0.22-r2 2.1.8 9999: A library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
@@ -4826,7 +4826,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.4.2 1.6.1 1.6.2 1.6.3: Library to handle input devices in Wayland
+dev-libs/libinput 1.4.2 1.6.2 1.6.3: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.3.8 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.3.8 1.4.6: Open-source library for reading, mastering and writing optical discs
@@ -4937,7 +4937,7 @@ dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20151022 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.18 0.22 0.23 0.24: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.24: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.0: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -5078,8 +5078,8 @@ dev-libs/vala-common 0.32.1 0.34.3: Build infrastructure for packages that use V
 dev-libs/vanessa-adt 0.0.6 0.0.9: Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.4 1.2.0 1.3.0 1.3.1: SIMD Vector Class Library for C++
-dev-libs/wayland 1.7.0 1.9.0 1.11.0 1.12.0 9999: Wayland protocol libraries
-dev-libs/wayland-protocols 1.3 1.4 1.5 1.7 9999: Wayland protocol files
+dev-libs/wayland 1.12.0 9999: Wayland protocol libraries
+dev-libs/wayland-protocols 1.7 9999: Wayland protocol files
 dev-libs/weston 1.9.0 1.11.0 1.12.0 9999: Wayland reference compositor
 dev-libs/wlc 0.0.7 0.0.8 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
@@ -13022,7 +13022,7 @@ media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADS
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 11.2.2 12.0.1 12.0.6 13.0.5 17.0.1 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5 17.0.1 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -17503,7 +17503,7 @@ sys-fabric/qperf 0.4.9: Measure RDMA and IP performance
 sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
 sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
 sys-firmware/alsa-firmware 1.0.28 1.0.29: Advanced Linux Sound Architecture firmware
-sys-firmware/amdgpu-ucode 20160628 20161121: Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs
+sys-firmware/amdgpu-ucode 20161121: Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
@@ -17523,7 +17523,7 @@ sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.
 sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and 4165
 sys-firmware/midisport-firmware 1.2: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
-sys-firmware/radeon-ucode 20160628 20161005: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
+sys-firmware/radeon-ucode 20161005: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2 1.10.1: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 0.1.4 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
@@ -17757,7 +17757,7 @@ sys-libs/libstdc++-v3-bin 3.3.6: Compatibility package for running binaries link
 sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.1-r1 1.2_rc1 1.2: Portable and efficient API to determine the call-chain of a program
-sys-libs/libutempter 1.1.5 1.1.5-r1 1.1.6 1.1.6-r1 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info, which need root access
+sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info, which need root access
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5: Library implementation for listing vpds
 sys-libs/libxcrypt 2.0 2.4: A replacement for libcrypt with DES, MD5 and blowfish support
@@ -18346,7 +18346,7 @@ x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/fusion-icon 0.1-r4: Compiz Fusion Tray Icon and Manager
 x11-apps/iceauth 1.0.6 1.0.7: ICE authority file utility
 x11-apps/ico 1.0.4: animate an icosahedron or other polyhedron
-x11-apps/intel-gpu-tools 1.12 1.15: Intel GPU userland tools
+x11-apps/intel-gpu-tools 1.15: Intel GPU userland tools
 x11-apps/listres 1.0.3: list resources in widgets
 x11-apps/luit 1.1.1: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.2.0 8.3.0 9999: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
@@ -18358,7 +18358,7 @@ x11-apps/radeontop 1.0 9999: Utility to view Radeon GPU utilization
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5: X.Org rstart application
 x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
-x11-apps/sessreg 1.0.8 1.1.0 1.1.1: manage utmp/wtmp entries for non-init clients
+x11-apps/sessreg 1.1.1: manage utmp/wtmp entries for non-init clients
 x11-apps/setxkbmap 1.3.0 1.3.1: Controls the keyboard layout of a running X server
 x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
 x11-apps/smproxy 1.0.5 1.0.6: Session Manager Proxy
@@ -18367,14 +18367,14 @@ x11-apps/transset 1.0.1: An utility for setting opacity property
 x11-apps/viewres 1.0.4: graphical class browser for Xt
 x11-apps/whyteboard 0.41.1: A simple image, PDF and postscript file annotator
 x11-apps/x11perf 1.5.4 1.6.0: X rendering operation stress test utility
-x11-apps/xauth 1.0.9-r1 1.0.9-r2 1.0.10 9999: X authority file utility
+x11-apps/xauth 1.0.10 9999: X authority file utility
 x11-apps/xbacklight 1.2.1-r1: Sets backlight level using the RandR 1.2 BACKLIGHT output property
 x11-apps/xbiff 1.0.3: mailbox flag for X
 x11-apps/xcalc 1.0.5 1.0.6: scientific calculator for X
 x11-apps/xclipboard 1.1.3: interchange between cut buffer and selection
 x11-apps/xclock 1.0.7: analog / digital clock for X
 x11-apps/xcmsdb 1.0.4 1.0.5: Device Color Characterization utility for X Color Management System
-x11-apps/xconsole 1.0.6 1.0.7: monitor system console messages with X
+x11-apps/xconsole 1.0.7: monitor system console messages with X
 x11-apps/xcursorgen 1.0.6: create an X cursor file from a collection of PNG images
 x11-apps/xdbedizzy 1.1.0: X.Org xdbedizzy application
 x11-apps/xditview 1.0.3 1.0.4: display ditroff output
@@ -18433,64 +18433,64 @@ x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.134 304.134
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
-x11-drivers/xf86-input-evdev 2.9.1 2.9.2 2.10.3 2.10.4 2.10.5: Generic Linux input driver
+x11-drivers/xf86-input-evdev 2.10.5: Generic Linux input driver
 x11-drivers/xf86-input-fpit 1.4.0: Fujitsu Stylistic input driver
 x11-drivers/xf86-input-hyperpen 1.4.1: X.Org driver for hyperpen input devices
-x11-drivers/xf86-input-joystick 1.6.2 1.6.3: X.Org driver for joystick input devices
-x11-drivers/xf86-input-keyboard 1.8.1 1.9.0: Keyboard input driver
-x11-drivers/xf86-input-libinput 0.14.0 0.19.0 0.23.0 0.24.0 0.25.0: X.org input driver based on libinput
-x11-drivers/xf86-input-mouse 1.8.1 1.9.1 1.9.2: X.Org driver for mouse input devices
+x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
+x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
+x11-drivers/xf86-input-libinput 0.19.0 0.24.0 0.25.0: X.org input driver based on libinput
+x11-drivers/xf86-input-mouse 1.9.2: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.3.0 0.3.1: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-mutouch 1.3.0: Microtouch input driver
 x11-drivers/xf86-input-penmount 1.5.0: PenMount input driver
-x11-drivers/xf86-input-synaptics 1.8.2 1.8.3 1.9.0: Driver for Synaptics touchpads
+x11-drivers/xf86-input-synaptics 1.9.0: Driver for Synaptics touchpads
 x11-drivers/xf86-input-tslib 0.0.6-r2 0.0.6-r3: xorg input driver for use of tslib based touchscreen devices
-x11-drivers/xf86-input-vmmouse 13.0.0-r1 13.1.0 13.1.0-r1 9999: VMWare mouse input driver
+x11-drivers/xf86-input-vmmouse 13.1.0-r1 9999: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.0 1.4.1: null input driver
-x11-drivers/xf86-input-wacom 0.24.0 0.29.0 0.30.0 0.31.0 0.32.0 0.33.0 0.34.0: Driver for Wacom tablets and drawing devices
+x11-drivers/xf86-input-wacom 0.34.0: Driver for Wacom tablets and drawing devices
 x11-drivers/xf86-video-amdgpu 1.2.0 1.3.0 9999: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-apm 1.2.4 1.2.5 1.2.5-r1: Alliance ProMotion video driver
 x11-drivers/xf86-video-ark 0.7.5: X.Org driver for ark cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 7.7.0 7.7.1 7.8.0 7.9.0: ATI video driver
-x11-drivers/xf86-video-chips 1.2.6 1.2.7: Chips and Technologies video driver
+x11-drivers/xf86-video-ati 7.8.0 7.9.0: ATI video driver
+x11-drivers/xf86-video-chips 1.2.7: Chips and Technologies video driver
 x11-drivers/xf86-video-cirrus 1.5.1 1.5.2 1.5.3: Cirrus Logic video driver
 x11-drivers/xf86-video-dummy 0.3.6 0.3.7 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.4.4: video driver for framebuffer device
 x11-drivers/xf86-video-freedreno 1.0.0 1.1.0 1.3.0 1.4.0: Driver for Adreno mobile GPUs
 x11-drivers/xf86-video-geode 2.11.17 2.11.18 2.11.19: AMD Geode GX2 and LX video driver
-x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1 1.2.9: GLINT/Permedia video driver
+x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
-x11-drivers/xf86-video-i740 1.3.5 1.3.6: Intel i740 video driver
-x11-drivers/xf86-video-intel 2.99.917-r2 2.99.917_p20160621-r1 2.99.917_p20161206 2.99.917_p20170216 2.99.917_p20170313: X.Org driver for Intel cards
+x11-drivers/xf86-video-i740 1.3.6: Intel i740 video driver
+x11-drivers/xf86-video-intel 2.99.917_p20170216 2.99.917_p20170313: X.Org driver for Intel cards
 x11-drivers/xf86-video-mach64 6.9.5: ATI Mach64 video driver
-x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4 1.6.5: Matrox video driver
+x11-drivers/xf86-video-mga 1.6.5: Matrox video driver
 x11-drivers/xf86-video-modesetting 0.8.1 0.9.0: Unaccelerated generic driver for kernel modesetting
 x11-drivers/xf86-video-neomagic 1.2.9: Neomagic video driver
 x11-drivers/xf86-video-newport 0.2.3 0.2.4: Newport video driver
-x11-drivers/xf86-video-nouveau 1.0.12 1.0.13 1.0.14: Accelerated Open Source driver for nVidia cards
-x11-drivers/xf86-video-nv 2.1.20-r1 2.1.21: Nvidia 2D only video driver
-x11-drivers/xf86-video-omap 0.4.2 0.4.3 0.4.4 0.4.5: OMAP video driver
-x11-drivers/xf86-video-openchrome 0.3.3 0.4.0 0.5.0 0.6.0: X.Org driver for VIA/S3G cards
+x11-drivers/xf86-video-nouveau 1.0.13 1.0.14: Accelerated Open Source driver for nVidia cards
+x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
+x11-drivers/xf86-video-omap 0.4.5: OMAP video driver
+x11-drivers/xf86-video-openchrome 0.5.0 0.6.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-opentegra 0.7.0: X.Org video driver for NVIDIA Tegra
-x11-drivers/xf86-video-qxl 0.1.3 0.1.4 0.1.4-r1 0.1.5: QEMU QXL paravirt video driver
-x11-drivers/xf86-video-r128 6.9.2 6.10.0 6.10.1 6.10.2: ATI Rage128 video driver
+x11-drivers/xf86-video-qxl 0.1.5: QEMU QXL paravirt video driver
+x11-drivers/xf86-video-r128 6.10.2: ATI Rage128 video driver
 x11-drivers/xf86-video-rendition 4.2.6: Rendition video driver
 x11-drivers/xf86-video-s3 0.6.5 0.6.5-r1: X.Org driver for s3 cards
 x11-drivers/xf86-video-s3virge 1.10.7: S3 ViRGE video driver
-x11-drivers/xf86-video-savage 2.3.8 2.3.9: S3 Savage video driver
-x11-drivers/xf86-video-siliconmotion 1.7.8 1.7.9: Silicon Motion video driver
-x11-drivers/xf86-video-sis 0.10.7 0.10.8 0.10.9: SiS and XGI video driver
-x11-drivers/xf86-video-sisusb 0.9.5 0.9.6 0.9.6-r1 0.9.7: SiS USB video driver
+x11-drivers/xf86-video-savage 2.3.9: S3 Savage video driver
+x11-drivers/xf86-video-siliconmotion 1.7.9: Silicon Motion video driver
+x11-drivers/xf86-video-sis 0.10.9: SiS and XGI video driver
+x11-drivers/xf86-video-sisusb 0.9.7: SiS USB video driver
 x11-drivers/xf86-video-suncg14 1.1.1 1.1.2: CG14 video driver
 x11-drivers/xf86-video-suncg3 1.1.1 1.1.2: CG3 video driver
 x11-drivers/xf86-video-suncg6 1.1.1 1.1.2: GX/Turbo GX video driver
 x11-drivers/xf86-video-sunffb 1.2.1 1.2.2-r1: SUNFFB video driver
 x11-drivers/xf86-video-sunleo 1.2.0 1.2.1 1.2.2: Leo video driver
 x11-drivers/xf86-video-suntcx 1.1.1 1.1.2: TCX video driver
-x11-drivers/xf86-video-tdfx 1.4.6 1.4.7: 3Dfx video driver
+x11-drivers/xf86-video-tdfx 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-tga 1.2.2 1.2.2-r1: X.Org driver for tga cards
-x11-drivers/xf86-video-trident 1.3.7 1.3.8: Trident video driver
+x11-drivers/xf86-video-trident 1.3.8: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
 x11-drivers/xf86-video-virtualbox 5.0.16 5.0.32 5.0.36 5.1.16 5.1.18: VirtualBox X11 video driver for Gentoo guest
@@ -18498,7 +18498,7 @@ x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0 13.2.1: VMware SVGA video 
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/c++-gtk-utils 2.0.27 2.0.29 2.0.30 2.0.31 2.0.31.1 2.2.10 2.2.12 2.2.13 2.2.14 2.2.14.1: A number of classes and functions for programming GTK+ programs using C++
-x11-libs/cairo 1.14.2 1.14.6 1.14.8 9999: A vector graphics library with cross-device output support
+x11-libs/cairo 1.14.8 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/compiz-bcop 0.8.8: Compiz Option code Generator
 x11-libs/compizconfig-backend-gconf 0.8.8: Compizconfig Gconf Backend
@@ -18532,7 +18532,7 @@ x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r1: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.6.1 2.6.2 2.6.3 2.6.4: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.2-r1: X.Org Session Management library
-x11-libs/libX11 1.6.4 1.6.5: X.Org X11 library
+x11-libs/libX11 1.6.5: X.Org X11 library
 x11-libs/libXCalibrate 0.1_pre20081207-r1: X.Org Calibrate client-side protocol library
 x11-libs/libXScrnSaver 1.2.2-r1: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1: X.Org XTrap library
@@ -18546,11 +18546,11 @@ x11-libs/libXdamage 1.1.4-r1: X.Org Xdamage library
 x11-libs/libXdmcp 1.1.2-r1: X.Org X Display Manager Control Protocol library
 x11-libs/libXext 1.3.2 1.3.3: X.Org Xext library
 x11-libs/libXfixes 5.0.3: X.Org Xfixes library
-x11-libs/libXfont 1.4.9 1.5.1 1.5.2: X.Org Xfont library
+x11-libs/libXfont 1.4.9 1.5.2: X.Org Xfont library
 x11-libs/libXfont2 2.0.1 9999: X.Org Xfont library
 x11-libs/libXfontcache 1.0.5-r1: X.Org Xfontcache library
 x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
-x11-libs/libXi 1.7.8 1.7.9: X.Org Xi library
+x11-libs/libXi 1.7.9: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
 x11-libs/libXmu 1.1.1 1.1.1-r1 1.1.2: X.Org Xmu library
 x11-libs/libXp 1.0.2 1.0.3: X.Org Xp library
@@ -18573,7 +18573,7 @@ x11-libs/libcryptui 3.12.2: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.6.1 0.7.2: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.59 2.4.65 2.4.68 2.4.70 2.4.73 2.4.74 2.4.75 9999: X.Org libdrm library
+x11-libs/libdrm 2.4.75 9999: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5 9999: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
@@ -18596,7 +18596,7 @@ x11-libs/libva-intel-driver 1.7.3 9999: HW video decode support for Intel integr
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
-x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1 1.12 1.12-r2: X C-language Bindings library
+x11-libs/libxcb 1.12-r2: X C-language Bindings library
 x11-libs/libxkbcommon 0.5.0 0.6.0 0.6.1 0.7.0 0.7.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9 1.0.9-r1: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
@@ -18750,7 +18750,7 @@ x11-misc/lightdm-kde 0.3.2.1-r1 0.3.2.1-r2: LightDM KDE greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1: Linux support for Easy Access and Internet Keyboards
-x11-misc/lndir 1.0.3 1.0.3-r1: create a shadow directory of symbolic links to another directory tree
+x11-misc/lndir 1.0.3-r1: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
 x11-misc/macopix 1.7.4 1.7.4-r1: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
 x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, based on orientation
@@ -18876,7 +18876,7 @@ x11-misc/xautomation 1.05 1.09-r1: Control X from command line and find things o
 x11-misc/xbatt 1.2.1-r1 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.3 1.4.8: Advanced Power Management battery status display for X
 x11-misc/xbindkeys 1.8.6: Tool for launching commands on keystrokes
-x11-misc/xbitmaps 1.1.1 1.1.1-r1: X.Org bitmaps data
+x11-misc/xbitmaps 1.1.1-r1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r1 4.0-r2: A simple interactive calendar program with a notebook capability
 x11-misc/xcalib 0.9.0_p20161210: A tiny monitor calibration loader for X.org
 x11-misc/xcape 1.1: Utility to make modifier keys send custom key events when pressed on their own
@@ -18904,7 +18904,7 @@ x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord an
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.15-r1 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5_p5_p1: User preference utility for XKB extensions for X
-x11-misc/xkeyboard-config 2.14 2.16 2.17 2.18 2.19 2.20: X keyboard configuration database
+x11-misc/xkeyboard-config 2.20: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r1 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.47 5.50 5.51: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
@@ -19152,7 +19152,7 @@ x11-proto/fontsproto 2.1.2 2.1.3: X.Org Fonts protocol headers
 x11-proto/glproto 1.4.17-r1: X.Org GL protocol headers
 x11-proto/inputproto 2.3 2.3.1 2.3.2: X.Org Input protocol headers
 x11-proto/kbproto 1.0.6-r1 1.0.7: X.Org KB protocol headers
-x11-proto/presentproto 1.0 1.1: X.Org Present protocol specification and Xlib/Xserver headers
+x11-proto/presentproto 1.1: X.Org Present protocol specification and Xlib/Xserver headers
 x11-proto/printproto 1.0.5-r1: X.Org Print protocol headers
 x11-proto/randrproto 1.4.0-r1 1.4.1 1.5.0: X.Org Randr protocol headers
 x11-proto/recordproto 1.14.2-r1: X.Org Record protocol headers
@@ -19172,7 +19172,7 @@ x11-proto/xf86miscproto 0.9.3: X.Org XF86Misc protocol headers
 x11-proto/xf86rushproto 1.1.2-r1: X.Org XF86Rush protocol headers
 x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
-x11-proto/xproto 7.0.27 7.0.28 7.0.29 7.0.31: X.Org xproto protocol headers
+x11-proto/xproto 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
@@ -19198,7 +19198,7 @@ x11-terms/terminology 0.9.1 1.0.0 9999: Feature rich terminal emulator using the
 x11-terms/tilda 0.9.6 0.9.6-r1: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/valaterm 0.6 0.6-r1: A lightweight vala based terminal
 x11-terms/xfce4-terminal 0.6.3 0.6.90 0.6.92 0.8.0 0.8.1 0.8.3 0.8.4: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 314 320 325 326 327: Terminal Emulator for X Windows
+x11-terms/xterm 327: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE

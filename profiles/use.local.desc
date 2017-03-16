@@ -8244,7 +8244,6 @@ www-servers/xsp:net35 - use .NET 3.5 Framework
 www-servers/xsp:net40 - use .NET 4.0 Framework
 www-servers/xsp:net45 - use .NET 4.5 Framework
 x11-apps/copyq:webkit - enables the application to use advanced HTML rendering and fetching remote images and other data
-x11-apps/intel-gpu-tools:python - Install python based register dumper utilities
 x11-apps/intel-gpu-tools:test-programs - Install test programs for DRM driver development
 x11-apps/intel-gpu-tools:unwind - Provide automatic stack traces on test failures
 x11-apps/mesa-progs:egl - Build EGL utilities
@@ -8288,7 +8287,6 @@ x11-libs/cairo:glib - Compile with GLib Object System support
 x11-libs/cairo:opengl - Build the OpenGL backend
 x11-libs/cairo:utils - Build support for Cairo script and trace utilities
 x11-libs/cairo:valgrind - Built-in support to mark memory regions
-x11-libs/cairo:xlib-xcb - Use XCB renderer backend for acceleration over xlib. Enabling this may solve or introduce display corruption problems.
 x11-libs/fltk:games - Builds and installs some extra games
 x11-libs/gdk-pixbuf:X - Build and install the legacy gdk_pixbuf_xlib-2.0 library
 x11-libs/glamor:gles - Build glamor based on gles2
