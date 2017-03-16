@@ -19,7 +19,7 @@ RDEPEND="dev-lang/perl
 	virtual/perl-Getopt-Long
 	virtual/mysql"
 
-DOCS=( README.* USAGE.md CONTRIBUTING.md INTERNALS.md basic_passwords.txt vulnerabilities.csv )
+DOCS=( USAGE.md CONTRIBUTING.md INTERNALS.md basic_passwords.txt vulnerabilities.csv )
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
