@@ -482,6 +482,7 @@ dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-Locale-1.60.0
 >=dev-perl/DateTime-TimeZone-2.20.0
 >=dev-perl/DateTime-1.370.0
+>=dev-perl/DateTime-Format-Strptime-1.710.0
 
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920
