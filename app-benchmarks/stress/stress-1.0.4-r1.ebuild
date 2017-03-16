@@ -12,7 +12,7 @@ SRC_URI="http://people.seas.harvard.edu/~apw/stress/${MY_P}.tar.gz -> ${MY_P}-r1
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~mips ppc ppc64 ~sparc ~x86"
 IUSE="static"
 
 S=${WORKDIR}/${MY_P}
