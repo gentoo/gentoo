@@ -15323,7 +15323,7 @@ net-misc/sstp-client 1.0.10 1.0.10-r1: A client implementation of Secure Socket 
 net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC connections
 net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
-net-misc/streamlink 0.1.0 0.3.2 9999: CLI for extracting streams from websites to a video player of your choice
+net-misc/streamlink 0.1.0 0.4.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/strongswan 5.3.4 5.5.1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.36 5.37 5.38 5.39 5.40: TLS/SSL - Port Wrapper
