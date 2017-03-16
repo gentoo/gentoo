@@ -30,6 +30,8 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/gpgrt.h
 )
 
+PATCHES=( "${FILESDIR}"/${P}-no-undefined.patch )
+
 src_prepare() {
 	default
 	elibtoolize
