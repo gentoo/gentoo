@@ -91,4 +91,6 @@ src_prepare() {
 
 	# linux-info eclass cannot handle recursively expanded variables in Makefile #490328
 	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile" || die
+
+	kernel-2_src_prepare
 }
