@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc examples"
 
 RDEPEND="dev-texlive/texlive-bibtexextra
-	dev-texlive/texlive-latexextra"
+	dev-texlive/texlive-latexextra
+	dev-texlive/texlive-genericextra"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}
@@ -25,7 +26,7 @@ src_install() {
 	insinto "${TEXMF}"
 	doins -r bibtex tex
 
-	dodoc doc/latex/biblatex/{README,RELEASE}
+	dodoc doc/latex/biblatex/{README,CHANGES.org}
 	use doc && { pushd doc/ ; latex-package_src_doinstall doc ; popd ; }
 	if use examples ; then
 		docinto examples
