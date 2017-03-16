@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5} )
 PYTHON_REQ_USE="xml"
 VALA_MIN_API_VERSION="0.28"
 
-inherit eutils gnome2 multilib python-r1 vala
+inherit eutils gnome2 multilib python-single-r1 vala
 
 DESCRIPTION="Official plugins for gedit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
@@ -22,7 +22,7 @@ IUSE="+python ${IUSE_plugins}"
 REQUIRED_USE="
 	charmap? ( python )
 	git? ( python )
-	python? ( ^^ ( $(python_gen_useflags '*') ) )
+	python? ( ${PYTHON_REQUIRED_USE} )
 	terminal? ( python )
 	zeitgeist? ( python )
 "
@@ -59,7 +59,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	use python && [[ ${MERGE_TYPE} != binary ]] && python_setup
+	use python && [[ ${MERGE_TYPE} != binary ]] && python-single-r1_pkg_setup
 }
 
 src_prepare() {

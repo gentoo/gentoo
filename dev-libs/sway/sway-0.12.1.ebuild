@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,12 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
 
-RDEPEND=">=dev-libs/wlc-0.0.5[systemd=]
+RDEPEND=">=dev-libs/wlc-0.0.8[systemd=]
 	dev-libs/json-c
 	dev-libs/libpcre
 	dev-libs/libinput
 	x11-libs/libxkbcommon
 	dev-libs/wayland
+	sys-libs/libcap
 	x11-libs/pango
 	x11-libs/cairo
 	swaylock? ( virtual/pam )
@@ -31,10 +32,10 @@ DEPEND="${RDEPEND}
 	app-text/asciidoc"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# remove bad CFLAGS that upstream is trying to add
-	sed -i -e '/FLAGS.*-Werror/d' -e '/FLAGS.*-g/d' CMakeLists.txt || die
+	sed -i -e '/FLAGS.*-Werror/d' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -51,6 +52,7 @@ src_configure() {
 		-Dzsh-completions=$(usex zsh-completion)
 
 		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
+		-DGIT_COMMIT_HASH="${PVR}" # specify version info, may change in future
 	)
 
 	cmake-utils_src_configure
