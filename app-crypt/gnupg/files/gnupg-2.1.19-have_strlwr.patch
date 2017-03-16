@@ -1,0 +1,56 @@
+https://lists.gnupg.org/pipermail/gnupg-devel/2017-March/032668.html
+
+From c22a2a89d3bd3d08b3abb8e4e33df32b480338ec Mon Sep 17 00:00:00 2001
+From: Michael Haubenwallner <michael.haubenwallner@ssi-schaefer.com>
+Date: Tue, 7 Mar 2017 13:54:49 +0100
+Subject: [PATCH] gpgscm: Use system strlwr if available.
+
+* tests/gpgscm/scheme.c: Define local strlwr only when HAVE_STRLWR is
+not defined in config.h.
+* tests/gpgscm/scheme-config.h: Remove hack.
+
+Signed-off-by: Justus Winter <justus@g10code.com>
+---
+ tests/gpgscm/scheme-config.h | 4 ----
+ tests/gpgscm/scheme.c        | 6 +++++-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tests/gpgscm/scheme-config.h b/tests/gpgscm/scheme-config.h
+index 2003498..15ca969 100644
+--- a/tests/gpgscm/scheme-config.h
++++ b/tests/gpgscm/scheme-config.h
+@@ -30,7 +30,3 @@
+ #define USE_PLIST		0
+ #define USE_INTERFACE		1
+ #define SHOW_ERROR_LINE		1
+-
+-#if __MINGW32__
+-# define USE_STRLWR 0
+-#endif /* __MINGW32__ */
+diff --git a/tests/gpgscm/scheme.c b/tests/gpgscm/scheme.c
+index b2ff721..af97c27 100644
+--- a/tests/gpgscm/scheme.c
++++ b/tests/gpgscm/scheme.c
+@@ -12,6 +12,10 @@
+  *
+  */
+ 
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #define _SCHEME_SOURCE
+ #include "scheme-private.h"
+ #ifndef WIN32
+@@ -88,7 +92,7 @@ static int stricmp(const char *s1, const char *s2)
+ }
+ #endif /* __APPLE__ */
+ 
+-#if USE_STRLWR
++#if USE_STRLWR && !defined(HAVE_STRLWR)
+ static const char *strlwr(char *s) {
+   const char *p=s;
+   while(*s) {
+-- 
+2.10.2
+
