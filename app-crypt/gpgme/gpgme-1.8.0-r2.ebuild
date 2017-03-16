@@ -73,6 +73,9 @@ src_configure() {
 		# resulting in an implicit declaration of strdup error.  Since
 		# it is in POSIX raise the feature set to that.
 		append-cxxflags -D_POSIX_C_SOURCE=200112L
+
+		# Work around bug 601834
+		use python && append-cflags -D_DARWIN_C_SOURCE
 	fi
 
 	econf \
