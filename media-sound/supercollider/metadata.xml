@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@ingolf-wagner.de</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		SuperCollider is a platform for audio synthesis and algorithmic 
+		composition, used by musicians, artists, and researchers 
+		working with sound. It is free and open source software 
+		available for Windows, Mac OS X, and Linux.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">supercollider/supercollider</remote-id>
+	</upstream>
+	<use>
+		<flag name="vim">Enable the SCVIM user interface</flag>
+		<flag name="emacs">Enable the SCEL user interface</flag>
+		<flag name="gedit">Enable the SCED user interface</flag>
+		<flag name="gpl3">Build GPL-3 licensed code (recommended)</flag>
+		<flag name="server">Build with internal server</flag>
+		<flag name="wiimote">Build sclang with Wii Remote support</flag>
+	</use>
+</pkgmetadata>

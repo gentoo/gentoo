@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (16 Mar 2017)
+# Replaced by dev-perl/Monitoring-Plugin, bug 575986
+# Removal in 30 days
+dev-perl/Nagios-Plugin
+
 # Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
 # Testing x32 patch backports from 3.9
 =dev-util/cmake-3.7.2-r10
