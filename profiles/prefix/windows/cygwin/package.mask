@@ -1,6 +1,10 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Haubenwallner <haubi@gentoo.org> (15 Mar 2017)
+# Cygwin breakage in 0.16 should be fixed in 0.17
+~net-dns/libidn2-0.16
+
 # Michael Haubenwallner <haubi@gentoo.org> (20 May 2016)
 # Does not work with Cygwin.
 sys-apps/man-db
