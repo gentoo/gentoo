@@ -302,11 +302,6 @@ dev-libs/engine_pkcs11
 # in 30 days.
 sys-block/rtsadmin
 
-# Thomas Deutschmann <whissi@gentoo.org> (17 Feb 2017)
-# Unpatched security vulnerability per bug #576868
-# Removal in 30 days.
-www-apps/roundup
-
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2017)
 # Reported to be broken. Last real upstream activity in 2011 with
 # a quick hack-fix in 2013. Removal in 30 days. Bug #591506.
