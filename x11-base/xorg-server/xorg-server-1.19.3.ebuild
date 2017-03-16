@@ -46,7 +46,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		>=x11-libs/libXtst-1.0.99.2
 	)
 	glamor? (
-		media-libs/libepoxy
+		media-libs/libepoxy[X]
 		>=media-libs/mesa-10.3.4-r1[egl,gbm]
 		!x11-libs/glamor
 	)
