@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-crypt/gnupg >=dev-libs/libassuan-2.0.2 >=dev-libs/libgpg-error-1.11
+DESCRIPTION=GnuPG Made Easy is a library for making GnuPG easier to use
+EAPI=5
+HOMEPAGE=http://www.gnupg.org/related_software/gpgme
+IUSE=common-lisp static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=app-crypt/gnupg >=dev-libs/libassuan-2.0.2 >=dev-libs/libgpg-error-1.11
+SLOT=1/11
+SRC_URI=mirror://gnupg/gpgme/gpgme-1.6.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=f9723f796dc09e18142f9110b7b9dcc9
