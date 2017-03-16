@@ -1761,7 +1761,7 @@ app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 2.4.4 5.1.2: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 2.4.4 5.1.2 5.2.2: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.19b 0.6.20b: Small shell utility, similar to expect(1)
@@ -17160,7 +17160,7 @@ sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package i
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 9999: Framework for defining and tracking users, login sessions and seats
-sys-auth/docker_auth 1.2-r1: Docker Registry 2 authentication server
+sys-auth/docker_auth 1.2-r1 1.2_p20170227: Docker Registry 2 authentication server
 sys-auth/elogind 219.12-r5: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
@@ -17698,7 +17698,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999: Raspberry PI kernel 
 sys-kernel/rt-sources 3.18.44_p48 3.18.46_p50 4.1.35_p41 4.1.37_p43 4.4.32_p43 4.4.39_p50 4.6.7_p14 4.8.14_p9 4.8.15_p10 4.9.4_p2 4.9.6_p4: Full Linux 4.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.86 3.4.113 3.10.105 3.12.71 3.16.41 4.1.39 4.4.54 4.9.15 4.10.3: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.87 3.4.113 3.10.105 3.12.71 3.16.42 4.1.39 4.4.54 4.9.15 4.10.3: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1 1.3-r2: Standalone argp library for use with uclibc
@@ -19408,7 +19408,7 @@ xfce-base/xfce4-session 4.12.1 4.12.1-r1: A session manager for the Xfce desktop
 xfce-base/xfce4-settings 4.12.0 4.12.0-r1 4.12.0-r2 4.12.1 4.13.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1: A flexible, easy-to-use configuration management system for Xfce
 xfce-base/xfdesktop 4.12.2 4.12.3: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.12.3 4.12.3-r1 4.12.4: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.12.3 4.12.3-r1 4.12.4 4.13.0: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.2 0.3: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.3.1-r1 0.3.1-r2: Archive plug-in for the Thunar filemanager
