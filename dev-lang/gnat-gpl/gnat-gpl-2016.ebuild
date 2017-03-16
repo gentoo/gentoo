@@ -57,10 +57,14 @@ GCC_A_FAKEIT="${P}-src.tar.gz
 
 pkg_setup() {
 	GCC=${ADA:-$(tc-getCC)}
-	local path=$(dirname ${GCC})
 	local base=$(basename ${GCC})
-	GNATMAKE="${path}/${base/gcc/gnatmake}"
-	GNATBIND="${path}/${base/gcc/gnatbind}"
+	GNATMAKE="${base/gcc/gnatmake}"
+	GNATBIND="${base/gcc/gnatbind}"
+	if [[ ${base} != ${GCC} ]] ; then
+		local path=$(dirname ${GCC})
+		GNATMAKE="${path}/${GNATMAKE}"
+		GNATBIND="${path}/${GNATBIND}"
+	fi
 	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
 		eerror "1) use gcc-config to select the right compiler or"
