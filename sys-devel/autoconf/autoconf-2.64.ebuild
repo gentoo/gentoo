@@ -1,7 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
+
+inherit toolchain-autoconf
 
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
@@ -17,10 +19,3 @@ DEPEND=">=sys-devel/m4-1.4.6
 RDEPEND="${DEPEND}
 	!~sys-devel/${P}:2.5
 	>=sys-devel/autoconf-wrapper-13"
-
-if [[ -z ${__EBLITS__} && -n ${FILESDIR} ]] ; then
-	source "${FILESDIR}"/eblits/main.eblit || die
-fi
-src_prepare()   { eblit-run src_prepare   ; }
-src_configure() { eblit-run src_configure ; }
-src_install()   { eblit-run src_install   ; }
