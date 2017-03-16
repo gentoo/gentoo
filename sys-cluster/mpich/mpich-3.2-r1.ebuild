@@ -15,7 +15,7 @@ SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="mpich"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx doc fortran mpi-threads romio threads"
 
 COMMON_DEPEND="
