@@ -1,0 +1,23 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Christoph Junghans <junghans@gentoo.org> (14 Feb 2017)
+# Stable-masking mpi support so Boost 1.62 stabilization can go ahead
+# (bug 590244)
+=dev-libs/boost-1.62* mpi

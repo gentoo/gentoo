@@ -49,11 +49,6 @@ app-emulation/libvirt zfs
 app-office/kmymoney weboob
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
-# Stable-masking mpi support so Boost 1.62 stabilization can go ahead
-# (bug 590244)
-=dev-libs/boost-1.62* mpi
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
 # Has no stable reverse deps requiring this useflag
 # Stable-masking it so Boost 1.62 stabilization can go ahead
 sci-libs/vtk mpi
