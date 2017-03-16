@@ -1,0 +1,29 @@
+[mattst88] Dropped configure.ac changes. ebuild depends on these.
+
+From dd6771cdf6f04cde37eb14891573c0e55be83241 Mon Sep 17 00:00:00 2001
+From: Julien Cristau <jcristau@debian.org>
+Date: Sun, 26 Apr 2015 17:53:15 +0200
+Subject: configure, xpresent.pc: require xext, xfixes and xrandr
+
+include/X11/extensions/Xpresent.h:#include <X11/extensions/Xfixes.h>
+include/X11/extensions/Xpresent.h:#include <X11/extensions/Xrandr.h>
+include/X11/extensions/Xpresent.h:#include <X11/extensions/sync.h>
+
+v2: also add requirement in xpresent.pc since we include those in our
+    public header
+
+Signed-off-by: Julien Cristau <jcristau@debian.org>
+
+diff --git a/xpresent.pc.in b/xpresent.pc.in
+index d5d0d38..8f6047a 100644
+--- a/xpresent.pc.in
++++ b/xpresent.pc.in
+@@ -7,6 +7,6 @@ Name: Xpresent
+ Description: X Present  Library
+ Version: @PACKAGE_VERSION@
+ Requires: xproto presentproto >= @PRESENTEXT_VERSION@
+-Requires.private: x11
++Requires.private: x11 xext xfixes xrandr
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lXpresent
+-- 
