@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils versionator toolchain-funcs flag-o-matic gnuconfig multilib systemd unpacker multiprocessing prefix
+inherit toolchain-glibc
 
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
@@ -102,60 +102,10 @@ SRC_URI=$(
 )
 SRC_URI+=" ${GCC_BOOTSTRAP_VER:+multilib? ( $(gentoo_uris gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2) )}"
 
-# eblit-include [--skip] <function> [version]
-eblit-include() {
-	local skipable=false
-	[[ $1 == "--skip" ]] && skipable=true && shift
-	[[ $1 == pkg_* ]] && skipable=true
-
-	local e v func=$1 ver=$2
-	[[ -z ${func} ]] && die "Usage: eblit-include <function> [version]"
-	for v in ${ver:+-}${ver} -${PVR} -${PV} "" ; do
-		e="${FILESDIR}/eblits/${func}${v}.eblit"
-		if [[ -e ${e} ]] ; then
-			source "${e}"
-			return 0
-		fi
-	done
-	${skipable} && return 0
-	die "Could not locate requested eblit '${func}' in ${FILESDIR}/eblits/"
-}
-
-# eblit-run-maybe <function>
-# run the specified function if it is defined
-eblit-run-maybe() {
-	[[ $(type -t "$@") == "function" ]] && "$@"
-}
-
-# eblit-run <function> [version]
-# aka: src_unpack() { eblit-run src_unpack ; }
-eblit-run() {
-	eblit-include --skip common "${*:2}"
-	eblit-include "$@"
-	eblit-run-maybe eblit-$1-pre
-	eblit-${PN}-$1
-	eblit-run-maybe eblit-$1-post
-}
-
-src_unpack()  { eblit-run src_unpack  ; }
-src_compile() { eblit-run src_compile ; }
-src_test()    { eblit-run src_test    ; }
-src_install() { eblit-run src_install ; }
-
-# FILESDIR might not be available during binpkg install
-for x in setup {pre,post}inst ; do
-	e="${FILESDIR}/eblits/pkg_${x}.eblit"
-	if [[ -e ${e} ]] ; then
-		. "${e}"
-		eval "pkg_${x}() { eblit-run pkg_${x} ; }"
-	fi
-done
-
-eblit-src_unpack-pre() {
+src_unpack() {
 	[[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
-}
+	toolchain-glibc_src_unpack
 
-eblit-src_unpack-post() {
 	cd "${S}"
 
 	epatch "${FILESDIR}"/2.19/${PN}-2.19-ia64-gcc-4.8-reloc-hack.patch #503838
@@ -194,7 +144,9 @@ eblit-src_unpack-post() {
 	fi
 }
 
-eblit-pkg_preinst-post() {
+pkg_preinst() {
+	toolchain-glibc_pkg_preinst
+
 	if [[ ${CTARGET} == arm* ]] ; then
 		# Backwards compat support for renaming hardfp ldsos #417287
 		local oldso='/lib/ld-linux.so.3'
