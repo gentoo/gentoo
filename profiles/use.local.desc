@@ -3158,7 +3158,6 @@ games-strategy/freeciv:modpack - Build the freeciv-modpack-program to download/i
 games-strategy/freeciv:server - Enable server support. Disabling this will also make it impossible to start local games.
 games-strategy/freeciv:sound - Add support for sound provided by media-libs/sdl-mixer
 games-strategy/freeciv:system-lua - Use dev-lang/lua instead of the bundled liblua
-games-strategy/freeorion:cg - Add support for NVIDIA toolkit plugin
 games-strategy/freesynd:devtools - Build development tools
 games-strategy/heroes3:maps - Installs optional map data
 games-strategy/heroes3:music - Installs optional music data
