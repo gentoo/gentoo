@@ -71,12 +71,10 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 
 	if use python; then
-		myeconfargs+=(
-			--enable-python-binding
-			--with-boost-python
-		)
 		python_configure() {
-			econf "${myeconfargs[@]}"
+			econf "${myeconfargs[@]}" \
+				--enable-python-binding \
+				--with-boost-python="${EPYTHON#python}"
 		}
 		distutils-r1_src_configure
 	fi
