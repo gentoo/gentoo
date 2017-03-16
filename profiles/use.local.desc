@@ -4571,6 +4571,12 @@ media-sound/split2flac:flake - Add support for Flake, alternative FLAC encoder
 media-sound/split2flac:mac - Add support for Monkey's Audio files
 media-sound/split2flac:replaygain - Support for Replay Gain metadata, for relative volume adjustment
 media-sound/spotify:pax_kernel - Triggers a paxmarking of the main Spotify binary
+media-sound/supercollider:emacs - Enable the SCEL user interface
+media-sound/supercollider:gedit - Enable the SCED user interface
+media-sound/supercollider:gpl3 - Build GPL-3 licensed code (recommended)
+media-sound/supercollider:server - Build with internal server
+media-sound/supercollider:vim - Enable the SCVIM user interface
+media-sound/supercollider:wiimote - Build sclang with Wii Remote support
 media-sound/teamspeak-server-bin:tsdns - Make use of TeamSpeak DNS.
 media-sound/tomahawk:hatchet - Enable support for the synchronisation through Hatchet
 media-sound/tomahawk:telepathy - Enable support for the real-time communication framework telepathy
