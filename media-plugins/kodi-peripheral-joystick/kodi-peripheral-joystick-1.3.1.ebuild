@@ -27,7 +27,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-17*
+	>media-tv/kodi-17.0.9999:0
+	=media-tv/kodi-17*:0
 	=media-libs/kodi-platform-17*
 	=dev-libs/libplatform-2*
 	dev-libs/libpcre
