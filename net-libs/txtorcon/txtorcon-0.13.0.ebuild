@@ -17,7 +17,7 @@ IUSE="test"
 
 RDEPEND="dev-python/twisted-core[${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]
-	net-misc/tor
+	net-vpn/tor
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	dev-python/geoip-python[${PYTHON_USEDEP}]"
 

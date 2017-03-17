@@ -3,7 +3,7 @@
 
 # Jeroen Roovers <jer@gentoo.org> <16 Jan 2017>
 # Incomplete support, bug #605878.
-net-misc/tor seccomp
+net-vpn/tor seccomp
 
 # Jeroen Roovers <jer@gentoo.org> <5 Feb 2017>
 # media-libs/libilbc has not been ported to PPC64

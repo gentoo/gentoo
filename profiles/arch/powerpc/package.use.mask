@@ -233,7 +233,7 @@ dev-ruby/rack-test test
 
 # Anthony G. Basile <blueness@gentoo.org> (21 Aug 2012)
 # Does not work on ppc/ppc64
-net-misc/tor tor-hardening
+net-vpn/tor tor-hardening
 
 # Brent Baude <ranger@gentoo.org> (06 Mar 2012)
 # masking kde on gajim
