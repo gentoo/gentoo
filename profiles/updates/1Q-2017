@@ -10,7 +10,6 @@ move net-firewall/ipsec-tools net-vpn/ipsec-tools
 move net-misc/kvpnc net-vpn/kvpnc
 move net-misc/libreswan net-vpn/libreswan
 move net-misc/logmein-hamachi net-vpn/logmein-hamachi
-move net-misc/metadata.xml net-vpn/metadata.xml
 move net-misc/openconnect net-vpn/openconnect
 move net-misc/openfortivpn net-vpn/openfortivpn
 move net-misc/openvpn net-vpn/openvpn
