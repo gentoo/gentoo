@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=app-arch/lz4:= >=dev-libs/boost-1.55.0:= dev-libs/lzo:2= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/freeglut:= media-libs/freetype:2= media-libs/glew:= media-libs/libjpeg-turbo:= media-libs/libpng:= media-libs/libsdl2:= sci-libs/blas-reference:= >=sci-libs/superlu-4.1:= sys-libs/zlib:= virtual/libusb:= virtual/opengl virtual/pkgconfig dev-qt/linguist-tools:5 sys-devel/make >=dev-util/cmake-3.6.3
+DESCRIPTION=An open-source full-featured 2D animation creation software
+EAPI=6
+HOMEPAGE=https://github.com/opentoonz/opentoonz
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD libtiff
+RDEPEND=app-arch/lz4:= >=dev-libs/boost-1.55.0:= dev-libs/lzo:2= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/freeglut:= media-libs/freetype:2= media-libs/glew:= media-libs/libjpeg-turbo:= media-libs/libpng:= media-libs/libsdl2:= sci-libs/blas-reference:= >=sci-libs/superlu-4.1:= sys-libs/zlib:= virtual/libusb:= virtual/opengl
+SLOT=0
+SRC_URI=https://github.com/opentoonz/opentoonz/archive/v1.1.2.tar.gz -> opentoonz-1.1.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:- src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=dc3cfa7798c5287726845808b9c2f96c
