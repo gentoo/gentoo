@@ -6212,7 +6212,6 @@ dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
-dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writing Nagios plugins
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
 dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
@@ -17307,7 +17306,7 @@ sys-boot/efibootmgr 0.5.4 0.5.4-r1 0.6.0 0.11.0 0.12 13 14: User-space applicati
 sys-boot/elilo 3.6_p20060314 3.10 3.12 3.16: Linux boot loader for EFI-based systems such as IA-64
 sys-boot/getdvhoff 0.12-r1: Utility for use on LiveCDs to calculate offset of the ext2 partition for losetup
 sys-boot/gnu-efi 3.0u 3.0.2 3.0.3 3.0.4: Library for build EFI Applications
-sys-boot/grub 0.97-r16 0.97-r17 2.02_beta2-r9 2.02_beta3-r1 2.02_rc1 9999: GNU GRUB boot loader
+sys-boot/grub 0.97-r16 0.97-r17 2.02_beta2-r9 2.02_beta3-r1 2.02_rc1 2.02_rc2 9999: GNU GRUB boot loader
 sys-boot/grub-static 0.96-r1 0.97 0.97-r6 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
 sys-boot/lilo 22.8-r2 23.2-r2 24.0-r1 24.1 24.2: Standard Linux boot loader
 sys-boot/makebootfat 1.4: Command line utility able to create bootable USB disks
