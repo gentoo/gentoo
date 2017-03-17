@@ -269,10 +269,6 @@ dev-libs/libpcre jit
 # Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
 dev-libs/libmemcached tcmalloc
 
-# Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
-# Mask numa use flag per bug #381313
-sys-apps/hwloc numa
-
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2011)
 # Needs sci-libs/umfpack keyworded. Bug #361947.
 media-libs/gegl umfpack
