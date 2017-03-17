@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Adobe's open source typeface family designed for UI environments
+EAPI=6
+HOMEPAGE=http://adobe-fonts.github.io/source-sans-pro http://adobe-fonts.github.io/source-serif-pro http://adobe-fonts.github.io/source-code-pro
+IUSE=cjk X
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x64-macos
+LICENSE=OFL-1.1
+RDEPEND=media-libs/fontconfig cjk? ( media-fonts/source-han-sans )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://github.com/adobe-fonts/source-sans-pro/archive/2.020R-ro/1.075R-it.tar.gz -> source-sans-pro-20170111.tar.gz https://github.com/adobe-fonts/source-serif-pro/archive/2.000R.tar.gz -> source-serif-pro-20170111.tar.gz https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.tar.gz -> source-code-pro-20170111.tar.gz
+_eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_prepare:- src_install:-
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	font	82836641e7d4639329d8c195234ad0e3	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=c9959c60fe621598f13bc7ec2a5fb0a9
