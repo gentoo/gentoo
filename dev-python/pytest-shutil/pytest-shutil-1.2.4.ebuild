@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
-DESCRIPTION="Virtualenv fixture for py.test"
+DESCRIPTION="A goodie-bag of unix shell and environment tools for py.test"
 HOMEPAGE="https://github.com/manahl/pytest-plugins https://pypi.python.org/pypi/pytest-shutil"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
