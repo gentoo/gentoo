@@ -26,7 +26,7 @@ net-analyzer/tcpdump drop-root
 app-text/asciidoc test highlight
 
 # iproute2 - linux only
-net-misc/openvpn iproute2
+net-vpn/openvpn iproute2
 
 app-admin/sshguard -ipfilter
 media-video/ffmpeg ieee1394 iec61883

@@ -17,7 +17,7 @@ IUSE="gtk test"
 RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=net-misc/networkmanager-1.2.0:=
-	>=net-misc/openvpn-2.1_rc9
+	>=net-vpn/openvpn-2.1_rc9
 	gtk? (
 		>=app-crypt/libsecret-0.18
 		>=gnome-extra/nm-applet-1.2.0

@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND=">=dev-libs/openssl-0.9.6:0"
 RDEPEND="${DEPEND}
-	!<net-misc/openvpn-2.3"
+	!<net-vpn/openvpn-2.3"
 
 S="${WORKDIR}/${MY_P}"
 

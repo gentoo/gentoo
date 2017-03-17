@@ -207,7 +207,7 @@ media-libs/phonon zeitgeist
 
 # Dirkjan Ochtman <djc@gentoo.org> (3 May 2013)
 # depends on net-libs/polarssl
->=net-misc/openvpn-2.3.1 polarssl
+>=net-vpn/openvpn-2.3.1 polarssl
 
 # Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
 # missing keyword on media-libs/tremor, bug #453200

@@ -46,7 +46,7 @@ DEPEND="
 	openconnect? (
 		$(add_qt_dep qtxml)
 		net-misc/networkmanager-openconnect
-		net-misc/openconnect:=
+		net-vpn/openconnect:=
 	)
 "
 RDEPEND="${DEPEND}

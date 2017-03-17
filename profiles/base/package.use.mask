@@ -356,7 +356,7 @@ media-video/rtmpdump polarssl
 
 # Julian Ospald <hasufell@gentoo.org> (06 Apr 2014)
 # broken wrt #501582
-<net-misc/openvpn-9999 polarssl
+<net-vpn/openvpn-9999 polarssl
 
 # Manuel Rüger <mrueg@gentoo.org> (07 Mar 2014)
 # Mask ruby18-only compatible flags

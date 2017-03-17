@@ -168,7 +168,7 @@ www-client/chromium widevine
 
 # Markus Meier <maekke@gentoo.org> (17 Jan 2015)
 # Unkeyworded deps, bug #536226
-net-misc/strongswan strongswan_plugins_unbound
+net-vpn/strongswan strongswan_plugins_unbound
 
 # Markus Meier <maekke@gentoo.org> (17 Jan 2015)
 # Unkeyworded deps, bug #533404
@@ -363,7 +363,7 @@ media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (05 Feb 2013)
 # masking all stable packages with java use flag
-net-misc/openconnect java
+net-vpn/openconnect java
 dev-util/oprofile java
 =dev-db/qdbm-1.8.78-r1 java
 dev-libs/beecrypt java
@@ -441,7 +441,7 @@ app-admin/syslog-ng json
 # Anthony G. Basile <blueness@gentoo.org> (Dec 21, 2011)
 # Mask the vde flag on tinc because net-misc/vde is not
 # keyworded for arm
-net-misc/tinc vde
+net-vpn/tinc vde
 
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86,

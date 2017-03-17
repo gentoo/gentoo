@@ -19,7 +19,7 @@ IUSE="libressl"
 DEPEND="!libressl? ( >=dev-libs/openssl-0.9.6:0 )
 	libressl? ( dev-libs/libressl )"
 RDEPEND="${DEPEND}
-	!<net-misc/openvpn-2.3"
+	!<net-vpn/openvpn-2.3"
 
 S="${WORKDIR}/${MY_P}"
 

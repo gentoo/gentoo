@@ -19,11 +19,11 @@ RDEPEND=">=dev-libs/glib-2.16
 	bluetooth? ( net-wireless/bluez )
 	l2tp? ( net-dialup/xl2tpd )
 	ofono? ( net-misc/ofono )
-	openconnect? ( net-misc/openconnect )
-	openvpn? ( net-misc/openvpn )
+	openconnect? ( net-vpn/openconnect )
+	openvpn? ( net-vpn/openvpn )
 	policykit? ( sys-auth/polkit )
 	pptp? ( net-dialup/pptpclient )
-	vpnc? ( net-misc/vpnc )
+	vpnc? ( net-vpn/vpnc )
 	wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] )
 	wispr? ( net-libs/gnutls )"
 

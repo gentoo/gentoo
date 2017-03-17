@@ -41,7 +41,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	virtual/logger
 	sys-apps/iproute2
-	!net-misc/libreswan
+	!net-vpn/libreswan
 	selinux? ( sec-policy/selinux-ipsec )"
 
 UGID="ipsec"
@@ -208,10 +208,10 @@ src_install() {
 }
 
 pkg_preinst() {
-	has_version "<net-misc/strongswan-4.3.6-r1"
+	has_version "<net-vpn/strongswan-4.3.6-r1"
 	upgrade_from_leq_4_3_6=$(( !$? ))
 
-	has_version "<net-misc/strongswan-4.3.6-r1[-caps]"
+	has_version "<net-vpn/strongswan-4.3.6-r1[-caps]"
 	previous_4_3_6_with_caps=$(( !$? ))
 }
 
