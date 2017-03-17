@@ -42,7 +42,7 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_PLUGINS_DIR="/usr/$(get_libdir)/ladspa" \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		MKDIR_P="mkdir -p" \
 		install
 
@@ -50,5 +50,5 @@ src_install() {
 
 	# Needed for apps like rezound
 	dodir /etc/env.d
-	echo "LADSPA_PATH=/usr/$(get_libdir)/ladspa" > "${D}/etc/env.d/60ladspa"
+	echo "LADSPA_PATH=${EPREFIX}/usr/$(get_libdir)/ladspa" > "${ED}/etc/env.d/60ladspa"
 }
