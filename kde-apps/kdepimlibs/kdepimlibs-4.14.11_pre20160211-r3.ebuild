@@ -36,6 +36,8 @@ DEPEND="
 # boost is not linked to, but headers which include it are installed
 # bug #418071
 RDEPEND="${DEPEND}
+	!app-crypt/gpgme[cxx]
+	!app-crypt/gpgme[qt5]
 	!<kde-apps/kdepim-runtime-4.4.11.1-r2:4
 "
 
