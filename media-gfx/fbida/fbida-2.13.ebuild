@@ -100,7 +100,7 @@ src_compile() {
 
 src_install() {
 	emake \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		STRIP="" \
 		prefix=/usr \
 		install
@@ -109,8 +109,8 @@ src_install() {
 
 	if use fbcon && ! use ghostscript; then
 		rm \
-			"${D}"/usr/bin/fbgs \
-			"${D}"/usr/share/man/man1/fbgs.1 \
+			"${ED}"/usr/bin/fbgs \
+			"${ED}"/usr/share/man/man1/fbgs.1 \
 			|| die
 	fi
 
