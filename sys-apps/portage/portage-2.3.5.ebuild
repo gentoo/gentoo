@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=(
 	pypy
-	python3_3 python3_4 python3_5
+	python3_3 python3_4 python3_5 python3_6
 	python2_7
 )
-PYTHON_REQ_USE='bzip2(+)'
+PYTHON_REQ_USE='bzip2(+),threads(+)'
 
 inherit distutils-r1 multilib
 
@@ -16,9 +16,9 @@ DESCRIPTION="Portage is the package management and distribution system for Gento
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 SLOT="0"
-IUSE="build doc epydoc +ipc linguas_ru selinux xattr"
+IUSE="build doc epydoc +ipc linguas_ru +native-extensions selinux xattr"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
@@ -43,6 +43,7 @@ RDEPEND="
 	)
 	elibc_FreeBSD? ( sys-freebsd/freebsd-bin )
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
+	elibc_musl? ( >=sys-apps/sandbox-2.2 )
 	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	>=app-misc/pax-utils-0.1.17
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
@@ -83,6 +84,11 @@ pkg_setup() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	if use native-extensions; then
+		printf "[build_ext]\nportage-ext-modules=true\n" >> \
+			setup.cfg || die
+	fi
 
 	if ! use ipc ; then
 		einfo "Disabling ipc..."
@@ -218,21 +224,11 @@ pkg_preinst() {
 		chmod g+s,ug+rwx "${ED}"var/log/portage{,/elog}
 	fi
 
-	if has_version "<${CATEGORY}/${PN}-2.1.13" || \
-		{
-			has_version ">=${CATEGORY}/${PN}-2.2_rc0" && \
-			has_version "<${CATEGORY}/${PN}-2.2.0_alpha189"
-		} ; then
-		USERPRIV_UPGRADE=true
-		USERSYNC_UPGRADE=true
-		REPOS_CONF_UPGRADE=true
-		REPOS_CONF_SYNC=
-		type -P portageq >/dev/null 2>&1 && \
-			REPOS_CONF_SYNC=$("$(type -P portageq)" envvar SYNC)
+	if has_version ">=${CATEGORY}/${PN}-2.3.1" && \
+		has_version "<${CATEGORY}/${PN}-2.3.3"; then
+		SYNC_DEPTH_UPGRADE=true
 	else
-		USERPRIV_UPGRADE=false
-		USERSYNC_UPGRADE=false
-		REPOS_CONF_UPGRADE=false
+		SYNC_DEPTH_UPGRADE=false
 	fi
 }
 
@@ -267,99 +263,15 @@ new_config_protect() {
 }
 
 pkg_postinst() {
-
-	if ${REPOS_CONF_UPGRADE} ; then
-		einfo "Generating repos.conf"
-		local repo_name=
-		[[ -f ${PORTDIR}/profiles/repo_name ]] && \
-			repo_name=$(< "${PORTDIR}/profiles/repo_name")
-		if [[ -z ${REPOS_CONF_SYNC} ]] ; then
-			REPOS_CONF_SYNC=$(grep "^sync-uri =" "${EROOT:-${ROOT}}usr/share/portage/config/repos.conf")
-			REPOS_CONF_SYNC=${REPOS_CONF_SYNC##* }
-		fi
-		local sync_type=
-		[[ ${REPOS_CONF_SYNC} == git://* ]] && sync_type=git
-
-		if [[ ${REPOS_CONF_SYNC} == cvs://* ]]; then
-			sync_type=cvs
-			REPOS_CONF_SYNC=${REPOS_CONF_SYNC#cvs://}
-		fi
-
-		cat <<-EOF > "${T}/repos.conf"
-		[DEFAULT]
-		main-repo = ${repo_name:-gentoo}
-
-		[${repo_name:-gentoo}]
-		location = ${PORTDIR:-${EPREFIX}/usr/portage}
-		sync-type = ${sync_type:-rsync}
-		sync-uri = ${REPOS_CONF_SYNC}
-		EOF
-
-		[[ ${sync_type} == cvs ]] && echo "sync-cvs-repo = $(<"${PORTDIR}/CVS/Repository")" >> "${T}/repos.conf"
-
-		local dest=${EROOT:-${ROOT}}etc/portage/repos.conf
-		if [[ ! -f ${dest} ]] && mkdir -p "${dest}" 2>/dev/null ; then
-			dest=${EROOT:-${ROOT}}etc/portage/repos.conf/${repo_name:-gentoo}.conf
-		fi
-		# Don't install the config update if the desired repos.conf directory
-		# and config file exist, since users may accept it blindly and break
-		# their config (bug #478726).
-		[[ -e ${EROOT:-${ROOT}}etc/portage/repos.conf/${repo_name:-gentoo}.conf ]] || \
-			mv "${T}/repos.conf" "$(new_config_protect "${dest}")"
-
-		if [[ ${PORTDIR} == ${EPREFIX}/usr/portage ]] ; then
-			einfo "Generating make.conf PORTDIR setting for backward compatibility"
-			for dest in "${EROOT:-${ROOT}}etc/make.conf" "${EROOT:-${ROOT}}etc/portage/make.conf" ; do
-				[[ -e ${dest} ]] && break
-			done
-			[[ -d ${dest} ]] && dest=${dest}/portdir.conf
-			rm -rf "${T}/make.conf"
-			[[ -f ${dest} ]] && cat "${dest}" > "${T}/make.conf"
-			cat <<-EOF >> "${T}/make.conf"
-
-			# Set PORTDIR for backward compatibility with various tools:
-			#   gentoo-bashcomp - bug #478444
-			#   euse - bug #474574
-			#   euses and ufed - bug #478318
-			PORTDIR="${EPREFIX}/usr/portage"
-			EOF
-			mkdir -p "${dest%/*}"
-			mv "${T}/make.conf" "$(new_config_protect "${dest}")"
-		fi
+	if ${SYNC_DEPTH_UPGRADE}; then
+		ewarn "Please note that this release no longer respects sync-depth for"
+		ewarn "git repositories.  There have been too many problems and"
+		ewarn "performance issues.  See bugs 552814, 559008"
 	fi
-
-	local distdir=${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}
-
-	if ${USERSYNC_UPGRADE} && \
-		[[ -d ${PORTDIR} && -w ${PORTDIR} ]] ; then
-		local ownership=$(get_ownership "${PORTDIR}")
-		if [[ -n ${ownership} ]] ; then
-			einfo "Adjusting PORTDIR permissions for usersync"
-			find "${PORTDIR}" -path "${distdir%/}" -prune -o \
-				! \( -user "${ownership%:*}" -a -group "${ownership#*:}" \) \
-				-exec chown "${ownership}" {} +
-		fi
-	fi
-
-	# Do this last, since it could take a long time if there
-	# are lots of live sources, and the user may be tempted
-	# to kill emerge while it is running.
-	if ${USERPRIV_UPGRADE} && \
-		[[ -d ${distdir} && -w ${distdir} ]] ; then
-		local ownership=$(get_ownership "${distdir}")
-		if [[ ${ownership#*:} == portage ]] ; then
-			einfo "Adjusting DISTDIR permissions for userpriv"
-			find "${distdir}" -mindepth 1 -maxdepth 1 -type d -uid 0 \
-				-exec chown -R portage:portage {} +
-		fi
-	fi
-
 	einfo ""
-	einfo "This release of portage contains the new repoman code base"
-	einfo "This code base is still being developed.  So its API's are"
-	einfo "not to be considered stable and are subject to change."
-	einfo "The code released has been tested and considered ready for use."
-	einfo "This however does not guarantee it to be completely bug free."
+	einfo "This release of portage NO LONGER contains the repoman code base."
+	einfo "Repoman has its own ebuild and release package."
+	einfo "For repoman functionality please emerge app-portage/repoman"
 	einfo "Please report any bugs you may encounter."
 	einfo ""
 }
