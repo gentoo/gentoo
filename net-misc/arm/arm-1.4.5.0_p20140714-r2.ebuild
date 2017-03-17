@@ -19,7 +19,7 @@ IUSE="test"
 DEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=">=net-libs/stem-1.2.2_p20140718[${PYTHON_USEDEP}]
-	net-misc/tor"
+	net-vpn/tor"
 
 python_prepare_all() {
 	sed -i -e "s/.version import VERSION/ import __version__ as VERSION/"\
