@@ -11934,7 +11934,7 @@ kde-apps/thumbnailers 16.08.3 16.12.3: Thumbnail generators for PDF/PS and RAW f
 kde-apps/umbrello 16.08.3 16.12.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.08.3 16.12.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.29.0 5.31.0 5.32.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 4.14.3 5.29.0 5.31.0 5.32.0: Framework for searching and managing metadata
+kde-frameworks/baloo 4.14.3 4.14.3_p20161017 5.29.0 5.31.0 5.32.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.29.0 5.31.0 5.32.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.29.0 5.31.0 5.32.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.29.0 5.31.0 5.32.0: Breeze SVG icon theme binary resource
