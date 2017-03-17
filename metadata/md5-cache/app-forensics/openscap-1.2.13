@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=!nss? ( dev-libs/libgcrypt:0 ) nss? ( dev-libs/nss ) acl? ( virtual/acl ) caps? ( sys-libs/libcap ) gconf? ( gnome-base/gconf ) ldap? ( net-nds/openldap ) pcre? ( dev-libs/libpcre ) rpm? ( >=app-arch/rpm-4.9 ) sql? ( dev-db/opendbx ) xattr? ( sys-apps/attr ) dev-libs/libpcre dev-libs/libxml2 dev-libs/libxslt net-misc/curl python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] doc? ( app-doc/doxygen ) perl? ( dev-lang/swig ) python? ( dev-lang/swig ) test? ( app-arch/unzip dev-perl/XML-XPath net-misc/ipcalc sys-apps/grep )
+DESCRIPTION=Framework which enables integration with Security Content Automation Protocol
+EAPI=5
+HOMEPAGE=http://www.open-scap.org/
+IUSE=acl caps debug doc gconf ldap nss pcre perl python rpm selinux sce sql test xattr python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=!nss? ( dev-libs/libgcrypt:0 ) nss? ( dev-libs/nss ) acl? ( virtual/acl ) caps? ( sys-libs/libcap ) gconf? ( gnome-base/gconf ) ldap? ( net-nds/openldap ) pcre? ( dev-libs/libpcre ) rpm? ( >=app-arch/rpm-4.9 ) sql? ( dev-db/opendbx ) xattr? ( sys-apps/attr ) dev-libs/libpcre dev-libs/libxml2 dev-libs/libxslt net-misc/curl python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/OpenSCAP/openscap/releases/download/1.2.13/openscap-1.2.13.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=8472af0f0a9ba492ebe1084b4bdaeaa0
