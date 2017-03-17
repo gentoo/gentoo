@@ -6166,7 +6166,6 @@ net-misc/hylafaxplus:html - Convert faxes into html email
 net-misc/hylafaxplus:jbig - JBIG Fax Compression Support
 net-misc/hylafaxplus:mgetty - Receive faxes via serial port connections
 net-misc/hylafaxplus:pam - hfaxd authentication via PAM
-net-misc/i2pd:i2p-hardening - Compile with hardening on vanilla compilers/linkers
 net-misc/icecast:kate - Add karaoke and text encapsulation support for Ogg files
 net-misc/icecast:logrotate - Install support files for app-admin/logrotate?
 net-misc/icecast:yp - Build support for yp public directory listings
@@ -6371,12 +6370,6 @@ net-misc/termpkg:uucp - Adds support for uucp style device locking
 net-misc/tigervnc:drm - build with DRM support
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
-net-misc/tor:bufferevents - Use libevent's buffered IO implementation (unstable, buggy)
-net-misc/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
-net-misc/tor:stats - Enable tracking of how much of each kind of resource we download
-net-misc/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
-net-misc/tor:transparent-proxy - Enable transparent proxying
-net-misc/tor:web - Build a tor2web service instead of a tor client
 net-misc/uftp:server - Install uftp server daemon
 net-misc/vde:pcap - Enable the pcap-based plugin that allows creating a switch against a real interface.
 net-misc/vde:ssl - Enable the cryptcab plugin that allows creating an encrypted virtual cable.
@@ -6487,8 +6480,6 @@ net-p2p/fms:frost - Add support for frost boards
 net-p2p/go-ethereum:evm - Build Ethereum Virtual Machine (EVM)
 net-p2p/go-ethereum:opencl - Add OpenCL GPU mining support
 net-p2p/go-ipfs-bin:fuse - Enable runtime support for sys-fs/fuse
-net-p2p/i2p:ecdsa - Enables additional checks to make sure a setup is available that is capable of using I2Ps ECDSA provisions. I2P will work without it, but you will likely see warnings.
-net-p2p/i2p:nls - Adds Native Language Support using GNU gettext.
 net-p2p/ktorrent:bwscheduler - Schedule upload and download limits over a period of a week
 net-p2p/ktorrent:downloadorder - Specify the download order of a multi-file torrent
 net-p2p/ktorrent:infowidget - Displays general information about a torrent in several tabs
@@ -6627,6 +6618,9 @@ net-vpn/badvpn:ncd - Build NCD, a lightweight scripting language especially suit
 net-vpn/badvpn:server - Build the badvpn-server program, a central server that manages the VPN network.
 net-vpn/badvpn:tun2socks - Build tun2socks, a program which implements a TUN device that forwards TCP traffic through a SOCKS5 server.
 net-vpn/badvpn:udpgw - Build udpgw, a small daemon which allows tun2socks to forward UDP traffic.
+net-vpn/i2p:ecdsa - Enables additional checks to make sure a setup is available that is capable of using I2Ps ECDSA provisions. I2P will work without it, but you will likely see warnings.
+net-vpn/i2p:nls - Adds Native Language Support using GNU gettext.
+net-vpn/i2pd:i2p-hardening - Compile with hardening on vanilla compilers/linkers
 net-vpn/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
 net-vpn/ipsec-tools:idea - Enable support for the IDEA algorithm
 net-vpn/ipsec-tools:nat - Enable NAT-Traversal
@@ -6673,6 +6667,12 @@ net-vpn/strongswan:strongswan_plugins_whitelist - Enable support for the whiteli
 net-vpn/tinc:gui - Add GUI support, using dev-python/wxpython
 net-vpn/tinc:uml - Enable support for User Mode Linux Sockets
 net-vpn/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
+net-vpn/tor:bufferevents - Use libevent's buffered IO implementation (unstable, buggy)
+net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
+net-vpn/tor:stats - Enable tracking of how much of each kind of resource we download
+net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
+net-vpn/tor:transparent-proxy - Enable transparent proxying
+net-vpn/tor:web - Build a tor2web service instead of a tor client
 net-vpn/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-vpn/wireguard:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
 net-vpn/wireguard:module - Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.

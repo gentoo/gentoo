@@ -7889,7 +7889,7 @@ dev-python/networkx 1.9.1 1.10 1.10-r1 1.11: Python tools to manipulate graphs a
 dev-python/neutron-lib 0.0.2 0.4.0 1.1.0: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1 0.11.1-r1 0.12.0 0.13.0 0.14.0: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r1: A Python framework for creating text-based applications
-dev-python/nltk 3.0.3 3.0.4 3.2.1: Natural Language Toolkit
+dev-python/nltk 3.0.3 3.0.4 3.2.1 3.2.2: Natural Language Toolkit
 dev-python/nnpy 1.2-r1 1.3: cffi-based Python bindings for nanomsg
 dev-python/node-semver 0.1.1: Python version of node-semver, the semantic versioner for npm
 dev-python/nose 1.3.7-r1 1.3.7-r2 1.3.7-r3 9999: Unittest extension with automatic test suite discovery and easy test authoring
@@ -14994,12 +14994,10 @@ net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopma
 net-mail/vpopmail 5.4.33 5.4.33-r1: A collection of programs to manage virtual email domains and accounts on your Qmail mail servers
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin
 net-mail/yosucker 73 77: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
-net-misc/6tunnel 0.10 0.11_rc1 0.12: TCP proxy for applications that don't speak IPv6
 net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-misc/apt-cacher-ng 2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
 net-misc/aria2 1.30.0 1.31.0: A download utility with segmented downloading with BitTorrent support
@@ -15050,7 +15048,6 @@ net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.33-r1: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.0 1.0-r1 1.1.1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
 net-misc/curl 7.52.1-r1 7.53.0 7.53.1: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
@@ -15109,18 +15106,14 @@ net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.1.2 1.1.3: Synchronize local workstation with time offered by remote webservers
 net-misc/httpie 0.9.2 0.9.3 0.9.4 0.9.9: A CLI, cURL-like tool for humans
-net-misc/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
-net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
-net-misc/i2pd 2.11.0 2.12.0: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0-r1 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 13.4.0.10109380-r2: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.3: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
 net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)
-net-misc/iodine 0.7.0-r2: IP over DNS tunnel
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.9 3.1.3 3.1.7: A TCP, UDP, and SCTP network bandwidth measurement tool
@@ -15131,7 +15124,6 @@ net-misc/ipsvd 1.0.0-r1: ipsvd is a set of internet protocol service daemons for
 net-misc/iputils 20121221-r1 20121221-r2 20151218 20160308 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 0.97.4 0.99.0 0.99.1 0.99.2: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
-net-misc/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jlj 2.12: A simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
@@ -15169,7 +15161,6 @@ net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.4 1.1.5 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20160301 1.5.20161216: MiniSSDP Daemon
 net-misc/miniupnpd 2.0 2.0.20161216: MiniUPnP IGD Daemon
-net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
 net-misc/mobile-broadband-provider-info 20151214: Database of mobile broadband service providers
 net-misc/modemmanager 1.4.14 1.6.4: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
@@ -15213,7 +15204,6 @@ net-misc/nextcloud-client 2.2.4-r2: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
-net-misc/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-misc/ntp 4.2.8_p9: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365 2015.365: A NTP (RFC-1305) client for unix-alike computers
 net-misc/nx 3.5.0.30 3.5.0.32: NX compression technology core libraries
@@ -15337,7 +15327,6 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.8.12 0.2.9.9 0.2.9.10 0.3.0.3_alpha 0.3.0.4_rc: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
@@ -15358,7 +15347,6 @@ net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r1: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
-net-misc/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.18 1.19 1.19.1 1.19.1-r1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
@@ -15456,7 +15444,6 @@ net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protoc
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.10 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/i2p 0.9.26 0.9.27 0.9.28: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.0.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
@@ -15580,20 +15567,33 @@ net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based aro
 net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepathy
 net-voip/vidyodesktop 3.6.3.017 3.6.7.010: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
+net-vpn/6tunnel 0.10 0.11_rc1 0.12: TCP proxy for applications that don't speak IPv6
+net-vpn/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
+net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.0: Peer-to-peer VPN software that abstracts a LAN over the Internet
+net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
+net-vpn/htun 0.9.6: Project to tunnel IP traffic over HTTP
+net-vpn/i2p 0.9.26 0.9.27 0.9.28: A privacy-centric, anonymous network.
+net-vpn/i2pd 2.11.0 2.12.0: A C++ daemon for accessing the I2P anonymous network
+net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
+net-vpn/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/kvpnc 0.9.6a-r2: KDE frontend for various VPN clients
 net-vpn/libreswan 3.18 9999: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.139 2.1.0.174: LogMeIn Hamachi VPN tunneling engine
+net-vpn/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
+net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07-r1 7.07-r2 7.07-r3 7.08 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.3.0: A Fortinet compatible VPN client
 net-vpn/openvpn 2.3.12 2.3.14 2.4.0 2.4.0-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r2: P2P mesh VPN
 net-vpn/strongswan 5.3.4 5.5.1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
+net-vpn/tor 0.2.8.12 0.2.9.9 0.2.9.10 0.3.0.3_alpha 0.3.0.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
+net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard 0.0.20170223 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
