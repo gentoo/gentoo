@@ -1,0 +1,42 @@
+From 85a0db24f32351f6096cd8282f03ad5c2f4e6ef5 Mon Sep 17 00:00:00 2001
+From: Sandro Mani <manisandro@gmail.com>
+Date: Wed, 1 Mar 2017 16:12:38 +0100
+Subject: [PATCH] Fix build against recent sip/PyQt4:
+
+qgsfiledownloader.sip:33:0:
+src/gui/qgsfiledownloader.h:94:5: error: overriding non-deleted function 'virtual QgsFileDownloader::~QgsFileDownloader()'
+
+RuntimeError: qgis._core cannot import type 'QList<QVariant>' from PyQt4.QtCore
+---
+ python/core/core.sip        | 1 +
+ src/gui/qgsfiledownloader.h | 4 +++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/python/core/core.sip b/python/core/core.sip
+index 8f0b6af..41f5450 100644
+--- a/python/core/core.sip
++++ b/python/core/core.sip
+@@ -3,6 +3,7 @@
+ 
+ %Feature QT5_SUPPORT
+ 
++%Import QtCore/QtCoremod.sip
+ %Import QtXml/QtXmlmod.sip
+ %Import QtNetwork/QtNetworkmod.sip
+ %Import QtSql/QtSqlmod.sip
+diff --git a/src/gui/qgsfiledownloader.h b/src/gui/qgsfiledownloader.h
+index c9276f7..841e4b6 100644
+--- a/src/gui/qgsfiledownloader.h
++++ b/src/gui/qgsfiledownloader.h
+@@ -90,8 +90,10 @@ class GUI_EXPORT QgsFileDownloader : public QObject
+     void onSslErrors( QNetworkReply *reply, const QList<QSslError> &errors );
+ #endif
+ 
+-  private:
++  protected:
+     ~QgsFileDownloader();
++
++  private:
+     /**
+      * Abort current request and show an error if the instance has GUI
+      * notifications enabled.
