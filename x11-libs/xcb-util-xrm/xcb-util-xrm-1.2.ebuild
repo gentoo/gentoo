@@ -12,7 +12,7 @@ DESCRIPTION="X C-language Bindings sample implementations"
 HOMEPAGE="http://xcb.freedesktop.org/"
 SRC_URI="https://github.com/Airblader/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="test"
 
 RDEPEND=">=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
