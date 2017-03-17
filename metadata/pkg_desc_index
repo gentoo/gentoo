@@ -8277,7 +8277,7 @@ dev-python/pytest-pythonpath 0.7 0.7.1: pytest plugin for adding to the PYTHONPA
 dev-python/pytest-raisesregexp 2.0 2.1: Simple pytest plugin to look for regex in Exceptions
 dev-python/pytest-rerunfailures 2.1.0: py.test plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-runner 2.6.2 2.8 2.9 2.10.1: Adds support for tests during installation of setup.py files
-dev-python/pytest-shutil 1.2.4 1.2.8: Virtualenv fixture for py.test
+dev-python/pytest-shutil 1.2.4 1.2.8: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-timeout 0.4 1.0.0 1.2.0: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.5 1.2.7: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.13.1 1.14 1.14-r1 1.15.0: Distributed testing and loop-on-failing modes
