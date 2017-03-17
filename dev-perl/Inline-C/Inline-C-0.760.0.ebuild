@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="C Language Support for Inline"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ~sparc x86"
 IUSE="test"
 
 DIST_TEST="do" # parallelism thwarted by race conditions

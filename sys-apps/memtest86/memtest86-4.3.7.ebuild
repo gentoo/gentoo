@@ -11,7 +11,7 @@ SRC_URI="http://www.memtest86.com/downloads/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="serial"
 S="${WORKDIR}/src"
 

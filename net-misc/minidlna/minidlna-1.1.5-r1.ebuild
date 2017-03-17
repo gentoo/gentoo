@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="netgear readynas"
 
 RDEPEND="dev-db/sqlite:3

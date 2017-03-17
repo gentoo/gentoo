@@ -1,11 +1,6 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-
-# Fabian Groffen <grobian@gentoo.org> (22 Feb 2017)
-# 0.15 and 0.16 fail to compile due to missing gnulib module error
-# https://gitlab.com/jas/libidn2/issues/1
->=net-dns/libidn2-0.15
 
 # Fabian Groffen <grobian@gentoo.org> (18 Dec 2016)
 # has multiple compilation issue, resolved for 1.1.8, bug #602990
