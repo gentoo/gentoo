@@ -1,0 +1,34 @@
+diff -up chromium-bsu-0.9.15.1/src/MainSDL_Event.cpp~ chromium-bsu-0.9.15.1/src/MainSDL_Event.cpp
+--- chromium-bsu-0.9.15.1/src/MainSDL_Event.cpp~	2013-05-25 07:35:51.000000000 +0200
++++ chromium-bsu-0.9.15.1/src/MainSDL_Event.cpp	2016-02-20 12:34:47.882913042 +0100
+@@ -19,6 +19,7 @@
+ #include <cstdlib>
+ #include <cstdio>
+ #include <cstring>
++#include <cmath>
+ 
+ #include "Config.h"
+ 
+@@ -417,14 +418,14 @@ void MainSDL::keyMove()
+ #else
+ 		Uint8 *keystate = SDL_GetKeyState(NULL);
+ #endif
+-		if( keystate[SDLK_LEFT]  || keystate[SDLK_KP4] ) key_speed_x -= 2.0 + abs(key_speed_x)*0.4;
+-		if( keystate[SDLK_RIGHT] || keystate[SDLK_KP6] ) key_speed_x += 2.0 + abs(key_speed_x)*0.4;
+-		if( keystate[SDLK_UP]    || keystate[SDLK_KP8] ) key_speed_y -= 2.0 + abs(key_speed_y)*0.4;
+-		if( keystate[SDLK_DOWN]  || keystate[SDLK_KP2] ) key_speed_y += 2.0 + abs(key_speed_y)*0.4;
+-		if( keystate[SDLK_KP7] ){ key_speed_x -= 2.0 + abs(key_speed_x)*0.4; key_speed_y -= 2.0 + abs(key_speed_y)*0.4; }
+-		if( keystate[SDLK_KP9] ){ key_speed_x += 2.0 + abs(key_speed_x)*0.4; key_speed_y -= 2.0 + abs(key_speed_y)*0.4; }
+-		if( keystate[SDLK_KP3] ){ key_speed_x += 2.0 + abs(key_speed_x)*0.4; key_speed_y += 2.0 + abs(key_speed_y)*0.4; }
+-		if( keystate[SDLK_KP1] ){ key_speed_x -= 2.0 + abs(key_speed_x)*0.4; key_speed_y += 2.0 + abs(key_speed_y)*0.4; }
++		if( keystate[SDLK_LEFT]  || keystate[SDLK_KP4] ) key_speed_x -= 2.0 + abs((int)key_speed_x)*0.4;
++		if( keystate[SDLK_RIGHT] || keystate[SDLK_KP6] ) key_speed_x += 2.0 + abs((int)key_speed_x)*0.4;
++		if( keystate[SDLK_UP]    || keystate[SDLK_KP8] ) key_speed_y -= 2.0 + abs((int)key_speed_y)*0.4;
++		if( keystate[SDLK_DOWN]  || keystate[SDLK_KP2] ) key_speed_y += 2.0 + abs((int)key_speed_y)*0.4;
++		if( keystate[SDLK_KP7] ){ key_speed_x -= 2.0 + abs((int)key_speed_x)*0.4; key_speed_y -= 2.0 + abs((int)key_speed_y)*0.4; }
++		if( keystate[SDLK_KP9] ){ key_speed_x += 2.0 + abs((int)key_speed_x)*0.4; key_speed_y -= 2.0 + abs((int)key_speed_y)*0.4; }
++		if( keystate[SDLK_KP3] ){ key_speed_x += 2.0 + abs((int)key_speed_x)*0.4; key_speed_y += 2.0 + abs((int)key_speed_y)*0.4; }
++		if( keystate[SDLK_KP1] ){ key_speed_x -= 2.0 + abs((int)key_speed_x)*0.4; key_speed_y += 2.0 + abs((int)key_speed_y)*0.4; }
+ 		//float s = (1.0-game->speedAdj)+(game->speedAdj*0.7);
+ 		float s = 0.7;
+ 		key_speed_x *= s;
