@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-libs/zlib elibc_musl? ( sys-libs/fts-standalone ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library for manipulating zip archives
+EAPI=6
+HOMEPAGE=http://www.nih.at/libzip/
+IUSE=static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=BSD
+RDEPEND=sys-libs/zlib elibc_musl? ( sys-libs/fts-standalone )
+SLOT=0/5
+SRC_URI=http://www.nih.at/libzip/libzip-1.2.0.tar.xz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=95c528406c0943ea3a736d12effc55e8
