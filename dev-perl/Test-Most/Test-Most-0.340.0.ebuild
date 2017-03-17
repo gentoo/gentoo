@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Most commonly needed test functions and features"
 
 SLOT="0"
-KEYWORDS="alpha ~amd64 hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha ~amd64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="

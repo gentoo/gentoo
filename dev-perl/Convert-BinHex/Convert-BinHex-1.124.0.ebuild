@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Extract data from Macintosh BinHex files"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND="
