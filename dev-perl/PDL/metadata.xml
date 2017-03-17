@@ -24,7 +24,6 @@
     <flag name="netpbm">Enable NETPBM and MPEG support</flag>
     <flag name="pdl2">Build pdf2 shell (requires Devel-REPL)</flag>
     <flag name="pgplot">Enable PGPLOT plotting capabilities</flag>
-    <flag name="plplot">Enable plplot plotting capabilities</flag>
   </use>
   <upstream>
     <remote-id type="cpan">PDL</remote-id>
