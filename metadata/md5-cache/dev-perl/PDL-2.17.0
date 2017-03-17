@@ -4,11 +4,11 @@ DESCRIPTION=Perl Data Language for scientific computing
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/PDL/
 IUSE=+badval doc fortran gd gsl hdf netpbm pdl2 pgplot threads
-KEYWORDS=~amd64 arm ppc ~x86
+KEYWORDS=amd64 arm ppc x86
 LICENSE=|| ( Artistic GPL-1+ ) public-domain PerlDL
 RDEPEND=sys-libs/ncurses:0= app-arch/sharutils dev-perl/Astro-FITS-Header dev-perl/File-Map >=dev-perl/Inline-0.680.0 >=dev-perl/Inline-C-0.620.0 dev-perl/Module-Compile dev-perl/OpenGL dev-perl/TermReadKey || ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu ) >=virtual/perl-Data-Dumper-2.121.0 virtual/perl-Pod-Parser virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Filter-Simple dev-perl/Filter virtual/perl-Storable >=virtual/perl-Text-Balanced-1.890.0 gd? ( media-libs/gd ) gsl? ( sci-libs/gsl ) hdf? ( sci-libs/hdf ) netpbm? ( media-libs/netpbm virtual/ffmpeg ) pdl2? ( >=dev-perl/Devel-REPL-1.3.11 || ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu ) ) pgplot? ( dev-perl/PGPLOT ) dev-lang/perl:= fortran? ( virtual/fortran )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CH/CHM/PDL-2.017.tar.gz
 _eclass_exported_funcs=pkg_prerm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:perl-module src_test:- src_install:-
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	fortran-2	9773a6296d565bc8cf241891112a9705	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=7539b9c486b36f14cc459f4b288196a0
+_md5_=181ab9ba5c6a5243fa39d2c5c0059379

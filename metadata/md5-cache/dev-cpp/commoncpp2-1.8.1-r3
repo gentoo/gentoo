@@ -4,11 +4,11 @@ DESCRIPTION=C++ library offering portable support for system-related services
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/commoncpp/
 IUSE=debug doc examples ipv6 gnutls ssl static-libs
-KEYWORDS=amd64 ppc ppc64 ~x86
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/zlib ssl? ( gnutls? ( dev-libs/libgcrypt:0= net-libs/gnutls:= ) !gnutls? ( dev-libs/openssl:0= ) )
 SLOT=0
 SRC_URI=mirror://gnu/commoncpp/commoncpp2-1.8.1.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=ee4037d613074b7e248303780c8564fc
+_md5_=a5500347eaaf1ae49e942a0bd3b515c4
