@@ -13,7 +13,6 @@ x11-terms/gnome-terminal gnome-shell
 # Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
-dev-libs/boost mpi
 
 # Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
 # masked rev deps
