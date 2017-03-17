@@ -13,7 +13,7 @@ SRC_URI="https://github.com/stolowski/QComicBook/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug"
 
 DEPEND="app-text/poppler[qt5]
