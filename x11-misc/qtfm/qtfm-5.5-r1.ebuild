@@ -18,6 +18,8 @@ RDEPEND="sys-apps/file
 	dev-qt/qtgui:4"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
+
 src_prepare() {
 	default
 	sed -i \
