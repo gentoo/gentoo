@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 RDEPEND="dev-ml/result:=
+	dev-ml/ocamlbuild:=
 	dev-lang/ocaml:="
 DEPEND="${RDEPEND}"
 
