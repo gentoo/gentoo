@@ -11,7 +11,7 @@ HOMEPAGE="http://gurlchecker.labs.libre-entreprise.org/"
 SRC_URI="http://labs.libre-entreprise.org/frs/download.php/857/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 IUSE="clamav json sqlite ssl tidy"
 
