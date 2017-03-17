@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (17 Mar 2017)
+# Requires obsolete gstreamer:0.10, bug 604686
+# Removal in 30 days
+dev-perl/GStreamer
+dev-perl/GStreamer-Interfaces
+
 # Patrice Clement <monsieurp@gentoo.org> (17 Mar 2017)
 # Does not compile anymore. Upstream dead.
 # Removal in 30 days.
