@@ -377,7 +377,5 @@ pkg_postinst() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
-	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
 }
