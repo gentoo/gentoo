@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="WYSIWYG tool for designing and building Qt-based GUIs"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86"
+	KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 x86"
 fi
 
 IUSE="declarative webkit"
