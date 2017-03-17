@@ -43,7 +43,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/nss[utils(+)]
 	sys-apps/iproute2
 	!net-misc/openswan
-	!net-misc/strongswan
+	!net-vpn/strongswan
 "
 
 usetf() {

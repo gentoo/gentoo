@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="net-misc/vpnc"
+RDEPEND="net-vpn/vpnc"
 
 src_prepare() {
 	epatch \

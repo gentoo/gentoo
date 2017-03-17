@@ -18,7 +18,7 @@ RDEPEND="
 	>=net-misc/networkmanager-1.2.0:=
 	>=dev-libs/dbus-glib-0.74
 	>=dev-libs/glib-2.32:2
-	>=net-misc/vpnc-0.5.3_p550
+	>=net-vpn/vpnc-0.5.3_p550
 	gtk? (
 		>=app-crypt/libsecret-0.18
 		>=gnome-extra/nm-applet-1.2.0

@@ -4,3 +4,19 @@ move dev-libs/uchardet app-i18n/uchardet
 move net-libs/libkgapi kde-apps/libkgapi
 slotmove =dev-ruby/typhoeus-1.1.2 0 1
 move app-cdr/k3b kde-apps/k3b
+move net-misc/badvpn net-vpn/badvpn
+move net-misc/freelan net-vpn/freelan
+move net-firewall/ipsec-tools net-vpn/ipsec-tools
+move net-misc/kvpnc net-vpn/kvpnc
+move net-misc/libreswan net-vpn/libreswan
+move net-misc/logmein-hamachi net-vpn/logmein-hamachi
+move net-misc/metadata.xml net-vpn/metadata.xml
+move net-misc/openconnect net-vpn/openconnect
+move net-misc/openfortivpn net-vpn/openfortivpn
+move net-misc/openvpn net-vpn/openvpn
+move net-misc/peervpn net-vpn/peervpn
+move net-misc/strongswan net-vpn/strongswan
+move net-misc/tinc net-vpn/tinc
+move net-misc/vpnc net-vpn/vpnc
+move net-misc/vpncwatch net-vpn/vpncwatch
+move net-misc/wireguard net-vpn/wireguard

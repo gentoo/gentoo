@@ -35,13 +35,13 @@ pkg_preinst() {
 		ewarn
 		ewarn "\033[1;33m**************************************************\033[00m"
 		ewarn
-		if ! has_version "net-misc/strongswan" &&
+		if ! has_version "net-vpn/strongswan" &&
 			! has_version "net-misc/openswan" &&
-			! has_version "net-misc/libreswan"; then
+			! has_version "net-vpn/libreswan"; then
 			ewarn "We found an earlier version of ${PN} installed."
 			ewarn "As of ${PN}-0.8.0-r5, the old configuration file,"
 			ewarn "ipsec.conf, has been changed to ipsec-tools.conf to avoid"
-			ewarn "a conflict with net-misc/strongswan; bug #436144.  We will"
+			ewarn "a conflict with net-vpn/strongswan; bug #436144.  We will"
 			ewarn "rename this file for you with this upgrade.  However, if"
 			ewarn "you later downgrade, you'll have to rename the file to"
 			ewarn "its orignal manually or change /etc/conf.d/racoon to point"
@@ -57,7 +57,7 @@ pkg_preinst() {
 			fi
 		else
 			ewarn "You had both an earlier version of ${PN} and"
-			ewarn "net-misc/strongswan installed.  I can't tell whether"
+			ewarn "net-vpn/strongswan installed.  I can't tell whether"
 			ewarn "the configuration file, ipsec.conf, belongs to one"
 			ewarn "package or the other due to a file conflict; bug #436144."
 			ewarn "The current version of ${PN} uses ipsec-tools.conf"

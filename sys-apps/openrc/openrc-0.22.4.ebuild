@@ -313,7 +313,7 @@ pkg_postinst() {
 		ewarn "You have emerged OpenRc without network support. This"
 		ewarn "means you need to SET UP a network manager such as"
 		ewarn "	net-misc/netifrc, net-misc/dhcpcd, net-misc/wicd,"
-		ewarn "net-misc/NetworkManager, or net-misc/badvpn."
+		ewarn "net-misc/NetworkManager, or net-vpn/badvpn."
 		ewarn "Or, you have the option of emerging openrc with the newnet"
 		ewarn "use flag and configuring /etc/conf.d/network and"
 		ewarn "/etc/conf.d/staticroute if you only use static interfaces."
