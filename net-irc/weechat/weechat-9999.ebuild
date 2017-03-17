@@ -36,7 +36,7 @@ RDEPEND="
 	guile? ( >=dev-scheme/guile-2.0 )
 	lua? ( dev-lang/lua:0[deprecated] )
 	nls? ( virtual/libintl )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 ) )
 	ssl? ( net-libs/gnutls )
