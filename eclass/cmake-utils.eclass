@@ -543,6 +543,8 @@ enable_cmake-utils_src_configure() {
 	# We are using the C compiler for assembly by default.
 	local -x ASMFLAGS=${CFLAGS}
 	local -x PKG_CONFIG=$(tc-getPKG_CONFIG)
+	# Bug 601292, set the compiler for assembly as well
+	local -x ASM=$(tc-getCC) ASMFLAGS=${CFLAGS}
 
 	if tc-is-cross-compiler; then
 		local sysname
