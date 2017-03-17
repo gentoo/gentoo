@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit eutils gnome2-utils
 
 DESCRIPTION="Chromium B.S.U. - an arcade game"
@@ -13,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="mixer nls +sdl"
 
-RDEPEND="media-fonts/dejavu
+RDEPEND="
+	media-fonts/dejavu
 	media-libs/quesoglc
 	media-libs/glpng
 	virtual/opengl
@@ -33,6 +35,8 @@ RDEPEND="media-fonts/dejavu
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
+
 src_configure() {
 	econf \
 		--disable-ftgl \
@@ -46,15 +50,11 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
+	dodoc data/doc/*.htm
 
 	newicon -s 64 misc/${PN}.png ${PN}.png
 	domenu misc/chromium-bsu.desktop
-
-	# install documentation
-	dodoc AUTHORS README NEWS
-	dodoc "${S}"/data/doc/*.htm
-	dodoc -r "${S}"/data/doc/images
 }
 
 pkg_preinst() {
