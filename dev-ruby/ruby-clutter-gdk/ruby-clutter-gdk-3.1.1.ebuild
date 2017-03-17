@@ -7,7 +7,7 @@ USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 inherit virtualx ruby-ng-gnome2
 
 DESCRIPTION="Ruby binding of GDK specific API of Clutter"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RUBY_S=ruby-gnome2-all-${PV}/clutter-gdk
