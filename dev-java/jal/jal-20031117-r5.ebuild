@@ -13,7 +13,7 @@ SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/ant-core:0"
 
