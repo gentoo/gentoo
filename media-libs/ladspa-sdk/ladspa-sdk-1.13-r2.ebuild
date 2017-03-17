@@ -53,7 +53,7 @@ multilib_src_test() {
 multilib_src_install() {
 	cd src
 	emake INSTALL_PLUGINS_DIR="/usr/$(get_libdir)/ladspa" \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		MKDIR_P="mkdir -p" \
 		install
 }
@@ -66,5 +66,5 @@ multilib_src_install_all() {
 	# emul-linux-soundlibs doesnt seem to install this, so keep it only for the
 	# default abi.
 	dodir /etc/env.d
-	echo "LADSPA_PATH=/usr/$(get_libdir)/ladspa" > "${D}/etc/env.d/60ladspa"
+	echo "LADSPA_PATH=${EPREFIX}/usr/$(get_libdir)/ladspa" > "${ED}/etc/env.d/60ladspa"
 }
