@@ -1,0 +1,8 @@
+# default ceph conf file
+#ceph_conf="/etc/ceph/ceph.conf"
+
+# Set ulimits for Ceph services.
+rc_ulimit="-n 32768"
+
+# initd stop timeout.
+#CEPH_TERMTIMEOUT="TERM/60/KILL/5"
