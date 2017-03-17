@@ -35,10 +35,10 @@
 dev-perl/GStreamer
 dev-perl/GStreamer-Interfaces
 
-# Patrice Clement <monsieurp@gentoo.org> (17 Mar 2017)
+# Patrice Clement <monsieurp@gentoo.org> (18 Mar 2017)
 # Does not compile anymore. Upstream dead.
 # Removal in 30 days.
-dev-java/jrrd
+dev-java/swidgets
 
 # Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
 # Testing x32 patch backports from 3.9
