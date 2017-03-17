@@ -14495,7 +14495,6 @@ net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN
 net-firewall/fwknop 2.6.9: Single Packet Authorization and Port Knocking application
 net-firewall/gshield 2.8-r4: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r2 0.6.1-r1: A nice iptables firewall script
-net-firewall/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24 6.29 6.30: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.2-r1: Netflow iptables module
 net-firewall/iptables 1.4.21-r1 1.4.21-r4 1.6.0-r1 1.6.1-r1: Linux kernel (2.4+) firewall, NAT and packet mangling tools
@@ -15017,7 +15016,6 @@ net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4e: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.6 0.4.7 9999: Automatic open port forwarder using UPnP
 net-misc/axel 2.4-r3 2.12 9999: Light Unix download accelerator
-net-misc/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-misc/balance 3.57: TCP Load Balancing Port Forwarder
 net-misc/batctl 2013.4.0 2014.2.0: BATMAN advanced control and management tool
 net-misc/batman-adv 2013.4.0 2014.2.0: Better approach to mobile Ad-Hoc networking on layer 2 kernel module
@@ -15083,7 +15081,6 @@ net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2 1.2.0_beta2_p20150803: Qt4-based download/upload manager
 net-misc/flexget 1.2.315 1.2.346-r1 9999: Multipurpose automation tool for content like torrents, nzbs, podcasts, comics
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
-net-misc/freelan 2.0: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.2.2 2.3.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
@@ -15146,7 +15143,6 @@ net-misc/keychain 2.8.1 2.8.2 2.8.3: Agent manager for OpenSSH, ssh.com, Sun SSH
 net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
 net-misc/knock 0.6 0.7: A simple port-knocking daemon
 net-misc/knutclient 1.0.5: A visual KDE client for UPS systems
-net-misc/kvpnc 0.9.6a-r2: KDE frontend for various VPN clients
 net-misc/l7-filter-userspace 0.11 0.12_beta1: Userspace utilities for layer 7 iptables QoS
 net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modules
 net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
@@ -15154,7 +15150,6 @@ net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a pictu
 net-misc/lcr 9999: Linux Call Router
 net-misc/leapcast 0.1.3-r1 9999: Simple ChromeCast emulation app
 net-misc/libres3 1.2 1.3: Skylable LibreS3 - Amazon S3 open source replacement
-net-misc/libreswan 3.18 9999: IPsec implementation for Linux, fork of Openswan
 net-misc/libss7 1.0.2: Signalling System 7 (SS7) protocol library
 net-misc/libteam 1.22: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
@@ -15164,7 +15159,6 @@ net-misc/liveice 2000530-r1: Live Source Client For IceCast
 net-misc/livestreamer 1.11.1 1.12.1 1.12.2: CLI tool that pipes video streams from services like twitch.tv into a video player
 net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.9.3-r1 0.9.4 0.9.5-r1 0.9.6: Implementation of IEEE 802.1ab (LLDP)
-net-misc/logmein-hamachi 2.1.0.139 2.1.0.174: LogMeIn Hamachi VPN tunneling engine
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.97 1.9.98: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.4.33 1.4.33-r1 1.4.34 1.4.35: High-performance, distributed memory object caching system
@@ -15229,14 +15223,11 @@ net-misc/ofono 1.16 1.17 1.18 1.19: Open Source mobile telephony (GSM/UMTS) daem
 net-misc/oidentd 2.0.8-r5: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.0.2 0.9.6 0.9.6.1: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.1_p2: A robust, high-performance CORBA 2 ORB
-net-misc/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07-r1 7.07-r2 7.07-r3 7.08 9999: Free client for Cisco AnyConnect SSL VPN software
-net-misc/openfortivpn 1.3.0: A Fortinet compatible VPN client
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/openssh 7.3_p1-r7 7.3_p1-r8 7.4_p1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
-net-misc/openvpn 2.3.12 2.3.14 2.4.0 2.4.0-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.5.0 2.6.1 2.7.0: Production quality, multilayer virtual switch
 net-misc/orbited 0.7.10-r1 0.7.10-r3: Real-time communication for the browser.
@@ -15245,7 +15236,6 @@ net-misc/packETH 1.7.2 1.7.3 1.8: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
 net-misc/pcapfix 0.7: Repair and fix broken pcap files
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
-net-misc/peervpn 0.044-r2: P2P mesh VPN
 net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
 net-misc/pimpd 0.8: RFC1413-compliant identd server supporting masqueraded connections
 net-misc/pipes 1.16.1: Very versatile TCP pipes
@@ -15330,7 +15320,6 @@ net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamlink 0.1.0 0.4.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/strongswan 5.3.4 5.5.1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.36 5.37 5.38 5.39 5.40: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10 3.5_p8 3.5_p9 3.5_p10: Complete 3270 access package
@@ -15344,7 +15333,6 @@ net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.7.1 1.7.1-r1 1.7.1-r2: Remote desktop viewer display system
-net-misc/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
@@ -15369,8 +15357,6 @@ net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
 net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r1: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
-net-misc/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
-net-misc/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
@@ -15379,7 +15365,6 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.14 5.2.15: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1 1.7.4-r2: A lightweight wired and wireless network manager for Linux
-net-misc/wireguard 0.0.20170223 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
@@ -15595,6 +15580,21 @@ net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based aro
 net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepathy
 net-voip/vidyodesktop 3.6.3.017 3.6.7.010: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
+net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
+net-vpn/freelan 2.0: Peer-to-peer VPN software that abstracts a LAN over the Internet
+net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
+net-vpn/kvpnc 0.9.6a-r2: KDE frontend for various VPN clients
+net-vpn/libreswan 3.18 9999: IPsec implementation for Linux, fork of Openswan
+net-vpn/logmein-hamachi 2.1.0.139 2.1.0.174: LogMeIn Hamachi VPN tunneling engine
+net-vpn/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07-r1 7.07-r2 7.07-r3 7.08 9999: Free client for Cisco AnyConnect SSL VPN software
+net-vpn/openfortivpn 1.3.0: A Fortinet compatible VPN client
+net-vpn/openvpn 2.3.12 2.3.14 2.4.0 2.4.0-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
+net-vpn/peervpn 0.044-r2: P2P mesh VPN
+net-vpn/strongswan 5.3.4 5.5.1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
+net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
+net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
+net-vpn/wireguard 0.0.20170223 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11

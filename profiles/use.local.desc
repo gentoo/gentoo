@@ -5354,11 +5354,6 @@ net-firewall/fwknop:iptables - Use net-firewall/iptables as the default server b
 net-firewall/fwknop:nfqueue - Enable UDP-only NFQUEUE server mode (no net-libs/libpcap dependency)
 net-firewall/fwknop:server - Build fwknopd server
 net-firewall/fwknop:udp-server - Enable UDP-only server mode (no net-libs/libpcap dependency)
-net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
-net-firewall/ipsec-tools:idea - Enable support for the IDEA algorithm
-net-firewall/ipsec-tools:nat - Enable NAT-Traversal
-net-firewall/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
-net-firewall/ipsec-tools:stats - Enable statistics reporting
 net-firewall/iptables:conntrack - Build against net-libs/libnetfilter_conntrack when enables the connlabel matcher
 net-firewall/iptables:netlink - Build against libnfnetlink which enables the nfnl_osf util
 net-firewall/iptables:nftables - Support nftables kernel interface
@@ -6031,11 +6026,6 @@ net-misc/asterisk-moh-opsound:siren7 - Install the sounds files for the siren7 c
 net-misc/asterisk-moh-opsound:sln16 - Install the sounds files for the sln16 codec.
 net-misc/asterisk-moh-opsound:ulaw - Install the sounds files for the ulaw codec.
 net-misc/asterisk-moh-opsound:wav - Install the sounds files for the wav codec.
-net-misc/badvpn:client - Build the badvpn-client program, a daemon that runs on endpoints of the VPN.
-net-misc/badvpn:ncd - Build NCD, a lightweight scripting language especially suited for network configurations.
-net-misc/badvpn:server - Build the badvpn-server program, a central server that manages the VPN network.
-net-misc/badvpn:tun2socks - Build tun2socks, a program which implements a TUN device that forwards TCP traffic through a SOCKS5 server.
-net-misc/badvpn:udpgw - Build udpgw, a small daemon which allows tun2socks to forward UDP traffic.
 net-misc/batman-adv:bla - B.A.T.M.A.N. bridge loop avoidance
 net-misc/batman-adv:dat - B.A.T.M.A.N. distributed arp table
 net-misc/batman-adv:mcast - B.A.T.M.A.N. multicast optimizations
@@ -6122,11 +6112,11 @@ net-misc/chrony:rtc - Support for the Linux Real Time Clock interface
 net-misc/connman:ethernet - Enable ethernet support.
 net-misc/connman:l2tp - Use net-dialup/xl2tpd for L2TP VPN support.
 net-misc/connman:ofono - Use net-misc/ofono for telephony support.
-net-misc/connman:openconnect - Use net-misc/openconnect for VPN support.
-net-misc/connman:openvpn - Use net-misc/openvpn for openvpn support.
+net-misc/connman:openconnect - Use net-vpn/openconnect for VPN support.
+net-misc/connman:openvpn - Use net-vpn/openvpn for openvpn support.
 net-misc/connman:pptp - Use net-dialup/pptpclient for PPTP VPN support.
 net-misc/connman:tools - Enable testing tools.
-net-misc/connman:vpnc - Use net-misc/vpnc for cisco VPN support.
+net-misc/connman:vpnc - Use net-vpn/vpnc for cisco VPN support.
 net-misc/connman:wispr - Enable support for WISPr hotspot logins.
 net-misc/connman-gtk:openconnect - Support easier authentication to AnyConnect VPNs
 net-misc/csync:sftp - Enable sftp transfer support via net-libs/libssh
@@ -6200,7 +6190,6 @@ net-misc/lcr:gsmhr - Support for GSM HR codec using reference code (very slow)
 net-misc/lcr:misdn - net-misc/misdn driver
 net-misc/lcr:sip - SIP support
 net-misc/lcr:ss5 - CCITT No. 5 support
-net-misc/libreswan:dnssec - Use DNSSEC resolver (requires net-dns/unbound
 net-misc/libteam:zmq - Build witch net-libs/zeromq support
 net-misc/lldpd:cdp - Enable Cisco Discovery Protocol
 net-misc/lldpd:dot1 - Enable Dot1 extension (VLAN stuff)
@@ -6276,11 +6265,6 @@ net-misc/ofono:qmimodem - Enable Qualcomm QMI modem support
 net-misc/ofono:tools - Enable testing tools
 net-misc/oidentd:masquerade - Enable support for masqueraded/NAT connections
 net-misc/olsrd:pud - Install the Node Position Update plugin
-net-misc/openconnect:gssapi - Build GSSAPI support
-net-misc/openconnect:java - Build JNI bindings using jni.h
-net-misc/openconnect:libproxy - Enable proxy support
-net-misc/openconnect:lz4 - Enable support for lz4 compression
-net-misc/openconnect:stoken - Enable stoken support
 net-misc/openntpd:libressl - Enable HTTPS TLS time constraint support using dev-libs/libressl
 net-misc/openssh:X509 - Adds support for X.509 certificate authentication
 net-misc/openssh:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
@@ -6290,14 +6274,6 @@ net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
 net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
-net-misc/openvpn:down-root - Enable the down-root plugin
-net-misc/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
-net-misc/openvpn:lz4 - Enable LZ4 support
-net-misc/openvpn:mbedtls - Use mbed TLS instead of OpenSSL
-net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
-net-misc/openvpn:plugins - Enable the OpenVPN plugin system
-net-misc/openvpn:polarssl - Use PolarSSL instead of OpenSSL
-net-misc/openvpn:socks - Enable socks support
 net-misc/openvswitch:monitor - Build the Python and GUI dependent monitor applications
 net-misc/openvswitch:pyside - Use dev-python/pyside instead of dev-python/PyQt4 for Python/Qt-bindings when building with USE=monitor.
 net-misc/owncloud-client:dolphin - Install the kde-apps/dolphin extension
@@ -6389,39 +6365,12 @@ net-misc/stargazer:stargazer - Enable build of Stargazer billing system.
 net-misc/stargazer:static-libs - Install static libraries.
 net-misc/streamtuner:shout - Enable shoutcast plug-in.
 net-misc/streamtuner:xiph - Enable xiph.org plug-in.
-net-misc/strongswan:constraints - Enable advanced X.509 constraint checking plugin.
-net-misc/strongswan:dhcp - Enable server support for querying virtual IP addresses for clients from a DHCP server. (IKEv2 only)
-net-misc/strongswan:eap - Enable support for the different EAP modules that is supported.
-net-misc/strongswan:farp - Enable faking of ARP responses for virtual IP addresses assigned to clients. (IKEv2 only)
-net-misc/strongswan:gcrypt - Enable dev-libs/libgcrypt plugin which provides 3DES, AES, Blowfish, Camellia, CAST, DES, Serpent and Twofish ciphers along with MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+). Also includes a software random number generator.
-net-misc/strongswan:non-root - Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges.
-net-misc/strongswan:openssl - Enable dev-libs/openssl plugin which is required for Elliptic Curve Cryptography (DH groups 19-21,25,26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+) dev-libs/openssl has to be compiled with USE="-bindist".
-net-misc/strongswan:pkcs11 - Enable pkcs11 support.
-net-misc/strongswan:strongswan_plugins_blowfish - Enable support for the blowfish plugin.
-net-misc/strongswan:strongswan_plugins_ccm - Enable support for the ccm plugin.
-net-misc/strongswan:strongswan_plugins_ctr - Enable support for the ctr plugin.
-net-misc/strongswan:strongswan_plugins_gcm - Enable support for the gcm plugin.
-net-misc/strongswan:strongswan_plugins_ha - Enable support for the ha plugin.
-net-misc/strongswan:strongswan_plugins_ipseckey - Enable support for the ipseckey plugin.
-net-misc/strongswan:strongswan_plugins_led - Enable support for the led plugin.
-net-misc/strongswan:strongswan_plugins_lookip - Enable support for the lookip plugin.
-net-misc/strongswan:strongswan_plugins_ntru - Enable support for the ntru plugin.
-net-misc/strongswan:strongswan_plugins_padlock - Enable support for the padlock plugin.
-net-misc/strongswan:strongswan_plugins_rdrand - Enable support for the rdrand plugin.
-net-misc/strongswan:strongswan_plugins_systime-fix - Enable support for the systime-fix plugin.
-net-misc/strongswan:strongswan_plugins_unbound - Enable support for the unbound plugin.
-net-misc/strongswan:strongswan_plugins_unity - Enable support for the unity plugin.
-net-misc/strongswan:strongswan_plugins_vici - Enable support for the vici plugin.
-net-misc/strongswan:strongswan_plugins_whitelist - Enable support for the whitelist plugin.
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
 net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled wine.
 net-misc/termpkg:uucp - Adds support for uucp style device locking
 net-misc/tigervnc:drm - build with DRM support
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
-net-misc/tinc:gui - Add GUI support, using dev-python/wxpython
-net-misc/tinc:uml - Enable support for User Mode Linux Sockets
-net-misc/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
 net-misc/tor:bufferevents - Use libevent's buffered IO implementation (unstable, buggy)
 net-misc/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-misc/tor:stats - Enable tracking of how much of each kind of resource we download
@@ -6435,7 +6384,6 @@ net-misc/vinagre:spice - Enable access to SPICE-enabled virtual machines
 net-misc/vinagre:ssh - Enable ssh plugin using x11-libs/vte
 net-misc/vinagre:telepathy - Enable access to remote desktop via a net-libs/telepathy-glib client
 net-misc/vino:telepathy - Enable desktop sharing through a telepathy client
-net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
 net-misc/wget:uuid - Generate UUIDs for the WARC (Web ARChive file format) using libuuid; otherwise use a simple RNG (random number generator)
 net-misc/wicd:ambiance - Install icons from Ubuntu's ambiance theme
@@ -6445,10 +6393,6 @@ net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. 
 net-misc/wicd:mac4lin - Change default icons to mac4lin icon set
 net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
-net-misc/wireguard:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
-net-misc/wireguard:module - Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.
-net-misc/wireguard:module-src - Install the module source code to /usr/src, in case you like building kernel modules yourself.
-net-misc/wireguard:tools - Compile the wg(8) tool and related helpers. You probably want this enabled.
 net-misc/x2goserver:fuse - Use net-fs/sshfs to allow shared folders
 net-misc/youtube-viewer:gtk - Install the gtk GUI, called gtk-youtube-viewer
 net-nds/389-ds-base:auto-dn-suffix - Enable auto bind with auto dn suffix over unix domain socket (LDAPI) support
@@ -6678,6 +6622,62 @@ net-voip/yate:tdmcard - Enable TDMV API card driver
 net-voip/yate:wanpipe - Enable Wanpipe support
 net-voip/yate:wpcard - Enable Wanpipe card driver
 net-voip/yate:zaptel - Enable Zaptel driver
+net-vpn/badvpn:client - Build the badvpn-client program, a daemon that runs on endpoints of the VPN.
+net-vpn/badvpn:ncd - Build NCD, a lightweight scripting language especially suited for network configurations.
+net-vpn/badvpn:server - Build the badvpn-server program, a central server that manages the VPN network.
+net-vpn/badvpn:tun2socks - Build tun2socks, a program which implements a TUN device that forwards TCP traffic through a SOCKS5 server.
+net-vpn/badvpn:udpgw - Build udpgw, a small daemon which allows tun2socks to forward UDP traffic.
+net-vpn/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
+net-vpn/ipsec-tools:idea - Enable support for the IDEA algorithm
+net-vpn/ipsec-tools:nat - Enable NAT-Traversal
+net-vpn/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
+net-vpn/ipsec-tools:stats - Enable statistics reporting
+net-vpn/libreswan:dnssec - Use DNSSEC resolver (requires net-dns/unbound
+net-vpn/openconnect:gssapi - Build GSSAPI support
+net-vpn/openconnect:java - Build JNI bindings using jni.h
+net-vpn/openconnect:libproxy - Enable proxy support
+net-vpn/openconnect:lz4 - Enable support for lz4 compression
+net-vpn/openconnect:stoken - Enable stoken support
+net-vpn/openvpn:down-root - Enable the down-root plugin
+net-vpn/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
+net-vpn/openvpn:lz4 - Enable LZ4 support
+net-vpn/openvpn:mbedtls - Use mbed TLS instead of OpenSSL
+net-vpn/openvpn:pkcs11 - Enable PKCS#11 smartcard support
+net-vpn/openvpn:plugins - Enable the OpenVPN plugin system
+net-vpn/openvpn:polarssl - Use PolarSSL instead of OpenSSL
+net-vpn/openvpn:socks - Enable socks support
+net-vpn/strongswan:constraints - Enable advanced X.509 constraint checking plugin.
+net-vpn/strongswan:dhcp - Enable server support for querying virtual IP addresses for clients from a DHCP server. (IKEv2 only)
+net-vpn/strongswan:eap - Enable support for the different EAP modules that is supported.
+net-vpn/strongswan:farp - Enable faking of ARP responses for virtual IP addresses assigned to clients. (IKEv2 only)
+net-vpn/strongswan:gcrypt - Enable dev-libs/libgcrypt plugin which provides 3DES, AES, Blowfish, Camellia, CAST, DES, Serpent and Twofish ciphers along with MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+). Also includes a software random number generator.
+net-vpn/strongswan:non-root - Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges.
+net-vpn/strongswan:openssl - Enable dev-libs/openssl plugin which is required for Elliptic Curve Cryptography (DH groups 19-21,25,26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+) dev-libs/openssl has to be compiled with USE="-bindist".
+net-vpn/strongswan:pkcs11 - Enable pkcs11 support.
+net-vpn/strongswan:strongswan_plugins_blowfish - Enable support for the blowfish plugin.
+net-vpn/strongswan:strongswan_plugins_ccm - Enable support for the ccm plugin.
+net-vpn/strongswan:strongswan_plugins_ctr - Enable support for the ctr plugin.
+net-vpn/strongswan:strongswan_plugins_gcm - Enable support for the gcm plugin.
+net-vpn/strongswan:strongswan_plugins_ha - Enable support for the ha plugin.
+net-vpn/strongswan:strongswan_plugins_ipseckey - Enable support for the ipseckey plugin.
+net-vpn/strongswan:strongswan_plugins_led - Enable support for the led plugin.
+net-vpn/strongswan:strongswan_plugins_lookip - Enable support for the lookip plugin.
+net-vpn/strongswan:strongswan_plugins_ntru - Enable support for the ntru plugin.
+net-vpn/strongswan:strongswan_plugins_padlock - Enable support for the padlock plugin.
+net-vpn/strongswan:strongswan_plugins_rdrand - Enable support for the rdrand plugin.
+net-vpn/strongswan:strongswan_plugins_systime-fix - Enable support for the systime-fix plugin.
+net-vpn/strongswan:strongswan_plugins_unbound - Enable support for the unbound plugin.
+net-vpn/strongswan:strongswan_plugins_unity - Enable support for the unity plugin.
+net-vpn/strongswan:strongswan_plugins_vici - Enable support for the vici plugin.
+net-vpn/strongswan:strongswan_plugins_whitelist - Enable support for the whitelist plugin.
+net-vpn/tinc:gui - Add GUI support, using dev-python/wxpython
+net-vpn/tinc:uml - Enable support for User Mode Linux Sockets
+net-vpn/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
+net-vpn/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
+net-vpn/wireguard:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
+net-vpn/wireguard:module - Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.
+net-vpn/wireguard:module-src - Install the module source code to /usr/src, in case you like building kernel modules yourself.
+net-vpn/wireguard:tools - Compile the wg(8) tool and related helpers. You probably want this enabled.
 net-wireless/aircrack-ng:airdrop-ng - Build airdrop-ng
 net-wireless/aircrack-ng:airgraph-ng - Build airgraph-ng
 net-wireless/aircrack-ng:experimental - Build the "experimental" tools which may randomly fail to run properly
