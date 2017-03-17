@@ -433,7 +433,7 @@ src_configure() {
 	replace-cpu-flags "k6*" "i586"
 
 	# Support user-passed configuration parameters
-	our_conf+=( ${EXTRA_ECONF:-} )
+	our_conf+=( --cache-file="${T}/config.cache" ${EXTRA_ECONF:-} )
 
 	# Support the Apache2 extras, they must be set globally for all
 	# SAPIs to work correctly, especially for external PHP extensions
@@ -623,8 +623,12 @@ src_test() {
 		export TEST_PHP_EXECUTABLE="${PHP_BIN}"
 	fi
 
-	if [[ -x "${WORKDIR}/sapis/cgi/php-cgi" ]] ; then
-		export TEST_PHP_CGI_EXECUTABLE="${WORKDIR}/sapis/cgi/php-cgi"
+	if [[ -x "${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi" ]] ; then
+		export TEST_PHP_CGI_EXECUTABLE="${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi"
+	fi
+
+	if [[ -x "${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg" ]] ; then
+		export TEST_PHPDBG_EXECUTABLE="${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg"
 	fi
 
 	REPORT_EXIT_STATUS=1 "${TEST_PHP_EXECUTABLE}" -n  -d \
