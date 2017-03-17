@@ -5,6 +5,10 @@
 dev-libs/libixion python_single_target_python3_4
 dev-libs/liborcus python_single_target_python3_4
 
+# Mart Raudsepp <leio@gentoo.org> (17 Mar 2017)
+# Only python3 single target available, no python2, bug 612870
+app-editors/gedit python_single_target_python3_4
+
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Enable the BPF target by default
 sys-devel/clang llvm_targets_BPF
