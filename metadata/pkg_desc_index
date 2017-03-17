@@ -4129,7 +4129,7 @@ dev-java/jchardet 1.1-r1: Java port of Mozilla's Automatic Charset Detection alg
 dev-java/jchart2d 3.2.2: A minimalistic realtime charting library for Java
 dev-java/jcifs 1.3.17-r1: Library that implements the CIFS/SMB networking protocol in Java
 dev-java/jcip-annotations 1.0.1: Clean room implementation of the JCIP Annotations
-dev-java/jclasslib 3.0-r1: A bytecode viewer is a tool
+dev-java/jclasslib 3.0-r1 3.1: Java bytecode viewer
 dev-java/jcmdline 1.0.2-r2 2.0.0: Library for parsing/handling of command line parameters
 dev-java/jcodings 1.0.4 1.0.5 1.0.11: Byte-based encoding support library for Java
 dev-java/jcommander 1.48: Command line parsing framework for Java
@@ -4355,7 +4355,7 @@ dev-java/sablecc-anttask 1.1.0-r2: Ant task for sablecc
 dev-java/sac 1.3-r2: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
 dev-java/sat4j-pseudo 2.2.0 2.3.1: Pseudo Boolean solvers
-dev-java/sax 2.2.1-r2 2.2.1-r3: SAX: Simple API for XML in Java
+dev-java/sax 2.2.1-r3 2.2.1-r4: SAX: Simple API for XML in Java
 dev-java/saxon 6.5.5 6.5.5-r1 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r2: A Simple API for XPath
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an IETF RFC 2614 compliant SLP client for CIM service discovery
@@ -4451,7 +4451,7 @@ dev-java/xml-commons-resolver 1.2: An XML Entity and URI Resolver
 dev-java/xml-security 1.5.7-r1: An implementation of the primary security standards for XML
 dev-java/xml-writer 0.2-r1: A simple XML Writer
 dev-java/xml-xmlbeans 2.6.0: An XML-Java binding tool
-dev-java/xmldb 20011111-r1: Java implementation for specifications made by XML:DB
+dev-java/xmldb 20011111-r1 20011111-r2: XML:DB Java library
 dev-java/xmlgraphics-commons 2.0.1: A library of several reusable components used by Apache Batik and Apache FOP
 dev-java/xmlrpc 3.1.3: Apache XML-RPC is a Java implementation of XML-RPC
 dev-java/xmlstreambuffer 1.5.3: A stream-based representation of an XML infoset in Java
@@ -6305,7 +6305,7 @@ dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.27.0 2.31.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0 1.410.0: Create PDF documents in Perl
-dev-perl/PDL 2.4.11 2.17.0: Perl Data Language for scientific computing
+dev-perl/PDL 2.17.0: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
 dev-perl/POE 1.367: A framework for creating multitasking programs in Perl
@@ -13592,7 +13592,7 @@ media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music P
 media-sound/gmorgan 0.39 0.79: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmtp 1.3.10: A simple MTP client for MP3 players
-media-sound/gmusicbrowser 1.1.13 1.1.15 1.1.15-r1 1.1.15-r2 1.1.15-r3 9999: An open-source jukebox for large collections of mp3/ogg/flac files
+media-sound/gmusicbrowser 1.1.15-r3 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnac 0.2.4.1: Audio converter for GNOME
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.20.2-r1 3.22.1 3.22.2: Music management for Gnome

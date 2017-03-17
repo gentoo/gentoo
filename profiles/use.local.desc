@@ -2257,7 +2257,6 @@ dev-perl/PDL:hdf - Enable HDF (version 4) format support
 dev-perl/PDL:netpbm - Enable NETPBM and MPEG support
 dev-perl/PDL:pdl2 - Build pdf2 shell (requires Devel-REPL)
 dev-perl/PDL:pgplot - Enable PGPLOT plotting capabilities
-dev-perl/PDL:plplot - Enable plplot plotting capabilities
 dev-perl/Panotools-Script:gui - Installs GUIs for some tools
 dev-perl/Sub-Name:suggested - Install extra dependencies needed for extended regression tests
 dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
@@ -4401,7 +4400,6 @@ media-sound/gimmix:lyrics - Enable lyric fetching
 media-sound/gmpc:unique - Enable single instance support using dev-libs/libunique
 media-sound/gmpc:xspf - Enable support for reading and saving XSPF playlists
 media-sound/gmusicbrowser:extras - Install some extra deps for plugins (ex. Titlebar)
-media-sound/gmusicbrowser:gstreamer-0 - Enable audio support via legacy gstreamer:0.10
 media-sound/gogglesmm:opus - Enable support for opus codec
 media-sound/google-musicmanager:log - Enables advanced logging through dev-libs/log4cxx
 media-sound/herrie:http - Enable http streaming
