@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=dev-libs/json-c dev-libs/libpcre dev-libs/libxml2 net-libs/liboauth net-misc/curl virtual/pkgconfig
+DESCRIPTION=A command line twitter/identi.ca client
+EAPI=6
+HOMEPAGE=https://gregkh.github.com/bti/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/json-c dev-libs/libpcre dev-libs/libxml2 net-libs/liboauth net-misc/curl || ( sys-libs/readline dev-libs/libedit )
+SLOT=0
+SRC_URI=mirror://kernel/software/web/bti/bti-034.tar.xz
+_eclass_exported_funcs=src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=057b6d20b0e7c6ff612af5b9d6ee1173

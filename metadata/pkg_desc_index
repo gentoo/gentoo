@@ -5056,7 +5056,7 @@ dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily in
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded webapplicationserver extensible with C++
 dev-libs/totem-pl-parser 3.10.7: Playlist parsing library
-dev-libs/tre 0.8.0 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
+dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tut 2013.12.18 2016.12.19: C++ Template Unit Test Framework
 dev-libs/tvision 2.1.0_pre2-r3: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
@@ -9860,7 +9860,7 @@ dev-tcltk/itk 3.4.1 4.0.0 4.0.1: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.0.1 4.0.1-r3: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.05 3.052: TCL MySQL Interface
 dev-tcltk/scwoop 4.1: Simple Composite Widget Object Oriented Package
-dev-tcltk/snack 2.2.10-r5 2.2.10-r6: The Snack Sound Toolkit (Tcl)
+dev-tcltk/snack 2.2.10-r6: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8: Multi-Column Listbox Package
 dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
 dev-tcltk/tcl3d 0.4.0 0.4.0-r1 0.5.0: Tcl bindings to OpenGL and other 3D libraries
@@ -12843,7 +12843,7 @@ media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate
 media-libs/kodi-platform 16_p20150805 16.9999 17.1.0.1 9999: Kodi platform support library
 media-libs/kvazaar 0.8.3 1.0.0 1.1.0 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
-media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
+media-libs/ladspa-sdk 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.1 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.8-r1: A lightweight, speed optimized color management engine
@@ -14784,7 +14784,7 @@ net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusi
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
-net-libs/liboauth 1.0.1 1.0.3: C library implementing the OAuth secure authentication protocol
+net-libs/liboauth 1.0.3: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.7.0 1.8.0 1.8.0-r1 1.9.0: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Protocol
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
@@ -15019,7 +15019,7 @@ net-misc/blinkperl 20030301-r2: blinkperl is a telnet server, which plays Blinke
 net-misc/bopm 3.1.3-r3: Blitzed Open Proxy Monitor
 net-misc/bridge-utils 1.5: Tools for configuring the Linux kernel 802.1d Ethernet Bridge
 net-misc/bsdwhois 1.43.2.1: FreeBSD Whois Client
-net-misc/bti 031-r1: A command line twitter/identi.ca client
+net-misc/bti 031-r1 034: A command line twitter/identi.ca client
 net-misc/buka 2.0: Download manga from buka.cn
 net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new Shared Registration System
 net-misc/cadaver 0.23.3: Command-line WebDAV client
@@ -15032,7 +15032,6 @@ net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and fo
 net-misc/charm 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 49.0.2623.40 55.0.2883.50 56.0.2924.51: access remote computers via Chrome!
 net-misc/chrony 2.2.1 2.3 2.4 2.4.1 3.0 3.1 9999: NTP client and server programs
-net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
@@ -15242,7 +15241,6 @@ net-misc/putty 0.68 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.5.0.2-r1 0.5.0.3: X2Go command line client
 net-misc/pyhoca-gui 0.5.0.4-r1 0.5.0.5 0.5.0.6: X2Go graphical client applet
-net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.18: Qt blogging client
@@ -15395,7 +15393,6 @@ net-news/snownews 1.5.12-r1: Snownews, a text-mode RSS/RDF newsreader
 net-news/yencode 0.46: yEnc encoder/decoder package
 net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
 net-nntp/brag 1.4.3: Brag collects and assembles multipart binary attachments from newsgroups
-net-nntp/hellanzb 0.13-r8: Retrieves and processes .nzb files
 net-nntp/inn 2.5.3-r1 2.5.3-r3 2.5.4-r1 2.5.5-r1: The Internet News daemon, fully featured NNTP server
 net-nntp/kwooty 1.1.0: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
@@ -16615,7 +16612,7 @@ sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of th
 sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r3: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20150124: 2D and 3D data visualization and analysis program
-sci-visualization/veusz 1.11 1.25.1: Qt scientific plotting package with good Postscript output
+sci-visualization/veusz 1.25.1: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.7.3 2.8.2 2.9.0 2.9.2 2.10.3: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6-r1: X-ray diffraction/control image viewer in the context of data processing by XDS
@@ -17247,7 +17244,6 @@ sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Configuration Utility Command L
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.9 0.9.10: KDE frontend for Linux LVM2 and GNU parted
-sys-block/lio-utils 9999: Tools for controlling target_core_mod/ConfigFS
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
 sys-block/mbuffer 20150412 20160228: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10 8.07.14 8.07.14-r1: LSI Logic MegaRAID Command Line Interface management tool
@@ -17269,7 +17265,6 @@ sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for 
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
 sys-block/rts_pstor 1.10-r5: PCIE RTS5209 card reader driver for Linux
-sys-block/rtsadmin 9999: RTSAdmin Community Edition for target_core_mod/ConfigFS
 sys-block/sas2ircu 19: LSI MPT-SAS2 controller management tool
 sys-block/sas3ircu 5: LSI MPT-SAS3 controller management tool
 sys-block/scsiadd 1.97: Add and remove SCSI devices from your Linux system during runtime
@@ -18210,7 +18205,7 @@ www-apps/pyblosxom 1.4.3-r1: Lightweight weblog system
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
 www-apps/redmine 3.2.1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
-www-apps/roundup 1.4.20 1.5.0 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
+www-apps/roundup 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.2.12-r1 4.4.1: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.4-r1: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
@@ -18304,7 +18299,7 @@ www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugi
 www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.31-r1 2.2.32 2.4.25: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
-www-servers/bozohttpd 20140708 20140708-r2: bozohttpd is a small and secure http server
+www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.9.5: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
