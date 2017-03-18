@@ -36,6 +36,7 @@
 >=perl-core/ExtUtils-MakeMaker-7.180.0
 >=virtual/perl-ExtUtils-MakeMaker-7.180.0
 >=virtual/perl-ExtUtils-Command-7.180.0
+>=dev-perl/Net-Twitter-4.10.420
 
 # Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
 # Broken. Dead upstream. Unmaintained.
