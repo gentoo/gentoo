@@ -13,7 +13,7 @@ IUSE="debug geoip"
 
 DEPEND="
 	~app-leechcraft/lc-core-${PV}
-	net-libs/rb_libtorrent
+	net-libs/libtorrent-rasterbar
 	dev-qt/qtxml:5
 	dev-qt/qtwidgets:5
 "

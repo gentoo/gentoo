@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 CDEPEND=">=sys-fs/fuse-2.8.0
 	>=net-misc/curl-7.22.0
 	dev-libs/boost:=
-	>=net-libs/rb_libtorrent-0.16.0:="
+	>=net-libs/libtorrent-rasterbar-0.16.0:="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}

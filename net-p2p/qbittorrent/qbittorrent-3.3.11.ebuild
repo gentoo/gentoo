@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	>=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5,X?]
 	dev-qt/qtxml:5
-	>=net-libs/rb_libtorrent-1.0.6
+	>=net-libs/libtorrent-rasterbar-1.0.6
 	sys-libs/zlib
 	dbus? ( dev-qt/qtdbus:5 )
 	X? (
