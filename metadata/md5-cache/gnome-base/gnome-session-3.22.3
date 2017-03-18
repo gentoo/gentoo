@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.46.0:2[dbus] x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3.18.0:3 >=dev-libs/json-glib-0.10 >=gnome-base/gnome-desktop-3.18:3= elibc_FreeBSD? ( dev-libs/libexecinfo ) media-libs/mesa[egl,gles2] media-libs/libepoxy x11-libs/libSM x11-libs/libICE x11-libs/libXau x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-misc/xdg-user-dirs x11-misc/xdg-user-dirs-gtk x11-apps/xdpyinfo systemd? ( >=sys-apps/systemd-183:0= ) dev-libs/libxslt >=dev-util/intltool-0.40.6 >=sys-devel/gettext-0.10.40 virtual/pkgconfig !<gnome-base/gdm-2.20.4 doc? ( app-text/xmlto dev-libs/libxslt ) gnome-base/gnome-common !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Gnome session manager
+EAPI=6
+HOMEPAGE=https://git.gnome.org/browse/gnome-session
+IUSE=doc elibc_FreeBSD ipv6 systemd
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2 LGPL-2 FDL-1.1
+RDEPEND=>=dev-libs/glib-2.46.0:2[dbus] x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3.18.0:3 >=dev-libs/json-glib-0.10 >=gnome-base/gnome-desktop-3.18:3= elibc_FreeBSD? ( dev-libs/libexecinfo ) media-libs/mesa[egl,gles2] media-libs/libepoxy x11-libs/libSM x11-libs/libICE x11-libs/libXau x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-misc/xdg-user-dirs x11-misc/xdg-user-dirs-gtk x11-apps/xdpyinfo systemd? ( >=sys-apps/systemd-183:0= ) gnome-base/gnome-settings-daemon >=gnome-base/gsettings-desktop-schemas-0.1.7 x11-themes/adwaita-icon-theme sys-apps/dbus[X] !systemd? ( sys-auth/consolekit >=dev-libs/dbus-glib-0.76 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-session/3.22/gnome-session-3.22.3.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:- src_prepare:gnome2 src_configure:- src_compile:gnome2 src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	d37ffcd1731600f2d196e77cd77ed727	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	libtool	48b1b9f6194d2842456514d1184ca72e	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=f5f0e480a3601c60823c7e329d2766a9

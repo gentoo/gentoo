@@ -5712,7 +5712,7 @@ dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl
 dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.140.0-r1 0.150.0: Displays stack trace in HTML
-dev-perl/Devel-Symdump 2.150.0 2.170.0: Dump symbol names or the symbol table
+dev-perl/Devel-Symdump 2.150.0 2.170.0 2.180.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/Digest-CRC 0.210.0: Generic CRC function
@@ -11470,7 +11470,7 @@ gnome-base/gnome-keyring 3.20.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.20.0 3.22.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
-gnome-base/gnome-session 3.20.2 3.22.2 3.23.91: Gnome session manager
+gnome-base/gnome-session 3.20.2 3.22.2 3.22.3 3.23.91: Gnome session manager
 gnome-base/gnome-settings-daemon 3.20.2 3.22.1 3.23.90: Gnome Settings Daemon
 gnome-base/gnome-shell 3.20.4 3.22.2 3.22.3: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
@@ -15355,7 +15355,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0: The X2Go
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.03.02 2017.03.10 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.12.22 2017.03.10 2017.03.16 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
