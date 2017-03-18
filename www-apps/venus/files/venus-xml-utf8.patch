@@ -1,0 +1,80 @@
+diff -Nuar --exclude '*~' venus.orig/themes/common/atom.xml.xslt venus/themes/common/atom.xml.xslt
+--- venus.orig/themes/common/atom.xml.xslt	2010-09-11 06:41:53.000000000 -0700
++++ venus/themes/common/atom.xml.xslt	2017-03-17 17:24:51.668976850 -0700
+@@ -1,3 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+                 xmlns:access="http://www.bloglines.com/about/specs/fac-1.0"
+                 xmlns:atom="http://www.w3.org/2005/Atom"
+@@ -7,6 +8,7 @@
+                 xmlns="http://www.w3.org/1999/xhtml"
+ 		exclude-result-prefixes="planet xhtml">
+ 
++  <xsl:output indent="yes" method="xml" encoding="UTF-8"/>
+   <!-- strip planet elements and attributes -->
+   <xsl:template match="planet:*|@planet:*"/>
+ 
+diff -Nuar --exclude '*~' venus.orig/themes/common/foafroll.xml.xslt venus/themes/common/foafroll.xml.xslt
+--- venus.orig/themes/common/foafroll.xml.xslt	2010-09-11 06:41:53.000000000 -0700
++++ venus/themes/common/foafroll.xml.xslt	2017-03-17 17:25:01.477165384 -0700
+@@ -1,3 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+ 	        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ 	        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+@@ -8,7 +9,7 @@
+                 xmlns:planet="http://planet.intertwingly.net/"
+                 exclude-result-prefixes="atom planet">
+  
+-  <xsl:output indent="yes" method="xml"/>
++  <xsl:output indent="yes" method="xml" encoding="UTF-8"/>
+ 
+   <xsl:template match="atom:feed">
+     <rdf:RDF>
+diff -Nuar --exclude '*~' venus.orig/themes/common/opml.xml.xslt venus/themes/common/opml.xml.xslt
+--- venus.orig/themes/common/opml.xml.xslt	2010-09-11 06:41:53.000000000 -0700
++++ venus/themes/common/opml.xml.xslt	2017-03-17 17:26:20.930692531 -0700
+@@ -1,9 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+                 xmlns:atom="http://www.w3.org/2005/Atom"
+                 xmlns:planet="http://planet.intertwingly.net/"
+                 exclude-result-prefixes="atom planet">
+  
+-  <xsl:output indent="yes" method="xml"/>
++  <xsl:output indent="yes" method="xml" encoding="UTF-8"/>
+ 
+   <xsl:template name="rfc822" xmlns:date="http://exslt.org/dates-and-times">
+     <xsl:param name="date"/>
+diff -Nuar --exclude '*~' venus.orig/themes/common/rss10.xml.tmpl venus/themes/common/rss10.xml.tmpl
+--- venus.orig/themes/common/rss10.xml.tmpl	2010-09-11 06:41:53.000000000 -0700
++++ venus/themes/common/rss10.xml.tmpl	2017-03-17 17:26:18.558646942 -0700
+@@ -1,4 +1,4 @@
+-<?xml version="1.0"?>
++<?xml version="1.0" encoding="UTF-8"?>
+ <rdf:RDF
+ 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ 	xmlns:dc="http://purl.org/dc/elements/1.1/"
+diff -Nuar --exclude '*~' venus.orig/themes/common/rss20.xml.tmpl venus/themes/common/rss20.xml.tmpl
+--- venus.orig/themes/common/rss20.xml.tmpl	2010-09-11 06:41:53.000000000 -0700
++++ venus/themes/common/rss20.xml.tmpl	2017-03-17 17:26:16.718611577 -0700
+@@ -1,4 +1,4 @@
+-<?xml version="1.0"?>
++<?xml version="1.0" encoding="UTF-8"?>
+ <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ 
+ <channel>
+diff -Nuar --exclude '*~' venus.orig/themes/common/validate.html.xslt venus/themes/common/validate.html.xslt
+--- venus.orig/themes/common/validate.html.xslt	2010-09-11 06:41:53.000000000 -0700
++++ venus/themes/common/validate.html.xslt	2017-03-17 17:26:58.275410251 -0700
+@@ -1,8 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+                 xmlns:atom="http://www.w3.org/2005/Atom"
+                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                 xmlns:planet="http://planet.intertwingly.net/"
+                 xmlns="http://www.w3.org/1999/xhtml">
++  <xsl:output indent="yes" method="html" encoding="UTF-8"/>
+  
+   <xsl:template match="atom:feed">
+     <html xmlns="http://www.w3.org/1999/xhtml">
