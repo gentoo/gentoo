@@ -9,7 +9,7 @@ inherit eutils distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="A cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
-SRC_URI="https://github.com/metabrainz/${PN}/archive/release-${PV}.tar.gz"
+SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/picard/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -24,23 +24,41 @@ DEPEND="dev-python/PyQt4[X,${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 
 RESTRICT="test" # doesn't work with ebuilds
-S=${WORKDIR}/${PN}-release-${PV}
-DOCS="AUTHORS.txt NEWS.txt"
+S="${WORKDIR}/${PN}-release-${PV}"
+
+DOCS=(
+	'AUTHORS.txt'
+	'NEWS.txt'
+	'README.md'
+)
 
 DOC_CONTENTS="If you are upgrading Picard and it does not start,
 try removing Picard's settings:
 	rm ~/.config/MusicBrainz/Picard.conf"
 
-src_compile() {
-	distutils-r1_src_compile $(use nls || echo "--disable-locales")
+python_compile() {
+	local build_args=(
+		'--disable-autoupdate'
+	)
+	if ! use nls; then
+		build_args+=( '--disable-locales' )
+	fi
+	distutils-r1_python_compile ${build_args[@]}
 }
 
-src_install() {
-	distutils-r1_src_install --disable-autoupdate --skip-build \
-		$(use nls || echo "--disable-locales")
+python_install() {
+	local install_args=(
+		'--disable-autoupdate'
+		'--skip-build'
+	)
+	if ! use nls; then
+		install_args+=( '--disable-locales' )
+	fi
+	distutils-r1_python_install ${install_args[@]}
+}
 
-	doicon picard.ico
-	domenu picard.desktop
+python_install_all() {
+	distutils-r1_python_install_all
 	readme.gentoo_create_doc
 }
 
