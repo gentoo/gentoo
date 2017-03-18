@@ -3,14 +3,15 @@
 
 EAPI=6
 
+COMMIT="8de0345d99f3eb08d9406bd07e88b31afe46f315"
 KDE_TEST="true"
 KDE_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
-inherit kde5
+inherit kde5 vcs-snapshot
 
 DESCRIPTION="A DropDrawers clone. Multiple information organizer"
 HOMEPAGE="http://basket.kde.org/ https://github.com/basket-notepads/basket"
-SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -52,8 +53,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
-
-PATCHES=( "${FILESDIR}"/${P}-deps.patch )
 
 src_prepare() {
 	kde5_src_prepare
