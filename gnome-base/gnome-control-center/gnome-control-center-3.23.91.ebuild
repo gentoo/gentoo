@@ -11,7 +11,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
 
 LICENSE="GPL-2+"
 SLOT="2"
-IUSE="+bluetooth +colord debug +gnome-online-accounts +i18n input_devices_wacom kerberos networkmanager v4l wayland"
+IUSE="+bluetooth +colord debug +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager v4l wayland"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # False positives caused by nested configure scripts
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	gnome-online-accounts? (
 		>=media-libs/grilo-0.3.0:0.3=
 		>=net-libs/gnome-online-accounts-3.21.5:= )
-	i18n? ( >=app-i18n/ibus-1.5.2 )
+	ibus? ( >=app-i18n/ibus-1.5.2 )
 	kerberos? ( app-crypt/mit-krb5 )
 	networkmanager? (
 		>=gnome-extra/nm-applet-1.2.0
@@ -89,7 +89,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
 	colord? ( >=gnome-extra/gnome-color-manager-3 )
 	input_devices_wacom? ( gnome-base/gnome-settings-daemon[input_devices_wacom] )
-	i18n? ( >=gnome-base/libgnomekbd-3 )
+	ibus? ( >=gnome-base/libgnomekbd-3 )
 	wayland? ( dev-libs/libinput )
 	!wayland? (
 		>=x11-drivers/xf86-input-libinput-0.19.0
@@ -145,7 +145,7 @@ src_configure() {
 		$(use_enable colord color) \
 		$(usex debug --enable-debug=yes ' ') \
 		$(use_enable gnome-online-accounts goa) \
-		$(use_enable i18n ibus) \
+		$(use_enable ibus) \
 		$(use_enable kerberos) \
 		$(use_enable networkmanager) \
 		$(use_with v4l cheese) \
