@@ -17678,7 +17678,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 3.5.0.6 3.5.0.8 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.4.39 4.4.51 4.4.52 4.4.53 4.4.54 4.9.4 4.9.6-r1 4.9.12 4.9.13 4.9.14 4.9.15 4.10.0 4.10.1 4.10.2 4.10.3 4.10.4: Full sources including the Gentoo patchset for the 4.10 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.4.39 4.4.51 4.4.52 4.4.53 4.4.54 4.4.55 4.9.4 4.9.6-r1 4.9.12 4.9.13 4.9.14 4.9.15 4.9.16 4.10.0 4.10.1 4.10.2 4.10.3 4.10.4: Full sources including the Gentoo patchset for the 4.10 kernel tree
 sys-kernel/git-sources 4.11_rc1 4.11_rc2: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.13-r1 4.9.14 4.9.15: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -18236,9 +18236,9 @@ www-client/epiphany 3.20.3 3.20.7 3.22.4: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.7.0 45.8.0 51.0.1: Firefox Web Browser
 www-client/firefox-bin 45.8.0 52.0: Firefox Web Browser
-www-client/google-chrome 57.0.2987.98: The web browser from Google
-www-client/google-chrome-beta 57.0.2987.98: The web browser from Google
-www-client/google-chrome-unstable 58.0.3029.19: The web browser from Google
+www-client/google-chrome 57.0.2987.110: The web browser from Google
+www-client/google-chrome-beta 58.0.3029.19: The web browser from Google
+www-client/google-chrome-unstable 59.0.3043.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18288,7 +18288,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 25.0.0.127: Adobe Flash Player
-www-plugins/chrome-binary-plugins 57.0.2987.98_beta 57.0.2987.98 58.0.3029.19_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 57.0.2987.110 58.0.3029.19_beta 59.0.3043.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
