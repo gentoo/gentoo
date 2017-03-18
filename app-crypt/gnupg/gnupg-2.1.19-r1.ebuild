@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.1.16-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch"
 	"${FILESDIR}"/${P}-solaris-ucred.patch
 	"${FILESDIR}"/${P}-ssh-no-scdaemon.patch
+	"${FILESDIR}"/${P}-have_strlwr.patch
 )
 
 src_configure() {
