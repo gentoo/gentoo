@@ -14815,6 +14815,7 @@ net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
+net-libs/libtorrent-rasterbar 1.0.10 1.0.11 1.1.1 1.1.2: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 3.0.22 4.0.0 4.0.1: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.8.0: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
@@ -14854,7 +14855,6 @@ net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/quasselc 0_p20150406: API for accessing Quassel using C
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 0.9.3 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
-net-libs/rb_libtorrent 0.16.17 0.16.19 1.0.10 1.0.11 1.1.1 1.1.2: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/rest 0.8.0: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
@@ -15456,7 +15456,7 @@ net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energ
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.4.3 0.4.3-r1 0.4.4 9999: P2P communications protocol
-net-p2p/qbittorrent 3.1.12 3.3.7 3.3.10 3.3.11 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 3.3.7 3.3.10 3.3.11 9999: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.5.5c 0.6.0 0.6.1 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
