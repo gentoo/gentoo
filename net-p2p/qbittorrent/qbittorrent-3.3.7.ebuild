@@ -27,7 +27,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-libs/boost:=
-	>=net-libs/rb_libtorrent-1.0.6
+	>=net-libs/libtorrent-rasterbar-1.0.6
 	sys-libs/zlib
 	!qt5? (
 		>=dev-libs/qjson-0.8.1[qt4(+)]

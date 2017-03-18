@@ -35,7 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.5-disable_libtorrent_internal_copy.patch"
 )
 
-CDEPEND=">=net-libs/rb_libtorrent-0.14.9[python,${PYTHON_USEDEP}]"
+CDEPEND=">=net-libs/libtorrent-rasterbar-0.14.9[python,${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-util/intltool"

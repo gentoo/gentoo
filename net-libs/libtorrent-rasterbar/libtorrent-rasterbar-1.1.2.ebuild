@@ -10,12 +10,11 @@ DISTUTILS_IN_SOURCE_BUILD=true
 
 inherit distutils-r1 eutils versionator
 
-MY_P=libtorrent-rasterbar-${PV} # TODO: rename, bug 576126
 MY_PV=$(replace_all_version_separators _)
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="http://libtorrent.org"
-SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/9"
@@ -40,8 +39,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/libtool
 "
-
-S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	default
