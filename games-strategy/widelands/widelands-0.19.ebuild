@@ -51,10 +51,6 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-#src_compile() {
-#	cmake-utils_src_compile
-#}
-
 src_install() {
 #	DOCS="ChangeLog CREDITS" cmake-utils_src_install
 	newicon data/images/logos/wl-ico-128.png ${PN}.png
