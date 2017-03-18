@@ -11,7 +11,7 @@ DESCRIPTION="Framework which enables integration with Security Content Automatio
 HOMEPAGE="http://www.open-scap.org/"
 SRC_URI="https://fedorahosted.org/releases/o/p/${PN}/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl caps debug doc gconf ldap nss pcre perl python rpm selinux sce sql test xattr"
