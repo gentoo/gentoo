@@ -20,6 +20,8 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-irssi-1.0.patch" )
+
 src_prepare() {
 	default
 	sed -e "s/{MAKE} doc-install/{MAKE}/" \
