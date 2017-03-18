@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="An advanced suite for testing the randomness of RNG's"
 HOMEPAGE="http://www.phy.duke.edu/~rgb/General/dieharder.php"
@@ -35,11 +35,6 @@ pkg_setup() {
 	use doc && HTML_DOCS+=(
 		dieharder.html
 	)
-}
-
-src_prepare() {
-	default
-	eautoreconf
 }
 
 src_compile() {
