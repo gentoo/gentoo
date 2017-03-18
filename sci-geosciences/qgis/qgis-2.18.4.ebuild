@@ -34,8 +34,8 @@ COMMON_DEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtscript:4
-	dev-qt/qtsvg:4
 	dev-qt/qtsql:4
+	dev-qt/qtsvg:4
 	sci-libs/gdal:=[geos,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
@@ -80,6 +80,11 @@ RDEPEND="${COMMON_DEPEND}
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.18.3-qscintilla-2.10.patch
+	"${FILESDIR}"/${PN}-2.18.3-sip-4.19.1.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -99,29 +104,40 @@ src_configure() {
 		-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt4.so
-		-DWITH_INTERNAL_DATEUTIL=OFF
-		-DWITH_INTERNAL_FUTURE=OFF
-		-DWITH_INTERNAL_HTTPLIB2=OFF
-		-DWITH_INTERNAL_JINJA2=OFF
-		-DWITH_INTERNAL_MARKUPSAFE=OFF
-		-DWITH_INTERNAL_PYGMENTS=OFF
-		-DWITH_INTERNAL_PYTZ=OFF
 		-DWITH_INTERNAL_QWTPOLAR=OFF
-		-DWITH_INTERNAL_SIX=OFF
-		-DWITH_INTERNAL_YAML=OFF
 		-DPEDANTIC=OFF
 		-DWITH_APIDOC=OFF
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
-		-DWITH_BINDINGS="$(usex python)"
-		-DWITH_GRASS7="$(usex grass)"
-		-DGRASS_PREFIX7=/usr/$(get_libdir)/grass70
-		-DWITH_ORACLE="$(usex oracle)"
-		-DWITH_POSTGRESQL="$(usex postgres)"
-		-DWITH_PYSPATIALITE="$(usex python)"
-		-DWITH_SERVER="$(usex mapserver)"
-		-DWITH_QTWEBKIT="$(usex webkit)"
+		-DWITH_GRASS=$(usex grass)
+		-DWITH_SERVER=$(usex mapserver)
+		-DWITH_ORACLE=$(usex oracle)
+		-DWITH_POSTGRESQL=$(usex postgres)
+		-DWITH_BINDINGS=$(usex python)
+		-DWITH_QTWEBKIT=$(usex webkit)
 	)
+
+	if use grass; then
+		mycmakeargs+=(
+			-DWITH_GRASS7=ON
+			-DGRASS_PREFIX7=/usr/$(get_libdir)/grass70
+		)
+	fi
+
+	if use python; then
+		mycmakeargs+=(
+			-DWITH_PYSPATIALITE=ON
+			-DWITH_INTERNAL_DATEUTIL=OFF
+			-DWITH_INTERNAL_FUTURE=OFF
+			-DWITH_INTERNAL_HTTPLIB2=OFF
+			-DWITH_INTERNAL_JINJA2=OFF
+			-DWITH_INTERNAL_MARKUPSAFE=OFF
+			-DWITH_INTERNAL_PYGMENTS=OFF
+			-DWITH_INTERNAL_PYTZ=OFF
+			-DWITH_INTERNAL_SIX=OFF
+			-DWITH_INTERNAL_YAML=OFF
+		)
+	fi
 
 	cmake-utils_src_configure
 }

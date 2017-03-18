@@ -84,6 +84,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-app-icon.patch
 	"${FILESDIR}"/${P}-webkit.patch
 	"${FILESDIR}"/${P}-sip-4.19.patch
+	"${FILESDIR}"/${P}-qscintilla-2.10.patch
+	"${FILESDIR}"/${P}-sip-4.19.1.patch
 )
 
 pkg_setup() {
