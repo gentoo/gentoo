@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 zeromq? ( net-libs/cppzmq:0= ) doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-3.6.3 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 zeromq? ( net-libs/cppzmq:0= ) doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-3.7.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Abstract, manage and coordinate execution of tasks
 EAPI=5
 HOMEPAGE=http://www.openchemistry.org/OpenChemistry/project/molequeue.html
@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7 server? ( client ) test? ( server )
 SLOT=0
 SRC_URI=https://github.com/OpenChemistry/molequeue/archive/0.8.0.tar.gz -> molequeue-0.8.0.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066
 _md5_=9564284a27c1b589ebef9a4dd9a638aa
