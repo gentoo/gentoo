@@ -38,6 +38,10 @@ RDEPEND="${COMMON_DEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}/${P}-simgear-compilation.patch"
+)
+
 DOCS=(AUTHORS NEWS README)
 
 src_prepare() {

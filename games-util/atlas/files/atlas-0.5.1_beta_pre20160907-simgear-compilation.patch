@@ -1,0 +1,273 @@
+diff -r e183e3b3a041 configure.ac
+--- a/configure.ac	Tue Sep 06 22:12:05 2016 -0700
++++ b/configure.ac	Sat Mar 18 05:09:04 2017 +0100
+@@ -10,6 +10,8 @@
+ AC_PREREQ(2.52)
+ AM_INIT_AUTOMAKE
+ 
++CXXFLAGS="-std=c++11"
++
+ dnl Checks for programs.
+ AC_PROG_MAKE_SET
+ AC_PROG_CC
+diff -r e183e3b3a041 src/FlightTrack.cxx
+--- a/src/FlightTrack.cxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/FlightTrack.cxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -81,7 +81,7 @@
+ 	throw runtime_error("flight file open failure");
+     }
+ 
+-    _file.set(filePath);
++    _file = SGPath(filePath);
+ 
+     _port = -1;
+     _device = "";
+@@ -101,7 +101,7 @@
+     _input_channel = new SGSocket("", portStr.str(), "udp");
+     _input_channel->open(SG_IO_IN);
+ 
+-    _file.set("");
++    _file = SGPath();
+ 
+     _port = port;
+     _device = "";
+@@ -123,7 +123,7 @@
+     _input_channel = new SGSerial(device, baudStr.str());
+     _input_channel->open(SG_IO_IN);
+ 
+-    _file.set("");
++    _file = SGPath();
+ 
+     _port = -1;
+     _device = device;
+@@ -399,11 +399,11 @@
+     return _name.str();
+ }
+ 
+-void FlightTrack::setFilePath(char *path)
++void FlightTrack::setFilePath(const char *path)
+ {
+     // EYE - check for existing name?  overwriting?
+     // EYE - call this (and other accessors) from constructors?
+-    _file.set(path);
++    _file = SGPath(path);
+     // We count this as a change.
+     _version++;
+     _versionAtLastSave = 0;
+diff -r e183e3b3a041 src/FlightTrack.hxx
+--- a/src/FlightTrack.hxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/FlightTrack.hxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -141,7 +141,7 @@
+     const char *fileName();	// File name
+     const char *filePath();	// Full path, including file
+     const char *niceName();	// Nicely formatted name
+-    void setFilePath(char *path);
++    void setFilePath(const char *path);
+     void save();
+     bool modified();
+ 
+diff -r e183e3b3a041 src/Geographics.cxx
+--- a/src/Geographics.cxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/Geographics.cxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -25,6 +25,7 @@
+ #include "Geographics.hxx"
+ 
+ // C++ system files
++#include <cmath>
+ #include <stdexcept>
+ 
+ // Our project's include files
+@@ -431,11 +432,11 @@
+ bool AtlasCoord::_geodValid() const
+ {
+     // Note: this has to agree with the value set in invalidate()!
+-    return !isnan(_geod.getLatitudeDeg());
++    return !std::isnan(_geod.getLatitudeDeg());
+ }
+ 
+ bool AtlasCoord::_cartValid() const
+ {
+     // Note: this has to agree with the value set in invalidate()!
+-    return !isnan(_cart.x());
++    return !std::isnan(_cart.x());
+ }
+diff -r e183e3b3a041 src/Map.cxx
+--- a/src/Map.cxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/Map.cxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -168,13 +168,13 @@
+ bool parse_arg(char* arg) 
+ {
+     if (strncmp(arg, "--fg-root=", 10) == 0) {
+-	fg_root.set(arg + 10);
++	fg_root = SGPath(arg + 10);
+     } else if (strncmp(arg, "--fg-scenery=", 13) == 0) {
+-	scenery.set(arg + 13);
++	scenery = SGPath(arg + 13);
+     } else if (strncmp(arg, "--atlas=", 8) == 0) {
+-	atlas.set(arg + 8);
++	atlas = SGPath(arg + 8);
+     } else if (strncmp(arg, "--palette=", 10) == 0) {
+-	palette.set(arg + 10);
++	palette = SGPath(arg + 10);
+     } else if (strcmp(arg, "--png") == 0) {
+ 	imageType = TileMapper::PNG;
+     } else if (strcmp(arg, "--jpeg") == 0) {
+@@ -272,23 +272,14 @@
+     // Read the FG_ROOT and FG_SCENERY environment variables before
+     // processing .atlasmaprc and command args, so that we can
+     // override them if necessary.
+-    char *env = getenv("FG_ROOT");
+-    if (env == NULL) {
+-	// EYE - is it possible for this to not be defined?
+-	fg_root.set(FGBASE_DIR);
+-    } else {
+-	fg_root.set(env);
+-    }
+ 
+-    env = getenv("FG_SCENERY");
+-    if (env == NULL) {
+-	fg_scenery.set(fg_root.str() + "/Scenery");
+-    } else {
+-	fg_scenery.set(env);
+-    }
++    // EYE - is it possible for this to not be defined?
++    fg_root = SGPath::fromEnv("FG_ROOT", SGPath(FGBASE_DIR));
++
++    fg_scenery = SGPath::fromEnv("FG_SCENERY", fg_root.str() + "/Scenery");
+ 
+     // Set a default palette.
+-    palette.set("default.ap");
++    palette = SGPath("default.ap");
+ 
+     // Process ~/.atlasmaprc.
+     char* homedir = getenv("HOME");
+@@ -332,10 +323,10 @@
+ 	// 'scenery'.  We're done.
+     } else if (!fg_scenery.str().empty()) {
+ 	// From FG_SCENERY
+-	scenery.set(fg_scenery.str());
++	scenery = SGPath(fg_scenery.str());
+     } else if (!fg_root.str().empty()) {
+ 	// Default: $FG_ROOT/Scenery
+-	scenery.set(fg_root.str());
++	scenery = SGPath(fg_root.str());
+ 	scenery.append("Scenery");
+     } else {
+ 	fprintf(stderr, "%s: No scenery directory specified.", appName);
+@@ -356,7 +347,7 @@
+     } else if (!fg_root.str().empty()) {
+ 	// EYE - make default $HOME/Atlas?
+ 	// Default: $FG_ROOT/Atlas
+-	atlas.set(fg_root.str());
++	atlas = SGPath(fg_root.str());
+ 	atlas.append("Atlas");
+     } else {
+ 	fprintf(stderr, "%s: No map directory specified.", appName);
+@@ -394,11 +385,11 @@
+     SGPath palettePath;
+     palettePath.append(palette.str());
+     if ((atlasPalette = loadPalette(palettePath.c_str())) == NULL) {
+-	palettePath.set(atlas.str());
++	palettePath = SGPath(atlas.str());
+ 	palettePath.append("Palettes");
+ 	palettePath.append(palette.str());
+ 	if ((atlasPalette = loadPalette(palettePath.c_str())) == NULL) {
+-	    palettePath.set(fg_root.str());
++	    palettePath = SGPath(fg_root.str());
+ 	    palettePath.append("Atlas");
+ 	    palettePath.append("Palettes");
+ 	    palettePath.append(palette.str());
+diff -r e183e3b3a041 src/Preferences.cxx
+--- a/src/Preferences.cxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/Preferences.cxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -317,7 +317,7 @@
+ {
+     string buf;
+     is >> buf;
+-    p.set(buf);
++    p = SGPath(buf);
+ 
+     return is;
+ }
+@@ -638,7 +638,7 @@
+     // EYE - just get()?
+     SGPath p(fg_root.get(Pref::FACTORY));
+     if (p.isNull()) {
+-	p.set(FGBASE_DIR);
++	p = SGPath(FGBASE_DIR);
+     }
+     p.append("Atlas");
+     path.set(p, Pref::FACTORY);
+@@ -770,10 +770,10 @@
+     char* homedir = getenv("HOME");
+     SGPath rcpath;
+     if (homedir != NULL) {
+-	rcpath.set(homedir);
++	rcpath = SGPath(homedir);
+ 	rcpath.append(atlasrc);
+     } else {
+-	rcpath.set(atlasrc);
++	rcpath = SGPath(atlasrc);
+     }
+ 
+     ifstream rc(rcpath.c_str());
+@@ -946,7 +946,7 @@
+     }
+     SGPath p;
+     while (optind < argc) {
+-	p.set(argv[optind++]);
++	p = SGPath(argv[optind++]);
+ 	flightFiles.push_back(p);
+     }
+ 
+diff -r e183e3b3a041 src/Scenery.cxx
+--- a/src/Scenery.cxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/Scenery.cxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -198,7 +198,7 @@
+ 	data = (GLubyte *)loadJPEG(f.c_str(), &width, &height, &depth, 
+ 				   maximumElevation);
+ 	if (!data) {
+-	    f.set(f.base());
++	    f = SGPath(f.base());
+ 	    f.concat(".png");
+ 	    data = (GLubyte *)loadPNG(f.c_str(), &width, &height, &depth,
+ 				      maximumElevation);
+diff -r e183e3b3a041 src/Subbucket.cxx
+--- a/src/Subbucket.cxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/Subbucket.cxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -346,10 +346,10 @@
+     // http://wiki.flightgear.org/index.php/BTG_File_Format
+ 
+     SGBinObject btg;
+-    if (!btg.read_bin(_path.c_str())) {
+-	// EYE - throw an error?
+-	// EYE - will the cache continue to call load() then?
+-	return false;
++    if (!btg.read_bin(SGPath(_path))) {
++        // EYE - throw an error?
++        // EYE - will the cache continue to call load() then?
++        return false;
+     }
+ 
+     //////////////////////////////////////////////////////////////////////
+diff -r e183e3b3a041 src/Tiles.cxx
+--- a/src/Tiles.cxx	Tue Sep 06 22:12:05 2016 -0700
++++ b/src/Tiles.cxx	Sat Mar 18 05:09:04 2017 +0100
+@@ -464,7 +464,7 @@
+ const SGPath& TileManager::mapPath(unsigned int level)
+ {
+     static SGPath result;
+-    result.set(_maps.str());
++    result = SGPath(_maps.str());
+ 
+     char str[3];
+     snprintf(str, 3, "%d", level);
+@@ -821,7 +821,7 @@
+ const SGPath& Tile::sceneryDir()
+ {
+     if (_sceneryIndex == TileManager::NaPI) {
+-	__sceneryPath = "";
++	__sceneryPath = SGPath();
+     } else {
+ 	__sceneryPath = _tm->sceneryPaths()[_sceneryIndex];
+ 	__sceneryPath.append(chunk()->name());
