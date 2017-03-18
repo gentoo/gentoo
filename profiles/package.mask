@@ -261,31 +261,6 @@ media-fonts/acroread-asianfonts
 # Masked for removal in 30 days
 games-puzzle/kiki
 
-# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
-# Dead upstream. Relies on vala slot. Unmaintained. Bug #601346.
-# Masked for removal in 30 days.
-x11-terms/valaterm
-
-# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
-# Dead upstream. Relies on dead udisks:0. Bug #601356.
-# Masked for removal in 30 days.
-sys-fs/udisks-glue
-
-# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
-# Fails at runtime. Dead upstream. Unmaintained. Bug #602008.
-# Masked for removal in 30 days.
-dev-util/weblint
-
-# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
-# Requires a dead and vulnerable webkit-gtk version. Bug #608602.
-# Masked for removal in 30 days.
-dev-dotnet/webkit-sharp
-net-news/blam
-
-# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
-# Fails to build. Bug #608940. Masked for removal in 30 days.
-net-ftp/bareftp
-
 # Alon Bar-Lev <alonbl@gentoo.org> (17 Feb 2017)
 # Replaced by dev-libs/libp11.
 # Bug#609668. Removal in 30 days.
