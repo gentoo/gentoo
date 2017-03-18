@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=python_targets_python3_4? ( dev-lang/python:3.4[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)]
+DESCRIPTION=TreeLine is a structured information storage program
+EAPI=5
+HOMEPAGE=http://treeline.bellz.org/
+IUSE=python_targets_python3_4
+LICENSE=GPL-2
+RDEPEND=python_targets_python3_4? ( dev-lang/python:3.4[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)] dev-python/PyQt4[X,python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)]
+REQUIRED_USE=python_targets_python3_4
+SLOT=0
+SRC_URI=mirror://sourceforge/project/treeline/2.1.1/treeline-2.1.1.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_install:-
+_eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=d4f13a099a32bb28a8169d15526a3684
