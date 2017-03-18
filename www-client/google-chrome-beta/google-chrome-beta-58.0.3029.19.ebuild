@@ -133,8 +133,6 @@ src_install() {
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
 	done
 
-	dosym "/${CHROME_HOME}/${PN}" "usr/bin/${MY_PN}"
-
 	pax-mark m "${CHROME_HOME}/chrome"
 
 	readme.gentoo_create_doc
