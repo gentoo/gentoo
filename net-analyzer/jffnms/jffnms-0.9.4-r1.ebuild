@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit user
 
 DESCRIPTION="Network Management and Monitoring System"
@@ -14,7 +14,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="mysql postgres snmp"
 
 RDEPEND="
-	app-mobilephone/smsclient
 	dev-lang/php[apache2,cli,gd,mysql?,postgres?,session,snmp,sockets,wddx]
 	dev-php/PEAR-PEAR
 	media-gfx/graphviz
