@@ -5,16 +5,15 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_4 )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="arch testing tool"
 HOMEPAGE="https://github.com/kensington/tatt"
-EGIT_REPO_URI="https://github.com/kensington/tatt.git \
-	git://github.com/kensington/tatt.git"
+SRC_URI="https://github.com/kensington/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+templates"
 
 RDEPEND="
