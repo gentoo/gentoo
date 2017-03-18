@@ -8064,6 +8064,7 @@ dev-python/pyClamd 0.3.10 0.3.17: python interface to Clamd (Clamav daemon)
 dev-python/pyGPG 0.1 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyacoustid 1.0.0-r1: Python module for Chromaprint acoustic fingerprinting and the Acoustid API
+dev-python/pyaes 1.6.0: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.0.26-r1 1.0.29: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyamazon 0.65-r1: A Python wrapper for the Amazon web API
@@ -15066,7 +15067,7 @@ net-misc/dropbear 2016.73 2016.74: small SSH 2 client/server designed for small 
 net-misc/dropbox 20.3.18 21.3.18: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
-net-misc/electrum 2.7.15 2.8.0: User friendly Bitcoin client
+net-misc/electrum 2.7.15 2.8.0-r1: User friendly Bitcoin client
 net-misc/elliptics 2.19.2.6: Elliptics network is a fault tolerant key/value storage without dedicated metadata servers
 net-misc/elliptics-eblob 0.22.16: The elliptics network - eblob backend
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
