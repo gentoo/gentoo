@@ -4087,7 +4087,7 @@ dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
 dev-java/jade 3.3-r3: JADE is FIPA-compliant Java Agent Development Environment
 dev-java/jakarta-oro 2.0.8-r3 2.0.8-r4: A set of text-processing Java classes
 dev-java/jakarta-regexp 1.3-r5 1.4-r2 1.5: 100% Pure Java Regular Expression package
-dev-java/jal 20031117-r3 20031117-r4: Partial port of the C++ Standard Template Library
+dev-java/jal 20031117-r5: Partial port of the C++ Standard Template Library
 dev-java/jama 1.0.3-r1: A Java Matrix Package
 dev-java/jamon 2.81: Java API to monitor production applications
 dev-java/jamvm 2.0.0-r1: An extremely small and specification-compliant virtual machine
@@ -4182,7 +4182,7 @@ dev-java/jlibeps 0.1-r1: Library to create EPS graphics from a Graphics2D
 dev-java/jline 1.0 2.12.1-r1: A Java library for handling console input
 dev-java/jmdns 3.4.1-r1: JmDNS is an implementation of multi-cast DNS in Java
 dev-java/jmh-core 1.4.1: Harness for building, running, and analysing nano/micro/milli/macro benchmarks
-dev-java/jmi-interface 1.0-r3 1.0-r4: Java Metadata Interface Sample Class Interface
+dev-java/jmi-interface 1.0-r4 1.0-r5: Java Metadata Interface Sample Class Interface
 dev-java/jmock 1.2.0-r1 2.6.1: Library for testing Java code using mock objects
 dev-java/jna 3.4.1 4.2.2-r1: Java Native Access (JNA)
 dev-java/jnlp-api 6.0.18: JNLP API classes, repackaged from the icedtea-web fork of netx
@@ -4210,7 +4210,7 @@ dev-java/json-simple 1.1: Simple Java toolkit for JSON
 dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jspeex 0.9.7-r1: Speex speech codec library for Java
 dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface Classes
-dev-java/jsr173 1.0-r1 1.0-r2 1.0-r3: Yet another Java library for parsing and writing XML
+dev-java/jsr173 1.0-r3: Yet another Java library for parsing and writing XML
 dev-java/jsr181 1.0-r2: JSR 181 API classes
 dev-java/jsr223 1.0-r2: Scripting for the Java(TM) Platform
 dev-java/jsr225 1.0: XQuery API for Java
@@ -4222,7 +4222,7 @@ dev-java/jsr67 1.3-r1: SAAJ 1.3 (AKA JSR-67 MR3) API
 dev-java/jss 4.3.2: Network Security Services for Java (JSS)
 dev-java/jssc 2.8.0-r1: Java Simple Serial Connector
 dev-java/jstun 0.7.3: Java-based STUN implementation
-dev-java/jta 1.0.1-r1 1.1: The Java Transaction API
+dev-java/jta 1.1: The Java Transaction API
 dev-java/jtds 1.3.1: jTDS - SQL Server and Sybase JDBC driver
 dev-java/jtidy 1.0: Java port of HTML Tidy, an HTML syntax checker and pretty printer
 dev-java/jtreemap 1.1.0-r1: Java library for treemapping data
@@ -4243,7 +4243,7 @@ dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
 dev-java/jython 2.7.0 2.7.0-r1: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
 dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
-dev-java/kunststoff 2.0.2-r1: Kunststoff Look&Feel
+dev-java/kunststoff 2.0.2-r2: Kunststoff look'n'feel Java library
 dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
 dev-java/laf-plugin 0.2-r1 1.1: A generic plugin framework for look-and-feels
@@ -4357,7 +4357,7 @@ dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SA
 dev-java/sat4j-pseudo 2.2.0 2.3.1: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r3 2.2.1-r4: SAX: Simple API for XML in Java
 dev-java/saxon 6.5.5 6.5.5-r1 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
-dev-java/saxpath 1.0-r2: A Simple API for XPath
+dev-java/saxpath 1.0-r3: Java XPath API
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an IETF RFC 2614 compliant SLP client for CIM service discovery
 dev-java/sbt 0.13.8-r1 0.13.10_rc2 0.13.11 0.13.13: sbt is a build tool for Scala and Java projects that aims to do the basics well
 dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9: sbt, a build tool for Scala.
