@@ -282,10 +282,6 @@ dev-util/weblint
 dev-dotnet/webkit-sharp
 net-news/blam
 
-# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
-# Fails to build. Bug #608940. Masked for removal in 30 days.
-net-ftp/bareftp
-
 # Alon Bar-Lev <alonbl@gentoo.org> (17 Feb 2017)
 # Replaced by dev-libs/libp11.
 # Bug#609668. Removal in 30 days.
