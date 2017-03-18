@@ -4443,7 +4443,7 @@ dev-java/xalan 2.7.2: Apache's XSLT processor for transforming XML documents int
 dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
 dev-java/xerces 2.11.0 2.11.0-r1: The next generation of high performance, fully compliant XML parsers in the Apache Xerces family
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
-dev-java/xjavac 20110814: The implementation of the javac compiler for IBM JDK 1.4 (needed for xerces-2)
+dev-java/xjavac 2.4.0 20110814: The implementation of the javac compiler for IBM JDK 1.4 (needed for xerces-2)
 dev-java/xml-commons 1.4.01: Apache XML Commons
 dev-java/xml-commons-external 1.3.04 1.4.01 1.4.01-r1: Externally-defined set of standard interfaces, namely DOM, SAX, and JAXP
 dev-java/xml-commons-resolver 1.2: An XML Entity and URI Resolver
