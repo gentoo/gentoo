@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 pypy )
 
 inherit python-single-r1 readme.gentoo-r1
 

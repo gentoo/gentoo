@@ -1,6 +1,15 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (18 Mar 2017)
+# These py2-only packages also support pypy, enable
+# Python 2.7 as the default implementation, preparing
+# for the eventual switch to py3 in PYTHON_SINGLE_TARGET
+app-text/asciidoc python_single_target_python2_7
+dev-vcs/git-bz python_single_target_python2_7
+gnome-base/libglade python_single_target_python2_7
+sci-chemistry/pdb-tools python_single_target_python2_7
+
 # Only python3 supported
 dev-libs/libixion python_single_target_python3_4
 dev-libs/liborcus python_single_target_python3_4
