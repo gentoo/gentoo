@@ -261,12 +261,6 @@ media-fonts/acroread-asianfonts
 # Masked for removal in 30 days
 games-puzzle/kiki
 
-# Michael Palimaka <kensington@gentoo.org> (18 Feb 2017)
-# Requires a dead and vulnerable webkit-gtk version. Bug #608602.
-# Masked for removal in 30 days.
-dev-dotnet/webkit-sharp
-net-news/blam
-
 # Alon Bar-Lev <alonbl@gentoo.org> (17 Feb 2017)
 # Replaced by dev-libs/libp11.
 # Bug#609668. Removal in 30 days.
