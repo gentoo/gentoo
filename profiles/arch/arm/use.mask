@@ -2,6 +2,7 @@
 -arm
 
 # Unmask arm arch specific flags
+-cpu_flags_arm_iwmmxt
 -iwmmxt
 
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
