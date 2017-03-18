@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (18 Mar 2017)
+# Requires removed old version of media-gfx/graphviz.
+media-gfx/nip2 graphviz
+
 # Matt Turner <mattst88@gentoo.org> (04 Mar 2017)
 # Requires dev-util/cmdtest stabilization, bug 611052
 x11-apps/xauth test
