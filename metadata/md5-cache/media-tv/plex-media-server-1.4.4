@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=sys-apps/fix-gnustack dev-python/virtualenv[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] virtual/pkgconfig
+DESCRIPTION=A free media library that is intended for use with a plex client.
+EAPI=6
+HOMEPAGE=http://www.plex.tv/
+IUSE=python_targets_python2_7
+KEYWORDS=-* ~amd64
+LICENSE=Plex
+RDEPEND=net-dns/avahi python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
+RESTRICT=mirror bindist strip
+SLOT=0
+SRC_URI=amd64? ( https://downloads.plex.tv/plex-media-server/1.4.4.3495-edef59192/plexmediaserver_1.4.4.3495-edef59192_amd64.deb )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:- src_install:-
+_eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	pax-utils	4f95120230a315c8caaabeb2307b7eee	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=7179f0d464e62506ad8b5bcdda5914b0
