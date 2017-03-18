@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-File-Temp >=virtual/perl-IO-1.260.0 virtual/perl-Scalar-List-Utils virtual/perl-MIME-Base64 >=dev-perl/Parse-RecDescent-1.967.9 ntlm? ( dev-perl/Authen-NTLM ) md5? ( dev-perl/Authen-SASL dev-perl/Digest-HMAC virtual/perl-Digest-MD5 ) ssl? ( dev-perl/IO-Socket-SSL ) zlib? ( virtual/perl-IO-Compress ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=IMAP client module for Perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Mail-IMAPClient/
+IUSE=test ntlm md5 ssl zlib examples
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-File-Temp >=virtual/perl-IO-1.260.0 virtual/perl-Scalar-List-Utils virtual/perl-MIME-Base64 >=dev-perl/Parse-RecDescent-1.967.9 ntlm? ( dev-perl/Authen-NTLM ) md5? ( dev-perl/Authen-SASL dev-perl/Digest-HMAC virtual/perl-Digest-MD5 ) ssl? ( dev-perl/IO-Socket-SSL ) zlib? ( virtual/perl-IO-Compress ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PL/PLOBBES/Mail-IMAPClient-3.39.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=e49c6cb5d63139f60e13097a45c64267

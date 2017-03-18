@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/TimeDate >=dev-perl/Devel-GlobalDestruction-0.90.0 >=dev-perl/File-Remove-0.200.0 >=virtual/perl-File-Spec-0.700.0 dev-perl/IO-stringy >=dev-perl/Mail-Message-3 >=dev-perl/Mail-Transport-3 >=dev-perl/Object-Realize-Later-0.190.0 >=virtual/perl-Scalar-List-Utils-1.130.0 >=virtual/perl-Test-Simple-0.470.0 !!<dev-perl/Mail-Box-3 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Mail folder manager and MUA backend
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Mail-Box/
+IUSE=test examples
+KEYWORDS=~alpha ~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+PDEPEND=dev-perl/Mail-Box-IMAP4 dev-perl/Mail-Box-POP3
+RDEPEND=virtual/perl-Carp dev-perl/TimeDate >=dev-perl/Devel-GlobalDestruction-0.90.0 >=dev-perl/File-Remove-0.200.0 >=virtual/perl-File-Spec-0.700.0 dev-perl/IO-stringy >=dev-perl/Mail-Message-3 >=dev-perl/Mail-Transport-3 >=dev-perl/Object-Realize-Later-0.190.0 >=virtual/perl-Scalar-List-Utils-1.130.0 >=virtual/perl-Test-Simple-0.470.0 !!<dev-perl/Mail-Box-3 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/Mail-Box-3.001.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_md5_=9c282a91f406594c51833443b5911581

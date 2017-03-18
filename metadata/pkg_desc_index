@@ -4558,7 +4558,7 @@ dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Lang
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3 2.3.3-r1 2.4.0: An object-oriented scripting language
-dev-lang/rust 1.11.0 1.12.0 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1: Systems programming language from Mozilla
+dev-lang/rust 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
@@ -4664,7 +4664,6 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.17.0-r1 1.18.4 9999: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer implemented as a C++ library
 dev-libs/elfutils 0.166 0.167 0.168: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/engine_pkcs11 0.1.8 0.1.8-r1 0.2.2: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.0-r1: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r2: C++ wrapper for fam
@@ -5446,7 +5445,7 @@ dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.250.0 4.310.0 4.330.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
-dev-perl/CGI-Compile 0.210.0: Compile .cgi scripts to a code reference like ModPerl::Registry
+dev-perl/CGI-Compile 0.210.0 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.210.0 0.220.0: PSGI adapter for CGI
 dev-perl/CGI-Fast 2.100.0 2.110.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r1: The Perl CGI::FastTemplate Module
@@ -6093,15 +6092,18 @@ dev-perl/MP4-Info 1.130.0: Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 dev-perl/MRO-Compat 0.120.0-r1: Lets you build groups of accessors
 dev-perl/Mac-Pasteboard 0.3.0: Manipulate Mac OS X clipboards/pasteboards
 dev-perl/Mail-Audit 2.228.0-r1: Mail sorting/delivery module for Perl
-dev-perl/Mail-Box 2.118.0: Mail folder manager and MUA backend
+dev-perl/Mail-Box 2.118.0 3.1.0: Mail folder manager and MUA backend
+dev-perl/Mail-Box-IMAP4 3.1.0: Mail::Box connector via IMAP4
+dev-perl/Mail-Box-POP3 3.1.0: Mail::Box connector via POP3
 dev-perl/Mail-Builder 2.90.0: Easily create plaintext/html e-mail messages with attachments and inline images
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
 dev-perl/Mail-DKIM 0.400.0: Mail::DKIM - Signs/verifies Internet mail using DKIM message signatures
 dev-perl/Mail-DMARC 1.201.509.80: Perl implementation of DMARC
 dev-perl/Mail-DomainKeys 1.0.0-r1: A perl implementation of DomainKeys
-dev-perl/Mail-IMAPClient 3.370.0 3.380.0: IMAP client module for Perl
+dev-perl/Mail-IMAPClient 3.370.0 3.380.0 3.390.0: IMAP client module for Perl
 dev-perl/Mail-ListDetector 1.40.0-r1: Perl extension for detecting mailing list messages
 dev-perl/Mail-Mbox-MessageParser 1.510.500: A fast and simple mbox folder reader
+dev-perl/Mail-Message 3.0.0: General Message Object for MIME Messsage Handling
 dev-perl/Mail-POP3Client 2.190.0: POP3 client module for Perl
 dev-perl/Mail-Procmail 1.80.0-r1: Mail sorting/delivery module for Perl
 dev-perl/Mail-SPF 2.9.0-r1: An object-oriented implementation of Sender Policy Framework
@@ -6110,7 +6112,8 @@ dev-perl/Mail-SRS 0.310.0-r2: Interface to Sender Rewriting Scheme
 dev-perl/Mail-Sender 0.8.23 0.903.0: Module for sending mails with attachments through an SMTP server
 dev-perl/Mail-Sendmail 0.790.0-r1: Simple platform independent mailer
 dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing 1.30.0-r1: SpamAssassin plugin to score mail based on Google blocklists
-dev-perl/MailTools 2.140.0: Manipulation of electronic mail addresses
+dev-perl/Mail-Transport 3.0.0: Base class for Email Message Exchange
+dev-perl/MailTools 2.140.0 2.180.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
@@ -6714,7 +6717,7 @@ dev-perl/Unicode-UTF8 0.600.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0: Perl interface to the Unix getrusage system call
 dev-perl/Unix-Syslog 1.100.0-r1: A Perl module which provides access to the system logger
-dev-perl/User-Identity 0.940.0: Maintains info about a physical person
+dev-perl/User-Identity 0.940.0 0.970.0: Maintains info about a physical person
 dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Relational DB services
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
@@ -6844,7 +6847,7 @@ dev-perl/indirect 0.360.0: Lexically warn about using the indirect method call s
 dev-perl/libintl-perl 1.200.0-r1 1.240.0 1.240.0-r2: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
-dev-perl/libwww-perl 6.150.0 6.160.0: A collection of Perl Modules for the WWW
+dev-perl/libwww-perl 6.150.0 6.160.0 6.240.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
@@ -8913,7 +8916,7 @@ dev-ros/dynamic_reconfigure 1.5.46 9999: Provides a means to change node paramet
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
-dev-ros/filters 1.7.4-r1 9999: Standardized interface for processing data as a sequence of filters
+dev-ros/filters 1.7.5 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_msgs 2.6.2 9999: Message and service data structures for interacting with Gazebo from ROS
 dev-ros/gazebo_plugins 2.6.2 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
 dev-ros/gazebo_ros 2.6.2 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
@@ -10118,7 +10121,7 @@ dev-util/buildbot-www 0.9.0_p1 0.9.1 0.9.2 0.9.3 0.9.4: BuildBot base web interf
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20150711 20160606 20170201: the best variant of the Yacc parser generator
-dev-util/cargo 0.15.0 0.16.0: The Rust's package manager
+dev-util/cargo 0.15.0 0.16.0 0.17.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.6-r1 9999: Cmake macros and associated python code used to build some parts of ROS
@@ -12524,7 +12527,7 @@ media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 1 2 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
-media-gfx/fbida 2.12 2.13 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
+media-gfx/fbida 2.12 2.13-r1 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
 media-gfx/feh 2.18 2.18.1 2.18.2: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5: A vector based graphics editor similar to xfig, but simpler
@@ -14347,7 +14350,7 @@ net-analyzer/tcpdump 4.9.0 9999: A Tool for network monitoring and data acquisit
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
-net-analyzer/tcpreplay 4.1.1 4.1.2 4.2.0_beta1: utilities for editing and replaying previously captured network traffic
+net-analyzer/tcpreplay 4.1.1 4.1.2-r1 4.2.0_beta2: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3-r1: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5 1.5-r1 1.5-r2: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7-r2 6.6.7_p4_p1: A Tool for analyzing network packet dumps
@@ -16434,7 +16437,7 @@ sci-libs/taucs 2.2: C library of sparse linear solvers
 sci-libs/tnt 1.2.6 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.5.0 3.6.1 3.7.0 3.7.1: Common configuration scripts for the SuiteSparse libraries
-sci-libs/umfpack 5.2.0 5.6.2: Unsymmetric multifrontal sparse LU factorization library
+sci-libs/umfpack 5.6.2: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 9999: Votca tools library
