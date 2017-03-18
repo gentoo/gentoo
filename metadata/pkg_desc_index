@@ -8821,7 +8821,7 @@ dev-qt/qtbluetooth 5.6.1 5.6.2 5.7.1: Bluetooth support library for the Qt5 fram
 dev-qt/qtcharts 5.7.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.6.1 5.6.2 5.7.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.6.1 5.6.2-r1 5.7.1 5.7.1-r1: Cross-platform application development framework
+dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.6.1 5.6.2-r1 5.7.1-r2: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.7.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 4.8.6-r1 4.8.7 5.6.1 5.6.2 5.7.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.6.1-r1 5.6.2 5.7.1: The QML and Quick modules for the Qt5 framework
@@ -18645,7 +18645,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.8.11 0.9.4: Desktop agnostic launcher
+x11-misc/albert 0.8.11 0.9.4 0.9.5: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
