@@ -1,6 +1,5 @@
-diff -Naur wop-0.4.3.old/src/global.cpp wop-0.4.3/src/global.cpp
---- wop-0.4.3.old/src/global.cpp	2017-03-16 18:48:49.114967592 -0400
-+++ wop-0.4.3/src/global.cpp	2017-03-16 18:48:55.592903512 -0400
+--- a/src/global.cpp
++++ b/src/global.cpp
 @@ -44,10 +44,10 @@
  #define GREEN(s)                 s
  #define RED(s)                   s
