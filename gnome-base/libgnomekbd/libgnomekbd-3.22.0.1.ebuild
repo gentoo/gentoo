@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="+introspection test"
 
 RDEPEND="
 	>=dev-libs/glib-2.18:2
-	>=x11-libs/gtk+-2.91.7:3[introspection?]
+	>=x11-libs/gtk+-2.91.7:3[X,introspection?]
 	>=x11-libs/libxklavier-5.2[introspection?]
 
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
