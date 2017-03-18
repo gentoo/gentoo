@@ -153,8 +153,9 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The tag name or commit identifier to check out. If unset, newest
-# commit from the branch will be used. If set, EGIT_BRANCH will
-# be ignored.
+# commit from the branch will be used. Note that if set to a commit
+# not on HEAD branch, EGIT_BRANCH needs to be set to a branch on which
+# the commit is available.
 #
 # It can be overriden via env using ${PN}_LIVE_COMMIT variable.
 
@@ -162,7 +163,8 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Attempt to check out the repository state for the specified timestamp.
-# The date should be in format understood by 'git rev-list'.
+# The date should be in format understood by 'git rev-list'. The commits
+# on EGIT_BRANCH will be considered.
 #
 # The eclass will select the last commit with commit date preceding
 # the specified date. When merge commits are found, only first parents
