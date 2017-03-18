@@ -8415,7 +8415,7 @@ dev-python/pyxenstore 0.0.2 9999: Provides Python interfaces for Xen's XenStore
 dev-python/pyxml 0.8.4-r3: A collection of libraries to process XML with Python
 dev-python/pyyaml 3.12: YAML parser and emitter for Python
 dev-python/pyzmq 14.4.1 14.6.0 14.7.0 15.0.0 15.1.0 15.2.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
-dev-python/pyzor 0.5.0-r2 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
+dev-python/pyzor 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.9.2-r1 2.9.4 2.9.4-r1: Python bindings for Qscintilla
@@ -10440,7 +10440,7 @@ dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
 dev-vcs/bfg 1.12.14 1.12.15: a faster alternative to git-filter-branch for removing bad data from git repos
-dev-vcs/bzr 2.5.1 2.5.1-r1 2.6.0 2.7.0: Bazaar is a next generation distributed version control system
+dev-vcs/bzr 2.5.1-r1 2.6.0 2.7.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-explorer 1.3.0-r1: A high level interface to all commonly used Bazaar features
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
 dev-vcs/bzr-git 0.6.8-r1: Support for Git branches in Bazaar
@@ -10508,7 +10508,7 @@ dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20150503 1.20160123 1.20170129 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
 dev-vcs/pwclient 20121105131501 20141110122616: command line utility for interacting with patchwork repos
-dev-vcs/qbzr 0.23.0 0.23.1: Qt frontend for Bazaar
+dev-vcs/qbzr 0.23.1: Qt frontend for Bazaar
 dev-vcs/qct 1.7-r2: PyQt based commit tool for many VCSs
 dev-vcs/qgit 2.6: Qt GUI for git repositories
 dev-vcs/qsvn 0.8.3: GUI frontend to the Subversion revision system
@@ -13739,7 +13739,7 @@ media-sound/pithos 1.0.1 1.1.1 9999: Pandora.com client for the GNOME desktop
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
 media-sound/pms 0.42-r2 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
-media-sound/pnmixer 0.6_pre20111213 0.7.1_rc1 9999: Volume mixer for the system tray
+media-sound/pnmixer 0.6_pre20111213 0.7.1_rc1 0.7.1_rc2 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
@@ -15214,7 +15214,6 @@ net-misc/openssh 7.3_p1-r7 7.3_p1-r8 7.4_p1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.5.0 2.6.1 2.7.0: Production quality, multilayer virtual switch
-net-misc/orbited 0.7.10-r1 0.7.10-r3: Real-time communication for the browser.
 net-misc/owncloud-client 2.2.4-r1 2.3.0: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.2 1.7.3 1.8: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
