@@ -3199,6 +3199,7 @@ gnome-base/gnome-common:autoconf-archive - Pull in sys-devel/autoconf-archive fo
 gnome-base/gnome-control-center:colord - Support color management using x11-misc/colord
 gnome-base/gnome-control-center:gnome-online-accounts - Enable configuration panel for net-libs/gnome-online-accounts accounts
 gnome-base/gnome-control-center:i18n - Enable support for enhanced input methods through app-i18n/ibus
+gnome-base/gnome-control-center:ibus - Enable support for enhanced input methods through app-i18n/ibus
 gnome-base/gnome-desktop:license-docs - Install help files documenting GNOME's licenses
 gnome-base/gnome-extra-apps:games - Install Gnome Games
 gnome-base/gnome-extra-apps:share - Install the gnome-extra/gnome-user-share personal file sharing tool
