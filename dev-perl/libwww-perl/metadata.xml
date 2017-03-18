@@ -13,6 +13,8 @@
     <remote-id type="cpan-module">LWP::Authen::Ntlm</remote-id>
     <remote-id type="cpan-module">LWP::ConnCache</remote-id>
     <remote-id type="cpan-module">LWP::Debug</remote-id>
+    <remote-id type="cpan-module">LWP::Debug::TraceHTTP</remote-id>
+    <remote-id type="cpan-module">LWP::Debug::TraceHTTP::Socket</remote-id>
     <remote-id type="cpan-module">LWP::DebugFile</remote-id>
     <remote-id type="cpan-module">LWP::MemberMixin</remote-id>
     <remote-id type="cpan-module">LWP::Protocol</remote-id>
