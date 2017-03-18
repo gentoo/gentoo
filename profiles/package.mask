@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
+# Fails to run. Ancient. Unmaintained. Dead upstream.
+# Masked for removal in 30 days. Bug #605120.
+net-p2p/phxd
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (17 Mar 2017)
 # Requires obsolete gstreamer:0.10, bug 604686
 # Removal in 30 days
