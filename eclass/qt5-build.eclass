@@ -564,8 +564,7 @@ qt5_base_configure() {
 		# prefer system libraries (only common hard deps here)
 		-system-zlib
 		-system-pcre
-		# TODO after bug 581054
-		#$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -system-doubleconversion)
+		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -system-doubleconversion)
 
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
