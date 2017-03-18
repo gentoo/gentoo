@@ -350,7 +350,7 @@ x11-libs/gtk+:1
 
 # Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
 # Reverse dependencies need testing, wrt bug #580760
->=net-libs/rb_libtorrent-1.1.1
+>=net-libs/libtorrent-rasterbar-1.1.1
 
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
