@@ -29,3 +29,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!net-libs/kpeople:5
 "
+
+src_test() {
+	# bug: 612504
+	local myctestargs=( -j1 )
+
+	kde5_src_test
+}
