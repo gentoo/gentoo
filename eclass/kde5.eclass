@@ -241,9 +241,9 @@ fi
 
 if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
 	if [[ -n ${KMNAME} ]]; then
-		S=${WORKDIR}/${KMNAME}-${PV%.0}	# kdevelop missing trailing .0 in first release
+		S=${WORKDIR}/${KMNAME}-${PV}
 	else
-		S=${WORKDIR}/${PN}-${PV%.0}	# kdevelop missing trailing .0 in first release
+		S=${WORKDIR}/${P}
 	fi
 fi
 
@@ -326,7 +326,7 @@ _calculate_src_uri() {
 				RESTRICT+=" mirror"
 				;;
 			*)
-				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV%.0}.tar.xz" ;;
+				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
 		esac
 		unset _kdebase
 	fi
