@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,4 +18,3 @@ RDEPEND="dev-ros/roscpp
 	dev-ros/pluginlib"
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest dev-cpp/gtest )"
-PATCHES=( "${FILESDIR}/tests.patch" "${FILESDIR}/rostest.patch" )

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-Transport</remote-id>
+    <remote-id type="cpan-module">Mail::Transport</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::Exim</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::Mailx</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::Qmail</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::Receive</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::SMTP</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::Send</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::Sendmail</remote-id>
+  </upstream>
+</pkgmetadata>

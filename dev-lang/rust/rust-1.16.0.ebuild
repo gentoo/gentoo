@@ -22,7 +22,8 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-STAGE0_VERSION="1.$(($(get_version_component_range 2) - 1)).0"
+CARGO_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
+STAGE0_VERSION="1.$(($(get_version_component_range 2) - 1)).1"
 RUST_STAGE0_amd64="rustc-${STAGE0_VERSION}-x86_64-unknown-linux-gnu"
 RUST_STAGE0_x86="rustc-${STAGE0_VERSION}-i686-unknown-linux-gnu"
 
@@ -36,13 +37,10 @@ SRC_URI="https://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.gz
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="clang debug doc libcxx +system-llvm"
+IUSE="clang debug doc libcxx"
 REQUIRED_USE="libcxx? ( clang )"
 
-RDEPEND="libcxx? ( sys-libs/libcxx )
-	system-llvm? ( >=sys-devel/llvm-3.8.1-r2:0=[multitarget]
-		<sys-devel/llvm-3.9.0:0=[multitarget] )
-"
+RDEPEND="libcxx? ( sys-libs/libcxx )"
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -50,9 +48,10 @@ DEPEND="${RDEPEND}
 	clang? ( sys-devel/clang )
 "
 
-PDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425"
+PDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+	>=dev-util/cargo-${CARGO_VERSION}"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P}-src"
 
 src_prepare() {
 	find mk -name '*.mk' -exec \
@@ -73,6 +72,7 @@ src_configure() {
 		--mandir="${EPREFIX}/usr/share/${P}/man" \
 		--release-channel=${SLOT%%/*} \
 		--disable-manage-submodules \
+		--disable-rustbuild \
 		--default-linker=$(tc-getBUILD_CC) \
 		--default-ar=$(tc-getBUILD_AR) \
 		--python=${EPYTHON} \

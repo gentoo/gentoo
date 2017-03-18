@@ -14,7 +14,6 @@ are logged. It is the heart of Zeitgeist.
     <flag name="datahub">Use build datahub for passive event injection</flag>
     <flag name="downloads-monitor">Monitor the XDG_DOWNLOAD_DIRECTORY</flag>
     <flag name="fts">Enable the full text search extension</flag>
-    <flag name="plugins">Use <pkg>gnome-extra/zeitgeist-datasources</pkg> to enable numerous packages to inject events</flag>
     <flag name="sql-debug">Enable SQL debugging</flag>
     <flag name="telepathy">Enable telepathy framework as data source</flag>
   </use>

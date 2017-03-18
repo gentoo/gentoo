@@ -71,5 +71,6 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${T}/root"
 	newsbin "${T}/root/sbin/losetup" loop-aes-losetup
+	newman "${T}/root/usr/share/man/man8/losetup.8" loop-aes-losetup.8
 	use static && newsbin "${T}/root/bin/losetup.static" loop-aes-losetup.static
 }
