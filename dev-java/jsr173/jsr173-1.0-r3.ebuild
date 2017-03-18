@@ -12,8 +12,7 @@ SRC_URI="http://ftpna2.bea.com/pub/downloads/${PN}.jar"
 
 LICENSE="bea.ri.jsr173"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE=""
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 CDEPEND="dev-java/jaxme:0"
 
