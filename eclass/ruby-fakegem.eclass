@@ -206,7 +206,7 @@ ruby_fakegem_doins() {
 	) || die "failed $0 $@"
 }
 
-# @FUNCTION: ruby_fakegem_newsins()
+# @FUNCTION: ruby_fakegem_newsins
 # @USAGE: file filename
 # @DESCRIPTION:
 # Installs the specified file into the gems directory using the provided filename.

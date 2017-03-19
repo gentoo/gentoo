@@ -452,7 +452,7 @@ enable_extension_enable_built_with() {
 	fi
 }
 
-# @FUNCTION: enable_extension_with_built_with ()
+# @FUNCTION: enable_extension_with_built_with
 # @USAGE: <foreign> <flag> <extension> [shared] [extra conf] [msg]
 # @DESCRIPTION:
 # This function is like enable_extension_with(), except that it

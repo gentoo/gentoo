@@ -1441,7 +1441,7 @@ headers___fix() {
 		"$@"
 }
 
-# @FUNCTION: kernel-2_src_unpack()
+# @FUNCTION: kernel-2_src_unpack
 # @USAGE:
 # @DESCRIPTION:
 # unpack sources, handle genpatches, deblob
