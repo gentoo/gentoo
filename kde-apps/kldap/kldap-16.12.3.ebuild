@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Library for interacting with LDAP servers"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="ssl"
+IUSE=""
 
 DEPEND="
 	$(add_frameworks_dep kcompletion)
@@ -20,7 +20,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	net-nds/openldap
-	ssl? ( dev-libs/cyrus-sasl )
+	dev-libs/cyrus-sasl
 "
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim-kioslaves
@@ -35,12 +35,4 @@ src_prepare() {
 		sed -e "/add_subdirectory(doc)/I s/^/#DONOTCOMPILE /" \
 			-i kioslave/CMakeLists.txt || die "failed to comment add_subdirectory(doc)"
 	fi
-}
-
-src_configure() {
-	local mycmakeargs=(
-		$(cmake-utils_use_find_package ssl Sasl2)
-	)
-
-	kde5_src_configure
 }
