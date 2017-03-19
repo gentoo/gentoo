@@ -10100,7 +10100,7 @@ dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0: An automated testing system for bash
 dev-util/bazel 0.3.2 0.3.2-r1 0.4.0 0.4.3 0.4.4: Fast and correct automated build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
-dev-util/bcc 0.1.8-r2 0.2.0-r1: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
+dev-util/bcc 0.2.0-r1 0.3.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
 dev-util/bdelta 0.3.1: Binary Delta - Efficient difference algorithm and format
 dev-util/beediff 1.9: A graphical user interface for comparing and merging files
@@ -15484,7 +15484,7 @@ net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4 2.2.2-r1 2.2.2-r2 2.2.2-r3 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.5.0 1.13.3-r2 1.13.4 9999: Cups PDF filters
-net-print/cups-pdf 2.6.1 3.0_beta1 3.0.0: Provides a virtual printer for CUPS to produce PDF files
+net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0: Dymo SDK for LabelWriter/LabelManager printers
@@ -18234,7 +18234,7 @@ www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web b
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.20.3 3.20.7 3.22.4: GNOME webbrowser based on Webkit
+www-client/epiphany 3.20.7 3.22.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.7.0 45.8.0 51.0.1: Firefox Web Browser
 www-client/firefox-bin 45.8.0 52.0.1: Firefox Web Browser
