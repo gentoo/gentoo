@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
+# Required media-plugins/gst-plugins-x264 is not stable
+media-plugins/gst-plugins-meta x264
+
 # Michael Weber <xmw@gentoo.org> (01 Mar 2017)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
