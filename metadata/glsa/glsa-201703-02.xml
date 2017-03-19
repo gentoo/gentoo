@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201703-02">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>2017-03-19</announced>
+  <revised>2017-03-19: 1</revised>
+  <bug>612588</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">25.0.0.127</unaffected>
+      <vulnerable range="lt">25.0.0.127</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-25.0.0.127"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://helpx.adobe.com/security/products/flash-player/apsb17-07.html">
+      APSB17-07
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2997">CVE-2017-2997</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2998">CVE-2017-2998</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2999">CVE-2017-2999</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3000">CVE-2017-3000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3001">CVE-2017-3001</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3002">CVE-2017-3002</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3003">CVE-2017-3003</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-16T08:44:22Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-03-19T18:32:52Z">whissi</metadata>
+</glsa>
