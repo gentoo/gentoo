@@ -5890,6 +5890,7 @@ dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color nam
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
 dev-perl/Graphics-ColorObject 0.5.0-r1: convert between color spaces
 dev-perl/Growl-GNTP 0.200.0 0.210.0-r1: Perl implementation of GNTP Protocol (Client Part)
+dev-perl/Gtk2 1.247.0 1.249.500 1.249.700: Perl bindings for GTK2
 dev-perl/Gtk2-AppIndicator 0.150.0: Perl binding for the GTK2 AppIndicator
 dev-perl/Gtk2-Ex-PodViewer 0.180.0-r1: a Gtk2 widget for displaying Plain old Documentation (POD)
 dev-perl/Gtk2-Ex-PrintDialog 0.30.0-r1: a simple, pure Perl dialog for printing PostScript data in GTK+ applications
@@ -6841,7 +6842,6 @@ dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnom
 dev-perl/gnome2-wnck 0.160.0-r1: Perl interface to the Window Navigator Construction Kit
 dev-perl/gtk2-ex-formfactory 0.670.0-r1: Gtk2 FormFactory
 dev-perl/gtk2-gladexml 1.7.0-r1: Create user interfaces directly from Glade XML files
-dev-perl/gtk2-perl 1.247.0 1.249.500 1.249.700: Perl bindings for GTK2
 dev-perl/gtk2-spell 1.40.0-r1: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r1: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1: Perl bindings for EggTrayManager

@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-perl/gtk2-gladexml dev-perl/gtk2-perl dev-perl/HTML-Parser dev-perl/Locale-gettext virtual/perl-Pod-Simple dev-perl/URI dev-perl/Gtk2-Ex-PodViewer dev-perl/Gtk2-Ex-PrintDialog dev-perl/Gtk2-Ex-Simple-List || ( >=dev-lang/perl-5.16 <dev-lang/perl-5.16[-build] ) >=x11-libs/gtk+-2.6.0:2 >=x11-themes/gnome-icon-theme-2.10.0 >=gnome-base/libglade-2:2.0 sys-devel/gettext
+DEPEND=dev-perl/gtk2-gladexml dev-perl/Gtk2 dev-perl/HTML-Parser dev-perl/Locale-gettext virtual/perl-Pod-Simple dev-perl/URI dev-perl/Gtk2-Ex-PodViewer dev-perl/Gtk2-Ex-PrintDialog dev-perl/Gtk2-Ex-Simple-List || ( >=dev-lang/perl-5.16 <dev-lang/perl-5.16[-build] ) >=x11-libs/gtk+-2.6.0:2 >=x11-themes/gnome-icon-theme-2.10.0 >=gnome-base/libglade-2:2.0 sys-devel/gettext
 DESCRIPTION=PodBrowser is a documentation browser for Perl
 EAPI=5
 HOMEPAGE=http://jodrell.net/projects/podbrowser
 KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-perl/gtk2-gladexml dev-perl/gtk2-perl dev-perl/HTML-Parser dev-perl/Locale-gettext virtual/perl-Pod-Simple dev-perl/URI dev-perl/Gtk2-Ex-PodViewer dev-perl/Gtk2-Ex-PrintDialog dev-perl/Gtk2-Ex-Simple-List || ( >=dev-lang/perl-5.16 <dev-lang/perl-5.16[-build] ) >=x11-libs/gtk+-2.6.0:2 >=x11-themes/gnome-icon-theme-2.10.0 >=gnome-base/libglade-2:2.0
+RDEPEND=dev-perl/gtk2-gladexml dev-perl/Gtk2 dev-perl/HTML-Parser dev-perl/Locale-gettext virtual/perl-Pod-Simple dev-perl/URI dev-perl/Gtk2-Ex-PodViewer dev-perl/Gtk2-Ex-PrintDialog dev-perl/Gtk2-Ex-Simple-List || ( >=dev-lang/perl-5.16 <dev-lang/perl-5.16[-build] ) >=x11-libs/gtk+-2.6.0:2 >=x11-themes/gnome-icon-theme-2.10.0 >=gnome-base/libglade-2:2.0
 SLOT=0
 SRC_URI=http://jodrell.net/files/podbrowser/podbrowser-0.12.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=29e29a24e4e5cac28b71e7e4e2648b8a
+_md5_=445d5c9b1e85f5adfdd9d00f856e4be7

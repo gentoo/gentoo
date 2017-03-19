@@ -4,8 +4,8 @@ EAPI=6
 HOMEPAGE=http://xgame.tlhiv.com/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=dev-lang/perl >=dev-perl/gtk2-perl-1.040
+RDEPEND=dev-lang/perl >=dev-perl/Gtk2-1.040
 SLOT=0
 SRC_URI=http://downloads.tlhiv.com/xgame/xgame-gtk2-2.0.2.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=11bcdf6f5f91e037ad00da4c3f92568c
+_md5_=adfb0860404a43be5a63a17902f0bb1a

@@ -5,9 +5,9 @@ EAPI=6
 HOMEPAGE=http://home.gna.org/auto-qcm/
 KEYWORDS=~x86 ~amd64
 LICENSE=GPL-2+
-RDEPEND=app-text/texlive[doc,dvi2tty,dvipdfm,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,omega,publishers,l10n_fr] app-text/poppler:= dev-perl/XML-LibXML media-libs/netpbm media-libs/opencv dev-lang/perl:= dev-perl/Glib-Object-Introspection dev-perl/gtk2-perl dev-perl/Gtk2-Notify media-gfx/imagemagick dev-perl/XML-Writer dev-perl/Archive-Zip dev-perl/DBI dev-perl/Text-CSV dev-perl/DBD-SQLite dev-perl/Net-CUPS dev-perl/Email-Address dev-perl/Email-MIME dev-perl/Email-Sender virtual/latex-base
+RDEPEND=app-text/texlive[doc,dvi2tty,dvipdfm,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,omega,publishers,l10n_fr] app-text/poppler:= dev-perl/XML-LibXML media-libs/netpbm media-libs/opencv dev-lang/perl:= dev-perl/Glib-Object-Introspection dev-perl/Gtk2 dev-perl/Gtk2-Notify media-gfx/imagemagick dev-perl/XML-Writer dev-perl/Archive-Zip dev-perl/DBI dev-perl/Text-CSV dev-perl/DBD-SQLite dev-perl/Net-CUPS dev-perl/Email-Address dev-perl/Email-MIME dev-perl/Email-Sender virtual/latex-base
 SLOT=0
 SRC_URI=http://download.gna.org/auto-qcm/auto-multiple-choice_1.3.0_sources.tar.gz
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_compile:- src_install:-
 _eclasses_=latex-package	00777e2de6c20be92a1adce060eeafa4	multilib	0236be304ee52e7f179ed2f337075515	perl-functions	c794e60e3f4353e40464afd90270fb84	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=c24df283c0d1564bf1faf26564cfc527
+_md5_=7e2c26672938021c6df29de080a5e576

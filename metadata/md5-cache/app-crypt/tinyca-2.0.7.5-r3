@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-perl/Locale-gettext >=virtual/perl-MIME-Base64-2.12 >=dev-perl/gtk2-perl-1.072 >=sys-apps/sed-4
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-perl/Locale-gettext >=virtual/perl-MIME-Base64-2.12 >=dev-perl/Gtk2-1.072 >=sys-apps/sed-4
 DESCRIPTION=Simple Perl/Tk GUI to manage a small certification authority
 EAPI=6
 HOMEPAGE=https://opsec.eu/src/tinyca/
 IUSE=libressl linguas_en linguas_de linguas_cs linguas_es linguas_sv
 KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=Artistic
-RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-perl/Locale-gettext >=virtual/perl-MIME-Base64-2.12 >=dev-perl/gtk2-perl-1.072
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-perl/Locale-gettext >=virtual/perl-MIME-Base64-2.12 >=dev-perl/Gtk2-1.072
 SLOT=0
 SRC_URI=http://tinyca.sm-zone.net/tinyca2-0.7.5.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=9a747f71049d614ec59b5bf5ebb5a7ab
+_md5_=4b7c518cf00c992a2f61c2182ca6e275

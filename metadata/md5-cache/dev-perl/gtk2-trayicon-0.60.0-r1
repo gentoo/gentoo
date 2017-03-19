@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-perl/glib-perl-1.012 >=dev-perl/gtk2-perl-1.012 gnome-base/libglade:2.0 x11-libs/gtk+:2 dev-perl/ExtUtils-Depends dev-perl/ExtUtils-PkgConfig virtual/pkgconfig dev-lang/perl:=[-build(-)]
+DEPEND=>=dev-perl/glib-perl-1.012 >=dev-perl/Gtk2-1.012 gnome-base/libglade:2.0 x11-libs/gtk+:2 dev-perl/ExtUtils-Depends dev-perl/ExtUtils-PkgConfig virtual/pkgconfig dev-lang/perl:=[-build(-)]
 DESCRIPTION=Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 EAPI=5
 HOMEPAGE=http://gtk2-perl.sf.net/ http://search.cpan.org/dist/Gtk2-TrayIcon/
 KEYWORDS=amd64 ia64 ~ppc ~sparc x86
 LICENSE=LGPL-2
-RDEPEND=>=dev-perl/glib-perl-1.012 >=dev-perl/gtk2-perl-1.012 gnome-base/libglade:2.0 x11-libs/gtk+:2 dev-lang/perl:=[-build(-)]
+RDEPEND=>=dev-perl/glib-perl-1.012 >=dev-perl/Gtk2-1.012 gnome-base/libglade:2.0 x11-libs/gtk+:2 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BO/BORUP/Gtk2-TrayIcon-0.06.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=77507abc9c0005d086a228ee94058a40
+_md5_=71104066a071aeaf16addc1f964c064c

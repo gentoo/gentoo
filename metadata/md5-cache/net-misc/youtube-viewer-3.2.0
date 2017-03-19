@@ -6,9 +6,9 @@ HOMEPAGE=https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html
 IUSE=gtk
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=>=dev-lang/perl-5.16.0 dev-perl/Data-Dump dev-perl/JSON dev-perl/libwww-perl[ssl] dev-perl/Term-ReadLine-Gnu virtual/perl-Encode virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long virtual/perl-Scalar-List-Utils virtual/perl-Term-ANSIColor virtual/perl-Term-ReadLine virtual/perl-Text-ParseWords virtual/perl-Text-Tabs+Wrap gtk? ( dev-perl/File-ShareDir >=dev-perl/gtk2-perl-1.244.0 virtual/freedesktop-icon-theme x11-libs/gdk-pixbuf:2[X,jpeg] ) dev-lang/perl:=[-build(-)]
+RDEPEND=>=dev-lang/perl-5.16.0 dev-perl/Data-Dump dev-perl/JSON dev-perl/libwww-perl[ssl] dev-perl/Term-ReadLine-Gnu virtual/perl-Encode virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long virtual/perl-Scalar-List-Utils virtual/perl-Term-ANSIColor virtual/perl-Term-ReadLine virtual/perl-Text-ParseWords virtual/perl-Text-Tabs+Wrap gtk? ( dev-perl/File-ShareDir >=dev-perl/Gtk2-1.244.0 virtual/freedesktop-icon-theme x11-libs/gdk-pixbuf:2[X,jpeg] ) dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=https://github.com/trizen/youtube-viewer/tarball/3.2.0 -> youtube-viewer-3.2.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
 _eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	gnome2-utils	fe8e9099c6fc74a40946623c593c7236	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
-_md5_=6416b50ec1c4a6b7a0198a907460fe1e
+_md5_=2a92b21e4adb012f200c6b1bde55bca9
