@@ -35,11 +35,14 @@ SRC_URI+="
 	http://mirrors.cdn.adacore.com/art/573992d4c7a447658d00e1db
 		-> ${MYP}.tar.gz
 	http://mirrors.cdn.adacore.com/art/57399232c7a447658e0aff7d
-		-> gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
+		-> gcc-interface-${REL}-gpl-${PV}-src.tar.gz
+	bootstrap? ( http://mirrors.cdn.adacore.com/art/564b3ebec8e196b040fbe66c ->
+		gnat-gpl-2014-x86_64-linux-bin.tar.gz )"
 
 LICENSE+=" GPL-2 GPL-3"
 SLOT="${TOOLCHAIN_GCC_PV}"
 KEYWORDS="~amd64"
+IUSE="bootstrap"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
 DEPEND="${RDEPEND}
@@ -50,13 +53,12 @@ S="${WORKDIR}"/${MYP}
 
 FSFGCC=gcc-${TOOLCHAIN_GCC_PV}
 
-GCC_A_FAKEIT="${P}-src.tar.gz
-	${MYP}.tar.gz
-	${FSFGCC}.tar.bz2
-	gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
-
 pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
+	if use bootstrap; then
+		GCC="${WORKDIR}"/gnat-gpl-2014-x86_64-linux-bin/bin/gcc
+	else
+		GCC=${ADA:-$(tc-getCC)}
+	fi
 	local base=$(basename ${GCC})
 	GNATMAKE="${base/gcc/gnatmake}"
 	GNATBIND="${base/gcc/gnatbind}"
@@ -65,12 +67,24 @@ pkg_setup() {
 		GNATMAKE="${path}/${GNATMAKE}"
 		GNATBIND="${path}/${GNATBIND}"
 	fi
-	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
+	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
 		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set the ADA variable to the c/c++/ada compiler"
+		eerror "2) set the bootstrap use flag"
 		die "ada compiler not available"
 	fi
+}
+
+src_unpack() {
+	GCC_A_FAKEIT="${P}-src.tar.gz
+		${MYP}.tar.gz
+		${FSFGCC}.tar.bz2
+		gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
+	if use bootstrap; then
+		GCC_A_FAKEIT="${GCC_A_FAKEIT} gnat-gpl-2014-x86_64-linux-bin.tar.gz"
+	fi
+
+	toolchain_src_unpack
 }
 
 src_prepare() {
@@ -159,10 +173,10 @@ src_install() {
 
 pkg_postinst () {
 	toolchain_pkg_postinst
-	einfo "This package provide the GNAT compiler with gcc for ada/c/c++"
+	einfo "This provide the GNAT compiler with gcc for ada/c/c++ and more"
+	einfo "Set the ADA variables to gcc-${TOOLCHAIN_GCC_PV} in your make.conf"
 	einfo "Even if the c/c++ compilers are using almost the same patched"
 	einfo "source as the sys-devel/gcc package its use is not extensively"
-	einfo "tested."
-	einfo "Using this the c/c++ compiler to update your system, except for ada"
-	einfo "related packages, is not supported"
+	einfo "tested, and not supported for updating your system, except for ada"
+	einfo "related packages"
 }
