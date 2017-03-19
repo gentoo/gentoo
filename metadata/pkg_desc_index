@@ -5890,7 +5890,7 @@ dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color nam
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
 dev-perl/Graphics-ColorObject 0.5.0-r1: convert between color spaces
 dev-perl/Growl-GNTP 0.200.0 0.210.0-r1: Perl implementation of GNTP Protocol (Client Part)
-dev-perl/Gtk2 1.247.0 1.249.500 1.249.700: Perl bindings for GTK2
+dev-perl/Gtk2 1.247.0 1.249.500 1.249.700 1.249.910: Perl bindings for GTK2
 dev-perl/Gtk2-AppIndicator 0.150.0: Perl binding for the GTK2 AppIndicator
 dev-perl/Gtk2-Ex-PodViewer 0.180.0-r1: a Gtk2 widget for displaying Plain old Documentation (POD)
 dev-perl/Gtk2-Ex-PrintDialog 0.30.0-r1: a simple, pure Perl dialog for printing PostScript data in GTK+ applications
