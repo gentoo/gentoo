@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=PJACKLAM
-DIST_VERSION=1.999801
+DIST_VERSION=1.999806
 DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
@@ -18,7 +18,7 @@ RDEPEND="
 	>=virtual/perl-Math-Complex-1.390.0
 "
 DEPEND="${RDEPEND}
-	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
+	virtual/perl-ExtUtils-MakeMaker
 	test? ( >=virtual/perl-Test-Simple-0.940.0 )
 "
 

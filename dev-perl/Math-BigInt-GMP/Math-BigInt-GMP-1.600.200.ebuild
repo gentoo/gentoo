@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=PJACKLAM
-DIST_VERSION=1.6001
+DIST_VERSION=1.6002
 inherit perl-module
 
 DESCRIPTION="Use the GMP library for Math::BigInt routines"
@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
-	test? ( >=virtual/perl-Test-Simple-0.940.0 )
+	test? ( >=virtual/perl-Test-Simple-0.820.0 )
 "
 src_test() {
 	perl_rm_files t/author-*.t t/00sig.t t/02pod.t t/03podcov.t
