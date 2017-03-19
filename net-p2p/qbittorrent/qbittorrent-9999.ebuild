@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic qmake-utils
+inherit cmake-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
-HOMEPAGE="http://www.qbittorrent.org/"
+HOMEPAGE="https://www.qbittorrent.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -20,67 +20,36 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+dbus debug +qt5 webui +X"
-REQUIRED_USE="
-	dbus? ( X )
-"
+IUSE="+dbus debug webui +X"
+REQUIRED_USE="dbus? ( X )"
 
 RDEPEND="
-	dev-libs/boost:=
+	>=dev-libs/boost-1.62.0-r1:=
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtnetwork:5[ssl]
+	>=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5,X?]
+	dev-qt/qtxml:5
 	>=net-libs/libtorrent-rasterbar-1.0.6
 	sys-libs/zlib
-	!qt5? (
-		>=dev-libs/qjson-0.8.1[qt4(+)]
-		dev-qt/qtcore:4[ssl]
-		>=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt4,X?]
-		dbus? ( dev-qt/qtdbus:4 )
-		X? ( dev-qt/qtgui:4 )
-	)
-	qt5? (
-		dev-qt/qtconcurrent:5
-		dev-qt/qtcore:5
-		dev-qt/qtnetwork:5[ssl]
-		>=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5,X?]
-		dev-qt/qtxml:5
-		dbus? ( dev-qt/qtdbus:5 )
-		X? (
-			dev-qt/qtgui:5
-			dev-qt/qtwidgets:5
-		)
-	)
-"
+	dbus? ( dev-qt/qtdbus:5 )
+	X? (
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)"
 DEPEND="${RDEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )
-	virtual/pkgconfig
-"
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig"
 
-DOCS=(AUTHORS Changelog CONTRIBUTING.md README.md TODO)
+DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_configure() {
-	# workaround build issue with older boost
-	# https://github.com/qbittorrent/qBittorrent/issues/4112
-	if has_version '<dev-libs/boost-1.58'; then
-		append-cppflags -DBOOST_NO_CXX11_REF_QUALIFIERS
-	fi
-
-	econf \
-		--with-qjson=system \
-		--with-qtsingleapplication=system \
-		$(use_enable dbus qt-dbus) \
-		$(use_enable debug) \
-		$(use_enable webui) \
-		$(use_enable X gui) \
-		$(use_enable !X systemd) \
-		$(use_with !qt5 qt4)
-
-	if use qt5; then
-		eqmake5
-	else
-		eqmake4
-	fi
-}
-
-src_install() {
-	emake INSTALL_ROOT="${D}" install
-	einstalldocs
+	local mycmakeargs=(
+		-DQT5=ON
+		-DSYSTEM_QTSINGLEAPPLICATION=ON
+		-DDBUS=$(usex dbus)
+		-DGUI=$(usex X)
+		-DWEBUI=$(usex webui)
+	)
+	cmake-utils_src_configure
 }
