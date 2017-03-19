@@ -18,5 +18,6 @@
 		<flag name="daemon">
 			Build the system daemon, not just the client tool
 		</flag>
+		<flag name="cgmanager">Enable support for cgroup management using <pkg>app-admin/cgmanager</pkg></flag>
 	</use>
 </pkgmetadata>

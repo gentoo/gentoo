@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 PLOCALES="de fr ja"
-IUSE="+daemon nls test"
+IUSE="+daemon nls test cgmanager"
 
 # IUSE and PLOCALES must be defined before l10n inherited
 inherit bash-completion-r1 golang-build l10n linux-info systemd user vcs-snapshot
@@ -43,10 +43,13 @@ DEPEND="
 "
 
 RDEPEND="
-	daemon? (
+	cgmanager? (
 		app-admin/cgmanager
-		app-arch/xz-utils
 		app-emulation/lxc[cgmanager,seccomp]
+	)
+	daemon? (
+		app-arch/xz-utils
+		app-emulation/lxc[seccomp]
 		net-dns/dnsmasq[dhcp,ipv6]
 		net-misc/rsync[xattr]
 		sys-apps/iproute2[ipv6]
