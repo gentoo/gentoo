@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -123,7 +123,7 @@ sys.exit(0 if r.wasSuccessful() else 1)" || die "Tests fail with ${EPYTHON}"
 
 python_install_all() {
 	if use doc; then
-		dodoc "${DISTDIR}"/${PN}*pdf
+		dodoc "${DISTDIR}"/${PN}-${DOC_PV}-ref.pdf
 		docinto html
 		dodoc -r "${WORKDIR}"/html/.
 	fi
