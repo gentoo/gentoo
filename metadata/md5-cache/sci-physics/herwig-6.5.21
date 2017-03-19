@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.hep.phy.cam.ac.uk/theory/webber/Herwig//herwig6521.f http://www.hep.phy.cam.ac.uk/theory/webber/Herwig//herwig6521.inc http://www.hep.phy.cam.ac.uk/theory/webber/Herwig//HERWIG65.INC doc? ( http://www.hep.phy.cam.ac.uk/theory/webber/Herwig//hw65_manual.pdf )
 _eclass_exported_funcs=pkg_setup:fortran-2 src_unpack:- src_prepare:- src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	libtool	48b1b9f6194d2842456514d1184ca72e	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=79cc8d6b8b8e21553b2a922ee7bf6ada
+_md5_=871e9a051f15d2d86199ed4b03ffd09f
