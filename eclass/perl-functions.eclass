@@ -29,10 +29,10 @@ perlinfo_done=false
 # @FUNCTION: perl_set_version
 # @USAGE: perl_set_version
 # @DESCRIPTION:
-# Extract version information and installation paths from the current Perl 
-# interpreter. 
+# Extract version information and installation paths from the current Perl
+# interpreter.
 #
-# This sets the following variables: PERL_VERSION, SITE_ARCH, SITE_LIB, 
+# This sets the following variables: PERL_VERSION, SITE_ARCH, SITE_LIB,
 # ARCH_LIB, VENDOR_LIB, VENDOR_ARCH
 #
 # This function used to be called perlinfo as well.
@@ -215,7 +215,7 @@ perl_rm_files() {
 # @USAGE: perl_link_duallife_scripts
 # @DESCRIPTION:
 # Moves files and generates symlinks so dual-life packages installing scripts do not
-# lead to file collisions. Mainly for use in pkg_postinst and pkg_postrm, and makes 
+# lead to file collisions. Mainly for use in pkg_postinst and pkg_postrm, and makes
 # only sense for perl-core packages.
 perl_link_duallife_scripts() {
 	debug-print-function $FUNCNAME "$@"
