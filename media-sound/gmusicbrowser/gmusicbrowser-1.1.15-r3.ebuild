@@ -24,7 +24,7 @@ OTHER_DEPEND="
 	media-sound/vorbis-tools"
 
 RDEPEND="dev-lang/perl
-	dev-perl/gtk2-perl
+	dev-perl/Gtk2
 	virtual/perl-MIME-Base64
 	|| ( net-misc/wget dev-perl/AnyEvent-HTTP )
 	dbus? ( dev-perl/Net-DBus )

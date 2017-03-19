@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND=">=dev-lang/perl-5.10
 	>=x11-libs/gtk+-2.18:2
-	>=dev-perl/gtk2-perl-1.120
+	>=dev-perl/Gtk2-1.120
 	virtual/perl-File-Path
 	virtual/perl-File-Spec
 	virtual/perl-File-Temp

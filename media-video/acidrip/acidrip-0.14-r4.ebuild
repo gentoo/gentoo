@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="encode"
 
 RDEPEND="dev-lang/perl:=
-	dev-perl/gtk2-perl
+	dev-perl/Gtk2
 	media-video/lsdvd
 	media-video/mplayer[encode]
 	encode? ( >=media-sound/lame-3.92 )"

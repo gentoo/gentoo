@@ -33,3 +33,4 @@ move net-misc/i2pd net-vpn/i2pd
 move net-misc/tor net-vpn/tor
 move net-p2p/i2p net-vpn/i2p
 move net-libs/rb_libtorrent net-libs/libtorrent-rasterbar
+move dev-perl/gtk2-perl dev-perl/Gtk2

@@ -27,7 +27,7 @@ RDEPEND="
 	dev-perl/Gtk2-Ex-PodViewer
 	dev-perl/Gtk2-Ex-Simple-List
 	dev-perl/Gtk2-ImageView
-	dev-perl/gtk2-perl
+	dev-perl/Gtk2
 	dev-perl/HTML-Parser
 	dev-perl/Locale-gettext
 	dev-perl/List-MoreUtils

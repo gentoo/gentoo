@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl
-	>=dev-perl/gtk2-perl-1.040"
+	>=dev-perl/Gtk2-1.040"
 
 src_install() {
 	dogamesbin xgame-gtk2

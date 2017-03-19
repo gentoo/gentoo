@@ -33,7 +33,7 @@ RDEPEND="
 	virtual/perl-Text-Tabs+Wrap
 	gtk? (
 		dev-perl/File-ShareDir
-		>=dev-perl/gtk2-perl-1.244.0
+		>=dev-perl/Gtk2-1.244.0
 		virtual/freedesktop-icon-theme
 		x11-libs/gdk-pixbuf:2[X,jpeg]
 	)
