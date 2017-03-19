@@ -9,5 +9,5 @@ RDEPEND=virtual/libintl dev-libs/libxdg-basedir media-libs/libdvdnav sys-libs/zl
 REQUIRED_USE=vidix? ( || ( X fbcon ) ) xv? ( X ) xinerama? ( X )
 SLOT=1
 _eclass_exported_funcs=src_unpack:mercurial src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	48b1b9f6194d2842456514d1184ca72e	ltprune	2770eed66a9b8ef944714cd0e968182e	mercurial	4d80fb11f07e24cf9827196e4f45fd18	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	48b1b9f6194d2842456514d1184ca72e	ltprune	2770eed66a9b8ef944714cd0e968182e	mercurial	3f0a6a3bb422dfe69c1632b7f5b152e6	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=8a4e5cc683880c2695489a331e9f651b

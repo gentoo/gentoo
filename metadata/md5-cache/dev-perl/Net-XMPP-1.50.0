@@ -10,5 +10,5 @@ RDEPEND=>=dev-perl/Authen-SASL-2.120.0 virtual/perl-Digest-SHA virtual/perl-Scal
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAPATRICK/Net-XMPP-1.05.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:-
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	c794e60e3f4353e40464afd90270fb84	perl-module	e64d78a54693f92bbe90a62f2efeb6cb
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
 _md5_=40a126fdf50172b5faa1f16815f2fbe4

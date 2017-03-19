@@ -9,5 +9,5 @@ RDEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-
 SLOT=0
 SRC_URI=https://github.com/pitivi/gst-transcoder/archive/1.8.2.tar.gz -> gst-transcoder-1.8.2.tar.gz
 _eclass_exported_funcs=pkg_preinst:xdg pkg_postrm:xdg pkg_postinst:xdg pkg_setup:python-any-r1 src_prepare:xdg src_configure:- src_compile:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
 _md5_=45474e908777fa3695fd8bc066cf0d58

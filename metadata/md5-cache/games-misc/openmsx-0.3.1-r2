@@ -8,5 +8,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://bundles.openttdcoop.org/openmsx/releases/0.3.1/openmsx-0.3.1-source.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_compile:- src_install:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	4f8aa7196c2c9a5630e66c2113ae46c3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=feff5b9da08e8a76277bed3c2881e6e3
