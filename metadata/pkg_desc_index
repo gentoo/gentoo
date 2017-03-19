@@ -4340,7 +4340,7 @@ dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
 dev-java/reflectasm 1.11.0 1.11.1: High performance Java reflection
 dev-java/reflections 0.9.10-r1: Java runtime metadata analysis
-dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and datatype libraries
+dev-java/relaxng-datatype 1.0-r1 1.0-r2: Interface between RELAX NG validators and datatype libraries
 dev-java/relaxngcc 1.12-r3: RELAX NG Compiler Compiler
 dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
