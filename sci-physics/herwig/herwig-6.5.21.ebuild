@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}/${MY_P}.f,${MY_P}.inc,${MY_PINC}" "${S}" || die
+	cp "${DISTDIR}"/{"${MY_P}".f,"${MY_P}".inc,"${MY_PINC}"} "${S}" || die
 }
 
 src_prepare() {
