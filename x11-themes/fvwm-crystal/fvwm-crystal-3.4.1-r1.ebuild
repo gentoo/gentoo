@@ -18,7 +18,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 case ${PV} in
 *9999)
-	PROPERTIES="live"
 	inherit subversion
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/fvwm-crystal/code"
 	SRC_URI=""
