@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201703-03">
+  <title>PuTTY: Buffer overflow </title>
+  <synopsis>A buffer overflow in PuTTY might allow remote attackers to execute
+    arbitrary code or cause a denial of service.
+  </synopsis>
+  <product type="ebuild">PuTTY</product>
+  <announced>2017-03-19</announced>
+  <revised>2017-03-19: 1</revised>
+  <bug>610552</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/putty" auto="yes" arch="*">
+      <unaffected range="ge">0.68</unaffected>
+      <vulnerable range="lt">0.68</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PuTTY is a free implementation of Telnet and SSH for Windows and Unix
+      platforms, along with an xterm terminal emulator.
+    </p>
+  </background>
+  <description>
+    <p>A heap-corrupting buffer overflow bug in the ssh_agent_channel_data
+      function of PuTTY was found.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, utilizing the SSH agent forwarding of an SSH server,
+      could execute arbitrary code with the privileges of the user running the
+      client or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PuTTY users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/putty-0.68"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6542">CVE-2017-6542</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-07T21:53:38Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-03-19T18:47:02Z">BlueKnight</metadata>
+</glsa>
