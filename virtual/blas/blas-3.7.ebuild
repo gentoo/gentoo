@@ -15,6 +15,5 @@ IUSE=""
 RDEPEND="|| (
 		>=sci-libs/blas-reference-20161223
 		>=sci-libs/mkl-9.1.023
-		sci-libs/acml
 	)"
 DEPEND=""

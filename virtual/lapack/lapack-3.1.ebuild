@@ -10,5 +10,4 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-fbsd ~x86-fb
 RDEPEND="|| (
 		>=sci-libs/lapack-reference-3.1
 		>=sci-libs/mkl-10
-		>=sci-libs/acml-4
 	)"

@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (19 Mar 2017)
+# EOL'd upstream, fetch restricted, digests missing
+# Masked for removal in 30 days. Bug #612746.
+sci-libs/acml
+
 # Kent Fredric <kentnl@gentoo.org> (18 Mar 2017)
 # ExtUtils::MakeMaker 7.18+ Block
 # Masked until strictly needed to avoid accidental conflicts later
