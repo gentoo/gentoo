@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,4 +23,5 @@ PATCHES=(
 	"${FILESDIR}/${P}-boost.patch"
 	"${FILESDIR}/${P}-cflags.patch"
 	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
 )
