@@ -21,3 +21,5 @@ DEPEND="
 RDEPEND="
 	!dev-util/kdevelop-pg-qt:4
 "
+
+S="${WORKDIR}/${PN}-${PV%.0}"

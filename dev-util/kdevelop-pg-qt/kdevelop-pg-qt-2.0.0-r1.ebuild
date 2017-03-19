@@ -23,3 +23,5 @@ RDEPEND="
 "
 
 PATCHES=( "${FILESDIR}/${P}-flex263.patch" )
+
+S="${WORKDIR}/${PN}-${PV%.0}"
