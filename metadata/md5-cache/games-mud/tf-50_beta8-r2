@@ -10,4 +10,4 @@ RDEPEND=ssl? ( dev-libs/openssl:0= ) dev-libs/libpcre
 SLOT=0
 SRC_URI=mirror://sourceforge/tinyfugue/tf-50b8.tar.gz http://homepage.mac.com/mikeride/abelinc/scripts/allrootpatch.txt -> tf-allrootpatch.txt http://homepage.mac.com/mikeride/abelinc/scripts/allsrcpatch.txt -> tf-allsrcpatch.txt doc? ( mirror://sourceforge/tinyfugue/tf-50b8-help.tar.gz )
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_md5_=ff58564fd173b6df50ccac374fd2fe44
+_md5_=ec1d6a88eb97be9d58f1727fd9b64c0b
