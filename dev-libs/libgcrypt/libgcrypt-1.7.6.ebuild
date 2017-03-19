@@ -22,8 +22,6 @@ RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	doc? ( virtual/texi2dvi )"
 
-DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch

@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-AUTOTOOLS_AUTORECONF=1
+EAPI=6
 
-inherit autotools-multilib
+inherit autotools multilib-minimal
 
 DESCRIPTION="General purpose crypto library based on the code used in GnuPG"
 HOMEPAGE="http://www.gnupg.org/"
@@ -23,15 +22,18 @@ RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 	"${FILESDIR}"/${PN}-1.5.4-clang-arm.patch
 )
 
-src_configure() {
+src_prepare() {
+	default
+	eautoreconf
+}
+
+multilib_src_configure() {
 	local myeconfargs=(
 		--disable-padlock-support # bug 201917
 		--disable-dependency-tracking
@@ -47,11 +49,11 @@ src_configure() {
 		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
 		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
 	)
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-src_install() {
-	autotools-multilib_src_install
+multilib_src_install() {
+	emake DESTDIR="${D}" install
 
 	rm -r "${ED%/}"/usr/{bin,include,lib*/*.so,share} || die
 }
