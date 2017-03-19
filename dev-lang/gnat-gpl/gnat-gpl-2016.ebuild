@@ -59,6 +59,7 @@ pkg_setup() {
 	else
 		GCC=${ADA:-$(tc-getCC)}
 	fi
+	CC=${GCC}
 	local base=$(basename ${GCC})
 	GNATMAKE="${base/gcc/gnatmake}"
 	GNATBIND="${base/gcc/gnatbind}"
@@ -123,6 +124,10 @@ src_prepare() {
 }
 
 src_configure() {
+	local trueGCC_BRANCH_VER=${GCC_BRANCH_VER}
+	GCC_BRANCH_VER=$(gcc-version)
+	downgrade_arch_flags
+	GCC_BRANCH_VER=${trueGCC_BRANCH_VER}
 	toolchain_src_configure \
 		--enable-languages=ada \
 		--disable-libada \
