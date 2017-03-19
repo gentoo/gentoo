@@ -7052,7 +7052,7 @@ dev-php/pecl-dio 0.0.9: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.1: PHP wrapper for libeio library
 dev-php/pecl-event 2.2.1: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r2: PHP extension for using gearmand
-dev-php/pecl-geoip 1.1.1-r2: PHP extension to map IP address to geographic places
+dev-php/pecl-geoip 1.1.1-r2 1.1.1-r3: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0: PHP wrapper around the gpgme library
 dev-php/pecl-haru 1.0.4-r2: An interface to libharu, a PDF generator
 dev-php/pecl-htscanner 1.0.1-r3: Enables .htaccess options for php-scripts running as cgi
