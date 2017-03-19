@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-perl/gtk2-perl
+	dev-perl/Gtk2
 	>=dev-perl/glib-perl-1.160.0
 "
 DEPEND="${RDEPEND}
