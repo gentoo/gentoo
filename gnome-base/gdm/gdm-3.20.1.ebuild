@@ -208,8 +208,12 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	if ! version_is_at_least 3.16.0 ${REPLACING_VERSIONS}; then
-		ewarn "GDM will now use a new TTY per logged user as explained at:"
-		ewarn "https://wiki.gentoo.org/wiki/Project:GNOME/GNOME3-Troubleshooting#GDM_.3E.3D_3.16_opens_one_graphical_session_per_user"
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least 3.16.0 ${v}; then
+			ewarn "GDM will now use a new TTY per logged user as explained at:"
+			ewarn "https://wiki.gentoo.org/wiki/Project:GNOME/GNOME3-Troubleshooting#GDM_.3E.3D_3.16_opens_one_graphical_session_per_user"
+			break
+		fi
+	done
 }
