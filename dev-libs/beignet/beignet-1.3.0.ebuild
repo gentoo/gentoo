@@ -27,8 +27,8 @@ fi
 
 COMMON="${PYTHON_DEPS}
 	media-libs/mesa
-	sys-devel/clang:0
-	ocl20? ( >=sys-devel/llvm-3.9:0  >=sys-devel/llvm-3.6:0 )
+	sys-devel/clang:0=
+	>=sys-devel/llvm-3.9:0=
 	>=x11-libs/libdrm-2.4.70[video_cards_intel]
 	x11-libs/libXext
 	x11-libs/libXfixes"
