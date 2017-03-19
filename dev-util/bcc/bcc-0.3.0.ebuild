@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit cmake-utils linux-info python-single-r1 python-utils-r1
 
@@ -19,8 +19,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=sys-devel/llvm-3.7:=[llvm_targets_BPF(+)]
-	sys-devel/clang
+RDEPEND=">=dev-libs/elfutils-0.166:=
+	sys-devel/clang:=
+	>=sys-devel/llvm-3.7:=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
@@ -34,12 +35,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	#582770 don't use static libstdc++
-	sed -i -e '21,33d' src/cc/CMakeLists.txt || die
-	default
 }
 
 src_configure() {

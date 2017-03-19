@@ -1,20 +1,23 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
+
 inherit toolchain-funcs
 
 DESCRIPTION="Provides a virtual printer for CUPS to produce PDF files"
 HOMEPAGE="http://www.cups-pdf.de/"
 SRC_URI="http://www.cups-pdf.de/src/${PN}_${PV/_}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="+ppds"
 
-RDEPEND="net-print/cups
-	app-text/ghostscript-gpl"
+RDEPEND="
+	net-print/cups
+	app-text/ghostscript-gpl
+"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}-${PV/_}
@@ -41,6 +44,4 @@ src_install() {
 	fi
 
 	dodoc ChangeLog README
-
-	dodoc -r contrib
 }
