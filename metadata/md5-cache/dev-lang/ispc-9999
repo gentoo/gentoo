@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install setup unpack
-DEPEND=>=sys-devel/clang-3.0 >=sys-devel/llvm-3.0 || ( >=dev-lang/python-2.7.5-r2:2.7 ) sys-devel/bison sys-devel/flex >=dev-vcs/git-1.8.2.1
+DEPEND=>=sys-devel/clang-3.0:* >=sys-devel/llvm-3.0:* || ( >=dev-lang/python-2.7.5-r2:2.7 ) sys-devel/bison sys-devel/flex >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Intel SPMD Program Compiler
 EAPI=6
 HOMEPAGE=https://ispc.github.com/
 IUSE=examples
 LICENSE=BSD BSD-2 UoI-NCSA
-RDEPEND=>=sys-devel/clang-3.0 >=sys-devel/llvm-3.0
+RDEPEND=>=sys-devel/clang-3.0:* >=sys-devel/llvm-3.0:*
 SLOT=0
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:git-r3 src_compile:- src_install:-
 _eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	git-r3	68d35a154123e27007638d8220886ee1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=ac349c8901cb9be22e738ef66b448858
+_md5_=3326a03af01f897202ceaf05ceb35a9f
