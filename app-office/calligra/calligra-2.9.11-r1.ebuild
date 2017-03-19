@@ -40,8 +40,8 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="color-management +crypt +eigen +exif fftw +fontconfig freetds +glew +glib
-+gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms mysql +okular openexr
-+pdf +pim postgres spacenav sybase test tiff +threads +truetype vc xbase +xml"
++gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms mysql openexr +pdf +pim
+postgres spacenav sybase test tiff +threads +truetype vc xbase +xml"
 
 # Don't use Active, it's broken on desktops.
 CAL_FTS="author braindump flow gemini karbon kexi krita plan sheets stage words"
@@ -95,7 +95,6 @@ RDEPEND="
 		x11-libs/libX11
 	)
 	mysql? ( virtual/mysql )
-	okular? ( kde-apps/okular:4=[aqua=] )
 	openexr? ( media-libs/openexr:= )
 	opengl? (
 		media-libs/glew:0
@@ -198,7 +197,7 @@ src_configure() {
 		-DWITH_Kdcraw=$(usex kdcraw)
 		-DWITH_LCMS2=$(usex lcms)
 		-DWITH_MySQL=$(usex mysql)
-		-DWITH_Okular=$(usex okular)
+		-DWITH_Okular=OFF
 		-DWITH_OpenEXR=$(usex openexr)
 		-DUSEOPENGL=$(usex opengl)
 		-DWITH_Poppler=$(usex pdf)
