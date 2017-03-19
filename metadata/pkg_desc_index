@@ -6052,8 +6052,10 @@ dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
-dev-perl/List-AllUtils 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
+dev-perl/List-AllUtils 0.90.0 0.140.0: Combines many List::* utility modules in one bite-sized package
 dev-perl/List-MoreUtils 0.413.0: Provide the missing functionality from List::Util
+dev-perl/List-SomeUtils 0.530.0: A colletion of List utilities missing from List::Util
+dev-perl/List-SomeUtils-XS 0.520.0: XS implementation for List::SomeUtils
 dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
 dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
@@ -6276,7 +6278,7 @@ dev-perl/Net-Subnet 1.30.0: Fast IP-in-subnet matcher for IPv4 and IPv6, CIDR or
 dev-perl/Net-Telnet 3.40.0: interact with TELNET port or other TCP ports in Perl
 dev-perl/Net-Telnet-Cisco 1.100.0-r1: Automate telnet sessions w/ routers&switches
 dev-perl/Net-Trackback 1.10.0: Object-oriented interface for developing Trackback clients and servers
-dev-perl/Net-Twitter 4.10.100 4.10.410: A perl interface to the Twitter API
+dev-perl/Net-Twitter 4.10.100 4.10.410 4.10.420: A perl interface to the Twitter API
 dev-perl/Net-UPnP 1.4.3: Perl extension for UPnP
 dev-perl/Net-Whois-IP 1.190.0: Perl extension for looking up the whois information for ip addresses
 dev-perl/Net-XMPP 1.20.0-r1 1.50.0: XMPP Perl Library
@@ -15680,7 +15682,7 @@ perl-core/Dumpvalue 1.170.0: provides screen dump of Perl data
 perl-core/Encode 2.730.0: character encodings
 perl-core/ExtUtils-Command 1.180.0-r1: Utilities to replace common UNIX commands in Makefiles etc
 perl-core/ExtUtils-Constant 0.230.0-r1: Generate XS code to import C header constants
-perl-core/ExtUtils-MakeMaker 7.40.0-r1: Create a module Makefile
+perl-core/ExtUtils-MakeMaker 7.40.0-r1 7.240.0: Create a module Makefile
 perl-core/ExtUtils-Manifest 1.630.0-r1 1.700.0: Utilities to write and check a MANIFEST file
 perl-core/File-Path 2.90.0: File path and name utilities
 perl-core/File-Temp 0.230.400-r1: File::Temp can be used to create and open temporary files in a safe way
@@ -17966,10 +17968,10 @@ virtual/perl-Dumpvalue 1.170.0-r7 1.180.0-r1: Virtual for Dumpvalue
 virtual/perl-Encode 2.730.0-r1 2.800.100_rc: Virtual for Encode
 virtual/perl-Exporter 5.720.0-r2: Virtual for Exporter
 virtual/perl-ExtUtils-CBuilder 0.280.221-r1 0.280.225-r1: Virtual for ExtUtils-CBuilder
-virtual/perl-ExtUtils-Command 1.200.100_rc 7.100.200_rc: Virtual for ExtUtils-Command
+virtual/perl-ExtUtils-Command 1.200.100_rc 7.100.200_rc 7.240.0: Virtual for ExtUtils-Command
 virtual/perl-ExtUtils-Constant 0.230.0-r10: Virtual for ExtUtils-Constant
 virtual/perl-ExtUtils-Install 2.40.0-r2: Virtual for ExtUtils-Install
-virtual/perl-ExtUtils-MakeMaker 7.40.0-r1 7.40.200_rc 7.100.200_rc: Virtual for ExtUtils-MakeMaker
+virtual/perl-ExtUtils-MakeMaker 7.40.0-r1 7.40.200_rc 7.100.200_rc 7.240.0: Virtual for ExtUtils-MakeMaker
 virtual/perl-ExtUtils-Manifest 1.700.0-r3: Virtual for ExtUtils-Manifest
 virtual/perl-ExtUtils-ParseXS 3.280.0-r1 3.310.0-r1: Virtual for ExtUtils-ParseXS
 virtual/perl-File-Path 2.90.0-r5 2.120.100_rc-r1: Virtual for File-Path
