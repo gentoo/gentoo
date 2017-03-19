@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic multilib-minimal
+inherit eutils flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="https://flex.sourceforge.net/ https://github.com/westes/flex"
@@ -29,6 +29,7 @@ src_prepare() {
 			-e '/^SUBDIRS =/,/^$/{/tests/d}' \
 			Makefile.in || die
 	fi
+	elibtoolize # Prefix always needs this
 }
 
 src_configure() {
