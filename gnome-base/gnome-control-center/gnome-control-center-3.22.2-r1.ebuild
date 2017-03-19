@@ -3,15 +3,16 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
-inherit autotools bash-completion-r1 gnome2
+inherit bash-completion-r1 gnome2
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
 
 LICENSE="GPL-2+"
 SLOT="2"
-IUSE="+bluetooth +colord +cups debug +gnome-online-accounts +i18n input_devices_wacom kerberos networkmanager v4l wayland"
+IUSE="+bluetooth +colord +cups debug +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager v4l wayland"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # False positives caused by nested configure scripts
@@ -60,7 +61,7 @@ COMMON_DEPEND="
 	gnome-online-accounts? (
 		>=media-libs/grilo-0.3.0:0.3=
 		>=net-libs/gnome-online-accounts-3.21.5:= )
-	i18n? ( >=app-i18n/ibus-1.5.2 )
+	ibus? ( >=app-i18n/ibus-1.5.2 )
 	kerberos? ( app-crypt/mit-krb5 )
 	networkmanager? (
 		>=gnome-extra/nm-applet-1.2.0
@@ -89,7 +90,7 @@ RDEPEND="${COMMON_DEPEND}
 		app-admin/system-config-printer
 		net-print/cups-pk-helper )
 	input_devices_wacom? ( gnome-base/gnome-settings-daemon[input_devices_wacom] )
-	i18n? ( >=gnome-base/libgnomekbd-3 )
+	>=gnome-base/libgnomekbd-3
 	wayland? ( dev-libs/libinput )
 	!wayland? (
 		>=x11-drivers/xf86-input-libinput-0.19.0
@@ -122,20 +123,19 @@ DEPEND="${COMMON_DEPEND}
 #	gnome-base/gnome-common
 #	sys-devel/autoconf-archive
 
-src_prepare() {
+PATCHES=(
+	# From gnome-3-22 branch
+	"${FILESDIR}"/${PV}-fix-build-without-wayland.patch # bug 613192
+	"${FILESDIR}"/${PV}-fix-dual-gpu-crash.patch
 	# Make some panels and dependencies optional; requires eautoreconf
 	# https://bugzilla.gnome.org/686840, 697478, 700145
-	eapply "${FILESDIR}"/${PN}-3.22.0-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.22.0-make-wayland-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.22.0-keep-panels-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.22.0-make-networkmanager-optional.patch
-
+	"${FILESDIR}"/${PN}-3.22.0-optional.patch
+	"${FILESDIR}"/${PN}-3.22.0-make-wayland-optional.patch
+	"${FILESDIR}"/${PN}-3.22.0-keep-panels-optional.patch
+	"${FILESDIR}"/${PN}-3.22.0-make-networkmanager-optional.patch
 	# Fix some absolute paths to be appropriate for Gentoo
-	eapply "${FILESDIR}"/${PN}-3.22.0-gentoo-paths.patch
-
-	eautoreconf
-	gnome2_src_prepare
-}
+	"${FILESDIR}"/${PN}-3.22.0-gentoo-paths.patch
+)
 
 src_configure() {
 	gnome2_src_configure \
@@ -147,7 +147,7 @@ src_configure() {
 		$(use_enable cups) \
 		$(usex debug --enable-debug=yes ' ') \
 		$(use_enable gnome-online-accounts goa) \
-		$(use_enable i18n ibus) \
+		$(use_enable ibus) \
 		$(use_enable kerberos) \
 		$(use_enable networkmanager) \
 		$(use_with v4l cheese) \

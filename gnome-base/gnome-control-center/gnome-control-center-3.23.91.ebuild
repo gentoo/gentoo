@@ -3,8 +3,9 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
-inherit autotools bash-completion-r1 gnome2
+inherit bash-completion-r1 gnome2
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
@@ -89,7 +90,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
 	colord? ( >=gnome-extra/gnome-color-manager-3 )
 	input_devices_wacom? ( gnome-base/gnome-settings-daemon[input_devices_wacom] )
-	ibus? ( >=gnome-base/libgnomekbd-3 )
+	>=gnome-base/libgnomekbd-3
 	wayland? ( dev-libs/libinput )
 	!wayland? (
 		>=x11-drivers/xf86-input-libinput-0.19.0
@@ -122,19 +123,15 @@ DEPEND="${COMMON_DEPEND}
 #	gnome-base/gnome-common
 #	sys-devel/autoconf-archive
 
-src_prepare() {
+PATCHES=(
 	# Make some panels and dependencies optional; requires eautoreconf
 	# https://bugzilla.gnome.org/686840, 697478, 700145
-	eapply "${FILESDIR}"/${P}-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.22.0-make-wayland-optional.patch
-	eapply "${FILESDIR}"/${P}-make-networkmanager-optional.patch
-
+	"${FILESDIR}"/${P}-optional.patch
+	"${FILESDIR}"/${PN}-3.22.0-make-wayland-optional.patch
+	"${FILESDIR}"/${P}-make-networkmanager-optional.patch
 	# Fix some absolute paths to be appropriate for Gentoo
-	eapply "${FILESDIR}"/${P}-gentoo-paths.patch
-
-	eautoreconf
-	gnome2_src_prepare
-}
+	"${FILESDIR}"/${P}-gentoo-paths.patch
+)
 
 src_configure() {
 	gnome2_src_configure \
