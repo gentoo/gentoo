@@ -15,6 +15,5 @@ IUSE=""
 RDEPEND="|| (
 		>=sci-libs/lapack-reference-3.6
 		>=sci-libs/mkl-10
-		>=sci-libs/acml-4
 	)"
 DEPEND=""
