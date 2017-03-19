@@ -12022,7 +12022,7 @@ kde-misc/colord-kde 0.5.0: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
 kde-misc/kanyremote 6.3.5: KDE frontend to Anyremote
 kde-misc/kbiff 4.0: New mail notification utility
-kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
+kde-misc/kcollectd 0.9-r1: Simple kdelibs4-based live data viewer for collectd
 kde-misc/kdeconnect 1.0.3: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.97-r2 0.9.98-r1: Qt/KDE based frontend to diff3
