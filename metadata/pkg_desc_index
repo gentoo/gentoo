@@ -6972,8 +6972,8 @@ dev-php/PEAR-OLE 1.0.0_rc2-r1 1.0.0_rc2-r2: Package for reading and writing OLE 
 dev-php/PEAR-PEAR 1.9.4 1.10.1-r1 1.10.3 1.10.3-r1: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
 dev-php/PEAR-PEAR_PackageFileManager 1.7.2-r1: Updates an existing package.xml file with a new filelist and changelog
-dev-php/PEAR-PEAR_PackageFileManager2 1.0.4: Updates an existing package.xml file with a new filelist and changelog
-dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4: Various methods to check files to update an existing package.xml file
+dev-php/PEAR-PEAR_PackageFileManager2 1.0.4-r1: Updates an existing package.xml file with a new filelist and changelog
+dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4-r1: Various methods to check files to update an existing package.xml file
 dev-php/PEAR-PHP_Beautifier 0.1.15-r2: Code Beautifier for PHP
 dev-php/PEAR-PHP_CompatInfo 1.9.0: Find out the minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
@@ -6990,7 +6990,7 @@ dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a reco
 dev-php/PEAR-Structures_Graph 1.1.1-r1: Graph datastructure manipulation library
 dev-php/PEAR-System_Command 1.0.8-r1: PHP command-line execution interface
 dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
-dev-php/PEAR-Text_CAPTCHA 0.5.0 1.0.2: Generation of CAPTCHAs
+dev-php/PEAR-Text_CAPTCHA 0.5.0 1.0.2-r1: Generation of CAPTCHAs
 dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers in order to prove that bots using it are human
 dev-php/PEAR-Text_Figlet 1.0.2-r1: Render text using FIGlet fonts
 dev-php/PEAR-Text_Highlighter 0.7.3-r1 0.8.0: A package for syntax highlighting
@@ -15158,7 +15158,7 @@ net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementat
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.4.2 3.5.4 9999: Simple, powerful and moeful twitter client
 net-misc/mindterm 3.4: A Java SSH Client
-net-misc/minidlna 1.1.4 1.1.5 1.1.5-r1: DLNA/UPnP-AV compliant media server
+net-misc/minidlna 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20160301 1.5.20161216: MiniSSDP Daemon
 net-misc/miniupnpd 2.0 2.0.20161216: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20151214: Database of mobile broadband service providers
@@ -19392,7 +19392,7 @@ x11-wm/wmii 3.9.2-r4 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
-x11-wm/xpra 1.0.3-r1 1.0.4: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 1.0.3-r1 1.0.4 1.0.4-r1 2.0: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.6 0.10.7 0.11.1 0.11.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.12.1-r2 4.13.0 4.13.1: Unified widget and session management libs for Xfce

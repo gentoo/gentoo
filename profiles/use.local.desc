@@ -8586,13 +8586,17 @@ x11-wm/xpra:client - Build client-side code
 x11-wm/xpra:clipboard - Enable clipboard support
 x11-wm/xpra:csc - Enable csc softscaler support
 x11-wm/xpra:dec_av2 - Enable dec_avcodec2 support
+x11-wm/xpra:dec_avcodec2 - Enable avcodec2 decoder support
 x11-wm/xpra:enc_ffmpeg - Enable advanced ffmpeg/libav encoder support
+x11-wm/xpra:enc_x264 - Enable x264 encoder support
+x11-wm/xpra:enc_x265 - Enable x265 encoder support
 x11-wm/xpra:lz4 - Enable support for lz4 compression
+x11-wm/xpra:pillow - Enable pillow support
 x11-wm/xpra:server - Build server-side code
 x11-wm/xpra:vpx - Enable vpx image format support
 x11-wm/xpra:webcam - Enable webcam support via opencv
 x11-wm/xpra:webp - Enable webp image format support
-x11-wm/xpra:x265 - Enable x265 support
+x11-wm/xpra:x265 - Enable x265 encoder support
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
 xfce-base/libxfce4ui:gtk3 - Enable gtk3 support
 xfce-base/xfce4-settings:libcanberra - Enable sound event support using media-libs/libcanberra
