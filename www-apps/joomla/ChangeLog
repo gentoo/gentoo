@@ -1,0 +1,38 @@
+# ChangeLog for www-apps/joomla
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  12 Dec 2014; Harold Naparst <harold@alum.mit.edu> joomla-3.4.0_alpha.ebuild:
+  Use packaged zip file instead of git snapshot.
+
+  03 Dec 2014; Harold Naparst <harold@alum.mit.edu> joomla-3.4.0_alpha.ebuild:
+  Fix dependencies for 3.4.0_alpha
+
+  03 Dec 2014; Harold Naparst <harold@alum.mit.edu> joomla-3.4.0_alpha.ebuild:
+  Add joomla-3.4.0_alpha.ebuild
+
+  03 Dec 2014; Harold Naparst <harold@alum.mit.edu> joomla-3.4.0_alpha.ebuild:
+  Add joomla-3.4.0_alpha.ebuild
+
+*joomla-3.4.0_alpha (03 Dec 2014)
+
+  03 Dec 2014; Harold Naparst <harold@alum.mit.edu> +joomla-3.4.0_alpha.ebuild:
+  Add joomla-3.4.0_alpha.ebuild
+
+  09 Oct 2014; Harold Naparst <harold@alum.mit.edu> joomla-3.3.6.ebuild:
+  Modified ebuild to reflect discussion in irc. IUSE flags are removed
+  from this ebuild because a change of backend db should not force a rebuild
+  of joomla. Instead, it is required that php has been built with either mysql
+  or postgresql support.
+
+*joomla-3.3.6 (07 Oct 2014)
+
+  07 Oct 2014; Harold Naparst <harold@alum.mit.edu> +joomla-3.3.6.ebuild:
+  joomla-3.3.6
+
+  05 September 2014; Harold Naparst <harold@alum.mit.edu> joomla-3.3.3.ebuild:
+  Clean up use flags.
+
+	
+  04 September 2014; Harold Naparst <harold@alum.mit.edu> joomla-3.3.3.ebuild:
+  Version bump
