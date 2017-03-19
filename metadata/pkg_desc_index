@@ -11459,7 +11459,7 @@ games-util/xgame-gtk2 2.0.2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.26.0 0.26.0-r1: Simple low-level configuration system
-gnome-base/dconf-editor 3.20.3 3.22.1: Graphical tool for editing the dconf configuration database
+gnome-base/dconf-editor 3.20.3 3.22.1 3.22.3: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.20.1 3.22.3: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.20.0 3.22.0: Meta package for GNOME 3, merge this package to install
@@ -12940,7 +12940,7 @@ media-libs/liblscp 0.5.5 0.5.6 0.5.7 0.5.8: C++ library for the Linux Sampler co
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1 1.14.0 1.16.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5: Extensible multimedia container format based on EBML
-media-libs/libmediaart 0.7.0 1.9.0-r1: Manages, extracts and handles media art caches
+media-libs/libmediaart 0.7.0 1.9.0-r1 1.9.1: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.91 0.7.92.1: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.8 3.3.10: A library to play a wide range of module formats
