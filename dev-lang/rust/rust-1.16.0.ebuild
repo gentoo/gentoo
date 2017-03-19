@@ -88,7 +88,6 @@ src_configure() {
 		$(use_enable !debug optimize-tests) \
 		$(use_enable doc docs) \
 		$(use_enable libcxx libcpp) \
-		$(usex system-llvm "--llvm-root=${EPREFIX}/usr" " ") \
 		|| die
 }
 
