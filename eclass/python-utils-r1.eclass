@@ -1270,14 +1270,14 @@ python_export_utf8_locale() {
 					fi
 					return 0
 				fi
-			fi  
+			fi
 		done
 
 		ewarn "Could not find a UTF-8 locale. This may trigger build failures in"
 		ewarn "some python packages. Please ensure that a UTF-8 locale is listed in"
 		ewarn "/etc/locale.gen and run locale-gen."
 		return 1
-	fi  
+	fi
 
 	return 0
 }

@@ -80,7 +80,7 @@ fi
 # @DESCRIPTION:
 # Some messages have dependencies on other messages.
 # In that case, CATKIN_MESSAGES_TRANSITIVE_DEPS should contain a space-separated list of atoms
-# representing those dependencies. The eclass uses it to ensure proper dependencies on these packages. 
+# representing those dependencies. The eclass uses it to ensure proper dependencies on these packages.
 if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 	IUSE="${IUSE} +ros_messages_python +ros_messages_cxx ros_messages_eus ros_messages_lisp ros_messages_nodejs"
 	RDEPEND="${RDEPEND}

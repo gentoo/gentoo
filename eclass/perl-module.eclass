@@ -446,9 +446,9 @@ perl-module_src_install() {
 # @FUNCTION: perl-module_pkg_postinst
 # @USAGE: perl-module_pkg_postinst
 # @DESCRIPTION:
-# This function is to be called during the pkg_postinst() phase. It only does 
+# This function is to be called during the pkg_postinst() phase. It only does
 # useful things for the perl-core category, where it handles the file renaming and symbolic
-# links that prevent file collisions for dual-life packages installing scripts. 
+# links that prevent file collisions for dual-life packages installing scripts.
 # In any other category it immediately exits.
 perl-module_pkg_postinst() {
 	debug-print-function $FUNCNAME "$@"
@@ -462,9 +462,9 @@ perl-module_pkg_postinst() {
 # @FUNCTION: perl-module_pkg_postrm
 # @USAGE: perl-module_pkg_postrm
 # @DESCRIPTION:
-# This function is to be called during the pkg_postrm() phase. It only does 
+# This function is to be called during the pkg_postrm() phase. It only does
 # useful things for the perl-core category, where it handles the file renaming and symbolic
-# links that prevent file collisions for dual-life packages installing scripts. 
+# links that prevent file collisions for dual-life packages installing scripts.
 # In any other category it immediately exits.
 perl-module_pkg_postrm() {
 	debug-print-function $FUNCNAME "$@"
