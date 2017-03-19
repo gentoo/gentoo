@@ -37,7 +37,9 @@ src_prepare() {
 		-e "s#^AVATAR_UPLOAD_PATH = data/avatars#AVATAR_UPLOAD_PATH = ${GITEA_PREFIX}/data/avatars#"\
 		-e "s#^TEMP_PATH = data/tmp/uploads#TEMP_PATH = ${GITEA_PREFIX}/data/tmp/uploads#"\
 		-e "s#^PATH = data/attachments#PATH = ${GITEA_PREFIX}/data/attachments#"\
-		-e "s#^ROOT_PATH =#ROOT_PATH = ${EPREFIX}/var/log/gitea#" src/${EGO_PN%/*}/conf/app.ini || die
+		-e "s#^ROOT_PATH =#ROOT_PATH = ${EPREFIX}/var/log/gitea#"\
+		-e "s#^ISSUE_INDEXER_PATH =#ISSUE_INDEXER_PATH = ${GITEA_PREFIX}/indexers/issues.bleve#"\
+		src/${EGO_PN%/*}/conf/app.ini || die
 }
 
 src_compile() {
