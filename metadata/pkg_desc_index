@@ -4559,7 +4559,7 @@ dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3 2.3.3-r1 2.4.0: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0: Systems programming language from Mozilla
-dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1: Systems programming language from Mozilla
+dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
@@ -16366,7 +16366,7 @@ sci-libs/matio 1.5.1 1.5.2 1.5.7 1.5.8 1.5.9: Library for reading and writing ma
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/metis 4.0.3 5.1.0-r2: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
-sci-libs/minuit 5.28.00: A C++ physics analysis tool for function minimization
+sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
 sci-libs/mkl 10.0.5.025 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
 sci-libs/mmdb 1.25.5-r1 2.0.1: The Coordinate Library, designed to assist CCP4 developers in working with coordinate files
 sci-libs/mmtk 2.7.9: Molecular Modeling ToolKit for Python
