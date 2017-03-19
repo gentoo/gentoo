@@ -51,7 +51,7 @@ dev-qt/qtgui:5 egl
 dev-qt/qtwayland:5 egl
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 kdenlive melt
+>=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
 
 # Required by app-office/libreoffice
 media-libs/phonon designer
