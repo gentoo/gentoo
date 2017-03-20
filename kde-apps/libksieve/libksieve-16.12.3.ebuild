@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="Common PIM libraries"
 LICENSE="GPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
-IUSE="ssl"
+IUSE=""
 
 # drop qtwebengine subslot operator when QT_MINIMAL >= 5.8.0
 DEPEND="
@@ -31,7 +31,7 @@ DEPEND="
 	$(add_qt_dep qtwebengine 'widgets' '' '5=')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	ssl? ( dev-libs/cyrus-sasl )
+	dev-libs/cyrus-sasl
 "
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim-kioslaves
@@ -46,11 +46,4 @@ src_prepare() {
 		sed -e "/add_subdirectory(doc)/I s/^/#DONOTCOMPILE /" \
 			-i kioslave/CMakeLists.txt || die "failed to comment add_subdirectory(doc)"
 	fi
-}
-
-src_configure() {
-	local mycmakeargs=(
-		$(cmake-utils_use_find_package ssl Sasl2)
-	)
-	kde5_src_configure
 }

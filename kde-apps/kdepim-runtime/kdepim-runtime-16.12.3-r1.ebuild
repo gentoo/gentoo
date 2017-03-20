@@ -11,10 +11,9 @@ inherit kde5
 DESCRIPTION="Runtime plugin collection to extend the functionality of KDE PIM"
 LICENSE="GPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
-IUSE="google ssl"
+IUSE="google"
 
 # TODO kolab, Qt5TextToSpeech
-
 CDEPEND="
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kcodecs)
@@ -54,18 +53,17 @@ CDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtwebengine 'widgets')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	$(add_qt_dep qtxmlpatterns)
+	dev-libs/cyrus-sasl:2
 	dev-libs/libical:=
 	google? ( $(add_kdeapps_dep libkgapi '' 5.3.1-r1) )
-	ssl? ( dev-libs/cyrus-sasl )
 "
 DEPEND="${CDEPEND}
 	$(add_frameworks_dep kross)
-	dev-libs/cyrus-sasl:2
+	$(add_qt_dep qtxmlpatterns)
 	dev-libs/libxslt
-	x11-misc/shared-mime-info
 "
 RDEPEND="${CDEPEND}
 	!kde-apps/kdepim-kioslaves
@@ -76,8 +74,7 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package google KF5GAPI)
-		$(cmake-utils_use_find_package ssl Sasl2)
+		$(cmake-utils_use_find_package google KPimGAPI)
 	)
 
 	kde5_src_configure

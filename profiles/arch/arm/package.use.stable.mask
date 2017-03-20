@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (20 Mar 2017)
+# Requires dev-java/java-config and deps which is not stable on arm
+# Requires app-emulation/xen-tools which is not stable on arm
+app-admin/collectd collectd_plugins_java collectd_plugins_xencpu
+
 # Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
 # Required media-plugins/gst-plugins-x264 is not stable
 media-plugins/gst-plugins-meta x264
