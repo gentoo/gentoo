@@ -1,0 +1,69 @@
+From 5be027b624bc866702808abadfe5f99360414086 Mon Sep 17 00:00:00 2001
+From: Philip Hazel <ph10@cam.ac.uk>
+Date: Fri, 10 Feb 2017 17:47:34 +0000
+Subject: [PATCH] Correct fix for pcre2grep multiline with --only-matching.
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1678 2f5784b3-3f2a-0410-8824-cb99058d5e15
+---
+ ChangeLog    |  5 +++++
+ configure.ac |  6 +++---
+ pcregrep.c   | 20 +++++++++++++++-----
+ 3 files changed, 23 insertions(+), 8 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index ab4e053e601e..373ee8422ef5 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -10,6 +10,11 @@ Version 8.41
+ 1.  Fixed typo in CMakeLists.txt (wrong number of arguments for 
+ PCRE_STATIC_RUNTIME (affects MSVC only).
+ 
++2. Issue 1 for 8.40 below was not correctly fixed. If pcregrep in multiline 
++mode with --only-matching matched several lines, it restarted scanning at the 
++next line instead of moving on to the end of the matched string, which can be 
++several lines after the start.
++
+ 
+ Version 8.40 11-January-2017
+ ----------------------------
+diff --git a/pcregrep.c b/pcregrep.c
+index fd2a67622baa..2070c057e4a0 100644
+--- a/pcregrep.c
++++ b/pcregrep.c
+@@ -1804,11 +1804,6 @@ while (ptr < endptr)
+         if (line_buffered) fflush(stdout);
+         rc = 0;                      /* Had some success */
+ 
+-        /* If the current match ended past the end of the line (only possible
+-        in multiline mode), we are done with this line. */
+-
+-        if ((unsigned int)offsets[1] > linelength) goto END_ONE_MATCH;
+-
+         startoffset = offsets[1];    /* Restart after the match */
+         if (startoffset <= oldstartoffset)
+           {
+@@ -1818,6 +1813,21 @@ while (ptr < endptr)
+           if (utf8)
+             while ((matchptr[startoffset] & 0xc0) == 0x80) startoffset++;
+           }
++
++        /* If the current match ended past the end of the line (only possible
++        in multiline mode), we must move on to the line in which it did end
++        before searching for more matches. */                                
++                                                          
++        while (startoffset > (int)linelength)
++          {                                                                  
++          matchptr = ptr += linelength + endlinelength;                      
++          filepos += (int)(linelength + endlinelength);                        
++          linenumber++;                    
++          startoffset -= (int)(linelength + endlinelength);
++          t = end_of_line(ptr, endptr, &endlinelength);
++          linelength = t - ptr - endlinelength;
++          }              
++
+         goto ONLY_MATCHING_RESTART;
+         }
+       }
+-- 
+2.12.0
+
