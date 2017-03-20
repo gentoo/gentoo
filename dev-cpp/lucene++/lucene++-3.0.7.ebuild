@@ -6,7 +6,7 @@ EAPI=5
 MY_P="LucenePlusPlus-rel_${PV}"
 inherit cmake-utils multilib
 
-DESCRIPTION="C++ port of Java Lucene library, a high-performance, full-featured text search engine"
+DESCRIPTION="C++ port of Lucene library, a high-performance, full-featured text search engine"
 HOMEPAGE="https://github.com/luceneplusplus/LucenePlusPlus"
 SRC_URI="https://github.com/luceneplusplus/LucenePlusPlus/archive/rel_${PV}.tar.gz -> ${P}.tar.gz"
 
