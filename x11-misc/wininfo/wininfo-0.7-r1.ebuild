@@ -9,7 +9,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

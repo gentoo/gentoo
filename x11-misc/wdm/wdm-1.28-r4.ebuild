@@ -11,7 +11,7 @@ SRC_URI="http://voins.program.ru/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="pam selinux truetype"
 
 COMMON_DEPEND=">=x11-wm/windowmaker-0.70.0

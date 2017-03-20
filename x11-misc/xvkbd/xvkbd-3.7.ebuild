@@ -10,7 +10,7 @@ SRC_URI="http://homepage3.nifty.com/tsato/xvkbd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 
 RDEPEND="
 	x11-libs/libX11
