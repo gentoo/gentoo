@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="A colletion of List utilities missing from List::Util"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~x86"
 IUSE="test"
 
 RDEPEND="
