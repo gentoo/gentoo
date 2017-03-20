@@ -350,7 +350,7 @@ app-backup/bacula 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.4-r2 7.4.6: Featureful client/
 app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2 16.2.4: Featureful client/server network backup suite
 app-backup/borgbackup 1.0.9 1.0.10 9999: Deduplicating backup program with compression and authenticated encryption.
 app-backup/boxbackup 0.11.1-r1 0.11.1-r2: A completely automatic on-line backup system
-app-backup/btrbk 0.23.3 0.24.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
+app-backup/btrbk 0.23.3 0.24.0 0.25.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.28.1 0.29 0.29-r1: A highly efficient backup system based on the git packfile format
 app-backup/burp 1.4.40-r5 1.4.40-r6: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
@@ -15424,7 +15424,7 @@ net-p2p/bitcoind 0.13.0 0.13.1 0.13.2 9999: Original Bitcoin crypto-currency wal
 net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
 net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
-net-p2p/bittornado 0.3.18-r4: TheShad0w's experimental BitTorrent client
+net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.07 0.07_p20150728 0.09 0.09_p20151220 0.10 0.11: Program for displaying classified advertisement items
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
