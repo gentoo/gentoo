@@ -1296,7 +1296,7 @@ app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-ce
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
 app-emulation/docker-registry 2.5.1 2.6.0: Docker Registry 2.0
-app-emulation/docker-runc 1.0.0_rc2_p20170201 1.0.0_rc2_p20170222: runc container cli tools (docker fork)
+app-emulation/docker-runc 1.0.0_rc2_p20170201 1.0.0_rc2_p20170222 1.0.0_rc2_p20170308: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20130107-r3: DOS Emulator
@@ -15590,7 +15590,7 @@ net-vpn/tor 0.2.8.12 0.2.9.9 0.2.9.10 0.3.0.3_alpha 0.3.0.4_rc: Anonymizing over
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard 0.0.20170320 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard 0.0.20170320.1 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
