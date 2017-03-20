@@ -11,4 +11,8 @@
     LuaFileSystem offers a portable way to access the underlying directory
 	structure and file attributes.
   </longdescription>
+  <use>
+    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of
+      <pkg>dev-lang/lua</pkg></flag>
+  </use>
 </pkgmetadata>
