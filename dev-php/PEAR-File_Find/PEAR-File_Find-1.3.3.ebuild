@@ -6,31 +6,33 @@ EAPI=6
 MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Dump structured information about a variable"
+DESCRIPTION="A class that facillitates the search of filesystems"
 HOMEPAGE="http://pear.php.net/package/${MY_PN}"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="examples test"
+IUSE="test"
 
+# Really only needs PEAR-Exception at runtime.
 RDEPEND="dev-lang/php:*
 	dev-php/PEAR-PEAR"
-DEPEND="test? ( ${RDEPEND} )"
+DEPEND="test? ( dev-php/PEAR-PEAR )"
 
 S="${WORKDIR}/${MY_P}"
 
-# The test suite fails due to some deprecation warnings that are output.
-# The test cases themselves set error_reporting(E_ALL), so there's no
-# easy way to override it.
-RESTRICT=test
+src_prepare() {
+	eapply_user
+
+	# Without this sed, the test suite will try (and fail) to mess
+	# around in /tmp.
+	sed -i "s~'/tmp'~'${T}'~" tests/setup.php \
+		|| die 'failed to fix temporary directory in tests/setup.php'
+}
 
 src_install() {
-	use examples && dodoc -r docs/example*.php
-
 	insinto /usr/share/php
-	doins "${MY_PN}.php"
-	doins -r "${MY_PN}"
+	doins -r File
 }
 
 src_test() {
