@@ -1,5 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 VIRTUALX_REQUIRED="pgo"
@@ -9,7 +10,7 @@ MOZ_ESR=""
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
 MOZ_LANGS=( ach af an ar as ast az bg bn-BD bn-IN br bs ca cak cs cy da de dsb
 el en en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE
-gd gl gn gu-IN he hi-IN hr hsb hu hy-AM id is it ja ka kk km kn ko lij lt lv
+gd gl gn gu-IN he hi-IN hr hsb hu hy-AM id is it ja ka kab kk km kn ko lij lt lv
 mai mk ml mr ms nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq
 sr sv-SE ta te th tr uk uz vi xh zh-CN zh-TW )
 
@@ -24,13 +25,13 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-51.0-patches-06"
+PATCH="${PN}-52.0-patches-07"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_GTK2ONLY=1
 MOZCONFIG_OPTIONAL_WIFI=1
 
-inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.51 pax-utils fdo-mime autotools virtualx mozlinguas-v2
+inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.52 pax-utils fdo-mime autotools virtualx mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
@@ -51,10 +52,8 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 RDEPEND="
 	jack? ( virtual/jack )
-	>=dev-libs/nss-3.28.1
+	>=dev-libs/nss-3.28.3
 	>=dev-libs/nspr-4.13.1
-	>=media-libs/libpng-1.6.25
-	system-sqlite? ( >=dev-db/sqlite-3.14.1:3[secure-delete,debug=] )
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
@@ -126,8 +125,7 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}/firefox" \
-		"${FILESDIR}"/fix_hardened_pie_detection.patch
+	eapply "${WORKDIR}/firefox"
 
 	# Enable gnomebreakpad
 	if use debug ; then
