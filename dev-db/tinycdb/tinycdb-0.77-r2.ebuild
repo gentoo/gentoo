@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 inherit eutils multilib toolchain-funcs
 
-DESCRIPTION="TinyCDB is a very fast and simple package for creating and reading constant data bases"
+DESCRIPTION="A very fast and simple package for creating and reading constant data bases"
 HOMEPAGE="http://www.corpit.ru/mjt/tinycdb.html"
 SRC_URI="http://www.corpit.ru/mjt/${PN}/${P/-/_}.tar.gz"
 
