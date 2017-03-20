@@ -5715,7 +5715,7 @@ dev-perl/Devel-StackTrace-AsHTML 0.140.0-r1 0.150.0: Displays stack trace in HTM
 dev-perl/Devel-Symdump 2.150.0 2.170.0 2.180.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
-dev-perl/Digest-CRC 0.210.0: Generic CRC function
+dev-perl/Digest-CRC 0.210.0 0.220.0_p2: Generic CRC function
 dev-perl/Digest-GOST 0.60.0: Perl interface to the GOST R 34.11-94 digest algorithm
 dev-perl/Digest-HMAC 1.30.0-r1: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.70.0-r1 0.90.0 0.100.0: Perl extension for 32 bit Jenkins Hashing Algorithm
