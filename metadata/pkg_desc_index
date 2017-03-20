@@ -6024,7 +6024,7 @@ dev-perl/LWP-Authen-Wsse 0.50.0-r1: Library for enabling X-WSSE authentication i
 dev-perl/LWP-MediaTypes 6.20.0-r1: Media types and mailcap processing
 dev-perl/LWP-Online 1.80.0-r2: Does your process have access to the web
 dev-perl/LWP-Protocol-http10 6.30.0: Legacy HTTP/1.0 support for LWP
-dev-perl/LWP-Protocol-https 6.60.0: Provide https support for LWP::UserAgent
+dev-perl/LWP-Protocol-https 6.60.0 6.70.0: Provide https support for LWP::UserAgent
 dev-perl/LWP-UserAgent-Cached 0.60.0: LWP::UserAgent with simple caching mechanism
 dev-perl/LWP-UserAgent-Determined 1.70.0: A virtual browser that retries errors
 dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects you from harm
@@ -14549,7 +14549,7 @@ net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subv
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.12.0.2 3.14.1 3.24.0 3.24.1-r1 3.25.0: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.12.0.2 3.14.1 3.24.0 3.24.1-r1 3.25.0 3.25.1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
