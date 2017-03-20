@@ -16,6 +16,7 @@
 	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
 	<flag name="jemalloc">Enable or disable jemalloc</flag>
 	<flag name="jemalloc3">Enable or disable jemalloc3 (forced-on when supported prior to 38.0)</flag>
+	<flag name="nsplugin">Enable support for NPAPI plugins other than flash</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
 		for faster binaries. This option will double the compile time.</flag>
 	<flag name="rust">Enable support for using rust compiler  (experimental)</flag>
