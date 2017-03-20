@@ -7,7 +7,7 @@ inherit user systemd golang-vcs-snapshot
 
 KEYWORDS="~amd64"
 EGO_PN=github.com/coreos/etcd
-DESCRIPTION="A highly-available key value store for shared configuration and service discovery"
+DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://${EGO_PN}/"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
