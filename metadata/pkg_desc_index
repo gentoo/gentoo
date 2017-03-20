@@ -11742,7 +11742,7 @@ kde-apps/kdepim-common-libs 4.14.11_pre20160211-r1: Common libraries for KDE PIM
 kde-apps/kdepim-kresources 4.4.2016.01 4.14.11_pre20160211: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1 16.08.3 16.12.3: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2016.01 4.14.11_pre20160211 16.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 4.14.11_pre20160211 16.12.3: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdepim-runtime 4.14.11_pre20160211 16.12.3-r1: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2016.01: KDE PIM wizards (noakonadi branch)
 kde-apps/kdepimlibs 4.14.10-r3 4.14.11_pre20160211-r3: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.08.3 16.12.3: kioslaves from kdesdk package
