@@ -51,11 +51,6 @@ pkg_postinst() {
 	ewarn "example to read local logs), be sure to change LS_USER and LS_GROUP in"
 	ewarn "${EROOT%/}/etc/conf.d/${MY_PN}"
 	einfo
-	einfo "Getting started with logstash:"
-	einfo "  https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html"
-	einfo ""
-	einfo "Packages that might be interesting:"
-	einfo "  app-misc/elasticsearch"
-	einfo "  dev-python/elasticsearch-curator"
-	einfo "  www-apps/kibana-bin"
+	einfo "Installing plugins: (bug #601294)"
+	einfo "DEBUG=1 JARS_SKIP='true' bin/logstash-plugin install logstash-output-gelf"
 }
