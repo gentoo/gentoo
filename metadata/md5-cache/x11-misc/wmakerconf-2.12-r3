@@ -4,10 +4,10 @@ DESCRIPTION=X based config tool for the windowmaker X windowmanager
 EAPI=6
 HOMEPAGE=http://wmakerconf.sourceforge.net/
 IUSE=imlib nls perl
-KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 >=x11-wm/windowmaker-0.95.2 imlib? ( media-libs/imlib ) perl? ( dev-lang/perl dev-perl/HTML-Parser || ( dev-perl/libwww-perl www-client/lynx net-misc/wget ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/wmakerconf/wmakerconf_2.12.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_md5_=0c5d44f7b31c07bc8f43f92df5d64bed
+_md5_=851da90b2a09c9ead17fc85dbe638f78

@@ -3,10 +3,10 @@ DEPEND=>=x11-libs/fltk-1.3:1
 DESCRIPTION=user-friendly program to show you what is using up all your disk space
 EAPI=6
 HOMEPAGE=http://xdiskusage.sourceforge.net/
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~ppc ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/fltk-1.3:1
 SLOT=0
 SRC_URI=http://xdiskusage.sourceforge.net/xdiskusage-1.51.tgz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=a645441d51cd07374c2769894541cdfc
+_md5_=5a8f6ea54ec5a5b7fe8b4c2decc3f913
