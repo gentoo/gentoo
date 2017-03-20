@@ -10,7 +10,7 @@ RDEPEND=!<x11-base/xorg-server-1.7 !<=x11-proto/xf86driproto-2.0.3 abi_x86_32? (
 REQUIRED_USE=d3d9? ( dri3 gallium ) llvm? ( gallium ) opencl? ( gallium llvm ) openmax? ( gallium ) gles1? ( egl ) gles2? ( egl ) vaapi? ( gallium ) vdpau? ( gallium ) vulkan? ( || ( video_cards_i965 video_cards_radeonsi ) video_cards_radeonsi? ( llvm ) ) wayland? ( egl gbm ) xa? ( gallium ) video_cards_freedreno? ( gallium ) video_cards_intel? ( classic ) video_cards_i915? ( || ( classic gallium ) ) video_cards_i965? ( classic ) video_cards_imx? ( gallium ) video_cards_nouveau? ( || ( classic gallium ) ) video_cards_radeon? ( || ( classic gallium ) gallium? ( x86? ( llvm ) amd64? ( llvm ) ) ) video_cards_r100? ( classic ) video_cards_r200? ( classic ) video_cards_r300? ( gallium x86? ( llvm ) amd64? ( llvm ) ) video_cards_r600? ( gallium ) video_cards_radeonsi? ( gallium llvm ) video_cards_vivante? ( gallium gbm ) video_cards_vmware? ( gallium )
 RESTRICT=!bindist? ( bindist )
 SLOT=0
-SRC_URI=https://mesa.freedesktop.org/archive/mesa-17.0.1.tar.xz
+SRC_URI=https://mesa.freedesktop.org/archive/mesa-17.0.2.tar.xz
 _eclass_exported_funcs=pkg_prerm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	llvm	45ef89988bfb458ac81bb566c1eaa437	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	pax-utils	4f95120230a315c8caaabeb2307b7eee	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=f6e23744afda2a08defd0b8c7a27ebaa
+_md5_=1f6e27d73cea5ab626e106cbea1909a7
