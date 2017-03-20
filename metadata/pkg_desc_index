@@ -7170,7 +7170,7 @@ dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.1.2 1.2.1: Abtraction layer for PyQt5/PyQt4/PySide
 dev-python/ReParser 1.4.3: simple regex-based lexer/parser for inline markup
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
-dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
+dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11 2017.2.23: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3-r1 0.5.7: A simple Python object interface to a MySQL database schema
 dev-python/URLObject 2.4.0 2.4.2: A utility class for manipulating URLs
 dev-python/WSME 0.8.0 0.9.1: Simplify the writing of REST APIs, and extend them with additional protocols.
@@ -8272,7 +8272,7 @@ dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of 
 dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
 dev-python/pytest-fixture-config 1.2.2: Virtualenv fixture for py.test
-dev-python/pytest-html 1.10.1: Plugin for generating HTML reports for py.test results
+dev-python/pytest-html 1.10.1 1.14.2: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 0.2.0 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.4 0.3.5 0.3.6: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.3.0: A plugin for pytest that provides access to test session metadata
@@ -9363,6 +9363,7 @@ dev-ruby/fivemat 1.3.2 1.3.3: MiniTest/RSpec/Cucumber formatter that gives each 
 dev-ruby/flexmock 1.3.3-r1 2.3.2 2.3.4 2.3.5: Simple mock object library for Ruby unit testing
 dev-ruby/flickraw 0.9.9: A library to access flickr api in a simple way
 dev-ruby/flog 4.3.2 4.4.0 4.4.1 4.5.0 4.6.1: Flog reports the most tortured code in an easy to read pain report
+dev-ruby/font-awesome-rails 4.7.0.1: Font-awesome for the asset pipeline
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.2.0: Instafailing RSpec progress bar formatter
