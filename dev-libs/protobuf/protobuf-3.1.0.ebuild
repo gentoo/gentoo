@@ -36,7 +36,7 @@ DOCS=( CHANGES.txt CONTRIBUTORS.txt README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.1-protoc-cmdline.patch"
-	"${FILESDIR}/${PN}-3.0.0_beta2-disable-local-gmock.patch"
+	"${FILESDIR}/${PN}-3.0.2-disable-local-gmock.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
