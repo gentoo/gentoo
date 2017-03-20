@@ -5,6 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="json">Install support libraries to support decoding JSON config files</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">Config-Any</remote-id>
     <remote-id type="cpan-module">Config::Any</remote-id>
