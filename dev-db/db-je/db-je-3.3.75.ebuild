@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Berkeley DB JE is a high performance, transactional storage engine written entirely in Java"
+DESCRIPTION="A high performance, transactional storage engine written entirely in Java"
 HOMEPAGE="http://www.oracle.com/database/berkeley-db/je/index.html"
 SRC_URI="http://download.oracle.com/berkeley-db/${P/db-/}.tar.gz"
 
