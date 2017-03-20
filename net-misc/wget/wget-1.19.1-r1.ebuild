@@ -17,7 +17,8 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc 
 IUSE="debug gnutls idn ipv6 libressl nls ntlm pcre +ssl static test uuid zlib"
 REQUIRED_USE=" ntlm? ( !gnutls ssl ) gnutls? ( ssl )"
 
-LIB_DEPEND="idn? ( net-dns/libidn2[static-libs(+)] )
+# Force a newer libidn2 to avoid libunistring deps. #612498
+LIB_DEPEND="idn? ( >=net-dns/libidn2-0.14[static-libs(+)] )
 	pcre? ( dev-libs/libpcre[static-libs(+)] )
 	ssl? (
 		gnutls? ( net-libs/gnutls:0=[static-libs(+)] )
