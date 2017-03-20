@@ -57,6 +57,7 @@ multilib_src_configure() {
 		$(use_with lzo lzo2)
 		$(use_with nettle)
 		$(use_with zlib)
+		$(use_with !elibc_Cygwin openssl) # conflict with wincrypt.h
 	)
 	if multilib_is_native_abi ; then myconf+=(
 		--enable-bsdcat=$(tc-is-static-only && echo static || echo shared)
