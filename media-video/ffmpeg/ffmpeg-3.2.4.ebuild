@@ -54,7 +54,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -292,6 +292,10 @@ src_prepare() {
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
 	default
+
+	# the version script on Solaris causes invalid symbol version problems
+	# we don't want their hacky workarounds, we're having a GNU ld
+	sed -i -e 's/sunos)/sunos) network_extralibs="-lsocket -lnsl"; add_cppflags -D__EXTENSIONS__; enable pic; disable symver ;; no-sunos)/' configure || die
 }
 
 multilib_src_configure() {
