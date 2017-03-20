@@ -11,7 +11,7 @@ HOMEPAGE="https://www.linux-apps.com/p/998461/"
 SRC_URI="https://dl.opendesktop.org/api/files/download/id/1481242372/${MY_PN}-${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="
