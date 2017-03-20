@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (20 Mar 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-59
+
 # David Seifert <soap@gentoo.org> (19 Mar 2017)
 # EOL'd upstream, fetch restricted, digests missing
 # Masked for removal in 30 days. Bug #612746.
@@ -314,11 +319,6 @@ media-plugins/gst-plugins-ffmpeg
 # Affects libreoffice-base.
 # Bug #586634.
 =app-office/libreoffice-5.3.0.3
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 Feb 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-58
 
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
 # Alpha release with new features, masked for testing
