@@ -74,9 +74,17 @@ src_configure() {
 		tc-export PKG_CONFIG
 		PKG_CONFIG+=" --static"
 	fi
+
+	# There is no flag that controls this.  libunistring-prefix only
+	# controls the search path (which is why we turn it off below).
+	# Further, libunistring is only needed w/older libidn2 installs,
+	# and since we force the latest, we can force off libunistring. #612498
+	ac_cv_libunistring=no \
 	econf \
 		--disable-assert \
 		--disable-rpath \
+		--without-included-libunistring \
+		--without-libunistring-prefix \
 		$(use_enable debug) \
 		$(use_enable idn iri) \
 		$(use_enable ipv6) \
