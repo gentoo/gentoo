@@ -5001,7 +5001,7 @@ dev-libs/pegtl 1.3.1-r1: header-only library for creating parsers according to P
 dev-libs/pkcs11-helper 1.21: PKCS#11 helper library
 dev-libs/poco 1.4.6_p4 1.4.6_p4-r1 1.7.6: C++ class libraries for building network- and internet-based applications
 dev-libs/polylib 9999: ppl port of cloog
-dev-libs/popt 1.16-r1 1.16-r2: Parse Options - Command line parser
+dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems
 dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protocol Buffers -- an efficient method of encoding structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1: Protocol Buffers implementation in C
@@ -6264,7 +6264,7 @@ dev-perl/Net-SFTP-Foreign 1.810.0 1.870.0: SSH File Transfer Protocol client
 dev-perl/Net-SMTP-SSL 1.30.0: SSL support for Net::SMTP
 dev-perl/Net-SMTP-TLS 0.120.0-r2: A SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTP-TLS-ButMaintained 0.240.0-r1: An SMTP client supporting TLS and AUTH
-dev-perl/Net-SMTPS 0.40.0: SSL/STARTTLS support for Net::SMTP
+dev-perl/Net-SMTPS 0.40.0 0.50.0: SSL/STARTTLS support for Net::SMTP
 dev-perl/Net-SNMP 6.0.1-r1 6.0.1-r2: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
@@ -9498,7 +9498,7 @@ dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.1.1 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
-dev-ruby/neovim-ruby-client 0.3.0 0.3.1: Ruby bindings for Neovim
+dev-ruby/neovim-ruby-client 0.3.0 0.3.1 0.3.2: Ruby bindings for Neovim
 dev-ruby/net-http-digest_auth 1.4-r2 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
