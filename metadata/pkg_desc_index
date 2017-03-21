@@ -5797,7 +5797,7 @@ dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.170.0 0.180.0: XS for C++
 dev-perl/FCGI 0.770.0: Fast CGI module
-dev-perl/FCGI-ProcManager 0.250.0: A FastCGI process manager
+dev-perl/FCGI-ProcManager 0.250.0 0.280.0: A FastCGI process manager
 dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
 dev-perl/Fatal-Exception 0.50.0-r1: Succeed or throw exception
 dev-perl/Feed-Find 0.70.0-r1: Syndication feed auto-discovery
