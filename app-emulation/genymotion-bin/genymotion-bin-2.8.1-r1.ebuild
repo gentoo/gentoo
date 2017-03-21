@@ -24,9 +24,13 @@ RDEPEND="|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5
 	dev-libs/openssl
 	dev-qt/qtgui:5[libinput,xcb]
 	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtwebkit:5
+	dev-qt/qtsvg:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtconcurrent:5
 	dev-util/android-sdk-update-manager
 	media-libs/jpeg:8
-	dev-libs/protobuf:0/9
 	dev-libs/double-conversion
 	sys-apps/util-linux
 	media-libs/fontconfig:1.0
@@ -35,6 +39,7 @@ RDEPEND="|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5
 	media-libs/gstreamer[orc]
 "
 RESTRICT="bindist fetch"
+S="${WORKDIR}"
 
 pkg_nofetch() {
 	einfo
@@ -43,18 +48,18 @@ pkg_nofetch() {
 	einfo
 }
 
-pkg_setup() {
-	# removed function _install_desktop_file because happens outside of sandbox
-	sed -i -e "s/_install_desktop_file\ ||\ abort//" "${DISTDIR}"/${A} || die "sed failed"
-	chmod +x "${DISTDIR}"/${A} || die "chmod failed"
-}
-
 src_unpack() {
-	yes | "${DISTDIR}"/${A} -d "${S}" > /dev/null || die "unpack failed"
+	cp "${DISTDIR}/${A}" "${WORKDIR}" || die "cp failed"
 }
 
 src_prepare() {
 	default
+
+	# removed function _install_desktop_file because happens outside of sandbox
+	sed -i -e "s/_install_desktop_file\ ||\ abort//" ${A} || die "sed failed"
+	chmod +x ${A} || die "chmod failed"
+	yes | ./${A} -d "${S}" > /dev/null || die "unpack failed"
+
 	# removed windows line for bashcompletion
 	sed -i -e "s/complete\ -F\ _gmtool\ gmtool.exe//" "${S}/${MY_PN}/completion/bash/gmtool.bash" || die "sed failed"
 }
@@ -77,7 +82,7 @@ src_install() {
 
 	doins "${MY_PN}"/{libcom,librendering}.so*
 	# library that differ from system version
-	doins "${MY_PN}"/{libicudata,libicui18n,libicuuc,libswscale,libavutil}.so*
+	doins "${MY_PN}"/{libicudata,libicui18n,libicuuc,libswscale,libavutil,libprotobuf}.so*
 	# android library
 	doins "${MY_PN}"/{libEGL_translator,libGLES_CM_translator,libGLES_V2_translator,libOpenglRender}.so*
 
@@ -103,4 +108,13 @@ src_install() {
 
 	make_desktop_entry "/opt/${MY_PN}/${MY_PN}" "Genymotion ${PV}" "/opt/${MY_PN}/icons/icon.png" "Development;Emulator;"
 	mv "${ED%/}"/usr/share/applications/*.desktop "${ED%/}"/usr/share/applications/"${MY_PN}".desktop || die "mv failed"
+}
+
+pkg_postinst() {
+	elog "Genymotion needs adb to work correctly: install with android-sdk-update-manager"
+	elog "'Android SDK Platform-tools' and 'Android SDK Tools'"
+	elog "Your user should also be in the android group to work correctly"
+	elog "Then in Genymotion set the android-sdk-update-manager directory: (Settings->ADB)"
+	elog
+	elog "      /opt/android-sdk-update-manager"
 }
