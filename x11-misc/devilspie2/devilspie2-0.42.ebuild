@@ -13,7 +13,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/devilspie2/devilspie2_${PV}-s
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND="
