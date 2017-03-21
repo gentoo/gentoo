@@ -6,7 +6,7 @@ HOMEPAGE="http://confix.sourceforge.net"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~ppc-aix ~x64-cygwin ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 src_install() {
