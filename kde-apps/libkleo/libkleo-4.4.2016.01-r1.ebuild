@@ -23,8 +23,3 @@ KMSAVELIBS="true"
 KMEXTRACTONLY="kleopatra/"
 
 PATCHES=( "${FILESDIR}/${P}-install_headers.patch" )
-
-src_prepare() {
-	append-cxxflags -std=c++11
-	kde4-meta_src_prepare
-}
