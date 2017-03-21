@@ -1,0 +1,34 @@
+commit 27d13af71c3af6b2f9b60556d2c046dbb6e36e23
+Author: Mike Frysinger <vapier@gentoo.org>
+Date:   Mon Mar 14 17:44:49 2016 -0400
+
+    include sys/sysmacros.h in more places
+    
+    Since glibc is moving away from implicitly including sys/sysmacros.h
+    all the time via sys/types.h, include the header directly in more
+    places.  This seems to cover most makedev/major/minor usage.
+
+diff --git a/src/basic/macro.h b/src/basic/macro.h
+index c34441d75..b36a95675 100644
+--- a/src/basic/macro.h
++++ b/src/basic/macro.h
+@@ -23,6 +23,7 @@
+ #include <inttypes.h>
+ #include <stdbool.h>
+ #include <sys/param.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #define _printf_(a,b) __attribute__ ((format (printf, a, b)))
+diff --git a/src/basic/util.h b/src/basic/util.h
+index e095254b5..286db0515 100644
+--- a/src/basic/util.h
++++ b/src/basic/util.h
+@@ -36,6 +36,7 @@
+ #include <mntent.h>
+ #include <sys/inotify.h>
+ #include <sys/statfs.h>
++#include <sys/sysmacros.h>
+ 
+ #include "macro.h"
+ #include "missing.h"
