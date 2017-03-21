@@ -1,6 +1,2 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-# Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
-# unkeyworded
-net-libs/gnutls test-full

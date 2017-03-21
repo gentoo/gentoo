@@ -9,7 +9,7 @@ DESCRIPTION="A software PKCS#11 implementation"
 HOMEPAGE="http://www.opendnssec.org/"
 SRC_URI="http://www.opendnssec.org/files/source/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bindist libressl migration-tool test"
 SLOT="2"
 LICENSE="BSD"

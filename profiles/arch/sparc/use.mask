@@ -135,7 +135,6 @@ ifp
 chipcard
 hbci
 lm_sensors
-pkcs11
 openct
 bluetooth
 dmraid
