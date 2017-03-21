@@ -6655,7 +6655,7 @@ dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarism
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
 dev-perl/Text-Soundex 3.50.0: Implementation of the soundex algorithm
 dev-perl/Text-Table 1.130.0 1.132.0: Organize Data in Tables
-dev-perl/Text-Template 1.460.0-r1: Expand template text with embedded Perl
+dev-perl/Text-Template 1.460.0-r1 1.470.0: Expand template text with embedded Perl
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
 dev-perl/Text-Unidecode 0.40.0-r1 1.270.0 1.300.0: Plain ASCII transliterations of Unicode text
 dev-perl/Text-VimColor 0.260-r1: Syntax highlighting using vim
@@ -9832,7 +9832,7 @@ dev-scheme/c-wrapper 0.6.1: Foreign function interface for C and Objective-C lib
 dev-scheme/chicken 4.10.0-r1: Chicken is a Scheme interpreter and native Scheme to C compiler
 dev-scheme/elk 3.99.8: Scheme implementation designed to be embeddable extension to C/C++ applications
 dev-scheme/escm 1.1: escm - Embedded Scheme Processor
-dev-scheme/gambit 4.6.2 4.6.3 4.6.4 4.6.5 4.6.7 4.6.9 4.7.0 4.7.0-r1: Gambit-C is a native Scheme to C compiler and interpreter
+dev-scheme/gambit 4.6.2 4.6.3 4.6.4 4.6.5 4.6.7 4.6.9 4.7.0 4.7.0-r1 4.8.8: Gambit-C is a native Scheme to C compiler and interpreter
 dev-scheme/gauche 0.9.3.3 0.9.4-r1 0.9.5: A Unix system friendly Scheme Interpreter
 dev-scheme/gauche-cdb 0.3.1-r1: CDB binding for Gauche
 dev-scheme/gauche-gl 0.5.1 0.6: OpenGL binding for Gauche
