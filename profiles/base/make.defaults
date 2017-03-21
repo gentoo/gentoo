@@ -8,7 +8,7 @@
 IUSE_IMPLICIT="prefix prefix-guest"
 USE_EXPAND_IMPLICIT="ELIBC KERNEL USERLAND"
 USE_EXPAND_VALUES_ELIBC="AIX bionic Cygwin Darwin DragonFly FreeBSD glibc HPUX Interix mingw mintlib musl NetBSD OpenBSD SunOS uclibc Winnt"
-USE_EXPAND_VALUES_KERNEL="AIX Darwin FreeBSD freemint HPUX Interix linux NetBSD OpenBSD SunOS Winnt"
+USE_EXPAND_VALUES_KERNEL="AIX Darwin FreeBSD freemint HPUX linux NetBSD OpenBSD SunOS Winnt"
 USE_EXPAND_VALUES_USERLAND="BSD GNU"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
