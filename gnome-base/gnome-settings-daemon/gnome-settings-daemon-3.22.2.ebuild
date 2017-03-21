@@ -2,10 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+GNOME2_EAUTORECONF="yes"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit autotools eutils gnome2 python-any-r1 systemd udev virtualx
+inherit gnome2 python-any-r1 systemd udev virtualx
 
 DESCRIPTION="Gnome Settings Daemon"
 HOMEPAGE="https://git.gnome.org/browse/gnome-settings-daemon"
@@ -92,6 +93,13 @@ DEPEND="${COMMON_DEPEND}
 	>=x11-proto/xproto-7.0.15
 "
 
+PATCHES=(
+	# Make colord and wacom optional; requires eautoreconf
+	"${FILESDIR}"/${PN}-3.22.0-optional.patch
+	# Allow specifying udevrulesdir via configure, bug 509484; requires eautoreconf
+	"${FILESDIR}"/${PV}-udevrulesdir-configure.patch
+)
+
 python_check_deps() {
 	use test && has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
 }
@@ -100,18 +108,11 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	# Make colord and wacom optional; requires eautoreconf
-	eapply "${FILESDIR}"/${PN}-3.22.0-optional.patch
-
-	eautoreconf
-	gnome2_src_prepare
-}
-
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
 		--enable-man \
+		--with-udevrulesdir="$(get_udevdir)"/rules.d \
 		$(use_enable colord color) \
 		$(use_enable cups) \
 		$(use_enable debug) \
@@ -125,10 +126,6 @@ src_configure() {
 
 src_test() {
 	virtx emake check
-}
-
-src_install() {
-	gnome2_src_install udevrulesdir="$(get_udevdir)"/rules.d #509484
 }
 
 pkg_postinst() {
