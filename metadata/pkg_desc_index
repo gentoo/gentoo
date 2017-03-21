@@ -10236,7 +10236,7 @@ dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.48.2 2.50.3: GDBus code and documentation generator
-dev-util/geany 1.28 1.29-r1 1.30: GTK+ based fast and lightweight IDE
+dev-util/geany 1.28 1.29-r1 1.30 1.30.1: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.28-r1: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0: Gertty is a console-based interface to the Gerrit Code Review system.
@@ -10351,7 +10351,7 @@ dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4 4.9.13: Userland tools for Li
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/pkgcheck 0.5.3 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 1.1.0 1.2.2 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
-dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 0.29.1 9999: Package config system that manages compile/link flags
+dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1 20130507-r2: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20140306-r3: Port of many Plan 9 programs and libraries
 dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF and kprobes
