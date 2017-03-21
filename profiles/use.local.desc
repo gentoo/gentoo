@@ -2235,6 +2235,7 @@ dev-perl/Business-ISBN:barcode - Install dev-perl/GD-Barcode for rendering ISBN 
 dev-perl/Business-ISBN:xisbn - Install dev-perl/Mojolicious for querying xisbn.worldcat.org
 dev-perl/Config-Any:json - Install support libraries to support decoding JSON config files
 dev-perl/Convert-UUlib:system-uulib - Use dev-libs/uulib instead of bundled version.
+dev-perl/Cookie-Baker:xs - Install dev-perl/Cookie-Baker-XS for accelerated performance
 dev-perl/DBD-SQLite:system-sqlite - Use the system-wide dev-db/sqlite installation
 dev-perl/DBD-mysql:embedded - Support embedded server (libmysqld)
 dev-perl/DBD-mysql:ssl - Compile in support for SSL connections via libmysqlclient
@@ -2247,6 +2248,8 @@ dev-perl/File-Which:pwhich - Install dev-perl/App-pwhich which used to be a part
 dev-perl/GD:animgif - Enable animated gif support
 dev-perl/Graphics-ColorNames:recommended - Install recommended support modules
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
+dev-perl/HTTP-Entity-Parser:xs - Install C-Based dependieces for faster performance
+dev-perl/JSON-MaybeXS:xs - Install a C-Based backend to make JSON encode/decode fast
 dev-perl/Lab-Measurement:xpression - Install the Xpression measurement framework
 dev-perl/MCE:sereal - Install dev-perl/Sereal-Encoder and decoder for faster worker IPC
 dev-perl/Mail-IMAPClient:md5 - Install support for DIGEST-MD5 and CRAM-MD5 Authentication

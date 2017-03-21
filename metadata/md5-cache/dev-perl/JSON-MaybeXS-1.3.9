@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=virtual/perl-JSON-PP-2.273.0 virtual/perl-Scalar-List-Utils xs? ( || ( >=dev-perl/Cpanel-JSON-XS-2.331.0 >=dev-perl/JSON-XS-3.0.0 ) ) >=virtual/perl-ExtUtils-CBuilder-0.270.0 virtual/perl-ExtUtils-MakeMaker virtual/perl-File-Spec virtual/perl-File-Temp test? ( >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DESCRIPTION=Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/JSON-MaybeXS/
+IUSE=test +xs
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=virtual/perl-JSON-PP-2.273.0 virtual/perl-Scalar-List-Utils xs? ( || ( >=dev-perl/Cpanel-JSON-XS-2.331.0 >=dev-perl/JSON-XS-3.0.0 ) ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/JSON-MaybeXS-1.003009.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=f96a5ccacdcbcfc18a4b11b5ac075c0f
