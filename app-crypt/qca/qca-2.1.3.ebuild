@@ -55,6 +55,7 @@ DOCS=( README TODO )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-disable-pgp-test.patch"
+	"${FILESDIR}/${P}-c++11.patch"
 )
 
 qca_plugin_use() {
