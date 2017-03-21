@@ -1,7 +1,7 @@
 app-accessibility/SphinxTrain 0.9.1-r1 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.14.0-r1 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.20.1 2.22.0: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.20.2 2.22.0: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-core 2.20.2 2.22.1: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.20 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.5.1: editor, browser, and mail client using the /bin/ed interface
