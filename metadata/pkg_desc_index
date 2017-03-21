@@ -5634,7 +5634,7 @@ dev-perl/Data-Dump-Streamer 2.380.0 2.390.0 2.400.0: Accurately serialize a data
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.20.0-r1 2.22.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0: details of the floating point data type
-dev-perl/Data-FormValidator 4.810.0-r1: Validates user input (usually from an HTML form) based on input profile
+dev-perl/Data-FormValidator 4.810.0-r1 4.850.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
@@ -6528,7 +6528,7 @@ dev-perl/Syntax-Keyword-Junction 0.3.8: Perl6 style Junction operators in Perl5
 dev-perl/Sys-CPU 0.610.0: Access CPU info. number, etc on Win and UNIX
 dev-perl/Sys-Hostname-Long 1.500.0: Try every conceivable way to get full hostname
 dev-perl/Sys-MemInfo 0.980.0: Memory informations
-dev-perl/Sys-Mmap 0.170.0: Uses mmap to map in a file as a Perl variable
+dev-perl/Sys-Mmap 0.170.0 0.190.0: Uses mmap to map in a file as a Perl variable
 dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
