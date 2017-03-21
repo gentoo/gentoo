@@ -4,7 +4,7 @@ DESCRIPTION=Utility that scans through the system and generates a menu of instal
 EAPI=6
 HOMEPAGE=http://menumaker.sourceforge.net/
 IUSE=doc python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~ppc x86 ~x86-fbsd
 LICENSE=BSD
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/menumaker/menumaker-0.99.10.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=985624150ec11e857361f64ecfc40fd7
+_md5_=8bae2d97e1710d96336f4c6dd63fb428
