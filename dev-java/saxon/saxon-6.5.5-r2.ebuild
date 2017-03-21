@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_install() {
-    default
-    java-pkg-simple_src_install
-    use examples && java-pkg_doexamples samples
+	default
+	java-pkg-simple_src_install
+	use examples && java-pkg_doexamples samples
 }
