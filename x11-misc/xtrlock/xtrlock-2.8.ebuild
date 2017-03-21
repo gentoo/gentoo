@@ -10,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/x/${PN}/${P/-/_}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	x11-libs/libX11
