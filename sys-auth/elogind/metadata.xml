@@ -4,7 +4,4 @@
 	<maintainer type="project">
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="apparmor">Enable AppArmor support</flag>
-	</use>
 </pkgmetadata>
