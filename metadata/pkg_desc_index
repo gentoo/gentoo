@@ -5377,7 +5377,7 @@ dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1: Test.pm wrapper with helpers
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
-dev-perl/App-Nopaste 1.4.0-r1: Easy access to any pastebin
+dev-perl/App-Nopaste 1.4.0-r1 1.8.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.730.0-r1 0.740.0-r1 0.750.0-r1 0.780.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
@@ -6900,6 +6900,7 @@ dev-php/PEAR-Crypt_RC4 1.0.3: Encryption class for RC4 encryption
 dev-php/PEAR-DB 1.8.2 1.9.2: Database abstraction layer for PHP
 dev-php/PEAR-DB_DataObject 1.11.3 1.11.5: SQL builder and data modeling layer
 dev-php/PEAR-Date 1.4.7 1.5.0_alpha4: Date and Time Zone classes
+dev-php/PEAR-Exception 1.0.0: The PEAR Exception base class
 dev-php/PEAR-File 1.4.1: Common file and directory routines
 dev-php/PEAR-File_Archive 1.5.5-r1: Easily manipulate archives in PHP
 dev-php/PEAR-File_Find 1.3.2 1.3.3: A class that facillitates the search of filesystems
@@ -6975,7 +6976,7 @@ dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web bro
 dev-php/PEAR-Numbers_Roman 1.0.2: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 1.0.0_rc2-r1 1.0.0_rc2-r2: Package for reading and writing OLE containers
-dev-php/PEAR-PEAR 1.10.1-r1 1.10.3-r1: PEAR Base System
+dev-php/PEAR-PEAR 1.10.1-r1 1.10.3-r1 1.10.3-r2: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
 dev-php/PEAR-PEAR_PackageFileManager 1.7.2-r1: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager2 1.0.4-r1: Updates an existing package.xml file with a new filelist and changelog

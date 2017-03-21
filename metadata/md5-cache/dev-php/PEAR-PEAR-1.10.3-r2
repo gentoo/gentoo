@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare prerm setup
+DESCRIPTION=PEAR Base System
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/PEAR
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-lang/php:*[cli,xml,zlib] dev-php/PEAR-Archive_Tar dev-php/PEAR-Console_Getopt dev-php/PEAR-Exception dev-php/PEAR-Structures_Graph dev-php/PEAR-XML_Util
+SLOT=0
+SRC_URI=http://pear.php.net/get/PEAR-1.10.3.tgz
+_eclass_exported_funcs=pkg_prerm:- pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
+_md5_=ec133cde7f6240f0c73154b70aad2d58

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install test
+DEPEND=test? ( dev-lang/php:* !<=dev-php/PEAR-PEAR-1.10.3-r1 dev-php/phpunit )
+DESCRIPTION=The PEAR Exception base class
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/PEAR_Exception
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=dev-lang/php:* !<=dev-php/PEAR-PEAR-1.10.3-r1
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/PEAR_Exception-1.0.0.tgz
+_eclass_exported_funcs=src_test:- src_install:-
+_md5_=ab63eb9395ef9cd8344d95f256f0fb6a
