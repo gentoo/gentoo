@@ -6472,7 +6472,6 @@ net-p2p/deluge:console - Enable default console UI
 net-p2p/deluge:linguas_iu - Inuktitut locale
 net-p2p/deluge:linguas_nap - Neapolitan locale
 net-p2p/deluge:linguas_pms - Piemontese locale
-net-p2p/deluge:setproctitle - Install dependencies needed for beautifying the process name
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface
 net-p2p/dogecoin-qt:qrcode - Enable generation of QR Codes for receiving payments
 net-p2p/eiskaltdcpp:cli - Enable sample cli based on readline
