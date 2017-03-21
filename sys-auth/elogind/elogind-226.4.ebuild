@@ -37,7 +37,10 @@ DEPEND="${COMMON_DEPEND}
 "
 PDEPEND="policykit? ( sys-auth/polkit )"
 
-PATCHES=( "${FILESDIR}/${P}-docs.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-docs.patch"
+	"${FILESDIR}/${P}-glibc.patch"
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SECURITY_SMACK
