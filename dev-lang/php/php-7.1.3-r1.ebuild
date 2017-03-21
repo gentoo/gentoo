@@ -37,7 +37,7 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
-	sysvipc systemd tidy +tokenizer truetype unicode wddx webp
+	sysvipc systemd test tidy +tokenizer truetype unicode wddx webp
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 # The supported (that is, autodetected) versions of BDB are listed in
@@ -101,7 +101,7 @@ COMMON_DEPEND="
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)
-	tidy? ( app-text/htmltidy )
+	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
 	truetype? (
 		=media-libs/freetype-2*
 		!gd? (
@@ -130,12 +130,12 @@ RDEPEND="${COMMON_DEPEND}
 		selinux? ( sec-policy/selinux-phpfpm )
 		systemd? ( sys-apps/systemd ) )"
 
+# Bison isn't actually needed when building from a release tarball
+# However, the configure script will warn if it's absent or if you
+# have an incompatible version installed. See bug 593278.
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
-	>=sys-devel/bison-3.0.1
-	sys-devel/flex
-	>=sys-devel/m4-1.4.3
-	>=sys-devel/libtool-1.5.18"
+	>=sys-devel/bison-3.0.1"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
@@ -164,27 +164,22 @@ REQUIRED_USE="
 
 PHP_MV="$(get_major_version)"
 
-# Allow users to install production version if they want to
-if [[ "${PHP_INI_VERSION}" == "production" ]]; then
-	PHP_INI_UPSTREAM="php.ini-production"
-else
-	PHP_INI_UPSTREAM="php.ini-development"
-fi
-
 php_install_ini() {
 	local phpsapi="${1}"
 
 	# work out where we are installing the ini file
 	php_set_ini_dir "${phpsapi}"
 
-	local phpinisrc="${PHP_INI_UPSTREAM}-${phpsapi}"
-	cp "${PHP_INI_UPSTREAM}" "${phpinisrc}" || die
+	# Always install the production INI file, bug 611214.
+	local phpinisrc="php.ini-production-${phpsapi}"
+	cp php.ini-production "${phpinisrc}" || die
 
 	# default to /tmp for save_path, bug #282768
 	sed -e 's|^;session.save_path .*$|session.save_path = "'"${EPREFIX}"'/tmp"|g' -i "${phpinisrc}" || die
 
 	# Set the extension dir
-	sed -e "s|^extension_dir .*$|extension_dir = ${extension_dir}|g" -i "${phpinisrc}" || die
+	sed -e "s|^extension_dir .*$|extension_dir = ${extension_dir}|g" \
+		-i "${phpinisrc}" || die
 
 	# Set the include path to point to where we want to find PEAR packages
 	sed -e 's|^;include_path = ".:/php/includes".*|include_path = ".:'"${EPREFIX}"'/usr/share/php'${PHP_MV}':'"${EPREFIX}"'/usr/share/php"|' -i "${phpinisrc}" || die
@@ -216,8 +211,7 @@ php_install_ini() {
 		doins sapi/fpm/www.conf
 	fi
 
-	dodoc php.ini-development
-	dodoc php.ini-production
+	dodoc php.ini-{development,production}
 }
 
 php_set_ini_dir() {
@@ -431,6 +425,9 @@ src_configure() {
 	# Fixes bug #14067.
 	# Changed order to run it in reverse for bug #32022 and #12021.
 	replace-cpu-flags "k6*" "i586"
+
+	# Cache the ./configure test results between SAPIs.
+	our_conf+=( --cache-file="${T}/config.cache" )
 
 	# Support user-passed configuration parameters
 	our_conf+=( ${EXTRA_ECONF:-} )
@@ -710,20 +707,15 @@ pkg_postinst() {
 	   elog
 	fi
 
-	# Only mention PHP_INI_VERSION if the user doesn't have it set.
-	case "${PHP_INI_VERSION}" in
-		production|development)
-		;;
-	*)
-		elog "This ebuild installed a version of php.ini based on"
-		elog "${PHP_INI_UPSTREAM}. You can choose which version of"
-		elog "php.ini to install by default by setting PHP_INI_VERSION"
-		elog "to either 'production' or 'development' in your make.conf."
-		elog "Both versions of php.ini can be found with the PHP docs in"
-		elog "${EPREFIX}/usr/share/doc/${PF}"
-		elog
-		;;
-	esac
+	# Warn about the removal of PHP_INI_VERSION if the user has it set.
+	if [[ -n "${PHP_INI_VERSION}" ]]; then
+		ewarn 'The PHP_INI_VERSION variable has been phased out. You may'
+		ewarn 'remove it from your configuration at your convenience. See'
+		ewarn
+		ewarn '  https://bugs.gentoo.org/611214'
+		ewarn
+		ewarn 'for more information.'
+	fi
 
 	elog "For details on how version slotting works, please see"
 	elog "the wiki:"

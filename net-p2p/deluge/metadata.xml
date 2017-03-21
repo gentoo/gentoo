@@ -16,8 +16,6 @@
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 <use>
-	<flag name="setproctitle">Install dependencies needed for beautifying
-		the process name</flag>
 	<flag name="webinterface">Install dependencies needed for the web
 		interface</flag>
 	<flag name="console">Enable default console UI</flag>
