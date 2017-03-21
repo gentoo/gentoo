@@ -1,0 +1,152 @@
+From 73e3b7ab2f8a3974d31844b492ad02d61ed5727f Mon Sep 17 00:00:00 2001
+From: Rainer Gerhards <rgerhards@adiscon.com>
+Date: Thu, 23 Feb 2017 13:18:44 +0100
+Subject: [PATCH] testbench: tcpflood failed to build if RELP support was
+ disabled
+
+closes https://github.com/rsyslog/rsyslog/issues/1426
+---
+ tests/tcpflood.c | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/tests/tcpflood.c b/tests/tcpflood.c
+index c500a51..aa79794 100644
+--- a/tests/tcpflood.c
++++ b/tests/tcpflood.c
+@@ -149,7 +149,9 @@ static int numMsgsToSend = 1; /* number of messages to send */
+ static int numConnections = 1; /* number of connections to create */
+ static int softLimitConnections  = 0; /* soft connection limit, see -c option description */
+ static int *sockArray;  /* array of sockets to use */
++#ifdef ENABLE_RELP
+ static relpClt_t **relpCltArray;  /* array of sockets to use */
++#endif
+ static int msgNum = 0;	/* initial message number to start with */
+ static int bShowProgress = 1; /* show progress messages */
+ static int bSilent = 0; /* completely silent operation */
+@@ -216,6 +218,7 @@ static void initTLSSess(int);
+ static int sendTLS(int i, char *buf, int lenBuf);
+ static void closeTLSSess(int __attribute__((unused)) i);
+ 
++#ifdef ENABLE_RELP
+ /* RELP subsystem */
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wformat-security"
+@@ -235,6 +238,7 @@ initRELP_PLAIN(void)
+ 	CHKRELP(relpEngineSetEnableCmd(pRelpEngine, (unsigned char*)"syslog",
+ 		eRelpCmdState_Required));
+ }
++#endif /* #ifdef ENABLE_RELP */
+ 
+ /* prepare send subsystem for UDP send */
+ static int
+@@ -273,6 +277,7 @@ int openConn(int *fd, const int connIdx)
+ 		port = targetPort;
+ 	}
+ 	if(transport == TP_RELP_PLAIN) {
++		#ifdef ENABLE_RELP
+ 		relpRetVal relp_r;
+ 		relpClt_t *relpClt;
+ 		char relpPort[16];
+@@ -286,6 +291,7 @@ int openConn(int *fd, const int connIdx)
+ 			return(1);
+ 		}
+ 		*fd = 1; /* mimic "all ok" state */
++		#endif
+ 	} else { /* TCP, with or without TLS */
+ 		if((sock=socket(AF_INET, SOCK_STREAM, 0))==-1) {
+ 			perror("\nsocket()");
+@@ -336,8 +342,10 @@ int openConnections(void)
+ 	sessArray = calloc(numConnections, sizeof(gnutls_session_t));
+ #	endif
+ 	sockArray = calloc(numConnections, sizeof(int));
++	#ifdef ENABLE_RELP
+ 	if(transport == TP_RELP_PLAIN)
+ 		relpCltArray = calloc(numConnections, sizeof(relpClt_t*));
++	#endif
+ 	for(i = 0 ; i < numConnections ; ++i) {
+ 		if(i % 10 == 0) {
+ 			if(bShowProgress)
+@@ -356,8 +364,10 @@ int openConnections(void)
+ 					 * at least something.
+ 					 */
+ 					if(transport == TP_RELP_PLAIN) {
++						#ifdef ENABLE_RELP
+ 						CHKRELP(relpEngineCltDestruct(pRelpEngine,
+ 							relpCltArray+i));
++						#endif
+ 					} else { /* TCP and TLS modes */
+ 						if(transport == TP_TLS)
+ 							closeTLSSess(i);
+@@ -403,14 +413,13 @@ void closeConnections(void)
+ 
+ 	if(bShowProgress)
+ 		if(write(1, "      close connections", sizeof("      close connections")-1)){}
+-	//if(transport == TP_RELP_PLAIN)
+-		//sleep(10);	/* we need to let librelp settle a bit */
+ 	for(i = 0 ; i < numConnections ; ++i) {
+ 		if(i % 10 == 0 && bShowProgress) {
+ 			lenMsg = sprintf(msgBuf, "\r%5.5d", i);
+ 			if(write(1, msgBuf, lenMsg)){}
+ 		}
+ 		if(transport == TP_RELP_PLAIN) {
++			#ifdef ENABLE_RELP
+ 			relpRetVal relpr;
+ 			if(sockArray[i] != -1) {
+ 				relpr = relpEngineCltDestruct(pRelpEngine, relpCltArray+i);
+@@ -419,6 +428,7 @@ void closeConnections(void)
+ 				}
+ 				sockArray[i] = -1;
+ 			}
++			#endif
+ 		} else { /* TCP and TLS modes */
+ 			if(sockArray[i] != -1) {
+ 				/* we try to not overrun the receiver by trying to flush buffers
+@@ -610,6 +620,7 @@ int sendMessages(struct instdata *inst)
+ 				offsSendBuf = lenBuf;
+ 			}
+ 		} else if(transport == TP_RELP_PLAIN) {
++			#ifdef ENABLE_RELP
+ 			relpRetVal relp_ret;
+ 			if(sockArray[socknum] == -1) {
+ 				/* connection was dropped, need to re-establish */
+@@ -627,6 +638,7 @@ int sendMessages(struct instdata *inst)
+ 				printf("\nrelpCltSendSyslog() failed with relp error code %d\n",
+ 					   relp_ret);
+ 			}
++			#endif
+ 		}
+ 		if(lenSend != lenBuf) {
+ 			printf("\r%5.5d\n", i);
+@@ -1106,7 +1118,9 @@ int main(int argc, char *argv[])
+ 						transport = TP_RELP_PLAIN;
+ #					else
+ 						fprintf(stderr, "compiled without RELP support: "
+-							"\"-Trelp-plain\" not supported!\n");
++							"\"-Trelp-plain\" not supported!\n"
++							"(add --enable-relp to ./configure options "
++							"if desired)\n");
+ 						exit(1);
+ #					endif
+ 				} else {
+@@ -1168,7 +1182,9 @@ int main(int argc, char *argv[])
+ 	if(transport == TP_TLS) {
+ 		initTLS();
+ 	} else if(transport == TP_RELP_PLAIN) {
++		#ifdef ENABLE_RELP
+ 		initRELP_PLAIN();
++		#endif
+ 	}
+ 
+ 	if(openConnections() != 0) {
+@@ -1183,9 +1199,11 @@ int main(int argc, char *argv[])
+ 
+ 	closeConnections(); /* this is important so that we do not finish too early! */
+ 
++	#ifdef ENABLE_RELP
+ 	if(transport == TP_RELP_PLAIN) {
+ 		CHKRELP(relpEngineDestruct(&pRelpEngine));
+ 	}
++	#endif
+ 
+ 	if(nConnDrops > 0 && !bSilent)
+ 		printf("-D option initiated %ld connection closures\n", nConnDrops);

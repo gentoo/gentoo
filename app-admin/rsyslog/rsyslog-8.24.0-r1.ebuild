@@ -45,18 +45,20 @@ else
 		unset _tmp_last_index
 		unset _tmp_suffix
 	else
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+		KEYWORDS="amd64 arm ~arm64 ~hppa x86"
 	fi
 
 	SRC_URI="
 		http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
 		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
+
+	PATCHES=( "${FILESDIR}"/8-stable/${PN}-8.24.0-fix-tcpflood-without-librelp.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mdblookup mongodb mysql normalize omhttpfs"
+IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mongodb mysql normalize omhttpfs"
 IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid zeromq"
 
 RDEPEND="
@@ -71,7 +73,6 @@ RDEPEND="
 	jemalloc? ( >=dev-libs/jemalloc-3.3.1:= )
 	kafka? ( >=dev-libs/librdkafka-0.9.0.99:= )
 	kerberos? ( virtual/krb5 )
-	mdblookup? ( dev-libs/libmaxminddb:= )
 	mongodb? ( >=dev-libs/libmongo-client-0.1.4 )
 	mysql? ( virtual/mysql )
 	normalize? (
@@ -218,7 +219,6 @@ src_configure() {
 		$(use_enable kafka omkafka)
 		$(use_enable kerberos gssapi-krb5)
 		$(use_enable normalize mmnormalize)
-		$(use_enable mdblookup mmdblookup)
 		$(use_enable grok mmgrok)
 		$(use_enable omhttpfs)
 		$(use_enable omudpspoof)
