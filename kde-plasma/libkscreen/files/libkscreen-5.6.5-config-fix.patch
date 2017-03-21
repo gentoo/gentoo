@@ -1,0 +1,32 @@
+commit 3cd70aa1cef0b4aab8c13bba049e5b1ccd6ae1ab
+Author: Kai Uwe Broulik <kde@privat.broulik.de>
+Date:   Thu Jun 2 10:39:02 2016 +0200
+
+    [Backend Manager] emitBackendReady() only after fetching the config finishes
+    
+    Without a valid config in the BackendManager, KScreen::Config::canBeApplied always
+    returns false sometimes causing KScreen to ignore stored config on startup.
+    Wait until we have a config before telling that the backend is ready.
+    
+    REVIEW: 128074
+
+diff --git a/src/backendmanager.cpp b/src/backendmanager.cpp
+index 570f575..676bb5d 100644
+--- a/src/backendmanager.cpp
++++ b/src/backendmanager.cpp
+@@ -353,14 +353,13 @@ void BackendManager::onBackendRequestDone(QDBusPendingCallWatcher *watcher)
+     connect(new GetConfigOperation(GetConfigOperation::NoEDID), &GetConfigOperation::finished,
+             [&](ConfigOperation *op) {
+                 mConfig = qobject_cast<GetConfigOperation*>(op)->config();
++                emitBackendReady();
+             });
+     // And listen for its change.
+     connect(mInterface, &org::kde::kscreen::Backend::configChanged,
+             [&](const QVariantMap &newConfig) {
+                 mConfig = KScreen::ConfigSerializer::deserializeConfig(newConfig);
+             });
+-
+-    emitBackendReady();
+ }
+ 
+ void BackendManager::backendServiceUnregistered(const QString &serviceName)
