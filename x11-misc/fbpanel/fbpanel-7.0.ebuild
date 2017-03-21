@@ -12,7 +12,7 @@ SRC_URI="https://github.com/aanatoly/fbpanel/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ppc ppc64 x86"
 IUSE="alsa"
 
 RDEPEND="
