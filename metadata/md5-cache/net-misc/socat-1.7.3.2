@@ -4,7 +4,7 @@ DESCRIPTION=Multipurpose relay (SOcket CAT)
 EAPI=6
 HOMEPAGE=http://www.dest-unreach.org/socat/
 IUSE=bindist libressl ssl readline ipv6 tcpd
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) readline? ( sys-libs/readline:= ) tcpd? ( sys-apps/tcp-wrappers )
 RESTRICT=test ssl? ( readline? ( bindist ) )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.dest-unreach.org/socat/download/socat-1.7.3.2.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	48b1b9f6194d2842456514d1184ca72e	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=2f460d6ce84a832f326ed14dfc5750fd
+_md5_=ed8034d3162b23ae85f4b933412e3423

@@ -471,7 +471,7 @@ app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd 
 app-cdr/gtkcdlabel 1.14-r1 1.15: A GUI for cdlabelgen that generates CD labels
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
 app-cdr/isomaster 1.3.5 1.3.9-r1 1.3.11 1.3.13: Graphical CD image editor for reading, modifying and writing ISO images
-app-cdr/kcdemu 0.5.0 0.7.2: Frontend to cdemu daemon based on KDE Frameworks
+app-cdr/kcdemu 0.7.2: Frontend to cdemu daemon based on KDE Frameworks
 app-cdr/mirage2iso 0.4.1-r1 9999: CD/DVD image converter using libmirage
 app-cdr/mkcdtoc 1.0: command-line utility to create toc-files for cdrdao
 app-cdr/mode2cdmaker 1.5.1: Utility to create mode-2 CDs, for example XCDs
@@ -548,7 +548,7 @@ app-crypt/jetring 0.21: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
-app-crypt/kencfs 1.6.2 1.6.4: GUI frontend for encfs
+app-crypt/kencfs 1.6.4: GUI frontend for encfs
 app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17 1.0.17-r1 1.0.18 1.0.20: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
@@ -11934,7 +11934,7 @@ kde-apps/plasma-runtime 16.04.3: Script engine and package tool for plasma
 kde-apps/plasma-telepathy-meta 16.08.3 16.12.3: Plasma Telepathy client
 kde-apps/poxml 16.08.3 16.12.3: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 16.08.3 16.12.3: Manage print jobs and printers in Plasma
-kde-apps/pykde4 4.14.3-r1 4.14.3-r3: Python bindings for kdelibs-4
+kde-apps/pykde4 4.14.3-r3: Python bindings for kdelibs-4
 kde-apps/renamedlg-plugins 16.04.3: KDE RenameDlg plugins
 kde-apps/rocs 16.08.3 16.12.3: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 16.08.3 16.12.3: KWallet extension for signond

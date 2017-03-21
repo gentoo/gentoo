@@ -3398,7 +3398,6 @@ kde-apps/okular:mobi - Add mobipocket support
 kde-apps/okular:mobile - Enable Plasma mobile support
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
-kde-apps/pykde4:akonadi - Compile bindings for Akonadi
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using dev-libs/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
