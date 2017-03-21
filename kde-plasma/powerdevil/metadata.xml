@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
+		<flag name="consolekit">Enable <pkg>sys-auth/consolekit</pkg> support</flag>
+		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 		<flag name="wireless">Enable wireless energy saving actions via <pkg>kde-frameworks/bluez-qt</pkg> and <pkg>kde-frameworks/networkmanager-qt</pkg></flag>
 	</use>
 </pkgmetadata>
