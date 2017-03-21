@@ -1,0 +1,30 @@
+From e7861d979c71815a614f2baf0b3d25f329fadef0 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Fri, 18 Nov 2016 15:51:49 +0100
+Subject: keep installing metadata.desktop
+
+there are too many existing users that rely on existence of metadata.desktop,
+so keep installing it, even if with new plasma-workspace releases only the
+metadata.json would be used. the framework should never change its behavior
+wrt old software, even if it was doing something in a sense wrong
+CCMAIL:	Aleix Pol Gonzalez <aleixpol@kde.org>
+BUG:372594
+---
+ KF5PackageMacros.cmake | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/KF5PackageMacros.cmake b/KF5PackageMacros.cmake
+index cc5aae2..a14ab0b 100644
+--- a/KF5PackageMacros.cmake
++++ b/KF5PackageMacros.cmake
+@@ -31,7 +31,6 @@ function(kpackage_install_package dir component)
+       set(install_dir ${KPACKAGE_RELATIVE_DATA_INSTALL_DIR})
+    endif()
+    install(DIRECTORY ${dir}/ DESTINATION ${KDE_INSTALL_DATADIR}/${install_dir}/${root}/${component}
+-           PATTERN metadata.desktop EXCLUDE
+            PATTERN .svn EXCLUDE
+            PATTERN CMakeLists.txt EXCLUDE
+            PATTERN Messages.sh EXCLUDE
+-- 
+cgit v0.11.2
+
