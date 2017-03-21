@@ -99,7 +99,7 @@ RDEPEND=">=app-text/hunspell-1.2:=
 	>=media-libs/mesa-10.2:*
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
-	kernel_linux? ( media-libs/alsa-lib )
+	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	pulseaudio? ( media-sound/pulseaudio )
 	virtual/freedesktop-icon-theme
 	dbus? ( >=sys-apps/dbus-0.60
@@ -301,6 +301,10 @@ mozconfig_config() {
 	mozconfig_annotate '' --host="${CBUILD:-${CHOST}}"
 
 	mozconfig_use_enable pulseaudio
+	# force the deprecated alsa sound code if pulseaudio is disabled
+	if use kernel_linux && ! use pulseaudio ; then
+		mozconfig_annotate '-pulseaudio' --enable-alsa
+	fi
 
 	mozconfig_use_enable system-cairo
 	mozconfig_use_enable system-sqlite
