@@ -74,7 +74,7 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package google KPimGAPI)
+		$(cmake-utils_use_find_package google KF5GAPI)
 	)
 
 	kde5_src_configure
