@@ -11835,7 +11835,7 @@ kde-apps/konsolekalendar 4.4.2016.01 4.14.11_pre20160211 16.12.3: Command line i
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 4.4.2016.01 4.14.11_pre20160211 16.12.3: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 16.12.3: Library for embedding KParts in a Kontact component
-kde-apps/kopete 16.12.2-r2 16.12.3: KDE multi-protocol IM client
+kde-apps/kopete 16.12.2-r2 16.12.3 16.12.3-r1: KDE multi-protocol IM client
 kde-apps/korganizer 4.4.2016.01 4.14.11_pre20160211 16.12.3: Organizational assistant, providing calendars and other similar functionality
 kde-apps/kpasswdserver 16.04.3: KDED Password Module
 kde-apps/kpat 16.08.3 16.12.3: KDE patience game
@@ -11902,7 +11902,7 @@ kde-apps/libkface 16.08.3 16.12.3: Qt/C++ wrapper around LibFace to perform face
 kde-apps/libkgapi 2.2.0 5.3.1-r1: Library for accessing Google calendar and contact resources
 kde-apps/libkgeomap 16.08.3 16.12.3: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 16.08.3-r1 16.12.3: A library for image plugins accross KDE applications
-kde-apps/libkleo 4.4.2016.01 16.12.3-r1: Library for encryption handling
+kde-apps/libkleo 4.4.2016.01 4.4.2016.01-r1 16.12.3-r1: Library for encryption handling
 kde-apps/libkmahjongg 4.14.3 16.08.3 16.12.3: Mahjongg library based on Qt/KDE Frameworks
 kde-apps/libkomparediff2 16.08.3 16.12.3: KDE library to compare files and strings
 kde-apps/libkonq 16.08.3: The embeddable part of konqueror
@@ -15980,7 +15980,7 @@ sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.13 2.14: Unit conversion program
+sci-calculators/units 2.13 2.14 2.14-r1: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2-r1: X-ray Fluorescence Toolkit
