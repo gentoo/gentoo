@@ -9568,6 +9568,7 @@ dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in 
 dev-ruby/pry 0.10.3 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.2.1 2.2.2 2.2.4: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 2.0.3-r1 2.0.4 2.0.5: Parse and decompose a domain name into top level domain, domain and subdomains
+dev-ruby/pundit 1.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppetdb-termini 3.2.3 4.3.0: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
