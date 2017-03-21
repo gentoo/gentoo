@@ -17,15 +17,12 @@ IUSE="static-libs"
 RDEPEND=">=dev-libs/libgpg-error-1.8"
 DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
-
 src_prepare() {
 	default
 
-	# for Solaris .so
-	elibtoolize
-
 	if [[ ${CHOST} == *-solaris* ]] ; then
+		elibtoolize
+
 		# fix standards conflict
 		sed -i \
 			-e '/_XOPEN_SOURCE/s/500/600/' \

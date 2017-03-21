@@ -30,6 +30,10 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-c++11.patch"
+)
+
 src_prepare() {
 	default
 
