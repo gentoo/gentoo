@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jordansissel/xdotool/releases/download/v${PV}/${P}.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc x86"
+KEYWORDS="amd64 arm ppc x86"
 IUSE="examples"
 
 RDEPEND="x11-libs/libXtst
