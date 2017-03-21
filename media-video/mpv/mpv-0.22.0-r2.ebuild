@@ -36,14 +36,12 @@ IUSE+=" cpu_flags_x86_sse4_1"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
-	aqua? ( opengl )
 	egl? ( || ( gbm X wayland ) )
 	enca? ( iconv )
 	gbm? ( drm egl )
 	lcms? ( || ( opengl egl ) )
 	libguess? ( iconv )
 	luajit? ( lua )
-	opengl? ( || ( aqua X !cli? ( libmpv ) ) )
 	test? ( || ( opengl egl ) )
 	tools? ( cli )
 	uchardet? ( iconv )
