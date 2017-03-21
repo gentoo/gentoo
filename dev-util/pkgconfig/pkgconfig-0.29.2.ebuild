@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # Do not inherit autotools in non-live ebuild - causes circular dependency, bug #550856
 inherit eutils flag-o-matic libtool multilib multilib-minimal
@@ -30,7 +30,8 @@ IUSE="elibc_FreeBSD elibc_glibc hardened internal-glib"
 RDEPEND="!internal-glib? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
 	!dev-util/pkgconf[pkg-config]
 	!dev-util/pkg-config-lite
-	!dev-util/pkgconfig-openbsd[pkg-config]"
+	!dev-util/pkgconfig-openbsd[pkg-config]
+	virtual/libintl"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
@@ -40,12 +41,20 @@ DOCS=( AUTHORS NEWS README )
 src_prepare() {
 	sed -i -e "s|^prefix=/usr\$|prefix=${EPREFIX}/usr|" check/simple.pc || die #434320
 
-	epatch_user
+	eapply_user
 
 	if [[ ${PV} == *9999* ]]; then
 		eautoreconf
 	else
 		elibtoolize # Required for FreeMiNT wrt #333429
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# fix standards conflicts
+		sed -i -e 's/\(_XOPEN_SOURCE\(_EXTENDED\)\?\|__EXTENSIONS__\)/  \1_DISABLED/' \
+			glib/configure || die
+		sed -i -e '/#define\s\+_POSIX_SOURCE/d' \
+			glib/glib/giounix.c || die
 	fi
 }
 
@@ -66,6 +75,12 @@ multilib_src_configure() {
 			# not good, esp. since Carbon should be deprecated
 			[[ ${CHOST} == *-darwin* ]] && \
 				append-ldflags -framework CoreFoundation -framework Carbon
+			if [[ ${CHOST} == *-solaris* ]] ; then
+				# required due to __EXTENSIONS__
+				append-cppflags -DENABLE_NLS
+				# similar to Darwin
+				append-ldflags -lintl
+			fi
 		fi
 	else
 		if ! has_version dev-util/pkgconfig; then
