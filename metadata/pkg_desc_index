@@ -2091,7 +2091,7 @@ app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating sour
 app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eclass-manpages 20170201: collection of Gentoo eclass manpages
+app-portage/eclass-manpages 20170321 99999999: collection of Gentoo eclass manpages
 app-portage/eix 0.31.7-r1 0.32.4 0.32.5 0.32.5-r1: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2 2.7: Elog viewer for Gentoo
