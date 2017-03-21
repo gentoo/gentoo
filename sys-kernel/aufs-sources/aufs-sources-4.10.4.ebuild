@@ -54,6 +54,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	kernel-2_src_prepare
 	if ! use module; then
 		sed -e 's:tristate:bool:g' -i "${WORKDIR}"/fs/aufs/Kconfig || die
 	fi
