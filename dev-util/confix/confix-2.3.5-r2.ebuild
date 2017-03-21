@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/confix/Confix-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ~x86 ~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~ppc-aix ~x64-cygwin ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=""
