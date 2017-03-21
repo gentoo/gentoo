@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~ppc-aix ~x64-cygwin ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=""
