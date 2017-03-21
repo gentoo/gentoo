@@ -25,7 +25,6 @@ ipod
 lirc
 pcmcia
 pda
-pkcs11
 scanner
 sms
 v4l
