@@ -32,7 +32,7 @@ done
 # programme itself is GPL-2, and mascots are free-noncomm
 LICENSE="GPL-2 free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="gnutls nls"
 
 RDEPEND="
