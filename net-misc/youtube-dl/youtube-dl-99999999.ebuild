@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,17 +30,17 @@ python_prepare_all() {
 			youtube_dl/version.py || die
 		# these have single line import statements
 		local xxx=(
-			alphaporno anysex behindkink camwithher chaturbate drtuber eporner
+			alphaporno anysex behindkink camwithher chaturbate eporner
 			eroprofile extremetube fourtube foxgay goshgay hellporno
 			hentaistigma hornbunny keezmovies lovehomeporn mofosex motherless
-			myvidster porn91 pornhd pornotube pornovoisines pornoxo redtube
-			ruleporn sexu slutload spankbang spankwire sunporno thisav tube8
-			vporn watchindianporn xbef xnxx xtube xvideos xxxymovies youjizz
-			youporn
+			myvidster porn91 porncom pornflip pornhd pornotube pornovoisines
+			pornoxo ruleporn sexu slutload spankbang spankwire sunporno thisav
+			tube8 vporn watchindianporn xbef xnxx xtube xvideos xxxymovies
+			youjizz youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
-			pornhub xhamster tnaflix
+			drtuber pornhub redtube tnaflix xhamster
 		)
 		# do single line imports
 		sed -i \
