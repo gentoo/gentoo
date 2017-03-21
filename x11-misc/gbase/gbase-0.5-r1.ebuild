@@ -10,7 +10,7 @@ SRC_URI="http://www.fluxcode.net/files/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="test" #424671
 
