@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,8 @@ src_prepare() {
 		"${FILESDIR}/${P}-sconstruct-sandbox.patch" \
 		"${FILESDIR}/${P}-nvidia_glext.patch" \
 		"${FILESDIR}/${P}-segfaults.patch" \
-		"${FILESDIR}/${P}-gcc43.patch"
+		"${FILESDIR}/${P}-gcc43.patch" \
+		"${FILESDIR}/${P}-gcc6-cmath.patch"
 	# Fix for LibSDL >= 1.2.10 detection
 	sed -i \
 		-e "s:sdlver.split('.') >= \['1','2','8'\]:sdlver.split('.') >= [1,2,8]:" \
