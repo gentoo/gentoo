@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,13 +14,12 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
-	>=x11-libs/cairo-1.4
 	>=x11-libs/gtk+-3.15:3
+	>=x11-libs/cairo-1.4
 "
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
 	dev-libs/appstream-glib
-	>=dev-util/intltool-0.50.2
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
