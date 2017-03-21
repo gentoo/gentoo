@@ -9,7 +9,7 @@ SRC_URI="http://als.regnet.cz/${PN}/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.10.14:2
