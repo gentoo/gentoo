@@ -11,7 +11,7 @@ SRC_URI="http://apwal.free.fr/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

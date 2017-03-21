@@ -11,7 +11,7 @@ WEBKIT_REQUIRED="never"
 inherit python-r1 portability kde4-base multilib eutils
 
 DESCRIPTION="Python bindings for kdelibs-4"
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc examples test"
 HOMEPAGE="https://techbase.kde.org/Development/Languages/Python"
 

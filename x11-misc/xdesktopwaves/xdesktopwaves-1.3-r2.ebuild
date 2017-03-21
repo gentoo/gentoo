@@ -14,7 +14,7 @@ SLOT="0"
 RDEPEND="x11-libs/libXext"
 DEPEND="${RDEPEND}
 	x11-proto/xextproto"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )

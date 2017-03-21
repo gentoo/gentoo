@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Plasma screen management library"
 SLOT="5/7"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="

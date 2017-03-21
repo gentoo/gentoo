@@ -13,7 +13,7 @@ SRC_URI="http://boxbackup.org/svn/box/packages/${P/_/}.tgz"
 # GPL-2 is included for the init script, bug 425884.
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~ppc-macos ~x86-macos"
 IUSE="client-only libressl"
 DEPEND="sys-libs/zlib
 	sys-libs/db:=

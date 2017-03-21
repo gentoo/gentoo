@@ -9,7 +9,7 @@ SRC_URI="http://www.vigor.nu/dxpc/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXt
