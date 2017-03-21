@@ -141,6 +141,7 @@ RESTRICT=test
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.1-no-arch-detection.patch
 	"${FILESDIR}"/${P}-postgresql-9.6.patch
+	"${FILESDIR}"/${P}-libwps-0.4.patch
 )
 
 pkg_pretend() {
