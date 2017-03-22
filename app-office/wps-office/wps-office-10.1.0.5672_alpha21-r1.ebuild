@@ -1,5 +1,6 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 inherit fdo-mime font gnome2-utils unpacker versionator
@@ -42,12 +43,15 @@ LICENSE="WPS-EULA"
 IUSE="+sharedfonts"
 
 UNBUNDLED_LIBS="
+	media-libs/phonon
 "
+# Not fully unbundled: media-libs/phonon , libkso.so needs system copy, but
+# wpp fails to run if bundled one is not present due to invalid symbols
+#	media-libs/phonon
 #	media-libs/tiff:3
 #	dev-qt/qtwebkit:4
 #	dev-qt/qtcore:4
 #	dev-qt/qtdbus:4
-#	media-libs/phonon
 
 NATIVE_DEPEND="
 	app-arch/bzip2
@@ -91,6 +95,8 @@ DEPEND=""
 S="${WORKDIR}"
 
 #src_prepare() {
+#	default
+
 	# Remove bundled libs and rely on system versions if possible
 	# Commented lines are about the libs that cannot be unbundled yet.
 #	cd "${S}"/opt/kingsoft/wps-office/office6/
