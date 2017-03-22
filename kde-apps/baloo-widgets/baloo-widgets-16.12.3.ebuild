@@ -25,3 +25,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-base/baloo-widgets
 "
+
+RESTRICT+=" test"
