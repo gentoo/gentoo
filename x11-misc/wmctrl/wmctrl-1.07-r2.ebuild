@@ -9,7 +9,7 @@ SRC_URI="http://tomas.styblo.name/${PN}/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-linux"
+KEYWORDS="amd64 ppc ~sparc x86 ~x86-linux"
 IUSE=""
 
 RDEPEND="

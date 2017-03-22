@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="aalib doc -gtk nls png svga threads X"
 
 RDEPEND="

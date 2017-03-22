@@ -10,7 +10,7 @@ SRC_URI="ftp://daemon.jp.FreeBSD.org/pub/FreeBSD-jp/ports-jp/LOCAL_PORTS/${P}+i1
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ppc ppc64 x86 ~x86-fbsd"
 IUSE="motif"
 
 RDEPEND="x11-libs/libX11
