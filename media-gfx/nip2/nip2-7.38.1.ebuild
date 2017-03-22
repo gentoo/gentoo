@@ -28,6 +28,9 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	test? ( media-libs/vips[jpeg,lcms,tiff] )"
 
+# lots of tests use fftw transforms
+REQUIRED_USE="test? ( fftw )"
+
 src_configure() {
 	econf \
 		--disable-update-desktop \
