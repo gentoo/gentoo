@@ -14364,7 +14364,7 @@ net-analyzer/tcpdump 4.9.0 9999: A Tool for network monitoring and data acquisit
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
-net-analyzer/tcpreplay 4.1.1 4.1.2-r1 4.2.0_beta2: utilities for editing and replaying previously captured network traffic
+net-analyzer/tcpreplay 4.1.2-r1 4.2.0_beta2: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3-r1: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5 1.5-r1 1.5-r2: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7-r2 6.6.7_p4_p1: A Tool for analyzing network packet dumps
@@ -18259,7 +18259,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 43.0.2442.991 43.0.2442.1144: A fast and secure web browser
 www-client/opera-beta 44.0.2510.433 44.0.2510.849: A fast and secure web browser
-www-client/opera-developer 45.0.2522.0 45.0.2531.0: A fast and secure web browser
+www-client/opera-developer 45.0.2531.0 45.0.2539.0: A fast and secure web browser
 www-client/otter 0.9.11 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
