@@ -1,0 +1,59 @@
+From d16babcc09050966f5055df41572429bd84d811a Mon Sep 17 00:00:00 2001
+From: Andrei Belov <defanator@gmail.com>
+Date: Wed, 22 Mar 2017 08:43:30 +0300
+Subject: [PATCH] fixed build with nginx/1.11.11
+
+Closes openresty/echo-nginx-module#64
+
+See also:
+http://hg.nginx.org/nginx/rev/e662cbf1b932
+---
+ src/ngx_http_echo_request_info.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/src/ngx_http_echo_request_info.c b/src/ngx_http_echo_request_info.c
+index d28ec4d..27b3c52 100644
+--- a/src/ngx_http_echo_request_info.c
++++ b/src/ngx_http_echo_request_info.c
+@@ -179,6 +179,9 @@ ngx_http_echo_client_request_headers_variable(ngx_http_request_t *r,
+     ngx_int_t                    i, j;
+     ngx_buf_t                   *b, *first = NULL;
+     unsigned                     found;
++#if defined(nginx_version) && nginx_version >= 1011011
++    ngx_chain_t                 *cl;
++#endif
+     ngx_connection_t            *c;
+     ngx_http_request_t          *mr;
+     ngx_http_connection_t       *hc;
+@@ -215,8 +218,15 @@ ngx_http_echo_client_request_headers_variable(ngx_http_request_t *r,
+ 
+     if (hc->nbusy) {
+         b = NULL;
++
++#if defined(nginx_version) && nginx_version >= 1011011
++         for (cl = hc->busy; cl; /* void */) {
++             b = cl->buf;
++             cl = cl->next;
++#else
+         for (i = 0; i < hc->nbusy; i++) {
+             b = hc->busy[i];
++#endif
+ 
+             if (first == NULL) {
+                 if (mr->request_line.data >= b->pos
+@@ -280,8 +290,15 @@ ngx_http_echo_client_request_headers_variable(ngx_http_request_t *r,
+     }
+ 
+     if (hc->nbusy) {
++
++#if defined(nginx_version) && nginx_version >= 1011011
++         for (cl = hc->busy; cl; /* void */) {
++             b = cl->buf;
++             cl = cl->next;
++#else
+         for (i = 0; i < hc->nbusy; i++) {
+             b = hc->busy[i];
++#endif
+ 
+             if (!found) {
+                 if (b != first) {

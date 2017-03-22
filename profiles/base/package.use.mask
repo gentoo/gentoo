@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (22 Mar 2017)
+# mod_security is currently incompatible with recent changes
+# in >=nginx-1.11.11.
+# https://github.com/SpiderLabs/ModSecurity/issues/1359
+>=www-servers/nginx-1.11.11 nginx_modules_http_security
+
 # Michał Górny <mgorny@gentoo.org> (18 Mar 2017)
 # Requires removed old version of media-gfx/graphviz.
 media-gfx/nip2 graphviz
