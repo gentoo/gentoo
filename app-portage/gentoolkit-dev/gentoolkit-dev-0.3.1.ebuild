@@ -33,6 +33,7 @@ CDEPEND="
 	dev-lang/perl
 	sys-apps/diffutils"
 DEPEND="${PYTHON_DEPS}
+	!>=app-portage/gentoolkit-0.4.0
 	test? ( ${CDEPEND} )"
 RDEPEND="${PYTHON_DEPS}
 	${CDEPEND}"
@@ -77,4 +78,10 @@ src_test() {
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 	python_replicate_script "${ED}"/usr/bin/{ekeyword,imlate}
+}
+
+pkg_postinst() {
+	ewarn "This package is deprecated.  ebump, ekeyword and imlate have "
+	ewarn "been moved to >=app-portage/gentoolkit-0.4.0"
+	ewarn "The remaining gentoolkit-dev commands are considered deprecated"
 }
