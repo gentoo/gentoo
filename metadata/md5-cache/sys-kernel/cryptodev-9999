@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst pretend setup unpack
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=device that allows access to Linux kernel cryptographic drivers
+EAPI=6
+HOMEPAGE=http://cryptodev-linux.org/index.html
+IUSE=examples kernel_linux
+LICENSE=GPL-2+
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=test
+SLOT=0
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:- src_unpack:git-r3 src_compile:linux-mod src_install:-
+_eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	git-r3	68d35a154123e27007638d8220886ee1	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=6b24a56568a584cfb345ab85ef5872f8
