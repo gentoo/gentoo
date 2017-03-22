@@ -3,10 +3,10 @@ DEPEND=>=media-libs/libpng-1.2:0 x11-libs/libX11 x11-libs/libXi x11-libs/libXtst
 DESCRIPTION=Control X from command line and find things on screen
 EAPI=6
 HOMEPAGE=http://hoopajoo.net/projects/xautomation.html
-KEYWORDS=amd64 ~arm ~ppc x86
+KEYWORDS=amd64 ~arm ppc x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libpng-1.2:0 x11-libs/libX11 x11-libs/libXi x11-libs/libXtst
 SLOT=0
 SRC_URI=http://hoopajoo.net/static/projects/xautomation-1.09.tar.gz
 _eclass_exported_funcs=-
-_md5_=969bf9f7c8ca765b602b6a86f3be26ac
+_md5_=ccf4612b7215e4ce65a078af08917f20

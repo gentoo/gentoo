@@ -3,11 +3,11 @@ DEPEND=x11-libs/libX11 x11-libs/libXext dev-lang/tk:0=
 DESCRIPTION=Interface to the XKEYBOARD extension in X11
 EAPI=6
 HOMEPAGE=http://cita.disability.uiuc.edu/software/accessx/freewareaccessx.php
-KEYWORDS=~amd64 ~ppc ~sparc x86
+KEYWORDS=~amd64 ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext dev-lang/tk:0=
 SLOT=0
 SRC_URI=http://cmos-eng.rehab.uiuc.edu/accessx/software/accessx0951.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=2c0df6fc939d2d05a173212aa8d197ce
+_md5_=3ea90f939c797d8221bb9e347ad9a3ab
