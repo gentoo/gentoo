@@ -180,6 +180,10 @@ src_configure() {
 			# avoid recording immediate path to sharedlibs into executables
 			append-ldflags -Wl,-bnoipath
 		;;
+		*-cygwin*)
+			# no LD_PRELOAD support, no undefined symbols
+			myconf+=( --disable-local-library-preloading LT_LDFLAGS=-no-undefined )
+			;;
 		*-interix*)
 			# loader crashes on the LD_PRELOADs...
 			myconf+=( --disable-local-library-preloading )

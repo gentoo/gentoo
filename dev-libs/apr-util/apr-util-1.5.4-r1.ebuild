@@ -105,7 +105,7 @@ src_install() {
 
 	find "${ED}" -name "*.la" -delete
 	find "${ED}usr/$(get_libdir)/apr-util-${SLOT}" -name "*.a" -delete
-	use static-libs || find "${ED}" -name "*.a" -delete
+	use static-libs || find "${ED}" -name "*.a" -not -name "*$(get_libname)" -delete
 
 	use doc && dohtml -r docs/dox/html/*
 
