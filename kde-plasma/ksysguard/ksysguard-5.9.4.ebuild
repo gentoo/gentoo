@@ -12,7 +12,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="lm_sensors"
 
 DEPEND="
-	$(add_plasma_dep libksysguard)
+	$(add_plasma_dep libksysguard '-minimal(-)')
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
