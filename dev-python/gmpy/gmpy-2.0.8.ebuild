@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~hppa ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc mpir"
 
 RDEPEND="
