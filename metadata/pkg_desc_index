@@ -7944,7 +7944,7 @@ dev-python/os-networksv2-python-novaclient-ext 0.25 0.26: Adds network extension
 dev-python/os-testr 0.6.0 0.8.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-vif 1.2.1 1.4.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.19 0.20: Adds Virtual Interfaces support to python-novaclient
-dev-python/os-win 0.4.0 1.2.1 1.4.0: Windows / Hyper-V library for OpenStack projects.
+dev-python/os-win 0.4.0 1.2.1 1.4.1: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.1.1: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.6.0 1.14.0 1.17.0: Oslo Caching around dogpile.cache
@@ -8342,7 +8342,7 @@ dev-python/python-gtkmvc 1.99.1: model-view-controller (MVC) implementation for 
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
 dev-python/python-heatclient 0.8.0 1.5.0 1.8.0: OpenStack Orchestration API Client Library
 dev-python/python-iptables 0.8.0 0.9.0 0.10.0 0.11.0: Python bindings for iptables
-dev-python/python-ironicclient 0.9.0 1.7.1: Python bindings for the Ironic API
+dev-python/python-ironicclient 0.9.0 1.7.1 1.11.1: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-keystoneclient 2.3.1 3.5.0 3.5.1 3.10.0: Client Library for OpenStack Identity
 dev-python/python-ldap 2.4.19-r1 2.4.21-r1 9999: Various LDAP-related Python modules
@@ -15369,7 +15369,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0: The X2Go
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.03.10 2017.03.16 2017.03.20 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.12.22 2017.03.16 2017.03.20 2017.03.22 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18259,7 +18259,7 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9 2.8.9_pre11: An excell
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 43.0.2442.991 43.0.2442.1144: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 44.0.2510.857: A fast and secure web browser
 www-client/opera-beta 44.0.2510.433 44.0.2510.849: A fast and secure web browser
 www-client/opera-developer 45.0.2531.0 45.0.2539.0: A fast and secure web browser
 www-client/otter 0.9.11 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
