@@ -10,8 +10,8 @@ BibleTime is a Bible study application for Linux. It is based on the
 K Desktop Environment and uses the SWORD programming library to work 
 with Bible texts, commentaries, dictionaries and books provided by 
 the Crosswire Bible Society.
-</longdescription>
+	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">bibletime</remote-id>
+		<remote-id type="github">bibletime/bibletime</remote-id>
 	</upstream>
 </pkgmetadata>
