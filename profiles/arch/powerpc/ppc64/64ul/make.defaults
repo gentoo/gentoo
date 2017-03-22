@@ -8,6 +8,4 @@ MULTILIB_ABIS="ppc64"
 
 CFLAGS_ppc64="-m64"
 
-# moved from 64bit-native, TODO: move it upwards
-SYMLINK_LIB="yes"
 LIBDIR_ppc64="lib64"
