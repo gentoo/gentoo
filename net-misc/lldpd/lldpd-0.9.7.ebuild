@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,13 @@ SRC_URI="http://media.luffy.cx/files/${PN}/${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cdp doc +dot1 +dot3 edp fdp graph jansson +lldpmed old-kernel
-	sanitizers seccomp sonmp snmp static-libs readline xml zsh-completion"
+IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
+	seccomp sonmp snmp static-libs test readline xml zsh-completion"
 
 RDEPEND="dev-libs/libbsd
-	>=dev-libs/libevent-2.0.5
+	>=dev-libs/libevent-2.0.5:=
 	snmp? ( net-analyzer/net-snmp[extensible(+)] )
 	xml? ( dev-libs/libxml2 )
-	jansson? ( dev-libs/jansson )
 	seccomp? ( sys-libs/libseccomp )
 	zsh-completion? ( app-shells/zsh )"
 DEPEND="${RDEPEND}
@@ -27,12 +26,14 @@ DEPEND="${RDEPEND}
 	doc? (
 		graph? ( app-doc/doxygen[dot] )
 		!graph? ( app-doc/doxygen )
-	)"
+	)
+	test? ( dev-libs/check )"
 
 REQUIRED_USE="graph? ( doc )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.7.11-zsh-completion-dir.patch"
+	"${FILESDIR}/${PN}-0.9.5-seccomp-add-socket-ops.patch"
 )
 
 pkg_setup() {
@@ -67,7 +68,6 @@ src_configure() {
 		$(use_enable edp) \
 		$(use_enable fdp) \
 		$(use_enable graph doxygen-dot) \
-		$(use_with jansson json) \
 		$(use_enable lldpmed) \
 		$(use_enable old-kernel oldies) \
 		$(use_enable sonmp) \
