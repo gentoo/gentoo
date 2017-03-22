@@ -1,0 +1,738 @@
+From 11b283092a29a9d402ce05706fd3a85683576218 Mon Sep 17 00:00:00 2001
+From: David Chase <drchase@google.com>
+Date: Tue, 21 Feb 2017 15:22:52 -0500
+Subject: [PATCH] cmd/compile: add opcode flag hasSideEffects for do-not-remove
+
+Added a flag to generic and various architectures' atomic
+operations that are judged to have observable side effects
+and thus cannot be dead-code-eliminated.
+
+Test requires GOMAXPROCS > 1 without preemption in loop.
+
+Fixes #19182.
+
+Change-Id: Id2230031abd2cca0bbb32fd68fc8a58fb912070f
+Reviewed-on: https://go-review.googlesource.com/37333
+Run-TryBot: David Chase <drchase@google.com>
+TryBot-Result: Gobot Gobot <gobot@golang.org>
+Reviewed-by: Cherry Zhang <cherryyz@google.com>
+---
+ src/cmd/compile/internal/ssa/deadcode.go       |   2 +-
+ src/cmd/compile/internal/ssa/gen/AMD64Ops.go   |  16 ++--
+ src/cmd/compile/internal/ssa/gen/ARM64Ops.go   |  20 ++---
+ src/cmd/compile/internal/ssa/gen/MIPSOps.go    |  16 ++--
+ src/cmd/compile/internal/ssa/gen/S390XOps.go   |  16 ++--
+ src/cmd/compile/internal/ssa/gen/genericOps.go |  28 +++----
+ src/cmd/compile/internal/ssa/gen/main.go       |   4 +
+ src/cmd/compile/internal/ssa/op.go             |   1 +
+ src/cmd/compile/internal/ssa/opGen.go          | 111 +++++++++++++++++--------
+ test/fixedbugs/issue19182.go                   |  36 ++++++++
+ 10 files changed, 168 insertions(+), 82 deletions(-)
+ create mode 100644 test/fixedbugs/issue19182.go
+
+diff --git a/src/cmd/compile/internal/ssa/deadcode.go b/src/cmd/compile/internal/ssa/deadcode.go
+index d75d2d5..ce786a9 100644
+--- a/src/cmd/compile/internal/ssa/deadcode.go
++++ b/src/cmd/compile/internal/ssa/deadcode.go
+@@ -64,7 +64,7 @@ func liveValues(f *Func, reachable []bool) []bool {
+ 			q = append(q, v)
+ 		}
+ 		for _, v := range b.Values {
+-			if opcodeTable[v.Op].call && !live[v.ID] {
++			if (opcodeTable[v.Op].call || opcodeTable[v.Op].hasSideEffects) && !live[v.ID] {
+ 				live[v.ID] = true
+ 				q = append(q, v)
+ 			}
+diff --git a/src/cmd/compile/internal/ssa/gen/AMD64Ops.go b/src/cmd/compile/internal/ssa/gen/AMD64Ops.go
+index cdd5539..1b73ac1 100644
+--- a/src/cmd/compile/internal/ssa/gen/AMD64Ops.go
++++ b/src/cmd/compile/internal/ssa/gen/AMD64Ops.go
+@@ -548,15 +548,15 @@ func init() {
+ 		// store arg0 to arg1+auxint+aux, arg2=mem.
+ 		// These ops return a tuple of <old contents of *(arg1+auxint+aux), memory>.
+ 		// Note: arg0 and arg1 are backwards compared to MOVLstore (to facilitate resultInArg0)!
+-		{name: "XCHGL", argLength: 3, reg: gpstorexchg, asm: "XCHGL", aux: "SymOff", resultInArg0: true, faultOnNilArg1: true},
+-		{name: "XCHGQ", argLength: 3, reg: gpstorexchg, asm: "XCHGQ", aux: "SymOff", resultInArg0: true, faultOnNilArg1: true},
++		{name: "XCHGL", argLength: 3, reg: gpstorexchg, asm: "XCHGL", aux: "SymOff", resultInArg0: true, faultOnNilArg1: true, hasSideEffects: true},
++		{name: "XCHGQ", argLength: 3, reg: gpstorexchg, asm: "XCHGQ", aux: "SymOff", resultInArg0: true, faultOnNilArg1: true, hasSideEffects: true},
+ 
+ 		// Atomic adds.
+ 		// *(arg1+auxint+aux) += arg0.  arg2=mem.
+ 		// Returns a tuple of <old contents of *(arg1+auxint+aux), memory>.
+ 		// Note: arg0 and arg1 are backwards compared to MOVLstore (to facilitate resultInArg0)!
+-		{name: "XADDLlock", argLength: 3, reg: gpstorexchg, asm: "XADDL", typ: "(UInt32,Mem)", aux: "SymOff", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true},
+-		{name: "XADDQlock", argLength: 3, reg: gpstorexchg, asm: "XADDQ", typ: "(UInt64,Mem)", aux: "SymOff", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true},
++		{name: "XADDLlock", argLength: 3, reg: gpstorexchg, asm: "XADDL", typ: "(UInt32,Mem)", aux: "SymOff", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, hasSideEffects: true},
++		{name: "XADDQlock", argLength: 3, reg: gpstorexchg, asm: "XADDQ", typ: "(UInt64,Mem)", aux: "SymOff", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, hasSideEffects: true},
+ 		{name: "AddTupleFirst32", argLength: 2}, // arg0=tuple <x,y>.  Returns <x+arg1,y>.
+ 		{name: "AddTupleFirst64", argLength: 2}, // arg0=tuple <x,y>.  Returns <x+arg1,y>.
+ 
+@@ -579,12 +579,12 @@ func init() {
+ 		//    JEQ ...
+ 		// but we can't do that because memory-using ops can't generate flags yet
+ 		// (flagalloc wants to move flag-generating instructions around).
+-		{name: "CMPXCHGLlock", argLength: 4, reg: cmpxchg, asm: "CMPXCHGL", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true},
+-		{name: "CMPXCHGQlock", argLength: 4, reg: cmpxchg, asm: "CMPXCHGQ", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true},
++		{name: "CMPXCHGLlock", argLength: 4, reg: cmpxchg, asm: "CMPXCHGL", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "CMPXCHGQlock", argLength: 4, reg: cmpxchg, asm: "CMPXCHGQ", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// Atomic memory updates.
+-		{name: "ANDBlock", argLength: 3, reg: gpstore, asm: "ANDB", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true}, // *(arg0+auxint+aux) &= arg1
+-		{name: "ORBlock", argLength: 3, reg: gpstore, asm: "ORB", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true},   // *(arg0+auxint+aux) |= arg1
++		{name: "ANDBlock", argLength: 3, reg: gpstore, asm: "ANDB", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true}, // *(arg0+auxint+aux) &= arg1
++		{name: "ORBlock", argLength: 3, reg: gpstore, asm: "ORB", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},   // *(arg0+auxint+aux) |= arg1
+ 	}
+ 
+ 	var AMD64blocks = []blockData{
+diff --git a/src/cmd/compile/internal/ssa/gen/ARM64Ops.go b/src/cmd/compile/internal/ssa/gen/ARM64Ops.go
+index e8d5be2..0986ac6 100644
+--- a/src/cmd/compile/internal/ssa/gen/ARM64Ops.go
++++ b/src/cmd/compile/internal/ssa/gen/ARM64Ops.go
+@@ -456,16 +456,16 @@ func init() {
+ 
+ 		// atomic stores.
+ 		// store arg1 to arg0. arg2=mem. returns memory. auxint must be zero.
+-		{name: "STLR", argLength: 3, reg: gpstore, asm: "STLR", faultOnNilArg0: true},
+-		{name: "STLRW", argLength: 3, reg: gpstore, asm: "STLRW", faultOnNilArg0: true},
++		{name: "STLR", argLength: 3, reg: gpstore, asm: "STLR", faultOnNilArg0: true, hasSideEffects: true},
++		{name: "STLRW", argLength: 3, reg: gpstore, asm: "STLRW", faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic exchange.
+ 		// store arg1 to arg0. arg2=mem. returns <old content of *arg0, memory>. auxint must be zero.
+ 		// LDAXR	(Rarg0), Rout
+ 		// STLXR	Rarg1, (Rarg0), Rtmp
+ 		// CBNZ		Rtmp, -2(PC)
+-		{name: "LoweredAtomicExchange64", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true},
+-		{name: "LoweredAtomicExchange32", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicExchange64", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicExchange32", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic add.
+ 		// *arg0 += arg1. arg2=mem. returns <new content of *arg0, memory>. auxint must be zero.
+@@ -473,8 +473,8 @@ func init() {
+ 		// ADD		Rarg1, Rout
+ 		// STLXR	Rout, (Rarg0), Rtmp
+ 		// CBNZ		Rtmp, -3(PC)
+-		{name: "LoweredAtomicAdd64", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true},
+-		{name: "LoweredAtomicAdd32", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicAdd64", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicAdd32", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic compare and swap.
+ 		// arg0 = pointer, arg1 = old value, arg2 = new value, arg3 = memory. auxint must be zero.
+@@ -490,8 +490,8 @@ func init() {
+ 		// STLXR	Rarg2, (Rarg0), Rtmp
+ 		// CBNZ		Rtmp, -4(PC)
+ 		// CSET		EQ, Rout
+-		{name: "LoweredAtomicCas64", argLength: 4, reg: gpcas, resultNotInArgs: true, clobberFlags: true, faultOnNilArg0: true},
+-		{name: "LoweredAtomicCas32", argLength: 4, reg: gpcas, resultNotInArgs: true, clobberFlags: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicCas64", argLength: 4, reg: gpcas, resultNotInArgs: true, clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicCas32", argLength: 4, reg: gpcas, resultNotInArgs: true, clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic and/or.
+ 		// *arg0 &= (|=) arg1. arg2=mem. returns memory. auxint must be zero.
+@@ -499,8 +499,8 @@ func init() {
+ 		// AND/OR	Rarg1, Rtmp
+ 		// STLXRB	Rtmp, (Rarg0), Rtmp
+ 		// CBNZ		Rtmp, -3(PC)
+-		{name: "LoweredAtomicAnd8", argLength: 3, reg: gpstore, asm: "AND", faultOnNilArg0: true},
+-		{name: "LoweredAtomicOr8", argLength: 3, reg: gpstore, asm: "ORR", faultOnNilArg0: true},
++		{name: "LoweredAtomicAnd8", argLength: 3, reg: gpstore, asm: "AND", faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicOr8", argLength: 3, reg: gpstore, asm: "ORR", faultOnNilArg0: true, hasSideEffects: true},
+ 	}
+ 
+ 	blocks := []blockData{
+diff --git a/src/cmd/compile/internal/ssa/gen/MIPSOps.go b/src/cmd/compile/internal/ssa/gen/MIPSOps.go
+index 78b961f..3d88b71 100644
+--- a/src/cmd/compile/internal/ssa/gen/MIPSOps.go
++++ b/src/cmd/compile/internal/ssa/gen/MIPSOps.go
+@@ -267,8 +267,8 @@ func init() {
+ 		// SYNC
+ 		// MOVW	Rarg1, (Rarg0)
+ 		// SYNC
+-		{name: "LoweredAtomicStore", argLength: 3, reg: gpstore, faultOnNilArg0: true},
+-		{name: "LoweredAtomicStorezero", argLength: 2, reg: gpstore0, faultOnNilArg0: true},
++		{name: "LoweredAtomicStore", argLength: 3, reg: gpstore, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicStorezero", argLength: 2, reg: gpstore0, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic exchange.
+ 		// store arg1 to arg0. arg2=mem. returns <old content of *arg0, memory>.
+@@ -278,7 +278,7 @@ func init() {
+ 		// SC	Rtmp, (Rarg0)
+ 		// BEQ	Rtmp, -3(PC)
+ 		// SYNC
+-		{name: "LoweredAtomicExchange", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicExchange", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic add.
+ 		// *arg0 += arg1. arg2=mem. returns <new content of *arg0, memory>.
+@@ -289,8 +289,8 @@ func init() {
+ 		// BEQ	Rtmp, -3(PC)
+ 		// SYNC
+ 		// ADDU Rarg1, Rout
+-		{name: "LoweredAtomicAdd", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true},
+-		{name: "LoweredAtomicAddconst", argLength: 2, reg: regInfo{inputs: []regMask{gpspsbg}, outputs: []regMask{gp}}, aux: "Int32", resultNotInArgs: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicAdd", argLength: 3, reg: gpxchg, resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicAddconst", argLength: 2, reg: regInfo{inputs: []regMask{gpspsbg}, outputs: []regMask{gp}}, aux: "Int32", resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic compare and swap.
+ 		// arg0 = pointer, arg1 = old value, arg2 = new value, arg3 = memory.
+@@ -308,7 +308,7 @@ func init() {
+ 		// SC	Rout, (Rarg0)
+ 		// BEQ	Rout, -4(PC)
+ 		// SYNC
+-		{name: "LoweredAtomicCas", argLength: 4, reg: gpcas, resultNotInArgs: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicCas", argLength: 4, reg: gpcas, resultNotInArgs: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// atomic and/or.
+ 		// *arg0 &= (|=) arg1. arg2=mem. returns memory.
+@@ -318,8 +318,8 @@ func init() {
+ 		// SC	Rtmp, (Rarg0)
+ 		// BEQ	Rtmp, -3(PC)
+ 		// SYNC
+-		{name: "LoweredAtomicAnd", argLength: 3, reg: gpstore, asm: "AND", faultOnNilArg0: true},
+-		{name: "LoweredAtomicOr", argLength: 3, reg: gpstore, asm: "OR", faultOnNilArg0: true},
++		{name: "LoweredAtomicAnd", argLength: 3, reg: gpstore, asm: "AND", faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicOr", argLength: 3, reg: gpstore, asm: "OR", faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// large or unaligned zeroing
+ 		// arg0 = address of memory to zero (in R1, changed as side effect)
+diff --git a/src/cmd/compile/internal/ssa/gen/S390XOps.go b/src/cmd/compile/internal/ssa/gen/S390XOps.go
+index 4c5f070..40ba252 100644
+--- a/src/cmd/compile/internal/ssa/gen/S390XOps.go
++++ b/src/cmd/compile/internal/ssa/gen/S390XOps.go
+@@ -429,14 +429,14 @@ func init() {
+ 
+ 		// Atomic stores. These are just normal stores.
+ 		// store arg1 to arg0+auxint+aux. arg2=mem.
+-		{name: "MOVWatomicstore", argLength: 3, reg: gpstore, asm: "MOVW", aux: "SymOff", typ: "Mem", clobberFlags: true, faultOnNilArg0: true},
+-		{name: "MOVDatomicstore", argLength: 3, reg: gpstore, asm: "MOVD", aux: "SymOff", typ: "Mem", clobberFlags: true, faultOnNilArg0: true},
++		{name: "MOVWatomicstore", argLength: 3, reg: gpstore, asm: "MOVW", aux: "SymOff", typ: "Mem", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "MOVDatomicstore", argLength: 3, reg: gpstore, asm: "MOVD", aux: "SymOff", typ: "Mem", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// Atomic adds.
+ 		// *(arg0+auxint+aux) += arg1.  arg2=mem.
+ 		// Returns a tuple of <old contents of *(arg0+auxint+aux), memory>.
+-		{name: "LAA", argLength: 3, reg: gpstorelaa, asm: "LAA", typ: "(UInt32,Mem)", aux: "SymOff", faultOnNilArg0: true},
+-		{name: "LAAG", argLength: 3, reg: gpstorelaa, asm: "LAAG", typ: "(UInt64,Mem)", aux: "SymOff", faultOnNilArg0: true},
++		{name: "LAA", argLength: 3, reg: gpstorelaa, asm: "LAA", typ: "(UInt32,Mem)", aux: "SymOff", faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LAAG", argLength: 3, reg: gpstorelaa, asm: "LAAG", typ: "(UInt64,Mem)", aux: "SymOff", faultOnNilArg0: true, hasSideEffects: true},
+ 		{name: "AddTupleFirst32", argLength: 2}, // arg0=tuple <x,y>.  Returns <x+arg1,y>.
+ 		{name: "AddTupleFirst64", argLength: 2}, // arg0=tuple <x,y>.  Returns <x+arg1,y>.
+ 
+@@ -461,13 +461,13 @@ func init() {
+ 		//    BEQ ...
+ 		// but we can't do that because memory-using ops can't generate flags yet
+ 		// (flagalloc wants to move flag-generating instructions around).
+-		{name: "LoweredAtomicCas32", argLength: 4, reg: cas, asm: "CS", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true},
+-		{name: "LoweredAtomicCas64", argLength: 4, reg: cas, asm: "CSG", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicCas32", argLength: 4, reg: cas, asm: "CS", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicCas64", argLength: 4, reg: cas, asm: "CSG", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// Lowered atomic swaps, emulated using compare-and-swap.
+ 		// store arg1 to arg0+auxint+aux, arg2=mem.
+-		{name: "LoweredAtomicExchange32", argLength: 3, reg: exchange, asm: "CS", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true},
+-		{name: "LoweredAtomicExchange64", argLength: 3, reg: exchange, asm: "CSG", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true},
++		{name: "LoweredAtomicExchange32", argLength: 3, reg: exchange, asm: "CS", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
++		{name: "LoweredAtomicExchange64", argLength: 3, reg: exchange, asm: "CSG", aux: "SymOff", clobberFlags: true, faultOnNilArg0: true, hasSideEffects: true},
+ 
+ 		// find leftmost one
+ 		{
+diff --git a/src/cmd/compile/internal/ssa/gen/genericOps.go b/src/cmd/compile/internal/ssa/gen/genericOps.go
+index f39598e..3854a39 100644
+--- a/src/cmd/compile/internal/ssa/gen/genericOps.go
++++ b/src/cmd/compile/internal/ssa/gen/genericOps.go
+@@ -441,20 +441,20 @@ var genericOps = []opData{
+ 	// Atomic loads return a new memory so that the loads are properly ordered
+ 	// with respect to other loads and stores.
+ 	// TODO: use for sync/atomic at some point.
+-	{name: "AtomicLoad32", argLength: 2, typ: "(UInt32,Mem)"},         // Load from arg0.  arg1=memory.  Returns loaded value and new memory.
+-	{name: "AtomicLoad64", argLength: 2, typ: "(UInt64,Mem)"},         // Load from arg0.  arg1=memory.  Returns loaded value and new memory.
+-	{name: "AtomicLoadPtr", argLength: 2, typ: "(BytePtr,Mem)"},       // Load from arg0.  arg1=memory.  Returns loaded value and new memory.
+-	{name: "AtomicStore32", argLength: 3, typ: "Mem"},                 // Store arg1 to *arg0.  arg2=memory.  Returns memory.
+-	{name: "AtomicStore64", argLength: 3, typ: "Mem"},                 // Store arg1 to *arg0.  arg2=memory.  Returns memory.
+-	{name: "AtomicStorePtrNoWB", argLength: 3, typ: "Mem"},            // Store arg1 to *arg0.  arg2=memory.  Returns memory.
+-	{name: "AtomicExchange32", argLength: 3, typ: "(UInt32,Mem)"},     // Store arg1 to *arg0.  arg2=memory.  Returns old contents of *arg0 and new memory.
+-	{name: "AtomicExchange64", argLength: 3, typ: "(UInt64,Mem)"},     // Store arg1 to *arg0.  arg2=memory.  Returns old contents of *arg0 and new memory.
+-	{name: "AtomicAdd32", argLength: 3, typ: "(UInt32,Mem)"},          // Do *arg0 += arg1.  arg2=memory.  Returns sum and new memory.
+-	{name: "AtomicAdd64", argLength: 3, typ: "(UInt64,Mem)"},          // Do *arg0 += arg1.  arg2=memory.  Returns sum and new memory.
+-	{name: "AtomicCompareAndSwap32", argLength: 4, typ: "(Bool,Mem)"}, // if *arg0==arg1, then set *arg0=arg2.  Returns true iff store happens and new memory.
+-	{name: "AtomicCompareAndSwap64", argLength: 4, typ: "(Bool,Mem)"}, // if *arg0==arg1, then set *arg0=arg2.  Returns true iff store happens and new memory.
+-	{name: "AtomicAnd8", argLength: 3, typ: "Mem"},                    // *arg0 &= arg1.  arg2=memory.  Returns memory.
+-	{name: "AtomicOr8", argLength: 3, typ: "Mem"},                     // *arg0 |= arg1.  arg2=memory.  Returns memory.
++	{name: "AtomicLoad32", argLength: 2, typ: "(UInt32,Mem)"},                               // Load from arg0.  arg1=memory.  Returns loaded value and new memory.
++	{name: "AtomicLoad64", argLength: 2, typ: "(UInt64,Mem)"},                               // Load from arg0.  arg1=memory.  Returns loaded value and new memory.
++	{name: "AtomicLoadPtr", argLength: 2, typ: "(BytePtr,Mem)"},                             // Load from arg0.  arg1=memory.  Returns loaded value and new memory.
++	{name: "AtomicStore32", argLength: 3, typ: "Mem", hasSideEffects: true},                 // Store arg1 to *arg0.  arg2=memory.  Returns memory.
++	{name: "AtomicStore64", argLength: 3, typ: "Mem", hasSideEffects: true},                 // Store arg1 to *arg0.  arg2=memory.  Returns memory.
++	{name: "AtomicStorePtrNoWB", argLength: 3, typ: "Mem", hasSideEffects: true},            // Store arg1 to *arg0.  arg2=memory.  Returns memory.
++	{name: "AtomicExchange32", argLength: 3, typ: "(UInt32,Mem)", hasSideEffects: true},     // Store arg1 to *arg0.  arg2=memory.  Returns old contents of *arg0 and new memory.
++	{name: "AtomicExchange64", argLength: 3, typ: "(UInt64,Mem)", hasSideEffects: true},     // Store arg1 to *arg0.  arg2=memory.  Returns old contents of *arg0 and new memory.
++	{name: "AtomicAdd32", argLength: 3, typ: "(UInt32,Mem)", hasSideEffects: true},          // Do *arg0 += arg1.  arg2=memory.  Returns sum and new memory.
++	{name: "AtomicAdd64", argLength: 3, typ: "(UInt64,Mem)", hasSideEffects: true},          // Do *arg0 += arg1.  arg2=memory.  Returns sum and new memory.
++	{name: "AtomicCompareAndSwap32", argLength: 4, typ: "(Bool,Mem)", hasSideEffects: true}, // if *arg0==arg1, then set *arg0=arg2.  Returns true iff store happens and new memory.
++	{name: "AtomicCompareAndSwap64", argLength: 4, typ: "(Bool,Mem)", hasSideEffects: true}, // if *arg0==arg1, then set *arg0=arg2.  Returns true iff store happens and new memory.
++	{name: "AtomicAnd8", argLength: 3, typ: "Mem", hasSideEffects: true},                    // *arg0 &= arg1.  arg2=memory.  Returns memory.
++	{name: "AtomicOr8", argLength: 3, typ: "Mem", hasSideEffects: true},                     // *arg0 |= arg1.  arg2=memory.  Returns memory.
+ }
+ 
+ //     kind           control    successors       implicit exit
+diff --git a/src/cmd/compile/internal/ssa/gen/main.go b/src/cmd/compile/internal/ssa/gen/main.go
+index 41199f7..19b904a 100644
+--- a/src/cmd/compile/internal/ssa/gen/main.go
++++ b/src/cmd/compile/internal/ssa/gen/main.go
+@@ -52,6 +52,7 @@ type opData struct {
+ 	faultOnNilArg0    bool  // this op will fault if arg0 is nil (and aux encodes a small offset)
+ 	faultOnNilArg1    bool  // this op will fault if arg1 is nil (and aux encodes a small offset)
+ 	usesScratch       bool  // this op requires scratch memory space
++	hasSideEffects    bool  // for "reasons", not to be eliminated.  E.g., atomic store, #19182.
+ }
+ 
+ type blockData struct {
+@@ -208,6 +209,9 @@ func genOp() {
+ 			if v.usesScratch {
+ 				fmt.Fprintln(w, "usesScratch: true,")
+ 			}
++			if v.hasSideEffects {
++				fmt.Fprintln(w, "hasSideEffects: true,")
++			}
+ 			if a.name == "generic" {
+ 				fmt.Fprintln(w, "generic:true,")
+ 				fmt.Fprintln(w, "},") // close op
+diff --git a/src/cmd/compile/internal/ssa/op.go b/src/cmd/compile/internal/ssa/op.go
+index 4c3164f..37b2f74 100644
+--- a/src/cmd/compile/internal/ssa/op.go
++++ b/src/cmd/compile/internal/ssa/op.go
+@@ -34,6 +34,7 @@ type opInfo struct {
+ 	faultOnNilArg0    bool // this op will fault if arg0 is nil (and aux encodes a small offset)
+ 	faultOnNilArg1    bool // this op will fault if arg1 is nil (and aux encodes a small offset)
+ 	usesScratch       bool // this op requires scratch memory space
++	hasSideEffects    bool // for "reasons", not to be eliminated.  E.g., atomic store, #19182.
+ }
+ 
+ type inputInfo struct {
+diff --git a/src/cmd/compile/internal/ssa/opGen.go b/src/cmd/compile/internal/ssa/opGen.go
+index 26bcbe0..7a96216 100644
+--- a/src/cmd/compile/internal/ssa/opGen.go
++++ b/src/cmd/compile/internal/ssa/opGen.go
+@@ -7632,6 +7632,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		resultInArg0:   true,
+ 		faultOnNilArg1: true,
++		hasSideEffects: true,
+ 		asm:            x86.AXCHGL,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -7649,6 +7650,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		resultInArg0:   true,
+ 		faultOnNilArg1: true,
++		hasSideEffects: true,
+ 		asm:            x86.AXCHGQ,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -7667,6 +7669,7 @@ var opcodeTable = [...]opInfo{
+ 		resultInArg0:   true,
+ 		clobberFlags:   true,
+ 		faultOnNilArg1: true,
++		hasSideEffects: true,
+ 		asm:            x86.AXADDL,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -7685,6 +7688,7 @@ var opcodeTable = [...]opInfo{
+ 		resultInArg0:   true,
+ 		clobberFlags:   true,
+ 		faultOnNilArg1: true,
++		hasSideEffects: true,
+ 		asm:            x86.AXADDQ,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -7712,6 +7716,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         4,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            x86.ACMPXCHGL,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -7732,6 +7737,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         4,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            x86.ACMPXCHGQ,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -7752,6 +7758,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            x86.AANDB,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -7766,6 +7773,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            x86.AORB,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -12982,6 +12990,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "STLR",
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            arm64.ASTLR,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -12994,6 +13003,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "STLRW",
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            arm64.ASTLRW,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -13007,6 +13017,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          3,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 805044223},           // R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R19 R20 R21 R22 R23 R24 R25 R26 g R30
+@@ -13022,6 +13033,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          3,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 805044223},           // R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R19 R20 R21 R22 R23 R24 R25 R26 g R30
+@@ -13037,6 +13049,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          3,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 805044223},           // R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R19 R20 R21 R22 R23 R24 R25 R26 g R30
+@@ -13052,6 +13065,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          3,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 805044223},           // R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R19 R20 R21 R22 R23 R24 R25 R26 g R30
+@@ -13068,6 +13082,7 @@ var opcodeTable = [...]opInfo{
+ 		resultNotInArgs: true,
+ 		clobberFlags:    true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 805044223},           // R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R19 R20 R21 R22 R23 R24 R25 R26 g R30
+@@ -13085,6 +13100,7 @@ var opcodeTable = [...]opInfo{
+ 		resultNotInArgs: true,
+ 		clobberFlags:    true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 805044223},           // R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R19 R20 R21 R22 R23 R24 R25 R26 g R30
+@@ -13100,6 +13116,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "LoweredAtomicAnd8",
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            arm64.AAND,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -13112,6 +13129,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "LoweredAtomicOr8",
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            arm64.AORR,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -14302,6 +14320,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "LoweredAtomicStore",
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 469762046},       // R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R24 R25 R28 g R31
+@@ -14313,6 +14332,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "LoweredAtomicStorezero",
+ 		argLen:         2,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{0, 140738025226238}, // R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R24 R25 R28 SP g R31 SB
+@@ -14324,6 +14344,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          3,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 469762046},       // R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R24 R25 R28 g R31
+@@ -14339,6 +14360,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          3,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 469762046},       // R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R24 R25 R28 g R31
+@@ -14355,6 +14377,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          2,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{0, 140738025226238}, // R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R24 R25 R28 SP g R31 SB
+@@ -14369,6 +14392,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:          4,
+ 		resultNotInArgs: true,
+ 		faultOnNilArg0:  true,
++		hasSideEffects:  true,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+ 				{1, 469762046},       // R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R24 R25 R28 g R31
+@@ -14384,6 +14408,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "LoweredAtomicAnd",
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            mips.AAND,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -14396,6 +14421,7 @@ var opcodeTable = [...]opInfo{
+ 		name:           "LoweredAtomicOr",
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            mips.AOR,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19839,6 +19865,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.AMOVW,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19853,6 +19880,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.AMOVD,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19866,6 +19894,7 @@ var opcodeTable = [...]opInfo{
+ 		auxType:        auxSymOff,
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.ALAA,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19882,6 +19911,7 @@ var opcodeTable = [...]opInfo{
+ 		auxType:        auxSymOff,
+ 		argLen:         3,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.ALAAG,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19909,6 +19939,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         4,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.ACS,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19929,6 +19960,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         4,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.ACSG,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19949,6 +19981,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.ACS,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -19967,6 +20000,7 @@ var opcodeTable = [...]opInfo{
+ 		argLen:         3,
+ 		clobberFlags:   true,
+ 		faultOnNilArg0: true,
++		hasSideEffects: true,
+ 		asm:            s390x.ACSG,
+ 		reg: regInfo{
+ 			inputs: []inputInfo{
+@@ -21738,59 +21772,70 @@ var opcodeTable = [...]opInfo{
+ 		generic: true,
+ 	},
+ 	{
+-		name:    "AtomicStore32",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicStore32",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicStore64",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicStore64",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicStorePtrNoWB",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicStorePtrNoWB",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicExchange32",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicExchange32",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicExchange64",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicExchange64",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicAdd32",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicAdd32",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicAdd64",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicAdd64",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicCompareAndSwap32",
+-		argLen:  4,
+-		generic: true,
++		name:           "AtomicCompareAndSwap32",
++		argLen:         4,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicCompareAndSwap64",
+-		argLen:  4,
+-		generic: true,
++		name:           "AtomicCompareAndSwap64",
++		argLen:         4,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicAnd8",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicAnd8",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ 	{
+-		name:    "AtomicOr8",
+-		argLen:  3,
+-		generic: true,
++		name:           "AtomicOr8",
++		argLen:         3,
++		hasSideEffects: true,
++		generic:        true,
+ 	},
+ }
+ 
+diff --git a/test/fixedbugs/issue19182.go b/test/fixedbugs/issue19182.go
+new file mode 100644
+index 0000000..3a90ff4
+--- /dev/null
++++ b/test/fixedbugs/issue19182.go
+@@ -0,0 +1,36 @@
++// run
++
++// Copyright 2017 The Go Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style
++// license that can be found in the LICENSE file.
++
++package main
++
++import (
++	"fmt"
++	"runtime"
++	"sync/atomic"
++	"time"
++)
++
++var a uint64 = 0
++
++func main() {
++	runtime.GOMAXPROCS(2) // With just 1, infinite loop never yields
++
++	go func() {
++		for {
++			atomic.AddUint64(&a, uint64(1))
++		}
++	}()
++
++	time.Sleep(10 * time.Millisecond) // Short sleep is enough in passing case
++	i, val := 0, atomic.LoadUint64(&a)
++	for ; val == 0 && i < 100; val, i = atomic.LoadUint64(&a), i+1 {
++		time.Sleep(100 * time.Millisecond)
++	}
++	if val == 0 {
++		fmt.Printf("Failed to observe atomic increment after %d tries\n", i)
++	}
++
++}
+-- 
+2.10.2
+
