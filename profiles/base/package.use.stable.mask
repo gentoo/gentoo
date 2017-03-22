@@ -9,10 +9,6 @@
 # which probably needs bump to solve several issues.
 sci-geosciences/qgis grass
 
-# Brian Dolbec <dolsen@gentoo.org> (14 Feb 2017)
-# This is stable masked as g-sorcery is being not actively developed.
-app-portage/layman g-sorcery
-
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2017)
 # No stable multilib supporting sys-libs/libunwind yet,
 # temporarily masked to let stabilization #601354 proceed.

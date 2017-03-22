@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Brian Dolbec <dolsen@gentoo.org> (21 Mar 2017)
+# This is masked as mongo-db needed for bson use flag
+# which is not keyworded on many arches.
+app-portage/g-sorcery bson
+
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
 # dev-python/gmpy fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
