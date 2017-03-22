@@ -5731,8 +5731,8 @@ dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Zilla 6.8.0: distribution builder; installer not included!
 dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0: A more awesome MakeMaker plugin for Dist::Zilla
-dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.3: Generating and Populating 'provides' in your META.yml
-dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.2: Extract namespaces/version from traditional packages for provides
+dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.3 2.2.4: Generating and Populating 'provides' in your META.yml
+dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.2 2.4.3: Extract namespaces/version from traditional packages for provides
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
