@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Kate is an advanced text editor"
@@ -51,6 +52,12 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	kde5_src_prepare
+	# test hangs
+	sed -e "/session_manager_test/d" -i kate/autotests/CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(
