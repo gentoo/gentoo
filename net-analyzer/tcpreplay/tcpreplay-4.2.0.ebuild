@@ -35,10 +35,6 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e 's|-O3||g' \
-		-e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' \
-		configure.ac || die
-	sed -i \
 		-e 's|#include <dnet.h>|#include <dnet/eth.h>|g' \
 		src/common/sendpacket.c || die
 	sed -i \
