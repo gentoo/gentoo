@@ -5885,7 +5885,7 @@ dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
 dev-perl/Glib-Object-Introspection 0.40.0 0.42.0: Dynamically create Perl language bindings
 dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
-dev-perl/Google-Ads-AdWords-Client 4.11.0: Google AdWords API Perl Client Library
+dev-perl/Google-Ads-AdWords-Client 4.11.0 4.13.0: Google AdWords API Perl Client Library
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
 dev-perl/GraphViz 2.240.0: Interface to AT&T's GraphViz
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
