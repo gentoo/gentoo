@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE="debug fftw graphviz goffice gsl test"
 RDEPEND=">=dev-libs/glib-2.14:2
 	dev-libs/libxml2
 	x11-misc/xdg-utils
-	=media-libs/vips-${MY_MAJ_VER}*
+	=media-libs/vips-${MY_MAJ_VER}*[fftw?]
 	>=x11-libs/gtk+-2.24:2
 	goffice? ( x11-libs/goffice:0.8 )
 	graphviz? ( <media-gfx/graphviz-2.30 )
@@ -27,6 +27,9 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	test? ( media-libs/vips[jpeg,lcms,tiff] )"
+
+# lots of tests use fftw transforms
+REQUIRED_USE="test? ( fftw )"
 
 src_configure() {
 	econf \
