@@ -5664,7 +5664,7 @@ dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.40.0 0.50.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
 dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
-dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0 6.570.0: Perl date manipulation routines
+dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0 6.570.0 6.580.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0: A date and time object
