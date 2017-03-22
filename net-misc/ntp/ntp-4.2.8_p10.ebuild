@@ -39,6 +39,7 @@ S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.8-ipc-caps.patch #533966
 	"${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
+	"${FILESDIR}"/${PN}-4.2.8_p10-ntpq-fpic.patch
 )
 
 pkg_setup() {
