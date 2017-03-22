@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 inherit distutils-r1
 
 MY_P=llvm-${PV/_/}
@@ -20,6 +20,7 @@ S=${WORKDIR}/${MY_P}.src/utils/lit
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
 DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm )"
