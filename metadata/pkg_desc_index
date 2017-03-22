@@ -12640,7 +12640,7 @@ media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a director
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2 1.2.0 1.2.1: fast and easy graphics application for digital painters
-media-gfx/nip2 7.26.4 7.38.1: VIPS Image Processing Graphical User Interface
+media-gfx/nip2 7.38.1: VIPS Image Processing Graphical User Interface
 media-gfx/nomacs 3.4-r1: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
@@ -13137,7 +13137,7 @@ media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with ra
 media-libs/vamp-plugin-sdk 2.6-r1: Audio processing plugin system for plugins that extract descriptive information from audio data
 media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.11.0: C++ computer vision library emphasizing customizable algorithms and structures
-media-libs/vips 7.26.3-r1 7.38.5-r1: VIPS Image Processing Library
+media-libs/vips 7.38.5-r1: VIPS Image Processing Library
 media-libs/virglrenderer 0.2.0 0.5.0 9999: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3 9999: VisualOn AMR-WB encoder library
