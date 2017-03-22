@@ -26,11 +26,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	# Nothing is installed
-	sed -i \
-		-e "/add_subdirectory(examples)/ s/^/#DONT/" \
-		analitzaplot/CMakeLists.txt || die
-
+	if ! use test; then
+		sed -i \
+			-e "/add_subdirectory(examples)/ s/^/#DONT/" \
+			analitzaplot/CMakeLists.txt || die
+	fi
 	kde5_src_prepare
 }
 
