@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=dev-lang/gnat-gpl
+DESCRIPTION=Multi-Language Management
+EAPI=6
+HOMEPAGE=http://libre.adacore.com/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-lang/gnat-gpl
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8 -> gprbuild-gpl-2016-src.tar.gz http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0 -> xmlada-gpl-2016-src.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=ec999bb4838afa76dfb98722a9289a52

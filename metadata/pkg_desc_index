@@ -2831,6 +2831,7 @@ app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
 dev-ada/asis-gcc 3.4.6 4.1.2 4.1.2-r1 4.2.2 4.3.0_pre132166 4.3.1 4.3.1-r1 4.4: The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
 dev-ada/charles 20050913: Posix bindings for Ada
+dev-ada/gprbuild 2016: Multi-Language Management
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
@@ -18251,7 +18252,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.7.0 45.8.0 52.0.1-r1: Firefox Web Browser
 www-client/firefox-bin 45.8.0 52.0.1: Firefox Web Browser
 www-client/google-chrome 57.0.2987.110: The web browser from Google
-www-client/google-chrome-beta 58.0.3029.19: The web browser from Google
+www-client/google-chrome-beta 58.0.3029.33: The web browser from Google
 www-client/google-chrome-unstable 59.0.3047.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18302,7 +18303,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 25.0.0.127: Adobe Flash Player
-www-plugins/chrome-binary-plugins 57.0.2987.110 58.0.3029.19_beta 59.0.3047.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 57.0.2987.110 58.0.3029.33_beta 59.0.3047.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
