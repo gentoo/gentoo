@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (22 Mar 2017)
+# Masked for removal in 14 days. Echonest service is gone
+# since 2016/05/31. No reverse dependencies. Bug #587972.
+media-libs/libechonest
+
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (20 Mar 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
