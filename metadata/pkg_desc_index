@@ -9184,7 +9184,7 @@ dev-ros/urdf 1.12.6 1.12.7 9999: C++ parser for the Unified Robot Description Fo
 dev-ros/urdf_parser_plugin 1.12.7 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
-dev-ros/urg_node 0.1.9 9999: ROS wrapper for the Hokuyo urg_c library
+dev-ros/urg_node 0.1.9 0.1.10 9999: ROS wrapper for the Hokuyo urg_c library
 dev-ros/uuid_msgs 1.0.5 9999: ROS messages for universally unique identifiers
 dev-ros/visp_auto_tracker 0.8.0 0.9.1 0.9.3 0.10.0 9999: Online automated pattern-based object tracker relying on visual servoing
 dev-ros/visp_bridge 0.8.0 0.9.1 0.9.3 0.10.0 9999: Converts between ROS structures and ViSP structures
@@ -18327,7 +18327,7 @@ www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performa
 www-servers/mongoose 5.3 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.10.2-r3 1.10.3 1.11.6-r1 1.11.8 1.11.9 1.11.10: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.10.2-r3 1.10.3 1.11.6-r1 1.11.8 1.11.9 1.11.10 1.11.11: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
