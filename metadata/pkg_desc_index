@@ -2204,7 +2204,7 @@ app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1 0.99: barcode generator
 app-text/bdf2psf 1.104 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.11.4 2.17: BibTeX bibliography prettyprinter and syntax checker
-app-text/bibletime 2.10.1-r1: Qt Bible study application using the SWORD library
+app-text/bibletime 2.10.1-r1 2.11.0: Qt Bible study application using the SWORD library
 app-text/bibus 1.5.2-r2: Bibliographic and reference management software, integrates with LO and MS Word
 app-text/bibutils 4.12: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line

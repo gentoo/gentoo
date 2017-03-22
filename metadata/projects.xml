@@ -2032,7 +2032,7 @@
     <email>libressl@gentoo.org</email>
     <name>LibreSSL</name>
     <url>https://wiki.gentoo.org/wiki/Project:LibreSSL</url>
-    <description>LibreSSL is a fork of, and drop in replacement for OpenSSL.  Primary development is done in OpenBSD, but it is ported to Linux as well.  The LibreSSL project aims to bring support for this alternative SSL provider to Gentoo Linux.</description>
+    <description>LibreSSL is a fork of, and drop in replacement for OpenSSL. Primary development is done in OpenBSD, but it is ported to Linux as well. The LibreSSL project aims to bring support for this alternative SSL provider to Gentoo Linux.</description>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
