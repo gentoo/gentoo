@@ -16362,7 +16362,7 @@ sci-libs/liborigin 20110829: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
-sci-libs/libsigrok 0.3.0 0.4.0 9999: provide basic hardware drivers for logic analyzers and input/output file format support
+sci-libs/libsigrok 0.3.0 0.4.0 9999: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.3.0 0.4.0 0.4.1 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.1 1.8.5 1.8.5-r1: General framework for developing spatial indices
 sci-libs/libsvm 3.21: Library for Support Vector Machines
