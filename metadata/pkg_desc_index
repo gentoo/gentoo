@@ -14366,7 +14366,7 @@ net-analyzer/tcpdump 4.9.0 9999: A Tool for network monitoring and data acquisit
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
-net-analyzer/tcpreplay 4.1.2-r1 4.2.0_beta2: utilities for editing and replaying previously captured network traffic
+net-analyzer/tcpreplay 4.1.2-r1 4.2.0: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3-r1: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5 1.5-r1 1.5-r2: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7-r2 6.6.7_p4_p1: A Tool for analyzing network packet dumps
@@ -15370,7 +15370,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0: The X2Go
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.03.16 2017.03.20 2017.03.22 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.03.20 2017.03.22 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17692,7 +17692,7 @@ sys-kernel/cryptodev 1.7 9999: device that allows access to Linux kernel cryptog
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 3.5.0.6 3.5.0.8 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.4.39 4.4.51 4.4.52 4.4.53 4.4.54 4.4.55 4.4.56 4.9.4 4.9.6-r1 4.9.12 4.9.13 4.9.14 4.9.15 4.9.16 4.9.17 4.10.0 4.10.1 4.10.2 4.10.3 4.10.4: Full sources including the Gentoo patchset for the 4.10 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.4.39 4.4.51 4.4.52 4.4.53 4.4.54 4.4.55 4.4.56 4.9.4 4.9.6-r1 4.9.12 4.9.13 4.9.14 4.9.15 4.9.16 4.9.17 4.10.0 4.10.1 4.10.2 4.10.3 4.10.4 4.10.5: Full sources including the Gentoo patchset for the 4.10 kernel tree
 sys-kernel/git-sources 4.11_rc1 4.11_rc2 4.11_rc3: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.13-r1 4.9.14 4.9.15 4.9.16: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
