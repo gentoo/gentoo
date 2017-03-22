@@ -14446,6 +14446,7 @@ net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
 net-dns/bind-tools 9.10.4_p4 9.11.0_p2 9.11.0_p3: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.12.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
+net-dns/coredns 006: A DNS server that chains middleware
 net-dns/ddclient 3.8.1-r5 3.8.2 3.8.3: Perl updater client for dynamic DNS services
 net-dns/djbdns 1.05-r32: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r1: A caching DNS proxy server
