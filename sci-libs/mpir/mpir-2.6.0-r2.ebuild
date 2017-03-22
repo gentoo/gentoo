@@ -11,7 +11,7 @@ SRC_URI="http://www.mpir.org/${P}.tar.lzma"
 
 LICENSE="LGPL-3"
 SLOT="0/11"
-KEYWORDS="amd64 ~arm ~hppa ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx cpudetection static-libs"
 
 DEPEND="x86? ( dev-lang/yasm )
