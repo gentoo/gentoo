@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 hppa ppc64 ~x86"
 IUSE="doc test"
 
 RDEPEND="dev-python/mock[${PYTHON_USEDEP}]"
