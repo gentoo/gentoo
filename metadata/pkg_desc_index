@@ -1462,7 +1462,7 @@ app-forensics/scalpel 2.0: A high performance file carver
 app-forensics/sleuthkit 4.0.2 4.1.0 4.1.2 4.1.3: A collection of file system and media management forensic analysis tools
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/volatility 2.4.1 2.6: Framework for analyzing volatile memory
-app-forensics/yasat 526 700 755 839: Security and system auditing tool
+app-forensics/yasat 526 700 755 839 848: Security and system auditing tool
 app-forensics/zzuf 0.13-r1 0.15: Transparent application input fuzzer
 app-i18n/anthy 9100h-r1: Anthy -- free and secure Japanese input system
 app-i18n/anthy-ss 9026: Anthy -- free and secure Japanese input system
