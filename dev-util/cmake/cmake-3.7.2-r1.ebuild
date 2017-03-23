@@ -10,8 +10,7 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="http://www.cmake.org/"
-SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz
-https://dev.gentoo.org/~kensington/distfiles/${PN}-3.7.2-x32.patch.xz"
+SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz"
 
 LICENSE="CMake"
 SLOT="0"
@@ -61,9 +60,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-FindPythonInterp.patch
 
 	# upstream fixes (can usually be removed with a version bump)
-
-	# testing 3.9 backports - bug #426936
-	"${WORKDIR}"/${PN}-3.7.2-x32.patch
 )
 
 cmake_src_bootstrap() {
