@@ -12,10 +12,10 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+bluetooth +ibus +networkmanager nsplugin -openrc-force"
+IUSE="+bluetooth +browser-extension +ibus +networkmanager nsplugin -openrc-force"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 # libXfixes-5.0 needed for pointer barriers
 # FIXME:
@@ -102,6 +102,7 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND="
 	>=gnome-base/gdm-3.5[introspection]
 	>=gnome-base/gnome-control-center-3.8.3[bluetooth(+)?,networkmanager(+)?]
+	browser-extension? ( gnome-extra/chrome-gnome-shell )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
@@ -170,12 +171,6 @@ pkg_postinst() {
 		ewarn "you need to either install media-libs/gst-plugins-good:1.0"
 		ewarn "and media-plugins/gst-plugins-vpx:1.0, or use dconf-editor to change"
 		ewarn "apps.gnome-shell.recorder/pipeline to what you want to use."
-	fi
-
-	if has_version "<x11-drivers/ati-drivers-12"; then
-		ewarn "GNOME Shell has been reported to show graphical corruption under"
-		ewarn "x11-drivers/ati-drivers-11.*; you may want to switch to open-source"
-		ewarn "drivers."
 	fi
 
 	if ! has_version "media-libs/mesa[llvm]"; then

@@ -52,7 +52,7 @@ PATCHES=(
 	# handle gentoo packaging in find modules
 	"${FILESDIR}"/${PN}-2.8.12.1-FindImageMagick.patch
 	"${FILESDIR}"/${PN}-3.0.0-FindBLAS.patch
-	"${FILESDIR}"/${PN}-3.0.0-FindBoost-python.patch
+	"${FILESDIR}"/${PN}-3.8.0_rc2-FindBoost-python.patch
 	"${FILESDIR}"/${PN}-3.0.2-FindLAPACK.patch
 	"${FILESDIR}"/${PN}-3.5.2-FindQt4.patch
 
