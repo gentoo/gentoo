@@ -1,0 +1,22 @@
+commit 04d2414eec38c087b5c53eb3a7af8705aae38b57
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Thu Mar 23 23:54:00 2017 +0100
+
+    Qt5Xml is not used
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 09bc76912..35bfcd92c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,9 +32,9 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
+ 
+ if(BUILD_KSTARS_LITE)
+-    find_package(Qt5 5.7 REQUIRED COMPONENTS Gui Qml Quick QuickControls2 Xml Svg Sql Network Positioning Concurrent)
++    find_package(Qt5 5.7 REQUIRED COMPONENTS Gui Qml Quick QuickControls2 Svg Sql Network Positioning Concurrent)
+ else()
+-    find_package(Qt5 5.4 REQUIRED COMPONENTS Gui Qml Quick Xml Sql Svg Network PrintSupport Concurrent)
++    find_package(Qt5 5.4 REQUIRED COMPONENTS Gui Qml Quick Sql Svg Network PrintSupport Concurrent)
+ endif()
+ include(ECMInstallIcons)
+ include(ECMAddAppIcon)
