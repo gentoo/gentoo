@@ -239,6 +239,11 @@ src_test() {
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
 	done
 
+	# Daylight saving time problem
+	# https://bugs.python.org/issue22067
+	# https://bugs.gentoo.org/610628
+	local -x TZ=UTC
+
 	# Rerun failed tests in verbose mode (regrtest -w).
 	emake test EXTRATESTOPTS="-w" < /dev/tty
 	local result="$?"
