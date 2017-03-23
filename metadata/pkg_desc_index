@@ -6636,7 +6636,7 @@ dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.780.0-r1 0.790.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.330.0 1.910.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
-dev-perl/Text-CSV_XS 1.230.0 1.260.0: Comma-separated values manipulation routines
+dev-perl/Text-CSV_XS 1.230.0 1.260.0 1.280.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
 dev-perl/Text-Diff 1.410.0-r1 1.430.0 1.440.0: Perform diffs on files and record sets
 dev-perl/Text-FindIndent 0.110.0: Heuristically determine the indent style
@@ -12832,7 +12832,7 @@ media-libs/glu 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.5 1.0.7 1.0.10: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
-media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
+media-libs/grilo 0.2.15 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r4 1.8.3-r1 1.10.3 1.10.4: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.8.3-r1 1.10.3 1.10.4: Basepack of plugins for gstreamer
@@ -17409,7 +17409,7 @@ sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
-sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.6 2.0.2 2.1.0: A high-performance message passing library (MPI)
+sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.6 2.0.2 2.1.0-r1: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2016.1.9999 2016.2.9999 2017.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2 1.1.14: Pacemaker CRM
