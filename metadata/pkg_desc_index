@@ -14658,7 +14658,7 @@ net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r1 2.12.4-r2 9999: Graphical IRC client based on XChat
-net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
+net-irc/ii 1.7 1.7-r1 9999: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.23: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
