@@ -5370,7 +5370,7 @@ dev-perl/AnyEvent-I3 0.160.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.230.0 3.240.0 3.250.0 3.260.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
-dev-perl/Apache-LogFormat-Compiler 0.330.0: Compile an Apache log format string to perl-code
+dev-perl/Apache-LogFormat-Compiler 0.330.0 0.350.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
@@ -5672,7 +5672,7 @@ dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
-dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0: DateTime::Set extension for create basic recurrence sets
+dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0 0.190.0: DateTime::Set extension for create basic recurrence sets
 dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and objects
 dev-perl/DateTime-Format-DateParse 0.50.0-r1: Parses Date::Parse compatible formats
 dev-perl/DateTime-Format-Flexible 0.260.0 0.270.0: Flexibly parse strings and turn them into DateTime objects
@@ -14077,7 +14077,7 @@ media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/syncplay 1.4.0: Client/server to synchronize media playback
 media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
-media-video/totem 3.18.1 3.20.1 3.22.0: Media player for GNOME
+media-video/totem 3.18.1 3.20.1 3.22.0 3.22.1: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
