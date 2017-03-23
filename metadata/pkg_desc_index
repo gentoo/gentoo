@@ -5574,6 +5574,7 @@ dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-CipherSaber 1.10.0: Perl module implementing CipherSaber encryption
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
+dev-perl/Crypt-Curve25519 0.50.0: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0: Crypt::DES module for perl
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
 dev-perl/Crypt-DH 0.70.0-r1: Diffie-Hellman key exchange system
@@ -6275,7 +6276,7 @@ dev-perl/Net-SNMP 6.0.1-r1 6.0.1-r2: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
-dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0: Perl client Interface to SSH
+dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1: Perl client Interface to SSH
 dev-perl/Net-SSH2 0.580.0 0.580.0-r1: Support for the SSH 2 protocol via libssh2
 dev-perl/Net-SSLeay 1.800.0: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
