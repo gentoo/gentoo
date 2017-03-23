@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (23 Mar 2017)
+# Only python3 supported
+media-sound/gnome-music python_single_target_python3_4
+
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Only >=python3_5 supported
 dev-util/kdevelop-python:5 python_single_target_python3_5
