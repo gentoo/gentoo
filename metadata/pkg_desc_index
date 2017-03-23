@@ -12572,7 +12572,7 @@ media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.20.2 3.22.0: Font viewer for GNOME
-media-gfx/gnome-photos 3.20.4 3.22.3: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.20.4 3.22.3 3.22.5: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.20.1 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
@@ -18285,7 +18285,7 @@ www-client/xombrero 1.6.3 9999: A minimalist web browser with sophisticated secu
 www-misc/awstats 7.1_p20121017 7.4 7.5: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r2: bookmarksync synchronizes various browser bookmark files
 www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
-www-misc/gurlchecker 0.13.1-r1 0.13.1-r2: Gnome tool that checks links on web pages/sites
+www-misc/gurlchecker 0.13.1-r2: Gnome tool that checks links on web pages/sites
 www-misc/htdig 3.2.0_beta6-r3 3.2.0_beta6-r4: HTTP/HTML indexing and searching system
 www-misc/litmus 0.13: WebDAV server protocol compliance test suite
 www-misc/log-toolkit 0.9.6-r1: set of tools to manipulate and maintain webserver logfiles
