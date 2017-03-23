@@ -1,17 +1,16 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-
-inherit eutils toolchain-funcs
+inherit eutils git-r3 toolchain-funcs
 
 DESCRIPTION="control magnetic tape drive operation"
 HOMEPAGE="https://github.com/iustin/mt-st"
-SRC_URI="${HOMEPAGE}/releases/download/${P}/${P}.tar.gz"
+EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS=""
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}"
