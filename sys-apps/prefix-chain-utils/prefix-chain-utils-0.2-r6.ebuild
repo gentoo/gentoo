@@ -4,7 +4,7 @@
 inherit prefix
 
 DESCRIPTION="Chained EPREFIX utilities and wrappers"
-HOMEPAGE="https://dev.gentoo.org/~mduft"
+HOMEPAGE="https://dev.gentoo.org/~haubi"
 SRC_URI=""
 
 LICENSE="GPL-3"
