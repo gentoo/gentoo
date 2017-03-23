@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2017)
+# Most of clang runtimes are not supported here
+sys-devel/clang-runtime openmp sanitize
+sys-libs/libcxx libunwind libcxxrt
+sys-libs/libcxxabi libunwind
+
 # Pacho Ramos <pacho@gentoo.org> (04 Feb 2017)
 # Missing keywords, bug #599572
 net-libs/gnome-online-accounts gnome
