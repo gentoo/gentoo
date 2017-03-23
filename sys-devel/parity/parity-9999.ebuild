@@ -1,22 +1,18 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 if [[ ${PV} == 9999 ]]; then
-	inherit subversion
-	ESVN_REPO_URI="https://svn.code.sf.net/p/parity/code/trunk"
-	ESVN_BOOTSTRAP="confix --bootstrap"
-	ESVN_PROJECT="${PN}"
-	: ${KEYWORDS=""}
-
+	inherit git-r3
+	EGIT_REPO_URI="git@github.com:haubi/parity.git https://github.com/haubi/parity.git"
 	DEPEND="dev-util/confix"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 	KEYWORDS=""
 fi
-DESCRIPTION="An Interix to native Win32 Cross-Compiler Tool (requires Visual Studio)"
-HOMEPAGE="http://www.sourceforge.net/projects/parity/"
+DESCRIPTION="A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)"
+HOMEPAGE="https://github.com/haubi/parity"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -35,19 +31,29 @@ pkg_setup() {
 	fi
 }
 
+if [[ ${PV} == 9999 ]]; then
+	src_prepare() {
+		confix --bootstrap || die
+		default
+	}
+fi
+
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 
-	# create i586-pc-winnt*-g[++|cc|..] links..
+	# create i586-pc-winnt-g[++|cc|..] links..
 	local exeext=
 
-	[[ -f ${ED}/usr/bin/parity.gnu.gcc.exe ]] && exeext=.exe
+	[[ -f ${ED}usr/bin/parity.gnu.gcc.exe ]] && exeext=.exe
 
-	# create cross compiler syms
-	dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt$(uname -r)-gcc
-	dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt$(uname -r)-c++
-	dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt$(uname -r)-g++
-	dosym /usr/bin/parity.gnu.ld${exeext} /usr/bin/i586-pc-winnt$(uname -r)-ld
+	# create cross compiler syms, also for former versioned winnt profiles
+	local v
+	for v in "" 5.2 6.1; do
+		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-gcc
+		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-c++
+		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-g++
+		dosym /usr/bin/parity.gnu.ld${exeext} /usr/bin/i586-pc-winnt${v}-ld
+	done
 
 	# we don't need the header files installed by parity... private
 	# header files are supported with a patch from 2.1.0-r1 onwards,
