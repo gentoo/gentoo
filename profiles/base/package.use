@@ -3,7 +3,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Only >=python3_5 supported
-dev-util/kdevelop-python python_single_target_python3_5
+dev-util/kdevelop-python:5 python_single_target_python3_5
 
 # Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
 # only python 3 is supported
