@@ -85,6 +85,9 @@ COMMON_DEPEND="
 # mouse panel needs a concrete set of X11 drivers at runtime, bug #580474
 # Also we need newer driver versions to allow wacom and libinput drivers to
 # not collide
+#
+# system-config-printer provides org.fedoraproject.Config.Printing service and interface
+# cups-pk-helper provides org.opensuse.cupspkhelper.mechanism.all-edit policykit helper policy
 RDEPEND="${COMMON_DEPEND}
 	|| ( >=sys-apps/systemd-31 ( app-admin/openrc-settingsd sys-auth/consolekit ) )
 	x11-themes/adwaita-icon-theme
