@@ -44,7 +44,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.50.1
 	virtual/pkgconfig
 	test? (
-		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
 "
 
