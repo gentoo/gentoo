@@ -259,9 +259,6 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
-
-		# https://bugs.winehq.org/show_bug.cgi?id=42132
-		"${FILESDIR}"/${PN}-2.0_rc3-flex263.patch
 	)
 
 	default
