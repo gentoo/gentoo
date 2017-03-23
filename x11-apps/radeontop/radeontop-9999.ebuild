@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/clbr/radeontop.git"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="nls"
+IUSE="nls video_cards_amdgpu"
 
 RDEPEND="
 	sys-libs/ncurses:0=
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	tc-export CC
 	export nls=$(usex nls 1 0)
+	export amdgpu=$(usex video_cards_amdgpu 1 0)
 	export xcb=1
 	# Do not add -g or -s to CFLAGS
 	export plain=1
