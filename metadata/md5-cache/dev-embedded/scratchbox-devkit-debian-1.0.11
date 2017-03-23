@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DESCRIPTION=A cross-compilation toolkit designed to make embedded Linux application development easier
+DESCRIPTION=A cross-compilation toolkit for embedded Linux application development
 EAPI=0
 HOMEPAGE=http://www.scratchbox.org/
 KEYWORDS=~amd64 ~x86
@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=http://scratchbox.org/download/files/sbox-releases/hathor/tarball/scratchbox-devkit-debian-1.0.11-i386.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=c4da8015b4f293b00ed10b0aa38db77d
+_md5_=b4897261d72f7c10c946e8e08e6bf420
