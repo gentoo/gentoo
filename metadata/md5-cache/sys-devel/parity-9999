@@ -1,10 +1,10 @@
-DEFINED_PHASES=install preinst prepare setup unpack
-DEPEND=dev-util/confix || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
-DESCRIPTION=An Interix to native Win32 Cross-Compiler Tool (requires Visual Studio)
-EAPI=4
-HOMEPAGE=http://www.sourceforge.net/projects/parity/
+DEFINED_PHASES=install prepare setup unpack
+DEPEND=dev-util/confix >=dev-vcs/git-1.8.2.1
+DESCRIPTION=A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
+EAPI=6
+HOMEPAGE=https://github.com/haubi/parity
 LICENSE=LGPL-3
 SLOT=0
-_eclass_exported_funcs=pkg_preinst:subversion pkg_setup:- src_unpack:subversion src_prepare:subversion src_install:-
-_eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=41ae1ea9ddb43259d0d3a04b391a40eb
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-r3 src_prepare:- src_install:-
+_eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	git-r3	68d35a154123e27007638d8220886ee1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=2387d083f2d3031ef8f5564ce5cc5446

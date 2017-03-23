@@ -17476,7 +17476,7 @@ sys-devel/m4 1.4.17 1.4.18: GNU macro processor
 sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2.1: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 1 2 4: Host OS native assembler as and static linker ld
-sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: An Interix to native Win32 Cross-Compiler Tool (requires Visual Studio)
+sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
 sys-devel/patch 2.7.5: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503 20130503-r1 20151030: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
