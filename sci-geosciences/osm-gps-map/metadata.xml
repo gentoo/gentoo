@@ -5,7 +5,4 @@
   	<email>sci-geosciences@gentoo.org</email>
 	<name>Geosciences Project</name>
   </maintainer>
-  <longdescription lang="en">
-    A gtk+ viewer for OpenStreetMap files.
-  </longdescription>
 </pkgmetadata>
