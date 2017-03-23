@@ -4722,7 +4722,7 @@ dev-libs/jansson 2.9 2.10: C library for encoding, decoding and manipulating JSO
 dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.4.0: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12: A JSON implementation in C
-dev-libs/json-glib 1.2.2: Library providing GLib serialization and deserialization for the JSON format
+dev-libs/json-glib 1.2.2 1.2.8: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.7.5 1.8.0: C++ JSON reader and writer
 dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
@@ -6186,7 +6186,7 @@ dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0 7.210.0 7.2
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2 1.6.0 1.6.1: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
-dev-perl/Moo 2.0.2 2.2.5 2.3.0: Minimalist Object Orientation (with Moose compatiblity)
+dev-perl/Moo 2.0.2 2.2.5 2.3.0 2.3.1: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
