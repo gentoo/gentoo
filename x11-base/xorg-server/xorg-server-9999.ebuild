@@ -12,7 +12,7 @@ SLOT="0/${PV}"
 KEYWORDS=""
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd tslib +udev unwind"
+IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd +udev unwind"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
@@ -67,7 +67,6 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-10.3.4-r1
 	)
-	tslib? ( >=x11-libs/tslib-1.0 )
 	udev? ( >=virtual/udev-150 )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
@@ -172,7 +171,6 @@ src_configure() {
 		$(use_enable glamor)
 		$(use_enable kdrive)
 		$(use_enable suid install-setuid)
-		$(use_enable tslib)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
