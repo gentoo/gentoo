@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 		x11-libs/libX11[${MULTILIB_USEDEP}] )
 	gtk3? (
 		>=dev-libs/glib-2.32:2[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:3[X,${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.11[${MULTILIB_USEDEP}] )
 	tdb? ( sys-libs/tdb:=[${MULTILIB_USEDEP}] )
