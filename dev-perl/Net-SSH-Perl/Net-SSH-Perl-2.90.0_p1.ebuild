@@ -26,7 +26,6 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 	>=dev-perl/String-CRC32-1.200.0
 	!minimal? (
-		>=dev-perl/Module-Signature-0.500.0
 		dev-perl/Digest-BubbleBabble
 		dev-perl/Crypt-RSA
 		dev-perl/TermReadKey
@@ -36,3 +35,12 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( >=virtual/perl-Test-Simple-0.610.0 )
 "
+PERL_RM_FILES=( # Gentoo integrity checks are used instead
+	'SIGNATURE'
+	't/00-signature.t'
+)
+src_prepare() {
+	sed -i -r -e '/signature_target/d' \
+		"${S}/Makefile.PL" || "Can't strip signing controls from Makefile.PL"
+	perl-module_src_prepare
+}
