@@ -2087,7 +2087,7 @@ app-pda/pilot-link 0.12.5-r1: suite of tools for moving data between a Palm devi
 app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
-app-portage/cpuid2cpuflags 1 2 9999: Tool to guess CPU_FLAGS_X86 flags for the host
+app-portage/cpuid2cpuflags 1 2 3 9999: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
@@ -2121,7 +2121,7 @@ app-portage/gs-pypi 0.1 0.2 0.2.1 0.2.1-r1 9999: g-sorcery backend for pypi pack
 app-portage/hackport 0.5.1 0.5.2 9999: Hackage and Portage integration tool
 app-portage/install-mask 0.1.1 9999: Handle INSTALL_MASK setting in make.conf
 app-portage/java-ebuilder 0.1 0.2 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
-app-portage/kuroo4 0.90.5: Graphical Portage frontend based on KDE4/Qt4
+app-portage/kuroo4 0.90.5: Graphical Portage frontend based on KDELibs4/Qt4
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.2.0-r7 2.4.1-r1 2.4.2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 0.6.6 9999: metadata.xml generator for ebuilds
 app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 9999: Tool to help select distfiles mirrors for Gentoo
