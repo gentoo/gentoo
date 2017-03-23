@@ -3,10 +3,10 @@ DEPEND=sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=The Sandbox escapist tool
 EAPI=6
 HOMEPAGE=https://github.com/mgorny/unsandbox
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=BSD-2
 SLOT=0
 SRC_URI=https://github.com/mgorny/unsandbox/archive/v2.tar.gz -> unsandbox-2.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=6d9635a45abf4908d8ae11c0261fd8be
+_md5_=30e7156391ea164d727fb12bd8eed51d
