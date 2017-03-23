@@ -10,10 +10,10 @@ inherit eutils autotools multilib unpacker prefix
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.savannah.gnu.org/${PN}.git
 		http://git.savannah.gnu.org/r/${PN}.git"
-	inherit git-r3
+	inherit git-2
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A shared library tool for developers"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
-		git-r3_src_unpack
+		git-2_src_unpack
 		cd "${S}"
 		./bootstrap || die
 	else
@@ -46,6 +46,14 @@ src_prepare() {
 	use vanilla && return 0
 
 	epatch "${FILESDIR}"/${PN}-2.4.3-use-linux-version-in-fbsd.patch #109105
+	epatch "${FILESDIR}"/${P}-link-specs.patch
+	epatch "${FILESDIR}"/${P}-link-fsanitize.patch #573744
+	epatch "${FILESDIR}"/${P}-link-fuse-ld.patch
+	epatch "${FILESDIR}"/${P}-libtoolize-slow.patch
+	epatch "${FILESDIR}"/${P}-libtoolize-delay-help.patch
+	epatch "${FILESDIR}"/${P}-sed-quote-speedup.patch #542252
+	epatch "${FILESDIR}"/${P}-ppc64le.patch #581314
+
 	epatch "${FILESDIR}"/${PN}-2.4.6-mint.patch
 	epatch "${FILESDIR}"/${PN}-2.2.6a-darwin-module-bundle.patch
 	epatch "${FILESDIR}"/${PN}-2.4.6-darwin-use-linux-version.patch
@@ -60,6 +68,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-2.2.10-eprefix.patch
 		eprefixify m4/libtool.m4
 	fi
+
 	pushd libltdl >/dev/null
 	AT_NOELIBTOOLIZE=yes eautoreconf
 	popd >/dev/null
