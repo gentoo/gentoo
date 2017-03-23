@@ -14,5 +14,12 @@
   <upstream>
     <remote-id type="cpan">Test-File-ShareDir</remote-id>
     <remote-id type="cpan-module">Test::File::ShareDir</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir::Dist</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir::Module</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir::Object::Dist</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir::Object::Inc</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir::Object::Module</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir::TempDirObject</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir::Utils</remote-id>
   </upstream>
 </pkgmetadata>

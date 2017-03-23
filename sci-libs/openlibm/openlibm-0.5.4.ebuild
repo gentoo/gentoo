@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs fortran-2
 
@@ -10,29 +10,14 @@ HOMEPAGE="https://github.com/JuliaLang/openlibm"
 SRC_URI="https://github.com/JuliaLang/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT freedist public-domain BSD"
-SLOT="0/0.1.0"
+SLOT="0/${PV}.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="static-libs"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-respect-toolchain.patch
-}
-
-src_compile() {
-	tc-export CC
-	tc-export AR
-	emake libopenlibm.so
-	use static-libs && emake libopenlibm.a
-}
-
-src_test() {
-	emake
-}
-
 src_install() {
-	dolib.so libopenlibm.so*
-	use static-libs && dolib.a libopenlibm.a
-	doheader include/{cdefs,types}-compat.h src/openlibm.h
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" install
+	use static-libs || rm "${D}/${EPREFIX}/usr/$(get_libdir)/libopenlibm.a" || die "rm failed"
 	dodoc README.md
 }

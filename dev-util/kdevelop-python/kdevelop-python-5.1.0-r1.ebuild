@@ -13,6 +13,8 @@ DESCRIPTION="Python plugin for KDevelop"
 IUSE=""
 [[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND="${PYTHON_DEPS}
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -31,6 +33,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-util/kdevplatform:5
 "
 RDEPEND="${DEPEND}
+	dev-python/pycodestyle[${PYTHON_USEDEP}]
 	dev-util/kdevelop:5
 "
 

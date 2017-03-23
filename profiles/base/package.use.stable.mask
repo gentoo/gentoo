@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
+# Requires dev-lang/julia stabilisation, bug #613576
+kde-apps/cantor julia
+
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Feb 2017)
 # Requires not yet stabilised sci-geosciences/grass,
 # which probably needs bump to solve several issues.

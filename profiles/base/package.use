@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
+# Only >=python3_5 supported
+dev-util/kdevelop-python:5 python_single_target_python3_5
+
 # Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
 # only python 3 is supported
 app-editors/gedit-plugins python_single_target_python3_4
@@ -14,6 +18,7 @@ dev-vcs/git-bz python_single_target_python2_7
 gnome-base/libglade python_single_target_python2_7
 sci-chemistry/pdb-tools python_single_target_python2_7
 
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2016)
 # Only python3 supported
 dev-libs/libixion python_single_target_python3_4
 dev-libs/liborcus python_single_target_python3_4
