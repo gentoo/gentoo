@@ -147,7 +147,12 @@ multilib_src_install() {
 		mv "${ED}"usr/include/mpif* "${T}"/fortran || die
 	else
 		# some fortran files get installed unconditionally
-		rm "${ED}"usr/include/mpif* "${ED}"usr/bin/mpif* || die
+		rm \
+			"${ED}"usr/include/mpif* \
+			"${ED}"usr/bin/mpif* \
+			"${ED}"usr/bin/oshfort \
+			"${ED}"usr/bin/shmemfort \
+			|| die
 	fi
 }
 
