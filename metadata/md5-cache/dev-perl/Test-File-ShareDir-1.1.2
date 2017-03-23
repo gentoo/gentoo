@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker virtual/perl-Carp dev-perl/Class-Tiny >=virtual/perl-Exporter-5.570.0 dev-perl/File-Copy-Recursive >=dev-perl/File-ShareDir-1.0.0 >=dev-perl/Path-Tiny-0.18.0 dev-perl/Scope-Guard virtual/perl-parent test? ( >=virtual/perl-CPAN-Meta-2.120.900 virtual/perl-File-Spec dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Create a Fake ShareDir for your modules for testing.
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Test-File-ShareDir/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Class-Tiny >=virtual/perl-Exporter-5.570.0 dev-perl/File-Copy-Recursive >=dev-perl/File-ShareDir-1.0.0 >=dev-perl/Path-Tiny-0.18.0 dev-perl/Scope-Guard virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KE/KENTNL/Test-File-ShareDir-1.001002.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=6bcc1facedbd41648ea1bef6a5341488
