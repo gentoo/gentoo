@@ -43,8 +43,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/desktop-file-utils
 	>=dev-util/intltool-0.50.1
 	virtual/pkgconfig
-	test? (
-		$(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
+	test? ( $(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
 "
 
 python_check_deps() {
