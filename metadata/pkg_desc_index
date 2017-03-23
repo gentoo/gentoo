@@ -2292,7 +2292,7 @@ app-text/grip 4.2.0: Preview GitHub Markdown files like Readme locally before co
 app-text/groonga 5.0.3 5.0.9 6.1.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
-app-text/gspell 0.1.2 1.2.2: Spell check library for GTK+ applications
+app-text/gspell 1.2.2 1.2.3: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.7: Spell checking widget for GTK
 app-text/gtranslator 2.91.7: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
