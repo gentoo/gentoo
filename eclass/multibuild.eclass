@@ -125,6 +125,18 @@ multibuild_foreach_variant() {
 		_multibuild_run "${@}" \
 			> >(exec tee -a "${T}/build-${MULTIBUILD_ID}.log") 2>&1
 		lret=${?}
+
+		# make sure no processes are left over
+		local leftovers=
+		while :; do
+			wait -n
+			[[ ${?} -eq 127 ]] && break || leftovers=1
+		done
+
+		if [[ ${leftovers} ]]; then
+			ewarn "The multibuild function has left one or more processes running"
+			ewarn "in the background. Please report a bug."
+		fi
 	done
 	[[ ${ret} -eq 0 && ${lret} -ne 0 ]] && ret=${lret}
 
