@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,6 +52,7 @@ RDEPEND="
 		>=dev-libs/totem-pl-parser-3.4.1 )
 "
 DEPEND="${RDEPEND}
+	lua? ( dev-util/gperf )
 	app-text/docbook-xml-dtd:4.5
 	app-text/yelp-tools
 	>=dev-util/intltool-0.40.0
@@ -77,7 +78,7 @@ src_configure() {
 		--enable-filesystem \
 		--enable-gravatar \
 		--enable-jamendo \
-		--enable-localmetadata \
+		--enable-local-metadata \
 		--enable-magnatune \
 		--enable-metadata-store \
 		--enable-podcasts \
