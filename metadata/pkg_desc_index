@@ -4402,7 +4402,7 @@ dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitoring devices, applications, and services
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
-dev-java/swarmcache 1.0_pre20050106-r1: SwarmCache is a simple but effective distributed cache
+dev-java/swarmcache 1.0_pre20050106-r1 1.0_pre20050106-r2: Cluster-aware Caching for Java
 dev-java/swidgets 0.1.1-r1: Various reusable SWING components
 dev-java/swing-layout 1.0.4 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swing-worker 1.1: Java 1.6 SwingWorker backport for Java 1.5
