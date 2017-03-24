@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Until bug #537330 glib is a reverse dependency of pkgconfig and, then
@@ -15,7 +15,7 @@ GCONF_DEBUG="yes"
 # pkg-config
 GNOME2_LA_PUNT="yes"
 
-inherit autotools bash-completion-r1 gnome2 libtool eutils flag-o-matic	multilib \
+inherit autotools bash-completion-r1 epatch epunt-cxx gnome2 libtool flag-o-matic multilib \
 	pax-utils python-r1 toolchain-funcs versionator virtualx linux-info multilib-minimal
 
 DESCRIPTION="The GLib library of C routines"

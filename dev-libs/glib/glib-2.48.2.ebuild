@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 # pkg-config
 GNOME2_LA_PUNT="yes"
 
-inherit autotools bash-completion-r1 eutils flag-o-matic gnome2 libtool linux-info \
+inherit autotools bash-completion-r1 epunt-cxx flag-o-matic gnome2 libtool linux-info \
 	multilib multilib-minimal pax-utils python-r1  toolchain-funcs versionator virtualx
 
 DESCRIPTION="The GLib library of C routines"
