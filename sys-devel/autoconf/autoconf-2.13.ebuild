@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit toolchain-autoconf
 
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
@@ -25,12 +25,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-destdir.patch
 	"${FILESDIR}"/${P}-test-fixes.patch #146592
 )
-
-if [[ -z ${__EBLITS__} && -n ${FILESDIR} ]] ; then
-	source "${FILESDIR}"/eblits/main.eblit || die
-fi
-src_prepare()   { eblit-run src_prepare   ; }
-src_install()   { eblit-run src_install   ; }
 
 src_configure() {
 	touch configure # make sure configure is newer than configure.in

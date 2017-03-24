@@ -5,14 +5,6 @@
     <email>maksbotan@gentoo.org</email>
     <name>Maxim Koltsov</name>
   </maintainer>
-  <maintainer type="person">
-    <email>skrattaren@yandex.ru</email>
-    <name>Nikolaj Sjujskij</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <use>
     <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
   </use>

@@ -9,11 +9,6 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <maintainer type="person">
-  	<email>skrattaren@yandex.ru</email>
-	<name>Nikolaj Sjujskij</name>
-	<description>Fallback maintaner, please CC on bugs</description>
-  </maintainer>
   <use>
     <flag name="bugzilla">Support bugzilla integration.</flag>
     <flag name="gpg">Support signing with GnuPG.</flag>
