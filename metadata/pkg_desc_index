@@ -1717,7 +1717,7 @@ app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.112 5.113: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20161102.3.27.2-r2 20161130.3.28.1 20161130.3.29.1 20161130.3.29.3 20161130.3.30: Common CA Certificates PEM files
+app-misc/ca-certificates 20161102.3.27.2-r2 20161130.3.28.1 20161130.3.29.1 20161130.3.29.3 20161130.3.30 20161130.3.30-r1: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 2.3 2.5 2.6: Enhanced C version of Carbon relay, aggregator and rewriter
