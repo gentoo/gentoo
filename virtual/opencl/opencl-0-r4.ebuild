@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 CARDS=( fglrx nvidia )
 IUSE="${CARDS[@]/#/video_cards_}"
 
