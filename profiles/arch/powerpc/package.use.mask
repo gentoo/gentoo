@@ -3,6 +3,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (24 Mar 2017)
 # libcxx fails to compile on ppc*, #595744.
+sys-devel/clang default-libcxx
 sys-devel/clang-runtime libcxx
 
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2017)
