@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
@@ -17,5 +17,3 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPENDS="dev-python/setuptools"
-
-#S=${WORKDIR}/${MY_P}
