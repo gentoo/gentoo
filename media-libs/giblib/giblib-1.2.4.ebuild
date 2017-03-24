@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
-inherit toolchain-funcs eutils
+inherit epunt-cxx toolchain-funcs
 
 DESCRIPTION="Giblib, graphics library"
 HOMEPAGE="http://www.linuxbrit.co.uk/giblib/"
