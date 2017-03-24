@@ -1,0 +1,18 @@
+Source: https://bugzilla.redhat.com/show_bug.cgi?id=1150330
+
+From: David Kaufmann <astra@ionic.at>
+Subject: Fix PNG reading
+
+--- a/f_readpng.c	2014-09-15 13:25:26.290813563 +0200
++++ a/f_readpng.c	2014-09-15 14:04:10.241297027 +0200
+@@ -90,8 +90,8 @@
+     png_get_IHDR(png_ptr, info_ptr, &w, &h, &bit_depth, &color_type,
+ 	&interlace_type, &compression_type, &filter_type);
+ 
+-    png_fixed_point gamma = 0.45;
+-    png_get_gAMA_fixed(png_ptr,info_ptr,&gamma);
++    double gamma = 0.45455;
++    png_get_gAMA(png_ptr,info_ptr,&gamma);
+     png_set_gamma(png_ptr, 2.2, gamma);
+ 
+     if (png_get_valid(png_ptr,info_ptr,PNG_INFO_bKGD)) {
