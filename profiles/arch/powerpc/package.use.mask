@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (24 Mar 2017)
+# libcxx fails to compile on ppc*, #595744.
+sys-devel/clang-runtime libcxx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2017)
 # Requires dev-qt/qtwebengine, not keyworded on ppc
 sci-geosciences/gpsbabel gui
