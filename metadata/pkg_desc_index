@@ -14209,7 +14209,7 @@ net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
-net-analyzer/lft 3.77: Layer Four Traceroute (LFT) and WhoB
+net-analyzer/lft 3.77 3.78: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/libnasl 2.2.9-r1: A remote security scanner for Linux (libnasl)
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 9.3-r1 9.3-r2 9999: Check websites for broken links
@@ -14369,7 +14369,7 @@ net-analyzer/tcpdump 4.9.0 9999: A Tool for network monitoring and data acquisit
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
-net-analyzer/tcpreplay 4.1.2-r1 4.2.0: utilities for editing and replaying previously captured network traffic
+net-analyzer/tcpreplay 4.1.2-r1 4.2.1: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3-r1: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5 1.5-r1 1.5-r2: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7-r2 6.6.7_p4_p1: A Tool for analyzing network packet dumps
