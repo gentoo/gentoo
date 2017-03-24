@@ -5420,7 +5420,7 @@ dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol name
 dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.800 1.290.900: Perl module for BSD process resource limit and priority functions
-dev-perl/BSON 1.2.2: BSON serialization and deserialization
+dev-perl/BSON 1.2.2 1.4.0: BSON serialization and deserialization
 dev-perl/BZ-Client 1.72.0 4.400.0 4.400.100: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
