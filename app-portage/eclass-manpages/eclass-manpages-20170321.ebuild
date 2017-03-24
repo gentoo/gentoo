@@ -14,6 +14,16 @@ IUSE=""
 
 DEPEND="app-arch/xz-utils"
 
+# How to create a snapshot and upload it to your dev-space:
+#
+# mkdir eclass-manpages-$(date +%Y%m%d)
+# cp "$(portageq get_repo_path / gentoo)"/eclass/*.eclass eclass-manpages-$(date +%Y%m%d)/
+# tar -cf eclass-manpages-$(date +%Y%m%d).tar eclass-manpages-$(date +%Y%m%d)
+# xz -9e eclass-manpages-$(date +%Y%m%d).tar
+# scp eclass-manpages-$(date +%Y%m%d).tar.xz dev.gentoo.org:public_html/dist/
+#
+# Then copy the ebuild and update your name in SRC_URI ;-).
+
 src_compile() {
 	env ECLASSDIR="${S}" bash "${FILESDIR}"/eclass-to-manpage.sh || die
 }
