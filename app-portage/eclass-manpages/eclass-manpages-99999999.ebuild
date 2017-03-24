@@ -12,6 +12,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+DEPEND="sys-apps/portage"
+
 S=${WORKDIR}
 
 genit() {
