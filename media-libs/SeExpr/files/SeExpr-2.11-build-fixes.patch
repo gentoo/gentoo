@@ -1,0 +1,49 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2016-06-27 21:30:39.000000000 +0100
++++ b/CMakeLists.txt	2017-02-17 09:23:17.842134133 +0000
+@@ -81,10 +81,10 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
+ ## Make modules able to see seexpr library
+ # Setup environment variable to link seexpr
+ SET( SEEXPR_LIBRARIES SeExpr )
+-SET( SEEXPR_EDITOR_LIBRARIES SeExprEditor )
++#SET( SEEXPR_EDITOR_LIBRARIES SeExprEditor )
+ # make it so seexpr can be found
+ INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/SeExpr )
+-INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/SeExprEditor )
++#INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/SeExprEditor )
+ 
+ # The library directory is configured by setting CMAKE_INSTALL_LIBDIR.
+ # Otherwise, the defaults set here are used.
+@@ -96,7 +96,7 @@ ENDIF()
+ 
+ ## Traverse subdirectories
+ ADD_SUBDIRECTORY (src/SeExpr)
+-ADD_SUBDIRECTORY (src/SeExprEditor)
++#ADD_SUBDIRECTORY (src/SeExprEditor)
+ ADD_SUBDIRECTORY (src/doc)
+-ADD_SUBDIRECTORY (src/demos)
+-ADD_SUBDIRECTORY (src/tests)
++#ADD_SUBDIRECTORY (src/demos)
++#ADD_SUBDIRECTORY (src/tests)
+diff -purN a/src/SeExprEditor/CMakeLists.txt b/src/SeExprEditor/CMakeLists.txt
+--- a/src/SeExprEditor/CMakeLists.txt	2016-06-27 21:30:39.000000000 +0100
++++ b/src/SeExprEditor/CMakeLists.txt	2017-02-17 08:59:43.336058132 +0000
+@@ -26,7 +26,8 @@ endmacro()
+ get_build_info(python-site PYTHON_SITE)
+ get_build_info(python-inc PYTHON_INCLUDE_DIR)
+ get_build_info(sip-inc SIP_INCLUDE_DIR)
+-get_build_info(pyqt4-sip PYQT4_SIP)
++find_package(PyQt4)
++set(PYQT4_SIP ${PYQT4_SIP_DIR})
+ 
+ # Other package dependencies...
+ 
+@@ -88,7 +89,7 @@ ENDIF(WIN32)
+     find_program(SIP_EXEC sip)
+     set(SIP_QT_TAG -t Qt_4_5_0)  # fix 'sip: QFileIconProvider is undefined'
+ 
+-    set(CMAKE_CXX_FLAGS "-std=c++0x")
++    set(CMAKE_CXX_FLAGS "-std=c++11")
+     set(CMAKE_INSTALL_PYTHON "${PYTHON_SITE}/SeExpr" )
+     include_directories(${SIP_INCLUDE_DIR} ${PYQT4_SIP}
+                         ${PYTHON_INCLUDE_DIR} ${QT_HEADERS_DIR}/QtCore

@@ -1,6 +1,13 @@
 # PPC Specific use flags
 #
 
+# Jonathan Scruggs <j.scruggs@gmail.com>
+# dependencies not keyworded yet
+field3d
+osl
+partio
+ptex
+
 # Jeroen Roovers <jer@gentoo.org> (22 Sep 2015)
 # sci-libs/mkl is not supported on PPC
 mkl

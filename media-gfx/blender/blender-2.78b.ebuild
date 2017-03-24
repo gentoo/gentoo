@@ -1,5 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python3_5 )
@@ -21,7 +22,7 @@ LICENSE="|| ( GPL-2 BL )"
 KEYWORDS="~amd64 ~x86"
 IUSE="+boost +bullet +dds +elbeem +game-engine +openexr collada colorio \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
-	llvm man ndof nls openal openimageio openmp opensubdiv openvdb \
+	llvm man ndof nls openal openimageio openmp opensubdiv openvdb osl \
 	player sdl sndfile test tiff valgrind"
 
 # OpenCL and nVidia performance is rubbish with Blender
@@ -35,6 +36,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	opensubdiv? ( cuda )
 	nls? ( boost )
 	openal? ( boost )
+	osl? ( cycles llvm )
 	game-engine? ( boost )
 	?? ( ffmpeg libav )"
 
@@ -57,7 +59,7 @@ RDEPEND="${PYTHON_DEPS}
 	boost? ( >=dev-libs/boost-1.62:=[nls?,threads(+)] )
 	collada? ( >=media-libs/opencollada-1.6.18:= )
 	colorio? ( >=media-libs/opencolorio-1.0.9-r2 )
-	cuda? ( dev-util/nvidia-cuda-toolkit:= )
+	cuda? ( =dev-util/nvidia-cuda-toolkit-8.0*:= )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
 	libav? ( >=media-video/libav-11.3:=[x264,mp3,encode,theora,jpeg2k?] )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -87,6 +89,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-cpp/tbb
 		>=dev-libs/c-blosc-1.5.2
 	)
+	osl? ( media-libs/osl:= )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tiff? ( media-libs/tiff:0 )
@@ -100,9 +103,8 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx[latex]
 	)"
 
-PATCHES=( "${FILESDIR}"/${P}-C++11-build-fix.patch
-	  "${FILESDIR}"/${PN}-fix-install-rules.patch
-	  "${FILESDIR}"/${P}-eigen-3.3.1.patch )
+PATCHES=( "${FILESDIR}"/${PN}-fix-install-rules.patch
+	  "${FILESDIR}"/${PN}-2.78-eigen-3.3.1.patch )
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -166,7 +168,7 @@ src_configure() {
 		-DWITH_CUDA=$(usex cuda)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES=$(usex cycles)
-		-DWITH_CYCLES_OSL=OFF
+		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_LLVM=$(usex llvm)
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GAMEENGINE=$(usex game-engine)

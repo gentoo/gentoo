@@ -1,0 +1,88 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-01-07 18:10:57.214728093 +0000
++++ b/CMakeLists.txt	2017-01-07 18:11:06.322736320 +0000
+@@ -37,12 +37,6 @@ cmake_policy(SET CMP0010 NEW)
+ # Input directories must have CMakeLists.txt
+ cmake_policy(SET CMP0014 NEW)
+ 
+-# avoid having empty buildtype
+-set(CMAKE_BUILD_TYPE_INIT "Release")
+-
+-set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Only do Release and Debug" FORCE )
+-mark_as_advanced(CMAKE_CONFIGURATION_TYPES)
+-
+ SET(CMAKE_DEBUG_POSTFIX ""  CACHE STRING "Add this string to as suffix to Debug libraries, e.g.: xml2_d.lib " )
+ 
+ #-----------------------------------------------------------------------------
+@@ -84,7 +78,7 @@ macro(opencollada_add_lib
+ 			message(${name} " WARNING: Shared library support implemented for UNIX-like OS only")
+ 		endif ()
+ 		add_library(${name}_shared SHARED ${sources})
+-		set_target_properties(${name}_shared PROPERTIES OUTPUT_NAME ${name})
++		set_target_properties(${name}_shared PROPERTIES OUTPUT_NAME ${name} SOVERSION ${soversion})
+ 		foreach(target_lib ${target_libs})
+ 			if(TARGET ${target_lib}_shared)
+ 				target_link_libraries(${name}_shared ${target_lib}_shared)
+@@ -158,6 +152,9 @@ set(OPENCOLLADA_VERSION_MINOR 1)
+ set(OPENCOLLADA_VERSION_PATCH 0)
+ set(OPENCOLLADA_VERSION ${OPENCOLLADA_VERSION_MAJOR}.${OPENCOLLADA_VERSION_MINOR}.${OPENCOLLADA_VERSION_PATCH})
+ 
++#-----------------------------------------------------------------------------
++# Generic install paths
++include(GNUInstallDirs)
+ 
+ #-----------------------------------------------------------------------------
+ # Compiler warnings.
+@@ -190,9 +187,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}
+ #-----------------------------------------------------------------------------
+ # Install vars
+ 
+-set(OPENCOLLADA_INST_INCLUDE ${CMAKE_INSTALL_PREFIX}/include/opencollada)
+-set(OPENCOLLADA_INST_LIBRARY ${CMAKE_INSTALL_PREFIX}/lib/opencollada)
+-set(OPENCOLLADA_INST_CMAKECONFIG ${OPENCOLLADA_INST_LIBRARY}/cmake)
++set(OPENCOLLADA_INST_INCLUDE ${CMAKE_INSTALL_FULL_INCLUDEDIR}/opencollada)
++set(OPENCOLLADA_INST_LIBRARY ${CMAKE_INSTALL_FULL_LIBDIR}/opencollada)
++set(OPENCOLLADA_INST_CMAKECONFIG ${CMAKE_INSTALL_FULL_LIBDIR}/opencollada/cmake)
+ 
+ 
+ #-----------------------------------------------------------------------------
+@@ -236,8 +233,7 @@ endif ()
+ 
+ if (USE_EXPAT)
+ 	add_definitions(-DGENERATEDSAXPARSER_XMLPARSER_EXPAT)
+-	message("FATAL: EXPAT support not implemented")
+-	# TODO:: use externals
++	set(LIBEXPAT_LIBRARIES expat)
+ endif ()
+ 
+ if(USE_STATIC_MSVC_RUNTIME)
+@@ -270,11 +266,11 @@ else ()  # if pcre not found building it
+ endif ()
+ 
+ # building required libs
++add_subdirectory(${EXTERNAL_LIBRARIES}/UTF)                                    
++add_subdirectory(${EXTERNAL_LIBRARIES}/MathMLSolver)
++add_subdirectory(${EXTERNAL_LIBRARIES}/zlib)
+ add_subdirectory(common/libftoa)
+ add_subdirectory(common/libBuffer)
+-add_subdirectory(${EXTERNAL_LIBRARIES}/UTF)
+-add_subdirectory(${EXTERNAL_LIBRARIES}/MathMLSolver)
+-add_subdirectory(${EXTERNAL_LIBRARIES}/zlib)
+ 
+ # building OpenCOLLADA libs
+ add_subdirectory(COLLADABaseUtils)
+diff -purN a/common/libBuffer/CMakeLists.txt b/common/libBuffer/CMakeLists.txt
+--- a/common/libBuffer/CMakeLists.txt	2016-11-30 17:19:38.000000000 +0000
++++ b/common/libBuffer/CMakeLists.txt	2017-01-07 18:05:50.306440325 +0000
+@@ -28,7 +28,10 @@ set(SRC
+ 	include/performanceTest/performanceTest.h
+ )
+ 
+-set(TARGET_LIBS ftoa)
++set(TARGET_LIBS
++	ftoa
++	UTF
++)
+ 
+ include_directories(
+ 	${libBuffer_include_dirs}
