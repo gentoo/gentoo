@@ -40,6 +40,8 @@ src_prepare() {
 	# make it support multilib
 	sed -i "s/\ lib)/\ $(get_libdir))/g" lib/CMakeLists.txt || die
 	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die
+	# make the require work
+	sed -i 's/\${LIBFACTER_INSTALL_DESTINATION}\///g' lib/facter.rb.in || die
 	# patches
 	epatch_user
 }
