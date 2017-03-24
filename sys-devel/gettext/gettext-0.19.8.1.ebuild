@@ -5,7 +5,7 @@
 
 EAPI="5"
 
-inherit eutils mono-env libtool java-pkg-opt-2 multilib-minimal
+inherit epatch epunt-cxx ltprune mono-env libtool java-pkg-opt-2 multilib-minimal
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
