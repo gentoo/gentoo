@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
+# Masked until Mozilla and Chrome agreed how to handle
+# Symantec trust issues properly (bug #613714)
+=app-misc/ca-certificates-20161130.3.30-r1
+
 # Johannes Huber <johu@gentoo.org> (22 Mar 2017)
 # Masked for removal in 14 days. Echonest service is gone
 # since 2016/05/31. No reverse dependencies. Bug #587972.
