@@ -5699,7 +5699,7 @@ dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availability
-dev-perl/Devel-CheckLib 1.60.0 1.70.0: check that a library is available
+dev-perl/Devel-CheckLib 1.60.0 1.70.0 1.90.0: check that a library is available
 dev-perl/Devel-Cover 1.230.0 1.230.0-r1: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.18: Adding keywords to perl, in perl
