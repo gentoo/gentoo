@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,10 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-solaris"
 IUSE="minimal"
 
-DEPEND="
+RDEPEND="
 	!minimal? (
 		virtual/perl-Digest
-		dev-perl/Module-Signature
 	)
 	>=dev-perl/Archive-Zip-1.00
 	>=virtual/perl-AutoLoader-5.660.200
@@ -24,7 +23,7 @@ DEPEND="
 	>=virtual/perl-IO-Compress-1.300.0
 	>=dev-perl/PAR-Dist-0.320.0
 "
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 "
 src_test() {
