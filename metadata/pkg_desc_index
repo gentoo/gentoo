@@ -6233,7 +6233,7 @@ dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
 dev-perl/Net-CUPS 0.630.0: CUPS C API Interface
 dev-perl/Net-DBus 1.1.0: Perl extension for the DBus message system
-dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0: Perl Net::DNS - Perl DNS Resolver Module
+dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0 1.90.0: Perl Net::DNS - Perl DNS Resolver Module
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
 dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
