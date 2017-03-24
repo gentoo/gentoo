@@ -11861,7 +11861,7 @@ kde-apps/ksirk 16.08.3 16.12.3: Port of the board game risk
 kde-apps/ksnakeduel 16.08.3 16.12.3: KDE Tron game
 kde-apps/kspaceduel 16.08.3 16.12.3: Space Game by KDE
 kde-apps/ksquares 16.08.3 16.12.3: KDE clone of the game squares
-kde-apps/kstars 16.08.3 16.12.3: Desktop Planetarium
+kde-apps/kstars 16.08.3 16.12.3-r1: Desktop Planetarium
 kde-apps/kstart 16.04.3: KDE: Utility to launch applications with special window properties
 kde-apps/ksudoku 16.08.3 16.12.3: Sudoku by KDE
 kde-apps/ksystemlog 16.08.3 16.12.3: System log viewer by KDE
