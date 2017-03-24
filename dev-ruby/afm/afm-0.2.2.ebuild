@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.rdoc"
@@ -16,8 +16,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
-
-ruby_add_bdepend "test? ( dev-ruby/shoulda )"
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/s/^/#/" Rakefile test/helper.rb || die
