@@ -219,3 +219,10 @@ src_configure() {
 
 	kde4-base_src_configure
 }
+
+src_install() {
+	kde4-base_src_install
+
+	# bug 613414
+	QA_DT_NEEDED="usr/lib64/libkoversion.so.14.0.0"
+}
