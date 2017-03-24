@@ -6702,7 +6702,7 @@ dev-perl/Tk-CursorControl 0.400.0-r1: Manipulate the mouse cursor programmatical
 dev-perl/Tk-JPEG-Lite 2.14.30-r1 2.15.0: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
 dev-perl/Tree-DAG_Node 1.60.0-r1 1.290.0: (Super)class for representing nodes in a tree
-dev-perl/Tree-Simple 1.180.0-r1 1.270.0 1.290.0: A simple tree object
+dev-perl/Tree-Simple 1.180.0-r1 1.270.0 1.290.0 1.300.0: A simple tree object
 dev-perl/Try-Tiny 0.220.0 0.240.0: Minimal try/catch with proper localization of $@
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
