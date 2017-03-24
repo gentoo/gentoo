@@ -3,7 +3,7 @@
 
 EAPI=4
 
-inherit eutils libtool
+inherit epatch epunt-cxx libtool
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
 HOMEPAGE="https://sourceforge.net/projects/giflib/"
