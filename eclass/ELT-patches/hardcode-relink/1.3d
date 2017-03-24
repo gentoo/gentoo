@@ -1,8 +1,0 @@
---- ltmain.sh
-+++ ltmain.sh
-@@ -2208,4 +2208,4 @@
- 	    relink)
--	      if test "$hardcode_direct" = yes; then
-+	      if false && test "$hardcode_direct" = yes; then
- 		add="$dir/$linklib"
- 	      elif test "$hardcode_minus_L" = yes; then
