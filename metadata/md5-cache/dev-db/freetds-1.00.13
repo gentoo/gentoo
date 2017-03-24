@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=gnutls? ( net-libs/gnutls ) iconv? ( virtual/libiconv ) iodbc? ( dev-db/libiodbc ) kerberos? ( virtual/krb5 ) odbc? ( dev-db/unixODBC ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=gnutls? ( net-libs/gnutls ) iconv? ( virtual/libiconv ) iodbc? ( dev-db/libiodbc ) kerberos? ( virtual/krb5 ) odbc? ( dev-db/unixODBC ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Tabular Datastream Library
 EAPI=6
 HOMEPAGE=http://www.freetds.org/
@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.13.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=979c66fadc3cfb0a7b84f20017812ee8

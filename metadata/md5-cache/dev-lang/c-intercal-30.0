@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst postrm prepare
-DEPEND=emacs? ( virtual/emacs ) sys-devel/flex virtual/yacc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=emacs? ( virtual/emacs ) sys-devel/flex virtual/yacc >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=C-INTERCAL - INTERCAL to binary (via C) compiler
 EAPI=6
 HOMEPAGE=http://www.catb.org/~esr/intercal/
@@ -10,5 +10,5 @@ RDEPEND=emacs? ( virtual/emacs )
 SLOT=0
 SRC_URI=http://www.catb.org/~esr/intercal/intercal-0.30.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	elisp-common	19ff54b35acd0bf2a14831a308a57753	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	elisp-common	19ff54b35acd0bf2a14831a308a57753	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=07bf1a0dadb5ba8f9b8221631a46e939

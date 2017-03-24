@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=>=dev-libs/glib-2.10 x11-libs/gtk+:3[X] x11-libs/libwnck:3 x11-libs/libX11 virtual/pkgconfig dev-util/intltool sys-devel/gettext gnome-base/gnome-common !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/glib-2.10 x11-libs/gtk+:3[X] x11-libs/libwnck:3 x11-libs/libX11 virtual/pkgconfig dev-util/intltool sys-devel/gettext gnome-base/gnome-common >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A Window Matching utility similar to Sawfish's Matched Windows feature
 EAPI=6
 HOMEPAGE=http://www.burtonini.com/blog/tag/devilspie.html
@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/glib-2.10 x11-libs/gtk+:3[X] x11-libs/libwnck:3 x11-libs/libX
 SLOT=0
 SRC_URI=http://www.burtonini.com/computing/devilspie-0.23.tar.xz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=29dff0a9b0decb7f136fc00b65ad2852

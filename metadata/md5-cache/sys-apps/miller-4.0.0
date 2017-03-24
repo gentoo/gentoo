@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare test
-DEPEND=sys-devel/flex !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-devel/flex >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 EAPI=6
 HOMEPAGE=http://johnkerl.org/miller
@@ -9,5 +9,5 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=https://github.com/johnkerl/miller/archive/v4.0.0.tar.gz -> miller-4.0.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=c0a3fa2748eea6602a998ea1844a9979

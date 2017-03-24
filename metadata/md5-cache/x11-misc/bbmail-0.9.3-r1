@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=dev-lang/perl x11-wm/blackbox x11-libs/libX11 x11-libs/libXext x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lang/perl x11-wm/blackbox x11-libs/libX11 x11-libs/libXext x11-proto/xproto >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=blackbox mail notification
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/bbtools
@@ -9,5 +9,5 @@ RDEPEND=dev-lang/perl x11-wm/blackbox x11-libs/libX11 x11-libs/libXext
 SLOT=0
 SRC_URI=mirror://sourceforge/bbtools/bbmail-0.9.3.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=0a8efbed2a2426cde2098b45ae9dec03

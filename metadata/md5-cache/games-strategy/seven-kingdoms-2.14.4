@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
-DEPEND=media-libs/libsdl[X,video] media-libs/openal network? ( media-libs/sdl-net ) !games-strategy/seven-kingdoms-data !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsdl[X,video] media-libs/openal network? ( media-libs/sdl-net ) !games-strategy/seven-kingdoms-data >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Seven Kingdoms: Ancient Adversaries
 EAPI=5
 HOMEPAGE=http://7kfans.com/
@@ -10,5 +10,5 @@ RDEPEND=media-libs/libsdl[X,video] media-libs/openal network? ( media-libs/sdl-n
 SLOT=0
 SRC_URI=mirror://sourceforge/skfans/7kaa-source-2.14.4.tar.bz2 https://dev.gentoo.org/~pinkbyte/distfiles/7kaa.png
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_test:autotools-utils src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	base	df2aa567b3f0595aae0d0923889f7631	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	games	2bb3ede665927a68ffdb7c41eec7efde	libtool	48b1b9f6194d2842456514d1184ca72e	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	games	2bb3ede665927a68ffdb7c41eec7efde	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=1b5754b01ca8abdf02cd4f49f93e7658

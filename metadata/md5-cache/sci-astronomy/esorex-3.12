@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=>=sci-astronomy/cpl-6.3:= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sci-astronomy/cpl-6.3:= >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=ESO Recipe Execution Tool to exec cpl scripts
 EAPI=6
 HOMEPAGE=http://www.eso.org/sci/software/cpl/esorex.html
@@ -9,5 +9,5 @@ RDEPEND=>=sci-astronomy/cpl-6.3:=
 SLOT=0
 SRC_URI=ftp://ftp.eso.org/pub/dfs/pipelines/libraries/esorex/esorex-3.12.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=9b66a5d852c00a8e46cc22e2d0545519

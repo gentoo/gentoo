@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=!sys-libs/glibc !sys-apps/man-pages
+DEPEND=!sys-libs/glibc !sys-apps/man-pages >=app-portage/elt-patches-20170317
 DESCRIPTION=GNU charset conversion library for libc which doesn't implement it
 EAPI=4
 HOMEPAGE=https://www.gnu.org/software/libiconv/
@@ -9,5 +9,5 @@ RDEPEND=!sys-libs/glibc !sys-apps/man-pages
 SLOT=0
 SRC_URI=mirror://gnu/libiconv/libiconv-1.14.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=ad6f04400bf4b46441c82612cd8f386d

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=!<=media-libs/libmp4v2-1.9.1:0 sys-apps/sed
+DEPEND=!<=media-libs/libmp4v2-1.9.1:0 sys-apps/sed >=app-portage/elt-patches-20170317
 DESCRIPTION=Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 EAPI=4
 HOMEPAGE=https://code.google.com/p/mp4v2/
@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=1
 SRC_URI=https://mp4v2.googlecode.com/files/mp4v2-1.9.1.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=3d520cf323527b29b471b48b23ce38dc

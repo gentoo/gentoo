@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test
-DEPEND=fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl:= ) php? ( dev-lang/php:=[cli] ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) tcl? ( dev-lang/tcl:0= ) usb? ( virtual/libusb:0 ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) perl? ( dev-lang/swig ) php? ( dev-lang/swig ) python? ( dev-lang/swig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl:= ) php? ( dev-lang/php:=[cli] ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) tcl? ( dev-lang/tcl:0= ) usb? ( virtual/libusb:0 ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) perl? ( dev-lang/swig ) php? ( dev-lang/swig ) python? ( dev-lang/swig ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Access 1-Wire devices like a filesystem
 EAPI=6
 HOMEPAGE=http://owfs.org/ https://sourceforge.net/projects/owfs/
@@ -11,5 +11,5 @@ REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 SLOT=0/1
 SRC_URI=mirror://sourceforge/owfs/owfs-3.1p1.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	distutils-r1	039ba10839816478cfb070fdeb053906	libtool	48b1b9f6194d2842456514d1184ca72e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	distutils-r1	039ba10839816478cfb070fdeb053906	libtool	e32ea84bf82cf8987965b574672dba93	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
 _md5_=1ff04244d4b146892a609d851e681498

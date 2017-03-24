@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare
-DEPEND=virtual/pkgconfig test? ( dev-libs/check ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=virtual/pkgconfig test? ( dev-libs/check ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=command-line utility to show process environment
 EAPI=6
 HOMEPAGE=https://github.com/jamesodhunt/procenv
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://github.com/jamesodhunt/procenv/archive/0.49.tar.gz -> procenv-0.49.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=60cde78fafb56112ecdf50d7a1d96fea
