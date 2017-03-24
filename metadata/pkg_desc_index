@@ -5472,7 +5472,7 @@ dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/CSS-Tiny 1.200.0: Read/Write .css files with as little code as possible
 dev-perl/Cache 2.40.0-r1 2.110.0: the Cache interface
 dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
-dev-perl/Cache-FastMmap 1.400.0 1.440.0: Uses an mmaped file to act as a shared memory interprocess cache
+dev-perl/Cache-FastMmap 1.400.0 1.440.0 1.450.0: Uses an mmaped file to act as a shared memory interprocess cache
 dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Memcached-Fast 0.230.0: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
@@ -6789,7 +6789,7 @@ dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing 
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-LibXML 2.12.100 2.12.600 2.12.800 2.12.800-r1: Perl binding for libxml2
+dev-perl/XML-LibXML 2.12.100 2.12.600 2.12.800 2.12.800-r1 2.12.900: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.940.0 1.950.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
