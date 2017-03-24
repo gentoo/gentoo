@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/eclass-manpages-20170321.tar.xz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=48f5d11dc4c01377a6f32c858d418737
+_md5_=554c7e7bfef39700ef93f04c6e54e062
