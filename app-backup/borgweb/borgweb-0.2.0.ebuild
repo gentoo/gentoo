@@ -3,12 +3,12 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5} )
 
 inherit distutils-r1
 
-DESCRIPTION="Pure-Python Implementation of the AES block-cipher and common modes of operation"
-HOMEPAGE="https://pypi.python.org/pypi/pyaes"
+DESCRIPTION="Browser-based user interface for BorgBackup"
+HOMEPAGE="https://pypi.python.org/pypi/borgweb"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -17,3 +17,4 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPENDS="dev-python/setuptools"
+RDEPENDS="app-backup/borgbackup"

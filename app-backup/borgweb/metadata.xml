@@ -6,6 +6,6 @@
     <name>Anthony G. Basile</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">pyaes</remote-id>
+    <remote-id type="pypi">borgweb</remote-id>
   </upstream>
 </pkgmetadata>
