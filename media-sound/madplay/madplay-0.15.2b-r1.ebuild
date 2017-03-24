@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
-inherit autotools eutils
+inherit autotools epatch epunt-cxx
 
 DESCRIPTION="The MAD audio player"
 HOMEPAGE="http://www.underbit.com/products/mad/"
