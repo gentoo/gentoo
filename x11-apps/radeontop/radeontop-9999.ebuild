@@ -15,7 +15,8 @@ IUSE="nls video_cards_amdgpu"
 
 RDEPEND="
 	sys-libs/ncurses:0=
-	x11-libs/libdrm
+	x11-libs/libdrm[video_cards_radeon]
+	video_cards_amdgpu? ( x11-libs/libdrm[video_cards_amdgpu] )
 	x11-libs/libpciaccess
 	x11-libs/libxcb
 	nls? (
