@@ -1,0 +1,42 @@
+--- a/src/org/jvnet/lafplugin/XMLElement.java	2017-03-24 19:08:40.320048066 +0000
++++ b/src/org/jvnet/lafplugin/XMLElement.java	2017-03-24 19:10:18.490049991 +0000
+@@ -478,9 +478,9 @@
+         this.children = new Vector();
+         this.entities = entities;
+         this.lineNr = 0;
+-        Enumeration enum = this.entities.keys();
+-        while (enum.hasMoreElements()) {
+-            Object key = enum.nextElement();
++        Enumeration myEnum = this.entities.keys();
++        while (myEnum.hasMoreElements()) {
++            Object key = myEnum.nextElement();
+             Object value = this.entities.get(key);
+             if (value instanceof String) {
+                 value = ((String) value).toCharArray();
+@@ -2168,10 +2168,10 @@
+         writer.write('<');
+         writer.write(this.name);
+         if (! this.attributes.isEmpty()) {
+-            Enumeration enum = this.attributes.keys();
+-            while (enum.hasMoreElements()) {
++            Enumeration myEnum = this.attributes.keys();
++            while (myEnum.hasMoreElements()) {
+                 writer.write(' ');
+-                String key = (String) enum.nextElement();
++                String key = (String) myEnum.nextElement();
+                 String value = (String) this.attributes.get(key);
+                 writer.write(key);
+                 writer.write('='); writer.write('"');
+@@ -2189,9 +2189,9 @@
+             writer.write('/'); writer.write('>');
+         } else {
+             writer.write('>');
+-            Enumeration enum = this.enumerateChildren();
+-            while (enum.hasMoreElements()) {
+-                XMLElement child = (XMLElement) enum.nextElement();
++            Enumeration myEnum = this.enumerateChildren();
++            while (myEnum.hasMoreElements()) {
++                XMLElement child = (XMLElement) myEnum.nextElement();
+                 child.write(writer);
+             }
+             writer.write('<'); writer.write('/');
