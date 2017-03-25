@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 PATCH_VERSION="5"
 
 DESCRIPTION="Hibernate script supporting multiple suspend methods"
@@ -27,10 +25,9 @@ DOCS=(
 	SCRIPTLET-API
 )
 
-src_prepare() {
-	default
-	epatch "${WORKDIR}/${PV}/"*.patch
-}
+PATCHES=(
+	"${WORKDIR}/${PV}"
+)
 
 src_install() {
 	BASE_DIR="${D}" \
