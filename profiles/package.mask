@@ -264,23 +264,6 @@ dev-vcs/veracity
 >=dev-python/qscintilla-python-2.10
 >=x11-libs/qscintilla-2.10
 
-# Michael Palimaka <kensington@gentoo.org> (22 Feb 2017)
-# Fails to build. Dead upstream.
-# Masked for removal in 30 days. Bug #520890.
-x11-misc/xrmap
-
-# Michał Górny <mgorny@gentoo.org> (22 Feb 2017)
-# The Ada subsystem in Gentoo is not maintained for a long time.
-# Therefore, it is being reduced to the minimal set of packages needed.
-# Removal in 30 days. Bug #593398.
-dev-ada/asis-gcc
-dev-ada/charles
-
-# Michael Palimaka <kensington@gentoo.org> (22 Feb 2017)
-# Doesn't work. Dead upstream. Unmaintained.
-# Masked for removal on 30 days. Bug #609754.
-x11-misc/bbappconf
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (19 Feb 2017)
 # Dead upstream for >3 years. Closed source. Bundles outdated
 # libraries that certainly have known security issues (e.g.,
@@ -288,26 +271,9 @@ x11-misc/bbappconf
 app-text/acroread
 media-fonts/acroread-asianfonts
 
-# Hans de Graaff <graaff@gentoo.org> (19 Feb 2017)
-# Mask old jenkins lts version for removal in 30 days due to
-# security bugs: bug 607932. Please migrate to jenkins 2.x.
-<dev-util/jenkins-bin-2
-
 # Michael Palimaka <kensington@gentoo.org> (19 Feb 2017)
 # Revdeps need patching.
 >=media-gfx/libopenraw-0.1.0
-
-# David Seifert <soap@gentoo.org> (18 Feb 2017)
-# Awful codebase, pointer-to-int-casts, SDL1
-# Masked for removal in 30 days
-games-puzzle/kiki
-
-# Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
-# Old gstreamer 0.10 version, which is security vulnerable.
-# Use gstreamer:1.0 with media-plugins/gst-plugins-libav
-# instead (despite the name, it uses media-video/ffmpeg too).
-# Masked for removal in 30 days. Bug #594878
-media-plugins/gst-plugins-ffmpeg
 
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
