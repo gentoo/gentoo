@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils toolchain-funcs python-single-r1
+inherit toolchain-funcs python-single-r1
 
 DESCRIPTION="tools to create and apply deltarpms"
 HOMEPAGE="http://gitorious.org/deltarpm/deltarpm"
