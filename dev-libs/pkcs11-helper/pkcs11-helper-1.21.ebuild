@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils
+inherit ltprune
 
 DESCRIPTION="PKCS#11 helper library"
 HOMEPAGE="https://github.com/OpenSC/pkcs11-helper"
