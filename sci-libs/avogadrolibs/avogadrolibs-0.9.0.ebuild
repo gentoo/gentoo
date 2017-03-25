@@ -62,5 +62,5 @@ src_install() {
 	cmake-utils_src_install
 
 	# TODO: bundles jsoncpp
-	rm "${D}"/usr/lib64/libjsoncpp.a || die
+	rm "${ED%/}"/usr/lib64/libjsoncpp.a || die
 }
