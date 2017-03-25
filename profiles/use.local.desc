@@ -8382,6 +8382,7 @@ x11-misc/rodent:experimental - Build experimental plugins (obexfs, curlftpfs, ec
 x11-misc/rofi:windowmode - Enable normal window mode
 x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
 x11-misc/sddm:consolekit - Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)
+x11-misc/sddm:elogind - Use sys-auth/elogind for session tracking.
 x11-misc/sent:savedconfig - Without a saved config.h, this package depends on media-gfx/farbfeld for image conversions
 x11-misc/shutter:drawing - Enables drawing tool
 x11-misc/slim:consolekit - Enable native consolekit support
