@@ -1,0 +1,39 @@
+From 3609f9687728f2f7f8cdb33723c1d44660b81004 Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Thu, 23 Mar 2017 12:28:12 +0100
+Subject: [PATCH] c-e: improve error message for non-existing certificate file
+
+When the connection references a certifiate file that does not exist,
+the GUI's file picker button shows an "(None)", however the "Save"
+button is disable with message:
+
+  "Invalid setting Wi-Fi Security: invalid EAP-PEAP CA certificate: unspecified error validating eap-method file"
+
+Slightly improve that by showing instead
+
+  "Invalid setting Wi-Fi Security: invalid EAP-PEAP CA certificate: file "..." does not exist"
+
+The solution is not optimal because the GUI shows file "(None)",
+with is some hidden information that makes the connection invalid.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=780423
+(cherry picked from commit b603844fc50679fc8683227bfa0f3b6c8e77c2c7)
+---
+ src/wireless-security/eap-method.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/wireless-security/eap-method.c b/src/wireless-security/eap-method.c
+index cb733e8..b5c6609 100644
+--- a/src/wireless-security/eap-method.c
++++ b/src/wireless-security/eap-method.c
+@@ -237,6 +237,7 @@ eap_method_validate_filepicker (GtkBuilder *builder,
+ 
+ 	if (!g_file_test (filename, G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR)) {
+ 		success = FALSE;
++		g_set_error (error, NMA_ERROR, NMA_ERROR_GENERIC, _("file \"%s\" does not exist"), filename);
+ 		goto out;
+ 	}
+ 
+-- 
+2.10.1
+
