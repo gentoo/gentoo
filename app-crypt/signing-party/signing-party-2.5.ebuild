@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs autotools
+inherit toolchain-funcs autotools
 
 DESCRIPTION="A collection of several tools related to OpenPGP"
 HOMEPAGE="http://pgp-tools.alioth.debian.org/"
@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}
 	net-mail/qprint
 	>=dev-perl/MailTools-1.62
 	dev-perl/Net-IDN-Encode
+	app-crypt/libmd
 	virtual/mailx
 	virtual/mta
 	|| (
