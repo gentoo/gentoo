@@ -1,0 +1,30 @@
+From c0ceb8a83de5d5a2be0f842eafd84024bfeea6ed Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Fri, 24 Mar 2017 00:20:12 +0100
+Subject: [PATCH] Set default framebuffer plugin to "qt" instead of "x11"
+
+Make default "qt" framebuffer plugin instead of "x11". Workaround for bug https://bugs.kde.org/show_bug.cgi?id=356782
+Not a proper fix, ideally "x11" plugin needs to be fixed.
+
+REVIEW: 129721
+BUGS: 356782
+---
+ krfb/krfb.kcfg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/krfb/krfb.kcfg b/krfb/krfb.kcfg
+index e0683d8..309d561 100644
+--- a/krfb/krfb.kcfg
++++ b/krfb/krfb.kcfg
+@@ -46,7 +46,7 @@
+   <group name="FrameBuffer">
+     <entry name="preferredFrameBufferPlugin" type="String">
+       <label>Preferred Frame Buffer Plugin</label>
+-      <default>x11</default>
++      <default>qt</default>
+     </entry>
+   </group>
+ </kcfg>
+-- 
+2.10.2
+
