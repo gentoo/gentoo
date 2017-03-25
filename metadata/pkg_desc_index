@@ -6585,6 +6585,7 @@ dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
 dev-perl/Test-Exception 0.430.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
+dev-perl/Test-File 1.442.0: Test file attributes
 dev-perl/Test-File-ShareDir 1.1.1-r1 1.1.2: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Files 0.140.0: A Test::Builder based module to ease testing with files and dirs
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
@@ -6631,6 +6632,7 @@ dev-perl/Test-Warn 0.300.0-r1 0.310.0: Perl extension to test methods for warnin
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.180.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
+dev-perl/Test-utf8 1.10.0: Handy utf8 tests
 dev-perl/Test2-Plugin-NoWarnings 0.50.0: Fail if tests warn
 dev-perl/Test2-Suite 0.0.60: A rich set of tools built upon the Test2 framework
 dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styles
