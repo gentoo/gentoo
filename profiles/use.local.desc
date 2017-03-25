@@ -6949,7 +6949,7 @@ sci-libs/armadillo:superlu - Use SuperLU for sparse linear equation solving sci-
 sci-libs/armadillo:tbb - Use matrix allocation from the Threads Building Blocks dev-cpp/tbb
 sci-libs/arprec:qd - Use sci-libs/qd for quad-double datatype
 sci-libs/atlas:generic - Build atlas assuming a fairly generic architecture (sse2 for x86, core2 for amd64)
-sci-libs/avogadrolibs:static-plugins - build all plugins statically into main plugin modules
+sci-libs/avogadrolibs:static-plugins - Build all plugins statically into main plugin modules
 sci-libs/avogadrolibs:vtk - include vtk support
 sci-libs/ceres-solver:c++11 - Build ceres-solver using the C++11 standard
 sci-libs/ceres-solver:cxsparse - Enable simple support for sparse matrix algebra from sci-libs/cxsparse with no LAPACK dependencies

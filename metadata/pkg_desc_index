@@ -16001,7 +16001,7 @@ sci-chemistry/aria 2.3.2_p20130826: Automated NOE assignment and NMR structure c
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
 sci-chemistry/avogadro 1.0.3-r2 1.1.0 1.1.1: Advanced molecular editor that uses Qt4 and OpenGL
-sci-chemistry/avogadro2 0.7.2 0.8.0: Advanced molecule editor and visualizer 2
+sci-chemistry/avogadro2 0.7.2 0.8.0 0.9.0: Advanced molecule editor and visualizer 2
 sci-chemistry/azara 2.8-r5: A suite of programmes to process and view NMR data
 sci-chemistry/ball 1.4.2-r1: Biochemical Algorithms Library
 sci-chemistry/bkchem 0.14.0_pre2-r1: Chemical drawing program
@@ -16238,7 +16238,7 @@ sci-libs/armadillo 6.200.3 7.500.2-r1 7.800.2: Streamlined C++ linear algebra li
 sci-libs/arpack 3.1.5 3.4.0: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
-sci-libs/avogadrolibs 0.7.2-r1 0.8.0: Advanced molecule editor and visualizer 2 - libraries
+sci-libs/avogadrolibs 0.7.2-r1 0.8.0 0.9.0: Advanced molecule editor and visualizer 2 - libraries
 sci-libs/beagle 3.0.3-r1: Open BEAGLE, a versatile EC/GA/GP framework
 sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra Subprograms F77 reference implementations
 sci-libs/bliss 0.73: A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs
