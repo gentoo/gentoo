@@ -18855,7 +18855,7 @@ x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
 x11-misc/touchcal 0.50 0.80: Touchscreen calibration utility
 x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
-x11-misc/trayer 1.0-r2: Lightweight GTK+ based systray for UNIX desktop
+x11-misc/trayer 1.0-r2 1.0-r3: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.5 1.1.6-r1: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/treeline 1.4.1-r1 2.0.2 2.1.1: TreeLine is a structured information storage program
 x11-misc/unclutter 8-r2 8-r4: Hides mouse pointer while not in use
