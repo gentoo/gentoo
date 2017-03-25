@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools qmake-utils multilib eutils flag-o-matic toolchain-funcs
+inherit autotools qmake-utils multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="Simple passphrase entry dialogs which utilize the Assuan protocol"
 HOMEPAGE="http://gnupg.org/aegypten2/index.html"
