@@ -4247,7 +4247,7 @@ dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r2: Kunststoff look'n'feel Java library
 dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
-dev-java/laf-plugin 0.2-r1 1.1: A generic plugin framework for look-and-feels
+dev-java/laf-plugin 0.2-r1 0.2-r2 1.1-r1: Look'n'feel Java library
 dev-java/ldapsdk 4.1.7-r4: Netscape Directory SDK for Java
 dev-java/leiningen-bin 2.7.0 2.7.1: Automate Clojure projects without setting your hair on fire
 dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife for OSGi
