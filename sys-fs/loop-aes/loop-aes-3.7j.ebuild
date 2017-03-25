@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils linux-mod
+inherit linux-mod
 
 MY_P="${PN/aes/AES}-v${PV}"
 
