@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit eutils
 
 DESCRIPTION="A puzzle-solving, brain-stretching game for all ages"
 HOMEPAGE="http://www.tuxradar.com/brainparty"
@@ -10,7 +10,7 @@ SRC_URI="https://launchpad.net/brainparty/trunk/${PV}/+download/${PN}${PV}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,opengl,video]
@@ -22,7 +22,15 @@ RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${PN}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-savegame.patch
+	"${FILESDIR}"/${P}-gcc49.patch
+	"${FILESDIR}"/${P}-gnu_cxx-hash.patch
+)
+
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's/$(LIBS) $(OSXCOMPAT) $(OBJFILES)/$(OSXCOMPAT) $(OBJFILES) $(LIBS)/' \
 		-e 's/CXXFLAGS = .*/CXXFLAGS+=-c/' \
@@ -30,20 +38,14 @@ src_prepare() {
 		-e '/-o brainparty/s/INCLUDES) /&$(LDFLAGS) /' \
 		Makefile || die
 	sed -i \
-		"/^int main(/ a\\\\tchdir(\"${GAMES_DATADIR}/${PN}\");\n" \
+		"/^int main(/ a\\\\tchdir(\"/usr/share/${PN}\");\n" \
 		main.cpp || die
-	epatch \
-		"${FILESDIR}"/${P}-savegame.patch \
-		"${FILESDIR}"/${P}-gcc49.patch \
-		"${FILESDIR}"/${P}-gnu_cxx-hash.patch
-
 }
 
 src_install() {
-	dogamesbin brainparty
-	insinto "${GAMES_DATADIR}/${PN}/Content"
-	doins Content/*
+	dobin brainparty
+	insinto "/usr/share/${PN}/Content"
+	doins -r Content/.
 	newicon Content/icon.bmp ${PN}.bmp
 	make_desktop_entry brainparty "Brain Party" /usr/share/pixmaps/${PN}.bmp
-	prepgamesdirs
 }
