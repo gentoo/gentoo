@@ -111,7 +111,6 @@ src_install() {
 			tools/{convert-from-106,gpg-check-pattern} \
 			tools/{gpg-zip,gpgconf,gpgsplit,lspgpot,mail-signed-keys} \
 			tools/make-dns-cert
-	emake DESTDIR="${ED}" -f doc/Makefile uninstall-nobase_dist_docDATA
 
 	dosym gpg2 /usr/bin/gpg
 	dosym gpgv2 /usr/bin/gpgv
