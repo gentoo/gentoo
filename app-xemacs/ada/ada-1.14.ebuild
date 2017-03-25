@@ -1,13 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-SLOT="0"
-IUSE=""
+EAPI=6
+
+XEMACS_PKG_CAT=standard
+
+inherit xemacs-packages-r1
+
 DESCRIPTION="Ada language support"
-PKG_CAT="standard"
 
-RDEPEND="app-xemacs/xemacs-base
-"
+SLOT="0"
 KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+IUSE=""
 
-inherit xemacs-packages
+RDEPEND="app-xemacs/xemacs-base"
