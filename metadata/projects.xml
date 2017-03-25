@@ -2847,10 +2847,15 @@ developers and volunteer mentors.</description>
       <name>Anthony G. Basile</name>
       <role>ppc/ppc64 keywording/stabilization</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>jmorgan@gentoo.org</email>
       <name>Jack Morgan</name>
-      <role>Lead</role>
+      <role>ppc/ppc64 keywording/stabilization</role>
+    </member>
+    <member>
+      <email>lu_zero@gentoo.org</email>
+      <name>Luca Barbato</name>
+      <role>ppc/ppc64 keywording/stabilization</role>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
@@ -2858,9 +2863,14 @@ developers and volunteer mentors.</description>
       <role>ppc/ppc64 keywording/stabilization</role>
     </member>
     <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
+      <role>ppc/ppc64 keywording/stabilization</role>
+    </member>
+    <member is-lead="1">
       <email>xmw@gentoo.org</email>
       <name>Michael Weber</name>
-      <role>ppc/ppc64 keywording/stabilization</role>
+      <role>Team Lead</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
