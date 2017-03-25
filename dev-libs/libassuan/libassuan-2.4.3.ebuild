@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit libtool eutils
+inherit libtool ltprune
 
 DESCRIPTION="IPC library used by GnuPG and GPGME"
 HOMEPAGE="http://www.gnupg.org/related_software/libassuan/index.en.html"
