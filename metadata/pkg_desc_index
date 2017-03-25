@@ -11730,7 +11730,7 @@ kde-apps/kde-dev-scripts 16.08.3 16.12.3: KDE Development Scripts
 kde-apps/kde-dev-utils 16.08.3 16.12.3: KDE Development Utilities
 kde-apps/kde-l10n 16.08.3 16.12.3: KDE internationalization package
 kde-apps/kde-meta 16.08.3 16.12.3: Merge this to pull in all KDE Plasma and Applications packages
-kde-apps/kde4-l10n 16.08.3 16.12.3: KDE legacy internationalization package
+kde-apps/kde4-l10n 16.08.3 16.12.3-r1: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 16.08.3 16.12.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 16.08.3 16.12.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
