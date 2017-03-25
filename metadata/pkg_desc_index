@@ -11855,7 +11855,7 @@ kde-apps/krdc 16.08.3 16.12.3: Remote desktop connection (RDP and VNC) client
 kde-apps/kreadconfig 16.04.3: Command-line tool to read KConfig entries
 kde-apps/kremotecontrol 16.08.3 16.12.3: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 16.08.3 16.12.3: Board Game by KDE
-kde-apps/krfb 15.08.3 16.08.3 16.12.3: VNC-compatible server to share KDE desktops
+kde-apps/krfb 15.08.3 16.08.3 16.12.3 16.12.3-r1: VNC-compatible server to share KDE desktops
 kde-apps/kross-interpreters 16.08.3 16.12.3: Kross interpreter plugins for programming languages
 kde-apps/kruler 16.08.3 16.12.3: Screen ruler for Plasma
 kde-apps/ksaneplugin 16.08.3 16.12.3: SANE Plugin by KDE
