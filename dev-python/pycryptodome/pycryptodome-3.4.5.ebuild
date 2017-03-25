@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Legrandin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD-2 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/gmp:0
