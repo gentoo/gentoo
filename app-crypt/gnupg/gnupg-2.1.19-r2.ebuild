@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
 HOMEPAGE="http://www.gnupg.org/"
@@ -111,7 +111,6 @@ src_install() {
 			tools/{convert-from-106,gpg-check-pattern} \
 			tools/{gpg-zip,gpgconf,gpgsplit,lspgpot,mail-signed-keys} \
 			tools/make-dns-cert
-	emake DESTDIR="${ED}" -f doc/Makefile uninstall-nobase_dist_docDATA
 
 	dosym gpg2 /usr/bin/gpg
 	dosym gpgv2 /usr/bin/gpgv
