@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils linux-info
+inherit linux-info
 
 DESCRIPTION="iptables firewall generator"
 HOMEPAGE="https://github.com/firehol/firehol"
