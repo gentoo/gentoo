@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils libtool
+inherit autotools ltprune
 
 DESCRIPTION="A PKCS #11 module for OpenPGP smartcards"
 HOMEPAGE="http://www.scute.org/"
