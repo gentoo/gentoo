@@ -4624,7 +4624,7 @@ dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossle
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
-dev-libs/capstone 3.0.4-r2: disassembly/disassembler framework + bindings
+dev-libs/capstone 3.0.5_rc2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgicc 3.2.9 3.2.16: A C++ class library for writing CGI applications
