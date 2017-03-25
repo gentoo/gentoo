@@ -26,7 +26,7 @@ RDEPEND="
 	>=kde-apps/kde-l10n-${PV}
 "
 
-REMOVE_DIRS="${FILESDIR}/${PN}-16.11.90-remove-dirs"
+REMOVE_DIRS="${FILESDIR}/${PN}-16.12.3-remove-dirs"
 REMOVE_MSGS="${FILESDIR}/${PN}-16.11.90-remove-messages"
 
 IUSE="aqua test" # TODO: Drop aqua as soon as possible
