@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
 HOMEPAGE="http://www.gnupg.org/"
