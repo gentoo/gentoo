@@ -11478,7 +11478,7 @@ gnome-base/dconf 0.26.0 0.26.0-r1: Simple low-level configuration system
 gnome-base/dconf-editor 3.20.3 3.22.1 3.22.3: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.20.1 3.22.3: GNOME Display Manager for managing graphical display servers and user logins
-gnome-base/gnome 3.20.0 3.22.0: Meta package for GNOME 3, merge this package to install
+gnome-base/gnome 3.20.0 3.22.0 3.22.2: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.18.0 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.20.2-r1 3.22.2-r1 3.23.91: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.20.0 3.22.0 3.22.2: Sub-meta package for the core applications integrated with GNOME 3
@@ -11486,7 +11486,7 @@ gnome-base/gnome-core-libs 3.20.0-r1 3.22.2: Sub-meta package for the core libra
 gnome-base/gnome-desktop 2.32.1-r2 3.20.2 3.22.2 3.23.91: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.20.0 3.22.0 3.22.2: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.20.0: Password and keyring managing daemon
-gnome-base/gnome-light 3.20.0 3.22.0: Meta package for GNOME-Light, merge this package to install
+gnome-base/gnome-light 3.20.0 3.22.0 3.22.2: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-session 3.20.2 3.22.2 3.22.3 3.23.92: Gnome session manager
