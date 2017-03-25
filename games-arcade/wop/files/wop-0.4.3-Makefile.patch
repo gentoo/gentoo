@@ -1,5 +1,5 @@
---- Makefile.orig	2007-04-23 18:27:32 +0000
-+++ Makefile	2007-04-23 18:27:50 +0000
+--- a/Makefile.orig	2007-04-23 18:27:32 +0000
++++ b/Makefile	2007-04-23 18:27:50 +0000
 @@ -3,22 +3,22 @@
  sinclude Makefile.local
  
@@ -32,8 +32,8 @@
  snapshot-src:
  	ln -s . wop;                                           \
  	tar cjvf wop-`date +%F`.tar.bz2                        \
---- src/Makefile.orig	2006-02-13 10:14:01.000000000 +0100
-+++ src/Makefile	2007-04-27 18:36:22.000000000 +0200
+--- a/src/Makefile.orig	2006-02-13 10:14:01.000000000 +0100
++++ b/src/Makefile	2007-04-27 18:36:22.000000000 +0200
 @@ -18,7 +18,7 @@
              -DUSE_SDL -DNEW=new\(std::nothrow\) \
              -I../sdlwidgets \
