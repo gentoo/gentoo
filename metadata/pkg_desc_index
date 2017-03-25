@@ -11484,7 +11484,7 @@ gnome-base/gnome-control-center 3.20.2-r1 3.22.2-r1 3.23.91: GNOME's main interf
 gnome-base/gnome-core-apps 3.20.0 3.22.0 3.22.2: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.20.0-r1 3.22.2: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.20.2 3.22.2 3.23.91: Libraries for the gnome desktop that are not part of the UI
-gnome-base/gnome-extra-apps 3.20.0 3.22.0: Sub-meta package for the applications of GNOME 3
+gnome-base/gnome-extra-apps 3.20.0 3.22.0 3.22.2: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.20.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.20.0 3.22.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
