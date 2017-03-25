@@ -274,7 +274,6 @@ x11-misc/xrmap
 # Therefore, it is being reduced to the minimal set of packages needed.
 # Removal in 30 days. Bug #593398.
 dev-ada/asis-gcc
-dev-ada/charles
 
 # Michael Palimaka <kensington@gentoo.org> (22 Feb 2017)
 # Doesn't work. Dead upstream. Unmaintained.
