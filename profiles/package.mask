@@ -269,11 +269,6 @@ dev-vcs/veracity
 # Masked for removal in 30 days. Bug #520890.
 x11-misc/xrmap
 
-# Michael Palimaka <kensington@gentoo.org> (22 Feb 2017)
-# Doesn't work. Dead upstream. Unmaintained.
-# Masked for removal on 30 days. Bug #609754.
-x11-misc/bbappconf
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (19 Feb 2017)
 # Dead upstream for >3 years. Closed source. Bundles outdated
 # libraries that certainly have known security issues (e.g.,
