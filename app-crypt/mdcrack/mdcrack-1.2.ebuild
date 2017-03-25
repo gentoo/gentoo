@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A MD4/MD5/NTML hashes bruteforcer"
 HOMEPAGE="http://mdcrack.df.ru/"
