@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit ltprune
 
 DESCRIPTION="Libraries and applications to access smartcards"
 HOMEPAGE="https://github.com/OpenSC/OpenSC/wiki"

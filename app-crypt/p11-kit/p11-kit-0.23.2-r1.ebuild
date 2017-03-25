@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib-minimal
+inherit ltprune multilib-minimal
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"
 HOMEPAGE="https://p11-glue.freedesktop.org/p11-kit.html"

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils libtool multilib-minimal toolchain-funcs
+inherit libtool ltprune multilib-minimal toolchain-funcs
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
 HOMEPAGE="http://www.gnupg.org/related_software/libgpg-error"

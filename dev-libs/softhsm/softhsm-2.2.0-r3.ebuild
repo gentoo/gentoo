@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools ltprune
 
 DESCRIPTION="A software PKCS#11 implementation"
 HOMEPAGE="http://www.opendnssec.org/"

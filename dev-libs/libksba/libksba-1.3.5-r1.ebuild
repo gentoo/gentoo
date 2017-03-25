@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils
+inherit ltprune
 
 DESCRIPTION="X.509 and CMS (PKCS#7) library"
 HOMEPAGE="http://www.gnupg.org/related_software/libksba"

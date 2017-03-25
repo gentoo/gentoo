@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib systemd udev
+inherit multilib systemd udev
 
 MY_P="${PN}_${PV}"
 

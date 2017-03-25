@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit autotools flag-o-matic ltprune
 
 DESCRIPTION="TrouSerS' support tools for the Trusted Platform Modules"
 HOMEPAGE="http://trousers.sourceforge.net"

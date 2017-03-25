@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib udev user
+inherit flag-o-matic ltprune multilib udev user
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"

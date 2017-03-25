@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools versionator toolchain-funcs udev
+inherit autotools ltprune versionator toolchain-funcs udev
 
 MY_P=ACR38_LINUX_$(get_version_component_range 1)00$(get_version_component_range 2)$(get_version_component_range 3)_P
 

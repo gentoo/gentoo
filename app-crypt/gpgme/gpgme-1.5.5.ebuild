@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils libtool
+inherit eutils libtool ltprune
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
