@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tools and library to manipulate EFI variables"
 HOMEPAGE="https://github.com/rhinstaller/efivar"
-SRC_URI="https://github.com/rhinstaller/efivar/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rhinstaller/efivar/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/1"
