@@ -53,11 +53,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -e '/sys.path.insert/d' -i ${S}/gnome-music.in || die "python fixup sed failed"
+	sed -e '/sys.path.insert/d' -i "${S}"/gnome-music.in || die "python fixup sed failed"
 	gnome2_src_prepare
 }
 
 src_install() {
 	gnome2_src_install
-	python_fix_shebang ${D}usr/bin/gnome-music
+	python_fix_shebang "${D}"usr/bin/gnome-music
 }

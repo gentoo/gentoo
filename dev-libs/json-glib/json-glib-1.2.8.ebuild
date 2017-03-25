@@ -38,7 +38,8 @@ multilib_src_configure() {
 		--enable-man \
 		--disable-gcov \
 		$(usex debug --enable-debug=yes --enable-debug=minimum) \
-		$(multilib_native_use_enable introspection)
+		$(multilib_native_use_enable introspection) \
+		--with-xml-catalog="${EPREFIX}"/etc/xml/catalog
 
 	if multilib_is_native_abi; then
 		ln -s "${S}"/doc/html doc/html || die
