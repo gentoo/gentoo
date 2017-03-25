@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare unpack
+DESCRIPTION=Complete set of tools that provide a virtual environment for Android
+EAPI=6
+HOMEPAGE=http://genymotion.com
+KEYWORDS=-* ~amd64
+LICENSE=genymotion
+RDEPEND=|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5.0.28 ) virtual/opengl media-libs/libpng:1.2 dev-libs/openssl dev-qt/qtgui:5[libinput,xcb] dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtsvg:5 dev-qt/qtx11extras:5 dev-qt/qtdeclarative:5 dev-qt/qtconcurrent:5 dev-util/android-sdk-update-manager media-libs/jpeg:8 dev-libs/double-conversion sys-apps/util-linux media-libs/fontconfig:1.0 media-libs/harfbuzz[graphite] >=dev-libs/libffi-3.0.13-r1 media-libs/gstreamer[orc]
+RESTRICT=bindist fetch
+SLOT=0
+SRC_URI=genymotion-2.8.1_x64.bin
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=fdd406adb23f451030cc1882078cd358

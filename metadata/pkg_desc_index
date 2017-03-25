@@ -1314,7 +1314,7 @@ app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation pr
 app-emulation/ganeti-instance-debootstrap 0.9 0.11 0.12: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
-app-emulation/genymotion-bin 2.8.1: Complete set of tools that provide a virtual environment for Android
+app-emulation/genymotion-bin 2.8.1-r1: Complete set of tools that provide a virtual environment for Android
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
@@ -10752,7 +10752,7 @@ games-arcade/tuxpuck 0.8.2-r1: Hover hockey
 games-arcade/vor 0.5.5 0.5.7: Variations on Rockdodger: Dodge the rocks until you die
 games-arcade/watermelons 1.1.1-r1: A thrilling watermelon bouncing game
 games-arcade/whichwayisup 0.7.9-r1: A traditional and challenging 2D platformer game with a slight rotational twist
-games-arcade/wop 0.4.3-r1: Worms of Prey - A multi-player, real-time clone of Worms
+games-arcade/wop 0.4.3-r1 0.4.3-r2: Worms of Prey - A multi-player, real-time clone of Worms
 games-arcade/xbill 2.1-r2: A game about an evil hacker called Bill!
 games-arcade/xboing 2.4-r2 2.4-r3: Blockout type game where you bounce a ball trying to destroy blocks
 games-arcade/xbubble 0.5.8: a Puzzle Bobble clone similar to Frozen-Bubble
@@ -10820,7 +10820,7 @@ games-board/phalanx 22: A chess engine suitable for beginner and intermediate pl
 games-board/pioneers 15.3 15.3-r1: A clone of the popular board game The Settlers of Catan
 games-board/pokerth 1.1.1-r2: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r2: Protocol adapter to run UCI chess engines under xboard
-games-board/pouetchess 0.2.0-r1: 3D and open source chess game
+games-board/pouetchess 0.2.0-r1 0.2.0-r2: 3D and open source chess game
 games-board/pychess 0.12.3 0.12.4: A chess client for Gnome
 games-board/pysolfc 2.0-r3 2.0-r5: An exciting collection of more than 1000 solitaire card games
 games-board/qcheckers 20091230 20091230-r1: Qt4 based checkers game
@@ -11163,7 +11163,7 @@ games-puzzle/atomix 3.18.0 3.18.0-r1 3.20.0 3.22.0: Build molecules, from simple
 games-puzzle/bastet 0.43: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/biniax2 1.30: Logic game with arcade and tactics modes
 games-puzzle/braincurses 0.5b: An ncurses-based mastermind clone
-games-puzzle/brainparty 0.61: A puzzle-solving, brain-stretching game for all ages
+games-puzzle/brainparty 0.61 0.61-r1: A puzzle-solving, brain-stretching game for all ages
 games-puzzle/brainworkshop 4.8.4: Short-term-memory training N-Back game
 games-puzzle/bubble-chains 0.1.1: Arcade-puzzle game
 games-puzzle/color-lines 0.6: Color lines game written with SDL with bonus features
