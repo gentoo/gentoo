@@ -7650,7 +7650,7 @@ dev-python/guessit 1.0.3-r1 2.1.1 9999: Python library for guessing information 
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.10: Sphinx theme used by Guzzle.
 dev-python/gwcs 0.7: Python for managing the World Coordinate System
-dev-python/h5py 2.3.1 2.4.0 2.5.0 2.6.0: Simple Python interface to HDF5 files
+dev-python/h5py 2.3.1 2.4.0 2.5.0 2.6.0 2.7.0: Simple Python interface to HDF5 files
 dev-python/hachoir-core 1.3.3-r1: Core of Hachoir framework: parse and edit binary files
 dev-python/hachoir-parser 1.3.4-r1: Package of Hachoir parsers used to open binary files
 dev-python/hachoir-regex 1.0.5-r1: Manipulation of regular expressions (regex)
