@@ -57,3 +57,7 @@ multilib_src_install() {
 
 	rm -r "${ED%/}"/usr/{bin,include,lib*/*.so,share} || die
 }
+
+multilib_src_install_all() {
+	find "${ED}" -name '*.la' -delete
+}

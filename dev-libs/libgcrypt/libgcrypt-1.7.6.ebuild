@@ -70,3 +70,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 	multilib_is_native_abi && use doc && dodoc doc/gcrypt.pdf
 }
+
+multilib_src_install_all() {
+	find "${ED}" -name '*.la' -delete
+}
