@@ -2831,8 +2831,6 @@ app-xemacs/xslide 1.09: XSL editing support
 app-xemacs/xslt-process 1.12: XSLT processing support
 app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
-dev-ada/asis-gcc 3.4.6 4.1.2 4.1.2-r1 4.2.2 4.3.0_pre132166 4.3.1 4.3.1-r1 4.4: The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
-dev-ada/charles 20050913: Posix bindings for Ada
 dev-ada/gprbuild 2016: Multi-Language Management
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
@@ -10283,7 +10281,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.32.2 2.32.3 2.45: Extensible continuous integration server
+dev-util/jenkins-bin 2.32.2 2.32.3 2.45: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
@@ -11207,7 +11205,6 @@ games-puzzle/hoh-bin 1.01: PC remake of the spectrum game, Head Over Heels
 games-puzzle/icebreaker 1.9.6: Trap and capture penguins on Antarctica
 games-puzzle/jag 0.3.2: Arcade 2D Puzzle Game
 games-puzzle/jools 0.20-r2: clone of Bejeweled, a popular pattern-matching game
-games-puzzle/kiki 1.0.2-r3: Fun 3D puzzle game using SDL/OpenGL
 games-puzzle/ksokoban 0.5.0_pre20120725 9999: The japanese warehouse keeper game
 games-puzzle/larry 1-r1: Leisure Suit Larry Reloaded
 games-puzzle/lightsoff 3.20.0 3.22.0 3.22.2: Turn off all the lights
@@ -13213,7 +13210,6 @@ media-plugins/gst-plugins-dvb 0.10.23-r1 1.8.3 1.10.3 1.10.4: plugin for gstream
 media-plugins/gst-plugins-dvdread 0.10.19-r1 1.8.3 1.10.3: DVD read plugin for GStreamer
 media-plugins/gst-plugins-faac 0.10.23-r1 1.8.3 1.10.3 1.10.4: AAC audio encoder plugin for GStreamer
 media-plugins/gst-plugins-faad 0.10.23-r2 1.8.3 1.10.3 1.10.4: AAC audio decoder plugin.
-media-plugins/gst-plugins-ffmpeg 0.10.13_p201211-r5: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-flac 0.10.31-r1 1.8.3 1.10.3 1.10.4: FLAC encoder/decoder/tagger plugin for GStreamer
 media-plugins/gst-plugins-gconf 0.10.31-r1: GStreamer plugin for wrapping GConf audio/video settings
 media-plugins/gst-plugins-gdkpixbuf 0.10.31-r1 1.8.3 1.10.3 1.10.4: plugin for gstreamer
@@ -14964,7 +14960,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.21 0.22.2-r1 0.23.3 0.23.5 0.23.7: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.21 0.23.3 0.23.7 0.24: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.10 7.0.12 7.0.13: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
@@ -18672,7 +18668,6 @@ x11-misc/arandr 0.1.9: Another XRandR GUI
 x11-misc/autocutsel 0.9.0 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
 x11-misc/basqet 0.2.0-r1: Keep your notes, pictures, ideas, and information in Baskets
 x11-misc/bbacpi 0.1.5-r1 0.1.5-r3: ACPI monitor for X11
-x11-misc/bbappconf 0.0.2: utility that allows you to specify window properties in blackbox
 x11-misc/bbcd 0.3.1-r1 0.3.1-r2: Basic CD Player for blackbox wm
 x11-misc/bbdate 0.2.4-r1 0.2.4-r2: blackbox date display
 x11-misc/bbkeys 0.9.0-r1 0.9.1-r1: Use keyboard shortcuts in the blackbox wm
@@ -18935,7 +18930,6 @@ x11-misc/xpad 4.2 4.8.0: a sticky note application for jotting down things to re
 x11-misc/xplanet 1.3.0 1.3.1-r1: Render images of the earth into the X root window
 x11-misc/xplanetFX 2.6.12: GUI to configure, run or daemonize xplanet with HQ capabilities
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
-x11-misc/xrmap 2.33-r2: Xrmap displays portions of the Earth using the huge CIA world map
 x11-misc/xrootconsole 0.6 0.6-r1: A utility that displays its input in a text box on your root window
 x11-misc/xscreensaver 5.36: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
