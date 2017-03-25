@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 pypy )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 eutils flag-o-matic multilib toolchain-funcs versionator
+inherit distutils-r1 flag-o-matic multilib toolchain-funcs versionator
 
 MY_PV="${PV//.}"
 
