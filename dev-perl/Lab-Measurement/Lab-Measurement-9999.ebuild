@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,10 +29,12 @@ RDEPEND="
 	virtual/perl-Encode
 	>=dev-perl/Exception-Class-1
 	dev-perl/Hook-LexWrap
+	dev-perl/IO-Socket-Timeout
 	dev-perl/List-MoreUtils
 	>=dev-perl/Moose-2.121.300
 	>=dev-perl/MooseX-Params-Validate-0.180.0
 	>=dev-perl/namespace-autoclean-0.200.0
+	dev-perl/PDL
 	>=dev-perl/Role-Tiny-1.3.4
 	dev-perl/Statistics-Descriptive
 	dev-perl/Term-ANSIScreen
@@ -58,6 +60,7 @@ DEPEND="
 	dev-perl/Module-Build
 	test? (
 		dev-perl/File-Slurper
+		dev-perl/Test-File
 		dev-perl/Test-Files
 		>=dev-perl/Test-Fatal-0.12.0
 	)
