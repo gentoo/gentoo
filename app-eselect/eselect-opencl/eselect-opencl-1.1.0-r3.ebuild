@@ -25,7 +25,7 @@ SRC_URI="https://github.com/anyc/opencl-headers/archive/opencl-headers-1.2.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 DEPEND="app-arch/xz-utils"

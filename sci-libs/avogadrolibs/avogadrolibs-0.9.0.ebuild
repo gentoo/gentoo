@@ -27,8 +27,8 @@ RDEPEND="
 	qt5? (
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
+		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
-		dev-qt/qtwebkit:5
 		dev-qt/qtwidgets:5
 	)
 	vtk? ( sci-libs/vtk )
@@ -62,5 +62,5 @@ src_install() {
 	cmake-utils_src_install
 
 	# TODO: bundles jsoncpp
-	rm ${D}/usr/lib64/libjsoncpp.a || die
+	rm "${D}"/usr/lib64/libjsoncpp.a || die
 }

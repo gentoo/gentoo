@@ -18,10 +18,8 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc rpc test vtk"
 
 RDEPEND="
-	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
 	~sci-libs/avogadrolibs-${PV}[qt5,opengl]
