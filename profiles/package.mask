@@ -275,6 +275,13 @@ media-fonts/acroread-asianfonts
 # Revdeps need patching.
 >=media-gfx/libopenraw-0.1.0
 
+# Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
+# Old gstreamer 0.10 version, which is security vulnerable.
+# Use gstreamer:1.0 with media-plugins/gst-plugins-libav
+# instead (despite the name, it uses media-video/ffmpeg too).
+# Bug #594878
+media-plugins/gst-plugins-ffmpeg
+
 # Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
