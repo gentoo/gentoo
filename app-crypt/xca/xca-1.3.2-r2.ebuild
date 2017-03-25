@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs autotools
+inherit flag-o-matic toolchain-funcs autotools
 
 DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests etc"
 HOMEPAGE="http://xca.sourceforge.net"
@@ -20,7 +20,10 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:0= )
 	doc? ( app-text/linuxdoc-tools )
-	qt5? ( dev-qt/qtgui:5 )
+	qt5? (
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 	qt4? ( dev-qt/qtgui:4 )"
 DEPEND="${RDEPEND}"
 

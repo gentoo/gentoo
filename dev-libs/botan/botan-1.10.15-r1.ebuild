@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils multilib python-r1 toolchain-funcs
+inherit multilib python-r1 toolchain-funcs
 
 MY_PN="Botan"
 MY_P="${MY_PN}-${PV}"

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils multilib-build multilib-minimal multilib toolchain-funcs
+inherit autotools multilib-build multilib-minimal multilib toolchain-funcs
 
 DESCRIPTION="Low-level cryptographic library"
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"

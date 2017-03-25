@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="An advanced suite for testing the randomness of RNG's"
 HOMEPAGE="http://www.phy.duke.edu/~rgb/General/dieharder.php"
 SRC_URI="http://www.phy.duke.edu/~rgb/General/${PN}/${P}.tgz"

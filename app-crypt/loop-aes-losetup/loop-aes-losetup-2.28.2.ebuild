@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils autotools toolchain-funcs libtool flag-o-matic
+inherit autotools toolchain-funcs libtool flag-o-matic
 
 MY_PV="${PV/_/-}"
 MY_P="util-linux-${MY_PV}"
@@ -25,9 +25,12 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	virtual/os-headers"
 
+PATCHES=(
+	"${WORKDIR}/${LOOPAES_P}/util-linux-${PV}.diff"
+)
+
 src_prepare() {
 	default
-	epatch "${WORKDIR}/${LOOPAES_P}/util-linux-${PV}.diff"
 	eautoreconf
 }
 

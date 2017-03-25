@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="GPGstats calculates statistics on the keys in your key-ring"
 HOMEPAGE="http://www.vanheusden.com/gpgstats/"

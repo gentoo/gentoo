@@ -3,8 +3,6 @@
 
 EAPI="6"
 
-inherit eutils
-
 DESCRIPTION="A C implementation of MD6"
 HOMEPAGE="http://groups.csail.mit.edu/cis/md6"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
