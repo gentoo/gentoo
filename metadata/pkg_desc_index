@@ -17723,7 +17723,7 @@ sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r2 6.0.35 6.1.29 6.2.23: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.43.3 1.43.4: e2fsprogs libraries (common error and subsystem)
-sys-libs/efivar 0.21 0.23 27 30 31: Tools and library to manipulate EFI variables
+sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.4 1.5.5: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
