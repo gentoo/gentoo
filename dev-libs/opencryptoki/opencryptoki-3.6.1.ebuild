@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools multilib flag-o-matic user
+inherit autotools multilib ltprune flag-o-matic user
 
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
 HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
