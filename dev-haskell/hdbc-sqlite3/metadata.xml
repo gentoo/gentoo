@@ -5,6 +5,10 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="buildtests">Build the executable to run unit tests</flag>
+		<flag name="splitbase">Choose the new smaller, split-up package.</flag>
+	</use>
 	<longdescription>
 		This is the Sqlite v3 driver for HDBC, the generic
 		database access system for Haskell
