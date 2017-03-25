@@ -269,12 +269,6 @@ dev-vcs/veracity
 # Masked for removal in 30 days. Bug #520890.
 x11-misc/xrmap
 
-# Michał Górny <mgorny@gentoo.org> (22 Feb 2017)
-# The Ada subsystem in Gentoo is not maintained for a long time.
-# Therefore, it is being reduced to the minimal set of packages needed.
-# Removal in 30 days. Bug #593398.
-dev-ada/asis-gcc
-
 # Michael Palimaka <kensington@gentoo.org> (22 Feb 2017)
 # Doesn't work. Dead upstream. Unmaintained.
 # Masked for removal on 30 days. Bug #609754.
