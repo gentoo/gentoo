@@ -16905,7 +16905,7 @@ sys-apps/agedu 20151213 20160906 20160920: A utility for tracking down wasted di
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.10.1 2.11.0: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.10.1 2.11.0: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor-utils 2.10.1 2.11.0 2.11.0-r1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
