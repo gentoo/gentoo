@@ -1,11 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit eutils
-
-DESCRIPTION="Light weight process library (used by Coda).  This is NOT libwww-perl"
+DESCRIPTION="Light-weight process library (used by Coda)"
 HOMEPAGE="http://www.coda.cs.cmu.edu/"
 SRC_URI="http://www.coda.cs.cmu.edu/pub/lwp/src/${P}.tar.gz"
 
@@ -15,6 +13,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 src_prepare() {
+	eapply_user
 	# Was introduced for bug #34542, not sure if still needed
-	use amd64 && epatch "${FILESDIR}"/lwp-2.0-amd64.patch
+	use amd64 && eapply "${FILESDIR}"/lwp-2.0-amd64.patch
 }
