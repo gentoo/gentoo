@@ -17855,7 +17855,7 @@ sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/fuser-bsd 1142334561: fuser(1) utility for *BSD
 sys-process/glances 2.7.1 2.8.1: CLI curses based monitoring tool
 sys-process/htop 1.0.3 1.0.3-r1 2.0.1 2.0.2: interactive process viewer
-sys-process/incron 0.5.10 0.5.10-r1: inotify based cron daemon
+sys-process/incron 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5 0.5-r1: tool for identifying where in the system latency is happening
 sys-process/lsof 4.87-r1 4.88-r1 4.89 4.89-r1: Lists open files for running Unix processes
@@ -18669,9 +18669,9 @@ x11-misc/arandr 0.1.9: Another XRandR GUI
 x11-misc/autocutsel 0.9.0 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
 x11-misc/basqet 0.2.0-r1: Keep your notes, pictures, ideas, and information in Baskets
 x11-misc/bbacpi 0.1.5-r1 0.1.5-r3: ACPI monitor for X11
-x11-misc/bbcd 0.3.1-r1 0.3.1-r2: Basic CD Player for blackbox wm
+x11-misc/bbcd 0.3.1-r2: Basic CD Player for blackbox wm
 x11-misc/bbdate 0.2.4-r1 0.2.4-r2: blackbox date display
-x11-misc/bbkeys 0.9.0-r1 0.9.1-r1: Use keyboard shortcuts in the blackbox wm
+x11-misc/bbkeys 0.9.1-r1: Use keyboard shortcuts in the blackbox wm
 x11-misc/bblaunch 0.0.3: An application launcher for Blackbox type window managers
 x11-misc/bbmail 0.9.3-r1: blackbox mail notification
 x11-misc/bbpager 0.4.7-r1: An understated pager for Blackbox
