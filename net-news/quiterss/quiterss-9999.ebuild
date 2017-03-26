@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,27 +19,24 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="phonon qt5"
+IUSE=""
 
-RDEPEND=">=dev-db/sqlite-3.11.1:3
-	!qt5? ( dev-qt/qtcore:4[ssl]
-		dev-qt/qtgui:4
-		dev-qt/qtsingleapplication[X,qt4(+)]
-		dev-qt/qtsql:4[sqlite]
-		dev-qt/qtwebkit:4
-		phonon? ( || ( media-libs/phonon[qt4] dev-qt/qtphonon:4 ) ) )
-	qt5? ( dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
-		dev-qt/qtnetwork:5[ssl]
-		dev-qt/qtprintsupport:5
-		dev-qt/qtsingleapplication[X,qt5(-)]
-		dev-qt/qtsql:5[sqlite]
-		dev-qt/qtwebkit:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5 )"
+RDEPEND="
+	>=dev-db/sqlite-3.11.1:3
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsingleapplication[X,qt5]
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtwebkit:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS CHANGELOG README.md )
 
@@ -58,16 +55,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myqmakeargs=(
-		PREFIX="${EPREFIX}/usr"
+	eqmake5 \
+		PREFIX="${EPREFIX}/usr" \
 		SYSTEMQTSA=1
-	)
-	if use qt5; then
-		eqmake5 "${myqmakeargs[@]}"
-	else
-		eqmake4 "${myqmakeargs[@]}" \
-			$(usex phonon '' 'DISABLE_PHONON=1')
-	fi
 }
 
 src_install() {

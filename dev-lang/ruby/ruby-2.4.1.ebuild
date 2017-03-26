@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 #PATCHSET=1
 
@@ -12,7 +12,7 @@ S=${WORKDIR}/${MY_P}
 
 SLOT=$(get_version_component_range 1-2)
 MY_SUFFIX=$(delete_version_separator 1 ${SLOT})
-RUBYVERSION=2.2.0
+RUBYVERSION=${SLOT}.0
 
 if [[ -n ${PATCHSET} ]]; then
 	if [[ ${PVR} == ${PV} ]]; then
@@ -26,12 +26,12 @@ fi
 
 DESCRIPTION="An object-oriented scripting language"
 HOMEPAGE="http://www.ruby-lang.org/"
-SRC_URI="mirror://ruby/2.2/${MY_P}.tar.xz
-		 https://dev.gentoo.org/~flameeyes/ruby-team/${PN}-patches-${PATCHSET}.tar.bz2"
+SRC_URI="mirror://ruby/${SLOT}/${MY_P}.tar.xz
+		 https://dev.gentoo.org/~graaff/ruby-team/${PN}-patches-${PATCHSET}.tar.bz2"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="berkdb debug doc examples gdbm ipv6 jemalloc libressl +rdoc rubytests socks5 ssl tk xemacs ncurses +readline"
+IUSE="berkdb debug doc examples gdbm ipv6 jemalloc libressl +rdoc rubytests socks5 ssl tk xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
@@ -46,51 +46,51 @@ RDEPEND="
 		dev-lang/tcl:0=[threads]
 		dev-lang/tk:0=[threads]
 	)
-	ncurses? ( sys-libs/ncurses:0= )
-	readline?  ( sys-libs/readline:0= )
 	dev-libs/libyaml
 	virtual/libffi
 	sys-libs/zlib
-	>=app-eselect/eselect-ruby-20141227
+	>=app-eselect/eselect-ruby-20161226
 	!<dev-ruby/rdoc-3.9.4
 	!<dev-ruby/rubygems-1.8.10-r1"
 
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.4.3[ruby_targets_ruby22]
-	>=dev-ruby/power_assert-0.2.2[ruby_targets_ruby22]
-	>=dev-ruby/test-unit-3.0.8[ruby_targets_ruby22]
+	>=dev-ruby/did_you_mean-1.1.0:2.4[ruby_targets_ruby24]
+	>=dev-ruby/minitest-5.10.1[ruby_targets_ruby24]
+	>=dev-ruby/net-telnet-0.1.1[ruby_targets_ruby24]
+	>=dev-ruby/power_assert-0.4.1[ruby_targets_ruby24]
+	>=dev-ruby/rake-12.0.0[ruby_targets_ruby24]
+	>=dev-ruby/test-unit-3.2.3[ruby_targets_ruby24]
+	>=dev-ruby/xmlrpc-0.2.1[ruby_targets_ruby24]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby22]
-	>=dev-ruby/json-1.8.1[ruby_targets_ruby22]
-	>=dev-ruby/rake-0.9.6[ruby_targets_ruby22]
-	rdoc? ( >=dev-ruby/rdoc-4.0.1[ruby_targets_ruby22] )
+	virtual/rubygems[ruby_targets_ruby24]
+	>=dev-ruby/json-2.0.2[ruby_targets_ruby24]
+	rdoc? ( >=dev-ruby/rdoc-5.1.0[ruby_targets_ruby24] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
 		epatch "${WORKDIR}/patches"
 
-	# We can no longer unbundle all of rake because rubygems now depends
-	# on this. We leave the actual rake code around to bootstrap
-	# rubygems, but remove the bits that would cause a file collision.
 	einfo "Unbundling gems..."
 	cd "$S"
-	rm -rf \
-		{bin,lib}/rake lib/rake.rb man/rake.1 \
-		bin/gem || die "removal failed"
 	# Remove bundled gems that we will install via PDEPEND, bug
 	# 539700. Use explicit version numbers to ensure rm fails when they
 	# change so we can update dependencies accordingly.
-	rm gems/{minitest-5.4.3,power_assert-0.2.2,test-unit-3.0.8}.gem || die
+	rm -f gems/{did_you_mean-1.1.0,minitest-5.10.1,net-telnet-0.1.1,power_assert-0.4.1,rake-12.0.0,test-unit-3.2.3,xmlrpc-0.2.1}.gem || die
+
+	einfo "Removing bundled libraries..."
+	rm -fr ext/fiddle/libffi-3.2.1 || die
 
 	# Fix a hardcoded lib path in configure script
 	sed -i -e "s:\(RUBY_LIB_PREFIX=\"\${prefix}/\)lib:\1$(get_libdir):" \
 		configure.in || die "sed failed"
+
+	eapply_user
 
 	eautoreconf
 }
@@ -123,9 +123,6 @@ src_configure() {
 	use ipv6 || myconf="${myconf} --with-lookup-order-hack=INET"
 
 	# Determine which modules *not* to build depending in the USE flags.
-	if ! use readline ; then
-		modules="${modules},readline"
-	fi
 	if ! use berkdb ; then
 		modules="${modules},dbm"
 	fi
@@ -134,9 +131,6 @@ src_configure() {
 	fi
 	if ! use ssl ; then
 		modules="${modules},openssl"
-	fi
-	if ! use ncurses ; then
-		modules="${modules},curses"
 	fi
 	if ! use tk ; then
 		modules="${modules},tk"
@@ -205,8 +199,9 @@ src_install() {
 
 	emake V=1 DESTDIR="${D}" install || die "make install failed"
 
-	# Remove installed rubygems copy
+	# Remove installed rubygems and rdoc copy
 	rm -rf "${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}/rubygems" || die "rm rubygems failed"
+	rm -rf "${D}/usr/bin/"gem"${MY_SUFFIX}" || die "rm rdoc bins failed"
 	rm -rf "${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}"/rdoc* || die "rm rdoc failed"
 	rm -rf "${D}/usr/bin/"{ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils multilib toolchain-funcs
@@ -7,7 +7,7 @@ DESCRIPTION="Advanced, easy to use, asynchronous-capable DNS client library and 
 HOMEPAGE="http://www.chiark.greenend.org.uk/~ian/adns/"
 SRC_URI="ftp://ftp.chiark.greenend.org.uk/users/ian/adns/${P}.tar.gz"
 
-LICENSE="LGPL-2"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE=""
@@ -25,8 +25,9 @@ src_install () {
 	emake prefix="${D}"/usr libdir="${D}"/usr/$(get_libdir) install || die "emake install failed"
 	dodoc README TODO changelog "${FILESDIR}"/README.security
 	dohtml *.html
+	MY_POSTINST_MSG=$(<"${FILESDIR}"/README.security)
 }
 
 pkg_postinst() {
-	ewarn "$(<${FILESDIR}/README.security)"
+	ewarn "${MY_POSTINST_MSG}"
 }

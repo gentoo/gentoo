@@ -1,43 +1,42 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils multilib toolchain-funcs
+inherit multilib toolchain-funcs
 
 DESCRIPTION="Advanced, easy to use, asynchronous-capable DNS client library and utilities"
 HOMEPAGE="http://www.chiark.greenend.org.uk/~ian/adns/"
 SRC_URI="ftp://ftp.chiark.greenend.org.uk/users/ian/adns/${P}.tar.gz"
 
-LICENSE="LGPL-2"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-cnamechain.patch
-	#remove bogus test wrt bug #295072
-	rm "${S}"/regress/case-cnametocname.sys
+	eapply "${FILESDIR}"/${P}-cnamechain.patch
+	# remove bogus test wrt bug #295072
+	rm "${S}"/regress/case-cnametocname.sys || die
+	eapply_user
 }
 
 src_configure() {
-	CC=$(tc-getCC) econf || die "econf failed"
+	CC=$(tc-getCC) econf
 }
 
 src_compile() {
-	emake AR=$(tc-getAR) RANLIB=$(tc-getRANLIB) || die "emake failed"
+	emake AR=$(tc-getAR) RANLIB=$(tc-getRANLIB)
 }
 
 src_install () {
 	dodir /usr/{include,bin,$(get_libdir)}
-	emake prefix="${D}"/usr libdir="${D}"/usr/$(get_libdir) install || die "emake install failed"
+	emake prefix="${ED}"/usr libdir="${ED}"/usr/$(get_libdir) install
 	dodoc README TODO changelog "${FILESDIR}"/README.security
-	dohtml *.html
+	docinto html
+	dodoc README.html
+	MY_POSTINST_MSG=$(<"${FILESDIR}"/README.security)
 }
 
 pkg_postinst() {
-	ewarn "$(<${FILESDIR}/README.security)"
+	ewarn "${MY_POSTINST_MSG}"
 }

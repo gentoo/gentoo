@@ -27,7 +27,7 @@ REQUIRED_USE="
 IUSE="crypt doc emacs mutt nmbug python test valgrind"
 
 CDEPEND="
-	>=app-shells/bash-completion-1.9
+	!!<app-shells/bash-completion-1.9
 	>=dev-libs/glib-2.22:2
 	>=dev-libs/gmime-2.6.20-r2:2.6
 	>=dev-libs/xapian-1.2.7-r2:=
@@ -118,6 +118,7 @@ src_configure() {
 		--bashcompletiondir="$(get_bashcompdir)"
 		--emacslispdir="${EPREFIX}/${SITELISP}/${PN}"
 		--emacsetcdir="${EPREFIX}/${SITEETC}/${PN}"
+		--without-desktop
 		--without-ruby
 		--zshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
 		$(use_with emacs)

@@ -26,7 +26,7 @@ REQUIRED_USE="
 IUSE="crypt debug doc emacs mutt nmbug python test"
 
 CDEPEND="
-	>=app-shells/bash-completion-1.9
+	!!<app-shells/bash-completion-1.9
 	>=dev-libs/glib-2.22
 	>=dev-libs/gmime-2.6.7
 	!=dev-libs/gmime-2.6.19

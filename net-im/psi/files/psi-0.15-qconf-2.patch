@@ -1,0 +1,87 @@
+--- a/qcm/recursiveprl.qcm
++++ a/qcm/recursiveprl.qcm
+@@ -39,10 +39,11 @@ public:
+ 			return false;
+ 		}
+ 
++		QFileInfo fi(qc_getenv("QC_COMMAND"));
+ 		QStringList args;
+ 		args += "-prl";
+ 		args += "-r";
+-		args += qc_getenv("QC_PROFILE");
++		args += fi.dir().filePath(qc_getenv("QC_PROFILE"));
+ 		if(conf->doCommand(conf->qmake_path, args) != 0)
+ 		{
+ 			success = false;
+@@ -91,9 +92,9 @@ public:
+ 		if(!conf->DEFINES.isEmpty())
+ 			str += "DEFINES += " + conf->DEFINES + '\n';
+ 		if(!conf->INCLUDEPATH.isEmpty())
+-			str += "INCLUDEPATH += " + conf->INCLUDEPATH + '\n';
++			str += "INCLUDEPATH += " + conf->escapedIncludes() + '\n';
+ 		if(!conf->LIBS.isEmpty())
+-			str += "LIBS += " + conf->LIBS + '\n';
++			str += "LIBS += " + conf->escapedLibs() + '\n';
+ 		if(!conf->extra.isEmpty())
+ 			str += conf->extra;
+ 		str += '\n';
+--- a/qcm/zlib.qcm	
++++ a/qcm/zlib.qcm	
+@@ -21,6 +21,8 @@ public:
+ 		QStringList incs;
+ 		QString version, libs, other;
+ 		QString s;
++
++
+ 
+ 		if(!conf->findPkgConfig("zlib", VersionAny, "", &version, &incs, &libs, &other)) {
+ 
+@@ -33,21 +35,37 @@ public:
+ 				if(!conf->findHeader("zlib.h", QStringList(), &s))
+ 					return false;
+ 			}
+-			incs.append(s.replace("\\\", "\\\\\\\"));
+ 
+-			s = conf->getenv("QC_WITH_ZLIB_LIB");
+-			if(!s.isEmpty()) {
+-				if(!conf->checkLibrary(s, "z"))
+-					return false;
+-			}
+-			else {
+-				if(!conf->findLibrary("z", &s))
+-					return false;
++			QStringList libNames = QStringList() << "z";
++			QString libName;
++#ifdef Q_OS_WIN
++			libNames << (qc_buildmode_debug? "zlibd" : "zlib");
++#endif
++			for (;;) {
++				s = conf->getenv("QC_WITH_ZLIB_LIB");
++				if(!s.isEmpty()) {
++					foreach (const QString l, libNames)
++						if(conf->checkLibrary(s, l)) {
++							libName = l;
++							break;
++						}
++				} else {
++					foreach (const QString l, libNames)
++						if(conf->findLibrary(l, &s)) {
++							libName = l;
++							break;
++						}
++				}
++
++				if(!libName.isEmpty())
++					break;
++
++				return false;
+ 			}
+ 			if (!s.isEmpty()) {
+-				libs = QString("-L%1 -lz").arg(s.replace("\\\", "\\\\\\\"));
++				libs = QString("-L%1 -l%2").arg(s, libName);
+ 			} else {
+-				libs = s.isEmpty()? "-lz" : QString("-L%1 -lz").arg(s);
++				libs = s.isEmpty()? QString("-l")+libName : QString("-L%1 -l%2").arg(s, libName);
+ 			}
+ 		}
+ 
