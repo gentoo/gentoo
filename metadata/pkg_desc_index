@@ -4559,7 +4559,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
-dev-lang/ruby 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3 2.3.3-r1 2.4.0: An object-oriented scripting language
+dev-lang/ruby 2.1.9 2.1.10 2.2.6 2.3.3-r1 2.4.0 2.4.1: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1: The Scala Programming Language
@@ -8680,7 +8680,7 @@ dev-python/tracing 0.8 0.10: Debug log/trace messages
 dev-python/traitlets 4.0.0 4.1.0 4.2.2 4.3.1 4.3.2: A configuration system for Python applications
 dev-python/traits 4.5.0 4.5.0-r1: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user interfaces
-dev-python/translate-toolkit 1.12.0 2.0.0_beta7-r1 2.0.0: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 2.0.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
 dev-python/treq 0.2.1 16.12.0: A requests-like API built on top of twisted.web's Agent
@@ -9285,7 +9285,7 @@ dev-ruby/celluloid-supervision 0.20.5 0.20.6: Provides a simple and natural way 
 dev-ruby/certificate_authority 0.1.6 0.1.6-r1: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.3: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
-dev-ruby/childprocess 0.5.3 0.5.9 0.5.9-r1 0.6.1 0.6.2: Solution for controlling external programs running in the background
+dev-ruby/childprocess 0.5.3 0.5.9 0.5.9-r1 0.6.1 0.6.2 0.6.3: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
 dev-ruby/chunky_png 1.3.6 1.3.7 1.3.8: Pure Ruby library that can read and write PNG images
 dev-ruby/classifier 1.3.4: Module to allow Bayesian and other types of classifications
@@ -9337,7 +9337,7 @@ dev-ruby/delayer-deferred 1.0.4: Ruby implementation of JSDeferred
 dev-ruby/dep_selector 0.1.1-r1: constraint based package dependency resolver
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
-dev-ruby/did_you_mean 1.0.2 1.1.0: 'did you mean?'experience in Ruby
+dev-ruby/did_you_mean 1.0.2 1.1.0 1.1.2: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.2.5-r1 1.3: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/dnsruby 1.59.3 1.60.0: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
@@ -9717,7 +9717,7 @@ dev-ruby/ruby2ruby 2.3.0 2.3.1 2.3.2: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.3.1 1.4.0 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.8.2 3.8.3 3.8.4: A ruby parser written in pure ruby
-dev-ruby/rubygems 2.2.5-r1 2.5.2 2.6.8 2.6.9 2.6.10 2.6.11: Centralized Ruby extension management system
+dev-ruby/rubygems 2.2.5-r1 2.5.2 2.6.8 2.6.9 2.6.11: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.1: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -9776,7 +9776,7 @@ dev-ruby/syslogger 1.6.4: Drop-in replacement for the standard Logger, that logs
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.6.10 0.7.6 0.7.7 0.8.0: An abstraction and a framework for compiling templates to pure Ruby
-dev-ruby/term-ansicolor 1.2.2-r1 1.3.0 1.3.0-r1 1.3.2 1.4.0: Small Ruby library that colors strings using ANSI escape sequences
+dev-ruby/term-ansicolor 1.2.2-r1 1.3.0 1.4.0 1.4.1: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.2: a library for ANSI color formatting like HTML for output in terminal
 dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.9 3.2.2 3.2.3: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
@@ -9807,7 +9807,7 @@ dev-ruby/twitter 5.16.0 5.17.0 6.1.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.2 1.14.5: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
-dev-ruby/tzinfo 0.3.52 1.2.2: Daylight-savings aware timezone library
+dev-ruby/tzinfo 0.3.52 1.2.2 1.2.3: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 2.7.2 3.0.4 3.1.1 3.1.3 3.1.6 3.1.7 3.1.9: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
@@ -14706,7 +14706,7 @@ net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.4-r1 1.6.3-r1 1.6.4 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
 net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
-net-libs/adns 1.4 1.4-r1: Advanced, easy to use, asynchronous-capable DNS client library and utilities
+net-libs/adns 1.4 1.4-r2: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.0.25 5.4.3_beta 5.5.1 5.6.10: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.1 2.1.2 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
@@ -15436,7 +15436,7 @@ net-p2p/bitcoind 0.13.0 0.13.1 0.13.2 9999: Original Bitcoin crypto-currency wal
 net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
 net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
-net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925: John Hoffman's fork of the original bittorrent
+net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.07 0.07_p20150728 0.09 0.09_p20151220 0.10 0.11: Program for displaying classified advertisement items
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
@@ -17482,7 +17482,7 @@ sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: A POSIX to native Win32 Cross-Compiler 
 sys-devel/patch 2.7.5: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503 20130503-r1 20151030: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
-sys-devel/qconf 1.5_pre717-r1 2.0: ./configure like generator for qmake-based projects
+sys-devel/qconf 2.0 2.3: ./configure like generator for qmake-based projects
 sys-devel/remake 3.81.0.2 3.81.0.3 3.82.0.4 3.82.0.9 4.1.1.1: patched version of GNU make that adds improved error reporting, tracing, and a debugger
 sys-devel/slibtool 0.5.12: A skinny libtool implementation, written in C
 sys-devel/smatch 1.57 1.57-r1 1.59 9999: static analysis tool for C
@@ -18076,7 +18076,7 @@ virtual/ruby 1: Virtual ebuild for ruby
 virtual/ruby-ffi 3 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-minitest 0-r4 1: Virtual ebuild for the Ruby minitest library
 virtual/ruby-ssl 8 9: Virtual ebuild for the Ruby OpenSSL bindings
-virtual/rubygems 10 11 12: Virtual ebuild for rubygems
+virtual/rubygems 10 11 12 13: Virtual ebuild for rubygems
 virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
 virtual/skkserv 0: Virtual for SKK server
@@ -18453,7 +18453,7 @@ x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
 x11-drivers/xf86-input-libinput 0.19.0 0.24.0 0.25.0: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.2: X.Org driver for mouse input devices
-x11-drivers/xf86-input-mtrack 0.3.0 0.3.1: Xorg Driver for Multitouch Trackpads
+x11-drivers/xf86-input-mtrack 0.3.0 0.3.1 0.4.1: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-mutouch 1.3.0: Microtouch input driver
 x11-drivers/xf86-input-penmount 1.5.0: PenMount input driver
 x11-drivers/xf86-input-synaptics 1.9.0: Driver for Synaptics touchpads
