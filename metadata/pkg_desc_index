@@ -14642,7 +14642,7 @@ net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that s
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
 net-im/toxic 0.7.1 0.7.2 0.7.2-r1: A curses-based client for Tox.
-net-im/turses 0.2.13-r1 0.2.23: Command line twitter client
+net-im/turses 0.2.23: Command line twitter client
 net-im/vacuum 1.2.4 9999: Qt4 Crossplatform Jabber client
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
