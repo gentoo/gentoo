@@ -4405,7 +4405,7 @@ dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swarmcache 1.0_pre20050106-r1 1.0_pre20050106-r2: Cluster-aware Caching for Java
 dev-java/swidgets 0.1.1-r1: Various reusable SWING components
-dev-java/swing-layout 1.0.4 1.0.4-r1: Professional cross platform layouts with Swing
+dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swing-worker 1.1: Java 1.6 SwingWorker backport for Java 1.5
 dev-java/swingx 1.6.4: A collection of powerful, useful, and just plain fun Swing components
 dev-java/swingx-beaninfo 1.6.4: SwingX Beaninfo
@@ -4983,7 +4983,7 @@ dev-libs/nettle 3.2 3.2-r1 3.3 3.3-r1: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.2 1.3: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
-dev-libs/nspr 4.12 4.13 4.13.1: Netscape Portable Runtime
+dev-libs/nspr 4.13.1 4.14: Netscape Portable Runtime
 dev-libs/nss 3.28.1 3.29.1 3.29.3 3.30: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8 2.2.11: Alternative to vendor specific OpenCL ICD loaders
