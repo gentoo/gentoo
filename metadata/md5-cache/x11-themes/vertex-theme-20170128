@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Vertex theme for GTK+ based desktops
+EAPI=6
+HOMEPAGE=https://github.com/horst3180/vertex-theme
+IUSE=cinnamon gnome-shell mate xfce
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-themes/gnome-themes-standard x11-themes/gtk-engines-murrine cinnamon? ( >=x11-libs/gtk+-3.20:3 ) gnome-shell? ( >=x11-libs/gtk+-3.20:3 )
+SLOT=0
+SRC_URI=https://github.com/horst3180/vertex-theme/archive/20170128.tar.gz -> vertex-theme-20170128.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=3435873e544ca224d4a94267de44fdaf

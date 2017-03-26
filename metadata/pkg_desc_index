@@ -19214,7 +19214,7 @@ x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
 x11-themes/adwaita-icon-theme 3.20 3.22.0: GNOME default icon theme
-x11-themes/arc-icon-theme 20160605: Vertex icon theme
+x11-themes/arc-icon-theme 20160605 20161122: Vertex icon theme
 x11-themes/arc-theme 20170302: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
 x11-themes/bespin 0_p20140225: Very configurable Qt4 style derived from the Oxygen project
@@ -19337,7 +19337,7 @@ x11-themes/vdrgraphtft-deeppurple 0.3.2: GraphTFT theme: Alien vs Predator
 x11-themes/vdrgraphtft-poetter 0.3.2: GraphTFT theme: Poetter
 x11-themes/verne-backgrounds 15.91.0.1: Fedora official background artwork
 x11-themes/vertex-icon-theme 20150506: Vertex icon theme
-x11-themes/vertex-theme 20160329: Vertex theme for GTK+ based desktops
+x11-themes/vertex-theme 20160329 20170128 20170128-r1: Vertex theme for GTK+ based desktops
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
 x11-themes/wm-icons 0.4.0_pre1-r1 0.4.0: A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind
 x11-themes/xcursor-themes 1.0.4: X.Org cursor themes: whiteglass, redglass and handhelds
