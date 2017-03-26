@@ -24,6 +24,8 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${P}-dont-include-libXmu.patch )
+
 src_prepare() {
 	default
 	# fix for as-needed, bug #141707
