@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -51,6 +51,7 @@ FORCE_PRINT_ELOG=1
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.14-drop-debug-cflags.patch"
+	epatch "${FILESDIR}/${P}-qconf-2.patch"
 	epatch_user
 
 	qconf || die "Failed to create ./configure."
