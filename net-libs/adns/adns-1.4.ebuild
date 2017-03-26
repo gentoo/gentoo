@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils multilib toolchain-funcs
@@ -25,8 +25,9 @@ src_install () {
 	emake prefix="${D}"/usr libdir="${D}"/usr/$(get_libdir) install || die "emake install failed"
 	dodoc README TODO changelog "${FILESDIR}"/README.security
 	dohtml *.html
+	MY_POSTINST_MSG=$(<"${FILESDIR}"/README.security)
 }
 
 pkg_postinst() {
-	ewarn "$(<${FILESDIR}/README.security)"
+	ewarn "${MY_POSTINST_MSG}"
 }
