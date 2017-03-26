@@ -20,7 +20,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="test"
 
-RDEPEND=""
+RDEPEND="
+	|| (
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+		dev-python/pycrypto[${PYTHON_USEDEP}]
+	)"
 DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 S=${WORKDIR}/${MY_PN}-${EGIT_COMMIT}
