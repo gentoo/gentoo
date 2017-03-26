@@ -7,7 +7,7 @@ DESCRIPTION="Advanced, easy to use, asynchronous-capable DNS client library and 
 HOMEPAGE="http://www.chiark.greenend.org.uk/~ian/adns/"
 SRC_URI="ftp://ftp.chiark.greenend.org.uk/users/ian/adns/${P}.tar.gz"
 
-LICENSE="LGPL-2"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE=""
