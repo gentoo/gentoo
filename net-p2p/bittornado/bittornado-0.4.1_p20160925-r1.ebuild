@@ -14,7 +14,8 @@ EGIT_COMMIT="ed327c4e1ebbe1fe949be81723527cfda87aeb8d"
 DESCRIPTION="John Hoffman's fork of the original bittorrent"
 HOMEPAGE="https://github.com/effigies/BitTornado"
 SRC_URI="https://github.com/effigies/BitTornado/archive/${EGIT_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
-LICENSE="MIT"
+# GPL-2 is just for the init script from FILESDIR.
+LICENSE="MIT GPL-2"
 SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"

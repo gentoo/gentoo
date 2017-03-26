@@ -16,7 +16,8 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="TheShad0w's experimental BitTorrent client"
 HOMEPAGE="http://www.bittornado.com/"
 SRC_URI="http://download2.bittornado.com/download/${MY_P}.tar.gz"
-LICENSE="MIT"
+# GPL-2 is just for the init script from FILESDIR.
+LICENSE="MIT GPL-2"
 SLOT="0"
 
 KEYWORDS="alpha amd64 ~hppa ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
