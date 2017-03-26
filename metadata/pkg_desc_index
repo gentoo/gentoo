@@ -19014,7 +19014,7 @@ x11-plugins/pidgin-funyahoo-plusplus 9999: Yahoo! (2016) Protocol Plugin for Pid
 x11-plugins/pidgin-gnome-keyring 2.0: Integrates Pidgin (and libpurple) with the system keyring
 x11-plugins/pidgin-gpg 0.9 0.9.3: Pidgin GPG/OpenPGP (XEP-0027) plugin
 x11-plugins/pidgin-hotkeys 0.2.4: Pidgin plugin to define global hotkeys for various actions
-x11-plugins/pidgin-indicator 0.9 1.0: Indicator plugin for Pidgin
+x11-plugins/pidgin-indicator 1.0: Indicator plugin for Pidgin
 x11-plugins/pidgin-latex 1.5.0: Pidgin plugin that renders latex formulae
 x11-plugins/pidgin-led-notification 0.1: Pidgin plugin to notify by writing user defined strings to (led control) files
 x11-plugins/pidgin-libnotify 0.14-r1: pidgin-libnotify provides popups for pidgin via a libnotify interface
