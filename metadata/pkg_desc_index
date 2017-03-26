@@ -17776,7 +17776,7 @@ sys-libs/libvpd 2.1.3 2.2.4 2.2.5: Library implementation for listing vpds
 sys-libs/libxcrypt 2.0 2.4: A replacement for libcrypt with DES, MD5 and blowfish support
 sys-libs/llvm-libunwind 3.8.1 3.9.0-r1 3.9.1 4.0.0 9999: C++ runtime stack unwinder from LLVM
 sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
-sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
+sys-libs/lwp 2.2 2.6-r1: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.15-r2 1.1.16 9999: Light, fast and simple C library focused on standards-conformance and safety
@@ -18122,12 +18122,12 @@ www-apache/mod_log_rotate 1.00 1.01: Log rotation support for mod_log_config bas
 www-apache/mod_log_sql 1.101-r2: An Apache module for logging to an SQL (MySQL) database
 www-apache/mod_macro 1.1.10 1.2.1: An Apache2 module providing macros for the Apache config file
 www-apache/mod_musicindex 1.4.1: mod_musicindex allows nice displaying of directories containing music files
-www-apache/mod_nss 1.0.12 1.0.12-r1: SSL/TLS module for the Apache HTTP server
+www-apache/mod_nss 1.0.12-r1: SSL/TLS module for the Apache HTTP server
 www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
 www-apache/mod_perl 2.0.8 2.0.10_pre201601 2.0.10: An embedded Perl interpreter for Apache2
 www-apache/mod_python 3.5.0-r1: An Apache2 module providing an embedded Python interpreter
 www-apache/mod_qos 11.12: A QOS module for the apache webserver
-www-apache/mod_rpaf 0.6 0.6-r1: Reverse proxy add forward module
+www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
 www-apache/mod_security 2.7.7: Web application firewall and Intrusion Detection System for Apache
 www-apache/mod_tidy 0.5.5-r1: a TidyLib based module to parse, clean-up and pretty-print the webservers' (X)HTML output
@@ -19375,7 +19375,7 @@ x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hog
 x11-wm/lumina 0.8.8_p1 1.1.0 1.2.0 9999: Lumina desktop environment
 x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
 x11-wm/marco 1.12.1 1.12.1-r1 1.14.2-r1 1.16.0-r1: MATE default window manager
-x11-wm/matwm2 0.1.1 0.1.2_pre3: Simple EWMH compatible window manager with titlebars and frames
+x11-wm/matwm2 0.1.2_pre3: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.8.5 3.0.5 3.2.0 3.2.0-r1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.20.3 3.22.3: GNOME 3 compositing window manager based on Clutter
@@ -19401,7 +19401,7 @@ x11-wm/windowlab 1.34 1.40: small and simple window manager of novel design
 x11-wm/windowmaker 0.95.5-r2 0.95.6 0.95.7 0.95.8 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manager highly configurable
-x11-wm/wmii 3.9.2-r4 3.9.2-r5: A dynamic window manager for X11
+x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
