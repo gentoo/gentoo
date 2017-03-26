@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils multilib flag-o-matic
+inherit gnome2-utils flag-o-matic
 
 MY_P=makemkv-oss-${PV}
 MY_PB=makemkv-bin-${PV}
@@ -23,7 +23,7 @@ QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 DEPEND="
 	sys-libs/glibc[multilib?]
 	dev-libs/expat
-	dev-libs/openssl:0
+	dev-libs/openssl:0[-bindist(-)]
 	sys-libs/zlib
 	qt5? (
 		dev-qt/qtcore:5
@@ -43,21 +43,7 @@ RDEPEND="${DEPEND}
 	net-misc/wget"
 
 S="${WORKDIR}/makemkv-oss-${PV}"
-
-src_prepare() {
-	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path,sysmacros,flags}.patch )
-
-	# Qt5 always trumps Qt4 if it is available. There are no configure
-	# options or variables to control this and there is no publicly
-	# available configure.ac either.
-	if use qt5; then
-		PATCHES+=( "${FILESDIR}"/${PN}-qt5.patch )
-	elif use qt4; then
-		PATCHES+=( "${FILESDIR}"/${PN}-qt4.patch )
-	fi
-
-	default
-}
+PATCHES=( "${FILESDIR}"/${PN}-{wget,path}.patch )
 
 src_configure() {
 	# See bug #439380.
@@ -66,12 +52,17 @@ src_configure() {
 	local econf_args=()
 
 	if use qt5 || use qt4; then
-		econf_args+=( '--enable-gui' )
+		econf_args+=( --enable-gui )
 	else
-		econf_args+=( '--disable-gui' )
+		econf_args+=( --disable-gui )
 	fi
 
-	econf "${econf_args[@]}"
+	econf \
+		--enable-debug \
+		--disable-noec \
+		$(use_enable qt5) \
+		$(use_enable qt4) \
+		"${econf_args[@]}"
 }
 
 src_install() {
