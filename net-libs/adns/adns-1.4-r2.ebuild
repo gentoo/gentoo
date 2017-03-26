@@ -15,8 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-cnamechain.patch
-	#remove bogus test wrt bug #295072
-	rm "${S}"/regress/case-cnametocname.sys
+	# remove bogus test wrt bug #295072
+	rm "${S}"/regress/case-cnametocname.sys || die
 	eapply_user
 }
 
