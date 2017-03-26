@@ -7074,7 +7074,7 @@ dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.5: This package handles LZF de/compression
 dev-php/pecl-mailparse 2.1.6-r3 2.1.6-r4 3.0.1-r1 3.0.2: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-memcache 2.2.7 3.0.8-r1: PHP extension for using memcached
-dev-php/pecl-memcached 2.2.0-r2 3.0.0: Interface PHP with memcached via libmemcached library
+dev-php/pecl-memcached 2.2.0-r2 3.0.0 3.0.3: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.9 1.6.14-r1: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.1.8 1.1.10: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
@@ -18994,7 +18994,7 @@ x11-plugins/gkrellm-volume 2.1.13-r2: A mixer control plugin for gkrellm
 x11-plugins/gkrellm-xkb 1.05 1.05-r1: XKB keyboard switcher for gkrellm2
 x11-plugins/gkrellmlaunch 0.5: A Program-Launcher Plugin for GKrellM2
 x11-plugins/gkrellmoon 0.6-r1: A GKrellM2 plugin of the famous wmMoonClock dockapp
-x11-plugins/gkrellmss 2.6 2.6-r1 2.6-r2: A plugin for GKrellM2 that has a VU meter and a sound chart
+x11-plugins/gkrellmss 2.6 2.6-r1 2.6-r3: A plugin for GKrellM2 that has a VU meter and a sound chart
 x11-plugins/gkrellmwireless 2.0.3 2.0.3-r1: A plugin for GKrellM that monitors your wireless network card
 x11-plugins/gkrellshoot 0.4.4-r1: GKrellm2 plugin to take screen shots and lock screen
 x11-plugins/gkrellstock 0.5-r1 0.5.1: Get Stock quotes plugin for Gkrellm2
