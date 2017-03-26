@@ -64,6 +64,7 @@ src_configure() {
 			--prefix=/usr
 			--qtdir=/usr
 			--disable-growl
+			--no-separate-debug-info
 			$(use dbus || echo '--disable-qdbus')
 			$(use debug && echo '--debug')
 			$(use spell || echo '--disable-aspell')
