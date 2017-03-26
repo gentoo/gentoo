@@ -15335,7 +15335,7 @@ net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 sup
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.7.1 1.7.1-r1 1.7.1-r2: Remote desktop viewer display system
+net-misc/tigervnc 1.7.1-r2: Remote desktop viewer display system
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
@@ -15349,7 +15349,7 @@ net-misc/unison 2.48.3 2.48.4: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/urlview 0.9: extracts urls from text and will send them to another app
 net-misc/usbip 3.19: Userspace utilities for a general USB device sharing system over IP networks
-net-misc/utelnetd 0.1.9-r2 0.1.11-r1: A small Telnet daemon, derived from the Axis tools
+net-misc/utelnetd 0.1.11-r1: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.2.2-r1 2.3.2-r2 2.3.2-r3: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
@@ -15363,7 +15363,7 @@ net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.18 1.19 1.19.1 1.19.1-r1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
+net-misc/whatportis 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.14 5.2.15: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1 1.7.4-r2: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
