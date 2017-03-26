@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 JAVA_PKG_IUSE="doc source"
 WANT_ANT_TASKS="ant-ivy"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="A collection of tasks (and at one point maybe types and other tools) for Apache Ant"
+DESCRIPTION="A collection of tasks for Apache Ant"
 HOMEPAGE="http://ant-contrib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ant-contrib/${PN}-${PV/_beta/b}-src.tar.bz2"
 
@@ -17,19 +17,24 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 
 #	test? ( dev-java/ant-junit dev-java/ant-testutil )
-RDEPEND=">=virtual/jre-1.4
+CP_DEPEND="
+	>=dev-java/ant-core-1.7.0:0
+	dev-java/ant-ivy:0
 	>=dev-java/bcel-5.1:0
 	dev-java/commons-httpclient:3
 	dev-java/xerces:2
-	dev-java/ant-ivy:0
-	>=dev-java/ant-core-1.7.0"
+"
+
+RDEPEND="${CP_DEPEND}
+	>=virtual/jre-1.4"
 
 # javatoolkit for cElementTree
-DEPEND=">=virtual/jdk-1.4
-	>=dev-java/javatoolkit-0.3.0-r2
-	${RDEPEND}"
+DEPEND="${CP_DEPEND}
+	>=virtual/jdk-1.4
+	>=dev-java/javatoolkit-0.3.0-r2"
 
 S="${WORKDIR}/${PN}"
+PATCHES=( "${FILESDIR}"/tests-visibility.patch )
 
 rewrite_build_xml() {
 	python <<EOF
@@ -48,16 +53,14 @@ EOF
 	[[ $? != 0 ]] && die "Removing taskdefs failed"
 }
 
-java_prepare() {
-	epatch "${FILESDIR}/tests-visibility.patch"
-
-	find . -name "*.jar" -print -delete || die
-
+src_prepare() {
+	default
 	rewrite_build_xml
+	java-pkg_clean
+	java-pkg-2_src_prepare
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="ant-core,bcel,commons-httpclient-3,xerces-2,ant-ivy"
 EANT_EXTRA_ARGS="-Dversion=${PV} -Ddep.available=true"
 
 # Can't load bcel for some reason
