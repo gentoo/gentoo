@@ -89,6 +89,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	sed -e "s:@VER@:${TOOLCHAIN_GCC_PV}:g" "${FILESDIR}"/${PN}.xml > ${P}.xml
+
 	mv ../gnat-gpl-${PV}-src/src/ada gcc/ || die
 	mv ../gcc-interface-${REL}-gpl-${PV}-src gcc/ada/gcc-interface || die
 
@@ -146,6 +148,8 @@ src_compile() {
 }
 
 src_install() {
+	insinto /usr/share/gprconfig
+	doins ${P}.xml
 	toolchain_src_install
 	cd "${D}"${BINPATH}
 	for x in gnat*; do
