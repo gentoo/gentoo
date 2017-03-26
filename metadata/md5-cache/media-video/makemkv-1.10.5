@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst
+DEPEND=sys-libs/glibc[multilib?] dev-libs/expat dev-libs/openssl:0[-bindist(-)] sys-libs/zlib qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) !qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) ) !libav? ( >=media-video/ffmpeg-1.0.0:0= ) libav? ( >=media-video/libav-0.8.9:0= ) >=sys-apps/sed-4
+DESCRIPTION=Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+EAPI=6
+HOMEPAGE=http://www.makemkv.com/
+IUSE=libav multilib qt4 qt5
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl
+RDEPEND=sys-libs/glibc[multilib?] dev-libs/expat dev-libs/openssl:0[-bindist(-)] sys-libs/zlib qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) !qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) ) !libav? ( >=media-video/ffmpeg-1.0.0:0= ) libav? ( >=media-video/libav-0.8.9:0= ) net-misc/wget
+SLOT=0
+SRC_URI=http://www.makemkv.com/download/makemkv-oss-1.10.5.tar.gz http://www.makemkv.com/download/makemkv-bin-1.10.5.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	6d2af8c7ab84825693c3f065a37b923c	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=c93e5b70c4828a8af85f19d48c9ddb20

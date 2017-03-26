@@ -14009,7 +14009,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
-media-video/makemkv 1.10.4: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.10.5: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.91 0.7.92.1: MediaInfo supplies technical and tag information about media files
@@ -19215,7 +19215,7 @@ x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into 
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
 x11-themes/adwaita-icon-theme 3.20 3.22.0: GNOME default icon theme
 x11-themes/arc-icon-theme 20160605: Vertex icon theme
-x11-themes/arc-theme 20161119: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
+x11-themes/arc-theme 20170302: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
 x11-themes/bespin 0_p20140225: Very configurable Qt4 style derived from the Oxygen project
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
