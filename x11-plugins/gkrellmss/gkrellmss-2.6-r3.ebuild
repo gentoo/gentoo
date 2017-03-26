@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gkrellm-plugin
+EAPI=6
+inherit gkrellm-plugin
 
 DESCRIPTION="A plugin for GKrellM2 that has a VU meter and a sound chart"
 HOMEPAGE="http://members.dslextreme.com/users/billw/gkrellmss/gkrellmss.html"
@@ -20,14 +20,9 @@ DEPEND="${RDEPEND}"
 PLUGIN_SO="src/gkrellmss.so"
 PLUGIN_DOCS="Themes"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-Respect-LDFLAGS.patch
-}
+PATCHES=( "${FILESDIR}/${P}-Respect-LDFLAGS.patch" )
 
 src_compile() {
-	local myconf
-	use nls && myconf+=" enable_nls=1"
-
 	addpredict /dev/snd
-	emake ${myconf}
+	emake enable_nls=$(usex nls 1 0)
 }
