@@ -58,4 +58,3 @@ move kde-base/katepart kde-apps/katepart
 move kde-base/pykde4 kde-apps/pykde4
 move kde-base/kde-env kde-frameworks/kdelibs-env
 move kde-base/kdelibs kde-frameworks/kdelibs
-move dev-haskell/hdbc-sqlite dev-haskell/hdbc-sqlite3
