@@ -118,6 +118,7 @@ src_configure() {
 		--bashcompletiondir="$(get_bashcompdir)"
 		--emacslispdir="${EPREFIX}/${SITELISP}/${PN}"
 		--emacsetcdir="${EPREFIX}/${SITEETC}/${PN}"
+		--without-desktop
 		--without-ruby
 		--zshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
 		$(use_with emacs)
