@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (27 Mar 2017)
+# No revdeps or real use case. Uses ECB mode for encryption which is
+# a bad idea. Requires patching for dev-python/pycryptodome. Abandoned
+# upstream and downstream. Removal in 30 days. Bug #611592.
+dev-python/edpwd
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (24 Mar 2017)
 # Tests fail recently, module is abandoned, upstream does
 # not respond, no revdeps. Removal in 30 days. Bug 603918.
