@@ -18,9 +18,10 @@ HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="prefix-chaining"
 
 src_prepare() {
+	use prefix-chaining && sed -e '/consoletype/d' -i Makefile
 	tc-export CC
 	append-lfs-flags
 }
