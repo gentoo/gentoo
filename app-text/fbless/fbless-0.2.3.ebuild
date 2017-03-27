@@ -3,14 +3,14 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/matimatik/fbless.git"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses,xml"
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python-based console fb2 reader with less-like interface"
 HOMEPAGE="https://github.com/matimatik/fbless"
+SRC_URI="https://github.com/matimatik/fbless/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"

@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit oasis
+inherit oasis eutils
 
 DESCRIPTION="The community-maintained foundation library for your OCaml projects"
 HOMEPAGE="https://github.com/ocaml-batteries-team/batteries-included/"
@@ -21,3 +21,7 @@ DEPEND="${RDEPEND}
 DOCS=( "ChangeLog" "FAQ" "README.folders" "README.md" )
 
 S="${WORKDIR}/${PN}-included-${PV}"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.05_beta' && epatch "${FILESDIR}/ocaml405.patch"
+}
