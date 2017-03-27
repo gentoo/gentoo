@@ -12,9 +12,7 @@ if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
 	KEYWORDS="amd64 ~ppc x86"
 else
-	SRC_URI=""
 	ESVN_REPO_URI="https://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp/"
-	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
