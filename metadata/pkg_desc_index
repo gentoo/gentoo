@@ -16958,7 +16958,7 @@ sys-apps/entropy 302: Entropy Package Manager foundation library
 sys-apps/entropy-server 302: Entropy Package Manager server-side tools
 sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement; designed for simplicity
 sys-apps/etckeeper 1.18.1 1.18.4 1.18.5 1.18.6: A collection of tools to let /etc be stored in a repository
-sys-apps/ethtool 2.6.39 3.0 3.4.2 3.8 3.10 3.12.1 3.13 3.14 3.15 3.16 3.18 4.0 4.2 4.5 4.6 4.8: Utility for examining and tuning ethernet-based network interfaces
+sys-apps/ethtool 2.6.39 3.0 3.4.2 3.8 3.10 3.12.1 3.13 3.14 3.15 3.16 3.18 4.0 4.2 4.5 4.6 4.8 4.10: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2 1.20.2-r1: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root privileges
