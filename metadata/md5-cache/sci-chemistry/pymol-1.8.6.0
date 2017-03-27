@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-libs/msgpack[cxx] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyopengl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-libs/freeglut media-libs/freetype:2 media-libs/glew:0= media-libs/libpng:0= media-video/mpeg-tools sys-libs/zlib virtual/python-pmw[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !sci-chemistry/pymol-apbs-plugin[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] web? ( !dev-python/webpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=A Python-extensible molecular graphics system
+EAPI=6
+HOMEPAGE=http://www.pymol.org/
+IUSE=web python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=PSF-2.2
+RDEPEND=dev-libs/msgpack[cxx] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyopengl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-libs/freeglut media-libs/freetype:2 media-libs/glew:0= media-libs/libpng:0= media-video/mpeg-tools sys-libs/zlib virtual/python-pmw[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !sci-chemistry/pymol-apbs-plugin[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] web? ( !dev-python/webpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/pymol-1.8.4.0.png.xz mirror://sourceforge/project/pymol/pymol/1.8/pymol-v1.8.6.0.tar.bz2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	039ba10839816478cfb070fdeb053906	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	fdo-mime	21ef5adf81836863efa968f2a25cff64	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=657fbebc8c3871a98238d2a848552252

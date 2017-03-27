@@ -16072,7 +16072,7 @@ sci-chemistry/prodecomp 3.0-r1: Decomposition-based analysis of NMR projections
 sci-chemistry/prody 1.6: Protein Dynamics Analysis
 sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
-sci-chemistry/pymol 1.8.4.0-r1: A Python-extensible molecular graphics system
+sci-chemistry/pymol 1.8.4.0-r1 1.8.6.0: A Python-extensible molecular graphics system
 sci-chemistry/pymol-plugins-bni-tools 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways from buried cavities to outside solvent in protein structures
 sci-chemistry/pymol-plugins-dssp 110430-r1: DSSP Plugin for PyMOL
