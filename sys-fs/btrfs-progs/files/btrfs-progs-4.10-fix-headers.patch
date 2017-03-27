@@ -1,0 +1,32 @@
+Add missing 'sizes.h' header install.
+
+Noticed on snapper build failure:
+  In file included from btrfs/send-utils.h:28:0,
+    from BtrfsUtils.cc:36:
+  btrfs/ctree.h:37:25: fatal error: linux/sizes.h: No such file or directory
+diff --git a/Makefile b/Makefile
+index 05a5d06..fb1cfd6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -108,7 +108,7 @@ libbtrfs_objects = send-stream.o send-utils.o kernel-lib/rbtree.o btrfs-list.o \
+ 		   uuid-tree.o utils-lib.o rbtree-utils.o
+ libbtrfs_headers = send-stream.h send-utils.h send.h kernel-lib/rbtree.h btrfs-list.h \
+ 	       kernel-lib/crc32c.h kernel-lib/list.h kerncompat.h \
+-	       kernel-lib/radix-tree.h extent-cache.h \
++	       kernel-lib/radix-tree.h kernel-lib/sizes.h extent-cache.h \
+ 	       extent_io.h ioctl.h ctree.h btrfsck.h version.h
+ convert_objects = convert/main.o convert/common.o convert/source-fs.o \
+ 		  convert/source-ext2.o
+diff --git a/ctree.h b/ctree.h
+index 1d0622d..c8f771b 100644
+--- a/ctree.h
++++ b/ctree.h
+@@ -34,7 +34,7 @@
+ #include <btrfs/extent-cache.h>
+ #include <btrfs/extent_io.h>
+ #include <btrfs/ioctl.h>
+-#include <linux/sizes.h>
++#include <btrfs/sizes.h>
+ #endif /* BTRFS_FLAT_INCLUDES */
+ 
+ struct btrfs_root;
