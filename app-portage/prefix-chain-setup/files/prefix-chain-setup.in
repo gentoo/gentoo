@@ -11,7 +11,22 @@ PORT_TMPDIR=
 #
 # get ourselfs the functions.sh script for ebegin/eend/etc.
 #
-. "${PARENT_EPREFIX}"/sbin/functions.sh
+for f in \
+	/lib/gentoo/functions.sh \
+	/etc/init.d/functions.sh \
+	/sbin/functions.sh \
+; do
+	if [[ -r ${PARENT_EPREFIX}${f} ]]; then
+		. "${PARENT_EPREFIX}${f}"
+		f=found
+		break
+	fi
+done
+
+if [[ ${f} != found ]]; then
+	echo "Cannot find Gentoo functions, aborting." >&2
+	exit 1
+fi
 
 for arg in "$@"; do
 	case "${arg}" in
@@ -64,7 +79,7 @@ eend_exit() {
 ebegin "creating directory structure"
 (
 	set -e
-	mkdir -p "${CHILD_EPREFIX}"/etc
+	mkdir -p "${CHILD_EPREFIX}"/etc/portage
 	mkdir -p "${CHILD_EPREFIX}"/var/log
 )
 eend_exit $?
@@ -82,13 +97,13 @@ ebegin "creating make.conf"
 	echo "CFLAGS=\"$(portageq envvar CFLAGS)\""
 	echo "CXXFLAGS=\"$(portageq envvar CXXFLAGS)\""
 	echo "MAKEOPTS=\"$(portageq envvar MAKEOPTS)\""
-    niceness=$(portageq envvar PORTAGE_NICENESS)
+    niceness=$(portageq envvar PORTAGE_NICENESS || true)
     [[ -n ${niceness} ]] &&
         echo "PORTAGE_NICENESS=\"${niceness}\""
 	echo "USE=\"prefix-chaining\""
     echo
     echo "# Mirrors from parent prefix."
-    echo "GENTOO_MIRRORS=\"$(portageq envvar GENTOO_MIRRORS)\""
+    echo "GENTOO_MIRRORS=\"$(portageq envvar GENTOO_MIRRORS || true)\""
 	echo
 	echo "#"
 	echo "# Below comes the chained-prefix setup. Only change things"
@@ -99,7 +114,7 @@ ebegin "creating make.conf"
 	echo "# all that is possible"
 	echo "#"
 	echo "PORTDIR=\"$(portageq envvar PORTDIR)\""
-	echo "SYNC=\"$(portageq envvar SYNC)\""
+	echo "SYNC=\"$(portageq envvar SYNC || true)\""
 	if test -z "${PORT_TMPDIR}"; then
 		case "${CHILD_PROFILE}" in
 		*winnt*)	echo "PORTAGE_TMPDIR=/var/tmp" ;;
@@ -111,10 +126,15 @@ ebegin "creating make.conf"
 	echo "READONLY_EPREFIX=\"${PARENT_EPREFIX}:DEPEND\""
 
 	if test "${DO_SOURCES}" == "yes"; then
-        # don't fail if nothing found
-		egrep "^source .*" "${PARENT_EPREFIX}/etc/make.conf" 2>/dev/null || true
+		# don't fail if nothing found
+		for f in /etc/portage/make.conf /etc/make.conf; do
+			if [[ -r ${PARENT_EPREFIX}${f} ]]; then
+				egrep "^source .*" "${PARENT_EPREFIX}${f}" 2>/dev/null || true
+				break;
+			fi
+		done
 	fi
-) > "${CHILD_EPREFIX}"/etc/make.conf
+) > "${CHILD_EPREFIX}"/etc/portage/make.conf
 eend_exit $?
 
 #
@@ -122,7 +142,7 @@ eend_exit $?
 #
 ebegin "creating make.profile"
 (
-	ln -s "${CHILD_PROFILE}" "${CHILD_EPREFIX}/etc/make.profile"
+	ln -s "${CHILD_PROFILE}" "${CHILD_EPREFIX}/etc/portage/make.profile"
 )
 eend_exit $?
 
@@ -131,7 +151,7 @@ eend_exit $?
 #
 ebegin "adjusting permissions"
 (
-	chmod 644 "${CHILD_EPREFIX}"/etc/make.conf
+	chmod 644 "${CHILD_EPREFIX}"/etc/portage/make.conf
 )
 eend_exit $?
 
@@ -142,22 +162,23 @@ ebegin "installing required basic packages"
 (
 	# this -pv is there to avoid the global update output, which is
 	# there on the first emerge run. (thus, just cosmetics).
-	EPREFIX="${CHILD_EPREFIX}" emerge -p1qO baselayout > /dev/null 2>&1
+	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" emerge -p1qO baselayout-prefix > /dev/null 2>&1
 
-	EPREFIX="${CHILD_EPREFIX}" emerge -1qO baselayout prefix-chain-utils
+	set -e
+	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" emerge -1qO gentoo-functions baselayout-prefix prefix-chain-utils
 
 	# merge with the parent's chost. this forces the use of the parent
 	# compiler, which generally would be illegal - this is an exception.
 	# This is required for example on winnt, because the wrapper has to
 	# be able to use/resolve symlinks, etc. native winnt binaries miss that
 	# ability, but interix binaries don't.
-	EPREFIX="${CHILD_EPREFIX}" CHOST="${PARENT_CHOST}" emerge -1qO gcc-config
+	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" CHOST="${PARENT_CHOST}" emerge -1qO gcc-config
 
 	# select the chain wrapper profile from gcc-config
 	env -i "$(type -P bash)" "${CHILD_EPREFIX}"/usr/bin/gcc-config 1
 
 	# do this _AFTER_ selecting the correct compiler!
-	EPREFIX="${CHILD_EPREFIX}" emerge -1qO libtool
+	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" emerge -1qO libtool
 )
 eend_exit $?
 
@@ -165,6 +186,6 @@ eend_exit $?
 # wow, all ok :)
 #
 ewarn
-ewarn "all done. don't forget to tune ${CHILD_EPREFIX}/etc/make.conf."
+ewarn "all done. don't forget to tune ${CHILD_EPREFIX}/etc/portage/make.conf."
 ewarn "to enter the new prefix, run \"${CHILD_EPREFIX}/startprefix\"."
 ewarn
