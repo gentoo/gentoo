@@ -77,7 +77,10 @@ TARGETS_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
-	accessibility? ( app-accessibility/brltty[static-libs(+)] )
+	accessibility? (
+		app-accessibility/brltty[api]
+		app-accessibility/brltty[static-libs(+)]
+	)
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	bluetooth? ( net-wireless/bluez )
