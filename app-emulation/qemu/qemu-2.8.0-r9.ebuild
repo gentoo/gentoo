@@ -20,6 +20,10 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
+# bug #606088
+SRC_URI+="
+	https://dev.gentoo.org/~tamiko/distfiles/${P}-CVE-2016-9602-patches.tar.xz"
+
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
 HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
@@ -210,6 +214,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-6058.patch   #609638
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-2620.patch   #609206
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-6505.patch   #612220
+	"${S}-CVE-2016-9602-patches"
 )
 
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
