@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ S=${WORKDIR}/${P}/utils/lit
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
 DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm )"

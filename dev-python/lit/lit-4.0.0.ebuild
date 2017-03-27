@@ -20,6 +20,7 @@ S=${WORKDIR}/${MY_P}.src/utils/lit
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
 DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm )"
