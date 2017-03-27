@@ -1,0 +1,61 @@
+--- baselayout-2.2/etc/profile.orig	2017-03-23 16:46:29.922123300 +0100
++++ baselayout-2.2/etc/profile	2017-03-23 16:58:43.578360900 +0100
+@@ -4,6 +4,40 @@
+ # environment for login shells.
+ #
+ 
++#
++# for prefix-chaining, the very first thing to do is to load
++# the profiles for all chained instances above.
++#
++# TODO: is it safe in any case to shell source make.conf?
++# don't do any recursive expansion here. if the parent can
++# use READONLY_EPREFIX's, it has to have the same profile as
++# we have here, and thus it will source parents before
++# evaluating anything from itself.
++#
++_ro_root=$(. /etc/make.conf && echo $READONLY_EPREFIX)
++_ro_deps=${_ro_root#*:}
++_ro_root=${_ro_root%:*}
++if [ -n "${_ro_root}" -a -f "${_ro_root}/"etc/profile ]; then
++	. "${_ro_root}/"etc/profile
++fi
++
++#
++# With prefix-chaining we want another set of variables that
++# should be retained for all prefixes. for example it is ok
++# to retain PKG_CONFIG_PATH if the parent of the chain can
++# be used to resolve RDEPEND...
++#
++if [[ -n "${_ro_root}" ]]; then
++	_ro_chained_path_vars="PATH MANPATH"
++
++	[[ ${_ro_deps} == *RDEPEND* ]] &&
++		_ro_chained_path_vars="${_ro_chained_path_vars} PKG_CONFIG_PATH"
++
++	for var in ${_ro_chained_path_vars}; do
++		eval "_ro_backupenv_paths_${var}=\${${var}}"
++	done
++fi
++
+ # Load environment settings from profile.env, which is created by
+ # env-update from the files in /etc/env.d
+ if [ -e /etc/profile.env ] ; then
+@@ -61,3 +95,17 @@
+ 	[ -r "$sh" ] && . "$sh"
+ done
+ unset sh
++
++#
++# finally chain the save variables for previous prefixes in the chain.
++#
++if [[ -n "${_ro_chained_path_vars}" ]]; then
++	for var in ${_ro_chained_path_vars}; do
++		eval "export ${var}=\${${var}}:\${_ro_backupenv_paths_${var}}"
++		eval "unset _ro_backupenv_paths_${var}"
++	done
++fi
++
++unset _ro_root
++unset _ro_deps
++unset _ro_chained_path_vars

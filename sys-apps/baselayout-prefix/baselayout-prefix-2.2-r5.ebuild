@@ -13,6 +13,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="prefix-chaining"
 KEYWORDS="~arm ~ppc-aix ~x64-cygwin ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 
 RDEPEND="sys-apps/gentoo-functions"
@@ -25,6 +26,19 @@ pkg_preinst() {
 	# pending updates to avoid user having to do etc-update (and make the
 	# pkg_postinst logic simpler).
 	rm -f "${EROOT}"/etc/._cfg????_gentoo-release
+}
+
+src_prepare() {
+	if use prefix-chaining; then
+		epatch "${FILESDIR}"/baselayout-${PV}-prefix-chaining.patch
+
+		# need to set the PKG_CONFIG_PATH globally for this prefix, when
+		# chaining is enabled, since pkg-config may not be installed locally,
+		# but still .pc files should be found for all RDEPENDable prefixes in
+		# the chain.
+		echo "PKG_CONFIG_PATH=\"/usr/lib/pkgconfig:/usr/share/pkgconfig\"" >> etc/env.d/00basic
+	fi
+	default
 }
 
 src_install() {
