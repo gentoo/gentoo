@@ -16,5 +16,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPENDS="dev-python/setuptools"
-RDEPENDS="app-backup/borgbackup"
+DEPEND="dev-python/setuptools"
+RDEPEND="app-backup/borgbackup"
