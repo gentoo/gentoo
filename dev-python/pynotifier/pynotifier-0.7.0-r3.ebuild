@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,11 @@ KEYWORDS="amd64 ppc x86"
 IUSE="qt4 gtk"
 
 DEPEND=""
-RDEPEND="dev-python/twisted-core
+RDEPEND="
+	|| (
+		dev-python/twisted[${PYTHON_USEDEP}]
+		dev-python/twisted-core[${PYTHON_USEDEP}]
+	)
 	gtk? ( dev-python/pygobject:2[${PYTHON_USEDEP}] )
 	qt4? ( dev-python/PyQt4[X,${PYTHON_USEDEP}] )"
 
