@@ -7214,7 +7214,7 @@ dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
 dev-python/aodhclient 0.6.0 0.7.0 0.8.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.2-r1 1.4: namespace control and lazy-import mechanism
 dev-python/aplpy 1.0 1.1.1: Astronomical Plotting Library in Python
-dev-python/appdirs 1.4.0 1.4.0-r1 1.4.1: Module for determining appropriate platform-specific dirs
+dev-python/appdirs 1.4.0 1.4.0-r1 1.4.1 1.4.3: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
 dev-python/apsw 3.11.1_p1 3.13.0_p1 3.14.1_p1 3.15.0_p1 3.15.1_p1 3.15.2_p1 3.17.0_p1: APSW - Another Python SQLite Wrapper
