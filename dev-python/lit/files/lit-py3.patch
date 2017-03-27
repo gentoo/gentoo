@@ -1,0 +1,46 @@
+From 50e946cf38ec22b58cf33818865a2e8a0ebb78ea Mon Sep 17 00:00:00 2001
+From: Brian Gesiak <modocache@gmail.com>
+Date: Wed, 22 Mar 2017 04:23:01 +0000
+Subject: [PATCH] lit: remove python2-isms
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Summary:
+`assert.assertItemEqual` went away in Python 3. Seeing how lists
+are ordered, comparing a list against each other should work just
+as well.
+
+Patch by @jbergstroem (Johan Bergström).
+
+Reviewers: modocache, gparker42
+
+Reviewed By: modocache
+
+Differential Revision: https://reviews.llvm.org/D31229
+---
+ tests/unit/TestRunner.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/unit/TestRunner.py b/tests/unit/TestRunner.py
+index ed0affa..79cc10f 100644
+--- a/tests/unit/TestRunner.py
++++ b/tests/unit/TestRunner.py
+@@ -89,7 +89,7 @@ def test_lists(self):
+         parsers = self.make_parsers()
+         self.parse_test(parsers)
+         list_parser = self.get_parser(parsers, 'MY_LIST:')
+-        self.assertItemsEqual(list_parser.getValue(),
++        self.assertEqual(list_parser.getValue(),
+                               ['one', 'two', 'three', 'four'])
+ 
+     def test_commands(self):
+@@ -106,7 +106,7 @@ def test_custom(self):
+         self.parse_test(parsers)
+         custom_parser = self.get_parser(parsers, 'MY_CUSTOM:')
+         value = custom_parser.getValue()
+-        self.assertItemsEqual(value, ['a', 'b', 'c'])
++        self.assertEqual(value, ['a', 'b', 'c'])
+ 
+     def test_bad_keywords(self):
+         def custom_parse(line_number, line, output):
