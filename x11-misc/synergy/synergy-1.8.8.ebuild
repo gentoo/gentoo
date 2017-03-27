@@ -52,7 +52,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.16_p1969-pthread.patch
-	"${FILESDIR}"/${PN}-1.7.5-gentoo.patch
 	"${FILESDIR}"/${PN}-1.8.1-internal-gmock-gtest.patch
 	"${FILESDIR}"/${PN}-1.8.5-gtest.patch
 )
