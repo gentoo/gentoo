@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=app-arch/bzip2 dev-db/sqlcipher dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libmicrohttpd net-libs/libupnp:0 sys-libs/zlib feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) qt4? ( gui? ( dev-qt/designer:4 dev-qt/qtgui:4 x11-libs/libX11 x11-libs/libXScrnSaver ) dev-qt/qtcore:4 ) qt5? ( gui? ( dev-qt/designer:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 ) voip? ( qt5? ( media-libs/opencv[-qt4(-)] ) qt4? ( media-libs/opencv dev-qt/qt-mobility[multimedia] ) media-libs/speex virtual/ffmpeg[encode] ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=P2P private sharing application
+EAPI=6
+HOMEPAGE=http://retroshare.net
+IUSE=cli feedreader +gui qt4 +qt5 voip
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-3 Apache-2.0 LGPL-2.1
+RDEPEND=app-arch/bzip2 dev-db/sqlcipher dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libmicrohttpd net-libs/libupnp:0 sys-libs/zlib feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) qt4? ( gui? ( dev-qt/designer:4 dev-qt/qtgui:4 x11-libs/libX11 x11-libs/libXScrnSaver ) dev-qt/qtcore:4 ) qt5? ( gui? ( dev-qt/designer:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 ) voip? ( qt5? ( media-libs/opencv[-qt4(-)] ) qt4? ( media-libs/opencv dev-qt/qt-mobility[multimedia] ) media-libs/speex virtual/ffmpeg[encode] )
+REQUIRED_USE=|| ( cli gui ) gui? ( ^^ ( qt4 qt5 ) ) cli? ( ^^ ( qt4 qt5 ) ) feedreader? ( gui ) voip? ( gui )
+SLOT=0
+SRC_URI=https://github.com/RetroShare/RetroShare/archive/v0.6.2.tar.gz -> retroshare-0.6.2.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	gnome2-utils	6d2af8c7ab84825693c3f065a37b923c	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=61f66ed4111dfe9e821abf69795e90f3
