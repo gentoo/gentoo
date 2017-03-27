@@ -14,13 +14,11 @@ SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/picard/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="+acoustid +cdda nls"
+IUSE="nls"
 
 DEPEND="dev-python/PyQt4[X,${PYTHON_USEDEP}]
 	dev-qt/qtgui:4[accessibility]
-	media-libs/mutagen
-	acoustid? ( >=media-libs/chromaprint-1.0[tools] )
-	cdda? ( dev-python/python-discid )"
+	media-libs/mutagen"
 RDEPEND="${DEPEND}"
 
 RESTRICT="test" # doesn't work with ebuilds
@@ -32,8 +30,14 @@ DOCS=(
 	'README.md'
 )
 
-DOC_CONTENTS="If you are upgrading Picard and it does not start,
-try removing Picard's settings:
+DOC_CONTENTS="Install optional package media-libs/chromaprint[tools] to enable
+calculation and lookup of AcoustID fingerprints.
+
+Install optional package dev-python/python-discid to enable
+calculation and lookup of compact disc identifiers (disc IDs).
+
+If you are upgrading Picard and it does not start, try removing
+Picard's settings:
 	rm ~/.config/MusicBrainz/Picard.conf"
 
 python_compile() {
