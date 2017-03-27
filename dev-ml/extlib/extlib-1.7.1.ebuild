@@ -19,6 +19,10 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc +ocamlopt"
 S="${WORKDIR}/ocaml-${P}"
 
+src_prepare() {
+	epatch "${FILESDIR}/ocaml405.patch"
+}
+
 src_compile() {
 	cd src
 	emake -j1 all
