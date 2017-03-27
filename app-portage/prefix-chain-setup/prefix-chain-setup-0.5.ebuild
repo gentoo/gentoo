@@ -18,5 +18,6 @@ RDEPEND=""
 src_install() {
 	cp "${FILESDIR}"/prefix-chain-setup.in "${T}"/prefix-chain-setup
 	eprefixify "${T}"/prefix-chain-setup
+	sed -e "s,@GENTOO_PORTAGE_CHOST@,${CHOST}," -i "${T}"/prefix-chain-setup
 	dobin "${T}"/prefix-chain-setup
 }
