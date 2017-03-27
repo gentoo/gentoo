@@ -5281,7 +5281,6 @@ net-dialup/ppp:gtk - Installs GTK+ password prompting program that can be used b
 net-dialup/ppp:ipv6 - Enables support for IP version 6
 net-dialup/ppp:pam - Enables PAM (Pluggable Authentication Modules) support
 net-dialup/ppp:radius - Enables RADIUS support
-net-dialup/pptpd:gre-extreme-debug - Log all GRE accepted packages when in debug mode (required if you want upstream support)
 net-dialup/xl2tpd:dnsretry - Patch for host lookup retries, activated by redial feature
 net-dialup/xl2tpd:kernel - Enable kernel interface for PPPoL2TP
 net-dns/avahi:autoipd - Build and install the IPv4LL (RFC3927) network address configuration daemon
@@ -6657,6 +6656,7 @@ net-vpn/openvpn:pkcs11 - Enable PKCS#11 smartcard support
 net-vpn/openvpn:plugins - Enable the OpenVPN plugin system
 net-vpn/openvpn:polarssl - Use PolarSSL instead of OpenSSL
 net-vpn/openvpn:socks - Enable socks support
+net-vpn/pptpd:gre-extreme-debug - Log all GRE accepted packages when in debug mode (required if you want upstream support)
 net-vpn/strongswan:constraints - Enable advanced X.509 constraint checking plugin.
 net-vpn/strongswan:dhcp - Enable server support for querying virtual IP addresses for clients from a DHCP server. (IKEv2 only)
 net-vpn/strongswan:eap - Enable support for the different EAP modules that is supported.
