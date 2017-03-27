@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install
+DEPEND=test? ( dev-ml/ounit dev-ml/ocaml-pcap ) dev-ml/topkg dev-ml/ppx_tools async? ( >=dev-ml/async-112.24.00:= ) lwt? ( >=dev-ml/lwt-2.4.7:= dev-ml/ocaml-cstruct:=[lwt(-)] ) >=dev-lang/ocaml-4:= dev-ml/cmdliner:= dev-ml/mirage-profile:= >=dev-ml/ocaml-base64-2.0.0:= >=dev-ml/ocaml-cstruct-1.9.0:= >=dev-ml/ocaml-ipaddr-2.6.0:= dev-ml/ocaml-re:= >=dev-ml/ocaml-uri-1.7.0:= dev-ml/ocaml-hashcons:=[ocamlopt?] dev-lang/ocaml:=[ocamlopt?] !<dev-ml/mirage-types-1.2.0 !dev-ml/odns >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=A pure OCaml implementation of the DNS protocol
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-dns https://mirage.io
+IUSE=async +lwt +ocamlopt test
+KEYWORDS=~amd64
+LICENSE=LGPL-2 LGPL-2.1-with-linking-exception ISC
+RDEPEND=async? ( >=dev-ml/async-112.24.00:= ) lwt? ( >=dev-ml/lwt-2.4.7:= dev-ml/ocaml-cstruct:=[lwt(-)] ) >=dev-lang/ocaml-4:= dev-ml/cmdliner:= dev-ml/mirage-profile:= >=dev-ml/ocaml-base64-2.0.0:= >=dev-ml/ocaml-cstruct-1.9.0:= >=dev-ml/ocaml-ipaddr-2.6.0:= dev-ml/ocaml-re:= >=dev-ml/ocaml-uri-1.7.0:= dev-ml/ocaml-hashcons:=[ocamlopt?] dev-lang/ocaml:=[ocamlopt?] !<dev-ml/mirage-types-1.2.0 !dev-ml/odns
+RESTRICT=test
+SLOT=0/0.20.0
+SRC_URI=https://github.com/mirage/ocaml-dns/archive/v0.20.0.tar.gz -> ocaml-dns-0.20.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=46e248767754c00570b043ae2dc39bfd
