@@ -14820,7 +14820,7 @@ net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packet
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15 1.5.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.9 2.0.10: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.13-r2: Library for automatic proxy configuration management
-net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
+net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.18.0 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librpcsecgss 0.16 0.19 0.19-r1: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
 net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
