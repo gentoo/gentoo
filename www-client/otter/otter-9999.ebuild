@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 WANT_CMAKE="always"
 inherit eutils cmake-utils git-r3
 
@@ -32,6 +32,8 @@ RDEPEND="
 DOCS=( CHANGELOG CONTRIBUTING.md TODO )
 
 src_prepare() {
+	default
+
 	if [[ -n ${LINGUAS} ]]; then
 		local lingua
 		for lingua in resources/translations/*.qm; do
