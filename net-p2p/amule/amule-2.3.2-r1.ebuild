@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ WX_GTK_VER="3.0"
 
 inherit wxwidgets user
 
-MY_P=${PN/m/M}-${PV}
-S="${WORKDIR}"/${MY_P}
+MY_P="${PN/m/M}-${PV}"
+S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
 HOMEPAGE="http://www.amule.org/"
@@ -18,23 +18,21 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="daemon debug geoip nls remote stats unicode upnp +X"
 
-DEPEND="
-	>=dev-libs/crypto++-5
+COMMON_DEPEND="
+	dev-libs/crypto++
 	sys-libs/binutils-libs:0=
-	>=sys-libs/zlib-1.2.1
+	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}[X?]
-	stats? ( >=media-libs/gd-2.0.26:=[jpeg] )
+	stats? ( media-libs/gd:=[jpeg,png] )
 	geoip? ( dev-libs/geoip )
-	upnp? ( >=net-libs/libupnp-1.6.6 )
-	remote? ( >=media-libs/libpng-1.2.0:0=
-	unicode? ( >=media-libs/gd-2.0.26:= ) )
-	!net-p2p/imule
-"
-RDEPEND="${DEPEND}"
+	upnp? ( net-libs/libupnp:* )
+	remote? ( media-libs/libpng:0=
+	unicode? ( media-libs/gd:= ) )
+	!net-p2p/imule"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.2.6-fallocate.diff
-)
+PATCHES=( "${FILESDIR}/${PN}-2.2.6-fallocate.diff" )
 
 pkg_setup() {
 	if use stats && ! use X; then
