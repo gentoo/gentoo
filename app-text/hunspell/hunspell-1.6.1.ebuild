@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,14 +40,14 @@ S=${WORKDIR}/${MY_P}
 
 DOCS=(
 	AUTHORS ChangeLog NEWS README THANKS TODO license.hunspell
-	AUTHORS.myspell README.myspell license.myspell
+	AUTHORS.myspell README.myspell license.myspell README.md
 )
 
 PATCHES=(
 	# Upstream package creates some executables which names are too generic
 	# to be placed in /usr/bin - this patch prefixes them with 'hunspell-'.
 	# It modifies a Makefile.am file, hence eautoreconf.
-	"${FILESDIR}/${PN}-1.5.0-renameexes.patch"
+	"${FILESDIR}/${PN}-1.6.0-renameexes.patch"
 )
 
 src_prepare() {

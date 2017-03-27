@@ -13,9 +13,9 @@ SRC_URI="http://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -23,14 +23,18 @@ REQUIRED_USE="libcanberra? ( notification )
 	smime? ( pgp )"
 
 COMMONDEPEND="
+	net-mail/ytnef
 	archive? (
 		app-arch/libarchive
 		>=net-misc/curl-7.9.7
 	)
 	bogofilter? ( mail-filter/bogofilter )
-	calendar? ( >=net-misc/curl-7.9.7 )
+	calendar? (
+		>=dev-libs/libical-2.0.0
+		>=net-misc/curl-7.9.7
+	)
 	dbus? ( >=dev-libs/dbus-glib-0.60 )
-	gdata? ( >=dev-libs/libgdata-0.17.1 )
+	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	gnutls? ( >=net-libs/gnutls-3.0 )
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( >=x11-libs/gtk+-2.20:2 )
@@ -55,8 +59,8 @@ COMMONDEPEND="
 	spam-report? ( >=net-misc/curl-7.9.7 )
 	spell? ( >=app-text/enchant-1.0.0 )
 	startup-notification? ( x11-libs/startup-notification )
+	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
-	webkit? ( >=net-libs/webkit-gtk-1.1.14:2 )
 "
 
 DEPEND="${COMMONDEPEND}
@@ -95,6 +99,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-bsfilter-plugin
+		--disable-fancy-plugin
 		--disable-generic-umpc
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
@@ -136,8 +141,8 @@ src_configure() {
 		$(use_enable spamassassin spamassassin-plugin)
 		$(use_enable spell enchant)
 		$(use_enable startup-notification)
+		$(use_enable svg)
 		$(use_enable valgrind valgrind)
-		$(use_enable webkit fancy-plugin)
 		$(use_enable xface compface)
 	)
 
