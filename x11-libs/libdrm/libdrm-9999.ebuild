@@ -35,6 +35,7 @@ src_prepare() {
 		sed -ie 's/tests //' "${S}"/Makefile.am
 	fi
 	xorg-2_src_prepare
+	epatch_user
 }
 
 src_configure() {
