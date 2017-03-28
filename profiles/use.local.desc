@@ -5825,10 +5825,18 @@ net-libs/libtorrent-rasterbar:dht - Enable DHT (distributed hash table) support
 net-libs/libtrace:numa - Use sys-process/numactl
 net-libs/libvncserver:24bpp - enable 24bpp support
 net-libs/libvncserver:gcrypt - enable support for gcrypt
+net-libs/libwebsockets:access-log - Support generating Apache-compatible access logs
+net-libs/libwebsockets:cgi - Include CGI (spawn process with network-connected stdin/out/err) APIs
 net-libs/libwebsockets:client - The client part of the library and libwebsockets-test-client
+net-libs/libwebsockets:generic-sessions - With the Generic Sessions plugin
+net-libs/libwebsockets:http-proxy - Support for rewriting HTTP proxying
 net-libs/libwebsockets:http2 - Support the HTTP/2 protocol
+net-libs/libwebsockets:lejp - With the Lightweight JSON Parser
 net-libs/libwebsockets:libev - Support event loops via dev-libs/libev
 net-libs/libwebsockets:libuv - Support asynchronous I/O via dev-libs/libuv
+net-libs/libwebsockets:server-status - Support json + jscript server monitoring
+net-libs/libwebsockets:smtp - Provide SMTP support
+net-libs/libwebsockets:sqlite3 - Require SQLITE3 support
 net-libs/loudmouth:asyncns - Use net-libs/libasyncns for asynchronous name resolution.
 net-libs/loudmouth:openssl - Enable dev-libs/openssl support instead of gnutls (which is the default).
 net-libs/mbedtls:havege - Enable the HAVEGE random generator. Warning: the HAVEGE random generator is not suitable for virtualized environments

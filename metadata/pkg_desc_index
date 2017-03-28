@@ -14838,7 +14838,7 @@ net-libs/libtorrent-rasterbar 1.0.10 1.0.11 1.1.1 1.1.2: C++ BitTorrent implemen
 net-libs/libtrace 3.0.22 4.0.0 4.0.1: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.8.0: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
-net-libs/libwebsockets 1.7.8 1.7.9 2.0.2: canonical libwebsockets.org websocket library
+net-libs/libwebsockets 1.7.8 1.7.9 2.0.2 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
