@@ -4688,7 +4688,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.7 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.46.0: Javascript bindings for GNOME
-dev-libs/glib 2.44.1-r1 2.48.2 2.50.3: The GLib library of C routines
+dev-libs/glib 2.44.1-r1 2.48.2 2.50.3 2.50.3-r1: The GLib library of C routines
 dev-libs/gmime 2.6.23: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2016.12.21.08.39.01 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
