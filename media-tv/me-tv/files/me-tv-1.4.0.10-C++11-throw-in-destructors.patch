@@ -1,0 +1,35 @@
+--- a/server/data.cc
++++ b/server/data.cc
+@@ -68,7 +68,7 @@
+ 	}
+ }
+ 
+-Statement::~Statement()
++Statement::~Statement() NOEXCEPT
+ {
+ 	if (sqlite3_finalize(statement) != 0)
+ 	{
+--- a/server/data.h
++++ b/server/data.h
+@@ -26,6 +26,12 @@
+ #include <linux/dvb/frontend.h>
+ #include <glibmm.h>
+ 
++#if __cplusplus >= 201103L
++#define NOEXCEPT noexcept(false)
++#else
++#define NOEXCEPT
++#endif
++
+ typedef std::list<Glib::ustring> StringList;
+ 
+ namespace Data
+@@ -68,7 +74,7 @@
+ 
+ 	public:
+ 		Statement(Connection& connection, const Glib::ustring& command);
+-		~Statement();
++		~Statement() NOEXCEPT;
+ 
+ 		void reset();
+ 		guint step();
