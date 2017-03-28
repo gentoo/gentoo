@@ -5,7 +5,7 @@
                  if attr not in attrs:
                      continue
 -                val_unescaped = re.sub("[`\000-\040\177-\240\s]+", '',
-+                val_unescaped = re.sub(r"[`\000-\040\177-\240\s]+", '',
++                val_unescaped = re.sub("[`\x00-\x20\x7f-\xa0\\s]+", '',
                                         unescape(attrs[attr])).lower()
                  # remove replacement characters from unescaped characters
                  val_unescaped = val_unescaped.replace("\ufffd", "")
