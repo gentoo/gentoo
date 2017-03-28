@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201703-04">
+  <title>cURL: Certificate validation error</title>
+  <synopsis>A coding error has been found in cURL, causing the TLS Certificate
+    Status Request extension check to always return true.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2017-03-28</announced>
+  <revised>2017-03-28: 1</revised>
+  <bug>610572</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.53.0</unaffected>
+      <vulnerable range="lt">7.53.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cURL is a tool and libcurl is a library for transferring data with URL
+      syntax.
+    </p>
+  </background>
+  <description>
+    <p>cURL and applications linked against libcurl support “OCSP
+      stapling”, also known as the TLS Certificate Status Request extension
+      (using the CURLOPT_SSL_VERIFYSTATUS option). When telling cURL to use
+      this feature, it uses that TLS extension to ask for a fresh proof of the
+      server’s certificate’s validity. If the server doesn’t support the
+      extension, or fails to provide said proof, cURL is expected to return an
+      error.
+      Due to a coding mistake, the code that checks for a test success or
+      failure, ends up always thinking there’s valid proof, even when there
+      is none or if the server doesn’t support the TLS extension in question.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Due to the error, a user maybe does not detect when a server’s
+      certificate goes invalid or otherwise be mislead that the server is in a
+      better shape than it is in reality.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.53.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2629">CVE-2017-2629</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-07T21:41:04Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-03-28T01:57:09Z">whissi</metadata>
+</glsa>
