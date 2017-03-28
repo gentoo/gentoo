@@ -2,7 +2,7 @@
 Description=A tool for securing communications between a client and a DNS resolver
 
 [Service]
-Type=forking
+Type=simple
 PIDFile=/var/run/dnscrypt-proxy.pid
 EnvironmentFile=/etc/conf.d/dnscrypt-proxy
 ExecStartPre=/bin/rm -f /var/run/dnscrypt-proxy.pid
