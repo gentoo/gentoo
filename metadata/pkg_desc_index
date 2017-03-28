@@ -11496,7 +11496,7 @@ gnome-base/gnome-settings-daemon 3.20.2 3.22.2 3.24.0: Gnome Settings Daemon
 gnome-base/gnome-shell 3.20.4 3.22.2 3.22.3 3.22.3-r1: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.20.0 3.22.0 3.23.90: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.28.3-r1 1.30.3: Virtual filesystem implementation for gio
+gnome-base/gvfs 1.28.3-r1 1.30.3 1.30.4: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runtime
