@@ -25,5 +25,6 @@ RDEPEND="
 	dev-libs/boost:=
 	sys-apps/util-linux
 	dev-ros/roslib[${PYTHON_USEDEP}]
+	dev-python/rospkg[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
