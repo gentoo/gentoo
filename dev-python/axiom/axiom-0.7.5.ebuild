@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,10 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=dev-python/epsilon-0.7.0[${PYTHON_USEDEP}]
-	>=dev-python/twisted-core-13.2.0[${PYTHON_USEDEP}]"
+	|| (
+		dev-python/twisted[${PYTHON_USEDEP}]
+		>=dev-python/twisted-core-13.2.0[${PYTHON_USEDEP}]
+	)"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-0.5.30-sqlite3_3.6.4.patch" )
