@@ -17848,6 +17848,7 @@ sys-process/criu 2.5 2.10 2.11 2.11.1 2.12: utility to checkpoint/restore a proc
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
+sys-process/ctop 0.5.1: Top-like interface for container-metrics
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
