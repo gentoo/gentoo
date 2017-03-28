@@ -12,7 +12,8 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
 # library and can link to gdbm and other GPL-only libraries. In this
 # cases, we have a fully GPL-2 package. Leaving the rest of the
 # GPL-forcing USE flags for those who use them.
-LICENSE="!gdbm? ( LGPL-2.1 ) gdbm? ( GPL-2 )"
+# qpaeq equalizer pyqt GUI frontend is AGPL-3+
+LICENSE="!gdbm? ( LGPL-2.1 ) gdbm? ( GPL-2 ) equalizer? ( AGPL-3+ )"
 
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
@@ -26,6 +27,7 @@ gnome gtk ipv6 jack libsamplerate libressl lirc native-headset neon ofono-headse
 # See "*** BLUEZ support not found (requires D-Bus)" in configure.ac
 REQUIRED_USE="
 	bluetooth? ( dbus )
+	equalizer? ( dbus )
 	ofono-headset? ( bluetooth )
 	native-headset? ( bluetooth )
 	udev? ( || ( alsa oss ) )
@@ -73,7 +75,16 @@ RDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	>=media-libs/speex-1.2_rc1
+	|| (
+		(
+			>=media-libs/speex-1.2.0
+			media-libs/speexdsp
+		)
+		(
+			<media-libs/speex-1.2.0
+			>=media-libs/speex-1.2_rc1
+		)
+	)
 	gdbm? ( sys-libs/gdbm )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
@@ -85,7 +96,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/m4
 	doc? ( app-doc/doxygen )
-	test? ( dev-libs/check )
+	test? ( >=dev-libs/check-0.9.10 )
 	X? (
 		x11-proto/xproto[${MULTILIB_USEDEP}]
 		>=x11-libs/libXtst-1.0.99.2[${MULTILIB_USEDEP}]
@@ -350,12 +361,5 @@ pkg_postinst() {
 	if use libsamplerate; then
 		elog "The libsamplerate based resamplers are now deprecated, because they offer no"
 		elog "particular advantage over speex. Upstream suggests disabling them."
-	fi
-
-	# Needed for pulseaudio-6.0 update from older versions
-	if use udev; then
-		if ! version_is_at_least 6.0 ${REPLACING_VERSIONS}; then
-			udevadm control --reload && udevadm trigger
-		fi
 	fi
 }

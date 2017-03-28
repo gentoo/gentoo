@@ -86,7 +86,6 @@ COMMONDEPEND="
 		dev-libs/expat
 		dev-libs/openssl:0
 		>=media-libs/mediastreamer-2.3.0
-		media-libs/speex
 		net-libs/libsrtp:=
 		net-libs/ortp:=
 	)
@@ -107,6 +106,7 @@ COMMONDEPEND="
 	yahoo? ( media-libs/jasper )
 "
 RDEPEND="${COMMONDEPEND}
+	jingle? ( media-libs/speex )
 	latex? (
 		virtual/imagemagick-tools
 		virtual/latex-base
@@ -123,17 +123,16 @@ src_configure() {
 	local x x2
 	# Handle common stuff
 	local mycmakeargs=(
-		-DWITH_GOOGLETALK=$(usex jingle)
 		-DWITH_LiboRTP=$(usex jingle)
 		-DWITH_Mediastreamer=$(usex jingle)
-		-DWITH_Speex=$(usex jingle)
 		-DDISABLE_VIDEOSUPPORT=$(usex !v4l)
 	)
 	# enable protocols
 	for x in ${PROTOCOLS}; do
 		case ${x/+/} in
-			zeroconf) x2=bonjour ;;
+			jingle) x2=libjingle ;;
 			xmpp) x2=jabber ;;
+			zeroconf) x2=bonjour ;;
 			*) x2=${x/+/} ;;
 		esac
 		mycmakeargs+=( -DWITH_${x2}=$(usex ${x/+/}) )

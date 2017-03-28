@@ -28,6 +28,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" prefix="/usr" install
+	emake DESTDIR="${ED}" PREFIX="/usr" install
 	dodoc Changelog DESIGN README.decpcap.txt README.md
 }
