@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 		gnome-base/librsvg
 		media-gfx/imagemagick[xml,png,svg]
 	)
+	media-gfx/imagemagick[png]
 	virtual/pkgconfig"
 
 PATCHES=(
