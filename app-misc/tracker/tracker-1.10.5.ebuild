@@ -67,7 +67,7 @@ RDEPEND="
 	networkmanager? ( >=net-misc/networkmanager-0.8:= )
 	pdf? (
 		>=x11-libs/cairo-1:=
-		>=app-text/poppler-0.16:=[cairo,utils]
+		>=app-text/poppler-0.16[cairo,utils]
 		>=x11-libs/gtk+-2.12:2 )
 	playlist? ( >=dev-libs/totem-pl-parser-3 )
 	rss? ( >=net-libs/libgrss-0.7:0 )
