@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=sys-apps/osinfo-db-tools
+DESCRIPTION=osinfo database files
+EAPI=6
+HOMEPAGE=http://libosinfo.org/
+KEYWORDS=~amd64
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://releases.pagure.org/libosinfo/osinfo-db-20170326.tar.xz
+_eclass_exported_funcs=src_unpack:- src_install:-
+_md5_=b0a929d6a01b3748957a27068f67f326
