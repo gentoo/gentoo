@@ -37,6 +37,8 @@ PATCHES=(
 	# Patch against master found in an upstream PR, backported:
 	# https://github.com/nose-devs/nose/pull/1004
 	"${FILESDIR}"/${P}-coverage-4.1-support.patch
+
+	"${FILESDIR}"/${P}-python-3.6-test.patch
 )
 
 pkg_setup() {
