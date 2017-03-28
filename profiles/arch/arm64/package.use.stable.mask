@@ -1,0 +1,10 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Michael Weber <xmw@gentoo.org> (29 Mar 2017)
+# unstable deps mesa llvm et al.
+x11-libs/cairo gles2 opengl
+
+# Michael Weber <xmw@gentoo.org> (29 Mar 2017)
+# unkeyworded deps
+media-libs/freetype X harfbuzz
