@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 
-RDEPEND=">=dev-libs/openssl-1:0"
+RDEPEND=">=dev-libs/openssl-1:0="
 DEPEND="${RDEPEND}
 	virtual/os-headers"
 
