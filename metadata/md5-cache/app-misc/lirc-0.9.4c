@@ -5,11 +5,11 @@ EAPI=6
 HOMEPAGE=http://www.lirc.org/
 IUSE=audio doc ftdi gtk inputlirc static-libs systemd usb X python_targets_python3_4 python_targets_python3_5 python_single_target_python3_4 python_single_target_python3_5
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
 RDEPEND=python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] audio? ( >media-libs/portaudio-18 media-libs/alsa-lib ) dev-python/pyyaml[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ftdi? ( dev-embedded/libftdi:0 ) systemd? ( sys-apps/systemd ) usb? ( virtual/libusb:0 ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 ) gtk? ( x11-libs/vte[introspection] dev-python/pygobject[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) inputlirc? ( app-misc/inputlircd )
 REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) gtk? ( X )
 SLOT=0
 SRC_URI=mirror://sourceforge/lirc/lirc-0.9.4c.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:python-single-r1 src_configure:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
-_md5_=57ba96ac2e7de67011e629c7d8d17fbb
+_md5_=9c7da6739eaa7fbeb181becc65d9deb5

@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=configure install
 DEPEND=media-gfx/imagemagick:= dev-lang/ocaml:=[ocamlopt] >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Provide the ImageMagick methods to OCaml
 EAPI=6
@@ -9,6 +9,6 @@ RDEPEND=media-gfx/imagemagick:= dev-lang/ocaml:=[ocamlopt]
 RESTRICT=test
 SLOT=0/0.34
 SRC_URI=http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/ImageMagick/OCaml-ImageMagick-0.34.tgz
-_eclass_exported_funcs=src_install:-
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150
-_md5_=faa238477bda208e8bd6343912feda3d
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=85985a530b18f04f4365b66b359d958c
