@@ -3900,7 +3900,7 @@ dev-java/ant-testutil 1.9.2: Apache Ant's optional test utility classes
 dev-java/ant-trax 1.9.2: Apache Ant .jar with optional tasks depending on XML transformer (Deprecated!)
 dev-java/antlr 2.7.7-r7 2.7.7-r8 3.2 3.5.2 4.5.1 4.5.3: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
-dev-java/appframework 1.03-r4: A small set of Java classes that simplify building desktop applications
+dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications easily
 dev-java/apple-java-extensions-bin 1.5-r1: Apple eAWT and eIO APIs for Java on Mac OS X
 dev-java/apt-mirror 1.0-r1: Annotation processing apt mirror API introduced in J2SE 5.0
 dev-java/args4j 2.32: args4j is a Java command line arguments parser
@@ -14410,7 +14410,7 @@ net-dialup/dial 1.2-r1 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r2 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r2 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
-net-dialup/freeradius 2.2.9-r2 3.0.12-r1: Highly configurable free RADIUS server
+net-dialup/freeradius 2.2.9-r2 3.0.12-r1 3.0.13: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/gtkterm 0.99.7_rc1: A serial port terminal written in GTK+, similar to Windows' HyperTerminal
