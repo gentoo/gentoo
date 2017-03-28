@@ -1,10 +1,9 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual ebuild for ruby
 EAPI=5
-HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Ruby
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=|| ( dev-lang/ruby:2.1 dev-lang/ruby:2.2 ) virtual/rubygems
 SLOT=0
 _eclass_exported_funcs=-
 _eclasses_=ruby-single	af6ea0a8fe4c4faf733f4dbafae9e233	ruby-utils	e9d0baddf239294b286da449ae7ac6a3
-_md5_=e2a56a030e223e760a70b22736fb7592
+_md5_=35eb8fac62aa9a93496661a4eddbfbc5
