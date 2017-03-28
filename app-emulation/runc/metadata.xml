@@ -18,6 +18,9 @@
 		<name>Manuel Rüger</name>
 	</maintainer>
 	<use>
+		<flag name="ambient">
+			Enable support for ambient capabilities set (Requires Linux kernel 4.3 or later).
+		</flag>
 		<flag name="apparmor">
 			Enable AppArmor support.
 		</flag>
