@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit eutils autotools python-single-r1
 DESCRIPTION="Library interface to IPMI"
 HOMEPAGE="https://sourceforge.net/projects/openipmi/"
 MY_PN="OpenIPMI"
-MY_P="${MY_PN}-${PV}"
+MY_P="${MY_PN}-${PV/_/-}"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 GPL-2"
@@ -69,7 +69,6 @@ src_prepare() {
 	# We touch the .in and .am above because if we use the below, the Perl stuff
 	# is very fragile, and often fails to link.
 	#cd "${S}"
-	elibtoolize
 	eautoreconf
 }
 
@@ -91,7 +90,7 @@ src_configure() {
 	#fi
 
 	myconf+=( --without-tkinter )
-	myconf+=( --with-glib --with-swig )
+	myconf+=( --with-glib --with-glibver=2.0 --with-glib12=no --with-swig )
 	# these binaries are for root!
 	econf ${myconf[@]} --bindir=/usr/sbin
 }
