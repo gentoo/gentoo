@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="X static-libs systemd xwayland"
 
 RDEPEND="virtual/opengl
+	virtual/libudev
 	media-libs/mesa[wayland,gbm,gles2,egl]
 	x11-libs/libdrm
 	x11-libs/pixman
@@ -51,7 +52,4 @@ pkg_postinst() {
 	if use X && ! use xwayland; then
 		elog "xwayland use flag is required for X11 applications support"
 	fi
-	ewarn "This wlc version does not support displaying"
-	ewarn "Qt, EFL and Gtk+<3.22 applications natively (without Xwayland)."
-	ewarn "It is required for Gtk+ 3.22 applications though."
 }

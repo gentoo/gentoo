@@ -16,20 +16,21 @@ KEYWORDS=""
 IUSE="X static-libs systemd xwayland"
 
 RDEPEND="virtual/opengl
-		media-libs/mesa[wayland,gbm,gles2,egl]
-		x11-libs/libdrm
-		x11-libs/pixman
-		x11-libs/libxkbcommon
-		x11-misc/xkeyboard-config
-		dev-libs/libinput
-		dev-libs/wayland
-		X? ( x11-libs/libX11
-			 x11-libs/libxcb[xkb]
-			 x11-libs/xcb-util-image
-			 x11-libs/xcb-util-wm
-			 x11-libs/libXfixes )
-		xwayland? ( x11-base/xorg-server[wayland] )
-		systemd? ( sys-apps/systemd sys-apps/dbus )"
+	virtual/libudev
+	media-libs/mesa[wayland,gbm,gles2,egl]
+	x11-libs/libdrm
+	x11-libs/pixman
+	x11-libs/libxkbcommon
+	x11-misc/xkeyboard-config
+	dev-libs/libinput
+	dev-libs/wayland
+	X? ( x11-libs/libX11
+		 x11-libs/libxcb[xkb]
+		 x11-libs/xcb-util-image
+		 x11-libs/xcb-util-wm
+		 x11-libs/libXfixes )
+	xwayland? ( x11-base/xorg-server[wayland] )
+	systemd? ( sys-apps/systemd sys-apps/dbus )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
