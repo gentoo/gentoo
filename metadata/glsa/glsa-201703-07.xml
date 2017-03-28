@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201703-07">
+  <title>Xen: Privilege Escalation</title>
+  <synopsis>A vulnerability in Xen's bundled QEMU version might allow privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2017-03-28</announced>
+  <revised>2017-03-28: 1</revised>
+  <bug>609120</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.7.1-r8</unaffected>
+      <vulnerable range="lt">4.7.1-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>In CIRRUS_BLTMODE_MEMSYSSRC mode the bitblit copy routine
+      cirrus_bitblt_cputovideo fails to check wethehr the specified memory
+      region is safe.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could potentially execute arbitrary code with
+      privileges of Xen (QEMU) process on the host, gain privileges on the host
+      system, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>Running guests in Paravirtualization (PV)  mode,  or running guests in
+      Hardware-assisted virtualizion (HVM) utilizing stub domains mitigate
+      the issue.
+    </p>
+    
+    <p>Running HVM guests with the device model in a stubdomain will mitigate
+      the issue.
+    </p>
+    
+    <p>Changing the video card emulation to stdvga (stdvga=1, vga=”stdvga”,
+      in the xl domain configuration) will avoid the vulnerability.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All Xen Tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.7.1-r8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2620">CVE-2017-2620</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-24T02:24:45Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-03-28T03:15:18Z">whissi</metadata>
+</glsa>
