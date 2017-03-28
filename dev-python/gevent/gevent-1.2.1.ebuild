@@ -65,7 +65,7 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( AUTHORS CHANGES.rst README.rst )
+	local DOCS=( AUTHORS README.rst )
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 	use examples && dodoc -r examples
 
