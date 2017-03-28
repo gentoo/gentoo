@@ -13775,7 +13775,7 @@ media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes you
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.2.0: Audio tag editor
-media-sound/pulseaudio 9.0 10.0: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 10.0: A networked sound server with an advanced plugin system
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
@@ -14266,7 +14266,7 @@ net-analyzer/netcat 110-r9: the network swiss army knife
 net-analyzer/netcat6 1.0-r2: netcat clone with better IPv6 support, improved code, etc...
 net-analyzer/netdata 1.2.0-r1 1.3.0 1.4.0-r1 1.5.0 1.6.0 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
-net-analyzer/nethogs 0.8.1 0.8.5: A small 'net top' tool, grouping bandwidth by process
+net-analyzer/nethogs 0.8.1 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0 2.0-r1: NETI@Home research project from GATech
 net-analyzer/netio 1.32: a network benchmarking tool that measures net throughput with NetBIOS and TCP/IP protocols
 net-analyzer/netperf 2.6.0-r1 2.7.0 2.7.0-r1 2.7.0-r2: Network performance benchmark

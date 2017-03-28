@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/raboof/nethogs/archive/v0.8.5.tar.gz -> nethogs-0.8.5.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=1ed5454a51dcb07076bd62604df83914
+_md5_=cb9f7385e14b977ac4cc55a4756897dc
