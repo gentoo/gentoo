@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
+	if ! use exif ; then
+		# Remove tests that require EXIF to pass, bug 610024
+		rm "${S}"/tests/data/test0{35,36,37,40}* || die
+	fi
 	# Leave GCC debug builds under user control
 	sed -r '/(C|LD)FLAGS/ s/ -g( |")/\1/' \
 		-i configure{.ac,} || die
