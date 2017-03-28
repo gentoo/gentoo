@@ -78,6 +78,6 @@ src_install() {
 
 	#342449
 	pushd "${ED}"/usr/$(get_libdir)/ >/dev/null
-	ln -s lib${PN}{-$(get_major_version).$(get_version_component_range 2).so.0.0.0,.so}
+	ln -s lib${PN}{-$(get_major_version).$(get_version_component_range 2).so.0.0.1,.so}
 	popd >/dev/null
 }
