@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-lxml-3.5.0-backport.patch
+	"${FILESDIR}"/${P}-python3.6-sanitizer-re.patch
 )
 
 python_test() {
