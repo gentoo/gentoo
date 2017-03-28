@@ -569,6 +569,7 @@ app-emulation/rkt:rkt_stage1_kvm - This flag has been replaced by the rkt_stage1
 app-emulation/rkt:rkt_stage1_kvm_lkvm - Build stage1-kvm-lkvm.aci
 app-emulation/rkt:rkt_stage1_kvm_qemu - Build stage1-kvm-qemu.aci
 app-emulation/rkt:rkt_stage1_src - Build the stage1.aci from source
+app-emulation/runc:ambient - Enable support for ambient capabilities set (Requires Linux kernel 4.3 or later).
 app-emulation/runc:apparmor - Enable AppArmor support.
 app-emulation/runv:libvirt - Enable support for KVM via libvirt
 app-emulation/runv:xen - Enable support for the Xen Hypervisor
