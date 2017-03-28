@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit autotools eutils python-r1 toolchain-funcs multilib-minimal
+inherit autotools epatch ltprune python-r1 toolchain-funcs multilib-minimal
 
 DESCRIPTION="XSLT libraries and tools"
 HOMEPAGE="http://www.xmlsoft.org/"
