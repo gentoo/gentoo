@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Weber <xmw@gentoo.org> (29 Mar 2017)
+# unkeyworded deps
+media-libs/freetype X harfbuzz
+
 # Markus Meier <maekke@gentoo.org> (24 Mar 2017)
 # unkeyworded deps, bug #552330
 app-portage/g-sorcery bson
