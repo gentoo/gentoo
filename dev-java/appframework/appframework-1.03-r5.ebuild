@@ -46,6 +46,6 @@ src_prepare() {
 }
 
 src_install() {
-	java-pkg-simple_src_compile
+	java-pkg-simple_src_install
 	use examples && java-pkg_doexamples examples
 }
