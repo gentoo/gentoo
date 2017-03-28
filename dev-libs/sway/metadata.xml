@@ -5,10 +5,6 @@
 		<email>hilobakho@gmail.com</email>
 		<name>Mykyta Holubakha</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>tajjada@gmail.com</email>
-		<name>Jasen Borisov</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
