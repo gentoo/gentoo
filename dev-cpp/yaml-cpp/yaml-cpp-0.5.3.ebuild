@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jbeder/${PN}/archive/release-${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND=">=dev-libs/boost-1.49.0-r2"
