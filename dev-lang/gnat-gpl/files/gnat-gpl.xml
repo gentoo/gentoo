@@ -76,6 +76,7 @@
       for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
       for Driver         ("Ada") use
           "${GPRCONFIG_PREFIX}libexec/gprbuild/gprbind";
+      for Switches ("Ada") use ("--gnatbind_path=gnatbind-@VER@");
    end Binder;
 
    package Clean is
