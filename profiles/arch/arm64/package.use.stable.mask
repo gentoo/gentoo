@@ -9,3 +9,5 @@ x11-libs/cairo gles2 opengl
 # unstable deps
 media-libs/freetype X harfbuzz
 app-text/poppler introspection
+x11-libs/pango introspection
+media-libs/harfbuzz introspection
