@@ -34,7 +34,7 @@ RDEPEND="
 	)
 "
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-2.0-gentoo.patch
 )
 
 pkg_setup() {
