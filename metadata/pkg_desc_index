@@ -7047,7 +7047,7 @@ dev-php/jsonlint 1.4.0: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
 dev-php/libvirt-php 0.5.2 9999: PHP 5 bindings for libvirt
 dev-php/magickwand 1.0.9-r2: A native PHP-extension to the ImageMagick MagickWand API
-dev-php/ming-php 0.4.5 0.4.7: PHP extension for the ming Flash movie generation library
+dev-php/ming-php 0.4.7: PHP extension for the ming Flash movie generation library
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/myclabs-deepcopy 1.6.0: Create deep copies (clones) of your objects
@@ -7679,8 +7679,8 @@ dev-python/httreplay 0.2.0: A HTTP replay library for testing.
 dev-python/humanfriendly 1.44.1 1.44.3 1.44.7: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
-dev-python/hyper-h2 2.4.0 2.4.1 2.5.0 2.5.1: HTTP/2 State-Machine based protocol implementation
-dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
+dev-python/hyper-h2 2.4.0 2.4.1 2.5.0 2.5.1 3.0.0: HTTP/2 State-Machine based protocol implementation
+dev-python/hyperframe 4.0.1 5.0.0: HTTP/2 framing layer for Python
 dev-python/hypothesis 1.19.0 3.6.0-r1 3.6.1: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
@@ -8048,7 +8048,7 @@ dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
 dev-python/pretend 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 15.5.7 15.6.3 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
-dev-python/priority 1.2.0 1.2.1 1.2.2: A pure-Python implementation of the HTTP/2 priority tree
+dev-python/priority 1.2.0 1.2.1 1.2.2 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 1.1.0 1.1.2 1.2.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2: Easy to use progress bars
@@ -8073,7 +8073,7 @@ dev-python/py-cpuinfo 0.1.8 0.2.3: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
 dev-python/py-smbpasswd 1.0.2: Module capable of generating both LANMAN and NT password hashes, for e.g. Samba
-dev-python/py-ubjson 0.8.5: Universal Binary JSON encoder/decoder
+dev-python/py-ubjson 0.8.5 0.9.0: Universal Binary JSON encoder/decoder
 dev-python/py-xmlrpc 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 2.0.8 2.0.9: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
@@ -8204,7 +8204,7 @@ dev-python/pympler 0.4.1 0.4.2: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.6.3 0.6.6 0.6.7 0.7.6 0.7.9: Pure-Python MySQL Driver
-dev-python/pynacl 1.0.1 1.0.1-r1: Python binding to the Networking and Cryptography (NaCl) library
+dev-python/pynacl 1.0.1 1.0.1-r1 1.1.1: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynag 0.9.1: Python modules for Nagios plugins and configuration
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r3: pyNotifier provides an implementation of a notifier/event scheduler
@@ -8418,7 +8418,7 @@ dev-python/pythonmagick 0.9.12 0.9.14: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2014.3.5 2016.1 2016.2.6 9999: A collection of tools missing from the Python standard library
-dev-python/pytrie 0.2: A pure Python implementation of the trie data structure.
+dev-python/pytrie 0.2 0.3: A pure Python implementation of the trie data structure.
 dev-python/pytz 2015.6 2016.3 2016.7 2016.10: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1 0.19.0 0.20.0: Python binding to libudev
 dev-python/pyusb 1.0.0_beta2 1.0.0: USB support for Python
@@ -8685,7 +8685,7 @@ dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user inter
 dev-python/translate-toolkit 2.0.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
-dev-python/treq 0.2.1 16.12.0: A requests-like API built on top of twisted.web's Agent
+dev-python/treq 0.2.1 16.12.0 17.3.1: A requests-like API built on top of twisted.web's Agent
 dev-python/trollius 1.0.4 2.0 2.1: A port of the Tulip project (asyncio module, PEP3156)
 dev-python/ttfquery 1.0.5-r1: Font metadata and glyph outline extraction utility library
 dev-python/ttystatus 0.22 0.23 0.32: Terminal progress bar and status output for command line
