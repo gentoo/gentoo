@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install preinst setup
+DEPEND=dev-lang/erlang[ssl] app-arch/zip app-arch/unzip app-text/docbook-xml-dtd:4.5 app-text/xmlto dev-libs/libxslt || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-python/simplejson[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) virtual/pkgconfig
+DESCRIPTION=RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+EAPI=5
+HOMEPAGE=http://www.rabbitmq.com/
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2 MPL-1.1
+RDEPEND=dev-lang/erlang[ssl]
+SLOT=0
+SRC_URI=http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.9/rabbitmq-server-3.6.9.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=5524d573e40f476c3ccdacd7236d482f
