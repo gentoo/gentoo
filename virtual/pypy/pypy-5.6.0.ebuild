@@ -3,8 +3,6 @@
 
 EAPI=5
 
-inherit versionator
-
 DESCRIPTION="A virtual for PyPy Python implementation"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/41"
