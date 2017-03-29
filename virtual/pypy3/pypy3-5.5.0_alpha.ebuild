@@ -3,8 +3,6 @@
 
 EAPI=5
 
-inherit versionator
-
 DESCRIPTION="A virtual for PyPy3 Python implementation"
 # XX from pypy3-XX.so module suffix
 SLOT="0/55"
