@@ -7165,7 +7165,7 @@ dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
-dev-python/Kivy 1.9.0-r1 1.9.1: Library for rapid development of hardware-accelerated multitouch applications
+dev-python/Kivy 1.9.0-r1 1.9.1 1.9.1-r1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/MechanicalSoup 0.6.0: a python library for automating interaction with web sites
 dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
