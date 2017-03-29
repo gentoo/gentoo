@@ -2,15 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit git-r3 savedconfig toolchain-funcs
+inherit savedconfig toolchain-funcs
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
 HOMEPAGE="http://surf.suckless.org/"
-EGIT_REPO_URI="git://git.suckless.org/surf"
+SRC_URI="
+	http://dl.suckless.org/${PN}/${P}.tar.gz
+	http://git.suckless.org/${PN}/snapshot/${P}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
 	dev-libs/glib:2
@@ -62,4 +65,11 @@ src_install() {
 	default
 
 	save_config config.h
+}
+
+pkg_postinst() {
+	if [[ ${REPLACING_VERSIONS} ]] && [[ ${REPLACING_VERSIONS} < 0.4.1-r1 ]]; then
+		ewarn "Please correct the permissions of your \$HOME/.surf/ directory"
+		ewarn "and its contents to no longer be world readable (see bug #404983)"
+	fi
 }
