@@ -1,0 +1,11 @@
+--- dmraid/1.0.0.rc16-3/dmraid/lib/Makefile.in.orig	2016-09-20 12:54:09.416628404 +0200
++++ dmraid/1.0.0.rc16-3/dmraid/lib/Makefile.in	2016-09-20 12:55:06.343698229 +0200
+@@ -79,7 +79,7 @@
+ 		-Wl,-soname,$(notdir $@).$(DMRAID_LIB_MAJOR) \
+ 		$(DEVMAPPEREVENT_LIBS) $(DEVMAPPER_LIBS) $(DL_LIBS) $(LIBS)
+ 
+-$(LIB_EVENTS_SHARED): $(OBJECTS2)
++$(LIB_EVENTS_SHARED): $(OBJECTS2) $(LIB_SHARED)
+ 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(OBJECTS2) \
+ 		-shared -Wl,--discard-all -Wl,--no-undefined -Wl,-soname,$(notdir $@) \
+ 		$(LIB_SHARED) $(DEVMAPPEREVENT_LIBS) $(DEVMAPPER_LIBS) $(PTHREAD_LIBS) $(LIBS)

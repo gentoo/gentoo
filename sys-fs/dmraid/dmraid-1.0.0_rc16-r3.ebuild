@@ -37,7 +37,8 @@ pkg_setup() {
 src_prepare() {
 	epatch	"${FILESDIR}"/${P}-undo-p-rename.patch \
 		"${FILESDIR}"/${P}-return-all-sets.patch \
-		"${FILESDIR}"/${P}-static-build-fixes.patch
+		"${FILESDIR}"/${P}-static-build-fixes.patch \
+		"${FILESDIR}"/${P}-parallel-make.patch
 	# pkg_check_modules is not in aclocal.m4 by default, and eautoreconf doesnt add it
 	einfo "Appending pkg.m4 from system to aclocal.m4"
 	cat "${ROOT}"/usr/share/aclocal/pkg.m4 >>"${S}"/aclocal.m4 || die "Could not append pkg.m4"
