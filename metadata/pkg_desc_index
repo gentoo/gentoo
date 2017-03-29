@@ -14474,6 +14474,7 @@ net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
+net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.3.3 2.4.1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
