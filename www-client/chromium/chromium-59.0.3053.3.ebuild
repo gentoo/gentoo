@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	media-libs/libexif:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	system-libvpx? ( media-libs/libvpx:=[svc] )
+	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
@@ -199,8 +199,9 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r3.patch"
 		"${FILESDIR}/skia-avx2.patch"
+		"${FILESDIR}/${PN}-gn-bootstrap-r4.patch"
+		"${FILESDIR}/${PN}-dma-buf-r1.patch"
 	)
 
 	use system-ffmpeg && PATCHES+=( "${FILESDIR}/${PN}-system-ffmpeg-r4.patch" )
@@ -266,6 +267,7 @@ src_prepare() {
 		third_party/leveldatabase
 		third_party/libXNVCtrl
 		third_party/libaddressinput
+		third_party/libdrm
 		third_party/libjingle
 		third_party/libphonenumber
 		third_party/libsecret
@@ -290,6 +292,7 @@ src_prepare() {
 		third_party/pdfium
 		third_party/pdfium/third_party/agg23
 		third_party/pdfium/third_party/base
+		third_party/pdfium/third_party/build
 		third_party/pdfium/third_party/bigint
 		third_party/pdfium/third_party/freetype
 		third_party/pdfium/third_party/lcms2-2.6

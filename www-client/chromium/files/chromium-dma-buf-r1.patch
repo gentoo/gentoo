@@ -1,0 +1,21 @@
+--- a/ui/gfx/linux/client_native_pixmap_dmabuf.cc.orig	2017-03-29 15:08:58.079790070 +0000
++++ b/ui/gfx/linux/client_native_pixmap_dmabuf.cc	2017-03-29 15:09:10.068039324 +0000
+@@ -17,7 +17,6 @@
+ #include "base/strings/stringprintf.h"
+ #include "base/trace_event/trace_event.h"
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 6, 0)
+ #include <linux/types.h>
+ 
+ struct local_dma_buf_sync {
+@@ -35,10 +34,6 @@
+ #define LOCAL_DMA_BUF_IOCTL_SYNC \
+   _IOW(LOCAL_DMA_BUF_BASE, 0, struct local_dma_buf_sync)
+ 
+-#else
+-#include <linux/dma-buf.h>
+-#endif
+-
+ namespace gfx {
+ 
+ namespace {
