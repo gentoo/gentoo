@@ -257,11 +257,6 @@ x11-misc/andromeda
 # Mask experimental software
 =mail-mta/postfix-3.3*
 
-# Matt Turner <mattst88@gentoo.org> (26 Feb 2017)
-# Integrated into xorg-server since 1.17. Removal in 30 days.
-# Bug #611058
-x11-libs/glamor
-
 # Johannes Huber <johu@gentoo.org> (26 Feb 2017)
 # Masked for removal in 30 days. No maintainer. Dead upstream.
 # Current version is outdated. Open QA issues (#522676,#526284).
