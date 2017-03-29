@@ -40,8 +40,6 @@ src_install() {
 	newconfd "${FILESDIR}"/opendmarc.confd opendmarc
 
 	dodir /etc/opendmarc
-	dodir /var/run/opendmarc
-	fowners milter:milter /var/run/opendmarc
 
 	# create config file
 	sed \
