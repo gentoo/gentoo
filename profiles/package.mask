@@ -263,12 +263,6 @@ x11-misc/andromeda
 # Mask experimental software
 =mail-mta/postfix-3.3*
 
-# Johannes Huber <johu@gentoo.org> (26 Feb 2017)
-# Masked for removal in 30 days. No maintainer. Dead upstream.
-# Current version is outdated. Open QA issues (#522676,#526284).
-# Bug #607998.
-dev-vcs/veracity
-
 # Davide Pesavento <pesa@gentoo.org> (25 Feb 2017)
 # Library name changed in 2.10, breaking many consumers.
 # Needs full revdep testing.
