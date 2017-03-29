@@ -5213,6 +5213,7 @@ dev-ml/iTeML 2.5: Inline (Unit) Tests for OCaml
 dev-ml/incremental 113.33.00 113.33.03: Library for incremental computations
 dev-ml/incremental_kernel 113.33.00 113.33.03: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
+dev-ml/jbuilder 1.0_beta5: A composable build system for OCaml
 dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
 dev-ml/js_of_ocaml 2.8.4 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.0 1.0.1: Non-blocking streaming JSON codec for OCaml
@@ -8892,9 +8893,9 @@ dev-ros/audio_capture 0.3.1 9999: Transports audio from a source to a destinatio
 dev-ros/audio_common_msgs 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Messages for transmitting audio via ROS
 dev-ros/audio_play 0.3.1 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.13.0 1.13.1 1.14.0 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
-dev-ros/bond 1.7.16 1.7.17 1.7.18 9999: A bond allows two processes, A and B, to know when the other has terminated
-dev-ros/bondcpp 1.7.16 1.7.17 1.7.18 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
-dev-ros/bondpy 1.7.16 1.7.17 1.7.18 9999: Python implementation of bond, a mechanism for checking when another process has terminated
+dev-ros/bond 1.7.16 1.7.17 1.7.18 1.7.19 9999: A bond allows two processes, A and B, to know when the other has terminated
+dev-ros/bondcpp 1.7.16 1.7.17 1.7.18 1.7.19 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
+dev-ros/bondpy 1.7.16 1.7.17 1.7.18 1.7.19 9999: Python implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/calibration_estimation 0.10.13 0.10.14 9999: Runs an optimization to estimate the a robot's kinematic parameters
 dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
 dev-ros/calibration_msgs 0.10.13 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
@@ -9018,7 +9019,7 @@ dev-ros/nodelet_tutorial_math 0.1.8 0.1.10 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.2 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
-dev-ros/opencv_apps 1.11.14 9999: OpenCV applications for ROS
+dev-ros/opencv_apps 1.11.14 1.11.15 9999: OpenCV applications for ROS
 dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 1.12.4 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.7-r1 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
@@ -9142,14 +9143,14 @@ dev-ros/shape_tools 0.2.1 9999: Tools for operating on shape messages
 dev-ros/smach 2.0.0 9999: Task-level architecture for rapidly creating complex robot behavior
 dev-ros/smach_msgs 2.0.0 9999: Set of messages that are used by the introspection interfaces for smach
 dev-ros/smach_ros 2.0.0 9999: Extensions for the SMACH library to integrate it tightly with ROS
-dev-ros/smclib 1.7.16 1.7.17 1.7.18 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
+dev-ros/smclib 1.7.16 1.7.17 1.7.18 1.7.19 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
 dev-ros/sound_play 0.3.1 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.11 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.2 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.12.19-r1 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 1.12.5 9999: Messages specific to stereo processing, such as disparity images
-dev-ros/test_bond 1.7.16 1.7.17 1.7.18 9999: Tests for bond, bondpy and bondcpp
+dev-ros/test_bond 1.7.16 1.7.17 1.7.18 1.7.19 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.10 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.9.9 1.9.10 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 9999: Nodelet topic tools unit tests
@@ -9200,7 +9201,7 @@ dev-ros/visp_tracker 0.10.0 9999: Wraps the ViSP moving edge tracker provided by
 dev-ros/visualization_marker_tutorials 0.9.2 0.10.1 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.3 1.12.4 1.12.5 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 9999: Implementation of an efficient 3D voxel grid
-dev-ros/xacro 1.11.1 1.11.2 9999: XML macro language
+dev-ros/xacro 1.11.1 1.11.2 1.12.0 9999: XML macro language
 dev-ros/xmlrpcpp 1.13.0 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.2.1-r2 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.4: Allows to embed C/C++ in Ruby code
@@ -15739,7 +15740,7 @@ perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at co
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/audio_common 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Common code for working with audio in ROS
-ros-meta/bond_core 1.7.16 1.7.17 1.7.18 9999: A bond allows two processes, A and B, to know when the other has terminated
+ros-meta/bond_core 1.7.16 1.7.17 1.7.18 1.7.19 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.12.3 1.12.4 1.12.5 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.8 0.1.10 9999: Metapackage that contains common tutorials
