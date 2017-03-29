@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (29 Mar 2017)
+# Use sys-kernel/linux-firmware instead, which these packages are subsets of
+# Bug #614218
+sys-firmware/radeon-ucode
+sys-firmware/amdgpu-ucode
+
 # Patrice Clement <monsieurp@gentoo.org> (28 Mar 2017)
 # Part of the JRE since Java 6. Removal in 30 days.
 dev-java/swing-worker

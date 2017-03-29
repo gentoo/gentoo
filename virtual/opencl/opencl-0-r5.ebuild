@@ -6,16 +6,11 @@ EAPI=6
 inherit multilib-build
 
 DESCRIPTION="Virtual for OpenCL implementations"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 CARDS=( fglrx i965 nvidia )
 IUSE="${CARDS[@]/#/video_cards_}"
 
-DEPEND=""
 # intel-ocl-sdk is amd64-only
 RDEPEND="app-eselect/eselect-opencl
 	|| (
