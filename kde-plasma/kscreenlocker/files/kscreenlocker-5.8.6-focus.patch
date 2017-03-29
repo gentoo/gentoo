@@ -1,0 +1,145 @@
+From f8043de10b5dd94b9b931a92f3aa7167188786c9 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 27 Feb 2017 16:29:29 +0100
+Subject: Implement manual focus on click
+
+Summary:
+Currently only the first created screenlock window gets focus.
+On clicks, no focus events are sent, which makes it impossible to input
+passwords. This patch now makes it possible to focus to a different
+screenlock window (on a different monitor, for example) using a mouse
+button press.
+This should also fix newly created screenlock windows stealing the focus
+of already displayed ones as only the first window gains automatic focus.
+
+BUG: 348789
+BUG: 374289
+
+Test Plan:
+Locked the screen, now I can use the password input on the secondary screen
+as well.
+
+Reviewers: #plasma, graesslin, broulik
+
+Reviewed By: #plasma, graesslin
+
+Subscribers: hein, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D4821
+---
+ greeter/greeterapp.cpp |  1 -
+ x11locker.cpp          | 26 ++++++++++++++++++++++++--
+ x11locker.h            |  2 ++
+ 3 files changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/greeter/greeterapp.cpp b/greeter/greeterapp.cpp
+index 47fcb03..bcfcbdf 100644
+--- a/greeter/greeterapp.cpp
++++ b/greeter/greeterapp.cpp
+@@ -372,7 +372,6 @@ void UnlockApp::getFocus()
+     // this loop is required to make the qml/graphicsscene properly handle the shared keyboard input
+     // ie. "type something into the box of every greeter"
+     foreach (KQuickAddons::QuickViewSharedEngine *view, m_views) {
+-        view->requestActivate();
+         if (!m_testing) {
+             view->setKeyboardGrabEnabled(true); // TODO - check whether this still works in master!
+         }
+diff --git a/x11locker.cpp b/x11locker.cpp
+index b2d2ea4..6967a67 100644
+--- a/x11locker.cpp
++++ b/x11locker.cpp
+@@ -51,6 +51,7 @@ namespace ScreenLocker
+ X11Locker::X11Locker(QObject *parent)
+     : AbstractLocker(parent)
+     , QAbstractNativeEventFilter()
++    , m_focusedLockWindow(XCB_WINDOW_NONE)
+ {
+     initialize();
+ }
+@@ -229,8 +230,12 @@ void X11Locker::removeVRoot(Window win)
+     XDeleteProperty (QX11Info::display(), win, gXA_VROOT);
+ }
+ 
+-static void fakeFocusIn( WId window )
++void X11Locker::fakeFocusIn( WId window )
+ {
++    if (window == m_focusedLockWindow) {
++        return;
++    }
++
+     // We have keyboard grab, so this application will
+     // get keyboard events even without having focus.
+     // Fake FocusIn to make Qt realize it has the active
+@@ -244,6 +249,8 @@ static void fakeFocusIn( WId window )
+     ev.xfocus.detail = NotifyAncestor;
+     XSendEvent( QX11Info::display(), window, False, NoEventMask, &ev );
+     XFlush(QX11Info::display());
++
++    m_focusedLockWindow = window;
+ }
+ 
+ template< typename T>
+@@ -308,6 +315,11 @@ bool X11Locker::nativeEventFilter(const QByteArray &eventType, void *message, lo
+                         (x>=x_return && x<=x_return+(int)width_return)
+                         &&
+                         (y>=y_return && y<=y_return+(int)height_return) ) {
++                        // We need to do our own focus handling (see comment in fakeFocusIn).
++                        // For now: Focus on clicks inside the window
++                        if (responseType == XCB_BUTTON_PRESS) {
++                            fakeFocusIn(window);
++                        }
+                         const int targetX = x - x_return;
+                         const int targetY = y - y_return;
+                         if (responseType == XCB_KEY_PRESS || responseType == XCB_KEY_RELEASE) {
+@@ -386,6 +398,10 @@ bool X11Locker::nativeEventFilter(const QByteArray &eventType, void *message, lo
+                 else
+                     qDebug() << "Unknown toplevel for MapNotify";
+                 m_lockWindows.removeAll(xu->event);
++                if (m_focusedLockWindow == xu->event && !m_lockWindows.empty()) {
++                    // The currently focused window vanished, just focus the first one in the list
++                    fakeFocusIn(m_lockWindows[0]);
++                }
+                 ret = true;
+             }
+             break;
+@@ -508,8 +524,14 @@ void X11Locker::addAllowedWindow(quint32 window)
+             // not yet shown and we have a lock window, so we show our own window
+             m_background->show();
+         }
++
++        if (m_lockWindows.empty()) {
++            // Make sure to focus the first window
++            m_focusedLockWindow = XCB_WINDOW_NONE;
++            fakeFocusIn(window);
++        }
++
+         m_lockWindows.prepend(window);
+-        fakeFocusIn(window);
+         stayOnTop();
+     }
+ }
+diff --git a/x11locker.h b/x11locker.h
+index 9a14699..d8e83d6 100644
+--- a/x11locker.h
++++ b/x11locker.h
+@@ -60,6 +60,7 @@ private:
+     void setVRoot(Window win, Window vr);
+     void removeVRoot(Window win);
+     int findWindowInfo(Window w);
++    void fakeFocusIn(WId window);
+     void stayOnTop() override;
+     struct WindowInfo
+     {
+@@ -69,6 +70,7 @@ private:
+     QList<WindowInfo> m_windowInfo;
+     QList<WId> m_lockWindows;
+     QList<quint32> m_allowedWindows;
++    WId m_focusedLockWindow;
+ };
+ }
+ 
+-- 
+cgit v0.11.2
+
