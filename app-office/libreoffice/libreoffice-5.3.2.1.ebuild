@@ -434,7 +434,7 @@ src_configure() {
 	# --disable-report-builder: too much java packages pulled in without pkgs
 	# --without-system-sane: just sane.h header that is used for scan in writer,
 	#   not linked or anything else, worthless to depend on
-	# TODO:	$(use_enable firebird firebird-sdbc) \
+	# TODO: $(use_enable firebird firebird-sdbc)
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/" \
 		--with-system-dicts \
