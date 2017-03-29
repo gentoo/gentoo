@@ -18283,7 +18283,7 @@ www-client/qutebrowser 0.8.4 0.9.1 9999: A keyboard-driven, vim-like browser bas
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.46-r1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, HTML editor, IRC
-www-client/surf 0.6-r1 0.7 0.7-r1 9999: a simple web browser based on WebKit/GTK+
+www-client/surf 0.6-r1 0.7 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.7.735.46_p1 1.8.770.44_p1 1.8.770.46_p1: A new browser for our friends
