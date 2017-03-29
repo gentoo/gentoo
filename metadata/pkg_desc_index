@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.1.4.0 2.2.1.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.1.4.0 2.1.5.0 2.2.1.0 2.2.2.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.2.32 2.4.25: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -10127,6 +10127,7 @@ dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disas
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bitcoin-tx 0.13.0 0.13.1 0.13.2 9999: Command-line Bitcoin transaction tool
 dev-util/bless 0.6.0-r2: GTK# Hex Editor
+dev-util/bloaty 0_p20170321: A size profiler for binaries
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-r1 1.63.0: A system for large project software construction, simple to use and powerful

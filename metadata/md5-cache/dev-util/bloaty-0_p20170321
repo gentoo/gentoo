@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=>=dev-libs/re2-0.2017.03.01
+DESCRIPTION=A size profiler for binaries
+EAPI=6
+HOMEPAGE=https://github.com/google/bloaty
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/re2-0.2017.03.01
+SLOT=0
+SRC_URI=https://github.com/google/bloaty/archive/8e2298492eb9c0c9c358f4e5173bbc147e8e0436.tar.gz -> bloaty-0_p20170321.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=655a1e5b1480f9340b1f1aaf2e48aa68
