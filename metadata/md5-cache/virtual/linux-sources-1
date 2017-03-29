@@ -7,4 +7,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
 RDEPEND=|| ( sys-kernel/gentoo-sources sys-kernel/vanilla-sources sys-kernel/ck-sources sys-kernel/git-sources sys-kernel/hardened-sources sys-kernel/mips-sources sys-kernel/openvz-sources sys-kernel/pf-sources sys-kernel/rt-sources sys-kernel/tuxonice-sources sys-kernel/xbox-sources sys-kernel/zen-sources sys-kernel/aufs-sources sys-kernel/raspberrypi-sources )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=afbe4e676b6cf0ccb6a0b3e10e5fbe95
+_md5_=b1fbf2a9d441cabc268df5b68981abb0

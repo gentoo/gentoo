@@ -5,4 +5,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 RDEPEND=|| ( =dev-lang/perl-5.24*[ithreads] ~perl-core/threads-2.70.0 ) dev-lang/perl:= !<perl-core/threads-2.70.0 !>perl-core/threads-2.70.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=6f334be01b9a8163584d4abb5c779b15
+_md5_=67c063ef99056ee79c4d031c1d4e2036

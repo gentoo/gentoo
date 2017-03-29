@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc 
 RDEPEND=|| ( =dev-lang/perl-5.24.1* =dev-lang/perl-5.22.3* ~perl-core/Locale-Maketext-1.260.100_rc ) dev-lang/perl:= !<perl-core/Locale-Maketext-1.260.100_rc !>perl-core/Locale-Maketext-1.260.100_rc-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=3ab4eae04a10bea2e92147c227c52849
+_md5_=fa83c6cfe47a2b00f25d8426e268e831

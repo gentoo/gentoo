@@ -5,4 +5,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh
 RDEPEND=|| ( =dev-lang/perl-5.24.1* ~perl-core/IO-Compress-2.69.1_rc ) dev-lang/perl:= !<perl-core/IO-Compress-2.69.1_rc !>perl-core/IO-Compress-2.69.1_rc-r999 >=virtual/perl-Compress-Raw-Zlib-2.69.0 >=virtual/perl-Compress-Raw-Bzip2-2.69.0
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=f8fc014720240a71970cdcb8b99076ab
+_md5_=fd396062ba13e1447383c809a863c1ee

@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 
 RDEPEND=~perl-core/File-Temp-0.230.400 !=perl-core/File-Temp-0.230.400 dev-lang/perl:=
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1db900c05356850902192cfe38a397d4
+_md5_=efdc70b7bff18d67a311aa99118b1dea

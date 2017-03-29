@@ -5,4 +5,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh
 RDEPEND=|| ( =dev-lang/perl-5.24.1* ~perl-core/Storable-2.560.100_rc ) dev-lang/perl:= !<perl-core/Storable-2.560.100_rc !>perl-core/Storable-2.560.100_rc-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1ec69ef9b3525b7eedb5c1ce78e48ff7
+_md5_=62f14f2671e9eafdddd5d1f4e42ac474

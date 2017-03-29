@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86
 RDEPEND=|| ( =dev-lang/perl-5.24* =dev-lang/perl-5.22* ~perl-core/ExtUtils-Constant-0.230.0 ) dev-lang/perl:= !<perl-core/ExtUtils-Constant-0.230.0 !>perl-core/ExtUtils-Constant-0.230.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=9c17aa644772f92fa0d11cd8d3ad2ee8
+_md5_=f26205ee994621c30a5c10494a0d0e98

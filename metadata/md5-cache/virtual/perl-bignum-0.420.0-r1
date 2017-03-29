@@ -5,4 +5,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 RDEPEND=|| ( =dev-lang/perl-5.24* ~perl-core/bignum-0.420.0 ) dev-lang/perl:= !<perl-core/bignum-0.420.0 !>perl-core/bignum-0.420.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=e0e8a1167f333b3f84d5d17b83b84085
+_md5_=852f877e4895f2caf55d3bffdecd7b59

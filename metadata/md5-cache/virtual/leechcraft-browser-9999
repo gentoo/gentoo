@@ -4,4 +4,4 @@ EAPI=6
 RDEPEND=app-leechcraft/lc-poshuku
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=6288a2b64db9200325c13e68ecf02b8c
+_md5_=99d2e729881ab7c71d58288344ba9f9c

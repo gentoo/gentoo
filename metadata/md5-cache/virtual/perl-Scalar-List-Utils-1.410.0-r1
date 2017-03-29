@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Scalar-List-Utils-1.410.0 ) dev-lang/perl:= !<perl-core/Scalar-List-Utils-1.410.0 !>perl-core/Scalar-List-Utils-1.410.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=2db72330c01f669d1a971e26fde64c58
+_md5_=392924d7d73c46e69c4beb83f772d188

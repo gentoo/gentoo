@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x86-solaris
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Time-Piece-1.290.0 ) dev-lang/perl:= !<perl-core/Time-Piece-1.290.0 !>perl-core/Time-Piece-1.290.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=63b39584c33eda9a07ee72e97fbc2840
+_md5_=e891c2aa005a33c770d2bb1e48f3c6ea

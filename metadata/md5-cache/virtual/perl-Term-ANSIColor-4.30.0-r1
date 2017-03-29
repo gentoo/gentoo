@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Term-ANSIColor-4.30.0 ) dev-lang/perl:= !<perl-core/Term-ANSIColor-4.30.0 !>perl-core/Term-ANSIColor-4.30.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=bb98a0314b82d130b9fd2a65ea2f93db
+_md5_=2d35773065979b5377e9ddb1eb2a614f

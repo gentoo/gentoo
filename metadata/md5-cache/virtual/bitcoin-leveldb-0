@@ -5,4 +5,4 @@ KEYWORDS=amd64 arm arm64 ~ppc ~ppc64 x86 amd64-linux x86-linux
 RDEPEND=|| ( =dev-libs/leveldb-1.15.0-r1 =dev-libs/leveldb-1.17 =dev-libs/leveldb-1.18 =dev-libs/leveldb-1.18-r1 )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=27cd648bd8e43998cc53fad27701406a
+_md5_=28c74f5326a9442f1febf068e434c981

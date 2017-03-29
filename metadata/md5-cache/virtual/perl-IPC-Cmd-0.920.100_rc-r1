@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc 
 RDEPEND=|| ( =dev-lang/perl-5.24.1* =dev-lang/perl-5.22.3* ~perl-core/IPC-Cmd-0.920.100_rc ) dev-lang/perl:= !<perl-core/IPC-Cmd-0.920.100_rc !>perl-core/IPC-Cmd-0.920.100_rc-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=a143d5506669d384922c7c62ffd9610d
+_md5_=ba33f2686ff4e20c1302d6057cb39619

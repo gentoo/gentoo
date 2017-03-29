@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc 
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Attribute-Handlers-0.970.0 ) dev-lang/perl:= !<perl-core/Attribute-Handlers-0.970.0 !>perl-core/Attribute-Handlers-0.970.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=460268f8af490b382b062fd70a3f94ca
+_md5_=85a6b18452269b5d5e09f2caeb56554a

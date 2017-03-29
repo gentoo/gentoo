@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc 
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Unicode-Normalize-1.180.0 ) dev-lang/perl:= !<perl-core/Unicode-Normalize-1.180.0 !>perl-core/Unicode-Normalize-1.180.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1e0fcb5899405d0d5d02c22e9e4ccc8c
+_md5_=5b1cdeb7d80bc510eeb64207dd3d80ce

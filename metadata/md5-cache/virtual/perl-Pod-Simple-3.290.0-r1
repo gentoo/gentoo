@@ -5,4 +5,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~a
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Pod-Simple-3.290.0 ) dev-lang/perl:= !<perl-core/Pod-Simple-3.290.0 !>perl-core/Pod-Simple-3.290.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=158060062066a018aaeab5d6247f2d97
+_md5_=3555c4297d27b7e87608e9dc69559a50

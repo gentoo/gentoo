@@ -5,4 +5,4 @@ KEYWORDS=~amd64 ~arm ~x86
 RDEPEND=|| ( >=virtual/gnat-4.9 )
 SLOT=2012
 _eclass_exported_funcs=-
-_md5_=149fea459aff98c6105af8567db5b906
+_md5_=805599c175cebb57a84b2a652deae39c
