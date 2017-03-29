@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit user
 
@@ -17,6 +17,7 @@ IUSE="spf"
 DEPEND="dev-perl/DBI
 	|| ( mail-filter/libmilter mail-mta/sendmail )"
 RDEPEND="${DEPEND}
+	dev-perl/HTTP-Message
 	dev-perl/Switch
 	spf? ( mail-filter/libspf2 )"
 
@@ -42,9 +43,9 @@ src_install() {
 
 	# create config file
 	sed \
-		-e 's/^# UserID .*$/UserID milter/' \
-		-e 's/^# PidFile .*/PidFile \/var\/run\/opendmarc\/opendmarc.pid/' \
-		-e '/^# Socket /s/^# //' \
+		-e 's:^# UserID .*$:UserID milter:' \
+		-e "s:^# PidFile .*:PidFile ${EPREFIX}/var/run/opendmarc/opendmarc.pid:" \
+		-e '/^# Socket /s:^# ::' \
 		"${S}"/opendmarc/opendmarc.conf.sample \
 		> "${ED}"/etc/opendmarc/opendmarc.conf \
 		|| die

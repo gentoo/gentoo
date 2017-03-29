@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 CONFFILE="/etc/opendmarc/${SVCNAME}.conf"
@@ -14,6 +14,9 @@ check_cfg() {
 		eerror "Configuration file ${CONFFILE} is missing"
 		return 1
 	fi
+	# create /var/run/opendmarc
+	mkdir -p /var/run/opendmarc >& /dev/null
+	chown ${OPENDMARC_USER}:${OPENDMARC_GROUP} /var/run/opendmarc >& /dev/null
 	PIDFILE=$(sed -ne 's/^[[:space:]]*PidFile[[:space:]]\+//p' "${CONFFILE}")
 	local PIDDIR="${PIDFILE%/*}"
 	if [ ! -d  "${PIDDIR}" ] ; then
