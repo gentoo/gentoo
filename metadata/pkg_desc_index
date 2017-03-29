@@ -12098,7 +12098,7 @@ kde-plasma/khotkeys 5.8.6 5.9.4: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.8.6 5.9.4: A utility that provides information about a computer system
 kde-plasma/kmenuedit 5.8.6 5.9.4: KDE Plasma menu editor
 kde-plasma/kscreen 5.8.6 5.9.4: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.8.6 5.9.4: Library and components for secure lock screen architecture
+kde-plasma/kscreenlocker 5.8.6 5.8.6-r1 5.9.4: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.8.6 5.9.4: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.8.6 5.9.4: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.8.6 5.9.4: KWallet PAM module to not enter password again
