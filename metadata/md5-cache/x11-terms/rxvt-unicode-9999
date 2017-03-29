@@ -1,14 +1,13 @@
-DEFINED_PHASES=compile configure install postinst prepare unpack
+DEFINED_PHASES=compile configure install prepare unpack
 DEPEND=media-libs/fontconfig sys-libs/ncurses:* x11-libs/libX11 x11-libs/libXrender kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft ) virtual/pkgconfig x11-proto/xproto >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/cvs
 DESCRIPTION=rxvt clone with xft and unicode support
-EAPI=5
+EAPI=6
 HOMEPAGE=http://software.schmorp.de/pkg/rxvt-unicode.html
-IUSE=256-color alt-font-width blink buffer-on-clear +focused-urgency fading-colors +font-styles iso14755 +mousewheel +perl pixbuf secondary-wheel startup-notification xft unicode3 +vanilla wcwidth
+IUSE=256-color blink fading-colors +font-styles iso14755 +mousewheel +perl pixbuf startup-notification xft unicode3
 LICENSE=GPL-3
 RDEPEND=media-libs/fontconfig sys-libs/ncurses:* x11-libs/libX11 x11-libs/libXrender kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft )
-REQUIRED_USE=vanilla? ( !alt-font-width !buffer-on-clear focused-urgency !secondary-wheel !wcwidth )
 RESTRICT=test
 SLOT=0
-_eclass_exported_funcs=pkg_postinst:- src_unpack:cvs src_prepare:- src_configure:- src_compile:- src_install:-
+_eclass_exported_funcs=src_unpack:cvs src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	cvs	c57fc648b829862b38ad2a8b8c1c02e8	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=0416b07156d879f61c77a2680e483776
+_md5_=927b37e05e3c5fc3261cfd1747e302ef
