@@ -1203,6 +1203,9 @@ app-vim/gentoo-syntax:ignore-glep31 - Remove GLEP 31 (UTF-8 file encodings) sett
 app-vim/vim-latex:html - Install HTML documentation
 app-vim/vim-latex:python - Enable python support which can help speed up some functionality
 app-vim/youcompleteme:clang - Enable semantic support for C-family languages using sys-devel/clang
+dev-ada/gprbuild:shared - Build shared library
+dev-ada/gprbuild:static - Build static library
+dev-ada/gprbuild:static-pic - Build static library with pic code
 dev-ada/xmlada:shared - Build shared library
 dev-ada/xmlada:static - Build static library
 dev-ada/xmlada:static-pic - Build static library with pic code
