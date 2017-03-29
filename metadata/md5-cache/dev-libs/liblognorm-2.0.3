@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=dev-libs/libestr-0.1.3 >=dev-libs/libfastjson-0.99.2:= >=sys-devel/autoconf-archive-2015.02.04 virtual/pkgconfig doc? ( >=dev-python/sphinx-1.2.2 ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Fast samples-based log normalization library
+EAPI=6
+HOMEPAGE=http://www.liblognorm.com
+IUSE=debug doc static-libs test
+KEYWORDS=~amd64 ~arm ~hppa ~x86 ~amd64-linux
+LICENSE=LGPL-2.1 Apache-2.0
+RDEPEND=>=dev-libs/libestr-0.1.3 >=dev-libs/libfastjson-0.99.2:=
+SLOT=0/5.1.0
+SRC_URI=http://www.liblognorm.com/files/download/liblognorm-2.0.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=e567c4e2f2a868cc9566d0039ee9934d
