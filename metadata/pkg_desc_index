@@ -979,7 +979,7 @@ app-doc/motif-reference-manual 2.3.0-r1: Motif Reference Manual
 app-doc/php-docs 20101029-r1: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68: A Hacker magazine by the community, for the community
 app-doc/phrack-all 68: Hacker magazine by the community, for the community (all issues)
-app-doc/pms 6_p20151113 9999: Gentoo Package Manager Specification (draft)
+app-doc/pms 5_p20120920 6_p20151113 9999: Gentoo Package Manager Specification (draft)
 app-doc/podbrowser 0.12-r3: PodBrowser is a documentation browser for Perl
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
 app-doc/root-docs 5.34.36 6.04.06: Documentation for ROOT Data Analysis Framework
@@ -10320,7 +10320,7 @@ dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.36.0 0.37.1 0.38.1 0.39.0 0.39.1 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
-dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1: Free Win64 runtime and import library definitions
+dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2-r1: A set fo base plugins for Molecule
