@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+RUBY_OPTIONAL="yes"
 
-inherit autotools java-pkg-opt-2 perl-functions
+inherit autotools java-pkg-opt-2 perl-functions ruby-ng
 
 DESCRIPTION="Quick Database Manager"
 HOMEPAGE="http://fallabs.com/qdbm/"
@@ -18,10 +20,12 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	java? ( >=virtual/jre-1.4:* )
 	lzo? ( dev-libs/lzo )
 	perl? ( dev-lang/perl )
-	ruby? ( dev-lang/ruby:= )
+	ruby? ( $(ruby_implementations_depend) )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.4:* )"
+S="${WORKDIR}/all/${P}"
+RUBY_S="${P}/ruby"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-configure.patch
@@ -33,6 +37,11 @@ HTML_DOCS=( doc/. )
 
 AT_NOELIBTOOLIZE="yes"
 
+pkg_setup() {
+	java-pkg-opt-2_pkg_setup
+	use ruby && ruby-ng_pkg_setup
+}
+
 qdbm_foreach_api() {
 	local u
 	for u in cxx java perl ruby; do
@@ -43,32 +52,36 @@ qdbm_foreach_api() {
 		if [[ "${u}" == "cxx" ]]; then
 			u="plus"
 		fi
-		cd "${u}"
-		case "${EBUILD_PHASE}" in
-		prepare)
-			mv configure.{in,ac}
-			eautoreconf
-			;;
-		configure)
-			case "${u}" in
-			cgi|java|plus)
-				econf $(use_enable debug)
+		if [[ "${u}" != "ruby" ]]; then
+			cd "${u}"
+			case "${EBUILD_PHASE}" in
+			prepare)
+				mv configure.{in,ac}
+				eautoreconf
 				;;
-			*)
-				econf
+			configure)
+				case "${u}" in
+				cgi|java|plus)
+					econf $(use_enable debug)
+					;;
+				*)
+					econf
+					;;
+				esac
 				;;
+			compile)
+				emake
+				;;
+			test)
+				emake check
+				;;
+			install)
+				emake DESTDIR="${D}" MYDATADIR=/usr/share/doc/${P}/html install
 			esac
-			;;
-		compile)
-			emake
-			;;
-		test)
-			emake check
-			;;
-		install)
-			emake DESTDIR="${D}" MYDATADIR=/usr/share/doc/${P}/html install
-		esac
-		cd - >/dev/null
+			cd - >/dev/null
+		else
+			PATCHES= ruby-ng_src_${EBUILD_PHASE}
+		fi
 	done
 }
 
@@ -91,6 +104,16 @@ src_prepare() {
 	qdbm_foreach_api
 }
 
+each_ruby_prepare() {
+	sed -i \
+		-e "s|ruby |${RUBY} |" \
+		-e "s|\.\./\.\.|${WORKDIR}/all/${P}|" \
+		{Makefile,configure}.in {curia,depot,villa}/extconf.rb
+
+	mv configure.{in,ac}
+	eautoreconf
+}
+
 src_configure() {
 	econf \
 		$(use_enable bzip2 bzip) \
@@ -102,14 +125,26 @@ src_configure() {
 	qdbm_foreach_api
 }
 
+each_ruby_configure() {
+	econf
+}
+
 src_compile() {
 	default
 	qdbm_foreach_api
 }
 
+each_ruby_compile() {
+	emake
+}
+
 src_test() {
 	default
 	qdbm_foreach_api
+}
+
+each_ruby_test() {
+	emake check
 }
 
 src_install() {
@@ -129,4 +164,15 @@ src_install() {
 
 	rm -f "${ED}"/usr/bin/*test
 	rm -f "${ED}"/usr/share/man/man1/*test.1*
+}
+
+each_ruby_install() {
+	local m
+	for m in curia depot villa; do
+		emake -C "${m}" DESTDIR="${D}" install
+	done
+}
+
+all_ruby_install() {
+	dodoc -r rb*.html rbapidoc
 }
