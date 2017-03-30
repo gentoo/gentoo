@@ -12,7 +12,7 @@ HOMEPAGE="http://mina.apache.org/"
 SRC_URI="mirror://gentoo/${P}-sources.jar -> ${P}.jar"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 CDEPEND="dev-java/slf4j-api:0"
 
