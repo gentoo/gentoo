@@ -15,4 +15,3 @@ RDEPEND="|| (
 	sys-cluster/mvapich2[fortran?,romio?,threads?]
 	sys-cluster/native-mpi
 )"
-
