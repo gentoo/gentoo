@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit java-pkg-opt-2 perl-functions
+inherit autotools java-pkg-opt-2 perl-functions
 
 DESCRIPTION="Quick Database Manager"
 HOMEPAGE="http://fallabs.com/qdbm/"
@@ -24,11 +24,14 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.4:* )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-configure.patch
 	"${FILESDIR}"/${PN}-perl.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 	"${FILESDIR}"/${PN}-runpath.patch
 )
 HTML_DOCS=( doc/. )
+
+AT_NOELIBTOOLIZE="yes"
 
 qdbm_foreach_api() {
 	local u
@@ -42,6 +45,10 @@ qdbm_foreach_api() {
 		fi
 		cd "${u}"
 		case "${EBUILD_PHASE}" in
+		prepare)
+			mv configure.{in,ac}
+			eautoreconf
+			;;
 		configure)
 			case "${u}" in
 			cgi|java|plus)
@@ -75,8 +82,13 @@ src_prepare() {
 		-e "/^CXXFLAGS/s|$| ${CXXFLAGS}|" \
 		-e "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" \
 		-e 's/make\( \|$\)/$(MAKE)\1/g' \
+		-e '/^debug/,/^$/s/LDFLAGS="[^"]*" //' \
 		Makefile.in {cgi,java,perl,plus,ruby}/Makefile.in
 	find -name "*~" -delete
+
+	mv configure.{in,ac}
+	eautoreconf
+	qdbm_foreach_api
 }
 
 src_configure() {
