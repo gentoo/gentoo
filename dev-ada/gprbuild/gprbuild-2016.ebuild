@@ -96,6 +96,9 @@ src_install() {
 				emake DESTDIR="${D}" libgpr.install.${kind}
 			fi
 		done
+		mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
+		mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF} || die
+		rmdir "${D}"/usr/share/doc/${PN} || die
 	fi
 	einstalldocs
 }
