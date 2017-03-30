@@ -16,6 +16,7 @@ else
 	# Also prevents perl-module.eclass provisioning SRC_URI
 	DIST_AUTHOR=JFRIED
 	DIST_NAME=Rex
+	KEYWORDS="~amd64 ~x86"
 fi
 
 inherit perl-module ${VCS_ECLASS}
@@ -23,7 +24,6 @@ inherit perl-module ${VCS_ECLASS}
 DESCRIPTION="(R)?ex is a small script to ease the execution of remote commands"
 
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 
 DZIL_DEPENDS="
@@ -37,6 +37,7 @@ DZIL_DEPENDS="
 "
 
 RDEPEND="
+	dev-perl/Data-Validate-IP
 	dev-perl/DBI
 	dev-perl/Devel-Caller
 	dev-perl/Digest-HMAC
