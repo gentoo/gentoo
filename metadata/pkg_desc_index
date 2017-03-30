@@ -4467,7 +4467,7 @@ dev-java/xpp3 1.1.4c-r3: An implementation of XMLPULL V1 API
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20140925: XSOM is a Java library allows to easily parse and inspect XML schema docs
 dev-java/xstream 1.4.8-r1 1.4.8-r2: A text-processing Java API that serialize objects to XML and back again
-dev-java/xz-java 1.5 1.6: Implementation of xz data compression in pure java
+dev-java/xz-java 1.5 1.6 1.6-r1: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
