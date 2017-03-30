@@ -1,0 +1,11 @@
+--- a/svnqt/contextdata.cpp
++++ b/svnqt/contextdata.cpp
+@@ -748,7 +748,7 @@
+ 
+     svn_config_get(cfg, &mimetypes_file,
+                    SVN_CONFIG_SECTION_MISCELLANY,
+-                   SVN_CONFIG_OPTION_MIMETYPES_FILE, false);
++                   SVN_CONFIG_OPTION_MIMETYPES_FILE, NULL);
+     if (mimetypes_file && *mimetypes_file) {
+         if ((err = svn_io_parse_mimetypes_file(&(m_ctx->mimetypes_map),
+              mimetypes_file, pool))) {
