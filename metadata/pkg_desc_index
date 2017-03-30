@@ -4561,7 +4561,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
-dev-lang/ruby 2.1.9 2.1.10 2.2.6 2.2.7 2.3.3-r1 2.4.0 2.4.1: An object-oriented scripting language
+dev-lang/ruby 2.1.9 2.1.10 2.2.6 2.2.7 2.3.3-r1 2.3.4 2.4.0 2.4.1: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1: The Scala Programming Language
@@ -9221,7 +9221,7 @@ dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate ol
 dev-ruby/activeresource 4.0.0 4.1.0: Think Active Record for web resources
 dev-ruby/activesupport 4.2.7.1 4.2.8 5.0.0.1 5.0.1 5.0.2: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 0.8.2 0.9.1 0.9.2 0.9.3 0.9.4: Capabilities for sorting and reordering a number of objects in a list
-dev-ruby/addressable 2.3.6 2.3.8 2.3.8-r1 2.4.0 2.4.0-r1 2.5.0: A replacement for the URI implementation that is part of Ruby's standard library
+dev-ruby/addressable 2.3.6 2.4.0 2.4.0-r1 2.5.0 2.5.1: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
 dev-ruby/akismet 1.0.2 2.0.0: A Ruby client for the Akismet API
@@ -9251,7 +9251,7 @@ dev-ruby/aws-sdk 1.66.0 2.2.37 2.5.1 2.5.11 2.6.50: Official SDK for Amazon Web 
 dev-ruby/aws-sdk-core 2.2.37 2.5.1 2.5.11 2.6.50: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-resources 2.2.37 2.5.1 2.5.11 2.6.50: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.0.0: Amazon Web Services Signature Version 4 signing library
-dev-ruby/backports 3.6.8: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.6.8 3.7.0: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.3-r1 0.6.4 0.6.5: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2: A library which provides base32 decoding and encoding
@@ -9611,8 +9611,8 @@ dev-ruby/rb-inotify 0.9.5-r1 0.9.6 0.9.7 0.9.7-r1 0.9.8: A thorough inotify wrap
 dev-ruby/rb-readline 0.5.3 0.5.4: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
 dev-ruby/rbnacl 4.0.1 4.0.2: Provides a high-level toolkit for building cryptographic systems and protocols
-dev-ruby/rbpdf 1.19.0: Ruby on Rails RBPDF plugin
-dev-ruby/rbpdf-font 1.19.0-r1: Font files for the Ruby on Rails RBPDF plugin
+dev-ruby/rbpdf 1.19.0 1.19.1: Ruby on Rails RBPDF plugin
+dev-ruby/rbpdf-font 1.19.0-r1 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
 dev-ruby/rcairo 1.14.3 1.15.4 1.15.5: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
