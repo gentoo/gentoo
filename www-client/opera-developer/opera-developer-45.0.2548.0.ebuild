@@ -3,9 +3,9 @@
 
 EAPI=5
 CHROMIUM_LANGS="
-	af az be bg bn ca cs da de el en-GB es es-419 fi fil fr fr-CA fy gd
-	he hi hr hu id it ja kk ko lt lv mk ms nb nl nn pa pl pt-BR pt-PT ro ru sk
-	sr sr-ME sv sw ta te th tr uk uz vi zh-CN zh-TW zu
+	be bg bn ca cs da de el en-GB es es-419 fi fil fr fr-CA he hi hr hu id it
+	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
+	zh-CN zh-TW
 "
 inherit chromium-2 multilib unpacker
 
