@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -22,9 +22,9 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.4 )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-runpath.diff
-	epatch "${FILESDIR}"/${PN}-perl-runpath-vendor.diff
-	epatch "${FILESDIR}"/${PN}-ruby19.diff
+	epatch "${FILESDIR}"/${PN}-runpath.patch
+	epatch "${FILESDIR}"/${PN}-perl.patch
+	epatch "${FILESDIR}"/${PN}-ruby19.patch
 	# apply flags
 	sed -i "/^CFLAGS/s|$| ${CFLAGS}|" Makefile.in
 	sed -i "/^OPTIMIZE/s|$| ${CFLAGS}|" perl/Makefile.in
