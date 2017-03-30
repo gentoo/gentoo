@@ -8,7 +8,6 @@ DESCRIPTION="a simple web browser based on WebKit/GTK+"
 HOMEPAGE="http://surf.suckless.org/"
 SRC_URI="
 	http://dl.suckless.org/${PN}/${P}.tar.gz
-	http://git.suckless.org/${PN}/snapshot/${P}.tar.gz
 "
 
 LICENSE="MIT"
