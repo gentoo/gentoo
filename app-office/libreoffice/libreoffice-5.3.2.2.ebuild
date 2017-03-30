@@ -76,19 +76,20 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds gltf gnome googledrive
 gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter telepathy test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+#KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
+# TODO: not packaged: firebird? ( >=dev-db/firebird-3.0 )
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	app-crypt/gpgme[cxx]
 	app-text/hunspell
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
@@ -111,8 +112,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
-	dev-libs/libassuan
-	dev-libs/libgpg-error
 	>=dev-libs/liborcus-0.12.1
 	dev-libs/librevenge
 	dev-libs/nspr
@@ -123,10 +122,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-gfx/graphite2
 	media-libs/fontconfig
 	media-libs/freetype:2
-	>=media-libs/harfbuzz-0.9.42:=[graphite,icu]
+	>=media-libs/glew-1.10:=
+	media-libs/harfbuzz:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
-	>=media-libs/libepoxy-1.3.1
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
 	>=media-libs/libpng-1.4:0=
@@ -152,8 +151,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		gnome-extra/evolution-data-server
 	)
-	firebird? ( >=dev-db/firebird-2.5 )
-	gltf? ( >=media-libs/libgltf-0.1.0 )
+	gltf? ( media-libs/libgltf )
 	gnome? ( gnome-base/dconf )
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -245,7 +243,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 PATCHES=(
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
@@ -427,6 +425,7 @@ src_configure() {
 	# system headers/libs/...: enforce using system packages
 	# --disable-breakpad: requires not-yet-in-tree dev-utils/breakpad
 	# --enable-cairo: ensure that cairo is always required
+	# --enable-graphite: disabling causes build breakages
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
 	# --disable-fetch-external: prevent dowloading during compile phase
@@ -435,14 +434,15 @@ src_configure() {
 	# --disable-report-builder: too much java packages pulled in without pkgs
 	# --without-system-sane: just sane.h header that is used for scan in writer,
 	#   not linked or anything else, worthless to depend on
-	# --disable-pdfium: not yet packaged
+	# TODO: $(use_enable firebird firebird-sdbc)
 	econf \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}/" \
 		--with-system-dicts \
-		--with-system-epoxy \
 		--with-system-headers \
 		--with-system-jars \
 		--with-system-libs \
 		--enable-cairo-canvas \
+		--enable-graphite \
 		--enable-largefile \
 		--enable-mergelibs \
 		--enable-neon \
@@ -454,9 +454,9 @@ src_configure() {
 		--disable-dependency-tracking \
 		--disable-epm \
 		--disable-fetch-external \
+		--disable-firebird-sdbc \
 		--disable-gstreamer-0-10 \
 		--disable-online-update \
-		--disable-pdfium \
 		--disable-report-builder \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
 		--with-build-version="Gentoo official package" \
@@ -474,7 +474,6 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
-		--with-system-gpgmepp \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
@@ -483,7 +482,6 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable dbus) \
 		$(use_enable eds evolution2) \
-		$(use_enable firebird firebird-sdbc) \
 		$(use_enable gltf) \
 		$(use_enable gnome gio) \
 		$(use_enable gnome dconf) \
