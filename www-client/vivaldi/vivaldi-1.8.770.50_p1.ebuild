@@ -9,7 +9,7 @@ CHROMIUM_LANGS="
 "
 inherit chromium-2 eutils multilib unpacker toolchain-funcs
 
-VIVALDI_BRANCH="snapshot"
+#VIVALDI_BRANCH="snapshot"
 
 VIVALDI_PN="${PN}-${VIVALDI_BRANCH:-stable}"
 VIVALDI_BIN="${PN}${VIVALDI_BRANCH/snapshot/-snapshot}"
