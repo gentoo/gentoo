@@ -8699,7 +8699,7 @@ dev-python/tvdb_api 1.9 1.10_pre20150406: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.3.0 3.5.0: A Python library for accessing the Twitter API
 dev-python/twilio 3.6.9: Helper library for the Twilio API
 dev-python/twill 0.9-r1: Simple scripting language for web browsing with Python API
-dev-python/twisted 16.2.0 16.3.2 16.4.1: An asynchronous networking framework written in Python
+dev-python/twisted 16.2.0 16.3.2 16.4.1 16.6.0: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted SSHv2 implementation
 dev-python/twisted-core 13.0.0-r3 13.2.0 15.1.0 15.2.1: An asynchronous networking framework written in Python
 dev-python/twisted-lore 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted documentation system
