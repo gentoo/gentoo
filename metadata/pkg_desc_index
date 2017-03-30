@@ -7484,7 +7484,7 @@ dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
 dev-python/docker-py 1.2.2 1.10.6 2.0.1 2.0.2 2.1.0: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
-dev-python/docopt 0.6.2 0.6.2-r1 0.6.2-r2: Pythonic argument parser, that will make you smile
+dev-python/docopt 0.6.2-r1 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.11 0.12 0.12-r1 0.13.1: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1: Gentoo GLEP support for docutils
@@ -7878,7 +7878,7 @@ dev-python/moviepy 0.2.2: Video editing with Python
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.7.0 0.7.0-r1 0.10.0 0.12.0: Mock object framework for Python
 dev-python/mpi4py 1.3.1 2.0.0: Message Passing Interface for Python
-dev-python/mpmath 0.18 0.19 0.19-r1: Python library for arbitrary-precision floating-point arithmetic
+dev-python/mpmath 0.18 0.19-r1 0.19-r2: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.4.6 0.4.7 0.4.8: MessagePack (de)serializer for Python
 dev-python/multidict 1.3.0_alpha1 2.0.1 2.1.0 2.1.2 2.1.4: multidict implementation
 dev-python/multipledispatch 0.4.6 0.4.7 0.4.8 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
@@ -8035,7 +8035,7 @@ dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP reques
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
 dev-python/pluggy 0.4.0: plugin and hook calling mechanisms for python
-dev-python/plumbum 1.5.0 1.6.0 1.6.3: A library for shell script-like programs in python
+dev-python/plumbum 1.6.0 1.6.3: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9 3.10: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/plyvel 0.9: Python interface to LevelDB
@@ -8058,7 +8058,7 @@ dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r2: Text progressbar library for python
 dev-python/prometheus_client 0.0.18-r1 0.0.19: Python client for the Prometheus monitoring system
 dev-python/promise 0.2.2-r1 0.4.1 0.4.2: Bytecode optimisation using staticness assertions
-dev-python/prompt_toolkit 1.0.0 1.0.3 1.0.13 1.0.14: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 1.0.0 1.0.13 1.0.14: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/psutil 1.2.1 2.1.3 4.4.2 5.0.1 5.1.1 5.1.3: Retrieve information on running processes and system utilization
@@ -8513,7 +8513,7 @@ dev-python/rospkg 1.1.0-r1 9999: Standalone Python library for the ROS package s
 dev-python/routes 2.1-r1 2.2 2.3.1 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6 2.7.7 2.7.8 2.8.5: Python interface to the R Programming Language
-dev-python/rpyc 3.2.3-r1 3.3.0 3.3.0-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
+dev-python/rpyc 3.3.0 3.3.0-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.2.3-r1 3.3 3.4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.6 1.7: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
@@ -10282,7 +10282,7 @@ dev-util/include-what-you-use 3.5 3.6 3.7-r1 3.8 3.9: Find unused include direct
 dev-util/indent 2.2.11-r1: Indent program source files
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.50.2-r1 0.51.0 0.51.0-r1: Internationalization Tool Collection
-dev-util/its4 1.1.1: ITS4: Software Security Tool
+dev-util/its4 1.1.1 1.1.1-r1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
