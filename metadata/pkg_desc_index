@@ -19212,7 +19212,7 @@ x11-terms/roxterm 2.9.3-r2 3.1.5-r1: A terminal emulator designed to integrate w
 x11-terms/rxvt 2.7.10-r4: A nice small x11 terminal
 x11-terms/rxvt-unicode 9.21 9.22 9.22-r1 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.3.4 3.4.0: sakura is a terminal emulator based on GTK and VTE
-x11-terms/st 0.6-r1 0.7 9999: simple terminal implementation for X
+x11-terms/st 0.7 9999: simple terminal implementation for X
 x11-terms/terminator 0.97-r1 0.98 1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1 1.0.0 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 0.9.6 0.9.6-r1: A drop down terminal, similar to the consoles found in first person shooters
