@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Yixun Lan <dlan@gentoo.org> (30 Mar 2017)
+# Masked, broken due to emoji support which requre npm package installed (bug #612218)
+=app-i18n/ibus-1.5.15
+
 # Matt Turner <mattst88@gentoo.org> (29 Mar 2017)
 # Use sys-kernel/linux-firmware instead, which these packages are subsets of
 # Bug #614218
