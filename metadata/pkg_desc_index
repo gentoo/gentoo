@@ -14533,7 +14533,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.0.15.2 5.0.15.3: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.0.15.3 5.0.15.6: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3 0.3.2-r4: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.12: iptables extensions not yet accepted in the main kernel
@@ -18284,7 +18284,7 @@ www-client/qutebrowser 0.8.4 0.9.1 9999: A keyboard-driven, vim-like browser bas
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.46-r1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, HTML editor, IRC
-www-client/surf 0.6-r1 0.7 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK+
+www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.7.735.46_p1 1.8.770.44_p1 1.8.770.46_p1: A new browser for our friends
