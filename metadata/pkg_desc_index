@@ -10287,7 +10287,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.32.2 2.32.3 2.45: Extensible continuous integration server
+dev-util/jenkins-bin 2.32.2 2.32.3 2.45 2.46.1: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
@@ -18275,7 +18275,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 44.0.2510.857: A fast and secure web browser
 www-client/opera-beta 44.0.2510.433 44.0.2510.849: A fast and secure web browser
-www-client/opera-developer 45.0.2539.0 45.0.2545.0: A fast and secure web browser
+www-client/opera-developer 45.0.2545.0 45.0.2548.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -19039,7 +19039,7 @@ x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
-x11-plugins/purple-facebook 20160107 20160118 20160409: Facebook protocol plugin for libpurple
+x11-plugins/purple-facebook 20160107 20160118 20160409 20170329: Facebook protocol plugin for libpurple
 x11-plugins/purple-hangouts 0_p20170209: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
