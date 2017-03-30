@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils java-pkg-opt-2 multilib
+inherit autotools java-pkg-opt-2 perl-functions
 
 DESCRIPTION="Quick Database Manager"
 HOMEPAGE="http://fallabs.com/qdbm/"
@@ -12,91 +12,119 @@ SRC_URI="http://fallabs.com/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="cxx debug java perl ruby zlib"
+IUSE="bzip2 cxx debug java lzo perl ruby zlib"
 
-RDEPEND="java? ( >=virtual/jre-1.4 )
+RDEPEND="bzip2? ( app-arch/bzip2 )
+	java? ( >=virtual/jre-1.4:* )
+	lzo? ( dev-libs/lzo )
 	perl? ( dev-lang/perl )
-	ruby? ( dev-lang/ruby )
+	ruby? ( dev-lang/ruby:= )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
-	java? ( >=virtual/jdk-1.4 )"
+	java? ( >=virtual/jdk-1.4:* )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-runpath.diff
-	epatch "${FILESDIR}"/${PN}-perl-runpath-vendor.diff
-	epatch "${FILESDIR}"/${PN}-ruby19.diff
-	# apply flags
-	sed -i "/^CFLAGS/s|$| ${CFLAGS}|" Makefile.in
-	sed -i "/^OPTIMIZE/s|$| ${CFLAGS}|" perl/Makefile.in
-	sed -i "/^CXXFLAGS/s|$| ${CXXFLAGS}|" plus/Makefile.in
-	sed -i "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" java/Makefile.in
-	# replace make -> $(MAKE)
-	sed -i "s/make\( \|$\)/\$(MAKE)\1/g" \
-		Makefile.in \
-		{cgi,java,perl,plus,ruby}/Makefile.in
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-configure.patch
+	"${FILESDIR}"/${PN}-perl.patch
+	"${FILESDIR}"/${PN}-ruby19.patch
+	"${FILESDIR}"/${PN}-runpath.patch
+)
+HTML_DOCS=( doc/. )
 
-qdbm_api_for() {
+AT_NOELIBTOOLIZE="yes"
+
+qdbm_foreach_api() {
 	local u
 	for u in cxx java perl ruby; do
 		if ! use "${u}"; then
 			continue
 		fi
-		if [ "${u}" = "cxx" ]; then
+		einfo "${EBUILD_PHASE} ${u}"
+		if [[ "${u}" == "cxx" ]]; then
 			u="plus"
 		fi
 		cd "${u}"
 		case "${EBUILD_PHASE}" in
+		prepare)
+			mv configure.{in,ac}
+			eautoreconf
+			;;
 		configure)
-			econf
+			case "${u}" in
+			cgi|java|plus)
+				econf $(use_enable debug)
+				;;
+			*)
+				econf
+				;;
+			esac
 			;;
 		compile)
 			emake
 			;;
 		test)
-			emake -j1 check
+			emake check
 			;;
 		install)
 			emake DESTDIR="${D}" MYDATADIR=/usr/share/doc/${P}/html install
 		esac
-		cd -
+		cd - >/dev/null
 	done
+}
+
+src_prepare() {
+	default
+	java-pkg-opt-2_src_prepare
+
+	sed -i \
+		-e "/^CFLAGS/s|$| ${CFLAGS}|" \
+		-e "/^OPTIMIZE/s|$| ${CFLAGS}|" \
+		-e "/^CXXFLAGS/s|$| ${CXXFLAGS}|" \
+		-e "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" \
+		-e 's/make\( \|$\)/$(MAKE)\1/g' \
+		-e '/^debug/,/^$/s/LDFLAGS="[^"]*" //' \
+		Makefile.in {cgi,java,perl,plus,ruby}/Makefile.in
+	find -name "*~" -delete
+
+	mv configure.{in,ac}
+	eautoreconf
+	qdbm_foreach_api
 }
 
 src_configure() {
 	econf \
+		$(use_enable bzip2 bzip) \
 		$(use_enable debug) \
+		$(use_enable lzo) \
 		$(use_enable zlib) \
-		--enable-pthread \
-		--enable-iconv
-	qdbm_api_for # configure
+		--enable-iconv \
+		--enable-pthread
+	qdbm_foreach_api
 }
 
 src_compile() {
-	emake
-	qdbm_api_for # compile
+	default
+	qdbm_foreach_api
 }
 
 src_test() {
-	emake -j1 check
-	qdbm_api_for # test
+	default
+	qdbm_foreach_api
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc ChangeLog NEWS README THANKS
-	dohtml -r doc/
-	rm -rf "${ED}"/usr/share/${PN}
+	default
+	qdbm_foreach_api
 
-	qdbm_api_for # install
+	rm -rf "${ED}"/usr/share/${PN}
 
 	if use java; then
 		java-pkg_dojar "${ED}"/usr/$(get_libdir)/*.jar
 		rm -f "${ED}"/usr/$(get_libdir)/*.jar
 	fi
 	if use perl; then
-		rm -f "${ED}"/$(perl -V:installarchlib | cut -d\' -f2)/*.pod
-		find "${ED}" -name .packlist -print0 | xargs -0 rm -f
+		perl_delete_module_manpages
+		perl_fix_packlist
 	fi
 
 	rm -f "${ED}"/usr/bin/*test

@@ -1,5 +1,5 @@
---- qdbm-1.8.78.orig/ruby/Makefile.in
-+++ qdbm-1.8.78/ruby/Makefile.in
+--- a/ruby/Makefile.in
++++ b/ruby/Makefile.in
 @@ -85,27 +85,27 @@
  	sync ; sync
  	cd depot && rm -rf casket
@@ -37,17 +37,28 @@
  	cd villa && rm -rf casket
  	@printf '\n'
  	@printf '#================================================================\n'
---- qdbm-1.8.78.orig/ruby/curia/mod_curia.c
-+++ qdbm-1.8.78/ruby/curia/mod_curia.c
+--- a/ruby/configure.in
++++ b/ruby/configure.in
+@@ -17,7 +17,7 @@
+ # Setting the default prefix
+ if test "$prefix" = NONE
+ then
+-  prefix=`ruby -rrbconfig -e 'puts(Config::CONFIG.fetch("prefix"))'`
++  prefix=`ruby -rrbconfig -e 'puts(RbConfig::CONFIG.fetch("prefix"))'`
+ fi
+ 
+ # Duplication of QDBM for Ruby
+--- a/ruby/curia/mod_curia.c
++++ b/ruby/curia/mod_curia.c
 @@ -24,6 +24,13 @@
  
  #define MAXOPEN 1024
  
 +#ifndef StringValuePtr
-+#  define StringValuePtr(v) STR2CSTR(v)
++# define StringValuePtr(v) STR2CSTR(v)
 +#endif
 +#ifndef RSTRING_LEN
-+#  define RSTRING_LEN(s) (RSTRING(s)->len)
++# define RSTRING_LEN(s) (RSTRING(s)->len)
 +#endif
 +
  
@@ -110,8 +121,8 @@
    curia = crtable[index];
    if((vsiz = crvsiz(curia, kbuf, ksiz)) == -1){
      if(crsltable[index] && dpecode == DP_ENOITEM) return INT2FIX(-1);
---- qdbm-1.8.78.orig/ruby/curia/rbcrtest
-+++ qdbm-1.8.78/ruby/curia/rbcrtest
+--- a/ruby/curia/rbcrtest
++++ b/ruby/curia/rbcrtest
 @@ -21,7 +21,7 @@
  
  # main routine
@@ -130,18 +141,17 @@
  exit(main())
  
  
-Only in qdbm-1.8.78/ruby/depot: mkmf.log
---- qdbm-1.8.78.orig/ruby/depot/mod_depot.c
-+++ qdbm-1.8.78/ruby/depot/mod_depot.c
+--- a/ruby/depot/mod_depot.c
++++ b/ruby/depot/mod_depot.c
 @@ -23,6 +23,13 @@
  
  #define MAXOPEN 1024
  
 +#ifndef StringValuePtr
-+#  define StringValuePtr(v) STR2CSTR(v)
++# define StringValuePtr(v) STR2CSTR(v)
 +#endif
 +#ifndef RSTRING_LEN
-+#  define RSTRING_LEN(s) (RSTRING(s)->len)
++# define RSTRING_LEN(s) (RSTRING(s)->len)
 +#endif
 +
  
@@ -204,8 +214,8 @@ Only in qdbm-1.8.78/ruby/depot: mkmf.log
    depot = dptable[index];
    if((vsiz = dpvsiz(depot, kbuf, ksiz)) == -1){
      if(dpsltable[index] && dpecode == DP_ENOITEM) return INT2FIX(-1);
---- qdbm-1.8.78.orig/ruby/depot/rbdptest
-+++ qdbm-1.8.78/ruby/depot/rbdptest
+--- a/ruby/depot/rbdptest
++++ b/ruby/depot/rbdptest
 @@ -21,7 +21,7 @@
  
  # main routine
@@ -224,8 +234,8 @@ Only in qdbm-1.8.78/ruby/depot: mkmf.log
  exit(main())
  
  
---- qdbm-1.8.78.orig/ruby/myrbdoc
-+++ qdbm-1.8.78/ruby/myrbdoc
+--- a/ruby/myrbdoc
++++ b/ruby/myrbdoc
 @@ -186,7 +186,7 @@
  
  
@@ -235,17 +245,17 @@ Only in qdbm-1.8.78/ruby/depot: mkmf.log
  exit(main())
  
  
---- qdbm-1.8.78.orig/ruby/villa/mod_villa.c
-+++ qdbm-1.8.78/ruby/villa/mod_villa.c
+--- a/ruby/villa/mod_villa.c
++++ b/ruby/villa/mod_villa.c
 @@ -25,6 +25,13 @@
  
  #define MAXOPEN 1024
  
 +#ifndef StringValuePtr
-+#  define StringValuePtr(v) STR2CSTR(v)
++# define StringValuePtr(v) STR2CSTR(v)
 +#endif
 +#ifndef RSTRING_LEN
-+#  define RSTRING_LEN(s) (RSTRING(s)->len)
++# define RSTRING_LEN(s) (RSTRING(s)->len)
 +#endif
 +
  
@@ -341,8 +351,8 @@ Only in qdbm-1.8.78/ruby/depot: mkmf.log
    FIXNUM_P(vcpmode);
    cpmode = FIX2INT(vcpmode);
    villa = vltable[index];
---- qdbm-1.8.78.orig/ruby/villa/rbvltest
-+++ qdbm-1.8.78/ruby/villa/rbvltest
+--- a/ruby/villa/rbvltest
++++ b/ruby/villa/rbvltest
 @@ -21,7 +21,7 @@
  
  # main routine
