@@ -3,7 +3,7 @@
 
 DESCRIPTION="ITS4: Software Security Tool"
 HOMEPAGE="http://www.cigital.com/its4/"
-SRC_URI="${P}.tgz"
+SRC_URI="https://dev.gentoo.org/~robbat2/distfiles/${P}.tgz"
 LICENSE="ITS4"
 SLOT="0"
 KEYWORDS="x86 ppc"
