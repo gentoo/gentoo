@@ -17,6 +17,7 @@ IUSE="cg examples"
 RDEPEND=">=dev-scheme/gauche-0.9.4
 	media-libs/freeglut
 	virtual/opengl
+	x11-libs/libXmu
 	cg? ( media-gfx/nvidia-cg-toolkit )"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
