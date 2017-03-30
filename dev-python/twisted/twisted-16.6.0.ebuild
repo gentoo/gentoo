@@ -142,6 +142,7 @@ pkg_postinst() {
 		einfo "  ie:  $ python3.6 /usr/bin/trial twisted"
 		einfo "There are a few known python-2.7 errors due to some unicode issues"
 		einfo "which are different in Gentoo installed python-2.7"
+	fi
 }
 
 pkg_postrm(){
