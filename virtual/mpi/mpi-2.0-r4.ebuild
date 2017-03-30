@@ -18,4 +18,3 @@ RDEPEND="|| (
 	sys-cluster/nullmpi[${MULTILIB_USEDEP},cxx(-)?,fortran(-)?,romio(-)?,threads(-)?]
 	sys-cluster/native-mpi
 )"
-
