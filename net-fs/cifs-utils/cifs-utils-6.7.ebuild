@@ -53,7 +53,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	if has app-crypt/heimdal ; then
+	if has_version app-crypt/heimdal ; then
 		# https://bugs.gentoo.org/612584
 		eapply "${FILESDIR}/${PN}-6.7-heimdal.patch"
 	fi
