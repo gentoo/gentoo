@@ -7255,6 +7255,7 @@ dev-python/attrs 15.2.0 16.3.0 16.3.0-r1: Attributes without boilerplate
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1 0.16.0: WebSocket and WAMP for Twisted and Asyncio
+dev-python/automat 0.5.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 1.2.2 1.2.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0: Universal Command Line Environment for AWS
@@ -7827,6 +7828,7 @@ dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine wri
 dev-python/lxml 3.6.0 3.6.4-r1 3.7.1 3.7.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0 0.24.0 0.25.1-r2: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2r 0.1.5: Markdown to reStructuredText converter
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.0 1.0.2 1.0.3: A Python templating language
@@ -8701,7 +8703,7 @@ dev-python/tvdb_api 1.9 1.10_pre20150406: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.3.0 3.5.0: A Python library for accessing the Twitter API
 dev-python/twilio 3.6.9: Helper library for the Twilio API
 dev-python/twill 0.9-r1: Simple scripting language for web browsing with Python API
-dev-python/twisted 16.2.0 16.3.2 16.4.1 16.6.0: An asynchronous networking framework written in Python
+dev-python/twisted 16.2.0 16.3.2 16.4.1 16.6.0-r1 17.1.0: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted SSHv2 implementation
 dev-python/twisted-core 13.0.0-r3 13.2.0 15.1.0 15.2.1: An asynchronous networking framework written in Python
 dev-python/twisted-lore 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted documentation system
