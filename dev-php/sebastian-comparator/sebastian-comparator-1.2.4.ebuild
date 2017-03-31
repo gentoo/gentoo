@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"
