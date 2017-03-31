@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/598938
+
+From 82c53c6f19d8d7854b9b88aa16802f31b1cc258c Mon Sep 17 00:00:00 2001
+From: Bob Friesenhahn <bfriesen@simple.dallas.tx.us>
+Date: Sun, 20 Nov 2016 18:04:52 +0000
+Subject: [PATCH] =?UTF-8?q?*=20tools/fax2tiff.c=20(main):=20Applied=20patc?=
+ =?UTF-8?q?h=20by=20J=C3=B6rg=20Ahrens=20to=20fix=20passing=20client=20dat?=
+ =?UTF-8?q?a=20for=20Win32=20builds=20using=20tif=5Fwin32.c=20(USE=5FWIN32?=
+ =?UTF-8?q?=5FFILEIO=20defined)=20for=20file=20I/O.=20=20Patch=20was=20pro?=
+ =?UTF-8?q?vided=20via=20email=20on=20November=2020,=202016.?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ ChangeLog        | 7 +++++++
+ tools/fax2tiff.c | 5 +++--
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/tools/fax2tiff.c b/tools/fax2tiff.c
+index e00de5277bc2..01f85540ac9c 100644
+--- a/tools/fax2tiff.c
++++ b/tools/fax2tiff.c
+@@ -283,10 +283,11 @@ main(int argc, char* argv[])
+ 		}
+ #if defined(_WIN32) && defined(USE_WIN32_FILEIO)
+                 client_data.fh = _get_osfhandle(fileno(in));
++                TIFFSetClientdata(faxTIFF, (thandle_t) client_data.fh);
+ #else
+                 client_data.fd = fileno(in);
++                TIFFSetClientdata(faxTIFF, (thandle_t) client_data.fd);
+ #endif
+-                TIFFSetClientdata(faxTIFF, (thandle_t) &client_data);
+ 		TIFFSetFileName(faxTIFF, (const char*)argv[optind]);
+ 		TIFFSetField(out, TIFFTAG_IMAGEWIDTH, xsize);
+ 		TIFFSetField(out, TIFFTAG_BITSPERSAMPLE, 1);
+-- 
+2.12.0
+
