@@ -5,8 +5,8 @@ EAPI=6
 
 inherit toolchain-funcs flag-o-matic
 
-# Commit Date: Mon, 6 Apr 2015 22:42:56 +0200
-COMMIT="fcd966966924e3d9af0954db56117e2f48767ea1"
+# Commit Date: Wed Jan 11 18:27:31 2017 +0100
+COMMIT="a0a1e6bd87d3eac68b5369972d1c2035cfe47e94"
 
 DESCRIPTION="API for accessing Quassel using C"
 HOMEPAGE="https://github.com/phhusson/QuasselC"
@@ -26,7 +26,7 @@ src_prepare() {
 	# Makefile hardcodes much
 	sed -e '/^CFLAGS/d' -i Makefile || die
 	local includes=$($(tc-getPKG_CONFIG) glib-2.0 --cflags)
-	append-cflags "${includes} -fPIC"
+	append-cflags "${includes} -fPIC -std=gnu11"
 }
 
 src_compile() {
