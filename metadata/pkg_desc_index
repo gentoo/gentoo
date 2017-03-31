@@ -110,7 +110,7 @@ app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2
 app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.10: Single process stack of various system monitors
 app-admin/glance 12.0.0 13.0.0 14.0.0 2016.1.9999 2016.2.9999 2017.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
-app-admin/graylog2 2.1.2: Free and open source log management
+app-admin/graylog2 2.1.2 2.2.2: Free and open source log management
 app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
