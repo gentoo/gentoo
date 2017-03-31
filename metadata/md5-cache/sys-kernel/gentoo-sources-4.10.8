@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources including the Gentoo patchset for the 4.10 kernel tree
+EAPI=6
+HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches
+IUSE=experimental symlink build
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2 freedist
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=4.10.8
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.10.tar.xz mirror://gentoo/genpatches-4.10-8.base.tar.xz mirror://gentoo/genpatches-4.10-8.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.10-8.experimental.tar.xz )
+_eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:- pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_prepare:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	kernel-2	7cc211cb9f869927ca267873f54d8fd5	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a4d926a8441fa85a4b5ffda4281cf0bd
