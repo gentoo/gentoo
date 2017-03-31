@@ -14,8 +14,8 @@ SRC_URI="https://github.com/mongodb/mongo-tools/archive/r${MY_PV}.tar.gz -> mong
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="sasl ssl"
+KEYWORDS="~amd64 ~x86"
+IUSE="sasl ssl libressl"
 
 # Maintainer note:
 # openssl DEPEND constraint, see:
@@ -24,16 +24,21 @@ IUSE="sasl ssl"
 RDEPEND="!<dev-db/mongodb-3.0.0"
 DEPEND="${RDEPEND}
 	dev-lang/go:=
+	net-libs/libpcap
 	sasl? ( dev-libs/cyrus-sasl )
-	ssl? ( dev-libs/openssl )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
+	sed -e 's|go build .*|go build -o "bin/$i" -tags "$tags" "$i/main/$i.go"|g' -i build.sh || die
+
 	# ensure we use bash wrt #582906
 	sed -e 's@/bin/sh@/bin/bash@g' -i build.sh || die
 
-	# see #608292
 	epatch "${FILESDIR}/${PN}-3.2.10-pie.patch"
 }
 
