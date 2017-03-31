@@ -12083,7 +12083,7 @@ kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 2.3.10 2.3.11 3.0.1-r1 3.0.2: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
-kde-misc/yakuake 3.0.2: Quake-style terminal emulator based on konsole
+kde-misc/yakuake 3.0.2 3.0.3: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
 kde-plasma/bluedevil 5.8.6 5.9.4: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.8.6 5.9.4: Breeze visual style for the Plasma desktop
