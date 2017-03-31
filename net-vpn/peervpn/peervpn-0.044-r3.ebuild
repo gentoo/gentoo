@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,10 @@ RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}-${EGIT_COMMIT}
+
+PATCHES=(
+	"${FILESDIR}/${P}-strncpy-null-terminator.patch"
+)
 
 pkg_setup() {
 	enewgroup ${PN}
