@@ -1,7 +1,7 @@
-From 7fddbadde3f1f65c1ef78223e6af98a066a2315b Mon Sep 17 00:00:00 2001
+From 91b6d8b5b9d602152fb7148c6e2921463b93a8a5 Mon Sep 17 00:00:00 2001
 From: Brian Dolbec <dolsen@gentoo.org>
-Date: Wed, 29 Mar 2017 18:28:45 -0700
-Subject: [PATCH] Twisted-16.6.0 test fixes
+Date: Fri, 31 Mar 2017 10:55:32 -0700
+Subject: [PATCH] twisted test overrides
 
 ---
  src/twisted/internet/test/test_gireactor.py |  3 ++-
@@ -10,14 +10,11 @@ Subject: [PATCH] Twisted-16.6.0 test fixes
  src/twisted/pair/test/test_rawudp.py        | 10 +++++++++-
  src/twisted/pair/test/test_tuntap.py        | 16 ++++++++++++++++
  src/twisted/python/test/test_dist3.py       |  2 ++
- src/twisted/test/test_ident.py              |  7 ++++++-
- src/twisted/test/test_main.py               |  8 +++++++-
+ src/twisted/test/test_ident.py              |  5 ++++-
  src/twisted/test/test_plugin.py             |  6 ++++++
  src/twisted/test/test_policies.py           |  5 +++++
- src/twisted/test/test_reflect.py            |  3 ++-
- src/twisted/test/test_twistd.py             | 21 ++++++++++++++-------
  src/twisted/test/test_udp.py                |  6 ++++++
- 13 files changed, 92 insertions(+), 12 deletions(-)
+ 10 files changed, 67 insertions(+), 3 deletions(-)
 
 diff --git a/src/twisted/internet/test/test_gireactor.py b/src/twisted/internet/test/test_gireactor.py
 index 43147fdce..6333218e7 100644
@@ -169,17 +166,10 @@ index 3ce2bdd60..494674bc7 100644
 +
 +ModulesToInstallTests.skip = "This is an upstream distribution test only"
 diff --git a/src/twisted/test/test_ident.py b/src/twisted/test/test_ident.py
-index d86b840e5..028778a2d 100644
+index d86b840e5..3cc40261f 100644
 --- a/src/twisted/test/test_ident.py
 +++ b/src/twisted/test/test_ident.py
-@@ -6,13 +6,14 @@
- Test cases for twisted.protocols.ident module.
- """
- 
-+import os
- import struct
- 
- from twisted.protocols import ident
+@@ -12,7 +12,7 @@ from twisted.protocols import ident
  from twisted.python import failure
  from twisted.internet import error
  from twisted.internet import defer
@@ -188,15 +178,7 @@ index d86b840e5..028778a2d 100644
  
  from twisted.trial import unittest
  from twisted.test.proto_helpers import StringTransport
-@@ -23,6 +24,7 @@ try:
- except ImportError:
-     import __builtin__ as builtins
- 
-+EMERGE_TEST_OVERRIDE = os.environ.get("EMERGE_TEST_OVERRIDE", False)
- 
- 
- class ClassParserTests(unittest.TestCase):
-@@ -216,6 +218,9 @@ class ProcMixinTests(unittest.TestCase):
+@@ -216,6 +216,9 @@ class ProcMixinTests(unittest.TestCase):
          """
          L{ident.ProcServerMixin.lookup} uses the Linux TCP process table.
          """
@@ -206,26 +188,6 @@ index d86b840e5..028778a2d 100644
          open_calls = []
  
          def mocked_open(*args, **kwargs):
-diff --git a/src/twisted/test/test_main.py b/src/twisted/test/test_main.py
-index 572769018..60b795f96 100644
---- a/src/twisted/test/test_main.py
-+++ b/src/twisted/test/test_main.py
-@@ -18,8 +18,14 @@ from twisted.trial.unittest import TestCase
- 
- class MainTests(TestCase):
-     """Test that twisted scripts can be invoked as modules."""
--    def test_twisted(self):
-+    # this test just does not work correctly on Gentoo
-+    # the output has '__main__.py' instead of 'trial'
-+    # I have only been able to get 2.7 working correctly
-+    # with replacing the value with what is expected.
-+    def _test_twisted(self):
-         """Invoking python -m twisted should execute twist."""
-+        if EMERGE_TEST_OVERRIDE:
-+            return
-         cmd = sys.executable
-         p = Accumulator()
-         d = p.endedDeferred = defer.Deferred()
 diff --git a/src/twisted/test/test_plugin.py b/src/twisted/test/test_plugin.py
 index a23caa72b..a6d61858c 100644
 --- a/src/twisted/test/test_plugin.py
@@ -287,66 +249,6 @@ index 3d92633d6..c08809a66 100644
          open_calls = []
          open_rvalues = []
  
-diff --git a/src/twisted/test/test_reflect.py b/src/twisted/test/test_reflect.py
-index 5348fc65e..2f431cef7 100644
---- a/src/twisted/test/test_reflect.py
-+++ b/src/twisted/test/test_reflect.py
-@@ -551,7 +551,8 @@ class SafeStrTests(TestCase):
-         value unchanged.
-         """
-         x = b't\xc3\xbcst'
--        self.assertEqual(reflect.safe_str(x), x)
-+        y = [b't\xc3\xbcst', b't\\xfcst']
-+        self.assertEqual(reflect.safe_str(x) in y, True)
- 
- 
-     def test_workingUtf8_3(self):
-diff --git a/src/twisted/test/test_twistd.py b/src/twisted/test/test_twistd.py
-index 04dc83600..654f8cba3 100644
---- a/src/twisted/test/test_twistd.py
-+++ b/src/twisted/test/test_twistd.py
-@@ -78,6 +78,7 @@ if getattr(os, 'setuid', None) is None:
- else:
-     setuidSkip = None
- 
-+EMERGE_TEST_OVERRIDE = os.environ.get("EMERGE_TEST_OVERRIDE", False)
- 
- 
- def patchUserDatabase(patch, user, uid, group, gid):
-@@ -1778,9 +1779,12 @@ class DaemonizeTests(unittest.TestCase):
-         message is Unicode, the child encodes the message as ascii
-         with backslash Unicode code points.
-         """
--        self.assertErrorWritten(raised=u"\u2022",
--                                reported=b'1 RuntimeError: \\u2022')
--
-+        if _PY3:
-+            self.assertErrorWritten(raised=u"\u2022",
-+                                    reported=b'1 RuntimeError: \\u2022')
-+        else:
-+            self.assertErrorWritten(raised=u"\u2022",
-+                                    reported=b'1 RuntimeError: \xe2\x80\xa2')
- 
- 
-     def assertErrorInParentBehavior(self, readData, errorMessage,
-@@ -1879,10 +1883,13 @@ class DaemonizeTests(unittest.TestCase):
-         unicode and too long, it's truncated by the child, even if
-         this splits a unicode escape sequence.
-         """
--        self.assertErrorWritten(
--            raised=u"\u2022" * 30,
--            reported=b'1 RuntimeError: ' + b'\\u2022' * 14,
--        )
-+        if not EMERGE_TEST_OVERRIDE or _PY3:
-+            self.assertErrorWritten(
-+                raised=u"\u2022" * 30,
-+                reported=b'1 RuntimeError: ' + b'\\u2022' * 14,
-+            )
-+        else:
-+            pass
- 
- 
-     def test_hooksCalled(self):
 diff --git a/src/twisted/test/test_udp.py b/src/twisted/test/test_udp.py
 index 6cf4583b2..86b513704 100644
 --- a/src/twisted/test/test_udp.py

@@ -67,6 +67,8 @@ DEPEND="
 PATCHES=(
 	# Respect TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE variable.
 	"${FILESDIR}/${PN}-16.5.0-respect_TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE.patch"
+	"${FILESDIR}/test_main.patch"
+	"${FILESDIR}/utf8_overrides.patch"
 	"${FILESDIR}/${PN}-16.6.0-test-fixes.patch"
 )
 
@@ -95,6 +97,7 @@ python_test() {
 	distutils_install_for_testing
 
 	export EMERGE_TEST_OVERRIDE=1
+	export UTF8_OVERRIDES=1
 	# workaround for the eclass not installing the entry points
 	# in the test environment.  copy the old 16.3.2 start script
 	# to run the tests with
@@ -104,6 +107,15 @@ python_test() {
 
 	if ! "${TEST_DIR}"/trial twisted; then
 		die "Tests failed with ${EPYTHON}"
+	fi
+	# due to an anomoly in the tests, python doesn't return the correct form
+	# of the escape sequence. So run those test separately with a clean python interpreter
+	export UTF8_OVERRIDES=0
+	if ! "${TEST_DIR}"/trial twisted.test.test_twistd.DaemonizeTests; then
+		die "DaemonizeTests failed with ${EPYTHON}"
+	fi
+	if ! "${TEST_DIR}"/trial twisted.test.test_reflect.SafeStrTests; then
+		die "SafeStrTests failed with ${EPYTHON}"
 	fi
 
 	popd > /dev/null || die
