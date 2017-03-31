@@ -32,6 +32,9 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	# ensure we use bash wrt #582906
 	sed -e 's@/bin/sh@/bin/bash@g' -i build.sh || die
+
+	# see #608292
+	epatch "${FILESDIR}/${PN}-3.2.10-pie.patch"
 }
 
 src_compile() {
