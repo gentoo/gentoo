@@ -36,7 +36,7 @@ CMAKE_BUILD_TYPE=Release
 PREFIX="/usr/share/games/${PN}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	sed -i -e 's:__ppc__:__PPC__:' src/map_io/s2map.cc || die
 }
