@@ -53,11 +53,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-messages.patch
-	"${FILESDIR}"/${P}-fix-headers.patch
-)
-
 if [[ ${PV} == 9999 ]]; then
 	DEPEND+=" sys-devel/gnuconfig"
 fi
