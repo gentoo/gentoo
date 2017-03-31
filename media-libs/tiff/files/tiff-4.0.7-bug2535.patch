@@ -1,0 +1,54 @@
+From c4e376852d82936885833441169684267983691f Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 11 Jan 2017 12:51:59 +0000
+Subject: [PATCH] * libtiff/tif_dirwrite.c: in
+ TIFFWriteDirectoryTagCheckedRational, replace assertion by runtime check to
+ error out if passed value is strictly negative. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2535
+
+* tools/tiffcrop.c: remove extraneous TIFFClose() in error code path, that
+caused double free.
+Related to http://bugzilla.maptools.org/show_bug.cgi?id=2535
+---
+ ChangeLog              | 11 +++++++++++
+ libtiff/tif_dirwrite.c | 11 ++++++++---
+ tools/tiffcrop.c       |  3 +--
+ 3 files changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/libtiff/tif_dirwrite.c b/libtiff/tif_dirwrite.c
+index d34f6f611d39..055324db078f 100644
+--- a/libtiff/tif_dirwrite.c
++++ b/libtiff/tif_dirwrite.c
+@@ -2094,10 +2094,15 @@ TIFFWriteDirectoryTagCheckedSlong8Array(TIFF* tif, uint32* ndir, TIFFDirEntry* d
+ static int
+ TIFFWriteDirectoryTagCheckedRational(TIFF* tif, uint32* ndir, TIFFDirEntry* dir, uint16 tag, double value)
+ {
++        static const char module[] = "TIFFWriteDirectoryTagCheckedRational";
+ 	uint32 m[2];
+-	assert(value>=0.0);
+ 	assert(sizeof(uint32)==4);
+-	if (value<=0.0)
++        if( value < 0 )
++        {
++            TIFFErrorExt(tif->tif_clientdata,module,"Negative value is illegal");
++            return 0;
++        }
++	else if (value==0.0)
+ 	{
+ 		m[0]=0;
+ 		m[1]=1;
+diff --git a/tools/tiffcrop.c b/tools/tiffcrop.c
+index 21dd08720d77..c69177e052d4 100644
+--- a/tools/tiffcrop.c
++++ b/tools/tiffcrop.c
+@@ -7996,7 +7996,6 @@ writeCroppedImage(TIFF *in, TIFF *out, struct image_data *image,
+   if (!TIFFWriteDirectory(out))
+     {
+     TIFFError("","Failed to write IFD for page number %d", pagenum);
+-    TIFFClose(out);
+     return (-1);
+     }
+ 
+-- 
+2.12.0
+

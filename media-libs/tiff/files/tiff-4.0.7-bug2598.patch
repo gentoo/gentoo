@@ -1,0 +1,31 @@
+http://bugzilla.maptools.org/show_bug.cgi?id=2598
+
+From bc3d7392e43545c7c6375897458a7a3e8ee4d9d8 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Fri, 2 Dec 2016 22:13:32 +0000
+Subject: [PATCH] * tools/tiffcp.c: avoid uint32 underflow in cpDecodedStrips
+ that can cause various issues, such as buffer overflows in the library.
+ Reported by Agostino Sarubbo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2598
+
+---
+ ChangeLog      | 7 +++++++
+ tools/tiffcp.c | 4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiffcp.c b/tools/tiffcp.c
+index 338a3d113bf8..6dfb9a91bfa9 100644
+--- a/tools/tiffcp.c
++++ b/tools/tiffcp.c
+@@ -985,7 +985,7 @@ DECLAREcpFunc(cpDecodedStrips)
+ 		tstrip_t s, ns = TIFFNumberOfStrips(in);
+ 		uint32 row = 0;
+ 		_TIFFmemset(buf, 0, stripsize);
+-		for (s = 0; s < ns; s++) {
++		for (s = 0; s < ns && row < imagelength; s++) {
+ 			tsize_t cc = (row + rowsperstrip > imagelength) ?
+ 			    TIFFVStripSize(in, imagelength - row) : stripsize;
+ 			if (TIFFReadEncodedStrip(in, s, buf, cc) < 0
+-- 
+2.12.0
+

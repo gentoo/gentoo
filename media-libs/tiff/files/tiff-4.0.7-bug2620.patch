@@ -1,0 +1,29 @@
+From 76c4b35f114bc9614700accd22cc4a0b4b6b92d3 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 3 Dec 2016 11:35:56 +0000
+Subject: [PATCH] * tools/tiffcrop.c: fix readContigStripsIntoBuffer() in -i
+ (ignore) mode so that the output buffer is correctly incremented to avoid
+ write outside bounds. Reported by Agostino Sarubbo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2620
+
+---
+ ChangeLog        | 7 +++++++
+ tools/tiffcrop.c | 4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiffcrop.c b/tools/tiffcrop.c
+index 722b132cee6d..bdcbd63ed70b 100644
+--- a/tools/tiffcrop.c
++++ b/tools/tiffcrop.c
+@@ -3698,7 +3698,7 @@ static int readContigStripsIntoBuffer (TIFF* in, uint8* buf)
+                                   (unsigned long) strip, (unsigned long)rows);
+                         return 0;
+                 }
+-                bufp += bytes_read;
++                bufp += stripsize;
+         }
+ 
+         return 1;
+-- 
+2.12.0
+

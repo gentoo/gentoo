@@ -1,0 +1,28 @@
+From a56820e2022e23610c1ea99fbf621d73d1e36348 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 3 Dec 2016 14:18:48 +0000
+Subject: [PATCH] * tools/tiffinfo.c: fix null pointer dereference in -r mode
+ when the image has no StripByteCount tag. Reported by Agostino Sarubbo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2594
+
+---
+ ChangeLog        | 7 +++++++
+ tools/tiffinfo.c | 4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiffinfo.c b/tools/tiffinfo.c
+index b02c7d46bed0..4d58055de85c 100644
+--- a/tools/tiffinfo.c
++++ b/tools/tiffinfo.c
+@@ -417,7 +417,7 @@ TIFFReadRawData(TIFF* tif, int bitrev)
+ 	uint64* stripbc=NULL;
+ 
+ 	TIFFGetField(tif, TIFFTAG_STRIPBYTECOUNTS, &stripbc);
+-	if (nstrips > 0) {
++	if (stripbc != NULL && nstrips > 0) {
+ 		uint32 bufsize = (uint32) stripbc[0];
+ 		tdata_t buf = _TIFFmalloc(bufsize);
+ 		tstrip_t s;
+-- 
+2.12.0
+

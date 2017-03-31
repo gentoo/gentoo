@@ -1,0 +1,46 @@
+From cb840651f037c59895b67d44b46a34127bb082dd Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 3 Dec 2016 13:00:03 +0000
+Subject: [PATCH] * tools/tiffcrop.c: fix integer division by zero when
+ BitsPerSample is missing. Reported by Agostina Sarubo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2619
+
+---
+ ChangeLog        | 6 ++++++
+ tools/tiffcrop.c | 8 ++++----
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/tools/tiffcrop.c b/tools/tiffcrop.c
+index 9122aab37530..21dd08720d77 100644
+--- a/tools/tiffcrop.c
++++ b/tools/tiffcrop.c
+@@ -1164,7 +1164,7 @@ writeBufferToSeparateStrips (TIFF* out, uint8* buf,
+   tdata_t  obuf;
+ 
+   (void) TIFFGetFieldDefaulted(out, TIFFTAG_ROWSPERSTRIP, &rowsperstrip);
+-  (void) TIFFGetField(out, TIFFTAG_BITSPERSAMPLE, &bps);
++  (void) TIFFGetFieldDefaulted(out, TIFFTAG_BITSPERSAMPLE, &bps);
+   bytes_per_sample = (bps + 7) / 8;
+   if( width == 0 ||
+       (uint32)bps * (uint32)spp > TIFF_UINT32_MAX / width ||
+@@ -4760,7 +4760,7 @@ static int readSeparateStripsIntoBuffer (TIFF *in, uint8 *obuf, uint32 length,
+   int i, bytes_per_sample, bytes_per_pixel, shift_width, result = 1;
+   uint32 j;
+   int32  bytes_read = 0;
+-  uint16 bps, planar;
++  uint16 bps = 0, planar;
+   uint32 nstrips;
+   uint32 strips_per_sample;
+   uint32 src_rowsize, dst_rowsize, rows_processed, rps;
+@@ -4780,7 +4780,7 @@ static int readSeparateStripsIntoBuffer (TIFF *in, uint8 *obuf, uint32 length,
+     }
+ 
+   memset (srcbuffs, '\0', sizeof(srcbuffs));
+-  TIFFGetField(in, TIFFTAG_BITSPERSAMPLE, &bps);
++  TIFFGetFieldDefaulted(in, TIFFTAG_BITSPERSAMPLE, &bps);
+   TIFFGetFieldDefaulted(in, TIFFTAG_PLANARCONFIG, &planar);
+   TIFFGetFieldDefaulted(in, TIFFTAG_ROWSPERSTRIP, &rps);
+   if (rps > length)
+-- 
+2.12.0
+

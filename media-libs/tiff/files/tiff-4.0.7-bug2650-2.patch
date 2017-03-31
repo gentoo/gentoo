@@ -1,0 +1,26 @@
+From 08e5d199b0a1c80fc81a1cc718e5d9d019517e37 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 11 Jan 2017 17:48:11 +0000
+Subject: [PATCH] Initialize variable to fix MSVC warning (caused by previous
+ commit)
+
+---
+ libtiff/tif_read.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libtiff/tif_read.c b/libtiff/tif_read.c
+index 8c5af6a8f5f7..b2edb029a90c 100644
+--- a/libtiff/tif_read.c
++++ b/libtiff/tif_read.c
+@@ -420,7 +420,7 @@ TIFFReadRawStrip1(TIFF* tif, uint32 strip, void* buf, tmsize_t size,
+ 			return ((tmsize_t)(-1));
+ 		}
+ 	} else {
+-		tmsize_t ma;
++		tmsize_t ma = 0;
+ 		tmsize_t n;
+ 		if ((td->td_stripoffset[strip] > (uint64)TIFF_TMSIZE_T_MAX)||
+                     ((ma=(tmsize_t)td->td_stripoffset[strip])>tif->tif_size))
+-- 
+2.12.0
+
