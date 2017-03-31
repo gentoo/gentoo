@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DESCRIPTION=Common reflection classes used by phpdocumentor to reflect the code structure
 EAPI=6
 HOMEPAGE=https://www.phpdoc.org
-KEYWORDS=~amd64 ~hppa ~x86
+KEYWORDS=~amd64 ~hppa ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/phpDocumentor/ReflectionCommon/archive/1.0.tar.gz -> phpdocumentor-reflection-common-1.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=dad26845872b51830a3c53aa735794a4
+_md5_=7fdbf37ef3ff8d798856b75dd87d12e1
