@@ -2089,7 +2089,7 @@ app-pda/pilot-link 0.12.5-r1: suite of tools for moving data between a Palm devi
 app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
-app-portage/cpuid2cpuflags 1 2 3 9999: Tool to guess CPU_FLAGS_X86 flags for the host
+app-portage/cpuid2cpuflags 1 2 3 4 9999: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
@@ -4452,7 +4452,7 @@ dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
 dev-java/xjavac 2.4.0 20110814: The implementation of the javac compiler for IBM JDK 1.4 (needed for xerces-2)
 dev-java/xml-commons 1.4.01: Apache XML Commons
 dev-java/xml-commons-external 1.3.04 1.4.01 1.4.01-r1: Externally-defined set of standard interfaces, namely DOM, SAX, and JAXP
-dev-java/xml-commons-resolver 1.2: An XML Entity and URI Resolver
+dev-java/xml-commons-resolver 1.2 1.2-r1: An XML Entity and URI Resolver
 dev-java/xml-security 1.5.7-r1: An implementation of the primary security standards for XML
 dev-java/xml-writer 0.2-r1: A simple XML Writer
 dev-java/xml-xmlbeans 2.6.0: An XML-Java binding tool
