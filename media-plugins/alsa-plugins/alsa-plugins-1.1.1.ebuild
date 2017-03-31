@@ -19,7 +19,7 @@ RDEPEND="
 		libav? ( media-video/libav:= )
 		!libav? ( media-video/ffmpeg:0= )
 	)
-	jack? ( >=media-sound/jack-audio-connection-kit-0.121.3-r1[${MULTILIB_USEDEP}] )
+	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.8-r1:=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	speex? (
