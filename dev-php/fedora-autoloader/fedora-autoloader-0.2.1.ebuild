@@ -9,7 +9,7 @@ SRC_URI="https://github.com/php-fedora/autoloader/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-lang/php:*"
