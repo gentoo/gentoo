@@ -11537,7 +11537,7 @@ gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing a
 gnome-extra/gnome-boxes 3.20.2 3.20.3 3.22.1 3.22.2 3.22.3 3.22.4: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.18.1 3.22.4: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.20.2 3.22.2 3.22.3 3.23.91: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.20.4 3.22.3: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-calendar 3.20.4 3.22.3 3.22.4: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.20.1 3.22.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.20.2 3.22.1: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
