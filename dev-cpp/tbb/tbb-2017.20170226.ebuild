@@ -6,12 +6,12 @@ EAPI=6
 inherit eutils flag-o-matic multilib-minimal toolchain-funcs versionator
 
 PV1="$(get_version_component_range 1)"
-PV2="$(get_version_component_range 2)"
-MYP="${PN}${PV1}_${PV2}oss"
+PV2=5
+MY_PV="${PV1}_U${PV2}"
 
 DESCRIPTION="High level abstract threading library"
 HOMEPAGE="http://www.threadingbuildingblocks.org/"
-SRC_URI="http://threadingbuildingblocks.org/sites/default/files/software_releases/source/${MYP}_src.tgz"
+SRC_URI="https://github.com/01org/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
@@ -19,11 +19,11 @@ IUSE="debug doc examples"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-S="${WORKDIR}/${MYP}"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-underlinking.patch
-	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${PN}-2017.20161128-underlinking.patch
+	"${FILESDIR}"/${PN}-2017.20161128-build.patch
 )
 
 src_prepare() {

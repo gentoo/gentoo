@@ -7,12 +7,13 @@ inherit eutils flag-o-matic multilib-minimal toolchain-funcs versionator
 
 PV1="$(get_version_component_range 1)"
 PV2="$(get_version_component_range 2)"
-MYP="${PN}${PV1}_${PV2}oss"
+PV3="$(get_version_component_range 3)"
+MYP="${PN}${PV1}${PV2}_${PV3}oss"
 
 DESCRIPTION="High level abstract threading library"
 HOMEPAGE="http://www.threadingbuildingblocks.org/"
 SRC_URI="http://threadingbuildingblocks.org/sites/default/files/software_releases/source/${MYP}_src.tgz"
-LICENSE="Apache-2.0"
+LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug doc examples"
