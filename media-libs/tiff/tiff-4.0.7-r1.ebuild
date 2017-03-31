@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}"
 REQUIRED_USE="test? ( jpeg )" #483132
 
 PATCHES=(
+	"${FILESDIR}"/${P}-fax2tiff.patch #598938
 	"${FILESDIR}"/${P}-CVE-2016-10266.patch
 	"${FILESDIR}"/${P}-bug2598.patch
 	"${FILESDIR}"/${P}-bug2604.patch
