@@ -136,13 +136,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 RESTRICT+=" test"
 
-PATCHES=(
-	"${FILESDIR}/${PN}"-3.0.0-no-arch-detection.patch
-	# upstream master
-	"${FILESDIR}/${P}"-nokdelibs4.patch
-	"${FILESDIR}/${P}"-relax-deps.patch
-	"${FILESDIR}/${P}"-deps{1,2,3}.patch
-)
+PATCHES=( "${FILESDIR}/${PN}"-3.0.0-no-arch-detection.patch )
 
 pkg_pretend() {
 	check-reqs_pkg_pretend
