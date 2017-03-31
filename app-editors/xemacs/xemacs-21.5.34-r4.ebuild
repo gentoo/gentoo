@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with a hardened profile. If you
 # want to use xemacs on a hardened profile then compile with the
 # -nopie flag in CFLAGS or help fix bug #75028.
 
-EAPI=4
+EAPI=5
 
 WANT_AUTOCONF="2.5"
 inherit eutils flag-o-matic multilib
@@ -23,14 +23,14 @@ IUSE="alsa debug eolconv gif gpm pop postgres ldap libressl xface nas dnd X jpeg
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
 RDEPEND="
-	berkdb? ( >=sys-libs/db-4 !!<sys-libs/db-4 )
+	berkdb? ( >=sys-libs/db-4:= !!<sys-libs/db-4 )
 	gdbm? ( >=sys-libs/gdbm-1.8.3[berkdb(+)] )
 	>=sys-libs/zlib-1.1.4
 	!libressl? ( >=dev-libs/openssl-0.9.6:0 )
 	libressl? ( dev-libs/libressl )
 	>=media-libs/audiofile-0.2.3
 	gpm? ( >=sys-libs/gpm-1.19.6 )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	ldap? ( net-nds/openldap )
 	alsa? ( media-libs/alsa-lib )
 	nas? ( media-libs/nas )
@@ -47,7 +47,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	canna? ( app-i18n/canna )
 	freewnn? ( app-i18n/freewnn )
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:=
 	>=app-eselect/eselect-emacs-1.15"
 
 DEPEND="${RDEPEND}
@@ -67,6 +67,7 @@ src_prepare() {
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
 	epatch "${FILESDIR}/${P}-ncurses-tinfo.patch"
 	epatch "${FILESDIR}/${P}-gcc5.patch"
+	epatch "${FILESDIR}/${P}-glibc-macro.patch"
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).
@@ -174,6 +175,7 @@ src_configure() {
 		--with-site-lisp=yes \
 		--with-site-modules=yes \
 		--with-newgc \
+		--with-system-malloc \
 		--enable-option-checking=no \
 		--with-last-packages=/usr/lib/xemacs \
 		|| die "configuration failed"
