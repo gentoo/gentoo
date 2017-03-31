@@ -1,0 +1,41 @@
+From 95a32fbbadf54e7527c7e3b66fd603503b29dde9 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 17 Dec 2016 19:45:28 +0000
+Subject: [PATCH] * tools/tiff2ps.c: fix 2 heap-based buffer overflows (in
+ PSDataBW and PSDataColorContig). Reported by Agostino Sarubbo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2633 and
+ http://bugzilla.maptools.org/show_bug.cgi?id=2634.
+
+---
+ ChangeLog       | 7 +++++++
+ tools/tiff2ps.c | 9 +++++++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiff2ps.c b/tools/tiff2ps.c
+index 82a5d84b41f5..71df4309ee0c 100644
+--- a/tools/tiff2ps.c
++++ b/tools/tiff2ps.c
+@@ -2440,6 +2440,11 @@ PSDataColorContig(FILE* fd, TIFF* tif, uint32 w, uint32 h, int nc)
+ 	unsigned char *cp, c;
+ 
+ 	(void) w;
++        if( es <= 0 )
++        {
++            TIFFError(filename, "Inconsistent value of es: %d", es);
++            return;
++        }
+ 	tf_buf = (unsigned char *) _TIFFmalloc(tf_bytesperrow);
+ 	if (tf_buf == NULL) {
+ 		TIFFError(filename, "No space for scanline buffer");
+@@ -2692,7 +2697,7 @@ PSDataBW(FILE* fd, TIFF* tif, uint32 w, uint32 h)
+ 
+ 			if (alpha) {
+ 				int adjust;
+-				while (cc-- > 0) {
++				while (cc-- > 1) {
+ 					DOBREAK(breaklen, 1, fd);
+ 					/*
+ 					 * For images with alpha, matte against
+-- 
+2.12.0
+

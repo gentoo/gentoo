@@ -1,0 +1,54 @@
+From 9bbbe303c8e5db20d7f687ee1ca19c98fb852044 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 3 Dec 2016 15:30:31 +0000
+Subject: [PATCH] * tools/tif_dir.c: when TIFFGetField(, TIFFTAG_NUMBEROFINKS,
+ ) is called, limit the return number of inks to SamplesPerPixel, so that code
+ that parses ink names doesn't go past the end of the buffer. Reported by
+ Agostino Sarubbo. Fixes http://bugzilla.maptools.org/show_bug.cgi?id=2599
+
+Reported by Agostino Sarubbo.
+---
+ ChangeLog         | 10 +++++++++-
+ libtiff/tif_dir.c | 28 +++++++++++++++++++++++++++-
+ 2 files changed, 36 insertions(+), 2 deletions(-)
+
+diff --git a/libtiff/tif_dir.c b/libtiff/tif_dir.c
+index ad21655a6ee9..2574e748b3be 100644
+--- a/libtiff/tif_dir.c
++++ b/libtiff/tif_dir.c
+@@ -854,6 +854,32 @@ _TIFFVGetField(TIFF* tif, uint32 tag, va_list ap)
+ 	if( fip == NULL ) /* cannot happen since TIFFGetField() already checks it */
+ 	    return 0;
+ 	
++        if( tag == TIFFTAG_NUMBEROFINKS )
++        {
++            int i;
++            for (i = 0; i < td->td_customValueCount; i++) {
++                uint16 val;
++                TIFFTagValue *tv = td->td_customValues + i;
++                if (tv->info->field_tag != tag)
++                    continue;
++                val = *(uint16 *)tv->value;
++                /* Truncate to SamplesPerPixel, since the */
++                /* setting code for INKNAMES assume that there are SamplesPerPixel */
++                /* inknames. */
++                /* Fixes http://bugzilla.maptools.org/show_bug.cgi?id=2599 */
++                if( val > td->td_samplesperpixel )
++                {
++                    TIFFWarningExt(tif->tif_clientdata,"_TIFFVGetField",
++                                   "Truncating NumberOfInks from %u to %u",
++                                   val, td->td_samplesperpixel);
++                    val = td->td_samplesperpixel;
++                }
++                *va_arg(ap, uint16*) = val;
++                return 1;
++            }
++            return 0;
++        }
++
+ 	/*
+ 	 * We want to force the custom code to be used for custom
+ 	 * fields even if the tag happens to match a well known 
+-- 
+2.12.0
+

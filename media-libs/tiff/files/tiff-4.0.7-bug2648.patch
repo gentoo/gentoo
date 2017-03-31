@@ -1,0 +1,33 @@
+From 569ffefa61f3237fa2221730621c869216c465a6 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 11 Jan 2017 16:13:50 +0000
+Subject: [PATCH] * libtiff/tif_jpeg.c: validate BitsPerSample in
+ JPEGSetupEncode() to avoid undefined behaviour caused by invalid shift
+ exponent. Fixes http://bugzilla.maptools.org/show_bug.cgi?id=2648
+
+---
+ ChangeLog          | 6 ++++++
+ libtiff/tif_jpeg.c | 9 ++++++++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/libtiff/tif_jpeg.c b/libtiff/tif_jpeg.c
+index 09ef4949f9ee..e45e2a4e17f8 100644
+--- a/libtiff/tif_jpeg.c
++++ b/libtiff/tif_jpeg.c
+@@ -1632,6 +1632,13 @@ JPEGSetupEncode(TIFF* tif)
+                             "Invalig horizontal/vertical sampling value");
+                     return (0);
+                 }
++                if( td->td_bitspersample > 16 )
++                {
++                    TIFFErrorExt(tif->tif_clientdata, module,
++                                 "BitsPerSample %d not allowed for JPEG",
++                                 td->td_bitspersample);
++                    return (0);
++                }
+ 
+ 		/*
+ 		 * A ReferenceBlackWhite field *must* be present since the
+-- 
+2.12.0
+
