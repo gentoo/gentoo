@@ -1036,7 +1036,7 @@ app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs, a light emacs-like 
 app-editors/juffed 0.10-r1: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p27 3.1_p30: portable version of JOE's Own Editor
 app-editors/kakoune 0_pre20160620 0_pre20161111 9999: Selection-oriented code editor inspired by vim
-app-editors/kile 2.1.3-r3: A Latex Editor and TeX shell for KDE
+app-editors/kile 2.1.3-r3: A Latex Editor and TeX shell by KDE
 app-editors/latexila 3.20.1 3.22.0 3.22.1: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.1 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
@@ -12310,7 +12310,7 @@ media-fonts/Humor-Sans 1.0: A sanserif typeface in the style of xkcd
 media-fonts/acroread-asianfonts 9.1: Asian and Extended Language Font Packs used by Adobe Reader
 media-fonts/ahem 1.0: A font developed to help test writers develop predictable tests
 media-fonts/alee-fonts 13: A Lee's Hangul truetype fonts
-media-fonts/alegreya-sans 1.0.2: A humanist sans-serif typeface with a calligraphic feeling that conveys a dynamic rhythm
+media-fonts/alegreya-sans 1.0.2: A humanist sans-serif typeface with a calligraphic, dynamic feeling
 media-fonts/andika 5.000: Sans-serif font designed for literacy use
 media-fonts/anonymous-pro 1.002-r1: Monospaced truetype font designed with coding in mind
 media-fonts/aquafont 2.7-r4: Handwritten Japanese fixed-width TrueType font
@@ -12336,7 +12336,7 @@ media-fonts/culmus 0.120-r4: Hebrew Type1 fonts
 media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.89 2.93: A monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r3 113-r4: Font family from Google's Android project
-media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script, provided by the Bhutanese government
+media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script provided by the Bhutanese government
 media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/efont-unicode 0.4.2-r1: The /efont/ Unicode Bitmap Fonts
 media-fonts/ekushey-bangla-fonts 20070420: A collection of Free fonts for the Bangla (Bengali) script
@@ -12344,7 +12344,7 @@ media-fonts/encodings 1.0.4: X.Org font encodings
 media-fonts/essays1743 2.000 2.001: John Stracke's Essays 1743 font
 media-fonts/exljbris-free 20100320: Beautiful free fonts from exljbris Font Foundry
 media-fonts/exo 2: A geometric sans-serif font with a technological feel
-media-fonts/fantasque-sans-mono 2014.07: Programming font designed with functionality in mind and with some handwriting-like fuzziness
+media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed with some handwriting-like fuzziness
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6: Simplistic, technical sans serif - openSUSE font
@@ -12396,17 +12396,17 @@ media-fonts/gidole 2.0.2: Open source modern DIN fonts
 media-fonts/hack 2.010 2.018 2.019 2.020 2.020-r1: A typeface designed for source code
 media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic and very readable
 media-fonts/heuristica 0.2.1: A font based on Adobe Utopia
-media-fonts/hkscs-ming 1.0_pre20030919-r2: Hong Kong SAR Government Official Reference Chinese Font that implements ISO10646 and HKSCS-2001
-media-fonts/hunkyfonts 0.3.1: Hunky Fonts are free TrueType fonts based on Bitstream's Vera fonts with additional letters
+media-fonts/hkscs-ming 1.0_pre20030919-r2: Hong Kong Official Reference Chinese Font that implements ISO10646 & HKSCS-2001
+media-fonts/hunkyfonts 0.3.1: Free TrueType fonts based on Bitstream's Vera fonts with additional letters
 media-fonts/inconsolata 20140821: A beautiful sans-serif monotype font designed for code listings
-media-fonts/inconsolata-hellenic 1.19: Hellenisation of the wonderful, monospace, open/free font Inconsolata by Raph Levien
+media-fonts/inconsolata-hellenic 1.19: Hellenisation of the wonderful, monospace, open/free font Inconsolata
 media-fonts/infinality-ultimate-meta 1: Meta package for infinality-ultimate with fonts
 media-fonts/intlfonts 1.2.1: International X11 fixed fonts
 media-fonts/ipaex 002.01: Japanese IPA extended TrueType fonts
 media-fonts/ipamonafont 1.0.8: Hacked version of IPA fonts, which is suitable for browsing 2ch
-media-fonts/ja-ipafonts 003.02-r1 003.03: Japanese TrueType fonts developed by IPA (Information-technology Promotion Agency, Japan)
+media-fonts/ja-ipafonts 003.02-r1 003.03: TrueType fonts developed by Japanese Information-technology Promotion Agency
 media-fonts/jisx0213-fonts 20040425-r2: Japanese fixed fonts that cover JIS0213 charset
-media-fonts/jomolhari 0.003c: Bhutanese style dbu-can font for Tibetan and Dzongkha text named after Mt Jomolhari
+media-fonts/jomolhari 0.003c: Bhutanese style dbu-can font for Tibetan/Dzongkha text named after Mt Jomolhari
 media-fonts/jsmath 1.0: Raster fonts for jsmath
 media-fonts/jsmath-extra-dark 1.0: Extra raster fonts for jsmath, dark version
 media-fonts/jsmath-extra-light 1.0: Extra raster fonts for jsmath, light version
@@ -12475,7 +12475,7 @@ media-fonts/signika 1.001: A sans-serif with gentle character designed for signa
 media-fonts/sil-abyssinica 1.200: SIL Opentype Unicode fonts for Ethiopic languages
 media-fonts/sil-arabicfonts 1.005: SIL Opentype Unicode fonts for Arabic Languages
 media-fonts/sil-charis 4.110 5.000: Serif typeface for Roman and Cyrillic languages
-media-fonts/sil-doulos 4.110 5.000: Serif font for Roman and Cyrillic languages with comprehensive orthographic support
+media-fonts/sil-doulos 4.110 5.000: SIL Doulos - SIL font for Roman and Cyrillic Languages
 media-fonts/sil-ezra 2.51: SIL Ezra - Unicode Opentype fonts for Biblical Hebrew
 media-fonts/sil-galatia 2.1: The Galatia SIL Greek Unicode Fonts package
 media-fonts/sil-gentium 1.508 5.000: Gentium Plus unicode font for Latin and Greek languages
@@ -12484,7 +12484,7 @@ media-fonts/sophia-nubian 1.0: Unicode sans-serif typeface for Coptic/Nubian lan
 media-fonts/source-han-sans 1.001: Pan-CJK OpenType/CFF font family
 media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface family designed for UI environments
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
-media-fonts/symbola 7.12 8.00: Unicode font for Basic Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
+media-fonts/symbola 7.12 8.00: Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
 media-fonts/terminus-font 4.39-r1 4.40: A clean fixed font for the console and X11
