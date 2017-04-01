@@ -5244,6 +5244,7 @@ dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml pro
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
+dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libraries so they do not expose everything at toplevel
 dev-ml/ocaml-conduit 0.14.5 0.15.0: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 0.22.1 1.0 1.1: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.3.1 2.3.2 2.4.0: Map OCaml arrays onto C-like structs
@@ -5306,6 +5307,7 @@ dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.6 3.0.7: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 4.0.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.33.00 113.33.03: Assert-like extension nodes that raise useful errors on failure
+dev-ml/ppx_ast 0.9.1: AST used in Jane Street ppx rewriters
 dev-ml/ppx_bench 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
 dev-ml/ppx_bin_prot 113.33.00: Generation of bin_prot readers and writers from types
 dev-ml/ppx_compare 113.33.00: Generation of comparison functions from types
@@ -5330,6 +5332,7 @@ dev-ml/ppx_sexp_message 113.33.00: A ppx rewriter for easy construction of s-exp
 dev-ml/ppx_sexp_value 113.33.00: Standard library for ppx rewriters
 dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0: Tools for authors of ppx rewriters
 dev-ml/ppx_tools_versioned 5.0_beta1: Tools for authors of ppx rewriters
+dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
 dev-ml/ppx_type_conv 113.33.02: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.33.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.33.00: Generation of accessor and iteration functions for ocaml variant types
@@ -5343,7 +5346,7 @@ dev-ml/reason-parser 1.13.3: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/sequence 0.9 0.10: Simple sequence (iterator) datatype and combinators
-dev-ml/sexplib 113.00.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/sexplib 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
 dev-ml/textutils 113.33.00 113.33.03: Text output utilities
 dev-ml/topkg 0.8.1 0.9.0: The transitory OCaml software packager
