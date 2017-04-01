@@ -4,7 +4,6 @@
 EAPI=6
 
 if [[ ${PV} == *9999* ]]; then
-	KEYWORDS=""
 	SRC_URI=""
 	EGIT_REPO_URI="git://github.com/mstorsjo/${PN}.git"
 	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
