@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="oldwallet">Install <pkg>kde-apps/kwalletd</pkg> on a minimal setup for migration purposes</flag>
+		<flag name="kwallet">Install <pkg>kde-apps/kwalletd</pkg> on a minimal setup for migration purposes</flag>
 	</use>
 </pkgmetadata>
