@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install
+DEFINED_PHASES=configure install
 DEPEND=>=app-text/aspell-0.60
 DESCRIPTION=English (US, British, Canadian) language dictionary for aspell
 EAPI=6
@@ -8,6 +8,6 @@ LICENSE=myspell-en_CA-KevinAtkinson public-domain Princeton Ispell
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/en/aspell6-en-2017.01.22-0.tar.bz2
-_eclass_exported_funcs=src_configure:aspell-dict src_compile:aspell-dict src_install:aspell-dict
-_eclasses_=aspell-dict	812651366b0e714c782a007c82fb3098	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=2bda51f92fe4f7088a8445806806b984
+_eclass_exported_funcs=src_configure:aspell-dict-r1 src_install:aspell-dict-r1
+_eclasses_=aspell-dict-r1	340906f655106dec40252eccc43e3503	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=c85f3b89feedd0345f67d780e6f52050

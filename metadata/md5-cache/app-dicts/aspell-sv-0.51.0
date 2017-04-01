@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=configure install
 DEPEND=>=app-text/aspell-0.50
 DESCRIPTION=Swedish language dictionary for aspell
-EAPI=0
+EAPI=6
 HOMEPAGE=http://aspell.net
 KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.50
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/sv/aspell-sv-0.51-0.tar.bz2
-_eclass_exported_funcs=src_compile:aspell-dict src_install:aspell-dict
-_eclasses_=aspell-dict	812651366b0e714c782a007c82fb3098
-_md5_=70ecd6a708731654209f8d80bc4ebfe5
+_eclass_exported_funcs=src_configure:aspell-dict-r1 src_install:aspell-dict-r1
+_eclasses_=aspell-dict-r1	340906f655106dec40252eccc43e3503
+_md5_=82df7debab28a97537f8a32942528ede
