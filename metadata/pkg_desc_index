@@ -4164,7 +4164,7 @@ dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.19-r1: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
 dev-java/jgoodies-animation 1.2.0 1.2.0-r1: JGoodies Animation Library
-dev-java/jgoodies-binding 1.1.2 1.1.2-r1: A Java library to bind object properties with UI components
+dev-java/jgoodies-binding 1.1.2 1.1.2-r1 1.1.2-r2: Bind object properties with UI components
 dev-java/jgoodies-common 1.8.0: JGoodies Common Library
 dev-java/jgoodies-forms 1.3.0-r1 1.8.0: JGoodies Forms Library
 dev-java/jgoodies-looks 1.2.2-r2 2.3.1-r1 2.6.0: JGoodies Looks Library
@@ -4235,7 +4235,7 @@ dev-java/jts-core 1.14: JTS Topology Suite for Java
 dev-java/juel 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
 dev-java/jump 0.5-r1: Java-based extensible high-precision math library
 dev-java/jung 1.7.6 1.7.6-r1: The Java Universal Network/Graph Framework
-dev-java/junit 3.8.2-r1 4.12-r1: Simple framework to write repeatable tests
+dev-java/junit 3.8.2-r1 3.8.2-r2 4.12-r1: Simple framework to write repeatable tests
 dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
 dev-java/junitperf 1.9.1-r2: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
@@ -5716,7 +5716,7 @@ dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availabi
 dev-perl/Devel-CheckLib 1.60.0 1.70.0 1.90.0: check that a library is available
 dev-perl/Devel-Cover 1.230.0 1.230.0-r1: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
-dev-perl/Devel-Declare 0.6.18: Adding keywords to perl, in perl
+dev-perl/Devel-Declare 0.6.18 0.6.19: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
 dev-perl/Devel-FindPerl 0.14.0: Find the path to your perl
 dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
@@ -17719,7 +17719,7 @@ sys-kernel/cryptodev 1.7 9999: device that allows access to Linux kernel cryptog
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 3.5.0.6 3.5.0.8 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.4.39 4.4.51 4.4.52 4.4.53 4.4.54 4.4.55 4.4.56 4.4.57 4.4.59 4.9.4 4.9.6-r1 4.9.12 4.9.13 4.9.14 4.9.15 4.9.16 4.9.17 4.9.18 4.9.20 4.10.0 4.10.1 4.10.2 4.10.3 4.10.4 4.10.5 4.10.6 4.10.8: Full sources including the Gentoo patchset for the 4.10 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.4.39 4.4.52 4.4.59 4.9.6-r1 4.9.16 4.9.20 4.10.8: Full sources including the Gentoo patchset for the 4.10 kernel tree
 sys-kernel/git-sources 4.11_rc1 4.11_rc2 4.11_rc3 4.11_rc4: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.13-r1 4.9.14 4.9.15 4.9.16 4.9.18: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
