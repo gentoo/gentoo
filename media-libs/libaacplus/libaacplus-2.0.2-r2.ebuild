@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="fftw static-libs"
 RESTRICT="bindist mirror"
 
