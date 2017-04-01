@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Weber <xmw@gentoo.org> (1 Apr 2017)
+# no stable jdk
+media-libs/libbluray java
+
 # Thomas Deutschmann <whissi@gentoo.org> (20 Mar 2017)
 # Requires dev-java/java-config and deps which is not stable on arm
 # Requires app-emulation/xen-tools which is not stable on arm
