@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=test? ( dev-ml/ounit ) async? ( dev-ml/async:= ) lwt? ( dev-ml/lwt:= ) ppx? ( dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_tools_versioned:= ) >=dev-lang/ocaml-4.01:= dev-ml/ocplib-endian:= dev-ml/sexplib:= dev-ml/type-conv:= >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=Map OCaml arrays onto C-like structs
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-cstruct https://mirage.io
+IUSE=async +lwt +ppx +ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=async? ( dev-ml/async:= ) lwt? ( dev-ml/lwt:= ) ppx? ( dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_tools_versioned:= ) >=dev-lang/ocaml-4.01:= dev-ml/ocplib-endian:= dev-ml/sexplib:= dev-ml/type-conv:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/2.4.0
+SRC_URI=https://github.com/mirage/ocaml-cstruct/archive/v2.4.0.tar.gz -> ocaml-cstruct-2.4.0.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	findlib	45d6030075064a68da8d7143726a1150	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	oasis	9256ed89af74c3365ec888c00bfdfe43	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=6228a20855f6134331519f6d50c95f29

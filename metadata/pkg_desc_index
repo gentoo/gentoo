@@ -5169,6 +5169,8 @@ dev-ml/async_extra 113.33.03: Jane Street Capital's asynchronous execution libra
 dev-ml/async_kernel 113.33.00 113.33.03: Jane Street Capital's asynchronous execution library (core)
 dev-ml/async_rpc_kernel 113.33.00 113.33.03: Platform-independent core of Async RPC library
 dev-ml/async_unix 113.33.00: Jane Street Capital's asynchronous execution library (unix)
+dev-ml/atd 1.2.0: Syntax for cross-language type definitions
+dev-ml/atdgen 1.10.0: Generates optimized boilerplate OCaml code for JSON and Biniou IO from type definitions
 dev-ml/batteries 2.5.3: The community-maintained foundation library for your OCaml projects
 dev-ml/bignum 113.33.03: Core-flavoured wrapper around zarith's arbitrary-precision rationals
 dev-ml/bin-prot 113.33.00: A binary protocol generator
@@ -5199,14 +5201,14 @@ dev-ml/csv 1.5 1.6: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dose3 5.0.1: Library and a collection of tools to perform la large spectrum of analysis on package repositories
-dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
+dev-ml/easy-format 1.0.2 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.1.0 6.2.0 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
-dev-ml/extlib 1.7.1: Standard library extensions for O'Caml
+dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/fieldslib 113.33.03: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
-dev-ml/fmt 0.8.0 0.8.1 0.8.2: Combinators to devise OCaml Format pretty-printing functions
+dev-ml/fmt 0.8.2: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
@@ -5244,7 +5246,7 @@ dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
 dev-ml/ocaml-conduit 0.14.5 0.15.0: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 0.22.1 1.0 1.1: A modular standard library focused on data structures
-dev-ml/ocaml-cstruct 2.3.1 2.3.2: Map OCaml arrays onto C-like structs
+dev-ml/ocaml-cstruct 2.3.1 2.3.2 2.4.0: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
@@ -5259,6 +5261,7 @@ dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.7.1 2.7.2: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
+dev-ml/ocaml-migrate-parsetree 0.7: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-mysql 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
@@ -5300,7 +5303,7 @@ dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library allowing to exploit multicore architec
 dev-ml/pcre-ocaml 7.2.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
-dev-ml/pomap 3.0.6: Partially Ordered Map ADT for O'Caml
+dev-ml/pomap 3.0.6 3.0.7: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 4.0.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.33.00 113.33.03: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_bench 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
@@ -5326,6 +5329,7 @@ dev-ml/ppx_sexp_conv 113.33.00: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 113.33.00: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 113.33.00: Standard library for ppx rewriters
 dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0: Tools for authors of ppx rewriters
+dev-ml/ppx_tools_versioned 5.0_beta1: Tools for authors of ppx rewriters
 dev-ml/ppx_type_conv 113.33.02: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.33.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.33.00: Generation of accessor and iteration functions for ocaml variant types
@@ -5334,6 +5338,8 @@ dev-ml/qcheck 0.5.2 0.5.3 0.5.3.1: QuickCheck inspired property-based testing fo
 dev-ml/re2 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0 1.2.1: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
+dev-ml/reason 1.13.3: Meta Language Toolchain
+dev-ml/reason-parser 1.13.3: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/sequence 0.9 0.10: Simple sequence (iterator) datatype and combinators
@@ -8891,7 +8897,7 @@ dev-qt/qtwidgets 5.6.1 5.6.2 5.7.1: Set of components for creating classic deskt
 dev-qt/qtx11extras 5.6.1 5.6.2 5.7.1: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.6.1 5.6.2 5.7.1: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.6.1 5.6.2 5.7.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
-dev-ros/actionlib 1.11.8 9999: Provides a standardized interface for interfacing with preemptable tasks
+dev-ros/actionlib 1.11.8 1.11.9 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.5 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 9999: Actionlib tutorials
 dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
@@ -8939,7 +8945,7 @@ dev-ros/diagnostic_msgs 1.12.5 9999: Standardized interface for the diagnostic a
 dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.14.0-r1 9999: Dynamic Window Approach to local robot navigation on a plane
-dev-ros/dynamic_reconfigure 1.5.46 9999: Provides a means to change node parameters at any time without having to restart the node
+dev-ros/dynamic_reconfigure 1.5.46 1.5.47 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
@@ -9034,7 +9040,7 @@ dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
 dev-ros/pcl_conversions 0.2.1-r1 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
 dev-ros/pcl_ros 1.4.1-r2 9999: PCL (Point Cloud Library) ROS interface stack
-dev-ros/pluginlib 1.10.4-r1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
+dev-ros/pluginlib 1.10.4-r1 1.10.5 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 0.1.10 9999: Pluginlib tutorials
 dev-ros/pointcloud_to_laserscan 1.3.0 9999: Converts a 3D Point Cloud into a 2D laser scan
 dev-ros/polled_camera 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
@@ -9050,7 +9056,7 @@ dev-ros/qt_gui_cpp 0.3.4 9999: Foundation for C++-bindings for dev-ros/qt_gui an
 dev-ros/qt_gui_py_common 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.0 0.3.1 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/realtime_tools 1.9.1 1.9.2 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
-dev-ros/resource_retriever 1.12.2 9999: Retrieves data from url-format files
+dev-ros/resource_retriever 1.12.3 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.2.0 2.2.1 2.2.2 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.14.0 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
@@ -13686,7 +13692,7 @@ media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
 media-sound/lilypond 2.18.2-r3 2.19.54 2.19.55 2.19.56 2.19.57 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
-media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
+media-sound/linuxsampler 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.0.2 1.0.3 1.1.3 1.1.90 9999: Cross-platform music production software

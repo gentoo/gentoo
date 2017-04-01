@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/easy-format:=[ocamlopt?] >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Syntax for cross-language type definitions
+EAPI=6
+HOMEPAGE=https://github.com/mjambon/atd
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/easy-format:=[ocamlopt?]
+SLOT=0/1.2.0
+SRC_URI=https://github.com/mjambon/atd/archive/v1.2.0.tar.gz -> atd-1.2.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=79491dc60dc7c0d7054804c88ca3369f
