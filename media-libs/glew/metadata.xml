@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">glew</remote-id>
+		<remote-id type="github">nigels-com/glew</remote-id>
 	</upstream>
 </pkgmetadata>
