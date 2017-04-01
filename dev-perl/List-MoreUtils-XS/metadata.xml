@@ -5,12 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <use>
-    <flag name="xs">Install C-Based backend implementation for performance</flag>
-  </use>
   <upstream>
-    <remote-id type="cpan">List-MoreUtils</remote-id>
-    <remote-id type="cpan-module">List::MoreUtils</remote-id>
-    <remote-id type="cpan-module">List::MoreUtils::PP</remote-id>
+    <remote-id type="cpan">List-MoreUtils-XS</remote-id>
+    <remote-id type="cpan-module">List::MoreUtils::XS</remote-id>
   </upstream>
 </pkgmetadata>
