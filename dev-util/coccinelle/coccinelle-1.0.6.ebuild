@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # ocaml enables ocaml scripting (uses findlib)
 CDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
-	dev-ml/sexplib:=[ocamlopt?]
+	dev-ml/sexplib:=[ocamlopt(+)?]
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/camlp4:=[ocamlopt?]
 	dev-ml/parmap:=[ocamlopt?]
