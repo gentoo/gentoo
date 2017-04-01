@@ -50,7 +50,10 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdesdk-kioslaves:4[subversion(-)]
 "
 
-PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-deps.patch"
+)
 
 src_prepare(){
 	kde5_src_prepare
