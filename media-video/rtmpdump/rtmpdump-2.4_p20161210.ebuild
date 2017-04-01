@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm hppa ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="gnutls polarssl ssl libressl"
 
 DEPEND="ssl? (
