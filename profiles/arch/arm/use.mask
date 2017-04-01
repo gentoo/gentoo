@@ -93,7 +93,6 @@ mtp
 ieee1394
 pm-utils
 darcs
-bs2b
 toolame
 ladspa
 ggi
@@ -101,15 +100,12 @@ nut
 fits
 tokyocabinet
 vaapi
-librtmp
 rtmp
 vpx
 lpsol
 upnp
-bluray
 libtar
 zvbi
-aacplus
 devil
 gts
 anthy
