@@ -10,7 +10,7 @@ HOMEPAGE="https://www.kde.org/"
 LICENSE="GPL-2"
 SLOT="4"
 
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc"
 
 DEPEND="sys-devel/gettext"
