@@ -4,7 +4,7 @@
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
 	distutils-r1 toolchain-funcs
@@ -18,7 +18,7 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y.  Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/4"
-KEYWORDS="~alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 REQUIRED_USE="
 	nmbug? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -56,7 +56,6 @@ RDEPEND="${CDEPEND}
 	"
 
 DOCS=( AUTHORS NEWS README )
-PATCHES=( "${FILESDIR}/fix-gpg-tests.patch" )
 SITEFILE="50${PN}-gentoo.el"
 MY_LD_LIBRARY_PATH="${WORKDIR}/${P}/lib"
 
@@ -119,6 +118,7 @@ src_configure() {
 		--bashcompletiondir="$(get_bashcompdir)"
 		--emacslispdir="${EPREFIX}/${SITELISP}/${PN}"
 		--emacsetcdir="${EPREFIX}/${SITEETC}/${PN}"
+		--without-desktop
 		--without-ruby
 		--zshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
 		$(use_with emacs)
