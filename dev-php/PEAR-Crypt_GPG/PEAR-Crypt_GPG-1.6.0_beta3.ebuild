@@ -13,7 +13,7 @@ HOMEPAGE="http://pear.php.net/package/${MY_PN}"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 IUSE="test"
 
 # Really only needs PEAR_Exception, not PEAR-PEAR.
