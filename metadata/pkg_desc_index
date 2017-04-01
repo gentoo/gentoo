@@ -16237,7 +16237,7 @@ sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 0.92.0 99999
 sci-geosciences/qgis 2.18.3-r1 2.18.4: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
-sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
+sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.2 3.3.3 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
 sci-geosciences/swmm 5.0.022: Storm Water Management Model - SWMM, hydrology, hydraulics, and water quality model
 sci-geosciences/tappy 0.9.0: Tidal Analysis in Python breaks hourly water level into tidal components
