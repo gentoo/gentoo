@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="async +lwt +ocamlopt test"
 
 RDEPEND="
-	async? ( >=dev-ml/async-112.24.00:= )
+	async? ( dev-ml/async:= )
 	lwt? ( >=dev-ml/lwt-2.4.7:=
 		dev-ml/ocaml-cstruct:=[lwt(-)] )
 	>=dev-lang/ocaml-4:=
