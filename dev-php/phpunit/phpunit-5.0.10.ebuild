@@ -12,7 +12,7 @@ SRC_URI="https://phar.phpunit.de/${PHPUNIT_PHAR}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
