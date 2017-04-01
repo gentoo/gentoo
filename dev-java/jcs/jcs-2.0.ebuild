@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 MY_P="commons-${PN}-dist-${PV}-beta-1-src"
 JCS_CORE="commons-${PN}-core"
 
-DESCRIPTION="JCS is a distributed caching system written in Java for server-side Java applications"
+DESCRIPTION="A distributed caching system for server-side Java applications"
 HOMEPAGE="http://commons.apache.org/jcs/"
 SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/commons/${PN}/source/commons-${PN}-dist-${PV}-beta-1-src.tar.gz"
 
