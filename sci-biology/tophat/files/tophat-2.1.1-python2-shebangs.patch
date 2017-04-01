@@ -1,0 +1,42 @@
+Make Python 2 explicit in python scripts
+
+--- a/src/bed_to_juncs
++++ b/src/bed_to_juncs
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # encoding: utf-8
+ """
+ bed_to_juncs.py
+--- a/src/contig_to_chr_coords
++++ b/src/contig_to_chr_coords
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # encoding: utf-8
+ """
+ contig_to_chr_coords.py
+--- a/src/sra_to_solid
++++ b/src/sra_to_solid
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ sra_to_solid.py
+--- a/src/tophat-fusion-post
++++ b/src/tophat-fusion-post
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ 
+ """
+--- a/src/tophat.py
++++ b/src/tophat.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # encoding: utf-8
+ """

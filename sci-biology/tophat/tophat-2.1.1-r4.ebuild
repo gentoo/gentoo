@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[threads]
+	dev-python/intervaltree[${PYTHON_USEDEP}]
+	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	sci-biology/samtools:0.1-legacy
 	sci-biology/bowtie:2"
 DEPEND="${RDEPEND}
@@ -27,8 +29,9 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2016.09.16"
 
 PATCHES=(
-	"${FILESDIR}/${P}-unbundle-seqan-samtools.patch"
-	"${FILESDIR}/${P}-fix-c++14.patch"
+	"${FILESDIR}"/${P}-unbundle-seqan-samtools.patch
+	"${FILESDIR}"/${P}-fix-c++14.patch
+	"${FILESDIR}"/${P}-python2-shebangs.patch
 )
 
 src_prepare() {
@@ -66,16 +69,10 @@ src_configure() {
 src_install() {
 	default
 
+	# delete bundled python modules
 	local i
-	# install scripts properly
-	for i in bed_to_juncs contig_to_chr_coords sra_to_solid tophat tophat-fusion-post; do
-		python_fix_shebang "${ED%/}/usr/bin/${i}"
-	done
-
-	# install python modules properly
 	for i in intervaltree sortedcontainers; do
-		python_domodule "${ED%/}/usr/bin/${i}"
-		rm -rf "${ED%/}/usr/bin/${i}" || die
+		rm -r "${ED%/}"/usr/bin/${i} || die
 	done
 }
 
