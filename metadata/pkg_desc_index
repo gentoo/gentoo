@@ -7706,6 +7706,7 @@ dev-python/influxdb 2.12.0: InfluxDB client
 dev-python/iniparse 0.4-r1 0.4-r2: Better INI parser for Python
 dev-python/inotifyx 0.2.2: Python bindings to the Linux inotify file system event monitoring API
 dev-python/intelhex 2.0: Python library for Intel HEX files manipulations
+dev-python/intervaltree 2.1.0: Editable interval tree data structure for Python 2 and 3
 dev-python/into 0.1.3 0.2.1 0.2.2: Data migration utilities
 dev-python/iocapture 0.1.2 0.1.2-r1: Capture stdout,stderr easily
 dev-python/ioflo 1.0.2 1.2.1 1.5.0: Automated Reasoning Engine and Flow Based Programming Framework
@@ -14712,7 +14713,7 @@ net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.7 4.0.6: An advanced Internet Relay Chat daemon
 net-irc/weechat 1.4-r1 1.7-r1 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
-net-irc/znc 1.4-r1 1.6.3-r1 1.6.4 9999: An advanced IRC Bouncer
+net-irc/znc 1.4-r1 1.6.3-r1 1.6.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
 net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4 1.4-r2: Advanced, easy to use, asynchronous-capable DNS client library and utilities
@@ -15963,7 +15964,7 @@ sci-biology/sim4 20030921-r2: A program to align cDNA and genomic DNA
 sci-biology/snpfile 2.0.1-r2: A library and API for manipulating large SNP datasets
 sci-biology/stride 20011129-r1: Protein secondary structure assignment from atomic coordinates
 sci-biology/t-coffee 9.03.1318-r1 11.00-r1: A multiple sequence alignment package
-sci-biology/tophat 2.1.1-r3: Python-based splice junction mapper for RNA-Seq reads using bowtie2
+sci-biology/tophat 2.1.1-r4: Python-based splice junction mapper for RNA-Seq reads using bowtie2
 sci-biology/transfac 3.2-r1: A database of eucaryotic transcription factors
 sci-biology/tree-puzzle 5.2: Maximum likelihood analysis for nucleotide, amino acid, and two-state data
 sci-biology/treeviewx 0.5.1-r3: A phylogenetic tree viewer

@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=icu? ( dev-libs/icu:= ) perl? ( >=dev-lang/perl-5.10:= ) python? ( python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tcl? ( dev-lang/tcl:0= ) zlib? ( sys-libs/zlib ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=An advanced IRC Bouncer
+EAPI=6
+HOMEPAGE=http://znc.in
+IUSE=daemon debug +ipv6 +icu libressl perl python +ssl sasl tcl test +zlib python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=Apache-2.0
+RDEPEND=icu? ( dev-libs/icu:= ) perl? ( >=dev-lang/perl-5.10:= ) python? ( python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tcl? ( dev-lang/tcl:0= ) zlib? ( sys-libs/zlib )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) )
+SLOT=0
+SRC_URI=http://znc.in/releases/archive/znc-1.6.5.tar.gz test? ( https://github.com/google/googletest/archive/release-1.7.0.tar.gz -> googletest-release-1.7.0.tar.gz )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=22c5974d5c7d6fe572f5cd7c46d19a78
