@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DESCRIPTION=Recursively process PHP variables
 EAPI=6
 HOMEPAGE=http://phpunit.de
-KEYWORDS=~amd64 ~arm ~hppa ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
 LICENSE=BSD
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/sebastianbergmann//recursion-context/archive/2.0.0.tar.gz -> sebastian-recursion-context-2.0.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=b84fb5fd5e9a2d81e1d31b91d0eaa962
+_md5_=a92c9dd3023f105536a6ed5d60fceba0
