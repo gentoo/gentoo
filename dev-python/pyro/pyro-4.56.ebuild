@@ -23,7 +23,7 @@ RDEPEND="
 	!dev-python/pyro:0
 	$(python_gen_cond_dep \
 		'dev-python/selectors34[${PYTHON_USEDEP}]' python{2_7,3_3})
-	>=dev-python/serpent-1.11[${PYTHON_USEDEP}]"
+	>=dev-python/serpent-1.19[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
