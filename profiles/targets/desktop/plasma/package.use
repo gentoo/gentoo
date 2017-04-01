@@ -62,10 +62,6 @@ media-libs/libvpx svc
 # Conflicts with kde-apps/audiocd-kio:5
 media-sound/amarok:4 -cdda
 
-# Allow certain KDE 4 components to be coinstalled with Plasma 5
-kde-apps/solid-runtime -bluetooth
-sys-auth/polkit-kde-agent minimal
-
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
 <app-office/texmaker-4.5-r1 -qt4
 dev-python/qscintilla-python -qt4
