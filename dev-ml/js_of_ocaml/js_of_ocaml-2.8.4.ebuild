@@ -40,6 +40,10 @@ RDEPEND="
 	deriving? ( >=dev-ml/deriving-0.6:= )"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	epatch "${FILESDIR}/ppx.patch"
+}
+
 src_configure() {
 	printf "\n\n" >> Makefile.conf
 	use ocamlopt || echo "BEST := byte" >> Makefile.conf
