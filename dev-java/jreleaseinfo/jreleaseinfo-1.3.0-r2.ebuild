@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Ant Task for build-time creation of Java source file with version, build number or other info"
-HOMEPAGE="http://${PN}.sourceforge.net/"
+DESCRIPTION="Ant Task for build-time creation of Java source file with version or other info"
+HOMEPAGE="http://jreleaseinfo.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
 
 LICENSE="Apache-2.0"
