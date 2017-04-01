@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-File-Spec virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.940.0 ) dev-lang/perl:=
+DESCRIPTION=Provides information about Classes
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Class-Inspector/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-File-Spec dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Class-Inspector-1.31.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=cbc24c3893f12753e51850115d70e66a
