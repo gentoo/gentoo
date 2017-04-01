@@ -1,0 +1,17 @@
+[Unit]
+Description=turnserver daemon
+After=networking.target
+
+[Service]
+Type=simple
+User=turnserver
+Group=turnserver
+PermissionsStartOnly=true
+ExecStartPre=/bin/bash -c "[ -f /var/log/turnserver.log ] || touch /var/log/turnserver.log && chown turnserver:turnserver /var/log/turnserver.log && chmod 660 /var/log/turnserver.log"
+ExecStartPre=/bin/bash -c "[ -d /var/run/turnserver ] || mkdir /var/run/turnserver && chown turnserver:turnserver /var/run/turnserver"
+ExecStart=/usr/bin/turnserver --pidfile /var/run/turnserver/turnserver.pid
+Restart=always
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target
