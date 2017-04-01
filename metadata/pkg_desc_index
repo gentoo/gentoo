@@ -6190,7 +6190,7 @@ dev-perl/Module-Runtime 0.14.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
 dev-perl/Module-ScanDeps 1.200.0 1.230.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.790.0: Module signature file manipulation
-dev-perl/Module-Starter 1.710.0: A simple starter kit for any module
+dev-perl/Module-Starter 1.710.0 1.720.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
 dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in memory
 dev-perl/MogileFS-Client 1.170.0-r1: Client library for the MogileFS distributed file system
@@ -14619,7 +14619,7 @@ net-im/coturn 4.5.0.4-r1 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
 net-im/discord-bin 0.0.1: All-in-one voice and text chat for gamers
-net-im/ejabberd 16.04 16.04-r1 16.08 16.09: Robust, scalable and extensible XMPP server
+net-im/ejabberd 16.04 16.04-r1 16.08 16.09 17.01: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
@@ -14980,7 +14980,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.21 0.23.3 0.23.7 0.24: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.21 0.23.7 0.24 0.24.1: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.10 7.0.12 7.0.13: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
@@ -15093,7 +15093,7 @@ net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 7.0.0_beta1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
