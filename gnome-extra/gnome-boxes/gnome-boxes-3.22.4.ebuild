@@ -16,7 +16,7 @@ SLOT="0"
 # We force 'bindist' due to licenses from gnome-boxes-nonfree
 IUSE="" #bindist
 
-KEYWORDS="~amd64" # qemu-kvm[spice] is 64bit-only
+KEYWORDS="amd64" # qemu-kvm[spice] is 64bit-only
 
 # NOTE: sys-fs/* stuff is called via exec()
 # FIXME: ovirt is not available in tree
