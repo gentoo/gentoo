@@ -11872,7 +11872,7 @@ kde-apps/krdc 16.08.3 16.12.3: Remote desktop connection (RDP and VNC) client
 kde-apps/kreadconfig 16.04.3: Command-line tool to read KConfig entries
 kde-apps/kremotecontrol 16.08.3 16.12.3: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 16.08.3 16.12.3: Board Game by KDE
-kde-apps/krfb 15.08.3 16.08.3 16.12.3 16.12.3-r1: VNC-compatible server to share KDE desktops
+kde-apps/krfb 15.08.3 16.08.3 16.12.3-r1: VNC-compatible server to share KDE desktops
 kde-apps/kross-interpreters 16.08.3 16.12.3: Kross interpreter plugins for programming languages
 kde-apps/kruler 16.08.3 16.12.3: Screen ruler for Plasma
 kde-apps/ksaneplugin 16.08.3 16.12.3: SANE Plugin by KDE
@@ -11939,7 +11939,7 @@ kde-apps/lokalize 16.08.3 16.12.3: KDE Applications 5 translation tool
 kde-apps/lskat 16.08.3 16.12.3: Skat game by KDE
 kde-apps/mailcommon 16.12.3: Common mail library
 kde-apps/mailimporter 16.12.3: Library to import mail from various sources
-kde-apps/marble 16.08.3-r1 16.12.3 16.12.3-r1: Virtual Globe and World Atlas to learn more about Earth
+kde-apps/marble 16.08.3-r1 16.12.3-r1: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 16.12.3: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 16.12.3: Libraries for messaging functions
 kde-apps/minuet 16.04.3 16.08.3 16.12.3: A KDE Software for Music Education
@@ -11973,7 +11973,7 @@ kde-apps/thumbnailers 16.08.3 16.12.3: Thumbnail generators for PDF/PS and RAW f
 kde-apps/umbrello 16.08.3 16.12.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.08.3 16.12.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.29.0 5.32.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 4.14.3 4.14.3_p20161017 5.29.0 5.32.0: Framework for searching and managing metadata
+kde-frameworks/baloo 4.14.3_p20161017 5.29.0 5.32.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.29.0 5.32.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.29.0 5.32.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.29.0 5.32.0: Breeze SVG icon theme binary resource
