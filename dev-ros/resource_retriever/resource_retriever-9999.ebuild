@@ -4,7 +4,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/resource_retriever"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
 inherit ros-catkin
 
