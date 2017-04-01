@@ -1,6 +1,9 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# Removal on 2017-05-01.
+
 # @ECLASS: aspell-dict.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org

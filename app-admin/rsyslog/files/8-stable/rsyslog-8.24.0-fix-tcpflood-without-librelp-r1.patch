@@ -1,19 +1,27 @@
-From 73e3b7ab2f8a3974d31844b492ad02d61ed5727f Mon Sep 17 00:00:00 2001
-From: Rainer Gerhards <rgerhards@adiscon.com>
-Date: Thu, 23 Feb 2017 13:18:44 +0100
-Subject: [PATCH] testbench: tcpflood failed to build if RELP support was
- disabled
+Patch to allow building of tcpflood without librelp
 
-closes https://github.com/rsyslog/rsyslog/issues/1426
----
- tests/tcpflood.c | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+Cherry pick of
+https://github.com/rsyslog/rsyslog/commit/73e3b7ab2f8a3974d31844b492ad02d61ed5727f
+https://github.com/rsyslog/rsyslog/pull/1493
 
-diff --git a/tests/tcpflood.c b/tests/tcpflood.c
-index c500a51..aa79794 100644
---- a/tests/tcpflood.c
+
+Gentoo-Bug: https://bugs.gentoo.org/613264
+Gentoo-Bug: https://bugs.gentoo.org/614424
+
+diff -u b/tests/tcpflood.c b/tests/tcpflood.c
+--- b/tests/tcpflood.c
 +++ b/tests/tcpflood.c
-@@ -149,7 +149,9 @@ static int numMsgsToSend = 1; /* number of messages to send */
+@@ -96,7 +96,9 @@
+ #include <string.h>
+ #include <netinet/in.h>
+ #include <pthread.h>
++#ifdef ENABLE_RELP
+ #include <librelp.h>
++#endif
+ #include <sys/resource.h>
+ #include <sys/time.h>
+ #include <errno.h>
+@@ -149,7 +151,9 @@
  static int numConnections = 1; /* number of connections to create */
  static int softLimitConnections  = 0; /* soft connection limit, see -c option description */
  static int *sockArray;  /* array of sockets to use */
@@ -23,7 +31,7 @@ index c500a51..aa79794 100644
  static int msgNum = 0;	/* initial message number to start with */
  static int bShowProgress = 1; /* show progress messages */
  static int bSilent = 0; /* completely silent operation */
-@@ -216,6 +218,7 @@ static void initTLSSess(int);
+@@ -216,6 +220,7 @@
  static int sendTLS(int i, char *buf, int lenBuf);
  static void closeTLSSess(int __attribute__((unused)) i);
  
@@ -31,7 +39,7 @@ index c500a51..aa79794 100644
  /* RELP subsystem */
  #pragma GCC diagnostic push
  #pragma GCC diagnostic ignored "-Wformat-security"
-@@ -235,6 +238,7 @@ initRELP_PLAIN(void)
+@@ -235,6 +240,7 @@
  	CHKRELP(relpEngineSetEnableCmd(pRelpEngine, (unsigned char*)"syslog",
  		eRelpCmdState_Required));
  }
@@ -39,7 +47,7 @@ index c500a51..aa79794 100644
  
  /* prepare send subsystem for UDP send */
  static int
-@@ -273,6 +277,7 @@ int openConn(int *fd, const int connIdx)
+@@ -273,6 +279,7 @@
  		port = targetPort;
  	}
  	if(transport == TP_RELP_PLAIN) {
@@ -47,7 +55,7 @@ index c500a51..aa79794 100644
  		relpRetVal relp_r;
  		relpClt_t *relpClt;
  		char relpPort[16];
-@@ -286,6 +291,7 @@ int openConn(int *fd, const int connIdx)
+@@ -286,6 +293,7 @@
  			return(1);
  		}
  		*fd = 1; /* mimic "all ok" state */
@@ -55,7 +63,7 @@ index c500a51..aa79794 100644
  	} else { /* TCP, with or without TLS */
  		if((sock=socket(AF_INET, SOCK_STREAM, 0))==-1) {
  			perror("\nsocket()");
-@@ -336,8 +342,10 @@ int openConnections(void)
+@@ -336,8 +344,10 @@
  	sessArray = calloc(numConnections, sizeof(gnutls_session_t));
  #	endif
  	sockArray = calloc(numConnections, sizeof(int));
@@ -66,7 +74,7 @@ index c500a51..aa79794 100644
  	for(i = 0 ; i < numConnections ; ++i) {
  		if(i % 10 == 0) {
  			if(bShowProgress)
-@@ -356,8 +364,10 @@ int openConnections(void)
+@@ -356,8 +366,10 @@
  					 * at least something.
  					 */
  					if(transport == TP_RELP_PLAIN) {
@@ -77,7 +85,7 @@ index c500a51..aa79794 100644
  					} else { /* TCP and TLS modes */
  						if(transport == TP_TLS)
  							closeTLSSess(i);
-@@ -403,14 +413,13 @@ void closeConnections(void)
+@@ -403,14 +415,13 @@
  
  	if(bShowProgress)
  		if(write(1, "      close connections", sizeof("      close connections")-1)){}
@@ -93,7 +101,7 @@ index c500a51..aa79794 100644
  			relpRetVal relpr;
  			if(sockArray[i] != -1) {
  				relpr = relpEngineCltDestruct(pRelpEngine, relpCltArray+i);
-@@ -419,6 +428,7 @@ void closeConnections(void)
+@@ -419,6 +430,7 @@
  				}
  				sockArray[i] = -1;
  			}
@@ -101,7 +109,7 @@ index c500a51..aa79794 100644
  		} else { /* TCP and TLS modes */
  			if(sockArray[i] != -1) {
  				/* we try to not overrun the receiver by trying to flush buffers
-@@ -610,6 +620,7 @@ int sendMessages(struct instdata *inst)
+@@ -610,6 +622,7 @@
  				offsSendBuf = lenBuf;
  			}
  		} else if(transport == TP_RELP_PLAIN) {
@@ -109,7 +117,7 @@ index c500a51..aa79794 100644
  			relpRetVal relp_ret;
  			if(sockArray[socknum] == -1) {
  				/* connection was dropped, need to re-establish */
-@@ -627,6 +638,7 @@ int sendMessages(struct instdata *inst)
+@@ -627,6 +640,7 @@
  				printf("\nrelpCltSendSyslog() failed with relp error code %d\n",
  					   relp_ret);
  			}
@@ -117,7 +125,7 @@ index c500a51..aa79794 100644
  		}
  		if(lenSend != lenBuf) {
  			printf("\r%5.5d\n", i);
-@@ -1106,7 +1118,9 @@ int main(int argc, char *argv[])
+@@ -1106,7 +1120,9 @@
  						transport = TP_RELP_PLAIN;
  #					else
  						fprintf(stderr, "compiled without RELP support: "
@@ -128,7 +136,7 @@ index c500a51..aa79794 100644
  						exit(1);
  #					endif
  				} else {
-@@ -1168,7 +1182,9 @@ int main(int argc, char *argv[])
+@@ -1168,7 +1184,9 @@
  	if(transport == TP_TLS) {
  		initTLS();
  	} else if(transport == TP_RELP_PLAIN) {
@@ -138,7 +146,7 @@ index c500a51..aa79794 100644
  	}
  
  	if(openConnections() != 0) {
-@@ -1183,9 +1199,11 @@ int main(int argc, char *argv[])
+@@ -1183,9 +1201,11 @@
  
  	closeConnections(); /* this is important so that we do not finish too early! */
  
