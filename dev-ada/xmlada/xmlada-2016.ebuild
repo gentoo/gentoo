@@ -39,4 +39,7 @@ src_install () {
 		fi
 	done
 	einstalldocs
+	dodoc features-* known-problems-* xmlada-roadmap.txt
+	rm "${D}"/usr/share/doc/${PN}/.buildinfo || die
+	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF}/html || die
 }
