@@ -1,13 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Apr 2017)
+# Only >=python3_5 supported
+kde-apps/kajongg:5 python_single_target_python3_5 python_targets_python3_5
+
 # Mart Raudsepp <leio@gentoo.org> (23 Mar 2017)
 # Only python3 supported
 media-sound/gnome-music python_single_target_python3_4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
-# Only >=python3_5 supported
-dev-util/kdevelop-python:5 python_single_target_python3_5
 
 # Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
 # only python 3 is supported
@@ -37,7 +37,7 @@ sys-devel/clang llvm_targets_BPF
 sys-devel/llvm llvm_targets_BPF
 
 # Michael Palimaka <kensington@gentoo.org> (31 Aug 2016)
-dev-util/kdevelop-python:5 python_targets_python3_5
+dev-util/kdevelop-python:5 python_single_target_python3_5 python_targets_python3_5
 
 # Justin Lecher <jlec@gentoo.org> (08 Dec 2015)
 # Only py3 and single target supported
