@@ -53,6 +53,10 @@ src_install() {
 		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-c++
 		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-g++
 		dosym /usr/bin/parity.gnu.ld${exeext} /usr/bin/i586-pc-winnt${v}-ld
+		dosym /usr/bin/parity.gnu.windres${exeext} /usr/bin/i586-pc-winnt${v}-windres
+		dosym /usr/bin/parity.gnu.ar /usr/bin/i586-pc-winnt${v}-ar
+		dosym /usr/bin/parity.gnu.ranlib /usr/bin/i586-pc-winnt${v}-ranlib
+		dosym /usr/bin/parity.gnu.strip /usr/bin/i586-pc-winnt${v}-strip
 	done
 
 	# we don't need the header files installed by parity... private
