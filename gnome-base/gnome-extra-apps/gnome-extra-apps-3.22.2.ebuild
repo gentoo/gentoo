@@ -9,7 +9,7 @@ LICENSE="metapackage"
 SLOT="3.0"
 IUSE="+games +share +shotwell +tracker"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Note to developers:
 # This is a wrapper for the extra apps integrated with GNOME 3
