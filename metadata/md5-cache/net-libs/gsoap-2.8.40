@@ -4,11 +4,11 @@ DESCRIPTION=A cross-platform open source C and C++ SDK for SOAP/XML Web services
 EAPI=6
 HOMEPAGE=http://gsoap2.sourceforge.net
 IUSE=doc debug examples ipv6 libressl gnutls +ssl
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2 gSOAP
 RDEPEND=sys-libs/zlib gnutls? ( net-libs/gnutls ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/gsoap2/gsoap_2.8.40.zip
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=049e4973b115a01d287c56508076a676
+_md5_=24cb41e13fa0b2f7f8494bc51314662b
