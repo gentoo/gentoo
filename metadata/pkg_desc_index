@@ -5961,7 +5961,7 @@ dev-perl/HTTP-MultiPartParser 0.10.0: Low Level MultiPart MIME HTTP parser
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
-dev-perl/HTTP-Server-Simple 0.510.0: Lightweight HTTP Server
+dev-perl/HTTP-Server-Simple 0.510.0 0.520.0: Lightweight HTTP Server
 dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standalone mason server
 dev-perl/HTTP-Server-Simple-PSGI 0.160.0: PSGI handler for HTTP::Server::Simple
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
