@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ IUSE="allservices"
 
 RDEPEND="
 	dev-ml/ocaml-re:=
-	>=dev-ml/sexplib-109.53.00:=
+	dev-ml/sexplib:=
 	dev-ml/ppx_sexp_conv:=
 	dev-ml/stringext:=
 	dev-ml/type-conv:=
