@@ -26,6 +26,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-dont-include-gdk-pixbuf-xlib.patch
+	"${FILESDIR}"/${P}-dont-include-libXmu.patch
 	"${FILESDIR}"/${P}-as-needed-and-pre-stripped.patch
 )
 

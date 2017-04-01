@@ -54,7 +54,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libxml2
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
-	>=dev-libs/yajl-2
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-libs/libcdio
 	dev-libs/libfmt
@@ -117,6 +116,7 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/zip
 	dev-lang/swig
 	dev-libs/crossguid
+	dev-libs/rapidjson
 	dev-util/cmake
 	dev-util/gperf
 	media-libs/giflib

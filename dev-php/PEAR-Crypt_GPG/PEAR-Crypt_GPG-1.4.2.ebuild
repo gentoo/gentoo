@@ -9,7 +9,7 @@ DESCRIPTION="GNU Privacy Guard (GnuPG)"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc64 x86"
+KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
 IUSE=""
 DEPEND=">=dev-lang/php-5.2.1:*[posix,unicode]"
 RDEPEND="${DEPEND}
