@@ -5888,7 +5888,7 @@ dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
 dev-perl/GStreamer 0.200.0: Perl bindings for GStreamer
 dev-perl/GStreamer-Interfaces 0.60.0-r1: Perl interface to the GStreamer Interfaces library
-dev-perl/Gearman 1.120.0 2.2.4 2.3.1: Gearman distributed job system, client and worker libraries
+dev-perl/Gearman 1.120.0 2.2.4 2.3.1 2.3.2: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
 dev-perl/Gentoo-App-Pram 0.4.0: Readily merge Pull Requests from the Gentoo Github repository
