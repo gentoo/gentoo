@@ -10,7 +10,7 @@ SRC_URI="https://github.com/phocean/TopIcons-plus/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # glib for glib-compile-schemas at build time, needed at runtime anyways
