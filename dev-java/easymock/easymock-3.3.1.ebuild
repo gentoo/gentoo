@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc examples source"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Provides Mock Objects for interfaces in JUnit tests by generating them on the fly"
+DESCRIPTION="Mock Objects for interfaces in JUnit tests by generating them on the fly"
 HOMEPAGE="http://www.easymock.org/"
 SRC_URI="mirror://sourceforge/${PN}/EasyMock/${PV}/${P}.zip"
 
