@@ -512,10 +512,6 @@ dev-perl/ExtUtils-Constant
 # Needs a bump and substantial ebuild rewrite
 =sci-mathematics/reduce-20110414-r1
 
-# Victor Ostorga <vostorga@gentoo.org> (30 Dec 2015)
-# Mask this liferea version because upstream released it broken
-=net-news/liferea-1.10.17
-
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
 # is working on replacing them in the wip/dedup-syscall branch.
