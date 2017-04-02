@@ -133,7 +133,6 @@ src_prepare() {
 src_configure() {
 	# Do not error out on warnings
 	gnome2_src_configure \
-		--enable-browser-plugin \
 		--enable-man \
 		$(use_enable !openrc-force systemd) \
 		$(use_with bluetooth) \
