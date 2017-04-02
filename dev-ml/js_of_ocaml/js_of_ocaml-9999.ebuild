@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,12 +20,11 @@ fi
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-IUSE="+async +ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X"
+IUSE="+ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?,X?]
 	>=dev-ml/lwt-2.4.4:=[camlp4(+)]
-	async? ( dev-ml/async_kernel:= )
 	react? ( dev-ml/react:=  dev-ml/reactiveData:= )
 	xml? ( >=dev-ml/tyxml-4:= )
 	ppx? ( dev-ml/ppx_tools:= )
@@ -50,7 +49,7 @@ src_configure() {
 	use react || echo "WITH_REACT := NO" >> Makefile.conf
 	use ppx || echo "WITH_PPX := NO" >> Makefile.conf
 	use ppx-deriving || echo "WITH_PPX_PPX_DERIVING := NO" >> Makefile.conf
-	use async || echo "WITH_ASYNC := NO" >> Makefile.conf
+	echo "WITH_ASYNC := NO" >> Makefile.conf
 }
 
 src_compile() {

@@ -56,6 +56,9 @@ src_configure() {
 	# Bug #285993
 	filter-mfpmath sse
 
+	# -ggdb3 & co makes it behave weirdly, breaks sexplib
+	replace-flags -ggdb* -ggdb
+
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
 

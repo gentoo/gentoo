@@ -1,0 +1,11 @@
+Index: js_of_ocaml-2.8.4/lib/ppx_driver/ppx_js_driver.ml
+===================================================================
+--- js_of_ocaml-2.8.4.orig/lib/ppx_driver/ppx_js_driver.ml
++++ js_of_ocaml-2.8.4/lib/ppx_driver/ppx_js_driver.ml
+@@ -1,5 +1,5 @@
+ let () =
+   let js_mapper = Ppx_js.js_mapper [] in
+-  Ppx_driver.register_transformation "js_of_ocaml"
++  Ppx_driver.register_transformation_using_ocaml_current_ast "js_of_ocaml"
+     ~impl:(js_mapper.Ast_mapper.structure js_mapper)
+     ~intf:(js_mapper.Ast_mapper.signature js_mapper)

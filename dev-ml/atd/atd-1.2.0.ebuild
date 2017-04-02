@@ -17,6 +17,7 @@ IUSE="+ocamlopt"
 DEPEND="
 	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/easy-format:=[ocamlopt?]
+	dev-ml/menhir:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
 
