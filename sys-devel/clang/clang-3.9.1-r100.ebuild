@@ -18,7 +18,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 LICENSE="UoI-NCSA"
 # keep in sync with sys-devel/llvm!
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug multitarget python +static-analyzer ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="~sys-devel/llvm-${PV}[clang(-),debug=,python?,static-analyzer?,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]"

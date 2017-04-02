@@ -13,7 +13,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug +static-libs"
 
 RDEPEND="!sys-libs/libunwind"

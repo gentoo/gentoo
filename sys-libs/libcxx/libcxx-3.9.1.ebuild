@@ -26,9 +26,9 @@ fi
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 if [[ ${PV} != 9999 ]] ; then
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 else
-	KEYWORDS="~arm64"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 IUSE="elibc_glibc elibc_musl libcxxabi +libcxxrt libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )

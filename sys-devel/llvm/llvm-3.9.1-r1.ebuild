@@ -34,7 +34,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang debug default-compiler-rt default-libcxx doc gold libedit +libffi
 	lldb multitarget ncurses ocaml python +sanitize +static-analyzer test xml
 	elibc_musl kernel_Darwin kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
