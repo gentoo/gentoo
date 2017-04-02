@@ -5568,7 +5568,7 @@ dev-perl/Clone 0.380.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.220.0 2.240.0: Interface to Bzip2 compression library
-dev-perl/Config-Any 0.260.0 0.270.0 0.290.0: Load configuration from different file formats, transparently
+dev-perl/Config-Any 0.260.0 0.270.0 0.290.0 0.300.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
 dev-perl/Config-AutoConf 0.311.0 0.313.0: A module to implement some of AutoConf macros in pure perl
@@ -5599,7 +5599,7 @@ dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0-r1: A Perl interface to the
 dev-perl/Cookie-Baker 0.60.0 0.70.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.70.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.511.0: The only real threads in perl
-dev-perl/Cpanel-JSON-XS 3.23.0: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 3.23.0 3.23.100: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
@@ -6219,7 +6219,7 @@ dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0 7.210.0 7.2
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2 1.6.0 1.6.1: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
-dev-perl/Moo 2.0.2 2.2.5 2.3.0 2.3.1: Minimalist Object Orientation (with Moose compatiblity)
+dev-perl/Moo 2.0.2 2.2.5 2.3.0 2.3.1 2.3.2: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
@@ -6637,7 +6637,7 @@ dev-perl/Test-NoTabs 1.400.0: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r3: Make sure you didn't emit any warnings while testing
 dev-perl/Test-Number-Delta 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
-dev-perl/Test-Output 1.30.0: Utilities to test STDOUT and STDERR messages
+dev-perl/Test-Output 1.30.0 1.31.0: Utilities to test STDOUT and STDERR messages
 dev-perl/Test-Perl-Critic 1.20.0-r1 1.30.0: Use Perl::Critic in test programs
 dev-perl/Test-Pod 1.510.0: Check for POD errors in files
 dev-perl/Test-Pod-Coverage 1.100.0: Check for pod coverage in your distribution
@@ -17985,7 +17985,7 @@ virtual/libmysqlclient 18: Virtual for MySQL client libraries
 virtual/libstdc++ 3.3: Virtual for the GNU Standard C++ Library for <gcc-3.4
 virtual/libudev 215-r1 232: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
-virtual/linux-sources 1 2: Virtual for Linux kernel sources
+virtual/linux-sources 3: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.3 5.8: Virtual Package installing the Header files for DVB
 virtual/logger 0: Virtual for system loggers
 virtual/mailx 0 1: Virtual for mail implementations
