@@ -1337,7 +1337,7 @@ app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1 1.39
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3 5.0.5: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4-r1 4.2.6-r1 4.2.8-r1 4.2.10-r1: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.3.1 1.3.3: Qt GUI configuration tool for Wine
-app-emulation/qemu 2.8.0-r3 2.8.0-r9 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.8.0-r9 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0 2.6.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
@@ -14253,7 +14253,7 @@ net-analyzer/nagios-check_fail2ban 3: A nagios plugin for checking the fail2ban 
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
 net-analyzer/nagios-check_ipmi_sensor 3.1 3.2 3.6: IPMI Sensor Monitoring Plugin for Nagios/Icinga
 net-analyzer/nagios-check_linux_bonding 1.3.2 1.4: Nagios plugin to monitor bonding status of network interfaces
-net-analyzer/nagios-check_logfiles 2.3.2.1-r1 3.7.3.1 3.7.3.1-r1 3.7.6.3: A nagios plugin for checking logfiles
+net-analyzer/nagios-check_logfiles 3.7.6.3: A nagios plugin for checking logfiles
 net-analyzer/nagios-check_mysql_health 2.1.9.2 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
@@ -18989,7 +18989,7 @@ x11-plugins/asclock 2.0.12-r1: Clock applet for AfterStep
 x11-plugins/ascpu 1.11 1.11-r1: CPU statistics monitor utility for X Windows
 x11-plugins/asmem 1.12 1.12-r1: Monitor the utilization level of memory, cache and swap space
 x11-plugins/asmon 0.71 0.71-r1: WindowMaker/AfterStep system monitor dockapp
-x11-plugins/astime 2.8-r1 2.8-r2: Analogue clock utility for X Windows
+x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r1 0.6.4-r2: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r2: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/compiz-plugins-extra 0.8.8: Compiz Fusion Window Decorator Extra Plugins
@@ -19008,7 +19008,7 @@ x11-plugins/gkrellm-bgchanger 0.1.10 0.1.11 0.1.11-r1: Plugin for GKrellM2 to ch
 x11-plugins/gkrellm-bluez 0.2-r1: GKrellm plugin for monitoring bluetooth (Linux BlueZ) adapters
 x11-plugins/gkrellm-countdown 0.1.2 0.1.2-r1: A simple countdown clock for GKrellM2
 x11-plugins/gkrellm-cpupower 0.1.6-r1: A Gkrellm2 plugin for displaying and manipulating CPU frequency
-x11-plugins/gkrellm-imonc 0.2 0.2-r1: A GKrellM2 plugin to control a fli4l router
+x11-plugins/gkrellm-imonc 0.2-r1: A GKrellM2 plugin to control a fli4l router
 x11-plugins/gkrellm-leds 0.8.2-r1: GKrellM2 plugin for monitoring keyboard LEDs
 x11-plugins/gkrellm-mailwatch 2.4.3-r1: A GKrellM2 plugin that shows the status of additional mail boxes
 x11-plugins/gkrellm-plugins 2.0: emerge this package to install all of the gkrellm plugins
@@ -19016,7 +19016,7 @@ x11-plugins/gkrellm-radio 2.0.4: A minimalistic GKrellM2 plugin to control radio
 x11-plugins/gkrellm-trayicons 1.03: Configurable Tray Icons for GKrellM
 x11-plugins/gkrellm-vaiobright 2.5-r1: Superslim VAIO LCD Brightness Control Plugin for Gkrellm
 x11-plugins/gkrellm-volume 2.1.13-r2: A mixer control plugin for gkrellm
-x11-plugins/gkrellm-xkb 1.05 1.05-r1: XKB keyboard switcher for gkrellm2
+x11-plugins/gkrellm-xkb 1.05-r1: XKB keyboard switcher for gkrellm2
 x11-plugins/gkrellmlaunch 0.5: A Program-Launcher Plugin for GKrellM2
 x11-plugins/gkrellmoon 0.6-r1: A GKrellM2 plugin of the famous wmMoonClock dockapp
 x11-plugins/gkrellmss 2.6 2.6-r1 2.6-r3: A plugin for GKrellM2 that has a VU meter and a sound chart
