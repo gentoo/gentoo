@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Amadeusz Zolnowski <aidecoe@gentoo.org> (2 Apr 2017)
+# Masked, committed accidentally. It's not tested yet, possibly broken.
+=net-im/ejabberd-17.01
+
 # Hans de Graaff <graaff@gentoo.org> (2 Apr 2017)
 # Mask vulnerable slot for security bug. Bug #611384.
 # Removal in 30 days.
