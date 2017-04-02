@@ -4536,7 +4536,7 @@ dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Addit
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2016.10 2016.11 2016.12 2017.01 2017.02 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5 4.6.1.5-r1 4.8.0.425 4.8.0.495: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5 4.6.1.5-r1 4.8.0.425 4.8.0.495 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
@@ -11549,7 +11549,7 @@ gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control wha
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/cameramonitor 0.3.2-r2: Local Webcam monitoring in system tray
 gnome-extra/chrome-gnome-shell 7.1 8-r1 8.1: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
-gnome-extra/cinnamon 2.8.8-r1 3.0.6-r1 3.0.7-r1 3.0.7-r2 3.2.0-r2 3.2.6-r1 3.2.7-r1: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon 3.0.7-r2 3.2.0-r2 3.2.6-r1 3.2.7-r1: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 2.8.1 3.0.1 3.2.0 3.2.1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.8.1 3.0.2 3.2.0 3.2.4: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.8.0 3.0.2 3.2.0: Cinnamon's library for the Desktop Menu fd.o specification
@@ -17320,7 +17320,7 @@ sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2 2.0.873
 sys-block/open-isns 0.97: iSNS server and client for Linux
 sys-block/parted 2.4 3.1-r1 3.2 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to an image file
-sys-block/partitionmanager 2.2.1 3.0.1: KDE utility for management of partitions and file systems
+sys-block/partitionmanager 3.0.1: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
@@ -17771,7 +17771,7 @@ sys-libs/gdbm 1.11 1.12 1.13: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.24-r1 2.25 9999: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
-sys-libs/kpmcore 2.2.1 3.0.3: Library for managing partitions
+sys-libs/kpmcore 3.0.3: Library for managing partitions
 sys-libs/ldb 1.1.24 1.1.26 1.1.27-r1 1.1.29 1.1.29-r1: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
