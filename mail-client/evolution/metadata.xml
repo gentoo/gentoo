@@ -17,8 +17,6 @@
 			plugin</flag>
 		<flag name="ldap">Enable support for fetching contacts from an LDAP or
 			Active Directory server using <pkg>net-nds/openldap</pkg></flag>
-		<flag name="map">Enable support for displaying contacts on a map inside
-			evolution using <pkg>media-libs/libchamplain</pkg></flag>
 		<flag name="spamassassin">Build <pkg>mail-filter/spamassassin</pkg>
 			plugin</flag>
 		<flag name="weather">Enable optional weather calendar support</flag>
