@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,3 +21,7 @@ IUSE="test doc"
 RUBY_PATCHES=( "${P}-require-set.patch" )
 
 ruby_add_bdepend "doc? ( dev-ruby/rdoc )"
+
+all_ruby_prepare() {
+	sed -i -e '/sshpublisher/ s:^:#:' Rakefile || die
+}
