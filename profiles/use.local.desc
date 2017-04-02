@@ -199,7 +199,6 @@ app-arch/engrampa:caja - Enable engrampa to integrate with mate-base/caja by pro
 app-arch/engrampa:gtk3 - Build with GTK+3 instead of GTK+2
 app-arch/engrampa:magic - Enable filetype auto-detection via sys-apps/file
 app-arch/engrampa:packagekit - Enable support for installing via app-admin/packagekit based on archive type
-app-arch/file-roller:nautilus - Enable file-roller to integrate with gnome-base/nautilus by providing entries in its context menu
 app-arch/file-roller:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
 app-arch/gzip:pic - disable optimized assembly code that is not PIC friendly
 app-arch/innoextract:c++0x - Compile innoextract using the C++11 standard.
