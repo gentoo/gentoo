@@ -260,6 +260,7 @@ app-backup/snapper:lvm - Enable LVM thinprovisioned snapshots support sys-fs/lvm
 app-backup/snapper:xattr - Add support for getting and setting POSIX extended attributes, through sys-apps/attr.
 app-backup/tsm:tsm_cit - IBM Tivoli Common Inventory Technology
 app-backup/tsm:tsm_hw - Difference snapshot support for NetApp and N-Series file servers
+app-backup/zbackup:tartool - Install tartool utility
 app-benchmarks/filebench:auto-completion - Enable command-line autocompletion using dev-libs/libtecla.
 app-benchmarks/httperf:idleconn - Build with the idleconn program
 app-benchmarks/jmeter:beanshell - Enable BeanShell scripting support
