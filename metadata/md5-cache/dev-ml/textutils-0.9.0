@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/core:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Text output utilities
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/textutils
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/core:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/textutils/archive/v0.9.0.tar.gz -> textutils-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=31d219ca974c9e96cddf4047d16ed9b8

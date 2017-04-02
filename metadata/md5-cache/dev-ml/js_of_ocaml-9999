@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install unpack
-DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?,X?] >=dev-ml/lwt-2.4.4:=[camlp4(+)] async? ( dev-ml/async_kernel:= ) react? ( dev-ml/react:= dev-ml/reactiveData:= ) xml? ( >=dev-ml/tyxml-4:= ) ppx? ( dev-ml/ppx_tools:= ) ppx-deriving? ( dev-ml/ppx_deriving:= ) dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= dev-ml/uchar:= dev-ml/ocamlbuild:= dev-ml/yojson:= deriving? ( >=dev-ml/deriving-0.6:= ) >=dev-ml/findlib-1.0.4-r1 >=dev-vcs/git-1.8.2.1
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?,X?] >=dev-ml/lwt-2.4.4:=[camlp4(+)] react? ( dev-ml/react:= dev-ml/reactiveData:= ) xml? ( >=dev-ml/tyxml-4:= ) ppx? ( dev-ml/ppx_tools:= ) ppx-deriving? ( dev-ml/ppx_deriving:= ) dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= dev-ml/uchar:= dev-ml/ocamlbuild:= dev-ml/yojson:= deriving? ( >=dev-ml/deriving-0.6:= ) >=dev-ml/findlib-1.0.4-r1 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A compiler from OCaml bytecode to javascript
 EAPI=5
 HOMEPAGE=http://ocsigen.org/js_of_ocaml/
-IUSE=+async +ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X
+IUSE=+ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X
 LICENSE=LGPL-2.1-with-linking-exception
-RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?,X?] >=dev-ml/lwt-2.4.4:=[camlp4(+)] async? ( dev-ml/async_kernel:= ) react? ( dev-ml/react:= dev-ml/reactiveData:= ) xml? ( >=dev-ml/tyxml-4:= ) ppx? ( dev-ml/ppx_tools:= ) ppx-deriving? ( dev-ml/ppx_deriving:= ) dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= dev-ml/uchar:= dev-ml/ocamlbuild:= dev-ml/yojson:= deriving? ( >=dev-ml/deriving-0.6:= )
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?,X?] >=dev-ml/lwt-2.4.4:=[camlp4(+)] react? ( dev-ml/react:= dev-ml/reactiveData:= ) xml? ( >=dev-ml/tyxml-4:= ) ppx? ( dev-ml/ppx_tools:= ) ppx-deriving? ( dev-ml/ppx_deriving:= ) dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= dev-ml/uchar:= dev-ml/ocamlbuild:= dev-ml/yojson:= deriving? ( >=dev-ml/deriving-0.6:= )
 SLOT=0/9999
 _eclass_exported_funcs=src_unpack:git-r3 src_configure:- src_compile:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	findlib	45d6030075064a68da8d7143726a1150	git-r3	68d35a154123e27007638d8220886ee1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=4e2786d85caea92d3b2b25b25b461410
+_md5_=0abe71d884b873df2a1c3341b9f3c6be

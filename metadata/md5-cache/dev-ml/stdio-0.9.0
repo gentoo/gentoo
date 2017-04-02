@@ -1,0 +1,12 @@
+DEFINED_PHASES=install test
+DEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Standard IO Library for OCaml
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/stdio
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/base:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/stdio/archive/v0.9.0.tar.gz -> stdio-0.9.0.tar.gz
+_eclass_exported_funcs=src_test:- src_install:-
+_md5_=6673ce7f64feb33f3e17f1fee3cc265e

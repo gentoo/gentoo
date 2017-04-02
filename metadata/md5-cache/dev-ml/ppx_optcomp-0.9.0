@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_core:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Optional compilation for OCaml
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_optcomp
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_core:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_optcomp/archive/v0.9.0.tar.gz -> ppx_optcomp-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=d5bae17d488bbc660d320e4cc6fbc868

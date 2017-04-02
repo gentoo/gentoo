@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Spawning sub-processes
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/spawn
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/spawn/archive/v0.9.0.tar.gz -> spawn-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=9f797e4c759909351c2499fc9a480e9f

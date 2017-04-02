@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_traverse_builtins:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Write OCaml AST fragment using OCaml syntax
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_metaquot
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_traverse_builtins:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_metaquot/archive/v0.9.0.tar.gz -> ppx_metaquot-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=27bcc4987eb7f75a67f0584b86280253

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ocaml-compiler-libs:= dev-ml/ppx_ast:= dev-ml/ppx_traverse_builtins:= dev-ml/stdio:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Standard library for ppx rewriters
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_core
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ocaml-compiler-libs:= dev-ml/ppx_ast:= dev-ml/ppx_traverse_builtins:= dev-ml/stdio:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_core/archive/v0.9.0.tar.gz -> ppx_core-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=f77f276fe6edd40e604f9f979f69befb
