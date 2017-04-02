@@ -6,9 +6,6 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="nautilus">Enable file-roller to integrate with
-			<pkg>gnome-base/nautilus</pkg> by providing entries in its context
-			menu</flag>
 		<flag name="packagekit">Enable support for the distro-neutral package
 			manager GUI <pkg>app-admin/packagekit</pkg></flag>
 	</use>
