@@ -12,7 +12,5 @@
 			<pkg>net-libs/gnome-online-accounts</pkg> accounts</flag>
 		<flag name="ibus">Enable support for enhanced input methods through
 			<pkg>app-i18n/ibus</pkg></flag>
-		<flag name="i18n">Enable support for enhanced input methods through
-			<pkg>app-i18n/ibus</pkg></flag>
 	</use>
 </pkgmetadata>
