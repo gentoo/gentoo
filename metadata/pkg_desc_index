@@ -11605,7 +11605,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.3 3.8.4: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.8.3 1.10.1 1.10.5: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6 3.2.0: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.2.4 1.4.2 1.4.6 1.4.6-r1: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.2.4 1.4.6-r1: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
