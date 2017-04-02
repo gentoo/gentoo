@@ -14611,7 +14611,7 @@ net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3 3.0.3-r1: V
 net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/ayttm 0.6.3-r1: A multi-protocol instant messaging client
-net-im/bitlbee 3.4.2-r1 3.5-r1 3.5.1 9999: irc to IM gateway that support multiple IM protocols
+net-im/bitlbee 3.5.1 9999: irc to IM gateway that support multiple IM protocols
 net-im/bitlbee-steam 1.2.0 9999: Steam protocol plugin for BitlBee
 net-im/centerim 4.22.10 4.22.10-r1 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.6.0: Free/Open Source micro-blogging client by KDE
@@ -17633,7 +17633,7 @@ sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwri
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.6.0 1.6.1 1.7.0-r1: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio players
-sys-fs/fuse 2.9.4 2.9.7 3.0.0_rc3: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.7 3.0.0_rc3: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.2.4 1.2.5 1.2.6: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.4.2: FUSE file system to navigate, extract, create and modify ZIP archives
