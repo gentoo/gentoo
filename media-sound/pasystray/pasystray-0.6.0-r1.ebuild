@@ -11,12 +11,12 @@ SRC_URI="https://github.com/christophgysin/${PN}/archive/${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libnotify"
+IUSE="libnotify zeroconf"
 
 RDEPEND="
 	>=dev-libs/glib-2.48.2
-	>=media-sound/pulseaudio-5.0-r3[glib,zeroconf]
-	>=net-dns/avahi-0.6
+	>=media-sound/pulseaudio-5.0-r3[glib,zeroconf?]
+	zeroconf? ( >=net-dns/avahi-0.6 )
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	libnotify? ( >=x11-libs/libnotify-0.7 )
@@ -30,7 +30,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable libnotify notify)
+	econf \
+		$(use_enable libnotify notify) \
+		$(use_enable zeroconf avahi)
 }
 
 pkg_preinst() {
