@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install setup
+DEPEND=dev-lang/gnat-gpl dev-ada/gprbuild
+DESCRIPTION=Provides access to GNAT compiler internals for AdaCore utilities
+EAPI=6
+HOMEPAGE=http://libre.adacore.com
+IUSE=+shared static static-pic
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-lang/gnat-gpl
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/57399637c7a447658e0affa6 -> gnat_util-gpl-2016-src.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_compile:- src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=f85cd47c46702f30236147b5018f96a0
