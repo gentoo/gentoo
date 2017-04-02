@@ -1607,7 +1607,7 @@ app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r3: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.70: Linux kernel laptop_mode user-space utilities
 app-laptop/lphdisk 0.9.1-r2: utility for preparing a hibernation partition for APM Suspend-To-Disk
-app-laptop/mbpfan 1.9.1 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
+app-laptop/mbpfan 1.9.1 2.0.0 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
 app-laptop/nvidiabl 0.83 0.87: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pbbuttonsd 0.8.1-r3 0.8.1-r4: Handles power management and special keys on laptops
 app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
@@ -6828,7 +6828,7 @@ dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed do
 dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.940.0 1.950.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
-dev-perl/XML-NamespaceSupport 1.110.0-r1: A Perl module that offers a simple to process namespaced XML names
+dev-perl/XML-NamespaceSupport 1.110.0-r1 1.120.0: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
 dev-perl/XML-Parser 2.440.0: A Perl extension interface to James Clark's XML parser, expat
 dev-perl/XML-Parser-Lite 0.721.0: Lightweight regexp-based XML parser
