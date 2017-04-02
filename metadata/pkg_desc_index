@@ -6801,7 +6801,7 @@ dev-perl/XML-Atom 0.410.0-r1: Atom feed and API implementation
 dev-perl/XML-AutoWriter 0.400.0-r1: DOCTYPE based XML output
 dev-perl/XML-Catalog 1.30.0: Resolve public identifiers and remap system identifiers
 dev-perl/XML-CompactTree-XS 0.20.0-r1: a fast builder of compact tree structures from XML documents
-dev-perl/XML-Compile 1.540.0: Compilation based XML Processing
+dev-perl/XML-Compile 1.540.0 1.560.0: Compilation based XML Processing
 dev-perl/XML-Compile-Cache 1.50.0: Cache compiled XML translations
 dev-perl/XML-Compile-SOAP 3.200.0 3.210.0: Soap 1.1 XML Compiler
 dev-perl/XML-Compile-Tester 0.900.0: Support XML::Compile related regression testing
@@ -11568,7 +11568,7 @@ gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing a
 gnome-extra/gnome-boxes 3.22.4: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.22.4: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.22.3 3.23.91: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.22.3 3.22.4: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-calendar 3.22.3 3.22.4 3.24.0: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.22.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.22.1: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
