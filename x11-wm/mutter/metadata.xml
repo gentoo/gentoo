@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="gles2">Enable OpenGL ES 2.0 support</flag>
-		<flag name="kms">Enable KMS support.</flag>
 	</use>
 </pkgmetadata>
