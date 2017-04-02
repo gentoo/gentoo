@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,7 +30,6 @@ ruby_add_bdepend "
 		>=dev-ruby/json-1.7
 		dev-ruby/bundler
 		>=dev-util/cucumber-1.3
-		dev-ruby/rubyzip:0
 	)"
 
 ruby_add_rdepend "
@@ -49,7 +48,7 @@ all_ruby_prepare() {
 	# Fix too-strict test dependencies
 	sed -e '/nokogiri/ s/~> 1.5.2/>= 1.5.2/' \
 		-e '/aruba/ s/= 0.5.2/~> 0.5/' \
-		-e '/rake/ s/10.2/10.5/' -i ${RUBY_FAKEGEM_GEMSPEC} || die
+		-e '/rake/ s/10.2/13/' -i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Make sure spork is run in the right interpreter
 	sed -i -e 's/#{Spork::BINARY}/-S #{Spork::BINARY}/' features/support/env.rb || die

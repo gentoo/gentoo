@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2 Apr 2017)
+# Mask vulnerable slot for security bug. Bug #611384.
+# Removal in 30 days.
+dev-ruby/rubyzip:0
+
 # Yixun Lan <dlan@gentoo.org> (30 Mar 2017)
 # Masked, broken due to emoji support which requre npm package installed (bug #612218)
 =app-i18n/ibus-1.5.15
