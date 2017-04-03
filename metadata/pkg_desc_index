@@ -14039,6 +14039,7 @@ media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0a 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
 media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 9999: Complete solution to record, convert and stream audio and video
+media-video/libva-utils 1.8.0 9999: Collection of utilities and tests for VA-API
 media-video/lives 1.4.6-r1: LiVES is a Video Editing System
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
@@ -18645,8 +18646,8 @@ x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, su
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
 x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send & sw-notify-send
 x11-libs/libtinynotify-systemwide 0.0.2 0.1 9999: A system-wide notifications module for libtinynotify
-x11-libs/libva 1.7.3 9999: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 1.7.3 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva 1.7.3 1.8.0 9999: Video Acceleration (VA) API for Linux
+x11-libs/libva-intel-driver 1.7.3 1.8.0 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
