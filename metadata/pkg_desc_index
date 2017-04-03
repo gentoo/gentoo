@@ -5215,6 +5215,7 @@ dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
+dev-ml/flow_parser 0.42.0: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
@@ -5284,6 +5285,7 @@ dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.2: RFC3986 URI parsing library for OCaml
 dev-ml/ocaml-webmachine 0.4.0: A REST toolkit for OCaml
+dev-ml/ocaml-websocket 2.9: Websocket library for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0-r1: A dependency sorter for OCaml source files

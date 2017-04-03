@@ -2229,6 +2229,8 @@ dev-ml/ocaml-dns:async - support for asynchronous execution
 dev-ml/ocaml-dns:lwt - enable threads via lwt
 dev-ml/ocaml-redis:lwt - Enable lwt bindings for asynchronous processing.
 dev-ml/ocaml-uri:allservices - Compile support for all service types
+dev-ml/ocaml-websocket:async - Enables support for the dev-ml/async asynchronous execution library.
+dev-ml/ocaml-websocket:lwt - Enables support for the dev-ml/lwt cooperative light-weight thread library.
 dev-ml/ocamlnet:cryptokit - Enables encryption support via dev-ml/cryptokit
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
