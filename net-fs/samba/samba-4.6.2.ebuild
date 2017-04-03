@@ -62,7 +62,7 @@ CDEPEND="
 	acl? ( virtual/acl )
 	addns? (
 		net-dns/bind-tools[gssapi]
-		dev-python/dnspython[${PYTHON_USEDEP}]
+		dev-python/dnspython:=[${PYTHON_USEDEP}]
 	)
 	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
