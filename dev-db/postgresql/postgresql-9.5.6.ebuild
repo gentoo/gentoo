@@ -350,17 +350,21 @@ pkg_config() {
 	einfo "The database cluster will be created in:"
 	einfo "    ${DATA_DIR}"
 	einfo
-	while [ "$correct" != "true" ] ; do
-		einfo "Are you ready to continue? (y/n)"
-		read answer
-		if [[ $answer =~ ^[Yy]([Ee][Ss])?$ ]] ; then
-			correct="true"
-		elif [[ $answer =~ ^[Nn]([Oo])?$ ]] ; then
-			die "Aborting initialization."
-		else
-			echo "Answer not recognized"
-		fi
-	done
+	if [ -z "$PG_AUTOCONFIG" ] ; then
+		while [ "$correct" != "true" ] ; do
+			einfo "Are you ready to continue? (y/n)"
+			read answer
+			if [[ $answer =~ ^[Yy]([Ee][Ss])?$ ]] ; then
+				correct="true"
+			elif [[ $answer =~ ^[Nn]([Oo])?$ ]] ; then
+				die "Aborting initialization."
+			else
+				echo "Answer not recognized"
+			fi
+		done
+	else
+		einfo "PG_AUTOCONFIG set, not prompting"
+	fi
 
 	if [ -n "$(ls -A ${DATA_DIR} 2> /dev/null)" ] ; then
 		eerror "The given directory, '${DATA_DIR}', is not empty."
