@@ -401,7 +401,7 @@ app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling syst
 app-backup/simplebackup 1.8.1: Cross-platform backup program
 app-backup/snapback2 1.1.0-r1: Routines for support of rsync-based snapshot backup
 app-backup/snapper 0.2.8-r1 0.3.3 0.4.1 9999: Command-line program for btrfs and ext4 snapshot management
-app-backup/spideroak-bin 6.1.3: Secure free online backup, storage, and sharing system
+app-backup/spideroak-bin 6.1.3 6.1.5: Secure free online backup, storage, and sharing system
 app-backup/tarsnap 1.0.35 1.0.37: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
 app-backup/tsm 7.1.0.0-r1 7.1.0.3 7.1.1.4 7.1.2.0 7.1.2.3 7.1.3.1 7.1.3.1-r1 7.1.3.2 7.1.4.4: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
@@ -10215,7 +10215,7 @@ dev-util/conan 0.19.1 0.20.3: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.5.0 1.5.1: Command-line utility to create projects from cookiecutters (project templates)
-dev-util/cppcheck 1.72 1.75 1.77 9999: static analyzer of C/C++ code
+dev-util/cppcheck 1.72 1.75 1.77 1.78 9999: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 9999: C++ port of the famous JUnit framework for unit testing
@@ -16173,7 +16173,7 @@ sci-electronics/gtkwave 3.3.68 3.3.73: A wave viewer for LXT, LXT2, VZT, GHW and
 sci-electronics/gwave 20090213-r1 20120229: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
-sci-electronics/kicad 4.0.1-r1 4.0.4 4.0.5: Electronic Schematic and PCB design tools.
+sci-electronics/kicad 4.0.4 4.0.5: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10 0.24.9: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/linsmith 0.99.28 0.99.30 0.99.30-r1: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
