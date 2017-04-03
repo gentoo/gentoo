@@ -31,6 +31,7 @@ DEPEND="
 	$(add_frameworks_dep knotifyconfig)
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep kservice)
+	$(add_frameworks_dep kwayland)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
@@ -44,5 +45,3 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-misc/yakuake:4
 "
-
-PATCHES=( "${FILESDIR}/${P}-qt-5.7.patch" )
