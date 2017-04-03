@@ -14,7 +14,7 @@ SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~polynomial-c/samba-4.6.0-disable-python-patches.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.5.0_rc1.tar.xz"
 [[ ${PV} = *_rc* ]] || \
 KEYWORDS="~amd64 ~hppa ~x86"
 
@@ -24,7 +24,7 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads client cluster cups dmapi fam gnutls gpg iprint ldap pam python
+IUSE="acl addc addns ads client cluster cups dmapi fam gnutls gpg iprint ldap pam
 quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -39,7 +39,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 # sys-apps/attr is an automagic dependency (see bug #489748)
-CDEPEND="
+CDEPEND="${PYTHON_DEPS}
 	>=app-arch/libarchive-3.1.2[${MULTILIB_USEDEP}]
 	dev-lang/perl:=
 	dev-libs/libaio[${MULTILIB_USEDEP}]
@@ -47,23 +47,19 @@ CDEPEND="
 	dev-libs/iniparser:0
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=dev-util/cmocka-1.0.0[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.1.29[ldap(+)?,python(+)?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.1.27[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.1.9[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.12[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.31-r1[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.8[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.10[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.31-r1[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( virtual/pam )
 	acl? ( virtual/acl )
-	addns? (
-		net-dns/bind-tools[gssapi]
-		dev-python/dnspython:=[${PYTHON_USEDEP}]
-	)
+	addns? ( net-dns/bind-tools[gssapi] )
 	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
 	dmapi? ( sys-apps/dmapi )
@@ -76,38 +72,20 @@ CDEPEND="
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
-	systemd? ( sys-apps/systemd:0= )
-	test? (
-		!system-mitkrb5? (
-			>=sys-libs/nss_wrapper-1.1.3
-			>=net-dns/resolv_wrapper-1.1.4
-			>=net-libs/socket_wrapper-1.1.7
-			>=sys-libs/uid_wrapper-1.2.1
-		)
-	)"
+	systemd? ( sys-apps/systemd:0= )"
 DEPEND="${CDEPEND}
-	${PYTHON_DEPS}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
-	python? ( ${PYTHON_DEPS} )
 	client? ( net-fs/cifs-utils[ads?] )
 	selinux? ( sec-policy/selinux-samba )
 	!dev-perl/Parse-Yapp
 "
 
-REQUIRED_USE="addc? ( python gnutls !system-mitkrb5 )
-	test? ( python )
-	addns? ( python )
+REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
 	ads? ( acl gnutls ldap )
 	gpg? ( addc )
 	?? ( system-heimdal system-mitkrb5 )
 	${PYTHON_REQUIRED_USE}"
-
-# the test suite is messed, it uses system-installed samba
-# bits instead of what was built, tests things disabled via use
-# flags, and generally just fails to work in a way ebuilds could
-# rely on in its current state
-RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -137,12 +115,6 @@ src_prepare() {
 
 	# install the patches from tarball(s)
 	eapply "${WORKDIR}/patches"
-
-	# un-bundle dnspython
-	sed -i -e '/"dns.resolver":/d' "${S}"/third_party/wscript || die
-
-	# unbundle iso8601 unless tests are enabled
-	use test || sed -i -e '/"iso8601":/d' "${S}"/third_party/wscript || die
 
 	# ugly hackaround for bug #592502
 	cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
@@ -198,7 +170,6 @@ multilib_src_configure() {
 			$(use_with systemd)
 			$(usex system-mitkrb5 '--with-system-mitkrb5' '')
 			$(use_with winbind)
-			$(usex python '' '--disable-python')
 			$(usex test '--enable-selftest' '')
 			$(use_enable zeroconf avahi)
 			--with-shared-modules=${SHAREDMODS}
@@ -230,10 +201,6 @@ multilib_src_configure() {
 
 	CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
-}
-
-multilib_src_compile() {
-	waf-utils_src_compile
 }
 
 multilib_src_install() {
