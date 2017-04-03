@@ -16,10 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.38:2
+	dev-libs/keybinder:3
 	media-video/ffmpeg[X,encode]
 	virtual/imagemagick-tools
 	>=x11-libs/gtk+-3.14:3"
-
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	>=sys-devel/gettext-0.19"
