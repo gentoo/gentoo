@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>bman@gentoo.org</email>
-    <name>Aaron Bauman</name>
-  </maintainer>
+<!-- maintainer-needed -->
   <upstream>
     <remote-id type="pypi">gns3-converter</remote-id>
     <remote-id type="github">dlintott/gns3-converter</remote-id>
