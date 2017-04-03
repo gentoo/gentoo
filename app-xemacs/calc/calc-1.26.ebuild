@@ -1,10 +1,11 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 SLOT="0"
-IUSE=""
 DESCRIPTION="Emacs calculator"
-PKG_CAT="standard"
+XEMACS_PKG_CAT="standard"
 
 RDEPEND="app-xemacs/xemacs-base
 "
