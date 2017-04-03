@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-text/poppler:=[jpeg,png] app-text/poppler-data media-gfx/fontforge media-libs/freetype x11-libs/cairo[svg] virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=A precise PDF to HTML converter
+EAPI=6
+HOMEPAGE=http://coolwanglu.github.io/pdf2htmlEX/
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+RDEPEND=app-text/poppler:=[jpeg,png] app-text/poppler-data media-gfx/fontforge media-libs/freetype x11-libs/cairo[svg]
+SLOT=0
+SRC_URI=https://github.com/coolwanglu/pdf2htmlEX/archive/v0.14.6.tar.gz -> pdf2htmlEX-0.14.6.tgz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=25939dc4db375f40ff5539db6d8734de
