@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# NP-Hardassr <NP-Hardass@gentoo.org> (03 Apr 2017)
+# Masked for removal in 30 days. Unable to generate new
+# hashes for the manifest, per Bug #612720, Bug #612718
+# Upstream has also deprecated these in favor of
+# app-emulation/crossover-bin
+app-emulation/crossover-office-bin
+app-emulation/crossover-office-pro-bin
+
 # Amadeusz Zolnowski <aidecoe@gentoo.org> (2 Apr 2017)
 # Masked, committed accidentally. It's not tested yet, possibly broken.
 =net-im/ejabberd-17.01
