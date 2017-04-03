@@ -1896,10 +1896,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Kernel_Security</url>
     <description>The Gentoo Linux Kernel Security Project handles patching our many kernel sources and informing our users about global kernel security status.</description>
     <member>
-      <email>bman@gentoo.org</email>
-      <name>Aaron Bauman</name>
-    </member>
-    <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
     </member>
@@ -3799,11 +3795,6 @@ developers and volunteer mentors.</description>
       <role>GLSA Coordinator</role>
     </member>
     <member>
-      <email>bman@gentoo.org</email>
-      <name>Aaron Bauman</name>
-      <role>GLSA Coordinator</role>
-    </member>
-    <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
       <role>GLSA Coordinator</role>
@@ -4028,11 +4019,6 @@ developers and volunteer mentors.</description>
     <name>Theology</name>
     <url>https://wiki.gentoo.org/wiki/Project:Theology</url>
     <description>The theology project maintains religious, genealogy, and humanities-related packages</description>
-    <member>
-      <email>bman@gentoo.org</email>
-      <name>Aaron Bauman</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
