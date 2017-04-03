@@ -6189,7 +6189,7 @@ dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does
 dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.501.270 1.201.612.290 1.201.701.170: enable all of the features of Modern Perl with one import
-dev-perl/Module-Build 0.420.500 0.421.600 0.421.800: Build and install Perl modules
+dev-perl/Module-Build 0.420.500 0.421.600 0.421.800 0.422.200: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
 dev-perl/Module-Build-XSUtil 0.160.0: A Module::Build class for building XS modules
