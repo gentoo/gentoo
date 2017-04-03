@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 PARENT_EPREFIX="@GENTOO_PORTAGE_EPREFIX@"
 PARENT_CHOST="@GENTOO_PORTAGE_CHOST@"
