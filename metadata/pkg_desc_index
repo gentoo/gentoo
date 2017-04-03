@@ -353,7 +353,7 @@ app-backup/borgbackup 1.0.9 1.0.10 9999: Deduplicating backup program with compr
 app-backup/borgweb 0.2.0-r1: Browser-based user interface for BorgBackup
 app-backup/boxbackup 0.11.1-r2: A completely automatic on-line backup system
 app-backup/btrbk 0.23.3 0.24.0 0.25.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/bup 0.28.1 0.29 0.29-r1: A highly efficient backup system based on the git packfile format
+app-backup/bup 0.28.1 0.29 0.29-r1 0.29.1: A highly efficient backup system based on the git packfile format
 app-backup/burp 1.4.40-r5 1.4.40-r6: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
@@ -362,7 +362,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.4.20 2.4.24 2.5.9 2.5.10: A full featured backup tool, aimed for disks
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
-app-backup/duplicity 0.7.10 0.7.11: Secure backup system using gnupg to encrypt data
+app-backup/duplicity 0.7.10 0.7.11 0.7.12: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.6.19 0.6.24 0.8.0 0.8.1: Flexible filesystem archiver for backup and deployment tool
@@ -1718,7 +1718,7 @@ app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1 1.1.2-r2: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
-app-misc/byobu 5.112 5.113: A set of profiles for the GNU Screen console window manager (app-misc/screen)
+app-misc/byobu 5.112 5.113 5.116: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20161102.3.27.2-r2 20161130.3.28.1 20161130.3.29.1 20161130.3.29.3 20161130.3.30 20161130.3.30-r1: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
@@ -1747,7 +1747,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintendo Wiimote
 app-misc/dailystrips 1.0.28-r2: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
-app-misc/dateutils 0.3.5 0.4.0 0.4.1: command line date and time utilities
+app-misc/dateutils 0.4.1: command line date and time utilities
 app-misc/datovka 3.0.3-r1 4.7.1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
@@ -10584,7 +10584,7 @@ dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xm
 dev-vcs/svn2git 1.0.10 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.2.2-r1 1.3.0: Tool collecting path entries across SVN history
 dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
-dev-vcs/tig 2.1.1 2.2 2.2.1 9999: text mode interface for git
+dev-vcs/tig 2.2.1 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
 dev-vcs/tortoisehg 3.8.4 3.9.2 4.0.2 4.1 4.1.1 9999: Set of graphical tools for Mercurial
@@ -12712,7 +12712,7 @@ media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: verifies the integrity of PNG, JNG and MNG files with internal checksums
-media-gfx/pngcrush 1.8.10 1.8.11: Portable Network Graphics (PNG) optimizing utility
+media-gfx/pngcrush 1.8.11: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngquant 2.5.2 2.7.2: command-line utility and library for lossy compression of PNG images
 media-gfx/pngrewrite 1.3.0 1.4.0: A utility which reduces large palettes in PNG images
@@ -12995,7 +12995,7 @@ media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1 1.14.0 1.16.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5: Extensible multimedia container format based on EBML
 media-libs/libmediaart 0.7.0 1.9.1: Manages, extracts and handles media art caches
-media-libs/libmediainfo 0.7.91 0.7.92.1: MediaInfo libraries
+media-libs/libmediainfo 0.7.91 0.7.92.1 0.7.94: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.8 3.3.10: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
@@ -13073,7 +13073,7 @@ media-libs/libxmlbird 1.2.0: XML parser written in Vala
 media-libs/libxspf 1.2.0: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.0.1 1.1.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
-media-libs/libzen 0.4.34: Shared library for libmediainfo and mediainfo
+media-libs/libzen 0.4.34 0.4.35: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.1 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.20.0 0.24.0 0.24.2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LADSPA
@@ -13544,8 +13544,8 @@ media-sound/a2jmidid 8-r1: Daemon for exposing legacy ALSA sequencer application
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2 2.8.1: A command line CD encoder
-media-sound/abcm2ps 8.12.9 8.13.0 8.13.2 8.13.3 8.13.5: A program to convert abc files to Postscript files
-media-sound/abcmidi 2016.09.25: Programs for processing ABC music notation files
+media-sound/abcm2ps 8.12.9 8.13.0 8.13.2 8.13.3 8.13.5 8.13.8: A program to convert abc files to Postscript files
+media-sound/abcmidi 2016.09.25 2017.02.02: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -13711,7 +13711,7 @@ media-sound/lash 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2-r3 2.19.54 2.19.55 2.19.56 2.19.57 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2-r3 2.19.54 2.19.55 2.19.56 2.19.57 2.19.58 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
@@ -14049,7 +14049,7 @@ media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
 media-video/makemkv 1.10.5: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
-media-video/mediainfo 0.7.91 0.7.92.1: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 0.7.91 0.7.92.1 0.7.94: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
