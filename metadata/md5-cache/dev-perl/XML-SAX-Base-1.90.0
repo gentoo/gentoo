@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!<dev-perl/XML-SAX-0.990.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DESCRIPTION=Base class SAX Drivers and Filters
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/XML-SAX-Base/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!<dev-perl/XML-SAX-0.990.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/G/GR/GRANTM/XML-SAX-Base-1.09.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=22e41cecc72f91bd7b559763fe037d8d

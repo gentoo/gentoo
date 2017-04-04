@@ -6843,7 +6843,7 @@ dev-perl/XML-RSS-LibXML 0.310.500: XML::RSS with XML::LibXML
 dev-perl/XML-RSS-Parser 4.0.0-r1: A liberal object-oriented parser for RSS feeds
 dev-perl/XML-RegExp 0.40.0-r1: Regular expressions for XML tokens
 dev-perl/XML-SAX 0.990.0-r1: Perl module for using and building Perl SAX2 XML parsers, filters, and drivers
-dev-perl/XML-SAX-Base 1.80.0-r1: Base class SAX Drivers and Filters
+dev-perl/XML-SAX-Base 1.80.0-r1 1.90.0: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-ExpatXS 1.330.0: Perl SAX 2 XS extension to Expat parser
 dev-perl/XML-SAX-Writer 0.560.0: SAX2 Writer
@@ -12629,7 +12629,7 @@ media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.25: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.5 1.3.8 1.3.9: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.38.0-r1: Open Source Graph Visualization Software
-media-gfx/greycstoration 2.9-r1: Image regularization algorithm for denoising, inpainting and resizing
+media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.7.1 1.7.2: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.4.4.1: Image viewer and browser for Gnome
@@ -17149,7 +17149,7 @@ sys-apps/qdiskusage 1.0.4: Qt4 Graphical Disk Usage Analyzer
 sys-apps/qingy 1.0.0-r2: a DirectFB getty replacement
 sys-apps/raidutils 0.0.6-r2: Utilities to manage i2o/dtp RAID controllers
 sys-apps/razercfg 0.23 0.32 0.38: Utility for advanced configuration of Razer mice (DeathAdder, Krait, Lachesis)
-sys-apps/readahead-list 1.20060421.1016 1.20060421.1016-r1: Preloads files into the page cache to accelerate program loading
+sys-apps/readahead-list 1.20060421.1016 1.20060421.1016-r1 1.20060421.1016-r2: Preloads files into the page cache to accelerate program loading
 sys-apps/rename 1.3 1.3-r1 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus without rebooting
@@ -17512,7 +17512,7 @@ sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 7.12 7.12.1 9999: GNU debugger
 sys-devel/gdb-apple 768-r1 966 1461 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.7 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20160402 20161104 20170101 99999999: Updated config.sub and config.guess file from GNU
-sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
+sys-devel/heirloom-devtools 070527-r2 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 4.9.4 5.3.0 5.4.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r2 2.4.6-r3 2.4.6-r4 9999: A shared library tool for developers
