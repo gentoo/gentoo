@@ -5,4 +5,19 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP</name>
 	</maintainer>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    doctrine-instantiator is a library that provides a way
+    of avoiding usage of constructors when instantiating PHP classes.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">doctrine/instantiator</remote-id>
+  </upstream>
 </pkgmetadata>

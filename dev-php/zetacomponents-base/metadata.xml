@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    The Base component provides the basic functionality, such as autoloading,
+    that all zeta Components need to function properly.
+    The Base component needs to be loaded specifically.
+    Base can also autoload external class repositories from
+    outside the eZ Components.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">zetacomponents/Base</remote-id>
+  </upstream>
+</pkgmetadata>

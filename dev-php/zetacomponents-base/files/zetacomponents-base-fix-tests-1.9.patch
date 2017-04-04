@@ -1,0 +1,11 @@
+--- ./tests/file_find_recursive_test.php        2014-09-19 05:28:34.000000000 +0200
++++ ./tests/file_find_recursive_test-new.php    2017-01-03 18:06:52.081282780 +0100
+@@ -94,7 +94,7 @@
+         );
+
+         self::assertEquals( $expected, ezcBaseFile::findRecursive( "vendor/zetacomponents/unit-test", array( '@^vendor/zetacomponents/unit-test/@' ), array( '@/docs/@', '@\.git@', '@\.swp$@' ), $stats ) );
+-        self::assertEquals( array( 'size' => 191117, 'count' => 12 ), $stats );
++        self::assertEquals( array( 'size' => 191166, 'count' => 11 ), $stats );
+     }
+
+     public function testRecursive3()

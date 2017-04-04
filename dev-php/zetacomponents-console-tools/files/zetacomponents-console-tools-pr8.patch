@@ -1,0 +1,118 @@
+From 16164a2d09b5f0c5a973c74d4ba3f0c8425ed1a5 Mon Sep 17 00:00:00 2001
+From: Remi Collet <fedora@famillecollet.com>
+Date: Wed, 3 Jun 2015 17:42:06 +0200
+Subject: [PATCH] create a interactive group
+
+---
+ tests/menu_dialog_test.php     | 12 ++++++++++++
+ tests/question_dialog_test.php | 18 ++++++++++++++++++
+ 2 files changed, 30 insertions(+)
+
+diff --git ./tests/menu_dialog_test.php ./tests/menu_dialog_test.php
+index a98a0fb..6efa24b 100644
+--- ./tests/menu_dialog_test.php
++++ ./tests/menu_dialog_test.php
+@@ -164,6 +164,9 @@ public function testBasicMethods()
+         $this->assertTrue( $exceptionCaught, "Excption not thrown on getResult() without result." );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog1()
+     {
+         $this->runDialog( __METHOD__ );
+@@ -180,6 +183,9 @@ public function testDialog1()
+         $this->assertEquals( $this->res, $res );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog2()
+     {
+         $this->runDialog( __METHOD__ );
+@@ -196,6 +202,9 @@ public function testDialog2()
+         $this->assertEquals( $this->res, $res );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog3()
+     {
+         $this->runDialog( __METHOD__ );
+@@ -221,6 +230,9 @@ public function testDialog3()
+         $this->assertEquals( $this->res, $res );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog4()
+     {
+         $this->runDialog( __METHOD__ );
+diff --git ./tests/question_dialog_test.php ./tests/question_dialog_test.php
+index a7217fd..2a0a0be 100644
+--- ./tests/question_dialog_test.php
++++ ./tests/question_dialog_test.php
+@@ -164,6 +164,9 @@ public function testBasicMethods()
+         $this->assertTrue( $exceptionCaught, "Excption not thrown on getResult() without result." );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testYesNoQuestionFactory()
+     {
+         $output = new ezcConsoleOutput();
+@@ -178,6 +181,9 @@ public function testYesNoQuestionFactory()
+         $this->assertEquals( ezcConsoleQuestionDialogCollectionValidator::CONVERT_LOWER, $dialog->options->validator->conversion );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog1()
+     {
+         $this->runDialog( __METHOD__ );
+@@ -194,6 +200,9 @@ public function testDialog1()
+         $this->assertEquals( $this->res, $res );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog2()
+     {
+         $this->runDialog( __METHOD__ );
+@@ -216,6 +225,9 @@ public function testDialog2()
+         $this->assertEquals( $this->res, $res );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog3()
+     {
+         $this->runDialog( __METHOD__ );
+@@ -232,6 +244,9 @@ public function testDialog3()
+         $this->assertEquals( $this->res, $res );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog4()
+     {
+         $this->runDialog( __METHOD__ );
+@@ -254,6 +269,9 @@ public function testDialog4()
+         $this->assertEquals( $this->res, $res );
+     }
+ 
++    /**
++     * @group interactive
++     */
+     public function testDialog5()
+     {
+         $this->runDialog( __METHOD__ );
