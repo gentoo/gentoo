@@ -34,6 +34,6 @@ src_prepare() {
 
 src_install() {
 	default
-	use static-libs || rm "${ED%/}"/usr/lib64/libzip.a || die
+	use static-libs || rm "${ED%/}"/usr/$(get_libdir)/libzip.a || die
 	find "${D}" -name '*.la' -delete || die
 }
