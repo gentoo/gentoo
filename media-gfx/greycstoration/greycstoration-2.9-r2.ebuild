@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="Image regularization algorithm for denoising, inpainting and resizing"
 HOMEPAGE="http://www.greyc.ensicaen.fr/~dtschump/greycstoration/"
@@ -18,23 +17,29 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrandr
-	fftw? ( >=sci-libs/fftw-3 )
-	imagemagick? ( media-gfx/imagemagick )
-	jpeg? ( virtual/jpeg )
+	fftw? ( >=sci-libs/fftw-3:3.0= )
+	imagemagick? ( media-gfx/imagemagick:0= )
+	jpeg? ( virtual/jpeg:0 )
 	lapack? ( virtual/lapack )
-	png? ( >=media-libs/libpng-1.4 )
-	tiff? ( media-libs/tiff )"
+	png? ( >=media-libs/libpng-1.4:0= )
+	tiff? ( media-libs/tiff:0 )
+"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	fftw? ( virtual/pkgconfig )
 	lapack? ( virtual/pkgconfig )
-	png? ( virtual/pkgconfig )"
+	png? ( virtual/pkgconfig )
+"
 
-S=${WORKDIR}/GREYCstoration-${PV}/src
+S="${WORKDIR}/GREYCstoration-${PV}/src"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libpng14.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libpng14.patch
-
+	default
 	sed -i \
 		-e "s:../CImg.h:CImg.h:" \
 		greycstoration.cpp || die
