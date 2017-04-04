@@ -3,6 +3,7 @@
 
 EAPI=6
 
+KDE_DESIGNERPLUGIN="true"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="optional"
 VIRTUALX_REQUIRED="test"
@@ -12,7 +13,7 @@ DESCRIPTION="KDE hexeditor"
 HOMEPAGE="https://www.kde.org/applications/utilities/okteta
 https://utils.kde.org/projects/okteta"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="crypt examples"
+IUSE="crypt"
 
 DEPEND="
 	$(add_frameworks_dep kbookmarks)
@@ -32,7 +33,6 @@ DEPEND="
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep designer)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
@@ -45,8 +45,8 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_OKTETA_BUILD_EXAMPLES=$(usex examples)
-		$(cmake-utils_use_find_package crypt QCA2)
+		-DOMIT_EXAMPLES=ON
+		$(cmake-utils_use_find_package crypt Qca-qt5)
 	)
 
 	kde5_src_configure
