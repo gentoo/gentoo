@@ -36,7 +36,6 @@ python_prepare_all() {
 	cp "${FILESDIR}/"test.md tests/ || die
 	cp "${FILESDIR}/"test.rst tests/ || die
 	cp "${FILESDIR}/"m2r.1 ./ || die
-matt
 	distutils-r1_python_prepare_all
 }
 
