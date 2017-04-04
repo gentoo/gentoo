@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile configure install postinst prepare test unpack
-DEPEND=sys-libs/zlib sdl? ( dev-util/cmake media-libs/libsdl media-libs/libsdl2 ) qt4? ( dev-qt/qtsvg:4 dev-qt/qtgui:4 dev-qt/qtcore:4 dev-qt/qtopengl:4 dev-qt/qtmultimedia:4 dev-qt/qt-mobility[multimedia] ) qt5? ( dev-qt/qtsvg:5 dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtmultimedia:5 dev-qt/qtwidgets:5 dev-qt/qt-mobility[multimedia] ) sys-devel/make >=dev-util/cmake-3.7.2 >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=sys-libs/zlib !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) sdl? ( media-libs/libsdl media-libs/libsdl2 ) qt5? ( dev-db/sqlite dev-qt/assistant:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 ) sys-devel/make >=dev-util/cmake-3.7.2 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A PSP emulator written in C++.
-EAPI=5
-HOMEPAGE=http://www.ppsspp.org/
-IUSE=qt4 qt5 +sdl
+EAPI=6
+HOMEPAGE=https://www.ppsspp.org/
+IUSE=+qt5 sdl headless libav
 LICENSE=GPL-2
-REQUIRED_USE=?? ( qt4 qt5 sdl )
+RDEPEND=sys-libs/zlib !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) sdl? ( media-libs/libsdl media-libs/libsdl2 ) qt5? ( dev-db/sqlite dev-qt/assistant:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=!headless? ( || ( qt5 sdl ) ) ?? ( qt5 sdl )
 SLOT=0
-_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-r3	68d35a154123e27007638d8220886ee1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	qt4-r2	b7985a3197fbc3a22d059f19904e735b	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=a95510d9d6ed5d834e8d05c87d0969de
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-r3	68d35a154123e27007638d8220886ee1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=7f763841c4cda41b6e5355bae0c4ebb0

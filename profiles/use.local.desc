@@ -3015,9 +3015,7 @@ games-emulation/mupen64plus-video-rice:gles2 - Use GLES2 instead of OpenGL
 games-emulation/nestopia:gui - Enable GUI
 games-emulation/pcsxr:cdio - Use libcdio for CD support
 games-emulation/pcsxr:sdl - Use SDL sound backend (other parts of SDL are used unconditionally)
-games-emulation/ppsspp:qt4 - Adds support for the Qt GUI/Application Toolkit version 4.x
-games-emulation/ppsspp:qt5 - Adds support for the Qt GUI/Application Toolkit version 5.x
-games-emulation/ppsspp:sdl - Adds support for Simple Direct Layer (media library)
+games-emulation/ppsspp:headless - Build headless version of the PPSSPP
 games-emulation/sdlmame:arcade - Enable the Multiple Arcade Machine Emulator for arcade games support
 games-emulation/sdlmame:mess - Enable the Multi Emulator Super System for game system support
 games-emulation/sdlmame:tools - Build development tools shared between sdlmame and sdlmess

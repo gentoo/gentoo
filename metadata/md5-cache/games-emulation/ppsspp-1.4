@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=sys-libs/zlib !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) sdl? ( media-libs/libsdl media-libs/libsdl2 ) qt5? ( dev-db/sqlite dev-qt/assistant:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=A PSP emulator written in C++.
+EAPI=6
+HOMEPAGE=https://www.ppsspp.org/
+IUSE=+qt5 sdl headless libav
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) sdl? ( media-libs/libsdl media-libs/libsdl2 ) qt5? ( dev-db/sqlite dev-qt/assistant:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=!headless? ( || ( qt5 sdl ) ) ?? ( qt5 sdl )
+SLOT=0
+SRC_URI=https://github.com/hrydgard/ppsspp/archive/v1.4.tar.gz -> ppsspp-1.4.tar.gz https://github.com/hrydgard/ppsspp-lang/archive/ed0bbfb389da213bd891d179d1d92e95b8f05e43.tar.gz -> ppsspp-1.4-assets_lang.tar.gz https://github.com/hrydgard/pspautotests/archive/905c3018d01af9dfb511c87e65e07a49257a33ac.tar.gz -> ppsspp-1.4-pspautotests.tar.gz https://github.com/hrydgard/minidx9/archive/7751cf73f5c06f1be21f5f31c3e2d9a7bacd3a93.tar.gz -> ppsspp-1.4-dx9sdk.tar.gz https://github.com/hrydgard/glslang/archive/b16f7e6819267e57c3c244808d1981f0ce34acbc.tar.gz -> ppsspp-1.4-ext_glslang.tar.gz https://github.com/Kingcom/armips/archive/770365d44df35d6e675c58bb2a774ca412278ef5.tar.gz -> ppsspp-1.4-ext_armips.tar.gz https://github.com/Kingcom/tinyformat/archive/b7f5a22753c81d834ab5133d655f1fd525280765.tar.gz -> ppsspp-1.4-ext_armips_ext_tinyformat.tar.gz https://github.com/KhronosGroup/SPIRV-Cross/archive/6381b2ff9c0d975af8fd2974c97aa12a69ab6cc6.tar.gz -> ppsspp-1.4-ext_SPIRV-Cross.tar.gz
+_eclass_exported_funcs=src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=df9aaae384926112cd80fab5374d3f31
