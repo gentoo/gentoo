@@ -1309,7 +1309,7 @@ app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
 app-emulation/e-uae 0.8.29_rc4-r2: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/flannel 0.5.5 0.6.2: An etcd backed network fabric for containers
-app-emulation/free42 1.5.13: An HP-42S Calculator Simulator
+app-emulation/free42 1.5.13 1.5.15: An HP-42S Calculator Simulator
 app-emulation/fuse 1.0.0 1.1.1: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.1.1: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/ganeti 2.15.2-r5 2.15.2-r6 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
@@ -5980,7 +5980,7 @@ dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
 dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
 dev-perl/HTTP-Cache-Transparent 1.100.0-r1: Cache the result of http get-requests persistently
 dev-perl/HTTP-CookieJar 0.8.0: A minimalist HTTP user agent cookie jar
-dev-perl/HTTP-Cookies 6.10.0: Storage of cookies
+dev-perl/HTTP-Cookies 6.10.0 6.30.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
@@ -6897,7 +6897,7 @@ dev-perl/indirect 0.360.0: Lexically warn about using the indirect method call s
 dev-perl/libintl-perl 1.200.0-r1 1.240.0 1.240.0-r2: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
-dev-perl/libwww-perl 6.150.0 6.160.0 6.240.0: A collection of Perl Modules for the WWW
+dev-perl/libwww-perl 6.150.0 6.160.0 6.240.0 6.250.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
