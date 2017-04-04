@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 # Maintainer notes:
 # - http_rewrite-independent pcre-support makes sense for matching locations without an actual rewrite
@@ -77,13 +77,13 @@ HTTP_METRICS_MODULE_URI="https://github.com/madvertise/ngx_metrics/archive/v${HT
 HTTP_METRICS_MODULE_WD="${WORKDIR}/ngx_metrics-${HTTP_METRICS_MODULE_PV}"
 
 # naxsi-core (https://github.com/nbs-system/naxsi, GPLv2+)
-HTTP_NAXSI_MODULE_PV="0.55.1"
+HTTP_NAXSI_MODULE_PV="0.55.3"
 HTTP_NAXSI_MODULE_P="ngx_http_naxsi-${HTTP_NAXSI_MODULE_PV}"
 HTTP_NAXSI_MODULE_URI="https://github.com/nbs-system/naxsi/archive/${HTTP_NAXSI_MODULE_PV}.tar.gz"
 HTTP_NAXSI_MODULE_WD="${WORKDIR}/naxsi-${HTTP_NAXSI_MODULE_PV}/naxsi_src"
 
 # nginx-rtmp-module (https://github.com/arut/nginx-rtmp-module, BSD license)
-RTMP_MODULE_PV="1.1.10"
+RTMP_MODULE_PV="1.1.11"
 RTMP_MODULE_P="ngx_rtmp-${RTMP_MODULE_PV}"
 RTMP_MODULE_URI="https://github.com/arut/nginx-rtmp-module/archive/v${RTMP_MODULE_PV}.tar.gz"
 RTMP_MODULE_WD="${WORKDIR}/nginx-rtmp-module-${RTMP_MODULE_PV}"
@@ -337,12 +337,21 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 	eapply "${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
 
+	if use nginx_modules_http_echo; then
+		cd "${HTTP_ECHO_MODULE_WD}" || die
+		eapply "${FILESDIR}"/http_echo-nginx-1.11.11+.patch
+		cd "${S}" || die
+	fi
+
 	if use nginx_modules_http_upstream_check; then
 		#eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}"/check_1.11.1+.patch
 		eapply -p0 "${FILESDIR}"/http_upstream_check-nginx-1.11.5+.patch
 	fi
 
 	if use nginx_modules_http_lua; then
+		cd "${HTTP_LUA_MODULE_WD}" || die
+		eapply -p1 "${FILESDIR}"/http_lua_nginx-1.11.11+.patch
+		cd "${S}" || die
 		sed -i -e 's/-llua5.1/-llua/' "${HTTP_LUA_MODULE_WD}/config" || die
 	fi
 
@@ -350,6 +359,7 @@ src_prepare() {
 		cd "${HTTP_SECURITY_MODULE_WD}" || die
 
 		eapply "${FILESDIR}"/http_security-pr_1158.patch
+		eapply "${FILESDIR}"/http_security-pr_1373.patch
 
 		eautoreconf
 
