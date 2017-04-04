@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install setup
+DEPEND=>=dev-libs/glib-2.6:2 virtual/pkgconfig
+DESCRIPTION=A utility to watch mailstores for changes and initiate mailbox syncs
+EAPI=6
+HOMEPAGE=http://mswatch.sourceforge.net/
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.6:2
+SLOT=0
+SRC_URI=mirror://sourceforge/mswatch/mswatch-1.2.0.tar.gz
+_eclass_exported_funcs=pkg_setup:linux-info src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=c2839b7fa153f24e839641fffb56e6b8
