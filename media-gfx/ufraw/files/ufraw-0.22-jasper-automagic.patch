@@ -1,0 +1,21 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -159,8 +159,16 @@
+ have_jpeg=${ac_cv_lib_jpeg_jpeg_CreateCompress:-no}
+ 
+ # Check for libjasper.
+-AC_CHECK_LIB(jasper, jas_image_decode)
+-have_jasper=${ac_cv_lib_jasper_jas_image_decode:-no}
++AC_ARG_ENABLE([jasper],
++  AS_HELP_STRING([--enable-jasper], [enable JPEG2000 support]))
++
++have_jasper=no
++AS_IF([test "x$enable_jasper" = "xyes"], [
++  AC_SEARCH_LIBS([jas_image_decode], [jasper], [have_jasper=yes], [
++    AC_MSG_ERROR([unable to find the jas_image_decode() function])
++  ])
++])
++
+ 
+ # Check for tiff headers and library.
+ PKG_CHECK_MODULES(LIBTIFF, libtiff-4,
