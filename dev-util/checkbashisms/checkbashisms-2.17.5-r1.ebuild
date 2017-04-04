@@ -32,6 +32,8 @@ PATCHES=(
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
+
+	sed "s@###VERSION###@${PV}@" -i checkbashisms.pl || die
 }
 
 src_compile() { :; }
