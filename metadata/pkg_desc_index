@@ -5848,7 +5848,7 @@ dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dir
 dev-perl/File-DesktopEntry 0.40.0-r1 0.220.0: Object to handle .desktop files
 dev-perl/File-DirWalk 0.400.0-r1 0.500.0: File::DirWalk - walk through a directory tree and run own code
 dev-perl/File-Find-Rule 0.330.0-r1 0.340.0: Alternative interface to File::Find
-dev-perl/File-Find-Rule-Perl 1.130.0: Common rules for searching for Perl things
+dev-perl/File-Find-Rule-Perl 1.130.0 1.150.0: Common rules for searching for Perl things
 dev-perl/File-Flat 1.40.0-r1: Implements a flat filesystem
 dev-perl/File-Flock 2014.10.0: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.020.0-r1: Find matches to a pattern in a series of files and related functions
