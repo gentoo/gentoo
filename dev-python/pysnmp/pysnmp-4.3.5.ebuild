@@ -21,7 +21,7 @@ DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 RDEPEND="
-	>=dev-python/pyasn1-0.1.2[${PYTHON_USEDEP}]
+	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
 	dev-python/pycrypto[${PYTHON_USEDEP}]
 "
 
