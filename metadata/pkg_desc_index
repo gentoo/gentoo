@@ -5416,7 +5416,7 @@ dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft N
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
 dev-perl/App-Nopaste 1.4.0-r1 1.8.0: Easy access to any pastebin
-dev-perl/App-cpanminus 1.703.900 1.704.0: Get, unpack, build and install modules from CPAN
+dev-perl/App-cpanminus 1.703.900 1.704.0 1.704.300: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.730.0-r1 0.740.0-r1 0.750.0-r1 0.780.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
@@ -6647,7 +6647,7 @@ dev-perl/Test-Perl-Critic 1.20.0-r1 1.30.0: Use Perl::Critic in test programs
 dev-perl/Test-Pod 1.510.0: Check for POD errors in files
 dev-perl/Test-Pod-Coverage 1.100.0: Check for pod coverage in your distribution
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
-dev-perl/Test-Regexp 2016060501.0.0: Provide commonly requested regular expressions
+dev-perl/Test-Regexp 2016060501.0.0 2017040101.0.0: Provide commonly requested regular expressions
 dev-perl/Test-Requires 0.60.0-r1 0.100.0: Checks to see if the module can be loaded
 dev-perl/Test-RequiresInternet 0.50.0: Easily test network connectivity
 dev-perl/Test-Script 1.70.0-r1 1.100.0 1.120.0: Cross-platform basic tests for scripts
