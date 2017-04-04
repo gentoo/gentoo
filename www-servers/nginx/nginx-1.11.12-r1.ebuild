@@ -359,6 +359,7 @@ src_prepare() {
 		cd "${HTTP_SECURITY_MODULE_WD}" || die
 
 		eapply "${FILESDIR}"/http_security-pr_1158.patch
+		eapply "${FILESDIR}"/http_security-pr_1373.patch
 
 		eautoreconf
 
