@@ -2975,7 +2975,7 @@ dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition pa
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/percona-server 5.6.35.80.0: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.4 2.4.5 2.4.6 2.4.6-r1: Hot backup utility for MySQL based servers
+dev-db/percona-xtrabackup 2.4.6-r1: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.0 1.22.1-r1: wxWidgets GUI for PostgreSQL
@@ -6777,7 +6777,7 @@ dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
 dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugzilla
 dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
-dev-perl/WWW-Dict-Leo-Org 1.400.0: Commandline interface to http://dict.leo.org/
+dev-perl/WWW-Dict-Leo-Org 1.400.0 2.0.0: Commandline interface to http://dict.leo.org/
 dev-perl/WWW-Form-UrlEncoded 0.240.0: parser and builder for application/x-www-form-urlencoded
 dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-www-form-urlencoded
 dev-perl/WWW-Mechanize 1.750.0 1.790.0 1.840.0: Handy web browsing in a Perl object
@@ -7809,7 +7809,7 @@ dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easi
 dev-python/keepassx 0.0.3 0.1.0-r1: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 9.3.1 10.0.2-r1 10.1 10.1-r1 10.2 10.3.1: Provides access to the system keyring service
-dev-python/keyrings_alt 1.1 1.1.1 2.0 2.1: Alternate keyring implementations
+dev-python/keyrings_alt 1.1 1.1.1 2.0 2.1 2.2: Alternate keyring implementations
 dev-python/keystoneauth 2.4.1 2.4.2 2.12.3 2.18.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.4.1 4.9.1 4.14.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
@@ -8327,7 +8327,7 @@ dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
 dev-python/pytest-fixture-config 1.2.2: Virtualenv fixture for py.test
 dev-python/pytest-html 1.10.1 1.14.2: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 0.2.0 0.2.3: Easily test your HTTP library against a local copy of httpbin
-dev-python/pytest-localserver 0.3.4 0.3.5 0.3.6: Py.test plugin to test server connections locally
+dev-python/pytest-localserver 0.3.4 0.3.5 0.3.6 0.3.7: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.3.0: A plugin for pytest that provides access to test session metadata
 dev-python/pytest-mock 1.2 1.5.0: Thin-wrapper around the mock package for easier use with py.test
 dev-python/pytest-mpl 0.5: pytest plugin to faciliate image comparison for matplotlib figures
@@ -19510,7 +19510,7 @@ xfce-extra/xfce4-pulseaudio-plugin 0.2.3 0.2.4: A panel plug-in for PulseAudio v
 xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
 xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
 xfce-extra/xfce4-screenshooter 1.8.2: Xfce4 screenshooter application and panel plugin
-xfce-extra/xfce4-sensors-plugin 1.2.6 1.2.97: A panel plug-in for acpi, lm_sensors and hddtemp sensors
+xfce-extra/xfce4-sensors-plugin 1.2.6 1.2.97 1.2.98: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.4.6 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha (from the same authors)
 xfce-extra/xfce4-systemload-plugin 1.1.1-r1 1.1.2 1.2.0 1.2.1: System load plug-in for Xfce panel
