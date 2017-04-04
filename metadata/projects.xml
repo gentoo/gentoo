@@ -202,9 +202,9 @@
   </project>
   <project>
     <email>artwork@gentoo.org</email>
-    <name>Gentoo Artwork Project</name>
+    <name>Artwork</name>
     <url>https://wiki.gentoo.org/wiki/Project:Artwork</url>
-    <description>The Gentoo Artwork Project manages Gentoo artwork stuff. This includes wallpapers, logos, themes, icons sets, etc.</description>
+    <description>The Artwork project manages Gentoo artwork and related assets. This includes wallpapers, logos, themes, icons sets, etc.</description>
     <member>
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
