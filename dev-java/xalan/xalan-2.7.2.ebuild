@@ -17,7 +17,7 @@ MY_P="${MY_PN}_${MY_PV}"
 SRC_DIST="${MY_P}-src.tar.gz"
 BIN_DIST="${MY_P}-bin.zip"
 
-DESCRIPTION="Apache's XSLT processor for transforming XML documents into HTML, text, or other XML document types"
+DESCRIPTION="Transforming XML documents into HTML, text, or other XML document types"
 HOMEPAGE="http://xalan.apache.org/"
 SRC_URI="mirror://apache/${PN}/${MY_PN}/source/${SRC_DIST}
 	doc? ( mirror://apache/${PN}/${MY_PN}/binaries/${BIN_DIST} )"
