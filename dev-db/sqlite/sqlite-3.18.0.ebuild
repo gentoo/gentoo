@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools eutils flag-o-matic multilib multilib-minimal toolchain-funcs versionator
 
@@ -11,15 +11,15 @@ DOC_PV="${SRC_PV}"
 
 DESCRIPTION="A SQL Database Engine in a C Library"
 HOMEPAGE="https://sqlite.org/"
-SRC_URI="doc? ( https://sqlite.org/2016/${PN}-doc-${DOC_PV}.zip )
-	tcl? ( https://sqlite.org/2016/${PN}-src-${SRC_PV}.zip )
-	test? ( https://sqlite.org/2016/${PN}-src-${SRC_PV}.zip )
-	tools? ( https://sqlite.org/2016/${PN}-src-${SRC_PV}.zip )
-	!tcl? ( !test? ( !tools? ( https://sqlite.org/2016/${PN}-autoconf-${SRC_PV}.tar.gz ) ) )"
+SRC_URI="doc? ( https://sqlite.org/2017/${PN}-doc-${DOC_PV}.zip )
+	tcl? ( https://sqlite.org/2017/${PN}-src-${SRC_PV}.zip )
+	test? ( https://sqlite.org/2017/${PN}-src-${SRC_PV}.zip )
+	tools? ( https://sqlite.org/2017/${PN}-src-${SRC_PV}.zip )
+	!tcl? ( !test? ( !tools? ( https://sqlite.org/2017/${PN}-autoconf-${SRC_PV}.tar.gz ) ) )"
 
 LICENSE="public-domain"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug doc icu +readline secure-delete static-libs tcl test tools"
 
 RDEPEND="icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
@@ -49,20 +49,24 @@ pkg_setup() {
 
 src_prepare() {
 	if full_tarball; then
-		epatch "${FILESDIR}/${PN}-3.11.0-full_tarball-build.patch"
+		eapply -p0 "${FILESDIR}/${PN}-3.18.0-full_tarball-build.patch"
+
+		eapply_user
 
 		# Fix AC_CHECK_FUNCS.
 		# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
-		sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac
+		sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac || die "sed failed"
 	else
-		epatch "${FILESDIR}/${PN}-3.12.0-nonfull_tarball-build.patch"
+		eapply -p0 "${FILESDIR}/${PN}-3.16.0-nonfull_tarball-build.patch"
+
+		eapply_user
 
 		# Fix AC_CHECK_FUNCS.
 		# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
 		sed \
 			-e "s/AC_CHECK_FUNCS(\[fdatasync.*/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" \
 			-e "/AC_CHECK_FUNCS(posix_fallocate)/d" \
-			-i configure.ac
+			-i configure.ac || die "sed failed"
 	fi
 
 	eautoreconf
@@ -110,6 +114,10 @@ multilib_src_configure() {
 	# https://sqlite.org/json1.html
 	append-cppflags -DSQLITE_ENABLE_JSON1
 
+	# Support memsys5 memory allocator.
+	# https://sqlite.org/malloc.html#memsys5
+	append-cppflags -DSQLITE_ENABLE_MEMSYS5
+
 	# Support Resumable Bulk Update extension.
 	# https://sqlite.org/rbu.html
 	append-cppflags -DSQLITE_ENABLE_RBU
@@ -122,6 +130,14 @@ multilib_src_configure() {
 	# https://sqlite.org/c3ref/stmt_scanstatus.html
 	# https://sqlite.org/c3ref/stmt_scanstatus_reset.html
 	append-cppflags -DSQLITE_ENABLE_STMT_SCANSTATUS
+
+	# Support Session extension.
+	# https://sqlite.org/sessionintro.html
+	options+=(--enable-session)
+
+	# Support unknown() function.
+	# https://sqlite.org/compile.html#enable_unknown_sql_function
+	append-cppflags -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION
 
 	# Support unlock notification.
 	# https://sqlite.org/unlock_notify.html
@@ -189,7 +205,7 @@ multilib_src_compile() {
 	emake HAVE_TCL="$(usex tcl 1 "")" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
 
 	if use tools && multilib_is_native_abi; then
-		emake rbu showdb showjournal showstat4 showwal sqldiff sqlite3_analyzer
+		emake changeset dbdump dbhash rbu scrub showdb showjournal showstat4 showwal sqldiff sqlite3_analyzer
 	fi
 }
 
@@ -214,7 +230,11 @@ multilib_src_install() {
 			fi
 		}
 
+		install_tool changeset sqlite3-changeset
+		install_tool dbdump sqlite3-db-dump
+		install_tool dbhash sqlite3-db-hash
 		install_tool rbu sqlite3-rbu
+		install_tool scrub sqlite3-scrub
 		install_tool showdb sqlite3-show-db
 		install_tool showjournal sqlite3-show-journal
 		install_tool showstat4 sqlite3-show-stat4
@@ -232,6 +252,10 @@ multilib_src_install_all() {
 	doman sqlite3.1
 
 	if use doc; then
-		dohtml -A ico,odf,odg,pdf,svg -r "${WORKDIR}/${PN}-doc-${DOC_PV}/"
+		rm "${WORKDIR}/${PN}-doc-${DOC_PV}/"*.{db,txt}
+		(
+			docinto html
+			dodoc -r "${WORKDIR}/${PN}-doc-${DOC_PV}/"*
+		)
 	fi
 }

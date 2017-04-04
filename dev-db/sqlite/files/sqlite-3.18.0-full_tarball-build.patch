@@ -2,18 +2,17 @@ Link executables against libsqlite3.so.
 Increase timeout for fuzzcheck.
 Fix building with dlopen() not available.
 
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -555,7 +555,7 @@
- # Extra compiler options for various shell tools
+--- Makefile.in
++++ Makefile.in
+@@ -562,6 +562,7 @@
  #
  SHELL_OPT = -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_FTS4
--SHELL_OPT += -DSQLITE_ENABLE_EXPLAIN_COMMENTS
-+SHELL_OPT += -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_DBSTAT_VTAB
+ # SHELL_OPT += -DSQLITE_ENABLE_FTS5
++SHELL_OPT += -DSQLITE_ENABLE_DBSTAT_VTAB
+ SHELL_OPT += -DSQLITE_ENABLE_EXPLAIN_COMMENTS
+ SHELL_OPT += -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION
  FUZZERSHELL_OPT = -DSQLITE_ENABLE_JSON1
- FUZZCHECK_OPT = -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MEMSYS5
- 
-@@ -576,18 +576,18 @@
+@@ -587,25 +588,25 @@
  
  libtclsqlite3.la:	tclsqlite.lo libsqlite3.la
  	$(LTLINK) -no-undefined -o $@ tclsqlite.lo \
@@ -32,14 +31,25 @@ Fix building with dlopen() not available.
 +		$(TOP)/src/shell.c libsqlite3.la \
 +		$(LIBREADLINE)
  
--sqldiff$(TEXE):	$(TOP)/tool/sqldiff.c sqlite3.c sqlite3.h
--	$(LTLINK) -o $@ $(TOP)/tool/sqldiff.c sqlite3.c $(TLIBS)
+-sqldiff$(TEXE):	$(TOP)/tool/sqldiff.c sqlite3.lo sqlite3.h
+-	$(LTLINK) -o $@ $(TOP)/tool/sqldiff.c sqlite3.lo $(TLIBS)
 +sqldiff$(TEXE):	$(TOP)/tool/sqldiff.c libsqlite3.la
 +	$(LTLINK) -o $@ $(TOP)/tool/sqldiff.c libsqlite3.la
  
+-dbhash$(TEXE):	$(TOP)/tool/dbhash.c sqlite3.lo sqlite3.h
+-	$(LTLINK) -o $@ $(TOP)/tool/dbhash.c sqlite3.lo $(TLIBS)
++dbhash$(TEXE):	$(TOP)/tool/dbhash.c libsqlite3.la
++	$(LTLINK) -o $@ $(TOP)/tool/dbhash.c libsqlite3.la
+ 
+-scrub$(TEXE):	$(TOP)/ext/misc/scrub.c sqlite3.lo
++scrub$(TEXE):	$(TOP)/ext/misc/scrub.c libsqlite3.la
+ 	$(LTLINK) -o $@ -I. -DSCRUB_STANDALONE \
+-		$(TOP)/ext/misc/scrub.c sqlite3.lo $(TLIBS)
++		$(TOP)/ext/misc/scrub.c libsqlite3.la
+ 
  srcck1$(BEXE):	$(TOP)/tool/srcck1.c
  	$(BCC) -o srcck1$(BEXE) $(TOP)/tool/srcck1.c
-@@ -656,7 +656,7 @@
+@@ -681,7 +682,7 @@
  # Rule to build the amalgamation
  #
  sqlite3.lo:	sqlite3.c
@@ -48,7 +58,7 @@ Fix building with dlopen() not available.
  
  # Rules to build the LEMON compiler generator
  #
-@@ -1082,13 +1082,13 @@
+@@ -1107,13 +1108,13 @@
  
  # Fuzz testing
  fuzztest:	fuzzcheck$(TEXE) $(FUZZDATA)
@@ -63,16 +73,16 @@ Fix building with dlopen() not available.
 -	valgrind ./fuzzcheck$(TEXE) --cell-size-check --limit-mem 10M --timeout 600 $(FUZZDATA)
 +	valgrind ./fuzzcheck$(TEXE) --cell-size-check --limit-mem 10M --timeout 3600 $(FUZZDATA)
  
- # Minimal testing that runs in less than 3 minutes
+ # The veryquick.test TCL tests.
  #
-@@ -1114,32 +1114,32 @@
+@@ -1143,36 +1144,35 @@
  smoketest:	$(TESTPROGS) fuzzcheck$(TEXE)
  	./testfixture$(TEXE) $(TOP)/test/main.test $(TESTOPTS)
  
 -sqlite3_analyzer.c: sqlite3.c $(TOP)/src/tclsqlite.c $(TOP)/tool/spaceanal.tcl
 +sqlite3_analyzer.c:	$(TOP)/src/tclsqlite.c $(TOP)/tool/spaceanal.tcl
  	echo "#define TCLSH 2" > $@
- 	echo "#define SQLITE_ENABLE_DBSTAT_VTAB 1" >> $@
+-	echo "#define SQLITE_ENABLE_DBSTAT_VTAB 1" >> $@
 -	cat sqlite3.c $(TOP)/src/tclsqlite.c >> $@
 +	cat $(TOP)/src/tclsqlite.c >> $@
  	echo "static const char *tclsh_main_loop(void){" >> $@
@@ -84,6 +94,12 @@ Fix building with dlopen() not available.
 -	$(LTLINK) sqlite3_analyzer.c -o $@ $(LIBTCL) $(TLIBS)
 +sqlite3_analyzer$(TEXE):	sqlite3_analyzer.c libsqlite3.la
 +	$(LTLINK) sqlite3_analyzer.c -o $@ libsqlite3.la $(LIBTCL)
+ 
+-dbdump$(TEXE): $(TOP)/ext/misc/dbdump.c sqlite3.lo
++dbdump$(TEXE):	$(TOP)/ext/misc/dbdump.c libsqlite3.la
+ 	$(LTLINK) -DDBDUMP_STANDALONE -o $@ \
+-           $(TOP)/ext/misc/dbdump.c sqlite3.lo $(TLIBS)
++           $(TOP)/ext/misc/dbdump.c libsqlite3.la
  
 -showdb$(TEXE):	$(TOP)/tool/showdb.c sqlite3.lo
 -	$(LTLINK) -o $@ $(TOP)/tool/showdb.c sqlite3.lo $(TLIBS)
@@ -112,20 +128,25 @@ Fix building with dlopen() not available.
  
  rollback-test$(TEXE):	$(TOP)/tool/rollback-test.c sqlite3.lo
  	$(LTLINK) -o $@ $(TOP)/tool/rollback-test.c sqlite3.lo $(TLIBS)
-@@ -1153,8 +1153,8 @@
- speedtest1$(TEXE):	$(TOP)/test/speedtest1.c sqlite3.lo
- 	$(LTLINK) -o $@ $(TOP)/test/speedtest1.c sqlite3.lo $(TLIBS)
+@@ -1191,11 +1191,11 @@
+ kvtest$(TEXE):	$(TOP)/test/kvtest.c sqlite3.c
+ 	$(LTLINK) $(KV_OPT) -o $@ $(TOP)/test/kvtest.c sqlite3.c $(TLIBS)
  
 -rbu$(EXE): $(TOP)/ext/rbu/rbu.c $(TOP)/ext/rbu/sqlite3rbu.c sqlite3.lo 
 -	$(LTLINK) -I. -o $@ $(TOP)/ext/rbu/rbu.c sqlite3.lo $(TLIBS)
 +rbu$(EXE):	$(TOP)/ext/rbu/rbu.c libsqlite3.la
 +	$(LTLINK) -I. -o $@ $(TOP)/ext/rbu/rbu.c libsqlite3.la
  
- loadfts$(EXE): $(TOP)/tool/loadfts.c libsqlite3.la
- 	$(LTLINK) $(TOP)/tool/loadfts.c libsqlite3.la -o $@ $(TLIBS)
---- a/configure.ac
-+++ b/configure.ac
-@@ -570,6 +570,9 @@
+-loadfts$(EXE): $(TOP)/tool/loadfts.c libsqlite3.la
+-	$(LTLINK) $(TOP)/tool/loadfts.c libsqlite3.la -o $@ $(TLIBS)
++loadfts$(EXE):	$(TOP)/tool/loadfts.c libsqlite3.la
++	$(LTLINK) $(TOP)/tool/loadfts.c libsqlite3.la -o $@
+ 
+ # This target will fail if the SQLite amalgamation contains any exported
+ # symbols that do not begin with "sqlite3_". It is run as part of the
+--- configure.ac
++++ configure.ac
+@@ -584,6 +584,9 @@
  if test "${use_loadextension}" = "yes" ; then
    OPT_FEATURE_FLAGS=""
    AC_SEARCH_LIBS(dlopen, dl)
