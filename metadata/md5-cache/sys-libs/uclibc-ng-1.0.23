@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DESCRIPTION=C library for developing embedded Linux systems
+EAPI=6
+HOMEPAGE=http://www.uclibc-ng.org/
+IUSE=debug hardened iconv ipv6 rpc symlink-compat crosscompile_opts_headers-only savedconfig
+KEYWORDS=-* ~amd64 ~arm ~ppc ~x86
+LICENSE=LGPL-2
+RDEPEND=!!sys-libs/uclibc iconv? ( dev-libs/libiconv )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://downloads.uclibc-ng.org/releases/1.0.23/uClibc-ng-1.0.23.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=44d41a8f5fb734d1a827340c61ab51eb
