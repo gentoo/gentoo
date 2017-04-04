@@ -50,4 +50,5 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install manualdir="${EPREFIX}/usr/share/man/man1"
+	einstalldocs
 }
