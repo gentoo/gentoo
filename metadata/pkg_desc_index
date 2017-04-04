@@ -7514,7 +7514,7 @@ dev-python/djangocms-video 0.1 1.0.0 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301 1.15.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.10.6 2.0.1 2.0.2 2.1.0: Python client for Docker
+dev-python/docker-py 1.2.2 1.10.6 2.0.1 2.0.2 2.1.0 2.2.1: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r1 0.6.2-r2: Pythonic argument parser, that will make you smile
