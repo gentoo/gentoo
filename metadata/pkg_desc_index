@@ -1879,7 +1879,6 @@ app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneaker
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nullmodem 0.0.6: A Utility to loopback Pseudo-Terminals
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
-app-misc/ofl 20110721: Open file lister (replaces fuser and lsof -m)
 app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/openastro 1.1.48: A fully-featured Open Source Astrology Program
