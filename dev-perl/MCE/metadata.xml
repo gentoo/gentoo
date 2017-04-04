@@ -25,6 +25,8 @@
     <remote-id type="cpan-module">MCE::Loop</remote-id>
     <remote-id type="cpan-module">MCE::Map</remote-id>
     <remote-id type="cpan-module">MCE::Mutex</remote-id>
+    <remote-id type="cpan-module">MCE::Mutex::Channel</remote-id>
+    <remote-id type="cpan-module">MCE::Mutex::Flock</remote-id>
     <remote-id type="cpan-module">MCE::Queue</remote-id>
     <remote-id type="cpan-module">MCE::Relay</remote-id>
     <remote-id type="cpan-module">MCE::Signal</remote-id>
