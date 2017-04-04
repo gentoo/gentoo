@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=6
+inherit flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Original UNIX development tools"
 HOMEPAGE="http://heirloom.sourceforge.net/devtools.html"
@@ -17,8 +16,21 @@ IUSE=""
 DEPEND="app-shells/heirloom-sh"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
+PATCHES=(
+	"${FILESDIR}/${P}-solaris.patch"
+	"${FILESDIR}/${P}-64-bit.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
+)
 
+DOC_CONTENTS="
+	You may want to add /usr/5bin or /usr/ucb to \$PATH
+	to enable using the apps of heirloom toolchest by default.
+	Man pages are installed in /usr/share/man/5man/
+	You may need to set \$MANPATH to access them.
+"
+
+src_prepare() {
+	default
 	sed -i \
 		-e 's:^\(SHELL =\) \(.*\):\1 /bin/jsh:' \
 		-e 's:^\(POSIX_SHELL =\) \(.*\):\1 /bin/sh:' \
@@ -32,12 +44,6 @@ src_prepare() {
 		./mk.config
 
 	echo "CC=$(tc-getCC)" >> "./mk.config"
-
-	epatch "${FILESDIR}/${P}-solaris.patch"
-	epatch "${FILESDIR}/${P}-64-bit.patch"
-
-	epatch_user
-
 }
 
 src_compile() {
@@ -46,11 +52,9 @@ src_compile() {
 
 src_install() {
 	emake ROOT="${D}" install
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "You may want to add /usr/5bin or /usr/ucb to \$PATH"
-	elog "to enable using the apps of heirloom toolchest by default."
-	elog "Man pages are installed in /usr/share/man/5man/"
-	elog "You may need to set \$MANPATH to access them."
+	readme.gentoo_print_elog
 }
