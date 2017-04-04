@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (04 Apr 2017)
+# Masked for removal in 30 days. Does not work with new
+# gnome-base/gnome-shell.
+# gnome-extra/gnome-shell-extensions-topicons-plus is a
+# fork that has added features and works with modern
+# gnome-shell that is suitable as a system-wide replacement
+# package. Alternatively it can be installed per-user from
+# https://extensions.gnome.org/extension/1031/topicons/
+gnome-extra/gnome-shell-extensions-topicons
+
 # NP-Hardassr <NP-Hardass@gentoo.org> (03 Apr 2017)
 # Masked for removal in 30 days. Unable to generate new
 # hashes for the manifest, per Bug #612720, Bug #612718
