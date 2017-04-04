@@ -23,7 +23,6 @@ DEPEND="
 	dev-libs/libevent:0=
 	dev-libs/libgcrypt:0=
 	dev-libs/libgpg-error
-	dev-libs/openssl:0=
 	dev-python/sphinx
 	net-misc/curl
 	sys-libs/zlib"
