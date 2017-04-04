@@ -4620,7 +4620,7 @@ dev-libs/bglibs 1.041 1.104 1.106 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0-r1 1.63.0: Boost Libraries for C++
+dev-libs/boost 1.62.0-r1 1.63.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.15-r1 2.0.1: A C++ crypto library
@@ -10168,7 +10168,7 @@ dev-util/bless 0.6.0-r2: GTK# Hex Editor
 dev-util/bloaty 0_p20170321: A size profiler for binaries
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
-dev-util/boost-build 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-r1 1.63.0: A system for large project software construction, simple to use and powerful
+dev-util/boost-build 1.62.0-r1 1.63.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
