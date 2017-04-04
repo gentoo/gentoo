@@ -12778,7 +12778,7 @@ media-gfx/tintii 2.10.0: A photo editor for selective color, saturation, and hue
 media-gfx/transfig 3.2.5d-r1 3.2.5e: A set of tools for creating TeX documents with graphics
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
-media-gfx/ufraw 0.21-r1 0.22: RAW Image format viewer and GIMP plugin
+media-gfx/ufraw 0.21-r1 0.22 0.22-r1: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Commandline tool for popular vector formats convertion
 media-gfx/valentina 0.4.2-r3 0.4.5 9999: Cloth patternmaking software
 media-gfx/videorbits 2.201 2.205: a collection of programs for creating high dynamic range images
