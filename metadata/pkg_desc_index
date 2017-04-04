@@ -6871,7 +6871,7 @@ dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0: Use shorter versions of class names
 dev-perl/asa 1.30.0: Lets your class/object say it works like something else
-dev-perl/autobox 2.830.0: Call methods on native types
+dev-perl/autobox 2.830.0 2.850.0: Call methods on native types
 dev-perl/autovivification 0.160.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.3.0: Disables bareword filehandles
 dev-perl/boolean 0.450.0: Boolean support for Perl
