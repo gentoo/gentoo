@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/glib-2 virtual/perl-ExtUtils-MakeMaker >=dev-perl/ExtUtils-Dep
 DESCRIPTION=Glib - Perl wrappers for the GLib utility and Object libraries
 EAPI=6
 HOMEPAGE=http://gtk2-perl.sf.net/ http://search.cpan.org/dist/Glib/
-KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Glib-1.324.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
-_md5_=08a3e17513d6abbf6397e99950ff7281
+_md5_=a822248df7fd8399b46814465c74700d

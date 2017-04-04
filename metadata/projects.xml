@@ -179,6 +179,11 @@
     <description>Provide Gentoo-way solutions for non-GNU/Linux platforms.</description>
     <subproject ref="bsd@gentoo.org"/>
     <subproject ref="prefix@gentoo.org"/>
+    <member>
+      <email>maffblaster@gentoo.org</email>
+      <name>Matthew Marchese</name>
+      <role>Life giver</role>
+    </member>
   </project>
   <project>
     <email>antivirus@gentoo.org</email>
