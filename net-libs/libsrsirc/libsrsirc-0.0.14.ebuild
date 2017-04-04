@@ -10,12 +10,18 @@ LICENSE="BSD"
 
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="ssl"
+IUSE="static-libs ssl"
 
 DEPEND="
 	ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	econf $(use_with ssl)
+	use static-libs && econf $(use_with ssl)
+	! use static-libs && econf --disable-static $(use_with ssl)
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
