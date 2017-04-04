@@ -6905,7 +6905,7 @@ dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1 1.1100.0-r1: construct and optionally mail MIME messages
 dev-perl/multidimensional 0.11.0: disables multidimensional array emulation
 dev-perl/namespace-autoclean 0.130.0-r1 0.280.0: Keep imports out of your namespace
-dev-perl/namespace-clean 0.210.0-r1 0.260.0: Keep imports and functions out of your namespace
+dev-perl/namespace-clean 0.210.0-r1 0.260.0 0.270.0: Keep imports and functions out of your namespace
 dev-perl/pcsc-perl 1.4.14: A Perl Module for PC/SC SmartCard access
 dev-perl/perl-headers 0.0.1: Generated .ph equivalents of system headers
 dev-perl/perl-ldap 0.650.0: Perl modules which provide an object-oriented interface to LDAP servers
