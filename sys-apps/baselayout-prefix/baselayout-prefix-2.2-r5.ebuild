@@ -37,6 +37,9 @@ src_prepare() {
 		# but still .pc files should be found for all RDEPENDable prefixes in
 		# the chain.
 		echo "PKG_CONFIG_PATH=\"/usr/lib/pkgconfig:/usr/share/pkgconfig\"" >> etc/env.d/00basic
+		echo "PORTAGE_OVERRIDE_EPREFIX=\"${EPREFIX}\"" >> etc/env.d/00basic
+		echo "PORTAGE_CONFIGROOT=\"${EPREFIX}\"" >> etc/env.d/00basic
+		echo "EPREFIX=\"${EPREFIX}\"" >> etc/env.d/00basic
 	fi
 	default
 }
@@ -52,9 +55,13 @@ src_install() {
 	sed \
 		-e "/PATH=/!s:/\(etc\|usr/bin\|bin\):\"${EPREFIX}\"/\1:g" \
 		-e "/PATH=/s|\([:\"]\)/|\1${EPREFIX}/|g" \
-		-e "/PATH=.*\/sbin/s|\"$|:/usr/sbin:/sbin\"|" \
-		-e "/PATH=.*\/bin/s|\"$|:/usr/bin:/bin\"|" \
 		etc/profile > "${ED}"/etc/profile || die
+	if ! use prefix-chaining; then
+		sed \
+			-e "/PATH=.*\/sbin/s|\"$|:/usr/sbin:/sbin\"|" \
+			-e "/PATH=.*\/bin/s|\"$|:/usr/bin:/bin\"|" \
+			-i "${ED}"/etc/profile || die
+	fi
 	dodir etc/env.d
 	sed \
 		-e "s:/\(etc/env.d\|opt\|usr\):${EPREFIX}/\1:g" \
