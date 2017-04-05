@@ -1,3 +1,32 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
+
+inherit prefix
+
+DESCRIPTION="Chained EPREFIX bootstrapping utility"
+HOMEPAGE="https://prefix.gentoo.org/"
+SRC_URI=""
+
+LICENSE="GPL-3"
+SLOT="0"
+KEYWORDS="~ppc-aix ~x64-cygwin ~x86-linux ~sparc-solaris ~x86-solaris"
+IUSE=""
+
+DEPEND=""
+RDEPEND=""
+
+S="${WORKDIR}"
+
+src_install() {
+	eprefixify ${PN}
+	sed -e "s,@GENTOO_PORTAGE_CHOST@,${CHOST}," -i ${PN}
+	dobin ${PN}
+}
+
+src_unpack() {
+	{ cat > "${PN}" || die; } <<'EOF'
 #!/usr/bin/env bash
 
 PARENT_EPREFIX="@GENTOO_PORTAGE_EPREFIX@"
@@ -97,13 +126,13 @@ ebegin "creating make.conf"
 	echo "CFLAGS=\"$(portageq envvar CFLAGS)\""
 	echo "CXXFLAGS=\"$(portageq envvar CXXFLAGS)\""
 	echo "MAKEOPTS=\"$(portageq envvar MAKEOPTS)\""
-    niceness=$(portageq envvar PORTAGE_NICENESS || true)
-    [[ -n ${niceness} ]] &&
-        echo "PORTAGE_NICENESS=\"${niceness}\""
+	niceness=$(portageq envvar PORTAGE_NICENESS || true)
+	[[ -n ${niceness} ]] &&
+		echo "PORTAGE_NICENESS=\"${niceness}\""
 	echo "USE=\"prefix-chaining\""
-    echo
-    echo "# Mirrors from parent prefix."
-    echo "GENTOO_MIRRORS=\"$(portageq envvar GENTOO_MIRRORS || true)\""
+	echo
+	echo "# Mirrors from parent prefix."
+	echo "GENTOO_MIRRORS=\"$(portageq envvar GENTOO_MIRRORS || true)\""
 	echo
 	echo "#"
 	echo "# Below comes the chained-prefix setup. Only change things"
@@ -165,7 +194,8 @@ ebegin "installing required basic packages"
 	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" emerge -p1qO baselayout-prefix > /dev/null 2>&1
 
 	set -e
-	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" emerge -1qO gentoo-functions baselayout-prefix prefix-chain-utils
+	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" emerge -1qO \
+		gentoo-functions baselayout-prefix elt-patches gnuconfig prefix-chain-utils
 
 	# merge with the parent's chost. this forces the use of the parent
 	# compiler, which generally would be illegal - this is an exception.
@@ -189,3 +219,5 @@ ewarn
 ewarn "all done. don't forget to tune ${CHILD_EPREFIX}/etc/portage/make.conf."
 ewarn "to enter the new prefix, run \"${CHILD_EPREFIX}/startprefix\"."
 ewarn
+EOF
+}

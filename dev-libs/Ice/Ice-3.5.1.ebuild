@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ USE_RUBY="ruby19"
 inherit toolchain-funcs versionator python-r1 mono-env ruby-ng db-use
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
-HOMEPAGE="http://www.zeroc.com/"
+HOMEPAGE="https://zeroc.com/products/ice"
 SRC_URI="http://www.zeroc.com/download/Ice/$(get_version_component_range 1-2)/${P}.tar.gz
 	doc? ( http://www.zeroc.com/download/Ice/$(get_version_component_range 1-2)/${P}.pdf )"
 LICENSE="GPL-2"
