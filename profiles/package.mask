@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (05 Apr 2017)
+# Abandoned, no releases since 2008, only partially
+# compatible with C++11, multiple bugs, upstream dead
+# Masked for removal in 30 days.
+# Bugs #359247, #400547, #409119, #594144
+dev-libs/STLport
+
 # Mike Gilbert <floppym@gentoo> (05 Apr 2017)
 # Unmaintained.
 # Pinned dependencies cause conflicts with other packages.
