@@ -1605,7 +1605,7 @@ app-laptop/hdaps-gl 0.0.5: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r3: Intelligent Battery Monitor
-app-laptop/laptop-mode-tools 1.70: Linux kernel laptop_mode user-space utilities
+app-laptop/laptop-mode-tools 1.70 1.71: Linux kernel laptop_mode user-space utilities
 app-laptop/lphdisk 0.9.1-r2: utility for preparing a hibernation partition for APM Suspend-To-Disk
 app-laptop/mbpfan 1.9.1 2.0.0 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
 app-laptop/nvidiabl 0.83 0.87: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
