@@ -1204,6 +1204,11 @@ app-vim/youcompleteme:clang - Enable semantic support for C-family languages usi
 dev-ada/gnat_util:shared - Build gnat_util shared library
 dev-ada/gnat_util:static - Build gnat_util static library
 dev-ada/gnat_util:static-pic - Build gnat_util static library with pic code
+dev-ada/gnatcoll:postgresql - Adds support for postgresql
+dev-ada/gnatcoll:projects - Adds support for projects
+dev-ada/gnatcoll:pygobject - Adds support for pygobject
+dev-ada/gnatcoll:shared - Build shared library
+dev-ada/gnatcoll:static - Build static library
 dev-ada/gprbuild:shared - Build shared library
 dev-ada/gprbuild:static - Build static library
 dev-ada/gprbuild:static-pic - Build static library with pic code
