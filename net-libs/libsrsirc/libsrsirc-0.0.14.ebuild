@@ -17,8 +17,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	use static-libs && econf $(use_with ssl)
-	! use static-libs && econf --disable-static $(use_with ssl)
+	econf $(use_enable static-libs static) $(use_with ssl)
 }
 
 src_install() {
