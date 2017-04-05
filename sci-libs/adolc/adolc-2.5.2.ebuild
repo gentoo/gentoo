@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ SRC_URI="http://www.coin-or.org/download/source/${MYPN}/${MYPN}-${PV}.tgz"
 
 LICENSE="|| ( EPL-1.0 GPL-2 )"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="mpi sparse static-libs"
 
 RDEPEND="

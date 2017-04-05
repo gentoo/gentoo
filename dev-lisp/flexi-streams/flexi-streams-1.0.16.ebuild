@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit common-lisp-3
 
@@ -21,5 +21,5 @@ RDEPEND="!dev-lisp/cl-${PN}
 src_install() {
 	common-lisp-install-sources *.lisp
 	common-lisp-install-asdf
-	dohtml doc/index.html
+	dodoc doc/index.html
 }
