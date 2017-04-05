@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Weber <xmw@gentoo.org> (06 Apr 2017)
+# mask unkeyworded dep pymongo -> mongodb
+app-portage/g-sorcery bson
+
 # Michał Górny <mgorny@gentoo.org> (24 Mar 2017)
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang default-libcxx
