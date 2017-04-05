@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ocaml/ocaml-re/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE="test"
 
 RDEPEND=">=dev-lang/ocaml-4.02:="
