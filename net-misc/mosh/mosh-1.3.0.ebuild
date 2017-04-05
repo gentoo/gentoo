@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools bash-completion-r1 eutils vcs-snapshot
 
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
-HOMEPAGE="http://mosh.mit.edu"
-SRC_URI="http://mosh.mit.edu/${P}.tar.gz"
+HOMEPAGE="http://mosh.org"
+SRC_URI="http://mosh.org/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
