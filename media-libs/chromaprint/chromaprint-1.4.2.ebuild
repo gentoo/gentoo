@@ -14,7 +14,7 @@ SRC_URI="https://bitbucket.org/acoustid/${PN}/downloads/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm hppa ppc ppc64 x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm hppa ppc ppc64 x86 ~amd64-fbsd"
 IUSE="libav test tools"
 
 # note: use ffmpeg or libav instead of fftw because it's recommended and required for tools
