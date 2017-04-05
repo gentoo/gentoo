@@ -80,4 +80,11 @@ src_install() {
 	fi
 	emake DESTDIR="${D}" install_gps_plugin
 	einstalldocs
+	dodoc -r features-* known-problems-* examples
+	mv "${D}"/usr/share/doc/${PN}/GNATColl.pdf "${D}"/usr/share/doc/${PF}/
+	mv "${D}"/usr/share/doc/${PN}/html/html "${D}"/usr/share/doc/${PF}/
+}
+
+src_test() {
+	true
 }
