@@ -9,7 +9,7 @@ SRC_URI="http://erratique.ch/software/react/releases/${P}.tbz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~x86-fbsd"
 IUSE="doc +ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]"
