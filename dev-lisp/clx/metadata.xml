@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nimiux@gentoo.org</email>
-		<name>Chema Alonso</name>
-		<description>Maintainer</description>
+	<maintainer type="project">
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
 	</maintainer>
 	<longdescription lang="en">
 		CLX provides an implementation of the X Window System protocol to

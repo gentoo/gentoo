@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit common-lisp-3 eutils
 
@@ -20,11 +20,12 @@ RDEPEND="!dev-lisp/cl-${PN}"
 
 src_prepare() {
 	rm -v {exclcmac,sockcl,defsystem,provide,cmudep}.lisp || die
-	epatch "${FILESDIR}"/gentoo-fix-asd.patch
-	epatch "${FILESDIR}"/gentoo-fix-dep-openmcl.patch
-	epatch "${FILESDIR}"/gentoo-fix-unused-vars.patch
-	epatch "${FILESDIR}"/gentoo-fix-obsolete-eval-when.patch
-	epatch "${FILESDIR}"/gentoo-fix-dynamic-extent-sbcl-1.0.45.patch
+	eapply "${FILESDIR}"/gentoo-fix-asd.patch
+	eapply "${FILESDIR}"/gentoo-fix-dep-openmcl.patch
+	eapply "${FILESDIR}"/gentoo-fix-unused-vars.patch
+	eapply "${FILESDIR}"/gentoo-fix-obsolete-eval-when.patch
+	eapply "${FILESDIR}"/gentoo-fix-dynamic-extent-sbcl-1.0.45.patch
+	eapply_user
 }
 
 src_compile() {
