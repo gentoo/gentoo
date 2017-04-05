@@ -11,7 +11,7 @@ SRC_URI="http://erratique.ch/software/${PN}/releases/${P}.tbz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE="doc +ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
