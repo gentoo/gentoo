@@ -11,7 +11,7 @@ SRC_URI="http://forge.ocamlcore.org/frs/download.php/72/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE="doc"
 
 DEPEND="app-arch/bzip2

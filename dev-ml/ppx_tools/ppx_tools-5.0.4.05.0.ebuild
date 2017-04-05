@@ -12,7 +12,7 @@ SRC_URI="https://github.com/alainfrisch/ppx_tools/archive/${MY_PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
 DEPEND=">=dev-lang/ocaml-4.05_beta:="
