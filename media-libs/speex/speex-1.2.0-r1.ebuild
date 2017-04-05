@@ -14,7 +14,7 @@ SRC_URI="http://downloads.xiph.org/releases/speex/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="armv5te cpu_flags_x86_sse static-libs utils +vbr"
+IUSE="cpu_flags_arm_v5te cpu_flags_x86_sse static-libs utils +vbr"
 
 RDEPEND="
 	utils? (
@@ -45,8 +45,8 @@ multilib_src_configure() {
 	# --enable-fixed-point
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable static-libs static) \
-		$(usex arm $(usex armv5te '--disable-arm4-asm' '--enable-arm4-asm') '--disable-arm4-asm') \
-		$(use_enable armv5te arm5e-asm) \
+		$(usex arm $(usex cpu_flags_arm_v5te '--disable-arm4-asm' '--enable-arm4-asm') '--disable-arm4-asm') \
+		$(use_enable cpu_flags_arm_v5te arm5e-asm) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable vbr) \
 		$(use_with utils speexdsp) \
