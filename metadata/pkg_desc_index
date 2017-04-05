@@ -5118,7 +5118,7 @@ dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression libr
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
 dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8 2.49-r100: A portable, bytecode-compiled implementation of Common Lisp
 dev-lisp/clozurecl 1.10 1.11-r1: Common Lisp implementation, derived from Digitool's MCL product
-dev-lisp/clx 0.7.4 9999: A fork of crhodes' fork of danb's fork of CLX, an X11 client for Common Lisp
+dev-lisp/clx 0.7.4-r1 9999: A fork of crhodes' fork of danb's fork of CLX, an X11 client for Common Lisp
 dev-lisp/cmucl 20e 21a: CMU Common Lisp is an implementation of ANSI Common Lisp
 dev-lisp/common-lisp-controller 4.27 5.13-r1: Common Lisp Controller
 dev-lisp/ecls 12.12.1 13.5.1-r1 15.3.7 16.0.0 16.0.0-r1 16.1.2 16.1.2-r1 16.1.3: ECL is an embeddable Common Lisp implementation
