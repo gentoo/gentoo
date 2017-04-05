@@ -6674,7 +6674,7 @@ dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styl
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.780.0-r1 0.790.0 0.800.0: A Perl library for reading, parsing, and processing BibTeX files
-dev-perl/Text-CSV 1.330.0 1.910.0 1.920.0: Manipulate comma-separated value strings
+dev-perl/Text-CSV 1.330.0 1.910.0 1.920.0 1.930.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 1.230.0 1.260.0 1.280.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
