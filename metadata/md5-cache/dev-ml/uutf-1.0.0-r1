@@ -4,11 +4,11 @@ DESCRIPTION=Non-blocking streaming Unicode codec for OCaml
 EAPI=5
 HOMEPAGE=http://erratique.ch/software/uutf
 IUSE=doc utftrip +ocamlopt test
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~ppc
 LICENSE=ISC
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/uchar:= utftrip? ( dev-ml/cmdliner:= )
 SLOT=0/1.0.0
 SRC_URI=http://erratique.ch/software/uutf/releases/uutf-1.0.0.tbz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
-_md5_=bcae900032103fb48cb85bcde07a599c
+_md5_=bf98520be3191ab9da2feb92227e47d2
