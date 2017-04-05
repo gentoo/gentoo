@@ -6256,7 +6256,7 @@ dev-perl/MooseX-Types-Path-Class 0.80.0: A Path::Class type library for Moose
 dev-perl/MooseX-Types-Path-Tiny 0.11.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
-dev-perl/Mouse 2.4.5: Moose minus the antlers
+dev-perl/Mouse 2.4.5 2.4.9: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
