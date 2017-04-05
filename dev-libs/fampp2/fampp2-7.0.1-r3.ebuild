@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,13 +12,13 @@ SRC_URI="mirror://sourceforge/fampp/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples stlport"
+IUSE="examples"
 
-RDEPEND="virtual/fam
-	stlport? ( dev-libs/STLport )
-	>=dev-libs/ferrisloki-2.0.3[stlport?]
-	>=dev-libs/libsigc++-2.6:2
+RDEPEND="
+	>=dev-libs/ferrisloki-2.0.3
 	dev-libs/glib:2
+	>=dev-libs/libsigc++-2.6:2
+	virtual/fam
 	x11-libs/gtk+:2"
 DEPEND="${DEPEND}
 	virtual/pkgconfig"
@@ -47,8 +47,7 @@ src_configure() {
 		--disable-static \
 		--disable-glibtest \
 		--disable-gtktest \
-		--with-stlport="${EPREFIX}/usr/include/stlport" \
-		$(use_enable stlport) \
+		--disable-stlport \
 		$(use_with examples)
 }
 
