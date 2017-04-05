@@ -4676,11 +4676,11 @@ dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer i
 dev-libs/elfutils 0.166 0.167 0.168: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.0-r1: Stream-oriented XML parser library
-dev-libs/fampp2 7.0.1-r2: C++ wrapper for fam
+dev-libs/fampp2 7.0.1-r3: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
-dev-libs/ferrisloki 3.0.13 3.0.13-r1: Loki C++ library from Modern C++ Design
+dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5: foreign function call libraries
 dev-libs/flatbuffers 1.6.0: Memory efficient serialization library
 dev-libs/folks 0.11.2 0.11.3: Library for aggregating people from multiple sources
