@@ -1324,7 +1324,7 @@ app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
 app-emulation/kompose 0.2.0_p20170214 0.3.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
-app-emulation/libdsk 1.4.2: LIBDSK is a library for accessing discs and disc image files
+app-emulation/libdsk 1.4.2 1.5.4: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.28.5-r2: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
@@ -6464,7 +6464,7 @@ dev-perl/Redis 1.976.0: Perl binding for Redis database
 dev-perl/RedisDB 2.360.0: Perl extension to access redis database
 dev-perl/RedisDB-Parser 2.200.0: Redis protocol parser for RedisDB
 dev-perl/Ref-Util 0.101.0 0.111.0 0.113.0: Utility functions for checking references
-dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0 2016060801.0.0: Provide commonly requested regular expressions
+dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0 2016060801.0.0 2017040401.0.0: Provide commonly requested regular expressions
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-RegGrp 2.0.0: Groups a regular expressions collection
