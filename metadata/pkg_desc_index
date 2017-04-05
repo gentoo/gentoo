@@ -10423,6 +10423,7 @@ dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3 0.16: tool f
 dev-util/rebar 2.6.1 2.6.2 2.6.3 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
+dev-util/repo 1.12.37: Google tool for managing git, particularly multiple repos
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rosdep 0.11.5 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
@@ -16031,7 +16032,7 @@ sci-calculators/units 2.13 2.14 2.14-r1: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2-r1: X-ray Fluorescence Toolkit
-sci-chemistry/acpype 389: AnteChamber PYthon Parser interfacE
+sci-chemistry/acpype 0.1.0: AnteChamber PYthon Parser interfacE
 sci-chemistry/ambertools 1.5-r1: A suite for carrying out complete molecular mechanics investigations
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
 sci-chemistry/aqua 3.2-r2: Program suite in this distribution calculates restraint violations
