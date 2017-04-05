@@ -4,11 +4,11 @@ DESCRIPTION=a fast web-interface for git repositories
 EAPI=5
 HOMEPAGE=http://git.zx2c4.com/cgit/about
 IUSE=doc +highlight +lua +jit vhosts
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl:0 virtual/httpd-cgi highlight? ( || ( dev-python/pygments app-text/highlight ) ) lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) ) >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=mirror://kernel/software/scm/git/git-2.10.2.tar.xz http://git.zx2c4.com/cgit/snapshot/cgit-1.1.tar.xz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7	webapp	a76ebd3cb5649737496e8238992dd7ca
-_md5_=cccceb5cb7c5ea04e3c7ed6708109b32
+_md5_=4b5dae37d859780fba4cb85ed880af37
