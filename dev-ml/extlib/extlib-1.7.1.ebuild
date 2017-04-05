@@ -15,7 +15,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc +ocamlopt"
 S="${WORKDIR}/ocaml-${P}"
 
