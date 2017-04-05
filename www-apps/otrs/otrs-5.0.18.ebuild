@@ -6,10 +6,10 @@ EAPI="6"
 inherit user systemd
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
-HOMEPAGE="https://otrs.org/"
+HOMEPAGE="https://www.otrs.com/"
 SRC_URI="https://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3+"
 KEYWORDS="~amd64 ~x86"
 IUSE="apache2 fastcgi +gd ldap mod_perl +mysql pdf postgres soap"
 SLOT="0"
@@ -63,14 +63,14 @@ RDEPEND="dev-perl/Apache-Reload
 	)
 	"
 
-OTRS_HOME="${EROOT%/}/var/lib/otrs"
+OTRS_HOME="/var/lib/otrs"
 
 pkg_setup() {
 	# The enewuser otrs will fail if apache isn't there, but it's an optional dep
 	# so we create the apache user here just in case
 	enewgroup apache 81
 	enewuser apache 81 -1 /var/www apache
-	enewuser otrs -1 -1 ${OTRS_HOME} apache
+	enewuser otrs -1 -1 ${EROOT%/}/${OTRS_HOME} apache
 }
 
 src_prepare() {
@@ -118,7 +118,7 @@ src_install() {
 	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE \
 		Custom Kernel bin scripts var
 
-	cat "${S}"/var/cron/*.dist > crontab || die
+	cat "${S}"/var/cron/*.dist > ${T}/crontab || die
 	insinto /usr/share/doc/${PF}/
 	doins crontab
 
