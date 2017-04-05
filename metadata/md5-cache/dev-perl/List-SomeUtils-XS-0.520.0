@@ -4,11 +4,11 @@ DESCRIPTION=XS implementation for List::SomeUtils
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/List-SomeUtils-XS/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=Artistic-2
 RDEPEND=virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/List-SomeUtils-XS-0.52.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
-_md5_=27dfe6e6f406d0eee986f94c6245bcec
+_md5_=2a8449439bfc09caabf8607c1a72cd65

@@ -4,11 +4,11 @@ DESCRIPTION=Combines many List::* utility modules in one bite-sized package
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/List-AllUtils/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=Artistic-2
 RDEPEND=>=dev-perl/List-SomeUtils-0.500.0 >=virtual/perl-Scalar-List-Utils-1.450.0 >=dev-perl/List-UtilsBy-0.100.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/List-AllUtils-0.14.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
-_md5_=03df3acbaa2399abe4b18fdd267f5903
+_md5_=df934df1fb379284f1957bc37a364233
