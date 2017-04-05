@@ -29,6 +29,7 @@ DOCS=( AUTHORS ChangeLog ChangeLog.hg IDEAS NEWS QUOTES README TODO )
 PATCHES=(
 		"${FILESDIR}"/${P}-automake112.patch
 		"${FILESDIR}"/${P}-boost150.patch
+		"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_prepare() {
