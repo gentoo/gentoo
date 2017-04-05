@@ -5,10 +5,6 @@
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
 net-proxy/haproxy device-atlas
 
-# Johannes Huber <johu@gentoo.org> (11 Mar 2017)
-# Unkeyworded depdendency on app-text/editorconfig-core-c
-kde-frameworks/ktexteditor editorconfig
-
 # Alon Bar-Lev <alonbl@gentoo.org> (10 Mar 2017)
 # net-firewall/ipset is not available on arm
 net-firewall/firehol ipset
