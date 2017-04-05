@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Alexis Ballier <aballier@gentoo.org> (4 Mar 2017)
+# media-libs/x264 not stable yet. Remove when it is.
+x264
+
 # Andrey Grozin <grozin@gentoo.org> (16 May 2014)
 # No stable gcl
 gcl
