@@ -496,3 +496,6 @@ app-admin/rsyslog zeromq
 # Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
 # RPI support on arm
 dev-libs/libcec -raspberry-pi
+
+# Enable MQTT support on supported architectures
+app-admin/collectd -collectd_plugins_mqtt
