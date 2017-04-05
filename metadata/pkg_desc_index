@@ -6394,7 +6394,7 @@ dev-perl/Params-Validate 1.70.0-r1 1.220.0 1.230.0: Flexible system for validati
 dev-perl/Params-ValidationCompiler 0.230.0: Build an optimized subroutine parameter validator once, use it forever
 dev-perl/Parse-ErrorString-Perl 0.220.0: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
-dev-perl/Parse-RecDescent 1.967.13 1.967.14: Generate Recursive-Descent Parsers
+dev-perl/Parse-RecDescent 1.967.13 1.967.14 1.967.15: Generate Recursive-Descent Parsers
 dev-perl/Parse-Syslog 1.100.0-r1: Parse::Syslog - Parse Unix syslog files
 dev-perl/Parse-Yapp 1.50.0-r1: Compiles yacc-like LALR grammars to generate Perl OO parser modules
 dev-perl/Passwd-Linux 1.200.0-r1 1.300.0: Perl module for manipulating the passwd and shadow files
