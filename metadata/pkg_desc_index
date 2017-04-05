@@ -6201,7 +6201,7 @@ dev-perl/Module-Compile 0.350.0: Perl Module Compilation
 dev-perl/Module-Find 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.90.0: Loads one of several alternate underlying implementations for a module
 dev-perl/Module-Info 0.350.0-r1 0.370.0-r1: Information about Perl modules
-dev-perl/Module-Install 1.160.0: Standalone, extensible Perl module installer
+dev-perl/Module-Install 1.160.0 1.180.0: Standalone, extensible Perl module installer
 dev-perl/Module-Install-AuthorTests 0.2.0: Designate tests only run by module authors
 dev-perl/Module-Locate 1.800.0: Locate modules in the same fashion as require and use
 dev-perl/Module-Manifest 1.80.0-r1: Parse and examine a Perl distribution MANIFEST file
