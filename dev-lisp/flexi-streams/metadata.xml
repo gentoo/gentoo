@@ -12,6 +12,15 @@
 		encodings which can be changed on the fly. It also supplies
 		in-memory binary streams which are similar to string streams. 
 	</longdescription>
+	<longdescription lang="es">
+		FLEXI-STREAMS implementa flujos de datos bivalentes "virtuales"
+    que se pueden superponer a flujos de datos binarios reales o
+    bivalentes y que pueden ser utilizados para leer y escribir datos
+    en caracteres en distintas codificaciones sencillas o multi-octeto
+    que a su vez se pueden cambiar al vuelo. También proporciona flujos
+    de datos en memoria que son similares a los flujos de datos de
+    cadenas de caracteres.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">edicl/flexi-streams</remote-id>
 	</upstream>
