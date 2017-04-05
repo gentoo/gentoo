@@ -6403,7 +6403,7 @@ dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
 dev-perl/Path-Class 0.360.0: Cross-platform path specification manipulation
 dev-perl/Path-FindDev 0.5.3: Find a development path somewhere in an upper hierarchy
 dev-perl/Path-IsDev 1.1.3: Determine if a given Path resembles a development source tree
-dev-perl/Path-Tiny 0.61.0 0.84.0: File path utility
+dev-perl/Path-Tiny 0.61.0 0.84.0 0.104.0: File path utility
 dev-perl/Pegex 0.600.0 0.630.0: Acmeist PEG Parser Framework
 dev-perl/Perl-Critic 1.123 1.126.0: Critique Perl source code for best-practices
 dev-perl/Perl-Critic-Deprecated 1.119.0: Perl::Critic policies which have been superseded by others
@@ -16031,6 +16031,7 @@ sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.13 2.14 2.14-r1: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
+sci-chemistry/ParmEd 2.7.3: Parameter/topology editor and molecular simulator
 sci-chemistry/PyMca 4.6.2-r1: X-ray Fluorescence Toolkit
 sci-chemistry/acpype 0.1.0: AnteChamber PYthon Parser interfacE
 sci-chemistry/ambertools 1.5-r1: A suite for carrying out complete molecular mechanics investigations
