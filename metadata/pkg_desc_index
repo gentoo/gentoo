@@ -5450,7 +5450,7 @@ dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
 dev-perl/B-Hooks-EndOfScope 0.150.0 0.200.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
-dev-perl/B-Hooks-Parser 0.160.0: Interface to perls parser variables
+dev-perl/B-Hooks-Parser 0.160.0 0.190.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
@@ -13011,7 +13011,7 @@ media-libs/libmpdclient 2.9 2.10: A library for interfacing Music Player Daemon 
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0: An library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.8 1.1.11 1.1.12 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.11 1.1.12 1.1.13 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.0.7 1.0.7-r1 1.0.8 1.0.9 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libmypaint 1.3.0_beta1 1.3.0: Library for making brushstrokes
 media-libs/libnjb 2.2.6 2.2.7: a C library and API for communicating with the Creative Nomad JukeBox digital audio player
