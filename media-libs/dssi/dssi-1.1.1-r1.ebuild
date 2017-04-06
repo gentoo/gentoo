@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -15,7 +15,7 @@ IUSE="qt4"
 
 RDEPEND="media-libs/alsa-lib
 	>=media-libs/liblo-0.12
-	>=media-sound/jack-audio-connection-kit-0.99.14
+	virtual/jack
 	>=media-libs/ladspa-sdk-1.12-r2
 	>=media-libs/libsndfile-1.0.11
 	>=media-libs/libsamplerate-0.1.1-r1
