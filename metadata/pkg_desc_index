@@ -1295,7 +1295,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.26.1 1.27.0 1.28.0 2.0.0 2.2.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.12.6 1.13.1-r2 1.13.1-r3 17.03.0 17.03.1 17.04.0 9999: The core functions you need to create Docker images and run Docker containers
-app-emulation/docker-compose 1.10.0 1.10.1 1.11.1 1.11.2: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.10.0 1.10.1 1.11.1 1.11.2 1.12.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
