@@ -5386,7 +5386,7 @@ dev-ml/xmlm 1.2.0 1.3.0: Ocaml XML manipulation module
 dev-ml/xstr 0.2.1: Thread-safe implementation of string searching/matching/splitting
 dev-ml/yojson 1.3.3: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.4.1: Arithmetic and logic operations over arbitrary-precision integers
-dev-ml/zed 1.4: Zed is an abstract engine for text edition
+dev-ml/zed 1.4 1.5: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.60.0 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
