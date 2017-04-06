@@ -453,11 +453,6 @@ dev-perl/Params-ValidationCompiler
 # Unpatched security vulnerability per bug #509920
 www-apps/egroupware
 
-# Michał Górny <mgorny@gentoo.org> (27 Jun 2016)
-# (on behalf of QA & proxy-maint)
-# Major QA violations, bug #587342 (#585722 in particular).
-games-emulation/ppsspp
-
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 <media-video/motion-4.0.1-r1
