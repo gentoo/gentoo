@@ -262,4 +262,6 @@ multilib_src_install_all() {
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 _EOF_
 	doenvd "${T}/10llvm-${revord}"
+
+	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }
