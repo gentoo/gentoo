@@ -18,6 +18,7 @@ DEPEND="
 	dev-ml/react:="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
+	dev-ml/opam
 	dev-ml/jbuilder"
 
 src_compile() {
