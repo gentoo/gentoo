@@ -15,6 +15,7 @@ DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://llvm.org/"
 SRC_URI="http://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz
 	http://releases.llvm.org/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm-manpages-${PV}.tar.bz2 )
 	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 # Keep in sync with sys-devel/llvm
@@ -291,6 +292,12 @@ multilib_src_install_all() {
 	python_fix_shebang "${ED}"
 	if use static-analyzer; then
 		python_optimize "${ED}"usr/lib/llvm/${SLOT}/share/scan-view
+	fi
+
+	# install pre-generated manpages
+	if ! use doc; then
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/x/y/llvm-manpages-${PV}/clang"/*.1
 	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
