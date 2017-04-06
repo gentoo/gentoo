@@ -3789,30 +3789,30 @@ developers and volunteer mentors.</description>
     <description>The Gentoo Security Project's mission is to ensure that vulnerabilities in software accessible through the Portage tree are found and fixed in a timely manner, so that our users remain protected against known vulnerabilities.</description>
     <subproject ref="security-audit@gentoo.org"/>
     <subproject ref="security-kernel@gentoo.org"/>
-    <member is-lead="1">
+    <member>
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
-      <role>Operational Manager</role>
+      <role>GLSA Coordinator</role>
     </member>
     <member>
       <email>ackle@gentoo.org</email>
       <name>Sean Amoss</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
-      <role>GLSA Coordinator</role>
+      <role>Team lead</role>
     </member>
     <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>keytoaster@gentoo.org</email>
       <name>Tobias Heinlein</name>
-      <role>Operational Manager</role>
+      <role>GLSA Coordinator</role>
     </member>
     <member>
       <email>k_f@gentoo.org</email>
