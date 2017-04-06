@@ -296,4 +296,6 @@ multilib_src_install_all() {
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 	# match 'html' non-compression
 	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
+	# +x for some reason; TODO: investigate
+	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
 }
