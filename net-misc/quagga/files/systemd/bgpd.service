@@ -1,7 +1,7 @@
 [Unit]
 Description=BGP routing daemon
 Documentation=man:bgpd(8) man:zebra(8)
-BindTo=zebra.service
+BindsTo=zebra.service
 After=network.target zebra.service
 ConditionPathExists=/etc/quagga/bgpd.conf
 
