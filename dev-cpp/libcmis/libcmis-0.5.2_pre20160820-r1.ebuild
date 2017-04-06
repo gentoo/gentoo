@@ -51,6 +51,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/${PN}-0.5.2-fix-gdrive-2fa.patch" )
+
 src_prepare() {
 	default
 	[[ ${PV} = *_pre* || ${PV} = 9999 ]] && eautoreconf
