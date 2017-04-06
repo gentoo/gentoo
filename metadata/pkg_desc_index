@@ -2055,7 +2055,7 @@ app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r2 1.5.2-r3 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.5.0 2.7.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.5.0 2.8.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
@@ -2835,6 +2835,7 @@ app-xemacs/xslide 1.09: XSL editing support
 app-xemacs/xslt-process 1.12: XSLT processing support
 app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
+dev-ada/asis 2016: To develop tools for Ada software
 dev-ada/gnat_util 2016: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016: GNAT Component Collection
 dev-ada/gprbuild 2016: Multi-Language Management
@@ -12953,7 +12954,6 @@ media-libs/libdvdnav 4.2.1 5.0.1 5.0.3 9999: Library for DVD navigation tools
 media-libs/libdvdplay 1.0.1: A simple library designed for DVD-menu navigation
 media-libs/libdvdread 4.2.1 5.0.0-r2 5.0.2 5.0.3 9999: Library for DVD navigation tools
 media-libs/libebur128 1.0.2 1.0.3 1.1.0 1.2.0-r1: A library implementing the EBU R128 loudness standard
-media-libs/libechonest 2.0.2 2.2.0-r1 2.3.0 2.3.1 2.3.1-r1 9999: A library for communicating with The Echo Nest
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.4.1 9999: Epoxy is a library for handling OpenGL function pointer management for you

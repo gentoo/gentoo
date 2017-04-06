@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ada/gnat_util dev-ada/gnatcoll[projects,shared] dev-ada/gprbuild dev-ada/xmlada dev-lang/gnat-gpl
+DESCRIPTION=To develop tools for Ada software
+EAPI=6
+HOMEPAGE=http://libre.adacore.com/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71 -> asis-gpl-2016-src.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c
+_md5_=006b10b21b6a74c2f5ad269514b67cce
