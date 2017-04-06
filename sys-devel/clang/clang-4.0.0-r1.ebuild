@@ -187,6 +187,7 @@ multilib_src_configure() {
 		)
 		use doc && mycmakeargs+=(
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
 	else
@@ -293,4 +294,6 @@ multilib_src_install_all() {
 	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
+	# match 'html' non-compression
+	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
 }
