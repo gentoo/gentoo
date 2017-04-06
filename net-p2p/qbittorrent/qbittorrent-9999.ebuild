@@ -45,7 +45,6 @@ DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_configure() {
 	local mycmakeargs=(
-		-DQT5=ON
 		-DSYSTEM_QTSINGLEAPPLICATION=ON
 		-DDBUS=$(usex dbus)
 		-DGUI=$(usex X)
