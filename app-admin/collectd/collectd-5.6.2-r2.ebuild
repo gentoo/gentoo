@@ -15,7 +15,7 @@ SRC_URI="${HOMEPAGE%/}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev xfs"
 
 # The plugin lists have to follow here since they extend IUSE
@@ -152,6 +152,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.6.0-gentoo.patch
+	"${FILESDIR}"/${PN}-5.6.2-CVE-2017-7401.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
@@ -472,10 +473,13 @@ pkg_postinst() {
 		use collectd_plugins_exec      && caps+=('CAP_SETUID' 'CAP_SETGID')
 		use collectd_plugins_iptables  && caps+=('CAP_NET_ADMIN')
 		use collectd_plugins_filecount && caps+=('CAP_DAC_READ_SEARCH')
-		use collectd_plugins_turbostat && caps+=('CAP_SYS_RAWIO')
 
 		if use collectd_plugins_dns || use collectd_plugins_ping; then
 			caps+=('CAP_NET_RAW')
+		fi
+
+		if use collectd_plugins_turbostat || use collectd_plugins_smart; then
+			caps+=('CAP_SYS_RAWIO')
 		fi
 
 		if [ ${#caps[@]} -gt 0 ]; then
@@ -509,6 +513,15 @@ pkg_postinst() {
 
 	if use collectd_plugins_email; then
 		ewarn "The email plug-in is deprecated. To submit statistics please use the unixsock plugin."
+	fi
+
+	if use collectd_plugins_smart; then
+		elog ""
+		elog "If you are using smart plugin and don't run collectd as root make sure"
+		elog "that the collectd user is allowed to access the disk you want to monitor"
+		elog "(can be done via udev rule for example) and that collectd has the required"
+		elog "capabilities set (which is the default when package was emerged with"
+		elog "'filecaps' USE flag set)."
 	fi
 
 	if use contrib; then
