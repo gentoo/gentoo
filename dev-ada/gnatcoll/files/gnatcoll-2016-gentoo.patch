@@ -147,3 +147,23 @@
  
        case GnatColl_Shared.Atomics is
           when "intrinsic" =>
+--- gnatcoll-gpl-2016-src/aclocal.m4.old	2017-04-06 08:25:14.796699365 +0200
++++ gnatcoll-gpl-2016-src/aclocal.m4	2017-04-06 08:25:36.622318016 +0200
+@@ -45,7 +45,7 @@
+    cat > conftest.ada <<EOF
+ [$3]
+ EOF
+-   if AC_TRY_COMMAND([gnatchop -q conftest.ada && $1 $2 >/dev/null 2>conftest.out])
++   if AC_TRY_COMMAND([${GNATCHOP} -q conftest.ada && $1 $2 >/dev/null 2>conftest.out])
+    then
+       : Success
+       $4
+@@ -68,7 +68,7 @@
+ AC_DEFUN(AM_HAS_INTRINSIC_SYNC_COUNTERS,
+ [
+   AC_MSG_CHECKING([whether platform supports atomic inc/dec])
+-  AM_TRY_ADA([gnatmake], [check.adb],
++  AM_TRY_ADA([${GNATMAKE}], [check.adb],
+ [
+ with Interfaces; use Interfaces;
+ procedure Check is

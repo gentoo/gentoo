@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib multiprocessing
+inherit multilib multiprocessing autotools
 
 MYP=${PN}-gpl-${PV}
 
@@ -38,6 +38,23 @@ S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
+pkg_setup() {
+	GCC=${ADA:-$(tc-getCC)}
+	GNATMAKE="${GCC/gcc/gnatmake}"
+	GNATCHOP="${GCC/gcc/gnatchop}"
+	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
+		eerror "You need a gcc compiler that provides the Ada Compiler:"
+		eerror "1) use gcc-config to select the right compiler or"
+		eerror "2) set ADA=gcc-4.9.4 in make.conf"
+		die "ada compiler not available"
+	fi
+}
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	local myConf=""
 	if use sqlite; then
@@ -46,6 +63,8 @@ src_configure() {
 		myConf="$myConf --without-sqlite"
 	fi
 	econf \
+		GNATCHOP="${GNATCHOP}" \
+		GNATMAKE="${GNATMAKE}" \
 		$(use_with gmp) \
 		$(use_with iconv) \
 		$(use_with postgresql) \
