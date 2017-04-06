@@ -7,17 +7,19 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-multilib flag-o-matic
 
 DESCRIPTION="Full Database Encryption for SQLite"
-HOMEPAGE="http://sqlcipher.net/"
+HOMEPAGE="https://www.zetetic.net/sqlcipher/"
 SRC_URI="https://github.com/sqlcipher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="readline static-libs tcl test"
+IUSE="readline libressl static-libs tcl test"
 
 # Tcl is always needed by buildsystem
-RDEPEND="dev-libs/openssl:0[${MULTILIB_USEDEP}]
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
