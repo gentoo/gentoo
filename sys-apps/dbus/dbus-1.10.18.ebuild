@@ -13,15 +13,18 @@ SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.gz"
 LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="debug doc selinux static-libs systemd test user-session X"
+IUSE="debug doc elogind selinux static-libs systemd test user-session X"
 
 RESTRICT="test"
+
+REQUIRED_USE="?? ( elogind systemd )"
 
 CDEPEND="
 	>=dev-libs/expat-2
 	selinux? (
 		sys-libs/libselinux
 		)
+	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:0= )
 	X? (
 		x11-libs/libX11
@@ -73,6 +76,8 @@ src_prepare() {
 		-e '/"dispatch"/d' \
 		bus/test-main.c || die
 
+	eapply "${FILESDIR}/${PN}-enable-elogind.patch"
+
 	eapply_user
 
 	# required for asneeded patch but also for bug 263909, cross-compile so
@@ -108,6 +113,7 @@ multilib_src_configure() {
 		--disable-apparmor
 		$(use_enable kernel_linux inotify)
 		$(use_enable kernel_FreeBSD kqueue)
+		$(use_enable elogind)
 		$(use_enable systemd)
 		$(use_enable user-session)
 		--disable-embedded-tests
@@ -141,6 +147,7 @@ multilib_src_configure() {
 		myconf+=(
 			--disable-selinux
 			--disable-libaudit
+			--disable-elogind
 			--disable-systemd
 			--without-x
 
