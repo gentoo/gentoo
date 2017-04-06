@@ -1294,7 +1294,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.26.1 1.27.0 1.28.0 2.0.0 2.2.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.12.6 1.13.1-r2 1.13.1-r3 17.03.0 17.03.1 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.12.6 1.13.1-r2 1.13.1-r3 17.03.0 17.03.1 17.04.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.10.0 1.10.1 1.11.1 1.11.2: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
@@ -2343,7 +2343,7 @@ app-text/libgepub 0.4: GObject based library for handling and rendering epub doc
 app-text/libgxps 0.2.4 0.2.5: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
-app-text/libmwaw 0.3.8 0.3.9 0.3.10 9999: Library parsing many pre-OSX MAC text formats
+app-text/libmwaw 0.3.8 0.3.10 0.3.11 9999: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
@@ -2867,7 +2867,7 @@ dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
 dev-cpp/libassa 3.5.1-r2: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
-dev-cpp/libcmis 0.5.2_pre20160820 9999: C++ client library for the CMIS interface
+dev-cpp/libcmis 0.5.2_pre20160820 0.5.2_pre20160820-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
@@ -18642,7 +18642,7 @@ x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 0.98 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
-x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
+x11-libs/libpciaccess 0.13.3 0.13.4 0.13.5: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
 x11-libs/libqxt 0.6.2-r2: Extension library providing cross-platform utility classes for the Qt toolkit
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
