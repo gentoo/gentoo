@@ -17496,7 +17496,7 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible)
 sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1 20161212 20170201: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.0-r100 3.9.1-r100 4.0.0 9999: C language family frontend for LLVM
+sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.0-r100 3.9.1-r100 4.0.0-r1 9999: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.0 3.9.1 4.0.0 9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 20160602-r1 99999999: Gentoo Cross-toolchain generator
@@ -17517,7 +17517,7 @@ sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compili
 sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 4.9.4 5.3.0 5.4.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r2 2.4.6-r3 2.4.6-r4 9999: A shared library tool for developers
 sys-devel/lld 4.0.0 9999: The LLVM linker (link editor)
-sys-devel/llvm 3.4.2-r100 3.5.2 3.6.2 3.7.1-r3 3.8.1 3.8.1-r2 3.9.0-r1 3.9.1 3.9.1-r1 4.0.0 9999: Low Level Virtual Machine
+sys-devel/llvm 3.4.2-r100 3.5.2 3.6.2 3.7.1-r3 3.8.1 3.8.1-r2 3.9.0-r1 3.9.1 3.9.1-r1 4.0.0-r1 9999: Low Level Virtual Machine
 sys-devel/llvmgold 4 5: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18: GNU macro processor
 sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2.1: Standard tool to compile source trees
@@ -18389,7 +18389,7 @@ www-servers/thin 1.7.0 1.7.0-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.73 7.0.75 7.0.76 8.0.39 8.0.41 8.5.9 8.5.11 8.5.12 8.5.13 9.0.0_alpha19: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1: Python web framework and asynchronous networking library
-www-servers/uwsgi 2.0.13.1-r1 2.0.14-r1: uWSGI server for Python web applications
+www-servers/uwsgi 2.0.13.1-r1 2.0.14-r1 2.0.15: uWSGI server for Python web applications
 www-servers/varnish 4.0.3 4.1.5 5.0.0 5.1.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
