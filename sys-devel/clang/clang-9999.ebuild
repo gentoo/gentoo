@@ -288,4 +288,6 @@ multilib_src_install_all() {
 	if use static-analyzer; then
 		python_optimize "${ED}"usr/lib/llvm/${SLOT}/share/scan-view
 	fi
+
+	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }
