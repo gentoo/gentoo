@@ -6122,7 +6122,7 @@ dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
 dev-perl/MARC-Record 2.0.6: Perl extension for handling MARC records
 dev-perl/MARC-XML 1.0.3: A subclass of MARC.pm to provide XML support
-dev-perl/MCE 1.705.0 1.809.0 1.821.0 1.826.0: Many-Core Engine providing parallel processing capabilities
+dev-perl/MCE 1.705.0 1.809.0 1.821.0 1.826.0 1.827.0: Many-Core Engine providing parallel processing capabilities
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
 dev-perl/MIME-Base32 1.20.0: Base32 encoder / decoder
 dev-perl/MIME-Charset 1.9.3 1.12.0: Charset Informations for MIME
