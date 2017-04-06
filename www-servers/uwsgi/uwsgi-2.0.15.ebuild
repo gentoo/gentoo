@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -116,7 +116,7 @@ CDEPEND="sys-libs/zlib
 	)
 	pypy? ( virtual/pypy )
 	python? ( ${PYTHON_DEPS} )
-	python_gevent? ( >=dev-python/gevent-1.0.1[$(python_gen_usedep 'python2*')] )
+	python_gevent? ( >=dev-python/gevent-1.2.1[${PYTHON_USEDEP}] )
 	ruby? ( $(ruby_implementations_depend) )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -131,9 +131,9 @@ APXS2_S="${S}/apache2"
 APACHE2_MOD_CONF="42_mod_uwsgi-r2 42_mod_uwsgi"
 
 # FIXME: is this patch still useful?
-# PATCHES=(
-#     "${FILESDIR}/2.0.14-php-plugin.patch"
-# )
+PATCHES=(
+	"${FILESDIR}/2.0.14-php-plugin.patch"
+)
 
 src_unpack() {
 	default
@@ -260,9 +260,7 @@ python_compile_plugins() {
 	fi
 
 	if use python_gevent ; then
-		if [[ "${PYV}" == "27" ]] ; then
-			${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
-		fi
+		${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
 	fi
 
 	if use pypy ; then
@@ -397,11 +395,7 @@ pkg_postinst() {
 			fi
 		fi
 		if use python_gevent ; then
-			if [[ ${EPYTHON} == python2* ]] ; then
-				elog "  '--plugins ${EPYV},gevent${PYV}' for gevent support in ${EPYTHON}"
-			else
-				elog "  (gevent is currently not supported in ${EPYTHON})"
-			fi
+			elog "  '--plugins ${EPYV},gevent${PYV}' for gevent support in ${EPYTHON}"
 		fi
 	}
 
