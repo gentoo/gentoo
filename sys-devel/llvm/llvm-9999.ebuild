@@ -258,7 +258,10 @@ multilib_src_install_all() {
 		PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
 		# we need to duplicate it in ROOTPATH for Portage to respect...
 		ROOTPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
+		MANPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 _EOF_
 	doenvd "${T}/10llvm-${revord}"
+
+	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }

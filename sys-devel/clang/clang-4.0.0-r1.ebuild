@@ -15,6 +15,7 @@ DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://llvm.org/"
 SRC_URI="http://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz
 	http://releases.llvm.org/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm-manpages-${PV}.tar.bz2 )
 	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 # Keep in sync with sys-devel/llvm
@@ -187,6 +188,7 @@ multilib_src_configure() {
 		)
 		use doc && mycmakeargs+=(
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
 	else
@@ -291,4 +293,16 @@ multilib_src_install_all() {
 	if use static-analyzer; then
 		python_optimize "${ED}"usr/lib/llvm/${SLOT}/share/scan-view
 	fi
+
+	# install pre-generated manpages
+	if ! use doc; then
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/x/y/llvm-manpages-${PV}/clang"/*.1
+	fi
+
+	docompress "/usr/lib/llvm/${SLOT}/share/man"
+	# match 'html' non-compression
+	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
+	# +x for some reason; TODO: investigate
+	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
 }

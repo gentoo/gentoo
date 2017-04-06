@@ -27,11 +27,15 @@ LICENSE="UoI-NCSA"
 SLOT="5"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc multitarget
-	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+	+static-analyzer test xml z3 elibc_musl kernel_FreeBSD
+	${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
-	static-analyzer? ( dev-lang/perl:* )
+	static-analyzer? (
+		dev-lang/perl:*
+		z3? ( sci-mathematics/z3:0= )
+	)
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
@@ -170,6 +174,9 @@ multilib_src_configure() {
 
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
+		# z3 is not multilib-friendly
+		-DCLANG_ANALYZER_BUILD_Z3=$(multilib_native_usex z3)
+		-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
@@ -184,6 +191,7 @@ multilib_src_configure() {
 		)
 		use doc && mycmakeargs+=(
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
 	else
@@ -288,4 +296,10 @@ multilib_src_install_all() {
 	if use static-analyzer; then
 		python_optimize "${ED}"usr/lib/llvm/${SLOT}/share/scan-view
 	fi
+
+	docompress "/usr/lib/llvm/${SLOT}/share/man"
+	# match 'html' non-compression
+	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
+	# +x for some reason; TODO: investigate
+	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
 }
