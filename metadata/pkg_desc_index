@@ -5107,7 +5107,7 @@ dev-libs/xqilla 2.3.3: An XQuery and XPath 2 library and command line utility wr
 dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.12: A reliable, thread safe, clear-model, pure C logging library.
-dev-libs/zookeeper-c 3.4.8 3.4.9: C client interface to Zookeeper server
+dev-libs/zookeeper-c 3.4.8 3.4.9 3.4.10: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
@@ -5216,7 +5216,7 @@ dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
-dev-ml/flow_parser 0.42.0: JavaScript parser written in OCaml
+dev-ml/flow_parser 0.42.0 0.43.1: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
@@ -5610,7 +5610,7 @@ dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-CipherSaber 1.10.0: Perl module implementing CipherSaber encryption
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
-dev-perl/Crypt-Curve25519 0.50.0: Shared secret elliptic-curve Diffie-Hellman generator
+dev-perl/Crypt-Curve25519 0.50.0 0.60.0: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0: Crypt::DES module for perl
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
 dev-perl/Crypt-DH 0.70.0-r1: Diffie-Hellman key exchange system
@@ -5638,7 +5638,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/CryptX 0.25.0 0.39.0 0.44.0 0.46.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.25.0 0.39.0 0.44.0 0.46.0 0.47.0: Self-contained crypto toolkit
 dev-perl/Curses 1.320.0 1.330.0 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
@@ -8544,7 +8544,7 @@ dev-python/rope_py3k 0.9.4: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
-dev-python/rosdistro 0.6.1 9999: Tools to work with catkinized rosdistro files
+dev-python/rosdistro 0.6.1 0.6.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.1.0-r1 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2 2.3.1 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
@@ -9224,13 +9224,13 @@ dev-ros/turtle_actionlib 0.1.8 0.1.10 9999: Demonstrates how to write an action 
 dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
 dev-ros/turtlesim 0.6.1 0.7.0 0.7.1 0.8.0 9999: Tool made for teaching ROS and ROS packages
-dev-ros/unique_id 1.0.5 9999: ROS Python and C++ interfaces for universally unique identifiers
+dev-ros/unique_id 1.0.6 9999: ROS Python and C++ interfaces for universally unique identifiers
 dev-ros/urdf 1.12.6 1.12.7 1.12.8 9999: C++ parser for the Unified Robot Description Format (URDF)
 dev-ros/urdf_parser_plugin 1.12.7 1.12.8 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
 dev-ros/urg_node 0.1.9 0.1.10 9999: ROS wrapper for the Hokuyo urg_c library
-dev-ros/uuid_msgs 1.0.5 9999: ROS messages for universally unique identifiers
+dev-ros/uuid_msgs 1.0.6 9999: ROS messages for universally unique identifiers
 dev-ros/visp_auto_tracker 0.8.0 0.9.1 0.9.3 0.10.0 9999: Online automated pattern-based object tracker relying on visual servoing
 dev-ros/visp_bridge 0.8.0 0.9.1 0.9.3 0.10.0 9999: Converts between ROS structures and ViSP structures
 dev-ros/visp_camera_calibration 0.10.0 9999: Calibration of cameras using a customizable pattern and ViSP library
@@ -15820,7 +15820,7 @@ ros-meta/rqt_common_plugins 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 0.4.5 0.
 ros-meta/rqt_robot_plugins 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
 ros-meta/simulators 1.2.0 1.3.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
-ros-meta/unique_identifier 1.0.5 9999: ROS messages and interfaces for universally unique identifiers
+ros-meta/unique_identifier 1.0.5 1.0.6 9999: ROS messages and interfaces for universally unique identifiers
 ros-meta/vision_opencv 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Converts between ROS Image messages and OpenCV images
 ros-meta/vision_visp 0.9.3 0.10.0 9999: Virtual package providing ViSP related packages
 ros-meta/visualization_tutorials 0.9.2 0.10.1 9999: Metapackage referencing tutorials related to rviz and visualization
@@ -16469,7 +16469,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.11.14 0.12.1 0.12.2 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.12.2 0.12.4 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3: Image processing routines for SciPy
