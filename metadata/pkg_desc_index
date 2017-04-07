@@ -14249,7 +14249,7 @@ net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
-net-analyzer/lft 3.77 3.78: Layer Four Traceroute (LFT) and WhoB
+net-analyzer/lft 3.77 3.78 3.79: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/libnasl 2.2.9-r1: A remote security scanner for Linux (libnasl)
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 9.3-r1 9.3-r2 9999: Check websites for broken links
@@ -18966,7 +18966,7 @@ x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r1: Program suite to record, replay and distribute user actions
-x11-misc/xnots 0.2.1-r1 9999: A desktop sticky note program for the unix geek
+x11-misc/xnots 0.2.1-r1 0.2.1-r2 9999: A desktop sticky note program for the unix geek
 x11-misc/xorg-cf-files 1.0.6: Old Imake-related build files
 x11-misc/xosview 1.19: X11 operating system viewer
 x11-misc/xowl 9999: X11 Obstinate Window Lister
