@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ DESCRIPTION="Generate images from Bio::Seq objects for visualization purposes"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
 RDEPEND="
 	>=dev-perl/GD-2.300.0
@@ -21,6 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.420.0
+	test? ( dev-perl/CGI )
 "
 
 SRC_TEST=do
