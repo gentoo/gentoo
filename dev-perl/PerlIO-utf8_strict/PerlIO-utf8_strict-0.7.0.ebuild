@@ -3,7 +3,7 @@
 
 EAPI=6
 DIST_AUTHOR=LEONT
-DIST_VERSION=0.006
+DIST_VERSION=0.007
 inherit perl-module
 
 DESCRIPTION="Fast and correct UTF-8 IO"
