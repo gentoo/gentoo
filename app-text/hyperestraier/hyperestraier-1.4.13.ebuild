@@ -3,9 +3,9 @@
 
 EAPI="6"
 
-inherit autotools java-pkg-opt-2
+inherit autotools java-pkg-opt-2 perl-functions
 
-IUSE="bzip2 debug java lzo mecab ruby +zlib"
+IUSE="bzip2 debug java lzo mecab perl ruby +zlib"
 
 DESCRIPTION="a full-text search system for communities"
 HOMEPAGE="http://fallabs.com/hyperestraier/"
@@ -20,6 +20,7 @@ RDEPEND="dev-db/qdbm
 	java? ( >=virtual/jre-1.4:* )
 	lzo? ( dev-libs/lzo )
 	mecab? ( app-text/mecab )
+	perl? ( dev-lang/perl )
 	ruby? ( dev-lang/ruby:= )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
@@ -28,6 +29,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-configure.patch
+	"${FILESDIR}"/${PN}-perl.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 )
 HTML_DOCS=( doc/. )
@@ -36,11 +38,14 @@ AT_NOELIBTOOLIZE="yes"
 
 he_foreach_api() {
 	local u d
-	for u in java ruby; do
+	for u in java perl ruby; do
 		if ! use "${u}"; then
 			continue
 		fi
 		for d in ${u}native ${u}pure; do
+			if [[ ! -d "${d}" ]]; then
+				continue
+			fi
 			einfo "${EBUILD_PHASE} ${d}"
 			cd "${d}"
 			case "${EBUILD_PHASE}" in
@@ -84,7 +89,7 @@ src_prepare() {
 		-e "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" \
 		-e '/^LDENV/d' \
 		-e 's/make\( \|$\)/$(MAKE)\1/g' \
-		Makefile.in {java,ruby}*/Makefile.in
+		Makefile.in {java,perl,ruby}*/Makefile.in
 
 	mv configure.{in,ac}
 	eautoreconf
@@ -115,6 +120,11 @@ src_install() {
 	emake DESTDIR="${D}" MYDOCS= install
 	einstalldocs
 	he_foreach_api
+
+	if use perl; then
+		perl_delete_module_manpages
+		perl_fix_packlist
+	fi
 
 	rm -f "${D}"/usr/bin/*test
 }
