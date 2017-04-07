@@ -174,9 +174,9 @@ src_prepare() {
 		java-pkg-opt-2_src_prepare
 	fi
 
-	if ! gcc-specs-pie ; then
+	#if ! gcc-specs-pie ; then
 		rm "${WORKDIR}/patches/050_${PN}-5.0.2-nopie.patch" || die
-	fi
+	#fi
 
 	eapply "${WORKDIR}/patches"
 
