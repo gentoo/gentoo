@@ -5460,7 +5460,7 @@ dev-perl/BSON 1.2.2 1.4.0: BSON serialization and deserialization
 dev-perl/BZ-Client 1.72.0 4.400.0 4.400.100: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
-dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1 1.700.0: Regular expression-based Perl Parser for NCBI Entrez Gene
+dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1 1.700.0 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-Das 1.170.0-r1: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0: Generate images from Bio::Seq objects for visualization purposes
 dev-perl/Bio-SamTools 1.420.0: Read SAM/BAM database files
