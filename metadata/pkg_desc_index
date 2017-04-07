@@ -3991,7 +3991,7 @@ dev-java/dbus-java 2.7-r1: Java bindings for the D-Bus messagebus
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
 dev-java/dnsjava 2.1.6 2.1.7: An implementation of DNS in Java
-dev-java/dom4j 1.6.1-r5 1.6.1-r6 1.6.1-r7: Java library for working with XML
+dev-java/dom4j 1.6.1-r7: XML Java library
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library for implementation of interoperable metaobject protocols for dynamic languages
 dev-java/easymock 3.3.1: Provides Mock Objects for interfaces in JUnit tests by generating them on the fly
@@ -4220,7 +4220,7 @@ dev-java/json-simple 1.1: Simple Java toolkit for JSON
 dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jspeex 0.9.7-r1: Speex speech codec library for Java
 dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface Classes
-dev-java/jsr173 1.0-r3 1.0-r4: Yet another Java library for parsing and writing XML
+dev-java/jsr173 1.0-r4: Yet another Java library for parsing and writing XML
 dev-java/jsr181 1.0-r2: JSR 181 API classes
 dev-java/jsr223 1.0-r2: Scripting for the Java(TM) Platform
 dev-java/jsr225 1.0: XQuery API for Java
