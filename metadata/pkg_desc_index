@@ -18311,7 +18311,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 44.0.2510.1159: A fast and secure web browser
 www-client/opera-beta 45.0.2552.89: A fast and secure web browser
-www-client/opera-developer 45.0.2548.0: A fast and secure web browser
+www-client/opera-developer 46.0.2556.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -18324,7 +18324,7 @@ www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, H
 www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.7.735.46_p1 1.8.770.50_p1 1.8.770.54_p1: A new browser for our friends
+www-client/vivaldi 1.8.770.50_p1 1.8.770.54_p1 1.9.804.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
