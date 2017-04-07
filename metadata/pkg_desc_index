@@ -16198,7 +16198,7 @@ sci-electronics/voacapl 0.6.7: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48 3.8.83 3.9.62: Circuit drawing and schematic capture program
 sci-electronics/xnec2c 3.4 3.5 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
-sci-geosciences/bt747 2.1.7-r1: MTK GPS Datalogger Device Control
+sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
 sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the management and analysis of climate data
 sci-geosciences/congen 1.6.2 1.6.2-r1: Generate the speeds, equilibrium arguments, and node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
