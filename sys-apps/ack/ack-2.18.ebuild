@@ -13,11 +13,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="test"
 
-RDEPEND=">=dev-perl/File-Next-1.100.0"
+RDEPEND=">=dev-perl/File-Next-1.160.0"
 DEPEND="${RDEPEND}
 	test? ( dev-perl/IO-Tty )"
 
-SRC_TEST=do
 PATCHES=( "${FILESDIR}"/${PN}-2.14-gentoo.patch )
 
 src_test() {
