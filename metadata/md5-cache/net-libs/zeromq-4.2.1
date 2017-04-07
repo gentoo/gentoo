@@ -4,11 +4,11 @@ DESCRIPTION=A brokerless kernel
 EAPI=6
 HOMEPAGE=http://www.zeromq.org/
 IUSE=pgm +sodium static-libs test
-KEYWORDS=amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 arm arm64 hppa ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-3
 RDEPEND=sys-libs/libunwind sodium? ( dev-libs/libsodium:= ) pgm? ( =net-libs/openpgm-5.2.122 )
 SLOT=0/5
 SRC_URI=https://github.com/zeromq/libzmq/releases/download/v4.2.1/zeromq-4.2.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=a1e477674017f4151c007061ea784cde
+_md5_=52198f9a252567067e0f567c77b0fd79
