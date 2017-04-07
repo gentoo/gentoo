@@ -5481,7 +5481,7 @@ dev-perl/CDB_File 0.980.0 0.990.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.220.0 4.250.0 4.310.0 4.330.0: Simple Common Gateway Interface Class
+dev-perl/CGI 4.220.0 4.250.0 4.310.0 4.330.0 4.360.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Compile 0.210.0 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
@@ -5853,7 +5853,7 @@ dev-perl/File-Find-Rule-Perl 1.130.0 1.150.0: Common rules for searching for Per
 dev-perl/File-Flat 1.40.0-r1: Implements a flat filesystem
 dev-perl/File-Flock 2014.10.0: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.020.0-r1: Find matches to a pattern in a series of files and related functions
-dev-perl/File-HomeDir 1.0.0-r1: Get home directory for self or other user
+dev-perl/File-HomeDir 1.0.0-r1 1.2.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
@@ -6194,7 +6194,7 @@ dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does
 dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.501.270 1.201.612.290 1.201.701.170: enable all of the features of Modern Perl with one import
-dev-perl/Module-Build 0.420.500 0.421.600 0.421.800 0.422.200: Build and install Perl modules
+dev-perl/Module-Build 0.421.600 0.421.800 0.422.200: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
 dev-perl/Module-Build-XSUtil 0.160.0: A Module::Build class for building XS modules
