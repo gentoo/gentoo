@@ -1344,10 +1344,15 @@
     <email>genkernel@gentoo.org</email>
     <name>Genkernel Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Genkernel</url>
-    <description>The Genkernel project handles the maintenance and development of sys-kernel/genkernel</description>
+    <description>The Genkernel project handles the maintenance and development of [https://packages.gentoo.org/packages/sys-kernel/genkernel sys-kernel/genkernel].</description>
     <member>
       <email>axs@gentoo.org</email>
       <name>Ian Stakenvicius</name>
+    </member>
+    <member>
+      <email>maffblaster@gentoo.org</email>
+      <name>Matthew Marchese</name>
+      <role>Merge man</role>
     </member>
     <member is-lead="1">
       <email>robbat2@gentoo.org</email>
