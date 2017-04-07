@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-cpp/eigen-3.1 dev-libs/boost:= dev-libs/mpfr:0 sys-libs/zlib x11-libs/libX11 virtual/glu virtual/opengl gmp? ( dev-libs/gmp[cxx] ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) mpfi? ( sci-libs/mpfi ) ntl? ( dev-libs/ntl ) app-arch/xz-utils virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=C++ library for geometric algorithms and data structures
+EAPI=6
+HOMEPAGE=http://www.cgal.org/
+IUSE=doc examples +gmp mpfi ntl qt5
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-3 GPL-3 Boost-1.0
+RDEPEND=>=dev-cpp/eigen-3.1 dev-libs/boost:= dev-libs/mpfr:0 sys-libs/zlib x11-libs/libX11 virtual/glu virtual/opengl gmp? ( dev-libs/gmp[cxx] ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) mpfi? ( sci-libs/mpfi ) ntl? ( dev-libs/ntl )
+SLOT=0
+SRC_URI=https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.9/CGAL-4.9.tar.xz -> cgal-4.9.tar.xz doc? ( https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.9/CGAL-4.9-doc_html.tar.xz -> cgal-4.9-doc_html-1.tar.xz )
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=6cb38004686f251813e3168bd04eaace
