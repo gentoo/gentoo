@@ -4,11 +4,11 @@ DESCRIPTION=Locate per-dist and per-module shared files
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/File-ShareDir/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~x86-solaris
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=dev-perl/Class-Inspector-1.120.0 >=virtual/perl-File-Spec-0.800.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RE/REHSACK/File-ShareDir-1.102.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
-_md5_=2c7917e64b6edd845034412b375470df
+_md5_=d6cfe54ab3b17b6ed319ea65d2b121e5
