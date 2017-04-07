@@ -6421,7 +6421,7 @@ dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.11.0: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.140.0-r1: PerlIO::eol - PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.190.0: PerlIO layer to gzip/gunzip
-dev-perl/PerlIO-utf8_strict 0.6.0: Fast and correct UTF-8 IO
+dev-perl/PerlIO-utf8_strict 0.6.0 0.7.0: Fast and correct UTF-8 IO
 dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
 dev-perl/PerlIO-via-dynamic 0.140.0-r1: PerlIO::via::dynamic - dynamic PerlIO layers
 dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for symlinks
