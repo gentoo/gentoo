@@ -67,7 +67,8 @@
 			<xs:element name='name' type='xs:token'
 				minOccurs='0' maxOccurs='1'/>
 		</xs:all>
-		<xs:attribute name='type' type='ownerTypeAttrType'/>
+		<xs:attribute name='type' type='ownerTypeAttrType'
+			use='required'/>
 	</xs:complexType>
 
 	<xs:complexType name='sourceType'>
