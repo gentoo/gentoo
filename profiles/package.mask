@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (07 Apr 2017)
+# Part of the JDK since Java 6. Removal in 30 days.
+dev-java/jaxme
+
 # David Seifert <soap@gentoo.org> (05 Apr 2017)
 # Abandoned, no releases since 2008, only partially
 # compatible with C++11, multiple bugs, upstream dead
@@ -82,7 +86,7 @@ sys-firmware/radeon-ucode
 sys-firmware/amdgpu-ucode
 
 # Patrice Clement <monsieurp@gentoo.org> (28 Mar 2017)
-# Part of the JRE since Java 6. Removal in 30 days.
+# Part of the JDK since Java 6. Removal in 30 days.
 dev-java/swing-worker
 
 # Michał Górny <mgorny@gentoo.org> (27 Mar 2017)
