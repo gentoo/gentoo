@@ -12,7 +12,11 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-lang/ocaml:= dev-ml/sexplib:="
+RDEPEND="
+	dev-lang/ocaml:=
+	dev-ml/sexplib:=
+	<dev-ml/sexplib-100
+"
 DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
 
 src_test() {

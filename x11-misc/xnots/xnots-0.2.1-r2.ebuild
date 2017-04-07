@@ -2,14 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic git-r3 toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A desktop sticky note program for the unix geek"
 HOMEPAGE="http://xnots.sourceforge.net https://github.com/thePalindrome/xnots"
-EGIT_REPO_URI="https://github.com/thePalindrome/xnots"
+SRC_URI="mirror://sourceforge/xnots/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="vim-syntax"
 
 RDEPEND="
@@ -27,6 +28,9 @@ DEPEND="
 	x11-proto/renderproto
 	x11-proto/xextproto
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.1-gcc6.patch
+)
 
 src_prepare() {
 	default
