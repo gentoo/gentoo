@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
@@ -42,9 +42,6 @@ wrap_opts() {
 
 python_compile() {
 	wrap_opts distutils-r1_python_compile
-	if [[ ${EPYTHON} == python3.2 ]]; then
-		2to3 --no-diffs -n -w -f unicode "${BUILD_DIR}/lib" || die
-	fi
 }
 
 python_compile_all() {
@@ -57,7 +54,10 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	if use examples ; then
+		docinto examples
+		dodoc -r examples/.
+	fi
 
 	distutils-r1_python_install_all
 
