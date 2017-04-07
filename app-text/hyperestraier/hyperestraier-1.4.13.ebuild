@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+RUBY_OPTIONAL="yes"
 
-inherit autotools java-pkg-opt-2 perl-functions
+inherit autotools java-pkg-opt-2 perl-functions ruby-ng
 
 IUSE="bzip2 debug java lzo mecab perl ruby +zlib"
 
@@ -21,11 +23,12 @@ RDEPEND="dev-db/qdbm
 	lzo? ( dev-libs/lzo )
 	mecab? ( app-text/mecab )
 	perl? ( dev-lang/perl )
-	ruby? ( dev-lang/ruby:= )
+	ruby? ( $(ruby_implementations_depend) )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	java? ( >=virtual/jdk-1.4:* )"
+S="${WORKDIR}/all/${P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-configure.patch
@@ -36,47 +39,89 @@ HTML_DOCS=( doc/. )
 
 AT_NOELIBTOOLIZE="yes"
 
+pkg_setup() {
+	java-pkg-opt-2_pkg_setup
+	use ruby && ruby-ng_pkg_setup
+}
+
 he_foreach_api() {
 	local u d
 	for u in java perl ruby; do
 		if ! use "${u}"; then
 			continue
 		fi
-		for d in ${u}native ${u}pure; do
-			if [[ ! -d "${d}" ]]; then
-				continue
-			fi
-			einfo "${EBUILD_PHASE} ${d}"
-			cd "${d}"
-			case "${EBUILD_PHASE}" in
-			prepare)
-				mv configure.{in,ac}
-				eautoreconf
-				;;
-			configure)
-				econf
-				;;
-			compile)
-				emake
-				;;
-			test)
-				if [[ "${d}" == "${u}native" ]]; then
-					emake check
+		if [[ "${u}" != "ruby" ]]; then
+			for d in ${u}native ${u}pure; do
+				if [[ ! -d "${d}" ]]; then
+					continue
 				fi
-				;;
-			install)
-				if [[ "${u}" != "java" ]]; then
-					emake DESTDIR="${D}" install
-				else
-					java-pkg_dojar *.jar
+				einfo "${EBUILD_PHASE} ${d}"
+				cd "${d}"
+				case "${EBUILD_PHASE}" in
+				prepare)
+					mv configure.{in,ac}
+					eautoreconf
+					;;
+				configure)
+					econf
+					;;
+				compile)
+					emake
+					;;
+				test)
 					if [[ "${d}" == "${u}native" ]]; then
-						dolib.so lib*.so*
+						emake check
 					fi
-				fi
-				;;
-			esac
-			cd - >/dev/null
-		done
+					;;
+				install)
+					if [[ "${u}" != "java" ]]; then
+						emake DESTDIR="${D}" install
+					else
+						java-pkg_dojar *.jar
+						if [[ "${d}" == "${u}native" ]]; then
+							dolib.so lib*.so*
+						fi
+					fi
+					;;
+				esac
+				cd - >/dev/null
+			done
+		else
+			PATCHES= ruby-ng_src_${EBUILD_PHASE}
+		fi
+	done
+}
+
+he_foreach_ruby_api() {
+	local d
+	for d in rubynative rubypure; do
+		cd "${d}"
+		case "${EBUILD_PHASE}" in
+		prepare)
+			sed -i \
+				-e "/RUBY=/cRUBY=\"${RUBY}\"" \
+				-e "/=\`.*ruby/s|ruby|${RUBY}|" \
+				configure.in
+
+			mv configure.{in,ac}
+			eautoreconf
+			;;
+		configure)
+			econf
+			;;
+		compile)
+			emake
+			;;
+		test)
+			if [[ "${d}" == "${u}native" ]]; then
+				emake check
+			fi
+			;;
+		install)
+			emake DESTDIR="${D}" install
+			;;
+		esac
+		cd - >/dev/null
 	done
 }
 
@@ -96,6 +141,15 @@ src_prepare() {
 	he_foreach_api # prepare
 }
 
+all_ruby_prepare() {
+	sed -i "/^RUNENV /s|\.\.|${WORKDIR}/all/${P}|" ruby*/Makefile.in
+	sed -i "s|\.\./\.\.|${WORKDIR}/all/${P}|" rubynative/src/extconf.rb
+}
+
+each_ruby_prepare() {
+	he_foreach_ruby_api
+}
+
 src_configure() {
 	econf \
 		$(use_enable bzip2 bzip) \
@@ -106,14 +160,26 @@ src_configure() {
 	he_foreach_api
 }
 
+each_ruby_configure() {
+	he_foreach_ruby_api
+}
+
 src_compile() {
 	default
 	he_foreach_api
 }
 
+each_ruby_compile() {
+	he_foreach_ruby_api
+}
+
 src_test() {
 	default
 	he_foreach_api
+}
+
+each_ruby_test() {
+	he_foreach_ruby_api
 }
 
 src_install() {
@@ -127,4 +193,8 @@ src_install() {
 	fi
 
 	rm -f "${D}"/usr/bin/*test
+}
+
+each_ruby_install() {
+	he_foreach_ruby_api
 }
