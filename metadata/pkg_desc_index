@@ -10591,7 +10591,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.2.1 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 3.8.4 3.9.2 4.0.2 4.1 4.1.1 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.8.4 3.9.2 4.0.2 4.1.1 4.1.2 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
@@ -17070,7 +17070,7 @@ sys-apps/kmod 23 24 9999: library and tools for managing linux kernel modules
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
-sys-apps/less 487 488: Excellent text file viewer
+sys-apps/less 487 488 490: Excellent text file viewer
 sys-apps/likwid 4.1.1 4.1.2: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1: Misc tools bundled with kernel sources
 sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
@@ -18309,7 +18309,7 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9 2.8.9_pre11: An excell
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 44.0.2510.857: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 44.0.2510.1159: A fast and secure web browser
 www-client/opera-beta 44.0.2510.433 44.0.2510.849: A fast and secure web browser
 www-client/opera-developer 45.0.2545.0 45.0.2548.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -18842,7 +18842,7 @@ x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers suppo
 x11-misc/piedock 1.6.6-r1: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
-x11-misc/py3status 3.4: py3status is an extensible i3status wrapper written in python
+x11-misc/py3status 3.5: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
