@@ -84,7 +84,7 @@ src_install() {
 		name=$(awk -F: '/exe:/ { print $3 }' "${file}")
 		file=${file%.R}
 		newicon -s 48 icons/${file}-48d24.png ${PN}_${file}.png
-		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "Game;LogicGame;${PN};"
+		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "Game;LogicGame;X-${PN};"
 	done
 
 	if use doc ; then
