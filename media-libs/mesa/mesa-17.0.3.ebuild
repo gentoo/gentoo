@@ -324,7 +324,6 @@ multilib_src_configure() {
 		$(use_enable X glx) \
 		--enable-shared-glapi \
 		$(use_enable !bindist texture-float) \
-		$(use_enable d3d9 nine) \
 		$(use_enable debug) \
 		$(use_enable X dri3) \
 		$(use_enable egl) \
