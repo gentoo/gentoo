@@ -7779,7 +7779,7 @@ dev-python/jenkins-autojobs 0.14.3: Scripts for automatically creating Jenkins j
 dev-python/jenkins-webapi 0.3.2 0.4.0-r1 0.5.0: Module for interacting with the Jenkins CI server
 dev-python/jenkinsapi 0.2.26 0.2.29: API to access resources on a Jenkins continuous-integration server
 dev-python/jingo 0.7 0.7.1 0.8.2 0.9.0: An adapter for using Jinja2 templates with Django
-dev-python/jinja 2.7.3 2.8 2.8.1 2.9.4 2.9.5: A full-featured template engine for Python
+dev-python/jinja 2.8 2.8.1 2.9.5 2.9.6: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jira 1.0.5: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.9.0 0.9.1 0.9.2: JSON Matching Expressions
@@ -8585,7 +8585,7 @@ dev-python/sepolgen 1.2.3 2.6 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11 1.12 1.19: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9 1.1.10: Allow customization of the process title
-dev-python/setuptools 18.4 20.6.7 30.4.0 33.1.1 34.0.2-r1 34.3.2 9999: Collection of extensions to Distutils
+dev-python/setuptools 18.4 20.6.7 30.4.0 33.1.1 34.0.2-r1 34.3.2 34.3.3 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.1 1.1-r1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1 1.11.1 1.15.0: package to manage versions by scm tags via setuptools
@@ -16540,7 +16540,7 @@ sci-mathematics/geogebra 5.0.339.0_p20170308: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 28.9 28.10-r1: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 28.10-r1: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.2: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57 4.60 4.61-r1: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
