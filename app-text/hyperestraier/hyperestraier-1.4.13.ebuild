@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit java-pkg-opt-2
+inherit autotools java-pkg-opt-2
 
 IUSE="bzip2 debug java lzo mecab ruby +zlib"
 
@@ -26,7 +26,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	java? ( >=virtual/jdk-1.4:* )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-ruby19.patch
+)
 HTML_DOCS=( doc/. )
+
+AT_NOELIBTOOLIZE="yes"
 
 he_foreach_api() {
 	local u d
@@ -38,6 +43,10 @@ he_foreach_api() {
 			einfo "${EBUILD_PHASE} ${d}"
 			cd "${d}"
 			case "${EBUILD_PHASE}" in
+			prepare)
+				mv configure.{in,ac}
+				eautoreconf
+				;;
 			configure)
 				econf
 				;;
@@ -75,6 +84,10 @@ src_prepare() {
 		-e '/^LDENV/d' \
 		-e 's/make\( \|$\)/$(MAKE)\1/g' \
 		Makefile.in {java,ruby}*/Makefile.in
+
+	mv configure.{in,ac}
+	eautoreconf
+	he_foreach_api # prepare
 }
 
 src_configure() {
