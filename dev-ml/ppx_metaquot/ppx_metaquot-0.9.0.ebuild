@@ -17,6 +17,7 @@ DEPEND="
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_traverse_builtins:=
 	dev-ml/ocaml-migrate-parsetree:=
+	<dev-ml/ppx_core-100
 	"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
