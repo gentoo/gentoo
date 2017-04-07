@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.4:* )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-configure.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 )
 HTML_DOCS=( doc/. )
