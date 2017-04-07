@@ -171,10 +171,10 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C "${T}"/usession*-current/testing_1
+	emake -C "${T}"/usession*-0/testing_1
 
 	# copy back to make sys.prefix happy
-	cp -p "${T}"/usession*-current/testing_1/{pypy-c,libpypy-c.so} . || die
+	cp -p "${T}"/usession*-0/testing_1/{pypy-c,libpypy-c.so} . || die
 	pax-mark m pypy-c libpypy-c.so
 
 	use doc && emake -C pypy/doc html
