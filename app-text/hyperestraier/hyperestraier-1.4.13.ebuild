@@ -1,9 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit java-pkg-opt-2 multilib
+EAPI="6"
 
-IUSE="debug java mecab ruby"
+inherit java-pkg-opt-2
+
+IUSE="bzip2 debug java lzo mecab ruby +zlib"
 
 DESCRIPTION="a full-text search system for communities"
 HOMEPAGE="http://fallabs.com/hyperestraier/"
@@ -13,100 +15,92 @@ LICENSE="LGPL-2.1"
 KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 SLOT="0"
 
-RDEPEND=">=dev-db/qdbm-1.8.75
-	sys-libs/zlib
-	java? ( >=virtual/jre-1.4 )
+RDEPEND="dev-db/qdbm
+	bzip2? ( app-arch/bzip2 )
+	java? ( >=virtual/jre-1.4:* )
+	lzo? ( dev-libs/lzo )
 	mecab? ( app-text/mecab )
-	ruby? ( dev-lang/ruby )"
+	ruby? ( dev-lang/ruby:= )
+	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
-	java? ( >=virtual/jdk-1.4 )"
+	virtual/pkgconfig
+	java? ( >=virtual/jdk-1.4:* )"
 
-src_unpack() {
+HTML_DOCS=( doc/. )
 
-	unpack ${A}
-	cd "${S}"
+he_foreach_api() {
+	local u d
+	for u in java ruby; do
+		if ! use "${u}"; then
+			continue
+		fi
+		for d in ${u}native ${u}pure; do
+			einfo "${EBUILD_PHASE} ${d}"
+			cd "${d}"
+			case "${EBUILD_PHASE}" in
+			configure)
+				econf
+				;;
+			compile)
+				emake
+				;;
+			test)
+				if [[ "${d}" == "${u}native" ]]; then
+					emake check
+				fi
+				;;
+			install)
+				if [[ "${u}" != "java" ]]; then
+					emake DESTDIR="${D}" install
+				else
+					java-pkg_dojar *.jar
+					if [[ "${d}" == "${u}native" ]]; then
+						dolib.so lib*.so*
+					fi
+				fi
+				;;
+			esac
+			cd - >/dev/null
+		done
+	done
+}
 
-	# fix for insecure runpath warning.
+src_prepare() {
+	default
+	java-pkg-opt-2_src_prepare
+
 	sed -i \
-		-e "/^LDENV/d" \
-		-e "/^CFLAGS/s/$/ ${CFLAGS}/" \
-		Makefile.in \
-		|| die
-	sed -i "/^JAVACFLAGS/s/$/ ${JAVACFLAGS}/" java*/Makefile.in || die
+		-e "/^CFLAGS/s|$| ${CFLAGS}|" \
+		-e "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" \
+		-e '/^LDENV/d' \
+		-e 's/make\( \|$\)/$(MAKE)\1/g' \
+		Makefile.in {java,ruby}*/Makefile.in
+}
 
+src_configure() {
+	econf \
+		$(use_enable bzip2 bzip) \
+		$(use_enable debug) \
+		$(use_enable lzo) \
+		$(use_enable mecab) \
+		$(use_enable zlib)
+	he_foreach_api
 }
 
 src_compile() {
-
-	econf \
-		$(use_enable debug) \
-		$(use_enable mecab) \
-		|| die
-	emake || die
-
-	local u d
-
-	for u in java ruby; do
-		if ! use ${u}; then
-			continue
-		fi
-
-		for d in ${u}native ${u}pure; do
-			cd ${d}
-			econf || die
-			emake || die
-			cd -
-		done
-	done
-
+	default
+	he_foreach_api
 }
 
 src_test() {
-
-	emake -j1 check || die
-
-	local u d
-
-	for u in java ruby; do
-		if ! use ${u}; then
-			continue
-		fi
-
-		for d in ${u}native; do
-			cd ${d}
-			emake -j1 check || die
-			cd -
-		done
-	done
-
+	default
+	he_foreach_api
 }
 
 src_install() {
-
-	emake DESTDIR="${D}" MYDOCS= install || die
-	dodoc ChangeLog README* THANKS
-	dohtml doc/{*.html,*.png}
-
-	local u d
-
-	for u in java ruby; do
-		if ! use ${u}; then
-			continue
-		fi
-
-		for d in ${u}native ${u}pure; do
-			cd ${d}
-			emake DESTDIR="${D}" install || die
-			cd -
-			dohtml -r doc/${d}api
-		done
-	done
-
-	if use java; then
-		java-pkg_dojar "${D}"/usr/$(get_libdir)/*.jar
-		rm -f "${D}"/usr/$(get_libdir)/*.jar
-	fi
+	emake DESTDIR="${D}" MYDOCS= install
+	einstalldocs
+	he_foreach_api
 
 	rm -f "${D}"/usr/bin/*test
-
 }
