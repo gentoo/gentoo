@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,12 +39,12 @@ DEPEND="
 
 EANT_BUILD_TARGET="dist.j2se"
 EANT_EXTRA_ARGS="-Dskip.proguard=yes -Dsvn=true -Dsvnversion=true -Dbuild.current.revision=Gentoo"
-EANT_GENTOO_CLASSPATH="commons-imaging,jcalendar-1.2,jchart2d,jopt-simple,rxtx-2,swing-layout-1,swingx-1.6,swingx-ws-bt747"
+EANT_GENTOO_CLASSPATH="commons-imaging,jcalendar-1.2,jchart2d,jopt-simple-4.4,rxtx-2,swing-layout-1,swingx-1.6,swingx-ws-bt747"
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 
 S="${WORKDIR}"
 
-src_prepare() {
+java_prepare() {
 	# Fix for newer jchart2d.
 	epatch "${FILESDIR}/jchart2d-3.2.patch"
 
