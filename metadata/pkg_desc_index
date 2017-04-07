@@ -5453,7 +5453,7 @@ dev-perl/B-Hooks-EndOfScope 0.150.0 0.200.0: Execute code after a scope finished
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.160.0 0.190.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
-dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
+dev-perl/B-OPCheck 0.300.0 0.320.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.800 1.290.900: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.2.2 1.4.0: BSON serialization and deserialization
