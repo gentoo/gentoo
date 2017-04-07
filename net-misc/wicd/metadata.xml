@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tomka@gentoo.org</email>
-		<name>Thomas Kahle</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="ambiance">Install icons from Ubuntu's ambiance theme</flag>
 		<flag name="gtk">Installs a gtk UI. This is enabled by default because it is
