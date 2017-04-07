@@ -51,6 +51,7 @@ src_install() {
 		mandir=/usr/share/man \
 		prefix=/usr \
 		install
+
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/syntax
 		doins etc/xnots.vim
