@@ -5570,7 +5570,7 @@ dev-perl/Class-WhiteHole 0.40.0-r1: base class to treat unhandled method calls a
 dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
 dev-perl/Clipboard 0.130.0-r2: Copy and paste with any OS
-dev-perl/Clone 0.380.0: Recursively copy Perl datatypes
+dev-perl/Clone 0.380.0 0.390.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.220.0 2.240.0: Interface to Bzip2 compression library
