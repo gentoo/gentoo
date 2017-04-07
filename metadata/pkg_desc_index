@@ -143,7 +143,7 @@ app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
-app-admin/mcelog 100 117 122 148 149: A tool to log and decode Machine Check Exceptions
+app-admin/mcelog 149: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.9.1 2.10.1 2.10.2 2.10.3: Framework to build server orchestration or parallel job execution systems
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.5 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
