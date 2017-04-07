@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,13 +18,14 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/pyfa-org/Pyfa/archive/v${PV}.tar.gz -> pyfa-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 IUSE="+graph"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+	dev-python/logbook[${PYTHON_USEDEP}]
 	graph? (
 		dev-python/matplotlib[wxwidgets,${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}] )
@@ -35,13 +36,13 @@ DEPEND="app-arch/zip"
 
 src_prepare() {
 	# get rid of CRLF line endings introduced in 1.1.10 so patches work
-	edos2unix config.py pyfa.py service/settings.py
+	edos2unix config.py pyfa.py gui/bitmapLoader.py service/settings.py
 
 	# load gameDB and images from separate staticdata directory
-	eapply "${FILESDIR}/${PN}-1.15.1-staticdata.patch"
+	eapply "${FILESDIR}/${PN}-1.28.1-staticdata.patch"
 
 	# do not try to save exported html to python sitedir
-	eapply "${FILESDIR}/${PN}-1.21.4-html-export-path.patch"
+	eapply "${FILESDIR}/${PN}-1.28.1-html-export-path.patch"
 
 	# fix import path in the main script for systemwide installation
 	eapply "${FILESDIR}/${PN}-1.15.1-import-pyfa.patch"
