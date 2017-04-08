@@ -9672,7 +9672,7 @@ dev-ruby/rex-ole 0.1.2: Ruby Exploitation(Rex) library gem for reading/writing O
 dev-ruby/rex-powershell 0.1.1-r1 0.1.64 0.1.65: Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
 dev-ruby/rex-random_identifier 0.1.0-r1: Ruby Exploitation(Rex) library for generating Random identifier strings
 dev-ruby/rex-registry 0.1.0-r1: Rex library for parsing offline registry files from a Windows machine
-dev-ruby/rex-struct2 0.1.0: Ruby Exploitation(Rex) library for generating/manipulating C-Style structs
+dev-ruby/rex-struct2 0.1.0 0.1.1: Ruby Exploitation(Rex) library for generating/manipulating C-Style structs
 dev-ruby/rex-text 0.1.2 0.2.9 0.2.12: Rex library for text generation and manipulation
 dev-ruby/rex-zip 0.1.0-r1 0.1.1: Ruby Exploitation(Rex) library for working with zip and related files
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
