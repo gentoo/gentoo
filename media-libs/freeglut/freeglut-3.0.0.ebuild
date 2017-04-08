@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="debug static-libs"
+IUSE="debug static-libs wayland"
 
 # enabling GLES support seems to cause build failures
 RDEPEND=">=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
@@ -32,6 +32,7 @@ HTML_DOCS=( doc/. )
 
 src_configure() {
 	local mycmakeargs=(
+		"-DFREEGLUT_WAYLAND=$(usex wayland ON OFF)"
 		"-DFREEGLUT_GLES=OFF"
 		"-DFREEGLUT_BUILD_STATIC_LIBS=$(usex static-libs ON OFF)"
 	)
