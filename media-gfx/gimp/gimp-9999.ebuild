@@ -115,6 +115,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch_user
+
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 
 	echo '#!/bin/sh' > py-compile
