@@ -4783,7 +4783,7 @@ dev-libs/libcxml 0.15.1 0.15.4: small C++ library which makes it marginally neat
 dev-libs/libdaemon 0.14-r1 0.14-r2: Simple library for creating daemon processes in C
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 12.10.2-r2: Library to pass menu structure across DBus
-dev-libs/libdbusmenu-qt 0.9.3_pre20140619-r1 0.9.3_pre20160218: A library providing Qt implementation of DBusMenu specification
+dev-libs/libdbusmenu-qt 0.9.3_pre20160218: A library providing Qt implementation of DBusMenu specification
 dev-libs/libdivecomputer 0.4.1 0.4.2 9999: Library for communication with dive computers from various manufacturers
 dev-libs/libdivsufsort 2.0.1 9999: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
