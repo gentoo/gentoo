@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,11 +52,11 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
+	kde5_src_prepare
+
 	if ! use handbook && [[ ${KDE_BUILD_TYPE} != live ]]; then
 		cmake_comment_add_subdirectory doc-translations
 	fi
-
-	kde5_src_prepare
 }
 
 src_configure() {
