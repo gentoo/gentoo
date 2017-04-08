@@ -3993,7 +3993,7 @@ dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
 dev-java/dnsjava 2.1.6 2.1.7: An implementation of DNS in Java
 dev-java/dom4j 1.6.1-r7: XML Java library
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
-dev-java/dynalang 0.4-r1: Libary of interoperable metaobject protocols for dynamic languages
+dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dynamic languages
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easyneurons 2.3: GUI neural network editor for neuroph
