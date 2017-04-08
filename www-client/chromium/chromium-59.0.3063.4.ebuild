@@ -200,9 +200,10 @@ src_prepare() {
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE.patch"
 		"${FILESDIR}/skia-avx2.patch"
+		"${FILESDIR}/${PN}-dma-buf-r1.patch"
+		"${FILESDIR}/${PN}-system-ffmpeg-r5.patch"
+		"${FILESDIR}/${PN}-system-libjpeg-r1.patch"
 	)
-
-	use system-ffmpeg && PATCHES+=( "${FILESDIR}/${PN}-system-ffmpeg-r4.patch" )
 
 	default
 
@@ -253,6 +254,7 @@ src_prepare() {
 		third_party/fips181
 		third_party/flatbuffers
 		third_party/flot
+		third_party/freetype
 		third_party/google_input_tools
 		third_party/google_input_tools/third_party/closure_library
 		third_party/google_input_tools/third_party/closure_library/third_party/closure
@@ -297,7 +299,6 @@ src_prepare() {
 		third_party/pdfium/third_party/libopenjpeg20
 		third_party/pdfium/third_party/libpng16
 		third_party/pdfium/third_party/libtiff
-		third_party/pdfium/third_party/zlib_v128
 		third_party/ply
 		third_party/polymer
 		third_party/protobuf
@@ -367,6 +368,7 @@ src_configure() {
 		flac
 		harfbuzz-ng
 		icu
+		libdrm
 		libjpeg
 		libpng
 		libwebp
