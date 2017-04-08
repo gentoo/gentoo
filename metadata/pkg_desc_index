@@ -16941,7 +16941,7 @@ sec-policy/selinux-xscreensaver 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.2016
 sec-policy/selinux-xserver 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 9999: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 9999: SELinux policy for zabbix
 sys-apps/accountsservice 0.6.43: D-Bus interfaces for querying and manipulating user account information
-sys-apps/ack 2.14 2.18: ack is a tool like grep, optimized for programmers
+sys-apps/ack 2.14 2.18-r1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
 sys-apps/agedu 20151213 20160906 20160920: A utility for tracking down wasted disk space
