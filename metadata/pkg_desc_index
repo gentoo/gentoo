@@ -9,7 +9,7 @@ app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
 app-accessibility/epos 2.5.37-r2: language independent text-to-speech system
-app-accessibility/espeak 1.47.11-r1 1.48.04: Speech synthesizer for English and other languages
+app-accessibility/espeak 1.47.11-r1 1.48.04 1.48.04-r1: Speech synthesizer for English and other languages
 app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight connector for espeak and speakup
 app-accessibility/festival 2.1-r1: Festival Text to Speech engine
 app-accessibility/festival-fi 20041119: Finnish diphones and text to speech script for festival

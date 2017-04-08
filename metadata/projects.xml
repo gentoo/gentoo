@@ -1354,6 +1354,11 @@
       <name>Matthew Marchese</name>
       <role>Merge man</role>
     </member>
+    <member>
+      <email>mudler@gentoo.org</email>
+      <name>Ettore Di Giacinto</name>
+      <role>Merge man</role>
+    </member>
     <member is-lead="1">
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>

@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install prepare test
+DEFINED_PHASES=configure install prepare
 DEPEND=>=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
-EAPI=4
+EAPI=6
 HOMEPAGE=http://linux.techass.com/projects/xdb/
 IUSE=doc static-libs
 KEYWORDS=amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/xdb/xbase64-3.1.2.tar.gz
-_eclass_exported_funcs=src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=8043974dffbd3ed6746e406e08a7e0ca
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=e037b63fdf3ce06cba6845b25785e7f0
