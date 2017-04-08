@@ -1,0 +1,12 @@
+--- ./todo_completion	2017-04-08 15:18:23.102736966 +0200
++++ ./todo_completion	2017-04-08 15:18:56.839725605 +0200
+@@ -85,6 +85,9 @@
+ }
+ complete -F _todo todo.sh
+ 
++# Gentoo bug 614400
++complete -F _todo todotxt
++
+ # If you define an alias (e.g. "t") to todo.sh, you need to explicitly enable
+ # completion for it, too:
+ #complete -F _todo t
