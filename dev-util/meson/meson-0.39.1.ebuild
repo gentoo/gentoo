@@ -20,6 +20,7 @@ HOMEPAGE="http://mesonbuild.com/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
+RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-util/ninja-1.6.0
@@ -27,3 +28,7 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}"
 
 DOCS=( authors.txt contributing.txt )
+
+python_test() {
+	${EPYTHON} run_tests.py || die
+}
