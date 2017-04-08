@@ -18959,7 +18959,7 @@ x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
 x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord and X
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
-x11-misc/xkbset 0.5_p5_p1: User preference utility for XKB extensions for X
+x11-misc/xkbset 0.5_p5_p1 0.5_p6: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.20: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.47 5.50 5.51: Just another screensaver application for X
