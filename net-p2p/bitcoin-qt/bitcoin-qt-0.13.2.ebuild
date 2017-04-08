@@ -99,7 +99,7 @@ src_install() {
 	else
 		newins "share/pixmaps/bitcoin.ico" "${PN}.ico"
 	fi
-	make_desktop_entry "${PN} %u" "Bitcoin-Qt" "/usr/share/pixmaps/${PN}.ico" "Qt;Network;P2P;Office;Finance;" "MimeType=x-scheme-handler/bitcoin;\nTerminal=false"
+	make_desktop_entry "${PN} %u" "Bitcoin Core" "/usr/share/pixmaps/${PN}.ico" "Qt;Network;P2P;Office;Finance;" "MimeType=x-scheme-handler/bitcoin;\nTerminal=false"
 
 	dodoc doc/assets-attribution.md doc/bips.md doc/tor.md
 	doman contrib/debian/manpages/bitcoin-qt.1

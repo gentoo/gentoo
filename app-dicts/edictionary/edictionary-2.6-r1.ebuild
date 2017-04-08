@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 MY_PN="edict"
 MY_P="${MY_PN}-${PV}"
@@ -21,6 +21,6 @@ DEPEND="dev-lang/perl"
 S="${WORKDIR}/${MY_PN}"
 
 src_install() {
-	make prefix="${ED}/usr/bin" install || die "make failed"
-	dodoc Changelog ReleaseNotes README TODO || die
+	make prefix="${ED}/usr/bin" install
+	dodoc Changelog ReleaseNotes README TODO
 }

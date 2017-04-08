@@ -17,26 +17,24 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ecdsa nls"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
-CDEPEND="dev-java/bcprov:1.50
+CP_DEPEND="dev-java/bcprov:1.50
 	dev-java/jrobin:0
 	dev-java/slf4j-api:0
 	dev-java/tomcat-jstl-impl:0
 	dev-java/tomcat-jstl-spec:0
 	dev-java/java-service-wrapper:0"
 
-DEPEND="${CDEPEND}
+DEPEND="${CP_DEPEND}
 	dev-java/eclipse-ecj:*
 	dev-libs/gmp:0
 	nls? ( >=sys-devel/gettext-0.19 )
 	>=virtual/jdk-1.7"
 
-RDEPEND="${CDEPEND}
+RDEPEND="${CP_DEPEND}
 	ecdsa? (
 		|| (
 			dev-java/icedtea:7[-sunec]
 			dev-java/icedtea:8[-sunec]
-			dev-java/icedtea:7[nss,-sunec]
-			dev-java/icedtea-bin:7[nss]
 			dev-java/icedtea-bin:7
 			dev-java/icedtea-bin:8
 			dev-java/oracle-jre-bin
@@ -46,7 +44,6 @@ RDEPEND="${CDEPEND}
 	!ecdsa? ( >=virtual/jre-1.7 )"
 
 EANT_BUILD_TARGET="pkg"
-EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api,tomcat-jstl-impl,tomcat-jstl-spec,bcprov-1.50"
 JAVA_ANT_ENCODING="UTF-8"
 
 I2P_ROOT='/usr/share/i2p'
@@ -57,6 +54,10 @@ RES_DIR='installer/resources'
 
 PATCHES=(
 	"${FILESDIR}/${P}-add_libs.patch"
+
+	# New Gentoo detection code is added in 0.9.29 and its side-effect breaks Gentoo
+	# http://zzz.i2p/topics/2285-gentoo-installation-is-broken-in-0-9-29
+	"${FILESDIR}/${P}-revert-gentoo-detection.patch"
 )
 
 pkg_setup() {
@@ -140,20 +141,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Custom configuration belongs in /var/lib/i2p/.i2p/ to avoid being overwritten."
-	elog "I2P can be configured through the web interface at http://localhost:7657/index.jsp"
+	elog "Custom configuration belongs in ${I2P_CONFIG_DIR} to avoid being overwritten."
+	elog 'I2P can be configured through the web interface at http://localhost:7657/console'
 
-	ewarn 'Currently, the i2p team does not enforce to use ECDSA keys. But it is more and'
-	ewarn 'more pushed. To help the network, you are recommended to have either:'
-	ewarn '  dev-java/icedtea[-sunec,nss]'
-	ewarn '  dev-java/icedtea-bin[nss]'
-	ewarn '  dev-java/icedtea[-sunec] and bouncycastle (bcprov)'
-	ewarn '  dev-java/icedtea-bin and bouncycastle (bcprov)'
-	ewarn '  dev-java/oracle-jre-bin'
-	ewarn '  dev-java/oracle-jdk-bin'
-	ewarn 'Alternatively you can just use Ed25519 keys - which is a stronger algorithm anyways.'
-	ewarn
-	ewarn "This is purely a run-time issue. You're free to build i2p with any JDK, as long as"
-	ewarn 'the JVM you run it with is one of the above listed and from the same or a newer generation'
-	ewarn 'as the one you built with.'
+	if use !ecdsa
+	then
+		ewarn 'Currently, the i2p team does not enforce to use ECDSA keys. But it is more and'
+		ewarn 'more pushed. To help the network, you are recommended to have the ecdsa USE.'
+		ewarn
+		ewarn "This is purely a run-time issue. You're free to build i2p with any JDK, as long as"
+		ewarn 'the JVM you run it with is one of the above listed and from the same or a newer generation'
+		ewarn 'as the one you built with.'
+	fi
 }
