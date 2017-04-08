@@ -5061,7 +5061,7 @@ dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multico
 dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
-dev-libs/sway 0.11-r3 0.12.1 9999: i3-compatible Wayland window manager
+dev-libs/sway 0.11-r3 0.12.2 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
