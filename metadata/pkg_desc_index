@@ -5722,7 +5722,7 @@ dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2
 dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0 1.700.0 1.730.0: Parse and Format DateTimes using Strptime
-dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
+dev-perl/DateTime-Format-W3CDTF 0.60.0-r1 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
@@ -5979,7 +5979,7 @@ dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interfa
 dev-perl/HTML-Tree 4.200.0-r1 5.30.0-r1: A library to manage HTML-Tree in PERL
 dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
 dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
-dev-perl/HTTP-Cache-Transparent 1.100.0-r1: Cache the result of http get-requests persistently
+dev-perl/HTTP-Cache-Transparent 1.100.0-r1 1.400.0: Cache the result of http get-requests persistently
 dev-perl/HTTP-CookieJar 0.8.0: A minimalist HTTP user agent cookie jar
 dev-perl/HTTP-Cookies 6.10.0 6.30.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
