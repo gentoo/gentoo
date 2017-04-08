@@ -6,14 +6,12 @@ inherit eutils toolchain-funcs versionator
 
 DEBIAN_P_MAJOR=$(get_version_component_range 3)
 DEBIAN_P_MAJOR=${DEBIAN_P_MAJOR/p/}
-DEBIAN_P_MINOR=$(get_version_component_range 4)
-DEBIAN_P_MINOR=${DEBIAN_P_MINOR/p/}
 
 DESCRIPTION="User preference utility for XKB extensions for X"
 HOMEPAGE="https://faculty.missouri.edu/~stephen/software/#xkbset"
 SRC_URI="
 	https://faculty.missouri.edu/~stephen/software/${PN}/${P/_p*/}.tar.gz
-	mirror://debian/pool/main/x/${PN}/${PN}_${PV/_p*/}-${DEBIAN_P_MAJOR}.${DEBIAN_P_MINOR}.diff.gz
+	mirror://debian/pool/main/x/${PN}/${PN}_${PV/_p*/}-${DEBIAN_P_MAJOR}.debian.tar.xz
 "
 
 LICENSE="BSD"
@@ -36,8 +34,7 @@ S=${WORKDIR}/${P/_p*/}
 
 PATCHES=(
 	"${FILESDIR}"/${P/_p*/}-ldflags.patch
-	"${WORKDIR}"/${PN}_${PV/_p*}-${DEBIAN_P_MAJOR}.${DEBIAN_P_MINOR}.diff
-	"${WORKDIR}"/${P/_p*/}/debian/patches/02_clarify_errors.dpatch
+	"${WORKDIR}"/debian/patches/02-clarify-errors.patch
 )
 
 src_compile() {
