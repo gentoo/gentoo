@@ -1,0 +1,14 @@
+[Unit]
+Description=Store and restore ip6tables firewall rules
+ConditionPathExists=/var/lib/ip6tables/rules-save
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/ip6tables-restore /var/lib/ip6tables/rules-save
+ExecStop=/bin/sh -c "/sbin/ip6tables-save --counters > /var/lib/ip6tables/rules-save"
+
+[Install]
+WantedBy=basic.target
