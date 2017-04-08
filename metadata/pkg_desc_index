@@ -6865,7 +6865,7 @@ dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
 dev-perl/YAML 1.150.0 1.210.0 1.230.0: YAML Ain't Markup Language (tm)
-dev-perl/YAML-LibYAML 0.620.0 0.630.0: Perl YAML Serialization using XS and libyaml
+dev-perl/YAML-LibYAML 0.620.0 0.630.0 0.640.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.290.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.700.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
@@ -14677,7 +14677,7 @@ net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 1.17.0.1 5.0.0.5: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.3.4 2.4.2 2.5.2: Team collaboration tool
-net-im/telegram-desktop-bin 1.0.14 1.0.27: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.0.27 1.0.29: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
