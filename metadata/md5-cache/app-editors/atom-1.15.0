@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup unpack
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) >=app-text/hunspell-1.3.3:= >=dev-libs/libgit2-0.23:=[ssh] >=gnome-base/libgnome-keyring-3.12:= >=dev-libs/oniguruma-5.9.5:= >=dev-util/ctags-5.8 >=dev-util/electron-1.3.5:1.3 x11-libs/libxkbfile >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=A hackable text editor for the 21st Century
+EAPI=6
+HOMEPAGE=https://atom.io
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) >=app-text/hunspell-1.3.3:= >=dev-libs/libgit2-0.23:=[ssh] >=gnome-base/libgnome-keyring-3.12:= >=dev-libs/oniguruma-5.9.5:= >=dev-util/ctags-5.8 >=dev-util/electron-1.3.5:1.3 x11-libs/libxkbfile !sys-apps/apmd
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/atom/atom/releases/download/v1.15.0/atom.x86_64.rpm -> atom-1.15.0.rpm https://github.com/elprans/asar/releases/download/v0.12.1-gentoo/asar-build.tar.gz -> asar-0.12.1.tar.gz https://github.com/nodejs/nan/archive/v2.4.0.tar.gz -> nodejs-nan-2.4.0.tar.gz https://github.com/atom/cached-run-in-this-context/archive/v0.4.1.tar.gz -> atom-cached-run-in-this-context-0.4.1.tar.gz https://github.com/atom/node-ctags/archive/v3.0.0.tar.gz -> atom-node-ctags-3.0.0.tar.gz https://github.com/atom/git-utils/archive/v4.1.2.tar.gz -> atom-git-utils-4.1.2.tar.gz https://github.com/atom/keyboard-layout/archive/v2.0.11.tar.gz -> atom-keyboard-layout-2.0.11.tar.gz https://github.com/atom/superstring/archive/v1.1.0.tar.gz -> atom-superstring-1.1.0.tar.gz https://github.com/atom/node-keytar/archive/v3.0.2.tar.gz -> atom-node-keytar-3.0.2.tar.gz https://github.com/atom/node-nslog/archive/v3.0.0.tar.gz -> atom-node-nslog-3.0.0.tar.gz https://github.com/atom/node-oniguruma/archive/v6.1.0.tar.gz -> atom-node-oniguruma-6.1.0.tar.gz https://github.com/atom/node-pathwatcher/archive/v6.8.0.tar.gz -> atom-node-pathwatcher-6.8.0.tar.gz https://github.com/atom/node-runas/archive/v3.1.1.tar.gz -> atom-node-runas-3.1.1.tar.gz https://github.com/atom/scrollbar-style/archive/v3.2.0.tar.gz -> atom-scrollbar-style-3.2.0.tar.gz https://github.com/atom/node-spellchecker/archive/v3.2.3.tar.gz -> atom-node-spellchecker-3.2.3.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=6e9743cf0b6242edf7d153ee25ceb552

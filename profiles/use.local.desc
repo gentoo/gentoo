@@ -5311,7 +5311,6 @@ net-dns/bind-tools:gssapi - Enable gssapi support
 net-dns/bind-tools:urandom - Use /dev/urandom instead of /dev/random
 net-dns/ddclient:cloudflare - Enable support for updating IP address via CloudFlare
 net-dns/ddclient:hardened - Use iproute2 instead of ifconfig to grab an IP address
-net-dns/dnscrypt-proxy:ldns - Use net-libs/ldns for DNSSEC/SSHFP validation
 net-dns/dnscrypt-proxy:plugins - Enable plugin support to inspect and modify queries and responses
 net-dns/dnscrypt-proxy:systemd - Use systemd's socket activation instead of creating the sockets itself
 net-dns/dnsmasq:auth-dns - Add support for acting as an authorative DNS server.
