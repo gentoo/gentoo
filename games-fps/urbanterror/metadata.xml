@@ -14,9 +14,12 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="altgamma">Clearskies - X11-based gamma for Linux</flag>
+		<flag name="altgamma">Alternative way for gamma setting with modesetting driver</flag>
+		<flag name="dedicated">Build only server target - dedicated to hosting a server</flag>
+		<flag name="opus">Use opus as sound codec</flag>
+		<flag name="mumble">Use Mumble for in-game VoIP (experimental)</flag>
+		<flag name="voip">Use ioq3 ingame VoIP (experimental)</flag>
 		<flag name="server">Build server target</flag>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Barbatos/ioq3-for-UrbanTerror-4</remote-id>
