@@ -7129,7 +7129,7 @@ dev-php/pecl-redis 2.2.7-r1 3.1.1_rc2 3.1.1: PHP extension for interfacing with 
 dev-php/pecl-rrd 1.1.3-r1 2.0.1-r1: RRDtool bindings for PHP
 dev-php/pecl-sphinx 1.3.3-r1: PHP extension to execute search queries on a sphinx daemon
 dev-php/pecl-spl_types 0.4.0-r2: Standard PHP library types add-on
-dev-php/pecl-ssh2 0.12-r3 0.13-r1 1.0 9999: PHP bindings for the libssh2 library
+dev-php/pecl-ssh2 0.12-r3 0.13-r2 1.0-r1 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.9-r1 2.0.0-r1: PHP extension to communicate with Stomp message brokers
 dev-php/pecl-svn 1.0.3-r1: PHP Bindings for the Subversion Revision control system
 dev-php/pecl-taint 2.0.2: Extension used for detecting XSS code (tainted strings)
