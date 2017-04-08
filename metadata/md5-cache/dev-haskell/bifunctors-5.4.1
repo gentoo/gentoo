@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
 DEPEND=>=dev-haskell/base-orphans-0.5.2:=[profile?] <dev-haskell/base-orphans-1:=[profile?] >=dev-haskell/comonad-4:=[profile?] <dev-haskell/comonad-6:=[profile?] >=dev-haskell/transformers-0.2:=[profile?] <dev-haskell/transformers-0.6:=[profile?] >=dev-haskell/transformers-compat-0.5:=[profile?] <dev-haskell/transformers-compat-0.6:=[profile?] >=dev-lang/ghc-7.4.1:= semigroups? ( >=dev-haskell/semigroups-0.8.3.1:=[profile?] <dev-haskell/semigroups-1:=[profile?] ) tagged? ( >=dev-haskell/tagged-0.7.3:=[profile?] <dev-haskell/tagged-1:=[profile?] ) >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/hspec-1.8 >=dev-haskell/quickcheck-2 <dev-haskell/quickcheck-3 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
-DESCRIPTION=Bifunctors
+DESCRIPTION=Haskell 98 bifunctors, bifoldables and bitraversables
 EAPI=6
 HOMEPAGE=https://github.com/ekmett/bifunctors/
 IUSE=+semigroups +tagged doc hscolour profile test
@@ -11,4 +11,4 @@ SLOT=0/5.4.1
 SRC_URI=mirror://hackage/packages/archive/bifunctors/5.4.1/bifunctors-5.4.1.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ghc-package	f9cf05643e20f03876bb4807f008c80f	haskell-cabal	45605f3898bdc59eb016fb50ca27bf18	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=709daf9f30f257c02f1780546dbe536e
+_md5_=76a629c41bb26f8fb03bde950bd6e2f0

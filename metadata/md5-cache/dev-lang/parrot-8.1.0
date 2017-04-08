@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install test
 DEPEND=dev-lang/perl[doc?] sys-libs/readline dev-libs/libffi opengl? ( media-libs/freeglut ) nls? ( sys-devel/gettext ) unicode? ( >=dev-libs/icu-2.6:= ) gdbm? ( >=sys-libs/gdbm-1.8.3-r1 ) gmp? ( >=dev-libs/gmp-4.1.4 ) ssl? ( dev-libs/openssl ) pcre? ( dev-libs/libpcre ) doc? ( dev-perl/JSON )
-DESCRIPTION=Virtual machine designed to efficiently compile and execute bytecode for dynamic languages
+DESCRIPTION=Virtual machine designed to compile and execute bytecode for dynamic languages
 EAPI=5
 HOMEPAGE=http://www.parrot.org/
 IUSE=opengl nls doc examples gdbm +gmp ssl +unicode pcre
@@ -12,4 +12,4 @@ SLOT=0/8.1.0
 SRC_URI=ftp://ftp.parrot.org/pub/parrot/releases/all/8.1.0/parrot-8.1.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=12aa9724e6d9f2db7243dbe4bcaab2d1
+_md5_=194aa19f5c70de9d3d3cd657655302d8

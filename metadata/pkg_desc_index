@@ -1946,7 +1946,7 @@ app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written
 app-misc/tmate 2.2.0-r1 2.2.1: Instant terminal sharing
 app-misc/tmux 2.2 2.3 2.3-r1 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
-app-misc/todo 2.10: A CLI-based TODO list manager
+app-misc/todo 2.10 2.10-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r2: Provides a driver for using Towitoko smartcard readers under UNIX environment
 app-misc/tpconfig 3.1.3-r1 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
@@ -3265,7 +3265,7 @@ dev-haskell/base16-bytestring 0.1.1.6: Fast base16 (hex) encoding and decoding f
 dev-haskell/base64-bytestring 0.1.1.3 1.0.0.1: Fast base64 encoding and decoding for ByteStrings
 dev-haskell/basic-prelude 0.3.11 0.4.1: An enhanced core prelude; a common foundation for alternate preludes
 dev-haskell/bencode 0.5-r1 0.6.0.0: Parser and printer for bencoded data
-dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5 5.4.1: Bifunctors
+dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5 5.4.1: Haskell 98 bifunctors, bifoldables and bitraversables
 dev-haskell/binary 0.5.1.1 0.7.1.0 0.7.2.3 0.7.5.0 0.7.6.1 0.8.3.0: Binary serialisation for Haskell values using lazy ByteStrings
 dev-haskell/bio 0.5.3-r2: A bioinformatics library
 dev-haskell/biocore 0.3.1: A bioinformatics library
@@ -3545,8 +3545,8 @@ dev-haskell/iproute 1.2.12 1.3.1 1.4.0 1.5.0: IP Routing Table
 dev-haskell/js-flot 0.8.3: Obtain minified flot code
 dev-haskell/js-jquery 3.1.1: Obtain minified jQuery code
 dev-haskell/json 0.4.4 0.5 0.7 0.9.1: Support for serialising Haskell to and from JSON
-dev-haskell/juicypixels 3.2.5.3 3.2.7 3.2.8: Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and radiance)
-dev-haskell/kan-extensions 4.2.3 5.0.1: Kan extensions, Kan lifts, various forms of the Yoneda lemma, and (co)density (co)monads
+dev-haskell/juicypixels 3.2.5.3 3.2.7 3.2.8: Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and others)
+dev-haskell/kan-extensions 4.2.3 5.0.1: Kan extensions, lifts, forms of the Yoneda lemma, and (co)density (co)monads
 dev-haskell/keys 3.10.2 3.11: Keyed functors and containers
 dev-haskell/language-bash 0.6.1: Parsing and pretty-printing Bash shell scripts
 dev-haskell/language-c 0.4.2 0.4.7: Analysis and generation of C code
@@ -3663,7 +3663,7 @@ dev-haskell/primitive 0.4.1 0.5.0.1 0.5.1.0 0.5.4.0 0.6.1.0-r1: Primitive memory
 dev-haskell/process-conduit 1.1.0.0-r1 1.2.0.1: Conduits for processes (deprecated)
 dev-haskell/process-extras 0.3.3.6: Process extras
 dev-haskell/profunctor-extras 3.3.3.1 4.0: This package has been absorbed into profunctors 4.0
-dev-haskell/profunctors 3.3.0.1 4.0.4 4.3.2 4.4.1 5.1.2 5.2: Profunctors
+dev-haskell/profunctors 3.3.0.1 4.0.4 4.3.2 4.4.1 5.1.2 5.2: Haskell 98 Profunctors
 dev-haskell/project-template 0.2.0: Specify Haskell project templates and generate files
 dev-haskell/psqueue 1.1-r1: Priority Search Queue
 dev-haskell/psqueues 0.2.0.3 0.2.2.1 0.2.2.2 0.2.2.3: Pure priority search queues
@@ -3932,7 +3932,7 @@ dev-java/bnd-junit 2.1.0: Junit plugin for bndlib, a swiss army knife for OSGi
 dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
 dev-java/boot-bin 2.6.0 2.7.0 2.7.1: Build tooling for Clojure
-dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
+dev-java/browserlauncher2 1.3-r1: A library that facilitates opening a browser from a Java application
 dev-java/bsf 2.4.0-r2: Bean Script Framework
 dev-java/bsh 2.0_beta6: A small embeddable Java source interpreter
 dev-java/btf 1.2: Generic interfaces to the classical builder pattern
@@ -3959,15 +3959,15 @@ dev-java/commons-configuration 1.6-r2: Generic interface for reading configurati
 dev-java/commons-daemon 1.0.15: Tools to allow Java programs to run as UNIX daemons
 dev-java/commons-dbcp 2.1: Jakarta component providing database connection pooling API
 dev-java/commons-dbutils 1.6: A small set of classes designed to make working with JDBC easier
-dev-java/commons-digester 1.8.1-r2 2.1-r1 3.2-r2: Reads XML configuration files to provide initialization of various Java objects within the system
+dev-java/commons-digester 1.8.1-r2 2.1-r1 3.2-r2: Reads XML configuration files to provide initialization of various Java objects
 dev-java/commons-discovery 0.5: Commons Discovery: Service Discovery component
 dev-java/commons-el 1.0-r3: EL is the JSP 2.0 Expression Language Interpreter from Apache
 dev-java/commons-email 1.4: Commons Email aims to provide an API for sending email.
-dev-java/commons-fileupload 1.3: Add robust, high-performance, file upload capability to your servlets and web applications
+dev-java/commons-fileupload 1.3: High-performance file upload capability to your servlets and web applications
 dev-java/commons-graph 0.1: A toolkit for managing graphs and graph based data structures
 dev-java/commons-httpclient 3.1-r1: The Jakarta Commons HttpClient library
 dev-java/commons-imaging 0.97: A minimalistic realtime charting library for Java
-dev-java/commons-io 2.4: Commons-IO contains utility classes, stream implementations, file filters, and endian classes
+dev-java/commons-io 2.4: Utility classes, stream implementations, file filters, and endian classes
 dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r1 1.3-r2 1.3-r3: Applies XPath expressions to graphs of objects of all kinds
@@ -3982,7 +3982,7 @@ dev-java/commons-validator 1.4.0 1.4.1: Commons component to validate user input
 dev-java/commons-vfs 1.0-r1 2.0-r1: A single API for accessing various different file systems
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
 dev-java/cortado 0.6.0-r1: Multimedia framework for Java written by Fluendo
-dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables, shared and static libraries
+dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables
 dev-java/cssparser 0.9.20 0.9.21 0.9.22: API for parsing CSS 2 in Java
 dev-java/db4o-jdk11 7.4: Core files for the object database for java
 dev-java/db4o-jdk12 7.4: Core files for the object database for java
@@ -3993,12 +3993,12 @@ dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
 dev-java/dnsjava 2.1.6 2.1.7: An implementation of DNS in Java
 dev-java/dom4j 1.6.1-r7: XML Java library
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
-dev-java/dynalang 0.4-r1: Library for implementation of interoperable metaobject protocols for dynamic languages
-dev-java/easymock 3.3.1: Provides Mock Objects for interfaces in JUnit tests by generating them on the fly
-dev-java/easymock-classextension 3.2-r1: Provides Mock Objects for interfaces in JUnit tests by generating them on the fly
+dev-java/dynalang 0.4-r1: Libary of interoperable metaobject protocols for dynamic languages
+dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
+dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easyneurons 2.3: GUI neural network editor for neuroph
 dev-java/echo2 2.1.1: Echo2 is the next-generation of the Echo Web Framework
-dev-java/ecj-gcj 3.5.2-r3 3.6-r1 4.2.1-r2 4.4.2: A subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
+dev-java/ecj-gcj 3.5.2-r3 3.6-r1 4.2.1-r2 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
 dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1: Eclipse Compiler for Java
 dev-java/eclipsito 0_pre20130713: A small subset of Eclipse core libraries for modular applications
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
@@ -4007,7 +4007,7 @@ dev-java/ehcache 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-p
 dev-java/emma 2.0.5312-r3: Free Java code coverage tool
 dev-java/error-prone-annotations 2.0.14: Java annotations for the Error Prone static analysis tool
 dev-java/ezmorph 1.0.6: A simple Java library for transforming an Object to another Object
-dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
+dev-java/fastinfoset 1.2.11: Specifies a standardized binary encoding for the XML Information Sets
 dev-java/fastutil 7.0.10: Provides faster type-specific maps, sets and lists with a small memory footprint
 dev-java/fec 1.0.4-r2: Forward Error Correction library in Java
 dev-java/felix-bundlerepository 1.6.6: Felix Bundle Repository
@@ -4080,7 +4080,7 @@ dev-java/iso-relax 20050331-r4: Interfaces useful for applications which support
 dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
-dev-java/itext 2.1.5-r2 5.5.4-r2: Java library that generate documents in the Portable Document Format (PDF) and/or HTML.
+dev-java/itext 2.1.5-r2 5.5.4-r2: Generate documents in the Portable Document Format (PDF) and/or HTML
 dev-java/j2objc-annotations 1.2: Annotations for the J2ObjC Java to Objective-C translator
 dev-java/j2ssh 0.2.9: Java implementation of the SSH protocol
 dev-java/jackcess 1.2.14.3: Pure Java library for reading from and writing to MS Access databases
@@ -4102,7 +4102,7 @@ dev-java/jama 1.0.3-r1: A Java Matrix Package
 dev-java/jamon 2.81: Java API to monitor production applications
 dev-java/jamvm 2.0.0-r1: An extremely small and specification-compliant virtual machine
 dev-java/janino 2.7.0: An embedded compiler for run-time compilation purposes
-dev-java/jansi 1.5 1.5-r1 1.11-r1: Jansi is a small java library that allows you to use ANSI escape sequences in your console output
+dev-java/jansi 1.5 1.5-r1 1.11-r1: A library that allows you to use ANSI escape sequences in your console output
 dev-java/jansi-native 1.5: Native JNI component for dev-java/jansi
 dev-java/japitools 0.9.7-r4: Java API compatibility testing tools
 dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
@@ -4143,8 +4143,8 @@ dev-java/jclasslib 3.0-r1 3.1: Java bytecode viewer
 dev-java/jcmdline 1.0.2-r2 2.0.0: Library for parsing/handling of command line parameters
 dev-java/jcodings 1.0.4 1.0.5 1.0.11: Byte-based encoding support library for Java
 dev-java/jcommander 1.48: Command line parsing framework for Java
-dev-java/jcommon 1.0.23: JCommon is a collection of useful classes used by JFreeChart, JFreeReport and other projects
-dev-java/jcs 2.0: JCS is a distributed caching system written in Java for server-side Java applications
+dev-java/jcommon 1.0.23: A collection of useful classes used by JFreeChart, JFreeReport and others
+dev-java/jcs 2.0: A distributed caching system for server-side Java applications
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
 dev-java/jdbc-jaybird 2.2.9: JDBC Type 2 and 4 drivers for Firebird SQL server
 dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
@@ -4153,7 +4153,7 @@ dev-java/jdbc-oracle-bin 9.2.0.8 10.1.0.5 10.2.0.3 10.2.0.4: JDBC 3.0 Drivers fo
 dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1205 9.4_p1206: JDBC Driver for PostgreSQL
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
-dev-java/jdepend 2.9-r5: JDepend traverses Java class file directories and generates design quality metrics per package
+dev-java/jdepend 2.9-r5: Traverses Java class file directories and generates design quality metrics
 dev-java/jdom 1.0-r2 1.0-r4 1.1.3 2.0.6-r4: Java API to manipulate XML data
 dev-java/jdom-jaxen 1.0-r1: Jaxen binding for jdom
 dev-java/jdynamite 1.2-r1: Dynamic Template in Java
@@ -4184,7 +4184,7 @@ dev-java/jide-oss 3.6.12: JIDE Common Layer (Professional Swing Components)
 dev-java/jikes 1.22-r13: IBM's open source, high performance Java compiler
 dev-java/jinklevel 0.1: Java binding for libinklevel
 dev-java/jinput 2.0.6-r1: An implementation of an API for game controller discovery and polled input
-dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine written in Pure Java
+dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine
 dev-java/jlayer 1.0.1: MP3 decoder/player/converter library for Java
 dev-java/jlex 1.2.6-r2: JLex: a lexical analyzer generator for Java
 dev-java/jlfgr 1.0-r2: Java(TM) Look and Feel Graphics Repository
@@ -4208,7 +4208,7 @@ dev-java/joda-time 2.7: A quality open-source replacement for the Java Date and 
 dev-java/joni 2.1.0: Java port of the Oniguruma regular expression engine
 dev-java/jopt-simple 4.6 4.8 4.9: A Java library for parsing command line options
 dev-java/jortho 1.0: A Java spell-checking library
-dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source file with version, build number or other info
+dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source file with version or other info
 dev-java/jrexx 1.1.1-r2: API for textual pattern matching based on the finite state automaton theory
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r1: Java Interface to Tobias Oetiker's RRDtool
@@ -4247,7 +4247,7 @@ dev-java/junrar 0.6: Unrar java implementation
 dev-java/jupidator 0.6.0 0.6.0-r1: Jupidator is a library/tool in Java for automatic updating of applications
 dev-java/jusb 0.4.4-r1: jUSB provides a Free Software Java API for USB
 dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
-dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM in production environments
+dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM
 dev-java/jvyaml 0.2.1-r2: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
 dev-java/jython 2.7.0 2.7.0-r1: An implementation of Python written in Java
@@ -4265,10 +4265,10 @@ dev-java/libmso 0.1: Java library to detect printers
 dev-java/libreadline-java 0.8.0-r3: A JNI-wrapper to GNU Readline
 dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
-dev-java/lucene 1.4.3-r3 2.4.1-r1 3.5.0 3.6.2: High-performance, full-featured text search engine library written entirely in Java
+dev-java/lucene 1.4.3-r3 2.4.1-r1 3.5.0 3.6.2: High-performance, full-featured text search engine written entirely in Java
 dev-java/lucene-analyzers 1.9.1-r1 2.3.2: Lucene Analyzers additions
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
-dev-java/lzmajio 0.95-r1: Implementations of LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
+dev-java/lzmajio 0.95-r1: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
 dev-java/matrix-toolkits-java 0.9.12: BLAS and LAPACK-derived matrix data structures and linear algebra methods
 dev-java/maven-bin 1.1-r3 2.0.11-r2 2.2.1-r2 3.0.4-r1 3.1.1 3.2.5 3.3.3-r1 3.3.9: Project Management and Comprehension Tool for Java
 dev-java/maven-hawtjni-plugin 1.11: Maven plugin for the HawtJNI code generator (resources only)
@@ -4290,7 +4290,7 @@ dev-java/msv 20130601: Multi-Schema XML Validator, a Java tool for validating XM
 dev-java/myfaces-api 2.2.8: Apache MyFaces API - Core package
 dev-java/myfaces-builder-annotations 1.0.9: Apache MyFaces API - Builder annotations package
 dev-java/nachocalendar 0.23-r1: Flexible Calendar component to the Java Platform
-dev-java/nailgun 0.7.1-r1: a client, protocol, and server for running Java apps without incurring the JVM startup overhead
+dev-java/nailgun 0.7.1-r1: A client, protocol and server for running without incurring JVM startup overhead
 dev-java/nanoxml 2.2.3-r3: NanoXML is a small non-validating parser for Java
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
 dev-java/netbeans-apisupport 8.0.2 8.1 8.2: Netbeans API Support Cluster
@@ -4343,7 +4343,7 @@ dev-java/piccolo2d 3.0-r1: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus project
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
-dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of structured and unstructured data
+dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of un-/structured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
 dev-java/protobuf-java 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protocol Buffers - official Java Bindings
 dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method definitions
@@ -4368,7 +4368,7 @@ dev-java/sat4j-pseudo 2.2.0 2.3.1: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r3 2.2.1-r4: SAX: Simple API for XML in Java
 dev-java/saxon 6.5.5-r2 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
-dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an IETF RFC 2614 compliant SLP client for CIM service discovery
+dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an SLP client for CIM service discovery
 dev-java/sbt 0.13.8-r1 0.13.10_rc2 0.13.11 0.13.13: sbt is a build tool for Scala and Java projects that aims to do the basics well
 dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9: sbt, a build tool for Scala.
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
@@ -4387,14 +4387,14 @@ dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/spice-jndikit 1.2 1.4: JNDI Kit is a toolkit designed to help with the construction of JNDI providers
 dev-java/spin 1.5-r1: Transparent threading solution for non-freezing Swing applications
-dev-java/spring-aop 3.2.4: A comprehensive programming and configuration model for modern Java-based enterprise applications
-dev-java/spring-beans 3.2.4: A comprehensive programming and configuration model for modern Java-based enterprise applications
-dev-java/spring-core 3.2.4: A comprehensive programming and configuration model for modern enterprise applications
-dev-java/spring-expression 3.2.4: A comprehensive programming and configuration model for modern Java-based enterprise applications
-dev-java/spring-instrument 3.2.4: A comprehensive programming and configuration model for modern Java-based enterprise applications
+dev-java/spring-aop 3.2.4: A comprehensive programming and configuration model for enterprise applications
+dev-java/spring-beans 3.2.4: A comprehensive programming and configuration model for enterprise applications
+dev-java/spring-core 3.2.4: A comprehensive programming and configuration model for enterprise applications
+dev-java/spring-expression 3.2.4: A comprehensive programming and configuration model for enterprise applications
+dev-java/spring-instrument 3.2.4: A comprehensive programming and configuration model for enterprise applications
 dev-java/spymemcached 2.9.1-r1: A simple, asynchronous, single-threaded memcached client written in java
 dev-java/squareness-jlf 2.3.0-r1: Squareness Java Look and Feel
-dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML data from and to your application
+dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML data
 dev-java/stax-ex 1.0-r4 1.7.6: Extensions to complement JSR-173 StAX API
 dev-java/stax2-api 4.0.0 4.0.0-r1: Extended Stax (STandard Api for Xml procesing) API
 dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
@@ -4408,7 +4408,7 @@ dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
 dev-java/sun-javamail 1.4.3: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/sun-jimi 1.0-r3: Jimi is a class library for managing images
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
-dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitoring devices, applications, and services
+dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitoring
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swarmcache 1.0_pre20050106-r1 1.0_pre20050106-r2: Cluster-aware Caching for Java
@@ -4450,9 +4450,9 @@ dev-java/werken-xpath 0.9.4_beta-r4: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
-dev-java/xalan 2.7.2: Apache's XSLT processor for transforming XML documents into HTML, text, or other XML document types
+dev-java/xalan 2.7.2: Transforming XML documents into HTML, text, or other XML document types
 dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
-dev-java/xerces 2.11.0 2.11.0-r1: The next generation of high performance, fully compliant XML parsers in the Apache Xerces family
+dev-java/xerces 2.11.0 2.11.0-r1: The next generation of high performance, fully compliant XML parsers
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
 dev-java/xjavac 2.4.0 20110814: The implementation of the javac compiler for IBM JDK 1.4 (needed for xerces-2)
 dev-java/xml-commons 1.4.01: Apache XML Commons
@@ -4491,7 +4491,7 @@ dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/closure-compiler-bin 20150126 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.11.1: A little language that compiles into javascript
-dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
+dev-lang/confluence 0.10.6: Functional programming language for reactive system design
 dev-lang/crystal 0.20.4-r1 0.20.5 0.20.5-r1 0.20.5-r2 0.21.0 0.21.1: The Crystal Programming Language
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100 6.0.967_p20161020-r1 6.0.967_p20161020-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2 1.3.4 1.4.0 1.4.1 1.4.2: Elixir programming language
@@ -4512,7 +4512,7 @@ dev-lang/gnat-gpl 2016: GNAT Ada Compiler - GPL version
 dev-lang/gnu-smalltalk 3.2.5: GNU Smalltalk
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.7.4 1.7.5 1.8 1.8-r1 9999: A concurrent garbage collected and typesafe programming language
-dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
+dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
 dev-lang/hy 0.10.0 0.10.1 0.11.1 0.12.0 0.12.1: A LISP dialect running in python
@@ -4554,7 +4554,7 @@ dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
 dev-lang/orc 0.4.26-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
-dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficiently compile and execute bytecode for dynamic languages
+dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.22.3_rc4 5.22.3 5.24.1_rc4 5.24.1 5.24.1-r1 5.26.9999: Larry Wall's Practical Extraction and Report Language
@@ -14940,7 +14940,7 @@ net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.14.5: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.14.5 2.16.1: Open source web browser engine
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0 4.5.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2: A brokerless kernel

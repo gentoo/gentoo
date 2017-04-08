@@ -4,7 +4,7 @@ DESCRIPTION=An obfuscating proxy using Tor's pluggable transport protocol
 EAPI=5
 HOMEPAGE=https://www.torproject.org/projects/obfsproxy.html
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~mips ~x86
+KEYWORDS=~amd64 ~arm ~mips ~x86
 LICENSE=BSD
 RDEPEND=>=dev-python/pyptlib-0.0.6[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pycrypto-2.6-r2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/twisted-core[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://pypi/o/obfsproxy/obfsproxy-0.2.12.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	039ba10839816478cfb070fdeb053906	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
-_md5_=ea02faabfcdfd022c30164072e1dbd7d
+_md5_=d310f8b6817c3f7058a5b5e192ae4399

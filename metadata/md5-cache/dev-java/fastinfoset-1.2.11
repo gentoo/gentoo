@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install preinst prepare setup
 DEPEND=>=virtual/jdk-1.5 app-arch/unzip >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
-DESCRIPTION=Fast Infoset specifies a standardized binary encoding for the XML Information Sets
+DESCRIPTION=Specifies a standardized binary encoding for the XML Information Sets
 EAPI=5
 HOMEPAGE=https://fi.java.net/
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://search.maven.org/remotecontent?filepath=com/sun/xml/fastinfoset/FastInfoset/1.2.11/FastInfoset-1.2.11-sources.jar
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:java-pkg-simple src_install:java-pkg-simple
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3e71074eb6884746b37b70b2c9c881f4	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=e48eb85cd15605ef8f219945a5698bd7
+_md5_=8fcae8f0c13073e09bd1e137263d830b
