@@ -4,18 +4,19 @@
 EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros-geographic-info/geographic_info"
-VER_PREFIX=geographic_info-
-KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+VER_PREFIX=${PN}-
+KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
-CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/geometry_msgs dev-ros/std_msgs dev-ros/uuid_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="ROS messages for Geographic Information Systems"
+DESCRIPTION="Geographic information metapackage"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="
+	dev-ros/geodesy
+	dev-ros/geographic_msgs
+"
 DEPEND="${RDEPEND}"
