@@ -62,7 +62,8 @@ src_prepare() {
 	[[ ${CHOST} == *-solaris2.11 ]] \
 		&& append-cppflags -DNEED_XOS_R_H -DHAVE_READDIR_R_3
 
-	if use !elibc_glibc && use !elibc_uclibc && use unicode; then
+	if use !elibc_glibc && use !elibc_uclibc && use !elibc_musl \
+			&& use unicode; then
 		# libiconv detection in configure script doesn't always work
 		# http://bugs.motifzone.net/show_bug.cgi?id=1423
 		export LIBS="${LIBS} -liconv"
