@@ -5470,7 +5470,7 @@ dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Browser-Open 0.40.0: Open a browser at a given URL
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
 dev-perl/Business-Hours 0.120.0-r1: Calculate business hours in a time period
-dev-perl/Business-ISBN 2.50.0-r1 2.90.200_rc: Work with ISBN as objects
+dev-perl/Business-ISBN 2.90.200_rc: Work with ISBN as objects
 dev-perl/Business-ISBN-Data 20140910.2.0 20140910.3.0: Data pack for Business::ISBN
 dev-perl/Business-ISMN 1.130.0: International Standard Music Numbers
 dev-perl/Business-ISSN 0.910.0-r1: Object and functions to work with International Standard Serial Numbers
@@ -6875,7 +6875,7 @@ dev-perl/aliased 0.340.0: Use shorter versions of class names
 dev-perl/asa 1.30.0: Lets your class/object say it works like something else
 dev-perl/autobox 2.830.0 2.850.0: Call methods on native types
 dev-perl/autovivification 0.160.0: Lexically disable autovivification
-dev-perl/bareword-filehandles 0.3.0: Disables bareword filehandles
+dev-perl/bareword-filehandles 0.3.0 0.4.0: Disables bareword filehandles
 dev-perl/boolean 0.450.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!

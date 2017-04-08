@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/B-Hooks-OP-Check dev-perl/Lexical-SealRequireHints virtual/perl-XSLoader virtual/perl-ExtUtils-MakeMaker dev-perl/ExtUtils-Depends test? ( >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DESCRIPTION=Disables bareword filehandles
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/bareword-filehandles/
+IUSE=test
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/B-Hooks-OP-Check dev-perl/Lexical-SealRequireHints virtual/perl-XSLoader dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/bareword-filehandles-0.004.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=49cdc1a495da0d8507fc84de6a0039de
