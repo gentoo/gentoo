@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 HOMEPAGE="http://jbossmarshalling.jboss.org/"
 SRC_URI="http://download.jboss.org/jbossmarshalling/jboss-marshalling-${PV}.CR9-sources.jar"
-DESCRIPTION="Alternative compatible serialization API that fixes many JDK serialization API problems"
+DESCRIPTION="Compatible alternative to the JDK serialization API"
 
 LICENSE="Apache-2.0"
 SLOT="0"

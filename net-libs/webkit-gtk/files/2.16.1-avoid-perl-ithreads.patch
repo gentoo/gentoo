@@ -1,0 +1,88 @@
+From 1ac17bea2273df0dfec21897b00efb8351648e1b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 9 Apr 2017 04:10:52 +1200
+Subject: Remove need for threaded perl at expense of being single-threaded
+
+This could theoretically be implemented with forks, but I opted not
+to because its too hard, and the platform specifics are too messy.
+
+This could theoretically also have support for automatic detection
+as to which strategy to use based on OS/availability, but the
+implementation details of that are too much for my pateience today.
+
+In an ideal world, this file would support:
+
+1. Single threaded builds for spartans
+2. Forked builds for people who are on linux but don't want to rebuild
+   their perl just to have threads ( which produce negligible benefit
+   and measurable performance penalties to all code )
+3. Threaded builds for people who are on windows where forks may not
+   be entirely sane.
+
+But #1 is good enough atm.
+
+This is important for Gentoo, because end users decide on their own
+choices with regards to threading support for perl, and threading
+support is off by default due to the performance issues mentioned in #2
+in conjunction with the fact that "threads" is officially discouraged
+by Perl Upstream.
+
+And as Gentoo users have to have a system Perl to compile WebkitGTK,
+this means installing WebkitGTK requires rebuilding their system Perl
+with threads.
+
+And this *also* means that all packages presently compiled against Perl
+become broken, because non-threaded perl and threaded perl are not ABI
+compatible with each other, and this can scale into hundreds of
+packages and significant transient breakage.
+
+This ends up in practice being *far* *worse* in terms of time wasted
+than the mediocre time inefficiency created by needing a single
+threaded build.
+---
+ Source/WebCore/bindings/scripts/generate-bindings-all.pl | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/Source/WebCore/bindings/scripts/generate-bindings-all.pl b/Source/WebCore/bindings/scripts/generate-bindings-all.pl
+index 37b27cc74..b3a378df0 100755
+--- a/Source/WebCore/bindings/scripts/generate-bindings-all.pl
++++ b/Source/WebCore/bindings/scripts/generate-bindings-all.pl
+@@ -32,9 +32,6 @@ use File::Basename;
+ use File::Spec;
+ use File::Find;
+ use Getopt::Long;
+-use threads;
+-use threads::shared;
+-use Thread::Queue;
+ 
+ my $perl = $^X;
+ my $scriptDir = $FindBin::Bin;
+@@ -121,13 +118,11 @@ my @idlFilesToUpdate = grep &{sub {
+                 implicitDependencies($depFile));
+     needsUpdate(\@output, \@deps);
+ }}, @idlFiles;
+-my $queue = Thread::Queue->new(@idlFilesToUpdate);
+-my $abort :shared = 0;
+-my $totalCount = @idlFilesToUpdate;
+-my $currentCount :shared = 0;
+ 
+-my @threadPool = map { threads->create(\&worker) } (1 .. $numOfJobs);
+-$_->join for @threadPool;
++my $abort = 0;
++my $totalCount = @idlFilesToUpdate;
++my $currentCount = 0;
++worker();
+ exit $abort;
+ 
+ sub needsUpdate
+@@ -158,7 +153,7 @@ sub mtime
+ }
+ 
+ sub worker {
+-    while (my $file = $queue->dequeue_nb()) {
++    while (my $file = shift @idlFilesToUpdate) {
+         last if $abort;
+         eval {
+             $currentCount++;
+-- 
+2.12.2

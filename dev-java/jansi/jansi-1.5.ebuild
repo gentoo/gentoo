@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ JAVA_PKG_IUSE="source test doc"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Jansi is a small java library that allows you to use ANSI escape sequences in your console output"
+DESCRIPTION="A library that allows you to use ANSI escape sequences in your console output"
 HOMEPAGE="http://jansi.fusesource.org/"
 SRC_URI="https://github.com/fusesource/${PN}/archive/${P}.zip"
 
