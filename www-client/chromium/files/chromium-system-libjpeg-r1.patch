@@ -1,0 +1,9 @@
+--- a/build/linux/unbundle/libjpeg.gn.orig	2017-04-07 18:43:28.687843142 +0000
++++ b/build/linux/unbundle/libjpeg.gn	2017-04-07 18:43:47.156224137 +0000
+@@ -21,3 +21,6 @@
+ 
+ source_set("simd_asm") {
+ }
++
++config("libjpeg_config") {
++}
