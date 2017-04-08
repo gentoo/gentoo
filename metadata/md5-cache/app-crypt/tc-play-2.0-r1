@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/bwalex/tc-play/archive/v2.0.tar.gz -> tc-play-2.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_configure:multilib-minimal src_compile:- src_test:multilib-minimal src_install:-
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=ab8d430adf620190c0009418f374877a
+_md5_=98043003d98d0ca1588e2aaa2e96d6e9
