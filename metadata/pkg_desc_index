@@ -5735,7 +5735,7 @@ dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availability
-dev-perl/Devel-CheckLib 1.60.0 1.70.0 1.90.0: check that a library is available
+dev-perl/Devel-CheckLib 1.60.0 1.70.0 1.90.0 1.100.0: check that a library is available
 dev-perl/Devel-Cover 1.230.0 1.230.0-r1: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.18 0.6.19: Adding keywords to perl, in perl
@@ -6192,6 +6192,7 @@ dev-perl/Math-VecStat 0.80.0-r1: Some basic numeric stats on vectors
 dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
 dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does the rest
 dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
+dev-perl/Mock-Config 0.30.0: Temporarily set Config or XSConfig values
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.501.270 1.201.612.290 1.201.701.170: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.421.600 0.421.800 0.422.200: Build and install Perl modules
