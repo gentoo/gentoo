@@ -12,7 +12,7 @@ HOMEPAGE="https://www.kde.org/applications/education/labplot/"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}-kf5.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="cantor fftw fits hdf5 netcdf"
 
 [[ ${KDE_BUILD_TYPE} != live ]] && S="${WORKDIR}/${P}-kf5"
@@ -27,7 +27,6 @@ COMMON_DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
-	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
@@ -57,6 +56,8 @@ src_prepare() {
 	if ! use handbook && [[ ${KDE_BUILD_TYPE} != live ]]; then
 		cmake_comment_add_subdirectory doc-translations
 	fi
+
+	punt_bogus_dep KF5 NewStuff
 }
 
 src_configure() {
