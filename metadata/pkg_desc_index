@@ -4777,7 +4777,7 @@ dev-libs/libcli 1.9.4-r1 1.9.7: Cisco-style (telnet) command-line interface libr
 dev-libs/libclsync 0.4.1 0.4.2: Control and monitoring library for clsync
 dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
-dev-libs/libcroco 0.6.11: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
+dev-libs/libcroco 0.6.11 0.6.12: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.6.1: CSS parser and selection engine, written in C
 dev-libs/libcxml 0.15.1 0.15.4: small C++ library which makes it marginally neater to parse XML using libxml++
 dev-libs/libdaemon 0.14-r1 0.14-r2: Simple library for creating daemon processes in C
