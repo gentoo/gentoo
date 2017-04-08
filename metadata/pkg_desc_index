@@ -18949,7 +18949,7 @@ x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016 1.51: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.5: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
-x11-misc/xdotool 3.20150503.1-r1: Simulate keyboard input and mouse activity, move and resize windows
+x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.42: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
