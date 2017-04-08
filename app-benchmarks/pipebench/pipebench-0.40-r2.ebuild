@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -21,14 +21,15 @@ src_prepare() {
 		-e "s:/usr/local/bin/:${ED}/usr/bin:" \
 		-e "s:/usr/local/man/man1/:${ED}/usr/share/man/man1:" \
 		|| die "sed Makefile"
+	default
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) || die
+	emake CC=$(tc-getCC)
 }
 
 src_install() {
 	dodir /usr/{bin,share/man/man1}
-	emake install || die
+	emake install
 	dodoc README
 }
