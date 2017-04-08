@@ -34,8 +34,8 @@ src_prepare() {
 	# correct install paths (really correct this time)
 	sed -i -e "s:\$(sysconfdir)/bash_completion.d:$(get_bashcompdir):" \
 		scripts/Makefile.in || die
-	# don't participate in user survey bug 360483
-	sed -i -e '/usage-count/ s/yes/no/' scripts/drbd.conf.example || die
+	# don't participate in user survey bug 360483 and 610950
+	sed -i -e '/usage-count/ s/yes/no/' scripts/{global_common.conf,drbd.conf.example} || die
 	sed -i -e "s:\$(sysconfdir)/udev:$(get_udevdir):" scripts/Makefile.in || die
 }
 
