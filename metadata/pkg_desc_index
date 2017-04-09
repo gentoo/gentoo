@@ -5592,7 +5592,7 @@ dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as
 dev-perl/ConfigReader 0.500.0-r1: Read directives from a configuration file
 dev-perl/Const-Fast 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
 dev-perl/Context-Preserve 0.10.0-r1: Return chained, modified values from subs, without losing context
-dev-perl/Contextual-Return 0.4.7-r1 0.4.8 0.4.9 0.4.10: Create context-sensitive return values
+dev-perl/Contextual-Return 0.4.7-r1 0.4.8 0.4.9 0.4.10 0.4.11: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
