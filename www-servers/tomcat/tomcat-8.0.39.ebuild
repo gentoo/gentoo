@@ -44,7 +44,9 @@ pkg_setup() {
 	enewuser tomcat 265 -1 /dev/null tomcat
 }
 
-java_prepare() {
+src_prepare() {
+	default
+
 	find -name '*.jar' -type f -delete -print || die
 
 	# Remove bundled servlet-api
@@ -56,6 +58,8 @@ java_prepare() {
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
 		CLASSPATH=\`java-config --classpath ${PN}-${SLOT}\`" \
 		bin/catalina.sh || die
+
+	java-pkg-2_src_prepare
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
