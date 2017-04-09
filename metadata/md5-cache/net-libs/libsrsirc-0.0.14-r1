@@ -10,4 +10,4 @@ RDEPEND=ssl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=http://penenen.de/libsrsirc-0.0.14.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=bef492ea54513bcc65231f06790b3ba2
+_md5_=62f58621c20a2a5bc66f4e73312d47e9

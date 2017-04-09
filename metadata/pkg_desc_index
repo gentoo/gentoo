@@ -14870,7 +14870,7 @@ net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.54.1-r1 2.56.0: An HTTP library implementation in C
-net-libs/libsrsirc 0.0.14: A lightweight, cross-platform IRC library
+net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1 1.5.4 2.0.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3-r1 0.7.4 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
@@ -17737,7 +17737,7 @@ sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.51 4.4.52 4.4.53 4.4.54 4.4.55 4.4.56 4.4.57 4.9.12 4.9.13 4.9.14 4.9.15 4.9.16 4.9.17 4.9.18 4.10.0 4.10.1 4.10.2 4.10.3 4.10.4: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r1 7.0.2: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.15 4.9.16 4.9.17 4.9.18 4.9.20 4.10.3 4.10.4 4.10.5 4.10.6 4.10.8: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.10
+sys-kernel/ck-sources 4.9.15 4.9.16 4.9.17 4.9.18 4.9.20 4.9.21 4.10.3 4.10.4 4.10.5 4.10.6 4.10.8 4.10.9: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.10
 sys-kernel/cryptodev 1.7 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 3.5.0.6 3.5.0.8 9999: Gentoo automatic kernel building scripts

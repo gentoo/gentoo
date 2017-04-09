@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.9
+EAPI=5
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://dev.gentoo.org/~mpagano/genpatches/ http://users.tpg.com.au/ckolivas/kernel/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+IUSE=symlink build deblob
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 !deblob? ( freedist )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=4.9.21
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.9.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-4.9 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-check -> deblob-check-4.9 ) mirror://gentoo/genpatches-4.9-22.base.tar.xz mirror://gentoo/genpatches-4.9-22.extras.tar.xz mirror://gentoo/genpatches-4.9-22.experimental.tar.xz http://ck.kolivas.org/patches/4.0/4.9/4.9-ck1/patch-4.9-ck1.xz https://github.com/ckolivas/linux/commit/7de569950716147ed436b27936628ee3ab5b45cc.patch -> ck-sources-4.9-freezer-fix.patch
+_eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:kernel-2 pkg_setup:- src_unpack:kernel-2 src_prepare:- src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	kernel-2	7cc211cb9f869927ca267873f54d8fd5	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d5440feaf4e252e41eec05cea6a8e87e
