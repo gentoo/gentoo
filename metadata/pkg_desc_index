@@ -5738,7 +5738,7 @@ dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availabi
 dev-perl/Devel-CheckLib 1.60.0 1.70.0 1.90.0 1.100.0: check that a library is available
 dev-perl/Devel-Cover 1.230.0 1.230.0-r1: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
-dev-perl/Devel-Declare 0.6.18 0.6.19: Adding keywords to perl, in perl
+dev-perl/Devel-Declare 0.6.19: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
 dev-perl/Devel-FindPerl 0.14.0: Find the path to your perl
 dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
@@ -5910,7 +5910,7 @@ dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
 dev-perl/GStreamer 0.200.0: Perl bindings for GStreamer
 dev-perl/GStreamer-Interfaces 0.60.0-r1: Perl interface to the GStreamer Interfaces library
-dev-perl/Gearman 1.120.0 2.2.4 2.3.1 2.3.2: Gearman distributed job system, client and worker libraries
+dev-perl/Gearman 2.3.2: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
 dev-perl/Gentoo-App-Pram 0.4.0: Readily merge Pull Requests from the Gentoo Github repository
@@ -6131,7 +6131,7 @@ dev-perl/MIME-EncWords 1.12.6-r1 1.14.3: Deal with RFC 2047 encoded words (impro
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
 dev-perl/MIME-Lite-HTML 1.240.0: Provide routine to transform a HTML page in a MIME-Lite mail
 dev-perl/MIME-Types 2.120.0 2.130.0: Definition of MIME types
-dev-perl/MIME-tools 5.507.0: A Perl module for parsing and creating MIME entities
+dev-perl/MIME-tools 5.507.0 5.509.0: A Perl module for parsing and creating MIME entities
 dev-perl/MLDBM 2.50.0: A multidimensional/tied hash Perl Module
 dev-perl/MLDBM-Sync 0.300.0-r1: Safe concurrent access to MLDBM databases
 dev-perl/MP3-Info 1.240.0-r1: A Perl module to manipulate/fetch info from MP3 files
