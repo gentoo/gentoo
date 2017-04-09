@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils multiprocessing python-any-r1 toolchain-funcs
+inherit eutils multiprocessing python-any-r1 toolchain-funcs versionator
 
 REVISION="b177-r50edfd37"
 
@@ -32,13 +32,14 @@ DEPEND="${RDEPEND}
 	~dev-util/bam-0.4.0"
 
 S=${WORKDIR}/${P}-src
+MY_PV=$(get_version_component_range 1-2)
 
 PATCHES=(
-	"${FILESDIR}/${PV}/01-use-system-wavpack.patch"
-	"${FILESDIR}/${PV}/02-fixed-wavpack-sound-loading.patch"
-	"${FILESDIR}/${PV}/03-use-system-pnglite.patch"
-	"${FILESDIR}/${PV}/04-dedicated.patch"
-	"${FILESDIR}/${PV}/05-cc-cflags.patch"
+	"${FILESDIR}/${MY_PV}/01-use-system-wavpack.patch"
+	"${FILESDIR}/${MY_PV}/02-fixed-wavpack-sound-loading.patch"
+	"${FILESDIR}/${MY_PV}/03-use-system-pnglite.patch"
+	"${FILESDIR}/${MY_PV}/04-dedicated.patch"
+	"${FILESDIR}/${MY_PV}/05-cc-cflags.patch"
 )
 
 pkg_setup() {
