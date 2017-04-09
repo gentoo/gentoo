@@ -63,10 +63,6 @@ src_prepare() {
 			settings.link.flags:Add("${LDFLAGS}")
 		end
 	__EOF__
-
-	sed -i \
-		-e "s#/usr/share/games/teeworlds/data#/usr/share/${PN}/data#" \
-		src/engine/shared/storage.cpp || die
 }
 
 src_configure() {
