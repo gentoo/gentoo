@@ -14,8 +14,9 @@
   tracks from your GPS. 
 </longdescription>
   <use>
+    <flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
     <flag name="grass">Add support for <pkg>sci-geosciences/grass</pkg></flag>
     <flag name="mapserver">Determines whether mapserver should be built</flag>
-    <flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
+    <flag name="touch">Enable support for touch input devices</flag>
   </use>
 </pkgmetadata>
