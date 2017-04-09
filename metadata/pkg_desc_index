@@ -11548,7 +11548,7 @@ gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r2: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.34.2: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.16: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.16 2.40.17: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.20.4 3.22.3: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
