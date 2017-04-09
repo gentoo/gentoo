@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.24.1-r1
 	dev-libs/libxml2
 	dev-libs/protobuf:=
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 	>=dev-qt/qtcore-4.5:4[ssl]
 	>=dev-qt/qtgui-4.5:4
 	>=dev-qt/qtopengl-4.5:4

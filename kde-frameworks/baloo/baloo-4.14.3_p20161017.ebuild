@@ -16,7 +16,7 @@ IUSE="debug"
 
 DEPEND="
 	$(add_kdeapps_dep kdepimlibs)
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 	dev-libs/xapian:=[chert]
 "
 RDEPEND="${DEPEND}

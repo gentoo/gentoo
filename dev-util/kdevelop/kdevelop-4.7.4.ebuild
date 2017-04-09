@@ -18,7 +18,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 DEPEND="
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 	dev-qt/qtdeclarative:4[webkit]
 	okteta? ( $(add_kdeapps_dep okteta) )
 	qthelp? ( dev-qt/qthelp:4 )

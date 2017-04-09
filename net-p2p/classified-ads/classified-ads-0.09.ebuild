@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug doc test"
 
 RDEPEND="dev-libs/openssl:0
-		dev-libs/qjson
+		dev-libs/qjson[qt4(+)]
 		>=net-libs/libnatpmp-20130911
 		<=net-libs/libnatpmp-20140401-r1
 		>=net-libs/miniupnpc-1.8

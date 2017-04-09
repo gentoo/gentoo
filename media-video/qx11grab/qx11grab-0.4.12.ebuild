@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="libav kde opengl pulseaudio"
 
 RDEPEND="
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 	>=dev-qt/qtcore-4.7.4:4
 	>=dev-qt/qtdbus-4.7.4:4
 	>=dev-qt/qtgui-4.7.4:4[accessibility]

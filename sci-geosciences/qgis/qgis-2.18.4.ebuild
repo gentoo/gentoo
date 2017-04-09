@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	>=dev-db/spatialite-4.1.0
 	dev-db/sqlite:3
 	dev-libs/expat
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 	dev-qt/designer:4
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4

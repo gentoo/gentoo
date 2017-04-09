@@ -99,7 +99,7 @@ COMMONDEPEND="
 	)
 	xmpp? (
 		app-crypt/qca:2[qt4(+)]
-		dev-libs/qjson
+		dev-libs/qjson[qt4(+)]
 		net-dns/libidn
 		sys-libs/zlib
 	)
