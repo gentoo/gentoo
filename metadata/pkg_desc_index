@@ -1691,7 +1691,7 @@ app-leechcraft/lcpackgen 1.3 1.3.1: Package creator for app-leechcraft/lc-lackma
 app-leechcraft/leechcraft-meta 9999: Metapackage containing all ready-to-use LeechCraft plugins
 app-leechcraft/liblaretz 0.1.0 9999: Shared library to be used by the Laretz sync server and its clients
 app-misc/abduco 0.4 0.5: lightweight session manager with {de,at}tach support
-app-misc/abook 0.6.0_pre2 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
+app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
@@ -1704,7 +1704,7 @@ app-misc/away 0.9.5-r1: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
 app-misc/bb 1.3.0_rc1-r3 1.3.0_rc1-r4: Demonstration program for visual effects of aalib
 app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition, SQL support
-app-misc/beanstalkd 1.4.6-r1 1.9-r1 1.10: A simple, fast work queue
+app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r1: The advanced PC speaker beeper
 app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
@@ -1736,7 +1736,7 @@ app-misc/ckb 0.2.6-r1: Corsair K65/K70/K95 Driver
 app-misc/ckermit 8.0.211-r4: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3: An ncurses based app to show a scrolling screen from the Matrix
-app-misc/color 1.2-r1: Easily add ANSI colouring to shell scripts
+app-misc/color 1.2-r1 1.2-r2: Easily add ANSI colouring to shell scripts
 app-misc/colordiff 1.0.13-r1 1.0.15-r1 1.0.16: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r1: An ISO 3166 country code finder
@@ -6310,7 +6310,7 @@ dev-perl/Net-SFTP-Foreign 1.810.0 1.870.0: SSH File Transfer Protocol client
 dev-perl/Net-SMTP-SSL 1.30.0: SSL support for Net::SMTP
 dev-perl/Net-SMTP-TLS 0.120.0-r2: A SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTP-TLS-ButMaintained 0.240.0-r1: An SMTP client supporting TLS and AUTH
-dev-perl/Net-SMTPS 0.40.0 0.50.0: SSL/STARTTLS support for Net::SMTP
+dev-perl/Net-SMTPS 0.40.0 0.50.0 0.60.0: SSL/STARTTLS support for Net::SMTP
 dev-perl/Net-SNMP 6.0.1-r1 6.0.1-r2: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
@@ -16256,7 +16256,7 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 0.92.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 2.18.3-r1 2.18.4: User friendly Geographic Information System
+sci-geosciences/qgis 2.18.3-r1 2.18.4 2.18.6: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3 1.7.1 1.8.0-r1: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
@@ -18675,7 +18675,7 @@ x11-libs/pixman 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.9.2-r1 2.9.4 2.10: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
-x11-libs/qwt 5.2.3-r2 6.1.0 6.1.3-r1: 2D plotting library for Qt4 and Qt5
+x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
 x11-libs/qwtpolar 1.1.1-r1: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment

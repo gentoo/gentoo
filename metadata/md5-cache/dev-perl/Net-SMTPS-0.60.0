@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Authen-SASL-2.150.0 >=dev-perl/IO-Socket-SSL-1 >=virtual/perl-libnet-2 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=SSL/STARTTLS support for Net::SMTP
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-SMTPS/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Authen-SASL-2.150.0 >=dev-perl/IO-Socket-SSL-1 >=virtual/perl-libnet-2 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TO/TOMO/src/Net-SMTPS-0.06.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=3b680883f05b822c9a00d939bf480eb8
