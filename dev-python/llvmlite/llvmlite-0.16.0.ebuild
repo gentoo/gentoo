@@ -30,7 +30,11 @@ PATCHES=(
 )
 
 python_prepare_all() {
-	sed -e 's/-flto$/-flto -fPIC/' \
+	# remove -static-libstdc++, it makes no sense with shared LLVM
+	# add -fPIC, needed to link against shared libraries
+	# disable -flto, we do not force it against user's wishes
+	sed -e 's/-static-libstdc++/-fPIC/' \
+		-e '/^(CXX|LD)_FLTO_FLAGS/d' \
 		-i ffi/Makefile.linux || die
 	distutils-r1_python_prepare_all
 }
