@@ -954,7 +954,7 @@ app-doc/NaturalDocs 1.52-r1: Extensible, multi-language source code documentatio
 app-doc/abs-guide 10: An in-depth exploration of the art of shell scripting
 app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
 app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implementations
-app-doc/casting-spels-emacs 19-r1 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
+app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.1 0.4.2: Clsync and libclsync API documentation
 app-doc/cppman 0.4.6 0.4.8: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
