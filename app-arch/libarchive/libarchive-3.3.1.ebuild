@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}
 		e2fsprogs? ( sys-fs/e2fsprogs )
 	)"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.3.0-libressl.patch )
+
 src_prepare() {
 	default
 	elibtoolize  # is required for Solaris sol2_ld linker fix
