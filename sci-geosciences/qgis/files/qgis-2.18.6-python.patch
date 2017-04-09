@@ -1,0 +1,25 @@
+commit 13d8e30bbe0ee17fff32a3eba90cd217d277e5ac
+Author: Marco Bernasocchi <marco@opengis.ch>
+Date:   Wed Dec 7 19:08:24 2016 +1300
+
+    fix 2.18 build with Qt5 by executing pyuic
+
+diff --git a/scripts/pyuic-wrapper.sh b/scripts/pyuic-wrapper.sh
+index d6fb497a84..aa146b31bb 100755
+--- a/scripts/pyuic-wrapper.sh
++++ b/scripts/pyuic-wrapper.sh
+@@ -15,12 +15,12 @@
+ ###########################################################################
+ 
+ 
+-PYUIC4=$1
++PYUIC=$1
+ LD_LIBRARY_PATH=$2:$LD_LIBRARY_PATH
+ PYTHONPATH=$3:$PYTHONPATH
+ PYTHON=$4
+ shift 4
+ 
+ export LD_LIBRARY_PATH PYTHONPATH
+-
++$PYUIC $@
+ exec $PYTHON $(dirname $0)/pyuic-wrapper.py $@

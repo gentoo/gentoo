@@ -90,7 +90,10 @@ RDEPEND="${COMMON_DEPEND}
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${P}-featuresummary.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-featuresummary.patch"
+	"${FILESDIR}/${P}-python.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
