@@ -34,7 +34,7 @@ python_prepare_all() {
 	# add -fPIC, needed to link against shared libraries
 	# disable -flto, we do not force it against user's wishes
 	sed -e 's/-static-libstdc++/-fPIC/' \
-		-e '/d^(CXX|LD)_FLTO_FLAGS/' \
+		-e '/^(CXX|LD)_FLTO_FLAGS/d' \
 		-i ffi/Makefile.linux || die
 	distutils-r1_python_prepare_all
 }
