@@ -10,9 +10,12 @@ SRC_URI="http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/openssl/openssl-c_
 LICENSE="openssl"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE=""
+IUSE="libressl"
 
-RDEPEND="!<dev-libs/openssl-1.0.2d-r1:0"
+RDEPEND="
+        !libressl? ( !<dev-libs/openssl-1.0.2d-r1:0 )
+        libressl? ( dev-libs/libressl:0 )
+"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}
