@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) efi? ( >=sys-devel/binutils-2.22[multitarget] ) !efi? ( >=sys-devel/binutils-2.22 )
+DESCRIPTION=The Xen virtual machine monitor
+EAPI=5
+HOMEPAGE=http://xen.org/
+IUSE=custom-cflags debug efi flask
+KEYWORDS=~amd64 ~arm -x86
+LICENSE=GPL-2
+PDEPEND=~app-emulation/xen-tools-4.8.0
+REQUIRED_USE=arm? ( debug )
+RESTRICT=test splitdebug strip
+SLOT=0
+SRC_URI=http://bits.xensource.com/oss-xen/release/4.8.0/xen-4.8.0.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-4.8.0-upstream-patches-0.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-security-patches-25.tar.xz
+_eclass_exported_funcs=pkg_pretend:mount-boot pkg_prerm:mount-boot pkg_preinst:mount-boot pkg_postrm:mount-boot pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=c45283e76983fca51b9dae872111ec23
