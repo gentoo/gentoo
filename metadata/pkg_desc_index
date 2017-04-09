@@ -1840,7 +1840,7 @@ app-misc/joy2key 1.6.3: An application that translates joystick events to keyboa
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r2: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3: A CalDAV based calendar
+app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3 0.9.4: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
@@ -5522,7 +5522,7 @@ dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.40.0-r1 6.60.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.6-r1: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r1: Implements an algorithm to find good values for chart axis
-dev-perl/Chatbot-Eliza 1.60.0: A clone of the classic Eliza program
+dev-perl/Chatbot-Eliza 1.60.0 1.70.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
 dev-perl/Cisco-Reconfig 0.911.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
@@ -10517,7 +10517,7 @@ dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
 dev-vcs/colorcvs 1.4-r1: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.2-r2 0.3.2-r3: Subversion output colorizer
 dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
-dev-vcs/cvs 1.12.12-r10 1.12.12-r11: Concurrent Versions System - source code revision control tools
+dev-vcs/cvs 1.12.12-r11: Concurrent Versions System - source code revision control tools
 dev-vcs/cvs-fast-export 1.26 1.38: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1: Convert a CVS repository to a Subversion repository
