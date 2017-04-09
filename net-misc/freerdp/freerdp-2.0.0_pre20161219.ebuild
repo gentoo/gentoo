@@ -87,6 +87,8 @@ DEPEND="${RDEPEND}
 	) ) )
 "
 
+PATCHES=( "${FILESDIR}"/freerdp-libressl.patch )
+
 DOCS=( README )
 
 PATCHES=(
