@@ -35,7 +35,7 @@ WARNING_IP6_NF_IPTABLES="If your kernel has CONFIG_IPV6, you need CONFIG_IP6_NF_
 pkg_setup() {
 	if use module; then
 		linux-mod_pkg_setup
-		kernel_is -lt 4 1 0 && die "This version of ${PN} requires Linux >= 4.1"
+		kernel_is -lt 3 10 0 && die "This version of ${PN} requires Linux >= 3.10"
 	fi
 }
 
