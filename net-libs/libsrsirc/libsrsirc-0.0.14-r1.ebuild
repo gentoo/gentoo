@@ -17,12 +17,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static) \
-		$(use_with ssl)
+	econf $(use_enable static-libs static) $(use_with ssl)
 }
 
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+	mv "${D}/usr/bin/icat" "${D}/usr/bin/icat-lsi" || die
 }
