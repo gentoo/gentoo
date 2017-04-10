@@ -5520,7 +5520,7 @@ dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
 dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.40.0-r1 6.60.0: Report errors from perspective of caller of a clan of modules
-dev-perl/Chart 2.4.6-r1: The Perl Chart Module
+dev-perl/Chart 2.4.6-r1 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r1: Implements an algorithm to find good values for chart axis
 dev-perl/Chatbot-Eliza 1.60.0 1.70.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
