@@ -9,8 +9,7 @@ REDIS_TIMEOUT=${REDIS_TIMEOUT:-30}
 
 command=/usr/sbin/redis-server
 pidfile=${REDIS_PID:-/run/redis/redis.pid}
-start_stop_daemon_args="--background --make-pidfile --pidfile ${pidfile}
-	--chdir \"${REDIS_DIR}\" --user ${REDIS_USER} --group ${REDIS_GROUP}"
+start_stop_daemon_args="--chdir \"${REDIS_DIR}\" --user ${REDIS_USER} --group ${REDIS_GROUP}"
 command_args="${REDIS_OPTS}"
 
 depend() {
