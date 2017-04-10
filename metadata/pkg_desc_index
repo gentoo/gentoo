@@ -10263,7 +10263,7 @@ dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using ac
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/drone 0.5.0_rc1_p20170310 0.5.0: A Continuous Delivery platform built on Docker, written in Go
-dev-util/drone-ui 0_pre20170305: React front-end for the Drone continuous integration server
+dev-util/drone-ui 0_pre20170305 0.5.0: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
