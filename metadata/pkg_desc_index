@@ -4370,7 +4370,7 @@ dev-java/saxon 6.5.5-r2 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an SLP client for CIM service discovery
 dev-java/sbt 0.13.8-r1 0.13.10_rc2 0.13.11 0.13.13: sbt is a build tool for Scala and Java projects that aims to do the basics well
-dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9: sbt, a build tool for Scala.
+dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9 0.13.15: sbt, a build tool for Scala
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary objects
 dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS files
@@ -7071,7 +7071,7 @@ dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source f
 dev-php/adodb 5.20.9: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.56: Andrew McMillan's Web Libraries
-dev-php/ca-bundle 1.0.0: Find the system CA bundle or fall back to the Mozilla one
+dev-php/ca-bundle 1.0.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0: Allows you to prompt for user input on the command line
 dev-php/composer 1.3.1: Dependency Manager for PHP
 dev-php/cphplib 0.51: Cute PHP Library (cphplib)
