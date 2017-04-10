@@ -15259,7 +15259,7 @@ net-misc/networkmanager-openvpn 1.2.6 1.2.8: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
-net-misc/nextcloud-client 2.2.4-r2: Nextcloud themed desktop client
+net-misc/nextcloud-client 2.2.4-r2 2.3.1: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
