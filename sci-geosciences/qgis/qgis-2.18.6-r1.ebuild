@@ -22,10 +22,9 @@ HOMEPAGE="http://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="examples georeferencer grass mapserver oracle postgres python touch webkit"
+IUSE="designer examples georeferencer grass mapserver oracle postgres python touch webkit"
 
 REQUIRED_USE="
-	grass? ( python )
 	mapserver? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -34,13 +33,13 @@ COMMON_DEPEND="
 	>=dev-db/spatialite-4.1.0
 	dev-db/sqlite:3
 	dev-libs/expat
-	dev-qt/designer:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtscript:5
 	dev-qt/qtsvg:5
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
@@ -52,6 +51,7 @@ COMMON_DEPEND="
 	x11-libs/qscintilla:=[qt5]
 	>=x11-libs/qwt-6.1.2:6=[qt5,svg]
 	>=x11-libs/qwtpolar-1.1.1-r1[qt5]
+	designer? ( dev-qt/designer:5 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( >=sci-geosciences/grass-7.0.0:= )
 	mapserver? ( dev-libs/fcgi )
@@ -96,7 +96,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -120,6 +120,8 @@ src_configure() {
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
 		-DENABLE_QT5=ON
+		-DENABLE_PYTHON3=$(python_is_python3)
+		-DWITH_CUSTOM_WIDGETS=$(usex designer)
 		-DWITH_GRASS=$(usex grass)
 		-DWITH_SERVER=$(usex mapserver)
 		-DWITH_ORACLE=$(usex oracle)
@@ -148,14 +150,11 @@ src_configure() {
 
 	if use python; then
 		mycmakeargs+=(
-			-DENABLE_PYTHON3=OFF
+			-DBINDINGS_GLOBAL_INSTALL=ON
 			-DWITH_PYSPATIALITE=ON
 			-DWITH_INTERNAL_DATEUTIL=OFF
 			-DWITH_INTERNAL_FUTURE=OFF
-			-DWITH_INTERNAL_HTTPLIB2=OFF
-			-DWITH_INTERNAL_JINJA2=OFF
 			-DWITH_INTERNAL_MARKUPSAFE=OFF
-			-DWITH_INTERNAL_PYGMENTS=OFF
 			-DWITH_INTERNAL_PYTZ=OFF
 			-DWITH_INTERNAL_SIX=OFF
 			-DWITH_INTERNAL_YAML=OFF
@@ -189,12 +188,10 @@ src_install() {
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
-	if use python; then
-		python_optimize "${ED%/}"/usr/share/qgis/python
+	python_optimize "${ED%/}"/usr/share/qgis/python
 
-		if use grass; then
-			python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
-		fi
+	if use grass; then
+		python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
 	fi
 }
 
