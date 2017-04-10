@@ -21,6 +21,7 @@ RDEPEND="!readline? ( libedit? ( dev-libs/libedit:= ) )
 		>=sys-libs/ncurses-5.2:=
 	)"
 DEPEND="${RDEPEND}
+	sys-apps/ed
 	sys-devel/flex"
 
 src_configure() {
