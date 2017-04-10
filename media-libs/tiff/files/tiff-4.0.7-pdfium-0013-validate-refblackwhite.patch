@@ -1,0 +1,41 @@
+https://pdfium-review.googlesource.com/2151
+https://crbug.com/632883
+https://pdfium.googlesource.com/pdfium/+/master/libtiff/
+
+Author: Dan Sinclair <dsinclair@chromium.org>
+Date:   Mon Jan 9 09:50:50 2017 -0500
+
+[libtiff] Validate refblackwhite values
+
+The td_refblackwhite value is currently assigned without validation. This
+may pose an issue as the image can specify the value as nan. This will cause
+problems later when we use the nan in calcluations.
+
+This CL validates each of the float values are not nan and if they are sets
+them to the default provided by the TIFF spec v6.
+
+--- a/libtiff/tif_dir.c
++++ b/libtiff/tif_dir.c
+@@ -31,6 +31,7 @@
+  * (and also some miscellaneous stuff)
+  */
+ #include "tiffiop.h"
++#include <math.h>
+ #include <float.h>
+ 
+ /*
+@@ -426,6 +426,14 @@ _TIFFVSetField(TIFF* tif, uint32 tag, va_list ap)
+ 	case TIFFTAG_REFERENCEBLACKWHITE:
+ 		/* XXX should check for null range */
+ 		_TIFFsetFloatArray(&td->td_refblackwhite, va_arg(ap, float*), 6);
++		for (int i = 0; i < 6; i++) {
++			if (isnan(td->td_refblackwhite[i])) {
++				if (i % 2 == 0)
++					td->td_refblackwhite[i] = 0;
++				else
++					td->td_refblackwhite[i] = pow(2, td->td_bitspersample) - 1;
++			}
++		}
+ 		break;
+ 	case TIFFTAG_INKNAMES:
+ 		v = (uint16) va_arg(ap, uint16_vap);
