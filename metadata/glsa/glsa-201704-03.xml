@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201704-03">
+  <title>X.Org: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.Org  server and
+    libraries, the worse of which allowing local attackers to execute arbitrary
+    code. 
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>2017-04-10</announced>
+  <revised>2017-04-10: 1</revised>
+  <bug>596182</bug>
+  <bug>611350</bug>
+  <bug>611352</bug>
+  <bug>611354</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.19.2</unaffected>
+      <vulnerable range="lt">1.19.2</vulnerable>
+    </package>
+    <package name="x11-libs/libICE" auto="yes" arch="*">
+      <unaffected range="ge">1.0.9-r1</unaffected>
+      <vulnerable range="lt">1.0.9-r1</vulnerable>
+    </package>
+    <package name="x11-libs/libXdmcp" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2-r1</unaffected>
+      <vulnerable range="lt">1.1.2-r1</vulnerable>
+    </package>
+    <package name="x11-libs/libXrender" auto="yes" arch="*">
+      <unaffected range="ge">0.9.10</unaffected>
+      <vulnerable range="lt">0.9.10</vulnerable>
+    </package>
+    <package name="x11-libs/libXi" auto="yes" arch="*">
+      <unaffected range="ge">1.7.7</unaffected>
+      <vulnerable range="lt">1.7.7</vulnerable>
+    </package>
+    <package name="x11-libs/libXrandr" auto="yes" arch="*">
+      <unaffected range="ge">1.5.1</unaffected>
+      <vulnerable range="lt">1.5.1</vulnerable>
+    </package>
+    <package name="x11-libs/libXfixes" auto="yes" arch="*">
+      <unaffected range="ge">5.0.3</unaffected>
+      <vulnerable range="lt">5.0.3</vulnerable>
+    </package>
+    <package name="x11-libs/libXv" auto="yes" arch="*">
+      <unaffected range="ge">1.0.11</unaffected>
+      <vulnerable range="lt">1.0.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>X.Org X servers</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.Org server and
+      libraries. Please review the CVE identifiers referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local or remote users can utilize the vulnerabilities to attach to the
+      X.Org session as a user and execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org-server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.19.2"
+    </code>
+    
+    <p>All libICE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libICE-1.0.9-r1"
+    </code>
+    
+    <p>All libXdmcp users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXdmcp-1.1.2-r1"
+    </code>
+    
+    <p>All libXrender users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXrender-0.9.10"
+    </code>
+    
+    <p>All libXi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXi-1.7.7"
+    </code>
+    
+    <p>All libXrandr users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXrandr-1.5.1"
+    </code>
+    
+    <p>All libXfixes users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfixes-5.0.3"
+    </code>
+    
+    <p>All libXv users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXv-1.0.11"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5407">CVE-2016-5407</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7942">CVE-2016-7942</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7943">CVE-2016-7943</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7944">CVE-2016-7944</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7945">CVE-2016-7945</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7946">CVE-2016-7946</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7947">CVE-2016-7947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7948">CVE-2016-7948</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7949">CVE-2016-7949</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7950">CVE-2016-7950</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7953">CVE-2016-7953</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2624">CVE-2017-2624</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2625">CVE-2017-2625</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2626">CVE-2017-2626</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-18T13:24:57Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-04-10T21:30:03Z">BlueKnight</metadata>
+</glsa>
