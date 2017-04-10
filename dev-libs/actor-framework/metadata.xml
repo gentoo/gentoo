@@ -23,6 +23,7 @@
         <flag name="riac">Runtime inspection and configuration</flag>
         <flag name="static">Provides a static build</flag>
         <flag name="test">Builds the provided unit tests</flag>
+        <flag name="tools">Provide caf-vec.cpp and caf-run.cpp</flag>
     </use>
     <upstream>
         <remote-id type="github">actor-framework/actor-framework</remote-id>
