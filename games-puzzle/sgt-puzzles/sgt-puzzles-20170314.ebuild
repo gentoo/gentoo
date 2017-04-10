@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	SRC_URI="https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${PN}-icons-${GENTOO_ICONS}.tar.xz"
 	KEYWORDS=""
 else
-	MAGIC=b958129
+	MAGIC=eedea41
 	SRC_URI="http://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MAGIC}.tar.gz"
 	S=${WORKDIR}/puzzles-${PV}.${MAGIC}
 	KEYWORDS="~amd64 ~x86"
@@ -84,7 +84,7 @@ src_install() {
 		name=$(awk -F: '/exe:/ { print $3 }' "${file}")
 		file=${file%.R}
 		newicon -s 48 icons/${file}-48d24.png ${PN}_${file}.png
-		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "Game;LogicGame;${PN};"
+		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "Game;LogicGame;X-${PN};"
 	done
 
 	if use doc ; then
