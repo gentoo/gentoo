@@ -5609,7 +5609,7 @@ dev-perl/Convert-Binary-C 0.770.0 0.780.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.80.0-r1 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
-dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0-r1: A Perl interface to the uulib library
+dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.60.0 0.70.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.70.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.511.0: The only real threads in perl
