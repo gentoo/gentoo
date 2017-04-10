@@ -2953,7 +2953,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.54-r1 5.6.35 5.6.35-r1: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.54-r1 5.5.55 5.6.35 5.6.35-r1: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2 3.2.3: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2 6.1.9 6.1.9-r1: C client library for MariaDB/MySQL
@@ -15417,7 +15417,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0: The X2Go
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.04.02 2017.04.03 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.04.03 2017.04.09 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18313,7 +18313,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 44.0.2510.1159: A fast and secure web browser
-www-client/opera-beta 45.0.2552.89: A fast and secure web browser
+www-client/opera-beta 45.0.2552.89 45.0.2552.225: A fast and secure web browser
 www-client/opera-developer 46.0.2556.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
