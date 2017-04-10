@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[threads]
 	sci-biology/samtools:0.1-legacy
-	sci-biology/bowtie:2"
+	sci-biology/bowtie:2
+	dev-python/intervaltree[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sci-biology/seqan:1.4
@@ -29,24 +30,17 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-seqan-samtools.patch"
 	"${FILESDIR}/${P}-fix-c++14.patch"
+	"${FILESDIR}/${P}-Makefile.am.patch"
 )
 
 src_prepare() {
 	default
 
 	# remove bundled libs
-	rm -rf src/samtools-0.1.18/ src/SeqAn-1.4.2/ || die
+	rm -rf src/samtools-0.1.18/ src/SeqAn-1.4.2/ src/intervaltree/ src/sortedcontainers/ || die
 
 	sed -e "s:samtools_0.1.18:${EPREFIX}/usr/bin/samtools-0.1-legacy/samtools:" \
 		-i src/tophat.py src/common.cpp || die
-
-	sed -e "s:/usr/include/bam-0.1-legacy/:${EPREFIX}/usr/include/bam-0.1-legacy/:" \
-		-e '/^samtools-0\.1\.18\//d' \
-		-e '/^SeqAn-1\.4\.2\//d' \
-		-e 's:sortedcontainers/sortedset.py \\:sortedcontainers/sortedset.py:' \
-		-e 's:\$(top_builddir)\/src\/::' \
-		-i src/Makefile.am || die
-	sed -e 's:\$(top_builddir)\/src\/::' -i src/Makefile.am || die
 
 	# innocuous non-security flags, prevent log pollution
 	append-cflags -Wno-unused-but-set-variable -Wno-unused-variable
@@ -70,12 +64,6 @@ src_install() {
 	# install scripts properly
 	for i in bed_to_juncs contig_to_chr_coords sra_to_solid tophat tophat-fusion-post; do
 		python_fix_shebang "${ED%/}/usr/bin/${i}"
-	done
-
-	# install python modules properly
-	for i in intervaltree sortedcontainers; do
-		python_domodule "${ED%/}/usr/bin/${i}"
-		rm -rf "${ED%/}/usr/bin/${i}" || die
 	done
 }
 
