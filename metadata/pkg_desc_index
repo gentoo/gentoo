@@ -10478,7 +10478,7 @@ dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control 
 dev-util/ticpp 0_p20120423 9999: A completely new interface to TinyXML that uses MANY of the C++ strengths
 dev-util/tinlink 1.0.0: a tool to create very small elf binary from pure binary files
 dev-util/tkdiff 4.2: Graphical front end to the diff program
-dev-util/tmake 2.12: A Cross platform Makefile tool
+dev-util/tmake 2.12 2.12-r1: A Cross platform Makefile tool
 dev-util/trace-cmd 2.5.1 2.6: User-space front-end for Ftrace
 dev-util/treecc 0.3.10: compiler-compiler tool for aspect-oriented programming
 dev-util/trinity 1.5 1.6 9999: A Linux system call fuzz tester
@@ -16013,7 +16013,7 @@ sci-biology/trf 4.04-r1: Tandem Repeats Finder
 sci-biology/trnascan-se 1.23-r2 1.31: tRNA detection in large-scale genome sequences
 sci-biology/uchime 4.2.40: Fast, accurate chimera detection
 sci-biology/ucsc-genome-browser 260: The UCSC genome browser suite, also known as Jim Kent's library and GoldenPath
-sci-biology/unafold 3.8 3.8-r1: Unified Nucleic Acid Folding and hybridization package
+sci-biology/unafold 3.8-r1: Unified Nucleic Acid Folding and hybridization package
 sci-biology/update-blastdb 12.0.0: update_blastdb.pl for local blast db maintainance
 sci-biology/vaal 46233-r2: Algorithm for detecting SNPs, indels, and other polymorphisms
 sci-biology/vcftools 0.1.14: Tools for working with VCF (Variant Call Format) files
