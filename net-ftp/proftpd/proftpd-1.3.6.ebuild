@@ -63,8 +63,6 @@ RDEPEND="${CDEPEND}
 
 S="${WORKDIR}/${P/_/}"
 
-PATCHES=("${FILESDIR}"/${PN}-1.3.6_rc4-open-tests.patch)
-
 in_dir() {
 	pushd "${WORKDIR}/${1}" || die
 	shift
