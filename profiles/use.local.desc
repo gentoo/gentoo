@@ -632,6 +632,80 @@ app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org
 app-emulation/wine:staging - Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet
 app-emulation/wine:themes - Support GTK+:3 window theming through Wine-Staging
 app-emulation/wine:udev - Use virtual/libudev to provide plug and play support
+app-emulation/wine-any:capi - Enable ISDN support via CAPI
+app-emulation/wine-any:custom-cflags - Bypass strip-flags; use at your own peril
+app-emulation/wine-any:d3d9 - Apply highly experimental patches for Gallium Nine support. This patch may break some applications.
+app-emulation/wine-any:dos - Pull in games-emulation/dosbox to run DOS applications
+app-emulation/wine-any:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine-any:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
+app-emulation/wine-any:mono - Add support for .NET using Wine's Mono add-on
+app-emulation/wine-any:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll
+app-emulation/wine-any:opencl - Enable OpenCL support
+app-emulation/wine-any:osmesa - Add support for OpenGL in bitmaps using libOSMesa
+app-emulation/wine-any:pcap - Support packet capture software (e.g. wireshark)
+app-emulation/wine-any:perl - Install helpers written in perl (winedump/winemaker)
+app-emulation/wine-any:pipelight - Apply Wine-Staging patches for Pipelight/Silverlight support
+app-emulation/wine-any:prelink - Run prelink on DLLs during build; For versions before wine-1.7.55 or hardened, do not disable if you do not know what this means as it can break things at runtime
+app-emulation/wine-any:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support
+app-emulation/wine-any:run-exes - Use Wine to open and run .EXE and .MSI files
+app-emulation/wine-any:s3tc - Pull in media-libs/libtxc_dxtn for DXTn texture compression, needed for many games
+app-emulation/wine-any:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
+app-emulation/wine-any:staging - Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet
+app-emulation/wine-any:themes - Support GTK+:3 window theming through Wine-Staging
+app-emulation/wine-any:udev - Use virtual/libudev to provide plug and play support
+app-emulation/wine-d3d9:capi - Enable ISDN support via CAPI
+app-emulation/wine-d3d9:custom-cflags - Bypass strip-flags; use at your own peril
+app-emulation/wine-d3d9:d3d9 - Apply highly experimental patches for Gallium Nine support. This patch may break some applications.
+app-emulation/wine-d3d9:dos - Pull in games-emulation/dosbox to run DOS applications
+app-emulation/wine-d3d9:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine-d3d9:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
+app-emulation/wine-d3d9:mono - Add support for .NET using Wine's Mono add-on
+app-emulation/wine-d3d9:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll
+app-emulation/wine-d3d9:opencl - Enable OpenCL support
+app-emulation/wine-d3d9:osmesa - Add support for OpenGL in bitmaps using libOSMesa
+app-emulation/wine-d3d9:pcap - Support packet capture software (e.g. wireshark)
+app-emulation/wine-d3d9:perl - Install helpers written in perl (winedump/winemaker)
+app-emulation/wine-d3d9:prelink - Run prelink on DLLs during build; For versions before wine-1.7.55 or hardened, do not disable if you do not know what this means as it can break things at runtime
+app-emulation/wine-d3d9:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support
+app-emulation/wine-d3d9:run-exes - Use Wine to open and run .EXE and .MSI files
+app-emulation/wine-d3d9:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
+app-emulation/wine-d3d9:udev - Use virtual/libudev to provide plug and play support
+app-emulation/wine-staging:capi - Enable ISDN support via CAPI
+app-emulation/wine-staging:custom-cflags - Bypass strip-flags; use at your own peril
+app-emulation/wine-staging:dos - Pull in games-emulation/dosbox to run DOS applications
+app-emulation/wine-staging:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine-staging:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
+app-emulation/wine-staging:mono - Add support for .NET using Wine's Mono add-on
+app-emulation/wine-staging:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll
+app-emulation/wine-staging:opencl - Enable OpenCL support
+app-emulation/wine-staging:osmesa - Add support for OpenGL in bitmaps using libOSMesa
+app-emulation/wine-staging:pcap - Support packet capture software (e.g. wireshark)
+app-emulation/wine-staging:perl - Install helpers written in perl (winedump/winemaker)
+app-emulation/wine-staging:pipelight - Apply Wine-Staging patches for Pipelight/Silverlight support
+app-emulation/wine-staging:prelink - Run prelink on DLLs during build; For versions before wine-1.7.55 or hardened, do not disable if you do not know what this means as it can break things at runtime
+app-emulation/wine-staging:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support
+app-emulation/wine-staging:run-exes - Use Wine to open and run .EXE and .MSI files
+app-emulation/wine-staging:s3tc - Pull in media-libs/libtxc_dxtn for DXTn texture compression, needed for many games
+app-emulation/wine-staging:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
+app-emulation/wine-staging:staging - Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet
+app-emulation/wine-staging:themes - Support GTK+:3 window theming through Wine-Staging
+app-emulation/wine-staging:udev - Use virtual/libudev to provide plug and play support
+app-emulation/wine-vanilla:capi - Enable ISDN support via CAPI
+app-emulation/wine-vanilla:custom-cflags - Bypass strip-flags; use at your own peril
+app-emulation/wine-vanilla:dos - Pull in games-emulation/dosbox to run DOS applications
+app-emulation/wine-vanilla:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
+app-emulation/wine-vanilla:mono - Add support for .NET using Wine's Mono add-on
+app-emulation/wine-vanilla:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll
+app-emulation/wine-vanilla:opencl - Enable OpenCL support
+app-emulation/wine-vanilla:osmesa - Add support for OpenGL in bitmaps using libOSMesa
+app-emulation/wine-vanilla:pcap - Support packet capture software (e.g. wireshark)
+app-emulation/wine-vanilla:perl - Install helpers written in perl (winedump/winemaker)
+app-emulation/wine-vanilla:prelink - Run prelink on DLLs during build; For versions before wine-1.7.55 or hardened, do not disable if you do not know what this means as it can break things at runtime
+app-emulation/wine-vanilla:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support
+app-emulation/wine-vanilla:run-exes - Use Wine to open and run .EXE and .MSI files
+app-emulation/wine-vanilla:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
+app-emulation/wine-vanilla:udev - Use virtual/libudev to provide plug and play support
 app-emulation/winetricks:rar - Pull in app-arch/unrar for extraction of rar-compressed game files
 app-emulation/x48:readline - Enables support for libreadline
 app-emulation/xe-guest-utilities:xenstore - Use xenstore binaries bundled by Citrix instead of building app-emulation/xen-tools
@@ -3118,7 +3192,6 @@ games-puzzle/nightsky:bundled-libs - Use the upstream provided bundled libraries
 games-puzzle/numptyphysics:user-levels - Install some fun user-created levels
 games-puzzle/pingus:music - Enable playing of background music
 games-puzzle/sgt-puzzles:gtk3 - Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2
-games-puzzle/sgt-puzzles:icons - Use Gentoo packaged icons instead of bundled icons
 games-puzzle/tiny-and-big:bundled-libs - Use the upstream provided bundled libraries.
 games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the original Amiga version
 games-roguelike/FTL:bundled-libs - Use bundled libraries.
@@ -8028,6 +8101,8 @@ virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 virtual/mysql:embedded - Build embedded server (libmysqld)
 virtual/podofo-build:boost - Add support for boost
 virtual/ssh:minimal - Prefer net-misc/dropbear over net-misc/openssh
+virtual/wine:d3d9 - Enable Ixit's Gallium Nine Patchset
+virtual/wine:staging - Enable Wine-Staging's Patchset
 www-apache/mod_backtrace:unwind - Use sys-libs/libunwind to provide better resolution of function names.
 www-apache/mod_extract_forwarded:mod_proxy - Enable support for Apache's internal proxy
 www-apache/mod_musicindex:archive - Add archive support
