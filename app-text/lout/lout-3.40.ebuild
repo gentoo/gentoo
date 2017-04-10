@@ -1,26 +1,26 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 IUSE="zlib doc"
 
-DESCRIPTION="high-level language for document formatting"
-HOMEPAGE="http://lout.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lout/${P}.tar.gz"
+DESCRIPTION="High-level language for document formatting"
+HOMEPAGE="http://savannah.nongnu.org/projects/lout"
+SRC_URI="http://download.savannah.nongnu.org/releases/lout/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="zlib? ( >=sys-libs/zlib-1.1.4 )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.38-makefile.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-3.38-makefile.patch"
+)
 
 src_compile() {
 	tc-export CC
