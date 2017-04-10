@@ -2222,6 +2222,10 @@
     <description>The Mentors project acts as a matchmaking service between prospective
 developers and volunteer mentors.</description>
     <member>
+      <email>alicef@gentoo.org</email>
+      <name>Alice Ferrazzi</name>
+    </member>
+    <member>
       <email>gokturk@gentoo.org</email>
       <name>Göktürk Yüksek</name>
     </member>
@@ -2980,7 +2984,7 @@ developers and volunteer mentors.</description>
     <member>
       <email>gokturk@gentoo.org</email>
       <name>Göktürk Yüksek</name>
-      <role>QA panda</role>
+      <role>On sabbatical</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
