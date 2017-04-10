@@ -1587,7 +1587,7 @@ app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r2: Japanese handwriting recognition engine
 app-i18n/transifex-client 0.10 0.12.2: A command line interface for Transifex
 app-i18n/translate-shell 0.9.4 0.9.5: Online command-line translator
-app-i18n/uchardet 0.0.5-r1 0.0.6 9999: An encoding detector library
+app-i18n/uchardet 0.0.6 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2: Simple, secure and flexible input method library
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-data 6.1.0 9.0.0: Unicode data from unicode.org
