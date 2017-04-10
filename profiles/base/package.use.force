@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
+# Always force patch on appropriate variant to ensure
+# similar experience when using app-emulation/wine-any
+app-emulation/wine-staging staging
+app-emulation/wine-d3d9 d3d9
+
 # David Seifert <soap@gentoo.org> (07 Mar 2017)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
 # only for debug pruposes.
