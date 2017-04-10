@@ -1,0 +1,34 @@
+https://codereview.chromium.org/2284063002
+https://crbug.com/618267
+https://pdfium.googlesource.com/pdfium/+/master/libtiff/
+
+Author: tracy_jiang <tracy_jiang@foxitsoftware.com>
+Date:   Mon Aug 29 13:42:56 2016 -0700
+
+Fix for #618267. Adding a method to determine if multiplication has
+overflow.
+
+--- a/libtiff/tif_aux.c
++++ b/libtiff/tif_aux.c
+@@ -69,7 +69,7 @@ _TIFFCheckRealloc(TIFF* tif, void* buffer,
+ 	/*
+ 	 * XXX: Check for integer overflow.
+ 	 */
+-	if (nmemb && elem_size && bytes / elem_size == nmemb)
++	if (nmemb && elem_size && !_TIFFIfMultiplicationOverflow(nmemb, elem_size))
+ 		cp = _TIFFrealloc(buffer, bytes);
+ 
+ 	if (cp == NULL) {
+--- a/libtiff/tiffio.h
++++ b/libtiff/tiffio.h
+@@ -298,6 +298,10 @@ extern void _TIFFmemset(void* p, int v, tmsize_t c);
+ extern void _TIFFmemcpy(void* d, const void* s, tmsize_t c);
+ extern int _TIFFmemcmp(const void* p1, const void* p2, tmsize_t c);
+ extern void _TIFFfree(void* p);
++#include <limits.h>
++static inline int _TIFFIfMultiplicationOverflow(tmsize_t op1, tmsize_t op2) {
++  return op1 > SSIZE_MAX / op2;
++}
+ 
+ /*
+ ** Stuff, related to tag handling and creating custom tags.
