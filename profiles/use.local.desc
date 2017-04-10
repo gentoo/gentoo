@@ -1047,7 +1047,6 @@ app-shells/mpv-bash-completion:luajit - Use dev-lang/luajit instead of dev-lang/
 app-shells/pdsh:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
 app-shells/scsh-install-lib:scsh - Use a non-FHS directory layout
 app-shells/shish:diet - Use dev-libs/dietlibc
-app-shells/tcsh:catalogs - Add support for NLS catalogs
 app-text/acroread:html - HTML support and help reading capability (only for x86).
 app-text/asciidoc:highlight - Enable source code highlighting
 app-text/atril:caja - Enable property page extension in mate-base/caja
