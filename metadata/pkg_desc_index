@@ -17427,7 +17427,7 @@ sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a
 sys-cluster/feedbackd-agent 0.4: system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
 sys-cluster/feedbackd-master 0.4: Linux Virtual Server (LVS) addon for dynamic server health feedback
 sys-cluster/fence-agents 3.1.5-r1 3.1.5-r2: Cluster Fencing Agents
-sys-cluster/galera 25.3.15 25.3.17 25.3.19: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.15 25.3.17 25.3.19 25.3.20: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for partitioned global address space (PGAS) language
