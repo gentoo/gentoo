@@ -5459,7 +5459,7 @@ dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
 dev-perl/B-Hooks-EndOfScope 0.150.0 0.200.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
-dev-perl/B-Hooks-Parser 0.160.0 0.190.0: Interface to perls parser variables
+dev-perl/B-Hooks-Parser 0.190.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.300.0 0.320.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
@@ -5647,7 +5647,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/CryptX 0.25.0 0.39.0 0.44.0 0.46.0 0.47.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.47.0: Self-contained crypto toolkit
 dev-perl/Curses 1.320.0 1.330.0 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
