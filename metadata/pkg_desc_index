@@ -18230,7 +18230,7 @@ www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of fre
 www-apps/gitea 1.0.2 1.1.0-r1: A painless self-hosted Git service, written in Go
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
-www-apps/grafana-bin 4.0.1 4.1.1 4.1.2 4.2.0_beta1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 4.0.1 4.1.1 4.1.2 4.2.0: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/guacamole 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: Guacamole is a html5 vnc client as servlet
 www-apps/hiawatha-monitor 1.3-r1: Monitoring application for www-servers/hiawatha
@@ -18362,7 +18362,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 25.0.0.127: Adobe Flash Player
+www-plugins/adobe-flash 25.0.0.127 25.0.0.148: Adobe Flash Player
 www-plugins/chrome-binary-plugins 57.0.2987.133 58.0.3029.54_beta 59.0.3063.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer

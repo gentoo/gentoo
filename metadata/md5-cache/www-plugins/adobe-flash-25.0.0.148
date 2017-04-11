@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install test unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Adobe Flash Player
+EAPI=6
+HOMEPAGE=http://www.adobe.com/products/flashplayer.html http://get.adobe.com/flashplayer/ https://helpx.adobe.com/security/products/flash-player.html
+IUSE=+nsplugin +ppapi abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=AdobeFlash-11.x
+RDEPEND=!www-plugins/chrome-binary-plugins[flash(-)] nsplugin? ( dev-libs/atk dev-libs/glib:2 dev-libs/nspr dev-libs/nss media-libs/fontconfig media-libs/freetype >=sys-libs/glibc-2.4 x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXrender x11-libs/libXt x11-libs/pango !www-plugins/adobe-flash:0 )
+REQUIRED_USE=|| ( nsplugin ppapi )
+RESTRICT=strip mirror
+SLOT=22
+SRC_URI=nsplugin? ( abi_x86_32? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/25.0.0.148/flash_player_npapi_linux.i386.tar.gz -> adobe-flash-25.0.0.148-npapi.i386.tar.gz ) abi_x86_64? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/25.0.0.148/flash_player_npapi_linux.x86_64.tar.gz -> adobe-flash-25.0.0.148-npapi.x86_64.tar.gz ) ) ppapi? ( abi_x86_32? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/25.0.0.148/flash_player_ppapi_linux.i386.tar.gz -> adobe-flash-25.0.0.148-ppapi.i386.tar.gz ) abi_x86_64? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/25.0.0.148/flash_player_ppapi_linux.x86_64.tar.gz -> adobe-flash-25.0.0.148-ppapi.x86_64.tar.gz ) )
+_eclass_exported_funcs=src_unpack:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	mozextension	e5d920147bfccf4930062e462e2a417d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	nsplugins	2049586e425364a1c5bdb004205d1758	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=904b2ad2d184cbc776c33bae8372b934
