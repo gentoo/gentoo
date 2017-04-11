@@ -512,7 +512,6 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	local DOCS=( ANNOUNCE AUTHORS README )
-	local l
 	add_locale_docs() {
 		local locale_doc="documentation/README.$1"
 		[[ ! -e ${locale_doc} ]] || DOCS+=( ${locale_doc} )
@@ -545,22 +544,31 @@ multilib_src_install_all() {
 		dosym "${MY_PREFIX}"/bin/wine{64,}-preloader
 	fi
 
+	# Failglob for bin and man loops
+	local glob_state=$(shopt -p failglob)
+	shopt -s failglob
+
 	# Make wrappers for binaries for handling multiple variants
 	# Note: wrappers instead of symlinks because some are shell which use basename
+	local b
 	for b in "${D%/}${MY_PREFIX}"/bin/*; do
-		make_wrapper ${b##*/}-${WINE_VARIANT} "${MY_PREFIX}"/bin/${b##*/}
+		make_wrapper "${b##*/}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${b##*/}"
 	done
 
 	# respect LINGUAS when installing man pages, #469418
+	local l
 	for l in de fr pl; do
 		use linguas_${l} || rm -r "${D%/}${MY_MANDIR}"/${l}*
 	done
 
+	local m
 	for m in "${D%/}${MY_MANDIR}"/*/*; do
-		new_man=${m##*/}
-		new_man=${new_man%%.1}
-		newman "${m}" ${new_man##*/}-${WINE_VARIANT}.1
+		new_man="${m##*/}"
+		new_man="${new_man%%.1}"
+		newman "${m}" "${new_man##*/}-${WINE_VARIANT}.1"
 	done
+
+	eval "${glob_state}"
 }
 
 pkg_postinst() {
