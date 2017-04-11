@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
 SRC_URI="mirror://debian/pool/main/s/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Shows a movable and resizable spotlight on the screen"
@@ -23,5 +23,5 @@ RDEPEND="${COMMON_DEPEND}
 	sci-libs/gsl"
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install
 }
