@@ -168,14 +168,14 @@ ebegin "creating make.conf"
 eend_exit $?
 
 ebegin "creating profile/use.mask"
-cat > "${CHILD_EPREFIX}"/etc/portage/profile/use.mask/prefix-chain-setup <<'-EOM'
+cat > "${CHILD_EPREFIX}"/etc/portage/profile/use.mask/prefix-chain-setup <<-'EOM'
 	# masked in base profile, unmask here
 	-prefix-chain
 	EOM
 eend_exit $?
 
 ebegin "creating profile/use.force"
-cat > "${CHILD_EPREFIX}"/etc/portage/profile/use.force/prefix-chain-setup <<'-EOM'
+cat > "${CHILD_EPREFIX}"/etc/portage/profile/use.force/prefix-chain-setup <<-'EOM'
 	# masked in base profile, force here
 	prefix-chain
 	EOM
