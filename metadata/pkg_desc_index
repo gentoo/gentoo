@@ -4761,7 +4761,7 @@ dev-libs/libRocket 1.2.1_p20130110-r1 1.3.0.0 9999: A HTML/CSS User Interface li
 dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libarcus 1.0.0_pre20160307 2.3.1: This library facilitates communication between Cura and its backend
-dev-libs/libassuan 2.4.3 2.4.3-r1: IPC library used by GnuPG and GPGME
+dev-libs/libassuan 2.4.3-r1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
@@ -4823,13 +4823,13 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.5-r2 1.7.6: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.6-r101 1.7.6: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.6 0.17.7: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
-dev-libs/libgpg-error 1.24 1.26 1.27-r1: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0: Library to manipulate tensors on the GPU
 dev-libs/libgudev 230-r1 231: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
@@ -4850,7 +4850,7 @@ dev-libs/libisofs 1.3.8 1.4.6: Open-source library for reading, mastering and wr
 dev-libs/libixion 0.11.1 0.12.2 9999: General purpose formula parser & interpreter
 dev-libs/libjit 0.1.2: Libjit is a generic Just-In-Time compilation library
 dev-libs/libkpass 6 6-r1: Libkpass is a from-scratch C implementation for accessing KeePass 1.x databases
-dev-libs/libksba 1.3.5 1.3.5-r1: X.509 and CMS (PKCS#7) library
+dev-libs/libksba 1.3.5-r1: X.509 and CMS (PKCS#7) library
 dev-libs/liblazy 0.2: lib for D-Bus daemon messages, querying HAL or PolicyKit privileges
 dev-libs/liblinear 210-r1: A Library for Large Linear Classification
 dev-libs/liblinebreak 2.1: Line breaking library
