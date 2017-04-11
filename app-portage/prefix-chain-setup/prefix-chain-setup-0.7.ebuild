@@ -108,9 +108,8 @@ eend_exit() {
 ebegin "creating directory structure"
 (
 	set -e
-	mkdir -p "${CHILD_EPREFIX}"/etc/portage
-	mkdir -p "${CHILD_EPREFIX}"/etc/portage/use.mask
-	mkdir -p "${CHILD_EPREFIX}"/etc/portage/use.force
+	mkdir -p "${CHILD_EPREFIX}"/etc/portage/profile/use.mask
+	mkdir -p "${CHILD_EPREFIX}"/etc/portage/profile/use.force
 	mkdir -p "${CHILD_EPREFIX}"/var/log
 )
 eend_exit $?
@@ -168,18 +167,18 @@ ebegin "creating make.conf"
 ) > "${CHILD_EPREFIX}"/etc/portage/make.conf
 eend_exit $?
 
-ebegin "creating use.mask"
-cat > "${CHILD_EPREFIX}"/etc/portage/use.mask/prefix-chain-setup <<'-EOF'
+ebegin "creating profile/use.mask"
+cat > "${CHILD_EPREFIX}"/etc/portage/profile/use.mask/prefix-chain-setup <<'-EOM'
 	# masked in base profile, unmask here
 	-prefix-chain
-EOM
+	EOM
 eend_exit $?
 
-ebegin "creating use.force"
-cat > "${CHILD_EPREFIX}"/etc/portage/use.force/prefix-chain-setup <<'-EOF'
+ebegin "creating profile/use.force"
+cat > "${CHILD_EPREFIX}"/etc/portage/profile/use.force/prefix-chain-setup <<'-EOM'
 	# masked in base profile, force here
 	prefix-chain
-EOM
+	EOM
 eend_exit $?
 
 #
