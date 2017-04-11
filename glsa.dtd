@@ -124,7 +124,8 @@
     Description:  Version of the vulnerable package. Can be a range too
 -->
 <!ELEMENT vulnerable (#PCDATA)>
-<!ATTLIST vulnerable range      (le|lt|eq|gt|ge|rlt|rle|rgt|rge)      #REQUIRED>
+<!ATTLIST vulnerable range      (le|lt|eq|gt|ge|rlt|rle|rgt|rge)      #REQUIRED
+                     slot       CDATA                 "*">
 
 <!--
     Element:      unaffected
@@ -140,6 +141,7 @@
 -->
 <!ELEMENT unaffected (#PCDATA)>
 <!ATTLIST unaffected range      (le|lt|eq|gt|ge|rlt|rle|rgt|rge)      #REQUIRED
+                     slot       CDATA                 "*"
                      name       CDATA                 #IMPLIED>
 
 <!--
