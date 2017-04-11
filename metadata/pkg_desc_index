@@ -5996,7 +5996,7 @@ dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Entity-Parser 0.190.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Headers-Fast 0.200.0 0.210.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.110.0: Base class for Request/Response
-dev-perl/HTTP-MultiPartParser 0.10.0: Low Level MultiPart MIME HTTP parser
+dev-perl/HTTP-MultiPartParser 0.10.0 0.20.0: Low Level MultiPart MIME HTTP parser
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
@@ -6736,7 +6736,7 @@ dev-perl/Tie-ToObject 0.30.0-r1: Tie to an existing object
 dev-perl/Time-Duration 1.60.0-r1 1.200.0: Rounded or exact English expression of durations
 dev-perl/Time-Duration-Parse 0.130.0: Parse string that represents time duration
 dev-perl/Time-Format 1.120.0: Easy-to-use date/time formatting
-dev-perl/Time-Moment 0.380.0 0.390.0 0.400.0 0.410.0: Represents a date and time of day with an offset from UTC
+dev-perl/Time-Moment 0.380.0 0.390.0 0.400.0 0.410.0 0.420.0: Represents a date and time of day with an offset from UTC
 dev-perl/Time-Out 0.110.0: Easily timeout long running operations
 dev-perl/Time-ParseDate 2011.51.700-r1 2015.103.0: A Date/Time Parsing Perl Module
 dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
