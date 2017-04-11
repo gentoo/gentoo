@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.8.5-honor-ExcludeSocketNotifiers-in-glib-event-loop.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.5-qeventdispatcher-recursive.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.6-moc-boost-1.60.patch" # bug 556104
+	"${FILESDIR}/${PN}-4.8.7-libressl.patch" # bug 584796
 )
 
 QT4_TARGET_DIRECTORIES="
