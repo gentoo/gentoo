@@ -5557,7 +5557,7 @@ dev-perl/Class-Factory-Util 1.700.0-r1: Provide utility methods for factory clas
 dev-perl/Class-ISA 0.36-r1: Report the search path thru an ISA tree
 dev-perl/Class-InsideOut 1.130.0-r1 1.140.0: A safe, simple inside-out object construction kit
 dev-perl/Class-Inspector 1.280.0-r1 1.310.0: Provides information about Classes
-dev-perl/Class-Load 0.200.0-r1 0.230.0: A working (require q{Class::Name}) and more
+dev-perl/Class-Load 0.200.0-r1 0.230.0 0.240.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.60.0-r1 0.90.0: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
