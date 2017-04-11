@@ -18433,7 +18433,7 @@ x11-apps/sessreg 1.1.1: manage utmp/wtmp entries for non-init clients
 x11-apps/setxkbmap 1.3.0 1.3.1: Controls the keyboard layout of a running X server
 x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
 x11-apps/smproxy 1.0.5 1.0.6: Session Manager Proxy
-x11-apps/spotlighter 0.1: Shows a movable and resizable spotlight on the screen
+x11-apps/spotlighter 0.1-r1: Shows a movable and resizable spotlight on the screen
 x11-apps/transset 1.0.1: An utility for setting opacity property
 x11-apps/viewres 1.0.4: graphical class browser for Xt
 x11-apps/whyteboard 0.41.1: A simple image, PDF and postscript file annotator
@@ -19239,7 +19239,7 @@ x11-proto/xf86rushproto 1.1.2-r1: X.Org XF86Rush protocol headers
 x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
 x11-proto/xproto 7.0.31: X.Org xproto protocol headers
-x11-terms/aterm 1.0.1-r2: rxvt compatible terminal emulator with transparency support
+x11-terms/aterm 1.0.1-r2 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
 x11-terms/gnome-terminal 3.22.2 3.23.90: The Gnome Terminal
