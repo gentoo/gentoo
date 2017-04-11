@@ -467,13 +467,6 @@ multilib_src_install_all() {
 		use linguas_${l} || rm -r "${D%/}${MY_MANDIR}"/${l}*
 	done
 
-	local m
-	for m in "${D%/}${MY_MANDIR}"/*/*; do
-		new_man="${m##*/}"
-		new_man="${new_man%%.1}"
-		newman "${m}" "${new_man##*/}-${WINE_VARIANT}.1"
-	done
-
 	eval "${glob_state}"
 }
 
