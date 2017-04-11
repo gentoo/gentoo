@@ -6675,7 +6675,7 @@ dev-perl/Test-Version 2.50.0: Check to see that version's in modules are sane
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.300.0-r1 0.310.0: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
-dev-perl/Test-Without-Module 0.180.0: Test fallback behaviour in absence of modules
+dev-perl/Test-Without-Module 0.180.0 0.200.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
 dev-perl/Test-utf8 1.10.0: Handy utf8 tests
 dev-perl/Test2-Plugin-NoWarnings 0.50.0: Fail if tests warn
