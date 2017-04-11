@@ -5,4 +5,8 @@
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>gentoo-wine@eroen.eu</email>
+		<name>eroen</name>
+	</maintainer>
 </pkgmetadata>
