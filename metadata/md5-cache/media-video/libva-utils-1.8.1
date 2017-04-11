@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=x11-libs/libva-1.8[drm?,wayland?,X?] drm? ( >=x11-libs/libdrm-2.4 ) X? ( >=x11-libs/libX11-1.6.2 >=x11-libs/libXext-1.3.2 >=x11-libs/libXfixes-5.0.1 ) wayland? ( >=dev-libs/wayland-1.0.6 ) virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Collection of utilities and tests for VA-API
+EAPI=5
+HOMEPAGE=https://01.org/linuxmedia/vaapi
+IUSE=+drm test wayland X
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=>=x11-libs/libva-1.8[drm?,wayland?,X?] drm? ( >=x11-libs/libdrm-2.4 ) X? ( >=x11-libs/libX11-1.6.2 >=x11-libs/libXext-1.3.2 >=x11-libs/libXfixes-5.0.1 ) wayland? ( >=dev-libs/wayland-1.0.6 )
+REQUIRED_USE=|| ( drm wayland X )
+SLOT=0
+SRC_URI=https://github.com/01org/libva-utils/archive/1.8.1.tar.gz -> libva-utils-1.8.1.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=b1422eb407f14cb369f7237a33727d9a

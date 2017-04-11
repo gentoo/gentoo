@@ -5249,7 +5249,7 @@ dev-ml/labltk 8.06.2: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.10.1-r1: A cross-platform library for manipulating the terminal
 dev-ml/llvm-ocaml 4.0.0 9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
-dev-ml/lwt 2.4.3 2.7.0: Cooperative light-weight thread library for OCaml
+dev-ml/lwt 2.4.3 2.7.0 2.7.1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.4: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20170101: LR(1) parser generator for the OCaml language
@@ -8981,11 +8981,11 @@ dev-ros/diagnostic_msgs 1.12.5 9999: Standardized interface for the diagnostic a
 dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.14.0-r1 9999: Dynamic Window Approach to local robot navigation on a plane
-dev-ros/dynamic_reconfigure 1.5.46 1.5.47 9999: Provides a means to change node parameters at any time without having to restart the node
+dev-ros/dynamic_reconfigure 1.5.46 1.5.47 1.5.48 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
-dev-ros/filters 1.7.5 9999: Standardized interface for processing data as a sequence of filters
+dev-ros/filters 1.7.5 1.8.0 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_msgs 2.6.2 9999: Message and service data structures for interacting with Gazebo from ROS
 dev-ros/gazebo_plugins 2.6.2 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
 dev-ros/gazebo_ros 2.6.2 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
@@ -9038,7 +9038,7 @@ dev-ros/kdl_parser 1.12.6 1.12.7 1.12.8 9999: Constructs a KDL tree from an XML 
 dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 1.12.8 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.3 1.7.4 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_cb_detector 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
-dev-ros/laser_filters 1.8.3 9999: Assorted filters designed to operate on 2D planar laser scanners
+dev-ros/laser_filters 1.8.3 1.8.4 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
 dev-ros/libmavconn 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 0.18.4 0.18.5 0.18.6 0.18.7 9999: MAVLink communication library
@@ -13382,7 +13382,7 @@ media-plugins/kodi-visualization-waveform 1.1.0 9999: Waveform visualizer for Ko
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2013.02.11 2016.10.11 2016.10.21 2016.11.28 2017.01.26: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2013.02.11 2016.10.11 2016.10.21 2016.11.28 2017.01.26 2017.04.10: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -14052,7 +14052,7 @@ media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0a 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
 media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 9999: Complete solution to record, convert and stream audio and video
-media-video/libva-utils 1.8.0 9999: Collection of utilities and tests for VA-API
+media-video/libva-utils 1.8.0 1.8.1 9999: Collection of utilities and tests for VA-API
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
