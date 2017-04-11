@@ -3,14 +3,14 @@
 
 EAPI=5
 
-inherit user
+inherit user systemd
+
 MY_PN=${PN/-bin/}
-MY_PV="4.2.0-beta1"
-S=${WORKDIR}/${MY_PN}-${MY_PV}
+S=${WORKDIR}/${MY_PN}-${PV}
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
 HOMEPAGE="http://grafana.org"
-SRC_URI="https://grafanarel.s3.amazonaws.com/builds/${MY_PN}-${MY_PV}.linux-x64.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release/${MY_PN}-${PV}.linux-x64.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -18,10 +18,10 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}
-	>=dev-lang/go-1.5
-	net-libs/nodejs
-"
+RDEPEND="${DEPEND}"
+
+QA_EXECSTACK="usr/share/grafana/vendor/phantomjs/phantomjs"
+QA_PRESTRIPPED=${QA_EXECSTACK}
 
 pkg_setup() {
 	enewgroup grafana
@@ -42,9 +42,13 @@ src_install() {
 	dobin bin/grafana-server
 
 	newconfd "${FILESDIR}"/grafana.confd grafana
-	newinitd "${FILESDIR}"/grafana.initd.2 grafana
+	newinitd "${FILESDIR}"/grafana.initd.3 grafana
+	systemd_newunit "${FILESDIR}"/grafana.service grafana.service
 
 	keepdir /var/{lib,log}/grafana
+	keepdir /var/lib/grafana/{dashboards,plugins}
 	fowners grafana:grafana /var/{lib,log}/grafana
+	fowners grafana:grafana /var/lib/grafana/{dashboards,plugins}
 	fperms 0750 /var/{lib,log}/grafana
+	fperms 0750 /var/lib/grafana/{dashboards,plugins}
 }
