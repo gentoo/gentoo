@@ -5405,7 +5405,7 @@ dev-perl/Algorithm-Dependency 1.110.0-r1: Toolkit for implementing dependency sy
 dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
-dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
+dev-perl/Alien-wxWidgets 0.670.0-r1 0.680.0: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.120.0 7.130.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
@@ -5463,7 +5463,7 @@ dev-perl/B-Hooks-Parser 0.160.0 0.190.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.300.0 0.320.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
-dev-perl/BSD-Resource 1.290.800 1.290.900: Perl module for BSD process resource limit and priority functions
+dev-perl/BSD-Resource 1.290.800 1.290.900 1.291.100: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.2.2 1.4.0: BSON serialization and deserialization
 dev-perl/BZ-Client 1.72.0 4.400.0 4.400.100: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool

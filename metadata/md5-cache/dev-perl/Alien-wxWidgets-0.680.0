@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=x11-libs/wxGTK-3:3.0[gstreamer=,opengl=,tiff,X] >=dev-perl/Module-Pluggable-2.600.0 >=virtual/perl-ExtUtils-CBuilder-0.24 >=virtual/perl-File-Spec-1.500.0 >=dev-perl/Module-Build-0.280.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Building, finding and using wxWidgets binaries
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Alien-wxWidgets/
+IUSE=gstreamer opengl test
+KEYWORDS=~amd64 ~ia64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=x11-libs/wxGTK-3:3.0[gstreamer=,opengl=,tiff,X] >=dev-perl/Module-Pluggable-2.600.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-0.68.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:- src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_md5_=9a41e65f4ee4d95bf25846c0d7ea61e4
