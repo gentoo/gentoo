@@ -13,7 +13,6 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="prefix-chaining"
 KEYWORDS="~arm ~ppc-aix ~x64-cygwin ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 
 RDEPEND="sys-apps/gentoo-functions"
@@ -29,7 +28,7 @@ pkg_preinst() {
 }
 
 src_prepare() {
-	if use prefix-chaining; then
+	if use prefix-chain; then
 		epatch "${FILESDIR}"/baselayout-${PV}-prefix-chaining.patch
 
 		# need to set the PKG_CONFIG_PATH globally for this prefix, when
@@ -56,7 +55,7 @@ src_install() {
 		-e "/PATH=/!s:/\(etc\|usr/bin\|bin\):\"${EPREFIX}\"/\1:g" \
 		-e "/PATH=/s|\([:\"]\)/|\1${EPREFIX}/|g" \
 		etc/profile > "${ED}"/etc/profile || die
-	if ! use prefix-chaining; then
+	if ! use prefix-chain; then
 		sed \
 			-e "/PATH=.*\/sbin/s|\"$|:/usr/sbin:/sbin\"|" \
 			-e "/PATH=.*\/bin/s|\"$|:/usr/bin:/bin\"|" \
