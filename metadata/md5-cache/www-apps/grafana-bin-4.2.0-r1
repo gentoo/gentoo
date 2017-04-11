@@ -1,0 +1,13 @@
+DEFINED_PHASES=install setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+EAPI=5
+HOMEPAGE=http://grafana.org
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=app-admin/logrotate
+SLOT=0
+SRC_URI=https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.2.0.linux-x64.tar.gz -> grafana-bin-4.2.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=fc72ca84a7926ae3c87c319b2ec91e2f
