@@ -6773,7 +6773,7 @@ dev-perl/Unicode-Map8 0.130.0: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1: Conversions to and from arbitrary character sets and UTF8
 dev-perl/Unicode-String 2.90.0-r1: String manipulation for Unicode strings
 dev-perl/Unicode-Stringprep 1.105.0-r1: Preparation of Internationalized Strings (RFC 3454)
-dev-perl/Unicode-UTF8 0.600.0: Encoding and decoding of UTF-8 encoding form
+dev-perl/Unicode-UTF8 0.600.0 0.610.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0: Perl interface to the Unix getrusage system call
 dev-perl/Unix-Syslog 1.100.0-r1: A Perl module which provides access to the system logger
