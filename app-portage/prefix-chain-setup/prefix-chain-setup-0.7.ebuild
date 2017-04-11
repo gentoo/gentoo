@@ -210,7 +210,7 @@ ebegin "installing required basic packages"
 
 	set -e
 	PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" EPREFIX="${CHILD_EPREFIX}" emerge -1qO \
-		gentoo-functions baselayout-prefix elt-patches gnuconfig prefix-chain-utils
+		gentoo-functions baselayout-prefix gnuconfig prefix-chain-utils
 
 	# merge with the parent's chost. this forces the use of the parent
 	# compiler, which generally would be illegal - this is an exception.
