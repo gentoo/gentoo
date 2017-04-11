@@ -17,9 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND=""
-RDEPEND="
-	${DEPEND}
-	app-admin/logrotate"
+RDEPEND="${DEPEND}"
 
 QA_EXECSTACK="usr/share/grafana/vendor/phantomjs/phantomjs"
 QA_PRESTRIPPED=${QA_EXECSTACK}
@@ -52,8 +50,13 @@ src_install() {
 	fowners grafana:grafana /var/lib/grafana/{dashboards,plugins}
 	fperms 0750 /var/{lib,log}/grafana
 	fperms 0750 /var/lib/grafana/{dashboards,plugins}
+}
 
-	# Logrotation support.
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/grafana.logrotate "${PN}"
+postinst() {
+	elog "${PN} has built-in log rotation. Please see [log.file] section of"
+	elog "/etc/grafana/grafana.ini for related settings."
+	elog
+	elog "You may add your own custom configuration for app-admin/logrotate if you"
+	elog "wish to use external rotation of logs. In this case, you also need to make"
+	elog "sure the built-in rotation is turned off."
 }
