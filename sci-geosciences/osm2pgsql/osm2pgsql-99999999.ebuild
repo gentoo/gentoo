@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+lua"
 
-DEPEND="
+COMMON_DEPEND="
 	app-arch/bzip2
 	dev-db/postgresql:=
 	dev-libs/expat
