@@ -1,8 +1,0 @@
-/var/log/grafana/grafana*.log {
-    nocompress
-    create 644 root root
-    daily
-    rotate 7
-    missingok
-    size 50M
-}
