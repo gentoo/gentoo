@@ -1,6 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 DESCRIPTION="A tool designed to help administrators keep track of their daily activities"
 HOMEPAGE="http://www.deer-run.com/~hal/"
 SRC_URI="http://www.far2wise.net/plod/${P}.tar.gz"
@@ -8,26 +10,25 @@ SRC_URI="http://www.far2wise.net/plod/${P}.tar.gz"
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 DEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
+DOCS=( README )
 
-	cd "${S}"
+src_prepare() {
+	default
+	sed -i -e 's#/usr/local#/usr#' "${PN}" || die
+}
 
-	# Get rid of this nasty /usr/local paths
-	einfo "Patching paths"
-	sed -e 's#/usr/local#/usr#' -i plod
+src_compile() {
+	:;
 }
 
 src_install() {
-	dobin plod
-	dodoc README
-	doman plod.1.gz
+	dobin "${PN}"
+	doman "${PN}.1.gz"
 
 	insinto /etc
-	doins "${FILESDIR}"/plodrc
+	doins "${FILESDIR}/${PN}rc"
+	einstalldocs
 }
