@@ -5411,7 +5411,7 @@ dev-perl/AnyEvent 7.120.0 7.130.0: Provides a uniform interface to various event
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
-dev-perl/AnyEvent-I3 0.160.0: Communicate with the i3 window manager
+dev-perl/AnyEvent-I3 0.160.0 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.230.0 3.240.0 3.250.0 3.260.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
@@ -5555,7 +5555,7 @@ dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
 dev-perl/Class-ErrorHandler 0.30.0 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r1: Provide utility methods for factory classes
 dev-perl/Class-ISA 0.36-r1: Report the search path thru an ISA tree
-dev-perl/Class-InsideOut 1.130.0-r1: A safe, simple inside-out object construction kit
+dev-perl/Class-InsideOut 1.130.0-r1 1.140.0: A safe, simple inside-out object construction kit
 dev-perl/Class-Inspector 1.280.0-r1 1.310.0: Provides information about Classes
 dev-perl/Class-Load 0.200.0-r1 0.230.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.60.0-r1 0.90.0: XS implementation of parts of Class::Load
@@ -19433,7 +19433,7 @@ x11-wm/marco 1.12.1 1.12.1-r1 1.14.2-r1 1.16.0-r1: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.8.5 3.0.5 3.2.0 3.2.0-r1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.22.3: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.22.3 3.22.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20 2.0.20-r1: Small and fast window manager
