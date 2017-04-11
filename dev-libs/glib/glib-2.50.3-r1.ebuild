@@ -148,6 +148,8 @@ multilib_src_configure() {
 		fi
 		export LIBFFI_CFLAGS="-I$(echo /usr/$(get_libdir)/libffi-*/include)"
 		export LIBFFI_LIBS="-lffi"
+		export PCRE_CFLAGS=""
+		export PCRE_LIBS="-lpcre"
 	fi
 
 	# These configure tests don't work when cross-compiling.
