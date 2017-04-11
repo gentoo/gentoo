@@ -19469,7 +19469,7 @@ xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plu
 xfce-base/thunar 1.6.10 1.6.10-r1 1.6.11: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applications for the Xfce desktop environment
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.0 4.12.0-r1: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.0 4.12.0-r1 4.12.1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1 4.12.1-r1: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0 4.12.0-r1 4.12.0-r2 4.12.1 4.13.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1: A flexible, easy-to-use configuration management system for Xfce
@@ -19488,7 +19488,7 @@ xfce-extra/xfce-theme-manager 0.3.5 0.3.6: An alternative theme manager for The 
 xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.0.5 1.1.0: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
-xfce-extra/xfce4-clipman-plugin 1.2.6 1.4.0: A clipboard manager plug-in for the Xfce panel
+xfce-extra/xfce4-clipman-plugin 1.2.6 1.4.0 1.4.1: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-composite-editor 0: An graphical interface to modify composite settings
 xfce-extra/xfce4-cpufreq-plugin 1.1.3: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.0.5: A system load plug-in for the Xfce panel
