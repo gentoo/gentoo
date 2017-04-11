@@ -5,7 +5,7 @@
 # See portage(5) manpage
 
 # Profile IUSE injection (applies only to ebuilds which use EAPI 5 or later)
-IUSE_IMPLICIT="prefix prefix-guest"
+IUSE_IMPLICIT="prefix prefix-chain prefix-guest"
 USE_EXPAND_IMPLICIT="ELIBC KERNEL USERLAND"
 USE_EXPAND_VALUES_ELIBC="AIX bionic Cygwin Darwin DragonFly FreeBSD glibc HPUX Interix mingw mintlib musl NetBSD OpenBSD SunOS uclibc Winnt"
 USE_EXPAND_VALUES_KERNEL="AIX Darwin FreeBSD freemint HPUX linux NetBSD OpenBSD SunOS Winnt"
