@@ -1899,7 +1899,7 @@ app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4: a small utility that measures throughput between stdin and stdout
-app-misc/plod 1.9: A tool designed to help administrators keep track of their daily activities
+app-misc/plod 1.9-r1: A tool designed to help administrators keep track of their daily activities
 app-misc/ps3pf_utils 2.1.1 2.2.0 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r2 0.2.0-r3: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multiple ISPs
