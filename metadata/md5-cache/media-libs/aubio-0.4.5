@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=ffmpeg? ( !libav? ( >=media-video/ffmpeg-2.6:0= ) libav? ( >=media-video/libav-9:0= ) ) fftw? ( sci-libs/fftw:3.0 ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) python? ( dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sndfile? ( media-libs/libsndfile ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-text/txt2man virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Library for audio labelling
+EAPI=6
+HOMEPAGE=http://aubio.org/
+IUSE=doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python python_targets_python2_7
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=ffmpeg? ( !libav? ( >=media-video/ffmpeg-2.6:0= ) libav? ( >=media-video/libav-9:0= ) ) fftw? ( sci-libs/fftw:3.0 ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) python? ( dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sndfile? ( media-libs/libsndfile )
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0/5
+SRC_URI=http://aubio.org//pub/aubio-0.4.5.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=distutils-r1	039ba10839816478cfb070fdeb053906	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	waf-utils	d1ea2758053cbb7c5b38b8f88654468d	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=b346fe3f64053f38cc2b81ae46df9eda

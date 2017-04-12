@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/jonas/tig/releases/download/tig-2.2.1/tig-2.2.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=e6d830ecc5eba78a463adf5cf24edf4b
+_md5_=defe48e2a2301e4cdc3193352edfa0ab
