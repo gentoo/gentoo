@@ -17,9 +17,9 @@ DEPEND="dev-libs/libtermkey tre? ( dev-libs/tre:* ) curses? ( sys-libs/ncurses:=
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	econf $(use_enable tre)
-	econf $(use_enable selinux)
-	econf $(use_enable curses)
+	econf $(use_enable tre) \
+	$(use_enable selinux) \
+	$(use_enable curses)
 }
 
 update_symlinks() {
