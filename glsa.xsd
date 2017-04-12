@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+	<xs:element name='glsa' type='glsaType'/>
+
+	<!-- elements -->
+	<xs:complexType name='glsaType'>
+		<xs:sequence>
+			<xs:element name='title' type='xs:token'/>
+			<xs:element name='synopsis' type='xs:token'/>
+			<xs:element name='product' type='productType'/>
+			<xs:element name='announced' type='xs:date'/>
+			<xs:element name='revised' type='revisedType'/>
+			<xs:element name='bug' type='xs:positiveInteger'
+				minOccurs='0' maxOccurs='unbounded'/>
+			<xs:element name='access' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+			<xs:element name='affected' type='affectedType'/>
+			<xs:element name='background' type='partialHTMLType'
+				minOccurs='0' maxOccurs='1'/>
+			<xs:element name='description' type='partialHTMLType'/>
+			<xs:element name='impact' type='impactType'/>
+			<xs:element name='workaround' type='partialHTMLType'/>
+			<xs:element name='resolution' type='partialHTMLType'/>
+			<xs:element name='references' type='referencesType'/>
+			<xs:element name='license' type='licenseType'
+				minOccurs='0' maxOccurs='1'/>
+			<xs:element name='metadata' type='metadataType'
+				minOccurs='0' maxOccurs='unbounded'/>
+		</xs:sequence>
+		<xs:attribute name='id' type='glsaIdType' use='required'/>
+	</xs:complexType>
+
+	<xs:complexType name='productType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='type' type='productTypeType' use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='revisedType'>
+		<xs:simpleContent>
+			<xs:extension base='xs:date'>
+				<xs:attribute name='count' type='xs:positiveInteger'
+					default='1'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='affectedType'>
+		<xs:sequence>
+			<xs:element name='package' type='affectedPackageType'
+				minOccurs='0' maxOccurs='unbounded'/>
+			<xs:element name='service' type='affectedServiceType'
+				minOccurs='0' maxOccurs='unbounded'/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='affectedPackageType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='vulnerable' type='affectedPackageVulnerableType'/>
+			<xs:element name='unaffected' type='affectedPackageUnaffectedType'/>
+		</xs:choice>
+		<xs:attribute name='name' type='pkgType' use='required'/>
+		<xs:attribute name='auto' type='yesNoType' use='required'/>
+		<xs:attribute name='arch' type='archType' use='required'/>
+	</xs:complexType>
+
+	<xs:complexType name='affectedServiceType'>
+		<xs:simpleContent>
+			<xs:extension base='serviceURLType'>
+				<xs:attribute name='type' type='serviceTypeType'
+					use='required'/>
+				<xs:attribute name='fixed' type='yesNoType'
+					default='no'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='affectedPackageVulnerableType'>
+		<xs:simpleContent>
+			<xs:extension base='versionType'>
+				<xs:attribute name='range' type='versionRangeType'
+					use='required'/>
+				<xs:attribute name='slot' type='slotType'
+					default='*'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='affectedPackageUnaffectedType'>
+		<xs:simpleContent>
+			<xs:extension base='versionType'>
+				<xs:attribute name='range' type='versionRangeType'
+					use='required'/>
+				<xs:attribute name='slot' type='slotType'
+					default='*'/>
+				<xs:attribute name='name' type='pkgType'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- value types -->
+	<xs:simpleType name='glsaIdType'>
+		<xs:restriction base='xs:token'>
+			<!-- YYYYMM-NN -->
+			<xs:pattern value="[0-9]{4}(0[1-9]|1[0-2])-[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='productTypeType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='ebuild'/>
+			<xs:enumeration value='informational'/>
+			<xs:enumeration value='infrastructure'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='yesNoType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='yes'/>
+			<xs:enumeration value='no'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='archType'>
+		<xs:restriction base='xs:token'>
+			<!-- '*' or 1+ arches -->
+			<xs:pattern value="[*]|[a-z0-9-]+(\s+[a-z0-9-]+)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='versionRangeType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='le'/>
+			<xs:enumeration value='lt'/>
+			<xs:enumeration value='eq'/>
+			<xs:enumeration value='gt'/>
+			<xs:enumeration value='ge'/>
+			<xs:enumeration value='rle'/>
+			<xs:enumeration value='rlt'/>
+			<xs:enumeration value='rgt'/>
+			<xs:enumeration value='rge'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='serviceURLType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: improve this? -->
+			<xs:pattern value="((https?|ftps?|rsync)://\S+)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='serviceTypeType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='rsync'/>
+			<xs:enumeration value='web'/>
+			<xs:enumeration value='mirror'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='impactType'>
+		<xs:complexContent>
+			<xs:extension base="partialHTMLType">
+				<xs:attribute name='type' type='xs:token' use='required'/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name='referencesType'>
+		<xs:sequence>
+			<xs:element name='uri' type='htmlURIType'
+				minOccurs='0' maxOccurs='unbounded'/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='licenseType'>
+		<!-- empty by design -->
+	</xs:complexType>
+
+	<xs:complexType name='metadataType'>
+		<xs:simpleContent>
+			<xs:extension base='xs:token'>
+				<!-- TODO: enumerate allowed values? -->
+				<xs:attribute name='tag' type='xs:token' use='required'/>
+				<xs:attribute name='revision' type='xs:token'/>
+				<xs:attribute name='author' type='xs:token'/>
+				<xs:attribute name='timestamp' type='xs:dateTime'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- PMS types -->
+	<xs:simpleType name='pkgType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.1 Category Names + 3.1.2 Package Names -->
+			<!-- note: this does not enforce the 'anything matching
+				 the version syntax' requirement -->
+			<xs:pattern
+				value="[A-Za-z0-9_][A-Za-z0-9+_.-]*/[A-Za-z0-9_][A-Za-z0-9+_-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='versionType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.2 Version Specifications -->
+			<!-- (optionally followed by '*', for 'eq' operator -->
+			<xs:pattern value="[0-9]+(\.[0-9]+)*[a-z]?((_alpha|_beta|_pre|_rc|_p)[0-9]*)*(-r[0-9]+)?[*]?"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='slotType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.3 Slot Names + special value '*' -->
+			<xs:pattern value="[A-Za-z0-9_][A-Za-z0-9+_.-]*|[*]"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Horrible HTML-like mixed-text -->
+	<xs:complexType name='partialHTMLType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='p' type='htmlPType'/>
+			<xs:element name='ul' type='htmlListType'/>
+			<xs:element name='ol' type='htmlListType'/>
+			<xs:element name='code' type='xs:string'/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name='htmlPType' mixed='true'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='mail' type='htmlMailType'/>
+			<xs:element name='uri' type='htmlURIType'/>
+			<xs:element name='b' type='xs:token'/>
+			<xs:element name='i' type='xs:token'/>
+			<xs:element name='br' type='htmlBRType'/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name='htmlListType'>
+		<xs:sequence>
+			<xs:element name='li' type='xs:token'
+				minOccurs='1' maxOccurs='unbounded'/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='htmlBRType'>
+		<!-- empty -->
+	</xs:complexType>
+
+	<xs:complexType name='htmlMailType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='link' type='mailLinkType' use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='htmlURIType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='link' type='uriLinkType' use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name='mailLinkType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: improve? -->
+			<xs:pattern value="[^@]+@[^.\s]+\.\S+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='uriLinkType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: improve? -->
+			<xs:pattern value="(http|ftp)s?://\S+"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
