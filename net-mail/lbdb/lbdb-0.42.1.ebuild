@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit versionator
 
@@ -10,16 +10,15 @@ DESCRIPTION="Little Brother database"
 SRC_URI="http://www.spinnaker.de/debian/${MY_P}.tar.gz"
 HOMEPAGE="http://www.spinnaker.de/lbdb/"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
-IUSE="pda ldap finger nis abook crypt evo"
+IUSE="pda ldap finger abook crypt evo"
 
 DEPEND="dev-libs/libvformat
 	evo? ( mail-client/evolution )
 	finger? ( net-misc/netkit-fingerd )
 	abook? ( app-misc/abook )
-	crypt? ( app-crypt/gnupg )
-	nis? ( net-nds/yp-tools )"
+	crypt? ( app-crypt/gnupg )"
 RDEPEND="${DEPEND}
 	pda? ( dev-perl/Palm )
 	ldap? ( dev-perl/perl-ldap )"
@@ -36,7 +35,7 @@ src_configure() {
 
 	econf $(use_with finger) \
 		$(use_with abook) \
-		$(use_with nis ypcat) \
+		--without-ypcat \
 		$(use_with crypt gpg) \
 		$(use_with evo evolution-addressbook-export "${evolution_addressbook_export}" ) \
 		--enable-lbdb-dotlock \
