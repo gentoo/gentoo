@@ -11263,7 +11263,7 @@ games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4: A classical memory game
 games-puzzle/ltris 1.0.19: very polished Tetris clone
 games-puzzle/magiccube4d 2.2: four-dimensional analog of Rubik's cube
-games-puzzle/meandmyshadow 0.4: A puzzle/plateform game with a player and its shadow
+games-puzzle/meandmyshadow 0.4: A puzzle/platform game with a player and its shadow
 games-puzzle/mindless 1.6: play collectable/trading card games (Magic: the Gathering and possibly others) against other people
 games-puzzle/mirrormagic 2.0.2-r1: a game like Deflektor (C 64) or Mindbender (Amiga)
 games-puzzle/monsterz 0.7.1-r3: a little puzzle game, similar to the famous Bejeweled or Zookeeper
