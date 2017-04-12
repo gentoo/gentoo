@@ -12737,7 +12737,7 @@ media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.13 1.14: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.2 2.7.4-r1 2.8.2 2.8.3 9999: powerful GTK 3 based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.2 2.7.4-r1 2.8.2 2.8.3 2.8.4 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/printrun 20140730: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your desktop
@@ -12850,7 +12850,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.43 10.47: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.43 10.47 10.49: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
@@ -13558,7 +13558,7 @@ media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music f
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.0 8.13.2 8.13.3 8.13.5 8.13.8: A program to convert abc files to Postscript files
-media-sound/abcmidi 2016.09.25 2017.02.02: Programs for processing ABC music notation files
+media-sound/abcmidi 2016.09.25 2017.02.02 2017.04.10: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
