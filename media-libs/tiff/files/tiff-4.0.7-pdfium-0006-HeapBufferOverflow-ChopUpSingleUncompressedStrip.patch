@@ -19,16 +19,15 @@ overflow.
  		cp = _TIFFrealloc(buffer, bytes);
  
  	if (cp == NULL) {
---- a/libtiff/tiffio.h
-+++ b/libtiff/tiffio.h
-@@ -298,6 +298,10 @@ extern void _TIFFmemset(void* p, int v, tmsize_t c);
- extern void _TIFFmemcpy(void* d, const void* s, tmsize_t c);
- extern int _TIFFmemcmp(const void* p1, const void* p2, tmsize_t c);
- extern void _TIFFfree(void* p);
-+#include <limits.h>
-+static inline int _TIFFIfMultiplicationOverflow(tmsize_t op1, tmsize_t op2) {
-+  return op1 > SSIZE_MAX / op2;
-+}
+--- a/libtiff/tiffiop.h
++++ b/libtiff/tiffiop.h
+@@ -315,6 +315,9 @@ typedef size_t TIFFIOSize_t;
+ #define _TIFF_off_t off_t
+ #endif
  
- /*
- ** Stuff, related to tag handling and creating custom tags.
++#include <limits.h>
++#define _TIFFIfMultiplicationOverflow(op1, op2) ((op1) > SSIZE_MAX / (op2))
++
+ #if defined(__cplusplus)
+ extern "C" {
+ #endif
