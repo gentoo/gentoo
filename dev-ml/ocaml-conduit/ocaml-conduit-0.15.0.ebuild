@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="Dereference URIs into communication channels for Async or Lwt"
 HOMEPAGE="https://github.com/mirage/ocaml-conduit"
@@ -23,7 +23,7 @@ DEPEND="
 	dev-ml/ocaml-cstruct:=
 	dev-ml/ocaml-ipaddr:=
 
-	dev-ml/lwt:=
+	>=dev-ml/lwt-3:=
 	dev-ml/async:=
 	dev-ml/ocaml-dns:=
 	dev-ml/ocaml-ssl:=
@@ -38,6 +38,10 @@ DEPEND="${DEPEND}
 "
 
 DOCS=( TODO.md README.md CHANGES )
+
+src_prepare() {
+	epatch "${FILESDIR}/lwt3.patch"
+}
 
 src_install() {
 	findlib_src_preinst
