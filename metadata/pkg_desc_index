@@ -6134,7 +6134,7 @@ dev-perl/MARC-XML 1.0.3: A subclass of MARC.pm to provide XML support
 dev-perl/MCE 1.705.0 1.809.0 1.821.0 1.826.0 1.827.0: Many-Core Engine providing parallel processing capabilities
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
 dev-perl/MIME-Base32 1.20.0: Base32 encoder / decoder
-dev-perl/MIME-Charset 1.9.3 1.12.0: Charset Informations for MIME
+dev-perl/MIME-Charset 1.9.3 1.12.0 1.12.2: Charset Informations for MIME
 dev-perl/MIME-EncWords 1.12.6-r1 1.14.3: Deal with RFC 2047 encoded words (improved)
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
 dev-perl/MIME-Lite-HTML 1.240.0: Provide routine to transform a HTML page in a MIME-Lite mail

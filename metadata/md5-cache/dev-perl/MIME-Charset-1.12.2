@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-Encode-1.980.0 l10n_ja? ( >=dev-perl/Encode-EUCJPASCII-0.20.0 ) l10n_zh? ( >=dev-perl/Encode-HanExtra-0.200.0 ) virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Charset Informations for MIME
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/MIME-Charset/
+IUSE=l10n_ja l10n_zh
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-Encode-1.980.0 l10n_ja? ( >=dev-perl/Encode-EUCJPASCII-0.20.0 ) l10n_zh? ( >=dev-perl/Encode-HanExtra-0.200.0 ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NE/NEZUMI/MIME-Charset-1.012.2.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=233741884ada22d1e49050a7a212a16c
