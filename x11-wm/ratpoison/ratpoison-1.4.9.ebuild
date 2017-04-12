@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools elisp-common eutils git-r3 toolchain-funcs
+inherit elisp-common eutils toolchain-funcs
 
 DESCRIPTION="window manager without mouse dependency"
 HOMEPAGE="http://www.nongnu.org/ratpoison/"
-EGIT_REPO_URI="git://git.savannah.nongnu.org/ratpoison.git"
+SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug emacs +history sloppy +xft +xrandr"
 
 RDEPEND="
@@ -37,11 +37,9 @@ DOCS=(
 	TODO
 )
 
-src_prepare() {
-	eapply "${FILESDIR}"/ratpoison.el-gentoo.patch
-
-	eautoreconf
-}
+PATCHES=(
+	"${FILESDIR}"/ratpoison.el-gentoo.patch
+)
 
 src_configure() {
 	econf \
