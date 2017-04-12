@@ -5558,7 +5558,7 @@ dev-perl/Class-ISA 0.36-r1: Report the search path thru an ISA tree
 dev-perl/Class-InsideOut 1.130.0-r1 1.140.0: A safe, simple inside-out object construction kit
 dev-perl/Class-Inspector 1.280.0-r1 1.310.0: Provides information about Classes
 dev-perl/Class-Load 0.200.0-r1 0.230.0 0.240.0: A working (require q{Class::Name}) and more
-dev-perl/Class-Load-XS 0.60.0-r1 0.90.0: XS implementation of parts of Class::Load
+dev-perl/Class-Load-XS 0.60.0-r1 0.90.0 0.100.0: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r1: Class::Member - A set of modules to make the module developement easier
@@ -14741,7 +14741,7 @@ net-irc/psybnc 2.3.2.9-r2: psyBNC is a multi-user and multi-server gateway to IR
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
 net-irc/quassel 0.12.4 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
-net-irc/quassel-irssi 0_p20160412 0_p20160412-r1 0_p20170107: Irssi module to connect to Quassel cores.
+net-irc/quassel-irssi 0_p20170107 0_p20170107-r1: Irssi module to connect to Quassel cores.
 net-irc/rbot 0.9.15_p20160325: A ruby IRC bot
 net-irc/redirbot 0.0.5-r1: IRCBot, telling people they should contact you on different nickname
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
