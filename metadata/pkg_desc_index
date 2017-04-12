@@ -4916,7 +4916,7 @@ dev-libs/librdkafka 0.9.1 0.9.2-r1 0.9.3 0.9.4: Apache Kafka C/C++ client librar
 dev-libs/librelp 1.2.12 1.2.13: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
-dev-libs/libressl 2.3.9 2.3.10 2.4.4 2.4.5 2.5.0 2.5.1 2.5.2: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.3.9 2.3.10 2.4.4 2.4.5 2.5.0 2.5.1 2.5.2 2.5.3: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access library
@@ -6773,7 +6773,7 @@ dev-perl/Unicode-Map8 0.130.0: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1: Conversions to and from arbitrary character sets and UTF8
 dev-perl/Unicode-String 2.90.0-r1: String manipulation for Unicode strings
 dev-perl/Unicode-Stringprep 1.105.0-r1: Preparation of Internationalized Strings (RFC 3454)
-dev-perl/Unicode-UTF8 0.600.0 0.610.0: Encoding and decoding of UTF-8 encoding form
+dev-perl/Unicode-UTF8 0.600.0 0.620.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0: Perl interface to the Unix getrusage system call
 dev-perl/Unix-Syslog 1.100.0-r1: A Perl module which provides access to the system logger
@@ -18321,7 +18321,7 @@ www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl sup
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 44.0.2510.1159: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 44.0.2510.1159 44.0.2510.1218: A fast and secure web browser
 www-client/opera-beta 45.0.2552.89 45.0.2552.225: A fast and secure web browser
 www-client/opera-developer 46.0.2556.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -18336,7 +18336,7 @@ www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, H
 www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.8.770.56_p1 1.9.804.3_p1: A new browser for our friends
+www-client/vivaldi 1.8.770.56_p1 1.9.804.3_p1 1.9.811.13_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
