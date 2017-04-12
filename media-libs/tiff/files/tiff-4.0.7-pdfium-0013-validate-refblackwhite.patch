@@ -24,11 +24,12 @@ them to the default provided by the TIFF spec v6.
  #include <float.h>
  
  /*
-@@ -426,6 +426,14 @@ _TIFFVSetField(TIFF* tif, uint32 tag, va_list ap)
+@@ -426,6 +426,15 @@ _TIFFVSetField(TIFF* tif, uint32 tag, va_list ap)
  	case TIFFTAG_REFERENCEBLACKWHITE:
  		/* XXX should check for null range */
  		_TIFFsetFloatArray(&td->td_refblackwhite, va_arg(ap, float*), 6);
-+		for (int i = 0; i < 6; i++) {
++		int i;
++		for (i = 0; i < 6; i++) {
 +			if (isnan(td->td_refblackwhite[i])) {
 +				if (i % 2 == 0)
 +					td->td_refblackwhite[i] = 0;

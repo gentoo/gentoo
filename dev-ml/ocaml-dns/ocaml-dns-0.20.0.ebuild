@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="A pure OCaml implementation of the DNS protocol"
 HOMEPAGE="https://github.com/mirage/ocaml-dns https://mirage.io"
@@ -16,7 +16,7 @@ IUSE="async +lwt +ocamlopt test"
 
 RDEPEND="
 	async? ( dev-ml/async:= )
-	lwt? ( >=dev-ml/lwt-2.4.7:=
+	lwt? ( >=dev-ml/lwt-3:=
 		dev-ml/ocaml-cstruct:=[lwt(-)] )
 	>=dev-lang/ocaml-4:=
 	dev-ml/cmdliner:=
@@ -42,6 +42,10 @@ DEPEND="
 "
 # Missing mirage deps
 RESTRICT="test"
+
+src_prepare() {
+	epatch "${FILESDIR}/lwt3.patch"
+}
 
 src_compile() {
 	ocaml pkg/pkg.ml build \

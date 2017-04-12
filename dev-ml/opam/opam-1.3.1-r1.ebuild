@@ -9,7 +9,7 @@ DESCRIPTION="A source-based package manager for OCaml"
 HOMEPAGE="http://opam.ocaml.org/"
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE=""
 
 if [[ ${PV} != 9999 ]]; then
@@ -33,6 +33,10 @@ DEPEND="dev-lang/ocaml:=
 RDEPEND="${DEPEND}
 	dev-ml/findlib
 "
+
+src_prepare() {
+	epatch "${FILESDIR}/stublibs.patch"
+}
 
 src_compile() {
 	emake -j1
