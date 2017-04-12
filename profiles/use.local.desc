@@ -8672,6 +8672,7 @@ x11-wm/pekwm:contrib - Install optional extras in the documentation directory
 x11-wm/pekwm:themes - Install additional themes
 x11-wm/ratpoison:history - Use sys-libs/readline for history handling
 x11-wm/ratpoison:sloppy - Install sloppy, a focus-follows-mouse implementation for ratpoison
+x11-wm/ratpoison:xrandr - Enable support for XRandR
 x11-wm/stumpwm:clisp - Use CLISP for the runtime
 x11-wm/stumpwm:contrib - Install contrib modules
 x11-wm/stumpwm:doc - Include documentation
