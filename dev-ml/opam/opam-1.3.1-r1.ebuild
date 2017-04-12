@@ -34,6 +34,10 @@ RDEPEND="${DEPEND}
 	dev-ml/findlib
 "
 
+src_prepare() {
+	epatch "${FILESDIR}/stublibs.patch"
+}
+
 src_compile() {
 	emake -j1
 	cd doc
