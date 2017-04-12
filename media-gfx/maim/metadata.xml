@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gentoo@ingolf-wagner.de</email>
-		<description>Primary maintainer</description>
+		<email>palipalo9@googlemail.com</email>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
