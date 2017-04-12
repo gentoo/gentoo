@@ -1,12 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TO DO:
-# * ffmpeg support can be disabled in CMakeLists.txt but it does not build then
-#		$(cmake-utils_useno ffmpeg ZM_NO_FFMPEG)
 # * dependencies of unknown status:
-# 	dev-perl/Archive-Zip
-# 	dev-perl/Device-SerialPort
+#	dev-perl/Device-SerialPort
 # 	dev-perl/MIME-Lite
 # 	dev-perl/MIME-tools
 # 	dev-perl/PHP-Serialization
@@ -14,43 +11,53 @@
 # 	virtual/perl-libnet
 # 	virtual/perl-Module-Load
 
-EAPI=5
+EAPI=6
 
-PERL_EXPORT_PHASE_FUNCTIONS=no
-
-inherit perl-module readme.gentoo eutils base cmake-utils depend.apache multilib flag-o-matic
+inherit versionator perl-functions readme.gentoo-r1 cmake-utils depend.apache flag-o-matic systemd
 
 MY_PN="ZoneMinder"
 
-DESCRIPTION="ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system"
+MY_CRUD_VERSION="3.1.0"
+
+DESCRIPTION="Capture, analyse, record and monitor any cameras attached to your system"
 HOMEPAGE="http://www.zoneminder.com/"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/${MY_PN}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/FriendsOfCake/crud/archive/v${MY_CRUD_VERSION}.tar.gz -> Crud-${MY_CRUD_VERSION}.tar.gz
+"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64"
-IUSE="curl gcrypt gnutls +mmap +openssl vlc"
+IUSE="curl ffmpeg gcrypt gnutls +mmap +ssl libressl vlc"
 SLOT="0"
 
 REQUIRED_USE="
-	|| ( openssl gnutls )
+	|| ( ssl gnutls )
 "
 
 DEPEND="
 	app-eselect/eselect-php[apache2]
 	dev-lang/perl:=
-	dev-lang/php[apache2,cgi,curl,inifile,pdo,mysql,mysqli,sockets]
+	dev-lang/php:*[apache2,cgi,curl,gd,inifile,pdo,mysql,mysqli,sockets]
 	dev-libs/libpcre
 	dev-perl/Archive-Zip
+	dev-perl/Class-Std-Fast
+	dev-perl/Data-Dump
 	dev-perl/Date-Manip
+	dev-perl/Data-UUID
 	dev-perl/DBD-mysql
 	dev-perl/DBI
+	dev-perl/IO-Socket-Multicast
+	dev-perl/SOAP-WSDL
+	dev-perl/Sys-CPU
+	dev-perl/Sys-MemInfo
 	dev-perl/URI-Encode
 	dev-perl/libwww-perl
 	sys-auth/polkit
 	sys-libs/zlib
 	virtual/ffmpeg
-	virtual/httpd-php
-	virtual/jpeg
+	virtual/httpd-php:*
+	virtual/jpeg:0
 	virtual/mysql
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-Getopt-Long
@@ -58,10 +65,13 @@ DEPEND="
 	virtual/perl-Time-HiRes
 	www-servers/apache
 	curl? ( net-misc/curl )
-	gcrypt? ( dev-libs/libgcrypt )
+	gcrypt? ( dev-libs/libgcrypt:0= )
 	gnutls? ( net-libs/gnutls )
 	mmap? ( dev-perl/Sys-Mmap )
-	openssl? ( dev-libs/openssl )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	vlc? ( media-video/vlc[live] )
 "
 RDEPEND="${DEPEND}"
@@ -74,12 +84,16 @@ S=${WORKDIR}/${MY_PN}-${PV}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.26.5"-automagic.patch
+	"${FILESDIR}/${PN}-1.28.1"-mysql_include_path.patch
 )
 
 MY_ZM_WEBDIR=/usr/share/zoneminder/www
 
-pkg_setup() {
-	:
+src_prepare() {
+	cmake-utils_src_prepare
+
+	rmdir "${S}/web/api/app/Plugin/Crud" || die
+	mv "${WORKDIR}/crud-${MY_CRUD_VERSION}" "${S}/web/api/app/Plugin/Crud" || die
 }
 
 src_configure() {
@@ -93,14 +107,14 @@ src_configure() {
 		-DZM_WEB_USER=apache
 		-DZM_WEB_GROUP=apache
 		-DZM_WEBDIR=${MY_ZM_WEBDIR}
-		$(cmake-utils_useno mmap ZM_NO_MMAP)
+		-DZM_NO_MMAP="$(usex mmap OFF ON)"
 		-DZM_NO_X10=OFF
-		-DZM_NO_FFMPEG=OFF
-		$(cmake-utils_useno curl ZM_NO_CURL)
-		$(cmake-utils_useno vlc ZM_NO_LIBVLC)
-		$(cmake-utils_useno openssl CMAKE_DISABLE_FIND_PACKAGE_OpenSSL)
-		$(cmake-utils_use_has gnutls)
-		$(cmake-utils_use_has gcrypt)
+		-DZM_NO_FFMPEG="$(usex ffmpeg OFF ON)"
+		-DZM_NO_CURL="$(usex curl OFF ON)"
+		-DZM_NO_LIBVLC="$(usex vlc OFF ON)"
+		-DCMAKE_DISABLE_FIND_PACKAGE_OpenSSL="$(usex ssl OFF ON)"
+		-DHAVE_GNUTLS="$(usex gnutls ON OFF)"
+		-DHAVE_GCRYPT="$(usex gcrypt ON OFF)"
 	)
 
 	cmake-utils_src_configure
@@ -113,12 +127,17 @@ src_install() {
 	keepdir /var/log/zm
 	fowners apache:apache /var/log/zm
 
+	# the logrotate script
+	insinto /etc/logrotate.d
+	newins distros/ubuntu1204/zoneminder.logrotate zoneminder
+
 	# now we duplicate the work of zmlinkcontent.sh
-	dodir /var/lib/zoneminder /var/lib/zoneminder/images /var/lib/zoneminder/events
+	keepdir /var/lib/zoneminder /var/lib/zoneminder/images /var/lib/zoneminder/events /var/lib/zoneminder/api_tmp
 	fperms -R 0775 /var/lib/zoneminder
 	fowners -R apache:apache /var/lib/zoneminder
 	dosym /var/lib/zoneminder/images ${MY_ZM_WEBDIR}/images
 	dosym /var/lib/zoneminder/events ${MY_ZM_WEBDIR}/events
+	dosym /var/lib/zoneminder/api_tmp ${MY_ZM_WEBDIR}/api/app/tmp
 
 	# bug 523058
 	keepdir ${MY_ZM_WEBDIR}/temp
@@ -132,6 +151,9 @@ src_install() {
 	newinitd "${FILESDIR}"/init.d zoneminder
 	newconfd "${FILESDIR}"/conf.d zoneminder
 
+	# systemd unit file
+	systemd_dounit "${FILESDIR}"/zoneminder.service
+
 	cp "${FILESDIR}"/10_zoneminder.conf "${T}"/10_zoneminder.conf
 	sed -i "${T}"/10_zoneminder.conf -e "s:%ZM_WEBDIR%:${MY_ZM_WEBDIR}:g"
 
@@ -139,10 +161,16 @@ src_install() {
 
 	perl_delete_packlist
 
-	readme.gentoo_src_install
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	local myold=${REPLACING_VERSIONS}
-	[ "${myold}" = ${PV} ] || elog "You have upgraded zoneminder and may have to upgrade your database now."
+	readme.gentoo_print_elog
+
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least ${PV} ${v}; then
+			elog "You have upgraded zoneminder and may have to upgrade your database now using the 'zmupdate.pl' script."
+		fi
+	done
 }
