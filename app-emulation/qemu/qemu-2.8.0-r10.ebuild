@@ -218,6 +218,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-6058.patch   #609638
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-2620.patch   #609206
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-6505.patch   #612220
+	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-7377.patch   #614744
 	"${S}-CVE-2016-9602-patches"
 )
 
