@@ -7436,7 +7436,7 @@ dev-python/cython 0.22 0.24.1 0.25.1 0.25.2: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5 0.8.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
-dev-python/dask 0.8.1 0.10.2 0.13.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 0.8.1 0.10.2 0.13.0 0.14.1: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0 0.5.1 0.5.2 0.5.3 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
