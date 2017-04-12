@@ -525,7 +525,7 @@ app-crypt/dehydrated 0.3.1 0.4.0 0.4.0-r3: a client for signing certificates wit
 app-crypt/dieharder 3.31.1-r1: An advanced suite for testing the randomness of RNG's
 app-crypt/easy-rsa 2.2.2 2.2.2-r1 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.7.0: Tools for manipulating UEFI secure boot platforms
-app-crypt/eid-mw 4.2.0 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
+app-crypt/eid-mw 4.2.0 4.2.5 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.4-r2 1.1.5: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0: Save environment variables in a secret vault
