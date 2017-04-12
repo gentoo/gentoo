@@ -4698,7 +4698,7 @@ dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1 0.3.0: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
-dev-libs/gdl 3.20.0 3.22.0: GNOME docking library
+dev-libs/gdl 3.22.0: GNOME docking library
 dev-libs/gecode 3.7.3 4.4.0 4.4.0-r1: An environment for developing constraint-based applications
 dev-libs/geoip 1.6.9-r1: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
@@ -14791,9 +14791,9 @@ net-libs/gnome-online-accounts 3.22.5: GNOME framework for accessing online acco
 net-libs/gnutls 3.3.26 3.3.27 3.5.10 3.5.11: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
-net-libs/gssdp 0.14.16 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
+net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.4 0.6.0: VNC viewer widget for GTK
-net-libs/gupnp 0.20.18 1.0.2: An object-oriented framework for creating UPnP devs and control points
+net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
@@ -18365,7 +18365,7 @@ www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorde
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
-www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
+www-misc/zoneminder 1.30.0 1.30.2: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 25.0.0.148: Adobe Flash Player
 www-plugins/chrome-binary-plugins 57.0.2987.133 58.0.3029.54_beta 59.0.3063.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
