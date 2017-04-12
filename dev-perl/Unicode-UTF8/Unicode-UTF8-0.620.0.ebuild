@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=CHANSEN
-DIST_VERSION=0.61
+DIST_VERSION=0.62
 inherit perl-module
 
 DESCRIPTION="Encoding and decoding of UTF-8 encoding form"
