@@ -295,7 +295,7 @@ app-arch/pbzip2 1.1.12 1.1.12-r1 1.1.13: Parallel bzip2 (de)compressor using lib
 app-arch/pdlzip 1.5 1.6 1.7: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
-app-arch/pigz 2.3.3 2.3.4: A parallel implementation of gzip
+app-arch/pigz 2.3.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6 9999: Parallel Indexed XZ compressor
 app-arch/plzip 1.3 1.4 1.5: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
@@ -323,7 +323,7 @@ app-arch/undms 1.3-r1: Decompress Amiga DMS disk images to ADF
 app-arch/unlzx 1.1: Unarchiver for Amiga LZX archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7 2.0_pre7_p1 2.0_pre7_p1-r1: Script for unpacking various file formats
-app-arch/unrar 5.3.11 5.4.4 5.4.5: Uncompress rar files
+app-arch/unrar 5.4.5: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4: InstallShield CAB file extractor
@@ -1077,7 +1077,7 @@ app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, she
 app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
 app-editors/xemacs 21.4.22-r4 21.4.24 21.4.24-r1 21.5.34-r4: highly customizable open source text editor and application development system
 app-editors/xmlcopyeditor 1.2.1.3: XML Copy Editor is a fast, free, validating XML editor
-app-editors/xvile 9.8k 9.8n 9.8o 9.8p 9.8r: VI Like Emacs -- yet another full-featured vi clone
+app-editors/xvile 9.8k 9.8n 9.8o 9.8p 9.8r 9.8s: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2 2.9.6: Free (Y)unicode text editor for all unices
 app-editors/zile 2.3.24-r1 2.4.11: Zile is a small Emacs clone
 app-editors/znotes 0.4.5: Simple Notes
@@ -2269,7 +2269,7 @@ app-text/docbook-xsl-stylesheets 1.79.1-r1: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/doconce 1.3: A markdown-like langauge to generate docs in html, LaTeX, and many other formats
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
-app-text/dos2unix 7.3-r1 7.3.3 7.3.4: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 7.3.4: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
@@ -12856,7 +12856,7 @@ media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
-media-libs/flac 1.3.1-r1 1.3.2-r1: free lossless audio encoder and decoder
+media-libs/flac 1.3.2-r1: free lossless audio encoder and decoder
 media-libs/flickcurl 1.24 1.25 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fmod 3.75 4.38.00 4.38.02: music and sound effects library, and a sound processing system
@@ -13031,7 +13031,7 @@ media-libs/libnsgif 0.1.4: decoding library for the GIF image file format, writt
 media-libs/libnspsl 0.1.0: decoding library for BMP and ICO image file formats, written in C
 media-libs/libnut 661: Library and tools to create NUT multimedia files
 media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
-media-libs/libogg 1.3.0 1.3.1 1.3.2: the Ogg media file format library
+media-libs/libogg 1.3.2: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libomxil-bellagio 0.9.3: Open Source implementation of the OpenMAX Integration Layer
 media-libs/libopendaap 0.4.0: A library which enables applications to discover and connect to iTunes(R) music shares
@@ -13077,7 +13077,7 @@ media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.0 1.10.1: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.0.30 0.1.5 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
-media-libs/libvorbis 1.3.3 1.3.3-r1 1.3.4 1.3.5: The Ogg Vorbis sound file format library
+media-libs/libvorbis 1.3.5: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.5.0 1.6.0-r1 1.6.1: WebM VP8 and VP9 Codec SDK
 media-libs/libwebp 0.3.1 0.4.0 0.4.2 0.5.1 0.5.2: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r6: library for converting WMF files
@@ -18317,7 +18317,7 @@ www-client/google-chrome-unstable 59.0.3063.4: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
-www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9 2.8.9_pre11: An excellent console-based web browser with ssl support
+www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
