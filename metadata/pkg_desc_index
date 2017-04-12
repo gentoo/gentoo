@@ -10212,7 +10212,7 @@ dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
 dev-util/cmake 3.7.2 3.7.2-r1 3.7.2-r10 3.8.0_rc4: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27: black box tests Unix command line tools
-dev-util/cmocka 1.0.1 1.1.0: A unit testing framework for C
+dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.13: A semantic grep for the C language
 dev-util/coccinelle 1.0.5 1.0.6: Program matching and transformation engine
