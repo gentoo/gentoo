@@ -5026,7 +5026,7 @@ dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protoco
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.0_p20120701 1.3.2_p20140525-r1 1.3.3_p20150521 1.3.4_p20160523: Library for Japanese pTeX providing a better way of handling character encodings
-dev-libs/pugixml 1.5 1.7 1.8: Light-weight, simple, and fast XML parser for C++ with XPath support
+dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/purpose 1.1-r1: Library for providing abstractions to get the developer's purposes fulfilled
 dev-libs/qcodeedit 2.2.3 2.2.3-r2: Qt-Framework for code editing
 dev-libs/qcustomplot 1.3.2: Qt C++ widget for plotting and data visualization
@@ -13724,7 +13724,7 @@ media-sound/lash 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2-r3 2.19.54 2.19.55 2.19.56 2.19.57 2.19.58 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2-r3 2.19.54 2.19.55 2.19.56 2.19.57 2.19.58 2.19.59 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
@@ -14980,14 +14980,14 @@ net-mail/fastforward 0.51-r1: handle qmail forwarding according to a cdb databas
 net-mail/fdm 1.7 1.8 1.9: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-mail/gensig 2.3: Random ~/.signature generator
-net-mail/getmail 4.52.0 4.53.0: A POP3 mail retriever with reliable Maildir and mbox delivery
+net-mail/getmail 4.52.0 4.53.0 4.54.0: A POP3 mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.15-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
 net-mail/imapsync 1.592-r1 1.607-r1 1.644 1.684: A tool allowing incremental and recursive IMAP transfers between mailboxes
 net-mail/isync 1.0.6 1.2.0 1.2.1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
-net-mail/lbdb 0.39 0.39-r1 0.41 0.42: Little Brother database
+net-mail/lbdb 0.41 0.42 0.42.1: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
 net-mail/libpst 0.6.64-r1 0.6.66-r1: Tools and library for reading Outlook files (.pst format)
 net-mail/list-remote-forwards 0.0.1-r1: List all remote forwards for mail accounts stored in a database
@@ -17111,7 +17111,7 @@ sys-apps/miscfiles 1.4.2-r1 1.5-r1: Miscellaneous files
 sys-apps/mlocate 0.26-r2: Merging locate is an utility to index and quickly search for files
 sys-apps/modutils 2.4.27-r1: Standard kernel module utilities for linux-2.4 and older
 sys-apps/more 2.12r: Primitive text file viewer
-sys-apps/moreutils 0.50 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58 0.59 0.60 0.60-r1: a collection of tools that nobody thought to write when Unix was young
+sys-apps/moreutils 0.60-r1: a collection of tools that nobody thought to write when Unix was young
 sys-apps/most 5.0.0a-r1: Paging program that displays, one windowful at a time, the contents of a file
 sys-apps/mount-gtk 1.4.2: GTK+ based UDisks2 frontend
 sys-apps/mouseemu 0.12 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
