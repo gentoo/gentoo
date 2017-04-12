@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/lwt_react:= >=dev-ml/lwt-2.4.0:= >=dev-ml/zed-1.2:= >=dev-ml/react-1.2:= dev-ml/jbuilder dev-ml/opam
+DESCRIPTION=A cross-platform library for manipulating the terminal
+EAPI=6
+HOMEPAGE=https://github.com/diml/lambda-term
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-lang/ocaml:= dev-ml/lwt_react:= >=dev-ml/lwt-2.4.0:= >=dev-ml/zed-1.2:= >=dev-ml/react-1.2:=
+SLOT=0/1.11
+SRC_URI=https://github.com/diml/lambda-term/archive/1.11.tar.gz -> lambda-term-1.11.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=e037ba17e84061e65a9eec64bf8c5fcf
