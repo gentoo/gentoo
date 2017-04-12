@@ -27,7 +27,10 @@ RDEPEND="${DEPEND}
 	dev-vcs/git"
 [[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc"
 
-PATCHES=( "${FILESDIR}"/${P}-tinfo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.1-tinfo.patch
+	"${FILESDIR}"/${PN}-2.2.1-termcap-tinfo.patch
+)
 
 src_prepare() {
 	default
