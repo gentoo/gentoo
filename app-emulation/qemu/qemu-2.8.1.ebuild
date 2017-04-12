@@ -71,8 +71,7 @@ ALL_DEPEND="
 	sys-libs/zlib[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	systemtap? ( dev-util/systemtap )
-	xattr? ( sys-apps/attr[static-libs(+)] )
-	"
+	xattr? ( sys-apps/attr[static-libs(+)] )"
 
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
@@ -147,8 +146,7 @@ SOFTMMU_TOOLS_DEPEND="
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
 	xen? ( app-emulation/xen-tools:= )
-	xfs? ( sys-fs/xfsprogs[static-libs(+)] )
-"
+	xfs? ( sys-fs/xfsprogs[static-libs(+)] )"
 
 X86_FIRMWARE_DEPEND="
 	>=sys-firmware/ipxe-1.0.0_p20130624
@@ -741,7 +739,6 @@ src_install() {
 
 pkg_postinst() {
 	DISABLE_AUTOFORMATTING=true
-	FORCE_PRINT_ELOG=1 # remove for next version bump
 	readme.gentoo_print_elog
 
 	if [[ -n ${softmmu_targets} ]] && use kernel_linux; then

@@ -73,11 +73,21 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #   pulseaudio? ( media-sound/pulseaudio )
 #   seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
 # but these are so few it is not worth the effort to separate this list.
-TARGETS_DEPEND="
+ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
-	accessibility? ( app-accessibility/brltty[static-libs(+)] )
+	python? ( ${PYTHON_DEPS} )
+	systemtap? ( dev-util/systemtap )
+	xattr? ( sys-apps/attr[static-libs(+)] )"
+
+# Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
+# softmmu targets (qemu-system-*).
+SOFTMMU_TOOLS_DEPEND="
+	accessibility? (
+		app-accessibility/brltty[api]
+		app-accessibility/brltty[static-libs(+)]
+	)
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	bluetooth? ( net-wireless/bluez )
@@ -118,7 +128,6 @@ TARGETS_DEPEND="
 	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
-	python? ( ${PYTHON_DEPS} )
 	rbd? ( sys-cluster/ceph[static-libs(+)] )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
@@ -139,13 +148,11 @@ TARGETS_DEPEND="
 		>=app-emulation/spice-0.12.0[static-libs(+)]
 	)
 	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
-	systemtap? ( dev-util/systemtap )
-	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
+	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
-	xattr? ( sys-apps/attr[static-libs(+)] )
 	xen? ( app-emulation/xen-tools:= )
 	xfs? ( sys-fs/xfsprogs[static-libs(+)] )"
 
@@ -163,7 +170,10 @@ X86_FIRMWARE_DEPEND="
 	)"
 
 CDEPEND="
-	!static? ( ${TARGETS_DEPEND//\[static-libs(+)]} )
+	!static? (
+		${ALL_DEPEND//\[static-libs(+)]}
+		${SOFTMMU_TOOLS_DEPEND//\[static-libs(+)]}
+	)
 	qemu_softmmu_targets_i386? ( ${X86_FIRMWARE_DEPEND} )
 	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )"
 DEPEND="${CDEPEND}
@@ -173,8 +183,11 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
 	gtk? ( nls? ( sys-devel/gettext ) )
-	static? ( ${TARGETS_DEPEND} )
-	static-user? ( ${TARGETS_DEPEND} )
+	static? (
+		${ALL_DEPEND}
+		${SOFTMMU_TOOLS_DEPEND}
+	)
+	static-user? ( ${ALL_DEPEND} )
 	test? (
 		dev-libs/glib[utils]
 		sys-devel/bc
@@ -714,7 +727,6 @@ src_install() {
 
 pkg_postinst() {
 	DISABLE_AUTOFORMATTING=true
-	FORCE_PRINT_ELOG=1 # remove for next version bump
 	readme.gentoo_print_elog
 
 	if [[ -n ${softmmu_targets} ]] && use kernel_linux; then
