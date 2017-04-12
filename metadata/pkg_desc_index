@@ -5051,7 +5051,7 @@ dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 5.0.0 5.1.0: Simulation Description Format (SDF) parser
+dev-libs/sdformat 5.1.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0 0.26.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
@@ -14796,8 +14796,8 @@ net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
-net-libs/ignition-msgs 0.6.0 0.6.1 0.7.0: Protobuf messages and functions for robot applications
-net-libs/ignition-transport 1.4.0 2.1.0 3.0.1: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
+net-libs/ignition-msgs 0.7.0: Protobuf messages and functions for robot applications
+net-libs/ignition-transport 3.0.1: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.3.0: Qt XMPP library
 net-libs/kimap2 0.1.0: Library for interacting with IMAP servers - successor of kimap
 net-libs/ldns 1.6.17 1.6.17-r1 1.7.0: a library with the aim to simplify DNS programming in C
@@ -16380,7 +16380,7 @@ sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencin
 sci-libs/hypre 2.9.0b 2.11.1: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
-sci-libs/ignition-math 1.0.0 2.5.0 2.6.0 2.7.0 3.0.0: A small, fast, and high performance math library for robot applications
+sci-libs/ignition-math 3.1.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.2.0 1.3.1 1.4.1: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
@@ -17453,7 +17453,7 @@ sys-cluster/libqb 0.13.0 0.14.3 0.14.4 0.17.0 0.17.1 0.17.2: Library providing h
 sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lspbs 1.1-r1: Displays clear, concise and up-to-date PBS node and CPU usage information
 sys-cluster/maui 3.3.1-r2 3.3.1-r3: Maui Cluster Scheduler
-sys-cluster/minikube 0.16.0 0.17.1: Single Node Kubernetes Cluster
+sys-cluster/minikube 0.16.0 0.17.1 0.18.0: Single Node Kubernetes Cluster
 sys-cluster/moosefs 1.6.26-r1 1.6.27: A filesystem for highly reliable petabyte storage
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable MPI implementation

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=dev-go/go-bindata || ( dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/go-1.7:=
+DESCRIPTION=Single Node Kubernetes Cluster
+EAPI=6
+HOMEPAGE=https://github.com/kubernetes/minikube https://kubernetes.io
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=sys-cluster/kubectl-1.5.3
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/kubernetes/minikube/archive/v0.18.0.tar.gz -> minikube-0.18.0.tar.gz
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=9eba622c2e327c0ada84a0150d82b601
