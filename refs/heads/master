@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0BBEEA1FEA4843A4 1492097258 -0400
-pushee ssh://git.gentoo.org/repo/gentoo.git
-nonce 1492097258-7d0b36474b7f806e301c
+pusher 0x8883FA56A308A8D7 1492097349 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo
+nonce 1492097349-f52f9e6e0c18e4c75cdb
 
-8353c3f29101ebc67f11e47eb072a4e9a1033e9a d70a7a4eed33090d88793598760e2cab47740ed7 refs/heads/master
+d70a7a4eed33090d88793598760e2cab47740ed7 d1cf963c9e46d1fcc1f57b3ae93ae40ae8e607ed refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWO+Y6gAKCRBHG+cz7yka
-P4H3AQCwDtLNAAP13/qWSEsfA1LG5VQA2ELg5l2zBH5ayomH4wD/cgILQCYK/n8t
-eV/Rzc6OHwo3OxorUq8UX6neyaj/V1k=
-=6btT
+iHUEABEIAB0WIQSx3yP+V82AqODatGmIg/pWowio1wUCWO+ZRQAKCRCIg/pWowio
+18p0AP9zUedm4RvxWRmaXTHjmqYCDduAGlY4/Iv8t/pO4A33RwD+MHbhkKPPbLCC
+wp8fuhMuvK+o29o2605TzlGPDnCh7EQ=
+=J69w
 -----END PGP SIGNATURE-----
