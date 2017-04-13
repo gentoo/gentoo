@@ -30,7 +30,7 @@ DEPEND="${COMMON_DEPEND}
 	nls? ( sys-devel/gettext )
 	appindicator? ( dev-libs/libappindicator )
 "
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="gtk? ( ${PYTHON_REQUIRED_USE} )"
 
 src_prepare() {
 	epatch_user
@@ -38,7 +38,7 @@ src_prepare() {
 }
 
 src_configure() {
-	python_export_best
+	use gtk && python_setup
 
 	econf \
 		--disable-silent-rules \
