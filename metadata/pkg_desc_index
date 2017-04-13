@@ -17753,7 +17753,7 @@ sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.51 4.4.52 4.4.53 4.4.54 4.4.55 4.4.56 4.4.57 4.9.12 4.9.13 4.9.14 4.9.15 4.9.16 4.9.17 4.9.18 4.10.0 4.10.1 4.10.2 4.10.3 4.10.4: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r1 7.0.2: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.15 4.9.16 4.9.17 4.9.18 4.9.20 4.9.21 4.10.3 4.10.4 4.10.5 4.10.6 4.10.8 4.10.9: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.10
+sys-kernel/ck-sources 4.9.15 4.9.16 4.9.17 4.9.18 4.9.20 4.9.21 4.9.22 4.10.3 4.10.4 4.10.5 4.10.6 4.10.8 4.10.9 4.10.10: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.10
 sys-kernel/cryptodev 1.7 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 9999: Gentoo automatic kernel building scripts
@@ -18870,7 +18870,7 @@ x11-misc/qps 1.10.16-r1: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
 x11-misc/qt5ct 0.30 0.31: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.5.12-r1 0.7.1: A BBS client for Linux
-x11-misc/qtfm 5.5 5.5-r1: A small, lightweight file manager for desktops based on pure Qt
+x11-misc/qtfm 5.5-r1: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
 x11-misc/qxkb 0.4.6: Qt4-based keyboard layout switcher
@@ -18933,7 +18933,7 @@ x11-misc/vym 2.6.2 2.6.8 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r2: Wayv is hand-writing/gesturing recognition software for X
 x11-misc/wbar 2.3.4-r2: A fast, lightweight quick launch bar
 x11-misc/wbarconf 0.7.2.2-r2: Configuration GUI for x11-misc/wbar
-x11-misc/wdm 1.28-r3 1.28-r4: WINGs Display Manager
+x11-misc/wdm 1.28-r4: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7-r1: An X app that follows your pointer providing information about the windows below
 x11-misc/winswitch 0.12.18-r1: client server tool to start and control virtual desktops
@@ -18951,7 +18951,7 @@ x11-misc/xbatt 1.2.1-r1 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.3 1.4.8: Advanced Power Management battery status display for X
 x11-misc/xbindkeys 1.8.6: Tool for launching commands on keystrokes
 x11-misc/xbitmaps 1.1.1-r1: X.Org bitmaps data
-x11-misc/xcalendar 4.0-r1 4.0-r2: A simple interactive calendar program with a notebook capability
+x11-misc/xcalendar 4.0-r2: A simple interactive calendar program with a notebook capability
 x11-misc/xcalib 0.9.0_p20161210: A tiny monitor calibration loader for X.org
 x11-misc/xcape 1.1: Utility to make modifier keys send custom key events when pressed on their own
 x11-misc/xcave 2.4.0: View and manage contents of your wine cellar
@@ -18964,7 +18964,7 @@ x11-misc/xdg-user-dirs 0.15: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
 x11-misc/xdg-utils 1.1.1-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
-x11-misc/xdiskusage 1.48_p20111016 1.51: user-friendly program to show you what is using up all your disk space
+x11-misc/xdiskusage 1.51: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.5: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
