@@ -6423,6 +6423,7 @@ net-misc/scponly:subversion - Enables Subversion compatibility with potential se
 net-misc/scponly:unison - Enables Unison compatibility with potential security risks
 net-misc/scponly:wildcards - Enables wildcard processing with potential security risks
 net-misc/scponly:winscp - Enables WinSCP 2.0 compatibility with potential security risks
+net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/sitecopy:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
 net-misc/sitecopy:webdav - Enable WebDav (Web-based Distributed Authoring and Versioning) support. This system allows users to collaborate on websites using a web based interface. See the ebuild for an FAQ page. Enables neon as well to handle webdav support.
 net-misc/sks:optimize - Enables bytecode optimization
