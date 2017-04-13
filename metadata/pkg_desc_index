@@ -10211,7 +10211,7 @@ dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certia
 dev-util/checkbashisms 2.16.13 2.17.2 2.17.5-r1: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
-dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
+dev-util/clion 1.2.4.143.1186 2016.2.1 2017.1 2017.1-r1: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
 dev-util/cmake 3.7.2 3.7.2-r1 3.7.2-r10 3.8.0: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -18317,8 +18317,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.7.0 45.8.0 52.0.1-r1: Firefox Web Browser
 www-client/firefox-bin 45.8.0 52.0.1: Firefox Web Browser
 www-client/google-chrome 57.0.2987.133: The web browser from Google
-www-client/google-chrome-beta 58.0.3029.54: The web browser from Google
-www-client/google-chrome-unstable 59.0.3063.4: The web browser from Google
+www-client/google-chrome-beta 58.0.3029.68: The web browser from Google
+www-client/google-chrome-unstable 59.0.3067.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18368,7 +18368,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 25.0.0.148: Adobe Flash Player
-www-plugins/chrome-binary-plugins 57.0.2987.133 58.0.3029.54_beta 59.0.3063.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 57.0.2987.133 58.0.3029.68_beta 59.0.3067.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
