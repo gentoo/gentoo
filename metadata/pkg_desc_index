@@ -6652,7 +6652,7 @@ dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-MockTime-HiRes 0.60.0: Replace actual time with simulated high resolution time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-Needs 0.2.2: Skip tests when modules not available
-dev-perl/Test-NoTabs 1.400.0: Check the presence of tabs in your project
+dev-perl/Test-NoTabs 1.400.0 2.000.0: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r3: Make sure you didn't emit any warnings while testing
 dev-perl/Test-Number-Delta 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
@@ -12649,7 +12649,7 @@ media-gfx/graphite2 1.3.5 1.3.8 1.3.9: Library providing rendering capabilities 
 media-gfx/graphviz 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gscan2pdf 1.7.1 1.7.2: Scan documents, perform OCR, produce PDFs and DjVus
+media-gfx/gscan2pdf 1.7.1 1.7.2 1.8.0: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.4.4.1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
