@@ -17073,7 +17073,7 @@ sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter M
 sys-apps/inxi 2.3.0_p20160807 2.3.4_p20161104: Commandline script to print hardware information for irc and administration
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
-sys-apps/ipmiutil 2.8.5 3.0.2 3.0.3: IPMI Management Utilities
+sys-apps/ipmiutil 3.0.2 3.0.3 3.0.4: IPMI Management Utilities
 sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 4.10.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.0.9-r1 1.1.0 1.2.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
