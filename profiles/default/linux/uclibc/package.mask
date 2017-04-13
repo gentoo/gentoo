@@ -13,6 +13,7 @@ sys-fs/udev
 dev-libs/elfutils
 
 # These binary pkgs have a hard dep on glibc; make repoman shut up
+app-arch/rar
 dev-games/gtkradiant
 dev-games/ps2-packer
 games-action/descent3
