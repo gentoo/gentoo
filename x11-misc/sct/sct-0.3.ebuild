@@ -9,7 +9,7 @@ SRC_URI="https://www.umaxx.net/dl/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="x11-libs/libXrandr"
 RDEPEND="${DEPEND}"
