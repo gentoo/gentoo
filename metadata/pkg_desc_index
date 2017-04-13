@@ -9855,7 +9855,7 @@ dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the obje
 dev-ruby/travis 1.8.2-r1 1.8.6-r1 1.8.8: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.5 1.6.8: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.1.2: Trollop is a commandline option parser for Ruby
-dev-ruby/ttfunk 1.2.1 1.4.0 1.5.0: A TrueType font parser written in pure ruby
+dev-ruby/ttfunk 1.2.1 1.4.0 1.5.0 1.5.1: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
 dev-ruby/twitter 5.16.0 5.17.0 5.17.0-r1 6.1.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.2 1.14.5: Text handling for Twitter
@@ -9866,7 +9866,7 @@ dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and 
 dev-ruby/uglifier 2.7.2 3.0.4 3.1.1 3.1.3 3.1.6 3.1.7 3.1.9 3.1.12 3.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
-dev-ruby/unf_ext 0.0.7.1 0.0.7.2: Unicode Normalization Form support library for CRuby
+dev-ruby/unf_ext 0.0.7.1 0.0.7.2 0.0.7.3: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.4-r1 2.1.5 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.13 0.2.14 0.2.15: Ruby vcard support extracted from Vpim
