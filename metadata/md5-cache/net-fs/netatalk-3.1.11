@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=!app-editors/yudit dev-libs/libevent:0= >=dev-libs/libgcrypt-1.2.3:0 sys-apps/coreutils >=sys-libs/db-4.2.52:= sys-libs/tdb acl? ( sys-apps/attr sys-apps/acl ) cracklib? ( sys-libs/cracklib ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) tcpd? ( sys-apps/tcp-wrappers ) tracker? ( app-misc/tracker ) utils? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) zeroconf? ( net-dns/avahi[dbus] ) virtual/yacc sys-devel/flex >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Open Source AFP server
+EAPI=5
+HOMEPAGE=http://netatalk.sourceforge.net/
+IUSE=acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2 BSD
+RDEPEND=!app-editors/yudit dev-libs/libevent:0= >=dev-libs/libgcrypt-1.2.3:0 sys-apps/coreutils >=sys-libs/db-4.2.52:= sys-libs/tdb acl? ( sys-apps/attr sys-apps/acl ) cracklib? ( sys-libs/cracklib ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) tcpd? ( sys-apps/tcp-wrappers ) tracker? ( app-misc/tracker ) utils? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) zeroconf? ( net-dns/avahi[dbus] ) utils? ( dev-lang/perl dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+REQUIRED_USE=ldap? ( acl ) tracker? ( dbus ) utils? ( || ( python_targets_python2_7 ) )
+RESTRICT=test
+SLOT=0/17.0
+SRC_URI=mirror://sourceforge/project/netatalk/netatalk/3.1.11/netatalk-3.1.11.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	042d779bc872564b26c4e5cf018db8ed	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	pam	3e788d86170dfcd5b06824d898315e18	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=2e615d3ebe64be3564b9a0e5c498de16
