@@ -42,7 +42,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm
 	+nptl opencl osmesa pax_kernel openmax pic selinux vaapi valgrind vdpau
-	vulkan wayland xvmc xa"
+	vulkan wayland +X xvmc xa"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 gallium )
@@ -57,6 +57,7 @@ REQUIRED_USE="
 	          video_cards_radeonsi? ( llvm ) )
 	wayland? ( egl gbm )
 	xa?  ( gallium )
+	xvmc? ( X gallium )
 	video_cards_freedreno?  ( gallium )
 	video_cards_intel?  ( classic )
 	video_cards_i915?   ( || ( classic gallium ) )
@@ -87,13 +88,15 @@ RDEPEND="
 	>=app-eselect/eselect-opengl-1.3.0
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8[${MULTILIB_USEDEP}]
-	>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libXdamage-1.1.4-r1:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libXext-1.3.2:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
+	X? (
+		>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
+		dri3? ( >=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}] )
+		>=x11-libs/libXdamage-1.1.4-r1:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libXext-1.3.2:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
+	)
 	llvm? (
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
@@ -154,15 +157,17 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	valgrind? ( dev-util/valgrind )
-	>=x11-proto/dri2proto-2.8-r1:=[${MULTILIB_USEDEP}]
-	dri3? (
-		>=x11-proto/dri3proto-1.0:=[${MULTILIB_USEDEP}]
-		>=x11-proto/presentproto-1.0:=[${MULTILIB_USEDEP}]
+	X? (
+		>=x11-proto/dri2proto-2.8-r1:=[${MULTILIB_USEDEP}]
+		dri3? (
+			>=x11-proto/dri3proto-1.0:=[${MULTILIB_USEDEP}]
+			>=x11-proto/presentproto-1.0:=[${MULTILIB_USEDEP}]
+		)
+		>=x11-proto/glproto-1.4.17-r1:=[${MULTILIB_USEDEP}]
+		>=x11-proto/xextproto-7.2.1-r1:=[${MULTILIB_USEDEP}]
+		>=x11-proto/xf86driproto-2.1.1-r1:=[${MULTILIB_USEDEP}]
+		>=x11-proto/xf86vidmodeproto-2.3.1-r1:=[${MULTILIB_USEDEP}]
 	)
-	>=x11-proto/glproto-1.4.17-r1:=[${MULTILIB_USEDEP}]
-	>=x11-proto/xextproto-7.2.1-r1:=[${MULTILIB_USEDEP}]
-	>=x11-proto/xf86driproto-2.1.1-r1:=[${MULTILIB_USEDEP}]
-	>=x11-proto/xf86vidmodeproto-2.3.1-r1:=[${MULTILIB_USEDEP}]
 "
 [[ ${PV} == 9999 ]] && DEPEND+="
 	sys-devel/bison
@@ -231,7 +236,7 @@ multilib_src_configure() {
 	fi
 
 	if use egl; then
-		myconf+=" --with-egl-platforms=x11$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
+		myconf+=" --with-egl-platforms=$(use X && echo "x11,")$(use wayland && echo "wayland,")$(use gbm && echo "drm,")"
 	fi
 
 	if use gallium; then
@@ -303,12 +308,12 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
 		--enable-dri \
-		--enable-glx \
+		$(use_enable X glx) \
 		--enable-shared-glapi \
 		$(use_enable !bindist texture-float) \
 		$(use_enable d3d9 nine) \
 		$(use_enable debug) \
-		$(use_enable dri3) \
+		$(use_enable X dri3) \
 		$(use_enable egl) \
 		$(use_enable gbm) \
 		$(use_enable gles1) \
