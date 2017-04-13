@@ -6367,7 +6367,7 @@ dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.27.0 2.31.0: Facilitates the creation and modification of PDF files
-dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0 1.410.0: Create PDF documents in Perl
+dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0 1.410.0 1.420.0: Create PDF documents in Perl
 dev-perl/PDL 2.17.0: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
