@@ -208,7 +208,7 @@ src_prepare() {
 	default
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
-	ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/node || die
+	ln -s "${EPREFIX}"/usr/bin/node third_party/node/linux/node-linux-x64/bin/node || die
 
 	local keeplibs=(
 		base/third_party/dmg_fp
