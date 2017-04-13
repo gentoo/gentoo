@@ -5,9 +5,9 @@ HOMEPAGE=https://www.passwordstore.org/
 IUSE=+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin
 KEYWORDS=amd64 x86 ~x86-macos
 LICENSE=GPL-2
-RDEPEND=app-crypt/gnupg app-admin/pwgen >=app-text/tree-1.7.0 git? ( dev-vcs/git ) X? ( x11-misc/xclip ) elibc_Darwin? ( app-misc/getopt ) zsh-completion? ( app-shells/gentoo-zsh-completions ) fish-completion? ( app-shells/fish ) dmenu? ( x11-misc/dmenu x11-misc/xdotool ) emacs? ( virtual/emacs )
+RDEPEND=app-crypt/gnupg media-gfx/qrencode >=app-text/tree-1.7.0 git? ( dev-vcs/git ) X? ( x11-misc/xclip ) elibc_Darwin? ( app-misc/getopt ) zsh-completion? ( app-shells/gentoo-zsh-completions ) fish-completion? ( app-shells/fish ) dmenu? ( x11-misc/dmenu x11-misc/xdotool ) emacs? ( virtual/emacs )
 SLOT=0
-SRC_URI=https://git.zx2c4.com/password-store/snapshot/password-store-1.6.5.tar.xz
+SRC_URI=https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	elisp-common	19ff54b35acd0bf2a14831a308a57753	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=7bc38a927c1392e99575496bd6e22147
+_md5_=399078ed546274b071950ef66e8da63c
