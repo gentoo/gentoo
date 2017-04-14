@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
@@ -16,12 +16,6 @@ case "${EAPI:-0}" in
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
 		;;
 esac
-
-if [[ ! ${_GIT_R3} ]]; then
-
-inherit eutils
-
-fi
 
 EXPORT_FUNCTIONS src_unpack
 

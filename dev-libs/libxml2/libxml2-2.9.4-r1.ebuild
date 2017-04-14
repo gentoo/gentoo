@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 PYTHON_REQ_USE="xml"
 
-inherit libtool flag-o-matic eutils python-r1 autotools prefix multilib-minimal
+inherit libtool flag-o-matic ltprune python-r1 autotools prefix multilib-minimal
 
 DESCRIPTION="Version 2 of the library to manipulate XML files"
 HOMEPAGE="http://www.xmlsoft.org/"
