@@ -26,7 +26,7 @@ src_prepare() {
 	if ! use doc; then
 		sed -i -e '/default :/ s/doc//' "${S}"/Makefile || die
 	fi
-	elog "Upstream recommendes using -O3 in CFLAGS"
+	elog "Upstream recommends using -O3 in CFLAGS"
 	echo
 	elog "To adjust the MAXKMERLENGTH, CATEGORIES, BIGASSEMBLY, LONGSEQUENCES parameters"
 	elog "as described in the PDF manual, please set the variables by prepending VELVET_ in"
@@ -53,11 +53,11 @@ src_prepare() {
 		CFLAGS="${CFLAGS}"
 		OPT="${CFLAGS}"
 	)
-	if use openmp; then MAKE_XOPTS+=( OPENMP=1 ); fi
-	if [[ ${VELVET_MAXKMERLENGTH} != "" ]]; then MAKE_XOPTS+=( MAXKMERLENGTH=${VELVET_MAXKMERLENGTH} ); fi
-	if [[ ${VELVET_CATEGORIES} != "" ]]; then MAKE_XOPTS+=( CATEGORIES=${VELVET_CATEGORIES} ); fi
-	if [[ ${VELVET_BIGASSEMBLY} != "" ]]; then MAKE_XOPTS+=( BIGASSEMBLY=${VELVET_BIGASSEMBLY} ); fi
-	if [[ ${VELVET_LONGSEQUENCES} != "" ]]; then MAKE_XOPTS+=( LONGSEQUENCES=${VELVET_LONGSEQUENCES} ); fi
+	use openmp && MAKE_XOPTS+=( OPENMP=1 )
+	test "${VELVET_MAXKMERLENGTH}" != "" && MAKE_XOPTS+=( MAXKMERLENGTH=${VELVET_MAXKMERLENGTH} )
+	test "${VELVET_CATEGORIES}" != "" && MAKE_XOPTS+=( CATEGORIES=${VELVET_CATEGORIES} )
+	test "${VELVET_BIGASSEMBLY}" != "" && MAKE_XOPTS+=( BIGASSEMBLY=${VELVET_BIGASSEMBLY} )
+	test "${VELVET_LONGSEQUENCES}" != "" && MAKE_XOPTS+=( LONGSEQUENCES=${VELVET_LONGSEQUENCES} )
 }
 
 src_compile() {
