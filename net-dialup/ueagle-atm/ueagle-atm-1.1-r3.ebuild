@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 inherit eutils linux-info
 
@@ -12,30 +12,12 @@ SRC_URI="http://eagle-usb.org/ueagle-atm/non-free/ueagle-data-src-${PV}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 DEPEND=""
 RDEPEND="net-dialup/ppp
 	!sys-kernel/linux-firmware"
 
 S="${WORKDIR}/ueagle-data-src-${PV}"
-
-pkg_setup() {
-	linux-info_pkg_setup
-
-	if kernel_is lt 2 6 16 ; then
-		eerror "The kernel-space driver exists only in kernels >= 2.6.16."
-		eerror "Please emerge net-dialup/eagle-usb instead or upgrade the kernel."
-		die "Unsupported kernel version"
-	fi
-
-	if ! has_version '>=sys-apps/baselayout-1.12.0' ; then
-		ewarn "The best way of using this driver is through the PPP net module of the"
-		ewarn "   >=sys-apps/baselayout-1.12.0"
-		ewarn "which is also the only documented mode of using ${PN} driver."
-		ewarn "Please install baselayout-1.12.0 or else you will be on your own!"
-	fi
-}
 
 src_compile() {
 	emake generate
@@ -44,10 +26,10 @@ src_compile() {
 src_install() {
 	# Copy to the firmware directory
 	insinto /lib/firmware/ueagle-atm
-	doins build/* || die "doins firmware failed"
+	doins build/*
 
 	# Documentation necessary to complete the setup
-	dodoc "${FILESDIR}/README" || die "dodoc failed"
+	dodoc "${FILESDIR}/README"
 }
 
 pkg_postinst() {
@@ -61,13 +43,13 @@ pkg_postinst() {
 	echo
 
 	# Check user-space for PPPoA support
-	if ! built_with_use net-dialup/ppp atm ; then
+	if ! has_version net-dialup/ppp[atm] ; then
 		ewarn "Run the following command if connecting via PPPoA protocol:"
 		ewarn "   euse -E atm && emerge net-dialup/ppp"
 		echo
 	fi
 	# Check user-space for PPPoE support
-	if ! has_version >=net-dialup/linux-atm-2.5.0 ; then
+	if ! has_version net-dialup/linux-atm ; then
 		ewarn "Run the following command if connecting via PPPoE protocol:"
 		ewarn "   emerge net-dialup/linux-atm"
 		echo
