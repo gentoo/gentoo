@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools epatch epunt-cxx ltprune multilib-minimal
+# eutils for einstalldocs
+inherit autotools epatch epunt-cxx eutils ltprune multilib-minimal
 
 DESCRIPTION="Free MPEG-4 audio codecs by AudioCoding.com"
 HOMEPAGE="http://www.audiocoding.com"
