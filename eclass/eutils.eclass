@@ -20,8 +20,7 @@ _EUTILS_ECLASS=1
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
 0|1|2|3|4|5|6)
-	# note: we want to remove epunt-cxx retroactively for #566424
-	inherit epatch epunt-cxx estack ltprune multilib toolchain-funcs
+	inherit epatch estack ltprune multilib toolchain-funcs
 	;;
 esac
 
