@@ -7,6 +7,7 @@ DESCRIPTION="Fast, dense and secure container management"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 EGO_PN_PARENT="github.com/lxc"
 EGO_PN="${EGO_PN_PARENT}/lxd"
+GO_FLAGS_COMMIT="460c7bb0abd6e927f2767cadc91aa6ef776a98b4"
 
 # The source is repackaged using a script at:
 #   https://dev.gentoo.org/~stasibear/lxd_repackage.py
@@ -16,7 +17,9 @@ EGO_PN="${EGO_PN_PARENT}/lxd"
 # and anyway portage requires that fetching is only done from SRC_URI.
 # The only sane alternative I've seen is in the consul ebuild, which
 # is more transparent but raises other questions.
-SRC_URI="https://dev.gentoo.org/~stasibear/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~stasibear/distfiles/${P}.tar.bz2
+	https://github.com/jessevdk/go-flags/archive/${GO_FLAGS_COMMIT}.tar.gz ->
+	go-flags-${GO_FLAGS_COMMIT}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -106,6 +109,23 @@ src_prepare() {
 
 	# Warn on unhandled locale changes
 	l10n_find_plocales_changes po "" .po
+
+	mkdir -p "${S}/src/${EGO_PN}/vendor/github.com/jessevdk"
+	mv "${WORKDIR}/go-flags-${GO_FLAGS_COMMIT}" \
+		"${S}/src/${EGO_PN}/vendor/github.com/jessevdk/go-flags" || \
+		die "Failed to move go-flags"
+
+	# gopkg.in/lxc/go-lxc.v2/examples/clone.go:17: too many errors
+	rm -rf "${S}/src/gopkg.in/lxc/go-lxc.v2/examples" || die
+
+	while read -r -d ''; do
+		[[ -d ${REPLY} ]] || continue # parent moved already
+		[[ ${REPLY} =~ ^${S}/src/${EGO_PN%/*}(/|$) ]] && continue
+		mkdir -p "$(dirname "${S}/src/${EGO_PN}/vendor/${REPLY#${S}/src}")"
+		mv "${REPLY}" "${S}/src/${EGO_PN}/vendor/${REPLY#${S}/src}" || \
+			die "Failed to move ${REPLY##*/}"
+	done < <(find "${S}/src" -mindepth 2 -maxdepth 3 -type d -print0)
+	find "${S}/src" -maxdepth 3 -type d -empty -delete
 }
 
 src_compile() {
