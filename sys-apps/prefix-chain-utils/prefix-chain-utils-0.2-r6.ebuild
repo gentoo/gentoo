@@ -1,6 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 inherit prefix
 
 DESCRIPTION="Chained EPREFIX utilities and wrappers"
@@ -14,6 +16,10 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="sys-devel/gcc-config"
+
+src_unpack() {
+	mkdir -p "${S}"
+}
 
 src_install() {
 	cp "${FILESDIR}"/*.in "${T}"
