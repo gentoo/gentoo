@@ -10,7 +10,7 @@ DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
 SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/${MY_PN}-${PV}.deb"
 
-LICENSE="no-source-code"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -46,7 +46,7 @@ RDEPEND="
 
 S=${WORKDIR}
 
-RESTRICT="mirror"
+RESTRICT="mirror bindist"
 
 QA_PREBUILT="
 	opt/discord/share/discord/Discord
