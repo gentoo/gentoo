@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils fortran-2 multilib toolchain-funcs versionator
+inherit fortran-2 multilib toolchain-funcs versionator
 
 DESCRIPTION="Checks the stereochemical quality of a protein structure"
 HOMEPAGE="http://www.biochem.ucl.ac.uk/~roman/procheck/procheck.html"
@@ -32,11 +32,10 @@ pkg_nofetch() {
 	use doc && elog "manual.tar.gz  ->  ${DISTDIR}/${P}-manual.tar.gz"
 }
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PV}-ldflags.patch \
+PATCHES=(
+		"${FILESDIR}"/${P}-ldflags.patch
 		"${FILESDIR}"/${P}-close.patch
-}
+)
 
 src_compile() {
 	emake \
