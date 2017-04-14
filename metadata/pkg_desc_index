@@ -14884,7 +14884,7 @@ net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its AP
 net-libs/librpcsecgss 0.16 0.19 0.19-r1: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
 net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
 net-libs/libs3 2.0-r1: A C Library API for Amazon S3
-net-libs/libsearpc 3.0.8: A simple C language RPC framework
+net-libs/libsearpc 3.0.8-r1: A simple C language RPC framework
 net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.54.1-r1 2.56.0: An HTTP library implementation in C
