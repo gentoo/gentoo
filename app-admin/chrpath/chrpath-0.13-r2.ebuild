@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 inherit eutils autotools
 
@@ -23,6 +23,7 @@ src_prepare() {
 	sed -i -e '/doc_DATA/d' Makefile.am || die
 	# fix for automake-1.13, #467538
 	sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac || die
+	eapply_user
 	eautoreconf
 }
 
