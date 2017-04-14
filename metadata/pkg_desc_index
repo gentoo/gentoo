@@ -14360,7 +14360,7 @@ net-analyzer/openvas-scanner 5.0.4-r1: A remote security scanner for Linux (Open
 net-analyzer/openvas-tools 0_pre20512: A remote security scanner for Linux (extra tools)
 net-analyzer/ospd 1.0.0: Collection of scanner wrappers for OpenVAS
 net-analyzer/ostinato 0.5.1 0.8: A packet generator and analyzer
-net-analyzer/p0f 2.0.8-r2 3.06_beta 3.07_beta: A tool to perform passive OS detection based on SYN packets
+net-analyzer/p0f 2.0.8-r2 3.06_beta 3.07_beta 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/packit 1.0-r2: network auditing tool that allows you to monitor, manipulate, and inject customized IPv4 traffic
 net-analyzer/pathload 1.3.2: Non-intrusive utility for estimation of available bandwidth of Internet paths
 net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
