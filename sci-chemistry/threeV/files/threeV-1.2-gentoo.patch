@@ -1,7 +1,7 @@
-diff --git a/src/Makefile b/src/Makefile
+diff --git a/Makefile b/Makefile
 index a58462c..616f51a 100644
---- a/src/Makefile
-+++ b/src/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,7 +1,7 @@
 -CC = g++
 -EXT=$(shell ./cpuflags.pl --opt )
