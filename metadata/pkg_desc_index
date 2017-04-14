@@ -6652,7 +6652,7 @@ dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-MockTime-HiRes 0.60.0: Replace actual time with simulated high resolution time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-Needs 0.2.2: Skip tests when modules not available
-dev-perl/Test-NoTabs 1.400.0 2.000.0: Check the presence of tabs in your project
+dev-perl/Test-NoTabs 1.400.0 2.0.0-r1: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r3: Make sure you didn't emit any warnings while testing
 dev-perl/Test-Number-Delta 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
