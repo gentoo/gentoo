@@ -14493,7 +14493,7 @@ net-dialup/rp-l2tp 0.4-r4: User-space implementation of L2TP for Linux and other
 net-dialup/rp-pppoe 3.11-r3 3.12-r1: A user-mode PPPoE client and server suite for Linux
 net-dialup/sendpage 1.1.0-r3: Dialup alphapaging software
 net-dialup/sercd 3.0.0-r2: RFC2217-compliant serial port redirector
-net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware, kernel driver and configuration instructions for Alcatel SpeedTouch USB modems
+net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware and configuration instructions for Alcatel SpeedTouch USB modems
 net-dialup/tkvoice 1.5: Voice mail and Fax frontend program
 net-dialup/ueagle-atm 1.1-r3: Firmware and configuration instructions for ADI 930/Eagle USB ADSL Modem driver
 net-dialup/ueagle4-atm 1.0: Firmware and configuration instructions for Eagle USB E4 ADSL Modem driver
