@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Want virtual/perl-version virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Create context-sensitive return values
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Contextual-Return/
+IUSE=test
+KEYWORDS=~amd64 ~x86 ~ppc-aix
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Want virtual/perl-version dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DC/DCONWAY/Contextual-Return-0.004012.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_md5_=2167406554dbe0c33ebc6e12129f4347

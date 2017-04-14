@@ -5604,7 +5604,7 @@ dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as
 dev-perl/ConfigReader 0.500.0-r1: Read directives from a configuration file
 dev-perl/Const-Fast 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
 dev-perl/Context-Preserve 0.10.0-r1: Return chained, modified values from subs, without losing context
-dev-perl/Contextual-Return 0.4.7-r1 0.4.8 0.4.9 0.4.10 0.4.11: Create context-sensitive return values
+dev-perl/Contextual-Return 0.4.7-r1 0.4.8 0.4.9 0.4.10 0.4.11 0.4.12: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
@@ -6911,7 +6911,7 @@ dev-perl/indirect 0.360.0: Lexically warn about using the indirect method call s
 dev-perl/libintl-perl 1.200.0-r1 1.240.0 1.240.0-r2: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
-dev-perl/libwww-perl 6.150.0 6.160.0 6.240.0 6.250.0: A collection of Perl Modules for the WWW
+dev-perl/libwww-perl 6.150.0 6.160.0 6.240.0 6.250.0 6.260.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.14 2.0.18 2.0.19: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
