@@ -1131,7 +1131,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.31-r1 1.35 1.37: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.31-r1 1.37: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -18399,7 +18399,7 @@ www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performa
 www-servers/mongoose 5.3 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.10.3 1.11.10 1.11.12-r1 1.11.13: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.10.3 1.11.10 1.11.13-r1 1.12.0: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
