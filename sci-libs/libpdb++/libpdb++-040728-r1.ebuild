@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils multilib toolchain-funcs
+inherit multilib toolchain-funcs
 
 DESCRIPTION="PDB Record I/O Libraries -- c++ version"
 HOMEPAGE="http://www.cgl.ucsf.edu/Overview/software.html"
@@ -20,12 +20,14 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${PN}
 
+PATCHES=( "${FILESDIR}"/${P}-dynlib+flags.patch )
+
 src_unpack() {
 	"${EPREFIX}/usr/bin/unshar" "${DISTDIR}"/${A} || die
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-dynlib+flags.patch
+	default
 	tc-export CXX AR RANLIB
 }
 
