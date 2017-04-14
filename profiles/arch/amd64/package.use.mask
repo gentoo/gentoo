@@ -30,10 +30,6 @@ dev-lang/ocaml -spacetime
 # nvidia drivers are unmasked here
 media-video/ffmpeg -nvenc
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
-# Requires yet unavailable >=media-video/ffmpeg-3.3.
->=media-video/mpv-0.23.0 cuda
-
 # Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
 # masked in base, unmask for amd64
 >=sys-devel/gcc-6.3.0 -pie
