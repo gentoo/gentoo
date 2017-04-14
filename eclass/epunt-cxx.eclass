@@ -11,14 +11,8 @@
 
 if [[ -z ${_EPUNT_CXX_ECLASS} ]]; then
 
-# TODO: replace this with 'inherit eutils' once eutils stops inheriting
-# us
-if ! declare -F eqawarn >/dev/null ; then
-	eqawarn() {
-		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
-		:
-	}
-fi
+# eutils for eqawarn
+inherit eutils
 
 # If an overlay has eclass overrides, but doesn't actually override the
 # libtool.eclass, we'll have ECLASSDIR pointing to the active overlay's
