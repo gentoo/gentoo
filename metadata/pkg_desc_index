@@ -16153,7 +16153,7 @@ sci-chemistry/sparky 3.115-r2: Graphical NMR assignment and integration program 
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology Consortium consensus RNA backbone nomenclature and conformer-list development
 sci-chemistry/surf 1.0: Solvent accesible Surface calculator
 sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and analysis of macromolecular structures
-sci-chemistry/threeV 1.2: 3V: Voss Volume Voxelator
+sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 7.1.2: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20140601 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/viewmol 2.4.1-r3: Open-source graphical front end for computational chemistry programs
@@ -16165,7 +16165,7 @@ sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input
 sci-chemistry/xds-bin 20170430: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xdsgui 0_p130530: GUI for XDS that is supposed to help both novice and experienced users
 sci-chemistry/xdsstat-bin 140225: Prints various statistics (that are not available from XDS itself)
-sci-chemistry/xyza2pipe 20101129 20121001: Cross conversion environment of NMR spectra
+sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
 sci-electronics/Stage 4.1.1 9999: The Stage Robot Simulator
 sci-electronics/alliance 5.0.20110203: Digital IC design tools (simulation, synthesis, place/route, etc...)
 sci-electronics/balsa 4.0-r1: The Balsa asynchronous synthesis system
@@ -16426,8 +16426,8 @@ sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.12.3 0.14.0 0.15.0: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/liborigin 20110829: Library for reading OriginLab OPJ project files
-sci-libs/libpdb 991112 991112-r1: PDB Record I/O Libraries -- c version
-sci-libs/libpdb++ 040728 040728-r1: PDB Record I/O Libraries -- c++ version
+sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
+sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0 0.4.0 9999: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.3.0 0.4.0 0.4.1 9999: provide (streaming) protocol decoding functionality
