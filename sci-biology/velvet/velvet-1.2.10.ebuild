@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,9 +28,11 @@ src_prepare() {
 	fi
 	elog "Upstream recommendes using -O3 in CFLAGS"
 	echo
-	elog "To adjust the MAXKMERLENGTH or CATEGORIES parameters as described in the manual,"
-	elog "please set the variables VELVET_MAXKMERLENGTH or VELVET_CATEGORIES in your"
-	elog "environment or /etc/make.conf, then re-emerge the package. For example:"
+	elog "To adjust the MAXKMERLENGTH, CATEGORIES, BIGASSEMBLY, LONGSEQUENCES parameters"
+	elog "as described in the PDF manual, please set the variables by prepending VELVET_ in"
+	elog "front of it. For example VELVET_MAXKMERLENGTH, VELVET_CATEGORIES, ..."
+	elog "Set them either in your environment or in /etc/portage/make.conf, then re-emerge"
+	elog "the package. For example:"
 	elog "  VELVET_MAXKMERLENGTH=NN emerge [options] velvet"
 	MAKEOPTS+=" -j1"
 
@@ -51,8 +53,11 @@ src_prepare() {
 		CFLAGS="${CFLAGS}"
 		OPT="${CFLAGS}"
 	)
+	if use openmp; then MAKE_XOPTS+=( OPENMP=1 ); fi
 	if [[ ${VELVET_MAXKMERLENGTH} != "" ]]; then MAKE_XOPTS+=( MAXKMERLENGTH=${VELVET_MAXKMERLENGTH} ); fi
 	if [[ ${VELVET_CATEGORIES} != "" ]]; then MAKE_XOPTS+=( CATEGORIES=${VELVET_CATEGORIES} ); fi
+	if [[ ${VELVET_BIGASSEMBLY} != "" ]]; then MAKE_XOPTS+=( BIGASSEMBLY=${VELVET_BIGASSEMBLY} ); fi
+	if [[ ${VELVET_LONGSEQUENCES} != "" ]]; then MAKE_XOPTS+=( LONGSEQUENCES=${VELVET_LONGSEQUENCES} ); fi
 }
 
 src_compile() {
