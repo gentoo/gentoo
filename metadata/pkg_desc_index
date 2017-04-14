@@ -2398,7 +2398,7 @@ app-text/pdf2djvu 0.9.3 0.9.4: A tool to create DjVu files from PDF files
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2htmlEX 0.14.6: A precise PDF to HTML converter
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
-app-text/pdfgrep 1.4.1-r1: A tool similar to grep which searches text in PDFs
+app-text/pdfgrep 1.4.1-r1 2.0.1: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20131113 20140328 20140328-r1: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4-r1: generator of sandwich OCR pdf files
@@ -7982,7 +7982,7 @@ dev-python/ntplib 0.3.3: Python NTP library
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0 0.30.0 0.30.1: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.6.1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.2-r1 9999: Fast array and numerical python library
+dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.2-r1 1.12.1 9999: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.5.211-r1 1.9.0_p1 1.9.0_p1-r1: Library for OAuth version 1.0
