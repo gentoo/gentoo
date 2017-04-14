@@ -51,12 +51,14 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v4
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_GTK3
 # @DESCRIPTION:
 # Set this variable before the inherit line, when an ebuild can provide
-# optional gtk3 support via IUSE="gtk3".  Currently this would include
-# ebuilds for firefox, but thunderbird and seamonkey could follow in the future.
+# optional gtk3 support via IUSE="force-gtk3".  Currently this would include
+# thunderbird and seamonkey in the future, once support is ready for testing.
 #
-# Leave the variable UNSET if gtk3 support should not be available.
+# Leave the variable UNSET if gtk3 support should not be optionally available.
 # Set the variable to "enabled" if the use flag should be enabled by default.
 # Set the variable to any value if the use flag should exist but not be default-enabled.
+# If gtk+:3 is to be the standard toolkit, do not use this and instead use
+# MOZCONFIG_OPTIONAL_GTK2ONLY.
 
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_GTK2ONLY
 # @DESCRIPTION:
@@ -93,6 +95,7 @@ RDEPEND=">=app-text/hunspell-1.2:=
 	dev-libs/atk
 	dev-libs/expat
 	>=x11-libs/cairo-1.10[X]
+	>=x11-libs/gtk+-2.18:2
 	x11-libs/gdk-pixbuf
 	>=x11-libs/pango-1.22.0
 	>=media-libs/libpng-1.6.25:0=[apng]
@@ -100,7 +103,8 @@ RDEPEND=">=app-text/hunspell-1.2:=
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-sound/pulseaudio
+		>=media-sound/apulse-0.1.9 ) )
 	virtual/freedesktop-icon-theme
 	dbus? ( >=sys-apps/dbus-0.60
 		>=dev-libs/dbus-glib-0.72 )
@@ -128,25 +132,18 @@ RDEPEND=">=app-text/hunspell-1.2:=
 if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
 	MOZCONFIG_OPTIONAL_GTK2ONLY=
 	if [[ ${MOZCONFIG_OPTIONAL_GTK3} = "enabled" ]]; then
-		IUSE+=" +gtk3"
+		IUSE+=" +force-gtk3"
 	else
-		IUSE+=" gtk3"
+		IUSE+=" force-gtk3"
 	fi
-	RDEPEND+="
-	gtk3? ( >=x11-libs/gtk+-3.4.0:3 )
-	!gtk3? ( >=x11-libs/gtk+-2.18:2 )"
+	RDEPEND+=" force-gtk3? ( >=x11-libs/gtk+-3.4.0:3 )"
 elif [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
 	if [[ ${MOZCONFIG_OPTIONAL_GTK2ONLY} = "enabled" ]]; then
 		IUSE+=" +gtk2"
 	else
 		IUSE+=" gtk2"
 	fi
-	RDEPEND+="
-	gtk2? ( >=x11-libs/gtk+-2.18:2 )
-	!gtk2? ( >=x11-libs/gtk+-3.4.0:3 )"
-else
-	RDEPEND+="
-		>=x11-libs/gtk+-2.18:2"
+	RDEPEND+=" !gtk2? ( >=x11-libs/gtk+-3.4.0:3 )"
 fi
 if [[ -n ${MOZCONFIG_OPTIONAL_WIFI} ]]; then
 	if [[ ${MOZCONFIG_OPTIONAL_WIFI} = "enabled" ]]; then
@@ -166,9 +163,12 @@ DEPEND="app-arch/zip
 	app-arch/unzip
 	>=sys-devel/binutils-2.16.1
 	sys-apps/findutils
+	pulseaudio? ( media-sound/pulseaudio )
 	${RDEPEND}"
 
 RDEPEND+="
+	pulseaudio? ( || ( media-sound/pulseaudio
+		>=media-sound/apulse-0.1.9 ) )
 	selinux? ( sec-policy/selinux-mozilla )"
 
 # @FUNCTION: mozconfig_config
@@ -248,9 +248,15 @@ mozconfig_config() {
 	mozconfig_annotate 'Gentoo default' --with-system-png
 	mozconfig_annotate '' --enable-system-ffi
 	mozconfig_annotate 'Gentoo default to honor system linker' --disable-gold
-	mozconfig_annotate '' --enable-skia
 	mozconfig_annotate '' --disable-gconf
 	mozconfig_annotate '' --with-intl-api
+
+	# skia has no support for big-endian platforms
+	if [[ $(tc-endian) == "big" ]]; then
+		mozconfig_annotate 'big endian target' --disable-skia
+	else
+		mozconfig_annotate '' --enable-skia
+	fi
 
 	# default toolkit is cairo-gtk2, optional use flags can change this
 	local toolkit="cairo-gtk2"
@@ -322,6 +328,9 @@ mozconfig_config() {
 	fi
 	if [[ ${CHOST} == armv* ]] ; then
 		mozconfig_annotate '' --with-float-abi=hard
+		if ! use skia ; then
+			mozconfig_annotate 'Gentoo forces skia for arm' --enable-skia
+		fi
 
 		if ! use system-libvpx ; then
 			sed -i -e "s|softfp|hard|" \
@@ -367,6 +376,14 @@ mozconfig_install_prefs() {
 	# force the graphite pref if system-harfbuzz is enabled, since the pref cant disable it
 	if use system-harfbuzz ; then
 		echo "sticky_pref(\"gfx.font_rendering.graphite.enabled\",true);" \
+			>>"${prefs_file}" || die
+	fi
+
+	# force cairo as the canvas renderer on platforms without skia support
+	if [[ $(tc-endian) == "big" ]] ; then
+		echo "sticky_pref(\"gfx.canvas.azure.backends\",\"cairo\");" \
+			>>"${prefs_file}" || die
+		echo "sticky_pref(\"gfx.content.azure.backends\",\"cairo\");" \
 			>>"${prefs_file}" || die
 	fi
 }
