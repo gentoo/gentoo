@@ -7,39 +7,39 @@ index 3113471..dd7a320 100644
  
  $(BIN)/AquaWhat:    AquaWhat.o $(OBJECTS) $(R_OBJECTS) $(RNG_OBJECTS)
 -	$(CC) -o $(BIN)/AquaWhat AquaWhat.o $(OBJECTS) $(R_OBJECTS) $(RNG_OBJECTS) $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaWhat AquaWhat.o $(OBJECTS) $(R_OBJECTS) $(RNG_OBJECTS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaWhat AquaWhat.o $(OBJECTS) $(R_OBJECTS) $(RNG_OBJECTS)
  
  $(BIN)/AquaHow:	    AquaHow.o $(OBJECTS) $(R_OBJECTS) AquaFuncts_dr.o $(RNG_OBJECTS)
 -	$(CC) -o $(BIN)/AquaHow AquaHow.o $(OBJECTS) $(R_OBJECTS) AquaFuncts_dr.o $(RNG_OBJECTS) $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaHow AquaHow.o $(OBJECTS) $(R_OBJECTS) AquaFuncts_dr.o $(RNG_OBJECTS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaHow AquaHow.o $(OBJECTS) $(R_OBJECTS) AquaFuncts_dr.o $(RNG_OBJECTS)
  
  $(BIN)/AquaPseudo:  AquaPseudo.o $(OBJECTS) $(R_OBJECTS) 
 -	$(CC) -o $(BIN)/AquaPseudo AquaPseudo.o $(OBJECTS) $(R_OBJECTS) $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaPseudo AquaPseudo.o $(OBJECTS) $(R_OBJECTS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaPseudo AquaPseudo.o $(OBJECTS) $(R_OBJECTS)
  
  $(BIN)/AquaDist:    AquaDist.o $(OBJECTS) 
 -	$(CC) -o $(BIN)/AquaDist AquaDist.o $(OBJECTS) $(LDFLAGS) -lm
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaDist AquaDist.o $(OBJECTS) -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaDist AquaDist.o $(OBJECTS) -lm
  
  $(BIN)/AquaCalc:    AquaCalc.o $(OBJECTS) $(RNG_OBJECTS)
 -	$(CC) -o $(BIN)/AquaCalc AquaCalc.o $(OBJECTS) $(RNG_OBJECTS) $(LDFLAGS) -lm
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaCalc AquaCalc.o $(OBJECTS) $(RNG_OBJECTS) -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaCalc AquaCalc.o $(OBJECTS) $(RNG_OBJECTS) -lm
  
  $(BIN)/AquaAssign:  AquaAssign.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS)
 -	$(CC) -o $(BIN)/AquaAssign AquaAssign.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS) $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaAssign AquaAssign.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaAssign AquaAssign.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS)
  
  $(BIN)/AquaCompl:  AquaCompl.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS) 
 -	$(CC) -o $(BIN)/AquaCompl AquaCompl.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS) $(LDFLAGS) -lm  
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaCompl AquaCompl.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS) -lm  
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaCompl AquaCompl.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS) -lm
  
  $(BIN)/AquaRedun:  AquaRedun.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS) 
 -	$(CC) -o $(BIN)/AquaRedun AquaRedun.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS) $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaRedun AquaRedun.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaRedun AquaRedun.o AquaCommon.o $(OBJECTS) $(R_OBJECTS) nrutil.o AquaFuncts_dr.o $(RNG_OBJECTS)
  
  $(BIN)/testnew:	    testnew.o $(OBJECTS)
 -	$(CC) -o $(BIN)/testnew testnew.o $(OBJECTS) $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/testnew testnew.o $(OBJECTS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/testnew testnew.o $(OBJECTS)
  
  $(BIN)/getproj:    getproj.c 
 -	$(CC) -o $(BIN)/getproj -O getproj.c
@@ -47,20 +47,20 @@ index 3113471..dd7a320 100644
  
  $(BIN)/AquaPlot:    AquaPlot.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o
 -	$(CC) -o $(BIN)/AquaPlot AquaPlot.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/AquaPlot AquaPlot.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/AquaPlot AquaPlot.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o
  
  $(BIN)/Qext:	   Qext.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o
 -	$(CC) -o $(BIN)/Qext Qext.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o $(LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/Qext Qext.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/Qext Qext.o $(LIB)/MenuFuncts.o $(LIB)/Functs.o
  
  $(BIN)/StarTest:	StarTest.o
 -	$(CC) -o $(BIN)/StarTest StarTest.o $(LDFLAGS) $(STARFLAGS) $(STARLIBS)
-+	$(CC) $(LDFLAGS) -o $(BIN)/StarTest StarTest.o $(STARFLAGS) $(STARLIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BIN)/StarTest StarTest.o $(STARFLAGS) $(STARLIBS)
  
  exth:		exth.f
 -	f77 -o exth -O2 exth.f
 -	strip exth
-+	$(FC) $(FFLAGS) -o exth -O2 exth.f
++	$(FC) $(FFLAGS) $(LDFLAGS) -o exth -O2 exth.f
  
  
  # Object files
