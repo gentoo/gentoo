@@ -17542,7 +17542,7 @@ sys-devel/lld 4.0.0 9999: The LLVM linker (link editor)
 sys-devel/llvm 3.4.2-r100 3.5.2 3.6.2 3.7.1-r3 3.8.1 3.8.1-r2 3.9.0-r1 3.9.1 3.9.1-r1 4.0.0-r1 9999: Low Level Virtual Machine
 sys-devel/llvmgold 4 5: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18: GNU macro processor
-sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2.1: Standard tool to compile source trees
+sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2.1-r1: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 4: Host OS native assembler as and static linker ld
 sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
