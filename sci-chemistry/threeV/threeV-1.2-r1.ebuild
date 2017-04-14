@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="3V: Voss Volume Voxelator"
 HOMEPAGE="http://geometry.molmovdb.org/3v/"
@@ -19,15 +19,22 @@ PDEPEND="sci-chemistry/msms-bin"
 
 S="${WORKDIR}/3v-${PV}/src"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-format-security.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-gentoo.patch
+	default
 	tc-export CXX
-	emake distclean || die
+	emake distclean
+
+	export MAKEOPTS+=" V=1"
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install || die
+	emake DESTDIR="${ED}" install
 
-	cd ..
-	dodoc AUTHORS ChangeLog QUICKSTART README TODO VERSION || die
+	cd .. || die
+	dodoc AUTHORS ChangeLog QUICKSTART README TODO VERSION
 }
