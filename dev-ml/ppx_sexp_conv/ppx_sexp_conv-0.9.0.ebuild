@@ -17,6 +17,7 @@ DEPEND="
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_type_conv:=
 	dev-ml/ppx_metaquot:=
+	dev-ml/ppx_optcomp:=
 	dev-ml/sexplib:=
 	dev-ml/ocaml-migrate-parsetree:=
 	"
