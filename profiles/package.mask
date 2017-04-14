@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (14 Apr 2017)
+# Masked for removal in 30 days. Dead upstream since
+# KDELibs 4 port several years ago. Repository gone.
+# Superseded by gwenview and okular. Fails to build
+# with gcc 6 (bug #614304).
+media-gfx/kuickshow
+
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Masked for testing
 virtual/wine
