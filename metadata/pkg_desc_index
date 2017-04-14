@@ -7591,7 +7591,7 @@ dev-python/fabric 1.10.0-r1 1.10.1 1.10.2-r1 1.11.1 1.12.0: A simple pythonic to
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0 0.14.1: Python package that provides useful locks
 dev-python/fdsend 0.1: flexible file descriptor passing
-dev-python/fedmsg 0.18.1 0.18.2-r1: Fedora Messaging Client API
+dev-python/fedmsg 0.18.1 0.18.2-r1 0.18.3: Fedora Messaging Client API
 dev-python/feedgenerator 1.6 1.7 1.8 1.9: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.1.3-r2 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
