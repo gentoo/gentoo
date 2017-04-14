@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils fortran-2 toolchain-funcs
+inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="Program suite in this distribution calculates restraint violations"
 HOMEPAGE="http://www.biochem.ucl.ac.uk/~roman/procheck/procheck.html"
@@ -17,11 +17,15 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="sci-chemistry/procheck"
-DEPEND=""
+DEPEND="app-shells/tcsh"
 
 RESTRICT="fetch"
 
 S="${WORKDIR}"/${PN}${PV}
+
+PATCHES=(
+	"${FILESDIR}"/${P}-flags.patch
+)
 
 pkg_nofetch() {
 	elog "Please visit http://www.ebi.ac.uk/thornton-srv/software/PROCHECK/download.html"
@@ -37,11 +41,11 @@ src_prepare() {
 		-e "s:/bin/gawk:${EPREFIX}/usr/bin/gawk:g" \
 		-e "s:/usr/local/bin/perl:${EPREFIX}/usr/bin/perl:g" \
 		-i $(find . -type f) || die
-	epatch "${FILESDIR}"/${PV}-flags.patch
+	default
 }
 
 src_compile() {
-	pushd src > /dev/null
+	cd src || die
 	emake \
 		MYROOT="${WORKDIR}" \
 		CC="$(tc-getCC)" \
@@ -57,7 +61,6 @@ src_compile() {
 		CFLAGS="${CFLAGS} -I../sub/lib" \
 		FFLAGS="${FFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
-	popd
 }
 
 src_install() {
