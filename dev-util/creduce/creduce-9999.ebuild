@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,7 +13,7 @@ DESCRIPTION="C-Reduce - a plugin-based C program reducer"
 HOMEPAGE="http://embed.cs.utah.edu/creduce/"
 SRC_URI=""
 
-LICENSE="creduce"
+LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
