@@ -9,5 +9,5 @@ RDEPEND=dev-db/sqlite:3
 SLOT=0
 SRC_URI=https://sunpinyin.googlecode.com/files/sunpinyin-2.0.3.tar.gz https://open-gram.googlecode.com/files/dict.utf8.tar.bz2 https://open-gram.googlecode.com/files/lm_sc.t3g.arpa.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=dff40efa33e09b5c86667caf31d409ea

@@ -8,5 +8,5 @@ LICENSE=ZLIB
 RDEPEND=>=dev-libs/glib-2.28 >=x11-libs/gtk+-3.4:3 !<dev-libs/girara-0.1.6 libnotify? ( >=x11-libs/libnotify-0.7 )
 SLOT=3
 _eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	virtualx	171580f737f5aaf18fcb456548588066
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	virtualx	171580f737f5aaf18fcb456548588066
 _md5_=7a52052b108fa730151c68ea25640707

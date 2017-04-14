@@ -10,5 +10,5 @@ RDEPEND=>=sys-fs/fuse-2.8.0 >=net-misc/curl-7.22.0 dev-libs/boost:= >=net-libs/l
 SLOT=0
 SRC_URI=https://github.com/johang/btfs/archive/v2.11.tar.gz -> btfs-2.11.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multibuild	f2f24d4e28bce643f56a6e1e57b82a66	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=25ed429706869f310732c07ad8623d33

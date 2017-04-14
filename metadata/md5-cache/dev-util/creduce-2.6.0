@@ -4,10 +4,10 @@ DESCRIPTION=C-Reduce - a plugin-based C program reducer
 EAPI=6
 HOMEPAGE=http://embed.cs.utah.edu/creduce/
 KEYWORDS=~amd64 ~x86
-LICENSE=creduce
+LICENSE=UoI-NCSA
 RDEPEND=>=dev-lang/perl-5.10.0 =sys-devel/clang-3.9* dev-perl/Benchmark-Timer dev-perl/Exporter-Lite dev-perl/File-Which dev-perl/Getopt-Tabular dev-perl/Regexp-Common dev-perl/Sys-CPU dev-util/astyle dev-util/indent
 SLOT=0
 SRC_URI=http://embed.cs.utah.edu/creduce/creduce-2.6.0.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=ab99399c5e06bcef9afc6a357d70e908
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=2f2fd49c3a100521e76d2e08a302ebe7

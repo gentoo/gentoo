@@ -9,5 +9,5 @@ RDEPEND=bluetooth? ( sys-firmware/iwl3160-7260-bt-ucode ) !sys-kernel/linux-firm
 SLOT=16
 SRC_URI=https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-7260-ucode-16.242414.0.tgz -> iwl7260-ucode-0.16.242414.tgz
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:linux-info src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=80eaf1d50670511dab8ab70bd5b663e8

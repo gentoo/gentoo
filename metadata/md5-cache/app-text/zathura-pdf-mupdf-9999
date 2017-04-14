@@ -7,5 +7,5 @@ LICENSE=ZLIB
 RDEPEND=!app-text/zathura-pdf-poppler >=app-text/mupdf-1.10a:= >=app-text/zathura-0.3.1 media-libs/jbig2dec:= media-libs/openjpeg:2= virtual/jpeg:0 x11-libs/cairo:=
 SLOT=0
 _eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_compile:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=65f43ab2bcb873f1d747c857e2ce2490
