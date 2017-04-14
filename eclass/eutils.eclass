@@ -275,13 +275,11 @@ make_desktop_entry() {
 	# Don't append another ";" when a valid category value is provided.
 	type=${type%;}${type:+;}
 
-	eshopts_push -s extglob
 	if [[ -n ${icon} && ${icon} != /* ]] && [[ ${icon} == *.xpm || ${icon} == *.png || ${icon} == *.svg ]]; then
 		ewarn "As described in the Icon Theme Specification, icon file extensions are not"
 		ewarn "allowed in .desktop files if the value is not an absolute path."
-		icon=${icon%.@(xpm|png|svg)}
+		icon=${icon%.*}
 	fi
-	eshopts_pop
 
 	cat <<-EOF > "${desktop}"
 	[Desktop Entry]
