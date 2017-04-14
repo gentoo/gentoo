@@ -6664,7 +6664,7 @@ dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
 dev-perl/Test-Regexp 2017040101.0.0: Provide commonly requested regular expressions
 dev-perl/Test-Requires 0.60.0-r1 0.100.0: Checks to see if the module can be loaded
 dev-perl/Test-RequiresInternet 0.50.0: Easily test network connectivity
-dev-perl/Test-Script 1.70.0-r1 1.100.0 1.120.0: Cross-platform basic tests for scripts
+dev-perl/Test-Script 1.100.0 1.120.0 1.180.0: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.210.0-r1 0.330.0 0.350.0: fork test
 dev-perl/Test-Spec 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
