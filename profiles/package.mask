@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (14 Apr 2017)
+# Outdated and stuck behind a temperamental registration wall that I
+# have lost my patience with. Removal in 30 days if no one cares
+# enough to pick it up.
+dev-java/jdbc-oracle-bin
+
+# James Le Cuirot <chewi@gentoo.org> (14 Apr 2017)
+# Ancient, unused by anything, fetch restricted. Removal in 30 days.
+dev-java/sun-j2ee-deployment-bin
+
 # Johannes Huber <johu@gentoo.org> (14 Apr 2017)
 # Masked for removal in 30 days. Dead upstream since
 # KDELibs 4 port several years ago. Repository gone.
