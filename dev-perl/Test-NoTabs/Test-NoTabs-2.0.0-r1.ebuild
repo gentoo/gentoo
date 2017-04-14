@@ -1,10 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=ETHER
-MODULE_VERSION=2.00
+DIST_AUTHOR=ETHER
+DIST_VERSION=2.00
 
 inherit perl-module
 
@@ -14,4 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
-SRC_TEST="do"
+RDEPEND="
+	virtual/perl-File-Spec
+	virtual/perl-Test-Simple
+"
+DEPEND="${RDEPEND}
+	virtual/perl-ExtUtils-MakeMaker
+	test? (
+		virtual/perl-File-Temp
+	)
+"
