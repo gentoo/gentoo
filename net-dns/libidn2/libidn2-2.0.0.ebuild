@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic multilib-minimal
+inherit eutils flag-o-matic multilib-minimal
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2 https://gitlab.com/jas/libidn2"
 SRC_URI="
-	mirror://gnu-alpha/libidn/${P}.tar.gz
+	mirror://gnu-alpha/libidn/${P}.tar.xz
 "
 
 LICENSE="GPL-2+ LGPL-3+"
@@ -24,14 +24,6 @@ DEPEND="
 	sys-apps/help2man
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.12-Werror.patch
-	"${FILESDIR}"/${PN}-0.12-examples.patch
-	"${FILESDIR}"/${PN}-0.16-gengetopt.patch
-	"${FILESDIR}"/${PN}-0.16-cross.patch
-	"${FILESDIR}"/${PN}-pkgconfig.diff
-)
-
 src_prepare() {
 	default
 
@@ -40,8 +32,6 @@ src_prepare() {
 		sed -i -e '/#include "error\.h"/d' src/idn2.c || die
 		append-cppflags -D'error\(E,...\)=exit\(E\)'
 	fi
-
-	eautoreconf
 
 	multilib_copy_sources
 }
@@ -54,6 +44,8 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
+
+	rm "${D}"/usr/bin/idn2_noinstall || die
 
 	prune_libtool_files
 }

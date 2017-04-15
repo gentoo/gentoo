@@ -10,7 +10,7 @@ DESCRIPTION="PEAR Base System"
 HOMEPAGE="http://pear.php.net/package/${MY_PN}"
 SRC_URI="http://pear.php.net/get/${MY_P}.tgz"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~hppa"
 SLOT="0"
 IUSE=""
 
