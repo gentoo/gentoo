@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=app-text/hunspell:= app-text/poppler[qt5] >=dev-libs/quazip-0.7.2[qt5] dev-qt/designer:5 dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsingleapplication[qt5,X] dev-qt/qtsvg:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib x11-libs/libX11 x11-libs/libXext video? ( media-libs/phonon[qt5] ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Free cross-platform LaTeX editor (fork from texmakerX)
+EAPI=6
+HOMEPAGE=http://texstudio.sourceforge.net/
+IUSE=video
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=app-text/hunspell:= app-text/poppler[qt5] >=dev-libs/quazip-0.7.2[qt5] dev-qt/designer:5 dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsingleapplication[qt5,X] dev-qt/qtsvg:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib x11-libs/libX11 x11-libs/libXext video? ( media-libs/phonon[qt5] ) app-text/ghostscript-gpl app-text/psutils media-libs/netpbm virtual/latex-base
+SLOT=0
+SRC_URI=mirror://sourceforge/texstudio/texstudio/TeXstudio%202.12.4/texstudio-2.12.4.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	6d2af8c7ab84825693c3f065a37b923c	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	prefix	df8265631f8bf5f5df387e9b987121f9	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=e53af1befb1b52f44d7fbefb3c5ebc46
