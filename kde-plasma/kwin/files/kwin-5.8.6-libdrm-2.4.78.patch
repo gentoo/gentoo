@@ -1,0 +1,44 @@
+commit 4ca3d0d94370002430b5131520a11c06b23bdcaa
+Author: Martin Gräßlin <mgraesslin@kde.org>
+Date:   Mon Apr 10 06:52:44 2017 +0200
+
+    [platforms/drm] Explicitly request event context version 2
+    
+    Summary:
+    Libdrm 2.4.78 introduces a version 2 and if KWin gets built against it
+    our code would break. Given that this change is for Plasma/5.8 branch.
+    
+    Closes T5839
+    
+    Reviewers: #kwin, #plasma
+    
+    Subscribers: plasma-devel, kwin
+    
+    Tags: #kwin
+    
+    Maniphest Tasks: T5839
+    
+    Differential Revision: https://phabricator.kde.org/D5380
+
+diff --git a/plugins/platforms/drm/drm_backend.cpp b/plugins/platforms/drm/drm_backend.cpp
+index dc2b79696..9e9cb60e1 100644
+--- a/plugins/platforms/drm/drm_backend.cpp
++++ b/plugins/platforms/drm/drm_backend.cpp
+@@ -61,6 +61,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #define DRM_CAP_CURSOR_HEIGHT 0x9
+ #endif
+ 
++#define KWIN_DRM_EVENT_CONTEXT_VERSION 2
++
+ namespace KWin
+ {
+ 
+@@ -240,7 +242,7 @@ void DrmBackend::openDrm()
+             }
+             drmEventContext e;
+             memset(&e, 0, sizeof e);
+-            e.version = DRM_EVENT_CONTEXT_VERSION;
++            e.version = KWIN_DRM_EVENT_CONTEXT_VERSION;
+             e.page_flip_handler = pageFlipHandler;
+             drmHandleEvent(m_fd, &e);
+         }
