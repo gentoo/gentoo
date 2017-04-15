@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Thread-Queue
 EAPI=6
-KEYWORDS=~alpha ~amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86
 RDEPEND=|| ( =dev-lang/perl-5.24* ~perl-core/Thread-Queue-3.90.0 ) dev-lang/perl:= !<perl-core/Thread-Queue-3.90.0 !>perl-core/Thread-Queue-3.90.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=85fdf17d2559aa07beaa1b15da772329
+_md5_=a9bc48c5d35189802b7ef702aeec0460
