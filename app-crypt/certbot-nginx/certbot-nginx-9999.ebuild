@@ -9,7 +9,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	S=${WORKDIR}/${P}/${PN}
 else
-	SRC_URI="https://github.com/${PN%-nginx}/${PN%-nginx}/archive/v${PV}.tar.gz -> ${PN%-ngin}-${PV}.tar.gz"
+	SRC_URI="https://github.com/${PN%-nginx}/${PN%-nginx}/archive/v${PV}.tar.gz -> ${PN%-nginx}-${PV}.tar.gz"
 	KEYWORDS="~amd64"
 	S=${WORKDIR}/${PN%-nginx}-${PV}/${PN}
 fi
@@ -29,6 +29,6 @@ RDEPEND="${CDEPEND}
 	~app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
-	dev-python/pyparsing[${PYTHON_USEDEP}]
+	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}"
