@@ -76,6 +76,7 @@ RDEPEND="server? ( !dev-util/gdbserver )
 	)"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
+	sys-apps/texinfo
 	client? (
 		virtual/yacc
 		test? ( dev-util/dejagnu )
