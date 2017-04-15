@@ -16,7 +16,6 @@ IUSE="+regex doc"
 
 RDEPEND="
 	sys-libs/ncurses:0=[unicode]
-	dev-libs/glib:2
 	media-libs/libmpdclient
 "
 DEPEND="
