@@ -9,5 +9,5 @@ RDEPEND=dev-vcs/git dev-vcs/mercurial python_targets_python2_7? ( >=dev-lang/pyt
 SLOT=0
 SRC_URI=https://github.com/frej/fast-export/archive/v160914.tar.gz -> hg-fast-export-160914.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_install:-
-_eclasses_=multibuild	f2f24d4e28bce643f56a6e1e57b82a66	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
 _md5_=79ecf4b3772990cd65dfffb1a1da88fc
