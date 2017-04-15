@@ -3,7 +3,6 @@
 
 EAPI=6
 
-KDE_GCC_MINIMAL="4.8"
 KDE_HANDBOOK="optional"
 KDE_TEST="optional"
 VIRTUALX_REQUIRED="test"
@@ -11,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="KDE window manager"
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gles2 multimedia"
 
 # drop qtcore subslot operator when QT_MINIMAL >= 5.7.0
@@ -50,7 +49,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtscript)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
-	>=dev-libs/libinput-1.2
+	>=dev-libs/libinput-1.5
 	>=dev-libs/wayland-1.2
 	media-libs/fontconfig
 	media-libs/freetype
@@ -63,7 +62,7 @@ COMMON_DEPEND="
 	x11-libs/libXi
 	x11-libs/libdrm
 	>=x11-libs/libxcb-1.10
-	>=x11-libs/libxkbcommon-0.5.0
+	>=x11-libs/libxkbcommon-0.7.0
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
@@ -89,7 +88,7 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-libdrm-2.4.78.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.8.6-libdrm-2.4.78.patch" )
 
 src_prepare() {
 	kde5_src_prepare
