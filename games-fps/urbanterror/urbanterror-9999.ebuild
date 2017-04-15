@@ -12,14 +12,15 @@ EGIT_BRANCH="urt"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+altgamma +curl debug dedicated mumble openal +opus server +sdl voip vorbis"
-PATCHES=(
-	"${FILESDIR}"/${P}-respect_CFLAGS.patch
-)
+IUSE="+altgamma +client +curl debug mumble openal +opus server +sdl voip vorbis"
+REQUIRED_USE=" || ( client server )"
+
+PATCHES=( "${FILESDIR}"/${P}-respect_CFLAGS.patch )
+
 RDEPEND="
-	!dedicated? (
+	curl? ( net-misc/curl )
+	client? (
 		virtual/opengl
-		curl? ( net-misc/curl )
 		openal? ( media-libs/openal )
 		sdl? ( media-libs/libsdl[X,sound,joystick,opengl,video] )
 		!sdl? ( x11-libs/libX11
@@ -33,12 +34,11 @@ RDEPEND="
 		)
 	~games-fps/urbanterror-data-4.3.2
 	sys-libs/zlib[minizip]"
-DEPEND="${RDEPEND}
-	dedicated? ( curl? ( net-misc/curl ) )"
+DEPEND="${RDEPEND}"
 
 pkg_pretend() {
-	if ! use dedicated ; then
-		if ! use openal && ! use opus && ! use vorbis ; then
+	if use client; then
+		if ! use openal && ! use opus && ! use vorbis; then
 			ewarn
 			ewarn "Sound support disabled. Enable 'openal' or 'opus' or 'vorbis' useflag."
 			ewarn
@@ -54,8 +54,8 @@ src_compile() {
 	emake \
 		ARCH=$(usex amd64 "x86_64" "i386") \
 		DEFAULT_BASEDIR="/usr/share/urbanterror" \
-		BUILD_CLIENT=$(nobuildit dedicated) \
-		BUILD_SERVER=$(usex dedicated "1" "$(buildit server)") \
+		BUILD_CLIENT=$(buildit client) \
+		BUILD_SERVER=$(buildit server) \
 		BUILD_BASEGAME=1 \
 		BUILD_MISSIONPACK=0 \
 		BUILD_GAME_SO=0 \
@@ -87,25 +87,26 @@ src_install() {
 	# docs from ioq3, not from UrbanTerror ZIP file
 	dodoc ChangeLog README.md README.ioq3.md md4-readme.txt
 
-	if use !dedicated ; then
+	if use client; then
 		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT.${my_arch} ${PN}
 		# Shooter as defined in https://specifications.freedesktop.org/menu-spec/latest/apas02.html
 		make_desktop_entry ${PN} "UrbanTerror" ${PN} Games;Shooter
 	fi
 
-	if use dedicated || use server ; then
-		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT-Ded.${my_arch} ${PN}-dedicated
+	# means: dedicated server only
+	if use server && ! use client; then
+		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT-Ded.${my_arch} ${PN}-ded
 	fi
 }
 pkg_preinst() {
-	use dedicated || gnome2_icon_savelist
+	use client && gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	use dedicated || gnome2_icon_cache_update
+	use client && gnome2_icon_cache_update
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
-		if use openal && ! use dedicated ; then
+		if use openal; then
 			einfo
 			elog "You might need to set:"
 			elog "  seta s_useopenal \"1\""
@@ -127,9 +128,16 @@ pkg_postinst() {
 			elog "https://bugs.freedesktop.org/show_bug.cgi?id=27222"
 			einfo
 		fi
+		if ! use client; then
+			einfo
+			elog "You disabled client support. You won't be able to connect"
+			elog "to any servers and play. If you want to do so, enable"
+			elog "USE=\"client\"."
+			einfo
+		fi
 	fi
 }
 
 pkg_postrm() {
-	use dedicated || gnome2_icon_cache_update
+	use client && gnome2_icon_cache_update
 }

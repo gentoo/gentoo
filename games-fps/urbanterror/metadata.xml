@@ -15,11 +15,11 @@
 	</maintainer>
 	<use>
 		<flag name="altgamma">Alternative way for gamma setting with modesetting driver</flag>
-		<flag name="dedicated">Build only server target - dedicated to hosting a server</flag>
+		<flag name="client">Build binary for client (includes code for non-dedicated server)</flag>
 		<flag name="opus">Use opus as sound codec</flag>
-		<flag name="mumble">Use Mumble for in-game VoIP (experimental)</flag>
+		<flag name="mumble">Use Mumble for ingame VoIP (experimental)</flag>
 		<flag name="voip">Use ioq3 ingame VoIP (experimental)</flag>
-		<flag name="server">Build server target</flag>
+		<flag name="server">Build binary for dedicated server</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Barbatos/ioq3-for-UrbanTerror-4</remote-id>
