@@ -39,7 +39,7 @@ QT_PV="4.8.5:4"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/shiboken-${PV}[${PYTHON_USEDEP}]
-	>=dev-qt/qtcore-${QT_PV}
+	>=dev-qt/qtcore-${QT_PV}[ssl]
 	X? (
 		>=dev-qt/qtgui-${QT_PV}[accessibility]
 		>=dev-qt/qttest-${QT_PV}
