@@ -22,7 +22,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-qt/qtcore:4
-	>=dev-libs/qjson-0.5"
+	>=dev-libs/qjson-0.5[qt4(+)]"
 DEPEND="${RDEPEND}
 	dev-qt/qttest:4
 	virtual/pkgconfig"

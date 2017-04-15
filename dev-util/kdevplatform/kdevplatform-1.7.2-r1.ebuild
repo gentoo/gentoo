@@ -24,7 +24,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	dev-libs/grantlee:0
-	reviewboard? ( dev-libs/qjson )
+	reviewboard? ( dev-libs/qjson[qt4(+)] )
 	subversion? (
 		dev-libs/apr
 		dev-libs/apr-util

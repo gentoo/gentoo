@@ -30,7 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-qt/qtcore-4.7:4
 		>=dev-qt/qtgui-4.7:4
 		>=dev-qt/qtwebkit-4.7:4
-		>=dev-libs/qjson-0.5
+		>=dev-libs/qjson-0.5[qt4(+)]
 	)"
 DEPEND="${RDEPEND}"
 

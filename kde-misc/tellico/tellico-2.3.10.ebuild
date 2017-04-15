@@ -22,7 +22,7 @@ IUSE="addressbook cddb debug pdf scanner taglib v4l xmp yaz"
 RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 	dev-qt/qtdbus:4
 	media-libs/qimageblitz
 	addressbook? ( $(add_kdeapps_dep kdepimlibs) )

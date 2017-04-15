@@ -17,6 +17,6 @@ IUSE="debug"
 
 DEPEND="
 	$(add_kdeapps_dep kdepimlibs '' 4.14)
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 "
 RDEPEND="${DEPEND}"

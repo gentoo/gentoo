@@ -26,7 +26,7 @@ DEPEND="
 	dev-libs/libgpg-error
 	>=dev-libs/libical-0.48-r2:=
 	dev-libs/cyrus-sasl
-	>=dev-libs/qjson-0.8.1
+	>=dev-libs/qjson-0.8.1[qt4(+)]
 	kde-apps/akonadi:4
 	media-libs/phonon[qt4]
 	x11-misc/shared-mime-info

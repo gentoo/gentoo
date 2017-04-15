@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	>=app-crypt/qca-2.1.0.3:2[qt4,ssl]
-	dev-libs/qjson
+	dev-libs/qjson[qt4(+)]
 	dev-libs/qoauth:0
 	dev-qt/qtcore:4[ssl]
 	dev-qt/qtdbus:4
