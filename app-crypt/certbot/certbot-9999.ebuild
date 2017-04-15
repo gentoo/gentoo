@@ -47,6 +47,11 @@ DEPEND="
 		dev-python/wheel[${PYTHON_USEDEP}]
 	)"
 
+python_prepare_all() {
+	sed -i -e "/'argparse',/d" setup.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	nosetests -v ${PN} || die
 }
