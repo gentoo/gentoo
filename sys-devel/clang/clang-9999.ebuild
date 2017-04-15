@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
+inherit cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
 	python-single-r1 toolchain-funcs pax-utils versionator
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -74,38 +74,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
-check_space() {
-	local build_size=650
-
-	if use debug; then
-		ewarn "USE=debug is known to increase the size of package considerably"
-		ewarn "and cause the tests to fail."
-		ewarn
-
-		(( build_size *= 14 ))
-	elif is-flagq '-g?(gdb)?([1-9])'; then
-		ewarn "The C++ compiler -g option is known to increase the size of the package"
-		ewarn "considerably. If you run out of space, please consider removing it."
-		ewarn
-
-		(( build_size *= 10 ))
-	fi
-
-	# Multiply by number of ABIs :).
-	local abis=( $(multilib_get_enabled_abis) )
-	(( build_size *= ${#abis[@]} ))
-
-	local CHECKREQS_DISK_BUILD=${build_size}M
-	check-reqs_pkg_pretend
-}
-
-pkg_pretend() {
-	check_space
-}
-
 pkg_setup() {
-	check_space
-
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
