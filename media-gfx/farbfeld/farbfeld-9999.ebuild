@@ -33,10 +33,6 @@ src_prepare() {
 		-e 's|^LDFLAGS.*|LDFLAGS += $(LIBS)|g' \
 		-e 's|{|(|g;s|}|)|g' \
 		config.mk || die
-
-	sed -i \
-		-e '/[a-z]-LDFLAGS/s| = | += |g' \
-		Makefile || die
 }
 
 src_compile() {
