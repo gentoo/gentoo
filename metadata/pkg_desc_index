@@ -4558,7 +4558,7 @@ dev-lang/nim 0.14.2 0.15.0-r1 0.15.2 0.16.0: compiled, garbage-collected systems
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.10 2016.11 2016.12 2017.01 2017.02 2017.03 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
-dev-lang/ocaml 4.04.0 4.05.0_beta3: Type-inferring functional programming language descended from the ML family
+dev-lang/ocaml 4.04.0 4.04.1 4.05.0_beta3: Type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
