@@ -6182,7 +6182,7 @@ dev-perl/Math-BigInt-Lite 0.140.0: What BigInts are before they become big
 dev-perl/Math-CDF 0.100.0: Generate probabilities and quantiles from statistical functions
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 0.40.0: 1st and 2nd order differentiation of data
-dev-perl/Math-FFT 1.280.0 1.340.0: Perl module to calculate Fast Fourier Transforms
+dev-perl/Math-FFT 1.340.0: Perl module to calculate Fast Fourier Transforms
 dev-perl/Math-Factor-XS 0.400.0: Factorize numbers and calculate matching multiplications
 dev-perl/Math-GMP 2.60.0-r1 2.110.0: High speed arbitrary size integer math
 dev-perl/Math-Libm 1.0.0: wrapper to libm functions
