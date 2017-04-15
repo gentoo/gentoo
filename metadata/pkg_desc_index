@@ -18729,7 +18729,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.8.11 0.9.4 0.9.5: Desktop agnostic launcher
+x11-misc/albert 0.8.11 0.9.4 0.9.5 0.10.4: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
