@@ -34,7 +34,6 @@ src_prepare() {
 	elog "Set them either in your environment or in /etc/portage/make.conf, then re-emerge"
 	elog "the package. For example:"
 	elog "  VELVET_MAXKMERLENGTH=NN emerge [options] velvet"
-	MAKEOPTS+=" -j1"
 
 	if [[ $(tc-getCC) =~ gcc ]]; then
 		local eopenmp=-fopenmp
@@ -61,12 +60,12 @@ src_prepare() {
 }
 
 src_compile() {
-	emake "${MAKE_XOPTS[@]}"
-	emake "${MAKE_XOPTS[@]}" color
+	emake "${MAKE_XOPTS[@]}" -j1
+	emake "${MAKE_XOPTS[@]}" -j1 color
 }
 
 src_test() {
-	emake "${MAKE_XOPTS[@]}" test
+	emake "${MAKE_XOPTS[@]}" -j1 test
 }
 
 src_install() {
