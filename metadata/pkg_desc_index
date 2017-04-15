@@ -8774,7 +8774,7 @@ dev-python/typing 3.5.2.2 3.5.3.0: Type Hints for Python
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.1 2.3.0: A portable, lightweight MessagePack serializer and deserializer
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
-dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
+dev-python/ujson 1.33 1.35: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.0.1: Python module for calculations with uncertainties
 dev-python/uncompyle6 2.8.3 2.9.6 2.9.7: Python cross-version byte-code deparser
 dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
