@@ -16,6 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND=""
+RDEPEND="dev-python/requests-cache[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}"
