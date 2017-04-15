@@ -510,8 +510,8 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.26: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
-app-crypt/certbot 0.11.1 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.11.1 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.11.1 0.13.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.11.1 0.13.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.11.1 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.2.0_p20170322: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
@@ -12084,7 +12084,7 @@ kde-frameworks/kxmlrpcclient 5.29.0 5.32.0 5.33.0: Framework providing client-si
 kde-frameworks/modemmanager-qt 5.29.0 5.32.0 5.33.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.29.0 5.32.0 5.33.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 4.14.3 5.29.0 5.32.0 5.33.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.29.0 5.32.0-r1 5.33.0: Plasma framework
+kde-frameworks/plasma 5.29.0 5.32.0-r1 5.33.0 5.33.0-r1: Plasma framework
 kde-frameworks/prison 1.1.1 5.29.0 5.32.0 5.33.0: QRCode and data matrix barcode library
 kde-frameworks/solid 5.29.0 5.32.0 5.33.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.29.0 5.32.0 5.33.0: Framework for providing spell-checking through abstraction of popular backends
