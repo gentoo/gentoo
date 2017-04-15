@@ -8791,7 +8791,7 @@ dev-python/utidylib 0.2-r2 0.3: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/uvloop 0.4.20 0.5.3: Ultra-fast implementation of asyncio event loop on top of libuv.
 dev-python/vatnumber 1.1: Module to validate VAT numbers
-dev-python/vcrpy 1.7.4 1.10.3: Automatically mock your HTTP interactions to simplify and speed up testing
+dev-python/vcrpy 1.7.4 1.10.3 1.10.5: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.38 0.1.39 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdirsyncer 0.14.0: Synchronize calendars and contacts
