@@ -88,7 +88,10 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${PN}-5.8.6-libdrm-2.4.78.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.8.6-libdrm-2.4.78.patch"
+	"${FILESDIR}/${P}-glconfig.patch"
+)
 
 src_prepare() {
 	kde5_src_prepare
