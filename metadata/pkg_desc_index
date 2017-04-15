@@ -2192,7 +2192,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.14 3.15: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.14 3.15 3.16: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.22.0 0.23.0 9999: Additional completion definitions for Zsh
@@ -6771,7 +6771,7 @@ dev-perl/UUID 0.250.0 0.260.0: Perl extension for using UUID interfaces as defin
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r1: Client API for the NeuStar UltraDNS Transaction Protocol
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
-dev-perl/Unicode-LineBreak 2016.3.0: UAX #14 Unicode Line Breaking Algorithm
+dev-perl/Unicode-LineBreak 2016.3.0 2017.4.0: UAX #14 Unicode Line Breaking Algorithm
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1: Conversions to and from arbitrary character sets and UTF8
@@ -10278,7 +10278,7 @@ dev-util/docker-ls 0.2.1_p20161102: Tools for browsing and manipulating docker r
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
-dev-util/drone 0.5.0_rc1_p20170310 0.5.0 0.5.0-r1: A Continuous Delivery platform built on Docker, written in Go
+dev-util/drone 0.5.0 0.5.0-r1: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-ui 0_pre20170305 0.5.0: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
