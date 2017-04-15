@@ -2195,7 +2195,7 @@ app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.14 3.15 3.16: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn shell
-app-shells/zsh-completions 0.22.0 0.23.0 9999: Additional completion definitions for Zsh
+app-shells/zsh-completions 0.22.0 0.23.0 0.24.0 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
