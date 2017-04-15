@@ -13558,7 +13558,7 @@ media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
 media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.4.2 2.4.3 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.14: An amateur radio logging program
-media-radio/xwxapt 2.4 2.7: GTK+ linux weather satellite APT image decoder software
+media-radio/xwxapt 2.4 2.7 2.9: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r1: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
