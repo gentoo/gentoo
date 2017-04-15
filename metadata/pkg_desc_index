@@ -8748,7 +8748,7 @@ dev-python/turbocheetah 1.0-r1: TurboGears plugin to support use of Cheetah temp
 dev-python/turbojson 1.3.2-r1: TurboGears JSON file format support plugin
 dev-python/turbokid 1.0.5-r1: Python template plugin that supports Kid templates
 dev-python/turbolift 2.0.5 2.1.3: Openstack Swift sync/backup utility
-dev-python/tvdb_api 1.9 1.10_pre20150406: Python interface to thetvdb.com API
+dev-python/tvdb_api 1.9 1.10_pre20150406-r1: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.3.0 3.5.0: A Python library for accessing the Twitter API
 dev-python/twilio 3.6.9: Helper library for the Twilio API
 dev-python/twill 0.9-r1: Simple scripting language for web browsing with Python API
