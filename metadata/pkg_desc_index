@@ -1323,7 +1323,7 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
-app-emulation/kompose 0.2.0_p20170214 0.3.0 0.5.0: Tool to move from docker-compose to Kubernetes
+app-emulation/kompose 0.5.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.4: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.28.5-r2: Tools for accessing, inspect and modifying virtual machine (VM) disk images
@@ -4753,7 +4753,7 @@ dev-libs/kpathsea 6.2.2_p20160523: Library implementing generic path searching, 
 dev-libs/kproperty 3.0.0 3.0.1: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.0-r1 3.0.1: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 0.9.0 0.9.4 0.10.1 0.10.2 0.11.0 0.11.1 0.12.0: A C++ toolkit
+dev-libs/leatherman 0.9.0 0.9.4 0.10.1 0.10.2 0.11.0 0.11.1 0.11.2 0.12.0: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
 dev-libs/libFuzzer 3.9.1: A fuzzing library distributed as part of LLVM
