@@ -16171,7 +16171,7 @@ sci-electronics/Stage 4.1.1 9999: The Stage Robot Simulator
 sci-electronics/alliance 5.0.20110203: Digital IC design tools (simulation, synthesis, place/route, etc...)
 sci-electronics/balsa 4.0-r1: The Balsa asynchronous synthesis system
 sci-electronics/cirkuit 0.4.3-r1: An application to generate publication-ready figures
-sci-electronics/drawtiming 0.7.1 0.7.1-r1: Command line tool for drawing timing diagrams
+sci-electronics/drawtiming 0.7.1-r1: Command line tool for drawing timing diagrams
 sci-electronics/eagle 7.3.0 7.4.0 7.6.0: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
 sci-electronics/electric 8.09 8.11 9.02 9.03: Complete Electronic Design Automation (EDA) system that can handle many forms of circuit design
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
