@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure postinst prepare setup test
+DEPEND=>=dev-libs/glib-2.40:2 sys-apps/util-linux introspection? ( >=dev-libs/gobject-introspection-1.42 ) libcanberra? ( media-libs/libcanberra ) libnotify? ( x11-libs/gdk-pixbuf:2 ) notification? ( x11-libs/cairo x11-libs/pango x11-libs/gdk-pixbuf:2 X? ( x11-libs/cairo[xcb] x11-libs/libxcb:= x11-libs/xcb-util x11-libs/xcb-util-wm ) ) pulseaudio? ( media-libs/libsndfile media-sound/pulseaudio ) purple? ( net-im/pidgin ) speech? ( app-accessibility/speech-dispatcher ) systemd? ( sys-apps/systemd:= ) upnp? ( net-libs/gssdp:= ) websocket? ( >=net-libs/libsoup-2.50:2.4 ) zeroconf? ( net-dns/avahi[dbus] ) app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt virtual/pkgconfig fbcon? ( virtual/os-headers ) virtual/pkgconfig
+DESCRIPTION=A small daemon to act on remote or local events
+EAPI=6
+HOMEPAGE=https://www.eventd.org/
+IUSE=debug fbcon +introspection ipv6 libcanberra libnotify +notification pulseaudio purple speech systemd test upnp websocket +X zeroconf
+KEYWORDS=~amd64
+LICENSE=GPL-3+ LGPL-3+ MIT
+RDEPEND=>=dev-libs/glib-2.40:2 sys-apps/util-linux introspection? ( >=dev-libs/gobject-introspection-1.42 ) libcanberra? ( media-libs/libcanberra ) libnotify? ( x11-libs/gdk-pixbuf:2 ) notification? ( x11-libs/cairo x11-libs/pango x11-libs/gdk-pixbuf:2 X? ( x11-libs/cairo[xcb] x11-libs/libxcb:= x11-libs/xcb-util x11-libs/xcb-util-wm ) ) pulseaudio? ( media-libs/libsndfile media-sound/pulseaudio ) purple? ( net-im/pidgin ) speech? ( app-accessibility/speech-dispatcher ) systemd? ( sys-apps/systemd:= ) upnp? ( net-libs/gssdp:= ) websocket? ( >=net-libs/libsoup-2.50:2.4 ) zeroconf? ( net-dns/avahi[dbus] ) net-libs/glib-networking[ssl]
+REQUIRED_USE=X? ( notification ) fbcon? ( notification ) notification? ( || ( X fbcon ) )
+SLOT=0
+SRC_URI=https://www.eventd.org/download/eventd/eventd-0.21.0.tar.xz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=4e6ae0fc355eba52d8c6b66ff005f17d

@@ -3,7 +3,7 @@ DESCRIPTION=Virtual for notification daemon dbus service
 EAPI=5
 IUSE=gnome kde
 KEYWORDS=alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
-RDEPEND=gnome? ( || ( x11-misc/notification-daemon gnome-base/gnome-shell ) ) kde? ( kde-plasma/plasma-workspace ) !gnome? ( !kde? ( || ( x11-misc/notification-daemon gnome-extra/cinnamon xfce-extra/xfce4-notifyd x11-misc/qtnotifydaemon x11-misc/notify-osd x11-misc/dunst >=x11-wm/awesome-3.4.4 x11-wm/enlightenment[enlightenment_modules_notification] x11-wm/enlightenment[e_modules_notification] x11-misc/mate-notification-daemon lxqt-base/lxqt-notificationd kde-misc/colibri ) ) )
+RDEPEND=gnome? ( || ( x11-misc/notification-daemon gnome-base/gnome-shell ) ) kde? ( kde-plasma/plasma-workspace ) !gnome? ( !kde? ( || ( x11-misc/notification-daemon gnome-extra/cinnamon xfce-extra/xfce4-notifyd x11-misc/qtnotifydaemon x11-misc/notify-osd x11-misc/dunst >=x11-wm/awesome-3.4.4 x11-wm/enlightenment[enlightenment_modules_notification] x11-wm/enlightenment[e_modules_notification] x11-misc/mate-notification-daemon lxqt-base/lxqt-notificationd net-misc/eventd[notification] kde-misc/colibri ) ) )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=b08d4545cc6cc6c752cddbc72661d3dd
+_md5_=2455fef4b8828ac88edc6b10f25aed3a
