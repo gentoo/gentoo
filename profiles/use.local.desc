@@ -2606,10 +2606,11 @@ dev-qt/qt-creator:autotools - Enable autotools project manager plugin
 dev-qt/qt-creator:baremetal - Build plugin for bare metal devices
 dev-qt/qt-creator:bazaar - Add support for dev-vcs/bzr version control system
 dev-qt/qt-creator:clang - Build clang-based code model plugin
-dev-qt/qt-creator:clangcodemodel - Build clang-based code model plugin
+dev-qt/qt-creator:clangcodemodel - Build clang-based code model and refactoring plugins
 dev-qt/qt-creator:clangstaticanalyzer - Build clang-based static analyzer plugin
 dev-qt/qt-creator:clearcase - Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)
 dev-qt/qt-creator:cmake - Enable cmake project manager plugin
+dev-qt/qt-creator:designer - Build widget designer plugin
 dev-qt/qt-creator:glsl - Enable GLSL source code editor
 dev-qt/qt-creator:ios - Build plugin for Apple iOS devices
 dev-qt/qt-creator:mercurial - Add support for dev-vcs/mercurial version control system
