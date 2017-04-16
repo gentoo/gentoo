@@ -52,7 +52,6 @@ cdrom_get_cds() {
 	# the # of files they gave us
 	local cdcnt=0
 	local f=
-	export CDROM_TOTAL_CDS=${cdcnt}
 	export CDROM_CURRENT_CD=1 CDROM_CHECKS=( "${@}" )
 
 	# now we see if the user gave use CD_ROOT ...
@@ -60,7 +59,7 @@ cdrom_get_cds() {
 	if [[ -n ${CD_ROOT}${CD_ROOT_1} ]] ; then
 		local var=
 		cdcnt=0
-		while [[ ${cdcnt} -lt ${CDROM_TOTAL_CDS} ]] ; do
+		while [[ ${cdcnt} -lt ${#} ]] ; do
 			((++cdcnt))
 			var="CD_ROOT_${cdcnt}"
 			[[ -z ${!var} ]] && var="CD_ROOT"
@@ -68,7 +67,7 @@ cdrom_get_cds() {
 				eerror "You must either use just the CD_ROOT"
 				eerror "or specify ALL the CD_ROOT_X variables."
 				eerror "In this case, you will need" \
-					"${CDROM_TOTAL_CDS} CD_ROOT_X variables."
+					"${#} CD_ROOT_X variables."
 				die "could not locate CD_ROOT_${cdcnt}"
 			fi
 		done
@@ -86,7 +85,7 @@ cdrom_get_cds() {
 
 	# User didn't help us out so lets make sure they know they can
 	# simplify the whole process ...
-	if [[ ${CDROM_TOTAL_CDS} -eq 1 ]] ; then
+	if [[ ${#} -eq 1 ]] ; then
 		einfo "This ebuild will need the ${CDROM_NAME:-cdrom for ${PN}}"
 		echo
 		einfo "If you do not have the CD, but have the data files"
@@ -99,7 +98,7 @@ cdrom_get_cds() {
 		echo
 	else
 		_cdrom_set_names
-		einfo "This package may need access to ${CDROM_TOTAL_CDS} cds."
+		einfo "This package may need access to ${#} cds."
 		local cdcnt
 		for cdcnt in $(seq ${#}); do
 			local var=CDROM_NAME_${cdcnt}
@@ -189,7 +188,7 @@ _cdrom_locate_file_on_cd() {
 
 		echo
 		if [[ ${showedmsg} -eq 0 ]] ; then
-			if [[ ${CDROM_TOTAL_CDS} -eq 1 ]] ; then
+			if [[ ${#CDROM_CHECKS[@]} -eq 1 ]] ; then
 				if [[ -z ${CDROM_NAME} ]] ; then
 					einfo "Please insert+mount the cdrom for ${PN} now !"
 				else
