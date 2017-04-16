@@ -2064,7 +2064,7 @@ app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r2 1.5.2-r3 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.5.0 2.8.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.5.0 2.8.1: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
@@ -12134,7 +12134,7 @@ kde-misc/rsibreak 0.12.4 0.12.5 0.12.6: Small utility which bothers you at certa
 kde-misc/semantik 0.9.5: Mindmapping-like tool for document generation
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
-kde-misc/tellico 2.3.10 2.3.11 3.0.1-r1 3.0.2: A collection manager based on KDE Frameworks
+kde-misc/tellico 2.3.10 2.3.11 3.0.2: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.2 3.0.4: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
