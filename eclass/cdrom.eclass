@@ -121,7 +121,7 @@ cdrom_get_cds() {
 		einfo "for all the CDs."
 		echo
 		einfo "For example:"
-		einfo "export CD_ROOT_1=/mnt/cdrom"
+		einfo "export CD_ROOT=/mnt/cdrom"
 		echo
 	fi
 
