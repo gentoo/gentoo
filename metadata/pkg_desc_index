@@ -5428,7 +5428,7 @@ dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1: Test.pm wrapper with helpers
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
-dev-perl/App-Nopaste 1.4.0-r1 1.8.0: Easy access to any pastebin
+dev-perl/App-Nopaste 1.4.0-r1 1.8.0 1.9.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0 1.704.300: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.730.0-r1 0.740.0-r1 0.750.0-r1 0.780.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
