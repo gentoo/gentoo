@@ -52,12 +52,8 @@ cdrom_get_cds() {
 	# the # of files they gave us
 	local cdcnt=0
 	local f=
-	for f in "$@" ; do
-		((++cdcnt))
-		export CDROM_CHECK_${cdcnt}="$f"
-	done
 	export CDROM_TOTAL_CDS=${cdcnt}
-	export CDROM_CURRENT_CD=1
+	export CDROM_CURRENT_CD=1 CDROM_CHECKS=( "${@}" )
 
 	# now we see if the user gave use CD_ROOT ...
 	# if they did, let's just believe them that it's correct
@@ -80,7 +76,7 @@ cdrom_get_cds() {
 		einfo "Found CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
 		export CDROM_SET=-1
 		local IFS=:
-		for f in ${CDROM_CHECK_1} ; do
+		for f in ${CDROM_CHECKS[0]} ; do
 			unset IFS
 			((++CDROM_SET))
 			export CDROM_MATCH=$(_cdrom_glob_match "${CDROM_ROOT}" "${f}")
@@ -149,8 +145,7 @@ cdrom_load_next_cd() {
 	var=CD_ROOT_${CDROM_CURRENT_CD}
 	[[ -z ${!var} ]] && var="CD_ROOT"
 	if [[ -z ${!var} ]] ; then
-		var="CDROM_CHECK_${CDROM_CURRENT_CD}"
-		_cdrom_locate_file_on_cd ${!var}
+		_cdrom_locate_file_on_cd "${CDROM_CHECKS[${CDROM_CURRENT_CD}]}"
 	else
 		export CDROM_ROOT=${!var}
 	fi
