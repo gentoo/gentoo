@@ -11957,7 +11957,7 @@ kde-apps/kwordquiz 16.08.3 16.12.3: A powerful flashcard and vocabulary learning
 kde-apps/kwrite 16.08.3 16.12.3: KDE simple text editor
 kde-apps/libgravatar 16.12.3: Library for gravatar integration
 kde-apps/libkcddb 16.08.3 16.12.3: KDE library for CDDB
-kde-apps/libkcompactdisc 16.08.3 16.12.3: Library for playing & ripping CDs
+kde-apps/libkcompactdisc 16.08.3 16.12.3-r1: Library for playing & ripping CDs
 kde-apps/libkdcraw 15.08.3 16.08.3 16.12.3: Digital camera raw image library wrapper
 kde-apps/libkdegames 4.14.3-r1 16.08.3 16.12.3: Base library common to many KDE games
 kde-apps/libkdepim 4.4.2016.01 16.12.3: Common PIM libraries
@@ -18373,7 +18373,7 @@ www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorde
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
-www-misc/zoneminder 1.30.0 1.30.2: Capture, analyse, record and monitor any cameras attached to your system
+www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 25.0.0.148: Adobe Flash Player
 www-plugins/chrome-binary-plugins 57.0.2987.133 58.0.3029.68_beta 59.0.3067.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
