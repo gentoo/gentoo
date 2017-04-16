@@ -79,12 +79,13 @@ cdrom_get_cds() {
 		export CDROM_ROOT=${CD_ROOT_1:-${CD_ROOT}}
 		einfo "Found CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
 		export CDROM_SET=-1
-		for f in ${CDROM_CHECK_1//:/ } ; do
+		local IFS=:
+		for f in ${CDROM_CHECK_1} ; do
+			unset IFS
 			((++CDROM_SET))
-			[[ -e ${CDROM_ROOT}/${f} ]] && break
+			export CDROM_MATCH=$(_cdrom_glob_match "${CDROM_ROOT}" "${f}")
+			[[ -n ${CDROM_MATCH} ]] && return
 		done
-		export CDROM_MATCH=${f}
-		return
 	fi
 
 	# User didn't help us out so lets make sure they know they can
@@ -181,28 +182,24 @@ _cdrom_locate_file_on_cd() {
 	local showedmsg=0 showjolietmsg=0
 
 	while [[ -z ${CDROM_ROOT} ]] ; do
-		local i=0
-		local -a cdset=(${*//:/ })
+		local i=0 cdset
+		IFS=: read -r -a cdset -d "" <<< "${*}"
+
 		if [[ -n ${CDROM_SET} ]] ; then
-			cdset=(${cdset[${CDROM_SET}]})
+			cdset=( "${cdset[${CDROM_SET}]}" )
 		fi
 
 		while [[ -n ${cdset[${i}]} ]] ; do
-			local dir=$(dirname ${cdset[${i}]})
-			local file=$(basename ${cdset[${i}]})
-
 			local point= node= fs= foo=
 			while read point node fs foo ; do
 				[[ " cd9660 iso9660 udf " != *" ${fs} "* ]] && \
 					! [[ ${fs} == "subfs" && ",${opts}," == *",fs=cdfss,"* ]] \
 					&& continue
 				point=${point//\040/ }
-				[[ ! -d ${point}/${dir} ]] && continue
-				[[ -z $(find "${point}/${dir}" -maxdepth 1 -iname "${file}") ]] \
-					&& continue
+				export CDROM_MATCH=$(_cdrom_glob_match "${point}" "${cdset[${i}]}")
+				[[ -z ${CDROM_MATCH} ]] && continue
 				export CDROM_ROOT=${point}
 				export CDROM_SET=${i}
-				export CDROM_MATCH=${cdset[${i}]}
 				return
 			done <<< "$(get_mounts)"
 
@@ -241,6 +238,39 @@ _cdrom_locate_file_on_cd() {
 		fi
 		read || die "something is screwed with your system"
 	done
+}
+
+# @FUNCTION: _cdrom_glob_match
+# @USAGE: <root directory> <path>
+# @INTERNAL
+# @DESCRIPTION:
+# Locates the given path ($2) within the given root directory ($1)
+# case-insensitively and returns the first actual matching path. This
+# eclass previously used "find -iname" but it only checked the file
+# case-insensitively and not the directories.  There is "find -ipath"
+# but this does not intelligently skip non-matching paths, making it
+# slow.  Case-insensitive matching can only be applied to patterns so
+# extended globbing is used to turn regular strings into patterns.  All
+# special characters are escaped so don't worry about breaking this.
+_cdrom_glob_match() {
+	# The following line turns this:
+	#  foo*foo/bar bar/baz/file.zip
+	#
+	# Into this:
+	#  ?(foo\*foo)/?(bar\ bar)/?(baz)/?(file\.zip)
+	#
+	# This turns every path component into an escaped extended glob
+	# pattern to allow case-insensitive matching. Globs cannot span
+	# directories so each component becomes an individual pattern.
+	local p=\?\($(sed -e 's:[^A-Za-z0-9/]:\\\0:g' -e 's:/:)/?(:g' <<< "$2" || die)\)
+	(
+		cd "$1" 2>/dev/null || return
+		shopt -s extglob nocaseglob nullglob || die
+		# The first person to make this work without an eval wins a
+		# cookie. It breaks without it when spaces are present.
+		eval "ARRAY=( ${p} )"
+		echo ${ARRAY[0]}
+	)
 }
 
 fi
