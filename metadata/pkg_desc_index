@@ -12857,7 +12857,7 @@ media-libs/elles_icc_profiles 20160501.0932: Elle Stone's well-behaved RGB and g
 media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
-media-libs/exempi 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
+media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 10.43 10.47 10.49: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
