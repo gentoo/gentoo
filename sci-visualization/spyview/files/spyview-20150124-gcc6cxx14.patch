@@ -1,0 +1,221 @@
+diff --git a/spyview/Fl_Listbox.H b/spyview/Fl_Listbox.H
+index 35803fc..832792b 100644
+--- a/spyview/Fl_Listbox.H
++++ b/spyview/Fl_Listbox.H
+@@ -5,7 +5,8 @@
+ #include <string>
+ #include <vector>
+ 
+-using namespace std;
++using std::string;
++using std::vector;
+ 
+ class Fl_Listbox : public Fl_Table
+ {
+diff --git a/spyview/ImageData.C b/spyview/ImageData.C
+index 7ee936a..a9b2c17 100644
+--- a/spyview/ImageData.C
++++ b/spyview/ImageData.C
+@@ -2007,7 +2007,7 @@ void ImageData::grad_mag(double axis_bias)
+   xderv();
+   width = w;
+   height = h;
+-  swap(tmpx,raw_data);
++  std::swap(tmpx,raw_data);
+   yderv();
+   width = w;
+   height = h;
+@@ -2083,7 +2083,7 @@ void ImageData::dderv(double theta) // theta in degrees!
+   xderv();
+   width = w;
+   height = h;
+-  swap(tmpx,raw_data);
++  std::swap(tmpx,raw_data);
+   yderv();
+   width = w;
+   height = h;
+diff --git a/spyview/ImageData.H b/spyview/ImageData.H
+index b68cb73..4cdecb1 100644
+--- a/spyview/ImageData.H
++++ b/spyview/ImageData.H
+@@ -22,7 +22,8 @@
+ 
+ #define CHECK_ARRAY_LIMITS 0
+ 
+-using namespace std;
++using std::string;
++using std::vector;
+ 
+ typedef enum { YZ = 0, XY = 2, XZ = 1 }  mtxcut_t;
+ typedef enum { COLUMNS = 0, INDEX = 1}  gpload_t;
+diff --git a/spyview/ImagePrinter.H b/spyview/ImagePrinter.H
+index d85b440..f34ee67 100644
+--- a/spyview/ImagePrinter.H
++++ b/spyview/ImagePrinter.H
+@@ -11,7 +11,7 @@
+ 
+ #include "ImagePrinter_Control.h"
+ 
+-using namespace std;
++using std::string;
+ 
+ class ImageWindow;
+ class Image_Printer_Control;
+diff --git a/spyview/ImageWindow.C b/spyview/ImageWindow.C
+index b8bd0f9..134b198 100644
+--- a/spyview/ImageWindow.C
++++ b/spyview/ImageWindow.C
+@@ -12,6 +12,8 @@
+ #include "ImageWindow_Module.H"
+ #include <ctype.h>
+ 
++#include "mypam.h"
++
+ #ifdef WIN32
+ 
+ #include <windows.h>
+@@ -36,8 +38,6 @@
+ #define alt(state)   (!(state & FL_CTRL) && !(state & FL_SHIFT) &&  (state & FL_ALT))
+ #define none(state)  (!(state & FL_CTRL) && !(state & FL_SHIFT) && !(state & FL_ALT))
+ 
+-using namespace std;
+-
+ FILE *fopenwarn(const char *name, const char *mode)
+ {
+   FILE *fp = fopen(name, mode);
+@@ -482,7 +482,7 @@ double current_time()
+   stop.tv_usec = (long)(tmpres % 1000000UL);
+ #endif
+   double time = (((double)(stop.tv_sec)) + ((double)(stop.tv_usec) * 1e-6));
+-  if (!isnormal(time))
++  if (!std::isnormal(time))
+     info("time %e sec %d usec %d\n", time, stop.tv_sec, stop.tv_usec);
+   return time;
+ }
+@@ -1609,7 +1609,7 @@ void ImageWindow::runQueue()
+  	  for (int n=0; n<op->num_parameters; n++)
+ 	    {
+ 	      operations_string += "-";
+-	      ostringstream os;
++	      std::ostringstream os;
+ 	      os << op->parameters[n].value;
+ 	      operations_string += os.str();
+ 	    }
+diff --git a/spyview/ImageWindow.H b/spyview/ImageWindow.H
+index 30e94ba..5d1a1e1 100644
+--- a/spyview/ImageWindow.H
++++ b/spyview/ImageWindow.H
+@@ -32,7 +32,7 @@
+ #define VERTLINE 4
+ #define OTHERLINE 8
+ 
+-#include "mypam.h"
++using std::string;
+ 
+ typedef enum { XAXIS, YAXIS, DISTANCE } lc_axis_t;
+ typedef enum { KEEPZOOM, KEEPSIZE, RESETZOOM } window_size_action_t;
+diff --git a/spyview/ImageWindow3d.C b/spyview/ImageWindow3d.C
+index 40b93e6..24fa8f4 100644
+--- a/spyview/ImageWindow3d.C
++++ b/spyview/ImageWindow3d.C
+@@ -5,6 +5,8 @@
+ #define LINEMESH 2
+ #define POLYGONS 3
+ 
++#include "mypam.h"
++
+ ImageWindow3d::ImageWindow3d(int x,int y,int w,int h,const char *l) : Fl_Gl_Window(x,y,w,h,l) 
+ {
+     data_matrix = NULL;
+diff --git a/spyview/ImageWindow3d.H b/spyview/ImageWindow3d.H
+index 683015b..e6f296f 100644
+--- a/spyview/ImageWindow3d.H
++++ b/spyview/ImageWindow3d.H
+@@ -25,9 +25,7 @@
+ #define POINTSOURCE 1
+ #define DIRECTIONAL 2
+ 
+-#include "mypam.h"
+ 
+-using namespace std;
+ 
+ #define LMAX USHRT_MAX
+ 
+diff --git a/spyview/bisector.H b/spyview/bisector.H
+index b22fb8f..039c5ff 100644
+--- a/spyview/bisector.H
++++ b/spyview/bisector.H
+@@ -2,7 +2,7 @@
+ #define __bisector_h__
+ #include <assert.h>
+ #include <math.h>
+-using namespace std;
++
+ 
+ class bisector
+ {
+diff --git a/spyview/misc.h b/spyview/misc.h
+index 9ed7dfc..8ed8ba8 100644
+--- a/spyview/misc.h
++++ b/spyview/misc.h
+@@ -3,7 +3,7 @@
+ 
+ #include <string>
+ 
+-using namespace std;
++using std::string;
+ 
+ //Some useful functions
+ 
+diff --git a/spyview/spypal_gradient.C b/spyview/spypal_gradient.C
+index e522b42..4997fbd 100644
+--- a/spyview/spypal_gradient.C
++++ b/spyview/spypal_gradient.C
+@@ -22,7 +22,7 @@ void Spypal_Slider_Dragger::start_dragging(Fl_Spypal_GSlider *todrag, bool can_d
+   assert(dragging == NULL);
+   can_delete = can_delete_p;
+   dragging = todrag;
+-  colored = false;
++  colored = NULL;
+   shown = find(g->sliders.begin(),g->sliders.end(), dragging) != g->sliders.end();
+   if(!shown && (Fl::event_inside(g) || !can_delete))
+     show_dragged();
+diff --git a/spyview/spyview.C b/spyview/spyview.C
+index cd99eeb..5e5c1f6 100644
+--- a/spyview/spyview.C
++++ b/spyview/spyview.C
+@@ -27,8 +27,6 @@
+ #include "spypal_import.H"
+ #include <libgen.h>
+ 
+-using namespace std;
+-
+ //How's this for lazy...?
+ char **arg_values;
+ int arg_count;
+diff --git a/spyview/spyview.H b/spyview/spyview.H
+index 3536354..0411e87 100644
+--- a/spyview/spyview.H
++++ b/spyview/spyview.H
+@@ -10,6 +10,8 @@
+ #include <vector>
+ #include "spyview_ui.h"
+ 
++using std::string;
++
+ /*void minl_cb(Fl_Widget *, void *);
+ void maxl_cb(Fl_Widget *, void *);
+ void dminl_cb(Fl_Widget *, void *);
+diff --git a/spyview/spyview3d.C b/spyview/spyview3d.C
+index b9398d5..068d4a1 100644
+--- a/spyview/spyview3d.C
++++ b/spyview/spyview3d.C
+@@ -18,8 +18,6 @@
+ 
+ #include "mypam.h"
+ 
+-using namespace std;
+-
+ int *data;
+ int *databuf;
+ int w,h;
