@@ -14,7 +14,7 @@ S="${S}/all/${P}"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="debug test"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
 
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
