@@ -22,13 +22,6 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND} )"
 
-python_prepare() {
-	if python_is_python3; then
-		einfo "Converting tests to Python 3 syntax"
-		2to3 -w -n --no-diffs traits/testing || die
-	fi
-}
-
 python_prepare_all() {
 	sed -i -e "s/'-O3'//g" setup.py || die
 	distutils-r1_python_prepare_all
