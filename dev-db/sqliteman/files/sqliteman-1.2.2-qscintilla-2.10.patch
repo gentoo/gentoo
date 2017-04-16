@@ -1,0 +1,13 @@
+diff --git a/cmake/modules/FindQScintilla.cmake b/cmake/modules/FindQScintilla.cmake
+index c4592d0..7700ec4 100644
+--- a/cmake/modules/FindQScintilla.cmake
++++ b/cmake/modules/FindQScintilla.cmake
+@@ -21,7 +21,7 @@ IF(QT4_FOUND)
+     "${QT_INCLUDE_DIR}/Qsci" /usr/include /usr/include/Qsci
+     )
+ 
+-    SET(QSCINTILLA_NAMES ${QSCINTILLA_NAMES} qscintilla2 libqscintilla2)
++    SET(QSCINTILLA_NAMES ${QSCINTILLA_NAMES} qscintilla2 libqscintilla2 qscintilla2_qt4 libqscintilla2_qt4)
+     FIND_LIBRARY(QSCINTILLA_LIBRARY
+         NAMES ${QSCINTILLA_NAMES}
+         PATHS ${QT_LIBRARY_DIR}
