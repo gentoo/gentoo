@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,8 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-gcc44.patch \
-		"${FILESDIR}"/${P}-gentoo.patch
+		"${FILESDIR}"/${P}-gentoo.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 	eautoreconf
 }
 
