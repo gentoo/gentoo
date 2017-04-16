@@ -13115,7 +13115,7 @@ media-libs/opencollada 1.6.25 1.6.31 1.6.36: Stream based read/write library for
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13 3.1.0-r6 3.1.0-r7: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13 3.1.0-r6 3.1.0-r7 3.2.0: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
@@ -16297,7 +16297,7 @@ sci-libs/acml 4.1.0-r2: AMD Core Math Library for x86 and amd64 CPUs
 sci-libs/adolc 2.4.1 2.5.0 2.5.2 2.6.2: Automatic differentiation system for C/C++
 sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 6.200.3 7.500.2-r1 7.800.2: Streamlined C++ linear algebra library
+sci-libs/armadillo 6.200.3 7.500.2-r1 7.800.2 7.800.2-r1: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5 3.4.0: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
