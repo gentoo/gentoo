@@ -102,15 +102,7 @@ cdrom_get_cds() {
 		einfo "export CD_ROOT=/mnt/cdrom"
 		echo
 	else
-		if [[ -n ${CDROM_NAMES} ]] ; then
-			# Translate the CDROM_NAMES array into CDROM_NAME_#
-			cdcnt=0
-			while [[ ${cdcnt} -lt ${CDROM_TOTAL_CDS} ]] ; do
-				((++cdcnt))
-				export CDROM_NAME_${cdcnt}="${CDROM_NAMES[$((${cdcnt}-1))]}"
-			done
-		fi
-
+		_cdrom_set_names
 		einfo "This package will need access to ${CDROM_TOTAL_CDS} cds."
 		cdcnt=0
 		while [[ ${cdcnt} -lt ${CDROM_TOTAL_CDS} ]] ; do
@@ -151,6 +143,8 @@ cdrom_get_cds() {
 cdrom_load_next_cd() {
 	local var
 	((++CDROM_CURRENT_CD))
+
+	_cdrom_set_names
 
 	unset CDROM_ROOT
 	var=CD_ROOT_${CDROM_CURRENT_CD}
@@ -266,6 +260,19 @@ _cdrom_glob_match() {
 		eval "ARRAY=( ${p} )"
 		echo ${ARRAY[0]}
 	)
+}
+
+# @FUNCTION: _cdrom_set_names
+# @INTERNAL
+# @DESCRIPTION:
+# Populate CDROM_NAME_# variables with the CDROM_NAMES array.
+_cdrom_set_names() {
+	if [[ -n ${CDROM_NAMES} ]] ; then
+		local i
+		for i in $(seq ${#CDROM_NAMES[@]}); do
+			export CDROM_NAME_${i}="${CDROM_NAMES[$((${i} - 1))]}"
+		done
+	fi
 }
 
 fi
