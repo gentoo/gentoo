@@ -5031,7 +5031,7 @@ dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPa
 dev-libs/purpose 1.1-r1: Library for providing abstractions to get the developer's purposes fulfilled
 dev-libs/qcodeedit 2.2.3 2.2.3-r2: Qt-Framework for code editing
 dev-libs/qcustomplot 1.3.2: Qt C++ widget for plotting and data visualization
-dev-libs/qjson 0.8.1-r1: A library for mapping JSON data to QVariant objects
+dev-libs/qjson 0.8.1-r1 0.9.0: Library for mapping JSON data to QVariant objects
 dev-libs/qoauth 1.0.1 2.0.1_pre20160315-r1: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
