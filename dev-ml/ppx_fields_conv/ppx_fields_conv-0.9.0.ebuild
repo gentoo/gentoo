@@ -13,6 +13,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
+	dev-lang/ocaml:=
 	dev-ml/ppx_core:=
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_metaquot:=
