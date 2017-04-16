@@ -5757,7 +5757,7 @@ dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.140.0: Returns the equivalent
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
 dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not reclaimed
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
-dev-perl/Devel-NYTProf 6.20.0 6.30.0 6.40.0: Powerful feature-rich perl source code profiler
+dev-perl/Devel-NYTProf 6.40.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.380.0 1.400.0 1.440.0 1.460.0 1.480.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.27: A modern perl interactive shell
@@ -8735,7 +8735,7 @@ dev-python/tqdm 4.8.4 4.10.0 9999: Add a progress meter to your loops in a secon
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.8 0.10: Debug log/trace messages
 dev-python/traitlets 4.0.0 4.1.0 4.2.2 4.3.1 4.3.2: A configuration system for Python applications
-dev-python/traits 4.5.0 4.5.0-r1: Enthought Tool Suite: Explicitly typed attributes for Python
+dev-python/traits 4.5.0 4.5.0-r1 4.6.0: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user interfaces
 dev-python/translate-toolkit 2.0.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
@@ -19474,7 +19474,7 @@ x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 1.0.3-r1 1.0.4 1.0.4-r1 2.0 2.0.1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.6 0.10.7 0.11.1 0.11.2: Extensions, widgets and framework library with session support for Xfce
-xfce-base/garcon 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
+xfce-base/garcon 0.5.0-r1 0.5.0-r2 0.6.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.12.1-r2 4.13.0 4.13.1: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.12.1 4.12.1-r1: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
