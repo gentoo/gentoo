@@ -4978,7 +4978,7 @@ dev-libs/log4sh 1.2.5-r1 1.4.2: A flexible logging framework for shell scripts
 dev-libs/log4shib 1.0.1 1.0.4: Internet2 version for OpenSAML of log4cpp logging framework
 dev-libs/ltxml 1.2.5 1.2.9: Integrated set of XML tools and a developers tool-kit with C API
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
-dev-libs/lzo 2.08 2.09: An extremely fast compression and decompression library
+dev-libs/lzo 2.08 2.09 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.5.2 1.5.5 1.6.2 1.6.3 1.6.3-r1 1.6.4: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
