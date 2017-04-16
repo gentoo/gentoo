@@ -44,7 +44,7 @@ fi
 # etc...  If you want to give the cds better names, then just export
 # the appropriate CDROM_NAME variable before calling cdrom_get_cds().
 # Use CDROM_NAME for one cd, or CDROM_NAME_# for multiple cds.  You can
-# also use the CDROM_NAME_SET bash array.
+# also use the CDROM_NAMES bash array.
 #
 # For those multi cd ebuilds, see the cdrom_load_next_cd() function.
 cdrom_get_cds() {
@@ -102,12 +102,12 @@ cdrom_get_cds() {
 		einfo "export CD_ROOT=/mnt/cdrom"
 		echo
 	else
-		if [[ -n ${CDROM_NAME_SET} ]] ; then
-			# Translate the CDROM_NAME_SET array into CDROM_NAME_#
+		if [[ -n ${CDROM_NAMES} ]] ; then
+			# Translate the CDROM_NAMES array into CDROM_NAME_#
 			cdcnt=0
 			while [[ ${cdcnt} -lt ${CDROM_TOTAL_CDS} ]] ; do
 				((++cdcnt))
-				export CDROM_NAME_${cdcnt}="${CDROM_NAME_SET[$((${cdcnt}-1))]}"
+				export CDROM_NAME_${cdcnt}="${CDROM_NAMES[$((${cdcnt}-1))]}"
 			done
 		fi
 
