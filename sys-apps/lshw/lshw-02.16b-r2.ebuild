@@ -32,6 +32,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${P}-musl.patch
 	# correct gettext behavior
 	if [[ -n "${LINGUAS+x}" ]] ; then
 		local langs
