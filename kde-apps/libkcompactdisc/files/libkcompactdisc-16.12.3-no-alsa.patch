@@ -1,0 +1,22 @@
+commit 6509952dd6eff48d608a0e4124fa771bfaf53b53
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Apr 16 21:09:55 2017 +0200
+
+    Fix build without ALSA again
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 30e6a98..fb79bdd 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -7,7 +7,10 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+ endif()
+ 
+ find_package(Alsa)
+-alsa_configure_file(${CMAKE_CURRENT_BINARY_DIR}/config-alsa.h)
++if(ALSA_FOUND)
++    alsa_configure_file(${CMAKE_CURRENT_BINARY_DIR}/config-alsa.h)
++    add_definitions(-DHAVE_LIBASOUND2)
++endif(ALSA_FOUND)
+ 
+ set(wmlib_audio_SRCS
+         wmlib/audio/audio.c
