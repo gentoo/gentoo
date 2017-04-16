@@ -9327,7 +9327,7 @@ dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.1.4 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.12.5 1.12.6 1.13.7: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.6.1 2.6.2 2.6.3 2.6.4-r1: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.6.3 2.6.4-r1 2.6.5: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
@@ -9774,7 +9774,7 @@ dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discov
 dev-ruby/ruby2ruby 2.3.0 2.3.1 2.3.2: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.3.1 1.4.0 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
-dev-ruby/ruby_parser 3.8.2 3.8.3 3.8.4: A ruby parser written in pure ruby
+dev-ruby/ruby_parser 3.8.2 3.8.3 3.8.4 3.9.0: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.2.5-r1 2.5.2 2.6.8 2.6.9 2.6.11: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.1: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PHP library
