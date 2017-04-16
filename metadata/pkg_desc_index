@@ -14004,7 +14004,7 @@ media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/blinkentools 2.9: blinkentools is a set of commandline utilities related to Blinkenlights
 media-video/camorama 0.19-r2: A webcam application featuring various image filters
 media-video/ccextractor 0.59 0.68 0.69: Extract closed captioning subtitles from video to SRT
-media-video/cclive 0.9.3-r1: Command line tool for extracting videos from various websites
+media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
 media-video/cheese 3.22.1: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 20140710 20150908: The most advanced non-linear video editor and compositor

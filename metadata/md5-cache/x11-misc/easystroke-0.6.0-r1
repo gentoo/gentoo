@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-cpp/gtkmm:3.0 dev-libs/boost dev-libs/dbus-glib dev-libs/glib:2 x11-base/xorg-server x11-libs/libX11 x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXtst dev-util/intltool sys-devel/gettext
+DEPEND=dev-cpp/gtkmm:3.0 dev-libs/boost:= dev-libs/dbus-glib dev-libs/glib:2 x11-base/xorg-server x11-libs/libX11 x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXtst dev-util/intltool sys-devel/gettext
 DESCRIPTION=a gesture-recognition application for X11
 EAPI=5
 HOMEPAGE=https://sourceforge.net/apps/trac/easystroke/
 KEYWORDS=~amd64
 LICENSE=ISC
-RDEPEND=dev-cpp/gtkmm:3.0 dev-libs/boost dev-libs/dbus-glib dev-libs/glib:2 x11-base/xorg-server x11-libs/libX11 x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXtst
+RDEPEND=dev-cpp/gtkmm:3.0 dev-libs/boost:= dev-libs/dbus-glib dev-libs/glib:2 x11-base/xorg-server x11-libs/libX11 x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXtst
 SLOT=0
 SRC_URI=mirror://sourceforge/project/easystroke/easystroke/0.6.0/easystroke-0.6.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=d3c485a7b03b0f497551d7b89b5ae733
+_md5_=c4fceb7edfedef3fd548a678fe84b150
