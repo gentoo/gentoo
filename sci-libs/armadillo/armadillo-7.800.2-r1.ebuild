@@ -131,9 +131,14 @@ src_test() {
 src_install() {
 	cmake-utils_src_install
 	dodoc README.txt
-	use doc && dodoc *pdf && dohtml *html
+
+	if use doc ; then
+		dodoc *pdf
+		dodoc *html
+	fi
+
 	if use examples; then
-		insinto /usr/share/examples/${PF}
+		insinto /usr/share/doc/${PF}/examples
 		doins -r examples/*
 	fi
 }
