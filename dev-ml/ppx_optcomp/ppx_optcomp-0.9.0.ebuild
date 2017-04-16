@@ -12,7 +12,10 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-ml/ppx_core:="
+DEPEND="
+	dev-ml/ppx_core:=
+	dev-lang/ocaml:=
+"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
 
