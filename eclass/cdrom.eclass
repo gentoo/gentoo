@@ -122,12 +122,7 @@ cdrom_get_cds() {
 		einfo "If you do not have the CDs, but have the data files"
 		einfo "mounted somewhere on your filesystem, just export"
 		einfo "the following variables so they point to the right place:"
-		einfon ""
-		cdcnt=0
-		while [[ ${cdcnt} -lt ${CDROM_TOTAL_CDS} ]] ; do
-			((++cdcnt))
-			echo -n " CD_ROOT_${cdcnt}"
-		done
+		einfo $(printf "CD_ROOT_%d " $(seq ${#}))
 		echo
 		einfo "Or, if you have all the files in the same place, or"
 		einfo "you only have one cdrom, you can export CD_ROOT"
