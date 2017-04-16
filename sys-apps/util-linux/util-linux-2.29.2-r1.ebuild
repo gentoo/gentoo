@@ -75,6 +75,8 @@ src_prepare() {
 		-e 's:(ncursesw?)[56]-config --version:$PKG_CONFIG --exists --print-errors \1:' \
 		configure || die
 	elibtoolize
+
+	epatch_user
 }
 
 lfs_fallocate_test() {

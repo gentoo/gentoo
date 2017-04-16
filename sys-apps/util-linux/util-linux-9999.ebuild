@@ -70,6 +70,8 @@ src_prepare() {
 		eautoreconf
 	fi
 	elibtoolize
+
+	epatch_user
 }
 
 lfs_fallocate_test() {
