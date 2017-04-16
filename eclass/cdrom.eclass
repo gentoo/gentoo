@@ -104,10 +104,9 @@ cdrom_get_cds() {
 	else
 		_cdrom_set_names
 		einfo "This package will need access to ${CDROM_TOTAL_CDS} cds."
-		cdcnt=0
-		while [[ ${cdcnt} -lt ${CDROM_TOTAL_CDS} ]] ; do
-			((++cdcnt))
-			var="CDROM_NAME_${cdcnt}"
+		local cdcnt
+		for cdcnt in $(seq ${#}); do
+			local var=CDROM_NAME_${cdcnt}
 			[[ ! -z ${!var} ]] && einfo " CD ${cdcnt}: ${!var}"
 		done
 		echo
