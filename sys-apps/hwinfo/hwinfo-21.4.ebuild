@@ -24,6 +24,9 @@ DEPEND="${RDEPEND}
 MAKEOPTS="${MAKEOPTS} -j1"
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-musl.patch"
+	epatch "${FILESDIR}/${P}-portability.patch"
+
 	# Respect AR variable.
 	sed -i \
 		-e 's:ar r:$(AR) r:' \
