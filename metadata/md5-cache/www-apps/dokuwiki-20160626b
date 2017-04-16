@@ -4,11 +4,11 @@ DESCRIPTION=DokuWiki is a simple to use Wiki aimed at a small company's document
 EAPI=5
 HOMEPAGE=http://wiki.splitbrain.org/wiki:dokuwiki
 IUSE=gd vhosts
-KEYWORDS=amd64 ~ppc ~sparc x86
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] media-gfx/imagemagick ) ) >=app-admin/webapp-config-1.50.15
-SLOT=20140929d-r1
-SRC_URI=http://download.dokuwiki.org/src/dokuwiki/dokuwiki-2014-09-29d.tgz
+SLOT=20160626b
+SRC_URI=http://download.dokuwiki.org/src/dokuwiki/dokuwiki-2016-06-26b.tgz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_prepare:- src_install:-
 _eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
-_md5_=c31ec5ed2b18d16c18ee411c70c7ee95
+_md5_=9680dd79095b4800056b95b6c3ec24e2
