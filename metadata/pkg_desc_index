@@ -12635,7 +12635,7 @@ media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.22.0: Font viewer for GNOME
 media-gfx/gnome-photos 3.22.5: Access, organize and share your photos on GNOME
-media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
+media-gfx/gnome-raw-thumbnailer 3.0.0 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
@@ -13043,7 +13043,7 @@ media-libs/libogg 1.3.2: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libomxil-bellagio 0.9.3: Open Source implementation of the OpenMAX Integration Layer
 media-libs/libopendaap 0.4.0: A library which enables applications to discover and connect to iTunes(R) music shares
-media-libs/libopenraw 0.0.9 0.1.0: A decoding library for RAW image formats
+media-libs/libopenraw 0.0.9 0.1.0 0.1.1: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.2 0.1.3: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.0.6 0.1.2-r1: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.3-r1 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
