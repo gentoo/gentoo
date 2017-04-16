@@ -181,9 +181,7 @@ _cdrom_locate_file_on_cd() {
 		while [[ -n ${cdset[${i}]} ]] ; do
 			local point= node= fs= foo=
 			while read point node fs foo ; do
-				[[ " cd9660 iso9660 udf " != *" ${fs} "* ]] && \
-					! [[ ${fs} == "subfs" && ",${opts}," == *",fs=cdfss,"* ]] \
-					&& continue
+				[[ " cd9660 iso9660 udf " != *" ${fs} "* ]] && continue
 				point=${point//\040/ }
 				export CDROM_MATCH=$(_cdrom_glob_match "${point}" "${cdset[${i}]}")
 				[[ -z ${CDROM_MATCH} ]] && continue
