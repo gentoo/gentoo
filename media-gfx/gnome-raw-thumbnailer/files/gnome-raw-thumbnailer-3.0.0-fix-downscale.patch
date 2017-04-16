@@ -1,0 +1,35 @@
+From 5a03b1a9ffece1d38cc0cf91c599975b9f2b028e Mon Sep 17 00:00:00 2001
+From: Anton Keks <anton@codeborne.com>
+Date: Thu, 2 Jan 2014 23:44:03 +0200
+Subject: [PATCH 1/7] downscale thumbnail if requested size is smaller than it
+ is, do not hardcode 128
+
+---
+ src/raw-thumbnailer.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/raw-thumbnailer.c b/src/raw-thumbnailer.c
+index b32bc49..135dbe3 100644
+--- a/src/raw-thumbnailer.c
++++ b/src/raw-thumbnailer.c
+@@ -47,7 +47,7 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
+   height = gdk_pixbuf_get_height (pixbuf);
+   width = gdk_pixbuf_get_width (pixbuf);
+   
+-  if (size <= 128) {
++  if (size < height || size < width) {
+     int d_width, d_height;
+     
+     if (width > height) {
+@@ -143,7 +143,7 @@ int main (int argc, char ** argv)
+   
+   char* inputfname = g_filename_from_uri (uri, NULL, NULL);
+   g_free(uri);
+-  
++
+   pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, output_size);
+   g_free(inputfname);
+   
+-- 
+2.12.2
+
