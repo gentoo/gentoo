@@ -8495,7 +8495,7 @@ dev-python/pyzmq 14.4.1 14.6.0 14.7.0 15.0.0 15.1.0 15.2.0: Lightweight and supe
 dev-python/pyzor 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.9.2-r1 2.9.4 2.9.4-r1: Python bindings for Qscintilla
+dev-python/qscintilla-python 2.9.2-r1 2.9.4 2.9.4-r1 2.10: Python bindings for Qscintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.3.3: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.1.1 4.2.1: Qt-based console for Jupyter with support for rich media output
