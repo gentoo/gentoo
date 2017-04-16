@@ -5682,7 +5682,7 @@ dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
 dev-perl/Data-Compare 1.250.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
-dev-perl/Data-Dump-Streamer 2.380.0 2.390.0 2.400.0: Accurately serialize a data structure as Perl code
+dev-perl/Data-Dump-Streamer 2.390.0 2.400.0: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.20.0-r1 2.22.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0: details of the floating point data type
@@ -5765,7 +5765,7 @@ dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
 dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl variables
 dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
-dev-perl/Devel-StackTrace-AsHTML 0.140.0-r1 0.150.0: Displays stack trace in HTML
+dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.150.0 2.170.0 2.180.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
