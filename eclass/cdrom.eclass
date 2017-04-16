@@ -103,7 +103,7 @@ cdrom_get_cds() {
 		echo
 	else
 		_cdrom_set_names
-		einfo "This package will need access to ${CDROM_TOTAL_CDS} cds."
+		einfo "This package may need access to ${CDROM_TOTAL_CDS} cds."
 		local cdcnt
 		for cdcnt in $(seq ${#}); do
 			local var=CDROM_NAME_${cdcnt}
