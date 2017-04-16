@@ -1301,7 +1301,7 @@ app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
-app-emulation/docker-registry 2.5.1 2.6.0: Docker Registry 2.0
+app-emulation/docker-registry 2.5.1 2.6.0 2.6.1: Docker Registry 2.0
 app-emulation/docker-runc 1.0.0_rc2_p20170201 1.0.0_rc2_p20170222 1.0.0_rc2_p20170308 1.0.0_rc2_p20170310: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
@@ -14596,7 +14596,7 @@ net-fs/cifs-utils 6.4 6.6-r2 6.7: Tools for Managing Linux CIFS Client Filesyste
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.1.19 2.1.20.0_p05 9999: HTTP read-only file system for distributing software
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
-net-fs/docker-volume-netshare 0.32_p20161024 0.33_p20170209: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
+net-fs/docker-volume-netshare 0.33_p20170209 0.33_p20170318: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 9999: Client library for accessing NFS shares over a network
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.8 3.1.10 3.1.11: Open Source AFP server
