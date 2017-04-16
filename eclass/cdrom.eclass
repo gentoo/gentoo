@@ -48,44 +48,16 @@ fi
 #
 # For those multi cd ebuilds, see the cdrom_load_next_cd() function.
 cdrom_get_cds() {
-	# first we figure out how many cds we're dealing with by
-	# the # of files they gave us
-	local cdcnt=0
-	local f=
-	export CDROM_CURRENT_CD=1 CDROM_CHECKS=( "${@}" )
+	unset CDROM_SET
+	export CDROM_CURRENT_CD=0 CDROM_CHECKS=( "${@}" )
 
-	# now we see if the user gave use CD_ROOT ...
-	# if they did, let's just believe them that it's correct
+	# If the user has set CD_ROOT or CD_ROOT_1, don't bother informing
+	# them about which discs are needed as they presumably already know.
 	if [[ -n ${CD_ROOT}${CD_ROOT_1} ]] ; then
-		local var=
-		cdcnt=0
-		while [[ ${cdcnt} -lt ${#} ]] ; do
-			((++cdcnt))
-			var="CD_ROOT_${cdcnt}"
-			[[ -z ${!var} ]] && var="CD_ROOT"
-			if [[ -z ${!var} ]] ; then
-				eerror "You must either use just the CD_ROOT"
-				eerror "or specify ALL the CD_ROOT_X variables."
-				eerror "In this case, you will need" \
-					"${#} CD_ROOT_X variables."
-				die "could not locate CD_ROOT_${cdcnt}"
-			fi
-		done
-		export CDROM_ROOT=${CD_ROOT_1:-${CD_ROOT}}
-		einfo "Found CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
-		export CDROM_SET=-1
-		local IFS=:
-		for f in ${CDROM_CHECKS[0]} ; do
-			unset IFS
-			((++CDROM_SET))
-			export CDROM_MATCH=$(_cdrom_glob_match "${CDROM_ROOT}" "${f}")
-			[[ -n ${CDROM_MATCH} ]] && return
-		done
-	fi
+		:
 
-	# User didn't help us out so lets make sure they know they can
-	# simplify the whole process ...
-	if [[ ${#} -eq 1 ]] ; then
+	# Single disc info.
+	elif [[ ${#} -eq 1 ]] ; then
 		einfo "This ebuild will need the ${CDROM_NAME:-cdrom for ${PN}}"
 		echo
 		einfo "If you do not have the CD, but have the data files"
@@ -96,6 +68,8 @@ cdrom_get_cds() {
 		einfo "For example:"
 		einfo "export CD_ROOT=/mnt/cdrom"
 		echo
+
+	# Multi disc info.
 	else
 		_cdrom_set_names
 		einfo "This package may need access to ${#} cds."
@@ -120,8 +94,7 @@ cdrom_get_cds() {
 		echo
 	fi
 
-	export CDROM_SET=""
-	export CDROM_CURRENT_CD=0
+	# Scan for the first disc.
 	cdrom_load_next_cd
 }
 
@@ -135,56 +108,47 @@ cdrom_get_cds() {
 # in the CD list, so make sure you only call this function when you're
 # done using the current CD.
 cdrom_load_next_cd() {
-	local var
+	local showedmsg=0 showjolietmsg=0
+
+	unset CDROM_ROOT
 	((++CDROM_CURRENT_CD))
 
 	_cdrom_set_names
 
-	unset CDROM_ROOT
-	var=CD_ROOT_${CDROM_CURRENT_CD}
-	[[ -z ${!var} ]] && var="CD_ROOT"
-	if [[ -z ${!var} ]] ; then
-		_cdrom_locate_file_on_cd "${CDROM_CHECKS[${CDROM_CURRENT_CD}]}"
-	else
-		export CDROM_ROOT=${!var}
-	fi
+	while true ; do
+		local i cdset
+		: CD_ROOT_${CDROM_CURRENT_CD}
+		export CDROM_ROOT=${CD_ROOT:-${!_}}
+		IFS=: read -r -a cdset -d "" <<< "${CDROM_CHECKS[$((${CDROM_CURRENT_CD} - 1))]}"
 
-	einfo "Found CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
-}
+		for i in $(seq ${CDROM_SET:-0} ${CDROM_SET:-$((${#cdset[@]} - 1))}); do
+			local f=${cdset[${i}]} point= node= fs= opts=
 
-# this is used internally by the cdrom_get_cds() and cdrom_load_next_cd()
-# functions.  this should *never* be called from an ebuild.
-# all it does is try to locate a give file on a cd ... if the cd isn't
-# found, then a message asking for the user to insert the cdrom will be
-# displayed and we'll hang out here until:
-# (1) the file is found on a mounted cdrom
-# (2) the user hits CTRL+C
-_cdrom_locate_file_on_cd() {
-	local mline=""
-	local showedmsg=0 showjolietmsg=0
+			if [[ -z ${CDROM_ROOT} ]] ; then
+				while read point node fs opts ; do
+					has "${fs}" cd9660 iso9660 udf || continue
+					point=${point//\040/ }
+					export CDROM_MATCH=$(_cdrom_glob_match "${point}" "${f}")
+					[[ -z ${CDROM_MATCH} ]] && continue
+					export CDROM_ROOT=${point}
+				done <<< "$(get_mounts)"
+			else
+				export CDROM_MATCH=$(_cdrom_glob_match "${CDROM_ROOT}" "${f}")
+			fi
 
-	while [[ -z ${CDROM_ROOT} ]] ; do
-		local i=0 cdset
-		IFS=: read -r -a cdset -d "" <<< "${*}"
-
-		if [[ -n ${CDROM_SET} ]] ; then
-			cdset=( "${cdset[${CDROM_SET}]}" )
-		fi
-
-		while [[ -n ${cdset[${i}]} ]] ; do
-			local point= node= fs= foo=
-			while read point node fs foo ; do
-				[[ " cd9660 iso9660 udf " != *" ${fs} "* ]] && continue
-				point=${point//\040/ }
-				export CDROM_MATCH=$(_cdrom_glob_match "${point}" "${cdset[${i}]}")
-				[[ -z ${CDROM_MATCH} ]] && continue
-				export CDROM_ROOT=${point}
+			if [[ -n ${CDROM_MATCH} ]] ; then
+				export CDROM_ABSMATCH=${CDROM_ROOT}/${CDROM_MATCH}
 				export CDROM_SET=${i}
-				return
-			done <<< "$(get_mounts)"
-
-			((++i))
+				break 2
+			fi
 		done
+
+		# If we get here then we were unable to locate a match. If
+		# CDROM_ROOT is non-empty then this implies that a CD_ROOT
+		# variable was given and we should therefore abort immediately.
+		if [[ -n ${CDROM_ROOT} ]] ; then
+			die "unable to locate CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
+		fi
 
 		echo
 		if [[ ${showedmsg} -eq 0 ]] ; then
@@ -218,6 +182,8 @@ _cdrom_locate_file_on_cd() {
 		fi
 		read || die "something is screwed with your system"
 	done
+
+	einfo "Found CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
 }
 
 # @FUNCTION: _cdrom_glob_match
