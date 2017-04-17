@@ -11829,11 +11829,11 @@ kde-apps/kdf 16.12.3: KDE free disk space utility
 kde-apps/kdialog 16.12.3: Can be used to show nice dialog boxes from shell scripts
 kde-apps/kdiamond 16.12.3: A KDE three-in-a-row game
 kde-apps/kdontchangethehostname 16.04.3: Tool to inform Plasma about a change in hostname
-kde-apps/keditbookmarks 16.08.3 16.12.3: Bookmarks editor based on KDE Frameworks
+kde-apps/keditbookmarks 16.12.3: Bookmarks editor based on KDE Frameworks
 kde-apps/keditfiletype 16.04.3: KDE mime/file type assocciation editor
 kde-apps/kfile 16.04.3: Commandline frontend to KFileMetaInfo
 kde-apps/kfilereplace 16.12.3: Powerful tool to search and replace in multiple files
-kde-apps/kfind 16.08.3 16.12.3: File finder utility based on KDE Frameworks
+kde-apps/kfind 16.12.3: File finder utility based on KDE Frameworks
 kde-apps/kfloppy 16.12.3: A straightforward graphical means to format 3.5" and 5.25" floppy disks
 kde-apps/kfmclient 16.08.3: KDE tool for opening URLs from the command line
 kde-apps/kfourinline 16.12.3: KDE four-in-a-row game
@@ -11891,7 +11891,7 @@ kde-apps/kolourpaint 16.12.3: Paint Program by KDE
 kde-apps/kommander 16.12.3: KDE dialog system for scripting
 kde-apps/kompare 16.12.3: A program to view the differences between files
 kde-apps/konq-plugins 16.08.3: Various plugins for konqueror
-kde-apps/konqueror 16.08.3 16.12.3: Web browser and file manager based on KDE Frameworks
+kde-apps/konqueror 16.08.3-r1 16.12.3: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 16.12.3: Galactic Strategy KDE Game
 kde-apps/konsole 16.12.3: KDE's terminal emulator
 kde-apps/konsolekalendar 4.4.2016.01 4.14.11_pre20160211 16.12.3: Command line interface to KDE calendars
