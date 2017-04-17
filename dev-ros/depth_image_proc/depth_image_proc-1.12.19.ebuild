@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
+	media-libs/opencv:=
 	dev-ros/eigen_conversions
 	dev-ros/image_geometry
 	dev-ros/image_transport
