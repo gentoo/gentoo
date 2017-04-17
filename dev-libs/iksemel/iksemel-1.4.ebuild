@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.3-gnutls-2.8.patch"
 	epatch "${FILESDIR}/${PN}-1.4-gnutls-3.4.patch"
+	epatch "${FILESDIR}/${PN}-1.4-ikstack.patch"
 	eautoreconf
 }
 
