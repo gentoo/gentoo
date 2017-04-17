@@ -6598,7 +6598,7 @@ dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Cycle 1.60.0: Cyclically insert into a Template from a sequence of values
 dev-perl/Template-Plugin-Latex 3.60.0 3.110.0: LaTeX support for the Template Toolkit
 dev-perl/Template-Tiny 1.120.0-r1: Template Toolkit reimplemented in as little code as possible
-dev-perl/Template-Toolkit 2.260.0: The Template Toolkit
+dev-perl/Template-Toolkit 2.260.0 2.270.0: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
