@@ -47,7 +47,7 @@ src_install() {
 	cp -pPR *.html "${D}/usr/share/novnc/"
 	cp -pPR include/* "${D}/usr/share/novnc/include/"
 	cp -pPR images/* "${D}/usr/share/novnc/images/"
-	dosym /usr/share/novnc/images/favicon.ico /usr/share/novnc/
+	dosym images/favicon.ico /usr/share/novnc/favicon.ico
 
 	newconfd "${FILESDIR}/noVNC.confd" noVNC
 	newinitd "${FILESDIR}/noVNC.initd" noVNC
