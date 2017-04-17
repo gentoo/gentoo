@@ -38,7 +38,7 @@ COMMON_DEPEND="
 		${PYTHON_DEPS}
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
-		dev-libs/libpeas[${PYTHON_USEDEP}] )
+		dev-libs/libpeas[python,${PYTHON_USEDEP}] )
 	spell? ( >=app-text/gspell-0.2.5:0= )
 "
 RDEPEND="${COMMON_DEPEND}
