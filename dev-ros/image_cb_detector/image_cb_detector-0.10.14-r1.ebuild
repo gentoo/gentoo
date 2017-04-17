@@ -19,6 +19,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/actionlib[${PYTHON_USEDEP}]
 	dev-ros/cv_bridge[${PYTHON_USEDEP}]
+	media-libs/opencv:=
 	dev-ros/image_transport
 	dev-ros/message_filters
 	dev-ros/roscpp
