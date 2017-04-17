@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=6
 inherit eutils multilib toolchain-funcs
 
 MY_P="${PN}${PV//_pre/-}"
@@ -17,19 +16,26 @@ IUSE="tcl"
 
 S="${WORKDIR}/${MY_P}"
 
-DEPEND="net-libs/libpcap
-	tcl? ( dev-lang/tcl:0= )"
-RDEPEND="${DEPEND}"
+DEPEND="
+	net-libs/libpcap
+	tcl? ( dev-lang/tcl:0= )
+"
+RDEPEND="
+	${DEPEND}
+"
+PATCHES=(
+	"${FILESDIR}"/${P}.patch
+	"${FILESDIR}"/bytesex.h.patch
+	"${FILESDIR}"/${P}-tcl.patch
+	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-libtcl.patch
+	"${FILESDIR}"/${P}-scan-overflow.patch
+	"${FILESDIR}"/${P}-tclsh-proper-escaping.patch
+	"${FILESDIR}"/${P}-strlen.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}.patch \
-		"${FILESDIR}"/bytesex.h.patch \
-		"${FILESDIR}"/${P}-tcl.patch \
-		"${FILESDIR}"/${P}-ldflags.patch \
-		"${FILESDIR}"/${P}-libtcl.patch \
-		"${FILESDIR}"/${P}-scan-overflow.patch \
-		"${FILESDIR}"/${P}-tclsh-proper-escaping.patch # bug #486664
+	default
 
 	# Correct hard coded values
 	sed -i Makefile.in \
