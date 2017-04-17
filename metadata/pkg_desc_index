@@ -6550,7 +6550,7 @@ dev-perl/Statistics-Descriptive-Discrete 0.70.0-r1: Statistics-Descriptive-Discr
 dev-perl/Statistics-Distributions 1.02: Perl module for calculating critical values
 dev-perl/Statistics-TTest 1.1.0: module to compute the confidence interval
 dev-perl/Stream-Buffered 0.30.0: Temporary buffer to save bytes
-dev-perl/String-Approx 3.270.0: Perl extension for approximate string matching (fuzzy matching)
+dev-perl/String-Approx 3.270.0 3.280.0: Perl extension for approximate string matching (fuzzy matching)
 dev-perl/String-CRC32 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/String-Ediff 0.90.0-r1: Produce common sub-string indices for two strings
 dev-perl/String-Errf 0.8.0: a simple sprintf-like dialect
