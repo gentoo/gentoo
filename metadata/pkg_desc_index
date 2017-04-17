@@ -6632,7 +6632,7 @@ dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
 dev-perl/Test-Exception 0.430.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
-dev-perl/Test-File 1.442.0: Test file attributes
+dev-perl/Test-File 1.442.0 1.443.0: Test file attributes
 dev-perl/Test-File-ShareDir 1.1.2: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Files 0.140.0: A Test::Builder based module to ease testing with files and dirs
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
@@ -14689,7 +14689,7 @@ net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 1.17.0.1 5.0.0.5: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 5.0.0.5 5.1.0.1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.3.4 2.4.2 2.5.2: Team collaboration tool
 net-im/telegram-desktop-bin 1.0.27 1.0.29: Official desktop client for Telegram (binary package)
