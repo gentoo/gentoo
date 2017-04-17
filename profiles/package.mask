@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (17 Apr 2017)
+# Should be provided by dev-lang/perl or a virtual since perl 5.9,
+# But was added accidentally in 2012. Don't depend on this,
+# and if you need a version newer than 0.11, ask perl project
+# for a virtual
+dev-perl/encoding-warnings
+
 # James Le Cuirot <chewi@gentoo.org> (14 Apr 2017)
 # Outdated and stuck behind a temperamental registration wall that I
 # have lost my patience with. Removal in 30 days if no one cares
