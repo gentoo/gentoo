@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
+	media-libs/opencv:=
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/image_geometry
 	dev-ros/image_transport
