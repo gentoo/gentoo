@@ -14236,7 +14236,7 @@ net-analyzer/greenbone-security-assistant 6.0.9: Greenbone Security Assistant fo
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
 net-analyzer/hexinject 1.5: Network packet sniffer and injector
-net-analyzer/hping 3_pre20051105-r3 3_pre20051105-r5: A ping-like TCP/IP packet assembler/analyzer
+net-analyzer/hping 3_pre20051105-r3 3_pre20051105-r6: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5: http protocol ping-like program
 net-analyzer/hunt 1.5-r1 1.5-r3: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 8.1 8.1-r1 8.4: Advanced parallized login hacker
