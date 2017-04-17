@@ -40,6 +40,7 @@ RDEPEND="|| ( app-editors/nano
 	app-editors/vile
 	app-editors/vim
 	app-editors/gvim
+	app-editors/vis
 	app-editors/xemacs
 	app-editors/zile
 	app-misc/mc[edit]
