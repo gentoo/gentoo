@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (17 Apr 2017)
+# Masked for removal by 17 May 2017. Past end of life. Susceptible to security
+# bugs (603716 and 603720). Upgrade to latest version.
+=dev-db/postgresql-9.1.24
+
 # Kent Fredric <kentnl@gentoo.org> (17 Apr 2017)
 # Should be provided by dev-lang/perl or a virtual since perl 5.9,
 # But was added accidentally in 2012. Don't depend on this,
