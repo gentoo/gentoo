@@ -104,8 +104,3 @@ src_install() {
 		eqawarn "please open a bug."
 	fi
 }
-
-pkg_postinst() {
-	einfo "See https://support.skype.com/en/faq/FA34656"
-	einfo "for more information about Skype for Linux Alpha."
-}
