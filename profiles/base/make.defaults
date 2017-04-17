@@ -122,7 +122,7 @@ BOOTSTRAP_USE="cxx unicode internal-glib python_targets_python3_4 python_targets
 # Mike Gilbert <floppym@gentoo.org> (15 May 2012)
 # Default target(s) for python-r1.eclass
 PYTHON_TARGETS="python2_7 python3_4"
-PYTHON_SINGLE_TARGET="python2_7"
+PYTHON_SINGLE_TARGET="python3_4"
 
 # Michał Górny <mgorny@gentoo.org> (10 Aug 2013)
 # Moved from portage's make.globals.
