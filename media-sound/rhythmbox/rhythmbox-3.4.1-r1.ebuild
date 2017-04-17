@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_{4,5} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils gnome2 python-r1 multilib virtualx
+inherit eutils gnome2 python-single-r1 multilib virtualx
 
 DESCRIPTION="Music management and playback software for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Rhythmbox"
@@ -19,10 +19,10 @@ REQUIRED_USE="
 	ipod? ( udev )
 	mtp? ( udev )
 	dbus? ( python )
-	python? ( ^^ ( $(python_gen_useflags '*') ) )
+	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.36:2
@@ -89,7 +89,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 pkg_setup() {
-	use python && [[ ${MERGE_TYPE} != binary ]] && python_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
