@@ -1,55 +1,28 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Apr 2017)
-# Only >=python3_5 supported
+# David Seifert <soap@gentoo.org> (17 Apr 2017)
+# Only python 3.5 supported
+dev-util/kdevelop-python:5 python_single_target_python3_5 python_targets_python3_5
 kde-apps/kajongg:5 python_single_target_python3_5 python_targets_python3_5
+dev-python/pygcrypt python_targets_python3_5
+dev-python/uvloop python_targets_python3_5
+media-gfx/blender python_targets_python3_5
 
-# Mart Raudsepp <leio@gentoo.org> (23 Mar 2017)
-# Only python3 supported
-media-sound/gnome-music python_single_target_python3_4
-
-# Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
-# only python 3 is supported
-app-editors/gedit-plugins python_single_target_python3_4
-
-# David Seifert <soap@gentoo.org> (18 Mar 2017)
+# David Seifert <soap@gentoo.org> (17 Apr 2017)
 # These py2-only packages also support pypy, enable
 # Python 2.7 as the default implementation, preparing
 # for the eventual switch to py3 in PYTHON_SINGLE_TARGET
-app-text/asciidoc python_single_target_python2_7
-dev-vcs/git-bz python_single_target_python2_7
-gnome-base/libglade python_single_target_python2_7
-sci-chemistry/pdb-tools python_single_target_python2_7
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2016)
-# Only python3 supported
-dev-libs/libixion python_single_target_python3_4
-dev-libs/liborcus python_single_target_python3_4
-
-# Mart Raudsepp <leio@gentoo.org> (17 Mar 2017)
-# Only python3 single target available, no python2, bug 612870
-app-editors/gedit python_single_target_python3_4
+app-text/asciidoc python_single_target_python2_7 python_targets_python2_7
+app-text/wklej python_single_target_python2_7 python_targets_python2_7
+dev-vcs/git-bz python_single_target_python2_7 python_targets_python2_7
+gnome-base/libglade python_single_target_python2_7 python_targets_python2_7
+sci-chemistry/pdb-tools python_single_target_python2_7 python_targets_python2_7
 
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Enable the BPF target by default
 sys-devel/clang llvm_targets_BPF
 sys-devel/llvm llvm_targets_BPF
-
-# Michael Palimaka <kensington@gentoo.org> (31 Aug 2016)
-dev-util/kdevelop-python:5 python_single_target_python3_5 python_targets_python3_5
-
-# Justin Lecher <jlec@gentoo.org> (08 Dec 2015)
-# Only py3 and single target supported
-app-backup/backintime python_single_target_python3_4
-dev-util/devhelp python_single_target_python3_4
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2015)
-# Set here proper defaults to make the packages buildable by default, 
-# bugs #555930 and #472932
-gnome-extra/gnome-builder python_single_target_python3_4
-media-libs/lensfun python_single_target_python3_4
-media-video/pitivi python_single_target_python3_4
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (27 Jul 2012)
 # Modular X: Build the Xorg X server by default
