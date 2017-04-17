@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 MY_PN=atlas-hgcode
 MY_PV=e183e3b3a0412b504edcb3664445b3e04fd484a2
@@ -20,12 +20,12 @@ IUSE=""
 
 COMMON_DEPEND="
 	media-libs/freeglut
-	media-libs/glew:0
-	>=media-libs/libpng-1.5:0
+	media-libs/glew:0=
+	media-libs/libpng:0=
 	net-misc/curl
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg:*
+	virtual/jpeg:0
 	virtual/opengl
 "
 DEPEND="${COMMON_DEPEND}
@@ -42,19 +42,20 @@ PATCHES=(
 	"${FILESDIR}/${P}-simgear-compilation.patch"
 )
 
-DOCS=(AUTHORS NEWS README)
-
 src_prepare() {
-	default_src_prepare
+	default
+
+	# -Wnarrowing failure, #612986
+	sed -i -e 's:0x:(char)0x:g' src/tiles.h || die
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--datadir=/usr/share/flightgear \
-		--disable-dependency-tracking \
+		--datadir="${EPREFIX}"/usr/share/flightgear \
 		--enable-simgear-shared \
-		--with-fgbase=/usr/share/flightgear
+		--with-fgbase="${EPREFIX}"/usr/share/flightgear
 }
 
 pkg_postinst() {
@@ -62,5 +63,4 @@ pkg_postinst() {
 	elog "Atlas --path=[path of map images] --udp=[port number]"
 	elog "and start fgfs with the following switch (or in .fgfsrc):"
 	elog "--nmea=socket,out,0.5,[host that you run Atlas on],[port number],udp"
-	echo
 }
