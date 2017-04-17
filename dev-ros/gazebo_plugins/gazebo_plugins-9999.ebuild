@@ -36,6 +36,7 @@ RDEPEND="
 	dev-ros/image_transport
 	dev-ros/rosconsole
 	dev-ros/cv_bridge
+	media-libs/opencv:=
 	dev-ros/polled_camera
 	dev-ros/diagnostic_updater
 	dev-ros/camera_info_manager
