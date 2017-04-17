@@ -58,7 +58,7 @@ cdrom_get_cds() {
 
 	# Single disc info.
 	elif [[ ${#} -eq 1 ]] ; then
-		einfo "This ebuild will need the ${CDROM_NAME:-cdrom for ${PN}}"
+		einfo "This ebuild will need the ${CDROM_NAME:-CD for ${PN}}"
 		echo
 		einfo "If you do not have the CD, but have the data files"
 		einfo "mounted somewhere on your filesystem, just export"
@@ -72,7 +72,7 @@ cdrom_get_cds() {
 	# Multi disc info.
 	else
 		_cdrom_set_names
-		einfo "This package may need access to ${#} cds."
+		einfo "This package may need access to ${#} CDs."
 		local cdcnt
 		for cdcnt in $(seq ${#}); do
 			local var=CDROM_NAME_${cdcnt}
@@ -85,7 +85,7 @@ cdrom_get_cds() {
 		einfo $(printf "CD_ROOT_%d " $(seq ${#}))
 		echo
 		einfo "Or, if you have all the files in the same place, or"
-		einfo "you only have one cdrom, you can export CD_ROOT"
+		einfo "you only have one CD, you can export CD_ROOT"
 		einfo "and that place will be used as the same data source"
 		einfo "for all the CDs."
 		echo
@@ -150,31 +150,27 @@ cdrom_load_next_cd() {
 			die "unable to locate CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
 		fi
 
-		echo
 		if [[ ${showedmsg} -eq 0 ]] ; then
 			if [[ ${#CDROM_CHECKS[@]} -eq 1 ]] ; then
-				if [[ -z ${CDROM_NAME} ]] ; then
-					einfo "Please insert+mount the cdrom for ${PN} now !"
-				else
-					einfo "Please insert+mount the ${CDROM_NAME} cdrom now !"
-				fi
+				einfo "Please insert+mount the ${CDROM_NAME:-CD for ${PN}} now !"
 			else
-				if [[ -z ${CDROM_NAME_1} ]] ; then
-					einfo "Please insert+mount cd #${CDROM_CURRENT_CD}" \
-						"for ${PN} now !"
+				local var="CDROM_NAME_${CDROM_CURRENT_CD}"
+				if [[ -z ${!var} ]] ; then
+					einfo "Please insert+mount CD #${CDROM_CURRENT_CD} for ${PN} now !"
 				else
-					local var="CDROM_NAME_${CDROM_CURRENT_CD}"
-					einfo "Please insert+mount the ${!var} cdrom now !"
+					einfo "Please insert+mount the ${!var} now !"
 				fi
 			fi
 			showedmsg=1
 		fi
-		einfo "Press return to scan for the cd again"
+
+		einfo "Press return to scan for the CD again"
 		einfo "or hit CTRL+C to abort the emerge."
-		echo
+
 		if [[ ${showjolietmsg} -eq 0 ]] ; then
 			showjolietmsg=1
 		else
+			echo
 			ewarn "If you are having trouble with the detection"
 			ewarn "of your CD, it is possible that you do not have"
 			ewarn "Joliet support enabled in your kernel.  Please"
