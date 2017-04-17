@@ -2306,7 +2306,7 @@ app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that p
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 1.2.3: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.7: Spell checking widget for GTK
-app-text/gtranslator 2.91.7: An enhanced gettext po file editor for GNOME
+app-text/gtranslator 2.91.7 2.91.7-r1: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
 app-text/highlight 3.17 3.33 3.34 3.35: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
@@ -14134,7 +14134,7 @@ media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/syncplay 1.4.0: Client/server to synchronize media playback
 media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
-media-video/totem 3.18.1 3.22.1: Media player for GNOME
+media-video/totem 3.18.1 3.22.1 3.22.1-r1: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
