@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.16:3[X,introspection]
 	>=x11-libs/gdk-pixbuf-2.18:2
 	>=dev-libs/gobject-introspection-0.10:=
-	>=dev-libs/libpeas-0.7.3[gtk,python?]
+	>=dev-libs/libpeas-0.7.3[gtk]
 	>=dev-libs/totem-pl-parser-3.2
 	>=net-libs/libsoup-2.42:2.4
 	>=media-libs/gst-plugins-base-1.4:1.0[introspection]
@@ -68,7 +68,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-taglib:1.0
 	x11-themes/adwaita-icon-theme
 	python? (
-		>=dev-libs/libpeas-0.7.3[${PYTHON_USEDEP}]
+		>=dev-libs/libpeas-0.7.3[python,${PYTHON_USEDEP}]
 		net-libs/libsoup:2.4[introspection]
 		x11-libs/gdk-pixbuf:2[introspection]
 		x11-libs/gtk+:3[introspection]
