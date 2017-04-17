@@ -230,11 +230,6 @@ gnome2_icon_cache_update() {
 		return
 	fi
 
-	if [[ -z "${GNOME2_ECLASS_ICONS}" ]]; then
-		debug-print "No icon cache to update"
-		return
-	fi
-
 	ebegin "Updating icons cache"
 
 	local retval=0
