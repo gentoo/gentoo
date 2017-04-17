@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md"
@@ -28,5 +28,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -S testrb test/app_*.rb || die
+	${RUBY} -Ilib:test:. -e 'Dir["test/app_*.rb"].each{|f| require f}' || die
 }
