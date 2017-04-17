@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-ros/nodelet
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	media-libs/opencv
+	media-libs/opencv:=
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
