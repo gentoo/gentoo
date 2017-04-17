@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Kate is an advanced text editor"
 HOMEPAGE="https://www.kde.org/applications/utilities/kate http://kate-editor.org"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+addons"
 
 DEPEND="
