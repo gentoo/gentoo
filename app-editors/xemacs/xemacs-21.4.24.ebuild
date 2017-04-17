@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with a hardened profile. If you
@@ -63,6 +63,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/xemacs-21.4.19-db.patch
 	# see bug 576512
 	epatch "${FILESDIR}"/xemacs-21.4.24-gcc5.patch
+	# see bug 615544
+	epatch "${FILESDIR}"/xemacs-21.4.24-ncurses-tinfo.patch
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).

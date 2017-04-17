@@ -64,6 +64,8 @@ src_prepare() {
 	# see bug 576512
 	epatch "${FILESDIR}"/xemacs-21.4.24-gcc5.patch
 	epatch "${FILESDIR}"/xemacs-21.4.24-glibc-macro.patch
+	# see bug 615544
+	epatch "${FILESDIR}"/xemacs-21.4.24-ncurses-tinfo.patch
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).
