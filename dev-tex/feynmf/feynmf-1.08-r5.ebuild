@@ -7,7 +7,7 @@ inherit eutils latex-package
 
 DESCRIPTION="Combined LaTeX/Metafont package for drawing of Feynman diagrams"
 HOMEPAGE="http://www.ctan.org/tex-archive/macros/latex/contrib/feynmf/"
-#Taken from: ftp.tug.ctan.org/tex-archive/macros/latex/contrib/${PN}.tar.gz
+# Taken from: ftp.tug.ctan.org/tex-archive/macros/latex/contrib/${PN}.tar.gz
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz
 	doc? ( https://dev.gentoo.org/~ulm/distfiles/${PN}-cnl.tar.gz )"
 
@@ -43,7 +43,8 @@ src_install() {
 	insinto ${TEXMF}/metapost/${PN}; doins feynmp.mp
 	dodoc README manual.ps template.tex
 	docompress -x /usr/share/doc/${PF}/manual.ps
-	dosym /usr/share/doc/${PF}/manual.ps \
+	# TEXMF is /usr/share/ plus one further path component
+	dosym ../../../../doc/${PF}/manual.ps \
 		${TEXMF}/doc/latex/${PN}/${PN}-manual.ps
 
 	if use doc; then
@@ -51,7 +52,7 @@ src_install() {
 		for f in fmfcnl*.ps; do
 			dodoc ${f}
 			docompress -x /usr/share/doc/${PF}/${f}
-			dosym /usr/share/doc/${PF}/${f} ${TEXMF}/doc/latex/${PN}/${f}
+			dosym ../../../../doc/${PF}/${f} ${TEXMF}/doc/latex/${PN}/${f}
 		done
 	fi
 }
