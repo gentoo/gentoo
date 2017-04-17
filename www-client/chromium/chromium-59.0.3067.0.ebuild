@@ -105,7 +105,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/ninja
 	net-libs/nodejs
 	sys-apps/hwids[usb(+)]
-	!<sys-apps/sandbox-2.11
+	tcmalloc? ( !<sys-apps/sandbox-2.11 )
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
 	virtual/pkgconfig
