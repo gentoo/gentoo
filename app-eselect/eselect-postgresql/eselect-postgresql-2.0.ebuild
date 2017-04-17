@@ -13,6 +13,16 @@ IUSE=""
 
 RDEPEND="app-admin/eselect"
 
+# All dev-db/postgresql ebuilds from 10.0 on are well supported. Earlier
+# ebuilds may present some quality of life issues.
+PDEPEND="
+	!<dev-db/postgresql-9.6.2-r1:9.6
+	!<dev-db/postgresql-9.5.6-r1:9.5
+	!<dev-db/postgresql-9.4.11-r1:9.4
+	!<dev-db/postgresql-9.3.16-r1:9.3
+	!<dev-db/postgresql-9.2.20-r1
+"
+
 src_install() {
 	insinto /usr/share/eselect/modules
 	doins postgresql.eselect
