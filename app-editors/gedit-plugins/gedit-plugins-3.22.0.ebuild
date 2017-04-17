@@ -28,15 +28,15 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=app-editors/gedit-3.16[python?]
+	>=app-editors/gedit-3.16
 	>=dev-libs/glib-2.32:2
-	>=dev-libs/libpeas-1.7.0[gtk,python?]
+	>=dev-libs/libpeas-1.7.0[gtk]
 	>=x11-libs/gtk+-3.9:3
 	>=x11-libs/gtksourceview-3.21.3:3.0
 	python? (
 		${PYTHON_DEPS}
-		>=app-editors/gedit-3.16[introspection,${PYTHON_USEDEP}]
-		dev-libs/libpeas[${PYTHON_USEDEP}]
+		>=app-editors/gedit-3.16[introspection,python,${PYTHON_USEDEP}]
+		dev-libs/libpeas[python,${PYTHON_USEDEP}]
 		>=dev-python/dbus-python-0.82[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
