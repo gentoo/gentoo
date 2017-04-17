@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -27,7 +27,7 @@ src_compile() {
 src_install() {
 	cd src
 	dobin expander boxcomment align_columns align_comments where_is
-	dosym /usr/bin/boxcomment /usr/bin/unboxcomment
+	dosym boxcomment /usr/bin/unboxcomment
 
 	insinto /usr/share/${P}
 	doins "${S}"/service
