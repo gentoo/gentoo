@@ -1,20 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
+inherit autotools eutils git-r3
 
 DESCRIPTION="Monitor and do event correlation"
 HOMEPAGE="http://nodebrain.sourceforge.net/"
-SRC_URI="mirror://sourceforge/nodebrain/nodebrain-${PV}.tar.gz"
+EGIT_REPO_URI="https://github.com/trettevik/nodebrain-nb"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="static-libs"
 
-CDEPEND="dev-libs/libedit"
+CDEPEND="
+	dev-libs/libedit
+"
 DEPEND="
 	${CDEPEND}
 	dev-lang/perl
@@ -26,9 +27,14 @@ RDEPEND="
 	!sys-boot/netboot
 	!www-apps/nanoblogger
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.14-include.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.8.14-include.patch
+	default
+
+	eautoreconf
 }
 
 src_configure() {
@@ -39,7 +45,8 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files
-	dodoc AUTHORS NEWS README THANKS sample/*
-	dohtml html/*
+
+	dodoc -r AUTHORS ChangeLog NEWS README THANKS sample/ html/
+
+	prune_libtool_files
 }
