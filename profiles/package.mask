@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
+# Masking old versions because upstream changed versioning
+# Please keep this mask for 1 year to ease upgrades for users
+=app-crypt/hashcat-3.10-r1
+=app-crypt/hashcat-3.30
+=app-crypt/hashcat-3.40
+
 # Aaron W. Swenson <titanofold@gentoo.org> (17 Apr 2017)
 # Masked for removal by 17 May 2017. Past end of life. Susceptible to security
 # bugs (603716 and 603720). Upgrade to latest version.
