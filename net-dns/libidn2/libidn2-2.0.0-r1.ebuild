@@ -45,7 +45,7 @@ multilib_src_configure() {
 multilib_src_install() {
 	default
 
-	rm "${D}"/usr/bin/idn2_noinstall || die
+	rm "${ED}"/usr/bin/idn2_noinstall || die
 
 	prune_libtool_files
 }
