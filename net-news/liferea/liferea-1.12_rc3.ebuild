@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python3_{4,5} )
 
-inherit autotools gnome2 pax-utils python-r1
+inherit autotools gnome2 pax-utils python-single-r1
 
 MY_P=${P/_/-}
 MY_PV=${PV/_/-}
