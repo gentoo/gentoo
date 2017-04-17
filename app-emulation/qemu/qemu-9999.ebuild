@@ -75,7 +75,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # but these are so few it is not worth the effort to separate this list.
 ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
-	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	systemtap? ( dev-util/systemtap )
@@ -84,6 +83,7 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
+	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
 		app-accessibility/brltty[static-libs(+)]
