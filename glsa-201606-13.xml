@@ -6,8 +6,8 @@
     attack.
   </synopsis>
   <product type="ebuild"></product>
-  <announced>June 26, 2016</announced>
-  <revised>June 26, 2016: 1</revised>
+  <announced>2016-06-26</announced>
+  <revised>2017-04-17: 2</revised>
   <bug>564774</bug>
   <access>local</access>
   <affected>
@@ -26,8 +26,8 @@
   <description>
     <p>sudoedit in sudo is vulnerable to the escalation of privileges by local
       users via a symlink attack.  This can be exploited by a file whose full
-      path is defined using multiple wildcards in /etc/sudoers, as demonstrated
-      by “/home/<em>/</em>/file.txt.
+      path is defined using multiple wildcards in “/etc/sudoers”, as
+      demonstrated by “/home/*/*/file.txt”.
     </p>
   </description>
   <impact type="normal">
@@ -49,8 +49,6 @@
       CVE-2015-5602
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 23:28:50 +0000">
-    BlueKnight
-  </metadata>
-  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 13:48:21 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2015-12-23T23:28:50Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-04-17T18:04:03Z">b-man</metadata>
 </glsa>
