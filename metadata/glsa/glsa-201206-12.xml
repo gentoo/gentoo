@@ -6,8 +6,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">tftp-hpa</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: draft</revised>
+  <announced>2012-06-21</announced>
+  <revised>2017-04-17: 3</revised>
   <bug>374001</bug>
   <access>remote</access>
   <affected>
@@ -44,8 +44,6 @@
   <references>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2199">CVE-2011-2199</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:00 +0000" tag="requester">
-    underling
-  </metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 18:54:51 +0000" tag="submitter">craig</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:00Z">underling</metadata>
+  <metadata tag="submitter" timestamp="2017-04-17T18:08:16Z">craig</metadata>
 </glsa>
