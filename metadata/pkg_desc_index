@@ -11950,7 +11950,7 @@ kde-apps/kuiserver 16.04.3: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 16.04.3: KDE: Plugins to manage filtering URIs
 kde-apps/kwalletd 16.04.3 16.04.3-r1: KDE Password Server
 kde-apps/kwalletmanager 15.04.3-r1 16.12.3: KDE Wallet management tool
-kde-apps/kwave 0.9.2-r1 16.12.3: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
+kde-apps/kwave 16.12.3: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
 kde-apps/kwordquiz 16.12.3: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 16.12.3: KDE simple text editor
 kde-apps/libgravatar 16.12.3: Library for gravatar integration
