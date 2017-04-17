@@ -49,7 +49,7 @@ src_install() {
 		ewarn "as directory already exists there.  Will assume you know"
 		ewarn "what you're doing."
 	else
-		dosym /usr/share/sgml/docbook/dsssl-stylesheets-${PV} \
+		dosym ../../docbook/dsssl-stylesheets-${PV} \
 			/usr/share/sgml/stylesheets/dsssl/docbook
 	fi
 
