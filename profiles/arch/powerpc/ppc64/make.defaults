@@ -39,3 +39,7 @@ VIDEO_CARDS="fbdev mach64 mga nv r128 radeon vesa"
 
 # Enable abi_ppc_64 for packages that don't have it forced.
 ABI_PPC="64"
+
+# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
+# Temporary entry to support stable bug 615818
+RUBY_TARGETS="ruby21"

@@ -20,3 +20,7 @@ VIDEO_CARDS="fbdev"
 # Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
+
+# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
+# Temporary entry to support stable bug 615818
+RUBY_TARGETS="ruby21"
