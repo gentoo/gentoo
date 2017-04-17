@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,13 +27,12 @@ DEPEND="
 
 # bug #544630: evince[nsplugin] crashes konqueror
 RDEPEND="${DEPEND}
-	$(add_kdeapps_dep kfind)
+	kde-apps/kfind:*
 	$(add_kdeapps_dep kfmclient)
 	$(add_kdeapps_dep kurifilter-plugins)
-	bookmarks? ( $(add_kdeapps_dep keditbookmarks) )
+	bookmarks? ( kde-apps/keditbookmarks:* )
 	filemanager? (
 		$(add_kdeapps_dep kdebase-kioslaves)
-		$(add_kdeapps_dep kfind)
 		$(add_kdeapps_dep konsolepart)
 		!kde-apps/dolphin:4
 	)
