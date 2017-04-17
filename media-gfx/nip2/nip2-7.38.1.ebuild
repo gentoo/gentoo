@@ -57,7 +57,7 @@ src_install() {
 
 	mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF} || die
 	rmdir "${D}"/usr/share/doc/${PN}/ || die
-	dosym /usr/share/doc/${PF}/html /usr/share/doc/${PN}/
+	dosym ../${PF}/html /usr/share/doc/${PN}/html
 }
 
 pkg_preinst() {
