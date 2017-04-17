@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/fieldslib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Generation of accessor and iteration functions for ocaml records
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_fields_conv
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/fieldslib:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_fields_conv/archive/v0.9.0.tar.gz -> ppx_fields_conv-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=be4ba3313860ea12d1351840a1760f5a

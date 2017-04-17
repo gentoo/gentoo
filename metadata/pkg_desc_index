@@ -5344,7 +5344,7 @@ dev-ml/ppx_driver 0.9.0: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 0.9.0: Generate a list containing all values of a finite type
 dev-ml/ppx_expect 0.9.0: Cram like framework for OCaml
 dev-ml/ppx_fail 0.9.0: Add location to calls to failwiths
-dev-ml/ppx_fields_conv 0.9.0: Generation of accessor and iteration functions for ocaml records
+dev-ml/ppx_fields_conv 0.9.0-r1: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_hash 0.9.0: PPX rewriter that generates hash functions from type expressions and definitions
 dev-ml/ppx_here 0.9.0: Expands [%here] into its location
 dev-ml/ppx_import 1.1: A syntax extension for importing declarations from interface files
@@ -5356,7 +5356,7 @@ dev-ml/ppx_metaquot 0.9.0: Write OCaml AST fragment using OCaml syntax
 dev-ml/ppx_optcomp 0.9.0: Optional compilation for OCaml
 dev-ml/ppx_optional 0.9.0: Pattern matching on flat options
 dev-ml/ppx_pipebang 0.9.0: A ppx rewriter that inlines reverse application operators |> and |!
-dev-ml/ppx_sexp_conv 0.9.0: Support Library for type-driven code generators
+dev-ml/ppx_sexp_conv 0.9.0-r1: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 0.9.0: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 0.9.0: Standard library for ppx rewriters
 dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0: Tools for authors of ppx rewriters
