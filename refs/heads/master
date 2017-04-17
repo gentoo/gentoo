@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0x8883FA56A308A8D7 1492416790 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1492416790-b06e9ceab5ae8d8c0d9a
+pusher 0x0E2548BBC607E5AE 1492418136 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1492418136-c3f343f36ee6bb0c3f69
 
-5d30d6e4cc020dc6edbf9b3a94a12159f90ead4a 534945fefd04d541e8f5e72913c01e6e2f167896 refs/heads/master
+534945fefd04d541e8f5e72913c01e6e2f167896 26ed2d46d2a790597328d86357ef70788b53537f refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSx3yP+V82AqODatGmIg/pWowio1wUCWPR5FgAKCRCIg/pWowio
-12CLAP9JurULTYXHFVGCWan5+ZXdiVD/uicGVM40Dn4RWin3iQEAk+SwJ7Z02eet
-l26YCTDj1iliDkJLVZze1x3AeaUckYc=
-=yPTO
+iHUEABEIAB0WIQSpOxaxaZikKNVNlsYOJUi7xgflrgUCWPR+WAAKCRAOJUi7xgfl
+rvU4AP4xMsu0KZl1EqE0DpNWC+xxXC82KTvRAnKfrTzLCJzxsgD/TfiIdA+0hBe2
+0mXTP5WHnXJsYvkWgBZFC6WBtKL20Bw=
+=ugFx
 -----END PGP SIGNATURE-----
