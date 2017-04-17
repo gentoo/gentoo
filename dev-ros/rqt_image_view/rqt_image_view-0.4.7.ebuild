@@ -17,6 +17,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge[${PYTHON_USEDEP}]
+	media-libs/opencv:=
 	dev-ros/image_transport
 	dev-ros/rqt_gui[${PYTHON_USEDEP}]
 	>=dev-ros/rqt_gui_cpp-0.3

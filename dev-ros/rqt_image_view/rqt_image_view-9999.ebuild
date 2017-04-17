@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge[${PYTHON_USEDEP}]
+	media-libs/opencv:=
 	dev-ros/image_transport
 	dev-ros/rqt_gui[${PYTHON_USEDEP}]
 	>=dev-ros/rqt_gui_cpp-0.3
