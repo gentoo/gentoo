@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=3
@@ -65,7 +65,8 @@ src_install() {
 	insinto "${CLSOURCEROOT%/}/swank"
 	doins *.lisp swank.asd || die
 	dodir "${CLSYSTEMROOT}" || die
-	dosym "${CLSOURCEROOT%/}/swank/swank.asd" "${CLSYSTEMROOT}" || die
+	dosym "${EPREFIX}${CLSOURCEROOT%/}/swank/swank.asd" \
+		"${CLSYSTEMROOT%/}/swank.asd" || die
 
 	## install contribs
 	elisp-install ${PN}/contrib/ contrib/*.{el,elc,scm,goo} || die
