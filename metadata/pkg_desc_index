@@ -4898,7 +4898,7 @@ dev-libs/libparserutils 0.2.3: library for building efficient parsers, written i
 dev-libs/libpcre 8.39 8.40 8.40-r1: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.22 10.23: Perl-compatible regular expression library
-dev-libs/libpeas 1.20.0: A GObject plugins library
+dev-libs/libpeas 1.20.0 1.20.0-r1: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0 4.8.0: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.2.5 1.3.1 1.4.0 1.4.1: a pipeline manipulation library
 dev-libs/libplatform 1.0.10 2.0.1 2.1.0.1: Platform support library used by libCEC and binary add-ons for Kodi
@@ -13858,7 +13858,7 @@ media-sound/retrovol 0.12 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rezound 0.12.3_beta-r2: Sound editor and recorder
 media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Replay Gain information
-media-sound/rhythmbox 3.4.1: Music management and playback software for GNOME
+media-sound/rhythmbox 3.4.1 3.4.1-r1: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
 media-sound/rosegarden 13.04 13.10-r1 14.02 14.12 16.06: MIDI and audio sequencer and notation editor
