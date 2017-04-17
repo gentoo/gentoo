@@ -9,7 +9,7 @@ DESCRIPTION="File syncing and sharing software with file encryption and group sh
 HOMEPAGE="https://github.com/haiwen/seafile/ http://www.seafile.com/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
