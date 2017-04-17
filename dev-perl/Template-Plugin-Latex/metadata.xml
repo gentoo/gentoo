@@ -7,5 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Template-Latex</remote-id>
+    <remote-id type="cpan-module">Template::Latex</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Latex</remote-id>
   </upstream>
 </pkgmetadata>
