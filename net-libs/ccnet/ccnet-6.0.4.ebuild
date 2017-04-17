@@ -9,7 +9,7 @@ DESCRIPTION="Ccnet is a framework for writing networked applications in C"
 HOMEPAGE="https://github.com/haiwen/ccnet http://seafile.com/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
