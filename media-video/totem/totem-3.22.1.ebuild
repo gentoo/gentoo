@@ -55,7 +55,7 @@ RDEPEND="
 	nautilus? ( >=gnome-base/nautilus-2.91.3 )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-libs/libpeas-1.1.0[${PYTHON_USEDEP}]
+		>=dev-libs/libpeas-1.1.0[python,${PYTHON_USEDEP}]
 		>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}]
 		dev-python/pyxdg[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]
