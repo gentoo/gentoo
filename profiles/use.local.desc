@@ -7041,9 +7041,6 @@ sci-libs/ViSP:ois - Enables dev-games/ois support via ogre.
 sci-libs/ViSP:opencv - Enables media-libs/opencv support.
 sci-libs/ViSP:tutorials - Installs tutorials.
 sci-libs/ViSP:zbar - Enables barcodes reading.
-sci-libs/acml:gfortran - Fetch and install acml compiled with GNU gfortran
-sci-libs/acml:ifc - Fetch and install acml compiled with Intel Fortran Compiler (dev-lang/ifc)
-sci-libs/acml:int64 - Install the 64 bits integer library
 sci-libs/adolc:sparse - Add support for sparse matrix algebra with sci-libs/colpack
 sci-libs/armadillo:arpack - Link with sci-libs/arpack libraries for eigen decomposition
 sci-libs/armadillo:mkl - Use matrix allocation from the Intel MKL sci-libs/mkl
