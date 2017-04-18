@@ -46,10 +46,6 @@ xfs
 openexr
 
 # Samuli Suominen <drac@gentoo.org>
-# media-libs/amrnb and media-libs/amrwb not tested.
-amr
-
-# Samuli Suominen <drac@gentoo.org>
 # media-gfx/gimp not tested.
 gimp
 
