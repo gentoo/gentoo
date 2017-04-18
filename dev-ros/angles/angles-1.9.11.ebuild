@@ -14,6 +14,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-python/pyxml"
+RDEPEND=""
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
