@@ -27,10 +27,11 @@ DEPEND="
 src_prepare() {
 	default
 
-	if [[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] ; then
-		# crude hack, fixed properly for next release, no error.h is present
-		sed -i -e '/#include "error\.h"/d' src/idn2.c || die
-		append-cppflags -D'error\(E,...\)=exit\(E\)'
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# Darwin ar chokes when TMPDIR doesn't exist (as done for some
+		# reason in the Makefile)
+		sed -i -e '/^TMPDIR = /d' Makefile.in || die
+		export TMPDIR="${T}"
 	fi
 
 	multilib_copy_sources
