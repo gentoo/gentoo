@@ -43,7 +43,7 @@ RDEPEND="
 	>=dev-libs/libpeas-1.18.0[python,${PYTHON_USEDEP}]
 	>=dev-libs/json-glib-1.2.0
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4=[introspection] )
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:= )
 	git? (
 		dev-libs/libgit2[ssh,threads]
 		>=dev-libs/libgit2-glib-0.24.0[ssh] )
