@@ -45,7 +45,7 @@ RDEPEND="
 	>=app-text/gspell-1.2.0
 	>=app-text/enchant-1.6.0
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4=[introspection] )
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:= )
 	git? (
 		dev-libs/libgit2[ssh,threads]
 		>=dev-libs/libgit2-glib-0.25.0[ssh] )
