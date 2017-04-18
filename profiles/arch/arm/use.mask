@@ -81,7 +81,6 @@ lirc
 lm_sensors
 xemacs
 scanner
-zvbi
 fluidsynth
 sid
 mms
@@ -100,7 +99,6 @@ rtmp
 lpsol
 upnp
 libtar
-zvbi
 devil
 gts
 anthy
