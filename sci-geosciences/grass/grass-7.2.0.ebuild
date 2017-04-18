@@ -19,7 +19,7 @@ HOMEPAGE="http://grass.osgeo.org/"
 SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/7.0.4"
+SLOT="0/7.2.0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
