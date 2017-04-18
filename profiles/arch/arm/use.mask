@@ -65,7 +65,6 @@ tracker
 xindy
 lyx
 lasi
-schroedinger
 hardened
 frei0r
 libvirt
