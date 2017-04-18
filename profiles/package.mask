@@ -171,66 +171,9 @@ dev-perl/File-DirWalk
 >=virtual/perl-ExtUtils-Command-7.180.0
 >=dev-perl/Net-Twitter-4.10.420
 
-# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
-# Broken. Dead upstream. Unmaintained.
-# Masked for removal in 30 days.
-net-misc/apt-proxy
-
-# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
-# Broken. Dead upstream. Unmaintained.
-# Masked for removal in 30 days. Bug #604836.
-gnome-extra/zeitgeist-datasources
-
-# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
-# Fails to run. Ancient. Unmaintained. Dead upstream.
-# Masked for removal in 30 days. Bug #605120.
-net-p2p/phxd
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (17 Mar 2017)
-# Requires obsolete gstreamer:0.10, bug 604686
-# Removal in 30 days
-dev-perl/GStreamer
-dev-perl/GStreamer-Interfaces
-
-# Patrice Clement <monsieurp@gentoo.org> (18 Mar 2017)
-# Does not compile anymore. Upstream dead.
-# Removal in 30 days.
-dev-java/swidgets
-
 # Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
 # Testing x32 patch backports from 3.9
 =dev-util/cmake-3.7.2-r10
-
-# Michael Palimaka <kensington@gentoo.org> (11 Mar 2017)
-# Fails to build. Dead upstream.
-# Masked for removal in 30 days. Bug #592184.
-dev-scheme/schoca
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
-# Fails since upgrade to dev-lang/perl-5.12 (!).
-# Removal in 30 days. Bug 336898.
-dev-perl/Net-Google-SafeBrowsing-UpdateRequest
-dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
-# Dead upstream; the library has been picked up by
-# dev-perl/Text-BibTeX and is further developed there.
-# Please uninstall dev-libs/btparse and re-build your
-# application against >=dev-perl/Text-BibTeX-0.780.0-r1
-# (this should happen automatically with tellico, the
-# only reverse dependency in the main tree).
-# Removal in 30 days. Bug 599710.
-dev-libs/btparse
-
-# Patrice Clement <monsieurp@gentoo.org> (11 Mar 2017)
-# Upstream dead: no update since 2003. Ebuild is outdated and buggy.
-# Removal in 30 days. Bug #279088
-dev-java/jusb
-
-# Anthony G. Basile <blueness@gentoo.org> (11 Mar 2017)
-# Masked for removal in 30 days.  No longer supported
-# upstream.  Use net-proxy/obfs4proxy instread.
-net-proxy/obfsproxy
 
 # Gnome Team <gnome@gentoo.org> (08 Mar 2017)
 # GNOME 3.24 mask (#611270)
