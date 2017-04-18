@@ -1,14 +1,17 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit gnome2-utils
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+
+inherit gnome2-utils python-r1
 
 DESCRIPTION="GNOME integration for Spotify"
 HOMEPAGE="https://github.com/mrpdaemon/gnome-integration-spotify"
-SRC_URI="https://github.com/mrpdaemon/${PN}/tarball/${PV} -> ${PN}-git-${PV}.tgz"
-S="${WORKDIR}/mrpdaemon-${PN}-df9124d"
+#SRC_URI="https://github.com/mrpdaemon/${PN}/tarball/${PV} -> ${PN}-git-${PV}.tgz"
+SRC_URI="https://github.com/mrpdaemon/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+#S="${WORKDIR}/mrpdaemon-${PN}-df9124d"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -17,8 +20,8 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-lang/python
-	dev-python/dbus-python
+	${PYTHON_DEPS}
+	dev-python/dbus-python[${PYTHON_USEDEP}]
 	media-gfx/imagemagick
 	x11-misc/wmctrl
 	x11-misc/xautomation
@@ -27,6 +30,7 @@ RDEPEND="${DEPEND}
 
 src_install() {
 	dobin spotify-dbus.py
+	python_replicate_script "${ED}"/usr/bin/spotify-dbus.py
 	mkdir -p "${D}/etc/gconf/schemas"
 	cp spotify.schemas "${D}/etc/gconf/schemas"
 }
