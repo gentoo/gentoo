@@ -62,8 +62,10 @@ src_prepare() {
 
 	kde4-meta_src_prepare
 
-	# Avoid doc file collisions
-	sed -e "/man-kbookmarkmerger/d" -i doc/konqueror/CMakeLists.txt || die
+	# Avoid doc file collisions with kde-apps/keditbookmarks:5
+	if use handbook; then
+		sed -e "/man-kbookmarkmerger/d" -i doc/konqueror/CMakeLists.txt || die
+	fi
 
 	use filemanager || cmake_comment_add_subdirectory dolphin
 
