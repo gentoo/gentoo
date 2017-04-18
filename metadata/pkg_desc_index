@@ -4252,7 +4252,6 @@ dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for
 dev-java/junitperf 1.9.1-r2: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
 dev-java/jupidator 0.6.0 0.6.0-r1: Jupidator is a library/tool in Java for automatic updating of applications
-dev-java/jusb 0.4.4-r1: jUSB provides a Free Software Java API for USB
 dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM
 dev-java/jvyaml 0.2.1-r2: Java YAML parser and emitter
@@ -4419,7 +4418,6 @@ dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitorin
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swarmcache 1.0_pre20050106-r1 1.0_pre20050106-r2: Cluster-aware Caching for Java
-dev-java/swidgets 0.1.1-r1: Various reusable SWING components
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swing-worker 1.1: Java 1.6 SwingWorker backport for Java 1.5
 dev-java/swingx 1.6.4: A collection of powerful, useful, and just plain fun Swing components
@@ -4633,7 +4631,6 @@ dev-libs/boost 1.62.0-r1 1.63.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.15-r1 2.0.1: A C++ crypto library
-dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossless compression library
@@ -5918,8 +5915,6 @@ dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written us
 dev-perl/GDGraph 1.490.0 1.510.0 1.520.0 1.540.0: Perl5 module to create charts using the GD module
 dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
-dev-perl/GStreamer 0.200.0: Perl bindings for GStreamer
-dev-perl/GStreamer-Interfaces 0.60.0-r1: Perl interface to the GStreamer Interfaces library
 dev-perl/Gearman 2.3.2 2.4.2 2.4.3: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
@@ -6169,7 +6164,6 @@ dev-perl/Mail-SPF-Query 1.999.1-r1: query Sender Policy Framework for an IP,emai
 dev-perl/Mail-SRS 0.310.0-r2: Interface to Sender Rewriting Scheme
 dev-perl/Mail-Sender 0.8.23 0.903.0: Module for sending mails with attachments through an SMTP server
 dev-perl/Mail-Sendmail 0.790.0-r1: Simple platform independent mailer
-dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing 1.30.0-r1: SpamAssassin plugin to score mail based on Google blocklists
 dev-perl/Mail-Transport 3.0.0: Base class for Email Message Exchange
 dev-perl/MailTools 2.140.0 2.180.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
@@ -6289,7 +6283,6 @@ dev-perl/Net-Daemon 0.480.0-r1: Abstract base class for portable servers
 dev-perl/Net-Domain-TLD 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
-dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.90.0 6.120.0 6.130.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.600: Perl extension for simple IMAP account handling
@@ -9917,7 +9910,6 @@ dev-scheme/kawa 1.10 1.14: Kawa, the Java-based Scheme system & Language Framewo
 dev-scheme/net-http 0.3.1 0.3.1-r1: Library for doing HTTP client-side programming in Guile
 dev-scheme/racket 5.3.6 6.7: General purpose, multi-paradigm programming language in the Lisp-Scheme family.
 dev-scheme/scheme48 1.9.2-r1: Scheme48 is an implementation of the Scheme Programming Language
-dev-scheme/schoca 0.3.0-r1: Schoca is a Scheme implementation in OCaml
 dev-scheme/scm 5.5.6-r2: SCM is a Scheme implementation from the author of slib
 dev-scheme/scmxlate 20090410: Scmxlate is a configuration tool for software packages written in Scheme
 dev-scheme/sigscheme 0.8.5: SigScheme is an R5RS Scheme interpreter for embedded use
@@ -11635,7 +11627,6 @@ gnome-extra/synapse 0.2.99.1 0.2.99.2: A program launcher in the style of GNOME 
 gnome-extra/yelp 3.22.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
-gnome-extra/zeitgeist-datasources 0.8.1: Plugins whose work is to push activities as events into Zeitgeist daemon
 gnome-extra/zeitgeist-explorer 0.2-r1: Monitor and inspect Zeitgeist's log at a low level - developer tool
 gnome-extra/zenity 3.22.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
@@ -15077,7 +15068,6 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/apt-cacher-ng 2 3: Yet another caching HTTP proxy for Debian/Ubuntu software packages
-net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
 net-misc/aria2 1.30.0 1.31.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
@@ -15529,7 +15519,6 @@ net-p2p/myster 8.0-r1: Myster is a decentralized file sharing network
 net-p2p/ncdc 1.19.1 1.20 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.2.16-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/phxd 0.1.0_pre23092005: Next generation Hotline server in python. kang's branch
 net-p2p/ppcoin-qt 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
@@ -15608,7 +15597,6 @@ net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-th
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/obfs4proxy 0.0.6 0.0.7 9999: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
-net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's pluggable transport protocol
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: Piper (a tool for manipulating SOCKS5 servers)
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
