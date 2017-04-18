@@ -286,6 +286,7 @@ net-proxy/obfsproxy
 >=gnome-base/dconf-editor-3.23
 >=dev-util/devhelp-3.23
 >=mail-client/evolution-3.23
+>=dev-libs/libgit2-glib-0.25
 >=dev-vcs/gitg-3.23
 >=gnome-extra/gnome-builder-3.23
 >=games-board/gnome-mines-3.23
