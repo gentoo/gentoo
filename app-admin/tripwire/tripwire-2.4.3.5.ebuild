@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Tripwire/tripwire-open-source/archive/${PV}.tar.gz -
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
-IUSE="libressl ssl static +tools"
+IUSE="libressl selinux ssl static +tools"
 
 DEPEND="sys-devel/automake
 	sys-devel/autoconf
@@ -22,6 +22,7 @@ DEPEND="sys-devel/automake
 	)"
 RDEPEND="virtual/cron
 	virtual/mta
+	selinux? ( sec-policy/selinux-tripwire )
 	ssl? ( dev-libs/openssl )"
 PDEPEND="tools? ( app-admin/mktwpol )"
 
