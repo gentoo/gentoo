@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit multilib multiprocessing autotools
+PYTHON_COMPAT=( python2_7 )
+inherit multilib multiprocessing autotools python-single-r1
 
 MYP=${PN}-gpl-${PV}
 
@@ -20,19 +20,17 @@ RDEPEND="dev-lang/gnat-gpl
 	gmp? ( dev-libs/gmp:* )
 	postgresql? ( dev-db/postgresql:* )
 	pygobject? (
-	|| (
-		dev-python/pygobject:2
-		dev-python/pygobject:3
-		)
+		dev-python/pygobject:*[${PYTHON_USEDEP}]
 	)
-	python? ( dev-lang/python:2.7 )
+	python? ( ${PYTHON_DEPS} )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		dev-ada/gprbuild[static?]
-		dev-ada/gprbuild[shared?]
+		dev-ada/gprbuild[static?,shared?]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}"/${MYP}-src
 
@@ -48,10 +46,12 @@ pkg_setup() {
 		eerror "2) set ADA=gcc-4.9.4 in make.conf"
 		die "ada compiler not available"
 	fi
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -74,7 +74,7 @@ src_configure() {
 		$(use_enable readline gpl) \
 		$(use_enable readline) \
 		$(use_enable syslog) \
-		--with-python-exec=python2 \
+		--with-python-exec=${EPYTHON} \
 		--enable-shared-python \
 		--without-gtk \
 		--disable-pygtk \
@@ -102,6 +102,8 @@ src_install() {
 	dodoc -r features-* known-problems-* examples
 	mv "${D}"/usr/share/doc/${PN}/GNATColl.pdf "${D}"/usr/share/doc/${PF}/
 	mv "${D}"/usr/share/doc/${PN}/html/html "${D}"/usr/share/doc/${PF}/
+	rm -rf "${D}"/usr/share/doc/${PN}
+	use python && python_fix_shebang "${ED}"usr/share/gnatcoll/dborm.py
 }
 
 src_test() {
