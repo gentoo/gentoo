@@ -222,11 +222,6 @@ dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing
 # Removal in 30 days. Bug 599710.
 dev-libs/btparse
 
-# Patrice Clement <monsieurp@gentoo.org> (11 Mar 2017)
-# Upstream dead: no update since 2003. Ebuild is outdated and buggy.
-# Removal in 30 days. Bug #279088
-dev-java/jusb
-
 # Gnome Team <gnome@gentoo.org> (08 Mar 2017)
 # GNOME 3.24 mask (#611270)
 >=x11-themes/adwaita-icon-theme-3.23
