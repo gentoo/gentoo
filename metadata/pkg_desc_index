@@ -4826,7 +4826,7 @@ dev-libs/libgcrypt 1.5.6-r101 1.7.6: General purpose crypto library based on the
 dev-libs/libgdata 0.17.6 0.17.7: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.24.4: Git library for GLib
+dev-libs/libgit2-glib 0.24.4 0.25.0: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0: Library to manipulate tensors on the GPU
@@ -10567,7 +10567,7 @@ dev-vcs/git-remote-hg 0.2 0.3: Semi-official Mercurial bridge from Git project
 dev-vcs/git-sh 1.1 1.3: A customized bash environment suitable for git work
 dev-vcs/git-spindle 3.3 3.3-r1: Git subcommands for interacting with central services
 dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201 2015_p20160201-r1: Assorted git-related scripts
-dev-vcs/gitg 3.22.0: git repository viewer for GNOME
+dev-vcs/gitg 3.22.0 3.23.90: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
 dev-vcs/gitinspector 0.3.1 0.3.2 0.4.2: Statistical analysis tool for git repositories
 dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 3.6.4 3.6.4-r1 3.6.5 3.6.6 9999: Highly flexible server for git directory version tracker
