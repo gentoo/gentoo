@@ -101,7 +101,6 @@ fits
 tokyocabinet
 vaapi
 rtmp
-vpx
 lpsol
 upnp
 libtar
