@@ -15,9 +15,9 @@ IUSE="libressl"
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	dev-libs/libassuan:0=
-	>=dev-libs/libgcrypt-1.2.2:0=
-	>=dev-libs/libgpg-error-1.3
-	>=dev-libs/pkcs11-helper-1.02"
+	dev-libs/libassuan:=
+	>=dev-libs/libgcrypt-1.2.2:=
+	>=dev-libs/libgpg-error-1.3:=
+	>=dev-libs/pkcs11-helper-1.02:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
