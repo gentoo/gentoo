@@ -40,7 +40,7 @@ RDEPEND="
 	>=dev-python/pygobject-3.22.0:3
 	>=dev-libs/libxml2-2.9
 	>=x11-libs/pango-1.38.0
-	>=dev-libs/libpeas-1.18.0
+	>=dev-libs/libpeas-1.18.0[python,${PYTHON_USEDEP}]
 	>=dev-libs/json-glib-1.2.0
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4=[introspection] )
 	clang? ( sys-devel/clang )
