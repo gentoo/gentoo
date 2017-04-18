@@ -101,6 +101,15 @@
     package Linker is
 --- gnatcoll-gpl-2016-src/gnatcoll_shared.gpr.in.old	2017-01-20 19:50:03.222808656 +0100
 +++ gnatcoll-gpl-2016-src/gnatcoll_shared.gpr.in	2017-01-20 19:50:28.200399274 +0100
+@@ -13,7 +13,7 @@
+ 
+    type Yes_No is ("yes", "no");
+    Gtk    : Yes_No := External ("GTK", "@WITH_GTK@");
+-   Python : Yes_No := External ("PYTHON", "@WITH_PYTHON@");
++   Python : Yes_No := "@WITH_PYTHON@";
+    Syslog : Yes_No := External ("SYSLOG", "@WITH_SYSLOG@");
+    Postgres : Yes_No := External ("POSTGRES", "@WITH_POSTGRES@");
+    type Sqlite_Inclusion is ("yes", "no", "embedded");
 @@ -67,7 +67,7 @@
  
           when "Production" =>
