@@ -487,7 +487,6 @@ media-gfx/imagemagick autotrace
 app-admin/gkrellm ntlm
 
 # missing keywords
-media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavpack dvd
 
 # projectm not keyworded, bug #314969
