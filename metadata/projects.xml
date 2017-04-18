@@ -4271,9 +4271,9 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>wiki@gentoo.org</email>
-    <name>Gentoo Wiki Project</name>
+    <name>Wiki Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Wiki</url>
-    <description>The Gentoo Wiki Project oversees the community and the content surrounding https://wiki.gentoo.org</description>
+    <description>The Wiki Project oversees the community and the content surrounding https://wiki.gentoo.org</description>
     <member is-lead="1">
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
