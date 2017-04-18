@@ -176,11 +176,6 @@ dev-perl/File-DirWalk
 # Masked for removal in 30 days.
 net-misc/apt-proxy
 
-# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
-# Broken. Dead upstream. Unmaintained.
-# Masked for removal in 30 days. Bug #604836.
-gnome-extra/zeitgeist-datasources
-
 # Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
 # Testing x32 patch backports from 3.9
 =dev-util/cmake-3.7.2-r10
