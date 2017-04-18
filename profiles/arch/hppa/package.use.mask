@@ -10,7 +10,8 @@ dev-vcs/git libsecret
 # Jeroen Roovers <jer@gentoo.org> (4 Feb 2017)
 # media-libs/libilbc has not been ported to HPPA
 # media-libs/zimg triggers a toolchain issue (bug #597152)
-media-video/ffmpeg libilbc zimg
+# sofalizer needs sci-libs/netcdf and sci-libs/hdf5 (bug #615510)
+media-video/ffmpeg libilbc sofalizer zimg
 
 # Jeroen Roovers <jer@gentoo.org> (3 Feb 2017)
 # net-mail/notmuch is not keyworded
