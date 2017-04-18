@@ -5225,7 +5225,7 @@ dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and i
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
 dev-ml/flow_parser 0.42.0 0.43.1 0.44.0: JavaScript parser written in OCaml
-dev-ml/fmt 0.8.2: Combinators to devise OCaml Format pretty-printing functions
+dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
@@ -8940,7 +8940,7 @@ dev-ros/actionlib 1.11.8 1.11.9 9999: Provides a standardized interface for inte
 dev-ros/actionlib_msgs 1.12.5 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 9999: Actionlib tutorials
 dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
-dev-ros/angles 1.9.10 9999: Set of simple math utilities to work with angles
+dev-ros/angles 1.9.11 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.1 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Messages for transmitting audio via ROS
 dev-ros/audio_play 0.3.1 9999: Outputs audio to a speaker from a source node
@@ -8999,8 +8999,8 @@ dev-ros/genlisp 0.4.16 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.8 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
 dev-ros/genpy 0.6.3 0.6.4 0.6.5 9999: Python ROS message and service generators
-dev-ros/geodesy 0.5.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
-dev-ros/geographic_msgs 0.5.0 9999: ROS messages for Geographic Information Systems
+dev-ros/geodesy 0.5.0 0.5.2 9999: Python and C++ interfaces for manipulating geodetic coordinates
+dev-ros/geographic_msgs 0.5.0 0.5.2 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.5.1 0.5.2 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.12.5 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/global_planner 1.13.0 1.13.1 1.14.0 9999: Path planner library and node
@@ -10478,7 +10478,7 @@ dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
 dev-util/sysdig 0.12.1 0.13.0 0.14.0 0.15.0: A system exploration and troubleshooting tool
-dev-util/sysprof 3.22.2: System-wide Linux Profiler
+dev-util/sysprof 3.22.2 3.24.1: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 2.9 3.1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
 dev-util/ticpp 0_p20120423 9999: A completely new interface to TinyXML that uses MANY of the C++ strengths
@@ -15807,7 +15807,7 @@ ros-meta/diagnostics 1.8.8 1.8.9 1.8.10 9999: Packages related to gathering, vie
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
 ros-meta/executive_smach 2.0.0 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 9999: Interface for using ROS with the gazebo simulator
-ros-meta/geographic_info 0.4.0 0.5.0 9999: Geographic information metapackage
+ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 1.11.8 9999: Common geometric calculations
 ros-meta/geometry_experimental 0.5.13 0.5.14 0.5.15 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
