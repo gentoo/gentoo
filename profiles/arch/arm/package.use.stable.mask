@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (18 Apr 2017)
+# No gst-plugins-vp8:0.10 stable
+media-plugins/gst-plugins-meta:0.10 vpx
+
 # Michael Weber <xmw@gentoo.org> (1 Apr 2017)
 # no stable jdk
 media-libs/libbluray java
