@@ -20,15 +20,14 @@ fi
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-IUSE="+ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X"
+IUSE="+ocamlopt doc +deriving +ppx +react +xml X"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?,X?]
 	>=dev-ml/lwt-2.4.4:=[camlp4(+)]
 	react? ( dev-ml/react:=  dev-ml/reactiveData:= )
 	xml? ( >=dev-ml/tyxml-4:= )
-	ppx? ( dev-ml/ppx_tools:= )
-	ppx-deriving? ( dev-ml/ppx_deriving:= )
+	ppx? ( dev-ml/ppx_tools:= dev-ml/ppx_deriving:= dev-ml/ppx_driver:= )
 	dev-ml/cmdliner:=
 	dev-ml/menhir:=
 	dev-ml/ocaml-base64:=
@@ -48,7 +47,8 @@ src_configure() {
 	use X || echo "WITH_GRAPHICS := NO" >> Makefile.conf
 	use react || echo "WITH_REACT := NO" >> Makefile.conf
 	use ppx || echo "WITH_PPX := NO" >> Makefile.conf
-	use ppx-deriving || echo "WITH_PPX_PPX_DERIVING := NO" >> Makefile.conf
+	use ppx || echo "WITH_PPX_DERIVING := NO" >> Makefile.conf
+	use ppx || echo "WITH_PPX_DRIVER := NO" >> Makefile.conf
 	echo "WITH_ASYNC := NO" >> Makefile.conf
 }
 
