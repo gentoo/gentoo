@@ -14468,7 +14468,7 @@ net-dialup/lrzsz 0.12.20-r3: Communication package providing the X, Y, and ZMODE
 net-dialup/martian-modem 20100123-r1: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dialup/mgetty 1.1.37-r1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
-net-dialup/minicom 2.6 2.7 2.7-r1: Serial Communication Program
+net-dialup/minicom 2.6 2.7 2.7-r1 2.7.1: Serial Communication Program
 net-dialup/moserial 3.0.10: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
