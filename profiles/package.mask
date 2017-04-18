@@ -190,7 +190,6 @@ net-p2p/phxd
 # Requires obsolete gstreamer:0.10, bug 604686
 # Removal in 30 days
 dev-perl/GStreamer
-dev-perl/GStreamer-Interfaces
 
 # Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
 # Testing x32 patch backports from 3.9
