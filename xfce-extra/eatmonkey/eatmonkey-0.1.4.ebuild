@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A download manager that works exclusively with aria2"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/eatmonkey"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/eatmonkey"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"

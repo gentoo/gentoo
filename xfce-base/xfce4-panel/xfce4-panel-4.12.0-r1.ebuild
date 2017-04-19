@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="Panel for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/"
+HOMEPAGE="https://docs.xfce.org/xfce/xfce4-panel/start"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"

@@ -7,7 +7,7 @@ inherit virtualx xfconf
 MY_P=${P/t/T}
 
 DESCRIPTION="File manager for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/ http://thunar.xfce.org/"
+HOMEPAGE="https://www.xfce.org/projects/ https://docs.xfce.org/xfce/thunar/start"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
