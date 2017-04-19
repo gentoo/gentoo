@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="Additional themes for the Xfce window manager"
-HOMEPAGE="http://www.xfce.org/projects/"
+HOMEPAGE="https://www.xfce.org/projects/"
 SRC_URI="mirror://xfce/src/art/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"

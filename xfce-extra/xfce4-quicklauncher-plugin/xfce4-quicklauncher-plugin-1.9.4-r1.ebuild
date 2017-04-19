@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools xfconf
 
 DESCRIPTION="A quicklauncher plug-in for the Xfce panel"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-quicklauncher-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-quicklauncher-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

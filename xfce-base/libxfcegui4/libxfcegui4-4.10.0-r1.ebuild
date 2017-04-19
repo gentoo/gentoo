@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A compability library for unported Xfce 4.6 plugins (DEPRECATED)"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage http://git.xfce.org/archive/libxfcegui4/"
+HOMEPAGE="https://git.xfce.org/archive/libxfcegui4/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"

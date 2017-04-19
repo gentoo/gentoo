@@ -5,7 +5,7 @@ EAPI=6
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="A dict.org querying application and panel plug-in for the Xfce desktop"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/xfce4-dict"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-dict"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

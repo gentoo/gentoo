@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A terminal emulator for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/terminal/"
+HOMEPAGE="https://docs.xfce.org/apps/terminal/start"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

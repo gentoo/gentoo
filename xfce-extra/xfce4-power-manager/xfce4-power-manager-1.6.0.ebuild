@@ -5,7 +5,7 @@ EAPI=5
 inherit linux-info xfconf
 
 DESCRIPTION="Power manager for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/xfce4-power-manager"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-power-manager"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
