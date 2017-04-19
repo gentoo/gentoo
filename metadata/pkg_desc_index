@@ -1880,7 +1880,7 @@ app-misc/mosquitto 1.4.8 1.4.9 1.4.10: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
-app-misc/muttprint 0.73-r3 0.73-r4: Script for pretty printing of your mails
+app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/neofetch 1.8.1 1.9.1 2.0.2 3.0.1 9999: Simple information system script
 app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneakers'
