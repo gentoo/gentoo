@@ -1087,16 +1087,8 @@ app-pda/gtkpod:clutter - Enable clutter support for displaying coverart
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
 app-portage/conf-update:libressl - Enable SSL connections and crypto functions using dev-libs/libressl
 app-portage/eix:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
-app-portage/eix:dep - Make DEP=true the default which enables support for {,R,P}DEPEND but requires roughly double disk and memory.
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
-app-portage/eix:optimization - Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS
-app-portage/eix:required-use - Make REQUIRED_USE=true the default which enables support for REQUIRED_USE but requires more disk and memory.
-app-portage/eix:security - This adds some checks which can prevent certain exploits if e.g. the eix code has a bug. If you use the hardened toolchain, using this flag does not increase security and can even lead to problems.
 app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix
-app-portage/eix:strong-optimization - Adds several more agressive CXXFLAGS/LDFLAGS for optimization like graphite (if available). May cause trouble with some buggy compiler versions. Absense of this USE flag does not strip user's *FLAGS
-app-portage/eix:strong-security - Add many checks to prevent exploits if eix code has a bug. This will slow down eix considerably. Use only if you are paranoid or have reasons to suspect a bug.
-app-portage/eix:swap-remote - Swap role of remote addresses in eix-remote, making the data from gpo.zugaina.org the first choice.
-app-portage/eix:tools - Create separate binary for script helper tools; useful if they are called extremely often
 app-portage/g-sorcery:bson - Support BSON file format for package DB
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:cvs - Support dev-vcs/cvs based overlays
