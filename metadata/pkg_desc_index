@@ -9453,7 +9453,7 @@ dev-ruby/hashr 2.0.0 2.0.1: Simple Hash extension to make working with nested ha
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 2.0.0 3.2.2 3.3.0 3.3.1: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.1.0: Encrypted YAML backend for hiera
-dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
+dev-ruby/hiera-eyaml-gpg 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.6 1.7.8: Highline is a high-level command-line IO library for ruby
 dev-ruby/hike 1.2.3-r1 2.1.2: Hike is a Ruby library for finding files in a set of paths
@@ -9468,10 +9468,10 @@ dev-ruby/http 0.6.3-r1 0.9.8 0.9.8-r1 1.0.2 2.0.3 2.1.0 2.2.0 2.2.1: An easy-to-
 dev-ruby/http-cookie 1.0.2-r1 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1-r1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
-dev-ruby/httparty 0.13.7 0.14.0 0.14.0-r1: Makes http fun! Also, makes consuming restful web services dead easy
+dev-ruby/httparty 0.14.0 0.14.0-r1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.2.4 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2 0.8.0 0.8.1: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.6.11-r1 0.7.0-r2 0.8.1: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inflecto 0.0.2: Inflector for ruby
