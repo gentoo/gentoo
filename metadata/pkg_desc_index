@@ -4636,7 +4636,7 @@ dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP socket
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
-dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
+dev-libs/capnproto 0.5.3 0.5.3.1: RPC/Serialization system with capabilities support
 dev-libs/capstone 3.0.5_rc2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
@@ -8145,7 +8145,7 @@ dev-python/pycadf 2.2.0 2.4.0 2.5.0: python implementation of DMTF Cloud Audit (
 dev-python/pycairo 1.10.0-r4 1.10.0-r5: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
-dev-python/pycapnp 0.5.9-r1 0.5.10 0.5.11: Python wrapping of the Cap'n Proto library
+dev-python/pycapnp 0.5.9-r1 0.5.10 0.5.11 0.5.12: Python wrapping of the Cap'n Proto library
 dev-python/pycares 2.1.0 2.1.1: Python interface for c-ares
 dev-python/pycdf 0.6.3-r1: Python interface to scientific netCDF library
 dev-python/pycdio 0.20-r1: Python OO interface to libcdio (CD Input and Control library)
