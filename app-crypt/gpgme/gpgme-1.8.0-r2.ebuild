@@ -32,7 +32,7 @@ RDEPEND="${COMMON_DEPEND}
 		!kde-apps/kdepimlibs:4
 	)"
 
-REQUIRED_USE="qt5? ( cxx )"
+REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.8-et_EE.patch
