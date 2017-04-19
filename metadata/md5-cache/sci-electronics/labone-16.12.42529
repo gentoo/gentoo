@@ -9,4 +9,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://www.zhinst.com/system/files/downloads/files/LabOneLinux64-16.12.42529.tar.gz
 _eclass_exported_funcs=pkg_prerm:- src_install:-
-_md5_=67b3e0d86cf3a347b38c44b6c6547c20
+_md5_=fd28f8a5f1611eea9e359283a1ba2805
