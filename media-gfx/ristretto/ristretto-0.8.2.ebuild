@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A fast and lightweight picture viewer for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/ristretto"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/ristretto"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

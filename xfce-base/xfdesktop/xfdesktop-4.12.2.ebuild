@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="Desktop manager for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/"
+HOMEPAGE="https://docs.xfce.org/xfce/xfdesktop/start"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

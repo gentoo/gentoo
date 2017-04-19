@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Xfce's freedesktop.org specification compatible menu implementation library"
-HOMEPAGE="http://www.xfce.org/projects/libraries/"
+HOMEPAGE="https://docs.xfce.org/xfce/exo/start"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2 FDL-1.1"
