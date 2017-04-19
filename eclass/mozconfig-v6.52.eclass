@@ -328,10 +328,6 @@ mozconfig_config() {
 	fi
 	if [[ ${CHOST} == armv* ]] ; then
 		mozconfig_annotate '' --with-float-abi=hard
-		if ! use skia ; then
-			mozconfig_annotate 'Gentoo forces skia for arm' --enable-skia
-		fi
-
 		if ! use system-libvpx ; then
 			sed -i -e "s|softfp|hard|" \
 				"${S}"/media/libvpx/moz.build
