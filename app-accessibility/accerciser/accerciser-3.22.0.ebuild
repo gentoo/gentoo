@@ -14,6 +14,7 @@ LICENSE="BSD CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.5.2:2
