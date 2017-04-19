@@ -262,9 +262,9 @@ mozconfig_config() {
 	local toolkit="cairo-gtk2"
 	local toolkit_comment=""
 	if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
-		if use gtk3; then
+		if use force-gtk3; then
 			toolkit="cairo-gtk3"
-			toolkit_comment="gtk3 use flag"
+			toolkit_comment="force-gtk3 use flag"
 		fi
 	fi
 	if [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
