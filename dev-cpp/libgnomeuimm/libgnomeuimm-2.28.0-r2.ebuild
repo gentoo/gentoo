@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit flag-o-matic gnome2
 
 DESCRIPTION="C++ bindings for libgnomeui"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1"
 SLOT="2.6"

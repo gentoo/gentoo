@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils gnome2 multilib-minimal virtualx
 
 DESCRIPTION="C++ interface for GTK+"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
