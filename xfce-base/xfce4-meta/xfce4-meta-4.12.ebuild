@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="The Xfce Desktop Environment (meta package)"
-HOMEPAGE="http://www.xfce.org/"
+HOMEPAGE="https://www.xfce.org/"
 SRC_URI=""
 
 LICENSE="metapackage"

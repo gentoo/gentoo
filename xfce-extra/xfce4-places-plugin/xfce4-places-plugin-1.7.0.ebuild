@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A panel plug-in to provide quick access to files, folders and removable media"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-places-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-places-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
