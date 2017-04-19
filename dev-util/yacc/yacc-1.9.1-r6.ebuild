@@ -15,14 +15,14 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 
 PATCHES=(
 	# mkstemp patch from byacc ebuild.
-	"${FILESDIR}"/${P}-mkstemp.patch
+	"${FILESDIR}/${P}-mkstemp.patch"
 
 	# The following patch fixes yacc to run correctly on ia64 (and
 	# other 64-bit arches). See bug 46233.
-	"${FILESDIR}"/${P}-ia64.patch
+	"${FILESDIR}/${P}-ia64.patch"
 
 	# Avoid stack access error. See bug 232005.
-	"${FILESDIR}"/${P}-CVE-2008-3196.patch
+	"${FILESDIR}/${P}-CVE-2008-3196.patch"
 )
 
 src_prepare() {
@@ -47,15 +47,15 @@ pkg_preinst() {
 	# bison installs a /usr/bin/yacc symlink ...
 	# we need to remove it to avoid triggering
 	# collision-protect errors. See bug 90089.
-	if [[ -L ${ROOT}/usr/bin/yacc ]]; then
-		rm -v "${ROOT}"/usr/bin/yacc || die
+	if [[ -L "${ROOT}/usr/bin/${PN}" ]]; then
+		rm -v "${ROOT}/usr/bin/${PN}" || die
 	fi
 }
 
 pkg_postrm() {
 	# and if we uninstall yacc but keep bison,
 	# let's restore the /usr/bin/yacc symlink.
-	if [[ ! -e ${ROOT}/usr/bin/yacc ]] && [[ -e ${ROOT}/usr/bin/yacc.bison ]]; then
-		ln -s yacc.bison "${ROOT}"/usr/bin/yacc || die
+	if [[ ! -e "${ROOT}/usr/bin/${PN}" ]] && [[ -e "${ROOT}/usr/bin/${PN}.bison" ]]; then
+		ln -s yacc.bison "${ROOT}/usr/bin/${PN}" || die
 	fi
 }
