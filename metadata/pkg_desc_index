@@ -14606,7 +14606,7 @@ net-fs/samba 4.2.11 4.2.14 4.5.7 4.5.8 4.6.1 4.6.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
-net-fs/sshfs 2.8: Fuse-filesystem utilizing the sftp service
+net-fs/sshfs 2.8 2.9: Fuse-filesystem utilizing the sftp service
 net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
 net-fs/torus 0.1.2: A distributed storage system coordinated through etcd
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
