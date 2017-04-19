@@ -10278,7 +10278,7 @@ dev-util/drone-ui 0_pre20170305 0.5.0: React front-end for the Drone continuous 
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
-dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
+dev-util/dwdiff 2.1.0 2.1.0-r1 2.1.1: diff-like program that operates at the word level instead of the line level
 dev-util/edb-debugger 0.9.21 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -18185,7 +18185,7 @@ www-apache/mod_macro 1.1.10 1.2.1: An Apache2 module providing macros for the Ap
 www-apache/mod_musicindex 1.4.1: mod_musicindex allows nice displaying of directories containing music files
 www-apache/mod_nss 1.0.12-r1: SSL/TLS module for the Apache HTTP server
 www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
-www-apache/mod_perl 2.0.8 2.0.10_pre201601 2.0.10: An embedded Perl interpreter for Apache2
+www-apache/mod_perl 2.0.8 2.0.10: An embedded Perl interpreter for Apache2
 www-apache/mod_python 3.5.0-r1: An Apache2 module providing an embedded Python interpreter
 www-apache/mod_qos 11.12: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
