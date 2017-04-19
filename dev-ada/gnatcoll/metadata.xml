@@ -6,7 +6,6 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<use>
-		<flag name="pygobject">Adds support for pygobject</flag>
 		<flag name="postgresql">Adds support for postgresql</flag>
 		<flag name="projects">Adds support for projects</flag>
 		<flag name="shared">Build shared library</flag>
