@@ -30,9 +30,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}"-gnuplot_interface_fix.patch
-	"${FILESDIR}/${P}"-gcc6cxx14.patch
-	"${FILESDIR}/${P}"-gcc6cxx14-2.patch
-	"${FILESDIR}/${P}"-gcc6cxx14-3.patch
+	"${FILESDIR}/${P}"-gcc6cxx14-9.patch
 )
 
 src_unpack() {
