@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="C++ interface for pango"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.4"
