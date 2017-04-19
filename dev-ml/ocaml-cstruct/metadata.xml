@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>tomboy64@sina.cn</email>
-        <name>M.B.</name>
-        <description>Maintainer, assign bugs to him</description>
-    </maintainer>
-    <maintainer type="project">
+   <maintainer type="project">
         <email>ml@gentoo.org</email>
         <name>Gentoo ML Project</name>
     </maintainer>
-    <maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
-    </maintainer>
-    <use>
+   <use>
         <flag name="async">Support for asynchronous execution</flag>
         <flag name="lwt">Enable threads via lwt</flag>
-		<flag name="ppx">Enable the ppx syntax extension</flag>
+        <flag name="ppx">Enable the ppx syntax extension</flag>
     </use>
     <upstream>
         <remote-id type="github">mirage/ocaml-cstruct</remote-id>
