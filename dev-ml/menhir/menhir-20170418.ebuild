@@ -9,7 +9,7 @@ DESCRIPTION="LR(1) parser generator for the OCaml language"
 HOMEPAGE="http://gallium.inria.fr/~fpottier/menhir/"
 SRC_URI="http://gallium.inria.fr/~fpottier/menhir/${P}.tar.gz"
 
-LICENSE="QPL-1.0 LGPL-2-with-linking-exception"
+LICENSE="GPL-2 LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples +ocamlopt"
