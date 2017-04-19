@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ src_install() {
 		insinto "${instPath}/${instrDir}/API/C/lib"
 		doins API/C/lib/*.so
 		insinto "${instPath}/${instrDir}/API/C/include"
-		doins API/C/lib/*.h
+		doins API/C/include/*.h
 
 	fi
 
