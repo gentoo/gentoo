@@ -1,0 +1,15 @@
+DEFINED_PHASES=install setup
+DESCRIPTION=Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
+EAPI=6
+HOMEPAGE=https://github.com/fearedbliss/bliss-initramfs
+IUSE=python_targets_python3_4 python_targets_python3_5 python_single_target_python3_4 python_single_target_python3_5
+KEYWORDS=-* amd64
+LICENSE=BSD-2
+RDEPEND=python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] app-arch/cpio virtual/udev
+REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/fearedbliss/bliss-initramfs/archive/7.0.2.tar.gz -> bliss-initramfs-7.0.2.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=b05caac9d5b11bb2a78022d741460988
