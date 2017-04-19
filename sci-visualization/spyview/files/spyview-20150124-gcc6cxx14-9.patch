@@ -1,3 +1,18 @@
+diff --git a/configure.ac b/configure.ac
+index 5e1cfff..8850ce8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,6 +27,10 @@ AM_CONDITIONAL(WINDOWS,test $windows_target = yes)
+ AC_PROG_CXX
+ AC_PROG_CC
+ AM_PROG_CC_C_O
++
++# Check for C++11 language standard
++AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
++
+ # Check for fluid
+ AC_PATH_PROG(FLUID,fluid,none)
+ AC_ARG_VAR(FLUID,[path to executable to compile .fl files])
 diff --git a/spyview/Fl_Listbox.H b/spyview/Fl_Listbox.H
 index 35803fc..832792b 100644
 --- a/spyview/Fl_Listbox.H
@@ -13,10 +28,20 @@ index 35803fc..832792b 100644
  class Fl_Listbox : public Fl_Table
  {
 diff --git a/spyview/ImageData.C b/spyview/ImageData.C
-index 7ee936a..a9b2c17 100644
+index 7ee936a..eaac7a6 100644
 --- a/spyview/ImageData.C
 +++ b/spyview/ImageData.C
-@@ -2007,7 +2007,7 @@ void ImageData::grad_mag(double axis_bias)
+@@ -9,6 +9,9 @@
+ #include "mypam.h"
+ #include "../config.h"
+ 
++#include <cmath>
++using std::isnan;
++
+ #include <algorithm>
+ // From http://www.redhat.com/docs/manuals/enterprise/RHEL-3-Manual/gcc/variadic-macros.html
+ 
+@@ -2007,7 +2010,7 @@ void ImageData::grad_mag(double axis_bias)
    xderv();
    width = w;
    height = h;
@@ -25,7 +50,7 @@ index 7ee936a..a9b2c17 100644
    yderv();
    width = w;
    height = h;
-@@ -2083,7 +2083,7 @@ void ImageData::dderv(double theta) // theta in degrees!
+@@ -2083,7 +2086,7 @@ void ImageData::dderv(double theta) // theta in degrees!
    xderv();
    width = w;
    height = h;
@@ -62,19 +87,22 @@ index d85b440..f34ee67 100644
  class ImageWindow;
  class Image_Printer_Control;
 diff --git a/spyview/ImageWindow.C b/spyview/ImageWindow.C
-index b8bd0f9..134b198 100644
+index b8bd0f9..eeae649 100644
 --- a/spyview/ImageWindow.C
 +++ b/spyview/ImageWindow.C
-@@ -12,6 +12,8 @@
+@@ -12,6 +12,11 @@
  #include "ImageWindow_Module.H"
  #include <ctype.h>
  
++#include <cmath>
++using std::isnan;
++
 +#include "mypam.h"
 +
  #ifdef WIN32
  
  #include <windows.h>
-@@ -36,8 +38,6 @@
+@@ -36,8 +41,6 @@
  #define alt(state)   (!(state & FL_CTRL) && !(state & FL_SHIFT) &&  (state & FL_ALT))
  #define none(state)  (!(state & FL_CTRL) && !(state & FL_SHIFT) && !(state & FL_ALT))
  
@@ -83,7 +111,7 @@ index b8bd0f9..134b198 100644
  FILE *fopenwarn(const char *name, const char *mode)
  {
    FILE *fp = fopen(name, mode);
-@@ -482,7 +482,7 @@ double current_time()
+@@ -482,7 +485,7 @@ double current_time()
    stop.tv_usec = (long)(tmpres % 1000000UL);
  #endif
    double time = (((double)(stop.tv_sec)) + ((double)(stop.tv_usec) * 1e-6));
@@ -92,7 +120,7 @@ index b8bd0f9..134b198 100644
      info("time %e sec %d usec %d\n", time, stop.tv_sec, stop.tv_usec);
    return time;
  }
-@@ -1609,7 +1609,7 @@ void ImageWindow::runQueue()
+@@ -1609,7 +1612,7 @@ void ImageWindow::runQueue()
   	  for (int n=0; n<op->num_parameters; n++)
  	    {
  	      operations_string += "-";
@@ -142,15 +170,17 @@ index 683015b..e6f296f 100644
  #define LMAX USHRT_MAX
  
 diff --git a/spyview/bisector.H b/spyview/bisector.H
-index b22fb8f..039c5ff 100644
+index b22fb8f..c7e64a6 100644
 --- a/spyview/bisector.H
 +++ b/spyview/bisector.H
-@@ -2,7 +2,7 @@
+@@ -2,7 +2,9 @@
  #define __bisector_h__
  #include <assert.h>
  #include <math.h>
 -using namespace std;
 +
++#include <cmath>
++using std::isnan;
  
  class bisector
  {
