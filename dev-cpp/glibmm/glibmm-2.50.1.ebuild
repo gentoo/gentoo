@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="C++ interface for glib2"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+ GPL-2+" # GPL-2+ applies only to the build system
 SLOT="2"
