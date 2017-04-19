@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # dropping hppa and sparc because of way too may dependencies not having
 # keywords in those architectures.
-KEYWORDS="amd64 ~hppa x86"
+KEYWORDS="amd64 x86"
 
 # removing fcgi useflag as the configure script can't avoid it without patching
 IUSE="apache2 curl dig echoping ipv6 ldap radius ssh telnet"
