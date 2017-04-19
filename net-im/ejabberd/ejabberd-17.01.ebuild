@@ -40,6 +40,7 @@ CDEPEND="
 	>=dev-erlang/p1_utils-1.0.6
 	>=dev-erlang/stringprep-1.0.7
 	>=dev-erlang/stun-1.0.9
+	>=dev-erlang/xmpp-1.1.6
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
