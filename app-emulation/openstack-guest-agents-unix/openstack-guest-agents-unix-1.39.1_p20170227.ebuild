@@ -5,15 +5,20 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 inherit eutils autotools linux-info python-single-r1
+
 COMMIT="c9a4f15b8c8f2349601d3073cc95e30d3b91af13"
+
 DESCRIPTION="Unix Guest Agent for OpenStack"
 HOMEPAGE="https://wiki.openstack.org/wiki/GuestAgent"
 SRC_URI="https://github.com/rackerlabs/${PN}/archive/${COMMIT}.zip"
+
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="mirror strip"
+
 DEPEND="
 	app-emulation/xe-guest-utilities[-xenstore]
 	dev-util/patchelf
@@ -37,6 +42,7 @@ pkg_setup()
 {
 	python-single-r1_pkg_setup
 }
+
 src_prepare()
 {
 	# Note: https://github.com/rackerlabs/openstack-guest-agents-unix/issues/52
