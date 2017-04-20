@@ -18,6 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ia64 ppc ppc64 x86"
 IUSE="aio glusterfs gnuplot gtk numa rbd rdma static zlib"
+REQUIRED_USE="gnuplot? ( ${PYTHON_REQUIRED_USE} )"
 
 # GTK+:2 does not offer static libaries.
 LIB_DEPEND="aio? ( dev-libs/libaio[static-libs(+)] )
