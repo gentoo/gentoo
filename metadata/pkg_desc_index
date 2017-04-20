@@ -15958,7 +15958,7 @@ sci-biology/infernal 1.0.2-r1: Inference of RNA alignments
 sci-biology/iqpnni 3.3.2-r1: Important Quartet Puzzling and NNI Operation
 sci-biology/kalign 2.03-r2: Global and progressive multiple sequence alignment
 sci-biology/lagan 2.0-r3: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
-sci-biology/last 230 299: Genome-scale comparison of biological sequences
+sci-biology/last 230 299-r1: Genome-scale comparison of biological sequences
 sci-biology/mafft 7.050 7.215 7.305: Multiple sequence alignments using a variety of algorithms
 sci-biology/mammoth 1.0-r1: MAtching Molecular Models Obtained from THeory
 sci-biology/maq 0.7.1-r2: Mapping and Assembly with Qualities, mapping NGS reads to reference genomes
@@ -16075,7 +16075,7 @@ sci-chemistry/coot 0.8.2-r1: Crystallographic Object-Oriented Toolkit
 sci-chemistry/cyana 2.1: Combined assignment and dynamics algorithm for NMR applications
 sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
 sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on presentation
-sci-chemistry/eden 5.3-r2: A crystallographic real-space electron-density refinement and optimization program
+sci-chemistry/eden 5.3-r2: A crystallographic real-space electron-density refinement & optimization program
 sci-chemistry/elem 1.0.3-r1 1.0.3-r2: periodic table of the elements
 sci-chemistry/freeon 1.0.8-r1 1.0.10: An experimental suite of programs for linear scaling quantum chemistry
 sci-chemistry/gabedit 2.4.6 2.4.7 2.4.8: GUI for computational chemistry packages
@@ -16132,7 +16132,7 @@ sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable grou
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
 sci-chemistry/pymol 1.8.4.0-r1 1.8.6.0: A Python-extensible molecular graphics system
 sci-chemistry/pymol-plugins-bni-tools 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
-sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways from buried cavities to outside solvent in protein structures
+sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways of proteins from buried cavities to outside solvent
 sci-chemistry/pymol-plugins-dssp 110430-r1: DSSP Plugin for PyMOL
 sci-chemistry/pymol-plugins-dynamics 1.2.0 2.0.4: Molecular dynamics in Pymol
 sci-chemistry/pymol-plugins-emovie 1.0.4: PyMOL plugin for convinient movie creation
@@ -17063,7 +17063,7 @@ sys-apps/hwids 20150717 20150717-r1 20160306 20160421 20160801 20161103 20170328
 sys-apps/hwinfo 19.1 20.0 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.6.1 1.6.2 1.7.2 1.8.1 1.9 1.10.0 1.10.0-r2 1.10.1-r1 1.11.2: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
-sys-apps/i2c-tools 3.1.1-r1: I2C tools for bus probing, chip dumping, register-level access helpers, EEPROM decoding, and more
+sys-apps/i2c-tools 3.1.1-r1: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
 sys-apps/ibm-powerpc-utils 1.1.0 1.2.2 1.2.12 1.2.25 1.2.26: This package provides utilities for the maintainance of the IBM and Apple powerpc platforms.
 sys-apps/ibm-powerpc-utils-papr 1.1.0 1.1.6: This package provides the utilities which are intended for the maintenance of IBM powerpc platforms
 sys-apps/idle3-tools 0.9.1: Read, Set or disable the idle3 timer of Western Digital drives
