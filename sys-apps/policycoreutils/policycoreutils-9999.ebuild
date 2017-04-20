@@ -16,6 +16,7 @@ SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
 
 IUSE="audit pam dbus"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
