@@ -4,8 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=(python2_7 python3_4 python3_5 python3_6)
-
-inherit python-r1 vim-plugin
+inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: Support EditorConfig files "
 HOMEPAGE="http://editorconfig.org/"
