@@ -15,19 +15,21 @@ if [[ "${PV##*.}" == "9999" ]]; then
 	# Include more versions for blead releases
 	# for circular reasons
 	# Greatest first, don't include yourself
-	PERL_BIN_OLDVERSEN=""
-	PERL_OLDVERSEN="5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
-	DIST_VERSION=5.25.11
+	PERL_BIN_OLDVERSEN="5.25.11"
+	PERL_OLDVERSEN="5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
+	DIST_VERSION=5.25.12
 	SHORT_PV="${DIST_VERSION%.*}"
 	MY_P="perl-${DIST_VERSION/_rc/-RC}"
+	PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 	MY_PV="${DIST_VERSION%_rc*}"
 else
-	PERL_BIN_OLDVERSEN=""
+	PERL_BIN_OLDVERSEN="5.25.11"
 	# Compat reasons
-	PERL_OLDVERSEN=""
+	PERL_OLDVERSEN="5.25.11"
 	# First 2 digits only
 	SHORT_PV="${PV%.*}"
 	MY_P="perl-${PV/_rc/-RC}"
+	PATCH_BASE="${MY_P}-patches-${PATCH_VER}"
 	MY_PV="${PV%_rc*}"
 fi
 
@@ -36,9 +38,9 @@ DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 SRC_URI="
 	mirror://cpan/src/5.0/${MY_P}.tar.xz
 	mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${MY_P}.tar.xz
-	https://github.com/gentoo-perl/perl-patchset/releases/download/${MY_P}-patches-${PATCH_VER}/${MY_P}-patches-${PATCH_VER}.tar.xz
-	mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.xz
-	https://dev.gentoo.org/~kentnl/distfiles/${MY_P}-patches-${PATCH_VER}.tar.xz
+	https://github.com/gentoo-perl/perl-patchset/releases/download/${PATCH_BASE}/${PATCH_BASE}.tar.xz
+	mirror://gentoo/${PATCH_BASE}.tar.xz
+	https://dev.gentoo.org/~kentnl/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
 HOMEPAGE="http://www.perl.org/"
@@ -304,7 +306,7 @@ src_prepare_dynamic() {
 src_prepare() {
 	local patch
 	EPATCH_OPTS+=" -p1"
-	einfo "Applying patches from ${MY_P}-${PATCH_VER} ..."
+	einfo "Applying patches from ${PATCH_BASE} ..."
 	while read patch ; do
 		EPATCH_SINGLE_MSG="  ${patch} ..."
 		epatch "${WORKDIR}"/patches/${patch}
@@ -396,7 +398,7 @@ src_configure() {
 	if [[ -n ${PERL_OLDVERSEN} ]] ; then
 		local inclist=$(
 			for v in ${PERL_OLDVERSEN};	do
-				has "${v}" "${PERL_BIN_OLDVERSEN}" && echo -n "${v}/${myarch}${mythreading} ";
+				has "${v}" ${PERL_BIN_OLDVERSEN} && echo -n "${v}/${myarch}${mythreading} ";
 				echo -n "${v} ";
 		done )
 		myconf -Dinc_version_list="${inclist}"
