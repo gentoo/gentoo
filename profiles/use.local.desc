@@ -2285,7 +2285,6 @@ dev-ml/logs:fmt - Enables the Logs_fmt reporter.
 dev-ml/logs:lwt - Enables the Logs_lwt library that provides Lwt logging functions.
 dev-ml/lwt:camlp4 - Enable camlp4 syntax extension
 dev-ml/lwt:ppx - Enables the ppx syntax extension
-dev-ml/lwt:react - Enables support for dev-ml/react: Functional reactive programming (signals, events, etc.).
 dev-ml/ocaml-cohttp:async - Enables support for the dev-ml/async asynchronous execution library.
 dev-ml/ocaml-cohttp:lwt - Enables support for the dev-ml/lwt cooperative light-weight thread library.
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
@@ -2297,7 +2296,6 @@ dev-ml/ocaml-redis:lwt - Enable lwt bindings for asynchronous processing.
 dev-ml/ocaml-uri:allservices - Compile support for all service types
 dev-ml/ocaml-websocket:async - Enables support for the dev-ml/async asynchronous execution library.
 dev-ml/ocaml-websocket:lwt - Enables support for the dev-ml/lwt cooperative light-weight thread library.
-dev-ml/ocamlnet:cryptokit - Enables encryption support via dev-ml/cryptokit
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
 dev-ml/onanomsg:lwt - Enables lwt support.
