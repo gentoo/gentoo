@@ -26,8 +26,10 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 	dev-python/empy[${PYTHON_USEDEP}]
 "
