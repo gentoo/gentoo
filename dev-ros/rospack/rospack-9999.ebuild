@@ -13,17 +13,21 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 inherit python-single-r1
 
 DESCRIPTION="Retrieves information about ROS packages available on the filesystem"
+
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
-PATCHES=( "${FILESDIR}/gentoo.patch" )
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-libs/boost:=
+RDEPEND="
+	dev-libs/boost:=
 	dev-libs/tinyxml2:=
-	"
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	>=dev-ros/cmake_modules-0.4.1
 	test? (
 		dev-cpp/gtest
 		dev-python/nose
 	)"
+
+PATCHES=( "${FILESDIR}/gentoo.patch" )
