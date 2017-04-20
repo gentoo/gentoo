@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="c++11 +data doc fftw hdf5 openmp python threads test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	sci-astronomy/wcslib:0=
@@ -26,8 +27,11 @@ RDEPEND="
 	data? ( sci-astronomy/casa-data )
 	fftw? ( sci-libs/fftw:3.0= )
 	hdf5? ( sci-libs/hdf5:0= )
-	python? ( dev-libs/boost:0=[python,${PYTHON_USEDEP}]
-			  dev-python/numpy[${PYTHON_USEDEP}] )"
+	python? (
+		${PYTHON_DEPS}
+		dev-libs/boost:0=[python,${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
