@@ -15,8 +15,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="wifi doc examples"
+REQUIRED_USE="wifi? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="wifi? ( net-wireless/python-wifi )"
+RDEPEND="
+	wifi? (
+		${PYTHON_DEPS}
+		net-wireless/python-wifi
+	)"
 DEPEND=""
 
 src_install() {
