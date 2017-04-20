@@ -16,11 +16,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="winbind"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND=""
-RDEPEND="app-emulation/wine
+RDEPEND="${PYTHON_DEPS}
+	app-emulation/wine
 	app-arch/cabextract
 	app-arch/p7zip
 	app-arch/unzip

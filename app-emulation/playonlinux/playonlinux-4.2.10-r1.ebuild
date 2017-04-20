@@ -16,11 +16,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="winbind"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND=""
-RDEPEND="app-arch/cabextract
+RDEPEND="${PYTHON_DEPS}
+	app-arch/cabextract
 	app-arch/p7zip
 	app-arch/unzip
 	app-crypt/gnupg
