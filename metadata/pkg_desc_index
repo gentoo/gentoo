@@ -11533,7 +11533,7 @@ games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.26.0-r1: Simple low-level configuration system
 gnome-base/dconf-editor 3.22.3: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
-gnome-base/gdm 3.22.3: GNOME Display Manager for managing graphical display servers and user logins
+gnome-base/gdm 3.22.3-r1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.20.0 3.22.0 3.22.2: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.18.0 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.22.2-r1 3.23.91: GNOME's main interface to configure various aspects of the desktop
@@ -15130,7 +15130,7 @@ net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 7.0.0_beta3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -19271,7 +19271,7 @@ x11-terms/xterm 327: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
-x11-themes/adwaita-icon-theme 3.20 3.22.0: GNOME default icon theme
+x11-themes/adwaita-icon-theme 3.20 3.22.0-r1: GNOME default icon theme
 x11-themes/arc-icon-theme 20160605 20161122: Vertex icon theme
 x11-themes/arc-theme 20170302: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
@@ -19308,9 +19308,9 @@ x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1: A pack of ~200 themes for GKrellM
 x11-themes/gnome-backgrounds 3.22.1 3.23.91: A set of backgrounds packaged with the GNOME desktop
-x11-themes/gnome-colors-common 5.5.1: Colorized icons shared between all gnome-colors iconsets
+x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
-x11-themes/gnome-icon-theme 3.12.0: GNOME default icon theme
+x11-themes/gnome-icon-theme 3.12.0-r1: GNOME default icon theme
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
 x11-themes/gnome-icon-theme-symbolic 3.10.1 3.12.0: Symbolic icons for GNOME default icon theme
 x11-themes/gnome-themes-standard 3.20.2-r1 3.22.3: Standard Themes for GNOME Applications
