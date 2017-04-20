@@ -11,6 +11,7 @@ inherit kde5 python-single-r1
 
 DESCRIPTION="Python plugin for KDevelop"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 [[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
 
 DEPEND="${PYTHON_DEPS}
