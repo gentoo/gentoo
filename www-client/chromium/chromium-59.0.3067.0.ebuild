@@ -512,7 +512,7 @@ src_configure() {
 	touch chrome/test/data/webui/i18n_process_css_test.html || die
 
 	einfo "Configuring Chromium..."
-	tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn}" || die
+	tools/gn/bootstrap/bootstrap.py -v --no-clean --gn-gen-args "${myconf_gn}" || die
 	out/Release/gn gen --args="${myconf_gn}" out/Release || die
 }
 

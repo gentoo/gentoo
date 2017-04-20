@@ -509,7 +509,7 @@ src_configure() {
 
 	einfo "Configuring Chromium..."
 	# TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
-	tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn} use_allocator=\"none\"" || die
+	tools/gn/bootstrap/bootstrap.py -v --no-clean --gn-gen-args "${myconf_gn} use_allocator=\"none\"" || die
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 	out/Release/gn gen --args="${myconf_gn}" out/Release || die
 }
