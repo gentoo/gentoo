@@ -5539,7 +5539,7 @@ dev-perl/Class-Accessor-Lite 0.50.0-r1 0.80.0: A minimalistic variant of Class::
 dev-perl/Class-Adapter 1.80.0-r1: Implementation of the "Adapter" Design Pattern
 dev-perl/Class-Autouse 2.10.0-r1: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.50.0-r1 0.60.0: Useful base class for deriving other modules
-dev-perl/Class-C3 0.300.0 0.310.0: A pragma to use the C3 method resolution order algortihm
+dev-perl/Class-C3 0.310.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.130.0-r1 0.140.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r1: Class-Container module for perl
@@ -5728,7 +5728,7 @@ dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
-dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0 1.700.0 1.730.0: Parse and Format DateTimes using Strptime
+dev-perl/DateTime-Format-Strptime 1.700.0 1.730.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0: Localization support for DateTime
@@ -5993,7 +5993,7 @@ dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Entity-Parser 0.190.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Headers-Fast 0.200.0 0.210.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.110.0: Base class for Request/Response
-dev-perl/HTTP-MultiPartParser 0.10.0 0.20.0: Low Level MultiPart MIME HTTP parser
+dev-perl/HTTP-MultiPartParser 0.20.0: Low Level MultiPart MIME HTTP parser
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
@@ -6229,7 +6229,7 @@ dev-perl/MogileFS-Server 2.700.0-r2 2.700.0-r3: Server for the MogileFS distribu
 dev-perl/MogileFS-Utils 2.290.0: Server for the MogileFS distributed file system
 dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0 7.210.0 7.290.0 7.300.0: Real-time web framework
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
-dev-perl/MongoDB 0.708.3.0 1.2.2 1.6.0 1.6.1 1.8.0: Official MongoDB Driver for Perl
+dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 2.0.2 2.2.5 2.3.0 2.3.1 2.3.2: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
@@ -6732,7 +6732,7 @@ dev-perl/Tie-ToObject 0.30.0-r1: Tie to an existing object
 dev-perl/Time-Duration 1.60.0-r1 1.200.0: Rounded or exact English expression of durations
 dev-perl/Time-Duration-Parse 0.130.0: Parse string that represents time duration
 dev-perl/Time-Format 1.120.0: Easy-to-use date/time formatting
-dev-perl/Time-Moment 0.380.0 0.390.0 0.400.0 0.410.0 0.420.0: Represents a date and time of day with an offset from UTC
+dev-perl/Time-Moment 0.420.0: Represents a date and time of day with an offset from UTC
 dev-perl/Time-Out 0.110.0: Easily timeout long running operations
 dev-perl/Time-ParseDate 2011.51.700-r1 2015.103.0: A Date/Time Parsing Perl Module
 dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
