@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,7 +34,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	doc? ( dev-python/sphinx dev-python/sphinx_rtd_theme )
-	lapack? ( virtual/pkgconfig )"
+	lapack? ( virtual/pkgconfig )
+	${PYTHON_DEPS}"
 
 PATCHES=( "${FILESDIR}"/${P}-underlink.patch )
 
