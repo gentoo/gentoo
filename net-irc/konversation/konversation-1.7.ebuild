@@ -63,3 +63,11 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_install() {
+	kde5_src_install
+
+	# Bug 616162
+	insinto /etc/xdg
+	doins "${FILESDIR}"/konversationrc
+}
