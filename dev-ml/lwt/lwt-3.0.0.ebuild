@@ -12,7 +12,7 @@ DESCRIPTION="Cooperative light-weight thread library for OCaml"
 SRC_URI="https://github.com/ocsigen/lwt/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="http://ocsigen.org/lwt"
 
-IUSE="+camlp4 gtk +ppx +react +ssl"
+IUSE="+camlp4 +ppx"
 
 DEPEND="
 	dev-libs/libev
@@ -22,12 +22,6 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	!<www-servers/ocsigen-1.1"
-
-PDEPEND="
-	gtk? ( dev-ml/lwt_glib )
-	react? ( dev-ml/lwt_react )
-	ssl? ( dev-ml/lwt_ssl )
-"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1-with-linking-exception"
