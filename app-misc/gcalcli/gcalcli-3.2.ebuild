@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,12 +15,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
-RDEPEND="dev-python/python-dateutil
-		 dev-python/google-api-python-client
-		 dev-python/gdata
-		 dev-python/vobject"
+RDEPEND="${PYTHON_DEPS}
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/google-api-python-client[${PYTHON_USEDEP}]
+	dev-python/gdata[${PYTHON_USEDEP}]
+	dev-python/vobject[${PYTHON_USEDEP}]"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	dodoc -r ChangeLog README.md docs
