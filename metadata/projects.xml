@@ -644,12 +644,12 @@
   </project>
   <project>
     <email>comres@gentoo.org</email>
-    <name>Gentoo Community Resources</name>
+    <name>Community Resources</name>
     <url>https://wiki.gentoo.org/wiki/Project:ComRes</url>
-    <description>Gentoo Community Resources is an umbrella project comprising the Recruiters, Retirement and Comminity Relations subprojects. It acts as a central place for all the human-resources related projects.</description>
-    <subproject ref="comrel@gentoo.org"/>
-    <subproject ref="mentors@gentoo.org"/>
-    <subproject ref="recruiters@gentoo.org"/>
+    <description>Community Resources is an umbrella project comprising the Recruiters, Retirement and Comminity Relations subprojects. It acts as a central place for all the human-resources related projects.</description>
+    <subproject ref="comrel@gentoo.org" inherit-members="1"/>
+    <subproject ref="mentors@gentoo.org" inherit-members="1"/>
+    <subproject ref="recruiters@gentoo.org" inherit-members="1"/>
   </project>
   <project>
     <email>common-lisp@gentoo.org</email>
@@ -824,17 +824,6 @@
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
-    </member>
-  </project>
-  <project>
-    <email>gentoo-doc@gentoo.org</email>
-    <name>Documentation Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Documentation</url>
-    <description>The Gentoo Documentation Project (GDP) is responsible for the creation and maintenance of all general Gentoo documentation.</description>
-    <member is-lead="1">
-      <email>swift@gentoo.org</email>
-      <name>Sven Vermeulen</name>
-      <role>Author, Editor</role>
     </member>
   </project>
   <project>
@@ -4251,12 +4240,17 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>www@gentoo.org</email>
-    <name>Gentoo Website Maintainers</name>
+    <name>Website Maintainers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Website</url>
-    <description>The Website Team maintains the Gentoo website and develops new sites for the community.</description>
+    <description>The Website team maintains the Gentoo website and develops new sites for the community.</description>
     <member is-lead="1">
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
+    </member>
+    <member>
+      <email>maffblaster@gentoo.org</email>
+      <name>Matthew Marchese</name>
+      <role>Maintainer</role>
     </member>
     <member>
       <email>nightmorph@gentoo.org</email>
