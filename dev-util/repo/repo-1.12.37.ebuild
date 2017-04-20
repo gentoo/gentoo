@@ -15,8 +15,12 @@ SRC_URI="https://android.googlesource.com/tools/repo/+archive/v${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-S="$WORKDIR"
+RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
+
+S="${WORKDIR}"
 
 src_install() {
 	python_foreach_impl python_fix_shebang ./repo
