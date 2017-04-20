@@ -5245,7 +5245,7 @@ dev-ml/labltk 8.06.2: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.10.1-r1 1.11: A cross-platform library for manipulating the terminal
 dev-ml/llvm-ocaml 4.0.0 9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
-dev-ml/lwt 2.4.3 2.7.0 2.7.1 3.0.0: Cooperative light-weight thread library for OCaml
+dev-ml/lwt 2.4.3 3.0.0: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_glib 1.0.1: GLib integration for Lwt
 dev-ml/lwt_react 1.0.1: GLib integration for Lwt
 dev-ml/lwt_ssl 1.0.1: GLib integration for Lwt
@@ -6870,7 +6870,7 @@ dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML docum
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
 dev-perl/YAML 1.150.0 1.210.0 1.230.0: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.620.0 0.630.0 0.640.0: Perl YAML Serialization using XS and libyaml
-dev-perl/YAML-Syck 1.290.0: Fast, lightweight YAML loader and dumper
+dev-perl/YAML-Syck 1.290.0 1.300.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.700.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
@@ -10605,7 +10605,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.2.1-r1 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 3.8.4 3.9.2 4.0.2 4.1.1 4.1.2 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.8.4 3.9.2 4.0.2 4.1.2 4.1.3 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
