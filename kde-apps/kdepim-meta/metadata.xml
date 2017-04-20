@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="google">Google service integration via <pkg>kde-apps/libkgapi</pkg></flag>
+	</use>
 </pkgmetadata>
