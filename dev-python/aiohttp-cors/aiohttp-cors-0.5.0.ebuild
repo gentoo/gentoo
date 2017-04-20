@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
 
 inherit distutils-r1
 
@@ -28,6 +28,13 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/selenium[${PYTHON_USEDEP}]
 	)"
+
+python_prepare_all() {
+	# for some reason, it is installed by 'setup.py test' on py!=3.4
+	# TODO: investigate
+	sed -i -e '/typing/d' setup.py || die
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	esetup.py test
