@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="examples"
 
+DEPEND="${PYTHON_DEPS}"
+
 DOCS="ChangeLog README.md DEVEL"
 
 src_prepare() {
