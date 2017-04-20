@@ -5368,8 +5368,8 @@ dev-ml/qcheck 0.5.2 0.5.3 0.5.3.1: QuickCheck inspired property-based testing fo
 dev-ml/re2 0.9.0: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0 1.2.1: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
-dev-ml/reason 1.13.3: Meta Language Toolchain
-dev-ml/reason-parser 1.13.3: Meta Language Toolchain
+dev-ml/reason 1.13.3 1.13.4: Meta Language Toolchain
+dev-ml/reason-parser 1.13.3 1.13.4: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/sequence 0.9 0.10: Simple sequence (iterator) datatype and combinators
