@@ -30,12 +30,10 @@ QA_PRESTRIPPED=".*\.nexe"
 COMMON_DEPEND="
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
-	>=dev-libs/elfutils-0.149
 	dev-libs/expat:=
 	dev-libs/glib:2
 	dev-libs/icu:=
-	>=dev-libs/jsoncpp-0.5.0-r1:=
-	dev-libs/libxml2:=[icu]
+	dev-libs/libxml2:=
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -45,21 +43,17 @@ COMMON_DEPEND="
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	>=media-libs/harfbuzz-1.4.2:=[icu(+)]
-	media-libs/libexif:=
+	>=media-libs/harfbuzz-1.4.2:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
-	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
-	>=sys-libs/libcap-2.22:=
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
-	x11-libs/libdrm
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
 	x11-libs/libXcursor:=
@@ -67,7 +61,6 @@ COMMON_DEPEND="
 	x11-libs/libXext:=
 	x11-libs/libXfixes:=
 	>=x11-libs/libXi-1.6.0:=
-	x11-libs/libXinerama:=
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/libXScrnSaver:=
@@ -100,7 +93,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-lang/yasm
 	)
 	dev-lang/perl
-	dev-perl/JSON
 	>=dev-util/gperf-3.0.3
 	dev-util/ninja
 	net-libs/nodejs
