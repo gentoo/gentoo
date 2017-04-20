@@ -174,9 +174,9 @@
   </project>
   <project>
     <email>alt@gentoo.org</email>
-    <name>Alt Project</name>
+    <name>Alt</name>
     <url>https://wiki.gentoo.org/wiki/Project:Alt</url>
-    <description>Provide Gentoo-way solutions for non-GNU/Linux platforms.</description>
+    <description>Provide Gentoo solutions for non-GNU/Linux platforms.</description>
     <subproject ref="bsd@gentoo.org"/>
     <subproject ref="prefix@gentoo.org"/>
     <member>
@@ -2393,9 +2393,9 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>news@gentoo.org</email>
-    <name>News Project</name>
+    <name>News</name>
     <url>https://wiki.gentoo.org/wiki/Project:News</url>
-    <description>Presenting news as it develops, this project is intended to provide the Gentoo community a stream of information regarding changes in the Gentoo universe.</description>
+    <description>Presenting news as it develops, the News project is intended to provide the Gentoo community a stream of information regarding changes in the Gentoo universe.</description>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
@@ -4271,9 +4271,9 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>wiki@gentoo.org</email>
-    <name>Wiki Project</name>
+    <name>Wiki</name>
     <url>https://wiki.gentoo.org/wiki/Project:Wiki</url>
-    <description>The Wiki Project oversees the community and the content surrounding https://wiki.gentoo.org</description>
+    <description>The Wiki project oversees the community and the content surrounding https://wiki.gentoo.org</description>
     <member is-lead="1">
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
