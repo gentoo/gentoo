@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit multilib python-r1 eutils versionator java-utils-2
 MY_PV="$(replace_all_version_separators _)"
 MY_P="Caver${MY_PV}_pymol_plugin"
 
-DESCRIPTION="Calculation of pathways from buried cavities to outside solvent in protein structures"
+DESCRIPTION="Calculation of pathways of proteins from buried cavities to outside solvent"
 HOMEPAGE="http://loschmidt.chemi.muni.cz/caver/"
 SRC_URI="${MY_P}.zip"
 
@@ -18,11 +18,14 @@ LICENSE="CAVER"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	>=virtual/jre-1.6
-	sci-chemistry/pymol[${PYTHON_USEDEP}]"
-DEPEND="app-arch/unzip"
+	sci-chemistry/pymol[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}"
+DEPEND="app-arch/unzip
+	${PYTHON_DEPS}"
 
 RESTRICT="fetch"
 
