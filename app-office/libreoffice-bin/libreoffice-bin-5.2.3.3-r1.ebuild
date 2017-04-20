@@ -166,7 +166,7 @@ PDEPEND="
 DEPEND="dev-util/xdelta:3"
 
 # only one flavor at a time
-REQUIRED_USE="kde? ( !gnome ) gnome? ( !kde )"
+REQUIRED_USE="kde? ( !gnome ) gnome? ( !kde ) ${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test strip"
 
@@ -184,6 +184,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	kde4-base_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_unpack() {
