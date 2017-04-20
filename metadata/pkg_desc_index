@@ -7236,9 +7236,10 @@ dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aiodns 1.1.1: Simple DNS resolver for asyncio
-dev-python/aioeventlet 0.5.1: asyncio event loop scheduling callbacks in eventlet
+dev-python/aioeventlet 0.5.1 0.5.1-r1: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.21.5 1.0.3 1.0.4 1.0.5 1.1.1 1.1.2 1.1.5 1.2.0: http client/server for asyncio
 dev-python/aiohttp-cors 0.5.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
+dev-python/aiotest 0.3: Test suite for an implementation of asyncio (PEP 3156)
 dev-python/alabaster 0.7.6 0.7.8 0.7.9: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7 1.1.2: django CMS plugins for bootstrap3 markup
@@ -8220,7 +8221,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
-dev-python/pyicu 1.9.3-r1 1.9.5: Python bindings for dev-libs/icu
+dev-python/pyicu 1.9.3-r1 1.9.5 1.9.6: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
 dev-python/pyinotify 0.9.4-r1 0.9.5 0.9.6: Python module used for monitoring filesystems events
@@ -18270,7 +18271,7 @@ www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3 7.6.3-r1: A static website and blo
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
 www-apps/otrs 5.0.16 5.0.18: OTRS is an Open source Ticket Request System
-www-apps/owncloud 8.1.11 8.1.12 8.2.9 8.2.10 9.0.7 9.0.8 9.1.3 9.1.4: Web-based storage application where all your data is under your own control
+www-apps/owncloud 8.2.9 8.2.10 8.2.11 9.0.7 9.0.8 9.0.9 9.1.3 9.1.4 9.1.5: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
 www-apps/phpBB 3.1.10-r1: An open-source bulletin board package
