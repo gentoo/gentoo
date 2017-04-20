@@ -37,7 +37,6 @@ DEPEND="${COMMON}
 	${PYTHON_DEPS}
 	ocl-icd? ( dev-libs/ocl-icd )
 	virtual/pkgconfig"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/no-debian-multiarch.patch
