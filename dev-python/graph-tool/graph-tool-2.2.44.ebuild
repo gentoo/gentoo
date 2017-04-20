@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ HOMEPAGE="http://graph-tool.skewed.de/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+cairo openmp"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Bug #536734; configure sets boostlib 1.53.0 but 1.54.0 is required
 CDEPEND="${PYTHON_DEPS}
@@ -53,7 +54,6 @@ pkg_pretend() {
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
-	>py-compile
 	python_copy_sources
 }
 
