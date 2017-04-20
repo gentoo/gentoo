@@ -14,6 +14,7 @@ LICENSE="FDL-1.3 GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+units_cur"
+REQUIRED_USE="units_cur? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	sys-libs/readline:=
@@ -22,8 +23,6 @@ RDEPEND="
 		${PYTHON_DEPS}
 	)"
 DEPEND=${RDEPEND}
-
-REQUIRED_USE="units_cur? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
 	use units_cur && python-single-r1_pkg_setup
