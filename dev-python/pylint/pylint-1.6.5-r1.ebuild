@@ -26,8 +26,9 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/isort-4.2.5[${PYTHON_USEDEP}]
 	dev-python/mccabe
-	$(python_gen_cond_dep \
-		'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7)"
+	$(python_gen_cond_dep '
+		dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]
+		dev-python/configparser[${PYTHON_USEDEP}]' python2_7)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND} )"
