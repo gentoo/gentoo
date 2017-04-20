@@ -104,6 +104,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #550818
+	append-cppflags -DHAVE_MEMRCHR
+
 	local _lang lang langs
 	for lang in ${IUSE_LINGUAS}; do
 		_lang=$(translate_lang ${lang})
@@ -147,6 +150,10 @@ src_configure() {
 		-DWANT_NOTEMPLATES="$(usex !templates)"
 		)
 	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_compile
 }
 
 src_install() {
