@@ -15,10 +15,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="java openmp python tools"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="java? ( >=virtual/jdk-1.4 )"
+DEPEND="
+	java? ( >=virtual/jdk-1.4 )
+	python? ( ${PYTHON_DEPS} )"
 RDEPEND="
 	java? ( >=virtual/jre-1.4 )
+	python? ( ${PYTHON_DEPS} )
 	tools? ( sci-visualization/gnuplot )"
 
 PATCHES=(
