@@ -25,8 +25,7 @@ else
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
-COMMON="${PYTHON_DEPS}
-	media-libs/mesa
+COMMON="media-libs/mesa
 	sys-devel/clang:0
 	>=sys-devel/llvm-3.5:0
 	>=x11-libs/libdrm-2.4.70[video_cards_intel]
@@ -38,6 +37,7 @@ DEPEND="${COMMON}
 	${PYTHON_DEPS}
 	ocl-icd? ( dev-libs/ocl-icd )
 	virtual/pkgconfig"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/no-debian-multiarch.patch
