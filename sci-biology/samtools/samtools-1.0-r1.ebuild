@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="examples"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
@@ -24,7 +23,8 @@ CDEPEND="
 
 RDEPEND="${CDEPEND}
 	dev-lang/lua
-	dev-lang/perl"
+	dev-lang/perl
+	${PYTHON_DEPS}"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
