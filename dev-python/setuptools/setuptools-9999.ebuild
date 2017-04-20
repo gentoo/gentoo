@@ -10,8 +10,8 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/pypa/setuptools.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~ppc-aix ~x64-cygwin ~sparc-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Collection of extensions to Distutils"
@@ -21,19 +21,21 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 
-RDEPEND=""
-#	>=dev-python/packaging-16.4[${PYTHON_USEDEP}]
-#	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-#	"
+RDEPEND="
+	>=dev-python/packaging-16.8[${PYTHON_USEDEP}]
+	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/appdirs-1.4.0-r1[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	test? (
+		dev-python/pip[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
+		>=dev-python/backports-unittest-mock-1.2[${PYTHON_USEDEP}]
 	)
 "
-#	>=dev-python/pyparsing-2.0.6[${PYTHON_USEDEP}]
 PDEPEND="
-	>=dev-python/certifi-2016.8.8[${PYTHON_USEDEP}]"
+	>=dev-python/certifi-2016.9.26[${PYTHON_USEDEP}]"
 
 # Force in-source build because build system modifies sources.
 DISTUTILS_IN_SOURCE_BUILD=1
@@ -46,7 +48,6 @@ python_prepare_all() {
 		${EPYTHON} bootstrap.py || die
 	fi
 
-	# rm -r ./pkg_resources/_vendor || die
 	# disable tests requiring a network connection
 	rm setuptools/tests/test_packageindex.py || die
 
