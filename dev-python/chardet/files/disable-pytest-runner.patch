@@ -1,0 +1,24 @@
+From 8d5291ff2c2560cf88ef7c38d90ca6d026c9d11c Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 20 Apr 2017 15:18:35 -0400
+Subject: [PATCH] Remove dependency on pytest-runner
+
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 28a080a..ab49d62 100755
+--- a/setup.py
++++ b/setup.py
+@@ -46,7 +46,6 @@ setup(name='chardet',
+                     "Modules"),
+                    "Topic :: Text Processing :: Linguistic"],
+       packages=find_packages(),
+-      setup_requires=['pytest-runner'],
+       tests_require=['pytest', 'hypothesis'],
+       entry_points={'console_scripts':
+                     ['chardetect = chardet.cli.chardetect:main']})
+-- 
+2.12.2
+
