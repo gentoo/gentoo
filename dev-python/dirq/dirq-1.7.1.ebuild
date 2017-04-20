@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Note: as of 2017-03-22, dirq tests are known to fail in Docker containers
 python_test() {
