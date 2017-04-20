@@ -15,8 +15,20 @@ EGIT_REPO_URI="https://github.com/aio-libs/aiohttp-cors"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test"
+IUSE="test"
 
-DEPEND=">=dev-python/aiohttp-1.1.1[${PYTHON_USEDEP}]
-		dev-python/pip[${PYTHON_USEDEP}]
-		dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/aiohttp-1.1.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python3_4)"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		dev-python/pytest-pylint[${PYTHON_USEDEP}]
+		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		dev-python/selenium[${PYTHON_USEDEP}]
+	)"
+
+python_test() {
+	esetup.py test
+}
