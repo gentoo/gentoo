@@ -4820,7 +4820,7 @@ dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.7.6: General purpose crypto library based on the code used in GnuPG
-dev-libs/libgdata 0.17.6 0.17.7: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgdata 0.17.6 0.17.7 0.17.8: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4 0.25.0: Git library for GLib
@@ -5554,7 +5554,7 @@ dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
 dev-perl/Class-ErrorHandler 0.30.0 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r1: Provide utility methods for factory classes
 dev-perl/Class-ISA 0.36-r1: Report the search path thru an ISA tree
-dev-perl/Class-InsideOut 1.130.0-r1 1.140.0: A safe, simple inside-out object construction kit
+dev-perl/Class-InsideOut 1.140.0: A safe, simple inside-out object construction kit
 dev-perl/Class-Inspector 1.280.0-r1 1.310.0: Provides information about Classes
 dev-perl/Class-Load 0.200.0-r1 0.230.0 0.240.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.60.0-r1 0.90.0 0.100.0: XS implementation of parts of Class::Load
@@ -6473,7 +6473,7 @@ dev-perl/Ref-Util 0.101.0 0.111.0 0.113.0: Utility functions for checking refere
 dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0 2016060801.0.0 2017040401.0.0: Provide commonly requested regular expressions
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
-dev-perl/Regexp-RegGrp 2.0.0: Groups a regular expressions collection
+dev-perl/Regexp-RegGrp 2.0.0 2.10.0: Groups a regular expressions collection
 dev-perl/Regexp-Shellish 0.930.0-r1: Regexp::Shellish - Shell-like regular expressions
 dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
