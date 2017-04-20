@@ -11,19 +11,20 @@ MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="VirtualBox X11 video driver for Gentoo guest"
 HOMEPAGE="http://www.virtualbox.org/"
-SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
+SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}a.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="dri"
 
-RDEPEND=">=x11-base/xorg-server-1.7:=[-minimal]
+RDEPEND="<x11-base/xorg-server-1.19:=[-minimal]
 	x11-libs/libXcomposite"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-lang/yasm-0.6.2
 	>=dev-util/kbuild-0.1.9998_pre20131130
+	>=sys-devel/gcc-4.9.0
 	sys-power/iasl
 	x11-proto/fontsproto
 	x11-proto/randrproto
@@ -55,9 +56,6 @@ PATCHES=(
 
 	# unset useless/problematic checks in configure
 	"${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
-
-	# xorg-1.19 patch from opensuse (bug #602784)
-	"${FILESDIR}/${PN}-5.1.10-xorg119.patch"
 )
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
