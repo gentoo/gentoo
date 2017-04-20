@@ -46,6 +46,7 @@ RDEPEND="audit? ( sys-process/audit )
 	gtk? ( x11-libs/gtk+:2 )
 	numa? ( sys-process/numactl )
 	perl? ( dev-lang/perl )
+	python? ( ${PYTHON_DEPS} )
 	slang? ( dev-libs/newt )
 	unwind? ( sys-libs/libunwind )
 	dev-libs/elfutils"
@@ -59,8 +60,7 @@ DEPEND="${RDEPEND}
 		app-text/sgml-common
 		app-text/xmlto
 		sys-process/time
-	)
-	python? ( ${PYTHON_DEPS} )"
+	)"
 
 S_K="${WORKDIR}/linux-${LINUX_VER}"
 S="${S_K}/tools/perf"

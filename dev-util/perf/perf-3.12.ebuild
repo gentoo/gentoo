@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -41,6 +41,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="audit? ( sys-process/audit )
 	demangle? ( sys-devel/binutils )
 	perl? ( dev-lang/perl )
+	python? ( ${PYTHON_DEPS} )
 	slang? ( dev-libs/newt )
 	unwind? ( sys-libs/libunwind )
 	dev-libs/elfutils"
@@ -53,8 +54,7 @@ DEPEND="${RDEPEND}
 		app-text/sgml-common
 		app-text/xmlto
 		sys-process/time
-	)
-	python? ( ${PYTHON_DEPS} )"
+	)"
 
 S_K="${WORKDIR}/linux-${LINUX_VER}"
 S="${S_K}/tools/perf"
