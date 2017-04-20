@@ -7227,7 +7227,7 @@ dev-python/ReParser 1.4.3: simple regex-based lexer/parser for inline markup
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11 2017.2.23: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3-r1 0.5.7: A simple Python object interface to a MySQL database schema
-dev-python/URLObject 2.4.0 2.4.2: A utility class for manipulating URLs
+dev-python/URLObject 2.4.0 2.4.2-r1: A utility class for manipulating URLs
 dev-python/WSME 0.8.0 0.9.1: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
@@ -7284,7 +7284,7 @@ dev-python/astropy-helpers 1.2 1.3: Helpers for Astropy and Affiliated packages
 dev-python/astroquery 0.3.1 0.3.2: Collection of packages to access online astronomical resources
 dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
-dev-python/async_timeout 1.0.0 1.1.0: Timeout context manager for asyncio programs
+dev-python/async_timeout 1.0.0 1.1.0 1.2.0: Timeout context manager for asyncio programs
 dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/atomicwrites 0.1.8 0.1.9 1.1.5-r2: Atomic file writes.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
@@ -7374,7 +7374,7 @@ dev-python/chaco 4.5.0: Enthought Tool Suite: Interactive plotting toolkit
 dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
 dev-python/chameleon 2.16 2.19 2.20 2.22 2.24 2.25: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.1.0 14.3.0 14.3.0-r1: Python attributes without the boilerplate
-dev-python/chardet 2.2.1 2.3.0: Universal encoding detector
+dev-python/chardet 2.2.1 2.3.0 3.0.2: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cherrypy 3.3.0 3.7.0 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
@@ -8855,7 +8855,7 @@ dev-python/yappi 0.93 0.94: Yet Another Python Profiler
 dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
 dev-python/yapsy 1.10.423 1.11.023 1.11.223 1.11.223-r1: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.1 1.1.3: YAQL: Yet Another Query Language
-dev-python/yarl 0.7.0 0.8.1: Yet another URL library
+dev-python/yarl 0.7.0 0.8.1 0.9.8: Yet another URL library
 dev-python/yenc 0.4.0-r1: Module providing raw yEnc encoding/decoding
 dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
 dev-python/yolk-portage 0.1-r1: Gentoo Portage plugin for yolk
