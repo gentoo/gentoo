@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde5-functions.eclass
@@ -40,6 +40,14 @@ case ${CATEGORY} in
 		fi
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
+			: ${QT_MINIMAL:=5.7.1}
+		fi
+		;;
+	kde-apps)
+		if [[ $(get_version_component_range 1) -ge 17 ]]; then
+			: ${FRAMEWORKS_MINIMAL:=5.32.0}
+		fi
+		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			: ${QT_MINIMAL:=5.7.1}
 		fi
 		;;
