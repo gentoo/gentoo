@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -72,6 +72,7 @@ MAKEOPTS+=" -j1"
 REQUIRED_USE="
 	spatialite? ( sqlite )
 	mdb? ( java )
+	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 pkg_setup() {

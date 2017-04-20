@@ -10,7 +10,7 @@ PHP_EXT_NAME="geos"
 PHP_EXT_OPTIONAL_USE="php"
 PHP_EXT_SKIP_PHPIZE="yes"
 
-inherit php-ext-source-r2 autotools eutils python-single-r1 python-utils-r1
+inherit php-ext-source-r2 autotools eutils python-single-r1
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"
 HOMEPAGE="http://trac.osgeo.org/geos/"
@@ -20,8 +20,10 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris"
 IUSE="doc php python ruby static-libs"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	python? ( ${PYTHON_DEPS} )
 	ruby? ( dev-lang/ruby:* )
 "
 DEPEND="${RDEPEND}
@@ -30,7 +32,7 @@ DEPEND="${RDEPEND}
 		dev-lang/swig
 		app-admin/chrpath
 	)
-	python? ( dev-lang/swig ${PYTHON_DEPS} )
+	python? ( dev-lang/swig )
 	ruby? ( dev-lang/swig )
 "
 

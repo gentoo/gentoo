@@ -23,6 +23,7 @@ HOMEPAGE="http://www.darwinsys.com/file/ http://mx.gw.com/pipermail/file/"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="python static-libs zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	python? (
