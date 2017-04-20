@@ -15,7 +15,7 @@ SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/35" # Subslot consists of major + minor version number
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ~hppa ~ppc64 x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
 jpeg2k las libav lua openexr openinventor osgapps pdf png qt5 sdl sdl2 svg tiff
 truetype vnc wxwidgets xine xrandr zlib"
