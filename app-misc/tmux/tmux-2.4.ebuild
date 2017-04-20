@@ -39,7 +39,11 @@ RDEPEND="${CDEPEND}
 
 DOCS=( CHANGES FAQ README TODO )
 
-PATCHES=( "${FILESDIR}"/${PN}-2.3-flags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4-flags.patch
+
+	# usptream fixes (can be removed with next version bump)
+)
 
 src_prepare() {
 	# bug 438558
@@ -55,10 +59,12 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--sysconfdir="${EPREFIX}"/etc \
-		$(use_enable debug) \
+	local myeconfargs=(
+		--sysconfdir="${EPREFIX}"/etc
+		$(use_enable debug)
 		$(use_enable utempter)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
