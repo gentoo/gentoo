@@ -17,8 +17,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc ~sparc ~x86 ~x86-fbsd"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	|| (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 		dev-python/PyQt4[${PYTHON_USEDEP},X]
@@ -31,8 +32,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOC_CONTENTS="In order to use this software, you need to activate
 Portage's elog features.  Required is
