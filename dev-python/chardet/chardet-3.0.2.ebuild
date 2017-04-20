@@ -9,26 +9,30 @@ inherit distutils-r1
 
 DESCRIPTION="Universal encoding detector"
 HOMEPAGE="https://github.com/chardet/chardet https://pypi.python.org/pypi/chardet"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+# SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 # PyPI tarball is missing test.py: https://github.com/chardet/chardet/pull/118
-RESTRICT="test"
+SRC_URI="https://github.com/chardet/chardet/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
-	)"
-RDEPEND="${DEPEND}"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/disable-pytest-runner.patch
 )
 
 python_test() {
-	py.test -v ./test.py || die "Tests fail with ${EPYTHON}"
+	py.test -v || die "Tests fail with ${EPYTHON}"
 }
