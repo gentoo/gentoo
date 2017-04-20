@@ -43,6 +43,7 @@ RDEPEND="
 		dev-perl/XML-DOM
 	)
 	python? (
+		${PYTHON_DEPS}
 		dev-python/numpy[${PYTHON_USEDEP}]
 		qt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )
 	)
