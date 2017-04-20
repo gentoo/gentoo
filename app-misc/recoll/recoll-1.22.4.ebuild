@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="camelcase doc +inotify qt4 qt5 session +spell"
-REQUIRED_USE="session? ( inotify )"
+REQUIRED_USE="session? ( inotify ) ${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	dev-libs/xapian:=
@@ -36,6 +36,7 @@ COMMON_DEPEND="
 		inotify? ( x11-libs/libSM x11-libs/libICE )
 	)
 	spell? ( app-text/aspell )
+	${PYTHON_DEPS}
 "
 DEPEND="${COMMON_DEPEND}
 	qt5? ( dev-qt/linguist-tools:5 )
