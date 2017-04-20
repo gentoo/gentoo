@@ -10375,7 +10375,7 @@ dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import l
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
-dev-util/molecule-plugins 1.0.2-r1: A set fo base plugins for Molecule
+dev-util/molecule-plugins 1.0.2-r1: A set of base plugins for Molecule
 dev-util/monkeystudio 1.9.0.4-r1: A cross platform Qt 4 IDE
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
