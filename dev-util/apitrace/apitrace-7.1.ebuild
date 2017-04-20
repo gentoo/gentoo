@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,6 +15,7 @@ LICENSE+=" BSD CC-BY-3.0 CC-BY-4.0 public-domain" #bundled snappy
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+cli egl qt5 system-snappy"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=sys-devel/gcc-4.7:*
