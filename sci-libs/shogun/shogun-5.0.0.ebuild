@@ -52,7 +52,10 @@ RDEPEND="
 	lua? ( dev-lang/lua:0 )
 	octave? ( >=sci-mathematics/octave-4.2.0:=[hdf5] )
 	opencl? ( virtual/opencl )
-	python? ( dev-python/numpy[${PYTHON_USEDEP}] )
+	python? (
+		${PYTHON_DEPS}
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	R? ( dev-lang/R )
 	ruby? ( dev-ruby/narray )"
 DEPEND="${RDEPEND}
