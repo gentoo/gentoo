@@ -15,7 +15,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="
 	GPL-2+
-	branding? ( CC-Sampling-Plus-1.0 )
+	branding? ( CC-BY-SA-4.0 )
 "
 
 SLOT="0"
