@@ -9494,7 +9494,7 @@ dev-ruby/jwt 1.5.4 1.5.5 1.5.6: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0: A simple PEG library for Ruby
-dev-ruby/kramdown 1.4.2 1.12.0 1.13.1 1.13.2 1.13.2-r1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/kramdown 1.12.0 1.13.1 1.13.2 1.13.2-r1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/launchy 2.4.3 2.4.3-r1: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.4.1: Preview mail in the browser instead of sending
