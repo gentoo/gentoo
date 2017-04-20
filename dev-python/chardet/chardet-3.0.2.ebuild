@@ -25,6 +25,10 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/disable-pytest-runner.patch
+)
+
 python_test() {
 	py.test -v ./test.py || die "Tests fail with ${EPYTHON}"
 }
