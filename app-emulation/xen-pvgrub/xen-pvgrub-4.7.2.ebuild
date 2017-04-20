@@ -42,7 +42,8 @@ DEPEND="sys-devel/gettext
 	sys-apps/texinfo
 	x11-libs/pixman"
 
-RDEPEND=">=app-emulation/xen-tools-${PV}"
+RDEPEND="${PYTHON_DEPS}
+	>=app-emulation/xen-tools-${PV}"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
