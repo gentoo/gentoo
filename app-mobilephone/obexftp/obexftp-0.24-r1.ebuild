@@ -16,6 +16,7 @@ KEYWORDS="amd64 hppa ppc x86"
 
 # bluetooth support is not really optional, bug #529068
 IUSE="perl python ruby tcl" #bluetooth
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=dev-libs/openobex-1.7
