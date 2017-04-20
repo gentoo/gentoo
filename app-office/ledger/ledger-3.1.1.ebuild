@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,23 +15,25 @@ LICENSE="BSD"
 KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="doc emacs python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 SITEFILE=50${PN}-gentoo-${PV}.el
 
 CHECKREQS_MEMORY=8G
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-libs/boost:=[python?]
 	dev-libs/gmp:0=
 	dev-libs/mpfr:0=
 	emacs? ( virtual/emacs )
-"
-RDEPEND="
-	${COMMON_DEPEND}
-	python? ( dev-python/cheetah )
+	python? (
+		dev-libs/boost:=[${PYTHON_USEDEP}]
+		dev-python/cheetah
+		${PYTHON_DEPS}
+	)
 "
 DEPEND="
-	${COMMON_DEPEND}
+	${RDEPEND}
 	dev-libs/utfcpp
 	doc? (
 		sys-apps/texinfo

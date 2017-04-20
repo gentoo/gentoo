@@ -18,6 +18,7 @@ KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-li
 # cairo support is preferred as explained by upstream at:
 # https://bugzilla.gnome.org/show_bug.cgi?id=729668#c6
 IUSE="+cairo doc python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=dev-libs/glib-2:2
