@@ -16,6 +16,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # The module is opening libclang.so directly, and doing some blasphemy
 # on top of it.
