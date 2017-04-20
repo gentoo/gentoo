@@ -1,0 +1,10 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -405,7 +405,6 @@
+ 
+ install-data-local:
+ 	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(localstatedir)/spool/burp
+-	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(runstatedir)
+ 
+ clean-local: clean-local-check
+ 
