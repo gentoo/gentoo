@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,6 +14,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc gtk python udis86"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
 	udis86? ( dev-libs/udis86 )
@@ -41,7 +42,7 @@ PATCHES=(
 
 pkg_setup() {
 	linux-info_pkg_setup
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_configure() {
