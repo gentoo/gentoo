@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ DESCRIPTION="NuSMV: new symbolic model checker"
 HOMEPAGE="http://nusmv.fbk.eu/"
 SRC_URI="http://nusmv.fbk.eu/distrib/${NUSMV_A}
 		zchaff? ( http://www.princeton.edu/~chaff/zchaff/${ZCHAFF_A} )"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -23,14 +24,15 @@ REQUIRED_USE="|| ( minisat zchaff )"
 
 SHARED_DEPEND="minisat? ( >=sci-mathematics/minisat-2.2.0_p20130925 )"
 RDEPEND="${SHARED_DEPEND}
-		dev-libs/expat"
+	dev-libs/expat"
 DEPEND="${SHARED_DEPEND}
-		doc? (
-			virtual/latex-base
-			dev-texlive/texlive-latexextra
-			app-doc/doxygen
-		)
-		dev-libs/libxml2"
+	doc? (
+		virtual/latex-base
+		dev-texlive/texlive-latexextra
+		app-doc/doxygen
+	)
+	dev-libs/libxml2
+	${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_P}/NuSMV"
 
