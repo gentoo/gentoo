@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,13 +15,15 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	dev-python/gconf-python
 	gnome-base/gconf[introspection]
 	dev-python/pyxdg
 	>=x11-libs/gtk+-3.10
-	sys-devel/gettext"
+	sys-devel/gettext
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-util/intltool"
 
