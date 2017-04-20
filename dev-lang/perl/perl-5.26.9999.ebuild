@@ -76,14 +76,14 @@ S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
 	src_remove_dual      perl-core/Archive-Tar        2.240.0       ptar ptardiff ptargrep
-	src_remove_dual      perl-core/CPAN               2.170.0       cpan
+	src_remove_dual      perl-core/CPAN               2.180.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         5.960.0       shasum
 	src_remove_dual      perl-core/Encode             2.880.0       enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.240.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.340.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.274.0.200_rc   json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.701.230_rc corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.704.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
 	src_remove_dual      perl-core/Test-Harness       3.380.0       prove
