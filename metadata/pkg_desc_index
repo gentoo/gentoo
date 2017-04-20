@@ -1952,7 +1952,7 @@ app-misc/timestamp 1.1 1.1-r1: A text filtering pipe that marks each line with a
 app-misc/timew 1.0.0: Tracks your time from the command line, and generates reports
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmate 2.2.0-r1 2.2.1: Instant terminal sharing
-app-misc/tmux 2.2 2.3 2.3-r1 9999: Terminal multiplexer
+app-misc/tmux 2.2 2.3-r1 2.4 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/todo 2.10 2.10-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
@@ -2143,7 +2143,7 @@ app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.62 0.63 0.64: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.18 2.1.21 2.1.22 2.1.23: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.18 2.1.21 2.1.22 2.1.23 2.1.24: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/prefix-chain-setup 0.5 0.6 0.7: Chained EPREFIX bootstrapping utility
 app-portage/repo-commit 0.4.1 9999: A repository commit helper
