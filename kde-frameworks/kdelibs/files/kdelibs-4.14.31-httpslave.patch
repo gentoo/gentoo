@@ -1,0 +1,30 @@
+From b6f20222cc1192d9329e170211049ad6c867cfe2 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@linux-m68k.org>
+Date: Mon, 17 Apr 2017 12:52:58 +0200
+Subject: http slave: send error page after authorization failure
+
+BUG: 373323
+
+Backport from KF5 kio
+---
+ kioslave/http/http.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/kioslave/http/http.cpp b/kioslave/http/http.cpp
+index db5368a..b7c815c 100644
+--- a/kioslave/http/http.cpp
++++ b/kioslave/http/http.cpp
+@@ -5493,7 +5493,9 @@ try_next_auth_scheme:
+                     if (!authTokens.isEmpty()) {
+                         goto try_next_auth_scheme;
+                     } else {
+-                        error(ERR_UNSUPPORTED_ACTION, i18n("Authorization failed."));
++                        if (!sendErrorPageNotification()) {
++                            error(ERR_UNSUPPORTED_ACTION, i18n("Authorization failed."));
++                        }
+                         authRequiresAnotherRoundtrip = false;
+                     }
+                     //### return false; ?
+-- 
+cgit v0.11.2
+
