@@ -6,8 +6,6 @@ EAPI=6
 PLOCALES="af ca cs da de eo es et eu fr hr id it ja kn ko nb nl pl pt_BR pt ru sl sv uk vi zh_CN zh_HK"
 PLOCALES_BACKUP="en"
 
-# Needed because this package also installs to vendor_perl
-GENTOO_DEPEND_ON_PERL=noslotop
 inherit perl-module l10n
 
 DESCRIPTION="Tools for helping translation of documentation"
