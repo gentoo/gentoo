@@ -7095,7 +7095,7 @@ dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in 
 dev-php/myclabs-deepcopy 1.6.0: Create deep copies (clones) of your objects
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
-dev-php/pecl-amqp 1.8.0: PHP Bindings for AMQP 0-9-1 compatible brokers
+dev-php/pecl-amqp 1.8.0 1.9.0: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.11 5.1.8: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
@@ -7103,9 +7103,9 @@ dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.2.2: DataStax PHP Driver for Apache Cassandra
 dev-php/pecl-crack 0.4-r4 0.4-r5 0.4-r6: PHP interface to the cracklib libraries
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
-dev-php/pecl-dio 0.0.9: Direct I/O functions for PHP
+dev-php/pecl-dio 0.0.9 0.1.0: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.1: PHP wrapper for libeio library
-dev-php/pecl-event 2.2.1: PHP wrapper for libevent2
+dev-php/pecl-event 2.2.1 2.3.0: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r2: PHP extension for using gearmand
 dev-php/pecl-geoip 1.1.1-r2 1.1.1-r3: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0: PHP wrapper around the gpgme library
