@@ -28,7 +28,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	>=sys-libs/libselinux-2.4[python]
+	>=sys-libs/libselinux-2.4[python,${PYTHON_USEDEP}]
 	>=app-admin/setools-4.0[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
