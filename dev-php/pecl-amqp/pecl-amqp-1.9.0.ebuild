@@ -14,5 +14,6 @@ LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
 
-DEPEND=">=net-libs/rabbitmq-c-0.5.2 virtual/pkgconfig"
-RDEPEND=">=net-libs/rabbitmq-c-0.5.2:="
+DEPEND=">=net-libs/rabbitmq-c-0.5.2[ssl] virtual/pkgconfig"
+RDEPEND=">=net-libs/rabbitmq-c-0.5.2:=[ssl]"
+PHP_EXT_ECONF_ARGS=()
