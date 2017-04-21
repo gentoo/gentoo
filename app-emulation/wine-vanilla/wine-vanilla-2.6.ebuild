@@ -78,7 +78,7 @@ COMMON_DEPEND="
 		virtual/glu[${MULTILIB_USEDEP}]
 		virtual/opengl[${MULTILIB_USEDEP}]
 	)
-	osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
+	osmesa? ( >=media-libs/mesa-13[osmesa,${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
@@ -293,7 +293,6 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/${MY_PN}-1.5.26-winegcc.patch #260726
 		"${FILESDIR}"/${MY_PN}-1.9.5-multilib-portage.patch #395615
-		"${FILESDIR}"/${MY_PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${MY_PN}-1.6-memset-O3.patch #480508
 		"${FILESDIR}"/${MY_PN}-2.0-multislot-apploader.patch
 	)
