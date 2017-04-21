@@ -1318,7 +1318,7 @@ app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation pr
 app-emulation/ganeti-instance-debootstrap 0.9 0.11 0.12: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
-app-emulation/genymotion-bin 2.8.1-r1: Complete set of tools that provide a virtual environment for Android
+app-emulation/genymotion-bin 2.8.1-r1 2.9.0: Complete set of tools that provide a virtual environment for Android
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
