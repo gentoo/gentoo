@@ -10,5 +10,5 @@ RDEPEND=virtual/perl-Carp virtual/perl-File-Path virtual/perl-Getopt-Long virtua
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MARIOROY/MCE-1.705.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	a884a53a49bebbf90cb29dd191f73613	perl-module	3485abc93409cd3433ec6a0df5f64867
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	19ad909f708afdacbb9b1879aef779ec	perl-module	426c3ab084fdeb2eaa8ba45a75bd9ae7
 _md5_=4e2b695cc84f3821a1e93359563f20ac
