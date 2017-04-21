@@ -943,7 +943,7 @@ python_wrapper_setup() {
 		rm -f "${workdir}"/bin/2to3 || die
 		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
 
-		local EPYTHON PYTHON PYTHON_CONFIG
+		local EPYTHON PYTHON
 		python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
@@ -970,11 +970,9 @@ python_wrapper_setup() {
 
 		# CPython-specific
 		if [[ ${EPYTHON} == python* ]]; then
-			python_export "${impl}" PYTHON_CONFIG
-
 			cat > "${workdir}/bin/python-config" <<-_EOF_ || die
 				#!/bin/sh
-				exec "${PYTHON_CONFIG}" "\${@}"
+				exec "${PYTHON}-config" "\${@}"
 			_EOF_
 			cp "${workdir}/bin/python-config" \
 				"${workdir}/bin/python${pyver}-config" || die
