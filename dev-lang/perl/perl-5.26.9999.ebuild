@@ -15,19 +15,22 @@ if [[ "${PV##*.}" == "9999" ]]; then
 	# Include more versions for blead releases
 	# for circular reasons
 	# Greatest first, don't include yourself
-	PERL_BIN_OLDVERSEN="5.25.11"
+	PERL_BIN_OLDVERSEN=""
 	PERL_OLDVERSEN="5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 	DIST_VERSION=5.25.12
 	SHORT_PV="${DIST_VERSION%.*}"
+	# Devel Releases are not ABI-intercompatible
+	SUBSLOT="${DIST_VERSION}"
 	MY_P="perl-${DIST_VERSION/_rc/-RC}"
 	PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 	MY_PV="${DIST_VERSION%_rc*}"
 else
-	PERL_BIN_OLDVERSEN="5.25.11"
+	PERL_BIN_OLDVERSEN=""
 	# Compat reasons
 	PERL_OLDVERSEN="5.25.11"
 	# First 2 digits only
 	SHORT_PV="${PV%.*}"
+	SUBSLOT="${SHORT_PV}"
 	MY_P="perl-${PV/_rc/-RC}"
 	PATCH_BASE="${MY_P}-patches-${PATCH_VER}"
 	MY_PV="${PV%_rc*}"
@@ -46,7 +49,7 @@ SRC_URI="
 HOMEPAGE="http://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
-SLOT="0/${SHORT_PV}"
+SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]]; then
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
