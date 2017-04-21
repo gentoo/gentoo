@@ -95,7 +95,7 @@ COMMON_DEPEND="
 	)
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba[smbclient(+)] )
-	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
+	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	v4l? ( media-libs/libv4l )
 	vaapi? ( >=x11-libs/libva-1.4.0[drm?,X?,wayland?] )
 	vdpau? ( >=x11-libs/libvdpau-0.2 )
