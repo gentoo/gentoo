@@ -11,7 +11,7 @@ SRC_URI="http://www.pmacct.net/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="64bit debug geoip geoipv2 ipv6 jansson kafka mongodb mysql postgres rabbitmq sqlite threads"
+IUSE="64bit debug geoip geoipv2 ipv6 jansson kafka mongodb mysql nflog postgres rabbitmq sqlite threads"
 REQUIRED_USE="
 	?? ( geoip geoipv2 )
 	kafka? ( jansson )
@@ -29,6 +29,7 @@ RDEPEND="
 		<dev-libs/mongo-c-driver-0.98
 	)
 	mysql? ( virtual/mysql )
+	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
 	sqlite? ( =dev-db/sqlite-3* )
@@ -56,6 +57,7 @@ src_configure() {
 		$(use_enable kafka) \
 		$(use_enable mongodb) \
 		$(use_enable mysql) \
+		$(use_enable nflog) \
 		$(use_enable postgres pgsql) \
 		$(use_enable rabbitmq) \
 		$(use_enable sqlite sqlite3) \
