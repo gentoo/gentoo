@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/vstakhov/rspamd"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="fann +gd jemalloc +jit libressl pcre2"
+IUSE="fann +gd +hyperscan jemalloc +jit libressl pcre2"
 
 RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
@@ -27,7 +27,8 @@ RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	<dev-util/ragel-7.0
 	sys-apps/file
 	gd? ( media-libs/gd[jpeg] )
-	dev-libs/icu"
+	dev-libs/icu
+	hyperscan? ( dev-libs/hyperscan )"
 DEPEND="dev-util/ragel
 	${RDEPEND}"
 
@@ -48,6 +49,7 @@ src_configure() {
 		-DENABLE_FANN=$(usex fann ON OFF)
 		-DENABLE_PCRE2=$(usex pcre2 ON OFF)
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
+		-DENABLE_HYPERSCAN=$(usex hyperscan ON OFF)
 	)
 	cmake-utils_src_configure
 }
