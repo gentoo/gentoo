@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -34,16 +34,22 @@ I="opt/foldingathome"
 QA_PREBUILT="${I}/*"
 
 pkg_setup() {
-	I="${EROOT}/${I}"
 	einfo ""
-	cat "${PORTDIR}"/licenses/FAH-special-permission
+	einfo "Special permission is hereby granted to the Gentoo project to provide an"
+	einfo "automated installer package which downloads and installs the Folding@home client"
+	einfo "software. Permission is also granted for future Gentoo installer packages on the"
+	einfo "condition that they continue to adhere to all of the terms of the accompanying"
+	einfo "Folding@home license agreements and display this notice."
+	einfo "-- Vijay S. Pande, Stanford University, 07 May 2013"
+	einfo ""
+	einfo "(ref: http://foldingforum.org/viewtopic.php?f=16&t=22524&p=241992#p241992 )"
 	einfo ""
 }
 
 src_install() {
 	local myS="fahclient_${PV}-64bit-release"
 	use x86 && myS="${myS//64bit/32bit}"
-	exeinto "${I}"
+	exeinto ${I}
 	doexe "${FILESDIR}"/7.3/initfolding
 	doexe "${myS}"/{FAHClient,FAHCoreWrapper}
 	newconfd "${FILESDIR}"/7.3/folding-conf.d foldingathome
@@ -52,18 +58,18 @@ src_install() {
 
 pkg_preinst() {
 	# the bash shell is important for "su -c" in init script
-	enewuser foldingathome -1 /bin/bash /opt/foldingathome
+	enewuser foldingathome -1 /bin/bash "${EPREFIX}"/opt/foldingathome
 }
 
 pkg_postinst() {
-	chown -R foldingathome:nogroup "${I}"
+	chown -R foldingathome:nogroup "${EPREFIX}"/${I}
 	einfo "To run Folding@home in the background at boot (with openrc):"
 	einfo "\trc-update add foldingathome default"
 	einfo ""
-	if [ ! -e "${I}"/config.xml ]; then
+	if [ ! -e "${EPREFIX}"/${I}/config.xml ]; then
 		elog "No configuration found -- please run ${I}/initfolding or"
 		elog "emerge --config ${P} to configure your client and edit"
-		elog "${EROOT}/etc/conf.d/foldingathome for options"
+		elog "${EPREFIX}/etc/conf.d/foldingathome for options"
 	fi
 	einfo ""
 	einfo "The original author encourages you to acquire a username and join team 36480."
@@ -77,5 +83,5 @@ pkg_postrm() {
 }
 
 pkg_config() {
-	"${I}"/initfolding
+	"${EPREFIX}"/${I}/initfolding
 }
