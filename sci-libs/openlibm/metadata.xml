@@ -6,17 +6,12 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-  OpenLibm is an effort to have a high quality standalone LIBM
-  library. It is meant to be used standalone in applications and
-  programming language implementations.
-  OpenLibm also includes the AMOS library from Netlib, which is a
-  portable package for Bessel Functions of a Complex Argument and
-  Nonnegative Order. AMOS contains subroutines for computing Bessel
-  functions and Airy functions.
-  The OpenLIBM code derives from the FreeBSD msun implementation, which
-  in turn derives from FDLIBM 5.3. As a result, it has a number of fixes
-  and updates that have accumulated over the years in msun, and also
-  optimized assembly versions of many functions.
+OpenLibm is an effort to have a high quality, portable, standalone C
+mathematical library (libm). It can be used standalone in applications
+and programming language implementations.
+The project was born out of a need to have a good libm for the Julia
+programming langage that worked consistently across compilers and
+operating systems, and in 32-bit and 64-bit environments.
 </longdescription>
   <upstream>
     <remote-id type="github">JuliaLang/openlibm</remote-id>
