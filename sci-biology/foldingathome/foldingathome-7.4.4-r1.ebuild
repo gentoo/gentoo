@@ -62,11 +62,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	chown -R foldingathome:nogroup "${EPREFIX}"/${I}
+	chown -R foldingathome:nogroup "${EROOT}"${I}
 	einfo "To run Folding@home in the background at boot (with openrc):"
 	einfo "\trc-update add foldingathome default"
 	einfo ""
-	if [ ! -e "${EPREFIX}"/${I}/config.xml ]; then
+	if [ ! -e "${EROOT}"${I}/config.xml ]; then
 		elog "No configuration found -- please run ${I}/initfolding or"
 		elog "emerge --config ${P} to configure your client and edit"
 		elog "${EPREFIX}/etc/conf.d/foldingathome for options"
@@ -83,5 +83,5 @@ pkg_postrm() {
 }
 
 pkg_config() {
-	"${EPREFIX}"/${I}/initfolding
+	"${EROOT}"${I}/initfolding
 }
