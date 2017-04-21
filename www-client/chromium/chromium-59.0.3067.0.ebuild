@@ -137,14 +137,9 @@ are not displayed properly:
 - media-fonts/wqy-microhei
 - media-fonts/wqy-zenhei
 
-Depending on your desktop environment, you may need
-to install additional packages to get icons on the Downloads page.
-
-For KDE, the required package is kde-frameworks/oxygen-icons.
-
-For other desktop environments, try one of the following:
-- x11-themes/gnome-icon-theme
-- x11-themes/tango-icon-theme
+To fix broken icons on the Downloads page, you should install an icon
+theme that covers the appropriate MIME types, and configure this as your
+GTK+ icon theme.
 "
 
 pre_build_checks() {
