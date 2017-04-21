@@ -102,6 +102,7 @@ DEPEND="${RDEPEND}
 	gnome? ( app-text/rarian )
 	nsplugin? ( net-misc/npapi-sdk )
 	test? ( dev-util/dejagnu )
+	${PYTHON_DEPS}
 "
 # Tests hang with sandbox, bug #321017
 RESTRICT="test"
