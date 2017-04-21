@@ -85,8 +85,8 @@ case ${EAPI:-0} in
 				;;
 		esac
 
-		if [[ "${GENTOO_DEPEND_ON_PERL_SUBSLOT}" ]]; then
-			eerror "GENTOO_DEPEND_ON_PERL_SUBSLOT is banned in EAPI=6. If you don't want a slot operator"
+		if [[ "${GENTOO_DEPEND_ON_PERL_SUBSLOT:-yes}" != "yes" ]]; then
+			eerror "GENTOO_DEPEND_ON_PERL_SUBSLOT=no is banned in EAPI=6. If you don't want a slot operator"
 			die    "set GENTOO_DEPEND_ON_PERL=noslotop instead."
 		fi
 
