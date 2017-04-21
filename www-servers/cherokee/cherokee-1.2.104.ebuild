@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,8 +17,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE="admin ffmpeg debug geoip ipv6 kernel_linux ldap libressl mysql nls pam php rrdtool ssl static static-libs"
+RDEPEND=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPEND="dev-libs/libpcre
+COMMON_DEPEND="
+	${PYTHON_DEPS}
+	dev-libs/libpcre
 	>=sys-libs/zlib-1.1.4-r1
 	ffmpeg? ( virtual/ffmpeg )
 	geoip? ( dev-libs/geoip )
@@ -31,8 +35,8 @@ COMMON_DEPEND="dev-libs/libpcre
 		dev-lang/php:*[cgi]
 	) )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	"
 DEPEND="${COMMON_DEPEND}
