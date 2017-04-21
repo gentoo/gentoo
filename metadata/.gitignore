@@ -1,14 +1,15 @@
 # These are added during tree generation only.
+/.checksum-test-marker
 /cache
 /dtd
 /glsa
+/herds.xml
 /md5-cache
 /news
-/herds.xml
-/timestamp
-/timestamp.chk
-/timestamp.x
 /pkg_desc_index
 /projects.xml
+/timestamp
+/timestamp.chk
+/timestamp.commit
+/timestamp.x
 /xml-schema
-/.checksum-test-marker
