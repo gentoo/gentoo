@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit versionator user
 
@@ -34,16 +34,16 @@ I="opt/foldingathome"
 QA_PREBUILT="${I}/*"
 
 pkg_setup() {
-	einfo ""
-	einfo "Special permission is hereby granted to the Gentoo project to provide an"
-	einfo "automated installer package which downloads and installs the Folding@home client"
-	einfo "software. Permission is also granted for future Gentoo installer packages on the"
-	einfo "condition that they continue to adhere to all of the terms of the accompanying"
-	einfo "Folding@home license agreements and display this notice."
-	einfo "-- Vijay S. Pande, Stanford University, 07 May 2013"
-	einfo ""
-	einfo "(ref: http://foldingforum.org/viewtopic.php?f=16&t=22524&p=241992#p241992 )"
-	einfo ""
+	elog ""
+	elog "Special permission is hereby granted to the Gentoo project to provide an"
+	elog "automated installer package which downloads and installs the Folding@home client"
+	elog "software. Permission is also granted for future Gentoo installer packages on the"
+	elog "condition that they continue to adhere to all of the terms of the accompanying"
+	elog "Folding@home license agreements and display this notice."
+	elog "-- Vijay S. Pande, Stanford University, 07 May 2013"
+	elog ""
+	elog "(ref: http://foldingforum.org/viewtopic.php?f=16&t=22524&p=241992#p241992 )"
+	elog ""
 }
 
 src_install() {
