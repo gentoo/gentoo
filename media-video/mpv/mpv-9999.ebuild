@@ -138,11 +138,11 @@ PATCHES=(
 
 mpv_check_compiler() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
-		if tc-is-gcc && ( [[ $(gcc-major-version) -lt 4 ]] || \
-			( [[ $(gcc-major-version) -eq 4 ]] && [[ $(gcc-minor-version) -lt 5 ]] ) ); then
+		if tc-is-gcc && { [[ $(gcc-major-version) -lt 4 ]] || \
+			{ [[ $(gcc-major-version) -eq 4 ]] && [[ $(gcc-minor-version) -lt 5 ]]; }; }; then
 			die "${PN} requires GCC>=4.5."
 		fi
-		if ( use opengl || use egl ) && ! tc-has-tls; then
+		if { use opengl || use egl; } && ! tc-has-tls; then
 			die "Your compiler lacks C++11 TLS support. Use GCC>=4.8 or Clang>=3.3."
 		fi
 		if use vaapi && use cpu_flags_x86_sse4_1 && ! tc-is-gcc; then
