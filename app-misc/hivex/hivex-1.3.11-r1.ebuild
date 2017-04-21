@@ -28,7 +28,7 @@ RDEPEND="
 	ocaml? ( dev-lang/ocaml[ocamlopt]
 			 dev-ml/findlib[ocamlopt]
 			 )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0 )
 	perl? ( dev-perl/IO-stringy )
 	ruby? ( $(ruby_implementations_depend) )
 	python? ( ${PYTHON_DEPS} )
