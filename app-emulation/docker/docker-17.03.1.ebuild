@@ -15,7 +15,7 @@ else
 	DOCKER_GITCOMMIT="c6d412e"
 	EGIT_COMMIT="v${MY_PV}-ce"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
