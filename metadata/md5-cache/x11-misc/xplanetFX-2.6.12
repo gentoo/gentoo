@@ -1,13 +1,15 @@
 DEFINED_PHASES=install prepare
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=GUI to configure, run or daemonize xplanet with HQ capabilities
 EAPI=6
 HOMEPAGE=http://mein-neues-blog.de/xplanetFX/
 IUSE=libnotify python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=WTFPL-2
-RDEPEND=dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-gfx/imagemagick sys-devel/bc x11-misc/xplanet libnotify? ( x11-libs/libnotify )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-gfx/imagemagick sys-devel/bc x11-misc/xplanet libnotify? ( x11-libs/libnotify )
+REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://repository.mein-neues-blog.de:9000/archive/xplanetfx-2.6.12_all.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=1945fce2954df6e27babaf90745c7aab
+_md5_=bc69b5a71d8473af8f9834978fa57d34
