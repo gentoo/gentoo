@@ -318,3 +318,228 @@ perl_doexamples() {
 
 	# is there a way to undo "docinto" ?
 }
+
+# @FUNCTION: perl_has_module
+# @USAGE: perl_has_module "Test::Tester"
+# @DESCRIPTION:
+# Query the installed system Perl to see if a given module is installed.
+# This does **not** load the module in question, only anticipates if it *might* load.
+#
+# This is primarily for the purposes of dependency weakening so that conditional
+# behaviour can be triggered without adding dependencies to portage which would confuse
+# a dependency resolver.
+#
+# returns 'true' if the module is available, returns error if the module is not available
+
+perl_has_module() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
+	[[ $# -lt 2 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	perl -we 'my $mn = $ARGV[0];
+		$mn =~ s{(::|\x{27})}{/}g;
+		for(@INC){
+			next if ref $_;
+			exit 0 if -r $_ . q[/] . $mn . q[.pm]
+		}
+		exit 1' "$@";
+}
+
+# @FUNCTION: perl_has_module_version
+# @USAGE: perl_has_module_version "Test::Tester" "0.017"
+# @DESCRIPTION:
+# Query the installed system Perl to see if a given module is installed
+# and is at least a given version.
+#
+# This requires more caution to use than perl_has_module as it requires
+# loading the module in question to determine version compatibility,
+# which can be SLOW, and can have side effects (ie: compilation fails in
+# require due to some dependency, resulting in a "Fail")
+#
+# Also take care to note the module version is a *minimum*, *must* be
+# written in upstream versions format and should be a a legal upstream version
+#
+# returns a true exit code if the module is both available and is at least
+# the specified version
+
+perl_has_module_version() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
+	[[ $# -gt 1 ]] || die "${FUNCNAME}: No module version provided"
+	[[ $# -lt 3 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	perl -we 'my $mn = $ARGV[0];
+		$mn =~ s{(::|\x{27})}{/}g;
+		exit ( eval {
+			require qq[${mn}.pm];
+			$ARGV[0]->VERSION($ARGV[1]);
+			1
+		} ? 0 : 1 )' "$@"
+}
+
+# @FUNCTION: perl_get_module_version
+# @USAGE: MODVER=$(perl_get_module_version "Test::Simple")
+# @DESCRIPTION:
+# Query the installed system perl to report the version of the installed
+# module.
+#
+# Note this should be strictly for diagnostic purposes to the end user,
+# and may be of selective use in pkg_info to enhance
+# emerge --info reports.
+#
+# Anything that does version comparisons **must not** use the return value
+# from this function
+#
+# Also note that this **must** at least attempt load the module in
+# question as part of its operation, and is subsequently prone to SLOWness.
+#
+# Return codes return error in both compilation-failure and not-installed cases.
+
+perl_get_module_version() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
+	[[ $# -lt 2 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	if ! perl_has_module "$@" ; then
+		echo "(Not Installed)";
+		return 1;
+	fi
+
+	# Todo: What do we do if require fails? spew to stderr
+	# or stay silent?
+
+	perl -we 'my $mn = $ARGV[0];
+		$mn =~ s{(::|\x{27})}{/}g;
+		local $@;
+		eval { require qq[${mn}.pm]; 1 } or do {
+			print q[(Compilation failed in require)];
+			exit 1;
+		};
+		my $stash = \%{ $ARGV[0] . q[::] };
+		if ( not exists $stash->{VERSION} ) {
+			print q[(No VERSION property)];
+			exit 0;
+		}
+		if ( not defined ${$stash->{VERSION}} ) {
+			print q[(undef)];
+			exit 0;
+		}
+		print ${$stash->{VERSION}};
+		exit 0; ' "$@"
+}
+
+# @FUNCTION: perl_get_raw_vendorlib
+# @USAGE: perl_get_raw_vendorlib
+# @DESCRIPTION:
+# Convenience function to optimise for a common case without double-handling
+# variables everywhere.
+#
+# Note: Will include EPREFIX where relevant
+perl_get_raw_vendorlib() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -lt 1 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	perl -MConfig \
+		-e'exists $Config{$ARGV[0]} || die qq{No such Config key "$ARGV[0]"};
+		   print $Config{$ARGV[0]};
+		   exit 0' -- "installvendorlib" || die "Can't extract installvendorlib from Perl Configuration"
+}
+
+# @FUNCTION: perl_get_vendorlib
+# @USAGE: perl_get_vendorlib
+# @DESCRIPTION:
+#
+# Convenience helper for returning Perls' vendor install root
+# without EPREFIXing.
+perl_get_vendorlib() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -lt 1 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	# Requires perl 5.14 for /r attribute of s///
+	# Just in case somebody out there is stuck in a time warp: upgrade perl first
+	perl -M5.014 -MConfig \
+		-e'exists $Config{$ARGV[0]} || die qq{No such Config key "$ARGV[0]"};
+		   print $Config{$ARGV[0]} =~ s{\A\Q$ARGV[1]\E}{}r;
+		   exit 0' -- "installvendorlib" "$EPREFIX" || die "Can't extract installvendorlib from Perl Configuration"
+}
+
+# @FUNCTION: perl_domodule
+# @USAGE: perl_domodule [options] <files>
+# @DESCRIPTION:
+# Installs files in paths where they can be found in the default
+# Perl runtime.
+#
+# Note: Should only be used in src_install or pkg_preinst
+# anywhere else will do the wrong thing or die.
+#
+# The contents of the <files> list are copied into Perls Vendor library path
+# as follows:
+# @CODE
+#   # install perl/File.pm as Samba::File
+#   pushd perl/
+#   perl_domodule -C Samba File.pm
+#
+#   # install perl/ recursively under VENDORLIB/Samba/
+#   pushd perl/
+#   perl_domodule -C Samba -r .
+# @CODE
+#
+# @CODE
+#   options:
+#       -C Target/Name
+#          The subdirectory relative to the Perl VENDOR_LIB
+#          to install into.
+#
+#          defaults to ""
+#       -r
+#          Install directories recursively ( see doins )
+#          files:
+#          list of .pm files to install to VENDORLIB
+# @CODE
+
+perl_domodule() {
+	local target_prefix=""
+	local files=()
+	local doins_opts=()
+
+	local recursive="false"
+	local target
+	local file
+
+	while [[ $# -gt 0 ]] ; do
+		case $1 in
+			-C|--target-prefix)
+				[[ -z "${2}" || "${2:0:1}" == "-" ]] && die "${FUNCNAME}: -C|--target-prefix expects an argument, got \"$2\"!"
+				target_prefix="${2}";
+				shift 2;;
+			-r)
+				recursive="true"
+				shift;;
+			*)
+				[[ -z "${1}" || "${1:0:1}" == "-" ]] && die "${FUNCNAME}: Unknown argument \"${1}\"!"
+				files+=( "${1}" )
+				shift 1;;
+		esac
+	done
+
+	if [[ "true" == $recursive ]]; then
+		doins_opts+=( "-r" )
+	fi
+	for file in "${files[@]}"; do
+		[[ -e "${file}" ]] || die "$FUNCNAME: Argument \"${file}\" is not an existing file"
+		[[ "false" == ${recursive} && -d "${file}" ]] && die "$FUNCNAME: Argument \"${file}\" is a directory ( needs -r parameter )"
+	done
+
+	target="$(perl_get_vendorlib)"
+
+	# Extend target if target_prefix is set
+	[[ -z "${target_prefix}" ]] || target="${target%/}/${target_prefix#/}"
+
+	insinto "/${target#/}"
+	doins "${doins_opts[@]}" "${files[@]}"
+}
