@@ -4410,7 +4410,7 @@ dev-java/sun-j2ee-deployment-bin 1.1-r2: J2EE Application Deployment Specificati
 dev-java/sun-jacc-api 20070102: Java Authorization Contract for Containers
 dev-java/sun-jaf 1.1.1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
-dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
+dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1 1.5.2: Sun Java3D API Core
 dev-java/sun-javamail 1.4.3: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/sun-jimi 1.0-r3: Jimi is a class library for managing images
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
