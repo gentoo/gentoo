@@ -18,6 +18,7 @@ IUSE="static-libs subunit"
 
 RDEPEND="subunit? ( >=dev-python/subunit-0.0.10-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
+	sys-apps/texinfo
 	virtual/pkgconfig"
 
 pkg_setup() {
