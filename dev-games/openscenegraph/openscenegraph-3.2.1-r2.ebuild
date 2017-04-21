@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ MY_PN="OpenSceneGraph"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"
-HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
+HOMEPAGE="http://www.openscenegraph.org/"
 SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
