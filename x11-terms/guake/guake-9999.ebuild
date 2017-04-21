@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,13 +17,15 @@ EGIT_REPO_URI="https://github.com/Guake/guake.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	dev-python/dbus-python
-	dev-python/gconf-python
-	dev-python/notify-python
-	dev-python/pygtk
-	dev-python/pyxdg
+	${PYTHON_DEPS}
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+	dev-python/gconf-python[${PYTHON_USEDEP}]
+	dev-python/notify-python[${PYTHON_USEDEP}]
+	dev-python/pygtk[${PYTHON_USEDEP}]
+	dev-python/pyxdg[${PYTHON_USEDEP}]
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/vte:0[python]

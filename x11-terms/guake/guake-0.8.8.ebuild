@@ -15,14 +15,16 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	dev-libs/keybinder:0[python]
-	dev-python/dbus-python
-	dev-python/gconf-python
-	dev-python/notify-python
-	dev-python/pygtk
-	dev-python/pyxdg
+	${PYTHON_DEPS}
+	dev-libs/keybinder:0[python,${PYTHON_USEDEP}]
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+	dev-python/gconf-python[${PYTHON_USEDEP}]
+	dev-python/notify-python[${PYTHON_USEDEP}]
+	dev-python/pygtk[${PYTHON_USEDEP}]
+	dev-python/pyxdg[${PYTHON_USEDEP}]
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/vte:0[python]
