@@ -957,7 +957,7 @@ app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
 app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implementations
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.1 0.4.2: Clsync and libclsync API documentation
-app-doc/cppman 0.4.6 0.4.8: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
+app-doc/cppman 0.4.8: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
@@ -1506,7 +1506,7 @@ app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 9999: Vietnamese Unikey input methods fo
 app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.5 1.5.12 1.5.14 1.5.15: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese input method Anthy IMEngine for IBus Framework
-app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
+app-i18n/ibus-cangjie 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.5.1: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 0.9.1: ibus-fbterm is a input method for FbTerm based on iBus
 app-i18n/ibus-handwrite 2.1.4-r1: hand write recognition/input using ibus IM engine
