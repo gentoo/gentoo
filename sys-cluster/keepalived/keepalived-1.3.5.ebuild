@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,22 +12,19 @@ SRC_URI="http://www.keepalived.org/software/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="debug ipv6 snmp"
+IUSE="dbus debug ipv6 snmp"
 
-RDEPEND="dev-libs/popt
-	sys-apps/iproute2
-	dev-libs/libnl:=
+RDEPEND="dev-libs/libnl:=
 	dev-libs/openssl:=
-	snmp? ( net-analyzer/net-snmp )
-	net-libs/libnfnetlink"
+	dev-libs/popt
+	net-libs/libnfnetlink
+	sys-apps/iproute2
+	dbus? ( sys-apps/dbus )
+	snmp? ( net-analyzer/net-snmp )"
 DEPEND="${RDEPEND}
-	>=sys-kernel/linux-headers-2.6.30"
+	>=sys-kernel/linux-headers-4.4"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.2.2-libipvs-fix-backup-daemon.patch
-)
-
-DOCS=( README CONTRIBUTORS INSTALL VERSION ChangeLog AUTHOR TODO
+DOCS=( README CONTRIBUTORS INSTALL ChangeLog AUTHOR TODO
 	doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt )
 
 src_prepare() {
@@ -39,7 +36,10 @@ src_configure() {
 	STRIP=/bin/true \
 	econf \
 		--with-kernel-dir=/usr \
+		--enable-sha1 \
 		--enable-vrrp \
+		$(use_enable dbus) \
+		$(use_enable dbus dbus-create-instance) \
 		$(use_enable debug) \
 		$(use_enable snmp)
 }
@@ -53,7 +53,7 @@ src_install() {
 	use snmp && dodoc doc/KEEPALIVED-MIB
 
 	docinto genhash
-	dodoc genhash/README genhash/AUTHOR genhash/ChangeLog genhash/VERSION
+	dodoc genhash/README genhash/AUTHOR genhash/ChangeLog
 	# This was badly named by upstream, it's more HOWTO than anything else.
 	newdoc INSTALL INSTALL+HOWTO
 
