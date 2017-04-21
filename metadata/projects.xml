@@ -1324,7 +1324,7 @@
   </project>
   <project>
     <email>genkernel@gentoo.org</email>
-    <name>Genkernel Project</name>
+    <name>Genkernel</name>
     <url>https://wiki.gentoo.org/wiki/Project:Genkernel</url>
     <description>The Genkernel project handles the maintenance and development of [https://packages.gentoo.org/packages/sys-kernel/genkernel sys-kernel/genkernel].</description>
     <member>
