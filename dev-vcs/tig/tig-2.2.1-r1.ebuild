@@ -25,7 +25,7 @@ DEPEND="
 	sys-libs/readline:0="
 RDEPEND="${DEPEND}
 	dev-vcs/git"
-[[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc"
+[[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc app-text/xmlto"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-tinfo.patch
