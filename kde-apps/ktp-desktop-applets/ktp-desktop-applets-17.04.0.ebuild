@@ -12,13 +12,13 @@ LICENSE="|| ( GPL-2 GPL-3 ) GPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep plasma)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 "
-RDEPEND="${DEPEND}
-	!kde-apps/ktp-desktop-applets:4
+DEPEND="${RDEPEND}
+	$(add_frameworks_dep ki18n)
 "
