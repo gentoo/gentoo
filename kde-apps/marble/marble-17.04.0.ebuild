@@ -13,7 +13,7 @@ DESCRIPTION="Virtual Globe and World Atlas to learn more about Earth"
 HOMEPAGE="https://marble.kde.org/"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="aprs +dbus designer gps +kde phonon +positioning shapefile +webkit"
+IUSE="aprs +dbus designer gps +kde nls phonon +positioning shapefile +webkit"
 
 # FIXME (new package): libwlocate, WLAN-based geolocation
 RDEPEND="
@@ -50,6 +50,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	aprs? ( dev-lang/perl )
+	nls? ( $(add_qt_dep linguist-tools) )
 "
 
 # bug 588320
