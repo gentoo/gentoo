@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/Babel[$(python_gen_usedep 'python2*')]
+	dev-python/Babel[${PYTHON_USEDEP}]
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -26,11 +26,4 @@ src_prepare() {
 	#PyPi tarball has wrong (old, evidently) README. Upstream uses GPL-3.
 	sed -e 's:BSD licensed:GPL-3 licensed:' -i README || die
 	distutils-r1_src_prepare
-}
-
-pkg_postinst() {
-	if [[ "${PYTHON_TARGETS}" == *python3* ]]; then
-		ewarn "Though ${PN} supports Python 3, Babel does not, thus it's number parsing feature won't be used."
-		ewarn "If you need it, use Python 2."
-	fi
 }
