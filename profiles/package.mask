@@ -205,6 +205,7 @@ dev-perl/File-DirWalk
 >=sci-geosciences/geocode-glib-3.23
 >=dev-libs/gjs-1.47
 >=dev-libs/glib-2.51
+>=dev-util/gdbus-codegen-2.51
 >=dev-cpp/glibmm-2.51
 >=x11-themes/gnome-backgrounds-3.23
 >=gnome-extra/gnome-boxes-3.23
