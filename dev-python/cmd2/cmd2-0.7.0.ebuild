@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Extra features for standard library's cmd module"
-HOMEPAGE="https://bitbucket.org/catherinedevlin/cmd2"
+HOMEPAGE="https://github.com/python-cmd2/cmd2"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
