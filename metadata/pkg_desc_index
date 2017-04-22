@@ -2910,7 +2910,7 @@ dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is us
 dev-db/barman 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 2.1: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/couchdb 1.6.1 1.6.1-r2: Distributed, fault-tolerant and schema-free document-oriented database
+dev-db/couchdb 1.6.1-r2: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/cpp-driver 2.4.3: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
 dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to store temporary data
@@ -17046,7 +17046,7 @@ sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 0.8.7: Hard disk drive health inspection tool
-sys-apps/guix 0.12.0-r2: GNU package manager (nix sibling)
+sys-apps/guix 0.12.0-r3: GNU package manager (nix sibling)
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
 sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
