@@ -7327,7 +7327,7 @@ dev-python/biplist 0.8 0.9 1.0.1: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.2 1.4.3: A screamingly fast Python WSGI server written in C
-dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1 0.10.0 0.10.1 0.10.2 0.11.2: Next generation Python numpy
+dev-python/blaze 0.10.2 0.11.2: Next generation Python numpy
 dev-python/bleach 1.4.3 1.5.0: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6 1.6-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.3 1.4: Fast, simple object-to-object and broadcast signaling
@@ -18918,7 +18918,7 @@ x11-misc/touchcal 0.80: Touchscreen calibration utility
 x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
 x11-misc/trayer 1.0-r2 1.0-r3: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.6-r1 1.1.7: trayer fork with multi monitor support and cleaned up codebase
-x11-misc/treeline 1.4.1-r1 2.0.2 2.1.1: TreeLine is a structured information storage program
+x11-misc/treeline 1.4.1-r1 2.0.2 2.1.1 2.1.2: TreeLine is a structured information storage program
 x11-misc/unclutter 8-r2 8-r4: Hides mouse pointer while not in use
 x11-misc/urxvt-font-size 1.1 9999: Perl extension for rxvt-unicode to change the font size on the fly
 x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
