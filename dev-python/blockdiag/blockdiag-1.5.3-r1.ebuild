@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
 	>=dev-python/pillow-2.2.1[${PYTHON_USEDEP}]
+	dev-python/webcolors[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
