@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Huettel <dilfridge@gentoo.org>
+# Kent Fredric <kentnl@gentoo.org>
 # @BLURB: helper functions eclass for perl modules
 # @DESCRIPTION:
 # The perl-functions eclass is designed to allow easier installation of perl
@@ -27,7 +28,6 @@ esac
 perlinfo_done=false
 
 # @FUNCTION: perl_set_version
-# @USAGE: perl_set_version
 # @DESCRIPTION:
 # Extract version information and installation paths from the current Perl
 # interpreter.
@@ -36,6 +36,12 @@ perlinfo_done=false
 # ARCH_LIB, VENDOR_LIB, VENDOR_ARCH
 #
 # This function used to be called perlinfo as well.
+#
+# Example:
+# @CODE
+# perl_set_version
+# echo $PERL_VERSION
+# @CODE
 perl_set_version() {
 	debug-print-function $FUNCNAME "$@"
 	debug-print "$FUNCNAME: perlinfo_done=${perlinfo_done}"
@@ -53,7 +59,6 @@ perl_set_version() {
 }
 
 # @FUNCTION: perl_delete_localpod
-# @USAGE: perl_delete_localpod
 # @DESCRIPTION:
 # Remove stray perllocal.pod files in the temporary install directory D.
 #
@@ -66,7 +71,6 @@ perl_delete_localpod() {
 }
 
 # @FUNCTION: perl_fix_osx_extra
-# @USAGE: perl_fix_osx_extra
 # @DESCRIPTION:
 # Look through ${S} for AppleDouble encoded files and get rid of them.
 perl_fix_osx_extra() {
@@ -83,7 +87,6 @@ perl_fix_osx_extra() {
 }
 
 # @FUNCTION: perl_delete_module_manpages
-# @USAGE: perl_delete_module_manpages
 # @DESCRIPTION:
 # Bump off manpages installed by the current module such as *.3pm files as well
 # as empty directories.
@@ -97,7 +100,6 @@ perl_delete_module_manpages() {
 }
 
 # @FUNCTION: perl_delete_packlist
-# @USAGE: perl_delete_packlist
 # @DESCRIPTION:
 # Look through ${D} for .packlist files, empty .bs files and empty directories,
 # and get rid of items found.
@@ -111,7 +113,6 @@ perl_delete_packlist() {
 }
 
 # @FUNCTION: perl_delete_emptybsdir
-# @USAGE: perl_delete_emptybsdir
 # @DESCRIPTION:
 # Look through ${D} for empty .bs files and empty directories,
 # and get rid of items found.
@@ -126,7 +127,6 @@ perl_delete_emptybsdir() {
 }
 
 # @FUNCTION: perl_fix_packlist
-# @USAGE: perl_fix_packlist
 # @DESCRIPTION:
 # Look through ${D} for .packlist text files containing the temporary installation
 # folder (i.e. ${D}). If the pattern is found, silently replace it with `/'.
@@ -160,7 +160,6 @@ perl_fix_packlist() {
 }
 
 # @FUNCTION: perl_remove_temppath
-# @USAGE: perl_remove_temppath
 # @DESCRIPTION:
 # Look through ${D} for text files containing the temporary installation
 # folder (i.e. ${D}). If the pattern is found, replace it with `/' and warn.
@@ -176,7 +175,7 @@ perl_remove_temppath() {
 }
 
 # @FUNCTION: perl_rm_files
-# @USAGE: perl_rm_files "file_1" "file_2"
+# @USAGE: <list of files>
 # @DESCRIPTION:
 # Remove certain files from a Perl release and remove them from the MANIFEST
 # while we're there.
@@ -189,6 +188,14 @@ perl_remove_temppath() {
 #
 # Removing from MANIFEST also avoids needless log messages warning
 # users about files "missing from their kit".
+#
+# Example:
+# @CODE
+# src_test() {
+#   perl_rm_files t/pod{,-coverage}.t
+#   perl-module_src_test
+# }
+# @CODE
 perl_rm_files() {
 	debug-print-function $FUNCNAME "$@"
 	local skipfile="${T}/.gentoo_makefile_skip"
@@ -212,7 +219,6 @@ perl_rm_files() {
 }
 
 # @FUNCTION: perl_link_duallife_scripts
-# @USAGE: perl_link_duallife_scripts
 # @DESCRIPTION:
 # Moves files and generates symlinks so dual-life packages installing scripts do not
 # lead to file collisions. Mainly for use in pkg_postinst and pkg_postrm, and makes
@@ -249,7 +255,6 @@ perl_link_duallife_scripts() {
 }
 
 # @FUNCTION: perl_check_env
-# @USAGE: perl_check_env
 # @DESCRIPTION:
 # Checks a blacklist of known-suspect ENV values that can be accidentally set by users
 # doing personal perl work, which may accidentally leak into portage and break the
@@ -299,12 +304,19 @@ perl_check_env() {
 }
 
 # @FUNCTION: perl_doexamples
-# @USAGE: perl_doexamples "file_1" "file_2"
+# @USAGE: <list of files or globs>
 # @DESCRIPTION:
 # Install example files ready-to-run.
 # Is called under certain circumstances in perl-module.eclass src_install
 # (see the documentation there).
 #
+# Example:
+# @CODE
+# src_install() {
+#   perl-module_src_install
+#   use examples && perl_doexamples "eg/*"
+# }
+# @CODE
 perl_doexamples() {
 	debug-print-function $FUNCNAME "$@"
 
@@ -314,13 +326,16 @@ perl_doexamples() {
 	docompress -x /usr/share/doc/${PF}/examples
 
 	docinto examples/
+	# Lack of quoting here is important in order to support glob expansion
+	# in DIST_EXAMPLES=( ), which is defined before source extraction occurs
 	dodoc -r $@
 
 	# is there a way to undo "docinto" ?
 }
 
 # @FUNCTION: perl_has_module
-# @USAGE: perl_has_module "Test::Tester"
+# @USAGE: <module name>
+# @RETURN: 0 if available, non-zero otherwise
 # @DESCRIPTION:
 # Query the installed system Perl to see if a given module is installed.
 # This does **not** load the module in question, only anticipates if it *might* load.
@@ -330,6 +345,11 @@ perl_doexamples() {
 # a dependency resolver.
 #
 # returns 'true' if the module is available, returns error if the module is not available
+#
+# Example:
+# @CODE
+# perl_has_module "Test::Tester" && echo "Test::Tester installed"
+# @CODE
 
 perl_has_module() {
 	debug-print-function $FUNCNAME "$@"
@@ -347,7 +367,8 @@ perl_has_module() {
 }
 
 # @FUNCTION: perl_has_module_version
-# @USAGE: perl_has_module_version "Test::Tester" "0.017"
+# @USAGE: <module name> <minimum upstream version>
+# @RETURN: 0 if satisfied, non-zero otherwise
 # @DESCRIPTION:
 # Query the installed system Perl to see if a given module is installed
 # and is at least a given version.
@@ -362,7 +383,12 @@ perl_has_module() {
 #
 # returns a true exit code if the module is both available and is at least
 # the specified version
-
+#
+# Example:
+# @CODE
+# perl_has_module_version "Test::Tester" "0.017" \
+#	&& echo "Test::Tester 0.017 or greater installed"
+# @CODE
 perl_has_module_version() {
 	debug-print-function $FUNCNAME "$@"
 
@@ -380,7 +406,8 @@ perl_has_module_version() {
 }
 
 # @FUNCTION: perl_get_module_version
-# @USAGE: MODVER=$(perl_get_module_version "Test::Simple")
+# @USAGE: <module name>
+# @RETURN: 0 if module available, non-zero if error
 # @DESCRIPTION:
 # Query the installed system perl to report the version of the installed
 # module.
@@ -396,6 +423,12 @@ perl_has_module_version() {
 # question as part of its operation, and is subsequently prone to SLOWness.
 #
 # Return codes return error in both compilation-failure and not-installed cases.
+#
+# Example:
+# @CODE
+# MODVER=$(perl_get_module_version "Test::Simple") \
+#	|| die "Test::Simple not installed: $MODVER"
+# @CODE
 
 perl_get_module_version() {
 	debug-print-function $FUNCNAME "$@"
@@ -432,12 +465,17 @@ perl_get_module_version() {
 }
 
 # @FUNCTION: perl_get_raw_vendorlib
-# @USAGE: perl_get_raw_vendorlib
 # @DESCRIPTION:
 # Convenience function to optimise for a common case without double-handling
 # variables everywhere.
 #
 # Note: Will include EPREFIX where relevant
+#
+# Example:
+# @CODE
+# my_raw_vendorlib="$(perl_get_raw_vendorlib)"
+# @CODE
+
 perl_get_raw_vendorlib() {
 	debug-print-function $FUNCNAME "$@"
 
@@ -450,11 +488,15 @@ perl_get_raw_vendorlib() {
 }
 
 # @FUNCTION: perl_get_vendorlib
-# @USAGE: perl_get_vendorlib
 # @DESCRIPTION:
-#
 # Convenience helper for returning Perls' vendor install root
 # without EPREFIXing.
+#
+# Example:
+# @CODE
+# my_vendorlib="$(perl_get_vendorlib)"
+# @CODE
+
 perl_get_vendorlib() {
 	debug-print-function $FUNCNAME "$@"
 
@@ -469,7 +511,7 @@ perl_get_vendorlib() {
 }
 
 # @FUNCTION: perl_domodule
-# @USAGE: perl_domodule [options] <files>
+# @USAGE: [-C <target>] [-r] <files>
 # @DESCRIPTION:
 # Installs files in paths where they can be found in the default
 # Perl runtime.
