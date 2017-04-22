@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="xml"
 
 inherit eutils python-single-r1
