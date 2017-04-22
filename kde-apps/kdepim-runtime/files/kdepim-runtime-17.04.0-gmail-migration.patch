@@ -1,0 +1,52 @@
+From c9ae16363e68d6958db0cd835cb0180b340594b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Sat, 22 Apr 2017 13:31:42 +0200
+Subject: [IMAP] Fix migration to new Gmail authentication
+
+Currently the settings would be migrated only if user opened the
+Settings dialog. The GmailPasswordRequester expects that the server
+settings is migrated correctly and always tries to authenticate via
+XOAUTH2, even if the configuration says "PLAIN" or other mechanism.
+This breaks login as we try to send XOAUTH2 tokens as PLAIN credentials.
+
+This change ensures that the encryption and auth mechanism settings
+is correctly migrated on resource startup.
+
+CCBUG: 378857
+CCBUG: 378876
+---
+ resources/imap/settings.cpp | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/resources/imap/settings.cpp b/resources/imap/settings.cpp
+index 53296b8..6a599ea 100644
+--- a/resources/imap/settings.cpp
++++ b/resources/imap/settings.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include "imapaccount.h"
+ #include "utils.h"
++#include "config.h"
+ 
+ #include <kwallet.h>
+ using KWallet::Wallet;
+@@ -78,6 +79,17 @@ Settings::Settings(WId winId) : SettingsBase(), m_winId(winId)
+ {
+     load();
+ 
++#ifdef WITH_GMAIL_XOAUTH2
++    // Make sure that Gmail configuration is correctly migrated even if the user
++    // did not open the configuration dialog
++    if (Utils::isGmail(imapServer())) {
++        setImapPort(993);
++        setSafety(QStringLiteral("SSL"));
++        setAuthentication(MailTransport::Transport::EnumAuthenticationType::XOAUTH2);
++        save();
++    }
++#endif
++
+     new SettingsAdaptor(this);
+     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Settings"), this, QDBusConnection::ExportAdaptors | QDBusConnection::ExportScriptableContents);
+ }
+-- 
+cgit v0.11.2
