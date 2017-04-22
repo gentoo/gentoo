@@ -1,33 +1,27 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
 HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
-# taken from doc/lispref/ of emacs-${PV}
-SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-1.tar.xz"
+# taken from doc/lispref/ (and some files from doc/emacs/) of emacs-${PV}
+SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="FDL-1.3+"
-SLOT="23"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+SLOT="25"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 
 DEPEND="sys-apps/texinfo"
 
 S="${WORKDIR}/lispref"
-
-src_prepare() {
-	EPATCH_SUFFIX=patch epatch
-}
+PATCHES=("${FILESDIR}/${P}-direntry.patch")
 
 src_compile() {
-	makeinfo elisp.texi || die
+	makeinfo -I "${WORKDIR}"/emacs elisp.texi || die
 }
 
 src_install() {
 	doinfo elisp${SLOT}.info*
-	dodoc ChangeLog README
+	dodoc README
 }
