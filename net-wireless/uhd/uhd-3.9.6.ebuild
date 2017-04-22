@@ -25,6 +25,7 @@ RDEPEND="virtual/libusb:1
 	sys-libs/ncurses:0
 	"
 DEPEND="${RDEPEND}
+	dev-python/mako
 	dev-python/cheetah
 	app-arch/unzip"
 
