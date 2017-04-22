@@ -10,9 +10,9 @@ inherit kde5
 DESCRIPTION="Interactive physics simulator"
 HOMEPAGE="https://edu.kde.org/step"
 KEYWORDS="~amd64 ~x86"
-IUSE="+gsl +qalculate"
+IUSE="+gsl nls +qalculate"
 
-DEPEND="
+RDEPEND="
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -42,7 +42,9 @@ DEPEND="
 	gsl? ( sci-libs/gsl:= )
 	qalculate? ( >=sci-libs/libqalculate-0.9.5:= )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	nls? ( $(add_qt_dep linguist-tools) )
+"
 
 src_prepare() {
 	kde5_src_prepare
