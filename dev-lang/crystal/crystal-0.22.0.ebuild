@@ -5,7 +5,7 @@ EAPI=6
 
 inherit multiprocessing toolchain-funcs
 
-BV=0.20.4-1
+BV=0.22.0-1
 BV_AMD64=${BV}-linux-x86_64
 BV_X86=${BV}-linux-i686
 
