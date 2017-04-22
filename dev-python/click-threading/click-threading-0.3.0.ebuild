@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-python/click-5.0"
+DEPEND=">=dev-python/click-5.0[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 DOCS=( README.rst )
