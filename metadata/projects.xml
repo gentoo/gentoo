@@ -4432,7 +4432,7 @@ developers and volunteer mentors.</description>
       <name>Patrick McLean</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Member</role>
