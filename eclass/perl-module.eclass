@@ -181,7 +181,6 @@ PREFER_BUILDPL="yes"
 pm_echovar=""
 
 # @FUNCTION: perl-module_src_unpack
-# @USAGE: perl-module_src_unpack
 # @DESCRIPTION:
 # Unpack the ebuild tarball(s).
 # This function is to be called during the ebuild src_unpack() phase.
@@ -192,7 +191,6 @@ perl-module_src_unpack() {
 }
 
 # @FUNCTION: perl-module_src_prepare
-# @USAGE: perl-module_src_prepare
 # @DESCRIPTION:
 # Get the ebuild sources ready.
 # This function is to be called during the ebuild src_prepare() phase.
@@ -215,7 +213,6 @@ perl-module_src_prepare() {
 }
 
 # @FUNCTION: perl-module_src_configure
-# @USAGE: perl-module_src_configure
 # @DESCRIPTION:
 # Configure the ebuild sources.
 # This function is to be called during the ebuild src_configure() phase.
@@ -283,7 +280,6 @@ perl-module_src_configure() {
 }
 
 # @FUNCTION: perl-module_src_compile
-# @USAGE: perl-module_src_compile
 # @DESCRIPTION:
 # Compile the ebuild sources.
 # This function is to be called during the ebuild src_compile() phase.
@@ -333,7 +329,6 @@ perl-module_src_compile() {
 # completely. DO NOT USE THIS IN EBUILDS!
 
 # @FUNCTION: perl-module_src-test
-# @USAGE: perl-module_src_test()
 # @DESCRIPTION:
 # This code attempts to work out your threadingness and runs tests
 # according to the settings of DIST_TEST using Test::Harness.
@@ -389,7 +384,6 @@ perl-module_src_test() {
 }
 
 # @FUNCTION: perl-module_src_install
-# @USAGE: perl-module_src_install
 # @DESCRIPTION:
 # Install a Perl ebuild.
 # This function is to be called during the ebuild src_install() phase.
@@ -444,7 +438,6 @@ perl-module_src_install() {
 }
 
 # @FUNCTION: perl-module_pkg_postinst
-# @USAGE: perl-module_pkg_postinst
 # @DESCRIPTION:
 # This function is to be called during the pkg_postinst() phase. It only does
 # useful things for the perl-core category, where it handles the file renaming and symbolic
@@ -460,7 +453,6 @@ perl-module_pkg_postinst() {
 }
 
 # @FUNCTION: perl-module_pkg_postrm
-# @USAGE: perl-module_pkg_postrm
 # @DESCRIPTION:
 # This function is to be called during the pkg_postrm() phase. It only does
 # useful things for the perl-core category, where it handles the file renaming and symbolic
