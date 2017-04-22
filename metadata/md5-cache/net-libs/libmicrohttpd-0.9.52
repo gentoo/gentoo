@@ -4,10 +4,10 @@ DESCRIPTION=Small C library to run an HTTP server as part of another application
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/libmicrohttpd/
 IUSE=epoll messages ssl static-libs test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=ssl? ( dev-libs/libgcrypt:0= net-libs/gnutls )
 SLOT=0/12
 SRC_URI=mirror://gnu/libmicrohttpd/libmicrohttpd-0.9.52.tar.gz
 _eclass_exported_funcs=src_configure:- src_test:- src_install:-
-_md5_=a0bf0d3c9869505ff37e6656863054a8
+_md5_=6718f8080ce96202fdc2e6f28a653dd4
