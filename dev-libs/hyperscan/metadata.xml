@@ -5,4 +5,8 @@
 		<email>cr@sys4.de</email>
 		<name>Christian Roessner</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>
