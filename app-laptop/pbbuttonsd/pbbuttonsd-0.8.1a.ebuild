@@ -26,17 +26,17 @@ DEPEND="
 	doc? ( app-doc/doxygen )
 "
 PATCHES=(
-	"${FILESDIR}/cpufreq.patch"
-	"${FILESDIR}/fnmode.patch"
-	"${FILESDIR}/laptopmode.sh.patch"
-	"${FILESDIR}/lm.patch"
-	"${FILESDIR}/lz.patch"
+	"${FILESDIR}/${PN}-0.8.1-cpufreq.patch"
+	"${FILESDIR}/${PN}-0.8.1-fnmode.patch"
+	"${FILESDIR}/${PN}-0.8.1-laptopmode.sh.patch"
+	"${FILESDIR}/${PN}-0.8.1-lm.patch"
+	"${FILESDIR}/${PN}-0.8.1-lz.patch"
 )
 
 src_prepare() {
 	### Don't link with g++ if we don't use ibam
 	if ! use ibam; then
-		eapply "${FILESDIR}/g++.patch"
+		eapply "${FILESDIR}/${PN}-0.8.1-g++.patch"
 	fi
 
 	default
