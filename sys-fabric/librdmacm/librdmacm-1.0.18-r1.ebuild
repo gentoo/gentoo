@@ -12,7 +12,7 @@ inherit openib multilib-minimal
 
 DESCRIPTION="OpenIB userspace RDMA CM library"
 
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86 ~amd64-linux"
 IUSE="static-libs"
 
 DEPEND="sys-fabric/libibverbs:${SLOT}[static-libs?,${MULTILIB_USEDEP}]"

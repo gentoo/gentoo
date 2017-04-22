@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (22 Apr 2017)
+# Discontinued, replaced by dev-python/bcolz. No reverse dependencies
+# left. Removal in 30 days. Bug #564878.
+dev-python/blz
+
 # Matthew Brewer <tomboy64@sina.cn> (19 Apr 2017)
 # Masking sys-cluster/sx and net-misc/libres3 for removal in 30 days.
 # Upstream completely vanished. Github mirror only contains outdated versions.
