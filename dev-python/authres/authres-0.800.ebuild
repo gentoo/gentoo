@@ -17,5 +17,5 @@ IUSE=""
 
 python_test() {
 	"${PYTHON}" -c "import sys, ${PN}, doctest; f, t = doctest.testfile('${PN}/tests'); \
-		sys.exit(bool(f))" || return
+		sys.exit(bool(f))" || die "Tests fail with ${EPYTHON}"
 }

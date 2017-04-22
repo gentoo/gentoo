@@ -1,13 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrice Clement <monsieurp@gentoo.org> (09 Apr 2017)
+# Enable MQTT support on supported architectures
+app-admin/collectd -collectd_plugins_mqtt
+
 # Michael Weber <xmw@gentoo.org> (15 Mar 2017)
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
 net-proxy/haproxy device-atlas
-
-# Johannes Huber <johu@gentoo.org> (11 Mar 2017)
-# Unkeyworded depdendency on app-text/editorconfig-core-c
-kde-frameworks/ktexteditor editorconfig
 
 # Alon Bar-Lev <alonbl@gentoo.org> (10 Mar 2017)
 # net-firewall/ipset is not available on arm
@@ -487,7 +487,6 @@ media-gfx/imagemagick autotrace
 app-admin/gkrellm ntlm
 
 # missing keywords
-media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavpack dvd
 
 # projectm not keyworded, bug #314969

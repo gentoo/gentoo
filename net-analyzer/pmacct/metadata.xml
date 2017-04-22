@@ -6,9 +6,13 @@
 <name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <use>
-<flag name="geoipv2">Add support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
 <flag name="64bit">Use 64bit counters instead of 32bit ones</flag>
+<flag name="geoipv2">Add support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
+<flag name="jansson">Add support for JSON through <pkg>dev-libs/jansson</pkg></flag>
+<flag name="kafka">Add support for Apache Kafka through <pkg>dev-libs/librdkafka</pkg></flag>
 <flag name="mongodb">Add support for mongodb backend</flag>
+<flag name="nflog">Add support for NFLOG through uacctd</flag>
+<flag name="rabbitmq">Add support for RabbitMQ through <pkg>net-libs/rabbitmq-c</pkg></flag>
 <flag name="ulog">Enable support for ULOG in older kernels (deprecated)</flag>
 </use>
 </pkgmetadata>

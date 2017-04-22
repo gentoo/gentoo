@@ -1,0 +1,13 @@
+Index: lambda-term-1.11/src/jbuild
+===================================================================
+--- lambda-term-1.11.orig/src/jbuild
++++ lambda-term-1.11/src/jbuild
+@@ -26,7 +26,7 @@ let () =
+  ((name lambda_term)
+   (public_name lambda-term)
+   (wrapped false)
+-  (libraries (lwt lwt.unix lwt.react zed))
++  (libraries (lwt lwt.unix lwt_react zed))
+   (synopsis "Cross-platform library for terminal manipulation")
+   (c_names (lTerm_term_stubs lTerm_unix_stubs lTerm_windows_stubs))
+   %s))

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ SRC_URI="http://erratique.ch/software/react/releases/${P}.tbz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~x86-fbsd"
 IUSE="doc +ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]"

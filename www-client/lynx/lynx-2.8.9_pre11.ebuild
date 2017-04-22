@@ -16,7 +16,7 @@ case ${PV} in
 esac
 
 DESCRIPTION="An excellent console-based web browser with ssl support"
-HOMEPAGE="http://lynx.isc.org/"
+HOMEPAGE="http://lynx.invisible-island.net/"
 SRC_URI="http://invisible-mirror.net/archives/lynx/tarballs/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"

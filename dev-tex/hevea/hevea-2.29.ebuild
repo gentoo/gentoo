@@ -13,7 +13,7 @@ SRC_URI="http://hevea.inria.fr/distri/${P}.tar.gz"
 
 LICENSE="QPL"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 sparc x86"
 
 DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]"
 RDEPEND="${DEPEND}

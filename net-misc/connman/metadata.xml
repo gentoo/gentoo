@@ -4,11 +4,6 @@
 	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
-		<description>Co Maintainer, CC bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="ethernet">Enable ethernet support.</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats"
+DESCRIPTION="Java framework for RSS and Atom feeds"
 HOMEPAGE="https://java.net/projects/rome"
 SRC_URI="https://rome.dev.java.net/source/browse/*checkout*/rome/www/dist/${P}-src.zip"
 LICENSE="Apache-2.0"

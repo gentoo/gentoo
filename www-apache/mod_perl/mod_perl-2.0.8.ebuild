@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ SRC_URI="mirror://apache/perl/${P}.tar.gz"
 HOMEPAGE="https://projects.apache.org/projects/mod_perl.html"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 x86"
 IUSE="debug"
 SLOT="1"
 

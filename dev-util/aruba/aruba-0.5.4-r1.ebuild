@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="cucumber"
@@ -16,7 +16,7 @@ DESCRIPTION="Cucumber steps for driving out command line applications"
 HOMEPAGE="https://github.com/cucumber/aruba"
 LICENSE="MIT"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
 SLOT="0"
 IUSE=""
 

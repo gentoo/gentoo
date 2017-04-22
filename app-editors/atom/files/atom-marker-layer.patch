@@ -1,0 +1,11 @@
+--- a/build/app/node_modules/text-buffer/lib/marker-layer.js
+--- b/build/app/node_modules/text-buffer/lib/marker-layer.js
+@@ -192,7 +192,7 @@
+         return function(markerId) {
+           var marker;
+           marker = _this.markersById[markerId];
+-          if (!marker.matchesParams(params)) {
++          if (marker == null || !marker.matchesParams(params)) {
+             return;
+           }
+           return result.push(marker);

@@ -18,5 +18,6 @@
 <use>
 	<flag name="history">Use <pkg>sys-libs/readline</pkg> for history handling</flag>
 	<flag name="sloppy">Install sloppy, a focus-follows-mouse implementation for ratpoison</flag>
+	<flag name="xrandr">Enable support for XRandR</flag>
 </use>
 </pkgmetadata>

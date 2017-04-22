@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-PYTHON_COMPAT=( python{2_7,3_4} )
-
-inherit eutils python-any-r1 readme.gentoo-r1 xdg-utils
+inherit ltprune python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="http://spice-space.org/"
@@ -24,14 +23,15 @@ RDEPEND="
 	sys-libs/zlib[static-libs(+)?]
 	virtual/jpeg:0=[static-libs(+)?]
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
-	!libressl? ( dev-libs/openssl:0[static-libs(+)?] )
-	libressl? ( dev-libs/libressl[static-libs(+)?] )
+	!libressl? ( dev-libs/openssl:0=[static-libs(+)?] )
+	libressl? ( dev-libs/libressl:0=[static-libs(+)?] )
 	lz4? ( app-arch/lz4 )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
-	gstreamer? ( media-libs/gstreamer:1.0 )"
-
-DEPEND="
+	gstreamer? ( media-libs/gstreamer:1.0 )
+"
+DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	>=app-emulation/spice-protocol-0.12.12
 	virtual/pkgconfig
 	$(python_gen_any_dep '
@@ -39,7 +39,7 @@ DEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 	')
 	smartcard? ( app-emulation/qemu[smartcard] )
-	${RDEPEND}"
+"
 
 python_check_deps() {
 	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
@@ -85,4 +85,8 @@ src_install() {
 	default
 	use static-libs || prune_libtool_files
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

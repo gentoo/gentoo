@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -22,7 +22,7 @@ SLOT="3"
 KEYWORDS="alpha amd64 arm hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_bdepend "test? ( >=dev-ruby/rspec-3.5.0:3 )"
+ruby_add_bdepend "test? ( >=dev-ruby/rspec-3.5.0:3 dev-ruby/thread_order )"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
@@ -30,6 +30,9 @@ all_ruby_prepare() {
 	# Remove spec that, by following symlinks, tries to scan pretty much
 	# the whole filesystem.
 	rm spec/rspec/support/caller_filter_spec.rb || die
+
+	# Avoid spec that requires a dependency on git
+	sed -i -e '/library wide checks/,/]/ s:^:#:' spec/rspec/support_spec.rb || die
 
 	# Avoid a spec requiring a specific locale
 	sed -i -e '/copes with encoded strings/ s/RSpec::Support::OS.windows?/true/' spec/rspec/support/differ_spec.rb || die

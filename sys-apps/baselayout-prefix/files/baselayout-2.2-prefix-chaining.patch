@@ -1,6 +1,6 @@
 --- baselayout-2.2/etc/profile.orig	2017-03-23 16:46:29.922123300 +0100
 +++ baselayout-2.2/etc/profile	2017-03-23 16:58:43.578360900 +0100
-@@ -4,6 +4,40 @@
+@@ -4,6 +4,46 @@
  # environment for login shells.
  #
  
@@ -14,7 +14,13 @@
 +# we have here, and thus it will source parents before
 +# evaluating anything from itself.
 +#
-+_ro_root=$(. /etc/make.conf && echo $READONLY_EPREFIX)
++if [[ -r /etc/portage/make.conf ]]; then
++	_ro_root=$(. /etc/portage/make.conf && echo $READONLY_EPREFIX)
++elif [[ -r /etc/make.conf ]]; then
++	_ro_root=$(. /etc/make.conf && echo $READONLY_EPREFIX)
++else
++	echo "Failed to read" /etc/portage/make.conf >&2
++fi
 +_ro_deps=${_ro_root#*:}
 +_ro_root=${_ro_root%:*}
 +if [ -n "${_ro_root}" -a -f "${_ro_root}/"etc/profile ]; then
@@ -41,7 +47,7 @@
  # Load environment settings from profile.env, which is created by
  # env-update from the files in /etc/env.d
  if [ -e /etc/profile.env ] ; then
-@@ -61,3 +95,17 @@
+@@ -61,3 +101,17 @@
  	[ -r "$sh" ] && . "$sh"
  done
  unset sh

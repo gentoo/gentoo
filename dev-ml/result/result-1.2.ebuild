@@ -11,7 +11,7 @@ SRC_URI="https://github.com/janestreet/result/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"

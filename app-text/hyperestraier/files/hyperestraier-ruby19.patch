@@ -1,0 +1,146 @@
+--- a/rubynative/Makefile.in
++++ b/rubynative/Makefile.in
+@@ -82,21 +82,21 @@
+ 
+ check :
+ 	rm -rf casket
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb put casket ../misc/test001.est
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb put casket ../misc/test002.est
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb put casket ../misc/test003.est
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb put casket ../misc/test004.est
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb put casket ../misc/test005.est
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb put casket ../misc/test006.est
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb edit casket 1 "@title" "java"
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb get casket 1
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb get casket 1 "@title"
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb out casket 1
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb inform casket
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb optimize casket
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb search \
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb put casket ../misc/test001.est
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb put casket ../misc/test002.est
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb put casket ../misc/test003.est
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb put casket ../misc/test004.est
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb put casket ../misc/test005.est
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb put casket ../misc/test006.est
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb edit casket 1 "@title" "java"
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb get casket 1
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb get casket 1 "@title"
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb out casket 1
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb inform casket
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb optimize casket
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb search \
+ 	  -vf -cd casket "estraier" > check.out
+-	$(RUNENV) $(RUBY) -I./src -w -d estcmd.rb search \
++	$(RUNENV) $(RUBY) -I./src -I. -w -d estcmd.rb search \
+ 	  -vs -gs -attr "@uri" -ord "@mdate NUMD" -max 1 casket "estraier OR mikio" > check.out
+ 	rm -rf casket
+ 
+--- a/rubynative/configure.in
++++ b/rubynative/configure.in
+@@ -41,7 +41,7 @@
+ # Setting the default prefix
+ if test "$prefix" = NONE
+ then
+-  prefix=`ruby -rrbconfig -e 'puts(Config::CONFIG.fetch("prefix"))'`
++  prefix=`ruby -rrbconfig -e 'puts(RbConfig::CONFIG.fetch("prefix"))'`
+ fi
+ 
+ 
+@@ -68,7 +68,7 @@
+ printf '%s\n' "$RDOC"
+ 
+ # Librarh path
+-myrblibdir=`ruby -rrbconfig -e 'puts(Config::CONFIG.fetch("sitelibdir"))'`
++myrblibdir=`ruby -rrbconfig -e 'puts(RbConfig::CONFIG.fetch("sitelibdir"))'`
+ if test -n "$myrblibdir"
+ then
+   MYRBLIBDIR="$myrblibdir"
+--- a/rubynative/src/estraier.c
++++ b/rubynative/src/estraier.c
+@@ -24,6 +24,16 @@
+ #define VNINFO         "@informer"
+ #define VNCOND         "@cond"
+ 
++#ifndef RSTRING_PTR
++# define RSTRING_PTR(s) (RSTRING(s)->ptr)
++#endif
++#ifndef RSTRING_LEN
++# define RSTRING_LEN(s) (RSTRING(s)->len)
++#endif
++#ifndef RARRAY_LEN
++# define RARRAY_LEN(a) (RARRAY(a)->len)
++#endif
++
+ typedef struct {
+   int *ids;
+   int *dbidxs;
+@@ -351,7 +361,7 @@
+   vdoc = rb_iv_get(vself, VNDATA);
+   Data_Get_Struct(vdoc, ESTDOC, doc);
+   Check_Type(vwords, T_ARRAY);
+-  len = RARRAY(vwords)->len;
++  len = RARRAY_LEN(vwords);
+   for(i = 0; i < len; i++){
+     Check_Type(rb_ary_entry(vwords, i), T_STRING);
+   }
+@@ -764,7 +774,7 @@
+   CBMAP *hints;
+   int i, dnum, *res, rnum;
+   Check_Type(vdbs, T_ARRAY);
+-  dnum = RARRAY(vdbs)->len;
++  dnum = RARRAY_LEN(vdbs);
+   dbs = cbmalloc(dnum * sizeof(ESTMTDB *) + 1);
+   for(i = 0; i < dnum; i++){
+     vdb = rb_ary_entry(vdbs, i);
+@@ -1189,10 +1199,10 @@
+   VALUE str;
+   int i, len;
+   list = cblistopen();
+-  len = RARRAY(obj)->len;
++  len = RARRAY_LEN(obj);
+   for(i = 0; i < len; i++){
+     str = rb_ary_entry(obj, i);
+-    cblistpush(list, RSTRING(str)->ptr, RSTRING(str)->len);
++    cblistpush(list, RSTRING_PTR(str), RSTRING_LEN(str));
+   }
+   return list;
+ }
+@@ -1218,14 +1228,14 @@
+   int i, len;
+   map = cbmapopenex(31);
+   keys = rb_funcall(obj, rb_intern("keys"), 0);
+-  len = RARRAY(keys)->len;
++  len = RARRAY_LEN(keys);
+   for(i = 0; i < len; i++){
+     key = rb_ary_entry(keys, i);
+     val = rb_hash_aref(obj, key);
+     key = rb_String(key);
+     val = rb_String(val);
+-    cbmapput(map, RSTRING(key)->ptr, RSTRING(key)->len,
+-             RSTRING(val)->ptr, RSTRING(val)->len, 0);
++    cbmapput(map, RSTRING_PTR(key), RSTRING_LEN(key),
++             RSTRING_PTR(val), RSTRING_LEN(val), 0);
+   }
+   return map;
+ }
+--- a/rubypure/configure.in
++++ b/rubypure/configure.in
+@@ -40,7 +40,7 @@
+ # Setting the default prefix
+ if test "$prefix" = NONE
+ then
+-  prefix=`ruby -rrbconfig -e 'puts(Config::CONFIG.fetch("prefix"))'`
++  prefix=`ruby -rrbconfig -e 'puts(RbConfig::CONFIG.fetch("prefix"))'`
+ fi
+ 
+ 
+@@ -67,7 +67,7 @@
+ printf '%s\n' "$RDOC"
+ 
+ # Librarh path
+-myrblibdir=`ruby -rrbconfig -e 'puts(Config::CONFIG.fetch("sitelibdir"))'`
++myrblibdir=`ruby -rrbconfig -e 'puts(RbConfig::CONFIG.fetch("sitelibdir"))'`
+ if test -n "$myrblibdir"
+ then
+   MYRBLIBDIR="$myrblibdir"

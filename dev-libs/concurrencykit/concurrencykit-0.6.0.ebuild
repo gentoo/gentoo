@@ -12,6 +12,6 @@ SRC_URI="http://concurrencykit.org/releases/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/${MY_P}"

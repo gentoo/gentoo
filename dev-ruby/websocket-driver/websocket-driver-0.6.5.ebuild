@@ -19,7 +19,7 @@ RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/websocket-extensions-0.1.0"

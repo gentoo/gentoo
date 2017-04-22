@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,6 +32,7 @@ RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]
 	dev-ml/react:=
 	dev-ml/ocaml-ssl:=
 	>=dev-ml/lwt-2.5.0:=
+	dev-ml/lwt_react:=
 	dev-ml/camlp4:=
 	ppx? ( >=dev-ml/ppx_tools-0.99.3:= )"
 DEPEND="${RDEPEND}

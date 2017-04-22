@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,17 +15,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+glsl python cpu_flags_x86_sse2 test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=sci-chemistry/openbabel-2.3.0
 	>=dev-qt/qtgui-4.5.3:4
 	>=dev-qt/qtopengl-4.5.3:4
 	x11-libs/gl2ps
-	glsl? ( >=media-libs/glew-1.5.0 )
+	glsl? ( >=media-libs/glew-1.5.0:0= )
 	python? (
 		>=dev-libs/boost-1.35.0-r5[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
+		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:2"

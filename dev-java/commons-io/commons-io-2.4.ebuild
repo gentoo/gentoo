@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2 eutils
 
 MY_P=${P}-src
-DESCRIPTION="Commons-IO contains utility classes, stream implementations, file filters, and endian classes"
+DESCRIPTION="Utility classes, stream implementations, file filters, and endian classes"
 HOMEPAGE="http://commons.apache.org/io/"
 SRC_URI="mirror://apache/commons/io/source/${MY_P}.tar.gz"
 

@@ -1,0 +1,112 @@
+Do not use -isystem to add headers, as they break GCC 6's header wrapping.
+See also: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129
+
+--- a/client/base/CMakeLists.txt
++++ b/client/base/CMakeLists.txt
+@@ -49,7 +49,7 @@
+   mutex.cc
+   mysql_query_runner.cc
+   show_variable_query_extractor.cc
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ TARGET_LINK_LIBRARIES(client_base mysqlclient)
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -52,7 +52,7 @@
+     upgrade/program.cc
+   )
+ ADD_COMPILE_FLAGS(
+-  upgrade/program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  upgrade/program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ TARGET_LINK_LIBRARIES(mysql_upgrade mysqlclient client_base mysqlcheck_core)
+ ADD_DEPENDENCIES(mysql_upgrade GenFixPrivs GenSysSchema)
+--- a/client/dump/CMakeLists.txt
++++ b/client/dump/CMakeLists.txt
+@@ -68,7 +68,7 @@
+   ADD_COMPILE_FLAGS(
+     ${BOOST_LIB_SOURCES}
+     ${BOOST_THREAD_SOURCES}
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+     )
+ 
+   IF(HAVE_clock_gettime_IN_rt)
+@@ -163,7 +163,7 @@
+ 
+ ADD_COMPILE_FLAGS(
+   ${MYSQLPUMP_LIB_SOURCES}
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+ 
+ # Files that use Boost sources that trigger compilation warnings
+@@ -199,7 +199,7 @@
+ )
+ MYSQL_ADD_EXECUTABLE(mysqlpump  program.cc)
+ ADD_COMPILE_FLAGS(
+-  program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ TARGET_LINK_LIBRARIES(mysqlpump mysqlpump_lib ${LOCAL_BOOST_LIB})
+--- a/libmysqld/CMakeLists.txt
++++ b/libmysqld/CMakeLists.txt
+@@ -115,7 +115,7 @@
+   ../sql/item_geofunc_setops.cc
+   ../sql/item_json_func.cc
+   ../sql/spatial.cc
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ # Fixes "C1128: number of sections exceeded object file format limit" in MSVC /MD
+--- a/sql/CMakeLists.txt
++++ b/sql/CMakeLists.txt
+@@ -309,7 +309,7 @@
+   item_geofunc_setops.cc
+   item_json_func.cc
+   spatial.cc
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ # Fixes "C1128: number of sections exceeded object file format limit" in MSVC /MD
+--- a/storage/innobase/xtrabackup/src/CMakeLists.txt
++++ b/storage/innobase/xtrabackup/src/CMakeLists.txt
+@@ -68,7 +68,7 @@
+   ../../../../plugin/keyring/keyring_key.cc
+   ../../../../plugin/keyring/buffered_file_io.cc
+   ../../../../plugin/keyring/keys_container.cc
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ ADD_COMPILE_FLAGS(
+--- a/unittest/gunit/CMakeLists.txt
++++ b/unittest/gunit/CMakeLists.txt
+@@ -378,7 +378,7 @@
+   ENDIF()
+   ADD_COMPILE_FLAGS(
+     ${MERGE_SMALL_TESTS}
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+   INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+ 
+@@ -453,11 +453,11 @@
+   ENDIF()
+   ADD_COMPILE_FLAGS(
+     bounded_queue-t.cc
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+   ADD_COMPILE_FLAGS(
+     pump_object_filter-t.cc
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+ 
+   FOREACH(test ${SERVER_TESTS})

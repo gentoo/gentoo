@@ -6,7 +6,7 @@ EAPI=6
 inherit kde4-base
 
 DESCRIPTION="kioslaves from kdesdk package"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 src_configure() {

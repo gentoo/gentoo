@@ -1,0 +1,21 @@
+diff -upr i2p-0.9.29/core/java/src/net/i2p/util/SystemVersion.java i2p-0.9.29.workaround/core/java/src/net/i2p/util/SystemVersion.java
+--- i2p-0.9.29/core/java/src/net/i2p/util/SystemVersion.java	2017-02-27 22:36:36.000000000 +0800
++++ i2p-0.9.29.workaround/core/java/src/net/i2p/util/SystemVersion.java	2017-04-03 14:04:17.395820925 +0800
+@@ -20,7 +20,6 @@ public abstract class SystemVersion {
+      *  @since 0.9.28
+      */
+     public static final String DAEMON_USER = "i2psvc";
+-    public static final String GENTOO_USER = "i2p";
+ 
+     private static final boolean _isWin = System.getProperty("os.name").startsWith("Win");
+     private static final boolean _isMac = System.getProperty("os.name").startsWith("Mac");
+@@ -64,8 +63,7 @@ public abstract class SystemVersion {
+         String runtime = System.getProperty("java.runtime.name");
+         _isOpenJDK = runtime != null && runtime.contains("OpenJDK");
+         _isLinuxService = !_isWin && !_isMac && !_isAndroid &&
+-                          (DAEMON_USER.equals(System.getProperty("user.name")) ||
+-                           (_isGentoo && GENTOO_USER.equals(System.getProperty("user.name"))));
++                          DAEMON_USER.equals(System.getProperty("user.name"));
+ 
+         int sdk = 0;
+         if (_isAndroid) {

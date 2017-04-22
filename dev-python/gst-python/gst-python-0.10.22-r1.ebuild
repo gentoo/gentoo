@@ -15,8 +15,9 @@ LICENSE="LGPL-2"
 SLOT="0.10"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="examples test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	dev-libs/libxml2
 	>=dev-python/pygobject-2.28:2[${PYTHON_USEDEP}]
 	>=media-libs/gstreamer-0.10.32:0.10

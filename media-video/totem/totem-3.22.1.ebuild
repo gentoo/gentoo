@@ -20,7 +20,7 @@ REQUIRED_USE="
 	zeitgeist? ( introspection )
 "
 
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd"
 
 # FIXME:
 # Runtime dependency on gnome-session-2.91
@@ -55,7 +55,7 @@ RDEPEND="
 	nautilus? ( >=gnome-base/nautilus-2.91.3 )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-libs/libpeas-1.1.0[${PYTHON_USEDEP}]
+		>=dev-libs/libpeas-1.1.0[python,${PYTHON_USEDEP}]
 		>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}]
 		dev-python/pyxdg[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]

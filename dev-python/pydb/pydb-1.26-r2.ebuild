@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,15 @@ inherit elisp-common python-single-r1
 DESCRIPTION="Extended python debugger"
 HOMEPAGE="http://bashdb.sourceforge.net/pydb/"
 SRC_URI="mirror://sourceforge/bashdb/${P}.tar.bz2"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
+	${PYTHON_DEPS}
 	emacs? ( virtual/emacs )"
 RDEPEND="${DEPEND}"
 

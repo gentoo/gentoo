@@ -66,6 +66,7 @@ coreaudio
 # Jeremy Olexa <darkside@gentoo.org>
 # The prefix USE flags should never be used on non prefix profiles
 prefix
+prefix-chain
 prefix-guest
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 Oct 2010)

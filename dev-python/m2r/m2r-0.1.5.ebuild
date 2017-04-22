@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -36,7 +36,6 @@ python_prepare_all() {
 	cp "${FILESDIR}/"test.md tests/ || die
 	cp "${FILESDIR}/"test.rst tests/ || die
 	cp "${FILESDIR}/"m2r.1 ./ || die
-matt
 	distutils-r1_python_prepare_all
 }
 

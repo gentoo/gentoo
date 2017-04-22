@@ -5,14 +5,16 @@
 		<email>robin9800xt@gmail.com</email>
 		<name>RobinDX</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>fdsfgs@krutt.org</email>
+		<name>soredake</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="qt4">Adds support for the Qt GUI/Application Toolkit version 4.x</flag>
-		<flag name="qt5">Adds support for the Qt GUI/Application Toolkit version 5.x</flag>
-		<flag name="sdl">Adds support for Simple Direct Layer (media library)</flag>
+		<flag name="headless">Build headless version of the PPSSPP</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/hrydgard/ppsspp/issues</bugs-to>

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,8 +14,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND=""
-DEPEND="
-	test? ( dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage )"
+DEPEND=""
 
-SRC_TEST="do parallel"
+SRC_TEST=do
+
+src_prepare() {
+	# MI things
+	use test && perl_rm_files t/pod.t t/pod-coverage.t
+	perl-module_src_prepare
+}

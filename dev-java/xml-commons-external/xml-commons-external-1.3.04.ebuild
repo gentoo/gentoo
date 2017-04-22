@@ -5,7 +5,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="An Apache-hosted set of externally-defined standards interfaces, namely DOM, SAX, and JAXP"
+DESCRIPTION="Externally-defined set of standard interfaces, namely DOM, SAX, and JAXP"
 HOMEPAGE="http://xml.apache.org/commons/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 # upstream source tar.gz is missing build.xml and other stuff, so we get it like this

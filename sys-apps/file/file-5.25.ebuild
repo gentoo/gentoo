@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
+
 PYTHON_COMPAT=( python{2_7,3_4} pypy )
 DISTUTILS_OPTIONAL=1
 
@@ -22,6 +23,7 @@ HOMEPAGE="http://www.darwinsys.com/file/"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="python static-libs zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="python? ( ${PYTHON_DEPS} )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"

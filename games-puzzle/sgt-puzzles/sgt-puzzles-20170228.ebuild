@@ -15,7 +15,7 @@ else
 	MAGIC=1f613ba
 	SRC_URI="http://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MAGIC}.tar.gz"
 	S=${WORKDIR}/puzzles-${PV}.${MAGIC}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Simon Tatham's Portable Puzzle Collection"
@@ -84,7 +84,7 @@ src_install() {
 		name=$(awk -F: '/exe:/ { print $3 }' "${file}")
 		file=${file%.R}
 		newicon -s 48 icons/${file}-48d24.png ${PN}_${file}.png
-		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "Game;LogicGame;${PN};"
+		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "Game;LogicGame;X-${PN};"
 	done
 
 	if use doc ; then

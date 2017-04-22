@@ -89,6 +89,8 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-libdrm-2.4.78.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 	use multimedia || eapply "${FILESDIR}/${PN}-gstreamer-optional.patch"

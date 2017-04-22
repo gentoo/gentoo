@@ -7,7 +7,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="KDE SDK - merge this to pull in all kdesdk-derived packages"
 HOMEPAGE="https://www.kde.org/applications/development"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cvs nls"
 
 [[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}

@@ -64,8 +64,6 @@ RESTRICT="mirror"
 #		salome-smesh - science overlay
 #		zipio++ - not in portage yet
 
-S="${WORKDIR}/FreeCAD-${PV}"
-
 DOCS=( README.md ChangeLog.txt )
 
 pkg_setup() {

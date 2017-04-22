@@ -25,7 +25,6 @@ DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwebkit)
 	$(add_qt_dep qtwidgets)
-	>=dev-libs/qjson-0.7.0
 "
 RDEPEND="${DEPEND}"
 

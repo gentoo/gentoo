@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple eutils
 
-DESCRIPTION="Java Indexed Serialization Package: A small, embedded database engine written in Pure Java"
+DESCRIPTION="Java Indexed Serialization Package: A small, embedded database engine"
 HOMEPAGE="http://www.coyotegulch.com/products/jisp/"
 
 # TODO contact upstream about hosting jisp-2.5 on their site.

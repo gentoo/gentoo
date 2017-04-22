@@ -32,6 +32,7 @@ case ${EAPI:-0} in
 esac
 
 # @ECLASS-VARIABLE: GENTOO_DEPEND_ON_PERL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable controls whether a runtime and build time dependency on
 # dev-lang/perl is automatically added by the eclass. It defaults to yes.
@@ -85,8 +86,8 @@ case ${EAPI:-0} in
 				;;
 		esac
 
-		if [[ "${GENTOO_DEPEND_ON_PERL_SUBSLOT}" ]]; then
-			eerror "GENTOO_DEPEND_ON_PERL_SUBSLOT is banned in EAPI=6. If you don't want a slot operator"
+		if [[ "${GENTOO_DEPEND_ON_PERL_SUBSLOT:-yes}" != "yes" ]]; then
+			eerror "GENTOO_DEPEND_ON_PERL_SUBSLOT=no is banned in EAPI=6. If you don't want a slot operator"
 			die    "set GENTOO_DEPEND_ON_PERL=noslotop instead."
 		fi
 
@@ -126,17 +127,20 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # SRC_URI. Defaults to ${DIST_NAME}-${DIST_VERSION}.${DIST_A_EXT} Named MODULE_A in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_AUTHOR
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) This variable sets the module author name for the calculation of
 # SRC_URI. Named MODULE_AUTHOR in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_SECTION
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) This variable sets the module section for the calculation of
 # SRC_URI. Only required in rare cases for very special snowflakes.
 # Named MODULE_SECTION in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_EXAMPLES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) This Bash array allows passing a list of example files to be installed
 # in /usr/share/doc/${PF}/examples. If set before inherit, automatically adds
@@ -181,7 +185,6 @@ PREFER_BUILDPL="yes"
 pm_echovar=""
 
 # @FUNCTION: perl-module_src_unpack
-# @USAGE: perl-module_src_unpack
 # @DESCRIPTION:
 # Unpack the ebuild tarball(s).
 # This function is to be called during the ebuild src_unpack() phase.
@@ -192,7 +195,6 @@ perl-module_src_unpack() {
 }
 
 # @FUNCTION: perl-module_src_prepare
-# @USAGE: perl-module_src_prepare
 # @DESCRIPTION:
 # Get the ebuild sources ready.
 # This function is to be called during the ebuild src_prepare() phase.
@@ -215,7 +217,6 @@ perl-module_src_prepare() {
 }
 
 # @FUNCTION: perl-module_src_configure
-# @USAGE: perl-module_src_configure
 # @DESCRIPTION:
 # Configure the ebuild sources.
 # This function is to be called during the ebuild src_configure() phase.
@@ -283,7 +284,6 @@ perl-module_src_configure() {
 }
 
 # @FUNCTION: perl-module_src_compile
-# @USAGE: perl-module_src_compile
 # @DESCRIPTION:
 # Compile the ebuild sources.
 # This function is to be called during the ebuild src_compile() phase.
@@ -325,6 +325,7 @@ perl-module_src_compile() {
 #   network  : do not try to disable network tests
 
 # @ECLASS-VARIABLE: DIST_TEST_OVERRIDE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) Variable that controls if tests are run in the test phase
 # at all, and if yes under which conditions. It is intended for use in
@@ -333,7 +334,6 @@ perl-module_src_compile() {
 # completely. DO NOT USE THIS IN EBUILDS!
 
 # @FUNCTION: perl-module_src-test
-# @USAGE: perl-module_src_test()
 # @DESCRIPTION:
 # This code attempts to work out your threadingness and runs tests
 # according to the settings of DIST_TEST using Test::Harness.
@@ -389,7 +389,6 @@ perl-module_src_test() {
 }
 
 # @FUNCTION: perl-module_src_install
-# @USAGE: perl-module_src_install
 # @DESCRIPTION:
 # Install a Perl ebuild.
 # This function is to be called during the ebuild src_install() phase.
@@ -444,7 +443,6 @@ perl-module_src_install() {
 }
 
 # @FUNCTION: perl-module_pkg_postinst
-# @USAGE: perl-module_pkg_postinst
 # @DESCRIPTION:
 # This function is to be called during the pkg_postinst() phase. It only does
 # useful things for the perl-core category, where it handles the file renaming and symbolic
@@ -460,7 +458,6 @@ perl-module_pkg_postinst() {
 }
 
 # @FUNCTION: perl-module_pkg_postrm
-# @USAGE: perl-module_pkg_postrm
 # @DESCRIPTION:
 # This function is to be called during the pkg_postrm() phase. It only does
 # useful things for the perl-core category, where it handles the file renaming and symbolic

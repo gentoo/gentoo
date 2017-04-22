@@ -29,6 +29,106 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (22 Apr 2017)
+# Discontinued, replaced by dev-python/bcolz. No reverse dependencies
+# left. Removal in 30 days. Bug #564878.
+dev-python/blz
+
+# Matthew Brewer <tomboy64@sina.cn> (19 Apr 2017)
+# Masking sys-cluster/sx and net-misc/libres3 for removal in 30 days.
+# Upstream completely vanished. Github mirror only contains outdated versions.
+sys-cluster/sx
+net-misc/libres3
+
+# Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
+# Masking old versions because upstream changed versioning
+# Please keep this mask for 1 year to ease upgrades for users
+=app-crypt/hashcat-3.10-r1
+=app-crypt/hashcat-3.30
+=app-crypt/hashcat-3.40
+
+# Aaron W. Swenson <titanofold@gentoo.org> (17 Apr 2017)
+# Masked for removal by 17 May 2017. Past end of life. Susceptible to security
+# bugs (603716 and 603720). Upgrade to latest version.
+=dev-db/postgresql-9.1.24
+
+# Kent Fredric <kentnl@gentoo.org> (17 Apr 2017)
+# Should be provided by dev-lang/perl or a virtual since perl 5.9,
+# But was added accidentally in 2012. Don't depend on this,
+# and if you need a version newer than 0.11, ask perl project
+# for a virtual
+dev-perl/encoding-warnings
+
+# James Le Cuirot <chewi@gentoo.org> (14 Apr 2017)
+# Outdated and stuck behind a temperamental registration wall that I
+# have lost my patience with. Removal in 30 days if no one cares
+# enough to pick it up.
+dev-java/jdbc-oracle-bin
+
+# James Le Cuirot <chewi@gentoo.org> (14 Apr 2017)
+# Ancient, unused by anything, fetch restricted. Removal in 30 days.
+dev-java/sun-j2ee-deployment-bin
+
+# Johannes Huber <johu@gentoo.org> (14 Apr 2017)
+# Masked for removal in 30 days. Dead upstream since
+# KDELibs 4 port several years ago. Repository gone.
+# Superseded by gwenview and okular. Fails to build
+# with gcc 6 (bug #614304).
+media-gfx/kuickshow
+
+# NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
+# Masked for testing
+virtual/wine
+app-eselect/eselect-wine
+app-emulation/wine-desktop-common
+app-emulation/wine-gecko
+app-emulation/wine-mono
+app-emulation/wine-vanilla
+app-emulation/wine-staging
+app-emulation/wine-d3d9
+app-emulation/wine-any
+
+# Michael Weber <xmw@gentoo.org> (08 Apr 2017)
+# Experimental version.
+>=net-wireless/gnuradio-3.7.11
+
+# Patrice Clement <monsieurp@gentoo.org> (07 Apr 2017)
+# Part of the JDK since Java 6. Removal in 30 days.
+dev-java/jaxme
+
+# David Seifert <soap@gentoo.org> (05 Apr 2017)
+# Abandoned, no releases since 2008, only partially
+# compatible with C++11, multiple bugs, upstream dead
+# Masked for removal in 30 days.
+# Bugs #359247, #400547, #409119, #594144
+dev-libs/STLport
+
+# Mike Gilbert <floppym@gentoo> (05 Apr 2017)
+# Unmaintained.
+# Pinned dependencies cause conflicts with other packages.
+# Live ebuild is broken, and requires packaging several new deps.
+# Removal in 30 days.
+# Bug: https://bugs.gentoo.org/614758
+net-misc/flexget
+
+# Mart Raudsepp <leio@gentoo.org> (04 Apr 2017)
+# Masked for removal in 30 days. Does not work with new
+# gnome-base/gnome-shell.
+# gnome-extra/gnome-shell-extensions-topicons-plus is a
+# fork that has added features and works with modern
+# gnome-shell that is suitable as a system-wide replacement
+# package. Alternatively it can be installed per-user from
+# https://extensions.gnome.org/extension/1031/topicons/
+gnome-extra/gnome-shell-extensions-topicons
+
+# NP-Hardassr <NP-Hardass@gentoo.org> (03 Apr 2017)
+# Masked for removal in 30 days. Unable to generate new
+# hashes for the manifest, per Bug #612720, Bug #612718
+# Upstream has also deprecated these in favor of
+# app-emulation/crossover-bin
+app-emulation/crossover-office-bin
+app-emulation/crossover-office-pro-bin
+
 # Amadeusz Zolnowski <aidecoe@gentoo.org> (2 Apr 2017)
 # Masked, committed accidentally. It's not tested yet, possibly broken.
 =net-im/ejabberd-17.01
@@ -49,7 +149,7 @@ sys-firmware/radeon-ucode
 sys-firmware/amdgpu-ucode
 
 # Patrice Clement <monsieurp@gentoo.org> (28 Mar 2017)
-# Part of the JRE since Java 6. Removal in 30 days.
+# Part of the JDK since Java 6. Removal in 30 days.
 dev-java/swing-worker
 
 # Michał Górny <mgorny@gentoo.org> (27 Mar 2017)
@@ -68,20 +168,10 @@ dev-perl/File-DirWalk
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
 
-# Johannes Huber <johu@gentoo.org> (22 Mar 2017)
-# Masked for removal in 14 days. Echonest service is gone
-# since 2016/05/31. No reverse dependencies. Bug #587972.
-media-libs/libechonest
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (20 Mar 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 >=www-client/chromium-59
-
-# David Seifert <soap@gentoo.org> (19 Mar 2017)
-# EOL'd upstream, fetch restricted, digests missing
-# Masked for removal in 30 days. Bug #612746.
-sci-libs/acml
 
 # Kent Fredric <kentnl@gentoo.org> (18 Mar 2017)
 # ExtUtils::MakeMaker 7.18+ Block
@@ -92,79 +182,9 @@ sci-libs/acml
 >=virtual/perl-ExtUtils-Command-7.180.0
 >=dev-perl/Net-Twitter-4.10.420
 
-# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
-# Broken. Dead upstream. Unmaintained.
-# Masked for removal in 30 days.
-net-misc/apt-proxy
-
-# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
-# Broken. Dead upstream. Unmaintained.
-# Masked for removal in 30 days. Bug #604836.
-gnome-extra/zeitgeist-datasources
-
-# Michael Palimaka <kensington@gentoo.org> (18 Mar 2017)
-# Fails to run. Ancient. Unmaintained. Dead upstream.
-# Masked for removal in 30 days. Bug #605120.
-net-p2p/phxd
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (17 Mar 2017)
-# Requires obsolete gstreamer:0.10, bug 604686
-# Removal in 30 days
-dev-perl/GStreamer
-dev-perl/GStreamer-Interfaces
-
-# Patrice Clement <monsieurp@gentoo.org> (18 Mar 2017)
-# Does not compile anymore. Upstream dead.
-# Removal in 30 days.
-dev-java/swidgets
-
 # Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
 # Testing x32 patch backports from 3.9
 =dev-util/cmake-3.7.2-r10
-
-# David Seifert <soap@gentoo.org> (12 Mar 2017)
-# Bundles half of glibc, unmaintained upstream,
-# not really necessary anymore with 64-bit flash
-# Masked for removal in 30 days. Bug #609258.
-www-plugins/nspluginwrapper
-
-# David Seifert <soap@gentoo.org> (12 Mar 2017)
-# Awful codebase, lots of widechars stored in chars,
-# invokes undefined behaviour, last release in 2004.
-# Masked for removal in 30 days. Bug #593942, #593976.
-app-text/uvconv
-app-i18n/x-unikey
-
-# Michael Palimaka <kensington@gentoo.org> (11 Mar 2017)
-# Fails to build. Dead upstream.
-# Masked for removal in 30 days. Bug #592184.
-dev-scheme/schoca
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
-# Fails since upgrade to dev-lang/perl-5.12 (!).
-# Removal in 30 days. Bug 336898.
-dev-perl/Net-Google-SafeBrowsing-UpdateRequest
-dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Mar 2017)
-# Dead upstream; the library has been picked up by
-# dev-perl/Text-BibTeX and is further developed there.
-# Please uninstall dev-libs/btparse and re-build your
-# application against >=dev-perl/Text-BibTeX-0.780.0-r1
-# (this should happen automatically with tellico, the
-# only reverse dependency in the main tree).
-# Removal in 30 days. Bug 599710.
-dev-libs/btparse
-
-# Patrice Clement <monsieurp@gentoo.org> (11 Mar 2017)
-# Upstream dead: no update since 2003. Ebuild is outdated and buggy.
-# Removal in 30 days. Bug #279088
-dev-java/jusb
-
-# Anthony G. Basile <blueness@gentoo.org> (11 Mar 2017)
-# Masked for removal in 30 days.  No longer supported
-# upstream.  Use net-proxy/obfs4proxy instread.
-net-proxy/obfsproxy
 
 # Gnome Team <gnome@gentoo.org> (08 Mar 2017)
 # GNOME 3.24 mask (#611270)
@@ -220,8 +240,6 @@ net-proxy/obfsproxy
 >=gnome-base/dconf-editor-3.23
 >=dev-util/devhelp-3.23
 >=mail-client/evolution-3.23
->=dev-vcs/gitg-3.23
->=gnome-extra/gnome-builder-3.23
 >=games-board/gnome-mines-3.23
 >=media-sound/gnome-music-3.23
 >=games-arcade/gnome-nibbles-3.23
@@ -231,46 +249,11 @@ net-proxy/obfsproxy
 >=net-misc/rygel-0.33
 >=games-puzzle/swell-foop-3.23
 
-# Matt Turner <mattst88@gentoo.org> (05 Mar 2017)
-# Part of dev-util/hxtools (and collides with it)
-# Removal in 30 days. Bug #445436
-app-misc/ofl
-
-# Michał Górny <mgorny@gentoo.org> (04 Mar 2017)
-# The program is abandoned upstream and reported to no longer work with
-# Twitch and multiple other streaming sites. Working alternatives are
-# net-misc/streamlink (which is a maintained fork) or media-video/orion.
-# Removal in 30 days. Bug #604858.
-net-misc/livestreamer
-
-# Michael Palimaka <kensington@gentoo.org> (03 Mar 2017)
-# Segfaults at runtime. Dead upstream. Unmaintained.
-# Masked for removal in 30 days. Bug #611406.
-x11-misc/oroborus-desklaunch
-
 # Alexis Ballier <aballier@gentoo.org> (03 Mar 2017)
 # Beta release, some packages fail to build.
 >=dev-lang/ocaml-4.05.0_beta2
 >=dev-ml/camlp4-4.05
 >=dev-ml/ppx_tools-5.0.4.05.0
-
-# Hans de Graaff <graaff@gentoo.org> (03 Mar 2017)
-# Masked for removal in 30 days.
-# Bindings for old webkit versions that have open security
-# issues. No reverse dependencies. Bug #608608
-dev-ruby/ruby-webkit-gtk
-dev-ruby/ruby-webkit-gtk2
-
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2017)
-# Masked for removal in 30 days. Reported to be broken;
-# QA issues, fails to build with GCC-5, ffmpeg-3
-# Bugs #608408, #569958, #610746
-media-video/lives
-
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2017)
-# Masked for removal in 30 days. Dead upstream, Qt4Webkit,
-# fails to build. Bug #602260
-x11-misc/andromeda
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2017)
 # Mask experimental software
@@ -377,7 +360,9 @@ x11-libs/gtk+:1
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
 # Depends on slotted lua
 =dev-db/redis-3.2.5-r1
+=dev-db/redis-3.2.5-r2
 =dev-db/redis-3.2.6-r1
+=dev-db/redis-3.2.6-r2
 
 # Ian Stakenvicius (17 Nov 2016)
 # Does not honour LD_LIBRARY_PATH set in the environment, causing
@@ -455,11 +440,6 @@ dev-perl/Params-ValidationCompiler
 # Unpatched security vulnerability per bug #509920
 www-apps/egroupware
 
-# Michał Górny <mgorny@gentoo.org> (27 Jun 2016)
-# (on behalf of QA & proxy-maint)
-# Major QA violations, bug #587342 (#585722 in particular).
-games-emulation/ppsspp
-
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 <media-video/motion-4.0.1-r1
@@ -520,10 +500,6 @@ dev-perl/ExtUtils-Constant
 # Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
 # Needs a bump and substantial ebuild rewrite
 =sci-mathematics/reduce-20110414-r1
-
-# Victor Ostorga <vostorga@gentoo.org> (30 Dec 2015)
-# Mask this liferea version because upstream released it broken
-=net-news/liferea-1.10.17
 
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream

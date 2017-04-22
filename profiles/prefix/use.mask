@@ -9,3 +9,7 @@ kernel_linux
 # and Gentoo Prefix does not have access to that. Also, definately problems with
 # coreutils on darwin.
 acl
+
+# app-editors/vim does not like multiple python3 targets (bug#575096),
+# but PYTHON_TARGETS=-python3_4 does not work either (is not incremental).
+python_targets_python3_4

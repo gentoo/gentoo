@@ -77,6 +77,7 @@ COMMON_DEPEND="
 	dev-libs/libaio
 	dev-libs/libgcrypt:0
 	sys-libs/zlib
+	${PYTHON_DEPS}
 "
 
 DEPEND="${COMMON_DEPEND}
@@ -84,7 +85,6 @@ DEPEND="${COMMON_DEPEND}
 	x86? ( sys-devel/dev86
 		sys-power/iasl )
 	pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
-	${PYTHON_DEPS}
 	api? ( dev-libs/libxml2
 		net-misc/curl )
 	ovmf? (

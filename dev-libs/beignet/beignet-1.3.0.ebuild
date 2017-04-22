@@ -25,8 +25,7 @@ else
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
-COMMON="${PYTHON_DEPS}
-	media-libs/mesa
+COMMON="media-libs/mesa
 	sys-devel/clang:0=
 	>=sys-devel/llvm-3.6:0=
 	ocl20? ( >=sys-devel/llvm-3.9:0= )

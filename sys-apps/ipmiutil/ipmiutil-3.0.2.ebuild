@@ -25,6 +25,7 @@ src_prepare() {
 	default
 
 	sed -i -e 's|-O2 -g|$(CFLAGS)|g;s|-g -O2|$(CFLAGS)|g' util/Makefile.am* || die
+	sed -i -e 's|which rpm |which we_are_gentoo_rpm_is_a_guest |' configure.ac || die
 
 	eautoreconf
 }

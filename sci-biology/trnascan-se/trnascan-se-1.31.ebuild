@@ -1,11 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PERL_EXPORT_PHASE_FUNCTIONS=no
-
-inherit eutils perl-module toolchain-funcs
+inherit perl-functions toolchain-funcs
 
 DESCRIPTION="tRNA detection in large-scale genome sequences"
 HOMEPAGE="http://lowelab.ucsc.edu/tRNAscan-SE/"
@@ -18,9 +16,12 @@ IUSE=""
 
 S="${WORKDIR}"/tRNAscan-SE-1.3.1/
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ldflags.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-ldflags.patch
+	default
 	sed \
 		-e "s:BINDIR  = \$(HOME)/bin:BINDIR = ${EPREFIX}/usr/bin:" \
 		-e "s:LIBDIR  = \$(HOME)/lib/tRNAscan-SE:LIBDIR = ${EPRFIX}/usr/share/${PN}:" \

@@ -1,5 +1,5 @@
---- src/filelist-order.cxx
-+++ src/filelist-order.cxx
+--- a/src/filelist-order.cxx
++++ b/src/filelist-order.cxx
 @@ -19,6 +19,7 @@
  #include <iostream>
  #include <fstream>

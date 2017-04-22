@@ -1,0 +1,16 @@
+We might want to backport this if there are any releases with the Sphinx
+docs present.
+---
+ Documentation/conf.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Documentation/conf.py b/Documentation/conf.py
+index 49514ec..97f402e 100644
+--- a/Documentation/conf.py
++++ b/Documentation/conf.py
+@@ -145,8 +145,6 @@ linkcheck_anchors = False
+ #
+ if use_ovs_theme:
+     html_theme = 'ovs'
+-else:
+-    html_theme = 'default'

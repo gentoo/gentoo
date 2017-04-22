@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>learath2@gmail.com</email>
+		<name>Emir Marincic</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A lightweight, cross-platform IRC library
+		Written in portable standard C (C99)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fstd/libsrsirc</remote-id>
+	</upstream>
+</pkgmetadata>

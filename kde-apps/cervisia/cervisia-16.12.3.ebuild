@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="CVS frontend by KDE"
 HOMEPAGE="https://www.kde.org/applications/development/cervisia"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="

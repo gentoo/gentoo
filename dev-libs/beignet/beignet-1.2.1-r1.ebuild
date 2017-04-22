@@ -25,8 +25,7 @@ else
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
-COMMON="${PYTHON_DEPS}
-	media-libs/mesa
+COMMON="media-libs/mesa
 	sys-devel/clang:0
 	>=sys-devel/llvm-3.5:0
 	>=x11-libs/libdrm-2.4.70[video_cards_intel]

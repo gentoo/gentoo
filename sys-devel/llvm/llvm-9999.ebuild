@@ -8,8 +8,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic git-r3 \
-	multilib-minimal pax-utils python-any-r1 toolchain-funcs versionator
+inherit cmake-utils flag-o-matic git-r3 multilib-minimal pax-utils \
+	python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
@@ -75,48 +75,7 @@ python_check_deps() {
 		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
-check_space() {
-	# in megs
-	# !debug !multitarget -O2       400
-	# !debug  multitarget -O2       550
-	#  debug  multitarget -O2      5G
-
-	local build_size=550
-
-	if use debug; then
-		ewarn "USE=debug is known to increase the size of package considerably"
-		ewarn "and cause the tests to fail."
-		ewarn
-
-		(( build_size *= 14 ))
-	elif is-flagq '-g?(gdb)?([1-9])'; then
-		ewarn "The C++ compiler -g option is known to increase the size of the package"
-		ewarn "considerably. If you run out of space, please consider removing it."
-		ewarn
-
-		(( build_size *= 10 ))
-	fi
-
-	# Multiply by number of ABIs :).
-	local abis=( $(multilib_get_enabled_abis) )
-	(( build_size *= ${#abis[@]} ))
-
-	local CHECKREQS_DISK_BUILD=${build_size}M
-	check-reqs_pkg_pretend
-}
-
-pkg_pretend() {
-	check_space
-}
-
-pkg_setup() {
-	check_space
-}
-
 src_prepare() {
-	# Python is needed to run tests using lit
-	python_setup
-
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
@@ -203,6 +162,8 @@ multilib_src_configure() {
 		)
 	fi
 
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
 }
 
@@ -258,7 +219,10 @@ multilib_src_install_all() {
 		PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
 		# we need to duplicate it in ROOTPATH for Portage to respect...
 		ROOTPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
+		MANPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 _EOF_
 	doenvd "${T}/10llvm-${revord}"
+
+	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }

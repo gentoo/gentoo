@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://cscapes.cs.purdue.edu/download/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 SLOT="0"
 IUSE="openmp static-libs"
-KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"

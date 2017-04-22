@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Java library for working with XML"
+DESCRIPTION="XML Java library"
 HOMEPAGE="http://dom4j.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/dom4j/${P}.tar.gz
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="dom4j"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 CDEPEND="
@@ -58,10 +58,6 @@ src_prepare() {
 
 	rm -v "${JAVA_RM_FILES[@]}" || die
 }
-
-# 0 - Requires X11.
-# 1 - Fails with JDK 1.7.
-# 2 - Fails with JDK 1.6.
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 JAVA_ANT_CLASSPATH_TAGS+=" javadoc"

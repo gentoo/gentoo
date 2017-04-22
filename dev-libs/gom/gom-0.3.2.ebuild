@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Gom"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 IUSE="+introspection python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"
 

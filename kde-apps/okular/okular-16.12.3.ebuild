@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Universal document viewer based on KDE Frameworks"
 HOMEPAGE="https://okular.kde.org https://www.kde.org/applications/graphics/okular"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="chm crypt djvu ebook +jpeg mobi mobile +pdf +postscript speech +tiff"
 
 DEPEND="

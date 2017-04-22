@@ -88,11 +88,6 @@ app-text/tesseract scrollview
 # no alpha support in media-libs/glfw
 app-text/mupdf opengl
 
-# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-lang/luajit lacks alpha keyword. See bug #488318.
-media-video/mpv luajit
-
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires

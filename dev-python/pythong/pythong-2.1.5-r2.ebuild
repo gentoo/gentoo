@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-
 PYTHON_REQ_USE="tk"
 
 inherit python-single-r1
@@ -23,8 +22,9 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ia64 x86"
 SLOT="0"
 IUSE="doc"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/tk-8.3.4:0=
 	virtual/python-pmw[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

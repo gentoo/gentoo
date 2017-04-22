@@ -381,15 +381,13 @@ foreach_abi() {
 	else
 		abilist=${DEFAULT_ABI}
 	fi
-	evar_push ABI
-	export ABI
+	local -x ABI
 	for ABI in ${abilist:-default} ; do
 		setup_env
 		einfo "Running $1 for ABI ${ABI}"
 		$1
 		: $(( ret |= $? ))
 	done
-	evar_pop
 	return ${ret}
 }
 

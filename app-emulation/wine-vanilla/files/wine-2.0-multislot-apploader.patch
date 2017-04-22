@@ -1,0 +1,14 @@
+diff --git a/tools/wineapploader.in b/tools/wineapploader.in
+index f48d552..14001a0 100755
+--- a/tools/wineapploader.in
++++ b/tools/wineapploader.in
+@@ -20,7 +20,8 @@
+ #
+ 
+ # determine the app Winelib library name
+-appname=`basename "$0" .exe`.exe
++appname=${0##*/}
++appname="${appname%%-*}.exe"
+ 
+ # first try explicit WINELOADER
+ if [ -x "$WINELOADER" ]; then exec "$WINELOADER" "$appname" "$@"; fi

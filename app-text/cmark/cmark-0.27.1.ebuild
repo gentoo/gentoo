@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit cmake-utils
+PYTHON_COMPAT=( python3_{4,5} )
+
+inherit cmake-utils python-any-r1
 
 DESCRIPTION="CommonMark parsing and rendering library and program in C"
 HOMEPAGE="https://github.com/jgm/cmark"
@@ -15,8 +17,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="
-	test? ( || ( dev-lang/python:3.4 dev-lang/python:3.5 ) )"
+	test? ( ${PYTHON_DEPS} )"
 RDEPEND=""
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	cmake-utils_src_prepare

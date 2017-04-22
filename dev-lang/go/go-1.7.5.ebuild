@@ -177,7 +177,7 @@ src_compile()
 	if [[ ${ARCH} == arm ]]; then
 		export GOARM=$(go_arm)
 	fi
-	elog "GOROOT_BOOTSTRAP is ${GOROOT_BOOTSTRAP}"
+	einfo "GOROOT_BOOTSTRAP is ${GOROOT_BOOTSTRAP}"
 
 	cd src
 	./make.bash || die "build failed"

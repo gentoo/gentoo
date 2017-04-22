@@ -46,10 +46,6 @@ xfs
 openexr
 
 # Samuli Suominen <drac@gentoo.org>
-# media-libs/amrnb and media-libs/amrwb not tested.
-amr
-
-# Samuli Suominen <drac@gentoo.org>
 # media-gfx/gimp not tested.
 gimp
 
@@ -69,7 +65,6 @@ tracker
 xindy
 lyx
 lasi
-schroedinger
 hardened
 frei0r
 libvirt
@@ -85,7 +80,6 @@ lirc
 lm_sensors
 xemacs
 scanner
-zvbi
 fluidsynth
 sid
 mms
@@ -94,18 +88,15 @@ ieee1394
 pm-utils
 darcs
 toolame
-ladspa
 ggi
 nut
 fits
 tokyocabinet
 vaapi
 rtmp
-vpx
 lpsol
 upnp
 libtar
-zvbi
 devil
 gts
 anthy
@@ -171,9 +162,6 @@ video_cards_vmware
 # Bug #184563, 18 Sep 2007
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
-
-# fdk-aac is already keyworded here
--fdk
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
 # media-libs/xine-lib is not keyworded

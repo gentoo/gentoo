@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,15 +14,15 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls +zinnia"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="zinnia? ( app-i18n/zinnia app-i18n/zinnia-tomoe )
 	>=app-i18n/ibus-1.3.0
 	>=x11-libs/gtk+-2.10:2
-	x11-libs/gtkglext"
+	x11-libs/gtkglext
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 

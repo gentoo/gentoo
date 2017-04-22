@@ -7,7 +7,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="KDE educational apps - merge this to pull in all kdeedu-derived packages"
 HOMEPAGE="https://edu.kde.org"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 [[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}

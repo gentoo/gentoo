@@ -151,6 +151,8 @@ src_prepare() {
 	# Please add a brief description for every added patch
 
 	if use kernel_linux; then
+		eapply "${FILESDIR}"/${P}-endif.patch
+
 		if kernel_is lt 2 6 9 ; then
 			eerror "You must build this against 2.6.9 or higher kernels."
 		fi

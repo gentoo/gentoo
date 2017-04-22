@@ -38,6 +38,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.28-pam.patch
+	"${FILESDIR}"/${P}-openssl-1.1.patch
 )
 
 src_configure() {

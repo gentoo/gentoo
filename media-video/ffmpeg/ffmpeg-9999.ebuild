@@ -54,7 +54,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -103,8 +103,23 @@ IUSE="
 
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
-ARM_CPU_FEATURES=( armv5te armv6 armv6t2 neon armvfp:vfp )
-ARM_CPU_REQUIRED_USE="arm64? ( armvfp neon )"
+ARM_CPU_FEATURES=(
+	cpu_flags_arm_thumb:armv5te
+	cpu_flags_arm_v6:armv6
+	cpu_flags_arm_thumb2:armv6t2
+	cpu_flags_arm_neon:neon
+	cpu_flags_arm_vfp:vfp
+	cpu_flags_arm_vfpv3:vfpv3
+	cpu_flags_arm_v8:armv8
+)
+ARM_CPU_REQUIRED_USE="
+	arm64? ( cpu_flags_arm_v8 )
+	cpu_flags_arm_v8? (  cpu_flags_arm_vfpv3 cpu_flags_arm_neon )
+	cpu_flags_arm_neon? ( cpu_flags_arm_thumb2 cpu_flags_arm_vfp )
+	cpu_flags_arm_vfpv3? ( cpu_flags_arm_vfp )
+	cpu_flags_arm_thumb2? ( cpu_flags_arm_v6 )
+	cpu_flags_arm_v6? ( cpu_flags_arm_thumb )
+"
 MIPS_CPU_FEATURES=( mipsdspr1 mipsdspr2 mipsfpu )
 PPC_CPU_FEATURES=( altivec )
 X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
@@ -238,7 +253,6 @@ RDEPEND="
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		!xcb? ( >=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}] )
 		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
 	)
 	xcb? ( >=x11-libs/libxcb-1.4[${MULTILIB_USEDEP}] )
@@ -324,7 +338,6 @@ multilib_src_configure() {
 	for i in alsa oss jack ; do
 		use ${i} || myconf+=( --disable-indev=${i} )
 	done
-	use xcb || ffuse+=( X:x11grab )
 
 	# Outdevs
 	for i in alsa oss sdl ; do
@@ -389,7 +402,7 @@ multilib_src_configure() {
 
 	# cross compile support
 	if tc-is-cross-compiler ; then
-		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- )
+		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- --host-cc="$(tc-getBUILD_CC)" )
 		case ${CHOST} in
 			*freebsd*)
 				myconf+=( --target-os=freebsd )

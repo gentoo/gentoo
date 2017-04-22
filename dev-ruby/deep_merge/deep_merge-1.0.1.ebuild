@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,5 +19,5 @@ KEYWORDS="amd64 hppa ~x86"
 IUSE=""
 
 each_ruby_test() {
-	${RUBY} -S testrb test/test_*.rb || die
+	${RUBY} -I lib:test:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
 }

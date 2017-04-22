@@ -5,7 +5,7 @@ EAPI="5"
 
 LIBTOOLIZE="true" #225559
 WANT_LIBTOOL="none"
-inherit eutils autotools multilib unpacker prefix
+inherit autotools epatch epunt-cxx multilib unpacker prefix
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.savannah.gnu.org/${PN}.git

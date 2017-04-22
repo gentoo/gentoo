@@ -16,18 +16,23 @@ if [[ "${PV##*.}" == "9999" ]]; then
 	# for circular reasons
 	# Greatest first, don't include yourself
 	PERL_BIN_OLDVERSEN=""
-	PERL_OLDVERSEN="5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
-	DIST_VERSION=5.25.11
+	PERL_OLDVERSEN="5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
+	DIST_VERSION=5.25.12
 	SHORT_PV="${DIST_VERSION%.*}"
+	# Devel Releases are not ABI-intercompatible
+	SUBSLOT="${DIST_VERSION}"
 	MY_P="perl-${DIST_VERSION/_rc/-RC}"
+	PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 	MY_PV="${DIST_VERSION%_rc*}"
 else
 	PERL_BIN_OLDVERSEN=""
 	# Compat reasons
-	PERL_OLDVERSEN=""
+	PERL_OLDVERSEN="5.25.11"
 	# First 2 digits only
 	SHORT_PV="${PV%.*}"
+	SUBSLOT="${SHORT_PV}"
 	MY_P="perl-${PV/_rc/-RC}"
+	PATCH_BASE="${MY_P}-patches-${PATCH_VER}"
 	MY_PV="${PV%_rc*}"
 fi
 
@@ -36,15 +41,15 @@ DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 SRC_URI="
 	mirror://cpan/src/5.0/${MY_P}.tar.xz
 	mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${MY_P}.tar.xz
-	https://github.com/gentoo-perl/perl-patchset/releases/download/${MY_P}-patches-${PATCH_VER}/${MY_P}-patches-${PATCH_VER}.tar.xz
-	mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.xz
-	https://dev.gentoo.org/~kentnl/distfiles/${MY_P}-patches-${PATCH_VER}.tar.xz
+	https://github.com/gentoo-perl/perl-patchset/releases/download/${PATCH_BASE}/${PATCH_BASE}.tar.xz
+	mirror://gentoo/${PATCH_BASE}.tar.xz
+	https://dev.gentoo.org/~kentnl/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
 HOMEPAGE="http://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
-SLOT="0/${SHORT_PV}"
+SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]]; then
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -74,14 +79,14 @@ S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
 	src_remove_dual      perl-core/Archive-Tar        2.240.0       ptar ptardiff ptargrep
-	src_remove_dual      perl-core/CPAN               2.170.0       cpan
+	src_remove_dual      perl-core/CPAN               2.180.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         5.960.0       shasum
 	src_remove_dual      perl-core/Encode             2.880.0       enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.240.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.340.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.274.0.200_rc   json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.701.230_rc corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.704.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
 	src_remove_dual      perl-core/Test-Harness       3.380.0       prove
@@ -304,7 +309,7 @@ src_prepare_dynamic() {
 src_prepare() {
 	local patch
 	EPATCH_OPTS+=" -p1"
-	einfo "Applying patches from ${MY_P}-${PATCH_VER} ..."
+	einfo "Applying patches from ${PATCH_BASE} ..."
 	while read patch ; do
 		EPATCH_SINGLE_MSG="  ${patch} ..."
 		epatch "${WORKDIR}"/patches/${patch}
@@ -396,7 +401,7 @@ src_configure() {
 	if [[ -n ${PERL_OLDVERSEN} ]] ; then
 		local inclist=$(
 			for v in ${PERL_OLDVERSEN};	do
-				has "${v}" "${PERL_BIN_OLDVERSEN}" && echo -n "${v}/${myarch}${mythreading} ";
+				has "${v}" ${PERL_BIN_OLDVERSEN} && echo -n "${v}/${myarch}${mythreading} ";
 				echo -n "${v} ";
 		done )
 		myconf -Dinc_version_list="${inclist}"

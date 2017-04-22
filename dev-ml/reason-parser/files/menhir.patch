@@ -1,0 +1,36 @@
+commit 2c15b2f2783b6ab44fe09387019f0918146c2895
+Author: Jason Rose <jasoncrose+github_jasonrose@gmail.com>
+Date:   Wed Apr 19 17:49:42 2017 -0700
+
+    Supporting menhir.20170416 (#1226)
+
+diff --git a/reason-parser/src/reason_toolchain.ml b/reason-parser/src/reason_toolchain.ml
+index 6c70d93..7f98586 100644
+--- a/reason-parser/src/reason_toolchain.ml
++++ b/reason-parser/src/reason_toolchain.ml
+@@ -506,20 +506,16 @@ module JS_syntax = struct
+        if in_error then
+          begin
+            match supplier.last_token with
++           | None -> assert false
+            | Some triple ->
+               (* We just recovered from the error state, try the original token again *)
+               let checkpoint_with_previous_token = I.offer checkpoint triple in
+-              let accept_new = I.loop_test
+-                                 (fun _ _ -> true)
+-                                 checkpoint_with_previous_token
+-                                 false
+-              in
+-              if accept_new then
+-                loop_handle_yacc supplier false checkpoint_with_previous_token
+-              else
++              match I.shifts checkpoint_with_previous_token with
++              | None ->
+                 (* The original token still fail to be parsed, discard *)
+                 loop_handle_yacc supplier false checkpoint
+-           | None -> assert false
++              | Some env ->
++                loop_handle_yacc supplier false checkpoint_with_previous_token
+          end
+        else
+          let triple = read supplier in

@@ -5,6 +5,9 @@ sys-libs/uclibc
 sys-libs/uclibc-ng
 sys-libs/glibc
 
+# Older versions of net-mail/mailutils fail on musl, bug #604212
+<net-mail/mailutils-3.2
+
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev

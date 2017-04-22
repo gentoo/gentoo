@@ -1,7 +1,7 @@
 http://repos.archlinux.org/wsvn/community/greycstoration/trunk/libpng14.patch
 
---- CImg.h
-+++ CImg.h
+--- a/CImg.h
++++ b/CImg.h
 @@ -25671,7 +25671,7 @@
        png_read_info(png_ptr,info_ptr);
        png_uint_32 W, H;

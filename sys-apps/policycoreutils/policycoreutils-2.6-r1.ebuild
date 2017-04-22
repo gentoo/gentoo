@@ -16,6 +16,7 @@ SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
 
 IUSE="audit pam dbus"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -30,7 +31,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz
 		https://dev.gentoo.org/~swift/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 ~arm64 ~mips x86"
 	S1="${WORKDIR}/${MY_P}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"

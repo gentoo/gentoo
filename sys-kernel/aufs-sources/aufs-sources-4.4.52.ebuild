@@ -9,7 +9,7 @@ K_GENPATCHES_VER=56
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo-r1
 
-AUFS_VERSION=4.4_p20170313
+AUFS_VERSION=4.4_p20170410
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
 # git archive -v --remote=git://git.code.sf.net/p/aufs/aufs4-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="https://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"

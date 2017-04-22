@@ -1,0 +1,36 @@
+From fdf28f2cb17ae0bf8fac569335dabdbc9e83a452 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 8 Apr 2017 14:55:06 +0200
+Subject: [PATCH] Ensure verification starts after build
+
+---
+ Makefile | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0952a5d..b722226 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,12 @@ TMPRING := trusted.gpg/build-area
+ 
+ GPG_OPTIONS := --no-options --no-default-keyring --no-auto-check-trustdb --trustdb-name ./trustdb.gpg
+ 
+-build: verify-indices keyrings/debian-archive-keyring.gpg keyrings/debian-archive-removed-keys.gpg verify-results $(TRUSTED-LIST)
++all:
++	$(MAKE) build verify
++
++build: keyrings/debian-archive-keyring.gpg keyrings/debian-archive-removed-keys.gpg $(TRUSTED-LIST)
++
++verify: verify-indices verify-results
+ 
+ verify-indices: keyrings/team-members.gpg
+ 	gpg ${GPG_OPTIONS} \
+@@ -61,4 +66,4 @@ install: build
+ 	install -d $(DESTDIR)/etc/apt/trusted.gpg.d/
+ 	cp $(shell find trusted.gpg/ -name '*.gpg' -type f) $(DESTDIR)/etc/apt/trusted.gpg.d/
+ 
+-.PHONY: verify-indices verify-results clean build install
++.PHONY: all verify verify-indices verify-results clean build install
+-- 
+2.12.2
+

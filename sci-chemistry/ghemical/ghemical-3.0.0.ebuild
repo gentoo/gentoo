@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 inherit autotools eutils
 
@@ -28,8 +28,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/2.99.2-docs.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/2.99.2-docs.patch
+	default
 	eautoreconf
 }
 
@@ -49,6 +51,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 	make_desktop_entry /usr/bin/ghemical Ghemical /usr/share/ghemical/${PV}/pixmaps/ghemical.png
 }

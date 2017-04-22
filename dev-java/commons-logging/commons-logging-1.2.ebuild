@@ -6,7 +6,7 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2 java-osgi
 
-DESCRIPTION="The Jakarta-Commons Logging package is an ultra-thin bridge between different logging libraries"
+DESCRIPTION="An ultra-thin bridge between different Java logging libraries"
 HOMEPAGE="http://commons.apache.org/logging/"
 SRC_URI="mirror://apache/commons/logging/source/${P}-src.tar.gz"
 

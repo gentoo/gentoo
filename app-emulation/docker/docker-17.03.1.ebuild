@@ -15,7 +15,7 @@ else
 	DOCKER_GITCOMMIT="c6d412e"
 	EGIT_COMMIT="v${MY_PV}-ce"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64 ~arm"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
@@ -60,7 +60,7 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 
-	~app-emulation/containerd-0.2.3_p20170308
+	>=app-emulation/containerd-0.2.5_p20170308
 	~app-emulation/docker-runc-1.0.0_rc2_p20170308[apparmor?,seccomp?]
 	app-emulation/docker-proxy
 	container-init? ( >=sys-process/tini-0.13.0[static] )
@@ -91,7 +91,7 @@ CONFIG_CHECK="
 	~CGROUP_HUGETLB
 	~NET_CLS_CGROUP
 	~CFS_BANDWIDTH ~FAIR_GROUP_SCHED ~RT_GROUP_SCHED
-	~IP_VS ~IP_VS_PROTO_TCP ~IP_VS_PROTO_UDP ~IP_VS_NFCT
+	~IP_VS ~IP_VS_PROTO_TCP ~IP_VS_PROTO_UDP ~IP_VS_NFCT ~IP_VS_RR
 
 	~VXLAN
 	~XFRM_ALGO ~XFRM_USER

@@ -1,0 +1,26 @@
+https://codereview.chromium.org/2389993002
+https://crbug.com/651632
+https://pdfium.googlesource.com/pdfium/+/master/libtiff/
+
+Author: dsinclair <dsinclair@chromium.org>
+Date:   Mon Oct 3 13:59:57 2016 -0700
+
+Fix potentially uninitialized value.
+
+Depending on what ReadOK does it's possible for |dircount16| to be used without
+being initialized. The read code calls back into PDFium specific code which then
+calls into the stream reading code.
+
+Initialize the value to be sure it is set.
+
+--- a/libtiff/tif_dirread.c
++++ b/libtiff/tif_dirread.c
+@@ -4443,7 +4443,7 @@ TIFFFetchDirectory(TIFF* tif, uint64 diroff, TIFFDirEntry** pdir,
+ 	static const char module[] = "TIFFFetchDirectory";
+ 
+ 	void* origdir;
+-	uint16 dircount16;
++	uint16 dircount16 = 0;
+ 	uint32 dirsize;
+ 	TIFFDirEntry* dir;
+ 	uint8* ma;

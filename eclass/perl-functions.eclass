@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Huettel <dilfridge@gentoo.org>
+# Kent Fredric <kentnl@gentoo.org>
 # @BLURB: helper functions eclass for perl modules
 # @DESCRIPTION:
 # The perl-functions eclass is designed to allow easier installation of perl
@@ -27,7 +28,6 @@ esac
 perlinfo_done=false
 
 # @FUNCTION: perl_set_version
-# @USAGE: perl_set_version
 # @DESCRIPTION:
 # Extract version information and installation paths from the current Perl
 # interpreter.
@@ -36,6 +36,12 @@ perlinfo_done=false
 # ARCH_LIB, VENDOR_LIB, VENDOR_ARCH
 #
 # This function used to be called perlinfo as well.
+#
+# Example:
+# @CODE
+# perl_set_version
+# echo $PERL_VERSION
+# @CODE
 perl_set_version() {
 	debug-print-function $FUNCNAME "$@"
 	debug-print "$FUNCNAME: perlinfo_done=${perlinfo_done}"
@@ -53,7 +59,6 @@ perl_set_version() {
 }
 
 # @FUNCTION: perl_delete_localpod
-# @USAGE: perl_delete_localpod
 # @DESCRIPTION:
 # Remove stray perllocal.pod files in the temporary install directory D.
 #
@@ -66,7 +71,6 @@ perl_delete_localpod() {
 }
 
 # @FUNCTION: perl_fix_osx_extra
-# @USAGE: perl_fix_osx_extra
 # @DESCRIPTION:
 # Look through ${S} for AppleDouble encoded files and get rid of them.
 perl_fix_osx_extra() {
@@ -83,7 +87,6 @@ perl_fix_osx_extra() {
 }
 
 # @FUNCTION: perl_delete_module_manpages
-# @USAGE: perl_delete_module_manpages
 # @DESCRIPTION:
 # Bump off manpages installed by the current module such as *.3pm files as well
 # as empty directories.
@@ -97,7 +100,6 @@ perl_delete_module_manpages() {
 }
 
 # @FUNCTION: perl_delete_packlist
-# @USAGE: perl_delete_packlist
 # @DESCRIPTION:
 # Look through ${D} for .packlist files, empty .bs files and empty directories,
 # and get rid of items found.
@@ -111,7 +113,6 @@ perl_delete_packlist() {
 }
 
 # @FUNCTION: perl_delete_emptybsdir
-# @USAGE: perl_delete_emptybsdir
 # @DESCRIPTION:
 # Look through ${D} for empty .bs files and empty directories,
 # and get rid of items found.
@@ -126,7 +127,6 @@ perl_delete_emptybsdir() {
 }
 
 # @FUNCTION: perl_fix_packlist
-# @USAGE: perl_fix_packlist
 # @DESCRIPTION:
 # Look through ${D} for .packlist text files containing the temporary installation
 # folder (i.e. ${D}). If the pattern is found, silently replace it with `/'.
@@ -160,7 +160,6 @@ perl_fix_packlist() {
 }
 
 # @FUNCTION: perl_remove_temppath
-# @USAGE: perl_remove_temppath
 # @DESCRIPTION:
 # Look through ${D} for text files containing the temporary installation
 # folder (i.e. ${D}). If the pattern is found, replace it with `/' and warn.
@@ -176,7 +175,7 @@ perl_remove_temppath() {
 }
 
 # @FUNCTION: perl_rm_files
-# @USAGE: perl_rm_files "file_1" "file_2"
+# @USAGE: <list of files>
 # @DESCRIPTION:
 # Remove certain files from a Perl release and remove them from the MANIFEST
 # while we're there.
@@ -189,6 +188,14 @@ perl_remove_temppath() {
 #
 # Removing from MANIFEST also avoids needless log messages warning
 # users about files "missing from their kit".
+#
+# Example:
+# @CODE
+# src_test() {
+#   perl_rm_files t/pod{,-coverage}.t
+#   perl-module_src_test
+# }
+# @CODE
 perl_rm_files() {
 	debug-print-function $FUNCNAME "$@"
 	local skipfile="${T}/.gentoo_makefile_skip"
@@ -212,7 +219,6 @@ perl_rm_files() {
 }
 
 # @FUNCTION: perl_link_duallife_scripts
-# @USAGE: perl_link_duallife_scripts
 # @DESCRIPTION:
 # Moves files and generates symlinks so dual-life packages installing scripts do not
 # lead to file collisions. Mainly for use in pkg_postinst and pkg_postrm, and makes
@@ -249,7 +255,6 @@ perl_link_duallife_scripts() {
 }
 
 # @FUNCTION: perl_check_env
-# @USAGE: perl_check_env
 # @DESCRIPTION:
 # Checks a blacklist of known-suspect ENV values that can be accidentally set by users
 # doing personal perl work, which may accidentally leak into portage and break the
@@ -299,12 +304,19 @@ perl_check_env() {
 }
 
 # @FUNCTION: perl_doexamples
-# @USAGE: perl_doexamples "file_1" "file_2"
+# @USAGE: <list of files or globs>
 # @DESCRIPTION:
 # Install example files ready-to-run.
 # Is called under certain circumstances in perl-module.eclass src_install
 # (see the documentation there).
 #
+# Example:
+# @CODE
+# src_install() {
+#   perl-module_src_install
+#   use examples && perl_doexamples "eg/*"
+# }
+# @CODE
 perl_doexamples() {
 	debug-print-function $FUNCNAME "$@"
 
@@ -314,7 +326,262 @@ perl_doexamples() {
 	docompress -x /usr/share/doc/${PF}/examples
 
 	docinto examples/
+	# Lack of quoting here is important in order to support glob expansion
+	# in DIST_EXAMPLES=( ), which is defined before source extraction occurs
 	dodoc -r $@
 
 	# is there a way to undo "docinto" ?
+}
+
+# @FUNCTION: perl_has_module
+# @USAGE: <module name>
+# @RETURN: 0 if available, non-zero otherwise
+# @DESCRIPTION:
+# Query the installed system Perl to see if a given module is installed.
+# This does **not** load the module in question, only anticipates if it *might* load.
+#
+# This is primarily for the purposes of dependency weakening so that conditional
+# behaviour can be triggered without adding dependencies to portage which would confuse
+# a dependency resolver.
+#
+# returns 'true' if the module is available, returns error if the module is not available
+#
+# Example:
+# @CODE
+# perl_has_module "Test::Tester" && echo "Test::Tester installed"
+# @CODE
+
+perl_has_module() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
+	[[ $# -lt 2 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	perl -we 'my $mn = $ARGV[0];
+		$mn =~ s{(::|\x{27})}{/}g;
+		for(@INC){
+			next if ref $_;
+			exit 0 if -r $_ . q[/] . $mn . q[.pm]
+		}
+		exit 1' "$@";
+}
+
+# @FUNCTION: perl_has_module_version
+# @USAGE: <module name> <minimum upstream version>
+# @RETURN: 0 if satisfied, non-zero otherwise
+# @DESCRIPTION:
+# Query the installed system Perl to see if a given module is installed
+# and is at least a given version.
+#
+# This requires more caution to use than perl_has_module as it requires
+# loading the module in question to determine version compatibility,
+# which can be SLOW, and can have side effects (ie: compilation fails in
+# require due to some dependency, resulting in a "Fail")
+#
+# Also take care to note the module version is a *minimum*, *must* be
+# written in upstream versions format and should be a a legal upstream version
+#
+# returns a true exit code if the module is both available and is at least
+# the specified version
+#
+# Example:
+# @CODE
+# perl_has_module_version "Test::Tester" "0.017" \
+#	&& echo "Test::Tester 0.017 or greater installed"
+# @CODE
+perl_has_module_version() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
+	[[ $# -gt 1 ]] || die "${FUNCNAME}: No module version provided"
+	[[ $# -lt 3 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	perl -we 'my $mn = $ARGV[0];
+		$mn =~ s{(::|\x{27})}{/}g;
+		exit ( eval {
+			require qq[${mn}.pm];
+			$ARGV[0]->VERSION($ARGV[1]);
+			1
+		} ? 0 : 1 )' "$@"
+}
+
+# @FUNCTION: perl_get_module_version
+# @USAGE: <module name>
+# @RETURN: 0 if module available, non-zero if error
+# @DESCRIPTION:
+# Query the installed system perl to report the version of the installed
+# module.
+#
+# Note this should be strictly for diagnostic purposes to the end user,
+# and may be of selective use in pkg_info to enhance
+# emerge --info reports.
+#
+# Anything that does version comparisons **must not** use the return value
+# from this function
+#
+# Also note that this **must** at least attempt load the module in
+# question as part of its operation, and is subsequently prone to SLOWness.
+#
+# Return codes return error in both compilation-failure and not-installed cases.
+#
+# Example:
+# @CODE
+# MODVER=$(perl_get_module_version "Test::Simple") \
+#	|| die "Test::Simple not installed: $MODVER"
+# @CODE
+
+perl_get_module_version() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
+	[[ $# -lt 2 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	if ! perl_has_module "$@" ; then
+		echo "(Not Installed)";
+		return 1;
+	fi
+
+	# Todo: What do we do if require fails? spew to stderr
+	# or stay silent?
+
+	perl -we 'my $mn = $ARGV[0];
+		$mn =~ s{(::|\x{27})}{/}g;
+		local $@;
+		eval { require qq[${mn}.pm]; 1 } or do {
+			print q[(Compilation failed in require)];
+			exit 1;
+		};
+		my $stash = \%{ $ARGV[0] . q[::] };
+		if ( not exists $stash->{VERSION} ) {
+			print q[(No VERSION property)];
+			exit 0;
+		}
+		if ( not defined ${$stash->{VERSION}} ) {
+			print q[(undef)];
+			exit 0;
+		}
+		print ${$stash->{VERSION}};
+		exit 0; ' "$@"
+}
+
+# @FUNCTION: perl_get_raw_vendorlib
+# @DESCRIPTION:
+# Convenience function to optimise for a common case without double-handling
+# variables everywhere.
+#
+# Note: Will include EPREFIX where relevant
+#
+# Example:
+# @CODE
+# my_raw_vendorlib="$(perl_get_raw_vendorlib)"
+# @CODE
+
+perl_get_raw_vendorlib() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -lt 1 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	perl -MConfig \
+		-e'exists $Config{$ARGV[0]} || die qq{No such Config key "$ARGV[0]"};
+		   print $Config{$ARGV[0]};
+		   exit 0' -- "installvendorlib" || die "Can't extract installvendorlib from Perl Configuration"
+}
+
+# @FUNCTION: perl_get_vendorlib
+# @DESCRIPTION:
+# Convenience helper for returning Perls' vendor install root
+# without EPREFIXing.
+#
+# Example:
+# @CODE
+# my_vendorlib="$(perl_get_vendorlib)"
+# @CODE
+
+perl_get_vendorlib() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -lt 1 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	# Requires perl 5.14 for /r attribute of s///
+	# Just in case somebody out there is stuck in a time warp: upgrade perl first
+	perl -M5.014 -MConfig \
+		-e'exists $Config{$ARGV[0]} || die qq{No such Config key "$ARGV[0]"};
+		   print $Config{$ARGV[0]} =~ s{\A\Q$ARGV[1]\E}{}r;
+		   exit 0' -- "installvendorlib" "$EPREFIX" || die "Can't extract installvendorlib from Perl Configuration"
+}
+
+# @FUNCTION: perl_domodule
+# @USAGE: [-C <target>] [-r] <files>
+# @DESCRIPTION:
+# Installs files in paths where they can be found in the default
+# Perl runtime.
+#
+# Note: Should only be used in src_install or pkg_preinst
+# anywhere else will do the wrong thing or die.
+#
+# The contents of the <files> list are copied into Perls Vendor library path
+# as follows:
+# @CODE
+#   # install perl/File.pm as Samba::File
+#   pushd perl/
+#   perl_domodule -C Samba File.pm
+#
+#   # install perl/ recursively under VENDORLIB/Samba/
+#   pushd perl/
+#   perl_domodule -C Samba -r .
+# @CODE
+#
+# @CODE
+#   options:
+#       -C Target/Name
+#          The subdirectory relative to the Perl VENDOR_LIB
+#          to install into.
+#
+#          defaults to ""
+#       -r
+#          Install directories recursively ( see doins )
+#          files:
+#          list of .pm files to install to VENDORLIB
+# @CODE
+
+perl_domodule() {
+	local target_prefix=""
+	local files=()
+	local doins_opts=()
+
+	local recursive="false"
+	local target
+	local file
+
+	while [[ $# -gt 0 ]] ; do
+		case $1 in
+			-C|--target-prefix)
+				[[ -z "${2}" || "${2:0:1}" == "-" ]] && die "${FUNCNAME}: -C|--target-prefix expects an argument, got \"$2\"!"
+				target_prefix="${2}";
+				shift 2;;
+			-r)
+				recursive="true"
+				shift;;
+			*)
+				[[ -z "${1}" || "${1:0:1}" == "-" ]] && die "${FUNCNAME}: Unknown argument \"${1}\"!"
+				files+=( "${1}" )
+				shift 1;;
+		esac
+	done
+
+	if [[ "true" == $recursive ]]; then
+		doins_opts+=( "-r" )
+	fi
+	for file in "${files[@]}"; do
+		[[ -e "${file}" ]] || die "$FUNCNAME: Argument \"${file}\" is not an existing file"
+		[[ "false" == ${recursive} && -d "${file}" ]] && die "$FUNCNAME: Argument \"${file}\" is a directory ( needs -r parameter )"
+	done
+
+	target="$(perl_get_vendorlib)"
+
+	# Extend target if target_prefix is set
+	[[ -z "${target_prefix}" ]] || target="${target%/}/${target_prefix#/}"
+
+	insinto "/${target#/}"
+	doins "${doins_opts[@]}" "${files[@]}"
 }

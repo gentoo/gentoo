@@ -19,6 +19,8 @@ RDEPEND="
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_jane:=
 	dev-ml/ocaml-migrate-parsetree:=
+	<dev-ml/ppx_driver-100
+	<dev-ml/ppx_jane-100
 "
 DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
 
