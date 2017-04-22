@@ -12,4 +12,3 @@ HOMEPAGE="https://01.org/hyperscan"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
