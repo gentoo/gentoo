@@ -19,13 +19,13 @@ IUSE="latex +recording +sound"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/PyQt4[X,svg,webkit]
-	>=dev-python/httplib2-0.7.4
-	dev-python/beautifulsoup:python-2
-	dev-python/send2trash
+	dev-python/PyQt4[X,svg,webkit,${PYTHON_USEDEP}]
+	>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
+	dev-python/send2trash[${PYTHON_USEDEP}]
 	recording? (
 		media-sound/lame
-		>=dev-python/pyaudio-0.2.4
+		>=dev-python/pyaudio-0.2.4[${PYTHON_USEDEP}]
 	)
 	sound? ( media-video/mplayer )
 	latex? (
