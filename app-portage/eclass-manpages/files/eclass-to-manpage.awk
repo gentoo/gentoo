@@ -27,6 +27,7 @@
 # The format of functions:
 # @FUNCTION: foo
 # @USAGE: <required arguments to foo> [optional arguments to foo]
+# @OUTPUT: <values emitted to STDOUT>
 # @RETURN: <whatever foo returns>
 # @MAINTAINER:
 # <optional; list of contacts, one per line>
@@ -217,6 +218,7 @@ function show_function_header() {
 function handle_function() {
 	func_name = $3
 	usage = ""
+	funcout = ""
 	funcret = ""
 	maintainer = ""
 	internal = 0
@@ -231,6 +233,8 @@ function handle_function() {
 	getline
 	if ($2 == "@USAGE:")
 		usage = eat_line()
+	if ($2 == "@OUTPUT:")
+		funcout = eat_line()
 	if ($2 == "@RETURN:")
 		funcret = eat_line()
 	if ($2 == "@MAINTAINER:")
@@ -256,6 +260,11 @@ function handle_function() {
 		if (desc != "")
 			print ""
 		print "Return value: " funcret
+	}
+	if (funcout != "") {
+		if (desc !="")
+			print ""
+		print "Outputs: " funcout
 	}
 
 	if (blurb == "")
