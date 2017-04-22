@@ -10,7 +10,7 @@ HOMEPAGE="http://hutchinson.belmont.ma.us/tth/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}${PV}.tar.gz"
 
 SLOT="0"
-LICENSE="free-noncomm"
+LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
