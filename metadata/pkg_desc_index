@@ -7394,7 +7394,7 @@ dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output
 dev-python/clint 0.3.1-r1 0.4.1 0.5.1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 0.2.1 0.2.2: Extended pickling support for Python objects
-dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
+dev-python/cmd2 0.6.7 0.6.8 0.7.0: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.0 1.2 1.3.1: A simple schema-based serialization and deserialization library
 dev-python/colorama 0.3.3 0.3.7: ANSI escape character sequences for colored terminal text & cursor positioning
