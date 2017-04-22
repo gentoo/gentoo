@@ -37,6 +37,11 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_test() {
+	ALL_TESTS=1 \
+	esetup.py test
+}
+
 pkg_postinst() {
 	einfo "For additional functionality, install the following optional packages:"
 	einfo "    dev-python/reportlab for pdf format"
