@@ -1,5 +1,5 @@
---- configure.in.bak	2007-12-01 11:45:51.000000000 -0500
-+++ configure.in	2007-12-01 11:46:42.000000000 -0500
+--- a/configure.in
++++ b/configure.in
 @@ -33,6 +33,9 @@
  PB_OBJECTS=
  PB_LIBS=

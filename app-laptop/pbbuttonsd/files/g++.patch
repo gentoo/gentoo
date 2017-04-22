@@ -1,5 +1,5 @@
---- src/Makefile.tmp	2007-11-29 20:42:38.000000000 -0500
-+++ src/Makefile.in	2007-11-29 20:47:23.000000000 -0500
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -319,7 +319,7 @@
  	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
  pbbuttonsd$(EXEEXT): $(pbbuttonsd_OBJECTS) $(pbbuttonsd_DEPENDENCIES) 
