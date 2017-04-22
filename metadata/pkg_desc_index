@@ -2846,6 +2846,7 @@ dev-ada/asis 2016: To develop tools for Ada software
 dev-ada/gnat_util 2016: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016: GNAT Component Collection
 dev-ada/gprbuild 2016: Multi-Language Management
+dev-ada/gtkada 2016: A complete Ada graphical toolkit
 dev-ada/xmlada 2016: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
