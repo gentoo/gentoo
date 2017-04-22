@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/livecd-tools.git"
@@ -18,15 +18,16 @@ HOMEPAGE="https://www.gentoo.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
 
-RDEPEND="dev-util/dialog
-	net-dialup/mingetty
+RDEPEND="
 	>=sys-apps/baselayout-2
 	>=sys-apps/openrc-0.8.2-r1
-	sys-apps/pciutils
+	dev-util/dialog
+	net-dialup/mingetty
 	sys-apps/gawk
-	sys-apps/sed"
+	sys-apps/pciutils
+	sys-apps/sed
+"
 
 pkg_setup() {
 		ewarn "This package is designed for use on the LiveCD only and will do"
