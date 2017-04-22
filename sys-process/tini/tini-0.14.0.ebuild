@@ -12,7 +12,7 @@ SRC_URI="https://github.com/krallin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+args static"
+IUSE="+args +static"
 
 src_prepare() {
 	default
