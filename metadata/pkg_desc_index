@@ -1617,7 +1617,7 @@ app-laptop/laptop-mode-tools 1.70 1.71: Linux kernel laptop_mode user-space util
 app-laptop/lphdisk 0.9.1-r2: utility for preparing a hibernation partition for APM Suspend-To-Disk
 app-laptop/mbpfan 1.9.1 2.0.0 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
 app-laptop/nvidiabl 0.83 0.87: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
-app-laptop/pbbuttonsd 0.8.1-r3 0.8.1-r4: Handles power management and special keys on laptops
+app-laptop/pbbuttonsd 0.8.1-r3 0.8.1-r4 0.8.1a: Handles power management and special keys on laptops
 app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
 app-laptop/powerprefs 0.8.0: program to interface with pbbuttonsd (Powerbook/iBook) keys
 app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon cards
