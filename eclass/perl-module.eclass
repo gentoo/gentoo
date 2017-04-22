@@ -32,6 +32,7 @@ case ${EAPI:-0} in
 esac
 
 # @ECLASS-VARIABLE: GENTOO_DEPEND_ON_PERL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable controls whether a runtime and build time dependency on
 # dev-lang/perl is automatically added by the eclass. It defaults to yes.
@@ -126,17 +127,20 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # SRC_URI. Defaults to ${DIST_NAME}-${DIST_VERSION}.${DIST_A_EXT} Named MODULE_A in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_AUTHOR
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) This variable sets the module author name for the calculation of
 # SRC_URI. Named MODULE_AUTHOR in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_SECTION
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) This variable sets the module section for the calculation of
 # SRC_URI. Only required in rare cases for very special snowflakes.
 # Named MODULE_SECTION in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_EXAMPLES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) This Bash array allows passing a list of example files to be installed
 # in /usr/share/doc/${PF}/examples. If set before inherit, automatically adds
@@ -321,6 +325,7 @@ perl-module_src_compile() {
 #   network  : do not try to disable network tests
 
 # @ECLASS-VARIABLE: DIST_TEST_OVERRIDE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6) Variable that controls if tests are run in the test phase
 # at all, and if yes under which conditions. It is intended for use in
