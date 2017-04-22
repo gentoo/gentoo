@@ -17,7 +17,8 @@ IUSE="examples tools zsh-completion"
 RESTRICT="strip"
 RDEPEND="virtual/jdk:1.8"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
+	app-arch/unzip
+	app-arch/zip"
 
 S="${WORKDIR}"
 
