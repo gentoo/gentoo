@@ -18,7 +18,7 @@ SRC_URI="http://www.erlang.org/download/otp_src_${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
-IUSE="compat-ethread doc emacs hipe java kpoll libressl odbc smp sctp ssl systemd tk wxwidgets"
+IUSE="compat-ethread dirty-schedulers doc emacs hipe java kpoll libressl odbc smp sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
 	ssl? (
@@ -76,7 +76,8 @@ src_configure() {
 		$(use_enable kpoll kernel-poll) \
 		$(use_enable smp smp-support) \
 		$(use compat-ethread && echo "--enable-ethread-pre-pentium4-compatibility") \
-		$(use x64-macos && echo "--enable-darwin-64bit")
+		$(use x64-macos && echo "--enable-darwin-64bit") \
+		$(use_enable dirty-schedulers)
 }
 
 src_compile() {

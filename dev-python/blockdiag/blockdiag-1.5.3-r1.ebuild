@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 
 inherit distutils-r1
 
@@ -18,6 +18,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
 	>=dev-python/pillow-2.2.1[${PYTHON_USEDEP}]
+	dev-python/webcolors[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
@@ -34,6 +35,11 @@ DEPEND="
 python_prepare_all() {
 	sed -i -e /build-base/d setup.cfg || die
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	ALL_TESTS=1 \
+	esetup.py test
 }
 
 pkg_postinst() {
