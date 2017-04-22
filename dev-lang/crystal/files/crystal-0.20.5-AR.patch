@@ -1,9 +1,0 @@
-diff --git a/Makefile b/Makefile
-index dc675a0..1f53d40 100644
---- a/Makefile
-+++ b/Makefile
-@@ -118,3 +118,3 @@ $(LLVM_EXT_OBJ): $(LLVM_EXT_DIR)/llvm_ext.cc
- $(LIB_CRYSTAL_TARGET): $(LIB_CRYSTAL_OBJS)
--	ar -rcs $@ $^
-+	$(AR) -rcs $@ $^
- 
