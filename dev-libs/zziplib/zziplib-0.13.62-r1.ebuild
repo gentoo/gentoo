@@ -15,16 +15,13 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~a
 IUSE="doc sdl static-libs test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="
+	sys-libs/zlib
+	${PYTHON_DEPS}
 	sdl? ( >=media-libs/libsdl-1.2.6 )"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( app-arch/zip )"
-
-pkg_setup() {
-	python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.13.49-SDL-test.patch
