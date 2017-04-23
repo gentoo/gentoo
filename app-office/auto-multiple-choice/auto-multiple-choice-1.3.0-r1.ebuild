@@ -10,7 +10,7 @@ HOMEPAGE="http://home.gna.org/auto-qcm/"
 SRC_URI="http://download.gna.org/auto-qcm/${PN}_${PV}_sources.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 LANGS="ar es fr ja"
@@ -62,12 +62,13 @@ src_prepare() {
 	default
 
 	local la
-	for la in ${L10N} ; do
+	for la in ${LANGS} ; do
 		if ! use l10n_${la} ; then
-			# remove languages that we dont want to install
+			# remove languages that we dont want to install. no error on nonexisting files.
 			rm -vf "I18N/lang/${la}.po"
 			rm -vf "doc/auto-multiple-choice.${la}.in.xml" "doc/doc-xhtml-site.${la}.xsl.in"
 			rm -rvf "doc/html/auto-multiple-choice.${la}" "doc/modeles/${la}"
+			sed -e "s: doc/doc-xhtml-site\\.${la}\\.xsl: :g" -i Makefile || die
 		fi
 	done
 }
