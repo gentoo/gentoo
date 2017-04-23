@@ -2,8 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
+
 inherit autotools eutils python-r1
+
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://github.com/yasm/yasm.git"
 	inherit git-2
@@ -18,20 +21,19 @@ HOMEPAGE="http://yasm.tortall.net/"
 LICENSE="BSD-2 BSD || ( Artistic GPL-2 LGPL-2 )"
 SLOT="0"
 IUSE="nls python"
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="nls? ( virtual/libintl )"
-DEPEND="nls? ( sys-devel/gettext )
-	python? (
-		${PYTHON_DEPS}
-		>=dev-python/cython-0.14[${PYTHON_USEDEP}]
-		)"
+RDEPEND="
+	nls? ( virtual/libintl )
+	python? ( ${PYTHON_DEPS} )"
+DEPEND="
+	${RDEPEND}
+	nls? ( sys-devel/gettext )
+	python? ( >=dev-python/cython-0.14[${PYTHON_USEDEP}] )"
+
 if [[ ${PV} == 9999* ]]; then
 	DEPEND="${DEPEND} ${PYTHON_DEPS} app-text/xmlto app-text/docbook-xml-dtd:4.1.2"
 fi
-
-DOCS=( AUTHORS )
 
 src_prepare() {
 	if ! [[ ${PV} == 9999* ]]; then
