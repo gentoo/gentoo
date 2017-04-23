@@ -17,7 +17,10 @@ KEYWORDS="amd64 x86"
 IUSE="+exif +flickr map picasa +python"
 REQUIRED_USE="
 	map? ( exif )
-	python? ( ^^ ( $(python_gen_useflags '*') ) )
+	python? (
+		${PYTHON_REQUIRED_USE}
+		^^ ( $(python_gen_useflags '*') )
+	)
 "
 
 RDEPEND="
