@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,11 +12,12 @@ MY_PV=${PV/_beta}
 DESCRIPTION="A 3D model slicing application for 3D printing"
 HOMEPAGE="https://github.com/Ultimaker/Cura"
 SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
 
 LICENSE="AGPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="+usb"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/libarcus:=[python,${PYTHON_USEDEP}]
@@ -30,7 +31,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 PATCHES=( "${FILESDIR}/${P}-fix-install-paths.patch" )
 DOCS=( README.md )
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_configure() {
 	local mycmakeargs=(
