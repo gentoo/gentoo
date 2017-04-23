@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,8 @@ MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils multilib python-any-r1
+
+inherit eutils multilib python-single-r1
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://www.tinc-vpn.org/"
@@ -24,8 +25,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="+lzo +ncurses gui libressl +readline +ssl uml vde upnp +zlib"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
+	${PYTHON_DEPS}
+	gui? ( dev-python/wxpython:3.0[${PYTHON_USEDEP}] )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -36,11 +40,7 @@ DEPEND="
 	upnp? ( net-libs/miniupnpc )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
-	vde? ( net-misc/vde )
-	${PYTHON_DEPS}
-	gui? ( $(python_gen_any_dep '
-	dev-python/wxpython[${PYTHON_USEDEP}]
-	') )"
+	vde? ( net-misc/vde )"
 
 S="${WORKDIR}/${MY_P}"
 
