@@ -28,7 +28,7 @@ DEPEND="${COMMON_DEPEND}
 		virtual/latex-base
 		dev-texlive/texlive-fontsextra
 	)"
-RDEPEND="${COMMONDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.4 )"
 
 DOCS=( BUGS README BENCHMARKS NEWS )
