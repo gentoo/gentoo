@@ -13,10 +13,6 @@
         <email>proxy-maint@gentoo.org</email>
         <name>Gentoo Proxy Maintainers Project</name>
     </maintainer>
-    <maintainer type="project">
-        <email>python@gentoo.org</email>
-        <name>Gentoo Python Project</name>
-    </maintainer>
 	<use>
 		<flag name="usb">Access 3D printers via USB</flag>
 	</use>
