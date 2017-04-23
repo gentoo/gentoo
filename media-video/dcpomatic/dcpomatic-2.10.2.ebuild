@@ -38,6 +38,7 @@ RDEPEND="dev-cpp/cairomm
 	gtk? ( x11-libs/gtk+:2
 		x11-libs/wxGTK:3.0 )"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-util/waf
 	virtual/pkgconfig"
 
