@@ -1,5 +1,6 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 
@@ -7,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Perl/Curses front-end for Taskwarrior (app-misc/task)"
 HOMEPAGE="http://tasktools.org/projects/vit.html"
-SRC_URI="https://git.tasktools.org/plugins/servlet/archive/projects/EX/repos/vit?at=refs%2Ftags%2Fv1.2&format=tar.gz -> ${P}.tar.gz"
+SRC_URI="https://git.tasktools.org/EX/vit/archive/v1.2.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,7 +21,7 @@ DEPEND="
 	dev-perl/Curses"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}
+S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-allow-nonsudo-install.patch \
