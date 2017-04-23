@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
+
 inherit eutils python-single-r1 user
 
 MY_P="${PN}2-${PV}"
@@ -15,8 +16,8 @@ HOMEPAGE="http://vde.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-
 IUSE="pcap python selinux ssl libressl static-libs"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )
 	python? ( ${PYTHON_DEPS} )
