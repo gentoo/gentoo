@@ -32,6 +32,7 @@ RDEPEND=">=dev-libs/glib-2.14:2
 	taglib? ( media-libs/taglib )
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-util/intltool
 	virtual/pkgconfig
 	sys-devel/gettext"
