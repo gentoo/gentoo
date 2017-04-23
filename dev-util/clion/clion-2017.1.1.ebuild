@@ -31,9 +31,9 @@ src_prepare() {
 
 	local remove_me=(
 		bin/gdb
-	    bin/cmake
-	    license/GDB*
-	    license/CMake*
+		bin/cmake
+		license/GDB*
+		license/CMake*
 		plugins/tfsIntegration/lib/native/hpux
 		plugins/tfsIntegration/lib/native/solaris
 	)
