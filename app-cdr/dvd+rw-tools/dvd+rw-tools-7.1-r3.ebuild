@@ -10,7 +10,7 @@ SRC_URI="http://fy.chalmers.se/~appro/linux/DVD+RW/tools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 arm ~hppa ~ia64 ppc ppc64 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="virtual/cdrtools"
