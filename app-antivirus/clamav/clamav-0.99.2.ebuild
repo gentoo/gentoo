@@ -47,7 +47,7 @@ src_prepare() {
 	use uclibc && export ac_cv_type_error_t=yes
 
 	epatch "${FILESDIR}"/${P}-gcc-6.patch #592432
-	epatch "${FILESDIR}"/${PN}-configure-zlib.patch # 604650, fixed in upstream HEAD
+	epatch "${FILESDIR}"/${PN}-0.99-zlib.patch # 604650, fixed in upstream HEAD
 	eautoconf
 }
 

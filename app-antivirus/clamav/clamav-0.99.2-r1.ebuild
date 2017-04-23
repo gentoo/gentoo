@@ -38,7 +38,8 @@ RDEPEND="${CDEPEND}
 DOCS=( AUTHORS BUGS ChangeLog FAQ INSTALL NEWS README UPGRADE )
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-6.patch
-	"${FILESDIR}"/${PN}-configure-zlib.patch
+	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${PN}-0.99-zlib.patch
 )
 
 pkg_setup() {
@@ -57,18 +58,21 @@ src_configure() {
 	use uclibc && export ac_cv_type_error_t=yes
 
 	econf \
-		--disable-experimental \
-		--enable-id-check \
-		--with-dbdir="${EPREFIX}"/var/lib/clamav \
-		--with-system-tommath \
-		--with-zlib="${EPREFIX}"/usr \
 		$(use_enable bzip2) \
 		$(use_enable clamdtop) \
 		$(use_enable ipv6) \
 		$(use_enable milter) \
 		$(use_enable static-libs static) \
 		$(use_with iconv) \
-		$(use_with metadata-analysis-api libjson /usr)
+		$(use_with metadata-analysis-api libjson /usr) \
+		--cache-file="${S}"/config.cache \
+		--disable-experimental \
+		--disable-gcc-vcheck \
+		--disable-zlib-vcheck \
+		--enable-id-check \
+		--with-dbdir="${EPREFIX}"/var/lib/clamav \
+		--with-system-tommath \
+		--with-zlib="${EPREFIX}"/usr
 }
 
 src_install() {
