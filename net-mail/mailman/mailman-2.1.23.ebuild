@@ -10,14 +10,15 @@ inherit eutils python-single-r1 multilib systemd user
 DESCRIPTION="A python-based mailing list server with an extensive web interface"
 SRC_URI="mirror://sourceforge/${PN}/${P/_p/-}.tgz"
 HOMEPAGE="http://www.list.org/"
-S="${WORKDIR}/${P/_p/-}"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="selinux"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
+	${PYTHON_DEPS}
 	virtual/mta
 	virtual/cron
 	virtual/httpd-cgi
@@ -25,6 +26,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mailman )
 "
+
+S="${WORKDIR}/${P/_p/-}"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
