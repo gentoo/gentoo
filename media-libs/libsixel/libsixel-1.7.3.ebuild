@@ -11,7 +11,7 @@ SRC_URI="https://github.com/saitoha/libsixel/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 ~x86"
 IUSE="curl gd gtk jpeg png"
 
 RDEPEND="curl? ( net-misc/curl )
