@@ -205,6 +205,8 @@ dev-perl/File-DirWalk
 >=sci-geosciences/geocode-glib-3.23
 >=dev-libs/gjs-1.47
 >=dev-libs/glib-2.51
+>=net-libs/phodav-2.2
+>=dev-util/gdbus-codegen-2.51
 >=dev-cpp/glibmm-2.51
 >=x11-themes/gnome-backgrounds-3.23
 >=gnome-extra/gnome-boxes-3.23
@@ -226,6 +228,7 @@ dev-perl/File-DirWalk
 >=gnome-extra/gnome-system-monitor-3.23
 >=x11-terms/gnome-terminal-3.23
 >=dev-libs/gobject-introspection-1.51
+>=dev-libs/gobject-introspection-common-1.51
 >=gnome-base/gsettings-desktop-schemas-3.23
 >=app-text/gspell-1.3
 >=net-libs/gtk-vnc-0.7
