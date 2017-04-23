@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,13 +15,14 @@ LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~x86-linux ~ppc-macos"
 IUSE="lua perl python php ruby"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=dev-libs/redland-1.0.14
-	lua? ( >=dev-lang/lua-5.1 )
+	lua? ( >=dev-lang/lua-5.1:0 )
 	perl? ( dev-lang/perl:= )
-	php? ( dev-lang/php )
+	php? ( dev-lang/php:* )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby dev-ruby/log4r )"
+	ruby? ( dev-lang/ruby:* dev-ruby/log4r )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=dev-lang/swig-2
