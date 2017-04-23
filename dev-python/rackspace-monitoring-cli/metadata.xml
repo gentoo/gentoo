@@ -5,10 +5,6 @@
     <email>prometheanfire@gentoo.org</email>
     <name>Matthew Thode</name>
   </maintainer>
-  <maintainer type="project">
-    <email>python@gentoo.org</email>
-    <name>Python</name>
-  </maintainer>
   <longdescription lang="en">
     Command Line Utility for Rackspace Cloud Monitoring (MaaS)
   </longdescription>
