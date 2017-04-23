@@ -2,8 +2,8 @@ http://bugs.gentoo.org/398699
 http://rt.cpan.org/Public/Bug/Display.html?id=67297
 http://pkgs.fedoraproject.org/gitweb/?p=perl-Gtk2-Notify.git;a=blob_plain;f=libnotify.patch;hb=HEAD
 
---- t/notification.t
-+++ t/notification.t
+--- a/t/notification.t
++++ b/t/notification.t
 @@ -2,20 +2,18 @@
  
  use strict;
@@ -53,8 +53,8 @@ http://pkgs.fedoraproject.org/gitweb/?p=perl-Gtk2-Notify.git;a=blob_plain;f=libn
  lives_ok(sub {
          $n->show;
  }, 'show');
---- xs/Notify.xs
-+++ xs/Notify.xs
+--- a/xs/Notify.xs
++++ b/xs/Notify.xs
 @@ -86,26 +86,12 @@ notify_get_server_info (class, OUTLIST c
  MODULE = Gtk2::Notify	PACKAGE = Gtk2::Notify	PREFIX = notify_notification_
  
