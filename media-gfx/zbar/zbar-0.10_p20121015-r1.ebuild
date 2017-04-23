@@ -29,7 +29,7 @@ CDEPEND="gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 		x11-libs/libXext
 		xv? ( x11-libs/libXv )
 	)"
-REPEND="${CDEPEND}
+RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.4 )"
 DEPEND="${CDEPEND}
 	java? ( >=virtual/jdk-1.4 )
