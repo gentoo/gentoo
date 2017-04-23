@@ -40,5 +40,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-apps/kaddressbook:4
 	!kde-apps/kdepim-common-libs:4
+	!kde-apps/kdepim-l10n
 	!kde-apps/kmail:4
 "

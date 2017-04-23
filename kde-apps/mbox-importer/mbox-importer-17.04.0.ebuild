@@ -27,5 +27,6 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
 	!kde-apps/kmail:4
 "

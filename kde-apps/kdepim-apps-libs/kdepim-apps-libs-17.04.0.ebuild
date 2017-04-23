@@ -33,7 +33,9 @@ DEPEND="
 	>=dev-libs/grantlee-5.1.0:5
 	prison? ( $(add_frameworks_dep prison) )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"
 
 src_configure() {
 	local mycmakeargs=(

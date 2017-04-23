@@ -19,4 +19,6 @@ DEPEND="
 	$(add_qt_dep qtxml)
 	$(add_qt_dep qtxmlpatterns)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"

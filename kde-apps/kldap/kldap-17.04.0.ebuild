@@ -24,6 +24,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim-kioslaves
+	!kde-apps/kdepim-l10n
 "
 
 src_prepare() {

@@ -74,6 +74,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim-common-libs:4
+	!kde-apps/kdepim-l10n
 	$(add_kdeapps_dep kdepim-runtime)
 "
 

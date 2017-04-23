@@ -47,5 +47,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim-common-libs:4
+	!kde-apps/kdepim-l10n
 	!kde-apps/kdepim-runtime:4
 "
