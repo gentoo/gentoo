@@ -29,6 +29,7 @@ IUSE="doc kerberos kernel_linux ldap libressl nls pam perl -pg_legacytimestamp p
 for lingua in ${LINGUAS}; do
 	IUSE+=" linguas_${lingua}"
 done
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 wanted_languages() {
 	local enable_langs
