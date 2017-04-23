@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gui"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
@@ -49,12 +50,12 @@ src_configure() {
 
 	econf \
 		--enable-systemd \
-		--with-iptables="${EROOT}/sbin/iptables" \
-		--with-ip6tables="${EROOT}/sbin/ip6tables" \
-		--with-iptables_restore="${EROOT}/sbin/iptables-restore" \
-		--with-ip6tables_restore="${EROOT}/sbin/ip6tables-restore" \
-		--with-ebtables="${EROOT}/sbin/ebtables" \
-		--with-ebtables_restore="${EROOT}/sbin/ebtables-restore" \
+		--with-iptables="${EPREFIX}/sbin/iptables" \
+		--with-ip6tables="${EPREFIX}/sbin/ip6tables" \
+		--with-iptables_restore="${EPREFIX}/sbin/iptables-restore" \
+		--with-ip6tables_restore="${EPREFIX}/sbin/ip6tables-restore" \
+		--with-ebtables="${EPREFIX}/sbin/ebtables" \
+		--with-ebtables_restore="${EPREFIX}/sbin/ebtables-restore" \
 		"$(systemd_with_unitdir 'systemd-unitdir')" \
 		--with-bashcompletiondir="$(get_bashcompdir)"
 }
