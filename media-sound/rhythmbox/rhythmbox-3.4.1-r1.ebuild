@@ -45,7 +45,10 @@ COMMON_DEPEND="
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	libnotify? ( >=x11-libs/libnotify-0.7.0 )
 	lirc? ( app-misc/lirc )
-	python? ( >=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}] )
+	python? (
+		${PYTHON_DEPS}
+		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
+	)
 	udev? (
 		virtual/libgudev:=
 		ipod? ( >=media-libs/libgpod-0.7.92[udev] )
