@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 toolchain-funcs
+inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="A tool to create DjVu files from PDF files"
 HOMEPAGE="http://jwilk.net/software/pdf2djvu"
@@ -27,13 +27,16 @@ DEPEND="${RDEPEND}
 	dev-cpp/pstreams
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/nose[${PYTHON_USEDEP}]')
+	)
 "
 
 REQUIRED_USE="test? ( graphicsmagick ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	use test && python-single-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {
