@@ -3396,7 +3396,6 @@ kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenlive:freesound - Enable freesound.org credentials support via dev-qt/qtwebkit to download files
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdenlive:jogshuttle - Enable support for Jog-Shuttle devices
-kde-apps/kdepim-addons:google - Google service integration via kde-apps/libkgapi
 kde-apps/kdepim-apps-libs:prison - Enable support for QRcodes in contacts
 kde-apps/kdepim-common-libs:google - Google service integration via kde-apps/libkgapi
 kde-apps/kdepim-meta:google - Google service integration via kde-apps/libkgapi
