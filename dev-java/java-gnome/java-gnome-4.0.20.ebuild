@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,6 +18,7 @@ SRC_URI="mirror://gnome/sources/${PN}/$(get_version_component_range 1-2)/${MY_P}
 LICENSE="GPL-2-with-linking-exception"
 SLOT="4.0"
 KEYWORDS="~amd64 ~x86"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=dev-libs/glib-2.22
 	>=x11-libs/gtk+-2.22.0:2
@@ -31,7 +32,7 @@ RDEPEND=">=dev-libs/glib-2.22
 	>=dev-libs/libunique-1.0.8:1
 	>=gnome-base/librsvg-2.32.1
 	dev-libs/atk
-	>=virtual/jre-1.5
+	>=virtual/jre-1.5:*
 	${PYTHON_DEPS}"
 
 DEPEND="${RDEPEND}
