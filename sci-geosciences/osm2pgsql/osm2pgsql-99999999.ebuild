@@ -20,7 +20,6 @@ COMMON_DEPEND="
 	app-arch/bzip2
 	dev-db/postgresql:=
 	dev-libs/expat
-	<sci-libs/geos-3.6.0
 	sci-libs/proj
 	sys-libs/zlib
 	lua? ( dev-lang/lua:= )
