@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic
+inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://urbanterror.info"
@@ -91,7 +91,7 @@ src_install() {
 	if use client; then
 		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT.${my_arch} ${PN}
 		# Shooter as defined in https://specifications.freedesktop.org/menu-spec/latest/apas02.html
-		make_desktop_entry ${PN} "UrbanTerror" ${PN} Games;Shooter
+		make_desktop_entry ${PN} "UrbanTerror" ${PN}
 	fi
 
 	# means: dedicated server only
