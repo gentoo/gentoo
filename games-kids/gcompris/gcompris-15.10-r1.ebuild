@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,8 @@ RDEPEND="x11-libs/gtk+:2
 	dev-libs/libxml2
 	dev-libs/popt
 	dev-python/pygtk[${PYTHON_USEDEP}]
-	virtual/libintl"
+	virtual/libintl
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	app-text/texi2html
 	dev-perl/XML-Parser
