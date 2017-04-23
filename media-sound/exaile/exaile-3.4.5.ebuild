@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,8 +16,11 @@ LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="cddb libnotify nls"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-python/dbus-python
+RDEPEND="
+	${PYTHON_DEPS}
+	dev-python/dbus-python
 	dev-python/gst-python:0.10
 	>=dev-python/pygtk-2.17
 	>=dev-python/pygobject-2.18:2
@@ -26,8 +29,11 @@ RDEPEND="dev-python/dbus-python
 	media-plugins/gst-plugins-meta:0.10
 	cddb? ( dev-python/cddb-py )
 	libnotify? ( dev-python/notify-python )"
-DEPEND="nls? ( dev-util/intltool
-		sys-devel/gettext )"
+DEPEND="
+	nls? (
+		dev-util/intltool
+		sys-devel/gettext
+	)"
 
 RESTRICT="test" #315589
 
