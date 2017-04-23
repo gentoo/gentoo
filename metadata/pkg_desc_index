@@ -13563,7 +13563,7 @@ media-sound/a2jmidid 8-r1: Daemon for exposing legacy ALSA sequencer application
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2 2.8.1: A command line CD encoder
-media-sound/abcm2ps 8.12.9 8.13.0 8.13.2 8.13.3 8.13.5 8.13.8: A program to convert abc files to Postscript files
+media-sound/abcm2ps 8.12.9 8.13.0 8.13.2 8.13.3 8.13.5 8.13.8 8.13.9: A program to convert abc files to Postscript files
 media-sound/abcmidi 2016.09.25 2017.02.02 2017.04.10: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
@@ -13575,7 +13575,7 @@ media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
 media-sound/amarok 2.8.0-r3 2.8.90-r2: Advanced audio player based on KDE framework
 media-sound/ams 2.1.2: Alsa Modular Software Synthesizer
-media-sound/amsynth 1.3.2 1.5.1 1.6.4 1.7.0: Virtual analogue synthesizer
+media-sound/amsynth 1.3.2 1.5.1 1.6.4 1.7.0 1.7.1: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.6-r1 0.1.7 0.1.8 0.1.9: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r1 1.0-r2: Music player for a wide range of formats designed for gapless playback
@@ -13772,7 +13772,7 @@ media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
 media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4: The Music Player Daemon (mpd)
-media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
+media-sound/mpdas 0.4.0-r1 0.4.1 0.4.2: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.23.8 1.24.0: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
@@ -13920,7 +13920,7 @@ media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encode
 media-sound/traverso 0.49.3: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
-media-sound/tunapie 2.1.17-r1: Directory browser for Radio and TV streams
+media-sound/tunapie 2.1.17-r1 2.1.19: Directory browser for Radio and TV streams
 media-sound/tuxguitar 1.3.2: TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT
 media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
@@ -13956,7 +13956,7 @@ media-sound/xmms2 0.8-r4: X(cross)platform Music Multiplexing System. Next gener
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5 1.6: Digital vinyl emulation software
-media-sound/yoshimi 1.4.1: A software synthesizer based on ZynAddSubFX
+media-sound/yoshimi 1.4.1 1.5.1.1: A software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.1: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
@@ -14002,7 +14002,7 @@ media-video/blinkensim 2.7: Graphical Blinkenlights simulator with networking su
 media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/blinkentools 2.9: blinkentools is a set of commandline utilities related to Blinkenlights
 media-video/camorama 0.19-r2: A webcam application featuring various image filters
-media-video/ccextractor 0.59 0.68 0.69: Extract closed captioning subtitles from video to SRT
+media-video/ccextractor 0.59 0.68 0.69 0.85: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
 media-video/cheese 3.22.1: A cheesy program to take pictures and videos from your webcam
@@ -18724,7 +18724,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.9.5 0.10.4: Desktop agnostic launcher
+x11-misc/albert 0.9.5 0.10.4 0.11.1: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
