@@ -25,7 +25,7 @@ DEPEND="${PYTHON_DEPS}
 PATCHES=( "${FILESDIR}/${PV}-api-version.diff" )
 
 python_check_deps() {
-	use !doc || has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	use doc && has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {
