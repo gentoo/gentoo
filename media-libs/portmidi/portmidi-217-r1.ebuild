@@ -17,14 +17,14 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug doc java python static-libs test-programs"
 
-CDEPEND="media-libs/alsa-lib"
+CDEPEND="media-libs/alsa-lib
+	python? ( ${PYTHON_DEPS} )"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.6 )"
 DEPEND="${CDEPEND}
 	app-arch/unzip
 	java? ( >=virtual/jdk-1.6 )
-	python? ( ${PYTHON_DEPS}
-		>=dev-python/cython-0.12.1[${PYTHON_USEDEP}] )
+	python? ( >=dev-python/cython-0.12.1[${PYTHON_USEDEP}] )
 	doc? (
 		app-doc/doxygen
 		dev-texlive/texlive-fontsrecommended
