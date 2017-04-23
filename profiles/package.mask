@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (23 Apr 2017)
+# Doesn't work with any in-tree versions of vim. Inactive upstream.
+# Bug 607136. Masked for removal in 30 days.
+app-editors/vim-qt
+
 # Michał Górny <mgorny@gentoo.org> (22 Apr 2017)
 # Discontinued, replaced by dev-python/bcolz. No reverse dependencies
 # left. Removal in 30 days. Bug #564878.
