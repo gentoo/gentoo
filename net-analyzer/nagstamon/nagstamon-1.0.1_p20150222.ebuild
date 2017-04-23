@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ MY_PN="Nagstamon"
 MY_P="${MY_PN}-${PV/_}"
 MY_SHA="b7a91e68ca93ead4e5cfef22e2226c1ff9c7b52c"
 
-DESCRIPTION="Nagstamon is a Nagios status monitor for a systray and displays a realtime status of a Nagios box"
+DESCRIPTION="Nagstamon is a systray monitor for displaying realtime status of a Nagios box"
 HOMEPAGE="http://nagstamon.sourceforge.net"
 SRC_URI="https://github.com/HenriWahl/${PN}/archive/${MY_SHA}.tar.gz -> ${MY_PN}-${MY_SHA}.tar.gz"
 
@@ -19,15 +19,17 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnome sound"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
-RDEPEND="dev-python/pygobject:2
-	dev-python/pygtk
-	dev-python/lxml
-	dev-python/beautifulsoup:python-2
+DEPEND="${PYTHON_DEPS}"
+RDEPEND="${DEPEND}
+	dev-python/pygobject:2[${PYTHON_USEDEP}]
+	dev-python/pygtk[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
+	dev-python/keyring[${PYTHON_USEDEP}]
 	gnome-base/librsvg
-	dev-python/keyring
-	gnome? ( dev-python/egg-python )
+	gnome? ( dev-python/egg-python[${PYTHON_USEDEP}] )
 	sound? ( media-sound/sox )"
 
 S="${WORKDIR}/${MY_PN}-${MY_SHA}/Nagstamon"
