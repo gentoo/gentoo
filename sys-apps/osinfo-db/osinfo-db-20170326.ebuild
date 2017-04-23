@@ -11,7 +11,7 @@ S="${WORKDIR}"
 LICENSE="GPL-2+"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
