@@ -15,6 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="aspell +hunspell java python static-libs threads" # pcre
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # XXX: sqlite is automagic
 # Does not build with >=sci-mathematics/minisat-2, bug #593662
