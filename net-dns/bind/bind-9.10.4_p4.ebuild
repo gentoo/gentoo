@@ -51,7 +51,8 @@ REQUIRED_USE="postgres? ( dlz )
 	odbc? ( dlz )
 	ldap? ( dlz )
 	gost? ( !libressl ssl )
-	threads? ( caps )"
+	threads? ( caps )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 # sdb-ldap? ( dlz )
 
 DEPEND="
@@ -70,7 +71,8 @@ DEPEND="
 	gssapi? ( virtual/krb5 )
 	gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] )
 	seccomp? ( sys-libs/libseccomp )
-	json? ( dev-libs/json-c )"
+	json? ( dev-libs/json-c )
+	python? ( ${PYTHON_DEPS} )"
 #	sdb-ldap? ( net-nds/openldap )
 
 RDEPEND="${DEPEND}
