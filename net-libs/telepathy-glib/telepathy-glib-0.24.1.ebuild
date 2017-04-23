@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -28,6 +28,7 @@ REQUIRED_USE="
 RESTRICT="test"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/dbus-glib-0.90
 	introspection? ( >=dev-libs/gobject-introspection-1.30 )
@@ -37,7 +38,6 @@ DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
-	${PYTHON_DEPS}
 "
 # See bug 504744 for reference
 PDEPEND="
