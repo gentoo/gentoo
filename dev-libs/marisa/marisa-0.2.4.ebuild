@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,8 +17,9 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~x86"
 IUSE="python doc static-libs cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_sse4a cpu_flags_x86_popcnt"
 
-DEPEND="python? ( dev-lang/swig ${PYTHON_DEPS} )"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
+DEPEND="${RDEPEND}
+	python? ( dev-lang/swig )"
 
 # implied by --enable switches
 REQUIRED_USE="
@@ -28,6 +29,7 @@ REQUIRED_USE="
 	cpu_flags_x86_sse4_1? ( cpu_flags_x86_ssse3 )
 	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse3 )
 	cpu_flags_x86_sse3? ( cpu_flags_x86_sse2 )
+	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 src_prepare() {
