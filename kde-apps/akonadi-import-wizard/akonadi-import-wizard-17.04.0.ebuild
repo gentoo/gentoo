@@ -36,5 +36,6 @@ DEPEND="
 	$(add_qt_dep qtxml)
 "
 RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
 	!kde-apps/kmail:4
 "

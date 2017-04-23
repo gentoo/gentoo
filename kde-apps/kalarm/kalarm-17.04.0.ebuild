@@ -63,6 +63,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
 	$(add_kdeapps_dep kdepim-runtime)
 "
 
