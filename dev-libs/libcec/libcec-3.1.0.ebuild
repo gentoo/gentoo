@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -20,13 +20,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="virtual/udev
 	dev-libs/libplatform
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
+	python? ( ${PYTHON_DEPS} )
 	xrandr? ( x11-libs/libXrandr )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? (
-		dev-lang/swig
-		${PYTHON_DEPS}
-	)"
+	python? ( dev-lang/swig )"
 
 CONFIG_CHECK="~USB_ACM"
 
