@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,8 +17,10 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-text/hunspell
 	dev-libs/boost[threads]
 	dev-libs/libpcre[pcre16]
@@ -49,15 +51,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"
 
-DOCS=( ChangeLog.txt README.md )
-
-src_prepare() {
+PATCHES=(
 	# sigil tries to copy non-needed qt libs for deb package, safe to ignore this completely
-	eapply "${FILESDIR}/sigil-0.9.4-proper-gumbo-install.patch"
-
-	eapply_user
-	cmake-utils_src_prepare
-}
+	"${FILESDIR}"/${PN}-0.9.4-proper-gumbo-install.patch
+)
+DOCS=( ChangeLog.txt README.md )
 
 src_configure() {
 	local mycmakeargs=(
