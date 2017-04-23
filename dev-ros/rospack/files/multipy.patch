@@ -1,0 +1,40 @@
+Install separate libraries linking to different python implementations.
+
+Index: rospack-2.4.1/CMakeLists.txt
+===================================================================
+--- rospack-2.4.1.orig/CMakeLists.txt
++++ rospack-2.4.1/CMakeLists.txt
+@@ -23,28 +23,28 @@ endif()
+ 
+ include_directories(include ${TinyXML2_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIRS})
+ 
+-add_library(rospack
++add_library(rospack-py${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}
+   src/rospack.cpp
+   ${backcompat_source}
+   src/rospack_cmdline.cpp
+   src/utils.cpp
+ )
+-target_link_libraries(rospack ${TinyXML2_LIBRARIES} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
++target_link_libraries(rospack-py${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR} ${TinyXML2_LIBRARIES} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
+ 
+ add_executable(rospackexe src/rospack_main.cpp)
+ # Set the name, and make it a "global" executable
+ set_target_properties(rospackexe PROPERTIES
+   OUTPUT_NAME rospack
+   RUNTIME_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/bin)
+-target_link_libraries(rospackexe rospack ${Boost_LIBRARIES})
++target_link_libraries(rospackexe rospack-py${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR} ${Boost_LIBRARIES})
+ add_executable(rosstackexe src/rosstack_main.cpp)
+-target_link_libraries(rosstackexe rospack ${Boost_LIBRARIES})
++target_link_libraries(rosstackexe rospack-py${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR} ${Boost_LIBRARIES})
+ # Set the name, and make it a "global" executable
+ set_target_properties(rosstackexe PROPERTIES
+   OUTPUT_NAME rosstack
+   RUNTIME_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/bin)
+ 
+-install(TARGETS rospack rospackexe rosstackexe
++install(TARGETS rospack-py${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR} rospackexe rosstackexe
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
