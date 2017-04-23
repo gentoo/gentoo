@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc gnome-keyring"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # glibc: deprecated mutex functions, removed in 2.36.0
 CDEPEND="${PYTHON_DEPS}
@@ -41,7 +42,7 @@ CDEPEND="${PYTHON_DEPS}
 		dev-libs/libpcre
 		>=sci-libs/gdal-1.11.1-r1[-mdb]
 		virtual/opengl
-		>=dev-lang/lua-5.1[deprecated]
+		>=dev-lang/lua-5.1:0[deprecated]
 		|| ( sys-libs/e2fsprogs-libs dev-libs/ossp-uuid )
 		dev-libs/tinyxml[stl]
 		dev-db/mysql-connector-c++

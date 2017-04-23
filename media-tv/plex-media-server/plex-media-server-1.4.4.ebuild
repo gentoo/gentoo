@@ -22,6 +22,7 @@ SLOT="0"
 LICENSE="Plex"
 RESTRICT="mirror bindist strip"
 KEYWORDS="-* amd64"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	sys-apps/fix-gnustack

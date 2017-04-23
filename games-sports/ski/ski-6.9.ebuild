@@ -1,8 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
+
 inherit python-single-r1 games
 
 DESCRIPTION="A simple text-mode skiing game"
@@ -13,9 +15,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
-RDEPEND=""
+RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	games_pkg_setup

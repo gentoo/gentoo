@@ -24,7 +24,8 @@ RDEPEND="dev-cpp/glibmm:2
 	>=media-libs/libasdcp-cth-0.1.3"
 DEPEND="${RDEPEND}
 	dev-util/waf
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	${PYTHON_DEPS}"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.2.4-no-ldconfig.patch
 	"${FILESDIR}"/${PN}-1.1.13-respect-cxxflags.patch )

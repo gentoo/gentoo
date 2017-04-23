@@ -54,6 +54,7 @@ COMMON_DEPEND="
 		opengl? ( dev-qt/qtopengl:5 )
 	)
 	lua? ( >=dev-lang/lua-5.1.4-r4:= )
+	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )"
 #	sox? ( media-sound/sox )
 #	java? ( >=virtual/jre-1.5 )
@@ -66,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	compressed-lumas? ( virtual/imagemagick-tools[png] )
 	lua? ( ${SWIG_DEPEND} virtual/pkgconfig )
-	python? ( ${SWIG_DEPEND} ${PYTHON_DEPS} )
+	python? ( ${SWIG_DEPEND} )
 	ruby? ( ${SWIG_DEPEND} )"
 #	java? ( ${SWIG_DEPEND} >=virtual/jdk-1.5 )
 #	perl? ( ${SWIG_DEPEND} )

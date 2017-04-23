@@ -20,8 +20,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 #sci-libs/orocos_kdl waiting for Bug 604130 (keyword ~x86)
 #dev-qt/qtgui:4[-egl] and dev-qt/qtopengl:4[-egl] : Bug 564978
@@ -52,8 +52,6 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=dev-lang/swig-2.0.4-r1:0
 	dev-python/pyside-tools[${PYTHON_USEDEP}]"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
 # https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt

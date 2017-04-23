@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ REQUIRED_USE="
 	java? ( cxx )
 	linear? ( double-precision )
 	lua? ( cxx )
-	python? ( cxx )
+	python? ( ${PYTHON_REQUIRED_USE} cxx )
 "
 
 RDEPEND="
@@ -88,12 +88,12 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	if use python || use test ; then
 		python-single-r1_pkg_setup
 	fi
