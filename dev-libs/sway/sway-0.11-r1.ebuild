@@ -1,21 +1,22 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
-inherit git-r3 eutils cmake-utils
+inherit eutils cmake-utils fcaps
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="http://swaywm.org/"
 
-EGIT_REPO_URI="https://github.com/SirCmpwn/sway.git"
+SRC_URI="https://github.com/SirCmpwn/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
 
-RDEPEND="=dev-libs/wlc-9999[systemd=]
+RDEPEND=">=dev-libs/wlc-0.0.5[systemd=]
 	dev-libs/json-c
 	dev-libs/libpcre
 	dev-libs/libinput
@@ -64,7 +65,10 @@ src_install() {
 	use !systemd && fperms u+s /usr/bin/sway
 }
 
+FILECAPS=( cap_sys_ptrace usr/bin/sway )
+
 pkg_postinst() {
+	fcaps_pkg_postinst
 	if use swaygrab
 	then
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
