@@ -11984,7 +11984,7 @@ kde-apps/messagelib 16.12.3 17.04.0: Libraries for messaging functions
 kde-apps/minuet 16.04.3 16.12.3 17.04.0: A KDE Software for Music Education
 kde-apps/nsplugins 16.08.3: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3 16.12.3 17.04.0: KDE hexeditor
-kde-apps/okular 16.12.3 17.04.0: Universal document viewer based on KDE Frameworks
+kde-apps/okular 16.12.3 17.04.0-r1: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 16.12.3 17.04.0: KDE jigsaw puzzle game
 kde-apps/parley 16.12.3 17.04.0: A vocabulary trainer to help you memorize things
 kde-apps/phonon-kde 16.04.3: Phonon KDE Integration
