@@ -17,10 +17,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
+DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	media-gfx/imagemagick
 	x11-misc/wmctrl
