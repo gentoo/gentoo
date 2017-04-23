@@ -20,6 +20,7 @@ LICENSE="Sleepycat"
 KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="doc ldap odbc python static-libs test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}"
 
