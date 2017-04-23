@@ -2,7 +2,7 @@ DEFINED_PHASES=postinst postrm preinst setup
 DEPEND=>=dev-libs/glib-2.24:2= >=x11-libs/gtk+-3.14:3= >=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/libxfce4util-4.8:= >=xfce-base/xfce4-panel-4.12:= dev-util/intltool virtual/pkgconfig >=sys-apps/sed-4
 DESCRIPTION=A battery monitor panel plugin for the Xfce desktop environment
 EAPI=6
-HOMEPAGE=http://goodies.xfce.org/projects/panel-plugins/xfce4-battery-plugin
+HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-battery-plugin
 IUSE=kernel_linux
 KEYWORDS=~amd64 ~arm ~mips ~ppc ~x86
 LICENSE=GPL-2 LGPL-2
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-battery-plugin/1.1/xfce4-battery-plugin-1.1.0.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	6d2af8c7ab84825693c3f065a37b923c	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
-_md5_=6cb877d2b74a89e87b51aa169b895382
+_md5_=0a4463c48b9f2173eaafe69bd1a640ba
