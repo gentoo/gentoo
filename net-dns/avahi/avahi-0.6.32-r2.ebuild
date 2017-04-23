@@ -24,7 +24,7 @@ IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 k
 
 REQUIRED_USE="
 	utils? ( || ( gtk gtk3 ) )
-	python? ( dbus gdbm )
+	python? ( dbus gdbm ${PYTHON_REQUIRED_USE} )
 	mono? ( dbus )
 	howl-compat? ( dbus )
 	mdnsresponder-compat? ( dbus )
