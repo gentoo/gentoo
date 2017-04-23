@@ -15,6 +15,7 @@ LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug modules monitor +ssl"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	|| (

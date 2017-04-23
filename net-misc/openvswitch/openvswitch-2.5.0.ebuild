@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,13 +15,14 @@ LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug modules monitor +ssl"
+REQUIRED_USE="monitor? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	|| (
 		>=sys-apps/openrc-0.10.5
 		sys-apps/systemd
 	)
-	ssl? ( dev-libs/openssl:= )
+	ssl? ( dev-libs/openssl:0= )
 	monitor? (
 		${PYTHON_DEPS}
 		dev-python/twisted-core
