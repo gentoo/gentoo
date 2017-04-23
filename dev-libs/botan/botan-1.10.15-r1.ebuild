@@ -16,6 +16,7 @@ KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86 ~ppc-macos"
 SLOT="0"
 LICENSE="BSD"
 IUSE="bindist doc python bzip2 gmp libressl ssl static-libs threads zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
