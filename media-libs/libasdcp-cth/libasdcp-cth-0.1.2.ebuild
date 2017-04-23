@@ -20,7 +20,8 @@ RDEPEND="dev-libs/boost
 	dev-libs/openssl:0"
 DEPEND="${RDEPEND}
 	dev-util/waf
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	${PYTHON_DEPS}"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.1.1-no-ldconfig.patch
 	"${FILESDIR}"/${PN}-0.1.2-respect-cxxflags.patch)
