@@ -7,9 +7,10 @@ IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-cpp/eigen:3 dev-libs/boost dev-libs/xerces-c[icu] dev-python/matplotlib dev-python/pyside[X] dev-python/shiboken dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 media-libs/coin || ( sci-libs/opencascade:6.9.0[vtk] sci-libs/opencascade:6.8.0 sci-libs/opencascade:6.7.1 ) sys-libs/zlib virtual/glu python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-qt/assistant:4 dev-python/pivy dev-python/numpy virtual/fortran
+REQUIRED_USE=python_targets_python2_7
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=mirror://sourceforge/free-cad/freecad_0.15.4671.tar.gz -> freecad-0.15.4671.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	fdo-mime	21ef5adf81836863efa968f2a25cff64	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=d1c986f00514e294fb8a22247fb22f2b
+_md5_=eed8b1ba75722aeeed24fc51c436333d

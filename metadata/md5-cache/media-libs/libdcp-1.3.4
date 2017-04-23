@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-cpp/glibmm:2 dev-cpp/libxmlpp:2.6 >=dev-libs/boost-1.61.0 <dev-libs/libcxml-0.15.4 dev-libs/libsigc++:2 dev-libs/libxml2 dev-libs/openssl:0 dev-libs/xmlsec media-libs/libasdcp-cth media-libs/openjpeg:0 || ( media-gfx/graphicsmagick media-gfx/imagemagick ) dev-util/waf virtual/pkgconfig test? ( app-text/xmldiff )
+DEPEND=dev-cpp/glibmm:2 dev-cpp/libxmlpp:2.6 >=dev-libs/boost-1.61.0 <dev-libs/libcxml-0.15.4 dev-libs/libsigc++:2 dev-libs/libxml2 dev-libs/openssl:0 dev-libs/xmlsec media-libs/libasdcp-cth media-libs/openjpeg:0 || ( media-gfx/graphicsmagick media-gfx/imagemagick ) dev-util/waf virtual/pkgconfig || ( dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) test? ( app-text/xmldiff )
 DESCRIPTION=create and read Digital Cinema Packages using JPEG2000 and WAV files
 EAPI=6
 HOMEPAGE=http://carlh.net/libdcp
@@ -11,4 +11,4 @@ SLOT=1.0
 SRC_URI=http://carlh.net/downloads/libdcp/libdcp-1.3.4.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:waf-utils src_compile:waf-utils src_test:- src_install:waf-utils
 _eclasses_=multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
-_md5_=52eb225587abfcfef1d5eca58e6dfcac
+_md5_=3153bebaa025421f8590bdc9085248da

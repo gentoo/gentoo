@@ -1,13 +1,15 @@
 DEFINED_PHASES=install prepare
-DESCRIPTION=Nagstamon is a Nagios status monitor for a systray and displays a realtime status of a Nagios box
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Nagstamon is a systray monitor for displaying realtime status of a Nagios box
 EAPI=5
 HOMEPAGE=http://nagstamon.sourceforge.net
 IUSE=gnome sound python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-python/pygobject:2 dev-python/pygtk dev-python/lxml dev-python/beautifulsoup:python-2 gnome-base/librsvg dev-python/keyring gnome? ( dev-python/egg-python ) sound? ( media-sound/sox )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/lxml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/beautifulsoup:python-2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/keyring[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome-base/librsvg gnome? ( dev-python/egg-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sound? ( media-sound/sox )
+REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/HenriWahl/nagstamon/archive/b7a91e68ca93ead4e5cfef22e2226c1ff9c7b52c.tar.gz -> Nagstamon-b7a91e68ca93ead4e5cfef22e2226c1ff9c7b52c.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=ce2310396766d1e970b29fb201196879
+_md5_=46f297c4accef5f77fd6a546b91538d9

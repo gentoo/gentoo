@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=wato? ( app-admin/sudo ) xinetd? ( sys-apps/xinetd ) !agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) ) !agent-only? ( www-servers/apache www-apache/mod_python ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] wato? ( app-admin/sudo ) xinetd? ( sys-apps/xinetd ) !agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) ) !agent-only? ( www-servers/apache www-apache/mod_python ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
 DESCRIPTION=General purpose Nagios/Icinga plugin for retrieving data
 EAPI=5
 HOMEPAGE=http://mathias-kettner.de/check_mk.html
 IUSE=agent-only apache_status dmi_sysinfo livestatus logwatch mysql nfsexports oracle postgres smart wato xinetd zypper python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=wato? ( app-admin/sudo ) xinetd? ( sys-apps/xinetd ) !agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) ) !agent-only? ( www-servers/apache www-apache/mod_python ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
-REQUIRED_USE=livestatus? ( !agent-only ) wato? ( !agent-only )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] wato? ( app-admin/sudo ) xinetd? ( sys-apps/xinetd ) !agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) ) !agent-only? ( www-servers/apache www-apache/mod_python ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
+REQUIRED_USE=|| ( python_targets_python2_7 ) livestatus? ( !agent-only ) wato? ( !agent-only )
 SLOT=0
 SRC_URI=http://mathias-kettner.de/download/check_mk-1.2.4p5.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=670fed8204b12398a3ee4f27bc8717fa
+_md5_=02c1d4cf200959a20d2033cfa964c820

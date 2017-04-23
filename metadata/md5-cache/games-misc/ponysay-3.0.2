@@ -7,8 +7,9 @@ IUSE=doc +non-free bash-completion fish-completion zsh-completion python_targets
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] fish-completion? ( app-shells/fish ) zsh-completion? ( app-shells/zsh )
+REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
 SLOT=0
 SRC_URI=https://github.com/erkin/ponysay/archive/3.0.2.tar.gz -> ponysay-3.0.2.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_compile:- src_install:-
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=b728d091cde8eee6aef536d06171bf46
+_md5_=22302cf70716cb7fd16d3fc14852304b

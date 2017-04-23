@@ -6,10 +6,10 @@ HOMEPAGE=http://mathias-kettner.de/check_mk.html
 IUSE=agent-only apache_status livestatus logwatch mysql +nagios4 nfsexports oracle postgres smart wato xinetd zypper python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=wato? ( app-admin/sudo ) xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) ) !agent-only? ( www-servers/apache[apache2_modules_access_compat(+)] www-apache/mod_python[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] livestatus? ( net-analyzer/mk-livestatus[nagios4=] ) nagios4? ( >=net-analyzer/nagios-core-4 ) !nagios4? ( || ( <net-analyzer/nagios-core-4 net-analyzer/icinga ) ) ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
-REQUIRED_USE=livestatus? ( !agent-only ) wato? ( !agent-only )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] wato? ( app-admin/sudo ) xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) ) !agent-only? ( www-servers/apache[apache2_modules_access_compat(+)] www-apache/mod_python[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] livestatus? ( net-analyzer/mk-livestatus[nagios4=] ) nagios4? ( >=net-analyzer/nagios-core-4 ) !nagios4? ( || ( <net-analyzer/nagios-core-4 net-analyzer/icinga ) ) ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
+REQUIRED_USE=python_targets_python2_7 livestatus? ( !agent-only ) wato? ( !agent-only )
 SLOT=0
 SRC_URI=http://mathias-kettner.de/download/check_mk-1.2.8p16.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=cc1c7cc797c99a9a144f171fea503bf6
+_md5_=cfc9c75966b1e10247dee89e90b6a5d3

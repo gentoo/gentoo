@@ -1,15 +1,15 @@
 DEFINED_PHASES=configure install setup
-DEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= dev-libs/libxslt:= graphicsmagick? ( media-gfx/graphicsmagick:= ) dev-cpp/pstreams virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( dev-python/nose[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] )
+DEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= dev-libs/libxslt:= graphicsmagick? ( media-gfx/graphicsmagick:= ) dev-cpp/pstreams virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-python/nose[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) )
 DESCRIPTION=A tool to create DjVu files from PDF files
 EAPI=5
 HOMEPAGE=http://jwilk.net/software/pdf2djvu
-IUSE=+graphicsmagick nls openmp test python_targets_python2_7
+IUSE=+graphicsmagick nls openmp test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= dev-libs/libxslt:= graphicsmagick? ( media-gfx/graphicsmagick:= )
-REQUIRED_USE=test? ( graphicsmagick python_targets_python2_7 )
+REQUIRED_USE=test? ( graphicsmagick )
 SLOT=0
 SRC_URI=https://bitbucket.org/jwilk/pdf2djvu/downloads/pdf2djvu-0.9.4.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-single-r1	c3e54dd0dc1e70c6252f2551a55bf053	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=864bcf5cdd17895ab33c752909f157bd
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=6536ee5e16b1151439574e1f0e0ede8c
