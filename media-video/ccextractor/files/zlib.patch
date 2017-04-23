@@ -1,0 +1,36 @@
+Index: src/CMakeLists.txt
+===================================================================
+--- src.orig/CMakeLists.txt
++++ src/CMakeLists.txt
+@@ -25,7 +25,6 @@ include_directories ("${PROJECT_SOURCE_D
+ include_directories ("${PROJECT_SOURCE_DIR}/protobuf-c/")
+ include_directories ("${PROJECT_SOURCE_DIR}/zvbi")
+ aux_source_directory ("${PROJECT_SOURCE_DIR}/zvbi" SOURCEFILE)
+-aux_source_directory ("${PROJECT_SOURCE_DIR}/zlib" SOURCEFILE)
+ aux_source_directory ("${PROJECT_SOURCE_DIR}/lib_hash" SOURCEFILE)
+ 
+ # Adding some platform specific library path
+@@ -48,7 +47,7 @@ find_package (PkgConfig)
+ if(PKG_CONFIG_FOUND)
+   pkg_check_modules(PNG libpng )
+   if(PNG_FOUND)
+-    set (EXTRA_LIBS ${EXTRA_LIBS} png)
++    set (EXTRA_LIBS ${EXTRA_LIBS} png z)
+   else (PNG_FOUND)
+     include_directories ("${PROJECT_SOURCE_DIR}/libpng/")
+     include_directories ("${PROJEXT_SOURCE_DIR}/zlib/")
+Index: src/lib_ccx/CMakeLists.txt
+===================================================================
+--- src.orig/lib_ccx/CMakeLists.txt
++++ src/lib_ccx/CMakeLists.txt
+@@ -47,8 +47,8 @@ file (WRITE ccx.pc "prefix=${CMAKE_INSTA
+                   "Description: Closed Caption Extraction library\n"
+                   "Version: 0.75\n"
+                   "Cflags: -I\${includedir}/\n"
+-                  "Libs: -L\${libdir} -lccx -lpng\n"
+-                  "Libs.private: -lpng\n"
++                  "Libs: -L\${libdir} -lccx -lpng -lz\n"
++                  "Libs.private: -lpng -lz\n"
+                   )
+ 
+ install (TARGETS ccx DESTINATION lib)
