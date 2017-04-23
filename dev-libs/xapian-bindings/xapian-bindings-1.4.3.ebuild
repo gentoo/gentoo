@@ -26,7 +26,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 #IUSE="java lua mono perl php python ruby tcl"
 IUSE="java lua perl php python ruby tcl"
 #REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )"
-REQUIRED_USE="|| ( java lua perl php python ruby tcl )"
+REQUIRED_USE="|| ( java lua perl php python ruby tcl ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMONDEPEND="dev-libs/xapian:0/30
 	lua? ( dev-lang/lua:= )
@@ -43,8 +43,6 @@ DEPEND="${COMMONDEPEND}
 	java? ( >=virtual/jdk-1.6 )"
 RDEPEND="${COMMONDEPEND}
 	java? ( >=virtual/jre-1.6 )"
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
 #	use mono && mono-env_pkg_setup

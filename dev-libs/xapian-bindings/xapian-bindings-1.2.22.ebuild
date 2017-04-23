@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,11 +26,12 @@ KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86"
 #IUSE="java lua mono perl php python ruby tcl"
 #REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )"
 IUSE="java lua perl php python ruby tcl"
-REQUIRED_USE="|| ( java lua perl php python ruby tcl )"
+REQUIRED_USE="|| ( java lua perl php python ruby tcl ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMONDEPEND="dev-libs/xapian:0/1.2.22
 	lua? ( dev-lang/lua:0 )
 	perl? ( dev-lang/perl:= )
+	python? ( ${PYTHON_DEPS} )
 	ruby? ( dev-lang/ruby:= )
 	tcl? ( >=dev-lang/tcl-8.1:0= )"
 #	mono? ( >=dev-lang/mono-1.0.8 )
