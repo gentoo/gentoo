@@ -1,7 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools gnome2 pax-utils python-r1
@@ -17,11 +18,11 @@ SRC_URI="https://github.com/lwindolf/${PN}/releases/download/v${PV}/${MY_P}.tar.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
-
 IUSE="ayatana libnotify"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=dev-db/sqlite-3.7.0:3
+RDEPEND="${PYTHON_DEPS}
+	>=dev-db/sqlite-3.7.0:3
 	>=dev-libs/glib-2.28.0:2
 	dev-libs/gobject-introspection
 	dev-libs/json-glib
@@ -35,7 +36,6 @@ RDEPEND=">=dev-db/sqlite-3.7.0:3
 	>=x11-libs/pango-1.4.0
 	ayatana? ( dev-libs/libindicate )
 	libnotify? ( >=x11-libs/libnotify-0.3.2 )"
-
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
