@@ -11,7 +11,7 @@ SRC_URI="http://lowelab.ucsc.edu/software/tRNAscan-SE.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}"/tRNAscan-SE-1.3.1/
