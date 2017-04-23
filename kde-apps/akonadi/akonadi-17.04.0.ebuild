@@ -49,9 +49,10 @@ DEPEND="${COMMON_DEPEND}
 	test? ( sys-apps/dbus )
 "
 RDEPEND="${COMMON_DEPEND}
+	!kde-apps/kdepim-l10n
+	!kde-apps/kdepimlibs
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql )
-	!kde-apps/kdepimlibs
 "
 
 # some akonadi tests time out, that probably needs more work as it's ~700 tests

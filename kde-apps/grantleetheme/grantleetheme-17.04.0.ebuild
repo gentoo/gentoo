@@ -11,7 +11,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
@@ -23,8 +23,11 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	dev-libs/grantlee:5
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtnetwork)
+"
+RDEPEND="${COMMON_DEPEND}
+	!kde-apps/kdepim-l10n
 "
 
 # fails if package not already installed
