@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,17 +19,24 @@ LICENSE="Apache-2.0"
 SLOT="0/10b3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples java python static-libs test vim-syntax zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="emacs? ( virtual/emacs )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+RDEPEND="
+	emacs? ( virtual/emacs )
+	python? ( ${PYTHON_DEPS} )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}
 	test? ( dev-cpp/gmock[${MULTILIB_USEDEP}] )"
 # This is provided for backwards compatibility due to (likely incorrect) use in consumers.
 PDEPEND="java? ( dev-java/protobuf-java )
 	python? ( dev-python/protobuf-python[${PYTHON_USEDEP}] )"
+
 S="${WORKDIR}/${PN}-${MY_PV}"
-PATCHES=( "${FILESDIR}/${PN}-2.5.0-emacs-24.4.patch"
+PATCHES=(
+	"${FILESDIR}/${PN}-2.5.0-emacs-24.4.patch"
 	"${FILESDIR}/${PN}-2.6.1-protoc-cmdline.patch"
-	"${FILESDIR}/${PN}-3.0.0_beta2-disable-local-gmock.patch" )
+	"${FILESDIR}/${PN}-3.0.0_beta2-disable-local-gmock.patch"
+)
 
 src_prepare() {
 	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI

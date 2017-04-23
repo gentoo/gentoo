@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,14 +19,14 @@ LICENSE="Apache-2.0"
 SLOT="0/11"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples java python static-libs test vim-syntax zlib"
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="
+RDEPEND="
 	emacs? ( virtual/emacs )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	python? ( ${PYTHON_DEPS} )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}
 	test? ( dev-cpp/gmock[${MULTILIB_USEDEP}] )"
-
 # This is provided for backwards compatibility due to (likely incorrect) use in consumers.
 PDEPEND="
 	java? ( dev-java/protobuf-java )
