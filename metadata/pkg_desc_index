@@ -2380,7 +2380,7 @@ app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
 app-text/nfoview 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
 app-text/noweb 2.11b-r4: a literate programming tool, lighter than web
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
-app-text/ocrad 0.22 0.23 0.24 0.25: GNU Ocrad is an OCR (Optical Character Recognition) program
+app-text/ocrad 0.22 0.23 0.24 0.25 0.26: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.4-r1: A simple converter from OpenDocument Text to plain text
 app-text/openjade 1.3.2-r6 1.3.2-r7: Jade is an implementation of DSSSL for formatting SGML and XML documents
 app-text/openlp 2.4.2: Free church presentation software
@@ -10014,7 +10014,7 @@ dev-tex/ivritex 1.1.2: Hebrew support for TeX
 dev-tex/latex-beamer 3.36: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2008 2008-r1 2015 2017.2: Convertor written in Perl that converts LATEX documents to HTML
-dev-tex/latex2rtf 2.3.11: LaTeX to RTF converter
+dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
 dev-tex/latexdiff 0.5 1.0.4 1.1.0 1.1.1 1.2.0: Compare two latex files and mark up significant differences
 dev-tex/latexmk 435 441 443a 444 445 448 452c: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
@@ -17512,7 +17512,7 @@ sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7
 sys-devel/binutils-config 5-r3: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27 2.28: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1 20161212 20170201: NetBSD's portable make
+sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1 20161212 20170201 20170421: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.0-r100 3.9.1-r100 4.0.0-r2 9999: C language family frontend for LLVM
