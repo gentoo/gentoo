@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm preinst
+DEPEND=>=dev-libs/glib-2.24:= >=x11-libs/gtk+-3.20:3= >=xfce-base/libxfce4util-4.10:= >=xfce-base/libxfce4ui-4.12:= >=xfce-base/xfce4-panel-4.10:= dev-util/gdbus-codegen dev-util/intltool virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A dict.org querying application and panel plug-in for the Xfce desktop
+EAPI=6
+HOMEPAGE=http://goodies.xfce.org/projects/applications/xfce4-dict
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.24:= >=x11-libs/gtk+-3.20:3= >=xfce-base/libxfce4util-4.10:= >=xfce-base/libxfce4ui-4.12:= >=xfce-base/xfce4-panel-4.10:=
+SLOT=0
+SRC_URI=mirror://xfce/src/apps/xfce4-dict/0.7/xfce4-dict-0.7.99.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	6d2af8c7ab84825693c3f065a37b923c	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=6f30e8448e5538f7fb4a04691683a8f3
