@@ -5,8 +5,8 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="a lightweight BibTeX editor"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/xfbib"
-SRC_URI="http://goodies.xfce.org/releases/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/xfbib"
+SRC_URI="https://goodies.xfce.org/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

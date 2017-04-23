@@ -6,7 +6,7 @@ EAUTORECONF=yes
 inherit multilib xfconf
 
 DESCRIPTION="A simple locate based search plug-in for the Xfce panel"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-linelight-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-linelight-plugin"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.bz2"
 #SRC_URI="http://svn.ganymede.ch/private/trunk/${PN}/releases/${P}.tar.gz"
 

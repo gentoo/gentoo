@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 xfconf
 
 DESCRIPTION="Python bindings for the Thunar file manager"
-HOMEPAGE="http://goodies.xfce.org/projects/bindings/thunarx-python"
+HOMEPAGE="https://goodies.xfce.org/projects/bindings/thunarx-python"
 SRC_URI="mirror://xfce/src/bindings/${PN}/0.3/${P}.tar.bz2"
 
 LICENSE="GPL-3"
