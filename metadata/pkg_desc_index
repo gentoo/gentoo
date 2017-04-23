@@ -216,7 +216,7 @@ app-admin/sysstat 11.4.0 11.4.3 11.5.5: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -17865,7 +17865,7 @@ sys-libs/tdb 1.3.8 1.3.11 1.3.12: A simple database API
 sys-libs/tevent 0.9.28 0.9.31-r1: Samba tevent library
 sys-libs/timezone-data 2016h 2016i 2016j 2017a 2017b: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
-sys-libs/uclibc-ng 1.0.19 1.0.20 1.0.22 1.0.23 9999: C library for developing embedded Linux systems
+sys-libs/uclibc-ng 1.0.19 1.0.20 1.0.22 1.0.23 1.0.24 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.11: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
