@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
+
 inherit versionator python-single-r1 gnome2-utils cmake-utils multilib
 
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
@@ -13,13 +15,15 @@ SRC_URI="https://github.com/EttusResearch/uhd/archive/release_00$(get_version_co
 	http://files.ettus.com/binaries/images/${image_version}.zip"
 #https://github.com/EttusResearch/UHD-Mirror/tags
 #http://files.ettus.com/binaries/images/
-KEYWORDS="~amd64 ~arm ~x86"
-S="${WORKDIR}"/uhd-release_00$(get_version_component_range 1)_00$(get_version_component_range 2)_00$(get_version_component_range 3)/host
 
 LICENSE="GPL-3"
 SLOT="0/1"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
-RDEPEND="virtual/libusb:1
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
+	virtual/libusb:1
 	dev-lang/orc
 	dev-libs/boost:=
 	sys-libs/ncurses:0
@@ -28,6 +32,8 @@ DEPEND="${RDEPEND}
 	dev-python/mako
 	dev-python/cheetah
 	app-arch/unzip"
+
+S="${WORKDIR}"/uhd-release_00$(get_version_component_range 1)_00$(get_version_component_range 2)_00$(get_version_component_range 3)/host
 
 src_prepare() {
 	gnome2_environment_reset #534582
