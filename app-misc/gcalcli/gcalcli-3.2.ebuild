@@ -22,7 +22,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/google-api-python-client[${PYTHON_USEDEP}]
 	dev-python/gdata[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_install() {
 	dodoc -r ChangeLog README.md docs
