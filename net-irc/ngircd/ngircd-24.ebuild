@@ -11,7 +11,7 @@ SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~x86 ~x64-macos"
 IUSE="debug gnutls iconv ident ipv6 libressl pam ssl tcpd test zlib"
 
 RDEPEND="
