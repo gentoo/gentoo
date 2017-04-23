@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Mrozowski <reavertm@gentoo.org> (18 May 2017)
+# Experimental, most consumers does not support it yet
+>=dev-games/openscenegraph-3.5.5
+>=dev-games/openscenegraph-qt-3.5.5
+
 # Thomas Deutschmann <whissi@gentoo.org> (17 May 2017)
 # Unpatched security vulnerability per bug #616700
 # Removal in 30 days.
