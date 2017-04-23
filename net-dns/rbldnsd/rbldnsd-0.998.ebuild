@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils toolchain-funcs user python-single-r1
+inherit eutils toolchain-funcs user python-any-r1
 
 DESCRIPTION="DNS server designed to serve blacklist zones"
 HOMEPAGE="http://www.corpit.ru/mjt/rbldnsd.html"
@@ -15,12 +15,12 @@ SLOT="0"
 KEYWORDS="amd64 hppa ~sparc x86 ~x86-fbsd"
 IUSE="ipv6 test zlib"
 
-REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"
-
 RDEPEND="zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
-	test? ( ${PYTHON_DEPS}
-		dev-python/pydns:2[${PYTHON_USEDEP}] )"
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/pydns:2[${PYTHON_USEDEP}]')
+	)"
 
 src_prepare() {
 	epatch "${FILESDIR}/rbldnsd-0.997a-robust-ipv6-test-support.patch"
