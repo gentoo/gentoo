@@ -9779,7 +9779,7 @@ dev-ruby/rubyntlm 0.6.1: Ruby/NTLM provides message creator and parser for the N
 dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
-dev-ruby/rubytter 1.5.1: Rubytter is a simple twitter library
+dev-ruby/rubytter 1.5.1 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 0.9.9-r2 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r2: An automatic logger for HTTP requests in Ruby
@@ -9855,7 +9855,7 @@ dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
-dev-ruby/travis 1.8.2-r1 1.8.6-r1 1.8.8: Travis CI Client (CLI and Ruby library)
+dev-ruby/travis 1.8.6-r1 1.8.8: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.5 1.6.8: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.2.1 1.4.0 1.5.0 1.5.1: A TrueType font parser written in pure ruby
@@ -9878,7 +9878,7 @@ dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.6 1.2.7: General Rack Authentication Framework
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
-dev-ruby/web-console 2.2.1-r1 2.3.0 3.3.1 3.4.0: A debugging tool for your Ruby on Rails applications
+dev-ruby/web-console 2.3.0 3.3.1 3.4.0: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 1.20.3 1.24.6 2.1.0 2.3.1 2.3.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.3 1.2.4: Universal Ruby library to handle WebSocket protocol
