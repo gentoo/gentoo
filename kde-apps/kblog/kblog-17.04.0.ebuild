@@ -20,4 +20,6 @@ DEPEND="
 	$(add_kdeapps_dep kcalcore)
 	$(add_kdeapps_dep syndication)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"

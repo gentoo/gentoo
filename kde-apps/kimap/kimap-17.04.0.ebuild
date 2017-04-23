@@ -20,7 +20,9 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	dev-libs/cyrus-sasl
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"
 
 src_test() {
 	# tests cannot be run in parallel #605586

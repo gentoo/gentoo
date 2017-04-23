@@ -48,6 +48,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim-kioslaves
+	!kde-apps/kdepim-l10n
 "
 
 RESTRICT+=" test"

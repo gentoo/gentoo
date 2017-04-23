@@ -11,7 +11,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kconfig)
@@ -30,6 +30,9 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	>=dev-libs/xapian-1.3:=[chert]
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
+"
+RDEPEND="${COMMON_DEPEND}
+	!kde-apps/kdepim-l10n
 "

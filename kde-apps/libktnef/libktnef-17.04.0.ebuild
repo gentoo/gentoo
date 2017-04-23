@@ -19,4 +19,6 @@ DEPEND="
 	$(add_kdeapps_dep kcalutils)
 	$(add_kdeapps_dep kcontacts)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"

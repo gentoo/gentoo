@@ -38,4 +38,6 @@ DEPEND="
 	dev-libs/kdiagram:5
 	dev-libs/libical
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"

@@ -24,7 +24,9 @@ DEPEND="
 	$(add_kdeapps_dep kcalcore)
 	$(add_qt_dep qtwidgets)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"
 
 src_prepare() {
 	kde5_src_prepare

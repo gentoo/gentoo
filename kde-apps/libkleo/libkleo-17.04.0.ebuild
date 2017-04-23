@@ -11,7 +11,7 @@ LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -25,6 +25,9 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	>=app-crypt/gpgme-1.7.1[cxx,qt5]
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
+"
+RDEPEND="${COMMON_DEPEND}
+	!kde-apps/kdepim-l10n
 "

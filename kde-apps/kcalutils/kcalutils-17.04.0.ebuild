@@ -26,6 +26,8 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	dev-libs/grantlee:5
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"
 
 RESTRICT+=" test"

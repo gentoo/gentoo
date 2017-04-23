@@ -15,4 +15,6 @@ DEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep ki18n)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"
