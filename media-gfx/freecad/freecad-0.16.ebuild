@@ -20,8 +20,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 #sci-libs/orocos_kdl waiting for Bug 604130 (keyword ~x86)
 #dev-qt/qtgui:4[-egl] and dev-qt/qtopengl:4[-egl] : Bug 564978
@@ -52,8 +52,6 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=dev-lang/swig-2.0.4-r1:0
 	dev-python/pyside-tools[${PYTHON_USEDEP}]"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
