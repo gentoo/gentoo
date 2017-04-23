@@ -20,10 +20,13 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="debug kernel_linux python static-libs"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="test" # needs gam-server
 
-RDEPEND="!app-admin/fam
+RDEPEND="
+	python? ( ${PYTHON_DEPS} )
+	!app-admin/fam
 	!<app-admin/gamin-0.1.10"
 DEPEND="${RDEPEND}"
 
