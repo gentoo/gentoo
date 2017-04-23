@@ -15998,7 +15998,7 @@ sci-biology/psipred 3.2.1 3.3 3.4 3.5: Protein Secondary Structure Prediction
 sci-biology/pysam 0.9.0: Python interface for the SAM/BAM sequence alignment and mapping format
 sci-biology/qrna 2.0.3c-r2: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
-sci-biology/rebase 1701 1702 1703: A restriction enzyme database
+sci-biology/rebase 1701 1702 1703 1704: A restriction enzyme database
 sci-biology/recon 1.08: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
