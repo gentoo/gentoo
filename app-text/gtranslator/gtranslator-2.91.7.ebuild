@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,6 +15,7 @@ LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="gnome spell"
+REQUIRED_USE="gnome? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32:2[dbus]
