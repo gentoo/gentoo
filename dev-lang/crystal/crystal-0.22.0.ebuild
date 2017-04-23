@@ -18,7 +18,7 @@ SRC_URI="https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz -> ${P}.ta
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc debug examples +xml +yaml"
+IUSE="doc debug examples blocking-stdio-hack +xml +yaml"
 
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
@@ -40,6 +40,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.20.5-verbose.patch
 	"${FILESDIR}"/${PN}-0.20.5-LDFLAGS.patch
 )
+
+src_prepare() {
+	default
+
+	use blocking-stdio-hack && eapply "${FILESDIR}"/"${PN}"-0.22.0-blocking-stdio-hack.patch
+}
 
 src_compile() {
 	emake \
