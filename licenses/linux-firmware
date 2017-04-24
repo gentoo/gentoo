@@ -1,0 +1,7 @@
+Gentoo license note:
+
+Linux firmware images are distributed under a variety of licenses,
+many of them being non-free. Most likely, upstream redistribution of
+some firmware images may conflict with the licenses or lack thereof on
+the images. You will need to check the WHENCE and LICEN[CS]E.* files
+in the package for specific licensing terms.
