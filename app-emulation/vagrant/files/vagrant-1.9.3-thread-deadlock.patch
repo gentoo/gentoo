@@ -1,0 +1,98 @@
+From bfc2af4cf9c5e9280f0e7d74de226b7af7c18a2a Mon Sep 17 00:00:00 2001
+From: Chris Roberts <code@chrisroberts.org>
+Date: Mon, 27 Mar 2017 12:55:15 -0700
+Subject: [PATCH] Always provide timeout on thread join to prevent deadlock
+ errors
+
+---
+ lib/vagrant/batch_action.rb   | 6 ++++--
+ lib/vagrant/environment.rb    | 2 +-
+ lib/vagrant/shared_helpers.rb | 6 ++++++
+ lib/vagrant/ui.rb             | 6 +++---
+ 4 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/lib/vagrant/batch_action.rb b/lib/vagrant/batch_action.rb
+index 9b6900f..d27e87d 100644
+--- a/lib/vagrant/batch_action.rb
++++ b/lib/vagrant/batch_action.rb
+@@ -123,7 +123,9 @@ def run
+         # Set some attributes on the thread for later
+         thread[:machine] = machine
+ 
+-        thread.join if !par
++        if !par
++          thread.join(THREAD_MAX_JOIN_TIMEOUT) while thread.alive?
++        end
+         threads << thread
+       end
+ 
+@@ -131,7 +133,7 @@ def run
+ 
+       threads.each do |thread|
+         # Wait for the thread to complete
+-        thread.join
++        thread.join(THREAD_MAX_JOIN_TIMEOUT) while thread.alive?
+ 
+         # If the thread had an error, then store the error to show later
+         if thread[:error]
+diff --git a/lib/vagrant/environment.rb b/lib/vagrant/environment.rb
+index 8fad272..125070f 100644
+--- a/lib/vagrant/environment.rb
++++ b/lib/vagrant/environment.rb
+@@ -295,7 +295,7 @@ def batch(parallel=true)
+     #
+     # @return [Hash]
+     def checkpoint
+-      @checkpoint_thr.join
++      @checkpoint_thr.join(THREAD_MAX_JOIN_TIMEOUT)
+       return @checkpoint_thr[:result]
+     end
+ 
+diff --git a/lib/vagrant/shared_helpers.rb b/lib/vagrant/shared_helpers.rb
+index c5d6ea6..5522272 100644
+--- a/lib/vagrant/shared_helpers.rb
++++ b/lib/vagrant/shared_helpers.rb
+@@ -12,6 +12,12 @@ module Vagrant
+   # @return [String]
+   DEFAULT_SERVER_URL = "https://atlas.hashicorp.com"
+ 
++  # Max number of seconds to wait for joining an active thread.
++  #
++  # @return [Integer]
++  # @note This is not the maxium time for a thread to complete.
++  THREAD_MAX_JOIN_TIMEOUT = 60
++
+   # This holds a global lock for the duration of the block. This should
+   # be invoked around anything that is modifying process state (such as
+   # environmental variables).
+diff --git a/lib/vagrant/ui.rb b/lib/vagrant/ui.rb
+index 8092493..2a52c90 100644
+--- a/lib/vagrant/ui.rb
++++ b/lib/vagrant/ui.rb
+@@ -53,7 +53,7 @@ def initialize_copy(original)
+             # We're being called in a trap-context. Wrap in a thread.
+             Thread.new do
+               @logger.info { "#{method}: #{message}" }
+-            end.join
++            end.join(THREAD_MAX_JOIN_TIMEOUT)
+           end
+         end
+       end
+@@ -128,7 +128,7 @@ def machine(type, *data)
+           @lock.synchronize do
+             safe_puts("#{Time.now.utc.to_i},#{target},#{type},#{data.join(",")}")
+           end
+-        end.join
++        end.join(THREAD_MAX_JOIN_TIMEOUT)
+       end
+     end
+ 
+@@ -244,7 +244,7 @@ def say(type, message, **opts)
+             safe_puts(format_message(type, message, **opts),
+                       io: channel, printer: printer)
+           end
+-        end.join
++        end.join(THREAD_MAX_JOIN_TIMEOUT)
+       end
+ 
+       def format_message(type, message, **opts)
