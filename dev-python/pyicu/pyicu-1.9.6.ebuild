@@ -18,42 +18,16 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/icu
-"
-# epydoc supports only python2*
-DEPEND="${RDEPEND}
-	doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+	dev-libs/icu"
+DEPEND="${RDEPEND}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=(CHANGES CREDITS README.md)
 
-# we need an exact version match for epydoc to work on a binary module
-pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
-}
-
-python_compile_all() {
-	if use doc; then
-		mkdir -p doc/html || die
-		epydoc --html --verbose -o doc/html \
-			--url="${HOMEPAGE}" --name="${MY_P}" \
-			icu.py || die "Making the docs failed!"
-	fi
-}
-
 python_test() {
 	esetup.py test
-}
-
-python_install_all() {
-	if use doc; then
-		local HTML_DOCS=( doc/html/. )
-	fi
-	distutils-r1_python_install_all
 }
