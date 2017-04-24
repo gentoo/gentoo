@@ -4,7 +4,7 @@
 EAPI=6
 
 if [[ "${PV}" != "9999" ]]; then
-	DIST_VERSION=xxxxxx # change this when released
+	DIST_VERSION=0.03
 	DIST_AUTHOR=AMBA
 	inherit perl-module
 	KEYWORDS="~amd64"
