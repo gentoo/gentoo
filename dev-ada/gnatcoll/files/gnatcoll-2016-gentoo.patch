@@ -176,3 +176,179 @@
  [
  with Interfaces; use Interfaces;
  procedure Check is
+--- gnatcoll-gpl-2016-src/testsuite/json/__init__.py.old	2017-04-24 17:52:34.158513249 +0200
++++ gnatcoll-gpl-2016-src/testsuite/json/__init__.py	2017-04-24 17:52:52.636207017 +0200
+@@ -21,7 +21,7 @@
+     @requires_not_aix    # Storage_Error on that machine
+     @chdir("MB28-001")
+     def test_MB28_001(self):
+-        self.runexec(["python", "make_json.py"])
++        self.runexec(["python2.7", "make_json.py"])
+         self.gprbuild()
+         self.runexec("json_stack_test", "test.out")
+ 
+--- gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c1/c.gpr.old	2017-04-24 18:00:21.652975475 +0200
++++ gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c1/c.gpr	2017-04-24 18:01:23.035983670 +0200
+@@ -15,6 +15,7 @@
+       for Default_Switches ("ada") use
+         ("-g", "-gnatQ", "-O1", "-gnatf", "-gnato", "-gnatwa.Xe", "-gnaty");
+       for Switches ("c") use ("-fdump-xref");
++      for Driver ("c") use External ("CC", "gcc");
+    end Compiler;
+ 
+ end c;
+--- gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c2/c.gpr.old	2017-04-24 18:01:28.394896928 +0200
++++ gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c2/c.gpr	2017-04-24 18:01:44.343638682 +0200
+@@ -15,6 +15,7 @@
+       for Default_Switches ("ada") use
+         ("-g", "-gnatQ", "-O1", "-gnatf", "-gnato", "-gnatwa.Xe", "-gnaty");
+       for Switches ("C") use ("-fdump-xref");
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+ end c;
+--- gnatcoll-gpl-2016-src/testsuite/projects/__init__.py.old	2017-04-24 19:10:30.465246199 +0200
++++ gnatcoll-gpl-2016-src/testsuite/projects/__init__.py	2017-04-24 19:10:42.768035080 +0200
+@@ -105,25 +105,6 @@
+         self.gprbuild("default.gpr")
+         self.runexec("main", "")
+ 
+-    @support.requires_not_windows
+-    @chdir("N918-040")
+-    def test_bareboard(self):
+-        self.create_fake_bb_compiler('install', 'arm-eabi', '6.1.0w', '3.4.6')
+-
+-        # Make sure auto.cgpr is not deleted on exit
+-        try:
+-            os.unlink('auto.cgpr')
+-        except:
+-            pass
+-        self.gprbuild('main_prj', switches=['--autoconf=auto.cgpr'])
+-        m = re.search('for Target use "(.*?)"', open('auto.cgpr').read())
+-        target = m.group(1)
+-
+-        def customFilter(actual):
+-            return actual.replace(target, "<native>")
+-
+-        self.runexec(['sh', 'test.sh'], 'test.out', customFilter=customFilter)
+-
+     @chdir("NB12-045")
+     def test_NB12_045(self):
+         # Test registering attribute in unknown package
+--- gnatcoll-gpl-2016-src/testsuite/xref/tabs/default.gpr.old	2017-04-24 20:01:55.535913959 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/tabs/default.gpr	2017-04-24 20:02:51.740950192 +0200
+@@ -1,3 +1,6 @@
+ project Default is
+    for Languages use ("Ada", "C");
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/doc1/dummy.gpr.old	2017-04-24 20:04:12.012574064 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/doc1/dummy.gpr	2017-04-24 20:04:54.025853974 +0200
+@@ -6,4 +6,7 @@
+       for Body_Suffix ("c++") use ".cc";
+    end Naming;
+ 
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Dummy;
+--- gnatcoll-gpl-2016-src/testsuite/xref/cpp_ref3/default.gpr.old	2017-04-24 20:08:06.018564544 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/cpp_ref3/default.gpr	2017-04-24 20:08:53.682748215 +0200
+@@ -1,3 +1,7 @@
+ project Default is
+    for Languages use ("C");
++
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/cpp_ref2/default.gpr.old	2017-04-24 20:10:00.146610101 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/cpp_ref2/default.gpr	2017-04-24 20:10:40.512919251 +0200
+@@ -1,3 +1,7 @@
+ project Default is
+    for Languages use ("C");
++
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end COmpiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/cpp_ref1/default.gpr.old	2017-04-24 20:13:28.543059408 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/cpp_ref1/default.gpr	2017-04-24 20:14:05.513430176 +0200
+@@ -1,3 +1,7 @@
+ project Default is
+    for Languages use ("C");
++
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/cpp_expr1/default.gpr.old	2017-04-24 20:15:26.420053157 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/cpp_expr1/default.gpr	2017-04-24 20:16:12.695265558 +0200
+@@ -1,3 +1,6 @@
+ project Default is
+    for Languages use ("C");
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/cpp_enum/dummy.gpr.old	2017-04-24 20:16:53.562570024 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/cpp_enum/dummy.gpr	2017-04-24 20:17:32.086914323 +0200
+@@ -4,4 +4,7 @@
+       for Spec_Suffix ("c++") use ".h";
+       for Body_Suffix ("c++") use ".cc";
+    end Naming;
++   package Compiler is
++      for Driver ("c") use External ("CC", "gcc");
++   end Compiler;
+ end Dummy;
+--- gnatcoll-gpl-2016-src/testsuite/xref/cpp_dbi_error/dummy.gpr.old	2017-04-24 20:18:03.688376474 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/cpp_dbi_error/dummy.gpr	2017-04-24 20:18:52.761541251 +0200
+@@ -1,3 +1,6 @@
+ project Dummy is
+    for Languages use ("c");
++   package Compiler is
++      for Driver ("c") use External ("CC", "gcc");
++   end Compiler;
+ end Dummy;
+--- gnatcoll-gpl-2016-src/testsuite/xref/L821-017-import/default.gpr.old	2017-04-24 20:19:40.401730504 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/L821-017-import/default.gpr	2017-04-24 20:22:52.303465944 +0200
+@@ -4,5 +4,6 @@
+    package Compiler is
+       for Switches ("C") use ("-fsyntax-only", "-fdump-xref");
+       for Switches ("C++") use ("-fsyntax-only", "-fdump-xref");
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/E224-007-change_obj_dir-c/default.gpr.old	2017-04-24 20:31:02.679123516 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/E224-007-change_obj_dir-c/default.gpr	2017-04-24 20:31:42.515445784 +0200
+@@ -8,4 +8,7 @@
+       when "release"  => for Object_Dir use "obj1";
+       when "debug"    => for Object_Dir use "obj2";
+    end case;
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/I401-027/default.gpr.old	2017-04-24 20:32:45.175379776 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/I401-027/default.gpr	2017-04-24 20:33:16.130853112 +0200
+@@ -7,6 +7,7 @@
+    package Compiler is
+ 	   for Default_Switches ("Ada") use ("-gnatws");
+ 	   for Default_Switches ("C") use ("-fdump-xref");
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+ end Default;
+--- gnatcoll-gpl-2016-src/src/tools/gnatcoll_db2ada.adb.old	2017-04-24 21:36:09.193973179 +0200
++++ gnatcoll-gpl-2016-src/src/tools/gnatcoll_db2ada.adb	2017-04-24 21:36:16.029858932 +0200
+@@ -211,7 +211,7 @@
+ 
+       declare
+          Output : constant String := Get_Command_Output
+-           (Command     => "python",
++           (Command     => "python2.7",
+             Arguments   => Args,
+             Input       => "",
+             Status      => Status'Access,
