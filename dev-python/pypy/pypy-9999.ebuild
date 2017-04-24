@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 pypy )
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs mercurial multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
 
 # note: remember to update this to newest dev-lang/python:2.7 on bump
 CPY_PATCHSET_VERSION="2.7.13-0"
@@ -93,9 +93,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
-		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
-		"${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
+	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -105,11 +105,11 @@ src_prepare() {
 	pushd lib-python/2.7 > /dev/null || die
 	# TODO: cpy turkish locale patch now fixes C code
 	# probably needs better port to pypy, if it is broken there
-	epatch "${FILESDIR}"/5.7.1_all_distutils_cxx.patch \
-		"${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
+	eapply "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
+	eapply "${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
 	popd > /dev/null || die
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -220,7 +220,7 @@ src_install() {
 	fi
 
 	# Install docs
-	use doc && dohtml -r pypy/doc/_build/html/
+	use doc && dodoc -r pypy/doc/_build/html
 
 	einfo "Generating caches and byte-compiling ..."
 
