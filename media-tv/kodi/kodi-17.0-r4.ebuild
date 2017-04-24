@@ -12,10 +12,12 @@ inherit eutils linux-info python-single-r1 cmake-utils autotools
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
+FFMPEG_VERSION="3.1.6"
 CODENAME="Krypton"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
-	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz"
+	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
+	!system-ffmpeg? ( https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}.tar.gz -> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}.tar.gz )"
 
 DESCRIPTION="Kodi is a free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
@@ -25,10 +27,12 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl +ssl pulseaudio samba sftp systemd test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
+	gles? ( X )
+	opengl? ( X )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
@@ -65,15 +69,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libass-0.13.4
 	media-libs/mesa[egl]
 	>=media-libs/taglib-1.11.1
-	>=media-video/ffmpeg-3.1.6:=[encode,postproc]
+	system-ffmpeg? ( >=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc] )
 	mysql? ( virtual/mysql )
 	>=net-misc/curl-7.51.0
 	nfs? ( net-fs/libnfs:= )
 	opengl? ( media-libs/glu )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.2j:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	!libressl? ( >=dev-libs/openssl-1.0.2j:0= )
+	libressl? ( dev-libs/libressl:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	sftp? ( net-libs/libssh[sftp] )
@@ -82,7 +84,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	vaapi? ( x11-libs/libva[opengl] )
 	vdpau? (
 		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
-		media-video/ffmpeg[vdpau]
+		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.50[messages] )
 	X? (
@@ -213,7 +215,7 @@ src_configure() {
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DVDCSS=$(usex css)
 		-DENABLE_INTERNAL_CROSSGUID=OFF
-		-DENABLE_INTERNAL_FFMPEG=OFF
+		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LIRC=$(usex lirc)
 		-DENABLE_MICROHTTPD=$(usex webserver)
@@ -222,7 +224,7 @@ src_configure() {
 		-DENABLE_NONFREE=$(usex nonfree)
 		-DENABLE_OPENGLES=$(usex gles)
 		-DENABLE_OPENGL=$(usex opengl)
-		-DENABLE_OPENSSL=$(usex ssl)
+		-DENABLE_OPENSSL=ON
 		-DENABLE_OPTICAL=$(usex dvd)
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
@@ -240,6 +242,8 @@ src_configure() {
 	)
 
 	use libusb && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+
+	use !system-ffmpeg && mycmakeargs+=( -DFFMPEG_URL="${DISTDIR}/ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}.tar.gz" )
 
 	cmake-utils_src_configure
 }
