@@ -105,7 +105,7 @@ src_prepare() {
 	pushd lib-python/2.7 > /dev/null || die
 	# TODO: cpy turkish locale patch now fixes C code
 	# probably needs better port to pypy, if it is broken there
-	epatch "${FILESDIR}"/5.6.0_all_distutils_cxx.patch \
+	epatch "${FILESDIR}"/5.7.1_all_distutils_cxx.patch \
 		"${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
 	popd > /dev/null || die
 
