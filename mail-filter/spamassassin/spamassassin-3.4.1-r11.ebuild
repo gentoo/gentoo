@@ -22,7 +22,7 @@ REQUIRED_USE="bayes? ( || ( berkdb mysql postgres sqlite ) )"
 # The Makefile.PL script checks for dependencies, but only fails if a
 # required (i.e. not optional) dependency is missing. We therefore
 # require most of the optional modules only at runtime.
-REQDEPEND="dev-lang/perl
+REQDEPEND="dev-lang/perl:=
 	dev-perl/HTML-Parser
 	dev-perl/Net-DNS
 	dev-perl/NetAddr-IP
@@ -85,6 +85,7 @@ PATCHES=(
 	"${FILESDIR}/spamassassin-3.4.1-bug_7223.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7231.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7265.patch"
+	"${FILESDIR}/spamassassin-3.4.1-bug_7231-extra.patch"
 )
 
 src_prepare() {
