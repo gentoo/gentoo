@@ -6962,7 +6962,7 @@ dev-php/PEAR-HTML_AJAX 0.5.8: PHP and JavaScript AJAX library
 dev-php/PEAR-HTML_CSS 1.5.4-r1: Provides a simple interface for generating a stylesheet declaration
 dev-php/PEAR-HTML_Common 1.2.5: Base class for other HTML classes
 dev-php/PEAR-HTML_Common2 2.1.0: Abstract base class for HTML classes (PHP5 port of PEAR-HTML_Common package)
-dev-php/PEAR-HTML_Javascript 1.1.1 1.1.2: Provides an interface for creating simple JS scripts within PHP
+dev-php/PEAR-HTML_Javascript 1.1.1 1.1.2 1.1.2-r1: Provides an interface for creating simple JS scripts within PHP
 dev-php/PEAR-HTML_QuickForm 3.2.13: The PEAR::HTML_QuickForm package provides methods for creating, validating, processing HTML forms
 dev-php/PEAR-HTML_QuickForm2 2.0.2: The PEAR::HTML_QuickForm package provides methods for creating, validating, processing HTML forms
 dev-php/PEAR-HTML_QuickForm_Controller 1.0.10-r1: Add-On for HTML_QuickForm that allows building of multipage forms
