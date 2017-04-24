@@ -1,0 +1,36 @@
+From 3b7ce3b82deeaa7500b25cccee263845555d8729 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20M=C3=BCller?= <ulm@gentoo.org>
+Date: Mon, 24 Apr 2017 20:48:08 +0200
+Subject: [PATCH] Set C++ standard to 14.
+
+Needed for CMake 3.1.0 or later, which would otherwise fall back
+to -std=gnu++11 in flags.make.
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index aef2b89..401f636 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,6 +85,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
+     # Set standard flags for GCC
+     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -funroll-loops")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -pedantic")
++    set(CMAKE_CXX_STANDARD 14)
++    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ elseif(MSVC)
+     set(OPENMITTSU_COMPILED_BY "MSVC")
+ 	
+@@ -112,6 +114,8 @@ else(CLANG)
+ 		set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
+     endif()
+     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -stdlib=${CLANG_STDLIB} -Wall -pedantic -Wno-unused-variable -ftemplate-depth=1024")
++    set(CMAKE_CXX_STANDARD 14)
++    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ endif()
+ 
+ #
+-- 
+2.12.2
+
