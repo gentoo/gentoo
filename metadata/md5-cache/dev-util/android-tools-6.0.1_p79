@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://git.archlinux.org/svntogit/community.git/snapshot/community-6a03c4736c9734f5ac3d6b5b912605690a6eaa5f.tar.gz -> android-tools-6.0.1_r79-arch.tar.gz https://github.com/android/platform_system_core/archive/android-6.0.1_r79.tar.gz -> android-tools-6.0.1_r79-core.tar.gz mirror://gentoo/android-tools-6.0.1_r79-extras.tar.gz mirror://gentoo/android-tools-6.0.1_r79-libselinux.tar.gz mirror://gentoo/android-tools-6.0.1_r79-f2fs-tools.tar.gz
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=df5c4e0c7e4fe56b98885c06957f5b7b
+_md5_=0ce4777caf43704f4607565a60798622
