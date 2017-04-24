@@ -31,6 +31,8 @@ IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl l
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
+	gles? ( X )
+	opengl? ( X )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
