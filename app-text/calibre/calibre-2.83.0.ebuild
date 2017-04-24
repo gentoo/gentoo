@@ -43,20 +43,22 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.26.5[qt5]
 	>=dev-libs/chmlib-0.40:=
 	dev-libs/glib:2
-	>=dev-libs/icu-4.4:=
-	>=dev-python/apsw-3.7.17[${PYTHON_USEDEP}]
+	>=dev-libs/icu-57.1:=
+	>=dev-python/apsw-3.13.0[${PYTHON_USEDEP}]
 	>=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
-	>=dev-python/cssutils-0.9.9[${PYTHON_USEDEP}]
-	>=dev-python/dbus-python-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/cssutils-1.0.1[${PYTHON_USEDEP}]
+	>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
+	>=dev-libs/dbus-glib-0.106
+	>=sys-apps/dbus-1.10.8
 	>=dev-python/lxml-3.2.1[${PYTHON_USEDEP}]
-	>=dev-python/mechanize-0.1.11[${PYTHON_USEDEP}]
+	>=dev-python/mechanize-0.2.5[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.0.1[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.3.1[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.8[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
@@ -64,8 +66,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-gfx/imagemagick-6.5.9[jpeg,png]
 	media-libs/fontconfig
 	>=media-libs/freetype-2:=
-	>=media-libs/libmtp-1.1.5:=
+	>=media-libs/libmtp-1.1.11:=
 	>=media-libs/libwmf-0.2.8
+	>=media-gfx/optipng-0.7.6
+	>=app-pda/usbmuxd-1.0.8
+	>=app-pda/libimobiledevice-1.2.0
 	sys-libs/zlib
 	virtual/libusb:1=
 	virtual/python-dnspython[${PYTHON_USEDEP}]
@@ -77,8 +82,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 RDEPEND="${COMMON_DEPEND}
 	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
 DEPEND="${COMMON_DEPEND}
-	>=dev-python/setuptools-0.6_rc5[${PYTHON_USEDEP}]
-	>=virtual/podofo-build-0.8.2
+	>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
+	>=virtual/podofo-build-0.9.4
 	virtual/pkgconfig"
 
 src_prepare() {
