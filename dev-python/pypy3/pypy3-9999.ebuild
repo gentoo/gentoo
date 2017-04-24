@@ -96,7 +96,7 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	epatch "${FILESDIR}"/5.2.0-distutils-c++.patch \
+	epatch "${FILESDIR}"/5.7.1_all_distutils_cxx.patch \
 		"${WORKDIR}"/patches/24_all_sqlite-3.8.4.patch
 	popd > /dev/null || die
 
