@@ -10,7 +10,7 @@ DESCRIPTION="Plugins for the KDE Image Plugin Interface"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="flashexport mediawiki +remotestorage vkontakte"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
