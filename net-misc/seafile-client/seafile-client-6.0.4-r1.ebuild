@@ -11,7 +11,7 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="shibboleth"
+IUSE="shibboleth test"
 
 RDEPEND="net-libs/libsearpc
 	=net-libs/ccnet-${PV}
@@ -28,9 +28,11 @@ RDEPEND="net-libs/libsearpc
 	dev-qt/qtdbus:5
 	shibboleth? ( || ( dev-qt/qtwebengine:5[widgets] dev-qt/qtwebkit:5 ) )"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+	dev-qt/linguist-tools:5
+	test? ( dev-qt/qttest:5 )"
 
 src_prepare() {
+	eapply "${FILESDIR}/${P}-only-use-qttest-when-needed.patch"
 	cmake-utils_src_prepare
 	if use shibboleth ; then
 		if ! has_version "dev-qt/qtwebengine:5[widgets]" ; then
@@ -43,6 +45,7 @@ src_configure() {
 	export QT_SELECT=qt5
 	local mycmakeargs=(
 		-DBUILD_SHIBBOLETH_SUPPORT="$(usex shibboleth)"
+		-DBUILD_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure
 }
