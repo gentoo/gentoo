@@ -12,3 +12,6 @@ HOMEPAGE="https://01.org/hyperscan"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="cpu_flags_x86_ssse3"
+
+REQUIRED_USE="cpu_flags_x86_ssse3"
