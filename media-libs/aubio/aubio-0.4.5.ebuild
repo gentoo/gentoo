@@ -70,7 +70,7 @@ src_compile() {
 
 	if use doc; then
 		cd "${S}"/doc || die
-		doxygen full.cfg || die
+		emake dirhtml
 	fi
 
 	if use python ; then
@@ -105,6 +105,6 @@ src_install() {
 	if use doc; then
 		dodoc doc/*.txt
 		docinto html
-		dodoc -r doc/full/html/.
+		dodoc -r doc/_build/dirhtml/.
 	fi
 }
