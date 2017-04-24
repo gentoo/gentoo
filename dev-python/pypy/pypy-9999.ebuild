@@ -20,7 +20,7 @@ LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/41"
 KEYWORDS=""
-IUSE="bzip2 doc gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 test tk"
+IUSE="bzip2 doc gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -137,7 +137,6 @@ src_configure() {
 	local args=(
 		--shared
 		$(usex jit -Ojit -O2)
-		$(usex shadowstack --gcrootfinder=shadowstack '')
 		$(usex sandbox --sandbox '')
 
 		${jit_backend}
