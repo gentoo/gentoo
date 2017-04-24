@@ -41,10 +41,10 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	valgrind? ( dev-util/valgrind )
 	test? (
-		guile? ( >=dev-scheme/guile-2 )
 		seccomp? ( sys-libs/libseccomp )
 	)
 	test-full? (
+		guile? ( >=dev-scheme/guile-2 )
 		app-crypt/dieharder
 		app-misc/datefudge
 		dev-libs/softhsm:2[-bindist]
