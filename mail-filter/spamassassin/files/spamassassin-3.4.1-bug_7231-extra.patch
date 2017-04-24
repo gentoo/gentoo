@@ -1,0 +1,140 @@
+This should fix bug 7338, but the related commits were backported to
+the 3.4 branch as part of SpamAssassin bug 7231 (comment 13).
+
+--- a/lib/Mail/SpamAssassin/Dns.pm	2017/04/16 06:19:30	1791572
++++ b/lib/Mail/SpamAssassin/Dns.pm	2017/04/16 07:28:59	1791573
+@@ -171,7 +171,7 @@
+   if (substr($rule, 0, 2) eq "__") {
+     # don't bother with meta rules
+   } elsif ($answer->type eq 'TXT') {
+-    # txtdata returns a non- zone-file-format encoded result, unlike rdatastr;
++    # txtdata returns a non- zone-file-format encoded result, unlike rdstring;
+     # avoid space-separated RDATA <character-string> fields if possible,
+     # txtdata provides a list of strings in a list context since Net::DNS 0.69
+     $log = join('',$answer->txtdata);
+@@ -215,11 +215,13 @@
+ 
+   my $qname = $question->qname;
+ 
+-  # txtdata returns a non- zone-file-format encoded result, unlike rdatastr;
++  # txtdata returns a non- zone-file-format encoded result, unlike rdstring;
+   # avoid space-separated RDATA <character-string> fields if possible,
+   # txtdata provides a list of strings in a list context since Net::DNS 0.69
+   #
++  # rdatastr() is historical/undocumented, use rdstring() since Net::DNS 0.69
+   my $rdatastr = $answer->UNIVERSAL::can('txtdata') ? join('',$answer->txtdata)
++               : $answer->UNIVERSAL::can('rdstring') ? $answer->rdstring
+                                                     : $answer->rdatastr;
+   if (defined $qname && defined $rdatastr) {
+     my $qclass = $question->qclass;
+@@ -267,8 +269,13 @@
+     my $answ_type = $answer->type;
+     # TODO: there are some CNAME returns that might be useful
+     next if ($answ_type ne 'A' && $answ_type ne 'TXT');
+-    # skip any A record that isn't on 127/8
+-    next if ($answ_type eq 'A' && $answer->rdatastr !~ /^127\./);
++    if ($answ_type eq 'A') {
++      # Net::DNS::RR::A::address() is available since Net::DNS 0.69
++      my $ip_address = $answer->UNIVERSAL::can('address') ? $answer->address
++                                                          : $answer->rdatastr;
++      # skip any A record that isn't on 127.0.0.0/8
++      next if $ip_address !~ /^127\./;
++    }
+     for my $rule (@{$rules}) {
+       $self->dnsbl_hit($rule, $question, $answer);
+     }
+@@ -284,11 +291,13 @@
+ sub process_dnsbl_set {
+   my ($self, $set, $question, $answer) = @_;
+ 
+-  # txtdata returns a non- zone-file-format encoded result, unlike rdatastr;
++  # txtdata returns a non- zone-file-format encoded result, unlike rdstring;
+   # avoid space-separated RDATA <character-string> fields if possible,
+   # txtdata provides a list of strings in a list context since Net::DNS 0.69
+   #
+-  my $rdatastr = $answer->UNIVERSAL::can('txtdata') ? join('',$answer->txtdata)
++  # rdatastr() is historical/undocumented, use rdstring() since Net::DNS 0.69
++  my $rdatastr = $answer->UNIVERSAL::can('txtdata')  ? join('',$answer->txtdata)
++               : $answer->UNIVERSAL::can('rdstring') ? $answer->rdstring
+                                                     : $answer->rdatastr;
+ 
+   while (my ($subtest, $rule) = each %{ $self->{dnspost}->{$set} }) {
+--- a/lib/Mail/SpamAssassin/Plugin/AskDNS.pm	2017/04/16 06:19:30	1791572
++++ b/lib/Mail/SpamAssassin/Plugin/AskDNS.pm	2017/04/16 07:28:59	1791573
+@@ -140,7 +140,7 @@
+ multiple character-strings (as defined in Section 3.3 of [RFC1035]), these
+ strings are concatenated with no delimiters before comparing the result
+ to the filtering string. This follows requirements of several documents,
+-such as RFC 5518, RFC 4408, RFC 4871, RFC 5617.  Examples of a plain text
++such as RFC 5518, RFC 7208, RFC 4871, RFC 5617.  Examples of a plain text
+ filtering parameter: "127.0.0.1", "transaction", 'list' .
+ 
+ A regular expression follows a familiar perl syntax like /.../ or m{...}
+@@ -539,7 +539,7 @@
+     @answer = ( undef );
+   }
+ 
+-  # NOTE:  $rr->rdatastr returns the result encoded in a DNS zone file
++  # NOTE:  $rr->rdstring returns the result encoded in a DNS zone file
+   # format, i.e. enclosed in double quotes if a result contains whitespace
+   # (or other funny characters), and may use \DDD encoding or \X quoting as
+   # per RFC 1035.  Using $rr->txtdata instead avoids this unnecessary encoding
+@@ -566,19 +566,26 @@
+       # special case, no answer records, only rcode can be tested
+     } else {
+       $rr_type = uc $rr->type;
+-      if ($rr->UNIVERSAL::can('txtdata')) {  # TXT, SPF
+-        # join with no intervening spaces, as per RFC 5518
++      if ($rr_type eq 'A') {
++        # Net::DNS::RR::A::address() is available since Net::DNS 0.69
++        $rr_rdatastr = $rr->UNIVERSAL::can('address') ? $rr->address
++                                                      : $rr->rdatastr;
++        if ($rr_rdatastr =~ m/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\z/) {
++          $rdatanum = Mail::SpamAssassin::Util::my_inet_aton($rr_rdatastr);
++        }
++
++      } elsif ($rr->UNIVERSAL::can('txtdata')) {
++        # TXT, SPF: join with no intervening spaces, as per RFC 5518
+         if ($txtdata_can_provide_a_list || $rr_type ne 'TXT') {
+           $rr_rdatastr = join('', $rr->txtdata);  # txtdata() in list context!
+         } else {  # char_str_list() is only available for TXT records
+           $rr_rdatastr = join('', $rr->char_str_list);  # historical
+         }
+       } else {
+-        $rr_rdatastr = $rr->rdatastr;
+-        if ($rr_type eq 'A' &&
+-            $rr_rdatastr =~ m/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\z/) {
+-          $rdatanum = Mail::SpamAssassin::Util::my_inet_aton($rr_rdatastr);
+-        }
++        # rdatastr() is historical, use rdstring() since Net::DNS 0.69
++        $rr_rdatastr = $rr->UNIVERSAL::can('rdstring') ? $rr->rdstring
++                                                       : $rr->rdatastr;
++        utf8::encode($rr_rdatastr)  if utf8::is_utf8($rr_rdatastr);
+       }
+     # dbg("askdns: received rr type %s, data: %s", $rr_type, $rr_rdatastr);
+     }
+--- a/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm	2017/04/16 06:19:30	1791572
++++ b/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm	2017/04/16 07:28:59	1791573
+@@ -1009,10 +1009,9 @@
+     dbg("uridnsbl: complete_a_lookup aborted %s", $ent->{key});
+     return;
+   }
+-
+   dbg("uridnsbl: complete_a_lookup %s", $ent->{key});
+-  my @answer = $pkt->answer;
+   my $j = 0;
++  my @answer = $pkt->answer;
+   foreach my $rr (@answer) {
+     $j++;
+     my $str = $rr->string;
+@@ -1099,7 +1098,9 @@
+     my $rr_type = $rr->type;
+ 
+     if ($rr_type eq 'A') {
+-      $rdatastr = $rr->rdatastr;
++      # Net::DNS::RR::A::address() is available since Net::DNS 0.69
++      $rdatastr = $rr->UNIVERSAL::can('address') ? $rr->address
++                                                 : $rr->rdatastr;
+       if ($rdatastr =~ m/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) {
+         $rdatanum = Mail::SpamAssassin::Util::my_inet_aton($rdatastr);
+       }
