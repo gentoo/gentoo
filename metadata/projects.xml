@@ -3047,9 +3047,9 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>pr@gentoo.org</email>
-    <name>Gentoo Public Relations Project</name>
+    <name>Public Relations</name>
     <url>https://wiki.gentoo.org/wiki/Project:Public_Relations</url>
-    <description>The Public Relations Team improves Gentoo's visibility towards the rest of the world.</description>
+    <description>The Public Relations team improves Gentoo's visibility towards the rest of the world.</description>
     <subproject ref="news@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
     <subproject ref="www@gentoo.org"/>
