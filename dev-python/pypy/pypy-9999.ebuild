@@ -8,13 +8,13 @@ EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 inherit check-reqs eutils mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
 
 # note: remember to update this to newest dev-lang/python:2.7 on bump
-CPY_PATCHSET_VERSION="2.7.11-0"
+CPY_PATCHSET_VERSION="2.7.13-0"
 MY_P=pypy2-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="http://pypy.org/"
 SRC_URI="
-	https://dev.gentoo.org/~djc/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
+	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
 
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
@@ -103,8 +103,9 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/2.7 > /dev/null || die
+	# TODO: cpy turkish locale patch now fixes C code
+	# probably needs better port to pypy, if it is broken there
 	epatch "${FILESDIR}"/5.6.0_all_distutils_cxx.patch \
-		"${WORKDIR}"/patches/22_all_turkish_locale.patch \
 		"${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
 	popd > /dev/null || die
 
