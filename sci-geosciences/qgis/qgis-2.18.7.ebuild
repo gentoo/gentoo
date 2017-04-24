@@ -22,7 +22,7 @@ HOMEPAGE="http://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="designer examples georeferencer grass mapserver oracle postgres python touch webkit"
+IUSE="designer examples georeferencer grass mapserver oracle postgres python touch"
 
 REQUIRED_USE="
 	mapserver? ( python )
@@ -42,6 +42,7 @@ COMMON_DEPEND="
 	dev-qt/qtscript:5
 	dev-qt/qtsvg:5
 	dev-qt/qtsql:5
+	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	sci-libs/gdal:=[geos,python?,${PYTHON_USEDEP}]
@@ -66,7 +67,7 @@ COMMON_DEPEND="
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/markupsafe[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt5[sql,svg,webkit?,${PYTHON_USEDEP}]
+		dev-python/PyQt5[sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -76,7 +77,6 @@ COMMON_DEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	)
-	webkit? ( dev-qt/qtwebkit:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qttest:5
@@ -129,8 +129,9 @@ src_configure() {
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_TOUCH="$(usex touch)"
-		-DWITH_QTWEBKIT=$(usex webkit)
 	)
+#	# FIXME: Re-add when segfaults were figured out upstream, bug #612070
+#	-DWITH_QTWEBKIT=$(usex webkit)
 
 	if has_version '<x11-libs/qscintilla-2.10'; then
 		mycmakeargs+=(
