@@ -366,11 +366,17 @@ x11-libs/gtk+:1
 >=dev-perl/Math-BigInt-GMP-1.600.0
 
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
-# Depends on slotted lua
+# Depends on slotted lua, 
+# odd revisions are slotted lua, 
+# even revisions are unslotted lua
 =dev-db/redis-3.2.5-r1
-=dev-db/redis-3.2.5-r2
+=dev-db/redis-3.2.5-r2 # except somebody bumped it out of pattern
+=dev-db/redis-3.2.5-r5
 =dev-db/redis-3.2.6-r1
-=dev-db/redis-3.2.6-r2
+=dev-db/redis-3.2.6-r2 # except somebody bumped it out of pattern
+=dev-db/redis-3.2.6-r5
+=dev-db/redis-3.2.8-r1
+
 
 # Ian Stakenvicius (17 Nov 2016)
 # Does not honour LD_LIBRARY_PATH set in the environment, causing
