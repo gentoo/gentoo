@@ -68,6 +68,9 @@ all_ruby_prepare() {
 
 	# fix rvm issue (bug #474476)
 	epatch "${FILESDIR}"/${PN}-1.8.1-rvm.patch
+
+	# fix thread deadlock (bug #616426)
+	epatch "${FILESDIR}"/${P}-thread-deadlock.patch
 }
 
 all_ruby_install() {
