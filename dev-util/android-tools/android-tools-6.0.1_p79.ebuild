@@ -52,6 +52,7 @@ src_prepare() {
 	mv core/*/* core/ || die
 	epatch arch/*/trunk/fix_build.patch
 	cp arch/*/trunk/generate_build.rb ./ || die
+	sed -i '1i#include <sys/sysmacros.h>' core/adb/usb_linux.cpp || die #616508
 	sed -e 's|^#include <sys/cdefs.h>$|/*\0*/|' \
 		-e 's|^__BEGIN_DECLS$|#ifdef __cplusplus\nextern "C" {\n#endif|' \
 		-e 's|^__END_DECLS$|#ifdef __cplusplus\n}\n#endif|' \
