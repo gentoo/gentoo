@@ -26,7 +26,6 @@ PLUGINS="+alias +charset +exec +fifo +logger +relay +scripts +spell +trigger +xf
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
 IUSE="doc nls +ssl test ${LANGS// / linguas_} ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
@@ -58,7 +57,10 @@ DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.ado
 # tests need to be fixed to not use system plugins if weechat is already installed
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2-tinfo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2-tinfo.patch
+	"${FILESDIR}"/${PN}-1.7-ruby24.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
