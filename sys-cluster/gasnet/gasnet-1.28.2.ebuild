@@ -54,6 +54,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-ibv \
 		$(use_enable mpi) \
 		$(use_enable threads pthreads) \
 		CC="$(tc-getCC) ${CFLAGS} -fPIC" \
