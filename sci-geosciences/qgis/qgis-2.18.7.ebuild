@@ -80,6 +80,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qttest:5
+	dev-qt/qtxmlpatterns:5
 	sys-devel/bison
 	sys-devel/flex
 "
