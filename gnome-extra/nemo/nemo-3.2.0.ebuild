@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit autotools eutils gnome2 python-any-r1 virtualx
 
