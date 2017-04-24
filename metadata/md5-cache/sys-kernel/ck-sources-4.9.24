@@ -8,8 +8,8 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 !deblob? ( freedist )
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
-SLOT=4.9.16
-SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.9.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-4.9 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-check -> deblob-check-4.9 ) mirror://gentoo/genpatches-4.9-18.base.tar.xz mirror://gentoo/genpatches-4.9-18.extras.tar.xz mirror://gentoo/genpatches-4.9-18.experimental.tar.xz http://ck.kolivas.org/patches/4.0/4.9/4.9-ck1/patch-4.9-ck1.xz https://github.com/ckolivas/linux/commit/7de569950716147ed436b27936628ee3ab5b45cc.patch -> ck-sources-4.9-freezer-fix.patch
+SLOT=4.9.24
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.9.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-4.9 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.9-gnu/deblob-check -> deblob-check-4.9 ) mirror://gentoo/genpatches-4.9-25.base.tar.xz mirror://gentoo/genpatches-4.9-25.extras.tar.xz mirror://gentoo/genpatches-4.9-25.experimental.tar.xz http://ck.kolivas.org/patches/4.0/4.9/4.9-ck1/patch-4.9-ck1.xz https://github.com/ckolivas/linux/commit/7de569950716147ed436b27936628ee3ab5b45cc.patch -> ck-sources-4.9-freezer-fix.patch
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:kernel-2 pkg_setup:- src_unpack:kernel-2 src_prepare:- src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	kernel-2	7cc211cb9f869927ca267873f54d8fd5	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	a166d0f5815d7f1e67bb60a196f1bf7e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=49c69e8ee9b30c7bb4d3691a563ce7cf
+_md5_=08d53ffd5520da8b3434c67fcd8f3002
