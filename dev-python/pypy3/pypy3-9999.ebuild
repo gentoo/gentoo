@@ -22,7 +22,7 @@ LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
 SLOT="0/55"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -129,7 +129,6 @@ src_configure() {
 	local args=(
 		--shared
 		$(usex jit -Ojit -O2)
-		$(usex shadowstack --gcrootfinder=shadowstack '')
 		$(usex sandbox --sandbox '')
 
 		${jit_backend}
