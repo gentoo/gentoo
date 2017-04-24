@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare pretend setup
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=device that allows access to Linux kernel cryptographic drivers
+EAPI=6
+HOMEPAGE=http://cryptodev-linux.org/index.html
+IUSE=examples kernel_linux
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2+
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.gna.org/cryptodev-linux/cryptodev-linux-1.9.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:- src_prepare:- src_compile:linux-mod src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=fe2059951b3831236928946d3a25368e
