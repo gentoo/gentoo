@@ -7188,7 +7188,7 @@ dev-php/symfony-dependency-injection 2.8.15: Symfony DependencyInjection Compone
 dev-php/symfony-event-dispatcher 2.1.0-r1: Symfony EventDispatcher Component
 dev-php/symfony-filesystem 2.7.20: Symfony Filesystem Component
 dev-php/symfony-finder 3.2.6: Symfony Finder Component
-dev-php/symfony-process 2.8.12: Symfony Process Component
+dev-php/symfony-process 3.2.6: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 6.2.13-r1: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/twig 1.31.0: PHP templating engine with syntax similar to Django
