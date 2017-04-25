@@ -14,9 +14,10 @@ SLOT="0"
 IUSE="examples"
 
 DEPEND="virtual/linux-sources"
-RDEPEND=""
-#test do not compile
+
+#test requires that the module is already loaded
 RESTRICT="test"
+
 S=${WORKDIR}/${PN}-linux-${PV}
 
 MODULE_NAMES="cryptodev(extra:${S})"
@@ -36,13 +37,6 @@ pkg_setup() {
 	fi
 	BUILD_TARGETS="build"
 	export KERNEL_DIR
-}
-
-src_prepare() {
-	default
-
-	# get_unused_fd was removed in 3.19
-	sed -i 's,get_unused_fd(),get_unused_fd_flags(0),' ioctl.c || die
 }
 
 src_install() {
