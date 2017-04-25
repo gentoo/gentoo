@@ -12126,7 +12126,7 @@ kde-misc/kwebkitpart 1.3.4-r1 1.4.0_pre20170128: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.6 9999: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring active network connections
-kde-misc/plasma-applet-redshift-control 1.0.17: Plasma 5 applet for controlling redshift
+kde-misc/plasma-applet-redshift-control 1.0.17 1.0.18: Plasma 5 applet for controlling redshift
 kde-misc/plasma-applet-weather-widget 1.6.8: Plasma 5 applet for weather forecasts
 kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
 kde-misc/rsibreak 0.12.4 0.12.5 0.12.6: Small utility which bothers you at certain intervals
