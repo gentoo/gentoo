@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,5 +18,6 @@ RDEPEND="
 	dev-ros/rqt_gui
 	dev-ros/rqt_gui_cpp
 	dev-ros/rqt_gui_py
+	dev-ros/rqt_py_common
 "
 DEPEND="${RDEPEND}"
