@@ -15,7 +15,8 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gmp gtk iconv postgresql projects readline +shared sqlite static syslog"
+IUSE="gmp gtk iconv postgresql pygobject projects readline +shared sqlite
+	static syslog"
 
 RDEPEND="dev-lang/gnat-gpl
 	${PYTHON_DEPS}
@@ -29,6 +30,7 @@ RDEPEND="dev-lang/gnat-gpl
 		x11-libs/gtk+:3
 		x11-libs/pango
 	)
+	pygobject? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
 	postgresql? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
@@ -37,7 +39,8 @@ RDEPEND="dev-lang/gnat-gpl
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	pygobject? ( gtk )"
 
 S="${WORKDIR}"/${MYP}-src
 
@@ -81,13 +84,13 @@ src_configure() {
 		$(use_with iconv) \
 		$(use_with postgresql) \
 		$(use_enable projects) \
+		$(use_enable pygobject) \
 		$(use_enable readline gpl) \
 		$(use_enable readline) \
 		$(use_enable syslog) \
 		--with-python-exec=${EPYTHON} \
 		--enable-shared-python \
 		--disable-pygtk \
-		--disable-pygobject \
 		$myConf
 }
 
