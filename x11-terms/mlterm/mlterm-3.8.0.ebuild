@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 ~x86"
+KEYWORDS="amd64 hppa ppc ppc64 ~x86"
 IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE
