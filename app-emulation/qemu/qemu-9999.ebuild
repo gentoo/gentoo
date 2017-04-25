@@ -29,8 +29,8 @@ IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt
 	glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl sdl2 selinux smartcard snappy
-	spice ssh static static-user systemtap tci test +threads usb usbredir
-	vde +vhost-net virgl virtfs +vnc vte xattr xen xfs"
+	spice ssh static static-user systemtap tci test usb usbredir vde
+	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc
