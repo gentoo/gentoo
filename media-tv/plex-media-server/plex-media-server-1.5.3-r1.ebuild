@@ -62,7 +62,7 @@ src_install() {
 	dodir "${CONFIG_PATH}"
 	insinto "${CONFIG_PATH}"
 	doins "${CONFIG_VANILLA#/}"
-	sed -e "s#${CONFIG_VANILLA}#${CONFIG_PATH}#g" -i "${S}"/usr/sbin/start_pms || die
+	sed -e "s#${CONFIG_VANILLA}#${CONFIG_PATH}/${_APPNAME}#g" -i "${S}"/usr/sbin/start_pms || die
 
 	# Remove Debian specific files
 	rm -rf "usr/share/doc" || die
