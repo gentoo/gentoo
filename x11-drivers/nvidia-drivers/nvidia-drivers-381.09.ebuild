@@ -65,6 +65,7 @@ COMMON="
 DEPEND="
 	${COMMON}
 	kernel_linux? ( virtual/linux-sources )
+	tools? ( sys-apps/dbus )
 "
 RDEPEND="
 	${COMMON}
