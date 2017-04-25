@@ -47,7 +47,7 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit eutils flag-o-matic toolchain-funcs versionator virtualx
+inherit estack flag-o-matic ltprune toolchain-funcs versionator virtualx
 
 HOMEPAGE="https://www.qt.io/"
 
