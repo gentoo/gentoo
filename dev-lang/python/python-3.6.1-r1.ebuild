@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,18 +6,18 @@ WANT_LIBTOOL="none"
 
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs
 
-MY_P="Python-${PV/_/}"
-PATCHSET_VERSION="3.5.2-0"
+MY_P="Python-${PV}"
+PATCHSET_VERSION="3.6.0-0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
-HOMEPAGE="http://www.python.org/"
-SRC_URI="http://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
+HOMEPAGE="https://www.python.org/"
+SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 
 LICENSE="PSF-2"
-SLOT="3.5/3.5m"
+SLOT="3.6/3.6m"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
+IUSE="build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -54,7 +54,6 @@ RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
 S="${WORKDIR}/${MY_P}"
-
 PYVER=${SLOT%/*}
 
 src_prepare() {
@@ -63,27 +62,21 @@ src_prepare() {
 	rm -fr Modules/_ctypes/libffi*
 	rm -fr Modules/zlib
 
-	if tc-is-cross-compiler; then
-		# Invokes BUILDPYTHON, which is built for the host arch
-		local EPATCH_EXCLUDE="*_regenerate_platform-specific_modules.patch"
-	fi
-
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
-	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
 	epatch "${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
 
 	epatch_user
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
-		configure.ac \
 		Lib/distutils/command/install.py \
 		Lib/distutils/sysconfig.py \
 		Lib/site.py \
 		Lib/sysconfig.py \
 		Lib/test/test_site.py \
 		Makefile.pre.in \
-		Modules/getpath.c \
 		Modules/Setup.dist \
+		Modules/getpath.c \
+		configure.ac \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
 	eautoreconf
@@ -125,10 +118,6 @@ src_configure() {
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	tc-export CXX
 
-	# The configure script fails to use pkg-config correctly.
-	# http://bugs.python.org/issue15506
-	export ac_cv_path_PKG_CONFIG=$(tc-getPKG_CONFIG)
-
 	# Set LDFLAGS so we link modules with -lpython3.2 correctly.
 	# Needed on FreeBSD unless Python 3.2 is already installed.
 	# Please query BSD team before removing this!
@@ -138,10 +127,6 @@ src_configure() {
 	if use gdbm; then
 		dbmliborder+="${dbmliborder:+:}gdbm"
 	fi
-
-	BUILD_DIR="${WORKDIR}/${CHOST}"
-	mkdir -p "${BUILD_DIR}" || die
-	cd "${BUILD_DIR}" || die
 
 	local myeconfargs=(
 		--with-fpectl
@@ -159,7 +144,7 @@ src_configure() {
 		--with-system-ffi
 	)
 
-	ECONF_SOURCE="${S}" OPT="" econf "${myeconfargs[@]}"
+	OPT="" econf "${myeconfargs[@]}"
 
 	if use threads && grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
 		eerror "configure has detected that the sem_open function is broken."
@@ -172,8 +157,6 @@ src_compile() {
 	# Ensure sed works as expected
 	# https://bugs.gentoo.org/594768
 	local -x LC_ALL=C
-
-	cd "${BUILD_DIR}" || die
 
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
 
@@ -192,8 +175,6 @@ src_test() {
 		return
 	fi
 
-	cd "${BUILD_DIR}" || die
-
 	# Skip failing tests.
 	local skipped_tests="gdb"
 
@@ -202,6 +183,7 @@ src_test() {
 	done
 
 	local -x PYTHONDONTWRITEBYTECODE=
+
 	emake test EXTRATESTOPTS="-u-network" CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
 	local result=$?
 
@@ -225,8 +207,6 @@ src_test() {
 
 src_install() {
 	local libdir=${ED}/usr/$(get_libdir)/python${PYVER}
-
-	cd "${BUILD_DIR}" || die
 
 	emake DESTDIR="${D}" altinstall
 
@@ -258,12 +238,11 @@ src_install() {
 		pax-mark m "${ED}usr/bin/${abiver}"
 	fi
 
-	use elibc_uclibc && rm -fr "${libdir}/test"
-	use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
-	use tk || rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
+	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
+	use tk || rm -r "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 
-	use threads || rm -fr "${libdir}/multiprocessing"
-	use wininst || rm -f "${libdir}/distutils/command/"wininst-*.exe
+	use threads || rm -r "${libdir}/multiprocessing" || die
+	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
 
 	dodoc "${S}"/Misc/{ACKS,HISTORY,NEWS}
 
