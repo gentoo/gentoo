@@ -230,40 +230,35 @@ gnome2_icon_cache_update() {
 		return
 	fi
 
-	if [[ -z "${GNOME2_ECLASS_ICONS}" ]]; then
-		debug-print "No icon cache to update"
-		return
-	fi
-
 	ebegin "Updating icons cache"
 
 	local retval=0
 	local fails=( )
 
-	for dir in ${GNOME2_ECLASS_ICONS}
+	for dir in "${EROOT%/}"/usr/share/icons/*
 	do
-		if [[ -f "${EROOT}${dir}/index.theme" ]] ; then
+		if [[ -f "${dir}/index.theme" ]] ; then
 			local rv=0
 
-			"${updater}" -qf "${EROOT}${dir}"
+			"${updater}" -qf "${dir}"
 			rv=$?
 
 			if [[ ! $rv -eq 0 ]] ; then
-				debug-print "Updating cache failed on ${EROOT}${dir}"
+				debug-print "Updating cache failed on ${dir}"
 
 				# Add to the list of failures
-				fails[$(( ${#fails[@]} + 1 ))]="${EROOT}${dir}"
+				fails+=( "${dir}" )
 
 				retval=2
 			fi
-		elif [[ $(ls "${EROOT}${dir}") = "icon-theme.cache" ]]; then
+		elif [[ $(ls "${dir}") = "icon-theme.cache" ]]; then
 			# Clear stale cache files after theme uninstallation
-			rm "${EROOT}${dir}/icon-theme.cache"
+			rm "${dir}/icon-theme.cache"
 		fi
 
-		if [[ -z $(ls "${EROOT}${dir}") ]]; then
+		if [[ -z $(ls "${dir}") ]]; then
 			# Clear empty theme directories after theme uninstallation
-			rmdir "${EROOT}${dir}"
+			rmdir "${dir}"
 		fi
 	done
 
