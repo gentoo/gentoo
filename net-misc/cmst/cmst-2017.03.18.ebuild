@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit qmake-utils
+inherit gnome2-utils qmake-utils
 
 DESCRIPTION="Qt GUI for Connman with system tray icon"
 HOMEPAGE="https://github.com/andrew-bibb/cmst"
@@ -33,4 +33,16 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	rm -r "${D}"/usr/share/licenses || die
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
