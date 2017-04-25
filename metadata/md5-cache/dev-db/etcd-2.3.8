@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-lang/go-1.4:= virtual/pkgconfig
+DESCRIPTION=Highly-available key value store for shared configuration and service discovery
+EAPI=5
+HOMEPAGE=https://github.com/coreos/etcd/
+IUSE=doc
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=!dev-db/etcdctl
+SLOT=0
+SRC_URI=https://github.com/coreos/etcd/archive/v2.3.8.tar.gz -> etcd-2.3.8.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=7ccf38791c9857a132d0ba2b47b65dd3
