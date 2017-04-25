@@ -16,7 +16,7 @@ SRC_URI=""
 
 LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
-SLOT="0/55"
+SLOT="0/57"
 KEYWORDS=""
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
