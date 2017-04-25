@@ -22,8 +22,8 @@ SLOT="0"
 IUSE="examples"
 
 DEPEND="virtual/linux-sources"
-RDEPEND=""
-#test now compile, but need the module to run
+
+#test requires that the module is already loaded
 RESTRICT="test"
 
 MODULE_NAMES="cryptodev(extra:${S})"
