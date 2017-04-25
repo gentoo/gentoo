@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (25 Apr 2017)
+# Oracle doesn't include VisualVM on this platform.
+dev-java/oracle-jdk-bin visualvm
+
 # Patrice Clement <monsieurp@gentoo.org> (09 Apr 2017)
 # Enable MQTT support on supported architectures
 app-admin/collectd -collectd_plugins_mqtt
