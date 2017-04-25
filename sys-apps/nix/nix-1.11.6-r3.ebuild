@@ -51,12 +51,12 @@ DOC_CONTENTS=" Quick start user guide on Gentoo:
 [as root] enable nix-daemon service:
 	[systemd] # systemctl enable nix-daemon
 	[openrc]  # rc-update add nix-daemon
-[as an user] relogin to get environment and profile update
-[as an user] fetch nixpkgs update:
+[as a user] relogin to get environment and profile update
+[as a user] fetch nixpkgs update:
 	\$ nix-channel --update
-[as an user] install nix packages:
+[as a user] install nix packages:
 	\$ nix-env -i mc
-[as an user] configure environment:
+[as a user] configure environment:
 	Somewhere in .bash_profile you might want to set
 	LOCALE_ARCHIVE=\$HOME/.nix-profile/lib/locale/locale-archive
 	but please read https://github.com/NixOS/nixpkgs/issues/21820
@@ -70,7 +70,7 @@ pkg_setup() {
 	for i in {1..10}; do
 		# we list 'nixbld' twice to
 		# both assign a primary group for user
-		# and add an user to /etc/group
+		# and add a user to /etc/group
 		enewuser nixbld${i} -1 -1 /var/empty nixbld,nixbld
 	done
 }
@@ -101,8 +101,8 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	# here we an eager variant of something that
-	# is lazily done by  nix-daemo and root nix-env
+	# here we use an eager variant of something that
+	# is lazily done by  nix-daemon and root nix-env
 
 	# TODO: will need a tweak for prefix
 	keepdir             /nix/store
