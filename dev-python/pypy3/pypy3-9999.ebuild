@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 EHG_REVISION="py3k"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils \
+inherit check-reqs mercurial multiprocessing pax-utils \
 	python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
@@ -83,9 +83,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
-		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
-		"${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
+	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -93,10 +93,10 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	epatch "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
 	popd > /dev/null || die
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
