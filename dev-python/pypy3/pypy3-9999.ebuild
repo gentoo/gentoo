@@ -169,8 +169,8 @@ src_compile() {
 	emake -C "${T}"/usession*-0/testing_1
 
 	# copy back to make sys.prefix happy
-	cp -p "${T}"/usession*-0/testing_1/{pypy-c,libpypy-c.so} . || die
-	pax-mark m pypy-c libpypy-c.so
+	cp -p "${T}"/usession*-0/testing_1/{pypy3-c,libpypy3-c.so} . || die
+	pax-mark m pypy3-c libpypy3-c.so
 
 	#use doc && emake -C pypy/doc html
 }
@@ -181,18 +181,18 @@ src_test() {
 
 	# Test runner requires Python 2 too. However, it spawns PyPy3
 	# internally so that we end up testing the correct interpreter.
-	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy-c lib-python || die
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
 }
 
 src_install() {
 	local dest=/usr/$(get_libdir)/pypy3
 	einfo "Installing PyPy ..."
 	exeinto "${dest}"
-	doexe pypy-c libpypy-c.so
-	pax-mark m "${ED%/}${dest}/pypy-c" "${ED%/}${dest}/libpypy-c.so"
+	doexe pypy3-c libpypy3-c.so
+	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
 	insinto "${dest}"
 	doins -r include lib_pypy lib-python
-	dosym ../$(get_libdir)/pypy3/pypy-c /usr/bin/pypy3
+	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
 
 	if ! use gdbm; then
@@ -215,7 +215,7 @@ src_install() {
 
 	einfo "Generating caches and byte-compiling ..."
 
-	local -x PYTHON=${ED%/}${dest}/pypy-c
+	local -x PYTHON=${ED%/}${dest}/pypy3-c
 	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
