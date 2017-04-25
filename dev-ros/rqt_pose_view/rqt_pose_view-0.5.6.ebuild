@@ -19,7 +19,6 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	dev-ros/python_qt_binding[${PYTHON_USEDEP}]
-	dev-python/PyQt4[opengl,${PYTHON_USEDEP}]
 	dev-python/rospkg[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/rostopic[${PYTHON_USEDEP}]
