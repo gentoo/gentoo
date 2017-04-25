@@ -12,20 +12,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+# This needs a newer phpunit and a modified autoload.php but should work.
+RESTRICT=test
+
 RDEPEND="
 	dev-lang/php:*
 	dev-php/fedora-autoloader
 	dev-php/symfony-filesystem"
-DEPEND="
-	test? (
-		${RDEPEND}
-		dev-php/phpunit )"
+DEPEND="test? (	${RDEPEND} dev-php/phpunit )"
 
 S="${WORKDIR}/config-${PV}"
 
 src_prepare() {
 	default
 	if use test; then
+		# Not quite right: we need to include PHPUnit's autoload.php as
+		# part of ours for the test suite to work.
 		cp "${FILESDIR}"/autoload.php "${S}"/autoload-test.php || die
 	fi
 }
