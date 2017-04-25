@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MY_P="${P/cluster-}"
-inherit autotools multilib eutils base user
+inherit autotools eutils multilib user
 
 DESCRIPTION="Library pack for Heartbeat / Pacemaker"
 HOMEPAGE="http://www.linux-ha.org/wiki/Cluster_Glue"
@@ -34,17 +34,14 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/Reusable-Cluster-Components-glue--${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/1.0.12-respect_cflags.patch"
-)
-
 pkg_setup() {
 	enewgroup haclient
 	enewuser  hacluster -1 /dev/null /var/lib/heartbeat haclient
 }
 
 src_prepare() {
-	base_src_prepare
+	default
+	sed -e '/ -ggdb/d' -i configure.ac || die
 	sed -e "s@http://docbook.sourceforge.net/release/xsl/current@/usr/share/sgml/docbook/xsl-stylesheets/@g" \
 		-i doc/Makefile.am || die
 	eautoreconf
@@ -69,7 +66,7 @@ src_configure() {
 }
 
 src_install() {
-	base_src_install
+	default
 
 	dodir /var/lib/heartbeat/cores
 	dodir /var/lib/heartbeat/lrm
