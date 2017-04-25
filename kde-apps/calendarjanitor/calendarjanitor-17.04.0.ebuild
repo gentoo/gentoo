@@ -36,7 +36,7 @@ src_prepare() {
 
 	# delete colliding konsolekalendar translations
 	if [[ ${KDE_BUILD_TYPE} = release ]]; then
-		rm po/*/konsolekalendar.po || die
+		rm -f po/*/konsolekalendar.po || die
 		rm -rf po/*/docs/konsolekalendar || die
 	fi
 }
