@@ -15,14 +15,14 @@ SLOT="6"
 
 MY_P=${PN}${SLOT}-${PV}
 SRC_URI="mirror://sourceforge/eric-ide/${PN}${SLOT}/stable/${PV}/${MY_P}.tar.gz"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/sip-4.14.3[${PYTHON_USEDEP}]
-	>=dev-python/PyQt4-4.10[${PYTHON_USEDEP},X,help,sql,svg,webkit]
-	>=dev-python/qscintilla-python-2.8[qt4(+),${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.5.1[${PYTHON_USEDEP},gui,help,network,printsupport,sql,svg,webkit]
+	>=dev-python/qscintilla-python-2.8[qt5,${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
@@ -59,7 +59,6 @@ src_install() {
 		-i "${D}" \
 		-c \
 		-z \
-		--pyqt=4 \
 		|| die
 
 	python_optimize
