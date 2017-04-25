@@ -63,6 +63,7 @@ src_prepare() {
 	rm -fr Modules/zlib
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	epatch "${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
 
 	epatch_user
 
