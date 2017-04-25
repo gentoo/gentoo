@@ -11894,7 +11894,7 @@ kde-apps/kompare 16.12.3 17.04.0: A program to view the differences between file
 kde-apps/konq-plugins 16.08.3: Various plugins for konqueror
 kde-apps/konqueror 16.08.3-r1 16.12.3 17.04.0: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 16.12.3 17.04.0: Galactic Strategy KDE Game
-kde-apps/konsole 16.12.3 17.04.0: KDE's terminal emulator
+kde-apps/konsole 16.12.3 16.12.3-r1 17.04.0: KDE's terminal emulator
 kde-apps/konsolekalendar 4.4.2016.01 4.14.11_pre20160211 17.04.0: Command line interface to KDE calendars
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 4.4.2016.01 4.14.11_pre20160211 17.04.0: Container application to unify several major PIM applications within one
@@ -13080,7 +13080,7 @@ media-libs/libtiger 0.3.4: A rendering library for Kate streams using Pango and 
 media-libs/libtimidity 0.1.0-r2 0.2.0 0.2.2 0.2.4: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
-media-libs/libv4l 1.6.2 1.10.0 1.10.1: Separate libraries ebuild from upstream v4l-utils package
+media-libs/libv4l 1.6.2 1.10.0 1.10.1 1.12.3: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.0.30 0.1.5 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.5: The Ogg Vorbis sound file format library
@@ -13976,7 +13976,7 @@ media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide 
 media-tv/tvheadend 4.0.9 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.3 2.4: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2: driver for saa716x based dvb cards like Technotrend S2-6400 or Technisat Skystar 2 eXpress HD
-media-tv/v4l-utils 1.6.2 1.10.1: Separate utilities ebuild from upstream v4l-utils package
+media-tv/v4l-utils 1.6.2 1.10.1 1.12.3: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/xmltv 0.5.57 0.5.67 0.5.68: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
