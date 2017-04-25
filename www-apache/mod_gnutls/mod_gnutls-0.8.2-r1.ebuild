@@ -36,6 +36,10 @@ src_prepare() {
 src_configure() {
 	econf --with-apxs="${APXS}" \
 		--disable-strict \
+		--disable-doxygen-dot \
+		--disable-doxygen-doc \
+		--disable-doxygen-html \
+		--disable-doxygen-pdf \
 		ac_cv_path_UNSHARE=no
 }
 
