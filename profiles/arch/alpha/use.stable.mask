@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary mask to support stable bug 615818
-ruby_targets_ruby22
-
 # Tobias Klausmann <klausman@gentoo.org> (17 Mar 2016)
 # Webkit itself is enormous (~13h compile+test on our fastest dev machine), so
 # it will remain not-stable forever. Mask the USE flag accordingly.
