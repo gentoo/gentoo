@@ -65,14 +65,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
 # when available rather than always using the extranl library.
-#
-# To configure and compile qemu user targets or tools alone the following
-# dependencies are not strictly necessary:
-#   alsa? ( >=media-libs/alsa-lib-1.0.13 )
-#   fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
-#   pulseaudio? ( media-sound/pulseaudio )
-#   seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
-# but these are so few it is not worth the effort to separate this list.
 ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
