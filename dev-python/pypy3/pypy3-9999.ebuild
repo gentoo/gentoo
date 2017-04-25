@@ -8,8 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 EHG_REVISION="py3k"
-inherit check-reqs mercurial multiprocessing pax-utils \
-	python-any-r1 toolchain-funcs versionator
+inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
 HOMEPAGE="http://pypy.org/"
@@ -130,7 +129,6 @@ src_configure() {
 		$(usex sandbox --sandbox '')
 
 		${jit_backend}
-		--make-jobs=$(makeopts_jobs)
 
 		pypy/goal/targetpypystandalone
 	)
