@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-CDEPEND=">=net-libs/gnutls-3.4.0:="
+CDEPEND=">=net-libs/gnutls-3.3.0:="
 DEPEND="${CDEPEND}
 	test? ( app-crypt/monkeysphere )"
 RDEPEND="${CDEPEND}"
