@@ -27,7 +27,3 @@ VIDEO_CARDS="fbdev glint mach64 mga nv r128 radeon savage tdfx voodoo"
 # Defaults for audio drivers. These are copied from x86 (minus modems), since
 # Alpha supports the same busses.
 ALSA_CARDS="ali5451 als4000 bt87x ca0106 cmipci emu10k1 ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 maestro3 trident usb-audio via82xx ymfpci"
-
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary entry to support stable bug 615818
-RUBY_TARGETS="ruby21"
