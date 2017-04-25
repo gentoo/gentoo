@@ -1,0 +1,44 @@
+commit 3670b49d572195f623297eb7f27c62136ffe3490
+Author: Aleix Pol <aleixpol@kde.org>
+Date:   Tue Apr 25 12:25:12 2017 +0200
+
+    build: Remove KService dependency
+    
+    Summary:
+    ..as it's not used anywhere (and the KService isn't some kind of
+    "selfinitializing" library, that only needs to be linked to).
+    
+    Reviewers: graesslin, cfeck, apol
+    
+    Reviewed By: graesslin
+    
+    Subscribers: #frameworks
+    
+    Tags: #frameworks
+    
+    Differential Revision: https://phabricator.kde.org/D5556
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4e5a9e4..670c677 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,7 +39,6 @@ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Crash ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5DBusAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5WindowSystem ${KF5_DEP_VERSION} REQUIRED)
+-find_package(KF5Service ${KF5_DEP_VERSION} REQUIRED)
+ 
+ # no X11 stuff on mac
+ if (NOT APPLE)
+diff --git a/src/runtime/CMakeLists.txt b/src/runtime/CMakeLists.txt
+index 4aeb13c..a318818 100644
+--- a/src/runtime/CMakeLists.txt
++++ b/src/runtime/CMakeLists.txt
+@@ -30,7 +30,6 @@ target_link_libraries(KF5GlobalAccelPrivate
+    KF5::WindowSystem # KKeyServer
+    KF5::CoreAddons   # KAboutData
+    KF5::ConfigCore
+-   KF5::Service
+ )
+ 
+ set_target_properties(KF5GlobalAccelPrivate PROPERTIES VERSION   ${KGLOBALACCEL_VERSION_STRING}
