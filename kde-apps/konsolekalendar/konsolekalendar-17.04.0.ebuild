@@ -34,7 +34,7 @@ src_prepare() {
 
 	# delete colliding calendarjanitor translations
 	if [[ ${KDE_BUILD_TYPE} = release ]]; then
-		rm po/*/calendarjanitor.po || die
+		rm -f po/*/calendarjanitor.po || die
 	fi
 
 	cmake_comment_add_subdirectory calendarjanitor
