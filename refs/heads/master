@@ -1,17 +1,13 @@
 certificate version 0.1
-pusher 0x4AB3E85B4F064CA3 1493161493 -0400
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1493161496-6391a807609d85affd87
+pusher 0BBEEA1FEA4843A4 1493163032 -0400
+pushee ssh://git.gentoo.org/repo/gentoo.git
+nonce 1493163032-4ede9b57cd6b0ea4d7f4
 
-14fe78ed6d80cf33bba5de3e4363eab1eec9c69a da088f300094bd475aa3df233430a69567e0b9ff refs/heads/master
+da088f300094bd475aa3df233430a69567e0b9ff cbf8335bf45dcd04d19c944381adc9dcf3d1be35 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEdKLmUUxYP6Se7qEJSrPoW08GTKMFAlj/1hUACgkQSrPoW08G
-TKOFLwgAotUGfT6GHDpQAEeX+M15SMYKby89j7XLz4BT2kFiAyjSAPyecI+Yowl4
-t/X7noA0T7VoxMKXouqTmbmsIzDIf7ipDkSDI3GYP/WbVeU2naqwTGm30/IPVjSF
-/2K8DRRoqgekLKHwJ2VxQgWfHs7D4d0CRDZTgnFBbuq5c3j9BuPziaIuCdqYoxg8
-vrhbFODxkkby5xp5O6ivBje1WZNT14FfX9xcEkDzkALd0hLSvAFpggCfL+mfZ/vc
-RIpUhGm4BTgIb7X1mYFOx6BZffjoq6InMwp75DboaX6Q6w2pTkU/JHZkcnZOdkkD
-FMPiEzPmh+Or+OSOP4z6umHj+2t9hw==
-=+I0A
+iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWP/cGAAKCRBHG+cz7yka
+P45RAQCnyqFMLt6Lxl8T9McTvV+UbcuWV0yG5O7Nx/eZcQok4AD/bqTbHjpiya9r
+y8AKzeK6ROCWMsp991m+k3K2sz/D7gg=
+=AfWA
 -----END PGP SIGNATURE-----
