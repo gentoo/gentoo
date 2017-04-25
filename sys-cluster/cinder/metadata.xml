@@ -12,7 +12,6 @@
   <use>
     <flag name="api">Installs the initscripts for the cinder api service</flag>
     <flag name="iscsi">Allow using an iSCSI remote storage server as pool for disk image storage</flag>
-		<flag name="lio">Enable lio storage backend support</flag>
     <flag name="lvm">Allow using the Logical Volume Manager (<pkg>sys-fs/lvm2</pkg>) as pool for disk image storage</flag>
     <flag name="memcached">Installs the memcached server</flag>
 		<flag name="rdma">Enable rdma storage backend support</flag>
