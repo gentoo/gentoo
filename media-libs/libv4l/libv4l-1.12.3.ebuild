@@ -18,7 +18,7 @@ IUSE="jpeg"
 
 # The libraries only link to -ljpeg, therefore multilib depend only for virtual/jpeg.
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
-	virtual/udev
+	virtual/libudev
 	!media-tv/v4l2-ctl
 	!<media-tv/ivtv-utils-1.4.0-r2"
 DEPEND="${RDEPEND}
