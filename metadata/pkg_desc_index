@@ -1905,7 +1905,7 @@ app-misc/pwsafe 0.2.0-r2 0.2.0-r3: A Password Safe compatible command-line passw
 app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multiple ISPs
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/qlcplus 4.10.5b: QLC+ - Q Light Controller Plus to control DMX interfaces
-app-misc/ranger 1.8.1 9999: A vim-inspired file manager for the console
+app-misc/ranger 1.8.1 1.9.0_beta5 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.19.5-r1 1.22.4: A personal full text search package
@@ -5210,7 +5210,7 @@ dev-ml/core_bench 0.9.0: Micro-benchmarking library for OCaml
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
 dev-ml/core_kernel 0.9.0: System-independent part of Core
 dev-ml/core_profiler 0.9.0: Jane Street's profiling library
-dev-ml/cppo 1.4.1: An equivalent of the C preprocessor for OCaml programs
+dev-ml/cppo 1.4.1 1.5.0: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10 1.11: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.5 1.6: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
@@ -5254,7 +5254,7 @@ dev-ml/lwt_ssl 1.0.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.4: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20170101 20170418: LR(1) parser generator for the OCaml language
-dev-ml/merlin 2.5.3: Context sensitive completion for OCaml in Vim and Emacs
+dev-ml/merlin 2.5.3 2.5.4: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
@@ -12044,7 +12044,7 @@ kde-frameworks/kdoctools 5.29.0 5.33.0: Tools to generate documentation in vario
 kde-frameworks/kemoticons 5.29.0 5.33.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 4: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.29.0 5.33.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.29.0 5.33.0: Framework to handle global shortcuts
+kde-frameworks/kglobalaccel 5.29.0 5.33.0-r1: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.29.0 5.33.0: Framework providing assorted high-level user interface components
 kde-frameworks/khtml 5.29.0 5.33.0: KHTML web rendering engine
 kde-frameworks/ki18n 5.29.0 5.33.0: Framework based on Gettext for internationalizing user interface text
@@ -17934,7 +17934,7 @@ sys-process/parallel 20150522 20160622 20160722 20160822 20170322: A shell tool 
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
-sys-process/procenv 0.45 0.46 0.47 0.49: command-line utility to show process environment
+sys-process/procenv 0.49: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
 sys-process/procps 3.3.12: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
