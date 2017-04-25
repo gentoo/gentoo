@@ -207,6 +207,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-5987.patch   #609398
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-6505.patch   #612220
 	"${FILESDIR}"/${PN}-2.8.0-CVE-2017-7377.patch   #614744
+	"${FILESDIR}"/${PN}-2.8.1-CVE-2017-7471.patch   #616484
+	"${FILESDIR}"/${PN}-2.8.1-CVE-2017-8086.patch   #616460
 )
 
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
