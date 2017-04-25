@@ -19,14 +19,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-# Warning: the "range" dependencies below only work so long
-# as the libraries they refer to are not slotted.
 RDEPEND="dev-lang/php
 	dev-php/fedora-autoloader
-	( >=dev-php/symfony-config-2.3.0 <dev-php/symfony-config-3 )
-	( >=dev-php/symfony-dependency-injection-2.3.0
-		<dev-php/symfony-dependency-injection-3 )
-	<dev-php/symfony-filesystem-3"
+	>=dev-php/symfony-config-2.3
+	>=dev-php/symfony-dependency-injection-2.3
+	>=dev-php/symfony-filesystem-2.3"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
