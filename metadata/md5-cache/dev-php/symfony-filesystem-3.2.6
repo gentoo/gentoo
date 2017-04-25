@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare test
+DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader dev-php/phpunit )
+DESCRIPTION=Symfony Filesystem Component
+EAPI=6
+HOMEPAGE=https://github.com/symfony/filesystem
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/symfony/filesystem/archive/v3.2.6.tar.gz -> symfony-filesystem-3.2.6.tar.gz
+_eclass_exported_funcs=src_prepare:- src_test:- src_install:-
+_md5_=be5b7c9ae5a6c11e449da80522866717
