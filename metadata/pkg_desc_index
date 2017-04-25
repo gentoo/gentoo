@@ -17477,7 +17477,7 @@ sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster f
 sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.6 2.0.2 2.1.0-r1: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2016.1.9999 2016.2.9999 2017.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
-sys-cluster/pacemaker 1.1.12-r2 1.1.14: Pacemaker CRM
+sys-cluster/pacemaker 1.1.12-r2 1.1.14 1.1.16: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r3: Tool for managing multiple xterms simultaneously
 sys-cluster/ploop 1.13.2 1.14.1: openvz tool and a library to control ploop block devices
