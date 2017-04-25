@@ -11,12 +11,9 @@ EHG_REVISION="py3k"
 inherit check-reqs eutils mercurial multilib multiprocessing pax-utils \
 	python-any-r1 toolchain-funcs versionator
 
-CPY_PATCHSET_VERSION="3.3.5-0"
-
 DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI="
-	https://dev.gentoo.org/~floppym/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
+SRC_URI=""
 
 LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
@@ -96,8 +93,7 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	epatch "${FILESDIR}"/5.7.1_all_distutils_cxx.patch \
-		"${WORKDIR}"/patches/24_all_sqlite-3.8.4.patch
+	epatch "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
 	popd > /dev/null || die
 
 	epatch_user
