@@ -9165,7 +9165,7 @@ dev-ros/rqt_moveit 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Assists monit
 dev-ros/rqt_msg 0.4.7 0.4.8 9999: Python GUI plugin for introspecting available ROS message types
 dev-ros/rqt_nav_view 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Provides a gui for viewing navigation maps and paths
 dev-ros/rqt_plot 0.4.7 0.4.8 9999: GUI plugin visualizing numeric values in a 2D plot
-dev-ros/rqt_pose_view 0.5.5 0.5.6 9999: GUI plugin for visualizing 3D poses
+dev-ros/rqt_pose_view 0.5.6 9999: GUI plugin for visualizing 3D poses
 dev-ros/rqt_publisher 0.4.7 0.4.8 9999: GUI plugin for publishing arbitrary messages with fixed or computed field values
 dev-ros/rqt_py_common 0.4.7 0.5.0 9999: Common functionality for rqt plugins written in Python
 dev-ros/rqt_py_console 0.4.7 9999: Python GUI plugin providing an interactive Python console
@@ -18606,7 +18606,7 @@ x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pan
 x11-libs/libFS 1.0.6 1.0.7: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r1: X.Org Inter-Client Exchange library
-x11-libs/libQGLViewer 2.6.1 2.6.2 2.6.3 2.6.4: C++ library based on Qt that eases the creation of OpenGL 3D viewers
+x11-libs/libQGLViewer 2.6.4: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.2-r1: X.Org Session Management library
 x11-libs/libX11 1.6.5: X.Org X11 library
 x11-libs/libXCalibrate 0.1_pre20081207-r1: X.Org Calibrate client-side protocol library
