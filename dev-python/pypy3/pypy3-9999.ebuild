@@ -86,6 +86,8 @@ src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	# disarm implicit -flto
+	eapply "${FILESDIR}"/5.7.1-kill-flto.patch
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \

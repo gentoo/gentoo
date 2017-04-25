@@ -1,0 +1,27 @@
+From 261f9280d9736965a8626c2d6a6fadd4254b2b89 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 25 Apr 2017 17:03:46 +0200
+Subject: [PATCH] Kill -flto
+
+---
+ rpython/translator/platform/posix.py | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/rpython/translator/platform/posix.py b/rpython/translator/platform/posix.py
+index a8d4768..20a2934 100644
+--- a/rpython/translator/platform/posix.py
++++ b/rpython/translator/platform/posix.py
+@@ -130,10 +130,6 @@ class BasePosix(Platform):
+         else:
+             cflags = tuple(self.cflags) + tuple(self.standalone_only)
+ 
+-        # xxx check which compilers accept this option or not
+-        if not config or config.translation.gcrootfinder != 'asmgcc':
+-            cflags = ('-flto',) + cflags
+-
+         m = GnuMakefile(path)
+         m.exe_name = path.join(exe_name.basename)
+         m.eci = eci
+-- 
+2.12.2
+
