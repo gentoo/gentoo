@@ -164,10 +164,6 @@ dev-ruby/rubyzip:0
 sys-firmware/radeon-ucode
 sys-firmware/amdgpu-ucode
 
-# Patrice Clement <monsieurp@gentoo.org> (28 Mar 2017)
-# Part of the JDK since Java 6. Removal in 30 days.
-dev-java/swing-worker
-
 # Michał Górny <mgorny@gentoo.org> (27 Mar 2017)
 # No revdeps or real use case. Uses ECB mode for encryption which is
 # a bad idea. Requires patching for dev-python/pycryptodome. Abandoned
