@@ -10277,8 +10277,8 @@ dev-util/docker-ls 0.2.1_p20161102: Tools for browsing and manipulating docker r
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
-dev-util/drone 0.5.0 0.5.0-r1: A Continuous Delivery platform built on Docker, written in Go
-dev-util/drone-ui 0_pre20170305 0.5.0: React front-end for the Drone continuous integration server
+dev-util/drone 0.5.0-r1 0.6.0_rc1_p20160421: A Continuous Delivery platform built on Docker, written in Go
+dev-util/drone-ui 0.5.0 0.6.0_rc1_pre20170412: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
@@ -13713,7 +13713,7 @@ media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (J
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/k4guitune 1.1.1: Program to tune musical instruments using your computer's mic- or line- input
-media-sound/karlyriceditor 2.1 2.2-r1: Application to edit and synchronize lyrics with karaoke songs in various formats
+media-sound/karlyriceditor 2.2-r1: Application to edit and synchronize lyrics with karaoke songs in various formats
 media-sound/kaudiocreator 1.3-r3: KDE CD ripper and audio encoder frontend
 media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
 media-sound/kid3 3.4.4 3.4.5: Simple tag editor based on Qt
@@ -13788,7 +13788,7 @@ media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source s
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 2.0.2-r1 2.0.3 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.1: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
-media-sound/musique 1.4 1.5: Qt4 music player
+media-sound/musique 1.5: Qt music player
 media-sound/ncmpc 0.24 0.24-r2 0.25: A ncurses client for the Music Player Daemon (MPD)
 media-sound/ncmpcpp 0.7.7 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/neroaac 1.5.1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
@@ -13844,7 +13844,7 @@ media-sound/qsampler 0.4.0-r1 0.4.1 0.4.2: A graphical frontend to the LinuxSamp
 media-sound/qsynth 0.3.9 0.4.2-r1 0.4.3: A Qt application to control FluidSynth
 media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
-media-sound/qtgain 0.9.5 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
+media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
 media-sound/qtractor 0.8.0 0.8.1: Qtractor is an Audio/MIDI multi-track sequencer
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
@@ -17440,14 +17440,14 @@ sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
-sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
+sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
 sys-cluster/heat 7.0.2 8.0.0 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kubectl 1.5.2 1.5.3 1.6.1: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.5.2 1.5.3 1.6.1 1.6.2: CLI to run commands against Kubernetes clusters
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
