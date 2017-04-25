@@ -13,5 +13,6 @@
     <flag name="javafx">Install JavaFX libraries</flag>
     <flag name="jce">Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files</flag>
     <flag name="source">Install JVM (and optionally JavaFX) sources</flag>
+    <flag name="visualvm">Install VisualVM debugging tool</flag>
   </use>
 </pkgmetadata>
