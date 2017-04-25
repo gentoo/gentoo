@@ -60,7 +60,7 @@ SRC_URI+=" jce? ( ${JCE_FILE} )"
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="alsa commercial cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source"
+IUSE="alsa commercial cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source visualvm"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 
 RESTRICT="fetch preserve-libs strip"
@@ -236,8 +236,8 @@ src_install() {
 	# provided, they generally lag behind what Gentoo has available.
 	rm -vf jre/lib/*/libavplugin* || die
 
-	# We package this as dev-util/visualvm.
-	rm -vfr lib/visualvm || die
+	# Packaged as dev-util/visualvm but some users prefer this version.
+	use visualvm || find -name "*visualvm*" -exec rm -vfr {} + || die
 
 	dodoc COPYRIGHT
 	dodir "${dest}"
