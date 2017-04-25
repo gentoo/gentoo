@@ -1,16 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DESCRIPTION="JSON Lint for PHP"
-HOMEPAGE="https://github.com/Seldaek/jsonlint"
-SRC_URI="https://github.com/Seldaek/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="PHP implementation of JSON schema"
+HOMEPAGE="https://github.com/justinrainbow/json-schema"
+SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+# Tests are not in the release tarball
 RESTRICT="test"
 
 RDEPEND="
@@ -25,14 +26,13 @@ src_prepare() {
 	default
 	if use test; then
 		cp "${FILESDIR}"/autoload.php "${S}"/autoload-test.php || die
-		sed -i -e "s:__DIR__:'${S}/src/Seld/JsonLint':" "${S}"/autoload-test.php || die
 	fi
 }
 
 src_install() {
-	insinto "/usr/share/php/Seld/JsonLint"
-	doins -r src/Seld/JsonLint/. "${FILESDIR}"/autoload.php
-	dodoc README.mdown
+	insinto "/usr/share/php/JsonSchema"
+	doins -r src/JsonSchema/. "${FILESDIR}"/autoload.php
+	dodoc README.md
 }
 
 src_test() {
