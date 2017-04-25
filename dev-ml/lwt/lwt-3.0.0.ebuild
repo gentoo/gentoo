@@ -17,6 +17,7 @@ IUSE="+camlp4 +ppx"
 DEPEND="
 	dev-libs/libev
 	>=dev-lang/ocaml-4.02:=
+	dev-ml/result:=
 	ppx? ( dev-ml/ppx_tools:= )
 	camlp4? ( dev-ml/camlp4:= )"
 
