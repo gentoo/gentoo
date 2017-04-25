@@ -8,6 +8,7 @@
 	<use>
 		<flag name="postgresql">Adds support for postgresql</flag>
 		<flag name="projects">Adds support for projects</flag>
+		<flag name="pygobject">Adds support for pygobject</flag>
 		<flag name="shared">Build shared library</flag>
 		<flag name="static">Build static library</flag>
 	</use>
