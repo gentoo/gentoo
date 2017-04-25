@@ -5220,7 +5220,7 @@ dev-ml/easy-format 1.0.2 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.1.0 6.2.0 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
 dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
-dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
+dev-ml/facile 1.1.2: An OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
 dev-ml/flow_parser 0.42.0 0.43.1 0.44.0: JavaScript parser written in OCaml
