@@ -4121,7 +4121,7 @@ dev-java/java-config 2.2.0-r3: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1 0.4: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
-dev-java/java-sdk-docs 1.7.0.80 1.8.0.121: Oracle's documentation bundle (including API) for Java SE
+dev-java/java-sdk-docs 1.7.0.80 1.8.0.131: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r2: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
@@ -4336,7 +4336,7 @@ dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.121: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.8.0.121: Oracle's Java SE Runtime Environment
+dev-java/oracle-jre-bin 1.8.0.121 1.8.0.131: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
@@ -15533,7 +15533,7 @@ net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energ
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.4.4 9999: P2P communications protocol
-net-p2p/qbittorrent 3.3.7 3.3.10 3.3.11 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 3.3.10 3.3.11 3.3.12 9999: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.5.5c 0.6.0 0.6.1 0.6.2 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
