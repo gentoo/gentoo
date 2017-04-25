@@ -1,0 +1,45 @@
+diff --git a/usr/share/atom/resources/app/apm/node_modules/asar-require/lib/require.js b/usr/share/atom/resources/app/apm/node_modules/asar-require/lib/require.js
+index 47cb1bb..67895d5 100644
+--- a/usr/share/atom/resources/app/apm/node_modules/asar-require/lib/require.js
++++ b/usr/share/atom/resources/app/apm/node_modules/asar-require/lib/require.js
+@@ -1,5 +1,7 @@
+ (function() {
+-  var asar, asarStatsToFsStats, fakeTime, fs, gid, nextInode, path, readFileSync, realpathSync, splitPath, statSync, uid;
++  var asar, asarStatsToFsStats, fakeTime, fs, gid, nextInode, path, readFileSync, realpathSync, splitPath, statSync, uid;
++
++  var module, module_findPath, _e;
+
+   asar = require('asar');
+
+@@ -7,6 +9,12 @@
+
+   path = require('path');
+
++  try {
++    module = require('module');
++  } catch (_e) {
++    module = null;
++  }
++
+   splitPath = function(p) {
+     var index;
+     if (typeof p !== 'string') {
+@@ -124,5 +132,18 @@
+     }
+     return path.join(realpathSync(asarPath), filePath);
+   };
++
++  if (module && module._findPath) {
++    module_findPath = module._findPath;
++
++    module._findPath = function(request, paths, isMain) {
++      var asarPath, filePath, isAsar, _ref;
++      _ref = splitPath(request), isAsar = _ref[0], asarPath = _ref[1], filePath = _ref[2];
++      if (isAsar) {
++        return request;
++      }
++      return module_findPath.apply(this, arguments);
++    }
++  }
+
+ }).call(this);
