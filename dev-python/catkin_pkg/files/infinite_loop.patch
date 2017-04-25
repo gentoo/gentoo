@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/show_bug.cgi?id=612860
+By Tim Rakowski
+We os.walk /usr with followlinks=True, but at least nodejs contains a "recursive" link in /usr/include/node
+
+Index: catkin_pkg-0.3.1/src/catkin_pkg/packages.py
+===================================================================
+--- catkin_pkg-0.3.1.orig/src/catkin_pkg/packages.py
++++ catkin_pkg-0.3.1/src/catkin_pkg/packages.py
+@@ -52,7 +52,9 @@ def find_package_paths(basepath, exclude_paths=None, exclude_subspaces=False):
+     """
+     paths = []
+     real_exclude_paths = [os.path.realpath(p) for p in exclude_paths] if exclude_paths is not None else []
++    visited = set()
+     for dirpath, dirnames, filenames in os.walk(basepath, followlinks=True):
++        visited.add(dirpath)
+         if 'CATKIN_IGNORE' in filenames or \
+             os.path.realpath(dirpath) in real_exclude_paths or \
+                 (exclude_subspaces and '.catkin' in filenames):
+@@ -63,7 +65,7 @@ def find_package_paths(basepath, exclude_paths=None, exclude_subspaces=False):
+             del dirnames[:]
+             continue
+         for dirname in dirnames:
+-            if dirname.startswith('.'):
++            if dirname.startswith('.') or os.path.realpath(os.path.join(dirpath, dirname)) in visited:
+                 dirnames.remove(dirname)
+     return paths
+ 
