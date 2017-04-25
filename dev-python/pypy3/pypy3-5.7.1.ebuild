@@ -5,19 +5,18 @@ EAPI=6
 
 # pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
-EHG_PROJECT="pypy"
-EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-EHG_REVISION="py3k"
-inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs pax-utils python-any-r1 toolchain-funcs versionator
+
+MY_P=pypy3-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI=""
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2"
 
 LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
 SLOT="0/57"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
@@ -40,8 +39,7 @@ DEPEND="${RDEPEND}
 	!low-memory? ( ${PYTHON_DEPS} )"
 #	doc? ( dev-python/sphinx )
 
-# Who would care about predictable directory names?
-S="${WORKDIR}/pypy3-v${PV%_*}-src"
+S="${WORKDIR}/${MY_P}-src"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -74,11 +72,6 @@ pkg_setup() {
 
 		python-any-r1_pkg_setup
 	fi
-}
-
-src_unpack() {
-	default
-	mercurial_src_unpack
 }
 
 src_prepare() {
