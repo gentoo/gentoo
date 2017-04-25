@@ -4336,7 +4336,7 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.121: Oracle's Java SE Development Kit
+dev-java/oracle-jdk-bin 1.8.0.121 1.8.0.131: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.8.0.121 1.8.0.131: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
@@ -7155,7 +7155,7 @@ dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
 dev-php/php-redmine-api 1.5.9: A simple, object-oriented, PHP Redmine API client
 dev-php/phpDocumentor 2.3.0 2.7.0 2.8.2: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/phpcov 1.1.0: CLI frontend for PHP_CodeCoverage
-dev-php/phpdepend 2.3.2: Static code analysis for PHP
+dev-php/phpdepend 2.5.0: Static code analysis for PHP
 dev-php/phpdocumentor-reflection-common 1.0: Common reflection classes used by phpdocumentor to reflect the code structure
 dev-php/phpdocumentor-reflection-docblock 3.1.1: Provide support for annotations via DocBlocks
 dev-php/phpdocumentor-type-resolver 0.2.1: PSR-5 based resolver of Class names, Types and Structural Element Names
@@ -8012,7 +8012,7 @@ dev-python/oslo-db 4.7.1 4.13.5 4.17.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.5.0 3.9.0 3.12.0: Oslo i18n library
 dev-python/oslo-log 3.3.0 3.16.0 3.20.1: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 4.6.1 4.6.1-r1 5.10.1 5.17.1: Messaging API for RPC and notifications over different messaging transports
-dev-python/oslo-middleware 3.8.0-r2 3.19.0-r1 3.23.1: Components injected into wsgi pipelines to intercept request/response flows.
+dev-python/oslo-middleware 3.8.0-r2 3.19.0-r1 3.19.1 3.23.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.6.0 1.14.0 1.18.0: Provides support for RBAC policy enforcement across all OpenStack services.
 dev-python/oslo-privsep 1.13.1 1.13.2 1.16.0: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.7.0 1.14.0 1.17.0: generified reports for openstack
@@ -8400,7 +8400,7 @@ dev-python/python-gnupg 0.3.7 0.3.8 0.3.8-r1: Python wrapper for GNU Privacy Gua
 dev-python/python-gnutls 2.0.1 3.1.1: High level object oriented wrapper around libgnutls
 dev-python/python-gtkmvc 1.99.1: model-view-controller (MVC) implementation for pygtk
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
-dev-python/python-heatclient 0.8.0 1.5.0 1.8.0: OpenStack Orchestration API Client Library
+dev-python/python-heatclient 0.8.0 1.5.0 1.5.1 1.8.0 1.8.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 0.8.0 0.9.0 0.10.0 0.11.0: Python bindings for iptables
 dev-python/python-ironicclient 0.9.0 1.7.1 1.11.1: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
@@ -17445,7 +17445,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for par
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 7.0.2 8.0.0 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 7.0.2 7.0.3 8.0.0 8.0.1 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
