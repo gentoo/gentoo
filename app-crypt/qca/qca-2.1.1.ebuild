@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils multibuild qmake-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
-HOMEPAGE="http://delta.affinix.com/qca/"
+HOMEPAGE="https://userbase.kde.org/QCA"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
