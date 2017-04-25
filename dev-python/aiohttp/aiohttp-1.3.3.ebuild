@@ -44,15 +44,6 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-	sed -e 's|^        self.pid = '\''pid'\'$'|\
-        try:\
-            self.pid = '\''pid'\''\
-        except:\
-            pass|' -i tests/test_worker.py || die
-}
-
 python_compile_all() {
 	use doc && emake -C docs html
 }
