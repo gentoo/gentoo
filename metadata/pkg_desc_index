@@ -7086,8 +7086,8 @@ dev-php/doctrine-instantiator 1.0.5: Utility to instantiate objects in PHP witho
 dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/igbinary 1.2.1-r1 2.0.1: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2: Object-oriented graphing library for PHP
-dev-php/json-schema 2.0.0: PHP implementation of JSON schema
-dev-php/jsonlint 1.4.0: JSON Lint for PHP
+dev-php/json-schema 4.1.0: PHP implementation of JSON schema
+dev-php/jsonlint 1.6.0: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
 dev-php/libvirt-php 0.5.2 9999: PHP 5 bindings for libvirt
 dev-php/magickwand 1.0.9-r2: A native PHP-extension to the ImageMagick MagickWand API
@@ -7367,7 +7367,7 @@ dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20 3.1.24-r1 4.0.2: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2 2.10.0: CLI Application Framework for Python
-dev-python/certifi 2016.9.26 2017.1.23: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2016.9.26 2017.1.23 2017.4.17: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0 1.8.3 1.9.1 1.10.0: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
@@ -17448,7 +17448,7 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 9999: C++ runtime system for parallel 
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kubectl 1.5.2 1.5.3 1.6.1 1.6.2: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.6.2: CLI to run commands against Kubernetes clusters
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
