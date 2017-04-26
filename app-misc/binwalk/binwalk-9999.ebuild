@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/devttys0/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="A tool for identifying files embedded inside firmware images"
@@ -25,8 +25,6 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7)
 	graph? ( dev-python/pyqtgraph[opengl,${PYTHON_USEDEP}] )
 "
-
-PATCHES=( "${FILESDIR}"/0001-Added-check-for-backports.lzma-when-importing-lzma-m.patch )
 
 python_install_all() {
 	local DOCS=( API.md INSTALL.md README.md )
