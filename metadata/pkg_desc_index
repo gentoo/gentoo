@@ -1719,7 +1719,7 @@ app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
 app-misc/bijiben 3.20.2 3.21.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
-app-misc/binwalk 2.0.1 2.1.1: A tool for identifying files embedded inside firmware images
+app-misc/binwalk 2.1.1 9999: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2 1.6.2-r1: Displays a list of events happening in the near future
 app-misc/blink1 1.98: blink(1) USB RGB LED status light control suite
 app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
@@ -8291,7 +8291,7 @@ dev-python/pypy-bin 5.6.0 5.7.1: Pre-built version of PyPy
 dev-python/pypy3 5.5.0_alpha 5.7.1 9999: A fast, compliant alternative implementation of the Python (3.3) language
 dev-python/pypy3-bin 5.5.0_alpha 5.7.1: A fast, compliant alternative implementation of Python 3.3 (binary package)
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
-dev-python/pyqtgraph 0.9.9 0.9.10 0.10.0: a pure-python graphics and GUI library built on PyQt/PySide and numpy
+dev-python/pyqtgraph 0.10.0: a pure-python graphics and GUI library built on PyQt/PySide and numpy
 dev-python/pyquery 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
