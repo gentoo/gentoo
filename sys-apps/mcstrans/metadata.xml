@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
+	<longdescription>
+		MCS translation daemon translates SELinux contexts to human readable format
+	</longdescription>
+	<upstream>
+		<remote-id type="github">SELinuxProject/selinux</remote-id>
+	</upstream>
+</pkgmetadata>
