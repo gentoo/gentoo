@@ -6,8 +6,6 @@ EAPI="6"
 inherit toolchain-funcs
 
 MY_RELEASEDATE="20161014"
-SEPOL_VER="${PV}"
-SELNX_VER="${PV}"
 
 MY_P="${P//_/-}"
 IUSE=""
@@ -22,13 +20,16 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-DESCRIPTION="SELinux policy module utilities"
+DESCRIPTION="Daemon to watch for creation and set default SELinux fcontexts"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libsepol-${SEPOL_VER}:="
+DEPEND=">=sys-libs/libsepol-${PV}:=
+	>=sys-libs/libselinux-${PV}:=
+	dev-libs/libpcre:=
+	>=sys-libs/libcap-1.10-r10:="
 
 RDEPEND="${DEPEND}
 	!<sys-apps/policycoreutils-2.7_pre"
@@ -36,7 +37,7 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 
-	sed -i 's/-Werror//g' "${S}"/*/Makefile || die "Failed to remove Werror"
+	sed -i 's/-Werror//g' "${S}"/Makefile || die "Failed to remove Werror"
 }
 
 src_compile() {
@@ -48,6 +49,9 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
-		LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
 		install
+
+	rm -rf "${D}/etc/rc.d" || die
+
+	newinitd "${FILESDIR}/restorecond.init" restorecond
 }

@@ -83,12 +83,7 @@ src_prepare() {
 	cd "${S}" || die "Failed to switch to ${S}"
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live ebuilds please use /etc/portage/patches
-		eapply "${FILESDIR}/0010-remove-sesandbox-support.patch"
-		eapply "${FILESDIR}/0020-disable-autodetection-of-pam-and-audit.patch"
-		eapply "${FILESDIR}/0030-make-inotify-check-use-flag-triggered.patch"
-		eapply "${FILESDIR}/0070-remove-symlink-attempt-fails-with-gentoo-sandbox-approach.patch"
-		eapply "${FILESDIR}/0110-build-mcstrans-bug-472912.patch"
-		eapply "${FILESDIR}/0120-build-failure-for-mcscolor-for-CONTEXT__CONTAINS.patch"
+		eapply "${FILESDIR}/policycoreutils-2.7-0001-newrole-not-suid.patch"
 	fi
 
 	# rlpkg is more useful than fixfiles
@@ -114,9 +109,9 @@ src_compile() {
 	building() {
 		emake -C "${BUILD_DIR}" \
 			AUDIT_LOG_PRIVS="y" \
-			AUDITH="$(usex audit)" \
-			PAMH="$(usex pam)" \
-			INOTIFYH="$(usex dbus)" \
+			AUDITH="$(usex audit y n)" \
+			PAMH="$(usex pam y n)" \
+			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			PYLIBVER="${EPYTHON}" \
@@ -133,9 +128,9 @@ src_install() {
 	installation-policycoreutils() {
 		einfo "Installing policycoreutils"
 		emake -C "${BUILD_DIR}" DESTDIR="${D}" \
-			AUDITH="$(usex audit)" \
-			PAMH="$(usex pam)" \
-			INOTIFYH="$(usex dbus)" \
+			AUDITH="$(usex audit y n)" \
+			PAMH="$(usex pam y n)" \
+			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			AUDIT_LOG_PRIV="y" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \
