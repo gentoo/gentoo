@@ -1,0 +1,11 @@
+--- aunit-3.8.0w-src/Makefile.old	2017-01-04 18:13:29.634899987 +0100
++++ aunit-3.8.0w-src/Makefile	2017-01-04 18:15:59.013219503 +0100
+@@ -29,7 +29,7 @@
+ .PHONY: all clean targets install_clean install
+ 
+ all:
+-	$(GPRBUILD) -p $(GPROPTS) lib/gnat/aunit.gpr
++	$(GPRBUILD) -p $(GPROPTS) lib/gnat/aunit.gpr -cargs $(ADAFLAGS)
+ 
+ clean-lib:
+ 	$(RM) -fr lib/aunit lib/aunit-obj
