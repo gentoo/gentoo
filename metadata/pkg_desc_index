@@ -8273,7 +8273,7 @@ dev-python/pyopenssl 0.15.1-r1 16.1.0 16.2.0: Python interface to the OpenSSL li
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
-dev-python/pyparsing 1.5.6-r2 2.0.3 2.1.8 2.1.10: Easy-to-use Python module for text parsing
+dev-python/pyparsing 1.5.6-r2 2.0.3 2.1.8 2.1.10 2.2.0: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7: Python bindings for sys-block/parted
 dev-python/pypax 0.9.2 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.1.3 1.1.4 1.1.5: Simplified object-oriented Python extension module for libpcap
@@ -12507,7 +12507,7 @@ media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
 media-fonts/qomolangma 2012.05: Tibetan Unicode Ucan and Umed fonts
 media-fonts/quivira 4.0 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
 media-fonts/ricty 3.2.0 3.2.0-r1: A beautiful sans-serif monotype Japanese font designed for code listings
-media-fonts/roboto 2.134 2.135 2.136: Standard font for Android 4.0 (Ice Cream Sandwich) and later
+media-fonts/roboto 2.136: Standard font for Android 4.0 (Ice Cream Sandwich) and later
 media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
 media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
@@ -13838,7 +13838,7 @@ media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input aud
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.3.10 0.4.0 0.4.1-r2 0.4.2 0.4.3-r1 0.4.4: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3 0.6.4: An arpeggiator, sequencer and MIDI LFO for ALSA
-media-sound/qmidiroute 0.3.0: QMidiRoute is a filter/router for MIDI events
+media-sound/qmidiroute 0.3.0 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 0.10.5 0.10.6 0.10.8 1.1.7-r1 1.1.8 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r2: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
@@ -13863,7 +13863,7 @@ media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Repla
 media-sound/rhythmbox 3.4.1 3.4.1-r1: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
-media-sound/rosegarden 13.04 13.10-r1 14.02 14.12 16.06: MIDI and audio sequencer and notation editor
+media-sound/rosegarden 13.04 13.10-r1 14.02 14.12 16.06 17.04: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r1 3.3.2-r2: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/schismtracker 20120105: Free implementation of Impulse Tracker, a tool used to create high quality music
@@ -16603,7 +16603,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.4 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1 0.6.5: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136: IDE for the R language
+sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136 1.0.143: IDE for the R language
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
