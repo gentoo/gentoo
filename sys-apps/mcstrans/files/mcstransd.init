@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 2006-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+is_selinux_enabled() {
+	local SE_ENABL="/usr/sbin/selinuxenabled"
+
+	if [ -x "$SE_ENABL" ]; then
+		$SE_ENABL && return 0 || return 1
+	else
+		ewarn "mcstransd: Unable to determine SELinux status"
+		return 1
+	fi
+}
+
+start() {
+	if is_selinux_enabled; then
+		ebegin "Starting mcstransd"
+		checkpath -q -d -m 0755 /run/setrans
+		start-stop-daemon --start --quiet --exec /sbin/mcstransd
+		eend $?
+	fi
+}
+
+stop() {
+	if is_selinux_enabled; then
+		ebegin "Stopping mcstransd"
+		start-stop-daemon --stop --quiet --name mcstransd
+		eend $?
+	fi
+}
