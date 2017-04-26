@@ -13,14 +13,10 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/freeorion/freeorion.git"
 else
-	RELDATE=2016-09-16
-	SHA=49f9123
-	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/FreeOrion_v${PV}_${RELDATE}.${SHA}_Source.tar.gz -> ${P}.tar.gz"
-	# Issue with version.cpp, TODO fix
-	#SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	MY_PV="${PV/_/-}"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
-
-	S="${WORKDIR}/src-tarball"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
