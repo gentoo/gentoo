@@ -83,7 +83,7 @@ src_configure() {
 	set -- \
 		$(usex gmp --gmp "") \
 		$(usex java --java "")
-	elog ./configure "$@"
+	echo ./configure "$@" >&2
 	./configure "$@" || die
 	${EPYTHON} scripts/mk_make.py || die
 }
