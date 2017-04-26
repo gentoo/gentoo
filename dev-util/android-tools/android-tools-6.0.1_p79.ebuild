@@ -63,7 +63,9 @@ src_prepare() {
 src_compile() {
 	chmod +x ./generate_build.rb || die
 	./generate_build.rb > build.sh || die
+	sed -e 's:^gcc:${CC}:' -e 's:^g++:${CXX}:' -i build.sh || die
 	chmod +x build.sh || die
+	tc-export CC CXX
 	bash -e ./build.sh || die
 }
 
