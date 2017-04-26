@@ -44,11 +44,6 @@ DEPEND="${RDEPEND}
 	python? ( >=dev-lang/swig-2.0.9 )"
 
 src_prepare() {
-	if [[ ${PV} != 9999 ]] ; then
-		# If needed for live builds, place them in /etc/portage/patches
-		eapply "${FILESDIR}/libselinux-2.6-0007-build-related-fixes-bug-500674.patch"
-	fi
-
 	eapply_user
 
 	multilib_copy_sources
