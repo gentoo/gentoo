@@ -1,6 +1,11 @@
-diff -Naur busybox-1.26.2.orig/shell/ash.c busybox-1.26.2/shell/ash.c
---- busybox-1.26.2.orig/shell/ash.c	2017-01-10 10:55:51.000000000 -0500
-+++ busybox-1.26.2/shell/ash.c	2017-01-28 17:02:08.961584737 -0500
+add `bb` and `bbsh` shortcuts as aliases to the main shell so we can install
+symlinks in Gentoo at /bin/bb as our recovery shell.
+
+we also add fallbacks to /bin/busybox and /bin/busybox.static in case /proc
+is not yet mounted during early boot.
+
+--- a/shell/ash.c
++++ b/shell/ash.c
 @@ -144,6 +144,8 @@
  //applet:IF_ASH(APPLET(ash, BB_DIR_BIN, BB_SUID_DROP))
  //applet:IF_SH_IS_ASH(APPLET_ODDNAME(sh, ash, BB_DIR_BIN, BB_SUID_DROP, ash))
@@ -19,9 +24,8 @@ diff -Naur busybox-1.26.2.orig/shell/ash.c busybox-1.26.2/shell/ash.c
  		/* If they called chroot or otherwise made the binary no longer
  		 * executable, fall through */
  	}
-diff -Naur busybox-1.26.2.orig/shell/hush.c busybox-1.26.2/shell/hush.c
---- busybox-1.26.2.orig/shell/hush.c	2017-01-10 10:55:51.000000000 -0500
-+++ busybox-1.26.2/shell/hush.c	2017-01-28 17:05:13.235936850 -0500
+--- a/shell/hush.c
++++ b/shell/hush.c
 @@ -221,6 +221,8 @@
  //applet:IF_MSH(APPLET_ODDNAME(msh, hush, BB_DIR_BIN, BB_SUID_DROP, hush))
  //applet:IF_SH_IS_HUSH(APPLET_ODDNAME(sh, hush, BB_DIR_BIN, BB_SUID_DROP, hush))
@@ -35,8 +39,17 @@ diff -Naur busybox-1.26.2.orig/shell/hush.c busybox-1.26.2/shell/hush.c
  	if (SPECIAL_JOBSTOP_SIGS != 0)
  		switch_off_special_sigs(G.special_sig_mask & SPECIAL_JOBSTOP_SIGS);
  	execve(bb_busybox_exec_path, argv, pp);
-+	execve("/bin/busybox.static", argv, envp);
-+	execve("/bin/busybox", argv, envp);
++	execve("/bin/busybox.static", argv, pp);
++	execve("/bin/busybox", argv, pp);
  	/* Fallback. Useful for init=/bin/hush usage etc */
  	if (argv[0][0] == '/')
  		execve(argv[0], argv, pp);
+@@ -6931,6 +6931,8 @@
+ 			if (SPECIAL_JOBSTOP_SIGS != 0)
+ 				switch_off_special_sigs(G.special_sig_mask & SPECIAL_JOBSTOP_SIGS);
+ 			execv(bb_busybox_exec_path, argv);
++			execv("/bin/busybox.static", argv);
++			execv("/bin/busybox", argv);
+ 			/* If they called chroot or otherwise made the binary no longer
+ 			 * executable, fall through */
+ 		}
