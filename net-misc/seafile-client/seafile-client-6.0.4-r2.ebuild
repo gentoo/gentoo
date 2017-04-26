@@ -32,7 +32,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-only-use-qttest-when-needed.patch"
+	eapply "${FILESDIR}/${P}-select-qt5.patch"
+	eapply "${FILESDIR}/${P}-only-use-qttest-where-needed.patch"
 	cmake-utils_src_prepare
 	if use shibboleth ; then
 		if ! has_version "dev-qt/qtwebengine:5[widgets]" ; then
@@ -42,7 +43,6 @@ src_prepare() {
 }
 
 src_configure() {
-	export QT_SELECT=qt5
 	local mycmakeargs=(
 		-DBUILD_SHIBBOLETH_SUPPORT="$(usex shibboleth)"
 		-DBUILD_TESTING="$(usex test)"
