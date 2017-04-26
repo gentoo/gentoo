@@ -12578,7 +12578,7 @@ media-gfx/clockphoto 1.1: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/converseen 0.6.4-r1 0.6.8-r1: Batch image converter and resizer based on ImageMagick
-media-gfx/cptutils 1.63 1.66: A number of utilities for the manipulation of color gradient files
+media-gfx/cptutils 1.63 1.66 1.68: A number of utilities for the manipulation of color gradient files
 media-gfx/cropgui 0.1.1-r3 0.2 9999: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
@@ -12745,7 +12745,7 @@ media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.13 1.14: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.2 2.7.4-r1 2.8.2 2.8.3 2.8.4 9999: powerful GTK 3 based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.2 2.7.4-r1 2.8.2 2.8.3 2.8.4 2.8.5 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/printrun 20140730: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your desktop
