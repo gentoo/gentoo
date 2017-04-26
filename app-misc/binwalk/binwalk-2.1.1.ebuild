@@ -16,9 +16,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="graph"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/pyliblzma[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7)
 	graph? ( dev-python/pyqtgraph[opengl,${PYTHON_USEDEP}] )
 "
+
+PATCHES=( "${FILESDIR}"/0001-Added-check-for-backports.lzma-when-importing-lzma-m.patch )
 
 python_install_all() {
 	local DOCS=( API.md INSTALL.md README.md )
