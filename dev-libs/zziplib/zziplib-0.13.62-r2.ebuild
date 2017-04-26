@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
-inherit libtool eutils flag-o-matic python-single-r1
+
+inherit libtool eutils flag-o-matic python-any-r1
 
 DESCRIPTION="Lightweight library for extracting data from files archived in a single zip file"
 HOMEPAGE="http://zziplib.sourceforge.net/"
@@ -13,13 +15,12 @@ LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc sdl static-libs test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	sys-libs/zlib
-	${PYTHON_DEPS}
 	sdl? ( >=media-libs/libsdl-1.2.6 )"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( app-arch/zip )"
 
