@@ -71,8 +71,6 @@ src_prepare() {
 	echo "# decompression of modules in the module store." >> "${S}/src/semanage.conf"
 	echo "bzip-small=true" >> "${S}/src/semanage.conf"
 
-	eapply "${FILESDIR}"/${PN}-2.7-build-paths.patch
-
 	eapply_user
 
 	multilib_copy_sources
