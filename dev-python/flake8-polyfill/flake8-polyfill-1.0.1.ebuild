@@ -14,7 +14,15 @@ EGIT_REPO_URI="https://gitlab.com/pycqa/flake8-polyfill.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/flake8[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( ${RDEPEND}
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)"
+
+python_test() {
+	py.test -v || die "Tests fail with ${EPYTHON}"
+}
