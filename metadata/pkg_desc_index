@@ -4722,7 +4722,7 @@ dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Blueto
 dev-libs/hiredis 0.13.3: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
-dev-libs/hyperscan 4.4.1: High-performance regular expression matching library
+dev-libs/hyperscan 4.4.1 4.4.1-r1: High-performance regular expression matching library
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
 dev-libs/icu 58.1-r1 58.2: International Components for Unicode
 dev-libs/icu-layoutex 58.1 58.2: External layout part of International Components for Unicode
@@ -11452,7 +11452,7 @@ games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/endless-sky 0.8.11-r1 0.9.1: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.3 2.5.4 2.5.5 2.5.6: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.5 0.11.6: An open source clone of the game Colonization
-games-strategy/freeorion 0.4.6 0.4.7_rc2 9999: A free turn-based space empire and galactic conquest game
+games-strategy/freeorion 0.4.7_rc2 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
