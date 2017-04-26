@@ -129,7 +129,7 @@ app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.2: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.0.0: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.10: Check for mapped libs and open files that are marked as deleted
-app-admin/lnav 0.7.1 0.8.1: A curses-based tool for viewing and analyzing log files
+app-admin/lnav 0.8.1 0.8.2: A curses-based tool for viewing and analyzing log files
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
 app-admin/logcheck 1.3.15-r1 1.3.15-r2 1.3.16 1.3.17: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
@@ -4505,7 +4505,7 @@ dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2 1.3.4 1.4.0 1.4.1 1.4.2: 
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 18.3 19.1 19.2 19.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
-dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0 2.2.0.0: a non-interactive scripting language
+dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0 2.2.0.0 2.3.0.0: a non-interactive scripting language
 dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written in C++
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
@@ -5055,7 +5055,7 @@ dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0 0.26.0: Library for RDF syntax which s
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/sink 0.1.0: A data access layer handling synchronization, caching and indexing
-dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2: skarnet.org general-purpose libraries
+dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2 2.5.0.0: skarnet.org general-purpose libraries
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
@@ -14552,7 +14552,7 @@ net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
-net-dns/s6-dns 2.1.0.0: suite of DNS client programs and libraries for Unix systems
+net-dns/s6-dns 2.1.0.0 2.2.0.0: suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
@@ -15346,7 +15346,7 @@ net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r3: ARIN rwhois daemon
 net-misc/rygel 0.32.1: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1: Command line client for Amazon S3
-net-misc/s6-networking 2.2.1.0: suite of small networking utilities for Unix systems
+net-misc/s6-networking 2.2.1.0 2.3.0.0: suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/seafile 6.0.4: File syncing and sharing software with file encryption and group sharing
@@ -17185,11 +17185,11 @@ sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
-sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0: skarnet.org's small and secure supervision software suite
-sys-apps/s6-linux-init 0.0.1.4 0.1.0.0 0.2.0.0: Generates an init binary for s6-based init systems
-sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0 2.2.0.0: set of tiny linux utilities
-sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0 2.1.0.0: set of tiny portable unix utilities
-sys-apps/s6-rc 0.0.2.1 0.0.3.0 0.1.0.0: service manager for the s6 supervision suite
+sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0 2.5.0.0: skarnet.org's small and secure supervision software suite
+sys-apps/s6-linux-init 0.0.1.4 0.1.0.0 0.2.0.0 0.3.0.0: Generates an init binary for s6-based init systems
+sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0 2.2.0.0 2.3.0.0: set of tiny linux utilities
+sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0 2.1.0.0 2.2.0.0: set of tiny portable unix utilities
+sys-apps/s6-rc 0.0.2.1 0.0.3.0 0.1.0.0 0.2.0.0: service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.10-r3 2.10-r4 2.11-r3 2.11-r4 2.11-r5: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
