@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,10 +17,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/django-1.4
+	>=dev-python/django-1.4[${PYTHON_USEDEP}]
 "
 
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
