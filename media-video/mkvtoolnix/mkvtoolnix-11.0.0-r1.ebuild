@@ -30,6 +30,7 @@ RDEPEND="
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtconcurrent:5
+		dev-qt/qtmultimedia:5
 	)
 "
 DEPEND="${RDEPEND}
