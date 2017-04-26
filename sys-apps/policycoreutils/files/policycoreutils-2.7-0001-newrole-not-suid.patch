@@ -1,0 +1,13 @@
+diff --git a/policycoreutils/newrole/Makefile b/policycoreutils/newrole/Makefile
+index bdefbb8..9cff135 100644
+--- a/policycoreutils/newrole/Makefile
++++ b/policycoreutils/newrole/Makefile
+@@ -49,7 +49,7 @@ ifeq ($(NAMESPACE_PRIV),y)
+ 	IS_SUID=y
+ endif
+ ifeq ($(IS_SUID),y)
+-	MODE := 4555
++	MODE := 0555
+ 	LDLIBS += -lcap-ng
+ else
+ 	MODE := 0555
