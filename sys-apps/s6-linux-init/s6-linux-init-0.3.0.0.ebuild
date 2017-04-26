@@ -3,31 +3,34 @@
 
 EAPI=6
 
-inherit versionator
-
-DESCRIPTION="a non-interactive scripting language"
-HOMEPAGE="http://www.skarnet.org/software/execline/"
-SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
+DESCRIPTION="Generates an init binary for s6-based init systems"
+HOMEPAGE="https://www.skarnet.org/software/s6-linux-init/"
+SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0/$(get_version_component_range 1-2)"
-KEYWORDS="amd64 ~arm x86"
-IUSE="static static-libs"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="static"
 
 DEPEND=">=sys-devel/make-3.81
 	static? (
-		>=dev-libs/skalibs-2.4.0.0[static-libs]
+		>=dev-libs/skalibs-2.5.0.0[static-libs]
 	)
 	!static? (
-		>=dev-libs/skalibs-2.4.0.0
+		>=dev-libs/skalibs-2.5.0.0
 	)
 "
 RDEPEND="
+	>=dev-lang/execline-2.3.0.0
+	>=sys-apps/s6-2.5.0.0
+	>=sys-apps/s6-linux-utils-2.3.0.0
+	>=sys-apps/s6-portable-utils-2.2.0.0
 	!static? (
-		>=dev-libs/skalibs-2.4.0.0:=
+		>=dev-libs/skalibs-2.5.0.0:=
 	)
 "
 
+DOCS="INSTALL examples"
 HTML_DOCS="doc/*"
 
 src_prepare() {
@@ -45,8 +48,12 @@ src_configure() {
 		--with-dynlib=/$(get_libdir) \
 		--with-lib=/usr/$(get_libdir)/skalibs \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs \
-		$(use_enable !static shared) \
 		$(use_enable static allstatic) \
-		$(use_enable static static-libc) \
-		$(use_enable static-libs static)
+		$(use_enable static static-libc)
+}
+
+pkg_postinst()
+{
+	einfo "The generated init script requires additional packages."
+	einfo "Read ${ROOT}usr/share/doc/${PF}/INSTALL for details."
 }

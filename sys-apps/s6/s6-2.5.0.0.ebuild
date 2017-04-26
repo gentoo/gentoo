@@ -6,28 +6,28 @@ EAPI=6
 inherit versionator
 
 DESCRIPTION="skarnet.org's small and secure supervision software suite"
-HOMEPAGE="http://www.skarnet.org/software/s6/"
-SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.skarnet.org/software/s6/"
+SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/$(get_version_component_range 1-2)"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="static static-libs"
 
 DEPEND=">=sys-devel/make-3.81
 	static? (
-		>=dev-lang/execline-2.2.0.0[static-libs]
-		>=dev-libs/skalibs-2.4.0.0[static-libs]
+		>=dev-lang/execline-2.3.0.0[static-libs]
+		>=dev-libs/skalibs-2.5.0.0[static-libs]
 	)
 	!static? (
-		>=dev-lang/execline-2.2.0.0[static=]
-		>=dev-libs/skalibs-2.4.0.0
+		>=dev-lang/execline-2.3.0.0[static=]
+		>=dev-libs/skalibs-2.5.0.0
 	)
 "
 RDEPEND="
-	>=dev-lang/execline-2.2.0.0:=[!static?]
+	>=dev-lang/execline-2.3.0.0:=[!static?]
 	!static? (
-		>=dev-libs/skalibs-2.4.0.0:=
+		>=dev-libs/skalibs-2.5.0.0:=
 	)
 "
 

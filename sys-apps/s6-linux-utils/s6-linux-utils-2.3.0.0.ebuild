@@ -3,28 +3,26 @@
 
 EAPI=6
 
-inherit versionator
-
-DESCRIPTION="a non-interactive scripting language"
-HOMEPAGE="http://www.skarnet.org/software/execline/"
-SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
+DESCRIPTION="set of tiny linux utilities"
+HOMEPAGE="https://www.skarnet.org/software/s6-linux-utils/"
+SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0/$(get_version_component_range 1-2)"
-KEYWORDS="amd64 ~arm x86"
-IUSE="static static-libs"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="static"
 
 DEPEND=">=sys-devel/make-3.81
 	static? (
-		>=dev-libs/skalibs-2.4.0.0[static-libs]
+		>=dev-libs/skalibs-2.5.0.0[static-libs]
 	)
 	!static? (
-		>=dev-libs/skalibs-2.4.0.0
+		>=dev-libs/skalibs-2.5.0.0
 	)
 "
 RDEPEND="
 	!static? (
-		>=dev-libs/skalibs-2.4.0.0:=
+		>=dev-libs/skalibs-2.5.0.0:=
 	)
 "
 
@@ -45,8 +43,6 @@ src_configure() {
 		--with-dynlib=/$(get_libdir) \
 		--with-lib=/usr/$(get_libdir)/skalibs \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs \
-		$(use_enable !static shared) \
 		$(use_enable static allstatic) \
-		$(use_enable static static-libc) \
-		$(use_enable static-libs static)
+		$(use_enable static static-libc)
 }
