@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -18,17 +18,16 @@ RDEPEND="
 	app-arch/bzip2
 	dev-db/sqlite:3
 	dev-libs/libpcre[cxx]
-	sys-libs/ncurses[unicode?]
-	sys-libs/readline:0
+	>=net-misc/curl-7.23.0
+	sys-libs/ncurses:0=[unicode?]
+	sys-libs/readline:0=
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
+
+DOCS=( AUTHORS NEWS README )
 
 src_configure() {
 	econf \
 		--disable-static \
 		$(use_with unicode ncursesw)
-}
-
-src_compile() {
-	emake AR="$(tc-getAR)"
 }
