@@ -5,7 +5,7 @@ EAPI=5
 inherit font versionator
 
 DESCRIPTION="DejaVu fonts, bitstream vera with ISO-8859-2 characters"
-HOMEPAGE="http://dejavu.sourceforge.net/"
+HOMEPAGE="https://dejavu-fonts.github.io/"
 
 # If you want to test snapshot from dejavu.sf.net/snapshots/
 # just rename ebuild to dejavu-2.22.20071220.2156.ebuild
