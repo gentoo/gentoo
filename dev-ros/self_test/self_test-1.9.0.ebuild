@@ -8,18 +8,17 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Packages related to gathering, viewing, and analyzing diagnostics data from robots"
+DESCRIPTION="Robot self-test node"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/diagnostic_aggregator
-	dev-ros/diagnostic_analysis
-	dev-ros/diagnostic_common_diagnostics
+	dev-ros/diagnostic_msgs
 	dev-ros/diagnostic_updater
-	dev-ros/rosdiagnostic
-	dev-ros/self_test
-	dev-ros/test_diagnostic_aggregator
+	dev-ros/roscpp
+	dev-ros/rostest
+	dev-libs/boost:=[threads]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-ros/rostest )"
