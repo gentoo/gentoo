@@ -77,13 +77,13 @@ src_configure() {
 		$(usex gmp --gmp "") \
 		$(usex python --python "") \
 		$(usex java --java "")
-	elog ./configure "$@"
+	echo ./configure "$@" >&2
 	# LANG=C to force external tools to output ascii text only
 	# otherwise configure crashes as:
 	#    File "scripts/mk_make.py", line 21, in <module>
 	#    UnicodeEncodeError: 'ascii' codec can't encode characters in position 80-82: ordinal not in range(128)
 	LANG=C ./configure "$@" || die
-	elog ${EPYTHON} scripts/mk_make.py "$@"
+	echo ${EPYTHON} scripts/mk_make.py "$@" >&2
 	LANG=C ${EPYTHON} scripts/mk_make.py || die
 }
 
