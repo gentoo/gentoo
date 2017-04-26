@@ -15484,7 +15484,7 @@ net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small 
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1 17.1 18.0_pre1865 19.0_pre1903: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.140 0.141: A newsreader for GNOME
-net-nntp/sabnzbd 1.2.3: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 1.2.3-r1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
@@ -15547,7 +15547,7 @@ net-p2p/syncthing 0.14.23 0.14.24: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6 1.8.6-r1: A torrent file parser
 net-p2p/transmission 2.92-r2 9999: A fast, easy, and free BitTorrent client
-net-p2p/transmission-remote-cli 1.7.0 1.7.1: Ncurses interface for the Transmission BitTorrent client
+net-p2p/transmission-remote-cli 1.7.1: Ncurses interface for the Transmission BitTorrent client
 net-p2p/transmission-remote-gtk 1.0 1.1.1 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.3.3-r1: Bittorrent client that does not require a website to discover content
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
