@@ -64,7 +64,7 @@ src_compile() {
 	chmod +x ./generate_build.rb || die
 	./generate_build.rb > build.sh || die
 	chmod +x build.sh || die
-	./build.sh || die
+	bash -e ./build.sh || die
 }
 
 src_install() {
