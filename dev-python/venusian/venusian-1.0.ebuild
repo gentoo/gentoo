@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,9 +22,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
-	>=dev-python/nose-exclude-0.1.9[${PYTHON_USEDEP}] )
-	"
+		>=dev-python/nose-exclude-0.1.9[${PYTHON_USEDEP}] )"
 
 python_test() {
-	nosetests || die "Tests fail with ${EPYTHON}"
+	esetup.py nosetests
 }
