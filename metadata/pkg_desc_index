@@ -18397,7 +18397,7 @@ www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performa
 www-servers/mongoose 5.3 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.10.3 1.11.10 1.11.13-r1 1.12.0: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.10.3 1.11.10 1.11.13-r1 1.12.0 1.13.0: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
@@ -18982,7 +18982,7 @@ x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5_p5_p1 0.5_p6: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.20: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
-x11-misc/xlockmore 5.47 5.50 5.51 5.52: Just another screensaver application for X
+x11-misc/xlockmore 5.47 5.50 5.52 5.53: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
