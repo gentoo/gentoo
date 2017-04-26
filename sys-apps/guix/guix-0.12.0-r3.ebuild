@@ -76,10 +76,10 @@ DOC_CONTENTS="Quick start user guide on Gentoo:
 [as root] enable guix-daemon service:
 	[systemd] # systemctl enable guix-daemon
 	[openrc]  # rc-update add guix-daemon
-[as an user] ln -sf /var/guix/profiles/per-user/\$USER/guix-profile \$HOME/.guix-profile
-[as an user] install guix packages:
+[as a user] ln -sf /var/guix/profiles/per-user/\$USER/guix-profile \$HOME/.guix-profile
+[as a user] install guix packages:
 	\$ guix package -i hello
-[as an user] configure environment:
+[as a user] configure environment:
 	Somewhere in .bash_profile you might want to set
 	export GUIX_LOCPATH=\$HOME/.guix-profile/lib/locale
 
@@ -92,7 +92,7 @@ pkg_setup() {
 	for i in {1..10}; do
 		# we list 'guixbuild' twice to
 		# both assign a primary group for user
-		# and add an user to /etc/group
+		# and add a user to /etc/group
 		enewuser guixbuilder${i} -1 -1 /var/empty guixbuild,guixbuild
 	done
 }
