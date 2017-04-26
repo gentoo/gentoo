@@ -26,8 +26,6 @@ RDEPEND="
 	graph? ( dev-python/pyqtgraph[opengl,${PYTHON_USEDEP}] )
 "
 
-PATCHES=( "${FILESDIR}"/0001-Added-check-for-backports.lzma-when-importing-lzma-m.patch )
-
 python_install_all() {
 	local DOCS=( API.md INSTALL.md README.md )
 	distutils-r1_python_install_all
