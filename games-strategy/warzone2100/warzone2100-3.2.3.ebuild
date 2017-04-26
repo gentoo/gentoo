@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,10 +12,7 @@ HOMEPAGE="http://wz2100.net/"
 SRC_URI="mirror://sourceforge/warzone2100/${P}.tar.xz
 	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 
-# openssl-1.1.0 patches
-SRC_URI+="
-	https://github.com/Cyp/warzone2100/commit/d29cacac856882b153fa206c49091188af5d95aa.patch -> ${PN}-3.2.1-openssl110.patch
-	https://github.com/Cyp/warzone2100/commit/efe8bf60ec56565b96a26b041a965c925bc58c3b.patch -> ${PN}-3.2.1-openssl110_v2.patch"
+SRC_URI+=" https://github.com/Warzone2100/warzone2100/commit/ef37bca38289f4f79c6533acd93ed326858a3f68.patch -> ${PN}-3.2.3-qt_compile_fix.patch"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain"
 SLOT="0"
@@ -25,15 +22,16 @@ IUSE="debug nls sdl videos"
 
 # TODO: unbundle miniupnpc and quesoglc
 # quesoglc-0.7.2 is buggy: http://developer.wz2100.net/ticket/2828
-RDEPEND=">=dev-games/physfs-2[zip]
-	dev-libs/fribidi
+CDEPEND="
+	>=dev-games/physfs-2[zip]
+	dev-libs/openssl:0=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtscript:5
 	dev-qt/qtwidgets:5
-	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/glew:=
+	media-libs/harfbuzz
 	media-libs/libogg
 	media-libs/libpng:0
 	media-libs/libtheora
@@ -49,21 +47,26 @@ RDEPEND=">=dev-games/physfs-2[zip]
 		dev-qt/qtopengl:5
 		dev-qt/qtx11extras:5
 	)
-	sdl? ( media-libs/libsdl2[opengl,video,X] )"
-DEPEND="${RDEPEND}
+	sdl? ( media-libs/libsdl2[opengl,video,X] )
+"
+DEPEND="
+	${CDEPEND}
 	app-arch/zip
+	dev-libs/fribidi
+	media-libs/fontconfig
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
-RDEPEND="${RDEPEND}
-	media-fonts/dejavu"
-
-PATCHES=(
-	"${DISTDIR}/${P}-openssl110.patch"
-	"${DISTDIR}/${P}-openssl110_v2.patch"
-)
+	nls? ( sys-devel/gettext )
+"
+RDEPEND="
+	${CDEPEND}
+	media-fonts/dejavu
+"
 
 src_prepare() {
 	default
+
+	# https://developer.wz2100.net/ticket/4580
+	eapply "${DISTDIR}/${P}-qt_compile_fix.patch"
 
 	sed -i -e 's/#top_builddir/top_builddir/' po/Makevars || die
 	sed '/appdata\.xml/d' -i icons/Makefile.am || die
@@ -71,15 +74,17 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--docdir=/usr/share/doc/${PF} \
-		--localedir=/usr/share/locale \
-		--with-distributor="Gentoo ${PF}" \
-		--with-icondir=/usr/share/icons/hicolor/128x128/apps \
-		--with-applicationdir=/usr/share/applications \
-		$(use_enable debug debug relaxed) \
-		$(use_enable nls) \
+	myeconfargs=(
+		--docdir=/usr/share/doc/${PF}
+		--localedir=/usr/share/locale
+		--with-distributor="Gentoo ${PF}"
+		--with-icondir=/usr/share/icons/hicolor/128x128/apps
+		--with-applicationdir=/usr/share/applications
+		$(use_enable debug debug relaxed)
+		$(use_enable nls)
 		--with-backend=$(usex sdl "sdl" "qt")
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
