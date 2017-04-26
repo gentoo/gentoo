@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/wavexx/acpilight/"
 SRC_URI="https://github.com/wavexx/acpilight/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="virtual/udev
