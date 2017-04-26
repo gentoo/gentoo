@@ -18,6 +18,7 @@ RDEPEND="
 	dev-ros/diagnostic_analysis
 	dev-ros/diagnostic_common_diagnostics
 	dev-ros/diagnostic_updater
+	dev-ros/rosdiagnostic
 	dev-ros/self_test
 	dev-ros/test_diagnostic_aggregator
 "
