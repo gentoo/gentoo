@@ -41,6 +41,7 @@ src_prepare() {
 
 src_compile() {
 	emake \
+		CC="$(tc-getCC)" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)"
 }
 
