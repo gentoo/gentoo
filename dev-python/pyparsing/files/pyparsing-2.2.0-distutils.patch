@@ -1,0 +1,17 @@
+Force distutils to be used instead of falling back to it after trying
+setuptools in order to avoid bootstrap issues.
+
+--- pyparsing-2.2.0/setup.py
++++ pyparsing-2.2.0/setup.py
+@@ -4,10 +4,7 @@
+ 
+ # Setuptools depends on pyparsing (via packaging) as of version 34, so allow
+ # installing without it to avoid bootstrap problems.
+-try:
+-    from setuptools import setup
+-except ImportError:
+-    from distutils.core import setup
++from distutils.core import setup
+ 
+ import sys
+ import os
