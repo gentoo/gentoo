@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,19 +7,19 @@ inherit flag-o-matic eutils linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
-# TODO:  hopefully moving to github tags soon
-# http://www.supercluster.org/pipermail/torquedev/2013-May/004519.html
-SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=3032 -> ${P}.tar.gz"
+DISTFILEHASH="1485300822_19e79ad"
+SRC_URI="http://wpfilebase.s3.amazonaws.com/torque/${P}-${DISTFILEHASH}.tar.gz"
 
 LICENSE="torque-2.5"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cgroups cpusets +crypt doc drmaa kernel_linux libressl munge nvidia server +syslog tk"
+IUSE="autorun cgroups cpusets +crypt doc drmaa kernel_linux libressl munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="
 	sys-libs/zlib
 	sys-libs/readline:0=
 	dev-libs/libxml2
+	>=dev-libs/boost-1.41
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	cpusets? ( sys-apps/hwloc )
@@ -47,7 +47,7 @@ RDEPEND="${DEPEND_COMMON}
 # by the configure.ac and Makefile.am are missing.
 # http://www.supercluster.org/pipermail/torquedev/2014-October/004773.html
 
-S="${WORKDIR}"/${P}-1456945733_daea91b
+S="${WORKDIR}"/${P}-${DISTFILEHASH}
 
 pkg_setup() {
 	PBS_SERVER_HOME="${PBS_SERVER_HOME:-/var/spool/${PN}}"
@@ -95,9 +95,12 @@ src_configure() {
 		$(use_enable drmaa) \
 		$(use_enable munge munge-auth) \
 		$(use_enable nvidia nvidia-gpus) \
-		$(usex crypt --with-rcp --with-rcp scp mom_rcp) \
+		$(usex crypt "--with-rcp=scp" "--with-rcp=mom_rcp") \
 		$(usex kernel_linux $(use_enable cpusets cpuset) --disable-cpuset) \
+		$(usex kernel_linux $(use_enable cpusets geometry-request) --disable-geometry-request) \
 		$(usex kernel_linux $(use_enable cgroups) --disable-cgroups) \
+		$(use_enable autorun) \
+		$(use_enable quickcommit) \
 		--with-server-home=${PBS_SERVER_HOME} \
 		--with-environ=/etc/pbs_environment \
 		--with-default-server=${PBS_SERVER_NAME} \
