@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils
+inherit cmake-utils
 
 DESCRIPTION="CuteCom is a serial terminal, like minicom, written in qt"
 HOMEPAGE="https://github.com/neundorf/CuteCom"
@@ -27,13 +27,13 @@ src_prepare() {
 	sed -i \
 		-e '/Path/d' \
 		-e '/Terminal/s/0/false/' \
-		${PN}.desktop || die 'sed on desktop file failed'
+		"${PN}.desktop" || die 'sed on desktop file failed'
 
 	cmake-utils_src_prepare
 }
 
 src_install() {
 	cmake-utils_src_install
-	domenu ${PN}.desktop
-	doicon distribution/${PN}.png
+	domenu "${PN}.desktop"
+	doicon "distribution/${PN}.png"
 }
