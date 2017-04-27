@@ -14,7 +14,7 @@ fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit autotools bash-completion-r1 linux-info multilib-minimal pam python-any-r1 systemd toolchain-funcs udev user
+inherit bash-completion-r1 linux-info multilib-minimal multiprocessing pam python-any-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -89,6 +89,8 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils:0
 	dev-util/gperf
 	>=dev-util/intltool-0.50
+	>=dev-util/meson-0.40.0
+	dev-util/ninja
 	>=sys-apps/coreutils-8.16
 	>=sys-kernel/linux-headers-${MINKV}
 	virtual/pkgconfig
@@ -163,16 +165,9 @@ src_prepare() {
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
 	default
-
-	eautoreconf
 }
 
 src_configure() {
-	# Keep using the one where the rules were installed.
-	MY_UDEVDIR=$(get_udevdir)
-	# Fix systems broken by bug #509454.
-	[[ ${MY_UDEVDIR} ]] || MY_UDEVDIR=/lib/udev
-
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
 
@@ -181,148 +176,106 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
+meson_use() {
+	usex "$1" true false
+}
+
+meson_ml() {
+	if multilib_is_native_abi; then
+		echo true
+	else
+		echo false
+	fi
+}
+
+meson_ml_use() {
+	if multilib_is_native_abi; then
+		usex "$1" true false
+	else
+		echo false
+	fi
+}
+
 multilib_src_configure() {
-	local myeconfargs=(
-		# disable -flto since it is an optimization flag
-		# and makes distcc less effective
-		cc_cv_CFLAGS__flto=no
-		# disable -fuse-ld=gold since Gentoo supports explicit linker
-		# choice and forcing gold is undesired, #539998
-		# ld.gold may collide with user's LDFLAGS, #545168
-		# ld.gold breaks sparc, #573874
-		cc_cv_LDFLAGS__Wl__fuse_ld_gold=no
-
-		# Workaround for gcc-4.7, bug 554454.
-		cc_cv_CFLAGS__Werror_shadow=no
-
-		# Workaround for bug 516346
-		--enable-dependency-tracking
-
-		--disable-maintainer-mode
+	local myconf=(
+		--buildtype=plain
+		--prefix=/usr
+		--libdir="$(get_libdir)"
 		--localstatedir=/var
-		--with-pamlibdir=$(getpam_mod_dir)
+		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
-		--with-bashcompletiondir="$(get_bashcompdir)"
+		-Dbashcompletiondir="$(get_bashcompdir)"
 		# make sure we get /bin:/sbin in $PATH
-		--enable-split-usr
-		# For testing.
-		--with-rootprefix="${ROOTPREFIX-/usr}"
-		--with-rootlibdir="${ROOTPREFIX-/usr}/$(get_libdir)"
-		# disable sysv compatibility
-		--with-sysvinit-path=
-		--with-sysvrcnd-path=
+		-Dsplit-usr=true
+		-Drootprefix="${ROOTPREFIX}"
+		-Dsysvinit-path=
+		-Dsysvrcnd-path=
 		# no deps
-		--enable-efi
-		--enable-ima
-
+		-Defi=$(meson_ml)
+		-Dima=true
 		# Optional components/dependencies
-		$(multilib_native_use_enable acl)
-		$(multilib_native_use_enable apparmor)
-		$(multilib_native_use_enable audit)
-		$(multilib_native_use_enable cryptsetup libcryptsetup)
-		$(multilib_native_use_enable curl libcurl)
-		$(multilib_native_use_enable elfutils)
-		$(use_enable gcrypt)
-		$(multilib_native_use_enable gnuefi)
-		--with-efi-libdir="/usr/$(get_libdir)"
-		$(multilib_native_use_enable http microhttpd)
-		$(usex http $(multilib_native_use_enable ssl gnutls) --disable-gnutls)
-		$(multilib_native_use_enable idn libidn)
-		$(multilib_native_use_enable importd)
-		$(multilib_native_use_enable importd bzip2)
-		$(multilib_native_use_enable importd zlib)
-		$(multilib_native_use_enable kmod)
-		$(use_enable lz4)
-		$(use_enable lzma xz)
-		$(multilib_native_use_enable nat libiptc)
-		$(use_enable pam)
-		$(multilib_native_use_enable policykit polkit)
-		$(multilib_native_use_enable qrcode qrencode)
-		$(multilib_native_use_enable seccomp)
-		$(multilib_native_use_enable selinux)
-		$(multilib_native_use_enable test tests)
-		$(multilib_native_use_enable test dbus)
-		$(multilib_native_use_enable xkb xkbcommon)
-		$(multilib_native_use_with doc python)
-
+		-Dacl=$(meson_ml_use acl)
+		-Dapparmor=$(meson_ml_use apparmor)
+		-Daudit=$(meson_ml_use audit)
+		-Dlibcryptsetup=$(meson_ml_use cryptsetup)
+		-Dlibcurl=$(meson_ml_use curl)
+		-Delfutils=$(meson_ml_use elfutils)
+		-Dgcrypt=$(meson_use gcrypt)
+		-Dgnuefi=$(meson_ml_use gnuefi)
+		-Defi-libdir="/usr/$(get_libdir)"
+		-Dmicrohttpd=$(meson_ml_use http)
+		$(usex http -Dgnutls=$(meson_ml_use ssl) -Dgnutls=false)
+		-Dlibidn=$(meson_ml_use idn)
+		-Dimportd=$(meson_ml_use importd)
+		-Dbzip2=$(meson_ml_use importd)
+		-Dzlib=$(meson_ml_use importd)
+		-Dkmod=$(meson_ml_use kmod)
+		-Dlz4=$(meson_use lz4)
+		-Dxz=$(meson_use lzma)
+		-Dlibiptc=$(meson_ml_use nat)
+		-Dpam=$(meson_use pam)
+		-Dpolkit=$(meson_ml_use policykit)
+		-Dqrencode=$(meson_ml_use qrcode)
+		-Dseccomp=$(meson_ml_use seccomp)
+		-Dselinux=$(meson_ml_use selinux)
+		#-Dtests=$(meson_ml_use test)
+		-Ddbus=$(meson_ml_use test)
+		-Dxkbcommon=$(meson_ml_use xkb)
+		-Ddoc=$(meson_ml_use doc python)
 		# hardcode a few paths to spare some deps
-		KILL=/bin/kill
-		QUOTAON=/usr/sbin/quotaon
-		QUOTACHECK=/usr/sbin/quotacheck
-
-		# TODO: we may need to restrict this to gcc
-		EFI_CC="$(tc-getCC)"
-
-		# dbus paths
-		--with-dbuspolicydir="${EPREFIX}/etc/dbus-1/system.d"
-		--with-dbussessionservicedir="${EPREFIX}/usr/share/dbus-1/services"
-		--with-dbussystemservicedir="${EPREFIX}/usr/share/dbus-1/system-services"
-
-		--with-ntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
-
+		-Dpath-kill=/bin/kill
+		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
-		--without-kill-user-processes
+		-Ddefault-kill-user-processes=false
 	)
 
-	# Work around bug 463846.
-	tc-export CC
+	set -- meson "${myconf[@]}" "${S}"
+	echo "$@"
+	"$@" || die
+}
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+eninja() {
+	if [[ -z ${NINJAOPTS+set} ]]; then
+		NINJAOPTS="-j$(makeopts_jobs) -l$(makeopts_loadavg 0)"
+	fi
+	set -- ninja -v ${NINJAOPTS} "$@"
+	echo "$@"
+	"$@" || die
 }
 
 multilib_src_compile() {
-	local mymakeopts=(
-		udevlibexecdir="${MY_UDEVDIR}"
-	)
-
-	if multilib_is_native_abi; then
-		emake "${mymakeopts[@]}"
-	else
-		emake built-sources
-		local targets=(
-			'$(rootlib_LTLIBRARIES)'
-			'$(lib_LTLIBRARIES)'
-			'$(pamlib_LTLIBRARIES)'
-			'$(pkgconfiglib_DATA)'
-		)
-		echo "gentoo: ${targets[*]}" | emake "${mymakeopts[@]}" -f Makefile -f - gentoo
-	fi
+	eninja
 }
 
 multilib_src_test() {
-	multilib_is_native_abi || return 0
-	default
+	eninja test
 }
 
 multilib_src_install() {
-	local mymakeopts=(
-		# automake fails with parallel libtool relinking
-		# https://bugs.gentoo.org/show_bug.cgi?id=491398
-		-j1
-
-		udevlibexecdir="${MY_UDEVDIR}"
-		dist_udevhwdb_DATA=
-		DESTDIR="${D}"
-	)
-
-	if multilib_is_native_abi; then
-		emake "${mymakeopts[@]}" install
-	else
-		mymakeopts+=(
-			install-rootlibLTLIBRARIES
-			install-libLTLIBRARIES
-			install-pamlibLTLIBRARIES
-			install-pkgconfiglibDATA
-			install-includeHEADERS
-			install-pkgincludeHEADERS
-		)
-
-		emake "${mymakeopts[@]}"
-	fi
+	DESTDIR="${D}" eninja install
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --modules
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
@@ -332,9 +285,9 @@ multilib_src_install_all() {
 
 	if use sysv-utils; then
 		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym "..${ROOTPREFIX-/usr}/bin/systemctl" /sbin/${app}
+			dosym "..${ROOTPREFIX%/}/bin/systemctl" /sbin/${app}
 		done
-		dosym "..${ROOTPREFIX-/usr}/lib/systemd/systemd" /sbin/init
+		dosym "..${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
 	else
 		# we just keep sysvinit tools, so no need for the mans
 		rm "${D}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
@@ -357,6 +310,8 @@ multilib_src_install_all() {
 	rm -r "${D}"/etc/systemd/system/network-online.target.wants || die
 	rm -r "${D}"/etc/systemd/system/sockets.target.wants || die
 	rm -r "${D}"/etc/systemd/system/sysinit.target.wants || die
+
+	rm -r "${D}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
 }
 
 migrate_locale() {
@@ -443,7 +398,7 @@ pkg_postinst() {
 
 	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
 		ewarn "You should replace the resolv.conf symlink:"
-		ewarn "ln -snf ${ROOTPREFIX-/usr}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
+		ewarn "ln -snf ${ROOTPREFIX%/}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
 	fi
 }
 
