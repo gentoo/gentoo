@@ -4,7 +4,7 @@ DESCRIPTION=An IRC server written from scratch
 EAPI=6
 HOMEPAGE=https://ngircd.barton.de/
 IUSE=debug gnutls iconv ident ipv6 libressl pam ssl tcpd test zlib
-KEYWORDS=amd64 ~x86 ~x64-macos
+KEYWORDS=amd64 x86 ~x64-macos
 LICENSE=GPL-2
 RDEPEND=iconv? ( virtual/libiconv ) ident? ( net-libs/libident ) pam? ( virtual/pam ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib )
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://arthur.barton.de/pub/ngircd/ngircd-24.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=ee31470a9c7da519384e0916ab5e7ba4
+_md5_=c2a6df2c9d141696c241b58c3b70440a

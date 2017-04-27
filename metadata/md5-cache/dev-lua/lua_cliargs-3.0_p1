@@ -3,11 +3,11 @@ DEPEND=>=dev-lang/lua-5.1:= virtual/pkgconfig
 DESCRIPTION=A command-line argument parser.
 EAPI=6
 HOMEPAGE=https://github.com/amireh/lua_cliargs
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:=
 SLOT=0
 SRC_URI=https://github.com/amireh/lua_cliargs/archive/v3.0-1.tar.gz -> lua_cliargs-3.0_p1.tar.gz
 _eclass_exported_funcs=src_install:-
 _eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=acc01a1dd1485511a9b177d4e1157c3a
+_md5_=bb6e165c118646f0bcba0ac12ebfb346
