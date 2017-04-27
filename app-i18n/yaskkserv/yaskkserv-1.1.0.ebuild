@@ -11,7 +11,7 @@ SRC_URI="http://umiushi.org/~wac/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnutls libressl systemd"
 
 RDEPEND="app-i18n/skk-jisyo
