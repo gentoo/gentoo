@@ -1,0 +1,11 @@
+--- dxx-rebirth_v0.59.100-src/SConstruct	2016-12-12 02:47:40.000000000 +0300
++++ dxx-rebirth_v0.59.100-src/SConstruct	2016-12-29 19:26:58.987760410 +0300
+@@ -2875,7 +2875,7 @@
+ 				return 'GLESv2'
+ 			return self.default_OGLES_LIB
+ 		def __default_DATA_DIR(self):
+-			return '%s/share/games/%s' % (self.prefix, self._program.target)
++			return '%s/share/games/%s' % (self.prefix, self._program.shortname)
+ 		def _generic_variable(key,help,default):
+ 			return (key, help, default)
+ 		def __get_configure_tests(tests,_filter=lambda s: s.name[0] != '_'):
