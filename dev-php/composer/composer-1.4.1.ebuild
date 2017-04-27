@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Dependency Manager for PHP"
 HOMEPAGE="https://github.com/composer/composer"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,16 +27,20 @@ RDEPEND="
 	>=dev-php/symfony-finder-2.7.20
 	>=dev-php/symfony-process-2.8.12"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-update-paths.patch"
-)
-
 src_install() {
-	insinto "/usr/share/php/Composer/Composer"
+	insinto "/usr/share/${PN}"
 
 	# Composer expects the LICENSE file to be there, and the
 	# easiest thing to do is to give it what it wants.
-	doins -r src/Composer/. res LICENSE "${FILESDIR}"/autoload.php
-	dobin bin/composer
-	dodoc README.md
+	doins -r src res LICENSE
+
+	insinto "/usr/share/${PN}/vendor"
+	doins "${FILESDIR}"/autoload.php
+
+	exeinto "/usr/share/${PN}/bin"
+	doexe "bin/${PN}"
+	dosym "/usr/share/${PN}/bin/${PN}" "/usr/bin/${PN}"
+
+	dodoc CHANGELOG.md README.md doc/*.md
+	dodoc -r doc/articles doc/faqs
 }
