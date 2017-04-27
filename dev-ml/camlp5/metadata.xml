@@ -5,4 +5,7 @@
 	<email>ml@gentoo.org</email>
 	<name>Gentoo ML Project</name>
 </maintainer>
+  <upstream>
+	  <remote-id type="github">camlp5/camlp5</remote-id>
+  </upstream>
 </pkgmetadata>
