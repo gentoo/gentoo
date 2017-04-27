@@ -19,7 +19,7 @@ IUSE="test doc examples"
 RDEPEND="dev-python/flake8[${PYTHON_USEDEP}]
 	>=dev-python/rply-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/astor-0.5[${PYTHON_USEDEP}]
-	dev-python/clint[${PYTHON_USEDEP}]
+	>=dev-python/clint-0.4[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
