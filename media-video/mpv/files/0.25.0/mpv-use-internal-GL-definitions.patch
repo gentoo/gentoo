@@ -1,0 +1,100 @@
+commit 9d80c08441edf3e8da5180fb42eda71878e9c411
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Wed Apr 26 17:43:51 2017 +0300
+
+build: rely on internal GL headers for rpi check
+
+Since mpv ships all the required OpenGL defines now,
+rpi check doesn't need to check system GL headers.
+
+diff --git a/waftools/checks/custom.py b/waftools/checks/custom.py
+index 8ed06e5b2..36b6822be 100644
+--- a/waftools/checks/custom.py
++++ b/waftools/checks/custom.py
+@@ -146,10 +146,6 @@ def check_rpi(ctx, dependency_identifier):
+         check_pkg_config('egl'),
+         check_pkg_config('glesv2'),
+         check_cc(lib=['mmal_core', 'mmal_util', 'mmal_vc_client'], use=['bcm_host']),
+-        # We still need all OpenGL symbols, because the vo_opengl code is
+-        # generic and supports anything from GLES2/OpenGL 2.1 to OpenGL 4 core.
+-        check_statement('GL/gl.h', '(void)GL_RGB32F'),     # arbitrary OpenGL 3.0 symbol
+-        check_statement('GL/gl.h', '(void)GL_LUMINANCE16') # arbitrary OpenGL legacy-only symbol
+     ]
+
+     ret = all((fn(ctx, dependency_identifier) for fn in checks))
+
+commit cb25bb5776b30e34ff7aa32c5e0a4f8862774e74
+Author: wm4 <wm4@nowhere>
+Date:   Wed Apr 26 17:09:16 2017 +0200
+
+build: remove checks for libGL
+
+We don't need to link against libGL directly, nor do we need OpenGL
+headers. The only thing we need is the windowing interop stuff, such as
+libEGL.
+
+diff --git a/waftools/checks/custom.py b/waftools/checks/custom.py
+index 36b6822be..a2b4971cd 100644
+--- a/waftools/checks/custom.py
++++ b/waftools/checks/custom.py
+@@ -144,7 +144,6 @@ def check_rpi(ctx, dependency_identifier):
+     checks = [
+         check_pkg_config('bcm_host', uselib_store='bcm_host'),
+         check_pkg_config('egl'),
+-        check_pkg_config('glesv2'),
+         check_cc(lib=['mmal_core', 'mmal_util', 'mmal_vc_client'], use=['bcm_host']),
+     ]
+
+diff --git a/wscript b/wscript
+index 7270bf464..a24d4852f 100644
+--- a/wscript
++++ b/wscript
+@@ -610,16 +610,13 @@ video_output_features = [
+         'desc': 'OpenGL X11 EGL Backend',
+         'deps': [ 'x11' ],
+         'groups': [ 'gl' ],
+-        'func': check_pkg_config('egl', 'gl'),
++        'func': check_pkg_config('egl'),
+     } , {
+         'name': '--egl-drm',
+         'desc': 'OpenGL DRM EGL Backend',
+         'deps': [ 'drm', 'gbm' ],
+         'groups': [ 'gl' ],
+-        'func': compose_checks(
+-            check_pkg_config('egl'),
+-            check_pkg_config_cflags('gl')
+-        )
++        'func': check_pkg_config('egl'),
+     } , {
+         'name': '--gl-wayland',
+         'desc': 'OpenGL Wayland Backend',
+@@ -743,7 +740,6 @@ video_output_features = [
+         'deps': ['libdl'],
+         'func': compose_checks(
+             check_cc(lib="EGL"),
+-            check_cc(lib="GLESv2"),
+             check_statement('EGL/fbdev_window.h', 'struct fbdev_window test'),
+             check_statement('linux/fb.h', 'struct fb_var_screeninfo test'),
+         ),
+
+commit 010c7d499258c1064189b2d149ae6eca859d9ae1
+Author: wm4 <wm4@nowhere>
+Date:   Wed Apr 26 17:43:23 2017 +0200
+
+vo_opengl: context_drm_egl: remove unnecessary include
+
+Could be broken after the previous commit removed finding the GL include
+dir.
+
+diff --git a/video/out/opengl/context_drm_egl.c b/video/out/opengl/context_drm_egl.c
+index 1852cb76f..e52fec451 100644
+--- a/video/out/opengl/context_drm_egl.c
++++ b/video/out/opengl/context_drm_egl.c
+@@ -27,7 +27,6 @@
+ #include <gbm.h>
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
+-#include <GL/gl.h>
+
+ #include "context.h"
+ #include "egl_helpers.h"
