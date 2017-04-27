@@ -37,19 +37,21 @@ IUSE+=" cpu_flags_x86_sse4_1"
 REQUIRED_USE="
 	|| ( cli libmpv )
 	aqua? ( opengl )
-	cuda? ( !libav || ( opengl egl ) )
+	cuda? ( !libav opengl )
 	egl? ( || ( gbm X wayland ) )
-	gbm? ( drm egl )
-	lcms? ( || ( opengl egl ) )
+	gbm? ( drm egl opengl )
+	lcms? ( opengl )
 	luajit? ( lua )
-	opengl? ( || ( aqua X !cli? ( libmpv ) ) )
-	test? ( || ( opengl egl ) )
+	opengl? ( || ( aqua egl X raspberry-pi !cli? ( libmpv ) ) )
+	raspberry-pi? ( opengl )
+	test? ( opengl )
 	tools? ( cli )
 	uchardet? ( iconv )
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
 	vdpau? ( X )
 	wayland? ( egl )
+	X? ( egl? ( opengl ) )
 	xv? ( X )
 	zsh-completion? ( cli )
 	${PYTHON_REQUIRED_USE}
@@ -139,7 +141,7 @@ mpv_check_compiler() {
 				( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 5 ) ]]; then
 			die "${PN} requires GCC>=4.5."
 		fi
-		if ( use opengl || use egl ) && ! tc-has-tls; then
+		if use opengl && ! tc-has-tls; then
 			die "Your compiler lacks C++11 TLS support. Use GCC>=4.8 or Clang>=3.3."
 		fi
 		if ! tc-is-gcc && use vaapi && use cpu_flags_x86_sse4_1 && \
@@ -238,7 +240,7 @@ src_configure() {
 		$(usex opengl "$(use_enable X gl-x11)" '--disable-gl-x11')
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
 		$(usex egl "$(use_enable gbm egl-drm)" '--disable-egl-drm')
-		$(use_enable wayland gl-wayland)
+		$(usex opengl "$(use_enable wayland gl-wayland)" '--disable-gl-wayland')
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
 		$(use_enable vaapi)		# See below for vaapi-glx, vaapi-x-egl.
@@ -251,6 +253,7 @@ src_configure() {
 		$(use_enable raspberry-pi rpi)
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		--disable-mali-fbdev	# Only available in overlays.
+		$(usex opengl '' '--disable-gl')
 
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
@@ -274,10 +277,6 @@ src_configure() {
 			$(use_enable opengl vaapi-glx)
 			$(use_enable egl vaapi-x-egl)
 		)
-	fi
-
-	if ! use egl && ! use opengl && ! use raspberry-pi; then
-		mywafargs+=(--disable-gl)
 	fi
 
 	# Create reproducible non-live builds.
