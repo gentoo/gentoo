@@ -435,7 +435,7 @@ app-benchmarks/siege 3.0.6 3.1.3 3.1.4: A HTTP regression testing and benchmarki
 app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/stress-ng 0.05.12 0.06.00: A tool to load and stress a computer system
-app-benchmarks/sysbench 1.0_pre20161017 1.0.3 1.0.5 9999: System performance benchmark
+app-benchmarks/sysbench 1.0.3 1.0.6 9999: System performance benchmark
 app-benchmarks/tiobench 0.3.3-r2 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 3.1.2: A modern HTTP benchmarking tool
@@ -17765,7 +17765,7 @@ sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.52 4.4.59 4.4.60 4.4.61 4.4.62 4.4.63 4.9.16 4.9.20 4.9.21 4.9.22 4.9.23 4.9.24 4.10.8 4.10.9 4.10.10 4.10.11 4.10.12: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.0.2-r1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.23 4.9.24 4.10.11 4.10.12: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.10
+sys-kernel/ck-sources 4.9.23 4.9.24 4.9.25 4.10.11 4.10.12 4.10.13: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.10
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 9999: Gentoo automatic kernel building scripts
