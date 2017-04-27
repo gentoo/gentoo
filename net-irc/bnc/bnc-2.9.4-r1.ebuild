@@ -10,7 +10,7 @@ SRC_URI="http://gotbnc.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="alpha amd64 arm ppc ppc64 ~s390 sparc x86"
 IUSE="ssl"
 
 DEPEND="ssl? ( dev-libs/openssl:0 )"
