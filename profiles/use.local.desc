@@ -942,22 +942,8 @@ app-misc/openastro:jpeg - Enable exporting Astrological Charts to jpeg
 app-misc/openastro:png - Enable exporting Astrological Charts to png
 app-misc/pax-utils:python - Install a more powerful/faster version of lddtree
 app-misc/recoll:camelcase - Enable indexing for camelCase sentences and words
-app-misc/recoll:chm - Index chm files
-app-misc/recoll:dvi - Index dvi files
-app-misc/recoll:ics - Index iCalendar files
-app-misc/recoll:info - Index GNU info files
 app-misc/recoll:inotify - Use the Linux Kernel notification subsystem for monitoring file alterations in realtime
-app-misc/recoll:lyx - Index Latex lyx files
-app-misc/recoll:msdoc - Index Microsoft Word documents
-app-misc/recoll:msppt - Index Microsoft PowerPoint documents
-app-misc/recoll:msxls - Index Microsoft Excel documents
-app-misc/recoll:pdf - Index PDF documents
-app-misc/recoll:rtf - Index Microsoft RTF documents
 app-misc/recoll:session - Stop monitoring file alterations when X11 session terminates
-app-misc/recoll:sound - Index audio files
-app-misc/recoll:tex - Index TeX files
-app-misc/recoll:wordperfect - Index WordPerfect documents
-app-misc/recoll:xml - Index several XML-based formats (Abiword, FictionBook, Kword, Office OpenXML, OpenDocument, SVG)
 app-misc/rlwrap:debug - Enable debug
 app-misc/screen:multiuser - Enable multiuser support (by setting correct permissions)
 app-misc/screen:nethack - Express error messages in nethack style

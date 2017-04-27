@@ -1908,7 +1908,7 @@ app-misc/qlcplus 4.10.5b: QLC+ - Q Light Controller Plus to control DMX interfac
 app-misc/ranger 1.8.1 1.9.0_beta5 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
-app-misc/recoll 1.19.5-r1 1.22.4: A personal full text search package
+app-misc/recoll 1.22.4: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/relevation 1.3: a command-line searcher for the Revelation password manager
@@ -2040,7 +2040,7 @@ app-office/kmymoney 4.7.2 4.8.0: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.2.3.3-r1 5.2.6.2 5.3.2.2 5.3.9999 9999: A full office productivity suite
+app-office/libreoffice 5.2.6.2 5.3.2.2 5.3.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.2.3.3-r1 5.2.6.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.2.3.3-r1 5.2.6.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.2.3.3 5.2.6.2 5.3.2.2: Translations for the Libreoffice suite
@@ -9414,7 +9414,7 @@ dev-ruby/execjs 1.4.0 2.6.0 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.2.4 1.2.5: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facets 3.1.0: Facets is the premier collection of extension methods for Ruby
-dev-ruby/facter 2.4.6 3.1.4-r1 3.1.8 3.6.1 3.6.3 3.6.3-r1 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 2.4.6 3.1.4-r1 3.1.8 3.6.1 3.6.3 3.6.3-r1 3.6.4 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.7.0 4.8.0: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.6.0-r1 0.9.2 0.9.3 0.10.2 0.11.0: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0-r2 1.3.0.20131201 1.3.0.20131201-r1: Helper for faking web requests in Ruby
@@ -11777,7 +11777,7 @@ kde-apps/kbreakout 16.12.3 17.04.0: Breakout-like game by KDE
 kde-apps/kbruch 16.12.3 17.04.0: Educational application to learn calculating with fractions
 kde-apps/kcachegrind 16.12.3 17.04.0: Frontend for Cachegrind by KDE
 kde-apps/kcalc 16.12.3 17.04.0: KDE calculator
-kde-apps/kcalcore 16.08.3 16.12.3 17.04.0: Library for handling calendar data
+kde-apps/kcalcore 16.12.3 17.04.0: Library for handling calendar data
 kde-apps/kcalutils 17.04.0: Library providing utility functions for the handling of calendar data
 kde-apps/kcharselect 16.12.3 17.04.0: KDE character selection utility
 kde-apps/kcmshell 16.04.3: Utility to host KDE control modules independently of SystemSettings
@@ -11848,7 +11848,7 @@ kde-apps/kgoldrunner 16.12.3 17.04.0: Game of action and puzzle solving by KDE
 kde-apps/kgpg 16.08.3 16.12.3 17.04.0: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 16.12.3 17.04.0: Classical hangman game by KDE
 kde-apps/khelpcenter 16.12.3 17.04.0: The KDE Help Center
-kde-apps/kholidays 16.08.3 16.12.3 17.04.0: Library to determine holidays and other special events for a geographical region
+kde-apps/kholidays 16.12.3 17.04.0: Library to determine holidays and other special events for a geographical region
 kde-apps/kiconfinder 16.04.3: Finds an icon based on its name
 kde-apps/kidentitymanagement 17.04.0: Library for managing identitites
 kde-apps/kig 16.12.3 17.04.0: KDE Interactive Geometry tool
@@ -11966,7 +11966,7 @@ kde-apps/libkdepim 4.4.2016.01 17.04.0: Common PIM libraries
 kde-apps/libkeduvocdocument 16.12.3 17.04.0: Library for reading/writing KVTML
 kde-apps/libkexiv2 15.08.3 16.12.3 17.04.0: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 16.12.3 17.04.0: Qt/C++ wrapper around LibFace to perform face recognition and detection
-kde-apps/libkgapi 2.2.0 5.3.1-r1 17.04.0: Library for accessing Google calendar and contact resources
+kde-apps/libkgapi 2.2.0 17.04.0-r1: Library for accessing Google calendar and contact resources
 kde-apps/libkgeomap 16.12.3 17.04.0: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 16.12.3 17.04.0: A library for image plugins accross KDE applications
 kde-apps/libkleo 4.4.2016.01 4.4.2016.01-r1 17.04.0: Library for encryption handling
