@@ -1,0 +1,13 @@
+# RESTORE_ON_START:
+# Restore brightness level when acpilight starts
+# no - Do not restore state
+# yes - Restore state
+
+RESTORE_ON_START="yes"
+
+# SAVE_ON_STOP:
+# Save brightness level when acpilight stops
+# no - Do not save state
+# yes - Save state
+
+SAVE_ON_STOP="yes"
