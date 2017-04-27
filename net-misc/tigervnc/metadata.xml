@@ -11,7 +11,6 @@
     </maintainer>
   <use>
     <flag name="drm">build with DRM support</flag>
-    <flag name="nls">Add Native Language Support</flag>
     <flag name="server">Build TigerVNC server</flag>
     <flag name="xorgmodule">Build the Xorg module</flag>
   </use>
