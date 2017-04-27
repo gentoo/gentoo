@@ -274,7 +274,7 @@ multilib_src_configure() {
 
 eninja() {
 	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j$(makeopts_jobs) -l$(makeopts_loadavg 0)"
+		NINJAOPTS="-j $(makeopts_jobs) -l $(makeopts_loadavg "${MAKEOPTS}" 0)"
 	fi
 	set -- ninja -v ${NINJAOPTS} "$@"
 	echo "$@"
