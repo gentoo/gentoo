@@ -8,7 +8,7 @@ DESCRIPTION="Swiss-army knife for reading and writing XML files"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="examples test"
 
 RDEPEND="dev-lang/php:*[xml]
