@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge.jp/users/10/10368/${P}.tar.xz"
 
 LICENSE="mplus-fonts public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~ppc-macos ~x86-macos"
 IUSE=""
 RESTRICT="binchecks strip"
 
