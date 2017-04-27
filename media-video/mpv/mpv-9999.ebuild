@@ -309,13 +309,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	local rv softvol_0_18_1=0 osc_0_21_0=0
+	local rv softvol_0_18_1=0 osc_0_21_0=0 opengl_0_25_0=0
 
 	for rv in ${REPLACING_VERSIONS}; do
 		version_compare ${rv} 0.18.1
 		[[ $? -eq 1 ]] && softvol_0_18_1=1
 		version_compare ${rv} 0.21.0
 		[[ $? -eq 1 ]] && osc_0_21_0=1
+		version_compare ${rv} 0.25.0
+		[[ $? -eq 1 ]] && ! use opengl && opengl_0_25_0=1
 	done
 
 	if [[ ${softvol_0_18_1} -eq 1 ]]; then
@@ -334,6 +336,12 @@ pkg_postinst() {
 		elog
 		elog "https://wiki.gentoo.org/wiki/Mpv#OSC_in_0.21.0"
 		elog
+	fi
+
+	if [[ ${opengl_0_25_0} -eq 1 ]]; then
+		elog "Since version 0.25.0 the 'opengl' USE flag is mapped to"
+		elog "the 'opengl' video output and no longer depends on X11"
+		elog "or Mac OS Aqua. Consider enabling the 'opengl' USE flag."
 	fi
 
 	# bash-completion < 2.3-r1 already installs (mostly broken) mpv completion.
