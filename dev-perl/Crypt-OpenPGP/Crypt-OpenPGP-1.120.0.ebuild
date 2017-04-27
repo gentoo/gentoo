@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Pure-Perl OpenPGP-compatible PGP implementation"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~x86-solaris"
+KEYWORDS="amd64 x86 ~x86-solaris"
 IUSE="test"
 
 # Note: Don't depend on Alt::, non Alt:: works for now
