@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=The Curse of Monkey Island, the third game in the series
+EAPI=6
+HOMEPAGE=https://en.wikipedia.org/wiki/The_Curse_of_Monkey_Island
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=comi
+PROPERTIES=interactive
+RDEPEND=>=games-engines/scummvm-0.4.0
+RESTRICT=bindist
+SLOT=0
+_eclass_exported_funcs=pkg_preinst:xdg pkg_postrm:xdg pkg_postinst:xdg src_unpack:- src_prepare:xdg src_install:-
+_eclasses_=cdrom	bb6ff1e9eb55049bb184fa15b8ed8563	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=a118128a8373bb20f4a3e481dd9815ae

@@ -10631,11 +10631,14 @@ games-action/cs2d 0127 1002 1002-r1: A freeware clone of Counter-Strike with som
 games-action/d1x-rebirth 0.58.1: Descent Rebirth - enhanced Descent 1 engine
 games-action/d2x-rebirth 0.58.1: Descent Rebirth - enhanced Descent 2 engine
 games-action/deathchase3d 0.9 0.9-r1: A remake of the Sinclair Spectrum game of the same name
-games-action/descent1-demodata 1.4: Demo data files for Descent 1
-games-action/descent2-data 1.0: Data files for Descent 2
-games-action/descent2-demodata 1.0: Demo data files for Descent 2
+games-action/descent1-data 1.4a: Data files for Descent 1
+games-action/descent1-demodata 1.4 1.4-r1: Demo data files for Descent 1
+games-action/descent2-data 1.0 1.2: Data files for Descent 2
+games-action/descent2-demodata 1.0 1.0-r1: Demo data files for Descent 2
+games-action/descent2-vertigo 1.0: Data files for Descent 2: The Vertigo Series
 games-action/descent3 1.4.0b-r2: Descent 3 - 3-Dimensional indoor/outdoor spaceship combat
 games-action/descent3-demo 1.4.0a: Indoor/outdoor 3D combat with evil robotic mining spacecraft
+games-action/dxx-rebirth 0.59.100: Descent Rebirth - enhanced Descent 1 & 2 engine
 games-action/extreme-tuxracer 0.7.2 0.7.2-r1: High speed arctic racing game based on Tux Racer
 games-action/fakk2 1.02 1.02-r1: Heavy Metal: FAKK2 - 3D third-person action shooter based on the Heavy Metal comics/movies
 games-action/formido 1.0.1 1.0.1-r1: A shooting game in the spirit of Phobia games
@@ -11350,6 +11353,7 @@ games-rpg/avadon 1.0.4: Epic fantasy role-playing adventure in an enormous and u
 games-rpg/bass 1.2-r1: Beneath a Steel Sky: a science fiction thriller set in a bleak vision of the future
 games-rpg/bastion 20120620-r1: An original action role-playing game set in a lush imaginative world
 games-rpg/coe2 2007-r1: Precursor to the Dominions series
+games-rpg/comi 1: The Curse of Monkey Island, the third game in the series
 games-rpg/daimonin-client 0.10.5 0.10.5-r1: a graphical 2D tile-based MMORPG
 games-rpg/dear-esther 20130608: Ghost story, told using first-person gaming technologies
 games-rpg/draci-historie 2012: Bert the little dragon searches for his father

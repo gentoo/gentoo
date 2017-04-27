@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=app-arch/unzip app-arch/unarj
+DESCRIPTION=Demo data files for Descent 2
+EAPI=6
+HOMEPAGE=http://www.interplay.com/games/descent.php
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=free-noncomm
+RDEPEND=!<games-action/d2x-0.2.5-r3 !games-action/descent2-data
+SLOT=0
+SRC_URI=ftp://ftp.funet.fi/pub/msdos/games/interplay/d2demo10.zip
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
+_md5_=671d54a7a1d8940cccf211dddb62d243
