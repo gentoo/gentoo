@@ -6,6 +6,6 @@
     <name>Gentoo ML Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">hhugo/reactiveData</remote-id>
+	  <remote-id type="github">ocsigen/reactiveData</remote-id>
   </upstream>
 </pkgmetadata>
