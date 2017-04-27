@@ -5218,13 +5218,13 @@ dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dose3 5.0.1: Library and a collection of tools to perform la large spectrum of analysis on package repositories
 dev-ml/easy-format 1.0.2 1.2.0: Pretty-printing library for OCaml
-dev-ml/eliom 6.1.0 6.2.0 9999: A web framework to program client/server applications
+dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
 dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1.2: An OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
-dev-ml/flow_parser 0.42.0 0.43.1 0.44.0: JavaScript parser written in OCaml
+dev-ml/flow_parser 0.44.0 0.44.1: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
@@ -5237,7 +5237,7 @@ dev-ml/incremental 0.9.0: Library for incremental computations
 dev-ml/incremental_kernel 0.9.0: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
 dev-ml/jane-street-headers 0.9.0: Jane Street header files
-dev-ml/jbuilder 1.0_beta5 1.0_beta6 1.0_beta8: A composable build system for OCaml
+dev-ml/jbuilder 1.0_beta8: A composable build system for OCaml
 dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
 dev-ml/js_of_ocaml 2.8.4-r1 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.0 1.0.1: Non-blocking streaming JSON codec for OCaml
@@ -5269,7 +5269,7 @@ dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
 dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libraries so they do not expose everything at toplevel
 dev-ml/ocaml-conduit 0.14.5 0.15.0: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 0.22.1 1.0 1.1: A modular standard library focused on data structures
-dev-ml/ocaml-cstruct 2.3.1 2.3.2 2.4.0: Map OCaml arrays onto C-like structs
+dev-ml/ocaml-cstruct 2.4.0: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
@@ -5310,8 +5310,8 @@ dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
-dev-ml/ocsigen-start 0.99 1.0.0 9999: Eliom Base Application with users, (pre)registration, notifications, etc.
-dev-ml/ocsigen-toolkit 0.99 1.0.0 9999: User interface widgets for Ocsigen applications
+dev-ml/ocsigen-start 1.0.0 9999: Eliom Base Application with users, (pre)registration, notifications, etc.
+dev-ml/ocsigen-toolkit 1.0.0 9999: User interface widgets for Ocsigen applications
 dev-ml/octavius 0.2.0: ocamldoc comment syntax parser
 dev-ml/ocurl 0.6.1 0.7.9: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
@@ -5347,7 +5347,7 @@ dev-ml/ppx_fail 0.9.0: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 0.9.0-r1: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_hash 0.9.0: PPX rewriter that generates hash functions from type expressions and definitions
 dev-ml/ppx_here 0.9.0 0.9.1: Expands [%here] into its location
-dev-ml/ppx_import 1.1: A syntax extension for importing declarations from interface files
+dev-ml/ppx_import 1.1 1.2: A syntax extension for importing declarations from interface files
 dev-ml/ppx_inline_test 0.9.0 0.9.1: Syntax extension for writing in-line tests in ocaml code
 dev-ml/ppx_jane 0.9.0: Standard Jane Street ppx rewriters
 dev-ml/ppx_js_style 0.9.0: Code style checker for Jane Street Packages
@@ -5385,7 +5385,7 @@ dev-ml/topkg 0.8.1 0.9.0: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 0.9.0: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 0.9.0: Runtime types for OCaml (Extended)
-dev-ml/tyxml 4.0.1 4.1.0: A libary to build xml trees typechecked by OCaml
+dev-ml/tyxml 4.1.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.19.3: A new toplevel for OCaml with completion and colorization
@@ -15544,7 +15544,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.14.23 0.14.24: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.24 0.14.27: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6 1.8.6-r1: A torrent file parser
 net-p2p/transmission 2.92-r2 9999: A fast, easy, and free BitTorrent client
