@@ -254,7 +254,6 @@ multilib_src_configure() {
 		-Dhwdb=$(meson_ml)
 		-Dldconfig=$(meson_ml)
 		-Dlocaled=$(meson_ml)
-		-Dlogind=$(meson_ml)
 		-Dman=$(meson_ml)
 		-Dnetworkd=$(meson_ml)
 		-Dquotacheck=$(meson_ml)
