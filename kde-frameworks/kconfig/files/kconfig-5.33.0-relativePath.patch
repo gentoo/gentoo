@@ -1,0 +1,88 @@
+commit 3ad00c4e56eb9fe6ea7386f8ca1db6e15c26ac11
+Author: Wolfgang Bauer <wbauer@tmo.at>
+Date:   Tue Apr 25 23:37:11 2017 +0200
+
+    Fix relativePath calculation in KDesktopFile::locateLocal()
+    
+    The "dir" and "path" variables were obviously swapped here by mistake.
+    This resulted in the relativePath always being empty, and made the
+    function return "~/.local/share/" (or "~/.config/") instead of the
+    correct path.
+    
+    BUG: 345100
+    FIXED-IN: 5.34.0
+    Differential Revision: https://phabricator.kde.org/D5502
+
+diff --git a/autotests/kdesktopfiletest.cpp b/autotests/kdesktopfiletest.cpp
+index 393a6a0..a046196 100644
+--- a/autotests/kdesktopfiletest.cpp
++++ b/autotests/kdesktopfiletest.cpp
+@@ -255,3 +255,34 @@ void KDesktopFileTest::testTryExecWithAuthorizeAction()
+         QVERIFY(!desktopFile.tryExec());
+     }
+ }
++
++void KDesktopFileTest::testLocateLocal_data()
++{
++    QString systemConfigLocation = QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation).last();
++    QString writableConfigLocation = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
++    QString systemDataLocation = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation).last();
++    QString writableDataLocation = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
++
++    QTest::addColumn<QString>("path");
++    QTest::addColumn<QString>("result");
++
++    QTest::newRow("configLocation, system-wide") << systemConfigLocation + "/test.desktop" << writableConfigLocation + "/test.desktop";
++    QTest::newRow("autostart, system-wide") << systemConfigLocation + "/autostart/test.desktop" << writableConfigLocation + "/autostart/test.desktop";
++    QTest::newRow("dataLocation, system-wide") << systemDataLocation + "/test.desktop" << writableDataLocation + "/test.desktop";
++    QTest::newRow("applications, system-wide") << systemDataLocation + "/applications/test.desktop" << writableDataLocation + "/applications/test.desktop";
++    QTest::newRow("desktop-directories, system-wide") << systemDataLocation + "/desktop-directories/test.directory" << writableDataLocation + "/desktop-directories/test.directory";
++    QTest::newRow("configLocation, writable") << writableConfigLocation + "/test.desktop" << writableConfigLocation + "/test.desktop";
++    QTest::newRow("autostart, writable") << writableConfigLocation + "/autostart/test.desktop" << writableConfigLocation + "/autostart/test.desktop";
++    QTest::newRow("dataLocation, writable") << writableDataLocation + "/test.desktop" << writableDataLocation + "/test.desktop";
++    QTest::newRow("applications, writable") << writableDataLocation + "/applications/test.desktop" << writableDataLocation + "/applications/test.desktop";
++    QTest::newRow("desktop-directories, writable") << writableDataLocation + "/desktop-directories/test.directory" << writableDataLocation + "/desktop-directories/test.directory";
++    QTest::newRow("unknown location") << "/test.desktop" << writableDataLocation + "/test.desktop";
++}
++
++void KDesktopFileTest::testLocateLocal()
++{
++    QFETCH(QString, path);
++    QFETCH(QString, result);
++
++    QCOMPARE(KDesktopFile::locateLocal(path), result);
++}
+diff --git a/autotests/kdesktopfiletest.h b/autotests/kdesktopfiletest.h
+index eb0bd1d..ed6679a 100644
+--- a/autotests/kdesktopfiletest.h
++++ b/autotests/kdesktopfiletest.h
+@@ -34,6 +34,8 @@ private Q_SLOTS:
+     void testActionGroup();
+     void testIsAuthorizedDesktopFile();
+     void testTryExecWithAuthorizeAction();
++    void testLocateLocal_data();
++    void testLocateLocal();
+ 
+ };
+ 
+diff --git a/src/core/kdesktopfile.cpp b/src/core/kdesktopfile.cpp
+index 4a55030..52a97ec 100644
+--- a/src/core/kdesktopfile.cpp
++++ b/src/core/kdesktopfile.cpp
+@@ -83,14 +83,14 @@ QString KDesktopFile::locateLocal(const QString &path)
+     // Relative to config? (e.g. for autostart)
+     Q_FOREACH (const QString &dir, QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation)) {
+         if (path.startsWith(dir + plus)) {
+-            relativePath = dir.mid(path.length() + 1);
++            relativePath = path.mid(dir.length() + 1);
+             return QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1Char('/') + relativePath;
+         }
+     }
+     // Relative to xdg data dir? (much more common)
+     Q_FOREACH (const QString &dir, QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation)) {
+         if (path.startsWith(dir + plus)) {
+-            relativePath = dir.mid(path.length() + 1);
++            relativePath = path.mid(dir.length() + 1);
+         }
+     }
+     if (relativePath.isEmpty()) {
