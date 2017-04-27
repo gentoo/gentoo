@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti"
 HOMEPAGE="http://ilpettegolo.altervista.org/linux_allin1.en.shtml"
@@ -20,9 +20,7 @@ RDEPEND="x11-libs/libX11
 DEPEND="${RDEPEND}
 	x11-proto/xproto"
 
-src_prepare() {
-	epatch "${FILESDIR}/makefile.patch"
-}
+PATCHES=( "${FILESDIR}/makefile-r2.patch" )
 
 src_compile() {
 	emake \
