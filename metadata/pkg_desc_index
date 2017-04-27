@@ -14449,7 +14449,7 @@ net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/tsung 1.6.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
-net-analyzer/vnstat 1.15 1.16 1.17: Console-based network traffic monitor that keeps statistics of network usage
+net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
@@ -14463,13 +14463,13 @@ net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the
 net-dialup/accel-ppp 1.10.3 1.10.9999 1.11.0 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/capi4k-utils 20050718-r7: CAPI4Linux Utils
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers that speak the RADIUS protocol
-net-dialup/cutecom 0.22.0-r1 0.40.0: CuteCom is a serial terminal, like minicom, written in qt
+net-dialup/cutecom 0.22.0-r1 0.40.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
 net-dialup/dial 1.2-r1 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r2 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r2 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
-net-dialup/freeradius 2.2.9-r2 3.0.12-r1 3.0.13: Highly configurable free RADIUS server
+net-dialup/freeradius 2.2.9-r2 3.0.13: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/gtkterm 0.99.7_rc1: A serial port terminal written in GTK+, similar to Windows' HyperTerminal
@@ -18337,7 +18337,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 44.0.2510.1218 44.0.2510.1449: A fast and secure web browser
-www-client/opera-beta 45.0.2552.225 45.0.2552.453: A fast and secure web browser
+www-client/opera-beta 45.0.2552.453 45.0.2552.626: A fast and secure web browser
 www-client/opera-developer 46.0.2567.0 46.0.2573.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
