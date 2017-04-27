@@ -15,6 +15,5 @@
 		<flag name="marble">Enable support for geolocation using <pkg>kde-apps/marble</pkg></flag>
 		<flag name="panorama">Build the panorama plugin which requires <pkg>media-gfx/hugin</pkg></flag>
 		<flag name="semantic-desktop">Enable <pkg>kde-frameworks/kfilemetadata</pkg> support</flag>
-		<flag name="video">Enable video player support</flag>
 	</use>
 </pkgmetadata>
