@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gtranslator"
 
 LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+introspection gnome-dictionary gucharmap spell"
 REQUIRED_USE="gucharmap? ( introspection ${PYTHON_REQUIRED_USE} )"
 
