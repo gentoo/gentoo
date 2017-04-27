@@ -5857,7 +5857,6 @@ dev-perl/File-BaseDir 0.30.0-r1 0.70.0: Use the Freedesktop.org base directory s
 dev-perl/File-Copy-Link 0.113.0-r1 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
 dev-perl/File-DesktopEntry 0.40.0-r1 0.220.0: Object to handle .desktop files
-dev-perl/File-DirWalk 0.400.0-r1 0.500.0: File::DirWalk - walk through a directory tree and run own code
 dev-perl/File-Find-Rule 0.330.0-r1 0.340.0: Alternative interface to File::Find
 dev-perl/File-Find-Rule-Perl 1.130.0 1.150.0: Common rules for searching for Perl things
 dev-perl/File-Flat 1.40.0-r1: Implements a flat filesystem
