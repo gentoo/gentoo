@@ -3,15 +3,13 @@
 
 EAPI=6
 
-#inherit eutils
-
 DESCRIPTION="a highly configurable program for managing and archiving log files"
 HOMEPAGE="http://www.weird.com/~woods/projects/newsyslog.html"
 SRC_URI="ftp://ftp.weird.com/pub/local/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 hppa ~mips ppc ppc64 ~sparc x86"
 
 DEPEND="sys-apps/groff"
 
