@@ -1,6 +1,6 @@
 diff -r -C2 petrovich.orig/petrovich.pl petrovich/petrovich.pl
-*** petrovich.orig/petrovich.pl	Mon Jul 16 12:34:55 2001
---- petrovich/petrovich.pl	Sun Aug  5 22:22:54 2001
+*** a/petrovich.pl	Mon Jul 16 12:34:55 2001
+--- b/petrovich.pl	Sun Aug  5 22:22:54 2001
 ***************
 *** 278,285 ****
       
