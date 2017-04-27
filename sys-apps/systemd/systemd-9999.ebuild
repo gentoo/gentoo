@@ -199,9 +199,10 @@ meson_ml_use() {
 multilib_src_configure() {
 	local myconf=(
 		--buildtype=plain
-		--prefix=/usr
+		--prefix="${EPREFIX}/usr"
 		--libdir="$(get_libdir)"
-		--localstatedir=/var
+		--sysconfdir="${EPREFIX}/etc"
+		--localstatedir="${EPREFIX}/var"
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
@@ -313,9 +314,9 @@ multilib_src_install_all() {
 		dosym "..${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
 	else
 		# we just keep sysvinit tools, so no need for the mans
-		rm "${D}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
+		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
 			|| die
-		rm "${D}"/usr/share/man/man1/init.1 || die
+		rm "${ED%/}"/usr/share/man/man1/init.1 || die
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008
@@ -328,13 +329,13 @@ multilib_src_install_all() {
 
 	# If we install these symlinks, there is no way for the sysadmin to remove them
 	# permanently.
-	rm "${D}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
-	rm -f "${D}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
-	rm -r "${D}"/etc/systemd/system/network-online.target.wants || die
-	rm -r "${D}"/etc/systemd/system/sockets.target.wants || die
-	rm -r "${D}"/etc/systemd/system/sysinit.target.wants || die
+	rm "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
+	rm -f "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
+	rm -r "${ED%/}"/etc/systemd/system/network-online.target.wants || die
+	rm -r "${ED%/}"/etc/systemd/system/sockets.target.wants || die
+	rm -r "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
-	rm -r "${D}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
+	rm -r "${ED%/}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
 }
 
 migrate_locale() {
@@ -403,7 +404,7 @@ pkg_postinst() {
 	# Keep this here in case the database format changes so it gets updated
 	# when required. Despite that this file is owned by sys-apps/hwids.
 	if has_version "sys-apps/hwids[udev]"; then
-		udevadm hwdb --update --root="${ROOT%/}"
+		udevadm hwdb --update --root="${EROOT%/}"
 	fi
 
 	udev_reload || FAIL=1
