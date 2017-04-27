@@ -11,7 +11,7 @@ HOMEPAGE="http://freecode.com/projects/gkrellm-countdown"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ppc sparc x86"
 IUSE=""
 
 COMMON_DEPEND="app-admin/gkrellm[X]"
