@@ -116,7 +116,8 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit toolchain-funcs multilib flag-o-matic eutils multiprocessing versionator
+inherit toolchain-funcs multilib ninja-utils flag-o-matic eutils \
+	multiprocessing versionator
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
@@ -680,44 +681,6 @@ enable_cmake-utils_src_compile() {
 	cmake-utils_src_make "$@"
 }
 
-_ninjaopts_from_makeopts() {
-	if [[ ${NINJAOPTS+set} == set ]]; then
-		return 0
-	fi
-	local ninjaopts=()
-	set -- ${MAKEOPTS}
-	while (( $# )); do
-		case $1 in
-			-j|-l)
-				if [[ $# -eq 1 || $2 == -* ]]; then
-					if [[ $1 == -j ]]; then
-						# absurdly high job limit
-						ninjaopts+=( $1 9999 )
-					else # -l
-						# remove load limit (like make does for -l)
-						ninjaopts+=( $1 0 )
-					fi
-					shift 1
-				else
-					ninjaopts+=( $1 $2 )
-					shift 2
-				fi
-				;;
-			-j*|-l*)
-				ninjaopts+=( $1 )
-				shift 1
-				;;
-			-k)
-				# -k 0 = any number of tasks can fail
-				ninjaopts+=( $1 0 )
-				shift 1
-				;;
-			*) shift ;;
-		esac
-	done
-	export NINJAOPTS="${ninjaopts[*]}"
-}
-
 # @FUNCTION: _cmake_ninja_src_make
 # @INTERNAL
 # @DESCRIPTION:
@@ -727,16 +690,7 @@ _cmake_ninja_src_make() {
 
 	[[ -e build.ninja ]] || die "build.ninja not found. Error during configure stage."
 
-	_ninjaopts_from_makeopts
-
-	if [[ "${CMAKE_VERBOSE}" != "OFF" ]]; then
-		set -- ninja ${NINJAOPTS} -v "$@"
-	else
-		set -- ninja ${NINJAOPTS} "$@"
-	fi
-
-	echo "$@"
-	"$@" || die
+	eninja "$@"
 }
 
 # @FUNCTION: _cmake_emake_src_make
