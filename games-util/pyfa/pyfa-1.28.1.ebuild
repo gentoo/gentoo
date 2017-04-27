@@ -21,6 +21,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 IUSE="+graph"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
