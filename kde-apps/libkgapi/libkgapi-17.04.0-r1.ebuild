@@ -13,9 +13,9 @@ HOMEPAGE="https://projects.kde.org/projects/extragear/libs/libkgapi"
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="nls"
 
-DEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_kdeapps_dep kcalcore)
@@ -26,6 +26,11 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	nls? ( $(add_qt_dep linguist-tools) )
+"
+RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim-l10n
 "
+
+PATCHES=( "${FILESDIR}"/${P}-auth{1,2,3}.patch )
