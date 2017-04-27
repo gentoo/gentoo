@@ -11,7 +11,7 @@ HOMEPAGE="http://www.tigr.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
 IUSE="jpeg"
 
 RDEPEND="x11-libs/libXpm
