@@ -2412,9 +2412,9 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>openrc@gentoo.org</email>
-    <name>Gentoo OpenRC Project</name>
+    <name>OpenRC</name>
     <url>https://wiki.gentoo.org/wiki/Project:OpenRC</url>
-    <description>OpenRC is a dependency based init system that works with the system provided init program, normally /sbin/init.</description>
+    <description>OpenRC is a dependency based init system that works with the system provided init program, normally &lt;span style="font-family: monospace; font-size: 95%"&gt;/sbin/init&lt;/span&gt;.</description>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
