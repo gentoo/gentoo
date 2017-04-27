@@ -221,7 +221,7 @@ multilib_src_configure() {
 		-Dlibcurl=$(meson_ml_use curl)
 		-Delfutils=$(meson_ml_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
-		-Dgnuefi=$(meson_ml_use gnuefi)
+		-Dgnu-efi=$(meson_ml_use gnuefi)
 		-Defi-libdir="/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_ml_use http)
 		$(usex http -Dgnutls=$(meson_ml_use ssl) -Dgnutls=false)
@@ -247,6 +247,29 @@ multilib_src_configure() {
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
+
+		# multilib options
+		-Dbacklight=$(meson_ml)
+		-Dbinfmt=$(meson_ml)
+		-Dcoredump=$(meson_ml)
+		-Denvironment-d=$(meson_ml)
+		-Dfirstboot=$(meson_ml)
+		-Dhibernate=$(meson_ml)
+		-Dhostnamed=$(meson_ml)
+		-Dhwdb=$(meson_ml)
+		-Dldconfig=$(meson_ml)
+		-Dlocaled=$(meson_ml)
+		-Dlogind=$(meson_ml)
+		-Dman=$(meson_ml)
+		-Dnetworkd=$(meson_ml)
+		-Dquotacheck=$(meson_ml)
+		-Drandomseed=$(meson_ml)
+		-Drfkill=$(meson_ml)
+		-Dsysysers=$(meson_ml)
+		-Dtimedated=$(meson_ml)
+		-Dtimesyncd=$(meson_ml)
+		-Dtmpfiles=$(meson_ml)
+		-Dvconsole=$(meson_ml)
 	)
 
 	set -- meson "${myconf[@]}" "${S}"
