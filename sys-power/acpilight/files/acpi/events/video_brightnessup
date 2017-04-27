@@ -1,0 +1,3 @@
+event=video/brightnessup
+action=/etc/acpi/actions/video_brightnessup.sh
+
