@@ -1,0 +1,22 @@
+From 1ce331d5548b98ed8b818532b2556d6f2c7a3b83 Mon Sep 17 00:00:00 2001
+From: Martin Hosken <martin_hosken@sil.org>
+Date: Thu, 9 Mar 2017 22:04:04 +0000
+Subject: [PATCH] Ensure features have enough space. Fix from Mozilla
+
+---
+ src/FeatureMap.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/FeatureMap.cpp b/src/FeatureMap.cpp
+index b8c8405..83bd5f6 100644
+--- a/src/FeatureMap.cpp
++++ b/src/FeatureMap.cpp
+@@ -275,7 +275,7 @@ bool FeatureRef::applyValToFeature(uint32 val, Features & pDest) const
+     else
+       if (pDest.m_pMap!=&m_pFace->theSill().theFeatureMap())
+         return false;       //incompatible
+-    pDest.reserve(m_index);
++    pDest.reserve(m_index+1);
+     pDest[m_index] &= ~m_mask;
+     pDest[m_index] |= (uint32(val) << m_bits);
+     return true;
