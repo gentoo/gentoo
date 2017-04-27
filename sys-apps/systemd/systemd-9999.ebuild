@@ -7,8 +7,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		!doc? ( https://dev.gentoo.org/~floppym/dist/${P}-man.tar.gz )"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
@@ -21,7 +20,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl doc elfutils +gcrypt gnuefi http
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http
 	idn importd +kmod +lz4 lzma nat pam policykit
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
@@ -100,12 +99,8 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
-	doc? ( $(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]') )
+	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
-
-python_check_deps() {
-	has_version --host-root "dev-python/lxml[${PYTHON_USEDEP}]"
-}
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
@@ -171,7 +166,7 @@ src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
 
-	use doc && python_setup
+	python_setup
 
 	multilib-minimal_src_configure
 }
@@ -242,7 +237,6 @@ multilib_src_configure() {
 		#-Dtests=$(meson_ml_use test)
 		-Ddbus=$(meson_ml_use test)
 		-Dxkbcommon=$(meson_ml_use xkb)
-		-Ddoc=$(meson_ml_use doc python)
 		# hardcode a few paths to spare some deps
 		-Dpath-kill=/bin/kill
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
@@ -302,10 +296,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
-
-	if [[ ${PV} != 9999 ]]; then
-		use doc || doman "${WORKDIR}"/man/systemd.{directives,index}.7
-	fi
 
 	if use sysv-utils; then
 		for app in halt poweroff reboot runlevel shutdown telinit; do
