@@ -199,9 +199,10 @@ meson_ml_use() {
 multilib_src_configure() {
 	local myconf=(
 		--buildtype=plain
-		--prefix=/usr
+		--prefix="${EPREFIX}/usr"
 		--libdir="$(get_libdir)"
-		--localstatedir=/var
+		--sysconfdir="${EPREFIX}/etc"
+		--localstatedir="${EPREFIX}/var"
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
@@ -221,7 +222,7 @@ multilib_src_configure() {
 		-Dlibcurl=$(meson_ml_use curl)
 		-Delfutils=$(meson_ml_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
-		-Dgnuefi=$(meson_ml_use gnuefi)
+		-Dgnu-efi=$(meson_ml_use gnuefi)
 		-Defi-libdir="/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_ml_use http)
 		$(usex http -Dgnutls=$(meson_ml_use ssl) -Dgnutls=false)
@@ -247,6 +248,29 @@ multilib_src_configure() {
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
+
+		# multilib options
+		-Dbacklight=$(meson_ml)
+		-Dbinfmt=$(meson_ml)
+		-Dcoredump=$(meson_ml)
+		-Denvironment-d=$(meson_ml)
+		-Dfirstboot=$(meson_ml)
+		-Dhibernate=$(meson_ml)
+		-Dhostnamed=$(meson_ml)
+		-Dhwdb=$(meson_ml)
+		-Dldconfig=$(meson_ml)
+		-Dlocaled=$(meson_ml)
+		-Dlogind=$(meson_ml)
+		-Dman=$(meson_ml)
+		-Dnetworkd=$(meson_ml)
+		-Dquotacheck=$(meson_ml)
+		-Drandomseed=$(meson_ml)
+		-Drfkill=$(meson_ml)
+		-Dsysysers=$(meson_ml)
+		-Dtimedated=$(meson_ml)
+		-Dtimesyncd=$(meson_ml)
+		-Dtmpfiles=$(meson_ml)
+		-Dvconsole=$(meson_ml)
 	)
 
 	set -- meson "${myconf[@]}" "${S}"
@@ -290,9 +314,9 @@ multilib_src_install_all() {
 		dosym "..${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
 	else
 		# we just keep sysvinit tools, so no need for the mans
-		rm "${D}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
+		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
 			|| die
-		rm "${D}"/usr/share/man/man1/init.1 || die
+		rm "${ED%/}"/usr/share/man/man1/init.1 || die
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008
@@ -305,13 +329,13 @@ multilib_src_install_all() {
 
 	# If we install these symlinks, there is no way for the sysadmin to remove them
 	# permanently.
-	rm "${D}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
-	rm -f "${D}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
-	rm -r "${D}"/etc/systemd/system/network-online.target.wants || die
-	rm -r "${D}"/etc/systemd/system/sockets.target.wants || die
-	rm -r "${D}"/etc/systemd/system/sysinit.target.wants || die
+	rm "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
+	rm -f "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
+	rm -r "${ED%/}"/etc/systemd/system/network-online.target.wants || die
+	rm -r "${ED%/}"/etc/systemd/system/sockets.target.wants || die
+	rm -r "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
-	rm -r "${D}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
+	rm -r "${ED%/}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
 }
 
 migrate_locale() {
@@ -380,7 +404,7 @@ pkg_postinst() {
 	# Keep this here in case the database format changes so it gets updated
 	# when required. Despite that this file is owned by sys-apps/hwids.
 	if has_version "sys-apps/hwids[udev]"; then
-		udevadm hwdb --update --root="${ROOT%/}"
+		udevadm hwdb --update --root="${EROOT%/}"
 	fi
 
 	udev_reload || FAIL=1
