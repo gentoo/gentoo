@@ -203,7 +203,7 @@ multilib_src_configure() {
 		-Dbashcompletiondir="$(get_bashcompdir)"
 		# make sure we get /bin:/sbin in $PATH
 		-Dsplit-usr=true
-		-Drootprefix="${ROOTPREFIX}"
+		-Drootprefix="${EPREFIX}${ROOTPREFIX}"
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
 		# no deps
@@ -326,6 +326,12 @@ multilib_src_install_all() {
 	rm -r "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
 	rm -r "${ED%/}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
+
+	if [[ ! -e "${ED%/}"/usr/lib/systemd/systemd ]]; then
+		# Avoid breaking boot/reboot
+		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd" /usr/lib/systemd/systemd
+		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd-shutdown" /usr/lib/systemd/systemd-shutdown
+	fi
 }
 
 migrate_locale() {
