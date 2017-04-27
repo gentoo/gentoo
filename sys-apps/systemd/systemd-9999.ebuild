@@ -13,7 +13,7 @@ fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit bash-completion-r1 linux-info multilib-minimal multiprocessing pam python-any-r1 systemd toolchain-funcs udev user
+inherit bash-completion-r1 linux-info multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -281,15 +281,6 @@ multilib_src_configure() {
 	fi
 
 	set -- meson "${myconf[@]}" "${S}"
-	echo "$@"
-	"$@" || die
-}
-
-eninja() {
-	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j $(makeopts_jobs) -l $(makeopts_loadavg "${MAKEOPTS}" 0)"
-	fi
-	set -- ninja -v ${NINJAOPTS} "$@"
 	echo "$@"
 	"$@" || die
 }
