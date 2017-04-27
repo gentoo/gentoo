@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A Perl library for reading, parsing, and processing BibTeX files"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
