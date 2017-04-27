@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="201704-04">
-  <title>Adobe Flash Player: Multiple vulnerabilities [REVIEW]</title>
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
   <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
     worst of which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
   <announced>2017-04-27</announced>
-  <revised>2017-04-27: 1</revised>
+  <revised>2017-04-27: 2</revised>
   <bug>615244</bug>
   <access>remote</access>
   <affected>
@@ -54,5 +54,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3064">CVE-2017-3064</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-13T15:19:39Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2017-04-27T05:22:18Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-04-27T05:32:52Z">whissi</metadata>
 </glsa>
