@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Dirkjan Ochtman <djc@gentoo.org> (27 Apr 2017)
+# Persona service has been discontinued. Masked for removal in 30 days.
+www-apache/mod_authnz_persona
+
 # Michał Górny <mgorny@gentoo.org> (25 Apr 2017)
 # New synced PyPy 2+3 release. Masked for testing. The distutils C++
 # patch needed major updates for both versions, we need to find some
