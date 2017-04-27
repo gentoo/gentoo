@@ -15,7 +15,7 @@ SRC_URI="https://downloads.reviewboard.org/releases/${MY_PN}/$(get_version_compo
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
