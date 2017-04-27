@@ -94,6 +94,7 @@ pkg_postinst() {
 
 	# According to PMS this can be a space-separated list of version
 	# numbers, even though in practice it is typically just one.
+	local oldver
 	for oldver in ${REPLACING_VERSIONS}; do
 		if [[ $(get_major_version ${oldver}) -lt 2 ]]; then
 			ewarn "Starting with version 2.0.54 we no longer patch bedup to use"
