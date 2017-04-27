@@ -5,10 +5,6 @@
     <email>marecki@gentoo.org</email>
     <name>Marek Szuba</name>
   </maintainer>
-  <maintainer type="person">
-    <email>djc@gentoo.org</email>
-    <name>Dirkjan Ochtman</name>
-  </maintainer>
   <longdescription lang="en">
       Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized.
       Your data is your data alone and you deserve to choose where it is stored, if it is shared with some third party and how it's transmitted over the Internet.
