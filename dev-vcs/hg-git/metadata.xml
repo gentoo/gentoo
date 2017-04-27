@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>djc@gentoo.org</email>
-		<name>Dirkjan Ochtman</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
 		<name>Fabian Groffen</name>
 	</maintainer>
