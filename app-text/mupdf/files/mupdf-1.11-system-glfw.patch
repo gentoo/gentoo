@@ -1,0 +1,11 @@
+--- mupdf-1.11-source/Makerules
++++ mupdf-1.11-source/Makerules
+@@ -158,6 +158,8 @@
+ SYS_JBIG2DEC_LIBS := -ljbig2dec
+ SYS_LIBJPEG_LIBS := -ljpeg
+ SYS_ZLIB_LIBS := -lz
++SYS_GLFW_CFLAGS = $(shell pkg-config --cflags glfw3 gl)
++SYS_GLFW_LIBS = $(shell pkg-config --libs glfw3 gl)
+ 
+ endif
+ 

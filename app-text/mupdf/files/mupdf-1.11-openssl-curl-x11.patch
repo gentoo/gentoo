@@ -1,0 +1,37 @@
+--- mupdf-1.11-source/Makerules
++++ mupdf-1.11-source/Makerules
+@@ -116,12 +116,17 @@
+ SYS_PTHREAD_CFLAGS :=
+ SYS_PTHREAD_LIBS := -lpthread
+ 
++WANT_OPENSSL ?= yes
++ifeq "$(WANT_OPENSSL)" "yes"
+ ifeq "$(shell pkg-config --exists 'libcrypto <= 1.0.1t' && echo yes)" "yes"
+ HAVE_LIBCRYPTO := yes
+ SYS_LIBCRYPTO_CFLAGS := -DHAVE_LIBCRYPTO $(shell pkg-config --cflags libcrypto)
+ SYS_LIBCRYPTO_LIBS := $(shell pkg-config --libs libcrypto)
+ endif
++endif
+ 
++WANT_CURL ?= yes
++ifeq "$(WANT_CURL)" "yes"
+ ifeq "$(shell pkg-config --exists libcurl && echo yes)" "yes"
+ HAVE_CURL := yes
+ SYS_CURL_CFLAGS := $(shell pkg-config --cflags libcurl)
+@@ -133,12 +138,16 @@
+ endif
+ endif
+ SYS_CURL_DEPS += -lpthread -lrt
++endif
+ 
++WANT_X!! ?= yes
++ifeq "$(WANT_X11)" "yes"
+ ifeq "$(shell pkg-config --exists x11 xext && echo yes)" "yes"
+ HAVE_X11 := yes
+ SYS_X11_CFLAGS := $(shell pkg-config --cflags x11 xext)
+ SYS_X11_LIBS := $(shell pkg-config --libs x11 xext)
+ endif
++endif
+ 
+ ifeq "$(shell pkg-config --exists harfbuzz && echo yes)" "yes"
+ SYS_HARFBUZZ_CFLAGS := $(shell pkg-config --cflags harfbuzz)
