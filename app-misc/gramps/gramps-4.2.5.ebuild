@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,13 @@ inherit distutils-r1
 
 DESCRIPTION="Genealogical Research and Analysis Management Programming System"
 HOMEPAGE="https://gramps-project.org/"
-SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+reports +exif geo spell"
+IUSE="+reports exif geo spell"
 
 RDEPEND="
 	dev-python/bsddb3[${PYTHON_USEDEP}]
@@ -31,12 +32,14 @@ RDEPEND="
 	spell? ( app-text/gtkspell:3[introspection] )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-resourcepath.patch"
-)
+python_configure_all() {
+	mydistutilsargs=( --resourcepath=/usr/share )
+}
 
 python_prepare_all() {
+	# Install documentation to the proper location. This can't be done
+	# easily with a patch because we substitute in the $PF variable,
+	# and that changes with every revision.
 	sed -i "s:share/doc/gramps:share/doc/${PF}:g" setup.py || die
-
 	distutils-r1_python_prepare_all
 }
