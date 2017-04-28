@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils udev
+inherit autotools udev
 
 DESCRIPTION="Library and tool for personalization of Yubico's YubiKey"
-SRC_URI="http://yubico.github.io/yubikey-personalization/releases/${P}.tar.gz"
+SRC_URI="https://github.com/Yubico/yubikey-personalization/archive/v${PV}.tar.gz"
 HOMEPAGE="https://github.com/Yubico/yubikey-personalization"
 
 KEYWORDS="~amd64 ~x86"
@@ -22,9 +22,23 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	consolekit? ( sys-auth/consolekit[acl] )"
 
-src_install() {
-	DOCS=( doc/. AUTHORS ChangeLog NEWS README )
-	autotools-utils_src_install
+S="${WORKDIR}/yubikey-personalization-${PV}"
 
+DOCS=( doc/. AUTHORS NEWS README )
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+src_configure() {
+	econf \
+		--libdir=/usr/$(get_libdir) \
+		--localstatedir=/var \
+		$(use_enable static-libs static)
+}
+
+src_install() {
+	default
 	use consolekit && udev_dorules *.rules
 }
