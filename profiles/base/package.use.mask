@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (28 Apr 2017)
+# Needs sandbox-2.11 (masked)
+>=www-client/chromium-59 tcmalloc
+
 # Michał Górny <mgorny@gentoo.org> (18 Mar 2017)
 # Requires removed old version of media-gfx/graphviz.
 media-gfx/nip2 graphviz
