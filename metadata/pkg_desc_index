@@ -327,7 +327,7 @@ app-arch/unp 2.0_pre7 2.0_pre7_p1 2.0_pre7_p1-r1: Script for unpacking various f
 app-arch/unrar 5.4.5: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
-app-arch/unshield 1.4: InstallShield CAB file extractor
+app-arch/unshield 1.4 1.4.2: InstallShield CAB file extractor
 app-arch/unzip 6.0_p20: unzipper for pkzip-compressed files
 app-arch/upx-bin 3.91: Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
@@ -1295,7 +1295,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.3.3: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.12.6 17.03.1 17.04.0 17.05.0_rc1 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.12.6 17.03.1 17.04.0 17.05.0_rc1 17.05.0_rc2 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.10.0 1.10.1 1.11.1 1.11.2 1.12.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
