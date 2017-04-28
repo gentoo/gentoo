@@ -5,11 +5,6 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-		<description>CC me on bugs. Assign to herd</description>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">plk/biblatex-apa</remote-id>
 	</upstream>
