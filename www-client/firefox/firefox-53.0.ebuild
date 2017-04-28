@@ -24,13 +24,12 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-52.0-patches-08"
+PATCH="${PN}-53.0-patches-01"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
-MOZCONFIG_OPTIONAL_GTK2ONLY=1
 MOZCONFIG_OPTIONAL_WIFI=1
 
-inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.52 pax-utils fdo-mime autotools virtualx mozlinguas-v2
+inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.53 pax-utils fdo-mime autotools virtualx mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
@@ -51,7 +50,7 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 RDEPEND="
 	jack? ( virtual/jack )
-	>=dev-libs/nss-3.28.3
+	>=dev-libs/nss-3.29.5
 	>=dev-libs/nspr-4.13.1
 	selinux? ( sec-policy/selinux-mozilla )"
 
@@ -237,7 +236,7 @@ src_configure() {
 	fi
 
 	# workaround for funky/broken upstream configure...
-	SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+	SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 	emake -f client.mk configure
 }
 
@@ -263,10 +262,10 @@ src_compile() {
 		shopt -u nullglob
 		[[ -n "${cards}" ]] && addpredict "${cards}"
 
-		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 		virtx emake -f client.mk profiledbuild || die "virtx emake failed"
 	else
-		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 		emake -f client.mk realbuild
 	fi
 
@@ -310,7 +309,7 @@ src_install() {
 			|| die
 	done
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 	emake DESTDIR="${D}" install
 
 	# Install language packs
@@ -369,6 +368,22 @@ PROFILE_EOF
 
 pkg_preinst() {
 	gnome2_icon_savelist
+
+	# if the apulse libs are available in MOZILLA_FIVE_HOME then apulse
+	# doesn't need to be forced into the LD_LIBRARY_PATH
+	if use pulseaudio && [ -d "${EPREFIX}"/usr/$(get_libdir)/apulse ] ; then
+		einfo "APULSE found - Generating library symlinks for sound support"
+		local lib
+		pushd "${ED}"${MOZILLA_FIVE_HOME} &>/dev/null || die
+		for lib in "${EPREFIX}"/usr/$(get_libdir)/apulse/libpulse* ; do
+			# a quickpkg rolled by hand will grab symlinks as part of the package,
+			# so we need to avoid creating them if they already exist.
+			if ! [ -L ${lib##*/} ]; then
+				ln -s "${lib}" || die
+			fi
+		done
+		popd &>/dev/null || die
+	fi
 }
 
 pkg_postinst() {
@@ -381,6 +396,12 @@ pkg_postinst() {
 		elog "installing into new profiles:"
 		local plugin
 		for plugin in "${GMP_PLUGIN_LIST[@]}"; do elog "\t ${plugin}" ; done
+	fi
+
+	if use pulseaudio && [ -d "${EPREFIX}"/usr/$(get_libdir)/apulse ]; then
+		elog "Apulse was detected at merge time on this system and so it will always be"
+		elog "used for sound.  If you wish to use pulseaudio instead please unmerge"
+		elog "media-sound/apulse."
 	fi
 }
 
