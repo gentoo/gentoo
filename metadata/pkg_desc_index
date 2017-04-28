@@ -5963,7 +5963,7 @@ dev-perl/HTML-LinkExtractor 0.130.0-r1: A bare-bones HTML parser, similar to HTM
 dev-perl/HTML-Mason 1.560.0: A HTML development and delivery Perl Module
 dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
-dev-perl/HTML-Packer 2.0.0 2.20.0 2.50.0: Another HTML code cleaner
+dev-perl/HTML-Packer 2.50.0: Another HTML code cleaner
 dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
@@ -6027,7 +6027,7 @@ dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
 dev-perl/IO-Pager 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
 dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way or another
-dev-perl/IO-Prompt 0.997.3 0.997.4: Interactively prompt for user input
+dev-perl/IO-Prompt 0.997.4: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
 dev-perl/IO-Socket-Multicast 1.120.0: Send and receive multicast messages
@@ -6068,7 +6068,7 @@ dev-perl/JSON-XS 3.10.0 3.30.0: JSON::XS - JSON serialising/deserialising, done 
 dev-perl/JSON-XS-VersionOneAndTwo 0.310.0-r1: Support versions 1 and 2 of JSON::XS
 dev-perl/JavaScript-Minifier 1.140.0: Perl extension for minifying JavaScript code
 dev-perl/JavaScript-Minifier-XS 0.110.0-r1: XS based JavaScript minifier
-dev-perl/JavaScript-Packer 2.0.0 2.30.0: Perl version of Dean Edward's Packer.js
+dev-perl/JavaScript-Packer 2.30.0: Perl version of Dean Edward's Packer.js
 dev-perl/JavaScript-SpiderMonkey 0.210.0-r1: Perl interface to the JavaScript Engine
 dev-perl/Jcode 2.70.0-r1: Japanese transcoding module for Perl
 dev-perl/LWP-Authen-Wsse 0.50.0-r1: Library for enabling X-WSSE authentication in LWP
@@ -6201,7 +6201,7 @@ dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does
 dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
 dev-perl/Mock-Config 0.30.0: Temporarily set Config or XSConfig values
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
-dev-perl/Modern-Perl 1.201.501.270 1.201.612.290 1.201.701.170: enable all of the features of Modern Perl with one import
+dev-perl/Modern-Perl 1.201.701.170: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.421.600 0.421.800 0.422.200: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
