@@ -2361,7 +2361,7 @@ app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.4-r1 0.4.5 0.4.6: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 23: graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 23 26b: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
 app-text/lout 3.38-r1 3.40: High-level language for document formatting
 app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
@@ -12652,7 +12652,7 @@ media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras us
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.25: Collection of tools and libraries for many image formats
-media-gfx/graphite2 1.3.5 1.3.8 1.3.8-r1 1.3.9 1.3.9-r1: Library providing rendering capabilities for complex non-Roman writing systems
+media-gfx/graphite2 1.3.8 1.3.8-r1 1.3.9-r1: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
@@ -17186,7 +17186,7 @@ sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus w
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
 sys-apps/restorecond 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 0.3.2 0.4.0 0.5.0 0.5.1: a command line search tool that combines usability with raw speed
-sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
+sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
