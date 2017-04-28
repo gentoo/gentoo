@@ -1,0 +1,11 @@
+--- a/base/containers/flat_set.h.orig	2017-04-28 14:39:24.143751606 +0000
++++ b/base/containers/flat_set.h	2017-04-28 14:39:33.815953089 +0000
+@@ -5,6 +5,8 @@
+ #ifndef BASE_CONTAINERS_FLAT_SET_H_
+ #define BASE_CONTAINERS_FLAT_SET_H_
+ 
++#include <functional>
++
+ #include "base/containers/flat_tree.h"
+ 
+ namespace base {
