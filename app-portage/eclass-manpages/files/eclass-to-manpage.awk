@@ -40,6 +40,7 @@
 # [@DEFAULT_UNSET]
 # [@INTERNAL]
 # [@REQUIRED]
+# @DEFAULT-VALUE: <initial value>
 # @DESCRIPTION:
 # <required; blurb about this variable>
 # foo="<default value>"
@@ -49,6 +50,7 @@
 # [@DEFAULT_UNSET]
 # [@INTERNAL]
 # [@REQUIRED]
+# @DEFAULT-VALUE: <initial value>
 # @DESCRIPTION:
 # <required; blurb about this variable>
 # foo="<default value>"
@@ -283,6 +285,7 @@ function _handle_variable() {
 	default_unset = 0
 	internal = 0
 	required = 0
+	default_value = ""
 
 	# make sure people haven't specified this before (copy & paste error)
 	if (all_vars[var_name])
@@ -299,6 +302,10 @@ function _handle_variable() {
 			internal = 1
 		else if ($2 == "@REQUIRED")
 			required = 1
+		else if ($2 == "@DEFAULT-VALUE:") {
+			sub(/^# @[A-Z-]*:[[:space:]]*/,"")
+			default_value = $0
+		}
 		else
 			opts = 0
 	}
@@ -315,15 +322,21 @@ function _handle_variable() {
 		op = "?="
 		regex = "^[[:space:]]*:[[:space:]]*[$]{" var_name ":?=(.*)}"
 		val = gensub(regex, "\\1", 1, $0)
-		if (val == $0) {
-			if (default_unset + required + internal == 0)
+	}
+	if (default_value != "") {
+		if ( val != $0 && default_value != val )
+			warn( var_name ": extracted different from DEFAULT-VALUE: " default_value " <=> " val )
+		op  = "="
+		val = default_value
+	}
+	if ( val == $0 ) {
+		if (default_unset + required + internal == 0)
 				warn(var_name ": unable to extract default variable content: " $0)
 			val = ""
-		} else if (val !~ /^["']/ && val ~ / /) {
+	} else if (val !~ /^["']/ && val ~ / /) {
 			if (default_unset == 1)
 				warn(var_name ": marked as unset, but has value: " val)
 			val = "\"" val "\""
-		}
 	}
 	if (length(val))
 		val = " " op " \\fI" val "\\fR"
