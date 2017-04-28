@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,6 @@ DEPEND="dev-util/gengetopt
 	${RDEPEND}"
 
 S=${WORKDIR}/${PN}-${P}
-
-PATCHES=( "${FILESDIR}"/${P}-help2man-fix.patch )
 
 src_prepare() {
 	default
