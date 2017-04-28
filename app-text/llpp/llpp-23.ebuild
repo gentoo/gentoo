@@ -15,6 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="+ocamlopt static"
 
 LIB_DEPEND=">=app-text/mupdf-1.10a:0=[static-libs]
+	<app-text/mupdf-1.11:0=[static-libs]
 	media-libs/openjpeg:2[static-libs]
 	media-libs/fontconfig:1.0[static-libs]
 	media-libs/freetype:2[static-libs]
