@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+KIBANA_USER="${KIBANA_USER:-kibana}"
+KIBANA_CONFIG="${KIBANA_CONFIG:-/etc/kibana/kibana.yml}"
+KIBANA_CACHE_DIR="${KIBANA_CACHE_DIR:-/var/cache/kibana}"
+KIBANA_BABEL_CACHE_PATH="${KIBANA_CACHE_DIR}/.babelcache.json"
+KIBANA_DATA_DIR="${KIBANA_DATA_DIR:-/var/lib/kibana}"
+KIBANA_LOG_DIR="${KIBANA_LOG_DIR:-/var/log/kibana}"
+
+command="/opt/kibana/bin/kibana"
+command_args="--elasticsearch ${ES_INSTANCE} --config ${KIBANA_CONFIG} --path.data=${KIBANA_DATA_DIR}"
+
+pidfile="/run/kibana.pid"
+command_background="true"
+start_stop_daemon_args="--user=\"${KIBANA_USER}\" --stdout ${KIBANA_LOG_DIR}/kibana.log --stderr ${KIBANA_LOG_DIR}/kibana.err --env BABEL_CACHE_PATH=${KIBANA_BABEL_CACHE_PATH}"
+
+start_pre() {
+	checkpath -d -o "${KIBANA_USER}" -m750 "${KIBANA_CACHE_DIR}"
+	checkpath -d -o "${KIBANA_USER}" -m750 "${KIBANA_DATA_DIR}"
+	checkpath -d -o "${KIBANA_USER}" -m750 "${KIBANA_LOG_DIR}"
+}
