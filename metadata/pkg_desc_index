@@ -8121,6 +8121,7 @@ dev-python/py 1.4.30 1.4.31 1.4.32: library with cross-python path, ini-parsing,
 dev-python/py-amqp 1.4.5 1.4.6 1.4.7 1.4.8 1.4.9 2.1.4: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-cpuinfo 0.1.8 0.2.3: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
+dev-python/py-lz4framed 0.9.6: LZ4Frame library for Python (via C bindings)
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
 dev-python/py-smbpasswd 1.0.2: Module capable of generating both LANMAN and NT password hashes, for e.g. Samba
 dev-python/py-ubjson 0.8.5 0.9.0: Universal Binary JSON encoder/decoder
