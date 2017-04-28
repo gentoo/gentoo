@@ -35,10 +35,13 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		if ! [[ $(get_version_component_range 2) -le 8 && $(get_version_component_range 3) -lt 50 ]]; then
+		if [[ $(get_version_component_range 2) -ge 9 ]]; then
 			: ${QT_MINIMAL:=5.7.1}
 		fi
-		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+		if ! [[ $(get_version_component_range 2) -le 9 && $(get_version_component_range 3) -lt 50 ]]; then
+			: ${FRAMEWORKS_MINIMAL:=5.34.0}
+		fi
+		if [[ ${KDE_BUILD_TYPE} = live && $(get_version_component_range 2) -ne 8 ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
 			: ${QT_MINIMAL:=5.7.1}
 		fi
