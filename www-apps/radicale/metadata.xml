@@ -5,8 +5,4 @@
                 <email>maksbotan@gentoo.org</email>
                 <name>Maxim Koltsov</name>
         </maintainer>
-        <maintainer type="person">
-                <email>mrueg@gentoo.org</email>
-                <name>Manuel Rüger</name>
-        </maintainer>
 </pkgmetadata>
