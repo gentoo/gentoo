@@ -1,0 +1,11 @@
+--- a/tools/gn/bootstrap/bootstrap.py.orig	2017-04-28 11:27:52.844988762 +0000
++++ b/tools/gn/bootstrap/bootstrap.py	2017-04-28 11:29:12.698642585 +0000
+@@ -503,6 +503,8 @@
+       'base/threading/thread_restrictions.cc',
+       'base/threading/thread_task_runner_handle.cc',
+       'base/threading/worker_pool.cc',
++      'base/time/default_tick_clock.cc',
++      'base/time/tick_clock.cc',
+       'base/time/time.cc',
+       'base/timer/elapsed_timer.cc',
+       'base/timer/timer.cc',
