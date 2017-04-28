@@ -40,6 +40,7 @@
 # [@DEFAULT_UNSET]
 # [@INTERNAL]
 # [@REQUIRED]
+# @DEFAULT-ASSUMED: <interpreted value when not set>
 # @DEFAULT-VALUE: <initial value>
 # @DESCRIPTION:
 # <required; blurb about this variable>
@@ -50,6 +51,7 @@
 # [@DEFAULT_UNSET]
 # [@INTERNAL]
 # [@REQUIRED]
+# @DEFAULT-ASSUMED: <interpreted value when not set>
 # @DEFAULT-VALUE: <initial value>
 # @DESCRIPTION:
 # <required; blurb about this variable>
@@ -285,6 +287,7 @@ function _handle_variable() {
 	default_unset = 0
 	internal = 0
 	required = 0
+	default_assumed = ""
 	default_value = ""
 
 	# make sure people haven't specified this before (copy & paste error)
@@ -302,6 +305,10 @@ function _handle_variable() {
 			internal = 1
 		else if ($2 == "@REQUIRED")
 			required = 1
+		else if ($2 == "@DEFAULT-ASSUMED:") {
+			sub(/^# @[A-Z-]*:[[:space:]]*/,"")
+			default_assumed = $0
+		}
 		else if ($2 == "@DEFAULT-VALUE:") {
 			sub(/^# @[A-Z-]*:[[:space:]]*/,"")
 			default_value = $0
@@ -342,6 +349,10 @@ function _handle_variable() {
 		val = " " op " \\fI" val "\\fR"
 	if (required == 1)
 		val = val " (REQUIRED)"
+
+	if ( default_assumed != "" ) {
+		val = val " (UNSET -> \\fI" default_assumed "\\fR)"
+	}
 
 	if (internal == 1)
 		return ""
