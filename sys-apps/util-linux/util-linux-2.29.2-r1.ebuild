@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit eutils toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	pam python-single-r1 multilib-minimal systemd
