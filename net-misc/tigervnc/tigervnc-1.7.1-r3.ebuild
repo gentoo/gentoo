@@ -26,6 +26,7 @@ CDEPEND="virtual/jpeg:0
 	>=x11-libs/libXtst-1.0.99.2
 	>=x11-libs/fltk-1.3.1
 	gnutls? ( net-libs/gnutls:= )
+	nls? ( virtual/libiconv )
 	pam? ( virtual/pam )
 	server? (
 		dev-lang/perl
@@ -43,10 +44,10 @@ CDEPEND="virtual/jpeg:0
 	)"
 
 RDEPEND="${CDEPEND}
-	java? ( >=virtual/jre-1.5:* )
-	!net-misc/vnc
 	!net-misc/tightvnc
-	!net-misc/xf4vnc"
+	!net-misc/vnc
+	!net-misc/xf4vnc
+	java? ( >=virtual/jre-1.5:* )"
 
 DEPEND="${CDEPEND}
 	amd64? ( dev-lang/nasm )
@@ -55,8 +56,7 @@ DEPEND="${CDEPEND}
 	>=x11-proto/xextproto-7.2.99.901
 	>=x11-proto/xproto-7.0.31
 	x11-libs/libXfont2
-	virtual/libiconv
-	sys-devel/gettext
+	nls? ( sys-devel/gettext )
 	java? ( >=virtual/jdk-1.5 )
 	server?	(
 		virtual/pkgconfig
