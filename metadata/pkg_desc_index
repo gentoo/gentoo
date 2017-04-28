@@ -8828,7 +8828,7 @@ dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web p
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10.4 0.11.11 0.11.15: Collection of various utilities for WSGI applications
 dev-python/wheel 0.29.0: A built-package format for Python
-dev-python/whelk 2.7: Pretending python is a shell
+dev-python/whelk 2.7 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.4.0: This package provides cross-platform cross-python shutil.which functionality
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
