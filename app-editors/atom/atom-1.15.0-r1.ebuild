@@ -4,13 +4,13 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-any-r1 multiprocessing rpm
+inherit python-single-r1 multiprocessing rpm
 
 DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
 MY_PV="${PV//_/-}"
 
-ELECTRON_V=1.3.5
+ELECTRON_V=1.3.13
 ELECTRON_SLOT=1.3
 
 # All binary packages depend on this
@@ -21,20 +21,19 @@ CACHED_RUN_IN_THIS_CONTEXT_V=0.4.1
 GIT_UTILS_V=4.1.2
 NODE_NSLOG_V=3.0.0
 NODE_ONIGURUMA_V=6.1.0
-NODE_PATHWATCHER_V=6.5.0
+NODE_PATHWATCHER_V=6.8.0
 NODE_RUNAS_V=3.1.1
 SCROLLBAR_STYLE_V=3.2.0
-SPELL_CHECK_V=0.68.5
+SPELL_CHECK_V=0.70.2
 
 # text-buffer dependencies
-BUFFER_OFFSET_INDEX_V=9588080533c9d0a8a71ee1cfd98596f485940e91
-MARKER_INDEX_V=4.0.1
+SUPERSTRING_V=1.1.0
 
 # apm dependency
 NODE_KEYTAR_V=3.0.2
 
 # atom-keymap dependency
-KEYBOARD_LAYOUT_V=2.0.7
+KEYBOARD_LAYOUT_V=2.0.11
 
 # symbols-view dependency
 NODE_CTAGS_V=3.0.0
@@ -53,8 +52,7 @@ SRC_URI="
 	https://github.com/atom/node-ctags/archive/v${NODE_CTAGS_V}.tar.gz -> atom-node-ctags-${NODE_CTAGS_V}.tar.gz
 	https://github.com/atom/git-utils/archive/v${GIT_UTILS_V}.tar.gz -> atom-git-utils-${GIT_UTILS_V}.tar.gz
 	https://github.com/atom/keyboard-layout/archive/v${KEYBOARD_LAYOUT_V}.tar.gz -> atom-keyboard-layout-${KEYBOARD_LAYOUT_V}.tar.gz
-	https://github.com/atom/buffer-offset-index/archive/${BUFFER_OFFSET_INDEX_V}.tar.gz -> atom-buffer-offset-index-${BUFFER_OFFSET_INDEX_V}.tar.gz
-	https://github.com/atom/marker-index/archive/v${MARKER_INDEX_V}.tar.gz -> atom-marker-index-${MARKER_INDEX_V}.tar.gz
+	https://github.com/atom/superstring/archive/v${SUPERSTRING_V}.tar.gz -> atom-superstring-${SUPERSTRING_V}.tar.gz
 	https://github.com/atom/node-keytar/archive/v${NODE_KEYTAR_V}.tar.gz -> atom-node-keytar-${NODE_KEYTAR_V}.tar.gz
 	https://github.com/atom/node-nslog/archive/v${NODE_NSLOG_V}.tar.gz -> atom-node-nslog-${NODE_NSLOG_V}.tar.gz
 	https://github.com/atom/node-oniguruma/archive/v${NODE_ONIGURUMA_V}.tar.gz -> atom-node-oniguruma-${NODE_ONIGURUMA_V}.tar.gz
@@ -76,8 +74,7 @@ BINMODS="
 		node-keytar
 		scrollbar-style
 		node-spellchecker
-		marker-index
-		buffer-offset-index
+		superstring
 "
 
 RESTRICT="mirror"
@@ -85,6 +82,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -103,7 +101,7 @@ RDEPEND="
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 get_install_suffix() {
@@ -268,6 +266,7 @@ src_prepare() {
 	eapply "${FILESDIR}/atom-1.13-apm-path.patch"
 	eapply "${FILESDIR}/atom-license-path.patch"
 	eapply "${FILESDIR}/atom-fix-app-restart.patch"
+	eapply "${FILESDIR}/atom-marker-layer.patch"
 
 	sed -i -e "s|{{ATOM_SUFFIX}}|${suffix}|g" \
 		"${S}/build/app/src/config-schema.js" || die
