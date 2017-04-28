@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,8 @@ IUSE=""
 RDEPEND=">=sys-apps/systemd-207
 	!sys-fs/eudev
 	!sys-fs/udev"
+DEPEND=">=sys-apps/systemd-207
+	virtual/pkgconfig"
 
 if [[ ${PV} == 9999 ]]; then
 	DEPEND+=" sys-devel/systemd-m4"
@@ -31,14 +33,4 @@ fi
 src_prepare() {
 	default
 	[[ ${PV} != 9999 ]] || eautoreconf
-}
-
-src_configure() {
-	local myeconfargs=(
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
-		# TODO: solve it better in the eclass
-		--with-systemdsystemgeneratordir="$(systemd_get_utildir)"/system-generators
-	)
-
-	econf "${myeconfargs[@]}"
 }
