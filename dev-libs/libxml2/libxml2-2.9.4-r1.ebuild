@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="xml"
 
 inherit libtool flag-o-matic ltprune python-r1 autotools prefix multilib-minimal
@@ -52,7 +52,7 @@ src_unpack() {
 	# ${A} isn't used to avoid unpacking of test tarballs into $WORKDIR,
 	# as they are needed as tarballs in ${S}/xstc instead and not unpacked
 	unpack ${P/_rc/-rc}.tar.gz
-	cd "${S}"
+	cd "${S}" || die
 
 	if use test; then
 		cp "${DISTDIR}/${XSTS_TARBALL_1}" \
