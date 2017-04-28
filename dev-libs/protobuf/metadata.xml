@@ -7,6 +7,10 @@
 <maintainer type='person'>
 	<email>tomboy64@sina.cn</email>
 </maintainer>
+<maintainer type='project'>
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
 <slots>
 	<subslots>soname major version number</subslots>
 </slots>
