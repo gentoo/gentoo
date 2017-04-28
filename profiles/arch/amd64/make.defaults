@@ -63,7 +63,3 @@ USE_EXPAND_HIDDEN="-ABI_X86 -CPU_FLAGS_X86"
 # Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
 # by non-multilib ebuilds when non-native ABIs are disabled.
 IUSE_IMPLICIT="abi_x86_64"
-
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary entry to support stable bug 615818
-RUBY_TARGETS="ruby21"
