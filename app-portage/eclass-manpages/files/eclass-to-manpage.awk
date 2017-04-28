@@ -18,6 +18,7 @@
 # <optional; description of how to report bugs;
 #  default: tell people to use bugs.gentoo.org>
 # @VCSURL: <optional; url to vcs for this eclass; default: https://gitweb.gentoo.org/repo/gentoo.git/log/eclass/@ECLASS@>
+# @SUPPORTED_EAPIS: <optional; space-separated list of EAPIs>
 # @BLURB: <required; short description>
 # @DESCRIPTION:
 # <optional; long description>
@@ -147,6 +148,7 @@ function handle_eclass() {
 	eclass = $3
 	eclass_maintainer = ""
 	eclass_author = ""
+	supported_eapis = ""
 	blurb = ""
 	desc = ""
 	example = ""
@@ -176,6 +178,8 @@ function handle_eclass() {
 		reporting_bugs = eat_paragraph()
 	if ($2 == "@VCSURL:")
 		vcs_url = eat_line()
+	if ($2 == "@SUPPORTED_EAPIS:")
+		supported_eapis = eat_line()
 	if ($2 == "@BLURB:")
 		blurb = eat_line()
 	if ($2 == "@DESCRIPTION:")
