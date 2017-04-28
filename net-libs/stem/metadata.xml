@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>mrueg@gentoo.org</email>
-    <name>Manuel Rüger</name>
-  </maintainer>
-  <maintainer type="person">
     <email>blueness@gentoo.org</email>
     <name>Anthony G. Basile</name>
   </maintainer>
