@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils
 
-MY_P="${PN}-2.7"
+MY_P="${PN}-2.8"
 
 DESCRIPTION="A cross-platform open source C and C++ SDK for SOAP/XML Web services"
 HOMEPAGE="http://gsoap2.sourceforge.net"
@@ -14,32 +14,44 @@ SRC_URI="mirror://sourceforge/gsoap2/gsoap_${PV}.zip"
 LICENSE="GPL-2 gSOAP"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc debug examples +ssl"
+IUSE="doc debug examples ipv6 libressl gnutls +ssl"
 
-DEPEND="app-arch/unzip
+RDEPEND="
+	sys-libs/zlib
+	gnutls? ( net-libs/gnutls )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl )
+	)
+"
+DEPEND="${RDEPEND}
+	app-arch/unzip
 	sys-devel/flex
-	sys-devel/bison"
-RDEPEND="sys-libs/zlib
-	ssl? ( dev-libs/openssl:0= )"
+	sys-devel/bison
+"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	# Fix Pre-ISO headers
-	epatch "${FILESDIR}/${PN}-2.7-fix-pre-iso-headers.patch"
-	epatch "${FILESDIR}/${PN}-2.7.10-fedora-install_soapcpp2_wsdl2h_aux.patch"
-	epatch "${FILESDIR}/${PN}-2.7-fix-missing-cookie-support.patch" # 340647
+	default
 
-	# causes compilation of app-emulation/virtualbox-ose[vboxwebsrv] to
-	# break (bug #320901):
-	#epatch "${FILESDIR}/${PN}-2.7.15-use_libtool.patch"
+	# Fix Pre-ISO headers
+	eapply "${FILESDIR}/${PN}-2.7.10-fedora-install_soapcpp2_wsdl2h_aux.patch"
+
+	# enable shared libs https://bugs.gentoo.org/583398
+	eapply "${FILESDIR}/${PN}-2.7.40-shared_libs.patch"
 
 	eautoreconf
 }
 
 src_configure() {
+	local myconf=()
+	use ssl || myconf+=( --disable-ssl )
+	use gnutls && myconf+=( --enable-gnutls )
+	use ipv6 && myconf+=( --enable-ipv6 )
 	econf \
-		$(use_enable ssl openssl) \
+		${myconf[@]} \
+		$(use_enable debug) \
 		$(use_enable examples samples)
 }
 
@@ -54,7 +66,7 @@ src_install() {
 	# it contains info about how to apply the licenses
 	dodoc *.txt
 
-	dohtml changelog.html
+	dohtml changelog.md
 
 	prune_libtool_files --all
 
