@@ -2809,6 +2809,7 @@ dev-util/bustle:threaded - Build with support for multithreaded execution.
 dev-util/catalyst:ccache - Enables ccache support
 dev-util/cccc:apidoc - Build software docs with doxygen/graphviz and metrics with cccc
 dev-util/cccc:mfc - Add patch for MFC dialect options
+dev-util/cmake:server - Enable cmake-server support.
 dev-util/cmake:system-jsoncpp - Use system copy of dev-libs/jsoncpp instead of bundled one.
 dev-util/coccigrep:vim - Install the coccigrep vim plugin
 dev-util/codeblocks:contrib - Build additional contrib components
