@@ -8174,6 +8174,7 @@ www-client/elinks:xml - Enable support for bookmarks via dev-libs/expat
 www-client/firefox:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 www-client/firefox:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
+www-client/firefox:gtk2 - Use the cairo-gtk2 rendering engine
 www-client/firefox:hwaccel - Force-enable hardware-accelerated rendering (Mozilla bug 594876)
 www-client/firefox:jemalloc - Enable or disable jemalloc
 www-client/firefox:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
