@@ -1,0 +1,70 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="configtest"
+extra_started_commands="reload"
+
+description="Lightweight graphite metrics router and aggregator."
+description_configtest="Run carbon-c-relay's internal config check."
+description_reload="Reload the carbon-c-relay configuration without losing connections."
+
+routes_config=${ROUTES_FILE:-/etc/${SVCNAME}.conf}
+
+command="/usr/bin/carbon-c-relay"
+command_args="-f ${routes_config} ${EXTRA_OPTS}"
+pidfile=${PIDFILE:-/run/${SVCNAME}.pid}
+logfile=${LOGFILE:-/var/log/${SVCNAME}.log}
+user=${USER:-carbon}
+group=${GROUP:-carbon}
+
+depend() {
+	need net
+	use dns
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		configtest || return 1
+	fi
+	touch "${logfile}"
+	chown ${user}:${group} "${logfile}"
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+stop_post() {
+	rm -f "${pidfile}"
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${pidfile}" \
+		--user ${user} --group ${group} \
+		--exec ${command} -- -D -P "${pidfile}" -l "${logfile}" \
+		${command_args}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec ${command} --pidfile "${pidfile}"
+	eend $?
+}
+
+reload() {
+	configtest || return 1
+	ebegin "Refreshing ${SVCNAME}'s configuration"
+	kill -HUP $(< "${pidfile}") &>/dev/null
+	eend $? "Failed to reload ${SVCNAME}"
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME}'s configuration"
+	${command} -f "${routes_config}" -t < /dev/null > /dev/null
+	eend $? "failed, please correct errors above"
+}

@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit toolchain-funcs user
+inherit user
 
 DESCRIPTION="Enhanced C version of Carbon relay, aggregator and rewriter"
 HOMEPAGE="https://github.com/grobian/carbon-c-relay"
-SRC_URI="https://github.com/grobian/carbon-c-relay/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grobian/carbon-c-relay/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -22,15 +22,12 @@ pkg_preinst() {
 	enewuser carbon -1 -1 -1 carbon
 }
 
-src_configure() {
-	tc-export CC
-}
-
 src_install() {
-	newbin relay ${PN}
+	default
+	# rename too generic name
+	mv "${ED}"/usr/bin/{relay,${PN}} || die
 	dodoc ChangeLog.md
-	doman ${PN}.1
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd-r1 ${PN}
 }
