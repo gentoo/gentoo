@@ -12034,7 +12034,7 @@ kde-frameworks/kbookmarks 5.29.0 5.33.0: Framework for managing bookmarks stored
 kde-frameworks/kcmutils 5.29.0 5.33.0: Framework to work with KDE System Settings modules
 kde-frameworks/kcodecs 5.29.0 5.33.0: Framework for manipulating strings using various encodings
 kde-frameworks/kcompletion 5.29.0 5.33.0: Framework for common completion tasks such as filename or URL completion
-kde-frameworks/kconfig 5.29.0 5.33.0: Framework for reading and writing configuration
+kde-frameworks/kconfig 5.29.0 5.33.0-r1: Framework for reading and writing configuration
 kde-frameworks/kconfigwidgets 5.29.0 5.33.0: Framework providing an assortment of configuration-related widgets
 kde-frameworks/kcoreaddons 5.29.0 5.33.0: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.29.0 5.33.0: Framework for intercepting and handling application crashes
