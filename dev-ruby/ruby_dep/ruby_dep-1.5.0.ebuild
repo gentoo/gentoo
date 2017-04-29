@@ -15,5 +15,5 @@ HOMEPAGE="https://github.com/e2/ruby_dep"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
