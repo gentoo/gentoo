@@ -12,13 +12,13 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="
+DEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_kdeapps_dep kmime)
 	$(add_qt_dep qtnetwork)
 	dev-libs/cyrus-sasl:2
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 RESTRICT="test"
