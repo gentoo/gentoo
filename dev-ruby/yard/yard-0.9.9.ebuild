@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -28,7 +28,7 @@ IUSE=""
 
 ruby_add_bdepend "doc? ( || ( dev-ruby/maruku dev-ruby/rdiscount dev-ruby/bluecloth dev-ruby/kramdown ) )"
 
-USE_RUBY="ruby20 ruby21 ruby22" ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 )"
+USE_RUBY="ruby21 ruby22" ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/ s:^:#:' spec/spec_helper.rb || die
