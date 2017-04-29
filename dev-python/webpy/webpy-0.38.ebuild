@@ -17,13 +17,12 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86 ~amd64-linux ~x86-linux"
 
-S="${WORKDIR}/web.py-${PV}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_test() {
-	local return_status="0" test tests="db http net template utils"
-	for test in ${tests}; do
-		echo "Running doctests in ${test}.py..."
-		"${PYTHON}" web/${test}.py || return_status="$?"
+	local t
+	for t in db http net template utils; do
+		einfo "Running doctests in ${t}.py..."
+		"${EPYTHON}" web/${t}.py || die "Test ${t} failed with ${EPYTHON}"
 	done
-		return "${return_status}"
 }
