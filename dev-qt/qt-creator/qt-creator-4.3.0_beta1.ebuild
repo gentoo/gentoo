@@ -4,7 +4,7 @@
 EAPI=6
 PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
 
-inherit eutils l10n qmake-utils toolchain-funcs virtualx xdg
+inherit eutils l10n llvm qmake-utils toolchain-funcs virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
 HOMEPAGE="http://doc.qt.io/qtcreator/"
@@ -80,7 +80,7 @@ unset x
 PDEPEND="
 	autotools? ( sys-devel/autoconf )
 	bazaar? ( dev-vcs/bzr )
-	clangstaticanalyzer? ( >=sys-devel/clang-3.9 )
+	clangstaticanalyzer? ( >=sys-devel/clang-3.9:* )
 	cmake? ( dev-util/cmake )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
@@ -151,7 +151,7 @@ src_prepare() {
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
-		$(use clangcodemodel && echo LLVM_INSTALL_DIR="$(llvm-config --prefix)") \
+		$(use clangcodemodel && echo LLVM_INSTALL_DIR="$(get_llvm_prefix)") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
 		CONFIG+=qbs_disable_rpath \
 		CONFIG+=qbs_enable_project_file_updates \
