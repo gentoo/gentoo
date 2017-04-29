@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-  <email>haskell@gentoo.org</email>
-  <name>Gentoo Haskell</name>
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
 		Types and combinators for linear algebra on free vector spaces
 	</longdescription>
-<use>
-  <flag name="template-haskell">You can disable the use of the
+	<use>
+		<flag name="template-haskell">You can disable the use of the
   `template-haskell` package using `-f-template-haskell`. Disabling this is an
   unsupported configuration, but it may be useful for accelerating builds in
   sandboxes for expert users.</flag>
-</use>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/linear</remote-id>
+	</upstream>
 </pkgmetadata>

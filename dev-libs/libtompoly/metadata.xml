@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <maintainer type="person">
-                <email>patrick@gentoo.org</email>
-                <name>Patrick Lauer</name>
-        </maintainer>
-  <longdescription>
+    <maintainer type="person">
+        <email>patrick@gentoo.org</email>
+        <name>Patrick Lauer</name>
+    </maintainer>
+    <longdescription>
     LibTomPoly has the following features.
 
       * Totally public domain and is only dependent on LibTomMath, another public 
@@ -19,6 +19,9 @@
             o Modular exponentiation
             o Irreducibility testing.
             o Monic reductions
-            o Comparisons 
-  </longdescription>
+            o Comparisons
+    </longdescription>
+    <upstream>
+        <remote-id type="github">libtom/libtompoly</remote-id>
+    </upstream>
 </pkgmetadata>

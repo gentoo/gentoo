@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -11,12 +11,15 @@
 		<name>Fabio Erculiani</name>
 		<description>CC on bugs</description>
 	</maintainer>
-<use>
-	<flag name="cryptsetup">Enable support for Luks disk enrcyption using <pkg>sys-fs/cryptsetup</pkg></flag>
-	<flag name="dmraid">Enable support for DMRAID (include dmraid dependency)</flag>
-	<flag name="gpg">Enable support for GPG (include gnupg dependency)</flag>
-	<flag name="iscsi">Enable support for open-iscsi (include open-iscsi dependency)</flag>
-	<flag name="mdadm">Enable support for mdadm (include mdadm dependency)</flag>
-	<flag name="plymouth">Enable support for Plymouth (include Plymouth dependency)</flag>
-</use>
+	<use>
+		<flag name="cryptsetup">Enable support for Luks disk enrcyption using <pkg>sys-fs/cryptsetup</pkg></flag>
+		<flag name="dmraid">Enable support for DMRAID (include dmraid dependency)</flag>
+		<flag name="gpg">Enable support for GPG (include gnupg dependency)</flag>
+		<flag name="iscsi">Enable support for open-iscsi (include open-iscsi dependency)</flag>
+		<flag name="mdadm">Enable support for mdadm (include mdadm dependency)</flag>
+		<flag name="plymouth">Enable support for Plymouth (include Plymouth dependency)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Sabayon/genkernel-next</remote-id>
+	</upstream>
 </pkgmetadata>

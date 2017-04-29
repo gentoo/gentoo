@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -10,13 +10,14 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
-		<upstream>
-			<maintainer>
-				<name>Chase Sterling</name>
-				<email>chase.sterling@gmail.com</email>
-			</maintainer>
-			<remote-id type="pypi">jsonref</remote-id>
-		</upstream>
+	<upstream>
+		<maintainer>
+			<name>Chase Sterling</name>
+			<email>chase.sterling@gmail.com</email>
+		</maintainer>
+		<remote-id type="pypi">jsonref</remote-id>
+		<remote-id type="github">gazpachoking/jsonref</remote-id>
+	</upstream>
 	<longdescription>jsonref is a library for automatic dereferencing of JSON Reference
 objects for Python (supporting 2.6+ including Python 3).
 This library lets you use a data structure with JSON reference objects, as if the

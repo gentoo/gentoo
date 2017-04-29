@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -48,4 +48,7 @@
 		@&lt;http://hackage.haskell.org/package/th-lift th-lift&gt;@
 		to derive @Lift@ using Template Haskell.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">haskell-compat/deriving-compat</remote-id>
+	</upstream>
 </pkgmetadata>

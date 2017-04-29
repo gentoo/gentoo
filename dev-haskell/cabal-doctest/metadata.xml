@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -6,10 +6,13 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
-		Currently (beginning of 2017), there isn&#39;t @cabal doctest@
+		Currently (beginning of 2017), there isn't @cabal doctest@
 		command. Yet, to properly work doctest needs plenty of configuration.
 		This library provides the common bits for writing custom Setup.hs
 		See &lt;https://github.com/haskell/cabal/issues/2327 Cabal/2327&gt; for the progress
 		of @cabal doctest@, i.e. whether this library is obsolete.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">phadej/cabal-doctests</remote-id>
+	</upstream>
 </pkgmetadata>

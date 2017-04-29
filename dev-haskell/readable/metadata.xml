@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		Provides a Readable type class for reading data types from ByteString and
 		Text.  Also includes efficient implementations for common data types.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">mightybyte/readable</remote-id>
+	</upstream>
 </pkgmetadata>

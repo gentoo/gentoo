@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -24,5 +24,6 @@
 	<upstream>
 		<bugs-to>https://sourceforge.net/p/retroshare/bugs</bugs-to>
 		<remote-id type="sourceforge">retroshare</remote-id>
+		<remote-id type="github">RetroShare/RetroShare</remote-id>
 	</upstream>
 </pkgmetadata>
