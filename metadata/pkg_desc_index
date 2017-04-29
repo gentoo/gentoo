@@ -6891,7 +6891,7 @@ dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
-dev-perl/glib-perl 1.301.0 1.314.0 1.320.0 1.324.0: Glib - Perl wrappers for the GLib utility and Object libraries
+dev-perl/glib-perl 1.301.0 1.314.0 1.320.0 1.324.0 1.325.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.45.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnome Virtual File System libraries
@@ -17247,7 +17247,7 @@ sys-apps/which 2.21: Prints out location of specified executables that are in yo
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
-sys-apps/yarn 0.21.3: Fast, reliable, and secure node dependency management
+sys-apps/yarn 0.21.3-r1: Fast, reliable, and secure node dependency management
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
