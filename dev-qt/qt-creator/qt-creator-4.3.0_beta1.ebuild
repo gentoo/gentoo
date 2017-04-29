@@ -38,7 +38,7 @@ IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 # minimum Qt version required
 QT_PV="5.6.0:5"
 
-RDEPEND="
+CDEPEND="
 	=dev-libs/botan-1.10*[-bindist,threads]
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
@@ -54,14 +54,13 @@ RDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	sys-devel/gdb[client,python]
 	clangcodemodel? ( >=sys-devel/clang-3.9:= )
 	designer? ( >=dev-qt/designer-${QT_PV} )
 	qbs? ( >=dev-util/qbs-1.7.0 )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${CDEPEND}
 	>=dev-qt/linguist-tools-${QT_PV}
 	virtual/pkgconfig
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
@@ -71,13 +70,8 @@ DEPEND="${RDEPEND}
 		>=dev-qt/qttest-${QT_PV}
 	)
 "
-# qt translations must also be installed or qt-creator translations won't be loaded
-for x in ${PLOCALES}; do
-	RDEPEND+=" linguas_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
-done
-unset x
-
-PDEPEND="
+RDEPEND="${CDEPEND}
+	sys-devel/gdb[client,python]
 	autotools? ( sys-devel/autoconf )
 	bazaar? ( dev-vcs/bzr )
 	clangstaticanalyzer? ( >=sys-devel/clang-3.9:* )
@@ -88,6 +82,11 @@ PDEPEND="
 	subversion? ( dev-vcs/subversion )
 	valgrind? ( dev-util/valgrind )
 "
+# qt translations must also be installed or qt-creator translations won't be loaded
+for x in ${PLOCALES}; do
+	RDEPEND+=" linguas_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
+done
+unset x
 
 src_unpack() {
 	if tc-is-gcc; then
