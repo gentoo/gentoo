@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}"
 SRC_TEST="do"
 
 S=${WORKDIR}/${MY_P}
+
+src_test() {
+	TZ=UTC perl-module_src_test
+}
 
 src_install() {
 	perl-module_src_install
