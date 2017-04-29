@@ -14,7 +14,7 @@ HOMEPAGE="http://www.threadingbuildingblocks.org/"
 SRC_URI="https://github.com/01org/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug doc examples"
 
 DEPEND=""
