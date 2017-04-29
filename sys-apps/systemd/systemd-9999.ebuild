@@ -293,6 +293,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	# meson doesn't know about docdir
+	mv "${ED%/}"/usr/share/doc/{systemd,${PF}} || die
+
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
