@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -15,4 +15,7 @@
 			Enable memory debugging.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">dvdisaster</remote-id>
+	</upstream>
 </pkgmetadata>

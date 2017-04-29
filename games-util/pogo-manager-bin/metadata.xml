@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -8,4 +8,7 @@
   <longdescription>
  Utility to manage Pokemon Go accounts. Not sanctioned by Niantic, use at your own risk.
   </longdescription>
+  <upstream>
+    <remote-id type="github">Wolfsblvt/BlossomsPokemonGoManager</remote-id>
+  </upstream>
 </pkgmetadata>

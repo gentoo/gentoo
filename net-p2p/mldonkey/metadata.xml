@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-	<email>ml@gentoo.org</email>
-	<name>Gentoo ML Project</name>
+    <email>ml@gentoo.org</email>
+    <name>Gentoo ML Project</name>
   </maintainer>
   <longdescription>An ocaml client to access the eDonkey network.</longdescription>
   <use>
@@ -15,5 +15,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">mldonkey</remote-id>
+    <remote-id type="github">ygrek/mldonkey</remote-id>
   </upstream>
 </pkgmetadata>

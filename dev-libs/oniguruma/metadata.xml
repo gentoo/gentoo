@@ -1,22 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>cjk@gentoo.org</email>
-  <name>Cjk</name>
-</maintainer>
-<longdescription>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <longdescription>
 Oniguruma is a regular expression library.  The characteristics of
 this library is that different character encoding for every regular
 expression object can be specified.  (Supported character encodings:
 ASCII, UTF-8, EUC-JP, Shift_JIS)
-</longdescription>
-<use>
-  <flag name="combination-explosion-check">
+  </longdescription>
+  <use>
+    <flag name="combination-explosion-check">
     enable combination explosion check
-  </flag>
-  <flag name="crnl-as-line-terminator">
+    </flag>
+    <flag name="crnl-as-line-terminator">
     enable CR+NL as line terminator
-  </flag>
-</use>
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">kkos/oniguruma</remote-id>
+  </upstream>
 </pkgmetadata>

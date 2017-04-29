@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		<flag name="fish-completion">Enable fish completion support</flag>
 		<flag name="non-free">Install non-free ponies (i.e. from the MLP franchise)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">erkin/ponysay</remote-id>
+	</upstream>
 </pkgmetadata>

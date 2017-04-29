@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -8,5 +8,6 @@
 	<longdescription>pygccxml is an object oriented framework for reading C++ declarations.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pygccxml</remote-id>
+		<remote-id type="github">gccxml/pygccxml</remote-id>
 	</upstream>
 </pkgmetadata>

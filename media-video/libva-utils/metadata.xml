@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>aballier@gentoo.org</email>
     <name>Alexis Ballier</name>
   </maintainer>
-	<use>
-		<flag name="drm">Enables VA/DRM API support.</flag>
-    </use>
+  <use>
+    <flag name="drm">Enables VA/DRM API support.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">01org/libva-utils</remote-id>
+  </upstream>
 </pkgmetadata>

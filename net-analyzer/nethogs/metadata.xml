@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -12,8 +12,9 @@ process. NetHogs does not rely on a special kernel module to be loaded.
 If there's suddenly a lot of network traffic, you can fire up NetHogs and 
 immediately see which PID is causing this. This makes it easy to indentify 
 programs that have gone wild and are suddenly taking up your bandwidth.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">nethogs</remote-id>
+		<remote-id type="github">raboof/nethogs</remote-id>
 	</upstream>
 </pkgmetadata>

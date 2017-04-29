@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -10,4 +10,7 @@
 		<flag name="nautilus">Install the <pkg>gnome-base/nautilus</pkg> extension</flag>
 		<flag name="sftp">Enable sftp transfer support via <pkg>net-libs/libssh</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">nextcloud/client_theming</remote-id>
+	</upstream>
 </pkgmetadata>

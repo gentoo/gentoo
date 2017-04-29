@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -14,7 +14,8 @@
 			<email>hawkowl@twistedmatrix.com</email>
 			<name>Amber Brown</name>
 		</maintainer>
-		<remote-id type="pypi">Twisted</remote-id>
+		<remote-id type="pypi">treq</remote-id>
+		<remote-id type="github">twisted/treq</remote-id>
 	</upstream>
 	<longdescription>treq is an HTTP library inspired by requests but written
 		on top of Twisted's Agents.  It provides a simple, higher level API for

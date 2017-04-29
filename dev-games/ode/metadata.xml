@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -10,12 +10,13 @@ ODE is a free, industrial quality library for simulating articulated rigid body
 dynamics - for example ground vehicles, legged creatures, and moving objects in
 VR environments. It is fast, flexible, robust and platform independent, with
 advanced joints, contact with friction, and built-in collision detection.
-</longdescription>
+	</longdescription>
 	<use>
 		<flag name="double-precision">more precise calculations at the expense of speed</flag>
 		<flag name="gyroscopic">enable gyroscopic term (may cause instability)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">opende</remote-id>
+		<remote-id type="bitbucket">odedevs/ode</remote-id>
 	</upstream>
 </pkgmetadata>

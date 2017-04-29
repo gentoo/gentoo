@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -12,4 +12,7 @@
 	one, lists of files on the other, with a preview to the right so you know
 	where you'll be going.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ranger/ranger</remote-id>
+	</upstream>
 </pkgmetadata>

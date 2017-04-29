@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -19,8 +19,9 @@ datasets and identifies the sequences in db2 that are similar to db1 above
 a threshold. CD-HIT-454 is a program to identify natural and artificial 
 duplicates from pyrosequencing reads. The usage of other programs and 
 scripts can be found in CD-HIT user's guide.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="google-code">cdhit</remote-id>
+		<remote-id type="github">weizhongli/cdhit</remote-id>
 	</upstream>
 </pkgmetadata>
