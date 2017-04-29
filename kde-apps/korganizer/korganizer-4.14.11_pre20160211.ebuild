@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ DEPEND="
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}
+	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
 	$(add_kdeapps_dep ktimezoned '' 4.14.3)
 "
 

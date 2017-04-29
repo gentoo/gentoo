@@ -18,6 +18,7 @@ DEPEND="
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}
+	!>kde-apps/kdepimlibs-4.14.10-r3
 	$(add_kdeapps_dep ktimezoned '' 4.14.3)
 "
 

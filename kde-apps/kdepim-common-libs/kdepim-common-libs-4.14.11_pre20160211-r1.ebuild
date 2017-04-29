@@ -30,6 +30,7 @@ RDEPEND="${DEPEND}
 	!kde-apps/libkpgp:4
 	!<kde-apps/kaddressbook-4.11.50:4
 	!kde-apps/kdepim-wizards:4
+	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
 	!<kde-apps/kmail-4.14.5:4
 	!<kde-apps/korganizer-4.5.67:4
 	$(add_kdeapps_dep kdepim-runtime)
