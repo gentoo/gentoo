@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Locate per-dist and per-module shared files"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~ppc-aix ~x86-solaris"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
