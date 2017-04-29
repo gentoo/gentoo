@@ -139,9 +139,11 @@ src_prepare() {
 	sed -i -e 's/\<timeline\(items\|notes\|selection\)renderpass\>//' tests/auto/timeline/timeline.pro || die
 	sed -i -e 's/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
 
+	# fix path to some clang headers
+	sed -i -e "/^CLANG_RESOURCE_DIR\s*=/ s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
+
 	# fix translations
-	sed -i -e "/^LANGUAGES =/ s:=.*:= $(l10n_get_locales):" \
-		share/qtcreator/translations/translations.pro || die
+	sed -i -e "/^LANGUAGES\s*=/ s:=.*:= $(l10n_get_locales):" share/qtcreator/translations/translations.pro || die
 
 	# remove bundled qbs
 	rm -rf src/shared/qbs || die
