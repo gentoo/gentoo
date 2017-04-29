@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/guard/listen"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 # Block on other packages trying to install a /usr/bin/listen
