@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~hppa ppc ~ppc64 sparc x86"
 IUSE=""
 
 S="${WORKDIR}"
