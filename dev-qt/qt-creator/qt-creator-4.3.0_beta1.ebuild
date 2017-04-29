@@ -4,7 +4,7 @@
 EAPI=6
 PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
 
-inherit eutils l10n qmake-utils toolchain-funcs virtualx xdg
+inherit eutils l10n llvm qmake-utils toolchain-funcs virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
 HOMEPAGE="http://doc.qt.io/qtcreator/"
@@ -38,7 +38,7 @@ IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 # minimum Qt version required
 QT_PV="5.6.0:5"
 
-RDEPEND="
+CDEPEND="
 	=dev-libs/botan-1.10*[-bindist,threads]
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
@@ -54,14 +54,13 @@ RDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	sys-devel/gdb[client,python]
 	clangcodemodel? ( >=sys-devel/clang-3.9:= )
 	designer? ( >=dev-qt/designer-${QT_PV} )
 	qbs? ( >=dev-util/qbs-1.7.0 )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${CDEPEND}
 	>=dev-qt/linguist-tools-${QT_PV}
 	virtual/pkgconfig
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
@@ -71,16 +70,11 @@ DEPEND="${RDEPEND}
 		>=dev-qt/qttest-${QT_PV}
 	)
 "
-# qt translations must also be installed or qt-creator translations won't be loaded
-for x in ${PLOCALES}; do
-	RDEPEND+=" linguas_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
-done
-unset x
-
-PDEPEND="
+RDEPEND="${CDEPEND}
+	sys-devel/gdb[client,python]
 	autotools? ( sys-devel/autoconf )
 	bazaar? ( dev-vcs/bzr )
-	clangstaticanalyzer? ( >=sys-devel/clang-3.9 )
+	clangstaticanalyzer? ( >=sys-devel/clang-3.9:* )
 	cmake? ( dev-util/cmake )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
@@ -88,6 +82,11 @@ PDEPEND="
 	subversion? ( dev-vcs/subversion )
 	valgrind? ( dev-util/valgrind )
 "
+# qt translations must also be installed or qt-creator translations won't be loaded
+for x in ${PLOCALES}; do
+	RDEPEND+=" linguas_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
+done
+unset x
 
 src_unpack() {
 	if tc-is-gcc; then
@@ -140,9 +139,11 @@ src_prepare() {
 	sed -i -e 's/\<timeline\(items\|notes\|selection\)renderpass\>//' tests/auto/timeline/timeline.pro || die
 	sed -i -e 's/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
 
+	# fix path to some clang headers
+	sed -i -e "/^CLANG_RESOURCE_DIR\s*=/ s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
+
 	# fix translations
-	sed -i -e "/^LANGUAGES =/ s:=.*:= $(l10n_get_locales):" \
-		share/qtcreator/translations/translations.pro || die
+	sed -i -e "/^LANGUAGES\s*=/ s:=.*:= $(l10n_get_locales):" share/qtcreator/translations/translations.pro || die
 
 	# remove bundled qbs
 	rm -rf src/shared/qbs || die
@@ -151,7 +152,7 @@ src_prepare() {
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
-		$(use clangcodemodel && echo LLVM_INSTALL_DIR="$(llvm-config --prefix)") \
+		$(use clangcodemodel && echo LLVM_INSTALL_DIR="$(get_llvm_prefix)") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
 		CONFIG+=qbs_disable_rpath \
 		CONFIG+=qbs_enable_project_file_updates \
