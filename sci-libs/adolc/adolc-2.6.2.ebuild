@@ -13,7 +13,7 @@ SRC_URI="http://www.coin-or.org/download/source/${MYPN}/${MYPN}-${PV}.tgz"
 
 LICENSE="|| ( EPL-1.0 GPL-2 )"
 SLOT="0/2"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="mpi sparse static-libs"
 
 RDEPEND="
