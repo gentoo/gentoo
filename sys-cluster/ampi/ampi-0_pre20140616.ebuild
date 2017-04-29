@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 
 RDEPEND="virtual/mpi"
 DEPEND="${RDEPEND}"
