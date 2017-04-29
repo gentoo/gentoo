@@ -13,7 +13,7 @@
   <bug>46246</bug>
   <access>remote</access>
   <affected>
-    <package name="media-video/mplayer" auto="yes" arch="x86 and sparc">
+    <package name="media-video/mplayer" auto="yes" arch="x86 sparc">
       <unaffected range="ge">0.92-r1</unaffected>
       <vulnerable range="le">0.92</vulnerable>
     </package>
