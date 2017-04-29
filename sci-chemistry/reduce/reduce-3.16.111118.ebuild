@@ -13,7 +13,7 @@ SRC_URI="http://kinemage.biochem.duke.edu/downloads/software/reduce31/${MY_P}.zi
 
 LICENSE="richardson"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=""
