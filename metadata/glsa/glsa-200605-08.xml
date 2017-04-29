@@ -16,7 +16,7 @@
   <bug>133524</bug>
   <access>remote</access>
   <affected>
-    <package name="dev-lang/php" auto="yes" arch="arm hppa ppc s390 sh sparc x86 x86-fbsd">
+    <package name="dev-lang/php" auto="yes" arch="arm hppa ppc s390 sh sparc x86">
       <unaffected range="ge">5.1.4</unaffected>
       <unaffected range="rge">4.4.2-r2</unaffected>
       <unaffected range="rge">4.4.3-r1</unaffected>
