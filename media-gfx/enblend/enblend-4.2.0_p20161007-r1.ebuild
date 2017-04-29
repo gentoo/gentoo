@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~soap/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 VIGRA"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug doc openmp tcmalloc cpu_flags_x86_sse2"
 
 REQUIRED_USE="tcmalloc? ( !debug )"
