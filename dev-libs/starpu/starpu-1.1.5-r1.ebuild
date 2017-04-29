@@ -13,7 +13,7 @@ SRC_URI="${HOMEPAGE}/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl
 	qt4 static-libs test"
