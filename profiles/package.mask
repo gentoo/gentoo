@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alice Ferrazzi <alicef@gentoo.org> (29 Apr 2017)
+# CVE-2016-10229 security issue. Masked until upstream add the patch.
+# Bug #615480 
+=sys-kernel/vanilla-sources-4.1.39
+
 # Hans de Graaff <graaff@gentoo.org> (28 Apr 2017)
 # Ruby 2.1 will be removed soon, bug #615822.
 # These packages are all ruby21-only and most have not seen upstream
