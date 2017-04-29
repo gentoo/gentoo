@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use the GMP library for Math::BigInt routines"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ppc ~sparc x86"
 IUSE="test"
 
 RDEPEND="
