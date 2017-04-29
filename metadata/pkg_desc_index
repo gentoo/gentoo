@@ -5975,7 +5975,7 @@ dev-perl/HTML-StripScripts-Parser 1.30.0: XSS filter using HTML::Parser
 dev-perl/HTML-Table 2.08a-r1: produces HTML tables
 dev-perl/HTML-TableContentParser 0.130.0: Parse the content of tables in HTML
 dev-perl/HTML-TableExtract 2.130.0: The Perl Table-Extract Module
-dev-perl/HTML-TableParser 0.400.0: Extract data from an HTML table
+dev-perl/HTML-TableParser 0.400.0 0.420.0: Extract data from an HTML table
 dev-perl/HTML-TagFilter 1.30.0: A fine-grained html-filter, xss-blocker and mailto-obfuscator
 dev-perl/HTML-Tagset 3.200.0-r1: Data tables useful in parsing HTML
 dev-perl/HTML-Template 2.950.0: A Perl module to use HTML Templates
