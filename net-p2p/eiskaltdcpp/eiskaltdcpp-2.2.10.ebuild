@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PLOCALES="be bg cs de el en es fr hu it pl pt_BR ru sk sr@latin uk"
+PLOCALES="be bg cs de el en es eu fr hu it pl pt_BR ru sk sr@latin sr sv_SE uk vi zh_CN"
 
 inherit cmake-utils eutils l10n fdo-mime gnome2-utils
 [[ ${PV} = *9999* ]] && inherit git-r3
@@ -30,7 +30,7 @@ REQUIRED_USE="
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	KEYWORDS=""
@@ -86,12 +86,15 @@ DOCS=( AUTHORS ChangeLog.txt )
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ $(gcc-major-version) -lt 4 ]] || \
-				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 4 ]] ) \
-			&& die "Sorry, but gcc-4.4 and earlier won't work."
+				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 6 ]] ) \
+			&& die "Sorry, but gcc-4.6 and earlier won't work."
 	fi
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/${PV}-fix_ipv6_upnp.patch"
+	epatch "${FILESDIR}/${PV}-fix_new_miniupnpc1.patch"
+	epatch "${FILESDIR}/${PV}-fix_new_miniupnpc2.patch"
 	l10n_find_plocales_changes 'eiskaltdcpp-qt/translations' '' '.ts'
 
 	epatch_user

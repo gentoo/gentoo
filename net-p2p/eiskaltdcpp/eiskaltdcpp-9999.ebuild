@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -39,13 +39,13 @@ fi
 RDEPEND="
 	app-arch/bzip2
 	>=dev-libs/boost-1.38:=
-	>=dev-libs/openssl-0.9.8
+	dev-libs/openssl:0=
 	sys-apps/attr
 	sys-libs/zlib
 	virtual/libiconv
 	virtual/libintl
 	idn? ( net-dns/libidn )
-	lua? ( >=dev-lang/lua-5.1 )
+	lua? ( >=dev-lang/lua-5.1:= )
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	upnp? ( >=net-libs/miniupnpc-1.6 )
 	cli? (
