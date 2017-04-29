@@ -34,7 +34,7 @@ RDEPEND="
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite
