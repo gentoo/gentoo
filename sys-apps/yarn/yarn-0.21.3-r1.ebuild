@@ -19,9 +19,13 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/dist"
 
 src_install() {
-	local install_dir="/usr/$(get_libdir)/node_modules/yarn"
+	local install_dir="/usr/$(get_libdir)/node_modules/yarn" path
 	insinto "${install_dir}"
 	doins -r .
 	dosym "../$(get_libdir)/node_modules/yarn/bin/yarn.js" "/usr/bin/yarn"
 	fperms a+x "${install_dir}/bin/yarn.js"
+	while read -r -d '' path; do
+		[[ $(head -n1 "${path}") == \#\!* ]] || continue
+		chmod +x "${path}" || die #614094
+	done < <(find "${ED}" -type f -print0)
 }
