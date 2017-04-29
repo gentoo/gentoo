@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~x86"
 IUSE="doc test"
 
 DEPEND="
