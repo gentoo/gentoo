@@ -14,7 +14,7 @@ SRC_URI="http://cscapes.cs.purdue.edu/download/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 SLOT="0"
 IUSE="openmp static-libs"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
