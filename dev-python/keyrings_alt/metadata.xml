@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -12,5 +12,6 @@
       <email>jaraco@jaraco.com</email>
       <name>Jason R. Coombs</name>
     </maintainer>
+    <remote-id type="github">jaraco/keyrings.alt</remote-id>
   </upstream>
 </pkgmetadata>

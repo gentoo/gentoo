@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -15,6 +15,7 @@
 			<name>Rocky Bernstein</name>
 		</maintainer>
 		<remote-id type="pypi">spark_parser</remote-id>
+		<remote-id type="github">rocky/python-spark</remote-id>
 	</upstream>
 	<longdescription>SPARK stands for Scanning, Parsing, and Rewriting Kit.
 		It uses Jay Early’s algorithm for parsing context free grammars, and

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -12,4 +12,7 @@
 		<flag name="bittorrent">Use the bittorrent protocol via <pkg>net-libs/libtorrent-rasterbar</pkg>.</flag>
 		<flag name="webinterface">Enable builtin webinterface.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">LubosD/fatrat</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -13,4 +13,7 @@
 		<flag name="evm">Build Ethereum Virtual Machine (EVM)</flag>
 		<flag name="opencl">Add OpenCL GPU mining support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">ethereum/go-ethereum</remote-id>
+	</upstream>
 </pkgmetadata>

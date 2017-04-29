@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -18,4 +18,7 @@
 		<flag name="libiconv">Explicitly link against the libiconv library.</flag>
 		<flag name="legacy-encoding">Use legacy iconv encoding for POSIX. This is only intended for testing.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">judah/haskeline</remote-id>
+	</upstream>
 </pkgmetadata>

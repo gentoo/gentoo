@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		A command line tool to manage an overlay of Gentoo ebuilds
 		that are generated from a hackage repo of Cabal packages.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">gentoo-haskell/hackport</remote-id>
+	</upstream>
 </pkgmetadata>

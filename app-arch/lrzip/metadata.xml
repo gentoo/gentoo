@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription>
@@ -8,4 +8,7 @@
 	The advantage can be chosen to be either size (much smaller than bzip2)
 	or speed (much faster than bzip2).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ckolivas/lrzip</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -8,9 +8,10 @@
   <longdescription lang="en">
   Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
   small and simple to use but with much power and versatility
-  underneath. 
-</longdescription>
+  underneath.
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">qalculate</remote-id>
+    <remote-id type="github">Qalculate/qalculate-gtk</remote-id>
   </upstream>
 </pkgmetadata>

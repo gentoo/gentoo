@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -12,4 +12,7 @@
 		of github3.py is centered around having a logical organization of the
 		methods needed to interact with the API.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">sigmavirus24/github3.py</remote-id>
+	</upstream>
 </pkgmetadata>

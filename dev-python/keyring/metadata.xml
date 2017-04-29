@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -15,5 +15,6 @@
 	<upstream>
 		<remote-id type="pypi">keyring</remote-id>
 		<remote-id type="bitbucket">kang/python-keyring-lib</remote-id>
+		<remote-id type="github">jaraco/keyring</remote-id>
 	</upstream>
 </pkgmetadata>

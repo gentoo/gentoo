@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -10,5 +10,6 @@
       <email>rafaelmartins@gentoo.org</email>
       <name>Rafael G. Martins</name>
     </maintainer>
+    <remote-id type="github">rafaelmartins/distpatch</remote-id>
   </upstream>
 </pkgmetadata>

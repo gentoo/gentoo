@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
@@ -12,7 +12,7 @@ pieces of information directly into GRAMPS and rearrange/manipulate
 any/all data events in the entire data base (in any order or sequence)
 to assist the user in doing research, analysis and correlation with
 the potential of filling relationship gaps.
-</longdescription>
+	</longdescription>
 	<longdescription lang="cs">
 GRAMPS Vám pomůže sledovat Váš rodokmen. Dovolí Vám využít počítač pro
 ukládání, úpravy a zkoumání genealogických dat.
@@ -24,7 +24,7 @@ možnost vložit jakýkoli kus informace přímo do GRAMPS a
 přeskupit/manipulovat jednotlivými/všemi událostmi v celé
 databázi. Tím pomáhá badateli při výzkumu, analýze a korelacích s
 potenciálem zaplnění mezer ve vztazích mezi subjekty.
-</longdescription>
+	</longdescription>
 	<longdescription lang="de">
 GRAMPS hilft dir, deinen Familienstammbaum zurückzuverfolgen. Es
 erlaubt dir das Speichern, Bearbeiten, und Erforschen genealogischer
@@ -36,7 +36,7 @@ GRAMPS einzugeben und alle damit verbundenen Daten und Events in der
 gesamten Datenbank neu zu ordnen oder zu manipulieren um die Arbeit
 für den Benutzer zu erleichtern. So können jederzeit potentielle
 Lücken in jeglichen Beziehungen gefüllt werden.
-</longdescription>
+	</longdescription>
 	<longdescription lang="fr">
 GRAMPS vous aide à suivre votre lignée. Il vous permet de stocker,
 éditer, ainsi que rechercher des données généalogiques avec votre
@@ -48,7 +48,7 @@ GRAMPS et réarranger/manipuler quelques/toutes données événement dans
 la base de données (dans n'importe quel ordre ou séquence) pour
 assiter l'utilisateur dans ses recherches, analyse et corrélation avec
 les relations possibles.
-</longdescription>
+	</longdescription>
 	<longdescription lang="nl">
 GRAMPS laat je toe je familiestamboom op te stellen. Het programma
 laat je toe om je genealogische gegevens op te slaan, te wijzigen en
@@ -61,7 +61,7 @@ kan je dan deze gegevens bewerken/manipuleren. Dit kan je doen met het
 volledige gegevensbestand( in gelijkwelke volgorde). Zo wordt de
 gebruiker ondersteund in zijn onderzoeken biedt dit een hulp bij
 analyse en de correlatie om zo relatieleemten te kunnen opvullen.
-</longdescription>
+	</longdescription>
 	<longdescription lang="pl">
 GRAMPS pomaga Ci śledzić Twoje drzewo rodzinne. Pozwala Ci wprowadzać,
 edytować i analizować informacje genealogiczne za pomocą
@@ -72,7 +72,7 @@ informacji i wiadomości bezpośrednio do programu i późniejszą analizę
 i zmianę zdarzeń czy pojedynczo, czy grupowo (w dowolnej kolejności) w
 celu pomocy użytkownikowi w analizie, badaniu i korelowaniu
 potencjalnych luk w relacjach w rodzinie.
-</longdescription>
+	</longdescription>
 	<longdescription lang="sl">
 GRAMPS vam pomaga voditi svoj rodovnik. Z njim lahko shranjujete,
 urejate in raziskujete rodoslovne podatke na svojem
@@ -83,7 +83,7 @@ kakršnegakoli podatka neposredno v GRAMPS ter preurejanje in
 spreminjanje vseh zapisov dogodkov v celotni bazi podatkov (ne glede
 na vrstni red), kar vam bo v pomoč pri vaših raziskavah, analizah in
 zapolnjevanju vrzeli v rodoslovnih podatkih.
-</longdescription>
+	</longdescription>
 	<use>
 		<flag name="geo">Enable rendering of geographical data using
 			<pkg>sci-geosciences/osm-gps-map</pkg>.</flag>
@@ -94,5 +94,6 @@ zapolnjevanju vrzeli v rodoslovnih podatkih.
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gramps</remote-id>
+		<remote-id type="github">gramps-project/gramps</remote-id>
 	</upstream>
 </pkgmetadata>

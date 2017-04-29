@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -17,4 +17,7 @@
 	Given an absolute notion of time Rtime helps you to manage a timeline 
 	and provides time stamp events, delayed events and delayed signals.
   </longdescription>
+  <upstream>
+    <remote-id type="github">dbuenzli/react</remote-id>
+  </upstream>
 </pkgmetadata>

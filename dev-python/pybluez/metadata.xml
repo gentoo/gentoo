@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -10,5 +10,6 @@ developers to use system bluetooth resources. It works on machines running the
 GNU/Linux operating system and the bluez bluetooth stack.</longdescription>
 	<upstream>
 		<remote-id type="github">karulis/pybluez</remote-id>
+		<remote-id type="pypi">PyBluez</remote-id>
 	</upstream>
 </pkgmetadata>

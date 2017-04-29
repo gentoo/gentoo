@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -17,5 +17,8 @@ libfilezilla is a small and modern C++ library, offering some basic functionalit
 - A datetime class that not only tracks timestamp but also their accuracy, which simplifies dealing with timestamps originating from different sources
 - Simple process handling for spawning child processes with redirected I/O
 libfilezilla is a cross-platform library for all major operating systems, including but not limited to Linux, *BSD, OS X and Windows.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">filezilla</remote-id>
+	</upstream>
 </pkgmetadata>

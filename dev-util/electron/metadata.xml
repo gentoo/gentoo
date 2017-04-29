@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -18,4 +18,7 @@
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
 		<flag name="tcmalloc">Use bundled tcmalloc instead of system malloc</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">elprans/asar</remote-id>
+	</upstream>
 </pkgmetadata>

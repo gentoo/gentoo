@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -22,4 +22,8 @@
     <flag name="testlib">Build bindings for the QtTest module</flag>
     <flag name="webkit">Build bindings for the QtWebKit module</flag>
   </use>
+  <upstream>
+    <remote-id type="github">spyder-ide/qtpy</remote-id>
+    <remote-id type="pypi">QtPy</remote-id>
+  </upstream>
 </pkgmetadata>

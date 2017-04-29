@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription lang="en">
@@ -24,4 +24,7 @@
 		<flag name="ssl">Enable SSL support</flag>
 		<flag name="tre">Enable support for TRE, a lightweight, robust, and efficient POSIX compliant regexp matching library</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">inspircd/inspircd</remote-id>
+	</upstream>
 </pkgmetadata>

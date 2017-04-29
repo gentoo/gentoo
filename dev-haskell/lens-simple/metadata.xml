@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -7,12 +7,12 @@
 	</maintainer>
 	<longdescription>
 		This module, &lt;http://hackage.haskell.org/package/lens-simple/docs/Lens-Simple.html Lens.Simple&gt;,
-		just re-exports the main modules from Russell O\&#39;Connor&#39;s
+		just re-exports the main modules from Russell O\'Connor's
 		&lt;http://hackage.haskell.org/package/lens-family lens-family&gt; package, the
-		original van Laarhoven-O&#39;Connor lens library.
+		original van Laarhoven-O'Connor lens library.
 		@lens-family@ is particularly remarkable for its minute number of dependencies:
 		(apart from &lt;http://hackage.haskell.org/package/mtl mtl&gt;
-		they are all ghc \&#39;boot\&#39; libraries); but more importantly for its
+		they are all ghc \'boot\' libraries); but more importantly for its
 		extreme conceptual simplicity and theoretical soundness. Much of
 		the material it contains is well-explained, from a tutorial point of view, by
 		&lt;http://hackage.haskell.org/package/lens-tutorial lens-tutorial&gt; It is independent,
@@ -31,7 +31,7 @@
 		
 		&gt; import Lens.Simple
 		
-		Check it out, it&#39;s even one character shorter!
+		Check it out, it's even one character shorter!
 		
 		The material in &lt;http://hackage.haskell.org/package/lens-tutorial lens-tutorial&gt;
 		will work fine if you make this substitution in the underlying
@@ -39,7 +39,7 @@
 		and follow along as prompted.
 		
 		As another illustration of the simplicity of the
-		fundamental van Laarhoven-O&#39;Connor lens combinators - and their homogeneity with
+		fundamental van Laarhoven-O'Connor lens combinators - and their homogeneity with
 		@Control.Lens@ - note that the gloss
 		&lt;https://github.com/michaelt/lens-family-simple/blob/master/examples/Pong.hs pong example&gt;
 		from the @lens@ library examples directory - which continues to be
@@ -57,17 +57,20 @@
 		the associated modules.
 		
 		This module was originally intended to simplify the use of packages that
-		follow the original promise of the van Laarhoven-O&#39;Connor lenses.
+		follow the original promise of the van Laarhoven-O'Connor lenses.
 		/Correct practice is to export lenses without depending on a lens-library, where possible./
 		In basic cases these just use familiar @Prelude@ types, after all.
 		Examples of best practices in this respect are e.g. &lt;http://hackage.haskell.org/package/lens-family-th lens-family-th&gt; which
-		doesn&#39;t depend on @lens-family@ despite its name and pipes-related packages like
+		doesn't depend on @lens-family@ despite its name and pipes-related packages like
 		&lt;http://hackage.haskell.org/package/pipes-bytestring pipes-bytestring&gt;
 		and &lt;http://hackage.haskell.org/package/pipes-group pipes-group&gt;.
 		
 		@Lens.Simple@ also re-exports @makeLenses@ and
-		other convenient TH incantations from Dan Burton&#39;s associated
+		other convenient TH incantations from Dan Burton's associated
 		&lt;http://hackage.haskell.org/package/lens-family-th lens-family-th&gt;.
 		
 	</longdescription>
+	<upstream>
+		<remote-id type="github">michaelt/lens-simple</remote-id>
+	</upstream>
 </pkgmetadata>

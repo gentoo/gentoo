@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -15,4 +15,7 @@
 		The lifetime of the cache object and the max size of the cache can be
 		defined as table parameters to limit the size of the in-memory tables.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">processone/cache_tab</remote-id>
+	</upstream>
 </pkgmetadata>

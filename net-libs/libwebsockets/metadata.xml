@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -30,4 +30,7 @@
 		<flag name="smtp">Provide SMTP support</flag>
 		<flag name="sqlite3">Require SQLITE3 support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">warmcat/libwebsockets</remote-id>
+	</upstream>
 </pkgmetadata>
