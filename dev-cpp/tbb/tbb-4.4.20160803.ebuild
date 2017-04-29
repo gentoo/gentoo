@@ -15,7 +15,7 @@ HOMEPAGE="http://www.threadingbuildingblocks.org/"
 SRC_URI="http://threadingbuildingblocks.org/sites/default/files/software_releases/source/${MYP}_src.tgz"
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug doc examples"
 
 DEPEND=""
