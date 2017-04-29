@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>toolchain@gentoo.org</email>
-	<name>Gentoo Toolchain Project</name>
-</maintainer>
-<maintainer type="person">
-	<email>lu_zero@gentoo.org</email>
-	<name>Luca Barbato</name>
-</maintainer>
-<maintainer type="person">
-	<email>mudler@gentoo.org</email>
-	<name>Ettore Di Giacinto</name>
-</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>lu_zero@gentoo.org</email>
+		<name>Luca Barbato</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mudler@gentoo.org</email>
+		<name>Ettore Di Giacinto</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">mozilla/rr</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -8,12 +8,15 @@
 	<longdescription>
 		This library provides two modules:
 		
-		* &quot;System.IO.CodePage&quot;: a cross-platform module that exports
+		* "System.IO.CodePage": a cross-platform module that exports
 		functions which adjust code pages on Windows, and do nothing
 		on other operating systems.
 		
-		* &quot;System.Win32.CodePage&quot;: On Windows, this exports functions
+		* "System.Win32.CodePage": On Windows, this exports functions
 		for getting, setting, and analyzing code pages. On other
 		operating systems, this module exports nothing.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">RyanGlScott/code-page</remote-id>
+	</upstream>
 </pkgmetadata>

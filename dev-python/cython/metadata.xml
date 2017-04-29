@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -8,6 +8,9 @@
   <longdescription lang="en">
     Cython is a language that makes writing C extensions for the Python
     language as easy as Python itself. It's based on Pyrex, but supports
-    more cutting edge functionality and optimizations. 
+    more cutting edge functionality and optimizations.
   </longdescription>
+  <upstream>
+    <remote-id type="pypi">Cython</remote-id>
+  </upstream>
 </pkgmetadata>

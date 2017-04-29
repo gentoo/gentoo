@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -22,5 +22,6 @@
 		<remote-id type="sourceforge">jabref</remote-id>
 		<changelog>https://github.com/JabRef/jabref/blob/master/CHANGELOG.md</changelog>
 		<doc>http://help.jabref.org/</doc>
+		<remote-id type="github">JabRef/jabref</remote-id>
 	</upstream>
 </pkgmetadata>

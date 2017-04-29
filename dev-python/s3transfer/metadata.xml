@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,9 +9,13 @@
 		<name>Alex Brandt</name>
 	</maintainer>
 	<maintainer type="person">
-	  <email>klausman@gentoo.org</email>
-	  <name>Tobias Klausmann</name>
+		<email>klausman@gentoo.org</email>
+		<name>Tobias Klausmann</name>
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>
+	<upstream>
+		<remote-id type="github">boto/s3transfer</remote-id>
+		<remote-id type="pypi">s3transfer</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		<flag name="asn1">Enable ASN.1 certificate support</flag>
 		<flag name="trust">Build the trust policy module</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">p11-glue/p11-kit</remote-id>
+	</upstream>
 </pkgmetadata>

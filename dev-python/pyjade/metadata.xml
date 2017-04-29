@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -16,9 +16,10 @@
 			<name>Syrus Akbary</name>
 		</maintainer>
 		<remote-id type="pypi">pyjade</remote-id>
+		<remote-id type="github">syrusakbary/pyjade</remote-id>
 	</upstream>
-<longdescription>PyJade is a high performance port of Jade-lang for python,
+	<longdescription>PyJade is a high performance port of Jade-lang for python,
 that converts any .jade source to the each Template-language (Django,
 Jinja2, Mako or Tornado).
-</longdescription>
+	</longdescription>
 </pkgmetadata>

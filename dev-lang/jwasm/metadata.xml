@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -6,4 +6,7 @@
 		<name>Sergei Trofimovich</name>
 		<description>Primary Maintainer</description>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">jwasm</remote-id>
+	</upstream>
 </pkgmetadata>

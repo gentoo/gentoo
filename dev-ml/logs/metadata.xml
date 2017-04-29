@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>ml@gentoo.org</email>
-	<name>Gentoo ML Project</name>
-</maintainer>
-  <use>
-	  <flag name="cli">Enables the Logs_cli library that provides command line support for controlling Logs.</flag>
-	  <flag name="fmt">Enables the Logs_fmt reporter.</flag>
-	  <flag name="lwt">Enables the Logs_lwt library that provides Lwt logging functions.</flag>
-  </use>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>Gentoo ML Project</name>
+	</maintainer>
+	<use>
+		<flag name="cli">Enables the Logs_cli library that provides command line support for controlling Logs.</flag>
+		<flag name="fmt">Enables the Logs_fmt reporter.</flag>
+		<flag name="lwt">Enables the Logs_lwt library that provides Lwt logging functions.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dbuenzli/logs</remote-id>
+	</upstream>
 </pkgmetadata>

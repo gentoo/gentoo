@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -12,11 +12,14 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-<longdescription lang='en'>
+  <longdescription lang="en">
 Z3 is a high-performance theorem prover being developed at Microsoft Research.
-</longdescription>
-<use>
-  <flag name='isabelle'>Add integration support for the Isabelle/HOL
+  </longdescription>
+  <use>
+    <flag name="isabelle">Add integration support for the Isabelle/HOL
   theorem prover.</flag>
-</use>
+  </use>
+  <upstream>
+    <remote-id type="github">Z3Prover/z3</remote-id>
+  </upstream>
 </pkgmetadata>

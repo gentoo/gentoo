@@ -1,20 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>reavertm@gentoo.org</email>
-	<name>Maciej Mrozowski</name>
-</maintainer>
-<maintainer type="project">
-	<email>games@gentoo.org</email>
-	<name>Gentoo Games Project</name>
-</maintainer>
-<longdescription>
+	<maintainer type="person">
+		<email>reavertm@gentoo.org</email>
+		<name>Maciej Mrozowski</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
 SimGear is a set of open-source libraries designed to be used as building blocks for 
 quickly assembling 3d simulations, games, and visualization applications.
-</longdescription>
-<use>
-	<flag name="dns">Enables DNS resolver via <pkg>net-libs/udns</pkg></flag>
-	<flag name="subversion">Enables terrasync scenery downloader</flag>
-</use>
+	</longdescription>
+	<use>
+		<flag name="dns">Enables DNS resolver via <pkg>net-libs/udns</pkg></flag>
+		<flag name="subversion">Enables terrasync scenery downloader</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">flightgear</remote-id>
+	</upstream>
 </pkgmetadata>

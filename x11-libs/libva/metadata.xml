@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>aballier@gentoo.org</email>
     <name>Alexis Ballier</name>
   </maintainer>
-	<use>
-		<flag name="egl">Enables EGL support.</flag>
-		<flag name="drm">Enables VA/DRM API support.</flag>
-		<flag name="utils">Install VA-API utility programs.</flag>
-    </use>
+  <use>
+    <flag name="egl">Enables EGL support.</flag>
+    <flag name="drm">Enables VA/DRM API support.</flag>
+    <flag name="utils">Install VA-API utility programs.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">01org/libva</remote-id>
+  </upstream>
 </pkgmetadata>

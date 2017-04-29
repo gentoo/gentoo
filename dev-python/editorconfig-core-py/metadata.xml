@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -13,4 +13,7 @@
 		EditorConfig C Core. EditorConfig Python core can be used as a
 		command line program or as an importable library.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">editorconfig/editorconfig-core-test</remote-id>
+	</upstream>
 </pkgmetadata>

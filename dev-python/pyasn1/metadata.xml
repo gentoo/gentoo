@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">pyasn1</remote-id>
     <remote-id type="sourceforge">pyasn1</remote-id>
+    <remote-id type="github">etingof/pyasn1</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>games@gentoo.org</email>
-	<name>Gentoo Games Project</name>
-</maintainer>
-<longdescription>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
 Welcome to ClanLib, a multi-platform game development library.
 
 ClanLib is a medium level development kit. At its lowest level, it provides a 
@@ -54,5 +54,8 @@ following display targets are supported under linux: X11 and OpenGL. Some parts
 of ClanLib still isnt entirely endian clean, so it will currently only work 
 without problems on the x86 architecture. Work is underway for a MacOS port. 
 Current compilers supported is VC++ 6.0, VC++ 7.0, GCC, Borland and MingW.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sphair/ClanLib</remote-id>
+	</upstream>
 </pkgmetadata>

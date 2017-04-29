@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -24,9 +24,10 @@ Of course, POCO is also ready for enterprise-level challenges.
 The POCO libraries free developers from re-inventing the wheel, and allow
 them to spend their time on more worthwhile areas, such as getting things
 done quickly and working on the features that make their application unique.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">poco</remote-id>
+		<remote-id type="github">pocoproject/poco</remote-id>
 	</upstream>
 	<use>
 		<flag name="7z">Add Support for the 7z archive format</flag>

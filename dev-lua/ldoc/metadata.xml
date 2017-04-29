@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -12,4 +12,7 @@
 	<longdescription lang="en">
 		LDoc is a LuaDoc-compatible documentation generation system.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">stevedonovan/LDoc</remote-id>
+	</upstream>
 </pkgmetadata>

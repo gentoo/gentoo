@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -15,6 +15,7 @@
 			<name>Pierre Tardy</name>
 		</maintainer>
 		<remote-id type="pypi">txrequests</remote-id>
+		<remote-id type="github">tardyp/txrequests</remote-id>
 	</upstream>
 	<longdescription>Small add-on for the python requests http library.
 		Makes use twisted's ThreadPool, so that the requests'API returns

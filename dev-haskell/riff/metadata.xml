@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		This library provides a RIFF parser for Haskell for easy manipulation
 		of common file formats like WAVE and RIFF container AVI files.
 	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">robertmassaioli/riff</remote-id>
+	</upstream>
 </pkgmetadata>

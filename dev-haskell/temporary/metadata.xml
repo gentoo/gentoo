@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -11,4 +11,7 @@
 		This library just repackages the Cabal implementations of its own temporary file and folder functions so that
 		you can use them without linking against Cabal or depending on it being installed.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">batterseapower/temporary</remote-id>
+	</upstream>
 </pkgmetadata>

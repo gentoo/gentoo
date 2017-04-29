@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
@@ -13,4 +13,7 @@
     <flag name="urlfetch">Enable URLs fetch</flag>
     <flag name="utils">Builds and installs utils</flag>
   </use>
+  <upstream>
+    <remote-id type="github">vstakhov/libucl</remote-id>
+  </upstream>
 </pkgmetadata>

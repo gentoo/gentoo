@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -8,4 +8,7 @@
 	<use>
 		<flag name="use-text-show">Use text-show library for efficient ToHttpApiData implementations</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">fizruk/http-api-data</remote-id>
+	</upstream>
 </pkgmetadata>

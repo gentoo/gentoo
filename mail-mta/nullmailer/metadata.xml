@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -9,4 +9,7 @@
     <email>net-mail@gentoo.org</email>
     <name>Net-Mail</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">bruceg/nullmailer</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -33,4 +33,7 @@
 		<flag name="swaymsg">Build 'swaymsg': tool for communicating with a running sway instance.</flag>
 		<flag name="wallpapers">Install sway's default wallpaper image.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">SirCmpwn/sway</remote-id>
+	</upstream>
 </pkgmetadata>

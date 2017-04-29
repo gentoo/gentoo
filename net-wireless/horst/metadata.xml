@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>xmw@gentoo.org</email>
-<name>Michael Weber</name>
-</maintainer>
-<use>
-	<flag name="pcap">Add support for network packet capture via net-libs/libpcap</flag>
-</use>
+	<maintainer type="person">
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<use>
+		<flag name="pcap">Add support for network packet capture via net-libs/libpcap</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">br101/horst</remote-id>
+	</upstream>
 </pkgmetadata>

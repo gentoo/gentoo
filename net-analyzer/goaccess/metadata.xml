@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -25,5 +25,6 @@
 		<doc>http://goaccess.io/faq</doc>
 		<bugs-to>mailto:goaccess@prosoftcorp.com</bugs-to>
 		<remote-id type="github">allinurl/goaccess</remote-id>
+		<remote-id type="sourceforge">goaccess</remote-id>
 	</upstream>
 </pkgmetadata>

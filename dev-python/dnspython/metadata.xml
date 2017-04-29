@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -12,7 +12,7 @@ supports TSIG authenticated messages and EDNS0.  dnspython provides both high
 and low level access to DNS. The high level classes perform queries for data
 of a given name, type, and class, and return an answer set. The low level
 classes allow direct manipulation of DNS zones, messages, names, and records.
-</longdescription>
+	</longdescription>
 	<longdescription lang="ja">
 DNSPythonはPython言語用のDNSツールキットです。ほとんどのレコード・タイプをサポー
 トします。クエリー、ゾーン・トランスファー、ダイナミック・アップデートができます
@@ -20,5 +20,8 @@ DNSPythonはPython言語用のDNSツールキットです。ほとんどのレ�
 準でのアクセスの両方を提供します。高水準ではネーム、タイプ、クラスでクエリーを行
 い、その戻り値を使います。低水準はゾーン、メッセージ、ネーム、レコードを直接操作
 します。
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">dnspython</remote-id>
+	</upstream>
 </pkgmetadata>

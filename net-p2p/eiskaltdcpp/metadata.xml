@@ -1,20 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">
+  <!-- maintainer-needed -->
+  <longdescription lang="en">
   EiskaltDC++ is a multi-platform program that uses the Direct Connect and
   ADC protocol. It is compatible with other DC clients, such as the original DC
   from Neomodus, DC++ and derivatives. EiskaltDC++ also interoperates with all
-  common DC hub software. 
-</longdescription>
-<use>
-  <flag name="cli">Enable sample cli based on readline</flag>
-  <flag name="daemon">Enable eiskaltdcpp-daemon</flag>
-  <flag name="dht">Enable DHT (distributed hash table) support for libeiskaltdcpp</flag>
-  <flag name="emoticons">Install emoticon packs</flag>
-  <flag name="json">Enable JSON for cli and daemon</flag>
-  <flag name="libcanberra">Enable sound notifications support over libcanberra in EiskaltDC++ Gtk</flag>
-  <flag name="minimal">Don't install headers</flag>
-</use>
+  common DC hub software.
+  </longdescription>
+  <use>
+    <flag name="cli">Enable sample cli based on readline</flag>
+    <flag name="daemon">Enable eiskaltdcpp-daemon</flag>
+    <flag name="dht">Enable DHT (distributed hash table) support for libeiskaltdcpp</flag>
+    <flag name="emoticons">Install emoticon packs</flag>
+    <flag name="json">Enable JSON for cli and daemon</flag>
+    <flag name="libcanberra">Enable sound notifications support over libcanberra in EiskaltDC++ Gtk</flag>
+    <flag name="minimal">Don't install headers</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">eiskaltdcpp/eiskaltdcpp</remote-id>
+  </upstream>
 </pkgmetadata>

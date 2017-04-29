@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -39,5 +39,6 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">wine</remote-id>
+		<remote-id type="github">NP-Hardass/wine-desktop-common</remote-id>
 	</upstream>
 </pkgmetadata>

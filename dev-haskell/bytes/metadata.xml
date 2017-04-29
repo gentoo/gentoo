@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -11,4 +11,7 @@
 	<longdescription>
 		Sharing code for serialization between binary and cereal
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ekmett/bytes</remote-id>
+	</upstream>
 </pkgmetadata>

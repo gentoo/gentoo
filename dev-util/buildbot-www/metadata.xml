@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -11,12 +11,13 @@
 	</maintainer>
 	<longdescription lang="en">The BuildBot-www package is the base or common code used for the other user interface
     packages such as the waterfall and console views.
-    </longdescription>
+	</longdescription>
 	<upstream>
 		<maintainer>
 			<email>devel@buildbot.net</email>
 			<name>Developers List</name>
 		</maintainer>
-		<remote-id type="pypi">buildbot</remote-id>
+		<remote-id type="pypi">buildbot-www</remote-id>
+		<remote-id type="github">buildbot/buildbot</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<use>
 		<flag name="tcp">Support iSCSI over TCP</flag>
 		<flag name="rdma">Support iSCSI over RDMA</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">open-iscsi/open-iscsi</remote-id>
+	</upstream>
 </pkgmetadata>

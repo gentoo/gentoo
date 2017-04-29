@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -15,6 +15,7 @@
 			<name>Iotic Labs Ltd</name>
 		</maintainer>
 		<remote-id type="pypi">py-ubjson</remote-id>
+		<remote-id type="github">Iotic-Labs/py-ubjson</remote-id>
 	</upstream>
 	<longdescription>
 		This is a Python v3.2+ (and 2.7+) Universal Binary JSON encoder/decoder

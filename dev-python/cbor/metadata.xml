@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -15,6 +15,7 @@
 			<name>Brian Olson</name>
 		</maintainer>
 		<remote-id type="pypi">cbor</remote-id>
+		<remote-id type="bitbucket">bodhisnarkva/cbor</remote-id>
 	</upstream>
 	<longdescription>An implementation of RFC 7049 - Concise Binary Object
 		Representation (CBOR).  CBOR is comparable to JSON, has a superset of

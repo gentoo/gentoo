@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>reavertm@gentoo.org</email>
-	<name>Maciej Mrozowski</name>
-</maintainer>
-<maintainer type="project">
-	<email>games@gentoo.org</email>
-	<name>Gentoo Games Project</name>
-</maintainer>
-<use>
-	<flag name="dbus">Enable screensaver DBus interaction</flag>
-	<flag name="gdal">Builds alternative terrain engine based on pagedLOD using <pkg>sci-libs/gdal</pkg></flag>
-	<flag name="qt5">Builds Qt5 launcher application</flag>
-	<flag name="udev">Enables event-based Input devices through <pkg>virtual/udev</pkg></flag>
-	<flag name="utils">Builds various utilities (fgpanel, fgviewer among others)</flag>
-</use>
+	<maintainer type="person">
+		<email>reavertm@gentoo.org</email>
+		<name>Maciej Mrozowski</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="dbus">Enable screensaver DBus interaction</flag>
+		<flag name="gdal">Builds alternative terrain engine based on pagedLOD using <pkg>sci-libs/gdal</pkg></flag>
+		<flag name="qt5">Builds Qt5 launcher application</flag>
+		<flag name="udev">Enables event-based Input devices through <pkg>virtual/udev</pkg></flag>
+		<flag name="utils">Builds various utilities (fgpanel, fgviewer among others)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">flightgear</remote-id>
+	</upstream>
 </pkgmetadata>

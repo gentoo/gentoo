@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		language-python is a Haskell library for lexical analysis, parsing
 		and pretty printing Python code. It supports versions 2.x and 3.x of Python.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">bjpop/language-python</remote-id>
+	</upstream>
 </pkgmetadata>

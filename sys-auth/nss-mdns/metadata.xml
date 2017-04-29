@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-	    <email>amynka@gentoo.org</email>
+		<email>amynka@gentoo.org</email>
 	</maintainer>
 	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
-	<flag name="search-domains">Honour search domains from
+		<flag name="search-domains">Honour search domains from
 		/etc/resolv.conf (see bug #201948 for possible side effects)</flag>
 	</use>
 	<longdescription lang="en">
@@ -18,4 +18,7 @@
 	<longdescription lang="ja">
 		マルチキャスト DNS 向けネーム・サービス・スイッチのモジュールです。
 	</longdescription>
+	<upstream>
+		<remote-id type="github">lathiat/nss-mdns</remote-id>
+	</upstream>
 </pkgmetadata>

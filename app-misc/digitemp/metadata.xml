@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>wschlich@gentoo.org</email>
-	<name>Wolfram Schlich</name>
-	<description>Primary maintainer</description>
-</maintainer>
-<longdescription>
+	<maintainer type="person">
+		<email>wschlich@gentoo.org</email>
+		<name>Wolfram Schlich</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<longdescription>
 DigiTemp is a simple to use program for reading values from 1-wire devices. Its
 main use is for reading temperature sensors, but it also reads counters, and
 understands the 1-wire hubs with devices on different branches of the network.
@@ -14,10 +14,13 @@ DigiTemp now supports the following 1-wire temperature sensors: DS18S20 (and
 DS1820), DS18B20, DS1822, the DS2438 Smart Battery Monitor, DS2422 and DS2423
 Counters, DS2409 MicroLAN Coupler (used in 1-wire hubs), and the AAG TAI-8540
 humidity sensor.
-</longdescription>
-<use>
-  <flag name="ds2490">Build support for the ds2490 sensor</flag>
-  <flag name="ds9097">Build support for the ds9097 sensor</flag>
-  <flag name="ds9097u">Build support for the ds9097u sensor</flag>
-</use>
+	</longdescription>
+	<use>
+		<flag name="ds2490">Build support for the ds2490 sensor</flag>
+		<flag name="ds9097">Build support for the ds9097 sensor</flag>
+		<flag name="ds9097u">Build support for the ds9097u sensor</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">bcl/digitemp</remote-id>
+	</upstream>
 </pkgmetadata>

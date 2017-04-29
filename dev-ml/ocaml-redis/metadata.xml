@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>ml@gentoo.org</email>
-	<name>Gentoo ML Project</name>
-</maintainer>
-  <use>
-	<flag name="lwt">Enable lwt bindings for asynchronous processing.</flag>
-  </use>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>Gentoo ML Project</name>
+	</maintainer>
+	<use>
+		<flag name="lwt">Enable lwt bindings for asynchronous processing.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">0xffea/ocaml-redis</remote-id>
+	</upstream>
 </pkgmetadata>

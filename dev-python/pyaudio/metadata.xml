@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		PyAudio provides Python bindings for PortAudio (media-libs/portaudio),
 		the cross-platform audio I/O library.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">PyAudio</remote-id>
+	</upstream>
 </pkgmetadata>

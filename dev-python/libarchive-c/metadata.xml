@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>grozin@gentoo.org</email>
-  <name>Andrey Grozin</name>
-</maintainer>
-<longdescription>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription>
   A Python interface to libarchive.
   It uses the standard ctypes module to dynamically load and access the C library.
-</longdescription>
-<upstream>
-  <remote-id type="pypi">libarchive-c</remote-id>
-</upstream>
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">libarchive-c</remote-id>
+    <remote-id type="github">Changaco/python-libarchive-c</remote-id>
+  </upstream>
 </pkgmetadata>

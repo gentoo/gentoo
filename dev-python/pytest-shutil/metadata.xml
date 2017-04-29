@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -11,6 +11,7 @@
 			<name>Edward Easton</name>
 		</maintainer>
 		<remote-id type="pypi">pytest-shutil</remote-id>
+		<remote-id type="github">manahl/pytest-plugins</remote-id>
 	</upstream>
 	<longdescription>
 		This library is a goodie-bag of Unix shell and environment management

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -14,5 +14,8 @@
   vectors for the desired k-dimensional eigen-space is computed which is
   numerically orthogonal to working precision. Numerically accurate
   eigenvectors are available on request.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">opencollab/arpack-ng</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -24,4 +24,7 @@
 		many thousands of people at AT&amp;T since 1982, and at many other
 		companies and universities. 
 	</longdescription>
+	<upstream>
+		<remote-id type="github">att/ast</remote-id>
+	</upstream>
 </pkgmetadata>

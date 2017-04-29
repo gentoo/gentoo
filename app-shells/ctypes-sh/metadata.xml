@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -10,4 +10,7 @@ ctypes.sh is a bash plugin that provides a foreign function interface directly
 in your shell. In other words, it allows you to call routines in shared
 libraries from within bash.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">taviso/ctypes.sh</remote-id>
+	</upstream>
 </pkgmetadata>

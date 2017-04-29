@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -6,6 +6,7 @@
 		<name>Michael Weber</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">oyranos-cms/libXcm</remote-id>
+		<remote-id type="github">oyranos-cms/libxcm</remote-id>
+		<remote-id type="sourceforge">oyranos</remote-id>
 	</upstream>
 </pkgmetadata>

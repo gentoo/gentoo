@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		Lightweight Java cryptography APIs that work with everything
 		from the J2ME to the JDK 1.6
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">jackcess</remote-id>
+	</upstream>
 </pkgmetadata>

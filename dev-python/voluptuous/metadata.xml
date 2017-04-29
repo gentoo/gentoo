@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -8,4 +8,8 @@
 	<longdescription lang="en">
 		Voluptuous, despite the name, is a Python data validation library. It is primarily intended for validating data coming into Python as JSON, YAML, etc.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">alecthomas/voluptuous</remote-id>
+		<remote-id type="pypi">voluptuous</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" >
+	<maintainer type="person">
 		<email>lluixhi@gmail.com</email>
 		<name>Aric Belsito</name>
 	</maintainer>
@@ -13,4 +13,7 @@
 		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of
 			<pkg>dev-lang/lua</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">tarruda/libmpack</remote-id>
+	</upstream>
 </pkgmetadata>

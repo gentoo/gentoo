@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -16,5 +16,6 @@
 		Additionally, it is possible to write plugins to add your own checks.</longdescription>
   <upstream>
     <remote-id type="pypi">pylint</remote-id>
+    <remote-id type="github">pycqa/pylint</remote-id>
   </upstream>
 </pkgmetadata>
