@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ DEPEND="
 	$(add_kdeapps_dep kdepimlibs '' 4.6)
 "
 RDEPEND="${DEPEND}
+	!>kde-apps/kdepimlibs-4.14.10-r3
 	app-crypt/gnupg
 "
 

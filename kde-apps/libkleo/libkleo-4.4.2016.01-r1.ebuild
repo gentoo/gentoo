@@ -16,6 +16,7 @@ DEPEND="
 	$(add_kdeapps_dep kdepimlibs '' 4.6)
 "
 RDEPEND="${DEPEND}
+	!>kde-apps/kdepimlibs-4.14.10-r3
 	app-crypt/gnupg
 "
 
