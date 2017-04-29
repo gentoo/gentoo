@@ -1,0 +1,14 @@
+Don't build docs by default, which causes issues when trying
+to remove .txt files, as they will be readded on installing.
+
+--- a/setup.py
++++ b/setup.py
+@@ -204,7 +204,7 @@
+ 
+     def initialize_options(self):
+         build.initialize_options(self)
+-        self.no_build_docs = False
++        self.no_build_docs = True
+ 
+     def has_docs(self):
+         return not self.no_build_docs
