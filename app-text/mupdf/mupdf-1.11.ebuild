@@ -27,7 +27,7 @@ LIB_DEPEND="
 	virtual/jpeg[static-libs?]
 	X? ( x11-libs/libX11[static-libs?]
 		x11-libs/libXext[static-libs?] )
-	opengl? ( >=media-libs/glfw-3 )"
+	opengl? ( >=media-libs/glfw-3.2 )"
 RDEPEND="${LIB_DEPEND}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
