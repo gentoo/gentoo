@@ -7879,7 +7879,7 @@ dev-python/mamba 0.8.6: ... testing tool ... Born under the banner of Behavior D
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1 0.8.3 0.8.4: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.8.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.1 2.6.3 2.6.4 2.6.5 2.6.6: Python implementation of the markdown markup language
+dev-python/markdown 2.6.1 2.6.3 2.6.4 2.6.5 2.6.6 2.6.8: Python implementation of the markdown markup language
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 1.0.1 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
