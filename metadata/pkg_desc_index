@@ -18343,7 +18343,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 44.0.2510.1218 44.0.2510.1449: A fast and secure web browser
 www-client/opera-beta 45.0.2552.453 45.0.2552.626: A fast and secure web browser
-www-client/opera-developer 46.0.2567.0 46.0.2573.0: A fast and secure web browser
+www-client/opera-developer 46.0.2573.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -18914,7 +18914,7 @@ x11-misc/slop 4.3.21: An application that queries the user for a selection for p
 x11-misc/spacefm 1.0.4 1.0.4-r1 1.0.5-r2 9999: A multi-panel tabbed file manager
 x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1-r1: a simple X property utility
-x11-misc/sselp 0.2 0.2-r1 9999: Simple X selection printer
+x11-misc/sselp 0.2-r1 9999: Simple X selection printer
 x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
 x11-misc/sunflower 0.2_alpha59: Small and highly customizable twin-panel file manager with plugin-support
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
