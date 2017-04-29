@@ -1888,6 +1888,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:Kernel_Security</url>
     <description>The Gentoo Linux Kernel Security Project handles patching our many kernel sources and informing our users about global kernel security status.</description>
     <member>
+      <email>alicef@gentoo.org</email>
+      <name>Alice Ferrazzi</name>
+    </member>
+    <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
     </member>
