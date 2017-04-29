@@ -5,7 +5,7 @@ EAPI=5
 
 MODULE_AUTHOR=OESTERHOL
 MODULE_VERSION=0.15
-inherit perl-module
+inherit virtualx perl-module
 
 DESCRIPTION="Perl binding for the GTK2 AppIndicator"
 
@@ -19,5 +19,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
-
+src_test() {
+	virtx perl-module_src_test
+}
 SRC_TEST="do parallel"
