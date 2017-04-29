@@ -24,3 +24,5 @@ DEPEND="${RDEPEND}
 RESTRICT+=" test"
 
 DOCS=( DESIGN docs/DESIGN.kconfig docs/options.md )
+
+PATCHES=( "${FILESDIR}/${P}-relativePath.patch" )
