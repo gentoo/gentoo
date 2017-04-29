@@ -5,6 +5,10 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
+  <maintainer type="person">
+    <email>grobian@gentoo.org</email>
+    <name>Fabian Groffen</name>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">carbon</remote-id>
   </upstream>
