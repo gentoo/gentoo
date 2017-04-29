@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,10 @@ DEPEND="
 		|| ( $(add_kdeapps_dep gpgmepp) $(add_kdeapps_dep kdepimlibs) )
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!=kde-apps/kdepimlibs-4.14.10_p2016*
+	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
+"
 
 RESTRICT="test"
 # testpamopen crashes with a buffer overflow (__fortify_fail)

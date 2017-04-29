@@ -21,7 +21,7 @@ DEPEND="
 	kde-frameworks/kdelibs:4
 "
 RDEPEND="${DEPEND}
-	!>=kde-apps/kdepimlibs-4.14.11_pre20160211
+	!>kde-apps/kdepimlibs-4.14.10-r3
 "
 
 KMEXTRACTONLY="

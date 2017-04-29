@@ -23,9 +23,9 @@ DEPEND="
 	$(add_kdeapps_dep kdepim-common-libs '' 4.14.11_pre20160211-r1)
 	$(add_kdeapps_dep korganizer)
 "
-RDEPEND="
-	${DEPEND}
+RDEPEND="${DEPEND}
 	!=kde-apps/kdepim-common-libs-4.12.1-r1
+	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
 "
 
 RESTRICT="test"

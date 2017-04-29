@@ -36,6 +36,8 @@ COMMON_DEPEND="
 	ofx? ( >=dev-libs/libofx-0.9.4 )
 "
 RDEPEND="${COMMON_DEPEND}
+	!=kde-apps/kdepimlibs-4.14.10_p2016*
+	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
 	quotes? ( dev-perl/Finance-Quote )
 "
 DEPEND="${COMMON_DEPEND}
