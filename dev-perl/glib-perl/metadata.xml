@@ -8,6 +8,7 @@
   <upstream>
     <remote-id type="cpan">Glib</remote-id>
     <remote-id type="cpan-module">Glib</remote-id>
+    <remote-id type="cpan-module">Glib::Bytes</remote-id>
     <remote-id type="cpan-module">Glib::CodeGen</remote-id>
     <remote-id type="cpan-module">Glib::Error</remote-id>
     <remote-id type="cpan-module">Glib::Flags</remote-id>
@@ -21,6 +22,6 @@
     <remote-id type="cpan-module">Glib::Object::Subclass</remote-id>
     <remote-id type="cpan-module">Glib::Object::_LazyLoader</remote-id>
     <remote-id type="cpan-module">Glib::ParseXSDoc</remote-id>
-    <remote-id type="cpan-module">MY</remote-id>
+    <remote-id type="cpan-module">Glib::Variant</remote-id>
   </upstream>
 </pkgmetadata>
