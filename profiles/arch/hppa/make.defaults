@@ -24,7 +24,3 @@ CHOST_hppa="${CHOST}"
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
-
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary entry to support stable bug 615818
-RUBY_TARGETS="ruby21"
