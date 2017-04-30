@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,10 @@ SLOT="0"
 LICENSE="cctbx-2.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.25.patch
+)
 
 src_configure() {
 	econf --with-userns
