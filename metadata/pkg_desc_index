@@ -1819,7 +1819,7 @@ app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator 
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 3.4.5-r1 4.2.4-r1 4.2.5: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 0.1.5-r1 0.1.9: Graphical LCD Driver
-app-misc/grc 1.5 1.9: Generic Colouriser beautifies your logfiles or output of commands
+app-misc/grc 1.5 1.9 1.11: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
 app-misc/gtypist 2.8.5-r1 2.9.1 2.9.2 2.9.5: Universal typing tutor
 app-misc/hachoir-metadata 1.3.3-r1: Program to extract metadata using Hachoir library
@@ -17501,7 +17501,7 @@ sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemake
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
-sys-cluster/singularity 2.2: Application containers for Linux
+sys-cluster/singularity 2.2.1: Application containers for Linux
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.10.0 2.10.0-r1 2.10.1 2.10.1-r1 2.13.0 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
