@@ -1994,7 +1994,7 @@ app-mobilephone/esms 0.9.5: A small console program to send SMS messages to Span
 app-mobilephone/gammu 1.33.0-r1 1.36.8: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
-app-mobilephone/gnokii 0.6.31 0.6.31-r1 9999: User space driver and tools for use with mobile phones
+app-mobilephone/gnokii 0.6.31-r1 9999: User space driver and tools for use with mobile phones
 app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/kannel 1.4.3-r2 1.5.0-r3: Powerful SMS and WAP gateway
@@ -2235,7 +2235,7 @@ app-text/chm2pdf 0.9.1-r2: A script that converts a CHM file into a single PDF f
 app-text/clara 20031214 20031214-r1: An OCR (Optical Character Recognition) program
 app-text/cmark 0.27.1: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
-app-text/code2html 0.9.1-r1 0.9.1-r2: Converts source files to colored HTML output
+app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 2.0: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor
@@ -2481,7 +2481,7 @@ app-text/u2ps 0.8.4: A text to PostScript converter like a2ps, but supports UTF-
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 5.1 6.1 6.1-r1 9999: Post-processor for scanned and photocopied book pages
 app-text/unrtf 0.21.9: Converts RTF files to various formats
-app-text/uudeview 0.5.20-r1 0.5.20-r2: uu, xx, base64, binhex decoder
+app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2: Create a diff disregarding formatting
@@ -14542,7 +14542,7 @@ net-dns/knot 2.3.3 2.4.1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 0.16-r1 2.0.0-r1: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
-net-dns/maradns 2.0.09-r1 2.0.09-r2: A security-aware DNS server
+net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
