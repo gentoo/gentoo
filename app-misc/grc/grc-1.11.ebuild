@@ -36,7 +36,7 @@ src_install() {
 	doins \
 		contrib/mrsmith/conf.* \
 		colourfiles/conf.*
-	insinto /etc/profile
+	insinto /etc/profile.d
 	newins grc.bashrc grc.sh
 
 	insinto /etc
