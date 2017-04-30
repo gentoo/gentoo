@@ -4,7 +4,7 @@
 EAPI=6
 
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n systemd flag-o-matic
+inherit autotools bash-completion-r1 l10n flag-o-matic tmpfiles
 
 DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
@@ -83,20 +83,18 @@ src_configure() {
 src_install() {
 	default
 	dobashcomp bash/eix
-	systemd_dotmpfilesd tmpfiles.d/eix.conf
+	dotmpfiles tmpfiles.d/eix.conf
 
 	insinto /usr/share/${PN}
 	doins "${ED}"/usr/bin/eix-functions.sh
 	rm -r "${ED}"/usr/bin/eix-functions.sh || die
-
-	keepdir /var/cache/eix
 }
 
 pkg_postinst() {
 	if ! use prefix; then
 		# note: if this is done in src_install(), portage:portage
 		# ownership may be reset to root
-		chown portage:portage "${EROOT%/}"/var/cache/eix || die
+		tmpfiles_process eix.conf
 	fi
 
 	local obs=${EROOT%/}/var/cache/eix.previous
