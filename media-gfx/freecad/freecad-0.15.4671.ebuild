@@ -21,8 +21,8 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	dev-libs/boost
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib
-	dev-python/pyside[X]
-	dev-python/shiboken
+	dev-python/pyside:0[X]
+	dev-python/shiboken:0
 	dev-qt/designer:4
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/pivy
 	dev-python/numpy"
 DEPEND="${COMMON_DEPEND}
-	dev-python/pyside-tools
+	dev-python/pyside-tools:0
 	>=dev-lang/swig-2.0.4-r1:0"
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
