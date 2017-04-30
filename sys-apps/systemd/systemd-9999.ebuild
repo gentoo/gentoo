@@ -175,7 +175,7 @@ meson_use() {
 	usex "$1" true false
 }
 
-meson_ml() {
+meson_multilib() {
 	if multilib_is_native_abi; then
 		echo true
 	else
@@ -183,9 +183,9 @@ meson_ml() {
 	fi
 }
 
-meson_ml_use() {
-	if multilib_is_native_abi; then
-		usex "$1" true false
+meson_multilib_native_use() {
+	if multilib_is_native_abi && use "$1"; then
+		echo true
 	else
 		echo false
 	fi
@@ -207,36 +207,36 @@ multilib_src_configure() {
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
 		# no deps
-		-Defi=$(meson_ml)
+		-Defi=$(meson_multilib)
 		-Dima=true
 		# Optional components/dependencies
-		-Dacl=$(meson_ml_use acl)
-		-Dapparmor=$(meson_ml_use apparmor)
-		-Daudit=$(meson_ml_use audit)
-		-Dlibcryptsetup=$(meson_ml_use cryptsetup)
-		-Dlibcurl=$(meson_ml_use curl)
-		-Delfutils=$(meson_ml_use elfutils)
+		-Dacl=$(meson_multilib_native_use acl)
+		-Dapparmor=$(meson_multilib_native_use apparmor)
+		-Daudit=$(meson_multilib_native_use audit)
+		-Dlibcryptsetup=$(meson_multilib_native_use cryptsetup)
+		-Dlibcurl=$(meson_multilib_native_use curl)
+		-Delfutils=$(meson_multilib_native_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
-		-Dgnu-efi=$(meson_ml_use gnuefi)
+		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
 		-Defi-libdir="/usr/$(get_libdir)"
-		-Dmicrohttpd=$(meson_ml_use http)
-		$(usex http -Dgnutls=$(meson_ml_use ssl) -Dgnutls=false)
-		-Dlibidn=$(meson_ml_use idn)
-		-Dimportd=$(meson_ml_use importd)
-		-Dbzip2=$(meson_ml_use importd)
-		-Dzlib=$(meson_ml_use importd)
-		-Dkmod=$(meson_ml_use kmod)
+		-Dmicrohttpd=$(meson_multilib_native_use http)
+		$(usex http -Dgnutls=$(meson_multilib_native_use ssl) -Dgnutls=false)
+		-Dlibidn=$(meson_multilib_native_use idn)
+		-Dimportd=$(meson_multilib_native_use importd)
+		-Dbzip2=$(meson_multilib_native_use importd)
+		-Dzlib=$(meson_multilib_native_use importd)
+		-Dkmod=$(meson_multilib_native_use kmod)
 		-Dlz4=$(meson_use lz4)
 		-Dxz=$(meson_use lzma)
-		-Dlibiptc=$(meson_ml_use nat)
+		-Dlibiptc=$(meson_multilib_native_use nat)
 		-Dpam=$(meson_use pam)
-		-Dpolkit=$(meson_ml_use policykit)
-		-Dqrencode=$(meson_ml_use qrcode)
-		-Dseccomp=$(meson_ml_use seccomp)
-		-Dselinux=$(meson_ml_use selinux)
-		#-Dtests=$(meson_ml_use test)
-		-Ddbus=$(meson_ml_use test)
-		-Dxkbcommon=$(meson_ml_use xkb)
+		-Dpolkit=$(meson_multilib_native_use policykit)
+		-Dqrencode=$(meson_multilib_native_use qrcode)
+		-Dseccomp=$(meson_multilib_native_use seccomp)
+		-Dselinux=$(meson_multilib_native_use selinux)
+		#-Dtests=$(meson_multilib_native_use test)
+		-Ddbus=$(meson_multilib_native_use test)
+		-Dxkbcommon=$(meson_multilib_native_use xkb)
 		# hardcode a few paths to spare some deps
 		-Dpath-kill=/bin/kill
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
@@ -244,26 +244,26 @@ multilib_src_configure() {
 		-Ddefault-kill-user-processes=false
 
 		# multilib options
-		-Dbacklight=$(meson_ml)
-		-Dbinfmt=$(meson_ml)
-		-Dcoredump=$(meson_ml)
-		-Denvironment-d=$(meson_ml)
-		-Dfirstboot=$(meson_ml)
-		-Dhibernate=$(meson_ml)
-		-Dhostnamed=$(meson_ml)
-		-Dhwdb=$(meson_ml)
-		-Dldconfig=$(meson_ml)
-		-Dlocaled=$(meson_ml)
-		-Dman=$(meson_ml)
-		-Dnetworkd=$(meson_ml)
-		-Dquotacheck=$(meson_ml)
-		-Drandomseed=$(meson_ml)
-		-Drfkill=$(meson_ml)
-		-Dsysysers=$(meson_ml)
-		-Dtimedated=$(meson_ml)
-		-Dtimesyncd=$(meson_ml)
-		-Dtmpfiles=$(meson_ml)
-		-Dvconsole=$(meson_ml)
+		-Dbacklight=$(meson_multilib)
+		-Dbinfmt=$(meson_multilib)
+		-Dcoredump=$(meson_multilib)
+		-Denvironment-d=$(meson_multilib)
+		-Dfirstboot=$(meson_multilib)
+		-Dhibernate=$(meson_multilib)
+		-Dhostnamed=$(meson_multilib)
+		-Dhwdb=$(meson_multilib)
+		-Dldconfig=$(meson_multilib)
+		-Dlocaled=$(meson_multilib)
+		-Dman=$(meson_multilib)
+		-Dnetworkd=$(meson_multilib)
+		-Dquotacheck=$(meson_multilib)
+		-Drandomseed=$(meson_multilib)
+		-Drfkill=$(meson_multilib)
+		-Dsysysers=$(meson_multilib)
+		-Dtimedated=$(meson_multilib)
+		-Dtimesyncd=$(meson_multilib)
+		-Dtmpfiles=$(meson_multilib)
+		-Dvconsole=$(meson_multilib)
 	)
 
 	set -- meson "${myconf[@]}" "${S}"
