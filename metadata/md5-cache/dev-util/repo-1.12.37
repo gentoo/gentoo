@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://android.googlesource.com/tools/repo/+archive/v1.12.37.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	b4b2ab22637f2be1315af83f2d89cfc6	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	c11fc374357e6ad9ddfe2e9f931e4d29	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=b56bb89f113166b2dc0553d10735cf6c
