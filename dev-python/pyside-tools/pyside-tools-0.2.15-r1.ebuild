@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit cmake-utils python-r1 vcs-snapshot virtualx
 
 DESCRIPTION="PySide development tools (lupdate, rcc, uic)"
-HOMEPAGE="https://wiki.qt.io/Pyside"
+HOMEPAGE="http://wiki.qt.io/PySide"
 SRC_URI="https://github.com/PySide/Tools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
@@ -21,8 +21,8 @@ IUSE="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/pyside-1.2.0[X,${PYTHON_USEDEP}]
-	>=dev-python/shiboken-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/pyside-1.2.0:${SLOT}[X,${PYTHON_USEDEP}]
+	>=dev-python/shiboken-1.2.0:${SLOT}[${PYTHON_USEDEP}]
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 "
@@ -43,11 +43,11 @@ src_prepare() {
 
 	preparation() {
 		pushd "${BUILD_DIR}" >/dev/null || die
+
 		if python_is_python3; then
 			rm -fr pysideuic/port_v2 || die
 
-			# need to run with -py3 to generate
-			# proper python 3 interfaces
+			# need to run with -py3 to generate proper python 3 interfaces
 			sed -i -e 's:${PYSIDERCC_EXECUTABLE}:"${PYSIDERCC_EXECUTABLE} -py3":' \
 				tests/rcc/CMakeLists.txt || die
 		else
@@ -56,6 +56,7 @@ src_prepare() {
 
 		sed -i -e "/pkg-config/ s:shiboken:&-${EPYTHON}:" \
 			tests/rcc/run_test.sh || die
+
 		popd >/dev/null || die
 	}
 	python_foreach_impl preparation
