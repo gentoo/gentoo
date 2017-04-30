@@ -1,5 +1,5 @@
---- pianobooster-src-0.6.4b/src/CMakeLists.txt.orig
-+++ pianobooster-src-0.6.4b/src/CMakeLists.txt
+--- a/CMakeLists.txt.orig
++++ b/CMakeLists.txt
 @@ -2,12 +2,6 @@
  # for the debug build type cmake -DCMAKE_BUILD_TYPE=Debug
  SET(CMAKE_BUILD_TYPE Release)
