@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="UAX #14 Unicode Line Breaking Algorithm"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="dev-perl/MIME-Charset
