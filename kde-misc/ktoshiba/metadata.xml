@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">prdownloads</remote-id>
+		<remote-id type="sourceforge">ktoshiba</remote-id>
 	</upstream>
 </pkgmetadata>
