@@ -1,11 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit cmake-utils
 
 MY_P=${PN}-src-${PV}
+
 DESCRIPTION="A MIDI file player that teaches how to play the piano"
 HOMEPAGE="http://pianobooster.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
@@ -23,20 +24,18 @@ DEPEND="fluidsynth? ( media-sound/fluidsynth )
 	dev-qt/qtopengl:4"
 RDEPEND="${DEPEND}"
 
-DOCS="ReleaseNote.txt ../README.txt"
-
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-underlinking.patch
 )
+DOCS=( ReleaseNote.txt ../README.txt )
 
 S=${WORKDIR}/${MY_P}/src
 
 src_configure() {
-	mycmakeargs=(
-		$(cmake-utils_use_use fluidsynth)
+	local mycmakeargs=(
+		-DUSE_FLUIDSYNTH=$(usex fluidsynth)
 	)
-
 	cmake-utils_src_configure
 }

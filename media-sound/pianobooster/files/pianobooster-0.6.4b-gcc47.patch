@@ -1,5 +1,5 @@
---- pianobooster-src-0.6.4b/src/CMakeLists.txt.orig	2013-04-06 10:48:02.469532914 -0700
-+++ pianobooster-src-0.6.4b/src/CMakeLists.txt	2013-04-06 10:48:12.989532445 -0700
+--- a/CMakeLists.txt.orig	2013-04-06 10:48:02.469532914 -0700
++++ b/CMakeLists.txt	2013-04-06 10:48:12.989532445 -0700
 @@ -203,8 +203,6 @@
          ${PIANOBOOSTER_UI_HDRS} )
  ENDIF(WIN32)
