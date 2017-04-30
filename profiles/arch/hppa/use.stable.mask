@@ -1,9 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# This file requires eapi 5 or later. New entries go on top.
-# Please use the same syntax as in use.mask
-
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary mask to support stable bug 615818
-ruby_targets_ruby22
