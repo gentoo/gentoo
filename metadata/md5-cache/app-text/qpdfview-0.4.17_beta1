@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) !qt5? ( dev-qt/qtcore:4[iconv] dev-qt/qtgui:4 sys-apps/file dbus? ( dev-qt/qtdbus:4 ) pdf? ( >=app-text/poppler-0.35[qt4] ) sqlite? ( dev-qt/qtsql:4[sqlite] ) svg? ( dev-qt/qtsvg:4 ) ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.35[qt5] dev-qt/qtxml:5 ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) ) !svg? ( virtual/freedesktop-icon-theme ) synctex? ( app-text/texlive-core ) qt5? ( dev-qt/linguist-tools:5 ) virtual/pkgconfig
+DESCRIPTION=A tabbed document viewer
+EAPI=6
+HOMEPAGE=https://launchpad.net/qpdfview
+IUSE=cups +dbus djvu fitz +pdf postscript qt5 +sqlite +svg synctex linguas_ast linguas_az linguas_be linguas_bg linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_eo linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_he linguas_hr linguas_hu linguas_id linguas_it linguas_kk linguas_ko linguas_ky linguas_lt linguas_ms linguas_my linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sv linguas_th linguas_tr linguas_ug linguas_uk linguas_vi linguas_zh_CN
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2+
+RDEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) !qt5? ( dev-qt/qtcore:4[iconv] dev-qt/qtgui:4 sys-apps/file dbus? ( dev-qt/qtdbus:4 ) pdf? ( >=app-text/poppler-0.35[qt4] ) sqlite? ( dev-qt/qtsql:4[sqlite] ) svg? ( dev-qt/qtsvg:4 ) ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.35[qt5] dev-qt/qtxml:5 ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) ) !svg? ( virtual/freedesktop-icon-theme ) synctex? ( app-text/texlive-core )
+REQUIRED_USE=?? ( fitz pdf )
+SLOT=0
+SRC_URI=https://launchpad.net/qpdfview/trunk/0.4.17beta1/+download/qpdfview-0.4.17beta1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	l10n	8f52d9ce1814aca2ed1a46920084ea66	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=5f437b6328cbe8671b57dd6e0823fa2a
