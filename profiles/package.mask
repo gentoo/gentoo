@@ -29,14 +29,9 @@
 
 #--- END OF EXAMPLES ---
 
-# Mike Gilbert <floppym@gentoo.org> (30 Apr 2017)
-# Installs /etc/profile as directory, which breaks bash.
-# Bug: https://bugs.gentoo.org/617122
->=app-misc/grc-1.11.0
-
 # Alice Ferrazzi <alicef@gentoo.org> (29 Apr 2017)
 # CVE-2016-10229 security issue. Masked until upstream add the patch.
-# Bug #615480 
+# Bug #615480
 =sys-kernel/vanilla-sources-4.1.39
 
 # Hans de Graaff <graaff@gentoo.org> (28 Apr 2017)
