@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		 AWS is a complete framework to develop Web based applications. The main part of the framework is the embedded Web server. This small yet powerful Web server can be embedded into your application so your application will be able to talk with a standard Web browser like Microsoft Internet Explorer or Firefox for example. Around this Web server a lot of services have been developed.
+	</longdescription>
+</pkgmetadata>
