@@ -14,8 +14,8 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdeapps_dep kdepimlibs 'akonadi(+)' 4.14.11_pre20160611)
-	$(add_kdeapps_dep kdepim-common-libs)
+	$(add_kdeapps_dep kdepim-common-libs '' 4.14.11_pre20160611)
+	$(add_kdeapps_dep kdepimlibs '' 4.14.11_pre20160611)
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}
@@ -64,12 +64,6 @@ src_unpack() {
 	fi
 
 	kde4-meta_src_unpack
-}
-
-src_prepare() {
-	use handbook && epatch "${FILESDIR}/${PN}-4.14.10-handbook.patch"
-
-	kde4-meta_src_prepare
 }
 
 src_install() {

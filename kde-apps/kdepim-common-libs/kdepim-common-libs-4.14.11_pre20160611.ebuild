@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug google"
 
 DEPEND="
-	$(add_kdeapps_dep kdepimlibs 'akonadi(+)' 4.14.11_pre20160611)
+	$(add_kdeapps_dep kdepimlibs '' 4.14.11_pre20160611)
 	app-crypt/gpgme
 	dev-libs/grantlee:0
 	kde-apps/akonadi:4
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdepim-wizards:4
 	!<kde-apps/kmail-4.14.5:4
 	!<kde-apps/korganizer-4.5.67:4
-	$(add_kdeapps_dep kdepim-runtime)
+	$(add_kdeapps_dep kdepim-runtime '' 4.14.11_pre20160211)
 	app-crypt/gnupg
 "
 

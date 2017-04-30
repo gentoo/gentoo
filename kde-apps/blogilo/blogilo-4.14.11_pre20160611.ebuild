@@ -15,7 +15,7 @@ IUSE="debug"
 
 DEPEND="
 	$(add_kdeapps_dep kdepim-common-libs)
-	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
+	$(add_kdeapps_dep kdepimlibs)
 	$(add_kdeapps_dep libkgapi '' 2.2.0)
 "
 RDEPEND="${DEPEND}"

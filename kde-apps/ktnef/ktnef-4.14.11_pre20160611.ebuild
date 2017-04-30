@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ LICENSE="LGPL-2.1"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
+	$(add_kdeapps_dep kdepimlibs)
 	kde-apps/akonadi:4
 "
 RDEPEND="${DEPEND}"

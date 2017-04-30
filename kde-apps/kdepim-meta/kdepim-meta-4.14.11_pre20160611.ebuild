@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,28 +13,28 @@ IUSE="nls"
 SLOT="4"
 
 RDEPEND="
+	>=kde-apps/akonadiconsole-4.14.11_pre20160611:4
+	>=kde-apps/akregator-4.14.11_pre20160611:4
+	>=kde-apps/blogilo-4.14.11_pre20160611:4
+	>=kde-apps/calendarjanitor-4.14.11_pre20160611:4
+	>=kde-apps/kabcclient-4.14.11_pre20160611:4
+	>=kde-apps/kaddressbook-4.14.11_pre20160611:4
+	>=kde-apps/kalarm-4.14.11_pre20160611:4
+	>=kde-apps/kdepim-kresources-4.14.11_pre20160611:4
+	>=kde-apps/kdepim-runtime-4.14.11_pre20160211:4
+	>=kde-apps/kjots-4.14.11_pre20160611:4
+	>=kde-apps/kleopatra-4.14.11_pre20160611:4
+	>=kde-apps/kmail-4.14.11_pre20160611:4
+	>=kde-apps/knode-4.14.11_pre20160611:4
+	>=kde-apps/knotes-4.14.11_pre20160611:4
+	>=kde-apps/konsolekalendar-4.14.11_pre20160611:4
+	>=kde-apps/kontact-4.14.11_pre20160611:4
+	>=kde-apps/korganizer-4.14.11_pre20160611:4
+	>=kde-apps/ktimetracker-4.14.11_pre20160611:4
+	>=kde-apps/ktnef-4.14.11_pre20160611:4
 	kde-frameworks/oxygen-icons:5
-	$(add_kdeapps_dep akonadiconsole '' 4.14.10)
-	$(add_kdeapps_dep akregator '' 4.14.10)
-	$(add_kdeapps_dep blogilo '' 4.14.10)
-	$(add_kdeapps_dep calendarjanitor '' 4.14.10)
-	$(add_kdeapps_dep kabcclient '' 4.14.10)
-	$(add_kdeapps_dep kaddressbook '' 4.14.10)
-	$(add_kdeapps_dep kalarm '' 4.14.10)
-	$(add_kdeapps_dep kdepim-kresources '' 4.14.10)
-	$(add_kdeapps_dep kdepim-runtime '' 4.14.10)
-	$(add_kdeapps_dep kjots '' 4.14.10)
-	$(add_kdeapps_dep kleopatra '' 4.14.10)
-	$(add_kdeapps_dep kmail '' 4.14.10)
-	$(add_kdeapps_dep knode '' 4.14.10)
-	$(add_kdeapps_dep knotes '' 4.14.10)
-	$(add_kdeapps_dep konsolekalendar '' 4.14.10)
-	$(add_kdeapps_dep kontact '' 4.14.10)
-	$(add_kdeapps_dep korganizer '' 4.14.10)
-	$(add_kdeapps_dep ktimetracker '' 4.14.10)
-	$(add_kdeapps_dep ktnef '' 4.14.10)
 	nls? (
-		$(add_kdeapps_dep kde4-l10n '' 4.14.3-r1)
-		$(add_kdeapps_dep kdepim-l10n '' 4.14.3-r1)
+		>=kde-apps/kde4-l10n-4.14.3-r1:4
+		>=kde-apps/kdepim-l10n-4.14.3-r1:4
 	)
 "
