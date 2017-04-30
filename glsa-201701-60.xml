@@ -7,7 +7,8 @@
   </synopsis>
   <product type="ebuild">libraw</product>
   <announced>2017-01-24</announced>
-  <revised>2017-01-24: 1</revised>
+  <revised>2017-04-30: 2</revised>
+  <bug>549338</bug>
   <bug>567254</bug>
   <access>local, remote</access>
   <affected>
@@ -43,9 +44,10 @@
     </code>
   </resolution>
   <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3885">CVE-2015-3885</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8366">CVE-2015-8366</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8367">CVE-2015-8367</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T08:14:05Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2017-01-24T10:53:14Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-04-30T20:28:16Z">b-man</metadata>
 </glsa>
