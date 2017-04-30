@@ -2848,6 +2848,7 @@ dev-ada/gnat_util 2016: Provides access to GNAT compiler internals for AdaCore u
 dev-ada/gnatcoll 2016: GNAT Component Collection
 dev-ada/gnatmem 2016: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gprbuild 2016: Multi-Language Management
+dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2016: A complete Ada graphical toolkit
 dev-ada/xmlada 2016: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
