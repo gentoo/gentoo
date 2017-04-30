@@ -184,7 +184,7 @@ kde4-meta_src_extract() {
 		if [[ ${PV} =~ 4.4.11 ]]; then
 			postfix="bz2"
 			KMTARPARAMS+=" --bzip2"
-		elif [[ ${PV} =~ _pre ]]; then
+		elif [[ ${PV} =~ _pre20160211 ]]; then
 			postfix="gz"
 			KMTARPARAMS+=" --gz"
 		else
@@ -200,7 +200,7 @@ kde4-meta_src_extract() {
 		# Detect real toplevel dir from tarball name - it will be used upon extraction
 		# and in _list_needed_subdirectories
 		topdir="${tarball%.tar.*}/"
-		if [[ ${topdir} =~ _pre ]]; then
+		if [[ ${topdir} =~ _pre20160211 ]]; then
 			topdir="${topdir%-$PV*}/"
 		fi
 
