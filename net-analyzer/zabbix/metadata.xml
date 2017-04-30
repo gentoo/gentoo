@@ -29,6 +29,5 @@ configure different types of notifications for pre-defined events.
 		<flag name="libxml2">Use libxml2 client library</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">prdownloads</remote-id>
 	</upstream>
 </pkgmetadata>
