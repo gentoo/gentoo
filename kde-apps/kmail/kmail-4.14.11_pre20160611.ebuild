@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdeapps_dep kdepimlibs 'akonadi(+)' 4.14.11_pre20160611)
 	$(add_kdeapps_dep kdepim-common-libs '' 4.14.11_pre20160611)
+	$(add_kdeapps_dep kdepimlibs '' 4.14.11_pre20160611)
 	$(add_kdeapps_dep korganizer)
 "
 RDEPEND="${DEPEND}"
