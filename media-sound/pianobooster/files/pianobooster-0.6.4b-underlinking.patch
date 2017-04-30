@@ -2,8 +2,8 @@ Fix build failure caused by underlinking.
 
 Gentoo-bug: 369697
 
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -57,6 +57,8 @@
      #IF(ALSA_FOUND)
          ADD_DEFINITIONS(-D__LINUX_ALSASEQ__)
