@@ -3,4 +3,4 @@
 
 # Temporary mask because of app-crypt/gpgme-1.8.0 stabilisation
 # which collides with kde-apps/kdepimlibs:4, bug #611470
-app-crypt/gpgme cxx qt5
+<=app-crypt/gpgme-1.8.0-r2 cxx qt5
