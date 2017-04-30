@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc64 x86"
 IUSE="doc"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
