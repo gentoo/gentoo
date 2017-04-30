@@ -76,6 +76,7 @@ src_prepare() {
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
 	eapply "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
 	eapply_user
