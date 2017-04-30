@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-ada/xmlada[static] dev-ada/gnat_util[static] dev-ada/asis dev-ada/gprbuild
+DESCRIPTION=A complete Web development framework
+EAPI=6
+HOMEPAGE=http://libre.adacore.com/tools/aws/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-ada/xmlada[static]
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/57399112c7a447658d00e1cd -> aws-gpl-2016-src.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c
+_md5_=a0805456e6e070fa73bad2ae244bcf2a
