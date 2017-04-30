@@ -10342,7 +10342,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.32.2 2.32.3 2.45 2.46.1 2.46.2 2.57: Extensible continuous integration server
+dev-util/jenkins-bin 2.46.2 2.57: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
@@ -18219,7 +18219,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7 2.2.9: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 4.0.60 5.0.30 5.1.2: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.1.2: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
@@ -18933,7 +18933,7 @@ x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
 x11-misc/trayer 1.0-r2 1.0-r3: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.6-r1 1.1.7: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/treeline 1.4.1-r1 2.0.2 2.1.1 2.1.2: TreeLine is a structured information storage program
-x11-misc/unclutter 8-r2 8-r4: Hides mouse pointer while not in use
+x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
 x11-misc/urxvt-font-size 1.1 9999: Perl extension for rxvt-unicode to change the font size on the fly
 x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
 x11-misc/urxvtconfig 1.0: GUI configuration tool for the rxvt-unicode terminal emulator
