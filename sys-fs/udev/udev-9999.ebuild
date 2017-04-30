@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools bash-completion-r1 linux-info multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
+	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
 	patchset=
@@ -24,7 +24,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="acl +kmod selinux static-libs"
+IUSE="acl +kmod selinux"
 
 RESTRICT="test"
 
@@ -60,11 +60,12 @@ PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-26"
 
 S=${WORKDIR}/systemd-${PV}
+EGIT_CHECKOUT_DIR=${S}
 
 check_default_rules() {
 	# Make sure there are no sudden changes to upstream rules file
 	# (more for my own needs than anything else ...)
-	local udev_rules_md5=b8ad860dccae0ca51656b33c405ea2ca
+	local udev_rules_md5=c6ee9def75c5c082bf083a7248991935
 	MD5=$(md5sum < "${S}"/rules/50-udev-default.rules)
 	MD5=${MD5/  -/}
 	if [[ ${MD5} != ${udev_rules_md5} ]]; then
@@ -98,7 +99,7 @@ pkg_setup() {
 src_prepare() {
 	if ! [[ ${PV} = 9999* ]]; then
 		# secure_getenv() disable for non-glibc systems wrt bug #443030
-		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 26 ]]; then
+		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 30 ]]; then
 			eerror "The line count for secure_getenv() failed, see bug #443030"
 			die
 		fi
@@ -130,11 +131,6 @@ src_prepare() {
 		check_default_rules
 	fi
 
-	# Restore possibility of running --enable-static wrt #472608
-	sed -i \
-		-e '/--enable-static is not supported by systemd/s:as_fn_error:echo:' \
-		configure || die
-
 	if ! use elibc_glibc; then #443030
 		echo '#define secure_getenv(x) NULL' >> config.h.in
 		sed -i -e '/error.*secure_getenv/s:.*:#define secure_getenv(x) NULL:' src/shared/missing.h || die
@@ -159,7 +155,6 @@ multilib_src_configure() {
 	econf_args=(
 		--libdir=/usr/$(get_libdir)
 		--docdir=/usr/share/doc/${PF}
-		$(multilib_native_use_enable static-libs static)
 		--disable-nls
 		--disable-dbus
 		$(multilib_native_use_enable kmod)
@@ -245,13 +240,10 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	if multilib_is_native_abi; then
-		local lib_LTLIBRARIES="libudev.la"
-		local pkgconfiglib_DATA="src/libudev/libudev.pc"
-
 		local targets=(
-			install-libLTLIBRARIES
 			install-includeHEADERS
 			install-rootbinPROGRAMS
+			install-rootlibLTLIBRARIES
 			install-rootlibexecPROGRAMS
 			install-udevlibexecPROGRAMS
 			install-dist_udevconfDATA
@@ -259,18 +251,13 @@ multilib_src_install() {
 			install-pkgconfiglibDATA
 			install-pkgconfigdataDATA
 			install-dist_docDATA
-			libudev-install-hook
 			install-directories-hook
 			install-dist_bashcompletionDATA
 			install-dist_networkDATA
-		)
-
-		# add final values of variables:
-		targets+=(
 			rootlibexec_PROGRAMS=systemd-udevd
 			rootbin_PROGRAMS=udevadm
-			lib_LTLIBRARIES="${lib_LTLIBRARIES}"
-			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
+			rootlib_LTLIBRARIES="libudev.la"
+			pkgconfiglib_DATA="src/libudev/libudev.pc"
 			pkgconfigdata_DATA="src/udev/udev.pc"
 			INSTALL_DIRS='$(sysconfdir)/udev/rules.d $(sysconfdir)/udev/hwdb.d $(sysconfdir)/systemd/network'
 			dist_bashcompletion_DATA="shell-completion/bash/udevadm"
@@ -278,22 +265,21 @@ multilib_src_install() {
 		)
 		emake -j1 DESTDIR="${D}" "${targets[@]}"
 		doman man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
-	else
-		local lib_LTLIBRARIES="libudev.la"
-		local pkgconfiglib_DATA="src/libudev/libudev.pc"
-		local include_HEADERS="src/libudev/libudev.h"
 
+		# Compatibility symlink for software that looks for libudev.so
+		# without using pkg-config
+		dosym ../../$(get_libdir)/libudev.so.1 \
+			/usr/$(get_libdir)/libudev.so
+	else
 		local targets=(
 			install-libLTLIBRARIES
 			install-includeHEADERS
 			install-pkgconfiglibDATA
+			lib_LTLIBRARIES="libudev.la"
+			pkgconfiglib_DATA="src/libudev/libudev.pc"
+			include_HEADERS="src/libudev/libudev.h"
 		)
 
-		targets+=(
-			lib_LTLIBRARIES="${lib_LTLIBRARIES}"
-			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
-			include_HEADERS="${include_HEADERS}"
-			)
 		emake -j1 DESTDIR="${D}" "${targets[@]}"
 	fi
 }
