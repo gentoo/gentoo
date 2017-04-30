@@ -201,7 +201,7 @@ multilib_src_compile() {
 			man/udevadm.8
 		)
 	fi
-	ninja -v "${targets[@]}" || die
+	eninja "${targets[@]}" || die
 }
 
 # meson uses an private python script for this
