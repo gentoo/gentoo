@@ -110,7 +110,18 @@ tmpfiles_process() {
 	[[ ${#} -gt 0 ]] || die "${FUNCNAME}: Must specify at least one filename"
 
 	# Only process tmpfiles for the currently running system
-	[[ ${ROOT} == / ]] || return 0
+	if [[ ${ROOT} != / ]]; then
+		ewarn "Warning: tmpfiles.d not processed on ROOT != /. If you do not use"
+		ewarn "a service manager supporting tmpfiles.d, you need to run"
+		ewarn "the following command after booting (or chroot-ing with all"
+		ewarn "appropriate filesystems mounted) into the ROOT:"
+		ewarn
+		ewarn "  tmpfiles --create"
+		ewarn
+		ewarn "Failure to do so may result in missing runtime directories"
+		ewarn "and failures to run programs or start services."
+		return
+	fi
 
 	if type systemd-tmpfiles &> /dev/null; then
 		systemd-tmpfiles --create "$@"
