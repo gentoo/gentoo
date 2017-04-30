@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/msmtp/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 ~arm ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax"
 
 CDEPEND="
