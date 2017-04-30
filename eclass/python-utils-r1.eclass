@@ -660,7 +660,7 @@ python_optimize() {
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
 				;;
-			python*)
+			python*|pypy3)
 				# both levels of optimization are separate since 3.5
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -O -m compileall -q -f -d "${instpath}" "${d}"
