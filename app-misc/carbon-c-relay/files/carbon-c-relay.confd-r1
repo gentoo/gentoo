@@ -4,9 +4,6 @@
 # routing file to read
 #ROUTES_FILE=/etc/carbon-c-relay.conf
 
-# where to store the PID-file
-#PIDFILE=/run/carbon-c-relay.pid
-
 # where to store the logfile
 #LOGFILE=/var/log/carbon-c-relay.log
 

@@ -13,7 +13,7 @@ routes_config=${ROUTES_FILE:-/etc/${SVCNAME}.conf}
 
 command="/usr/bin/carbon-c-relay"
 command_args="-f ${routes_config} ${EXTRA_OPTS}"
-pidfile=${PIDFILE:-/run/${SVCNAME}.pid}
+pidfile="/run/carbon-c-relay/${SVCNAME}.pid"
 logfile=${LOGFILE:-/var/log/${SVCNAME}.log}
 user=${USER:-carbon}
 group=${GROUP:-carbon}
@@ -28,7 +28,8 @@ start_pre() {
 		configtest || return 1
 	fi
 	touch "${logfile}"
-	chown ${user}:${group} "${logfile}"
+	mkdir -p "${pidfile%/*}"
+	chown ${user}:${group} "${logfile}" "${pidfile%/*}"
 }
 
 stop_pre() {
@@ -52,7 +53,10 @@ start() {
 
 stop() {
 	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop --exec ${command} --pidfile "${pidfile}"
+	# migration path
+	local pfile=${pidfile}
+	[[ -e /run/carbon-c-relay.pid ]] && pfile="/run/carbon-c-relay.pid"
+	start-stop-daemon --stop --exec ${command} --pidfile "${pfile}"
 	eend $?
 }
 
