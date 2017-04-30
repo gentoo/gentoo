@@ -3,71 +3,83 @@
 
 EAPI=6
 
-# some random parts need python 2...
+# pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
-inherit pax-utils python-any-r1 unpacker versionator
+inherit check-reqs pax-utils python-any-r1 toolchain-funcs versionator
 
-BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy3-bin/${PV}"
 MY_P=pypy3-v${PV}
 
-DESCRIPTION="A fast, compliant alternative implementation of Python 3.3 (binary package)"
+DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
-	amd64? (
-		jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+ncurses.tar.lz )
-		!jit? ( ${BINHOST}/${P}-amd64+bzip2+ncurses.tar.lz )
-	)
-	x86? (
-		cpu_flags_x86_sse2? (
-			jit? ( ${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.tar.lz )
-			!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses+sse2.tar.lz )
-		)
-		!cpu_flags_x86_sse2? (
-			!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses.tar.lz )
-		)
-	)"
-
-# Supported variants
-REQUIRED_USE="x86? ( !cpu_flags_x86_sse2? ( !jit ) )"
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2"
 
 LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
 SLOT="0/57"
-KEYWORDS="~amd64 ~x86"
-IUSE="gdbm +jit sqlite cpu_flags_x86_sse2 test tk"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
-# yep, world would be easier if people started filling subslots...
-RDEPEND="
-	app-arch/bzip2:0=
+RDEPEND=">=sys-libs/zlib-1.1.3:0=
+	virtual/libffi:0=
+	virtual/libintl:0=
 	dev-libs/expat:0=
-	dev-libs/libffi:0=
-	dev-libs/openssl:0=[-bindist]
-	sys-libs/glibc:2.2=
-	sys-libs/ncurses:0/6
-	sys-libs/zlib:0=
+	!libressl? ( dev-libs/openssl:0=[-bindist] )
+	libressl? ( dev-libs/libressl:0= )
+	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
+	ncurses? ( sys-libs/ncurses:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
 		dev-lang/tk:0=
 		dev-tcltk/tix:0=
 	)
-	!dev-python/pypy3:0"
+	!dev-python/pypy3-bin:0"
 DEPEND="${RDEPEND}
-	app-arch/lzip
-	app-arch/xz-utils
-	test? ( ${PYTHON_DEPS} )"
-#	doc? ( ${PYTHON_DEPS}
-#		dev-python/sphinx )
+	low-memory? ( virtual/pypy:0 )
+	!low-memory? ( ${PYTHON_DEPS} )"
+#	doc? ( dev-python/sphinx )
 
-S=${WORKDIR}/${MY_P}-src
+S="${WORKDIR}/${MY_P}-src"
 
-QA_PREBUILT="
-	usr/lib*/pypy3/pypy3-c
-	usr/lib*/pypy3/libpypy3-c.so"
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if use low-memory; then
+			CHECKREQS_MEMORY="1750M"
+			use amd64 && CHECKREQS_MEMORY="3500M"
+		else
+			CHECKREQS_MEMORY="3G"
+			use amd64 && CHECKREQS_MEMORY="6G"
+		fi
+
+		check-reqs_pkg_pretend
+	fi
+}
+
+pkg_setup() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		pkg_pretend
+
+		# unset to allow forcing pypy below :)
+		use low-memory && local EPYTHON=
+		if python_is_installed pypy && [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]]; then
+			einfo "Using PyPy to perform the translation."
+			local EPYTHON=pypy
+		else
+			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
+			einfo "recommends using PyPy for that. If you wish to do so, please install"
+			einfo "virtual/pypy and ensure that EPYTHON variable is unset."
+		fi
+
+		python-any-r1_pkg_setup
+	fi
+}
 
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	# disarm implicit -flto
+	eapply "${FILESDIR}"/5.7.1-kill-flto.patch
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -76,21 +88,83 @@ src_prepare() {
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
 	eapply "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
 	eapply_user
 }
 
-src_compile() {
-	# Tadaam! PyPy compiled!
-	mv "${WORKDIR}"/${P}*/{libpypy3-c.so,pypy3-c} . || die
-	mv "${WORKDIR}"/${P}*/include/*.h include/ || die
-	mv pypy/module/cpyext/include/*.h include/ || die
-	mv pypy/module/cpyext/parse/*.h include/ || die
+src_configure() {
+	tc-export CC
 
-	#use doc && emake -C pypy/doc/ html
-	#needed even without jit :( also needed in both compile and install phases
+	local jit_backend
+	if use jit; then
+		jit_backend='--jit-backend='
+
+		# We only need the explicit sse2 switch for x86.
+		# On other arches we can rely on autodetection which uses
+		# compiler macros. Plus, --jit-backend= doesn't accept all
+		# the modern values...
+
+		if use x86; then
+			if use cpu_flags_x86_sse2; then
+				jit_backend+=x86
+			else
+				jit_backend+=x86-without-sse2
+			fi
+		else
+			jit_backend+=auto
+		fi
+	fi
+
+	local args=(
+		--shared
+		$(usex jit -Ojit -O2)
+		$(usex sandbox --sandbox '')
+
+		${jit_backend}
+
+		pypy/goal/targetpypystandalone
+	)
+
+	# Avoid linking against libraries disabled by use flags
+	local opts=(
+		bzip2:bz2
+		ncurses:_minimal_curses
+	)
+
+	local opt
+	for opt in "${opts[@]}"; do
+		local flag=${opt%:*}
+		local mod=${opt#*:}
+
+		args+=(
+			$(usex ${flag} --withmod --withoutmod)-${mod}
+		)
+	done
+
+	local interp=( "${PYTHON}" )
+	if use low-memory; then
+		interp=( env PYPY_GC_MAX_DELTA=200MB
+			"${PYTHON}" --jit loop_longevity=300 )
+	fi
+
+	# translate into the C sources
+	# we're going to make them ourselves since otherwise pypy does not
+	# free up the unneeded memory before spawning the compiler
+	set -- "${interp[@]}" rpython/bin/rpython --batch --source "${args[@]}"
+	echo -e "\033[1m${@}\033[0m"
+	"${@}" || die "translation failed"
+}
+
+src_compile() {
+	emake -C "${T}"/usession*-0/testing_1
+
+	# copy back to make sys.prefix happy
+	cp -p "${T}"/usession*-0/testing_1/{pypy3-c,libpypy3-c.so} . || die
 	pax-mark m pypy3-c libpypy3-c.so
+
+	#use doc && emake -C pypy/doc html
 }
 
 src_test() {
@@ -105,10 +179,11 @@ src_test() {
 src_install() {
 	local dest=/usr/$(get_libdir)/pypy3
 	einfo "Installing PyPy ..."
-	insinto "${dest}"
-	doins -r include lib_pypy lib-python pypy3-c libpypy3-c.so
-	fperms a+x ${dest}/pypy3-c ${dest}/libpypy3-c.so
+	exeinto "${dest}"
+	doexe pypy3-c libpypy3-c.so
 	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
+	insinto "${dest}"
+	doins -r include lib_pypy lib-python
 	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
 
@@ -128,7 +203,7 @@ src_install() {
 	fi
 
 	# Install docs
-	#use doc && dodoc -r pypy/doc/_build/html
+	#use doc && dohtml -r pypy/doc/_build/html/
 
 	einfo "Generating caches and byte-compiling ..."
 
@@ -159,9 +234,9 @@ src_install() {
 #    "resource": "_resource_build.py" if sys.platform != "win32" else None,
 #    "lzma": "_lzma_build.py",
 #    "_decimal": "_decimal_build.py",
-#    "ssl": "_ssl_build.py",
-	cffi_targets=( audioop curses syslog pwdgrp resource lzma decimal ssl )
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal )
 	use gdbm && cffi_targets+=( gdbm )
+	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )
 	use tk && cffi_targets+=( tkinter/tklib )
 
