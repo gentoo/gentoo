@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdepimlibs:4
 "
 
-S=${WORKDIR}/${KMNAME}
+S=${WORKDIR}/${KMNAME}-${PV}
 
 src_prepare() {
 	cmake_comment_add_subdirectory kmime
