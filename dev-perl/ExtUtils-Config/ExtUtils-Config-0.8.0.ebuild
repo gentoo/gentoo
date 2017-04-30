@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="A wrapper for perl's configuration"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND="
