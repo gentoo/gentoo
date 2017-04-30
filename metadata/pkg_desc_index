@@ -8347,7 +8347,7 @@ dev-python/pytest-mock 1.2 1.5.0 1.6.0: Thin-wrapper around the mock package for
 dev-python/pytest-mpl 0.5: pytest plugin to faciliate image comparison for matplotlib figures
 dev-python/pytest-pep8 1.0.6: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.7.1: pytest plugin to check source code with pylint
-dev-python/pytest-pythonpath 0.7 0.7.1: pytest plugin for adding to the PYTHONPATH from command line or configs
+dev-python/pytest-pythonpath 0.7.1: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-raisesregexp 2.0 2.1: Simple pytest plugin to look for regex in Exceptions
 dev-python/pytest-rerunfailures 2.1.0: py.test plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-runner 2.6.2 2.8 2.9 2.10.1: Adds support for tests during installation of setup.py files
