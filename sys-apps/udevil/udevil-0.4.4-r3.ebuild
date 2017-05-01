@@ -32,7 +32,7 @@ src_prepare() {
 	# This works for 0.4.4 too, no sense copying the patch
 	epatch "${FILESDIR}"/${PN}-0.4.3-flags.patch
 	epatch "${FILESDIR}"/${P}-stat.patch
-	epatch "${FILESDIR}"/${P}-include-sysmacros.patch
+	epatch "${FILESDIR}"/${P}-include-sysmacros-r1.patch
 	eapply_user
 	eautoreconf
 }
