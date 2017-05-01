@@ -9,7 +9,7 @@ inherit gnome2 vala
 DESCRIPTION="Complete the puzzle by matching numbered tiles"
 HOMEPAGE="https://wiki.gnome.org/Apps/Tetravex"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
