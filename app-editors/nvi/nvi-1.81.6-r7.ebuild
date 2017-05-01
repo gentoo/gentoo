@@ -11,7 +11,7 @@ SRC_URI="http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86"
 IUSE="perl tcl unicode"
 
 CDEPEND=">=sys-libs/db-4.2.52_p5:=
