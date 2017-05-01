@@ -2253,6 +2253,7 @@ dev-lisp/gcl:athena - Build xgcl - an interface to x11-libs/libXaw
 dev-lisp/sbcl:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
 dev-lua/lpeg:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/lua-openssl:luajit - Use dev-lang/luajit instead of dev-lang/lua
+dev-lua/luafilesystem:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luaossl:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
 dev-lua/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
