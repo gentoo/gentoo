@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
 RDEPEND="<dev-python/requests-3.0.0"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DOCS=( AUTHORS.rst HISTORY.rst README.rst )
