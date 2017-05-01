@@ -16,6 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="<=dev-python/requests-3.0.0"
+RDEPEND="<dev-python/requests-3.0.0"
 
 DOCS=( AUTHORS.rst HISTORY.rst README.rst )
