@@ -1,0 +1,27 @@
+# Include sysmacros.h, solves Gentoo bug 580364
+# Upstream has merged similar changes, should be present
+# in 0.4.5
+--- a/src/udevil.c	2015-05-04 06:34:32.000000000 -0700
++++ b/src/udevil.c	2017-01-02 07:25:14.744273858 -0800
+@@ -33,6 +33,9 @@
+ #include <netdb.h>
+ #include <arpa/inet.h>
+ 
++// major/minor, dev_t, needed for glibc>=2.25
++#include <sys/sysmacros.h>
++
+ // groups
+ #include <grp.h>
+ 
+--- a/src/device-info.h	2017-01-02 07:47:23.373180528 -0800
++++ b/src/device-info.h	2017-03-14 23:35:58.079222855 -0700
+@@ -18,6 +18,9 @@
+ // intltool
+ #include <glib/gi18n.h>
+ 
++// dev_t
++#include <sys/sysmacros.h>
++
+ 
+ 
+ typedef struct device_t  {
