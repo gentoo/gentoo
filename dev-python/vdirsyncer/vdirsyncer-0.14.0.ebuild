@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE=""
+IUSE="test"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/click-log-0.1.3[${PYTHON_USEDEP}]
@@ -25,6 +25,22 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/atomicwrites-0.1.7[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/hypothesis-3.1[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-localserver[${PYTHON_USEDEP}]
+		dev-python/pytest-subtesthack[${PYTHON_USEDEP}]
+	)"
 
 DOCS=( AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst config.example )
+
+python_test() {
+	# skip tests needing servers running
+	local -x DAV_SERVER=skip
+	local -x REMOTESTORAGE_SERVER=skip
+	# pytest dies hard if the envvars do not have any value...
+	local -x CI=false
+	local -x DETERMINISTIC_TESTS=false
+	py.test -v || die "Tests fail with ${EPYTHON}"
+}
