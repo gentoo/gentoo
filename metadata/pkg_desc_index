@@ -17232,7 +17232,7 @@ sys-apps/ucspi-proxy 0.97 0.98 0.99: proxy program for two connections set up by
 sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r17 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 0.36-r2 0.36-r3 0.36-r4: A ucspi implementation for unix sockets
-sys-apps/udevil 0.4.4-r1 0.4.4-r2: mount and unmount removable devices without a password
+sys-apps/udevil 0.4.4-r1 0.4.4-r2 0.4.4-r3: mount and unmount removable devices without a password
 sys-apps/ultracopier 0.2.0.16: Advanced file copying tool
 sys-apps/unscd 0.52-r2: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
