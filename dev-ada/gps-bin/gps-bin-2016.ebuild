@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-ada/gnatcoll[iconv,postgresql,readline,sqlite]
+	dev-ada/gnatcoll[iconv,postgresql,projects,readline,sqlite]
 	dev-ada/gprbuild[shared]
 	dev-db/sqlite
 	dev-lang/gnat-gpl
