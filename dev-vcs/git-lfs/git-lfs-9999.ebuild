@@ -22,7 +22,7 @@ IUSE="+doc"
 
 # since version 2.0.2 git-lfs uses time.Until that was introduced in golang >=1.8
 # https://github.com/golang/go/commit/67ea710792eabdae1182e2bf4845f512136cccce
-DEPEND=">=dev-lang/go-1.8:=
+DEPEND=">=dev-lang/go-1.8.1:=
 	doc? ( app-text/ronn )"
 
 RDEPEND="dev-vcs/git"
