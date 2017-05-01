@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/click-log-0.1.3[${PYTHON_USEDEP}]
 	>=dev-python/click-threading-0.2[${PYTHON_USEDEP}]
@@ -24,5 +23,8 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	!=dev-python/requests-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-toolbelt-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/atomicwrites-0.1.7[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
 DOCS=( AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst config.example )
