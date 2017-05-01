@@ -28,7 +28,7 @@
 if [[ -z ${_VERSIONATOR_ECLASS} ]]; then
 _VERSIONATOR_ECLASS=1
 
-inherit eutils
+inherit estack
 
 # @FUNCTION: get_all_version_components
 # @USAGE: [version]
