@@ -64,7 +64,7 @@ testbed winpopup +xmpp yahoo zeroconf"
 IUSE="${IUSE} ${PLUGINS} ${PROTOCOLS}"
 
 COMMONDEPEND="
-	$(add_kdeapps_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs '' 4.14.10_p20160611)
 	dev-libs/libpcre
 	>=dev-qt/qtgui-4.4.0:4[mng]
 	kde-frameworks/kdelibs:4[zeroconf?]
@@ -106,6 +106,7 @@ COMMONDEPEND="
 	yahoo? ( media-libs/jasper )
 "
 RDEPEND="${COMMONDEPEND}
+	!=kde-apps/kdepimlibs-4.14.11_pre20160211*
 	jingle? ( media-libs/speex )
 	latex? (
 		virtual/imagemagick-tools
@@ -118,6 +119,8 @@ DEPEND="${COMMONDEPEND}
 	jingle? ( dev-libs/jsoncpp )
 	!aqua? ( x11-proto/scrnsaverproto )
 "
+
+PATCHES=( "${FILESDIR}/${P}-kde4qgpgme.patch" )
 
 src_configure() {
 	local x x2

@@ -476,6 +476,9 @@ _calculate_src_uri() {
 				4.14.10)
 					# Part of 15.04.3 actually, sigh. Used by last version of KDE PIM 4.
 					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
+				4.14.11*)
+					# KDEPIM 4.14 snapshot with Gentoo patches
+					SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${_kmname_pv}.tar.xz" ;;
 				??.?.[6-9]? | ??.??.[4-9]?)
 					# Unstable KDE Applications releases
 					SRC_URI="mirror://kde/unstable/applications/${PV}/src/${_kmname}-${PV}.tar.xz" ;;

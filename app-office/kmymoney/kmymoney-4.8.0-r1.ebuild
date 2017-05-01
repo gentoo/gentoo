@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug calendar doc hbci ofx pim quotes weboob"
 
 COMMON_DEPEND="
-	app-crypt/gpgme
+	>=app-crypt/gpgme-1.7.0[cxx]
 	<app-office/libalkimia-6.0.0
 	dev-libs/gmp:0=
 	dev-libs/libgpg-error
@@ -34,7 +34,6 @@ COMMON_DEPEND="
 	)
 	ofx? ( >=dev-libs/libofx-0.9.4 )
 	pim? ( $(add_kdeapps_dep kdepimlibs) )
-	!pim? ( app-crypt/gpgme[cxx] )
 	weboob? ( www-client/weboob )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -71,7 +70,6 @@ src_configure() {
 		-DENABLE_KBANKING=$(usex hbci)
 		-DENABLE_LIBOFX=$(usex ofx)
 		$(cmake-utils_use_find_package pim KdepimLibs)
-		$(cmake-utils_use_find_package '!pim' Gpgmepp)
 		-DENABLE_WEBOOB=$(usex weboob)
 	)
 	kde4-base_src_configure

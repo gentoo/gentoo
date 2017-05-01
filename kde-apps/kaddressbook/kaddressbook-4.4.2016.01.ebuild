@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,9 @@ DEPEND="
 	$(add_kdeapps_dep libkleo '' 4.4.2015)
 	kde-frameworks/kdelibs:4
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!>kde-apps/kdepimlibs-4.14.10-r3
+"
 
 KMEXTRA="
 	plugins/kaddressbook/

@@ -21,6 +21,7 @@ DEPEND="
 	dev-libs/libgpg-error
 "
 RDEPEND="${DEPEND}
+	!>kde-apps/kdepimlibs-4.14.10-r3
 	app-crypt/gnupg
 "
 
