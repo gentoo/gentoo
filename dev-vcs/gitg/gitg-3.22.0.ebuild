@@ -11,7 +11,7 @@ inherit gnome2 pax-utils python-r1 vala
 DESCRIPTION="git repository viewer for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gitg"
 
-LICENSE="|| ( GPL-2 GPL-3 )"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
