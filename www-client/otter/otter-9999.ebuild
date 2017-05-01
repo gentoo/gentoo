@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-WANT_CMAKE="always"
+
 inherit eutils cmake-utils git-r3
 
 DESCRIPTION="Project aiming to recreate classic Opera (12.x) UI using Qt5"
