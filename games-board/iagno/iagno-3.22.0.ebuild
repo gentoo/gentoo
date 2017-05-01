@@ -9,7 +9,7 @@ inherit gnome2 vala
 DESCRIPTION="Dominate the board in a classic version of Reversi"
 HOMEPAGE="https://wiki.gnome.org/Apps/Iagno"
 
-LICENSE="LGPL-2+"
+LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
