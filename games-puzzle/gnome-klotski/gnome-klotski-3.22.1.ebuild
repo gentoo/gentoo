@@ -9,7 +9,7 @@ inherit gnome2 vala
 DESCRIPTION="Slide blocks to solve the puzzle"
 HOMEPAGE="https://wiki.gnome.org/Apps/Klotski"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
