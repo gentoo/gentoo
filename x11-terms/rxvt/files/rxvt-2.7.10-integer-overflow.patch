@@ -1,0 +1,11 @@
+--- rxvt-2.7.10/src/command.c	2003-03-26 07:01:23.000000000 +0100
++++ rxvt-2.7.10-patched/src/command.c	2017-04-27 12:06:05.682072274 +0200
+@@ -2096,7 +2096,7 @@
+     i = ch - CSI_ICH;
+     ndef = get_byte_array_bit(csi_defaults, i);
+     for (p = 0; p < nargs; p++)
+-	if (arg[p] == -1)
++	if (arg[p] < 0 || arg[p] > 30000)
+ 	    arg[p] = ndef;
+ 
+ #ifdef DEBUG_CMD
