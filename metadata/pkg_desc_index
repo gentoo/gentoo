@@ -11268,7 +11268,7 @@ games-puzzle/gweled 0.9.1-r1: Bejeweled clone game
 games-puzzle/hangman 0.9.2: The classic word guessing game
 games-puzzle/hexalate 1.0.3 1.1.0: A color matching game
 games-puzzle/hexamine 0.2.1: Hexagonal Minesweeper
-games-puzzle/hitori 3.22.2: Logic puzzle game for GNOME
+games-puzzle/hitori 3.22.2 3.22.3: Logic puzzle game for GNOME
 games-puzzle/hoh-bin 1.01: PC remake of the spectrum game, Head Over Heels
 games-puzzle/icebreaker 1.9.6: Trap and capture penguins on Antarctica
 games-puzzle/jag 0.3.2: Arcade 2D Puzzle Game
