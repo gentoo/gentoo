@@ -7,7 +7,7 @@ inherit gnome2 vala
 DESCRIPTION="Turn off all the lights"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lightsoff"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
