@@ -20,6 +20,7 @@ DEPEND="
 	>=dev-libs/boost-1.59.0:=
 	dev-libs/libaio
 	dev-libs/libedit
+	dev-libs/libev
 	dev-libs/libevent:0=
 	dev-libs/libgcrypt:0=
 	dev-libs/libgpg-error
