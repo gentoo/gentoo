@@ -60,7 +60,7 @@ media-libs/phonon designer
 media-libs/libvpx svc
 
 # Conflicts with kde-apps/audiocd-kio:5
-media-sound/amarok -cdda
+media-sound/amarok:4 -cdda
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 kde-apps/solid-runtime -bluetooth
