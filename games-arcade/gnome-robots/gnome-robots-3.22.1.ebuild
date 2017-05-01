@@ -7,7 +7,7 @@ inherit gnome2
 DESCRIPTION="Avoid the robots and make them crash into each other"
 HOMEPAGE="https://wiki.gnome.org/Apps/Robots"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
