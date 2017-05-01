@@ -1,0 +1,90 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PDNS_CONFIGDIR="${PDNS_CONFIGDIR:-/etc/powerdns}"
+PDNS_SOCKETDIR="${PDNS_SOCKETDIR:-/var/lib/powerdns}"
+
+name="PowerDNS Authoritative Server"
+description="Authoritative name server"
+
+extra_started_commands="dump ping"
+extra_stopped_commands="monitor"
+description_dump="Dumps all statistic variables"
+description_ping="Ping the PowerDNS instance"
+description_monitor="Starts in foreground with logging and console enabled"
+
+command="/usr/sbin/pdns_server"
+command_args="--config-dir=${PDNS_CONFIGDIR} --socket-dir=${PDNS_SOCKETDIR}"
+command_args_foreground="--daemon=no"
+command_args_background="--daemon=yes"
+yesno ${rc_verbose} || command_args_background="${command_args_background} >/dev/null 2>&1"
+
+if [ "${RC_SVCNAME}" != "pdns" ]; then
+	PDNS_INSTANCE="${RC_SVCNAME#pdns[.-]}"
+	name="${name} (${PDNS_INSTANCE})"
+	command_args="${command_args} --config-name=${PDNS_INSTANCE}"
+	pidfile="${PDNS_SOCKETDIR}/pdns-${PDNS_INSTANCE}.pid"
+else
+	pidfile="${PDNS_SOCKETDIR}/pdns.pid"
+fi
+
+control_command="/usr/bin/pdns_control"
+control_command_args="${command_args}"
+
+depend() {
+	need net
+	use mysql postgresql
+}
+
+status() {
+	default_status || return
+	_ping || return 32
+}
+
+stop() {
+	default_stop || return
+	_ping || return 0
+
+	local sleep
+	for sleep in 0.1 0.2 0.3 0.4; do
+		sleep "${sleep}"
+		_ping || return 0
+	done
+	return 1
+}
+
+dump() {
+	einfo "Dumping ${name} variables"
+	${control_command} ${control_command_args} list
+}
+
+_ping() {
+	${control_command} ${control_command_args} rping >/dev/null 2>&1
+}
+
+ping() {
+	ebegin "Pinging ${name}"
+	_ping
+	eend $?
+}
+
+monitor() {
+	einfo "Starting ${name} in monitor mode"
+
+	echo ""
+	echo "************************************************"
+	echo "* Use \"QUIT\" or Ctrl-C to end monitoring mode! *"
+	echo "************************************************"
+	echo ""
+
+	${command} \
+		${command_args} \
+		${command_args_foreground} \
+		--guardian=no \
+		--control-console=yes \
+		--loglevel=9 \
+		--log-dns-details=yes \
+		--query-logging=yes
+	return 0
+}
