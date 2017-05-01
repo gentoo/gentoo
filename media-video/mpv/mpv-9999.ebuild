@@ -344,9 +344,7 @@ pkg_postinst() {
 		elog "or Mac OS Aqua. Consider enabling the 'opengl' USE flag."
 	fi
 
-	# bash-completion < 2.3-r1 already installs (mostly broken) mpv completion.
-	if use cli && ! has_version '<app-shells/bash-completion-2.3-r1' && \
-		! has_version 'app-shells/mpv-bash-completion'; then
+	if use cli && ! has_version 'app-shells/mpv-bash-completion'; then
 		elog "If you want to have command-line completion via bash-completion,"
 		elog "please install app-shells/mpv-bash-completion."
 	fi
