@@ -131,6 +131,7 @@ src_prepare() {
 	# https://phabricator.kde.org/D4690
 	sed -e "/add_subdirectory(remote)/ s/^/#DONT/" -i kioslave/CMakeLists.txt || die
 	rm -r kioslave/remote || die
+	find po -name "kio_remote.po" -delete || die
 }
 
 src_configure() {
