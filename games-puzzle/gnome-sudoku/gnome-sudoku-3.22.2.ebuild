@@ -9,7 +9,7 @@ inherit gnome2 vala
 DESCRIPTION="Test your logic skills in this number grid puzzle"
 HOMEPAGE="https://wiki.gnome.org/Apps/Sudoku"
 
-LICENSE="LGPL-2+"
+LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
