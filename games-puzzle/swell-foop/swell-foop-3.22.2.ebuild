@@ -7,7 +7,7 @@ inherit gnome2 vala
 DESCRIPTION="Clear the screen by removing groups of colored and shaped tiles"
 HOMEPAGE="https://wiki.gnome.org/Apps/Swell%20Foop"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
