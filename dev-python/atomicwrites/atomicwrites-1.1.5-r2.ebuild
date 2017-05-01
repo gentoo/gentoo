@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
-DESCRIPTION="Atomic file writes."
+DESCRIPTION="Atomic file writes"
 HOMEPAGE="https://github.com/untitaker/python-atomicwrites"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
@@ -15,7 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DOCS=( README.rst )
