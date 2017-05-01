@@ -6,7 +6,7 @@ inherit cmake-utils flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
 HOMEPAGE="https://sourceforge.net/projects/podofo/"
-SRC_URI="http://dev.gentoo.org/~zmedico/distfiles/${P}.tar.xz mirror://gentoo/${P}.tar.xz"
+SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PV}"
