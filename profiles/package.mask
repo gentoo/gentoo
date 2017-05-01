@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (01 May 2017)
+# Possible API incompatibilities, bug #617174.
+# http://aiohttp.readthedocs.io/en/latest/migration.html
+>=dev-python/aiohttp-2
+>=dev-python/yarl-0.10
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 May 2017)
 # Fixed conflicts with app-crypt/gpgme[cxx,qt5].
 # Please test and report to Gentoo Bug #611818
