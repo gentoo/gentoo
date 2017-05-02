@@ -1,0 +1,36 @@
+commit 0e75bb7dff48261f8754005586e3d1b22ecfc4d2
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Tue May 2 23:41:46 2017 +0200
+
+    kleopatra: Fix build with GCC 6.3.0
+    
+    Signed-off-by: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+
+diff --git a/kleopatra/utils/stl_util.h b/kleopatra/utils/stl_util.h
+index 35024d398f..c02188608e 100644
+--- a/kleopatra/utils/stl_util.h
++++ b/kleopatra/utils/stl_util.h
+@@ -347,7 +347,7 @@ namespace kdtools {
+     template <typename O, typename I, typename P>
+     O copy_if( const I & i, P p ) {
+         O o;
+-        copy_if( boost::begin( i ), boost::end( i ), std::back_inserter( o ), p );
++        kdtools::copy_if( boost::begin( i ), boost::end( i ), std::back_inserter( o ), p );
+         return o;
+     }
+ 
+@@ -385,12 +385,12 @@ namespace kdtools {
+ 
+     template <typename C>
+     bool none_of( const C & c ) {
+-        return none_of( boost::begin( c ), boost::end( c ) );
++        return kdtools::none_of( boost::begin( c ), boost::end( c ) );
+     }
+ 
+     template <typename C, typename P>
+     bool none_of( const C & c, P p ) {
+-        return none_of( boost::begin( c ), boost::end( c ), p );
++        return kdtools::none_of( boost::begin( c ), boost::end( c ), p );
+     }
+ 
+     template <typename C, typename B>
