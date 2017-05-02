@@ -47,6 +47,18 @@ _PYTHON_ALL_IMPLS=(
 )
 readonly _PYTHON_ALL_IMPLS
 
+# @ECLASS-VARIABLE: PYTHON_COMPAT_NO_STRICT
+# @INTERNAL
+# @DESCRIPTION:
+# Set to a non-empty value in order to make eclass tolerate (ignore)
+# unknown implementations in PYTHON_COMPAT.
+#
+# This is intended to be set by the user when using ebuilds that may
+# have unknown (newer) implementations in PYTHON_COMPAT. The assumption
+# is that the ebuilds are intended to be used within multiple contexts
+# which can involve revisions of this eclass that support a different
+# set of Python implementations.
+
 # @FUNCTION: _python_impl_supported
 # @USAGE: <impl>
 # @INTERNAL
@@ -79,6 +91,7 @@ _python_impl_supported() {
 			fi
 			;;
 		*)
+			[[ ${PYTHON_COMPAT_NO_STRICT} ]] && return 1
 			die "Invalid implementation in PYTHON_COMPAT: ${impl}"
 	esac
 }
