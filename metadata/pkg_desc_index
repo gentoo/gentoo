@@ -7281,7 +7281,7 @@ dev-python/astlib 0.8.0: Python astronomy modules for image and coordinate manip
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.5: Read/rewrite/write Python ASTs
 dev-python/astrodendro 0.2.0: Python package for computation of astronomical dendrograms
-dev-python/astroid 1.3.8 1.4.8 1.4.9: Abstract Syntax Tree for logilab packages
+dev-python/astroid 1.3.8 1.4.8 1.4.9 1.5.2: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
 dev-python/astroplan 0.2: Observation planning package for astronomers
