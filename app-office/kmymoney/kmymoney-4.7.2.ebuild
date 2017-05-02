@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	ofx? ( >=dev-libs/libofx-0.9.4 )
 "
 RDEPEND="${COMMON_DEPEND}
-	!=kde-apps/kdepimlibs-4.14.10_p2016*
+	!~kde-apps/kdepimlibs-4.14.10_p20160611
 	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
 	quotes? ( dev-perl/Finance-Quote )
 "
