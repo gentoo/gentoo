@@ -22,3 +22,5 @@ RDEPEND="${DEPEND}
 
 KMSAVELIBS="true"
 KMEXTRACTONLY="kleopatra/"
+
+PATCHES=( "${FILESDIR}/${P}-gcc-6.3.patch" )
