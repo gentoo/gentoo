@@ -13,14 +13,14 @@ MAJOR_V="$(get_version_component_range 1-2)"
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 	REPO="xen.git"
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=0
-	SECURITY_VER=25
+	UPSTREAM_VER=
+	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=9
 	# xen-tools's gentoo patches version which apply to this specific ebuild
@@ -28,7 +28,7 @@ else
 	# xen-tools ovmf's patches
 	OVMF_VER=2
 
-	SEABIOS_VER=1.8.2
+	SEABIOS_VER=1.10.0
 	# OVMF upstream 52a99493cce88a9d4ec8a02d7f1bd1a1001ce60d
 	OVMF_PV=20151110
 
@@ -144,10 +144,6 @@ pkg_setup() {
 
 	#bug 522642, disable compile tools/tests
 	export "CONFIG_TESTS=n"
-
-	if has_version dev-libs/libgcrypt:0; then
-		export "CONFIG_GCRYPT=y"
-	fi
 
 	if [[ -z ${XEN_TARGET_ARCH} ]] ; then
 		if use x86 && use amd64; then
@@ -320,13 +316,6 @@ src_prepare() {
 		sed -i -e "/x86_emulator/d" tools/tests/Makefile || die
 	fi
 
-	# use /var instead of /var/lib, consistat with previous ebuild
-	sed -i -e   "/XEN_LOCK_DIR=/s/\$localstatedir/\/var/g" \
-		m4/paths.m4 configure tools/configure || die
-	# use /run instead of /var/run
-	sed -i -e   "/XEN_RUN_DIR=/s/\$localstatedir//g" \
-		m4/paths.m4 configure tools/configure || die
-
 	# uncomment lines in xl.conf
 	sed -e 's:^#autoballoon=:autoballoon=:' \
 		-e 's:^#lockfile=:lockfile=:' \
@@ -343,6 +332,7 @@ src_configure() {
 	local myconf="--prefix=${PREFIX}/usr \
 		--libdir=${PREFIX}/usr/$(get_libdir) \
 		--libexecdir=${PREFIX}/usr/libexec \
+		--localstatedir=${EPREFIX}/var \
 		--disable-werror \
 		--disable-xen \
 		--enable-tools \
