@@ -5586,7 +5586,7 @@ dev-perl/Clone 0.380.0 0.390.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.220.0 2.240.0 2.260.0: Interface to Bzip2 compression library
-dev-perl/Config-Any 0.260.0 0.270.0 0.290.0 0.300.0: Load configuration from different file formats, transparently
+dev-perl/Config-Any 0.290.0 0.300.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
 dev-perl/Config-AutoConf 0.311.0 0.313.0 0.314.0: A module to implement some of AutoConf macros in pure perl
@@ -5873,7 +5873,7 @@ dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.270.0 0.280.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r1: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
-dev-perl/File-Next 1.120.0-r1 1.160.0: File::Next is an iterator-based module for finding files
+dev-perl/File-Next 1.160.0: File::Next is an iterator-based module for finding files
 dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
 dev-perl/File-Remove 1.520.0-r1 1.550.0 1.570.0: Remove files and directories
@@ -5923,7 +5923,7 @@ dev-perl/Gearman 2.3.2 2.4.2 2.4.3: Gearman distributed job system, client and w
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
 dev-perl/Gentoo-App-Pram 0.4.0: Readily merge Pull Requests from the Gentoo Github repository
-dev-perl/Gentoo-PerlMod-Version 0.8.0 0.8.1: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
+dev-perl/Gentoo-PerlMod-Version 0.8.1: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
 dev-perl/Geo-IP 1.450.0 1.500.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
@@ -6358,7 +6358,7 @@ dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
 dev-perl/OpenGL 0.670.400 0.700.0: Perl interface providing graphics display using OpenGL
-dev-perl/PAR 1.10.0 1.12.0 1.14.0-r1 1.15.0: Perl Archive Toolkit
+dev-perl/PAR 1.14.0-r1 1.15.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
