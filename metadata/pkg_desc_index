@@ -7281,7 +7281,7 @@ dev-python/astlib 0.8.0: Python astronomy modules for image and coordinate manip
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.5: Read/rewrite/write Python ASTs
 dev-python/astrodendro 0.2.0: Python package for computation of astronomical dendrograms
-dev-python/astroid 1.3.8 1.4.8: Abstract Syntax Tree for logilab packages
+dev-python/astroid 1.3.8 1.4.8 1.4.9: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
 dev-python/astroplan 0.2: Observation planning package for astronomers
@@ -7403,7 +7403,7 @@ dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution to
 dev-python/colander 1.0 1.2 1.3.1: A simple schema-based serialization and deserialization library
 dev-python/colorama 0.3.3 0.3.8: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/coloredlogs 3.1.4 5.0 6.1: Colored stream handler for the logging module
-dev-python/colorlog 2.6.0 2.6.1 2.7.0: Log formatting with colors
+dev-python/colorlog 2.7.0: Log formatting with colors
 dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.9: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.1 0.1.2: Common tools and data structures implemented in pure python
@@ -7864,7 +7864,7 @@ dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
 dev-python/locustio 0.7.3: A python utility for doing easy, distributed load testing of a web site
 dev-python/log4py 1.3-r1: A python logging module similar to log4j
-dev-python/logbook 0.9.1 0.10.0 0.12.3 0.12.5 1.0.0: A logging replacement for Python
+dev-python/logbook 0.9.1 1.0.0: A logging replacement for Python
 dev-python/logilab-common 1.2.2: Useful miscellaneous modules used by Logilab projects
 dev-python/logilab-constraint 0.5.0-r1: A finite domain constraints solver written in 100% pure Python
 dev-python/logutils 0.3.3: The logutils package provides a set of handlers for the Python standard
@@ -7902,7 +7902,7 @@ dev-python/microversion-parse 0.1.4: A simple parser for OpenStack microversion 
 dev-python/milk 0.5.1 0.5.3 0.6.1: Machine learning toolkit in Python
 dev-python/milksets 0.1.3-r1: Datasets in a common Pythonic interface to use with milk
 dev-python/mimeparse 0.1.4-r1 0.1.4-r2 1.5.2-r1 1.6.0: Basic functions for handling mime-types in python
-dev-python/mimerender 0.5.4 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
+dev-python/mimerender 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.1-r1 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 1.8 1.9.20151008 2.0.20161216: Python bindings for UPnP client library
@@ -7943,14 +7943,14 @@ dev-python/mysqlclient 1.3.10: Fork of MySQL-python
 dev-python/nagiosplugin 1.2.3 1.2.4: A class library for writing nagios-compatible plugins
 dev-python/naima 0.7.1 0.8-r1: Python package for gamma-ray astronomy
 dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced data
-dev-python/natsort 3.4.0 4.0.3 4.0.4: Natural sorting for Python
+dev-python/natsort 4.0.4: Natural sorting for Python
 dev-python/nautilus-python 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/nbconvert 4.1.0 4.2.0 4.3.0: Converting Jupyter Notebooks
 dev-python/nbdime 0.1.2 0.2.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 4.0.1 4.1.0 4.2.0 4.3.0: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.2.8 0.2.13: Jupyter Notebook Tools for Sphinx
 dev-python/ndg-httpsclient 0.4.0 0.4.2: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
-dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2 0.1.5 0.1.7 0.1.9 0.1.11 0.1.12 0.1.13: Python client for Neovim
+dev-python/neovim-python-client 0.1.9 0.1.13: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.8-r2 0.10.4 0.10.5: Portable network interface information
@@ -8237,7 +8237,7 @@ dev-python/pyjade 4.0.0: Jade syntax adapter for Django, Jinja2 and Mako templat
 dev-python/pyjwt 1.3.0 1.4.0: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1: A Python implementation of the actor model
-dev-python/pykwalify 1.5.0 1.5.2 9999: Python lib/cli for JSON/YAML schema validation
+dev-python/pykwalify 1.5.2 9999: Python lib/cli for JSON/YAML schema validation
 dev-python/pylast 1.6.0 1.7.0: Python interface to last.fm and other api-compatible websites
 dev-python/pyldap 2.4.28: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
@@ -8344,7 +8344,7 @@ dev-python/pytest-django 2.9.1: A Django plugin for py.test
 dev-python/pytest-fixture-config 1.2.2: Virtualenv fixture for py.test
 dev-python/pytest-html 1.10.1 1.14.2: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
-dev-python/pytest-localserver 0.3.4 0.3.5 0.3.6 0.3.7: Py.test plugin to test server connections locally
+dev-python/pytest-localserver 0.3.7: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.3.0: A plugin for pytest that provides access to test session metadata
 dev-python/pytest-mock 1.2 1.5.0 1.6.0: Thin-wrapper around the mock package for easier use with py.test
 dev-python/pytest-mpl 0.5: pytest plugin to faciliate image comparison for matplotlib figures
@@ -8474,7 +8474,7 @@ dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment f
 dev-python/pythonmagick 0.9.14: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2014.3.5 2016.1 2016.2.6 9999: A collection of tools missing from the Python standard library
+dev-python/pytools 2014.3.5 2016.2.6 9999: A collection of tools missing from the Python standard library
 dev-python/pytrie 0.2 0.3: A pure Python implementation of the trie data structure.
 dev-python/pytz 2015.6 2016.3 2016.7 2016.10 2017.2: World timezone definitions for Python
 dev-python/pyudev 0.20.0 0.21.0: Python binding to libudev
@@ -8814,14 +8814,14 @@ dev-python/vulture 0.10: find unused classes, functions and variables in your co
 dev-python/w3lib 1.11.0 1.13.0: Python library of web-related functions
 dev-python/waitress 0.8.9 0.8.10-r2 1.0.1: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
-dev-python/watchdog 0.8.1 0.8.3 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor file system events
+dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.8 0.9: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.7 0.1.7-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weakrefmethod 1.0.3: Backport of WeakMethod from Python 3.4 to Python 2.6+
 dev-python/weasyprint 0.29: Visual rendering engine for HTML and CSS that can export to PDF
-dev-python/webassets 0.10.1 0.12: Asset management for Python web development
+dev-python/webassets 0.12: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
-dev-python/webencodings 0.4 0.5: Character encoding aliases for legacy web content
+dev-python/webencodings 0.5: Character encoding aliases for legacy web content
 dev-python/weberror 0.13.1: Web Error handling and exception catching
 dev-python/webhelpers 1.3-r1: Web Helpers
 dev-python/webob 1.4 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 1.6.3: WSGI request and response object
@@ -8846,7 +8846,7 @@ dev-python/wsaccel 0.6.2: Accelerator for ws4py, AutobahnPython and tornado
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
-dev-python/wstools 0.4.3 0.4.4 0.4.5: WSDL parsing services package for Web Services for Python
+dev-python/wstools 0.4.3 0.4.5: WSDL parsing services package for Web Services for Python
 dev-python/wtf-peewee 0.2.6: WTForms integration for peewee models
 dev-python/wtforms 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
