@@ -106,7 +106,7 @@ COMMONDEPEND="
 	yahoo? ( media-libs/jasper )
 "
 RDEPEND="${COMMONDEPEND}
-	!=kde-apps/kdepimlibs-4.14.10_p2016*
+	!~kde-apps/kdepimlibs-4.14.10_p20160611
 	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
 	jingle? ( media-libs/speex )
 	latex? (
