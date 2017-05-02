@@ -9,7 +9,7 @@ inherit eutils fdo-mime flag-o-matic java-pkg-opt-2 linux-info multilib pax-util
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
-SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}a.tar.bz2
+SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.32-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
