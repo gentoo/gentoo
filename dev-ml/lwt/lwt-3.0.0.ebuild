@@ -23,6 +23,8 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	!<www-servers/ocsigen-1.1"
+DEPEND="${DEPEND}
+	dev-ml/cppo"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1-with-linking-exception"
