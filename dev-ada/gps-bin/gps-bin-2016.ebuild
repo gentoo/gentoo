@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}
 	media-libs/fontconfig
 	media-libs/freetype
 	sys-devel/llvm
+	sys-devel/clang
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+
