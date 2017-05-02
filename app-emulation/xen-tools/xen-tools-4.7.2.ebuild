@@ -185,7 +185,7 @@ src_prepare() {
 		EPATCH_SUFFIX="patch"
 		EPATCH_FORCE="yes"
 
-		source "${WORKDIR}"/patches-security/${PV}.conf
+		source "${WORKDIR}"/patches-security/${PV}.conf || die
 
 		for i in ${XEN_SECURITY_MAIN}; do
 			epatch "${WORKDIR}"/patches-security/xen/$i
@@ -215,7 +215,7 @@ src_prepare() {
 	# Gentoo's patchset
 	if [[ -n ${GENTOO_VER} && -n ${GENTOO_GPV} ]]; then
 		einfo "Try to apply Gentoo specific patch set"
-		source "${FILESDIR}"/gentoo-patches.conf
+		source "${FILESDIR}"/gentoo-patches.conf || die
 		_gpv=_gpv_${PN/-/_}_${PV//./}_${GENTOO_GPV}
 		for i in ${!_gpv}; do
 			EPATCH_SUFFIX="patch" \
