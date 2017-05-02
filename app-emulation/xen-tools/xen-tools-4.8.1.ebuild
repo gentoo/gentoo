@@ -316,13 +316,6 @@ src_prepare() {
 		sed -i -e "/x86_emulator/d" tools/tests/Makefile || die
 	fi
 
-	# use /var instead of /var/lib, consistat with previous ebuild
-	sed -i -e   "/XEN_LOCK_DIR=/s/\$localstatedir/\/var/g" \
-		m4/paths.m4 configure tools/configure || die
-	# use /run instead of /var/run
-	sed -i -e   "/XEN_RUN_DIR=/s/\$localstatedir//g" \
-		m4/paths.m4 configure tools/configure || die
-
 	# uncomment lines in xl.conf
 	sed -e 's:^#autoballoon=:autoballoon=:' \
 		-e 's:^#lockfile=:lockfile=:' \
@@ -339,6 +332,7 @@ src_configure() {
 	local myconf="--prefix=${PREFIX}/usr \
 		--libdir=${PREFIX}/usr/$(get_libdir) \
 		--libexecdir=${PREFIX}/usr/libexec \
+		--localstatedir=${EPREFIX}/var \
 		--disable-werror \
 		--disable-xen \
 		--enable-tools \
