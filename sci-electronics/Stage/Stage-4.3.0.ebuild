@@ -36,3 +36,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+PATCHES=( "${FILESDIR}/libdir.patch" )
