@@ -1,17 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit user
 
 DESCRIPTION="Mails anomalies in the system logfiles to the administrator"
 HOMEPAGE="http://packages.debian.org/sid/logcheck"
-SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND=""
@@ -29,6 +29,12 @@ pkg_setup() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+
+	# Do not install /var/lock, bug #449968 . Use rmdir to make sure
+	# the directories removed are empty.
+	rmdir "${D}/var/lock/logcheck" || die
+	rmdir "${D}/var/lock" || die
+
 	keepdir /var/lib/logcheck
 	dodoc AUTHORS CHANGES CREDITS TODO docs/README.*
 	doman docs/logtail.8 docs/logtail2.8
