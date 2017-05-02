@@ -37,7 +37,8 @@ DEPEND="
 S="${WORKDIR}/${P}/src"
 
 python_prepare_all() {
-	# Test fails in ebuild env, works standalone.
+	# Test fails unless portage can execute /usr/bin/dumpcap
+	# https://github.com/KimiNewt/pyshark/issues/197
 	rm "${WORKDIR}/${P}/tests/capture/test_inmem_capture.py" || die
 	distutils-r1_python_prepare_all
 }
