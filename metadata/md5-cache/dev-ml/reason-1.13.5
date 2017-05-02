@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/reason-parser:= dev-ml/merlin-extend:= dev-ml/result:= dev-ml/topkg:= dev-ml/ocaml-migrate-parsetree:= dev-ml/utop:= dev-ml/findlib dev-ml/ocamlbuild dev-ml/opam
+DESCRIPTION=Meta Language Toolchain
+EAPI=6
+HOMEPAGE=https://github.com/facebook/reason
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/reason-parser:= dev-ml/merlin-extend:= dev-ml/result:= dev-ml/topkg:= dev-ml/ocaml-migrate-parsetree:= dev-ml/utop:=
+SLOT=0/1.13.5
+SRC_URI=https://github.com/facebook/reason/archive/1.13.5.tar.gz -> reason-1.13.5.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=cdd764a8fa9db1d95a3fa369bf7b7509
