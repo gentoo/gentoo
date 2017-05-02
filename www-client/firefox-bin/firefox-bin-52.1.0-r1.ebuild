@@ -24,7 +24,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
-inherit multilib pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
+inherit eutils pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
@@ -58,8 +58,8 @@ RDEPEND="dev-libs/atk
 	x11-libs/libXt
 	>=x11-libs/pango-1.22.0
 	virtual/freedesktop-icon-theme
-	pulseaudio? ( || ( media-sound/pulseaudio
-		>=media-sound/apulse-0.1.9 ) )
+	pulseaudio? ( !<media-sound/apulse-0.1.9
+		|| ( media-sound/pulseaudio media-sound/apulse ) )
 	ffmpeg? ( media-video/ffmpeg )
 	selinux? ( sec-policy/selinux-mozilla )
 "
