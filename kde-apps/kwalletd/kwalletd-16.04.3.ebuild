@@ -10,15 +10,18 @@ DESCRIPTION="KDE Password Server"
 KEYWORDS="amd64 ~arm x86"
 IUSE="debug gpg"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/libgcrypt:0=
 	gpg? (
 		app-crypt/gpgme
 		|| ( $(add_kdeapps_dep gpgmepp) $(add_kdeapps_dep kdepimlibs) )
 	)
 "
-RDEPEND="${DEPEND}
-	!=kde-apps/kdepimlibs-4.14.10_p2016*
+DEPEND="${COMMON_DEPEND}
+	gpg? ( dev-libs/boost )
+"
+RDEPEND="${COMMON_DEPEND}
+	!~kde-apps/kdepimlibs-4.14.10_p20160611
 	!>kde-apps/kdepimlibs-4.14.11_pre20160211-r3
 "
 
