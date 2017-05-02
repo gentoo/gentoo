@@ -22,7 +22,7 @@ fi
 DESCRIPTION="The Stage Robot Simulator"
 HOMEPAGE="http://rtv.github.io/Stage/"
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/4.3"
 IUSE=""
 
 RDEPEND="
