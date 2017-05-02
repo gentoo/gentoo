@@ -40,30 +40,6 @@ dev-python/protorpc
 >=dev-python/aiohttp-2
 >=dev-python/yarl-0.10
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 May 2017)
-# Fixed conflicts with app-crypt/gpgme[cxx,qt5].
-# Please test and report to Gentoo Bug #611818
-~kde-apps/akregator-4.4.2017.04
-~kde-apps/blogilo-4.4.2017.04
-~kde-apps/kabcclient-4.4.2017.04
-~kde-apps/kaddressbook-4.4.2017.04
-~kde-apps/kalarm-4.4.2017.04
-~kde-apps/kdepim-kresources-4.4.2017.04
-~kde-apps/kdepim-meta-4.4.2017.04
-~kde-apps/kdepim-wizards-4.4.2017.04
-~kde-apps/kjots-4.4.2017.04
-~kde-apps/kleopatra-4.4.2017.04
-~kde-apps/kmail-4.4.2017.04
-~kde-apps/knode-4.4.2017.04
-~kde-apps/knotes-4.4.2017.04
-~kde-apps/konsolekalendar-4.4.2017.04
-~kde-apps/kontact-4.4.2017.04
-~kde-apps/korganizer-4.4.2017.04
-~kde-apps/ktimetracker-4.4.2017.04
-~kde-apps/libkdepim-4.4.2017.04
-~kde-apps/libkleo-4.4.2017.04
-~kde-apps/libkpgp-4.4.2017.04
-
 # Alice Ferrazzi <alicef@gentoo.org> (29 Apr 2017)
 # CVE-2016-10229 security issue. Masked until upstream add the patch.
 # Bug #615480
