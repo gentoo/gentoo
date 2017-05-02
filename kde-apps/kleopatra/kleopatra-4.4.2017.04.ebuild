@@ -34,6 +34,8 @@ KMEXTRACTONLY="
 "
 KMLOADLIBS="libkleo"
 
+PATCHES=( "${FILESDIR}/${P}-gcc-6.3.patch" )
+
 src_unpack() {
 	if use handbook; then
 		KMEXTRA="
