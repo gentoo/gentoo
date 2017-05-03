@@ -45,6 +45,8 @@ media-libs/opensubdiv opencl
 # Ian Stakenvicius (25 Jan 2017)
 # rust on mozilla packages is experimental
 www-client/firefox rust
+www-client/seamonkey rust
+mail-client/thunderbird rust
 
 # Lars Wendler <polynomial-c@gentoo.org> (19 Jan 2017)
 # Masked until system heimdal can finally be used with AD DC
