@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -61,7 +61,7 @@ CDEPEND="!<sys-cluster/mpich2-1.4_rc2
 	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
 	icu? ( dev-libs/icu:= )
 	id3tag? ( media-libs/libid3tag )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	lame? ( network? ( media-sound/lame ) )
 	libmpdclient? ( media-libs/libmpdclient )
 	libsamplerate? ( media-libs/libsamplerate )
