@@ -30,8 +30,8 @@ SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
 	dvd +egl encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
-	selinux test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
-	+xscreensaver +xv zsh-completion"
+	selinux test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X +xv
+	zsh-completion"
 IUSE+=" cpu_flags_x86_sse4_1"
 
 REQUIRED_USE="
@@ -50,8 +50,6 @@ REQUIRED_USE="
 	vaapi? ( || ( gbm X wayland ) )
 	vdpau? ( X )
 	wayland? ( egl )
-	xinerama? ( X )
-	xscreensaver? ( X )
 	xv? ( X )
 	zsh-completion? ( cli )
 	${PYTHON_REQUIRED_USE}
@@ -108,10 +106,10 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-libs/libXScrnSaver
+		x11-libs/libXinerama
 		>=x11-libs/libXrandr-1.2.0
 		opengl? ( x11-libs/libXdamage )
-		xinerama? ( x11-libs/libXinerama )
-		xscreensaver? ( x11-libs/libXScrnSaver )
 		xv? ( x11-libs/libXv )
 	)
 "
@@ -235,11 +233,7 @@ src_configure() {
 		$(use_enable gbm)
 		$(use_enable wayland)
 		$(use_enable X x11)
-		$(use_enable xscreensaver xss)
-		$(use_enable X xext)
 		$(use_enable xv)
-		$(use_enable xinerama)
-		$(use_enable X xrandr)
 		$(usex opengl "$(use_enable aqua gl-cocoa)" '--disable-gl-cocoa')
 		$(usex opengl "$(use_enable X gl-x11)" '--disable-gl-x11')
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
