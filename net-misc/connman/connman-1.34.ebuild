@@ -55,7 +55,6 @@ src_configure() {
 		--enable-client \
 		--enable-datafiles \
 		--enable-loopback=builtin \
-		--enable-iwd \
 		$(use_enable examples test) \
 		$(use_enable ethernet ethernet builtin) \
 		$(use_enable wifi wifi builtin) \
@@ -72,6 +71,7 @@ src_configure() {
 		$(use_enable tools) \
 		--with-firewall=$(usex iptables "iptables" "nftables" ) \
 		--disable-iospm \
+		--disable-iwd \
 		--disable-hh2serial-gps
 }
 
