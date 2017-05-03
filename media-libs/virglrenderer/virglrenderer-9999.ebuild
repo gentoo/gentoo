@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit autotools
+inherit autotools eutils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/virglrenderer"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-libs/check-0.9.4 )"
 
 src_prepare() {
+	default
 	[[ -e configure ]] || eautoreconf
 }
 
