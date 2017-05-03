@@ -8,6 +8,8 @@ PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
+FIRMWARE_ABI_VERSION="2.9.0-r50"
+
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
 
@@ -150,12 +152,13 @@ SOFTMMU_TOOLS_DEPEND="
 	xfs? ( sys-fs/xfsprogs[static-libs(+)] )"
 
 X86_FIRMWARE_DEPEND="
-	>=sys-firmware/ipxe-1.0.0_p20130624
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.10.1
+		~sys-firmware/ipxe-1.0.0_p20160620
+		~sys-firmware/seabios-1.10.1[binary]
 		~sys-firmware/sgabios-0.1_pre8
 	)
 	!pin-upstream-blobs? (
+		sys-firmware/ipxe
 		sys-firmware/seabios
 		sys-firmware/sgabios
 	)"
@@ -722,15 +725,38 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-pkg_postinst() {
-	DISABLE_AUTOFORMATTING=true
-	readme.gentoo_print_elog
+firmware_abi_change() {
+	local pv
+	for pv in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least ${FIRMWARE_ABI_VERSION} ${pv}; then
+			return 0
+		fi
+	done
+	return 1
+}
 
+pkg_postinst() {
 	if [[ -n ${softmmu_targets} ]] && use kernel_linux; then
 		udev_reload
 	fi
 
 	fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
+
+	DISABLE_AUTOFORMATTING=true
+	readme.gentoo_print_elog
+
+	if use pin-upstream-blobs && firmware_abi_change; then
+		ewarn "This version of qemu pins new versions of firmware blobs:"
+		ewarn "	$(best_version sys-firmware/ipxe)"
+		ewarn "	$(best_version sys-firmware/seabios)"
+		ewarn "	$(best_version sys-firmware/sgabios)"
+		ewarn "This might break resume of hibernated guests (started with a different"
+		ewarn "firmware version) and live migration to/from qemu versions with different"
+		ewarn "firmware. Please (cold) restart all running guests. For functional"
+		ewarn "guest migration ensure that all"
+		ewarn "hosts run at least"
+		ewarn "	app-emulation/qemu-${FIRMWARE_ABI_VERSION}."
+	fi
 }
 
 pkg_info() {
