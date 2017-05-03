@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-RDEPEND="dev-python/regex[${PYTHON_USEDEP}]"
+RDEPEND="$(python_gen_cond_dep \
+	'dev-python/regex[${PYTHON_USEDEP}]' python2_7 'python3*' pypy)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
