@@ -65,14 +65,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
 # when available rather than always using the extranl library.
-#
-# To configure and compile qemu user targets or tools alone the following
-# dependencies are not strictly necessary:
-#   alsa? ( >=media-libs/alsa-lib-1.0.13 )
-#   fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
-#   pulseaudio? ( media-sound/pulseaudio )
-#   seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
-# but these are so few it is not worth the effort to separate this list.
 ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
@@ -161,12 +153,10 @@ X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
 		~sys-firmware/seabios-1.10.1
 		~sys-firmware/sgabios-0.1_pre8
-		~sys-firmware/vgabios-0.7a
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/seabios
 		sys-firmware/sgabios
-		sys-firmware/vgabios
 	)"
 
 CDEPEND="
@@ -694,13 +684,15 @@ src_install() {
 		rm "${ED}/usr/share/qemu/vgabios-cirrus.bin"
 		rm "${ED}/usr/share/qemu/vgabios-qxl.bin"
 		rm "${ED}/usr/share/qemu/vgabios-stdvga.bin"
+		rm "${ED}/usr/share/qemu/vgabios-virtio.bin"
 		rm "${ED}/usr/share/qemu/vgabios-vmware.bin"
 		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
-			dosym ../vgabios/vgabios.bin /usr/share/qemu/vgabios.bin
-			dosym ../vgabios/vgabios-cirrus.bin /usr/share/qemu/vgabios-cirrus.bin
-			dosym ../vgabios/vgabios-qxl.bin /usr/share/qemu/vgabios-qxl.bin
-			dosym ../vgabios/vgabios-stdvga.bin /usr/share/qemu/vgabios-stdvga.bin
-			dosym ../vgabios/vgabios-vmware.bin /usr/share/qemu/vgabios-vmware.bin
+			dosym ../seavgabios/vgabios-isavga.bin /usr/share/qemu/vgabios.bin
+			dosym ../seavgabios/vgabios-cirrus.bin /usr/share/qemu/vgabios-cirrus.bin
+			dosym ../seavgabios/vgabios-qxl.bin /usr/share/qemu/vgabios-qxl.bin
+			dosym ../seavgabios/vgabios-stdvga.bin /usr/share/qemu/vgabios-stdvga.bin
+			dosym ../seavgabios/vgabios-virtio.bin /usr/share/qemu/vgabios-virtio.bin
+			dosym ../seavgabios/vgabios-vmware.bin /usr/share/qemu/vgabios-vmware.bin
 		fi
 
 		# Remove sgabios since we're using the sgabios packaged one
@@ -746,5 +738,4 @@ pkg_info() {
 	else
 		echo "    USE=''"
 	fi
-	echo "  $(best_version sys-firmware/vgabios)"
 }
