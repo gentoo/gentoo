@@ -16,7 +16,10 @@ IUSE="debug selinux systemd"
 RESTRICT="test"
 
 CDEPEND="virtual/udev
-	systemd? ( >=sys-apps/systemd-199 )
+	systemd? (
+		>=sys-apps/systemd-199
+		virtual/pkgconfig
+	)
 	"
 RDEPEND="${CDEPEND}
 	app-arch/cpio
@@ -95,23 +98,7 @@ src_prepare() {
 	sed -r -e "s|^(udevdir=).*$|\1${udevdir}|" \
 			-i "${S}/dracut.conf.d/gentoo.conf.example" || die
 
-	if use systemd; then
-		local systemdutildir="$(systemd_get_utildir)"
-		local systemdsystemunitdir="$(systemd_get_systemunitdir)"
-		local systemdsystemconfdir="$("$(tc-getPKG_CONFIG)" systemd \
-			--variable=systemdsystemconfdir)"
-		[[ ${systemdsystemconfdir} ]] \
-			|| systemdsystemconfdir=/etc/systemd/system
-		einfo "Setting systemdutildir to ${systemdutildir} and ..."
-		sed -e "5asystemdutildir=\"${systemdutildir}\"" \
-			-i "${S}/dracut.conf.d/gentoo.conf.example" || die
-		einfo "Setting systemdsystemunitdir to ${systemdsystemunitdir} and..."
-		sed -e "6asystemdsystemunitdir=\"${systemdsystemunitdir}\"" \
-			-i "${S}/dracut.conf.d/gentoo.conf.example" || die
-		einfo "Setting systemdsystemconfdir to ${systemdsystemconfdir}..."
-		sed -e "7asystemdsystemconfdir=\"${systemdsystemconfdir}\"" \
-			-i "${S}/dracut.conf.d/gentoo.conf.example" || die
-	else
+	if ! use systemd; then
 		local systemdutildir="/lib/systemd"
 		einfo "Setting systemdutildir for standalone udev to" \
 			"${systemdutildir}..."
