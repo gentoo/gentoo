@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 May 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-60
+
 # Michał Górny <mgorny@gentoo.org> (01 May 2017)
 # Used only by old (removed) versions of dev-python/google-apitools.
 # Last release in 2015. Removal in 30 days.
@@ -220,11 +225,6 @@ dev-python/edpwd
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (20 Mar 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-59
 
 # Kent Fredric <kentnl@gentoo.org> (18 Mar 2017)
 # ExtUtils::MakeMaker 7.18+ Block
