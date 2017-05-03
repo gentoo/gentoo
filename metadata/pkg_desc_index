@@ -7321,7 +7321,7 @@ dev-python/bcolz 1.1.0 1.1.2: Provides columnar and compressed data containers
 dev-python/bcrypt 3.1.1 3.1.2: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
-dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.5.1 4.5.3: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.5.1 4.5.3: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5 1.2.5-r1: behaviour-driven development, Python style
 dev-python/betamax 0.8.0: python-requests HTTP exchanges recorder
 dev-python/bibtexparser 0.6.2: A BibTeX parser written in python
@@ -7427,7 +7427,7 @@ dev-python/croniter 0.3.11 0.3.15: Python module to provide iteration for dateti
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
 dev-python/cryptography 1.3.4 1.7.1 1.7.2 1.8.1: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.3.4 1.7.1 1.7.2 1.8.1: Test vectors for the cryptography package
-dev-python/cssselect 0.9.1 0.9.2 1.0.0 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
+dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1: Cursive implements OpenStack-specific validation of digital signatures.
@@ -7871,7 +7871,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.6.0 3.6.4-r1 3.7.1 3.7.3: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.6.0 3.6.4-r1 3.7.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.9.0: LZ4 Bindings for Python
 dev-python/m2crypto 0.24.0 0.25.1-r2: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2r 0.1.5: Markdown to reStructuredText converter
@@ -7882,9 +7882,9 @@ dev-python/mamba 0.8.6: ... testing tool ... Born under the banner of Behavior D
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.4: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.8.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.1 2.6.3 2.6.4 2.6.5 2.6.6 2.6.8: Python implementation of the markdown markup language
+dev-python/markdown 2.6.1 2.6.5 2.6.8: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.0: Python Markdown language reimplementation
-dev-python/markups 0.2.4-r1 1.0.1 2.0.0: A wrapper around various text markups
+dev-python/markups 1.0.1 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/matplotlib 1.4.3 1.5.0 1.5.1 1.5.3-r1 9999: Pure python plotting library with matlab like syntax
 dev-python/matplotlib2tikz 0.6.3: Convert matplotlib figures into TikZ/PGFPlots
@@ -8297,7 +8297,7 @@ dev-python/pypy3 5.5.0_alpha 5.7.1-r1 9999: A fast, compliant alternative implem
 dev-python/pypy3-bin 5.5.0_alpha 5.7.1-r1: A fast, compliant alternative implementation of Python 3.3 (binary package)
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.10.0: a pure-python graphics and GUI library built on PyQt/PySide and numpy
-dev-python/pyquery 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
+dev-python/pyquery 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.7: A small open source Python web framework
 dev-python/pyrax 1.9.7: Python language bindings for OpenStack Clouds
@@ -8756,16 +8756,16 @@ dev-python/tweepy 2.3 3.5.0: A Python library for accessing the Twitter API
 dev-python/twilio 3.6.9: Helper library for the Twilio API
 dev-python/twill 0.9-r1: Simple scripting language for web browsing with Python API
 dev-python/twisted 16.2.0 16.3.2 16.4.1 16.6.0-r1 17.1.0: An asynchronous networking framework written in Python
-dev-python/twisted-conch 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted SSHv2 implementation
-dev-python/twisted-core 13.0.0-r3 13.2.0 15.1.0 15.2.1: An asynchronous networking framework written in Python
-dev-python/twisted-lore 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted documentation system
-dev-python/twisted-mail 13.0.0-r1 13.2.0 15.1.0 15.2.1: A Twisted Mail library, server and client
-dev-python/twisted-names 13.0.0-r1 13.2.0 15.1.0 15.2.1: A Twisted DNS implementation
-dev-python/twisted-news 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted News is an NNTP server and programming library
-dev-python/twisted-pair 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted low-level networking
-dev-python/twisted-runner 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted Runner is a process management library and inetd replacement
-dev-python/twisted-web 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted web server, programmable in Python
-dev-python/twisted-words 13.0.0-r1 13.2.0 15.1.0 15.2.1: Twisted Words contains Instant Messaging implementations
+dev-python/twisted-conch 13.2.0 15.2.1: Twisted SSHv2 implementation
+dev-python/twisted-core 13.2.0 15.2.1: An asynchronous networking framework written in Python
+dev-python/twisted-lore 13.2.0 15.2.1: Twisted documentation system
+dev-python/twisted-mail 13.2.0 15.2.1: A Twisted Mail library, server and client
+dev-python/twisted-names 13.2.0 15.2.1: A Twisted DNS implementation
+dev-python/twisted-news 13.2.0 15.2.1: Twisted News is an NNTP server and programming library
+dev-python/twisted-pair 13.2.0 15.2.1: Twisted low-level networking
+dev-python/twisted-runner 13.2.0 15.2.1: Twisted Runner is a process management library and inetd replacement
+dev-python/twisted-web 13.2.0 15.2.1: Twisted web server, programmable in Python
+dev-python/twisted-words 13.2.0 15.2.1: Twisted Words contains Instant Messaging implementations
 dev-python/twitter 1.17.1: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.2.0 3.3.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
@@ -8813,7 +8813,7 @@ dev-python/vobject 0.9.3: Python package for parsing and generating vCard and vC
 dev-python/voluptuous 0.9.3: A Python data validation library.
 dev-python/vulture 0.10: find unused classes, functions and variables in your code
 dev-python/w3lib 1.13.0: Python library of web-related functions
-dev-python/waitress 0.8.9 0.8.10-r2 1.0.1: A pure-Python WSGI server
+dev-python/waitress 1.0.1: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.8 0.9: Framework for plotting astronomical and geospatial data
@@ -8825,11 +8825,11 @@ dev-python/webcolors 1.5: Color names and value formats defined by the HTML and 
 dev-python/webencodings 0.5: Character encoding aliases for legacy web content
 dev-python/weberror 0.13.1: Web Error handling and exception catching
 dev-python/webhelpers 1.3-r1: Web Helpers
-dev-python/webob 1.4 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 1.6.3: WSGI request and response object
+dev-python/webob 1.4 1.6.3: WSGI request and response object
 dev-python/webpy 0.37-r1 0.38: A small and simple web framework for Python
 dev-python/websocket-client 0.37.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0: WebSockets support for any application/server
-dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18 2.0.21: Helper to test WSGI applications
+dev-python/webtest 2.0.16 2.0.21: Helper to test WSGI applications
 dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.11.11 0.11.15: Collection of various utilities for WSGI applications
@@ -13214,7 +13214,7 @@ media-libs/vamp-plugin-sdk 2.6-r1 2.7.1: Audio processing plugin system for plug
 media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.11.0: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/vips 7.38.5-r1: VIPS Image Processing Library
-media-libs/virglrenderer 0.2.0 0.5.0 9999: library used implement a virtual 3D GPU used by qemu
+media-libs/virglrenderer 0.2.0 0.6.0 9999: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7: Volume rendering library
