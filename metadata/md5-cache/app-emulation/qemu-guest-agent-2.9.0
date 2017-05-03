@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=>=dev-libs/glib-2.22 !<app-emulation/qemu-1.1.1-r1 !<sys-apps/sysvinit-2.88-r5 || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=QEMU Guest Agent (qemu-ga) for use when running inside a VM
+EAPI=6
+HOMEPAGE=http://wiki.qemu.org/Features/QAPI/GuestAgent
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2 BSD-2
+RDEPEND=>=dev-libs/glib-2.22 !<app-emulation/qemu-1.1.1-r1 !<sys-apps/sysvinit-2.88-r5
+SLOT=0
+SRC_URI=http://wiki.qemu.org/download/qemu-2.9.0.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	c11fc374357e6ad9ddfe2e9f931e4d29	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=353649f9dbbb969358fbef78e116f632
