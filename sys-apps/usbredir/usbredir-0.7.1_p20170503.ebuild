@@ -40,5 +40,5 @@ src_install() {
 	prune_libtool_files
 
 	# noinst_PROGRAMS
-	dobin usbredirtestclient/.libs/usbredirtestclient
+	dobin usbredirtestclient/usbredirtestclient
 }
