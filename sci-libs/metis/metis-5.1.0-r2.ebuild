@@ -37,7 +37,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DGKLIB_PATH="${S}"/GKlib
-		-DSHARED=TRUE
+		-DSHARED="$(usex static-libs no yes)"
 		-DOPENMP="$(usex openmp)"
 	)
 	cmake-utils_src_configure
