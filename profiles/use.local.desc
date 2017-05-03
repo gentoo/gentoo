@@ -6202,7 +6202,9 @@ net-misc/chrony:pps - Support for the Linux Pulse Per Second (PPS) interface
 net-misc/chrony:refclock - Support for reference clocks
 net-misc/chrony:rtc - Support for the Linux Real Time Clock interface
 net-misc/connman:ethernet - Enable ethernet support.
+net-misc/connman:iptables - Use net-firewall/iptables as firewall.
 net-misc/connman:l2tp - Use net-dialup/xl2tpd for L2TP VPN support.
+net-misc/connman:nftables - Use net-firewall/nftables as firewall.
 net-misc/connman:ofono - Use net-misc/ofono for telephony support.
 net-misc/connman:openconnect - Use net-vpn/openconnect for VPN support.
 net-misc/connman:openvpn - Use net-vpn/openvpn for openvpn support.
