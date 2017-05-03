@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+MOZ_ESR=1
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 # Missing when bumped : be
@@ -23,7 +24,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
-inherit eutils pax-utils fdo-mime gnome2-utils mozlinguas-v2
+inherit eutils pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
@@ -135,10 +136,11 @@ src_install() {
 
 	# Create /usr/bin/firefox-bin
 	dodir /usr/bin/
+	local apulselib=$(usex pulseaudio "/usr/$(get_libdir)/apulse:" "")
 	cat <<-EOF >"${ED}"usr/bin/${PN}
 	#!/bin/sh
 	unset LD_PRELOAD
-	LD_LIBRARY_PATH="/usr/$(get_libdir)/apulse:/opt/firefox/" \\
+	LD_LIBRARY_PATH="${apulselib}/opt/firefox/" \\
 	GTK_PATH=/usr/lib/gtk-3.0/ \\
 	exec /opt/${MOZ_PN}/${MOZ_PN} "\$@"
 	EOF
@@ -169,7 +171,7 @@ pkg_postinst() {
 		einfo
 	fi
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
-	use pulseaudio || ewarn "USE=-pulseaudio : audio will not play without apulse or pulseaudio installed"
+	use pulseaudio || ewarn "USE=-pulseaudio : audio will not play without pulseaudio installed"
 
 	# Update mimedb for the new .desktop file
 	fdo-mime_desktop_database_update
