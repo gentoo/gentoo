@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 	>=x11-misc/util-macros-1.8
 	test? ( >=dev-libs/check-0.9.4 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.0-libdrm.patch
+)
+
 src_prepare() {
 	default
 	[[ -e configure ]] || eautoreconf
