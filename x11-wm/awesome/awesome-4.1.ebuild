@@ -56,7 +56,6 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DPREFIX="${EPREFIX}"/usr
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DWITH_DBUS=$(usex dbus)
 		-DWITH_GENERATE_DOC=$(usex doc $(usex doc) n)
