@@ -154,12 +154,12 @@ SOFTMMU_TOOLS_DEPEND="
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
 		~sys-firmware/ipxe-1.0.0_p20160620
-		~sys-firmware/seabios-1.10.1[binary]
+		~sys-firmware/seabios-1.10.1[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre8
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/ipxe
-		sys-firmware/seabios
+		sys-firmware/seabios[seavgabios]
 		sys-firmware/sgabios
 	)"
 
