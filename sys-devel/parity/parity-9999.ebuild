@@ -47,16 +47,17 @@ src_install() {
 	[[ -f ${ED}usr/bin/parity.gnu.gcc.exe ]] && exeext=.exe
 
 	# create cross compiler syms, also for former versioned winnt profiles
-	local v
+	local v t
 	for v in "" 5.2 6.1; do
-		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-gcc
 		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-c++
 		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-g++
-		dosym /usr/bin/parity.gnu.ld${exeext} /usr/bin/i586-pc-winnt${v}-ld
-		dosym /usr/bin/parity.gnu.windres${exeext} /usr/bin/i586-pc-winnt${v}-windres
-		dosym /usr/bin/parity.gnu.ar /usr/bin/i586-pc-winnt${v}-ar
-		dosym /usr/bin/parity.gnu.ranlib /usr/bin/i586-pc-winnt${v}-ranlib
-		dosym /usr/bin/parity.gnu.strip /usr/bin/i586-pc-winnt${v}-strip
+		for t in gcc ld windres ar nm ranlib strip; do
+			if [[ -e "${ED}"usr/bin/parity.gnu.${t}${exeext} ]]; then
+				dosym /usr/bin/parity.gnu.${t}${exeext} /usr/bin/i586-pc-winnt${v}-${t}
+			else
+				dosym /usr/bin/parity.gnu.${t} /usr/bin/i586-pc-winnt${v}-${t}
+			fi
+		done
 	done
 
 	# we don't need the header files installed by parity... private
