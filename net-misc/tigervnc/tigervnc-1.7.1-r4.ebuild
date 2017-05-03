@@ -184,7 +184,7 @@ src_install() {
 	else
 		local f
 		cd "${ED}" || die
-		for f in vncserver vncpasswd x0vncserver vncconfig; do
+		for f in vncserver x0vncserver vncconfig; do
 			rm usr/bin/$f || die
 			rm usr/share/man/man1/$f.1 || die
 		done
