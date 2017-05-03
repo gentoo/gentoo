@@ -74,7 +74,6 @@ dev-ruby/coffee-rails:4.0
 dev-ruby/jquery-ui-rails:3
 dev-ruby/listen:2
 dev-ruby/prawn:0
-dev-ruby/sass-rails:4.0
 dev-ruby/sprockets:2.2
 dev-ruby/sprockets:2.11
 dev-ruby/sprockets-rails:2.0
