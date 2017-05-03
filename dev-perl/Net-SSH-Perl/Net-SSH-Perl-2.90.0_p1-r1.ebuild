@@ -18,6 +18,7 @@ IUSE="minimal test"
 RDEPEND="
 	>=dev-perl/Crypt-Curve25519-0.50.0
 	dev-perl/Crypt-IDEA
+	>=dev-perl/CryptX-0.32.0
 	virtual/perl-Digest-MD5
 	dev-perl/File-HomeDir
 	virtual/perl-File-Spec
