@@ -30,7 +30,7 @@ KMEXTRACTONLY="
 KMLOADLIBS="libkdepim"
 
 src_prepare() {
-	local kconfig_compiler="${EKDEDIR}/bin/kconfig_compiler"
+	local kconfig_compiler="${EPREFIX}/usr/bin/kconfig_compiler"
 
 	pushd kaddressbook/common > /dev/null
 	# create the kabprefs_base.h file
@@ -44,6 +44,6 @@ src_install() {
 	kde4-meta_src_install
 
 	# Install headers needed by kdepim-wizards, egroupware stuff gone
-	insinto "${PREFIX}"/include/${PN}
+	insinto /usr/include/${PN}
 	doins "${CMAKE_BUILD_DIR}"/${KMMODULE}/{groupwise,slox}/*.h
 }
