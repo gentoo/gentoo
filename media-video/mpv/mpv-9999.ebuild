@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='threads(+)'
 
-WAF_PV=1.8.12
+WAF_PV=1.9.8
 
 inherit gnome2-utils pax-utils python-r1 toolchain-funcs versionator waf-utils xdg-utils
 
@@ -25,13 +25,13 @@ SRC_URI+=" https://waf.io/waf-${WAF_PV}"
 DOCS+=( README.md )
 
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
-LICENSE="GPL-2+ BSD ISC"
+LICENSE="LGPL-2.1+ GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
 	dvd +egl encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
-	selinux test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
-	+xscreensaver +xv zsh-completion"
+	selinux test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X +xv
+	zsh-completion"
 IUSE+=" cpu_flags_x86_sse4_1"
 
 REQUIRED_USE="
@@ -50,8 +50,6 @@ REQUIRED_USE="
 	vaapi? ( || ( gbm X wayland ) )
 	vdpau? ( X )
 	wayland? ( egl )
-	xinerama? ( X )
-	xscreensaver? ( X )
 	xv? ( X )
 	zsh-completion? ( cli )
 	${PYTHON_REQUIRED_USE}
@@ -97,7 +95,7 @@ COMMON_DEPEND="
 	)
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba[smbclient(+)] )
-	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
+	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	v4l? ( media-libs/libv4l )
 	vaapi? ( >=x11-libs/libva-1.4.0[drm?,X?,wayland?] )
 	vdpau? ( >=x11-libs/libvdpau-0.2 )
@@ -107,11 +105,11 @@ COMMON_DEPEND="
 	)
 	X? (
 		x11-libs/libX11
+		x11-libs/libXScrnSaver
 		x11-libs/libXext
-		>=x11-libs/libXrandr-1.2.0
+		x11-libs/libXinerama
+		x11-libs/libXrandr
 		opengl? ( x11-libs/libXdamage )
-		xinerama? ( x11-libs/libXinerama )
-		xscreensaver? ( x11-libs/libXScrnSaver )
 		xv? ( x11-libs/libXv )
 	)
 "
@@ -138,14 +136,15 @@ PATCHES=(
 
 mpv_check_compiler() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
-		if tc-is-gcc && ( [[ $(gcc-major-version) -lt 4 ]] || \
-			( [[ $(gcc-major-version) -eq 4 ]] && [[ $(gcc-minor-version) -lt 5 ]] ) ); then
+		if tc-is-gcc && { [[ $(gcc-major-version) -lt 4 ]] || \
+			{ [[ $(gcc-major-version) -eq 4 ]] && [[ $(gcc-minor-version) -lt 5 ]]; }; }; then
 			die "${PN} requires GCC>=4.5."
 		fi
-		if ( use opengl || use egl ) && ! tc-has-tls; then
+		if { use opengl || use egl; } && ! tc-has-tls; then
 			die "Your compiler lacks C++11 TLS support. Use GCC>=4.8 or Clang>=3.3."
 		fi
-		if use vaapi && use cpu_flags_x86_sse4_1 && ! tc-is-gcc; then
+		if ! tc-is-gcc && use vaapi && use cpu_flags_x86_sse4_1 && \
+				has_version '<media-video/ffmpeg-3.3:0'; then
 			die "${PN} requires GCC for SSE4.1 intrinsics."
 		fi
 	fi
@@ -183,9 +182,9 @@ src_configure() {
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)
 
-		# See deep down below for build-date.
 		--disable-libmpv-static
 		--disable-static-build
+		# See deep down below for build-date.
 		--disable-optimize		# Don't add '-O2' to CFLAGS.
 		--disable-debug-build	# Don't add '-g' to CFLAGS.
 		--enable-html-build
@@ -235,11 +234,7 @@ src_configure() {
 		$(use_enable gbm)
 		$(use_enable wayland)
 		$(use_enable X x11)
-		$(use_enable xscreensaver xss)
-		$(use_enable X xext)
 		$(use_enable xv)
-		$(use_enable xinerama)
-		$(use_enable X xrandr)
 		$(usex opengl "$(use_enable aqua gl-cocoa)" '--disable-gl-cocoa')
 		$(usex opengl "$(use_enable X gl-x11)" '--disable-gl-x11')
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
@@ -255,7 +250,6 @@ src_configure() {
 		$(use_enable jpeg)
 		--disable-android
 		$(use_enable raspberry-pi rpi)
-		--disable-ios-gl
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		--disable-mali-fbdev	# Only available in overlays.
 
