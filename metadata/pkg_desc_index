@@ -2956,7 +2956,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.54 5.5.55 10.0.29 10.0.30 10.1.22 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.54 5.5.55 10.0.29 10.0.30 10.1.22 10.1.23 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.28 10.0.30: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -11502,7 +11502,7 @@ games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.1.5 3.1.5-r1 3.2.2 3.2.3: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
-games-strategy/widelands 0.17 0.18 0.18-r1: A game similar to Settlers 2
+games-strategy/widelands 0.18-r1: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r1 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/antimicro 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.1_beta_pre20160907: Chart Program to use with Flightgear Flight Simulator
