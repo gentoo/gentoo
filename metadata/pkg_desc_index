@@ -6323,7 +6323,7 @@ dev-perl/Net-SNMP 6.0.1-r1 6.0.1-r2: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
-dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1-r1: Perl client Interface to SSH
+dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1-r2: Perl client Interface to SSH
 dev-perl/Net-SSH2 0.580.0 0.580.0-r1: Support for the SSH 2 protocol via libssh2
 dev-perl/Net-SSLeay 1.800.0 1.810.0: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
@@ -8122,7 +8122,7 @@ dev-python/pushbullet-py 0.10.0: A simple python client for pushbullet.com
 dev-python/pxml 0.2.12: A python library and command-line tool to prettify and colorize XML
 dev-python/py 1.4.30 1.4.31 1.4.32: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 1.4.9 2.1.4: Low-level AMQP client for Python (fork of amqplib)
-dev-python/py-cpuinfo 0.2.3: Get CPU info with pure Python 2 & 3
+dev-python/py-cpuinfo 0.2.3 3.2.0: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-lz4framed 0.9.6: LZ4Frame library for Python (via C bindings)
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
