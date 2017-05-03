@@ -9411,6 +9411,7 @@ dev-ruby/dotenv 2.1.1 2.2.0 2.2.1: Loads environment variables from .env into EN
 dev-ruby/duby 0.0.2-r1: Customizable typed programming language with Ruby-inspired syntax
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
+dev-ruby/erubi 1.6.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/escape_utils 1.2.0 1.2.1: Faster string escaping routines for your ruby apps
 dev-ruby/ethon 0.9.1 0.10.1: Very lightweight libcurl wrapper
@@ -9788,7 +9789,7 @@ dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PH
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1 1.5.1-r1: Rubytter is a simple twitter library
-dev-ruby/rubyzip 0.9.9-r2 1.2.1: A ruby library for reading and writing zip files
+dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.1.0 4.2.0 4.3.0 4.4.0: Sanitize is a whitelist-based HTML sanitizer
@@ -9817,7 +9818,7 @@ dev-ruby/simplecov-html 0.10.0: Generates a HTML report of your SimpleCov ruby c
 dev-ruby/sinatra 1.4.7: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.7 3.0.7-r1: A template language aiming to reduce the syntax to the essential parts
-dev-ruby/slop 3.6.0 4.4.1: A simple option parser with an easy to remember syntax and friendly API
+dev-ruby/slop 3.6.0 4.4.1 4.4.3: A simple option parser with an easy to remember syntax and friendly API
 dev-ruby/snmplib 1.2.0-r1: SNMP library implemented in pure Ruby
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
 dev-ruby/sourcemap 0.1.1: Ruby source maps
