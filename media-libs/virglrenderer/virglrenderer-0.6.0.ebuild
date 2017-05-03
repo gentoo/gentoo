@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools eutils
 
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-libs/check-0.9.4 )"
 
 src_prepare() {
+	default
 	[[ -e configure ]] || eautoreconf
 }
 
