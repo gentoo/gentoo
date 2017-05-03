@@ -14,7 +14,7 @@ else
 	inherit versionator
 	MY_PV="$(get_version_component_range 1-3)"
 	[[ -n "$(get_version_component_range 4)" ]] && MY_PVRC="-$(get_version_component_range 4)" || MY_PVRC=""
-	DOCKER_GITCOMMIT="c57fdb2"
+	DOCKER_GITCOMMIT="90d35ab"
 	EGIT_COMMIT="v${MY_PV}-ce${MY_PVRC}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
