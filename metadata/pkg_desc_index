@@ -7894,6 +7894,7 @@ dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
 dev-python/meld3 1.0.2-r1: meld3 is an HTML/XML templating engine
+dev-python/mem_top 0.1.6: Shows top suspects for memory leaks in your Python program
 dev-python/memory_profiler 0.43: A module for monitoring memory usage of a python program
 dev-python/mergedict 0.2.0: A Python 'dict' with a merge() method
 dev-python/meteor-ejson 1.1.0: Encoder and Decoder for Extended JSON (EJSON) as used in Meteor and DDP
@@ -18335,7 +18336,7 @@ www-client/epiphany 3.22.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.8.0 52.1.0-r1 53.0: Firefox Web Browser
 www-client/firefox-bin 45.9.0 52.1.0 53.0: Firefox Web Browser
-www-client/google-chrome 58.0.3029.81: The web browser from Google
+www-client/google-chrome 58.0.3029.96: The web browser from Google
 www-client/google-chrome-beta 59.0.3071.29: The web browser from Google
 www-client/google-chrome-unstable 60.0.3080.5: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
@@ -18387,7 +18388,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 25.0.0.148: Adobe Flash Player
-www-plugins/chrome-binary-plugins 58.0.3029.81 59.0.3071.29_beta 60.0.3080.5_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 58.0.3029.96 59.0.3071.29_beta 60.0.3080.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
