@@ -50,6 +50,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	gtk2? ( gtk )
 	qemu_softmmu_targets_arm? ( fdt )
 	qemu_softmmu_targets_microblaze? ( fdt )
+	qemu_softmmu_targets_mips64el? ( fdt )
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_ppc64? ( fdt )
 	sdl2? ( sdl )
