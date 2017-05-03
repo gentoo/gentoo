@@ -1,4 +1,5 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure
+DEPEND=sys-libs/readline:0=
 DESCRIPTION=GNU readline wrapper
 EAPI=6
 HOMEPAGE=http://utopia.knoware.nl/~hlub/uck/rlwrap/
@@ -8,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/readline:0=
 SLOT=0
 SRC_URI=http://utopia.knoware.nl/~hlub/uck/rlwrap/rlwrap-0.42.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
-_md5_=ec822cf8a89930053d54d7b208aa9390
+_eclass_exported_funcs=src_configure:-
+_md5_=08f82d8ea93ed4e8fd6223a2be68f159
