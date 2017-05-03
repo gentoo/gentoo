@@ -13,15 +13,9 @@ KEYWORDS="~amd64 ~mips ~ppc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~p
 IUSE="debug"
 
 RDEPEND="sys-libs/readline:0="
-
-DOCS=( AUTHORS BUGS ChangeLog NEWS README )
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf \
 		$(use_enable debug)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-	einstalldocs
 }
