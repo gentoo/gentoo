@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+#PATCHES=( )
 
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
@@ -58,7 +58,7 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
-	epatch "${PATCHES[@]}"
+	#epatch "${PATCHES[@]}"
 	epatch_user && eautoreconf
 
 	if use python ; then
