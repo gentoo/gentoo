@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc test"
 
-CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-2.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
