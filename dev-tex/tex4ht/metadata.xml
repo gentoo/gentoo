@@ -5,4 +5,7 @@
 	<email>tex@gentoo.org</email>
 	<name>Gentoo TeX Project</name>
 </maintainer>
+<maintainer type="person">
+	<email>ulm@gentoo.org</email>
+</maintainer>
 </pkgmetadata>
