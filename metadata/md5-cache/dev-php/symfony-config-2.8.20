@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare test
-DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader dev-php/symfony-filesystem dev-php/phpunit )
+DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader dev-php/symfony-filesystem >=dev-php/phpunit-5.7.15 )
 DESCRIPTION=Symfony Config Component
 EAPI=6
 HOMEPAGE=https://github.com/symfony/config
@@ -7,8 +7,7 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=dev-lang/php:* dev-php/fedora-autoloader dev-php/symfony-filesystem
-RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/symfony/config/archive/v2.8.19.tar.gz -> symfony-config-2.8.19.tar.gz
+SRC_URI=https://github.com/symfony/config/archive/v2.8.20.tar.gz -> symfony-config-2.8.20.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_md5_=84458b6cbe16668d4f5ca1acd142600e
+_md5_=a5c72c58a248fa691363785395e41e9e

@@ -7163,7 +7163,7 @@ dev-php/phpdocumentor-type-resolver 0.2.1: PSR-5 based resolver of Class names, 
 dev-php/phpmd 2.5.0: PHP mess detector
 dev-php/phpspec-prophecy 1.7.0: Highly opinionated mocking framework
 dev-php/phptal 1.2.2: A templating engine for PHP5 that implements Zope Page Templates syntax
-dev-php/phpunit 3.7.20 4.3.1 5.0.10 5.7.15: A PHP Unit Testing framework
+dev-php/phpunit 3.7.20 4.3.1 5.0.10 5.7.15-r1: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3: Mock Object library for PHPUnit
 dev-php/psr-log 1.0.2: Common interface for logging libraries
 dev-php/recaptcha 1.1.2-r1: PHP client library for Google's reCAPTCHA service
@@ -7184,7 +7184,7 @@ dev-php/smarty 3.1.30 3.1.31: A template engine for PHP
 dev-php/spdx-licenses 1.0.0: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
-dev-php/symfony-config 2.8.19: Symfony Config Component
+dev-php/symfony-config 2.8.20: Symfony Config Component
 dev-php/symfony-console 2.7.9-r1: Subtree split of the Symfony Console Component
 dev-php/symfony-dependency-injection 2.8.15: Symfony DependencyInjection Component
 dev-php/symfony-event-dispatcher 2.1.0-r1: Symfony EventDispatcher Component
@@ -12252,7 +12252,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.4: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
-mail-client/thunderbird 45.7.0 45.8.0: Thunderbird Mail Client
+mail-client/thunderbird 45.7.0 45.8.0 52.1.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 45.8.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r1 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
@@ -12329,7 +12329,7 @@ mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4 1.6.5 1.6.6: An SMTP client and SMTP plug
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4 1.06-r5: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.2_p1 6.0.2_p1-r1 6.0.2_p1-r2: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 3.0.2 3.0.3-r1 3.0.7 3.1.0-r1 3.1.2-r2 3.1.3 3.1.4-r1 3.2.0 3.3_pre20170218: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 3.0.2 3.0.3-r1 3.0.7 3.1.0-r1 3.1.2-r2 3.1.3 3.1.4-r1 3.2.0 3.3_pre20170502: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
@@ -18336,7 +18336,7 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established 
 www-client/epiphany 3.22.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.8.0 52.1.0-r1 53.0: Firefox Web Browser
-www-client/firefox-bin 45.9.0 52.1.0 53.0: Firefox Web Browser
+www-client/firefox-bin 45.9.0 52.1.0-r1 53.0-r1: Firefox Web Browser
 www-client/google-chrome 58.0.3029.96: The web browser from Google
 www-client/google-chrome-beta 59.0.3071.29: The web browser from Google
 www-client/google-chrome-unstable 60.0.3080.5: The web browser from Google
