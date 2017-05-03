@@ -6,9 +6,11 @@ inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://urbanterror.info"
-SRC_URI="https://github.com/holgersson32644/ioq3/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-S="${WORKDIR}/ioq3-${PV}"
+COMMIT_ID="60b17a27ecaa30bffc44114cb94df82af7febfdd"
+SRC_URI="https://github.com/holgersson32644/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+
+S="${WORKDIR}/ioq3-${COMMIT_ID}"
 
 LICENSE="GPL-2"
 SLOT="0"
