@@ -9,7 +9,12 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 
 \Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\Config\\', __DIR__);
 
-// Dependencies
+// Required dependencies.
 \Fedora\Autoloader\Dependencies::required(array(
   "${vendor_dir}/Symfony/Component/Filesystem/autoload.php"
+));
+
+// Optional dependencies.
+\Fedora\Autoloader\Dependencies::optional(array(
+  "${vendor_dir}/PHPUnit/vendor/autoload.php"
 ));
