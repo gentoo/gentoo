@@ -19259,7 +19259,7 @@ x11-proto/scrnsaverproto 1.2.2-r1: X.Org ScrnSaver protocol headers
 x11-proto/trapproto 3.4.3: X.Org Trap protocol headers
 x11-proto/videoproto 2.3.2 2.3.3: X.Org Video protocol headers
 x11-proto/xcalibrateproto 0.1_pre20081210: Touchscreen calibration protocol
-x11-proto/xcb-proto 1.8-r3 1.9-r1 1.10 1.11 1.12-r1 1.12-r2: X C-language Bindings protocol headers
+x11-proto/xcb-proto 1.12-r2: X C-language Bindings protocol headers
 x11-proto/xcmiscproto 1.2.2: X.Org XCMisc protocol headers
 x11-proto/xextproto 7.3.0: X.Org XExt protocol headers
 x11-proto/xf86bigfontproto 1.2.0-r1: X.Org XF86BigFont protocol headers
