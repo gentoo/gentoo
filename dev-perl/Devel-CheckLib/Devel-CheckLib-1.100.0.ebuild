@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="check that a library is available"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 IUSE="test"
 
 RDEPEND="
