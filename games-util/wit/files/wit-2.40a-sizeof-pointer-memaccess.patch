@@ -1,0 +1,20 @@
+--- wit-2.40a/src/wfuse.c
++++ wit-2.40a/src/wfuse.c
+@@ -340,7 +340,7 @@
+ 	    }
+ 	    ResetWBFS(df->wbfs);
+ 	    FREE(df->wbfs);
+-	    memset(df,0,sizeof(df));
++	    memset(df,0,sizeof(*df));
+ 	    n_dfile--;
+ 	}
+ 
+@@ -352,7 +352,7 @@
+ 
+     if (found_df)
+     {
+-	memset(found_df,0,sizeof(found_df));
++	memset(found_df,0,sizeof(*found_df));
+ 	WBFS_t * wbfs = MALLOC(sizeof(*wbfs));
+ 	InitializeWBFS(wbfs);
+ 	enumError err = OpenWBFS(wbfs,source_file,false,true,0);
