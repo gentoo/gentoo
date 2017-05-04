@@ -133,7 +133,7 @@ app-admin/lnav 0.8.1 0.8.2: A curses-based tool for viewing and analyzing log fi
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
 app-admin/logcheck 1.3.15-r2 1.3.17 1.3.18: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
-app-admin/logrotate 3.9.1 3.11.0 3.12.1: Rotates, compresses, and mails system logs
+app-admin/logrotate 3.9.1 3.11.0 3.12.1 3.12.2: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
 app-admin/logstash-bin 5.1.2 5.2.2 5.3.1: Tool for managing events and logs
@@ -221,7 +221,7 @@ app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed from specified directories
-app-admin/tripwire 2.4.3.1 2.4.3.4 2.4.3.5: Open Source File Integrity Checker and IDS
+app-admin/tripwire 2.4.3.4 2.4.3.5: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/vault 0.5.3 0.6.2 0.6.5: A tool for managing secrets
@@ -2536,7 +2536,7 @@ app-vim/bash-support 4.2.1: vim plugin: write and run bash scripts using menus a
 app-vim/bnf-syntax 1.2-r2: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.2 1.0.3: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0-r1: vim plugin: sets vim breakpoints visually
-app-vim/bufexplorer 7.4.12 7.4.14: vim plugin: easily browse vim buffers
+app-vim/bufexplorer 7.4.12 7.4.14 7.4.18: vim plugin: easily browse vim buffers
 app-vim/c-support 6.0 6.1 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
 app-vim/calendar 2.9: vim plugin: calendar window
 app-vim/cctree 1.61-r1: vim plugin: Cscope based source-code browser and code flow analysis tool
@@ -11539,7 +11539,7 @@ games-util/umodpack 0.5_beta16-r2: portable and useful [un]packer for Unreal Tou
 games-util/uz2unpack 0.1: UZ2 Decompressor for UT2003/UT2004
 games-util/vispatch 1.4.6: WaterVIS utility for glquake
 games-util/wiiload 0.5: load homebrew apps over the network to your Wii
-games-util/wit 2.30a 2.31a: A set of command line tools to manipulate Wii/GameCube ISO images and WBFS containers
+games-util/wit 2.30a 2.31a 2.40a: A set of command line tools to manipulate Wii/GameCube ISO images and WBFS containers
 games-util/wxchtdecoder 1.5a-r1: A program to decode .CHT files in Snes9x and ZSNES to plain text
 games-util/xboxdrv 0.8.5-r1 0.8.8: Userspace Xbox 360 Controller driver
 games-util/xboxgw 1.082: Tunnels XBox system link games over the net
@@ -12873,7 +12873,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.47 10.49 10.50: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.47 10.49 10.50 10.51: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
@@ -15006,7 +15006,7 @@ net-mail/fdm 1.7 1.8 1.9: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-mail/gensig 2.3: Random ~/.signature generator
 net-mail/getmail 4.52.0 4.53.0 4.54.0: A POP3 mail retriever with reliable Maildir and mbox delivery
-net-mail/gnubiff 2.2.15-r2: A mail notification program
+net-mail/gnubiff 2.2.15-r2 2.2.17: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
 net-mail/imapsync 1.592-r1 1.607-r1 1.644 1.684: A tool allowing incremental and recursive IMAP transfers between mailboxes
@@ -17227,7 +17227,7 @@ sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 4.13-r2 5.2 6.1 6.3: The GNU info program and utilities
-sys-apps/the_silver_searcher 1.0.2: A code-searching tool similar to ack, but faster
+sys-apps/the_silver_searcher 1.0.2 1.0.3: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 0.7.2 0.7.3 9999: Common linux commands in a multicall binary
@@ -17738,7 +17738,7 @@ sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of dir
 sys-fs/pytagsfs 0.9.2: File system that arranges media files based their tags
 sys-fs/quota 3.17-r1 4.02 4.03: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
-sys-fs/rar2fs 1.23.1 1.24.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
+sys-fs/rar2fs 1.23.1 1.24.0 1.24.1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
@@ -19451,7 +19451,7 @@ x11-wm/evilwm 1.0.1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 1.3.7-r3 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
-x11-wm/herbstluftwm 0.6.2-r1 0.7.0 9999: A manual tiling window manager for X
+x11-wm/herbstluftwm 0.7.0 9999: A manual tiling window manager for X
 x11-wm/i3 4.8 4.9.1 4.10.4 4.11 4.12 4.13-r1 9999: An improved dynamic tiling window manager
 x11-wm/icewm 1.3.8 1.3.12 1.3.12-r1: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6: Very fast and lightweight still powerful window manager for X
