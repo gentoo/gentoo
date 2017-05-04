@@ -1062,7 +1062,7 @@ app-editors/pluma 1.12.2-r1 1.14.1 1.16.0-r1: Pluma text editor for the MATE des
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r2: Advanced text editor with syntax highlighting
 app-editors/qxmledit 0.9.5 0.9.6: Simple Qt-based XML editor
-app-editors/retext 4.1.3 6.0.2 7.0.0 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 4.1.3 7.0.0 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
@@ -7199,7 +7199,7 @@ dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
 dev-php/xdebug 2.4.1 2.5.0 2.5.3: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.4.1 2.5.0 2.5.3: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xhprof 0.9.4_p20150226-r1: A Hierarchical Profiler for PHP
-dev-python/3to2 1.1.1: Tool to refactor valid 3.x syntax into valid 2.x syntax
+dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.1.0 3.2.0 3.3.1: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.1.1 2.3.4: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.4 3.4.6: A pure-Python memory-efficient packed representation for bit arrays
@@ -13910,7 +13910,7 @@ media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sample
 media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.49: Spotify is a social music platform
+media-sound/spotify 1.0.49 1.0.53: Spotify is a social music platform
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media streaming solution
@@ -15454,7 +15454,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0: The X2Go
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.04.17 2017.04.26 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.04.26 2017.05.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
