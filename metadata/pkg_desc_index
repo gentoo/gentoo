@@ -7200,7 +7200,7 @@ dev-php/xdebug 2.4.1 2.5.0 2.5.3: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.4.1 2.5.0 2.5.3: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xhprof 0.9.4_p20150226-r1: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1: Tool to refactor valid 3.x syntax into valid 2.x syntax
-dev-python/APScheduler 3.1.0 3.2.0: In-process task scheduler with Cron-like capabilities
+dev-python/APScheduler 3.1.0 3.2.0 3.3.1: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.1.1 2.3.4: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.4 3.4.6: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged up for use with requests
@@ -14997,7 +14997,7 @@ net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to admini
 net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.7 2.5.8 2.5.9 2.5.10: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.19 2.2.27 2.2.28 2.2.29.1: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.19 2.2.29.1: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 2.5.0 3.0.5 3.1.2 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 6.0.0 7.0.0 7.0.0-r1 7.0.0-r2: Simple yet powerful mailing list manager for qmail
@@ -15632,7 +15632,7 @@ net-proxy/privoxy 3.0.24-r2 3.0.26: A web proxy with advanced filtering capabili
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 2.5.6 2.6.2: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
-net-proxy/squid 3.5.23 3.5.24: A full-featured web proxy cache
+net-proxy/squid 3.5.23 3.5.24 3.5.25: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
