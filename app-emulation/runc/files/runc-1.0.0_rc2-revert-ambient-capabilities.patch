@@ -1,0 +1,260 @@
+From 6cda437855f57d5ea515e007bdc53e3e9dc29cab Mon Sep 17 00:00:00 2001
+From: Michael Crosby <crosbymichael@gmail.com>
+Date: Thu, 20 Oct 2016 15:21:52 -0700
+Subject: [PATCH] Revert "Set ambient capabilities where supported"
+
+This reverts commit 4e179bddcaae964084e0afeda36ac68408f39c4b.
+---
+ Godeps/Godeps.json                                 |  2 +-
+ .../syndtr/gocapability/capability/capability.go   | 20 ++++-----
+ .../gocapability/capability/capability_linux.go    | 50 ++--------------------
+ .../syndtr/gocapability/capability/enum.go         |  4 --
+ .../gocapability/capability/syscall_linux.go       |  9 ----
+ libcontainer/capabilities_linux.go                 |  2 +-
+ 6 files changed, 16 insertions(+), 71 deletions(-)
+
+diff --git a/Godeps/Godeps.json b/Godeps/Godeps.json
+index 152246d..8e4d8ba 100644
+--- a/Godeps/Godeps.json
++++ b/Godeps/Godeps.json
+@@ -68,7 +68,7 @@
+ 		},
+ 		{
+ 			"ImportPath": "github.com/syndtr/gocapability/capability",
+-			"Rev": "e7cb7fa329f456b3855136a2642b197bad7366ba"
++			"Rev": "2c00daeb6c3b45114c80ac44119e7b8801fdd852"
+ 		},
+ 		{
+ 			"ImportPath": "github.com/vishvananda/netlink",
+diff --git a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability.go b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability.go
+index c07c557..c13f4e5 100644
+--- a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability.go
++++ b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability.go
+@@ -10,42 +10,42 @@ package capability
+ type Capabilities interface {
+ 	// Get check whether a capability present in the given
+ 	// capabilities set. The 'which' value should be one of EFFECTIVE,
+-	// PERMITTED, INHERITABLE, BOUNDING or AMBIENT.
++	// PERMITTED, INHERITABLE or BOUNDING.
+ 	Get(which CapType, what Cap) bool
+ 
+ 	// Empty check whether all capability bits of the given capabilities
+ 	// set are zero. The 'which' value should be one of EFFECTIVE,
+-	// PERMITTED, INHERITABLE, BOUNDING or AMBIENT.
++	// PERMITTED, INHERITABLE or BOUNDING.
+ 	Empty(which CapType) bool
+ 
+ 	// Full check whether all capability bits of the given capabilities
+ 	// set are one. The 'which' value should be one of EFFECTIVE,
+-	// PERMITTED, INHERITABLE, BOUNDING or AMBIENT.
++	// PERMITTED, INHERITABLE or BOUNDING.
+ 	Full(which CapType) bool
+ 
+ 	// Set sets capabilities of the given capabilities sets. The
+ 	// 'which' value should be one or combination (OR'ed) of EFFECTIVE,
+-	// PERMITTED, INHERITABLE, BOUNDING or AMBIENT.
++	// PERMITTED, INHERITABLE or BOUNDING.
+ 	Set(which CapType, caps ...Cap)
+ 
+ 	// Unset unsets capabilities of the given capabilities sets. The
+ 	// 'which' value should be one or combination (OR'ed) of EFFECTIVE,
+-	// PERMITTED, INHERITABLE, BOUNDING or AMBIENT.
++	// PERMITTED, INHERITABLE or BOUNDING.
+ 	Unset(which CapType, caps ...Cap)
+ 
+ 	// Fill sets all bits of the given capabilities kind to one. The
+-	// 'kind' value should be one or combination (OR'ed) of CAPS,
+-	// BOUNDS or AMBS.
++	// 'kind' value should be one or combination (OR'ed) of CAPS or
++	// BOUNDS.
+ 	Fill(kind CapType)
+ 
+ 	// Clear sets all bits of the given capabilities kind to zero. The
+-	// 'kind' value should be one or combination (OR'ed) of CAPS,
+-	// BOUNDS or AMBS.
++	// 'kind' value should be one or combination (OR'ed) of CAPS or
++	// BOUNDS.
+ 	Clear(kind CapType)
+ 
+ 	// String return current capabilities state of the given capabilities
+ 	// set as string. The 'which' value should be one of EFFECTIVE,
+-	// PERMITTED, INHERITABLE BOUNDING or AMBIENT
++	// PERMITTED, INHERITABLE or BOUNDING.
+ 	StringCap(which CapType) string
+ 
+ 	// String return current capabilities state as string.
+diff --git a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability_linux.go b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability_linux.go
+index 6d2135a..3dfcd39 100644
+--- a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability_linux.go
++++ b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/capability_linux.go
+@@ -235,10 +235,9 @@ func (c *capsV1) Apply(kind CapType) error {
+ }
+ 
+ type capsV3 struct {
+-	hdr     capHeader
+-	data    [2]capData
+-	bounds  [2]uint32
+-	ambient [2]uint32
++	hdr    capHeader
++	data   [2]capData
++	bounds [2]uint32
+ }
+ 
+ func (c *capsV3) Get(which CapType, what Cap) bool {
+@@ -257,8 +256,6 @@ func (c *capsV3) Get(which CapType, what Cap) bool {
+ 		return (1<<uint(what))&c.data[i].inheritable != 0
+ 	case BOUNDING:
+ 		return (1<<uint(what))&c.bounds[i] != 0
+-	case AMBIENT:
+-		return (1<<uint(what))&c.ambient[i] != 0
+ 	}
+ 
+ 	return false
+@@ -278,9 +275,6 @@ func (c *capsV3) getData(which CapType, dest []uint32) {
+ 	case BOUNDING:
+ 		dest[0] = c.bounds[0]
+ 		dest[1] = c.bounds[1]
+-	case AMBIENT:
+-		dest[0] = c.ambient[0]
+-		dest[1] = c.ambient[1]
+ 	}
+ }
+ 
+@@ -319,9 +313,6 @@ func (c *capsV3) Set(which CapType, caps ...Cap) {
+ 		if which&BOUNDING != 0 {
+ 			c.bounds[i] |= 1 << uint(what)
+ 		}
+-		if which&AMBIENT != 0 {
+-			c.ambient[i] |= 1 << uint(what)
+-		}
+ 	}
+ }
+ 
+@@ -345,9 +336,6 @@ func (c *capsV3) Unset(which CapType, caps ...Cap) {
+ 		if which&BOUNDING != 0 {
+ 			c.bounds[i] &= ^(1 << uint(what))
+ 		}
+-		if which&AMBIENT != 0 {
+-			c.ambient[i] &= ^(1 << uint(what))
+-		}
+ 	}
+ }
+ 
+@@ -365,10 +353,6 @@ func (c *capsV3) Fill(kind CapType) {
+ 		c.bounds[0] = 0xffffffff
+ 		c.bounds[1] = 0xffffffff
+ 	}
+-	if kind&AMBS == AMBS {
+-		c.ambient[0] = 0xffffffff
+-		c.ambient[1] = 0xffffffff
+-	}
+ }
+ 
+ func (c *capsV3) Clear(kind CapType) {
+@@ -385,10 +369,6 @@ func (c *capsV3) Clear(kind CapType) {
+ 		c.bounds[0] = 0
+ 		c.bounds[1] = 0
+ 	}
+-	if kind&AMBS == AMBS {
+-		c.ambient[0] = 0
+-		c.ambient[1] = 0
+-	}
+ }
+ 
+ func (c *capsV3) StringCap(which CapType) (ret string) {
+@@ -430,10 +410,6 @@ func (c *capsV3) Load() (err error) {
+ 			fmt.Sscanf(line[4:], "nd:  %08x%08x", &c.bounds[1], &c.bounds[0])
+ 			break
+ 		}
+-		if strings.HasPrefix(line, "CapA") {
+-			fmt.Sscanf(line[4:], "mb:  %08x%08x", &c.ambient[1], &c.ambient[0])
+-			break
+-		}
+ 	}
+ 	f.Close()
+ 
+@@ -466,25 +442,7 @@ func (c *capsV3) Apply(kind CapType) (err error) {
+ 	}
+ 
+ 	if kind&CAPS == CAPS {
+-		err = capset(&c.hdr, &c.data[0])
+-		if err != nil {
+-			return
+-		}
+-	}
+-
+-	if kind&AMBS == AMBS {
+-		for i := Cap(0); i <= CAP_LAST_CAP; i++ {
+-			action := pr_CAP_AMBIENT_LOWER
+-			if c.Get(AMBIENT, i) {
+-				action = pr_CAP_AMBIENT_RAISE
+-			}
+-			err := prctl(pr_CAP_AMBIENT, action, uintptr(i), 0, 0)
+-			// Ignore EINVAL as not supported on kernels before 4.3
+-			if errno, ok := err.(syscall.Errno); ok && errno == syscall.EINVAL {
+-				err = nil
+-				continue
+-			}
+-		}
++		return capset(&c.hdr, &c.data[0])
+ 	}
+ 
+ 	return
+diff --git a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/enum.go b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/enum.go
+index 6938173..fd0ce7f 100644
+--- a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/enum.go
++++ b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/enum.go
+@@ -20,8 +20,6 @@ func (c CapType) String() string {
+ 		return "bounding"
+ 	case CAPS:
+ 		return "caps"
+-	case AMBIENT:
+-		return "ambient"
+ 	}
+ 	return "unknown"
+ }
+@@ -31,11 +29,9 @@ const (
+ 	PERMITTED
+ 	INHERITABLE
+ 	BOUNDING
+-	AMBIENT
+ 
+ 	CAPS   = EFFECTIVE | PERMITTED | INHERITABLE
+ 	BOUNDS = BOUNDING
+-	AMBS   = AMBIENT
+ )
+ 
+ //go:generate go run enumgen/gen.go
+diff --git a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/syscall_linux.go b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/syscall_linux.go
+index eb71700..dd6f454 100644
+--- a/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/syscall_linux.go
++++ b/Godeps/_workspace/src/github.com/syndtr/gocapability/capability/syscall_linux.go
+@@ -38,15 +38,6 @@ func capset(hdr *capHeader, data *capData) (err error) {
+ 	return
+ }
+ 
+-// not yet in syscall
+-const (
+-	pr_CAP_AMBIENT           = 47
+-	pr_CAP_AMBIENT_IS_SET    = uintptr(1)
+-	pr_CAP_AMBIENT_RAISE     = uintptr(2)
+-	pr_CAP_AMBIENT_LOWER     = uintptr(3)
+-	pr_CAP_AMBIENT_CLEAR_ALL = uintptr(4)
+-)
+-
+ func prctl(option int, arg2, arg3, arg4, arg5 uintptr) (err error) {
+ 	_, _, e1 := syscall.Syscall6(syscall.SYS_PRCTL, uintptr(option), arg2, arg3, arg4, arg5, 0)
+ 	if e1 != 0 {
+diff --git a/libcontainer/capabilities_linux.go b/libcontainer/capabilities_linux.go
+index 48338a1..4eda56d 100644
+--- a/libcontainer/capabilities_linux.go
++++ b/libcontainer/capabilities_linux.go
+@@ -10,7 +10,7 @@ import (
+ 	"github.com/syndtr/gocapability/capability"
+ )
+ 
+-const allCapabilityTypes = capability.CAPS | capability.BOUNDS | capability.AMBS
++const allCapabilityTypes = capability.CAPS | capability.BOUNDS
+ 
+ var capabilityMap map[string]capability.Cap
+ 
