@@ -1,12 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 KEYWORDS="~amd64"
 ROS_REPO_URI="https://github.com/ros-visualization/rqt_common_plugins"
-PYTHON_COMPAT=( python2_7 )
-ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
@@ -28,7 +26,6 @@ RDEPEND="
 	dev-ros/rqt_msg
 	dev-ros/rqt_plot
 	dev-ros/rqt_publisher
-	dev-ros/rqt_py_common
 	dev-ros/rqt_py_console
 	dev-ros/rqt_reconfigure
 	dev-ros/rqt_service_caller
