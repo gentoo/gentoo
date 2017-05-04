@@ -1,0 +1,14 @@
+# The default setup is for the first node of an insecure cluster that only
+# listens on localhost.
+# Please read the cockroach manual at the following url and configure
+# the start_args and stop_args correctly if you plan to use cockroach in
+# production.
+#
+# http://cockroachlabs.com/do# cs
+#
+# arguments to use when starting the database
+start_args="--http-host=localhost --host=localhost --insecure
+--store=/var/lib/cockroach/data"
+#
+# arguments to use when stopping the database
+stop_args="--host localhost --insecure"
