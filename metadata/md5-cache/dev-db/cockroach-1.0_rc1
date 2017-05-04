@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install pretend setup
+DEPEND=>=dev-lang/go-1.8.1
+DESCRIPTION=open source database for building cloud services
+EAPI=6
+HOMEPAGE=https://www.cockroachlabs.com
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://binaries.cockroachdb.com/cockroach-v1.0-rc.1.src.tgz
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_compile:- src_install:-
+_eclasses_=check-reqs	bd050ce908e4637604ee604ed4b78e8f	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=c0b28dcf68494899a25830ce434db705
