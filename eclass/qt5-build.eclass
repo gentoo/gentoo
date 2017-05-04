@@ -47,6 +47,14 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
+# @ECLASS-VARIABLE: QT5_MODULE_EXAMPLES_SUBDIRS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array variable containing source directories for examples.
+# If this array is not empty, then USE-flag "examples" is provided.
+# When this USE-flag is set, examples from listed directories would be built and installed.
+# All paths must be relative to ${S}.
+
 inherit estack flag-o-matic ltprune toolchain-funcs versionator virtualx
 
 HOMEPAGE="https://www.qt.io/"
@@ -585,14 +593,8 @@ qt5_base_configure() {
 		-no-pulseaudio -no-alsa
 		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -no-gtk || echo -no-gtkstyle)
 
-		# add default build parts: libs tools. if it's not set explicitely, then enabling examples might break some packages, like dev-qt/designer:5
-		-make libs
-		-make tools
-
-		# also add examples
-		-make examples
-
-		# exclude tests from default build
+		# exclude examples and tests from default build
+		-nomake examples
 		-nomake tests
 
 		# disable rpath on non-prefix (bugs 380415 and 417169)
