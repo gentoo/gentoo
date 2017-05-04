@@ -10691,7 +10691,7 @@ games-action/spacetripper-demo 1 1-r1: Hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supertuxkart 0.9.1 0.9.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
-games-action/teeworlds 0.6.3 0.6.3-r1: Online multi-player platform 2D shooter
+games-action/teeworlds 0.6.3 0.6.3-r1 0.6.4: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3 0.3-r1: Retro-style, abstract, 2D shooter
 games-action/trine-bin 1.08 1.08-r1: A physics-based action game where diff characters allow diff solutions to challenges
@@ -18366,7 +18366,7 @@ www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.8.770.56_p1 1.9.818.44_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.10.829.3_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.10.829.3_p1 1.10.834.9_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
