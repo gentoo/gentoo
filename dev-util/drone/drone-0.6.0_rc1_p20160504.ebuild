@@ -25,7 +25,7 @@ DEPEND="dev-go/go-bindata
 
 pkg_setup() {
 	enewgroup drone
-	enewuser drone -1 -1 -1 drone
+	enewuser drone -1 -1 /var/lib/drone drone
 }
 
 src_compile() {
