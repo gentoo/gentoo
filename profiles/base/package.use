@@ -3,7 +3,7 @@
 
 # David Seifert <soap@gentoo.org> (17 Apr 2017)
 # Only python 3.5 supported
-dev-util/kdevelop-python:5 python_single_target_python3_5 python_targets_python3_5
+=dev-util/kdevelop-python-5.0*:5 python_single_target_python3_5 python_targets_python3_5
 kde-apps/kajongg:5 python_single_target_python3_5 python_targets_python3_5
 dev-python/pygcrypt python_targets_python3_5
 dev-python/uvloop python_targets_python3_5
