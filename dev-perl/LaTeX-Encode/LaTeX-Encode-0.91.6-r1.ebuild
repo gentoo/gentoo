@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Encode characters for LaTeX formatting"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND="
