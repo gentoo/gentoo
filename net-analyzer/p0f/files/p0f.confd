@@ -1,3 +1,0 @@
-P0FLOGFILE=/var/log/p0f-audit.log
-P0FDEVICE=eth0
-P0FOPTIONS="-tl"
