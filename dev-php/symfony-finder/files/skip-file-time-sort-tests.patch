@@ -1,0 +1,24 @@
+There's one set of tests that tries to sort an array of files by their
+access and modification times, and that doesn't work if your filesystem
+is mounted with noatime (a lot of our users do that).
+
+This should probably be fixed upstream, and has been reported here:
+
+  https://github.com/symfony/symfony/issues/17489
+
+diff --git a/Tests/Iterator/SortableIteratorTest.php b/Tests/Iterator/SortableIteratorTest.php
+index 4750f25..29d176a 100644
+--- a/Tests/Iterator/SortableIteratorTest.php
++++ b/Tests/Iterator/SortableIteratorTest.php
+@@ -62,10 +62,7 @@ class SortableIteratorTest extends RealIteratorTestCase
+             || $mode === SortableIterator::SORT_BY_CHANGED_TIME
+             || $mode === SortableIterator::SORT_BY_MODIFIED_TIME
+         ) {
+-            if ('\\' === DIRECTORY_SEPARATOR && SortableIterator::SORT_BY_MODIFIED_TIME !== $mode) {
+-                $this->markTestSkipped('Sorting by atime or ctime is not supported on Windows');
+-            }
+-            $this->assertOrderedIteratorForGroups($expected, $iterator);
++	  $this->markTestSkipped('Sorting by time is failure-prone on Gentoo');
+         } else {
+             $this->assertOrderedIterator($expected, $iterator);
+         }
