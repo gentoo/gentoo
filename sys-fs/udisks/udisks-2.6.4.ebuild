@@ -43,6 +43,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/gdbus-codegen-2.32
 	>=dev-util/gtk-doc-1.3
 	gnome-base/gnome-common:3
+	sys-devel/autoconf-archive
 	>=sys-kernel/linux-headers-3.1
 	virtual/pkgconfig
 	nls? ( dev-util/intltool )
