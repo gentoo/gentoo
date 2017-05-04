@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils multiprocessing python-any-r1 toolchain-funcs games versionator
+inherit eutils multiprocessing python-any-r1 toolchain-funcs versionator
 
-REVISION="b177-r50edfd37"
+REVISION="b177-rff25472"
 
 DESCRIPTION="Online multi-player platform 2D shooter"
 HOMEPAGE="http://www.teeworlds.com/"
@@ -13,17 +13,18 @@ SRC_URI="https://downloads.teeworlds.com/${P}-src.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug dedicated"
 
 RDEPEND="
-	!dedicated? ( media-libs/pnglite
-		media-libs/libsdl[X,sound,opengl,video]
-		media-sound/wavpack
-		virtual/opengl
+	!dedicated? (
 		app-arch/bzip2
 		media-libs/freetype
+		media-libs/libsdl[X,sound,opengl,video]
+		media-libs/pnglite
+		media-sound/wavpack
 		virtual/glu
+		virtual/opengl
 		x11-libs/libX11 )
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
@@ -33,17 +34,22 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}-src
 MY_PV=$(get_version_component_range 1-2)
 
+PATCHES=(
+	"${FILESDIR}/${MY_PV}/01-use-system-wavpack.patch"
+	"${FILESDIR}/${MY_PV}/02-fixed-wavpack-sound-loading.patch"
+	"${FILESDIR}/${MY_PV}/03-use-system-pnglite.patch"
+	"${FILESDIR}/${MY_PV}/04-dedicated.patch"
+	"${FILESDIR}/${MY_PV}/05-cc-cflags.patch"
+)
+
 pkg_setup() {
 	python-any-r1_pkg_setup
-	games_pkg_setup
 }
 
 src_prepare() {
-	rm -r src/engine/external/* || die
+	default
 
-	# 01 & 02 from pull request: https://github.com/oy/teeworlds/pull/493
-	EPATCH_SOURCE="${FILESDIR}/${MY_PV}" EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" \
-		epatch
+	rm -r src/engine/external/* || die
 
 	cat <<- __EOF__ > "${S}/gentoo.lua"
 		function addSettings(settings)
@@ -57,10 +63,6 @@ src_prepare() {
 			settings.link.flags:Add("${LDFLAGS}")
 		end
 	__EOF__
-
-	sed -i \
-		-e "s#/usr/share/games/teeworlds/data#${GAMES_DATADIR}/${PN}/data#" \
-		src/engine/shared/storage.cpp || die
 }
 
 src_configure() {
@@ -88,24 +90,24 @@ src_compile() {
 
 src_install() {
 	if use debug; then
-		newgamesbin ${PN}_srv_d ${PN}_srv
+		newbin ${PN}_srv_d ${PN}_srv
 	else
-		dogamesbin ${PN}_srv
+		dobin ${PN}_srv
 	fi
 	if ! use dedicated; then
 		if use debug; then
-			newgamesbin ${PN}_d ${PN}
+			newbin ${PN}_d ${PN}
 		else
-			dogamesbin ${PN}
+			dobin ${PN}
 		fi
 
 		doicon "${FILESDIR}"/${PN}.xpm
 		make_desktop_entry ${PN} Teeworlds
 
-		insinto "${GAMES_DATADIR}"/${PN}/data
+		insinto /usr/share/${PN}/data
 		doins -r data/*
 	else
-		insinto "${GAMES_DATADIR}"/${PN}/data/maps
+		insinto /usr/share/${PN}/data/maps
 		doins -r data/maps/*
 	fi
 	newinitd "${FILESDIR}"/${PN}-init.d ${PN}
@@ -113,6 +115,4 @@ src_install() {
 	doins "${FILESDIR}"/teeworlds_srv.cfg
 
 	dodoc readme.txt
-
-	prepgamesdirs
 }
