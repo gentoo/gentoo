@@ -40,4 +40,6 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	dev-libs/libical
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"

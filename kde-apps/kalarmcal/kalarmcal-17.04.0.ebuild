@@ -20,4 +20,5 @@ DEPEND="
 	$(add_qt_dep qtgui)
 "
 RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
 "

@@ -5,7 +5,7 @@ EAPI=6
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="A filesystem guard plug-in for the Xfce panel"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-fsguard-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-fsguard-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,6 +18,7 @@ LICENSE="Apache-2.0"
 SLOT="0/8" # subslot = soname major version
 KEYWORDS="amd64 arm -hppa ~ia64 ~mips ppc ~ppc64 x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples java python static-libs vim-syntax"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="emacs? ( virtual/emacs )
 	python? ( ${PYTHON_DEPS} )"

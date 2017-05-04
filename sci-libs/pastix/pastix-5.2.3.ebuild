@@ -21,7 +21,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/latestfile/${PID}/${PN}_${PV}.
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~hppa ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc int64 mpi +smp starpu static-libs"
 
 RDEPEND="

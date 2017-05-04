@@ -22,6 +22,7 @@ DEPEND="
 	${RDEPEND}
 	dev-lang/perl
 	sys-apps/help2man
+	virtual/pkgconfig
 "
 
 PATCHES=(

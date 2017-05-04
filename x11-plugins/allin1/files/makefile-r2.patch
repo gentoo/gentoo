@@ -1,0 +1,23 @@
+--- a/src/Makefile.old	2012-10-24 13:12:48.128285694 +0200
++++ b/src/Makefile	2012-10-24 13:19:56.135247071 +0200
+@@ -11,8 +11,9 @@
+ 
+ CC = gcc
+ FLEX = flex
+-LIBFLAGS = -ggdb -Wall -O2 -fPIC
+-CFLAGS = -ggdb -Wall -O2
++LIBFLAGS = -fPIC
++CFLAGS =
++LDFLAGS =
+ GENERATED = allin1 confparse.c
+ LIBRARIES = -L/usr/X11R6/lib -lXext -lX11 -lXpm -lm
+ MODULES = allin1.o dockhelper.o memory.o battery.o cpu.o \
+@@ -58,7 +59,7 @@
+ 
+ 
+ allin1: $(MODULES)
+-	$(CC) $(CFLAGS) -o $@ $(MODULES) -DDEBUG $(LIBRARIES)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(MODULES) -DDEBUG $(LIBRARIES)
+ 
+ 
+ install: allin1

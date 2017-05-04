@@ -53,7 +53,8 @@ REQUIRED_USE="postgres? ( dlz )
 	ldap? ( dlz )
 	gost? ( !libressl ssl )
 	threads? ( caps )
-	dnstap? ( threads )"
+	dnstap? ( threads )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 # sdb-ldap? ( dlz )
 
 DEPEND="
@@ -76,7 +77,10 @@ DEPEND="
 	lmdb? ( dev-db/lmdb )
 	zlib? ( sys-libs/zlib )
 	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
-	python? ( dev-python/ply[${PYTHON_USEDEP}] )"
+	python? (
+		${PYTHON_DEPS}
+		dev-python/ply[${PYTHON_USEDEP}]
+	)"
 #	sdb-ldap? ( net-nds/openldap )
 
 RDEPEND="${DEPEND}

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -21,6 +21,7 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 IUSE="+graph"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]

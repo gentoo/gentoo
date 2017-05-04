@@ -18,6 +18,7 @@ LICENSE="Apache-2.0"
 SLOT="0/9" # subslot = soname major version
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples java python static-libs vim-syntax zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="emacs? ( virtual/emacs )
 	python? ( ${PYTHON_DEPS} )

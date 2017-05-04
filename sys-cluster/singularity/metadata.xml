@@ -5,4 +5,7 @@
 		<email>jlec@gentoo.org</email>
 		<name>Justin Lecher</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">singularityware/singularity</remote-id>
+	</upstream>
 </pkgmetadata>

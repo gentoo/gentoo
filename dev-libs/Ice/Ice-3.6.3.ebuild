@@ -30,6 +30,7 @@ LICENSE="GPL-2"
 SLOT="0/36"
 KEYWORDS="amd64 x86"
 IUSE="doc examples libressl +ncurses mono php python ruby test debug"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=dev-libs/expat-2.0.1
 	>=app-arch/bzip2-1.0.5

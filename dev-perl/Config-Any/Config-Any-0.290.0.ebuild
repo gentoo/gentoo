@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Load configuration from different file formats, transparently"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~ppc-aix"
+KEYWORDS="amd64 arm ppc x86 ~ppc-aix"
 IUSE="test minimal +json"
 
 # json should pull Cpanel-JSON-XS

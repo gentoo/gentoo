@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -8,4 +8,7 @@
 	<use>
 		<flag name="transcode">Install optional dependencies for transcoding support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">ampache/ampache</remote-id>
+	</upstream>
 </pkgmetadata>

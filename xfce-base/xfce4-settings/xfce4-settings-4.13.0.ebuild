@@ -5,7 +5,7 @@ EAPI=6
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="Configuration system for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/"
+HOMEPAGE="https://www.xfce.org/projects/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

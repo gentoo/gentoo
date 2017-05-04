@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ IUSE="doc opengl pdf python cpu_flags_x86_sse2 test"
 RDEPEND="opengl? (
 		media-libs/lcms:2
 		>=media-libs/openimageio-1.1.0
-		media-libs/glew
+		media-libs/glew:0=
 		media-libs/freeglut
 		virtual/opengl
 		)
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 	"
 
 # Documentation building requires Python bindings building
-REQUIRED_USE="doc? ( python )"
+REQUIRED_USE="doc? ( python ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Restricting tests, bugs #439790 and #447908
 RESTRICT="test"

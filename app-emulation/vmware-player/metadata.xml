@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -10,4 +10,7 @@
 		<flag name="ovftool">Install OVF tool for importing and exporting appliance files</flag>
 		<flag name="vmware-tools">Install VMware Tools images</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">akhuettel/systemd-vmware</remote-id>
+	</upstream>
 </pkgmetadata>

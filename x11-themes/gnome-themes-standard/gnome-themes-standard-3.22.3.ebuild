@@ -11,7 +11,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-themes-standard/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE=""
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-solaris ~x86-solaris"
 
 # Depend on gsettings-desktop-schemas-3.4 to make sure 3.2 users don't lose
 # their default background image

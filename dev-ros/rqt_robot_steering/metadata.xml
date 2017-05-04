@@ -6,6 +6,6 @@
 		<name>Gentoo ROS Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ros-visualization/rqt_robot_plugins</remote-id>
+		<remote-id type="github">ros-visualization/rqt_robot_steering</remote-id>
 	</upstream>
 </pkgmetadata>

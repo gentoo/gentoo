@@ -24,7 +24,9 @@ DEPEND="
 	$(add_kdeapps_dep kcalcore)
 	$(add_qt_dep qtwidgets)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"
 
 src_prepare() {
 	kde5_src_prepare
@@ -34,7 +36,7 @@ src_prepare() {
 
 	# delete colliding konsolekalendar translations
 	if [[ ${KDE_BUILD_TYPE} = release ]]; then
-		rm po/*/konsolekalendar.po || die
+		rm -f po/*/konsolekalendar.po || die
 		rm -rf po/*/docs/konsolekalendar || die
 	fi
 }

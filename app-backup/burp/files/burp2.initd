@@ -1,0 +1,45 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+BURP_CONFIG="/etc/burp/burp-server.conf"
+
+description="Burp is a network backup and restore program"
+
+command="/usr/sbin/burp"
+command_args="-c '${BURP_CONFIG}' -F"
+command_background="yes"
+pidfile="/run/burp/burp.server.pid"
+start_stop_daemon_arg="--make-pidfile --wait 500"
+
+extra_started_commands="reload summary"
+description_reload="Reloads configuration"
+description_summary="Displays main status monitor summary"
+
+get_backup_dir() {
+	grep '^directory = ' "${BURP_CONFIG}" \
+		| sed -e 's/^directory = //'
+}
+
+depend() {
+	need localmount
+	after bootmisc
+	use net
+}
+
+start_pre() {
+	checkpath -o root:burp -m 0775 -d /etc/burp
+	checkpath -o root:burp -m 0640 -f /etc/burp/burp-server.conf
+	checkpath -o root:burp -m 0750 -d /etc/burp/clientconfdir
+	checkpath -o root:burp -m 0770 -d "$(get_backup_dir)"
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME} configuration"
+	start-stop-daemon --exec ${command} --signal HUP
+	eend $?
+}
+
+summary() {
+	"${command}" -c "${BURP_CONFIG}" -a S
+}

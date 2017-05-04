@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -9,14 +9,14 @@
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
-# Requires EAPI 5 or 6.
+# Requires EAPI 6.
 
 if [[ ${CATEGORY} != dev-qt ]]; then
 	die "qt5-build.eclass is only to be used for building Qt 5."
 fi
 
 case ${EAPI} in
-	5|6)	: ;;
+	6)	: ;;
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
@@ -47,8 +47,7 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-[[ ${EAPI} == 5 ]] && inherit multilib
-inherit eutils flag-o-matic toolchain-funcs versionator virtualx
+inherit estack flag-o-matic ltprune toolchain-funcs versionator virtualx
 
 HOMEPAGE="https://www.qt.io/"
 
@@ -208,12 +207,7 @@ qt5-build_src_prepare() {
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
 	fi
 
-	if [[ ${EAPI} == 5 ]]; then
-		[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-		epatch_user
-	else
-		default
-	fi
+	default
 }
 
 # @FUNCTION: qt5-build_src_configure
@@ -448,9 +442,6 @@ qt5_prepare_env() {
 qt5_foreach_target_subdir() {
 	[[ -z ${QT5_TARGET_SUBDIRS[@]} ]] && QT5_TARGET_SUBDIRS=("")
 
-	local die_args=()
-	[[ ${EAPI} != 5 ]] && die_args+=(-n)
-
 	local subdir=
 	for subdir in "${QT5_TARGET_SUBDIRS[@]}"; do
 		if [[ ${EBUILD_PHASE} == test ]]; then
@@ -461,12 +452,12 @@ qt5_foreach_target_subdir() {
 		local msg="Running $* ${subdir:+in ${subdir}}"
 		einfo "${msg}"
 
-		mkdir -p "${QT5_BUILD_DIR}/${subdir}" || die "${die_args[@]}" || return $?
-		pushd "${QT5_BUILD_DIR}/${subdir}" >/dev/null || die "${die_args[@]}" || return $?
+		mkdir -p "${QT5_BUILD_DIR}/${subdir}" || die -n || return $?
+		pushd "${QT5_BUILD_DIR}/${subdir}" >/dev/null || die -n || return $?
 
-		"$@" || die "${die_args[@]}" "${msg} failed" || return $?
+		"$@" || die -n "${msg} failed" || return $?
 
-		popd >/dev/null || die "${die_args[@]}" || return $?
+		popd >/dev/null || die -n || return $?
 	done
 }
 

@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-	    <email>amynka@gentoo.org</email>
+		<email>amynka@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">click-contrib/click-log</remote-id>
+		<remote-id type="pypi">click-log</remote-id>
+	</upstream>
 </pkgmetadata>

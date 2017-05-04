@@ -1,0 +1,12 @@
+diff -Nuar a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2017-04-21 12:58:48.000000000 +0200
++++ b/Makefile.am	2017-04-23 00:02:39.312011684 +0200
+@@ -9,7 +9,7 @@
+ # GNU General Public License for more details.
+ #
+ AM_CPPFLAGS = -include config.h
+-AM_CFLAGS = -Wall -Werror
++AM_CFLAGS = -Wall
+ sbin_PROGRAMS = logrotate
+ logrotate_SOURCES = config.c log.c logrotate.c \
+ 		    log.h logrotate.h queue.h

@@ -13,7 +13,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
 IUSE="speech"
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -32,8 +32,11 @@ RDEPEND="
 	dev-libs/grantlee:5
 	speech? ( $(add_qt_dep qtspeech) )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	test? ( $(add_frameworks_dep ktextwidgets) )
+"
+RDEPEND="${COMMON_DEPEND}
+	!kde-apps/kdepim-l10n
 "
 
 RESTRICT+=" test"

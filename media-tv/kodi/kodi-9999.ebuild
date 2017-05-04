@@ -27,10 +27,12 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl +ssl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
+	gles? ( X )
+	opengl? ( X )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
@@ -72,10 +74,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.51.0
 	nfs? ( net-fs/libnfs:= )
 	opengl? ( media-libs/glu )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.2j:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	!libressl? ( >=dev-libs/openssl-1.0.2j:0= )
+	libressl? ( dev-libs/libressl:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	sftp? ( net-libs/libssh[sftp] )
@@ -84,7 +84,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	vaapi? ( x11-libs/libva[opengl] )
 	vdpau? (
 		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
-		media-video/ffmpeg[vdpau]
+		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.50[messages] )
 	X? (
@@ -223,7 +223,7 @@ src_configure() {
 		-DENABLE_NONFREE=$(usex nonfree)
 		-DENABLE_OPENGLES=$(usex gles)
 		-DENABLE_OPENGL=$(usex opengl)
-		-DENABLE_OPENSSL=$(usex ssl)
+		-DENABLE_OPENSSL=ON
 		-DENABLE_OPTICAL=$(usex dvd)
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)

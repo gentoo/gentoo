@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
@@ -10,4 +10,7 @@
 		cronolog is intended to be used in conjunction with a Web server, such
 		as Apache, to split the access log into daily or monthly logs.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">fordmason/cronolog</remote-id>
+	</upstream>
 </pkgmetadata>

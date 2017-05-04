@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A simple Xfce4 media player using GStreamer"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/parole/"
+HOMEPAGE="https://docs.xfce.org/apps/parole/start"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

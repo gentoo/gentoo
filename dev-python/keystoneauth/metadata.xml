@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -8,4 +8,8 @@
 	<longdescription lang="en">
 		This package contains tools for authenticating to an OpenStack-based cloud.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">openstack/keystoneauth</remote-id>
+		<remote-id type="pypi">keystoneauth1</remote-id>
+	</upstream>
 </pkgmetadata>

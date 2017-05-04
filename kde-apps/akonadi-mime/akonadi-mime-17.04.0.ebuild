@@ -32,5 +32,6 @@ DEPEND="
 	x11-misc/shared-mime-info
 "
 RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
 	!kde-apps/kdepimlibs:4
 "

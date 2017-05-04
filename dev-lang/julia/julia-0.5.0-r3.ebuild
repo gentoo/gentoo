@@ -23,7 +23,7 @@ RDEPEND="
 	dev-lang/R:0=
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
-	dev-libs/libgit2:0=
+	<dev-libs/libgit2-0.25:0=
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
 	sci-libs/arpack:0=

@@ -5,7 +5,7 @@ EAPI=5
 inherit multilib xfconf
 
 DESCRIPTION="XKB layout switching panel plug-in for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="BSD-2 GPL-2+"

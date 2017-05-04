@@ -1,5 +1,6 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 
@@ -8,7 +9,7 @@ inherit eutils git-r3
 DESCRIPTION="Perl/Curses front-end for Taskwarrior (app-misc/task)"
 HOMEPAGE="http://tasktools.org/projects/vit.html"
 
-EGIT_REPO_URI="https://git.tasktools.org/scm/ex/vit.git"
+EGIT_REPO_URI="https://git.tasktools.org/EX/vit.git"
 if [[ ${PV} = 9999* ]]; then
 	KEYWORDS=""
 else

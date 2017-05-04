@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="+nls +networkmanager" #+bluetooth
 
 # We need *both* python 2.x and 3.x
-REQUIRED_USE="
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( $(python_gen_useflags 'python2*') )
 	|| ( $(python_gen_useflags 'python3*') )
 "

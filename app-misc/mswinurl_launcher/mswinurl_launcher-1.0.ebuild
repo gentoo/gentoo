@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,16 @@ DESCRIPTION="Launcher and desktop association for MS Windows *.URL (text/x-uri) 
 HOMEPAGE="https://gist.github.com/endolith/77635"
 SRC_URI="https://gist.github.com/endolith/${GIST_STRING/-//archive/}.tar.gz -> ${P}.tar.gz"
 
-RESTRICT="mirror"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="mirror"
 
-DEPEND="dev-util/desktop-file-utils"
 RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}
+	dev-util/desktop-file-utils"
 
 S="${WORKDIR}"/$GIST_STRING
 

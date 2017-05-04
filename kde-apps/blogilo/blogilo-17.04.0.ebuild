@@ -40,6 +40,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!<kde-apps/kdepim-apps-libs-16.04.50
+	!kde-apps/kdepim-l10n
 "
 
 src_configure() {

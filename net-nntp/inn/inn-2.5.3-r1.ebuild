@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools eutils multilib python-single-r1 ssl-cert
@@ -15,6 +16,7 @@ LICENSE="ISC GPL-2+ public-domain BSD-4 BSD-2 RSA BSD MIT GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="berkdb innkeywords inntaggedhash ipv6 kerberos perl python sasl ssl"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	virtual/mta
@@ -23,9 +25,9 @@ DEPEND="
 	sys-libs/zlib
 	kerberos? ( virtual/krb5 )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	python? ( ${PYTHON_DEPS} )
-	berkdb? ( sys-libs/db )
+	berkdb? ( sys-libs/db:* )
 "
 RDEPEND="${DEPEND}"
 

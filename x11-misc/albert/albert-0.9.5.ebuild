@@ -11,7 +11,7 @@ SRC_URI="https://github.com/manuelschneid3r/${PN}/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="

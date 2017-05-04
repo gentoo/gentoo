@@ -9,17 +9,29 @@ MYP=${PN}-gpl-${PV}
 
 DESCRIPTION="GNAT Component Collection"
 HOMEPAGE="http://libre.adacore.com"
-SRC_URI="http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7 -> ${MYP}-src.tar.gz"
+SRC_URI="http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7
+	-> ${MYP}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gmp iconv postgresql projects python readline +shared sqlite static syslog"
+IUSE="gmp gtk iconv postgresql pygobject projects readline +shared sqlite
+	static syslog"
 
 RDEPEND="dev-lang/gnat-gpl
+	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
+	gtk? (
+		dev-ada/gtkada
+		dev-libs/atk
+		dev-libs/glib
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf
+		x11-libs/gtk+:3
+		x11-libs/pango
+	)
+	pygobject? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
 	postgresql? ( dev-db/postgresql:* )
-	python? ( ${PYTHON_DEPS} )
 	sqlite? ( dev-db/sqlite )
 	projects? (
 		dev-ada/gprbuild[static?,shared?]
@@ -27,7 +39,8 @@ RDEPEND="dev-lang/gnat-gpl
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	pygobject? ( gtk )"
 
 S="${WORKDIR}"/${MYP}-src
 
@@ -43,7 +56,7 @@ pkg_setup() {
 		eerror "2) set ADA=gcc-4.9.4 in make.conf"
 		die "ada compiler not available"
 	fi
-	use python && python-single-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -53,28 +66,31 @@ src_prepare() {
 }
 
 src_configure() {
-	local myConf=""
 	if use sqlite; then
-		myConf="$myConf --with-sqlite=$(get_libdir)"
+		myConf="--with-sqlite=$(get_libdir)"
 	else
-		myConf="$myConf --without-sqlite"
+		myConf="--without-sqlite"
+	fi
+	if use gtk ; then
+		myConf="$myConf --with-gtk=3.0"
+	else
+		myConf="$myConf --with-gtk=no"
 	fi
 	econf \
 		GNATCHOP="${GNATCHOP}" \
 		GNATMAKE="${GNATMAKE}" \
+		--with-python \
 		$(use_with gmp) \
 		$(use_with iconv) \
 		$(use_with postgresql) \
 		$(use_enable projects) \
-		$(use_with python) \
+		$(use_enable pygobject) \
 		$(use_enable readline gpl) \
 		$(use_enable readline) \
 		$(use_enable syslog) \
 		--with-python-exec=${EPYTHON} \
 		--enable-shared-python \
-		--without-gtk \
 		--disable-pygtk \
-		--disable-pygobject \
 		$myConf
 }
 
@@ -85,6 +101,7 @@ src_compile() {
 	if use static; then
 		emake PROCESSORS=$(makeopts_jobs) build_library_type/static
 	fi
+	python_fix_shebang .
 }
 
 src_install() {
@@ -96,13 +113,21 @@ src_install() {
 	fi
 	emake DESTDIR="${D}" install_gps_plugin
 	einstalldocs
-	dodoc -r features-* known-problems-* examples
+	dodoc -r features-* known-problems-*
 	mv "${D}"/usr/share/doc/${PN}/GNATColl.pdf "${D}"/usr/share/doc/${PF}/
 	mv "${D}"/usr/share/doc/${PN}/html/html "${D}"/usr/share/doc/${PF}/
+	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples
 	rm -rf "${D}"/usr/share/doc/${PN}
-	use python && python_fix_shebang "${ED}"usr/share/gnatcoll/dborm.py
+	rmdir "${D}"/usr/share/examples
+	docompress -x /usr/share/doc/${PF}/examples
 }
 
 src_test() {
+	# The test suite is in
+	# To run you need to have the ada compiler available as gcc
+	# Even in this case there are still some problem
+	# Going into the testsuite directory and running
+	# ./run.py -v -v
+	# run here (having enabled most USE flags)
 	true
 }

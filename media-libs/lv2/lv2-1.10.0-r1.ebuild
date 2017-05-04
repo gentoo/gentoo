@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE='threads(+)'
+
 inherit python-single-r1 waf-utils
 
 DESCRIPTION="LV2 is a simple but extensible successor of LADSPA"
@@ -15,8 +16,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="doc plugins"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="plugins? ( x11-libs/gtk+:2 media-libs/libsndfile )"
+DEPEND="
+	${PYTHON_DEPS}
+	plugins? ( x11-libs/gtk+:2 media-libs/libsndfile )"
 RDEPEND="${DEPEND}
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]

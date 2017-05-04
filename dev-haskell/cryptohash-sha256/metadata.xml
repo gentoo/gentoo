@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -17,7 +17,10 @@
 		providing the SHA256 hash algorithm without any dependencies on packages other than
 		@base@ and @bytestring@.
 		
-		Consequently, this package can be used as a drop-in replacement for @cryptohash@&#39;s
-		&quot;Crypto.Hash.SHA256&quot; module, though with a clearly smaller footprint.
+		Consequently, this package can be used as a drop-in replacement for @cryptohash@'s
+		"Crypto.Hash.SHA256" module, though with a clearly smaller footprint.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">hvr/cryptohash-sha256</remote-id>
+	</upstream>
 </pkgmetadata>

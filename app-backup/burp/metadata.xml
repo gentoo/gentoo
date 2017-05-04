@@ -12,6 +12,7 @@
 		snapshots when backing up Windows computers.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">grke/burp</remote-id>
 		<remote-id type="sourceforge">burp</remote-id>
 	</upstream>
 </pkgmetadata>

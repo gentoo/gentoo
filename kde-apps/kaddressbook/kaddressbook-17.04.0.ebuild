@@ -55,6 +55,7 @@ DEPEND="${COMMON_DEPEND}
 	test? ( $(add_kdeapps_dep akonadi 'sqlite,tools') )
 "
 RDEPEND="${COMMON_DEPEND}
+	!kde-apps/kdepim-l10n
 	$(add_kdeapps_dep kdepim-runtime)
 "
 

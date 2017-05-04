@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-		<email>gert@pellin.be</email>
-		<name>Gert Pellin</name>
+	<maintainer type="person">
+		<email>c.a.strahl@gmail.com</email>
+		<name>Christian Strahl</name>
 		<description>Proxy maintainer. Assign bugs to him.</description>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>		
-<longdescription lang="en">
-	Fully Integrated C/C++ Development Environment.
-</longdescription>
+	<longdescription lang="en">
+		Fully Integrated C/C++ Development Environment.
+	</longdescription>
 </pkgmetadata>

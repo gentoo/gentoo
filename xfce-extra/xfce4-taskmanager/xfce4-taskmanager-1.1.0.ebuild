@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="Task Manager"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/xfce4-taskmanager"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-taskmanager"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

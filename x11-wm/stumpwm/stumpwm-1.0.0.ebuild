@@ -18,7 +18,7 @@ RESTRICT="strip mirror"
 
 RDEPEND="dev-lisp/cl-ppcre
 		sbcl?  ( >=dev-lisp/sbcl-1.0.32 )
-		sbcl? ( >=dev-lisp/clx-0.7.4 )
+		sbcl? ( >=dev-lisp/clx-0.7.3 )
 		!sbcl? ( !clisp? ( !ecl? ( >=dev-lisp/sbcl-1.0.32 ) ) )
 		!sbcl? ( !clisp? (  ecl? ( >=dev-lisp/ecls-10.4.1 ) ) )
 		!sbcl? (  clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) )

@@ -10,7 +10,7 @@ HOMEPAGE="http://gkrellsun.sourceforge.net/"
 SRC_URI="mirror://sourceforge/gkrellsun/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="alpha amd64 hppa ~ia64 ppc ~sparc x86"
+KEYWORDS="alpha amd64 hppa ~ia64 ppc sparc x86"
 IUSE="nls"
 
 COMMON_DEPEND="app-admin/gkrellm[X]

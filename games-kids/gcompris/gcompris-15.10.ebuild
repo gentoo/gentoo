@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,8 @@ RDEPEND="x11-libs/gtk+:2
 	dev-libs/popt
 	virtual/libintl
 	dev-db/sqlite:3
-	dev-python/pygtk[${PYTHON_USEDEP}]"
+	dev-python/pygtk[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	gnome-base/gnome-common
 	dev-perl/XML-Parser

@@ -25,14 +25,16 @@ DEPEND="
 	$(add_kdeapps_dep kcalcore)
 	$(add_kdeapps_dep kcalutils)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kdepim-l10n
+"
 
 src_prepare() {
 	kde5_src_prepare
 
 	# delete colliding calendarjanitor translations
 	if [[ ${KDE_BUILD_TYPE} = release ]]; then
-		rm po/*/calendarjanitor.po || die
+		rm -f po/*/calendarjanitor.po || die
 	fi
 
 	cmake_comment_add_subdirectory calendarjanitor

@@ -29,6 +29,77 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 May 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-60
+
+# Michał Górny <mgorny@gentoo.org> (01 May 2017)
+# Used only by old (removed) versions of dev-python/google-apitools.
+# Last release in 2015. Removal in 30 days.
+dev-python/protorpc
+
+# Zac Medico <zmedico@gentoo.org> (01 May 2017)
+# Possible API incompatibilities, bug #617174.
+# http://aiohttp.readthedocs.io/en/latest/migration.html
+>=dev-python/aiohttp-2
+>=dev-python/yarl-0.10
+
+# Alice Ferrazzi <alicef@gentoo.org> (29 Apr 2017)
+# CVE-2016-10229 security issue. Masked until upstream add the patch.
+# Bug #615480
+=sys-kernel/vanilla-sources-4.1.39
+
+# Hans de Graaff <graaff@gentoo.org> (28 Apr 2017)
+# Ruby 2.1 will be removed soon, bug #615822.
+# These packages are all ruby21-only and most have not seen upstream
+# releases in a long time.
+dev-ruby/builder:3.1
+dev-ruby/configliere
+dev-ruby/map
+dev-ruby/memcache-client
+dev-ruby/mini_shoulda
+dev-ruby/png
+dev-ruby/rails_autolink
+dev-ruby/rev
+dev-ruby/RubyInline
+dev-ruby/ruby-inifile
+dev-ruby/ruby-tcpwrap
+dev-util/watchr
+# These slots are currently ruby21-only and have been obsoleted by
+# newer slots or are no longer compatible with current dev-ruby/rails
+# versions.
+dev-ruby/activeresource:4.0
+dev-ruby/coffee-rails:4.0
+dev-ruby/jquery-ui-rails:3
+dev-ruby/listen:2
+dev-ruby/prawn:0
+dev-ruby/sprockets:2.2
+dev-ruby/sprockets:2.11
+dev-ruby/sprockets-rails:2.0
+dev-ruby/sprockets-rails:2.1
+dev-ruby/sprockets-rails:2.2
+
+# Dirkjan Ochtman <djc@gentoo.org> (27 Apr 2017)
+# Persona service has been discontinued. Masked for removal in 30 days.
+www-apache/mod_authnz_persona
+
+# Michał Górny <mgorny@gentoo.org> (25 Apr 2017)
+# New synced PyPy 2+3 release. Masked for testing. The distutils C++
+# patch needed major updates for both versions, we need to find some
+# test case for it. Plus, PyPy3 is now based on Python 3.5.
+>=dev-python/pypy-5.7
+>=dev-python/pypy-bin-5.7
+>=dev-python/pypy3-5.7
+>=dev-python/pypy3-bin-5.7
+>=virtual/pypy-5.7
+>=virtual/pypy3-5.7
+
+# Michael Palimaka <kensington@gentoo.org> (23 Apr 2017)
+# Doesn't work with any in-tree versions of vim. Inactive upstream.
+# Bug 607136. Masked for removal in 30 days.
+app-editors/vim-qt
+
 # Michał Górny <mgorny@gentoo.org> (22 Apr 2017)
 # Discontinued, replaced by dev-python/bcolz. No reverse dependencies
 # left. Removal in 30 days. Bug #564878.
@@ -133,11 +204,6 @@ app-emulation/crossover-office-pro-bin
 # Masked, committed accidentally. It's not tested yet, possibly broken.
 =net-im/ejabberd-17.01
 
-# Hans de Graaff <graaff@gentoo.org> (2 Apr 2017)
-# Mask vulnerable slot for security bug. Bug #611384.
-# Removal in 30 days.
-dev-ruby/rubyzip:0
-
 # Yixun Lan <dlan@gentoo.org> (30 Mar 2017)
 # Masked, broken due to emoji support which requre npm package installed (bug #612218)
 =app-i18n/ibus-1.5.15
@@ -148,30 +214,16 @@ dev-ruby/rubyzip:0
 sys-firmware/radeon-ucode
 sys-firmware/amdgpu-ucode
 
-# Patrice Clement <monsieurp@gentoo.org> (28 Mar 2017)
-# Part of the JDK since Java 6. Removal in 30 days.
-dev-java/swing-worker
-
 # Michał Górny <mgorny@gentoo.org> (27 Mar 2017)
 # No revdeps or real use case. Uses ECB mode for encryption which is
 # a bad idea. Requires patching for dev-python/pycryptodome. Abandoned
 # upstream and downstream. Removal in 30 days. Bug #611592.
 dev-python/edpwd
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (24 Mar 2017)
-# Tests fail recently, module is abandoned, upstream does
-# not respond, no revdeps. Removal in 30 days. Bug 603918.
-dev-perl/File-DirWalk
-
 # Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (20 Mar 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-59
 
 # Kent Fredric <kentnl@gentoo.org> (18 Mar 2017)
 # ExtUtils::MakeMaker 7.18+ Block
@@ -200,6 +252,8 @@ dev-perl/File-DirWalk
 >=sci-geosciences/geocode-glib-3.23
 >=dev-libs/gjs-1.47
 >=dev-libs/glib-2.51
+>=net-libs/phodav-2.2
+>=dev-util/gdbus-codegen-2.51
 >=dev-cpp/glibmm-2.51
 >=x11-themes/gnome-backgrounds-3.23
 >=gnome-extra/gnome-boxes-3.23
@@ -221,6 +275,7 @@ dev-perl/File-DirWalk
 >=gnome-extra/gnome-system-monitor-3.23
 >=x11-terms/gnome-terminal-3.23
 >=dev-libs/gobject-introspection-1.51
+>=dev-libs/gobject-introspection-common-1.51
 >=gnome-base/gsettings-desktop-schemas-3.23
 >=app-text/gspell-1.3
 >=net-libs/gtk-vnc-0.7
@@ -358,11 +413,17 @@ x11-libs/gtk+:1
 >=dev-perl/Math-BigInt-GMP-1.600.0
 
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
-# Depends on slotted lua
+# Depends on slotted lua, 
+# odd revisions are slotted lua, 
+# even revisions are unslotted lua
 =dev-db/redis-3.2.5-r1
-=dev-db/redis-3.2.5-r2
+=dev-db/redis-3.2.5-r2 # except somebody bumped it out of pattern
+=dev-db/redis-3.2.5-r5
 =dev-db/redis-3.2.6-r1
-=dev-db/redis-3.2.6-r2
+=dev-db/redis-3.2.6-r2 # except somebody bumped it out of pattern
+=dev-db/redis-3.2.6-r5
+=dev-db/redis-3.2.8-r1
+
 
 # Ian Stakenvicius (17 Nov 2016)
 # Does not honour LD_LIBRARY_PATH set in the environment, causing

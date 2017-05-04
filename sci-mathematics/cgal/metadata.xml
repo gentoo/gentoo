@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -17,9 +17,12 @@
     enclosing circle, and multidimensional query structures.
   * the Support Library which offers interfaces to other packages,
     e.g., for visualisation, and I/O, and other support facilities.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="mpfi">Enable support for multiple recision interval arithmetic via <pkg>sci-libs/mpfi</pkg></flag>
-	<flag name="ntl">Enable support for <pkg>dev-libs/ntl</pkg></flag>
+    <flag name="ntl">Enable support for <pkg>dev-libs/ntl</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="github">CGAL/cgal</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,0 +1,24 @@
+--- a/configs/client/burp.conf.in
++++ b/configs/client/burp.conf.in
+@@ -10,7 +10,8 @@
+ # 0 to decide automatically, 1 to force protocol1 mode (file level granularity
+ # with a pseudo mirrored storage on the server and optional rsync). 2 forces
+ # protocol2 mode (inline deduplication with variable length blocks).
+-# protocol = 0
++# WARNING: as of April 2017 protocol2 is still considered experimental.
++protocol = 1
+ pidfile = @runstatedir@/burp.client.pid
+ syslog = 0
+ stdout = 1
+--- a/configs/server/burp.conf.in
++++ b/configs/server/burp.conf.in
+@@ -21,7 +21,8 @@
+ # protocol2 mode (inline deduplication with variable length blocks).
+ # Like many other settings, this can be set per client in the clientconfdir
+ # files.
+-# protocol = 0
++# WARNING: as of April 2017 protocol2 is still considered experimental.
++protocol = 1
+ pidfile = @runstatedir@/burp.server.pid
+ hardlinked_archive = 0
+ working_dir_recovery_method = delete

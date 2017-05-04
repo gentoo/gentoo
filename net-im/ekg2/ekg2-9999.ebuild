@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,6 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gadu gpm gpg gtk minimal ncurses nls nntp openssl
 	perl python readline rss spell sqlite ssl xmpp unicode zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/glib:2=
 	gadu? ( <net-libs/libgadu-1.12:0= )

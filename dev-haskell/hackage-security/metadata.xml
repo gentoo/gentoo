@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -22,11 +22,14 @@
 		facilities for author package signing.
 		
 		The library has two main entry points:
-		&quot;Hackage.Security.Client&quot; is the main entry point for
+		"Hackage.Security.Client" is the main entry point for
 		clients (the typical example being @cabal@), and
-		&quot;Hackage.Security.Server&quot; is the main entry point for
+		"Hackage.Security.Server" is the main entry point for
 		servers (the typical example being @hackage-server@).
 		
 		This is a beta release.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">well-typed/hackage-security</remote-id>
+	</upstream>
 </pkgmetadata>

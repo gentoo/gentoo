@@ -17,11 +17,14 @@ IUSE="+camlp4 +ppx"
 DEPEND="
 	dev-libs/libev
 	>=dev-lang/ocaml-4.02:=
+	dev-ml/result:=
 	ppx? ( dev-ml/ppx_tools:= )
 	camlp4? ( dev-ml/camlp4:= )"
 
 RDEPEND="${DEPEND}
 	!<www-servers/ocsigen-1.1"
+DEPEND="${DEPEND}
+	dev-ml/cppo"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1-with-linking-exception"

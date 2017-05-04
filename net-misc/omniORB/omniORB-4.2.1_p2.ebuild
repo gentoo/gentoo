@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ EAPI=6
 # highest version the configure script will accept is python-3.3, but
 # that's on it's way out, so we prefer to stick with python-2.7 for now.
 PYTHON_COMPAT=( python2_7 )
+
 inherit python-single-r1
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 MY_P="${P/_p/-}"
 DESCRIPTION="A robust, high-performance CORBA 2 ORB"
@@ -21,6 +21,7 @@ LICENSE="LGPL-2 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc ipv6 ssl"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	ssl? ( dev-libs/openssl:0= )"

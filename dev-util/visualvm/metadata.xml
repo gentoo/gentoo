@@ -5,5 +5,5 @@
 	<email>java@gentoo.org</email>
 	<name>Java</name>
 </maintainer>
-<longdescription>The IcedTea project provides a harness to build the source code from VisualVM. </longdescription>
+<longdescription>The IcedTea project provides a harness to build the source code from VisualVM.</longdescription>
 </pkgmetadata>

@@ -19,7 +19,7 @@ RUBY_S="${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RUBY_PATCHES=( fakeweb-ruby22.patch

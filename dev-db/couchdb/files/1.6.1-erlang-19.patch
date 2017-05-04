@@ -1,0 +1,105 @@
+From 41304b83946f029f9712714cc89e9f630442d668 Mon Sep 17 00:00:00 2001
+From: Eugene Pirogov <iamexile@gmail.com>
+Date: Mon, 11 Jul 2016 00:38:11 +0300
+Subject: [PATCH] build: support OTP-19.0
+
+- add travis support for newer OTP releases
+- update docs
+- update configure.ac
+
+closes #431
+---
+ .travis.yml                       | 3 +++
+ INSTALL.Unix                      | 2 +-
+ INSTALL.Windows                   | 2 +-
+ configure.ac                      | 8 ++++----
+ share/doc/src/install/unix.rst    | 2 +-
+ share/doc/src/install/windows.rst | 2 +-
+ 6 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/.travis.yml b/.travis.yml
+index 1bddb6a..ef19231 100644
+--- a/INSTALL.Unix
++++ b/INSTALL.Unix
+@@ -39,7 +39,7 @@ Dependencies
+ 
+ You should have the following installed:
+ 
+- * Erlang OTP (>=R14B01, =<R18) (http://erlang.org/)
++ * Erlang OTP (>=R14B01, =<R19) (http://erlang.org/)
+  * ICU                          (http://icu-project.org/)
+  * OpenSSL                      (http://www.openssl.org/)
+  * Mozilla SpiderMonkey (1.8.5) (http://www.mozilla.org/js/spidermonkey/)
+diff --git a/INSTALL.Windows b/INSTALL.Windows
+index 1ca04fd..41fdcef 100644
+--- a/INSTALL.Windows
++++ b/INSTALL.Windows
+@@ -29,7 +29,7 @@ Dependencies
+ 
+ You will need the following installed:
+ 
+- * Erlang OTP (>=14B01, <R18)    (http://erlang.org/)
++ * Erlang OTP (>=14B01, <R19)    (http://erlang.org/)
+  * ICU        (>=4.*)            (http://icu-project.org/)
+  * OpenSSL    (>=0.9.8r)         (http://www.openssl.org/)
+  * Mozilla SpiderMonkey (=1.8.5) (http://www.mozilla.org/js/spidermonkey/)
+diff --git a/configure.ac b/configure.ac
+index bf9ffc4..a6a667a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -411,7 +411,7 @@ esac
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking Erlang version compatibility" >&5
+ $as_echo_n "checking Erlang version compatibility... " >&6; }
+-erlang_version_error="The installed Erlang version must be >= R14B (erts-5.8.1) and =< 18 (erts-7.0)"
++erlang_version_error="The installed Erlang version must be >= R14B (erts-5.8.1) and =< 19 (erts-8.0)"
+ 
+ version="`${ERL} -version 2>&1 | ${SED} 's/[[^0-9]]/ /g'` 0 0 0"
+ major_version=`echo $version | ${AWK} "{print \\$1}"`
+@@ -419,7 +419,7 @@ minor_version=`echo $version | ${AWK} "{print \\$2}"`
+ patch_version=`echo $version | ${AWK} "{print \\$3}"`
+ echo -n "detected Erlang version: $major_version.$minor_version.$patch_version..."
+ 
+-if test $major_version -lt 5 -o $major_version -gt 7; then
++if test $major_version -lt 5 -o $major_version -gt 8; then
+     as_fn_error $? "$erlang_version_error major_version does not match" "$LINENO" 5
+ fi
+ 
+@@ -438,9 +438,9 @@ otp_release="`\
+ AC_SUBST(otp_release)
+ 
+ AM_CONDITIONAL([USE_OTP_NIFS],
+-    [can_use_nifs=$(echo $otp_release | grep -E "^(R14B|R15|R16|17|18)")])
++    [can_use_nifs=$(echo $otp_release | grep -E "^(R14B|R15|R16|17|18|19)")])
+ AM_CONDITIONAL([USE_EJSON_COMPARE_NIF],
+-    [can_use_ejson=$(echo $otp_release | grep -E "^(R14B03|R15|R16|17|18)")])
++    [can_use_ejson=$(echo $otp_release | grep -E "^(R14B03|R15|R16|17|18|19)")])
+ 
+ has_crypto=`\
+     ${ERL} -eval "\
+diff --git a/share/doc/src/install/unix.rst b/share/doc/src/install/unix.rst
+index 904c128..b4684fa 100644
+--- a/share/doc/src/install/unix.rst
++++ b/share/doc/src/install/unix.rst
+@@ -52,7 +52,7 @@ Dependencies
+ 
+ You should have the following installed:
+ 
+-* `Erlang OTP (>=R14B01, =<R18) <http://erlang.org/>`_
++* `Erlang OTP (>=R14B01, =<R19) <http://erlang.org/>`_
+ * `ICU                          <http://icu-project.org/>`_
+ * `OpenSSL                      <http://www.openssl.org/>`_
+ * `Mozilla SpiderMonkey (1.8.5) <http://www.mozilla.org/js/spidermonkey/>`_
+diff --git a/share/doc/src/install/windows.rst b/share/doc/src/install/windows.rst
+index 494ef65..0228550 100644
+--- a/share/doc/src/install/windows.rst
++++ b/share/doc/src/install/windows.rst
+@@ -90,7 +90,7 @@ Dependencies
+ 
+ You should have the following installed:
+ 
+-* `Erlang OTP (>=14B01, <R18)    <http://erlang.org/>`_
++* `Erlang OTP (>=14B01, <R19)    <http://erlang.org/>`_
+ * `ICU        (>=4.*)            <http://icu-project.org/>`_
+ * `OpenSSL    (>0.9.8r)          <http://www.openssl.org/>`_
+ * `Mozilla SpiderMonkey (=1.8.5) <http://www.mozilla.org/js/spidermonkey/>`_

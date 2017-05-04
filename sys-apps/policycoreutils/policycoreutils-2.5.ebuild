@@ -40,10 +40,10 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
+DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/glibc-2.4
 	>=sys-libs/libcap-1.10-r10:=
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python]
+	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
 	sys-devel/gettext
@@ -52,7 +52,7 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 		sys-apps/dbus
 		dev-libs/dbus-glib:=
 	)
-	audit? ( >=sys-process/audit-1.5.1 )
+	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
 	${PYTHON_DEPS}"
 
@@ -61,7 +61,7 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 
 # pax-utils for scanelf used by rlpkg
 RDEPEND="${DEPEND}
-	dev-python/sepolgen
+	dev-python/sepolgen[${PYTHON_USEDEP}]
 	app-misc/pax-utils
 	!<sys-apps/openrc-0.14"
 
