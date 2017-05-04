@@ -16,6 +16,6 @@ IUSE=""
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtnetwork-${PV}
-	qml? ( ~dev-qt/qtwidgets-${PV} )
+	examples? ( ~dev-qt/qtwidgets-${PV} )
 "
 RDEPEND="${DEPEND}"

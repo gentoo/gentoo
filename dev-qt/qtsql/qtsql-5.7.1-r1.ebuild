@@ -12,7 +12,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="freetds mysql oci8 odbc postgres +sqlite widgets"
+IUSE="freetds mysql oci8 odbc postgres +sqlite"
 
 REQUIRED_USE="
 	|| ( freetds mysql oci8 odbc postgres sqlite )
