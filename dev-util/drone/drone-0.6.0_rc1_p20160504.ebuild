@@ -4,7 +4,8 @@
 EAPI=6
 
 EGO_PN="github.com/drone/drone/..."
-EGIT_COMMIT="cc530301fe84f19c3bb6a64d694fa439e0770cce"
+EGIT_COMMIT="797bb4970fced3062c001c4de5842110b535731a"
+EGO_VENDOR=( "github.com/drone/drone-ui d8426a1658a71c0dd0c7a0aa6f5cc072e3328f9e" )
 
 inherit golang-build golang-vcs-snapshot user
 
@@ -20,8 +21,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-go/go-bindata
-	dev-go/go-bindata-assetfs:=
-	>=dev-util/drone-ui-0.6.0_rc1_pre20170412:="
+	dev-go/go-bindata-assetfs:="
 
 pkg_setup() {
 	enewgroup drone
