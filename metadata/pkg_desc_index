@@ -7169,7 +7169,7 @@ dev-php/psr-log 1.0.2: Common interface for logging libraries
 dev-php/recaptcha 1.1.2-r1: PHP client library for Google's reCAPTCHA service
 dev-php/sebastian-code-unit-reverse-lookup 1.0.1: Looks up which function or method a line of code belongs to
 dev-php/sebastian-comparator 1.2.4: Compare PHP values for equality
-dev-php/sebastian-diff 1.4.1: PHP Diff implementation
+dev-php/sebastian-diff 1.4.1-r1: PHP Diff implementation
 dev-php/sebastian-environment 2.0.0: Helps writing PHP code that has runtime-specific execution paths
 dev-php/sebastian-exporter 2.0.0: Export PHP variables for visualization
 dev-php/sebastian-global-state 1.1.1: Snapshotting of global state
@@ -7189,7 +7189,7 @@ dev-php/symfony-console 2.7.9-r1: Subtree split of the Symfony Console Component
 dev-php/symfony-dependency-injection 2.8.15: Symfony DependencyInjection Component
 dev-php/symfony-event-dispatcher 2.1.0-r1: Symfony EventDispatcher Component
 dev-php/symfony-filesystem 3.2.8: Symfony Filesystem Component
-dev-php/symfony-finder 3.2.6: Symfony Finder Component
+dev-php/symfony-finder 3.2.8: Symfony Finder Component
 dev-php/symfony-process 3.2.6: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 6.2.13-r1: TCPDF is a FLOSS PHP class for generating PDF documents
