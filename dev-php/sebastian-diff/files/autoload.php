@@ -13,8 +13,8 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 		'sebastianbergmann\diff\line' => '/Line.php',
 		'sebastianbergmann\diff\parser' => '/Parser.php',
 		'sebastianbergmann\diff\lcs\longestcommonsubsequence' => '/LCS/LongestCommonSubsequence.php',
-                'sebastianbergmann\diff\lcs\memoryefficientlongestcommonsubsequenceimplementation' => '/LCS/MemoryEfficientLongestCommonSubsequenceImplementation.php',
-		'sebastianbergmann\diff\lcs\timeefficientlongestcommonsubsequenceimplementation' => '/LCS/TimeEfficientLongestCommonSubsequenceImplementation.php',
+                'sebastianbergmann\diff\lcs\memoryefficientimplementation' => '/LCS/MemoryEfficientLongestCommonSubsequenceImplementation.php',
+		'sebastianbergmann\diff\lcs\timeefficientimplementation' => '/LCS/TimeEfficientLongestCommonSubsequenceImplementation.php',
 	),
 	__DIR__
 );
