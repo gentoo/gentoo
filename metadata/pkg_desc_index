@@ -8537,7 +8537,7 @@ dev-python/reno 1.2.0 1.8.0: Release notes manager, storing release notes in a g
 dev-python/reportlab 3.3.0-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
-dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
+dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI
 dev-python/reproject 0.2 0.3.1: Reproject astronomical images with Python
 dev-python/requests 2.8.1 2.11.1 2.12.5 2.13.0: HTTP library for human beings
 dev-python/requests-cache 0.4.12: Persistent cache for requests library
