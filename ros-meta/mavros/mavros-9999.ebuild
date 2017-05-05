@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,10 +10,10 @@ IUSE=""
 HOMEPAGE="http://wiki.ros.org/mavros"
 
 RDEPEND="
+	dev-ros/mavros_msgs
 	dev-ros/libmavconn
 	dev-ros/mavros
 	dev-ros/mavros_extras
-	dev-ros/mavros_msgs
 "
 DEPEND="${RDEPEND}"
 [ "${PV}" = "9999" ] || KEYWORDS="~amd64 ~arm"
