@@ -3,7 +3,7 @@
 
 EAPI=5
 GCONF_DEBUG="no"
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 VALA_USE_DEPEND="vapigen"
 
 inherit eutils gnome2 python-r1 vala
