@@ -48,11 +48,6 @@ gnome-extra/nm-applet teamd
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
 
-# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# app-i18n/uchardet lacks sparc keyword. See bug #569114.
-media-video/mpv uchardet
-
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
 dev-cpp/eigen test
@@ -76,11 +71,6 @@ app-text/tesseract scrollview
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no sparc support in media-libs/glfw
 app-text/mupdf opengl
-
-# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-lang/luajit lacks sparc keyword. See bug #488318.
-media-video/mpv luajit
 
 # Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
 # Needs keywording. #569254
@@ -137,10 +127,6 @@ gnome-base/gvfs nfs
 # dev-lang/luajit and dev-lua/lgi and lack sparc keyword, bug #551540
 dev-libs/libpeas lua jit
 
-# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
-# media-libs/rubberband lacks sparc keyword, bug #548446
-media-video/mpv rubberband
-
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
@@ -179,10 +165,6 @@ dev-haskell/vector test
 # Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf
-
-# Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
-# Missing keywords, bug #508226
-media-video/mpv sdl
 
 # Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
 # Missing keywords, bug #507490
