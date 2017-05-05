@@ -18,6 +18,7 @@ RDEPEND="
 	>=sys-auth/libyubikey-1.6
 	virtual/libusb:1"
 DEPEND="${RDEPEND}
+	app-text/asciidoc
 	virtual/pkgconfig"
 RDEPEND="${RDEPEND}
 	consolekit? ( sys-auth/consolekit[acl] )"
