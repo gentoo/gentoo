@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
@@ -34,7 +34,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${RDEPEND}"
 
 src_compile() {
-	cd scripts
+	cd scripts || die
 	unset PTPAX
 	unset XTPAX
 	use ptpax && export PTPAX="yes"
@@ -43,6 +43,6 @@ src_compile() {
 }
 
 src_install() {
-	cd scripts
+	cd scripts || die
 	distutils-r1_src_install
 }
