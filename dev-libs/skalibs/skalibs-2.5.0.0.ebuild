@@ -11,7 +11,7 @@ SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc ipv6 static-libs"
 
 DEPEND=">=sys-devel/make-3.81"
