@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=all_sfx? ( app-arch/unrar )
+DESCRIPTION=RAR compressor/uncompressor
+EAPI=6
+HOMEPAGE=http://www.rarsoft.com/
+IUSE=all_sfx
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=RAR BSD BSD-2
+RDEPEND=sys-libs/glibc
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=x86? ( http://www.rarsoft.com/rar/rarlinux-5.5.b2.tar.gz -> rarlinux-5.5.b2.tar.gz ) amd64? ( http://www.rarsoft.com/rar/rarlinux-x64-5.5.b2.tar.gz -> rarlinux-x64-5.5.b2.tar.gz ) all_sfx? ( http://www.rarsoft.com/rar/rarlinux-5.5.b2.tar.gz -> rarlinux-5.5.b2.tar.gz http://www.rarsoft.com/rar/rarlinux-x64-5.5.b2.tar.gz -> rarlinux-x64-5.5.b2.tar.gz http://www.rarsoft.com/rar/winrar-x64-55b2.exe -> winrar-x64-55b2.exe )
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_md5_=ffb9721ca57babcfc9b75e211b7c7239
