@@ -4581,7 +4581,7 @@ dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.1.9 2.1.10 2.2.6 2.2.7 2.2.7-r1 2.3.3-r1 2.3.4 2.3.4-r1 2.4.1 2.4.1-r1: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0: Systems programming language from Mozilla
-dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1: The Scala Programming Language
+dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1 2.12.2: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
@@ -13218,7 +13218,7 @@ media-libs/vamp-plugin-sdk 2.6-r1 2.7.1: Audio processing plugin system for plug
 media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.11.0: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/vips 7.38.5-r1: VIPS Image Processing Library
-media-libs/virglrenderer 0.2.0 0.6.0 9999: library used implement a virtual 3D GPU used by qemu
+media-libs/virglrenderer 0.6.0 9999: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7: Volume rendering library
