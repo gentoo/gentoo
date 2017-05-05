@@ -10,10 +10,15 @@ SRC_URI="${HOMEPAGE}${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="debug nls lm_sensors selinux static"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="debug isag nls lm_sensors selinux static"
 
 CDEPEND="
+	isag? (
+		dev-lang/tk:0
+		dev-vcs/rcs
+		sci-visualization/gnuplot
+	)
 	nls? ( virtual/libintl )
 	lm_sensors? ( sys-apps/lm_sensors )
 "
@@ -58,6 +63,7 @@ src_configure() {
 		rcdir=${SYSSTAT_FAKE_RC_DIR} \
 		econf \
 			$(use_enable debug debuginfo) \
+			$(use_enable isag install-isag) \
 			$(use_enable lm_sensors sensors) \
 			$(use_enable nls) \
 			--enable-copy-only \
@@ -80,7 +86,7 @@ src_install() {
 		MANGRPARG='' \
 		install
 
-	dodoc -r contrib/
+	dodoc contrib/sargraph/sargraph
 
 	rm -r "${D}/${SYSSTAT_FAKE_RC_DIR}" || die
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
