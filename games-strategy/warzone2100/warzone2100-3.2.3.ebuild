@@ -74,7 +74,7 @@ src_prepare() {
 }
 
 src_configure() {
-	myeconfargs=(
+	local myeconfargs=(
 		--docdir=/usr/share/doc/${PF}
 		--localedir=/usr/share/locale
 		--with-distributor="Gentoo ${PF}"
