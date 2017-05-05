@@ -1,0 +1,20 @@
+--- a/build/linux/unbundle/opus.gn.orig	2017-05-05 13:40:51.267582823 +0000
++++ b/build/linux/unbundle/opus.gn	2017-05-05 13:41:38.156561667 +0000
+@@ -5,7 +5,7 @@
+ import("//build/config/linux/pkg_config.gni")
+ import("//build/shim_headers.gni")
+ 
+-pkg_config("system_opus") {
++pkg_config("opus_config") {
+   packages = [ "opus" ]
+ }
+ 
+@@ -23,7 +23,7 @@
+   deps = [
+     ":opus_shim",
+   ]
+-  public_configs = [ ":system_opus" ]
++  public_configs = [ ":opus_config" ]
+ }
+ 
+ source_set("opus_compare") {
