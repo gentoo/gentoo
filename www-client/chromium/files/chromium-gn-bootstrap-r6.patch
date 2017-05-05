@@ -1,0 +1,18 @@
+--- a/tools/gn/bootstrap/bootstrap.py.orig	2017-05-05 10:28:25.450118804 +0000
++++ b/tools/gn/bootstrap/bootstrap.py	2017-05-05 10:29:39.339673530 +0000
+@@ -546,6 +546,7 @@
+       'base/trace_event/memory_infra_background_whitelist.cc',
+       'base/trace_event/memory_peak_detector.cc',
+       'base/trace_event/memory_tracing_observer.cc',
++      'base/trace_event/memory_usage_estimator.cc',
+       'base/trace_event/process_memory_dump.cc',
+       'base/trace_event/process_memory_maps.cc',
+       'base/trace_event/process_memory_totals.cc',
+@@ -629,6 +630,7 @@
+         'tool': 'cxx',
+     }
+     static_libraries['base']['sources'].extend([
++        'base/memory/shared_memory_handle_posix.cc',
+         'base/memory/shared_memory_posix.cc',
+         'base/memory/shared_memory_tracker.cc',
+         'base/nix/xdg_util.cc',
