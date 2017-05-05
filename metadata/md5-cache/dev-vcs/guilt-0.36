@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-vcs/git app-text/asciidoc app-text/xmlto dev-lang/perl
+DESCRIPTION=A series of bash scripts which add a quilt-like interface to git
+EAPI=6
+HOMEPAGE=http://repo.or.cz/w/guilt.git
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git
+RESTRICT=test
+SLOT=0
+SRC_URI=http://repo.or.cz/w/guilt.git/snapshot/22d785dd24329170f66e7696da38b3e90e033d61.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_md5_=f398f34ee4f9b7894abab9deb8566bd6
