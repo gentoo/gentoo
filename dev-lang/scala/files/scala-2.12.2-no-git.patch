@@ -1,0 +1,23 @@
+--- scala-2.12.2-orig/project/VersionUtil.scala	2017-04-13 02:16:08.000000000 +1000
++++ scala-2.12.2/project/VersionUtil.scala	2017-05-04 23:45:50.715285243 +1000
+@@ -80,18 +80,8 @@
+ 
+     val (dateObj, sha) = {
+       try {
+-        // Use JGit to get the commit date and SHA
+-        import org.eclipse.jgit.storage.file.FileRepositoryBuilder
+-        import org.eclipse.jgit.revwalk.RevWalk
+-        val db = new FileRepositoryBuilder().findGitDir.build
+-        val head = db.resolve("HEAD")
+-        if(head eq null) {
+-          log.info("No git HEAD commit found -- Using current date and 'unknown' SHA")
+-          (new Date, "unknown")
+-        } else {
+-          val commit = new RevWalk(db).parseCommit(head)
+-          (new Date(commit.getCommitTime.toLong * 1000L), commit.getName.substring(0, 7))
+-        }
++        val commit = "21d12e9f5ec1ffe023f509848911476c1552d06f"
++        (new Date, commit.substring(0, 7))
+       } catch { case ex: Exception =>
+         log.error("Could not determine commit date + SHA: "+ex)
+         log.trace(ex)
