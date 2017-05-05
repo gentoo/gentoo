@@ -6,9 +6,9 @@ EAPI="6"
 MY_PV="${PV/0_beta/b}"
 DESCRIPTION="RAR compressor/uncompressor"
 HOMEPAGE="http://www.rarsoft.com/"
-URI_x86="http://www.rarsoft.com/rar/rarlinux-${MY_PV}.tar.gz -> rarlinux-${MY_PV}-r1.tar.gz"
-URI_amd64="http://www.rarsoft.com/rar/rarlinux-x64-${MY_PV}.tar.gz -> rarlinux-x64-${MY_PV}-r1.tar.gz"
-URI_w64="http://www.rarsoft.com/rar/winrar-x64-${MY_PV//.}.exe -> winrar-x64-${MY_PV//.}-r1.exe"
+URI_x86="http://www.rarsoft.com/rar/rarlinux-${MY_PV}.tar.gz -> rarlinux-${MY_PV}.tar.gz"
+URI_amd64="http://www.rarsoft.com/rar/rarlinux-x64-${MY_PV}.tar.gz -> rarlinux-x64-${MY_PV}.tar.gz"
+URI_w64="http://www.rarsoft.com/rar/winrar-x64-${MY_PV//.}.exe -> winrar-x64-${MY_PV//.}.exe"
 SRC_URI="x86? ( ${URI_x86} )
 	amd64? ( ${URI_amd64} )
 	all_sfx? (
@@ -19,7 +19,7 @@ SRC_URI="x86? ( ${URI_x86} )
 
 LICENSE="RAR BSD BSD-2"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="all_sfx"
 RESTRICT="mirror bindist"
 
