@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 RAILS_ENV=${RAILS_ENV:-production}
@@ -11,30 +11,28 @@ REDMINE_GROUP=${REDMINE_GROUP:-redmine}
 REDMINE_PIDFILE="/var/run/redmine/server.pid"
 
 depend() {
-	use apache2 git-daemon mysql net postgresql svnserve
+	use git-daemon mysql net postgresql svnserve
 }
 
 start_pre() {
 	if [ ! -e "${REDMINE_DIR}/config/initializers/secret_token.rb" ] ; then
-		eerror "Execute the following command to initlize environment:"
+		eerror "Execute the following command to initialize environment:"
 		eerror
 		eerror "# emerge --config www-apps/redmine"
 		eerror
 		return 1
 	fi
-	if [ ! -d /var/run/redmine ]; then
-		checkpath -q -d -m 0755 -o redmine:redmine /var/run/redmine
-	fi
+	checkpath -q -d -m 0755 -o redmine:redmine /var/run/redmine
 }
 
 start() {
 	ebegin "Starting redmine"
-	cd "${REDMINE_DIR}"
-	start-stop-daemon --start --quiet --user ${REDMINE_USER}:${REDMINE_GROUP} \
+	start-stop-daemon --start --quiet \
+		--user "${REDMINE_USER}:${REDMINE_GROUP}" \
 		--pidfile "${REDMINE_PIDFILE}" \
-		--exec /usr/bin/ruby "${REDMINE_DIR}"/script/rails server -- \
-		--daemon --environment=${RAILS_ENV} \
-		--binding=${REDMINE_ADDRESS} --port=${REDMINE_PORT} \
+		--exec /usr/bin/ruby "${REDMINE_DIR}"/bin/rails server -- \
+		--daemon --environment="${RAILS_ENV}" \
+		--binding="${REDMINE_ADDRESS}" --port="${REDMINE_PORT}" \
 		--pid="${REDMINE_PIDFILE}" \
 		${REDMINE_OPTS}
 	eend $?
@@ -42,7 +40,6 @@ start() {
 
 stop() {
 	ebegin "Stopping redmine"
-	cd "${REDMINE_DIR}"
 	start-stop-daemon --signal INT --quiet --pidfile "${REDMINE_PIDFILE}"
 	eend $?
 }
