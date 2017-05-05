@@ -1,0 +1,40 @@
+sysstat declares 16 bytes alignment for many structs. But realloc does not
+guarantee 16 byte alignment (it maxes out at 8 bytes for most systems).
+Because of declared 16 byte alignement, the compiler is free to generate SIMD
+16 byte loads which require aligned addresses. Use posix_memalign instead to
+enforce 16 bytes data alignment to avoid crashes.
+
+https://github.com/sysstat/sysstat/issues/148
+
+Patch by Manoj Gupta <manojgupta@google.com>
+
+--- a/common.h
++++ b/common.h
+@@ -11,6 +11,7 @@
+ 
+ #include <time.h>
+ #include <sched.h>	/* For __CPU_SETSIZE */
++#include <stdlib.h>
+ #include <limits.h>
+ 
+ #ifdef HAVE_SYS_SYSMACROS_H
+@@ -91,13 +92,18 @@
+    					TYPE *_p_;						 \
+ 				   	_p_ = S;						 \
+    				   	if (SIZE) {						 \
+-   				      		if ((S = (TYPE *) realloc(S, (SIZE))) == NULL) { \
++						void *_ptr = NULL;				 \
++						int error = posix_memalign(&_ptr, 16, SIZE);	 \
++						if (error || _ptr == NULL) {			 \
+ 				         		perror("realloc");			 \
+ 				         		exit(4);				 \
+ 				      		}						 \
++						S = (TYPE *)_ptr;				 \
+ 				      		/* If the ptr was null, then it's a malloc() */	 \
+ 						if (!_p_) {					 \
+ 							memset(S, 0, (SIZE));			 \
++						} else {					 \
++							memcpy(S, _p_, (SIZE));			 \
+ 						}						 \
+ 				   	}							 \
+ 					if (!S) {						 \
