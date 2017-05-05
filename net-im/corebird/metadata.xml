@@ -9,8 +9,11 @@
 	<maintainer type="person">
 		<email>markpariente@gmail.com</email>
 		<name>Mark R. Pariente</name>
-		<description>Proxied maintainer; CC in all bugs 
-bugs</description>
+		<description>Proxied maintainer; CC in all bugs bugs</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>moschlar@metalabs.de</email>
+		<name>Moritz Schlarb</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -18,6 +21,7 @@ bugs</description>
 	</maintainer>
 	<use>
 		<flag name="glade">Install glade catalogs for corebird</flag>
+		<flag name="spellcheck">Support spell checking</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">baedert/corebird</remote-id>
