@@ -770,10 +770,14 @@ distutils-r1_src_compile() {
 	fi
 }
 
-_clean_egg_info() {
-	# Work around for setuptools test behavior (bug 534058).
-	# https://bitbucket.org/pypa/setuptools/issue/292
-	rm -rf "${BUILD_DIR}"/lib/*.egg-info
+# @FUNCTION: _distutils-r1_clean_egg_info
+# @INTERNAL
+# @DESCRIPTION:
+# Clean up potential stray egg-info files left by setuptools test phase.
+# Those files ended up being unversioned, and caused issues:
+# https://bugs.gentoo.org/534058
+_distutils-r1_clean_egg_info() {
+	rm -rf "${BUILD_DIR}"/lib/*.egg-info || die
 }
 
 distutils-r1_src_test() {
@@ -781,7 +785,7 @@ distutils-r1_src_test() {
 
 	if declare -f python_test >/dev/null; then
 		_distutils-r1_run_foreach_impl python_test
-		_distutils-r1_run_foreach_impl _clean_egg_info
+		_distutils-r1_run_foreach_impl _distutils-r1_clean_egg_info
 	fi
 
 	if declare -f python_test_all >/dev/null; then
