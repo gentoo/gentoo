@@ -789,6 +789,33 @@ distutils-r1_src_test() {
 	fi
 }
 
+# @FUNCTION: _distutils-r1_check_namespace_pth
+# @INTERNAL
+# @DESCRIPTION:
+# Check if any *-nspkg.pth files were installed (by setuptools)
+# and warn about the policy non-conformance if they were.
+_distutils-r1_check_namespace_pth() {
+	local f pth=()
+
+	while IFS= read -r -d '' f; do
+		pth+=( "${f}" )
+	done < <(find "${ED}" -name '*-nspkg.pth' -print0)
+
+	if [[ ${pth[@]} ]]; then
+		ewarn "The following *-nspkg.pth files were found installed:"
+		ewarn
+		for f in "${pth[@]}"; do
+			ewarn "  ${f#${ED%/}}"
+		done
+		ewarn
+		ewarn "The presence of those files may break namespaces in Python 3.5+. Please"
+		ewarn "read our documentation on reliable handling of namespaces and update"
+		ewarn "the ebuild accordingly:"
+		ewarn
+		ewarn "  https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages"
+	fi
+}
+
 distutils-r1_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -812,6 +839,8 @@ distutils-r1_src_install() {
 
 		"${cmd}" "QA: python_install_all() didn't call distutils-r1_python_install_all"
 	fi
+
+	_distutils-r1_check_namespace_pth
 }
 
 # -- distutils.eclass functions --
