@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install test
+DEPEND=lz4? ( app-arch/lz4:= ) sasl? ( dev-libs/cyrus-sasl:= ) ssl? ( dev-libs/openssl:0= ) sys-libs/zlib virtual/pkgconfig
+DESCRIPTION=Apache Kafka C/C++ client library
+EAPI=6
+HOMEPAGE=https://github.com/edenhill/librdkafka
+IUSE=lz4 sasl ssl static-libs
+KEYWORDS=~amd64 ~arm ~hppa ~x86
+LICENSE=BSD-2
+RDEPEND=lz4? ( app-arch/lz4:= ) sasl? ( dev-libs/cyrus-sasl:= ) ssl? ( dev-libs/openssl:0= ) sys-libs/zlib
+SLOT=0/1
+SRC_URI=https://github.com/edenhill/librdkafka/archive/v0.9.5.tar.gz -> librdkafka-0.9.5.tar.gz
+_eclass_exported_funcs=src_configure:- src_test:- src_install:-
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=e6702e13868db4d544a3ae121e381f49
