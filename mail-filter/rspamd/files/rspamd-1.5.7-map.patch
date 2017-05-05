@@ -1,0 +1,11 @@
+--- rspamd-1.5.7/src/libutil/map.c	2017-05-02 15:26:54.000000000 +0200
++++ b/src/libutil/map.c	2017-05-02 16:22:37.695254699 +0200
+@@ -2290,7 +2290,7 @@
+ 	}
+ #else
+ 	if (pcre_flags & PCRE_FLAG(UTF)) {
+-		re_map->map_flags |= RSPAMD_REGEXP_FLAG_UTF;
++		re_map->has_utf = TRUE;
+ 	}
+ #endif
+ 
