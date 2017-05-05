@@ -4,6 +4,7 @@
 
 PDNS_CONFIGDIR="${PDNS_CONFIGDIR:-/etc/powerdns}"
 PDNS_SOCKETDIR="${PDNS_SOCKETDIR:-/var/lib/powerdns}"
+PDNS_STOP_TIMEOUT="${PDNS_STOP_TIMEOUT:-10}"
 
 name="PowerDNS Authoritative Server"
 description="Authoritative name server"
@@ -45,12 +46,24 @@ status() {
 stop() {
 	default_stop || return
 	_ping || return 0
+	wait_for_stop
+}
 
-	local sleep
-	for sleep in 0.1 0.2 0.3 0.4; do
-		sleep "${sleep}"
-		_ping || return 0
+wait_for_stop() {
+	einfon "Waiting for ${name} to stop"
+
+	local timeout="${PDNS_STOP_TIMEOUT}"
+	while [ "${timeout}" -gt 0 ]; do
+		sleep 1
+		if ! _ping; then
+			echo
+			return 0
+		fi
+		: $(( timeout -= 1 ))
+		echo -n .
 	done
+
+	echo
 	return 1
 }
 
