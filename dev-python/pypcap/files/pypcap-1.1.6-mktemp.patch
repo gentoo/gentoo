@@ -1,0 +1,19 @@
+--- a/pcap_ex.c
++++ b/pcap_ex.c
+@@ -11,6 +11,7 @@
+ # include <string.h>
+ # include <signal.h>
+ # include <unistd.h>
++# include <stdlib.h>
+ #endif
+ 
+ #include <pcap.h>
+@@ -290,7 +291,7 @@
+ 	char ebuf[PCAP_ERRBUF_SIZE];
+ 	int ret = -1;
+ 	
+-	mktemp(path);
++	mkstemp(path);
+ 	if ((f = fopen(path, "w")) != NULL) {
+ 		hdr.magic = 0xa1b2c3d4;
+ 		hdr.version_major = PCAP_VERSION_MAJOR;
