@@ -19,8 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
-	KEYWORDS=""
-	#KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -157,11 +156,13 @@ X86_FIRMWARE_DEPEND="
 		~sys-firmware/ipxe-1.0.0_p20160620
 		~sys-firmware/seabios-1.10.2[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre8
+		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/ipxe
 		>=sys-firmware/seabios-1.10.2[seavgabios]
 		sys-firmware/sgabios
+		sys-firmware/edk2-ovmf
 	)"
 
 CDEPEND="
