@@ -4,7 +4,7 @@
 EAPI=6
 inherit autotools eutils multilib-minimal
 
-DESCRIPTION="A library to execute a function when a specific event occurs on a file descriptor"
+DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="http://libevent.org/ https://github.com/libevent/libevent/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}-stable/${P}-stable.tar.gz -> ${P}.tar.gz"
 
