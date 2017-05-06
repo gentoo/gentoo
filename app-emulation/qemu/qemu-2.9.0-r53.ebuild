@@ -153,16 +153,16 @@ SOFTMMU_TOOLS_DEPEND="
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
+		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
 		~sys-firmware/ipxe-1.0.0_p20160620
 		~sys-firmware/seabios-1.10.2[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre8
-		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
 	)
 	!pin-upstream-blobs? (
+		sys-firmware/edk2-ovmf
 		sys-firmware/ipxe
 		>=sys-firmware/seabios-1.10.2[seavgabios]
 		sys-firmware/sgabios
-		sys-firmware/edk2-ovmf
 	)"
 
 CDEPEND="
@@ -751,6 +751,7 @@ pkg_postinst() {
 
 	if use pin-upstream-blobs && firmware_abi_change; then
 		ewarn "This version of qemu pins new versions of firmware blobs:"
+		ewarn "	$(best_version sys-firmware/edk2-ovmf)"
 		ewarn "	$(best_version sys-firmware/ipxe)"
 		ewarn "	$(best_version sys-firmware/seabios)"
 		ewarn "	$(best_version sys-firmware/sgabios)"
@@ -766,6 +767,12 @@ pkg_postinst() {
 pkg_info() {
 	echo "Using:"
 	echo "  $(best_version app-emulation/spice-protocol)"
+	echo "  $(best_version sys-firmware/edk2-ovmf)"
+	if has_version 'sys-firmware/edk2-ovmf[binary]'; then
+		echo "    USE=binary"
+	else
+		echo "    USE=''"
+	fi
 	echo "  $(best_version sys-firmware/ipxe)"
 	echo "  $(best_version sys-firmware/seabios)"
 	if has_version 'sys-firmware/seabios[binary]'; then
@@ -773,4 +780,5 @@ pkg_info() {
 	else
 		echo "    USE=''"
 	fi
+	echo "  $(best_version sys-firmware/sgabios)"
 }
