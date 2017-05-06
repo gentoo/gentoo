@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=y
 
 inherit autotools-utils vala python-r1
 
-DESCRIPTION="Provide objects allowing to create Model-View-Controller type programs across DBus"
+DESCRIPTION="Provide objects allowing to create MVC type programs across DBus"
 HOMEPAGE="https://launchpad.net/dee/"
 SRC_URI="https://launchpad.net/dee/1.0/${PV}/+download/${P}.tar.gz"
 
