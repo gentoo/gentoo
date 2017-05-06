@@ -4,7 +4,7 @@ diff -U 3 -dHrN wicd-1.7.2.4.orig/other/wicd.desktop wicd-1.7.2.4/other/wicd.des
 @@ -1,5 +1,5 @@
  [Desktop Entry]
 -Categories=Application;Network;
-+Categories=Network;Settings;Utility;
++Categories=Network;Settings;Utility;X-GNOME-NetworkSettings;
  Exec=wicd-gtk --no-tray
  GenericName=Network Manager
  Icon=wicd-gtk
@@ -14,7 +14,7 @@ diff -U 3 -dHrN wicd-1.7.2.4.orig/other/wicd-tray.desktop wicd-1.7.2.4/other/wic
 @@ -1,5 +1,5 @@
  [Desktop Entry]
 -Categories=Application;Network;
-+Categories=Network;Settings;Utility;
++Categories=Network;Settings;Utility;X-GNOME-NetworkSettings;
  Exec=wicd-gtk --tray
  GenericName=Network Manager
  Icon=wicd-gtk
