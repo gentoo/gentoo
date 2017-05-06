@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit gnome2 python-r1 vala
 
-DESCRIPTION="Provide objects allowing to create Model-View-Controller type programs across DBus"
+DESCRIPTION="Provide objects allowing to create MVC type programs across DBus"
 HOMEPAGE="https://launchpad.net/dee/"
 SRC_URI="https://launchpad.net/dee/1.0/${PV}/+download/${P}.tar.gz"
 
