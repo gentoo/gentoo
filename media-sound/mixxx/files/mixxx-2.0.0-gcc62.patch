@@ -1,0 +1,24 @@
+--- a/src/util/math.h	2015-12-29 17:10:41.000000000 +0100
++++ b/src/util/math.h	2016-09-25 12:54:18.345291146 +0200
+@@ -3,8 +3,20 @@
+ 
+ // Causes MSVC to define M_PI and friends.
+ // http://msdn.microsoft.com/en-us/library/4hwaceh6.aspx
++// Our SConscript defines this but check anyway.
++#ifdef __WINDOWS__
++#ifndef _USE_MATH_DEFINES
+ #define _USE_MATH_DEFINES
+-#include <cmath>
++#endif
++#endif
++
++#include <math.h>
++#include <cmath> 
++// Note: Because of our fpclassify hack, we actualy need to inlude both, 
++// the c and the c++ version of the math header.  
++// From GCC 6.1.1 math.h depends on cmath, which failes to compile if included 
++// after our fpclassify hack 
++
+ #include <algorithm>
+ 
+ #include "util/assert.h"

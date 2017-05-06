@@ -1,0 +1,88 @@
+From c2af9e6eeb469718b9aa069b90a719fac80dd0d9 Mon Sep 17 00:00:00 2001
+From: Uwe Klotz <uwe_klotz@web.de>
+Date: Fri, 8 Jan 2016 19:25:58 +0100
+Subject: [PATCH] Move definition of Time::formatSeconds() into .cpp file
+
+---
+ src/util/time.cpp | 30 ++++++++++++++++++++++++++++++
+ src/util/time.h   | 29 +----------------------------
+ 2 files changed, 31 insertions(+), 28 deletions(-)
+
+diff --git a/src/util/time.cpp b/src/util/time.cpp
+index 998fa73..d8a122b 100644
+--- a/src/util/time.cpp
++++ b/src/util/time.cpp
+@@ -6,3 +6,33 @@ LLTIMER Time::s_timer;
+ bool Time::s_testMode = false;
+ // static
+ qint64 Time::s_testElapsed_nsecs = 0;
++
++// static
++QString Time::formatSeconds(double dSeconds, bool showCentis) {
++    if (dSeconds < 0) {
++        return "?";
++    }
++
++    const int days = static_cast<int>(dSeconds) / kSecondsPerDay;
++    dSeconds -= days * kSecondsPerDay;
++
++    // NOTE(uklotzde): Time() constructs a 'null' object, but
++    // we need 'zero' here.
++    QTime t = QTime(0, 0).addMSecs(dSeconds * kMillisPerSecond);
++
++    QString formatString =
++            (days > 0 ? (QString::number(days) %
++                         QLatin1String("'d', ")) : QString()) %
++            QLatin1String(days > 0 || t.hour() > 0 ? "hh:mm:ss" : "mm:ss") %
++            QLatin1String(showCentis ? ".zzz" : "");
++
++    QString timeString = t.toString(formatString);
++
++    // The format string gives us milliseconds but we want
++    // centiseconds. Slice one character off.
++    if (showCentis) {
++        timeString = timeString.left(timeString.length() - 1);
++    }
++
++    return timeString;
++}
+diff --git a/src/util/time.h b/src/util/time.h
+index 7b38eb4..b4e2c2d 100644
+--- a/src/util/time.h
++++ b/src/util/time.h
+@@ -67,34 +67,7 @@ class Time {
+     // The standard way of formatting a time in seconds. Used for display of
+     // track duration, etc. showCentis indicates whether to include
+     // centisecond-precision or to round to the nearest second.
+-    static QString formatSeconds(double dSeconds, bool showCentis) {
+-        if (dSeconds < 0) {
+-            return "?";
+-        }
+-
+-        const int days = static_cast<int>(dSeconds) / kSecondsPerDay;
+-        dSeconds -= days * kSecondsPerDay;
+-
+-        // NOTE(uklotzde): Time() constructs a 'null' object, but
+-        // we need 'zero' here.
+-        QTime t = QTime(0, 0).addMSecs(dSeconds * kMillisPerSecond);
+-
+-        QString formatString =
+-                (days > 0 ? (QString::number(days) %
+-                             QLatin1String("'d', ")) : QString()) %
+-                QLatin1String(days > 0 || t.hour() > 0 ? "hh:mm:ss" : "mm:ss") %
+-                QLatin1String(showCentis ? ".zzz" : "");
+-
+-        QString timeString = t.toString(formatString);
+-
+-        // The format string gives us milliseconds but we want
+-        // centiseconds. Slice one character off.
+-        if (showCentis) {
+-            timeString = timeString.left(timeString.length() - 1);
+-        }
+-
+-        return timeString;
+-    }
++    static QString formatSeconds(double dSeconds, bool showCentis);
+ 
+   private:
+     static LLTIMER s_timer;
