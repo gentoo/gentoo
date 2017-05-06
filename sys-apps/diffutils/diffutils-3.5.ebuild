@@ -43,4 +43,3 @@ src_test() {
 	# explicitly allow parallel testing
 	emake check
 }
-
