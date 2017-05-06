@@ -1,0 +1,24 @@
+From 76c53b0f0a2be7b5cf85fa523f3521a5725affb2 Mon Sep 17 00:00:00 2001
+From: Uwe Klotz <uwe_klotz@web.de>
+Date: Fri, 8 Jan 2016 18:22:33 +0100
+Subject: [PATCH] Fix formatting of time durations
+
+---
+ src/util/time.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/util/time.h b/src/util/time.h
+index 29187ad..7b38eb4 100644
+--- a/src/util/time.h
++++ b/src/util/time.h
+@@ -75,7 +75,9 @@ class Time {
+         const int days = static_cast<int>(dSeconds) / kSecondsPerDay;
+         dSeconds -= days * kSecondsPerDay;
+ 
+-        QTime t = QTime().addMSecs(dSeconds * kMillisPerSecond);
++        // NOTE(uklotzde): Time() constructs a 'null' object, but
++        // we need 'zero' here.
++        QTime t = QTime(0, 0).addMSecs(dSeconds * kMillisPerSecond);
+ 
+         QString formatString =
+                 (days > 0 ? (QString::number(days) %
