@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
+# Depends on deprecated libs, no development in 8 years.
+# No consumer left after konqueror:4 removal.
+# Masked for removal in 30 days.
+kde-misc/kim4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
 # Depends on deprecated libs, no development in 9 years.
 # No consumer left after konqueror:4 removal.
 # Masked for removal in 30 days.
