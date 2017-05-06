@@ -20,6 +20,12 @@ DEPEND="app-arch/xz-utils
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-fix_macros.patch"
+}
+
 src_configure() {
 	use static && append-ldflags -static
 
@@ -37,3 +43,4 @@ src_test() {
 	# explicitly allow parallel testing
 	emake check
 }
+
