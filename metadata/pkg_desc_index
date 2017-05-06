@@ -10156,7 +10156,7 @@ dev-texlive/texlive-texinfo 2012: TeXLive GNU Texinfo
 dev-texlive/texlive-xetex 2012 2013 2014 2015 2016: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
-dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
+dev-util/a8 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/abi-compliance-checker 1.99.21 1.99.22 1.99.23 1.99.25 2.0 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
 dev-util/abootimg 20150323: Manipulate Android boot images.
@@ -10334,7 +10334,7 @@ dev-util/gtk-update-icon-cache 3.20.9 3.22.2: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.9: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
-dev-util/hxd 0.70.02-r1 0.70.02-r2: Binary to hexadecimal converter
+dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
 dev-util/icmake 7.22.01 9.00.00 9.02.02: Hybrid between a make utility and a shell scripting language
@@ -10367,7 +10367,7 @@ dev-util/kdevplatform 1.7.2-r1 1.7.4 5.0.3 5.0.4 5.1.0: KDE development support 
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kscope 1.9.4-r2: Source Editing Environment based on Qt
 dev-util/kup 0.3.4-r1: kernel.org uploader tool
-dev-util/lcov 1.9-r1 1.11 1.13 1.13-r1: A graphical front-end for GCC's coverage testing tool gcov
+dev-util/lcov 1.9-r1 1.11 1.13-r1: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 4.0.0 9999: The LLVM debugger
@@ -10464,7 +10464,7 @@ dev-util/rr 4.5.0: Record and Replay Framework
 dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
-dev-util/scanmem 0.15.2 0.15.3: Locate and modify variables in executing processes
+dev-util/scanmem 0.15.3: Locate and modify variables in executing processes
 dev-util/schroot 1.6.10-r3 1.6.10-r4: Utility to execute commands in a chroot environment
 dev-util/scons 2.3.5 2.4.1 2.5.0 2.5.1: Extensible Python-based build utility
 dev-util/sel 0.08.4 0.08.4-r1 0.08.4-r2: A filemanager for shell scripts
