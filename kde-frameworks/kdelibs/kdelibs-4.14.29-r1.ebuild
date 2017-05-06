@@ -289,7 +289,7 @@ pkg_postinst() {
 
 pkg_prerm() {
 	# Remove ksycoca4 global database
-	rm -f "${EROOT}${PREFIX}"/share/kde4/services/ksycoca4
+	rm -f "${EROOT%/}"/usr/share/kde4/services/ksycoca4 || die
 }
 
 pkg_postrm() {
