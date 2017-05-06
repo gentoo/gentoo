@@ -22,7 +22,7 @@ S="${WORKDIR}/cockroach-${MY_PV}"
 
 pkg_pretend() {
 	check-reqs_pkg_pretend
-	if [[ $(gcc-major-version) -lt 6 ]]; then
+	if [[ ${MERGE_TYPE} != binary && $(gcc-major-version) -lt 6 ]]; then
 		eerror "Cockroach cannot be built with this version of gcc."
 		eerror "You need at least gcc-6.0"
 		die "Your C compiler is too old for this package."
