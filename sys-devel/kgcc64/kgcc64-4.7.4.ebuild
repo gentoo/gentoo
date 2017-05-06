@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -23,7 +23,7 @@ inherit eutils toolchain
 DESCRIPTION="64bit kernel compiler"
 
 # Works on mips and sparc; all other archs, refer to bug #228115
-KEYWORDS="~hppa ~mips ~sparc"
+KEYWORDS="hppa ~mips ~sparc"
 
 RDEPEND=">=dev-libs/gmp-4.3.2
 	>=dev-libs/mpfr-2.4.2
