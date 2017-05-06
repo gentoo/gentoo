@@ -4624,7 +4624,7 @@ dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
 dev-libs/atk 2.20.0 2.22.0: GTK+ & GNOME Accessibility Toolkit
-dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: bareos fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
+dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.46: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
 dev-libs/beignet 1.2.1-r1 1.3.0 1.3.1: OpenCL implementation for Intel GPUs
@@ -4646,7 +4646,7 @@ dev-libs/capstone 3.0.5_rc2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgicc 3.2.9 3.2.16: A C++ class library for writing CGI applications
-dev-libs/cgilib 0.7: a simple and lightweight interface to the Common Gateway Interface (CGI) for C and C++ programs
+dev-libs/cgilib 0.7: A simple and lightweight interface to the CGI for C and C++ programs
 dev-libs/check 0.9.11 0.10.0-r1 0.10.0-r2 0.11.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
@@ -4655,12 +4655,12 @@ dev-libs/cloog 0.18.0 0.18.1 0.18.3 0.18.4 9999: A loop generator for scanning p
 dev-libs/collada-dom 2.4.0 2.4.3_pre20150112 2.4.4 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorithms and data structures in C
 dev-libs/confuse 2.7 2.8 3.0: a configuration file parser library
-dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout for ROS-dependent packages.
+dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
 dev-libs/cryptlib 3.4.3.1-r2: Powerful security toolkit for adding encryption to software
 dev-libs/crypto++ 5.6.5: C++ class library of cryptographic schemes
-dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to provide a crude approximation to the C++ vector class
+dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p10: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
@@ -4671,7 +4671,7 @@ dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r2: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.102 0.104 0.106 0.108: D-Bus bindings for glib
 dev-libs/dclog 1.1.1-r1: A logging library for C/C++ programs
-dev-libs/dee 1.2.7 1.2.7-r1: Provide objects allowing to create Model-View-Controller type programs across DBus
+dev-libs/dee 1.2.7 1.2.7-r1: Provide objects allowing to create MVC type programs across DBus
 dev-libs/device-atlas-api-c 2.1: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0: set of utility libraries (mostly used by sssd)
@@ -4682,12 +4682,12 @@ dev-libs/dotconf 1.3: dot.conf configuration file parser
 dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary conversion routines for IEEE doubles
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.17.0-r1 1.18.4 9999: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer implemented as a C++ library
+dev-libs/elfio 1.0.3: ELF reader and producer implemented as a C++ library
 dev-libs/elfutils 0.166 0.167 0.168: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.0-r1: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r3: C++ wrapper for fam
-dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
+dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
@@ -4707,7 +4707,7 @@ dev-libs/girara 0.2.2 0.2.7 9999: UI library that focuses on simplicity and mini
 dev-libs/gjs 1.46.0: Javascript bindings for GNOME
 dev-libs/glib 2.48.2 2.50.3-r1 2.52.1: The GLib library of C routines
 dev-libs/gmime 2.6.23: Utilities for creating and parsing messages using MIME
-dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
+dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2016.12.21.08.39.01 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
@@ -4717,9 +4717,9 @@ dev-libs/gom 0.3.2: GObject to SQLite object mapper library
 dev-libs/granite 0.2.1 0.2.3.1 0.3.0: A development library for elementary development
 dev-libs/grantlee 0.4.0 5.1.0: C++ string template engine based on the Django template system
 dev-libs/grok 0.9.2: DRY and RAD for regular expressions
-dev-libs/gtx 0.2.2: Small collection of convenience functions intended to enhance the GLib testing framework
-dev-libs/gumbo 0.9.2 0.9.3 0.9.4 0.10.1: An implementation of the HTML5 parsing algorithm implemented as a pure C99 library
-dev-libs/handystats 1.11.0 1.11.1 1.11.3: C++ library for collecting user-defined in-process runtime statistics with low overhead.
+dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
+dev-libs/gumbo 0.9.2 0.9.3 0.9.4 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
+dev-libs/handystats 1.11.0 1.11.1 1.11.3: C++ library for collecting user-defined in-process runtime statistics
 dev-libs/hashit 0.9.7-r1: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.13.3: Minimalistic C client library for the Redis database
@@ -4732,7 +4732,7 @@ dev-libs/icu-layoutex 58.1 58.2: External layout part of International Component
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.3 1.4: eXtensible Markup Language parser library designed for Jabber applications
-dev-libs/ilbc-rfc3951 0-r1: iLBC (internet Low Bitrate Codec) is a speech codec suitable for robust voice communication over IP
+dev-libs/ilbc-rfc3951 0-r1: iLBC is a speech codec suitable for robust voice communication over IP
 dev-libs/iniparser 3.1 3.1-r1 4.0: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.0.1 1.1.0: Dependency injection framework for Qt5
 dev-libs/intel-common 13.1.5.192 14.0.3.174 15.0.6.233: Common libraries and utilities needed for Intel compilers and libraries
@@ -4750,7 +4750,7 @@ dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating busine
 dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0 2.0.0: Lightweight user interface framework for mobile and convergent applications
 dev-libs/klibc 1.5.25 2.0.4 2.0.4-r2: A minimal libc subset for use with initramfs
-dev-libs/kpathsea 6.2.2_p20160523: Library implementing generic path searching, configuration, and TeX-specific file searching
+dev-libs/kpathsea 6.2.2_p20160523: Path searching library for TeX-related files
 dev-libs/kproperty 3.0.0 3.0.1: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.0-r1 3.0.1: Framework for creation and generation of reports in multiple formats
@@ -4809,7 +4809,7 @@ dev-libs/liberasurecode 1.0.8-r1 1.1.1: Erasure Code API library written in C wi
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.23 4.24: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.5.6: Handler library for evdev events
-dev-libs/libevent 2.0.22 2.0.22-r2 2.1.8 9999: A library to execute a function when a specific event occurs on a file descriptor
+dev-libs/libevent 2.0.22 2.0.22-r2 2.1.8 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
@@ -12125,7 +12125,7 @@ kde-misc/kimtoy 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
 kde-misc/kio-gdrive 1.0.5 1.1.0 1.1.1: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
-kde-misc/kio-locate 0.5.3 0.5.3-r1: Locate KIO slave
+kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings

@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/glib:2 dev-libs/icu:= introspection? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-libs/gobject-introspection:= ) || ( dev-lang/vala:0.34 dev-lang/vala:0.32 dev-lang/vala:0.30 dev-lang/vala:0.28 dev-lang/vala:0.26 ) doc? ( dev-util/gtk-doc ) test? ( dev-libs/gtx dev-util/dbus-test-runner ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=Provide objects allowing to create Model-View-Controller type programs across DBus
+DESCRIPTION=Provide objects allowing to create MVC type programs across DBus
 EAPI=5
 HOMEPAGE=https://launchpad.net/dee/
 IUSE=doc debug examples +icu introspection static-libs test python_targets_python2_7 python_targets_python3_4
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	c11fc374357e6ad9ddfe2e9f931e4d29	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	vala	45cd5c637ea9287eeaf983960768e17c
-_md5_=05a24741bb00deaac176022afb178d2b
+_md5_=9f57f02e4d407e1c195a6cd3fb68d1f7
