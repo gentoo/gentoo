@@ -2865,15 +2865,12 @@ dev-util/intel-ocl-sdk:system-clang - Use system clang (sys-devel/clang) instead
 dev-util/intel-ocl-sdk:system-qt - Use system Qt (sys-devel-qtcore, sys-devel/qtgui) instead of bundled one
 dev-util/intel-ocl-sdk:system-tbb - Use sytem Thread Building Blocks (dev-cpp/tbb) instead of bundled one
 dev-util/intel-ocl-sdk:tools - Install Intel Offline Compiler
-dev-util/kdevelop:cmake - Enable support for CMake build system
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
 dev-util/kdevelop:ninja - Enable support for Ninja build system
 dev-util/kdevelop:okteta - Enable hex editor plugin
 dev-util/kdevelop:qmake - Enable support for QMake build system
 dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
 dev-util/kdevelop-qmake:tools - Build and install the qmake-parser debugging tool
-dev-util/kdevplatform:classbrowser - Enable the class browser plugin
-dev-util/kdevplatform:konsole - Enable kde-apps/konsole integration
 dev-util/kdevplatform:reviewboard - Enable reviewboard support
 dev-util/kdevplatform:welcomepage - Enable welcome page, requires dev-qt/qtdeclarative
 dev-util/ltrace:unwind - Use sys-libs/libunwind for frame unwinding support
@@ -3391,7 +3388,7 @@ kde-apps/kde-apps-meta:pim - Pull in KDE PIM suite
 kde-apps/kde-apps-meta:sdk - Pull in developer-specific meta-packages
 kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configuration
 kde-apps/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
-kde-apps/kdebase-runtime-meta:oldwallet - Install kde-apps/kwalletd on a minimal setup for migration purposes
+kde-apps/kdebase-runtime-meta:kwallet - Install kde-apps/kwalletd on a minimal setup for migration purposes
 kde-apps/kdegraphics-mobipocket:thumbnail - Enables thumbnail generation
 kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenlive:freesound - Enable freesound.org credentials support via dev-qt/qtwebkit to download files
@@ -3414,8 +3411,6 @@ kde-apps/kio-extras:man - Enable manpages kioslave
 kde-apps/kio-extras:phonon - Enable file audio preview plugin using media-libs/phonon
 kde-apps/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/konqueror:activities - Enable kactivities support
-kde-apps/konqueror:bookmarks - Add dependency on bookmark package.
-kde-apps/konqueror:filemanager - Install the dolphin kpart for use as a file manager.
 kde-apps/konqueror:speech - Build text-to-speech plugin
 kde-apps/kopete:addbookmarks - Automatically add incoming urls to bookmarks.
 kde-apps/kopete:autoreplace - Automatically replace selected text
