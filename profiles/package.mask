@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
+# Depends on deprecated libs, no development in 9 years.
+# No consumer left after konqueror:4 removal.
+# Masked for removal in 30 days.
+kde-misc/kio-ftps
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
 # Crash on start, hugely outdated, depends on deprecated libs.
 # Masked for removal in 30 days.
 kde-misc/quadkonsole
