@@ -197,10 +197,6 @@ net-im/qutim otr
 # we can't stabilise the latest sqldeveloper yet because of Java 8.
 <dev-db/sqldeveloper-4.1.3.20.78-r1 mssql sybase
 
-# Requires unreleased dependency
-# dev-util/kdevplatform:5
-kde-plasma/plasma-sdk plasmate
-
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
 app-arch/cfv bittorrent
