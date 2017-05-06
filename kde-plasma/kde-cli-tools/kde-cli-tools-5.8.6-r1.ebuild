@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Tools based on KDE Frameworks 5 to better interact with the system"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kde-cli-tools"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+kdesu X"
 
 DEPEND="
@@ -31,12 +31,13 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	kdesu? ( $(add_frameworks_dep kdesu) )
 	X? (
+		$(add_frameworks_dep kdelibs4support)
 		$(add_qt_dep qtx11extras)
 		x11-libs/libX11
 	)
 "
 RDEPEND="${DEPEND}
-	handbook? ( !kde-apps/kdesu[handbook] )
+	!kde-apps/kdesu
 "
 
 # requires running kde environment
@@ -54,5 +55,6 @@ src_configure() {
 
 src_install() {
 	kde5_src_install
-	use kdesu && dosym /usr/$(get_libdir)/libexec/kf5/kdesu /usr/bin/kdesu5
+	use kdesu && dosym ../$(get_libdir)/libexec/kf5/kdesu /usr/bin/kdesu
+	use kdesu && dosym ../$(get_libdir)/libexec/kf5/kdesu /usr/bin/kdesu5
 }

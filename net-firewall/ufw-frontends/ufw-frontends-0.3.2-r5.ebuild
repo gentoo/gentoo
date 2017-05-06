@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
@@ -21,10 +22,12 @@ RDEPEND="${DEPEND}
 	dev-python/pygtk[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	net-firewall/ufw[${PYTHON_USEDEP}]
-	!policykit? (
-		kde? ( kde-apps/kdesu ) )
+	!policykit? ( kde? ( kde-plasma/kde-cli-tools[kdesu] ) )
 	policykit? ( sys-auth/polkit )
 "
+
+# fix crash when no ufw logs in supported locations can be found
+PATCHES=( "${FILESDIR}/${P}-no-log-crash.patch" )
 
 python_prepare_all() {
 	if use policykit; then
@@ -43,10 +46,6 @@ python_prepare_all() {
 	# Qt version is unusable
 	rm gfw/frontend_qt.py || die
 	distutils-r1_python_prepare_all
-
-	# fix crash when no ufw logs in supported locations can
-	# be found
-	epatch "${FILESDIR}/${P}-no-log-crash.patch"
 }
 
 python_install() {
@@ -60,6 +59,6 @@ python_install_all() {
 		insinto /usr/share/polkit-1/actions/
 		doins "${FILESDIR}"/org.gentoo.pkexec.ufw-gtk.policy
 	elif ! use kde; then
-		rm "${D}usr/share/applications/ufw-gtk.desktop" || die
+		rm "${ED}usr/share/applications/ufw-gtk.desktop" || die
 	fi
 }
