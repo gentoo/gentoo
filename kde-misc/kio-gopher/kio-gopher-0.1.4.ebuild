@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 KDE_LINGUAS="ar bg br ca ca@valencia cs cy da de el en_GB eo es et fi fr ga gl
 hr hu is it ja ka km lt lv ms nb nds nl nn pa pl pt pt_BR ro ru rw sk sv ta tr
@@ -10,11 +10,9 @@ KDE_HANDBOOK="optional"
 KDE_DOC_DIRS="doc doc-translations/%lingua_kioslave"
 inherit kde4-base
 
-MY_P=${PN/_/-}-${PV}
-
 DESCRIPTION="Gopher Kioslave for Konqueror"
 HOMEPAGE="https://userbase.kde.org/Kio_gopher"
-SRC_URI="mirror://kde/stable/extragear/${MY_P}.tar.bz2"
+SRC_URI="mirror://kde/stable/extragear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="4"
@@ -24,8 +22,6 @@ IUSE="debug"
 DEPEND="
 	$(add_kdeapps_dep konqueror)
 "
-RDEPEND=${DEPEND}
-
-S=${WORKDIR}/${MY_P}
+RDEPEND="${DEPEND}"
 
 DOCS=( BUGS ChangeLog FAQ README )
