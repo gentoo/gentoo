@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Subversion output colorizer"
 HOMEPAGE="http://colorsvn.tigris.org"
-SRC_URI="http://www.console-colors.de/downloads/${PN}/${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/files/documents/4414/49311/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,14 +16,10 @@ RDEPEND="dev-lang/perl
 	dev-vcs/subversion"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/0001-Don-t-colorize-svn-mkdir-bug-321451.-Use-IPC-open2-i.patch"
-)
+PATCHES=( "${FILESDIR}/use-open2-not-open3.patch" )
 
 src_prepare() {
 	default
-	# rxvt-unicode isn't listed by default :)
-	sed -i -e 's:rxvt:rxvt rxvt-unicode:' colorsvnrc-original || die
 	# Fix confdir location for Prefix, #435434
 	sed -i \
 		-e '/^confdir/d' \
