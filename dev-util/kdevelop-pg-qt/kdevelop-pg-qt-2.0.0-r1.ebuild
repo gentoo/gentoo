@@ -12,7 +12,7 @@ DESCRIPTION="LL(1) parser generator used mainly by KDevelop language plugins"
 SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${PN}-${PV%.0}.tar.xz"
 LICENSE="LGPL-2+ LGPL-2.1+"
 IUSE=""
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="amd64 ~x86"
+[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="amd64 x86"
 
 DEPEND="
 	sys-devel/bison
