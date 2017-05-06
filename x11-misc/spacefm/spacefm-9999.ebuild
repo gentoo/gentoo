@@ -64,7 +64,7 @@ pkg_postinst() {
 	elog "  sys-apps/udevil"
 	elog "To perform as root functionality you need one of the following:"
 	elog "  x11-misc/ktsuss"
-	elog "  kde-apps/kdesu"
+	elog "  kde-plasma/kde-cli-tools[kdesu]"
 	elog "Other optional dependencies:"
 	elog "  sys-apps/dbus"
 	elog "  sys-process/lsof (device processes)"
