@@ -18,4 +18,4 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~x86"
 IUSE="test"
 
 RDEPEND=""
-DEPEND=""
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
