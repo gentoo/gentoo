@@ -10,10 +10,10 @@ IUSE=""
 HOMEPAGE="http://wiki.ros.org/mavros"
 
 RDEPEND="
-	dev-ros/mavros_msgs
 	dev-ros/libmavconn
 	dev-ros/mavros
 	dev-ros/mavros_extras
+	dev-ros/mavros_msgs
 "
 DEPEND="${RDEPEND}"
 [ "${PV}" = "9999" ] || KEYWORDS="~amd64 ~arm"
