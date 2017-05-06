@@ -6,8 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="classbrowser">Enable the class browser plugin</flag>
-		<flag name="konsole">Enable <pkg>kde-apps/konsole</pkg> integration</flag>
 		<flag name="reviewboard">Enable reviewboard support</flag>
 		<flag name="welcomepage">Enable welcome page, requires <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>
