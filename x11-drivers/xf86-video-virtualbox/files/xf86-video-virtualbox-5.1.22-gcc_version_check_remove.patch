@@ -1,0 +1,22 @@
+diff -Naur VirtualBox-5.1.22-orig/configure VirtualBox-5.1.22/configure
+--- VirtualBox-5.1.22-orig/configure	2017-05-06 14:55:57.064007080 +0200
++++ VirtualBox-5.1.22/configure	2017-05-06 14:56:49.898007247 +0200
+@@ -440,18 +440,6 @@
+         fail really
+       elif [ $cc_maj -eq 4 -a $cc_min -eq 0 -a "$OS" = "darwin" ]; then
+         log_success "found version $cc_ver"
+-      # gcc-4.0 is allowed for Darwin only
+-      elif [ $cc_maj -lt 4 \
+-             -o \( $cc_maj -eq 4 -a $cc_min -lt 4 -a "$OS" != "darwin" \) \
+-             -o \( $cc_maj -eq 4 -a $cc_min -lt 2 -a "$OS"  = "darwin" \) \
+-             -o \( $cc_maj -eq 4 -a $cc_min -gt 9 \) \
+-             -o \( $cc_maj -eq 5 -a $cc_min -gt 9 \) \
+-             -o \( $cc_maj -eq 6 -a $cc_min -gt 9 \) \
+-             -o $cc_maj -gt 6 ]; then
+-        log_failure "gcc version $cc_maj.$cc_min found, expected gcc 4.x, gcc 5.x or gcc 6.x"
+-        fail really
+-      else
+-        log_success "found version $cc_ver"
+       fi
+       if [ "$BUILD_MACHINE" = "amd64" ]; then
+         [ -z "$CC32"  ] && CC32="$CC -m32"
