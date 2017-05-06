@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,15 +28,19 @@ RDEPEND="${DEPEND}
 	xinetd? ( sys-apps/xinetd )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.5-glib-single-includes.patch"
+	"${FILESDIR}/${PN}-1.0.5-gcc47.patch"
+	"${FILESDIR}/${PN}-1.0.5-rename-imlib-load-error.patch"
+)
+
 pkg_setup() {
 	enewgroup minbif
 	enewuser minbif -1 -1 /var/lib/minbif minbif
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.0.5-glib-single-includes.patch"
-	epatch "${FILESDIR}/${PN}-1.0.5-gcc47.patch"
-	epatch "${FILESDIR}/${PN}-1.0.5-rename-imlib-load-error.patch"
+	cmake-utils_src_prepare
 
 	sed -i "s/-Werror//g" CMakeLists.txt || die "sed failed"
 
@@ -50,14 +54,14 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs
-	mycmakeargs="${mycmakeargs}
-		-DCONF_PREFIX=${PREFIX:-/etc/minbif}
+	local mycmakeargs=(
+		-DCONF_PREFIX="${EPREFIX}"/etc/minbif
 		-DENABLE_VIDEO=OFF
 		$(cmake-utils_use_enable libcaca CACA)
 		$(cmake-utils_use_enable imlib IMLIB)
 		$(cmake-utils_use_enable pam PAM)
-		$(cmake-utils_use_enable gnutls TLS)"
+		$(cmake-utils_use_enable gnutls TLS)
+	)
 
 	cmake-utils_src_configure
 }
