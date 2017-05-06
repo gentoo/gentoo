@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
+# Crash on start, hugely outdated, depends on deprecated libs.
+# Masked for removal in 30 days.
+kde-misc/quadkonsole
+
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 May 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
