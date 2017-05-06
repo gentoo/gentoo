@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,7 @@ src_install() {
 	# install additional generated headers that are needed by other packages that
 	# are derived from kdepim. e.g. kmail.
 	pushd "${CMAKE_BUILD_DIR}/libkdepim/" 2>/dev/null || die "pushd libkdepim failed"
-	insinto "${PREFIX}/include"
+	insinto /usr/include
 	doins ui_addresspicker.h ui_categoryselectdialog_base.h || die "Failed to install extra header files."
 	popd 2>/dev/null
 }
