@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,4 +28,7 @@ DOCS=( AUTHORS ChangeLog README README.LIN )
 
 # fix QA compiler warning, see
 # https://sourceforge.net/p/desmume/patches/172/
-PATCHES=( "${FILESDIR}/${P}-fix-pointer-conversion-warning.diff" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-pointer-conversion-warning.diff"
+	"${FILESDIR}/${P}-gcc6.patch"
+)
