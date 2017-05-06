@@ -12117,7 +12117,7 @@ kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kcollectd 0.9-r1: Simple kdelibs4-based live data viewer for collectd
 kde-misc/kdeconnect 1.0.3: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
-kde-misc/kdiff3 0.9.97-r2 0.9.98-r1: Qt/KDE based frontend to diff3
+kde-misc/kdiff3 0.9.97-r2 0.9.98-r1 0.9.98_p20170219: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kim4 0.9.5-r1: A Dolphin and Konqueror service menu for ImageMagick
@@ -12125,7 +12125,7 @@ kde-misc/kimtoy 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
 kde-misc/kio-gdrive 1.0.5 1.1.0 1.1.1: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
-kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
+kde-misc/kio-locate 0.5.3 0.5.3-r1: Locate KIO slave
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
@@ -13158,7 +13158,7 @@ media-libs/ptex 2.1.28: Per-Face Texture Mapping for Production Rendering
 media-libs/pyliblo 0.10.0: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1-r2: Python bindings for the libmemphis library
 media-libs/qhull 2012.1-r4 2015.2: Geometry library
-media-libs/qimageblitz 0.0.6-r1 0.0.6-r2: Graphical effect and filter library by KDE
+media-libs/qimageblitz 0.0.6-r1 0.0.6-r2 0.0.6_p20131029: Graphical effect and filter library by KDE
 media-libs/qt-gstreamer 1.2.0-r2: C++ bindings for GStreamer with a Qt-style API
 media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
@@ -14070,7 +14070,7 @@ media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 4.6.1-r3: Java subtitle editor
 media-video/kaffeine 2.0.9: Media player with digital TV support by KDE
-media-video/kamerka 0.12: Simple photo taking application with fancy animated interface
+media-video/kamerka 0.12 0.12_p20161002: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.2 3.2.2: Application to take pictures and videos from your webcam by KDE
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
