@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Advanced parallized login hacker"
-HOMEPAGE="http://www.thc.org/thc-hydra/"
-SRC_URI="http://freeworld.thc.org/releases/${P}.tar.gz"
+HOMEPAGE="https://www.thc.org/thc-hydra/"
+SRC_URI="https://www.thc.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -37,8 +37,13 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.4-configure.patch
+)
 
 src_prepare() {
+	default
+
 	# None of the settings in Makefile.unix are useful to us
 	: > Makefile.unix
 
@@ -48,8 +53,6 @@ src_prepare() {
 		-e '/^OPTS/{s|=|+=|;s| -O3||}' \
 		-e '/ -o /s:$(OPTS):& $(LDFLAGS):g' \
 		Makefile.am || die
-
-	epatch "${FILESDIR}"/${PN}-8.0-configure.patch
 }
 
 src_configure() {
