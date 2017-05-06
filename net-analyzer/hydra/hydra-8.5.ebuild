@@ -6,7 +6,9 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Advanced parallized login hacker"
 HOMEPAGE="https://www.thc.org/thc-hydra/"
-SRC_URI="https://www.thc.org/releases/${P}.tar.gz"
+SRC_URI="
+	https://github.com/vanhauser-thc/thc-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -40,6 +42,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.4-configure.patch
 )
+S=${WORKDIR}/thc-${P}
 
 src_prepare() {
 	default
