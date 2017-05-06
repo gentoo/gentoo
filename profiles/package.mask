@@ -30,6 +30,17 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
+# Follow-up to 16.12.3 stabilisation - the remaining split
+# kde-baseapps are now either part of konqueror:5 or obsolete.
+# Masked for removal in 30 days.
+kde-apps/kdepasswd
+kde-apps/kfmclient
+kde-apps/konq-plugins
+kde-apps/libkonq
+kde-apps/nsplugins
+kde-apps/plasma-apps
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
 # Depends on deprecated libs, no development in 8 years.
 # No consumer left after konqueror:4 removal.
 # Masked for removal in 30 days.
