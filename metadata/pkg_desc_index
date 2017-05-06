@@ -4500,7 +4500,7 @@ dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/closure-compiler-bin 20150126 20170218: JavaScript optimizing compiler
-dev-lang/coffee-script 1.9.3-r1 1.11.1: A little language that compiles into javascript
+dev-lang/coffee-script 1.9.3-r1 1.12.5: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design
 dev-lang/crystal 0.21.1 0.22.0: The Crystal Programming Language
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100 6.0.967_p20161020-r1 6.0.967_p20161020-r100: PathScale EKOPath Compiler Suite
