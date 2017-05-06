@@ -13,7 +13,7 @@ SRC_URI="https://downloads.teeworlds.com/${P}-src.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug dedicated"
 
 RDEPEND="
