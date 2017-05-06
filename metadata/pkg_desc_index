@@ -5567,7 +5567,7 @@ dev-perl/Class-Load-XS 0.60.0-r1 0.90.0 0.100.0: XS implementation of parts of C
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r1: Class::Member - A set of modules to make the module developement easier
-dev-perl/Class-Method-Modifiers 2.30.0 2.120.0: provides Moose-like method modifiers
+dev-perl/Class-Method-Modifiers 2.120.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.240.0: Create generic methods for OO Perl
 dev-perl/Class-Mix 0.5.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
@@ -5882,7 +5882,7 @@ dev-perl/File-RsyncP 0.740.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
-dev-perl/File-ShareDir 1.30.0-r1 1.102.0: Locate per-dist and per-module shared files
+dev-perl/File-ShareDir 1.102.0: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.90.0 0.110.0: Install shared files
 dev-perl/File-ShareDir-ProjectDistDir 1.0.9: Simple set-and-forget using of a '/share' directory in your projects root
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
@@ -6236,7 +6236,7 @@ dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0 7.210.0 7.2
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
-dev-perl/Moo 2.0.2 2.2.5 2.3.0 2.3.1 2.3.2: Minimalist Object Orientation (with Moose compatiblity)
+dev-perl/Moo 2.3.0 2.3.1 2.3.2: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
