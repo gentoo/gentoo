@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ inherit kde4-base
 DESCRIPTION="X terminal kpart for use by konsole and other KDE applications"
 HOMEPAGE="https://www.kde.org/applications/system/konsole https://konsole.kde.org"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="debug minimal"
+IUSE="debug"
 
 COMMONDEPEND="
 	!aqua? (
@@ -21,7 +21,6 @@ COMMONDEPEND="
 		>=x11-libs/libxklavier-3.2
 		x11-libs/libXrender
 		x11-libs/libXtst
-		!minimal? ( $(add_kdeapps_dep libkonq) )
 	)
 "
 DEPEND="${COMMONDEPEND}
@@ -48,7 +47,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with "!minimal" LibKonq)
+		-DWITH_LibKonq=OFF
 	)
 
 	kde4-base_src_configure
