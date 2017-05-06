@@ -153,7 +153,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
 	tc_version_is_at_least 4.9 && IUSE+=" cilk +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
-	tc_version_is_at_least 6.0 && IUSE+=" pie ssp +pch"
+	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
 fi
 
 IUSE+=" ${IUSE_DEF[*]/#/+}"
