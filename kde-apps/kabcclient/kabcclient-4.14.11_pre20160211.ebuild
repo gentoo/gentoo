@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,5 +25,5 @@ src_install() {
 	kde4-meta_src_install
 
 	# work around NULL DT_RPATH in kabc2mutt
-	dosym kabcclient ${PREFIX}/bin/kabc2mutt
+	dosym kabcclient /usr/bin/kabc2mutt
 }
