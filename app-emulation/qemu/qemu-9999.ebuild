@@ -8,7 +8,7 @@ PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
-FIRMWARE_ABI_VERSION="2.9.0-r50"
+FIRMWARE_ABI_VERSION="2.9.0-r52"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
@@ -154,13 +154,15 @@ SOFTMMU_TOOLS_DEPEND="
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
 		~sys-firmware/ipxe-1.0.0_p20160620
-		~sys-firmware/seabios-1.10.1[binary,seavgabios]
+		~sys-firmware/seabios-1.10.2[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre8
+		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/ipxe
-		sys-firmware/seabios[seavgabios]
+		>=sys-firmware/seabios-1.10.2[seavgabios]
 		sys-firmware/sgabios
+		sys-firmware/edk2-ovmf
 	)"
 
 CDEPEND="
@@ -679,8 +681,10 @@ src_install() {
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
 		rm "${ED}/usr/share/qemu/bios.bin"
+		rm "${ED}/usr/share/qemu/bios-256k.bin"
 		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
 			dosym ../seabios/bios.bin /usr/share/qemu/bios.bin
+			dosym ../seabios/bios-256k.bin /usr/share/qemu/bios-256k.bin
 		fi
 
 		# Remove vgabios since we're using the seavgabios packaged one
