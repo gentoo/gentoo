@@ -1,0 +1,12 @@
+--- ifstatus/Interface.h.old	2016-09-27 03:52:02.063811332 -0400
++++ ifstatus/Interface.h	2016-09-27 03:53:33.305880857 -0400
+@@ -57,7 +57,8 @@
+ 
+ 	InterfaceData & operator=(InterfaceData & rInterfaceData);
+ 	InterfaceData operator-(InterfaceData & rInterfaceData);
+-	
++	InterfaceData & operator=(InterfaceData && rInterfaceData) = default;
++	InterfaceData(const InterfaceData&) = default;
+ private:
+ 
+ 	unsigned long long m_ullReceived[eTotalTypes];
