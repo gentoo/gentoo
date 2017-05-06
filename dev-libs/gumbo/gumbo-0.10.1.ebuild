@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit autotools
 
-DESCRIPTION="An implementation of the HTML5 parsing algorithm implemented as a pure C99 library"
+DESCRIPTION="The HTML5 parsing algorithm implemented as a pure C99 library"
 HOMEPAGE="https://github.com/google/gumbo-parser#readme"
 SRC_URI="https://github.com/google/gumbo-parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
