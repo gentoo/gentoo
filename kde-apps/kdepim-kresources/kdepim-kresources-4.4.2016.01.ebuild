@@ -43,6 +43,6 @@ src_install() {
 	kde4-meta_src_install
 
 	# Install headers needed by kdepim-wizards, egroupware stuff gone
-	insinto "${PREFIX}"/include/${PN}
+	insinto /usr/include/${PN}
 	doins "${CMAKE_BUILD_DIR}"/${KMMODULE}/{groupwise,slox}/*.h
 }
