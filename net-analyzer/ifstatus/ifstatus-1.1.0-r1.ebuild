@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit eutils toolchain-funcs
 
 KEYWORDS="amd64 arm ~ppc x86"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-v${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND=">=sys-libs/ncurses-4.2"
+RDEPEND=">=sys-libs/ncurses-4.2:0="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
@@ -20,9 +20,14 @@ DEPEND="
 
 S="${WORKDIR}/${PN}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc43.patch"
+	"${FILESDIR}/${P}-tinfo.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gcc43.patch"
-	epatch "${FILESDIR}/${P}-tinfo.patch"
+	default
 	tc-export CXX PKG_CONFIG
 }
 
