@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-any-r1
+inherit eutils python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
 HOMEPAGE="http://www.tianocore.org/edk2 https://github.com/tianocore/edk2"
@@ -42,8 +42,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-build_system_fixes.patch
 )
 
-DOC_CONTENTS="
-This package contains the tianocore edk2 UEFI firmware for 64-bit x86
+DISABLE_AUTOFORMATTING=true
+DOC_CONTENTS="This package contains the tianocore edk2 UEFI firmware for 64-bit x86
 virtual machines. The firmware is located under
 	/usr/share/edk2-ovmf/OVMF.fd
 	/usr/share/edk2-ovmf/OVMF_CODE.fd
@@ -62,7 +62,7 @@ In order to use the firmware you can run qemu the following way
 
 You can register the firmware for use in libvirt by adding to /etc/libvirt/qemu.conf:
 	nvram = [
-		"/usr/share/edk2-ovmf/OVMF_CODE.fd:/usr/share/edk2-ovmf/OVMF_VARS.fd"
+		\"/usr/share/edk2-ovmf/OVMF_CODE.fd:/usr/share/edk2-ovmf/OVMF_VARS.fd\"
 	]"
 
 pkg_setup() {
