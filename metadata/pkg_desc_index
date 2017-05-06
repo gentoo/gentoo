@@ -10692,7 +10692,7 @@ games-action/spacetripper-demo 1 1-r1: Hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supertuxkart 0.9.1 0.9.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
-games-action/teeworlds 0.6.3 0.6.3-r1 0.6.4: Online multi-player platform 2D shooter
+games-action/teeworlds 0.6.4: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3 0.3-r1: Retro-style, abstract, 2D shooter
 games-action/trine-bin 1.08 1.08-r1: A physics-based action game where diff characters allow diff solutions to challenges
