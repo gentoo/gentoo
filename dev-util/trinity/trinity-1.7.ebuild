@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="A Linux system call fuzz tester"
 HOMEPAGE="http://codemonkey.org.uk/projects/trinity/"
@@ -14,31 +14,29 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-DEPEND="
-	app-arch/xz-utils
-	sys-kernel/linux-headers
-"
+# We need newer headers to avoid compilation failures in the BPF stuff.
+DEPEND="app-arch/xz-utils
+	>=sys-kernel/linux-headers-4.8"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-cflags.patch
-	tc-export CC
-}
+PATCHES=( "${FILESDIR}/${P}-cflags.patch" )
 
 src_configure() {
-	./configure.sh || die
+	tc-export CC
+	default
 }
 
 src_compile() {
+	# Enable a verbose (i.e. not quiet) build.
 	emake V=1
 }
 
 src_install() {
-	dobin ${PN}
+	dobin "${PN}"
 	dodoc Documentation/* README
 
 	if use examples ; then
-		exeinto /usr/share/doc/${PF}/scripts
+		exeinto "/usr/share/doc/${PF}/scripts"
 		doexe scripts/*
-		docompress -x /usr/share/doc/${PF}/scripts
+		docompress -x "/usr/share/doc/${PF}/scripts"
 	fi
 }
