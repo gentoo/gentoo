@@ -28,6 +28,14 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
+# Obsolete parts of kdevelop:4 - upstream merged into kdevelop:5.
+# Masked for removal in 30 days.
+dev-util/kdevelop-php-docs
+dev-util/kdevelop-qmake
+dev-util/kdevelop-qmljs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
 # Unused Plasma 4 runtime cleanup, masked for removal in 30 days.
 kde-apps/attica
