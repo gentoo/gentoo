@@ -9,11 +9,6 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>mattsch@gmail.com</email>
-		<name>Matthew Schultz</name>
-		<description>Proxied maintainer. Copy on bugs.</description>
-	</maintainer>
 	<use>
 		<flag name="gssapi">Build GSSAPI support</flag>
 		<flag name="java">Build JNI bindings using jni.h</flag>
