@@ -1,0 +1,44 @@
+--- gprbuild-9999/Makefile.old	2017-05-07 09:46:00.002669301 +0200
++++ gprbuild-9999/Makefile	2017-05-07 09:47:37.832171592 +0200
+@@ -74,7 +74,8 @@
+ CLEANER=gprclean -q $(RBD)
+ 
+ GPRBUILD_BUILDER=$(BUILDER) $(GPRBUILD_GPR) \
+-	-XLIBRARY_TYPE=static -XXMLADA_BUILD=static
++	-XLIBRARY_TYPE=static -XXMLADA_BUILD=static \
++	-cargs:C $(CFLAGS) -cargs:Ada $(ADAFLAGS)
+ LIBGPR_BUILDER=$(BUILDER) $(GPR_GPR)
+ LIBGPR_INSTALLER=$(LIB_INSTALLER) $(GPR_GPR) -XBUILD=${BUILD} \
+ 	--install-name=gpr --build-var=LIBRARY_TYPE $(GTARGET)
+@@ -136,15 +136,18 @@
+ 
+ libgpr.build.shared:
+ 	${BUILDER} -XLIBRARY_TYPE=relocatable \
+-		-XXMLADA_BUILD=relocatable $(GPR_GPR)
++		-XXMLADA_BUILD=relocatable $(GPR_GPR) \
++		-cargs:C $(CFLAGS) -cargs:Ada $(ADAFLAGS)
+ 
+ libgpr.build.static:
+ 	${BUILDER} -XLIBRARY_TYPE=static \
+-		-XXMLADA_BUILD=static $(GPR_GPR)
++		-XXMLADA_BUILD=static $(GPR_GPR) \
++		-cargs:C $(CFLAGS) -cargs:Ada $(ADAFLAGS)
+ 
+ libgpr.build.static-pic:
+ 	${BUILDER} -XLIBRARY_TYPE=static-pic \
+-		-XXMLADA_BUILD=static-pic $(GPR_GPR)
++		-XXMLADA_BUILD=static-pic $(GPR_GPR) \
++		-cargs:C $(CFLAGS) -cargs:Ada $(ADAFLAGS)
+ 
+ libgpr.install: libgpr.uninstall $(foreach t, $(LIBGPR_TYPES), libgpr.install.$(t))
+ 
+--- gprbuild-9999/gpr/gpr.gpr.old	2017-05-07 10:00:30.688087076 +0200
++++ gprbuild-9999/gpr/gpr.gpr	2017-05-07 10:00:45.028863862 +0200
+@@ -67,6 +67,7 @@
+             for Switches ("gpr*.ad?") use
+               Compiler'Default_Switches ("Ada") & ("-g1");
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+ end GPR;
