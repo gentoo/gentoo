@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/google/protobuf/ https://developers.google.com/prot
 SRC_URI="https://github.com/google/protobuf/archive/v${MY_PV}.tar.gz -> protobuf-${PV}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0/11"
+SLOT="0/13"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sh ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="nano"
 
@@ -22,7 +22,7 @@ IUSE="nano"
 # (excluding revision), since we are using the same tarball.
 # But probably same subslot is sufficient.
 DEPEND=">=virtual/jdk-1.7
-	>=dev-libs/protobuf-3"
+	~dev-libs/protobuf-${PV}"
 
 RDEPEND=">=virtual/jre-1.7
 	!<dev-libs/protobuf-3[java(-)]"
