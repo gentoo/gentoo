@@ -35,7 +35,6 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-plasma/ksysguard:4
-	!kde-base/libksysguard:4
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kiconthemes)
