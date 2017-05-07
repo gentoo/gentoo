@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="C++ interface for the ATK library"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
