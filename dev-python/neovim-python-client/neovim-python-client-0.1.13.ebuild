@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
@@ -14,16 +14,28 @@ SRC_URI="https://github.com/neovim/python-client/archive/${PV}.tar.gz -> ${P}.ta
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
 	virtual/python-greenlet[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python2_7)
 "
 
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	>=app-editors/neovim-0.1.6
+"
+DEPEND="
+	${COMMON_DEPEND}
+	test? (
+		${RDEPEND}
+		dev-python/nose[${PYTHON_USEDEP}]
+	)
 "
 
 S="${WORKDIR}/python-client-${PV}"
+
+python_test() {
+	nosetests -d -v || die
+}
