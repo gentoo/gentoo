@@ -11308,7 +11308,7 @@ games-puzzle/rezerwar 0.4.2: Puzzle game like the known tetromino and the averag
 games-puzzle/scramble 0.9.5: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1: Swap and match 3 or more jewels in a line in order to score points
 games-puzzle/seatris 0.0.14: A color ncurses tetris clone
-games-puzzle/sgt-puzzles 20170228 20170314 99999999: Simon Tatham's Portable Puzzle Collection
+games-puzzle/sgt-puzzles 20170314 20170506 99999999: Simon Tatham's Portable Puzzle Collection
 games-puzzle/shaaft 0.5.0: A falling block game similar to Blockout
 games-puzzle/skoosh 2.5.0-r1: Sliding tile puzzle for Gnome 2
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
@@ -11466,7 +11466,7 @@ games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/endless-sky 0.8.11-r1 0.9.1: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.3 2.5.4 2.5.5 2.5.6: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.5 0.11.6: An open source clone of the game Colonization
-games-strategy/freeorion 0.4.7_rc2 9999: A free turn-based space empire and galactic conquest game
+games-strategy/freeorion 0.4.7 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
