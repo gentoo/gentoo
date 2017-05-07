@@ -33,11 +33,6 @@ RDEPEND=">=dev-python/cryptography-0.8[${PYTHON_USEDEP}]
 DEPEND="test? ( ${RDEPEND} dev-python/nose[${PYTHON_USEDEP}] )
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
 
-python_prepare_all() {
-	sed -i -e "/'argparse',/d" setup.py || die
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	nosetests -w ${PN} || die
 }
