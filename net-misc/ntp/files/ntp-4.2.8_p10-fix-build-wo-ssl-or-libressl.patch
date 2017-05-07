@@ -1,0 +1,39 @@
+Fix building with libressl or without SSL.
+
+Origin: http://bugs.ntp.org/attachment.cgi?id=1481
+
+LibreSSL fix from Joe Kappus (https://bugs.gentoo.org/show_bug.cgi?id=600668#c2)
+
+--- a/include/libssl_compat.h
++++ b/include/libssl_compat.h
+@@ -37,7 +37,7 @@
+ #endif
+ 
+ /* ----------------------------------------------------------------- */
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ /* ----------------------------------------------------------------- */
+ 
+ # include <openssl/objects.h>
+--- a/libntp/libssl_compat.c
++++ b/libntp/libssl_compat.c
+@@ -26,7 +26,7 @@
+ /* ----------------------------------------------------------------- */
+ 
+ /* ----------------------------------------------------------------- */
+-#if defined(OPENSSL) && OPENSSL_VERSION_NUMBER < 0x10100000L
++#if defined(OPENSSL) && (OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER))
+ /* ----------------------------------------------------------------- */
+ 
+ #include "libssl_compat.h"
+--- a/libntp/ssl_init.c
++++ b/libntp/ssl_init.c
+@@ -21,7 +21,7 @@
+ 
+ int ssl_init_done;
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ static void
+ atexit_ssl_cleanup(void)
