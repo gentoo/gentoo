@@ -7415,6 +7415,7 @@ dev-python/configparser 3.3.0.2 3.5.0: Backport of Python-3 built-in configparse
 dev-python/configshell 1.6 9999: ConfigShell Community Edition for target_core_mod/ConfigFS
 dev-python/configshell-fb 1.1.21 1.1.22: A Python library for building configuration shells
 dev-python/constantly 15.1.0: Symbolic constants in Python
+dev-python/construct 2.5.2: A powerful declarative parser for binary data
 dev-python/contextlib2 0.5.4: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/corner 2.0.1: Make scatter matrix corner plots
@@ -8171,7 +8172,6 @@ dev-python/pyclimate 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycodestyle 2.0.0 2.1.0 2.2.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
-dev-python/pyconstruct 2.5.2: A powerful declarative parser for binary data
 dev-python/pycountry 16.11.8: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.17: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
