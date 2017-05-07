@@ -1,0 +1,71 @@
+From 56bf091a0e8c5242e160d37f2974f3e1e2525821 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sun, 7 May 2017 10:49:21 +0200
+Subject: [PATCH] Use GNUInstallDirs in order to change installation paths
+
+* This allows distro-specific modification of directories
+  to adjust to different FHS layouts.
+---
+ CMakeLists.txt                 | 5 ++++-
+ docs/CMakeLists.txt            | 2 +-
+ resources/music/CMakeLists.txt | 2 +-
+ src/tracker/CMakeLists.txt     | 2 +-
+ 4 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 996e2f0..bac54f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,9 +19,12 @@
+ #  along with MilkyTracker.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.8.5)
+ project(MilkyTracker)
+ 
++# Adhere to GNU filesystem layout conventions
++include(GNUInstallDirs)
++
+ # Force SDL if requested
+ option(FORCESDL "Force SDL instead of native" OFF)
+ if(FORCESDL)
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 0aacc60..aca4a61 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -35,7 +35,7 @@ elseif(WIN32)
+     set(INSTALL_DEST .)
+ else()
+     list(APPEND DOCUMENTS readme_unix)
+-    set(INSTALL_DEST share/doc/${PROJECT_NAME_LOWER})
++    set(INSTALL_DEST ${CMAKE_INSTALL_DOCDIR})
+ endif()
+ 
+ install(FILES ${DOCUMENTS} DESTINATION ${INSTALL_DEST})
+diff --git a/resources/music/CMakeLists.txt b/resources/music/CMakeLists.txt
+index f918b6e..f29fcd6 100644
+--- a/resources/music/CMakeLists.txt
++++ b/resources/music/CMakeLists.txt
+@@ -24,7 +24,7 @@ file(GLOB SONGS "*.xm")
+ if(APPLE OR WIN32)
+     set(INSTALL_DEST "Example Songs")
+ else()
+-    set(INSTALL_DEST share/${PROJECT_NAME_LOWER}/songs)
++    set(INSTALL_DEST ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME_LOWER}/songs)
+ endif()
+ 
+ install(FILES ${SONGS} DESTINATION ${INSTALL_DEST})
+diff --git a/src/tracker/CMakeLists.txt b/src/tracker/CMakeLists.txt
+index 1e4062e..b7a96a7 100644
+--- a/src/tracker/CMakeLists.txt
++++ b/src/tracker/CMakeLists.txt
+@@ -399,7 +399,7 @@ target_link_libraries(
+ if(APPLE OR WIN32)
+     set(INSTALL_DEST .)
+ else()
+-    set(INSTALL_DEST bin)
++    set(INSTALL_DEST ${CMAKE_INSTALL_BINDIR})
+ endif()
+ 
+ install(TARGETS ${TARGET_NAME} DESTINATION ${INSTALL_DEST})
