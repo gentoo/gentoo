@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
-RDEPEND=""
+RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]"
 DEPEND=">=dev-python/setuptools-33.1.1[${PYTHON_USEDEP}]
 	test? ( dev-python/zope-event[${PYTHON_USEDEP}] )"
 
@@ -36,4 +36,11 @@ python_compile() {
 
 python_test() {
 	esetup.py test
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	# remove .pth files since dev-python/namespace-zope handles the ns
+	find "${D}" -name '*.pth' -delete || die
 }
