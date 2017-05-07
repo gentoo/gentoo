@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Daniel Pielmeier <billie@gentoo.org> (7 May 2017)
+# Fails to build with ffmpeg-3. Dead upstream.
+# Masked for removal in 30 days. Bug #575824.
+app-cdr/backlite
+
 # Lars Wendler <polynomial-c@gentoo.org> (07 May 2017)
 # Dead upstream since 2014. Fails to build with gcc-6 (bug #594260).
 # Masked for removal in 30 days.
