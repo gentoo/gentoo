@@ -15,7 +15,7 @@ SRC_URI="http://icl.cs.utk.edu/projectsfiles/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~amd64-linux"
+KEYWORDS="~amd64 ~amd64-linux"
 IUSE="fermi kepler static-libs test"
 
 REQUIRED_USE="?? ( fermi kepler )"
