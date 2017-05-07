@@ -23,7 +23,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.0.0-docdir.patch )
-HTML_DOCS=( docs/{ChangeLog,FAQ,MilkyTracker}.html )
 
 src_configure() {
 	local mycmakeargs=(
