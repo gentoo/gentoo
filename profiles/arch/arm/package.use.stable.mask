@@ -50,9 +50,8 @@ sys-fs/dmraid dietlibc klibc
 # Missing stable
 dev-db/mariadb jdbc
 
-# Ian Delaney <idella4@gentoo.org> (13 Apr 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# media-libs/raspberrypi-userland isn't stable yet
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (13 Apr 2016)
+# Requires special hardware to test and stabilize properly.
 media-video/mpv raspberry-pi
 
 # Brian Evans <grknight@gentoo.org> (08 Jan 2016)
