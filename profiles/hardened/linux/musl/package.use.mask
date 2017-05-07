@@ -9,6 +9,7 @@ sys-devel/llvm sanitize
 
 # These cause collisions with <libintl.h>
 # even with --without-included-gettext
+app-text/dos2unix nls
 sys-devel/gettext nls
 sys-fs/e2fsprogs nls
 
