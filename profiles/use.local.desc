@@ -3882,7 +3882,6 @@ media-gfx/darktable:kwallet - Enable encrypted storage of passwords with kde-fra
 media-gfx/darktable:libsecret - Enable libsecret support to store login credentials
 media-gfx/darktable:opencl - Enable opencl support
 media-gfx/darktable:pax_kernel - Triggers paxmarking of main darktable binary
-media-gfx/darktable:slideshow - Build the opengl slideshow viewer
 media-gfx/darktable:webp - Enable WebP export support
 media-gfx/digikam:addressbook - Enable akonadi contact integration
 media-gfx/digikam:kipi - Enable support for media-plugins/kipi-plugins
