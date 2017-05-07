@@ -427,6 +427,7 @@ app-editors/vim:vim-pager - Install vimpager and vimmanpager links
 app-editors/vim-qt:lto - Enable configure workaround for -flto
 app-editors/vim-qt:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-editors/vim-qt:racket - Enable support for Scheme using dev-scheme/racket
+app-editors/vis:tre - more memory efficient regex search using dev-libs/tre
 app-editors/xemacs:athena - Chooses the MIT Athena widget set
 app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop library
 app-editors/xemacs:eolconv - Support detection and translation of newline conventions
