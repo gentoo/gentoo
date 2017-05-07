@@ -1,5 +1,5 @@
---- locater.h
-+++ locater.h
+--- a/locater.h
++++ b/locater.h
 @@ -31,6 +31,8 @@
  #ifndef LOCATER_H
  #define LOCATER_H
