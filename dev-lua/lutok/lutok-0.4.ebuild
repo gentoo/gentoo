@@ -12,13 +12,18 @@ SRC_URI="https://github.com/jmmv/lutok/releases/download/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-lang/lua:0
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	test? (
+		dev-libs/atf
+		dev-util/kyua
+	)
 "
 
 src_configure() {
