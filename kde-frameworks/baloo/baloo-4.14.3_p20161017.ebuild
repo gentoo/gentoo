@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/xapian:=[chert]
 "
 RDEPEND="${DEPEND}
-	!<kde-base/nepomuk-4.12.50
+	!<kde-apps/nepomuk-4.12.50
 "
 
 RESTRICT="test"
