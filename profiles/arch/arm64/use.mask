@@ -186,7 +186,6 @@ ace
 qt4
 R
 sdl
-slang
 tk
 vim-syntax
 
