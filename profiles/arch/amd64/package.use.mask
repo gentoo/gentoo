@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (20 May 2017)
+# cpyrit-cuda does not support GCC 4.9 or later
+net-wireless/pyrit cuda
+
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # nexpose and openvas work on amd64
 net-analyzer/metasploit nexpose openvas
