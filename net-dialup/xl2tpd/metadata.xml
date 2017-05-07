@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>floppym@gentoo.org</email>
-		<name>Mike Gilbert</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>The Layer 2 Tunneling Protocol (L2TP) daemon mantained by Xelerance Corporation.</longdescription>
 	<use>
 		<flag name="dnsretry">Patch for host lookup retries, activated by redial feature</flag>
