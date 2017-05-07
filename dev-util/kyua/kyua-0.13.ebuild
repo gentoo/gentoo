@@ -10,11 +10,16 @@ SRC_URI="https://github.com/jmmv/kyua/releases/download/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
+
+# Tests fail
+RESTRICT="test"
 
 RDEPEND="
 	dev-db/sqlite:3
 	dev-lua/lutok
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	test? ( dev-libs/atf )
+"
