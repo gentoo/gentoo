@@ -11736,7 +11736,7 @@ kde-apps/akonadi-mime 17.04.0: Library for akonadi mime types
 kde-apps/akonadi-notes 17.04.0: Library for akonadi notes integration
 kde-apps/akonadi-search 17.04.0: Libraries and daemons to implement searching in Akonadi
 kde-apps/akonadiconsole 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Application for debugging Akonadi Resources
-kde-apps/akregator 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: News feed aggregator
+kde-apps/akregator 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: News feed aggregator
 kde-apps/analitza 16.12.3 17.04.0: KDE library for mathematical features
 kde-apps/ark 16.12.3 17.04.0: KDE Archiving tool
 kde-apps/artikulate 16.12.3 17.04.0: Language learning application that helps improving pronunciation skills
@@ -11744,7 +11744,7 @@ kde-apps/attica 16.04.3: Open Collaboration Services provider management
 kde-apps/audiocd-kio 16.08.3 16.12.3 17.04.0: kioslave for accessing audio CDs
 kde-apps/baloo-widgets 16.12.3 17.04.0: Widget library for baloo
 kde-apps/blinken 16.12.3 17.04.0: KDE version of the Simon Says game
-kde-apps/blogilo 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Application to create, edit and update blog content
+kde-apps/blogilo 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Application to create, edit and update blog content
 kde-apps/bomber 16.12.3 17.04.0: KDE arcade bombing game
 kde-apps/bovo 16.12.3 17.04.0: Five-in-a-row Board Game
 kde-apps/calendarjanitor 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Tool to scan calendar data for buggy instances
@@ -11767,13 +11767,13 @@ kde-apps/incidenceeditor 17.04.0: Incidence editor for korganizer
 kde-apps/jovie 16.12.3 17.04.0: Text to speech application
 kde-apps/juk 16.12.3 17.04.0: Jukebox and music manager by KDE
 kde-apps/k3b 2.0.3-r5 17.04.0: Full-featured burning and ripping application based on KDE Frameworks
-kde-apps/kabcclient 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: Command line client for accessing the KDE addressbook
+kde-apps/kabcclient 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: Command line client for accessing the KDE addressbook
 kde-apps/kaccessible 16.12.3 17.04.0: Provides accessibility services like focus tracking
 kde-apps/kaccounts-integration 16.12.3 17.04.0: Administer web accounts for the sites and services across the Plasma desktop
 kde-apps/kaccounts-providers 16.12.3 17.04.0: KDE accounts providers
-kde-apps/kaddressbook 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Address book application based on KDE Frameworks
+kde-apps/kaddressbook 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Address book application based on KDE Frameworks
 kde-apps/kajongg 16.12.3 17.04.0: Classical Mah Jongg for four players
-kde-apps/kalarm 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Application to manage alarms and other timer based alerts for the desktop
+kde-apps/kalarm 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Application to manage alarms and other timer based alerts for the desktop
 kde-apps/kalarmcal 17.04.0: Client library to access and handling of KAlarm calendar data
 kde-apps/kalgebra 16.12.3 17.04.0: MathML-based graph calculator by KDE
 kde-apps/kalzium 16.12.3 17.04.0: Periodic table of the elements
@@ -11832,12 +11832,12 @@ kde-apps/kdepasswd 16.08.3: KDE GUI for passwd
 kde-apps/kdepim-addons 17.04.0: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 17.04.0: Libraries for KDE PIM applications
 kde-apps/kdepim-common-libs 4.14.11_pre20160211-r1 4.14.11_pre20160611: Common libraries for KDE PIM apps
-kde-apps/kdepim-kresources 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: KDE PIM groupware plugin collection
+kde-apps/kdepim-kresources 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1: KDE PIM internationalization package
-kde-apps/kdepim-meta 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: KDE PIM - merge this to pull in all kdepim-derived packages
+kde-apps/kdepim-meta 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 4.14.11_pre20160211 17.04.0-r1: Runtime plugin collection to extend the functionality of KDE PIM
-kde-apps/kdepim-wizards 4.4.2016.01 4.4.2017.04: KDE PIM wizards (noakonadi branch)
-kde-apps/kdepimlibs 4.14.10-r3 4.14.10_p20160611 4.14.11_pre20160211-r3 4.14.11_pre20160611: Common library for KDE PIM apps
+kde-apps/kdepim-wizards 4.4.2017.04: KDE PIM wizards (noakonadi branch)
+kde-apps/kdepimlibs 4.14.10_p20160611 4.14.11_pre20160211-r3 4.14.11_pre20160611: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.12.3 17.04.0: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 16.12.3 17.04.0: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 16.12.3 17.04.0: Thumbnail generator for PO files
@@ -11876,17 +11876,17 @@ kde-apps/kio-extras 16.12.3-r1 16.12.3-r2 17.04.0: KIO plugins present a filesys
 kde-apps/kioclient 16.04.3: Command-line tool for network-transparent operations
 kde-apps/kiriki 16.12.3 17.04.0: An addictive and fun dice game
 kde-apps/kiten 16.12.3 17.04.0: KDE Japanese dictionary and reference
-kde-apps/kjots 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 5.0.2: Note taking utility by KDE
+kde-apps/kjots 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 5.0.2: Note taking utility by KDE
 kde-apps/kjumpingcube 16.12.3 17.04.0: Tactical one or two player game
 kde-apps/kldap 17.04.0: Library for interacting with LDAP servers
-kde-apps/kleopatra 4.4.2016.01-r1 4.4.2017.04 4.14.11_pre20160211-r1 4.14.11_pre20160611 17.04.0: Certificate manager and GUI for OpenPGP and CMS cryptography
+kde-apps/kleopatra 4.4.2017.04 4.14.11_pre20160211-r1 4.14.11_pre20160611 17.04.0: Certificate manager and GUI for OpenPGP and CMS cryptography
 kde-apps/klettres 16.12.3 17.04.0: Alphabet learning application
 kde-apps/klickety 16.12.3 17.04.0: A game almost the same as ksame, but a bit different by KDE
 kde-apps/klines 16.12.3 17.04.0: A little KDE game about balls and how to get rid of them
 kde-apps/klinkstatus 16.12.3 17.04.0: KDE web development - link validity checker
 kde-apps/kmag 16.12.3 17.04.0: KDE screen magnifier
 kde-apps/kmahjongg 16.12.3 17.04.0: A tile matching game for one or two players
-kde-apps/kmail 4.4.2016.01-r1 4.4.2017.04 4.14.11_pre20160211-r1 4.14.11_pre20160611 17.04.0: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail 4.4.2017.04 4.14.11_pre20160211-r1 4.14.11_pre20160611 17.04.0: Email client, supporting POP3 and IMAP mailboxes.
 kde-apps/kmail-account-wizard 17.04.0: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 17.04.0: Mail transport service
 kde-apps/kmbox 17.04.0: Library for accessing MBox format mail storages
@@ -11901,8 +11901,8 @@ kde-apps/knavalbattle 16.12.3 17.04.0: Battleship clone by KDE
 kde-apps/knetattach 16.04.3: KDE network wizard
 kde-apps/knetwalk 16.12.3 17.04.0: KDE version of the popular NetWalk game for system administrators
 kde-apps/knewstuff 16.04.3: KDE4 software to download and upload 'new stuff'
-kde-apps/knode 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: Usenet newsgroups and mailing lists reader by KDE
-kde-apps/knotes 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Note taking application
+kde-apps/knode 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: Usenet newsgroups and mailing lists reader by KDE
+kde-apps/knotes 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Note taking application
 kde-apps/knotify 16.04.3: The KDE notification daemon
 kde-apps/kolf 16.12.3 17.04.0: Minigolf Game by KDE
 kde-apps/kollision 16.12.3 17.04.0: Simple ball dodging game
@@ -11913,12 +11913,12 @@ kde-apps/konq-plugins 16.08.3: Various plugins for konqueror
 kde-apps/konqueror 16.12.3 17.04.0: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 16.12.3 17.04.0: Galactic Strategy KDE Game
 kde-apps/konsole 16.12.3 16.12.3-r1 17.04.0: KDE's terminal emulator
-kde-apps/konsolekalendar 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Command line interface to KDE calendars
+kde-apps/konsolekalendar 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Command line interface to KDE calendars
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
-kde-apps/kontact 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Container application to unify several major PIM applications within one
+kde-apps/kontact 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 17.04.0: Library for embedding KParts in a Kontact component
 kde-apps/kopete 16.12.3-r1 16.12.3-r2 17.04.0-r1: KDE multi-protocol IM client
-kde-apps/korganizer 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Organizational assistant, providing calendars and other similar functionality
+kde-apps/korganizer 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611 17.04.0: Organizational assistant, providing calendars and other similar functionality
 kde-apps/kpasswdserver 16.04.3: KDED Password Module
 kde-apps/kpat 16.12.3 17.04.0: KDE patience game
 kde-apps/kpimtextedit 17.04.0: A textedit with PIM-specific features
@@ -11945,7 +11945,7 @@ kde-apps/ksudoku 16.12.3 17.04.0: Sudoku by KDE
 kde-apps/ksystemlog 16.12.3 17.04.0: System log viewer by KDE
 kde-apps/kteatime 16.12.3 17.04.0: KDE timer for making a fine cup of tea
 kde-apps/ktimer 16.12.3 17.04.0: KDE Timer
-kde-apps/ktimetracker 4.4.2016.01 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: Tracks time spent on various tasks
+kde-apps/ktimetracker 4.4.2017.04 4.14.11_pre20160211 4.14.11_pre20160611: Tracks time spent on various tasks
 kde-apps/ktimezoned 16.04.3: KDE: Timezone daemon
 kde-apps/ktnef 4.14.11_pre20160211 4.14.11_pre20160611: Viewer for TNEF attachments
 kde-apps/ktouch 16.12.3 17.04.0: Program that helps to learn and practice touch typing
@@ -11977,18 +11977,18 @@ kde-apps/libkcddb 16.08.3 16.12.3 17.04.0: KDE library for CDDB
 kde-apps/libkcompactdisc 16.08.3 16.12.3-r1 17.04.0: Library for playing & ripping CDs
 kde-apps/libkdcraw 15.08.3 16.12.3 17.04.0: Digital camera raw image library wrapper
 kde-apps/libkdegames 4.14.3-r1 16.12.3 17.04.0: Base library common to many KDE games
-kde-apps/libkdepim 4.4.2016.01 4.4.2017.04 17.04.0: Common PIM libraries
+kde-apps/libkdepim 4.4.2017.04 17.04.0: Common PIM libraries
 kde-apps/libkeduvocdocument 16.12.3 17.04.0: Library for reading/writing KVTML
 kde-apps/libkexiv2 15.08.3 16.12.3 17.04.0: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 16.12.3 17.04.0: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgapi 2.2.0 17.04.0-r1: Library for accessing Google calendar and contact resources
 kde-apps/libkgeomap 16.12.3 17.04.0: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 16.12.3 17.04.0: A library for image plugins accross KDE applications
-kde-apps/libkleo 4.4.2016.01 4.4.2016.01-r1 4.4.2017.04 17.04.0: Library for encryption handling
+kde-apps/libkleo 4.4.2017.04 17.04.0: Library for encryption handling
 kde-apps/libkmahjongg 4.14.3 16.12.3 17.04.0: Mahjongg library based on Qt/KDE Frameworks
 kde-apps/libkomparediff2 16.12.3 17.04.0: KDE library to compare files and strings
 kde-apps/libkonq 16.08.3: The embeddable part of konqueror
-kde-apps/libkpgp 4.4.2016.01 4.4.2017.04: KDE pgp abstraction library
+kde-apps/libkpgp 4.4.2017.04: KDE pgp abstraction library
 kde-apps/libksane 15.08.3-r1 16.12.3 17.04.0: SANE Library interface based on KDE Frameworks
 kde-apps/libksieve 17.04.0: Common PIM libraries
 kde-apps/libktnef 17.04.0: Library for handling TNEF data
