@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (07 May 2017)
+# Test deps need keywording.
+dev-util/pkgconf -test
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is keyworded on amd64
 app-admin/rsyslog -mdblookup
