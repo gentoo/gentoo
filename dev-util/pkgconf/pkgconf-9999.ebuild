@@ -18,18 +18,24 @@ HOMEPAGE="https://github.com/pkgconf/pkgconf"
 
 LICENSE="BSD-1"
 SLOT="0"
-IUSE="+pkg-config"
+IUSE="+pkg-config test"
 
 # tests require 'kyua'
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+DEPEND="
+	test? (
+		dev-libs/atf
+		dev-util/kyua
+	)
+"
+RDEPEND="
 	pkg-config? (
 		!dev-util/pkgconfig
 		!dev-util/pkg-config-lite
 		!dev-util/pkgconfig-openbsd[pkg-config]
-	)"
+	)
+"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/pkgconf
