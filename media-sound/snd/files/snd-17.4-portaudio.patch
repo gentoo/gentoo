@@ -1,0 +1,49 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -521,8 +521,9 @@
+   
+   if test "$with_portaudio" = yes ; then
+     AC_DEFINE(MUS_PORTAUDIO)
++    PKG_CHECK_MODULES([PORTAUDIO], [portaudio-2.0])
+     AUDIO_SYSTEM=portaudio
+-    AUDIO_LIB="-lportaudio"
++    AUDIO_LIB="${PORTAUDIO_LIBS}"
+   fi
+ 
+   if test "$with_jack" = yes ; then
+--- a/makefile.in
++++ b/makefile.in
+@@ -11,6 +11,7 @@
+ GL_FLAGS = @GL_FLAGS@
+ GSL_FLAGS = @GSL_CFLAGS@
+ JACK_FLAGS = @JACK_FLAGS@
++PORTAUDIO_CFLAGS = @PORTAUDIO_CFLAGS@
+ 
+ ORIGINAL_LDFLAGS = @ORIGINAL_LDFLAGS@
+ LDFLAGS = @LDFLAGS@
+@@ -28,6 +29,7 @@
+ WEBSERVER_FILES = @WEBSERVER_FILES@
+ JACK_LIBS = @JACK_LIBS@
+ GMP_LIBS = @GMP_LIBS@
++PORTAUDIO_LIBS = @PORTAUDIO_LIBS@
+ 
+ LDSO_FLAGS = @LDSO_FLAGS@
+ SO_FLAGS = @SO_FLAGS@
+@@ -53,7 +55,7 @@
+ .SUFFIXES: .c .o
+ 
+ .c.o:
+-	$(CC) -c $(DEFS) $(GTK_CFLAGS) $(CAIRO_CFLAGS) $(CFLAGS) $(XEN_CFLAGS) $(GSL_FLAGS) $(GL_FLAGS) $(JACK_FLAGS) $(FFTW_CFLAGS) $<
++	$(CC) -c $(DEFS) $(GTK_CFLAGS) $(CAIRO_CFLAGS) $(CFLAGS) $(XEN_CFLAGS) $(GSL_FLAGS) $(GL_FLAGS) $(JACK_FLAGS) $(FFTW_CFLAGS) $(PORTAUDIO_CFLAGS) $<
+ 
+ SND_SCRIPTS = *.scm *.fs *.rb *.fsm
+ SNDLIB_HEADERS = mus-config.h sndlib.h _sndlib.h sndlib-strings.h clm.h vct.h sndlib2xen.h clm2xen.h xen.h clm-strings.h
+@@ -84,7 +86,7 @@
+ main_target: @MAKE_TARGET@
+ 
+ snd: $(SNDLIB_HEADERS) $(SND_HEADERS) $(GX_HEADERS) $(S7_HEADERS) $(S7_O_FILES) $(SNDLIB_O_FILES) $(O_FILES) $(GX_FILES) $(GL_FILES) $(WEBSERVER_FILES)
+-	$(CC) $(LDFLAGS) $(CFLAGS) $(S7_O_FILES) $(SNDLIB_O_FILES) $(O_FILES) $(GX_FILES) $(GL_FILES)  $(WEBSERVER_FILES) -o snd $(SNDLIB_LIB) $(XEN_LIBS) $(GTK_LIBS) $(GL_LIBS) $(WEBSERVER_LIBS) $(JACK_LIBS) $(AUDIO_LIB) $(FFTW_LIBS) $(GSL_LIBS) $(GMP_LIBS) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(S7_O_FILES) $(SNDLIB_O_FILES) $(O_FILES) $(GX_FILES) $(GL_FILES)  $(WEBSERVER_FILES) -o snd $(SNDLIB_LIB) $(XEN_LIBS) $(GTK_LIBS) $(GL_LIBS) $(WEBSERVER_LIBS) $(JACK_LIBS) $(AUDIO_LIB) $(FFTW_LIBS) $(GSL_LIBS) $(GMP_LIBS) $(PORTAUDIO_LIBS) $(LIBS)
+ 
+ xm: 	xen.h mus-config.h $(S7_HEADERS)
+ 	$(CC) -c xm.c -DUSE_SND=0 $(DEFS) $(SO_FLAGS) $(GTK_CFLAGS) $(CAIRO_CFLAGS) $(CFLAGS) $(XEN_CFLAGS) $(GSL_FLAGS) $(JACK_FLAGS) $(GL_FLAGS)
