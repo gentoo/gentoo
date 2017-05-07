@@ -9,8 +9,8 @@ diff -Naur python/setup.py python/setup.py
 +    libD = []
 +    try:
 +        subprocess.check_call(['pkg-config', '--exists', 'protobuf'])
-+        inclD += subprocess.check_output(['pkg-config','--variable=includedir','protobuf']).split()
-+        libD = subprocess.check_output(['pkg-config','--variable=libdir','protobuf']).split()
++        inclD += subprocess.check_output(['pkg-config','--variable=includedir','protobuf']).decode().split()
++        libD = subprocess.check_output(['pkg-config','--variable=libdir','protobuf']).decode().split()
 +    except OSError as osex:
 +        if osex.errno == errno.ENOENT:
 +            info('pkg-config not found')
