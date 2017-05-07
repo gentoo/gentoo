@@ -12,7 +12,7 @@ SRC_URI="http://download.gna.org/${PN}/0.6/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
