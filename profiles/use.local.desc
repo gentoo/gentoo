@@ -1944,7 +1944,6 @@ dev-libs/DirectFB:sawman - enable SaWMan (window manager and application manager
 dev-libs/DirectFB:swfdec - build Swfdec (Flash decoder) video provider
 dev-libs/DirectFB:tremor - build Ogg/Vorbis music provider using Tremor
 dev-libs/DirectFB:webp - build WebP image provider
-dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
 dev-libs/actor-framework:benchmarks - Due to the number of out-of-tree deps, these only get installed as docs

@@ -4611,7 +4611,6 @@ dev-libs/MicroJSON 0.3.1 0.3.2: Small and simple to use JSON generation and pars
 dev-libs/OpenNI 1.5.7.10 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
 dev-libs/OpenSRF 1.2.0 2.1.1: Framework for the high-level development of the Evergreen ILS software
-dev-libs/STLport 5.2.1-r1 5.2.1-r3: C++ STL library
 dev-libs/UTF8Strings 1.14.0 1.14.2: C++ library providing ability to work natively with UTF8 string
 dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
