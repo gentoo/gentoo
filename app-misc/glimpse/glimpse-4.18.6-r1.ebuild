@@ -1,21 +1,23 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
 DESCRIPTION="A index/query system to search a large set of files quickly"
 HOMEPAGE="http://webglimpse.net/"
 SRC_URI="http://webglimpse.net/trial/${P}.tar.gz"
 
-LICENSE="glimpse"
+LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="static"
 
 RDEPEND="!dev-libs/tre
 	!app-text/agrep"
+
+PATCHES=( "${FILESDIR}/${PN}-4.18.6-makefile.patch" )
 
 src_prepare() {
 	sed -i \
@@ -38,19 +40,20 @@ src_prepare() {
 		{agrep,compress,index}/Makefile.in \
 		|| die "LDFLAGS sed failed"
 
-	epatch "${FILESDIR}"/${PN}-4.18.5-makefile.patch
+	default
 }
 
 src_configure() {
 	use static && append-ldflags -static
-
-	econf || die
+	default
 }
 
 src_compile() {
-	emake OPTIMIZEFLAGS="${CFLAGS}" || die
+	# The OPTIMIZEFLAGS variable is our own, patched in...
+	emake OPTIMIZEFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	einstall || die
+	# The build system is buggy; we get sandbox violations without this.
+	emake prefix="${ED}/usr" install
 }
