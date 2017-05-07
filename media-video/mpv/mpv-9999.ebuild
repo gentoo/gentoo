@@ -343,8 +343,8 @@ pkg_postinst() {
 
 	if [[ ${opengl_0_25_0} -eq 1 ]]; then
 		elog "Since version 0.25.0 the 'opengl' USE flag is mapped to"
-		elog "the 'opengl' video output and no longer depends on X11"
-		elog "or Mac OS Aqua. Consider enabling the 'opengl' USE flag."
+		elog "the 'opengl' video output and no longer explicitly requires"
+		elog "X11 or Mac OS Aqua. Consider enabling the 'opengl' USE flag."
 	fi
 
 	if use cli && ! has_version 'app-shells/mpv-bash-completion'; then
