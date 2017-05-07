@@ -233,7 +233,8 @@ S=$(
 
 gentoo_urls() {
 	local devspace="HTTP~vapier/dist/URI HTTP~rhill/dist/URI
-	HTTP~zorry/patches/gcc/URI HTTP~blueness/dist/URI"
+	HTTP~zorry/patches/gcc/URI HTTP~blueness/dist/URI
+	HTTP~tamiko/distfiles/URI"
 	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
 	echo mirror://gentoo/$1 ${devspace//URI/$1}
 }
