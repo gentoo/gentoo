@@ -4022,6 +4022,10 @@ developers and volunteer mentors.</description>
       <name>Anthony G. Basile</name>
     </member>
     <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+    </member>
+    <member>
       <email>kumba@gentoo.org</email>
       <name>Joshua Kinard</name>
     </member>
@@ -4030,12 +4034,24 @@ developers and volunteer mentors.</description>
       <name>Luca Barbato</name>
     </member>
     <member>
+      <email>mrueg@gentoo.org</email>
+      <name>Manuel Rüger</name>
+    </member>
+    <member>
       <email>rhill@gentoo.org</email>
       <name>Ryan Hill</name>
+    </member>
+    <member>
+      <email>tamiko@gentoo.org</email>
+      <name>Matthias Maier</name>
     </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
     </member>
   </project>
   <project>
