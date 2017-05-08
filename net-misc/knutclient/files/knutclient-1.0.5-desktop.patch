@@ -1,7 +1,7 @@
 Removes deprecated and useless items.
 
---- knutclient.desktop
-+++ knutclient.desktop
+--- a/knutclient.desktop
++++ b/knutclient.desktop
 @@ -6,9 +6,8 @@
  Comment[de]=
  Comment[cs]=Klient pro UPS syst� NUT

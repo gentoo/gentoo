@@ -1,0 +1,18 @@
+Forwarded: no
+Description: Fix the build with gcc 6
+Author: Adrian Bunk <bunk@stusta.de>
+Bug-Debian: https://bugs.debian.org/811882
+
+--- a/src/knutprefdlg.cpp
++++ b/src/knutprefdlg.cpp
+@@ -957,9 +957,9 @@
+ 
+   QHBoxLayout *setFontLayout = new QHBoxLayout();
+   QStringList fontsList;
+   KFontChooser::getFontList(fontsList, KFontChooser::SmoothScalableFonts);
+-  m_fontWidget = new KFontChooser(mainPageWidget, false, fontsList);
++  m_fontWidget = new KFontChooser(mainPageWidget, KFontChooser::NoDisplayFlags, fontsList);
+   setFontLayout->addWidget (m_fontWidget ,0);
+   topLayout->addLayout(setFontLayout);
+ 
+   topLayout->addStretch( 20 );
