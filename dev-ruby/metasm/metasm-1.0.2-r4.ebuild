@@ -14,7 +14,7 @@ DESCRIPTION="cross-architecture assembler, disassembler, linker, and debugger"
 HOMEPAGE="http://metasm.cr0.org/"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="${PV}"
 IUSE=""
 
 if [ "${PV}" = "9999" ]; then
