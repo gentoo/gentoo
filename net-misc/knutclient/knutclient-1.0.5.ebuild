@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,11 @@ SLOT="4"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
+)
+
 DOCS=( ChangeLog )
 
 S=${WORKDIR}/${MY_P}
