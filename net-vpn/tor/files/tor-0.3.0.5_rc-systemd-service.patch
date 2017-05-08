@@ -1,0 +1,20 @@
+--- tor/contrib/dist/tor.service.in	2017-03-05 01:44:57.000000000 +0100
++++ tor/contrib/dist/tor.service.in.new	2017-04-18 13:42:27.497367982 +0200
+@@ -11,6 +11,9 @@
+ [Service]
+ Type=notify
+ NotifyAccess=all
++PermissionsStartOnly=true
++ExecStartPre=-/bin/mkdir @LOCALSTATEDIR@/run/tor
++ExecStartPre=/bin/chown tor:tor @LOCALSTATEDIR@/run/tor
+ ExecStartPre=@BINDIR@/tor -f @CONFDIR@/torrc --verify-config
+ ExecStart=@BINDIR@/tor -f @CONFDIR@/torrc
+ ExecReload=/bin/kill -HUP ${MAINPID}
+@@ -26,6 +27,7 @@
+ ProtectHome=yes
+ ProtectSystem=full
+ ReadOnlyDirectories=/
++ReadWriteDirectories=-@LOCALSTATEDIR@/run/tor
+ ReadWriteDirectories=-@LOCALSTATEDIR@/lib/tor
+ ReadWriteDirectories=-@LOCALSTATEDIR@/log/tor
+ NoNewPrivileges=yes
