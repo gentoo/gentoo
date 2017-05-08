@@ -1,0 +1,316 @@
+Backported from following commit:
+
+From c9d57b57d70ab2ae842144828175820fb207a3b0 Mon Sep 17 00:00:00 2001
+From: Shamus Hammons <jlhamm@acm.org>
+Date: Wed, 18 May 2016 00:31:26 +0000
+Subject: [PATCH] Fixes for compilation against GCC 6.
+
+So Debian decides to be more rice than Gentoo, and makes the jump to GCC
+6 for some unknown reason. Thus, in order to prevent VJ from getting
+dumped out of Debian for incompatibility with GCC 6, we have the
+following update. Thanks to John Paul Adrian Glaubitz for the report, and
+to Teemu Hukkanen for Debian chroot advice. :-)
+---
+ Makefile                     |  2 +-
+ src/blitter.cpp              |  2 +-
+ src/gui/about.cpp            |  3 +--
+ src/gui/controllerwidget.cpp | 10 ++++++----
+ src/gui/mainwin.cpp          |  2 +-
+ src/jagbios.cpp              |  4 +++-
+ src/jagbios.h                |  4 +++-
+ src/jagbios2.cpp             |  4 +++-
+ src/jagbios2.h               |  4 +++-
+ src/jagcdbios.cpp            |  4 +++-
+ src/jagcdbios.h              |  4 +++-
+ src/jagdevcdbios.cpp         |  4 +++-
+ src/jagdevcdbios.h           |  4 +++-
+ src/jagstub1bios.cpp         |  4 +++-
+ src/jagstub1bios.h           |  4 +++-
+ src/jagstub2bios.cpp         |  4 +++-
+ src/jagstub2bios.h           |  4 +++-
+ src/joystick.cpp             |  4 ++--
+ 18 files changed, 48 insertions(+), 23 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 4fd8eae..29f5f49 100644
+--- a/Makefile
++++ b/Makefile
+@@ -65,7 +65,7 @@ virtualjaguar: sources libs makefile-qt
+ 
+ makefile-qt: virtualjaguar.pro
+ 	@echo -e "\033[01;33m***\033[00;32m Creating Qt makefile...\033[00m"
+-	$(Q)$(CROSS)qmake $(QMAKE_EXTRA) virtualjaguar.pro -o makefile-qt
++	$(Q)$(CROSS)qmake -qt=5 $(QMAKE_EXTRA) virtualjaguar.pro -o makefile-qt
+ 
+ libs: obj/libm68k.a obj/libjaguarcore.a
+ 	@echo -e "\033[01;33m***\033[00;32m Libraries successfully made.\033[00m"
+diff --git a/src/blitter.cpp b/src/blitter.cpp
+index 588e6c2..7193daf 100644
+--- a/src/blitter.cpp
++++ b/src/blitter.cpp
+@@ -5387,7 +5387,7 @@ Addq_x		:= JOIN (addq_x, addq_x[0..5], addqt_x[6..15]);
+ Addq_y		:= JOIN (addq_y, addq_y[0..15]);*/
+ 
+ ////////////////////////////////////// C++ CODE //////////////////////////////////////
+-	int16_t mask[8] = { 0xFFFF, 0xFFFE, 0xFFFC, 0xFFF8, 0xFFF0, 0xFFE0, 0xFFC0, 0x0000 };
++	uint16_t mask[8] = { 0xFFFF, 0xFFFE, 0xFFFC, 0xFFF8, 0xFFF0, 0xFFE0, 0xFFC0, 0x0000 };
+ 	addq_x = addqt_x & mask[modx];
+ 	addq_y = addqt_y & 0xFFFF;
+ //////////////////////////////////////////////////////////////////////////////////////
+diff --git a/src/gui/about.cpp b/src/gui/about.cpp
+index 1b3df54..71cec73 100644
+--- a/src/gui/about.cpp
++++ b/src/gui/about.cpp
+@@ -51,9 +51,8 @@ AboutWindow::AboutWindow(QWidget * parent/*= 0*/): QWidget(parent, Qt::Dialog)
+ 		"<b>Ryan C. Gordon</b> for Virtual Jaguar's web presence<br>"
+ 		"<b>Curt Vendel</b> for various Jaguar & other goodies<br>"
+ 		"<b>Reboot</b> for reasons too numerous to mention<br>"
+-		"<b>The Free Jaguar Project</b> (you know why) ;-)<br>"
+ 		"The guys over at <b>Atari Age</b> :-)<br>"
+-		"<b>byuu</b> for BSNES and showing us what was possible"
++		"<b>byuu</b> for <s>BSNES</s> Higan and showing us what was possible"
+ 	));
+ 	text = new QLabel(s);
+ 	layout->addWidget(text);
+diff --git a/src/gui/controllerwidget.cpp b/src/gui/controllerwidget.cpp
+index f7ea8d0..38ce415 100644
+--- a/src/gui/controllerwidget.cpp
++++ b/src/gui/controllerwidget.cpp
+@@ -47,8 +47,8 @@ char ControllerWidget::hatName[4][16] = { "Up", "Rt", "Dn", "Lf" };
+ char ControllerWidget::axisName[2][8] = { "+", "-" };
+ 
+ // This is hard-coded crap. It's crap-tastic!
+-// These are the positions to draw the button names at, ordered by the BUTTON_* sequence
+-// found in joystick.h.
++// These are the positions to draw the button names at, ordered by the BUTTON_*
++// sequence found in joystick.h.
+ int ControllerWidget::buttonPos[21][2] = { { 74, 32 }, { 71, 67 }, { 53, 49 }, { 93, 49 },
+ 	{ 110, 200 }, { 110, 175 }, { 110, 151 }, { 110, 126 },
+ 	{ 148, 200 }, { 148, 175 }, { 148, 151 }, { 148, 126 },
+@@ -239,7 +239,8 @@ void ControllerWidget::mouseMoveEvent(QMouseEvent * event)
+ 
+ 	for(int i=BUTTON_FIRST; i<=BUTTON_LAST; i++)
+ 	{
+-		// We loop through the button text positions, to see which one is closest.
++		// We loop through the button text positions, to see which one is
++		// closest.
+ 		double distX = (double)(event->x() - buttonPos[i][0]);
+ 		double distY = (double)(event->y() - buttonPos[i][1]);
+ 		double currentDistance = sqrt((distX * distX) + (distY * distY));
+@@ -265,7 +266,8 @@ void ControllerWidget::leaveEvent(QEvent * /*event*/)
+ 
+ void ControllerWidget::DrawBorderedText(QPainter & painter, int x, int y, QString text)
+ {
+-	// Text is drawn centered at (x, y) as well, using a bounding rect for the purpose.
++	// Text is drawn centered at (x, y) as well, using a bounding rect for the
++	// purpose.
+ 	QRect rect(0, 0, 60, 30);
+ 	QPen oldPen = painter.pen();
+ 	painter.setPen(QColor(0, 0, 0, 255));		// This is R,G,B,A
+diff --git a/src/gui/mainwin.cpp b/src/gui/mainwin.cpp
+index 9f64c62..cb01b02 100644
+--- a/src/gui/mainwin.cpp
++++ b/src/gui/mainwin.cpp
+@@ -964,7 +964,7 @@ void MainWin::LoadSoftware(QString file)
+ 	running = false;							// Prevent bad things(TM) from happening...
+ 	pauseForFileSelector = false;				// Reset the file selector pause flag
+ 
+-	char * biosPointer = jaguarBootROM;
++	uint8_t * biosPointer = jaguarBootROM;
+ 
+ 	if (vjs.hardwareTypeAlpine)
+ 		biosPointer = jaguarDevBootROM2;
+diff --git a/src/jagbios.cpp b/src/jagbios.cpp
+index 8c03e6f..7951524 100644
+--- a/src/jagbios.cpp
++++ b/src/jagbios.cpp
+@@ -4,7 +4,9 @@
+ // NOTE: This is the Jaguar Series K boot ROM
+ //
+ 
+-char jaguarBootROM[0x20000] = {
++#include "jagbios.h"
++
++uint8_t jaguarBootROM[0x20000] = {
+ 	0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x08, 0x41, 0xF9, 0x00, 0xF0, 0x00, 0x00, 0x30, 0xBC, 0x18, 0x61, 0x32, 0x3C, 0x35, 0xCC, 0x30, 0x39, 0x00, 0xF1, 0x40, 0x02, 0x08, 0x00, 0x00, 0x05, 
+ 	0x66, 0x04, 0x32, 0x3C, 0x35, 0xDD, 0x31, 0x41, 0x00, 0x02, 0x46, 0xFC, 0x27, 0x00, 0x2E, 0x7C, 0x00, 0x00, 0x40, 0x00, 0x31, 0x7C, 0x00, 0x00, 0x00, 0x58, 0x21, 0x7C, 0x00, 0x00, 0x00, 0x00, 
+ 	0x00, 0x2A, 0x33, 0xFC, 0x00, 0x04, 0x00, 0xF1, 0x00, 0x14, 0x08, 0x00, 0x00, 0x04, 0x67, 0x00, 0x00, 0x74, 0x33, 0xFC, 0x00, 0xB5, 0x00, 0xF1, 0x00, 0x12, 0x31, 0x7C, 0x03, 0x4C, 0x00, 0x2E, 
+diff --git a/src/jagbios.h b/src/jagbios.h
+index 3f6ae5e..9e9a383 100644
+--- a/src/jagbios.h
++++ b/src/jagbios.h
+@@ -1,6 +1,8 @@
+ #ifndef __JAGBIOS_H__
+ #define __JAGBIOS_H__
+ 
+-extern char jaguarBootROM[];
++#include <stdint.h>
++
++extern uint8_t jaguarBootROM[];
+ 
+ #endif	// __JAGBIOS_H__
+diff --git a/src/jagbios2.cpp b/src/jagbios2.cpp
+index 413e5e6..5076405 100644
+--- a/src/jagbios2.cpp
++++ b/src/jagbios2.cpp
+@@ -4,7 +4,9 @@
+ // NOTE: This is the Jaguar Series M boot ROM
+ //
+ 
+-char jaguarBootROM2[0x20000] = {
++#include "jagbios2.h"
++
++uint8_t jaguarBootROM2[0x20000] = {
+ 	0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x08, 0x41, 0xF9, 0x00, 0xF0, 0x00, 0x00, 0x30, 0xBC, 0x18, 0x61, 0x70, 0xFF, 0x51, 0xC8, 0xFF, 0xFE, 0x32, 0x3C, 0x35, 0xCC, 0x30, 0x39, 0x00, 0xF1, 
+ 	0x40, 0x02, 0x08, 0x00, 0x00, 0x05, 0x66, 0x04, 0x32, 0x3C, 0x35, 0xDD, 0x31, 0x41, 0x00, 0x02, 0x46, 0xFC, 0x27, 0x00, 0x2E, 0x7C, 0x00, 0x00, 0x40, 0x00, 0x31, 0x7C, 0x00, 0x00, 0x00, 0x58, 
+ 	0x21, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2A, 0x23, 0xFC, 0x00, 0x07, 0x00, 0x07, 0x00, 0xF1, 0xA1, 0x0C, 0x23, 0xFC, 0x00, 0x07, 0x00, 0x07, 0x00, 0xF0, 0x21, 0x0C, 0x23, 0xFC, 0x00, 0x00, 
+diff --git a/src/jagbios2.h b/src/jagbios2.h
+index 9944947..961e585 100644
+--- a/src/jagbios2.h
++++ b/src/jagbios2.h
+@@ -1,6 +1,8 @@
+ #ifndef __JAGBIOS2_H__
+ #define __JAGBIOS2_H__
+ 
+-extern char jaguarBootROM2[];
++#include <stdint.h>
++
++extern uint8_t jaguarBootROM2[];
+ 
+ #endif	// __JAGBIOS2_H__
+diff --git a/src/jagcdbios.cpp b/src/jagcdbios.cpp
+index eea4cf0..a4c407a 100644
+--- a/src/jagcdbios.cpp
++++ b/src/jagcdbios.cpp
+@@ -2,7 +2,9 @@
+ // This file was automagically generated by bin2c (by James Hammons)
+ //
+ 
+-char jaguarCDBootROM[0x40000] = {
++#include "jagcdbios.h"
++
++uint8_t jaguarCDBootROM[0x40000] = {
+ 	0xF6, 0x1A, 0x8C, 0x5F, 0xF0, 0x28, 0xD5, 0xC2, 0xDE, 0xE7, 0xB6, 0x87, 0xD6, 0xEA, 0x4A, 0x42, 0x9A, 0x9B, 0x2E, 0xCB, 0xE7, 0x35, 0x3C, 0x3B, 0xA2, 0xA6, 0x74, 0xF9, 0xC9, 0x86, 0xE2, 0xD7, 
+ 	0x67, 0xC0, 0x9A, 0xFB, 0x61, 0x37, 0x37, 0x89, 0x70, 0x3B, 0xE0, 0x84, 0x97, 0x0A, 0xD2, 0xC5, 0x9F, 0xC1, 0x62, 0xB5, 0x2E, 0xD1, 0x26, 0x02, 0x44, 0xC3, 0xE1, 0xD4, 0xD6, 0xC2, 0xE7, 0x6A, 
+ 	0x56, 0x27, 0x2E, 0x60, 0x74, 0xE9, 0x05, 0xCE, 0x65, 0xB9, 0x87, 0x74, 0x64, 0x65, 0xF2, 0xB2, 0x00, 0xF7, 0xFB, 0xBC, 0xB9, 0xA2, 0x2D, 0x73, 0xC1, 0x75, 0xF5, 0xD1, 0xF3, 0xDB, 0xB5, 0x17, 
+diff --git a/src/jagcdbios.h b/src/jagcdbios.h
+index 2fb0861..23e5abe 100644
+--- a/src/jagcdbios.h
++++ b/src/jagcdbios.h
+@@ -1,6 +1,8 @@
+ #ifndef __JAGCDBIOS_H__
+ #define __JAGCDBIOS_H__
+ 
+-extern char jaguarCDBootROM[];
++#include <stdint.h>
++
++extern uint8_t jaguarCDBootROM[];
+ 
+ #endif	// __JAGCDBIOS_H__
+diff --git a/src/jagdevcdbios.cpp b/src/jagdevcdbios.cpp
+index 85dbe91..e4ce4b4 100644
+--- a/src/jagdevcdbios.cpp
++++ b/src/jagdevcdbios.cpp
+@@ -2,7 +2,9 @@
+ // This file was automagically generated by bin2c (by James Hammons)
+ //
+ 
+-char jaguarDevCDBootROM[0x40000] = {
++#include "jagdevcdbios.h"
++
++uint8_t jaguarDevCDBootROM[0x40000] = {
+ 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
+ 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
+ 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
+diff --git a/src/jagdevcdbios.h b/src/jagdevcdbios.h
+index 432e48c..fe6ae8c 100644
+--- a/src/jagdevcdbios.h
++++ b/src/jagdevcdbios.h
+@@ -1,6 +1,8 @@
+ #ifndef __JAGDEVCDBIOS_H__
+ #define __JAGDEVCDBIOS_H__
+ 
+-extern char jaguarDevCDBootROM[];
++#include <stdint.h>
++
++extern uint8_t jaguarDevCDBootROM[];
+ 
+ #endif	// __JAGDEVCDBIOS_H__
+diff --git a/src/jagstub1bios.cpp b/src/jagstub1bios.cpp
+index 80fdd43..7fb85d5 100644
+--- a/src/jagstub1bios.cpp
++++ b/src/jagstub1bios.cpp
+@@ -2,7 +2,9 @@
+ // This file was automagically generated by bin2c (by James Hammons)
+ //
+ 
+-char jaguarDevBootROM1[0x20000] = {
++#include "jagstub1bios.h"
++
++uint8_t jaguarDevBootROM1[0x20000] = {
+ 	0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x08, 0x4D, 0xF9, 0x00, 0xF0, 0x00, 0x00, 0x49, 0xF9, 0x00, 0xF1, 0x40, 0x00, 0x3C, 0xFC, 0x18, 0x61, 0x3C, 0xBC, 0x35, 0xCC, 0x46, 0xFC, 0x27, 0x00, 
+ 	0x4F, 0xF8, 0x03, 0x00, 0x70, 0xFF, 0x74, 0x02, 0x51, 0xC8, 0xFF, 0xFC, 0x38, 0xBC, 0x80, 0x0D, 0xC4, 0x6C, 0x00, 0x02, 0x66, 0x06, 0x4E, 0xF9, 0x00, 0xE0, 0x1B, 0xFA, 0x41, 0xF9, 0x00, 0xE0, 
+ 	0x00, 0x00, 0x47, 0xF8, 0x04, 0x00, 0x30, 0x3C, 0x06, 0xFF, 0x26, 0xD8, 0x51, 0xC8, 0xFF, 0xFC, 0x30, 0x3C, 0x06, 0xFF, 0x24, 0x23, 0xB4, 0xA0, 0x67, 0x04, 0x60, 0x00, 0x12, 0x1A, 0x51, 0xC8, 
+diff --git a/src/jagstub1bios.h b/src/jagstub1bios.h
+index a4b6f72..200e84b 100644
+--- a/src/jagstub1bios.h
++++ b/src/jagstub1bios.h
+@@ -1,6 +1,8 @@
+ #ifndef __JAGSTUB1BIOS_H__
+ #define __JAGSTUB1BIOS_H__
+ 
+-extern char jaguarDevBootROM1[];
++#include <stdint.h>
++
++extern uint8_t jaguarDevBootROM1[];
+ 
+ #endif	// __JAGSTUB1BIOS_H__
+diff --git a/src/jagstub2bios.cpp b/src/jagstub2bios.cpp
+index 884680a..41d55c4 100644
+--- a/src/jagstub2bios.cpp
++++ b/src/jagstub2bios.cpp
+@@ -2,7 +2,9 @@
+ // This file was automagically generated by bin2c (by James Hammons)
+ //
+ 
+-char jaguarDevBootROM2[0x20000] = {
++#include "jagstub2bios.h"
++
++uint8_t jaguarDevBootROM2[0x20000] = {
+ 	0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x08, 0x4D, 0xF9, 0x00, 0xF0, 0x00, 0x00, 0x49, 0xF9, 0x00, 0xF1, 0x40, 0x00, 0x3C, 0xFC, 0x18, 0x61, 0x3C, 0xBC, 0x35, 0xCC, 0x46, 0xFC, 0x27, 0x00, 
+ 	0x4F, 0xF8, 0x03, 0x00, 0x70, 0xFF, 0x76, 0x02, 0x51, 0xC8, 0xFF, 0xFC, 0x41, 0xF9, 0x00, 0xE0, 0x00, 0x00, 0x47, 0xF8, 0x04, 0x00, 0x30, 0x3C, 0x06, 0xFF, 0x26, 0xD8, 0x51, 0xC8, 0xFF, 0xFC, 
+ 	0x30, 0x3C, 0x06, 0xFF, 0x24, 0x23, 0xB4, 0xA0, 0x66, 0x00, 0x12, 0x34, 0x51, 0xC8, 0xFF, 0xF6, 0x48, 0x79, 0x00, 0x00, 0x04, 0x64, 0x45, 0xF9, 0x00, 0xE0, 0x15, 0x94, 0x95, 0xFC, 0x00, 0xDF, 
+diff --git a/src/jagstub2bios.h b/src/jagstub2bios.h
+index fcec2e3..c80d98d 100644
+--- a/src/jagstub2bios.h
++++ b/src/jagstub2bios.h
+@@ -1,6 +1,8 @@
+ #ifndef __JAGSTUB2BIOS_H__
+ #define __JAGSTUB2BIOS_H__
+ 
+-extern char jaguarDevBootROM2[];
++#include <stdint.h>
++
++extern uint8_t jaguarDevBootROM2[];
+ 
+ #endif	// __JAGSTUB1BIOS_H__
+diff --git a/src/joystick.cpp b/src/joystick.cpp
+index 4b25493..25aef85 100644
+--- a/src/joystick.cpp
++++ b/src/joystick.cpp
+@@ -137,6 +137,6 @@ uint16_t JoystickReadWord(uint32_t offset)
+ 		if (offset0 != 0xFF)
+ 		{
+-			uint8_t mask[4][2] = { { BUTTON_A, BUTTON_PAUSE }, { BUTTON_B, -1 }, { BUTTON_C, -1 }, { BUTTON_OPTION, -1 } };
++			uint8_t mask[4][2] = { { BUTTON_A, BUTTON_PAUSE }, { BUTTON_B, 0xFF }, { BUTTON_C, 0xFF }, { BUTTON_OPTION, 0xFF } };
+ 			data &= (joypad0Buttons[mask[offset0][0]] ? 0xFFFD : 0xFFFF);
+ 
+ 			if (mask[offset0][1] != -1)
+@@ -147,6 +147,6 @@ uint16_t JoystickReadWord(uint32_t offset)
+ 		if (offset1 != 0xFF)
+ 		{
+-			uint8_t mask[4][2] = { { BUTTON_A, BUTTON_PAUSE }, { BUTTON_B, -1 }, { BUTTON_C, -1 }, { BUTTON_OPTION, -1 } };
++			uint8_t mask[4][2] = { { BUTTON_A, BUTTON_PAUSE }, { BUTTON_B, 0xFF }, { BUTTON_C, 0xFF }, { BUTTON_OPTION, 0xFF } };
+ 			data &= (joypad1Buttons[mask[offset1][0]] ? 0xFFF7 : 0xFFFF);
+ 
+ 			if (mask[offset1][1] != -1)
