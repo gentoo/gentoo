@@ -3,17 +3,25 @@
 
 EAPI=6
 
-GIT_COMMIT="853840eb9dad0b59ad2dac5d303f5929b2f09f21"
-
 inherit eutils fdo-mime gnome2-utils
+
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="git://github.com/squentin/gmusicbrowser.git"
+	inherit git-r3
+	SRC_URI=""
+	KEYWORDS=""
+else
+	GIT_COMMIT="853840eb9dad0b59ad2dac5d303f5929b2f09f21"
+	SRC_URI="https://github.com/squentin/gmusicbrowser/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
+fi
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
 HOMEPAGE="http://gmusicbrowser.org/"
-SRC_URI="https://github.com/squentin/gmusicbrowser/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="dbus doc extras gstreamer libnotify mplayer"
 
 GSTREAMER_DEPEND="dev-perl/Glib-Object-Introspection"
@@ -37,8 +45,6 @@ RDEPEND="dev-lang/perl
 	libnotify? ( dev-perl/Gtk2-Notify )"
 DEPEND="sys-devel/gettext
 	doc? ( dev-perl/Text-Markdown )"
-
-S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 
 src_compile() {
 	emake MARKDOWN=$(usex doc "Markdown.pl" "echo")
