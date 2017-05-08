@@ -8102,9 +8102,11 @@ www-apache/mod_musicindex:cache - Add File cache support
 www-apache/mod_musicindex:mysql - Add MySQL cache support
 www-apache/mod_nss:ecc - enable Elliptical Curve Cyptography
 www-apache/mod_perl:ithreads - Build for use with thread-capable perl, needs same setting as in dev-lang/perl
-www-apache/mod_security:curl - Build the ModSecurity Audit Log Collector (mlogc) that depends on net-misc/curl.
-www-apache/mod_security:geoip - Configure ModSecurity to query the GeoIP database from MaxMind, provided by dev-libs/geoip. This flag only controls the default configuration, as the GeoIP query code is part of ModSecurity's source code.
+www-apache/mod_security:fuzzyhash - Support fuzzy hash computations (to detect malware, for example) using the app-crypt/ssdeep package.
+www-apache/mod_security:geoip - Pull in dev-libs/geoip for use by the SecGeoLookupDb directive.
 www-apache/mod_security:jit - Add support for the PCRE Just-in-Time optimisation, as enabled by dev-libs/libpcre with jit USE flag enabled. Might not be available on hardened systems.
+www-apache/mod_security:json - Suppose JSON in the request body parser through dev-libs/yajl.
+www-apache/mod_security:mlogc - Build and install the ModSecurity Audit Log Collector (mlogc).
 www-apache/pwauth:domain-aware - Ignore leading domain names in username (Windows compat)
 www-apache/pwauth:faillog - Log failed login attempts
 www-apache/pwauth:ignore-case - Ignore string case in username (mostly Windows compat)

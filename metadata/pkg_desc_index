@@ -18227,7 +18227,7 @@ www-apache/mod_python 3.5.0-r1: An Apache2 module providing an embedded Python i
 www-apache/mod_qos 11.12: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
-www-apache/mod_security 2.7.7: Web application firewall and Intrusion Detection System for Apache
+www-apache/mod_security 2.7.7 2.9.1: Application firewall and intrusion detection for Apache
 www-apache/mod_tidy 0.5.5-r1: a TidyLib based module to parse, clean-up and pretty-print the webservers' (X)HTML output
 www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process after it has started
 www-apache/mod_vdbh 1.0.3-r1: An Apache2 module for mass virtual hosting using a MySQL database
