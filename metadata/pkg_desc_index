@@ -10502,7 +10502,7 @@ dev-util/stressapptest 1.0.7_p1 1.0.8: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
-dev-util/sysdig 0.12.1 0.13.0 0.14.0 0.15.0 0.15.1: A system exploration and troubleshooting tool
+dev-util/sysdig 0.12.1 0.13.0 0.14.0 0.15.0 0.15.1 0.16.0: A system exploration and troubleshooting tool
 dev-util/sysprof 3.22.2 3.24.1: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 2.9 3.1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
@@ -15763,7 +15763,7 @@ net-wireless/portapack-firmware 20160728-r1: Firmware and scripts for controllin
 net-wireless/pyrit 0.4.0-r1 0.5.0: GPU-accelerated attack against WPA-PSK authentication
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
 net-wireless/reaver 1.4-r3: Brute force attack against Wifi Protected Setup
-net-wireless/rfcat 9999: The swiss army knife of subGHz
+net-wireless/rfcat 0.0.170508 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5 0.5-r1: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.0 0.5.3 0.5.3-r1 0.5.3_p20150730 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
