@@ -5,8 +5,12 @@
 		<email>chainsaw@gentoo.org</email>
 		<name>Tony Vroon</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of Botan</flag>
+		<flag name="samples">Install sample configuration files</flag>
+	</use>
 </pkgmetadata>
