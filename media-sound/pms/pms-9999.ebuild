@@ -7,7 +7,9 @@ inherit cmake-utils git-r3
 
 DESCRIPTION="Practical Music Search: an open source ncurses client for mpd, written in C++"
 HOMEPAGE="https://ambientsound.github.io/pms"
+
 EGIT_REPO_URI="https://github.com/ambientsound/pms.git"
+EGIT_BRANCH="0.42.x" # todo: package the golang version
 
 LICENSE="GPL-3+"
 SLOT="0"
