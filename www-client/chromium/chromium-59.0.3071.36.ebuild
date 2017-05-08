@@ -33,7 +33,6 @@ COMMON_DEPEND="
 	dev-libs/expat:=
 	dev-libs/glib:2
 	dev-libs/icu:=
-	dev-libs/libxml2:=
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -188,8 +187,7 @@ src_prepare() {
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE.patch"
 		"${FILESDIR}/skia-avx2.patch"
 		"${FILESDIR}/${PN}-dma-buf-r1.patch"
-		"${FILESDIR}/${PN}-system-ffmpeg-r5.patch"
-		"${FILESDIR}/${PN}-system-libjpeg-r1.patch"
+		"${FILESDIR}/${PN}-system-ffmpeg-r6.patch"
 		"${FILESDIR}/${PN}-system-icu-r1.patch"
 	)
 
@@ -262,7 +260,7 @@ src_prepare() {
 		third_party/libudev
 		third_party/libusb
 		third_party/libwebm
-		third_party/libxml/chromium
+		third_party/libxml
 		third_party/libyuv
 		third_party/lss
 		third_party/lzma_sdk
@@ -295,6 +293,9 @@ src_prepare() {
 		third_party/skia
 		third_party/smhasher
 		third_party/sqlite
+		third_party/swiftshader
+		third_party/swiftshader/third_party/llvm-subzero
+		third_party/swiftshader/third_party/pnacl-subzero
 		third_party/tcmalloc
 		third_party/usrsctp
 		third_party/web-animations-js
@@ -347,6 +348,7 @@ src_configure() {
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_libusb (http://crbug.com/266149).
+	# TODO: xml (bug #616818).
 	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
 	# TODO: use_system_protobuf (bug #525560).
 	# TODO: use_system_ssl (http://crbug.com/58087).
@@ -361,7 +363,6 @@ src_configure() {
 		libjpeg
 		libpng
 		libwebp
-		libxml
 		libxslt
 		re2
 		snappy
