@@ -20,17 +20,27 @@ DEPEND="app-arch/xz-utils
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix_macros.patch"
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+}
+
 src_configure() {
 	use static && append-ldflags -static
 
 	# Disable automagic dependency over libsigsegv; see bug #312351.
 	export ac_cv_libsigsegv=no
 
-	econf \
-		--with-packager="Gentoo" \
-		--with-packager-version="${PVR}" \
-		--with-packager-bug-reports="https://bugs.gentoo.org/" \
+	local myeconfargs=(
+		--with-packager="Gentoo"
+		--with-packager-version="${PVR}"
+		--with-packager-bug-reports="https://bugs.gentoo.org/"
 		$(use_enable nls)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
