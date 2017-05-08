@@ -7,7 +7,7 @@ inherit eutils flag-o-matic multilib-minimal
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2 https://gitlab.com/jas/libidn2"
 SRC_URI="
-	mirror://gnu-alpha/libidn/${P}.tar.xz
+	mirror://gnu/libidn/${P}.tar.gz
 "
 
 LICENSE="GPL-2+ LGPL-3+"
@@ -45,8 +45,6 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-
-	rm "${ED}"/usr/bin/idn2_noinstall || die
 
 	prune_libtool_files
 }
