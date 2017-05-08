@@ -1,5 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+#
+# Tobias Klausmann <klausman@gentoo.org> (08 May 2017)
+# USE=test requires valgrind, which will never be ported to alpha
+app-misc/jq test
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
 # libilbc has not been ported to alpha and likely never will be.
