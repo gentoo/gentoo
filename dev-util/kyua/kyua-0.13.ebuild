@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Testing framework for infrastructure software"
-HOMEPAGE="https://github.com/jmmv/lutok"
+HOMEPAGE="https://github.com/jmmv/kyua"
 SRC_URI="https://github.com/jmmv/kyua/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
