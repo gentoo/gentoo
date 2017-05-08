@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install preinst prepare
+DEPEND=dev-libs/boost dev-cpp/gtest dev-libs/log4cplus !openssl? ( dev-libs/botan:= ) openssl? ( dev-libs/openssl:= )
+DESCRIPTION=High-performance production grade DHCPv4 & DHCPv6 server
+EAPI=6
+HOMEPAGE=http://www.isc.org/kea/
+IUSE=openssl samples
+KEYWORDS=~amd64
+LICENSE=ISC BSD SSLeay GPL-2
+RDEPEND=dev-libs/boost dev-cpp/gtest dev-libs/log4cplus !openssl? ( dev-libs/botan:= ) openssl? ( dev-libs/openssl:= )
+SLOT=0
+SRC_URI=ftp://ftp.isc.org/isc/kea/kea-1.2.0.tar.gz ftp://ftp.isc.org/isc/kea/1.2.0/kea-1.2.0.tar.gz
+_eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=11e130232a6a896be760b5c9ce046227

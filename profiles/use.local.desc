@@ -6277,6 +6277,8 @@ net-misc/iputils:tracepath - Build and install tracepath -- tool for tracing net
 net-misc/iputils:traceroute - Build and install traceroute -- tool for tracing network paths (see also net-analyzer/traceroute)
 net-misc/kafka-bin:internal-zookeeper - Use bundled local zookeeper instance
 net-misc/kafkacat:json - Enable json support
+net-misc/kea:openssl - Use dev-libs/openssl instead of Botan
+net-misc/kea:samples - Install sample configuration files
 net-misc/knock:server - Installs the knockd server daemon.
 net-misc/lcr:asterisk - net-misc/asterisk channel driver
 net-misc/lcr:gsm-bs - net-wireless/openbsc driver
