@@ -1,14 +1,5 @@
 --- xmlada-2016-src/Makefile.in.old	2016-12-04 21:58:57.251338692 +0100
 +++ xmlada-2016-src/Makefile.in	2016-12-04 21:59:31.332755615 +0100
-@@ -7,7 +7,7 @@
- PACKAGE_TARNAME=@PACKAGE_TARNAME@
- VERSION=@PACKAGE_VERSION@
- BUILDS_SHARED=@GNAT_BUILDS_SHARED@
--prefix=@prefix@
-+prefix=$(DESTDIR)@prefix@
- 
- # Set a default value (ignored if set in the environment)
- PROCESSORS?=0
 @@ -49,13 +49,13 @@
  endif
  
