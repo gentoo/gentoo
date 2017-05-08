@@ -600,6 +600,9 @@ src_install() {
 	doins -r out/Release/locales
 	doins -r out/Release/resources
 
+	insinto "${CHROMIUM_HOME}/swiftshader"
+	doins out/Release/swiftshader/*.so
+
 	newman out/Release/chrome.1 chromium.1
 	newman out/Release/chrome.1 chromium-browser.1
 
