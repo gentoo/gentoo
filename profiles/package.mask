@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
+# Coordinated conversion to wxGTK:3.0-gtk3
+# Drop mask after migration of existing wxGTK:3.0 users
+# and wxGTK-3.0.3 bump in tree
+>=net-ftp/filezilla-3.25.2-r1
+
 # Daniel Pielmeier <billie@gentoo.org> (7 May 2017)
 # Fails to build with ffmpeg-3. Dead upstream.
 # Masked for removal in 30 days. Bug #575824.
