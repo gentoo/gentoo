@@ -10300,7 +10300,7 @@ dev-util/docker-ls 0.2.1_p20161102: Tools for browsing and manipulating docker r
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
-dev-util/drone 0.5.0-r1 0.6.0_rc1_p20160504: A Continuous Delivery platform built on Docker, written in Go
+dev-util/drone 0.5.0-r1 0.6.0_rc1_p20160504 0.6.0_rc2_p20160508: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-ui 0.5.0 0.6.0_rc1_pre20170412: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
@@ -15466,7 +15466,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0: The X2Go
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.04.26 2017.05.01 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.05.01 2017.05.07 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
