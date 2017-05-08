@@ -2853,7 +2853,7 @@ dev-ada/gnatmem 2016: Monitors dynamic allocation and deallocation activity in a
 dev-ada/gprbuild 2016 9999: Multi-Language Management
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2016: A complete Ada graphical toolkit
-dev-ada/xmlada 2016: Set of modules that provide a simple manipulation of XML streams
+dev-ada/xmlada 2016 9999: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
@@ -5276,7 +5276,7 @@ dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libraries so they
 dev-ml/ocaml-conduit 0.15.3: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 0.22.1 1.0 1.1: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.4.0 2.4.1: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
 dev-ml/ocaml-dns 0.20.0: A pure OCaml implementation of the DNS protocol
@@ -9557,7 +9557,7 @@ dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.3.5 0.3.6: Lightweight and flexible library for writing command-line apps
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
-dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, and debugger
+dev-ruby/metasm 1.0.2-r4 9999: cross-architecture assembler, disassembler, linker, and debugger
 dev-ruby/metasploit-concern 2.0.1: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 2.0.3: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 2.0.0: Common code, such as validators and mixins
