@@ -64,7 +64,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	jack? ( >=media-sound/jack-audio-connection-kit-0.120 )
+	jack? ( virtual/jack )
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )"
