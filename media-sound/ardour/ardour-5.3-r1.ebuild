@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 #EPYTHON='python2.7'
@@ -15,13 +15,13 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="http://fossies.org/linux/misc/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="altivec doc jack cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+IUSE="altivec doc jack lv2 cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	>=dev-cpp/glibmm-2.32.0
@@ -55,16 +55,18 @@ RDEPEND="
 	>=x11-libs/gtk+-2.8.1:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	>=media-libs/slv2-0.6.1
-	media-libs/lilv
-	media-libs/sratom
-	dev-libs/sord
-	>=media-libs/suil-0.6.10
-	>=media-libs/lv2-1.4.0"
+	lv2? (
+		>=media-libs/slv2-0.6.1
+		media-libs/lilv
+		media-libs/sratom
+		dev-libs/sord
+		>=media-libs/suil-0.6.10
+		>=media-libs/lv2-1.4.0
+	)"
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	jack? ( >=media-sound/jack-audio-connection-kit-0.120 )
+	jack? ( virtual/jack )
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )"
@@ -77,11 +79,11 @@ pkg_setup() {
 }
 
 src_prepare(){
-	eapply_user
 	if ! [[ ${PV} == *9999* ]]; then
-		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch
+		epatch "${FILESDIR}"/${PN}-4.x-revision-naming.patch
 		touch "${S}/libs/ardour/revision.cc"
 	fi
+	use lv2 || epatch "${FILESDIR}"/${PN}-4.0-lv2.patch
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
@@ -118,8 +120,8 @@ src_configure() {
 		--configdir=/etc \
 		--nls \
 		--optimize \
-		--lv2 \
 		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
+		$(usex lv2 "--lv2" "--no-lv2") \
 		$(usex doc "--docs" '') \
 		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
 }
