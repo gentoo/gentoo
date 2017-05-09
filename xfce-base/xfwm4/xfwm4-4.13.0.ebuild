@@ -10,7 +10,7 @@ SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="opengl startup-notification +xcomposite"
+IUSE="opengl startup-notification +xcomposite xpresent"
 
 RDEPEND="dev-libs/dbus-glib:=
 	>=dev-libs/glib-2.20:=
@@ -26,6 +26,7 @@ RDEPEND="dev-libs/dbus-glib:=
 	>=xfce-base/xfconf-4.10:=
 	opengl? ( media-libs/libepoxy:=[X(+)] )
 	startup-notification? ( x11-libs/startup-notification:= )
+	xpresent? ( x11-libs/libXpresent )
 	xcomposite? (
 		x11-libs/libXcomposite:=
 		x11-libs/libXdamage:=
@@ -50,8 +51,7 @@ src_configure() {
 		--enable-xsync
 		--enable-render
 		--enable-randr
-		# not packaged atm, bug #549040
-		--disable-xpresent
+		$(use_enable xpresent)
 		$(use_enable xcomposite compositor)
 	)
 
