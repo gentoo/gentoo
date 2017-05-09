@@ -1,10 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Gilbert <floppym@gentoo.org> (07 May 2017)
-# Test deps need keywording.
-dev-util/pkgconf test
-
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
 app-admin/rsyslog mdblookup
