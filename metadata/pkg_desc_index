@@ -68,7 +68,7 @@ app-admin/cli53 0.8.4 0.8.7 9999: Command line tool for Amazon Route 53
 app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
-app-admin/collectd 5.6.2-r2: Collects system statistics and provides mechanisms to store the values
+app-admin/collectd 5.6.2-r2 5.6.2-r3: Collects system statistics and provides mechanisms to store the values
 app-admin/conky 1.10.4 1.10.6-r1 1.10.6-r2: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
@@ -4443,7 +4443,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.4 1.2.7 1.2.8 1.2.10 1.2.12: Native APR library for Tomcat
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 6.0.53 7.0.73 7.0.75 7.0.76 7.0.77 8.0.39 8.0.41 8.0.43 8.5.9 8.5.11 8.5.12 8.5.13 8.5.14 9.0.0_alpha20: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 6.0.53 7.0.77 8.0.43 8.5.13 8.5.14 9.0.0_alpha20: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -18381,8 +18381,8 @@ www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, H
 www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.8.770.56_p1 1.9.818.44_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.10.829.3_p1 1.10.834.9_p1: A new browser for our friends
+www-client/vivaldi 1.9.818.44_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.10.834.9_p1 1.10.838.7_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18408,7 +18408,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 25.0.0.148: Adobe Flash Player
+www-plugins/adobe-flash 25.0.0.148 25.0.0.171: Adobe Flash Player
 www-plugins/chrome-binary-plugins 58.0.3029.96 59.0.3071.36_beta 60.0.3088.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
@@ -18444,7 +18444,7 @@ www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.0 1.7.0-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.73 7.0.75 7.0.76 7.0.77 8.0.39 8.0.41 8.0.43 8.5.9 8.5.11 8.5.12 8.5.13 8.5.14 9.0.0_alpha20: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.77 8.0.43 8.5.13 8.5.14 9.0.0_alpha20: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.13.1-r1 2.0.14-r1 2.0.15: uWSGI server for Python web applications
 www-servers/varnish 4.0.3 4.1.5 4.1.6 5.0.0 5.1.1 5.1.2: Varnish is a state-of-the-art, high-performance HTTP accelerator
