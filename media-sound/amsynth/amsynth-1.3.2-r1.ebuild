@@ -1,12 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools flag-o-matic
+
+inherit autotools
+
+MY_P=${P/ams/amS}
 
 DESCRIPTION="Virtual analogue synthesizer"
-HOMEPAGE="https://github.com/nixxcode/amsynth/"
-SRC_URI="https://github.com/nixxcode/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://code.google.com/p/amsynth/"
+SRC_URI="https://amsynth.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,7 +27,7 @@ RDEPEND="dev-cpp/gtkmm:2.4
 		media-libs/liblo:=
 		>=x11-libs/gtk+-2.20:2
 		)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	lash? ( media-sound/lash )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -32,14 +35,13 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS README"
 
-S="${WORKDIR}/${PN}-release-${PV}"
+S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	eautoreconf
 }
 
 src_configure() {
-	append-cxxflags -std=c++11
 	econf \
 		CFLAGS="" \
 		CXXFLAGS="${CXXFLAGS}" \

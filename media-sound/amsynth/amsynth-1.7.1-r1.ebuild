@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ RDEPEND="dev-cpp/gtkmm:2.4
 		media-libs/liblo:=
 		>=x11-libs/gtk+-2.20:2
 		)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	lash? ( media-sound/lash )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
