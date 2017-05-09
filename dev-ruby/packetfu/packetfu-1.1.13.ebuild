@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-
-RUBY_FAKEGEM_EXTRADOC="README.rdoc"
+RUBY_FAKEGEM_EXTRAINSTALL="examples"
+RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit multilib ruby-fakegem
 
@@ -42,6 +42,7 @@ all_ruby_prepare() {
 	#if ! use test && ! use development; then
 		sed -i -e "/^group :development, :test do/,/^end$/d" Gemfile || die
 	#fi
+	sed -i -e '/[Cc]overalls/d' spec/spec_helper.rb || die
 }
 
 each_ruby_prepare() {
