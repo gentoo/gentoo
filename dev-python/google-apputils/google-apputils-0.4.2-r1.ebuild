@@ -30,9 +30,5 @@ src_unpack() {
 }
 
 python_test() {
-	# These yield 2 fails which are in fact expected errors run from a shell script!
-	# They seemingly have no immediate mechanism to exit 0 in an expected fail style.
-	for test in tests/{app_test*.py,[b-s]*.py} ; do
-		"${PYTHON}" $test || die "test failure under ${EPYTHON}"
-	done
+	esetup.py google_test
 }
