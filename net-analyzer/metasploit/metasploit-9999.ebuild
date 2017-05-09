@@ -73,6 +73,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/rex-struct2
 	dev-ruby/rex-text
 	dev-ruby/rex-zip
+	dev-ruby/ruby_smb
 	dev-ruby/sqlite3
 	>=dev-ruby/pg-0.11
 	dev-ruby/packetfu:1.1.13
@@ -82,6 +83,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/sshkey
 	dev-ruby/tzinfo:*
 	dev-ruby/windows_error
+	dev-ruby/xmlrpc
 	java? ( dev-ruby/rjb )
 	oracle? ( dev-ruby/ruby-oci8 )
 	pcap? ( dev-ruby/pcaprub:*
@@ -171,15 +173,8 @@ all_ruby_prepare() {
 	#we regen this file in each_ruby_prepare
 	rm Gemfile.lock
 	#The Gemfile contains real known deps
-	#add our dep on upstream rb-readline instead of bundled one
-	#and then they broke it...
-	#sed -i "/gem 'packetfu'/a #use upstream readline instead of bundled\ngem 'rb-readline'" Gemfile || die
 	sed -i "/gem 'fivemat'/s/, '1.2.1'//" Gemfile || die
-	#remove the bundled readline
-	#https://github.com/rapid7/metasploit-framework/pull/3105
-	#this PR was closed due to numerous changes to their local fork, almost entirely for non-linux
-	#but now we have to go back to bundled readline because otherwise it's broken
-	#rm lib/rbreadline.rb
+	sed -i "s/1.1.13.pre/1.1.13/" metasploit-framework.gemspec || die
 	#now we edit the Gemfile based on use flags
 	#even if we pass --without=blah bundler still calculates the deps and messes us up
 	if ! use pcap; then
