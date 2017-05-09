@@ -25,6 +25,7 @@ RDEPEND="
 		x11-libs/libICE
 	)"
 DEPEND="${RDEPEND}
+	dev-lang/perl
 	l10n_ja? ( virtual/yacc )"
 
 DOCS=( BUG-REPORT ChangeLog MORE.STUFF NEWS PROBLEMS PROJECTS README REVISION TODO VERSION )
