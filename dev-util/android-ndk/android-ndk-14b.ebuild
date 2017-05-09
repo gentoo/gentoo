@@ -65,15 +65,11 @@ src_install() {
 		ANDROID_PATH="${ANDROID_PATH}:${ANDROID_PREFIX}/${i}"
 	done
 
-	printf '%s' \
-		"PATH=\"${ANDROID_PATH}\"" \
-		$'\n' \
-		> "${T}/80${PN}"  || die
-
+	echo "PATH=\"${ANDROID_PATH}\"" > "${T}/80${PN}" || die
 	doenvd "${T}/80${PN}"
 
-	echo "SEARCH_DIRS_MASK=\"${EPREFIX}/${ANDROID_NDK_DIR}\"" \
-		> "${T}/80${PN}" || die
+	echo "SEARCH_DIRS_MASK=\"${EPREFIX}/${ANDROID_NDK_DIR}\"" > "${T}/80${PN}" || die
 	insinto "/etc/revdep-rebuild"
+
 	doins "${T}/80${PN}"
 }
