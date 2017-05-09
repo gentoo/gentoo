@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
 inherit python-r1
 
 DESCRIPTION="Namespace package declaration for zope"
-HOMEPAGE=""
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages"
 SRC_URI=""
 
 LICENSE="public-domain"
