@@ -13,17 +13,35 @@ S="${WORKDIR}/repoze.who-${PV}"
 
 LICENSE="repoze"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 RDEPEND="
+	dev-python/namespace-repoze[${PYTHON_USEDEP}]
 	dev-python/webob[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 "
 
 python_test() {
 	esetup.py test
+}
+
+python_install() {
+	distutils-r1_python_install
+
+	# install __init__.py files for sub-namespaces
+	python_moduleinto repoze/who
+	python_domodule repoze/who/__init__.py
+
+	python_moduleinto repoze/who/plugins
+	python_domodule repoze/who/plugins/__init__.py
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	find "${D}" -name '*.pth' -delete || die
 }
