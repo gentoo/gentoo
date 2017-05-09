@@ -47,9 +47,14 @@ multilib_src_configure() {
 		$(use_enable cxx)
 		--disable-cpp-progs
 		--with-cd-paranoia-name=libcdio-paranoia
+		# upstream accidentally default-disabled it
+		# reenable it to preserve ABI compat with previous versions
+		# https://bugs.gentoo.org/616054
+		# https://savannah.gnu.org/bugs/index.php?50978
+		--enable-ld-version-script
 	)
 	# Darwin linker doesn't get this
-	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --without-versioned-libs )
+	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --disable-ld-version-script )
 	ECONF_SOURCE="${S}" \
 	econf "${myeconfargs[@]}"
 }
