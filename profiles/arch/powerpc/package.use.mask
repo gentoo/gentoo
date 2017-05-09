@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on ppc
+xfce-base/xfwm4 xpresent
+
 # Michael Weber <xmw@gentoo.org> (06 Apr 2017)
 # mask unkeyworded dep pymongo -> mongodb
 app-portage/g-sorcery bson
