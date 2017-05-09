@@ -24,7 +24,7 @@ RDEPEND="
 		libav? ( >=media-video/libav-9:0= )
 	)
 	fftw? ( sci-libs/fftw:3.0 )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
 	sndfile? ( media-libs/libsndfile )"

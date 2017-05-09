@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ HOMEPAGE="http://aubio.org/"
 SRC_URI="http://aubio.org//pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/5"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python"
 
@@ -24,7 +24,7 @@ RDEPEND="
 		libav? ( >=media-video/libav-9:0= )
 	)
 	fftw? ( sci-libs/fftw:3.0 )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
 	sndfile? ( media-libs/libsndfile )"
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DOCS=( AUTHORS ChangeLog README.md )
-PYTHON_SRC_DIR="${S}/python"
+PYTHON_SRC_DIR="${S}"
 
 src_prepare() {
 	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
@@ -100,6 +100,6 @@ src_install() {
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
 		DOCS="" distutils-r1_src_install
-		newdoc README README.python
+		newdoc python/README.md README.python
 	fi
 }

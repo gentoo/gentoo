@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
@@ -14,36 +14,31 @@ HOMEPAGE="http://aubio.org/"
 SRC_URI="http://aubio.org//pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
-SLOT="0/5"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python"
+SLOT="0"
+KEYWORDS="amd64 ~ppc ppc64 sparc x86"
+IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python"
 
 RDEPEND="
-	ffmpeg? (
-		!libav? ( >=media-video/ffmpeg-2.6:0= )
-		libav? ( >=media-video/libav-9:0= )
-	)
+	ffmpeg? ( virtual/ffmpeg )
 	fftw? ( sci-libs/fftw:3.0 )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
-	sndfile? ( media-libs/libsndfile )
-"
-DEPEND="
-	${RDEPEND}
+	sndfile? ( media-libs/libsndfile )"
+DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	app-text/txt2man
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+	app-text/txt2man
+	doc? ( app-doc/doxygen )"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DOCS=( AUTHORS ChangeLog README.md )
-PYTHON_SRC_DIR="${S}"
+PYTHON_SRC_DIR="${S}/python"
 
 src_prepare() {
-	default
+	sed -i -e "s:\/lib:\/$(get_libdir):" src/wscript_build || die
 	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
+	has_version '>=media-video/ffmpeg-2.8' && epatch "${FILESDIR}/${PN}-0.4.1-ffmpeg29.patch"
 }
 
 src_configure() {
@@ -70,7 +65,7 @@ src_compile() {
 
 	if use doc; then
 		cd "${S}"/doc || die
-		emake dirhtml
+		doxygen full.cfg || die
 	fi
 
 	if use python ; then
@@ -91,20 +86,19 @@ src_test() {
 src_install() {
 	waf-utils_src_install
 
-	if use examples; then
-		# install dist_noinst_SCRIPTS from Makefile.am
-		dodoc -r examples
-	fi
-
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
 		DOCS="" distutils-r1_src_install
-		newdoc python/README.md README.python
+		newdoc README README.python
 	fi
 
 	if use doc; then
+		dohtml -r doc/full/html/.
 		dodoc doc/*.txt
-		docinto html
-		dodoc -r doc/_build/dirhtml/.
+	fi
+
+	if use examples; then
+		# install dist_noinst_SCRIPTS from Makefile.am
+		dodoc -r examples
 	fi
 }
