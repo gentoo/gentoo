@@ -25,7 +25,7 @@ RDEPEND="dev-cpp/gtkmm:2.4
 		media-libs/liblo:=
 		>=x11-libs/gtk+-2.20:2
 		)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	lash? ( media-sound/lash )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
