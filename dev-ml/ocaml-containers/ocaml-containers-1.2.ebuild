@@ -14,8 +14,7 @@ SRC_URI="https://github.com/c-cube/ocaml-containers/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="BSD-2"
 SLOT="0/${PV}"
-# Breaks onanomsg, its sole revdep
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="
