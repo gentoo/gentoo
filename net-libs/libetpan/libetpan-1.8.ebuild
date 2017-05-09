@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="A portable, efficient middleware for different kinds of mail access"
 HOMEPAGE="http://libetpan.sourceforge.net/"
@@ -11,14 +11,18 @@ SRC_URI="https://github.com/dinhviethoa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="berkdb debug gnutls ipv6 liblockfile sasl ssl static-libs"
+IUSE="berkdb debug gnutls ipv6 liblockfile libressl sasl ssl static-libs"
 
-DEPEND="berkdb? ( sys-libs/db:= )
+DEPEND="sys-libs/zlib
+	berkdb? ( sys-libs/db:= )
 	ssl? (
-		gnutls? ( net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl:0= )
+		gnutls? ( net-libs/gnutls:= )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
-	sasl? ( dev-libs/cyrus-sasl )
+	sasl? ( dev-libs/cyrus-sasl:2 )
 	liblockfile? ( net-libs/liblockfile )"
 RDEPEND="${DEPEND}"
 
@@ -44,18 +48,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local sslconf
-
-	if use ssl; then
-		if use gnutls; then
-			sslconf="--with-gnutls --without-openssl"
-		else
-			sslconf="--without-gnutls --with-openssl"
-		fi
-	else
-		sslconf="--without-gnutls --without-openssl"
-	fi
-
 	# in Prefix emake uses SHELL=${BASH}, export CONFIG_SHELL to the same so
 	# libtool recognises it as valid shell (bug #300211)
 	use prefix && export CONFIG_SHELL=${BASH}
@@ -63,17 +55,21 @@ src_configure() {
 	# argument of --enable-{debug,optim}, hence --disable-debug results in
 	# --enable-debug=no, which isn't checked and debugging flags are blindly
 	# injected.  So, avoid passing --disable-debug when we don't need it.
-	econf \
-		$(usex debug '--enable-debug' '') \
-		$(use_enable berkdb db) \
-		$(use_with sasl) \
-		$(use_enable ipv6) \
-		$(use_enable liblockfile lockfile) \
-		$(use_enable static-libs static) \
-		${sslconf}
+	local myeconfargs=(
+		$(usex debug '--enable-debug' '')
+		$(use_enable berkdb db)
+		$(use_with sasl)
+		$(use_enable ipv6)
+		$(use_enable liblockfile lockfile)
+		$(usex ssl "$(use_with gnutls) $(use_with !gnutls openssl)" '--without-gnutls --without-openssl')
+		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+	if ! use static-libs ; then
+		find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	fi
 }
