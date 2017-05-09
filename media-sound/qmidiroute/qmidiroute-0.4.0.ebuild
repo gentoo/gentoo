@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
+	append-cxxflags '-std=c++11'
 	export PATH="$(qt5_get_bindir):${PATH}"
 	econf --enable-qt5
 }
