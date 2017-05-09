@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
 inherit python-single-r1 ${GITECLASS}
