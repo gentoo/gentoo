@@ -10,17 +10,6 @@ diff -Nuar --exclude '*~' haproxy-1.7.9999.orig/contrib/tcploop/Makefile haproxy
  
  clean:
  	rm -f $(OBJS) *.[oas] *~
-diff -Nuar --exclude '*~' haproxy-1.7.9999.orig/contrib/tcploop/tcploop.c haproxy-1.7.9999/contrib/tcploop/tcploop.c
---- haproxy-1.7.9999.orig/contrib/tcploop/tcploop.c	2016-12-04 16:08:05.498256665 -0800
-+++ haproxy-1.7.9999/contrib/tcploop/tcploop.c	2016-12-04 16:11:13.877864378 -0800
-@@ -39,6 +39,7 @@
- #include <ctype.h>
- #include <errno.h>
- #include <fcntl.h>
-+#include <limits.h>
- #include <netdb.h>
- #include <poll.h>
- #include <signal.h>
 diff -Nuar --exclude '*~' haproxy-1.7.9999.orig/contrib/spoa_example/Makefile haproxy-1.7.9999/contrib/spoa_example/Makefile
 --- haproxy-1.7.9999.orig/contrib/spoa_example/Makefile	2016-12-04 15:56:49.068302156 -0800
 +++ haproxy-1.7.9999/contrib/spoa_example/Makefile	2016-12-04 15:58:51.360644213 -0800
