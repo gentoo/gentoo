@@ -178,6 +178,12 @@ fi
 
 tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0"
 
+if in_iuse objc-gc ; then
+	if tc_version_is_at_least 7 ; then
+		RDEPEND+=" objc-gc? ( >=dev-libs/boehm-gc-7.4.2 )"
+	fi
+fi
+
 if in_iuse graphite ; then
 	if tc_version_is_at_least 5.0 ; then
 		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14 )"
