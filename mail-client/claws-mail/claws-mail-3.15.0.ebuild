@@ -13,7 +13,7 @@ SRC_URI="http://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86"
 
 IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 REQUIRED_USE="libcanberra? ( notification )
