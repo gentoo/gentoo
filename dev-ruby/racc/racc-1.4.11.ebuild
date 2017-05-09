@@ -52,7 +52,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib -S testrb test/test_*.rb || die
+	${RUBY} -Ilib:test:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
 }
 
 all_ruby_install() {
