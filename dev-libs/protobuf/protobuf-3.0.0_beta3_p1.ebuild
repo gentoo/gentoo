@@ -15,7 +15,7 @@ DESCRIPTION="Google's Protocol Buffers -- an efficient method of encoding struct
 HOMEPAGE="https://github.com/google/protobuf/ https://developers.google.com/protocol-buffers/"
 SRC_URI="https://github.com/google/protobuf/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="BSD"
 SLOT="0/10b3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples java python static-libs test vim-syntax zlib"
