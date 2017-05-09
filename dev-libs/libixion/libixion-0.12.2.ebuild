@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
 inherit eutils python-single-r1 ${GITECLASS}
