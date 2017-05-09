@@ -16,6 +16,10 @@ IUSE=""
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
+	examples? (
+		~dev-qt/qtgui-${PV}
+		~dev-qt/qtwidgets-${PV}
+	)
 "
 RDEPEND="${DEPEND}"
 

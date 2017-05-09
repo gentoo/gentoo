@@ -22,6 +22,10 @@ DEPEND="
 	virtual/libiconv
 	icu? ( dev-libs/icu:= )
 	systemd? ( sys-apps/systemd:= )
+	examples? (
+		~dev-qt/qtwidgets-${PV}
+		~dev-qt/qtnetwork-${PV}
+	)
 "
 RDEPEND="${DEPEND}"
 

@@ -17,6 +17,10 @@ IUSE=""
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	>=sys-apps/dbus-1.4.20
+	examples? (
+		~dev-qt/qtgui-${PV}
+		~dev-qt/qtwidgets-${PV}
+	)
 "
 RDEPEND="${DEPEND}"
 

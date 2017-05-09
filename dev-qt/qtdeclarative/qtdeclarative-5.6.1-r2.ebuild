@@ -13,6 +13,8 @@ fi
 
 IUSE="gles2 +jit localstorage +widgets xml"
 
+REQUIRED_USE="examples? ( widgets )"
+
 # qtgui[gles2=] is needed because of bug 504322
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -24,6 +26,9 @@ DEPEND="
 	xml? (
 		~dev-qt/qtnetwork-${PV}
 		~dev-qt/qtxmlpatterns-${PV}
+	)
+	examples? (
+		~dev-qt/qtnetwork-${PV}
 	)
 "
 RDEPEND="${DEPEND}"

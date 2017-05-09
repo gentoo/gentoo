@@ -20,7 +20,10 @@ REQUIRED_USE="
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
-	examples? ( ~dev-qt/qtwidgets-${PV} )
+	examples? (
+		~dev-qt/qtwidgets-${PV}
+		~dev-qt/qtxml-${PV}
+	)
 	freetds? ( dev-db/freetds )
 	mysql? ( virtual/libmysqlclient:= )
 	oci8? ( dev-db/oracle-instantclient-basic )

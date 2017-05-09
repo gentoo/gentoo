@@ -12,7 +12,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="alsa gles2 gstreamer gstreamer010 openal pulseaudio qml widgets"
-REQUIRED_USE="?? ( gstreamer gstreamer010 )"
+REQUIRED_USE="?? ( gstreamer gstreamer010 ) examples? ( widgets )"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}

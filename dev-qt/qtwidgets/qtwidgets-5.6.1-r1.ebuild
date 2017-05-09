@@ -18,7 +18,11 @@ IUSE="gles2 gtkstyle +png +xcb"
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtgui-${PV}[gles2=,gtkstyle=,png=,xcb?]
-	examples? ( ~dev-qt/qtopengl-${PV} )
+	examples? (
+		~dev-qt/qtopengl-${PV}[gles2=]
+		~dev-qt/qtprintsupport-${PV}
+		~dev-qt/qtxml-${PV}
+	)
 "
 RDEPEND="${DEPEND}"
 

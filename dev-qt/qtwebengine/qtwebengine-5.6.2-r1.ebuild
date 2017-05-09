@@ -14,6 +14,8 @@ fi
 
 IUSE="bindist geolocation pax_kernel +system-ffmpeg +system-icu widgets"
 
+REQUIRED_USE="examples? ( widgets )"
+
 RDEPEND="
 	app-arch/snappy
 	dev-libs/glib:2
@@ -61,6 +63,9 @@ RDEPEND="
 	system-ffmpeg? ( media-video/ffmpeg:0= )
 	system-icu? ( dev-libs/icu:= )
 	widgets? ( ~dev-qt/qtwidgets-${PV} )
+	examples? (
+		~dev-qt/qtprintsupport-${PV}
+	)
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}

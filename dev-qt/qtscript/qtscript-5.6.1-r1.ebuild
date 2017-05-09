@@ -13,6 +13,8 @@ fi
 
 IUSE="+jit scripttools"
 
+REQUIRED_USE="examples? ( scripttools )"
+
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	scripttools? (

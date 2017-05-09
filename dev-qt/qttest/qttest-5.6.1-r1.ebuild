@@ -19,7 +19,10 @@ RDEPEND="
 	~dev-qt/qtcore-${PV}
 "
 DEPEND="${RDEPEND}
-	examples? ( ~dev-qt/qtwidgets-${PV} )
+	examples? (
+		~dev-qt/qtgui-${PV}
+		~dev-qt/qtwidgets-${PV}
+	)
 	test? (
 		~dev-qt/qtgui-${PV}
 		~dev-qt/qtxml-${PV}

@@ -21,6 +21,10 @@ DEPEND="
 	libproxy? ( net-libs/libproxy )
 	networkmanager? ( ~dev-qt/qtdbus-${PV} )
 	ssl? ( dev-libs/openssl:0[bindist=] )
+	examples? (
+		~dev-qt/qtgui-${PV}
+		~dev-qt/qtwidgets-${PV}
+	)
 "
 RDEPEND="${DEPEND}
 	connman? ( net-misc/connman )

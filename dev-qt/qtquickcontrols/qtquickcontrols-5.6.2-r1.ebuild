@@ -13,11 +13,17 @@ fi
 
 IUSE="+widgets"
 
+REQUIRED_USE="examples? ( widgets )"
+
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtdeclarative-${PV}
 	~dev-qt/qtgui-${PV}
 	widgets? ( ~dev-qt/qtwidgets-${PV} )
+	examples? (
+		~dev-qt/qtnetwork-${PV}
+		~dev-qt/qtsql-${PV}
+	)
 "
 RDEPEND="${DEPEND}"
 

@@ -17,7 +17,10 @@ RDEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtgui-${PV}
 	~dev-qt/qtwidgets-${PV}
-	examples? ( ~dev-qt/qtopengl-${PV} )
+	examples? (
+		~dev-qt/qtnetwork-${PV}
+		~dev-qt/qtopengl-${PV}
+	)
 	>=sys-libs/zlib-1.2.5
 "
 DEPEND="${RDEPEND}

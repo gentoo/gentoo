@@ -13,6 +13,8 @@ fi
 
 IUSE="qml"
 
+REQUIRED_USE="examples? ( qml )"
+
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	qml? ( ~dev-qt/qtdeclarative-${PV} )
