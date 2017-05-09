@@ -19,7 +19,7 @@ IUSE="dbus"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="media-libs/alsa-lib
-	media-sound/jack-audio-connection-kit
+	virtual/jack
 	dbus? ( sys-apps/dbus )
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
