@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="X Present Extension C Library"
 
-KEYWORDS="~amd64 ~arm ~hppa ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
