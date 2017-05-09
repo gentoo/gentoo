@@ -1041,7 +1041,7 @@ python_wrapper_setup() {
 		for x in "${nonsupp[@]}"; do
 			cat >"${workdir}"/bin/${x} <<-_EOF_ || die
 				#!/bin/sh
-				echo "${x} is not supported by ${EPYTHON}" >&2
+				echo "${ECLASS}: ${FUNCNAME}: ${x} is not supported by ${EPYTHON} (PYTHON_COMPAT)" >&2
 				exit 127
 			_EOF_
 			chmod +x "${workdir}"/bin/${x} || die
