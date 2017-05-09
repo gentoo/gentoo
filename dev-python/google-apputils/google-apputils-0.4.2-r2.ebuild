@@ -14,10 +14,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
+	dev-python/namespace-google[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.4[${PYTHON_USEDEP}]
 	>=dev-python/python-gflags-1.4[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2010[${PYTHON_USEDEP}]"
@@ -31,4 +32,10 @@ src_unpack() {
 
 python_test() {
 	esetup.py google_test
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	find "${D}" -name '*.pth' -delete || die
 }

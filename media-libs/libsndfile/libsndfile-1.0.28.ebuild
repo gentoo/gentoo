@@ -3,9 +3,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
-inherit autotools python-any-r1 multilib-minimal
+inherit python-any-r1 multilib-minimal
 
 MY_P=${P/_pre/pre}
 
@@ -23,9 +23,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x8
 IUSE="alsa minimal sqlite static-libs test"
 
 RDEPEND="
-	!minimal? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}]
+	!minimal? (
+		>=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}]
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
-		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
+		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
+	)
 	alsa? ( media-libs/alsa-lib )
 	sqlite? ( >=dev-db/sqlite-3.2 )"
 DEPEND="${RDEPEND}
@@ -38,27 +40,16 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-octave \
 		--disable-gcc-pipe \
+		--disable-gcc-opt \
 		$(use_enable static-libs static) \
 		$(use_enable !minimal external-libs) \
+		$(multilib_native_enable full-suite) \
 		$(multilib_native_use_enable alsa) \
 		$(multilib_native_use_enable sqlite)
-
-	if ! multilib_is_native_abi; then
-		# Do not build useless stuff
-		local i
-		for i in man doc examples regtest programs; do
-			sed -i -e "s/ ${i}//" Makefile || die
-		done
-	fi
 }
 
 multilib_src_install_all() {

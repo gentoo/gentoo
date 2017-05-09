@@ -3,10 +3,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( pypy python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit python-r1
 
-DESCRIPTION="Namespace package declaration for repoze"
+DESCRIPTION="Namespace package declaration for google"
 HOMEPAGE=""
 SRC_URI=""
 
@@ -22,12 +22,12 @@ DEPEND="${PYTHON_DEPS}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_unpack() {
-	mkdir -p "${S}"/repoze || die
-	cat > "${S}"/repoze/__init__.py <<-EOF || die
+	mkdir -p "${S}"/google || die
+	cat > "${S}"/google/__init__.py <<-EOF || die
 		__import__('pkg_resources').declare_namespace(__name__)
 	EOF
 }
 
 src_install() {
-	python_foreach_impl python_domodule repoze
+	python_foreach_impl python_domodule google
 }
