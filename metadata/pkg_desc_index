@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.2.2.0 2.3.0.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.2.2.0 2.2.3.0 2.3.0.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.2.32 2.4.25: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -302,7 +302,7 @@ app-arch/plzip 1.3 1.4 1.5: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20110811 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 5.4.0-r1 5.5.0_beta2: RAR compressor/uncompressor
+app-arch/rar 5.4.0-r1: RAR compressor/uncompressor
 app-arch/rpm 4.11.0.1 4.11.1 4.11.2 4.11.2-r1 4.12.0.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r2: Compression program for large files
@@ -4359,7 +4359,7 @@ dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus proj
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of un-/structured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
-dev-java/protobuf-java 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protocol Buffers - official Java Bindings
+dev-java/protobuf-java 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0: Google's Protocol Buffers - official Java Bindings
 dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
@@ -5026,7 +5026,7 @@ dev-libs/poco 1.4.6_p4 1.4.6_p4-r1 1.7.6: C++ class libraries for building netwo
 dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems
-dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protocol Buffers -- an efficient method of encoding structured data
+dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0: Google's Protocol Buffers -- an efficient method of encoding structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.3_p20150521 1.3.4_p20160523: Library for Japanese pTeX providing a better way of handling character encodings
@@ -8120,7 +8120,7 @@ dev-python/progressbar 2.3-r2: Text progressbar library for python
 dev-python/prometheus_client 0.0.19: Python client for the Prometheus monitoring system
 dev-python/promise 0.4.2: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 1.0.0 1.0.14: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.1.0: Google's Protocol Buffers - official Python bindings
+dev-python/protobuf-python 3.1.0 3.3.0: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/prov 1.5.0: W3C provenance data dodel library
 dev-python/psutil 1.2.1 2.1.3 5.0.1 5.1.3 5.2.2: Retrieve information on running processes and system utilization
