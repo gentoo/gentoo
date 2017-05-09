@@ -86,6 +86,9 @@ src_unpack() {
 	fi
 
 	toolchain_src_unpack
+	if use bootstrap; then
+		rm gnat-gpl-2014-x86_64-linux-bin/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld || die
+	fi
 }
 
 src_prepare() {
