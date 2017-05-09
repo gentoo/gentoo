@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A grammar-based, user-friendly config parser"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~sparc x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE=""
 
 SRC_TEST="do"

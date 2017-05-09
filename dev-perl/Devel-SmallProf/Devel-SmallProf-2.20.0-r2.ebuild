@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Per-line Perl profiler"
 
 SLOT="0"
-KEYWORDS="amd64 sparc ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 PATCHES=(

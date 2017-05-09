@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="scalable directory/file change notification"
 
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-perl/common-sense"
