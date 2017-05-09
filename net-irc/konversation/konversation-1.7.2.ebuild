@@ -54,8 +54,6 @@ RDEPEND="${DEPEND}
 	crypt? ( app-crypt/qca:2[ssl] )
 "
 
-S="${WORKDIR}/${P/_/-}"
-
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package crypt Qca-qt5)
