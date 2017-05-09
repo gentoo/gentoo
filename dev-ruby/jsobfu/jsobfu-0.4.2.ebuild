@@ -28,8 +28,6 @@ all_ruby_prepare() {
 	sed -i -e '/simplecov/ s:^:#:' \
 		-e '/config.\(color\|tty\|formatter\)/ s:^:#:' \
 		spec/spec_helper.rb || die
-
-	sed -i -e '/rkelly-remix/,/name:/ s/=/~>/' ../metadata || die
 }
 
 all_ruby_install() {
