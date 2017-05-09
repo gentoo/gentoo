@@ -7724,7 +7724,7 @@ dev-python/hiro 0.2: Time manipulation utilities for python
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
 dev-python/hpack 2.3.0-r1: Pure-Python HPACK header compression
 dev-python/html2text 2016.5.29 2016.9.19: Turn HTML into equivalent Markdown-structured text
-dev-python/html5lib 0.9999999 0.9999999-r2: HTML parser based on the HTML5 specification
+dev-python/html5lib 0.9999999 0.9999999-r2 0.999999999: HTML parser based on the HTML5 specification
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
 dev-python/httmock 1.2.2 1.2.3 1.2.4 1.2.5: A mocking library for requests
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
@@ -8350,6 +8350,7 @@ dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-django 2.9.1: A Django plugin for py.test
+dev-python/pytest-expect 1.1.0: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-fixture-config 1.2.2: Virtualenv fixture for py.test
 dev-python/pytest-html 1.10.1 1.14.2: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
