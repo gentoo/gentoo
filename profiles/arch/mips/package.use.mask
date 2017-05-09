@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on mips
+xfce-base/xfwm4 xpresent
+
 # Brian Dolbec <dolsen@gentoo.org> (21 Mar 2017)
 # This is masked as mongo-db needed for bson use flag
 # which is not keyworded on many arches.
