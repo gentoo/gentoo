@@ -14949,7 +14949,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.21.1 1.22.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.10.0 6.10.2 7.6.0 7.7.2 7.7.3 7.8.0 7.9.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.10.0 6.10.2 6.10.3 7.6.0 7.7.2 7.7.3 7.8.0 7.9.0 7.10.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15011,7 +15011,7 @@ net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program 
 net-mail/courier-imap 4.15-r2 4.16.2-r1 4.17.3: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to administer a Cyrus IMAP server
-net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.7 2.5.8 2.5.9 2.5.10: The Cyrus IMAP Server
+net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.7 2.5.8 2.5.9 2.5.10 2.5.11: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.19 2.2.29.1: An IMAP and POP3 server written with security primarily in mind
