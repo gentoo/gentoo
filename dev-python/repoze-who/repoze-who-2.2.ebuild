@@ -23,3 +23,7 @@ RDEPEND="
 	dev-python/webob[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 "
+
+python_test() {
+	esetup.py test
+}
