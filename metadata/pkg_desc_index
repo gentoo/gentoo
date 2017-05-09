@@ -9516,7 +9516,7 @@ dev-ruby/jmespath 1.2.4 1.3.0 1.3.1: Implements JMESPath for Ruby
 dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
 dev-ruby/jquery-rails 3.1.4 4.1.1 4.1.1-r1 4.2.2 4.3.1: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 3.0.1 4.2.1 5.0.5 6.0.0 6.0.1: The jQuery UI assets for the Rails 3.2+ asset pipeline
-dev-ruby/jsobfu 0.2.1 0.2.1-r1 0.3.0 0.3.0-r1 0.4.1: A Javascript code obfuscator
+dev-ruby/jsobfu 0.3.0-r1 0.4.2: A Javascript code obfuscator
 dev-ruby/json 1.8.2-r1 1.8.3 2.0.1 2.0.2 2.0.3 2.0.4 2.1.0: A JSON implementation as a Ruby extension
 dev-ruby/jwt 1.5.4 1.5.5 1.5.6: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
@@ -9559,12 +9559,12 @@ dev-ruby/mercenary 0.3.5 0.3.6: Lightweight and flexible library for writing com
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
 dev-ruby/metasm 1.0.2-r4 9999: cross-architecture assembler, disassembler, linker, and debugger
-dev-ruby/metasploit-concern 2.0.1: Metasploit concern allows you to define concerns in app/concerns.
-dev-ruby/metasploit-credential 2.0.3: Code for modeling and managing credentials in Metasploit
-dev-ruby/metasploit-model 2.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.1.11 1.1.13: Compiled binaries for Metasploit's Meterpreter
-dev-ruby/metasploit_data_models 2.0.0: The database layer for Metasploit
-dev-ruby/metasploit_payloads-mettle 0.0.6: Compiled binaries for Metasploit's next-gen Meterpreter
+dev-ruby/metasploit-concern 2.0.1 2.0.3: Metasploit concern allows you to define concerns in app/concerns.
+dev-ruby/metasploit-credential 2.0.3 2.0.8: Code for modeling and managing credentials in Metasploit
+dev-ruby/metasploit-model 2.0.0 2.0.3: Common code, such as validators and mixins
+dev-ruby/metasploit-payloads 1.1.11 1.1.13 1.2.24: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit_data_models 2.0.0 2.0.14: The database layer for Metasploit
+dev-ruby/metasploit_payloads-mettle 0.0.6 0.1.9: Compiled binaries for Metasploit's next-gen Meterpreter
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 2.99.2 3.0 3.0-r1 3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
@@ -9616,7 +9616,7 @@ dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2 0.5.1: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.2.0 1.2.0-r1 1.3.0 1.3.1: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
-dev-ruby/octokit 4.4.1 4.6.2: Ruby toolkit for the Github API
+dev-ruby/octokit 4.4.1 4.6.2 4.7.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.3.1 1.3.2 1.4.0 1.6.0 1.6.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1: OpenSSL CBC-MAC (CCM) ruby gem
@@ -9624,7 +9624,7 @@ dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0: Origin is a simple DSL for generating MongoDB selectors and options
 dev-ruby/ox 2.4.8 2.4.9 2.4.11 2.4.13: A fast XML parser and Object marshaller
-dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
+dev-ruby/packetfu 1.1.11-r1 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1 2.0.0: Terminal painter
 dev-ruby/parallel 1.10.0 1.11.1: Run any code in parallel Processes or Threads
 dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0: A production-ready Ruby parser written in pure Ruby
@@ -9697,7 +9697,7 @@ dev-ruby/rcairo 1.14.3 1.15.4 1.15.5: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.2.0 4.2.2 4.3.0 5.0.0 5.0.0-r1 5.0.0-r2 5.0.0-r3 5.1.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
-dev-ruby/recog 2.0.14-r1: Pattern recognition for hosts, services, and content
+dev-ruby/recog 2.0.14-r1 2.1.6: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2 3.3.3 3.3.4 3.4.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.2.9-r4 4.3.2: A module for using Textile in Ruby
 dev-ruby/redis 3.2.2 3.3.0 3.3.1 3.3.2: A Ruby client library for Redis
@@ -9910,6 +9910,7 @@ dev-ruby/websocket-driver 0.6.4 0.6.5: A complete implementation of the WebSocke
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
 dev-ruby/wikicloth 0.8.3: A mediawiki parser
 dev-ruby/will_paginate 3.1.0 3.1.0-r1 3.1.5: Most awesome pagination solution for Ruby
+dev-ruby/windows_error 0.1.1: reference for standard Windows API Error Codes
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
 dev-ruby/xmlrpc 0.2.1 0.3.0: XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP

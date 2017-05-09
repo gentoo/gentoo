@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( ruby_targets_ruby23? ( dev-ruby/nokogiri[ruby_targets_ruby23] !<dev-ruby/recog-2.0.6-r1[ruby_targets_ruby23] ) ) ruby_targets_ruby23? ( test? ( dev-ruby/regexp_parser[ruby_targets_ruby23] dev-ruby/rspec:3[ruby_targets_ruby23] dev-util/aruba[ruby_targets_ruby23] dev-util/cucumber[ruby_targets_ruby23] ) ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby23? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby23] ) ) ruby_targets_ruby23? ( test? ( dev-ruby/rake[ruby_targets_ruby23] ) ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) test? ( ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) )
+DESCRIPTION=Pattern recognition for hosts, services, and content
+EAPI=6
+HOMEPAGE=https://github.com/rapid7/recog
+IUSE=test elibc_FreeBSD ruby_targets_ruby23 doc test test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD-2
+RDEPEND=ruby_targets_ruby23? ( dev-ruby/nokogiri[ruby_targets_ruby23] !<dev-ruby/recog-2.0.6-r1[ruby_targets_ruby23] ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] )
+REQUIRED_USE=|| ( ruby_targets_ruby23 )
+SLOT=2.1.6
+SRC_URI=mirror://rubygems/recog-2.1.6.gem
+_eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	ruby-fakegem	e081b7d03e9e4ab4beba3ea9f44468d1	ruby-ng	2abd9e38aac141db06ae38bf32e748cd	ruby-utils	e9d0baddf239294b286da449ae7ac6a3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=1eea2bf13f5ff6b044ceb467b0bac0b2
