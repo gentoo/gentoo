@@ -5,7 +5,7 @@ EAPI=6
 USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-
+RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
@@ -30,4 +30,10 @@ all_ruby_prepare() {
 		spec/spec_helper.rb || die
 
 	sed -i -e '/rkelly-remix/,/name:/ s/=/~>/' ../metadata || die
+}
+
+all_ruby_install() {
+	all_fakegem_install
+
+	ruby_fakegem_binwrapper jsobfu jsobfu-${PV}
 }
