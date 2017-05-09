@@ -9,15 +9,18 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Metapackage for a basic ROS desktop install"
+DESCRIPTION="Metapackage for ROS perception stack"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	ros-meta/robot
-	ros-meta/viz
-	dev-ros/roslint
-	ros-meta/visualization_tutorials
+	ros-meta/ros_base
+	ros-meta/image_common
+	ros-meta/image_pipeline
+	ros-meta/image_transport_plugins
+	ros-meta/laser_pipeline
+	ros-meta/perception_pcl
+	ros-meta/vision_opencv
 "
 DEPEND="${RDEPEND}"
