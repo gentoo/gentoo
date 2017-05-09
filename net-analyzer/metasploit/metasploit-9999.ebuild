@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 #never ever ever have more than one ruby in here
-USE_RUBY="ruby21"
+USE_RUBY="ruby23"
 inherit eutils ruby-ng
 
 if [[ ${PV} == "9999" ]] ; then
@@ -41,17 +41,17 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	>=dev-ruby/activerecord-4.2.6:4.2
 	dev-ruby/bcrypt-ruby
 	dev-ruby/bit-struct
-	dev-ruby/builder:3
+	>=dev-ruby/builder-3.0
 	dev-ruby/bundler
 	dev-ruby/filesize
-	dev-ruby/jsobfu:0.3.0
+	>=dev-ruby/jsobfu-0.3.0
 	dev-ruby/json:*
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
 	>=dev-ruby/metasploit_data_models-2.0.0
 	dev-ruby/meterpreter_bins:0.0.22
-	dev-ruby/metasploit-payloads:1.1.13
-	dev-ruby/metasploit_payloads-mettle:0.0.6
+	dev-ruby/metasploit-payloads:1.2.24
+	dev-ruby/metasploit_payloads-mettle:0.1.9
 	>=dev-ruby/metasploit-credential-2.0.0
 	>=dev-ruby/metasploit-concern-2.0.0
 	>=dev-ruby/metasploit-model-2.0.0
@@ -61,9 +61,9 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/octokit
 	dev-ruby/openssl-ccm:1.2.1
 	dev-ruby/patch_finder
-	dev-ruby/recog:2.0.14
+	>=dev-ruby/recog-2.0.14
 	dev-ruby/redcarpet
-	=dev-ruby/rkelly-remix-0.0.6
+	>=dev-ruby/rkelly-remix-0.0.6
 	dev-ruby/rex-arch
 	dev-ruby/rex-java
 	dev-ruby/rex-ole
@@ -81,6 +81,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/robots
 	dev-ruby/sshkey
 	dev-ruby/tzinfo:*
+	dev-ruby/windows_error
 	java? ( dev-ruby/rjb )
 	oracle? ( dev-ruby/ruby-oci8 )
 	pcap? ( dev-ruby/pcaprub:*
@@ -160,13 +161,10 @@ all_ruby_unpack() {
 all_ruby_prepare() {
 	# add psexec patch from pull request 2657 to allow custom exe templates from any files, bypassing most AVs
 	#epatch "${FILESDIR}/agix_psexec_pull-2657.patch"
-	epatch_user
+	eapply_user
 
 	#remove random "cpuinfo" binaries which a only needed to detect which bundled john to run
 	rm -r data/cpuinfo
-
-	#remove random oudated collected garbage
-	rm -r external
 
 	#remove unneeded ruby bundler versioning files
 	#Gemfile.lock contains the versions tested by the msf team but not the hard requirements
