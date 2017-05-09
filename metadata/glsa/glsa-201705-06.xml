@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201705-06">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2017-05-09</announced>
+  <revised>2017-05-09: 1</revised>
+  <bug>611976</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">45.8.0</unaffected>
+      <vulnerable range="lt">45.8.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">45.8.0</unaffected>
+      <vulnerable range="lt">45.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, bypass
+      access restriction, access otherwise protected information, or spoof
+      content via multiple vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-45.8.0"
+    </code>
+    
+    <p>All Mozilla Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-45.8.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5398">CVE-2017-5398</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5400">CVE-2017-5400</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5401">CVE-2017-5401</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5402">CVE-2017-5402</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5404">CVE-2017-5404</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5405">CVE-2017-5405</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5407">CVE-2017-5407</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5408">CVE-2017-5408</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5410">CVE-2017-5410</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-26T01:32:17Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-05-09T19:36:09Z">whissi</metadata>
+</glsa>
