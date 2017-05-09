@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -52,7 +52,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/meterpreter_bins:0.0.22
 	dev-ruby/metasploit-payloads:1.1.13
 	dev-ruby/metasploit_payloads-mettle:0.0.6
-	>=dev-ruby/metasploit-credential-2.0.0
+	>=dev-ruby/metasploit-credential-2.0.0:*
 	>=dev-ruby/metasploit-concern-2.0.0
 	>=dev-ruby/metasploit-model-2.0.0
 	dev-ruby/msgpack
