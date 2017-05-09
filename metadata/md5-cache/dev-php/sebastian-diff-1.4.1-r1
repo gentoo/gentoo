@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DESCRIPTION=PHP Diff implementation
 EAPI=6
 HOMEPAGE=http://phpunit.de
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
 LICENSE=BSD
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/sebastianbergmann/diff/archive/1.4.1.tar.gz -> sebastian-diff-1.4.1.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=7f3e9df6e188a6fe3d5165da5e33b77b
+_md5_=3dfb466ca9359ca176815599352ddb4e
