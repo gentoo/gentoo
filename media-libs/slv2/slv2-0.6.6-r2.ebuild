@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="doc jack"
 
 RDEPEND=">=dev-libs/redland-1.0.6
-	jack? ( >=media-sound/jack-audio-connection-kit-0.107.0 )
+	jack? ( virtual/jack )
 	|| ( media-libs/lv2 media-libs/lv2core )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
