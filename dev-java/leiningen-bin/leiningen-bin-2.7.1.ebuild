@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 
 RDEPEND=">=virtual/jdk-1.6:*"
 DEPEND=">=virtual/jdk-1.6:*"
@@ -45,7 +45,7 @@ src_prepare() {
 
 	einfo "Patching lein"
 	java-pkg_init_paths_
-	sed -i "s|^LEIN_JAR=.*$|LEIN_JAR=${JAVA_PKG_JARDEST}/${PN}.jar|" "${S}/lein" \
+	sed -i "s|^LEIN_JAR=.*$|LEIN_JAR=${EPREFIX}/${JAVA_PKG_JARDEST#/}/${PN}.jar|" "${S}/lein" \
 		|| die "Can't patch LEIN_JAR in lein"
 
 	default
