@@ -1,0 +1,218 @@
+Index: onanomsg-1.0/lib/nanomsg.ml
+===================================================================
+--- onanomsg-1.0.orig/lib/nanomsg.ml
++++ onanomsg-1.0/lib/nanomsg.ml
+@@ -209,7 +209,7 @@ let recv_fd sock =
+   (Obj.magic fd : Unix.file_descr)
+ 
+ let send_bigstring_buf ?(block=true) sock buf pos len =
+-  if pos < 0 || len < 0 || pos + len > CCBigstring.size buf
++  if pos < 0 || len < 0 || pos + len > Bigstring.size buf
+   then invalid_arg "bounds";
+   let nn_buf = nn_allocmsg (size_of_int len) 0 in
+   match nn_buf with
+@@ -218,12 +218,12 @@ let send_bigstring_buf ?(block=true) soc
+     let nn_buf_p = Ctypes.(allocate (ptr void) nn_buf) in
+     let ba = Ctypes.(bigarray_of_ptr array1 len
+                        Bigarray.char @@ from_voidp char nn_buf) in
+-    CCBigstring.blit buf pos ba 0 len;
++    Bigstring.blit buf pos ba 0 len;
+     ignore @@ raise_notequal len
+       (fun () -> nn_send sock nn_buf_p nn_msg (int_of_bool block))
+ 
+ let send_bigstring ?(block=true) sock buf =
+-  send_bigstring_buf ~block sock buf 0 @@ CCBigstring.size buf
++  send_bigstring_buf ~block sock buf 0 @@ Bigstring.size buf
+ 
+ let send_bytes_buf ?(block=true) sock buf pos len =
+   if pos < 0 || len < 0 || pos + len > Bytes.length buf
+@@ -235,7 +235,7 @@ let send_bytes_buf ?(block=true) sock bu
+     let nn_buf_p = Ctypes.(allocate (ptr void) nn_buf) in
+     let ba = Ctypes.(bigarray_of_ptr array1 len
+                        Bigarray.char @@ from_voidp char nn_buf) in
+-    CCBigstring.blit_of_bytes buf pos ba 0 len;
++    Bigstring.blit_of_bytes buf pos ba 0 len;
+     ignore @@ raise_notequal len
+       (fun () -> nn_send sock nn_buf_p nn_msg (int_of_bool block))
+ 
+@@ -266,16 +266,16 @@ let recv ?(block=true) sock f =
+ let recv_bytes_buf ?(block=true) sock buf pos =
+   recv ~block sock
+     (fun ba ->
+-       let len = CCBigstring.size ba in
+-       CCBigstring.(blit_to_bytes ba 0 buf pos len);
++       let len = Bigstring.size ba in
++       Bigstring.(blit_to_bytes ba 0 buf pos len);
+        len
+     )
+ 
+ let recv_bytes ?(block=true) sock =
+   recv ~block sock (fun ba ->
+-      let len = CCBigstring.size ba in
++      let len = Bigstring.size ba in
+       let buf = Bytes.create len in
+-      CCBigstring.blit_to_bytes ba 0 buf 0 len;
++      Bigstring.blit_to_bytes ba 0 buf 0 len;
+       buf)
+ 
+ let recv_string ?(block=true) sock =
+Index: onanomsg-1.0/lib/nanomsg.mli
+===================================================================
+--- onanomsg-1.0.orig/lib/nanomsg.mli
++++ onanomsg-1.0/lib/nanomsg.mli
+@@ -45,8 +45,8 @@ val close : socket -> unit
+ 
+ (** {2 Zero-copy I/O} *)
+ 
+-val send_bigstring : ?block:bool -> socket -> CCBigstring.t -> unit
+-val send_bigstring_buf : ?block:bool -> socket -> CCBigstring.t -> int -> int -> unit
++val send_bigstring : ?block:bool -> socket -> Bigstring.t -> unit
++val send_bigstring_buf : ?block:bool -> socket -> Bigstring.t -> int -> int -> unit
+ 
+ val send_string : ?block:bool -> socket -> string -> unit
+ val send_string_buf : ?block:bool -> socket -> string -> int -> int -> unit
+@@ -54,7 +54,7 @@ val send_string_buf : ?block:bool -> soc
+ val send_bytes : ?block:bool -> socket -> Bytes.t -> unit
+ val send_bytes_buf : ?block:bool -> socket -> Bytes.t -> int -> int -> unit
+ 
+-val recv : ?block:bool -> socket -> (CCBigstring.t -> 'a) -> 'a
++val recv : ?block:bool -> socket -> (Bigstring.t -> 'a) -> 'a
+ (** [recv ?block sock f] applies [f] to the received message. The
+     argument of [f] gets unallocated after [f] returns, so make sure
+     [f] {b never} let a reference to its argument escape. *)
+Index: onanomsg-1.0/lib/nanomsg_lwt.ml
+===================================================================
+--- onanomsg-1.0.orig/lib/nanomsg_lwt.ml
++++ onanomsg-1.0/lib/nanomsg_lwt.ml
+@@ -25,7 +25,7 @@ let raise_negative sock io_event f = rai
+ let raise_notequal sock io_event v f = raise_if sock io_event (fun x -> x <> v) f
+ 
+ let send_bigstring_buf sock buf pos len =
+-  if pos < 0 || len < 0 || pos + len > CCBigstring.size buf
++  if pos < 0 || len < 0 || pos + len > Bigstring.size buf
+   then invalid_arg "bounds";
+   let nn_buf = nn_allocmsg (size_of_int len) 0 in
+   match nn_buf with
+@@ -34,14 +34,14 @@ let send_bigstring_buf sock buf pos len
+     let nn_buf_p = Ctypes.(allocate (ptr void) nn_buf) in
+     let ba = Ctypes.(bigarray_of_ptr array1 len
+                        Bigarray.char @@ from_voidp char nn_buf) in
+-    CCBigstring.blit buf pos ba 0 len;
++    Bigstring.blit buf pos ba 0 len;
+     raise_notequal sock Lwt_unix.Write len
+       (fun () -> nn_send (Obj.magic sock : int) nn_buf_p nn_msg
+           Symbol.(value_of_name_exn "NN_DONTWAIT")) >|= fun nb_written ->
+     ignore nb_written
+ 
+ let send_bigstring sock buf =
+-  send_bigstring_buf sock buf 0 @@ CCBigstring.size buf
++  send_bigstring_buf sock buf 0 @@ Bigstring.size buf
+ 
+ let send_bytes_buf sock buf pos len =
+   if pos < 0 || len < 0 || pos + len > Bytes.length buf
+@@ -53,7 +53,7 @@ let send_bytes_buf sock buf pos len =
+     let nn_buf_p = Ctypes.(allocate (ptr void) nn_buf) in
+     let ba = Ctypes.(bigarray_of_ptr array1 len
+                        Bigarray.char @@ from_voidp char nn_buf) in
+-    CCBigstring.blit_of_bytes buf pos ba 0 len;
++    Bigstring.blit_of_bytes buf pos ba 0 len;
+     raise_notequal sock Lwt_unix.Write len
+       (fun () -> nn_send (Obj.magic sock : int)  nn_buf_p nn_msg
+           Symbol.(value_of_name_exn "NN_DONTWAIT")) >|= fun nb_written ->
+@@ -84,16 +84,16 @@ let recv sock f =
+ 
+ let recv_bytes_buf sock buf pos =
+   recv sock (fun ba ->
+-      let len = CCBigstring.size ba in
+-      CCBigstring.blit_to_bytes ba 0 buf pos len;
++      let len = Bigstring.size ba in
++      Bigstring.blit_to_bytes ba 0 buf pos len;
+       Lwt.return len
+     )
+ 
+ let recv_bytes sock =
+   recv sock (fun ba ->
+-      let len = CCBigstring.size ba in
++      let len = Bigstring.size ba in
+       let buf = Bytes.create len in
+-      CCBigstring.blit_to_bytes ba 0 buf 0 len;
++      Bigstring.blit_to_bytes ba 0 buf 0 len;
+       Lwt.return buf
+     )
+ 
+Index: onanomsg-1.0/lib/nanomsg_lwt.mli
+===================================================================
+--- onanomsg-1.0.orig/lib/nanomsg_lwt.mli
++++ onanomsg-1.0/lib/nanomsg_lwt.mli
+@@ -4,8 +4,8 @@ open Nanomsg
+ 
+ (** {2 Zero-copy I/O} *)
+ 
+-val send_bigstring : socket -> CCBigstring.t -> unit Lwt.t
+-val send_bigstring_buf : socket -> CCBigstring.t -> int -> int -> unit Lwt.t
++val send_bigstring : socket -> Bigstring.t -> unit Lwt.t
++val send_bigstring_buf : socket -> Bigstring.t -> int -> int -> unit Lwt.t
+ 
+ val send_string : socket -> string -> unit Lwt.t
+ val send_string_buf : socket -> string -> int -> int -> unit Lwt.t
+@@ -13,7 +13,7 @@ val send_string_buf : socket -> string -
+ val send_bytes : socket -> Bytes.t -> unit Lwt.t
+ val send_bytes_buf : socket -> Bytes.t -> int -> int -> unit Lwt.t
+ 
+-val recv : socket -> (CCBigstring.t -> 'a Lwt.t) -> 'a Lwt.t
++val recv : socket -> (Bigstring.t -> 'a Lwt.t) -> 'a Lwt.t
+ (** [recv sock f] applies [f] to the received message. The
+     argument of [f] gets unallocated after [f] returns, so make sure
+     [f] {b never} let a reference to its argument escape. *)
+Index: onanomsg-1.0/_tags
+===================================================================
+--- onanomsg-1.0.orig/_tags
++++ onanomsg-1.0/_tags
+@@ -4,7 +4,7 @@ true: debug, bin_annot, safe_string
+ <lwt>: include
+ <lib_test>: include
+ 
+-<lib/nanomsg*>: package(containers.bigarray), \
++<lib/nanomsg*>: package(bigstring), \
+ 		package(ctypes), \
+ 		package(ipaddr), \
+ 		package(ppx_deriving.std), \
+@@ -13,7 +13,7 @@ true: debug, bin_annot, safe_string
+ 
+ <lib/nanomsg_lwt.*>: package(lwt.unix), package(lwt.ppx)
+ 
+-<lib_test/*>: package(containers.bigarray), \
++<lib_test/*>: package(bigstring), \
+ 	      package(ctypes.foreign), \
+ 	      package(ipaddr), \
+ 	      package(lwt.unix), \
+@@ -21,7 +21,7 @@ true: debug, bin_annot, safe_string
+ 	      package(oUnit), \
+ 	      package(containers)
+ 
+-<examples/*>: package(containers.bigarray), \
++<examples/*>: package(bigstring), \
+ 	      package(ctypes.foreign), \
+ 	      package(ipaddr), \
+-	      package(containers)
+\ No newline at end of file
++	      package(containers)
+Index: onanomsg-1.0/pkg/META
+===================================================================
+--- onanomsg-1.0.orig/pkg/META
++++ onanomsg-1.0/pkg/META
+@@ -1,6 +1,6 @@
+ version = "1.0"
+ description = "Bindings to nanomsg"
+-requires = "ctypes.foreign ipaddr ppx_deriving.std containers containers.bigarray"
++requires = "ctypes.foreign ipaddr ppx_deriving.std containers bigstring"
+ archive(byte) = "nanomsg.cma"
+ archive(byte, plugin) = "nanomsg.cma"
+ archive(native) = "nanomsg.cmxa"
+@@ -15,4 +15,4 @@ package "lwt" (
+  archive(native) = "nanomsg_lwt.cmxa"
+  archive(native, plugin) = "nanomsg_lwt.cmxs"
+  exists_if = "nanomsg_lwt.cma"
+-)
+\ No newline at end of file
++)
