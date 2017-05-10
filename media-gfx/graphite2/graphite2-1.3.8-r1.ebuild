@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-libs/glib:2
 		media-libs/fontconfig
-		media-libs/silgraphite
 		$(python_gen_any_dep '
 			dev-python/fonttools[${PYTHON_USEDEP}]
 		')
