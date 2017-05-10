@@ -40,8 +40,11 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
-	>=net-fs/samba-3.4.2[cups]
 	!net-misc/smb4k:4
+	>=net-fs/samba-3.4.2[cups]
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.9.90-po2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.90-po2.patch
+	"${FILESDIR}"/${P}-CVE-2017-8849.patch
+)
