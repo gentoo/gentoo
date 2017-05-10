@@ -9,8 +9,8 @@ RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="architecture specific information for Rex"
-HOMEPAGE="https://rubygems.org/gems/rex-arch"
+DESCRIPTION="Core libraries required for the Ruby Exploitation(Rex) Suite"
+HOMEPAGE="https://rubygems.org/gems/rex-core"
 
 LICENSE="BSD"
 
