@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="policykit? ( kde-plasma/polkit-kde-agent )"
 
+PATCHES=( "${FILESDIR}/${P}-CVE-2017-8422.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package policykit PolkitQt5-1)
