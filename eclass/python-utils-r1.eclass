@@ -810,7 +810,9 @@ python_newscript() {
 # The <new-path> can either be an absolute target system path (in which
 # case it needs to start with a slash, and ${ED} will be prepended to
 # it) or relative to the implementation's site-packages directory
-# (then it must not start with a slash).
+# (then it must not start with a slash). The relative path can be
+# specified either using the Python package notation (separated by dots)
+# or the directory notation (using slashes).
 #
 # When not set explicitly, the modules are installed to the top
 # site-packages directory.
@@ -867,7 +869,7 @@ python_domodule() {
 		local PYTHON_SITEDIR=${PYTHON_SITEDIR}
 		[[ ${PYTHON_SITEDIR} ]] || python_export PYTHON_SITEDIR
 
-		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot}
+		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot//.//}
 	fi
 
 	(
