@@ -328,8 +328,7 @@ python_gen_usedep() {
 python_gen_useflags() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local flag_prefix impl pattern
-	local matches=()
+	local flag_prefix impl matches=()
 
 	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		flag_prefix=python_targets
@@ -338,12 +337,9 @@ python_gen_useflags() {
 	fi
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern; do
-			if [[ ${impl} == ${pattern} ]]; then
-				matches+=( "${flag_prefix}_${impl}" )
-				break
-			fi
-		done
+		if _python_impl_matches "${impl}" "${@}"; then
+			matches+=( "${flag_prefix}_${impl}" )
+		fi
 	done
 
 	echo "${matches[@]}"
