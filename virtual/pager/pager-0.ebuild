@@ -12,4 +12,5 @@ RDEPEND="|| ( sys-apps/less
 	sys-apps/most
 	sys-apps/util-linux[ncurses]
 	app-text/lv
-	app-editors/vim[vim-pager] )"
+	app-editors/vim[vim-pager]
+  app-busybox/less )"
