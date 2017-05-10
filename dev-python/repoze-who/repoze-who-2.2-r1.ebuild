@@ -33,10 +33,10 @@ python_install() {
 	distutils-r1_python_install
 
 	# install __init__.py files for sub-namespaces
-	python_moduleinto repoze/who
+	python_moduleinto repoze.who
 	python_domodule repoze/who/__init__.py
 
-	python_moduleinto repoze/who/plugins
+	python_moduleinto repoze.who.plugins
 	python_domodule repoze/who/plugins/__init__.py
 }
 
