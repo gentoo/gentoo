@@ -9,7 +9,7 @@ inherit kde4-meta
 
 DESCRIPTION="Viewer for TNEF attachments"
 
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="debug"
 
