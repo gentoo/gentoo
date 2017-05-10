@@ -7,14 +7,22 @@ inherit flag-o-matic gnome2-utils
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://urbanterror.info"
 
-COMMIT_ID="60b17a27ecaa30bffc44114cb94df82af7febfdd"
-SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} == "9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
+	EGIT_BRANCH="urt"
+	KEYWORDS=""
 
-S="${WORKDIR}/ioq3-${COMMIT_ID}"
+else
+	COMMIT_ID="60b17a27ecaa30bffc44114cb94df82af7febfdd"
+	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/ioq3-${COMMIT_ID}"
+	KEYWORDS="~x86 ~amd64"
+
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
 IUSE="+altgamma +client +curl debug mumble openal +opus server voip vorbis"
 REQUIRED_USE=" || ( client server )"
 

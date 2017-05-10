@@ -2,15 +2,27 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit flag-o-matic git-r3 gnome2-utils
+inherit flag-o-matic gnome2-utils
 
+DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://urbanterror.info"
-EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
-EGIT_BRANCH="urt"
+
+if [[ ${PV} == "9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
+	EGIT_BRANCH="urt"
+	KEYWORDS=""
+
+else
+	COMMIT_ID="60b17a27ecaa30bffc44114cb94df82af7febfdd"
+	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/ioq3-${COMMIT_ID}"
+	KEYWORDS="~x86 ~amd64"
+
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="+altgamma +client +curl debug mumble openal +opus server voip vorbis"
 REQUIRED_USE=" || ( client server )"
 
