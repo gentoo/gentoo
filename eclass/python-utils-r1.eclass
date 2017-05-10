@@ -156,8 +156,10 @@ _python_set_impls() {
 # Check whether the specified <impl> matches at least one
 # of the patterns following it. Return 0 if it does, 1 otherwise.
 #
-# <impl> should be in PYTHON_COMPAT form. The patterns are fnmatch-style
-# patterns.
+# <impl> should be in PYTHON_COMPAT form. The patterns can be either:
+# a) fnmatch-style patterns, e.g. 'python2*', 'pypy'...
+# b) '-2' to indicate all Python 2 variants (= !python_is_python3)
+# c) '-3' to indicate all Python 3 variants (= python_is_python3)
 _python_impl_matches() {
 	[[ ${#} -ge 2 ]] || die "${FUNCNAME}: takes at least 2 parameters"
 
@@ -165,7 +167,13 @@ _python_impl_matches() {
 	shift
 
 	for pattern; do
-		if [[ ${impl} == ${pattern} ]]; then
+		if [[ ${pattern} == -2 ]]; then
+			! python_is_python3 "${impl}"
+			return
+		elif [[ ${pattern} == -3 ]]; then
+			python_is_python3 "${impl}"
+			return
+		elif [[ ${impl} == ${pattern} ]]; then
 			return 0
 		fi
 	done
