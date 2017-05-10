@@ -22,7 +22,6 @@ IUSE="examples test"
 RDEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]
 	!dev-python/dnspython:0"
 DEPEND="${RDEPEND}
-	!dev-python/dnspython:0
 	app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"

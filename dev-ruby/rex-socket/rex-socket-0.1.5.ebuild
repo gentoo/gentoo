@@ -10,8 +10,8 @@ RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="architecture specific information for Rex"
-HOMEPAGE="https://rubygems.org/gems/rex-arch"
+DESCRIPTION="Ruby Exploitation (Rex) Socket Abstraction Library"
+HOMEPAGE="https://rubygems.org/gems/rex-socket"
 
 LICENSE="BSD"
 
@@ -22,4 +22,4 @@ IUSE=""
 # doesn't seem to actually run any tests
 RESTRICT=test
 
-ruby_add_bdepend "dev-ruby/rex-text"
+ruby_add_bdepend "dev-ruby/rex-core"
