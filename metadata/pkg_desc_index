@@ -8699,6 +8699,7 @@ dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP p
 dev-python/storm 0.20-r1: An object-relational mapper for Python developed at Canonical
 dev-python/stormpath 2.4.2 2.4.4 2.4.5: Official Stormpath SDK, used to interact with the Stormpath REST API.
 dev-python/strict-rfc3339 0.6 0.7: Strict, simple, lightweight RFC3339 functions
+dev-python/stripe 1.55.1: Stripe python bindings
 dev-python/stripogram 1.5-r1: Strip-o-Gram HTML Conversion Library
 dev-python/structlog 16.1.0: Structured Logging for Python
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
