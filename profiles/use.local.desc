@@ -5152,6 +5152,8 @@ net-analyzer/ipsumdump:nanotimestamp - Enable timestamps with nano-second resolu
 net-analyzer/linkchecker:sqlite - Mozilla Bookmark parsing
 net-analyzer/mate-netspeed:gtk3 - Build with GTK+3 instead of GTK+2
 net-analyzer/metasploit:development - Install dependencies needed for metasploit and exploit development
+net-analyzer/metasploit:nexpose - Enable the plugin to integrate with nexpose
+net-analyzer/metasploit:openvas - Enable the plugin to integrate net-analyzer/openvas
 net-analyzer/metasploit:oracle - Enable restricted oracle modules which have additional deps
 net-analyzer/metasploit:pcap - Enable libpcap for packet sniffing
 net-analyzer/mk-livestatus:nagios4 - Generate a net-analyzer/nagios-4 compatible plugin
