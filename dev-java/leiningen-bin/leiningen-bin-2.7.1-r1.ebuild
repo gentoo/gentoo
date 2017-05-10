@@ -19,8 +19,8 @@ LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x64-macos"
 
-RDEPEND=">=virtual/jdk-1.6:*"
-DEPEND=">=virtual/jdk-1.6:*"
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6"
 
 RESTRICT="test"
 
