@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-libs/tinyxml
 	sci-electronics/gazebo:=
+	dev-libs/protobuf:=
 	dev-ros/gazebo_plugins[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/roscpp
