@@ -36,6 +36,9 @@ src_prepare()   {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	[[ ${CHOST} == *-darwin* ]] && \
 		PATCHES+=( "${FILESDIR}"/${PN}-2.61-darwin.patch )
-	PATCHES+=( "${FILESDIR}"/${PN}-2.69-perl-5.26.patch )
+	PATCHES+=(
+		"${FILESDIR}"/${PN}-2.69-perl-5.26.patch
+		"${FILESDIR}"/${P}-fix-libtool-test.patch
+	)
 	toolchain-autoconf_src_prepare
 }

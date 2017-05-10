@@ -1,0 +1,31 @@
+From 247b02e5a5bb79ca6666e91de02ae2d3cb0cd325 Mon Sep 17 00:00:00 2001
+From: "Gary V. Vaughan" <gary@gnu.org>
+Date: Mon, 3 Nov 2014 07:25:03 +0100
+Subject: tests: avoid spurious test failure with libtool 2.4.3
+
+Based on a report by Bruce Dubbs.
+
+* tests/foreign.at (Libtool): Be tolerant of 'quote' replacing the
+older `quote'.
+
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ tests/foreign.at | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/foreign.at b/tests/foreign.at
+index a9dc33c..d4702cd 100644
+--- a/tests/foreign.at
++++ b/tests/foreign.at
+@@ -57,7 +57,7 @@ AT_CHECK([./config.guess || exit 77], [], [ignore], [ignore])
+ # Make sure at-path contains something valid, and let the test suite
+ # display it when verbose.  And fail, skipping would too easily hide
+ # problems.
+-AT_CHECK([sed -n ["s,^.*\`\\(/[^']*\\)'.*,\\1,p"] stdout], [0], [stdout])
++AT_CHECK([sed -n ["s,^[^']*[\`']\\(/[^']*\\)'.*,\\1,p"] stdout], [0], [stdout])
+ AT_CHECK([test -f "`sed -n 1p stdout`"])
+ 
+ # Older libtoolize installed everything but install-sh...
+-- 
+cgit v1.0-41-gc330
+
