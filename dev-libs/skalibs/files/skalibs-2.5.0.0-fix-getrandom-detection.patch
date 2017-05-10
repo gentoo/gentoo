@@ -1,0 +1,36 @@
+From 880d31d1bbc0ee82a7bfae2423f27592ca507cff Mon Sep 17 00:00:00 2001
+From: Laurent Bercot <ska-skaware@skarnet.org>
+Date: Wed, 26 Apr 2017 17:09:46 +0000
+Subject: [PATCH]  Fix getrandom() detection: need to run the test, not only
+ link!
+
+---
+ configure                  | 2 +-
+ src/sysdeps/trygetrandom.c | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 1eaccd3..f93b835 100755
+--- a/configure
++++ b/configure
+@@ -511,7 +511,7 @@ EOF
+   choose cl futimes FUTIMES 'futimes()'
+   choose cl arc4random ARC4RANDOM 'arc4random()'
+   choose cl arc4random_addrandom ARC4RANDOM_ADDRANDOM 'arc4random_addrandom()'
+-  choose cl getrandom GETRANDOM 'getrandom()'
++  choose clr getrandom GETRANDOM 'getrandom()'
+   choose cl itimer ITIMER 'setitimer()'
+ 
+   echo '#endif' >> $sysdeps/sysdeps.h
+diff --git a/src/sysdeps/trygetrandom.c b/src/sysdeps/trygetrandom.c
+index b6cda18..8abe3dd 100644
+--- a/src/sysdeps/trygetrandom.c
++++ b/src/sysdeps/trygetrandom.c
+@@ -19,5 +19,6 @@ static int getrandom (void *buf, size_t buflen, unsigned int flags)
+ int main (void)
+ {
+   char buf[4] ;
+-  return getrandom(buf, 4, 0) ;
++  if (getrandom(buf, 4, 0) < 0) return 1 ;
++  return 0 ;
+ }
