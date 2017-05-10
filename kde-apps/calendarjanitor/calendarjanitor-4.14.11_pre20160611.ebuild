@@ -11,7 +11,7 @@ inherit kde4-meta
 DESCRIPTION="Tool to scan calendar data for buggy instances"
 HOMEPAGE="https://www.kde.org/"
 
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
