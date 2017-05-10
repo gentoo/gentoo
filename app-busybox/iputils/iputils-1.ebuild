@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd6
 
 DEPEND=" sys-apps/busybox !net-misc/iputils "
 
-pkg_postinst() {
+src_install() {
   dodir /bin
 
   einfo "Symlinking ping to ${ROOT}bin/busybox"
