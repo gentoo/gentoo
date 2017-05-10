@@ -374,8 +374,7 @@ python_gen_useflags() {
 python_gen_cond_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local flag_prefix impl pattern
-	local matches=()
+	local flag_prefix impl matches=()
 
 	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		flag_prefix=python_targets
@@ -387,20 +386,17 @@ python_gen_cond_dep() {
 	shift
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern; do
-			if [[ ${impl} == ${pattern} ]]; then
-				# substitute ${PYTHON_USEDEP} if used
-				# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
-				#  the code is run at most once)
-				if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-					local usedep=$(python_gen_usedep "${@}")
-					dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
-				fi
-
-				matches+=( "${flag_prefix}_${impl}? ( ${dep} )" )
-				break
+		if _python_impl_matches "${impl}" "${@}"; then
+			# substitute ${PYTHON_USEDEP} if used
+			# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
+			#  the code is run at most once)
+			if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
+				local usedep=$(python_gen_usedep "${@}")
+				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 			fi
-		done
+
+			matches+=( "${flag_prefix}_${impl}? ( ${dep} )" )
+		fi
 	done
 
 	echo "${matches[@]}"
