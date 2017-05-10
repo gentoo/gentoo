@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit ltprune
+inherit multilib-minimal
 
 MY_P="gc-${PV}"
 
@@ -16,35 +16,39 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="cxx static-libs threads"
 
-DEPEND=">=dev-libs/libatomic_ops-7.4
+DEPEND="
+	>=dev-libs/libatomic_ops-7.4[${MULTILIB_USEDEP}]
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
-src_configure() {
+multilib_src_configure() {
 	local config=(
 		--with-libatomic-ops
 		$(use_enable cxx cplusplus)
 		$(use_enable static-libs static)
 		$(use threads || echo --disable-threads)
 	)
-	econf "${config[@]}"
+
+	ECONF_SOURCE=${S} econf "${config[@]}"
 }
 
-src_compile() {
+multilib_src_compile() {
 	# Workaround build errors. #574566
 	use ia64 && emake src/ia64_save_regs_in_stack.lo
 	use sparc && emake src/sparc_mach_dep.lo
 	default
 }
 
-src_install() {
-	default
-	use static-libs || prune_libtool_files
+multilib_src_install_all() {
+	local HTML_DOCS=( doc/*.html )
+	einstalldocs
+	dodoc doc/README{.environment,.linux,.macros}
 
-	rm -r "${ED}"/usr/share/gc || die
-	dodoc README.QUICK doc/README{.environment,.linux,.macros}
-	docinto html
-	dodoc doc/*.html
+	rm -r "${ED%/}"/usr/share/gc || die
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
+
 	newman doc/gc.man GC_malloc.1
 }
