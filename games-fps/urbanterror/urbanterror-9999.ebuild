@@ -6,7 +6,7 @@ inherit flag-o-matic git-r3 gnome2-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://urbanterror.info"
-EGIT_REPO_URI="https://github.com/holgersson32644/ioq3.git"
+EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 EGIT_BRANCH="urt"
 
 LICENSE="GPL-2"

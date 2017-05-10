@@ -8,7 +8,7 @@ DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://urbanterror.info"
 
 COMMIT_ID="60b17a27ecaa30bffc44114cb94df82af7febfdd"
-SRC_URI="https://github.com/holgersson32644/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}/ioq3-${COMMIT_ID}"
 
