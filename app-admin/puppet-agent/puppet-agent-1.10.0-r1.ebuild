@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="puppetdb selinux"
+IUSE="experimental puppetdb selinux"
 RESTRICT="strip"
 
 CDEPEND="!app-admin/augeas
@@ -61,6 +61,12 @@ QA_PREBUILT="
 pkg_setup() {
 	enewgroup puppet
 	enewuser puppet -1 -1 /var/run/puppet puppet
+}
+
+src_prepare() {
+	if use experimental; then
+		epatch "${FILESDIR}/43e2c935252b995134ce353e5e6312cf77aea480.patch"
+	fi
 }
 
 src_install() {
