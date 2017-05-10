@@ -1,16 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-USE_RUBY="ruby21"
+USE_RUBY="ruby21 ruby22 ruby23"
 RUBY_OPTIONAL=yes
 
 PYTHON_COMPAT=(python2_7 python3_{4,5,6})
 
-inherit autotools-utils eutils perl-app ruby-ng python-single-r1
+inherit eutils perl-module ruby-ng python-single-r1
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
 HOMEPAGE="http://libguestfs.org"
@@ -18,7 +16,7 @@ SRC_URI="http://libguestfs.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="ocaml readline +perl python test static-libs ruby"
 
 RDEPEND="
@@ -35,7 +33,6 @@ RDEPEND="
 	"
 
 DEPEND="${RDEPEND}
-	dev-lang/perl
 	perl? (
 		test? ( dev-perl/Pod-Coverage
 			dev-perl/Test-Pod-Coverage )
@@ -47,68 +44,57 @@ ruby_add_bdepend "ruby? ( dev-ruby/rake
 			dev-ruby/rdoc )"
 ruby_add_rdepend "ruby? ( virtual/rubygems )"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+			ruby? ( || ( $(ruby_get_use_targets) ) )"
 
 DOCS=( README )
-S="${WORKDIR}/${P}"
 
-#We are aware of rather poor quality of this ebuild, but the bump is required to fix security bug. We will fix other matters later.
+S="${WORKDIR}/${P}"
 
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
 	fi
-	if use perl; then
-		perl_set_version
-	fi
 }
 
 src_unpack() {
 	default
-}
-
-src_prepare() {
-	epatch_user
+	cp -prlP "${WORKDIR}/${P}" "${WORKDIR}"/all
 }
 
 src_configure() {
+	ruby-ng_src_configure
+
+	if use perl; then
+		pushd perl
+		perl-module_src_configure
+		popd
+	fi
+
 	local myeconfargs=(
 		$(use_with readline)
 		$(use_enable ocaml)
 		$(use_enable perl)
 		--enable-nls
+		--disable-ruby
 		$(use_enable python)
-		$(use_enable ruby)
-		--disable-rpath )
+		--disable-rpath
+		)
 
-	autotools-utils_src_configure
-
-	if use perl; then
-		pushd perl
-		perl-app_src_configure
-		popd
-	fi
+	econf ${myeconfargs[@]}
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	default
+	ruby-ng_src_compile
 }
-
-# Test binding's dont't wok properly in gentoo layout
-#src_test() {
-#	if use perl;then
-#		pushd perl
-#		perl-app_src_install
-#		popd
-#	fi
-#
-#	autotools-utils_src_compile check
-#}
 
 src_install() {
 	strip-linguas -i po
 
-	autotools-utils_src_install "LINGUAS=""${LINGUAS}"""
+	emake install DESTDIR="${ED}" "LINGUAS=""${LINGUAS}"""
+
+	ruby-ng_src_install
 
 	if use perl; then
 		perl_delete_localpod
