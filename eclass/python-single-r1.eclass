@@ -291,19 +291,15 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
-	local matches=()
+	local impl matches=()
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern; do
-			if [[ ${impl} == ${pattern} ]]; then
-				matches+=(
-					"python_targets_${impl}(-)?"
-					"python_single_target_${impl}(+)?"
-				)
-				break
-			fi
-		done
+		if _python_impl_matches "${impl}" "${@}"; then
+			matches+=(
+				"python_targets_${impl}(-)?"
+				"python_single_target_${impl}(+)?"
+			)
+		fi
 	done
 
 	[[ ${matches[@]} ]] || die "No supported implementations match python_gen_usedep patterns: ${@}"
