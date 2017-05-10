@@ -16,21 +16,22 @@ SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="hardened"
 
 DEPEND="dev-go/go-bindata
 	${PYTHON_DEPS}"
-RDEPEND=">=sys-cluster/kubectl-1.5.3"
+RDEPEND=">=sys-cluster/kubectl-1.6.0"
 
 RESTRICT="test"
 
 src_prepare() {
 	default
-	sed -i -e 's#$(GOPATH)/bin/go-bindata#go-bindata#' -e 's#GOBIN=$(GOPATH)/bin go get github.com/jteeuwen/go-bindata/...##' src/${EGO_PN%/*}/Makefile || die
+	sed -i -e 's/ -s -w/ -w/' -e 's#$(GOPATH)/bin/go-bindata#go-bindata#' -e 's#GOBIN=$(GOPATH)/bin go get github.com/jteeuwen/go-bindata/...##' src/${EGO_PN%/*}/Makefile || die
 	sed -i -e "s/get_rev(), get_version(), get_tree_state()/get_rev(), get_version(), 'gitTreeState=clean'/"  src/${EGO_PN%/*}/hack/get_k8s_version.py || die
 }
 
 src_compile() {
+	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
 	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -C src/${EGO_PN%/*}
 }
 
