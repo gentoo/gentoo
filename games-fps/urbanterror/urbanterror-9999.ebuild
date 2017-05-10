@@ -101,33 +101,25 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
 		if use openal; then
-			einfo
 			elog "You might need to set:"
 			elog "  seta s_useopenal \"1\""
 			elog "in your ~/.q3a/q3ut4/q3config.cfg for openal to work."
-			einfo
 		fi
 		if use altgamma; then
-			einfo
 			elog "You might need to set:"
 			elog "  seta r_altgamma \"1\""
 			elog "in your ~/.q3a/q3ut4/q3config.cfg for altgamma to work."
-			einfo
 		fi
 		if ! use altgamma; then
-			einfo
 			elog "If you are using a modesetting graphics driver you might"
 			elog "consider setting USE=\"altgamma\"."
 			elog "For details take a look on:"
 			elog "https://bugs.freedesktop.org/show_bug.cgi?id=27222"
-			einfo
 		fi
 		if ! use client; then
-			einfo
 			elog "You disabled client support. You won't be able to connect"
 			elog "to any servers and play. If you want to do so, enable"
 			elog "USE=\"client\"."
-			einfo
 		fi
 	fi
 }
