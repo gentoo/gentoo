@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ DESCRIPTION="DOCTYPE based XML output"
 
 LICENSE="|| ( Artistic GPL-1+ BSD )"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 sparc x86"
+KEYWORDS="amd64 hppa sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/XML-Parser"
