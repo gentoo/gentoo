@@ -7552,7 +7552,7 @@ dev-python/dpkt 1.8-r1 1.8.8: Fast, simple packet creation / parsing
 dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7: Python library for communicating with HTTP 1.1 servers
-dev-python/dulwich 0.9.9 0.13.0 0.14.1: Pure-Python implementation of the Git file formats and protocols
+dev-python/dulwich 0.9.9 0.13.0 0.14.1 0.17.3: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.6.6 0.7.2-r1: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2 2.3: Easy thumbnails for Django
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
@@ -8543,7 +8543,7 @@ dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in docume
 dev-python/regex 2016.01.10 2017.04.05: Alternative regular expression module to replace re
 dev-python/regions 0.1 0.2: Astropy affiliated package for region handling
 dev-python/rencode 1.0.5: similar to bencode from the BitTorrent project
-dev-python/reno 1.2.0 1.8.0: Release notes manager, storing release notes in a git repo and building docs
+dev-python/reno 1.2.0 1.8.0 2.2.1: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.3.0-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2 0.6-r3: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
