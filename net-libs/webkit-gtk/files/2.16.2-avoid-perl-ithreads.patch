@@ -1,0 +1,130 @@
+From b9ee99577992ccb7a94840f5f7f2d77b31c4e0bd Mon Sep 17 00:00:00 2001
+From: "commit-queue@webkit.org"
+ <commit-queue@webkit.org@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Sun, 9 Apr 2017 21:48:06 +0000
+Subject: [PATCH] generate-bindings-all.pl shouldn't use Perl threads
+ https://bugs.webkit.org/show_bug.cgi?id=170106
+
+Patch by Fujii Hironori <Hironori.Fujii@sony.com> on 2017-04-09
+Reviewed by Yusuke Suzuki.
+
+The use of interpreter-based threads in Perl is officially
+discouraged and not all Linux distributions and BSD compile Perl
+with threads support. Use fork instead of threads to run
+generate-bindings.pl in parallel.
+
+* bindings/scripts/generate-bindings-all.pl:
+(spawnGenerateBindingsIfNeeded): Added.
+(executeCommand): Removed the workaround for Cygwin Perl threads.
+(spawnCommand): Added.
+(worker): Deleted.
+
+git-svn-id: http://svn.webkit.org/repository/webkit/trunk@215166 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ .../bindings/scripts/generate-bindings-all.pl      | 63 +++++++++++-----------
+diff --git a/Source/WebCore/bindings/scripts/generate-bindings-all.pl b/Source/WebCore/bindings/scripts/generate-bindings-all.pl
+index 37b27cc..968ea11 100755
+--- a/Source/WebCore/bindings/scripts/generate-bindings-all.pl
++++ b/Source/WebCore/bindings/scripts/generate-bindings-all.pl
+@@ -32,9 +32,6 @@ use File::Basename;
+ use File::Spec;
+ use File::Find;
+ use Getopt::Long;
+-use threads;
+-use threads::shared;
+-use Thread::Queue;
+ 
+ my $perl = $^X;
+ my $scriptDir = $FindBin::Bin;
+@@ -121,13 +118,18 @@ my @idlFilesToUpdate = grep &{sub {
+                 implicitDependencies($depFile));
+     needsUpdate(\@output, \@deps);
+ }}, @idlFiles;
+-my $queue = Thread::Queue->new(@idlFilesToUpdate);
+-my $abort :shared = 0;
++
++my $abort = 0;
+ my $totalCount = @idlFilesToUpdate;
+-my $currentCount :shared = 0;
++my $currentCount = 0;
+ 
+-my @threadPool = map { threads->create(\&worker) } (1 .. $numOfJobs);
+-$_->join for @threadPool;
++spawnGenerateBindingsIfNeeded() for (1 .. $numOfJobs);
++while (waitpid(-1, 0) != -1) {
++    if ($?) {
++        $abort = 1;
++    }
++    spawnGenerateBindingsIfNeeded();
++}
+ exit $abort;
+ 
+ sub needsUpdate
+@@ -157,20 +159,16 @@ sub mtime
+     return (stat $file)[9];
+ }
+ 
+-sub worker {
+-    while (my $file = $queue->dequeue_nb()) {
+-        last if $abort;
+-        eval {
+-            $currentCount++;
+-            my $basename = basename($file);
+-            printProgress("[$currentCount/$totalCount] $basename");
+-            executeCommand($perl, @args, $file) == 0 or die;
+-        };
+-        if ($@) {
+-            $abort = 1;
+-            die;
+-        }
+-    }
++sub spawnGenerateBindingsIfNeeded
++{
++    return if $abort;
++    return unless @idlFilesToUpdate;
++    my $file = shift @idlFilesToUpdate;
++    $currentCount++;
++    my $basename = basename($file);
++    printProgress("[$currentCount/$totalCount] $basename");
++    my $pid = spawnCommand($perl, @args, $file);
++    $abort = 1 unless defined $pid;
+ }
+ 
+ sub buildDirectoryCache
+@@ -196,22 +194,23 @@ sub implicitDependencies
+ 
+ sub executeCommand
+ {
+-    if ($^O eq 'cygwin') {
+-        # 'system' of Cygwin Perl doesn't seem thread-safe
+-        my $pid = fork();
+-        defined($pid) or die;
+-        if ($pid == 0) {
+-            exec(@_) or die;
+-        }
+-        waitpid($pid, 0);
+-        return $?;
+-    }
+     if ($^O eq 'MSWin32') {
+         return system(quoteCommand(@_));
+     }
+     return system(@_);
+ }
+ 
++sub spawnCommand
++{
++    my $pid = fork();
++    if ($pid == 0) {
++        @_ = quoteCommand(@_) if ($^O eq 'MSWin32');
++        exec(@_);
++        die "Cannot exec";
++    }
++    return $pid;
++}
++
+ sub quoteCommand
+ {
+     return map {
+-- 
+1.8.3.1
+
