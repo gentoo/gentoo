@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
@@ -21,26 +21,27 @@ REQUIRED_USE=" || ( client server )"
 PATCHES=( "${FILESDIR}"/${P}-respect_CFLAGS.patch )
 
 RDEPEND="
-	curl? ( net-misc/curl )
 	client? (
-		virtual/opengl
-		openal? ( media-libs/openal )
 		media-libs/libsdl2[X,sound,joystick,opengl,video]
+		mumble? ( media-sound/mumble )
+		openal? ( media-libs/openal )
+		opus? ( media-libs/opusfile )
+
 		vorbis? ( media-libs/libogg
 			media-libs/libvorbis )
-		opus? ( media-libs/opusfile )
-		mumble? ( media-sound/mumble )
 		)
+	curl? ( net-misc/curl )
 	~games-fps/urbanterror-data-4.3.2
-	sys-libs/zlib[minizip]"
+	sys-libs/zlib[minizip]
+	virtual/jpeg:0"
+
 DEPEND="${RDEPEND}"
 
 pkg_pretend() {
 	if use client; then
 		if ! use openal && ! use opus && ! use vorbis; then
 			ewarn
-			ewarn "Sound support disabled. Enable 'openal' or 'opus' or 'vorbis' useflag."
-			ewarn
+			ewarn "No sound implementation selected. Enable 'openal', 'opus' or 'vorbis' USE flag to get sound!"
 		fi
 	fi
 }
@@ -48,7 +49,7 @@ pkg_pretend() {
 src_compile() {
 	buildit() { use $1 && echo 1 || echo 0 ; }
 	nobuildit() { use $1 && echo 0 || echo 1 ; }
-	# unbundle zlib as much as possible
+	# Workaround for used zlib macro, wrt bug #44951
 	append-flags "-DOF=_Z_OF"
 	emake \
 		ARCH=$(usex amd64 "x86_64" "i386") \
@@ -81,6 +82,7 @@ src_compile() {
 
 src_install() {
 	local my_arch=$(usex amd64 "x86_64" "i386")
+
 	# docs from ioq3, not from UrbanTerror ZIP file
 	dodoc ChangeLog README.md README.ioq3.md md4-readme.txt
 
@@ -90,33 +92,39 @@ src_install() {
 		make_desktop_entry ${PN} "UrbanTerror" ${PN}
 	fi
 
-	# means: dedicated server only
 	if use server && ! use client; then
+		# dedicated server only
 		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT-Ded.${my_arch} ${PN}-ded
 	fi
 }
+
 pkg_preinst() {
 	use client && gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	use client && gnome2_icon_cache_update
+
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
 		if use openal; then
 			elog
+			elog ""
 			elog "You might need to set:"
 			elog "  seta s_useopenal \"1\""
 			elog "in your ~/.q3a/q3ut4/q3config.cfg for openal to work."
 		fi
 		if use altgamma; then
 			elog
+			elog ""
 			elog "You might need to set:"
 			elog "  seta r_altgamma \"1\""
 			elog "in your ~/.q3a/q3ut4/q3config.cfg for altgamma to work."
 		fi
+
 		if ! use altgamma; then
 			elog
+			elog ""
 			elog "If you are using a modesetting graphics driver you might"
 			elog "consider setting USE=\"altgamma\"."
 			elog "For details take a look on:"
