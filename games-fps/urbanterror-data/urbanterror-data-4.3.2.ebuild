@@ -11,14 +11,14 @@ MY_PV=43_full
 
 DESCRIPTION="Data files for UrbanTerror"
 HOMEPAGE="http://www.urbanterror.info/home/"
-SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}.zip
+SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}.zip -> ${P}.zip
 	https://upload.wikimedia.org/wikipedia/commons/5/56/Urbanterror.svg -> ${PN}.svg"
 
 # fetch updates recursively for |4.3.x-4.3.0|
 if [[ "${PV}" != "4.3.0" ]]; then
 	MY_CTR=0
 	while [[ "${MY_CTR}" -lt "${PV/4.3./}" ]]; do
-		SRC_URI="${SRC_URI} https://up.barbatos.fr/urt/${MY_PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 )).zip"
+		SRC_URI="${SRC_URI} https://up.barbatos.fr/urt/${MY_PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 )).zip -> ${PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 )).zip"
 		MY_CTR=$(( ${MY_CTR} + 1 ))
 	done
 fi
@@ -43,7 +43,7 @@ src_prepare() {
 		MY_CTR=0
 		while [[ "${MY_CTR}" -lt "${PV/4.3./}" ]]; do
 			cp -dfpr \
-				"${WORKDIR}"/${MY_PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 ))/* "${S}"
+				"${WORKDIR}"/${PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 ))/* "${S}"
 			MY_CTR=$(( ${MY_CTR} + 1 ))
 		done
 	fi
