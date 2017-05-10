@@ -823,12 +823,6 @@ python_newscript() {
 #   python_foreach_impl python_domodule baz.py
 # }
 # @CODE
-
-# Set the current module root. The new value will be stored
-# in the 'python_moduleroot' environment variable. The new value need
-# be relative to the site-packages root.
-#
-# Alternatively, you can set the variable directly.
 python_moduleinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
