@@ -73,6 +73,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-g_log_domain.patch
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=605216
+	# https://bugs.gentoo.org/show_bug.cgi?id=617430
 	epatch "${FILESDIR}"/${P}-underlinking.patch
 	eautoreconf
 
