@@ -11,7 +11,7 @@ SRC_URI="https://github.com/2ion/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="luajit"
 
 COMMON_DEPEND=">=media-video/mpv-0.14.0[cli]"
