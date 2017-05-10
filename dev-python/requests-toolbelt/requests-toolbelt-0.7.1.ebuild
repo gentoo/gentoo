@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="<dev-python/requests-3.0.0"
+RDEPEND="<dev-python/requests-3.0.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
