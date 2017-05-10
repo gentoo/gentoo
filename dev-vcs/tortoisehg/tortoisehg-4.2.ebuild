@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-3.8 <dev-vcs/mercurial-3.10"
+	HG_DEPEND=">=dev-vcs/mercurial-4.1 <dev-vcs/mercurial-4.3"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
@@ -64,10 +64,15 @@ python_install_all() {
 	distutils-r1_python_install_all
 	dodoc doc/ReadMe*.txt doc/TODO contrib/mergetools.rc
 	if use doc ; then
-		dohtml -r doc/build/html/
+		docinto html
+		dodoc -r doc/build/html/
 	fi
 	newicon -s scalable icons/scalable/apps/thg.svg thg_logo.svg
 	domenu contrib/thg.desktop
+
+	# Remove file that collides with >=mercurial-4.0 (bug #599266).
+	rm "${ED}"/usr/$(get_libdir)/${EPYTHON}/site-packages/hgext3rd/__init__.py \
+		|| die
 }
 
 pkg_postinst() {
