@@ -364,27 +364,22 @@ python_gen_useflags() {
 python_gen_cond_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
-	local matches=()
-
+	local impl matches=()
 	local dep=${1}
 	shift
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern; do
-			if [[ ${impl} == ${pattern} ]]; then
-				# substitute ${PYTHON_USEDEP} if used
-				# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
-				#  the code is run at most once)
-				if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-					local usedep=$(python_gen_usedep "${@}")
-					dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
-				fi
-
-				matches+=( "python_targets_${impl}? ( ${dep} )" )
-				break
+		if _python_impl_matches "${impl}" "${@}"; then
+			# substitute ${PYTHON_USEDEP} if used
+			# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
+			#  the code is run at most once)
+			if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
+				local usedep=$(python_gen_usedep "${@}")
+				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 			fi
-		done
+
+			matches+=( "python_targets_${impl}? ( ${dep} )" )
+		fi
 	done
 
 	echo "${matches[@]}"
