@@ -17,7 +17,6 @@
   <flag name="cuda">Enable CUDA device discovery</flag>
   <flag name="gl">Enable GL display device discovery (NVCtrl)</flag>
   <flag name="numa">Add support for numa memory allocation</flag>
-  <flag name="opencl">Enable OpenCL device discovery (AMD only)</flag>
   <flag name="pci">Enable PCI device discovery using libpci</flag>
   <flag name="plugins">Build hwloc components as plugins so that the hwloc core library does not directly depend on their dependencies (for instance the libpci library)</flag>
 </use>
