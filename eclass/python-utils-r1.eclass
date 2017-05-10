@@ -149,6 +149,30 @@ _python_set_impls() {
 	fi
 }
 
+# @FUNCTION: _python_impl_matches
+# @USAGE: <impl> <pattern>...
+# @INTERNAL
+# @DESCRIPTION:
+# Check whether the specified <impl> matches at least one
+# of the patterns following it. Return 0 if it does, 1 otherwise.
+#
+# <impl> should be in PYTHON_COMPAT form. The patterns are fnmatch-style
+# patterns.
+_python_impl_matches() {
+	[[ ${#} -ge 2 ]] || die "${FUNCNAME}: takes at least 2 parameters"
+
+	local impl=${1} pattern
+	shift
+
+	for pattern; do
+		if [[ ${impl} == ${pattern} ]]; then
+			return 0
+		fi
+	done
+
+	return 1
+}
+
 # @ECLASS-VARIABLE: PYTHON
 # @DEFAULT_UNSET
 # @DESCRIPTION:
