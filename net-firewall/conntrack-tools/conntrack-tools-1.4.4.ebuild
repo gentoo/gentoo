@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils linux-info
+inherit autotools eutils flag-o-matic linux-info
 
 DESCRIPTION="Connection tracking userspace tools"
 HOMEPAGE="http://conntrack-tools.netfilter.org"
@@ -64,6 +64,11 @@ src_prepare() {
 	sed -i -e 's:/var/lock:/run/lock:' doc/stats/conntrackd.conf || die
 
 	eautoreconf
+}
+
+src_configure() {
+	append-ldflags -Wl,-z,lazy
+	econf
 }
 
 src_compile() {
