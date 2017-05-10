@@ -601,12 +601,9 @@ python_setup() {
 
 	local best_impl patterns=( "${@-*}" )
 	_python_try_impl() {
-		local pattern
-		for pattern in "${patterns[@]}"; do
-			if [[ ${EPYTHON} == ${pattern} ]]; then
-				best_impl=${EPYTHON}
-			fi
-		done
+		if _python_impl_matches "${impl}" "${patterns[@]}"; then
+			best_impl=${EPYTHON}
+		fi
 	}
 	python_foreach_impl _python_try_impl
 	unset -f _python_try_impl
