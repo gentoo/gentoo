@@ -12,7 +12,7 @@ EGIT_BRANCH="urt"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+altgamma +client +curl debug mumble openal +opus server +sdl voip vorbis"
+IUSE="+altgamma +client +curl debug mumble openal +opus server voip vorbis"
 REQUIRED_USE=" || ( client server )"
 
 PATCHES=( "${FILESDIR}"/${P}-respect_CFLAGS.patch )
@@ -22,11 +22,7 @@ RDEPEND="
 	client? (
 		virtual/opengl
 		openal? ( media-libs/openal )
-		sdl? ( media-libs/libsdl[X,sound,joystick,opengl,video] )
-		!sdl? ( x11-libs/libX11
-			x11-libs/libXext
-			x11-libs/libXxf86dga
-			x11-libs/libXxf86vm )
+		media-libs/libsdl2[X,sound,joystick,opengl,video]
 		vorbis? ( media-libs/libogg
 			media-libs/libvorbis )
 		opus? ( media-libs/opusfile )
@@ -67,8 +63,6 @@ src_compile() {
 		USE_YACC=0 \
 		BASEGAME="q3ut4"\
 		BASEGAME_CFLAGS="${CFLAGS}" \
-		USE_SDL=$(buildit sdl) \
-		USE_SDL_DLOPEN=$(buildit sdl) \
 		USE_OPENAL=$(buildit openal) \
 		USE_OPENAL_DLOPEN=$(buildit openal) \
 		USE_CURL=$(buildit curl) \
