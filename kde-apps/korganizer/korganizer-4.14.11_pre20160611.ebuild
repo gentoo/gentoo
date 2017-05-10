@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="Organizational assistant, providing calendars and other similar functionality"
 HOMEPAGE="https://www.kde.org/applications/office/korganizer/"
 
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="

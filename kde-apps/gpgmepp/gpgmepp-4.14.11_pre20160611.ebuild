@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="C++ bindings for gpgme"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="LGPL-2.1"
 IUSE="debug"
 
