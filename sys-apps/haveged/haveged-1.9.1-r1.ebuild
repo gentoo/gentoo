@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils systemd
+inherit eutils systemd
 
 DESCRIPTION="A simple entropy daemon using the HAVEGE algorithm"
 HOMEPAGE="http://www.issihosts.com/haveged/"
@@ -22,18 +22,15 @@ RDEPEND="
 # threads are broken right now, but eventually
 # we should add $(use_enable threads)
 src_configure() {
-	local myeconfargs=(
+	econf \
 		--bindir=/usr/sbin
 		--enable-nistest
 		--disable-static
 		--disable-threads
-	)
-
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
+	emake DESTDIR="${D}" install
 
 	# Install gentoo ones instead
 	newinitd "${FILESDIR}"/haveged-init.d.3 haveged
