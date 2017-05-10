@@ -38,6 +38,6 @@ src_compile() {
 src_install() {
 	pushd src/${EGO_PN%/*} || die
 	dobin out/minikube out/localkube
-	dodoc CHANGELOG.md DRIVERS.md README.md ROADMAP.md
+	dodoc -r docs CHANGELOG.md README.md
 	popd || die
 }
