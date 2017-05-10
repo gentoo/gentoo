@@ -416,22 +416,17 @@ python_gen_cond_dep() {
 python_gen_impl_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
-	local matches=()
-
+	local impl matches=()
 	local PYTHON_REQ_USE=${1}
 	shift
 
 	local patterns=( "${@-*}" )
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern in "${patterns[@]}"; do
-			if [[ ${impl} == ${pattern} ]]; then
-				local PYTHON_PKG_DEP
-				python_export "${impl}" PYTHON_PKG_DEP
-				matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
-				break
-			fi
-		done
+		if _python_impl_matches "${impl}" "${patterns[@]}"; then
+			local PYTHON_PKG_DEP
+			python_export "${impl}" PYTHON_PKG_DEP
+			matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
+		fi
 	done
 
 	echo "${matches[@]}"
