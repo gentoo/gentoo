@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
+
+inherit autotools multilib-minimal
 
 MY_P=${PN}-${PV//./_}
 DESCRIPTION="Implementation for atomic memory update operations"
@@ -23,6 +24,6 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	econf --docdir="${EPREFIX}"/usr/share/doc/${PF}
+multilib_src_configure() {
+	ECONF_SOURCE=${S} econf
 }
