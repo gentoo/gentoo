@@ -4272,7 +4272,7 @@ dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
 dev-java/laf-plugin 0.2-r1 0.2-r2 1.1-r1: Look'n'feel Java library
 dev-java/ldapsdk 4.1.7-r4: Netscape Directory SDK for Java
-dev-java/leiningen-bin 2.7.0 2.7.1: Automate Clojure projects without setting your hair on fire
+dev-java/leiningen-bin 2.7.0 2.7.1-r1: Automate Clojure projects without setting your hair on fire
 dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife for OSGi
 dev-java/libmatthew-java 0.7.2-r1: A selection of libraries for Java
 dev-java/libmso 0.1: Java library to detect printers
@@ -10616,7 +10616,7 @@ dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts
 dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 2.2.9: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
-dev-vcs/mercurial 3.8.4 4.1.2 4.1.3 9999: Scalable distributed SCM
+dev-vcs/mercurial 3.8.4 4.1.3 4.2 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20160123 1.20170129 1.99999999: Multiple Repository management tool
@@ -10640,7 +10640,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.2.1-r1 2.2.2 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 3.8.4 3.9.2 4.0.2 4.1.2 4.1.3 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.8.4 4.1.3 4.2 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
