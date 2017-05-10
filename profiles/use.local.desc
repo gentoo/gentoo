@@ -7418,7 +7418,6 @@ sys-apps/hwids:usb - Install the usb.ids database
 sys-apps/hwloc:cuda - Enable CUDA device discovery
 sys-apps/hwloc:gl - Enable GL display device discovery (NVCtrl)
 sys-apps/hwloc:numa - Add support for numa memory allocation
-sys-apps/hwloc:opencl - Enable OpenCL device discovery (AMD only)
 sys-apps/hwloc:pci - Enable PCI device discovery using libpci
 sys-apps/hwloc:plugins - Build hwloc components as plugins so that the hwloc core library does not directly depend on their dependencies (for instance the libpci library)
 sys-apps/ibm-powerpc-utils:rtas - Add support for the Run Time Abstraction Services (RTAS)
