@@ -43,6 +43,7 @@ RDEPEND="
 	dev-ros/moveit_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/libxml2
 	>=sci-electronics/gazebo-7:=
+	dev-libs/protobuf:=
 	dev-games/ogre
 	sci-libs/pcl
 	dev-libs/boost:=
