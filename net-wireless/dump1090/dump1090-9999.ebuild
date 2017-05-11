@@ -1,16 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs eutils
 
 DESCRIPTION="simple Mode S decoder for RTLSDR devices"
-HOMEPAGE="https://github.com/antirez/dump1090"
+#Original repo
+#HOMEPAGE="https://github.com/antirez/dump1090"
+#Repo that has actually been touched recenly
+HOMEPAGE="https://github.com/mutability/dump1090"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/antirez/dump1090.git"
+	EGIT_REPO_URI="git://github.com/mutability/dump1090.git"
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~x86"
@@ -22,25 +25,26 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="net-wireless/rtl-sdr"
+RDEPEND="net-wireless/rtl-sdr
+		virtual/libusb:1"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	epatch "${FILESDIR}"/gmap_usr_share_mv.patch
-}
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
-		CFLAGS="$($(tc-getPKG_CONFIG) --cflags librtlsdr)" \
-		LIBS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs librtlsdr) -lm -lpthread" \
-		all
+		UNAME="Linux"
+		CFLAGS="$($(tc-getPKG_CONFIG) --cflags librtlsdr) ${CFLAGS}" \
+		EXTRACFLAGS="-DHTMLPATH='/usr/share/dump1090/html'" \
+		LIBS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs librtlsdr) -lm -lpthread"
 }
 
 src_install() {
 	dobin ${PN}
-	dodoc TODO README.md
+	dobin view1090
+	dodoc README.md
 
-	insinto /usr/share/${PN}
-	doins gmap.html
-	doins tools/debug.html
+	insinto /usr/share/${PN}/html
+	doins -r public_html/*
+
+	insinto /usr/share/${PN}/tools
+	doins -r tools/*
 }
