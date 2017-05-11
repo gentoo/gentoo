@@ -1,0 +1,59 @@
+From 5679a9daa463bd038883afe69332ef3807c41442 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 1 Feb 2017 18:48:02 +0100
+Subject: [PATCH] Include sys/sysmacros.h for major(), minor() when available
+
+Include sys/sysmacros.h explicitly as that will be required by future
+glibc versions to expose major() and minor() macros.
+
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1329798
+---
+ build/moz.configure/headers.configure | 4 ++++
+ config/system-headers                 | 1 +
+ xpcom/io/nsLocalFileUnix.cpp          | 3 +++
+ 3 files changed, 8 insertions(+)
+
+diff --git a/build/moz.configure/headers.configure b/build/moz.configure/headers.configure
+index 52ffa2f89..53ca44ca4 100644
+--- a/build/moz.configure/headers.configure
++++ b/build/moz.configure/headers.configure
+@@ -57,6 +57,10 @@ check_headers(
+ check_header('sys/queue.h',
+              when=non_msvc_compiler)
+ 
++# sys/sysmacros.h may be necessary for major()/minor() macros
++check_header('sys/sysmacros.h',
++             when=non_msvc_compiler)
++
+ check_headers(
+     'sys/types.h',
+     'netinet/in.h',
+diff --git a/config/system-headers b/config/system-headers
+index 60788e788..984e86933 100644
+--- a/config/system-headers
++++ b/config/system-headers
+@@ -1055,6 +1055,7 @@ sys/statvfs.h
+ sys/syscall.h
+ sys/sysctl.h
+ sys/sysinfo.h
++sys/sysmacros.h
+ sys/sysmp.h
+ sys/syssgi.h
+ sys/system_properties.h
+diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
+index 6f13e2a7d..be7bf4de2 100644
+--- a/xpcom/io/nsLocalFileUnix.cpp
++++ b/xpcom/io/nsLocalFileUnix.cpp
+@@ -30,6 +30,9 @@
+ #define BLOCK_SIZE 1024 /* kernel block size */
+ #endif
+ #endif
++#if defined(HAVE_SYS_SYSMACROS_H)
++#include <sys/sysmacros.h>
++#endif
+ 
+ #include "xpcom-private.h"
+ #include "nsDirectoryServiceDefs.h"
+-- 
+2.11.0
+
