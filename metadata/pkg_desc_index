@@ -14295,7 +14295,7 @@ net-analyzer/icinga-web 1.14.0: Icinga Web - new Web Interface
 net-analyzer/icinga2 2.5.4-r1 2.6.2 2.6.3 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
-net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
+net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4 1.0_pre4-r2: display bandwidth usage on an interface
 net-analyzer/ike-scan 1.9-r1 1.9-r2: A utility for finding, fingerprinting and testing IKE VPN servers
 net-analyzer/ipaudit 1.0_beta2: IPAudit monitors network activity on a network by host, protocol and port
