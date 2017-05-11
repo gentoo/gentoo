@@ -3,6 +3,11 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>bgo@9dt.de</email>
+		<name>Vladimir Datsevich</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>
