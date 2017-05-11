@@ -6,7 +6,7 @@ GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils vala readme.gentoo-r1
+inherit autotools eutils xdg-utils vala readme.gentoo-r1
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="http://spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
@@ -90,6 +90,9 @@ src_configure() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	addpredict /dev
+
+	# Clean up environment, bug #586642
+	xdg_environment_reset
 
 	local myconf
 
