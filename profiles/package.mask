@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (11 May 2017)
+# This is nice to have in the tree for testing, but there
+# are random build failures with USE=jit, so it's not ready
+# for mass consumption just yet.
+=dev-scheme/racket-6.9
+
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
 # Drop mask after migration of existing wxGTK:3.0 users
