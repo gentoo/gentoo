@@ -1367,7 +1367,7 @@ app-emulation/virt-manager 1.4.0-r3 1.4.1 9999: A graphical tool for administeri
 app-emulation/virt-viewer 3.1 4.0 5.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.96 0.1.117 0.1.118 0.1.126: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 5.0.16-r1 5.0.32 5.0.36 5.0.40 5.1.18 5.1.22: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox 5.0.16-r1 5.0.32 5.0.36 5.0.40 5.1.18 5.1.22-r1: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 5.0.16 5.0.32 5.0.36 5.0.40 5.1.18 5.1.22: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-bin 5.0.16.105871-r1 5.0.32.112930 5.0.36.114008 5.0.40.115130 5.1.18.114002 5.1.22.115126: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-extpack-oracle 5.0.16.105871 5.0.32.112930 5.0.36.114008 5.0.40.115130 5.1.18.114002 5.1.22.115126: PUEL extensions for VirtualBox
