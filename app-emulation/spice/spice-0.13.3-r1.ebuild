@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-PYTHON_COMPAT=( python2_7 python3_4 )
-
-inherit eutils python-any-r1
+inherit autotools ltprune python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="http://spice-space.org/"
@@ -14,7 +13,7 @@ SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl sasl smartcard static-libs"
+IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
@@ -24,19 +23,27 @@ RDEPEND="
 	sys-libs/zlib[static-libs(+)?]
 	virtual/jpeg:0=[static-libs(+)?]
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
-	!libressl? ( dev-libs/openssl:0[static-libs(+)?] )
-	libressl? ( dev-libs/libressl[static-libs(+)?] )
-	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )"
-
-DEPEND="
-	~app-emulation/spice-protocol-0.12.11
+	!libressl? ( dev-libs/openssl:0=[static-libs(+)?] )
+	libressl? ( dev-libs/libressl:0=[static-libs(+)?] )
+	lz4? ( app-arch/lz4:0=[static-libs(+)?] )
+	smartcard? ( >=app-emulation/libcacard-0.1.2 )
+	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
+	gstreamer? ( media-libs/gstreamer:1.0 )
+"
+DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
+	>=app-emulation/spice-protocol-0.12.12
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
 	smartcard? ( app-emulation/qemu[smartcard] )
-	${RDEPEND}"
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.13.3-skip_faulty_lz4_check.patch
+)
 
 python_check_deps() {
 	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
@@ -47,28 +54,32 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
 }
 
-# maintainer notes:
-# * opengl support is currently broken
-
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/0.11.0-gold.patch \
-		"${FILESDIR}"/0.12.8-upstream-fix.patch
+	default
 
-	epatch_user
+	eautoreconf
 }
 
+# maintainer notes:
+# * opengl support is currently broken
 src_configure() {
 	# Prevent sandbox violations, bug #586560
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	addpredict /dev
 
-	econf \
-		$(use_enable static-libs static) \
-		$(use_with sasl) \
-		$(use_enable smartcard) \
+	xdg_environment_reset
+
+	local myconf="
+		$(use_enable static-libs static)
+		$(use_enable lz4)
+		$(use_with sasl)
+		$(use_enable smartcard)
+		--enable-gstreamer=$(usex gstreamer "1.0" "no")
+		--enable-celt051
 		--disable-gui
+		"
+	econf ${myconf}
 }
 
 src_compile() {
@@ -83,4 +94,9 @@ src_compile() {
 src_install() {
 	default
 	use static-libs || prune_libtool_files
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
