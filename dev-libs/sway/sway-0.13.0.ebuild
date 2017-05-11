@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
 
-RDEPEND=">=dev-libs/wlc-0.0.5[systemd=]
+RDEPEND=">=dev-libs/wlc-0.0.8[systemd=]
 	dev-libs/json-c
 	dev-libs/libpcre
 	dev-libs/libinput
@@ -30,8 +30,6 @@ RDEPEND=">=dev-libs/wlc-0.0.5[systemd=]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	app-text/asciidoc"
-
-PATCHES=( "${FILESDIR}/sway-0.11-r3-keep-cap.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -54,8 +52,7 @@ src_configure() {
 		-Dzsh-completions=$(usex zsh-completion)
 
 		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
-		-DLD_LIBRARY_PATH="${EPREFIX}/usr/lib"
-		-DGIT_COMMIT_HASH="${PVR}" # specify version info, may change in future
+		-DVERSION="${PV}"
 	)
 
 	cmake-utils_src_configure
