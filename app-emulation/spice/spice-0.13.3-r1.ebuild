@@ -65,7 +65,7 @@ src_configure() {
 		$(use_enable lz4)
 		$(use_with sasl)
 		$(use_enable smartcard)
-		$(usex gstreamer "1.0" "no")
+		--enable-gstreamer=$(usex gstreamer "1.0" "no")
 		--enable-celt051
 		--disable-gui
 		"
