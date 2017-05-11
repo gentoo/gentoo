@@ -1,13 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 GCONF_DEBUG="no"
-WANT_AUTOMAKE="1.12"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils vala readme.gentoo-r1
+inherit autotools eutils xdg-utils vala readme.gentoo-r1
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="http://spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
@@ -65,7 +64,7 @@ RDEPEND="
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	>=app-emulation/spice-protocol-0.12.11
+	>=app-emulation/spice-protocol-0.12.12
 	dev-perl/Text-CSV
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40.0
@@ -74,15 +73,14 @@ DEPEND="${RDEPEND}
 	vala? ( $(vala_depend) )
 "
 
-# Hard-deps while building from git:
-# dev-lang/vala:0.14
-# dev-lang/perl
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.33-sys-sysmacros.h.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-x11-libs.patch
-	epatch_user
+	default
 
-	AT_NO_RECURSIVE="yes" eautoreconf
+	eautoreconf
 
 	use vala && vala_src_prepare
 }
@@ -92,6 +90,9 @@ src_configure() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	addpredict /dev
+
+	# Clean up environment, bug #586642
+	xdg_environment_reset
 
 	local myconf
 
