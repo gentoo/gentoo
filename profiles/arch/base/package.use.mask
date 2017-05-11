@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.org> (11 May 2017)
+# the needed deps are amd64/x86 only
+net-analyzer/metasploit nexpose openvas
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
 app-admin/rsyslog mdblookup
