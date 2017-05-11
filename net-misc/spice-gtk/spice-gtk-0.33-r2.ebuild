@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
@@ -73,14 +73,14 @@ DEPEND="${RDEPEND}
 	vala? ( $(vala_depend) )
 "
 
-# Hard-deps while building from git:
-# dev-lang/vala:0.14
-# dev-lang/perl
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.33-sys-sysmacros.h.patch
+)
 
 src_prepare() {
-	epatch_user
+	default
 
-	AT_NO_RECURSIVE="yes" eautoreconf
+	eautoreconf
 
 	use vala && vala_src_prepare
 }
