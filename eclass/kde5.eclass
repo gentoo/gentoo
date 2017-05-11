@@ -544,6 +544,7 @@ kde5_src_prepare() {
 
 		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
 			punt_bogus_dep KF5 DocTools
+			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
