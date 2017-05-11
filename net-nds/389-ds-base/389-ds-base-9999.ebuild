@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,12 @@ inherit user eutils multilib flag-o-matic autotools git-r3
 DESCRIPTION="389 Directory Server (core librares and daemons )"
 HOMEPAGE="http://port389.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.fedorahosted.org/git/389/ds.git"
+EGIT_REPO_URI="https://pagure.io/389-ds-base.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise +presence kerberos selinux"
+IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise kerberos selinux test"
 
 # Pinned to db:4.8 as it is the current stable, can change to a later db version < 6 when they stabilize.
 # The --with-db-inc line in econf will need to be updated as well when changing db version.
@@ -34,6 +34,8 @@ COMMON_DEPEND="
 	net-nds/openldap
 	sys-libs/pam
 	sys-libs/zlib
+	dev-libs/libevent
+	dev-util/cmocka
 	kerberos? ( >=app-crypt/mit-krb5-1.7-r100[openldap] )"
 
 DEPEND="${COMMON_DEPEND}
@@ -67,10 +69,9 @@ src_configure() {
 		$(use_enable autobind) \
 		$(use_enable dna) \
 		$(use_enable bitwise) \
-		$(use_enable presence) \
 		$(use_with kerberos) \
-		$(use_enable debug) \
 		$(use_enable auto-dn-suffix) \
+		$(use_enable test cmocka) \
 		--with-initddir=no \
 		--enable-maintainer-mode \
 		--with-fhs \
@@ -84,12 +85,18 @@ src_configure() {
 src_compile() {
 	default
 	if use doc; then
-		doxygen slapi.doxy || die "cannot run doxygen"
+		doxygen docs/slapi.doxy || die "cannot run doxygen"
 	fi
 }
 
+src_test () {
+	# -j1 is a temporary workaround for bug #605432
+	emake -j1 check
+}
+
 src_install () {
-	emake DESTDIR="${D}" install
+	# -j1 is a temporary workaround for bug #605432
+	emake -j1 DESTDIR="${D}" install
 
 	# Install gentoo style init script
 	# Get these merged upstream
