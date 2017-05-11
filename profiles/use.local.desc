@@ -3395,6 +3395,7 @@ kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configur
 kde-apps/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kdebase-runtime-meta:kwallet - Install kde-apps/kwalletd on a minimal setup for migration purposes
 kde-apps/kdegraphics-mobipocket:thumbnail - Enables thumbnail generation
+kde-apps/kdemultimedia-meta:cdrom - Include packages for optical discs
 kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenlive:freesound - Enable freesound.org credentials support via dev-qt/qtwebkit to download files
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
