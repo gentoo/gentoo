@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="A lightweight, speed optimized color management engine"
 HOMEPAGE="http://www.littlecms.com/"
@@ -23,6 +23,11 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/lcms2-${PV}"
 
 PATCHES=( "${FILESDIR}/${P}-CVE-2016-10165.patch" )
+
+src_prepare() {
+	default
+	elibtoolize  # for Prefix/Solaris
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
