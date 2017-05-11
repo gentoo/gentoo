@@ -11790,7 +11790,7 @@ kde-apps/drkonqi 16.04.3: KDE crash handler, gives the user feedback if a progra
 kde-apps/eventviews 17.04.0: Calendar viewer for KDE PIM
 kde-apps/ffmpegthumbs 16.12.3 17.04.0: FFmpeg based thumbnail generator for video files
 kde-apps/filelight 16.12.3 17.04.0: Visualise disk usage with interactive map of concentric, segmented rings
-kde-apps/gpgmepp 4.14.11_pre20160611 16.08.3: C++ bindings for gpgme
+kde-apps/gpgmepp 4.14.11_pre20160611: C++ bindings for gpgme
 kde-apps/granatier 16.12.3 17.04.0: KDE Bomberman game
 kde-apps/grantlee-editor 17.04.0: Utilities and tools to manage themes in KDE PIM applications
 kde-apps/grantleetheme 17.04.0: Library for Grantlee plugins
@@ -11999,7 +11999,7 @@ kde-apps/kturtle 16.12.3 17.04.0: Educational programming environment using the 
 kde-apps/kubrick 16.12.3 17.04.0: A game based on the "Rubik's Cube" puzzle
 kde-apps/kuiserver 16.04.3: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 16.04.3: KDE: Plugins to manage filtering URIs
-kde-apps/kwalletd 16.04.3 16.04.3-r1: KDE Password Server
+kde-apps/kwalletd 16.04.3-r1: KDE Password Server
 kde-apps/kwalletmanager 15.04.3-r1 16.12.3 17.04.0: KDE Wallet management tool
 kde-apps/kwave 16.12.3 17.04.0: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
 kde-apps/kwordquiz 16.12.3 17.04.0: A powerful flashcard and vocabulary learning program
@@ -12123,7 +12123,7 @@ kde-frameworks/kservice 5.29.0 5.33.0: Advanced plugin and service introspection
 kde-frameworks/ktexteditor 5.29.0 5.33.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.29.0 5.33.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.29.0 5.33.0: Framework for converting units
-kde-frameworks/kwallet 5.29.0 5.29.0-r1 5.33.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwallet 5.29.0-r1 5.33.0: Framework providing desktop-wide storage for passwords
 kde-frameworks/kwayland 5.29.0 5.33.0: Qt-style client and server library wrapper for Wayland libraries
 kde-frameworks/kwidgetsaddons 5.29.0 5.33.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.29.0 5.33.0: Framework providing access to properties and features of the window manager
@@ -12290,7 +12290,7 @@ mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
 mail-client/thunderbird 45.8.0 52.1.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 45.8.0 52.1.0: Thunderbird Mail Client
-mail-client/trojita 0.7-r1 0.7-r2 9999: A Qt IMAP e-mail client
+mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.9.1-r2 2.10.1 2.10.1-r4 2.11.0-r2 2.11.0-r3: High-performance interface between the MTA and content checkers
