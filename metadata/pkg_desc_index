@@ -9306,7 +9306,7 @@ dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/amatch 0.3.0: Approximate Matching Extension for Ruby
 dev-ruby/ammeter 1.1.4 1.1.4-r1: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
-dev-ruby/amq-protocol 1.9.2 2.0.1 2.0.1-r1 2.1.0: An AMQP 0.9.1 serialization library for Ruby
+dev-ruby/amq-protocol 1.9.2 2.1.0 2.2.0: An AMQP 0.9.1 serialization library for Ruby
 dev-ruby/amqp 1.6.0 1.7.0: AMQP client implementation in Ruby/EventMachine
 dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all the time
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
@@ -9410,7 +9410,7 @@ dev-ruby/d3_rails 3.5.16 3.5.17 4.1.1: Ruby on Rails integration for the Javascr
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3 1.2.4: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.6: A high performance pure Ruby client for accessing memcached servers
-dev-ruby/database_cleaner 1.5.3 1.6.0: Strategies for cleaning databases
+dev-ruby/database_cleaner 1.5.3 1.6.0 1.6.1: Strategies for cleaning databases
 dev-ruby/date_validator 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 2.0.8 2.0.13 3.0.8 3.1.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/ddplugin 1.0.1: Provides plugin management for Ruby projects
@@ -9615,7 +9615,7 @@ dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pca
 dev-ruby/nexpose 5.3.1 5.3.2: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.2.1 1.2.1-r1 2.0.0: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.6.8.1 1.7.0 1.7.0.1 1.7.1: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.6.8.1 1.7.0 1.7.0.1 1.7.1 1.7.2: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7 1.4.9: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -18261,7 +18261,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7 2.2.9: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.1.2: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.1.2 5.1.4: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
