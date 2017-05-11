@@ -151,6 +151,7 @@ src_prepare() {
 	rm -f "${WORKDIR}"/firefox/1000_gentoo_install_dir.patch
 	rm -f "${WORKDIR}"/firefox/2000-firefox_gentoo_install_dirs.patch
 	eapply "${WORKDIR}"/firefox
+	eapply "${FILESDIR}/firefox-Include-sys-sysmacros.h-for-major-minor-when-availab.patch"
 	popd &>/dev/null || die
 
 	# ugly hackaround for system-harfbuzz
