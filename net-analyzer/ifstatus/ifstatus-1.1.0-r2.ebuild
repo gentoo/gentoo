@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils toolchain-funcs
 
-KEYWORDS="amd64 arm ~ppc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 DESCRIPTION="A simple CLI program for displaying network statistics in real time"
 HOMEPAGE="http://ifstatus.sourceforge.net/"
@@ -23,6 +23,7 @@ S="${WORKDIR}/${PN}"
 PATCHES=(
 	"${FILESDIR}/${P}-gcc43.patch"
 	"${FILESDIR}/${P}-tinfo.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
 )
 
 src_prepare() {
