@@ -1,0 +1,13 @@
+DEFINED_PHASES=postinst prepare
+DEPEND=>=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=suid, sgid file and directory checking
+EAPI=6
+HOMEPAGE=http://freshmeat.net/projects/sxid
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/mailx
+SLOT=0
+SRC_URI=http://linukz.org/download/sxid-4.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=e97b95e9d109e47d451ea6ca7c677434
