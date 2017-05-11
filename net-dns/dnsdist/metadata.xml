@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email></email>
+	</maintainer>
+	<longdescription lang="en">
+	</longdescription>
+	<use>
+		<flag name="clang">Use Clang compiler instead of GCC</flag>
+		<flag name="dnscrypt">Enable DNSCRypt support</flag>
+		<flag name="readline">Enable support for libreadline, a GNU line-editing library that almost everyone wants</flag>
+		<flag name="libedit">Use the libedit library (replacement for readline)</flag>
+		<flag name="sodium">Use dev-libs/libsodium for cryptography</flag>
+		<flag name="protobuf">Enable support for dev-libs/protobuf</flag>
+		<flag name="re2">Use the dev-libs/re2 regular expression library</flag>
+		<flag name="luajit">Use dev-lang/luajit instead of dev-lang/lua</flag>	
+	</use>	
+</pkgmetadata>
