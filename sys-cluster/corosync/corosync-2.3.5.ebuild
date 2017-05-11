@@ -13,7 +13,7 @@ SRC_URI="http://build.clusterlabs.org/corosync/releases/${P}.tar.gz"
 
 LICENSE="BSD-2 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="doc infiniband static-libs systemd xml"
 
 # TODO: support those new configure flags
