@@ -17,7 +17,7 @@ else
 	##Tags https://github.com/rapid7/metasploit-framework/releases
 	MY_PV=${PV/_p/-}
 	SRC_URI="https://github.com/rapid7/metasploit-framework/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm"
 	RUBY_S="${PN}-framework-${MY_PV}"
 	inherit versionator
 	SLOT="$(get_version_component_range 1).$(get_version_component_range 2)"
@@ -47,7 +47,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/metasm:1.0.2
 	>=dev-ruby/metasploit_data_models-2.0.0
 	dev-ruby/meterpreter_bins:0.0.22
-	dev-ruby/metasploit-payloads:1.2.28
+	dev-ruby/metasploit-payloads:1.2.24
 	dev-ruby/metasploit_payloads-mettle:0.1.9
 	>=dev-ruby/metasploit-credential-2.0.0
 	>=dev-ruby/metasploit-concern-2.0.0
@@ -180,8 +180,11 @@ all_ruby_prepare() {
 	#Gemfile.lock contains the versions tested by the msf team but not the hard requirements
 	#we regen this file in each_ruby_prepare
 	rm Gemfile.lock
+
 	#The Gemfile contains real known deps
 	sed -i "/gem 'fivemat'/s/, '1.2.1'//" Gemfile || die
+	#use released packetfu
+	sed -i "s/1.1.13.pre/1.1.13/" metasploit-framework.gemspec || die
 	#git gems are only for ruby24 support and we are not there yet
 	sed -i "/git:/d" Gemfile || die
 
