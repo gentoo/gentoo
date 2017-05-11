@@ -188,6 +188,7 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}/${P}-opengl_dlopen_fix.patch" #616238
 
 	eapply_user
 }

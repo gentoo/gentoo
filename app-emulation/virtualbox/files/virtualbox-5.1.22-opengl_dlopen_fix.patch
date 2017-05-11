@@ -1,0 +1,167 @@
+Index: VirtualBox-5.1.22/src/VBox/HostDrivers/Support/posix/SUPR3HardenedMain-posix.cpp
+===================================================================
+--- VirtualBox-5.1.22/src/VBox/HostDrivers/Support/posix/SUPR3HardenedMain-posix.cpp	(revision 115126)
++++ VirtualBox-5.1.22/src/VBox/HostDrivers/Support/posix/SUPR3HardenedMain-posix.cpp	(revision 115307)
+@@ -341,6 +341,7 @@
+      * Patch 64-bit hosts.
+      */
+     uint32_t cRipRelMovs = 0;
++    uint32_t cRelCalls = 0;
+ 
+     /* Just use the disassembler to skip 12 bytes or more, we might need to
+        rewrite mov instructions using RIP relative addressing. */
+@@ -349,7 +350,8 @@
+         cbInstr = 1;
+         int rc = DISInstr(pbTarget + offJmpBack, DISCPUMODE_64BIT, &Dis, &cbInstr);
+         if (   RT_FAILURE(rc)
+-            || (Dis.pCurInstr->fOpType & DISOPTYPE_CONTROLFLOW)
++            || (   Dis.pCurInstr->fOpType & DISOPTYPE_CONTROLFLOW
++                && Dis.pCurInstr->uOpcode != OP_CALL)
+             || (   Dis.ModRM.Bits.Mod == 0
+                 && Dis.ModRM.Bits.Rm  == 5 /* wrt RIP */
+                 && Dis.pCurInstr->uOpcode != OP_MOV))
+@@ -357,15 +359,23 @@
+ 
+         if (Dis.ModRM.Bits.Mod == 0 && Dis.ModRM.Bits.Rm == 5 /* wrt RIP */)
+             cRipRelMovs++;
++        if (   Dis.pCurInstr->uOpcode == OP_CALL
++            && (Dis.pCurInstr->fOpType & DISOPTYPE_RELATIVE_CONTROLFLOW))
++            cRelCalls++;
+ 
+         offJmpBack += cbInstr;
+         cbPatchMem += cbInstr;
+     }
+ 
++    /*
++     * Each relative call requires extra bytes as it is converted to a pushq imm32
++     * + mov [RSP+4], imm32 + a jmp qword [$+8 wrt RIP] to avoid clobbering registers.
++     */
++    cbPatchMem += cRelCalls * RT_ALIGN_32(13 + 6 + 8, 8);
+     cbPatchMem += 14; /* jmp qword [$+8 wrt RIP] + 8 byte address to jump to. */
+     cbPatchMem = RT_ALIGN_32(cbPatchMem, 8);
+ 
+-    /* Allocate suitable exectuable memory available. */
++    /* Allocate suitable executable memory available. */
+     bool fConvRipRelMovs = false;
+     uint8_t *pbPatchMem = supR3HardenedMainPosixExecMemAlloc(cbPatchMem, pbTarget, cRipRelMovs > 0);
+     if (!pbPatchMem)
+@@ -396,7 +406,8 @@
+         cbInstr = 1;
+         int rc = DISInstr(pbTarget + offInsn, DISCPUMODE_64BIT, &Dis, &cbInstr);
+         if (   RT_FAILURE(rc)
+-            || (Dis.pCurInstr->fOpType & DISOPTYPE_CONTROLFLOW))
++            || (   Dis.pCurInstr->fOpType & DISOPTYPE_CONTROLFLOW
++                && Dis.pCurInstr->uOpcode != OP_CALL))
+             return VERR_SUPLIB_UNEXPECTED_INSTRUCTION;
+ 
+         if (   Dis.ModRM.Bits.Mod == 0
+@@ -439,6 +450,34 @@
+                 pbPatchMem   += sizeof(int32_t);
+             }
+         }
++        else if (   Dis.pCurInstr->uOpcode == OP_CALL
++                 && (Dis.pCurInstr->fOpType & DISOPTYPE_RELATIVE_CONTROLFLOW))
++        {
++            /* Convert to absolute jump. */
++            uintptr_t uAddr = (uintptr_t)&pbTarget[offInsn + cbInstr] + (intptr_t)Dis.Param1.uValue;
++
++            /* Skip the push instructions till the return address is known. */
++            uint8_t *pbPatchMemPush = pbPatchMem;
++            pbPatchMem += 13;
++
++            *pbPatchMem++ = 0xff; /* jmp qword [$+8 wrt RIP] */
++            *pbPatchMem++ = 0x25;
++            *(uint32_t *)pbPatchMem = (uint32_t)(RT_ALIGN_PT(pbPatchMem + 4, 8, uint8_t *) - (pbPatchMem + 4));
++            pbPatchMem = RT_ALIGN_PT(pbPatchMem + 4, 8, uint8_t *);
++            *(uint64_t *)pbPatchMem = uAddr;
++            pbPatchMem += sizeof(uint64_t);
++
++            /* Push the return address onto stack. Difficult on amd64 without clobbering registers... */
++            uintptr_t uAddrReturn = (uintptr_t)pbPatchMem;
++            *pbPatchMemPush++ = 0x68; /* push imm32 sign-extended as 64-bit*/
++            *(uint32_t *)pbPatchMemPush = RT_LO_U32(uAddrReturn);
++            pbPatchMemPush += sizeof(uint32_t);
++            *pbPatchMemPush++ = 0xc7;
++            *pbPatchMemPush++ = 0x44;
++            *pbPatchMemPush++ = 0x24;
++            *pbPatchMemPush++ = 0x04; /* movl [RSP+4], imm32 */
++            *(uint32_t *)pbPatchMemPush = RT_HI_U32(uAddrReturn);
++        }
+         else
+         {
+             memcpy(pbPatchMem, pbTarget + offInsn, cbInstr);
+Index: VirtualBox-5.1.22/src/VBox/HostDrivers/Support/SUPR3HardenedVerify.cpp
+===================================================================
+--- VirtualBox-5.1.22/src/VBox/HostDrivers/Support/SUPR3HardenedVerify.cpp	(revision 115126)
++++ VirtualBox-5.1.22/src/VBox/HostDrivers/Support/SUPR3HardenedVerify.cpp	(revision 115307)
+@@ -86,6 +86,9 @@
+ /** The max path length acceptable for a trusted path. */
+ #define SUPR3HARDENED_MAX_PATH      260U
+ 
++/** Enable to resolve symlinks using realpath() instead of cooking our own stuff. */
++#define SUP_HARDENED_VERIFY_FOLLOW_SYMLINKS_USE_REALPATH 1
++
+ #ifdef RT_OS_SOLARIS
+ # define dirfd(d) ((d)->d_fd)
+ #endif
+@@ -1091,7 +1094,8 @@
+ #endif
+ 
+ 
+-#if defined(RT_OS_DARWIN) || defined(RT_OS_LINUX)
++#ifndef SUP_HARDENED_VERIFY_FOLLOW_SYMLINKS_USE_REALPATH
++# if defined(RT_OS_DARWIN) || defined(RT_OS_LINUX)
+ /**
+  * Copies the error message to the error buffer and returns @a rc.
+  *
+@@ -1104,6 +1108,7 @@
+ {
+     return supR3HardenedSetErrorN(rc, pErrInfo, 1, pszMsg);
+ }
++# endif
+ #endif
+ 
+ 
+@@ -1893,7 +1898,9 @@
+     /*
+      * Verify each component from the root up.
+      */
++#ifndef SUP_HARDENED_VERIFY_FOLLOW_SYMLINKS_USE_REALPATH
+     uint32_t                iLoops = 0;
++#endif
+     SUPR3HARDENEDFSOBJSTATE FsObjState;
+     uint32_t                iComponent = 0;
+     while (iComponent < Info.cComponents)
+@@ -1915,6 +1922,24 @@
+             if (   RT_SUCCESS(rc)
+                 && S_ISLNK(FsObjState.Stat.st_mode))
+             {
++#if SUP_HARDENED_VERIFY_FOLLOW_SYMLINKS_USE_REALPATH /* Another approach using realpath() and verifying the result when encountering a symlink. */
++                char *pszFilenameResolved = realpath(pszFilename, NULL);
++                if (pszFilenameResolved)
++                {
++                    rc = supR3HardenedVerifyFile(pszFilenameResolved, hNativeFile, fMaybe3rdParty, pErrInfo);
++                    free(pszFilenameResolved);
++                    return rc;
++                }
++                else
++                {
++                    int iErr = errno;
++                    supR3HardenedError(VERR_ACCESS_DENIED, false /*fFatal*/,
++                                       "supR3HardenedVerifyFileFollowSymlinks: Failed to resolve the real path '%s': %s (%d)\n",
++                                       pszFilename, strerror(iErr), iErr);
++                    return supR3HardenedSetError4(VERR_ACCESS_DENIED, pErrInfo,
++                                                  "realpath failed for '", pszFilename, "': ", strerror(iErr));
++                }
++#else
+                 /* Don't loop forever. */
+                 iLoops++;
+                 if (iLoops < 8)
+@@ -1989,6 +2014,7 @@
+                 else
+                     return supR3HardenedSetError3(VERR_TOO_MANY_SYMLINKS, pErrInfo,
+                                                   "Too many symbolic links: '", pszFilename, "'");
++#endif
+             }
+         }
+         if (RT_FAILURE(rc))
