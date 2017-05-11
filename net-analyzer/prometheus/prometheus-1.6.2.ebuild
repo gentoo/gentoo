@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/prometheus/..."
 EGIT_COMMIT="v${PV}"
-PROMETHEUS_COMMIT="4666df5"
+PROMETHEUS_COMMIT="b38e977"
 ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -21,6 +21,8 @@ DEPEND=">=dev-lang/go-1.8
 	dev-util/promu"
 
 PROMETHEUS_HOME="/var/lib/prometheus"
+
+RESTRICT="test"
 
 pkg_setup() {
 	enewgroup prometheus
