@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michael Orlitzky <mjo@gentoo.org> (11 May 2017)
+# Neither of these packages has a clear license, and both are
+# unmaintained (and probably unused). No reverse dependencies,
+# either. See bugs 618130 and 618140. To be removed in 30 days.
+app-arch/undms
+app-arch/unlzx
+
+# Michael Orlitzky <mjo@gentoo.org> (11 May 2017)
 # This is nice to have in the tree for testing, but there
 # are random build failures with USE=jit, so it's not ready
 # for mass consumption just yet.
