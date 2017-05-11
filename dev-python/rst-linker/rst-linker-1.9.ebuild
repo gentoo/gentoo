@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -23,9 +23,11 @@ RDEPEND="
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
+		${RDEPEND}
+		dev-python/path-py[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
@@ -38,7 +40,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test || die "tests failed with ${EPYTHON}"
+	py.test --ignore=rst || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
