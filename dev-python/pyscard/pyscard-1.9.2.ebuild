@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1 eutils
 
@@ -18,7 +18,7 @@ IUSE=""
 
 RDEPEND="sys-apps/pcsc-lite"
 DEPEND="${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-lang/swig"
 
 # Fails
