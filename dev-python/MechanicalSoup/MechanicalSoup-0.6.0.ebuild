@@ -14,21 +14,20 @@ else
 	KEYWORDS="~amd64"
 fi
 
-DESCRIPTION="a python library for automating interaction with web sites"
+DESCRIPTION="A python library for automating interaction with web sites"
 HOMEPAGE="https://pypi.python.org/pypi/MechanicalSoup"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-COMMON_DEPEND="
-	>=dev-python/beautifulsoup-4.0
-	>=dev-python/requests-2.0
-	>=dev-python/six-1.4
+RDEPEND="
+	>=dev-python/beautifulsoup-4.0[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.4[${PYTHON_USEDEP}]
 "
 DEPEND="
-${COMMON_DEPEND}
-app-arch/unzip
-	dev-python/setuptools
+	${RDEPEND}
+	app-arch/unzip
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-RDEPEND="${COMMON_DEPEND}"
