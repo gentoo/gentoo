@@ -21,6 +21,10 @@ RDEPEND=">=sys-libs/libraw1394-1.1
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.5-gcc6.patch"
+)
+
 src_configure() {
 	econf \
 		$(use_with quicktime libquicktime) \
