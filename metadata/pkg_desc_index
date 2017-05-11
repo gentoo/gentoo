@@ -12682,7 +12682,7 @@ media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.22.0: Font viewer for GNOME
-media-gfx/gnome-photos 3.22.5: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.22.5 3.22.6: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
@@ -14842,7 +14842,7 @@ net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.18 1.0.19 1.0.20: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.22.5: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.26 3.3.27 3.5.11: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.26 3.3.27 3.5.11 3.5.12: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.40 2.8.45: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
