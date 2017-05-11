@@ -5,7 +5,7 @@ EAPI=6
 
 # Don't block arm. See bug #600134.
 #MULTILIB_COMPAT=( abi_ppc_64 abi_x86_{32,64} )
-KEYWORDS="-* ~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="-* amd64 ~arm ppc64 x86"
 
 inherit java-vm-2 multilib-build toolchain-funcs
 
