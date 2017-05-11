@@ -34,7 +34,7 @@ LICENSE="
 "
 KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
-IUSE="+udisks"
+IUSE="+ios +udisks"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -69,8 +69,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libmtp-1.1.11:=
 	>=media-libs/libwmf-0.2.8
 	>=media-gfx/optipng-0.7.6
-	>=app-pda/usbmuxd-1.0.8
-	>=app-pda/libimobiledevice-1.2.0
 	sys-libs/zlib
 	virtual/libusb:1=
 	virtual/python-dnspython[${PYTHON_USEDEP}]
@@ -78,6 +76,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXext
 	x11-libs/libXrender
 	>=x11-misc/xdg-utils-1.0.2-r2
+	ios? (
+		>=app-pda/usbmuxd-1.0.8
+		>=app-pda/libimobiledevice-1.2.0
+	)
 	udisks? ( virtual/libudev )"
 RDEPEND="${COMMON_DEPEND}
 	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
