@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit ltprune python-any-r1 readme.gentoo-r1 xdg-utils
+inherit autotools ltprune python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="http://spice-space.org/"
@@ -25,7 +25,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	!libressl? ( dev-libs/openssl:0=[static-libs(+)?] )
 	libressl? ( dev-libs/libressl:0=[static-libs(+)?] )
-	lz4? ( app-arch/lz4 )
+	lz4? ( app-arch/lz4:0=[static-libs(+)?] )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
 	gstreamer? ( media-libs/gstreamer:1.0 )
@@ -41,6 +41,10 @@ DEPEND="${RDEPEND}
 	smartcard? ( app-emulation/qemu[smartcard] )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.13.3-skip_faulty_lz4_check.patch
+)
+
 python_check_deps() {
 	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
 	has_version "dev-python/six[${PYTHON_USEDEP}]"
@@ -48,6 +52,12 @@ python_check_deps() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+
+	eautoreconf
 }
 
 # maintainer notes:
