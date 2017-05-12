@@ -14095,7 +14095,7 @@ media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 2.0.3 2.0.4 2.0.5: GTK+ UVC Viewer
 media-video/gxine 0.5.907-r1 0.5.908-r1: GTK+ Front-End for libxine
 media-video/h264enc 10.4.1 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
-media-video/handbrake 0.10.5-r2 1.0.3 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
+media-video/handbrake 0.10.5-r2 1.0.3 1.0.7 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
 media-video/harvid 0.8.0 0.8.1 0.8.2: HTTP Ardour Video Daemon
 media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using aalib
 media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
@@ -15585,7 +15585,7 @@ net-p2p/ppcoin-qt 0.4.0: Cryptocurrency forked from Bitcoin which aims to be ene
 net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/pybitmessage 0.4.2 0.6.2: P2P communications protocol
+net-p2p/pybitmessage 0.4.2 0.6.2-r1: P2P communications protocol
 net-p2p/qbittorrent 3.3.10 3.3.11 3.3.12 9999: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.5.5c 0.6.0 0.6.1 0.6.2 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
