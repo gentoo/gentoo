@@ -2918,7 +2918,7 @@ dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is us
 dev-db/barman 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 2.1: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/cockroach 1.0_rc1: open source database for building cloud services
+dev-db/cockroach 1.0_rc1 1.0: open source database for building cloud services
 dev-db/couchdb 1.6.1-r2 1.6.1-r3: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/cpp-driver 2.4.3: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
@@ -12677,7 +12677,7 @@ media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to 
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
-media-gfx/gimp 2.8.14-r2 2.8.14-r3 2.8.16-r2 2.8.18-r1 2.8.20 2.9.2-r3 2.9.4-r2 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.14-r2 2.8.14-r3 2.8.14-r4 2.8.20 2.8.20-r1 2.8.22 2.9.4-r2 2.9.4-r3 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
