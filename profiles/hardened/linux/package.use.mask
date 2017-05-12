@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Matthias Maier <tamiko@gentoo.org> (11 May 2017)
+# masked in base, unmask for hardened profiles
+sys-devel/gcc -pie
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
 # Requires x11-drivers/nvidia-drivers. Needs testing first.
 media-video/mpv cuda
