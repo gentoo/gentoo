@@ -15,12 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test zsh-completion"
 
-RDEPEND=""
+RDEPEND="
+	zsh-completion? ( app-shells/zsh )
+"
 DEPEND="
 	dev-go/go-sqlite3
 	dev-lang/go
 	dev-libs/go-fuse
-	zsh-completion? ( app-shells/zsh )
 "
 
 src_unpack() {
