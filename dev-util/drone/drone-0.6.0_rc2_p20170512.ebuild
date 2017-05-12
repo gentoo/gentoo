@@ -4,8 +4,8 @@
 EAPI=6
 
 EGO_PN="github.com/drone/drone/..."
-EGIT_COMMIT="3c6613a430dab87371848442acc19e634835b9d1"
-EGO_VENDOR=( "github.com/drone/drone-ui f4c434d13c88da905d895156850e721cd4bd89af" )
+EGIT_COMMIT="697cb0ea0e81a089742f30ad4f20699ca52484ef"
+EGO_VENDOR=( "github.com/drone/drone-ui 72dc649bc4ff81f4560ab70b29495830a4c1cf3d" )
 
 inherit golang-build golang-vcs-snapshot user
 
