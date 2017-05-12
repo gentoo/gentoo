@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+: ${CFGFILE:=/etc/nagios/nrpe.cfg}
+
+extra_started_commands="reload"
+command="/usr/bin/${SVCNAME}"
+command_args="-c ${CFGFILE} --daemon"
+pidfile=/run/nrpe.pid
+
+reload() {
+    ebegin "Reloading ${SVCNAME}"
+    start-stop-daemon --exec $command --pidfile $pidfile --signal HUP
+    eend $?
+}
