@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>gert@gepe-biljarts.be</email>
+	<name>Gert Pellin</name>
+	<description>Proxy maintainer. Assign bugs to him.</description>
+</maintainer>
+<longdescription lang="en">
+	PhpStorm’s smart code editor provides excellent support for PHP (including the latest language versions and frameworks), HTML, JavaScript, CSS, Sass, Less, CoffeeScript, and many other languages. Enjoy coding with intelligent context-aware code completion, error detection, and on-the-fly code inspections and fixes.
+</longdescription>
+</pkgmetadata>
