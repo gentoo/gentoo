@@ -114,10 +114,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.8.14-blend-center.patch  # bug 558878
+	epatch "${FILESDIR}"/${P}-blend-center.patch  # bug 558878
 	epatch "${FILESDIR}"/${PN}-2.7.4-no-deprecation.patch  # bug 395695, comment 9 and 16
 	epatch "${FILESDIR}"/${PN}-2.8.10-clang.patch # bug 449370 compile with clang
 	epatch "${FILESDIR}"/${PN}-2.9.2-CVE-2016-4994.patch  # bug 586666
+	epatch "${FILESDIR}"/${PN}-2.9.4-CVE-2007-3126.patch  # bug 618310
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	eautoreconf  # If you remove this: remove dev-util/gtk-doc-am from DEPEND, too
