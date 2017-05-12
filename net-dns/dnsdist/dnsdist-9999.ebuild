@@ -78,7 +78,7 @@ src_prepare() {
 
 		#if ! use systemd ; then
 		#	sed --follow-symlinks -i \
-		#	-e '/notify/d'
+		#	-e '/notify/d' dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
 		#fi
 	fi
 }
