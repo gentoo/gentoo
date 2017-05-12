@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 WANT_AUTOMAKE=none
 
-inherit eutils autotools user
+inherit autotools db-use eutils user
 
 MY_P="squidGuard-${PV/_/-}"
 
@@ -19,7 +19,15 @@ KEYWORDS="amd64 ~arm ppc ppc64 sparc x86"
 
 IUSE="ldap"
 
-RDEPEND=">=sys-libs/db-2:*
+RDEPEND="|| (
+		sys-libs/db:4.8
+		sys-libs/db:4.7
+		sys-libs/db:4.6
+		sys-libs/db:4.5
+		sys-libs/db:4.4
+		sys-libs/db:4.3
+		sys-libs/db:4.2
+	)
 	ldap? ( net-nds/openldap:0 )"
 
 DEPEND="${RDEPEND}
@@ -27,6 +35,17 @@ DEPEND="${RDEPEND}
 	sys-devel/flex:0"
 
 S="${WORKDIR}/${MY_P}"
+
+suitable_db_version() {
+	local tested_slots="4.8 4.7 4.6 4.5 4.4 4.3 4.2"
+	for ver in ${tested_slots}; do
+		if [[ -n $(db_findver sys-libs/db:${ver}) ]]; then
+			echo ${ver}
+			return 0
+		fi
+	done
+	die "No suitable BerkDB versions found, aborting"
+}
 
 pkg_setup() {
 	enewgroup squid
@@ -39,13 +58,18 @@ src_prepare() {
 		"${FILESDIR}/${P}-gentoo.patch" \
 		"${FILESDIR}/${P}-protocol.patch"
 
-	epatch_user
+	# Link only with specific BerkDB versions
+	db_version="$(suitable_db_version)"
+	sed -i -e "/\$LIBS -ldb/s/-ldb/-l$(db_libname ${db_version})/" configure.ac || die
+
+	eapply_user
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		$(use_with ldap) \
+		--with-db-inc="$(db_includedir ${db_version})" \
 		--with-sg-config=/etc/squidGuard/squidGuard.conf \
 		--with-sg-logdir=/var/log/squidGuard
 }
@@ -62,7 +86,8 @@ src_install() {
 	doins "${FILESDIR}"/blockedsites
 
 	dodoc ANNOUNCE CHANGELOG README
-	dohtml doc/*.html
+	docinto html
+	dodoc doc/*.html
 	docinto text
 	dodoc doc/*.txt
 }
