@@ -21,6 +21,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="virtual/udev
 	>=dev-libs/libplatform-2.0.0
+	sys-libs/ncurses:=
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	xrandr? ( x11-libs/libXrandr )
 	python? ( ${PYTHON_DEPS} )"
