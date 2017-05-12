@@ -76,6 +76,7 @@ src_test() {
 
 src_install() {
 	cmake-utils_src_install
+	mv "${D}/usr/bin/spin" "${D}/usr/bin/hpx_spin"
 	if use examples; then
 		insinto /usr/share/doc/${PF}
 		doins -r examples
