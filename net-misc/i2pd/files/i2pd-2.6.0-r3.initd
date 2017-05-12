@@ -1,0 +1,46 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="C++ daemon for accessing the I2P network"
+description_graceful="Graceful shutdown, takes 10 minutes"
+
+command="/usr/bin/i2pd"
+command_args="${I2PD_OPTIONS}"
+user="${I2PD_USER}:${I2PD_GROUP}"
+start_stop_daemon_args="
+    --user \"${user}\"
+    --pidfile \"${I2PD_PID}\"
+    --progress --retry 'SIGTERM/20/SIGKILL/20'
+"
+I2PD_PID_DIR=$(dirname "${I2PD_PID}")
+
+extra_started_commands="graceful"
+
+depend() {
+    use dns logger netmount
+}
+
+start_pre() {
+    if [ -z "${I2PD_USER}" ] || \
+       [ -z "${I2PD_GROUP}" ] || \
+       [ -z "${I2PD_PID}" ] || \
+       [ -z "${I2PD_LOG}" ] || \
+       [ -z "${I2PD_OPTIONS}" ] ; then
+        eerror "Not all variables I2PD_USER, I2PD_GROUP, I2PD_PID, I2PD_OPTIONS, I2PD_LOG are defined."
+        eerror "Check your /etc/conf.d/i2pd."
+        return 1
+    fi
+    checkpath -f -o "${user}" "${I2PD_LOG}"
+    checkpath -d -m 0750 -o "${user}" "${I2PD_PID_DIR}"
+}
+
+graceful() {
+    # on SIGINT, i2pd stops accepting tunnels and shuts down in 600 seconds
+    ebegin "Gracefully stopping i2pd, this takes 10 minutes"
+    mark_service_stopping
+    eval start-stop-daemon --stop ${start_stop_daemon_args} \
+        --exec "${command}" --retry 'SIGINT/620/SIGTERM/20/SIGKILL/20'
+    eend $? && mark_service_stopped
+}
