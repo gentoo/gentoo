@@ -22,10 +22,6 @@ media-video/ffmpeg nvenc
 # media-libs/raspberrypi-userland not keyworded
 media-video/motion mmal
 
-# Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
-# Mask it globally, unmask it on supported arch
->=sys-devel/gcc-6.2.0 pie
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
 # Mask assembly optimisations that are platform-specific
 dev-libs/libsecp256k1 asm
