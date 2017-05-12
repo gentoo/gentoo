@@ -1,0 +1,22 @@
+--- ./a/src.pro	2016-07-18 11:50:53.129681442 +0900
++++ ./b/src.pro	2016-07-18 12:44:23.689663625 +0900
+@@ -92,7 +92,7 @@
+ unix : !macx :{
+     #VARIABLES
+     isEmpty(PREFIX) {
+-        PREFIX = /usr
++        PREFIX = ../../../image/usr/
+     }
+     BINDIR = $$PREFIX/bin
+     DATADIR = $$PREFIX/share
+@@ -116,8 +116,8 @@
+     sounds.path = $$DATADIR/qstamina/sounds
+     sounds.files = resources/sounds/*
+ 
+-    layouts.path = $$DATADIR/qstamina/layouts
+-    layouts.files = resources/layouts/*.ltf
++    layouts.path = $$DATADIR/qstamina/
++    layouts.files = resources/*.ltf
+ 
+     translations.path = $$DATADIR/qstamina/translations
+     translations.files = resources/qm/*

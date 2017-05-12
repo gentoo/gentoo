@@ -1,0 +1,35 @@
+--- ./src/stamina.cpp.orig	2015-05-29 00:00:02.655870716 +0800
++++ ./src/stamina.cpp	2015-05-29 00:01:26.399206284 +0800
+@@ -56,17 +56,11 @@
+     m_mainMenu = new QMenuBar(this);
+     this->setMenuBar(m_mainMenu);
+ 
+-#ifdef Q_OS_MACX
+-    QMenu *fileMenu = m_mainMenu->addMenu("File");
+-    fileMenu->addAction("Settings",this,SLOT(settingsTriggered()));
+-    fileMenu->addSeparator();
+-    fileMenu->addAction("Quit",qApp,SLOT(quit()));
+-#elif
+     QMenu *fileMenu = m_mainMenu->addMenu(tr("File"));
+     fileMenu->addAction(tr("Settings"),this,SLOT(settingsTriggered()));
+     fileMenu->addSeparator();
+     fileMenu->addAction(tr("Quit"),qApp,SLOT(quit()));
+-#endif
++
+     m_lessonsMenu = new QMenu(tr("Lessons"));
+     m_mainMenu->addMenu(m_lessonsMenu);
+     m_layoutsMenu = new QMenu(tr("Layouts"));
+@@ -74,13 +68,8 @@
+     m_generatorMenu = new QMenu(tr("Generator"));
+     //m_mainMenu->addMenu(m_generatorMenu);
+ 
+-#ifdef Q_OS_MACX
+-    QMenu *helpMenu = m_mainMenu->addMenu(tr("?"));
+-    helpMenu->addAction("About",this,SLOT(aboutTriggered()));
+-#elif
+     QMenu *helpMenu = m_mainMenu->addMenu(tr("?"));
+     helpMenu->addAction(tr("About"),this,SLOT(aboutTriggered()));
+-#endif
+ 
+     if( m_config->separateKeyboard() )
+     {
