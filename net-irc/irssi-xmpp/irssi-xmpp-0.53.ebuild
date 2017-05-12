@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=net-irc/irssi-0.8.13
+	<net-irc/irssi-1
 	>=net-libs/loudmouth-1.4.0"
 
 RDEPEND="${DEPEND}"
