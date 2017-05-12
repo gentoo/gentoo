@@ -4,7 +4,7 @@
 # the start_args and stop_args correctly if you plan to use cockroach in
 # production.
 #
-# http://cockroachlabs.com/do# cs
+# http://cockroachlabs.com/docs
 #
 # arguments to use when starting the database
 start_args="--http-host=localhost --host=localhost --insecure
