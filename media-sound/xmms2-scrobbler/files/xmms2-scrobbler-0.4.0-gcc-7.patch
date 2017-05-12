@@ -1,0 +1,8 @@
+diff --git a/src/submission.c b/src/submission.c
+index 422db0a..326b003 100644
+--- a/src/submission.c
++++ b/src/submission.c
+@@ -24,2 +24,3 @@
+ #include <stdlib.h>
++#include <stdio.h>
+ #include "submission.h"
