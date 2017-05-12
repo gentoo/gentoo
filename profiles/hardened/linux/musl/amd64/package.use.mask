@@ -1,6 +1,2 @@
 # Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-
-# Matthias Maier <tamiko@genoto.org> (07 May 2017)
-# masked in arch/base, unmask for hardened/musl/amd64
->=sys-devel/gcc-6.3.0 -pie
