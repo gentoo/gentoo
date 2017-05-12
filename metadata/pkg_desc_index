@@ -2194,7 +2194,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.14 3.15 3.16: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.16 3.18: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.22.0 0.23.0 0.24.0 9999: Additional completion definitions for Zsh
@@ -18386,7 +18386,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 44.0.2510.1449 45.0.2552.635: A fast and secure web browser
 www-client/opera-beta 45.0.2552.634: A fast and secure web browser
-www-client/opera-developer 46.0.2573.0: A fast and secure web browser
+www-client/opera-developer 46.0.2573.0 46.0.2590.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
