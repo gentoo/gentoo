@@ -13,7 +13,7 @@ inherit python-single-r1 perl-module
 DESCRIPTION="Easy implementation of Python extensions"
 
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="

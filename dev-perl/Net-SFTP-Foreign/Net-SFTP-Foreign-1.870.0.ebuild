@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="SSH File Transfer Protocol client"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="test examples"
 
 RDEPEND="

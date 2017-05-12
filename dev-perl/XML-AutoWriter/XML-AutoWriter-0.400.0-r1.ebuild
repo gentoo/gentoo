@@ -11,7 +11,7 @@ DESCRIPTION="DOCTYPE based XML output"
 
 LICENSE="|| ( Artistic GPL-1+ BSD )"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 sparc x86"
+KEYWORDS="amd64 hppa x86"
 IUSE=""
 
 RDEPEND="dev-perl/XML-Parser"

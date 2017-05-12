@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Dispatcher module for command line interface programs"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
 RDEPEND=">=virtual/perl-Getopt-Long-2.35

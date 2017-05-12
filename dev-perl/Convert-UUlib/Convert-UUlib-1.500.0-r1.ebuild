@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Perl interface to the uulib library"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="system-uulib test"
 
 RDEPEND="

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Data::HexDump - A Simple Hexadecial Dumper"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~sparc x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE=""
 
 src_unpack() {

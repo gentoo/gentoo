@@ -11,7 +11,7 @@ DESCRIPTION="an XML::Parser style and generic classes for simplistic and perlish
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="amd64 hppa x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE=""
 
 DEPEND="dev-perl/XML-Parser

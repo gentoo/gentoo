@@ -11,7 +11,7 @@ SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="~app-text/mecab-${PV}"
