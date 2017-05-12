@@ -14,7 +14,7 @@ SRC_URI="http://entropymine.com/${PN}/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="jpeg png static-libs test webp zlib"
 
 DEPEND="png? ( media-libs/libpng:0 )
