@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist dnscrypt libedit luajit +protobuf +readline regex +sodium systemd"
+IUSE="bindist dnscrypt libedit luajit +protobuf +readline regex +sodium systemd test"
 
 RESTRICT="readline? ( bindist )"
 
@@ -95,7 +95,9 @@ src_configure() {
 		$(use_enable regex re2) \
 		$(use_enable dnscrypt) \
 		$(use_with luajit) \
-		$(use_enable systemd)
+		$(use_enable systemd) \
+		$(use_enable test unit-tests) \
+		--with-systemd="$(systemd_get_systemunitdir)"
 }
 
 src_install() {
