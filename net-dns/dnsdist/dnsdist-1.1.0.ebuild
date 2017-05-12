@@ -70,11 +70,11 @@ src_prepare() {
 		# in git, and then symlinked to
 		sed --follow-symlinks -i \
 			-e 's~^#include <editline/readline.h>$~#include <readline/readline.h>~g' dnsdist.cc \
-			¦¦ die "dnsdist.cc: Sed broke!"
+			|| die "dnsdist.cc: Sed broke!"
 
 		sed --follow-symlinks -i \
 			-e 's~^#include <editline/readline.h>$~#include <readline/readline.h>'"\n"'#include <readline/history.h>~g' dnsdist-console.cc \
-			¦¦ die "dnsdist-console.cc: Sed broke!"
+			|| die "dnsdist-console.cc: Sed broke!"
 	fi
 }
 
