@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 python3_5)
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1
 
@@ -30,7 +30,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	# suite passes all if run from source. The residual fail & error are quite erroneous
-	rm tests/test_script_consumption.py
+	rm tests/test_script_consumption.py || die
 
 	distutils-r1_python_prepare_all
 }
