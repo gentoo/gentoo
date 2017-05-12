@@ -42,7 +42,7 @@ DEPEND="
 	protobuf? ( dev-libs/libsodium:= )
 	readline? ( sys-libs/readline:0= )
 	regex? ( dev-libs/re2:= )
-	sodium? (dev-libs/libsodium:= )
+	sodium? ( dev-libs/libsodium:= )
 	systemd? ( sys-apps/systemd:= )
 "
 
