@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-3 public-domain"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.20:2"
