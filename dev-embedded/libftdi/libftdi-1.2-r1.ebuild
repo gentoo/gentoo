@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-2
 else
 	SRC_URI="http://www.intra2net.com/en/developer/${PN}/download/${MY_P}.tar.bz2"
-	KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ~ppc64 sparc x86"
 fi
 
 DESCRIPTION="Userspace access to FTDI USB interface chips"
