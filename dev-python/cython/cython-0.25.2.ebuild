@@ -34,6 +34,10 @@ DEPEND="${RDEPEND}
 SITEFILE=50cython-gentoo.el
 S="${WORKDIR}/${MY_PN}-${PV%_*}"
 
+PATCHES=(
+	"${FILESDIR}"/0.25.2-test-cpdef_enums-L-suffix.patch
+)
+
 python_compile() {
 	if ! python_is_python3; then
 		local CFLAGS="${CFLAGS}"
