@@ -59,7 +59,7 @@ src_prepare() {
 		# compiles and links agains libedit (BSD-2), as upstream does provide binary packages itself.
 		# However, dnsdist will work with readline, too, as it does - when compiled from ports on OpenBSD.
 		# Therefore, the default beahavior here is to compile and link against readline, as to not install
-		# the outdated libedit present in the portage tree, requiring a small change to dnsdist.cc and 
+		# the outdated libedit present in the portage tree, requiring a small change to dnsdist.cc and
 		# dnsdist-console.cc as described in: https://github.com/PowerDNS/pdns/issues/5294
 
 		# sed's --follow-symlinks is a must here for the 9999 version, since those files are placed in ../.
