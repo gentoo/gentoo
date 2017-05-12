@@ -24,23 +24,19 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist dnscrypt libedit luajit +protobuf +readline regex snmp +sodium systemd test"
+IUSE="bindist dnscrypt luajit +protobuf +readline regex snmp +sodium systemd test"
 
 RESTRICT="readline? ( bindist )"
 
-REQUIRED_USE="
-	bindist? ( libedit )
-	dnscrypt? ( sodium )
-	?? ( libedit readline )
-"
+REQUIRED_USE="dnscrypt? ( sodium )"
 
 DEPEND="
 	>=dev-libs/boost-1.35:=
-	libedit? ( dev-libs/libedit:= )
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( >=dev-lang/lua-5.1:= )
 	protobuf? ( dev-libs/libsodium:= )
 	readline? ( sys-libs/readline:0= )
+	!readline? ( dev-libs/libedit:= )
 	regex? ( dev-libs/re2:= )
 	snmp? ( net-analyzer/net-snmp:= )
 	sodium? ( dev-libs/libsodium:= )
@@ -77,8 +73,8 @@ src_prepare() {
 			-e 's~^#include <editline/readline.h>$~#include <readline/readline.h>'"\n"'#include <readline/history.h>~g' dnsdist-console.cc \
 			|| die "dnsdist-console.cc: Sed broke!"
 
-		sed --follow-symlinks -i 's~^ExecStart=@bindir@/dnsdist --supervised --disable-syslog$~ExecStart=@bindir@/dnsdist --supervised --disable-syslog -u dnsdist -g dnsdist~g' \
-			dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
+		#sed --follow-symlinks -i 's~^ExecStart=@bindir@/dnsdist --supervised --disable-syslog$~ExecStart=@bindir@/dnsdist --supervised --disable-syslog -u dnsdist -g dnsdist~g' \
+		#	dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
 	fi
 }
 
