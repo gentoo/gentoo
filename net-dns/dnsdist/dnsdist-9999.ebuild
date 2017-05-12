@@ -75,6 +75,11 @@ src_prepare() {
 
 		#sed --follow-symlinks -i 's~^ExecStart=@bindir@/dnsdist --supervised --disable-syslog$~ExecStart=@bindir@/dnsdist --supervised --disable-syslog -u dnsdist -g dnsdist~g' \
 		#	dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
+
+		#if ! use systemd ; then
+		#	sed --follow-symlinks -i \
+		#	-e '/notify/d'
+		#fi
 	fi
 }
 
