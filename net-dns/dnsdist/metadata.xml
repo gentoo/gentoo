@@ -3,22 +3,18 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>bgo@9dt.de</email>
-		<name>Vladimir Datsevich</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
+		dnsdist is a highly DNS-, DoS- and abuse-aware loadbalancer. Its goal in life is to route traffic to the best server, delivering top performance to legitimate users while shunting or blocking abusive traffic.
 	</longdescription>
 	<use>
-		<flag name="clang">Use Clang compiler instead of GCC</flag>
-		<flag name="dnscrypt">Enable DNSCRypt support</flag>
-		<flag name="readline">Enable support for libreadline, a GNU line-editing library that almost everyone wants</flag>
-		<flag name="libedit">Use the libedit library (replacement for readline)</flag>
-		<flag name="sodium">Use dev-libs/libsodium for cryptography</flag>
-		<flag name="protobuf">Enable support for dev-libs/protobuf</flag>
-		<flag name="re2">Use the dev-libs/re2 regular expression library</flag>
-		<flag name="luajit">Use dev-lang/luajit instead of dev-lang/lua</flag>	
+		<flag name="dnscrypt">Enable the ability to act as a DNSCrypt server</flag>
+		<flag name="protobuf">Enable support for remote logging via <pkg>dev-libs/protobuf</pkg></flag>
+		<flag name="re2">Enable support for regular expression matching via <pkg>dev-libs/re2</pkg></flag>
+		<flag name="sodium">Enable support for and encrypted client-server communication via <pkg>dev-libs/libsodium</pkg></flag>
 	</use>	
 </pkgmetadata>
