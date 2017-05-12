@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist dnscrypt libedit luajit +protobuf +readline regex +sodium systemd test"
+IUSE="bindist dnscrypt libedit luajit +protobuf +readline regex snmp +sodium systemd test"
 
 RESTRICT="readline? ( bindist )"
 
@@ -42,6 +42,7 @@ DEPEND="
 	protobuf? ( dev-libs/libsodium:= )
 	readline? ( sys-libs/readline:0= )
 	regex? ( dev-libs/re2:= )
+	snmp? (net-analyzer/net-snmp:= )
 	sodium? ( dev-libs/libsodium:= )
 	systemd? ( sys-apps/systemd:= )
 "
@@ -75,6 +76,9 @@ src_prepare() {
 		sed --follow-symlinks -i \
 			-e 's~^#include <editline/readline.h>$~#include <readline/readline.h>'"\n"'#include <readline/history.h>~g' dnsdist-console.cc \
 			|| die "dnsdist-console.cc: Sed broke!"
+
+		sed --follow-symlinks -i 's~^ExecStart=@bindir@/dnsdist --supervised --disable-syslog$~ExecStart=@bindir@/dnsdist --supervised --disable-syslog -u dnsdist -g dnsdist~g' \
+			dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
 	fi
 }
 
@@ -97,6 +101,7 @@ src_configure() {
 		$(use_with luajit) \
 		$(use_enable systemd) \
 		$(use_enable test unit-tests) \
+		$(use_with snmp net-snmp)
 		--with-systemd="$(systemd_get_systemunitdir)"
 }
 

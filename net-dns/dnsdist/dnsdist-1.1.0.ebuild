@@ -75,6 +75,9 @@ src_prepare() {
 		sed --follow-symlinks -i \
 			-e 's~^#include <editline/readline.h>$~#include <readline/readline.h>'"\n"'#include <readline/history.h>~g' dnsdist-console.cc \
 			|| die "dnsdist-console.cc: Sed broke!"
+
+		sed --follow-symlinks -i 's~^ExecStart=@bindir@/dnsdist --supervised --disable-syslog$~ExecStart=@bindir@/dnsdist --supervised --disable-syslog -u dnsdist -g dnsdist~g' \
+			dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
 	fi
 }
 
