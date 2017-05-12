@@ -46,6 +46,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
+	media-libs/opus:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
 	sys-apps/dbus:=
@@ -144,10 +145,6 @@ GTK+ icon theme.
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
-		if tc-is-gcc; then
-			# https://bugs.chromium.org/p/chromium/issues/detail?id=714412
-			die "GCC build is currently broken; please use clang instead (CC=clang CXX=clang++)"
-		fi
 		if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
 			# bugs: #601654
 			die "At least clang 3.9.1 is required"
@@ -190,10 +187,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE.patch"
 		"${FILESDIR}/skia-avx2.patch"
-		"${FILESDIR}/${PN}-dma-buf-r2.patch"
 		"${FILESDIR}/${PN}-system-ffmpeg-r6.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r5.patch"
-		"${FILESDIR}/${PN}-clang-r1.patch"
+		"${FILESDIR}/${PN}-system-opus-r1.patch"
 	)
 
 	default
@@ -247,9 +242,11 @@ src_prepare() {
 		third_party/flatbuffers
 		third_party/flot
 		third_party/freetype
+		third_party/glslang-angle
 		third_party/google_input_tools
 		third_party/google_input_tools/third_party/closure_library
 		third_party/google_input_tools/third_party/closure_library/third_party/closure
+		third_party/googletest
 		third_party/hunspell
 		third_party/iccjpeg
 		third_party/inspector_protocol
@@ -278,7 +275,6 @@ src_prepare() {
 		third_party/node/node_modules/vulcanize/third_party/UglifyJS2
 		third_party/openh264
 		third_party/openmax_dl
-		third_party/opus
 		third_party/ots
 		third_party/pdfium
 		third_party/pdfium/third_party/agg23
@@ -297,13 +293,19 @@ src_prepare() {
 		third_party/qcms
 		third_party/sfntly
 		third_party/skia
+		third_party/skia/third_party/vulkan
 		third_party/smhasher
+		third_party/spirv-headers
+		third_party/spirv-tools-angle
 		third_party/sqlite
 		third_party/swiftshader
 		third_party/swiftshader/third_party/llvm-subzero
 		third_party/swiftshader/third_party/pnacl-subzero
+		third_party/swiftshader/third_party/subzero
 		third_party/tcmalloc
 		third_party/usrsctp
+		third_party/vulkan
+		third_party/vulkan-validation-layers
 		third_party/web-animations-js
 		third_party/webdriver
 		third_party/webrtc
@@ -354,7 +356,6 @@ src_configure() {
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: xml (bug #616818).
-	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
 	# TODO: use_system_protobuf (bug #525560).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
@@ -369,6 +370,7 @@ src_configure() {
 		libpng
 		libwebp
 		libxslt
+		opus
 		re2
 		snappy
 		yasm
@@ -598,6 +600,9 @@ src_install() {
 
 	doins -r out/Release/locales
 	doins -r out/Release/resources
+
+	insinto "${CHROMIUM_HOME}/swiftshader"
+	doins out/Release/swiftshader/*.so
 
 	newman out/Release/chrome.1 chromium.1
 	newman out/Release/chrome.1 chromium-browser.1
