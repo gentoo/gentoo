@@ -43,11 +43,11 @@ RDEPEND="${DEPEND}
 		dev-python/pyopencl[${PYTHON_USEDEP}]
 	)
 	qt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )
-	sound? (
-		media-sound/alsa-utils
+	sound? ( || (
 		media-sound/gst123
+		media-sound/alsa-utils
 		media-sound/mpg123
-	)"
+	) )"
 
 S="${WORKDIR}/${MY_P}"
 
