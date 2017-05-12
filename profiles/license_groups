@@ -75,5 +75,5 @@ EULA Adaptec-EULA AdobeFlash-11.x ArxFatalis-EULA-JoWooD baudline BCS bf1942-lnx
 
 # Local Variables:
 # mode: conf-space
-# mode: visual-line
+# eval: (visual-line-mode 1)
 # End:
