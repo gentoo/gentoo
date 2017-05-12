@@ -24,22 +24,22 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist dnscrypt luajit +protobuf +readline regex snmp +sodium systemd test"
+IUSE="bindist dnscrypt luajit readline regex remote-logging snmp +ssl systemd test"
 
 RESTRICT="readline? ( bindist )"
 
-REQUIRED_USE="dnscrypt? ( sodium )"
+REQUIRED_USE="dnscrypt? ( ssl )"
 
 DEPEND="
 	>=dev-libs/boost-1.35:=
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( >=dev-lang/lua-5.1:= )
-	protobuf? ( dev-libs/libsodium:= )
+	remote-logging? ( dev-libs/protobuf:= )
 	readline? ( sys-libs/readline:0= )
 	!readline? ( dev-libs/libedit:= )
 	regex? ( dev-libs/re2:= )
 	snmp? ( net-analyzer/net-snmp:= )
-	sodium? ( dev-libs/libsodium:= )
+	ssl? ( dev-libs/libsodium:= )
 	systemd? ( sys-apps/systemd:= )
 "
 
@@ -90,8 +90,8 @@ src_configure() {
 
 	econf \
 		--sysconfdir=/etc/dnsdist \
-		$(use_enable sodium libsodium) \
-		$(use_with protobuf) \
+		$(use_enable ssl libsodium) \
+		$(use_with remote-logging protobuf) \
 		$(use_enable regex re2) \
 		$(use_enable dnscrypt) \
 		$(use_with luajit) \
@@ -110,7 +110,9 @@ src_install() {
 	newconfd "${FILESDIR}"/dnsdist.confd ${PN}
 	newinitd "${FILESDIR}"/dnsdist.initd ${PN}
 
-	systemd_dounit "${FILESDIR}"/dnsdist.service
+	if use systemd ; then
+		systemd_dounit "${FILESDIR}"/dnsdist.service
+	fi
 }
 
 pkg_preinst() {
