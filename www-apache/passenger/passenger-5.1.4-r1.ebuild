@@ -13,7 +13,7 @@ SRC_URI="https://s3.amazonaws.com/phusion-passenger/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="apache2 debug"
 
 ruby_add_bdepend "dev-ruby/rake"
 
@@ -26,7 +26,7 @@ ruby_add_rdepend "
 CDEPEND="
 	>=dev-libs/libuv-1.8.0
 	net-misc/curl[ssl]
-	www-servers/apache[apache2_modules_unixd(+)]"
+	apache2? ( www-servers/apache[apache2_modules_unixd(+)] )"
 
 RDEPEND="${RDEPEND} ${CDEPEND}"
 DEPEND="${DEPEND} ${CDEPEND}"
@@ -34,10 +34,11 @@ DEPEND="${DEPEND} ${CDEPEND}"
 APACHE2_MOD_CONF="30_mod_${PN}-5.0.0 30_mod_${PN}"
 APACHE2_MOD_DEFINE="PASSENGER"
 
-need_apache2
+want_apache2
 
 pkg_setup() {
 	use debug && append-flags -DPASSENGER_DEBUG
+	depend.apache_pkg_setup
 }
 
 all_ruby_prepare() {
@@ -55,7 +56,6 @@ all_ruby_prepare() {
 
 	# Use sed here so that we can dynamically set the documentation directory.
 	sed -i -e "s:/usr/share/doc/passenger:/usr/share/doc/${P}:" \
-		-e "s:/usr/lib/apache2/modules/mod_passenger.so:${APACHE_MODULESDIR}/mod_passenger.so:" \
 		-e "s:/usr/lib/phusion-passenger/agents:/usr/libexec/phusion-passenger/agents:" \
 		src/ruby_supportlib/phusion_passenger.rb || die
 	sed -i -e "s:/usr/lib/phusion-passenger/agents:/usr/libexec/phusion-passenger/agents:" src/cxx_supportlib/ResourceLocator.h || die
@@ -76,12 +76,14 @@ all_ruby_prepare() {
 }
 
 all_ruby_compile() {
-	V=1 EXTRA_LDFLAGS="${LDFLAGS}" \
-	APXS2="${APXS}" \
-	HTTPD="${APACHE_BIN}" \
-	FS_LIBDIR='/usr/'$(get_libdir) \
-	USE_VENDORED_LIBUV="no" LIBUV_LIBS="-luv" \
-	ruby -S rake apache2 || die "rake failed"
+	if use apache2 ; then
+		V=1 EXTRA_LDFLAGS="${LDFLAGS}" \
+		 APXS2="${APXS}" \
+		 HTTPD="${APACHE_BIN}" \
+		 FS_LIBDIR='/usr/'$(get_libdir) \
+		 USE_VENDORED_LIBUV="no" LIBUV_LIBS="-luv" \
+		 ruby -S rake apache2 || die "rake failed"
+	fi
 }
 
 each_ruby_compile() {
@@ -96,11 +98,13 @@ each_ruby_compile() {
 }
 
 all_ruby_install() {
-	APACHE2_MOD_FILE="${S}/buildout/apache2/mod_${PN}.so"
-	apache-module_src_install
+	if use apache2 ; then
+		APACHE2_MOD_FILE="${S}/buildout/apache2/mod_${PN}.so"
+		apache-module_src_install
 
-	# Patch in the correct libdir
-	sed -i -e 's:/usr/lib/:/usr/'$(get_libdir)'/:' "${D}${APACHE_MODULES_CONFDIR}/30_mod_${PN}.conf" || die
+		# Patch in the correct libdir
+		sed -i -e 's:/usr/lib/:/usr/'$(get_libdir)'/:' "${D}${APACHE_MODULES_CONFDIR}/30_mod_${PN}.conf" || die
+	fi
 
 	dodoc CHANGELOG README.md
 }
