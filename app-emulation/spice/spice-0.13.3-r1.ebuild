@@ -28,8 +28,10 @@ RDEPEND="
 	lz4? ( app-arch/lz4:0=[static-libs(+)?] )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
-	gstreamer? ( media-libs/gstreamer:1.0 )
-"
+	gstreamer? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=app-emulation/spice-protocol-0.12.12
@@ -38,8 +40,7 @@ DEPEND="${RDEPEND}
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
-	smartcard? ( app-emulation/qemu[smartcard] )
-"
+	smartcard? ( app-emulation/qemu[smartcard] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.13.3-skip_faulty_lz4_check.patch
