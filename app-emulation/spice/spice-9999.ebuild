@@ -64,6 +64,8 @@ src_configure() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	addpredict /dev
 
+	xdg_environment_reset
+
 	local myconf="
 		$(use_enable static-libs static)
 		$(use_enable lz4)
