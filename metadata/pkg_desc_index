@@ -1384,13 +1384,13 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 2.0 2.1 2.2 2.3 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix
+app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
+app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix
+app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170327 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -18208,7 +18208,7 @@ virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
-virtual/wine 0-r4: Virtual for WINE that supports multiple variants and slotting
+virtual/wine 0-r4: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29 1.1.29-r1: A terminal anywhere
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
