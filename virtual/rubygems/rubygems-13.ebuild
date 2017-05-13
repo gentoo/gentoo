@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23 ruby24 rbx"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24 rbx"
 
 inherit ruby-ng
 
@@ -12,7 +12,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 
 RDEPEND="
 	ruby_targets_rbx? ( dev-lang/rubinius )
-	ruby_targets_ruby20? ( >=dev-ruby/rubygems-2.0.2[ruby_targets_ruby20] )
 	ruby_targets_ruby21? ( >=dev-ruby/rubygems-2.0.14[ruby_targets_ruby21] )
 	ruby_targets_ruby22? ( >=dev-ruby/rubygems-2.4.2[ruby_targets_ruby22] )
 	ruby_targets_ruby23? ( >=dev-ruby/rubygems-2.5.1[ruby_targets_ruby23] )
