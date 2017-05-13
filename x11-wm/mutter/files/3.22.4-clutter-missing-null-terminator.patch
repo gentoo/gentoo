@@ -1,0 +1,28 @@
+From f6888519ff3e20ec8f5e6064bff5707acbe13fbd Mon Sep 17 00:00:00 2001
+From: Nigel Taylor <nigel@openbsd.org>
+Date: Fri, 5 May 2017 08:42:47 -0400
+Subject: [PATCH 2/5] clutter: conform/actor-graph: Add missing
+ null-termination
+
+https://bugzilla.gnome.org/show_bug.cgi?id=759085
+---
+ clutter/tests/conform/actor-graph.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/clutter/tests/conform/actor-graph.c b/clutter/tests/conform/actor-graph.c
+index 0dad49b..8fbf4bc 100644
+--- a/clutter/tests/conform/actor-graph.c
++++ b/clutter/tests/conform/actor-graph.c
+@@ -350,7 +350,8 @@ actor_replace_child (void)
+   g_assert_cmpstr (clutter_actor_get_name (iter), ==, "qux");
+ 
+   clutter_actor_add_child (actor, g_object_new (CLUTTER_TYPE_ACTOR,
+-                                                "name", "foo"));
++                                                "name", "foo",
++                                                NULL));
+ 
+   clutter_actor_replace_child (actor, iter,
+                                g_object_new (CLUTTER_TYPE_ACTOR,
+-- 
+2.10.1
+
