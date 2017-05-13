@@ -14,9 +14,13 @@ KEYWORDS="~amd64 ~x86"
 
 MODULE_NAMES="r8168(net:${S}/src)"
 BUILD_TARGETS="modules"
-CONFIG_CHECK="!R8169"
 
+CONFIG_CHECK="!R8169"
 ERROR_R8169="${P} requires Realtek 8169 PCI Gigabit Ethernet adapter (CONFIG_R8169) to be DISABLED"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-linux-4.11.patch
+)
 
 pkg_setup() {
 	linux-mod_pkg_setup

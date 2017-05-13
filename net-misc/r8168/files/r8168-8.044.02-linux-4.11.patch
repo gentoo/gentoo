@@ -1,0 +1,27 @@
+diff a/src/r8168.h b/src/r8168.h
+--- a/src/r8168.h	2017-01-11 14:19:18.000000000 +0800
++++ b/src/r8168.h	2017-05-02 21:18:54.541652414 +0800
+@@ -36,6 +36,10 @@
+ #include "r8168_realwow.h"
+ #include "r8168_fiber.h"
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0))
++#include <linux/sched/signal.h>
++#endif
++
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(4,0,0)
+ #if defined(skb_vlan_tag_present) && !defined(vlan_tx_tag_present)
+ #define vlan_tx_tag_present skb_vlan_tag_present
+diff a/src/r8168_n.c b/src/r8168_n.c
+--- a/src/r8168_n.c	2017-01-11 14:18:43.000000000 +0800
++++ b/src/r8168_n.c	2017-05-02 21:20:57.488644205 +0800
+@@ -25732,7 +25732,9 @@
+                         if (rtl8168_rx_vlan_skb(tp, desc, skb) < 0)
+                                 rtl8168_rx_skb(tp, skb);
+ 
++#if (LINUX_VERSION_CODE <= KERNEL_VERSION(4, 10, 0))
+                         dev->last_rx = jiffies;
++#endif
+                         RTLDEV->stats.rx_bytes += pkt_size;
+                         RTLDEV->stats.rx_packets++;
+                 }
