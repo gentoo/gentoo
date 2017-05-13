@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ppc ppc64 sparc x86 ~ppc-macos"
+KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86 ~ppc-macos"
 IUSE="libressl scrypt seccomp selinux systemd tor-hardening test web"
 
 DEPEND="
