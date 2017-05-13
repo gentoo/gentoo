@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples +gmp mpfi ntl qt5"
 
 RDEPEND="
