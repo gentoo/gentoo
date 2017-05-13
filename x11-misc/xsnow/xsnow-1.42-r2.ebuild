@@ -5,7 +5,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="let it snow on your desktop and windows"
-HOMEPAGE="http://dropmix.xs4all.nl/rick/Xsnow/"
+HOMEPAGE="https://janswaal.home.xs4all.nl/Xsnow/"
 SRC_URI="${HOMEPAGE}${P}.tar.gz"
 
 LICENSE="freedist"
