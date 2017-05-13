@@ -336,7 +336,7 @@ ruby_fakegem_binwrapper() {
 		# calling the script by default (see for instance the
 		# JRuby-specific commands).
 		local rubycmd=
-		for implementation in ${USE_RUBY}; do
+		for implementation in $(_ruby_get_all_impls); do
 			# ignore non-enabled implementations
 			use ruby_targets_${implementation} || continue
 			if [ -z $rubycmd ]; then
