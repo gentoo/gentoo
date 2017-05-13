@@ -281,7 +281,7 @@ _cdrom_glob_match() {
 		shopt -s extglob nocaseglob nullglob || die
 		# The first person to make this work without an eval wins a
 		# cookie. It breaks without it when spaces are present.
-		eval "ARRAY=( ${p} )"
+		eval "ARRAY=( ${p%\?()} )"
 		echo ${ARRAY[0]}
 	)
 }
