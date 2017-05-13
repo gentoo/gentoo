@@ -11,9 +11,6 @@ elogind
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
 
-# on the way out
-ruby_targets_jruby
-
 # masking here and unmasking in default/linux/
 kmod
 

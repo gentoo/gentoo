@@ -87,9 +87,3 @@ dev-lang/python wide-unicode
 # Forcing w.r.t. bug 265336. When unicode use-flag is
 # turned off, ABI is broken without a .so bump.
 dev-libs/libpcre unicode
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (14 Jan 2010)
-# List of packages working on a single (non-default) Ruby
-# implementation that cannot, thus, be turned off.
-dev-ruby/bitescript ruby_targets_jruby
-dev-ruby/duby ruby_targets_jruby
