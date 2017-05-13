@@ -2364,7 +2364,7 @@ app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.4-r1 0.4.5 0.4.6: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 23 26b: graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 26b: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
 app-text/lout 3.38-r1 3.40: High-level language for document formatting
 app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
@@ -2377,7 +2377,7 @@ app-text/mftrace 1.2.18-r2: Traces TeX fonts to PFA or PFB fonts (formerly pktra
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
-app-text/mupdf 1.10a-r2 1.11 1.11-r1: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.11-r1: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
 app-text/nfoview 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -4730,7 +4730,7 @@ dev-libs/http-fetcher 1.1.0 1.1.0-r1: Library for downloading files via HTTP usi
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 4.4.1 4.4.1-r1: High-performance regular expression matching library
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 58.1-r1 58.2: International Components for Unicode
+dev-libs/icu 58.1-r1 58.2 59.1: International Components for Unicode
 dev-libs/icu-layoutex 58.1 58.2: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
