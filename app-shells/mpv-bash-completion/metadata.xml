@@ -13,6 +13,7 @@
 		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
 	</use>
 	<upstream>
+		<changelog>https://github.com/2ion/mpv-bash-completion/releases</changelog>
 		<remote-id type="github">2ion/mpv-bash-completion</remote-id>
 	</upstream>
 </pkgmetadata>
