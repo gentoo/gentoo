@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 RUBY_OPTIONAL=yes
-USE_RUBY=ruby20
+#USE_RUBY=ruby20
 
 inherit autotools ruby-ng eutils flag-o-matic mono-env multilib java-pkg-opt-2 python-single-r1 multilib-minimal
 
@@ -19,8 +19,8 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x
 IUSE="cxx doc imlib java mono ncurses opengl python ruby slang static-libs test truetype X"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	ruby? ( ruby_targets_${USE_RUBY} )
 "
+#	ruby? ( ruby_targets_${USE_RUBY} )
 
 COMMON_DEPEND="imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
@@ -32,9 +32,9 @@ COMMON_DEPEND="imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
 		truetype? ( >=media-libs/ftgl-2.1.3_rc5 )
 	)
 	python? ( ${PYTHON_DEPS} )
-	ruby? (  $(ruby_implementations_depend) )
 	slang? ( >=sys-libs/slang-2.2.4-r1[${MULTILIB_USEDEP}] )
 	X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )"
+#	ruby? (  $(ruby_implementations_depend) )
 RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.5 )"
 DEPEND="${COMMON_DEPEND}
