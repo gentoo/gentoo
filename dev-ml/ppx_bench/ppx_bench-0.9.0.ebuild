@@ -7,7 +7,6 @@ DESCRIPTION="Syntax extension for writing in-line benchmarks in ocaml code"
 HOMEPAGE="https://github.com/janestreet/ppx_bench"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
