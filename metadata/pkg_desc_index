@@ -8532,6 +8532,7 @@ dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1 0.3.1: Adds backup-s
 dev-python/rdflib 4.2.1: RDF library containing a triple store and parser/serializer
 dev-python/readlike 0.1.2: a python library similar to readline
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
+dev-python/readme_renderer 17.2: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.8.2 9999: Python library that performs advanced searches in strings
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
 dev-python/recommonmark 0.4.0: Python docutils-compatibility bridge to CommonMark
@@ -14810,7 +14811,7 @@ net-irc/sic 1.1 1.2: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.7 4.0.6: An advanced Internet Relay Chat daemon
-net-irc/weechat 1.4-r1 1.7-r1 1.7.1 9999: Portable and multi-interface IRC client
+net-irc/weechat 1.4-r1 1.7-r1 1.7.1 1.8 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.4-r1 1.6.3-r1 1.6.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
