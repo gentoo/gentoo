@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jmmv/atf/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~x86"
 IUSE=""
 
 DEPEND="virtual/pkgconfig"
