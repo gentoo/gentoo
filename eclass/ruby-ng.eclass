@@ -14,7 +14,6 @@
 # and their incorporation into the Gentoo Linux system.
 #
 # Currently available targets are:
-#  * ruby20 - Ruby (MRI) 2.0.x
 #  * ruby21 - Ruby (MRI) 2.1.x
 #  * ruby22 - Ruby (MRI) 2.2.x
 #  * ruby23 - Ruby (MRI) 2.3.x
@@ -118,7 +117,7 @@ _ruby_get_all_impls() {
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19)
+			ruby19|ruby20)
 				;;
 			*)
 				echo ${i};;
