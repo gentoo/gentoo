@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	sci-mathematics/cgal
+	>=sci-mathematics/cgal-4.9
 	cairo? (
 		dev-cpp/cairomm
 		dev-python/pycairo[${PYTHON_USEDEP}]
