@@ -36,15 +36,15 @@ src_prepare() {
 	# Monkeypatching dependencies to avoid parallel make failure
 	echo "picl.o: picl.c y.tab.h" >> pic/Makefile.mk
 
-    # Fixing compilation issues
+  # Fixing compilation issues
 	sed -i -e 's:e.h:e.h y.tab.h:' eqn/eqn.d/Makefile.mk
 	sed -i -e 's:y.tab.h y.tab.h:y.tab.h:' eqn/eqn.d/Makefile.mk
 
-    sed -i -e 's:e.h:e.h y.tab.h:' eqn/neqn.d/Makefile.mk
+  sed -i -e 's:e.h:e.h y.tab.h:' eqn/neqn.d/Makefile.mk
 	sed -i -e 's:y.tab.h y.tab.h:y.tab.h:' eqn/neqn.d/Makefile.mk
 
 	# Move some stuff around to better suit our filesystem layout
-    sed -i -e '/INSTALL.*grap\.defines/s:$(LIBDIR):/usr/share/heirloom/doctools:' \
+  sed -i -e '/INSTALL.*grap\.defines/s:$(LIBDIR):/usr/share/heirloom/doctools:' \
 		grap/Makefile.mk || die
 	sed -i -e '/GRAPDEFINES/s:LIBDIR:"/usr/share/heirloom/doctools":' \
 		grap/main.c || die
@@ -99,9 +99,9 @@ src_configure() {
 
 src_compile() {
 	emake $(use cxx && echo MPM=mpm) \
-	BINDIR="/usr/bin" \
+  BINDIR="/usr/bin" \
 	LIBDIR="/usr/share/heirloom/doctools" \
-	PUBDIR="/usr/share/heirloom/doctools/pub" \
+  PUBDIR="/usr/share/heirloom/doctools/pub" \
 	MANDIR="/usr/share/man" \
 	MACDIR="/usr/share/heirloom/doctools/tmac" \
 	FNTDIR="/usr/share/heirloom/doctools/font" \
@@ -117,7 +117,7 @@ src_install() {
 
 	# The build system uses the ROOT variable in place of DESTIDR.
 	emake $(use cxx && echo MPM=mpm) INSTALL="/usr/bin/install" STRIP="/usr/bin/strip" \
-    BINDIR="/usr/bin" \
+  BINDIR="/usr/bin" \
 	LIBDIR="/usr/share/heirloom/doctools" \
 	PUBDIR="/usr/share/heirloom/doctools/pub" \
 	MANDIR="/usr/share/man" \
@@ -137,7 +137,7 @@ src_install() {
 	mv "${D}"usr/bin/{,hl-}ptx || die
 	mv "${D}"/usr/share/man/man1/{,hl-}ptx.1 || die
 
-    mv "${D}"usr/bin/{,hl-}col || die
+  mv "${D}"usr/bin/{,hl-}col || die
 
 	# Rename ta to avoid a collision with app-cdr/pxlinux
 	mv "${D}"usr/bin/{,hl-}ta || die
