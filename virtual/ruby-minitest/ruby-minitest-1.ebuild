@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 jruby"
+USE_RUBY="ruby21 ruby22"
 
 inherit ruby-ng
 
@@ -12,5 +12,4 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-f
 
 RDEPEND="
 	ruby_targets_ruby21? ( || ( dev-ruby/minitest[ruby_targets_ruby21] dev-lang/ruby:2.1 ) )
-	ruby_targets_ruby22? ( || ( dev-ruby/minitest[ruby_targets_ruby22] dev-lang/ruby:2.2 ) )
-	ruby_targets_jruby? ( dev-ruby/minitest[ruby_targets_jruby] )"
+	ruby_targets_ruby22? ( || ( dev-ruby/minitest[ruby_targets_ruby22] dev-lang/ruby:2.2 ) )"
