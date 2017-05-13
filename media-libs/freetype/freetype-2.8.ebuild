@@ -3,37 +3,30 @@
 
 EAPI=6
 
-SCM=
-[[ "${PV}" = 9999 ]] && SCM="autotools git-r3"
-inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-funcs ${SCM}
-unset SCM
+inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-funcs
 
 INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="http://www.freetype.org/"
-IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug fontforge harfbuzz
-	infinality png static-libs utils"
-
-if [[ "${PV}" != 9999 ]] ; then
-	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
-		mirror://nongnu/freetype/${P/_/}.tar.bz2
-		utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2
-			mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
-		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
-			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-	IUSE+="doc"
-fi
+SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
+	mirror://nongnu/freetype/${P/_/}.tar.bz2
+	utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2
+		mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
+	doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
+		mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug doc fontforge harfbuzz
+	infinality png static-libs utils"
 RESTRICT="!bindist? ( bindist )" # bug 541408
 
 CDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	harfbuzz? ( >=media-libs/harfbuzz-0.9.19[truetype,${MULTILIB_USEDEP}] )
-	png? ( >=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}] )
+	png? ( >=media-libs/libpng-1.2.51:=[${MULTILIB_USEDEP}] )
 	utils? (
 		X? (
 			>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
@@ -43,7 +36,8 @@ CDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
-RDEPEND="${CDEPEND}"
+RDEPEND="${CDEPEND}
+	abi_x86_32? ( utils? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] ) )"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
@@ -51,53 +45,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.7-enable-valid.patch
 
 	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
+
+	# patches from upstream (can be removed with the next version bump)
 )
 
-src_fetch() {
-	if [[ "${PV}" = 9999 ]] ; then
-		local EGIT_REPO_URI
-		EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2.git"
-		git-r3_src_fetch
-		if use utils ; then
-			EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2-demos.git"
-			git-r3_src_fetch
-		fi
-	else
-		default
-	fi
-}
-
-src_unpack() {
-	if [[ "${PV}" = 9999 ]] ; then
-		local EGIT_REPO_URI
-		EGIT_REPO_URI="http://git.savannah.gnu.org/r/freetype/freetype2.git"
-		git-r3_src_unpack
-		if use utils ; then
-			EGIT_REPO_URI="http://git.savannah.gnu.org/r/freetype/freetype2-demos.git"
-			local EGIT_CHECKOUT_DIR="${WORKDIR}/ft2demos-${PV}"
-			git-r3_src_unpack
-		fi
-	else
-		default
-	fi
-}
-
 src_prepare() {
-	if [[ "${PV}" = 9999 ]] ; then
-		# inspired by shipped autogen.sh script
-		eval $(sed -nf version.sed include/freetype/freetype.h)
-		pushd builds/unix &>/dev/null || die
-		sed -e "s;@VERSION@;$freetype_major$freetype_minor$freetype_patch;" \
-			< configure.raw > configure.ac || die
-		# eautoheader produces broken ftconfig.in
-		eautoheader() { return 0 ; }
-		AT_M4DIR="." eautoreconf
-		unset freetype_major freetype_minor freetype_patch
-		popd &>/dev/null || die
-	fi
-
-	default
-
 	enable_option() {
 		sed -i -e "/#define $1/ { s:/\* ::; s: \*/:: }" \
 			include/${PN}/config/ftoption.h \
@@ -109,6 +61,8 @@ src_prepare() {
 			include/${PN}/config/ftoption.h \
 			|| die "unable to disable option $1"
 	}
+
+	default
 
 	# Will be the new default for >=freetype-2.7.0
 	disable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
@@ -218,7 +172,7 @@ multilib_src_install_all() {
 	fi
 
 	dodoc docs/{CHANGES,CUSTOMIZE,DEBUG,INSTALL.UNIX,*.txt,PROBLEMS,TODO}
-	if [[ "${PV}" != 9999 ]] && use doc ; then
+	if use doc ; then
 		docinto html
 		dodoc -r docs/*
 	fi
