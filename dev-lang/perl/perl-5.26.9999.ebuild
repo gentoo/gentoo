@@ -16,8 +16,8 @@ if [[ "${PV##*.}" == "9999" ]]; then
 	# for circular reasons
 	# Greatest first, don't include yourself
 	PERL_BIN_OLDVERSEN=""
-	PERL_OLDVERSEN="5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
-	DIST_VERSION=5.25.12
+	PERL_OLDVERSEN="5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
+	DIST_VERSION=5.26.0-RC1
 	SHORT_PV="${DIST_VERSION%.*}"
 	# Devel Releases are not ABI-intercompatible
 	SUBSLOT="${DIST_VERSION}"
@@ -27,7 +27,7 @@ if [[ "${PV##*.}" == "9999" ]]; then
 else
 	PERL_BIN_OLDVERSEN=""
 	# Compat reasons
-	PERL_OLDVERSEN="5.25.11"
+	PERL_OLDVERSEN="5.25.12 5.25.11"
 	# First 2 digits only
 	SHORT_PV="${PV%.*}"
 	SUBSLOT="${SHORT_PV}"
