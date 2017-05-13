@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit flag-o-matic cuda autotools-multilib multilib versionator
+inherit autotools cuda flag-o-matic versionator multilib-minimal
 
 MY_PV=v$(get_version_component_range 1-2)
 
@@ -35,36 +35,36 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
 
+PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )
 DOCS=( AUTHORS NEWS README VERSION )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.8.1-gl.patch"
-)
-AUTOTOOLS_AUTORECONF=1
-
 src_prepare() {
+	default
+	eautoreconf
+
 	if use cuda ; then
-		append-cflags -I/opt/cuda/include
-		append-cppflags -I/opt/cuda/include
+		append-cflags -I"${EPREFIX}"/opt/cuda/include
+		append-cppflags -I"${EPREFIX}"/opt/cuda/include
 	fi
-	autotools-utils_src_prepare
 }
 
 multilib_src_configure() {
 	export HWLOC_PKG_CONFIG=$(tc-getPKG_CONFIG) #393467
-	use cuda && local LDFLAGS="${LDFLAGS} -L/opt/cuda/$(get_libdir)"
-	local myeconfargs=(
-		--disable-silent-rules
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
-		$(use_enable cairo)
-		$(use_enable cuda)
-		$(use_enable debug)
-		$(multilib_native_use_enable gl)
-		$(use_enable pci)
-		$(use_enable plugins)
-		$(use_enable numa libnuma)
-		$(use_enable xml libxml2)
+
+	if use cuda ; then
+		local -x LDFLAGS="${LDFLAGS}"
+		append-ldflags -L"${EPREFIX}"/opt/cuda/$(get_libdir)
+	fi
+
+	ECONF_SOURCE=${S} econf \
+		$(use_enable static-libs static) \
+		$(use_enable cairo) \
+		$(use_enable cuda) \
+		$(use_enable debug) \
+		$(multilib_native_use_enable gl) \
+		$(use_enable pci) \
+		$(use_enable plugins) \
+		$(use_enable numa libnuma) \
+		$(use_enable xml libxml2) \
 		$(use_with X x)
-	)
-	autotools-utils_src_configure
 }
