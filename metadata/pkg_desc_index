@@ -12927,7 +12927,7 @@ media-libs/freeimage 3.15.4-r1: Image library supporting many formats
 media-libs/freetype 2.6.3-r1 2.6.5 2.7.1-r1 2.7.1-r2 9999: A high-quality and portable font engine
 media-libs/freeverb3 3.1.2_pre20151102 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution library including Audacious/JACK plugins
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
-media-libs/game-music-emu 0.6.0-r1 0.6.1: Video game music file emulators
+media-libs/game-music-emu 0.6.1: Video game music file emulators
 media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.2.0 1.4.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.4: A graphics library for fast image creation
