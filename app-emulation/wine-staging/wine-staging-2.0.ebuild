@@ -29,7 +29,7 @@ STAGING_DIR="${WORKDIR}/${STAGING_P}"
 WDC_V="20150204"
 WINE_DESKTOP_COMMON_P="wine-desktop-common-${WDC_V}"
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
 HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	https://github.com/NP-Hardass/wine-desktop-common/archive/${WDC_V}.tar.gz -> ${WINE_DESKTOP_COMMON_P}.tar.gz
