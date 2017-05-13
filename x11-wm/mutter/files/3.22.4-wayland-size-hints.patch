@@ -1,0 +1,56 @@
+From 40a3d67698dc992d084886e01b07a78d438bbf8e Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <ofourdan@redhat.com>
+Date: Wed, 10 May 2017 08:59:53 +0200
+Subject: [PATCH 4/5] wayland: Apply size hints regardless of geometry
+
+Previously we would bail out early in xdg_toplevel_role_commit() if no
+geometry change was set, ignoring the possible min/max size hints
+changes.
+
+But setting a min/max size hint without changing the geometry is
+perfectly valid, so we ought to apply the min/max changes regardless of
+a geometry change.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=782213
+---
+ src/wayland/meta-wayland-xdg-shell.c | 22 ++++++++++------------
+ 1 file changed, 10 insertions(+), 12 deletions(-)
+
+diff --git a/src/wayland/meta-wayland-xdg-shell.c b/src/wayland/meta-wayland-xdg-shell.c
+index 87a8382..bd576f6 100644
+--- a/src/wayland/meta-wayland-xdg-shell.c
++++ b/src/wayland/meta-wayland-xdg-shell.c
+@@ -615,20 +615,18 @@ xdg_toplevel_role_commit (MetaWaylandSurfaceRole  *surface_role,
+   if (!window)
+     return;
+ 
+-  if (!pending->has_new_geometry)
++  if (pending->has_new_geometry)
+     {
+-      if (pending->dx != 0 || pending->dx != 0)
+-        {
+-          g_warning ("XXX: Attach-initiated move without a new geometry. This is unimplemented right now.");
+-        }
+-      return;
++      window_geometry = meta_wayland_xdg_surface_get_window_geometry (xdg_surface);
++      meta_window_wayland_move_resize (window,
++                                       &xdg_surface_priv->acked_configure_serial,
++                                       window_geometry,
++                                       pending->dx, pending->dy);
++    }
++  else if (pending->dx != 0 || pending->dx != 0)
++    {
++      g_warning ("XXX: Attach-initiated move without a new geometry. This is unimplemented right now.");
+     }
+-
+-  window_geometry = meta_wayland_xdg_surface_get_window_geometry (xdg_surface);
+-  meta_window_wayland_move_resize (window,
+-                                   &xdg_surface_priv->acked_configure_serial,
+-                                   window_geometry,
+-                                   pending->dx, pending->dy);
+ 
+   /* When we get to this point, we ought to have valid size hints */
+   if (pending->has_new_min_size || pending->has_new_max_size)
+-- 
+2.10.1
+
