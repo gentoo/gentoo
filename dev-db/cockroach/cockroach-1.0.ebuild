@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">=dev-lang/go-1.8.1"
+DEPEND=">=app-arch/xz-utils-5.2.3
+	>=dev-lang/go-1.8.1
+	>=dev-util/cmake-3.8.1"
 
 S="${WORKDIR}/cockroach-${MY_PV}"
 
