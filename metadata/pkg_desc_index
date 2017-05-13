@@ -18789,7 +18789,7 @@ x11-misc/autocutsel 0.10.0: Synchronise the two copy/paste buffers mainly used b
 x11-misc/basqet 0.2.0-r1: Keep your notes, pictures, ideas, and information in Baskets
 x11-misc/bbacpi 0.1.5-r3: ACPI monitor for X11
 x11-misc/bbcd 0.3.1-r2: Basic CD Player for blackbox wm
-x11-misc/bbdate 0.2.4-r1 0.2.4-r2: blackbox date display
+x11-misc/bbdate 0.2.4-r2: blackbox date display
 x11-misc/bbkeys 0.9.1-r1: Use keyboard shortcuts in the blackbox wm
 x11-misc/bblaunch 0.0.3: An application launcher for Blackbox type window managers
 x11-misc/bbmail 0.9.3-r1: blackbox mail notification
@@ -19001,7 +19001,7 @@ x11-misc/wmname 0.1-r1: utility to set the name of your window manager
 x11-misc/x11vnc 0.9.13_p20150111 0.9.14_p20161013: A VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
-x11-misc/xaos 3.5-r1 3.6: Very fast real-time fractal zoomer
+x11-misc/xaos 3.6: Very fast real-time fractal zoomer
 x11-misc/xautolock 2.2_p5_p1: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.09-r1: Control X from command line and find things on screen
 x11-misc/xbatt 1.2.1-r1 1.3_rc1: Notebook battery indicator for X
