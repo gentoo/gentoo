@@ -1,0 +1,47 @@
+From ca31a94e54819b5bfeccbeef4e7c041bbef15eac Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <ofourdan@redhat.com>
+Date: Fri, 5 May 2017 13:55:51 +0200
+Subject: [PATCH 3/5] wayland: Make sure we have a pending geometry
+
+If the client doesn't set a geometry using xdg_shell, we'll compute its
+geometry based on its surface and subsurfaces.
+
+Yet, we translate that as a window (re)size only when there is a pending
+geometry, that we don't have when we computed the geometry by ourself.
+
+Make sure we set the pending new geometry flag when computing the
+geometry when it actually changed.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=782213
+---
+ src/wayland/meta-wayland-xdg-shell.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/meta-wayland-xdg-shell.c b/src/wayland/meta-wayland-xdg-shell.c
+index aa355da..87a8382 100644
+--- a/src/wayland/meta-wayland-xdg-shell.c
++++ b/src/wayland/meta-wayland-xdg-shell.c
+@@ -1263,11 +1263,19 @@ xdg_surface_role_commit (MetaWaylandSurfaceRole  *surface_role,
+     }
+   else if (!priv->has_set_geometry)
+     {
++      MetaRectangle new_geometry = { 0 };
++
+       /* If the surface has never set any geometry, calculate
+        * a default one unioning the surface and all subsurfaces together. */
++
+       meta_wayland_surface_calculate_window_geometry (surface,
+-                                                      &priv->geometry,
++                                                      &new_geometry,
+                                                       0, 0);
++      if (!meta_rectangle_equal (&new_geometry, &priv->geometry))
++        {
++          pending->has_new_geometry = TRUE;
++          priv->geometry = new_geometry;
++        }
+     }
+ }
+ 
+-- 
+2.10.1
+
