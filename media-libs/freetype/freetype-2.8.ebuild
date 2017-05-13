@@ -14,13 +14,12 @@ SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
 	utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2
 		mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
 	doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
-		mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )
-	infinality? ( https://dev.gentoo.org/~polynomial-c/${INFINALITY_PATCH}.xz )"
+		mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="X +adobe-cff bindist bzip2 debug doc fontforge harfbuzz
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug doc fontforge harfbuzz
 	infinality png static-libs utils"
 RESTRICT="!bindist? ( bindist )" # bug 541408
 
@@ -43,32 +42,42 @@ PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
 	# This is the same as the 01 patch from infinality
-	"${FILESDIR}"/${PN}-2.3.2-enable-valid.patch
+	"${FILESDIR}"/${PN}-2.7-enable-valid.patch
 
 	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
+
+	# patches from upstream (can be removed with the next version bump)
 )
 
 src_prepare() {
 	enable_option() {
-		sed -i -e "/#define $1/a #define $1" \
+		sed -i -e "/#define $1/ { s:/\* ::; s: \*/:: }" \
 			include/${PN}/config/ftoption.h \
 			|| die "unable to enable option $1"
 	}
 
 	disable_option() {
-		sed -i -e "/#define $1/ { s:^:/*:; s:$:*/: }" \
+		sed -i -e "/#define $1/ { s:^:/* :; s:$: */: }" \
 			include/${PN}/config/ftoption.h \
 			|| die "unable to disable option $1"
 	}
 
 	default
 
-	if use infinality; then
-		eapply "${WORKDIR}/${INFINALITY_PATCH}"
+	# Will be the new default for >=freetype-2.7.0
+	disable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 
-		# FT_CONFIG_OPTION_SUBPIXEL_RENDERING is already enabled in freetype-2.4.11
-		enable_option TT_CONFIG_OPTION_SUBPIXEL_HINTING
+	if use infinality && use cleartype_hinting; then
+		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 )"
+	elif use infinality; then
+		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  1"
+	elif use cleartype_hinting; then
+		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 	fi
+
+	# Can be disabled with FREETYPE_PROPERTIES="pcf:no-long-family-names=1"
+	# via environment (new since v2.8)
+	enable_option PCF_CONFIG_OPTION_LONG_FAMILY_NAMES
 
 	if ! use bindist; then
 		# See http://freetype.org/patents.html
