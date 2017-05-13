@@ -18,7 +18,6 @@
 #  * ruby22 - Ruby (MRI) 2.2.x
 #  * ruby23 - Ruby (MRI) 2.3.x
 #  * ruby24 - Ruby (MRI) 2.4.x
-#  * jruby  - JRuby
 #  * rbx    - Rubinius
 #
 # This eclass does not define the implementation of the configure,
@@ -117,7 +116,7 @@ _ruby_get_all_impls() {
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19|ruby20)
+			ruby19|ruby20|jruby)
 				;;
 			*)
 				echo ${i};;
