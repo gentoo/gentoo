@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://spice-space.org/download/releases/spice-0.13.3.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	c11fc374357e6ad9ddfe2e9f931e4d29	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
-_md5_=47f1eae56d8fc79a2a67bf184bf1cae6
+_md5_=25476af766e7fd609cd16483ba2117c5
