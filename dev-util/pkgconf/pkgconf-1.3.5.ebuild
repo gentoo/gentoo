@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://distfiles.dereferenced.org/pkgconf/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~x86"
 fi
 
 inherit ltprune multilib-minimal
