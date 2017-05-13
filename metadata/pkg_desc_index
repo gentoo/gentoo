@@ -19498,7 +19498,7 @@ x11-wm/marco 1.12.1 1.12.1-r1 1.14.2-r1 1.16.0-r1: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.8.5 3.0.5 3.2.0 3.2.0-r1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.22.4: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.22.4 3.22.4-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20 2.0.20-r1: Small and fast window manager
