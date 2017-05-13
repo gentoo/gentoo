@@ -61,8 +61,6 @@ src_prepare() {
 	eautoreconf
 }
 
-# maintainer notes:
-# * opengl support is currently broken
 src_configure() {
 	# Prevent sandbox violations, bug #586560
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
