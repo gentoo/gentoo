@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,13 +21,13 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	dev-libs/expat
 	dev-libs/libsigc++:2
 	media-libs/libcanberra[gtk]
-	media-libs/tiff
-	media-libs/libpng
+	media-libs/tiff:0
+	media-libs/libpng:0
 	media-libs/libiptcdata
 	media-libs/lcms:2
 	sci-libs/fftw:3.0
 	sys-libs/zlib
-	virtual/jpeg"
+	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"
