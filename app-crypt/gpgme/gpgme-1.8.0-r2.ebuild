@@ -19,7 +19,7 @@ IUSE="common-lisp static-libs cxx python qt5"
 
 COMMON_DEPEND="app-crypt/gnupg
 	>=dev-libs/libassuan-2.0.2
-	>=dev-libs/libgpg-error-1.11
+	>=dev-libs/libgpg-error-1.17
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtcore:5 )"
 	#doc? ( app-doc/doxygen[dot] )
