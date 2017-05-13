@@ -28,7 +28,10 @@ RDEPEND="
 	lz4? ( app-arch/lz4:0=[static-libs(+)?] )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
-	gstreamer? ( media-libs/gstreamer:1.0 )
+	gstreamer? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+	)
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
