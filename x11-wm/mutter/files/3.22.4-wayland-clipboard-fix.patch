@@ -1,0 +1,32 @@
+From 19f08fbdbba113883c6011e4b8ccf3ea3a6eb57e Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 10 May 2017 20:28:42 +0200
+Subject: [PATCH 5/5] xwayland: Use the right atom type for further selection
+ requests to X11
+
+If we translate between text/plain;charset-utf-8 from the wayland side to
+UTF8_STRING on the X11 side, we want to continue all further X11 selection
+requests using the same translated UTF8_STRING atom than we use in the
+first XConvertSelection call.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=782472
+---
+ src/wayland/meta-xwayland-selection.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wayland/meta-xwayland-selection.c b/src/wayland/meta-xwayland-selection.c
+index a78e846..24b8cd2 100644
+--- a/src/wayland/meta-xwayland-selection.c
++++ b/src/wayland/meta-xwayland-selection.c
+@@ -829,7 +829,7 @@ meta_x11_source_send (MetaWaylandDataSource *source,
+   /* Takes ownership of fd */
+   selection->x11_selection =
+     x11_selection_data_new (compositor->xwayland_manager.selection_data,
+-                            fd, mime_type);
++                            fd, gdk_x11_get_xatom_name (type_atom));
+ 
+   XConvertSelection (xdisplay,
+                      selection->selection_atom, type_atom,
+-- 
+2.10.1
+
