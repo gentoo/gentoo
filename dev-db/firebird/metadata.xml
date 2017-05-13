@@ -15,13 +15,7 @@
 	<upstream>
 		<remote-id type="sourceforge">firebird</remote-id>
 	</upstream>
-	<maintainer type="person">
-		<email>bear1650@mail.ru</email>
-		<name>Andrey Matrosov</name>
-		<description>Proxied maintainer, assign bugs to him</description>
-	</maintainer>
 	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>office@gentoo.org</email>
 	</maintainer>
 </pkgmetadata>
