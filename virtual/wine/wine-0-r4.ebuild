@@ -3,11 +3,11 @@
 
 EAPI=6
 
-DESCRIPTION="Virtual for WINE that supports multiple variants and slotting"
+DESCRIPTION="Virtual for Wine that supports multiple variants and slotting"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="staging d3d9"
+IUSE="d3d9 staging"
 
 # Note, the ordering here is intentional, to take advantage of the short-circuit
 # logic of portage, to enforce wine-vanilla as default for new users.  The idea
