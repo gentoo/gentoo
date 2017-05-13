@@ -17,7 +17,7 @@ SRC_URI="https://github.com/GoogleCloudPlatform/google-auth-library-python-httpl
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
 RDEPEND="
