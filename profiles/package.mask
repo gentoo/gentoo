@@ -748,7 +748,6 @@ sys-block/afacli
 # Tom Wijsman <TomWij@gentoo.org> (03 May 2014)
 # Needs to be further tested and revised by both Java and Ruby herds.
 >=dev-java/jruby-1.7.12
-dev-ruby/bitescript
 dev-ruby/duby
 dev-ruby/weakling
 
