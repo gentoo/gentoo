@@ -13,7 +13,6 @@ curl_ssl_winssl
 
 # on the way out
 ruby_targets_jruby
-ruby_targets_ruby19
 ruby_targets_ruby20
 
 # masking here and unmasking in default/linux/
