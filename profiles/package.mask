@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (14 May 2017)
+# Unmaintained upstream, awful codebase. No reverse
+# dependencies. See #594134. To be removed in 30 days.
+sys-fabric/libibvpp
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (13 May 2017)
 # Work in progress
 =dev-db/firebird-3*
