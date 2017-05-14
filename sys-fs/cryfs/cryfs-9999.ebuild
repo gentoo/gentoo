@@ -32,7 +32,7 @@ RDEPEND=">=dev-libs/boost-1.56:=
 	>=dev-libs/crypto++-5.6.3:=
 	net-misc/curl:=
 	>=sys-fs/fuse-2.8.6:=
-	dev-libs/openssl:="
+	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	|| ( >=sys-devel/gcc-4.8 >=sys-devel/clang-3.7 )"
