@@ -1,0 +1,30 @@
+From 476515c2418039e471656f47efbfc43e5230c1fd Mon Sep 17 00:00:00 2001
+From: Isaac Jurado <diptongo@gmail.com>
+Date: Sun, 29 May 2016 10:50:42 +0200
+Subject: [PATCH] Fix the way local time is constructed in tests
+
+In summer time zones, the test for "get_timezone_name" failed because the
+construct used to obtain a local time did not deal properly with DST offsets.
+As recommended by pytz, it is better to convert to local time from UTC.
+---
+ tests/test_dates.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_dates.py b/tests/test_dates.py
+index 3bb9e8b..b0d093e 100644
+--- a/tests/test_dates.py
++++ b/tests/test_dates.py
+@@ -624,8 +624,9 @@ def test_get_timezone_name():
+     assert dates.get_timezone_name(tz, locale='en', width='long',
+                                    zone_variant='daylight') == u'Pacific Daylight Time'
+ 
++    localnow = datetime.utcnow().replace(tzinfo=timezone('UTC')).astimezone(dates.LOCALTZ)
+     assert (dates.get_timezone_name(None, locale='en_US') ==
+-            dates.get_timezone_name(datetime.now().replace(tzinfo=dates.LOCALTZ), locale='en_US'))
++            dates.get_timezone_name(localnow, locale='en_US'))
+ 
+     assert (dates.get_timezone_name('Europe/Berlin', locale='en_US') == "Central European Time")
+ 
+-- 
+2.13.0
+
