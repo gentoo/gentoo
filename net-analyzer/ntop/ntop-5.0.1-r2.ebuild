@@ -41,7 +41,6 @@ RDEPEND="
 	app-arch/gzip
 	dev-libs/glib:2
 	dev-python/mako
-	media-fonts/corefonts
 	media-gfx/graphviz
 	net-misc/wget
 "
