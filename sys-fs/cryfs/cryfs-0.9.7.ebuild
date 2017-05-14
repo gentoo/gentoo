@@ -12,12 +12,10 @@ HOMEPAGE="https://www.cryfs.org/"
 SLOT=0
 IUSE="debug test update-check"
 
-LICENSE="LGPL-3 BSD-2 MIT
-	test? ( BSD )"
+LICENSE="LGPL-3 BSD-2 MIT"
 # cryfs - LGPL-3
 # scrypt - BSD-2
 # spdlog - MIT
-# googletest - BSD
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
