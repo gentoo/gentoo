@@ -3,10 +3,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 PDNS_CONFIGDIR="${PDNS_CONFIGDIR:-/etc/powerdns}"
-PDNS_SOCKETDIR="${PDNS_SOCKETDIR:-/var/lib/powerdns}"
 PDNS_STOP_TIMEOUT="${PDNS_STOP_TIMEOUT:-10}"
 
-name="PowerDNS Authoritative Server"
+[ "${RC_SVCNAME}" != "pdns" ] && PDNS_INSTANCE="${RC_SVCNAME#pdns[.-]}" || PDNS_INSTANCE=""
+
+PDNS_CONFIG="${PDNS_CONFIGDIR}/pdns${PDNS_INSTANCE:+-${PDNS_INSTANCE}}.conf"
+PDNS_CHROOTDIR="$( awk -F = '$1 == "chroot" { print $2 }' "${PDNS_CONFIG}" )"
+PDNS_SOCKETDIR="$( awk -F = '$1 == "socket-dir" { print $2 }' "${PDNS_CONFIG}" )"
+[ -z "${PDNS_SOCKETDIR}" -a -z "${PDNS_CHROOTDIR}" ] && PDNS_SOCKETDIR="/var/run"
+
+name="PowerDNS Authoritative Server${PDNS_INSTANCE:+ (${PDNS_INSTANCE})}"
 description="Authoritative name server"
 
 extra_started_commands="dump ping"
@@ -16,19 +22,12 @@ description_ping="Ping the PowerDNS instance"
 description_monitor="Starts in foreground with logging and console enabled"
 
 command="/usr/sbin/pdns_server"
-command_args="--config-dir=${PDNS_CONFIGDIR} --socket-dir=${PDNS_SOCKETDIR}"
+command_args="--config-dir=${PDNS_CONFIGDIR}${PDNS_INSTANCE:+ --config-name=${PDNS_INSTANCE}}"
 command_args_foreground="--daemon=no"
 command_args_background="--daemon=yes"
 yesno ${rc_verbose} || command_args_background="${command_args_background} >/dev/null 2>&1"
 
-if [ "${RC_SVCNAME}" != "pdns" ]; then
-	PDNS_INSTANCE="${RC_SVCNAME#pdns[.-]}"
-	name="${name} (${PDNS_INSTANCE})"
-	command_args="${command_args} --config-name=${PDNS_INSTANCE}"
-	pidfile="${PDNS_SOCKETDIR}/pdns-${PDNS_INSTANCE}.pid"
-else
-	pidfile="${PDNS_SOCKETDIR}/pdns.pid"
-fi
+pidfile="${PDNS_CHROOTDIR}/${PDNS_SOCKETDIR}/pdns${PDNS_INSTANCE:+-${PDNS_INSTANCE}}.pid"
 
 control_command="/usr/bin/pdns_control"
 control_command_args="${command_args}"
@@ -60,7 +59,7 @@ wait_for_stop() {
 			return 0
 		fi
 		: $(( timeout -= 1 ))
-		echo -n .
+		printf .
 	done
 
 	echo
@@ -85,11 +84,11 @@ ping() {
 monitor() {
 	einfo "Starting ${name} in monitor mode"
 
-	echo ""
-	echo "************************************************"
-	echo "* Use \"QUIT\" or Ctrl-C to end monitoring mode! *"
-	echo "************************************************"
-	echo ""
+	echo
+	echo '************************************************'
+	echo '* Use "QUIT" or Ctrl-C to end monitoring mode! *'
+	echo '************************************************'
+	echo
 
 	${command} \
 		${command_args} \
