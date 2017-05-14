@@ -37,17 +37,9 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 src_configure() {
-	local mycmakeargs=("-DBoost_USE_STATIC_LIBS=off")
-
-	if use update-check ; then
-		mycmakeargs+=("-DCRYFS_UPDATE_CHECKS=on")
-	else
-		mycmakeargs+=("-DCRYFS_UPDATE_CHECKS=off")
-	fi
-
-	if use test ; then
-		mycmakeargs+=("-DBUILD_TESTING=on")
-	fi
+	local mycmakeargs=( "-DBoost_USE_STATIC_LIBS=off"
+						"-DCRYFS_UPDATE_CHECKS=$(xuse update-check)"
+						"-DBUILD_TESTING=$(xuse test)" )
 
 	if use debug ; then
 		CMAKE_BUILD_TYPE=Debug
