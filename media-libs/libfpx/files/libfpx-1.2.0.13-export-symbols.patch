@@ -1,8 +1,8 @@
 * At least the Darwin linker doesn't like double symbols during the
   final linking stage...
 
---- jpeg/jpegconf.h
-+++ jpeg/jpegconf.h
+--- a/jpeg/jpegconf.h
++++ b/jpeg/jpegconf.h
 @@ -27,6 +27,6 @@
  #   pragma warning(disable : 4244)
  #   pragma warning(disable : 4142)
