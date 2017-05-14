@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -50,8 +50,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/389-ds-base-1.3.5-stdc.patch"
-
 	# as per 389 documentation, when 64bit, export USE_64
 	use amd64 && export USE_64=1
 
@@ -89,7 +87,8 @@ src_compile() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install
+	# -j1 is a temporary workaround for bug #605432
+	emake -j1 DESTDIR="${D}" install
 
 	# Install gentoo style init script
 	# Get these merged upstream
