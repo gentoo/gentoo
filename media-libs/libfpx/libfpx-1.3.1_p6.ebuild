@@ -15,10 +15,13 @@ IUSE="static-libs"
 
 S=${WORKDIR}/${P/_p/-}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.2.0.13-export-symbols.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.0.13-export-symbols.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
-	eapply_user
+src_prepare() {
+	default
 
 	# we're not windows, even though we don't define __unix by default
 	[[ ${CHOST} == *-darwin* ]] && append-flags -D__unix
