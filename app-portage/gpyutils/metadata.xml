@@ -10,7 +10,7 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://bitbucket.org/mgorny/gpyutils/issues/</bugs-to>
-    <remote-id type="bitbucket">mgorny/gpyutils</remote-id>
+    <bugs-to>https://github.com/mgorny/gpyutils/issues/</bugs-to>
+    <remote-id type="github">mgorny/gpyutils</remote-id>
   </upstream>
 </pkgmetadata>
