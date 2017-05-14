@@ -34,9 +34,7 @@ RDEPEND=">=dev-libs/boost-1.56:=
 	>=sys-fs/fuse-2.8.6:=
 	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-	|| ( >=sys-devel/gcc-4.8 >=sys-devel/clang-3.7 )"
-CMAKE_MIN_VERSION="2.8"
+	${PYTHON_DEPS}"
 
 src_configure() {
 	local mycmakeargs=("-DBoost_USE_STATIC_LIBS=off")
