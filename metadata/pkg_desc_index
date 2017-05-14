@@ -97,7 +97,7 @@ app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
 app-admin/filebeat 5.1.2 5.2.2 5.3.1: Lightweight log shipper for Logstash and Elasticsearch
-app-admin/filewatcher 2.4.6: This is a configuration file control system and IDS
+app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
@@ -15495,7 +15495,7 @@ net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 9999: A command line utility for
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
-net-nds/389-ds-base 1.3.4.14 1.3.5.15-r1 9999: 389 Directory Server (core librares and daemons )
+net-nds/389-ds-base 1.3.4.14 1.3.5.17 9999: 389 Directory Server (core librares and daemons )
 net-nds/adtool 1.3.3: Utility for Active Directory administration
 net-nds/gosa-core 2.6.12: LDAP administration frontend for user administration
 net-nds/gosa-plugin-mail 2.6.12 2.6.12-r1: GOsa plugin for Mail integration
