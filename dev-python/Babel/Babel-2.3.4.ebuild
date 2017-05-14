@@ -35,7 +35,8 @@ python_prepare_all() {
 python_test() {
 	# Create implementation-specific datadir for tests.
 	cp -R -l tests/messages/data "${BUILD_DIR}"/ || die
-	export BUILD_DIR
+	# https://bugs.gentoo.org/show_bug.cgi?id=618448
+	export TZ=UTC
 	py.test || die
 }
 
