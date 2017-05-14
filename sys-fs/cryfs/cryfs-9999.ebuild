@@ -10,7 +10,7 @@ DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
 SLOT=0
-IUSE="-update-check -test -debug"
+IUSE="debug test update-check"
 
 LICENSE="LGPL-3 BSD-2 MIT
 	test? ( BSD )"
