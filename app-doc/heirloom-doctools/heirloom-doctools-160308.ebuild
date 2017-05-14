@@ -9,7 +9,7 @@ SRC_URI="https://github.com/n-t-roff/heirloom-doctools/releases/download/${PV}/$
 LICENSE="CDDL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cxx mpm"
+IUSE="cxx"
 
 RDEPEND="!sys-apps/groff"
 DEPEND="sys-devel/flex
@@ -47,14 +47,14 @@ src_configure() {
 }
 
 src_compile() {
-	emake $(use cxx && echo MPM=$(usex mpm mpm ''))
+	emake $(use cxx && echo MPM=$(usex cxx mpm ''))
 }
 
 src_install() {
 	dodir /usr/share/heirloom/{doc,ref}tools
 
 	# The build system uses the ROOT variable in place of DESTIDR.
-	emake $(use cxx && echo MPM=$(usex mpm '')) ROOT="${D}" install
+	emake $(use cxx && echo MPM=$(usex cxx mpm '')) ROOT="${D}" install
 
 	dodoc README CHANGES
 
