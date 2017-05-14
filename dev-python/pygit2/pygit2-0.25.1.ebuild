@@ -21,6 +21,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/pygit2-0.25.1-cffi-1.10.patch
+)
+
 python_test() {
 	esetup.py test
 }

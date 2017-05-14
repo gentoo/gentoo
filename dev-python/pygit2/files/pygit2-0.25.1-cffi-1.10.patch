@@ -1,0 +1,55 @@
+From b88dc868423af2f760f649960112efd0e37e5335 Mon Sep 17 00:00:00 2001
+From: Lukas Fleischer <lfleischer@lfos.de>
+Date: Sat, 6 May 2017 21:39:33 +0200
+Subject: [PATCH] Fix parameter passing of describe patterns
+
+When ffi.new() is used to build a new pointer object, the returned
+pointer object has ownership on the allocated memory. When it is
+garbage-collected, then the memory is freed. Thus, we need to make sure
+the original object survives its use, otherwise the casted pointer will
+point to garbage.
+
+This fixes one test which was failing with the latest CFFI version, see
+issue #694. Thus, this commit also reverts 803b1cb (cffi 1.10 not yet
+supported, 2017-03-22) where the latest CFFI version was marked as
+unsupported.
+
+Signed-off-by: Lukas Fleischer <lfleischer@lfos.de>
+---
+ .travis.yml          | 2 +-
+ pygit2/repository.py | 6 +++++-
+ setup.py             | 4 ++--
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/pygit2/repository.py b/pygit2/repository.py
+index 9377aa2..472f4ff 100644
+--- a/pygit2/repository.py
++++ b/pygit2/repository.py
+@@ -692,7 +692,11 @@ def describe(self, committish=None, max_candidates_tags=None,
+         if describe_strategy is not None:
+             options.describe_strategy = describe_strategy
+         if pattern:
+-            options.pattern = ffi.new('char[]', to_bytes(pattern))
++            # The returned pointer object has ownership on the allocated
++            # memory. Make sure it is kept alive until git_describe_commit() or
++            # git_describe_workdir() are called below.
++            pattern_char = ffi.new('char[]', to_bytes(pattern))
++            options.pattern = pattern_char
+         if only_follow_first_parent is not None:
+             options.only_follow_first_parent = only_follow_first_parent
+         if show_commit_oid_as_fallback is not None:
+diff --git a/setup.py b/setup.py
+index f4a9f8c..18d3eb0 100644
+--- a/setup.py
++++ b/setup.py
+@@ -203,8 +203,8 @@ def run(self):
+       long_description=long_description,
+       packages=['pygit2'],
+       package_data={'pygit2': ['decl.h']},
+-      setup_requires=['cffi<1.10'],
+-      install_requires=['cffi<1.10', 'six'],
++      setup_requires=['cffi'],
++      install_requires=['cffi', 'six'],
+       zip_safe=False,
+       cmdclass=cmdclass,
+       **extra_args)
