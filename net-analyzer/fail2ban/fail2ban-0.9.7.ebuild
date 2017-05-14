@@ -5,15 +5,15 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils systemd git-r3
+inherit distutils-r1 eutils systemd vcs-snapshot
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="http://www.fail2ban.org/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="selinux systemd"
 
 # TODO support ipfw and ipfilter
