@@ -14,7 +14,7 @@ inherit eutils systemd user ${ADDITIONAL_ECLASSES}
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer."
 HOMEPAGE="http://dnsdist.org"
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	S="${WORKDIR}/${P}/pdns/dnsdistdist"
 else
@@ -55,15 +55,9 @@ src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
 
 	if use readline ; then
-		# Due to licensing (dnsdsit being GPL-2 and readline GPL-3) dnsdist upstream (PowerDNS people)
-		# compiles and links agains libedit (BSD-2), as upstream does provide binary packages itself.
-		# However, dnsdist will work with readline, too, as it does - when compiled from ports on OpenBSD.
-		# Therefore, the default beahavior here is to compile and link against readline, as to not install
-		# the outdated libedit present in the portage tree, requiring a small change to dnsdist.cc and
-		# dnsdist-console.cc as described in: https://github.com/PowerDNS/pdns/issues/5294
-
 		# sed's --follow-symlinks is a must here for the 9999 version, since those files are placed in ../.
 		# in git, and then symlinked to
+
 		sed --follow-symlinks -i \
 			-e 's~^#include <editline/readline.h>$~#include <readline/readline.h>~g' dnsdist.cc \
 			|| die "dnsdist.cc: Sed broke!"
@@ -72,13 +66,13 @@ src_prepare() {
 			-e 's~^#include <editline/readline.h>$~#include <readline/readline.h>'"\n"'#include <readline/history.h>~g' dnsdist-console.cc \
 			|| die "dnsdist-console.cc: Sed broke!"
 
-		#sed --follow-symlinks -i 's~^ExecStart=@bindir@/dnsdist --supervised --disable-syslog$~ExecStart=@bindir@/dnsdist --supervised --disable-syslog -u dnsdist -g dnsdist~g' \
-		#	dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
+		sed --follow-symlinks -i 's~^ExecStart=@bindir@/dnsdist --supervised --disable-syslog$~ExecStart=@bindir@/dnsdist --supervised --disable-syslog -u dnsdist -g dnsdist~g' \
+			dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
 
-		#if ! use systemd ; then
-		#	sed --follow-symlinks -i \
-		#		-e '/notify/d' dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
-		#fi
+		if ! use systemd ; then
+			# Comment out 'Type=notify' in the systemd service file only when dnsdist is built without the systemd use flag
+			sed --follow-symlinks -i '/notify/s/^/#/g' dnsdist.service.in || die "dnsdist.service.in: Sed broke!"
+		fi
 
 	fi
 }
@@ -114,8 +108,8 @@ src_install() {
 	newconfd "${FILESDIR}"/dnsdist.confd ${PN}
 	newinitd "${FILESDIR}"/dnsdist.initd ${PN}
 
-	if use systemd ; then
-		systemd_dounit "${FILESDIR}"/dnsdist.service
+	if [[ -f dnsdist.service ]]; then
+		systemd_dounit dnsdist.service
 	fi
 }
 
@@ -136,6 +130,6 @@ pkg_postinst() {
 	if use readline ; then
 		ewarn "dnsdist (GPLv2) was linked against readline (GPLv3)."
 		ewarn "A binary distribution should therefore not happen."
-		ewarn "Instead use the bindist and/or libedit USE-flag."
+		ewarn "Should you desire a binary distribution, then set the bindist USE flag."
 	fi
 }
