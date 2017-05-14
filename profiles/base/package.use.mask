@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (14 May 2017)
+# This version experiences random build failures with USE=jit.
+# Since USE=futures needs USE=jit, we have to mask that too.
+=dev-scheme/racket-6.9 futures jit
+
 # Matthias Maier <tamiko@gentoo.org> (11 May 2017)
 # Globally mask pie use flag. Selectively unmask on specific profiles.
 sys-devel/gcc pie
