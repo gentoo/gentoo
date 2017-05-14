@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER="3.0"
 
@@ -36,6 +36,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	default
 	# binary name pwsafe is in use by app-misc/pwsafe, we use passwordsafe
 	# instead. Perform required changes in linking files
 	sed -i install/desktop/pwsafe.desktop -e "s/pwsafe/${PN}/g" || die
