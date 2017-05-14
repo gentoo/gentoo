@@ -3483,7 +3483,8 @@ kde-frameworks/kded:man - Build and install man pages
 kde-frameworks/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
 kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
-kde-frameworks/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
+kde-frameworks/kfilemetadata:epub - Enable support for reading EPUB ebook metadata
+kde-frameworks/kfilemetadata:office - Enable support for reading ODF and OOXML metadata
 kde-frameworks/kimageformats:eps - Support the EPS graphics file format
 kde-frameworks/kinit:caps - Capabilities support for improved security and better OOM handling
 kde-frameworks/kinit:man - Build and install man pages
