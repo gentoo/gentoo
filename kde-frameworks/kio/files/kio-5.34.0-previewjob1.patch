@@ -1,0 +1,64 @@
+From 78c45a1ea0e28a98f34c6d113c807f14700b22d4 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Sun, 14 May 2017 15:40:02 +0200
+Subject: [PATCH 1/2] PreviewJob: clean up empty temp file when get() fails.
+
+(e.g. because it's a directory)
+
+CCBUG: 208625
+---
+ src/widgets/previewjob.cpp | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/src/widgets/previewjob.cpp b/src/widgets/previewjob.cpp
+index 9eae3469..e836f7da 100644
+--- a/src/widgets/previewjob.cpp
++++ b/src/widgets/previewjob.cpp
+@@ -143,6 +143,7 @@ public:
+     void getOrCreateThumbnail();
+     bool statResultThumbnail();
+     void createThumbnail(const QString &);
++    void cleanupTempFile();
+     void determineNextFile();
+     void emitPreview(const QImage &thumb);
+ 
+@@ -409,6 +410,16 @@ void PreviewJob::setIgnoreMaximumSize(bool ignoreSize)
+     d_func()->ignoreMaximumSize = ignoreSize;
+ }
+ 
++void PreviewJobPrivate::cleanupTempFile()
++{
++    if (!tempName.isEmpty()) {
++        Q_ASSERT(!QFileInfo(tempName).isDir());
++        Q_ASSERT(QFileInfo(tempName).isFile());
++        QFile::remove(tempName);
++        tempName.clear();
++    }
++}
++
+ void PreviewJobPrivate::determineNextFile()
+ {
+     Q_Q(PreviewJob);
+@@ -491,6 +502,7 @@ void PreviewJob::slotResult(KJob *job)
+     }
+     case PreviewJobPrivate::STATE_GETORIG: {
+         if (job->error()) {
++            d->cleanupTempFile();
+             d->determineNextFile();
+             return;
+         }
+@@ -499,10 +511,7 @@ void PreviewJob::slotResult(KJob *job)
+         return;
+     }
+     case PreviewJobPrivate::STATE_CREATETHUMB: {
+-        if (!d->tempName.isEmpty()) {
+-            QFile::remove(d->tempName);
+-            d->tempName.clear();
+-        }
++        d->cleanupTempFile();
+         d->determineNextFile();
+         return;
+     }
+-- 
+2.13.0
+
