@@ -6,7 +6,8 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="Frontend to diff3 based on Qt/KF5"
-HOMEPAGE="http://kdiff3.sourceforge.net/"
+HOMEPAGE="http://kdiff3.sourceforge.net/
+https://cgit.kde.org/scratch/thomasfischer/kdiff3.git/log/?h=kf5"
 SRC_URI="http://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -32,3 +33,5 @@ RDEPEND="${DEPEND}
 	!kde-misc/kdiff3:4
 	sys-apps/diffutils
 "
+
+PATCHES=( "${FILESDIR}/${P}-cli-args.patch" )
