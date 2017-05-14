@@ -4,11 +4,11 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/gpyutils.git"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Utitilies for maintaining Python packages"
-HOMEPAGE="https://bitbucket.org/mgorny/gpyutils/"
+HOMEPAGE="https://github.com/mgorny/gpyutils/"
 SRC_URI=""
 
 LICENSE="BSD"
