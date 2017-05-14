@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="epub">Adds support for reading EPUB ebook metadata</flag>
+		<flag name="epub">Enable support for reading EPUB ebook metadata</flag>
+		<flag name="office">Enable support for reading ODF and OOXML metadata</flag>
 	</use>
 </pkgmetadata>
