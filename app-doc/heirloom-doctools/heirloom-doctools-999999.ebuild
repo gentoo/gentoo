@@ -1,10 +1,10 @@
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs multilib
+inherit git-r3 flag-o-matic toolchain-funcs multilib
 
 DESCRIPTION="Classic Unix documentation tools ported from OpenSolaris"
 HOMEPAGE="https://n-t-roff.github.io/heirloom/doctools.html"
-SRC_URI="https://github.com/n-t-roff/heirloom-doctools/releases/download/${PV}/${P}.tar.bz2"
+EGIT_REPO_URI="git://github.com/n-t-roff/heirloom-doctools.git"
 
 LICENSE="CDDL"
 SLOT="0"
@@ -18,14 +18,6 @@ DEPEND="sys-devel/flex
 src_prepare() {
 	# mpm uses C++, we'll build it explicitly if we really want to
 	sed -i -e 's:mpm:$(MPM):' makefile || die
-
-	# Fixing compilation issues
-	# specific for versions =<160308, fixed in -git
-	sed -i -e 's:e.h:e.h y.tab.h:' eqn/eqn.d/Makefile.mk || die
-	sed -i -e 's:y.tab.h y.tab.h:y.tab.h:' eqn/eqn.d/Makefile.mk || die
-
-	sed -i -e 's:e.h:e.h y.tab.h:' eqn/neqn.d/Makefile.mk || die
-	sed -i -e 's:y.tab.h y.tab.h:y.tab.h:' eqn/neqn.d/Makefile.mk || die
 
 	eapply_user
 }

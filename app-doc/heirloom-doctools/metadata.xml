@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>no-herd</herd>
   <maintainer>
-    <email>flameeyes@gentoo.org</email>
+    <email>staal1978@gmail.com</email>
   </maintainer>
   <use>
     <flag name='cxx'>
@@ -12,4 +12,3 @@
     </flag>
   </use>
 </pkgmetadata>
-
