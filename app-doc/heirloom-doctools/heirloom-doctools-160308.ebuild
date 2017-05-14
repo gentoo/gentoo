@@ -63,7 +63,7 @@ src_install() {
 	# check on FreeBSD).
 	mv "${D}"usr/bin/{,hl-}ptx || die
 	mv "${D}"usr/share/man/man1/{,hl-}ptx.1 || die
-	
+
 	mv "${D}"usr/bin/{,hl-}col || die
 
 	# Rename ta to avoid a collision with app-cdr/pxlinux
