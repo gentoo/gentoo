@@ -86,6 +86,7 @@ pkg_postinst() {
 		elog "You are upgrading from version 0.6.x, please see:"
 		elog "http://www.fail2ban.org/wiki/index.php/HOWTO_Upgrade_from_0.6_to_0.8"
 	fi
+
 	if ! has_version ${CATEGORY}/${PN}; then
 		if ! has_version dev-python/pyinotify && ! has_version app-admin/gamin; then
 			elog "For most jail.conf configurations, it is recommended you install either"
