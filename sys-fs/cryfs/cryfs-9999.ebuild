@@ -59,7 +59,7 @@ src_configure() {
 }
 
 src_test() {
-	TMPDIR="${T}"
+	local TMPDIR="${T}"
 	addread /dev/fuse
 	addwrite /dev/fuse
 
