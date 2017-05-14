@@ -90,7 +90,12 @@ src_install() {
 	# Bug 605496.
 	keepdir /var/lib/modsecurity
 	fowners apache:apache /var/lib/modsecurity
-	fperms 0770 /var/lib/modsecurity
+	fperms 0750 /var/lib/modsecurity
+	for dir in data tmp upload; do
+		keepdir "/var/lib/modsecurity/${dir}"
+		fowners apache:apache "/var/lib/modsecurity/${dir}"
+		fperms 0750 "/var/lib/modsecurity/${dir}"
+	done
 }
 
 pkg_postinst() {
