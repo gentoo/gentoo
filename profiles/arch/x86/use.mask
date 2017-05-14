@@ -88,10 +88,6 @@
 # Add support for Ruby Enterprise Edition targets where rubyee is available
 # -ruby_targets_ree18
 
-# 2010/01/08 - Diego E. Pettenò <flameeyes@gentoo.org>
-# Add support for JRuby targets where jruby is available
-#-ruby_targets_jruby
-
 # pbbuttonsd and macbook for KDE and pbuttonsd it
 #-pbbuttonsd
 -macbook
