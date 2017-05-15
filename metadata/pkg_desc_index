@@ -4815,7 +4815,7 @@ dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
-dev-libs/libfastjson 0.99.2 0.99.4 0.99.5: Fork of the json-c library, which is optimized for liblognorm processing
+dev-libs/libfastjson 0.99.2 0.99.4 0.99.6: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.9.0 0.9.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1 0.3.0: Struct of arrays library with object oriented interface for C++
@@ -14915,7 +14915,7 @@ net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3: C library implementing the OAuth secure authentication protocol
-net-libs/liboping 1.7.0 1.8.0 1.8.0-r1 1.9.0: Protocol independent ANSI-C ping library and command line utility
+net-libs/liboping 1.9.0 1.10.0: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Protocol
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
@@ -15010,7 +15010,7 @@ net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
 net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.16.1 2.16.2: Open source web browser engine
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0 4.5.0: Extended ROOT remote file server
-net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2: A brokerless kernel
+net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2 4.2.2-r1: A brokerless kernel
 net-libs/zmqpp 4.1.2: ZeroMQ 'highlevel' C++ bindings
 net-mail/Freemail 9999-r1: Anonymous IMAP/SMTP e-mail server over Freenet
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
