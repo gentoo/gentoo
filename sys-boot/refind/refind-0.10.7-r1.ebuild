@@ -55,7 +55,7 @@ src_prepare() {
 	default
 
 	# bug 616668 - build fails against gnu-efi-3.0.5
-	eapply "${FILESDIR}"/"${PF}"-fix_build_gnuefi-3.0.5.patch
+	eapply "${FILESDIR}"/"${P}"-fix_build_gnuefi-3.0.5.patch
 
 	# bug 598647 - PIE not supported
 	sed -e 's:CFLAGS          =:& -fno-PIE:' -i "${S}/Make.common" || die
