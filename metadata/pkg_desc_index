@@ -8406,7 +8406,7 @@ dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV fi
 dev-python/python-editor 0.4 1.0.3: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
 dev-python/python-engineio 1.4.0: Python implementation of the Engine.IO realtime server.
-dev-python/python-etcd 0.3.2 0.3.3 0.4.4: A python client for etcd
+dev-python/python-etcd 0.3.2 0.3.3 0.4.4 0.4.5: A python client for etcd
 dev-python/python-ethtool 0.11: Ethernet settings python bindings
 dev-python/python-evdev 0.4.3 0.4.5 0.6.1: Python library for evdev bindings
 dev-python/python-eventlib 0.2.1: Coroutine-based networking library
