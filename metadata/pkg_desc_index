@@ -107,7 +107,7 @@ app-admin/gentoo-perl-helpers 0.1.0 0.2.0 0.2.1: Introspection and Upgrade Assis
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0: Backup and recovery utilities for GitHub Enterprise
-app-admin/gixy 0.1.3: Nginx configuration static analyzer
+app-admin/gixy 0.1.3 0.1.4: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.10-r1: Single process stack of various system monitors
 app-admin/glance 13.0.0 14.0.0 2016.2.9999 2017.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
@@ -280,8 +280,8 @@ app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.614 0.621 0.630 0.631: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p106-r1 0_p120 0_p131 0_p131-r1 1.7.5-r1 9999: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
-app-arch/lzip 1.18 1.19_pre1: lossless data compressor based on the LZMA algorithm
-app-arch/lziprecover 1.17 1.18 1.19_rc1: Lziprecover is a data recovery tool and decompressor for lzip compressed files
+app-arch/lzip 1.18 1.19: lossless data compressor based on the LZMA algorithm
+app-arch/lziprecover 1.17 1.18 1.19 1.20_pre1: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzlib 1.6 1.7 1.8: Library for lzip compression
 app-arch/lzma 9.20-r1: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.03: Utility for fast (even real-time) compression/decompression
@@ -1998,7 +1998,7 @@ app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31-r1 9999: User space driver and tools for use with mobile phones
 app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
-app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
+app-mobilephone/heimdall 1.4.0 1.4.1 1.4.2 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/kannel 1.4.3-r2 1.5.0-r3: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: API for Python which provides simple access to Bluetooth operations
@@ -7643,7 +7643,7 @@ dev-python/fonttools 3.0 3.10.0: Library for manipulating TrueType, OpenType, AF
 dev-python/foolscap 0.7.0 0.11.0: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
-dev-python/freezegun 0.3.8: Let your Python tests travel through time
+dev-python/freezegun 0.3.8 0.3.9: Let your Python tests travel through time
 dev-python/frozen-flask 0.11-r1 0.13: Freezes a Flask application into a set of static files
 dev-python/fs 0.5.4: Filesystem abstraction layer
 dev-python/fudge 0.9.6-r1 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
