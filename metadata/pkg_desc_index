@@ -512,7 +512,7 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.26: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
-app-crypt/certbot 0.11.1 0.13.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot 0.11.1 0.13.0 0.14.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.11.1 0.13.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.11.1 0.13.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.2.0_p20170322: Cloudflare's PKI and TLS toolkit
