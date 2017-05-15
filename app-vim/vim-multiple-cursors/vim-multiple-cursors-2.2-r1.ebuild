@@ -10,3 +10,15 @@ HOMEPAGE="https://github.com/terryma/vim-multiple-cursors"
 SRC_URI="https://github.com/terryma/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
+
+src_install() {
+	default
+	vim-plugin_src_install
+	rm -r \
+		"${ED}"/usr/share/vim/vimfiles/spec \
+		"${ED}"/usr/share/vim/vimfiles/assets \
+		"${ED}"/usr/share/doc/${P}/MIT-LICENSE.txt \
+		"${ED}"/usr/share/doc/${P}/Rakefile \
+		"${ED}"/usr/share/doc/${P}/Gemfile.lock \
+		|| die "rm failed"
+}
