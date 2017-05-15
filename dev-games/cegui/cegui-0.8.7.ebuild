@@ -34,7 +34,7 @@ RDEPEND="
 		dev-lang/lua:0
 		dev-lua/toluapp
 	)
-	ogre? ( >=dev-games/ogre-1.7 )
+	ogre? ( >=dev-games/ogre-1.7:= )
 	opengl? (
 		virtual/opengl
 		virtual/glu
