@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -80,7 +80,7 @@ all_ruby_install() {
 	for bin in rdoc ri; do
 		ruby_fakegem_binwrapper $bin /usr/bin/$bin-2
 
-		for version in 20 21 22; do
+		for version in 21 22; do
 			if use ruby_targets_ruby${version}; then
 				ruby_fakegem_binwrapper $bin /usr/bin/${bin}${version}
 				sed -i -e "1s/env ruby/ruby${version}/" \
