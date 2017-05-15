@@ -23,8 +23,6 @@ app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
 app-emulation/crossover-bin
-app-emulation/crossover-office-bin
-app-emulation/crossover-office-pro-bin
 app-emulation/playonlinux
 app-emulation/q4wine
 app-emulation/winetricks
