@@ -3,21 +3,19 @@
 
 EAPI=6
 
-inherit mercurial qmake-utils gnome2-utils fdo-mime
+inherit qmake-utils gnome2-utils fdo-mime
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="http://valentinaproject.bitbucket.org/"
-SRC_URI=""
-EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
-EHG_REVISION="develop"
+SRC_URI="https://bitbucket.org/dismine/valentina/get/v0.4.2.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="gnome"
 
 # en_IN not supported in Gentoo so not added here
-LANGS="cs_CZ de_DE el_GR en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL pt_BR ro_RO ru_RU uk_UA zh_CN"
+LANGS="cs_CZ de_DE en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL ro_RO ru_RU uk_UA"
 
 for LANG in ${LANGS}; do
 	IUSE="${IUSE} linguas_${LANG}"
@@ -34,7 +32,18 @@ CDEPEND="
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
 RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}
+	app-arch/unzip"
+
+S=${WORKDIR}/dismine-${PN}-44d43351cb59
+
+src_prepare() {
+	epatch "${FILESDIR}/locales.patch" \
+		"${FILESDIR}/fix-insecure-runpaths.patch" \
+		"${FILESDIR}/disable-tests-compilation.patch"
+
+	default
+}
 
 src_configure() {
 	local locales=""
