@@ -1293,8 +1293,6 @@ app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.6_p1212-r1 0.7.7 0.7.
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/containerd 0.2.5 0.2.5-r1 0.2.5_p20170308 0.2.6 0.2.7 0.2.8 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0: Commercial version of app-emulation/wine with paid support.
-app-emulation/crossover-office-bin 6.0.0 6.0.1 6.1.0 6.2.0: simplified/streamlined version of wine with commercial support
-app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2 7.1.0 8.0.0 9.0.0 9.0.1 9.1.0 9.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.3.3: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
@@ -4143,7 +4141,6 @@ dev-java/javax-inject 1-r2: Dependency injection for Java (JSR-330)
 dev-java/javax-mail 1.4: Provides a platform/protocol-independent framework for mail and messaging apps
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jaxen 1.1.4-r1 1.1.6: A Java XPath Engine
-dev-java/jaxme 0.5.2-r2: An open source implementation of JAXB, the specification for Java/XML binding
 dev-java/jazzy 0.5.2-r1: Java Spell Check API
 dev-java/jbitcollider-core 0.8: Core classes of jBitcollider: org.bitpedia.collider.core
 dev-java/jboss-logging 3.1.4: JBoss logging framework
@@ -4167,7 +4164,6 @@ dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
 dev-java/jdbc-jaybird 2.2.9: JDBC Type 2 and 4 drivers for Firebird SQL server
 dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
 dev-java/jdbc-mysql 5.1.26: MySQL JDBC driver
-dev-java/jdbc-oracle-bin 9.2.0.8 10.1.0.5 10.2.0.3 10.2.0.4: JDBC 3.0 Drivers for Oracle
 dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1205 9.4_p1206: JDBC Driver for PostgreSQL
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
@@ -4417,7 +4413,6 @@ dev-java/stax2-api 4.0.0 4.0.0-r1: Extended Stax (STandard Api for Xml procesing
 dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/sun-dtdparser 1.0: Sun DTDParser
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
-dev-java/sun-j2ee-deployment-bin 1.1-r2: J2EE Application Deployment Specification
 dev-java/sun-jacc-api 20070102: Java Authorization Contract for Containers
 dev-java/sun-jaf 1.1.1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
@@ -7252,7 +7247,7 @@ dev-python/aioeventlet 0.5.1 0.5.1-r1: asyncio event loop scheduling callbacks i
 dev-python/aiohttp 0.21.5 1.0.3 1.0.4 1.0.5 1.1.1 1.1.2 1.1.5 1.2.0 1.3.3 2.0.7: http client/server for asyncio
 dev-python/aiohttp-cors 0.5.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiotest 0.3: Test suite for an implementation of asyncio (PEP 3156)
-dev-python/alabaster 0.7.9: A configurable sidebar-enabled Sphinx theme
+dev-python/alabaster 0.7.9 0.7.10: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7 1.1.2: django CMS plugins for bootstrap3 markup
 dev-python/aldryn-common 1.0.3 1.0.4: django CMS plugins with common utilities
@@ -7437,7 +7432,7 @@ dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
 dev-python/cryptography 1.7.1 1.7.2 1.8.1: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
-dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
+dev-python/cssutils 1.0.1 1.0.2: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.2.10 0.2.11: Curses-like terminal wrapper, with colored strings
@@ -7562,7 +7557,6 @@ dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
-dev-python/edpwd 0.0.7 0.0.7-r1: Encrypt/Decrypt Password Library that wraps up Blowfish
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
 dev-python/elasticsearch-curator 4.1.2 4.2.5 4.2.6: Tending time-series indices in Elasticsearch
@@ -8138,7 +8132,7 @@ dev-python/pudge 0.1.3-r1: A documentation generator for Python projects, using 
 dev-python/pupynere 1.0.15-r1: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pushbullet-py 0.10.0: A simple python client for pushbullet.com
 dev-python/pxml 0.2.12: A python library and command-line tool to prettify and colorize XML
-dev-python/py 1.4.30 1.4.32: library with cross-python path, ini-parsing, io, code, log facilities
+dev-python/py 1.4.30 1.4.32 1.4.33: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 1.4.9 2.1.4: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-cpuinfo 0.2.3 3.2.0: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
@@ -8290,7 +8284,7 @@ dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
 dev-python/pyopencl 2014.1 2016.1 9999: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
-dev-python/pyopenssl 0.15.1-r1 16.2.0: Python interface to the OpenSSL library
+dev-python/pyopenssl 0.15.1-r1 16.2.0 17.0.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
@@ -8325,7 +8319,7 @@ dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC
 dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyroute2 0.4.12: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
-dev-python/pyrsistent 0.12.0: Persistent/Functional/Immutable data structures
+dev-python/pyrsistent 0.12.0 0.12.1: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r2: Python library to produce RTF documents
 dev-python/pysaml2 4.0.2-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.4: Tool for easily putting up the scaffold of a Python project
@@ -8532,7 +8526,7 @@ dev-python/rarfile 2.8 3.0: Module for RAR archive reading
 dev-python/raven 5.2.0 5.3.0 5.31.0: Raven is a client for Sentry
 dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config extension for python-novaclient
 dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1 0.3.1: Adds backup-schedule extension support to python-novaclient
-dev-python/rdflib 4.2.1: RDF library containing a triple store and parser/serializer
+dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
 dev-python/readlike 0.1.2: a python library similar to readline
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readme_renderer 17.2: a library for rendering "readme" descriptions for Warehouse
@@ -8685,7 +8679,7 @@ dev-python/sphinxcontrib-programoutput 0.8: Extension to sphinx to include progr
 dev-python/sphinxcontrib-spelling 2.1.2: Sphinx spelling extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spyder 2.3.9 3.0.2-r1: Python IDE with matlab-like features
-dev-python/sqlalchemy 0.7.10 0.9.8 1.0.17 1.1.5: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 0.7.10 0.9.8 1.0.17 1.1.5 1.1.9: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.11.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
 dev-python/sqlite3dbm 0.1.4-r1: An sqlite-backed dictionary
@@ -8737,7 +8731,7 @@ dev-python/testpath 0.2 0.3: Test utilities for code working with files and comm
 dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
 dev-python/testresources 0.2.7-r2 1.0.0: A pyunit extension for managing expensive test resources
 dev-python/testscenarios 0.4-r5 0.5.0: A pyunit extension for dependency injection
-dev-python/testtools 0.9.36 1.8.0 2.2.0: Extensions to the Python standard library unit testing framework
+dev-python/testtools 0.9.36 1.8.0 2.2.0 2.3.0: Extensions to the Python standard library unit testing framework
 dev-python/texttable 0.8.3 0.8.8: module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/tgmochikit 1.4.2-r1: MochiKit packaged as TurboGears widgets
@@ -8806,7 +8800,7 @@ dev-python/uranium 2.3.1: A Python framework for building 3D printing related ap
 dev-python/urdf_parser_py 0.3.2 0.3.3: URDF parser for Python
 dev-python/uritemplate 0.6 3.0.0: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
-dev-python/urllib3 1.12 1.16 1.20: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.12 1.16 1.20 1.21.1: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.2.2 1.3.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.1.1: Tree widgets for urwid
 dev-python/utidylib 0.2-r2 0.3: TidyLib Python wrapper
@@ -17101,7 +17095,7 @@ sys-apps/grep 2.25 2.27-r1 3.0: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
-sys-apps/gsmartcontrol 0.8.7: Hard disk drive health inspection tool
+sys-apps/gsmartcontrol 0.8.7 0.9.0: Hard disk drive health inspection tool
 sys-apps/guix 0.12.0-r3: GNU package manager (nix sibling)
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
 sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm

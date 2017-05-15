@@ -1787,8 +1787,6 @@ dev-java/jcs:admin - Enable JCS Admin servlets
 dev-java/jdbc-jaybird:jni - Build/Install JDBC Type 2 native components
 dev-java/jdbc-mysql:c3p0 - Enable c3p0 support
 dev-java/jdbc-mysql:log4j - Enable log4 support
-dev-java/jdbc-oracle-bin:dms - Enable support for the Oracle Dynamic Monitoring Service
-dev-java/jdbc-oracle-bin:ons - Enable support for the Oracle Notification Services (ONS) deamon
 dev-java/jfreesvg:debug - Enable debugging during compilation.
 dev-java/jna:awt - Enables support for Java AWT
 dev-java/jna:nio-buffers - Enables support for NIO buffers
