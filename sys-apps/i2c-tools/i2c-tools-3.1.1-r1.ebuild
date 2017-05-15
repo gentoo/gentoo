@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 DISTUTILS_OPTIONAL="1"
 
 inherit flag-o-matic toolchain-funcs distutils-r1
@@ -23,6 +23,7 @@ RDEPEND="!<sys-apps/lm_sensors-3
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	epatch "${FILESDIR}"/${PN}-3.1.1-python-3.patch #492632
 	use python && distutils-r1_src_prepare
 }
