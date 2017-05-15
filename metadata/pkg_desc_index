@@ -7737,7 +7737,7 @@ dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hyper-h2 2.5.1 3.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.0.0: HTTP/2 framing layer for Python
-dev-python/hypothesis 3.6.0-r1 3.6.1: A library for property based testing
+dev-python/hypothesis 3.6.0-r1 3.6.1 3.8.3: A library for property based testing
 dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
@@ -7880,7 +7880,7 @@ dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming l
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.6.0 3.6.4-r1 3.7.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.9.0: LZ4 Bindings for Python
-dev-python/m2crypto 0.24.0 0.25.1-r2: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.24.0 0.25.1-r2 0.26.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2r 0.1.5: Markdown to reStructuredText converter
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
@@ -7915,7 +7915,7 @@ dev-python/minidb 2.0.1-r1 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 1.8 1.9.20151008 2.0.20161216: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
-dev-python/mistune 0.7.2: The fastest markdown parser in pure Python
+dev-python/mistune 0.7.2 0.7.4: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.12.2 0.14.0 0.15.3: Project documentation with Markdown.
 dev-python/mkdocs-bootstrap 0.1.1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 0.1.0 0.4.0: Bootswatch themes for MkDocs
@@ -8179,7 +8179,7 @@ dev-python/pycipher 0.2-r1: A Python module that implements several well-known c
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
 dev-python/pyclimate 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
-dev-python/pycodestyle 2.0.0 2.1.0 2.2.0: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.0.0 2.1.0 2.2.0 2.3.1: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pycountry 16.11.8: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.17: C parser and AST generator written in Python
@@ -8345,7 +8345,7 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.00.00_p2: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.1.1-r2 3.3.0: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r1 0.5.2-r2: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 3.0.2 3.0.3 3.0.6 9999: simple powerful testing with Python
+dev-python/pytest 2.7.2 3.0.2 3.0.3 3.0.6 3.0.7 9999: simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
 dev-python/pytest-arraydiff 0.1: pytest plugin to facilitate comparison of arrays
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
@@ -8544,7 +8544,7 @@ dev-python/regex 2016.01.10 2017.04.05: Alternative regular expression module to
 dev-python/regions 0.1 0.2: Astropy affiliated package for region handling
 dev-python/rencode 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0 1.8.0 2.2.1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.3.0-r1: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.3.0-r1 3.4.0: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2 0.6-r3: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
@@ -8655,7 +8655,7 @@ dev-python/sortedcontainers 1.5.7: Python library to sort collections and contai
 dev-python/south 1.0: Intelligent schema migrations for Django apps
 dev-python/soya 0.14-r1 0.15_rc1: A high-level 3D engine for Python, designed with games in mind
 dev-python/spark-parser 1.5.1-r1 1.6.0: An Early-Algorithm Context-free grammar Parser
-dev-python/sparql-wrapper 1.7.6: Wrapper around a SPARQL service
+dev-python/sparql-wrapper 1.7.6 1.8.0: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/spectral-cube 0.4.0: Manipulate astronomical data cubes with Python
 dev-python/specutils 0.2 0.2.2: Python package for astronomy spectral operations
@@ -11462,7 +11462,7 @@ games-simulation/gl117 1.3.2 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
 games-simulation/micropolis 1.0 1.0-r1: Free version of the well-known city building simulation
-games-simulation/openttd 1.6.0 1.6.1-r1: OpenTTD is a clone of Transport Tycoon Deluxe
+games-simulation/openttd 1.6.0 1.6.1-r1 1.7.0: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.5.0 1.5.0-r1: Helicopter based air rescue flight simulator
 games-simulation/senken 0.3.0 0.3.0-r1: city simulation game
@@ -14649,7 +14649,7 @@ net-fs/docker-volume-netshare 0.33_p20170209 0.33_p20170318: Docker NFS, AWS EFS
 net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 9999: Client library for accessing NFS shares over a network
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.8 3.1.10 3.1.11: Open Source AFP server
-net-fs/nfs-utils 1.3.1-r4 1.3.1-r5 1.3.4 2.1.1 2.1.2_rc2: NFS client and server daemons
+net-fs/nfs-utils 1.3.1-r4 1.3.1-r5 1.3.4-r1 2.1.1-r1 2.1.2_rc2: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.3: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.20.1: The OpenAFS distributed file system
