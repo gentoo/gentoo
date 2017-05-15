@@ -279,12 +279,6 @@ app-emulation/crossover-office-pro-bin
 sys-firmware/radeon-ucode
 sys-firmware/amdgpu-ucode
 
-# Michał Górny <mgorny@gentoo.org> (27 Mar 2017)
-# No revdeps or real use case. Uses ECB mode for encryption which is
-# a bad idea. Requires patching for dev-python/pycryptodome. Abandoned
-# upstream and downstream. Removal in 30 days. Bug #611592.
-dev-python/edpwd
-
 # Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
