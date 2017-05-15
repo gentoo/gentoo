@@ -8451,7 +8451,7 @@ dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt4 0.24.0: A python binding for libpoppler-qt4
 dev-python/python-prctl 1.6.1: Control process attributes through prctl
 dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
-dev-python/python-redmine 1.5.1: Python interface to the Redmine REST API
+dev-python/python-redmine 2.0.2: Python interface to the Redmine REST API
 dev-python/python-rethinkdb 2.3.0: Python driver library for the RethinkDB database server.
 dev-python/python-saharaclient 0.11.0 1.1.0: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-scsi 0_pre160211 9999: Access to SG_IO scsi devices
