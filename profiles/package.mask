@@ -227,12 +227,6 @@ net-misc/libres3
 # for a virtual
 dev-perl/encoding-warnings
 
-# James Le Cuirot <chewi@gentoo.org> (14 Apr 2017)
-# Outdated and stuck behind a temperamental registration wall that I
-# have lost my patience with. Removal in 30 days if no one cares
-# enough to pick it up.
-dev-java/jdbc-oracle-bin
-
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Masked for testing
 virtual/wine
