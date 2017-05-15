@@ -261,7 +261,6 @@ src_prepare() {
 		third_party/libsecret
 		third_party/libsrtp
 		third_party/libudev
-		third_party/libusb
 		third_party/libwebm
 		third_party/libxml
 		third_party/libyuv
@@ -354,7 +353,6 @@ src_configure() {
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_libsrtp (bug #459932).
-	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: xml (bug #616818).
 	# TODO: use_system_protobuf (bug #525560).
 	# TODO: use_system_ssl (http://crbug.com/58087).
