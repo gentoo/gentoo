@@ -4164,6 +4164,7 @@ media-libs/mesa:gcrypt - Use dev-libs/libgcrypt for low level sha1 utility funct
 media-libs/mesa:gles1 - Enable GLESv1 support.
 media-libs/mesa:gles2 - Enable GLESv2 support.
 media-libs/mesa:libressl - Use dev-libs/libressl for low level sha1 utility functions.
+media-libs/mesa:libunwind - Add support for stack trace unwinding and function name resolution
 media-libs/mesa:llvm - Enable LLVM backend for Gallium3D.
 media-libs/mesa:nettle - Use dev-libs/nettle for low level sha1 utility functions.
 media-libs/mesa:opencl - Enable the Clover Gallium OpenCL state tracker.
