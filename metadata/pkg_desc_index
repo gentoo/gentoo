@@ -4227,7 +4227,6 @@ dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source 
 dev-java/jrexx 1.1.1-r2: API for textual pattern matching based on the finite state automaton theory
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r1: Java Interface to Tobias Oetiker's RRDtool
-dev-java/jruby 1.7.12: Java-based Ruby interpreter implementation
 dev-java/jsap 2.1-r2: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729 20160212: Java implementation of the JavaScript Object Notation
@@ -9340,7 +9339,6 @@ dev-ruby/best_in_place 3.1.0: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.0: Parsing Binary Data in Ruby
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
 dev-ruby/bit-struct 0.15.0: Library for packed binary data stored in ruby Strings
-dev-ruby/bitescript 0.0.9: BiteScript is a Ruby DSL for generating Java bytecode and classes
 dev-ruby/blankslate 2.1.2.4 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
 dev-ruby/bogus 0.1.6: Decreases the need for integration tests by ensuring that the things you stub or mock actually exist.
@@ -9429,7 +9427,6 @@ dev-ruby/dnsruby 1.59.3 1.60.0 1.60.1: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.24 0.5.20161021 0.5.20161129 0.5.20170223 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.1.1 2.2.0 2.2.1: Loads environment variables from .env into ENV
-dev-ruby/duby 0.0.2-r1: Customizable typed programming language with Ruby-inspired syntax
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/erubi 1.6.0: a ERB template engine for ruby; a simplified fork of Erubis
@@ -9918,7 +9915,6 @@ dev-ruby/vcr 1.11.3 2.9.3 3.0.1 3.0.3: Records your test suite's HTTP interactio
 dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.6 1.2.7: General Rack Authentication Framework
-dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.3.0 3.3.1 3.4.0: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 1.20.3 1.24.6 2.1.0 2.3.1 2.3.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots

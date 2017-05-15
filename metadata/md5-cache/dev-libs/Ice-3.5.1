@@ -3,7 +3,7 @@ DEPEND=>=dev-libs/expat-2.0.1 >=app-arch/bzip2-1.0.5 >=dev-libs/openssl-0.9.8o:0
 DESCRIPTION=ICE middleware C++ library and generator tools
 EAPI=5
 HOMEPAGE=https://zeroc.com/products/ice
-IUSE=doc examples +ncurses mono python ruby test debug python_targets_pypy python_targets_python2_7 elibc_FreeBSD ruby_targets_ruby19
+IUSE=doc examples +ncurses mono python ruby test debug python_targets_pypy python_targets_python2_7 elibc_FreeBSD
 KEYWORDS=amd64 ~arm ~ia64 x86 ~x86-linux ~x64-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/expat-2.0.1 >=app-arch/bzip2-1.0.5 >=dev-libs/openssl-0.9.8o:0 || ( sys-libs/db:5.3[cxx] sys-libs/db:5.1[cxx] sys-libs/db:4.8[cxx] ) ~dev-cpp/libmcpp-2.7.2 python? ( python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] ) ruby? ( dev-lang/ruby:1.9 ) mono? ( dev-lang/mono ) !dev-python/IcePy !dev-ruby/IceRuby
@@ -11,5 +11,5 @@ REQUIRED_USE=python? ( || ( python_targets_pypy python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.tar.gz doc? ( http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.pdf )
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=db-use	582140d1a711279e50ce284fc7b609f5	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	mono-env	1f24c032c78290b0d9a07d5b343051a7	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	c11fc374357e6ad9ddfe2e9f931e4d29	ruby-ng	2abd9e38aac141db06ae38bf32e748cd	ruby-utils	e9d0baddf239294b286da449ae7ac6a3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=db-use	582140d1a711279e50ce284fc7b609f5	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	mono-env	1f24c032c78290b0d9a07d5b343051a7	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	0236be304ee52e7f179ed2f337075515	python-r1	0c067f080a047742ffac024b16895b45	python-utils-r1	c11fc374357e6ad9ddfe2e9f931e4d29	ruby-ng	e52d9a73c7757cdc3b195bcd5cf9d389	ruby-utils	e9d0baddf239294b286da449ae7ac6a3	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=b5e711bc9b083ebf6ee6523c9ea66ea6
