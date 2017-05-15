@@ -4164,7 +4164,6 @@ media-libs/mesa:gcrypt - Use dev-libs/libgcrypt for low level sha1 utility funct
 media-libs/mesa:gles1 - Enable GLESv1 support.
 media-libs/mesa:gles2 - Enable GLESv2 support.
 media-libs/mesa:libressl - Use dev-libs/libressl for low level sha1 utility functions.
-media-libs/mesa:libunwind - Add support for stack trace unwinding and function name resolution
 media-libs/mesa:llvm - Enable LLVM backend for Gallium3D.
 media-libs/mesa:nettle - Use dev-libs/nettle for low level sha1 utility functions.
 media-libs/mesa:opencl - Enable the Clover Gallium OpenCL state tracker.
@@ -4173,6 +4172,7 @@ media-libs/mesa:openssl - Use dev-libs/openssl for low level sha1 utility functi
 media-libs/mesa:osmesa - Build the Mesa library for off-screen rendering.
 media-libs/mesa:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
+media-libs/mesa:unwind - Add support for stack trace unwinding and function name resolution
 media-libs/mesa:valgrind - Compile in valgrind memory hints
 media-libs/mesa:vdpau - Enable the VDPAU acceleration interface for the Gallium3D Video Layer.
 media-libs/mesa:vulkan - Enable Vulkan drivers
