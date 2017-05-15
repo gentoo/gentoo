@@ -95,7 +95,7 @@ app-admin/eselect 1.4.5 1.4.8 1.4.9 9999: Gentoo's multi-purpose configuration a
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
-app-admin/fifo-cronolog 1.1.1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
+app-admin/fifo-cronolog 1.1.1 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
 app-admin/filebeat 5.1.2 5.2.2 5.3.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
@@ -9973,7 +9973,7 @@ dev-tcltk/blt 2.4z-r13: Extension to Tk, adding new widgets, geometry managers, 
 dev-tcltk/bwidget 1.9.8 1.9.9: High-level widget set for Tcl/Tk
 dev-tcltk/ck 8.0-r4: A curses based toolkit for tcl
 dev-tcltk/combobox 2.3-r1: A combobox megawidget
-dev-tcltk/expect 5.44.1.15 5.45: tool for automating interactive applications
+dev-tcltk/expect 5.45: tool for automating interactive applications
 dev-tcltk/expect-lite 4.0.3 4.1.0 4.1.2 4.2.0 4.2.1 4.2.2 4.3.0 4.3.1 4.3.2 4.3.3 4.4.0 4.4.1 4.5.0 4.6.0 4.6.1 4.6.2 4.7.2 4.8.0: quick and easy command line automation tool built on top of expect
 dev-tcltk/itcl 3.4.1 4.0.3: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/itk 3.4.1 4.0.0 4.0.1: Object Oriented Enhancements for Tcl/Tk
@@ -10476,7 +10476,7 @@ dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 0.65 9999: quilt patch manager
 dev-util/radare2 0.10.6 1.0.2 1.1.0 1.2.0 1.3.0 1.4.0 9999: Advanced command line hexadecimal editor and more
 dev-util/ragel 6.7-r1 6.8 6.9 7.0.0.9: Compiles finite state machines from regular languages into executable code
-dev-util/rats 2.1-r2 2.3 2.4: RATS - Rough Auditing Tool for Security
+dev-util/rats 2.1-r2 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.9: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3 0.16: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.1 2.6.2 2.6.3 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
@@ -17755,7 +17755,7 @@ sys-fs/mac-fdisk 0.1-r7 0.1_p16: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.3.1-r2 3.4 4.0: A useful tool for running RAID systems - it can be used as a replacement for the raidtools
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
-sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
+sys-fs/mtd-utils 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.15 4.0.17 4.0.18 4.0.18-r2: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2 0.6.4: Device mapper target autoconfig
@@ -17908,7 +17908,7 @@ sys-libs/pwdb 0.62: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r2 6.3_p8-r3 7.0_p1-r1 7.0_p3: Another cute console display library
 sys-libs/rvm 1.12 1.17-r1: Recoverable Virtual Memory (used by Coda)
 sys-libs/slang 2.3.0 2.3.1a: A multi-platform programmer's library designed to allow a developer to create robust software
-sys-libs/suacomp 0.6.13 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
+sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.7 2.1.8 2.1.9: Samba talloc library
 sys-libs/tapi 1.30: Text-based Application Programming Interface
@@ -18380,7 +18380,7 @@ www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl sup
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 44.0.2510.1449 45.0.2552.635: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 45.0.2552.635 45.0.2552.812: A fast and secure web browser
 www-client/opera-beta 45.0.2552.634: A fast and secure web browser
 www-client/opera-developer 46.0.2573.0 46.0.2590.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -18396,7 +18396,7 @@ www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.9.818.44_p1 1.9.818.49_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.10.834.9_p1 1.10.838.7_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.10.838.7_p1 1.10.845.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
