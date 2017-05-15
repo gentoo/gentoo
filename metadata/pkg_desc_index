@@ -1049,7 +1049,7 @@ app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lfhex 0.42: A fast hex-editor with support for large files and comparing binary files
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20160421 20161005: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20160421 20161005 20170401: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
 app-editors/mp 5.2.2: Minimum Profit: A text editor for programmers
@@ -4504,7 +4504,7 @@ dev-lang/coffee-script 1.9.3-r1 1.12.5: A little language that compiles into jav
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design
 dev-lang/crystal 0.21.1 0.22.0: The Crystal Programming Language
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100 6.0.967_p20161020-r1 6.0.967_p20161020-r100: PathScale EKOPath Compiler Suite
-dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2 1.3.4 1.4.0 1.4.1 1.4.2: Elixir programming language
+dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2 1.3.4 1.4.0 1.4.1 1.4.2 1.4.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 18.3 19.1 19.2 19.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
