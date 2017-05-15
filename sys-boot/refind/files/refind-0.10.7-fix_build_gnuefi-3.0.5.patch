@@ -1,0 +1,1387 @@
+diff --git a/EfiLib/DevicePath.c b/EfiLib/DevicePath.c
+index bfaf1c6..023ea3f 100644
+--- a/EfiLib/DevicePath.c
++++ b/EfiLib/DevicePath.c
+@@ -31,7 +31,7 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+ 
+ CHAR16 *
+ EFIAPI
+-CatPrint (
++MyCatPrint (
+   IN OUT POOL_PRINT   *Str,
+   IN CHAR16           *Fmt,
+   ...
+@@ -94,7 +94,7 @@ DevPathPci (
+   PCI_DEVICE_PATH *Pci;
+ 
+   Pci = DevPath;
+-  CatPrint (Str, L"Pci(%x|%x)", (UINTN) Pci->Device, (UINTN) Pci->Function);
++  MyCatPrint (Str, L"Pci(%x|%x)", (UINTN) Pci->Device, (UINTN) Pci->Function);
+ }
+ 
+ /**
+@@ -116,7 +116,7 @@ DevPathPccard (
+   PCCARD_DEVICE_PATH  *Pccard;
+ 
+   Pccard = DevPath;
+-  CatPrint (Str, L"Pcmcia(Function%x)", (UINTN) Pccard->FunctionNumber);
++  MyCatPrint (Str, L"Pcmcia(Function%x)", (UINTN) Pccard->FunctionNumber);
+ }
+ 
+ /**
+@@ -138,7 +138,7 @@ DevPathMemMap (
+   MEMMAP_DEVICE_PATH  *MemMap;
+ 
+   MemMap = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"MemMap(%d:%lx-%lx)",
+     (UINTN) MemMap->MemoryType,
+@@ -166,7 +166,7 @@ DevPathController (
+   CONTROLLER_DEVICE_PATH  *Controller;
+ 
+   Controller = DevPath;
+-  CatPrint (Str, L"Ctrl(%d)", (UINTN) Controller->ControllerNumber);
++  MyCatPrint (Str, L"Ctrl(%d)", (UINTN) Controller->ControllerNumber);
+ }
+ 
+ 
+@@ -202,30 +202,30 @@ DevPathVendor (
+     Type = L"Msg";
+ /*		  
+     if (CompareGuid (&Vendor->Guid, &gEfiPcAnsiGuid)) {
+-      CatPrint (Str, L"VenPcAnsi()");
++      MyCatPrint (Str, L"VenPcAnsi()");
+       return ;
+     } else if (CompareGuid (&Vendor->Guid, &gEfiVT100Guid)) {
+-      CatPrint (Str, L"VenVt100()");
++      MyCatPrint (Str, L"VenVt100()");
+       return ;
+     } else if (CompareGuid (&Vendor->Guid, &gEfiVT100PlusGuid)) {
+-      CatPrint (Str, L"VenVt100Plus()");
++      MyCatPrint (Str, L"VenVt100Plus()");
+       return ;
+     } else if (CompareGuid (&Vendor->Guid, &gEfiVTUTF8Guid)) {
+-      CatPrint (Str, L"VenUft8()");
++      MyCatPrint (Str, L"VenUft8()");
+       return ;
+     } else if (CompareGuid (&Vendor->Guid, &gEfiUartDevicePathGuid     )) {
+       FlowControlMap = (((UART_FLOW_CONTROL_DEVICE_PATH *) Vendor)->FlowControlMap);
+       switch (FlowControlMap & 0x00000003) {
+       case 0:
+-        CatPrint (Str, L"UartFlowCtrl(%s)", L"None");
++        MyCatPrint (Str, L"UartFlowCtrl(%s)", L"None");
+         break;
+ 
+       case 1:
+-        CatPrint (Str, L"UartFlowCtrl(%s)", L"Hardware");
++        MyCatPrint (Str, L"UartFlowCtrl(%s)", L"Hardware");
+         break;
+ 
+       case 2:
+-        CatPrint (Str, L"UartFlowCtrl(%s)", L"XonXoff");
++        MyCatPrint (Str, L"UartFlowCtrl(%s)", L"XonXoff");
+         break;
+ 
+       default:
+@@ -237,7 +237,7 @@ DevPathVendor (
+     } else
+  */
+     if (CompareGuid (&Vendor->Guid, &gEfiSasDevicePathGuid)) {
+-      CatPrint (
++      MyCatPrint (
+         Str,
+         L"SAS(%lx,%lx,%x,",
+         ((SAS_DEVICE_PATH *) Vendor)->SasAddress,
+@@ -246,9 +246,9 @@ DevPathVendor (
+         );
+       Info = (((SAS_DEVICE_PATH *) Vendor)->DeviceTopology);
+       if ((Info & 0x0f) == 0) {
+-        CatPrint (Str, L"NoTopology,0,0,0,");
++        MyCatPrint (Str, L"NoTopology,0,0,0,");
+       } else if (((Info & 0x0f) == 1) || ((Info & 0x0f) == 2)) {
+-        CatPrint (
++        MyCatPrint (
+           Str,
+           L"%s,%s,%s,",
+           ((Info & (0x1 << 4)) != 0) ? L"SATA" : L"SAS",
+@@ -256,19 +256,19 @@ DevPathVendor (
+           ((Info & (0x1 << 6)) != 0) ? L"Expanded" : L"Direct"
+           );
+         if ((Info & 0x0f) == 1) {
+-          CatPrint (Str, L"0,");
++          MyCatPrint (Str, L"0,");
+         } else {
+-          CatPrint (Str, L"%x,", (UINTN) ((Info >> 8) & 0xff));
++          MyCatPrint (Str, L"%x,", (UINTN) ((Info >> 8) & 0xff));
+         }
+       } else {
+-        CatPrint (Str, L"0,0,0,0,");
++        MyCatPrint (Str, L"0,0,0,0,");
+       }
+ 
+-      CatPrint (Str, L"%x)", (UINTN) ((SAS_DEVICE_PATH *) Vendor)->Reserved);
++      MyCatPrint (Str, L"%x)", (UINTN) ((SAS_DEVICE_PATH *) Vendor)->Reserved);
+       return ;
+ 
+     } else if (CompareGuid (&Vendor->Guid, &gEfiDebugPortProtocolGuid)) {
+-      CatPrint (Str, L"DebugPort()");
++      MyCatPrint (Str, L"DebugPort()");
+       return ;
+     }
+     break;
+@@ -282,15 +282,15 @@ DevPathVendor (
+     break;
+   }
+ 
+-  CatPrint (Str, L"Ven%s(%g", Type, &Vendor->Guid);
++  MyCatPrint (Str, L"Ven%s(%g", Type, &Vendor->Guid);
+   DataLength = DevicePathNodeLength (&Vendor->Header) - sizeof (VENDOR_DEVICE_PATH);
+   if (DataLength > 0) {
+-    CatPrint (Str, L",");
++    MyCatPrint (Str, L",");
+     for (Index = 0; Index < DataLength; Index++) {
+-      CatPrint (Str, L"%02x", (UINTN) ((VENDOR_DEVICE_PATH_WITH_DATA *) Vendor)->VendorDefinedData[Index]);
++      MyCatPrint (Str, L"%02x", (UINTN) ((VENDOR_DEVICE_PATH_WITH_DATA *) Vendor)->VendorDefinedData[Index]);
+     }
+   }
+-  CatPrint (Str, L")");
++  MyCatPrint (Str, L")");
+ }
+ 
+ /**
+@@ -313,9 +313,9 @@ DevPathAcpi (
+ 
+   Acpi = DevPath;
+   if ((Acpi->HID & PNP_EISA_ID_MASK) == PNP_EISA_ID_CONST) {
+-    CatPrint (Str, L"Acpi(PNP%04x,%x)", (UINTN)  EISA_ID_TO_NUM (Acpi->HID), (UINTN) Acpi->UID);
++    MyCatPrint (Str, L"Acpi(PNP%04x,%x)", (UINTN)  EISA_ID_TO_NUM (Acpi->HID), (UINTN) Acpi->UID);
+   } else {
+-    CatPrint (Str, L"Acpi(%08x,%x)", (UINTN) Acpi->HID, (UINTN) Acpi->UID);
++    MyCatPrint (Str, L"Acpi(%08x,%x)", (UINTN) Acpi->HID, (UINTN) Acpi->UID);
+   }
+ }
+ 
+@@ -388,50 +388,50 @@ DevPathExtendedAcpi (
+   }
+ 
+   if (HIDSTRIdx == 0 && CIDSTRIdx == 0 && ExtendedAcpi->UID == 0) {
+-    CatPrint (Str, L"AcpiExp(");
++    MyCatPrint (Str, L"AcpiExp(");
+     if ((ExtendedAcpi->HID & PNP_EISA_ID_MASK) == PNP_EISA_ID_CONST) {
+-      CatPrint (Str, L"PNP%04x,", (UINTN) EISA_ID_TO_NUM (ExtendedAcpi->HID));
++      MyCatPrint (Str, L"PNP%04x,", (UINTN) EISA_ID_TO_NUM (ExtendedAcpi->HID));
+     } else {
+-      CatPrint (Str, L"%08x,", (UINTN) ExtendedAcpi->HID);
++      MyCatPrint (Str, L"%08x,", (UINTN) ExtendedAcpi->HID);
+     }
+     if ((ExtendedAcpi->CID & PNP_EISA_ID_MASK) == PNP_EISA_ID_CONST) {
+-      CatPrint (Str, L"PNP%04x,", (UINTN)  EISA_ID_TO_NUM (ExtendedAcpi->CID));
++      MyCatPrint (Str, L"PNP%04x,", (UINTN)  EISA_ID_TO_NUM (ExtendedAcpi->CID));
+     } else {
+-      CatPrint (Str, L"%08x,", (UINTN)  ExtendedAcpi->CID);
++      MyCatPrint (Str, L"%08x,", (UINTN)  ExtendedAcpi->CID);
+     }
+     if (UIDSTRIdx != 0) {
+-      CatPrint (Str, L"%a)", AsChar8Array + UIDSTRIdx);
++      MyCatPrint (Str, L"%a)", AsChar8Array + UIDSTRIdx);
+     } else {
+-      CatPrint (Str, L"\"\")");
++      MyCatPrint (Str, L"\"\")");
+     }
+   } else {
+-    CatPrint (Str, L"AcpiEx(");
++    MyCatPrint (Str, L"AcpiEx(");
+     if ((ExtendedAcpi->HID & PNP_EISA_ID_MASK) == PNP_EISA_ID_CONST) {
+-      CatPrint (Str, L"PNP%04x,", (UINTN)  EISA_ID_TO_NUM (ExtendedAcpi->HID));
++      MyCatPrint (Str, L"PNP%04x,", (UINTN)  EISA_ID_TO_NUM (ExtendedAcpi->HID));
+     } else {
+-      CatPrint (Str, L"%08x,", (UINTN) ExtendedAcpi->HID);
++      MyCatPrint (Str, L"%08x,", (UINTN) ExtendedAcpi->HID);
+     }
+     if ((ExtendedAcpi->CID & PNP_EISA_ID_MASK) == PNP_EISA_ID_CONST) {
+-      CatPrint (Str, L"PNP%04x,", (UINTN) EISA_ID_TO_NUM (ExtendedAcpi->CID));
++      MyCatPrint (Str, L"PNP%04x,", (UINTN) EISA_ID_TO_NUM (ExtendedAcpi->CID));
+     } else {
+-      CatPrint (Str, L"%08x,", (UINTN) ExtendedAcpi->CID);
++      MyCatPrint (Str, L"%08x,", (UINTN) ExtendedAcpi->CID);
+     }
+-    CatPrint (Str, L"%x,", (UINTN) ExtendedAcpi->UID);
++    MyCatPrint (Str, L"%x,", (UINTN) ExtendedAcpi->UID);
+ 
+     if (HIDSTRIdx != 0) {
+-      CatPrint (Str, L"%a,", AsChar8Array + HIDSTRIdx);
++      MyCatPrint (Str, L"%a,", AsChar8Array + HIDSTRIdx);
+     } else {
+-      CatPrint (Str, L"\"\",");
++      MyCatPrint (Str, L"\"\",");
+     }
+     if (CIDSTRIdx != 0) {
+-      CatPrint (Str, L"%a,", AsChar8Array + CIDSTRIdx);
++      MyCatPrint (Str, L"%a,", AsChar8Array + CIDSTRIdx);
+     } else {
+-      CatPrint (Str, L"\"\",");
++      MyCatPrint (Str, L"\"\",");
+     }
+     if (UIDSTRIdx != 0) {
+-      CatPrint (Str, L"%a)", AsChar8Array + UIDSTRIdx);
++      MyCatPrint (Str, L"%a)", AsChar8Array + UIDSTRIdx);
+     } else {
+-      CatPrint (Str, L"\"\")");
++      MyCatPrint (Str, L"\"\")");
+     }
+   }
+ 
+@@ -462,11 +462,11 @@ DevPathAdrAcpi (
+   Length             = (UINT16) DevicePathNodeLength ((EFI_DEVICE_PATH_PROTOCOL *) AcpiAdr);
+   AdditionalAdrCount = (UINT16) ((Length - 8) / 4);
+ 
+-  CatPrint (Str, L"AcpiAdr(%x", (UINTN) AcpiAdr->ADR);
++  MyCatPrint (Str, L"AcpiAdr(%x", (UINTN) AcpiAdr->ADR);
+   for (Index = 0; Index < AdditionalAdrCount; Index++) {
+-    CatPrint (Str, L",%x", (UINTN) *(UINT32 *) ((UINT8 *) AcpiAdr + 8 + Index * 4));
++    MyCatPrint (Str, L",%x", (UINTN) *(UINT32 *) ((UINT8 *) AcpiAdr + 8 + Index * 4));
+   }
+-  CatPrint (Str, L")");
++  MyCatPrint (Str, L")");
+ }
+ 
+ /**
+@@ -488,7 +488,7 @@ DevPathAtapi (
+   ATAPI_DEVICE_PATH *Atapi;
+ 
+   Atapi = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"Ata(%s,%s)",
+     (Atapi->PrimarySecondary != 0)? L"Secondary" : L"Primary",
+@@ -515,7 +515,7 @@ DevPathScsi (
+   SCSI_DEVICE_PATH  *Scsi;
+ 
+   Scsi = DevPath;
+-  CatPrint (Str, L"Scsi(Pun%x,Lun%x)", (UINTN) Scsi->Pun, (UINTN) Scsi->Lun);
++  MyCatPrint (Str, L"Scsi(Pun%x,Lun%x)", (UINTN) Scsi->Pun, (UINTN) Scsi->Lun);
+ }
+ 
+ /**
+@@ -537,7 +537,7 @@ DevPathFibre (
+   FIBRECHANNEL_DEVICE_PATH  *Fibre;
+ 
+   Fibre = DevPath;
+-  CatPrint (Str, L"Fibre(Wwn%lx,Lun%x)", Fibre->WWN, Fibre->Lun);
++  MyCatPrint (Str, L"Fibre(Wwn%lx,Lun%x)", Fibre->WWN, Fibre->Lun);
+ }
+ 
+ /**
+@@ -559,7 +559,7 @@ DevPath1394 (
+   F1394_DEVICE_PATH *F1394Path;
+ 
+   F1394Path = DevPath;
+-  CatPrint (Str, L"1394(%lx)", &F1394Path->Guid);
++  MyCatPrint (Str, L"1394(%lx)", &F1394Path->Guid);
+ }
+ 
+ /**
+@@ -581,7 +581,7 @@ DevPathUsb (
+   USB_DEVICE_PATH *Usb;
+ 
+   Usb = DevPath;
+-  CatPrint (Str, L"Usb(%x,%x)", (UINTN) Usb->ParentPortNumber, (UINTN) Usb->InterfaceNumber);
++  MyCatPrint (Str, L"Usb(%x,%x)", (UINTN) Usb->ParentPortNumber, (UINTN) Usb->InterfaceNumber);
+ }
+ 
+ /**
+@@ -603,7 +603,7 @@ DevPathUsbWWID (
+   USB_WWID_DEVICE_PATH  *UsbWWId;
+ 
+   UsbWWId = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"UsbWwid(%x,%x,%x,\"WWID\")",
+     (UINTN) UsbWWId->VendorId,
+@@ -631,7 +631,7 @@ DevPathLogicalUnit (
+   DEVICE_LOGICAL_UNIT_DEVICE_PATH *LogicalUnit;
+ 
+   LogicalUnit = DevPath;
+-  CatPrint (Str, L"Unit(%x)", (UINTN) LogicalUnit->Lun);
++  MyCatPrint (Str, L"Unit(%x)", (UINTN) LogicalUnit->Lun);
+ }
+ 
+ /**
+@@ -653,7 +653,7 @@ DevPathUsbClass (
+   USB_CLASS_DEVICE_PATH *UsbClass;
+ 
+   UsbClass = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"Usb Class(%x,%x,%x,%x,%x)",
+     (UINTN) UsbClass->VendorId,
+@@ -684,14 +684,14 @@ DevPathSata (
+ 
+   Sata = DevPath;
+   if ((Sata->PortMultiplierPortNumber & SATA_HBA_DIRECT_CONNECT_FLAG) != 0) {
+-    CatPrint (
++    MyCatPrint (
+       Str,
+       L"Sata(%x,%x)",
+       (UINTN) Sata->HBAPortNumber,
+       (UINTN) Sata->Lun
+       );
+   } else {
+-    CatPrint (
++    MyCatPrint (
+       Str,
+       L"Sata(%x,%x,%x)",
+       (UINTN) Sata->HBAPortNumber,
+@@ -720,7 +720,7 @@ DevPathI2O (
+   I2O_DEVICE_PATH *I2OPath;
+ 
+   I2OPath = DevPath;
+-  CatPrint (Str, L"I2O(%x)", (UINTN) I2OPath->Tid);
++  MyCatPrint (Str, L"I2O(%x)", (UINTN) I2OPath->Tid);
+ }
+ 
+ /**
+@@ -750,13 +750,13 @@ DevPathMacAddr (
+     HwAddressSize = 6;
+   }
+ 
+-  CatPrint (Str, L"Mac(");
++  MyCatPrint (Str, L"Mac(");
+ 
+   for (Index = 0; Index < HwAddressSize; Index++) {
+-    CatPrint (Str, L"%02x", (UINTN) MACDevPath->MacAddress.Addr[Index]);
++    MyCatPrint (Str, L"%02x", (UINTN) MACDevPath->MacAddress.Addr[Index]);
+   }
+ 
+-  CatPrint (Str, L")");
++  MyCatPrint (Str, L")");
+ }
+ 
+ /**
+@@ -778,7 +778,7 @@ DevPathIPv4 (
+   IPv4_DEVICE_PATH  *IPDevPath;
+ 
+   IPDevPath = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"IPv4(%d.%d.%d.%d:%d)",
+     (UINTN) IPDevPath->RemoteIpAddress.Addr[0],
+@@ -808,7 +808,7 @@ DevPathIPv6 (
+   IPv6_DEVICE_PATH  *IPv6DevPath;
+ 
+   IPv6DevPath = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"IPv6(%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x)",
+     (UINTN) IPv6DevPath->RemoteIpAddress.Addr[0],
+@@ -849,7 +849,7 @@ DevPathInfiniBand (
+   INFINIBAND_DEVICE_PATH  *InfiniBand;
+ 
+   InfiniBand = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"Infiniband(%x,%g,%lx,%lx,%lx)",
+     (UINTN) InfiniBand->ResourceFlags,
+@@ -911,36 +911,36 @@ DevPathUart (
+   }
+ 
+   if (Uart->BaudRate == 0) {
+-    CatPrint (Str, L"Uart(DEFAULT,%c,", Parity);
++    MyCatPrint (Str, L"Uart(DEFAULT,%c,", Parity);
+   } else {
+-    CatPrint (Str, L"Uart(%ld,%c,", Uart->BaudRate, Parity);
++    MyCatPrint (Str, L"Uart(%ld,%c,", Uart->BaudRate, Parity);
+   }
+ 
+   if (Uart->DataBits == 0) {
+-    CatPrint (Str, L"D,");
++    MyCatPrint (Str, L"D,");
+   } else {
+-    CatPrint (Str, L"%d,", (UINTN) Uart->DataBits);
++    MyCatPrint (Str, L"%d,", (UINTN) Uart->DataBits);
+   }
+ 
+   switch (Uart->StopBits) {
+   case 0:
+-    CatPrint (Str, L"D)");
++    MyCatPrint (Str, L"D)");
+     break;
+ 
+   case 1:
+-    CatPrint (Str, L"1)");
++    MyCatPrint (Str, L"1)");
+     break;
+ 
+   case 2:
+-    CatPrint (Str, L"1.5)");
++    MyCatPrint (Str, L"1.5)");
+     break;
+ 
+   case 3:
+-    CatPrint (Str, L"2)");
++    MyCatPrint (Str, L"2)");
+     break;
+ 
+   default:
+-    CatPrint (Str, L"x)");
++    MyCatPrint (Str, L"x)");
+     break;
+   }
+ }
+@@ -965,7 +965,7 @@ DevPathiSCSI (
+   UINT16                      Options;
+ 
+   IScsi = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"iSCSI(%a,%x,%lx,",
+     IScsi->TargetName,
+@@ -974,18 +974,18 @@ DevPathiSCSI (
+     );
+ 
+   Options = IScsi->LoginOption;
+-  CatPrint (Str, L"%s,", (((Options >> 1) & 0x0001) != 0) ? L"CRC32C" : L"None");
+-  CatPrint (Str, L"%s,", (((Options >> 3) & 0x0001) != 0) ? L"CRC32C" : L"None");
++  MyCatPrint (Str, L"%s,", (((Options >> 1) & 0x0001) != 0) ? L"CRC32C" : L"None");
++  MyCatPrint (Str, L"%s,", (((Options >> 3) & 0x0001) != 0) ? L"CRC32C" : L"None");
+   if (((Options >> 11) & 0x0001) != 0) {
+-    CatPrint (Str, L"%s,", L"None");
++    MyCatPrint (Str, L"%s,", L"None");
+   } else if (((Options >> 12) & 0x0001) != 0) {
+-    CatPrint (Str, L"%s,", L"CHAP_UNI");
++    MyCatPrint (Str, L"%s,", L"CHAP_UNI");
+   } else {
+-    CatPrint (Str, L"%s,", L"CHAP_BI");
++    MyCatPrint (Str, L"%s,", L"CHAP_BI");
+ 
+   }
+ 
+-  CatPrint (Str, L"%s)", (IScsi->NetworkProtocol == 0) ? L"TCP" : L"reserved");
++  MyCatPrint (Str, L"%s)", (IScsi->NetworkProtocol == 0) ? L"TCP" : L"reserved");
+ }
+ 
+ /**
+@@ -1007,7 +1007,7 @@ DevPathVlan (
+   VLAN_DEVICE_PATH  *Vlan;
+ 
+   Vlan = DevPath;
+-  CatPrint (Str, L"Vlan(%d)", (UINTN) Vlan->VlanId);
++  MyCatPrint (Str, L"Vlan(%d)", (UINTN) Vlan->VlanId);
+ }
+ 
+ /**
+@@ -1031,7 +1031,7 @@ DevPathHardDrive (
+   Hd = DevPath;
+   switch (Hd->SignatureType) {
+   case SIGNATURE_TYPE_MBR:
+-    CatPrint (
++    MyCatPrint (
+       Str,
+       L"HD(Part%d,Sig%08x)",
+       (UINTN) Hd->PartitionNumber,
+@@ -1040,7 +1040,7 @@ DevPathHardDrive (
+     break;
+ 
+   case SIGNATURE_TYPE_GUID:
+-    CatPrint (
++    MyCatPrint (
+       Str,
+       L"HD(Part%d,Sig%g)",
+       (UINTN) Hd->PartitionNumber,
+@@ -1049,7 +1049,7 @@ DevPathHardDrive (
+     break;
+ 
+   default:
+-    CatPrint (
++    MyCatPrint (
+       Str,
+       L"HD(Part%d,MBRType=%02x,SigType=%02x)",
+       (UINTN) Hd->PartitionNumber,
+@@ -1079,7 +1079,7 @@ DevPathCDROM (
+   CDROM_DEVICE_PATH *Cd;
+ 
+   Cd = DevPath;
+-  CatPrint (Str, L"CDROM(Entry%x)", (UINTN) Cd->BootEntry);
++  MyCatPrint (Str, L"CDROM(Entry%x)", (UINTN) Cd->BootEntry);
+ }
+ 
+ /**
+@@ -1101,7 +1101,7 @@ DevPathFilePath (
+   FILEPATH_DEVICE_PATH  *Fp;
+ 
+   Fp = DevPath;
+-  CatPrint (Str, L"%s", Fp->PathName);
++  MyCatPrint (Str, L"%s", Fp->PathName);
+ }
+ 
+ /**
+@@ -1123,7 +1123,7 @@ DevPathMediaProtocol (
+   MEDIA_PROTOCOL_DEVICE_PATH  *MediaProt;
+ 
+   MediaProt = DevPath;
+-  CatPrint (Str, L"Media(%g)", &MediaProt->Protocol);
++  MyCatPrint (Str, L"Media(%g)", &MediaProt->Protocol);
+ }
+ 
+ /**
+@@ -1145,7 +1145,7 @@ DevPathFvFilePath (
+   MEDIA_FW_VOL_FILEPATH_DEVICE_PATH *FvFilePath;
+ 
+   FvFilePath = DevPath;
+-  CatPrint (Str, L"%g", &FvFilePath->FvFileName);
++  MyCatPrint (Str, L"%g", &FvFilePath->FvFileName);
+ }
+ 
+ /**
+@@ -1167,7 +1167,7 @@ MyDevPathRelativeOffsetRange (
+   MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH *Offset;
+ 
+   Offset = DevPath;
+-  CatPrint (
++  MyCatPrint (
+     Str,
+     L"Offset(%lx,%lx)",
+     Offset->StartingOffset,
+@@ -1228,7 +1228,7 @@ DevPathBssBss (
+     Type = L"?";
+     break;
+   }
+-  CatPrint (Str, L"Legacy-%s", Type);
++  MyCatPrint (Str, L"Legacy-%s", Type);
+ }
+ 
+ /**
+@@ -1247,7 +1247,7 @@ DevPathEndInstance (
+   IN VOID                 *DevPath
+   )
+ {
+-  CatPrint (Str, L",");
++  MyCatPrint (Str, L",");
+ }
+ 
+ /**
+@@ -1266,7 +1266,7 @@ DevPathNodeUnknown (
+   IN VOID                 *DevPath
+   )
+ {
+-  CatPrint (Str, L"?");
++  MyCatPrint (Str, L"?");
+ }
+ /**
+   Convert Device Path to a Unicode string for printing.
+@@ -1287,7 +1287,7 @@ DevPathFvPath (
+   MEDIA_FW_VOL_DEVICE_PATH *FvPath;
+ 
+   FvPath = DevPath;
+-  CatPrint (Str, L"Fv(%g)", &FvPath->FvName);
++  MyCatPrint (Str, L"Fv(%g)", &FvPath->FvName);
+ }
+ 
+ DEVICE_PATH_STRING_TABLE  DevPathTable[] = {
+@@ -1553,7 +1553,7 @@ DevicePathToStr (
+     //  Put a path seperator in if needed
+     //
+     if ((Str.Len != 0) && (DumpNode != DevPathEndInstance)) {
+-      CatPrint (&Str, L"/");
++      MyCatPrint (&Str, L"/");
+     }
+     //
+     // Print this node of the device path
+diff --git a/EfiLib/GenericBdsLib.h b/EfiLib/GenericBdsLib.h
+index be4325b..afc10cb 100644
+--- a/EfiLib/GenericBdsLib.h
++++ b/EfiLib/GenericBdsLib.h
+@@ -872,11 +872,6 @@ BdsLibSaveMemoryTypeInformation (
+   @retval EFI_ACCESS_DENIED   The user was not successfully identified.
+ 
+ **/
+-// EFI_STATUS
+-// EFIAPI
+-// BdsLibUserIdentify (
+-//   OUT EFI_USER_PROFILE_HANDLE         *User
+-//   );  
+ 
+ /**
+   This function checks if a Fv file device path is valid, according to a file GUID. If it is invalid,
+@@ -961,7 +956,7 @@ DevPathVendor (
+ 
+ CHAR16 *
+ EFIAPI
+-CatPrint (
++MyCatPrint (
+   IN OUT POOL_PRINT   *Str,
+   IN CHAR16           *Fmt,
+   ...
+diff --git a/EfiLib/gnuefi-helper.c b/EfiLib/gnuefi-helper.c
+index d4f269d..f8cd9a3 100644
+--- a/EfiLib/gnuefi-helper.c
++++ b/EfiLib/gnuefi-helper.c
+@@ -21,7 +21,6 @@
+ #include "LegacyBios.h"
+ 
+ EFI_GUID gEfiDevicePathUtilitiesProtocolGuid = { 0x09576E91, 0x6D3F, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+-EFI_GUID gEfiGlobalVariableGuid = { 0x8BE4DF61, 0x93CA, 0x11D2, { 0xAA, 0x0D, 0x00, 0xE0, 0x98, 0x03, 0x2B, 0x8C }};
+ EFI_GUID gEfiLegacyBiosProtocolGuid = { 0xdb9a1e3d, 0x45cb, 0x4abb, { 0x85, 0x3b, 0xe5, 0x38, 0x7f, 0xdb, 0x2e, 0x2d }};
+ 
+ /**
+diff --git a/EfiLib/legacy.c b/EfiLib/legacy.c
+index 3e5edee..271b948 100644
+--- a/EfiLib/legacy.c
++++ b/EfiLib/legacy.c
+@@ -36,6 +36,7 @@ UINTN                    mBootOptionBbsMappingCount = 0;
+ extern EFI_DEVICE_PATH EndDevicePath[];
+ extern EFI_GUID gEfiLegacyBiosProtocolGuid;
+ EFI_GUID gEfiLegacyDevOrderVariableGuid     = { 0xa56074db, 0x65fe, 0x45f7, {0xbd, 0x21, 0x2d, 0x2b, 0xdd, 0x8e, 0x96, 0x52 }};
++static EFI_GUID EfiGlobalVariableGuid = { 0x8BE4DF61, 0x93CA, 0x11D2, { 0xAA, 0x0D, 0x00, 0xE0, 0x98, 0x03, 0x2B, 0x8C }};
+ 
+ /**
+ 
+@@ -276,7 +277,7 @@ BdsFindLegacyBootOptionByDevTypeAndName (
+     UnicodeSPrint (BootOption, sizeof (BootOption), L"Boot%04x", (UINTN) BootOrder[Index]);
+     BootOptionVar = BdsLibGetVariableAndSize (
+                       BootOption,
+-                      &gEfiGlobalVariableGuid,
++                      &EfiGlobalVariableGuid,
+                       &BootOptionSize
+                       );
+     if (NULL == BootOptionVar) {
+@@ -462,7 +463,7 @@ BdsCreateLegacyBootOption (
+ 
+   Status = refit_call5_wrapper(gRT->SetVariable,
+                   BootString,
+-                  &gEfiGlobalVariableGuid,
++                  &EfiGlobalVariableGuid,
+                   VAR_FLAG,
+                   BufferSize,
+                   Buffer
+@@ -747,7 +748,7 @@ BdsAddNonExistingLegacyBootOptions (
+ 
+   BootOrder = BdsLibGetVariableAndSize (
+                 L"BootOrder",
+-                &gEfiGlobalVariableGuid,
++                &EfiGlobalVariableGuid,
+                 &BootOrderSize
+                 );
+   if (BootOrder == NULL) {
+@@ -817,13 +818,13 @@ BdsAddNonExistingLegacyBootOptions (
+   if (BootOrderSize > 0) {
+     Status = refit_call5_wrapper(gRT->SetVariable,
+                     L"BootOrder",
+-                    &gEfiGlobalVariableGuid,
++                    &EfiGlobalVariableGuid,
+                     VAR_FLAG,
+                     BootOrderSize,
+                     BootOrder
+                     );
+   } else {
+-    EfiLibDeleteVariable (L"BootOrder", &gEfiGlobalVariableGuid);
++    EfiLibDeleteVariable (L"BootOrder", &EfiGlobalVariableGuid);
+   }
+ 
+   if (BootOrder != NULL) {
+@@ -861,7 +862,7 @@ BdsDeleteBootOption (
+   Index2Del = 0;
+ 
+   UnicodeSPrint (BootOption, sizeof (BootOption), L"Boot%04x", OptionNumber);
+-  Status = EfiLibDeleteVariable (BootOption, &gEfiGlobalVariableGuid);
++  Status = EfiLibDeleteVariable (BootOption, &EfiGlobalVariableGuid);
+ 
+   //
+   // adjust boot order array
+@@ -940,7 +941,7 @@ BdsDeleteAllInvalidLegacyBootOptions (
+ 
+   BootOrder = BdsLibGetVariableAndSize (
+                 L"BootOrder",
+-                &gEfiGlobalVariableGuid,
++                &EfiGlobalVariableGuid,
+                 &BootOrderSize
+                 );
+   if (BootOrder == NULL) {
+@@ -952,14 +953,14 @@ BdsDeleteAllInvalidLegacyBootOptions (
+     UnicodeSPrint (BootOption, sizeof (BootOption), L"Boot%04x", BootOrder[Index]);
+     BootOptionVar = BdsLibGetVariableAndSize (
+                       BootOption,
+-                      &gEfiGlobalVariableGuid,
++                      &EfiGlobalVariableGuid,
+                       &BootOptionSize
+                       );
+     if (NULL == BootOptionVar) {
+       BootOptionSize = 0;
+       Status = refit_call5_wrapper(gRT->GetVariable,
+                       BootOption,
+-                      &gEfiGlobalVariableGuid,
++                      &EfiGlobalVariableGuid,
+                       NULL,
+                       &BootOptionSize,
+                       BootOptionVar
+@@ -1035,13 +1036,13 @@ BdsDeleteAllInvalidLegacyBootOptions (
+   if (BootOrderSize != 0) {
+     Status = refit_call5_wrapper(gRT->SetVariable,
+                     L"BootOrder",
+-                    &gEfiGlobalVariableGuid,
++                    &EfiGlobalVariableGuid,
+                     VAR_FLAG,
+                     BootOrderSize,
+                     BootOrder
+                     );
+   } else {
+-    EfiLibDeleteVariable (L"BootOrder", &gEfiGlobalVariableGuid);
++    EfiLibDeleteVariable (L"BootOrder", &EfiGlobalVariableGuid);
+   }
+ 
+   if (BootOrder != NULL) {
+diff --git a/filesystems/edk2/DriverBinding.h b/filesystems/edk2/DriverBinding.h
+index fdb16c5..c2de33a 100644
+--- a/filesystems/edk2/DriverBinding.h
++++ b/filesystems/edk2/DriverBinding.h
+@@ -21,30 +21,32 @@ Revision History
+ 
+ --*/
+ 
++/*
++ * rEFInd NOTE: This file is included only when compiling with GNU-EFI,
++ * which has not traditionally provided the definitions supplied here.
++ * Unfortunately, recent (ca. 3.0.5) versions of GNU-EFI have added
++ * SOME of these functions to an existing header file, creating problems
++ * when trying to maintain compatibility with multiple GNU-EFI versions.
++ * I've therefore renamed the relevant defines, types, and functions,
++ * both here and in fsw_efi.c; and included a define to match the only
++ * used name (REFIND_EFI_DRIVER_BINDING_PROTOCOL) to the traditional
++ * name (EFI_DRIVER_BINDING_PROTOCOL) in fsw_efi.c for compiling with
++ * TianoCore.
++ */
++
+ #ifndef _EFI_DRIVER_BINDING_H_
+ #define _EFI_DRIVER_BINDING_H_
+ 
+ #include <efidevp.h>
+ 
+-//
+-// Global ID for the ControllerHandle Driver Protocol
+-//
+-#define EFI_DRIVER_BINDING_PROTOCOL_GUID \
++#define REFIND_EFI_DRIVER_BINDING_PROTOCOL_GUID \
+   { \
+     0x18a031ab, 0xb443, 0x4d1a, {0xa5, 0xc0, 0xc, 0x9, 0x26, 0x1e, 0x9f, 0x71} \
+   }
+ 
+ #define EFI_FORWARD_DECLARATION(x) typedef struct _##x x
+ 
+-EFI_FORWARD_DECLARATION (EFI_DRIVER_BINDING_PROTOCOL);
+-
+-///
+-/// Device Path protocol.
+-///
+-#define EFI_DEVICE_PATH_PROTOCOL_GUID \
+-  { \
+-    0x9576e91, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
+-  }
++EFI_FORWARD_DECLARATION (REFIND_EFI_DRIVER_BINDING_PROTOCOL);
+ 
+ // Begin included from DevicePath.h....
+ 
+@@ -79,18 +81,19 @@ typedef struct {
+   UINT8 Length[2];  ///< Specific Device Path data. Type and Sub-Type define
+                     ///< type of data. Size of data is included in Length.
+ 
+-} EFI_DEVICE_PATH_PROTOCOL;
++} REFIND_EFI_DEVICE_PATH_PROTOCOL;
+ 
+ #pragma pack()
+ 
++
+ // End included from DevicePath.h
+ 
+ typedef
+ EFI_STATUS
+ (EFI_FUNCTION EFIAPI *EFI_DRIVER_BINDING_SUPPORTED) (
+-  IN EFI_DRIVER_BINDING_PROTOCOL            * This,
++  IN REFIND_EFI_DRIVER_BINDING_PROTOCOL            * This,
+   IN EFI_HANDLE                             ControllerHandle,
+-  IN EFI_DEVICE_PATH_PROTOCOL               * RemainingDevicePath OPTIONAL
++  IN REFIND_EFI_DEVICE_PATH_PROTOCOL               * RemainingDevicePath OPTIONAL
+   )
+ /*++
+ 
+@@ -114,9 +117,9 @@ EFI_STATUS
+ typedef
+ EFI_STATUS
+ (EFI_FUNCTION EFIAPI *EFI_DRIVER_BINDING_START) (
+-  IN EFI_DRIVER_BINDING_PROTOCOL            * This,
++  IN REFIND_EFI_DRIVER_BINDING_PROTOCOL            * This,
+   IN EFI_HANDLE                             ControllerHandle,
+-  IN EFI_DEVICE_PATH_PROTOCOL               * RemainingDevicePath OPTIONAL
++  IN REFIND_EFI_DEVICE_PATH_PROTOCOL               * RemainingDevicePath OPTIONAL
+   )
+ /*++
+ 
+@@ -140,7 +143,7 @@ EFI_STATUS
+ typedef
+ EFI_STATUS
+ (EFI_FUNCTION EFIAPI *EFI_DRIVER_BINDING_STOP) (
+-  IN EFI_DRIVER_BINDING_PROTOCOL            * This,
++  IN REFIND_EFI_DRIVER_BINDING_PROTOCOL            * This,
+   IN  EFI_HANDLE                            ControllerHandle,
+   IN  UINTN                                 NumberOfChildren,
+   IN  EFI_HANDLE                            * ChildHandleBuffer
+@@ -167,7 +170,7 @@ EFI_STATUS
+ //
+ // Interface structure for the ControllerHandle Driver Protocol
+ //
+-struct _EFI_DRIVER_BINDING_PROTOCOL {
++struct _REFIND_EFI_DRIVER_BINDING_PROTOCOL {
+   EFI_DRIVER_BINDING_SUPPORTED  Supported;
+   EFI_DRIVER_BINDING_START      Start;
+   EFI_DRIVER_BINDING_STOP       Stop;
+diff --git a/filesystems/fsw_efi.c b/filesystems/fsw_efi.c
+index a7257fa..635985e 100644
+--- a/filesystems/fsw_efi.c
++++ b/filesystems/fsw_efi.c
+@@ -43,9 +43,18 @@
+ #ifdef __MAKEWITH_GNUEFI
+ #include "edk2/DriverBinding.h"
+ #include "edk2/ComponentName.h"
++#define gMyEfiSimpleFileSystemProtocolGuid FileSystemProtocol
+ #else
++#define REFIND_EFI_DRIVER_BINDING_PROTOCOL EFI_DRIVER_BINDING_PROTOCOL
+ #define REFIND_EFI_COMPONENT_NAME_PROTOCOL EFI_COMPONENT_NAME_PROTOCOL
++#define REFIND_EFI_COMPONENT_NAME_PROTOCOL_GUID EFI_COMPONENT_NAME_PROTOCOL_GUID
++#define REFIND_EFI_DRIVER_BINDING_PROTOCOL_GUID EFI_DRIVER_BINDING_PROTOCOL_GUID
++#define REFIND_EFI_DEVICE_PATH_PROTOCOL EFI_DEVICE_PATH_PROTOCOL
++#define EFI_FILE_SYSTEM_VOLUME_LABEL_INFO_ID    \
++    { 0xDB47D7D3,0xFE81, 0x11d3, {0x9A, 0x35, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D} }
++#define gMyEfiSimpleFileSystemProtocolGuid gEfiSimpleFileSystemProtocolGuid
+ #endif
++
+ #include "../include/refit_call_wrapper.h"
+ 
+ #define DEBUG_LEVEL 0
+@@ -55,27 +64,13 @@
+ #define FSTYPE ext2
+ #endif
+ 
+-#ifdef __MAKEWITH_GNUEFI
+-
+-#define EFI_DISK_IO_PROTOCOL_GUID \
+-  { \
+-    0xce345171, 0xba0b, 0x11d2, {0x8e, 0x4f, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
+-  }
+-
+-#define EFI_BLOCK_IO_PROTOCOL_GUID \
+-  { \
+-    0x964e5b21, 0x6459, 0x11d2, {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
+-  }
+-
+-EFI_GUID gEfiDriverBindingProtocolGuid = EFI_DRIVER_BINDING_PROTOCOL_GUID;
+-EFI_GUID gEfiComponentNameProtocolGuid = REFIND_EFI_COMPONENT_NAME_PROTOCOL_GUID;
+-EFI_GUID gEfiDiskIoProtocolGuid = EFI_DISK_IO_PROTOCOL_GUID;
+-EFI_GUID gEfiBlockIoProtocolGuid = EFI_BLOCK_IO_PROTOCOL_GUID;
+-EFI_GUID gEfiFileInfoGuid = EFI_FILE_INFO_ID;
+-EFI_GUID gEfiFileSystemInfoGuid = EFI_FILE_SYSTEM_INFO_ID;
+-EFI_GUID gEfiFileSystemVolumeLabelInfoIdGuid = EFI_FILE_SYSTEM_VOLUME_LABEL_INFO_ID;
+-#define gEfiSimpleFileSystemProtocolGuid FileSystemProtocol
+-#endif
++EFI_GUID gMyEfiDriverBindingProtocolGuid = REFIND_EFI_DRIVER_BINDING_PROTOCOL_GUID;
++EFI_GUID gMyEfiComponentNameProtocolGuid = REFIND_EFI_COMPONENT_NAME_PROTOCOL_GUID;
++EFI_GUID gMyEfiDiskIoProtocolGuid = REFIND_EFI_DISK_IO_PROTOCOL_GUID;
++EFI_GUID gMyEfiBlockIoProtocolGuid = REFIND_EFI_BLOCK_IO_PROTOCOL_GUID;
++EFI_GUID gMyEfiFileInfoGuid = EFI_FILE_INFO_ID;
++EFI_GUID gMyEfiFileSystemInfoGuid = EFI_FILE_SYSTEM_INFO_ID;
++EFI_GUID gMyEfiFileSystemVolumeLabelInfoIdGuid = EFI_FILE_SYSTEM_VOLUME_LABEL_INFO_ID;
+ 
+ /** Helper macro for stringification. */
+ #define FSW_EFI_STRINGIFY(x) #x
+@@ -84,25 +79,25 @@ EFI_GUID gEfiFileSystemVolumeLabelInfoIdGuid = EFI_FILE_SYSTEM_VOLUME_LABEL_INFO
+ 
+ // function prototypes
+ 
+-EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN EFI_DRIVER_BINDING_PROTOCOL  *This,
+-                                                  IN EFI_HANDLE                   ControllerHandle,
+-                                                  IN EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath);
+-EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN EFI_DRIVER_BINDING_PROTOCOL  *This,
+-                                              IN EFI_HANDLE                   ControllerHandle,
+-                                              IN EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath);
+-EFI_STATUS EFIAPI fsw_efi_DriverBinding_Stop(IN  EFI_DRIVER_BINDING_PROTOCOL  *This,
+-                                             IN  EFI_HANDLE                   ControllerHandle,
+-                                             IN  UINTN                        NumberOfChildren,
+-                                             IN  EFI_HANDLE                   *ChildHandleBuffer);
++EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN REFIND_EFI_DRIVER_BINDING_PROTOCOL  *This,
++                                                  IN EFI_HANDLE                          ControllerHandle,
++                                                  IN REFIND_EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath);
++EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN REFIND_EFI_DRIVER_BINDING_PROTOCOL  *This,
++                                              IN EFI_HANDLE                          ControllerHandle,
++                                              IN REFIND_EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath);
++EFI_STATUS EFIAPI fsw_efi_DriverBinding_Stop(IN REFIND_EFI_DRIVER_BINDING_PROTOCOL  *This,
++                                             IN EFI_HANDLE                          ControllerHandle,
++                                             IN UINTN                               NumberOfChildren,
++                                             IN EFI_HANDLE                          *ChildHandleBuffer);
+ 
+ EFI_STATUS EFIAPI fsw_efi_ComponentName_GetDriverName(IN  REFIND_EFI_COMPONENT_NAME_PROTOCOL  *This,
+-                                                      IN  CHAR8                        *Language,
+-                                                      OUT CHAR16                       **DriverName);
+-EFI_STATUS EFIAPI fsw_efi_ComponentName_GetControllerName(IN  REFIND_EFI_COMPONENT_NAME_PROTOCOL    *This,
+-                                                          IN  EFI_HANDLE                     ControllerHandle,
+-                                                          IN  EFI_HANDLE                     ChildHandle  OPTIONAL,
+-                                                          IN  CHAR8                          *Language,
+-                                                          OUT CHAR16                         **ControllerName);
++                                                      IN  CHAR8                               *Language,
++                                                      OUT CHAR16                              **DriverName);
++EFI_STATUS EFIAPI fsw_efi_ComponentName_GetControllerName(IN  REFIND_EFI_COMPONENT_NAME_PROTOCOL  *This,
++                                                          IN  EFI_HANDLE                          ControllerHandle,
++                                                          IN  EFI_HANDLE                          ChildHandle  OPTIONAL,
++                                                          IN  CHAR8                               *Language,
++                                                          OUT CHAR16                              **ControllerName);
+ 
+ void EFIAPI fsw_efi_change_blocksize(struct fsw_volume *vol,
+                               fsw_u32 old_phys_blocksize, fsw_u32 old_log_blocksize,
+@@ -164,7 +159,7 @@ static int LastRead = -1;
+  * Interface structure for the EFI Driver Binding protocol.
+  */
+ 
+-EFI_DRIVER_BINDING_PROTOCOL fsw_efi_DriverBinding_table = {
++REFIND_EFI_DRIVER_BINDING_PROTOCOL fsw_efi_DriverBinding_table = {
+     fsw_efi_DriverBinding_Supported,
+     fsw_efi_DriverBinding_Start,
+     fsw_efi_DriverBinding_Stop,
+@@ -233,7 +228,7 @@ EFI_STATUS EFIAPI fsw_efi_main(IN EFI_HANDLE         ImageHandle,
+     fsw_efi_DriverBinding_table.DriverBindingHandle  = ImageHandle;
+     // install Driver Binding protocol
+     Status = refit_call4_wrapper(BS->InstallProtocolInterface, &fsw_efi_DriverBinding_table.DriverBindingHandle,
+-                                          &gEfiDriverBindingProtocolGuid,
++                                          &gMyEfiDriverBindingProtocolGuid,
+                                           EFI_NATIVE_INTERFACE,
+                                           &fsw_efi_DriverBinding_table);
+     if (EFI_ERROR (Status)) {
+@@ -242,7 +237,7 @@ EFI_STATUS EFIAPI fsw_efi_main(IN EFI_HANDLE         ImageHandle,
+ 
+     // install Component Name protocol
+     Status = refit_call4_wrapper(BS->InstallProtocolInterface, &fsw_efi_DriverBinding_table.DriverBindingHandle,
+-                                          &gEfiComponentNameProtocolGuid,
++                                          &gMyEfiComponentNameProtocolGuid,
+                                           EFI_NATIVE_INTERFACE,
+                                           &fsw_efi_ComponentName_table);
+     if (EFI_ERROR (Status)) {
+@@ -272,9 +267,9 @@ EFI_DRIVER_ENTRY_POINT(fsw_efi_main)
+  * and implicitly checks if the disk is already in use by another driver.
+  */
+ 
+-EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN EFI_DRIVER_BINDING_PROTOCOL  *This,
++EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN REFIND_EFI_DRIVER_BINDING_PROTOCOL  *This,
+                                                   IN EFI_HANDLE                   ControllerHandle,
+-                                                  IN EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath)
++                                                  IN REFIND_EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath)
+ {
+     EFI_STATUS          Status;
+     EFI_DISK_IO         *DiskIo;
+@@ -283,7 +278,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN EFI_DRIVER_BINDING_PROTOCOL
+ 
+     // first, open DiskIO
+     Status = refit_call6_wrapper(BS->OpenProtocol, ControllerHandle,
+-                              &gEfiDiskIoProtocolGuid,
++                              &gMyEfiDiskIoProtocolGuid,
+                               (VOID **) &DiskIo,
+                               This->DriverBindingHandle,
+                               ControllerHandle,
+@@ -293,13 +288,13 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN EFI_DRIVER_BINDING_PROTOCOL
+ 
+     // we were just checking, close it again
+     refit_call4_wrapper(BS->CloseProtocol, ControllerHandle,
+-                      &gEfiDiskIoProtocolGuid,
++                      &gMyEfiDiskIoProtocolGuid,
+                       This->DriverBindingHandle,
+                       ControllerHandle);
+ 
+     // next, check BlockIO without actually opening it
+     Status = refit_call6_wrapper(BS->OpenProtocol, ControllerHandle,
+-                              &gEfiBlockIoProtocolGuid,
++                              &gMyEfiBlockIoProtocolGuid,
+                               NULL,
+                               This->DriverBindingHandle,
+                               ControllerHandle,
+@@ -320,9 +315,9 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN EFI_DRIVER_BINDING_PROTOCOL
+  * device handle.
+  */
+ 
+-EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN EFI_DRIVER_BINDING_PROTOCOL  *This,
++EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN REFIND_EFI_DRIVER_BINDING_PROTOCOL  *This,
+                                               IN EFI_HANDLE                   ControllerHandle,
+-                                              IN EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath)
++                                              IN REFIND_EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath)
+ {
+     EFI_STATUS          Status;
+     EFI_BLOCK_IO        *BlockIo;
+@@ -335,7 +330,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN EFI_DRIVER_BINDING_PROTOCOL  *T
+ 
+     // open consumed protocols
+     Status = refit_call6_wrapper(BS->OpenProtocol, ControllerHandle,
+-                              &gEfiBlockIoProtocolGuid,
++                              &gMyEfiBlockIoProtocolGuid,
+                               (VOID **) &BlockIo,
+                               This->DriverBindingHandle,
+                               ControllerHandle,
+@@ -346,7 +341,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN EFI_DRIVER_BINDING_PROTOCOL  *T
+     }
+ 
+     Status = refit_call6_wrapper(BS->OpenProtocol, ControllerHandle,
+-                              &gEfiDiskIoProtocolGuid,
++                              &gMyEfiDiskIoProtocolGuid,
+                               (VOID **) &DiskIo,
+                               This->DriverBindingHandle,
+                               ControllerHandle,
+@@ -373,7 +368,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN EFI_DRIVER_BINDING_PROTOCOL  *T
+         Volume->FileSystem.Revision     = EFI_FILE_IO_INTERFACE_REVISION;
+         Volume->FileSystem.OpenVolume   = fsw_efi_FileSystem_OpenVolume;
+         Status = refit_call4_wrapper(BS->InstallMultipleProtocolInterfaces, &ControllerHandle,
+-                                                       &gEfiSimpleFileSystemProtocolGuid,
++                                                       &gMyEfiSimpleFileSystemProtocolGuid,
+                                                        &Volume->FileSystem,
+                                                        NULL);
+         if (EFI_ERROR(Status)) {
+@@ -388,7 +383,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN EFI_DRIVER_BINDING_PROTOCOL  *T
+         FreePool(Volume);
+ 
+         refit_call4_wrapper(BS->CloseProtocol, ControllerHandle,
+-                          &gEfiDiskIoProtocolGuid,
++                          &gMyEfiDiskIoProtocolGuid,
+                           This->DriverBindingHandle,
+                           ControllerHandle);
+     }
+@@ -405,7 +400,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Start(IN EFI_DRIVER_BINDING_PROTOCOL  *T
+  * case; it closes all file handles between commands.
+  */
+ 
+-EFI_STATUS EFIAPI fsw_efi_DriverBinding_Stop(IN  EFI_DRIVER_BINDING_PROTOCOL  *This,
++EFI_STATUS EFIAPI fsw_efi_DriverBinding_Stop(IN  REFIND_EFI_DRIVER_BINDING_PROTOCOL  *This,
+                                              IN  EFI_HANDLE                   ControllerHandle,
+                                              IN  UINTN                        NumberOfChildren,
+                                              IN  EFI_HANDLE                   *ChildHandleBuffer)
+@@ -420,7 +415,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Stop(IN  EFI_DRIVER_BINDING_PROTOCOL  *T
+ 
+     // get the installed SimpleFileSystem interface
+     Status = refit_call6_wrapper(BS->OpenProtocol, ControllerHandle,
+-                              &gEfiSimpleFileSystemProtocolGuid,
++                              &gMyEfiSimpleFileSystemProtocolGuid,
+                               (VOID **) &FileSystem,
+                               This->DriverBindingHandle,
+                               ControllerHandle,
+@@ -433,7 +428,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Stop(IN  EFI_DRIVER_BINDING_PROTOCOL  *T
+ 
+     // uninstall Simple File System protocol
+     Status = refit_call4_wrapper(BS->UninstallMultipleProtocolInterfaces, ControllerHandle,
+-                                                     &gEfiSimpleFileSystemProtocolGuid, &Volume->FileSystem,
++                                                     &gMyEfiSimpleFileSystemProtocolGuid, &Volume->FileSystem,
+                                                      NULL);
+     if (EFI_ERROR(Status)) {
+  //       Print(L"Fsw ERROR: UninstallMultipleProtocolInterfaces returned %x\n", Status);
+@@ -450,7 +445,7 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Stop(IN  EFI_DRIVER_BINDING_PROTOCOL  *T
+ 
+     // close the consumed protocols
+     Status = refit_call4_wrapper(BS->CloseProtocol, ControllerHandle,
+-                               &gEfiDiskIoProtocolGuid,
++                               &gMyEfiDiskIoProtocolGuid,
+                                This->DriverBindingHandle,
+                                ControllerHandle);
+ 
+@@ -1027,14 +1022,14 @@ EFI_STATUS fsw_efi_dnode_getinfo(IN FSW_FILE_DATA *File,
+     struct fsw_volume_stat vsb;
+ 
+ 
+-    if (CompareGuid(InformationType, &gEfiFileInfoGuid)) {
++    if (CompareGuid(InformationType, &gMyEfiFileInfoGuid)) {
+ #if DEBUG_LEVEL
+         Print(L"fsw_efi_dnode_getinfo: FILE_INFO\n");
+ #endif
+ 
+         Status = fsw_efi_dnode_fill_FileInfo(Volume, File->shand.dnode, BufferSize, Buffer);
+ 
+-    } else if (CompareGuid(InformationType, &gEfiFileSystemInfoGuid)) {
++    } else if (CompareGuid(InformationType, &gMyEfiFileSystemInfoGuid)) {
+ #if DEBUG_LEVEL
+         Print(L"fsw_efi_dnode_getinfo: FILE_SYSTEM_INFO\n");
+ #endif
+@@ -1065,7 +1060,7 @@ EFI_STATUS fsw_efi_dnode_getinfo(IN FSW_FILE_DATA *File,
+         *BufferSize = RequiredSize;
+         Status = EFI_SUCCESS;
+ 
+-    } else if (CompareGuid(InformationType, &gEfiFileSystemVolumeLabelInfoIdGuid)) {
++    } else if (CompareGuid(InformationType, &gMyEfiFileSystemVolumeLabelInfoIdGuid)) {
+ #if DEBUG_LEVEL
+         Print(L"fsw_efi_dnode_getinfo: FILE_SYSTEM_VOLUME_LABEL\n");
+ #endif
+diff --git a/filesystems/fsw_efi.h b/filesystems/fsw_efi.h
+index c3b7a3c..d9442ef 100644
+--- a/filesystems/fsw_efi.h
++++ b/filesystems/fsw_efi.h
+@@ -44,6 +44,16 @@
+ #define CompareGuid(a, b) CompareGuid(a, b)==0
+ #endif
+ 
++#define REFIND_EFI_DISK_IO_PROTOCOL_GUID \
++  { \
++    0xce345171, 0xba0b, 0x11d2, {0x8e, 0x4f, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
++  }
++
++#define REFIND_EFI_BLOCK_IO_PROTOCOL_GUID \
++  { \
++    0x964e5b21, 0x6459, 0x11d2, {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
++  }
++
+ /**
+  * EFI Host: Private per-volume structure.
+  */
+diff --git a/filesystems/scandisk.c b/filesystems/scandisk.c
+index d8b862a..ddd6908 100644
+--- a/filesystems/scandisk.c
++++ b/filesystems/scandisk.c
+@@ -24,8 +24,11 @@
+ #ifdef __MAKEWITH_GNUEFI
+ #include "edk2/DriverBinding.h"
+ #include "edk2/ComponentName.h"
+-extern EFI_GUID gEfiDiskIoProtocolGuid;
+-extern EFI_GUID gEfiBlockIoProtocolGuid;
++extern EFI_GUID gMyEfiDiskIoProtocolGuid;
++extern EFI_GUID gMyEfiBlockIoProtocolGuid;
++#else
++#define gMyEfiBlockIoProtocolGuid gEfiBlockIoProtocolGuid
++#define gMyEfiDiskIoProtocolGuid gEfiDiskIoProtocolGuid
+ #endif
+ #include "../include/refit_call_wrapper.h"
+ 
+@@ -99,16 +102,16 @@ static int scan_disks(int (*hook)(struct fsw_volume *, struct fsw_volume *), str
+     Print(L" ");
+ #endif
+     DPRINT(L"Scanning disks\n");
+-    Status = refit_call5_wrapper(BS->LocateHandleBuffer, ByProtocol, &gEfiDiskIoProtocolGuid, NULL, &HandleCount, &Handles);
++    Status = refit_call5_wrapper(BS->LocateHandleBuffer, ByProtocol, &gMyEfiDiskIoProtocolGuid, NULL, &HandleCount, &Handles);
+     if (Status == EFI_NOT_FOUND)
+         return -1;  // no filesystems. strange, but true...
+     for (i = 0; i < HandleCount; i++) {
+         EFI_DISK_IO *diskio;
+         EFI_BLOCK_IO *blockio;
+-        Status = refit_call3_wrapper(BS->HandleProtocol, Handles[i], &gEfiDiskIoProtocolGuid, (VOID **) &diskio);
++        Status = refit_call3_wrapper(BS->HandleProtocol, Handles[i], &gMyEfiDiskIoProtocolGuid, (VOID **) &diskio);
+         if (Status != 0)
+             continue;
+-        Status = refit_call3_wrapper(BS->HandleProtocol, Handles[i], &gEfiBlockIoProtocolGuid, (VOID **) &blockio);
++        Status = refit_call3_wrapper(BS->HandleProtocol, Handles[i], &gMyEfiBlockIoProtocolGuid, (VOID **) &blockio);
+         if (Status != 0)
+             continue;
+         struct fsw_volume *vol = create_dummy_volume(diskio, blockio->Media->MediaId);
+diff --git a/refind.conf-sample b/refind.conf-sample
+index 8b5853e..69cef8b 100644
+--- a/refind.conf-sample
++++ b/refind.conf-sample
+@@ -395,7 +395,7 @@ timeout 20
+ #default_selection Microsoft
+ #default_selection "+,bzImage,vmlinuz"
+ #default_selection Maintenance 23:30 2:00
+-#default_selection "Maintenance,OS X" 1:00 2:30
++#default_selection "Maintenance,macOS" 1:00 2:30
+ 
+ # Enable VMX bit and lock the CPU MSR if unlocked.
+ # On some Intel Apple computers, the firmware does not lock the MSR 0x3A.
+diff --git a/refind/driver_support.c b/refind/driver_support.c
+index 26c5965..8ab25ff 100644
+--- a/refind/driver_support.c
++++ b/refind/driver_support.c
+@@ -85,37 +85,34 @@
+ #define DRIVER_DIRS             L"drivers"
+ #endif
+ 
+-#ifdef __MAKEWITH_GNUEFI
+ // Following "global" constants are from EDK2's AutoGen.c....
+-EFI_GUID gEfiLoadedImageProtocolGuid = { 0x5B1B31A1, 0x9562, 0x11D2, { 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+-EFI_GUID gEfiDriverBindingProtocolGuid = { 0x18A031AB, 0xB443, 0x4D1A, { 0xA5, 0xC0, 0x0C, 0x09, 0x26, 0x1E, 0x9F, 0x71 }};
+-EFI_GUID gEfiDriverConfiguration2ProtocolGuid = { 0xBFD7DC1D, 0x24F1, 0x40D9, { 0x82, 0xE7, 0x2E, 0x09, 0xBB, 0x6B, 0x4E, 0xBE }};
+-EFI_GUID gEfiDriverConfigurationProtocolGuid = { 0x107A772B, 0xD5E1, 0x11D4, { 0x9A, 0x46, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
+-EFI_GUID gEfiDriverDiagnosticsProtocolGuid = { 0x0784924F, 0xE296, 0x11D4, { 0x9A, 0x49, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
+-EFI_GUID gEfiDriverDiagnostics2ProtocolGuid = { 0x4D330321, 0x025F, 0x4AAC, { 0x90, 0xD8, 0x5E, 0xD9, 0x00, 0x17, 0x3B, 0x63 }};
+-EFI_GUID gEfiComponentNameProtocolGuid = { 0x107A772C, 0xD5E1, 0x11D4, { 0x9A, 0x46, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
+-EFI_GUID gEfiComponentName2ProtocolGuid = { 0x6A7A5CFF, 0xE8D9, 0x4F70, { 0xBA, 0xDA, 0x75, 0xAB, 0x30, 0x25, 0xCE, 0x14 }};
+-EFI_GUID gEfiDevicePathProtocolGuid = { 0x09576E91, 0x6D3F, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+-EFI_GUID gEfiDiskIoProtocolGuid = { 0xCE345171, 0xBA0B, 0x11D2, { 0x8E, 0x4F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+-EFI_GUID gEfiBlockIoProtocolGuid = { 0x964E5B21, 0x6459, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+-EFI_GUID gEfiSimpleFileSystemProtocolGuid = { 0x964E5B22, 0x6459, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+-
+-struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
+-struct EFI_FILE_PROTOCOL;
++EFI_GUID gMyEfiLoadedImageProtocolGuid = { 0x5B1B31A1, 0x9562, 0x11D2, { 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
++EFI_GUID gMyEfiDriverBindingProtocolGuid = { 0x18A031AB, 0xB443, 0x4D1A, { 0xA5, 0xC0, 0x0C, 0x09, 0x26, 0x1E, 0x9F, 0x71 }};
++EFI_GUID gMyEfiDriverConfigurationProtocolGuid = { 0x107A772B, 0xD5E1, 0x11D4, { 0x9A, 0x46, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
++EFI_GUID gMyEfiDriverDiagnosticsProtocolGuid = { 0x0784924F, 0xE296, 0x11D4, { 0x9A, 0x49, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
++EFI_GUID gMyEfiComponentNameProtocolGuid = { 0x107A772C, 0xD5E1, 0x11D4, { 0x9A, 0x46, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
++EFI_GUID gMyEfiDevicePathProtocolGuid = { 0x09576E91, 0x6D3F, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
++EFI_GUID gMyEfiDiskIoProtocolGuid = { 0xCE345171, 0xBA0B, 0x11D2, { 0x8E, 0x4F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
++EFI_GUID gMyEfiBlockIoProtocolGuid = { 0x964E5B21, 0x6459, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
++EFI_GUID gMyEfiSimpleFileSystemProtocolGuid = { 0x964E5B22, 0x6459, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
++
++#ifdef __MAKEWITH_GNUEFI
++struct MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
++struct MY_EFI_FILE_PROTOCOL;
+ 
+ typedef
+ EFI_STATUS
+-(EFIAPI *EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME)(
+-  IN struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL    *This,
+-  OUT struct EFI_FILE_PROTOCOL                 **Root
++(EFIAPI *MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME)(
++  IN struct MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL    *This,
++  OUT struct MY_EFI_FILE_PROTOCOL                 **Root
+   );
+ 
+-typedef struct _EFI_SIMPLE_FILE_SYSTEM_PROTOCOL {
++typedef struct _MY_MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL {
+   UINT64                                      Revision;
+-  EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME OpenVolume;
+-} EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
++  MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME OpenVolume;
++} MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
+ 
+-typedef struct _EFI_FILE_PROTOCOL {
++typedef struct _MY_EFI_FILE_PROTOCOL {
+   UINT64                Revision;
+   EFI_FILE_OPEN         Open;
+   EFI_FILE_CLOSE        Close;
+@@ -127,16 +124,20 @@ typedef struct _EFI_FILE_PROTOCOL {
+   EFI_FILE_GET_INFO     GetInfo;
+   EFI_FILE_SET_INFO     SetInfo;
+   EFI_FILE_FLUSH        Flush;
+-} EFI_FILE_PROTOCOL;
++} MY_EFI_FILE_PROTOCOL;
+ 
+-typedef struct _EFI_BLOCK_IO_PROTOCOL {
++typedef struct _MY_EFI_BLOCK_IO_PROTOCOL {
+   UINT64             Revision;
+   EFI_BLOCK_IO_MEDIA *Media;
+   EFI_BLOCK_RESET    Reset;
+   EFI_BLOCK_READ     ReadBlocks;
+   EFI_BLOCK_WRITE    WriteBlocks;
+   EFI_BLOCK_FLUSH    FlushBlocks;
+-} EFI_BLOCK_IO_PROTOCOL;
++} MY_EFI_BLOCK_IO_PROTOCOL;
++#else /* Make with Tianocore */
++#define MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
++#define MY_EFI_FILE_PROTOCOL EFI_FILE_PROTOCOL
++#define MY_EFI_BLOCK_IO_PROTOCOL EFI_BLOCK_IO_PROTOCOL
+ #endif
+ 
+ /* LibScanHandleDatabase() is used by rEFInd's driver-loading code (inherited
+@@ -232,27 +233,27 @@ LibScanHandleDatabase (EFI_HANDLE  DriverBindingHandle, OPTIONAL
+ 
+       for (ProtocolIndex = 0; ProtocolIndex < ArrayCount; ProtocolIndex++) {
+ 
+-        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gEfiLoadedImageProtocolGuid) == 0) {
++        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gMyEfiLoadedImageProtocolGuid) == 0) {
+           (*HandleType)[HandleIndex] |= EFI_HANDLE_TYPE_IMAGE_HANDLE;
+         }
+ 
+-        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gEfiDriverBindingProtocolGuid) == 0) {
++        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gMyEfiDriverBindingProtocolGuid) == 0) {
+           (*HandleType)[HandleIndex] |= EFI_HANDLE_TYPE_DRIVER_BINDING_HANDLE;
+         }
+ 
+-        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gEfiDriverConfigurationProtocolGuid) == 0) {
++        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gMyEfiDriverConfigurationProtocolGuid) == 0) {
+           (*HandleType)[HandleIndex] |= EFI_HANDLE_TYPE_DRIVER_CONFIGURATION_HANDLE;
+         }
+ 
+-        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gEfiDriverDiagnosticsProtocolGuid) == 0) {
++        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gMyEfiDriverDiagnosticsProtocolGuid) == 0) {
+           (*HandleType)[HandleIndex] |= EFI_HANDLE_TYPE_DRIVER_DIAGNOSTICS_HANDLE;
+         }
+ 
+-        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gEfiComponentNameProtocolGuid) == 0) {
++        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gMyEfiComponentNameProtocolGuid) == 0) {
+           (*HandleType)[HandleIndex] |= EFI_HANDLE_TYPE_COMPONENT_NAME_HANDLE;
+         }
+ 
+-        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gEfiDevicePathProtocolGuid) == 0) {
++        if (CompareGuid (ProtocolGuidArray[ProtocolIndex], &gMyEfiDevicePathProtocolGuid) == 0) {
+           (*HandleType)[HandleIndex] |= EFI_HANDLE_TYPE_DEVICE_HANDLE;
+         }
+         //
+@@ -453,8 +454,8 @@ VOID ConnectFilesystemDriver(EFI_HANDLE DriverHandle) {
+     UINTN                                 Index;
+     UINTN                                 OpenInfoIndex;
+     EFI_HANDLE                            *Handles = NULL;
+-    EFI_SIMPLE_FILE_SYSTEM_PROTOCOL       *Fs;
+-    EFI_BLOCK_IO_PROTOCOL                 *BlockIo;
++    MY_EFI_SIMPLE_FILE_SYSTEM_PROTOCOL       *Fs;
++    MY_EFI_BLOCK_IO_PROTOCOL                 *BlockIo;
+     EFI_OPEN_PROTOCOL_INFORMATION_ENTRY   *OpenInfo;
+     UINTN                                 OpenInfoCount;
+     EFI_HANDLE                            DriverHandleList[2];
+@@ -464,7 +465,7 @@ VOID ConnectFilesystemDriver(EFI_HANDLE DriverHandle) {
+     //
+     Status = refit_call5_wrapper(gBS->LocateHandleBuffer,
+                                  ByProtocol,
+-                                 &gEfiDiskIoProtocolGuid,
++                                 &gMyEfiDiskIoProtocolGuid,
+                                  NULL,
+                                  &HandleCount,
+                                  &Handles);
+@@ -483,7 +484,7 @@ VOID ConnectFilesystemDriver(EFI_HANDLE DriverHandle) {
+         //
+         Status = refit_call3_wrapper(gBS->HandleProtocol,
+                                      Handles[Index],
+-                                     &gEfiBlockIoProtocolGuid,
++                                     &gMyEfiBlockIoProtocolGuid,
+                                      (VOID **) &BlockIo);
+         if (EFI_ERROR (Status))
+             continue;
+@@ -494,9 +495,9 @@ VOID ConnectFilesystemDriver(EFI_HANDLE DriverHandle) {
+         // If SimpleFileSystem is already produced - skip it, this is ok
+         //
+         Status = refit_call3_wrapper(gBS->HandleProtocol,
+-                                    Handles[Index],
+-                                    &gEfiSimpleFileSystemProtocolGuid,
+-                                    (VOID **) &Fs);
++                                     Handles[Index],
++                                     &gMyEfiSimpleFileSystemProtocolGuid,
++                                     (VOID **) &Fs);
+         if (Status == EFI_SUCCESS)
+             continue;
+ 
+@@ -506,7 +507,7 @@ VOID ConnectFilesystemDriver(EFI_HANDLE DriverHandle) {
+         //
+         Status = refit_call4_wrapper(gBS->OpenProtocolInformation,
+                                      Handles[Index],
+-                                     &gEfiDiskIoProtocolGuid,
++                                     &gMyEfiDiskIoProtocolGuid,
+                                      &OpenInfo,
+                                      &OpenInfoCount);
+         if (EFI_ERROR (Status))
+diff --git a/refind/legacy.c b/refind/legacy.c
+index aead421..cd4ee9b 100644
+--- a/refind/legacy.c
++++ b/refind/legacy.c
+@@ -76,6 +76,8 @@ extern REFIT_MENU_SCREEN MainMenu;
+ #define DevicePathProtocol gEfiDevicePathProtocolGuid
+ #endif
+ 
++EFI_GUID EfiGlobalVariableGuid = { 0x8BE4DF61, 0x93CA, 0x11D2, { 0xAA, 0x0D, 0x00, 0xE0, 0x98, 0x03, 0x2B, 0x8C }};
++
+ static EFI_STATUS ActivateMbrPartition(IN EFI_BLOCK_IO *BlockIO, IN UINTN PartitionIndex)
+ {
+     EFI_STATUS          Status;
+@@ -538,7 +540,7 @@ static VOID ScanLegacyUEFI(IN UINTN DiskType)
+     } // if
+ 
+     // Grab the boot order
+-    BootOrder = BdsLibGetVariableAndSize(L"BootOrder", &gEfiGlobalVariableGuid, &BootOrderSize);
++    BootOrder = BdsLibGetVariableAndSize(L"BootOrder", &EfiGlobalVariableGuid, &BootOrderSize);
+     if (BootOrder == NULL) {
+         BootOrderSize = 0;
+     }
+-- 
+2.13.0
+
