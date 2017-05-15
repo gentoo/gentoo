@@ -1294,7 +1294,7 @@ app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/containerd 0.2.5 0.2.5-r1 0.2.5_p20170308 0.2.6 0.2.7 0.2.8 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 1.28.0 2.3.3: Golden Disk Image builder.
+app-emulation/diskimage-builder 1.28.0 2.3.3 2.4.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.12.6 17.03.1 17.05.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.13.0: Multi-container orchestration for Docker
@@ -4641,7 +4641,7 @@ dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP socket
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
-dev-libs/capnproto 0.5.3 0.5.3.1: RPC/Serialization system with capabilities support
+dev-libs/capnproto 0.5.3.1: RPC/Serialization system with capabilities support
 dev-libs/capstone 3.0.5_rc2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
@@ -4754,7 +4754,7 @@ dev-libs/kpathsea 6.2.2_p20160523: Path searching library for TeX-related files
 dev-libs/kproperty 3.0.0 3.0.1: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.0-r1 3.0.1: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 0.9.0 0.9.4 0.10.1 0.10.2 0.11.0 0.11.1 0.11.2 0.12.1: A C++ toolkit
+dev-libs/leatherman 0.10.1 0.12.1: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
 dev-libs/libFuzzer 3.9.1: A fuzzing library distributed as part of LLVM
@@ -5228,7 +5228,7 @@ dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1.2: An OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
-dev-ml/flow_parser 0.44.0 0.44.1: JavaScript parser written in OCaml
+dev-ml/flow_parser 0.44.0 0.44.1 0.46.0: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
@@ -5380,6 +5380,7 @@ dev-ml/reason 1.13.3 1.13.4 1.13.5: Meta Language Toolchain
 dev-ml/reason-parser 1.13.3 1.13.4 1.13.5: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
+dev-ml/sedlex 1.99.3: An OCaml lexer generator for Unicode
 dev-ml/sequence 0.9 0.10: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 0.9.1: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/spawn 0.9.0: Spawning sub-processes
@@ -7297,6 +7298,7 @@ dev-python/async_timeout 1.0.0 1.1.0 1.2.0: Timeout context manager for asyncio 
 dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/atomicwrites 0.1.8 0.1.9 1.1.5-r2: Atomic file writes
 dev-python/atpy 0.9.7: Astronomical tables support for Python
+dev-python/attr 0.2.0: Simple decorator to set attributes of target function or class in a DRY way
 dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 16.3.0-r1: Attributes without boilerplate
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
@@ -8007,7 +8009,7 @@ dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output fo
 dev-python/openstacksdk 0.8.2 0.9.5 0.9.13: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
-dev-python/os-brick 1.2.0 1.6.1 1.6.2 1.11.0: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 1.2.0 1.6.2 1.11.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.16.0 1.21.1 1.26.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.25 0.26: Adds network extension support to python-novaclient
@@ -11644,7 +11646,7 @@ gnome-extra/gnome-directory-thumbnailer 0.1.8: Thumbnail generator for directori
 gnome-extra/gnome-documents 3.22.3: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.22.0: Help a new user get started in GNOME
-gnome-extra/gnome-integration-spotify 20140907 20140907-r1: GNOME integration for Spotify
+gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.22.1: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.20.0 3.22.1: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.22.2: GNOME power management service
