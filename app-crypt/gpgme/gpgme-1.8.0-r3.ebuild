@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 flag-o-matic ltprune qmake-utils
