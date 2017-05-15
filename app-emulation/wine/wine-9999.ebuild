@@ -366,6 +366,10 @@ src_prepare() {
 		local STAGING_EXCLUDE=""
 		STAGING_EXCLUDE="${STAGING_EXCLUDE} -W winhlp32-Flex_Workaround" # Avoid double patching https://bugs.winehq.org/show_bug.cgi?id=42132
 		use pipelight || STAGING_EXCLUDE="${STAGING_EXCLUDE} -W Pipelight"
+		if [[ ${PV} == "9999" ]] ; then
+			# https://github.com/wine-compholio/wine-staging/commit/9c43bb8d2ca3dfa4dc49ab726221c9c44cd4f288
+			STAGING_EXCLUDE="${STAGING_EXCLUDE} -W winhlp32-Flex_Workaround"
+		fi
 
 		# Launch wine-staging patcher in a subshell, using eapply as a backend, and gitapply.sh as a backend for binary patches
 		ebegin "Running Wine-Staging patch installer"
