@@ -233,10 +233,6 @@ dev-perl/encoding-warnings
 # enough to pick it up.
 dev-java/jdbc-oracle-bin
 
-# James Le Cuirot <chewi@gentoo.org> (14 Apr 2017)
-# Ancient, unused by anything, fetch restricted. Removal in 30 days.
-dev-java/sun-j2ee-deployment-bin
-
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Masked for testing
 virtual/wine
