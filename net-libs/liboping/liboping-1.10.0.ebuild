@@ -10,7 +10,7 @@ HOMEPAGE="https://noping.cc/"
 SRC_URI="https://noping.cc/files/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0/0.2"
+SLOT="0/0.3"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+filecaps ncurses perl"
 
@@ -19,7 +19,6 @@ RDEPEND=${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.6.2-nouidmagic.patch"
-	"${FILESDIR}/${PN}-1.8.0-remove-ncurses-automagic.patch"
 )
 
 src_prepare() {
