@@ -262,7 +262,6 @@ dev-java/jaxme
 # hashes for the manifest, per Bug #612720, Bug #612718
 # Upstream has also deprecated these in favor of
 # app-emulation/crossover-bin
-app-emulation/crossover-office-bin
 app-emulation/crossover-office-pro-bin
 
 # Amadeusz Zolnowski <aidecoe@gentoo.org> (2 Apr 2017)
