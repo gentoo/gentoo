@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 ES_VERSION="5.2.1"
 
@@ -11,7 +11,7 @@ inherit distutils-r1
 
 # tests fail in chroot
 # https://github.com/elastic/elasticsearch/issues/12018
-RESTRICT="test"
+#RESTRICT="test"
 
 MY_PN=${PN/-py/}
 
