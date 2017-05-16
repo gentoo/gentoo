@@ -1,6 +1,6 @@
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs multilib
+inherit flag-o-matic toolchain-funcs multilib readme-gentoo
 
 DESCRIPTION="Classic Unix documentation tools ported from OpenSolaris"
 HOMEPAGE="https://n-t-roff.github.io/heirloom/doctools.html"
@@ -75,44 +75,13 @@ pkg_postinst() {
 	local manpkg
 
 	if has_version sys-apps/man; then
-		elog "To make proper use of heirloom-doctools with sys-apps/man you"
-		elog "need to make sure that /etc/man.conf is configured properly with"
-		elog "the following settings:"
-		elog ""
-		elog "TROFF           /usr/bin/troff -Tlocale -mg -msafe -mpadj -mandoc"
-		elog "NROFF           /usr/bin/nroff -mg -msafe -mpadj -mandoc"
-		elog "EQN             /usr/bin/eqn -Tps"
-		elog "NEQN            /usr/bin/neqn -Tlatin1"
-		elog "TBL             /usr/bin/tbl"
-		elog "COL             /usr/bin/hl-col"
-		elog "REFER           /usr/bin/refer"
-		elog "PIC             /usr/bin/pic"
-		elog "VGRIND          /usr/bin/vgrind"
-		elog "GRAP            /usr/bin/grap"
+    README_GENTOO_SUFFIX="-man" readme.gentoo_print_elog
 		manpkg=sys-apps/man
 	elif has_version sys-apps/man-db; then
-		elog "To make proper use of heirloom-doctools with sys-apps/man you"
-		elog "need to make sure that /etc/man_db.conf is configured properly with"
-		elog "the following settings:"
-		elog ""
-		elog "DEFINE  troff   troff -Tlocale -mg -msafe -mpadj -mandoc"
-		elog "DEFINE  nroff   nroff -mg -msafe -mpadj -mandoc"
-		elog "DEFINE  eqn     eqn -Tps"
-		elog "DEFINE  neqn    neqn -Tlatin1"
-		elog "DEFINE  tbl     tbl"
-		elog "DEFINE  col     hl-col"
-		elog "DEFINE  vgrind  vgrind"
-		elog "DEFINE  refer   refer"
-		elog "DEFINE  grap    grap"
-		elog "DEFINE  pic     pic"
-		elog
-		ewarn "The compatibility between heirloom-doctools and man-db is pretty limited"
-		ewarn "you've been warned. Your man pages might look nothing like you were used"
-		ewarn "to."
-		manpkg=sys-apps/man-db
-	fi
-	elog ""
-	elog "If you just switched from sys-apps/groff, please make sure to rebuild the"
-	elog "${manpkg} package, since there are build-time conditionals on the nroff"
-	elog "implementation available."
+    README_GENTOO_SUFFIX="-mandb" readme.gentoo_print_elog
+    manpkg=sys-apps/man-db
+  fi
+
+    README_GENTOO_SUFFIX="-default" readme.gentoo_print_elog
+
 }

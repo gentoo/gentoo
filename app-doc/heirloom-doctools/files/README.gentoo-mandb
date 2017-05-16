@@ -1,0 +1,19 @@
+To make proper use of heirloom-doctools with sys-apps/man you
+need to make sure that /etc/man_db.conf is configured properly with
+the following settings:
+
+		DEFINE  troff   troff -Tlocale -mg -msafe -mpadj -mandoc
+		DEFINE  nroff   nroff -mg -msafe -mpadj -mandoc
+		DEFINE  eqn     eqn -Tps
+		DEFINE  neqn    neqn -Tlatin1
+		DEFINE  tbl     tbl
+		DEFINE  col     hl-col
+		DEFINE  vgrind  vgrind
+		DEFINE  refer   refer
+	  DEFINE  grap    grap
+		DEFINE  pic     pic
+
+Warning:
+The compatibility between heirloom-doctools and man-db is pretty limited
+you've been warned. Your man pages might look nothing like you were used
+to.

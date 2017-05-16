@@ -1,0 +1,13 @@
+To make proper use of heirloom-doctools with sys-apps/man you
+need to make sure that /etc/man.conf is configured properly with
+the following settings:
+		TROFF           /usr/bin/troff -Tlocale -mg -msafe -mpadj -mandoc
+		NROFF           /usr/bin/nroff -mg -msafe -mpadj -mandoc
+		EQN             /usr/bin/eqn -Tps
+		NEQN            /usr/bin/neqn -Tlatin1
+		TBL             /usr/bin/tbl
+		COL             /usr/bin/hl-col
+		REFER           /usr/bin/refer
+		PIC             /usr/bin/pic
+		VGRIND          /usr/bin/vgrind
+		GRAP            /usr/bin/grap
