@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -32,6 +32,7 @@ src_prepare() {
 	cp  "${FILESDIR}"/debianize/* "${S}"
 	epatch "${FILESDIR}"/patches/*.patch
 	epatch "${FILESDIR}"/libdkim-extra-options.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 
 	# Bug 476772
 	if ! use static-libs; then
