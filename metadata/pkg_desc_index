@@ -7302,7 +7302,7 @@ dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 16.3.0-r1: Attributes without boilerplate
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.800: Authentication Results Header Module
-dev-python/autobahn 0.9.4.2 0.12.1 0.16.0: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 0.9.4.2 0.12.1 0.16.0 17.5.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.5.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.2.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
@@ -8523,7 +8523,7 @@ dev-python/rackspace-monitoring-cli 0.6.10: Command Line Utility for Rackspace C
 dev-python/rackspace-novaclient 1.4 2.1: A client for the OpenStack Nova API
 dev-python/radon 1.3.2 1.4.0 1.4.2: Code Metrics in Python
 dev-python/raet 0.6.7: Reliable Asynchronous Event Transport Protocol
-dev-python/ramlfications 0.1.9: RAML reference implementation in Python
+dev-python/ramlfications 0.1.9 0.1.9_p20160718: RAML reference implementation in Python
 dev-python/rarfile 2.8 3.0: Module for RAR archive reading
 dev-python/raven 5.2.0 5.3.0 5.31.0: Raven is a client for Sentry
 dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config extension for python-novaclient
@@ -8784,9 +8784,9 @@ dev-python/twisted-words 13.2.0 15.2.1: Twisted Words contains Instant Messaging
 dev-python/twitter 1.17.1: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.2.0 3.3.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
-dev-python/txaio 2.3.1 2.5.1-r1: Compatibility API between asyncio/Twisted/Trollius
+dev-python/txaio 2.3.1 2.5.1-r1 2.7.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
-dev-python/txrequests 0.9.5: Asynchronous Python HTTP for Humans
+dev-python/txrequests 0.9.5 0.9.5-r1: Asynchronous Python HTTP for Humans
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
 dev-python/typing 3.5.2.2 3.5.3.0: Type Hints for Python
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
@@ -8813,7 +8813,7 @@ dev-python/vcrpy 1.10.3 1.10.5 1.11.0: Automatically mock your HTTP interactions
 dev-python/vcstools 0.1.38 0.1.39 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdirsyncer 0.14.0: Synchronize calendars and contacts
-dev-python/venusian 1.0: A library for deferring decorator actions
+dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
 dev-python/verboselogs 1.6: Verbose logging for Python's logging module
 dev-python/versioneer 0.16: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
@@ -8858,7 +8858,7 @@ dev-python/widgetsnbextension 1.2.2 1.2.3 1.2.6 2.0.0: IPython HTML widgets for 
 dev-python/workerpool 0.9.4: Module for distributing jobs to a pool of worker threads
 dev-python/wrapt 1.10.5 1.10.8: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
-dev-python/wsaccel 0.6.2: Accelerator for ws4py, AutobahnPython and tornado
+dev-python/wsaccel 0.6.2 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
@@ -10229,13 +10229,13 @@ dev-util/boost-build 1.62.0-r1 1.63.0: A system for large project software const
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
-dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_p1 0.9.1 0.9.2 0.9.3 0.9.4 9999: BuildBot build automation system
-dev-util/buildbot-console-view 0.9.0_p1 0.9.1 0.9.2 0.9.3 0.9.4: Buildbot console-view plugin
-dev-util/buildbot-pkg 0.9.0_p1 0.9.1 0.9.2 0.9.3 0.9.4: BuildBot common www build tools for packaging releases
+dev-util/buildbot 0.8.10 0.8.12-r3 0.9.4 0.9.7 9999: BuildBot build automation system
+dev-util/buildbot-console-view 0.9.4 0.9.7: Buildbot console-view plugin
+dev-util/buildbot-pkg 0.9.4 0.9.7: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.10 0.8.12: BuildBot Slave Daemon
-dev-util/buildbot-waterfall-view 0.9.0_p1 0.9.1 0.9.2 0.9.3 0.9.4: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.0_p1 0.9.1 0.9.2-r1 0.9.3-r1 0.9.4 9999: BuildBot Slave Daemon
-dev-util/buildbot-www 0.9.0_p1 0.9.1 0.9.2 0.9.3 0.9.4: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot-waterfall-view 0.9.4 0.9.7: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 0.9.4 0.9.7 9999: BuildBot Slave Daemon
+dev-util/buildbot-www 0.9.4 0.9.7: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20150711 20160606 20170201: the best variant of the Yacc parser generator
