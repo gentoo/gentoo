@@ -17223,7 +17223,7 @@ sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
 sys-apps/restorecond 9999: Daemon to watch for creation and set default SELinux fcontexts
-sys-apps/ripgrep 0.3.2 0.4.0 0.5.0 0.5.1: a command line search tool that combines usability with raw speed
+sys-apps/ripgrep 0.5.1 0.5.2: a command line search tool that combines usability with raw speed
 sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
