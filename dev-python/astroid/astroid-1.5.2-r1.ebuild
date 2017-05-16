@@ -37,7 +37,7 @@ DEPEND="
 # Required for tests
 DISTUTILS_IN_SOURCE_BUILD=1
 
-python_prepare() {
+python_prepare_all() {
 	# Disable failing test
 	sed -i -e "/test_namespace_package_pth_support/a\\        return" astroid/tests/unittest_manager.py || die
 	distutils-r1_python_prepare_all
