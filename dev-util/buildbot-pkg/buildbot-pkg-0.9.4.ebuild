@@ -14,7 +14,7 @@ MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
 
 DESCRIPTION="BuildBot common www build tools for packaging releases"
-HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-pkg"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-pkg"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
