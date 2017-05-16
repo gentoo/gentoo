@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 #		>=dev-python/pytest-httpbin-0.0.7[${PYTHON_USEDEP}]
 
 # tests connect to various remote sites
-#RESTRICT="test"
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-system-packages.patch
