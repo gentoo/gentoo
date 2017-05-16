@@ -3,7 +3,7 @@
 
 EAPI="5"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 )
 
 EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 
@@ -11,9 +11,9 @@ EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 inherit distutils-r1
 
 DESCRIPTION="BuildBot base web interface, use with buildbot-{console-view,waterfall-view}..."
-HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
+HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-www"
 
-MY_V="0.9.0.post1"
+MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
@@ -26,6 +26,8 @@ else
 	KEYWORDS="~amd64"
 fi
 
+IUSE="test"
+
 RDEPEND=""
 
 DEPEND="${RDEPEND}
@@ -37,6 +39,12 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 #[[ ${PV} == *9999 ]] && S=${S}/www/base
+
+python_test() {
+	distutils_install_for_testing
+
+	esetup.py test || die "Tests failed under ${EPYTHON}"
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
