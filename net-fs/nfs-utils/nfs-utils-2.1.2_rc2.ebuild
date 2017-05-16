@@ -62,9 +62,13 @@ RDEPEND="${DEPEND_COMMON}
 DEPEND="${DEPEND_COMMON}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
+	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
-	epatch "${FILESDIR}"/${PN}-1.2.8-cross-build.patch
+	epatch "${PATCHES[@]}"
 
 	sed \
 		-e "/^sbindir/s:= := \"${EPREFIX}\":g" \
@@ -77,21 +81,23 @@ src_prepare() {
 src_configure() {
 	export libsqlite3_cv_is_recent=yes # Our DEPEND forces this.
 	export ac_cv_header_keyutils_h=$(usex nfsidmap)
-	econf \
-		--with-statedir="${EPREFIX}"/var/lib/nfs \
-		--enable-tirpc \
-		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/ \
-		$(use_enable libmount libmount-mount) \
-		$(use_with tcpd tcp-wrappers) \
-		$(use_enable nfsdcld nfsdcltrack) \
-		$(use_enable nfsv4) \
-		$(use_enable nfsv41) \
-		$(use_enable ipv6) \
-		$(use_enable caps) \
-		$(use_enable uuid) \
-		$(use_enable kerberos gss) \
-		$(use_enable kerberos svcgss) \
+	local myeconfargs=(
+		--with-statedir="${EPREFIX}"/var/lib/nfs
+		--enable-tirpc
+		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
+		$(use_enable libmount libmount-mount)
+		$(use_with tcpd tcp-wrappers)
+		$(use_enable nfsdcld nfsdcltrack)
+		$(use_enable nfsv4)
+		$(use_enable nfsv41)
+		$(use_enable ipv6)
+		$(use_enable caps)
+		$(use_enable uuid)
+		$(use_enable kerberos gss)
+		$(use_enable kerberos svcgss)
 		--without-gssglue
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile(){
