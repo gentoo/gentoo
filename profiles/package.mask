@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason A. Donenfeld <zx2c4@gentoo.org> (16 May 2017)
+# This package has no upstream and has likely security vulnerabilities.
+# Users can trivially upgrade to x11-terms/rxvt-unicode, which is its
+# modern day replacement, with no drawbacks. See bug 618250. No reverse
+# dependencies. To be removed in 30 days.
+x11-terms/rxvt
+
 # Michał Górny <mgorny@gentoo.org> (15 May 2017)
 # These packages lack modern digests and are fetch-restricted, so we can
 # not update them. Some of them have additional issues.

@@ -24,18 +24,22 @@ RDEPEND="
 	>=dev-python/astroid-1.5.1[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/isort-4.2.5[${PYTHON_USEDEP}]
-	dev-python/mccabe
+	dev-python/mccabe[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]
-		dev-python/configparser[${PYTHON_USEDEP}]' python2_7)"
+		dev-python/configparser[${PYTHON_USEDEP}]' -2)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( ${RDEPEND} )"
+	test? ( ${RDEPEND}
+		dev-python/pytest[${PYTHON_USEDEP}] )"
 
-RESTRICT="test" # multiple failures
+python_prepare_all() {
+	# remove unused dep
+	sed -i -e '/pytest-runner/d' setup.py || die
 
-# Usual. Requ'd for impl specific failures in test phase
-DISTUTILS_IN_SOURCE_BUILD=1
+	distutils-r1_python_prepare_all
+}
 
 python_compile_all() {
 	# selection of straight html triggers a trivial annoying bug, we skirt it
@@ -43,10 +47,7 @@ python_compile_all() {
 }
 
 python_test() {
-	${EPYTHON} \
-		-m unittest discover \
-		-s pylint/test/ -p "*test_*".py \
-		--verbose || die
+	py.test -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
@@ -61,5 +62,5 @@ python_install_all() {
 
 pkg_postinst() {
 	# Optional dependency on "tk" USE flag would break support for Jython.
-	optfeature "pylint-gui script requires dev-lang/python with \"tk\" USE flag enabled." dev-lang/python[tk]
+	optfeature "pylint-gui script requires dev-lang/python with \"tk\" USE flag enabled." 'dev-lang/python[tk]'
 }
