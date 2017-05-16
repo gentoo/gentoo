@@ -165,6 +165,10 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+
+	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
+ 	elog "USE flags. You may be intrested in setting aac, flac, mp3, ogg or wavpack USE flags "
+	elog "depending on your preferences"
 }
 
 pkg_postrm() {
