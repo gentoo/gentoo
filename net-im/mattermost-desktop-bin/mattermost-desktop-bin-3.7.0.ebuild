@@ -16,11 +16,9 @@ SRC_URI="
 	x86?   ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-ia32.tar.gz )
 "
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 GPL v2+ LGPL-2.1+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-RESTRICT="mirror"
 
 S="${WORKDIR}/mattermost-desktop-${PV}"
 
