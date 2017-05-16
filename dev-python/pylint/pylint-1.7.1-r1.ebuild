@@ -33,8 +33,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND} )"
 
-RESTRICT="test" # multiple failures
-
 # Usual. Requ'd for impl specific failures in test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 
