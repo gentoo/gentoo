@@ -267,8 +267,11 @@ _python_validate_useflags() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# Remember to escape or quote the patterns to prevent shell filename
-# expansion.
+# The patterns can be either fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
+# appropriately all enabled Python 2/3 implementations (alike
+# python_is_python3). Remember to escape or quote the fnmatch patterns
+# to prevent accidental shell filename expansion.
 #
 # When all implementations are requested, please use ${PYTHON_USEDEP}
 # instead. Please also remember to set an appropriate REQUIRED_USE
@@ -311,6 +314,12 @@ python_gen_usedep() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
+# The patterns can be either fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
+# appropriately all enabled Python 2/3 implementations (alike
+# python_is_python3). Remember to escape or quote the fnmatch patterns
+# to prevent accidental shell filename expansion.
+#
 # Example:
 # @CODE
 # PYTHON_COMPAT=( python{2_7,3_4} )
@@ -341,6 +350,12 @@ python_gen_useflags() {
 # Output a list of <dependency>-ies made conditional to USE flags
 # of Python implementations which are both in PYTHON_COMPAT and match
 # any of the patterns passed as the remaining parameters.
+#
+# The patterns can be either fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
+# appropriately all enabled Python 2/3 implementations (alike
+# python_is_python3). Remember to escape or quote the fnmatch patterns
+# to prevent accidental shell filename expansion.
 #
 # In order to enforce USE constraints on the packages, verbatim
 # '${PYTHON_USEDEP}' (quoted!) may be placed in the dependency
@@ -393,6 +408,12 @@ python_gen_cond_dep() {
 # without the argument (or with empty argument). If any implementation
 # patterns are passed, the output dependencies will be generated only
 # for the implementations matching them.
+#
+# The patterns can be either fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
+# appropriately all enabled Python 2/3 implementations (alike
+# python_is_python3). Remember to escape or quote the fnmatch patterns
+# to prevent accidental shell filename expansion.
 #
 # Use this function when you need to request different USE flags
 # on the Python interpreter depending on package's USE flags. If you
@@ -575,6 +596,12 @@ python_parallel_foreach_impl() {
 # Find the best (most preferred) Python implementation that is enabled
 # and matches at least one of the patterns passed (or '*' if no patterns
 # passed). Set the Python build environment up for that implementation.
+#
+# The patterns can be either fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
+# appropriately all enabled Python 2/3 implementations (alike
+# python_is_python3). Remember to escape or quote the fnmatch patterns
+# to prevent accidental shell filename expansion.
 #
 # This function needs to be used when Python is being called outside
 # of python_foreach_impl calls (e.g. for shared processes like doc
