@@ -12322,7 +12322,7 @@ mail-filter/milter-regex 1.9: A milter-based regular expression filter
 mail-filter/mimedefang 2.73 2.74 2.75: Antispam, antivirus and other customizable filtering for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3 2.10.3-r2 2.10.3-r3: A milter-based application to provide DKIM signing and verification
-mail-filter/opendmarc 1.1.3 1.3.0 1.3.1 1.3.2: Open source DMARC implementation
+mail-filter/opendmarc 1.1.3 1.3.0 1.3.1 1.3.2-r1: Open source DMARC implementation
 mail-filter/opensmtpd-extras 5.9.2.201606062304 5.9.2.201609141255: Extra tables, filters, and various other addons for OpenSMTPD
 mail-filter/p3scan 2.3.1 2.3.2-r1 2.3.2-r2: This is a full-transparent proxy-server for POP3-Clients
 mail-filter/policyd 1.82-r1 1.82-r2: Policy daemon for postfix and other MTAs
@@ -12962,7 +12962,7 @@ media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.4.9 1.4.10 9999: Version 2 of an advanced replacement library for libraries like libXpm
-media-libs/jasper 1.900.6 2.0.10 2.0.12 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
+media-libs/jasper 2.0.12 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.13-r1: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
