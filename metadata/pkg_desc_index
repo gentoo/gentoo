@@ -10272,7 +10272,7 @@ dev-util/conan 0.19.1 0.20.3: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.5.0 1.5.1: Command-line utility to create projects from cookiecutters (project templates)
-dev-util/cppcheck 1.77 1.78 9999: static analyzer of C/C++ code
+dev-util/cppcheck 1.77 1.78 1.79 9999: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 9999: C++ port of the famous JUnit framework for unit testing
@@ -18438,7 +18438,7 @@ www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that ca
 www-servers/apache 2.2.31-r1 2.2.32 2.4.25: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
-www-servers/caddy 0.9.5 0.10.0: Fast, cross-platform HTTP/2 web server with automatic HTTPS
+www-servers/caddy 0.10.0: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1: High performance web server
