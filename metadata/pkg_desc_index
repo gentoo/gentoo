@@ -2432,7 +2432,7 @@ app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.5: Web-based solution for managing scientific literature, references and citations
 app-text/referencer 1.2.2: Application to organise documents or references, and to generate BibTeX files
-app-text/restview 2.4.0 2.5.2: reStructuredText viewer
+app-text/restview 2.4.0 2.5.2 2.7.0: reStructuredText viewer
 app-text/rfcutil 3.2.3-r2: return all related RFCs based upon a number or a search string
 app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
