@@ -122,7 +122,7 @@ pkg_postinst() {
 	enewgroup openvpn
 	enewuser openvpn "" "" "" openvpn
 
-	if [ path_exists -o "${ROOT}/etc/openvpn/*/local.conf" ] ; then
+	if path_exists -o "${EROOT%/}"/etc/openvpn/*/local.conf ; then
 		ewarn "WARNING: The openvpn init script has changed"
 		ewarn ""
 	fi
