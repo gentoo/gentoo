@@ -1,9 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="An encoder/decoder for the VCDIFF (RFC3284) format"
 HOMEPAGE="https://github.com/google/open-vcdiff"
@@ -14,15 +12,13 @@ SLOT="0/0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc6.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
 
 src_configure() {
 	econf --disable-static
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	prune_libtool_files
+	default
+	find "${D}" -name '*.la' -delete || die
 }
