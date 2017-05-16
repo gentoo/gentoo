@@ -1,0 +1,45 @@
+# The default setup is for the first node of an insecure cluster that only
+# listens on localhost.
+#
+# Please read the cockroach manual at the following url and configure
+# this file correctly if you plan to use cockroach in production.
+#
+# http://cockroachlabs.com/docs
+#
+#For more information about what the arguments mean, run
+#"cockroach start --help" or "cockroach quit --help".
+#
+#These values are passed to the appropriate arguments when starting or
+#stopping the cockroach database.
+#Leaving these commented accepts the cockroach defaults with the
+#exceptions of host, http_host, insecure and log_path.
+#
+#The default for host and http_host is localhost instead of the catch-all
+#address. If you want to use the catch-all address for either of these,
+#please use
+# "all" for the setting.  #
+#
+# The default for insecure is yes which passes the --insecure argument to
+# cockroach. If you want a secure connection, set insecure=no and set
+# certs_path to the location of your certificates.
+#
+#log_path defaults to /var/log/${RC_SVCNAME}.
+#
+#attrs=""
+#cache=""
+#certs_path=""
+#host=""
+#http_host=""
+#http_port=""
+#insecure=""
+#join=""
+#locality=""
+#log_path=""
+#port=""
+#store=""
+#
+# extra arguments to use when starting the database
+# start_args=""
+#
+# extra arguments to use when stopping the database
+# stop_args=""
