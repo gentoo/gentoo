@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 inherit readme.gentoo user distutils-r1
 
 DESCRIPTION="BuildBot Slave Daemon"
-HOMEPAGE="http://buildbot.net/ http://code.google.com/p/buildbot/ http://pypi.python.org/pypi/buildbot-worker"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-worker"
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
