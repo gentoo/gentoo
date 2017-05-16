@@ -89,6 +89,7 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable caps) \
 		$(use_enable uuid) \
+		$(use_enable kerberos gss) \
 		$(use_enable kerberos svcgss) \
 		--without-gssglue
 }
