@@ -2,10 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-# test failure with py3.6 upstream bug:
-#    https://github.com/crossbario/txaio/issues/83
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
@@ -24,6 +21,7 @@ RDEPEND="
 "
 DEPEND="app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/sphinx-1.2.3[${PYTHON_USEDEP}]
 		>=dev-python/sphinxcontrib-spelling-2.1.2[${PYTHON_USEDEP}]
@@ -38,6 +36,12 @@ DEPEND="app-arch/unzip
 		>=dev-python/pyenchant-1.6.6[${PYTHON_USEDEP}]
 	)
 "
+
+# py 3.6 upstream bug fixes applied just after the release
+PATCHES=(
+	"${FILESDIR}/txaio-2.7.1.f._result.patch"
+	"${FILESDIR}/txaio-2.7.1.chained-callback.patch"
+)
 
 src_prepare() {
 	default_src_prepare

@@ -3,15 +3,15 @@
 
 EAPI="5"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 )
 
 EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Buildbot waterfall-view plugin"
-HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-waterfall-view"
+DESCRIPTION="BuildBot base web interface, use with buildbot-{console-view,waterfall-view}..."
+HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-www"
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
@@ -28,14 +28,13 @@ fi
 
 IUSE="test"
 
-RDEPEND="
-	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
-	~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
-"
+RDEPEND=""
 
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
+	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
+	~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
+	dev-python/mock[${PYTHON_USEDEP}]
 "
 
 S="${WORKDIR}/${MY_P}"
