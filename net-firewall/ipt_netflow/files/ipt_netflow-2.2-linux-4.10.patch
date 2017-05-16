@@ -1,0 +1,137 @@
+commit 5d71c94c400d91633f6d3c3be9e785bb23d4ca1a
+Author: ABC <abc@telekom.ru>
+Date:   Sun Mar 5 11:27:39 2017 +0300
+
+    Compilation compatibility with kernel 4.10.
+    
+    Fixes #70.
+    Resolves incompatibilities introduced by
+     2456e855354415bfaeb7badaa14e11b3e02c8466 and
+     613dbd95723aee7abd16860745691b6c7bda20dc for kernel 4.10.
+
+diff --git a/compat.h b/compat.h
+index 3f27977..47176ef 100644
+--- a/compat.h
++++ b/compat.h
+@@ -600,4 +600,29 @@ out:
+ # define __GNUC_PREREQ(maj, min) 0
+ #endif
+ 
++/* ktime is not union anymore, since 2456e855354415bfaeb7badaa14e11b3e02c8466 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0)
++# define first_tv64	first.tv64
++# define last_tv64	last.tv64
++#else
++# define first_tv64	first
++# define last_tv64	last
++#endif
++
++/* Offset changes made in 613dbd95723aee7abd16860745691b6c7bda20dc */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,28) && LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0)
++static inline u_int8_t xt_family(const struct xt_action_param *par)
++{
++	return par->family;
++}
++static inline const struct net_device *xt_in(const struct xt_action_param *par)
++{
++	return par->in;
++}
++static inline const struct net_device *xt_out(const struct xt_action_param *par)
++{
++	return par->out;
++}
++#endif
++
+ #endif /* COMPAT_NETFLOW_H */
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 781b284..0d1ac55 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -3863,10 +3863,10 @@ static void netflow_export_stats(void)
+ 		t.pkts_selected	+= st->pkts_selected;
+ 		t.pkts_observed	+= st->pkts_observed;
+ #endif
+-		t.drop.first.tv64 = min_not_zero(t.drop.first.tv64, st->drop.first.tv64);
+-		t.drop.last.tv64  = max(t.drop.last.tv64, st->drop.last.tv64);
+-		t.lost.first.tv64 = min_not_zero(t.lost.first.tv64, st->lost.first.tv64);
+-		t.lost.last.tv64  = max(t.lost.last.tv64, st->lost.last.tv64);
++		t.drop.first_tv64 = min_not_zero(t.drop.first_tv64, st->drop.first_tv64);
++		t.drop.last_tv64  = max(t.drop.last_tv64, st->drop.last_tv64);
++		t.lost.first_tv64 = min_not_zero(t.lost.first_tv64, st->lost.first_tv64);
++		t.lost.last_tv64  = max(t.lost.last_tv64, st->lost.last_tv64);
+ 	}
+ 
+ 	export_stat_st(OTPL_MPSTAT, &t);
+@@ -4781,8 +4781,8 @@ static unsigned int netflow_target(
+ 			   const void *targinfo
+ # endif
+ #else /* since 2.6.28 */
+-# define if_in  par->in
+-# define if_out par->out
++# define if_in  xt_in(par)
++# define if_out xt_out(par)
+ # if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,35)
+ 			   const struct xt_target_param *par
+ # else
+@@ -4809,7 +4809,7 @@ static unsigned int netflow_target(
+ #ifdef ENABLE_DIRECTION
+ 	const int hooknum = par->hooknum;
+ #endif
+-	const int family = par->family;
++	const int family = xt_family(par);
+ #endif
+ 	struct ipt_netflow_tuple tuple;
+ 	struct ipt_netflow *nf;
+diff --git a/ipt_NETFLOW.h b/ipt_NETFLOW.h
+index eb00e94..3ee44a8 100644
+--- a/ipt_NETFLOW.h
++++ b/ipt_NETFLOW.h
+@@ -414,7 +414,7 @@ struct netflow_aggr_p {
+ #define NETFLOW_STAT_TS(count)							 \
+ 	do {									 \
+ 		ktime_t kts = ktime_get_real();					 \
+-		if (!(__get_cpu_var(ipt_netflow_stat)).count.first.tv64)	 \
++		if (!(__get_cpu_var(ipt_netflow_stat)).count.first_tv64)	 \
+ 			__get_cpu_var(ipt_netflow_stat).count.first = kts;	 \
+ 		__get_cpu_var(ipt_netflow_stat).count.last = kts;		 \
+ 	} while (0);
+commit 5dec6355f151a5c9fa4393c43388b22d9c720fae
+Author: ABC <abc@telekom.ru>
+Date:   Tue Mar 14 21:55:29 2017 +0300
+
+    More compatibility with kernel 4.10.
+    
+    Thanks to cREoz @ gitnub. Resolves #70 once more.
+
+diff --git a/compat.h b/compat.h
+index 47176ef..867e7f2 100644
+--- a/compat.h
++++ b/compat.h
+@@ -623,6 +623,10 @@ static inline const struct net_device *xt_out(const struct xt_action_param *par)
+ {
+ 	return par->out;
+ }
++static inline unsigned int xt_hooknum(const struct xt_action_param *par)
++{
++	return par->hooknum;
++}
+ #endif
+ 
+ #endif /* COMPAT_NETFLOW_H */
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 0d1ac55..6d3122e 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -4806,9 +4806,9 @@ static unsigned int netflow_target(
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,28)
+ 	const int family = target->family;
+ #else
+-#ifdef ENABLE_DIRECTION
+-	const int hooknum = par->hooknum;
+-#endif
++# ifdef ENABLE_DIRECTION
++	const int hooknum = xt_hooknum(par);
++# endif
+ 	const int family = xt_family(par);
+ #endif
+ 	struct ipt_netflow_tuple tuple;
