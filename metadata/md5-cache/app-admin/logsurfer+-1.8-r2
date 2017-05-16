@@ -8,5 +8,5 @@ RESTRICT=bindist
 SLOT=0
 SRC_URI=http://kerryt.orcon.net.nz/logsurfer-1.8.tar.gz http://www.crypt.gen.nz/logsurfer/logsurfer-1.8.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_install:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=e79864a37b9b064a6a8b09eaf4232df6

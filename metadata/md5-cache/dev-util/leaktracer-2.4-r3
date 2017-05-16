@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gentoo/leaktracer-2.4-gentoo_p2.tbz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=ea1e2f1463df9bcb931aa1dd42d80259

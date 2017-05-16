@@ -9,5 +9,5 @@ RDEPEND=>=www-apache/mod_backtrace-2.01 =www-servers/apache-2*[debug] =www-serve
 SLOT=0
 SRC_URI=http://emptyhammock.com/downloads/wku_bt-2.01.zip
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_compile:- src_install:apache-module
-_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	0917334d570e07f9743a04ff85b3bf1b	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	0917334d570e07f9743a04ff85b3bf1b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=ef83db4d68748b0c7ad8ecaf7714f273

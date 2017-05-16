@@ -8,5 +8,5 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=mirror://sourceforge/sevenzip/lzma920.tar.bz2 -> lzma-9.20.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=80a082b8937e55ece46add00cb3cd3b1

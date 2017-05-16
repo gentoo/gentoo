@@ -9,5 +9,5 @@ RDEPEND=sys-libs/zlib openssl? ( dev-libs/openssl:0= ) !openssl? ( gcrypt? ( dev
 REQUIRED_USE=!openssl? ( ^^ ( gcrypt mhash ) )
 SLOT=0
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=0c9f8dc226a043caf4987b18bfd352f0

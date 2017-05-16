@@ -9,5 +9,5 @@ RDEPEND=<=net-irc/irssi-0.8.21
 SLOT=0
 SRC_URI=https://github.com/phhusson/quassel-irssi/archive/f23e97a6188129cfae4c52f7e1a75940185454f4.zip -> quassel-irssi-0_p20170107.zip
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=943fdc6c608c217990a5e08b1c5d7bd1

@@ -7,5 +7,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://github.com/rofl0r/proxychains-ng/releases/download/v4.12/proxychains-ng-4.12.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=c395ddfd0ac14e391be9797e1c1b80f8

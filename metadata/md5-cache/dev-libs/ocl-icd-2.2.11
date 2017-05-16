@@ -9,5 +9,5 @@ RDEPEND=app-eselect/eselect-opencl
 SLOT=0
 SRC_URI=https://forge.imag.fr/frs/download.php/814/ocl-icd-2.2.11.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=d39cd6be06a610684fd511e857fa99bd
