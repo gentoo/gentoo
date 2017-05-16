@@ -31,7 +31,8 @@ RDEPEND="
 		dev-python/configparser[${PYTHON_USEDEP}]' -2)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( ${RDEPEND} )"
+	test? ( ${RDEPEND}
+		dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_compile_all() {
 	# selection of straight html triggers a trivial annoying bug, we skirt it
@@ -39,10 +40,7 @@ python_compile_all() {
 }
 
 python_test() {
-	${EPYTHON} \
-		-m unittest discover \
-		-s pylint/test/ -p "*test_*".py \
-		--verbose || die
+	py.test -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
