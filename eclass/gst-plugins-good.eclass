@@ -1,6 +1,11 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# Michał Górny <mgorny@gentoo.org> (16 May 2017)
+# gst-plugins* eclasses are no longer used. They will be removed
+# in 30 days.
+
 # @ECLASS: gst-plugins-good.eclass
 # @MAINTAINER:
 # gstreamer@gentoo.org
