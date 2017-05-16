@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -95,6 +95,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-desktop-file.patch
 	"${FILESDIR}"/${P}-chromaprint14.patch #603662
 	"${FILESDIR}"/${P}-libechonest_removal.patch
+	"${FILESDIR}"/${P}-add-missing-functional-includes.patch #618214
 )
 
 src_prepare() {
