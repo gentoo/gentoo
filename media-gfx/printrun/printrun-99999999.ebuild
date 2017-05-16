@@ -20,5 +20,6 @@ DEPEND="dev-python/pyserial
 	dev-python/wxpython:2.8
 	dev-python/pyglet
 	dev-python/dbus-python
-	media-gfx/cairosvg"
+	media-gfx/cairosvg
+	dev-python/numpy"
 RDEPEND="${DEPEND}"

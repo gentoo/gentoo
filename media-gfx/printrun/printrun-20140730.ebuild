@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,10 +17,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/pyserial
-	dev-python/wxpython
+	dev-python/wxpython:2.8
 	dev-python/pyglet
 	dev-python/dbus-python
-	media-gfx/cairosvg"
+	media-gfx/cairosvg
+	dev-python/numpy"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
