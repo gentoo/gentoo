@@ -6780,11 +6780,8 @@ net-vpn/strongswan:strongswan_plugins_whitelist - Enable support for the whiteli
 net-vpn/tinc:gui - Add GUI support, using dev-python/wxpython
 net-vpn/tinc:uml - Enable support for User Mode Linux Sockets
 net-vpn/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
-net-vpn/tor:bufferevents - Use libevent's buffered IO implementation (unstable, buggy)
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
-net-vpn/tor:stats - Enable tracking of how much of each kind of resource we download
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
-net-vpn/tor:transparent-proxy - Enable transparent proxying
 net-vpn/tor:web - Build a tor2web service instead of a tor client
 net-vpn/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-vpn/wireguard:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
