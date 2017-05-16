@@ -15,10 +15,19 @@ SRC_URI="https://github.com/bbangert/beaker/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+IUSE="test"
 
 RDEPEND="virtual/python-funcsigs[${PYTHON_USEDEP}]"
-# webtest-based tests are skipped when webtest is not installed
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		${RDEPEND}
+		$(python_gen_impl_dep sqlite)
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pycrypto[${PYTHON_USEDEP}]
+		dev-python/sqlalchemy[${PYTHON_USEDEP}]
+		dev-python/webtest[${PYTHON_USEDEP}]
+	)"
 
 # Py2.7 fais some tests without this
 DISTUTILS_IN_SOURCE_BUILD=1
@@ -29,6 +38,10 @@ python_prepare_all() {
 		-i beaker/container.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	esetup.py test
 }
 
 pkg_postinst() {
