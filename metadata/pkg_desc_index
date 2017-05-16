@@ -4923,7 +4923,7 @@ dev-libs/librevenge 0.0.4-r1 9999: A helper library for REVerse ENGineered forma
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.8.0 2.10.0: Typesafe callback system for standard C++
-dev-libs/libsigsegv 2.10 2.11: library for handling page faults in user mode
+dev-libs/libsigsegv 2.10 2.11: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.11 1.0.12: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libsolv 0.6.22: Library for solving packages and reading repositories
@@ -8257,7 +8257,7 @@ dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
 dev-python/pylibmc 1.5.0 1.5.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4-r1: Python interface to libpcap
-dev-python/pylint 1.4.4 1.5.6 1.6.5 1.6.5-r1 1.7.1: Python code static checker
+dev-python/pylint 1.4.4 1.5.6 1.6.5 1.6.5-r1 1.7.1-r1: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylzma 0.4.8: Python bindings for the LZMA compression library
 dev-python/pymad 0.6-r1: Python wrapper for libmad MP3 decoding in python
@@ -15068,7 +15068,7 @@ net-mail/mpack 1.6-r3: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.2.4 1.2.5 1.2.6: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
-net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
+net-mail/muchsync 3: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.21 0.23.7 0.24 0.24.1: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.14 7.1.0: Powerful IMAP/Maildir synchronization and reader support
