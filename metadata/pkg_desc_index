@@ -497,7 +497,7 @@ app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD 
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.1.0 0.11.1 0.13.0 0.14.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.1.0 0.14.1 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.4d: Encrypts data from stdin to stdout
@@ -512,9 +512,9 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.26: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
-app-crypt/certbot 0.11.1 0.13.0 0.14.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.11.1 0.13.0 9999: Apache plugin for certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 0.11.1 0.13.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.14.1 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.14.1 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 0.14.1 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.2.0_p20170322: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -7285,7 +7285,7 @@ dev-python/astlib 0.8.0: Python astronomy modules for image and coordinate manip
 dev-python/astng 0.24.3 0.24.3-r1: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.5: Read/rewrite/write Python ASTs
 dev-python/astrodendro 0.2.0: Python package for computation of astronomical dendrograms
-dev-python/astroid 1.3.8 1.4.8 1.4.9 1.5.2: Abstract Syntax Tree for logilab packages
+dev-python/astroid 1.3.8 1.4.8 1.4.9 1.5.2-r1: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
 dev-python/astroplan 0.2: Observation planning package for astronomers
@@ -7412,7 +7412,7 @@ dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.9: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.1 0.1.2: Common tools and data structures implemented in pure python
 dev-python/compizconfig-python 0.8.4-r5: Compizconfig Python Bindings
-dev-python/configargparse 0.11.0: Drop-in replacement for argparse supporting config files and env variables
+dev-python/configargparse 0.11.0 0.12.0: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 5.0.6: Simple config file reader and writer
 dev-python/configparser 3.3.0.2 3.5.0 3.5.0-r1: Backport of Python-3 built-in configparser
@@ -19522,7 +19522,7 @@ x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
-x11-wm/xpra 1.0.3-r1 1.0.4 1.0.4-r1 2.0 2.0.1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 1.0.4-r1 1.0.6 2.0.1 2.0.2: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.6 0.10.7 0.11.1 0.11.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r1 0.5.0-r2 0.6.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.12.1-r2 4.13.0 4.13.1: Unified widget and session management libs for Xfce
