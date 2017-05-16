@@ -62,5 +62,5 @@ python_install_all() {
 
 pkg_postinst() {
 	# Optional dependency on "tk" USE flag would break support for Jython.
-	optfeature "pylint-gui script requires dev-lang/python with \"tk\" USE flag enabled." dev-lang/python[tk]
+	optfeature "pylint-gui script requires dev-lang/python with \"tk\" USE flag enabled." 'dev-lang/python[tk]'
 }
