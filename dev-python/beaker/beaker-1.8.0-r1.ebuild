@@ -32,14 +32,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 # Py2.7 fais some tests without this
 DISTUTILS_IN_SOURCE_BUILD=1
 
-python_prepare_all() {
-	# Workaround for http://bugs.python.org/issue11276.
-	sed -e "s/import anydbm/& as anydbm/;/import anydbm/a dbm = anydbm" \
-		-i beaker/container.py || die
-
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	esetup.py test
 }
