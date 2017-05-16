@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils flag-o-matic readme.gentoo-r1 systemd versionator user
+inherit flag-o-matic readme.gentoo-r1 systemd versionator user
 
 MY_PV="$(replace_version_separator 4 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -15,14 +15,13 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86 ~ppc-macos"
-IUSE="-bufferevents libressl scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test web"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
+IUSE="libressl scrypt seccomp selinux systemd tor-hardening test web"
 
 DEPEND="
 	app-text/asciidoc
-	dev-libs/libevent
+	dev-libs/libevent[ssl]
 	sys-libs/zlib
-	bufferevents? ( dev-libs/libevent[ssl] )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 	scrypt? ( app-crypt/libscrypt )
@@ -31,52 +30,41 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+)
+
+DOCS=( README ChangeLog ReleaseNotes doc/HACKING )
+
 pkg_setup() {
 	enewgroup tor
 	enewuser tor -1 -1 /var/lib/tor tor
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
-	epatch_user
-}
-
 src_configure() {
-	# Upstream isn't sure of all the user provided CFLAGS that
-	# will break tor, but does recommend against -fstrict-aliasing.
-	# We'll filter-flags them here as we encounter them.
-	filter-flags -fstrict-aliasing
-
 	econf \
+		--localstatedir="${EPREFIX}/var" \
 		--enable-system-torrc \
 		--enable-asciidoc \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		$(use_enable stats instrument-downloads) \
-		$(use_enable bufferevents) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
 		$(use_enable tor-hardening gcc-hardening) \
 		$(use_enable tor-hardening linker-hardening) \
-		$(use_enable transparent-proxy transparent) \
 		$(use_enable web tor2web-mode) \
 		$(use_enable test unittests) \
 		$(use_enable test coverage)
 }
 
 src_install() {
+	default
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
 	newinitd "${FILESDIR}"/tor.initd-r8 tor
-	systemd_dounit "${FILESDIR}/${PN}.service"
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
-
-	emake DESTDIR="${D}" install
+	systemd_dounit contrib/dist/tor.service
 
 	keepdir /var/lib/tor
-
-	dodoc -r README ChangeLog ReleaseNotes doc/HACKING
 
 	fperms 750 /var/lib/tor
 	fowners tor:tor /var/lib/tor
