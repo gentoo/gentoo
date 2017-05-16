@@ -11,7 +11,7 @@ EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 inherit distutils-r1
 
 DESCRIPTION="Buildbot waterfall-view plugin"
-HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-waterfall-view"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-waterfall-view"
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
