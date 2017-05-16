@@ -7465,7 +7465,7 @@ dev-python/dirq 1.7.1: Python port of Perl module Directory::Queue
 dev-python/discogs-client 2.0.2 2.2.1: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.4: Distribution utilities
-dev-python/distro 1.0.2: Reliable machine-readable Linux distribution information for Python
+dev-python/distro 1.0.2 1.0.4: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.4.0: Use Database URLs in your Django Application
 dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.8.14 1.9.9 1.10: High-level Python web framework
 dev-python/django-annoying 0.7.7 0.8.7: This is django application that try to eliminate annoying things in Django framework
