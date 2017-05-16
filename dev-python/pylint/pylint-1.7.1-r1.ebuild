@@ -33,9 +33,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND} )"
 
-# Usual. Requ'd for impl specific failures in test phase
-DISTUTILS_IN_SOURCE_BUILD=1
-
 python_compile_all() {
 	# selection of straight html triggers a trivial annoying bug, we skirt it
 	use doc && PYTHONPATH="${S}" emake -e -C doc singlehtml
