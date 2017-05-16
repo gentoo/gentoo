@@ -287,19 +287,15 @@ _python_validate_useflags() {
 python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
-	local matches=()
+	local impl matches=()
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern; do
-			if [[ ${impl} == ${pattern} ]]; then
-				matches+=(
-					"python_targets_${impl}(-)?"
-					"-python_single_target_${impl}(-)"
-				)
-				break
-			fi
-		done
+		if _python_impl_matches "${impl}" "${@}"; then
+			matches+=(
+				"python_targets_${impl}(-)?"
+				"-python_single_target_${impl}(-)"
+			)
+		fi
 	done
 
 	[[ ${matches[@]} ]] || die "No supported implementations match python_gen_usedep patterns: ${@}"
@@ -328,16 +324,12 @@ python_gen_usedep() {
 python_gen_useflags() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
-	local matches=()
+	local impl matches=()
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern; do
-			if [[ ${impl} == ${pattern} ]]; then
-				matches+=( "python_targets_${impl}" )
-				break
-			fi
-		done
+		if _python_impl_matches "${impl}" "${@}"; then
+			matches+=( "python_targets_${impl}" )
+		fi
 	done
 
 	echo "${matches[@]}"
@@ -372,27 +364,22 @@ python_gen_useflags() {
 python_gen_cond_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
-	local matches=()
-
+	local impl matches=()
 	local dep=${1}
 	shift
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern; do
-			if [[ ${impl} == ${pattern} ]]; then
-				# substitute ${PYTHON_USEDEP} if used
-				# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
-				#  the code is run at most once)
-				if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-					local usedep=$(python_gen_usedep "${@}")
-					dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
-				fi
-
-				matches+=( "python_targets_${impl}? ( ${dep} )" )
-				break
+		if _python_impl_matches "${impl}" "${@}"; then
+			# substitute ${PYTHON_USEDEP} if used
+			# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
+			#  the code is run at most once)
+			if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
+				local usedep=$(python_gen_usedep "${@}")
+				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 			fi
-		done
+
+			matches+=( "python_targets_${impl}? ( ${dep} )" )
+		fi
 	done
 
 	echo "${matches[@]}"
@@ -429,22 +416,17 @@ python_gen_cond_dep() {
 python_gen_impl_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
-	local matches=()
-
+	local impl matches=()
 	local PYTHON_REQ_USE=${1}
 	shift
 
 	local patterns=( "${@-*}" )
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		for pattern in "${patterns[@]}"; do
-			if [[ ${impl} == ${pattern} ]]; then
-				local PYTHON_PKG_DEP
-				python_export "${impl}" PYTHON_PKG_DEP
-				matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
-				break
-			fi
-		done
+		if _python_impl_matches "${impl}" "${patterns[@]}"; then
+			local PYTHON_PKG_DEP
+			python_export "${impl}" PYTHON_PKG_DEP
+			matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
+		fi
 	done
 
 	echo "${matches[@]}"
@@ -619,12 +601,9 @@ python_setup() {
 
 	local best_impl patterns=( "${@-*}" )
 	_python_try_impl() {
-		local pattern
-		for pattern in "${patterns[@]}"; do
-			if [[ ${EPYTHON} == ${pattern} ]]; then
-				best_impl=${EPYTHON}
-			fi
-		done
+		if _python_impl_matches "${impl}" "${patterns[@]}"; then
+			best_impl=${EPYTHON}
+		fi
 	}
 	python_foreach_impl _python_try_impl
 	unset -f _python_try_impl
