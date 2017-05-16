@@ -352,7 +352,7 @@ app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r4: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.4-r2 7.4.6 7.4.7: Featureful client/server network backup suite
 app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2 16.2.4: Featureful client/server network backup suite
-app-backup/borgbackup 1.0.9 1.0.10 9999: Deduplicating backup program with compression and authenticated encryption.
+app-backup/borgbackup 1.0.9 1.0.10 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2: Browser-based user interface for BorgBackup
 app-backup/boxbackup 0.11.1-r2: A completely automatic on-line backup system
 app-backup/btrbk 0.23.3 0.24.0 0.25.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
@@ -2860,7 +2860,7 @@ dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
-dev-cpp/catch 1.5.0 1.5.6 1.5.7 1.5.8 1.6.0 1.9.1 1.9.3 9999: Modern C++ header-only framework for unit-tests
+dev-cpp/catch 1.9.3 1.9.4 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
@@ -15026,7 +15026,7 @@ net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program 
 net-mail/courier-imap 4.15-r2 4.16.2-r1 4.17.3: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to administer a Cyrus IMAP server
-net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.7 2.5.8 2.5.9 2.5.10 2.5.11 2.5.11-r1: The Cyrus IMAP Server
+net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.7 2.5.8 2.5.9 2.5.10 2.5.11 2.5.11-r1 3.0.1: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.19 2.2.29.1: An IMAP and POP3 server written with security primarily in mind
