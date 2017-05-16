@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib multiprocessing pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx xdg-utils
+inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -508,23 +508,6 @@ src_configure() {
 	einfo "Configuring Chromium..."
 	tools/gn/bootstrap/bootstrap.py -v --no-clean --gn-gen-args "${myconf_gn}" || die
 	out/Release/gn gen --args="${myconf_gn}" out/Release || die
-}
-
-eninja() {
-	if [[ -z ${NINJAOPTS+set} ]]; then
-		local jobs=$(makeopts_jobs)
-		local loadavg=$(makeopts_loadavg)
-
-		if [[ ${MAKEOPTS} == *-j* && ${jobs} != 999 ]]; then
-			NINJAOPTS+=" -j ${jobs}"
-		fi
-		if [[ ${MAKEOPTS} == *-l* && ${loadavg} != 999 ]]; then
-			NINJAOPTS+=" -l ${loadavg}"
-		fi
-	fi
-	set -- ninja -v ${NINJAOPTS} "$@"
-	echo "$@"
-	"$@"
 }
 
 src_compile() {

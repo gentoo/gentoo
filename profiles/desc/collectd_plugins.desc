@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of COLLECTD_PLUGINS USE_EXPAND flags.
@@ -35,7 +35,6 @@ exec - Build the exec input/output plugin (executes scripts / applications and r
 fhcount - Build the file handles input plugin (reports the number of used file handles)
 filecount - Build the filecount input plugin (counts the number of files in a directory and all its subdirectories)
 fscache - Build the fscache input plugin (collects information about the file-system based caching infrastructure for network file-systems and other slow media)
-genericjmx - Build the GenericJMX input plugin (reads Managed Beans (MBeans) from an MBeanServer using JMX input plugin; Requires JAVA)
 gmond - Build the gmond input plugin (receives data from gmond, the client daemon of the Ganglia project)
 gps - Build the gps input plugin (collects number of satellites seen by a GPS receiver using sci-geosciences/gpsd)
 hddtemp - Build the hddtemp input plugin (collects the temperature of disks from hddtemp daemon)
@@ -128,7 +127,6 @@ write_http - Build the write_http output plugin (sends metrics to a web-server u
 write_kafka - Build the Kafka output plugin (sends metrics to Apache Kafka)
 write_log - Build the write_log output plugin (writes metrics to a file)
 write_redis - Build the Redis output plugin (stores values in Redis)
-write_riemann - Build the Riemann output plugin (stores values in Riemann, a stream processing and monitoring system)
 write_sensu - Build the Sensu output plugin (sends metrics to Sensu Core, an open-source monitoring project)
 write_tsdb - Build the TSDB output plugin (writes metrics to OpenTSDB, an open-source distributed time-series database based on Apache HBase)
 xencpu - Build the XEN CPU input plugin (collects XEN Hypervisor CPU stats using app-emulation/xen-tools)
