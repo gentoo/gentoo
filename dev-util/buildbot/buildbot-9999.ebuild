@@ -3,7 +3,7 @@
 
 EAPI="5"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
@@ -14,7 +14,7 @@ MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -25,42 +25,30 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="crypt doc examples irc mail manhole test"
+IUSE="crypt doc examples irc test"
 
-RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	|| (
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
-	)
+RDEPEND="
+	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/twisted-16.0.0[${PYTHON_USEDEP},crypt?]' python2_7 )
+	$(python_gen_cond_dep '>=dev-python/twisted-17.1.0[${PYTHON_USEDEP},crypt?]' python3_5 python3_6 )
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
 	crypt? (
-		>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
+		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 	)
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-		)
-	)
-	mail? (
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-		)
-	)
-	manhole? (
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
-		)
 	)
 	dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
-	"
+	dev-python/distro[${PYTHON_USEDEP}]
+	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
 	doc? (
@@ -69,19 +57,13 @@ DEPEND="${RDEPEND}
 		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
 		dev-python/pyenchant[${PYTHON_USEDEP}]
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
+		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
+		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		|| (
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			(
-				>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-				>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
-				>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-			)
-		)
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/ramlfications[${PYTHON_USEDEP}]

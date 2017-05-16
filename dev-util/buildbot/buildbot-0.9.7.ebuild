@@ -3,18 +3,18 @@
 
 EAPI="5"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
-MY_V="0.9.0.post1"
-MY_P="${PN}-${MY_V}"
+MY_PV="${PV/_p/p}"
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -25,69 +25,56 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="crypt doc examples irc mail manhole test"
+IUSE="crypt doc examples irc test"
 
-RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	|| (
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
-	)
+RDEPEND="
+	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.1.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
 	crypt? (
-		>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
+		>=dev-python/twisted-17.1.0[${PYTHON_USEDEP},crypt]
+		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 	)
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-		)
-	)
-	mail? (
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-		)
-	)
-	manhole? (
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
-		)
 	)
 	dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
-	"
+	dev-python/pyjwt[${PYTHON_USEDEP}]
+	dev-python/distro[${PYTHON_USEDEP}]
+	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
+	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	doc? ( >=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}] )
+	doc? (
+		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
+		dev-python/pyenchant[${PYTHON_USEDEP}]
+		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
+		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
+		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
+		dev-python/ramlfications[${PYTHON_USEDEP}]
+	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		|| (
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			(
-				>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-				>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
-				>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-			)
-		)
+		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/ramlfications[${PYTHON_USEDEP}]
 		dev-python/pyjade[${PYTHON_USEDEP}]
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
+		dev-python/lz4[${PYTHON_USEDEP}]
+		dev-python/treq[${PYTHON_USEDEP}]
+		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	)"
-
-# still yet to be added deps
-# doc? (     'sphinxcontrib-blockdiag',
-#            'sphinxcontrib-spelling',
-#            'pyenchant',
-#            'docutils>=0.8',
-#            'sphinx-jinja',)
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
@@ -135,6 +122,13 @@ src_install() {
 	systemd_install_serviced "${FILESDIR}/buildmaster_at.service.conf" "buildmaster@.service"
 
 	readme.gentoo_create_doc
+}
+
+python_test() {
+	distutils_install_for_testing
+	export TEST_HYPER=1
+
+	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {
