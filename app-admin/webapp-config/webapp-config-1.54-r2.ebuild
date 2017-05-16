@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
@@ -22,8 +22,8 @@ DEPEND="app-text/xmlto
 RDEPEND="portage? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
 python_prepare() {
-	epatch "${FILESDIR}/${P}-pvr-check.patch"
-	epatch "${FILESDIR}/${P}-fix-bashism.patch"
+	epatch "${FILESDIR}/${P}-pvr-check.patch"\
+		"${FILESDIR}/${P}-fix-bashism.patch"
 }
 python_compile_all() {
 	emake -C doc/
