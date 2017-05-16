@@ -33,7 +33,7 @@ python_install() {
 	distutils-r1_python_install
 
 	# install the namespace (it's the only subpackage)
-	python_moduleinto repoze/sphinx
+	python_moduleinto repoze.sphinx
 	python_domodule repoze/sphinx/__init__.py
 }
 
