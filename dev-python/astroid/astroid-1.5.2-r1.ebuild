@@ -34,8 +34,6 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 	)"
-# Required for tests
-DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	# Disable failing tests
