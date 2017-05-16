@@ -969,7 +969,7 @@ app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.2: Th
 app-doc/geant-docs 4.9.6 4.10.0 4.10.03 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
-app-doc/halibut 1.0 1.1: yet another free document preparation system
+app-doc/halibut 1.0 1.1 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.1 4.0.4 4.0.5: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
@@ -13107,7 +13107,7 @@ media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.2
 media-libs/libraw 0.17.2 0.18.1 0.18.2: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.2-r1: framebuffer abstraction library, written in C
-media-libs/libsamplerate 0.1.8-r1 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
+media-libs/libsamplerate 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.4 2.0.5: Simple Direct Media Layer
