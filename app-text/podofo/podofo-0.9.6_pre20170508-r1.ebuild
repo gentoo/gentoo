@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PVR}"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+boost idn libressl debug test"
 
 RDEPEND="dev-lang/lua:=
