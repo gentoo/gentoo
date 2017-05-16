@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=(python2_7)
+EAPI=6
+PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -26,7 +26,7 @@ IUSE="test"
 RDEPEND="~app-crypt/certbot-${PV}[${PYTHON_USEDEP}]
 	~app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/python-augeas[${PYTHON_USEDEP}]
+	<=dev-python/python-augeas-0.5.0[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND}
