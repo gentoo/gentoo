@@ -34,6 +34,13 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}] )"
 
+python_prepare_all() {
+	# remove unused dep
+	sed -i -e '/pytest-runner/d' setup.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_compile_all() {
 	# selection of straight html triggers a trivial annoying bug, we skirt it
 	use doc && PYTHONPATH="${S}" emake -e -C doc singlehtml
