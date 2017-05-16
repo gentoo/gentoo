@@ -3,13 +3,13 @@
 
 EAPI=6
 
-DESCRIPTION="library for handling page faults in user mode"
+DESCRIPTION="Library for handling page faults in user mode"
 HOMEPAGE="http://www.gnu.org/software/libsigsegv/"
 SRC_URI="mirror://gnu/libsigsegv/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 src_configure () {
