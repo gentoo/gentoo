@@ -8666,6 +8666,7 @@ dev-python/sphinx-bootstrap-theme 0.4.9: Sphinx theme integrates the Bootstrap C
 dev-python/sphinx-gallery 0.1.7-r1: Sphinx extension to automatically generate an examples gallery
 dev-python/sphinx-jinja 0.2.1: A sphinx extension to include jinja based templates into a sphinx doc
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2: Enhanced Sphinx theme (based on Python 3 docs)
+dev-python/sphinx-testing 0.7.2: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 1.3.1: Celery Sphinx Theme and Utilities
 dev-python/sphinx_rtd_theme 0.1.9: ReadTheDocs.org theme for Sphinx
 dev-python/sphinxcontrib-asyncio 0.2.0: sphinx extension to support coroutines in markup
