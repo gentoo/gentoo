@@ -20,19 +20,19 @@ IUSE="test"
 RDEPEND="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/wrapt[${PYTHON_USEDEP}]"
+	dev-python/wrapt[${PYTHON_USEDEP}]
+	virtual/python-enum34[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' -2)"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' 'python*')
 		>=dev-python/pylint-1.6.0[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		virtual/python-singledispatch[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7 )
-		$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' python2_7 )
-		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 )
 	)"
 # Required for tests
 DISTUTILS_IN_SOURCE_BUILD=1
