@@ -285,10 +285,6 @@ app-emulation/wine-any
 # Experimental version.
 >=net-wireless/gnuradio-3.7.11
 
-# Patrice Clement <monsieurp@gentoo.org> (07 Apr 2017)
-# Part of the JDK since Java 6. Removal in 30 days.
-dev-java/jaxme
-
 # Amadeusz Zolnowski <aidecoe@gentoo.org> (2 Apr 2017)
 # Masked, committed accidentally. It's not tested yet, possibly broken.
 =net-im/ejabberd-17.01
