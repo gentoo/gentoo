@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_4 )
 
-inherit vcs-snapshot distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Collection of persistent (disk-based) queues"
 HOMEPAGE="https://github.com/scrapy/${PN}"
