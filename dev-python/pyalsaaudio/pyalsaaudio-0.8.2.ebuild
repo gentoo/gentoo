@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,6 +29,10 @@ python_compile_all() {
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile
+}
+
+python_test() {
+	"${PYTHON}" test.py -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
