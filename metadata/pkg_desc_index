@@ -7697,7 +7697,7 @@ dev-python/google-apitools 0.5.4: Python library to manipulate Google APIs
 dev-python/google-apputils 0.4.0-r1 0.4.2-r1 0.4.2-r2: Collection of utilities for building Python applications
 dev-python/google-auth 1.0.0: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.2: httplib2 Transport for Google Auth
-dev-python/graph-tool 2.2.44 2.19 9999: An efficient python module for manipulation and statistical analysis of graphs
+dev-python/graph-tool 2.19 9999: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.10 0.4.12: Lightweight in-process concurrent programming
