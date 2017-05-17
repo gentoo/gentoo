@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib multiprocessing pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx xdg-utils
+inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -185,11 +185,12 @@ pkg_setup() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-widevine-r1.patch"
-		"${FILESDIR}/${PN}-FORTIFY_SOURCE.patch"
+		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r1.patch"
 		"${FILESDIR}/skia-avx2.patch"
 		"${FILESDIR}/${PN}-system-ffmpeg-r6.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r6.patch"
 		"${FILESDIR}/${PN}-system-opus-r1.patch"
+		"${FILESDIR}/${PN}-system-libpng-r1.patch"
+		"${FILESDIR}/${PN}-system-libwebp-r1.patch"
 	)
 
 	default
@@ -247,6 +248,7 @@ src_prepare() {
 		third_party/google_input_tools
 		third_party/google_input_tools/third_party/closure_library
 		third_party/google_input_tools/third_party/closure_library/third_party/closure
+		third_party/googletest
 		third_party/hunspell
 		third_party/iccjpeg
 		third_party/inspector_protocol
@@ -261,7 +263,6 @@ src_prepare() {
 		third_party/libsecret
 		third_party/libsrtp
 		third_party/libudev
-		third_party/libusb
 		third_party/libwebm
 		third_party/libxml
 		third_party/libyuv
@@ -301,6 +302,7 @@ src_prepare() {
 		third_party/swiftshader
 		third_party/swiftshader/third_party/llvm-subzero
 		third_party/swiftshader/third_party/pnacl-subzero
+		third_party/swiftshader/third_party/subzero
 		third_party/tcmalloc
 		third_party/usrsctp
 		third_party/vulkan
@@ -353,7 +355,6 @@ src_configure() {
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_libsrtp (bug #459932).
-	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: xml (bug #616818).
 	# TODO: use_system_protobuf (bug #525560).
 	# TODO: use_system_ssl (http://crbug.com/58087).
@@ -509,23 +510,6 @@ src_configure() {
 	einfo "Configuring Chromium..."
 	tools/gn/bootstrap/bootstrap.py -v --no-clean --gn-gen-args "${myconf_gn}" || die
 	out/Release/gn gen --args="${myconf_gn}" out/Release || die
-}
-
-eninja() {
-	if [[ -z ${NINJAOPTS+set} ]]; then
-		local jobs=$(makeopts_jobs)
-		local loadavg=$(makeopts_loadavg)
-
-		if [[ ${MAKEOPTS} == *-j* && ${jobs} != 999 ]]; then
-			NINJAOPTS+=" -j ${jobs}"
-		fi
-		if [[ ${MAKEOPTS} == *-l* && ${loadavg} != 999 ]]; then
-			NINJAOPTS+=" -l ${loadavg}"
-		fi
-	fi
-	set -- ninja -v ${NINJAOPTS} "$@"
-	echo "$@"
-	"$@"
 }
 
 src_compile() {
