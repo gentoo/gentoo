@@ -170,6 +170,9 @@ src_configure() {
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"
 
+	# Required for newest icu, bug #618732
+	append-cxxflags '-std=c++11'
+
 	# Too many regexps use A-Z a-z constructs, what causes problems with locales
 	# that don't have the same alphabetical order than ascii. Bug #242430
 	# So we set LC_ALL to C in order to avoid problems.
