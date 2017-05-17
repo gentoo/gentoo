@@ -25,3 +25,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( docs/changelog.rst docs/index.rst )
+
+python_test() {
+	"${PYTHON}" -m doctest minimock.py || die "Tests fail with ${EPYTHON}"
+}
