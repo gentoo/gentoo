@@ -5187,8 +5187,8 @@ dev-ml/async_kernel 0.9.0: Jane Street Capital's asynchronous execution library 
 dev-ml/async_rpc_kernel 0.9.0: Platform-independent core of Async RPC library
 dev-ml/async_ssl 0.9.0: An Async-pipe-based interface with OpenSSL.
 dev-ml/async_unix 0.9.0: Jane Street Capital's asynchronous execution library (unix)
-dev-ml/atd 1.2.0: Syntax for cross-language type definitions
-dev-ml/atdgen 1.10.0: Generates optimized boilerplate OCaml code for JSON and Biniou IO from type definitions
+dev-ml/atd 1.2.0 1.2.1: Syntax for cross-language type definitions
+dev-ml/atdgen 1.10.0 1.10.2: Generates optimized boilerplate OCaml code for JSON and Biniou IO from type definitions
 dev-ml/base 0.9.1 0.9.2: Standard library for OCaml
 dev-ml/batteries 2.5.3 2.6.0: The community-maintained foundation library for your OCaml projects
 dev-ml/bignum 0.9.0: Core-flavoured wrapper around zarith's arbitrary-precision rationals
@@ -5278,7 +5278,7 @@ dev-ml/ocaml-cstruct 2.4.0 2.4.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
-dev-ml/ocaml-dns 0.20.0: A pure OCaml implementation of the DNS protocol
+dev-ml/ocaml-dns 0.20.0 0.20.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
