@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (17 May 2017)
+# Functionality merged to cyrus-imapd-2.5.x series.
+# cyrus-imapd-2.5.10 was stabilized in Jan 2017.  Upgrade
+# if you haven't already done so.  Removal in 30 days.
+net-mail/cyrus-imap-admin
+dev-libs/cyrus-imap-dev
+# Masking for end-user convenience.  Will be dropped once
+# net-mail/cyrus-imap-admin and dev-libs/cyrus-imap-dev
+# are tree cleaned.
+=net-mail/cyrus-imapd-2.4*
+
 # Jason A. Donenfeld <zx2c4@gentoo.org> (16 May 2017)
 # This package has no upstream and has likely security vulnerabilities.
 # Users can trivially upgrade to x11-terms/rxvt-unicode, which is its
