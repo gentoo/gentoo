@@ -11,7 +11,7 @@ DESCRIPTION="open source database for building cloud services"
 HOMEPAGE="https://www.cockroachlabs.com"
 SRC_URI="https://binaries.cockroachdb.com/cockroach-${MY_PV}.src.tgz"
 
-LICENSE="Apache-2.0"
+LICENSE="Cockroach Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
