@@ -4,7 +4,7 @@ DESCRIPTION=Low Level Virtual Machine
 EAPI=6
 HOMEPAGE=http://llvm.org/
 IUSE=debug +doc gold libedit +libffi ncurses test elibc_musl kernel_Darwin llvm_targets_AArch64 llvm_targets_AMDGPU llvm_targets_ARM llvm_targets_BPF llvm_targets_Hexagon llvm_targets_Lanai llvm_targets_Mips llvm_targets_MSP430 llvm_targets_NVPTX llvm_targets_PowerPC llvm_targets_RISCV llvm_targets_Sparc llvm_targets_SystemZ llvm_targets_X86 llvm_targets_XCore abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~amd64 ~arm64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=UoI-NCSA rc BSD public-domain llvm_targets_ARM? ( LLVM-Grant )
 PDEPEND=app-vim/llvm-vim gold? ( sys-devel/llvmgold )
 RDEPEND=sys-libs/zlib:0= gold? ( >=sys-devel/binutils-2.22:*[cxx] ) libedit? ( dev-libs/libedit:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) libffi? ( >=virtual/libffi-3.0.13-r1:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !sys-devel/llvm:0
@@ -13,4 +13,4 @@ SLOT=4
 SRC_URI=http://releases.llvm.org/4.0.0/llvm-4.0.0.src.tar.xz !doc? ( https://dev.gentoo.org/~mgorny/dist/llvm-manpages-4.0.0.tar.bz2 )
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:-
 _eclasses_=cmake-utils	e44137980fb9cdd48abe54b101678254	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	pax-utils	4f95120230a315c8caaabeb2307b7eee	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	7aaf8e4bc5ba6cae58ff688b5a857866	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=0181134a97e629f0f185d86e8e6f15e2
+_md5_=a03ecfb17ac712932b624f78301b2956
