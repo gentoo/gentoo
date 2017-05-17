@@ -306,10 +306,6 @@ app-emulation/wine-any
 # Experimental version.
 >=net-wireless/gnuradio-3.7.11
 
-# Amadeusz Zolnowski <aidecoe@gentoo.org> (2 Apr 2017)
-# Masked, committed accidentally. It's not tested yet, possibly broken.
-=net-im/ejabberd-17.01
-
 # Yixun Lan <dlan@gentoo.org> (30 Mar 2017)
 # Masked, broken due to emoji support which requre npm package installed (bug #612218)
 =app-i18n/ibus-1.5.15
