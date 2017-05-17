@@ -161,7 +161,7 @@ src_configure() {
 }
 
 src_test() {
-	nonfatal emake check || ewarn "tests failed"
+	emake check || die 'tests failed'
 }
 
 src_install() {
