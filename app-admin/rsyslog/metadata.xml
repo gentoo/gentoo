@@ -12,7 +12,7 @@
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
 		<flag name="grok">Build the grok modify module (requires <pkg>dev-libs/grok</pkg>)</flag>
 		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
-		<flag name="kafka">Build the Apache Kafka output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
+		<flag name="kafka">Build the Apache Kafka input/output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
 		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
 		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> for building the rfc5424hmac modify module (requires rfc5424hmac USE flag)</flag>
 		<flag name="mdblookup">Build the MaxMind DB lookup message modify plugin using <pkg>dev-libs/libmaxminddb</pkg></flag>
