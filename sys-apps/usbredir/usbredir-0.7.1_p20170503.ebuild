@@ -13,7 +13,7 @@ SRC_URI="http://spice-space.org/download/${PN}/${PN}-${MY_PV}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~ia64 ~ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm ~ia64 ~ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 RDEPEND="virtual/libusb:1"
