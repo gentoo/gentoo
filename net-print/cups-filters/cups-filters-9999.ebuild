@@ -5,7 +5,7 @@ EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit eutils perl-module systemd
+inherit perl-module systemd
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit bzr autotools
@@ -19,7 +19,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/pdf_as_standard_print_jo
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic jpeg ldap pdf perl png +postscript static-libs tiff zeroconf"
+IUSE="dbus +foomatic ipp_autosetup jpeg ldap pdf perl png +postscript static-libs tiff zeroconf"
 
 RDEPEND="
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
@@ -31,6 +31,7 @@ RDEPEND="
 	media-libs/lcms:2
 	>=net-print/cups-1.7.3
 	!<=net-print/cups-1.5.9999
+	sys-devel/bc
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
@@ -52,27 +53,30 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		--localstatedir="${EPREFIX}"/var \
-		--with-cups-rundir="${EPREFIX}"/run/cups \
-		$(use_enable dbus) \
-		$(use_enable zeroconf avahi) \
-		$(use_enable static-libs static) \
-		$(use_enable foomatic) \
-		$(use_enable ldap) \
-		$(use_enable pdf mutool) \
-		$(use_enable postscript ghostscript) \
-		$(use_enable postscript ijs) \
-		--with-fontdir="fonts/conf.avail" \
-		--with-pdftops=pdftops \
-		--enable-imagefilters \
-		$(use_with jpeg) \
-		$(use_with png) \
-		$(use_with tiff) \
-		--with-rcdir=no \
-		--with-browseremoteprotocols=DNSSD,CUPS \
+	local myeconfargs=(
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		--enable-imagefilters
+		--localstatedir="${EPREFIX}"/var
+		--with-browseremoteprotocols=DNSSD,CUPS
+		--with-cups-rundir="${EPREFIX}"/run/cups
+		--with-fontdir="fonts/conf.avail"
+		--with-pdftops=pdftops
+		--with-rcdir=no
 		--without-php
+		$(use_enable dbus)
+		$(use_enable foomatic)
+		$(use_enable ipp_autosetup auto-setup-driverless)
+		$(use_enable ldap)
+		$(use_enable pdf mutool)
+		$(use_enable postscript ghostscript)
+		$(use_enable postscript ijs)
+		$(use_enable static-libs static)
+		$(use_enable zeroconf avahi)
+		$(use_with jpeg)
+		$(use_with png)
+		$(use_with tiff)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -102,7 +106,7 @@ src_install() {
 		dosym gstopxl /usr/libexec/cups/filter/pstopxl
 	fi
 
-	prune_libtool_files --all
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 
 	cp "${FILESDIR}"/cups-browsed.init.d-r1 "${T}"/cups-browsed || die
 
