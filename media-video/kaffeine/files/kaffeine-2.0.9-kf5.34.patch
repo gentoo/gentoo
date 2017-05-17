@@ -1,0 +1,22 @@
+commit 657c11d76271f66fc3f40b60c5ba782061e8d895
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Wed May 17 20:15:43 2017 +0200
+
+    Remove duplicate call of ki18n_install
+    
+    Release script is adding this as well to tarball CMakeLists.txt.
+    That has worked in the past, but is fatal in KDE Frameworks 5.34.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9a88958..3c4601d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -95,8 +95,6 @@ add_subdirectory(src)
+ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+   if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po/CMakeLists.txt" )
+     add_subdirectory(po)
+-  else()
+-    ki18n_install(po)
+   endif()
+ endif()
+ 

@@ -45,6 +45,8 @@ RDEPEND="${CDEPEND}
 
 DOCS=( Changelog NOTES README.md )
 
+PATCHES=( "${FILESDIR}/${P}-kf5.34.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 
