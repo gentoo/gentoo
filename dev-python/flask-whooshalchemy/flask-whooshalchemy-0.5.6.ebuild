@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,10 +6,10 @@ PYTHON_COMPAT=( python{2_7,3_4} pypy )
 
 RESTRICT="test"		# appears pretty borken
 
-inherit distutils-r1
+inherit distutils-r1 versionator
 
 MY_PN="Flask-WhooshAlchemy"
-MY_P="${MY_PN}-${PV}"
+MY_P="${MY_PN}-$(replace_version_separator 2 '')"
 
 DESCRIPTION="Whoosh extension to Flask/SQLAlchemy"
 HOMEPAGE="https://github.com/gyllstromk/Flask-WhooshAlchemy https://pypi.python.org/pypi/${MY_PN}"
