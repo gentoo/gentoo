@@ -52,7 +52,7 @@ pkg_postinst() {
 
 	einfo "Starting with this version, ebump, ekeyword and imlate are now"
 	einfo "part of the gentoolkit package."
-	einfo "The gentoolit-dev package is now deprecated in favor of a single"
+	einfo "The gentoolkit-dev package is now deprecated in favor of a single"
 	einfo "gentoolkit package.   The remaining tools from gentoolkit-dev"
 	einfo "are now obsolete/unused with the git based tree."
 
