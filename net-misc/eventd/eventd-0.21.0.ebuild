@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit linux-info systemd
+inherit linux-info systemd xdg-utils
 
 DESCRIPTION="A small daemon to act on remote or local events"
 HOMEPAGE="https://www.eventd.org/"
@@ -74,6 +74,9 @@ src_prepare() {
 	sed -i \
 		-e 's|libspeechd|speech-dispatcher/libspeechd|g' \
 		plugins/tts/src/tts.c || die
+
+	# Prevent access violations from introspection metadata generation.
+	xdg_environment_reset
 }
 
 src_configure() {
