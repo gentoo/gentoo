@@ -2339,7 +2339,7 @@ app-text/kbibtex 0.6.2: BibTeX editor by KDE to edit bibliographies used with La
 app-text/kchmviewer 7.7: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
-app-text/krop 0.4.7 0.4.8 0.4.9 0.4.11: A tool to crop PDF files
+app-text/krop 0.4.9 0.4.11: A tool to crop PDF files
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
 app-text/languagetool 3.5-r1: A proof-reading tool for many languages
 app-text/lcdf-typetools 2.106: Font utilities for eg manipulating OTF
