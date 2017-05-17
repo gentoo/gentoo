@@ -1,0 +1,18 @@
+--- a/build/linux/unbundle/libpng.gn.orig	2017-05-17 09:57:24.487799547 +0000
++++ b/build/linux/unbundle/libpng.gn	2017-05-17 09:57:47.680282784 +0000
+@@ -5,7 +5,7 @@
+ import("//build/config/linux/pkg_config.gni")
+ import("//build/shim_headers.gni")
+ 
+-pkg_config("system_libpng") {
++pkg_config("libpng_config") {
+   packages = [ "libpng" ]
+ }
+ 
+@@ -21,5 +21,5 @@
+   deps = [
+     ":libpng_shim",
+   ]
+-  public_configs = [ ":system_libpng" ]
++  public_configs = [ ":libpng_config" ]
+ }
