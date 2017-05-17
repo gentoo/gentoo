@@ -2,16 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>patrick@gentoo.org</email>
-    <name>Patrick Lauer</name>
+    <email>mgorny@gentoo.org</email>
+    <name>Michal Gorny</name>
   </maintainer>
   <maintainer type="person">
     <email>hydrapolic@gmail.com</email>
     <name>Tomáš Mózes</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>erkiferenc@gmail.com</email>
-    <name>Ferenc Erki</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
