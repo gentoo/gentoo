@@ -9,7 +9,7 @@ SRC_URI="http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"
