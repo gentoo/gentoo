@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Collection of persistent (disk-based) queues"
-HOMEPAGE="https://github.com/scrapy/${PN}"
-SRC_URI="https://github.com/scrapy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/scrapy/queuelib"
+SRC_URI="https://github.com/scrapy/queuelib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
