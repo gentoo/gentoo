@@ -17,8 +17,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/httplib2[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/httplib2[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"
 # Testsuite relies upon connection to various sites on the net
