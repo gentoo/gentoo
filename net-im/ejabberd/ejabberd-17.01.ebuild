@@ -186,6 +186,9 @@ src_prepare() {
 	adjust_config
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
 
+	rebar_fix_include_path fast_xml
+	rebar_fix_include_path xmpp
+
 	# Fix bug #591862. ERL_LIBS should point directly to ejabberd directory
 	# rather than its parent which is default. That way ejabberd directory
 	# takes precedence is module lookup.
