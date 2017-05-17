@@ -4045,7 +4045,7 @@ dev-java/freehep-graphicsio-tests 2.4: High Energy Physics Java library - FreeHE
 dev-java/freehep-io 2.2.2: High Energy Physics Java library - FreeHEP I/O Library
 dev-java/freemarker 2.3.13-r2 2.3.25: A Java tool to generate text output based on templates
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
-dev-java/gcj-jdk 4.9.4: Java wrappers around GCJ
+dev-java/gcj-jdk 4.9.4 5.4.0: Java wrappers around GCJ
 dev-java/geoip-java 1.3.0: Java library for lookup countries by IP addresses
 dev-java/glassfish-connector-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-deployment-api 3.1.1: J2EE Application Deployment Specification V.1.2
