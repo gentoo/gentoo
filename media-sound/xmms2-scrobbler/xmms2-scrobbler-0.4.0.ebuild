@@ -23,10 +23,11 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-libs.patch
 	epatch "${FILESDIR}"/${P}-ld-order.patch
 	epatch "${FILESDIR}"/${P}-gcc-7.patch
+	epatch "${FILESDIR}"/${P}-no-XPTR.patch
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" VERBOSE=1
 }
 
 src_install() {
