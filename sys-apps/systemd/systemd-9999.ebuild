@@ -106,28 +106,31 @@ DEPEND="${COMMON_DEPEND}
 "
 
 pkg_pretend() {
-	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
-		~CHECKPOINT_RESTORE ~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
-		~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
-		~TIMERFD ~TMPFS_XATTR ~UNIX
-		~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
-		~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
-		~!SYSFS_DEPRECATED_V2"
+	if [[ ${MERGE_TYPE} != buildonly ]]; then
+		local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
+			~CHECKPOINT_RESTORE ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
+			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
+			~TIMERFD ~TMPFS_XATTR ~UNIX
+			~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
+			~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
+			~!SYSFS_DEPRECATED_V2"
 
-	use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
-	use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
-	kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
-	kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
+		use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
+		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
+		kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
+		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
 
-	if linux_config_exists; then
-		local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
-			if [ -n "${uevent_helper_path}" ] && [ "${uevent_helper_path}" != '""' ]; then
+		if linux_config_exists; then
+			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
+			if [[ -n ${uevent_helper_path} ]] && [[ ${uevent_helper_path} != '""' ]]; then
 				ewarn "It's recommended to set an empty value to the following kernel config option:"
 				ewarn "CONFIG_UEVENT_HELPER_PATH=${uevent_helper_path}"
 			fi
-	fi
+			if linux_chkconfig_present X86; then
+				CONFIG_CHECK+=" ~DMIID"
+			fi
+		fi
 
-	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if kernel_is -lt ${MINKV//./ }; then
 			ewarn "Kernel version at least ${MINKV} required"
 		fi
