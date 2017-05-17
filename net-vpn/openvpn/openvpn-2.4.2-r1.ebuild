@@ -66,6 +66,8 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -Xcompiler -static
+	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
+	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 	econf \
 		$(usex mbedtls '--with-crypto-library=mbedtls' '') \
 		$(use_enable inotify async-push) \
@@ -110,10 +112,6 @@ src_install() {
 		insinto /usr/share/doc/${PF}/examples
 		doins -r sample contrib
 	fi
-
-	systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
-	use systemd && systemd_newunit distro/systemd/openvpn-client@.service openvpn-client@.service
-	use systemd && systemd_newunit distro/systemd/openvpn-server@.service openvpn-server@.service
 }
 
 pkg_postinst() {
