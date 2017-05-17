@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 
+# future breaks minimock hard -- probably makes it think it's on python3...
+# https://github.com/lowks/minimock/issues/5
+RDEPEND="$(python_gen_cond_dep '!!dev-python/future[${PYTHON_USEDEP}]' -2)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"
