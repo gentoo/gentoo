@@ -566,16 +566,17 @@ kde5_src_prepare() {
 			pushd ${po} > /dev/null || die
 			local lang
 			for lang in *; do
-				if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
-					rm -r ${lang} || die
+				if [[ -e ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
+					case ${lang} in
+						cmake_modules | \
+						CMakeLists.txt | \
+						${PN}.pot)	;;
+						*) rm -r ${lang} || die	;;
+					esac
 					if [[ -e CMakeLists.txt ]] ; then
 						cmake_comment_add_subdirectory ${lang}
 						sed -e "/add_subdirectory([[:space:]]*${lang}\/.*[[:space:]]*)/d" \
 							-i CMakeLists.txt || die
-					fi
-				elif [[ -f ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
-					if [[ ${lang} != CMakeLists.txt && ${lang} != ${PN}.pot ]] ; then
-						rm ${lang} || die
 					fi
 				fi
 			done
