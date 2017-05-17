@@ -24,10 +24,19 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		$(python_gen_impl_dep sqlite)
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
+		|| (
+			dev-python/pycryptodome[${PYTHON_USEDEP}]
+			dev-python/pycrypto[${PYTHON_USEDEP}]
+		)
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)"
+
+python_prepare_all() {
+	# disarm pycrypto dep to allow || ( pycryptodome pycrypto )
+	sed -i -e "/TEST/s:'pycrypto'::" setup.py || die
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	esetup.py test
