@@ -226,7 +226,7 @@ src_install() {
 	mv "${ED}/usr/share/ghostscript/${PVM}/Resource/Init/cidfmap"{,.GS} || die
 
 	# install our own cidfmap to handle CJK fonts
-	insinto /usr/share/ghostscript/${PVM}/Resource/Init
+	insinto /usr/share/ghostscript/"${PVM}"/Resource/Init
 	doins \
 		"${WORKDIR}/fontmaps/CIDFnmap" \
 		"${WORKDIR}/fontmaps/cidfmap"
@@ -236,8 +236,8 @@ src_install() {
 		fi
 	done
 
-	# install the CMaps from poppler-data properly, bug #409361
-	dosym /usr/share/poppler/cMaps /usr/share/ghostscript/${PVM}/Resource/CMap
+	# install the CMaps from poppler-data properly, bug #409361 but avoid double PREFIX-ing in class
+	dosym /usr/share/poppler/cMaps /usr/share/ghostscript/"${PVM}"/Resource/CMap
 
 	use static-libs || prune_libtool_files --all
 
