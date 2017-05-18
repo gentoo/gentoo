@@ -4,7 +4,7 @@
 EAPI=6
 inherit cmake-multilib
 
-MY_P="deviceatlas-enterprise-c-${PV}_1"
+MY_P="deviceatlas-enterprise-c-${PV/_p/_}"
 
 DESCRIPTION="API to detect devices based on the User-Agent HTTP header"
 HOMEPAGE="https://deviceatlas.com"
@@ -23,20 +23,14 @@ RESTRICT="fetch mirror bindist"
 
 S="${WORKDIR}/${MY_P}"
 
-#PATCHES=(
-#	"${FILESDIR}/${PV}-src-cmakelists.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/${PV}-src-cmakelists.patch"
+)
 
 pkg_nofetch() {
 	eerror "Please go to https://deviceatlas.com/deviceatlas-haproxy-module"
 	eerror "And download DeviceAtlas C API"
 	eerror "Then place the file in ${DISTDIR}/${MY_P}.zip"
-}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PV}-src-cmakelists.patch"
 }
 
 multilib_src_install_all() {
