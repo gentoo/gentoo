@@ -628,7 +628,7 @@ python_setup() {
 
 	local best_impl patterns=( "${@-*}" )
 	_python_try_impl() {
-		if _python_impl_matches "${impl}" "${patterns[@]}"; then
+		if _python_impl_matches "${EPYTHON}" "${patterns[@]}"; then
 			best_impl=${EPYTHON}
 		fi
 	}
