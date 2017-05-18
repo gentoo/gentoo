@@ -442,7 +442,7 @@ app-benchmarks/tiobench 0.3.3-r2 0.4.2: Portable, robust, fully-threaded I/O ben
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 3.1.2: A modern HTTP benchmarking tool
 app-cdr/acetoneiso 2.3: a feature-rich and complete software application to manage CD/DVD images
-app-cdr/b5i2iso 0.2: BlindWrite image to ISO image file converter
+app-cdr/b5i2iso 0.2 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/backlite 1.0.3-r1: backlite is a pure QT4 version of k9copy
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r1: Converts bin/cue CD-images to iso+wav/cdr
@@ -13854,7 +13854,7 @@ media-sound/opus-tools 0.1.9 0.1.10: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r2 1.6-r3: Command line MP3 player
 media-sound/pamix 1.4.1 1.5 9999: A PulseAudio NCurses mixer
 media-sound/paprefs 0.9.10: PulseAudio Preferences, configuration dialog for PulseAudio
-media-sound/pasystray 0.2.1 0.6.0: PulseAudio system tray
+media-sound/pasystray 0.2.1 0.6.0-r1: PulseAudio system tray
 media-sound/patchage 0.5.0-r1 1.0.0: Modular patch bay for JACK-based audio and MIDI systems
 media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
