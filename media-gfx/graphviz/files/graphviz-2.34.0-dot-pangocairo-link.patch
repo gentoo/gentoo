@@ -1,5 +1,5 @@
---- cmd/dot/Makefile.am	2013-01-14 04:11:21.000000000 +0100
-+++ cmd/dot/Makefile.am	2013-02-01 17:19:30.893949329 +0100
+--- a/cmd/dot/Makefile.am
++++ b/cmd/dot/Makefile.am
 @@ -115,12 +115,8 @@
  dot_static_LDADD += $(top_builddir)/plugin/webp/.libs/libgvplugin_webp_C.a $(WEBP_LIBS)
  dot_builtins_LDADD += $(top_builddir)/plugin/webp/libgvplugin_webp.la $(WEBP_LIBS)
