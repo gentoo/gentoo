@@ -10016,7 +10016,7 @@ dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development en
 dev-tex/aastex 5.2: LaTeX package used to mark up manuscripts for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2: LaTeX macros for writing documents following the ABNT norms
 dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
-dev-tex/biber 2.5: A BibTeX replacement for users of biblatex
+dev-tex/biber 2.5 2.7: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.4-r1 3.7: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 6.6: APA style for BibLaTeX
 dev-tex/bibtex2html 1.98: A bibtex to HTML converter
@@ -15841,7 +15841,7 @@ perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand an
 perl-core/Thread-Semaphore 2.120.0-r1: Thread-safe semaphores
 perl-core/Time-HiRes 1.972.600-r1: Perl Time::HiRes. High resolution alarm, sleep, gettimeofday, interval timers
 perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
-perl-core/Unicode-Collate 1.120.0 1.140.0: Unicode Collate Algorithm
+perl-core/Unicode-Collate 1.120.0 1.140.0 1.190.0: Unicode Collate Algorithm
 perl-core/Unicode-Normalize 1.180.0 1.250.0: Unicode Normalization Forms
 perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
@@ -18163,7 +18163,7 @@ virtual/perl-Tie-RefHash 1.390.0-r7: Virtual for Tie-RefHash
 virtual/perl-Time-HiRes 1.972.600-r4 1.973.300-r1: Virtual for Time-HiRes
 virtual/perl-Time-Local 1.230.0-r5: Virtual for Time-Local
 virtual/perl-Time-Piece 1.290.0-r1 1.310.0-r1: Virtual for Time-Piece
-virtual/perl-Unicode-Collate 1.120.0-r1 1.140.0-r2: Virtual for Unicode-Collate
+virtual/perl-Unicode-Collate 1.120.0-r1 1.140.0-r2 1.190.0: Virtual for Unicode-Collate
 virtual/perl-Unicode-Normalize 1.180.0-r1 1.250.0-r2: Virtual for Unicode-Normalize
 virtual/perl-XSLoader 0.200.100_rc 0.220.0: Virtual for XSLoader
 virtual/perl-autodie 2.260.0-r1 2.290.0-r1: Virtual for autodie
