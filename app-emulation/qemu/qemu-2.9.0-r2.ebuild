@@ -191,9 +191,9 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
-	"${FILESDIR}"/${PN}-2.9.0-bug616870.patch # bug 616870
-	"${FILESDIR}"/${PN}-2.9.0-bug616872.patch # bug 616872
-	"${FILESDIR}"/${PN}-2.9.0-bug616874.patch # bug 616874
+	"${FILESDIR}"/${PN}-2.9.0-CVE-2017-8309.patch # bug 616870
+	"${FILESDIR}"/${PN}-2.9.0-CVE-2017-8379.patch # bug 616872
+	"${FILESDIR}"/${PN}-2.9.0-CVE-2017-8380.patch # bug 616874
 	"${FILESDIR}"/${PN}-2.9.0-CVE-2017-8112.patch # bug 616636
 	"${FILESDIR}"/${PN}-2.9.0-CVE-2017-7493.patch # bug 618808
 )
