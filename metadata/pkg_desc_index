@@ -11542,7 +11542,7 @@ games-strategy/xbattleai 1.2.2-r1 1.2.2-r2: A multi-player game of strategy and 
 games-util/antimicro 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.1_beta_pre20160907: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives
-games-util/catcodec 1.0.3: Decodes and encodes sample catalogues for OpenTTD
+games-util/catcodec 1.0.3 1.0.5: Decodes and encodes sample catalogues for OpenTTD
 games-util/datutil 2.46: Converter for dat files for Rom Managers
 games-util/deutex 4.4.0: A wad composer for Doom, Heretic, Hexen and Strife
 games-util/dfarc 3.12: Frontend and .dmod installer for GNU FreeDink
@@ -11565,7 +11565,7 @@ games-util/nml 0.4.2-r1 0.4.4 0.4.4-r1: Compiler of NML files into grf/nfo files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
 games-util/pyfa 1.21.3 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.1.0: Translate gamepad/joystick input into key strokes/mouse actions in X
-games-util/qstat 2.11: Server statics collector supporting many FPS games
+games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/ucon64 2.0.0: The backup tool and wonderful emulator's Swiss Army knife program
 games-util/uglygs 0_rc11: quickly searches the network for game servers
 games-util/umodpack 0.5_beta16-r2: portable and useful [un]packer for Unreal Tournament's Umod files
