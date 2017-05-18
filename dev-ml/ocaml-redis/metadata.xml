@@ -5,9 +5,6 @@
 		<email>ml@gentoo.org</email>
 		<name>Gentoo ML Project</name>
 	</maintainer>
-	<use>
-		<flag name="lwt">Enable lwt bindings for asynchronous processing.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">0xffea/ocaml-redis</remote-id>
 	</upstream>
