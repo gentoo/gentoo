@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Easy to use HTML::TokeParser interface"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-perl/HTML-Parser-3.25"

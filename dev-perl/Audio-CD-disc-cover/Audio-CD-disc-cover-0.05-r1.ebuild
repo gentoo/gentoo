@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # This appears it should really be entitled Audio-CD
 # There are * QA Notice: errors on building however the HOMEPAGE gives no source repo in which to file
@@ -16,7 +16,7 @@ SRC_URI="http://www.vanhemert.co.uk/files/${MY_P}.tar.gz"
 IUSE=""
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ppc sparc x86"
 
 DEPEND=">=dev-perl/URI-1.10
 	>=dev-perl/HTML-Parser-3.15
