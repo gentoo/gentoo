@@ -450,7 +450,7 @@ app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.1 3.12.1-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.7.4 1.8.0-r1 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.0: Console app for copying burning audio cds
-app-cdr/ccd2iso 0.3: Converts CloneCD images (popular under Windows) to ISOs
+app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r1 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
 app-cdr/cddetect 2.1: A tool for detecting the type of a CD/DVD without mounting it
