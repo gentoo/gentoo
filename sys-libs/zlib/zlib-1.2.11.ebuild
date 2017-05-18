@@ -29,6 +29,13 @@ src_prepare() {
 		cd contrib/minizip || die
 		eautoreconf
 	fi
+
+	case ${CHOST} in
+	*-mingw*|mingw*)
+		# uses preconfigured Makefile rather than configure script
+		multilib_copy_sources
+		;;
+	esac
 }
 
 echoit() { echo "$@"; "$@"; }
