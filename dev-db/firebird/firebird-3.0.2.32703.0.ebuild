@@ -17,8 +17,7 @@ LICENSE="IDPL Interbase-1.0"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="debug doc examples +superserver xinetd"
-REQUIRED_USE="?? ( superserver xinetd )"
+IUSE="doc examples xinetd"
 
 CDEPEND="
 	dev-libs/icu:=
@@ -32,8 +31,6 @@ RDEPEND="${CDEPEND}
 	xinetd? ( virtual/inetd )
 	!sys-cluster/ganglia
 "
-
-RESTRICT="userpriv"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -87,13 +84,16 @@ src_configure() {
 	filter-flags -fprefetch-loop-arrays
 	filter-mfpmath sse
 
+	# otherwise this doesnt build with gcc-6?
+	# http://tracker.firebirdsql.org/browse/CORE-5099
+	append-cflags -fno-sized-deallocation -fno-delete-null-pointer-checks
+	append-cxxflags -fno-sized-deallocation -fno-delete-null-pointer-checks -Wno-narrowing
+	# -std=c++11
+
 	econf \
 		--prefix=/usr/$(get_libdir)/firebird \
-		$(use_enable superserver) \
-		$(use_enable debug) \
 		--with-editline \
 		--with-system-editline \
-		--with-system-icu \
 		--with-fbbin=/usr/bin \
 		--with-fbsbin=/usr/sbin \
 		--with-fbconf=/etc/${PN} \
@@ -121,7 +121,7 @@ src_compile() {
 }
 
 src_install() {
-	cd "gen/${PN}" || die
+	cd "gen/Release/${PN}" || die
 
 	if use doc; then
 		dodoc "${S}"/doc/*.pdf
