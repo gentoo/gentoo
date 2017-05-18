@@ -641,8 +641,7 @@ qt5_base_configure() {
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
 		-no-xkb
-		$([[ ${QT5_MINOR_VERSION} -lt 8 || ${QT5_MINOR_VERSION} -eq 8
-			&& ${QT5_PATCH_VERSION} -lt 1 ]] && echo -no-xrender)
+		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-xrender)
 
 		# disable obsolete/unused X11-related flags
 		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync)
