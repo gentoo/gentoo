@@ -28,8 +28,8 @@ S="${WORKDIR}/${P/_/-}"
 
 multilib_src_configure() {
 	local myeconfargs=(
-		$(use_enable custom-modes)
 		$(use_enable ambisonics)
+		$(use_enable custom-modes)
 		$(use_enable doc)
 	)
 	for i in ${INTRINSIC_FLAGS} ; do
