@@ -88,7 +88,7 @@ src_compile() {
 		emake \
 			-C source/darkplaces \
 			DP_LINK_ODE=$(usex ode shared no) \
-			DP_FS_BASEDIR="/usr/${PN}" \
+			DP_FS_BASEDIR="/usr/share/${PN}" \
 			${i}
 	done
 }
@@ -109,7 +109,7 @@ src_install() {
 	dodoc Docs/*.txt
 	use doc && dohtml -r Docs
 
-	insinto "/usr/${PN}"
+	insinto "/usr/share/${PN}"
 	doins -r key_0.d0pk server data
 }
 
