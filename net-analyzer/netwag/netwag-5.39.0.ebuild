@@ -26,7 +26,6 @@ DEPEND="
 		kde-apps/konsole
 		x11-terms/eterm
 		x11-terms/gnome-terminal
-		x11-terms/rxvt-unicode
 	)
 "
 RDEPEND="${DEPEND}"
