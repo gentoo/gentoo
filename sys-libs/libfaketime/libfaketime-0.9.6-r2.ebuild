@@ -34,6 +34,10 @@ multilib_src_compile() {
 	popd > /dev/null || die
 }
 
+multilib_src_test() {
+	multilib_is_native_abi && emake test
+}
+
 multilib_src_install() {
 	multilib_is_native_abi && dobin src/faketime
 	exeinto /usr/$(get_libdir)
