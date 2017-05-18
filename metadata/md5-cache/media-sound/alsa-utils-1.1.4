@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=media-libs/alsa-lib-1.1.4 libsamplerate? ( media-libs/libsamplerate ) ncurses? ( >=sys-libs/ncurses-5.7-r7:0= ) bat? ( sci-libs/fftw:= ) virtual/pkgconfig doc? ( app-text/xmlto ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
+EAPI=6
+HOMEPAGE=http://www.alsa-project.org/
+IUSE=bat doc +libsamplerate +ncurses nls selinux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/alsa-lib-1.1.4 libsamplerate? ( media-libs/libsamplerate ) ncurses? ( >=sys-libs/ncurses-5.7-r7:0= ) bat? ( sci-libs/fftw:= ) selinux? ( sec-policy/selinux-alsa )
+SLOT=0.9
+SRC_URI=mirror://alsaproject/utils/alsa-utils-1.1.4.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=0bd73c24026bb134bbf7ae58fa1e6070
