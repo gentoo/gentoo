@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="KDE library for mathematical features"
 KEYWORDS="~amd64 ~x86"
-IUSE="eigen"
+IUSE="eigen nls"
 
 DEPEND="
 	$(add_qt_dep qtdeclarative)
@@ -19,7 +19,9 @@ DEPEND="
 	$(add_qt_dep qtxml)
 	eigen? ( dev-cpp/eigen:3 )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	nls? ( $(add_qt_dep linguist-tools) )
+"
 
 src_prepare() {
 	kde5_src_prepare
