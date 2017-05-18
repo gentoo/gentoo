@@ -4667,7 +4667,7 @@ dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p10: REINER SCT cyberJack pinpad/e-com U
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
 dev-libs/cyrus-imap-dev 2.4.16 2.4.17 2.4.17-r1: Developer support for the Cyrus IMAP Server
 dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10 2.1.26-r11: The Cyrus SASL (Simple Authentication and Security Layer)
-dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
+dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r2: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.102 0.104 0.106 0.108: D-Bus bindings for glib
@@ -11154,7 +11154,7 @@ games-fps/warsow 1.5.1-r1: Multiplayer FPS based on the QFusion engine (evolved 
 games-fps/warsow-community-map-pack 01: Community Map Pack for the Warsow multiplayer FPS
 games-fps/wolfgl 0.93-r1: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6: A cartoon style multiplayer first-person shooter
-games-fps/xonotic 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
+games-fps/xonotic 0.8.1 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
 games-kids/crayon-physics 55 55-r1: 2D physics puzzle/sandbox game with drawing
 games-kids/cubetest 0.9.4 0.9.4-r1: A program to train your spatial insight
@@ -14954,7 +14954,7 @@ net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1 1.5.3: Lightweight C Jabber library
-net-libs/mbedtls 2.2.1 2.3.0-r1 2.4.1 2.4.2: Cryptographic library for embedded systems
+net-libs/mbedtls 2.2.1 2.3.0-r1 2.4.1 2.4.2 2.5.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 1.8 1.9.20151008 2.0.20161216: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
