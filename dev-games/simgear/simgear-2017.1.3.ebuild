@@ -14,9 +14,11 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+dns debug subversion test"
 
+#NOTE: current head works with osg-3.5.5
 COMMON_DEPEND="
 	dev-libs/expat
 	>=dev-games/openscenegraph-3.2.0
+	<dev-games/openscenegraph-3.5.2
 	media-libs/openal
 	net-misc/curl
 	sys-libs/zlib
