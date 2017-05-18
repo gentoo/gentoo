@@ -1,0 +1,100 @@
+
+# HG changeset patch
+# User Jed Davis <jld@mozilla.com>
+# Date 1485552350 25200
+# Node ID 7781de08a1c6d84a92e9d54a78ac9f54f8c4c240
+# Parent  952f0a7824ad897dd0f76318b567341e7d8ad46d
+Bug 1286865 - Step 0: Turn off crash-on-seccomp-fail by default on non-nightly. r=gcp
+
+MozReview-Commit-ID: 1It6HNizbAc
+
+diff --git a/security/sandbox/linux/Sandbox.cpp b/security/sandbox/linux/Sandbox.cpp
+--- a/security/sandbox/linux/Sandbox.cpp
++++ b/security/sandbox/linux/Sandbox.cpp
+@@ -68,16 +68,18 @@ MOZ_IMPORT_API void
+ } // extern "C"
+ #endif // MOZ_ASAN
+ 
+ // Signal number used to enable seccomp on each thread.
+ int gSeccompTsyncBroadcastSignum = 0;
+ 
+ namespace mozilla {
+ 
++static bool gSandboxCrashOnError = false;
++
+ // This is initialized by SandboxSetCrashFunc().
+ SandboxCrashFunc gSandboxCrashFunc;
+ 
+ #ifdef MOZ_GMP_SANDBOX
+ // For media plugins, we can start the sandbox before we dlopen the
+ // module, so we have to pre-open the file and simulate the sandboxed
+ // open().
+ static SandboxOpenedFile gMediaPluginFile;
+@@ -143,25 +145,28 @@ SigSysHandler(int nr, siginfo_t *info, v
+   args[2] = SECCOMP_PARM3(&savedCtx);
+   args[3] = SECCOMP_PARM4(&savedCtx);
+   args[4] = SECCOMP_PARM5(&savedCtx);
+   args[5] = SECCOMP_PARM6(&savedCtx);
+ 
+   // TODO, someday when this is enabled on MIPS: include the two extra
+   // args in the error message.
+   SANDBOX_LOG_ERROR("seccomp sandbox violation: pid %d, syscall %d,"
+-                    " args %d %d %d %d %d %d.  Killing process.",
++                    " args %d %d %d %d %d %d.%s",
+                     pid, syscall_nr,
+-                    args[0], args[1], args[2], args[3], args[4], args[5]);
++                    args[0], args[1], args[2], args[3], args[4], args[5],
++                    gSandboxCrashOnError ? "  Killing process." : "");
+ 
+-  // Bug 1017393: record syscall number somewhere useful.
+-  info->si_addr = reinterpret_cast<void*>(syscall_nr);
++  if (gSandboxCrashOnError) {
++    // Bug 1017393: record syscall number somewhere useful.
++    info->si_addr = reinterpret_cast<void*>(syscall_nr);
+ 
+-  gSandboxCrashFunc(nr, info, &savedCtx);
+-  _exit(127);
++    gSandboxCrashFunc(nr, info, &savedCtx);
++    _exit(127);
++  }
+ }
+ 
+ /**
+  * This function installs the SIGSYS handler.  This is slightly
+  * complicated because we want to use Chromium's handler to dispatch
+  * to specific trap handlers defined in the policy, but we also need
+  * the full original signal context to give to Breakpad for crash
+  * dumps.  So we install Chromium's handler first, then retrieve its
+@@ -510,16 +515,31 @@ void
+ SandboxEarlyInit(GeckoProcessType aType)
+ {
+   const SandboxInfo info = SandboxInfo::Get();
+   if (info.Test(SandboxInfo::kUnexpectedThreads)) {
+     return;
+   }
+   MOZ_RELEASE_ASSERT(IsSingleThreaded());
+ 
++  // Set gSandboxCrashOnError if appropriate.  This doesn't need to
++  // happen this early, but for now it's here so that I don't need to
++  // add NSPR dependencies for PR_GetEnv.
++  //
++  // This also means that users with "unexpected threads" setups won't
++  // crash even on nightly.
++#ifdef NIGHTLY_BUILD
++  gSandboxCrashOnError = true;
++#endif
++  if (const char* envVar = getenv("MOZ_SANDBOX_CRASH_ON_ERROR")) {
++    if (envVar[0]) {
++      gSandboxCrashOnError = envVar[0] != '0';
++    }
++  }
++
+   // Which kinds of resource isolation (of those that need to be set
+   // up at this point) can be used by this process?
+   bool canChroot = false;
+   bool canUnshareNet = false;
+   bool canUnshareIPC = false;
+ 
+   switch (aType) {
+   case GeckoProcessType_Default:
+
