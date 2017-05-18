@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tobias Klausmann <klausman@gentoo.org> (18 May 2017)
+# Stack protector code is not ported to alpha (and may not ever be)
+>=sys-devel/gcc-6 ssp
+
 # Tobias Klausmann <klausman@gentoo.org> (08 May 2017)
 # USE=test requires valgrind, which will never be ported to alpha
 app-misc/jq test
