@@ -72,8 +72,7 @@ QA_PREBUILT="opt/* usr/lib*"
 
 S=${WORKDIR}/
 
-pkg_pretend() {
-
+nvidia_drivers_versions_check() {
 	if use amd64 && has_multilib_profile && \
 		[ "${DEFAULT_ABI}" != "amd64" ]; then
 		eerror "This ebuild doesn't currently support changing your default ABI"
@@ -108,7 +107,13 @@ pkg_pretend() {
 	use kernel_linux && check_extra_config
 }
 
+pkg_pretend() {
+	nvidia_drivers_versions_check
+}
+
 pkg_setup() {
+	nvidia_drivers_versions_check
+
 	# try to turn off distcc and ccache for people that have a problem with it
 	export DISTCC_DISABLE=1
 	export CCACHE_DISABLE=1
