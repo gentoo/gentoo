@@ -2038,7 +2038,7 @@ app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking u
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.10.5 0.11.0b-r1: Stylish way of giving presentations with Python
 app-office/kexi 3.0.0 3.0.1: Visual database applications creator
-app-office/kmymoney 4.7.2 4.8.0-r1: Personal finance manager by KDE
+app-office/kmymoney 4.7.2 4.8.0-r1 4.8.0-r2: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
@@ -12820,7 +12820,7 @@ media-gfx/sam2p 0.49.1 0.49.2 0.49.3: Utility to convert raster images to EPS, P
 media-gfx/sane-backends 1.0.24-r6 1.0.25-r1: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pages
-media-gfx/scour 0.35: Take an SVG file and produce a cleaner and more concise file
+media-gfx/scour 0.35 0.35-r1: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.24.6 0.25.0.1: Open source photo manager for GNOME
