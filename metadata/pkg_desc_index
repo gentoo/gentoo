@@ -7217,6 +7217,7 @@ dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
+dev-python/ImageHash 3.4: Image Hashing library
 dev-python/Kivy 1.9.0-r1 1.9.1 1.9.1-r1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/MechanicalSoup 0.6.0: A python library for automating interaction with web sites
 dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
@@ -7898,7 +7899,7 @@ dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 1.0.1 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/matplotlib 1.4.3 1.5.3-r1 9999: Pure python plotting library with matlab like syntax
-dev-python/matplotlib2tikz 0.6.3: Convert matplotlib figures into TikZ/PGFPlots
+dev-python/matplotlib2tikz 0.6.7: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/maybe 0.3.0 0.4.0: See what a program does before deciding whether you really want it to happen
 dev-python/mccabe 0.2.1 0.6.1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
