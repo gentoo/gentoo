@@ -350,6 +350,7 @@ uclibc - Enable uclibc specific patches and build or link uclibc
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
 udisks - Enable storage management support (automounting, volume monitoring, etc)
 unicode - Add support for Unicode
+unwind - Add support for call stack unwinding and function name resolution
 upnp - Enable UPnP port mapping support
 upnp-av - Enable UPnP audio/video streaming support
 upower - Enable power management support
