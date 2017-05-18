@@ -5,9 +5,9 @@ EAPI=5
 
 inherit findlib
 
-DESCRIPTION="Redis bindings for OCaml"
-HOMEPAGE="http://0xffea.github.io/ocaml-redis/"
-SRC_URI="https://github.com/0xffea/ocaml-redis/archive/${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Synchronous redis bindings for OCaml"
+HOMEPAGE="http://0xffea.github.io/ocaml-redis/ https://github.com/0xffea/ocaml-redis/"
+SRC_URI="https://github.com/0xffea/ocaml-redis/archive/${PV}.tar.gz -> ocaml-redis-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -16,17 +16,17 @@ IUSE="test"
 
 RDEPEND="
 	dev-lang/ocaml:=
-	dev-ml/ocaml-re:=
-	dev-ml/uuidm:=
-	dev-ml/lwt:=
+	dev-ml/ocaml-redis:=
 "
 DEPEND="${RDEPEND}
 	dev-ml/jbuilder
 	dev-ml/opam
 	test? ( dev-ml/ounit )"
 
+S=${WORKDIR}/ocaml-redis-${PV}
+
 src_compile() {
-	jbuilder build -p redis || die
+	jbuilder build -p redis-sync || die
 }
 
 src_test() {
@@ -38,5 +38,5 @@ src_install() {
 		--prefix="${ED}/usr" \
 		--libdir="${D}/$(ocamlc -where)" \
 		--docdir="${ED}/usr/share/doc/${PF}" \
-		redis.install || die
+		redis-sync.install || die
 }

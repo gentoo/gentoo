@@ -297,8 +297,13 @@ src_install() {
 	fi
 
 	if use crypt; then
-		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' /usr/share/enigmail/install.rdf)
-		dosym /usr/share/enigmail ${MOZILLA_FIVE_HOME}/extensions/${emid}
+		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EROOT}"usr/share/enigmail/install.rdf)
+		if [[ -n ${emid} ]]; then
+			dosym "${EPREFIX}"/usr/share/enigmail ${MOZILLA_FIVE_HOME}/extensions/${emid}
+		else
+			eerror "${EPREFIX}/usr/share/enigmail/install.rdf: No such file or directory"
+			die "<EM:ID> tag for x11-plugins/enigmail could not be found!"
+		fi
 	fi
 
 	# Required in order to use plugins and even run thunderbird on hardened.
@@ -312,6 +317,25 @@ src_install() {
 
 pkg_preinst() {
 	gnome2_icon_savelist
+
+	# Because PM's dont seem to properly merge a symlink replacing a directory
+	if use crypt ; then
+		local emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EROOT}"usr/share/enigmail/install.rdf)
+		local emidpath="${EROOT%/}"${MOZILLA_FIVE_HOME}/extensions/${emid}
+		if [[ -z ${emid} ]]; then
+			eerror "${EROOT%/}/usr/share/enigmail/install.rdf: No such file or directory"
+			die "Could not find enigmail on disk during pkg_preinst()"
+		fi
+		if [[ ! -h "${emidpath}" ]] && [[ -d "${emidpath}" ]]; then
+			rm -Rf "${emidpath}" || (
+			eerror "Could not remove enigmail directory from previous installation,"
+			eerror "You must remove this by hand and rename the symbolic link yourself:"
+			eerror
+			eerror "\t cd ${EPREFIX}${MOZILLA_FIVE_HOME}/extensions"
+			eerror "\t rm -Rf ${emid}"
+			eerror "\t mv ${emid}.backup* ${emid}" )
+		fi
+	fi
 }
 
 pkg_postinst() {
