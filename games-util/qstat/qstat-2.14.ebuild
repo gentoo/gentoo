@@ -33,5 +33,6 @@ src_configure() {
 src_install() {
 	default
 	dosym qstat /usr/bin/quakestat
-	dohtml template/*.html qstatdoc.html
+	docinto html
+	dodoc template/*.html qstatdoc.html
 }
