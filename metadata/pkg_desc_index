@@ -17089,7 +17089,7 @@ sys-apps/fwts 15.12.00 17.02.00: Firmware Test Suite
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
-sys-apps/gentoo-functions 0.10 0.11 9999: base functions required by all Gentoo systems
+sys-apps/gentoo-functions 0.10 0.11 0.12 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 6 7 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.22.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
