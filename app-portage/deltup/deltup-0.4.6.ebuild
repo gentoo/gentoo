@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -15,11 +15,14 @@ S="${WORKDIR}/${MY_PN}-${PV}/src"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
-IUSE=""
+IUSE="libressl"
 
-DEPEND="dev-libs/openssl:0
+DEPEND="
 	sys-libs/zlib
-	app-arch/bzip2"
+	app-arch/bzip2
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
+"
 RDEPEND="${DEPEND}
 	|| ( dev-util/bdelta =dev-util/xdelta-1* )"
 
