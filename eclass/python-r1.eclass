@@ -597,16 +597,34 @@ python_foreach_impl() {
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local best_impl patterns=( "${@-*}" )
-	_python_try_impl() {
-		if _python_impl_matches "${EPYTHON}" "${patterns[@]}"; then
-			best_impl=${EPYTHON}
-		fi
-	}
-	python_foreach_impl _python_try_impl
-	unset -f _python_try_impl
+	_python_validate_useflags
+	local pycompat=( "${PYTHON_COMPAT[@]}" )
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		pycompat=( ${PYTHON_COMPAT_OVERRIDE} )
+	fi
 
-	if [[ ! ${best_impl} ]]; then
+	# (reverse iteration -- newest impl first)
+	local found
+	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
+		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}
+
+		# check PYTHON_COMPAT[_OVERRIDE]
+		has "${impl}" "${pycompat[@]}" || continue
+
+		# match USE flags only if override is not in effect
+		if [[ ! ${PYTHON_COMPAT_OVERRIDE} ]]; then
+			use "python_targets_${impl}" || continue
+		fi
+
+		# check patterns
+		_python_impl_matches "${impl}" "${@-*}" || continue
+
+		python_export "${impl}" EPYTHON PYTHON
+		found=1
+		break
+	done
+
+	if [[ ! ${found} ]]; then
 		eerror "${FUNCNAME}: none of the enabled implementation matched the patterns."
 		eerror "  patterns: ${@-'(*)'}"
 		eerror "Likely a REQUIRED_USE constraint (possibly USE-conditional) is missing."
@@ -615,7 +633,6 @@ python_setup() {
 		die "${FUNCNAME}: no enabled implementation satisfy requirements"
 	fi
 
-	python_export "${best_impl}" EPYTHON PYTHON
 	python_wrapper_setup
 }
 
