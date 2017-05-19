@@ -468,6 +468,86 @@ python_gen_impl_dep() {
 	echo "${matches[@]}"
 }
 
+# @FUNCTION: python_gen_any_dep
+# @USAGE: <dependency-block> [<impl-pattern>...]
+# @DESCRIPTION:
+# Generate an any-of dependency that enforces a version match between
+# the Python interpreter and Python packages. <dependency-block> needs
+# to list one or more dependencies with verbatim '${PYTHON_USEDEP}'
+# references (quoted!) that will get expanded inside the function.
+# Optionally, patterns may be specified to restrict the dependency
+# to a subset of Python implementations supported by the ebuild.
+#
+# The patterns can be either fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
+# appropriately all enabled Python 2/3 implementations (alike
+# python_is_python3). Remember to escape or quote the fnmatch patterns
+# to prevent accidental shell filename expansion.
+#
+# This should be used along with an appropriate python_check_deps()
+# that checks which of the any-of blocks were matched, and python_setup
+# call that enables use of the matched implementation.
+#
+# Example use:
+# @CODE
+# DEPEND="$(python_gen_any_dep '
+#	dev-python/foo[${PYTHON_USEDEP}]
+#	|| ( dev-python/bar[${PYTHON_USEDEP}]
+#		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
+#
+# python_check_deps() {
+#	has_version "dev-python/foo[${PYTHON_USEDEP}]" \
+#		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
+#			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+# }
+#
+# src_compile() {
+#	python_foreach_impl usual_code
+#
+#	# some common post-build task that requires Python 2
+#	python_setup -2
+#	emake frobnicate
+# }
+# @CODE
+#
+# Example value:
+# @CODE
+# || (
+#	(
+#		dev-lang/python:2.7
+#		dev-python/foo[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
+#		|| ( dev-python/bar[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
+#			dev-python/baz[python_targets_python2_7(-)?,python_single_target_python2_7(+)?] )
+#	)
+#	(
+#		dev-lang/python:3.3
+#		dev-python/foo[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
+#		|| ( dev-python/bar[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
+#			dev-python/baz[python_targets_python3_3(-)?,python_single_target_python3_3(+)?] )
+#	)
+# )
+# @CODE
+python_gen_any_dep() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local depstr=${1}
+	[[ ${depstr} ]] || die "No dependency string provided"
+	shift
+
+	local i PYTHON_PKG_DEP out=
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		if _python_impl_matches "${i}" "${@-*}"; then
+			local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
+			python_export "${i}" PYTHON_PKG_DEP
+
+			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+			# note: need to strip '=' slot operator for || deps
+			out="( ${PYTHON_PKG_DEP%=} ${i_depstr} ) ${out}"
+		fi
+	done
+	echo "|| ( ${out})"
+}
+
 # @ECLASS-VARIABLE: BUILD_DIR
 # @DESCRIPTION:
 # The current build directory. In global scope, it is supposed to
@@ -599,6 +679,24 @@ python_foreach_impl() {
 # @CODE
 # DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # REQUIRED_USE="doc? ( $(python_gen_useflags 'python2*') )"
+#
+# src_compile() {
+#   #...
+#   if use doc; then
+#     python_setup 'python2*'
+#     make doc
+#   fi
+# }
+# @CODE
+#
+# Any-of mode example:
+# @CODE
+# DEPEND="doc? (
+#	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
+#
+# python_check_deps() {
+#	has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
+# }
 #
 # src_compile() {
 #   #...
