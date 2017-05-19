@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for basic LaTeX binaries
 EAPI=5
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 RDEPEND=dev-texlive/texlive-latexrecommended dev-texlive/texlive-fontutils
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=106c728243732104db4a2e54d18e50b7
+_md5_=c61ec38577a74ee70f5809fc84c92c2c
