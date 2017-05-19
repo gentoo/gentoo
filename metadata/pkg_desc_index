@@ -17789,6 +17789,7 @@ sys-fs/squashfs-tools 3.2_p2 3.4 4.3-r2 9999: Tool for creating compressed files
 sys-fs/squashfuse 0.1_p20130530 0.1.100: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
+sys-fs/tmsu 0.6.1: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
 sys-fs/udev 216 225-r1 228 229-r2 230-r1 232-r2 233 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
