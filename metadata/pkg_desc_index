@@ -12290,7 +12290,7 @@ mail-client/roundcube 1.2.4: A browser-based multilingual IMAP client with an ap
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
 mail-client/thunderbird 45.8.0 52.1.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 45.8.0 52.1.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 45.8.0 52.1.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
@@ -18376,8 +18376,8 @@ www-client/dooble 1.55 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.22.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 45.8.0 52.1.0-r1 53.0: Firefox Web Browser
-www-client/firefox-bin 45.9.0 52.1.0-r2 53.0-r2: Firefox Web Browser
+www-client/firefox 45.8.0 52.1.0-r1 53.0-r1: Firefox Web Browser
+www-client/firefox-bin 45.9.0 52.1.0-r2 53.0-r2 53.0.2: Firefox Web Browser
 www-client/google-chrome 58.0.3029.110: The web browser from Google
 www-client/google-chrome-beta 59.0.3071.61: The web browser from Google
 www-client/google-chrome-unstable 60.0.3100.0: The web browser from Google
