@@ -34,9 +34,10 @@ RDEPEND="${CDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-# this is work in progress and likely does not build yet
 PATCHES=(
-	"${FILESDIR}/${P}-unbundle.patch"
+	"${FILESDIR}/${P}"-unbundle.patch
+	"${FILESDIR}/${P}"-gcc6.patch
+	"${FILESDIR}/${P}"-cloop-compiler.patch
 )
 
 pkg_setup() {
@@ -84,11 +85,10 @@ src_configure() {
 	filter-flags -fprefetch-loop-arrays
 	filter-mfpmath sse
 
-	# otherwise this doesnt build with gcc-6?
+	# otherwise this doesnt build with gcc-6
 	# http://tracker.firebirdsql.org/browse/CORE-5099
 	append-cflags -fno-sized-deallocation -fno-delete-null-pointer-checks
-	append-cxxflags -fno-sized-deallocation -fno-delete-null-pointer-checks -Wno-narrowing
-	# -std=c++11
+	append-cxxflags -fno-sized-deallocation -fno-delete-null-pointer-checks
 
 	econf \
 		--prefix=/usr/$(get_libdir)/firebird \
@@ -130,8 +130,6 @@ src_install() {
 
 	doheader include/*
 
-	rm lib/libfbstatic.a || die "failed to remove libfbstatic.a"
-
 	insinto /usr/$(get_libdir)
 	dolib.so lib/*.so*
 
@@ -146,29 +144,12 @@ src_install() {
 	einfo "Renaming isql -> fbsql"
 	mv bin/isql bin/fbsql || die "failed to rename isql -> fbsql"
 
-	local bins="fbsql fbsvcmgr fbtracemgr gbak gdef gfix gpre gsec gstat nbackup qli"
+	local bins="fbguard fbsql fbsvcmgr fbtracemgr firebird gbak gfix gpre gpre_boot gpre_current gsec gsplit gstat nbackup qli"
 	for bin in ${bins}; do
 		dobin bin/${bin}
 	done
 
 	dosbin bin/fb_lock_print
-	# SuperServer
-	if use superserver ; then
-		dosbin bin/{fbguard,fbserver}
-	# ClassicServer
-	elif use xinetd ; then
-		dosbin bin/fb_inet_server
-	# SuperClassic
-	else
-		dosbin bin/{fbguard,fb_smp_server}
-
-		#Temp should not be necessary, need to patch/fix
-		dosym ../../libib_util.so /usr/$(get_libdir)/${PN}/lib/libib_util.so
-	fi
-
-	exeinto /usr/bin/${PN}
-	exeopts -m0755
-	doexe bin/{changeRunUser,restoreRootRunUser,changeDBAPassword}.sh
 
 	insinto /usr/$(get_libdir)/${PN}/help
 	doins help/help.fdb
