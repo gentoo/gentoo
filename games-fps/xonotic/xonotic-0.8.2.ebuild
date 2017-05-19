@@ -31,7 +31,7 @@ UIRDEPEND="
 	media-libs/freetype:2
 	alsa? ( media-libs/alsa-lib )
 	ode? ( dev-games/ode[double-precision] )
-	sdl? ( media-libs/libsdl[X,sound,joystick,opengl,video,alsa?] )"
+	sdl? ( media-libs/libsdl2[X,sound,joystick,opengl,video,alsa?] )"
 UIDEPEND="
 	x11-proto/xextproto
 	x11-proto/xf86dgaproto
