@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 
 DOC_PV=${PV}
 
-inherit eutils fortran-2 distutils-r1 flag-o-matic git-r3 multilib multiprocessing toolchain-funcs
+inherit fortran-2 distutils-r1 flag-o-matic git-r3 multiprocessing toolchain-funcs
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="https://www.scipy.org/"
@@ -27,7 +27,7 @@ CDEPEND="
 	sparse? ( sci-libs/umfpack:0= )"
 DEPEND="${CDEPEND}
 	dev-lang/swig
-	>=dev-python/cython-0.22[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.23.4[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	test? (	dev-python/nose[${PYTHON_USEDEP}] )
 	"
@@ -38,11 +38,6 @@ RDEPEND="${CDEPEND}
 DOCS=( HACKING.rst.txt THANKS.txt )
 
 DISTUTILS_IN_SOURCE_BUILD=1
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.12.0-blitz.patch
-	"${FILESDIR}"/${PN}-0.12.0-restore-sys-argv.patch
-)
 
 pc_incdir() {
 	$(tc-getPKG_CONFIG) --cflags-only-I $@ | \
@@ -78,7 +73,7 @@ python_prepare_all() {
 	append-fflags -fPIC
 
 	local libdir="${EPREFIX}"/usr/$(get_libdir)
-	cat >> site.cfg <<-EOF
+	cat >> site.cfg <<-EOF || die
 		[blas]
 		include_dirs = $(pc_incdir cblas)
 		library_dirs = $(pc_libdir cblas blas):${libdir}
@@ -88,21 +83,28 @@ python_prepare_all() {
 		lapack_libs = $(pc_libs lapack)
 	EOF
 
+	# Drop hashes to force rebuild of cython based .c code
+	rm cythonize.dat || die
+
 	distutils-r1_python_prepare_all
 }
 
 python_compile() {
 	${EPYTHON} tools/cythonize.py || die
-	distutils-r1_python_compile -j $(makeopts_jobs) ${SCIPY_FCONFIG}
+	distutils-r1_python_compile \
+		$(usex python_targets_python3_5 "" "-j $(makeopts_jobs)") \
+		${SCIPY_FCONFIG}
 }
 
 python_test() {
 	# fails with bdist_egg. should it be fixed in distutils-r1 eclass?
 	distutils_install_for_testing ${SCIPY_FCONFIG}
 	cd "${TEST_DIR}" || die "no ${TEST_DIR} available"
+	einfo "Run test I"
 	"${PYTHON}" -c \
 		'import numpy as np; print("relaxed strides checking:", np.ones((10,1),order="C").flags.f_contiguous)' \
 		|| die
+	einfo "Run test II"
 	# https://github.com/scipy/scipy/issues/5426
 	"${EPYTHON}" -c \
 		"import scipy, sys; r = scipy.test('fast', verbose=2, raise_warnings='release'); sys.exit(0 if r.wasSuccessful() else 1)" \
