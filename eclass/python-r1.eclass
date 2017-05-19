@@ -614,6 +614,7 @@ python_parallel_foreach_impl() {
 # Example:
 # @CODE
 # DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
+# REQUIRED_USE="doc? ( $(python_gen_useflags 'python2*') )"
 #
 # src_compile() {
 #   #...
