@@ -6362,6 +6362,7 @@ net-misc/networkmanager:wifi - Enable support for wifi and 802.1x security using
 net-misc/nextcloud-client:dolphin - Install the kde-apps/dolphin extension
 net-misc/nextcloud-client:nautilus - Install the gnome-base/nautilus extension
 net-misc/nextcloud-client:sftp - Enable sftp transfer support via net-libs/libssh
+net-misc/nextcloud-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
 net-misc/ntp:parse-clocks - Add support for PARSE clocks
 net-misc/ntp:samba - Provide support for Samba's signing daemon (needed for Active Directory domain controllers)
@@ -6392,6 +6393,7 @@ net-misc/openvswitch:pyside - Use dev-python/pyside instead of dev-python/PyQt4 
 net-misc/owncloud-client:dolphin - Install the kde-apps/dolphin extension
 net-misc/owncloud-client:nautilus - Install the gnome-base/nautilus extension
 net-misc/owncloud-client:sftp - Enable sftp transfer support via net-libs/libssh
+net-misc/owncloud-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/pavuk:hammer - Turn on chunky/hammer mode (DoS) in pavuk: when specified, pavuk will include features to stress test web sites using an ultrahigh performancereplay mechanism
 net-misc/plowshare:view-captcha - View captcha with aview
 net-misc/ps3mediaserver:multiuser - Allow renderer customization per-user.
