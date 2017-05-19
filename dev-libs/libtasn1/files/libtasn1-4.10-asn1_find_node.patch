@@ -1,0 +1,43 @@
+From 5520704d075802df25ce4ffccc010ba1641bd484 Mon Sep 17 00:00:00 2001
+From: Nikos Mavrogiannopoulos <nmav@redhat.com>
+Date: Thu, 18 May 2017 18:03:34 +0200
+Subject: [PATCH] asn1_find_node: added safety check on asn1_find_node()
+
+This prevents a stack overflow in asn1_find_node() which
+is triggered by too long variable names in the definitions
+files. That means that applications have to deliberately
+pass a too long 'name' constant to asn1_write_value()
+and friends.  Reported by Jakub Jirasek.
+
+Signed-off-by: Nikos Mavrogiannopoulos <nmav@redhat.com>
+---
+ lib/parser_aux.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lib/parser_aux.c b/lib/parser_aux.c
+index b4a7370..976ab38 100644
+--- a/lib/parser_aux.c
++++ b/lib/parser_aux.c
+@@ -120,6 +120,9 @@ asn1_find_node (asn1_node pointer, const char *name)
+       if (n_end)
+ 	{
+ 	  nsize = n_end - n_start;
++	  if (nsize >= sizeof(n))
++		return NULL;
++
+ 	  memcpy (n, n_start, nsize);
+ 	  n[nsize] = 0;
+ 	  n_start = n_end;
+@@ -158,6 +161,9 @@ asn1_find_node (asn1_node pointer, const char *name)
+       if (n_end)
+ 	{
+ 	  nsize = n_end - n_start;
++	  if (nsize >= sizeof(n))
++		return NULL;
++
+ 	  memcpy (n, n_start, nsize);
+ 	  n[nsize] = 0;
+ 	  n_start = n_end;
+--
+libgit2 0.25.0
+
