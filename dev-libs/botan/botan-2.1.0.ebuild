@@ -33,15 +33,6 @@ DEPEND="${RDEPEND}
 	dev-lang/python:*
 	doc? ( dev-python/sphinx )"
 
-pkg_pretend() {
-	# Botan 1.11 requires -std=c++11
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		[[ $(gcc-major-version) -lt 4 ]] || \
-		( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]] ) \
-		&& die "Sorry, but gcc 4.7 or higher is required."
-	fi
-}
-
 src_prepare() {
 	default
 	use doc || sed \
