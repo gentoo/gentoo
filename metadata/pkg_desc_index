@@ -223,7 +223,7 @@ app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed from specified directories
-app-admin/tripwire 2.4.3.4 2.4.3.5: Open Source File Integrity Checker and IDS
+app-admin/tripwire 2.4.3.5: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/vault 0.5.3 0.6.2 0.6.5: A tool for managing secrets
@@ -4867,7 +4867,7 @@ dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful 
 dev-libs/libmacaroons 0.2.0-r1 0.3.0: Hyperdex macaroons support library
 dev-libs/libmail 0.3-r3: A mail handling library
 dev-libs/libmateweather 1.12.2 1.14.3 1.16.1: MATE library to access weather information from online services
-dev-libs/libmaxminddb 1.2.0: C library for the MaxMind DB file format
+dev-libs/libmaxminddb 1.2.0 1.2.1: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5 0.7-r6: Modular Calendar Access Library
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
@@ -13273,7 +13273,7 @@ media-plugins/amb-plugins 0.8.1 0.8.1-r1: AMB-plugins ladspa plugin package. Fil
 media-plugins/ams-lv2 1.1.0: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
 media-plugins/audacious-plugins 3.4.1 3.6.2-r1 3.7.1 3.7.1-r1: Audacious Player - Your music, your way, no exceptions
 media-plugins/calf 0.0.60-r1 9999: A set of open source instruments and effects for digital audio workstations
-media-plugins/caps-plugins 0.4.5-r1 0.4.5-r2 0.9.10 0.9.15 0.9.15-r1: The CAPS Audio Plugin Suite - LADSPA plugin suite
+media-plugins/caps-plugins 0.4.5-r1 0.4.5-r2 0.9.15 0.9.15-r1 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/emotion_generic_players 1.17.0 9999: Provides external applications as generic loaders for Evas
 media-plugins/evas_generic_loaders 1.17.0 9999: Provides external applications as generic loaders for Evas
 media-plugins/fil-plugins 0.3.0 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
@@ -13975,7 +13975,7 @@ media-sound/tunapie 2.1.17-r1 2.1.19: Directory browser for Radio and TV streams
 media-sound/tuxguitar 1.3.2: TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT
 media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
-media-sound/umurmur 0.2.16a 0.2.16a-r1 0.2.17_rc1: Minimalistic Murmur (Mumble server)
+media-sound/umurmur 0.2.16a 0.2.16a-r1 0.2.17: Minimalistic Murmur (Mumble server)
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/vdramgw 0.0.2: vdr to amarok gateway - allows vdr-amarok to access amarok
