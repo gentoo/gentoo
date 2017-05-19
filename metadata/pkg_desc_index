@@ -8422,7 +8422,7 @@ dev-python/python-gnupg 0.3.8-r1: Python wrapper for GNU Privacy Guard
 dev-python/python-gnutls 3.1.1: High level object oriented wrapper around libgnutls
 dev-python/python-gtkmvc 1.99.1: model-view-controller (MVC) implementation for pygtk
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
-dev-python/python-heatclient 0.8.0 1.5.0 1.5.1 1.8.0 1.8.1: OpenStack Orchestration API Client Library
+dev-python/python-heatclient 1.5.1 1.8.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 0.11.0: Python bindings for iptables
 dev-python/python-ironicclient 0.9.0 1.7.1 1.11.1: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
@@ -17475,7 +17475,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 0.94.9 9.2.1-r2 10.2.3-r2 10.2.5-r1 10.2.5-r3 10.2.5-r4 10.2.5-r5 10.2.6 10.2.6-r1 10.2.7 10.2.7-r1 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 9.1.4 10.0.1 2016.2.9999 2017.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 9.1.4 10.0.1 10.0.2 2016.2.9999 2017.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
@@ -17499,7 +17499,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for par
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 7.0.2 7.0.3 8.0.0 8.0.1 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 7.0.3 8.0.1 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
@@ -18301,7 +18301,7 @@ www-apps/grafana-bin 4.0.1 4.1.1 4.1.2 4.2.0 4.2.0-r2: Gorgeous metric viz, dash
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/guacamole 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: Guacamole is a html5 vnc client as servlet
 www-apps/hiawatha-monitor 1.3-r1: Monitoring application for www-servers/hiawatha
-www-apps/icingaweb2 2.4.0 2.4.1 2.4.1-r1 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.4.1-r1 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.1.0 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
