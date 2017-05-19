@@ -3,7 +3,7 @@
 <pkgmetadata>
     <maintainer type="person">
         <email>otakuto.gentoo@gmail.com</email>
-        <name>Tact Yoshida</name>
+        <name>Takuto Yoshida</name>
     </maintainer>
     <maintainer type="project">
         <email>proxy-maint@gentoo.org</email>
@@ -11,12 +11,10 @@
     </maintainer>
   <use>
     <flag name="drm">build with DRM support</flag>
-    <flag name="nls">Add Native Language Support</flag>
     <flag name="server">Build TigerVNC server</flag>
     <flag name="xorgmodule">Build the Xorg module</flag>
   </use>
   <upstream>
     <remote-id type="github">TigerVNC/tigervnc</remote-id>
-    <remote-id type="sourceforge">tigervnc</remote-id>
   </upstream>
 </pkgmetadata>
