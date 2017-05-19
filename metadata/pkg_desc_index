@@ -3102,7 +3102,7 @@ dev-embedded/jtag 0.5.1-r1: Tool for working with JTAG-aware devices and boards 
 dev-embedded/kobs-ng 3.0.35.4.1.0: utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 0.4.16-r1 1.1.12-r1: Library that allows a direct access to a USB device
-dev-embedded/libftdi 0.19 0.20-r1 1.2 1.2-r1 9999: Userspace access to FTDI USB interface chips
+dev-embedded/libftdi 0.19 0.20-r1 1.2-r1 9999: Userspace access to FTDI USB interface chips
 dev-embedded/libjaylink 0.1.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
