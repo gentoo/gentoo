@@ -11,7 +11,7 @@ inherit distutils-r1
 
 # tests fail in chroot
 # https://github.com/elastic/elasticsearch/issues/12018
-#RESTRICT="test"
+RESTRICT="test"
 
 MY_PN=${PN/-py/}
 
