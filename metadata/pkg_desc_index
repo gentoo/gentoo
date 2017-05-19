@@ -1302,7 +1302,7 @@ app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
-app-emulation/docker-registry 2.5.1 2.6.0 2.6.1: Docker Registry 2.0
+app-emulation/docker-registry 2.5.1 2.6.0 2.6.1 2.6.1-r1: Docker Registry 2.0
 app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc2_p20170310: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
