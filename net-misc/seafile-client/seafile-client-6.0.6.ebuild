@@ -32,8 +32,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-select-qt5.patch"
-	eapply "${FILESDIR}/${P}-only-use-qttest-where-needed.patch"
+	eapply "${FILESDIR}/${PN}-select-qt5.patch"
 	cmake-utils_src_prepare
 	if use shibboleth ; then
 		if ! has_version "dev-qt/qtwebengine:5[widgets]" ; then
