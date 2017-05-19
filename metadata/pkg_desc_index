@@ -1700,7 +1700,7 @@ app-leechcraft/lc-xtazy 9999: Fetches info about current tune and provides it to
 app-leechcraft/lcpackgen 1.3 1.3.1: Package creator for app-leechcraft/lc-lackman package manager
 app-leechcraft/leechcraft-meta 9999: Metapackage containing all ready-to-use LeechCraft plugins
 app-leechcraft/liblaretz 0.1.0 9999: Shared library to be used by the Laretz sync server and its clients
-app-misc/abduco 0.4 0.5: lightweight session manager with {de,at}tach support
+app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
@@ -4774,7 +4774,7 @@ dev-libs/libbase58 0.1.0 0.1.1: C implementation of Bitcoin's base58 encoding
 dev-libs/libbegemot 1.11: begemot utility function library
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.8.2 0.8.3: An library to provide useful functions commonly found on BSD systems
-dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6: A BSON utility library
+dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.3.8 1.4.6: Open-source library for reading, mastering and writing optical discs
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
@@ -4990,7 +4990,7 @@ dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mini-xml 2.10: Small XML parsing library to read XML and XML-like data files
 dev-libs/mm 1.4.2-r1: Shared Memory Abstraction Library
-dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5: A high-performance MongoDB driver for C
+dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2: A high-performance MongoDB driver for C
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mozldap 6.0.6-r2 6.0.7 6.0.7-r1: Mozilla LDAP C SDK
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
@@ -13868,7 +13868,7 @@ media-sound/pithos 1.0.1 1.1.1 9999: Pandora.com client for the GNOME desktop
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
 media-sound/pms 0.42_p20170508 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
-media-sound/pnmixer 0.6_pre20111213 0.7.1_rc1 0.7.1_rc2 9999: Volume mixer for the system tray
+media-sound/pnmixer 0.6_pre20111213 0.7.1 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
