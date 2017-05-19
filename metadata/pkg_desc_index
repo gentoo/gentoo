@@ -16165,9 +16165,9 @@ sci-chemistry/mustang 3.2.1 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.9-r1 2.10: A powerful and highly parallelized molecular dynamics code
 sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
-sci-chemistry/openbabel 2.3.2-r1: Interconverts file formats used in molecular modeling
-sci-chemistry/openbabel-perl 2.3.2: Perl bindings for OpenBabel
-sci-chemistry/openbabel-python 2.3.2: Python bindings for OpenBabel (including Pybel)
+sci-chemistry/openbabel 2.3.2-r1 2.4.1: Interconverts file formats used in molecular modeling
+sci-chemistry/openbabel-perl 2.3.2 2.4.1: Perl bindings for OpenBabel
+sci-chemistry/openbabel-python 2.3.2 2.4.1: Python bindings for OpenBabel (including Pybel)
 sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
 sci-chemistry/p3d 0.4.3-r1 9999: Python module for structural bioinformatics
 sci-chemistry/parassign 20130522: Assign protein nuclei solely on the basis of pseudocontact shifts (PCS)
