@@ -242,9 +242,24 @@ if [[ ! ${_PYTHON_R1} ]]; then
 # @FUNCTION: _python_validate_useflags
 # @INTERNAL
 # @DESCRIPTION:
-# Enforce the proper setting of PYTHON_TARGETS.
+# Enforce the proper setting of PYTHON_TARGETS, if PYTHON_COMPAT_OVERRIDE
+# is not in effect. If it is, just warn that the flags will be ignored.
 _python_validate_useflags() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		if [[ ! ${_PYTHON_COMPAT_OVERRIDE_WARNED} ]]; then
+			ewarn "WARNING: PYTHON_COMPAT_OVERRIDE in effect. The following Python"
+			ewarn "implementations will be enabled:"
+			ewarn
+			ewarn "	${PYTHON_COMPAT_OVERRIDE}"
+			ewarn
+			ewarn "Dependencies won't be satisfied, and PYTHON_TARGETS will be ignored."
+			_PYTHON_COMPAT_OVERRIDE_WARNED=1
+		fi
+		# we do not use flags with PCO
+		return
+	fi
 
 	local i
 
@@ -490,22 +505,12 @@ python_copy_sources() {
 # @DESCRIPTION:
 # Set up the enabled implementation list.
 _python_obtain_impls() {
-	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
-		if [[ ! ${_PYTHON_COMPAT_OVERRIDE_WARNED} ]]; then
-			ewarn "WARNING: PYTHON_COMPAT_OVERRIDE in effect. The following Python"
-			ewarn "implementations will be enabled:"
-			ewarn
-			ewarn "	${PYTHON_COMPAT_OVERRIDE}"
-			ewarn
-			ewarn "Dependencies won't be satisfied, and PYTHON_TARGETS will be ignored."
-			_PYTHON_COMPAT_OVERRIDE_WARNED=1
-		fi
+	_python_validate_useflags
 
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
 		MULTIBUILD_VARIANTS=( ${PYTHON_COMPAT_OVERRIDE} )
 		return
 	fi
-
-	_python_validate_useflags
 
 	MULTIBUILD_VARIANTS=()
 
