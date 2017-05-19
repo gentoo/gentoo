@@ -21,7 +21,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 NETWORKS="+irc"
-PLUGINS="+alias +charset +exec +fifo +logger +relay +scripts +spell +trigger +xfer"
+PLUGINS="+alias +buflist +charset +exec +fifo +logger +relay +scripts +spell +trigger +xfer"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
@@ -124,6 +124,7 @@ src_configure() {
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_TRIGGER=$(usex trigger)
 		-DENABLE_XFER=$(usex xfer)
+		-DENABLE_BUFLIST=$(usex buflist)
 	)
 
 	if use python; then
