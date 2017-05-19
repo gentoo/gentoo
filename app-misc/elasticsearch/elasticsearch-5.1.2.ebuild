@@ -8,7 +8,7 @@ inherit eutils systemd user
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
 SRC_URI="https://artifacts.elastic.co/downloads/${PN}/${P}.tar.gz"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD-2 LGPL-3 MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
 
