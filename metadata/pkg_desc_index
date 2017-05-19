@@ -9505,7 +9505,7 @@ dev-ruby/html2haml 2.1.0 2.2.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
 dev-ruby/http 0.6.3-r1 0.9.8 0.9.8-r1 1.0.2 2.2.1 2.2.2: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-cookie 1.0.2-r1 1.0.3: A ruby library to handle HTTP cookies
-dev-ruby/http-form_data 1.0.1-r1 1.0.2: Utility-belt to build form data request bodies
+dev-ruby/http-form_data 1.0.1-r1 1.0.2 1.0.3: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.14.0-r1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
@@ -9519,7 +9519,7 @@ dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
 dev-ruby/instantiator 0.0.6 0.0.7: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.3 0.0.4: Dynamic inspection of the hierarchy of method definitions on a Ruby object
 dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
-dev-ruby/itextomml 1.5.4 1.5.5: Native Ruby bindings to itex2MML, which converts itex equations to MathML
+dev-ruby/itextomml 1.5.4 1.5.5 1.5.6: Native Ruby bindings to itex2MML, which converts itex equations to MathML
 dev-ruby/jeweler 2.0.1-r2: Rake tasks to manage gems, versioning and generate new projects
 dev-ruby/jira-ruby 1.2.0: API for JIRA
 dev-ruby/jmespath 1.2.4 1.3.0 1.3.1: Implements JMESPath for Ruby
@@ -9634,7 +9634,7 @@ dev-ruby/openvas-omp 0.0.4: Communicate with OpenVAS manager through OMP
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.4.8 2.4.9 2.4.11 2.4.13: A fast XML parser and Object marshaller
+dev-ruby/ox 2.4.11 2.4.13 2.5.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1 2.0.0: Terminal painter
 dev-ruby/parallel 1.10.0 1.11.1 1.11.2: Run any code in parallel Processes or Threads
@@ -9829,7 +9829,7 @@ dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.1.0 4.2.0 4.3.0 4.4.0: Sanitize is a whitelist-based HTML sanitizer
-dev-ruby/sass 3.2.19-r2 3.4.15 3.4.23: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/sass 3.2.19-r2 3.4.15 3.4.23 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.7.0 0.7.0-r1 0.8.0 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
