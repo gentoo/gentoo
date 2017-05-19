@@ -231,7 +231,7 @@ _python_set_globals() {
 		PYTHON_DEPS=${deps}
 		PYTHON_REQUIRED_USE=${requse}
 		PYTHON_USEDEP=${usedep}
-		readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_USEDEP
+		readonly PYTHON_DEPS PYTHON_REQUIRED_USE
 	fi
 }
 _python_set_globals
@@ -563,9 +563,27 @@ python_foreach_impl() {
 # @FUNCTION: python_setup
 # @USAGE: [<impl-pattern>...]
 # @DESCRIPTION:
-# Find the best (most preferred) Python implementation that is enabled
-# and matches at least one of the patterns passed (or '*' if no patterns
-# passed). Set the Python build environment up for that implementation.
+# Find the best (most preferred) Python implementation that is suitable
+# for running common Python code. Set the Python build environment up
+# for that implementation. This function has two modes of operation:
+# pure and any-of dep.
+#
+# The pure mode is used if python_check_deps() function is not declared.
+# In this case, an implementation is considered suitable if it is
+# supported (in PYTHON_COMPAT), enabled (via USE flags) and matches
+# at least one of the patterns passed (or '*' if no patterns passed).
+#
+# Implementation restrictions in the pure mode need to be accompanied
+# by appropriate REQUIRED_USE constraints. Otherwise, the eclass may
+# fail at build time due to unsatisfied dependencies.
+#
+# The any-of dep mode is used if python_check_deps() is declared.
+# In this mode, an implementation is considered suitable if it is
+# supported, matches at least one of the patterns and python_check_deps()
+# has successful return code. USE flags are not considered.
+#
+# The python_check_deps() function in the any-of mode needs to be
+# accompanied by appropriate any-of dependencies.
 #
 # The patterns can be either fnmatch-style patterns (matched via bash
 # == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
@@ -577,11 +595,7 @@ python_foreach_impl() {
 # of python_foreach_impl calls (e.g. for shared processes like doc
 # building). python_foreach_impl sets up the build environment itself.
 #
-# If the specific commands support only a subset of Python
-# implementations, patterns need to be passed to restrict the allowed
-# implementations.
-#
-# Example:
+# Pure mode example:
 # @CODE
 # DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # REQUIRED_USE="doc? ( $(python_gen_useflags 'python2*') )"
@@ -603,6 +617,9 @@ python_setup() {
 		pycompat=( ${PYTHON_COMPAT_OVERRIDE} )
 	fi
 
+	local has_check_deps
+	declare -f python_check_deps >/dev/null && has_check_deps=1
+
 	# (reverse iteration -- newest impl first)
 	local found
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
@@ -612,7 +629,8 @@ python_setup() {
 		has "${impl}" "${pycompat[@]}" || continue
 
 		# match USE flags only if override is not in effect
-		if [[ ! ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		# and python_check_deps() is not defined
+		if [[ ! ${PYTHON_COMPAT_OVERRIDE} && ! ${has_check_deps} ]]; then
 			use "python_targets_${impl}" || continue
 		fi
 
@@ -620,6 +638,16 @@ python_setup() {
 		_python_impl_matches "${impl}" "${@-*}" || continue
 
 		python_export "${impl}" EPYTHON PYTHON
+
+		# if python_check_deps() is declared, switch into any-of mode
+		if [[ ${has_check_deps} ]]; then
+			# first check if the interpreter is installed
+			python_is_installed "${impl}" || continue
+			# then run python_check_deps
+			local PYTHON_USEDEP="python_targets_${impl}(-),python_single_target_${impl}(+)"
+			python_check_deps || continue
+		fi
+
 		found=1
 		break
 	done
