@@ -169,7 +169,8 @@ _python_set_impls() {
 # Check whether the specified <impl> matches at least one
 # of the patterns following it. Return 0 if it does, 1 otherwise.
 #
-# <impl> should be in PYTHON_COMPAT form. The patterns can be either:
+# <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns can be
+# either:
 # a) fnmatch-style patterns, e.g. 'python2*', 'pypy'...
 # b) '-2' to indicate all Python 2 variants (= !python_is_python3)
 # c) '-3' to indicate all Python 3 variants (= python_is_python3)
@@ -186,7 +187,8 @@ _python_impl_matches() {
 		elif [[ ${pattern} == -3 ]]; then
 			python_is_python3 "${impl}"
 			return
-		elif [[ ${impl} == ${pattern} ]]; then
+		# unify value style to allow lax matching
+		elif [[ ${impl/./_} == ${pattern/./_} ]]; then
 			return 0
 		fi
 	done
