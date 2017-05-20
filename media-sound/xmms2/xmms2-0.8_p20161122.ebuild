@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # waf fails on python3_5: AttributeError: Can't pickle local object 'Context.__init__.<locals>.node_class'
 PYTHON_COMPAT=( python{2_7,3_4} )
@@ -9,18 +9,20 @@ USE_RUBY="ruby20 ruby21 ruby22"
 
 inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
 
-MY_P="${P}DrO_o"
+# generated as 'python2 ./utils/gen-tarball.py' from clean git tree
+MY_P="${P%_p*}DrO_o-949-gca15e830"
 
 DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
 HOMEPAGE="http://xmms2.org/wiki/Main_Page"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+#SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 
-IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac gvfs ices
-jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa oss
+IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac fluidsynth gvfs ices
+jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa opus oss
 perl phonehome pulseaudio python ruby samba +server sid sndfile speex
 test valgrind +vorbis vocoder wavpack xml zeroconf"
 
@@ -37,6 +39,7 @@ RDEPEND="server? (
 		curl? ( >=net-misc/curl-7.15.1 )
 		ffmpeg? ( virtual/ffmpeg )
 		flac? ( media-libs/flac )
+		fluidsynth? ( media-sound/fluidsynth )
 		gvfs? ( gnome-base/gnome-vfs )
 		ices? ( media-libs/libogg
 			media-libs/libshout
@@ -50,6 +53,8 @@ RDEPEND="server? (
 		mp3? ( >=media-sound/mpg123-1.5.1 )
 		musepack? ( media-sound/musepack-tools )
 		ofa? ( media-libs/libofa )
+		opus? ( media-libs/opus
+			media-libs/opusfile )
 		pulseaudio? ( media-sound/pulseaudio )
 		samba? ( >=net-fs/samba-4.2 )
 		sid? ( media-sound/sidplay
@@ -117,30 +122,18 @@ xmms2_flag() {
 src_prepare() {
 	./waf # inflate waf
 	cd .waf* || die
-	epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch #578778
+	# needs port
+	#epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch #578778
 	cd "${S}"
-	epatch "${FILESDIR}/${P}"-ffmpeg-0.11.patch #443256
-	epatch "${FILESDIR}/${P}"-libav-9-p2.patch #443256
-	epatch "${FILESDIR}/${P}"-libav-9.patch #443256
-	epatch "${FILESDIR}/${P}"-cython-0.19.1.patch
-	epatch "${FILESDIR}/${P}"-memset.patch
-	epatch "${FILESDIR}/${P}"-ffmpeg2.patch #536232
-	epatch "${FILESDIR}/${P}"-cpython.patch
-	epatch "${FILESDIR}/${P}"-modpug.patch #536046
-	epatch "${FILESDIR}/${P}"-audio4-p1.patch #540890
-	epatch "${FILESDIR}/${P}"-audio4-p2.patch
-	epatch "${FILESDIR}/${P}"-audio4-p3.patch
-	epatch "${FILESDIR}/${P}"-audio4-p4.patch
-	epatch "${FILESDIR}/${P}"-audio4-p5.patch
-	epatch "${FILESDIR}/${P}"-audio4-p6.patch
-	epatch "${FILESDIR}/${P}"-audio4-p7.patch
-	epatch "${FILESDIR}/${P}"-rtvg.patch #424377
-	epatch "${FILESDIR}/${P}"-samba-4.patch
 
-	if has_version dev-libs/libcdio-paranoia; then
-		sed -i -e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' src/plugins/cdda/cdda.c || die
-	fi
-	epatch_user
+	eapply "${FILESDIR}/${PN}"-0.8-ffmpeg2.patch #536232
+
+	eapply "${FILESDIR}/${PN}"-0.8-rtvg.patch #424377
+
+	# required to build tarball from git tree
+	eapply "${FILESDIR}/${P}"-tarball.patch
+
+	eapply_user
 }
 
 src_configure() {
@@ -197,6 +190,7 @@ src_configure() {
 					"aac		faad"
 					"ENABLED	file"
 					"		flac"
+					"		fluidsynth"
 					"ffmpeg		flv"
 					"ffmpeg		tta"
 					"DISABLED	gme" # not in tree
@@ -211,6 +205,7 @@ src_configure() {
 					"		mac"
 					"		mms"
 					"		mad"
+					"ENABLED	midsquash"
 					"		mp4" # bug #387961 (aac, mp3, ape can sit there)
 					"mp3		mpg123"
 					"		modplug"
@@ -220,6 +215,7 @@ src_configure() {
 					"ENABLED	null"
 					"ENABLED	nulstripper"
 					"		ofa"
+					"		opus"
 					"		oss"
 					"ENABLED	pls"
 					"pulseaudio	pulse"
