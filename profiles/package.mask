@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (20 May 2017)
+# Old versions of CUDA and their reverse dependencies. They do not
+# support GCC 4.9+, and are really old.
+<dev-python/pycuda-2016
+<dev-util/nvidia-cuda-sdk-7
+<dev-util/nvidia-cuda-toolkit-7
+net-wireless/cpyrit-cuda
+
 # Michał Górny <mgorny@gentoo.org> (18 May 2017)
 # Last release in 2007, upstream disappeared. Requires a lot
 # of patching. Unmaintained since 2012. Bad ebuild quality, #514850.
