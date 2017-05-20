@@ -4672,11 +4672,13 @@ media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
 media-sound/wildmidi:player - Install the wildmidi player
 media-sound/xmms2:airplay - Support for airplay format
 media-sound/xmms2:asf - Support for Monkey's Audio (APE) format with help of bundled libasf
+media-sound/xmms2:fluidsynth - Enable fluidsynth support (MIDI)
 media-sound/xmms2:gvfs - Transport for glibs virtual filesystem
 media-sound/xmms2:ices - Icecast source output plugin
 media-sound/xmms2:mac - Support for Monkey's Audio (APE) format with help of media-sound/mac
 media-sound/xmms2:mlib-update - Enable building of xmms2-mlib-updater client
 media-sound/xmms2:ofa - Support for Open Fingerprint Architecture (OFA)
+media-sound/xmms2:opus - Enable Opus audio codec support
 media-sound/xmms2:phonehome - This client sends anonymous usage-statistics to the xmms2
 media-sound/xmms2:server - Build xmms2 player daemon (otherwise only clients are built)
 media-sound/xmms2:sid - Support for C64 SID
@@ -8270,7 +8272,6 @@ www-misc/monitorix:apcupsd - Make use of a daemon that controls APC UPSes with s
 www-misc/monitorix:httpd - Enables the CGI webserver with any package that satisfies virtual/httpd-cgi.
 www-misc/monitorix:postfix - Analyze postfix logs with net-mail/pflogsumm.
 www-misc/shellinabox:pam - Enable PAM support.
-www-misc/shellinabox:ssl - Enable SSL support.
 www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine.
 www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
 www-misc/zoneminder:curl - Enable using net-misc/curl for streaming from cameras
