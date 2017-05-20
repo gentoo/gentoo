@@ -32,6 +32,13 @@ DEPEND="${RDEPEND}
 "
 # eautoreconf needs >=sys-devel/autoconf-2.65:2.5
 
+src_prepare() {
+	default
+	# Disable SSLv3 requiring fallback test, which fails with net-libs/gnutls[-sslv3], bug 595952
+	# https://bugzilla.gnome.org/show_bug.cgi?id=782853
+	sed -i -e '/\/tls\/connection\/fallback\/SSL/d' "${S}"/tls/tests/connection.c || die
+}
+
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	gnome2_src_configure \
