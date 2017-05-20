@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (20 May 2017)
+# CUDA support in nvtt does not support GCC 4.5+.
+media-gfx/nvidia-texture-tools cuda
+
 # Michał Górny <mgorny@gentoo.org> (15 May 2017)
 # Mask ruby20-only compatible packages
 =media-libs/libcaca-0.99_beta19 ruby
