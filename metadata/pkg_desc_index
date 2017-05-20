@@ -12823,7 +12823,7 @@ media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pa
 media-gfx/scour 0.35 0.35-r1: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.24.6 0.25.0.1: Open source photo manager for GNOME
+media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.22.0.1: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/smile 1.0-r1: Slideshow Maker In Linux Environement
