@@ -6051,7 +6051,7 @@ dev-perl/IO-Tty 1.120.0: IO::Tty and IO::Pty modules for Perl
 dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
 dev-perl/IO-stringy 2.111.0: A Perl module for I/O on in-core objects like strings and arrays
 dev-perl/IP-Anonymous 0.40.0-r1: Perl port of Crypto-PAn to provide anonymous IP addresses
-dev-perl/IPC-Run 0.940.0: system() and background procs w/ piping, redirs, ptys
+dev-perl/IPC-Run 0.940.0 0.960.0: system() and background procs w/ piping, redirs, ptys
 dev-perl/IPC-Run3 0.48.0: Run a subprocess in batch mode (a la system)
 dev-perl/IPC-ShareLite 0.170.0-r1: IPC::ShareLite module for perl
 dev-perl/IPC-Shareable 0.610.0-r1: Share Perl variables between processes
