@@ -61,6 +61,7 @@ src_configure() {
 			-DPYTHON_INCLUDE_PATH="$(python_get_includedir)"
 			-DPYTHON_LIBRARY="$(python_get_library_path)"
 			-DENABLE_TESTS=ON
+			-DCMAKE_INSTALL_PREFIX="${D}"
 		)
 
 		cmake-utils_src_configure
