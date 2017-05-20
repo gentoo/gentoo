@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="http://www.libimobiledevice.org/downloads/${P}.tar.bz2"
 # tools/iproxy.c is GPL-2+, everything else is LGPL-2.1+
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/2" # based on SONAME of libusbmuxd.so
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 IUSE="kernel_linux static-libs"
 
 RDEPEND=">=app-pda/libplist-1.11:=
