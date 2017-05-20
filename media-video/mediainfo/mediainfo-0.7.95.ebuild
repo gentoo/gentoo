@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ WX_GTK_VER="3.0"
 inherit eutils autotools wxwidgets
 
 DESCRIPTION="MediaInfo supplies technical and tag information about media files"
-HOMEPAGE="http://mediaarea.net/mediainfo/"
+HOMEPAGE="http://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfo"
 SRC_URI="http://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="curl mms wxwidgets"
 
 RDEPEND="sys-libs/zlib
