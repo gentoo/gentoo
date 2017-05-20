@@ -17752,7 +17752,7 @@ sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 65 82 82-r1 105-r1: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 sys-fs/libfat 0.3a: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
-sys-fs/loop-aes 3.7j: Linux kernel module to encrypt disk partitions with AES cipher
+sys-fs/loop-aes 3.7j 3.7k: Linux kernel module to encrypt disk partitions with AES cipher
 sys-fs/lsscsi 0.28: SCSI sysfs query tool
 sys-fs/lufis 0.3: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
