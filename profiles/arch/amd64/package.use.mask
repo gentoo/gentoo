@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (20 May 2017)
+# cpyrit-cuda does not support GCC 4.9 or later
+net-wireless/pyrit cuda
+
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # nexpose and openvas work on amd64
 net-analyzer/metasploit nexpose openvas
@@ -153,7 +157,7 @@ app-editors/gvim -luajit -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
 # Works on amd64
-sys-apps/hwloc -cuda -gl
+sys-apps/hwloc -gl
 
 # Michał Górny <mgorny@gentoo.org> (22 Jul 2013)
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).
@@ -162,18 +166,13 @@ dev-python/pypy-bin cpu_flags_x86_sse2
 dev-python/pypy3 cpu_flags_x86_sse2
 dev-python/pypy3-bin cpu_flags_x86_sse2
 
-# Justin Lecher <jlec@gentoo.org> (21 Feb 2013)
-# cuda only works on x86 and amd64
-sci-libs/cholmod -cuda
-sci-libs/flann -cuda
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # chromium, mono work on this arch (masked in base)
 gnome-extra/zeitgeist-datasources -chromium
 
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # cuda works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -cuda -mkl
+sci-chemistry/gromacs -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (3 Nov 2012)
 # Unmask here, as it's masked in base.
@@ -190,10 +189,6 @@ media-libs/freetype -infinality
 # James Le Cuirot <chewi@gentoo.org> (20 May 2015)
 # Masked in base like the above.
 dev-java/icedtea -infinality
-
-# Rick Farina <zerochaos@gentoo.org> (05 July 2012)
-# masked in base, unmask x86/amd64 only
-app-crypt/johntheripper -cuda
 
 # Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
 # sys-fs/zfs is not available everywhere.
@@ -265,10 +260,6 @@ media-libs/mesa -llvm
 # x86 platforms works
 sys-power/pm-utils -video_cards_intel -video_cards_radeon
 
-# Mounir Lamouri <volkmar@gentoo.org> (07 Nov 2009)
-# Masked in base, unmak for amd64/x86. Bug 267264
-media-gfx/k3d -cuda
-
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
@@ -290,10 +281,6 @@ media-libs/imlib2 cpu_flags_x86_mmx
 # unmask USE=bindist on amd64 - also unmasking the other flags that were under a
 # bad comment heading. see bug #246144
 media-video/mplayer -cpudetection
-
-# Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
-# masked in base, unmask for x86/amd64
-sci-misc/boinc -cuda
 
 # Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
 app-text/enchant -zemberek
