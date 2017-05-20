@@ -61,7 +61,7 @@ src_configure() {
 	if use readline ; then
 		local -x LIBEDIT_CFLAGS="-I/usr/include/readline"
 		local -x LIBEDIT_LIBS="-lreadline -lcurses"
-		append-cxxflags -DGENTOO
+		append-cxxflags -DREADLINE
 	fi
 
 	econf \
