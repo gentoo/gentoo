@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt	2017-05-20 11:13:08.095098473 +0200
++++ b/CMakeLists.txt	2017-05-20 11:18:00.993712729 +0200
+@@ -45,8 +45,10 @@
+ 
+ # Subdirectories
+ add_subdirectory(src)
+-add_subdirectory(autotests)
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(autotests)
++    add_subdirectory(tests)
++endif()
+ 
+ # Create a Config.cmake and a ConfigVersion.cmake file and install them
+ set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5MediaWiki")
