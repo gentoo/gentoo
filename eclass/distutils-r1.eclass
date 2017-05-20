@@ -672,20 +672,20 @@ distutils-r1_run_phase() {
 _distutils-r1_run_common_phase() {
 	local DISTUTILS_ORIG_BUILD_DIR=${BUILD_DIR}
 
-	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		local best_impl patterns=( "${DISTUTILS_ALL_SUBPHASE_IMPLS[@]-*}" )
-		_distutils_try_impl() {
-			if _python_impl_matches "${EPYTHON}" "${patterns[@]}"; then
-				best_impl=${MULTIBUILD_VARIANT}
-			fi
-		}
-		python_foreach_impl _distutils_try_impl
-		unset -f _distutils_try_impl
+	if [[ ${DISTUTILS_SINGLE_IMPL} ]]; then
+		# reuse the dedicated code branch
+		_distutils-r1_run_foreach_impl "${@}"
+	else
+		local -x EPYTHON PYTHON
+		local -x PATH=${PATH} PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
+		python_setup "${DISTUTILS_ALL_SUBPHASE_IMPLS[@]}"
 
-		local PYTHON_COMPAT=( "${best_impl}" )
+		local MULTIBUILD_VARIANTS=( "${EPYTHON/./_}" )
+		# store for restoring after distutils-r1_run_phase.
+		local _DISTUTILS_INITIAL_CWD=${PWD}
+		multibuild_foreach_variant \
+			distutils-r1_run_phase "${@}"
 	fi
-
-	_distutils-r1_run_foreach_impl "${@}"
 }
 
 # @FUNCTION: _distutils-r1_run_foreach_impl
