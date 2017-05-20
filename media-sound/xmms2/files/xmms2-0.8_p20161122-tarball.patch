@@ -1,0 +1,78 @@
+diff --git a/utils/gen-changelog.py b/utils/gen-changelog.py
+index b539088a..301c0461 100755
+--- a/utils/gen-changelog.py
++++ b/utils/gen-changelog.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ from subprocess import check_output
+ import os
+ 
+diff --git a/utils/gen-tarball.py b/utils/gen-tarball.py
+index 2ae2a4d1..09ed5074 100755
+--- a/utils/gen-tarball.py
++++ b/utils/gen-tarball.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ from subprocess import check_output, call
+ import tarfile
+ import os
+@@ -40,15 +40,19 @@ def add_files(ball, prefix, template, files):
+ 
+ VERSION = check_output(["git", "describe"]).strip()
+ 
++# TODO: derive paths from submodule configuration
+ TUTORIAL_DIR="doc/tutorial"
++S4_DIR="src/lib/s4"
+ 
+ PREFIX="xmms2-%s" % VERSION
+ PREFIX_TUTORIAL="%s/%s" % (PREFIX, TUTORIAL_DIR)
++PREFIX_S4="%s/%s" % (PREFIX, S4_DIR)
+ 
+ DIST_DIR="dist"
+ DIST_XMMS2="%s/xmms2-%s.tar" % (DIST_DIR, VERSION)
+ DIST_XMMS2_BZ2="%s/xmms2-%s.tar.bz2" % (DIST_DIR, VERSION)
+ DIST_TUTORIAL="%s/xmms2-tutorial-%s.tar" % (DIST_DIR, VERSION)
++DIST_S4="%s/xmms2-tutorial-%s.tar" % (DIST_DIR, VERSION)
+ 
+ if not os.path.exists(DIST_DIR):
+     os.mkdir(DIST_DIR)
+@@ -62,6 +66,9 @@ if os.path.exists(DIST_XMMS2_BZ2):
+ if os.path.exists(DIST_TUTORIAL):
+     os.unlink(DIST_TUTORIAL)
+ 
++if os.path.exists(DIST_S4):
++    os.unlink(DIST_S4)
++
+ # Tar up XMMS2
+ call("git archive --format=tar --prefix=%s/ HEAD > %s" % (PREFIX, DIST_XMMS2), shell=True)
+ 
+@@ -69,9 +76,11 @@ call("git archive --format=tar --prefix=%s/ HEAD > %s" % (PREFIX, DIST_XMMS2), s
+ call("git submodule init", shell=True)
+ call("git submodule update", shell=True)
+ call("git --git-dir=%s/.git archive --format=tar --prefix=%s/ HEAD > %s" % (TUTORIAL_DIR, PREFIX_TUTORIAL, DIST_TUTORIAL), shell=True)
++call("git --git-dir=%s/.git archive --format=tar --prefix=%s/ HEAD > %s" % (S4_DIR, PREFIX_S4, DIST_S4), shell=True)
+ 
+-# Append the tutorials to the XMMS2 archive
++# Append the tutorials and s4 to the XMMS2 archive
+ call("tar -Af %s %s" % (DIST_XMMS2, DIST_TUTORIAL), shell=True)
++call("tar -Af %s %s" % (DIST_XMMS2, DIST_S4), shell=True)
+ 
+ # Append ChangeLog and a summary of all file hashes."
+ add_files(DIST_XMMS2, PREFIX, get_template(DIST_XMMS2, os.path.join(PREFIX, "wscript")), [
+diff --git a/utils/gen-tree-hashes.py b/utils/gen-tree-hashes.py
+index 7f8b9e4f..9d27adb0 100755
+--- a/utils/gen-tree-hashes.py
++++ b/utils/gen-tree-hashes.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ from subprocess import check_output
+ from operator import itemgetter
+ import os
+@@ -21,3 +21,4 @@ def collect_hashes(*paths):
+ 
+ print check_output("git describe", shell=True)
+ print collect_hashes(".", "doc/tutorial")
++print collect_hashes(".", "src/lib/s4")
