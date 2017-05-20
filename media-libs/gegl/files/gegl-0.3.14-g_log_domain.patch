@@ -1,0 +1,47 @@
+From 81fb956b221e4b1f919788d8a5f6a3a5462b86ae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=98yvind=20Kol=C3=A5s?= <pippin@gimp.org>
+Date: Thu, 23 Mar 2017 14:59:28 +0100
+Subject: build: move G_LOG_DOMAIN define to a Makefile.am as suggested in glib
+ docs...
+
+---
+ configure.ac     | 2 --
+ gegl/Makefile.am | 2 ++
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 41ed17e..36e8e2a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1269,8 +1269,6 @@ done
+ # We should support this at some point if possible
+ #LDFLAGS="-Wl,-z,defs"
+ 
+-CFLAGS="$CFLAGS -DG_LOG_DOMAIN=\\\"GEGL\\\""
+-
+ dnl bin/node-editors/Makefile
+ AC_CONFIG_FILES([
+ Makefile
+diff --git a/gegl/Makefile.am b/gegl/Makefile.am
+index 2030ebb..b5f70d8 100644
+--- a/gegl/Makefile.am
++++ b/gegl/Makefile.am
+@@ -12,6 +12,7 @@ endif
+ 
+ SUBDIRS = buffer graph module operation process property-types opencl
+ 
++
+ CLEANFILES =
+ 
+ AM_CPPFLAGS = \
+@@ -31,6 +32,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_builddir)/gegl/property-types \
+ 	-I$(top_srcdir)/gegl/property-types \
+ 	-DLIBDIR=\""$(libdir)"\" \
++        -DG_LOG_DOMAIN=\"GEGL\" \
+ 	-DGEGL_LOCALEDIR=\""$(GEGL_LOCALEDIR)"\"
+ 
+ AM_CFLAGS = $(DEP_CFLAGS) $(BABL_CFLAGS)
+-- 
+cgit v0.12
+
