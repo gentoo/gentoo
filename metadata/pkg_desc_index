@@ -7976,7 +7976,7 @@ dev-python/networkx 1.10-r1 1.11: Python tools to manipulate graphs and complex 
 dev-python/neutron-lib 0.0.2 0.4.0 1.1.0: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1 0.14.2: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r1: A Python framework for creating text-based applications
-dev-python/nltk 3.0.3 3.2.2: Natural Language Toolkit
+dev-python/nltk 3.0.3 3.2.2 3.2.3: Natural Language Toolkit
 dev-python/nnpy 1.2-r1 1.3: cffi-based Python bindings for nanomsg
 dev-python/node-semver 0.1.1: Python version of node-semver, the semantic versioner for npm
 dev-python/nose 1.3.7-r1 1.3.7-r3 9999: Unittest extension with automatic test suite discovery and easy test authoring
@@ -13822,7 +13822,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6 0.20.8: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1 0.4.2: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
