@@ -555,41 +555,6 @@ python_foreach_impl() {
 	multibuild_foreach_variant _python_multibuild_wrapper "${@}"
 }
 
-# @FUNCTION: python_parallel_foreach_impl
-# @USAGE: <command> [<args>...]
-# @DESCRIPTION:
-# Run the given command for each of the enabled Python implementations.
-# If additional parameters are passed, they will be passed through
-# to the command.
-#
-# The function will return 0 status if all invocations succeed.
-# Otherwise, the return code from first failing invocation will
-# be returned.
-#
-# For each command being run, EPYTHON, PYTHON and BUILD_DIR are set
-# locally, and the former two are exported to the command environment.
-#
-# This command used to be the parallel variant of python_foreach_impl.
-# However, the parallel run support has been removed to simplify
-# the eclasses and make them more predictable and therefore it is now
-# only a deprecated alias to python_foreach_impl.
-python_parallel_foreach_impl() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
-
-	if [[ ! ${_PYTHON_PARALLEL_WARNED} ]]; then
-		eqawarn "python_parallel_foreach_impl() is no longer meaningful. All runs"
-		eqawarn "are non-parallel now. Please replace the call with python_foreach_impl."
-
-		_PYTHON_PARALLEL_WARNED=1
-	fi
-
-	local MULTIBUILD_VARIANTS
-	_python_obtain_impls
-	multibuild_foreach_variant _python_multibuild_wrapper "${@}"
-}
-
 # @FUNCTION: python_setup
 # @USAGE: [<impl-pattern>...]
 # @DESCRIPTION:
