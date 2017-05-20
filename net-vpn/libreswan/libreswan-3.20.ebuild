@@ -1,17 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit systemd toolchain-funcs
 
-if [[ ${PV} != 9999 ]]; then
-	SRC_URI="https://download.libreswan.org/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~x86"
-else
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/libreswan/libreswan.git"
-fi
+SRC_URI="https://download.libreswan.org/${P}.tar.gz"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
