@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare test
-DEPEND=>=dev-libs/glib-2.16 dev-libs/libgee:0 dev-libs/json-glib introspection? ( >=dev-libs/gobject-introspection-0.10.8 ) nls? ( virtual/libintl ) || ( dev-lang/vala:0.34 dev-lang/vala:0.32 dev-lang/vala:0.30 dev-lang/vala:0.28 dev-lang/vala:0.26 ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=>=dev-libs/glib-2.16 dev-libs/libgee:0 dev-libs/json-glib introspection? ( >=dev-libs/gobject-introspection-0.10.8 ) nls? ( virtual/libintl ) || ( dev-lang/vala:0.34 dev-lang/vala:0.32 ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=GObject-based library to deal with Japanese kana-to-kanji conversion method
 EAPI=4
 HOMEPAGE=https://github.com/ueno/libskk
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.16 dev-libs/libgee:0 dev-libs/json-glib introspection?
 SLOT=0
 SRC_URI=mirror://github/ueno/libskk/libskk-0.0.12.tar.gz
 _eclass_exported_funcs=src_prepare:vala src_configure:- src_test:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	vala	45cd5c637ea9287eeaf983960768e17c	virtualx	171580f737f5aaf18fcb456548588066
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	vala	f86cd45e9ae738c40c92f990266f39a7	virtualx	171580f737f5aaf18fcb456548588066
 _md5_=9f3f9dc34bde93f3a91ac4f80d1c6823
