@@ -5691,7 +5691,7 @@ dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested 
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.390.0 2.400.0: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
-dev-perl/Data-Dumper-Concise 2.20.0-r1 2.22.0: Less indentation and newlines plus sub deparsing
+dev-perl/Data-Dumper-Concise 2.20.0-r1 2.22.0 2.23.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0: details of the floating point data type
 dev-perl/Data-FormValidator 4.810.0-r1 4.850.0 4.860.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
