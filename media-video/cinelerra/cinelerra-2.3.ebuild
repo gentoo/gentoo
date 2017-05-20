@@ -4,11 +4,9 @@
 EAPI=5
 inherit autotools eutils multilib flag-o-matic
 
-CINCV_VER=2.3
-
 DESCRIPTION="The most advanced non-linear video editor and compositor"
 HOMEPAGE="http://www.cinelerra.org/"
-SRC_URI="https://cinelerra-cv.org/releases/CinelerraCV-${CINCV_VER}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://cinelerra-cv.org/releases/CinelerraCV-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -56,7 +54,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( dev-lang/nasm )"
 
-S="${WORKDIR}/CinelerraCV-${CINCV_VER}"
+S="${WORKDIR}/CinelerraCV-${PV}"
 
 src_prepare() {
 	epatch \
