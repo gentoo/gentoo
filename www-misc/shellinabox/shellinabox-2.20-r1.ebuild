@@ -50,7 +50,7 @@ src_configure() {
 
 	econf \
 		$(use_enable pam) \
-		"${myeconf}"
+		"${myeconf[@]}"
 }
 
 src_install() {
