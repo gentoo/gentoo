@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 DOC_CONTENTS="To get previous working directory inherited in new opened tab, or
 	notifications of long-running commands finishing, you will need
 	to add the following line to your ~/.bashrc:\n
-	. /etc/profile.d/vte-${SLOT}.sh"
+	. /etc/profile.d/vte-2.91.sh"
 
 src_prepare() {
 	if ! use vanilla; then
