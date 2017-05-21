@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
 inherit eutils toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="svn://flashrom.org/flashrom/trunk"
+	ESVN_REPO_URI="https://code.coreboot.org/svn/flashrom/trunk"
 	inherit subversion
 else
 	SRC_URI="http://download.flashrom.org/releases/${P}.tar.bz2"
