@@ -12645,7 +12645,7 @@ media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
 media-gfx/enblend 4.1.3-r1 4.1.3-r2 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 5.2: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 0.6.0: Tethered Camera Control & Capture
-media-gfx/eog 3.20.5 3.23.91: The Eye of GNOME image viewer
+media-gfx/eog 3.20.5 3.24.1: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.16.6: Eye of GNOME plugins
 media-gfx/eom 1.12.2-r3 1.14.2 1.16.0: The MATE image viewer
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
@@ -19372,7 +19372,7 @@ x11-themes/gentoo-xcursors 0.3.1: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1: A pack of ~200 themes for GKrellM
-x11-themes/gnome-backgrounds 3.22.1 3.23.91: A set of backgrounds packaged with the GNOME desktop
+x11-themes/gnome-backgrounds 3.22.1 3.24.0: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme 3.12.0-r1: GNOME default icon theme
