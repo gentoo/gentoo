@@ -10,13 +10,12 @@ CROSS_VER=1.1.4
 
 DIST_AUTHOR=XSAWYERX
 
-# NB: BIN_ are perls that are XS-Compatible
+# Greatest first, don't include yourself
+# Devel point-releases are not ABI-intercompatible, but stable point releases are
+# BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
+PERL_BIN_OLDVERSEN=""
+PERL_OLDVERSEN="5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
-	# Include more versions for blead releases
-	# for circular reasons
-	# Greatest first, don't include yourself
-	PERL_BIN_OLDVERSEN=""
-	PERL_OLDVERSEN="5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 	DIST_VERSION=5.26.0-RC1
 	SHORT_PV="${DIST_VERSION%.*}"
 	# Devel Releases are not ABI-intercompatible
@@ -25,9 +24,6 @@ if [[ "${PV##*.}" == "9999" ]]; then
 	PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 	MY_PV="${DIST_VERSION%_rc*}"
 else
-	PERL_BIN_OLDVERSEN=""
-	# Compat reasons
-	PERL_OLDVERSEN="5.25.12 5.25.11"
 	# First 2 digits only
 	SHORT_PV="${PV%.*}"
 	SUBSLOT="${SHORT_PV}"
