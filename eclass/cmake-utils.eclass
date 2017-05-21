@@ -94,16 +94,6 @@ _CMAKE_UTILS_ECLASS=1
 # Use -DCMAKE_INSTALL_PREFIX=... CMake variable instead.
 : ${PREFIX:=/usr}
 
-# @ECLASS-VARIABLE: WANT_CMAKE
-# @DESCRIPTION:
-# Specify if cmake-utils eclass should depend on cmake optionally or not.
-# This is useful when only part of application is using cmake build system.
-# Valid values are: always [default], optional (where the value is the useflag
-# used for optionality)
-#
-# This is banned in EAPI 6 and later.
-: ${WANT_CMAKE:=always}
-
 # @ECLASS-VARIABLE: CMAKE_EXTRA_CACHE_FILE
 # @DESCRIPTION:
 # Specifies an extra cache file to pass to cmake. This is the analog of EXTRA_ECONF
@@ -121,23 +111,14 @@ inherit toolchain-funcs multilib ninja-utils flag-o-matic eutils \
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
-CMAKEDEPEND=""
-case ${WANT_CMAKE} in
-	always)
-		;;
-	*)
-		[[ ${EAPI} == [2345] ]] || die "WANT_CMAKE is banned in EAPI 6 and later"
-		IUSE+=" ${WANT_CMAKE}"
-		CMAKEDEPEND+="${WANT_CMAKE}? ( "
-		;;
-esac
+[[ ${WANT_CMAKE} ]] && eqawarn "\${WANT_CMAKE} has been removed and is a no-op now"
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
-		CMAKEDEPEND+=" sys-devel/make"
+		DEPEND="sys-devel/make"
 		;;
 	ninja)
-		CMAKEDEPEND+=" dev-util/ninja"
+		DEPEND="dev-util/ninja"
 		;;
 	*)
 		eerror "Unknown value for \${CMAKE_MAKEFILE_GENERATOR}"
@@ -146,13 +127,8 @@ case ${CMAKE_MAKEFILE_GENERATOR} in
 esac
 
 if [[ ${PN} != cmake ]]; then
-	CMAKEDEPEND+=" >=dev-util/cmake-${CMAKE_MIN_VERSION}"
+	DEPEND+=" >=dev-util/cmake-${CMAKE_MIN_VERSION}"
 fi
-
-[[ ${WANT_CMAKE} = always ]] || CMAKEDEPEND+=" )"
-
-DEPEND="${CMAKEDEPEND}"
-unset CMAKEDEPEND
 
 # Internal functions used by cmake-utils_use_*
 _cmake_use_me_now() {
