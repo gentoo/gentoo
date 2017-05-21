@@ -11,7 +11,7 @@ DESCRIPTION="Perl extension for approximate string matching (fuzzy matching)"
 
 LICENSE="|| ( Artistic-2 LGPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker
