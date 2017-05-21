@@ -1,0 +1,63 @@
+--- ipsec-tools-0.8.2/src/setkey/token.l
++++ ipsec-tools-0.8.2/src/setkey/token.l
+@@ -111,7 +111,7 @@
+ 
+ %s S_PL S_AUTHALG S_ENCALG
+ 
+-%option noinput nounput
++%option noinput nounput noyywrap
+ %%
+ 
+ 
+--- ipsec-tools-0.8.2/src/racoon/prsa_tok.l
++++ ipsec-tools-0.8.2/src/racoon/prsa_tok.l
+@@ -45,6 +45,8 @@
+ 
+ %}
+ 
++%option noyywrap
++
+ comment		\#.*
+ digit		[0-9]
+ octet		(([01]?{digit}?{digit})|((2([0-4]{digit}))|(25[0-5])))
+--- ipsec-tools-0.8.2/src/racoon/cftoken.l
++++ ipsec-tools-0.8.2/src/racoon/cftoken.l
+@@ -138,6 +138,7 @@
+ %s S_RMT S_RMTS S_RMTP
+ %s S_SA
+ %s S_GSSENC
++%option noyywrap
+ 
+ %%
+ %{
+--- ipsec-tools-0.8.2/src/libipsec/Makefile.am
++++ ipsec-tools-0.8.2/src/libipsec/Makefile.am
+@@ -26,7 +26,6 @@
+ # version is current:revision:age.
+ # See: http://www.gnu.org/manual/libtool-1.4.2/html_chapter/libtool_6.html#SEC32
+ libipsec_la_LDFLAGS = -version-info 0:1:0
+-libipsec_la_LIBADD = $(LEXLIB)
+ 
+ noinst_HEADERS = ipsec_strerror.h
+ 
+--- ipsec-tools-0.8.2/src/racoon/Makefile.am
++++ ipsec-tools-0.8.2/src/racoon/Makefile.am
+@@ -38,7 +38,7 @@
+ 	cftoken.l cfparse.y prsa_tok.l prsa_par.y 
+ EXTRA_racoon_SOURCES = isakmp_xauth.c isakmp_cfg.c isakmp_unity.c throttle.c \
+ 	isakmp_frag.c nattraversal.c security.c $(MISSING_ALGOS)
+-racoon_LDADD = $(CRYPTOBJS) $(HYBRID_OBJS) $(NATT_OBJS) $(FRAG_OBJS) $(LEXLIB) \
++racoon_LDADD = $(CRYPTOBJS) $(HYBRID_OBJS) $(NATT_OBJS) $(FRAG_OBJS) \
+ 	 $(SECCTX_OBJS) vmbuf.o sockmisc.o misc.o ../libipsec/libipsec.la
+ racoon_DEPENDENCIES = \
+ 	$(CRYPTOBJS) $(HYBRID_OBJS) $(NATT_OBJS) $(FRAG_OBJS) $(SECCTX_OBJS) \
+--- ipsec-tools-0.8.2/src/setkey/Makefile.am
++++ ipsec-tools-0.8.2/src/setkey/Makefile.am
+@@ -13,7 +13,6 @@
+ 
+ setkey_LDFLAGS = ../libipsec/libipsec.la
+ setkey_DEPENDENCIES = ../libipsec/libipsec.la
+-setkey_LDADD = $(LEXLIB)
+ 
+ noinst_HEADERS = vchar.h extern.h
+ man8_MANS = setkey.8
