@@ -7,7 +7,7 @@ inherit qt4-build-multilib
 DESCRIPTION="The Phonon module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm hppa ~ia64 ppc ~ppc64 x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 x86 ~x86-fbsd"
 fi
 
 IUSE="dbus qt3support"
