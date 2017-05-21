@@ -551,7 +551,7 @@ app-crypt/heimdal 1.5.3-r2 7.1.0 7.3.0: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 1.0 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
-app-crypt/jetring 0.21: GPG keyring maintenance using changesets
+app-crypt/jetring 0.25: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
