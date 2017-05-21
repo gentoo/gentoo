@@ -54,22 +54,22 @@ SRC_URI="
 IUSE="gnome java kde"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 
 BIN_COMMON_DEPEND="
-	app-text/hunspell:0/0
+	app-text/hunspell:0/1.6
 	=app-text/libexttextcat-3.4*
 	=app-text/libmwaw-0.3*
 	dev-libs/boost:0/1.62.0
 	dev-libs/icu:0/58.1
 	>=media-gfx/graphite2-1.2.0
-	|| ( media-libs/glew:0/1.10 media-libs/glew:1.10 )
+	media-libs/glew:0/1.13
 	media-libs/harfbuzz:0/0.9.18[icu]
 	media-libs/libpng:0/16
-	>=sys-devel/gcc-4.9.4
-	>=sys-libs/glibc-2.22
+	>=sys-devel/gcc-5.4.0-r3
+	>=sys-libs/glibc-2.23
 	virtual/jpeg:62
-	kde? ( >=kde-frameworks/kdelibs-4.14.24:4 >=dev-qt/qtcore-4.8.6-r2:4 >=dev-qt/qtgui-4.8.6-r4:4 )
+	kde? ( >=kde-frameworks/kdelibs-4.14.32:4 >=dev-qt/qtcore-4.8.7-r2:4 >=dev-qt/qtgui-4.8.7:4 )
 "
 
 # PLEASE place any restrictions that are specific to the binary builds
