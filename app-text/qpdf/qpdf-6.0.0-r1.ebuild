@@ -33,7 +33,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
+	CONFIG_SHELL=/bin/bash econf \
 		$(use_enable static-libs static) \
 		$(use_enable test test-compare-images)
 }
