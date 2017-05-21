@@ -15,14 +15,15 @@ DIST_AUTHOR=XSAWYERX
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
-PERL_OLDVERSEN="5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
+# Don't add more -RC values, its historical bungling
+PERL_OLDVERSEN="5.26.0-RC1 5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
 	DIST_VERSION=5.26.0-RC1
 	SHORT_PV="${DIST_VERSION%.*}"
 	# Devel Releases are not ABI-intercompatible
-	SUBSLOT="${DIST_VERSION}"
+	SUBSLOT="${DIST_VERSION%-RC*}"
 	MY_P="perl-${DIST_VERSION/_rc/-RC}"
-	MY_PV="${DIST_VERSION%_rc*}"
+	MY_PV="${DIST_VERSION%-RC*}"
 else
 	# First 2 digits only
 	SHORT_PV="${PV%.*}"
