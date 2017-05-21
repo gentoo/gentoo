@@ -13478,6 +13478,7 @@ media-plugins/vdr-clock 1.0.0-r1: VDR Plugin: Tea clock, clock
 media-plugins/vdr-console 0.6.0: vdr Plugin: Shows linux console on vdr's output device
 media-plugins/vdr-coverviewer 0.0.2: VDR plugin: coverviewer for vdr-music
 media-plugins/vdr-cpumon 0.0.6_p1: VDR Plugin: Show cpu-usage on OSD
+media-plugins/vdr-ddci2 1.0.4 9999: VDR plugin: DDCI2 - Digital Devices CI support
 media-plugins/vdr-decruft 0.0.4-r1: VDR Plugin: Clean unwanted entries from channels.conf
 media-plugins/vdr-devstatus 0.4.1: VDR plugin: display the usa status of the available DVB devices
 media-plugins/vdr-dummydevice 1.0.3 2.0.0: VDR Plugin: dummy output device - for recording server without any output devices
@@ -18459,7 +18460,7 @@ www-servers/nginx 1.10.3 1.11.10 1.11.13-r1 1.12.0 1.13.0: Robust, small and hig
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
-www-servers/pshs 0.3-r1 0.3.1 9999: Pretty small HTTP server -- a command-line tool to share files
+www-servers/pshs 0.3.2 9999: Pretty small HTTP server -- a command-line tool to share files
 www-servers/puma 3.1.1 3.6.1 3.6.2: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.46 4.0.48 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
