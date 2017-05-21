@@ -21,6 +21,7 @@ DEPEND="
 	"
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	filemagic? ( dev-python/filemagic[${PYTHON_USEDEP}] )
 	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
