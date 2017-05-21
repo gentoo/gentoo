@@ -6504,7 +6504,7 @@ dev-perl/SQL-Statement 1.405.0-r1 1.409.0 1.410.0 1.412.0: Small SQL parser and 
 dev-perl/SQL-Translator 0.110.210: Manipulate structured data definitions (SQL and more)
 dev-perl/SRU 1.10.0: Search and Retrieval by URL
 dev-perl/SUPER 1.201.411.170: control superclass method dispatch
-dev-perl/SVG 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
+dev-perl/SVG 2.640.0 2.770.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
 dev-perl/SVG-Graph 0.20.0-r1: Visualize your data in Scalable Vector Graphics (SVG) format
 dev-perl/SVN-Simple 0.280.0-r1: SVN::Simple::Edit - Simple interface to SVN::Delta::Editor
 dev-perl/Safe-Hole 0.130.0-r1: Exec subs in the original package from Safe
@@ -18661,7 +18661,7 @@ x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r3 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2 0.8.0-r3: Rendering engine for MathML documents
-x11-libs/gtksourceview 2.10.5-r3 3.20.4 3.22.2 3.23.90: A text widget implementing syntax highlighting and other features
+x11-libs/gtksourceview 2.10.5-r3 3.20.4 3.22.2 3.24.2: A text widget implementing syntax highlighting and other features
 x11-libs/guile-gtk 2.1-r2 2.1-r3: GTK+ bindings for guile
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
 x11-libs/libFS 1.0.6 1.0.7: X.Org FS library
