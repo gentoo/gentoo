@@ -7,6 +7,7 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.4
+PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 
 DIST_AUTHOR=XSAWYERX
 
@@ -21,14 +22,12 @@ if [[ "${PV##*.}" == "9999" ]]; then
 	# Devel Releases are not ABI-intercompatible
 	SUBSLOT="${DIST_VERSION}"
 	MY_P="perl-${DIST_VERSION/_rc/-RC}"
-	PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 	MY_PV="${DIST_VERSION%_rc*}"
 else
 	# First 2 digits only
 	SHORT_PV="${PV%.*}"
 	SUBSLOT="${SHORT_PV}"
 	MY_P="perl-${PV/_rc/-RC}"
-	PATCH_BASE="${MY_P}-patches-${PATCH_VER}"
 	MY_PV="${PV%_rc*}"
 fi
 
