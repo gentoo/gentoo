@@ -19,18 +19,19 @@ PERL_BIN_OLDVERSEN=""
 PERL_OLDVERSEN="5.26.0-RC1 5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
 	DIST_VERSION=5.26.0-RC1
-	SHORT_PV="${DIST_VERSION%.*}"
 	# Devel Releases are not ABI-intercompatible
+	# remove only trailing RC
 	SUBSLOT="${DIST_VERSION%-RC*}"
-	MY_P="perl-${DIST_VERSION/_rc/-RC}"
-	MY_PV="${DIST_VERSION%-RC*}"
 else
+	DIST_VERSION="${PV/_rc/-RC}"
 	# First 2 digits only
-	SHORT_PV="${PV%.*}"
-	SUBSLOT="${SHORT_PV}"
-	MY_P="perl-${PV/_rc/-RC}"
-	MY_PV="${PV%_rc*}"
+	SUBSLOT="${DIST_VERSION%.*}"
 fi
+SHORT_PV="${DIST_VERSION%.*}"
+# Used only in tar paths
+MY_P="perl-${DIST_VERSION}"
+# Used in library paths
+MY_PV="${DIST_VERSION%-RC*}"
 
 DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 
