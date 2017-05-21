@@ -25,7 +25,7 @@ fi
 SHORT_PV="${DIST_VERSION%.*}"
 # Even numbered major versions are ABI intercompatible
 # Odd numbered major versions are not
-if [[ $(( "${SHORT_PV#*.}" % 2 )) == 1 ]]; then
+if [[ $(( ${SHORT_PV#*.} % 2 )) == 1 ]]; then
 	SUBSLOT="${DIST_VERSION%-RC*}"
 else
 	SUBSLOT="${DIST_VERSION%.*}"
