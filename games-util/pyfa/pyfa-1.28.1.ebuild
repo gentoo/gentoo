@@ -24,9 +24,10 @@ IUSE="+graph"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
-	dev-python/sqlalchemy[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-1.0.5[${PYTHON_USEDEP}]
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	>=dev-python/logbook-1.0.0[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	graph? (
 		dev-python/matplotlib[wxwidgets,${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}] )
