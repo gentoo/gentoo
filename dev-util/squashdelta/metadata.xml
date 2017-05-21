@@ -13,7 +13,7 @@
 			<email>mgorny@gentoo.org</email>
 			<name>Michał Górny</name>
 		</maintainer>
-		<bugs-to>https://bitbucket.org/mgorny/squashdelta/issues/</bugs-to>
-		<remote-id type="bitbucket">mgorny/squashdelta</remote-id>
+		<bugs-to>https://github.com/mgorny/squashdelta/issues/</bugs-to>
+		<remote-id type="github">mgorny/squashdelta</remote-id>
 	</upstream>
 </pkgmetadata>
