@@ -106,10 +106,6 @@ sci-chemistry/mead
 sys-fabric/libibvpp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (13 May 2017)
-# Work in progress
-=dev-db/firebird-3*
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (13 May 2017)
 # This release breaks lots of reverse deps because of conflicting types.
 # So let's get it in the tree, mask it and test.
 =dev-libs/icu-59*
