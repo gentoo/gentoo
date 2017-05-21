@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="IDPL Interbase-1.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="doc examples +server xinetd"
 
