@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="GPG keyring maintenance using changesets"
 HOMEPAGE="http://joeyh.name/code/jetring/"
-SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -19,8 +19,6 @@ RDEPEND="
 	${DEPEND}
 	dev-lang/perl
 	"
-
-S="${WORKDIR}"/${PN}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.21-parallel.patch
