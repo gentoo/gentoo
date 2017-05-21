@@ -2303,7 +2303,11 @@ dev-perl/App-Nopaste:github - Github authentication
 dev-perl/App-Nopaste:pastebin - pastebin.com support
 dev-perl/Business-ISBN:barcode - Install dev-perl/GD-Barcode for rendering ISBN numbers as barcodes
 dev-perl/Business-ISBN:xisbn - Install dev-perl/Mojolicious for querying xisbn.worldcat.org
+dev-perl/Config-Any:conf - Install dev-perl/Config-General to support decoding .conf/.cnf files
+dev-perl/Config-Any:ini - Install dev-perl/Config-Tiny to support decoding INI config files
 dev-perl/Config-Any:json - Install support libraries to support decoding JSON config files
+dev-perl/Config-Any:xml - Install support libraries to support decoding XML config files
+dev-perl/Config-Any:yaml - Install support libraries to support decoding YAML config files
 dev-perl/Convert-UUlib:system-uulib - Use dev-libs/uulib instead of bundled version.
 dev-perl/Cookie-Baker:xs - Install dev-perl/Cookie-Baker-XS for accelerated performance
 dev-perl/DBD-SQLite:system-sqlite - Use the system-wide dev-db/sqlite installation

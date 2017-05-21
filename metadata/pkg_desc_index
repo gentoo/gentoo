@@ -5593,7 +5593,7 @@ dev-perl/Clone 0.380.0 0.390.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.220.0 2.240.0 2.260.0: Interface to Bzip2 compression library
-dev-perl/Config-Any 0.290.0 0.300.0: Load configuration from different file formats, transparently
+dev-perl/Config-Any 0.290.0 0.300.0 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
 dev-perl/Config-AutoConf 0.311.0 0.313.0 0.314.0: A module to implement some of AutoConf macros in pure perl
@@ -7352,7 +7352,7 @@ dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and 
 dev-python/bokeh 0.11.1 0.12.4: Statistical and interactive HTML plots for Python
 dev-python/boto 2.38.0 2.41.0 2.42.0: Amazon Web Services API
 dev-python/boto3 1.3.1 1.4.0 1.4.1: The AWS SDK for Python
-dev-python/botocore 1.4.60 1.4.62 1.4.65: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.4.60 1.4.62 1.4.65 1.4.93: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.16 0.16-r1: Syntax highlighting and autocompletion for the Python interpreter
