@@ -160,10 +160,6 @@ media-libs/phonon zeitgeist
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
 
-# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
-# Masked in base like the above.
-dev-java/icedtea -infinality
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761

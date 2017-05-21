@@ -186,10 +186,6 @@ media-libs/phonon zeitgeist
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
 
-# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
-# Masked in base like the above.
-dev-java/icedtea -infinality
-
 # Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
 # sys-fs/zfs is not available everywhere.
 sys-boot/grub -libzfs
