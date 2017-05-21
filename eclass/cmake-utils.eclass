@@ -87,13 +87,6 @@ _CMAKE_UTILS_ECLASS=1
 # but not used. Might give false-positives.
 # "no" to disable (default) or anything else to enable.
 
-# @ECLASS-VARIABLE: PREFIX
-# @DESCRIPTION:
-# Eclass respects PREFIX variable, though it's not recommended way to set
-# install/lib/bin prefixes.
-# Use -DCMAKE_INSTALL_PREFIX=... CMake variable instead.
-: ${PREFIX:=/usr}
-
 # @ECLASS-VARIABLE: CMAKE_EXTRA_CACHE_FILE
 # @DESCRIPTION:
 # Specifies an extra cache file to pass to cmake. This is the analog of EXTRA_ECONF
@@ -112,6 +105,7 @@ inherit toolchain-funcs multilib ninja-utils flag-o-matic eutils \
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
 [[ ${WANT_CMAKE} ]] && eqawarn "\${WANT_CMAKE} has been removed and is a no-op now"
+[[ ${PREFIX} ]] && die "\${PREFIX} has been removed and is a no-op now"
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
@@ -563,13 +557,13 @@ enable_cmake-utils_src_configure() {
 
 			ELSE ()
 
-			SET(CMAKE_PREFIX_PATH "${EPREFIX}${PREFIX}" CACHE STRING "" FORCE)
+			SET(CMAKE_PREFIX_PATH "${EPREFIX}/usr" CACHE STRING "" FORCE)
 			SET(CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
 			SET(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
 			SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE CACHE BOOL "")
-			SET(CMAKE_INSTALL_RPATH "${EPREFIX}${PREFIX}/lib;${EPREFIX}/usr/${CHOST}/lib/gcc;${EPREFIX}/usr/${CHOST}/lib;${EPREFIX}/usr/$(get_libdir);${EPREFIX}/$(get_libdir)" CACHE STRING "" FORCE)
+			SET(CMAKE_INSTALL_RPATH "${EPREFIX}/usr/lib;${EPREFIX}/usr/${CHOST}/lib/gcc;${EPREFIX}/usr/${CHOST}/lib;${EPREFIX}/usr/$(get_libdir);${EPREFIX}/$(get_libdir)" CACHE STRING "" FORCE)
 			SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
-			SET(CMAKE_INSTALL_NAME_DIR "${EPREFIX}${PREFIX}/lib" CACHE STRING "" FORCE)
+			SET(CMAKE_INSTALL_NAME_DIR "${EPREFIX}/usr/lib" CACHE STRING "" FORCE)
 
 			ENDIF (NOT APPLE)
 		_EOF_
@@ -629,7 +623,7 @@ enable_cmake-utils_src_configure() {
 		${warn_unused_cli}
 		-C "${common_config}"
 		-G "$(_cmake_generator_to_use)"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}${PREFIX}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		"${mycmakeargs_local[@]}"
 		-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}"
 		$([[ ${EAPI} == 5 ]] && echo -DCMAKE_INSTALL_DO_STRIP=OFF)
