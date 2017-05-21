@@ -7,7 +7,7 @@ at http://dnsdist.org/README/ for more information.
 -- Listen on 192.0.2.1 on port 53.
 setLocal("192.0.2.1:53")
 
--- Add 2001:db8::2:1 to the list of ad
+-- Add 2001:db8::2:1 to the list of adresses dnsdist should listen on
 addLocal("2001:db8::2:1")
 
 -- Add to the ACL set who can use this server

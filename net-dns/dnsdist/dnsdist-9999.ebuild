@@ -48,13 +48,10 @@ RDEPEND="${DEPEND}"
 "
 
 src_prepare() {
-	default
+	eapply -p1 "${FILESDIR}/${PN}-readline.patch"
+	eapply_user
 
 	[[ ${PV} == 9999 ]] && eautoreconf
-
-	if use readline ; then
-		epatch "${FILESDIR}/${PN}-readline.patch"
-	fi
 }
 
 src_configure() {
