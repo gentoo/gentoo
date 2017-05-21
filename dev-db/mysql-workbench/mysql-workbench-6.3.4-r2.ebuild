@@ -74,7 +74,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-6.2.3-CMakeLists.patch" \
 		"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch" \
 		"${FILESDIR}/${PN}-6.3.3-mysql_options4.patch" \
-		"${FILESDIR}/${PN}-6.3.4-cxx11.patch"
+		"${FILESDIR}/${PN}-6.3.4-cxx11.patch" \
+		"${FILESDIR}/${PN}-6.3.4-gtk.patch"
 
 	sed -i -e '/target_link_libraries/ s/sqlparser.grt/sqlparser.grt sqlparser/' \
 		modules/db.mysql.sqlparser/CMakeLists.txt
