@@ -15,11 +15,13 @@ SRC_URI="
 
 LICENSE="IDPL Interbase-1.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
-IUSE="doc examples xinetd"
+IUSE="doc examples +server xinetd"
 
+# FIXME: cloop?
 CDEPEND="
+	dev-libs/libtommath
 	dev-libs/icu:=
 	dev-libs/libedit
 "
@@ -39,6 +41,17 @@ PATCHES=(
 	"${FILESDIR}/${P}"-gcc6.patch
 	"${FILESDIR}/${P}"-cloop-compiler.patch
 )
+
+pkg_pretend() {
+	if [[ -e /var/run/${PN}/${PN}.pid ]] ; then
+		ewarn
+		ewarn "The presence of server connections may prevent isql or gsec"
+		ewarn "from establishing an embedded connection. Accordingly,"
+		ewarn "creating employee.fdb or security3.fdb could fail."
+		ewarn "It is more secure to stop the firebird daemon before running emerge."
+		ewarn
+	fi
+}
 
 pkg_setup() {
 	enewgroup firebird 450
@@ -99,10 +112,10 @@ src_configure() {
 		--with-fbconf=/etc/${PN} \
 		--with-fblib=/usr/$(get_libdir) \
 		--with-fbinclude=/usr/include \
-		--with-fbdoc=/usr/share/doc/${P} \
+		--with-fbdoc=/usr/share/doc/${PF} \
 		--with-fbudf=/usr/$(get_libdir)/${PN}/UDF \
-		--with-fbsample=/usr/share/doc/${P}/examples \
-		--with-fbsample-db=/usr/share/doc/${P}/examples/db \
+		--with-fbsample=/usr/share/doc/${PF}/examples \
+		--with-fbsample-db=/usr/share/doc/${PF}/examples/db \
 		--with-fbhelp=/usr/$(get_libdir)/${PN}/help \
 		--with-fbintl=/usr/$(get_libdir)/${PN}/intl \
 		--with-fbmisc=/usr/share/${PN} \
@@ -115,143 +128,108 @@ src_configure() {
 		${myconf}
 }
 
-src_compile() {
-	MAKEOPTS="${MAKEOPTS/-j*/-j1} ${MAKEOPTS/-j/CPU=}"
-	emake
-}
-
+# from linux underground, merging into this here
 src_install() {
-	cd "gen/Release/${PN}" || die
-
 	if use doc; then
-		dodoc "${S}"/doc/*.pdf
+		dodoc -r doc
 		find "${WORKDIR}"/manuals -type f -iname "*.pdf" -exec dodoc '{}' + || die
 	fi
 
-	doheader include/*
+	cd "${S}/gen/Release/${PN}" || die
 
-	insinto /usr/$(get_libdir)
+	doheader include/*
 	dolib.so lib/*.so*
 
 	# links for backwards compatibility
+	insinto /usr/$(get_libdir)
 	dosym libfbclient.so /usr/$(get_libdir)/libgds.so
 	dosym libfbclient.so /usr/$(get_libdir)/libgds.so.0
 	dosym libfbclient.so /usr/$(get_libdir)/libfbclient.so.1
 
-	insinto /usr/$(get_libdir)/${PN}
+	insinto /usr/share/${PN}/msg
 	doins *.msg
+
+	use server || return
 
 	einfo "Renaming isql -> fbsql"
 	mv bin/isql bin/fbsql || die "failed to rename isql -> fbsql"
 
-	local bins="fbguard fbsql fbsvcmgr fbtracemgr firebird gbak gfix gpre gpre_boot gpre_current gsec gsplit gstat nbackup qli"
-	for bin in ${bins}; do
-		dobin bin/${bin}
-	done
+	dobin bin/{fbsql,fbsvcmgr,fbtracemgr,gbak,gfix,gpre,gsec,gsplit,gstat,nbackup,qli}
+	dosbin bin/{firebird,fbguard,fb_lock_print}
 
-	dosbin bin/fb_lock_print
-
-	insinto /usr/$(get_libdir)/${PN}/help
+	insinto /usr/share/${PN}/help
+	# why???
+	insopts -m0660 -o firebird -g firebird
 	doins help/help.fdb
 
-	exeinto /usr/$(get_libdir)/firebird/intl
+	into /usr/$(get_libdir)/${PN}/intl
 	dolib.so intl/libfbintl.so
-	dosym ../../libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl
-	dosym libfbintl.so /usr/$(get_libdir)/libfbintl.so.1
-	dosym /etc/firebird/fbintl.conf /usr/$(get_libdir)/${PN}/intl/fbintl.conf
+	dosym libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl.so
 
+	insinto /usr/$(get_libdir)/${PN}/intl
+	insopts -m0644 -o root -g root
+	doins intl/fbintl.conf
+
+	# plugins
 	exeinto /usr/$(get_libdir)/${PN}/plugins
-	dolib.so plugins/libfbtrace.so
-	dosym ../../libfbtrace.so /usr/$(get_libdir)/${PN}/plugins/libfbtrace.so
-	dosym libfbtrace.so /usr/$(get_libdir)/libfbtrace.so.0
+	doexe plugins/*.so
+	exeinto /usr/$(get_libdir)/${PN}/plugins/udr
+	doexe plugins/udr/*.so
 
 	exeinto /usr/$(get_libdir)/${PN}/UDF
 	doexe UDF/*.so
 
-	insinto /usr/share/${PN}/upgrade
-	doins -r "${S}"/src/misc/upgrade/v2/*
-
-	insinto /etc/${PN}
-	insopts -m0644 -o firebird -g firebird
-	doins ../install/misc/*.conf
-	insopts -m0660 -o firebird -g firebird
-	doins security2.fdb
-
-	if use xinetd ; then
-		insinto /etc/xinetd.d
-		newins "${FILESDIR}/${PN}.xinetd" ${PN}
-	else
-		newinitd "${FILESDIR}/${PN}.init.d.2.5" ${PN}
-		newconfd "${FILESDIR}/${PN}.conf.d.2.5" ${PN}
-		fperms 640 /etc/conf.d/${PN}
-	fi
-
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${PN}.logrotate" ${PN}
-	fperms 0644 /etc/logrotate.d/${PN}
-
+	# logging (do we really need the perms?)
 	diropts -m 755 -o firebird -g firebird
 	dodir /var/log/${PN}
 	keepdir /var/log/${PN}
 
-	use examples && docinto examples
-}
+	# logrotate
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
-pkg_postinst() {
-	# Hack to fix ownership/perms
-	chown -fR firebird:firebird "${ROOT}/etc/${PN}" "${ROOT}/usr/$(get_libdir)/${PN}"
-	chmod 750 "${ROOT}/etc/${PN}"
-}
+	# configuration files
+	insinto /etc/${PN}/plugins
+	doins plugins/udr_engine.conf
+	insinto /etc/${PN}
+	doins {databases,fbtrace,firebird,plugins}.conf
 
-pkg_config() {
-	# if found /etc/security.gdb from previous install, backup, and restore as
-	# /etc/security2.fdb
-	if [[ -f "${ROOT}/etc/firebird/security.gdb" ]] ; then
-		# if we have scurity2.fdb already, back it 1st
-		if [[ -f "${ROOT}/etc/firebird/security2.fdb" ]] ; then
-			cp "${ROOT}/etc/firebird/security2.fdb" "${ROOT}/etc/firebird/security2.fdb.old" || die
-		fi
-		gbak -B "${ROOT}/etc/firebird/security.gdb" "${ROOT}/etc/firebird/security.gbk" || die
-		gbak -R "${ROOT}/etc/firebird/security.gbk" "${ROOT}/etc/firebird/security2.fdb" || die
-		mv "${ROOT}/etc/firebird/security.gdb" "${ROOT}/etc/firebird/security.gdb.old" || die
-		rm "${ROOT}/etc/firebird/security.gbk" || die
+	# install secutity3.fdb
+	insopts -m0660 -o firebird -g firebird
+	doins security3.fdb
 
-		# make sure they are readable only to firebird
-		chown firebird:firebird "${ROOT}/etc/firebird/{security.*,security2.*}" || die
-		chmod 660 "${ROOT}/etc/firebird/{security.*,security2.*}" || die
-
-		echo
-		einfo "Converted old security.gdb to security2.fdb, security.gdb has been "
-		einfo "renamed to security.gdb.old. if you had previous security2.fdb, "
-		einfo "it's backed to security2.fdb.old (all under ${ROOT}/etc/firebird)."
-		echo
+	if use xinetd; then
+		insinto /etc/xinetd.d
+		newins "${FILESDIR}/${PN}.xinetd.3.0" ${PN}
+	else
+		newinitd "${FILESDIR}/${PN}.init.d.3.0" ${PN}
 	fi
 
-	# we need to enable local access to the server
-	if [[ ! -f "${ROOT}/etc/hosts.equiv" ]] ; then
-		touch "${ROOT}/etc/hosts.equiv" || die
-		chown root:0 "${ROOT}/etc/hosts.equiv" || die
-		chmod u=rw,go=r "${ROOT}/etc/hosts.equiv" || die
+	if use examples; then
+		cd examples
+		insinto /usr/share/${PN}/examples
+		insopts -m0644 -o root -g root
+		doins -r api
+		doins -r dbcrypt
+		doins -r include
+		doins -r interfaces
+		doins -r package
+		doins -r stat
+		doins -r udf
+		doins -r udr
+		doins CMakeLists.txt
+		doins functions.c
+		doins README
+		insinto /usr/share/${PN}/examples/empbuild
+		insopts -m0660 -o firebird -g firebird
+		doins empbuild/employee.fdb
 	fi
 
-	# add 'localhost.localdomain' to the hosts.equiv file...
-	if grep -q 'localhost.localdomain$' "${ROOT}/etc/hosts.equiv" ; then
-		echo "localhost.localdomain" >> "${ROOT}/etc/hosts.equiv" || die
-		einfo "Added localhost.localdomain to ${ROOT}/etc/hosts.equiv"
-	fi
-
-	# add 'localhost' to the hosts.equiv file...
-	if grep -q 'localhost$' "${ROOT}/etc/hosts.equiv" ; then
-		echo "localhost" >> "${ROOT}/etc/hosts.equiv" || die
-		einfo "Added localhost to ${ROOT}/etc/hosts.equiv"
-	fi
-
-	HS_NAME=`hostname`
-	if grep -q ${HS_NAME} "${ROOT}/etc/hosts.equiv" ; then
-		echo "${HS_NAME}" >> "${ROOT}/etc/hosts.equiv" || die
-		einfo "Added ${HS_NAME} to ${ROOT}/etc/hosts.equiv"
-	fi
-
-	einfo "If you're using UDFs, please remember to move them"
-	einfo "to /usr/$(get_libdir)/firebird/UDF"
+	einfo
+	elog "Starting with version 3, server mode is set in firebird.conf"
+	elog "The default setting is superserver."
+	einfo
+	elog "If you're using UDFs, please remember to move them to /usr/$(get_libdir)/firebird/UDF"
+	einfo
+	ewarn "${CATEGORY}/${PF} is still a tad experimental. Please test and file bugs!"
 }
