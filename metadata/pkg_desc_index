@@ -6890,7 +6890,7 @@ dev-perl/aliased 0.340.0: Use shorter versions of class names
 dev-perl/asa 1.30.0: Lets your class/object say it works like something else
 dev-perl/autobox 2.830.0 2.850.0: Call methods on native types
 dev-perl/autovivification 0.160.0: Lexically disable autovivification
-dev-perl/bareword-filehandles 0.4.0: Disables bareword filehandles
+dev-perl/bareword-filehandles 0.4.0 0.5.0: Disables bareword filehandles
 dev-perl/boolean 0.450.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
