@@ -1170,6 +1170,7 @@ app-text/pastebinit:crypt - Install pbputs for gpg-encrypted pastes
 app-text/pdfgrep:unac - Removing accents and ligatures before search
 app-text/pelican:markdown - Markdown support
 app-text/podofo:boost - Add support for boost
+app-text/podofo:tools - Build and install commandline tools.
 app-text/poppler:cairo-qt - Enable experimental Cairo font rasterizer for Qt4 backend.
 app-text/poppler:nss - Enable signatures handling with dev-libs/nss
 app-text/poppler:utils - Install command-line PDF converters and various utilities.
@@ -8118,6 +8119,7 @@ virtual/linux-sources:firmware - Install linux kernel firmware
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 virtual/mysql:embedded - Build embedded server (libmysqld)
 virtual/podofo-build:boost - Add support for boost
+virtual/podofo-build:tools - Build and install commandline tools.
 virtual/ssh:minimal - Prefer net-misc/dropbear over net-misc/openssh
 virtual/wine:d3d9 - Enable Ixit's Gallium Nine Patchset
 virtual/wine:staging - Enable Wine-Staging's Patchset
