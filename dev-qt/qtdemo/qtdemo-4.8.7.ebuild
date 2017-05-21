@@ -7,7 +7,7 @@ inherit qt4-build-multilib
 DESCRIPTION="Demonstration module and examples for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
+	KEYWORDS="amd64 ~arm ppc ppc64 x86"
 fi
 
 IUSE="dbus declarative kde multimedia opengl phonon webkit xmlpatterns"
