@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-TESTS_PV=0.3
+TESTS_P=${PN}-0.3
 
 DESCRIPTION="CD/DVD image converter using libmirage"
-HOMEPAGE="https://bitbucket.org/mgorny/mirage2iso/"
-SRC_URI="https://bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2
-	test? ( https://bitbucket.org/mgorny/${PN}/downloads/${PN}-${TESTS_PV}-tests.tar.xz )"
+HOMEPAGE="https://github.com/mgorny/mirage2iso/"
+SRC_URI="https://github.com/mgorny/${PN}/releases/download/${P}/${P}.tar.bz2
+	test? ( https://github.com/mgorny/${PN}/releases/download/${P}/${TESTS_P}-tests.tar.xz )"
 
 LICENSE="BSD"
 SLOT="0"
@@ -35,6 +35,6 @@ src_configure() {
 }
 
 src_test() {
-	mv "${WORKDIR}"/${PN}-${TESTS_PV}/tests/* tests/ || die
+	mv "${WORKDIR}"/${TESTS_P}/tests/* tests/ || die
 	default
 }
