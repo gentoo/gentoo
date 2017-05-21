@@ -463,12 +463,6 @@ media-plugins/gst-plugins-ffmpeg
 # Needs openssl-1.1
 >=dev-libs/opencryptoki-3.6
 
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Feb 2017)
-# Drops USE=firebird because it requires not yet packaged Firebird-3.0.
-# Affects libreoffice-base.
-# Bug #586634.
-=app-office/libreoffice-5.3.3.2
-
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
 # Alpha release with new features, masked for testing
 =app-text/tesseract-4.00.00_alpha*
