@@ -19,15 +19,17 @@ PERL_BIN_OLDVERSEN=""
 PERL_OLDVERSEN="5.26.0-RC1 5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
 	DIST_VERSION=5.26.0-RC1
-	# Devel Releases are not ABI-intercompatible
-	# remove only trailing RC
-	SUBSLOT="${DIST_VERSION%-RC*}"
 else
 	DIST_VERSION="${PV/_rc/-RC}"
-	# First 2 digits only
-	SUBSLOT="${DIST_VERSION%.*}"
 fi
 SHORT_PV="${DIST_VERSION%.*}"
+# Even numbered major versions are ABI intercompatible
+# Odd numbered major versions are not
+if [[ $(( "${SHORT_PV#*.}" % 2 )) == 1 ]]; then
+	SUBSLOT="${DIST_VERSION%-RC*}"
+else
+	SUBSLOT="${DIST_VERSION%.*}"
+fi
 # Used only in tar paths
 MY_P="perl-${DIST_VERSION}"
 # Used in library paths
