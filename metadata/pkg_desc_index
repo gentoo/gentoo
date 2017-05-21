@@ -9895,7 +9895,7 @@ dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML ta
 dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.5: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.8.0 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1 4.1.2: Pure Ruby one-shot and periodic timers
-dev-ruby/tins 1.6.0 1.10.2 1.11.0 1.12.0 1.13.0 1.13.2 1.13.3: All the stuff that isn't good enough for a real library
+dev-ruby/tins 1.6.0 1.13.0 1.13.2 1.13.3 1.14.0: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
