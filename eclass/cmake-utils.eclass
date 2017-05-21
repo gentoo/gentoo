@@ -421,7 +421,10 @@ _cmake_cleanup_cmake() {
 	_cmake_modify-cmakelists
 }
 
-enable_cmake-utils_src_prepare() {
+# @FUNCTION: cmake-utils_src_prepare
+# @DESCRIPTION:
+# Apply ebuild and user patches.
+cmake-utils_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	pushd "${S}" > /dev/null || die
@@ -455,7 +458,11 @@ enable_cmake-utils_src_prepare() {
 # }
 # @CODE
 
-enable_cmake-utils_src_configure() {
+# @FUNCTION: cmake-utils_src_configure
+# @DESCRIPTION:
+# General function for configuring with cmake. Default behaviour is to start an
+# out-of-source build.
+cmake-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EAPI} == 5 ]] && _cmake_cleanup_cmake
@@ -643,7 +650,11 @@ enable_cmake-utils_src_configure() {
 	popd > /dev/null || die
 }
 
-enable_cmake-utils_src_compile() {
+# @FUNCTION: cmake-utils_src_compile
+# @DESCRIPTION:
+# General function for compiling with cmake.
+# Automatically detects the build type. All arguments are passed to emake.
+cmake-utils_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake-utils_src_make "$@"
@@ -693,7 +704,10 @@ cmake-utils_src_make() {
 	popd > /dev/null || die
 }
 
-enable_cmake-utils_src_test() {
+# @FUNCTION: cmake-utils_src_test
+# @DESCRIPTION:
+# Function for testing the package. Automatically detects the build type.
+cmake-utils_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	_cmake_check_build_dir
@@ -726,7 +740,10 @@ enable_cmake-utils_src_test() {
 	fi
 }
 
-enable_cmake-utils_src_install() {
+# @FUNCTION: cmake-utils_src_install
+# @DESCRIPTION:
+# Function for installing the package. Automatically detects the build type.
+cmake-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	_cmake_check_build_dir
@@ -737,43 +754,6 @@ enable_cmake-utils_src_install() {
 	pushd "${S}" > /dev/null || die
 	einstalldocs
 	popd > /dev/null || die
-}
-
-# @FUNCTION: cmake-utils_src_prepare
-# @DESCRIPTION:
-# Apply ebuild and user patches.
-cmake-utils_src_prepare() {
-	enable_cmake-utils_src_prepare "$@"
-}
-
-# @FUNCTION: cmake-utils_src_configure
-# @DESCRIPTION:
-# General function for configuring with cmake. Default behaviour is to start an
-# out-of-source build.
-cmake-utils_src_configure() {
-	enable_cmake-utils_src_configure "$@"
-}
-
-# @FUNCTION: cmake-utils_src_compile
-# @DESCRIPTION:
-# General function for compiling with cmake.
-# Automatically detects the build type. All arguments are passed to emake.
-cmake-utils_src_compile() {
-	enable_cmake-utils_src_compile "$@"
-}
-
-# @FUNCTION: cmake-utils_src_test
-# @DESCRIPTION:
-# Function for testing the package. Automatically detects the build type.
-cmake-utils_src_test() {
-	enable_cmake-utils_src_test "$@"
-}
-
-# @FUNCTION: cmake-utils_src_install
-# @DESCRIPTION:
-# Function for installing the package. Automatically detects the build type.
-cmake-utils_src_install() {
-	enable_cmake-utils_src_install "$@"
 }
 
 fi
