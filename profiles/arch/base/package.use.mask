@@ -47,7 +47,7 @@ dev-db/percona-server tokudb tokudb-backup-plugin
 dev-db/mariadb jdbc
 
 # James Le Cuirot <chewi@gentoo.org> (26 Jul 2016)
-# Only available on amd64.
+# Only available on some architectures.
 dev-java/icedtea shenandoah
 
 # Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
