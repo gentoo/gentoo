@@ -4717,7 +4717,7 @@ dev-libs/gobject-introspection-common 1.48.0 1.50.0 1.52.1: Build infrastructure
 dev-libs/gom 0.3.2: GObject to SQLite object mapper library
 dev-libs/granite 0.2.1 0.2.3.1 0.3.0: A development library for elementary development
 dev-libs/grantlee 0.4.0 5.1.0: C++ string template engine based on the Django template system
-dev-libs/grok 0.9.2: DRY and RAD for regular expressions
+dev-libs/grok 0.9.2 0.9.2-r1: DRY and RAD for regular expressions
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.9.2 0.9.3 0.9.4 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/handystats 1.11.0 1.11.1 1.11.3: C++ library for collecting user-defined in-process runtime statistics
