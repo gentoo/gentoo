@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (22 May 2017)
+# Only available on some architectures.
+dev-java/icedtea -shenandoah
+
 # Michael Weber <xmw@gentoo.org> (18 May 2017)
 # mask due missing keywords on dev-python/epydoc[latex]
 sys-apps/portage epydoc
