@@ -5837,7 +5837,7 @@ dev-perl/Exception-Class 1.390.0 1.410.0 1.420.0: A module that allows you to de
 dev-perl/Exception-Died 0.60.0-r1: Convert simple die into real exception object
 dev-perl/Exception-System 0.110.0-r1: Exception class for system or library calls
 dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception object
-dev-perl/Expect 1.320.0-r1 1.330.0: Expect for Perl
+dev-perl/Expect 1.320.0-r1 1.330.0 1.350.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.20.0-r1 0.80.0: Lightweight exporting of variables
 dev-perl/Exporter-Tiny 0.42.0 0.44.0: An exporter with the features of Sub::Exporter but only core dependencies
