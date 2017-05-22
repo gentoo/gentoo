@@ -298,10 +298,6 @@ dev-db/mysql cluster
 # is implemented. Masking for testing and evaluation.
 app-admin/clsync cluster mhash
 
-# Michał Górny <mgorny@gentoo.org> (25 Dec 2014)
-# Requires non-keyworded >=libevent-2.1, bug #533540.
-www-servers/pshs ssl
-
 # Michał Górny <mgorny@gentoo.org> (30 Nov 2014)
 # Not supported at the moment. DirectFB lacks multilib support,
 # and we have to decide if we want it.
