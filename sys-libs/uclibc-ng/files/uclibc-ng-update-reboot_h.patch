@@ -1,0 +1,41 @@
+From 5a305695ad09696bc27c1928deedabbc9e93da55 Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Mon, 22 May 2017 09:57:27 -0400
+Subject: [PATCH] include/sys/reboot.h: add constants RB_SW_SUSPEND and
+ RB_KEXEC
+
+This syncs up <sys/reboot.h> with the GNU C library, see their
+commit 1a09dc56.  These constants are needed by init systems like
+openrc.
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+---
+ include/sys/reboot.h | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/include/sys/reboot.h b/include/sys/reboot.h
+index bc685aebb..fafd2fb0c 100644
+--- a/include/sys/reboot.h
++++ b/include/sys/reboot.h
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
++/* Copyright (C) 1996-2017 Free Software Foundation, Inc.
+    This file is part of the GNU C Library.
+ 
+    The GNU C Library is free software; you can redistribute it and/or
+@@ -38,6 +38,12 @@
+ /* Stop system and switch power off if possible.  */
+ #define RB_POWER_OFF	0x4321fedc
+ 
++/* Suspend system using software suspend.  */
++#define RB_SW_SUSPEND	0xd000fce2
++
++/* Reboot system into new kernel.  */
++#define RB_KEXEC	0x45584543
++
+ __BEGIN_DECLS
+ 
+ /* Reboot or halt the system.  */
+-- 
+2.13.0
+
