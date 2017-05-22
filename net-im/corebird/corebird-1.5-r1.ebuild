@@ -46,9 +46,9 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable gstreamer video)
+		$(usex gstreamer "" --disable-video)
 		--disable-gst-check
-		$(use_enable spellcheck)
+		$(usex spellcheck "" --disable-spellcheck)
 	)
 	gnome2_src_configure "${myeconfargs[@]}"
 }
