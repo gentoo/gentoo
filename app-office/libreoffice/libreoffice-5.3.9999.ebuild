@@ -250,7 +250,13 @@ PATCHES=(
 
 pkg_pretend() {
 	use java || \
-		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
+		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
+
+	if has_version "<app-office/libreoffice-5.3.0[firebird]"; then
+		ewarn "Firebird has been upgraded to version 3.0.0. It is unable to read back Firebird 2.5 data,"
+		ewarn "so embedded firebird odb files created in LibreOffice pre-5.3 cannot be opened with LibreOffice 5.3."
+		ewarn "See also: https://wiki.documentfoundation.org/ReleaseNotes/5.3#Base"
+	fi
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 

@@ -56,7 +56,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/86b1daaa438f5a7bea9a52d7b9799ac0-xmlsec1-1.2.23.tar.gz" # modifies source code
+	"${ADDONS_URI}/xmlsec1-1.2.24.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -206,7 +206,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/libxml2-2.7.8
 	dev-libs/libxslt
 	dev-perl/Archive-Zip
-	dev-util/cppunit
+	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
 	dev-util/intltool
 	>=dev-util/mdds-1.2.2:1=
@@ -253,7 +253,13 @@ PATCHES=(
 
 pkg_pretend() {
 	use java || \
-		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
+		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
+
+	if has_version "<app-office/libreoffice-5.3.0[firebird]"; then
+		ewarn "Firebird has been upgraded to version 3.0.0. It is unable to read back Firebird 2.5 data,"
+		ewarn "so embedded firebird odb files created in LibreOffice pre-5.3 cannot be opened with LibreOffice 5.3."
+		ewarn "See also: https://wiki.documentfoundation.org/ReleaseNotes/5.3#Base"
+	fi
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 
