@@ -48,8 +48,8 @@ python_test() {
 	py.test -v || die "tests failed with ${EPYTHON}"
 }
 
-python_install() {
-	distutils-r1_python_install
+python_install_all() {
+	distutils-r1_python_install_all
 
 	find "${D}" -name '*.pth' -delete || die
 }
