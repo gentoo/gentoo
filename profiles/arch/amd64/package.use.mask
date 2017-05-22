@@ -73,7 +73,7 @@ dev-db/mariadb -jdbc
 >=www-client/firefox-48 -pgo
 
 # James Le Cuirot <chewi@gentoo.org> (26 Jul 2016)
-# Only available on amd64.
+# Only available on some architectures.
 dev-java/icedtea -shenandoah
 
 # Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
@@ -185,10 +185,6 @@ media-libs/phonon zeitgeist
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
-
-# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
-# Masked in base like the above.
-dev-java/icedtea -infinality
 
 # Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
 # sys-fs/zfs is not available everywhere.

@@ -47,7 +47,7 @@ dev-db/percona-server tokudb tokudb-backup-plugin
 dev-db/mariadb jdbc
 
 # James Le Cuirot <chewi@gentoo.org> (26 Jul 2016)
-# Only available on amd64.
+# Only available on some architectures.
 dev-java/icedtea shenandoah
 
 # Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
@@ -152,10 +152,6 @@ net-libs/gnutls dane
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # fontconfig-infinality dependency not yet keyworded on most arches
 media-libs/freetype infinality
-
-# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
-# Mask this in conjunction with the above.
-dev-java/icedtea infinality
 
 # Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
 # sys-fs/zfs is not available everywhere.

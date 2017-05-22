@@ -13,15 +13,16 @@ ICEDTEA_BRANCH=$(get_version_component_range 1-2)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
 
-CORBA_TARBALL="8eb9dd5fe2fb.tar.xz"
-JAXP_TARBALL="faf1c4a9a51d.tar.xz"
-JAXWS_TARBALL="5f5237104669.tar.xz"
-JDK_TARBALL="3642a826880b.tar.xz"
-LANGTOOLS_TARBALL="d10a13bdc98c.tar.xz"
-OPENJDK_TARBALL="d5760f7cce54.tar.xz"
-NASHORN_TARBALL="8c0fe384c4e7.tar.xz"
-HOTSPOT_TARBALL="6efaf77e82a1.tar.xz"
-SHENANDOAH_TARBALL="d9a978177779.tar.xz"
+CORBA_TARBALL="22ed32f45405.tar.xz"
+JAXP_TARBALL="fdc2a6442d2f.tar.xz"
+JAXWS_TARBALL="c1bfc2395c57.tar.xz"
+JDK_TARBALL="cfc292a2c1c6.tar.xz"
+LANGTOOLS_TARBALL="4ef0ee927940.tar.xz"
+OPENJDK_TARBALL="ed5ee0ac7111.tar.xz"
+NASHORN_TARBALL="f2d9bca28d0e.tar.xz"
+HOTSPOT_TARBALL="00b7bbd261c9.tar.xz"
+SHENANDOAH_TARBALL="6ffe8637a506.tar.xz"
+AARCH32_TARBALL="b93c39bf2bcf.tar.xz"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.xz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -35,6 +36,7 @@ OPENJDK_GENTOO_TARBALL="icedtea-${ICEDTEA_BRANCH}-openjdk-${OPENJDK_TARBALL}"
 NASHORN_GENTOO_TARBALL="icedtea-${ICEDTEA_BRANCH}-nashorn-${NASHORN_TARBALL}"
 HOTSPOT_GENTOO_TARBALL="icedtea-${ICEDTEA_BRANCH}-hotspot-${HOTSPOT_TARBALL}"
 SHENANDOAH_GENTOO_TARBALL="icedtea-${ICEDTEA_BRANCH}-shenandoah-${SHENANDOAH_TARBALL}"
+AARCH32_GENTOO_TARBALL="icedtea-${ICEDTEA_BRANCH}-aarch32-${AARCH32_TARBALL}"
 
 CACAO_GENTOO_TARBALL="icedtea-${CACAO_TARBALL}"
 JAMVM_GENTOO_TARBALL="icedtea-${JAMVM_TARBALL}"
@@ -56,6 +58,7 @@ SRC_URI="
 	${ICEDTEA_URL}/nashorn.tar.xz -> ${NASHORN_GENTOO_TARBALL}
 	${ICEDTEA_URL}/langtools.tar.xz -> ${LANGTOOLS_GENTOO_TARBALL}
 	shenandoah? ( ${ICEDTEA_URL}/shenandoah.tar.xz -> ${SHENANDOAH_GENTOO_TARBALL} )
+	arm? ( ${ICEDTEA_URL}/aarch32.tar.xz -> ${AARCH32_GENTOO_TARBALL} )
 	${DROP_URL}/cacao/${CACAO_TARBALL} -> ${CACAO_GENTOO_TARBALL}
 	${DROP_URL}/jamvm/${JAMVM_TARBALL} -> ${JAMVM_GENTOO_TARBALL}"
 
@@ -224,7 +227,7 @@ src_configure() {
 
 	# Are we on a architecture with a HotSpot port?
 	# In-tree JIT ports are available for amd64, arm, arm64, ppc64 (be&le), SPARC and x86.
-	if { use amd64 || use arm64 || use ppc64 || use sparc || use x86; }; then
+	if { use amd64 || use arm || use arm64 || use ppc64 || use sparc || use x86; }; then
 		hotspot_port="yes"
 	fi
 
@@ -235,14 +238,18 @@ src_configure() {
 	fi
 
 	if use shenandoah; then
-		if use amd64; then
+		if { use amd64 || use arm64; }; then
 			hs_config="--with-hotspot-build=shenandoah"
 			hs_config+=" --with-hotspot-src-zip="${DISTDIR}/${SHENANDOAH_GENTOO_TARBALL}""
 		else
-			eerror "Shenandoah can only be built on x86_64. Please re-build with USE="-shenandoah""
+			eerror "Shenandoah can only be built on arm64 and x86_64. Please re-build with USE="-shenandoah""
 		fi
 	else
-		hs_config="--with-hotspot-src-zip="${DISTDIR}/${HOTSPOT_GENTOO_TARBALL}""
+		if use arm ; then
+			hs_config="--with-hotspot-src-zip="${DISTDIR}/${AARCH32_GENTOO_TARBALL}""
+		else
+			hs_config="--with-hotspot-src-zip="${DISTDIR}/${HOTSPOT_GENTOO_TARBALL}""
+		fi
 	fi
 
 	# Turn on JamVM if needed (non-HS archs) or requested
@@ -370,6 +377,20 @@ src_install() {
 	java-vm_sandbox-predict /proc/self/coredump_filter
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
+pkg_preinst() {
+	# From 3.4.0 onwards, the arm directory is a symlink to the aarch32
+	# directory. We need to clear the old directory for a clean upgrade.
+	if use arm; then
+		local dir
+		for dir in "${EROOT}usr/$(get_libdir)/icedtea${SLOT}"/{lib,jre/lib}/arm; do
+			if [[ -d ${dir} && ! -L ${dir} ]]; then
+				rm -r "${dir}" || die
+			fi
+		done
+	fi
+
+	gnome2_icon_savelist
+}
+
 pkg_postinst() { gnome2_icon_cache_update; }
 pkg_postrm() { gnome2_icon_cache_update; }
