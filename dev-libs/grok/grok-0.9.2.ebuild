@@ -16,7 +16,7 @@ KEYWORDS="amd64 arm hppa x86"
 IUSE=""
 
 DEPEND="dev-db/tokyocabinet
-		>=dev-libs/libevent-1.3
+		>=dev-libs/libevent-1.3:=
 		>=dev-libs/libpcre-7.6"
 
 RDEPEND="${DEPEND}"
