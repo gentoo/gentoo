@@ -128,7 +128,7 @@ app-admin/keepassxc 2.1.3 2.1.4 9999: KeePassXC - KeePass Cross-platform Communi
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.2: Binary component required by the LastPass Password Manager browser extension
-app-admin/lastpass-cli 1.0.0: Interfaces with LastPass.com from the command line.
+app-admin/lastpass-cli 1.0.0 1.1.2: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.10: Check for mapped libs and open files that are marked as deleted
 app-admin/lnav 0.8.1 0.8.2: A curses-based tool for viewing and analyzing log files
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
