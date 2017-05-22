@@ -10318,6 +10318,7 @@ dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29 0.32: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
+dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.2.1_p20161102: Tools for browsing and manipulating docker registries
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
