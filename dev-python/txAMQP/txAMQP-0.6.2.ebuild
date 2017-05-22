@@ -15,4 +15,4 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/twisted-core"
+RDEPEND="dev-python/twisted-core[${PYTHON_USEDEP}]"
