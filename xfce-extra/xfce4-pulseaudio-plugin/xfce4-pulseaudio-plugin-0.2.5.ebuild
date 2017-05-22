@@ -1,8 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit xfconf
+EAPI=6
+
+inherit gnome2-utils
 
 DESCRIPTION="A panel plug-in for PulseAudio volume control"
 HOMEPAGE="https://github.com/andrzej-r/xfce4-pulseaudio-plugin"
@@ -10,7 +11,7 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="debug keybinder libnotify"
 
 RDEPEND=">=dev-libs/glib-2.24.0:=
@@ -26,12 +27,25 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
 
-pkg_setup() {
-	XFCONF=(
+src_configure() {
+	local myconf=(
 		$(use_enable keybinder)
 		$(use_enable libnotify)
-		$(xfconf_use_debug)
-		)
+	)
 
-	DOCS=( AUTHORS ChangeLog NEWS README )
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+
+	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
