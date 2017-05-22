@@ -14640,7 +14640,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.0.15.3 5.0.15.6 5.0.15.6-r1: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.0.15.3 5.0.15.6 5.0.15.6-r1 5.1.4: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.12: iptables extensions not yet accepted in the main kernel
@@ -15595,7 +15595,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.14.24 0.14.27: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.28: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6 1.8.6-r1: A torrent file parser
 net-p2p/transmission 2.92-r2 9999: A fast, easy, and free BitTorrent client
