@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python library for communicating with AMQP peers using Twisted"
-HOMEPAGE="https://launchpad.net/txamqp"
+HOMEPAGE="https://github.com/txamqp/txamqp"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
