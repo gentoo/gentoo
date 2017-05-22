@@ -29,7 +29,6 @@ DEPEND="
 		${RDEPEND}
 		dev-python/path-py[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
@@ -40,7 +39,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test --ignore=rst || die "tests failed with ${EPYTHON}"
+	py.test -v --ignore=rst || die "tests failed with ${EPYTHON}"
 }
 
 python_install() {
