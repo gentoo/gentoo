@@ -1,18 +1,16 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
-
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 eutils flag-o-matic git-r3 multiprocessing virtualx toolchain-funcs
+inherit distutils-r1 eutils flag-o-matic multiprocessing virtualx toolchain-funcs
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="http://matplotlib.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/matplotlib/matplotlib.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 # Main license: matplotlib
@@ -20,7 +18,7 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="cairo doc excel examples fltk gtk2 gtk3 latex pyside qt4 qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
@@ -47,12 +45,7 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	media-libs/qhull
-	cairo? (
-		|| (
-			dev-python/pycairo[${PYTHON_USEDEP}]
-			dev-python/cairocffi[${PYTHON_USEDEP}]
-			)
-		)
+	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
 		dev-libs/glib:2=
 		x11-libs/gdk-pixbuf
@@ -74,7 +67,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/mock[${PY2_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.3.4
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
@@ -110,6 +102,8 @@ RDEPEND="${COMMON_DEPEND}
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
 DISTUTILS_IN_SOURCE_BUILD=1
+
+PATCHES=( "${FILESDIR}/${PN}-1.5.3-freetype-spurious-failure.patch" )
 
 pkg_setup() {
 	unset DISPLAY # bug #278524
@@ -174,7 +168,7 @@ python_configure() {
 	# create setup.cfg (see setup.cfg.template for any changes).
 
 	# common switches.
-	cat > "${BUILD_DIR}"/setup.cfg <<- EOF
+	cat > "${BUILD_DIR}"/setup.cfg <<- EOF || die
 		[directories]
 		basedirlist = "${EPREFIX}/usr"
 		[provide_packages]
@@ -196,7 +190,7 @@ python_configure() {
 	fi
 
 	if $(python_is_python3); then
-		cat >> "${BUILD_DIR}"/setup.cfg <<- EOF
+		cat >> "${BUILD_DIR}"/setup.cfg <<- EOF || die
 			six = True
 			fltk = False
 			fltkagg = False
@@ -206,7 +200,7 @@ python_configure() {
 			wxagg = False
 		EOF
 	else
-		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF
+		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF || die
 			six = False
 			$(use_setup fltk)
 			$(use_setup gtk2 gtk)
@@ -237,18 +231,20 @@ python_compile_all() {
 		local -x PYTHONPATH="${BUILD_DIR}"/build/lib:${PYTHONPATH}
 
 		VARTEXFONTS="${T}"/fonts \
-		"${PYTHON}" ./make.py --small html || die
+		"${EPYTHON}" ./make.py --small html || die
 	fi
 }
 
 python_test() {
 	wrap_setup distutils_install_for_testing
 
-	virtx ${PYTHON} tests.py \
-		--no-pep8 \
-		--no-network \
-		--verbose \
-		--processes=$(makeopts_jobs)
+#	virtx ${EPYTHON} tests.py \
+#		--no-pep8 \
+#		--no-network \
+#		--verbose \
+#		--processes=$(makeopts_jobs)
+
+	virtx "${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(0 if m.test(verbosity=2) else 1)"
 }
 
 python_install() {
