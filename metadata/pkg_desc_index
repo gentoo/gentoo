@@ -6354,7 +6354,7 @@ dev-perl/Number-Compare 0.30.0-r1: Numeric comparisons
 dev-perl/Number-Format 1.750.0: Package for formatting numbers for display
 dev-perl/Number-Fraction 2.0.0: Perl extension to model fractions
 dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
-dev-perl/OOTools 2.300.0-r1: Pragma to implement lvalue accessors with options
+dev-perl/OOTools 2.300.0-r1 2.400.0: Pragma to implement lvalue accessors with options
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/ORLite-Migrate 1.100.0-r1: Extremely light weight SQLite-specific schema migration
 dev-perl/Object-Enum 0.75.0: Replacement for if ($foo eq 'bar')
