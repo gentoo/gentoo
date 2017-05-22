@@ -14,7 +14,9 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm"
-IUSE="tools"
+IUSE="selinux tools"
+
+RDEPEND="selinux? ( sec-policy/selinux-syncthing )"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
 
@@ -99,6 +101,13 @@ pkg_postinst() {
 			ewarn "Make sure all your devices are running at least version" \
 				"0.$(get_version_component_range 2).0."
 		fi
+		ewarn "Syncthing OpenRC init script now uses the upstream default of"
+		ewarn ""
+		ewarn "  /var/lib/${PN}/.config/${PN}"
+		ewarn ""
+		ewarn "as its configuration directory. Please set SYNCTHING_HOMEDIR"
+		ewarn "to /var/lib/${PN} in /etc/conf.d/${PN} if you wish to continue"
+		ewarn "using the old Gentoo default. Systemd users are not affected."
 	done
 
 	# check if user syncthing-relaysrv exists
