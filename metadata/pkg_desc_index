@@ -8353,7 +8353,7 @@ dev-python/pyte 0.5.2-r1 0.5.2-r2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.2 3.0.2 3.0.3 3.0.6 3.0.7 9999: simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
 dev-python/pytest-arraydiff 0.1: pytest plugin to facilitate comparison of arrays
-dev-python/pytest-cache 1.0: mechanisms for caching across test runs
+dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1 2.3.1: py.test plugin for coverage reporting
@@ -8788,7 +8788,7 @@ dev-python/twisted-web 13.2.0 15.2.1: Twisted web server, programmable in Python
 dev-python/twisted-words 13.2.0 15.2.1: Twisted Words contains Instant Messaging implementations
 dev-python/twitter 1.17.1: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.2.0 3.3.0: An easy (and up to date) way to access Twitter data with Python
-dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
+dev-python/txAMQP 0.6.2 0.7.0: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 2.3.1 2.5.1-r1 2.7.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5 0.9.5-r1: Asynchronous Python HTTP for Humans
