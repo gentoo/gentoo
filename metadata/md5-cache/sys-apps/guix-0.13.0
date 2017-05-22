@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=dev-libs/libgcrypt:0= >=dev-scheme/guile-2[regex,networking,threads] dev-scheme/guile-json net-libs/gnutls[guile] sys-libs/zlib app-arch/bzip2 dev-db/sqlite
+DESCRIPTION=GNU package manager (nix sibling)
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/guix/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/libgcrypt:0= >=dev-scheme/guile-2[regex,networking,threads] dev-scheme/guile-json net-libs/gnutls[guile] sys-libs/zlib app-arch/bzip2 dev-db/sqlite
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnu-alpha/guix/guix-0.13.0.tar.gz mirror://gnu-alpha/guix/bootstrap/aarch64-linux/20170217/guile-2.0.14.tar.xz -> guix-bootstrap-aarch64-linux-20170217-guile-2.0.14.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/armhf-linux/20150101/guile-2.0.11.tar.xz -> guix-bootstrap-armhf-linux-20150101-guile-2.0.11.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/i686-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-i686-linux-20131110-guile-2.0.9.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/mips64el-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-mips64el-linux-20131110-guile-2.0.9.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/x86_64-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-x86_64-linux-20131110-guile-2.0.9.tar.xz.bootstrap
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=c67c332f2a180ea40794a944f70eb9c5

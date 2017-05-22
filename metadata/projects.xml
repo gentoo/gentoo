@@ -178,12 +178,6 @@
     </member>
   </project>
   <project>
-    <email>alt@gentoo.org</email>
-    <name>Alt</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Alt</url>
-    <description>Provide Gentoo solutions for non-GNU/Linux platforms.</description>
-  </project>
-  <project>
     <email>antivirus@gentoo.org</email>
     <name>Gentoo Antivirus Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Antivirus</url>
@@ -280,12 +274,6 @@
       <name>Jason A. Donenfeld</name>
       <role>Lead</role>
     </member>
-  </project>
-  <project>
-    <email>bsd@gentoo.org</email>
-    <name>BSD Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:BSD</url>
-    <description>Porting of Gentoo facilities on BSD systems.</description>
   </project>
   <project>
     <email>base-system@gentoo.org</email>
@@ -2869,7 +2857,6 @@ developers and volunteer mentors.</description>
     <name>Gentoo Prefix</name>
     <url>https://wiki.gentoo.org/wiki/Project:Prefix</url>
     <description>To bring out the virtues of Gentoo on different operating systems, the Gentoo Prefix project develops and maintains a way of installing Gentoo systems in a non-standard location, designated by a "prefix".</description>
-    <subproject ref="bsd@gentoo.org"/>
     <member>
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>
