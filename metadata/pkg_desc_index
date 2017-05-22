@@ -5454,7 +5454,7 @@ dev-perl/Audio-DSP 0.20.0-r1: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1: Access to FLAC audio metadata
 dev-perl/Audio-Mixer 0.700.0-r1: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1: An OO interface to Musepack file information and APE tag fields
-dev-perl/Audio-Scan 0.930.0-r1: Fast C metadata and tag reader for all common audio file formats
+dev-perl/Audio-Scan 0.930.0-r1 0.980.0: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
