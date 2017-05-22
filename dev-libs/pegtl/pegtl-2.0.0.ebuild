@@ -16,3 +16,5 @@ IUSE="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/PEGTL-${PV}"
