@@ -5059,7 +5059,7 @@ dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0 0.26.0: Library for RDF syntax which s
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/sink 0.1.0: A data access layer handling synchronization, caching and indexing
-dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2 2.5.0.0 2.5.1.0: skarnet.org general-purpose libraries
+dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2 2.5.0.0 2.5.1.1: skarnet.org general-purpose libraries
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
