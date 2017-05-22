@@ -6885,6 +6885,7 @@ net-wireless/ubertooth:specan - Enable the ubertooth spectrum analyzer
 net-wireless/ubertooth:ubertooth1-firmware - Build/install ubertooth1-firmware
 net-wireless/urh:hackrf - use native backend which directly uses net-libs/libhackrf
 net-wireless/urh:rtlsdr - use native backend which directly uses net-wireless/rtl-sdr
+net-wireless/urh:uhd - use native backend which directly uses net-wireless/uhd
 net-wireless/wepattack:john - Build with app-crypt/johntheripper support
 net-wireless/wireless-tools:multicall - Build the most commonly used tools as one binary
 net-wireless/wpa_supplicant:ap - Add support for access point mode
