@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="DRY and RAD for regular expressions"
 HOMEPAGE="https://github.com/jordansissel/grok https://code.google.com/p/semicomplete/wiki/Grok"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jordansissel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm hppa x86"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 
 IUSE=""
 
@@ -21,9 +21,16 @@ CDEPEND="dev-db/tokyocabinet
 
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
-		<dev-util/gperf-3.1"
+		>=dev-util/gperf-3.1"
+
+PATCHES=(
+	"${FILESDIR}"/grok-0.9.2-Makefile.patch
+	"${FILESDIR}"/0.9.2-build-with-pcre-lt-8.34.patch
+	"${FILESDIR}"/grok-0.9.2-build-with-gperf-3.1.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-*.patch
+	default
+
 	tc-export CC
 }
