@@ -77,6 +77,7 @@ src_configure() {
 	CHOST=${CTARGET} econf \
 		--prefix=/usr/${CTARGET} \
 		--includedir=/usr/${CTARGET}/usr/include \
+		--libdir=/usr/${CTARGET}/usr/lib \
 		--with-headers \
 		--enable-sdk \
 		$(crt_with crt) \
