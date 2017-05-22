@@ -17,10 +17,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/django-1.6
+	>=dev-python/django-1.6[${PYTHON_USEDEP}]
 "
 
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
