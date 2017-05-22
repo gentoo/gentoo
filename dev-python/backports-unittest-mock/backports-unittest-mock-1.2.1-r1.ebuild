@@ -31,7 +31,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
@@ -46,7 +45,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test || die "tests failed with ${EPYTHON}"
+	py.test -v || die "tests failed with ${EPYTHON}"
 }
 
 python_install() {
