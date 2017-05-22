@@ -10420,7 +10420,7 @@ dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.36.0 0.37.1 0.38.1 0.39.1 0.40.0 0.40.1 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
-dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2: Free Win64 runtime and import library definitions
+dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2 5.0.2-r1: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2-r1: A set of base plugins for Molecule
