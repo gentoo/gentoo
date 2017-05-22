@@ -5517,7 +5517,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0 3.60.0 3.80.0 3.120.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0 3.60.0 3.80.0 3.120.0 3.160.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
@@ -5624,7 +5624,7 @@ dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1: A Perl interface to the uulib libr
 dev-perl/Cookie-Baker 0.60.0 0.70.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.70.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.511.0: The only real threads in perl
-dev-perl/Cpanel-JSON-XS 3.23.0 3.23.100: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 3.23.0 3.23.100 3.23.300: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
@@ -5738,7 +5738,7 @@ dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string de
 dev-perl/DateTime-Format-ICal 0.90.0: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
-dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0: Parse informal natural language date/time strings
+dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0 1.50.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.730.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1 0.70.0: Parse and format W3CDTF datetime strings
@@ -5794,7 +5794,7 @@ dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/versio
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
-dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.0.0: Tests to check your code against best practices
+dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.0.0 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
 dev-perl/EV 4.180.0 4.220.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Emacs-PDE 0.2.16-r1: Perl Develop Environment in Emacs
