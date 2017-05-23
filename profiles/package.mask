@@ -327,10 +327,6 @@ app-emulation/wine-staging
 app-emulation/wine-d3d9
 app-emulation/wine-any
 
-# Michael Weber <xmw@gentoo.org> (08 Apr 2017)
-# Experimental version.
->=net-wireless/gnuradio-3.7.11
-
 # Yixun Lan <dlan@gentoo.org> (30 Mar 2017)
 # Masked, broken due to emoji support which requre npm package installed (bug #612218)
 =app-i18n/ibus-1.5.15
