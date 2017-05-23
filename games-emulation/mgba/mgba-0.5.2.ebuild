@@ -33,6 +33,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-3.2.2"
 
+PATCHES=(
+	"${FILESDIR}/${P}-imagemagick7.patch"
+)
+
 src_prepare() {
 	default
 
