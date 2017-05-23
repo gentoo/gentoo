@@ -110,6 +110,7 @@ src_prepare() {
 			--c-namespace Mpris \
 			--generate-c-code object-player mpris2-player.xml && \
 		cd "${S}"
+	epatch "${FILESDIR}/${P}-gl-jack.patch"
 }
 
 src_configure() {
