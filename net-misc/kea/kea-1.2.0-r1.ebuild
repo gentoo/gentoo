@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-inherit eutils toolchain-funcs user
+inherit toolchain-funcs user
 
 MY_PV="${PV//_alpha/a}"
 MY_PV="${MY_PV//_beta/b}"
@@ -40,16 +40,20 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_with openssl) \
-		$(use_enable samples install-configurations) \
-		--disable-static \
+	local myeconfargs=(
+		$(use_with openssl)
+		$(use_enable samples install-configurations)
+		--disable-static
 		--without-werror
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	newconfd "${FILESDIR}"/${PN}-confd ${PN}
+	newinitd "${FILESDIR}"/${PN}-initd ${PN}
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
 
 pkg_preinst() {
