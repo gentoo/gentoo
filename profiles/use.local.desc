@@ -5388,6 +5388,11 @@ net-dns/ddclient:cloudflare - Enable support for updating IP address via CloudFl
 net-dns/ddclient:hardened - Use iproute2 instead of ifconfig to grab an IP address
 net-dns/dnscrypt-proxy:plugins - Enable plugin support to inspect and modify queries and responses
 net-dns/dnscrypt-proxy:systemd - Use systemd's socket activation instead of creating the sockets itself
+net-dns/dnsdist:dnscrypt - Enable the ability to act as a DNSCrypt server
+net-dns/dnsdist:luajit - Use dev-lang/luajit instead of dev-lang/lua
+net-dns/dnsdist:regex - Enable support for regular expression matching via dev-libs/re2
+net-dns/dnsdist:remote-logging - Enable support for remote logging via dev-libs/protobuf
+net-dns/dnsdist:ssl - Enable support for and encrypted client-server communication via dev-libs/libsodium
 net-dns/dnsmasq:auth-dns - Add support for acting as an authorative DNS server.
 net-dns/dnsmasq:conntrack - Add support for Linux conntrack connection marking.
 net-dns/dnsmasq:dhcp - Enable support for acting as a DHCP server.
