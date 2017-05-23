@@ -23,6 +23,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5
+	dev-qt/qtwidgets:5
 	sys-fs/inotify-tools
 	virtual/libiconv
 	dolphin? (
