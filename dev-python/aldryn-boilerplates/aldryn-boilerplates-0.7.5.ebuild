@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_{6,7} )
 
 inherit distutils-r1
 
-DESCRIPTION="Quick and simple django templatetags for displaying forms"
-HOMEPAGE="https://pypi.python.org/pypi/django-standard-form"
+DESCRIPTION="Allows re-usable apps to provide sets of templates and staticfiles"
+HOMEPAGE="https://pypi.python.org/pypi/aldryn-boilerplates"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -17,8 +17,9 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/django-1.3[${PYTHON_USEDEP}]
-	>=dev-python/django-classy-tags-0.3.3[${PYTHON_USEDEP}]
+	>=dev-python/django-1.5[${PYTHON_USEDEP}]
+	dev-python/django-appconf[${PYTHON_USEDEP}]
+	>=dev-python/YURL-0.13[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}

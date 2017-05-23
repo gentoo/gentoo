@@ -7,26 +7,23 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit distutils-r1
 
-DESCRIPTION="Video plugin for django CMS"
-HOMEPAGE="https://pypi.python.org/pypi/djangocms-video"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+DESCRIPTION="django CMS plugins for bootstrap3 markup"
+HOMEPAGE="https://github.com/aldryn/aldryn-bootstrap3/"
+SRC_URI="https://github.com/aldryn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="test"
+IUSE=""
 
 RDEPEND="
+	>=dev-python/django-cms-3.3.0[${PYTHON_USEDEP}]
+	>=dev-python/django-appconf-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/django-filer-0.9.11[${PYTHON_USEDEP}]
 	>=dev-python/djangocms-attributes-field-0.1.1[${PYTHON_USEDEP}]
-	>=dev-python/django-filer-1.2.4[${PYTHON_USEDEP}]
 "
+
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-PDEPEND=">=dev-python/django-cms-3.2.0"
-
-src_prepare() {
-	sed -i 's/find_packages()/find_packages(exclude=["tests"])/g' "${S}/setup.py"
-	eapply_user
-}

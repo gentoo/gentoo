@@ -7,14 +7,14 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit distutils-r1
 
-DESCRIPTION="Video plugin for django CMS"
-HOMEPAGE="https://pypi.python.org/pypi/djangocms-video"
+DESCRIPTION="Picture plugin for django CMS"
+HOMEPAGE="https://pypi.python.org/pypi/djangocms-picture"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="test"
+IUSE=""
 
 RDEPEND="
 	>=dev-python/djangocms-attributes-field-0.1.1[${PYTHON_USEDEP}]

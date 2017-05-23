@@ -3,12 +3,12 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_{6,7},3_{3,4}} )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 inherit distutils-r1
 
-DESCRIPTION="Inherit plugin for django CMS"
-HOMEPAGE="https://pypi.python.org/pypi/djangocms-inherit"
+DESCRIPTION="Adds pretty CSS styles for the django CMS admin interface."
+HOMEPAGE="https://pypi.python.org/pypi/djangocms-admin-style"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -17,6 +17,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND=""
+
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
