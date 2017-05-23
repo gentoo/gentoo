@@ -76,6 +76,11 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.17
 	>=sys-kernel/linux-headers-2.6.29
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	introspection? (
+		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
+		dev-lang/perl
+		dev-libs/libxslt
+	)
 	vala? ( $(vala_depend) )
 	test? (
 		$(python_gen_any_dep '
@@ -85,12 +90,17 @@ DEPEND="${COMMON_DEPEND}
 "
 
 python_check_deps() {
+	local rv=0
+	if use introspection; then
+		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+		(( rv |= $? ))
+	fi
 	if use test; then
 		has_version "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
 		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
-	else
-		return 0
+		(( rv |= $? ))
 	fi
+	return ${rv}
 }
 
 sysfs_deprecated_check() {
@@ -125,7 +135,9 @@ pkg_setup() {
 		linux-info_pkg_setup
 	fi
 	enewgroup plugdev
-	use test && python-any-r1_pkg_setup
+	if use introspection || use test; then
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
