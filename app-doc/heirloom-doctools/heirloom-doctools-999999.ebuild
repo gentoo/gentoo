@@ -33,7 +33,7 @@ src_configure() {
 		-e "s:@CXX@:$(tc-getCXX):" \
 		-e "s:@RANLIB@:$(tc-getRANLIB):" \
 		-e "s:@libdir@:$(get_libdir):" \
-		"${FILESDIR}"/${PV}.config \
+		"${FILESDIR}"/default.config \
 		> "${S}"/mk.config
 }
 
@@ -73,6 +73,9 @@ pkg_postinst() {
     manpkg=sys-apps/man-db
   fi
 
-    README_GENTOO_SUFFIX="-default" readme.gentoo_print_elog
+	elog ""
+	elog "If you just switched from sys-apps/groff, please make sure to rebuild the"
+	elog "${manpkg} package, since there are build-time conditionals on the nroff"
+	elog "implementation available."
 
 }

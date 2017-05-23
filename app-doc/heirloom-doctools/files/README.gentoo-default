@@ -1,4 +1,0 @@
-
-If you just switched from sys-apps/groff, please make sure to rebuild the
-${manpkg} package, since there are build-time conditionals on the nroff
-implementation available.
