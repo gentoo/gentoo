@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit flag-o-matic toolchain-funcs vcs-snapshot versionator
 
-REF="85ce5db08a6461f5fef13cc4f6b090c858698d91"
+REF="55d1d1020d215730737554045537cf3a8877c46a"
 
 DESCRIPTION="Selection-oriented code editor inspired by vim"
 HOMEPAGE="https://github.com/mawww/kakoune"
@@ -26,7 +26,7 @@ DEPEND="
 	${RDEPEND}
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0_pre20161111-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0_pre20170523-makefile.patch" )
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
