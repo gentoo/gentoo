@@ -52,6 +52,10 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-0.10-python-crash.patch \
 		"${FILESDIR}"/${PN}-0.10-v4l2-uvcvideo.patch
 
+	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
+		epatch "${FILESDIR}/${P}-ImageMagick-7.diff"
+	fi
+
 	use python && python_fix_shebang examples/upcrpc.py test/*.py
 	java-pkg-opt-2_src_prepare
 
