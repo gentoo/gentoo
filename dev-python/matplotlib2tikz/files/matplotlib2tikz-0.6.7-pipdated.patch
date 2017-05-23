@@ -11,3 +11,14 @@ Patch by Marius Brehler <marbre@linux.sungazer.de>
 -import pipdated
 -if pipdated.needs_checking(__name__):
 -    print(pipdated.check(__name__, __version__))
+
+--- a/setup.py
++++ b/setup.py
+@@ -34,7 +34,6 @@ setup(
+         'matplotlib >=1.4.0',
+         'numpy',
+         'Pillow >= 3.0.0',
+-        'pipdated',
+         ],
+     description='convert matplotlib figures into TikZ/PGFPlots',
+     long_description=read('README.rst'),
