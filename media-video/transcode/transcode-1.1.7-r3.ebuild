@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils libtool multilib
+inherit autotools libtool multilib
 
 DESCRIPTION="A suite of utilities for transcoding video and audio codecs in different containers"
 HOMEPAGE="http://www.transcoding.org/ https://bitbucket.org/france/transcode-tcforge"
-SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2"
+SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2
+	https://dev.gentoo.org/~polynomial-c/${P}-imagemagick7.patch"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -73,58 +74,64 @@ src_prepare() {
 		PATCHES+=( "${FILESDIR}"/${P}-ffmpeg29.patch )
 	fi
 
+	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
+		PATCHES+=( "${DISTDIR}"/${P}-imagemagick7.patch )
+	fi
+
 	default
 
-	elibtoolize
+	eautoreconf
 }
 
 src_configure() {
 	local myconf
 	use x86 && myconf="$(use_enable !pic x86-textrels)" #271476
 
-	econf \
-		$(use_enable cpu_flags_x86_mmx mmx) \
-		$(use_enable cpu_flags_x86_3dnow 3dnow) \
-		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_enable cpu_flags_x86_sse2 sse2) \
-		$(use_enable altivec) \
-		$(use_enable v4l libv4l2) \
-		$(use_enable v4l libv4lconvert) \
-		$(use_enable mpeg libmpeg2) \
-		$(use_enable mpeg libmpeg2convert) \
-		--enable-experimental \
-		--enable-deprecated \
-		$(use_enable v4l) \
-		$(use_enable oss) \
-		$(use_enable alsa) \
-		$(use_enable postproc libpostproc) \
-		$(use_enable truetype freetype2) \
-		$(use_enable mp3 lame) \
-		$(use_enable xvid) \
-		$(use_enable x264) \
-		$(use_enable ogg) \
-		$(use_enable vorbis) \
-		$(use_enable theora) \
-		$(use_enable dvd libdvdread) \
-		$(use_enable dv libdv) \
-		$(use_enable quicktime libquicktime) \
-		$(use_enable lzo) \
-		$(use_enable a52) \
-		$(use_enable aac faac) \
-		$(use_enable xml libxml2) \
-		$(use_enable mjpeg mjpegtools) \
-		$(use_enable sdl) \
-		$(use_enable imagemagick) \
-		$(use_enable jpeg libjpeg) \
-		$(use_enable iconv) \
-		$(use_enable nuv) \
-		$(use_with X x) \
-		--with-mod-path=/usr/$(get_libdir)/transcode \
+	local myeconfargs=(
+		$(use_enable cpu_flags_x86_mmx mmx)
+		$(use_enable cpu_flags_x86_3dnow 3dnow)
+		$(use_enable cpu_flags_x86_sse sse)
+		$(use_enable cpu_flags_x86_sse2 sse2)
+		$(use_enable altivec)
+		$(use_enable v4l libv4l2)
+		$(use_enable v4l libv4lconvert)
+		$(use_enable mpeg libmpeg2)
+		$(use_enable mpeg libmpeg2convert)
+		--enable-experimental
+		--enable-deprecated
+		$(use_enable v4l)
+		$(use_enable oss)
+		$(use_enable alsa)
+		$(use_enable postproc libpostproc)
+		$(use_enable truetype freetype2)
+		$(use_enable mp3 lame)
+		$(use_enable xvid)
+		$(use_enable x264)
+		$(use_enable ogg)
+		$(use_enable vorbis)
+		$(use_enable theora)
+		$(use_enable dvd libdvdread)
+		$(use_enable dv libdv)
+		$(use_enable quicktime libquicktime)
+		$(use_enable lzo)
+		$(use_enable a52)
+		$(use_enable aac faac)
+		$(use_enable xml libxml2)
+		$(use_enable mjpeg mjpegtools)
+		$(use_enable sdl)
+		$(use_enable imagemagick)
+		$(use_enable jpeg libjpeg)
+		$(use_enable iconv)
+		$(use_enable nuv)
+		$(use_with X x)
+		--with-mod-path=/usr/$(get_libdir)/transcode
 		${myconf}
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	emake DESTDIR="${D}" docsdir=/usr/share/doc/${PF} install
 	dodoc AUTHORS ChangeLog README STYLE TODO
-	prune_libtool_files --all
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
