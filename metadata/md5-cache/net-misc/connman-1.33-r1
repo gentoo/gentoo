@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://kernel/linux/network/connman/connman-1.33.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=79c6120134820d0b388b4efba2dea713
+_md5_=93b5c79e126c40b217888d4ddf96a521
