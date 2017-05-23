@@ -7,7 +7,7 @@ sys-libs/pam
 
 # Currenlty =sys-apps/openrc-0.26.2 makes uclibc systems unbootable.
 # See bug #619370
->sys-apps/openrc-0.24.2
+>sys-apps/openrc-0.23.2
 
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
