@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -17,14 +17,14 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/aldryn-boilerplates
-	dev-python/six
-	>=dev-python/django-sortedm2m-1.2.2
+	dev-python/aldryn-boilerplates[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	>=dev-python/django-sortedm2m-1.2.2[${PYTHON_USEDEP}]
 "
 
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
