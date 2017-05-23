@@ -29,6 +29,10 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	emake check
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 	rm -f "${D}"usr/lib/*.la
