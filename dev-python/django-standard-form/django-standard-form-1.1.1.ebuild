@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_{6,7} )
 
 inherit distutils-r1
 
@@ -17,10 +17,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/django-1.3
-	>=dev-python/django-classy-tags-0.3.3
+	>=dev-python/django-1.3[${PYTHON_USEDEP}]
+	>=dev-python/django-classy-tags-0.3.3[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
