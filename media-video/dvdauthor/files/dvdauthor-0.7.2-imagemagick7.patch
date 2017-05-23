@@ -1,0 +1,37 @@
+--- dvdauthor/src/subgen-image.c
++++ dvdauthor/src/subgen-image.c
+@@ -30,7 +30,7 @@
+ 
+ #if defined(HAVE_MAGICK) || defined(HAVE_GMAGICK)
+ #include <stdarg.h>
+-#include <magick/api.h>
++#include <MagickWand/MagickWand.h>
+ #else
+ #include <png.h>
+ #endif
+@@ -181,7 +181,8 @@
+     unsigned long magickver;
+     unsigned char amask;
+ 
+-    GetExceptionInfo(&ei);
++    ExceptionInfo *exception_info;
++    exception_info = AcquireExceptionInfo();
+     ii=CloneImageInfo(NULL);
+     strcpy(ii->filename,s->fname);
+     im=ReadImage(ii,&ei);
+@@ -1098,13 +1099,13 @@
+ void image_init()
+ {
+ #if defined(HAVE_MAGICK) || defined(HAVE_GMAGICK)
+-    InitializeMagick(NULL);
++    MagickCoreGenesis("", MagickFalse);
+ #endif
+ }
+ 
+ void image_shutdown()
+ {
+ #if defined(HAVE_MAGICK) || defined(HAVE_GMAGICK)
+-    DestroyMagick();
++    MagickCoreTerminus();
+ #endif
+ }

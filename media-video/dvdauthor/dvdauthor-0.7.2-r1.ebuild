@@ -30,6 +30,11 @@ DOCS=( AUTHORS ChangeLog README TODO )
 
 src_prepare() {
 	default
+
+	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
+		eapply "${FILESDIR}/${PN}-0.7.2-imagemagick7.patch"
+	fi
+
 	if use graphicsmagick ; then
 		sed -i -e 's:ExportImagePixels:dIsAbLeAuToMaGiC&:' configure \
 			|| die
