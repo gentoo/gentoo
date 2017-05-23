@@ -56,7 +56,7 @@ src_test() {
 	addwrite /dev/fuse
 
 	for i in gitversion cpp-utils parallelaccessstore blockstore blobstore fspp cryfs cryfs-cli ; do
-		${BUILD_DIR}/test/${i}/${i}-test || die "${i}-test failed"
+		${BUILD_DIR}/test/${i}/${i}-test || eerror "${i}-test failed"
 	done
 
 	adddeny /dev/fuse
