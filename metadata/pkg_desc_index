@@ -12812,7 +12812,7 @@ media-gfx/qrencode-python 1.01-r1 1.02_pre140921: A simple wrapper for the C qre
 media-gfx/quat 1.20: A 3D quaternionic fractal generator
 media-gfx/qvv 4.02: QVV Image Viewer and Browser
 media-gfx/raw-thumbnailer 0.2.1: A lightweight and fast raw image thumbnailer
-media-gfx/rawtherapee 4.2-r1 5.0: A powerful cross-platform raw image processing program
+media-gfx/rawtherapee 4.2-r1 5.0 5.1: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.0-r2 2.1.1-r1 2.2.1-r1 2.2.2-r1 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/replicatorg 37-r2 40-r1: ReplicatorG is a simple, open source 3D printing program
 media-gfx/ristretto 0.8.0-r1 0.8.1 0.8.2: A fast and lightweight picture viewer for the Xfce desktop environment
