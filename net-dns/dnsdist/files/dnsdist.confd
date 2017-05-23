@@ -1,0 +1,13 @@
+# /etc/conf.d/dnsdist
+
+# Options to pass on to dnsdist during the start
+DNSDIST_OPTIONS=""
+
+# Run dnsdist as this user
+DNSDIST_USER="dnsdist"
+
+# Run dnsdist in this group
+DNSDIST_GROUP="dnsdist"
+
+# Set the maximum number of open file descriptors
+rc_ulimit="-n 2048"

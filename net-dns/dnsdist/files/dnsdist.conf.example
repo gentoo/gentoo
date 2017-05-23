@@ -1,0 +1,19 @@
+--[[
+This is an example dnsdist configuration file.
+Please refer to the dnsdist documentation
+at http://dnsdist.org/README/ for more information.
+]]--
+
+-- Listen on 192.0.2.1 on port 53.
+setLocal("192.0.2.1:53")
+
+-- Add 2001:db8::2:1 to the list of adresses dnsdist should listen on
+addLocal("2001:db8::2:1")
+
+-- Add to the ACL set who can use this server
+addACL("192.0.2.0/24")
+addACL("2001:db8::/32")
+
+-- Instantiate two new downstram server with their default settings
+newServer("198.51.100.1")
+newServer("198.51.100.2")
