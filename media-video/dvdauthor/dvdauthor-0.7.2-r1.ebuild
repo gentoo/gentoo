@@ -24,14 +24,14 @@ RDEPEND=">=dev-libs/fribidi-0.19.2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 DOCS=( AUTHORS ChangeLog README TODO )
 
 src_prepare() {
 	default
 
-	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
+	if use imagemagick && has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
 		eapply "${FILESDIR}/${PN}-0.7.2-imagemagick7.patch"
 	fi
 
