@@ -133,7 +133,8 @@ if [ -z "$BITCOINCORE_COMMITHASH" ]; then
 	EGIT_PROJECT='bitcoin'
 	EGIT_REPO_URI="git://github.com/bitcoin/bitcoin.git https://github.com/bitcoin/bitcoin.git"
 else
-	SRC_URI="https://github.com/${MyPN}/${MyPN}/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> ${MyPN}-v${PV}${BITCOINCORE_SRC_SUFFIX}.tgz"
+	# -g2 because git changed the git-archive substitution of abbreviated hashes; affects up to 0.14.1
+	SRC_URI="https://github.com/${MyPN}/${MyPN}/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> ${MyPN}-v${PV}${BITCOINCORE_SRC_SUFFIX}-g2.tgz"
 	if [ -z "${BITCOINCORE_NO_SYSLIBS}" ]; then
 		SRC_URI="${SRC_URI} http://bitcoinknots.org/files/${BITCOINCORE_SERIES}/$(LJR_PV dir)/${LJR_PATCHDIR}.txz -> ${LJR_PATCHDIR}.tar.xz"
 	fi
