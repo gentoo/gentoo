@@ -51,7 +51,7 @@ src_configure() {
 	econf \
 		--localstatedir=/var \
 		--with-systemdunitdir=$(systemd_get_systemunitdir) \
-		--with-tmpfilesdir=${EPRIFEX}/usr/lib/tmpfiles.d \
+		--with-tmpfilesdir=${EPREFIX}/usr/lib/tmpfiles.d \
 		--enable-client \
 		--enable-datafiles \
 		--enable-loopback=builtin \
