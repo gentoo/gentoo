@@ -14,7 +14,7 @@ SLOT="0"
 
 # Until the deps reach other arches
 KEYWORDS="~amd64 ~x86"
-IUSE="+ecdsa nls"
+IUSE="nls"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
 CP_DEPEND="dev-java/bcprov:1.50
@@ -31,17 +31,14 @@ DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.7"
 
 RDEPEND="${CP_DEPEND}
-	ecdsa? (
-		|| (
-			dev-java/icedtea:7[-sunec]
-			dev-java/icedtea:8[-sunec]
-			dev-java/icedtea-bin:7
-			dev-java/icedtea-bin:8
-			dev-java/oracle-jre-bin
-			dev-java/oracle-jdk-bin
-		)
-	)
-	!ecdsa? ( >=virtual/jre-1.7 )"
+    || (
+		dev-java/icedtea:7[-sunec]
+		dev-java/icedtea:8[-sunec]
+		dev-java/icedtea-bin:7
+		dev-java/icedtea-bin:8
+		dev-java/oracle-jre-bin
+		dev-java/oracle-jdk-bin
+    )"
 
 EANT_BUILD_TARGET="pkg"
 JAVA_ANT_ENCODING="UTF-8"
@@ -139,14 +136,14 @@ src_install() {
 pkg_postinst() {
 	elog "Custom configuration belongs in ${I2P_CONFIG_DIR} to avoid being overwritten."
 	elog 'I2P can be configured through the web interface at http://localhost:7657/console'
+	elog
 
-	if use !ecdsa
-	then
-		ewarn 'Currently, the i2p team does not enforce to use ECDSA keys. But it is more and'
-		ewarn 'more pushed. To help the network, you are recommended to have the ecdsa USE.'
-		ewarn
-		ewarn "This is purely a run-time issue. You're free to build i2p with any JDK, as long as"
-		ewarn 'the JVM you run it with is one of the above listed and from the same or a newer generation'
-		ewarn 'as the one you built with.'
-	fi
+	ewarn "The router will migrate the jetty.xml for each Jetty website to the new Jetty 9 setup during startup."
+	ewarn "This should work for recent, unmodified configurations but may not work for modified or"
+	ewarn "very old setups. Verify that your Jetty website works after upgrading, and contact i2p"
+	ewarn "developers on IRC if you need assistance"
+	ewarn
+	ewarn "Several plugins are not compatible with Jetty 9 and must be updated if you use them."
+	ewarn "New updated version avaliable: i2pbote 0.4.6, zzzot 0.15.0."
+	ewarn "No new version so far: BwSchedule 0.0.36, i2pcontrol 0.11."
 }
