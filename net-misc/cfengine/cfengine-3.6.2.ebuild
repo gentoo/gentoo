@@ -12,13 +12,14 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="An automated suite of programs for configuring and maintaining
 Unix-like computers"
 HOMEPAGE="http://www.cfengine.org/"
-SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz -> ${MY_P}.tar.gz
+	masterfiles? ( http://cfengine.package-repos.s3.amazonaws.com/tarballs/masterfiles-${MY_PV}.tar.gz -> ${PN}-masterfiles-${MY_PV}.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="3"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="acl examples libvirt mysql postgres +qdbm selinux tokyocabinet vim-syntax xml"
+IUSE="acl examples libvirt mysql masterfiles postgres +qdbm selinux tokyocabinet vim-syntax xml"
 
 DEPEND="acl? ( virtual/acl )
 	mysql? ( virtual/mysql )
@@ -44,6 +45,13 @@ src_prepare() {
 	default
 	epatch "${FILESDIR}/${P}-ifconfig.patch"
 	eautoreconf
+}
+
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+	if use masterfiles; then
+		unpack ${PN}-masterfiles-${MY_PV}.tar.gz
+	fi
 }
 
 src_configure() {
@@ -99,6 +107,11 @@ src_install() {
 	for bin in promises agent monitord serverd execd runagent key; do
 		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin || die
 	done
+
+	if use masterfiles; then
+		insinto /var/cfengine
+		doins -r "${WORKDIR}/masterfiles"
+	fi
 }
 
 pkg_postinst() {
