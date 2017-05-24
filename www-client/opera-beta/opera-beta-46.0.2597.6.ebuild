@@ -3,7 +3,7 @@
 
 EAPI=5
 CHROMIUM_LANGS="
-	be bg bn ca cs da de el en-GB es es-419 fi fil fr fr-CA he hi hr hu id it
+	be bg bn ca cs da de el en-GB es-419 es fil fi fr-CA fr he hi hr hu id it
 	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
@@ -33,7 +33,7 @@ RDEPEND="
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:3
+	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,9 +20,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
-	econf \
-		--enable-lfs \
-		$(use_enable !debug syslog) \
-		$(use_enable debug) \
+	local myeconfargs=(
+		--enable-lfs
+		$(use_enable !debug syslog)
+		$(use_enable debug)
 		$(use_enable zlib gznbd)
+	)
+	econf "${myeconfargs[@]}"
 }
