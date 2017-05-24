@@ -50,6 +50,8 @@ src_configure() {
 		"-DBUILD_TESTING=$(usex test)"
 	)
 
+	CMAKE_BUILD_TYPE=Release
+
 	cmake-utils_src_configure
 }
 
@@ -70,9 +72,4 @@ src_test() {
 		eerror "$tests_failed[@]"
 		die "At least one test failed"
 	fi
-}
-
-src_install() {
-	dobin "${BUILD_DIR}"/src/cryfs-cli/cryfs
-	cmake-utils_src_install
 }
