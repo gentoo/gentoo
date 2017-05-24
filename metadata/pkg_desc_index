@@ -4642,7 +4642,7 @@ dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP socket
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
-dev-libs/capnproto 0.5.3.1: RPC/Serialization system with capabilities support
+dev-libs/capnproto 0.5.3.1 0.6.0: RPC/Serialization system with capabilities support
 dev-libs/capstone 3.0.5_rc2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
@@ -5211,7 +5211,7 @@ dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1: OCaml code generator plugin for the Cap'n Proto serialization framework
 dev-ml/cmdliner 0.9.8 1.0.0: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.0: Helper library for gathering system configuration
-dev-ml/core 0.9.0: Jane Street's alternative to the standard library
+dev-ml/core 0.9.0 0.9.1: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.9.0: Micro-benchmarking library for OCaml
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
 dev-ml/core_kernel 0.9.0: System-independent part of Core
@@ -5228,7 +5228,7 @@ dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values 
 dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1.2: An OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
-dev-ml/findlib 1.7.1: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.7.1 1.7.2: OCaml tool to find/use non-standard packages
 dev-ml/flow_parser 0.44.0 0.44.1 0.46.0: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
@@ -5240,9 +5240,10 @@ dev-ml/herelib 112.35.00: Syntax extension for inserting the current location
 dev-ml/iTeML 2.5 2.6: Inline (Unit) Tests for OCaml
 dev-ml/incremental 0.9.0: Library for incremental computations
 dev-ml/incremental_kernel 0.9.0: Library for incremental computations depending only on Core_kernel
+dev-ml/integers 0.2.2: Various signed and unsigned integer types for OCaml
 dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
 dev-ml/jane-street-headers 0.9.0: Jane Street header files
-dev-ml/jbuilder 1.0_beta8: A composable build system for OCaml
+dev-ml/jbuilder 1.0_beta8 1.0_beta9: A composable build system for OCaml
 dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
 dev-ml/js_of_ocaml 2.8.4-r1 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.0 1.0.1: Non-blocking streaming JSON codec for OCaml
@@ -5265,7 +5266,7 @@ dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/mtime 0.8.4 1.0.0: OCaml module to access monotonic wall-clock time
-dev-ml/oasis 0.4.8: OASIS is a tool to integrate a configure, build and install system in OCaml project
+dev-ml/oasis 0.4.8 0.4.10: OASIS is a tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
@@ -5276,7 +5277,7 @@ dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libraries so they
 dev-ml/ocaml-conduit 0.15.3: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 1.2: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.4.0 2.4.1: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4 0.12.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
 dev-ml/ocaml-dns 0.20.0 0.20.1: A pure OCaml implementation of the DNS protocol
@@ -5320,7 +5321,7 @@ dev-ml/ocamlweb 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 dev-ml/ocsigen-start 1.0.0 9999: Eliom Base Application with users, (pre)registration, notifications, etc.
 dev-ml/ocsigen-toolkit 1.0.0 9999: User interface widgets for Ocsigen applications
-dev-ml/octavius 0.2.0: ocamldoc comment syntax parser
+dev-ml/octavius 0.2.0 1.1.0: ocamldoc comment syntax parser
 dev-ml/ocurl 0.6.1 0.7.9: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/ojquery 0.1 9999: jQuery Binding for Eliom.
@@ -8171,7 +8172,7 @@ dev-python/pycadf 2.5.0: python implementation of DMTF Cloud Audit (CADF) data m
 dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
-dev-python/pycapnp 0.5.12: Python wrapping of the Cap'n Proto library
+dev-python/pycapnp 0.5.12-r1: Python wrapping of the Cap'n Proto library
 dev-python/pycares 2.1.0 2.1.1: Python interface for c-ares
 dev-python/pycdf 0.6.3-r1: Python interface to scientific netCDF library
 dev-python/pycdio 0.20-r1: Python OO interface to libcdio (CD Input and Control library)
@@ -9023,7 +9024,7 @@ dev-ros/gazebo_plugins 2.6.2 9999: Robot-independent Gazebo plugins for sensors,
 dev-ros/gazebo_ros 2.6.2 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
 dev-ros/gazebo_ros_control 2.6.1 2.6.2 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.5.5 9999: ROS C++ message definition and serialization generators
-dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
+dev-ros/geneus 2.2.5 2.2.6 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.16 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.8 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
@@ -14111,7 +14112,7 @@ media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
 media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 9999: Complete solution to record, convert and stream audio and video
-media-video/libva-utils 1.8.0 1.8.1 9999: Collection of utilities and tests for VA-API
+media-video/libva-utils 1.8.0 1.8.1 1.8.2 9999: Collection of utilities and tests for VA-API
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
@@ -16249,7 +16250,7 @@ sci-electronics/gtkwave 3.3.68 3.3.73: A wave viewer for LXT, LXT2, VZT, GHW and
 sci-electronics/gwave 20090213-r1 20120229: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
-sci-electronics/kicad 4.0.4 4.0.5: Electronic Schematic and PCB design tools.
+sci-electronics/kicad 4.0.4 4.0.5-r1 4.0.6: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10 0.24.9: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
 sci-electronics/linsmith 0.99.28 0.99.30 0.99.30-r1: Smith charting program, mainly designed for educational use
@@ -18731,8 +18732,8 @@ x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, su
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
 x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send & sw-notify-send
 x11-libs/libtinynotify-systemwide 0.0.2 0.1 9999: A system-wide notifications module for libtinynotify
-x11-libs/libva 1.7.3 1.8.0 1.8.1 9999: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 1.7.3 1.8.0 1.8.1 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva 1.7.3 1.8.0 1.8.1 1.8.2 9999: Video Acceleration (VA) API for Linux
+x11-libs/libva-intel-driver 1.7.3 1.8.0 1.8.1 1.8.2 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
