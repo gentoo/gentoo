@@ -13406,23 +13406,23 @@ media-plugins/kodi-game-libretro 9999: Libretro compatibility layer for the Kodi
 media-plugins/kodi-inputstream-adaptive 1.0.6-r1 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 1.0.4 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.2.1-r1 1.3.2 9999: Libretro compatibility layer for the Kodi Game API
-media-plugins/kodi-pvr-argustv 2.5.4-r1 9999: Kodi's ARGUS TV client addon
-media-plugins/kodi-pvr-demo 2.4.3 9999: Demo PVR for Kodi
-media-plugins/kodi-pvr-dvblink 3.3.11-r1 9999: Kodi's DVBLink client addon
-media-plugins/kodi-pvr-dvbviewer 2.4.7 9999: Kodi's DVBViewer client addon
-media-plugins/kodi-pvr-filmon 1.4.7 9999: Kodi's Filmon client addon
+media-plugins/kodi-pvr-argustv 2.5.4-r1 2.5.6 9999: Kodi's ARGUS TV client addon
+media-plugins/kodi-pvr-demo 2.4.3 2.4.6 9999: Demo PVR for Kodi
+media-plugins/kodi-pvr-dvblink 3.3.11-r1 3.4.5 9999: Kodi's DVBLink client addon
+media-plugins/kodi-pvr-dvbviewer 2.4.7 2.4.11 9999: Kodi's DVBViewer client addon
+media-plugins/kodi-pvr-filmon 1.4.7 1.4.8 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV and Radio PVR client addon for Kodi
-media-plugins/kodi-pvr-iptvsimple 2.4.8 9999: Kodi's IPTVSimple client addon
-media-plugins/kodi-pvr-mediaportal-tvserver 2.4.16 9999: Kodi's MediaPortal TVServer client addon
+media-plugins/kodi-pvr-iptvsimple 2.4.8 2.4.11 9999: Kodi's IPTVSimple client addon
+media-plugins/kodi-pvr-mediaportal-tvserver 2.4.16 2.4.19 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 4.13.1 4.14.0 4.14.1 4.15.0 9999: MythTV PVR for Kodi
-media-plugins/kodi-pvr-nextpvr 2.4.11 9999: Kodi's NextPVR client addon
-media-plugins/kodi-pvr-njoy 2.4.2 9999: Kodi's Njoy N7 client addon
-media-plugins/kodi-pvr-pctv 1.4.5 9999: Kodi's PCTV client addon
-media-plugins/kodi-pvr-stalker 2.8.3 9999: Kodi's Stalker client addon
+media-plugins/kodi-pvr-nextpvr 2.4.11 2.4.13 9999: Kodi's NextPVR client addon
+media-plugins/kodi-pvr-njoy 2.4.2 2.4.3 9999: Kodi's Njoy N7 client addon
+media-plugins/kodi-pvr-pctv 1.4.5 1.4.7 9999: Kodi's PCTV client addon
+media-plugins/kodi-pvr-stalker 2.8.3 2.8.6 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.0.2 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 2.6.17 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 2.4.6 9999: Kodi's VuPlus client addon
-media-plugins/kodi-pvr-wmc 1.4.7 9999: Kodi's Windows Media Center client addon
+media-plugins/kodi-pvr-vuplus 2.4.6 2.4.10 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-wmc 1.4.7 1.4.9 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 1.1.0 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 1.1.0 9999: Biogenesis screensaver for Kodi
 media-plugins/kodi-screensaver-crystalmorph 9999: Crystalmorph screensaver for Kodi
