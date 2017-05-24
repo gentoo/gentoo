@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,12 +27,12 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.30.1:2
 	>=dev-libs/libgcrypt-1.4.2:0=
 	dev-libs/libgpg-error
-	>=net-libs/gnutls-3.0
+	>=net-libs/gnutls-3.0:0=
 	>=x11-libs/cairo-1.2
 	>=x11-libs/gtk+-2.18:2
 	x11-libs/libX11
 	gtk3? ( >=x11-libs/gtk+-2.91.3:3 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.4 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.4:= )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? (
 		${PYTHON_DEPS}
@@ -48,7 +48,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	vala? (
 		$(vala_depend)
-		>=dev-libs/gobject-introspection-0.9.4:= )
+		>=dev-libs/gobject-introspection-0.9.4 )
 "
 # eautoreconf requires gnome-common
 
