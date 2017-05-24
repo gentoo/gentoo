@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-lang/perl
-	sci-biology/hmmer"
+	sci-biology/hmmer:2"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
