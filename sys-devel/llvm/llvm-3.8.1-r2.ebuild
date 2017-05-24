@@ -197,7 +197,7 @@ src_prepare() {
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		eapply "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
+		eapply "${FILESDIR}"/3.8.1/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		# Support gcc4.9 search paths
 		# https://github.com/llvm-mirror/clang/commit/af4db76e059c1a3
