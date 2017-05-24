@@ -12,7 +12,8 @@ DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
 SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.zip"
 
-LICENSE="Apache-2.0"
+# source: LICENSE.txt and NOTICE.txt
+LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
