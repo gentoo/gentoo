@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
+# Broken runscript/changed behavior causing lvm2 to fail
+# on boot. Bug #617578
+=sys-fs/lvm2-2.02.17
+
 # Mike Gilbert <floppym@gentoo.org> (23 May 2017)
 # Needs more testing.
 ~net-misc/networkmanager-1.8.0
