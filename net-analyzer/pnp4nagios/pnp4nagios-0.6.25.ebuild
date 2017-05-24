@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 # A lot of things (sync mode, for one) are broken with nagios-4.x.
 DEPEND="
-	>=dev-lang/php-5.3:*[json,simplexml,zlib,xml,filter]
+	>=dev-lang/php-5.3:*[gd,json,simplexml,zlib,xml,filter]
 	>=net-analyzer/rrdtool-1.2[graph,perl]
 	|| ( <net-analyzer/nagios-core-4 net-analyzer/icinga net-analyzer/icinga2 )"
 
