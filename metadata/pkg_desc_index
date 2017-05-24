@@ -14851,7 +14851,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.22.5: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.26 3.3.27 3.5.12: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.40 2.8.45: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.40 2.8.45 2.8.46: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.6.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
@@ -17062,7 +17062,7 @@ sys-apps/dbus 1.10.12 1.10.16-r1 1.10.18: A message bus system, a simple way for
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.7 4.8 4.8.1 4.8.1.1: A selection of tools from Debian
-sys-apps/diffutils 3.3 3.5: Tools to make diffs and compare files
+sys-apps/diffutils 3.3 3.5 3.6: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0 3.1: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
@@ -17400,7 +17400,7 @@ sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.4.0 2.5.3: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
-sys-block/nbd 3.11 3.14 3.15.1 3.15.2: Userland client/server for kernel network block device
+sys-block/nbd 3.11 3.15.2 3.15.3: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2 2.0.873-r3 2.0.874: A performant, transport independent, multi-platform implementation of RFC3720
@@ -18395,8 +18395,8 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 45.0.2552.812: A fast and secure web browser
-www-client/opera-beta 45.0.2552.634: A fast and secure web browser
-www-client/opera-developer 46.0.2590.0 46.0.2602.0: A fast and secure web browser
+www-client/opera-beta 46.0.2597.6: A fast and secure web browser
+www-client/opera-developer 46.0.2602.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
