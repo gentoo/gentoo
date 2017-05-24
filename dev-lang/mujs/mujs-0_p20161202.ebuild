@@ -28,3 +28,7 @@ src_prepare() {
 	append-cflags -fPIC
 	tc-export CC
 }
+
+src_install() {
+	emake DESTDIR="${ED}" install
+}

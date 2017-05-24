@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
-ES_VERSION="2.4.4"
+ES_VERSION="5.3.2"
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ MY_PN=${PN/-py/}
 DESCRIPTION="official Python low-level client for Elasticsearch"
 HOMEPAGE="http://elasticsearch-py.rtfd.org/"
 SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	test? ( https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz )"
+	test? ( https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -40,6 +40,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
 		virtual/jre:1.8 )"
 
+# FEATURES="test -usersandbox" emerge dev-python/elasticsearch-py
 python_test() {
 	ES="${WORKDIR}/elasticsearch-${ES_VERSION}"
 	ES_PORT="25124"
@@ -48,18 +49,20 @@ python_test() {
 	PID="${ES}/elasticsearch.pid"
 
 	# run Elasticsearch instance on custom port
-	sed -i "s/# http.port: 9200/http.port: ${ES_PORT}/g; \
-		s/# cluster.name: my-application/cluster.name: ${ES_INSTANCE}/g" \
+	sed -i "s/#http.port: 9200/http.port: ${ES_PORT}/g; \
+		s/#cluster.name: my-application/cluster.name: ${ES_INSTANCE}/g" \
 		"${ES}/config/elasticsearch.yml" || die
 
 	# start local instance of elasticsearch
-	"${ES}/bin/elasticsearch" -d -p "${PID}" || die
+	"${ES}"/bin/elasticsearch -d -p "${PID}" -Edefault.path.repo=/ || die
 
 	local i
+	local es_started=0
 	for i in {1..15}; do
-		grep -q "started" "${ES_LOG}" 2> /dev/null
+		grep -q "started" ${ES_LOG} 2> /dev/null
 		if [[ $? -eq 0 ]]; then
 			einfo "Elasticsearch started"
+			es_started=1
 			eend 0
 			break
 		elif grep -q 'BindException\[Address already in use\]' "${ES_LOG}" 2>/dev/null; then
@@ -73,6 +76,8 @@ python_test() {
 			continue
 		fi
 	done
+
+	[[ $es_started -eq 0 ]] && die "Elasticsearch failed to start"
 
 	export TEST_ES_SERVER="localhost:${ES_PORT}"
 	esetup.py test || die
