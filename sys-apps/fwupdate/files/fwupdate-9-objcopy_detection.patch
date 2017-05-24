@@ -1,0 +1,45 @@
+From affc219a5bac93cb6e774879c874c203f755ba11 Mon Sep 17 00:00:00 2001
+From: Raymund Will <rw@suse.com>
+Date: Mon, 13 Mar 2017 12:57:07 +0100
+Subject: [PATCH] Fix regression in "objcopy version check" (AKA `expr: syntax
+ error`)
+
+While commit 8418fee4 may have fixed the check for "some distributions"
+it broke the same check for others, like
+
+`GNU objcopy (WinAVR 20090313) 2.19`
+`GNU objcopy (AVR_8_bit_GNU_Toolchain_3.4.3_1072) 2.23.2`
+`GNU objcopy (Codescape GNU Tools 2016.05-03 for MIPS MTI Bare Metal) 2.24.90`
+`GNU objcopy (GNU Binutils; openSUSE Leap 42.2) 2.26.1`
+`GNU objcopy (GNU Binutils; SUSE Linux Enterprise 12) 2.26.1`
+
+(some more, some less relevant... ;)
+
+This version is meant to cover them all (or at least be easily extensible).
+
+Signed-off-by: Raymund Will <rw@suse.com>
+---
+ efi/Makefile | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/efi/Makefile b/efi/Makefile
+index 920c096..faf8ee2 100644
+--- a/efi/Makefile
++++ b/efi/Makefile
+@@ -15,7 +15,15 @@ CCLDFLAGS	?= -nostdlib -Wl,--warn-common \
+ 	-Wl,-shared -Wl,-Bsymbolic -L$(LIBDIR) -L$(GNUEFIDIR) \
+ 	-Wl,--build-id=sha1 -Wl,--hash-style=sysv \
+ 	$(GNUEFIDIR)/crt0-efi-$(ARCH).o
+-OBJCOPY_GTE224 = $(shell expr `$(OBJCOPY) --version |grep ^"GNU objcopy" | sed 's/^[^0-9]*//g' | cut -f1-2 -d.` \>= 2.24)
++
++define objcopy_version =
++  $(OBJCOPY) --version |
++    sed -e '/^GNU objcopy/! d;
++	    : loop1; s/([^)(]*)//g;   t loop1;
++	    : loop2; s/\[[^][]*\]//g; t loop2;
++	    s/.* \([0-9][0-9]*\.[0-9][0-9]*\).*/\1/;'
++endef
++OBJCOPY_GTE224 := $(shell expr `$(objcopy_version)` \>= 2.24)
+ 
+ FWUP = fwupdate
+ 
