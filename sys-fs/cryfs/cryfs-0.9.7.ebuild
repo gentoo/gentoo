@@ -38,8 +38,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# remove tests that require internet access to comply with Gentoo policy
-	sed -i '/CurlHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
-	sed -i '/FakeHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
+	sed -i -e '/CurlHttpClientTest.cpp/d' -e '/FakeHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
