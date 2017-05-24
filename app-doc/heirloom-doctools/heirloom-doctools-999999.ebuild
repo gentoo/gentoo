@@ -1,6 +1,6 @@
 EAPI=6
 
-inherit git-r3 flag-o-matic toolchain-funcs multilib readme-gentoo
+inherit git-r3 flag-o-matic toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="Classic Unix documentation tools ported from OpenSolaris"
 HOMEPAGE="https://n-t-roff.github.io/heirloom/doctools.html"
@@ -34,7 +34,7 @@ src_configure() {
 		-e "s:@RANLIB@:$(tc-getRANLIB):" \
 		-e "s:@libdir@:$(get_libdir):" \
 		"${FILESDIR}"/default.config \
-		> "${S}"/mk.config
+		> "${S}"/mk.config || die
 }
 
 src_compile() {
