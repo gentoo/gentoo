@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs"
 
-RDEPEND="~sci-biology/hmmer-2.3.2"
+RDEPEND="sci-biology/hmmer:2"
 DEPEND="
 	${RDEPEND}
 	app-shells/tcsh
