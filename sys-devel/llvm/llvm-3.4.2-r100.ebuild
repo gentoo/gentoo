@@ -146,14 +146,14 @@ src_prepare() {
 	python_setup
 }
 
-multilib_src_configure() {
+src_configure() {
 	# disable timestamps since they confuse ccache
 	local conf_flags=(
 		--disable-timestamps
 		--enable-keep-symbols
 		--enable-shared
 		--with-optimize-option=
-		--enableoptimized
+		--enable-optimized
 		--disable-assertions
 		--disable-expensive-checks
 		--disable-terminfo
@@ -164,12 +164,6 @@ multilib_src_configure() {
 
 		ac_cv_prog_XML2CONFIG=""
 	)
-
-	if use clang; then
-		conf_flags+=(
-			--with-clang-resource-dir=../lib/clang/${PV}
-		)
-	fi
 
 	if use libffi; then
 		local CPPFLAGS=${CPPFLAGS}
