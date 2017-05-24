@@ -55,15 +55,15 @@ src_test() {
 	local TMPDIR="${T}"
 	addread /dev/fuse
 	addwrite /dev/fuse
-	local tests_failed=""
+	local tests_failed=()
 
 	for i in gitversion cpp-utils parallelaccessstore blockstore blobstore fspp cryfs cryfs-cli ; do
-		${BUILD_DIR}/test/${i}/${i}-test || tests_failed+="${i} "
+		"${BUILD_DIR}"/test/${i}/${i}-test || tests_failed+=( "${i}" )
 	done
 
 	adddeny /dev/fuse
 
-	if [ -n "$tests_failed" ] ; then
+	if [[ -n ${tests_failed[@]} ]] ; then
 		eerror "The following tests failed:"
 		eerror "$tests_failed"
 		die "At least one test failed"
