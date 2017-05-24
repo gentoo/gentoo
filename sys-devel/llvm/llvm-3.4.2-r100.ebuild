@@ -197,8 +197,8 @@ src_install() {
 	if ! use clang; then
 		rm "${WORKDIR}"/${PN}-3.4-manpages/clang.1 || die
 	else
-		for tool in clang{,++}{,-${PV}} ; do
-			dosym /usr/bin/${tool} /usr/bin/${CHOST}-${tool}
+		for tool in clang{,++} ; do
+			dosym ${tool} /usr/bin/${CHOST}-${tool}
 		done
 	fi
 	doman "${WORKDIR}"/${PN}-3.4-manpages/*.1
