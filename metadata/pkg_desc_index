@@ -9309,7 +9309,7 @@ dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for re
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
 dev-ruby/akismet 1.0.2 2.0.0: A Ruby client for the Akismet API
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
-dev-ruby/amatch 0.3.0: Approximate Matching Extension for Ruby
+dev-ruby/amatch 0.3.0 0.3.1: Approximate Matching Extension for Ruby
 dev-ruby/ammeter 1.1.4 1.1.4-r1: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
 dev-ruby/amq-protocol 1.9.2 2.1.0 2.2.0: An AMQP 0.9.1 serialization library for Ruby
