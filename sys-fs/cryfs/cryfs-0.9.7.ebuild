@@ -36,6 +36,14 @@ RDEPEND=">=dev-libs/boost-1.56:=
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
+src_prepare() {
+	# remove tests that require internet access to comply with Gentoo policy
+	sed -i '/CurlHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
+	sed -i '/FakeHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
+
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		"-DBoost_USE_STATIC_LIBS=off"
