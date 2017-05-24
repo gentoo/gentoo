@@ -1,0 +1,16 @@
+Index: tools/gn/bootstrap/bootstrap.py
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 5e624eab4fc4294f054bece4fcbd179cd4ce996f..c52779ef4327df3e6adb76b77bc7735e2724bedc 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -600,7 +601,9 @@ def write_gn_ninja(path, root_gen_dir, options):
+         'base/threading/platform_thread_posix.cc',
+         'base/threading/thread_local_storage_posix.cc',
+         'base/threading/worker_pool_posix.cc',
+-        'base/time/time_posix.cc',
++        'base/time/time_conversion_posix.cc',
++        'base/time/time_exploded_posix.cc',
++        'base/time/time_now_posix.cc',
+         'base/trace_event/heap_profiler_allocation_register_posix.cc',
+     ])
+     static_libraries['libevent'] = {
