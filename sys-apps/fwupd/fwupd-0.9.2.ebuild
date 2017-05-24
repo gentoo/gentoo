@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc elf nls systemd uefi"
+IUSE="colorhug dell elf systemd uefi"
 
 RDEPEND="
 	app-crypt/gpgme
