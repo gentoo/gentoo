@@ -61,12 +61,14 @@ pkg_setup() {
 	fi
 	CC=${GCC}
 	local base=$(basename ${GCC})
+	CXX="${base/gcc/g++}"
 	GNATMAKE="${base/gcc/gnatmake}"
 	GNATBIND="${base/gcc/gnatbind}"
 	if [[ ${base} != ${GCC} ]] ; then
 		local path=$(dirname ${GCC})
 		GNATMAKE="${path}/${GNATMAKE}"
 		GNATBIND="${path}/${GNATBIND}"
+		CXX="${path}/${CXX}"
 	fi
 	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
