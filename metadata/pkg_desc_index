@@ -16268,7 +16268,7 @@ sci-electronics/qelectrotech 0.50 9999: Qt5 application to design electric diagr
 sci-electronics/quartus-prime-lite 15.1.0.185 15.1.0.185-r1: Full-featured EDA product for altera devices
 sci-electronics/qucs 0.0.17.130503 0.0.18: Quite Universal Circuit Simulator in Qt4
 sci-electronics/sigrok-cli 0.5.0 0.6.0 9999: Command-line client for the sigrok logic analyzer software
-sci-electronics/spice 3.5.5-r1: general-purpose circuit simulation program
+sci-electronics/spice 3.5.5-r1 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool
 sci-electronics/systemc 2.2.0-r2 2.3.0 2.3.1: A C++ based modeling platform for VLSI and system-level co-design
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
@@ -17709,6 +17709,7 @@ sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
+sys-fs/cryfs 0.9.7 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptsetup 1.7.2 1.7.4 1.7.5: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
