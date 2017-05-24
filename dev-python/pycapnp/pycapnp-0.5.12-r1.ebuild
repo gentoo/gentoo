@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm"
 IUSE=""
 
-RDEPEND="dev-libs/capnproto:="
+RDEPEND=">=dev-libs/capnproto-0.6:="
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 "
