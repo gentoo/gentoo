@@ -10,7 +10,7 @@ DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
 SLOT=0
-IUSE="debug test update-check"
+IUSE="test update-check"
 
 LICENSE="LGPL-3 BSD-2 MIT"
 # cryfs - LGPL-3
@@ -51,12 +51,6 @@ src_configure() {
 		"-DBUILD_TESTING=$(usex test)"
 	)
 
-	if use debug ; then
-		CMAKE_BUILD_TYPE=Debug
-	else
-		CMAKE_BUILD_TYPE=Release
-	fi
-
 	cmake-utils_src_configure
 }
 
@@ -77,4 +71,9 @@ src_test() {
 		eerror "$tests_failed"
 		die "At least one test failed"
 	fi
+}
+
+src_install() {
+	dobin "${BUILD_DIR}"/src/cryfs-cli/cryfs
+	cmake-utils_src_install
 }
