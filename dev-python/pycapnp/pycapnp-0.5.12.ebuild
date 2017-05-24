@@ -20,3 +20,11 @@ RDEPEND="dev-libs/capnproto"
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 "
+
+PATCHES=( "${FILESDIR}/capn06.patch" )
+
+src_prepare() {
+	distutils-r1_src_prepare
+	# regen cython files
+	rm -f capnp/lib/capnp.cpp || die
+}
