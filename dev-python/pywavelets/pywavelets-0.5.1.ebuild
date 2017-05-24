@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1
 
@@ -22,7 +22,8 @@ IUSE="doc examples test"
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/numpydoc[${PYTHON_USEDEP}] )
 	test? (
 	   ${RDEPEND}
 	   dev-python/nose[${PYTHON_USEDEP}]
