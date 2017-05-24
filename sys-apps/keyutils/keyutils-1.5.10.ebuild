@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 inherit multilib eutils toolchain-funcs linux-info multilib-minimal
 
@@ -17,6 +17,12 @@ IUSE="static static-libs test"
 RDEPEND=""
 DEPEND="!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.10-makefile-fixup.patch
+	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
+	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="~KEYS"
 	use test && CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS"
@@ -26,10 +32,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.5.5-makefile-fixup.patch
-	epatch "${FILESDIR}"/${PN}-1.5.9-endian-check-{1,2}.patch #426424
-	epatch "${FILESDIR}"/${PN}-1.5.9-disable-tests.patch #519062 #522050
-	epatch "${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
+	epatch "${PATCHES[@]}"
 
 	# The lsb check is useless, so avoid spurious command not found messages.
 	sed -i -e 's,lsb_release,:,' tests/prepare.inc.sh || die
@@ -64,7 +67,7 @@ multilib_src_compile() {
 		export NO_ARLIB=0
 		# Hack the progs to depend on the static lib instead.
 		sed -i \
-			-e '/^.*:.*[$](DEVELLIB)$/s:$(DEVELLIB):$(ARLIB):' \
+			-e '/^.*:.*[$](DEVELLIB)$/s:$(DEVELLIB):$(ARLIB) $(SONAME):' \
 			Makefile || die
 	else
 		export NO_ARLIB=$(usex static-libs 0 1)
