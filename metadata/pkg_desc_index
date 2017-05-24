@@ -17064,7 +17064,7 @@ sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.7 4.8 4.8.1 4.8.1.1: A selection of tools from Debian
 sys-apps/diffutils 3.3 3.5: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
-sys-apps/dmidecode 2.12-r1 3.0: DMI (Desktop Management Interface) table related utilities
+sys-apps/dmidecode 2.12-r1 3.0 3.1: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r4 1.7-r5: Dog is better than cat
 sys-apps/dstat 0.7.3: Versatile replacement for vmstat, iostat and ifstat
@@ -17556,7 +17556,7 @@ sys-cluster/singularity 2.2.1: Application containers for Linux
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.10.0 2.10.0-r1 2.10.1 2.10.1-r1 2.13.0 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
-sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.3: Resource manager and queuing system based on OpenPBS
+sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
@@ -17891,7 +17891,7 @@ sys-libs/libselinux 2.5 2.5-r1 2.6 9999: SELinux userland library
 sys-libs/libsemanage 2.5 2.6 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.5 2.6 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.0.1 1.1.11 1.1.15 1.1.16: Provides a library for logging service-related events
-sys-libs/libsmbios 2.3.0-r1 2.3.2: Provide access to (SM)BIOS information
+sys-libs/libsmbios 2.3.0-r1 2.3.2 2.3.3: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6 3.3.6-r1: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
