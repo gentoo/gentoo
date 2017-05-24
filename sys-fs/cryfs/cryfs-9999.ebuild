@@ -68,7 +68,7 @@ src_test() {
 
 	if [[ -n ${tests_failed[@]} ]] ; then
 		eerror "The following tests failed:"
-		eerror "$tests_failed"
+		eerror "$tests_failed[@]"
 		die "At least one test failed"
 	fi
 }
