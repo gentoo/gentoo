@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dbus? (
 		dev-qt/qtdbus:5
-		dev-qt/qtgui:5[dbus]
+		>=dev-qt/qtgui-5.7:5[dbus]
 	)
 "
 DEPEND="${RDEPEND}
