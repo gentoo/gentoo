@@ -4655,7 +4655,7 @@ dev-libs/cl 1.2.3 9999: OpenCL bindings for Erlang
 dev-libs/cloog 0.18.0 0.18.1 0.18.3 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.4.0 2.4.3_pre20150112 2.4.4 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorithms and data structures in C
-dev-libs/confuse 3.0: a configuration file parser library
+dev-libs/confuse 3.0 3.1: a configuration file parser library
 dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
