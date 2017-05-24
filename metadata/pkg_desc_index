@@ -137,7 +137,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.11.0 3.12.1 3.12.2: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 5.1.2 5.2.2 5.3.1: Tool for managing events and logs
+app-admin/logstash-bin 5.2.2 5.3.2 5.4.0: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1 0.9.7.1-r2: The Linux Security Auditing Tool
@@ -1361,7 +1361,7 @@ app-emulation/spice-vdagent 0.17.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
-app-emulation/vagrant 1.9.2 1.9.3: A tool for building and distributing development environments
+app-emulation/vagrant 1.9.3 1.9.5: A tool for building and distributing development environments
 app-emulation/vice 2.4.22 2.4.27 2.4.27-r2 2.4.27-r3 2.4.31: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.0-r3 1.4.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 4.0 5.0: Graphical console client for connecting to virtual machines
@@ -7565,8 +7565,8 @@ dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python 
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
-dev-python/elasticsearch-curator 4.1.2 4.2.5 4.2.6: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 2.3.0 2.4.1 5.0.1 5.1.0 5.2.0: official Python low-level client for Elasticsearch
+dev-python/elasticsearch-curator 4.2.6 4.3.1 5.0.4: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-py 2.3.0 2.4.1 5.0.1 5.1.0 5.2.0 5.3.0 5.4.0: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/eliot 0.4.0: Logging as Storytelling
@@ -12237,7 +12237,7 @@ lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring O
 lxde-base/lxde-common 0.5.5-r3 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0 0.5.0-r1 0.5.1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r4 0.5.5-r5: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
-lxde-base/lxdm 0.4.1-r9 0.5.3: LXDE Display Manager
+lxde-base/lxdm 0.4.1-r9 0.5.3 0.5.3-r1: LXDE Display Manager
 lxde-base/lxinput 0.3.2 0.3.5: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2 0.2.5: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.2 0.1.4 0.1.5: Provides files needed for LXDE application menus
