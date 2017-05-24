@@ -12,6 +12,6 @@ RDEPEND="
 		>=sys-apps/gawk-4.0.1-r1
 		sys-apps/mawk
 		sys-apps/nawk
-		sys-apps/busybox
+		app-busybox/awk
 	)
 	!<sys-apps/gawk-4.0.1-r1" #before 4.0.1-r1 awk symlinks did belong to gawk #455696

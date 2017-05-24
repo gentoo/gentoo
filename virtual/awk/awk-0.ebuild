@@ -12,5 +12,5 @@ RDEPEND="
 		sys-apps/gawk
 		sys-apps/mawk
 		sys-apps/nawk
-		sys-apps/busybox
+		app-busybox/awk
 	)"
