@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 ES_VERSION="2.4.4"
 
