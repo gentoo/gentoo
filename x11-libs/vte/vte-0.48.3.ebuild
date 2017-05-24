@@ -27,7 +27,7 @@ RDEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/zlib
 
-	crypt?  ( >=net-libs/gnutls-3.2.7 )
+	crypt?  ( >=net-libs/gnutls-3.2.7:0= )
 	glade? ( >=dev-util/glade-3.9:3.10 )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.0:= )
 "
