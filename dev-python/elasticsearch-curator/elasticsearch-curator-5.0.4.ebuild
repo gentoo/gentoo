@@ -3,10 +3,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_PN="curator"
-ES_VERSION="5.1.2"
+ES_VERSION="5.3.2"
 
 inherit distutils-r1
 
@@ -21,11 +21,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/elasticsearch-py-2.4.0[${PYTHON_USEDEP}]
-	<dev-python/elasticsearch-py-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/click-6.0[${PYTHON_USEDEP}]
-	>=dev-python/certifi-2016.9.26[${PYTHON_USEDEP}]
-	>=dev-python/urllib3-1.8.3[${PYTHON_USEDEP}]
+	>=dev-python/elasticsearch-py-5.3.0[${PYTHON_USEDEP}]
+	<dev-python/elasticsearch-py-6.0.0[${PYTHON_USEDEP}]
+	>=dev-python/click-6.7[${PYTHON_USEDEP}]
+	>=dev-python/certifi-2017.4.17[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.20[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.9.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
@@ -88,11 +88,6 @@ python_test() {
 python_prepare_all() {
 	# avoid downloading from net
 	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
-
-	# remove test TestCLIFixFor687 as it is only to be run on older versions
-	# and the call to curator.get_version(global_client) sometimes
-	# fails with Connection refused
-	sed -e '122,205d' -i test/integration/test_delete_indices.py || die
 
 	distutils-r1_python_prepare_all
 }
