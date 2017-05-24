@@ -52,7 +52,7 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 CDEPEND="
 	>=dev-libs/nss-3.21.1
 	>=dev-libs/nspr-4.12
-	crypt? ( x11-plugins/enigmail[-thunderbird(-)] )
+	crypt? ( >=x11-plugins/enigmail-1.9.6.1-r1 )
 	"
 
 DEPEND="${CDEPEND}
