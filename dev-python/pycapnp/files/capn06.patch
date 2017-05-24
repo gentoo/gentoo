@@ -1,0 +1,29 @@
+Index: pycapnp-0.5.12/capnp/includes/capnp_cpp.pxd
+===================================================================
+--- pycapnp-0.5.12.orig/capnp/includes/capnp_cpp.pxd
++++ pycapnp-0.5.12/capnp/includes/capnp_cpp.pxd
+@@ -100,8 +100,10 @@ cdef extern from "kj/array.h" namespace
+ ctypedef Promise[PyArray] PyPromiseArray
+ 
+ cdef extern from "kj/time.h" namespace " ::kj":
++    cdef cppclass Unsafe_:
++        Unsafe_()
+     cdef cppclass Duration:
+-        Duration(int64_t)
++        Duration(int64_t, Unsafe_)
+     # cdef cppclass TimePoint:
+     #     TimePoint(Duration)
+     cdef cppclass Timer:
+Index: pycapnp-0.5.12/capnp/lib/capnp.pyx
+===================================================================
+--- pycapnp-0.5.12.orig/capnp/lib/capnp.pyx
++++ pycapnp-0.5.12/capnp/lib/capnp.pyx
+@@ -1688,7 +1688,7 @@ cdef class _Timer:
+         return self
+ 
+     cpdef after_delay(self, time) except +reraise_kj_exception:
+-        return _VoidPromise()._init(self.thisptr.afterDelay(capnp.Duration(time)))
++        return _VoidPromise()._init(self.thisptr.afterDelay(capnp.Duration(time, capnp.Unsafe_())))
+ 
+ def getTimer():
+     return _Timer()._init(helpers.getTimer(C_DEFAULT_EVENT_LOOP_GETTER().thisptr))
