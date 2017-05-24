@@ -37,7 +37,7 @@ SRC_URI+=" mirror://kernel/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit debug +demangle +doc gtk numa perl python slang unwind"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -131,7 +131,7 @@ perf_make() {
 	local arch=$(tc-arch-kernel)
 	emake V=1 \
 		CC="$(tc-getCC)" AR="$(tc-getAR)" LD="$(tc-getLD)" \
-		prefix="/usr" bindir_relative="bin" \
+		prefix="${EPREFIX}/usr" bindir_relative="bin" \
 		EXTRA_CFLAGS="${CFLAGS}" \
 		ARCH="${arch}" \
 		NO_DEMANGLE=$(puse demangle) \
