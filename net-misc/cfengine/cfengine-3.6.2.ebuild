@@ -112,6 +112,9 @@ src_install() {
 		insinto /var/cfengine
 		doins -r "${WORKDIR}/masterfiles"
 	fi
+
+	dodir /etc/env.d
+	echo 'CONFIG_PROTECT=/var/cfengine/masterfiles' >"${ED}/etc/env.d/99${PN}" || die
 }
 
 pkg_postinst() {
