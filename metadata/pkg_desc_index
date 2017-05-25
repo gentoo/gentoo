@@ -218,7 +218,7 @@ app-admin/sysstat 11.4.0 11.4.3-r1 11.4.4 11.5.6: System performance tools for L
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -8349,7 +8349,7 @@ dev-python/pystatgrab 0.7: pystatgrab is a set of Python bindings for the libsta
 dev-python/pystdf 1.3.1-r1: Python module that makes it easy to work with STDF
 dev-python/pysvg 0.2.2: Python SVG document creation library
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
-dev-python/pyswisseph 2.00.00_p2: Python extension to the AstroDienst Swiss Ephemeris
+dev-python/pyswisseph 2.00.00_p2 2.05.01_pre20160529: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.1.1-r2 3.3.0: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r1 0.5.2-r2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.2 3.0.2 3.0.3 3.0.6 3.0.7 9999: simple powerful testing with Python
@@ -19546,7 +19546,7 @@ xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plu
 xfce-base/thunar 1.6.10 1.6.10-r1 1.6.11: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applications for the Xfce desktop environment
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.0 4.12.0-r1 4.12.1: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.0 4.12.0-r1 4.12.1 4.13.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0 4.12.0-r1 4.12.0-r2 4.12.1 4.13.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1: A flexible, easy-to-use configuration management system for Xfce
@@ -19598,7 +19598,7 @@ xfce-extra/xfce4-power-manager 1.5.2 1.6.0: Power manager for the Xfce desktop e
 xfce-extra/xfce4-pulseaudio-plugin 0.2.4 0.2.5: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
 xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
-xfce-extra/xfce4-screenshooter 1.8.2: Xfce4 screenshooter application and panel plugin
+xfce-extra/xfce4-screenshooter 1.8.2 1.8.99: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.2.6 1.2.97 1.2.98: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.4.6 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha (from the same authors)
