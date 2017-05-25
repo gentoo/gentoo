@@ -4766,7 +4766,7 @@ dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applicati
 dev-libs/libarcus 1.0.0_pre20160307 2.3.1: This library facilitates communication between Cura and its backend
 dev-libs/libassuan 2.4.3-r1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
-dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2 7.4.4: Implementation for atomic memory update operations
+dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2 7.4.4 7.6.0: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libb64 1.2 1.2.1: Fast Base64 encoding/decoding routines
@@ -14423,7 +14423,7 @@ net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pchar 1.5-r1: Internet bandwidth, latency, and loss of links analyzer
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.5.1 1.6.1 1.6.1-r1 1.6.2: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.5.1 1.5.2 1.5.3_pre20150925 1.5.3_pre20150925-r1 1.6.0 1.6.1 1.6.1-r1 1.6.2: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.24 0.6.25 0.6.25-r1 0.6.25-r2 0.6.25-r3: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0: Portmon is a network service monitoring daemon

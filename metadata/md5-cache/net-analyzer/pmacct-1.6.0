@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install
+DEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) mongodb? ( >=dev-libs/mongo-c-driver-0.8.1-r1 <dev-libs/mongo-c-driver-0.98 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) sqlite? ( =dev-db/sqlite-3* ) virtual/pkgconfig
+DESCRIPTION=A network tool to gather IP traffic information
+EAPI=6
+HOMEPAGE=http://www.pmacct.net/
+IUSE=64bit debug geoip geoipv2 ipv6 mongodb mysql postgres sqlite threads
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) mongodb? ( >=dev-libs/mongo-c-driver-0.8.1-r1 <dev-libs/mongo-c-driver-0.98 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) sqlite? ( =dev-db/sqlite-3* )
+REQUIRED_USE=?? ( geoip geoipv2 )
+SLOT=0
+SRC_URI=http://www.pmacct.net/pmacct-1.6.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=779723c8a219103fe2d15f91d9f801c2
