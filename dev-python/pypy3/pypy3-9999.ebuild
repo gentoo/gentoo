@@ -95,6 +95,7 @@ src_prepare() {
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
 	eapply "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
 	eapply_user
@@ -240,7 +241,8 @@ src_install() {
 #    "resource": "_resource_build.py" if sys.platform != "win32" else None,
 #    "lzma": "_lzma_build.py",
 #    "_decimal": "_decimal_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal )
+#    "ssl": "_ssl_build.py",
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )
