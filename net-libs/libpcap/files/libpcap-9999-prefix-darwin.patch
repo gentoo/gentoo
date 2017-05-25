@@ -1,10 +1,9 @@
 Prefix' Darwin systems are single arch, hijack Darwin7 case which assumes this setup
 Check for bluetooth/mgmt.h before use
 
-
---- a/configure.in
-+++ b/configure.in
-@@ -1117,7 +1117,7 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1271,7 +1267,7 @@
  	if test "$enable_universal" != "no"; then
  		case "$host_os" in
  
