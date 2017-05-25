@@ -1,6 +1,6 @@
---- a/configure.in
-+++ b/configure.in
-@@ -291,7 +291,12 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -317,7 +317,12 @@
  dnl XXX This could be done for cross-compiling, but for now it's not.
  dnl
  if test -z "$with_pcap" && test "$cross_compiling" = yes; then

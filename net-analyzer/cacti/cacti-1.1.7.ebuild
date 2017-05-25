@@ -50,7 +50,7 @@ src_install() {
 	cp -r . "${D}"${MY_HTDOCSDIR}
 
 	webapp_serverowned ${MY_HTDOCSDIR}/rra
-	webapp_serverowned ${MY_HTDOCSDIR}/log/cacti.log
+	webapp_serverowned ${MY_HTDOCSDIR}/log
 	webapp_configfile ${MY_HTDOCSDIR}/include/config.php
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 
