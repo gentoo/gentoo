@@ -8406,7 +8406,7 @@ dev-python/python-djvulibre 0.3.9 0.8: Set of Python bindings for the DjVuLibre 
 dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2 3.6.0: HTML documentation for Python
 dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV files
 dev-python/python-editor 0.4 1.0.3: Programmatically open an editor, capture the result.
-dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
+dev-python/python-efl 1.17.0 1.18.0: Python bindings for Enlightenment Fundation Libraries
 dev-python/python-engineio 1.4.0: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.3.2 0.3.3 0.4.4 0.4.5: A python client for etcd
 dev-python/python-ethtool 0.11: Ethernet settings python bindings
@@ -10069,7 +10069,7 @@ dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A source pretty printer for LaTeX - styles to stylise your source and code examples
 dev-tex/luatex 0.70.1-r2 0.76.0: An extended version of pdfTeX using Lua as an embedded scripting language
 dev-tex/metapost 1.780 1.803 1.902: System for producing graphics
-dev-tex/minted 2.0 2.1: LaTeX package for source code syntax highlighting
+dev-tex/minted 2.0 2.1 2.4.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/notoccite 20000720: Stop citations in figures, tables and contents changing citation order
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
@@ -14588,7 +14588,7 @@ net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records l
 net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.3.3 2.4.1: High-performance authoritative-only DNS server
+net-dns/knot 2.3.3 2.4.1 2.4.3: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 0.16-r1 2.0.2: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)

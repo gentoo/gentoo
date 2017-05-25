@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=LaTeX package for source code syntax highlighting
+EAPI=6
+HOMEPAGE=https://github.com/gpoore/minted
+IUSE=doc
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( BSD LPPL-1.3 LPPL-1.3b LPPL-1.3c )
+RDEPEND=dev-texlive/texlive-latexextra dev-python/pygments virtual/latex-base
+SLOT=0
+SRC_URI=https://github.com/gpoore/minted/archive/v2.4.1.tar.gz -> minted-2.4.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_compile:latex-package src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	latex-package	00777e2de6c20be92a1adce060eeafa4	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=d685e64e40419fda8d16f4f27c9af0d4
