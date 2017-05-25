@@ -292,11 +292,6 @@ www-apache/mod_authnz_persona
 >=virtual/pypy-5.7
 >=virtual/pypy3-5.7
 
-# Michael Palimaka <kensington@gentoo.org> (23 Apr 2017)
-# Doesn't work with any in-tree versions of vim. Inactive upstream.
-# Bug 607136. Masked for removal in 30 days.
-app-editors/vim-qt
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
