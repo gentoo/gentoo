@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,27 +17,5 @@ IUSE=""
 DEPEND=""
 RDEPEND="!app-text/htmltidy"
 
-S="${WORKDIR}/${P}"
-
 DOCS=( README/{CODESTYLE,README,CONTRIBUTING,LICENSE,VERSION}.md )
 HTML_DOCS=( README/README.html )
-
-BUILD_DIR="${S}/build/cmake"
-
-src_configure() {
-	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX=/usr
-		-DCMAKE_BUILD_TYPE=Release
-	)
-
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cd build/cmake || die
-	cmake-utils_src_compile
-}
-
-src_install() {
-	cmake-utils_src_install
-}
