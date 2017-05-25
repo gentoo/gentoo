@@ -1849,7 +1849,7 @@ app-misc/joy2key 1.6.3: An application that translates joystick events to keyboa
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r2: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3 0.9.4: A CalDAV based calendar
+app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3 0.9.4 0.9.5: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
@@ -14065,7 +14065,7 @@ media-video/cinelerra 2.3: The most advanced non-linear video editor and composi
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
-media-video/dcpomatic 2.10.2 2.11.7: create Digital Cinema Packages (DCPs) from videos, images and sound files
+media-video/dcpomatic 2.10.2 2.10.5 2.11.7: create Digital Cinema Packages (DCPs) from videos, images and sound files
 media-video/devedeng 4.8.7 4.8.8 9999: DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
 media-video/dfbsee 0.7.4-r1: an image viewer and video player based on DirectFB
 media-video/dirac 1.0.2 1.0.2-r1: Open Source video codec
