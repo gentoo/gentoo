@@ -14,7 +14,9 @@ SRC_URI="http://${PN}.com/downloads/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+gtk"
+IUSE="+alsa +gtk jack pulseaudio"
+
+REQUIRED_USE="^^ ( alsa jack pulseaudio )"
 
 RDEPEND="dev-cpp/cairomm
 	dev-cpp/glibmm:2
@@ -32,7 +34,7 @@ RDEPEND="dev-cpp/cairomm
 	media-libs/libsamplerate
 	media-libs/libsndfile
 	>=media-libs/libsub-1.2.1:1.0
-	media-libs/rtaudio
+	media-libs/rtaudio[alsa?,jack?,pulseaudio?]
 	>=media-video/ffmpeg-3:=
 	net-libs/libssh
 	net-misc/curl
@@ -88,6 +90,14 @@ src_prepare() {
 
 	if has_version ">media-gfx/imagemagick-7" ; then
 		epatch "${FILESDIR}"/${PN}-2.10.2-imagemagick-7.patch
+	fi
+
+	if use alsa ; then
+		sed -e "s|RtAudio::LINUX_PULSE|RtAudio::LINUX_ALSA|"\
+			-i src/wx/wx_util.h || die
+	elif use jack ; then
+		sed -e "s|RtAudio::LINUX_PULSE|RtAudio::UNIX_JACK|"\
+			-i src/wx/wx_util.h || die
 	fi
 
 	default
