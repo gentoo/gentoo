@@ -24,7 +24,9 @@ DEPEND="${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	use doc && has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	if use doc; then
+		has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	fi
 }
 
 src_unpack() {
