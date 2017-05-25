@@ -257,7 +257,7 @@ app-arch/createrepo 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.18.18 1.18.22 1.18.23: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.18.18 1.18.22 1.18.23 1.18.24: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45 0.4.46: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.12.0-r1 1.12.0-r2 1.14.1-r1 1.16.0-r2: Engrampa archive manager for MATE
@@ -1015,7 +1015,7 @@ app-editors/editra 0.7.20-r1: Multi-platform text editor supporting over 50 prog
 app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
-app-editors/emacs 18.59-r11 23.4-r14 23.4-r15 24.4-r4 24.5-r3 25.1 25.2: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r11 23.4-r14 23.4-r15 24.5-r3 25.1 25.2: The extensible, customizable, self-documenting real-time display editor
 app-editors/emacs-vcs 25.2.9999 26.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
@@ -13845,7 +13845,7 @@ media-sound/musescore 2.0.2-r1 2.0.3 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.1: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.5: Qt music player
 media-sound/ncmpc 0.24 0.24-r2 0.25 0.27: A ncurses client for the Music Player Daemon (MPD)
-media-sound/ncmpcpp 0.7.7 9999: featureful ncurses based MPD client inspired by ncmpc
+media-sound/ncmpcpp 0.7.7 0.8 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/neroaac 1.5.1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-sound/neutrino 0.8.4: A GNOME application to manage Creative music players using the PDE protocol
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
