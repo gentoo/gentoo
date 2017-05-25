@@ -29,7 +29,7 @@ CDEPEND="${PYTHON_DEPS}
 		>=dev-cpp/glibmm-2.14:2
 		dev-cpp/gtkmm:3.0
 		dev-libs/atk
-		x11-libs/pango
+		x11-libs/pango[X]
 		x11-libs/gtk+:3
 		gnome-base/libglade:2.0
 		>=x11-libs/cairo-1.5.12[glib,svg]
