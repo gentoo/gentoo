@@ -1,6 +1,5 @@
 Prefix' Solaris uses GNU ld
 
-
 --- a/aclocal.m4
 +++ b/aclocal.m4
 @@ -415,7 +415,7 @@

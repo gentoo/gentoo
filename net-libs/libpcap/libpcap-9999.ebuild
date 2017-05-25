@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,35 +13,31 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink static-libs canusb"
+IUSE="bluetooth dbus netlink static-libs usb"
 KEYWORDS=""
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	netlink? ( dev-libs/libnl:3[${MULTILIB_USEDEP}] )
-	canusb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
+	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
 	dbus? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.2.0-cross-linux.patch
-	"${FILESDIR}"/${PN}-1.6.1-configure.patch
 	"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
-	"${FILESDIR}"/${PN}-1.7.2-libnl.patch
+	"${FILESDIR}"/${PN}-9999-cross-linux.patch
+	"${FILESDIR}"/${PN}-9999-libnl.patch
+	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 
 src_prepare() {
 	default
-
-	mkdir bluetooth || die
-	cp "${FILESDIR}"/mgmt.h bluetooth/ || die
-
-	eapply_user
 
 	eautoreconf
 }
@@ -50,8 +46,8 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
 		$(use_enable bluetooth) \
-		$(use_enable canusb) \
 		$(use_enable dbus) \
+		$(use_enable usb) \
 		$(use_with netlink libnl)
 }
 
