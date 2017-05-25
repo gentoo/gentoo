@@ -5285,7 +5285,7 @@ dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-extunix 0.1.4: Thin bindings to various low-level system APIs
-dev-ml/ocaml-fileutils 0.5.1: Pure OCaml functions to manipulate real file (POSIX like) and filename
+dev-ml/ocaml-fileutils 0.5.1 0.5.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.7.1 2.7.2: OCaml library for manipulation of IP (and MAC) address representations
@@ -13937,7 +13937,7 @@ media-sound/sndfile-tools 1.03 1.03-r1: A small collection of programs that use 
 media-sound/sndpeek 1.4: real-time audio visualization
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
-media-sound/sonic-visualiser 2.5: Music audio files viewer and analiser
+media-sound/sonic-visualiser 2.5 3.0.2: Music audio files viewer and analiser
 media-sound/sooperlooper 1.7.3-r1: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.22.1: CD ripper for GNOME
 media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
@@ -14127,7 +14127,7 @@ media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 9.6.0 9.7.1 9.8.0 9.9.0 10.0.0 11.0.0-r1: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 9.6.0 9.7.1 9.8.0 9.9.0 10.0.0 11.0.0-r1 12.0.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.0.1-r1 4.0.1-r2: A software motion detector
 media-video/motiontrack 0.1.3-r1: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2 1.4.0 1.5.0: Modern Video Toolkit
@@ -16545,7 +16545,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.12.2 0.12.4 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.12.2 0.12.4 0.12.5 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3: Image processing routines for SciPy
