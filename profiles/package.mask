@@ -297,11 +297,6 @@ www-apache/mod_authnz_persona
 # Bug 607136. Masked for removal in 30 days.
 app-editors/vim-qt
 
-# Michał Górny <mgorny@gentoo.org> (22 Apr 2017)
-# Discontinued, replaced by dev-python/bcolz. No reverse dependencies
-# left. Removal in 30 days. Bug #564878.
-dev-python/blz
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
