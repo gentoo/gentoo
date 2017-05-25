@@ -425,9 +425,6 @@ app-editors/vim:X - Link console vim against X11 libraries to enable title and c
 app-editors/vim:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-editors/vim:racket - Enable support for Scheme using dev-scheme/racket
 app-editors/vim:vim-pager - Install vimpager and vimmanpager links
-app-editors/vim-qt:lto - Enable configure workaround for -flto
-app-editors/vim-qt:luajit - Use dev-lang/luajit instead of dev-lang/lua
-app-editors/vim-qt:racket - Enable support for Scheme using dev-scheme/racket
 app-editors/vis:tre - more memory efficient regex search using dev-libs/tre
 app-editors/xemacs:athena - Chooses the MIT Athena widget set
 app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop library
@@ -7752,10 +7749,6 @@ sys-cluster/swift:container - adds swift container support
 sys-cluster/swift:memcached - adds memcached support
 sys-cluster/swift:object - adds swift object support
 sys-cluster/swift:proxy - adds swift proxy support
-sys-cluster/sx:client - Access the SX Cluster from this machine via its Nginx server. Also responsible for tools required to run the server.
-sys-cluster/sx:ipv6 - Enable support for communication via IPv6.
-sys-cluster/sx:server - Enable SX's server component.
-sys-cluster/sx:ssl - Enable communication security via OpenSSL.
 sys-cluster/torque:autorun - Enable the AUTORUN_JOBS codebase
 sys-cluster/torque:cgroups - Enable pbs_mom to use linux cgroups to isolate jobs
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available
