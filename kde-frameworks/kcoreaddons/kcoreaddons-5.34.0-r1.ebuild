@@ -30,3 +30,10 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	# bug: 619656
+	local myctestargs=( -j1 )
+
+	kde5_src_test
+}
