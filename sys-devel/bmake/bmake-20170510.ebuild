@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils
 
-MK_VER=20151111
+MK_VER=20170505
 DESCRIPTION="NetBSD's portable make"
 HOMEPAGE="http://www.crufty.net/help/sjg/bmake.html"
 SRC_URI="http://void.crufty.net/ftp/pub/sjg/${P}.tar.gz
