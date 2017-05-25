@@ -15456,7 +15456,7 @@ net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 sup
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.7.1-r2 1.7.1-r4: Remote desktop viewer display system
+net-misc/tigervnc 1.7.1-r2 1.7.1-r4 1.8.0: Remote desktop viewer display system
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
