@@ -28,7 +28,7 @@ RDEPEND="dev-cpp/cairomm
 	dev-libs/openssl:0
 	|| ( media-gfx/graphicsmagick media-gfx/imagemagick )
 	media-libs/fontconfig:1.0
-	>=media-libs/libdcp-1.4.1:1.0
+	>media-libs/libdcp-1.4.4:1.0
 	media-libs/libsamplerate
 	media-libs/libsndfile
 	>=media-libs/libsub-1.2.1:1.0
@@ -85,6 +85,10 @@ src_prepare() {
 		-e '/video_mxf_content_test.cc/d' \
         -e '/film_metadata_test.cc/d' \
 		-i test/wscript || die
+
+	if has_version ">media-gfx/imagemagick-7" ; then
+		epatch "${FILESDIR}"/${PN}-2.10.2-imagemagick-7.patch
+	fi
 
 	default
 }
