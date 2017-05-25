@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (25 May 2017)
+# First GTK+3 version with known regressions:
+# https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
+# Masked for opt-in testing.
+>=xfce-base/xfce4-panel-4.13
+
 # Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
 # Broken runscript/changed behavior causing lvm2 to fail
 # on boot. Bug #617578
