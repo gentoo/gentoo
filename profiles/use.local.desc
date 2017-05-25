@@ -4796,6 +4796,9 @@ media-video/chaplin:transcode - Enable DVD ripping and transcoding
 media-video/clive:clipboard - Support reading from X clipboard
 media-video/clive:pager - Support pager!?
 media-video/clive:password - Support password controlled sites
+media-video/dcpomatic:alsa - Utilize alsa output of media-libs/rtaudio.
+media-video/dcpomatic:jack - Utilize jack output of media-libs/rtaudio.
+media-video/dcpomatic:pulseaudio - Utilize pulseaudio output of media-libs/rtaudio.
 media-video/dv2sub:kino - install kino plugin
 media-video/dvdrip:fping - Enables fping support for cluster rendering
 media-video/dvdrip:subtitles - Enables support for subtitle ripping
