@@ -85,6 +85,10 @@ src_prepare() {
         -e '/film_metadata_test.cc/d' \
 		-i test/wscript || die
 
+	if has_version ">media-gfx/imagemagick-7" ; then
+		epatch "${FILESDIR}"/${PN}-2.10.2-imagemagick-7.patch
+	fi
+
 	default
 }
 
