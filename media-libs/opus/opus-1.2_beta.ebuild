@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-2
 	EGIT_REPO_URI="git://git.opus-codec.org/opus.git"
 else
-	SRC_URI="http://downloads.xiph.org/releases/${PN}/${P/_/-}.tar.gz"
+	SRC_URI="https://github.com/xiph/opus/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	if [[ "${PV}" != *_alpha* ]] &&  [[ "${PV}" != *_beta* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 	fi
@@ -25,6 +25,11 @@ IUSE="ambisonics custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 DEPEND="doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}/${P/_/-}"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
