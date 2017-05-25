@@ -154,7 +154,7 @@ src_install() {
 	einfo "Renaming isql -> fbsql"
 	mv bin/isql bin/fbsql || die "failed to rename isql -> fbsql"
 
-	dobin bin/{fbsql,fbsvcmgr,fbtracemgr,gbak,gfix,gpre,gsec,gsplit,gstat,nbackup,qli}
+	dobin bin/{fb_config,fbsql,fbsvcmgr,fbtracemgr,gbak,gfix,gpre,gsec,gsplit,gstat,nbackup,qli}
 	dosbin bin/{firebird,fbguard,fb_lock_print}
 
 	insinto /usr/share/${PN}/help
