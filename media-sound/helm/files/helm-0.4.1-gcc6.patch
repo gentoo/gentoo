@@ -1,0 +1,24 @@
+From 9a94165d8c400e45d617bf2d7cb657a477f43915 Mon Sep 17 00:00:00 2001
+From: Hodorgasm <nsane457@gmail.com>
+Date: Tue, 20 Sep 2016 17:33:14 -0400
+Subject: [PATCH] Assume there exists lround if compiling with g++ in C++11 or
+ later
+
+GCC-6 doesn't define HAVE_LROUND, but lround is valid in C++ in dialects >= c++11.
+---
+ JUCE/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_flac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/JUCE/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_flac.c b/JUCE/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_flac.c
+index 87e2321e6..512b8279c 100644
+--- a/JUCE/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_flac.c
++++ b/JUCE/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_flac.c
+@@ -50,7 +50,7 @@
+ 
+ #ifndef FLAC__INTEGER_ONLY_LIBRARY
+ 
+-#if !defined(HAVE_LROUND)
++#if (!defined(__GNUC__) && !defined(HAVE_LROUND)) || __cplusplus < 201103L
+ #if defined(_MSC_VER)
+ #include <float.h>
+ #define copysign _copysign
