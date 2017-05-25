@@ -234,7 +234,8 @@ src_install() {
 #    "resource": "_resource_build.py" if sys.platform != "win32" else None,
 #    "lzma": "_lzma_build.py",
 #    "_decimal": "_decimal_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal )
+#    "ssl": "_ssl_build.py",
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )
