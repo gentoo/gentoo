@@ -29,7 +29,7 @@ S="${WORKDIR}/${PN}/src"
 
 src_prepare() {
 	ecvs_clean
-	cp  "${FILESDIR}"/debianize/* "${S}"
+	cp  "${FILESDIR}"/debianize/* "${S}" || die
 	epatch "${FILESDIR}"/patches/*.patch
 	epatch "${FILESDIR}"/libdkim-extra-options.patch
 	epatch "${FILESDIR}"/${P}-gcc6.patch
