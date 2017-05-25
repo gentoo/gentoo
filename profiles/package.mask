@@ -302,11 +302,6 @@ app-editors/vim-qt
 # left. Removal in 30 days. Bug #564878.
 dev-python/blz
 
-# Matthew Brewer <tomboy64@sina.cn> (19 Apr 2017)
-# Masking sys-cluster/sx and net-misc/libres3 for removal in 30 days.
-# Upstream completely vanished. Github mirror only contains outdated versions.
-sys-cluster/sx
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
