@@ -281,17 +281,6 @@ dev-ruby/sprockets-rails:2.2
 # Persona service has been discontinued. Masked for removal in 30 days.
 www-apache/mod_authnz_persona
 
-# Michał Górny <mgorny@gentoo.org> (25 Apr 2017)
-# New synced PyPy 2+3 release. Masked for testing. The distutils C++
-# patch needed major updates for both versions, we need to find some
-# test case for it. Plus, PyPy3 is now based on Python 3.5.
->=dev-python/pypy-5.7
->=dev-python/pypy-bin-5.7
->=dev-python/pypy3-5.7
->=dev-python/pypy3-bin-5.7
->=virtual/pypy-5.7
->=virtual/pypy3-5.7
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
