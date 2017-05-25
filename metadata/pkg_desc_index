@@ -13617,7 +13617,7 @@ media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer application
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2 2.8.1: A command line CD encoder
-media-sound/abcm2ps 8.12.9 8.13.0 8.13.2 8.13.3 8.13.5 8.13.8 8.13.9: A program to convert abc files to Postscript files
+media-sound/abcm2ps 8.12.9 8.13.9 8.13.10: A program to convert abc files to Postscript files
 media-sound/abcmidi 2017.04.10 2017.04.19: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
@@ -14599,9 +14599,9 @@ net-dns/nsd 4.1.14 4.1.15 4.1.16: An authoritative only, high performance, open 
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.8.1 3.9.0: A framework for managing DNS information
-net-dns/pdns 4.0.2 4.0.3 4.0.3-r2: The PowerDNS Daemon
+net-dns/pdns 4.0.2 4.0.3 4.0.3-r3: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
-net-dns/pdns-recursor 4.0.4: The PowerDNS Recursor
+net-dns/pdns-recursor 4.0.4 4.0.4-r1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking

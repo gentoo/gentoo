@@ -9,4 +9,4 @@ RDEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atapromise? ( sys-apps/pciutils
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:subversion src_unpack:subversion src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=28c173f69a89535791090081f2edf29a
+_md5_=bd0b0ce640c5a8381c3c757a5fd1c879
