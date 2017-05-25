@@ -13013,7 +13013,7 @@ media-libs/libcue 1.4.0: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.1.3-r1 2.1.4 2.2.1 2.2.3 2.2.4 2.2.5: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3: library for decoding DTS Coherent Acoustics streams used in DVD
-media-libs/libdcp 1.3.4 1.4.4: create and read Digital Cinema Packages using JPEG2000 and WAV files
+media-libs/libdcp 1.3.4 1.4.4 9999: create and read Digital Cinema Packages using JPEG2000 and WAV files
 media-libs/libde265 0.9 1.0.2 9999: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.1 0.6.2: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4: Barcode data matrix reading and writing library
@@ -13177,7 +13177,7 @@ media-libs/openicc 0.1.0: Config database to store, share and manipulate colour 
 media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2: An open-source JPEG 2000 library
 media-libs/opensubdiv 3.1.0 3.1.1: An Open-Source subdivision surface library
-media-libs/opus 1.1.3-r1 1.1.4 1.1.5 1.2_alpha2: Open codec designed for internet transmission of interactive speech and audio
+media-libs/opus 1.1.3-r1 1.1.4 1.1.5 1.2_beta: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
