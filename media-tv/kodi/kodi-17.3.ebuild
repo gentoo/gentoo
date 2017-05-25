@@ -56,9 +56,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libxml2
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
+	>=dev-libs/yajl-2
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-libs/libcdio
-	dev-libs/libfmt
 	gles? ( media-libs/mesa[gles2] )
 	libusb? ( virtual/libusb:1 )
 	media-fonts/corefonts
@@ -116,7 +116,6 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/zip
 	dev-lang/swig
 	dev-libs/crossguid
-	dev-libs/rapidjson
 	dev-util/cmake
 	dev-util/gperf
 	media-libs/giflib
@@ -160,6 +159,8 @@ In some cases Kodi needs to access multicast addresses.
 Please consider enabling IP_MULTICAST under Networking options.
 "
 
+CMAKE_USE_DIR=${S}/project/cmake/
+
 pkg_setup() {
 	check_extra_config
 	python-single-r1_pkg_setup
@@ -193,7 +194,7 @@ src_prepare() {
 
 	# Prevent autoreconf rerun
 	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
-		"${S}"/cmake/modules/FindCpluff.cmake \
+		"${S}"/project/cmake/modules/FindCpluff.cmake \
 		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh \
 		|| die
