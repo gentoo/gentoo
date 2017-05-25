@@ -18818,7 +18818,7 @@ x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolu
 x11-misc/colord 1.2.12 1.3.3 1.3.4: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
-x11-misc/devilspie 0.23: A Window Matching utility similar to Sawfish's Matched Windows feature
+x11-misc/devilspie 0.23 0.23-r1: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.42: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 4.7 9999: a generic, highly customizable, and efficient menu for the X Window System
