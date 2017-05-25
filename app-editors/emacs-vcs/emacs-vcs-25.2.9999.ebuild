@@ -44,7 +44,7 @@ RDEPEND="sys-libs/ncurses:0=
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
-	ssl? ( net-libs/gnutls )
+	ssl? ( net-libs/gnutls:0= )
 	zlib? ( sys-libs/zlib )
 	X? (
 		x11-libs/libXmu
