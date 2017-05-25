@@ -1,11 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+EAPI=6
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
+
+RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem versionator
 
@@ -15,12 +17,12 @@ SRC_URI="https://github.com/rails/coffee-rails/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
 
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/coffee-script-2.2.0
-	>dev-ruby/railties-4:* <dev-ruby/railties-5.2:*"
+	>dev-ruby/railties-4:*"
 
 all_ruby_prepare() {
 	# Avoid dependency on git and bundler.
