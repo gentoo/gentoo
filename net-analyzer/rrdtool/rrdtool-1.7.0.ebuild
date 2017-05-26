@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit autotools perl-module distutils-r1 flag-o-matic multilib
 
 DESCRIPTION="A system to store and display time-series data"
