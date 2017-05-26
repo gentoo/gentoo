@@ -1,35 +1,29 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Simple generator for Forth based BootMenu scripts for Pegasos machines"
-
 HOMEPAGE="http://tbs-software.com/morgoth/projects.html"
 SRC_URI="http://tbs-software.com/morgoth/files/bootcreator-src.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="ppc -*"
 IUSE=""
+
 DEPEND=""
 
-S=${WORKDIR}/${PN}
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	mv examples/example.bc examples/bootmenu.example
-}
+S=${WORKDIR}
 
 src_compile() {
-	cd ${S}
-	make all || die "Can't compile bootmenu"
+	emake all
 }
 
 src_install() {
-	cd ${S}
 	dosbin src/bootcreator
+	dodoc doc/README
+
 	insinto /etc
-	doins examples/bootmenu.example
-	dodoc doc/README doc/COPYING
+	newins examples/example.bc bootmenu.example
 }
