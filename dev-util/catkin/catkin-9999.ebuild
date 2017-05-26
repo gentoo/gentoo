@@ -32,6 +32,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 	dev-python/empy[${PYTHON_USEDEP}]
+	dev-util/cmake
 "
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] dev-python/mock[${PYTHON_USEDEP}] )"
