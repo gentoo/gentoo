@@ -1388,7 +1388,7 @@ app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170327 20170517 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -10434,6 +10434,7 @@ dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 1.7.2 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
+dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127 2.42: object code file converted (COFF, ELF, OMF, MACHO)

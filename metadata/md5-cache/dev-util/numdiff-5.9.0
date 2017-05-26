@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=gmp? ( dev-libs/gmp:0 ) nls? ( sys-devel/gettext ) !dev-util/ndiff
+DESCRIPTION=File comparision, ignoring small numeric differences and formats
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/numdiff/
+IUSE=+nls +gmp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=gmp? ( dev-libs/gmp:0 ) nls? ( sys-devel/gettext ) !dev-util/ndiff
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/numdiff/numdiff-5.9.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=a557fdbc9b8e04883621f70b1f810a8b
