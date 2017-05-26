@@ -61,11 +61,11 @@ if [ -n "${PYTHON_COMPAT}" ] ; then
 fi
 
 IUSE="test"
-RDEPEND="
+RDEPEND=""
+DEPEND="${RDEPEND}
 	dev-util/catkin${CATKIN_PYTHON_USEDEP}
 	dev-python/empy${CATKIN_PYTHON_USEDEP}
 "
-DEPEND="${RDEPEND}"
 
 if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
 	RDEPEND="${RDEPEND} ${PYTHON_DEPS}"
