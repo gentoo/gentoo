@@ -14,7 +14,7 @@ SRC_URI="
 	https://github.com/cburstedde/p4est/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/cburstedde/libsc/archive/v${PV}.tar.gz -> libsc-${PV}.tar.gz"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2+"
 SLOT="0"
