@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,5 +1,5 @@
  all:
 -	gcc -Wall -g -o mouseemu mouseemu.c
