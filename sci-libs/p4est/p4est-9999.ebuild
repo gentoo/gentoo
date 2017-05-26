@@ -3,6 +3,9 @@
 
 EAPI=6
 
+# The build system currently fails with everything newer than 1.11.
+WANT_AUTOMAKE=1.11
+
 inherit autotools toolchain-funcs eutils
 
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
