@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.3-buildsystem.patch" )
+PATCHES=( "${FILESDIR}/${P}-buildsystem.patch" )
 
 src_prepare(){
 	default
