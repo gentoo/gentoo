@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-li
 DEPEND=">=net-nds/openldap-2.1.30-r5
 		sasl? ( dev-libs/cyrus-sasl )
 		kerberos? ( virtual/krb5 )
-		ssl? ( dev-libs/openssl )"
+		ssl? ( dev-libs/openssl:0 )"
 RDEPEND="${DEPEND}
 		!<net-fs/autofs-4.1.3"
 
