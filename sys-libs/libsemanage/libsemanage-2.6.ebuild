@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,19 +28,19 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
 	>=sys-libs/libselinux-${SELNX_VER}[${MULTILIB_USEDEP}]
 	>=sys-process/audit-2.2.2[${MULTILIB_USEDEP}]
 	>=dev-libs/ustr-1.0.4-r2[${MULTILIB_USEDEP}]
-	"
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	python? (
 		>=dev-lang/swig-2.0.4-r1
 		virtual/pkgconfig
-		${PYTHON_DEPS}
 	)"
 
 # tests are not meant to be run outside of the
