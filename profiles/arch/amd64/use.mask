@@ -6,6 +6,10 @@
 
 # SECTION: Unmask
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# dev-db/firebird is keyworded ~amd64
+-firebird
+
 # cilk has been ported to this arch.
 -cilk
 
