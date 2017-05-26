@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -39,7 +39,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-libdir.patch \
 		"${FILESDIR}"/${P}-soname.patch \
 		"${FILESDIR}"/${P}-postgresql.patch \
-		"${FILESDIR}"/${P}-gcc-4.7.patch
+		"${FILESDIR}"/${P}-gcc-4.7.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_configure() {

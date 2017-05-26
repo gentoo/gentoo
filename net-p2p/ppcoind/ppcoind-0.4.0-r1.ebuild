@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DB_VER="4.8"
 
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples ipv6 logrotate upnp"
 
 RDEPEND="
-	dev-libs/boost[threads(+)]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/openssl:0[-bindist]
 	logrotate? (
 		app-admin/logrotate
@@ -36,20 +36,19 @@ DEPEND="${RDEPEND}
 	sys-apps/sed
 "
 
+DOCS=( ../README README.md )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-boost_chrono.patch
+)
+
 S="${WORKDIR}/${MyP}-linux/src"
 
 pkg_setup() {
 	local UG='ppcoin'
 	enewgroup "${UG}"
 	enewuser "${UG}" -1 -1 /var/lib/ppcoin "${UG}"
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc6.patch
-
-	if has_version '>=dev-libs/boost-1.52'; then
-		sed -i 's/\(-l db_cxx\)/-l boost_chrono$(BOOST_LIB_SUFFIX) \1/' src/makefile.unix
-	fi
 }
 
 src_configure() {
@@ -71,8 +70,7 @@ src_configure() {
 	OPTS+=("BDB_INCLUDE_PATH=$(db_includedir "${DB_VER}")")
 	OPTS+=("BDB_LIB_SUFFIX=-${DB_VER}")
 
-	cd src || die
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -f makefile.unix "${OPTS[@]}" ${PN}
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -C src -f makefile.unix "${OPTS[@]}" ${PN}
 }
 
 #Tests are broken
@@ -100,10 +98,10 @@ src_install() {
 	fowners ppcoin:ppcoin /var/lib/ppcoin/.ppcoin
 	dosym /etc/ppcoin/ppcoin.conf /var/lib/ppcoin/.ppcoin/ppcoin.conf
 
-	dodoc ../README
-	dodoc README.md
 	newman contrib/debian/manpages/bitcoind.1 ppcoind.1
 	newman contrib/debian/manpages/bitcoin.conf.5 ppcoin.conf.5
+
+	einstalldocs
 
 	if use examples; then
 		docinto examples
