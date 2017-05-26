@@ -40,6 +40,9 @@ src_prepare() {
 	# remove tests that require internet access to comply with Gentoo policy
 	sed -i -e '/CurlHttpClientTest.cpp/d' -e '/FakeHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
 
+	# remove non-applicable warning
+	sed -i -e '/WARNING! This is a debug build. Performance might be slow./d' src/cryfs-cli/Cli.cpp || die
+
 	cmake-utils_src_prepare
 }
 
