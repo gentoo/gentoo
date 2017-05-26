@@ -6905,7 +6905,7 @@ dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extens
 dev-perl/glib-perl 1.301.0 1.314.0 1.320.0 1.324.0 1.325.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.45.0: Perl interface to the 2.x series of the Gnome libraries
-dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnome Virtual File System libraries
+dev-perl/gnome2-vfs-perl 1.81.0-r1 1.83.0: Perl interface to the 2.x series of the Gnome Virtual File System libraries
 dev-perl/gnome2-wnck 0.160.0-r1: Perl interface to the Window Navigator Construction Kit
 dev-perl/gtk2-ex-formfactory 0.670.0-r1: Gtk2 FormFactory
 dev-perl/gtk2-gladexml 1.7.0-r1: Create user interfaces directly from Glade XML files
@@ -10856,7 +10856,7 @@ games-arcade/thinktanks-demo 1.1-r2: tank combat game with lighthearted, fast pa
 games-arcade/tomatoes 1.55-r2: How many tomatoes can you smash in ten short minutes?
 games-arcade/trailblazer 0.9: Guide a ball through a succession of levels while avoiding holes
 games-arcade/triplexinvaders 1.08: An Alien Invaders style game with 3d graphics
-games-arcade/tuxanci 20110429 99999999: Tuxanci is first tux shooter inspired by game Bulanci
+games-arcade/tuxanci 20110429-r1 99999999: Tuxanci is first tux shooter inspired by game Bulanci
 games-arcade/tuxdash 0.8 0.8-r1: A simple BoulderDash clone
 games-arcade/tuxpuck 0.8.2-r1: Hover hockey
 games-arcade/vor 0.5.5 0.5.7: Variations on Rockdodger: Dodge the rocks until you die
