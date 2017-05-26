@@ -70,6 +70,8 @@ RDEPEND="${CDEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-imap-resource-crash.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package google KPimGAPI)
