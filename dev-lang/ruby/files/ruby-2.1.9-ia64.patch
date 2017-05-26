@@ -1,0 +1,63 @@
+https://bugs.gentoo.org/561780
+https://github.com/ruby/ruby/pull/1625
+
+fix crash on register stack mark/sweep pass
+
+The crash looks like
+
+  Program received signal SIGSEGV, Segmentation fault.
+  mark_locations_array (objspace=0x6000000000045db0, x=0x0, n=864692227966763116) at gc.c:3297
+  3297            v = *x;
+  (gdb) bt
+  #0  mark_locations_array (objspace=0x6000000000045db0, x=0x0, n=864692227966763116) at gc.c:3297
+  #1  0x400000000014a040 in gc_mark_locations (objspace=0x6000000000045db0, start=0x0, end=0x6000080000000368) at gc.c:3310
+  #2  0x400000000014b3a0 in mark_current_machine_context (objspace=0x6000000000045db0, th=0x60000000000455b0) at gc.c:3500
+  #3  0x400000000014dfe0 in gc_mark_roots (objspace=0x6000000000045db0, full_mark=0, categoryp=0x0) at gc.c:4105
+  #4  0x400000000014e6b0 in gc_marks_body (objspace=0x6000000000045db0, full_mark=0) at gc.c:4164
+  #5  0x400000000014f260 in gc_marks (objspace=0x6000000000045db0, full_mark=0) at gc.c:4526
+  #6  0x40000000001525c0 in garbage_collect_body (objspace=0x6000000000045db0, full_mark=0, immediate_sweep=0, reason=256) at gc.c:5024
+  #7  0x400000000013c010 in heap_prepare_freepage (objspace=0x6000000000045db0, heap=0x6000000000045dc0) at gc.c:1219
+  #8  0x400000000013c140 in heap_get_freeobj_from_next_freepage (objspace=0x6000000000045db0, heap=0x6000000000045dc0) at gc.c:1237
+  #9  0x400000000013c360 in heap_get_freeobj (objspace=0x6000000000045db0, heap=0x6000000000045dc0) at gc.c:1259
+  #10 0x400000000013c950 in newobj_of (klass=0, flags=40, v1=0, v2=0, v3=0) at gc.c:1303
+  #11 0x400000000013ccc0 in rb_newobj_of (klass=0, flags=40) at gc.c:1356
+  #12 0x4000000000163740 in hash_alloc (klass=0) at hash.c:289
+  #13 0x4000000000163860 in rb_hash_new () at hash.c:309
+  #14 0x400000000050e420 in Init_BareVM () at vm.c:2822
+  #15 0x40000000000f6b60 in ruby_setup () at eval.c:54
+  #16 0x40000000000f6f50 in ruby_init () at eval.c:75
+  #17 0x400000000001b010 in main (argc=9, argv=0x60000fffffffb1d8) at main.c:35
+
+The problem here is in call
+    gc_mark_locations (objspace=0x6000000000045db0, start=0x0, end=0x6000080000000368) at gc.c:3310
+where 'start' (native_main_thread.register_stack_start)
+is supposed to be stack start but it's not initialized.
+
+The initialization of 'native_main_thread.register_stack_start'
+is supposed to be done in 'ruby_init_stack()'.
+
+But code under 'MAINSTACKADDR_AVAILABLE' exits early.
+The fix is to move 'register_stack_start' earlier.
+
+diff --git a/thread_pthread.c b/thread_pthread.c
+index c8a7a16..9ad448b 100644
+--- a/thread_pthread.c
++++ b/thread_pthread.c
+@@ -722,2 +722,8 @@ ruby_init_stack(volatile VALUE *addr
+     native_main_thread.id = pthread_self();
++#ifdef __ia64
++    if (!native_main_thread.register_stack_start ||
++        (VALUE*)bsp < native_main_thread.register_stack_start) {
++        native_main_thread.register_stack_start = (VALUE*)bsp;
++    }
++#endif
+ #if MAINSTACKADDR_AVAILABLE
+@@ -745,8 +751,2 @@ ruby_init_stack(volatile VALUE *addr
+ #endif
+-#ifdef __ia64
+-    if (!native_main_thread.register_stack_start ||
+-        (VALUE*)bsp < native_main_thread.register_stack_start) {
+-        native_main_thread.register_stack_start = (VALUE*)bsp;
+-    }
+-#endif
+     {

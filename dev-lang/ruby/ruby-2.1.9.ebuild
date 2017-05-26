@@ -61,6 +61,7 @@ PDEPEND="
 src_prepare() {
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
 		epatch "${WORKDIR}/patches"
+	epatch "${FILESDIR}"/${PN}-2.1.9-ia64.patch
 
 	# We can no longer unbundle all of rake because rubygems now depends
 	# on this. We leave the actual rake code around to bootstrap
