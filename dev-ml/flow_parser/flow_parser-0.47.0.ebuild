@@ -14,7 +14,10 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-lang/ocaml:="
+DEPEND="
+	dev-lang/ocaml:=
+	dev-ml/sedlex:=
+"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	dev-ml/ocamlbuild"
@@ -22,7 +25,7 @@ DEPEND="${DEPEND}
 S="${WORKDIR}/flow-${PV}/src/parser"
 
 src_compile() {
-	ocamlbuild parser_flow.cma parser_flow.cmxa || die
+	emake build-parser
 }
 
 src_test() {
