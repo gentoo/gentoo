@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 arm ppc ppc64 ~x86"
 IUSE="doc examples test"
 
 RDEPEND="
