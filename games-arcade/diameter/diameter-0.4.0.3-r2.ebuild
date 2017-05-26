@@ -1,9 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
-inherit python-any-r1 eutils autotools games
+
+inherit autotools eutils python-single-r1
 
 DESCRIPTION="Arcade game with elements of economy and adventure"
 HOMEPAGE="http://gamediameter.sourceforge.net/"
@@ -13,26 +15,25 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=dev-games/guichan-0.8[opengl,sdl]
+RDEPEND="
+	>=dev-games/guichan-0.8[opengl,sdl]
 	media-libs/libpng:0=
-	virtual/opengl
-	virtual/glu
 	media-libs/libsdl[video]
 	media-libs/sdl-image[gif,jpeg,png]
 	media-libs/sdl-mixer[mod]
+	virtual/opengl
+	virtual/glu
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S=${WORKDIR}/gamediameter
 
-pkg_setup() {
-	python-any-r1_pkg_setup
-	games_pkg_setup
-}
-
 src_prepare() {
+	default
+
 	sed -i \
 		-e "s:gamediameter:diameter:" \
 		configure.in || die
@@ -46,12 +47,14 @@ src_prepare() {
 		-e '/gui nebular3.gif/s/gui//' \
 		data/texture/Makefile.am || die
 	eautoreconf
+
+	# needed, otherwise -lpython2.7 will not be found
 	python_export PYTHON PYTHON_LIBS
 }
 
 src_install() {
 	default
+
 	newicon data/texture/gui/eng/main/logo.png ${PN}.png
-	make_desktop_entry ${PN} Diameter
-	prepgamesdirs
+	make_desktop_entry ${PN} ${PN^}
 }
