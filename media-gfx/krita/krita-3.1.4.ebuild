@@ -10,7 +10,7 @@ DESCRIPTION="Free digital painting application. Digital Painting, Creative Freed
 HOMEPAGE="https://www.kde.org/applications/graphics/krita/ https://krita.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="color-management fftw +gsl +jpeg openexr pdf qtmedia +raw tiff vc"
 
