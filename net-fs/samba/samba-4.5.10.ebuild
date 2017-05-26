@@ -16,7 +16,7 @@ SRC_PATH="stable"
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.5.0_rc1.tar.xz"
 [[ ${PV} = *_rc* ]] || \
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="http://www.samba.org/"
@@ -74,7 +74,15 @@ CDEPEND="${PYTHON_DEPS}
 	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )"
 DEPEND="${CDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	test? (
+		!system-mitkrb5? (
+			>=sys-libs/nss_wrapper-1.1.3
+			>=net-dns/resolv_wrapper-1.1.4
+			>=net-libs/socket_wrapper-1.1.7
+			>=sys-libs/uid_wrapper-1.2.1
+		)
+	)"
 RDEPEND="${CDEPEND}
 	client? ( net-fs/cifs-utils[ads?] )
 	selinux? ( sec-policy/selinux-samba )
