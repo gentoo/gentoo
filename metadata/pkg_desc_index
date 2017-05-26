@@ -15590,7 +15590,7 @@ net-p2p/ncdc 1.19.1 1.20 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.2.16-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/ppcoin-qt 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
-net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
+net-p2p/ppcoind 0.4.0 0.4.0-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.6.2-r1: P2P communications protocol
