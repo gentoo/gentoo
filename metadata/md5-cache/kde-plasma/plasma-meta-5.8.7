@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DESCRIPTION=Merge this to pull in all Plasma 5 packages
+EAPI=6
+HOMEPAGE=https://www.kde.org/workspaces/plasmadesktop/
+IUSE=bluetooth +display-manager grub gtk +handbook networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-plasma/breeze-5.8.7:5 >=kde-plasma/kactivitymanagerd-5.8.7:5 >=kde-plasma/kde-cli-tools-5.8.7:5 >=kde-plasma/kdecoration-5.8.7:5 >=kde-plasma/kdeplasma-addons-5.8.7:5 >=kde-plasma/kgamma-5.8.7:5 >=kde-plasma/khotkeys-5.8.7:5 >=kde-plasma/kinfocenter-5.8.7:5 >=kde-plasma/kmenuedit-5.8.7:5 >=kde-plasma/kscreen-5.8.7:5 >=kde-plasma/kscreenlocker-5.8.7:5 >=kde-plasma/ksshaskpass-5.8.7:5 >=kde-plasma/ksysguard-5.8.7:5 >=kde-plasma/kwayland-integration-5.8.7:5 >=kde-plasma/kwin-5.8.7:5 >=kde-plasma/kwrited-5.8.7:5 >=kde-plasma/libkscreen-5.8.7:5 >=kde-plasma/libksysguard-5.8.7:5 >=kde-plasma/milou-5.8.7:5 >=kde-plasma/oxygen-5.8.7:5 >=kde-plasma/plasma-desktop-5.8.7:5 >=kde-plasma/plasma-integration-5.8.7:5 >=kde-plasma/plasma-workspace-5.8.7:5 >=kde-plasma/polkit-kde-agent-5.8.7:5 >=kde-plasma/powerdevil-5.8.7:5 >=kde-plasma/systemsettings-5.8.7:5 >=kde-plasma/user-manager-5.8.7:5 bluetooth? ( >=kde-plasma/bluedevil-5.8.7:5 ) display-manager? ( sddm? ( >=kde-plasma/sddm-kcm-5.8.7:5 x11-misc/sddm ) !sddm? ( x11-misc/lightdm ) ) grub? ( >=kde-plasma/breeze-grub-5.8.7:5 ) gtk? ( >=kde-plasma/breeze-gtk-5.8.7:5 >=kde-plasma/kde-gtk-config-5.8.7:5 ) handbook? ( >=kde-apps/khelpcenter-14.12.0:5 ) networkmanager? ( >=kde-plasma/plasma-nm-5.8.7:5 ) pam? ( >=kde-plasma/kwallet-pam-5.8.7:5 ) plymouth? ( >=kde-plasma/breeze-plymouth-5.8.7:5 ) pulseaudio? ( >=kde-plasma/plasma-pa-5.8.7:5 ) sdk? ( >=kde-plasma/plasma-sdk-5.8.7:5 ) wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-5.8.7:5 )
+SLOT=5
+_eclass_exported_funcs=-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	kde5-functions	b4e90cc66aee4c911166b9c8bf94bbb1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=3a9ce30404544de1e34fd8a4691a0680
