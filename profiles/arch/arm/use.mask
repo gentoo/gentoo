@@ -93,7 +93,6 @@ nut
 fits
 tokyocabinet
 vaapi
-rtmp
 lpsol
 upnp
 libtar
