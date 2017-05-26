@@ -4,6 +4,7 @@ DESCRIPTION=Standalone file import filter library for spreadsheet documents
 EAPI=6
 HOMEPAGE=https://gitlab.com/orcus/orcus/blob/master/README.md
 IUSE=python +spreadsheet-model static-libs tools python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
+KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=MIT
 RDEPEND=dev-libs/boost:= sys-libs/zlib:= python? ( python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] ) spreadsheet-model? ( >=dev-libs/libixion-0.12.1:= )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) )
@@ -11,4 +12,4 @@ SLOT=0/0.12
 SRC_URI=http://kohei.us/files/orcus/src/liborcus-0.12.1.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	7aaf8e4bc5ba6cae58ff688b5a857866	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=8b93472a8c23981f99cde2915060023c
+_md5_=01af93d83f21545b4169d18b136e48f0
