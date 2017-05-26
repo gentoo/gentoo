@@ -7123,6 +7123,7 @@ sci-libs/lemon:tools - Build additional tools
 sci-libs/libccd:double - Use double precision floats.
 sci-libs/libghemical:mopac7 - Use sci-chemistry/mopac7 for semi-empirical calculations
 sci-libs/libghemical:mpqc - Use sci-chemistry/mpqc for quantum-mechanical calculations
+sci-libs/libsc:romio - Build with support for the ROMIO MPI-IO component
 sci-libs/libsigrok:ftdi - Enable drivers that need libftdi
 sci-libs/libsigrok:parport - Enable drivers that are parallel (IEEE1284) based
 sci-libs/libsigrok:serial - Enable drivers that are serial (RS232) based
@@ -7154,6 +7155,8 @@ sci-libs/openfoam:opendx - Install opendx visualisation tool
 sci-libs/openfoam:paraview - Enable support for paraview library
 sci-libs/openfoam:src - Install source files
 sci-libs/orocos_kdl:models - Build models for some well known robots.
+sci-libs/p4est:romio - Build with support for the ROMIO MPI-IO component
+sci-libs/p4est:vtk-binary - Enable binary vtk output. If disabled vtk files will be written in ASCII text format.
 sci-libs/pastix:int64 - Build the 64 bits integer library
 sci-libs/pastix:starpu - Build and link with dev-libs/starpu
 sci-libs/pcl:cuda - Adds support for NVIDIA CUDA.
