@@ -4701,7 +4701,7 @@ dev-libs/fstrm 0.2.0-r1 0.3.0: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.22.0: GNOME docking library
 dev-libs/gecode 3.7.3 4.4.0 4.4.0-r1: An environment for developing constraint-based applications
-dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
+dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.7 9999: UI library that focuses on simplicity and minimalism
@@ -15214,7 +15214,7 @@ net-misc/fatrat 1.2.0_beta2 1.2.0_beta2_p20150803: Qt4-based download/upload man
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
-net-misc/geoipupdate 2.3.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
+net-misc/geoipupdate 2.3.1 2.4.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.22.0: Crawls through your online content
@@ -18034,7 +18034,7 @@ virtual/eject 0: Virtual for the eject command
 virtual/emacs 23 24 25: Virtual for GNU Emacs
 virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Emacs)
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
-virtual/ffmpeg 0.10.3 0.10.3-r1 9 9-r1 9-r2: Virtual package for FFmpeg executable implementation
+virtual/ffmpeg 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
 virtual/freedesktop-icon-theme 0-r1: A virtual to choose between different icon themes
 virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
