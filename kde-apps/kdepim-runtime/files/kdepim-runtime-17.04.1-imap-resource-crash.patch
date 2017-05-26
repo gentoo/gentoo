@@ -1,0 +1,37 @@
+From 611510d0a005bc93102aa4b9f1a5b5f9905c4179 Mon Sep 17 00:00:00 2001
+From: Montel Laurent <montel@kde.org>
+Date: Mon, 24 Apr 2017 12:32:36 +0200
+Subject: Fix Bug 379155 - Imap resources crash when trying to open settings
+
+BUG: 379155
+---
+ resources/imap/setupserver.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/resources/imap/setupserver.cpp b/resources/imap/setupserver.cpp
+index afaa678..2912972 100644
+--- a/resources/imap/setupserver.cpp
++++ b/resources/imap/setupserver.cpp
+@@ -597,8 +597,8 @@ void SetupServer::slotComplete()
+ 
+ void SetupServer::slotSafetyChanged()
+ {
+-#ifdef WITH_GMAIL_XOAUTH2
+     if (m_serverTest == nullptr) {
++#ifdef WITH_GMAIL_XOAUTH2
+         const bool isGmail = Utils::isGmail(m_ui->imapServer->text());
+         qCDebug(IMAPRESOURCE_LOG) << "serverTest null";
+         m_ui->noRadio->setEnabled(!isGmail);
+@@ -606,9 +606,9 @@ void SetupServer::slotSafetyChanged()
+         m_ui->tlsRadio->setEnabled(!isGmail);
+ 
+         m_ui->authenticationCombo->setEnabled(!isGmail);
++#endif
+         return;
+     }
+-#endif
+     QVector<int> protocols;
+ 
+     switch (m_ui->safeImapGroup->checkedId()) {
+-- 
+cgit v0.11.2
