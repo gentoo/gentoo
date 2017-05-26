@@ -28,6 +28,11 @@ S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
 	default
+
+	if [[ ! -f package_version ]] ; then
+		echo "PACKAGE_VERSION=\"${PV/_/-}\"" > package_version
+	fi
+
 	eautoreconf
 }
 
