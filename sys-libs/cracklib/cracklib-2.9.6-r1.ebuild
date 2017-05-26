@@ -1,7 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
@@ -16,17 +17,14 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
 IUSE="nls python static-libs test zlib"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
+RDEPEND="${PYTHON_DEPS}
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		test? ( dev-python/nose[${PYTHON_USEDEP}] )
-	)"
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r6
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
 
 S=${WORKDIR}/${MY_P}
