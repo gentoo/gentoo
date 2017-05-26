@@ -76,7 +76,10 @@ CDEPEND="
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
-	systemd? ( sys-apps/systemd:0= )
+	systemd? ( sys-apps/systemd:0= )"
+DEPEND="${CDEPEND}
+	${PYTHON_DEPS}
+	virtual/pkgconfig
 	test? (
 		!system-mitkrb5? (
 			>=sys-libs/nss_wrapper-1.1.3
@@ -85,9 +88,6 @@ CDEPEND="
 			>=sys-libs/uid_wrapper-1.2.1
 		)
 	)"
-DEPEND="${CDEPEND}
-	${PYTHON_DEPS}
-	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	python? ( ${PYTHON_DEPS} )
 	client? ( net-fs/cifs-utils[ads?] )
