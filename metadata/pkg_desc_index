@@ -5519,7 +5519,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0 3.60.0 3.80.0 3.120.0 3.160.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0 3.60.0 3.80.0 3.120.0 3.160.0 3.180.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
@@ -5921,7 +5921,7 @@ dev-perl/Font-TTF 1.20.0-r1: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1: converting Perl structures to strings and back
 dev-perl/Fuse 0.16.1: Fuse module for perl
-dev-perl/GD 2.560.0-r1 2.560.0-r2: Interface to Thomas Boutell's gd library
+dev-perl/GD 2.560.0-r1 2.560.0-r2 2.660.0: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
 dev-perl/GD-Graph3d 0.630.0-r1: Create 3D Graphs with GD and GD::Graph
 dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written using GD
@@ -17702,7 +17702,7 @@ sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devic
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.1 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.13.6 1.13.7: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0.1 4.1.2 4.2.2 4.3.1 4.4.1 4.5.3 4.6.1 4.7.3 4.8.1-r1 4.8.3 4.8.4 4.8.5 4.9 4.9.1 4.10.2 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0.1 4.1.2 4.2.2 4.3.1 4.4.1 4.5.3 4.6.1 4.7.3 4.8.1-r1 4.8.3 4.8.4 4.8.5 4.9 4.9.1 4.10.2 4.11 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-virus file scanning
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
