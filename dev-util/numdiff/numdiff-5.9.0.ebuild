@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="File comparision, ignoring small numeric differences and formats"
 HOMEPAGE="http://www.nongnu.org/numdiff/"
 SRC_URI="http://savannah.nongnu.org/download/numdiff/${P}.tar.gz"
@@ -13,28 +15,26 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+nls +gmp"
 
 RDEPEND="
-	gmp? ( dev-libs/gmp:0 )
+	gmp? ( dev-libs/gmp:0= )
 	nls? ( sys-devel/gettext )
 	!dev-util/ndiff"
-
 DEPEND="${RDEPEND}"
 
-src_configure() {
-	local myeconfargs=(
-		$(use_enable gmp)
-		$(use_enable nls)
-	    --enable-optimization
-	)
-	econf ${myeconfargs[@]}
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.9.0-fix-build-system.patch
+)
+
+src_prepare() {
+	default
+	# yes, it really only needs eautoconf, due to the
+	# config.h being hand-written, which would be bulldozered
+	# when running eautoreconf (due to it invoking autoheader)
+	eautoconf
 }
 
-src_install() {
-	default
-
-	# Remove some empty folders:
-	rm -r "${ED}"/usr/share/locale || die
-
-	#Fix up wrong installation paths:
-	mv "${ED}"/usr/share/doc/${P}/{numdiff/numdiff.{html,pdf,txt*},} || die
-	rm -r "${ED}"/usr/share/doc/${P}/numdiff || die
+src_configure() {
+	econf \
+	    --enable-optimization \
+		$(use_enable gmp) \
+		$(use_enable nls)
 }
