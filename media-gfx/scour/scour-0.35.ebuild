@@ -12,7 +12,7 @@ SRC_URI="https://github.com/codedread/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 IUSE=""
 
 DEPEND="dev-python/six"
