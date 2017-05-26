@@ -7,13 +7,13 @@
   </synopsis>
   <product type="ebuild">smb4k</product>
   <announced>2017-05-26</announced>
-  <revised>2017-05-26: 1</revised>
+  <revised>2017-05-26: 2</revised>
   <bug>618106</bug>
   <access>local</access>
   <affected>
     <package name="net-misc/smb4k" auto="yes" arch="*">
-      <unaffected range="ge">1.2.3-r1 </unaffected>
-      <vulnerable range="lt">1.2.3-r1 </vulnerable>
+      <unaffected range="ge">1.2.3-r1</unaffected>
+      <vulnerable range="lt">1.2.3-r1</vulnerable>
     </package>
   </affected>
   <background>
@@ -37,7 +37,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=net-misc/smb4k-1.2.3-r1:4 "
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/smb4k-1.2.3-r1:4"
     </code>
     
   </resolution>
@@ -45,5 +45,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8849">CVE-2017-8849</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-12T04:22:20Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-05-26T06:08:26Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-05-26T12:18:57Z">BlueKnight</metadata>
 </glsa>
