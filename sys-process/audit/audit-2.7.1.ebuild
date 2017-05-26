@@ -15,21 +15,18 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="gssapi ldap python static-libs"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # Testcases are pretty useless as they are built for RedHat users/groups and kernels.
 RESTRICT="test"
 
 RDEPEND="gssapi? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
-	sys-libs/libcap-ng"
+	sys-libs/libcap-ng
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.34
-	python? (
-		${PYTHON_DEPS}
-		dev-lang/swig:0
-	)"
+	python? ( dev-lang/swig:0 )"
 # Do not use os-headers as this is linux specific
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CONFIG_CHECK="~AUDIT"
 
