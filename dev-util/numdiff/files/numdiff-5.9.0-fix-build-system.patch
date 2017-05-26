@@ -70,7 +70,7 @@ Fix build system
  
  # flags for the preprocessor:
 -CPPFLAGS        =-DPACKAGE="\"$(PACKAGE)\"" -DPACKAGE2="\"$(PACKAGETWO)\"" -DLOCALEDIR="\"$(LOCALEDIR)\"" -I$(srcdir) -I. @CPPFLAGS@
-+CPPFLAGS        =-DPACKAGE="\"$(PACKAGE_ONE)\"" -DPACKAGE2="\"$(PACKAGE_TWO)\"" -Dlocaledir="\"$(localedir)\"" -I$(srcdir) -I. @CPPFLAGS@
++CPPFLAGS        =-DPACKAGE="\"$(PACKAGE_ONE)\"" -DPACKAGE2="\"$(PACKAGE_TWO)\"" -DLOCALEDIR="\"$(localedir)\"" -I$(srcdir) -I. @CPPFLAGS@
  # flags for the C compiler:
  CFLAGS          =@CFLAGS@
  
