@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# dev-db/firebird is keyworded ~amd64
+firebird
+
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
 # The modern versions of CUDA SDK are not suitable for stabilization.
 cuda

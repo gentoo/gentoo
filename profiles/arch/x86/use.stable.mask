@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# dev-db/firebird is keyworded ~x86
+firebird
+
 # Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
 # sys-libs/libapparmor
 apparmor
