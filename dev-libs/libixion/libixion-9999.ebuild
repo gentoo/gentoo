@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
-inherit eutils python-single-r1 ${GITECLASS}
+inherit python-single-r1 ${GITECLASS}
 unset GITECLASS
 
 DESCRIPTION="General purpose formula parser & interpreter"
@@ -16,7 +16,7 @@ HOMEPAGE="https://gitlab.com/ixion/ixion"
 [[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/ixion/src/${P}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0/0.12" # based on SONAME of libixion.so
+SLOT="0/0.13" # based on SONAME of libixion.so
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug python static-libs +threads"
@@ -50,6 +50,5 @@ src_configure() {
 
 src_install() {
 	default
-
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
