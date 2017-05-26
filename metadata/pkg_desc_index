@@ -5842,7 +5842,7 @@ dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception 
 dev-perl/Expect 1.320.0-r1 1.330.0 1.350.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.20.0-r1 0.80.0: Lightweight exporting of variables
-dev-perl/Exporter-Tiny 0.42.0 0.44.0: An exporter with the features of Sub::Exporter but only core dependencies
+dev-perl/Exporter-Tiny 0.42.0 0.44.0 1.0.0: An exporter with the features of Sub::Exporter but only core dependencies
 dev-perl/ExtUtils-AutoInstall 0.630.0-r1: Allows module writers to specify a more sophisticated form of dependency information
 dev-perl/ExtUtils-CChecker 0.90.0 0.100.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.7.0 0.8.0: A wrapper for perl's configuration
@@ -5928,7 +5928,7 @@ dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written us
 dev-perl/GDGraph 1.490.0 1.510.0 1.520.0 1.540.0: Perl5 module to create charts using the GD module
 dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
-dev-perl/Gearman 2.3.2 2.4.2 2.4.3: Gearman distributed job system, client and worker libraries
+dev-perl/Gearman 2.3.2 2.4.2 2.4.3 2.4.6: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
 dev-perl/Gentoo-App-Pram 0.4.0: Readily merge Pull Requests from the Gentoo Github repository
@@ -17819,7 +17819,7 @@ sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.9.16 4.9.25 4.9.26 4.9.27 4.9.28 4.10.8 4.10.9 4.10.10 4.10.11 4.10.12 4.10.13 4.10.14 4.10.15 4.10.16: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.0.2-r1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.27 4.9.28 4.9.29 4.11.0 4.11.1 4.11.2: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
+sys-kernel/ck-sources 4.9.27 4.9.28 4.9.29 4.9.30 4.11.0 4.11.1 4.11.2 4.11.3: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 9999: Gentoo automatic kernel building scripts
