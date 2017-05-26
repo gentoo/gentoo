@@ -83,7 +83,6 @@ mtp
 ieee1394
 pm-utils
 darcs
-toolame
 ggi
 nut
 fits

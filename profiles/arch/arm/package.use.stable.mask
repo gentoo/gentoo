@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexis Ballier <aballier@gentoo.org> (26 May 2017)
+# toolame not stable yet
+=media-video/mplayer-1.2.1 toolame
+
+# Alexis Ballier <aballier@gentoo.org> (26 May 2017)
 # No musepack-tools stable yet
 media-video/vlc musepack
 media-plugins/gst-plugins-meta:0.10 musepack
