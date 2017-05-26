@@ -18,10 +18,10 @@ SLOT="0"
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( 
+	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		${RDEPEND} 
+		${RDEPEND}
 	)"
 
 python_test() {
