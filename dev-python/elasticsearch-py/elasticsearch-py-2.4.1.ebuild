@@ -22,7 +22,7 @@ SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples doc test"
 
 RDEPEND=">=dev-python/urllib3-1.8[${PYTHON_USEDEP}]
