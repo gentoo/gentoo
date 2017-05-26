@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,8 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-macos"
 IUSE="doc"
 
-RDEPEND+=" >=media-gfx/imagemagick-6.4.9:="
-DEPEND+=" >=media-gfx/imagemagick-6.4.9:=[jpeg]"
+RDEPEND+=" >=media-gfx/imagemagick-6.4.9:= =media-gfx/imagemagick-6*"
+DEPEND+=" >=media-gfx/imagemagick-6.4.9:=[jpeg] =media-gfx/imagemagick-6*"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 
