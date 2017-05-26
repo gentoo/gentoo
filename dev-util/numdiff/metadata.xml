@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tamiko@gentoo.org</email>
+    <name>Matthias Maier</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+  numdiff is a program that can be used to compare putatively similar files
+  line by line and field by field, ignoring small numeric differences
+  or/and different numeric formats. Equivalently, numdiff is a program with
+  the capability to appropriately compare files containing numerical fields
+  (and not only).
+</longdescription>
+</pkgmetadata>
