@@ -4,7 +4,7 @@
 EAPI=6
 PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
 
-inherit eutils l10n llvm qmake-utils toolchain-funcs virtualx xdg
+inherit l10n llvm qmake-utils toolchain-funcs virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
 HOMEPAGE="http://doc.qt.io/qtcreator/"
@@ -56,7 +56,7 @@ CDEPEND="
 	>=dev-qt/qtxml-${QT_PV}
 	clangcodemodel? ( >=sys-devel/clang-3.9:= )
 	designer? ( >=dev-qt/designer-${QT_PV} )
-	qbs? ( >=dev-util/qbs-1.7.0 )
+	qbs? ( >=dev-util/qbs-1.8.0 )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 "
@@ -75,7 +75,7 @@ RDEPEND="${CDEPEND}
 	autotools? ( sys-devel/autoconf )
 	bazaar? ( dev-vcs/bzr )
 	clangstaticanalyzer? ( >=sys-devel/clang-3.9:* )
-	cmake? ( dev-util/cmake )
+	cmake? ( dev-util/cmake[server(+)] )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
@@ -133,10 +133,10 @@ src_prepare() {
 	fi
 
 	# disable broken or unreliable tests
-	sed -i -e '/SUBDIRS/ s/\<dumpers\>//' tests/auto/debugger/debugger.pro || die
+	sed -i -e '/sdktool/ d' tests/auto/auto.pro || die
+	sed -i -e '/dumpers\.pro/ d' tests/auto/debugger/debugger.pro || die
 	sed -i -e '/CONFIG -=/ s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
-	sed -i -e '/\(^char qmlString\|states\.qml$\)/ i return;' tests/auto/qml/qmldesigner/coretests/tst_testcore.cpp || die
-	sed -i -e 's/\<timeline\(items\|notes\|selection\)renderpass\>//' tests/auto/timeline/timeline.pro || die
+	sed -i -e '/timeline\(items\|notes\|selection\)renderpass/ d' tests/auto/timeline/timeline.pro || die
 	sed -i -e 's/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
 
 	# fix path to some clang headers
@@ -178,8 +178,4 @@ src_install() {
 		doins share/doc/qtcreator/qtcreator{,-dev}.qch
 		docompress -x /usr/share/doc/qtcreator/qtcreator{,-dev}.qch
 	fi
-
-	# create a desktop file
-	make_desktop_entry qtcreator 'Qt Creator' QtProject-qtcreator 'Development;IDE;Qt;' \
-		'MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;application/vnd.qt.qmakeprofile;application/vnd.qt.xml.resource;text/x-qml;text/x-qt.qml;text/x-qt.qbs;'
 }
