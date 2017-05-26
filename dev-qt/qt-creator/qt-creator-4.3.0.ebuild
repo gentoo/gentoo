@@ -88,6 +88,10 @@ for x in ${PLOCALES}; do
 done
 unset x
 
+pkg_setup() {
+	use clangcodemodel && llvm_pkg_setup
+}
+
 src_unpack() {
 	if tc-is-gcc; then
 		if [[ $(gcc-major-version) -lt 4 ]] || \
