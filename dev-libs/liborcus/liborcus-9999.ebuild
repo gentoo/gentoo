@@ -16,7 +16,7 @@ HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 [[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/orcus/src/${P}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0/0.12" # based on SONAME of liborcus.so
+SLOT="0/0.13" # based on SONAME of liborcus.so
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="python +spreadsheet-model static-libs tools"
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/boost:=
 	sys-libs/zlib:=
 	python? ( ${PYTHON_DEPS} )
-	spreadsheet-model? ( >=dev-libs/libixion-0.12.1:= )
+	spreadsheet-model? ( >=dev-libs/libixion-0.13.0:= )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/mdds-1.2.2:1
