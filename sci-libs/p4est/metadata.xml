@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+The p4est software library enables the dynamic management of a collection
+of adaptive octrees, conveniently called a forest of octrees. p4est is
+designed to work in parallel and scale to hundreds of thousands of
+processor cores.
+	</longdescription>
+	<use>
+		<flag name="vtk-binary">Enable binary vtk output. If disabled vtk files will be written in ASCII text format.</flag>
+		<flag name="romio">Build with support for the ROMIO MPI-IO component</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cburstedde/libsc</remote-id>
+	</upstream>
+</pkgmetadata>
