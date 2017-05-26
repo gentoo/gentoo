@@ -23,7 +23,8 @@ DEPEND="
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
-RDEPEND=""
+RDEPEND="
+	!dev-python/smmap[${PYTHON_USEDEP}]"
 
 python_test() {
 	nosetests -v || die "tests failed under ${EPYTHON}"
