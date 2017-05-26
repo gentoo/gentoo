@@ -14,6 +14,7 @@ LICENSE="GPL-2 OSL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 x86"
 IUSE="doc graphviz nls python static-libs test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/libxml2
 	sys-libs/zlib
@@ -38,8 +39,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	>pkg/py-compile
 
 	# Don't build yum-plugin - we don't need it
 	sed '/yum-plugin/d' -i Makefile.am || die
