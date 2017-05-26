@@ -6,7 +6,8 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <use>
-    <flag name="animgif">Enable animated gif support</flag>
+	  <flag name="animgif">Enable animated gif support</flag>
+	  <flag name="fcgi">Build for FastCGI compatibility via <pkg>dev-libs/fcgi</pkg> instead of using PerlIO</flag>
   </use>
   <upstream>
     <remote-id type="cpan">GD</remote-id>
