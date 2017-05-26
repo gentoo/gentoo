@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+The SC Library provides support for parallel scientific applications.
+This support library is primarily used by sci-libs/p4est.
+	</longdescription>
+	<use>
+		<flag name="romio">Build with support for the ROMIO MPI-IO component</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cburstedde/libsc</remote-id>
+	</upstream>
+</pkgmetadata>
