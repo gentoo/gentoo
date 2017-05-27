@@ -1,5 +1,0 @@
-# Copyright 2012-2012 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-# This is no longer needed for ppc64-32ul builds
--*sys-devel/kgcc64

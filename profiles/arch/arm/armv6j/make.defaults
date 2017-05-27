@@ -1,5 +1,0 @@
-CHOST="armv6j-hardfloat-linux-gnueabi"
-CFLAGS="-O2 -pipe -march=armv6j"
-CXXFLAGS="${CFLAGS}"
-FFLAGS="${CFLAGS}"
-FCFLAGS="${CFLAGS}"

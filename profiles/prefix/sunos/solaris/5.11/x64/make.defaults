@@ -1,7 +1,0 @@
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-ARCH="x64-solaris"
-CHOST="x86_64-pc-solaris2.11"
-ACCEPT_KEYWORDS="~x64-solaris"
-

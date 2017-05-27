@@ -1,5 +1,0 @@
-CHOST="armv7a-hardfloat-linux-gnueabi"
-CFLAGS="-O2 -pipe -march=armv7-a"
-CXXFLAGS="${CFLAGS}"
-FFLAGS="${CFLAGS}"
-FCFLAGS="${CFLAGS}"

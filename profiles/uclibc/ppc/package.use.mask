@@ -1,6 +1,0 @@
-# Copyright 1999-2016 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
-# Masked Parallel LCD devices for bug #180683
-app-misc/lcd4linux lcd_devices_hd44780

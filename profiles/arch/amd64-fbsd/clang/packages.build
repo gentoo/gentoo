@@ -1,9 +1,0 @@
-# Copyright 1999-2015 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-# This file describes the packages needed to build a stage 1 based on this
-# profile.  Packages in this file are built in order.
-
-sys-devel/llvm
-sys-devel/clang
-sys-libs/libcxx
