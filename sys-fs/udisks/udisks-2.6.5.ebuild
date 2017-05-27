@@ -11,7 +11,9 @@ SRC_URI="https://github.com/storaged-project/${PN}/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
-IUSE="acl cryptsetup debug +gptfdisk +introspection lvm nls selinux systemd"
+IUSE="acl cryptsetup debug elogind +gptfdisk +introspection lvm nls selinux systemd"
+
+REQUIRED_USE="?? ( elogind systemd )"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.36:2
@@ -20,6 +22,7 @@ COMMON_DEPEND="
 	>=virtual/libgudev-165:=
 	virtual/udev
 	acl? ( virtual/acl )
+	elogind? ( sys-auth/elogind )
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 	lvm? ( sys-fs/lvm2 )
 	systemd? ( >=sys-apps/systemd-209 )
