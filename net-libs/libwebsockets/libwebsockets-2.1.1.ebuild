@@ -11,7 +11,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+http2 +ssl access-log cgi client generic-sessions http-proxy ipv6 lejp libev libressl libuv server-status smtp sqlite3 static-libs"
 
 REQUIRED_USE="
