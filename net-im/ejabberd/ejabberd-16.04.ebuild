@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,7 +48,8 @@ CDEPEND="
 	mysql? ( >=dev-erlang/p1_mysql-1.0.1 )
 	nls? ( >=dev-erlang/iconv-1.0.0 )
 	odbc? ( dev-db/unixODBC )
-	pam? ( >=dev-erlang/epam-1.0.0 )
+	pam? ( >=dev-erlang/epam-1.0.0
+		<dev-erlang/epam-1.0.1 )
 	postgres? ( >=dev-erlang/p1_pgsql-1.1.0 )
 	redis? ( >=dev-erlang/eredis-1.0.8 )
 	riak? (
