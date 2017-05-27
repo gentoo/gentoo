@@ -4,6 +4,18 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# media-libs/libmtp not tested
+mtp
+
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# net-libs/gnome-online-accounts not tested
+gnome-online-accounts
+
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# Keywords lost on net-fs/samba over time, use.mask until re-keyworded
+samba
+
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
 # dev-libs/libappindicator not tested
 ayatana

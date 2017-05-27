@@ -1,6 +1,16 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# app-pda/libimobiledevice, app-pda/libplist and co not tested
+sys-power/upower ios
+sys-power/upower-pm-utils ios
+gnome-base/gvfs ios
+
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# dev-libs/libgdata and net-libs/gnome-online-accounts not tested
+gnome-base/gvfs google
+
 # Jason Zaman <perfinion@gentoo.org> (09 May 2017)
 # x11-libs/libXpresent is not keyworded on mips
 xfce-base/xfwm4 xpresent
