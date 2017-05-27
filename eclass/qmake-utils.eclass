@@ -17,7 +17,7 @@ if [[ -z ${_QMAKE_UTILS_ECLASS} ]]; then
 _QMAKE_UTILS_ECLASS=1
 
 [[ ${EAPI:-0} == [012345] ]] && inherit multilib
-inherit eutils toolchain-funcs
+inherit estack toolchain-funcs
 
 # @FUNCTION: qt4_get_bindir
 # @DESCRIPTION:
@@ -184,7 +184,7 @@ eqmake4() {
 	# Make sure the CONFIG variable is correctly set for both release and debug builds.
 	local config_add=release
 	local config_remove=debug
-	if use_if_iuse debug; then
+	if in_iuse debug && use debug; then
 		config_add=debug
 		config_remove=release
 	fi
