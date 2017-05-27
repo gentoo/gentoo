@@ -13,13 +13,13 @@ if [[ ${PV} == "99999999" ]] ; then
 	KEYWORDS=""
 else
 	MAGIC=eedea41
-	SRC_URI="http://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MAGIC}.tar.gz"
+	SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MAGIC}.tar.gz"
 	S=${WORKDIR}/puzzles-${PV}.${MAGIC}
 	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Simon Tatham's Portable Puzzle Collection"
-HOMEPAGE="http://www.chiark.greenend.org.uk/~sgtatham/puzzles/"
+HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/"
 
 LICENSE="MIT"
 SLOT="0"
