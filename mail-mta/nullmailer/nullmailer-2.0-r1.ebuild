@@ -12,11 +12,12 @@ SRC_URI="http://untroubled.org/${PN}/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="ssl"
+IUSE="ssl test"
 
 DEPEND="
 	sys-apps/groff
-	ssl? ( net-libs/gnutls:0= )"
+	ssl? ( net-libs/gnutls:0= )
+	test? ( sys-apps/ucspi-tcp[ipv6] sys-process/daemontools )"
 RDEPEND="
 	virtual/logger
 	virtual/shadow
