@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://www.process-one.net/downloads/${PN}/${PV}/${P}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
 IUSE="captcha debug full-xml hipe ldap mssql mysql nls odbc pam postgres redis
@@ -28,35 +28,35 @@ RESTRICT="test"
 # TODO: 	>=dev-erlang/moka-1.0.5b
 # TODO: )
 CDEPEND="
-	>=dev-erlang/cache_tab-1.0.2
-	>=dev-erlang/esip-1.0.4
-	>=dev-erlang/fast_tls-1.0.3
-	>=dev-erlang/fast_xml-1.1.3
-	>=dev-erlang/fast_yaml-1.0.3
-	>=dev-erlang/jiffy-0.14.7
-	>=dev-erlang/lager-3.0.2
+	>=dev-erlang/cache_tab-1.0.6
+	>=dev-erlang/esip-1.0.10
+	>=dev-erlang/fast_tls-1.0.10
+	>=dev-erlang/fast_xml-1.1.19
+	>=dev-erlang/fast_yaml-1.0.8
+	>=dev-erlang/jiffy-0.14.8
+	>=dev-erlang/lager-3.2.1
 	>=dev-erlang/luerl-0.2
 	>=dev-erlang/p1_oauth2-0.6.1
-	>=dev-erlang/p1_utils-1.0.4
-	>=dev-erlang/p1_xmlrpc-1.15.1
-	>=dev-erlang/stringprep-1.0.3
-	>=dev-erlang/stun-1.0.3
+	>=dev-erlang/p1_utils-1.0.6
+	>=dev-erlang/stringprep-1.0.7
+	>=dev-erlang/stun-1.0.9
+	>=dev-erlang/xmpp-1.1.6
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
-	<dev-lang/erlang-19
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
-	mysql? ( >=dev-erlang/p1_mysql-1.0.1 )
-	nls? ( >=dev-erlang/iconv-1.0.0 )
+	mysql? ( >=dev-erlang/p1_mysql-1.0.2 )
+	nls? ( >=dev-erlang/iconv-1.0.3 )
 	odbc? ( dev-db/unixODBC )
-	pam? ( >=dev-erlang/epam-1.0.0 )
-	postgres? ( >=dev-erlang/p1_pgsql-1.1.0 )
+	pam? ( >=dev-erlang/epam-1.0.0-r1
+		<dev-erlang/epam-1.0.1 )
+	postgres? ( >=dev-erlang/p1_pgsql-1.1.2 )
 	redis? ( >=dev-erlang/eredis-1.0.8 )
 	riak? (
 		>=dev-erlang/hamcrest-0.1.0_p20150103
-		>=dev-erlang/riakc-2.1.1_p20151111
+		>=dev-erlang/riakc-2.4.1
 	)
 	sqlite? ( >=dev-erlang/sqlite3-1.1.5 )
-	zlib? ( >=dev-erlang/ezlib-1.0.1 )"
+	zlib? ( >=dev-erlang/ezlib-1.0.2 )"
 DEPEND="${CDEPEND}
 	>=sys-apps/gawk-4.1"
 RDEPEND="${CDEPEND}
@@ -131,8 +131,12 @@ ejabberd_cert_install() {
 }
 
 # Get path to ejabberd lib directory.
+#
+# This is the path ./configure script Base for this path is path set in
+# ./configure script which is /usr/lib by default. If libdir is explicitely set
+# to something else than this should be adjusted here as well.
 get_ejabberd_path() {
-	echo "$(get_erl_libs)/${P}"
+	echo "/usr/$(get_libdir)/${P}"
 }
 
 # Make ejabberd.service for systemd from upstream provided template.
@@ -172,6 +176,19 @@ skip_docs() {
 ' "${S}/Makefile.in" || die 'failed to remove docs section from Makefile.in'
 }
 
+pkg_setup() {
+	if use pam; then
+		einfo "Adding jabber user to epam group to allow ejabberd to use PAM" \
+			"authentication"
+		# See
+		# <https://docs.ejabberd.im/admin/configuration/#pam-authentication>.
+		# epam binary is installed by dev-erlang/epam package, therefore SUID
+		# is set by that package. Instead of jabber group it uses epam group,
+		# therefore we need to add jabber user to epam group.
+		usermod -a -G epam jabber || die
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -182,12 +199,22 @@ src_prepare() {
 	skip_docs
 	adjust_config
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
+
+	rebar_fix_include_path fast_xml
+	rebar_fix_include_path xmpp
+
+	# Fix bug #591862. ERL_LIBS should point directly to ejabberd directory
+	# rather than its parent which is default. That way ejabberd directory
+	# takes precedence is module lookup.
+	local ejabberd_erl_libs="$(get_ejabberd_path):$(get_erl_libs)"
+	sed -e "s|\(ERL_LIBS=\){{libdir}}.*|\1${ejabberd_erl_libs}|" \
+		-i "${S}/ejabberdctl.template" \
+		|| die 'failed to set ERL_LIBS in ejabberdctl.template'
 }
 
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--libdir="${EPREFIX}$(get_erl_libs)" \
 		--enable-user=jabber \
 		$(use_enable debug) \
 		$(use_enable full-xml) \
@@ -218,10 +245,6 @@ src_install() {
 		pamd_mimic_system xmpp auth account || die "cannot create pam.d file"
 		into "$(get_ejabberd_path)/priv"
 		newbin epam-wrapper epam
-		# PAM helper module permissions
-		# https://www.process-one.net/docs/ejabberd/guide_en.html#pam
-		fowners root:jabber "${epam_path}"
-		fperms 4750 "${epam_path}"
 	fi
 
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
