@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Communicate with the i3 window manager"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 RDEPEND="

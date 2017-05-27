@@ -1,0 +1,77 @@
+--- fwupd-0.9.2/data/meson.build
++++ fwupd-0.9.2/data/meson.build
+@@ -38,20 +38,22 @@
+                           'system-services'),
+ )
+ 
+-# replace @bindir@
+-configure_file(
+-  input : 'fwupd-offline-update.service.in',
+-  output : 'fwupd-offline-update.service',
+-  configuration : con2,
+-  install: true,
+-  install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'),
+-)
++if get_option('with-systemd') and systemd.found()
++  # replace @bindir@
++  configure_file(
++    input : 'fwupd-offline-update.service.in',
++    output : 'fwupd-offline-update.service',
++    configuration : con2,
++    install: true,
++    install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'),
++  )
+ 
+-# replace @localstatedir@ and @bootdir@
+-configure_file(
+-  input : 'fwupd.service.in',
+-  output : 'fwupd.service',
+-  configuration : con2,
+-  install: true,
+-  install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'),
+-)
++  # replace @localstatedir@ and @bootdir@
++  configure_file(
++    input : 'fwupd.service.in',
++    output : 'fwupd.service',
++    configuration : con2,
++    install: true,
++    install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'),
++  )
++endif
+--- fwupd-0.9.2/meson.build
++++ fwupd-0.9.2/meson.build
+@@ -127,13 +127,17 @@
+ gpgme = cc.find_library('gpgme')
+ gpgerror = cc.find_library('libgpg-error')
+ libm = cc.find_library('libm', required: false)
+-systemd = dependency('systemd')
+ udev = dependency('udev')
+ 
+ if valgrind.found()
+   conf.set('HAVE_VALGRIND', '1')
+ endif
+ 
++if get_option('with-systemd')
++  systemd = dependency('systemd')
++  conf.set('HAVE_SYSTEMD', '1')
++endif
++
+ if get_option('enable-colorhug')
+   colorhug = dependency('colorhug', version : '>= 1.2.12')
+   conf.set('HAVE_COLORHUG', '1')
+@@ -220,4 +224,6 @@
+   message('git not found, you will not be able to run `ninja dist`')
+ endif
+ 
+-meson.add_install_script('meson_post_install.sh', systemd.get_pkgconfig_variable('systemdsystemunitdir'), localstatedir)
++if get_option('with-systemd') and systemd.found()
++  meson.add_install_script('meson_post_install.sh', systemd.get_pkgconfig_variable('systemdsystemunitdir'), localstatedir)
++endif
+--- fwupd-0.9.2/meson_options.txt
++++ fwupd-0.9.2/meson_options.txt
+@@ -5,3 +5,4 @@
+ option('enable-dell', type : 'boolean', value : true, description : 'enable Dell-specific support')
+ option('enable-thunderbolt', type : 'boolean', value : true, description : 'enable Thunderbolt support')
+ option('with-bootdir', type : 'string', value : '/boot/efi', description : 'Directory for EFI system partition')
++option('with-systemd', type : 'boolean', value : true, description : 'Install systemd unit files')

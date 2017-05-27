@@ -1,0 +1,16 @@
+See https://sourceforge.net/p/qt5ct/tickets/36/
+
+diff --git a/src/qt5ct-qtplugin/qt5ct-qtplugin.pro b/src/qt5ct-qtplugin/qt5ct-qtplugin.pro
+--- a/src/qt5ct-qtplugin/qt5ct-qtplugin.pro	(revision 408)
++++ b/src/qt5ct-qtplugin/qt5ct-qtplugin.pro	(working copy)
+@@ -10,7 +10,9 @@
+   QT += gui-private platformsupport-private
+ }
+
+-greaterThan(QT_MINOR_VERSION, 5): QT += dbus
++!contains(DEFINES, QT_NO_DBUS):greaterThan(QT_MINOR_VERSION, 5) {
++    QT += dbus
++}
+
+ SOURCES += \
+     main.cpp \

@@ -27,7 +27,7 @@ PDEPEND="app-eselect/eselect-package-manager"
 REQUIRED_USE="doc? ( $(python_gen_useflags python2_7) )"
 
 src_configure() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2_7 )
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
 	distutils-r1_src_configure
 }
 

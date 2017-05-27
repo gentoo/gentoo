@@ -15,6 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-2 autotools
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
+	[[ "${PV}" = *_rc* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 	SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
@@ -58,7 +59,7 @@ RDEPEND+="
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -97,43 +98,44 @@ multilib_src_configure() {
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
 
 	local myeconfargs=(
-		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
-		--docdir='${datarootdir}'/doc/${PF}
-		$(multilib_native_use_enable nls)
-		--enable-agetty
-		--with-bashcompletiondir="$(get_bashcompdir)"
-		--enable-bash-completion
-		$(multilib_native_use_enable caps setpriv)
 		--disable-chfn-chsh
+		--disable-login
+		--disable-nologin
+		--disable-reset
+		--disable-su
+		--docdir='${datarootdir}'/doc/${PF}
+		--enable-agetty
+		--enable-bash-completion
+		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
+		--enable-line
+		--enable-partx
+		--enable-raw
+		--enable-rename
+		--enable-schedutils
+		--with-bashcompletiondir="$(get_bashcompdir)"
+		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_unitdir)" "no")
+		$(multilib_native_use_enable caps setpriv)
 		$(multilib_native_use_enable cramfs)
 		$(multilib_native_use_enable fdformat)
-		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
-		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
-		$(usex ncurses '' '--without-tinfo')
-		$(use_enable unicode widechar)
-		$(use_enable kill)
-		--disable-login
-		$(multilib_native_use_enable tty-helpers mesg)
-		--disable-nologin
-		--enable-partx
-		$(multilib_native_use_with python)
-		--enable-raw
-		$(multilib_native_use_with readline)
-		--enable-rename
-		--disable-reset
-		--enable-schedutils
-		--disable-su
-		$(multilib_native_use_enable tty-helpers wall)
-		$(multilib_native_use_enable tty-helpers write)
+		$(multilib_native_use_enable nls)
 		$(multilib_native_use_enable suid makeinstall-chown)
 		$(multilib_native_use_enable suid makeinstall-setuid)
-		$(use_with selinux)
+		$(multilib_native_use_enable tty-helpers mesg)
+		$(multilib_native_use_enable tty-helpers wall)
+		$(multilib_native_use_enable tty-helpers write)
+		$(multilib_native_use_with python)
+		$(multilib_native_use_with readline)
 		$(multilib_native_use_with slang)
-		$(use_enable static-libs static)
 		$(multilib_native_use_with systemd)
-		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_unitdir)" "no")
 		$(multilib_native_use_with udev)
+		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
+		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
 		$(tc-has-tls || echo --disable-tls)
+		$(use_enable unicode widechar)
+		$(use_enable kill)
+		$(use_enable static-libs static)
+		$(use_with selinux)
+		$(usex ncurses '' '--without-tinfo')
 	)
 	ECONF_SOURCE=${S} \
 	econf "${myeconfargs[@]}"

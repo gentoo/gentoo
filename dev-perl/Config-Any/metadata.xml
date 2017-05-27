@@ -6,7 +6,11 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <use>
+    <flag name="conf">Install <pkg>dev-perl/Config-General</pkg> to support decoding .conf/.cnf files</flag>
+    <flag name="ini">Install <pkg>dev-perl/Config-Tiny</pkg> to support decoding INI config files</flag>
     <flag name="json">Install support libraries to support decoding JSON config files</flag>
+    <flag name="xml">Install support libraries to support decoding XML config files</flag>
+    <flag name="yaml">Install support libraries to support decoding YAML config files</flag>
   </use>
   <upstream>
     <remote-id type="cpan">Config-Any</remote-id>

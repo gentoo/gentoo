@@ -18,8 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-macos"
 IUSE="doc"
 
-RDEPEND+=" >=media-gfx/imagemagick-6.4.9:="
-DEPEND+=" >=media-gfx/imagemagick-6.4.9:=[jpeg]"
+RDEPEND+=" >=media-gfx/imagemagick-6.4.9:= =media-gfx/imagemagick-6*"
+DEPEND+=" >=media-gfx/imagemagick-6.4.9:=[jpeg] =media-gfx/imagemagick-6*"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 

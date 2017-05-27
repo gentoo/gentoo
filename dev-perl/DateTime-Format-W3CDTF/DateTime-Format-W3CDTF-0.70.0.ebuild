@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parse and format W3CDTF datetime strings"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~x86-solaris"
 IUSE="test"
 
 RDEPEND="dev-perl/DateTime"

@@ -42,7 +42,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	enable_cmake-utils_src_prepare
+	cmake-utils_src_prepare
 
 	# The apitrace code grubs around in the internal zlib structures.
 	# We have to extract this header and clean it up to keep that working.

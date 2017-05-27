@@ -15,11 +15,13 @@ KEYWORDS="amd64 arm hppa x86"
 
 IUSE=""
 
-DEPEND="dev-db/tokyocabinet
-		>=dev-libs/libevent-1.3
+CDEPEND="dev-db/tokyocabinet
+		>=dev-libs/libevent-1.3:=
 		>=dev-libs/libpcre-7.6"
 
-RDEPEND="${DEPEND}"
+RDEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}
+		<dev-util/gperf-3.1"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-*.patch

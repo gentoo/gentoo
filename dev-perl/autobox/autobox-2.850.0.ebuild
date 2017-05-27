@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Call methods on native types"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

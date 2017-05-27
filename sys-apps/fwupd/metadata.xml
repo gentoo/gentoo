@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+  <use>
+    <flag name="colorhug">Enable ColorHug support through
+      <pkg>x11-misc/colord</pkg> package.</flag>
+    <flag name="dell">Enable Dell-specific support.</flag>
+    <flag name="elf">Enable libelf support through
+      <pkg>dev-libs/libelf</pkg> package.</flag>
+    <flag name="uefi">Enable UEFI support</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">hughsie/fwupd</remote-id>
+  </upstream>
+</pkgmetadata>

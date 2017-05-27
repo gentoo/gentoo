@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit distutils-r1
 
@@ -17,12 +17,12 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
-	>=dev-python/djangocms-attributes-field-0.1.1
-	>=dev-python/django-filer-1.2.4
+	>=dev-python/djangocms-attributes-field-0.1.1[${PYTHON_USEDEP}]
+	>=dev-python/django-filer-1.2.4[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 PDEPEND=">=dev-python/django-cms-3.2.0"
 

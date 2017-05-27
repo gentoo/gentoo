@@ -13,4 +13,7 @@
     <remote-id type="sourceforge">pupnp</remote-id>
     <remote-id type="github">mrjimenez/pupnp</remote-id>
   </upstream>
+  <use>
+	<flag name="reuseaddr">Allow clean restarts by binding the socket with SO_REUSEADDR.</flag>
+  </use>
 </pkgmetadata>

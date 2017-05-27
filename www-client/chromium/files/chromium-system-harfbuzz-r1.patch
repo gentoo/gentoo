@@ -1,0 +1,25 @@
+--- a/build/linux/unbundle/harfbuzz-ng.gn.orig	2017-05-23 20:53:36.592001223 +0000
++++ b/build/linux/unbundle/harfbuzz-ng.gn	2017-05-23 20:56:18.595309433 +0000
+@@ -17,7 +17,21 @@
+   headers = [ "hb.h" ]
+ }
+ 
+-source_set("harfbuzz-ng") {
++group("harfbuzz-ng") {
++  public_deps = [
++    ":harfbuzz-ng-ft",
++    ":harfbuzz-ng-without-freetype",
++  ]
++}
++
++source_set("harfbuzz-ng-ft") {
++  deps = [
++    ":harfbuzz_shim",
++  ]
++  public_configs = [ ":system_harfbuzz" ]
++}
++
++source_set("harfbuzz-ng-without-freetype") {
+   deps = [
+     ":harfbuzz_shim",
+   ]

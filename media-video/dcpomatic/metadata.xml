@@ -10,4 +10,9 @@ DCP-o-matic is a free, open-source program to create Digital Cinema Packages (DC
 
 It can take files in many different formats, including MP4, Apple ProRes, MOV, AVI, VOB (from DVDs), M2TS (from Blu-Ray), WMV, MKV, JPEG, PNG, TIFF and lots of others.
 </longdescription>
+<use>
+	<flag name="alsa">Utilize alsa output of media-libs/rtaudio.</flag>
+	<flag name="jack">Utilize jack output of media-libs/rtaudio.</flag>
+	<flag name="pulseaudio">Utilize pulseaudio output of media-libs/rtaudio.</flag>
+</use>
 </pkgmetadata>

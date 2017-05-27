@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
+GENTOO_DEPEND_ON_PERL_SUBSLOT=yes
 inherit eutils perl-app
 
 DESCRIPTION="w3mir is a all purpose HTTP copying and mirroring tool"

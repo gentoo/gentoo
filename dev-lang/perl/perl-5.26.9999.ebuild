@@ -7,34 +7,33 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.4
+PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 
 DIST_AUTHOR=XSAWYERX
 
-# NB: BIN_ are perls that are XS-Compatible
+# Greatest first, don't include yourself
+# Devel point-releases are not ABI-intercompatible, but stable point releases are
+# BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
+PERL_BIN_OLDVERSEN=""
+# Don't add more -RC values, its historical bungling
+PERL_OLDVERSEN="5.26.0-RC1 5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
-	# Include more versions for blead releases
-	# for circular reasons
-	# Greatest first, don't include yourself
-	PERL_BIN_OLDVERSEN=""
-	PERL_OLDVERSEN="5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
-	DIST_VERSION=5.26.0-RC1
-	SHORT_PV="${DIST_VERSION%.*}"
-	# Devel Releases are not ABI-intercompatible
-	SUBSLOT="${DIST_VERSION}"
-	MY_P="perl-${DIST_VERSION/_rc/-RC}"
-	PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
-	MY_PV="${DIST_VERSION%_rc*}"
+	DIST_VERSION=5.26.0-RC2
 else
-	PERL_BIN_OLDVERSEN=""
-	# Compat reasons
-	PERL_OLDVERSEN="5.25.12 5.25.11"
-	# First 2 digits only
-	SHORT_PV="${PV%.*}"
-	SUBSLOT="${SHORT_PV}"
-	MY_P="perl-${PV/_rc/-RC}"
-	PATCH_BASE="${MY_P}-patches-${PATCH_VER}"
-	MY_PV="${PV%_rc*}"
+	DIST_VERSION="${PV/_rc/-RC}"
 fi
+SHORT_PV="${DIST_VERSION%.*}"
+# Even numbered major versions are ABI intercompatible
+# Odd numbered major versions are not
+if [[ $(( ${SHORT_PV#*.} % 2 )) == 1 ]]; then
+	SUBSLOT="${DIST_VERSION%-RC*}"
+else
+	SUBSLOT="${DIST_VERSION%.*}"
+fi
+# Used only in tar paths
+MY_P="perl-${DIST_VERSION}"
+# Used in library paths
+MY_PV="${DIST_VERSION%-RC*}"
 
 DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 
@@ -86,7 +85,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.340.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.274.0.200_rc   json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.704.200 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.705.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
 	src_remove_dual      perl-core/Test-Harness       3.380.0       prove

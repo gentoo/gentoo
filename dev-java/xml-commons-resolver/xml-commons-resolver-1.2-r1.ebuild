@@ -11,7 +11,7 @@ DESCRIPTION="An XML Entity and URI Resolver"
 HOMEPAGE="http://xml.apache.org/commons/"
 SRC_URI="mirror://apache/xml/commons/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc64 x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 LICENSE="Apache-2.0"
 SLOT="0"
 

@@ -1,0 +1,25 @@
+diff -Naur dnsdist-1.1.0/dnsdist.cc dnsdist-1.1.0-gentoo/dnsdist.cc
+--- dnsdist-1.1.0/dnsdist.cc	2016-12-29 13:45:46.000000000 +0100
++++ dnsdist-1.1.0-gentoo/dnsdist.cc	2017-05-21 15:09:10.414951426 +0200
+@@ -29,6 +29,8 @@
+ 
+ #if defined (__OpenBSD__)
+ #include <readline/readline.h>
++#elif defined READLINE
++#include <readline/readline.h>
+ #else
+ #include <editline/readline.h>
+ #endif
+diff -Naur dnsdist-1.1.0/dnsdist-console.cc dnsdist-1.1.0-gentoo/dnsdist-console.cc
+--- dnsdist-1.1.0/dnsdist-console.cc	2016-12-29 13:45:46.000000000 +0100
++++ dnsdist-1.1.0-gentoo/dnsdist-console.cc	2017-05-21 15:09:24.758950947 +0200
+@@ -25,6 +25,9 @@
+ #if defined (__OpenBSD__)
+ #include <readline/readline.h>
+ #include <readline/history.h>
++#elif defined READLINE
++#include <readline/readline.h>
++#include <readline/history.h>
+ #else
+ #include <editline/readline.h>
+ #endif

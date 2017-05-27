@@ -1,5 +1,5 @@
---- makefile.orig	2013-02-06 10:26:36.452829647 -0700
-+++ makefile	2013-02-07 09:12:13.293898947 -0700
+--- a/makefile	2013-02-06 10:26:36.452829647 -0700
++++ b/makefile	2013-02-07 09:12:13.293898947 -0700
 @@ -44,7 +44,7 @@
  LISTING = awk.h proto.h awkgram.y lex.c b.c main.c maketab.c parse.c \
  	lib.c run.c tran.c 

@@ -459,6 +459,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-8.0.1-par-g0-on-A32.patch
 		epatch "${FILESDIR}"/${PN}-8.0.2_rc2-old-sphinx.patch
 		epatch "${FILESDIR}"/${PN}-8.0.2-libffi-alpha.patch
+		epatch "${FILESDIR}"/${PN}-8.0.2-O2-unreg.patch
 
 		if use prefix; then
 			# Make configure find docbook-xsl-stylesheets from Prefix

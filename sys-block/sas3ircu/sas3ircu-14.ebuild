@@ -65,7 +65,7 @@ src_install() {
 	fi
 	# The second number is some sort of internal revision that is inconsistent
 	# between releases.
-	dodoc IRCU_MPT_GEN3_Phase${PV}.0-*.pdf 
+	dodoc IRCU_MPT_GEN3_Phase${PV}.0-*.pdf
 	dodoc README_SAS3IRCU_P${PV}.txt
 	use doc && dodoc "${DISTDIR}"/$DISTFILE_DOC
 }

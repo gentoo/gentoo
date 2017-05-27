@@ -11,7 +11,8 @@ SRC_URI="mirror://gentoo/${P}.tar.xz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PVR}"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 ~sparc x86"
-IUSE="+boost idn libressl debug test"
+IUSE="+boost idn libressl debug test +tools"
+REQUIRED_USE="test? ( tools )"
 
 RDEPEND="dev-lang/lua:=
 	idn? ( net-dns/libidn:= )
@@ -125,7 +126,8 @@ src_configure() {
 		"-DUSE_STLPORT=0"
 		-DWANT_BOOST=$(usex boost ON OFF)
 		-DHAVE_LIBIDN=$(usex idn ON OFF)
-		-DHAVE_CPPUNIT=$(usex test ON OFF)
+		-DPODOFO_HAVE_CPPUNIT=$(usex test ON OFF)
+		-DPODOFO_BUILD_LIB_ONLY=$(usex tools OFF ON)
 		)
 
 	cmake-utils_src_configure

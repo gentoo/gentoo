@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Regular expression-based Perl Parser for NCBI Entrez Gene"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="

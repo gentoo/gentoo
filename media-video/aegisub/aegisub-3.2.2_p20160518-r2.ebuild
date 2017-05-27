@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-fix-system-luajit-build.patch"
 	"${FILESDIR}/${PV}/${P}-respect-compiler-flags.patch"
 	"${FILESDIR}/${PV}/${P}-support-system-gtest.patch"
+	"${FILESDIR}/${PV}/${P}-fix-icu59-build.patch"
 )
 
 aegisub_check_compiler() {

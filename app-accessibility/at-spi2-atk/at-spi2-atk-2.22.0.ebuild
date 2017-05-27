@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 multilib-minimal
+inherit gnome2 multilib-minimal virtualx
 
 DESCRIPTION="Gtk module for bridging AT-SPI to Atk"
 HOMEPAGE="https://wiki.gnome.org/Accessibility"
@@ -41,7 +41,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	emake check TESTS_ENVIRONMENT="dbus-run-session"
+	virtx emake check TESTS_ENVIRONMENT="dbus-run-session"
 }
 
 multilib_src_compile() { gnome2_src_compile; }

@@ -506,10 +506,20 @@ detect_version() {
 		OKV_DICT=(["2"]="${KV_MAJOR}.$((${KV_PATCH_ARR} - 1))" ["3"]="2.6.39" ["4"]="3.19")
 
 		if [[ ${RELEASETYPE} == -rc ]] || [[ ${RELEASETYPE} == -pre ]]; then
+
 			OKV=${K_BASE_VER:-$OKV_DICT["${KV_MAJOR}"]}
-			KERNEL_URI="${KERNEL_BASE_URI}/testing/patch-${CKV//_/-}.xz
-						${KERNEL_BASE_URI}/linux-${OKV}.tar.xz"
-			UNIPATCH_LIST_DEFAULT="${DISTDIR}/patch-${CKV//_/-}.xz"
+
+			# as of 12/5/2017, the rc patch is no longer offered as a compressed
+			# file, and no longer is it mirrored on kernel.org
+			if [[ ${KV_MAJOR} -ge 4 ]] && [[ ${KV_PATCH} -ge 12 ]]; then
+				KERNEL_URI="https://git.kernel.org/torvalds/p/v${KV_FULL}/v${OKV} -> patch-${KV_FULL}.patch
+							${KERNEL_BASE_URI}/linux-${OKV}.tar.xz"
+				UNIPATCH_LIST_DEFAULT="${DISTDIR}/patch-${CKV//_/-}.patch"
+			else
+				KERNEL_URI="${KERNEL_BASE_URI}/testing/patch-${CKV//_/-}.xz
+							${KERNEL_BASE_URI}/linux-${OKV}.tar.xz"
+				UNIPATCH_LIST_DEFAULT="${DISTDIR}/patch-${CKV//_/-}.xz"
+			fi
 		fi
 
 		if [[ ${RELEASETYPE} == -git ]]; then

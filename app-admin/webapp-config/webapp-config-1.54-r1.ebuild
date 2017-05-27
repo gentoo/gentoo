@@ -34,7 +34,7 @@ python_install() {
 	# distutils does not provide for specifying two different script install
 	# locations. Since we only install one script here the following should
 	# be ok
-	distutils-r1_python_install --install-scripts="/usr/sbin"
+	distutils-r1_python_install --install-scripts="${EPREFIX}/usr/sbin"
 }
 
 python_install_all() {

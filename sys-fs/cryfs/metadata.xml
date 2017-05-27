@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>adebeus@gmail.com</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="update-check">Enable automatic checking for updates and security vulnerabilities</flag>
+  </use>
+  <longdescription>Encrypted FUSE filesystem that conceals metadata</longdescription>
+</pkgmetadata>

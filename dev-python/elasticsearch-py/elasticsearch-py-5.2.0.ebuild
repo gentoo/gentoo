@@ -11,7 +11,7 @@ inherit distutils-r1
 
 # tests fail in chroot
 # https://github.com/elastic/elasticsearch/issues/12018
-#RESTRICT="test"
+RESTRICT="test"
 
 MY_PN=${PN/-py/}
 
@@ -22,7 +22,7 @@ SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="examples doc test"
 
 RDEPEND=">=dev-python/urllib3-1.8[${PYTHON_USEDEP}]

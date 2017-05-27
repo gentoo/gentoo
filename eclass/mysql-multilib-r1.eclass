@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: mysql-multilib.eclass
+# @ECLASS: mysql-multilib-r1.eclass
 # @MAINTAINER:
 # Maintainers:
 #	- MySQL Team <mysql-bugs@gentoo.org>

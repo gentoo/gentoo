@@ -10,10 +10,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1+ BSD public-domain" # See COPYRIGHT
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ia64 ppc ~ppc64 sparc x86 ~x86-linux"
-IUSE="ssl static-libs"
+IUSE="libressl ssl static-libs"
 
 RDEPEND="dev-libs/glib:2
-	ssl? ( dev-libs/openssl )"
+	ssl? (
+		!libressl? ( dev-libs/openssl )
+		libressl? ( dev-libs/libressl )
+	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

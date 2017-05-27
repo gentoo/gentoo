@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="http://www.libimobiledevice.org/downloads/${P}.tar.bz2"
 # While COPYING* doesn't mention 'or any later version', all the headers do, hence use +
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/6" # based on SONAME of libimobiledevice.so
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 IUSE="gnutls python static-libs"
 
 RDEPEND=">=app-pda/libplist-1.11:=

@@ -8,6 +8,7 @@
 	<use>
 		<flag name="scrypt">Use <pkg>app-crypt/libscrypt</pkg> for the scrypt algorithm</flag>
 		<flag name="tor-hardening">Compile tor with hardening on vanilla compilers/linkers</flag>
+		<flag name="zstd">Use <pkg>app-arch/zstd</pkg> for compression</flag>
 		<flag name="web">Build a tor2web service instead of a tor client</flag>
 	</use>
 </pkgmetadata>

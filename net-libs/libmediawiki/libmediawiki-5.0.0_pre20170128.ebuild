@@ -20,3 +20,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!net-libs/libmediawiki:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )

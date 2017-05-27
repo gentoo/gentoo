@@ -22,6 +22,7 @@ RDEPEND="
 	virtual/libffi
 	dev-python/pycparser[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )"
 

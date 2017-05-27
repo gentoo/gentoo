@@ -5,6 +5,10 @@
     <email>hwoarang@gentoo.org</email>
     <name>Markos Chandras</name>
   </maintainer>
+  <maintainer type="person">
+    <email>nicolasbock@gentoo.org</email>
+    <name>Nicolas Bock</name>
+  </maintainer>
   <maintainer type="project">
     <email>graphics@gentoo.org</email>
     <name>Gentoo Graphics Project</name>

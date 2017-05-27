@@ -39,22 +39,22 @@ LICENSE="AdobeFlash-11.x"
 RESTRICT="strip mirror"
 
 NPAPI_RDEPEND="
-	dev-libs/atk
-	dev-libs/glib:2
-	dev-libs/nspr
-	dev-libs/nss
-	media-libs/fontconfig
-	media-libs/freetype
+	dev-libs/atk[${MULTILIB_USEDEP}]
+	dev-libs/glib:2[${MULTILIB_USEDEP}]
+	dev-libs/nspr[${MULTILIB_USEDEP}]
+	dev-libs/nss[${MULTILIB_USEDEP}]
+	media-libs/fontconfig[${MULTILIB_USEDEP}]
+	media-libs/freetype[${MULTILIB_USEDEP}]
 	>=sys-libs/glibc-2.4
-	x11-libs/cairo
-	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2
-	x11-libs/libX11
-	x11-libs/libXcursor
-	x11-libs/libXext
-	x11-libs/libXrender
-	x11-libs/libXt
-	x11-libs/pango
+	x11-libs/cairo[${MULTILIB_USEDEP}]
+	x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
+	x11-libs/gtk+:2[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXcursor[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXrender[${MULTILIB_USEDEP}]
+	x11-libs/libXt[${MULTILIB_USEDEP}]
+	x11-libs/pango[${MULTILIB_USEDEP}]
 "
 RDEPEND="
 	!www-plugins/chrome-binary-plugins[flash(-)]

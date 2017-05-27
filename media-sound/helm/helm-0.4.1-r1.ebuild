@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 DOCS="README.md"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 	rm patches/Synth/.DS_Store || die
 	sed -e 's|/usr/lib/|/usr/'$(get_libdir)'/|' -i Makefile || die
 	epatch_user

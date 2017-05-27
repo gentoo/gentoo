@@ -12,7 +12,8 @@ DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
 SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.zip"
 
-LICENSE="Apache-2.0"
+# source: LICENSE.txt and NOTICE.txt
+LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -53,4 +54,7 @@ pkg_postinst() {
 	einfo
 	einfo "Installing plugins: (bug #601294)"
 	einfo "DEBUG=1 JARS_SKIP='true' bin/logstash-plugin install logstash-output-gelf"
+	einfo
+	einfo "Sample configuration:"
+	einfo "${EROOT%/}/usr/share/${MY_PN}"
 }

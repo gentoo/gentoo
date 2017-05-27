@@ -16,4 +16,3 @@ RDEPEND="${PYTHON_DEPS}
 	!dev-python/dnspython:0
 	$(python_gen_cond_dep 'dev-python/dnspython:py2[${PYTHON_USEDEP}]' python2*)
 	$(python_gen_cond_dep 'dev-python/dnspython:py3[${PYTHON_USEDEP}]' python3*)"
-DEPEND="!dev-python/dnspython:0"

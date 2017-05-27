@@ -1,0 +1,10 @@
+--- a/src/filehandling_functions.c
++++ b/src/filehandling_functions.c
+@@ -758,6 +758,7 @@
+ 		tmpfilename = tmpfilename2;	/* later we will refere only to tmp2 */
+ 	}
+ 
++	clearfilenameprefix();
+ 	for (i = -1; i < infopathcount; i++)	/* go through all paths */
+ 	{
+ 		if (i == -1)
