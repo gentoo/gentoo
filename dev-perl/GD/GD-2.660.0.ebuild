@@ -40,6 +40,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-Constant-0.230.0
+	dev-perl/ExtUtils-PkgConfig
 	virtual/perl-ExtUtils-MakeMaker
 "
 
