@@ -1,0 +1,60 @@
+From 8d5636d8185cf3a572a9b81a9b9246eb6371685b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 31 May 2015 06:49:46 +0200
+Subject: [PATCH 4/5] Signal completion of migration agent
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Stefan Brüns <stefan.bruens@rwth-aachen.de>
+---
+ src/runtime/kwalletd/migrationagent.cpp | 4 ++++
+ src/runtime/kwalletd/migrationagent.h   | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/src/runtime/kwalletd/migrationagent.cpp b/src/runtime/kwalletd/migrationagent.cpp
+index ec60812..6eb6013 100644
+--- a/src/runtime/kwalletd/migrationagent.cpp
++++ b/src/runtime/kwalletd/migrationagent.cpp
+@@ -43,6 +43,7 @@ MigrationAgent::MigrationAgent(KWalletD* kd, const char *hash) :
+ {
+   if (isAlreadyMigrated()) {
+     qDebug() << "old wallets were already migrated";
++    emit migrationFinished();
+   } else {
+     QTimer::singleShot(100, this, SLOT(migrateWallets()));
+   }
+@@ -63,15 +64,18 @@ void MigrationAgent::migrateWallets()
+     if (!isEmptyOldWallet()) {
+       if (isMigrationWizardOk()) {
+         setAlreadyMigrated();
++        emit migrationFinished();
+       } else {
+         qDebug() << "Migration wizard returned an error or has been canceled. The migration agent will resume upon next daemon start";
+       }
+     } else {
+       qDebug() << "Old wallet is empty. No need to migrate.";
+       setAlreadyMigrated();
++      emit migrationFinished();
+     }
+   } else {
+     qDebug() << "KDE4 kwalletd not present, stopping migration agent";
++    emit migrationFinished();
+   }
+   qDebug() << "Migration agent stop.";
+ }
+diff --git a/src/runtime/kwalletd/migrationagent.h b/src/runtime/kwalletd/migrationagent.h
+index 0f6467c..9c974a0 100644
+--- a/src/runtime/kwalletd/migrationagent.h
++++ b/src/runtime/kwalletd/migrationagent.h
+@@ -48,6 +48,7 @@ public Q_SLOTS:
+ 
+ Q_SIGNALS:
+     void progressMessage(const QString &);
++    void migrationFinished();
+ 
+ private:
+     KWalletD		*_kf5_daemon;
+-- 
+2.12.0
+
