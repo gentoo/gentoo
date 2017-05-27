@@ -18393,7 +18393,7 @@ www-client/google-chrome-beta 59.0.3071.71: The web browser from Google
 www-client/google-chrome-unstable 60.0.3107.4: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
-www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
