@@ -7964,6 +7964,7 @@ sys-fs/udev:firmware-loader - Enable the userspace firmware loader (DEPRECATED, 
 sys-fs/udev:gudev - Build the gobject interface library
 sys-fs/udev:kmod - Enable kernel module loading/unloading support using sys-apps/kmod
 sys-fs/udisks:cryptsetup - Enable sys-fs/cryptsetup support
+sys-fs/udisks:elogind - Use sys-auth/elogind for session tracking
 sys-fs/udisks:gptfdisk - Pull in sys-apps/gptfdisk for sgdisk command as used by partitioning functionality
 sys-fs/udisks:lvm - Add support for Logical Volume Management via sys-fs/lvm2.
 sys-fs/udisks:remote-access - Control whether connections from other clients over LAN are allowed
