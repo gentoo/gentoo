@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+"
 SLOT="0" # add subslot if libnm-util.so.2 or libnm-glib.so.4 bumps soname version
 
-IUSE="audit bluetooth connection-sharing consolekit +dhclient elogind gnutls +introspection json kernel_linux +nss +modemmanager ncurses ofono +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
+IUSE="audit bluetooth connection-sharing consolekit +dhclient elogind gnutls +introspection json kernel_linux +nss +modemmanager ncurses ofono policykit +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
 
 REQUIRED_USE="
 	modemmanager? ( ppp )
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	>=dev-libs/dbus-glib-0.100[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.37.6:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libnl-3.2.8:3=[${MULTILIB_USEDEP}]
-	>=sys-auth/polkit-0.106
+	policykit? ( >=sys-auth/polkit-0.106 )
 	net-libs/libndp
 	net-misc/curl
 	net-misc/iputils
@@ -195,6 +195,12 @@ multilib_src_configure() {
 		$(multilib_native_use_enable wifi)
 	)
 
+	if multilib_is_native_abi && use policykit; then
+		myconf+=( --enable-polkit=yes )
+	else
+		myconf+=( --enable-polkit=disabled )
+	fi
+
 	# Same hack as net-dialup/pptpd to get proper plugin dir for ppp, bug #519986
 	if use ppp; then
 		local PPPD_VER=`best_version net-dialup/ppp`
@@ -292,25 +298,6 @@ pkg_postinst() {
 		ewarn "to ${EROOT}etc/NetworkManager/NetworkManager.conf"
 		ewarn
 		ewarn "After doing so, you can remove ${EROOT}etc/NetworkManager/nm-system-settings.conf"
-	fi
-
-	# The polkit rules file moved to /usr/share
-	old_rules="${EROOT}etc/polkit-1/rules.d/01-org.freedesktop.NetworkManager.settings.modify.system.rules"
-	if [[ -f "${old_rules}" ]]; then
-		case "$(md5sum ${old_rules})" in
-		  574d0cfa7e911b1f7792077003060240* )
-			# Automatically delete the old rules.d file if the user did not change it
-			elog
-			elog "Removing old ${old_rules} ..."
-			rm -f "${old_rules}" || eerror "Failed, please remove ${old_rules} manually"
-			;;
-		  * )
-			elog "The ${old_rules}"
-			elog "file moved to /usr/share/polkit-1/rules.d/ in >=networkmanager-0.9.4.0-r4"
-			elog "If you edited ${old_rules}"
-			elog "without changing its behavior, you may want to remove it."
-			;;
-		esac
 	fi
 
 	# NM fallbacks to plugin specified at compile time (upstream bug #738611)
