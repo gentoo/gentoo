@@ -27,9 +27,15 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
+python_prepare_all() {
+	# Fix pkgconfig path
+	sed -i -e "/libdir =/s:\"lib\":\"$(get_libdir)\":" setup.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile() {
 	local enable_xpyb
-	[[ ${EPYTHON} == python2* ]] && enable_xpyb=$(usex xcb "--enable-xpyb" "")
+	python_is_python3 || enable_xpyb=$(usex xcb "--enable-xpyb" "")
 
 	esetup.py build ${enable_xpyb}
 }
