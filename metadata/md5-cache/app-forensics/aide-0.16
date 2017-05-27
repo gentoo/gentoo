@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=!mhash? ( dev-libs/libgcrypt:0= dev-libs/libgpg-error ) mhash? ( app-crypt/mhash ) dev-libs/libpcre acl? ( virtual/acl ) audit? ( sys-process/audit ) curl? ( net-misc/curl ) e2fs? ( sys-fs/e2fsprogs ) postgres? ( dev-db/postgresql:= ) prelink? ( dev-libs/elfutils ) selinux? ( sys-libs/libselinux ) xattr? ( sys-apps/attr ) zlib? ( sys-libs/zlib ) sys-devel/bison sys-devel/flex virtual/pkgconfig static? ( !mhash? ( dev-libs/libgcrypt:0[static-libs] dev-libs/libgpg-error[static-libs] ) mhash? ( app-crypt/mhash[static-libs] ) dev-libs/libpcre[static-libs] acl? ( virtual/acl[static-libs] ) e2fs? ( sys-fs/e2fsprogs[static-libs] ) prelink? ( dev-libs/elfutils[static-libs] ) selinux? ( sys-libs/libselinux[static-libs] ) xattr? ( sys-apps/attr[static-libs] ) zlib? ( sys-libs/zlib[static-libs] ) ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
+EAPI=6
+HOMEPAGE=http://aide.sourceforge.net/
+IUSE=acl audit curl e2fs mhash postgres prelink selinux static xattr zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( !mhash? ( dev-libs/libgcrypt:0= dev-libs/libgpg-error ) mhash? ( app-crypt/mhash ) dev-libs/libpcre acl? ( virtual/acl ) audit? ( sys-process/audit ) curl? ( net-misc/curl ) e2fs? ( sys-fs/e2fsprogs ) postgres? ( dev-db/postgresql:= ) prelink? ( dev-libs/elfutils ) selinux? ( sys-libs/libselinux ) xattr? ( sys-apps/attr ) zlib? ( sys-libs/zlib ) ) prelink? ( sys-devel/prelink ) selinux? ( sec-policy/selinux-aide )
+REQUIRED_USE=postgres? ( !mhash ) static? ( !audit !curl !postgres )
+SLOT=0
+SRC_URI=mirror://sourceforge/aide/aide-0.16.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=1e52946e30252992786865887beb6212
