@@ -7,7 +7,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="Merge this to pull in all kdebase-runtime-derived packages"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="kwallet nls pam"
+IUSE="kwallet nls"
 
 [[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}
 
@@ -25,11 +25,8 @@ RDEPEND="
 	$(add_kdeapps_dep ktraderclient '' 16.04.3)
 	$(add_kdeapps_dep phonon-kde '' 16.04.3)
 	kwallet? ( || (
-		( $(add_frameworks_dep kwallet '' 5.34.0-r1) )
-		( $(add_kdeapps_dep kwalletd '' 16.04.3)
-			pam? ( $(add_plasma_dep kwallet-pam 'oldwallet') )
-		) )
-		pam? ( $(add_plasma_dep kwallet-pam) )
-	)
+		$(add_frameworks_dep kwallet '' 5.34.0-r1)
+		$(add_kdeapps_dep kwalletd '' 16.04.3)
+	) )
 	nls? ( $(add_kdeapps_dep kde4-l10n '' ${L10N_MINIMAL}) )
 "
