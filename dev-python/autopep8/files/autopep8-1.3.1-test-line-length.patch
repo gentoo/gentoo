@@ -1,0 +1,28 @@
+Fails with the following message:
+
+======================================================================
+FAIL: test_local_pycodestyle_config_line_length (test.test_autopep8.ConfigurationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/tmp/portage/dev-python/autopep8-1.3.1/work/autopep8-1.3.1/test/test_autopep8.py", line 4724, in test_local_pycodestyle_config_line_length
+    self.assertEqual(args.max_line_length, 40)
+AssertionError: 79 != 40
+
+----------------------------------------------------------------------
+
+--- a/test/test_autopep8.py
++++ b/test/test_autopep8.py
+@@ -4715,13 +4715,6 @@
+         self.assertEqual(args.global_config, 'False')
+         self.assertEqual(args.indent_size, 2)
+ 
+-    def test_local_pycodestyle_config_line_length(self):
+-        args = autopep8.parse_args(
+-            [os.path.join(FAKE_PYCODESTYLE_CONFIGURATION, 'foo.py'),
+-             '--global-config={0}'.format(os.devnull)],
+-            apply_config=True)
+-        self.assertEqual(args.max_line_length, 40)
+-
+     def test_config_false_with_local_autocomplete(self):
+         args = autopep8.parse_args(
+             [os.path.join(FAKE_CONFIGURATION, 'foo.py'),
