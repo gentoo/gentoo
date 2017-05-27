@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,11 +12,12 @@ SRC_URI="http://untroubled.org/${PN}/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="ssl"
+IUSE="ssl test"
 
 DEPEND="
 	sys-apps/groff
-	ssl? ( net-libs/gnutls:0= )"
+	ssl? ( net-libs/gnutls:0= )
+	test? ( sys-apps/ucspi-tcp[ipv6] sys-process/daemontools )"
 RDEPEND="
 	virtual/logger
 	virtual/shadow
@@ -93,7 +94,7 @@ src_install() {
 	fowners nullmail:nullmail /usr/sbin/nullmailer-queue /usr/bin/mailq
 	fperms 4711 /usr/sbin/nullmailer-queue /usr/bin/mailq
 
-	newinitd "${FILESDIR}"/init.d-nullmailer-r5 nullmailer
+	newinitd "${FILESDIR}"/init.d-nullmailer-r6 nullmailer
 	systemd_dounit scripts/${PN}.service
 }
 
