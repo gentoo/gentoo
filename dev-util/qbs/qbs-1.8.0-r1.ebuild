@@ -104,7 +104,7 @@ src_install() {
 	# install documentation
 	if use doc; then
 		emake docs
-		dodoc -r doc/html
+		dodoc -r doc/qbs/html
 		dodoc doc/qbs.qch
 		docompress -x /usr/share/doc/${PF}/qbs.qch
 	fi
