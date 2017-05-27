@@ -20,6 +20,7 @@ COMMON_DEPEND="
 	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
 	virtual/python-greenlet[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python2_7)
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 
 RDEPEND="
