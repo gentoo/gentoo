@@ -3,14 +3,13 @@
 
 EAPI=6
 
-inherit rebar
+REBAR_APP_SRC=src/p1_pam.app.src
 
-MY_PN="epam"
-MY_P="${MY_PN}-${PV}"
+inherit rebar
 
 DESCRIPTION="epam for ejabberd to help with PAM authentication support"
 HOMEPAGE="https://github.com/processone/epam"
-SRC_URI="https://github.com/processone/${MY_PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/epam/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -22,5 +21,3 @@ DEPEND=">=dev-lang/erlang-17.1
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md )
-
-S="${WORKDIR}/${MY_P}"
