@@ -12160,7 +12160,7 @@ kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kim4 0.9.5-r1: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
-kde-misc/kio-gdrive 1.0.5 1.1.0 1.1.1: KIO Slave for Google Drive service
+kde-misc/kio-gdrive 1.0.5 1.1.0 1.1.1 1.2.0: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
