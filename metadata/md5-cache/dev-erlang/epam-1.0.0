@@ -7,7 +7,7 @@ KEYWORDS=amd64 ~arm ~ia64 ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/erlang-17.1 sys-libs/pam dev-lang/erlang
 SLOT=0
-SRC_URI=https://github.com/processone/epam/archive/1.0.0.tar.gz -> p1_pam-1.0.0.tar.gz
+SRC_URI=https://github.com/processone/epam/archive/1.0.0.tar.gz -> epam-1.0.0.tar.gz
 _eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
 _eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8
-_md5_=b4886fda1f73a040ce4d3395b7c97087
+_md5_=1b23b4a109566910f64bb6362717f397

@@ -3145,6 +3145,7 @@ dev-embedded/urjtag 0.10 0.10-r1 9999: Tool for communicating over JTAG with fla
 dev-embedded/usbprog 0.2.0-r1: flashtool for the multi purpose programming adapter usbprog
 dev-embedded/zmac 1.3: Z80 macro cross-assembler
 dev-erlang/cache_tab 1.0.2 1.0.3 1.0.4 1.0.5 1.0.7: In-memory cache Erlang and Elixir library
+dev-erlang/epam 1.0.0: epam for ejabberd to help with PAM authentication support
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.4 1.0.7 1.0.8 1.0.10 1.0.11: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.1 1.0.2: Native zlib driver for Erlang and Elixir
@@ -3160,7 +3161,6 @@ dev-erlang/luerl 0.2: Lua in Erlang
 dev-erlang/meck 0.8.3 0.8.4: Mocking library for Erlang
 dev-erlang/p1_mysql 1.0.1 1.0.2: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1: Erlang OAuth 2.0 implementation
-dev-erlang/p1_pam 1.0.0: epam for ejabberd to help with PAM authentication support
 dev-erlang/p1_pgsql 1.1.0 1.1.1 1.1.2: Pure Erlang PostgreSQL driver
 dev-erlang/p1_utils 1.0.4 1.0.5 1.0.6 1.0.7: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
