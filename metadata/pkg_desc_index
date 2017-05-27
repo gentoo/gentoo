@@ -2037,7 +2037,7 @@ app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking u
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.10.5 0.11.0b-r1: Stylish way of giving presentations with Python
 app-office/kexi 3.0.0 3.0.1: Visual database applications creator
-app-office/kmymoney 4.7.2 4.8.0-r1 4.8.0-r2: Personal finance manager by KDE
+app-office/kmymoney 4.8.0-r1 4.8.0-r2: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
