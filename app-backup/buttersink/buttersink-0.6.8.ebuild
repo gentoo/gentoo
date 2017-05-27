@@ -12,7 +12,9 @@ HOMEPAGE="https://github.com/AmesCornish/buttersink"
 LICENSE="GPL-3"
 SLOT=0
 
-# tests require network access and root
+# local tests would require root and cause sandbox issues with btrfs subvolume
+# operations, and network tests would require an SSH server with root login to
+# test the SSH backend, or remote S3 for that backend
 RESTRICT="test"
 
 if [[ ${PV} == 9999 ]] ; then
