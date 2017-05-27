@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,8 +14,8 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 CDEPEND="|| (
-	>=app-editors/vim-7.3[${PYTHON_USEDEP}]
-	>=app-editors/gvim-7.3[netbeans,${PYTHON_USEDEP}]
+	>=app-editors/vim-7.3
+	>=app-editors/gvim-7.3[netbeans]
 )"
 DEPEND="${CDEPEND}
 	app-arch/vimball

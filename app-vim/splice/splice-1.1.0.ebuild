@@ -17,8 +17,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	|| (
-		app-editors/vim[python]
-		app-editors/gvim[python]
+		app-editors/vim[python,${PYTHON_USEDEP}]
+		app-editors/gvim[python,${PYTHON_USEDEP}]
 	)"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"

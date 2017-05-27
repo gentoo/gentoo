@@ -5,7 +5,7 @@ EAPI=6
 VIM_VERSION="8.0"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE=threads
-inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 python-r1
+inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -24,11 +24,7 @@ LICENSE="vim"
 IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux tcl vim-pager"
 REQUIRED_USE="
 	luajit? ( lua )
-	python? (
-		|| ( $(python_gen_useflags '*') )
-		?? ( $(python_gen_useflags 'python2*') )
-		?? ( $(python_gen_useflags 'python3*') )
-	)
+	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 RDEPEND="
@@ -67,6 +63,8 @@ pkg_setup() {
 	# Gnome sandbox silliness. bug #114475.
 	mkdir -p "${T}"/home
 	export HOME="${T}"/home
+
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -195,30 +193,13 @@ src_configure() {
 			$(use_with luajit)
 			$(use_enable nls)
 			$(use_enable perl perlinterp)
+			$(use_enable python pythoninterp)
+			$(use_enable python python3interp)
 			$(use_enable racket mzschemeinterp)
 			$(use_enable ruby rubyinterp)
 			$(use_enable selinux)
 			$(use_enable tcl tclinterp)
 		)
-
-		if use python ; then
-			py_add_interp() {
-				local v
-
-				[[ ${EPYTHON} == python3* ]] && v=3
-				myconf+=(
-					--enable-python${v}interp
-					vi_cv_path_python${v}="${PYTHON}"
-				)
-			}
-
-			python_foreach_impl py_add_interp
-		else
-			myconf+=(
-				--disable-pythoninterp
-				--disable-python3interp
-			)
-		fi
 
 		# --with-features=huge forces on cscope even if we --disable it. We need
 		# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
