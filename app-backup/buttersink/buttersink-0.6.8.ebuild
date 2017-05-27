@@ -39,7 +39,7 @@ python_prepare_all() {
 	if [[ ${PV} == 9999 ]] ; then
 		emake makestamps buttersink/version.py
 	else
-		touch makestamps || die
+		mkdir makestamps || die
 		echo "version = \"${PV}\"" > buttersink/version.py || die
 	fi
 	distutils-r1_python_prepare_all
