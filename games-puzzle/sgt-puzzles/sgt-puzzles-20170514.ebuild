@@ -12,7 +12,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	SRC_URI="https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${PN}-icons-${GENTOO_ICONS}.tar.xz"
 	KEYWORDS=""
 else
-	MAGIC=23a5372
+	MAGIC=7bdfda8
 	SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MAGIC}.tar.gz"
 	S=${WORKDIR}/puzzles-${PV}.${MAGIC}
 	KEYWORDS="~amd64 ~x86"
@@ -35,7 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	virtual/pkgconfig
-	doc? ( >=app-doc/halibut-1.0 )"
+	doc? ( >=app-doc/halibut-1.2 )"
 
 PATCHES=( "${FILESDIR}/${PN}-20161207-builtin-help.patch" )
 
