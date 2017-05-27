@@ -2042,8 +2042,8 @@ app-office/kraft 0.59: Software for operating a small business, creating documen
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 5.2.7.2 5.3.3.2 5.3.9999 9999: A full office productivity suite
-app-office/libreoffice-bin 5.2.7.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 5.2.7.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin 5.2.7.2 5.2.7.2-r1: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 5.2.7.2 5.2.7.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.2.7.2 5.3.3.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.2-r1 2.2.3: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -4728,7 +4728,7 @@ dev-libs/http-fetcher 1.1.0 1.1.0-r1: Library for downloading files via HTTP usi
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 4.4.1 4.4.1-r1: High-performance regular expression matching library
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 58.1-r1 58.2 58.2-r1 59.1: International Components for Unicode
+dev-libs/icu 58.1-r1 58.2-r1 59.1: International Components for Unicode
 dev-libs/icu-layoutex 58.1 58.2 59.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
@@ -15328,6 +15328,7 @@ net-misc/netsed 0.01b: Small tool for altering forwarded network data in real ti
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.4.0-r1 1.4.4-r1 1.8.0: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-fortisslvpn 1.2.2: NetworkManager Fortinet SSLVPN compatible plugin
+net-misc/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-misc/networkmanager-openconnect 1.2.4 1.2.4-r1: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.2.6 1.2.8: NetworkManager OpenVPN plugin
