@@ -44,6 +44,7 @@
 # Mike Gilbert <floppym@gentoo.org> (23 May 2017)
 # Needs more testing.
 ~net-misc/networkmanager-1.8.0
+~gnome-extra/nm-applet-1.8.0
 
 # Michał Górny <mgorny@gentoo.org> (22 May 2017)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
