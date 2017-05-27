@@ -15,20 +15,7 @@ KEYWORDS="amd64 ppc sparc x86 ~x86-fbsd"
 IUSE=""
 DEPEND=""
 
-RESTRICT="mirror fetch"
-
 S=${WORKDIR}/
-
-pkg_nofetch() {
-	while read line; do elog "${line}"; done <<EOF
-
-The HyperSpec cannot be redistributed. Download the ${MY_P}.tar.gz
-file from http://www.lispworks.com/documentation/HyperSpec/ and move it to
-/usr/portage/distfiles before rerunning emerge. The legal conditions are
-described at http://www.lispworks.com/reference/HyperSpec/Front/Help.htm#Legal
-
-EOF
-}
 
 src_install() {
 	dodir /usr/share/doc/${P}
