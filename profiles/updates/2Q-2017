@@ -1,2 +1,3 @@
 move kde-misc/kio_gopher kde-misc/kio-gopher
 move dev-python/pyconstruct dev-python/construct
+move dev-erlang/p1_pam dev-erlang/epam
