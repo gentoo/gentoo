@@ -28,6 +28,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc4.patch
 	epatch "${FILESDIR}"/${P}-as-needed.patch
 	epatch "${FILESDIR}"/${P}-quoting.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.in db/configure.in || die
 	eautoreconf
 }
