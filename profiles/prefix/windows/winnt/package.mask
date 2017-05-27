@@ -1,8 +1,0 @@
-
-# Distributed under the terms of the GNU General Public License v2
-
-
-# Markus Duft <mduft@gentoo.org> (30 Sep 2009)
-# the patch does not currently apply, and needs some work.
->=x11-proto/xproto-7.0.16
-

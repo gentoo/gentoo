@@ -1,7 +1,0 @@
-# Copyright 1999-2014 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# 2008.0 sparc profile
-
-# Remove kgcc64 since >=gcc-4.4 is able to compile 64bit kernels
--*sys-devel/kgcc64

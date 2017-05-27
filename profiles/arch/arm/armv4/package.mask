@@ -1,3 +1,0 @@
-# Anthony Ryan <anthonyryan1@gmail.com> (21 Jan 2017)
-# This package states supports for arm >= v6
-dev-lang/nim

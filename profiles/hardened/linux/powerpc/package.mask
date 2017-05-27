@@ -1,7 +1,0 @@
-# Copyright 1999-2010 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Wulf C. Krueger <philantrop@gentoo.org> (22 Sep 2007)
-# Needs OOo.
-app-text/bibus
-

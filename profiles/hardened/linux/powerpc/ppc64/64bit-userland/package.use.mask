@@ -1,7 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
-# Masking wrt bug 274847 and other unsolved 
-# dependencies
-app-admin/conky apcupsd xmms2 hddtemp

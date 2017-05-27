@@ -1,7 +1,0 @@
-# Copyright 1999-2010 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# All extra USE/etc should be specified in sub-profiles.
-# DO NOT POLLUTE USE ON THIS PROFILE.
-
-ACCEPT_KEYWORDS="-* ${ARCH}"

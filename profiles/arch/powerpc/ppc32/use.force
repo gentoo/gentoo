@@ -1,5 +1,0 @@
-# Force the flag which corresponds to ARCH.
-ppc
-
-# Force the flag corresponding to the only ABI.
-abi_ppc_32
