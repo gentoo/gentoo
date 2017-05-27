@@ -6,6 +6,7 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
+		<flag name="gcr">Enable advanced certificate chooser, requires <pkg>app-crypt/gcr</pkg></flag>
 		<flag name="modemmanager">Enable support for mobile broadband devices
 			using <pkg>net-misc/modemmanager</pkg></flag>
 		<flag name="teamd">Enable teamd configuration editor</flag>
