@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (27 May 2017)
+# Ancient, deprecated packages, broken python
+# metadata, removal in 30 days
+dev-python/gnome-python-base
+dev-python/gnome-python-desktop-base
+dev-python/gnome-python-extras-base
+
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
