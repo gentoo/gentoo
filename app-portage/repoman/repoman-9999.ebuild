@@ -8,7 +8,7 @@ PYTHON_REQ_USE='bzip2(+)'
 
 inherit distutils-r1
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git"
 	S="${WORKDIR}/${P}/repoman"
@@ -29,24 +29,6 @@ RDEPEND="
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-
-	if [[ -n "${EPREFIX}" ]] ; then
-		einfo "Prefixing shebangs ..."
-
-		local file
-		while read -r -d $'\0' file; do
-			local shebang=$(head -n1 "${file}")
-
-			if [[ ${shebang} == "#!"* && ! ${shebang} == "#!${EPREFIX}/"* ]] ; then
-				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "${file}" || \
-					die "sed failed"
-			fi
-		done < <(find . -type f -print0)
-	fi
-}
 
 python_test() {
 	esetup.py test
