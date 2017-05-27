@@ -24,9 +24,12 @@ RDEPEND="
 	$(add_kdeapps_dep ktimezoned '' 16.04.3)
 	$(add_kdeapps_dep ktraderclient '' 16.04.3)
 	$(add_kdeapps_dep phonon-kde '' 16.04.3)
-	kwallet? (
-		$(add_kdeapps_dep kwalletd '' 16.04.3)
-		pam? ( $(add_plasma_dep kwallet-pam 'oldwallet') )
+	kwallet? ( || (
+		( $(add_frameworks_dep kwallet '' 5.34.0-r1) )
+		( $(add_kdeapps_dep kwalletd '' 16.04.3)
+			pam? ( $(add_plasma_dep kwallet-pam 'oldwallet') )
+		) )
+		pam? ( $(add_plasma_dep kwallet-pam) )
 	)
 	nls? ( $(add_kdeapps_dep kde4-l10n '' ${L10N_MINIMAL}) )
 "
