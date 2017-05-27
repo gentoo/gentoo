@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 
+	# don't add /usr/include to INCLUDEPATH
+	# avoids a build failure in qt-creator with gcc-6 (bug 618424)
+	sed -i -e '/^INCLUDEPATH/ s:$${PWD}/\.\.::' src/lib/corelib/use_installed_corelib.pri || die
+
 	if ! use examples; then
 		sed -i -e '/INSTALLS +=/ s:examples::' static.pro || die
 	fi
