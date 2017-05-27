@@ -12,10 +12,10 @@ HOMEPAGE="https://github.com/AmesCornish/buttersink"
 LICENSE="GPL-3"
 SLOT=0
 
-# tests require network access
+# tests require network access and root
 RESTRICT="test"
 
-if [[ "${PV}" == 9999 ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/AmesCornish/buttersink"
@@ -26,20 +26,19 @@ else
 fi
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/boto
-	dev-python/crcmod
-	dev-python/flake8
-	dev-python/psutil
+	dev-python/boto[${PYTHON_USEDEP}]
+	dev-python/crcmod[${PYTHON_USEDEP}]
+	dev-python/flake8[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
 	sys-fs/btrfs-progs"
 DEPEND="${RDEPEND}"
 
-python_prepare()
-{
+python_prepare_all() {
 	if [[ ${PV} == 9999 ]] ; then
-		emake makestamps
-		emake buttersink/version.py
+		emake makestamps buttersink/version.py
 	else
-		mkdir makestamps
-		echo "version = \"${PV}\"" > buttersink/version.py
+		touch makestamps || die
+		echo "version = \"${PV}\"" > buttersink/version.py || die
 	fi
+	distutils-r1_python_prepare_all
 }
