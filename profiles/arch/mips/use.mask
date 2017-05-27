@@ -5,6 +5,10 @@
 -mips
 
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# media-libs/libmtp not tested
+mtp
+
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
 # net-libs/gnome-online-accounts not tested
 gnome-online-accounts
 
