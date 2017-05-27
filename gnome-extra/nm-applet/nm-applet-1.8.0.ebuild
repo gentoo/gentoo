@@ -33,7 +33,7 @@ RDEPEND="
 	virtual/libgudev:=
 	gcr? ( >=app-crypt/gcr-3.14:= )
 	modemmanager? ( net-misc/modemmanager )
-	selinux? ( dev-libs/libselinux )
+	selinux? ( sys-libs/libselinux )
 	teamd? ( >=dev-libs/jansson-2.3 )
 "
 DEPEND="${RDEPEND}
