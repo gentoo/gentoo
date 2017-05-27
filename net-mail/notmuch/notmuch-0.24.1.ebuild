@@ -194,6 +194,11 @@ pkg_preinst() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
+
+	if has_version '<dev-libs/xapian-1.4'; then
+		elog "Regular expression searches supported for from: and subject:"
+		elog "require >=dev-libs/xapian-1.4."
+	fi
 }
 
 pkg_postrm() {
