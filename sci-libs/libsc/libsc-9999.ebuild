@@ -81,6 +81,9 @@ src_install() {
 		rm -r "${ED}"/usr/bin || die "rm failed"
 	fi
 
+	# Remove ac files, bug #619806
+	rm -r "${ED}"/usr/share/aclocal || die "rm failed"
+
 	# Fix wrong installation paths:
 	dodir /usr/share/libsc
 	mv "${ED}"/etc/* "${ED}"/usr/share/libsc || die "mv failed"
