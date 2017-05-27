@@ -6364,6 +6364,7 @@ net-misc/ncp:diet - Compile against dev-libs/dietlibc
 net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewall/iptables for connection sharing
 net-misc/networkmanager:consolekit - Use sys-auth/consolekit for session tracking
 net-misc/networkmanager:dhclient - Use dhclient from net-misc/dhcp for getting ip
+net-misc/networkmanager:elogind - Use sys-auth/elogind for session tracking
 net-misc/networkmanager:json - Enable JSON validation via dev-libs/jansson in libnm.
 net-misc/networkmanager:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager
 net-misc/networkmanager:nss - Use dev-libs/nss for cryptography

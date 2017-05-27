@@ -1028,7 +1028,7 @@ app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.0106 8.0.0386 9999: GUI version of the Vim text editor
+app-editors/gvim 8.0.0106 8.0.0386 8.0.0386-r1 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1073,7 +1073,7 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8k 9.8n 9.8o 9.8p 9.8r 9.8s: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.0106 8.0.0386 9999: Vim, an improved vi-style text editor
+app-editors/vim 8.0.0106 8.0.0386 8.0.0386-r1 9999: Vim, an improved vi-style text editor
 app-editors/vim-core 8.0.0106 8.0.0386 9999: vim and gvim shared files
 app-editors/vis 0.3 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor
@@ -2548,7 +2548,7 @@ app-vim/closetag 0.9.1-r1: vim plugin: close HTML/XML tags quickly
 app-vim/cmdalias 3.0-r1: vim plugin: library for alias creation
 app-vim/colorschemes 20140623-r1: vim plugin: a collection of color schemes from vim.org
 app-vim/colorsel 20100406: vim plugin: RGB / HSV color selector
-app-vim/colorv 3.0.2: vim plugin: a color tool for vim
+app-vim/colorv 3.0.2 3.0.2-r1: vim plugin: a color tool for vim
 app-vim/command-t 4.0: vim plugin: fast file navigation for vim
 app-vim/conque 2.3 2.3-r1: vim plugin: Run interactive commands inside a Vim buffer
 app-vim/cream 0.43: An easy-to-use configuration of the GVim text editor
@@ -2629,11 +2629,11 @@ app-vim/phpdocs 0.26: vim plugin: PHPDoc Support in VIM
 app-vim/project 1.4.1: vim plugin: Managing multiple projects with multiple sources like an IDE
 app-vim/puppet-syntax 3.0.1: vim plugin: Puppet configuration files syntax
 app-vim/pushpop 4.0-r1: vim plugin: pushd / popd from the vim commandline
-app-vim/pyclewn 2.0.1 2.1: Pyclewn allows using vim as a front end to a debugger (pdb or gdb)
+app-vim/pyclewn 2.0.1 2.1-r1: Pyclewn allows using vim as a front end to a debugger (pdb or gdb)
 app-vim/pydiction 1.2.3 1.2.3-r1: vim plugin: tab-complete your Python code
 app-vim/pydoc 2.0: vim plugin: integrates python documentation view and search tool
 app-vim/pytest 1.1.4: vim plugin: run tests with py.test from within vim
-app-vim/python-mode 0.6.18-r3: Provide python code looking for bugs, refactoring and other useful things
+app-vim/python-mode 0.6.18-r3 0.6.18-r4: Provide python code looking for bugs, refactoring and other useful things
 app-vim/rails 5.1 5.2: vim plugin: aids developing Ruby on Rails applications
 app-vim/rainbow_parentheses 1.0: vim plugin: Colour parentheses to differentiate nest levels
 app-vim/recover 0.18: vim plugin: show differences for recovered files
@@ -2704,7 +2704,7 @@ app-vim/vimoutliner 0.3.4-r2 0.3.6: vim plugin: easy and fast outlining
 app-vim/vimpress 2.1.5 3.2.0: vim plugin: manage wordpress blogs from vim
 app-vim/vimpython 1.13-r1: vim plugin: A set of menus/shortcuts to work with Python files
 app-vim/vimtex 20160324: vim plugin: a modern vim plugin for editing LaTeX files
-app-vim/voom 5.1: vim plugin: emulates a two-pane text outliner
+app-vim/voom 5.1 5.1-r1: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.2: vim plugin: interface to Web APIs
 app-vim/wikipedia-syntax 20101113-r1: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r2: vim plugin: XQuery syntax highlighting
