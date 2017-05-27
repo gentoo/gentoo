@@ -41,11 +41,6 @@
 # on boot. Bug #617578
 =sys-fs/lvm2-2.02.171
 
-# Mike Gilbert <floppym@gentoo.org> (23 May 2017)
-# Needs more testing.
-~net-misc/networkmanager-1.8.0
-~gnome-extra/nm-applet-1.8.0
-
 # Michał Górny <mgorny@gentoo.org> (22 May 2017)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
 # Any version above 5.100.138 breaks b43 driver in various ways.
