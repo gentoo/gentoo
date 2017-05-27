@@ -57,7 +57,10 @@ CDEPEND="
 	openexr? ( media-libs/openexr:0= )
 	webp? ( media-libs/libwebp:0= )"
 RDEPEND="${CDEPEND}
-	kwallet? ( kde-apps/kwalletd:4 )"
+	kwallet? ( || (
+		>=kde-frameworks/kwallet-5.34.0-r1
+		kde-apps/kwalletd:4
+	) )"
 DEPEND="${CDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
