@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="ADOdb"
 DESCRIPTION="Database abstraction layer for PHP"
 HOMEPAGE="http://www.adodb.org/"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD LGPL-2.1"
 SLOT="0"
