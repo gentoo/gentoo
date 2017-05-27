@@ -7105,7 +7105,7 @@ dev-php/libvirt-php 0.5.2 9999: PHP 5 bindings for libvirt
 dev-php/magickwand 1.0.9-r2: A native PHP-extension to the ImageMagick MagickWand API
 dev-php/ming-php 0.4.7: PHP extension for the ming Flash movie generation library
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
-dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
+dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/myclabs-deepcopy 1.6.0: Create deep copies (clones) of your objects
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
