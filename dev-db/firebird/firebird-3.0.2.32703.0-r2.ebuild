@@ -162,8 +162,8 @@ src_install() {
 	insopts -m0660 -o firebird -g firebird
 	doins help/help.fdb
 
-	into /usr/$(get_libdir)/${PN}/intl
-	dolib.so intl/libfbintl.so
+	exeinto /usr/$(get_libdir)/${PN}/intl
+	doexe intl/libfbintl.so
 	dosym libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl.so
 
 	insinto /usr/$(get_libdir)/${PN}/intl
