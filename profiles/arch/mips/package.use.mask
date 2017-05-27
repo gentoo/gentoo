@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# app-pda/libimobiledevice, app-pda/libplist and co not tested
+sys-power/upower ios
+sys-power/upower-pm-utils ios
+gnome-base/gvfs ios
+
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
 # dev-libs/libgdata and net-libs/gnome-online-accounts not tested
 gnome-base/gvfs google
 
