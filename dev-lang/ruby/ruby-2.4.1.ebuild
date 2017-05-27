@@ -75,7 +75,6 @@ PDEPEND="
 src_prepare() {
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
 		epatch "${WORKDIR}/patches"
-	eapply "${FILESDIR}"/${PN}-2.1.9-ia64.patch
 
 	einfo "Unbundling gems..."
 	cd "$S"
