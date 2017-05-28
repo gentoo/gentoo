@@ -7,7 +7,7 @@ inherit cmake-utils user
 
 DESCRIPTION="S/MIME signing milter"
 HOMEPAGE="https://signing-milter.org/"
-SRC_URI="https://github.com/croessner/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/croessner/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
