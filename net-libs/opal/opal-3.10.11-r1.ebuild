@@ -28,10 +28,10 @@ RDEPEND="
 	fax? ( net-libs/ptlib[asn] )
 	h323? ( net-libs/ptlib[asn] )
 	ivr? ( net-libs/ptlib[http,xml,vxml] )
-	java? ( >=virtual/jre-1.4 )
+	java? ( >=virtual/jre-1.4:* )
 	plugins? (
 		media-sound/gsm
-		celt? ( media-libs/celt )
+		celt? ( media-libs/celt:0 )
 		ffmpeg? (
 			libav? ( media-video/libav:0=[encode] )
 			!libav? ( media-video/ffmpeg:0=[encode] ) )
@@ -41,7 +41,7 @@ RDEPEND="
 		theora? ( media-libs/libtheora )
 		x264? (	virtual/ffmpeg
 			media-libs/x264 ) )
-	srtp? ( net-libs/libsrtp )
+	srtp? ( net-libs/libsrtp:0= )
 	vxml? ( net-libs/ptlib[http,vxml] )
 "
 DEPEND="${RDEPEND}
@@ -78,10 +78,10 @@ src_prepare() {
 		rm -f samples/*/*.dsp
 		rm -f samples/*/*.dsw
 	fi
-	
+
 	# LFS ffmpeg2+ fixes.
 	eapply "${FILESDIR}"/opal-3.10.10-ffmpeg2-1.patch
-	
+
 	if ! use h323; then
 		# Without this patch, ekiga wont compile, even with
 		# USE=-h323.
@@ -100,7 +100,7 @@ src_prepare() {
 		   plugins/video/common/dyna.cxx          \
 		   plugins/video/H.264/h264-x264.cxx      \
 		   plugins/video/MPEG4-ffmpeg/mpeg4.cxx || die "sed failed"
-	
+
 	eaclocal
 	eautoconf
 
