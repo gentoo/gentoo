@@ -25,3 +25,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!net-libs/libnm-qt:5
 "
+
+src_test() {
+	# bug: 619984
+	local myctestargs=( -j1 )
+
+	kde5_src_test
+}
