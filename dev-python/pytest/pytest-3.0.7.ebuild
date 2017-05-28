@@ -46,6 +46,10 @@ python_prepare_all() {
 	sed -e "s/return points/return {'py.test': target}/" -i setup.py || die "sed failed"
 	grep -qF "py>=${PY_VER}" setup.py || die "Incorrect dev-python/py dependency"
 
+	# Something in the ebuild environment causes this to hang/error.
+	# https://bugs.gentoo.org/598442
+	rm testing/test_pdb.py || die
+
 	distutils-r1_python_prepare_all
 }
 
