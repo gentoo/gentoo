@@ -13,7 +13,7 @@ LICENSE="MPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="celt debug doc +dtmf examples fax ffmpeg h224 h281 h323 iax ilbc
-ipv6 ivr ixj java ldap libav lid +plugins sbc +sip +sipim +sound srtp ssl static-libs
+ipv6 ivr java ldap libav lid +plugins sbc +sip +sipim +sound srtp ssl static-libs
 stats swig theora +video vpb vxml +wav x264 x264-static +xml"
 
 REQUIRED_USE="
@@ -35,7 +35,6 @@ RDEPEND="
 		ffmpeg? (
 			libav? ( media-video/libav:0=[encode] )
 			!libav? ( media-video/ffmpeg:0=[encode] ) )
-		ixj? ( sys-kernel/linux-headers )
 		ilbc? ( dev-libs/ilbc-rfc3951 )
 		sbc? ( media-libs/libsamplerate )
 		theora? ( media-libs/libtheora )
@@ -168,6 +167,7 @@ src_configure() {
 		--enable-g711plc \
 		--enable-rfc4103 \
 		--disable-capi \
+		--disable-ixj \
 		$(use_enable debug) \
 		$(use_enable fax) \
 		$(use_enable fax t38) \
@@ -179,7 +179,6 @@ src_configure() {
 		$(use_enable h323 h501) \
 		$(use_enable iax) \
 		$(use_enable ivr) \
-		$(use_enable ixj) \
 		$(use_enable java) \
 		$(use_enable lid) \
 		$(use_enable plugins) \
