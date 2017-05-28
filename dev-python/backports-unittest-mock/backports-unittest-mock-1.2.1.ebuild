@@ -23,10 +23,10 @@ IUSE="doc test"
 RDEPEND="dev-python/mock[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
-	doc? (
+	doc? ( $(python_gen_any_dep '
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/rst-linker[${PYTHON_USEDEP}]
-	)
+	') )
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
@@ -35,6 +35,11 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+python_check_deps() {
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+		has_version "dev-python/rst-linker[${PYTHON_USEDEP}]"
+}
 
 python_compile_all() {
 	if use doc; then

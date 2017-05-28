@@ -21,10 +21,12 @@ RDEPEND="
 		>=sys-apps/pkgcore-0.9.4[${PYTHON_USEDEP}]
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
 		>=sys-apps/paludis-3.0.0_pre20170219[python,${PYTHON_USEDEP}] )"
-DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep python2_7)] )"
+DEPEND="doc? ( $(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' python2_7) )"
 PDEPEND="app-eselect/eselect-package-manager"
 
-REQUIRED_USE="doc? ( $(python_gen_useflags python2_7) )"
+python_check_deps() {
+	has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
