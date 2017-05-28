@@ -1,0 +1,358 @@
+From c02c4806c9bfcd6dc36fab6ed9873cff86681cdd Mon Sep 17 00:00:00 2001
+From: David Rosca <nowrep@gmail.com>
+Date: Fri, 26 May 2017 13:55:44 +0200
+Subject: Fix property changes being missed immediately after an obejct is
+ added
+
+Fix race condition when property changes may be missed if the property
+is changed immediately after the object is created.
+The issue was that the connection to PropertyChanged signal was
+created only after interfacesAdded signal was fired, which may have
+already been too late.
+This fixes it with connecting to PropertyChanged signal on all paths
+in Manager::init().
+
+BUG: 377405
+
+Differential Revision: https://phabricator.kde.org/D5550
+---
+ autotests/fakebluez/devicemanager.cpp | 19 +++++++++++++++++++
+ autotests/fakebluez/devicemanager.h   |  1 +
+ autotests/managertest.cpp             | 20 ++++++++++++++++++++
+ autotests/managertest.h               |  1 +
+ src/adapter_p.cpp                     |  8 --------
+ src/device_p.cpp                      | 10 +++++-----
+ src/input.cpp                         | 10 +++-------
+ src/input_p.h                         |  4 ----
+ src/manager_p.cpp                     | 27 +++++++++++++++++++++++++++
+ src/manager_p.h                       |  4 +++-
+ src/mediaplayer_p.cpp                 |  3 ---
+ src/utils.cpp                         |  7 +++++++
+ src/utils.h                           |  1 +
+ 13 files changed, 87 insertions(+), 28 deletions(-)
+
+diff --git a/autotests/fakebluez/devicemanager.cpp b/autotests/fakebluez/devicemanager.cpp
+index 7967047..229b92a 100644
+--- a/autotests/fakebluez/devicemanager.cpp
++++ b/autotests/fakebluez/devicemanager.cpp
+@@ -43,6 +43,8 @@ void DeviceManager::runAction(const QString &actionName, const QVariantMap &prop
+         runChangeAdapterProperty(properties);
+     } else if (actionName == QLatin1String("change-device-property")) {
+         runChangeDeviceProperty(properties);
++    } else if (actionName == QLatin1String("bug377405")) {
++        runBug377405();
+     }
+ }
+ 
+@@ -103,3 +105,20 @@ void DeviceManager::runChangeDeviceProperty(const QVariantMap &properties)
+ 
+     device->changeProperty(properties.value(QStringLiteral("Name")).toString(), properties.value(QStringLiteral("Value")));
+ }
++
++void DeviceManager::runBug377405()
++{
++    QDBusObjectPath adapter1path = QDBusObjectPath(QStringLiteral("/org/bluez/hci0"));
++    QVariantMap adapterProps;
++    adapterProps[QStringLiteral("Path")] = QVariant::fromValue(adapter1path);
++    adapterProps[QStringLiteral("Powered")] = false;
++
++    runCreateAdapterAction(adapterProps);
++
++    QVariantMap properties;
++    properties[QStringLiteral("Path")] = QVariant::fromValue(adapter1path);
++    properties[QStringLiteral("Name")] = QStringLiteral("Powered");
++    properties[QStringLiteral("Value")] = true;
++
++    runChangeAdapterProperty(properties);
++}
+diff --git a/autotests/fakebluez/devicemanager.h b/autotests/fakebluez/devicemanager.h
+index f830175..163b311 100644
+--- a/autotests/fakebluez/devicemanager.h
++++ b/autotests/fakebluez/devicemanager.h
+@@ -41,6 +41,7 @@ private:
+     void runRemoveDeviceAction(const QVariantMap &properties);
+     void runChangeAdapterProperty(const QVariantMap &properties);
+     void runChangeDeviceProperty(const QVariantMap &properties);
++    void runBug377405();
+ 
+     ObjectManager *m_objectManager;
+ 
+diff --git a/autotests/managertest.cpp b/autotests/managertest.cpp
+index 3217f97..1d7ffcc 100644
+--- a/autotests/managertest.cpp
++++ b/autotests/managertest.cpp
+@@ -437,4 +437,24 @@ void ManagerTest::bug364416()
+     delete manager;
+ }
+ 
++void ManagerTest::bug377405()
++{
++    // Bug 377405: Property changes immediately after adapter is added are lost
++
++    FakeBluez::start();
++    FakeBluez::runTest(QStringLiteral("bluez-standard"));
++
++    Manager *manager = new Manager;
++
++    InitManagerJob *job = manager->init();
++    job->exec();
++
++    QVERIFY(!job->error());
++
++    FakeBluez::runAction(QStringLiteral("devicemanager"), QStringLiteral("bug377405"));
++
++    // Adapter property Powered is changed to true immediately after being added
++    QTRY_COMPARE(manager->isBluetoothOperational(), true);
++}
++
+ QTEST_MAIN(ManagerTest)
+diff --git a/autotests/managertest.h b/autotests/managertest.h
+index 654fe98..9de8ae1 100644
+--- a/autotests/managertest.h
++++ b/autotests/managertest.h
+@@ -41,6 +41,7 @@ private Q_SLOTS:
+     void deviceForAddressTest();
+     void adapterWithDevicesRemovedTest();
+     void bug364416();
++    void bug377405();
+ 
+ };
+ 
+diff --git a/src/adapter_p.cpp b/src/adapter_p.cpp
+index 786fa7d..eb5fa9f 100644
+--- a/src/adapter_p.cpp
++++ b/src/adapter_p.cpp
+@@ -48,14 +48,6 @@ void AdapterPrivate::init(const QVariantMap &properties)
+     m_dbusProperties = new DBusProperties(Strings::orgBluez(), m_bluezAdapter->path(),
+                                           DBusConnection::orgBluez(), this);
+ 
+-    // QueuedConnection is important here to be able to perform actions, that depend on
+-    // a previously set property, directly from slot connected to propertyChanged signal.
+-    // Eg. Powering on adapter and then starting discovery.
+-    //  * with DirectConnection the StartDiscovery would fail because the adapter is still
+-    //    powered off when the PropertiesChanged signal is emitted ...
+-    connect(m_dbusProperties, &DBusProperties::PropertiesChanged,
+-            this, &AdapterPrivate::propertiesChanged, Qt::QueuedConnection);
+-
+     // Init properties
+     m_address = properties.value(QStringLiteral("Address")).toString();
+     m_name = properties.value(QStringLiteral("Name")).toString();
+diff --git a/src/device_p.cpp b/src/device_p.cpp
+index 79cbb86..351162d 100644
+--- a/src/device_p.cpp
++++ b/src/device_p.cpp
+@@ -58,10 +58,6 @@ void DevicePrivate::init(const QVariantMap &properties)
+     m_dbusProperties = new DBusProperties(Strings::orgBluez(), m_bluezDevice->path(),
+                                           DBusConnection::orgBluez(), this);
+ 
+-    // QueuedConnection is important here - see AdapterPrivate::initProperties
+-    connect(m_dbusProperties, &DBusProperties::PropertiesChanged,
+-            this, &DevicePrivate::propertiesChanged, Qt::QueuedConnection);
+-
+     // Init properties
+     m_address = properties.value(QStringLiteral("Address")).toString();
+     m_name = properties.value(QStringLiteral("Name")).toString();
+@@ -136,7 +132,11 @@ QDBusPendingReply<> DevicePrivate::setDBusProperty(const QString &name, const QV
+ 
+ void DevicePrivate::propertiesChanged(const QString &interface, const QVariantMap &changed, const QStringList &invalidated)
+ {
+-    if (interface != Strings::orgBluezDevice1()) {
++    if (interface == Strings::orgBluezInput1() && m_input) {
++        m_input->d->propertiesChanged(interface, changed, invalidated);
++    } else if (interface == Strings::orgBluezMediaPlayer1() && m_mediaPlayer) {
++        m_mediaPlayer->d->propertiesChanged(interface, changed, invalidated);
++    } else if (interface != Strings::orgBluezDevice1()) {
+         return;
+     }
+ 
+diff --git a/src/input.cpp b/src/input.cpp
+index 4cf4f03..aabb996 100644
+--- a/src/input.cpp
++++ b/src/input.cpp
+@@ -25,11 +25,11 @@
+ #include "utils.h"
+ #include "macros.h"
+ 
++#include <QVariantMap>
++
+ namespace BluezQt
+ {
+ 
+-typedef org::freedesktop::DBus::Properties DBusProperties;
+-
+ static Input::ReconnectMode stringToReconnectMode(const QString &mode)
+ {
+     if (mode == QLatin1String("none")) {
+@@ -45,11 +45,7 @@ static Input::ReconnectMode stringToReconnectMode(const QString &mode)
+ InputPrivate::InputPrivate(const QString &path, const QVariantMap &properties)
+     : QObject()
+ {
+-    m_dbusProperties = new DBusProperties(Strings::orgBluez(), path,
+-                                          DBusConnection::orgBluez(), this);
+-
+-    connect(m_dbusProperties, &DBusProperties::PropertiesChanged,
+-            this, &InputPrivate::propertiesChanged, Qt::QueuedConnection);
++    Q_UNUSED(path);
+ 
+     // Init properties
+     m_reconnectMode = stringToReconnectMode(properties.value(QStringLiteral("ReconnectMode")).toString());
+diff --git a/src/input_p.h b/src/input_p.h
+index 424179a..ce3f33d 100644
+--- a/src/input_p.h
++++ b/src/input_p.h
+@@ -26,13 +26,10 @@
+ #include <QObject>
+ 
+ #include "input.h"
+-#include "dbusproperties.h"
+ 
+ namespace BluezQt
+ {
+ 
+-typedef org::freedesktop::DBus::Properties DBusProperties;
+-
+ class InputPrivate : public QObject
+ {
+     Q_OBJECT
+@@ -43,7 +40,6 @@ public:
+     void propertiesChanged(const QString &interface, const QVariantMap &changed, const QStringList &invalidated);
+ 
+     QWeakPointer<Input> q;
+-    DBusProperties *m_dbusProperties;
+ 
+     Input::ReconnectMode m_reconnectMode;
+ };
+diff --git a/src/manager_p.cpp b/src/manager_p.cpp
+index aaec901..105d954 100644
+--- a/src/manager_p.cpp
++++ b/src/manager_p.cpp
+@@ -82,6 +82,13 @@ void ManagerPrivate::init()
+ 
+     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(DBusConnection::orgBluez().asyncCall(call));
+     connect(watcher, &QDBusPendingCallWatcher::finished, this, &ManagerPrivate::nameHasOwnerFinished);
++
++    DBusConnection::orgBluez().connect(Strings::orgBluez(),
++                                       QString(),
++                                       Strings::orgFreedesktopDBusProperties(),
++                                       QStringLiteral("PropertiesChanged"),
++                                       this,
++                                       SLOT(propertiesChanged(QString,QVariantMap,QStringList)));
+ }
+ 
+ void ManagerPrivate::nameHasOwnerFinished(QDBusPendingCallWatcher *watcher)
+@@ -424,6 +431,26 @@ void ManagerPrivate::setUsableAdapter(const AdapterPtr &adapter)
+     }
+ }
+ 
++void ManagerPrivate::propertiesChanged(const QString &interface, const QVariantMap &changed, const QStringList &invalidated)
++{
++    // Cut anything after device path to forward it to Device to handle
++    const QString path = message().path().section(QLatin1Char('/'), 0, 4);
++
++    QTimer::singleShot(0, this, [=]() {
++        AdapterPtr adapter = m_adapters.value(path);
++        if (adapter) {
++            adapter->d->propertiesChanged(interface, changed, invalidated);
++            return;
++        }
++        DevicePtr device = m_devices.value(path);
++        if (device) {
++            device->d->propertiesChanged(interface, changed, invalidated);
++            return;
++        }
++        qCDebug(BLUEZQT) << "Unhandled property change" << interface << changed << invalidated;
++    });
++}
++
+ void ManagerPrivate::dummy()
+ {
+ }
+diff --git a/src/manager_p.h b/src/manager_p.h
+index 0b26d1b..cc3276d 100644
+--- a/src/manager_p.h
++++ b/src/manager_p.h
+@@ -25,6 +25,7 @@
+ 
+ #include <QObject>
+ #include <QHash>
++#include <QDBusContext>
+ 
+ #include "types.h"
+ #include "rfkill.h"
+@@ -44,7 +45,7 @@ class Adapter;
+ class Device;
+ class AdapterPrivate;
+ 
+-class ManagerPrivate : public QObject
++class ManagerPrivate : public QObject, protected QDBusContext
+ {
+     Q_OBJECT
+ 
+@@ -96,6 +97,7 @@ Q_SIGNALS:
+     void initFinished();
+ 
+ private Q_SLOTS:
++    void propertiesChanged(const QString &interface, const QVariantMap &changed, const QStringList &invalidated);
+     void dummy();
+ 
+ };
+diff --git a/src/mediaplayer_p.cpp b/src/mediaplayer_p.cpp
+index 3c4e57e..21a3ebb 100644
+--- a/src/mediaplayer_p.cpp
++++ b/src/mediaplayer_p.cpp
+@@ -92,9 +92,6 @@ void MediaPlayerPrivate::init(const QVariantMap &properties)
+     m_dbusProperties = new DBusProperties(Strings::orgBluez(), m_bluezMediaPlayer->path(),
+                                           DBusConnection::orgBluez(), this);
+ 
+-    connect(m_dbusProperties, &DBusProperties::PropertiesChanged,
+-            this, &MediaPlayerPrivate::propertiesChanged, Qt::QueuedConnection);
+-
+     // Init properties
+     m_name = properties.value(QStringLiteral("Name")).toString();
+     m_equalizer = stringToEqualizer(properties.value(QStringLiteral("Equalizer")).toString());
+diff --git a/src/utils.cpp b/src/utils.cpp
+index aed8250..9ca3d6d 100644
+--- a/src/utils.cpp
++++ b/src/utils.cpp
+@@ -39,6 +39,7 @@ public:
+ 
+     bool testRun;
+     QString orgFreedesktopDBus;
++    QString orgFreedesktopDBusProperties;
+     QString orgBluez;
+     QString orgBluezAdapter1;
+     QString orgBluezDevice1;
+@@ -59,6 +60,7 @@ GlobalData::GlobalData()
+ {
+     testRun = false;
+     orgFreedesktopDBus = QStringLiteral("org.freedesktop.DBus");
++    orgFreedesktopDBusProperties = QStringLiteral("org.freedesktop.DBus.Properties");
+     orgBluez = QStringLiteral("org.bluez");
+     orgBluezAdapter1 = QStringLiteral("org.bluez.Adapter1");
+     orgBluezDevice1 = QStringLiteral("org.bluez.Device1");
+@@ -88,6 +90,11 @@ QString Strings::orgFreedesktopDBus()
+     return globalData->orgFreedesktopDBus;
+ }
+ 
++QString Strings::orgFreedesktopDBusProperties()
++{
++    return globalData->orgFreedesktopDBusProperties;
++}
++
+ QString Strings::orgBluez()
+ {
+     return globalData->orgBluez;
+diff --git a/src/utils.h b/src/utils.h
+index fd49d8e..08cb6b9 100644
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -36,6 +36,7 @@ namespace Strings
+ {
+ 
+ QString orgFreedesktopDBus();
++QString orgFreedesktopDBusProperties();
+ QString orgBluez();
+ QString orgBluezAdapter1();
+ QString orgBluezDevice1();
+-- 
+cgit v0.11.2
