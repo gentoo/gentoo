@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Amadeusz Żołnowski <aidecoe@gentoo.org> (28 May 2017)
+# Masked for removal. Upstream has disappeared. Homepage is not
+# accessible anymore. There are open, long-standing bugs: #553888,
+# #532308, #548920, not worth fixing while there's active alternative.
+# Use app-admin/needrestart instead.
+app-admin/checkrestart
+
 # Pacho Ramos <pacho@gentoo.org> (28 May 2017)
 # Not compatible with python 3.5 neither 3.6, bug #388549
 # Removal in a month.
