@@ -15,7 +15,7 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 
 LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="libav multilib qt4 qt5"
 
 QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
