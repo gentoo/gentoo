@@ -8225,7 +8225,7 @@ dev-python/pyformance 0.3.4: Performance metrics, based on Coda Hale's Yammer me
 dev-python/pyftpdlib 1.4.0 1.5.1: Python FTP server library
 dev-python/pygal 2.0.1 2.1.1: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2 1.9.3: Python bindings for SDL multimedia library
-dev-python/pygame_sdl2 6.99.6 6.99.6-r1: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygame_sdl2 6.99.6-r1: Reimplementation of portions of the pygame API using SDL2
 dev-python/pygccxml 1.0.0 1.7.5: Generate an XML description of a C++ program from GCC's internal representation
 dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
@@ -12812,7 +12812,7 @@ media-gfx/qiv 2.2.4 2.3.1: Quick Image Viewer
 media-gfx/qiviewer 0.5.0-r1: Lightweight image viewer, similar to eog or viewnior for Gnome
 media-gfx/qosmic 1.5.0: A cosmic recursive flame fractal editor
 media-gfx/qrencode 3.4.4-r1: C library for encoding data in a QR Code symbol
-media-gfx/qrencode-python 1.01-r1 1.02_pre140921: A simple wrapper for the C qrencode library
+media-gfx/qrencode-python 1.02_pre140921: A simple wrapper for the C qrencode library
 media-gfx/quat 1.20: A 3D quaternionic fractal generator
 media-gfx/qvv 4.02: QVV Image Viewer and Browser
 media-gfx/raw-thumbnailer 0.2.1: A lightweight and fast raw image thumbnailer
