@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools udev
 
 DESCRIPTION="Library and tool for personalization of Yubico's YubiKey"
-SRC_URI="https://github.com/Yubico/yubikey-personalization/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/Yubico/yubikey-personalization/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/Yubico/yubikey-personalization"
 
 KEYWORDS="~amd64 ~x86"
