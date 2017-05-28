@@ -7548,8 +7548,8 @@ dev-python/docutils 0.11 0.12 0.13.1: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.6.1 0.6.2: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
-dev-python/doit 0.23.0-r1 0.27.0 0.28.0 0.29.0: Automation tool
-dev-python/doit-py 0.3.0 0.4.0: doit tasks for python stuff
+dev-python/doit 0.23.0-r1 0.29.0: Automation tool
+dev-python/doit-py 0.4.0: doit tasks for python stuff
 dev-python/dominate 2.2.1 2.3.1: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.7 1.8.1: Python test doubles
 dev-python/doublex-expects 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
