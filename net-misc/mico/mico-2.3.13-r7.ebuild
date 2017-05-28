@@ -40,6 +40,7 @@ S=${WORKDIR}/${PN}
 
 src_prepare() {
 	EPATCH_SUFFIX=patch epatch "${WORKDIR}"/patches
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 
 	eautoreconf
 
