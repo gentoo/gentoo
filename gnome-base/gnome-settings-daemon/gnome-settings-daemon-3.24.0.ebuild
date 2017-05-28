@@ -95,6 +95,7 @@ DEPEND="${COMMON_DEPEND}
 
 # TypeErrors with python3; weird test errors with python2; all in power component that was made required now
 RESTRICT="test"
+# RESTRICT="!test? ( test )"
 
 PATCHES=(
 	# Make colord and wacom optional; requires eautoreconf
@@ -104,8 +105,10 @@ PATCHES=(
 )
 
 python_check_deps() {
-	use test && has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" \
-		&& has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+	if use test; then
+		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" &&
+		has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+	fi
 }
 
 pkg_setup() {
