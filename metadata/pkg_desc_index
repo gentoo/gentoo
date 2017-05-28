@@ -14980,7 +14980,7 @@ net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.10.0 6.10.2 6.10.3 7.6.0 7.7.2 7.7.3 7.8.0
 net-libs/ntirpc 1.4.1: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
-net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
+net-libs/opal 3.10.11 3.10.11-r1 3.12.4: C++ class library normalising numerous telephony protocols
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0-r1 2.0.0-r2 2.0.0-r3 2.0.0-r4: An open-source implementation of Service Location Protocol
