@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_EAUTORECONF="yes"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit gnome2 python-any-r1 systemd udev virtualx
 
@@ -81,6 +81,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep 'dev-python/dbusmock[${PYTHON_USEDEP}]')
 		gnome-base/gnome-session )
 	dev-libs/libxml2:2
 	sys-devel/gettext
@@ -92,7 +93,7 @@ DEPEND="${COMMON_DEPEND}
 	>=x11-proto/xproto-7.0.15
 "
 
-# FIXME: tests require dbus-mock
+# TypeErrors with python3; weird test errors with python2; all in power component that was made required now
 RESTRICT="test"
 
 PATCHES=(
@@ -103,7 +104,8 @@ PATCHES=(
 )
 
 python_check_deps() {
-	use test && has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+	use test && has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" \
+		&& has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
