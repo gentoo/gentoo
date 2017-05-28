@@ -1,0 +1,22 @@
+From 574625d7b5c9e9a1a3b9dcdc92d395f391802d26 Mon Sep 17 00:00:00 2001
+From: Laurent Bercot <ska-skaware@skarnet.org>
+Date: Wed, 10 May 2017 23:09:56 +0000
+Subject: [PATCH]  Remove byte_copy invocation from ip46-without
+
+---
+ src/headers/ip46-without | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/headers/ip46-without b/src/headers/ip46-without
+index 7887482..c06106b 100644
+--- a/src/headers/ip46-without
++++ b/src/headers/ip46-without
+@@ -11,7 +11,7 @@ struct ip46_s
+ #define ip46_fmt(s, i) ip4_fmt(s, (i)->ip)
+ #define ip46_scan(s, i) ip4_scan(s, (i)->ip)
+ #define ip46_scanlist(out, max, s, num) ip4_scanlist((out)->ip, max, s, num)
+-#define ip46_from_ip4(i, ip4) (byte_copy((i)->ip, 4, ip4), 1)
++#define ip46_from_ip4(i, ip4) (memmove((i)->ip, (ip4), 4), 1)
+ #define ip46_from_ip6(i, ip6) (errno = ENOSYS, 0)
+ 
+ #define socket_connect46(s, i, port) socket_connect4(s, (i)->ip, port)
