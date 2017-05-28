@@ -14,19 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl debug pam policykit selinux"
 
-COMMON_DEPEND="
+RDEPEND="
 	sys-apps/util-linux
 	sys-libs/libcap
 	virtual/libudev:=
 	acl? ( sys-apps/acl )
 	pam? ( virtual/pam )
 	selinux? ( sys-libs/libselinux )
-"
-RDEPEND="${COMMON_DEPEND}
-	sys-apps/dbus
 	!sys-apps/systemd
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
@@ -35,7 +32,10 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/libtool
 	virtual/pkgconfig
 "
-PDEPEND="policykit? ( sys-auth/polkit )"
+PDEPEND="
+	sys-apps/dbus
+	policykit? ( sys-auth/polkit )
+"
 
 PATCHES=( "${FILESDIR}/${PN}-226.4-docs.patch" )
 
