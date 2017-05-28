@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="OSI Certified implementation of a complete cluster engine"
 HOMEPAGE="http://www.corosync.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2 public-domain"
 SLOT="0"
