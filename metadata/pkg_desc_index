@@ -12185,7 +12185,7 @@ kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring act
 kde-misc/plasma-applet-redshift-control 1.0.17 1.0.18: Plasma 5 applet for controlling redshift
 kde-misc/plasma-applet-weather-widget 1.6.8: Plasma 5 applet for weather forecasts
 kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
-kde-misc/rsibreak 0.12.6: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.6 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/semantik 0.9.5: Mindmapping-like tool for document generation
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
