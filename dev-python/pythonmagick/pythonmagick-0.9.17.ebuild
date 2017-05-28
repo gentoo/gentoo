@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit python-r1
+inherit libtool python-r1
 
 MY_PN="PythonMagick"
 MY_P="${MY_PN}-${PV}"
@@ -31,6 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
+	elibtoolize
 	python_copy_sources
 }
 
