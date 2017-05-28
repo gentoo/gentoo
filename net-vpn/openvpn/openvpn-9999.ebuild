@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
-IUSE+=" pkcs11 +plugins polarssl selinux +ssl static systemd test userland_BSD"
+IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
 	lzo? ( !lz4 )
