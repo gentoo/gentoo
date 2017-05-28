@@ -2998,7 +2998,7 @@ dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.0 1.22.1-r1: wxWidgets GUI for PostgreSQL
 dev-db/pgagent 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
-dev-db/pgbadger 9.1: pgBadger is a PostgreSQL log analyzer.
+dev-db/pgbadger 9.1-r1: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
 dev-db/pgpool2 3.5.2 3.5.5 3.6.1 9999: Connection pool server for PostgreSQL
