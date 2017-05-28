@@ -1,0 +1,35 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 19:52:58 -0400
+Subject: fix capitalization of GnuPG
+
+---
+ README                 | 2 +-
+ lib/GnuPG/Interface.pm | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/README b/README
+index f457577..aa7c984 100644
+--- a/README
++++ b/README
+@@ -427,7 +427,7 @@ LICENSE
+     under the same terms as Perl itself.
+ 
+ AUTHOR
+-    GnuPg::Interface is currently maintained by Jesse Vincent
++    GnuPG::Interface is currently maintained by Jesse Vincent
+     <jesse@cpan.org>.
+ 
+     Frank J. Tobin, ftobin@cpan.org was the original author of the package.
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 19e8070..cf7138f 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -1357,7 +1357,7 @@ under the same terms as Perl itself.
+ 
+ =head1 AUTHOR
+ 
+-GnuPg::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.
++GnuPG::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.
+ 
+ Frank J. Tobin, ftobin@cpan.org was the original author of the package.
+ 
