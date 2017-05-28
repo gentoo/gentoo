@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -48,6 +48,7 @@ src_prepare() {
 		-e "s:\$DEPS -llapack -lm:$($(tc-getPKG_CONFIG) --libs lapack):" \
 		-e 's:`depend $d $a blas`::' \
 		-e 's:X11R6:X11:g' \
+		-e 's: /[^ ]*`dpkg-arch.*`::' \
 		debian/add-ons/bin/cernlib.in || die "sed failed"
 
 	cp debian/add-ons/Makefile .
