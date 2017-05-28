@@ -10,7 +10,7 @@ inherit python-r1
 
 DESCRIPTION="Google tool for managing git, particularly multiple repos"
 HOMEPAGE="https://android.googlesource.com/tools/repo"
-SRC_URI="https://android.googlesource.com/tools/repo/+archive/v${PV}.tar.gz"
+SRC_URI="https://android.googlesource.com/tools/repo/+archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
