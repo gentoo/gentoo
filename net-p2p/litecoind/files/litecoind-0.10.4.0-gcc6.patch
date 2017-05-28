@@ -1,0 +1,47 @@
+From 40ce41c006787dc4a2e3b17f7abbaf8ff56c45e7 Mon Sep 17 00:00:00 2001
+From: Adrian Gallagher <thrasher@addictionsoftware.com>
+Date: Tue, 25 Oct 2016 17:48:19 -0700
+Subject: [PATCH] Litecoin: Fix build boost compilation error with C++11
+
+---
+ src/chainparams.cpp | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/chainparams.cpp b/src/chainparams.cpp
+index ba8e33d1c14..7f99e45b7ad 100644
+--- a/src/chainparams.cpp
++++ b/src/chainparams.cpp
+@@ -163,11 +163,11 @@ class CMainParams : public CChainParams {
+         vSeeds.push_back(CDNSSeedData("weminemnc.com", "dnsseed.weminemnc.com"));
+         vSeeds.push_back(CDNSSeedData("loshan.co.uk", "seed-a.litecoin.loshan.co.uk"));
+ 
+-        base58Prefixes[PUBKEY_ADDRESS] = list_of(48);
+-        base58Prefixes[SCRIPT_ADDRESS] = list_of(5);
+-        base58Prefixes[SECRET_KEY] =     list_of(176);
+-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
++        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48);
++        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
++        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,176);
++        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
++        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+ 
+         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
+ 
+@@ -225,11 +225,11 @@ class CTestNetParams : public CMainParams {
+         vSeeds.push_back(CDNSSeedData("xurious.com", "testnet-seed.ltc.xurious.com"));
+         vSeeds.push_back(CDNSSeedData("wemine-testnet.com", "dnsseed.wemine-testnet.com"));
+ 
+-        base58Prefixes[PUBKEY_ADDRESS] = list_of(111);
+-        base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
+-        base58Prefixes[SECRET_KEY]     = list_of(239);
+-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
+-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
++        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
++        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
++        base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,239);
++        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
++        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+ 
+         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
+ 
