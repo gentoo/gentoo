@@ -8,7 +8,7 @@ PHP_PEAR_CHANNEL="${FILESDIR}/channel.xml"
 
 inherit php-pear-r2
 
-DESCRIPTION="The phpDocumentor package provides automatic documenting of php api directly from the source"
+DESCRIPTION="Automatic documenting of php api directly from the source"
 SRC_URI="http://${PHP_PEAR_URI}/get/${PEAR_P}.tgz"
 LICENSE="MIT"
 SLOT="0"
