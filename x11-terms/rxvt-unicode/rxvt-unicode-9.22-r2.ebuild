@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools eutils systemd
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -36,6 +36,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
 	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+	"${FILESDIR}"/${PN}-9.22-CVE-2017-7483.patch
 )
 
 src_prepare() {
@@ -45,6 +46,7 @@ src_prepare() {
 	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die "sed failed"
 
 	eautoreconf
+	eapply_user && eautoreconf # Allow user patches
 }
 
 src_configure() {
@@ -78,6 +80,23 @@ src_install() {
 	dodoc \
 		README.FAQ Changes doc/README* doc/changes.txt doc/etc/* doc/rxvt-tabbed
 
-	make_desktop_entry urxvt rxvt-unicode utilities-terminal \
+	make_desktop_entry urxvt urxvt utilities-terminal \
 		"System;TerminalEmulator"
+	make_desktop_entry urxvtc urxvtc utilities-terminal \
+		"System;TerminalEmulator"
+
+	systemd_newunit "${FILESDIR}"/urxvtd_at.service "urxvtd@.service"
+	systemd_douserunit "${FILESDIR}"/urxvtd.service
+	systemd_douserunit "${FILESDIR}"/urxvtd.socket
+}
+
+pkg_postinst() {
+	elog "To use Daemon-Client setup"
+	elog "Pass the username when starting the service:"
+	elog
+	elog "  systemctl enable urxvtd@username.service"
+	elog
+	elog "To start client run:"
+	elog
+	elog "  urxvtc"
 }

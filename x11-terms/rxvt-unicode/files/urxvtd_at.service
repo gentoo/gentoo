@@ -1,0 +1,9 @@
+[Unit]
+Description=RXVT-Unicode Daemon
+
+[Service]
+User=%i
+ExecStart=/usr/bin/urxvtd -q -o
+
+[Install]
+WantedBy=multi-user.target
