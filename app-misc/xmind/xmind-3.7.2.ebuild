@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils multilib gnome2-utils
+inherit eutils multilib gnome2-utils font
 
-MY_PV="7-update1"
-MY_P="${PN}-${MY_PV}-portable"
+MY_PV="8-update2"
+MY_P="${PN}-${MY_PV}-linux"
 
 DESCRIPTION="A brainstorming and mind mapping software tool"
 HOMEPAGE="http://www.xmind.net"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=virtual/jre-1.5
+	>=virtual/jre-1.8
 	x11-libs/gtk+:2
 "
 
@@ -26,29 +26,31 @@ S=${WORKDIR}
 
 QA_PRESTRIPPED="opt/xmind/XMind/libcairo-swt.so"
 QA_FLAGS_IGNORED="
-	opt/xmind/Commons/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.300.v20150602-1417/eclipse_1612.so
-	opt/xmind/Commons/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_1.1.300.v20150602-1417/eclipse_1612.so
-	opt/xmind/XMind/libcairo-swt.so
+	opt/xmind/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_1.1.400.v20160518-1444/eclipse_1617.so
+	opt/xmind/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.400.v20160518-1444/eclipse_1617.so
 	opt/xmind/XMind/XMind
 "
 
+FONT_SUFFIX="ttf"
+FONT_S="${S}/fonts"
+
 src_configure() {
 	if use amd64; then
-		XDIR="XMind_Linux_64bit"
+		XDIR="XMind_amd64"
 	else
-		XDIR="XMind_Linux"
+		XDIR="XMind_i388"
 	fi
 	mv "$XDIR" XMind || die
-	cp "${FILESDIR}"/${PN}-3.4.0-config.ini Commons/configuration || die #Combined common+linux config.ini
 	# force data instance & config area to be at home/.xmind directory
 	sed \
 		-e '/-configuration/d' \
 		-e '/\.\/configuration/d' \
 		-e '/-data/d' \
 		-e '/\.\.\/Commons\/data\/workspace-cathy/d' \
-		-e 's/\.\.\/Commons/\/opt\/xmind\/Commons/g' \
+		-e 's/\.\.\/plugins/\/opt\/xmind\/plugins/g' \
+		-e '/-vmargs/i-showsplash' \
+		-e '/vmargs/iorg.xmind.cathy' \
 		-i XMind/XMind.ini || die
-	echo '-vmargs' >> XMind/XMind.ini || die
 	echo '-Dosgi.instance.area=@user.home/.xmind/workspace-cathy' >> XMind/XMind.ini || die
 	echo '-Dosgi.configuration.area=@user.home/.xmind/configuration-cathy' >> XMind/XMind.ini || die
 }
@@ -59,11 +61,11 @@ src_compile() {
 
 src_install() {
 	insinto /opt/xmind
-	doins -r Commons XMind
+	doins -r plugins configuration features XMind
 	fperms a+rx  "/opt/xmind/XMind/XMind"
 
 	exeinto /opt/bin
-	newexe "${FILESDIR}/xmind-wrapper-3.5.3" xmind
+	newexe "${FILESDIR}/xmind-wrapper-3.7.0" xmind
 
 	# install icons
 	local res
@@ -72,6 +74,7 @@ src_install() {
 	done
 
 	make_desktop_entry ${PN} "XMind" ${PN} "Office" "MimeType=application/x-xmind;"
+	font_src_install
 }
 
 pkg_preinst() {
@@ -80,6 +83,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	font_pkg_postinst
 	elog "For audio notes support, install media-sound/lame"
 }
 
