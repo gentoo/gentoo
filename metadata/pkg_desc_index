@@ -7453,6 +7453,7 @@ dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
 dev-python/dask 0.10.2 0.14.1: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
+dev-python/dbusmock 0.16.7: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.0: A library to multiply test cases
 dev-python/debtcollector 1.3.0 1.11.0: Python deprecation patterns and strategies that collect technical debt
