@@ -1,0 +1,13 @@
+--- a/lib/utils/color.h.orig	2017-02-16 00:55:24.000000000 +0300
++++ b/lib/utils/color.h	2017-02-16 01:00:40.176467232 +0300
+@@ -25,6 +25,10 @@
+ 
+ #include <math.h>
+ 
++#if __cplusplus >= 201103L && (__GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 23))
++#include <cmath>
++#endif
++
+ #include "utils.h"
+ #include "options.h"
+ 
