@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x86-macos"
 
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
-IUSE+=" pkcs11 +plugins polarssl selinux +ssl static systemd test userland_BSD"
+IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
 	mbedtls? ( ssl !libressl )
@@ -66,6 +66,8 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -Xcompiler -static
+	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
+	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 	econf \
 		$(usex mbedtls '--with-crypto-library=mbedtls' '') \
 		$(use_enable inotify async-push) \
@@ -110,10 +112,6 @@ src_install() {
 		insinto /usr/share/doc/${PF}/examples
 		doins -r sample contrib
 	fi
-
-	systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
-	use systemd && systemd_newunit distro/systemd/openvpn-client@.service openvpn-client@.service
-	use systemd && systemd_newunit distro/systemd/openvpn-server@.service openvpn-server@.service
 }
 
 pkg_postinst() {
