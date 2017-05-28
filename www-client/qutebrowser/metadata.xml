@@ -6,6 +6,6 @@
 		<name>Tim Harder</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">The-Compiler/qutebrowser</remote-id>
+		<remote-id type="github">qutebrowser/qutebrowser</remote-id>
 	</upstream>
 </pkgmetadata>
