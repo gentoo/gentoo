@@ -9722,7 +9722,7 @@ dev-ruby/rest-client 1.8.0-r1 1.8.0-r3 2.0.1 2.0.2: Simple Simple HTTP and REST 
 dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
 dev-ruby/rex-arch 0.1.1 0.1.2 0.1.4 0.1.5: architecture specific information for Rex
 dev-ruby/rex-bin_tools 0.1.2: suite of tools for analyzing executables to find specific chunks of code
-dev-ruby/rex-core 0.1.9: Core libraries required for the Ruby Exploitation(Rex) Suite
+dev-ruby/rex-core 0.1.9 0.1.10: Core libraries required for the Ruby Exploitation(Rex) Suite
 dev-ruby/rex-encoder 0.1.3: provides the basis for all of the polymorphic encoders that Metasploit uses
 dev-ruby/rex-exploitation 0.1.12: various helper mechanisms for creating exploits
 dev-ruby/rex-java 0.1.2: Ruby Exploitation(Rex) library for parsing Java serialized streams
@@ -9747,7 +9747,7 @@ dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.4 1.5.5: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.4 2.15.4 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
-dev-ruby/roadie 3.2.1 3.2.1-r1: Making HTML emails comfortable for the Rails rockstars
+dev-ruby/roadie 3.2.1 3.2.1-r1 3.2.1-r2: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.11.1-r1 2.0.6 2.0.7: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
