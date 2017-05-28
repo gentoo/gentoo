@@ -7084,7 +7084,7 @@ dev-php/PHP_Timer 1.0.5 1.0.9: Utility class for timing
 dev-php/PHP_TokenStream 1.1.3 1.4.11: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.3.234_p0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
-dev-php/YAML 1.0.6-r1 1.0.6-r2: The Symfony YAML Component
+dev-php/YAML 1.0.6-r3: The Symfony YAML Component
 dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source framework for developing Web Applications
 dev-php/adodb 5.20.9: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
