@@ -7307,7 +7307,7 @@ dev-python/atomicwrites 0.1.8 0.1.9 1.1.5-r2: Atomic file writes
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 16.3.0-r1: Attributes without boilerplate
-dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
+dev-python/audioread 1.0.1-r1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.12.1 0.16.0 17.5.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.5.0: Self-service finite-state machines for the programmer on the go
