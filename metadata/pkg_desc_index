@@ -1878,7 +1878,7 @@ app-misc/metromap 0.1.4-r1: Metromap is simple pygtk+2 programm for finding path
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/misterhouse 2.103-r1 2.105-r1: Mister House, an open source home automation program with X10 support
 app-misc/mmv 1.01b_p18: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.4.10: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.4.10 1.4.11: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
@@ -2593,7 +2593,7 @@ app-vim/gitv 1.3 9999: vim plugin: gitk for vim
 app-vim/gnupg 2.6: transparent editing of gpg encrypted files
 app-vim/greputils 2.8-r1: vim plugin: interface with grep, find and id-utils
 app-vim/gtk-syntax 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xlib, Gimp, Gnome, and more
-app-vim/gundo 2.6.1: vim plugin: visualize your vim undo tree
+app-vim/gundo 2.6.1 2.6.2: vim plugin: visualize your vim undo tree
 app-vim/help-extra-syntax 20050106-r1: vim plugin: extra syntax highlighting for help files
 app-vim/html5 0.27: vim plugin: HTML5/SVG omnicomplete function, indent and syntax for Vim
 app-vim/increment 1.1-r1: vim plugin: easily create sequences of incremented values
@@ -4117,7 +4117,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.4.0 7.2.6.9: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.3.0-r1 3.4.0 7.2.6.8 7.2.6.9: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.4.0 7.2.6.8 7.2.6.9: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
