@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,6 @@ IUSE="doc test"
 RDEPEND="
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	>=dev-python/doit-py-0.3.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' python2_7 pypy)
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 DEPEND="test? ( ${RDEPEND}
@@ -28,6 +27,7 @@ DEPEND="test? ( ${RDEPEND}
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/cloudpickle[${PYTHON_USEDEP}] )"
+PDEPEND=">=dev-python/doit-py-0.3.0[${PYTHON_USEDEP}]"
 
 # Required for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
