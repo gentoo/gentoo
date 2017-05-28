@@ -11,6 +11,7 @@ HOMEPAGE="https://github.com/AmesCornish/buttersink"
 
 LICENSE="GPL-3"
 SLOT=0
+IUSE="test"
 
 # local tests would require root and cause sandbox issues with btrfs subvolume
 # operations, and network tests would require an SSH server with root login to
@@ -30,10 +31,10 @@ fi
 RDEPEND="${PYTHON_DEPS}
 	dev-python/boto[${PYTHON_USEDEP}]
 	dev-python/crcmod[${PYTHON_USEDEP}]
-	dev-python/flake8[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	sys-fs/btrfs-progs"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-python/flake8[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	if [[ ${PV} == 9999 ]] ; then
