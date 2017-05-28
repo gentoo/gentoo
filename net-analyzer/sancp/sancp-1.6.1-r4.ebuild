@@ -37,6 +37,7 @@ src_prepare() {
 	epatch "${DISTDIR}"/${PN}-1.6.1.fix200601.c.patch
 	epatch "${DISTDIR}"/${PN}-1.6.1.fix200606.d.patch
 	epatch "${FILESDIR}"/${P}-compiler.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 
 	tc-export CXX CC
 }
