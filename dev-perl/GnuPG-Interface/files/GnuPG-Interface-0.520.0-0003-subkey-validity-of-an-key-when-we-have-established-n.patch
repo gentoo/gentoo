@@ -1,0 +1,37 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 11:35:31 -0400
+Subject: subkey validity of an key when we have established no trust anchors
+
+This apparently isn't tested by deep comparisons, though, so it was
+never caught.
+---
+ t/get_public_keys.t | 2 +-
+ t/get_secret_keys.t | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/get_public_keys.t b/t/get_public_keys.t
+index 53db021..73e320b 100644
+--- a/t/get_public_keys.t
++++ b/t/get_public_keys.t
+@@ -175,7 +175,7 @@ TEST
+     ];
+ 
+     my $subkey = GnuPG::SubKey->new
+-      ( validity                 => 'u',
++      ( validity                 => '-',
+         length                   => 768,
+         algo_num                 => 16,
+         hex_id                   => 'ADB99D9C2E854A6B',
+diff --git a/t/get_secret_keys.t b/t/get_secret_keys.t
+index 3a1d99f..7bba083 100644
+--- a/t/get_secret_keys.t
++++ b/t/get_secret_keys.t
+@@ -48,7 +48,7 @@ TEST
+ 
+ 
+     my $subkey = GnuPG::SubKey->new
+-      ( validity                 => 'u',
++      ( validity                 => '-',
+         length                   => 768,
+         algo_num                 => 16,
+         hex_id                   => 'ADB99D9C2E854A6B',

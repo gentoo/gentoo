@@ -1,0 +1,51 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Fri, 26 May 2017 18:15:24 -0400
+Subject: Make things work with gpg1 (assuming plain 'gpg' is modern)
+
+ * avoid sending --pinentry-mode=loopback if gpg is invoked as gpg1
+ * fix up t/list_secret_keys to account for the varied output
+ * t/decrypt.t still fails two agent-only tests, but presumably folks
+   who use gpg1 are not expecting to use the agent.
+---
+ lib/GnuPG/Interface.pm | 5 ++++-
+ t/list_secret_keys.t   | 9 +++++----
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 5d8b0ec..f80ead5 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -112,8 +112,11 @@ sub fork_attach_exec( $% ) {
+     # -- version 2.1.x or later.  It's not clear to me how we can
+     # safely and efficiently avoid this assumption (see
+     # https://lists.gnupg.org/pipermail/gnupg-devel/2016-October/031800.html)
++    #
++    # as a (brittle and incomplete) cleanup, we will avoid trying to
++    # send pinentry-loopback if the program is invoked as "gpg1"
+     $use_loopback_pinentry = 1
+-      if ($handles->passphrase());
++      if ($handles->passphrase() && ! ($self->call =~ m/gpg1$/));
+ 
+     # deprecation support
+     $args{commands} ||= $args{gnupg_commands};
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index d1e3f30..8e3c911 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -23,11 +23,12 @@ TEST
+     $outfile = 'test/secret-keys/1.out';
+     my $out = IO::File->new( "> $outfile" )
+       or die "cannot open $outfile for writing: $ERRNO";
+-    my $modern_pubring_line = $gnupg->options->homedir() . "/pubring.kbx\n";
++    my $seckey_file = $gpg_is_modern ? 'pubring.kbx' : 'secring.gpg';
++    my $pubring_line = $gnupg->options->homedir() . '/' . $seckey_file . "\n";
+     while (<$stdout>) {
+-      if ($gpg_is_modern && ($_ eq $modern_pubring_line)) {
+-        $out->print("test/gnupghome/pubring.kbx\n");
+-      } elsif ($gpg_is_modern && /^--*$/) {
++      if ($_ eq $pubring_line) {
++        $out->print('test/gnupghome/'.$seckey_file."\n");
++      } elsif (/^--*$/) {
+         $out->print("--------------------------\n");
+       } else {
+         $out->print( $_ );
