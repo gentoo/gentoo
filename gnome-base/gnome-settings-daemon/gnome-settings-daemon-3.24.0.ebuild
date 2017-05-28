@@ -22,7 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linu
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2[dbus]
-	>=x11-libs/gtk+-3.15.3:3
+	>=x11-libs/gtk+-3.15.3:3[X]
 	>=gnome-base/gnome-desktop-3.11.1:3=
 	>=gnome-base/gsettings-desktop-schemas-3.23.3
 	>=gnome-base/librsvg-2.36.2:2
@@ -76,7 +76,6 @@ RDEPEND="${COMMON_DEPEND}
 	!<gnome-base/gnome-session-3.23.2
 "
 # xproto-7.0.15 needed for power plugin
-# FIXME: tests require dbus-mock
 DEPEND="${COMMON_DEPEND}
 	cups? ( sys-apps/sed )
 	test? (
@@ -89,8 +88,12 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	x11-proto/inputproto
 	x11-proto/xf86miscproto
+	x11-proto/kbproto
 	>=x11-proto/xproto-7.0.15
 "
+
+# FIXME: tests require dbus-mock
+RESTRICT="test"
 
 PATCHES=(
 	# Make colord and wacom optional; requires eautoreconf
