@@ -108,6 +108,15 @@ customize_epam_wrapper() {
 		|| die 'failed to install epam-wrapper'
 }
 
+# Disable mod_irc in example configuration file.
+disable_mod_irc() {
+	local needs_iconv='needs dev-erlang/iconv (+nls USE flag)'
+	sed -r \
+		-e "s@^(\s*)(mod_irc\s*:.*$)@\1## \2 # ${needs_iconv}@" \
+		-i "${S}/ejabberd.yml.example" \
+		|| die 'failed to modify example config'
+}
+
 # Check if there already exists a certificate.
 ejabberd_cert_exists() {
 	local cert
@@ -137,6 +146,12 @@ ejabberd_cert_install() {
 # to something else than this should be adjusted here as well.
 get_ejabberd_path() {
 	echo "/usr/$(get_libdir)/${P}"
+}
+
+# Check whether mod_irc is enabled in ejabberd configuration on target system.
+is_mod_irc_enabled() {
+	egrep '^(\s*)(mod_irc\s*:.*$)' \
+		"${EROOT%/}${JABBER_ETC}/ejabberd.yml"
 }
 
 # Make ejabberd.service for systemd from upstream provided template.
@@ -198,6 +213,7 @@ src_prepare() {
 	make_ejabberd_service
 	skip_docs
 	adjust_config
+	use nls || disable_mod_irc
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
 
 	rebar_fix_include_path fast_xml
@@ -299,5 +315,10 @@ pkg_postinst() {
 
 	if ! ejabberd_cert_exists; then
 		ejabberd_cert_install
+	fi
+
+	if ! use nls && is_mod_irc_enabled; then
+		ewarn "nls support (dev-erlang/iconv) is required by mod_irc. Either rebuild ejabberd"
+		ewarn "with nls enabled or disable mod_irc in ${EROOT%/}${JABBER_ETC}/ejabberd.yml."
 	fi
 }
