@@ -101,7 +101,9 @@ PATCHES=(
 )
 
 python_check_deps() {
-	use test && has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+	if use test; then
+		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+	fi
 }
 
 pkg_setup() {
