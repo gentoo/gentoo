@@ -1,0 +1,33 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 20:17:49 -0400
+Subject: move key files to generic names
+
+---
+ t/000_setup.t                         |   2 +-
+ test/{pubring.gpg => public_keys.pgp} | Bin
+ test/{secring.gpg => secret_keys.pgp} | Bin
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+ rename test/{pubring.gpg => public_keys.pgp} (100%)
+ rename test/{secring.gpg => secret_keys.pgp} (100%)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+index 7f7f7b0..a8e3042 100644
+--- a/t/000_setup.t
++++ b/t/000_setup.t
+@@ -19,7 +19,7 @@ TEST
+     copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
+     reset_handles();
+ 
+-    my $pid = $gnupg->import_keys(command_args => [ 'test/pubring.gpg', 'test/secring.gpg' ],
++    my $pid = $gnupg->import_keys(command_args => [ 'test/public_keys.pgp', 'test/secret_keys.pgp' ],
+                                   options => [ 'batch'],
+                                   handles => $handles);
+     waitpid $pid, 0;
+diff --git a/test/pubring.gpg b/test/public_keys.pgp
+similarity index 100%
+rename from test/pubring.gpg
+rename to test/public_keys.pgp
+diff --git a/test/secring.gpg b/test/secret_keys.pgp
+similarity index 100%
+rename from test/secring.gpg
+rename to test/secret_keys.pgp

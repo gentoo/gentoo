@@ -1,0 +1,42 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Thu, 25 May 2017 16:07:45 -0400
+Subject: Kill any GnuPG agent before and after the test suite.
+
+This helps to ensure that the test suite daemon is started fresh at
+every test suite run.  And it also avoids leaving a daemon running
+after the test suite, assuming the test suite manages to reach the
+end.
+
+This is considered a reasonable practice by upstream.
+---
+ t/000_setup.t   | 3 +++
+ t/zzz_cleanup.t | 2 ++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+index b183241..4dc4329 100644
+--- a/t/000_setup.t
++++ b/t/000_setup.t
+@@ -17,6 +17,9 @@ TEST
+     $agentconf->write("pinentry-program " . getcwd() . "/test/fake-pinentry.pl\n");
+     $agentconf->close();
+     copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
++    # reset the state of any long-lived gpg-agent, ignoring errors:
++    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
++
+     reset_handles();
+ 
+     my $pid = $gnupg->import_keys(command_args => [ 'test/public_keys.pgp', 'test/secret_keys.pgp', 'test/new_secret.pgp' ],
+diff --git a/t/zzz_cleanup.t b/t/zzz_cleanup.t
+index 5c03a72..eea3a48 100644
+--- a/t/zzz_cleanup.t
++++ b/t/zzz_cleanup.t
+@@ -12,6 +12,8 @@ use File::Path qw (remove_tree);
+ TEST
+ {
+     my $err = [];
++    # kill off any long-lived gpg-agent, ignoring errors:
++    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
+     remove_tree('test/gnupghome', {error => \$err});
+     return ! @$err;
+ };
