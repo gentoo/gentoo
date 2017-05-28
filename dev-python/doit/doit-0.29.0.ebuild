@@ -17,16 +17,18 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
+	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' python2_7 pypy)
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+"
 DEPEND="test? ( ${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/cloudpickle[${PYTHON_USEDEP}] )"
+		dev-python/coverage[${PYTHON_USEDEP}] )
+"
 PDEPEND=">=dev-python/doit-py-0.3.0[${PYTHON_USEDEP}]"
 
 # Required for test phase
