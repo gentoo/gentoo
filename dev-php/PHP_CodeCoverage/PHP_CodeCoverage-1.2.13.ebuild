@@ -1,14 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PHP_PEAR_URI="pear.phpunit.de"
+PHP_PEAR_DOMAIN="pear.phpunit.de"
+PHP_PEAR_CHANNEL="${FILESDIR}/channel.xml"
 
-inherit php-pear-r1
+inherit php-pear-r2
 
-DESCRIPTION="Provides collection, processing, and rendering functionality for PHP code coverage information"
+DESCRIPTION="Collection, processing, and rendering for PHP code coverage"
 HOMEPAGE="http://pear.phpunit.de"
+SRC_URI="http://${PHP_PEAR_URI}/get/${PEAR_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
