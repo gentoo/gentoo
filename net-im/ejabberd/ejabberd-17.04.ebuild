@@ -62,7 +62,8 @@ RDEPEND="${CDEPEND}
 	captcha? ( media-gfx/imagemagick[truetype,png] )"
 
 DOCS=( README )
-PATCHES=( "${FILESDIR}/${P}-ejabberdctl.patch" )
+PATCHES=( "${FILESDIR}/${P}-ejabberdctl.patch"
+	"${FILESDIR}/${P}-0001-Don-t-configure-or-compile-deps.patch" )
 
 EJABBERD_CERT="${EPREFIX}/etc/ssl/ejabberd/server.pem"
 # Paths in net-im/jabber-base
