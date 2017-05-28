@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="A standalone skill monitoring application for EVE Online"
 HOMEPAGE="http://gtkevemon.battleclinic.com"
-SRC_URI="http://github.com/gtkevemon/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="http://github.com/gtkevemon/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
