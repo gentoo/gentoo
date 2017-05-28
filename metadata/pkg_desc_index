@@ -7164,7 +7164,7 @@ dev-php/phing 2.16.0: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2-r1: Creates highlighted code by reading xml reports from codesniffer or phpunit
 dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
 dev-php/php-redmine-api 1.5.9: A simple, object-oriented, PHP Redmine API client
-dev-php/phpDocumentor 2.3.0 2.7.0 2.8.2: The phpDocumentor package provides automatic documenting of php api directly from the source
+dev-php/phpDocumentor 2.7.0 2.8.2: Automatic documenting of php api directly from the source
 dev-php/phpcov 1.1.0: CLI frontend for PHP_CodeCoverage
 dev-php/phpdepend 2.5.0: Static code analysis for PHP
 dev-php/phpdocumentor-reflection-common 1.0: Common reflection classes used by phpdocumentor to reflect the code structure
