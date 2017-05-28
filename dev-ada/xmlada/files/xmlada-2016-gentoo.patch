@@ -5,25 +5,15 @@
  
  static:
 -	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr
-+	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
++	${GPRBUILD} -p -v -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
  
  shared relocatable:
 -	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr
-+	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
++	${GPRBUILD} -p -v -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
  
  static-pic:
 -	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr
-+	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
++	${GPRBUILD} -p -v -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
  
  # Rebuild the tests (and not the XML/Ada code itself)
  test: force
---- xmlada-gpl-2016-src/shared.gpr.in.old	2017-03-26 21:48:46.613541125 +0200
-+++ xmlada-gpl-2016-src/shared.gpr.in	2017-03-26 21:49:32.713754025 +0200
-@@ -76,6 +76,7 @@
-          when "profile" =>
-             for Switches ("Ada") use warnings & ("-g", "-pg");
-       end case;
-+      for Driver ("Ada") use External ("ADA", "gcc");
-    end compiler;
- 
-    package binder is
