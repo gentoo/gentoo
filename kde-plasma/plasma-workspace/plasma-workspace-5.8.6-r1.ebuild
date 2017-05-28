@@ -3,6 +3,7 @@
 
 EAPI=6
 
+FRAMEWORKS_MINIMAL="5.34.0"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
@@ -131,6 +132,11 @@ src_prepare() {
 
 	sed -e "s|\`qtpaths|\`$(qt5_get_bindir)/qtpaths|" \
 		-i startkde/startkde.cmake startkde/startplasmacompositor.cmake || die
+
+	# https://phabricator.kde.org/D4690
+	sed -e "/add_subdirectory(remote)/ s/^/#DONT/" -i kioslave/CMakeLists.txt || die
+	rm -r kioslave/remote || die
+	find po -name "kio_remote.po" -delete || die
 }
 
 src_configure() {
