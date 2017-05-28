@@ -4,8 +4,8 @@
 EAPI=6
 
 PHP_PEAR_CHANNEL="${FILESDIR}/channel.xml"
-PHP_PEAR_URI="pear.symfony-project.com"
-PHP_PEAR_PN="YAML"
+PHP_PEAR_DOMAIN="pear.symfony-project.com"
+PHP_PEAR_PKG_NAME="YAML"
 
 inherit php-pear-r2
 
@@ -17,3 +17,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
+
+src_install() {
+	insinto /usr/share/php/SymfonyComponents/YAML
+	doins lib/*
+	php-pear-r2_install_packagexml
+	einstalldocs
+}
