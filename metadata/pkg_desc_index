@@ -5472,7 +5472,7 @@ dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
 dev-perl/B-Hooks-EndOfScope 0.150.0 0.200.0: Execute code after a scope finished compilation
-dev-perl/B-Hooks-OP-Check 0.190.0-r1 0.210.0: Wrap OP check callbacks
+dev-perl/B-Hooks-OP-Check 0.210.0: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.190.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0: PL_check hacks using Perl callbacks
@@ -5613,7 +5613,7 @@ dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file cl
 dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r1: Read directives from a configuration file
 dev-perl/Const-Fast 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
-dev-perl/Context-Preserve 0.10.0-r1 0.20.0: Return chained, modified values from subs, without losing context
+dev-perl/Context-Preserve 0.20.0: Return chained, modified values from subs, without losing context
 dev-perl/Contextual-Return 0.4.10 0.4.14: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
@@ -5694,7 +5694,7 @@ dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested 
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.390.0 2.400.0: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
-dev-perl/Data-Dumper-Concise 2.20.0-r1 2.22.0 2.23.0: Less indentation and newlines plus sub deparsing
+dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0: details of the floating point data type
 dev-perl/Data-FormValidator 4.810.0-r1 4.850.0 4.860.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
@@ -5758,7 +5758,7 @@ dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.60.0 1.70.0 1.90.0 1.100.0 1.110.0: check that a library is available
-dev-perl/Devel-Cover 1.230.0 1.230.0-r1 1.250.0: Code coverage metrics for Perl
+dev-perl/Devel-Cover 1.250.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.19: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
@@ -6938,7 +6938,7 @@ dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
-dev-php/File_Iterator 1.3.1 1.3.4 1.4.2: FilterIterator implementation that filters files based on criteria
+dev-php/File_Iterator 1.3.4 1.4.2: FilterIterator implementation that filters files based on criteria
 dev-php/PEAR-Archive_Tar 1.4.2-r2: Tar file management class
 dev-php/PEAR-Auth 1.6.4: Provides methods for creating an authentication system using PHP
 dev-php/PEAR-Auth_HTTP 2.1.8: Create HTTP authentication systems similar to Apache's realm-based .htaccess mechanism
