@@ -19014,7 +19014,7 @@ x11-misc/wmakerconf 2.12-r3: X based config tool for the windowmaker X windowman
 x11-misc/wmctrl 1.07-r2: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmiface 2.1: Command line tool allowing user scripting of the running window manager
 x11-misc/wmname 0.1-r1: utility to set the name of your window manager
-x11-misc/x11vnc 0.9.13_p20150111 0.9.14_p20161013: A VNC server for real X displays
+x11-misc/x11vnc 0.9.14_p20161013: A VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xaos 3.6: Very fast real-time fractal zoomer
