@@ -1526,6 +1526,7 @@ dev-haskell/biosff:fclip - Build the fclip executable.
 dev-haskell/biosff:flower - Build the flower executable.
 dev-haskell/biosff:frecover - Build the frecover executable.
 dev-haskell/blaze-builder-enumerator:newbuilder - use bytestring-builder instead of blaze-builder-0.3
+dev-haskell/bytedump:executable - build executable file
 dev-haskell/bytes:test-doctests - Enable the doctest suite when using the enable-tests option for cabal.
 dev-haskell/c2hs:regression - run regression tests
 dev-haskell/cabal-install:network-uri - Get Network.URI from the network-uri package.
@@ -1590,6 +1591,7 @@ dev-haskell/hdbc-sqlite3:buildtests - Build the executable to run unit tests
 dev-haskell/hdbc-sqlite3:splitbase - Choose the new smaller, split-up package.
 dev-haskell/highlighting-kate:executable - Build the Highlight executable.
 dev-haskell/highlighting-kate:pcre-light - Use the pcre-light library instead of regex-pcre-builtin.
+dev-haskell/hit:executable - Build the executable
 dev-haskell/hlint:gpl - Use GPL libraries, specifically hscolour.
 dev-haskell/hps:build-exec - Build the `hps-fractals' executable
 dev-haskell/hs3:network-uri - Get Network.URI from the network-uri package.
