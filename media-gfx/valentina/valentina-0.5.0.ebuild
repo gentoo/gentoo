@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit qmake-utils gnome2-utils fdo-mime
+inherit epatch qmake-utils gnome2-utils fdo-mime
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="http://valentinaproject.bitbucket.org/"
