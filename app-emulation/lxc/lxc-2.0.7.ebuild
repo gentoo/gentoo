@@ -132,6 +132,7 @@ src_configure() {
 		--with-distro=gentoo \
 		--with-runtime-path=/run \
 		--disable-apparmor \
+		--disable-werror \
 		$(use_enable cgmanager) \
 		$(use_enable doc) \
 		$(use_enable examples) \
