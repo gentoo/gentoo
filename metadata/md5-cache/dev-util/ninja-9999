@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=emacs? ( virtual/emacs ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) zsh-completion? ( app-shells/zsh ) !<net-irc/ninja-1.5.9_pre14-r1
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-any-r1 src_unpack:git-r3 src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	elisp-common	19ff54b35acd0bf2a14831a308a57753	git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	7aaf8e4bc5ba6cae58ff688b5a857866	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	elisp-common	19ff54b35acd0bf2a14831a308a57753	git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=0e0ab44968290fccf8273e41fb32374e

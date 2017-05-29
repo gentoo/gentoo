@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/minikube/archive/v0.19.0.tar.gz -> minikube-0.19.0.tar.gz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:-
-_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	7aaf8e4bc5ba6cae58ff688b5a857866	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=9e241652aebfac921a3b7c7cb238f4e7
