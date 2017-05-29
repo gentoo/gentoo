@@ -62,7 +62,6 @@ xindy
 lyx
 lasi
 hardened
-frei0r
 libvirt
 pdfannotextractor
 prelude
