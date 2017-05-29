@@ -66,7 +66,10 @@ RDEPEND="${COMMON_DEPEND}"
 # tests hang
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}"/${P}-previewjob{1,2}.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-previewjob{1,2}.patch
+	"${FILESDIR}"/${P}-kio.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
