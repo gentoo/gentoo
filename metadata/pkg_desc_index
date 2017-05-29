@@ -96,7 +96,7 @@ app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event l
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 5.1.2 5.2.2 5.3.2 5.4.0: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.2.2 5.3.2 5.4.0-r1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
@@ -8681,7 +8681,7 @@ dev-python/skype4py 1.0.35-r1: Python wrapper for the Skype API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
 dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
-dev-python/smmap2 2.0.1: A pure python implementation of a sliding window memory map manager
+dev-python/smmap2 2.0.1-r1: A pure python implementation of a sliding window memory map manager
 dev-python/snakefood 1.3.1-r1: Generate dependency graphs from Python code
 dev-python/snakeoil 0.7.1 9999: misc common functionality and useful optimizations
 dev-python/snappy 0.5-r2 0.5-r3: Python library for the snappy compression library from Google
@@ -15560,7 +15560,7 @@ net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.10.19-r1 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r2 9999: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
-net-news/rawdog 2.19 2.20 2.22: Rawdog - RSS Aggregator Without Delusions Of Grandeur
+net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.3.5: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
@@ -17869,7 +17869,7 @@ sys-kernel/linux-firmware 20160331 20161205 20170113 20170314 20170519 99999999:
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6 4.7 4.8 4.9 4.10: Linux system headers
 sys-kernel/mips-sources 4.4.55 4.8.17: Linux-Mips GIT sources for MIPS-based machines, dated 20161016
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11 2.6.32.116.1: Kernel sources with OpenVZ patchset
-sys-kernel/pf-sources 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4 4.8_p8 4.10_p3: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
+sys-kernel/pf-sources 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.48_p54 4.1.39_p47 4.4.53_p66 4.4.60_p73 4.9.20_p16: Full Linux 4.9 kernel sources with the CONFIG_PREEMPT_RT patch
