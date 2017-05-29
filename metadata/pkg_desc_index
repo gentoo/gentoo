@@ -4849,7 +4849,7 @@ dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.2 0.99.4 0.99.6: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.9.0 0.9.1: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.9.0 0.9.1 0.9.2: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1 0.3.0: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 3.0.1 9999: Small, safe and fast formatting library
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -8314,7 +8314,7 @@ dev-python/pynag 0.9.1: Python modules for Nagios plugins and configuration
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r3: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
-dev-python/pyocr 0.4.5 0.4.6: An optical character recognition (OCR) tool wrapper for python
+dev-python/pyocr 0.4.5 0.4.6 0.4.7: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyodbc 3.0.7-r1 3.0.10: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyoembed 0.1.1 9999: Python library for oEmbed with auto-discovered and manually added providers
