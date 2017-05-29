@@ -5,11 +5,13 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit readme.gentoo-r1 versionator eutils linux-mod autotools perl-functions python-single-r1 toolchain-funcs udev user
+inherit linux-info readme.gentoo-r1 versionator eutils linux-mod autotools perl-functions python-single-r1 toolchain-funcs udev user
+
+MY_PV=${PV/_/}
 
 DESCRIPTION="Kernel module and driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="http://linux-gpib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
+SRC_URI="mirror://sourceforge/linux-gpib/${PN}-${MY_PV}.tar.gz
 	firmware? ( http://linux-gpib.sourceforge.net/firmware/gpib_firmware-2006-11-12.tar.gz )
 "
 
@@ -39,9 +41,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.3-reallydie.patch
 )
 
+S=${WORKDIR}/${PN}-${MY_PV}
+
 pkg_setup () {
 	use perl && perl_set_version
 	use python && python_setup
+
+	CONFIG_CHECK="!VMAP_STACK"
 	linux-mod_pkg_setup
 
 	if kernel_is -lt 2 6 8; then
@@ -56,6 +62,7 @@ pkg_setup () {
 
 src_prepare () {
 	default
+	kernel_is ge 4 11 0 && eapply "${FILESDIR}"/${PN}-4.0.4_rc2-kernel-4.11.0.patch
 	eautoreconf
 }
 
