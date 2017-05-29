@@ -8836,6 +8836,7 @@ dev-python/uncertainties 3.0.1: Python module for calculations with uncertaintie
 dev-python/uncompyle6 2.9.7: Python cross-version byte-code deparser
 dev-python/unicodecsv 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.18 0.04.20: Module providing ASCII transliterations of Unicode text
+dev-python/unittest-mixins 1.3: A set of mixin classes and other helpers for unittest test case classes
 dev-python/unittest2 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uranium 2.3.1: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.3.2 0.3.3: URDF parser for Python
