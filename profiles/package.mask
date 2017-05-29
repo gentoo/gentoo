@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Amadeusz Żołnowski <aidecoe@gentoo.org> (29 May 2017)
+# Masked for removal. I have added it but I no longer use it.
+# If someone cares about z please take ownership. Othwerwise
+# I will remove it in 30 days.
+app-shells/z
+
 # Amadeusz Żołnowski <aidecoe@gentoo.org> (28 May 2017)
 # Masked for removal. Upstream has disappeared. Homepage is not
 # accessible anymore. There are open, long-standing bugs: #553888,
