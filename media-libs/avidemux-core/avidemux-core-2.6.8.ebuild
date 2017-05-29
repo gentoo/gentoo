@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -53,6 +53,7 @@ DEPEND="
 S="${WORKDIR}/${MY_P}"
 BUILD_DIR="${S}/buildCore"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
 DOCS=( AUTHORS README )
 
 src_prepare() {

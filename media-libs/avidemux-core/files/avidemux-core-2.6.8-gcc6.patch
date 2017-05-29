@@ -1,0 +1,50 @@
+--- a/avidemux_core/ADM_coreUtils/src/prefs.cpp
++++ b/avidemux_core/ADM_coreUtils/src/prefs.cpp
+@@ -44,8 +44,8 @@
+    const char *name2;
+    ADM_paramType  type;
+    const char *defaultValue;
+-   float    min;
+-   float    max;
++   double    min;
++   double    max;
+ }optionDesc;
+ 
+ #include "prefs2_pref.h"
+--- a/avidemux_core/ADM_coreAudio/src/ADM_audioStreamBuffered.cpp
++++ b/avidemux_core/ADM_coreAudio/src/ADM_audioStreamBuffered.cpp
+@@ -46,7 +46,7 @@
+         // By construction, the error should be minimal
+         if(newDts!=ADM_AUDIO_NO_DTS)
+         {
+-            if( abs(newDts-lastDts)>ADM_MAX_SKEW)
++            if( labs((int64_t)newDts-lastDts)>ADM_MAX_SKEW)
+             {
+                 printf("[AudioStream] Warning skew in dts =%"PRId64", \n",(int64_t)newDts-(uint64_t)lastDts);
+                 printf("[AudioStream] Warning skew lastDts=%s \n",ADM_us2plain(lastDts));
+--- a/avidemux_core/ADM_coreVideoCodec/src/ADM_ffmp43.cpp
++++ b/avidemux_core/ADM_coreVideoCodec/src/ADM_ffmp43.cpp
+@@ -30,19 +30,19 @@
+ #define WRAP_Open_Template(funcz,argz,display,codecid) \
+ {\
+ AVCodec *codec=funcz(argz);\
+-if(!codec) {GUI_Error_HIG("Codec",QT_TR_NOOP("Internal error finding codec"display));ADM_assert(0);} \
++if(!codec) {GUI_Error_HIG("Codec",QT_TR_NOOP("Internal error finding codec" display));ADM_assert(0);} \
+   codecId=codecid; \
+   _context->workaround_bugs=1*FF_BUG_AUTODETECT +0*FF_BUG_NO_PADDING; \
+   _context->error_concealment=3; \
+   if (avcodec_open(_context, codec) < 0)  \
+                       { \
+-                                        printf("[lavc] Decoder init: "display" video decoder failed!\n"); \
+-                                        GUI_Error_HIG("Codec","Internal error opening "display); \
++                                        printf("[lavc] Decoder init: " display " video decoder failed!\n"); \
++                                        GUI_Error_HIG("Codec","Internal error opening " display); \
+                                         ADM_assert(0); \
+                                 } \
+                                 else \
+                                 { \
+-                                        printf("[lavc] Decoder init: "display" video decoder initialized! (%s)\n",codec->long_name); \
++                                        printf("[lavc] Decoder init: " display " video decoder initialized! (%s)\n",codec->long_name); \
+                                 } \
+ }
+ 
