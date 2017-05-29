@@ -69,7 +69,7 @@ multilib_src_compile() {
 	*-mingw*|mingw*)
 		emake -f win32/Makefile.gcc STRIP=true PREFIX=${CHOST}-
 		sed \
-			-e 's|@prefix@|${EPREFIX}/usr|g' \
+			-e 's|@prefix@|/usr|g' \
 			-e 's|@exec_prefix@|${prefix}|g' \
 			-e 's|@libdir@|${exec_prefix}/'$(get_libdir)'|g' \
 			-e 's|@sharedlibdir@|${exec_prefix}/'$(get_libdir)'|g' \
@@ -98,7 +98,8 @@ multilib_src_install() {
 			LIBRARY_PATH="${ED}/usr/$(get_libdir)" \
 			INCLUDE_PATH="${ED}/usr/include" \
 			SHARED_MODE=1
-		insinto /usr/share/pkgconfig
+		# overwrites zlib.pc created from win32/Makefile.gcc #620136
+		insinto /usr/$(get_libdir)/pkgconfig
 		doins zlib.pc
 		;;
 
