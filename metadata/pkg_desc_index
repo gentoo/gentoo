@@ -13767,7 +13767,7 @@ media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116
 media-sound/gpodder 3.9.1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6-r1 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 3.3.1-r3 3.4.0: GTK+ based Audio CD Player/Ripper
+media-sound/grip 3.3.1-r3 3.4.0 3.4.1: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.4: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
