@@ -39,8 +39,7 @@ esac
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 
-# FIXME: We will need to inherit toolchain-funcs as well to support crossdev.
-inherit ninja-utils
+inherit ninja-utils toolchain-funcs
 
 fi
 
@@ -71,17 +70,52 @@ DEPEND=">=dev-util/meson-0.39.1
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
 
-# Create a cross file for meson
-# fixme: This function should write a cross file as described at the
-# following url.
-# http://mesonbuild.com/Cross-compilation.html
-# _meson_create_cross_file() {
-#	touch "${T}"/meson.crossfile
-# }
+# @FUNCTION: _meson_create_cross_file
+# @INTERNAL
+# @DESCRIPTION:
+# Creates a cross file. meson uses this to define settings for
+# cross-compilers. This function is called from meson_src_configure.
+_meson_create_cross_file() {
+	# Reference: http://mesonbuild.com/Cross-compilation.html
+
+	# system roughly corresponds to uname -s (lowercase)
+	local system=unknown
+	case ${CHOST} in
+		*-aix*)     system=aix ;;
+		*-cygwin*)  system=cygwin ;;
+		*-darwin*)  system=darwin ;;
+		*-freebsd*) system=freebsd ;;
+		*-linux*)   system=linux ;;
+		*-solaris*) system=sunos ;;
+	esac
+
+	local cpu_family=$(tc-arch)
+	case ${cpu_family} in
+		amd64) cpu_family=x86_64 ;;
+		arm64) cpu_family=aarch64 ;;
+	esac
+
+	# This may require adjustment based on CFLAGS
+	local cpu=${CHOST%%-*}
+
+	cat > "${T}/meson.${CHOST}" <<-EOF
+	[binaries]
+	ar = '${AR}'
+	c = '${CC}'
+	cpp = '${CXX}'
+	strip = '${STRIP}'
+
+	[host_machine]
+	system = '${system}'
+	cpu_family = '${cpu_family}'
+	cpu = '${cpu}'
+	endian = '$(tc-endian)'
+	EOF
+}
 
 # @FUNCTION: meson_src_configure
 # @DESCRIPTION:
-# This is the meson_src_configure function
+# This is the meson_src_configure function.
 meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -94,13 +128,23 @@ meson_src_configure() {
 		--sysconfdir "${EPREFIX}/etc"
 		)
 
-# fixme: uncomment this for crossdev support
-#	if tc-is-cross-compiler; then
-#		_meson_create_cross_file || die "unable to write meson cross file"
-#		mesonargs+=(
-#			--cross-file "${T}"/meson.crossfile
-#		)
-#	fi
+	# Both meson(1) and _meson_create_cross_file need these
+	local -x AR=$(tc-getAR)
+	local -x CC=$(tc-getCC)
+	local -x CXX=$(tc-getCXX)
+	local -x STRIP=$(tc-getSTRIP)
+
+	if tc-is-cross-compiler; then
+		_meson_create_cross_file || die "unable to write meson cross file"
+		mesonargs+=(
+			--cross-file "${T}/meson.${CHOST}"
+		)
+		# In cross mode, meson uses these as the native/build programs
+		AR=$(tc-getBUILD_AR)
+		CC=$(tc-getBUILD_CC)
+		CXX=$(tc-getBUILD_CXX)
+		STRIP=$(tc-getBUILD_STRIP)
+	fi
 
 	# Append additional arguments from ebuild
 	mesonargs+=("${emesonargs[@]}")
