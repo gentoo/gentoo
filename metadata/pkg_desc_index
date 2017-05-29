@@ -15364,7 +15364,7 @@ net-misc/networkmanager-fortisslvpn 1.2.2: NetworkManager Fortinet SSLVPN compat
 net-misc/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-misc/networkmanager-openconnect 1.2.4 1.2.4-r1: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
-net-misc/networkmanager-openvpn 1.2.6 1.2.8: NetworkManager OpenVPN plugin
+net-misc/networkmanager-openvpn 1.2.6 1.2.8 1.2.10: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
