@@ -325,12 +325,6 @@ app-emulation/wine-any
 # Masked, broken due to emoji support which requre npm package installed (bug #612218)
 =app-i18n/ibus-1.5.15
 
-# Matt Turner <mattst88@gentoo.org> (29 Mar 2017)
-# Use sys-kernel/linux-firmware instead, which these packages are subsets of
-# Bug #614218
-sys-firmware/radeon-ucode
-sys-firmware/amdgpu-ucode
-
 # Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
