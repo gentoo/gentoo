@@ -1,7 +1,7 @@
 Patch to bind to ipv6 socket as well
 Patch supplied by Fabian Knittel <fabian.knittel@avona.com>
---- oidentd-2.0.8//src/oidentd_inet_util.c	2006-05-22 02:31:19.000000000 +0200
-+++ oidentd-2.0.8.new//src/oidentd_inet_util.c	2010-03-01 20:26:11.000000000 +0100
+--- oidentd-2.0.8/src/oidentd_inet_util.c	2006-05-22 02:31:19.000000000 +0200
++++ oidentd-2.0.8.new/src/oidentd_inet_util.c	2010-03-01 20:26:11.000000000 +0100
 @@ -60,6 +60,12 @@
  #ifdef WANT_IPV6
  		case AF_INET6:

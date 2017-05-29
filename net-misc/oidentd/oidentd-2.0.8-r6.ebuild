@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils systemd
+inherit linux-info systemd
 
 DESCRIPTION="Another (RFC1413 compliant) ident daemon"
 HOMEPAGE="http://ojnk.sourceforge.net/"
@@ -11,17 +11,30 @@ SRC_URI="mirror://sourceforge/ojnk/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~s390 ~sh sparc x86 ~x86-fbsd"
-IUSE="debug ipv6 masquerade"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+IUSE="debug ipv6 masquerade selinux"
+
+DEPEND=""
+
+RDEPEND="${DEPEND}
+	selinux? ( sec-policy/selinux-oident )"
+
+DOCS=( AUTHORS ChangeLog README TODO NEWS "${FILESDIR}"/${PN}_masq.conf "${FILESDIR}"/${PN}.conf )
 
 PATCHES=(
 	"${FILESDIR}/${P}-masquerading.patch"
 	"${FILESDIR}/${P}-bind-to-ipv6-too.patch"
 	"${FILESDIR}/${P}-gcc5.patch"
+	"${FILESDIR}/${P}-log-conntrack-fails.patch"
+	"${FILESDIR}/${P}-no-conntrack-masquerading.patch"
 )
 
-src_prepare() {
-	epatch -p1 "${PATCHES[@]}"
+pkg_setup() {
+	local CONFIG_CHECK="~INET_TCP_DIAG"
+
+	if use kernel_linux; then
+		linux-info_pkg_setup
+	fi
 }
 
 src_configure() {
@@ -34,9 +47,6 @@ src_configure() {
 
 src_install() {
 	default
-
-	dodoc AUTHORS ChangeLog README TODO NEWS \
-		"${FILESDIR}"/${PN}_masq.conf "${FILESDIR}"/${PN}.conf
 
 	newinitd "${FILESDIR}"/${PN}-2.0.7-init ${PN}
 	newconfd "${FILESDIR}"/${PN}-2.0.7-confd ${PN}
