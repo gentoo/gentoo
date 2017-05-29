@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Graeme Lawes</name>
+		<email>graemelawes@gmail.com</email>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/gravitational/teleport/blob/master/CHANGELOG.md</changelog>
+		<bugs-to>https://github.com/gravitational/teleport/issues</bugs-to>
+		<remote-id type="github">gravitational/teleport</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Modern SSH server for teams managing distributed infrastructure"
+	</longdescription>
+	<use>
+		<flag name="etcd">Use etcd storage backend (required for HA)</flag>
+	</use>
+</pkgmetadata>

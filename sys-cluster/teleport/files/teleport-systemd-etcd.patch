@@ -1,0 +1,9 @@
+--- work/teleport.service
++++ work/teleport.service
+@@ -1,5 +1,6 @@
+ [Unit]
+ Description=Teleport SSH Service
++Wants=etcd.service
+ After=network.target 
+ 
+ [Service]

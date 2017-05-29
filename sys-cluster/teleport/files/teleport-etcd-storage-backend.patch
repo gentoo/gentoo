@@ -1,0 +1,11 @@
+--- work/teleport.yaml
++++ work/teleport.yaml
+@@ -39,7 +39,7 @@
+     # Type of storage used for keys. You need to configure this to use etcd
+     # backend if you want to run Teleport in HA configuration.
+     storage:
+-        type: bolt
++        type: etcd
+ 
+ # This section configures the 'auth service':
+ auth_service:

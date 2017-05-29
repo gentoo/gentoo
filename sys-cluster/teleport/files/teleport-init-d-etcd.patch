@@ -1,0 +1,13 @@
+--- work/teleport.init.d
++++ work/teleport.init.d
+@@ -4,6 +4,10 @@
+ 
+ PIDFILE=/run/teleport.pid
+ 
++depend() {
++	need etcd
++}
++
+ start() {
+ 	ebegin "Starting Teleport SSH Service"
+ 	start-stop-daemon --start --exec /usr/bin/teleport \
