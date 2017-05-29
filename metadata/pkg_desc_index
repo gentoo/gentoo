@@ -12253,7 +12253,7 @@ kde-plasma/libkworkspace 4.11.22: A library for Plasma desktop applications
 kde-plasma/milou 5.8.6 5.8.7 5.9.5: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.8.6 5.8.7 5.9.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.8.6 5.8.7 5.9.5: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.8.6 5.8.7.1 5.9.5: KDE Plasma desktop
 kde-plasma/plasma-integration 5.8.6 5.8.7 5.9.5: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.8.6 5.8.7 5.9.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.8.6 5.8.7 5.9.5: KDE Plasma applet for NetworkManager
@@ -17181,7 +17181,7 @@ sys-apps/ipmiutil 3.0.2 3.0.3 3.0.4: IPMI Management Utilities
 sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 4.10.0 4.11.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.0.9-r1 1.1.0 1.2.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
-sys-apps/iucode_tool 1.3 1.5 2.0 2.1.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
+sys-apps/iucode_tool 1.3 1.5 2.0 2.1.1 2.1.2: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 1.15.5-r1 2.0.3 2.0.4 9999: Keyboard and console utilities
 sys-apps/kexec-tools 2.0.4-r2 2.0.9-r2 2.0.12 2.0.13 2.0.13-r1 2.0.14 9999: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.5.9-r1 1.5.9-r4 1.5.10: Linux Key Management Utilities
