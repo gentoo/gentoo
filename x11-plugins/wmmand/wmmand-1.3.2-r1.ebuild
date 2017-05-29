@@ -1,6 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
 inherit eutils toolchain-funcs
 
 MY_P=wmMand-${PV}
@@ -23,15 +24,22 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}/wmMand
 
+DOCS=( ../{BUGS,changelog,TODO} )
+
+src_prepare() {
+	default
+	gunzip wmMand.6.gz || die
+}
+
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" \
 		SYSTEM="${LDFLAGS}" \
-		INCDIR="" LIBDIR="" || die "emake failed."
+		INCDIR="" LIBDIR=""
 }
 
 src_install() {
-	dobin wmMand || die "dobin failed."
-	doman wmMand.6.gz
+	dobin wmMand
+	doman wmMand.6
 	doicon wmMand.png
-	dodoc ../{BUGS,changelog,TODO}
+	einstalldocs
 }
