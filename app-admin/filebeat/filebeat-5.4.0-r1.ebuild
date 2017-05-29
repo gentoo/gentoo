@@ -9,9 +9,9 @@ SRC_URI="https://github.com/elastic/beats/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
-DEPEND=">=dev-lang/go-1.7.1"
+DEPEND=">=dev-lang/go-1.8.1"
 RDEPEND="!app-admin/filebeat-bin"
 
 ELASTIC="${WORKDIR}/src/github.com/elastic"
@@ -46,7 +46,7 @@ src_install() {
 	doins ${PN}/{filebeat.yml,filebeat.full.yml}
 
 	insinto "/etc/${PN}"
-	doins ${PN}/{filebeat.template.json,filebeat.template-es2x.json}
+	doins ${PN}/{filebeat.template.json,filebeat.template-es2x.json,filebeat.template-es6x.json}
 
 	exeinto "/usr/share/${PN}"
 	doexe libbeat/scripts/migrate_beat_config_1_x_to_5_0.py
