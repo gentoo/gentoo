@@ -21,6 +21,7 @@ DEPEND="
 	>=dev-ml/lambda-term-1.2:=
 	>=dev-ml/zed-1.2:=
 	>=dev-ml/cppo-1.0.1:=
+	dev-ml/findlib:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
