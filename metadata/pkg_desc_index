@@ -4649,7 +4649,7 @@ dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/angelscript 2.31.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.10.5 0.10.6 0.10.6-r1: Cross-distro effort for providing metadata for software in the Linux ecosystem
-dev-libs/appstream-glib 0.6.7 0.6.8: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.6.7 0.6.8 0.6.13: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -6292,7 +6292,7 @@ dev-perl/MooseX-MultiInitArg 0.20.0: Attributes with aliases for constructor arg
 dev-perl/MooseX-Object-Pluggable 0.1.400: Make your classes pluggable
 dev-perl/MooseX-OneArgNew 0.5.0: teach ->new to accept single, non-hashref arguments
 dev-perl/MooseX-Params-Validate 0.210.0: An extension of Params::Validate using Moose types
-dev-perl/MooseX-Role-Parameterized 1.80.0: Roles with composition parameters
+dev-perl/MooseX-Role-Parameterized 1.80.0 1.100.0: Roles with composition parameters
 dev-perl/MooseX-Role-WithOverloading 0.160.0: Roles which support overloading
 dev-perl/MooseX-SetOnce 0.200.2: write-once, read-many attributes for Moose
 dev-perl/MooseX-SimpleConfig 0.110.0: A Moose role for setting attributes from a simple configfile
@@ -14937,7 +14937,7 @@ net-libs/libkvkontakte 5.0.0_pre20170128: Library for accessing the features of 
 net-libs/liblockfile 1.09 1.13 1.14: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.0.0_pre20170128: C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrohttpd 0.9.51 0.9.52 0.9.53 0.9.54: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.51 0.9.52 0.9.53 0.9.54 0.9.55: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
