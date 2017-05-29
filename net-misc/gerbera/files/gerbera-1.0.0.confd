@@ -1,0 +1,28 @@
+# /etc/conf.d/mediatomb: config file for /etc/init.d/mediatomb
+
+# See the mediatomb(1) manpage for more info.
+
+# MediaTomb Web UI port.
+# NOTE: The minimum value allowed is 49152
+MEDIATOMB_PORT=49152
+
+# Run MediaTomb as this user.
+# NOTE: For security reasons do not run MediaTomb as root.
+MEDIATOMB_USER="mediatomb"
+
+# Run MediaTomb as this group.
+# NOTE: For security reasons do not run MediaTomb as root.
+MEDIATOMB_GROUP="mediatomb"
+
+# Path to MediaTomb config file.
+MEDIATOMB_CONFIG="/etc/mediatomb/config.xml"
+
+# Path to MediaTomb log file.
+MEDIATOMB_LOGFILE="/var/log/mediatomb.log"
+
+# Path to MediaTomb pid file.
+MEDIATOMB_PIDFILE="/var/run/mediatomb.pid"
+
+# Other options you want to pass to MediaTomb.
+# Add "--interface ${MEDIATOMB_INTERFACE}" to bind to a named interface.
+MEDIATOMB_OPTIONS=""
