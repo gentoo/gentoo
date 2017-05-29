@@ -9,7 +9,7 @@
     <remote-id type="cpan">HTML-Template</remote-id>
     <remote-id type="cpan-module">HTML::Template</remote-id>
     <remote-id type="cpan-module">HTML::Template::COND</remote-id>
-    <remote-id type="cpan-module">HTML::Template::DEFAULT</remote-id>
+    <remote-id type="cpan-module">HTML::Template::DEF</remote-id>
     <remote-id type="cpan-module">HTML::Template::ESCAPE</remote-id>
     <remote-id type="cpan-module">HTML::Template::FAQ</remote-id>
     <remote-id type="cpan-module">HTML::Template::JSESCAPE</remote-id>
