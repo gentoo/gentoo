@@ -13,7 +13,7 @@ fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit bash-completion-r1 linux-info multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
+inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -91,8 +91,6 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils:0
 	dev-util/gperf
 	>=dev-util/intltool-0.50
-	>=dev-util/meson-0.40.0
-	dev-util/ninja
 	>=sys-apps/coreutils-8.16
 	>=sys-kernel/linux-headers-${MINKV}
 	virtual/pkgconfig
@@ -199,10 +197,6 @@ meson_multilib_native_use() {
 
 multilib_src_configure() {
 	local myconf=(
-		--buildtype=plain
-		--prefix="${EPREFIX}/usr"
-		--libdir="$(get_libdir)"
-		--sysconfdir="${EPREFIX}/etc"
 		--localstatedir="${EPREFIX}/var"
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
@@ -283,9 +277,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	set -- meson "${myconf[@]}" "${S}"
-	echo "$@"
-	"$@" || die
+	meson_src_configure "${myconf[@]}"
 }
 
 multilib_src_compile() {
