@@ -13189,7 +13189,7 @@ media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADS
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.0 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.0 17.1.1 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -13291,7 +13291,7 @@ media-libs/virglrenderer 0.6.0 9999: library used implement a virtual 3D GPU use
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7: Volume rendering library
-media-libs/vulkan-loader 1.0.42.0 1.0.42.2 9999: Vulkan Installable Client Driver (ICD) Loader
+media-libs/vulkan-loader 1.0.42.0 1.0.42.2 1.0.46.0 9999: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.5.2 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.1-r1 0.2 0.3: AudioProcessing library from the webrtc.org code base
 media-libs/wxsvg 1.4.2 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
@@ -18751,7 +18751,7 @@ x11-libs/libcryptui 3.12.2: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.6.1 0.7.2: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.75 2.4.79 2.4.80 9999: X.Org libdrm library
+x11-libs/libdrm 2.4.75 2.4.79 2.4.80 2.4.81 9999: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5 9999: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
