@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,20 +14,23 @@ SRC_URI="${HOMEPAGE}/tarball/${PV} -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
+IUSE="doc test"
 
 DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )
 	"
 RDEPEND="
-	>=dev-python/configobj-4.6.0[${PYTHON_USEDEP}]
-	dev-python/pygpgme[${PYTHON_USEDEP}]
-	>=dev-python/twisted-core-10.2.0
+	>=dev-python/configobj-4.7.0[${PYTHON_USEDEP}]
+	>=dev-python/pygpgme-0.2[${PYTHON_USEDEP}]
+	dev-python/python-magic[${PYTHON_USEDEP}]
+	>=dev-python/twisted-core-10.2.0[${PYTHON_USEDEP}]
 	>=dev-python/urwid-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/urwidtrees-1.0[${PYTHON_USEDEP}]
 	net-mail/mailbase
 	>=net-mail/notmuch-0.13[crypt,python]
-	sys-apps/file[python]
 	"
+PATCHES=( "${FILESDIR}"/0.5.1-0001-Don-t-install-test-suite.patch )
 
 ALOT_UPDATE=""
 
