@@ -9,15 +9,13 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="xs">Install C-based <pkg>dev-perl/JSON-XS</pkg> for faster performance</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">JSON</remote-id>
     <remote-id type="cpan-module">JSON</remote-id>
-    <remote-id type="cpan-module">JSON::Backend::PP</remote-id>
-    <remote-id type="cpan-module">JSON::Boolean</remote-id>
-    <remote-id type="cpan-module">JSON::PP</remote-id>
-    <remote-id type="cpan-module">JSON::PP5005</remote-id>
-    <remote-id type="cpan-module">JSON::PP56</remote-id>
     <remote-id type="cpan-module">JSON::PP::IncrParser</remote-id>
-    <remote-id type="cpan-module">JSON::backportPP::Boolean</remote-id>
+    <remote-id type="cpan-module">JSON::Backend::PP</remote-id>
   </upstream>
 </pkgmetadata>
