@@ -4,7 +4,8 @@
 EAPI=6
 GNOME2_EAUTORECONF="yes"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+#PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} ) # https://bugzilla.gnome.org/show_bug.cgi?id=783186
+PYTHON_COMPAT=( python2_7 )
 
 inherit gnome2 python-any-r1 systemd udev virtualx
 
@@ -99,9 +100,15 @@ RESTRICT="test"
 
 PATCHES=(
 	# Make colord and wacom optional; requires eautoreconf
-	"${FILESDIR}"/${P}-optional.patch
+	"${FILESDIR}"/${PV}-optional.patch
 	# Allow specifying udevrulesdir via configure, bug 509484; requires eautoreconf
-	"${FILESDIR}"/3.22.2-udevrulesdir-configure.patch
+	"${FILESDIR}"/${PV}-udevrulesdir-configure.patch
+	# Fix uninstalled (during build) color plugin test run
+	"${FILESDIR}"/${PV}-fix-color-tests.patch
+	# Reduce memory usage by not initing GTK+ where not needed
+	"${FILESDIR}"/${PV}-remove-unneeded-gtk-init.patch
+	# Reduce memory usage by using a fake CSS theme instead of full Adwaita for GTK+ needing plugins; requires eautoreconf
+	"${FILESDIR}"/${PV}-reduce-memory-usage.patch
 )
 
 python_check_deps() {
