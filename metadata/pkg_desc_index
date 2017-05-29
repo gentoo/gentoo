@@ -6140,7 +6140,7 @@ dev-perl/Lingua-Stem-Fr 0.20.0-r1: Perl French Stemming
 dev-perl/Lingua-Stem-It 0.20.0-r1: Porter's stemming algorithm for Italian
 dev-perl/Lingua-Stem-Ru 0.40.0: Porter's stemming algorithm for Russian (KOI8-R only)
 dev-perl/Lingua-Stem-Snowball-Da 1.10.0-r1: Porters stemming algorithm for Denmark
-dev-perl/Lingua-Translit 0.250.0: Transliterates text between writing systems
+dev-perl/Lingua-Translit 0.250.0 0.270.0: Transliterates text between writing systems
 dev-perl/Linux-DesktopFiles 0.90.0: Perl module to get and parse the Linux .desktop files
 dev-perl/Linux-Distribution 0.230.0: Perl extension to detect on which Linux distribution we are running
 dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
@@ -6171,7 +6171,7 @@ dev-perl/Log-Report 1.180.0 1.190.0: A pluggable, multilingual handler driven pr
 dev-perl/Log-Report-Optional 1.20.0: Lightweight implementation logger for Log::Report
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
-dev-perl/MARC-Record 2.0.6: Perl extension for handling MARC records
+dev-perl/MARC-Record 2.0.6 2.0.7: Perl extension for handling MARC records
 dev-perl/MARC-XML 1.0.3: A subclass of MARC.pm to provide XML support
 dev-perl/MCE 1.705.0 1.809.0 1.821.0 1.826.0 1.827.0: Many-Core Engine providing parallel processing capabilities
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
