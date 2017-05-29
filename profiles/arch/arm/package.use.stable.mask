@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (29 May 2017)
+# frei0r-plugins is not stable yet, mask it on stable versions
+<media-video/libav-12 frei0r
+<media-video/ffmpeg-3.3 frei0r
+
 # Alexis Ballier <aballier@gentoo.org> (26 May 2017)
 # toolame not stable yet
 =media-video/mplayer-1.2.1 toolame
