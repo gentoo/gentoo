@@ -68,7 +68,7 @@ RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-previewjob{1,2}.patch
-	"${FILESDIR}"/${P}-kio.patch
+	"${FILESDIR}"/${P}-pie.patch
 )
 
 src_configure() {
