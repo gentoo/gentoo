@@ -34,6 +34,8 @@ DOCS=( README.md )
 src_prepare() {
 	default
 
+	gunzip doc/vym.1.gz || die #bug 619978
+
 	remove_locale() {
 		sed -i \
 			-e "/TRANSLATIONS += lang\/vym.${1}.ts/d" \
@@ -60,7 +62,7 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
-	doman doc/vym.1.gz
+	doman doc/vym.1
 
 	make_desktop_entry vym vym /usr/share/vym/icons/vym.png Education
 }
