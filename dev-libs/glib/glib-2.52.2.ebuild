@@ -19,7 +19,7 @@ HOMEPAGE="http://www.gtk.org/"
 SRC_URI="${SRC_URI}
 	https://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz" # pkg.m4 for eautoreconf
 
-LICENSE="LGPL-2+"
+LICENSE="LGPL-2.1+"
 SLOT="2"
 IUSE="dbus debug fam kernel_linux +mime selinux static-libs systemtap test utils xattr"
 REQUIRED_USE="
