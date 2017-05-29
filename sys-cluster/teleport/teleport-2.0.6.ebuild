@@ -14,7 +14,7 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="https://github.com/gravitational/${PN}.git"
 else
 	inherit golang-vcs-snapshot
-	SRC_URI="https://github.com/gravitational/${PN}/archive/v${PV}.tar.gz"
+	SRC_URI="https://github.com/gravitational/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
