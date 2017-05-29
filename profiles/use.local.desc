@@ -2326,6 +2326,7 @@ dev-perl/GD:fcgi - Build for FastCGI compatibility via dev-libs/fcgi instead of 
 dev-perl/Graphics-ColorNames:recommended - Install recommended support modules
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/HTTP-Entity-Parser:xs - Install C-Based dependieces for faster performance
+dev-perl/JSON:xs - Install C-based dev-perl/JSON-XS for faster performance
 dev-perl/JSON-MaybeXS:xs - Install a C-Based backend to make JSON encode/decode fast
 dev-perl/Lab-Measurement:xpression - Install the Xpression measurement framework
 dev-perl/List-MoreUtils:xs - Install C-Based backend implementation for performance
