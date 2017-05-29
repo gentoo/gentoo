@@ -17121,7 +17121,7 @@ sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.29 5.30 5.31 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
-sys-apps/firejail 0.9.44.8 0.9.44.10: Security sandbox for any type of processes
+sys-apps/firejail 0.9.44.8 0.9.44.10 0.9.46: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS branch
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 9999: Utility for reading, writing, erasing and verifying flash ROM chips
@@ -18429,7 +18429,7 @@ www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl sup
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 45.0.2552.812: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 45.0.2552.812 45.0.2552.881: A fast and secure web browser
 www-client/opera-beta 46.0.2597.6: A fast and secure web browser
 www-client/opera-developer 46.0.2602.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -18445,7 +18445,7 @@ www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.9.818.44_p1 1.9.818.49_p1 1.9.818.50_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.10.838.7_p1 1.10.845.3_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.10.845.3_p1 1.10.856.16_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
