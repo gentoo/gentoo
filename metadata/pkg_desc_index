@@ -6122,14 +6122,14 @@ dev-perl/LWP-UserAgent-Cached 0.60.0: LWP::UserAgent with simple caching mechani
 dev-perl/LWP-UserAgent-Determined 1.70.0: A virtual browser that retries errors
 dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects you from harm
 dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
-dev-perl/LaTeX-Encode 0.91.6 0.91.6-r1: Encode characters for LaTeX formatting
+dev-perl/LaTeX-Encode 0.91.6 0.91.6-r1 0.92.0: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
 dev-perl/Lab-Measurement 3.531.0 9999: Measurement control and automation with Perl
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 9999: Perl bindings to the LabOne API of Zurich Instruments
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
 dev-perl/Lexical-SealRequireHints 0.9.0 0.10.0: Prevent leakage of lexical hints
-dev-perl/Lingua-EN-Inflect 1.899.0 1.901.0: Perl module to pluralize English words
+dev-perl/Lingua-EN-Inflect 1.899.0 1.901.0 1.902.0: Perl module to pluralize English words
 dev-perl/Lingua-EN-NameCase 1.190.0: Correctly case a person's name from UPERCASE or lowcase
 dev-perl/Lingua-EN-NameParse 1.330.0: routines for manipulating a person's name
 dev-perl/Lingua-EN-Numbers-Ordinate 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
@@ -14785,7 +14785,7 @@ net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 5.0.0.5 5.1.0.1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.3.4 2.4.2 2.5.2: Team collaboration tool
-net-im/telegram-desktop-bin 1.0.27 1.0.29: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.0.29 1.1.2: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
@@ -15320,7 +15320,7 @@ net-misc/lldpd 0.9.3-r1 0.9.7: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.97 1.9.98: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.4.33 1.4.33-r1 1.4.34 1.4.35 1.4.36: High-performance, distributed memory object caching system
-net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
+net-misc/mico 2.3.13-r7 2.3.13-r8 2.3.13-r9 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.4.2 3.5.4 9999: Simple, powerful and moeful twitter client
 net-misc/mindterm 3.4: A Java SSH Client
