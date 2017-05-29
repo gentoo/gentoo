@@ -1,0 +1,62 @@
+commit 4122b52fee540f6b7cdd8fde2f55e2f7c2673b1a
+Author: Fabian Vogt <fabian@ritter-vogt.de>
+Date:   Sun May 28 14:49:03 2017 +0200
+
+    Identify PIE binaries (application/x-sharedlib) as executable files
+    
+    Summary:
+    x86_64 binaries compiled with PIE are just shared objects with the
+    executable bit set. Without this patch, kio does not know that they
+    can be executed as well, causing "kioclient5 exec" to ask for an
+    application that can handle application/x-sharedlib.
+    
+    BUG: 350018
+    
+    Test Plan: Can run applications fine again.
+    
+    Reviewers: dfaure, aacid
+    
+    Reviewed By: dfaure
+    
+    Subscribers: asturmlechner, #frameworks
+    
+    Tags: #frameworks
+    
+    Differential Revision: https://phabricator.kde.org/D6002
+
+diff --git a/src/widgets/krun.cpp b/src/widgets/krun.cpp
+index 399ca975..2a9b563a 100644
+--- a/src/widgets/krun.cpp
++++ b/src/widgets/krun.cpp
+@@ -139,7 +139,8 @@ bool KRun::isExecutableFile(const QUrl &url, const QString &mimetype)
+ #ifdef Q_OS_WIN
+                 mimeType.inherits(QLatin1String("application/x-ms-dos-executable")) ||
+ #endif
+-                mimeType.inherits(QStringLiteral("application/x-executable-script"))
++                mimeType.inherits(QStringLiteral("application/x-executable-script")) ||
++                mimeType.inherits(QStringLiteral("application/x-sharedlib"))
+            ) {
+             return true;
+         }
+@@ -1438,6 +1439,8 @@ bool KRun::isExecutable(const QString &serviceType)
+ {
+     return (serviceType == QLatin1String("application/x-desktop") ||
+             serviceType == QLatin1String("application/x-executable") ||
++            /* See https://bugs.freedesktop.org/show_bug.cgi?id=97226 */
++            serviceType == QLatin1String("application/x-sharedlib") ||
+             serviceType == QLatin1String("application/x-ms-dos-executable") ||
+             serviceType == QLatin1String("application/x-shellscript"));
+ }
+diff --git a/src/widgets/krun.h b/src/widgets/krun.h
+index 2d167fc8..1012fb2b 100644
+--- a/src/widgets/krun.h
++++ b/src/widgets/krun.h
+@@ -436,7 +436,7 @@ public:
+      * To be executable the file must pass the following rules:
+      * -# Must reside on the local filesystem.
+      * -# Must be marked as executable for the user by the filesystem.
+-     * -# The mime type must inherit application/x-executable or application/x-executable-script.
++     * -# The mime type must inherit application/x-executable, application/x-executable-script or application/x-sharedlib.
+      * To allow a script to run when the above rules are satisfied add the entry
+      * @code
+      * X-KDE-IsAlso=application/x-executable-script
