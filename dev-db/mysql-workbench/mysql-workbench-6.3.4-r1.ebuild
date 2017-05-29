@@ -39,7 +39,7 @@ CDEPEND="${PYTHON_DEPS}
 		>=dev-libs/libxml2-2.6.2:2
 		dev-libs/libzip
 		>=virtual/mysql-5.1
-		dev-libs/libpcre
+		dev-libs/libpcre[cxx]
 		>=sci-libs/gdal-1.11.1-r1[-mdb]
 		virtual/opengl
 		>=dev-lang/lua-5.1:0[deprecated]
@@ -75,7 +75,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-6.2.3-CMakeLists.patch" \
 		"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch" \
 		"${FILESDIR}/${PN}-6.3.3-mysql_options4.patch" \
-		"${FILESDIR}/${PN}-6.3.4-cxx11.patch"
+		"${FILESDIR}/${PN}-6.3.4-cxx11.patch" \
+		"${FILESDIR}/${PN}-6.3.4-gtk.patch"
 
 	sed -i -e '/target_link_libraries/ s/sqlparser.grt/sqlparser.grt sqlparser/' \
 		modules/db.mysql.sqlparser/CMakeLists.txt
