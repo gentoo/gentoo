@@ -47,6 +47,14 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
+# @ECLASS-VARIABLE: QT5_MODULE_EXAMPLES_SUBDIRS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array variable containing source directories for examples.
+# If this array is not empty, then USE-flag "examples" is provided.
+# When this USE-flag is set, examples from listed directories would be built and installed.
+# All paths must be relative to ${S}.
+
 inherit estack flag-o-matic ltprune toolchain-funcs versionator virtualx
 
 HOMEPAGE="https://www.qt.io/"
@@ -107,6 +115,8 @@ case ${QT5_BUILD_TYPE} in
 esac
 
 IUSE="debug test"
+
+[[ -n ${QT5_MODULE_EXAMPLES_SUBDIRS[@]} ]] && IUSE+=" examples" # bug 568838
 
 [[ ${PN} == qtwebkit ]] && RESTRICT+=" mirror" # bug 524584
 [[ ${QT5_BUILD_TYPE} == release ]] && RESTRICT+=" test" # bug 457182
@@ -200,6 +210,10 @@ qt5-build_src_prepare() {
 		# Don't add -O3 to CXXFLAGS (bug 549140)
 		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
+
+		# Don't check for cmake cache for installing example sources
+		# This is needed in order to install sources of examples for packages which build only some subdirectories out of whole package
+		sed -i -e 's/:!isEmpty(_QMAKE_CACHE_)//' mkspecs/features/qt_example_installs.prf || die "sed failed (qt_example_installs.prf)"
 	fi
 
 	default
@@ -435,10 +449,13 @@ qt5_prepare_env() {
 # Executes the command given as argument from inside each directory
 # listed in QT5_TARGET_SUBDIRS. Handles autotests subdirs automatically.
 qt5_foreach_target_subdir() {
-	[[ -z ${QT5_TARGET_SUBDIRS[@]} ]] && QT5_TARGET_SUBDIRS=("")
+	local QT5_FOREACH_DIRS=
+	[[ -z ${QT5_TARGET_SUBDIRS[@]} ]] && QT5_FOREACH_DIRS=("")
+	[[ -n ${QT5_TARGET_SUBDIRS[@]} ]] && QT5_FOREACH_DIRS=("${QT5_TARGET_SUBDIRS[@]}")
+	[[ -n ${QT5_MODULE_EXAMPLES_SUBDIRS[@]} ]] && use examples && QT5_FOREACH_DIRS+=("${QT5_MODULE_EXAMPLES_SUBDIRS[@]}")
 
 	local subdir=
-	for subdir in "${QT5_TARGET_SUBDIRS[@]}"; do
+	for subdir in "${QT5_FOREACH_DIRS[@]}"; do
 		if [[ ${EBUILD_PHASE} == test ]]; then
 			subdir=tests/auto${subdir#src}
 			[[ -d ${S}/${subdir} ]] || continue
@@ -574,7 +591,6 @@ qt5_base_configure() {
 		# exclude examples and tests from default build
 		-nomake examples
 		-nomake tests
-		-no-compile-examples
 
 		# disable rpath on non-prefix (bugs 380415 and 417169)
 		$(usex prefix '' -no-rpath)
