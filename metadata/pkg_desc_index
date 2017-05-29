@@ -12610,7 +12610,7 @@ media-fonts/sophia-nubian 1.0: Unicode sans-serif typeface for Coptic/Nubian lan
 media-fonts/source-han-sans 1.001 1.004: Pan-CJK OpenType/CFF font family
 media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface family designed for UI environments
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
-media-fonts/symbola 7.12 8.00: Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
+media-fonts/symbola 8.00 9.00: Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
 media-fonts/terminus-font 4.39-r1 4.40: A clean fixed font for the console and X11
@@ -18608,7 +18608,7 @@ x11-base/xorg-drivers 1.12 1.15 1.18-r1 1.19 9999: Meta package containing deps 
 x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.18.4 1.19.2 1.19.3 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.135 340.102 375.39 375.66 378.13 381.09 381.22: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.135 304.135-r1 340.102 340.102-r1 375.39 375.66 375.66-r1 378.13 378.13-r1 381.09 381.22 381.22-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
