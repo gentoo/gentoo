@@ -46,7 +46,7 @@ src_install() {
 	doins ${PN}/{filebeat.yml,filebeat.full.yml}
 
 	insinto "/etc/${PN}"
-	doins ${PN}/{filebeat.template.json,filebeat.template-es2x.json}
+	doins ${PN}/{filebeat.template.json,filebeat.template-es2x.json,filebeat.template-es6x.json}
 
 	exeinto "/usr/share/${PN}"
 	doexe libbeat/scripts/migrate_beat_config_1_x_to_5_0.py
