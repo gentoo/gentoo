@@ -17680,7 +17680,6 @@ sys-fabric/qperf 0.4.9: Measure RDMA and IP performance
 sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
 sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
 sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
-sys-firmware/amdgpu-ucode 20161121: Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
@@ -17701,7 +17700,6 @@ sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.
 sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and 4165
 sys-firmware/midisport-firmware 1.2: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
-sys-firmware/radeon-ucode 20161005: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.10.1 1.10.2: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 0.1.4 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
