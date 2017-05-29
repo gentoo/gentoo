@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targe
 SLOT=0
 SRC_URI=mirror://sourceforge/pyqt/QScintilla_gpl-2.9.4.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	f86a9a1499559655f609fd001c3ceba8	python-utils-r1	7aaf8e4bc5ba6cae58ff688b5a857866	qmake-utils	40a2ae377c3111aa116512aaf010f6ff	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	f86a9a1499559655f609fd001c3ceba8	python-utils-r1	7aaf8e4bc5ba6cae58ff688b5a857866	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=1b102610170e7a0423328748e34300dc

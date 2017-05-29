@@ -10,5 +10,5 @@ RDEPEND=>=sci-libs/fftw-3.3.4:3.0= dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-q
 SLOT=0
 SRC_URI=https://github.com/gillesdegottex/fmit/archive/v1.0.15.tar.gz -> fmit-1.0.15.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	40a2ae377c3111aa116512aaf010f6ff	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=afdbe864c6aa81e9055dfc4e5c01ac0b
