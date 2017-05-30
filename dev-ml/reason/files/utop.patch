@@ -1,0 +1,17 @@
+commit a8cfc8636ac2ab3292156d0038d54af730a59007
+Author: Cristiano Calcagno <cristianoc@fb.com>
+Date:   Tue May 30 16:23:57 2017 +0200
+
+    Fix utop compilation
+
+diff --git a/_tags b/_tags
+index ac43e8d..788a36e 100644
+--- a/_tags
++++ b/_tags
+@@ -1,5 +1,6 @@
+ true: warn(@5@8@10@11@12@14@23-24@26@29@40), bin_annot, safe_string, debug
+ 
++<src/reason_utop.ml>: thread
+ <editorSupport/**>: -traverse
+ <node_modules/**>: -traverse
+ <bspacks/**>: -traverse
