@@ -142,21 +142,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.23.0-make-libavdevice-check-accept-libav.patch"
 )
 
-mpv_check_compiler() {
-	if [[ ${MERGE_TYPE} != "binary" ]]; then
-		if tc-is-gcc && [[ $(gcc-major-version) -lt 4 || \
-				( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 5 ) ]]; then
-			die "${PN} requires GCC>=4.5."
-		fi
-	fi
-}
-
-pkg_pretend() {
-	mpv_check_compiler
-}
-
 pkg_setup() {
-	mpv_check_compiler
 	[[ ${MERGE_TYPE} != "binary" ]] && python_setup
 }
 
