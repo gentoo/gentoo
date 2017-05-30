@@ -11,7 +11,7 @@ DESCRIPTION="A dot-accessible dictionary (a la JavaScript objects)"
 HOMEPAGE="https://github.com/Infinidat/munch"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
