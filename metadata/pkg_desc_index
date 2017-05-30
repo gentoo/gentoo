@@ -6463,7 +6463,7 @@ dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy ag
 dev-perl/Perl-MinimumVersion 1.380.0: Find a minimum required version of perl for Perl code
 dev-perl/Perl-PrereqScanner 1.23.0: a tool to scan your Perl code for its prerequisites
 dev-perl/Perl-Tags 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
-dev-perl/Perl-Tidy 20160302.0.0: Perl script indenter and beautifier
+dev-perl/Perl-Tidy 20160302.0.0 20170521.0.0: Perl script indenter and beautifier
 dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl-Version 1.13.0: Parse and manipulate Perl version strings
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
