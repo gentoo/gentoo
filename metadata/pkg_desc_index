@@ -6382,7 +6382,7 @@ dev-perl/NetAddr-IP 4.78.0: Manipulation and operations on IP addresses
 dev-perl/NetPacket 1.6.0: Assemble / disassemble network packets at the protocol level
 dev-perl/NetxAP 0.20.0-r1: A base class for protocols such as IMAP, ACAP, IMSP, and ICAP
 dev-perl/News-Newsrc 1.110.0: Manage newsrc files
-dev-perl/Nmap-Parser 1.310.0: Nmap::Parser - parse nmap scan data with perl
+dev-perl/Nmap-Parser 1.310.0 1.340.0: Parse nmap scan data with perl
 dev-perl/Number-Compare 0.30.0-r1: Numeric comparisons
 dev-perl/Number-Format 1.750.0: Package for formatting numbers for display
 dev-perl/Number-Fraction 2.0.0: Perl extension to model fractions
