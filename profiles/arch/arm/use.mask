@@ -75,7 +75,6 @@ lirc
 lm_sensors
 xemacs
 scanner
-fluidsynth
 sid
 mms
 mtp
