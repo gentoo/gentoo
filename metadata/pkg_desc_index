@@ -6477,7 +6477,7 @@ dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for s
 dev-perl/Perlbal 1.800.0-r1: Reverse-proxy load balancer and webserver
 dev-perl/Perlbal-XS-HTTPHeaders 0.200.0-r1: XS acceleration for Perlbal header processing
 dev-perl/PlRPC 0.202.0-r2: The Perl RPC Module
-dev-perl/Plack 1.3.900 1.4.300: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
+dev-perl/Plack 1.3.900 1.4.300 1.4.400: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
 dev-perl/Plucene 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
