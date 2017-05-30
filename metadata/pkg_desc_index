@@ -17794,7 +17794,7 @@ sys-fs/iprutils 2.4.7 2.4.13.1 2.4.14.1: IBM's tools for support of the ipr SCSI
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5: A FUSE and libmtp based filesystem for accessing MTP devices
-sys-fs/ldapfuse 1.0: A virtual filesystem for FUSE which allows navigation of an LDAP tree
+sys-fs/ldapfuse 1.0-r1: A virtual filesystem for FUSE which allows navigation of an LDAP tree
 sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 65 82 82-r1 105-r1: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
