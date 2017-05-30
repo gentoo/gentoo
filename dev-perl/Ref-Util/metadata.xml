@@ -5,8 +5,12 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="xs">Install C-Based <pkg>dev-perl/Ref-Util-XS</pkg> for accelerated performance</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">Ref-Util</remote-id>
     <remote-id type="cpan-module">Ref::Util</remote-id>
+    <remote-id type="cpan-module">Ref::Util::PP</remote-id>
   </upstream>
 </pkgmetadata>
