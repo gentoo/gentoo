@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (30 May 2017)
+# Work in progress. DO NOT UNMASK. Otherwise bad things WILL happen.
+# Think of the kittens.
+=dev-lang/perl-5.26.0
+
 # Amadeusz Żołnowski <aidecoe@gentoo.org> (29 May 2017)
 # Masked for removal. I have added it but I no longer use it.
 # If someone cares about z please take ownership. Othwerwise
