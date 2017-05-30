@@ -11460,7 +11460,7 @@ games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling R
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
-games-rpg/manaplus 1.7.4.29 1.7.5.14 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.5.14 1.7.5.27 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -18041,7 +18041,7 @@ sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.49: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
-sys-process/procps 3.3.12: standard informational utilities and process-handling tools
+sys-process/procps 3.3.12 3.3.12-r1: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 22.21-r3: A set of tools that use the proc filesystem
 sys-process/rtirq 20150216: Modify realtime scheduling policy and priority of IRQ handlers
