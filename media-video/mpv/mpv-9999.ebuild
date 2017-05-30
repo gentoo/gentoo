@@ -22,7 +22,7 @@ else
 	inherit git-r3
 fi
 SRC_URI+=" https://waf.io/waf-${WAF_PV}"
-DOCS+=( README.md )
+DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
