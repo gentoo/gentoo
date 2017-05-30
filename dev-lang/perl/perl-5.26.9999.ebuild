@@ -18,7 +18,7 @@ PERL_BIN_OLDVERSEN=""
 # Don't add more -RC values, its historical bungling
 PERL_OLDVERSEN="5.26.0-RC1 5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.26.0-RC2
+	DIST_VERSION=5.26.0
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -85,7 +85,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.340.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.274.0.200_rc   json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.705.200 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.705.300 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
 	src_remove_dual      perl-core/Test-Harness       3.380.0       prove
