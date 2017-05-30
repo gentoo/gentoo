@@ -9,7 +9,7 @@ LICENSE=Apache-2.0
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
-SRC_URI=https://android.googlesource.com/tools/repo/+archive/v1.12.37.tar.gz
+SRC_URI=https://android.googlesource.com/tools/repo/+archive/v1.12.37.tar.gz -> repo-1.12.37.tar.gz
 _eclass_exported_funcs=src_install:-
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=b56bb89f113166b2dc0553d10735cf6c
+_md5_=d4499c1bb88f3ea727e0f9b5debbe9cd
