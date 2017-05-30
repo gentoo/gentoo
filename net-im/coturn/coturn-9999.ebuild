@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils user systemd
+inherit eutils user systemd tmpfiles
 DESCRIPTION="coturn TURN server project"
 HOMEPAGE="https://github.com/${PN}/${PN}"
 
@@ -59,9 +59,11 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/logrotate.${PN}" "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
+	dotmpfiles "${FILESDIR}/${PN}.conf"
 }
 
 pkg_postinst() {
+	tmpfiles_process "${PN}.conf"
 	enewgroup turnserver
 	enewuser turnserver -1 -1 -1 turnserver
 	elog "You need to copy /etc/turnserver.conf.default to"
