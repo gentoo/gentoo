@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils flag-o-matic java-pkg-opt-2 multilib python-single-r1 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
-HOMEPAGE="http://www.graphviz.org/"
+HOMEPAGE="http://www.graphviz.org/ https://github.com/ellson/graphviz"
 SRC_URI="http://www.graphviz.org/pub/graphviz/stable/SOURCES/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
@@ -47,7 +47,7 @@ RDEPEND="
 	gts?	( sci-libs/gts )
 	lasi?	( media-libs/lasi )
 	pdf?	( app-text/poppler )
-	perl?   ( dev-lang/perl:= )
+	perl?	( dev-lang/perl:= )
 	python?	( ${PYTHON_DEPS} )
 	qt4?	(
 		dev-qt/qtcore:4
@@ -132,7 +132,6 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.34.0-Xaw-configure.patch
-	"${FILESDIR}"/${PN}-2.38.0-ghostscript-9.18.patch
 )
 
 pkg_setup() {
