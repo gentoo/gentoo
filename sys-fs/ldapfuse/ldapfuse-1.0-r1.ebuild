@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 DESCRIPTION="A virtual filesystem for FUSE which allows navigation of an LDAP tree"
 HOMEPAGE="https://sourceforge.net/projects/ldapfuse/"
@@ -10,12 +10,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="net-nds/openldap
+RDEPEND="
+	net-nds/openldap
 	sys-fs/fuse
 	>=sys-libs/libhx-3.12"
-DEPEND="${RDEPEND}
+
+DEPEND="
+	${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"
 
