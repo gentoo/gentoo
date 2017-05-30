@@ -6727,7 +6727,7 @@ dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.800.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.330.0 1.910.0 1.920.0 1.930.0 1.940.0 1.950.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
-dev-perl/Text-CSV_XS 1.230.0 1.260.0 1.280.0: Comma-separated values manipulation routines
+dev-perl/Text-CSV_XS 1.230.0 1.260.0 1.280.0 1.290.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
 dev-perl/Text-Diff 1.410.0-r1 1.430.0 1.440.0: Perform diffs on files and record sets
 dev-perl/Text-FindIndent 0.110.0: Heuristically determine the indent style
