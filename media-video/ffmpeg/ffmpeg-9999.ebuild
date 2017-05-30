@@ -75,7 +75,7 @@ FFMPEG_FLAG_MAP=(
 		amr:libopencore-amrwb amr:libopencore-amrnb fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray celt:libcelt gme:libgme gsm:libgsm
 		mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
-		schroedinger:libschroedinger speex:libspeex svg:librsvg vorbis:libvorbis
+		speex:libspeex svg:librsvg vorbis:libvorbis
 		vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		bs2b:libbs2b chromaprint flite:libflite frei0r
@@ -234,7 +234,6 @@ RDEPEND="
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[${MULTILIB_USEDEP}] )
-	schroedinger? ( >=media-libs/schroedinger-1.0.11-r1[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
 	sofalizer? (
 		>=sci-libs/netcdf-4.3.2-r1[hdf5]
