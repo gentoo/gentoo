@@ -5408,11 +5408,11 @@ dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 0.9.0: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 0.9.0: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/pxp 1.2.8-r1 1.2.9: validating XML parser library for O'Caml
-dev-ml/qcheck 0.5.2 0.5.3 0.5.3.1: QuickCheck inspired property-based testing for OCaml
+dev-ml/qcheck 0.5.2 0.5.3 0.5.3.1 0.6: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 0.9.0: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0 1.2.1: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
-dev-ml/reason 1.13.3 1.13.4 1.13.5: Meta Language Toolchain
+dev-ml/reason 1.13.5: Meta Language Toolchain
 dev-ml/reason-parser 1.13.3 1.13.4 1.13.5: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
@@ -5430,7 +5430,7 @@ dev-ml/typerep_extended 0.9.0: Runtime types for OCaml (Extended)
 dev-ml/tyxml 4.1.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
-dev-ml/utop 1.19.3 2.0.0: A new toplevel for OCaml with completion and colorization
+dev-ml/utop 1.19.3 2.0.0 2.0.1: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.6: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 1.0.0-r1 1.0.1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 0.9.0: OCaml variants as first class values
