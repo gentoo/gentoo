@@ -88,7 +88,6 @@ tokyocabinet
 vaapi
 lpsol
 upnp
-libtar
 devil
 gts
 anthy
