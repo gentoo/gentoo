@@ -44,7 +44,7 @@ src_configure() {
 		--disable-examples \
 		--docdir="${EPREFIX}/usr/share/doc/${P}" \
 		$(use_enable sasl) \
-		$(use_enable ssl ssl openssl) \
+		$(use_enable ssl ssl $(usex libressl libressl openssl)) \
 		$(use_enable debug) \
 		$(use_enable static-libs static)
 }
