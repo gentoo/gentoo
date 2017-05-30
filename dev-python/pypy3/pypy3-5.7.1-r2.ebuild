@@ -188,12 +188,11 @@ src_install() {
 	dodoc README.rst
 
 	if ! use gdbm; then
-		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
-			"${ED%/}${dest}"/lib-python/*3/test/test_gdbm.py || die
+		rm -r "${ED%/}${dest}"/lib_pypy/_gdbm* || die
 	fi
 	if ! use sqlite; then
 		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
-			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3* \
 			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
