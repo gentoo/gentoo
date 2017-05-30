@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (30 May 2017)
+# No stable fluidsynth yet
+media-libs/sdl-mixer fluidsynth
+<media-sound/mpd-0.20 fluidsynth
+<media-video/vlc-2.3 fluidsynth
+
 # Alexis Ballier <aballier@gentoo.org> (29 May 2017)
 # frei0r-plugins is not stable yet, mask it on stable versions
 <media-video/libav-12 frei0r
