@@ -2343,6 +2343,7 @@ dev-perl/PDL:netpbm - Enable NETPBM and MPEG support
 dev-perl/PDL:pdl2 - Build pdf2 shell (requires Devel-REPL)
 dev-perl/PDL:pgplot - Enable PGPLOT plotting capabilities
 dev-perl/Panotools-Script:gui - Installs GUIs for some tools
+dev-perl/Ref-Util:xs - Install C-Based dev-perl/Ref-Util-XS for accelerated performance
 dev-perl/Sub-Name:suggested - Install extra dependencies needed for extended regression tests
 dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
 dev-perl/Test-Warnings:suggested - Install optional dependencies for extra tests
