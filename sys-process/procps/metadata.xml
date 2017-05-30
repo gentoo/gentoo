@@ -6,6 +6,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
+	<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
 	<flag name="kill">Build the kill program</flag>
 	<flag name="modern-top">Enables new startup defaults of top. Keeps old defaults if disabled</flag>
 	<flag name="ncurses">Build programs that use ncurses: top, slabtop, watch</flag>
