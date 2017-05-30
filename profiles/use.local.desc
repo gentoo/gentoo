@@ -2793,6 +2793,7 @@ dev-scheme/slib:scm - Support for scm scheme implementation
 dev-tcltk/expect-lite:debug - pull in packages needed for runtime interactive debugger
 dev-tcltk/tktreectrl:shellicon - shellicon extension
 dev-tex/abntex:lyx - Install with app-office/lyx layout
+dev-tex/biblatex:biber - Install the unicode compatible backend processor
 dev-tex/circuit_macros:script - Install cm2pdf to automatically create a correctly sized PDF from a circuit_macro m4 source
 dev-tex/dot2texi:pgf - Enable support for dev-tex/pgf (The TeX Portable Graphic Format)
 dev-tex/dot2texi:pstricks - Enable pstricks support
