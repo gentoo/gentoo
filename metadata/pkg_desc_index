@@ -7432,10 +7432,12 @@ dev-python/clang-python 4.0.0 9999: Python bindings for sys-devel/clang
 dev-python/cliapp 1.20140315 1.20150305 1.20160724-r1: Framework for Unix-like command line programs
 dev-python/click 6.6 6.7: A Python package for creating beautiful command line interfaces
 dev-python/click-log 0.1.3 0.1.4 0.1.8: Logging integration for Click.
+dev-python/click-plugins 1.0.3: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.1.2 0.3.0: Multithreaded Click apps made easy.
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
 dev-python/cliff 2.4.0: Command Line Interface Formulation Framework
 dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output in programs created by the cliff framework
+dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GIS command line programs
 dev-python/clint 0.3.1-r1 0.4.1 0.5.1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 0.2.1 0.2.2: Extended pickling support for Python objects
@@ -7978,6 +7980,7 @@ dev-python/mpmath 0.18 0.19-r1 0.19-r2: Python library for arbitrary-precision f
 dev-python/msgpack 0.4.6 0.4.8: MessagePack (de)serializer for Python
 dev-python/multidict 1.3.0_alpha1 2.0.1 2.1.0 2.1.2 2.1.4 2.1.5: multidict implementation
 dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
+dev-python/munch 2.1.1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.0.5.4-r2 1.0.8: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mwlib-ext 0.13.2: Extension module to mwlib to pull in reportlab
 dev-python/myghty 1.2-r1: Template and view-controller framework derived from HTML::Mason
@@ -16382,7 +16385,7 @@ sci-geosciences/tcd-utils 20120115 20120115-r1: Utilities for working with Tidal
 sci-geosciences/tilecache 2.11-r1: Web map tile caching system
 sci-geosciences/viking 1.6.2: GPS data editor and analyzer
 sci-geosciences/xtide 2.13 2.13.1 2.13.2: XTide provides tide and current predictions in a wide variety of formats
-sci-libs/Fiona 1.5.1 9999: OGR's neat, nimble, no-nonsense API
+sci-libs/Fiona 1.5.1 1.7.6 9999: OGR's neat, nimble, no-nonsense API
 sci-libs/Rtree 0.8.2: R-Tree spatial index for Python GIS
 sci-libs/Shapely 1.3.0 1.3.2 1.5.17 1.5.17-r1 9999: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.0.1: Visual Servoing Platform: visual tracking and visual servoing library
