@@ -13009,7 +13009,7 @@ media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.4.9 1.4.10 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/jasper 2.0.12 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
-media-libs/jbig2dec 0.13-r1: A decoder implementation of the JBIG2 image compression format
+media-libs/jbig2dec 0.13-r1 0.13-r2: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate images in the JPEG format
@@ -16676,7 +16676,7 @@ sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2-r1: A function plotter program written in PyGTK
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.37.3-r4 5.38.1 5.39.0: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.37.3-r4 5.38.1 5.39.0 5.40.0: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
