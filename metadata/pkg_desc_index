@@ -12580,8 +12580,8 @@ media-fonts/mplus-outline-fonts 0_pre059 0_pre061 0_pre062: M+ Japanese outline 
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
-media-fonts/noto 20160305-r1 20160531: Google's font family that aims to support all the world's languages
-media-fonts/noto-cjk 20150615: Google's font family that aims to support all the world's languages
+media-fonts/noto 20160305-r1 20160531 20170530: Google's font family that aims to support all the world's languages
+media-fonts/noto-cjk 20150615 20170530: Google's font family that aims to support all the world's languages
 media-fonts/nunito 1.0: A well balanced Sans Serif with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
 media-fonts/ohsnap 1.8.0: The ohsnap / osnap monospace font (based on Artwiz Snap)
@@ -15424,7 +15424,7 @@ net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provid
 net-misc/qtm 1.3.18: Qt blogging client
 net-misc/quagga 1.1.1 1.2.0-r2 1.2.1: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.044.02: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.6.5 3.6.9: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.6.5 3.6.9 3.6.10: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.15-r1 2.16: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
@@ -18781,7 +18781,7 @@ x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) 
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
 x11-libs/libxcb 1.12-r2: X C-language Bindings library
-x11-libs/libxkbcommon 0.5.0 0.6.0 0.6.1 0.7.0 0.7.1: X.Org xkbcommon library
+x11-libs/libxkbcommon 0.6.0 0.7.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9 1.0.9-r1: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.3 5.3-r1: A library for the X Keyboard Extension (high-level API)
