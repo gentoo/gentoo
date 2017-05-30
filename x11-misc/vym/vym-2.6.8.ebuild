@@ -34,6 +34,8 @@ DOCS=( README.md doc/vym.pdf )
 src_prepare() {
 	default
 
+	gunzip doc/vym.1.gz || die #bug 619978
+
 	if use linguas_es ; then
 		DOCS+=( doc/vym_es.pdf )
 	fi
@@ -67,7 +69,7 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
-	doman doc/vym.1.gz
+	doman doc/vym.1
 
 	make_desktop_entry vym vym /usr/share/vym/icons/vym.png Education
 }
