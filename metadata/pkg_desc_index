@@ -12186,7 +12186,7 @@ kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kim4 0.9.5-r1: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
-kde-misc/kio-gdrive 1.1.1 1.2.0: KIO Slave for Google Drive service
+kde-misc/kio-gdrive 1.1.1 1.2.0.1: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
@@ -17337,7 +17337,7 @@ sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later ker
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 1.1.1 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/docker_auth 1.2.1: Docker Registry 2 authentication server
-sys-auth/elogind 226.4 229.3: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 229.3-r1: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
@@ -18405,7 +18405,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 58.0.3029.81 58.0.3029.110 59.0.3071.47 59.0.3071.61 60.0.3100.0 60.0.3107.4: Open-source version of Google Chrome web browser
+www-client/chromium 58.0.3029.81 58.0.3029.110 59.0.3071.47 59.0.3071.61 60.0.3107.4 60.0.3112.7: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
