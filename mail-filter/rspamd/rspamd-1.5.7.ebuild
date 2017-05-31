@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils pax-utils user systemd
 
 DESCRIPTION="Rapid spam filtering system"
-SRC_URI="https://github.com/vstakhov/rspamd/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/vstakhov/rspamd/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/vstakhov/rspamd"
 
 LICENSE="Apache-2.0"
