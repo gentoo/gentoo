@@ -27,7 +27,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
@@ -56,9 +56,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libxml2
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
+	>=dev-libs/yajl-2
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-libs/libcdio
-	dev-libs/libfmt
 	gles? ( media-libs/mesa[gles2] )
 	libusb? ( virtual/libusb:1 )
 	media-fonts/corefonts
@@ -116,7 +116,6 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/zip
 	dev-lang/swig
 	dev-libs/crossguid
-	dev-libs/rapidjson
 	dev-util/cmake
 	dev-util/gperf
 	media-libs/giflib
@@ -160,6 +159,8 @@ In some cases Kodi needs to access multicast addresses.
 Please consider enabling IP_MULTICAST under Networking options.
 "
 
+CMAKE_USE_DIR=${S}/project/cmake/
+
 pkg_setup() {
 	check_extra_config
 	python-single-r1_pkg_setup
@@ -193,7 +194,7 @@ src_prepare() {
 
 	# Prevent autoreconf rerun
 	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
-		"${S}"/cmake/modules/FindCpluff.cmake \
+		"${S}"/project/cmake/modules/FindCpluff.cmake \
 		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh \
 		|| die
@@ -219,6 +220,7 @@ src_configure() {
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
+		-DENABLE_NONFREE=$(usex nonfree)
 		-DENABLE_OPENGLES=$(usex gles)
 		-DENABLE_OPENGL=$(usex opengl)
 		-DENABLE_OPENSSL=ON
