@@ -1,0 +1,26 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: install the i7z_rw_registers script and fix the hashbang
+
+--- a/i7z_rw_registers.rb
++++ b/i7z_rw_registers.rb
+@@ -1,3 +1,5 @@
++#!/usr/bin/ruby
++
+ #* ----------------------------------------------------------------------- *
+ # *
+ # *   Under GPL v3
+@@ -7,7 +9,6 @@
+ # *
+ # * ----------------------------------------------------------------------- */
+ 
+-#!/usr/bin/ruby
+ 
+ def print_command_list()
+ 	print "Do you need help? \n"
+--- a/Makefile
++++ b/Makefile
+@@ -61,3 +61,4 @@
+ 	install -D -m 755 $(BIN) $(DESTDIR)$(sbindir)$(BIN)
+ 	install -d $(DESTDIR)$(docdir)
+ 	install -m 0644 README.txt put_cores_offline.sh put_cores_online.sh MAKEDEV-cpuid-msr $(DESTDIR)$(docdir)
++	install -m 0755 i7z_rw_registers.rb $(DESTDIR)$(sbindir)/i7z_rw_registers
