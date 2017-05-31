@@ -30,9 +30,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	kde-frameworks/extra-cmake-modules
 	wayland? (
 		dev-libs/wayland-protocols
+		kde-frameworks/extra-cmake-modules
 	)
 "
 
