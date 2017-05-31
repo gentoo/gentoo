@@ -22,6 +22,7 @@ SLOT="0"
 IUSE="dbus +foomatic ipp_autosetup jpeg ldap pdf perl png +postscript static-libs tiff zeroconf"
 
 RDEPEND="
+	app-text/mupdf
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
 	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils]
 	>=app-text/qpdf-3.0.2:=
