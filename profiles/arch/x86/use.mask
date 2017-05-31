@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# libvirt is supported on x86
+-libvirt
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
 # dev-db/firebird is keyworded ~x86
 -firebird
