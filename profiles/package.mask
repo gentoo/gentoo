@@ -383,6 +383,101 @@ kde-apps/plasma-runtime
 www-client/phantomjs
 dev-ruby/poltergeist
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
+# Package::Constants has been removed from core Perl.
+# Please depend in your ebuild directly on dev-perl/Package-Constants
+# (and if necessary remove virtual/perl-Package-Constants from
+# your system). Removal of the virtual in 30 days.
+virtual/perl-Package-Constants
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
+# ExtUtils::Command has been merged upstream into ExtUtils::MakeMaker
+# Please depend on virtual/perl-ExtUtils-MakeMaker from now on.
+# Removal in 30 days.
+virtual/perl-ExtUtils-Command
+perl-core/ExtUtils-Command
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
+# Masked for initial testing.
+=dev-lang/perl-5.26.0
+=virtual/perl-Archive-Tar-2.240.0
+=virtual/perl-B-Debug-1.240.0
+=virtual/perl-CPAN-2.180.0
+=virtual/perl-CPAN-Meta-2.150.10
+=virtual/perl-Carp-1.420.0
+=virtual/perl-Compress-Raw-Bzip2-2.74.0
+=virtual/perl-Compress-Raw-Zlib-2.74.0
+=virtual/perl-DB_File-1.840.0
+=virtual/perl-Data-Dumper-2.167.0
+=virtual/perl-Devel-PPPort-3.350.0
+=virtual/perl-Digest-MD5-2.550.0
+=virtual/perl-Digest-SHA-5.960.0
+=virtual/perl-Encode-2.880.0
+=virtual/perl-ExtUtils-MakeMaker-7.240.0
+=virtual/perl-ExtUtils-ParseXS-3.340.0
+=virtual/perl-File-Spec-3.670.0
+=virtual/perl-Filter-Simple-0.930.0
+=virtual/perl-Getopt-Long-2.490.0
+=virtual/perl-HTTP-Tiny-0.70.0
+=virtual/perl-I18N-LangTags-0.420.0
+=virtual/perl-IO-1.380.0
+=virtual/perl-IO-Compress-2.74.0
+=virtual/perl-IO-Socket-IP-0.380.0
+=virtual/perl-IPC-Cmd-0.960.0
+=virtual/perl-JSON-PP-2.274.0.200_rc
+=virtual/perl-Locale-Maketext-1.280.0
+=virtual/perl-Math-BigInt-1.999.806-r1
+=virtual/perl-Math-BigInt-FastCalc-0.500.500
+=virtual/perl-Math-BigRat-0.261.100
+=virtual/perl-Math-Complex-1.590.100
+=virtual/perl-Module-Load-Conditional-0.680.0
+=virtual/perl-Module-Metadata-1.0.33
+=virtual/perl-Net-Ping-2.550.0
+=virtual/perl-Parse-CPAN-Meta-2.150.10
+=virtual/perl-Perl-OSType-1.10.0
+=virtual/perl-Pod-Simple-3.350.0
+=virtual/perl-Safe-2.400.0
+=virtual/perl-Scalar-List-Utils-1.460.200_rc
+=virtual/perl-Storable-2.620.0
+=virtual/perl-Sys-Syslog-0.350.0
+=virtual/perl-Term-ANSIColor-4.60.0
+=virtual/perl-Term-ReadLine-1.160.0
+=virtual/perl-Test-1.300.0
+=virtual/perl-Test-Harness-3.380.0
+=virtual/perl-Test-Simple-1.302.73
+=virtual/perl-Thread-Queue-3.120.0
+=virtual/perl-Thread-Semaphore-2.130.0
+=virtual/perl-Time-HiRes-1.974.100
+=virtual/perl-Time-Local-1.250.0
+=virtual/perl-XSLoader-0.270.0
+=virtual/perl-bignum-0.470.0
+=virtual/perl-libnet-3.100.0
+=virtual/perl-parent-0.236.0
+=virtual/perl-podlators-4.90.0
+=virtual/perl-threads-2.150.0
+=virtual/perl-threads-shared-1.560.0
+=virtual/perl-version-0.991.700
+#
+# The following masks are technically not part of the Perl 5.26 block,
+# but with the unmasking of Perl 5.26 they become obsolete and can be
+# removed:
+#
+>=perl-core/ExtUtils-MakeMaker-7.180.0
+>=dev-perl/Net-Twitter-4.10.420
+>=perl-core/Math-BigInt-1.999.726
+>=dev-perl/Math-BigInt-GMP-1.600.0
+=perl-core/Test-Simple-1.302.75
+=virtual/perl-Test-Simple-1.302.75
+dev-perl/Test2-Suite
+>=dev-perl/Data-Validate-Domain-0.120.0
+dev-perl/Test2-Plugin-NoWarnings
+dev-perl/Params-ValidationCompiler
+>=dev-perl/DateTime-Locale-1.60.0
+>=dev-perl/DateTime-TimeZone-2.20.0
+>=dev-perl/DateTime-1.370.0
+>=dev-perl/DateTime-Format-Strptime-1.710.0
+>=dev-perl/Log-Dispatch-2.590.0
+
 # Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
 # Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
 # Masked for removal in 30 days. Bug #620758.
@@ -408,11 +503,6 @@ x11-misc/outwiker
 # Still relies on old and vulnerable webkit-gtk versions, bug #608626.
 # Removal in a month.
 www-client/xombrero
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (30 May 2017)
-# Work in progress. DO NOT UNMASK. Otherwise bad things WILL happen.
-# Think of the kittens.
-=dev-lang/perl-5.26.0
 
 # Amadeusz Żołnowski <aidecoe@gentoo.org> (29 May 2017)
 # Masked for removal. I have added it but I no longer use it.
@@ -553,15 +643,6 @@ app-emulation/wine-any
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
-
-# Kent Fredric <kentnl@gentoo.org> (18 Mar 2017)
-# ExtUtils::MakeMaker 7.18+ Block
-# Masked until strictly needed to avoid accidental conflicts later
-# And will be unmasked sometime after dev-lang/perl-5.26 ships
->=perl-core/ExtUtils-MakeMaker-7.180.0
->=virtual/perl-ExtUtils-MakeMaker-7.180.0
->=virtual/perl-ExtUtils-Command-7.180.0
->=dev-perl/Net-Twitter-4.10.420
 
 # Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
 # Testing x32 patch backports from 3.9
@@ -728,14 +809,6 @@ x11-libs/gtk+:1
 # Reverse dependencies need testing, wrt bug #580760
 >=net-libs/libtorrent-rasterbar-1.1.1
 
-# Kent Fredric (19 Nov 2016)
-# virtual/perl-MathBigInt-1.999.726+ Mask Block
-# Will likely not be unmasked until future Perls
-# include equivalent versions to avoid complications with virtuals
->=virtual/perl-Math-BigInt-1.999.726
->=perl-core/Math-BigInt-1.999.726
->=dev-perl/Math-BigInt-GMP-1.600.0
-
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
 # Depends on slotted lua, 
 # odd revisions are slotted lua, 
@@ -792,23 +865,6 @@ sci-geosciences/googleearth
 # functionality is provided yet. Use --pretend to make sure correct
 # files will be removed.
 >=app-admin/eclean-kernel-1.99
-
-# Kent Fredric <kentnl@gentoo.org> (16 Jul 2016)
-# Test2/Test-Simple-1.301 Block
-# Radically changed upstream and is critical to all Perl modules.
-# Masked for extended testing.
-# Will likely not be unmasked till equivalent versions ship in Perl itself.
->=perl-core/Test-Simple-1.301.0
->=virtual/perl-Test-Simple-1.301.0
-dev-perl/Test2-Suite
->=dev-perl/Data-Validate-Domain-0.120.0
-dev-perl/Test2-Plugin-NoWarnings
-dev-perl/Params-ValidationCompiler
->=dev-perl/DateTime-Locale-1.60.0
->=dev-perl/DateTime-TimeZone-2.20.0
->=dev-perl/DateTime-1.370.0
->=dev-perl/DateTime-Format-Strptime-1.710.0
->=dev-perl/Log-Dispatch-2.590.0
 
 # Chris Reffett <creffett@gentoo.org> (25 May 2016)
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
