@@ -6,6 +6,10 @@
 
 # SECTION: Unmask
 
+# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# libvirt is supported on amd64
+-libvirt
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
 # dev-db/firebird is keyworded ~amd64
 -firebird

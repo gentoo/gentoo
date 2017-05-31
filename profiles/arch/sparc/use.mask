@@ -150,7 +150,6 @@ gps
 schroedinger
 ots
 frei0r
-libvirt
 prelude
 redis
 
