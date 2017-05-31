@@ -10,7 +10,7 @@ HOMEPAGE="https://cwrap.org/resolv_wrapper.html"
 SRC_URI="https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc64 x86"
+KEYWORDS="alpha amd64 ~arm ppc64 x86"
 IUSE="test"
 
 DEPEND=""
