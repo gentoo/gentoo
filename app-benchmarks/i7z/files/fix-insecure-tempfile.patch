@@ -1,0 +1,76 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix insecure temfile usage: /tmp/cpufreq.txt
+ switch from system() + fopen() to popen()
+ disable other insecure tempfiles that may be generated but not used
+Bug-Debian: http://bugs.debian.org/718418
+
+diff --git a/GUI/i7z_GUI.cpp b/GUI/i7z_GUI.cpp
+index 2705e84..60eaeb2 100644
+--- a/GUI/i7z_GUI.cpp
++++ b/GUI/i7z_GUI.cpp
+@@ -171,18 +171,17 @@ MyThread::run ()
+     //CPUINFO is wrong for i7 but correct for the number of physical and logical cores present
+     //If Hyperthreading is enabled then, multiple logical processors will share a common CORE ID
+     //http://www.redhat.com/magazine/022aug06/departments/tips_tricks/
+-    system ("cat /proc/cpuinfo |grep MHz|sed 's/cpu\\sMHz\\s*:\\s//'|tail -n 1 > /tmp/cpufreq.txt");
+-    system ("grep \"core id\" /proc/cpuinfo |sort -|uniq -|wc -l > /tmp/numPhysical.txt");
+-    system ("grep \"processor\" /proc/cpuinfo |sort -|uniq -|wc -l > /tmp/numLogical.txt");
++    //system ("grep \"core id\" /proc/cpuinfo |sort -|uniq -|wc -l > /tmp/numPhysical.txt");
++    //system ("grep \"processor\" /proc/cpuinfo |sort -|uniq -|wc -l > /tmp/numLogical.txt");
+ 
+ 
+-    //Open the parsed cpufreq file and obtain the cpufreq from /proc/cpuinfo
++    // obtain the cpufreq from /proc/cpuinfo
+     FILE *tmp_file;
+-    tmp_file = fopen ("/tmp/cpufreq.txt", "r");
++    tmp_file = popen ("sed -n '/MHz/ { s/cpu\\sMHz\\s*:\\s//p; q }' /proc/cpuinfo", "r");
+     char tmp_str[30];
+     fgets (tmp_str, 30, tmp_file);
++    pclose (tmp_file);
+     double cpu_freq_cpuinfo = atof (tmp_str);
+-    fclose (tmp_file);
+ 
+     unsigned int numPhysicalCores, numLogicalCores;
+     numPhysicalCores = socket_0.num_physical_cores + socket_1.num_physical_cores;
+diff --git a/helper_functions.c b/helper_functions.c
+index 2f8da87..906c298 100644
+--- a/helper_functions.c
++++ b/helper_functions.c
+@@ -531,16 +531,13 @@ double cpufreq_info()
+     //CPUINFO is wrong for i7 but correct for the number of physical and logical cores present
+     //If Hyperthreading is enabled then, multiple logical processors will share a common CORE ID
+     //http://www.redhat.com/magazine/022aug06/departments/tips_tricks/
+-    system
+-    ("cat /proc/cpuinfo |grep MHz|sed 's/cpu\\sMHz\\s*:\\s//'|tail -n 1 > /tmp/cpufreq.txt");
+ 
+-
+-    //Open the parsed cpufreq file and obtain the cpufreq from /proc/cpuinfo
++    // obtain the cpufreq from /proc/cpuinfo
+     FILE *tmp_file;
+-    tmp_file = fopen ("/tmp/cpufreq.txt", "r");
++    tmp_file = popen ("sed -n '/MHz/ { s/cpu\\sMHz\\s*:\\s//p; q }' /proc/cpuinfo", "r");
+     char tmp_str[30];
+     fgets (tmp_str, 30, tmp_file);
+-    fclose (tmp_file);
++    pclose (tmp_file);
+     return atof(tmp_str);
+ }
+ 
+diff --git a/i7z_Single_Socket.c b/i7z_Single_Socket.c
+index 015f154..d0afee0 100644
+--- a/i7z_Single_Socket.c
++++ b/i7z_Single_Socket.c
+@@ -823,10 +823,13 @@ void print_i7z_single ()
+ 	  //CPUINFO is wrong for i7 but correct for the number of physical and logical cores present
+ 	  //If Hyperthreading is enabled then, multiple logical processors will share a common CORE ID
+ 	  //http://www.redhat.com/magazine/022aug06/departments/tips_tricks/
++ERROR INSECURE TMPFILE
+ 	  system
+ 		("cat /proc/cpuinfo |grep MHz|sed 's/cpu\\sMHz\\s*:\\s//'|tail -n 1 > /tmp/cpufreq.txt");
++ERROR INSECURE TMPFILE
+ 	  system
+ 		("grep \"core id\" /proc/cpuinfo |sort -|uniq -|wc -l > /tmp/numPhysical.txt");
++ERROR INSECURE TMPFILE
+ 	  system
+ 		("grep \"processor\" /proc/cpuinfo |sort -|uniq -|wc -l > /tmp/numLogical.txt");
+ 	  //At this step, /tmp/numPhysical contains number of physical cores in machine and
