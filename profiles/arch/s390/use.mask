@@ -17,7 +17,6 @@ fuse
 autotrace
 lqr
 libproxy
-libvirt
 tokyocabinet
 lpsol
 openexr
