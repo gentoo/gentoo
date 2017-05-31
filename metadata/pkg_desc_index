@@ -13135,7 +13135,7 @@ media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
 media-libs/libprojectm-qt 2.1.0-r1: A graphical music visualization plugin similar to milkdrop
 media-libs/libptp2 1.1.10: Library and client for communicating with PTP enabled devices (e.g. digital photo cameras)
-media-libs/libquicktime 1.2.4-r1 1.2.4-r2: An enhanced version of the quicktime4linux library
+media-libs/libquicktime 1.2.4-r2: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
 media-libs/libraw 0.17.2 0.18.1 0.18.2: LibRaw is a library for reading RAW files obtained from digital photo cameras
