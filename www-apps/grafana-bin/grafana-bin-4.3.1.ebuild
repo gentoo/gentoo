@@ -15,7 +15,6 @@ SRC_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release/${MY_PN}-${
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -32,7 +31,7 @@ src_install() {
 	keepdir /etc/grafana
 	insinto /etc/grafana
 	newins "${S}"/conf/sample.ini grafana.ini
-	rm "${S}"/conf/sample.ini
+	rm "${S}"/conf/sample.ini || die
 
 	# Frontend assets
 	insinto /usr/share/${MY_PN}
@@ -51,4 +50,13 @@ src_install() {
 	fowners grafana:grafana /var/lib/grafana/{dashboards,plugins}
 	fperms 0750 /var/{lib,log}/grafana
 	fperms 0750 /var/lib/grafana/{dashboards,plugins}
+}
+
+postinst() {
+	elog "${PN} has built-in log rotation. Please see [log.file] section of"
+	elog "/etc/grafana/grafana.ini for related settings."
+	elog
+	elog "You may add your own custom configuration for app-admin/logrotate if you"
+	elog "wish to use external rotation of logs. In this case, you also need to make"
+	elog "sure the built-in rotation is turned off."
 }
