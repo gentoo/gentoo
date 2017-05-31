@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chewi@gentoo.org</email>
+		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">ajaiantilal/i7z</remote-id>
