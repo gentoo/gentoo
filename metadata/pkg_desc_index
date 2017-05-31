@@ -3008,7 +3008,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.20 4.7.0: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.1.24 9.2.19 9.2.20 9.2.20-r1 9.2.21 9.2.21-r1 9.3.15 9.3.16 9.3.16-r1 9.3.17 9.3.17-r1 9.4.10 9.4.11 9.4.11-r1 9.4.12 9.4.12-r1 9.5.5 9.5.6 9.5.6-r1 9.5.7 9.6.1-r1 9.6.2 9.6.2-r1 9.6.3 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.1.24 9.2.19 9.2.20 9.2.20-r1 9.2.21 9.2.21-r1 9.3.15 9.3.16 9.3.16-r1 9.3.17 9.3.17-r1 9.4.10 9.4.11 9.4.11-r1 9.4.12 9.4.12-r1 9.5.5 9.5.6 9.5.6-r1 9.5.7 9.6.1-r1 9.6.2 9.6.2-r1 9.6.3 9.6.3-r1 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain text databases
@@ -18370,7 +18370,7 @@ www-apps/nextcloud 11.0.3 12.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.2.0 7.6.3-r1: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
-www-apps/otrs 5.0.16 5.0.18: OTRS is an Open source Ticket Request System
+www-apps/otrs 5.0.16 5.0.18 5.0.19: OTRS is an Open source Ticket Request System
 www-apps/owncloud 8.2.11 9.0.9 9.1.5 10.0.0 10.0.1: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
