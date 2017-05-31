@@ -7719,6 +7719,7 @@ dev-python/ginga 2.6.1 2.6.2: Astronomical image toolkit for Python
 dev-python/git-python 1.0.2 2.0.6: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.4: GitDB is a pure-Python git object database
+dev-python/gitdb2 2.0.2: GitDB is a pure-Python git object database
 dev-python/github3 0.9.3: A wrapper for the GitHub API written in python
 dev-python/glance_store 0.13.1 0.18.0 0.20.0: A library for glance
 dev-python/globre 0.1.4: A glob matching library, providing an interface similar to the 're' module
@@ -16778,7 +16779,7 @@ sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensio
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r5 4.4.4-r6: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
-sci-visualization/paraview 4.1.0-r2 5.1.2-r1 5.2.0: ParaView is a powerful scientific data visualization application
+sci-visualization/paraview 5.2.0: ParaView is a powerful scientific data visualization application
 sci-visualization/pythonprop 0.13 0.18: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2-r1: Gnuplot like graphing program publication-quality figures
 sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of the Origin plotting package
