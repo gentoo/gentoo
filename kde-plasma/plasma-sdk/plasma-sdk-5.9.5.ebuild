@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Useful applications for Plasma development"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="plasmate"
+IUSE=""
 
 DEPEND="
 	$(add_frameworks_dep karchive)
@@ -34,13 +34,6 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	dev-libs/kirigami:1
-	plasmate? (
-		$(add_frameworks_dep kdelibs4support)
-		$(add_frameworks_dep knewstuff)
-		$(add_frameworks_dep kparts)
-		$(add_qt_dep qtwebkit)
-		dev-util/kdevplatform:5
-	)
 "
 RDEPEND="${DEPEND}
 	!dev-util/plasmate
@@ -48,9 +41,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package plasmate KDevPlatform)
-		$(cmake-utils_use_find_package plasmate Qt5WebKit)
-		$(cmake-utils_use_find_package plasmate Qt5WebKitWidgets)
+		-DCMAKE_DISABLE_FIND_PACKAGE_KDevPlatform=ON
 	)
 
 	kde5_src_configure
