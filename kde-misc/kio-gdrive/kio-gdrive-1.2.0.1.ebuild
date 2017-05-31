@@ -31,11 +31,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
+	dev-util/intltool
 "
 
 DOCS=( README.md )
-
-PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
 
 src_configure() {
 	local mycmakeargs=(
