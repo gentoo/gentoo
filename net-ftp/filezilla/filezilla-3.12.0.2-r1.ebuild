@@ -21,12 +21,12 @@ IUSE="aqua dbus nls test"
 
 RDEPEND=">=app-eselect/eselect-wxwidgets-0.7-r1
 	>=dev-db/sqlite-3.7
-	>=dev-libs/tinyxml-2.6.1-r1[stl]
 	net-dns/libidn
 	>=net-libs/gnutls-3.1.12
 	aqua? ( >=x11-libs/wxGTK-3.0.2.0-r1:3.0[aqua] )
 	!aqua? ( >=x11-libs/wxGTK-3.0.2.0-r1:3.0[X] x11-misc/xdg-utils )
 	dbus? ( sys-apps/dbus )"
+#	>=dev-libs/tinyxml-2.6.1-r1[stl]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/libtool-1.4
@@ -43,7 +43,7 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_with dbus) $(use_enable nls locales) \
-		--with-tinyxml=system \
+		--with-tinyxml=builtin \
 		--disable-autoupdatecheck
 }
 
