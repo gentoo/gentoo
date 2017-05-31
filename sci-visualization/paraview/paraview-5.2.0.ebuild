@@ -26,7 +26,7 @@ REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
 
 RDEPEND="
 	dev-libs/expat
-	<dev-libs/jsoncpp-1.7.5
+	dev-libs/jsoncpp
 	dev-libs/libxml2:2
 	dev-libs/protobuf
 	media-libs/freetype
