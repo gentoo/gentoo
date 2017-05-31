@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit autotools cmake-utils eutils linux-info python-single-r1
+inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
@@ -253,6 +253,9 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
+
+	pax-mark E "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
+
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	newicon media/icon48x48.png kodi.png
