@@ -27,6 +27,7 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 pkg_setup() {
 	GCC=${ADA:-$(tc-getCC)}
 	GNATMAKE="${GCC/gcc/gnatmake}"
+	CC="${GCC}"
 	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
 		eerror "1) use gcc-config to select the right compiler or"
@@ -36,10 +37,11 @@ pkg_setup() {
 }
 
 src_compile() {
-	emake GNATMAKE=${GNATMAKE} BUILDER="gprbuild -j$(makeopts_jobs)" generate_sources
+	emake GNATMAKE="${GNATMAKE} ${ADAFLAGS}" \
+		BUILDER="gprbuild -j$(makeopts_jobs)" generate_sources
 	for kind in shared static static-pic; do
 		if use ${kind}; then
-			emake BUILDER="gprbuild -j$(makeopts_jobs)" build-${kind}
+			emake BUILDER="gprbuild -v -j$(makeopts_jobs)" build-${kind}
 		fi
 	done
 }
