@@ -6764,7 +6764,7 @@ dev-perl/Tie-CPHash 2.0.0: Case preserving but case insensitive hash table
 dev-perl/Tie-Cache 0.190.0-r1 0.210.0: In memory size limited LRU cache
 dev-perl/Tie-Cache-LRU 20150301.0.0: A Least-Recently Used cache
 dev-perl/Tie-Cache-LRU-Expires 0.550.0-r1: Extends Tie::Cache::LRU with expiring
-dev-perl/Tie-Cycle 1.221.0: Cycle through a list of values via a scalar
+dev-perl/Tie-Cycle 1.221.0 1.224.0: Cycle through a list of values via a scalar
 dev-perl/Tie-EncryptedHash 1.240.0-r1: Hashes (and objects based on hashes) with encrypting fields
 dev-perl/Tie-Hash-Method 0.20.0: Tied hash with specific methods overriden by callbacks
 dev-perl/Tie-IxHash 1.230.0: Ordered associative arrays for Perl
@@ -6914,7 +6914,7 @@ dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
 dev-perl/YAML 1.150.0 1.210.0 1.230.0: YAML Ain't Markup Language (tm)
-dev-perl/YAML-LibYAML 0.620.0 0.630.0 0.640.0: Perl YAML Serialization using XS and libyaml
+dev-perl/YAML-LibYAML 0.620.0 0.630.0 0.640.0 0.650.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.290.0 1.300.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.700.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
