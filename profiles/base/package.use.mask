@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+#openfoam-2.4.0-r1.ebuild Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires >=portage-2.1.1
@@ -6,6 +6,10 @@
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Matthias Maier <tamiko@gentoo.org> (31 May 2017)
+# mask dependencies on old paraview versions, bug #561084
+<sci-libs/openfoam-2.4.0 paraview
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (29 May 2017)
 # Does not build
