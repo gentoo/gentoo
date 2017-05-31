@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.23-automagic.patch"
+	"${FILESDIR}"/${P}-libav10.patch
 )
 
 src_prepare() {
