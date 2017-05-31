@@ -119,7 +119,6 @@ lasi
 schroedinger
 hardened
 frei0r
-libvirt
 pdfannotextractor
 prelude
 mssql

@@ -62,7 +62,6 @@ xindy
 lyx
 lasi
 hardened
-libvirt
 pdfannotextractor
 prelude
 mssql
