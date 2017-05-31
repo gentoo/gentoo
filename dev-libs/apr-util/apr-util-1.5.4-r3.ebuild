@@ -16,7 +16,7 @@ SRC_URI="mirror://apache/apr/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="berkdb doc freetds gdbm ldap libressl nss odbc openssl postgres sqlite static-libs"
+IUSE="berkdb doc freetds gdbm ldap libressl mysql nss odbc openssl postgres sqlite static-libs"
 #RESTRICT="test"
 
 RDEPEND="
@@ -26,6 +26,7 @@ RDEPEND="
 	freetds? ( dev-db/freetds )
 	gdbm? ( sys-libs/gdbm )
 	ldap? ( =net-nds/openldap-2* )
+	mysql? ( =virtual/mysql-5* )
 	nss? ( dev-libs/nss )
 	odbc? ( dev-db/unixODBC )
 	openssl? (
@@ -49,6 +50,12 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# Fix usage of libmysqlclient (bug #620230)
+	grep -lrF "libmysqlclient_r" "${S}" \
+		| xargs sed 's@libmysqlclient_r@libmysqlclient@g' -i \
+		|| die
+
 	mv configure.{in,ac} || die
 	eautoreconf
 	elibtoolize
@@ -83,11 +90,11 @@ src_configure() {
 		--datadir="${EPREFIX}"/usr/share/apr-util-1
 		--with-apr="${SYSROOT}${EPREFIX}"/usr
 		--with-expat="${EPREFIX}"/usr
-		--without-mysql
 		--without-sqlite2
 		$(use_with freetds)
 		$(use_with gdbm)
 		$(use_with ldap)
+		$(use_with mysql)
 		$(use_with nss)
 		$(use_with odbc)
 		$(use_with openssl)
