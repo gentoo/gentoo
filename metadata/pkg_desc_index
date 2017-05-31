@@ -485,14 +485,14 @@ app-cdr/mode2cdmaker 1.5.1: Utility to create mode-2 CDs, for example XCDs
 app-cdr/mp3burn 0.4.2: Burn mp3s without filling up your disk with .wav files
 app-cdr/multicd 1.7.5-r1: Tool for making direct copies of your files to multiple cd's
 app-cdr/nero 4.0.0.0b-r2: Nero Burning ROM for Linux
-app-cdr/nrg2iso 0.4-r1: Converts Nero nrg CD-images to iso
+app-cdr/nrg2iso 0.4-r1 0.4-r2: Convert CD images from nrg (Nero) to iso
 app-cdr/pburn 3.4.3: A burning tool with GTK+ frontend
 app-cdr/plextor-tool 0.5.0: Tool to change the parameters of a Plextor CD-ROM drive
 app-cdr/poweriso 1.3: Utility to extract, list and convert PowerISO DAA image files
 app-cdr/qpxtool 0.7.2: CD/DVD quality checking utilities
 app-cdr/sync2cd 1.3-r1: An incremental archiving tool to CD/DVD
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
-app-cdr/uif2iso 0.1.7c: Converts MagicISO CD-images to iso
+app-cdr/uif2iso 0.1.7c 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1 0.6.1-r1 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
@@ -7743,7 +7743,7 @@ dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.10 0.4.12: Lightweight in-process concurrent programming
 dev-python/gst-python 0.10.22-r1 1.8.3 1.10.3: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
-dev-python/guessit 2.1.1 2.1.2 9999: Python library for guessing information from video filenames
+dev-python/guessit 2.1.1 2.1.2 2.1.3 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.10: Sphinx theme used by Guzzle
 dev-python/gwcs 0.7: Python for managing the World Coordinate System
@@ -12569,8 +12569,8 @@ media-fonts/mplus-outline-fonts 0_pre059 0_pre061 0_pre062: M+ Japanese outline 
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
-media-fonts/noto 20160305-r1 20160531 20170530: Google's font family that aims to support all the world's languages
-media-fonts/noto-cjk 20150615 20170530: Google's font family that aims to support all the world's languages
+media-fonts/noto 20160305-r1 20160531 20170403: Google's font family that aims to support all the world's languages
+media-fonts/noto-cjk 20150615: Google's font family that aims to support all the world's languages
 media-fonts/nunito 1.0: A well balanced Sans Serif with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
 media-fonts/ohsnap 1.8.0: The ohsnap / osnap monospace font (based on Artwiz Snap)
@@ -14738,7 +14738,7 @@ net-im/centerim 4.22.10 4.22.10-r1 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!
 net-im/choqok 1.6.0: Free/Open Source micro-blogging client by KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
-net-im/corebird 0.8 1.0 1.1 1.5: Native GTK+3 Twitter client
+net-im/corebird 0.8 1.0 1.1 1.5-r1: Native GTK+3 Twitter client
 net-im/coturn 4.5.0.4-r1 4.5.0.6 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
