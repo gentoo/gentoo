@@ -19,11 +19,12 @@ IUSE_L10N=" da de fr it ja nl pl ro ru zh-CN"
 IUSE="nls ${IUSE_L10N// / l10n_}"
 RESTRICT="binchecks"
 
-# Block packages that used to install colliding man pages #341953 #548900 #612640
+# Block packages that used to install colliding man pages #341953 #548900 #612640 #617462
 RDEPEND="virtual/man
 	!<sys-apps/keyutils-1.5.9-r3
 	!<sys-apps/attr-2.4.47-r2
-	!<dev-libs/libaio-0.3.109-r2"
+	!<dev-libs/libaio-0.3.109-r2
+	!<dev-libs/libbsd-0.8.3-r1"
 PDEPEND="nls? (
 	l10n_da? ( app-i18n/man-pages-da )
 	l10n_de? ( app-i18n/man-pages-de )
