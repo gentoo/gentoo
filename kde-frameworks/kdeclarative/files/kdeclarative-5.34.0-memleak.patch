@@ -1,0 +1,73 @@
+From 695f24fb522a5ae6fe2530cbd72d3966b234b025 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 31 May 2017 10:08:25 +0100
+Subject: [PATCH] Don't leak MimeData object
+
+Summary:
+A DeclarativeDropArea creates a new DeclarativeDragDropEvent on every
+enter/move/leave event.
+
+The getter method for the mimeData property creates a new MimeData
+QObject wrapper, which then leaks.
+
+Use of the mimeData object outside of the event shouldn't be expected to
+work, and a quick grep couldn't find any usage.
+
+BUG: 380270
+
+Test Plan: Dragged some things
+
+Reviewers: #plasma, mart, hein
+
+Reviewed By: #plasma, mart, hein
+
+Subscribers: hein, plasma-devel, #frameworks
+
+Tags: #plasma, #frameworks
+
+Differential Revision: https://phabricator.kde.org/D6017
+---
+ src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.cpp | 4 ++--
+ src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.h   | 5 ++---
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.cpp b/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.cpp
+index 5c1b0e3..a75f85f 100644
+--- a/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.cpp
++++ b/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.cpp
+@@ -65,7 +65,7 @@ DeclarativeMimeData* DeclarativeDragDropEvent::mimeData()
+     if (!m_data && m_event) {
+ //         TODO This should be using MimeDataWrapper eventually, although this is an API break,
+ //         so will need to be done carefully.
+-        m_data = new DeclarativeMimeData(m_event->mimeData());
++        m_data.reset(new DeclarativeMimeData(m_event->mimeData()));
+     }
+-    return m_data;
++    return m_data.data();
+ }
+diff --git a/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.h b/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.h
+index 3fd846d..b35568a 100644
+--- a/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.h
++++ b/src/qmlcontrols/draganddrop/DeclarativeDragDropEvent.h
+@@ -26,8 +26,7 @@
+ 
+ #include <QObject>
+ #include "DeclarativeDropArea.h"
+-
+-class DeclarativeMimeData;
++#include "DeclarativeMimeData.h"
+ 
+ class DeclarativeDragDropEvent : public QObject
+ {
+@@ -115,7 +114,7 @@ private:
+     int m_y;
+     Qt::MouseButtons m_buttons;
+     Qt::KeyboardModifiers m_modifiers;
+-    DeclarativeMimeData* m_data;
++    QScopedPointer<DeclarativeMimeData> m_data;
+     QDropEvent* m_event;
+ };
+ 
+-- 
+2.13.0
+
