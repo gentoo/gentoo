@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,5 +25,6 @@ LICENSE="MagickWand"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=media-gfx/imagemagick-6.5.2.9"
+DEPEND=">=media-gfx/imagemagick-6.5.2.9
+	<media-gfx/imagemagick-7.0"
 RDEPEND="${DEPEND}"
