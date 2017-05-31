@@ -1715,7 +1715,7 @@ app-misc/banner 1.3.3: The well known banner program for Linux
 app-misc/bb 1.3.0_rc1-r3 1.3.0_rc1-r4: Demonstration program for visual effects of aalib
 app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition, SQL support
 app-misc/beanstalkd 1.10: A simple, fast work queue
-app-misc/beep 1.3-r1: The advanced PC speaker beeper
+app-misc/beep 1.3-r1 1.3-r2: The advanced PC speaker beeper
 app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
@@ -12112,7 +12112,7 @@ kde-frameworks/kconfigwidgets 5.29.0 5.34.0: Framework providing an assortment o
 kde-frameworks/kcoreaddons 5.29.0 5.34.0 5.34.0-r1: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.29.0 5.34.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.29.0 5.34.0: Framework for registering services and applications per freedesktop standards
-kde-frameworks/kdeclarative 5.29.0 5.34.0: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kdeclarative 5.29.0 5.34.0 5.34.0-r1: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.29.0 5.34.0: Central daemon of KDE workspaces
 kde-frameworks/kdelibs 4.14.32: Libraries needed for programs by KDE
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
