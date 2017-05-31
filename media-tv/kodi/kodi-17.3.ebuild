@@ -254,7 +254,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	pax-mark E "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
+	pax-mark Em "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
 
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
