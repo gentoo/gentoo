@@ -7,7 +7,7 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 	sw ta te th tr uk vi zh-CN zh-TW
 "
-inherit chromium-2 eutils multilib unpacker toolchain-funcs
+inherit chromium-2 eutils multilib unpacker toolchain-funcs pax-utils
 
 #VIVALDI_BRANCH="snapshot"
 
@@ -105,6 +105,7 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
+	pax-mark m "${VIVALDI_HOME}/${PN}-bin" || die
 }
 
 src_install() {
