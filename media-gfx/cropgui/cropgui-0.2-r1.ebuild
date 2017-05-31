@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,6 +31,8 @@ src_prepare() {
 		cropgui.desktop || die 'sed on cropgui.desktop failed'
 	# bug 471530
 	eapply "${FILESDIR}/${P}-PIL.patch"
+	# bug 616708
+	eapply "${FILESDIR}/${P}-tobytes.patch"
 
 	eapply_user
 }
