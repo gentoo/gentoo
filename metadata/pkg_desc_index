@@ -9326,7 +9326,6 @@ dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 9999: Implementation of an efficient 3D 
 dev-ros/xacro 1.11.1 1.11.2 1.12.0 9999: XML macro language
 dev-ros/xmlrpcpp 1.13.0 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
-dev-ruby/RubyInline 3.12.3 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/actioncable 5.0.0.1 5.0.1 5.0.2 5.0.3 5.1.1: Integrated WebSockets for Rails
 dev-ruby/actionmailer 4.2.7.1 4.2.8 5.0.0.1 5.0.1 5.0.2 5.0.3 5.1.1: Framework for designing email-service layers
@@ -9438,7 +9437,6 @@ dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/concurrent-ruby 1.0.4 1.0.5: Modern concurrency tools including agents, futures, promises, thread pools, more
-dev-ruby/configliere 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0 2.2.1: Generic connection pooling for Ruby
 dev-ruby/contracts 0.14.0 0.15.0 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.4.2 1.4.5 1.5.0: A high performance event framework for Ruby which uses the libev C library
@@ -9594,13 +9592,11 @@ dev-ruby/lumberjack 1.0.10 1.0.11 1.0.12: A simple, powerful, and very fast logg
 dev-ruby/mab 0.0.3: Markup as Ruby
 dev-ruby/magic 0.2.9: Ruby FFI bindings to libmagic
 dev-ruby/mail 2.6.4 2.6.5: An email handling library
-dev-ruby/map 6.6.0: A string/symbol indifferent ordered hash that works in all rubies
 dev-ruby/maruku 0.7.2-r1 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/maxitest 2.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3-r1 2.7.5 2.7.5-r2: A Ruby library used for automating interaction with websites
-dev-ruby/memcache-client 1.8.5-r2: A ruby library for accessing memcached
 dev-ruby/memoist 0.14.0 0.15.0: ActiveSupport::Memoizable with a few enhancements
 dev-ruby/memoizable 0.4.2: Memoize method return values
 dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
@@ -9620,7 +9616,6 @@ dev-ruby/mime-types 1.25.1 2.6.2 2.99.2 3.0 3.0-r1 3.1: Provides a mailcap-like 
 dev-ruby/mime-types-data 3.2015.1120 3.2016.0221 3.2016.0521: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.1 0.3.2: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.5.1-r1: Manipulate images with minimal use of memory
-dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.8.4 5.9.0 5.9.1 5.10.1 5.10.2: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 2.0 3.0: Bonus assertions for minitest
 dev-ruby/minitest-hooks 1.4.0: Adds around and before_all/after_all/around_all hooks for Minitest
@@ -9693,7 +9688,6 @@ dev-ruby/pg_array_parser 0.0.9-r1 0.0.9-r2: Simple library to parse PostgreSQL a
 dev-ruby/pkg-config 1.1.7 1.1.9 1.2.0 1.2.2: A pkg-config implementation by Ruby
 dev-ruby/plist 3.2.0 3.3.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.0.2 1.1.1: Pluggaloid is extensible plugin system for mikutter
-dev-ruby/png 1.2.1: An almost pure-Ruby Portable Network Graphics (PNG) library
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/poltergeist 1.9.0 1.10.0 1.14.0: A PhantomJS driver for Capybara
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
@@ -9728,7 +9722,6 @@ dev-ruby/rails-deprecated_sanitizer 1.0.3 1.0.3-r1: Deprecated sanitizer API ext
 dev-ruby/rails-dom-testing 1.0.8 2.0.2 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3 1.0.3-r1: Sanitize HTML fragments in Rails applications
 dev-ruby/rails-observers 0.1.2: Rails Observers
-dev-ruby/rails_autolink 1.1.6: This is an extraction of the auto_link method from rails
 dev-ruby/railties 4.2.7.1 4.2.8 5.0.0.1-r1 5.0.1 5.0.2 5.0.3 5.1.1: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.0.0-r1 2.1.0 2.2.1 2.2.2: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0 11.1.2 11.2.2-r1 11.3.0 12.0.0: Make-like scripting in Ruby
@@ -9755,7 +9748,6 @@ dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
 dev-ruby/regexp_parser 0.3.6 0.4.1 0.4.3: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/request_store 1.0.5 1.3.1 1.3.2: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0-r1 1.8.0-r3 2.0.1 2.0.2: Simple Simple HTTP and REST client for Ruby
-dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
 dev-ruby/rex-arch 0.1.1 0.1.2 0.1.4 0.1.5: architecture specific information for Rex
 dev-ruby/rex-bin_tools 0.1.2: suite of tools for analyzing executables to find specific chunks of code
 dev-ruby/rex-core 0.1.9 0.1.10: Core libraries required for the Ruby Exploitation(Rex) Suite
@@ -9826,7 +9818,6 @@ dev-ruby/ruby-gtk3 3.0.8 3.1.1: Ruby Gtk3 bindings
 dev-ruby/ruby-gtksourceview 3.0.8 3.1.1: Ruby bindings for gtksourceview
 dev-ruby/ruby-gtksourceview3 3.0.8 3.1.1: Ruby Gtk3 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
-dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
 dev-ruby/ruby-ldap 0.9.17 0.9.18 0.9.19: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.9 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.14.0 0.15.0 0.16.0: Pure ruby LDAP client implementation
@@ -9846,7 +9837,6 @@ dev-ruby/ruby-rsvg 3.0.8 3.1.1: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.2: A Ruby interface to libshout2
-dev-ruby/ruby-tcpwrap 0.6-r3: A TCP wrappers library for Ruby
 dev-ruby/ruby-termios 1.0.0-r1 1.0.2-r1: A Ruby interface to termios
 dev-ruby/ruby-vte 3.0.8 3.1.1: Ruby vte bindings
 dev-ruby/ruby-vte3 3.0.8-r1 3.1.1: Ruby VTE bindings
@@ -10592,7 +10582,6 @@ dev-util/vmtouch 1.0.2 1.2.0 1.3.0: Virtual Memory Toucher, portable file system
 dev-util/vtable-dumper 1.2: A tool to list content of virtual tables in a shared library
 dev-util/w32api 3.17.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/waf 1.9.8: piece of software used to help building software projects
-dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest)
 dev-util/webstorm 10.0.4.141.1550 2016.2.2.162.1628.41: JavaScript IDE for client- and server-side development with Node.js
 dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply because of conflicting changes
