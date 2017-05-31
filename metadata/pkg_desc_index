@@ -5959,7 +5959,7 @@ dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written us
 dev-perl/GDGraph 1.490.0 1.510.0 1.520.0 1.540.0: Perl5 module to create charts using the GD module
 dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
-dev-perl/Gearman 2.3.2 2.4.2 2.4.3 2.4.6: Gearman distributed job system, client and worker libraries
+dev-perl/Gearman 2.3.2 2.4.2 2.4.3 2.4.6 2.4.7: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
 dev-perl/Gentoo-App-Pram 0.4.0: Readily merge Pull Requests from the Gentoo Github repository
