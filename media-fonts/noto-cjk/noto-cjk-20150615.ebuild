@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1" # https://github.com/googlei18n/noto-fonts/blob/master/NEWS
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 RESTRICT="binchecks strip"
