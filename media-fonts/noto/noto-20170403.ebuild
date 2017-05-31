@@ -12,14 +12,14 @@ HOMEPAGE="https://www.google.com/get/noto/"
 # Version number based on the timestamp of most recently updated font in the zip.
 # When bumping, remove *CJK* and create a tarball (xz -9 gives the most
 # compressed tarball)
-SRC_URI="https://dev.gentoo.org/~pacho/noto/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1" # https://github.com/googlei18n/noto-fonts/blob/master/NEWS
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cjk"
 
-RDEPEND="cjk? ( >=media-fonts/noto-cjk-${PV} )"
+RDEPEND="cjk? ( media-fonts/noto-cjk )"
 RESTRICT="binchecks strip"
 
 FONT_S="${S}"
