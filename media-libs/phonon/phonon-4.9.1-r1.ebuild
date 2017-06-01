@@ -18,7 +18,7 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="aqua debug designer gstreamer pulseaudio +qt4 qt5 +vlc zeitgeist"
+IUSE="aqua debug designer gstreamer pulseaudio qt4 +qt5 +vlc zeitgeist"
 
 REQUIRED_USE="
 	|| ( qt4 qt5 )
@@ -27,6 +27,10 @@ REQUIRED_USE="
 
 RDEPEND="
 	!!dev-qt/qtphonon:4
+	pulseaudio? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		>=media-sound/pulseaudio-0.9.21[glib,${MULTILIB_USEDEP}]
+	)
 	qt4? (
 		>=dev-qt/qtcore-4.8.7-r2:4[${MULTILIB_USEDEP}]
 		>=dev-qt/qtdbus-4.8.7:4[${MULTILIB_USEDEP}]
@@ -39,10 +43,6 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 		designer? ( dev-qt/designer:5 )
-	)
-	pulseaudio? (
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		>=media-sound/pulseaudio-0.9.21[glib,${MULTILIB_USEDEP}]
 	)
 	zeitgeist? ( dev-libs/libqzeitgeist )
 "
