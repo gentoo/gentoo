@@ -59,7 +59,6 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -407,7 +406,6 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with v4l)
 		$(use_with X x)
-		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)
