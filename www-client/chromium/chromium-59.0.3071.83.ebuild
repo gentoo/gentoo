@@ -296,6 +296,7 @@ src_prepare() {
 		third_party/swiftshader
 		third_party/swiftshader/third_party/llvm-subzero
 		third_party/swiftshader/third_party/pnacl-subzero
+		third_party/swiftshader/third_party/subzero
 		third_party/tcmalloc
 		third_party/usrsctp
 		third_party/web-animations-js
