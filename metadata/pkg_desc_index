@@ -9519,7 +9519,7 @@ dev-ruby/globalid 0.3.6 0.3.6-r1 0.3.7 0.4.0: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0 0.7.0: Beautiful graphs for one or multiple datasets
-dev-ruby/haml 4.0.7 4.0.7-r1: A ruby web page templating engine
+dev-ruby/haml 4.0.7-r1: A ruby web page templating engine
 dev-ruby/haml-rails 0.9.0: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 0.3.2 0.3.4: Simple Hash extension to make working with nested hashes easier
