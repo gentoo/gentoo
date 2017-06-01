@@ -4599,7 +4599,7 @@ dev-lang/orc 0.4.26-r1: The Oil Runtime Compiler, a just-in-time compiler for ar
 dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
-dev-lang/perl 5.22.3_rc4 5.22.3 5.24.1_rc4 5.24.1 5.24.1-r1 5.26.0 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.22.3_rc4 5.22.3 5.24.1_rc4 5.24.1 5.24.1-r1 5.24.1-r2 5.26.0 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.30 5.6.30-r2 7.0.15 7.0.18 7.0.19 7.1.4 7.1.5: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 2.7.13 3.4.5 3.4.6 3.5.3 3.6.1-r1: An interpreted, interactive, object-oriented programming language
@@ -5169,7 +5169,7 @@ dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
-dev-lisp/sbcl 1.3.0 1.3.11 1.3.12 1.3.13 1.3.14 1.3.15 1.3.16 1.3.17: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.3.0 1.3.11 1.3.12 1.3.13 1.3.14 1.3.15 1.3.16 1.3.17 1.3.18: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 9999 20081102: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.0.3 3.1.5 3.1.6 3.1.7 3.2.0 3.2.1: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
