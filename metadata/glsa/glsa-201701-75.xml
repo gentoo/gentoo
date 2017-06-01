@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">perl</product>
   <announced>2017-01-29</announced>
-  <revised>2017-01-29: 1</revised>
+  <revised>2017-06-01: 2</revised>
   <bug>580612</bug>
   <bug>588592</bug>
   <bug>589680</bug>
@@ -44,6 +44,11 @@
       # emerge --sync
       # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.22.3_rc4"
     </code>
+    
+    <p>Warning: When you are upgrading to a new major Perl version, the
+      commands above may not be sufficient. Please visit the Gentoo wiki
+      referenced below to learn how to upgrade to a new major Perl version.
+    </p>
   </resolution>
   <references>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8607">CVE-2015-8607</uri>
@@ -51,7 +56,10 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1238">CVE-2016-1238</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2381">CVE-2016-2381</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6185">CVE-2016-6185</uri>
+    <uri link="https://wiki.gentoo.org/wiki/Perl#Upgrading_.28major_version.29">
+      Gentoo Wiki: How to upgrade Perl
+    </uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-21T22:09:19Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2017-01-29T23:40:34Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-06-01T01:14:59Z">b-man</metadata>
 </glsa>
