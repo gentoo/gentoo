@@ -121,7 +121,9 @@ src_install() {
 	default
 
 	find "${ED}" -name "*.la" -delete || die
-	find "${ED}usr/$(get_libdir)/apr-util-${SLOT}" -name "*.a" -delete || die
+	if [[ -d "${ED}usr/$(get_libdir)/apr-util-${SLOT}" ]] ; then
+		find "${ED}usr/$(get_libdir)/apr-util-${SLOT}" -name "*.a" -delete || die
+	fi
 	if ! use static-libs ; then
 		find "${ED}" -name "*.a" -not -name "*$(get_libname)" -delete || die
 	fi
