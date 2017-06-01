@@ -1383,12 +1383,12 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 2.0 2.1 2.2 2.3 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
-app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
+app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
+app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
 app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170327 20170517 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
@@ -15850,7 +15850,7 @@ perl-core/ExtUtils-Command 1.180.0-r1: Utilities to replace common UNIX commands
 perl-core/ExtUtils-Constant 0.230.0-r1: Generate XS code to import C header constants
 perl-core/ExtUtils-MakeMaker 7.40.0-r1 7.240.0: Create a module Makefile
 perl-core/ExtUtils-Manifest 1.630.0-r1 1.700.0: Utilities to write and check a MANIFEST file
-perl-core/File-Path 2.90.0: File path and name utilities
+perl-core/File-Path 2.90.0 2.130.0: File path and name utilities
 perl-core/File-Temp 0.230.400-r1: File::Temp can be used to create and open temporary files in a safe way
 perl-core/Getopt-Long 2.420.0: Advanced handling of command line options
 perl-core/HTTP-Tiny 0.43.0: A small, simple, correct HTTP/1.1 client
@@ -18151,7 +18151,7 @@ virtual/perl-ExtUtils-Install 2.40.0-r2: Virtual for ExtUtils-Install
 virtual/perl-ExtUtils-MakeMaker 7.40.0-r1 7.40.200_rc 7.100.200_rc 7.240.0: Virtual for ExtUtils-MakeMaker
 virtual/perl-ExtUtils-Manifest 1.700.0-r3: Virtual for ExtUtils-Manifest
 virtual/perl-ExtUtils-ParseXS 3.280.0-r1 3.310.0-r1: Virtual for ExtUtils-ParseXS
-virtual/perl-File-Path 2.90.0-r5 2.120.100_rc-r1: Virtual for File-Path
+virtual/perl-File-Path 2.90.0-r5 2.120.100_rc-r1 2.130.0: Virtual for File-Path
 virtual/perl-File-Spec 3.560.200_rc 3.630.100_rc: Virtual for File-Spec
 virtual/perl-File-Temp 0.230.400-r5: Virtual for File-Temp
 virtual/perl-Filter-Simple 0.920.0-r2: Virtual for perl-core/Filter-Simple
@@ -18417,8 +18417,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.8.0 52.1.0-r1 53.0.3: Firefox Web Browser
 www-client/firefox-bin 52.1.2 53.0.3: Firefox Web Browser
 www-client/google-chrome 58.0.3029.110: The web browser from Google
-www-client/google-chrome-beta 59.0.3071.71: The web browser from Google
-www-client/google-chrome-unstable 60.0.3107.4: The web browser from Google
+www-client/google-chrome-beta 59.0.3071.83: The web browser from Google
+www-client/google-chrome-unstable 60.0.3112.7: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18469,7 +18469,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 25.0.0.171: Adobe Flash Player
-www-plugins/chrome-binary-plugins 58.0.3029.110 59.0.3071.71_beta 60.0.3107.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 58.0.3029.110 59.0.3071.83_beta 60.0.3112.7_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
