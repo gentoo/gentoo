@@ -153,6 +153,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.6.0-gentoo.patch
 	"${FILESDIR}"/${PN}-5.6.2-CVE-2017-7401.patch
+	"${FILESDIR}"/${PN}-5.6.2-issue2303.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
