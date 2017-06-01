@@ -1,0 +1,27 @@
+From 1a7d3a088969b47798bc1da712ca2772f91a7c02 Mon Sep 17 00:00:00 2001
+From: Jiri Vymazal <jvymazal@redhat.com>
+Date: Wed, 31 May 2017 16:26:56 +0200
+Subject: [PATCH] Ignoring NONAME error from getaddrinfo so we have hostname
+ set even without working network
+
+---
+ runtime/net.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/runtime/net.c b/runtime/net.c
+index 2d8de9429..edffc677a 100644
+--- a/runtime/net.c
++++ b/runtime/net.c
+@@ -1188,7 +1188,11 @@ getLocalHostname(uchar **ppName)
+ 		memset(&flags, 0, sizeof(flags));
+ 		flags.ai_flags = AI_CANONNAME;
+ 		int error = getaddrinfo((char*)hnbuf, NULL, &flags, &res);
+-		if (error != 0) {
++		if (error != 0 &&
++		    error != EAI_NONAME && error != EAI_AGAIN && error != EAI_FAIL) {
++			/* If we get one of errors above, network is probably
++			 * not working yet, so we fall back to local hostname below
++			 */
+ 			dbgprintf("getaddrinfo: %s\n", gai_strerror(error));
+ 			ABORT_FINALIZE(RS_RET_IO_ERROR);
+ 		}
