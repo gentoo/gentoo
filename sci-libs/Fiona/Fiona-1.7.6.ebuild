@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/cligj[${PYTHON_USEDEP}]
 		dev-python/munch[${PYTHON_USEDEP}]
+		dev-python/click-plugins[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=( "${FILESDIR}"/scriptname-${PV}.patch )
