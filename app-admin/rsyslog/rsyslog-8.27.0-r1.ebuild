@@ -56,6 +56,7 @@ else
 	PATCHES=(
 		"${FILESDIR}"/8-stable/${PN}-8.26.0-fix-zmq3-format-security.patch
 		"${FILESDIR}"/8-stable/${PN}-8.27.0-fix-librdkafka-detection.patch
+		"${FILESDIR}"/8-stable/${PN}-8.27.0-fix-hostname-detection-when-getaddrinfo-fails.patch
 	)
 fi
 
