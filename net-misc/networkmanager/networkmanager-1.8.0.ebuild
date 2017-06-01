@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.37.6:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libnl-3.2.8:3=[${MULTILIB_USEDEP}]
 	policykit? ( >=sys-auth/polkit-0.106 )
-	net-libs/libndp
+	net-libs/libndp[${MULTILIB_USEDEP}]
 	net-misc/curl
 	net-misc/iputils
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
