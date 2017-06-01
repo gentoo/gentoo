@@ -519,10 +519,6 @@ x11-libs/gtk+:1
 # compression'.
 >=dev-util/xdelta-3.1.0
 
-# Gilles Dartiguelongue <eva@gentoo.org> (12 Nov 2016)
-# Keep shotwell development series masked.
->=media-gfx/shotwell-0.27
-
 # Tim Harder <radhermit@gentoo.org> (03 Nov 2016)
 # Masked for testing
 =sys-fs/fuse-3.0.0*
