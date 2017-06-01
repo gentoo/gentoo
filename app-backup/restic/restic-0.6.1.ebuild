@@ -27,6 +27,8 @@ src_compile() {
 		-x
 		-tags release
 		-ldflags "-w -X main.version=${PV}"
+		-asmflags "-trimpath=${S}/vendor -trimpath=${S}"
+		-gcflags "-trimpath=${S}/vendor -trimpath=${S}"
 		-o "${S}"/restic cmds/restic
 	)
 
