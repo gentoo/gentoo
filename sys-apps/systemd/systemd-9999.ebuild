@@ -301,9 +301,9 @@ multilib_src_install_all() {
 
 	if use sysv-utils; then
 		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym "..${ROOTPREFIX%/}/bin/systemctl" /sbin/${app}
+			dosym "${EPREFIX}${ROOTPREFIX%/}/bin/systemctl" /sbin/${app}
 		done
-		dosym "..${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
+		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
 	else
 		# we just keep sysvinit tools, so no need for the mans
 		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
@@ -331,8 +331,8 @@ multilib_src_install_all() {
 
 	if [[ ! -e "${ED%/}"/usr/lib/systemd/systemd ]]; then
 		# Avoid breaking boot/reboot
-		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd" /usr/lib/systemd/systemd
-		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd-shutdown" /usr/lib/systemd/systemd-shutdown
+		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd" /usr/lib/systemd/systemd
+		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd-shutdown" /usr/lib/systemd/systemd-shutdown
 	fi
 }
 
@@ -376,6 +376,19 @@ migrate_locale() {
 			ebegin "Creating ${envd_locale_def} -> ../locale.conf symlink"
 			ln -n -s ../locale.conf "${envd_locale_def}"
 			eend ${?} || FAIL=1
+		fi
+	fi
+}
+
+pkg_preinst() {
+	# If /lib/systemd and /usr/lib/systemd are the same directory, remove the
+	# symlinks we created in src_install.
+	if [[ $(realpath "${EROOT%/}${ROOTPREFIX}/lib/systemd") == $(realpath "${EROOT%/}/usr/lib/systemd") ]]; then
+		if [[ -L ${ED%/}/usr/lib/systemd/systemd ]]; then
+			rm "${ED%/}/usr/lib/systemd/systemd" || die
+		fi
+		if [[ -L ${ED%/}/usr/lib/systemd/systemd-shutdown ]]; then
+			rm "${ED%/}/usr/lib/systemd/systemd-shutdown" || die
 		fi
 	fi
 }
