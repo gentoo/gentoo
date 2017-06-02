@@ -85,7 +85,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs="
+	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR='${S}'
 		$(cmake-utils_use nls GETTEXT)
 		$(cmake-utils_use sdl SDL)
@@ -93,10 +93,10 @@ src_configure() {
 		$(cmake-utils_use vdpau VDPAU)
 		$(cmake-utils_use video_cards_fglrx XVBA)
 		$(cmake-utils_use xv XVIDEO)
-	"
+	)
 
 	if use debug ; then
-		mycmakeargs+=" -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1"
+		mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
 	fi
 
 	CMAKE_USE_DIR="${S}"/avidemux_core cmake-utils_src_configure
