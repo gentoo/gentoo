@@ -37,6 +37,7 @@ RDEPEND="
 	net-libs/webkit-gtk:4
 	virtual/libgudev:=[introspection]
 	>=x11-libs/gtk+-3.14.0:3[X]
+	dev-libs/libgdata
 
 "
 DEPEND="${RDEPEND}
