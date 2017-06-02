@@ -906,7 +906,6 @@ app-misc/gourmet:spell - Enable support for the spell check plugin
 app-misc/gourmet:web - Enable support for the web import plugin
 app-misc/gramps:geo - Enable rendering of geographical data using sci-geosciences/osm-gps-map.
 app-misc/gramps:reports - All external software that is needed for graphical reports will be installed
-app-misc/gramps:webkit - Use Webkit-based rendering for geographical data view.
 app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon driver (e.g. Logitech G15 Keybord)
 app-misc/irtrans-irserver:mono - Enable mono support
 app-misc/jq:oniguruma - Use dev-libs/oniguruma for regular expression support
@@ -6556,7 +6555,6 @@ net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanma
 net-nds/rpcbind:warmstarts - Enables rpcbind to cache configuration for warm restarts
 net-nds/tac_plus:finger - Adds support for checking user counts via fingering the NAS
 net-nds/tac_plus:maxsess - Enforce a limit on maximum sessions per user
-net-news/liferea:libnotify - Enable popup notifications
 net-news/quiterss:phonon - Enable sound support via media-libs/phonon or dev-qt/qtphonon
 net-news/rssguard:webengine - Use dev-qt/qtwebengine for embedded web browser
 net-nntp/inn:innkeywords - Enable automatic keyword generation support
