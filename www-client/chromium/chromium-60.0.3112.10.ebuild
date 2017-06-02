@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
+	media-libs/openh264:=
 	media-libs/opus:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
@@ -185,8 +186,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r1.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r7.patch"
-		"${FILESDIR}/${PN}-system-harfbuzz-r1.patch"
+		"${FILESDIR}/${PN}-gn-bootstrap-r8.patch"
 	)
 
 	default
@@ -270,7 +270,6 @@ src_prepare() {
 		third_party/mt19937ar
 		third_party/node
 		third_party/node/node_modules/vulcanize/third_party/UglifyJS2
-		third_party/openh264
 		third_party/openmax_dl
 		third_party/ots
 		third_party/pdfium
@@ -297,7 +296,6 @@ src_prepare() {
 		third_party/sqlite
 		third_party/swiftshader
 		third_party/swiftshader/third_party/llvm-subzero
-		third_party/swiftshader/third_party/pnacl-subzero
 		third_party/swiftshader/third_party/subzero
 		third_party/tcmalloc
 		third_party/usrsctp
@@ -367,6 +365,7 @@ src_configure() {
 		libpng
 		libwebp
 		libxslt
+		openh264
 		opus
 		re2
 		snappy
