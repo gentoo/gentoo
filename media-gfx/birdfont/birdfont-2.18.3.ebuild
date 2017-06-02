@@ -7,7 +7,7 @@ PLOCALES="cs de it nl pt_BR sv"
 
 inherit python-any-r1 vala l10n toolchain-funcs multiprocessing
 
-DESCRIPTION="free font editor which lets you create vector graphics and export TTF, EOT and SVG fonts"
+DESCRIPTION="Font editor that lets you create vector graphics and export TTF, EOT and SVG fonts"
 HOMEPAGE="https://birdfont.org/"
 SRC_URI="https://birdfont.org/releases/${P}.tar.xz"
 
