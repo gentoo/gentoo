@@ -4,6 +4,7 @@
 # @ECLASS: meson.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# Mike Gilbert <floppym@gentoo.org>
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
