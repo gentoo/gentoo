@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
+# Relies on obsolete and vulnerable webkit-gtk version and bundles some libs
+# (#597532). Removal in a month.
+x11-misc/rednotebook
+
+# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
 # This package needs a maintainer to take care of updating this to a working
 # version not requiring obsolete wxwidgets and webkit versions (#584170).
 # Removal in a month.
