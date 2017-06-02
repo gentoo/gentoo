@@ -1,14 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PLOCALES="cs de it nl pt_BR sv"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-PLOCALES="cs de it sv"
+inherit python-any-r1 vala l10n toolchain-funcs multiprocessing
 
-inherit python-any-r1 vala l10n toolchain-funcs multilib eutils multiprocessing
-
-DESCRIPTION="free font editor which lets you create vector graphics and export TTF, EOT and SVG fonts"
+DESCRIPTION="Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts"
 HOMEPAGE="https://birdfont.org/"
 SRC_URI="https://birdfont.org/releases/${P}.tar.xz"
 
@@ -17,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk nls"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="
+	dev-db/sqlite:3
 	dev-libs/libgee:0.8=
 	dev-libs/glib:2
 	media-libs/fontconfig
@@ -26,23 +26,23 @@ RDEPEND="dev-db/sqlite:3
 	x11-libs/gdk-pixbuf:2
 	gtk? (
 		net-libs/libsoup:2.4
-		net-libs/webkit-gtk:3=
+		net-libs/webkit-gtk:4=
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3
 		x11-libs/libnotify
-	)"
+	)
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/doit[${PYTHON_USEDEP}]')
 	$(vala_depend)
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 src_prepare() {
+	default
 	vala_src_prepare
-
-	epatch "${FILESDIR}"/${PN}-2.15.5-configure-valac.patch
-
 	sed -i \
 		-e "s:pkg-config:$(tc-getPKG_CONFIG):" \
 		configure dodo.py || die
@@ -84,5 +84,5 @@ src_install() {
 		--nogzip \
 		--libdir "$(get_libdir)" \
 		--manpages-directory "/share/man/man1"
-	dodoc NEWS README.md
+	einstalldocs
 }
