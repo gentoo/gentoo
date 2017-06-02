@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 MY_PN="${PN/-core/}"
 if [[ ${PV} == *9999* ]] ; then
 	KEYWORDS=""
-	EGIT_REPO_URI="git://gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git https://git.gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git"
+	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
 
 	inherit git-2
 else
