@@ -12669,7 +12669,7 @@ media-gfx/darktable 2.2.3 2.2.4 9999: A virtual lighttable and darkroom for phot
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.5.0: Digital photo management application
-media-gfx/displaycal 3.1.6.0 3.2.1.0 3.2.2.0 3.2.3.0 3.2.4.0: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.2.4.0 3.3.0.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
@@ -18372,7 +18372,7 @@ www-apps/nikola 7.2.0 7.6.3-r1: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
 www-apps/otrs 5.0.16 5.0.18 5.0.19: OTRS is an Open source Ticket Request System
-www-apps/owncloud 8.2.11 9.0.9 9.1.5 10.0.0 10.0.1: Web-based storage application where all your data is under your own control
+www-apps/owncloud 9.0.9 9.0.10 9.1.5 9.1.6 10.0.0 10.0.1 10.0.2: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
 www-apps/phpBB 3.1.10-r1: An open-source bulletin board package
@@ -19560,7 +19560,7 @@ x11-wm/treewm 0.4.5 0.4.5-r1: WindowManager that arranges the windows in a tree 
 x11-wm/twm 1.0.8 1.0.9: X.Org twm application
 x11-wm/vtwm 5.4.6a 5.4.7-r1: one of many TWM descendants and implements a Virtual Desktop
 x11-wm/windowlab 1.34 1.40: small and simple window manager of novel design
-x11-wm/windowmaker 0.95.5-r2 0.95.6 0.95.7 0.95.8 0.95.8-r1 9999: The fast and light GNUstep window manager
+x11-wm/windowmaker 0.95.7 0.95.8-r1 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manager highly configurable
 x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
