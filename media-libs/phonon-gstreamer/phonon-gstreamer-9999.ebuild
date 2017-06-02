@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="alsa debug +network +qt4 qt5"
+IUSE="alsa debug +network qt4 +qt5"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
 
@@ -30,12 +30,14 @@ RDEPEND="
 	dev-libs/libxml2:2
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	media-plugins/gst-plugins-meta:1.0[alsa?,ogg,vorbis]
 	>=media-libs/phonon-4.9.0[qt4?,qt5?]
+	media-plugins/gst-plugins-meta:1.0[alsa?,ogg,vorbis]
+	virtual/opengl
+	network? ( media-plugins/gst-plugins-soup:1.0 )
 	qt4? (
-		dev-qt/qtcore:4[glib]
-		dev-qt/qtgui:4[glib]
-		dev-qt/qtopengl:4
+		>=dev-qt/qtcore-4.8.7-r2:4[glib]
+		>=dev-qt/qtgui-4.8.7:4[glib]
+		>=dev-qt/qtopengl-4.8.7:4
 		!<dev-qt/qtwebkit-4.10.4:4[gstreamer]
 	)
 	qt5? (
@@ -45,14 +47,16 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtx11extras:5
 	)
-	virtual/opengl
-	network? ( media-plugins/gst-plugins-soup:1.0 )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
 pkg_setup() {
+	if use qt4 && [[ $(gcc-major-version) -lt 5 ]] ; then
+		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
+	fi
+
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
 }
 

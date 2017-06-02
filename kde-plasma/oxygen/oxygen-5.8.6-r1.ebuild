@@ -7,7 +7,7 @@ inherit kde5 multibuild
 
 DESCRIPTION="Oxygen visual style for the Plasma desktop"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/oxygen"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="qt4 wayland"
 
 COMMON_DEPEND="
@@ -28,6 +28,9 @@ COMMON_DEPEND="
 	$(add_qt_dep qtx11extras)
 	x11-libs/libxcb
 	qt4? (
+		>=dev-qt/qtcore-4.8.7-r2:4
+		>=dev-qt/qtdbus-4.8.7:4
+		>=dev-qt/qtgui-4.8.7:4
 		kde-frameworks/kdelibs:4
 		x11-libs/libX11
 	)
@@ -50,6 +53,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 pkg_setup() {
+	if use qt4 && [[ $(gcc-major-version) -lt 5 ]] ; then
+		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
+	fi
+
 	kde5_pkg_setup
 	MULTIBUILD_VARIANTS=( kf5 $(usev qt4) )
 }

@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 KMNAME="kdepim-runtime"
+QT_MINIMAL="4.8.7"
 EGIT_BRANCH="KDE/4.14"
 inherit kde4-base
 
@@ -31,6 +32,14 @@ RDEPEND="${DEPEND}
 	kde-frameworks/oxygen-icons:5
 	!kde-misc/akonadi-google
 "
+
+pkg_setup() {
+	if [[ $(gcc-major-version) -lt 5 ]] ; then
+		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
+	fi
+
+	kde4-base_pkg_setup
+}
 
 src_configure() {
 	local mycmakeargs=(
