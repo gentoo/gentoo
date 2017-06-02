@@ -12,7 +12,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-IUSE="debug nls sdl system-ffmpeg vaapi vdpau video_cards_fglrx xv"
+IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau video_cards_fglrx xv"
 KEYWORDS="~amd64 ~x86"
 
 MY_PN="${PN/-core/}"
@@ -93,6 +93,7 @@ src_configure() {
 		$(cmake-utils_use vdpau VDPAU)
 		$(cmake-utils_use video_cards_fglrx XVBA)
 		$(cmake-utils_use xv XVIDEO)
+		$(cmake-utils_use nvenc NVENC)
 	)
 
 	if use debug ; then
