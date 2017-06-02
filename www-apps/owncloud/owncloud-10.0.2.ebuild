@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils webapp
 
@@ -15,17 +15,13 @@ IUSE="+curl mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
-RDEPEND="<dev-lang/php-7.1[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlwriter,zip]
-	<virtual/httpd-php-7.1"
+RDEPEND="dev-lang/php[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
+	virtual/httpd-php"
 
 S=${WORKDIR}/${PN}
 
 pkg_setup() {
 	webapp_pkg_setup
-}
-
-src_prepare() {
-	epatch_user
 }
 
 src_install() {
