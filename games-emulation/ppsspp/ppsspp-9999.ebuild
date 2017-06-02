@@ -11,16 +11,18 @@ EGIT_REPO_URI="https://github.com/hrydgard/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+qt5 sdl headless libav"
+IUSE="+qt5 sdl headless libav +system-ffmpeg"
 REQUIRED_USE="
 	!headless? ( || ( qt5 sdl ) )
 	?? ( qt5 sdl )
 "
-EGIT_SUBMODULES=( '*' '-ffmpeg' )
+EGIT_SUBMODULES=( '*' )
 
 RDEPEND="sys-libs/zlib
-	!libav? ( media-video/ffmpeg:= )
-	libav? ( media-video/libav:= )
+	system-ffmpeg? (
+		!libav? ( media-video/ffmpeg:= )
+		libav? ( media-video/libav:= )
+	)
 	sdl? (
 		media-libs/libsdl
 		media-libs/libsdl2
@@ -40,19 +42,27 @@ RDEPEND="sys-libs/zlib
 
 DEPEND="${RDEPEND}"
 
+src_unpack() {
+	use system-ffmpeg && EGIT_SUBMODULES+=( '-ffmpeg' )
+	git-r3_src_unpack
+}
+
 src_prepare() {
 	# https://github.com/hrydgard/ppsspp/blob/150619c5a341f372266bec86fd874ac5a1343a43/UI/NativeApp.cpp#L318
 	# patch ppsspp to use /usr/share instead of working dir to find the assets
 	sed -i 's|VFSRegister("", new AssetsAssetReader());|VFSRegister("", new DirectoryAssetReader("/usr/share/ppsspp/assets/"));|g' UI/NativeApp.cpp || die "Patching qt assets path failed"
 
 	sed -i -e "s#-O3#-O2#g;" "${S}"/CMakeLists.txt || die
+	if ! use system-ffmpeg; then
+		sed -i -e "s#-O3#-O2#g;" "${S}"/ffmpeg/linux_*.sh || die
+	fi
 	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DUSING_QT_UI=$(usex qt5)
-		-DUSE_SYSTEM_FFMPEG=ON
+		-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
 		-DHEADLESS=$(usex headless)
 		)
 	cmake-utils_src_configure
@@ -69,5 +79,12 @@ src_install() {
 			doicon -s ${i} "icons/hicolor/${i}x${i}/apps/${PN}.png"
 		done
 		make_desktop_entry "PPSSPP$(usex qt5 Qt SDL)" "PPSSPP ($(usex qt5 Qt SDL))" "${PN}" "Game"
+	fi
+}
+
+pkg_postinst() {
+	if use system-ffmpeg; then
+		ewarn "system-ffmpeg USE flag is enabled, some bugs might arise due to it."
+		ewarn "See https://github.com/hrydgard/ppsspp/issues/9026 for more informations."
 	fi
 }
