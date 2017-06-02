@@ -9,6 +9,7 @@ DESCRIPTION="A PSP emulator written in C++."
 HOMEPAGE="https://www.ppsspp.org/"
 SRC_URI="
 	https://github.com/hrydgard/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	!system-ffmpeg? ( https://github.com/hrydgard/ppsspp-ffmpeg/archive/a2e98d7ba4c7c5cac08608732c3058cb46e3e0ef.tar.gz -> ${P}-ffmpeg.tar.gz )
 	https://github.com/hrydgard/ppsspp-lang/archive/ed0bbfb389da213bd891d179d1d92e95b8f05e43.tar.gz -> ${P}-assets_lang.tar.gz
 	https://github.com/hrydgard/pspautotests/archive/905c3018d01af9dfb511c87e65e07a49257a33ac.tar.gz -> ${P}-pspautotests.tar.gz
 	https://github.com/hrydgard/minidx9/archive/7751cf73f5c06f1be21f5f31c3e2d9a7bacd3a93.tar.gz -> ${P}-dx9sdk.tar.gz
@@ -21,15 +22,17 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+qt5 sdl headless libav"
+IUSE="+qt5 sdl headless libav +system-ffmpeg"
 REQUIRED_USE="
 	!headless? ( || ( qt5 sdl ) )
 	?? ( qt5 sdl )
 "
 
 RDEPEND="sys-libs/zlib
-	!libav? ( media-video/ffmpeg:= )
-	libav? ( media-video/libav:= )
+	system-ffmpeg? (
+		!libav? ( media-video/ffmpeg:= )
+		libav? ( media-video/libav:= )
+	)
 	sdl? (
 		media-libs/libsdl
 		media-libs/libsdl2
@@ -58,15 +61,25 @@ src_unpack() {
 	unpack "${P}.tar.gz"
 	cd "${S}" || die
 	local i list=( assets_lang pspautotests dx9sdk ext_glslang ext_armips ext_SPIRV-Cross ext_armips_ext_tinyformat )
+	if ! use system-ffmpeg; then
+		list+=( ffmpeg )
+	fi
 	for i in "${list[@]}"; do
 		tar xf "${DISTDIR}/${P}-${i}.tar.gz" --strip-components 1 -C "${i//_//}" || die "Failed to unpack ${P}-${i}.tar.gz"
 	done
 }
 
+src_prepare() {
+	if ! use system-ffmpeg; then
+		sed -i -e "s#-O3#-O2#g;" "${S}"/ffmpeg/linux_*.sh || die
+	fi
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSING_QT_UI=$(usex qt5)
-		-DUSE_SYSTEM_FFMPEG=ON
+		-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
 		-DHEADLESS=$(usex headless)
 		)
 	cmake-utils_src_configure
@@ -83,5 +96,12 @@ src_install() {
 			doicon -s ${i} "icons/hicolor/${i}x${i}/apps/${PN}.png"
 		done
 		make_desktop_entry "PPSSPP$(usex qt5 Qt SDL)" "PPSSPP ($(usex qt5 Qt SDL))" "${PN}" "Game"
+	fi
+}
+
+pkg_postinst() {
+	if use system-ffmpeg; then
+		ewarn "system-ffmpeg USE flag is enabled, some bugs might arise due to it."
+		ewarn "See https://github.com/hrydgard/ppsspp/issues/9026 for more informations."
 	fi
 }
