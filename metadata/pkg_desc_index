@@ -590,7 +590,7 @@ app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced 
 app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.23.2 0.23.2-r1 0.23.5: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.2 0.23.2-r1 0.23.5 0.23.7: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.3 1.4: OpenPGP key archiver
 app-crypt/pdfcrack 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108 0.112: Tools for manipulating signed PE-COFF binaries
@@ -5031,7 +5031,7 @@ dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficien
 dev-libs/nanomsg 0.8 0.9 1.0.0: High-performance messaging interface for distributed applications
 dev-libs/nettle 3.2-r1 3.3 3.3-r1: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
-dev-libs/npth 1.3 1.4: New GNU Portable Threads Library
+dev-libs/npth 1.3 1.4 1.5: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.13.1 4.14: Netscape Portable Runtime
 dev-libs/nss 3.28.1 3.29.5 3.30.1 3.30.2 3.30.2-r1: Mozilla's Network Security Services library that implements PKI support
@@ -12939,7 +12939,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.50 10.51 10.53: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.50 10.51 10.53 10.54: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
