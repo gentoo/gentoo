@@ -8,7 +8,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 
 RDEPEND="
-	|| ( =dev-lang/perl-5.24* =dev-lang/perl-5.22* ~perl-core/${PN#perl-}-${PV} )
+	|| ( =dev-lang/perl-5.26* =dev-lang/perl-5.24* ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
