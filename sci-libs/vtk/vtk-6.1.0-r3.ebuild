@@ -124,6 +124,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-glext.patch
 	"${FILESDIR}"/${P}-memset.patch
 	"${FILESDIR}"/${P}-gdal2.patch
+	"${FILESDIR}"/${P}-gcc67.patch
 	)
 
 RESTRICT=test
