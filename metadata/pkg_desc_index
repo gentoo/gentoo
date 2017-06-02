@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.3.0.0-r1 2.3.0.0-r2 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.3.0.0-r1 2.3.0.0-r2 2.3.1.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.2.32 2.4.25: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -17459,7 +17459,7 @@ sys-block/storcli 1.19.04 1.20.15 1.21.06: MegaRAID StorCLI (successor of the Me
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli 3.0_pre4 9999: CLI and shell for the Linux SCSI target
 sys-block/targetcli-fb 2.1.44-r1 2.1.45: Command shell for managing Linux LIO kernel target
-sys-block/tgt 1.0.67 1.0.68 1.0.69: Linux SCSI target framework (tgt)
+sys-block/tgt 1.0.67 1.0.68 1.0.69 1.0.70: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.5.3 0.6.1 0.6.3: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.3.0.4 9.4.1.2 9.4.2 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20 21: vblade exports a block device using AoE
@@ -17565,7 +17565,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable 
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 9.3.1 10.0.1 2016.2.9999 2017.1.9999: A virtual network service for Openstack
+sys-cluster/neutron 9.3.1 9.4.0 10.0.1 10.0.2 2016.2.9999 2017.1.9999: A virtual network service for Openstack
 sys-cluster/nova 14.0.5 14.0.6 14.0.7 15.0.3 15.0.4 15.0.5 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
@@ -17588,7 +17588,7 @@ sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
 sys-cluster/singularity 2.2.1: Application containers for Linux
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
-sys-cluster/swift 2.10.0 2.10.0-r1 2.10.1 2.10.1-r1 2.13.0 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.10.1 2.10.2 2.13.0 2.13.1 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
