@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -55,8 +55,8 @@ all_ruby_prepare() {
 	# Require a newer version of execjs since we do not have this slotted.
 	sed -i -e '/execjs/ s/1.0/2.0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	# Make sure the correct version of tilt is used when testing
-	sed -i -e '1igem "tilt", "~>1.3"' test/sprockets_test.rb || die
+	# Make sure the correct version of tilt and rack used when testing
+	sed -i -e '1igem "tilt", "~>1.3"; gem "rack", "~>1.0"' test/sprockets_test.rb || die
 }
 
 each_ruby_prepare() {
@@ -70,8 +70,8 @@ each_ruby_test() {
 	rm -rf test || die
 	mv test-new test || die
 
-	# Make sure we use the correct tilt version.
-	sed -i -e '2i gem "tilt", "~>1.3"' bin/sprockets || die
+	# Make sure we use the correct tilt and rack version.
+	sed -i -e '2i gem "tilt", "~>1.3"; gem "rack", "~>1.0"' bin/sprockets || die
 
 	each_fakegem_test
 
