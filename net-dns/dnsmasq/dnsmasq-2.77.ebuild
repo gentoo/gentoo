@@ -34,11 +34,10 @@ DEPEND="${CDEPEND}
 	app-arch/xz-utils
 	dnssec? (
 		dev-libs/nettle[gmp]
-		static? (
-			dev-libs/nettle[static-libs(+)]
-		)
+		static? ( dev-libs/nettle[static-libs(+)] )
 	)
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 RDEPEND="${CDEPEND}
 	dnssec? (
@@ -51,8 +50,7 @@ RDEPEND="${CDEPEND}
 
 REQUIRED_USE="dhcp-tools? ( dhcp )
 	lua? ( script )
-	libidn2? ( !idn )
-	nls? ( || ( libidn2 idn ) )"
+	libidn2? ( !idn )"
 
 use_have() {
 	local useflag no_only uword
