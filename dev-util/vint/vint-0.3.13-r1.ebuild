@@ -22,9 +22,9 @@ RDEPEND="
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
 	virtual/python-pathlib[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/coverage-3.7.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.6.4[${PYTHON_USEDEP}]
