@@ -14,5 +14,5 @@ RDEPEND="
 	!>perl-core/${PN#perl-}-${PV}-r999
 "
 
-# this is the dev-lang/perl-5.24.1 version
+# this is the dev-lang/perl-5.26.0 version
 # upstream merged it into ExtUtils::MakeMaker, so here we have only a compatibility stub
