@@ -4797,7 +4797,7 @@ dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applicati
 dev-libs/libarcus 1.0.0_pre20160307 2.3.1: This library facilitates communication between Cura and its backend
 dev-libs/libassuan 2.4.3-r1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
-dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2 7.4.4 7.6.0: Implementation for atomic memory update operations
+dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2 7.4.4 7.4.6 7.6.0: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libb64 1.2 1.2.1: Fast Base64 encoding/decoding routines
@@ -15110,7 +15110,7 @@ net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to de
 net-mail/muchsync 3: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.23.7 0.24.1: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/offlineimap 6.5.6 6.7.0.3 7.0.14 7.1.0: Powerful IMAP/Maildir synchronization and reader support
+net-mail/offlineimap 6.5.6 6.7.0.3 7.0.14 7.1.0 7.1.1: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
