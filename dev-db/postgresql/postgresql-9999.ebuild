@@ -75,10 +75,6 @@ sys-devel/flex
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "
-src_unpack() {
-	base_src_unpack
-	git-2_src_unpack
-}
 
 RDEPEND="${CDEPEND}
 !dev-db/postgresql-docs:${SLOT}
