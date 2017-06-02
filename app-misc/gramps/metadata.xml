@@ -89,8 +89,6 @@ zapolnjevanju vrzeli v rodoslovnih podatkih.
 			<pkg>sci-geosciences/osm-gps-map</pkg>.</flag>
 		<flag name="reports">All external software that is needed for graphical
     reports will be installed</flag>
-		<flag name="webkit">Use Webkit-based rendering for geographical
-  data view.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gramps</remote-id>
