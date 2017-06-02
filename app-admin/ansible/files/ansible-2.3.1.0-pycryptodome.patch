@@ -1,0 +1,905 @@
+diff -uNr ansible-2.3.0.0.ORIG/lib/ansible/executor/process/worker.py ansible-2.3.0.0/lib/ansible/executor/process/worker.py
+--- ansible-2.3.0.0.ORIG/lib/ansible/executor/process/worker.py	2017-05-23 14:23:12.313595450 +0100
++++ ansible-2.3.0.0/lib/ansible/executor/process/worker.py	2017-05-23 14:24:22.116598926 +0100
+@@ -26,14 +26,6 @@
+ 
+ from jinja2.exceptions import TemplateNotFound
+ 
+-# TODO: not needed if we use the cryptography library with its default RNG
+-# engine
+-HAS_ATFORK=True
+-try:
+-    from Crypto.Random import atfork
+-except ImportError:
+-    HAS_ATFORK=False
+-
+ from ansible.errors import AnsibleConnectionFailure
+ from ansible.executor.task_executor import TaskExecutor
+ from ansible.executor.task_result import TaskResult
+@@ -95,9 +87,6 @@
+         #pr = cProfile.Profile()
+         #pr.enable()
+ 
+-        if HAS_ATFORK:
+-            atfork()
+-
+         try:
+             # execute the task and build a TaskResult from the result
+             display.debug("running TaskExecutor() for %s/%s" % (self._host, self._task))
+diff -uNr ansible-2.3.0.0.ORIG/lib/ansible/modules/cloud/amazon/ec2_win_password.py ansible-2.3.0.0/lib/ansible/modules/cloud/amazon/ec2_win_password.py
+--- ansible-2.3.0.0.ORIG/lib/ansible/modules/cloud/amazon/ec2_win_password.py	2017-05-23 14:23:12.299595449 +0100
++++ ansible-2.3.0.0/lib/ansible/modules/cloud/amazon/ec2_win_password.py	2017-05-23 14:29:51.003615305 +0100
+@@ -93,9 +93,10 @@
+ '''
+ 
+ from base64 import b64decode
+-from Crypto.Cipher import PKCS1_v1_5
+-from Crypto.PublicKey import RSA
+ import datetime
++from cryptography.hazmat.backends import default_backend
++from cryptography.hazmat.primitives.asymmetric.padding import PKCS1v15
++from cryptography.hazmat.primitives.serialization import load_pem_private_key
+ 
+ try:
+     import boto.ec2
+@@ -103,6 +104,9 @@
+ except ImportError:
+     HAS_BOTO = False
+ 
++BACKEND = default_backend()
++
++
+ def main():
+     argument_spec = ec2_argument_spec()
+     argument_spec.update(dict(
+@@ -151,15 +155,12 @@
+     else:
+         try:
+             with f:
+-                key = RSA.importKey(f.read(), key_passphrase)
+-        except (ValueError, IndexError, TypeError) as e:
++                key = load_pem_private_key(f.read(), key_passphrase, BACKEND)
++        except (ValueError, TypeError) as e:
+             module.fail_json(msg = "unable to parse key file")
+ 
+-    cipher = PKCS1_v1_5.new(key)
+-    sentinel = 'password decryption failed!!!'
+-
+     try:
+-        decrypted = cipher.decrypt(decoded, sentinel)
++	decrypted = key.decrypt(decoded, PKCS1v15())
+     except ValueError as e:
+         decrypted = None
+ 
+diff -uNr ansible-2.3.0.0.ORIG/lib/ansible/parsing/vault/__init__.py ansible-2.3.0.0/lib/ansible/parsing/vault/__init__.py
+--- ansible-2.3.0.0.ORIG/lib/ansible/parsing/vault/__init__.py	2017-05-23 14:23:12.311595449 +0100
++++ ansible-2.3.0.0/lib/ansible/parsing/vault/__init__.py	2017-05-23 14:31:23.267619901 +0100
+@@ -25,7 +25,6 @@
+ import sys
+ import tempfile
+ import random
+-from io import BytesIO
+ from subprocess import call
+ from hashlib import sha256
+ from binascii import hexlify
+@@ -35,32 +34,14 @@
+ # Note: Only used for loading obsolete VaultAES files.  All files are written
+ # using the newer VaultAES256 which does not require md5
+ 
+-try:
+-    from Crypto.Hash import SHA256, HMAC
+-    HAS_HASH = True
+-except ImportError:
+-    HAS_HASH = False
+-
+-# Counter import fails for 2.0.1, requires >= 2.6.1 from pip
+-try:
+-    from Crypto.Util import Counter
+-    HAS_COUNTER = True
+-except ImportError:
+-    HAS_COUNTER = False
+-
+-# KDF import fails for 2.0.1, requires >= 2.6.1 from pip
+-try:
+-    from Crypto.Protocol.KDF import PBKDF2
+-    HAS_PBKDF2 = True
+-except ImportError:
+-    HAS_PBKDF2 = False
+-
+-# AES IMPORTS
+-try:
+-    from Crypto.Cipher import AES as AES
+-    HAS_AES = True
+-except ImportError:
+-    HAS_AES = False
++from cryptography.exceptions import InvalidSignature
++from cryptography.hazmat.backends import default_backend
++from cryptography.hazmat.primitives import hashes, padding
++from cryptography.hazmat.primitives.hmac import HMAC
++from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
++from cryptography.hazmat.primitives.ciphers import (
++    Cipher as C_Cipher, algorithms, modes
++)
+ 
+ from ansible.compat.six import PY3, binary_type
+ from ansible.compat.six.moves import zip
+@@ -73,26 +54,8 @@
+     from ansible.utils.display import Display
+     display = Display()
+ 
+-# OpenSSL pbkdf2_hmac
+-HAS_PBKDF2HMAC = False
+-try:
+-    from cryptography.hazmat.primitives.hashes import SHA256 as c_SHA256
+-    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+-    from cryptography.hazmat.backends import default_backend
+-    HAS_PBKDF2HMAC = True
+-except ImportError:
+-    pass
+-except Exception as e:
+-    display.vvvv("Optional dependency 'cryptography' raised an exception, falling back to 'Crypto'.")
+-    import traceback
+-    display.vvvv("Traceback from import of cryptography was {0}".format(traceback.format_exc()))
+-
+-HAS_ANY_PBKDF2HMAC = HAS_PBKDF2 or HAS_PBKDF2HMAC
+-
+-
+-CRYPTO_UPGRADE = "ansible-vault requires a newer version of pycrypto than the one installed on your platform." \
+-    " You may fix this with OS-specific commands such as: yum install python-devel; rpm -e --nodeps python-crypto; pip install pycrypto"
+ 
++BACKEND = default_backend()
+ b_HEADER = b'$ANSIBLE_VAULT'
+ CIPHER_WHITELIST = frozenset((u'AES', u'AES256'))
+ CIPHER_WRITE_WHITELIST = frozenset((u'AES256',))
+@@ -100,12 +63,6 @@
+ # (used in VaultFile header) to a cipher class
+ 
+ 
+-def check_prereqs():
+-
+-    if not HAS_AES or not HAS_COUNTER or not HAS_ANY_PBKDF2HMAC or not HAS_HASH:
+-        raise AnsibleError(CRYPTO_UPGRADE)
+-
+-
+ class AnsibleVaultError(AnsibleError):
+     pass
+ 
+@@ -410,8 +367,6 @@
+ 
+     def encrypt_file(self, filename, output_file=None):
+ 
+-        check_prereqs()
+-
+         # A file to be encrypted into a vaultfile could be any encoding
+         # so treat the contents as a byte string.
+ 
+@@ -424,8 +379,6 @@
+ 
+     def decrypt_file(self, filename, output_file=None):
+ 
+-        check_prereqs()
+-
+         # follow the symlink
+         filename = os.path.realpath(filename)
+ 
+@@ -440,8 +393,6 @@
+     def create_file(self, filename):
+         """ create a new encrypted file """
+ 
+-        check_prereqs()
+-
+         # FIXME: If we can raise an error here, we can probably just make it
+         # behave like edit instead.
+         if os.path.isfile(filename):
+@@ -451,8 +402,6 @@
+ 
+     def edit_file(self, filename):
+ 
+-        check_prereqs()
+-
+         # follow the symlink
+         filename = os.path.realpath(filename)
+ 
+@@ -471,7 +420,6 @@
+ 
+     def plaintext(self, filename):
+ 
+-        check_prereqs()
+         ciphertext = self.read_data(filename)
+ 
+         try:
+@@ -483,8 +431,6 @@
+ 
+     def rekey_file(self, filename, b_new_password):
+ 
+-        check_prereqs()
+-
+         # follow the symlink
+         filename = os.path.realpath(filename)
+ 
+@@ -581,10 +527,6 @@
+ 
+     # Note: strings in this class should be byte strings by default.
+ 
+-    def __init__(self):
+-        if not HAS_AES:
+-            raise AnsibleError(CRYPTO_UPGRADE)
+-
+     def _aes_derive_key_and_iv(self, b_password, b_salt, key_length, iv_length):
+ 
+         """ Create a key and an initialization vector """
+@@ -620,41 +562,22 @@
+                 ' switch to the newer VaultAES256 format', version='2.3')
+         # http://stackoverflow.com/a/14989032
+ 
+-        b_ciphertext = unhexlify(b_vaulttext)
+-
+-        in_file = BytesIO(b_ciphertext)
+-        in_file.seek(0)
+-        out_file = BytesIO()
++        b_vaultdata = unhexlify(b_vaulttext)
++        b_tmpsalt = b_vaultdata[:16]
++        b_ciphertext = b_vaultdata[16:]
+ 
+-        bs = AES.block_size
+-        b_tmpsalt = in_file.read(bs)
++        bs = algorithms.AES.block_size // 8
+         b_salt = b_tmpsalt[len(b'Salted__'):]
+         b_key, b_iv = self._aes_derive_key_and_iv(b_password, b_salt, key_length, bs)
+-        cipher = AES.new(b_key, AES.MODE_CBC, b_iv)
+-        b_next_chunk = b''
+-        finished = False
+-
+-        while not finished:
+-            b_chunk, b_next_chunk = b_next_chunk, cipher.decrypt(in_file.read(1024 * bs))
+-            if len(b_next_chunk) == 0:
+-                if PY3:
+-                    padding_length = b_chunk[-1]
+-                else:
+-                    padding_length = ord(b_chunk[-1])
++        cipher = C_Cipher(algorithms.AES(b_key), modes.CBC(b_iv), BACKEND).decryptor()
++        unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
+ 
+-                b_chunk = b_chunk[:-padding_length]
+-                finished = True
+-
+-            out_file.write(b_chunk)
+-            out_file.flush()
+-
+-        # reset the stream pointer to the beginning
+-        out_file.seek(0)
+-        b_out_data = out_file.read()
+-        out_file.close()
++        b_plaintext = unpadder.update(
++            cipher.update(b_ciphertext) + cipher.finalize()
++        ) + unpadder.finalize()
+ 
+         # split out sha and verify decryption
+-        b_split_data = b_out_data.split(b"\n", 1)
++        b_split_data = b_plaintext.split(b"\n", 1)
+         b_this_sha = b_split_data[0]
+         b_plaintext = b_split_data[1]
+         b_test_sha = to_bytes(sha256(b_plaintext).hexdigest())
+@@ -676,19 +599,16 @@
+ 
+     # Note: strings in this class should be byte strings by default.
+ 
+-    def __init__(self):
+-
+-        check_prereqs()
+-
+     @staticmethod
+     def _create_key(b_password, b_salt, keylength, ivlength):
+-        hash_function = SHA256
+-
+-        # make two keys and one iv
+-        pbkdf2_prf = lambda p, s: HMAC.new(p, s, hash_function).digest()
++        kdf = PBKDF2HMAC(
++            algorithm=hashes.SHA256(),
++            length=2 * keylength + ivlength,
++            salt=b_salt,
++            iterations=10000,
++            backend=BACKEND)
++        b_derivedkey = kdf.derive(b_password)
+ 
+-        b_derivedkey = PBKDF2(b_password, b_salt, dkLen=(2 * keylength) + ivlength,
+-                            count=10000, prf=pbkdf2_prf)
+         return b_derivedkey
+ 
+     @classmethod
+@@ -696,55 +616,31 @@
+         # 16 for AES 128, 32 for AES256
+         keylength = 32
+ 
+-        # match the size used for counter.new to avoid extra work
+-        ivlength = 16
++        # AES is a 128-bit block cipher, so IVs and counter nonces are 16 bytes
++        ivlength = algorithms.AES.block_size // 8
+ 
+-        if HAS_PBKDF2HMAC:
+-            backend = default_backend()
+-            kdf = PBKDF2HMAC(
+-                algorithm=c_SHA256(),
+-                length=2 * keylength + ivlength,
+-                salt=b_salt,
+-                iterations=10000,
+-                backend=backend)
+-            b_derivedkey = kdf.derive(b_password)
+-        else:
+-            b_derivedkey = cls._create_key(b_password, b_salt, keylength, ivlength)
++        b_derivedkey = cls._create_key(b_password, b_salt, keylength, ivlength)
+ 
+         b_key1 = b_derivedkey[:keylength]
+         b_key2 = b_derivedkey[keylength:(keylength * 2)]
+         b_iv = b_derivedkey[(keylength * 2):(keylength * 2) + ivlength]
+ 
+-        return b_key1, b_key2, hexlify(b_iv)
++        return b_key1, b_key2, b_iv
+ 
+     def encrypt(self, b_plaintext, b_password):
+         b_salt = os.urandom(32)
+         b_key1, b_key2, b_iv = self._gen_key_initctr(b_password, b_salt)
+ 
+-        # PKCS#7 PAD DATA http://tools.ietf.org/html/rfc5652#section-6.3
+-        bs = AES.block_size
+-        padding_length = (bs - len(b_plaintext) % bs) or bs
+-        b_plaintext += to_bytes(padding_length * chr(padding_length), encoding='ascii', errors='strict')
+-
+-        # COUNTER.new PARAMETERS
+-        # 1) nbits (integer) - Length of the counter, in bits.
+-        # 2) initial_value (integer) - initial value of the counter. "iv" from _gen_key_initctr
+-
+-        ctr = Counter.new(128, initial_value=int(b_iv, 16))
+-
+-        # AES.new PARAMETERS
+-        # 1) AES key, must be either 16, 24, or 32 bytes long -- "key" from _gen_key_initctr
+-        # 2) MODE_CTR, is the recommended mode
+-        # 3) counter=<CounterObject>
+-
+-        cipher = AES.new(b_key1, AES.MODE_CTR, counter=ctr)
+-
+-        # ENCRYPT PADDED DATA
+-        b_ciphertext = cipher.encrypt(b_plaintext)
++        cipher = C_Cipher(algorithms.AES(b_key1), modes.CTR(b_iv), BACKEND)
++        encryptor = cipher.encryptor()
++        padder = padding.PKCS7(algorithms.AES.block_size).padder()
++        b_ciphertext = encryptor.update(padder.update(b_plaintext) + padder.finalize())
++        b_ciphertext += encryptor.finalize()
+ 
+         # COMBINE SALT, DIGEST AND DATA
+-        hmac = HMAC.new(b_key2, b_ciphertext, SHA256)
+-        b_vaulttext = b'\n'.join([hexlify(b_salt), to_bytes(hmac.hexdigest()), hexlify(b_ciphertext)])
++        hmac = HMAC(b_key2, hashes.SHA256(), BACKEND)
++        hmac.update(b_ciphertext)
++        b_vaulttext = b'\n'.join([hexlify(b_salt), hexlify(hmac.finalize()), hexlify(b_ciphertext)])
+         b_vaulttext = hexlify(b_vaulttext)
+         return b_vaulttext
+ 
+@@ -757,48 +653,21 @@
+         b_key1, b_key2, b_iv = self._gen_key_initctr(b_password, b_salt)
+ 
+         # EXIT EARLY IF DIGEST DOESN'T MATCH
+-        hmacDecrypt = HMAC.new(b_key2, b_ciphertext, SHA256)
+-        if not self._is_equal(b_cryptedHmac, to_bytes(hmacDecrypt.hexdigest())):
++        hmac = HMAC(b_key2, hashes.SHA256(), BACKEND)
++        hmac.update(b_ciphertext)
++        try:
++            hmac.verify(unhexlify(b_cryptedHmac))
++        except InvalidSignature:
+             return None
+-        # SET THE COUNTER AND THE CIPHER
+-        ctr = Counter.new(128, initial_value=int(b_iv, 16))
+-        cipher = AES.new(b_key1, AES.MODE_CTR, counter=ctr)
+-
+-        # DECRYPT PADDED DATA
+-        b_plaintext = cipher.decrypt(b_ciphertext)
+-
+-        # UNPAD DATA
+-        if PY3:
+-            padding_length = b_plaintext[-1]
+-        else:
+-            padding_length = ord(b_plaintext[-1])
+ 
+-        b_plaintext = b_plaintext[:-padding_length]
+-        return b_plaintext
++        cipher = C_Cipher(algorithms.AES(b_key1), modes.CTR(b_iv), BACKEND)
++        decryptor = cipher.decryptor()
++        unpadder = padding.PKCS7(128).unpadder()
++        b_plaintext = unpadder.update(
++            decryptor.update(b_ciphertext) + decryptor.finalize()
++        ) + unpadder.finalize()
+ 
+-    @staticmethod
+-    def _is_equal(b_a, b_b):
+-        """
+-        Comparing 2 byte arrrays in constant time
+-        to avoid timing attacks.
+-
+-        It would be nice if there was a library for this but
+-        hey.
+-        """
+-        if not (isinstance(b_a, binary_type) and isinstance(b_b, binary_type)):
+-            raise TypeError('_is_equal can only be used to compare two byte strings')
+-
+-        # http://codahale.com/a-lesson-in-timing-attacks/
+-        if len(b_a) != len(b_b):
+-            return False
+-
+-        result = 0
+-        for b_x, b_y in zip(b_a, b_b):
+-            if PY3:
+-                result |= b_x ^ b_y
+-            else:
+-                result |= ord(b_x) ^ ord(b_y)
+-        return result == 0
++        return b_plaintext
+ 
+ 
+ # Keys could be made bytes later if the code that gets the data is more
+diff -uNr ansible-2.3.0.0.ORIG/test/runner/requirements/integration.txt ansible-2.3.0.0/test/runner/requirements/integration.txt
+--- ansible-2.3.0.0.ORIG/test/runner/requirements/integration.txt	2017-05-23 14:23:12.379595453 +0100
++++ ansible-2.3.0.0/test/runner/requirements/integration.txt	2017-05-23 14:24:22.118598926 +0100
+@@ -1,8 +1,8 @@
++cryptography
+ jinja2
+ jmespath
+ junit-xml
+ ordereddict ; python_version < '2.7'
+ paramiko
+ passlib
+-pycrypto
+ pyyaml
+diff -uNr ansible-2.3.0.0.ORIG/test/runner/requirements/network-integration.txt ansible-2.3.0.0/test/runner/requirements/network-integration.txt
+--- ansible-2.3.0.0.ORIG/test/runner/requirements/network-integration.txt	2017-05-23 14:23:12.379595453 +0100
++++ ansible-2.3.0.0/test/runner/requirements/network-integration.txt	2017-05-23 14:24:22.119598926 +0100
+@@ -1,5 +1,5 @@
++cryptography
+ jinja2
+ junit-xml
+ paramiko
+-pycrypto
+ pyyaml
+diff -uNr ansible-2.3.0.0.ORIG/test/runner/requirements/sanity.txt ansible-2.3.0.0/test/runner/requirements/sanity.txt
+--- ansible-2.3.0.0.ORIG/test/runner/requirements/sanity.txt	2017-05-23 14:23:12.379595453 +0100
++++ ansible-2.3.0.0/test/runner/requirements/sanity.txt	2017-05-23 14:26:01.910603896 +0100
+@@ -1,5 +1,7 @@
++cryptography
+ jinja2
+ mock
++paramiko
+ pep8
+ pylint
+ pytest
+diff -uNr ansible-2.3.0.0.ORIG/test/runner/requirements/units.txt ansible-2.3.0.0/test/runner/requirements/units.txt
+--- ansible-2.3.0.0.ORIG/test/runner/requirements/units.txt	2017-05-23 14:23:12.379595453 +0100
++++ ansible-2.3.0.0/test/runner/requirements/units.txt	2017-05-23 14:24:22.119598926 +0100
+@@ -1,10 +1,10 @@
+ boto
+ boto3
++cryptography
+ jinja2
+ mock
+ nose
+ passlib
+-pycrypto
+ pytest
+ pytest-mock
+ pytest-xdist
+diff -uNr ansible-2.3.0.0.ORIG/test/runner/requirements/windows-integration.txt ansible-2.3.0.0/test/runner/requirements/windows-integration.txt
+--- ansible-2.3.0.0.ORIG/test/runner/requirements/windows-integration.txt	2017-05-23 14:23:12.379595453 +0100
++++ ansible-2.3.0.0/test/runner/requirements/windows-integration.txt	2017-05-23 14:24:22.119598926 +0100
+@@ -1,4 +1,6 @@
++cryptography
+ jinja2
+ junit-xml
++paramiko
+ pywinrm
+ pyyaml
+diff -uNr ansible-2.3.0.0.ORIG/test/units/parsing/vault/test_vault_editor.py ansible-2.3.0.0/test/units/parsing/vault/test_vault_editor.py
+--- ansible-2.3.0.0.ORIG/test/units/parsing/vault/test_vault_editor.py	2017-05-23 14:23:12.324595450 +0100
++++ ansible-2.3.0.0/test/units/parsing/vault/test_vault_editor.py	2017-05-23 14:24:22.120598926 +0100
+@@ -22,7 +22,6 @@
+ 
+ import os
+ import tempfile
+-from nose.plugins.skip import SkipTest
+ 
+ from ansible.compat.tests import unittest
+ from ansible.compat.tests.mock import patch
+@@ -32,27 +31,6 @@
+ from ansible.module_utils._text import to_bytes, to_text
+ 
+ 
+-# Counter import fails for 2.0.1, requires >= 2.6.1 from pip
+-try:
+-    from Crypto.Util import Counter
+-    HAS_COUNTER = True
+-except ImportError:
+-    HAS_COUNTER = False
+-
+-# KDF import fails for 2.0.1, requires >= 2.6.1 from pip
+-try:
+-    from Crypto.Protocol.KDF import PBKDF2
+-    HAS_PBKDF2 = True
+-except ImportError:
+-    HAS_PBKDF2 = False
+-
+-# AES IMPORTS
+-try:
+-    from Crypto.Cipher import AES as AES
+-    HAS_AES = True
+-except ImportError:
+-    HAS_AES = False
+-
+ v10_data = """$ANSIBLE_VAULT;1.0;AES
+ 53616c7465645f5fd0026926a2d415a28a2622116273fbc90e377225c12a347e1daf4456d36a77f9
+ 9ad98d59f61d06a4b66718d855f16fb7bdfe54d1ec8aeaa4d06c2dc1fa630ae1846a029877f0eeb1
+@@ -423,9 +401,6 @@
+ 
+     def test_decrypt_1_0(self):
+         # Skip testing decrypting 1.0 files if we don't have access to AES, KDF or Counter.
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+-
+         v10_file = tempfile.NamedTemporaryFile(delete=False)
+         with v10_file as f:
+             f.write(to_bytes(v10_data))
+@@ -451,9 +426,6 @@
+         assert fdata.strip() == "foo", "incorrect decryption of 1.0 file: %s" % fdata.strip()
+ 
+     def test_decrypt_1_1(self):
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+-
+         v11_file = tempfile.NamedTemporaryFile(delete=False)
+         with v11_file as f:
+             f.write(to_bytes(v11_data))
+@@ -478,10 +450,6 @@
+         assert fdata.strip() == "foo", "incorrect decryption of 1.0 file: %s" % fdata.strip()
+ 
+     def test_rekey_migration(self):
+-        # Skip testing rekeying files if we don't have access to AES, KDF or Counter.
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+-
+         v10_file = tempfile.NamedTemporaryFile(delete=False)
+         with v10_file as f:
+             f.write(to_bytes(v10_data))
+diff -uNr ansible-2.3.0.0.ORIG/test/units/parsing/vault/test_vault.py ansible-2.3.0.0/test/units/parsing/vault/test_vault.py
+--- ansible-2.3.0.0.ORIG/test/units/parsing/vault/test_vault.py	2017-05-23 14:23:12.324595450 +0100
++++ ansible-2.3.0.0/test/units/parsing/vault/test_vault.py	2017-05-23 14:24:22.120598926 +0100
+@@ -38,28 +38,6 @@
+ from ansible.module_utils._text import to_bytes, to_text
+ 
+ 
+-# Counter import fails for 2.0.1, requires >= 2.6.1 from pip
+-try:
+-    from Crypto.Util import Counter
+-    HAS_COUNTER = True
+-except ImportError:
+-    HAS_COUNTER = False
+-
+-# KDF import fails for 2.0.1, requires >= 2.6.1 from pip
+-try:
+-    from Crypto.Protocol.KDF import PBKDF2
+-    HAS_PBKDF2 = True
+-except ImportError:
+-    HAS_PBKDF2 = False
+-
+-# AES IMPORTS
+-try:
+-    from Crypto.Cipher import AES as AES
+-    HAS_AES = True
+-except ImportError:
+-    HAS_AES = False
+-
+-
+ class TestVaultIsEncrypted(unittest.TestCase):
+     def test_bytes_not_encrypted(self):
+         b_data = b"foobar"
+@@ -181,38 +159,6 @@
+         self.assertIsInstance(b_key, six.binary_type)
+         self.assertEqual(b_key, b_key_2)
+ 
+-    def test_is_equal_is_equal(self):
+-        self.assertTrue(self.vault_cipher._is_equal(b'abcdefghijklmnopqrstuvwxyz', b'abcdefghijklmnopqrstuvwxyz'))
+-
+-    def test_is_equal_unequal_length(self):
+-        self.assertFalse(self.vault_cipher._is_equal(b'abcdefghijklmnopqrstuvwxyz', b'abcdefghijklmnopqrstuvwx and sometimes y'))
+-
+-    def test_is_equal_not_equal(self):
+-        self.assertFalse(self.vault_cipher._is_equal(b'abcdefghijklmnopqrstuvwxyz', b'AbcdefghijKlmnopQrstuvwxZ'))
+-
+-    def test_is_equal_empty(self):
+-        self.assertTrue(self.vault_cipher._is_equal(b'', b''))
+-
+-    def test_is_equal_non_ascii_equal(self):
+-        utf8_data = to_bytes(u'私はガラスを食べられます。それは私を傷つけません。')
+-        self.assertTrue(self.vault_cipher._is_equal(utf8_data, utf8_data))
+-
+-    def test_is_equal_non_ascii_unequal(self):
+-        utf8_data = to_bytes(u'私はガラスを食べられます。それは私を傷つけません。')
+-        utf8_data2 = to_bytes(u'Pot să mănânc sticlă și ea nu mă rănește.')
+-
+-        # Test for the len optimization path
+-        self.assertFalse(self.vault_cipher._is_equal(utf8_data, utf8_data2))
+-        # Test for the slower, char by char comparison path
+-        self.assertFalse(self.vault_cipher._is_equal(utf8_data, utf8_data[:-1] + b'P'))
+-
+-    def test_is_equal_non_bytes(self):
+-        """ Anything not a byte string should raise a TypeError """
+-        self.assertRaises(TypeError, self.vault_cipher._is_equal, u"One fish", b"two fish")
+-        self.assertRaises(TypeError, self.vault_cipher._is_equal, b"One fish", u"two fish")
+-        self.assertRaises(TypeError, self.vault_cipher._is_equal, 1, b"red fish")
+-        self.assertRaises(TypeError, self.vault_cipher._is_equal, b"blue fish", 2)
+-
+ 
+ class TestVaultLib(unittest.TestCase):
+     def setUp(self):
+@@ -267,8 +213,6 @@
+         self.assertEqual(self.v.b_version, b"9.9", msg="version was not properly set")
+ 
+     def test_encrypt_decrypt_aes(self):
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+         self.v.cipher_name = u'AES'
+         self.v.b_password = b'ansible'
+         # AES encryption code has been removed, so this is old output for
+@@ -282,8 +226,6 @@
+         self.assertEqual(b_plaintext, b"foobar", msg="decryption failed")
+ 
+     def test_encrypt_decrypt_aes256(self):
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+         self.v.cipher_name = u'AES256'
+         plaintext = u"foobar"
+         b_vaulttext = self.v.encrypt(plaintext)
+@@ -292,8 +234,6 @@
+         self.assertEqual(b_plaintext, b"foobar", msg="decryption failed")
+ 
+     def test_encrypt_decrypt_aes256_existing_vault(self):
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+         self.v.cipher_name = u'AES256'
+         b_orig_plaintext = b"Setec Astronomy"
+         vaulttext = u'''$ANSIBLE_VAULT;1.1;AES256
+@@ -314,8 +254,6 @@
+         # FIXME This test isn't working quite yet.
+         raise SkipTest
+ 
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+         self.v.cipher_name = 'AES256'
+         # plaintext = "Setec Astronomy"
+         enc_data = '''$ANSIBLE_VAULT;1.1;AES256
+@@ -350,8 +288,6 @@
+         self.v.decrypt(b_invalid_ciphertext)
+ 
+     def test_encrypt_encrypted(self):
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+         self.v.cipher_name = u'AES'
+         b_vaulttext = b"$ANSIBLE_VAULT;9.9;TEST\n%s" % hexlify(b"ansible")
+         vaulttext = to_text(b_vaulttext, errors='strict')
+@@ -359,8 +295,6 @@
+         self.assertRaises(errors.AnsibleError, self.v.encrypt, vaulttext)
+ 
+     def test_decrypt_decrypted(self):
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+         plaintext = u"ansible"
+         self.assertRaises(errors.AnsibleError, self.v.decrypt, plaintext)
+ 
+@@ -368,9 +302,6 @@
+         self.assertRaises(errors.AnsibleError, self.v.decrypt, b_plaintext)
+ 
+     def test_cipher_not_set(self):
+-        # not setting the cipher should default to AES256
+-        if not HAS_AES or not HAS_COUNTER or not HAS_PBKDF2:
+-            raise SkipTest
+         plaintext = u"ansible"
+         self.v.encrypt(plaintext)
+         self.assertEquals(self.v.cipher_name, "AES256")
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/centos6/Dockerfile ansible-2.3.0.0/test/utils/docker/centos6/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/centos6/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/centos6/Dockerfile	2017-05-23 14:24:22.121598926 +0100
+@@ -9,6 +9,8 @@
+     file \
+     gcc \
+     git \
++    libffi \
++    libffi-devel \
+     make \
+     mercurial \
+     mysql \
+@@ -16,6 +18,7 @@
+     mysql-server \
+     openssh-clients \
+     openssh-server \
++    openssl-devel \
+     python-coverage \
+     python-devel \
+     python-httplib2 \
+@@ -40,8 +43,6 @@
+     && \
+     yum clean all
+ 
+-RUN rpm -e --nodeps python-crypto && pip install --upgrade pycrypto
+-
+ RUN /bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
+ RUN mkdir /etc/ansible/
+ RUN /bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/centos7/Dockerfile ansible-2.3.0.0/test/utils/docker/centos7/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/centos7/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/centos7/Dockerfile	2017-05-23 14:24:22.121598926 +0100
+@@ -17,15 +17,20 @@
+     bzip2 \
+     dbus-python \
+     file \
++    gcc \
+     git \
+     iproute \
++    libffi \
++    libffi-devel \
+     make \
+     mariadb-server \
+     mercurial \
+     MySQL-python \
+     openssh-clients \
+     openssh-server \
++    openssl-devel \
+     python-coverage \
++    python-devel \
+     python-httplib2 \
+     python-jinja2 \
+     python-keyczar \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/fedora24/Dockerfile ansible-2.3.0.0/test/utils/docker/fedora24/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/fedora24/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/fedora24/Dockerfile	2017-05-23 14:24:22.121598926 +0100
+@@ -17,18 +17,23 @@
+     dbus-python \
+     file \
+     findutils \
++    gcc \
+     git \
+     glibc-locale-source \
+     iproute \
++    libffi \
++    libffi-devel \
+     make \
+     mariadb-server \
+     mercurial \
+     MySQL-python \
+     openssh-clients \
+     openssh-server \
++    openssl-devel \
+     procps \
+     python2-dnf \
+     python-coverage \
++    python-devel \
+     python-httplib2 \
+     python-jinja2 \
+     python-keyczar \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/fedora25/Dockerfile ansible-2.3.0.0/test/utils/docker/fedora25/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/fedora25/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/fedora25/Dockerfile	2017-05-23 14:24:22.121598926 +0100
+@@ -20,12 +20,15 @@
+     git \
+     glibc-locale-source \
+     iproute \
++    libffi \
++    libffi-devel \
+     make \
+     mariadb-server \
+     mercurial \
+     MySQL-python \
+     openssh-clients \
+     openssh-server \
++    openssl-devel \
+     procps \
+     python2-dnf \
+     python-coverage \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/opensuse42.1/Dockerfile ansible-2.3.0.0/test/utils/docker/opensuse42.1/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/opensuse42.1/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/opensuse42.1/Dockerfile	2017-05-23 14:24:22.121598926 +0100
+@@ -21,6 +21,8 @@
+     openssh \
+     postgresql-server \
+     python-coverage \
++    python-cryptography \
++    python-devel \
+     python-httplib2 \
+     python-jinja2 \
+     python-keyczar \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/opensuse42.2/Dockerfile ansible-2.3.0.0/test/utils/docker/opensuse42.2/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/opensuse42.2/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/opensuse42.2/Dockerfile	2017-05-23 14:24:22.122598926 +0100
+@@ -21,6 +21,7 @@
+     openssh \
+     postgresql-server \
+     python-coverage \
++    python-cryptography \
+     python-httplib2 \
+     python-jinja2 \
+     python-keyczar \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1204/Dockerfile ansible-2.3.0.0/test/utils/docker/ubuntu1204/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1204/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/ubuntu1204/Dockerfile	2017-05-23 14:24:22.122598926 +0100
+@@ -17,6 +17,8 @@
+     gawk \
+     gcc \
+     git \
++    libffi-dev \
++    libssl-dev \
+     libxml2-utils \
+     locales \
+     make \
+@@ -50,8 +52,6 @@
+     && \
+     apt-get clean
+ 
+-RUN pip install --upgrade pycrypto
+-
+ # helpful things taken from the ubuntu-upstart Dockerfile:
+ # https://github.com/tianon/dockerfiles/blob/4d24a12b54b75b3e0904d8a285900d88d3326361/sbin-init/ubuntu/upstart/14.04/Dockerfile
+ ADD init-fake.conf /etc/init/fake-container-events.conf
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1404/Dockerfile ansible-2.3.0.0/test/utils/docker/ubuntu1404/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1404/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/ubuntu1404/Dockerfile	2017-05-23 14:24:22.122598926 +0100
+@@ -16,6 +16,8 @@
+     fakeroot \
+     gawk \
+     git \
++    libffi-dev \
++    libssl-dev \
+     libxml2-utils \
+     locales \
+     make \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1604/Dockerfile ansible-2.3.0.0/test/utils/docker/ubuntu1604/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1604/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/ubuntu1604/Dockerfile	2017-05-23 14:24:22.122598926 +0100
+@@ -17,6 +17,8 @@
+     gawk \
+     git \
+     iproute2 \
++    libffi-dev \
++    libssl-dev \
+     libxml2-utils \
+     locales \
+     lsb-release \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1604py3/Dockerfile ansible-2.3.0.0/test/utils/docker/ubuntu1604py3/Dockerfile
+--- ansible-2.3.0.0.ORIG/test/utils/docker/ubuntu1604py3/Dockerfile	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/docker/ubuntu1604py3/Dockerfile	2017-05-23 14:24:22.122598926 +0100
+@@ -15,6 +15,8 @@
+     gawk \
+     git \
+     iproute2 \
++    libffi-dev \
++    libssl-dev \
+     libxml2-utils \
+     locales \
+     lsb-release \
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/shippable/other.sh ansible-2.3.0.0/test/utils/shippable/other.sh
+--- ansible-2.3.0.0.ORIG/test/utils/shippable/other.sh	2017-05-23 14:23:12.320595450 +0100
++++ ansible-2.3.0.0/test/utils/shippable/other.sh	2017-05-23 14:24:22.123598926 +0100
+@@ -12,6 +12,8 @@
+ retry.py apt-get install -qq \
+     shellcheck \
+     python2.4 \
++    libssl-dev \
++    libffi-dev \
+ 
+ ln -sf x86_64-linux-gnu-gcc-4.9 /usr/bin/x86_64-linux-gnu-gcc
+ 
+diff -uNr ansible-2.3.0.0.ORIG/test/utils/tox/requirements.txt ansible-2.3.0.0/test/utils/tox/requirements.txt
+--- ansible-2.3.0.0.ORIG/test/utils/tox/requirements.txt	2017-05-23 14:23:12.321595450 +0100
++++ ansible-2.3.0.0/test/utils/tox/requirements.txt	2017-05-23 14:24:22.123598926 +0100
+@@ -11,7 +11,7 @@
+ redis
+ python-memcached
+ python-systemd
+-pycrypto
++cryptography
+ botocore
+ boto3
+ pytest

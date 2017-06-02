@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils linux-info user
@@ -12,20 +12,18 @@ SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="proxy account container object +memcached"
 REQUIRED_USE="|| ( proxy account container object )"
 
-CDEPEND="
-	>=dev-python/pbr-0.8.0[${PYTHON_USEDEP}]
-	<dev-python/pbr-2.0[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-1.8.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}"
 
 RDEPEND="
 	${CDEPEND}
-	virtual/python-dnspython[${PYTHON_USEDEP}]
+	>=dev-python/dnspython-1.14.0:0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.17.4[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.5[${PYTHON_USEDEP}]
@@ -34,15 +32,23 @@ RDEPEND="
 	>=dev-python/pastedeploy-1.3.3[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]
-	>=dev-python/PyECLib-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/PyECLib-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
 	!~dev-python/cryptography-1.3.0[${PYTHON_USEDEP}]
 	memcached? ( net-misc/memcached )
 	net-misc/rsync[xattr]"
 
-CONFIG_CHECK="~EXT3_FS_XATTR ~SQUASHFS_XATTR ~CIFS_XATTR ~JFFS2_FS_XATTR
-~TMPFS_XATTR ~UBIFS_FS_XATTR ~EXT2_FS_XATTR ~REISERFS_FS_XATTR ~EXT4_FS_XATTR
-~ZFS"
+pkg_pretend() {
+	linux-info_pkg_setup
+	CONFIG_CHECK="~EXT3_FS_XATTR ~SQUASHFS_XATTR ~CIFS_XATTR ~JFFS2_FS_XATTR
+	~TMPFS_XATTR ~UBIFS_FS_XATTR ~EXT2_FS_XATTR ~REISERFS_FS_XATTR ~EXT4_FS_XATTR
+	~ZFS"
+	if linux_config_exists; then
+		for module in ${CONFIG_CHECK}; do
+			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled"
+		done
+	fi
+}
 
 pkg_setup() {
 	enewuser swift
@@ -50,7 +56,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i 's/xattr/pyxattr/g' swift.egg-info/requires.txt || die
 	sed -i 's/xattr/pyxattr/g' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
@@ -62,8 +67,8 @@ src_test () {
 	SKIP_PIP_INSTALL=1 PBR_VERSION=0.6.0 sh .unittests || die
 }
 
-python_install() {
-	distutils-r1_python_install
+python_install_all() {
+	distutils-r1_python_install_all
 	keepdir /etc/swift
 	insinto /etc/swift
 
