@@ -11899,7 +11899,7 @@ kde-apps/kdepim-common-libs 4.14.11_pre20160611: Common libraries for KDE PIM ap
 kde-apps/kdepim-kresources 4.4.2017.04 4.14.11_pre20160611: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2017.04 4.14.11_pre20160611 17.04.1: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 4.14.11_pre20160211 17.04.1-r1: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdepim-runtime 4.14.11_pre20160211-r1 17.04.1-r1: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2017.04: KDE PIM wizards (noakonadi branch)
 kde-apps/kdepimlibs 4.14.10_p20160611 4.14.11_pre20160611: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.12.3 17.04.1: kioslaves from kdesdk package
@@ -12113,7 +12113,7 @@ kde-frameworks/kconfigwidgets 5.29.0 5.34.0: Framework providing an assortment o
 kde-frameworks/kcoreaddons 5.29.0 5.34.0 5.34.0-r1: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.29.0 5.34.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.29.0 5.34.0: Framework for registering services and applications per freedesktop standards
-kde-frameworks/kdeclarative 5.29.0 5.34.0 5.34.0-r1: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kdeclarative 5.29.0 5.34.0-r1: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.29.0 5.34.0: Central daemon of KDE workspaces
 kde-frameworks/kdelibs 4.14.32: Libraries needed for programs by KDE
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
@@ -12245,7 +12245,7 @@ kde-plasma/libkscreen 5.8.6 5.8.7 5.9.5: Plasma screen management library
 kde-plasma/libksysguard 5.8.6 5.8.7 5.9.5: Task management and system monitoring library
 kde-plasma/libkworkspace 4.11.22: A library for Plasma desktop applications
 kde-plasma/milou 5.8.6 5.8.7 5.9.5: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.8.6 5.8.7 5.9.5: Oxygen visual style for the Plasma desktop
+kde-plasma/oxygen 5.8.6-r1 5.8.7-r1 5.9.5-r1: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 kde-plasma/plasma-desktop 5.8.6 5.8.7.1 5.9.5: KDE Plasma desktop
 kde-plasma/plasma-integration 5.8.6 5.8.7 5.9.5: Qt Platform Theme integration plugins for the Plasma workspaces
@@ -13209,10 +13209,10 @@ media-libs/opus 1.1.3-r1 1.1.4 1.1.5 1.2_beta: Open codec designed for internet 
 media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.9.0 4.9.1 9999: KDE multimedia API
-media-libs/phonon-gstreamer 4.9.0 9999: Phonon GStreamer backend
+media-libs/phonon 4.9.0 4.9.1-r1 9999: KDE multimedia API
+media-libs/phonon-gstreamer 4.9.0 4.9.0-r1 9999: Phonon GStreamer backend
 media-libs/phonon-qt7 0_pre20110424: Phonon QuickTime7 backend
-media-libs/phonon-vlc 0.9.0 0.9.1 9999: Phonon VLC backend
+media-libs/phonon-vlc 0.9.0 0.9.1-r1 9999: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6-r1: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
