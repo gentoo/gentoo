@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
+# This package needs a maintainer to take care of updating this to a working
+# version not requiring obsolete wxwidgets and webkit versions (#584170).
+# Removal in a month.
+x11-misc/outwiker
+
+# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
+# Still relies on old and vulnerable webkit-gtk versions, bug #608626.
+# Removal in a month.
+www-client/xombrero
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (30 May 2017)
 # Work in progress. DO NOT UNMASK. Otherwise bad things WILL happen.
 # Think of the kittens.
