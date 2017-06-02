@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A series of bash scripts which add a quilt-like interface to git"
 HOMEPAGE="http://repo.or.cz/w/guilt.git"
-SRC_URI="${HOMEPAGE}/snapshot/22d785dd24329170f66e7696da38b3e90e033d61.tar.gz"
+SRC_URI="${HOMEPAGE}/snapshot/22d785dd24329170f66e7696da38b3e90e033d61.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
