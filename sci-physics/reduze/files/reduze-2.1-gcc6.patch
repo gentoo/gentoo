@@ -1,0 +1,29 @@
+--- a/reduze/files.cpp
++++ b/reduze/files.cpp
+@@ -723,7 +723,7 @@
+ 	string file_name_tmp = file_name + ".tmp";
+ 	ofstream file(file_name_tmp.c_str());
+ 	if (!file)
+-		ABORT("Can't write to " << file);
++		ABORT("Can't write to " << file_name_tmp);
+ 	Emitter os;
+ 	os << BeginMap;
+ 	os << Key << "crossings" << Value;
+@@ -752,7 +752,7 @@
+ 	string file_name_tmp = file_name + ".tmp";
+ 	ofstream file(file_name_tmp.c_str());
+ 	if (!file)
+-		ABORT("Can't write to " << file);
++		ABORT("Can't write to " << file_name_tmp);
+ 	os << YAML::BeginMap << YAML::Key << "sectormappings" << YAML::Value;
+ 	os << m << YAML::EndMap;
+ 	file << os.c_str();
+@@ -1036,7 +1036,7 @@
+ 
+ bool is_readable_file(const string& filename) {
+ 	ifstream is(filename.c_str());
+-	bool ok = is;
++	bool ok = !is.fail();
+ 	is.close();
+ 	return ok && !is_readable_directory(filename);
+ }
