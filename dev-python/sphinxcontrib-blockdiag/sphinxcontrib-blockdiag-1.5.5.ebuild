@@ -10,7 +10,7 @@ DESCRIPTION="A sphinx extension for embedding block diagrams using blockdiag"
 
 HOMEPAGE="https://github.com/blockdiag/sphinxcontrib-blockdiag"
 
-SRC_URI="https://github.com/blockdiag/${PN}/archive/${PV}.tar.gz -> ${PV}.tar.gz"
+SRC_URI="https://github.com/blockdiag/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 
