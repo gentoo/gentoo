@@ -24,5 +24,5 @@ DEPEND="${RDEPEND}
 "
 
 python_test() {
-	${EPYTHON} -m unittest -v openid.test.test_suite
+	${EPYTHON} -m unittest -v openid.test.test_suite || die "Tests failed with ${EPYTHON}"
 }
