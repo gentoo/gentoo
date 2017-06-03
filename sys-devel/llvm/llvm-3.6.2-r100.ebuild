@@ -12,7 +12,8 @@ HOMEPAGE="http://llvm.org/"
 SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz )
-	https://dev.gentoo.org/~voyageur/distfiles/${PN}-3.6.1-manpages.tar.bz2"
+	https://dev.gentoo.org/~voyageur/distfiles/${PN}-3.6.1-manpages.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.gz"
 
 # Additional licenses:
 # 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
@@ -111,20 +112,20 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/3.6.2/nodoctargz.patch
-	epatch "${FILESDIR}"/3.6.2/gcc-4.9.patch
-	epatch "${FILESDIR}"/3.6.2/gentoo-install.patch
+	epatch "${WORKDIR}/${P}-patchset"/nodoctargz.patch
+	epatch "${WORKDIR}/${P}-patchset"/gcc-4.9.patch
+	epatch "${WORKDIR}/${P}-patchset"/gentoo-install.patch
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/3.8.1/clang/gentoo-runtime-gcc-detection-v3.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/3.7.1/clang/gentoo-install.patch
-		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/gentoo-install.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		# Fix build fails with using gcc-4.9 on Gentoo/FreeBSD, bug #548444
-		epatch "${FILESDIR}"/3.6.2/clang/fbsd-gcc49.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/fbsd-gcc49.patch
 	fi
 
 	if use prefix && use clang; then
