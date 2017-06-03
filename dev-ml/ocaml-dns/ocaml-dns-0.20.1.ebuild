@@ -43,6 +43,11 @@ DEPEND="
 # Missing mirage deps
 RESTRICT="test"
 
+src_prepare() {
+	epatch "${FILESDIR}/uri.patch"
+	default
+}
+
 src_compile() {
 	ocaml pkg/pkg.ml build \
 		--tests $(usex test true false) \

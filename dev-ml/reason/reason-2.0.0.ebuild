@@ -27,8 +27,6 @@ DEPEND="${DEPEND}
 	dev-ml/ocamlbuild
 	dev-ml/opam"
 
-PATCHES=( "${FILESDIR}/utop.patch" )
-
 src_compile() {
 	emake precompile
 	emake build

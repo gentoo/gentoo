@@ -22,7 +22,7 @@ DEPEND="
 	dev-ml/ocaml-cohttp:=[ocamlopt?]
 	dev-ml/ocaml-dispatch:=[ocamlopt?]
 	dev-ml/ocaml-re:=[ocamlopt?]
-	dev-ml/ocaml-uri:=[ocamlopt?]
+	dev-ml/ocaml-uri:=[ocamlopt(+)?]
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
