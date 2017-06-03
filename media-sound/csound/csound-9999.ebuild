@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
-inherit eutils multilib java-pkg-opt-2 cmake-utils toolchain-funcs versionator python-single-r1
 
-if [[ ${PV} == "9999" ]] ; then
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils java-pkg-opt-2 toolchain-funcs versionator python-single-r1 cmake-utils
+
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
 	inherit git-r3
 else
@@ -13,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="A sound design and signal processing system providing facilities for composition and performance"
+DESCRIPTION="A sound design and signal processing system for composition and performance"
 HOMEPAGE="http://csound.github.io/"
 
 LICENSE="LGPL-2.1"
@@ -52,7 +54,7 @@ RDEPEND="
 	fltk? ( x11-libs/fltk:1[threads?] )
 	image? ( media-libs/libpng:0= )
 	jack? ( media-sound/jack-audio-connection-kit )
-	java? ( virtual/jdk )
+	java? ( virtual/jdk:* )
 	keyboard? ( x11-libs/fltk:1[threads?] )
 	linear? ( sci-mathematics/gmm )
 	lua? (
@@ -100,28 +102,21 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=( "${FILESDIR}"/csound-6.05-python.patch )
+	cmake-utils_src_prepare
 
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
 
+	local lang
 	for lang in ${LANGS} ; do
 		if ! use linguas_${lang} ; then
 			sed -i "/compile_po(${lang}/d" po/CMakeLists.txt || die
 		fi
 	done
-
-	default
 }
 
 src_configure() {
-	local myconf=()
-
-	use python && myconf+=( "-DPYTHON_MODULE_INSTALL_DIR=$(python_get_sitedir)" )
-
-	[[ $(get_libdir) == "lib64" ]] && myconf+=( -DUSE_LIB64=ON )
-
 	local mycmakeargs=(
 		-DUSE_ALSA=$(usex alsa)
 		-DBUILD_CSBEATS=$(usex beats)
@@ -163,28 +158,31 @@ src_configure() {
 		-DBUILD_WEBSOCKET_OPCODE=$(usex websocket)
 		-DNEED_PORTTIME=OFF
 		-DBUILD_RELEASE=ON
-		"${myconf[@]}"
+	)
+
+	use python && mycmakeargs+=(
+		-DPYTHON_MODULE_INSTALL_DIR="$(python_get_sitedir)"
+	)
+
+	[[ $(get_libdir) == "lib64" ]] && mycmakeargs+=(
+		-DUSE_LIB64=ON
 	)
 
 	cmake-utils_src_configure
 }
 
-src_test() {
-	cmake-utils_src_test
-}
-
 src_install() {
 	cmake-utils_src_install
-	dodoc AUTHORS ChangeLog README.md Release_Notes/*
+	dodoc -r Release_Notes/.
 
 	# Generate env.d file
-	if use double-precision ; then
-		echo OPCODEDIR64=/usr/$(get_libdir)/${PN}/plugins64 > "${T}"/62${PN}
-	else
-		echo OPCODEDIR=/usr/$(get_libdir)/${PN}/plugins > "${T}"/62${PN}
+	cat > "${T}"/62${PN} <<-_EOF_ || die
+		OPCODEDIR$(usex double-precision 64 '')="${EPREFIX}/usr/$(get_libdir)/${PN}/plugins$(usex double-precision 64 '')"
+		CSSTRNGS="${EPREFIX}/usr/share/locale"
+	_EOF_
+	if use stk ; then
+		echo RAWWAVE_PATH=\"${EPREFIX}/usr/share/csound/rawwaves\" >> "${T}"/62${PN} || die
 	fi
-	echo "CSSTRNGS=/usr/share/locale" >> "${T}"/62${PN}
-	use stk && echo "RAWWAVE_PATH=/usr/share/csound/rawwaves" >> "${T}"/62${PN}
 	doenvd "${T}"/62${PN}
 
 	if use examples ; then
@@ -202,7 +200,7 @@ src_install() {
 	fi
 
 	# rename extract to csound_extract (bug #247394)
-	mv "${ED}"/usr/bin/{extract,csound_extract} || die
+	mv "${ED%/}"/usr/bin/{,csound_}extract || die
 
 	use python && python_optimize
 }
