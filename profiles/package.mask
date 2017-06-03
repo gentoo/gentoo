@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
+# Unpatched security vulnerability, dead upstream;
+# Scheduled for removal in 30 days per bug #618354
+net-libs/polarssl
+
+# Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities
 # People using VMware in Gentoo should switch to Gentoo's VMware overlay
 # Bugs 619398, 621910, 616958, 536364, 614666, 612804 ...
