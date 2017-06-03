@@ -35,6 +35,8 @@ RDEPEND="${DEPEND}
 	!kde-plasma/kde-gtk-config:4
 "
 
+RESTRICT+=" test"
+
 PATCHES=( "${FILESDIR}/${PN}-5.4.2-gtk3-optional.patch" )
 
 src_configure() {
