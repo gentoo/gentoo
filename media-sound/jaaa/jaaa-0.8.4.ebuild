@@ -1,10 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=6
 
-DESCRIPTION="The JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser"
+inherit toolchain-funcs
+
+DESCRIPTION="JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
@@ -18,23 +19,18 @@ RDEPEND="media-libs/zita-alsa-pcmi
 	>=media-libs/libclalsadrv-2.0.0
 	>=media-libs/libclthreads-2.2.1
 	>=media-libs/libclxclient-3.3.2
-	>=sci-libs/fftw-3.0.0
+	sci-libs/fftw:3.0=
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.8.4-makefile.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-0.8.4-makefile.patch )
 
 src_compile() {
-	cd source || die
 	tc-export CC CXX
-	emake PREFIX=/usr
+	emake -C source PREFIX="${EPREFIX}"/usr
 }
 
 src_install() {
-	pushd source &>/dev/null || die
-	emake DESTDIR="${D}" PREFIX=/usr install
-	popd &>/dev/null || die
-	dodoc AUTHORS README
+	emake -C source PREFIX="${EPREFIX}"/usr DESTDIR="${D}" install
+	einstalldocs
 }
