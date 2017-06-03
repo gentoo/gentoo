@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 DEPEND="
@@ -22,7 +22,10 @@ DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.1.0-sphinx.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0-sphinx.patch
+	"${FILESDIR}"/urwid-1.3.1-test-vterm-EINTR.patch
+)
 
 python_compile_all() {
 	if use doc ; then
