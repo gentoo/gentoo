@@ -12,7 +12,8 @@ HOMEPAGE="http://llvm.org/"
 SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
 	clang? ( http://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
-	https://dev.gentoo.org/~mgorny/dist/${PN}-3.4-manpages.tar.bz2"
+	https://dev.gentoo.org/~mgorny/dist/llvm/${PN}-3.4-manpages.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.gz"
 
 # Additional licenses:
 # 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
@@ -96,16 +97,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/3.6.2/nodoctargz.patch
-	epatch "${FILESDIR}"/3.4.2/gentoo-install.patch
+	epatch "${WORKDIR}/${P}-patchset"/nodoctargz.patch
+	epatch "${WORKDIR}/${P}-patchset"/gentoo-install.patch
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/3.4.2/clang/gentoo-runtime-gcc-detection-v3.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/3.4.2/clang/gentoo-install.patch
-		epatch "${FILESDIR}"/3.4.2/clang/darwin_build_fix.patch
-		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/gentoo-install.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/darwin_build_fix.patch
+		epatch "${WORKDIR}/${P}-patchset"/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
 
