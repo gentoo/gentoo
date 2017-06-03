@@ -32,13 +32,13 @@
  tools:
  	@echo "====== Building tools ====="
 -	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Psrc/tools/tools.gpr
-+	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
 +	  -Psrc/tools/tools.gpr -cargs:Ada $(ADAFLAGS)
  
  build_library_type/%:  src/gtkada-intl.adb
  	@echo "====== Building $(@F) libraries ====="
 -	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr
-+	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr \
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr \
 +	  -cargs:Ada $(ADAFLAGS) -cargs:C $(CFLAGS)
  ifeq (${HAVE_OPENGL}, True)
  	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/opengl/gtkada_gl.gpr
@@ -55,7 +55,7 @@
  tests: testgtk/opengl/view_gl.adb
  	@echo "====== Building tests ====="
 -	cd testgtk; ${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Ptestgtk.gpr -aP ../src
-+	cd testgtk; ${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	cd testgtk; ${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
 +	  -Ptestgtk.gpr -aP ../src -cargs:Ada $(ADAFLAGS)
  
  install/%: force
@@ -83,3 +83,20 @@
  
  	@echo '-----------------------------------------------------------------------'
  	@echo '--  GtkAda has now been installed.                                   --'
+--- gtkada-gpl-2016-src/src/gtkada.gpr.old	2017-05-31 14:21:35.007965274 +0200
++++ gtkada-gpl-2016-src/src/gtkada.gpr	2017-05-31 14:23:16.597315577 +0200
+@@ -41,7 +41,13 @@
+    for Library_Name use "gtkada";
+    for Library_Version use
+       "lib" & Project'Library_Name & Shared.So_Ext & "." & Version;
+-   for Library_Options use Shared.Gtk_Libs;
++
++   case Shared.Library_Kind is
++      when "relocatable" =>
++         for Library_Options use Shared.Gtk_Libs;
++      when others =>
++         null;
++   end case;
+ 
+    package Builder  renames Shared.Builder;
+    package Naming   renames Shared.Naming;
