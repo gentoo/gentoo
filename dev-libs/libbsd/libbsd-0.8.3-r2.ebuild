@@ -36,7 +36,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -name "*.la" -delete || die
 
 	rm "${ED%/}"/usr/share/man/man3/explicit_bzero.3 || die # 617462
 }
