@@ -32,6 +32,8 @@ KMEXTRACTONLY="
 
 KMLOADLIBS="libkdepim"
 
+PATCHES=( "${FILESDIR}/${P}-gcc6.patch" )
+
 src_install() {
 	kde4-meta_src_install
 
