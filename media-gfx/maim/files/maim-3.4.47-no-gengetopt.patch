@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fe4cd5f..f0eb718 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,19 +65,6 @@ if ( RONN_EXECUTABLE AND GZIP_EXECUTABLE )
+                        WORKING_DIRECTORY man-src VERBATIM )
+ endif()
+ 
+-# Here we generate some of our code if we can. I package it pre-generated
+-# so nobody has to go find and install gengetopt if they don't want to.
+-find_program( GENGETOPT_EXECUTABLE gengetopt
+-              DOC "A tool to generate code to grab command line options." )
+-if ( GENGETOPT_EXECUTABLE )
+-    message( "-- Regenerating cmdline.in" )
+-    execute_process( COMMAND "${GENGETOPT_EXECUTABLE}" "--input=options.ggo"
+-                     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src" )
+-    file( RENAME "${CMAKE_SOURCE_DIR}/src/cmdline.h" "${CMAKE_SOURCE_DIR}/src/cmdline.in" )
+-else()
+-    message( "Warning: Command gengetopt not found! Won't regenerate command line code. (If you're just compiling this doesn't matter.)" )
+-endif()
+-
+ # By default our src/options.ggo has our cmake versions variables for
+ # the 'version ""' line. We replace them here.
+ # The ${CMAKE_SOURCE_DIR} is there to fix problems with OpenBSD's out-of-source build black magic.
