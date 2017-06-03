@@ -1,0 +1,32 @@
+From 8eaf6b7ea92018202a886e1d919e2c6b0d307c99 Mon Sep 17 00:00:00 2001
+From: Mike Bayer <mike_mp@zzzcomputing.com>
+Date: Mon, 22 May 2017 22:30:54 -0400
+Subject: [PATCH] - exception test fixes for more recent pygments
+
+Change-Id: Ibdfe5b2f2f3d1426921bcadf6740ae065ed0833b
+---
+ test/test_exceptions.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_exceptions.py b/test/test_exceptions.py
+index 8321b25..bcaae3b 100644
+--- a/test/test_exceptions.py
++++ b/test/test_exceptions.py
+@@ -91,7 +91,7 @@ def test_utf8_html_error_template_pygments(self):
+                 assert "".encode(sys.getdefaultencoding(),
+                                         'htmlentityreplace') in html_error
+             else:
+-                assert 'u&#39;'\
++                assert '&#39;'\
+                         '&#x43F;&#x440;&#x438;&#x432;&#x435;&#x442;'\
+                         '&#39;</span><span class="cp">}</span>'.encode(
+                                 sys.getdefaultencoding(),
+@@ -220,7 +220,7 @@ def test_utf8_format_exceptions_pygments(self):
+             assert '&#39;привет&#39;</span>' in \
+                 l.get_template("foo.html").render().decode('utf-8')
+         else:
+-            assert 'u&#39;&#x43F;&#x440;&#x438;&#x432;'\
++            assert '&#39;&#x43F;&#x440;&#x438;&#x432;'\
+                     '&#x435;&#x442;&#39;</span>' in \
+                 l.get_template("foo.html").render().decode('utf-8')
+ 
