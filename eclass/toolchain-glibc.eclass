@@ -311,7 +311,7 @@ want__thread() {
 
 	[[ -n ${WANT__THREAD} ]] && return ${WANT__THREAD}
 
-	# only test gcc -- cant test linking yet
+	# only test gcc -- can't test linking yet
 	tc-has-tls -c ${CTARGET}
 	WANT__THREAD=$?
 
@@ -585,7 +585,7 @@ get_kheader_version() {
 }
 
 check_nptl_support() {
-	# don't care about the compiler here as we arent using it
+	# don't care about the compiler here as we aren't using it
 	just_headers && return
 
 	local run_kv build_kv want_kv
@@ -926,8 +926,8 @@ toolchain-glibc_headers_configure() {
 	mkdir -p "${builddir}"
 	cd "${builddir}"
 
-	# if we don't have a compiler yet, we cant really test it now ...
-	# hopefully they don't affect header geneation, so let's hope for
+	# if we don't have a compiler yet, we can't really test it now ...
+	# hopefully they don't affect header generation, so let's hope for
 	# the best here ...
 	local v vars=(
 		ac_cv_header_cpuid_h=yes
@@ -1314,7 +1314,7 @@ toolchain-glibc_src_install() {
 	src_strip
 }
 
-# Simple test to make sure our new glibc isnt completely broken.
+# Simple test to make sure our new glibc isn't completely broken.
 # Make sure we don't test with statically built binaries since
 # they will fail.  Also, skip if this glibc is a cross compiler.
 #
