@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 toolchain-funcs
+inherit flag-o-matic distutils-r1 toolchain-funcs
 
 DESCRIPTION="Lightweight and super-fast messaging library built on top of the ZeroMQ library"
 HOMEPAGE="http://www.zeromq.org/bindings:python https://pypi.python.org/pypi/pyzmq"
@@ -15,23 +15,25 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="doc examples test"
+IUSE="doc test"
 
-PY2_USEDEP=$(python_gen_usedep python2_7)
 RDEPEND="
 	>=net-libs/zeromq-4.1.2:=
 	dev-python/py[${PYTHON_USEDEP}]
 	dev-python/cffi:=[${PYTHON_USEDEP}]
-	dev-python/gevent[${PY2_USEDEP}]"
+	$(python_gen_cond_dep 'dev-python/gevent[${PYTHON_USEDEP}]' python2_7)
+"
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
+		www-servers/tornado[${PYTHON_USEDEP}]
+	)
 	doc? (
 		>=dev-python/sphinx-1.3[${PYTHON_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 	)"
-
-PATCHES=( "${FILESDIR}/pyzmq-cython-0.24.patch" )
 
 python_prepare_all() {
 	# Prevent un-needed download during build
@@ -41,6 +43,7 @@ python_prepare_all() {
 
 python_configure_all() {
 	tc-export CC
+	append-cppflags -DZMQ_BUILD_DRAFT_API=1
 }
 
 python_compile_all() {
@@ -54,13 +57,10 @@ python_compile() {
 }
 
 python_test() {
-	# suite reports error in absence of gevent under py3 but is designed to continue
-	# rather than exit making py3 apt for the test phase
-	nosetests -svw "${BUILD_DIR}/lib/" || die
+	${EPYTHON} -m pytest -v "${BUILD_DIR}/lib" || die
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
 	use doc && local HTML_DOCS=( docs/build/html/. )
 	distutils-r1_python_install_all
 }
