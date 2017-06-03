@@ -16,6 +16,9 @@
       allows for console logins to make use of ConsoleKit
       authorization.
     </flag>
+    <flag name="elogind">
+      Use pam_elogind module to register user sessions with elogind.
+    </flag>
     <flag name="systemd">
       Use pam_systemd module to register user sessions in the systemd
       control group hierarchy.
