@@ -267,11 +267,6 @@ kde-misc/quadkonsole
 # experimental features and accept a more unstable release.
 >=www-client/chromium-60
 
-# Michał Górny <mgorny@gentoo.org> (01 May 2017)
-# Used only by old (removed) versions of dev-python/google-apitools.
-# Last release in 2015. Removal in 30 days.
-dev-python/protorpc
-
 # Zac Medico <zmedico@gentoo.org> (01 May 2017)
 # Possible API incompatibilities, bug #617174.
 # http://aiohttp.readthedocs.io/en/latest/migration.html
