@@ -1,16 +1,16 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils
+inherit toolchain-funcs
 
-DESCRIPTION="Utility for stuffing image files (e.g. album cover art) into metadata blocks in FLAC files"
+DESCRIPTION="Utility for adding image files (e.g. album cover art) to metadata of FLAC files"
 HOMEPAGE="http://www.singingtree.com/software/"
 SRC_URI="http://www.singingtree.com/software/${PN}.tar.gz -> ${P}.tar.gz"
 # FIXME: no version in tarball, but also no updates for a long time. So it's ok.
-LICENSE="BSD"
 
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -18,23 +18,18 @@ IUSE=""
 DEPEND="media-libs/flac"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}"
+S=${WORKDIR}
 
-# compile helper
-_compile() {
-	local CC="$(tc-getCC)"
-	echo "${CC} ${@}" && "${CC}" "${@}"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.00-add-missing-string-include.patch
+	"${FILESDIR}"/${PN}-1.00-fix-build-system.patch
+)
 
-src_prepare() {
-	sed -i -e "s:^\(#include <stdio.h>\):\1\n#include <string.h>:g" "${PN}.c"
-	rm -f -- "${PN}"  # remove pre-compiled binary
-}
+src_configure() {
+	# remove pre-compiled binary
+	rm -f "${PN}" || die
 
-src_compile() {
-	# Makefile is both simple and broken, so we compile the binary ourself.
-	_compile ${CFLAGS} ${LDFLAGS} -o "${PN}" "${PN}.c" -lFLAC \
-	|| die "compile failed"
+	tc-export CC
 }
 
 src_install() {
