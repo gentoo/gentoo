@@ -1,0 +1,108 @@
+From 1335f70bbbaf618fd3989f6163da9fd499efdf61 Mon Sep 17 00:00:00 2001
+From: AbigailBuccaneer <AbigailBuccaneer@users.noreply.github.com>
+Date: Fri, 21 Apr 2017 15:44:02 +0100
+Subject: [PATCH 1/2] Use std::unique_ptr instead of std::scoped_ptr
+
+scoped_ptr has never been a part of the C++ standard - perhaps it's been
+confused with boost::scoped_ptr. Anyhow, std::unique_ptr is the
+replacement for the now-deprecated std::auto_ptr.
+---
+ src/lib_json/json_reader.cpp | 2 +-
+ src/lib_json/json_writer.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib_json/json_reader.cpp b/src/lib_json/json_reader.cpp
+index 290e0b1..c133168 100644
+--- a/src/lib_json/json_reader.cpp
++++ b/src/lib_json/json_reader.cpp
+@@ -44,7 +44,7 @@ static int       stackDepth_g = 0;  // see readValue()
+ namespace Json {
+ 
+ #if __GNUC__ >= 6
+-typedef std::scoped_ptr<CharReader> const  CharReaderPtr;
++typedef std::unique_ptr<CharReader> const  CharReaderPtr;
+ #else
+ typedef std::auto_ptr<CharReader>          CharReaderPtr;
+ #endif
+diff --git a/src/lib_json/json_writer.cpp b/src/lib_json/json_writer.cpp
+index f2eb200..a04c66b 100644
+--- a/src/lib_json/json_writer.cpp
++++ b/src/lib_json/json_writer.cpp
+@@ -55,7 +55,7 @@
+ namespace Json {
+ 
+ #if __GNUC__ >= 6
+-typedef std::scoped_ptr<StreamWriter> const  StreamWriterPtr;
++typedef std::unique_ptr<StreamWriter> const  StreamWriterPtr;
+ #else
+ typedef std::auto_ptr<StreamWriter>          StreamWriterPtr;
+ #endif
+
+From 347e1ae46b21418d743dad40c42f404c375f257a Mon Sep 17 00:00:00 2001
+From: AbigailBuccaneer <AbigailBuccaneer@users.noreply.github.com>
+Date: Fri, 21 Apr 2017 15:47:38 +0100
+Subject: [PATCH 2/2] Use unique_ptr instead of auto_ptr when possible
+
+Previously we only used it on GCC 6 to avoid deprecated declaration
+warnings. Now we are proactive and use it whenever compiling as C++11
+(or MSVC2010+).
+
+It also moves the logic for deciding between unique_ptr and auto_ptr
+into a single location in config.h.
+
+This fixes some use cases that were previously broken, including:
+* CXX=clang++ -std=c++11 -Werror=deprecated-declarations
+* CXX=g++-6 -std=c++03 -Werror=deprecated-declarations
+---
+ include/json/config.h        | 10 ++++++++++
+ src/lib_json/json_reader.cpp |  2 +-
+ src/lib_json/json_writer.cpp |  2 +-
+ 3 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/include/json/config.h b/include/json/config.h
+index 0dcd8ae..5ca3228 100644
+--- a/include/json/config.h
++++ b/include/json/config.h
+@@ -51,6 +51,16 @@
+ #define JSON_API
+ #endif
+ 
++#if !defined(JSON_HAS_UNIQUE_PTR)
++#if __cplusplus >= 201103L
++#define JSON_HAS_UNIQUE_PTR (1)
++#elif _MSC_VER >= 1600
++#define JSON_HAS_UNIQUE_PTR (1)
++#else
++#define JSON_HAS_UNIQUE_PTR (0)
++#endif
++#endif
++
+ // If JSON_NO_INT64 is defined, then Json only support C++ "int" type for
+ // integer
+ // Storages, and 64 bits integer support is disabled.
+diff --git a/src/lib_json/json_reader.cpp b/src/lib_json/json_reader.cpp
+index c133168..a2129be 100644
+--- a/src/lib_json/json_reader.cpp
++++ b/src/lib_json/json_reader.cpp
+@@ -43,7 +43,7 @@ static int       stackDepth_g = 0;  // see readValue()
+ 
+ namespace Json {
+ 
+-#if __GNUC__ >= 6
++#if JSON_HAS_UNIQUE_PTR
+ typedef std::unique_ptr<CharReader> const  CharReaderPtr;
+ #else
+ typedef std::auto_ptr<CharReader>          CharReaderPtr;
+diff --git a/src/lib_json/json_writer.cpp b/src/lib_json/json_writer.cpp
+index a04c66b..ec4b486 100644
+--- a/src/lib_json/json_writer.cpp
++++ b/src/lib_json/json_writer.cpp
+@@ -54,7 +54,7 @@
+ 
+ namespace Json {
+ 
+-#if __GNUC__ >= 6
++#if JSON_HAS_UNIQUE_PTR
+ typedef std::unique_ptr<StreamWriter> const  StreamWriterPtr;
+ #else
+ typedef std::auto_ptr<StreamWriter>          StreamWriterPtr;

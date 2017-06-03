@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,8 @@ DEPEND="
 RDEPEND=""
 
 RESTRICT="!test? ( test )"
+
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
 
 pkg_setup() {
 	if use doc || use test; then
