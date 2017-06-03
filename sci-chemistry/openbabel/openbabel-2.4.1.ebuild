@@ -66,7 +66,7 @@ src_install() {
 	dodoc doc/{*.html,*.png}
 	if use doc ; then
 		docinto html/API
-		dodoc doc/API/html/*
+		dodoc -r doc/API/html/*
 	fi
 
 	cmake-utils_src_install
