@@ -13,8 +13,9 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 src_prepare() {
+	default
+
 	eautoreconf
-	eapply_user
 }
 
 src_test() {
