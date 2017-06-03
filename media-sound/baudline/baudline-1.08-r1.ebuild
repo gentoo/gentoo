@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
 inherit eutils
 
-DESCRIPTION="A time-frequency browser designed for scientific visualization of the spectral domain"
+DESCRIPTION="A time-frequency browser designed for visualization of spectral domains"
 HOMEPAGE="http://www.baudline.com/"
 SRC_URI="amd64? ( http://www.baudline.com/${PN}_${PV}_linux_x86_64.tar.gz )
 	ppc? ( http://www.baudline.com/${PN}_${PV}_linux_ppc.tar.gz )
@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="jack"
 
 RESTRICT="mirror bindist"
-QA_PREBUILT="/opt/baudline/baudline"
+QA_PREBUILT="/opt/baudline/baudline*"
 
 RDEPEND="media-fonts/font-adobe-75dpi
 	media-fonts/font-misc-misc
@@ -29,31 +29,31 @@ RDEPEND="media-fonts/font-adobe-75dpi
 	x11-libs/libXxf86vm"
 
 src_unpack() {
-	unpack ${A}
+	default
 	# strip arch names from S
 	mv -v baudline_* ${P} || die
 }
 
 src_install() {
 	insinto /opt/${PN}
-	doins -r icons palettes || die
+	doins -r icons palettes
 
-	newicon icons/spectro512.png ${PN}.png || die
+	newicon icons/spectro512.png ${PN}.png
 
 	exeinto /opt/${PN}
-	doexe ${PN} || die
-	dosym /opt/${PN}/${PN} /usr/bin/${PN} || die
+	doexe ${PN}
+	dosym ../../opt/${PN}/${PN} /usr/bin/${PN}
 	make_desktop_entry /usr/bin/${PN} Baudline ${PN} "AudioVideo;Player;" \
 		"MimeType=audio/x-aiff;audio/basic;audio/x-mp3;audio/x-flac;audio/vorbis;audio/x-wav;" \
 		"audio/x-vorbis;audio/mpeg;audio/x-gsm;audio/x-voc;application/x-ogg;"
 
 	if use jack ; then
-		doexe ${PN}_jack || die
-		dosym /opt/${PN}/${PN}_jack /usr/bin/${PN}_jack || die
+		doexe ${PN}_jack
+		dosym ../../opt/${PN}/${PN}_jack /usr/bin/${PN}_jack
 		make_desktop_entry /usr/bin/${PN}_jack "Baudline (jack support)" ${PN} "AudioVideo;Player;" \
 			"MimeType=audio/x-aiff;audio/basic;audio/x-mp3;audio/x-flac;audio/vorbis;audio/x-wav;" \
 			"audio/x-vorbis;audio/mpeg;audio/x-gsm;audio/x-voc;application/x-ogg;"
 	fi
 
-	dodoc README_unix.txt || die
+	dodoc README_unix.txt
 }
