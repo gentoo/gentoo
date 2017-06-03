@@ -4117,7 +4117,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.4.0 7.2.6.10: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.4.0 7.2.6.8 7.2.6.9 7.2.6.10: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.4.0 7.2.6.10: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -12094,7 +12094,7 @@ kde-apps/umbrello 16.12.3 17.04.1: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.12.3 17.04.1: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.29.0 5.34.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 4.14.3_p20161017 5.29.0 5.34.0: Framework for searching and managing metadata
-kde-frameworks/bluez-qt 5.29.0 5.34.0 5.34.0-r1: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/bluez-qt 5.29.0 5.34.0-r1: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.29.0 5.34.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.29.0 5.34.0: Breeze SVG icon theme binary resource
 kde-frameworks/extra-cmake-modules 5.29.0 5.34.0: Extra modules and scripts for CMake
