@@ -24,8 +24,6 @@ DEPEND=">=dev-libs/libsodium-1.0.11:=
 	>=media-gfx/qrencode-3.4.4-r1"
 RDEPEND="${DEPEND}"
 
-PATCHES=("${FILESDIR}"/${PN}-cxx14.patch)
-
 DOCS=(
 	README.md
 	Example-client-configuration-file.ini
