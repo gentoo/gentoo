@@ -22,7 +22,10 @@ DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.1.0-sphinx.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0-sphinx.patch
+	"${FILESDIR}"/urwid-1.3.1-test-vterm-EINTR.patch
+)
 
 python_compile_all() {
 	if use doc ; then
