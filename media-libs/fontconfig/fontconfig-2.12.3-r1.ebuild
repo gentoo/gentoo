@@ -71,6 +71,7 @@ multilib_src_configure() {
 
 	local myeconfargs=(
 		$(use_enable doc docbook)
+		$(use_enable static-libs static)
 		--enable-docs
 		--localstatedir="${EPREFIX}"/var
 		--with-default-fonts="${EPREFIX}"/usr/share/fonts
@@ -97,7 +98,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -name "*.la" -delete || die
 
 	# fc-lang directory contains language coverage datafiles
 	# which are needed to test the coverage of fonts.
