@@ -27,16 +27,6 @@ S="${WORKDIR}/${PN}-release-${PV}"
 
 DOCS=( AUTHORS.txt NEWS.txt README.md )
 
-DOC_CONTENTS="Install optional package media-libs/chromaprint[tools] to enable
-calculation and lookup of AcoustID fingerprints.
-
-Install optional package dev-python/python-discid to enable
-calculation and lookup of compact disc identifiers (disc IDs).
-
-If you are upgrading Picard and it does not start, try removing
-Picard's settings:
-	rm ~/.config/MusicBrainz/Picard.conf"
-
 python_compile() {
 	local build_args=(
 		--disable-autoupdate
@@ -60,6 +50,16 @@ python_install() {
 
 python_install_all() {
 	distutils-r1_python_install_all
+
+	local DOC_CONTENTS="Install optional package media-libs/chromaprint[tools] to enable
+calculation and lookup of AcoustID fingerprints.
+
+Install optional package dev-python/python-discid to enable
+calculation and lookup of compact disc identifiers (disc IDs).
+
+If you are upgrading Picard and it does not start, try removing
+Picard's settings:
+	rm ~/.config/MusicBrainz/Picard.conf"
 	readme.gentoo_create_doc
 }
 
