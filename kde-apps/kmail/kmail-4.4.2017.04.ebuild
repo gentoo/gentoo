@@ -41,6 +41,8 @@ KMEXTRA="
 "
 KMLOADLIBS="libkdepim"
 
+PATCHES=( "${FILESDIR}/${P}-gcc6.patch" )
+
 src_configure() {
 	mycmakeargs=(
 		-DWITH_IndicateQt=OFF
