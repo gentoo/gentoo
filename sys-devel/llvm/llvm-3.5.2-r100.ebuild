@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,14 +9,14 @@ inherit eutils check-reqs flag-o-matic multilib pax-utils prefix \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
-	clang? ( http://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
-		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
-	https://dev.gentoo.org/~mgorny/dist/${PN}-3.4-manpages.tar.bz2"
+SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz )
+	https://dev.gentoo.org/~voyageur/distfiles/${PN}-3.5.0-manpages.tar.bz2"
 
 # Additional licenses:
 # 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
-# 2. ARM backend (disabled): ARM.
+# 2. ARM backend: LLVM Software Grant by ARM.
 # 3. MD5 code: public-domain.
 # 4. autoconf (not installed): some undefined M.I.T. license.
 # 5. Tests (not installed):
@@ -24,14 +24,16 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
 #  b. YAML tests: MIT.
 
 LICENSE="UoI-NCSA rc BSD public-domain"
-SLOT="0/3.4"
+SLOT="0/3.5"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang +libffi"
 
 COMMON_DEPEND="
 	sys-libs/zlib:0=
 	libffi? ( >=virtual/libffi-3.0.13-r1:0= )"
+# configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
+	app-arch/xz-utils
 	dev-lang/perl
 	>=sys-devel/make-3.81
 	>=sys-devel/flex-2.5.4
@@ -39,6 +41,7 @@ DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-apple-4.2.1 >=sys-devel/llvm-3.3 )
 	>=sys-devel/binutils-apple-5.1
 	libffi? ( virtual/pkgconfig )
+	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99
@@ -71,6 +74,18 @@ check_space() {
 
 	local CHECKREQS_DISK_BUILD=${build_size}M
 	check-reqs_pkg_pretend
+
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		echo 'int main() {return 0;}' > "${T}"/test.cxx || die
+		ebegin "Trying to build a C++11 test program"
+		if ! $(tc-getCXX) -std=c++11 -o /dev/null "${T}"/test.cxx; then
+			eerror "LLVM-${PV} requires C++11-capable C++ compiler. Your current compiler"
+			eerror "does not seem to support -std=c++11 option. Please upgrade your compiler"
+			eerror "to gcc-4.7 or an equivalent version supporting C++11."
+			die "Currently active compiler does not support -std=c++11"
+		fi
+		eend ${?}
+	fi
 }
 
 pkg_pretend() {
@@ -90,21 +105,22 @@ src_unpack() {
 	if use clang; then
 		mv "${WORKDIR}"/cfe-${PV}.src "${S}"/tools/clang \
 			|| die "clang source directory move failed"
-		mv "${WORKDIR}"/compiler-rt-3.4 "${S}"/projects/compiler-rt \
+		mv "${WORKDIR}"/compiler-rt-${PV}.src "${S}"/projects/compiler-rt \
 			|| die "compiler-rt source directory move failed"
 	fi
 }
 
 src_prepare() {
 	epatch "${FILESDIR}"/3.6.2/nodoctargz.patch
-	epatch "${FILESDIR}"/3.4.2/gentoo-install.patch
+	epatch "${FILESDIR}"/3.6.2/gcc-4.9.patch
+	epatch "${FILESDIR}"/3.5.2/gentoo-install.patch
+	epatch "${FILESDIR}"/3.5.2/gcc-5.1.patch
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/3.4.2/clang/gentoo-runtime-gcc-detection-v3.patch
+		epatch "${FILESDIR}"/3.8.1/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/3.4.2/clang/gentoo-install.patch
-		epatch "${FILESDIR}"/3.4.2/clang/darwin_build_fix.patch
+		epatch "${FILESDIR}"/3.5.2/clang/gentoo-install.patch
 		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
@@ -113,6 +129,9 @@ src_prepare() {
 		sed -i -e "/^CFLAGS /s@-Werror@-I${EPREFIX}/usr/include@" \
 			projects/compiler-rt/make/platform/clang_*.mk || die
 	fi
+
+	# disable use of SDK on OSX, bug #568758
+	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
 	local sub_files=(
 		Makefile.config.in
@@ -156,6 +175,7 @@ src_configure() {
 		--enable-optimized
 		--disable-assertions
 		--disable-expensive-checks
+		--disable-libedit
 		--disable-terminfo
 		$(use_enable libffi)
 
@@ -195,13 +215,13 @@ src_install() {
 	emake "${LLVM_MAKEARGS[@]}" DESTDIR="${D}" install
 
 	if ! use clang; then
-		rm "${WORKDIR}"/${PN}-3.4-manpages/clang.1 || die
+		rm "${WORKDIR}"/${PN}-3.5.0-manpages/clang.1 || die
 	else
 		for tool in clang{,++} ; do
 			dosym ${tool} /usr/bin/${CHOST}-${tool}
 		done
 	fi
-	doman "${WORKDIR}"/${PN}-3.4-manpages/*.1
+	doman "${WORKDIR}"/${PN}-3.5.0-manpages/*.1
 
 	# Fix install_names on Darwin.  The build system is too complicated
 	# to just fix this, so we correct it post-install
@@ -210,7 +230,7 @@ src_install() {
 		eval $(grep PACKAGE_VERSION= configure)
 		[[ -n ${PACKAGE_VERSION} ]] && libpv=${PACKAGE_VERSION}
 		libpvminor=${libpv%.[0-9]*}
-		for lib in lib{EnhancedDisassembly,LLVM-${libpv},LTO,profile_rt,clang}.dylib LLVMHello.dylib BugpointPasses.dylib clang/${libpv}/lib/darwin/libclang_rt.asan_{osx,iossim}_dynamic.dylib; do
+		for lib in lib{EnhancedDisassembly,LLVM-${libpv},LTO,profile_rt,clang}.dylib LLVMHello.dylib clang/${libpv}/lib/darwin/libclang_rt.asan_{osx,iossim}_dynamic.dylib; do
 			# libEnhancedDisassembly is Darwin10 only, so non-fatal
 			# + omit clang libs if not enabled
 			[[ -f ${ED}/usr/lib/${lib} ]] || continue
