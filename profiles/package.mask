@@ -283,10 +283,6 @@ dev-python/protorpc
 # Bug #615480
 =sys-kernel/vanilla-sources-4.1.39
 
-# Dirkjan Ochtman <djc@gentoo.org> (27 Apr 2017)
-# Persona service has been discontinued. Masked for removal in 30 days.
-www-apache/mod_authnz_persona
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
