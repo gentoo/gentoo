@@ -1,0 +1,27 @@
+--- a/kaddressbook/views/configurecardviewdialog.cpp
++++ b/kaddressbook/views/configurecardviewdialog.cpp
+@@ -34,6 +34,7 @@
+ #include <kcolorscheme.h>
+ #include <kconfig.h>
+ #include <kdebug.h>
++#include <kfontchooser.h>
+ #include <kfontdialog.h>
+ #include <kglobal.h>
+ #include <kiconloader.h>
+@@ -165,14 +166,14 @@
+ void CardViewLookNFeelPage::setTextFont()
+ {
+   QFont f( lTextFont->font() );
+-  if ( KFontDialog::getFont( f, false, this ) == QDialog::Accepted )
++  if ( KFontDialog::getFont( f, KFontChooser::NoDisplayFlags, this ) == QDialog::Accepted )
+     updateFontLabel( f, lTextFont );
+ }
+ 
+ void CardViewLookNFeelPage::setHeaderFont()
+ {
+   QFont f( lHeaderFont->font() );
+-  if ( KFontDialog::getFont( f,false, this ) == QDialog::Accepted )
++  if ( KFontDialog::getFont( f, KFontChooser::NoDisplayFlags, this ) == QDialog::Accepted )
+     updateFontLabel( f, lHeaderFont );
+ }
+ 
