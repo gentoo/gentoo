@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS COPYRIGHT README )
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.0_p20150423-gcc6.patch
+
 	cp "${FILESDIR}/Makefile" src/ || die
 	cp "${FILESDIR}/Makefile.test" test/Makefile || die
 	multilib_copy_sources
