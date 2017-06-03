@@ -111,10 +111,15 @@ src_configure() {
 		$(cmake-utils_use_find_package qt5 Qt5Core)
 		-DWITH_TIFF="$(usex tiff)"
 	)
+	if use jpeg; then
+		mycmakeargs+=(-DENABLE_DCTDECODER=libjpeg)
+	else
+		mycmakeargs+=(-DENABLE_DCTDECODER=none)
+	fi
 	if use jpeg2k; then
 		mycmakeargs+=(-DENABLE_LIBOPENJPEG=openjpeg2)
 	else
-		mycmakeargs+=(-DENABLE_LIBOPENJPEG=)
+		mycmakeargs+=(-DENABLE_LIBOPENJPEG=none)
 	fi
 	if use lcms; then
 		mycmakeargs+=(-DENABLE_CMS=lcms2)
