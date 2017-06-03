@@ -714,6 +714,7 @@ dev-libs/iniparser:4
 =dev-python/django-1.5*
 =dev-python/django-1.6*
 =dev-python/django-1.7*
+=dev-python/django-1.9*
 # Not supported by any django version upstream supports
 dev-python/south
 
