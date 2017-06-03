@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unkeyworded on most arches, unmasked in supported arch profiles.
+elogind
+
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
 
