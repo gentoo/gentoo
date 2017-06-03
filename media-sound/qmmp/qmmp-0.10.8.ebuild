@@ -4,11 +4,11 @@
 EAPI=6
 
 inherit cmake-utils
-[ "$PV" == "9999" ] && inherit subversion
+[[ ${PV} = 9999 ]] && inherit subversion
 
 DESCRIPTION="Qt4-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
-if [ "$PV" != "9999" ]; then
+if [[ ${PV} != 9999 ]]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~ppc ~x86"
 else
@@ -18,50 +18,64 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
-IUSE="analyzer aac +alsa bs2b cdda cover crossfade cue curl enca ffmpeg flac jack game kde ladspa
-lyrics +mad midi mms modplug mplayer mpris musepack notifier opus oss projectm
+IUSE="aac +alsa analyzer bs2b cdda cover crossfade cue curl +dbus enca ffmpeg flac game gnome
+jack ladspa libav lyrics +mad midi mms modplug mplayer musepack notifier opus oss projectm
 pulseaudio qsui scrobbler sndfile soxr stereo tray udisks +vorbis wavpack"
 
-RDEPEND="media-libs/taglib
+REQUIRED_USE="gnome? ( dbus ) udisks? ( dbus )"
+
+RDEPEND="
 	dev-qt/qtcore:4
-	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
 	dev-qt/qtmultimedia:4
+	media-libs/taglib
+	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
-	cdda? ( dev-libs/libcdio-paranoia )
+	cdda? (
+		dev-libs/libcdio
+		dev-libs/libcdio-paranoia
+	)
 	cue? ( media-libs/libcue )
 	curl? ( net-misc/curl )
-	aac? ( media-libs/faad2 )
+	dbus? ( dev-qt/qtdbus:4 )
 	enca? ( app-i18n/enca )
+	ffmpeg? (
+		!libav? ( media-video/ffmpeg:= )
+		libav? ( media-video/libav:= )
+	)
 	flac? ( media-libs/flac )
 	game? ( media-libs/game-music-emu )
+	jack? (
+		media-libs/libsamplerate
+		media-sound/jack-audio-connection-kit
+	)
 	ladspa? ( media-libs/ladspa-cmt )
 	mad? ( media-libs/libmad )
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
+	modplug? ( >=media-libs/libmodplug-0.8.4 )
 	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
-	modplug? ( >=media-libs/libmodplug-0.8.4 )
-	vorbis? ( media-libs/libvorbis
-		media-libs/libogg )
-	jack? ( media-sound/jack-audio-connection-kit
-		media-libs/libsamplerate )
-	ffmpeg? ( virtual/ffmpeg )
 	opus? ( media-libs/opusfile )
-	projectm? ( media-libs/libprojectm
-		dev-qt/qtopengl:4 )
+	projectm? (
+		dev-qt/qtopengl:4
+		media-libs/libprojectm
+	)
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
-	wavpack? ( media-sound/wavpack )
 	scrobbler? ( net-misc/curl )
 	sndfile? ( media-libs/libsndfile )
 	soxr? ( media-libs/soxr )
-	udisks? ( sys-fs/udisks:2 )"
+	udisks? ( sys-fs/udisks:2 )
+	vorbis? (
+		media-libs/libogg
+		media-libs/libvorbis
+	)
+	wavpack? ( media-sound/wavpack )
+"
 DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS ChangeLog README"
-
-CMAKE_IN_SOURCE_BUILD="1"
+DOCS=( AUTHORS ChangeLog README )
 
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia; then
@@ -74,32 +88,33 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
-		-DUSE_ALSA="$(usex alsa)"
+	local mycmakeargs=(
 		-DUSE_AAC="$(usex aac)"
+		-DUSE_ALSA="$(usex alsa)"
 		-DUSE_ANALYZER="$(usex analyzer)"
 		-DUSE_BS2B="$(usex bs2b)"
 		-DUSE_CDA="$(usex cdda)"
-		-DUSE_CROSSFADE="$(usex crossfade)"
 		-DUSE_COVER="$(usex cover)"
+		-DUSE_CROSSFADE="$(usex crossfade)"
 		-DUSE_CUE="$(usex cue)"
 		-DUSE_CURL="$(usex curl)"
+		-DUSE_KDENOTIFY="$(usex dbus)"
+		-DUSE_MPRIS="$(usex dbus)"
 		-DUSE_ENCA="$(usex enca)"
 		-DUSE_FFMPEG="$(usex ffmpeg)"
 		-DUSE_FFMPEG_LEGACY=OFF
 		-DUSE_FLAC="$(usex flac)"
 		-DUSE_GME="$(usex game)"
+		-DUSE_GNOMEHOTKEY="$(usex gnome)"
 		-DUSE_HAL=OFF
 		-DUSE_JACK="$(usex jack)"
-		-DUSE_KDENOTIFY="$(usex kde)"
 		-DUSE_LADSPA="$(usex ladspa)"
 		-DUSE_LYRICS="$(usex lyrics)"
 		-DUSE_MAD="$(usex mad)"
 		-DUSE_MIDI="$(usex midi)"
-		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MMS="$(usex mms)"
 		-DUSE_MODPLUG="$(usex modplug)"
-		-DUSE_MPRIS="$(usex mpris)"
+		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MPC="$(usex musepack)"
 		-DUSE_NOTIFIER="$(usex notifier)"
 		-DUSE_OPUS="$(usex opus)"
@@ -116,7 +131,7 @@ src_configure() {
 		-DUSE_UDISKS=OFF
 		-DUSE_VORBIS="$(usex vorbis)"
 		-DUSE_WAVPACK="$(usex wavpack)"
-		)
+	)
 
 	cmake-utils_src_configure
 }
