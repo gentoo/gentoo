@@ -1330,7 +1330,7 @@ app-emulation/libdsk 1.5.4: LIBDSK is a library for accessing discs and disc ima
 app-emulation/libguestfs 1.28.5-r2: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
-app-emulation/libvirt 2.5.0-r2 3.1.0 3.2.0 3.3.0 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 3.2.0 3.3.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6-r1 2.0.7: LinuX Containers userspace utilities
@@ -5311,7 +5311,7 @@ dev-ml/ocaml-cstruct 2.4.0 2.4.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4 0.12.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
-dev-ml/ocaml-dns 0.20.0 0.20.1: A pure OCaml implementation of the DNS protocol
+dev-ml/ocaml-dns 0.20.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
@@ -5337,7 +5337,7 @@ dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocaml-stdint 0.3.0: Various signed and unsigned integers for OCaml
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
-dev-ml/ocaml-uri 1.9.2: RFC3986 URI parsing library for OCaml
+dev-ml/ocaml-uri 1.9.2 1.9.4: RFC3986 URI parsing library for OCaml
 dev-ml/ocaml-webmachine 0.4.0: A REST toolkit for OCaml
 dev-ml/ocaml-websocket 2.9: Websocket library for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0: Generic build tool with built-in rules for building OCaml library and programs
@@ -5412,8 +5412,8 @@ dev-ml/qcheck 0.5.2 0.5.3 0.5.3.1 0.6: QuickCheck inspired property-based testin
 dev-ml/re2 0.9.0: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0 1.2.1: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
-dev-ml/reason 1.13.5: Meta Language Toolchain
-dev-ml/reason-parser 1.13.3 1.13.4 1.13.5: Meta Language Toolchain
+dev-ml/reason 2.0.0: Meta Language Toolchain
+dev-ml/reason-parser 2.0.0: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/sedlex 1.99.3: An OCaml lexer generator for Unicode
@@ -7900,7 +7900,7 @@ dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp,
 dev-python/libpillowfight 0.2.1: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 2.5.0-r1 3.1.0 3.2.0 3.3.0 9999: libvirt Python bindings
+dev-python/libvirt-python 3.2.0 3.3.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.3: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 1.0 1.0-r1 2.0 9999: Line-by-line profiler
@@ -19189,7 +19189,7 @@ x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private convers
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1 1.21.1 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
-x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 9999: SkypeWeb Plugin for Pidgin
+x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
