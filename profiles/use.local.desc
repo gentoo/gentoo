@@ -4619,10 +4619,8 @@ media-sound/qmmp:dbus - Enable DBus notifiications and MPRIS support
 media-sound/qmmp:enca - Detects the character encoding automatically
 media-sound/qmmp:game - Enable Game music support
 media-sound/qmmp:gnome - Enable Gnome hotkey support (requires Qt5DBus)
-media-sound/qmmp:kde - Use kde4 notifier system
 media-sound/qmmp:lyrics - Fetch track lyrics from the web
 media-sound/qmmp:midi - Enable midi support using wildmidi library
-media-sound/qmmp:mpris - Enable MPRIS support
 media-sound/qmmp:notifier - Enable qmmps' notifier system
 media-sound/qmmp:opus - Enable the opus plugin
 media-sound/qmmp:projectm - Enable projectm music visualization plugin
