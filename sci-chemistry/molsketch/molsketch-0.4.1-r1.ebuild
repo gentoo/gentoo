@@ -48,6 +48,7 @@ src_configure() {
 		-DOPENBABEL2_INCLUDE_DIR="${EPREFIX}/usr/include/openbabel-2.0"
 		-DCMAKE_DISABLE_FIND_PACKAGE_KDE4=ON
 		-DENABLE_TESTS=$(usex test "ON" "OFF")
+		-DMSK_INSTALL_PREFIX=/usr
 	)
 	cmake-utils_src_configure
 }
