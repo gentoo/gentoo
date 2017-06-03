@@ -1,4 +1,4 @@
-#openfoam-2.4.0-r1.ebuild Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires >=portage-2.1.1
