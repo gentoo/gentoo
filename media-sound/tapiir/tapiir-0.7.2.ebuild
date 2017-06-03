@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 inherit eutils
 
-DESCRIPTION="a flexible audio effects processor, inspired on the classical magnetic tape delay systems"
+DESCRIPTION="A flexible audio effects processor, inspired by classical tape delay systems"
 HOMEPAGE="http://www.iua.upf.es/~mdeboer/projects/tapiir/"
 SRC_URI="http://www.iua.upf.es/~mdeboer/projects/tapiir/download/${P}.tar.gz"
 
