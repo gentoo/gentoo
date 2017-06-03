@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 	dev-ml/opam
 "
 
-
 src_install() {
 	opam-installer -i \
 		--prefix="${ED}/usr" \
