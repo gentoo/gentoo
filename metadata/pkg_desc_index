@@ -15149,7 +15149,7 @@ net-mail/smtptools 0.2.3: A collection of tools to send or receive mails with SM
 net-mail/spamcup 1.09: This script does the same you would do when you report spam with your browser in Spamcop.net
 net-mail/swaks 20130209.0 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
-net-mail/tnef 1.4.12 1.4.14: Decodes MS-TNEF MIME attachments
+net-mail/tnef 1.4.12 1.4.14 1.4.15: Decodes MS-TNEF MIME attachments
 net-mail/topal 75: Topal is a 'glue' program that links GnuPG and Pine/Alpine
 net-mail/tpop3d 1.5.5: An extensible POP3 server with vmail-sql/MySQL support
 net-mail/up-imapproxy 1.2.7: Proxy IMAP transactions between an IMAP client and an IMAP server
