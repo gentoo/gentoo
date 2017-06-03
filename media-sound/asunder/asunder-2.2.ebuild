@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-DESCRIPTION="A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis and FLAC"
+DESCRIPTION="A graphical Audio CD ripper and encoder with support for many output formats"
 HOMEPAGE="http://littlesvr.ca/asunder/"
 SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
