@@ -2,14 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools ltprune
+
+inherit autotools
 
 DESCRIPTION="xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library"
-HOMEPAGE="http://linux.techass.com/projects/xdb/"
+HOMEPAGE="https://sourceforge.net/projects/xdb/ http://linux.techass.com/projects/xdb/"
 SRC_URI="mirror://sourceforge/xdb/${PN}64-${PV}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd"
 IUSE="doc static-libs"
 
@@ -39,15 +40,22 @@ src_configure() {
 }
 
 src_install() {
-	default
-	prune_libtool_files
+	if use doc; then
+		HTML_DOCS+=( html/. )
+		if [[ -e examples/.libs ]] ; then
+			rm -r examples/.libs || die
+		fi
+		dodoc -r examples
+	fi
 
-	# media-tv/linuxtv-dvb-apps collision, bug #208596
-	mv "${ED}/usr/bin/zap" "${ED}/usr/bin/${PN}-zap" || die
+	default
+	find "${D}" -name '*.la' -delete || die
 
 	if use doc; then
-		dohtml html/*
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*
+		rm "${ED%/}"/usr/share/doc/${PF}/html/copying.lib || die
+		rm "${ED%/}"/usr/share/doc/${PF}/html/Makefile{,.in,.am} || die
 	fi
+
+	# media-tv/linuxtv-dvb-apps collision, bug #208596
+	mv "${ED%/}"/usr/bin/{,${PN}-}zap || die
 }
