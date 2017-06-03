@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KDE_HANDBOOK="optional"
+KDE_HANDBOOK="false" # buildsystem applies broken python hacks, bug #614950
 inherit kde5
 
 DESCRIPTION="Simple tag editor based on Qt"
