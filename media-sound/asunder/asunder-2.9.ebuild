@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis, FLAC and Opus"
+DESCRIPTION="A graphical Audio CD ripper and encoder with support for many output formats"
 HOMEPAGE="http://littlesvr.ca/asunder/"
 SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
@@ -29,9 +29,7 @@ RDEPEND="${COMMON_DEPEND}
 	vorbis? ( media-sound/vorbis-tools )
 	wavpack? ( media-sound/wavpack )"
 
-DOCS="AUTHORS ChangeLog README TODO" # NEWS is dummy
-
 src_prepare() {
 	default
-	sed -i -e 's:cd syslogng && $(MAKE) install:true:' "${S}"/Makefile.in
+	sed -i -e 's:cd syslogng && $(MAKE) install:true:' Makefile.in || die
 }
