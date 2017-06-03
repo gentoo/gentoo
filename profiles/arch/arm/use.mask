@@ -5,6 +5,10 @@
 -cpu_flags_arm_iwmmxt
 -iwmmxt
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unmask elogind since it is keyworded here.
+-elogind
+
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # Dependencies not keyworded
 ayatana

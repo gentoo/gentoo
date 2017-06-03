@@ -6,6 +6,10 @@
 
 # SECTION: Unmask
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unmask elogind since it is keyworded here.
+-elogind
+
 # Sven Wegener <swegener@gentoo.org> (31 May 2017)
 # libvirt is supported on amd64
 -libvirt
