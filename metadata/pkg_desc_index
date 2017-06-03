@@ -5630,7 +5630,7 @@ dev-perl/Config-Any 0.290.0 0.300.0 0.320.0: Load configuration from different f
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
 dev-perl/Config-AutoConf 0.311.0 0.313.0 0.314.0: A module to implement some of AutoConf macros in pure perl
-dev-perl/Config-Crontab 1.400.0 1.410.0 1.450.0: Read/Write Vixie compatible crontab(5) files
+dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.600.0 2.620.0 2.630.0: Config file parser module
 dev-perl/Config-Grammar 1.100.0-r1 1.110.0: A grammar-based, user-friendly config parser
 dev-perl/Config-INI 0.25.0: simple .ini-file format
@@ -5732,7 +5732,7 @@ dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
-dev-perl/Data-ObjectDriver 0.90.0-r1 0.140.0 0.150.0: Simple, transparent data interface, with caching
+dev-perl/Data-ObjectDriver 0.150.0: Simple, transparent data interface, with caching
 dev-perl/Data-OptList 0.109.0 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
@@ -5774,7 +5774,7 @@ dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2
 dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0 1.50.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.730.0: Parse and Format DateTimes using Strptime
-dev-perl/DateTime-Format-W3CDTF 0.60.0-r1 0.70.0: Parse and format W3CDTF datetime strings
+dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
@@ -8522,7 +8522,7 @@ dev-python/python-xlib 0.15_rc1-r2 0.19: A fully functional X client library for
 dev-python/python-yadis 1.1.0-r2: Yadis service discovery library
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
-dev-python/python3-openid 3.0.4_p1: Python 3 port of the python-openid library
+dev-python/python3-openid 3.0.4_p1 3.1.0: Python 3 port of the python-openid library
 dev-python/python_orocos_kdl 1.3.1-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.2.2 3.3.0 3.3.0-r200: A Python module for making simple text/console-mode user interfaces
 dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment for Python
@@ -13644,7 +13644,7 @@ media-radio/xlog 2.0.14 2.0.14-r1: An amateur radio logging program
 media-radio/xwxapt 2.4 2.7 2.9: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
-media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
+media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.9 8.13.10: A program to convert abc files to Postscript files
@@ -13666,7 +13666,7 @@ media-sound/aqualung 1.0-r1 1.0-r2: Music player for a wide range of formats des
 media-sound/ardour 2.8.16-r1 4.7-r1 5.3-r1 5.5-r1 5.6-r1 5.8-r1 5.9 9999: Digital Audio Workstation
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
-media-sound/asunder 2.2 2.8 2.8.1 2.9: A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis, FLAC and Opus
+media-sound/asunder 2.2 2.8 2.8.1 2.9: A graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.4.1 3.6.2 3.7.1 3.7.1-r1: Audacious Player - Your music, your way, no exceptions
 media-sound/audacity 2.0.5 2.0.5-r1 2.1.2 2.1.3: Free crossplatform audio editor
@@ -13677,7 +13677,7 @@ media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audi
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1d 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
-media-sound/baudline 1.08-r1: A time-frequency browser designed for scientific visualization of the spectral domain
+media-sound/baudline 1.08-r1: A time-frequency browser designed for visualization of spectral domains
 media-sound/beets 1.3.13-r1 1.3.19 1.4.3: A media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11: Qt4 MPD client with experimental UI
 media-sound/bitmeter 1.2-r1: Diagnosis tool for JACK audio software
@@ -13704,7 +13704,7 @@ media-sound/codecgraph 20120114-r2: Generates a graph based on the ALSA descript
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 1.12: GUI audio tagger based on Qt4 and taglib
 media-sound/cplay 1.50: A Curses front-end for various audio players
-media-sound/csound 6.08.0 9999: A sound design and signal processing system providing facilities for composition and performance
+media-sound/csound 6.08.0 9999: A sound design and signal processing system for composition and performance
 media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3: A live audio streamer
@@ -13728,7 +13728,7 @@ media-sound/erec 2.2.0.1: A shared audio recording server
 media-sound/exaile 3.4.5: a media player aiming to be similar to AmaroK, but for GTK+
 media-sound/ezstream 0.5.6 0.6.0: A command line source client for Icecast media streaming servers
 media-sound/fapg 0.41 0.42: Fast Audio Playlist Generator
-media-sound/flac-image 1.00: Utility for stuffing image files (e.g. album cover art) into metadata blocks in FLAC files
+media-sound/flac-image 1.00: Utility for adding image files (e.g. album cover art) to metadata of FLAC files
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flack 2.0.6: flack - edit FLAC tags from command line
 media-sound/flacon 2.1.1: Extracts audio tracks from an audio CD image to separate tracks
@@ -13785,7 +13785,7 @@ media-sound/id3tool 1.2a: A command line utility for easy manipulation of the ID
 media-sound/id3v2 0.1.12: A command line editor for id3v2 tags
 media-sound/ifp-gnome 0.7-r2: Gnome front-end for file management on iRiver iFP MP3 players
 media-sound/imp3sh 0.2.4: flexible playlist manipulation shell and song player/streamer
-media-sound/jaaa 0.4.2 0.6.0 0.8.4: The JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
+media-sound/jaaa 0.4.2 0.6.0 0.8.4: JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
 media-sound/jack 3.1.1-r2: A frontend for several cd-rippers and mp3 encoders
 media-sound/jack-audio-connection-kit 0.121.3-r1 0.124.1-r1 0.125.0: A low-latency audio server
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
@@ -13979,7 +13979,7 @@ media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.49 1.0.55: Spotify is a social music platform
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
-media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
+media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media streaming solution
 media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other by a factor specified on the command line
 media-sound/supercollider 3.8.0: An environment and a programming language for real time audio synthesis.
@@ -13989,11 +13989,11 @@ media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
 media-sound/takcd 0.10-r1: Command line CD player
 media-sound/tap-reverbed 0 0-r1: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
 media-sound/tapestrea 0.1.0.5-r1: Techniques + Paradigms for Expressive Synthesis, Transformation, Rendering of Environmental Audio
-media-sound/tapiir 0.7.2 0.7.3: a flexible audio effects processor, inspired on the classical magnetic tape delay systems
+media-sound/tapiir 0.7.3: A flexible audio effects processor, inspired by classical tape delay systems
 media-sound/teamspeak-client-bin 3.0.19.1 3.0.19.4: TeamSpeak Client - Voice Communication Software
 media-sound/teamspeak-server-bin 3.0.13.6: Crystal Clear Cross-Platform Voice Communication Server
 media-sound/tempest_for_eliza 1.0.5-r1: listen to music on the radio generated by images on your screen
-media-sound/terminatorx 3.84-r1 4.0.1: realtime audio synthesizer that allows you to "scratch" on digitally sampled audio data
+media-sound/terminatorx 3.84-r1 4.0.1: Realtime audio synthesizer allowing you to 'scratch' on sampled audio data
 media-sound/timemachine 0.3.3-r1: JACK client record button remembering the last 10 seconds when pressed
 media-sound/timidity++ 2.14.0-r2: A handy MIDI to WAV converter with OSS and ALSA output support
 media-sound/timidity-eawpatches 12-r5: Eric Welsh's GUS patches for TiMidity
