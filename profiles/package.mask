@@ -707,11 +707,13 @@ dev-libs/iniparser:4
 # Unfixed security problems
 # No upstream support anymore
 # CVE-2015-{0219,0220,0221,0222,5145}
+# CVE-2016-{9013,9014},CVE-2017-{7233,7234}
 # #536586
 # #554864
 =dev-python/django-1.4*
 =dev-python/django-1.5*
 =dev-python/django-1.6*
+=dev-python/django-1.7*
 # Not supported by any django version upstream supports
 dev-python/south
 
