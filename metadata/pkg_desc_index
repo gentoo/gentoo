@@ -14519,7 +14519,7 @@ net-analyzer/tcpstat 1.5 1.5-r1 1.5-r2: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7-r2 6.6.7_p4_p1: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
-net-analyzer/testssl 2.6 2.8: Tool to check TLS/SSL cipher support
+net-analyzer/testssl 2.8: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 2.3 2.5 2.7 3.0 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
@@ -16795,7 +16795,7 @@ sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1-r1: Tool for extracting data points from graphs
 sci-visualization/yt 3.2.3 3.3.4: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.10.1 2.11.0: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.11.0: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 9999: SELinux policy for acct
@@ -17059,8 +17059,8 @@ sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware 
 sys-apps/agedu 20151213 20160906 20160920: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.10.1 2.11.0: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.10.1 2.11.0 2.11.0-r1: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.11.0: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.11.0-r1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
@@ -17899,7 +17899,7 @@ sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries fo
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
-sys-libs/libapparmor 2.10.1-r1 2.11.0: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.11.0: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
@@ -18443,7 +18443,7 @@ www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.9.818.50_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.10.845.3_p1 1.10.856.16_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.10.856.16_p1 1.10.862.6_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
