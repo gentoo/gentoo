@@ -43,6 +43,10 @@ RDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/1.11-sphinx-pngmath.patch
+)
+
 pkg_setup() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
 }
@@ -54,13 +58,7 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	# https://github.com/networkx/networkx/issues/1263
-	if use doc; then
-		sed \
-			-e "s:^\t\./:\t${PYTHON} :g" \
-			-i doc/Makefile || die
-		emake -C doc html
-	fi
+	use doc && emake -C doc html
 }
 
 python_test() {
