@@ -8549,7 +8549,7 @@ dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifica
 dev-python/pyxenstore 0.0.2 9999: Provides Python interfaces for Xen's XenStore
 dev-python/pyxml 0.8.4-r3: A collection of libraries to process XML with Python
 dev-python/pyyaml 3.12: YAML parser and emitter for Python
-dev-python/pyzmq 14.4.1 15.2.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
+dev-python/pyzmq 14.4.1 16.0.2: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
