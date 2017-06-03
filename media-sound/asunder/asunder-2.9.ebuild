@@ -29,9 +29,7 @@ RDEPEND="${COMMON_DEPEND}
 	vorbis? ( media-sound/vorbis-tools )
 	wavpack? ( media-sound/wavpack )"
 
-DOCS="AUTHORS ChangeLog README TODO" # NEWS is dummy
-
 src_prepare() {
 	default
-	sed -i -e 's:cd syslogng && $(MAKE) install:true:' "${S}"/Makefile.in
+	sed -i -e 's:cd syslogng && $(MAKE) install:true:' Makefile.in || die
 }
