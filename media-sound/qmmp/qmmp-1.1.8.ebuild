@@ -23,6 +23,8 @@ IUSE="aac +alsa analyzer bs2b cdda cover crossfade cue curl +dbus enca ffmpeg fl
 jack ladspa libav lyrics +mad midi mms modplug mplayer musepack notifier opus oss projectm
 pulseaudio qsui qtmedia scrobbler sid sndfile soxr stereo tray udisks +vorbis wavpack"
 
+REQUIRED_USE="gnome? ( dbus ) udisks? ( dbus )"
+
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -84,8 +86,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog README )
 
-REQUIRED_USE="gnome? ( dbus ) udisks? ( dbus )"
-
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia; then
 		sed -i \
@@ -98,15 +98,17 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_ALSA="$(usex alsa)"
 		-DUSE_AAC="$(usex aac)"
+		-DUSE_ALSA="$(usex alsa)"
 		-DUSE_ANALYZER="$(usex analyzer)"
 		-DUSE_BS2B="$(usex bs2b)"
 		-DUSE_CDA="$(usex cdda)"
-		-DUSE_CROSSFADE="$(usex crossfade)"
 		-DUSE_COVER="$(usex cover)"
+		-DUSE_CROSSFADE="$(usex crossfade)"
 		-DUSE_CUE="$(usex cue)"
 		-DUSE_CURL="$(usex curl)"
+		-DUSE_KDENOTIFY="$(usex dbus)"
+		-DUSE_MPRIS="$(usex dbus)"
 		-DUSE_ENCA="$(usex enca)"
 		-DUSE_FFMPEG="$(usex ffmpeg)"
 		-DUSE_FLAC="$(usex flac)"
@@ -114,15 +116,13 @@ src_configure() {
 		-DUSE_GNOMEHOTKEY="$(usex gnome)"
 		-DUSE_HAL=OFF
 		-DUSE_JACK="$(usex jack)"
-		-DUSE_KDENOTIFY="$(usex dbus)"
 		-DUSE_LADSPA="$(usex ladspa)"
 		-DUSE_LYRICS="$(usex lyrics)"
 		-DUSE_MAD="$(usex mad)"
 		-DUSE_MIDI="$(usex midi)"
-		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MMS="$(usex mms)"
 		-DUSE_MODPLUG="$(usex modplug)"
-		-DUSE_MPRIS="$(usex dbus)"
+		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MPC="$(usex musepack)"
 		-DUSE_NOTIFIER="$(usex notifier)"
 		-DUSE_OPUS="$(usex opus)"
