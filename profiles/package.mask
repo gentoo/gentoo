@@ -267,11 +267,6 @@ kde-misc/quadkonsole
 # experimental features and accept a more unstable release.
 >=www-client/chromium-60
 
-# Michał Górny <mgorny@gentoo.org> (01 May 2017)
-# Used only by old (removed) versions of dev-python/google-apitools.
-# Last release in 2015. Removal in 30 days.
-dev-python/protorpc
-
 # Zac Medico <zmedico@gentoo.org> (01 May 2017)
 # Possible API incompatibilities, bug #617174.
 # http://aiohttp.readthedocs.io/en/latest/migration.html
@@ -282,10 +277,6 @@ dev-python/protorpc
 # CVE-2016-10229 security issue. Masked until upstream add the patch.
 # Bug #615480
 =sys-kernel/vanilla-sources-4.1.39
-
-# Dirkjan Ochtman <djc@gentoo.org> (27 Apr 2017)
-# Persona service has been discontinued. Masked for removal in 30 days.
-www-apache/mod_authnz_persona
 
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
