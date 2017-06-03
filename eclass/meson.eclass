@@ -4,6 +4,7 @@
 # @ECLASS: meson.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# Mike Gilbert <floppym@gentoo.org>
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
@@ -48,7 +49,7 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-DEPEND=">=dev-util/meson-0.39.1
+DEPEND=">=dev-util/meson-0.40.0
 	>=dev-util/ninja-1.7.2"
 
 # @ECLASS-VARIABLE: BUILD_DIR
@@ -126,6 +127,7 @@ meson_src_configure() {
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
 		--sysconfdir "${EPREFIX}/etc"
+		--wrap-mode nodownload
 		)
 
 	# Both meson(1) and _meson_create_cross_file need these
