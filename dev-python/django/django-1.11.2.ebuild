@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 WEBAPP_NO_AUTO_INSTALL="yes"
 
@@ -30,6 +30,7 @@ IUSE="doc sqlite test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
+	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( >=dev-python/sphinx-1.0.7[${PYTHON_USEDEP}] )
 	test? (
@@ -37,7 +38,6 @@ DEPEND="${RDEPEND}
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/numpy[$(python_gen_usedep 'python*')]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		)"
 

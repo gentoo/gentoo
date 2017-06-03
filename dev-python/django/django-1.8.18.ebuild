@@ -1,23 +1,27 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 WEBAPP_NO_AUTO_INSTALL="yes"
 
 inherit bash-completion-r1 distutils-r1 eutils versionator webapp
 
-MY_P="Django-${PV}"
+MY_PN="Django"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="High-level Python web framework"
 HOMEPAGE="http://www.djangoproject.com/ https://pypi.python.org/pypi/Django"
-SRC_URI="https://www.djangoproject.com/m/releases/$(get_version_component_range 1-2)/${MY_P}.tar.gz"
+SRC_URI="
+	https://www.djangoproject.com/m/releases/$(get_version_component_range 1-2)/${MY_P}.tar.gz
+	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz
+	"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc sqlite test"
 
 RDEPEND=""
@@ -32,11 +36,6 @@ DEPEND="${RDEPEND}
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		)"
-
-#		dev-python/python-sqlparse[${PYTHON_USEDEP}]
-#		dev-python/bcrypt[${PYTHON_USEDEP}]
-#		dev-python/selenium[${PYTHON_USEDEP}]
-#		sci-libs/gdal[geos,${PYTHON_USEDEP}]
 
 S="${WORKDIR}/${MY_P}"
 
@@ -68,20 +67,6 @@ python_test() {
 		|| die "Tests fail with ${EPYTHON}"
 }
 
-src_install() {
-	distutils-r1_src_install
-	webapp_src_install
-
-	elog "Additional Backend support can be enabled via"
-	optfeature "MySQL backend support in python 2.7 only" dev-python/mysql-python
-	optfeature "MySQL backend support in python 2.7 - 3.4" dev-python/mysqlclient
-	optfeature "PostgreSQL backend support" dev-python/psycopg:2
-	optfeature "GEO Django" sci-libs/gdal[geos]
-	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
-	optfeature "ImageField Support" dev-python/pillow
-	echo ""
-}
-
 python_install_all() {
 	newbashcomp extras/django_bash_completion ${PN}-admin
 	bashcomp_alias ${PN}-admin django-admin.py
@@ -96,7 +81,24 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
+src_install() {
+	distutils-r1_src_install
+	webapp_src_install
+}
+
 pkg_postinst() {
+	elog "Additional Backend support can be enabled via"
+	optfeature "MySQL backend support in python 2.7 only" dev-python/mysql-python
+	optfeature "MySQL backend support in python 2.7 - 3.4" dev-python/mysqlclient
+	optfeature "PostgreSQL backend support" dev-python/psycopg:2
+	echo ""
+	elog "Other features can be enhanced by"
+	optfeature "GEO Django" sci-libs/gdal[geos]
+	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
+	optfeature "ImageField Support" dev-python/pillow
+	optfeature "Password encryption" dev-python/bcrypt
+	optfeature "High-level abstractions for Django forms" dev-python/django-formtools
+	echo ""
 	elog "A copy of the admin media is available to webapp-config for installation in a"
 	elog "webroot, as well as the traditional location in python's site-packages dir"
 	elog "for easy development."
