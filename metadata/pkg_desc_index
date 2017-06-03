@@ -367,7 +367,7 @@ app-backup/dar 2.4.20 2.4.24 2.5.9 2.5.10: A full featured backup tool, aimed fo
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.7.10 0.7.11 0.7.12: Secure backup system using gnupg to encrypt data
-app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1: A shell frontend for duplicity
+app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.6.19 0.6.24 0.8.0 0.8.1: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A handy backup script utilizing tar
@@ -3023,7 +3023,7 @@ dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLit
 dev-db/sqlcipher 3.3.0 3.4.0: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 4.2.0.16.355.0402 4.2.0.17.097.0719: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.0.2.15.21 4.1.3.20.78-r1 4.1.5.21.78 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.16.2 3.17.0 3.18.0: A SQL Database Engine in a C Library
+dev-db/sqlite 3.16.2 3.17.0 3.18.0 3.19.2: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.8.0-r1 3.9.1-r1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r2 1.2.2-r3: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -5726,7 +5726,7 @@ dev-perl/Data-Dump-Streamer 2.390.0 2.400.0: Accurately serialize a data structu
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0: details of the floating point data type
-dev-perl/Data-FormValidator 4.810.0-r1 4.850.0 4.860.0: Validates user input (usually from an HTML form) based on input profile
+dev-perl/Data-FormValidator 4.810.0-r1 4.850.0 4.860.0 4.860.0-r1: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
@@ -7507,7 +7507,7 @@ dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.c
 dev-python/distlib 0.2.1 0.2.4: Distribution utilities
 dev-python/distro 1.0.2 1.0.4: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.4.0: Use Database URLs in your Django Application
-dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.8.14 1.9.9 1.10: High-level Python web framework
+dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.8.18 1.9.13 1.10.7 1.11.2: High-level Python web framework
 dev-python/django-annoying 0.7.7 0.8.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.7: Django LDAP authentication backend
@@ -12951,7 +12951,7 @@ media-libs/flickcurl 1.24 1.25 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fmod 3.75 4.38.00 4.38.02: music and sound effects library, and a sound processing system
 media-libs/fnlib 0.5-r2: Font Library for enlightenment
-media-libs/fontconfig 2.11.1-r2 2.12.1-r1 2.12.3: A library for configuring and customizing font access
+media-libs/fontconfig 2.11.1-r2 2.12.1-r1 2.12.3-r1: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20120619 20130404: Configuration to be used in conjunction with the freetype-infinality subpixel hinting
 media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
@@ -14821,7 +14821,7 @@ net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.6.2 1.7.2: A user friendly IRC Client
-net-irc/kvirc 5.0_pre20170202154736 5.0_pre20170401092246 9999: Advanced IRC Client
+net-irc/kvirc 5.0_pre20170202154736 5.0_pre20170401092246 5.0_pre20170601121930 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/loqui 0.5.4: a graphical IRC client for GNOME2 on UNIX like operating system
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
@@ -16194,7 +16194,7 @@ sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molequeue 0.7.1 0.8.0: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r3 2k_p2-r4 2k_p2-r5: Publication-quality molecular visualization package
 sci-chemistry/molscript 2.1.2-r2: Display molecular 3D structures, such as proteins, in both schematic and detailed representations
-sci-chemistry/molsketch 0.3.0 0.4.1: A drawing tool for 2D molecular structures
+sci-chemistry/molsketch 0.3.0 0.4.1-r1: A drawing tool for 2D molecular structures
 sci-chemistry/mongochem 0.7.0-r1: Application for managing large collections of chemical data
 sci-chemistry/mopac7 1.15 1.15-r1: Autotooled, updated version of a powerful, fast semi-empirical package
 sci-chemistry/mpqc 2.3.1-r1 2.3.1-r2 2.3.1-r3 2.3.1-r4: The Massively Parallel Quantum Chemistry Program
@@ -16227,7 +16227,7 @@ sci-chemistry/pymol 1.8.4.0-r1 1.8.6.0: A Python-extensible molecular graphics s
 sci-chemistry/pymol-plugins-bni-tools 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways of proteins from buried cavities to outside solvent
 sci-chemistry/pymol-plugins-dssp 110430-r1: DSSP Plugin for PyMOL
-sci-chemistry/pymol-plugins-dynamics 1.2.0 2.0.4: Molecular dynamics in Pymol
+sci-chemistry/pymol-plugins-dynamics 2.0.7: Molecular dynamics in Pymol
 sci-chemistry/pymol-plugins-emovie 1.0.4: PyMOL plugin for convinient movie creation
 sci-chemistry/pymol-plugins-msms 100415-r1: GUI for MSMS and displaying its results in PyMOL
 sci-chemistry/pymol-plugins-promol 3.0.2-r1: Fast and accurate regognition of active sites
