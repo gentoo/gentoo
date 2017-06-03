@@ -1,0 +1,58 @@
+From bfc088aa911062d987c830d5bb56aa4afd0d3735 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 4 Jun 2017 00:40:04 +1200
+Subject: [PATCH] Absolutize filenames during construction
+
+This way, any relative paths become absolute as soon as possible,
+so that if chdir happens between "new" and "load_profiles", the loaded
+file won't magically change.
+
+This also aims to turn the <do "file.pm"> into a <do "/path/to/File.pm">
+as the former no longer reads from "." since Perl 5.25.11, as paths
+with neither leading "./" or leading "/" imply @INC traversal.
+
+This aims to resolve RT#120671
+
+https://rt.cpan.org/Ticket/Display.html?id=120671
+https://bugs.gentoo.org/613378
+---
+ Makefile.PL               | 1 +
+ lib/Data/FormValidator.pm | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index a9839a6..cef175a 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -19,6 +19,7 @@ WriteMakefile(
+     'Regexp::Common'  => 0.03, # when ::whitespace was added
+     'Scalar::Util'    => 0,
+     'Email::Valid'    => 0,
++    'File::Spec'      => 0,
+   },
+   (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
+       'meta-spec' => { version => 2 },
+diff --git a/lib/Data/FormValidator.pm b/lib/Data/FormValidator.pm
+index 7075dc4..bc0709e 100644
+--- a/lib/Data/FormValidator.pm
++++ b/lib/Data/FormValidator.pm
+@@ -24,6 +24,7 @@
+ 
+ package Data::FormValidator;
+ use Exporter 'import';
++use File::Spec qw();
+ use 5.008;
+ 
+ use Data::FormValidator::Results;
+@@ -147,7 +148,7 @@ sub new {
+         $profiles = $profiles_or_file;
+     }
+     else {
+-        $file = $profiles_or_file;
++        $file = File::Spec->rel2abs( $profiles_or_file );
+     }
+ 
+ 
+-- 
+2.12.2
+
