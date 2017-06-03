@@ -7926,7 +7926,7 @@ dev-python/m2crypto 0.24.0 0.25.1-r2 0.26.0: M2Crypto: A Python crypto and SSL t
 dev-python/m2r 0.1.5: Markdown to reStructuredText converter
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
-dev-python/mako 1.0.0 1.0.3: A Python templating language
+dev-python/mako 1.0.0 1.0.3 1.0.6: A Python templating language
 dev-python/mamba 0.8.6: ... testing tool ... Born under the banner of Behavior Driven Development
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.4: An extensible, multi-protocol, multi-user, interactive application server
