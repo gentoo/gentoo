@@ -1,0 +1,10 @@
+--- mod_auth_kerb-5.4/src/mod_auth_kerb.c	2010-10-04 16:21:22.169285716 +0200
++++ mod_auth_kerb-5.4.new/src/mod_auth_kerb.c	2010-10-04 16:20:41.584250095 +0200
+@@ -89,6 +89,7 @@
+ #include <krb5.h>
+ #ifdef HEIMDAL
+ #  include <gssapi.h>
++#  include <gssapi/gssapi_krb5.h>
+ #else
+ #  include <gssapi/gssapi.h>
+ #  include <gssapi/gssapi_generic.h>
