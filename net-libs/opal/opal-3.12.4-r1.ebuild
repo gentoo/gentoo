@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/opalvoip/${P}.tar.bz2
 LICENSE="MPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="capi celt debug doc +dtmf examples fax ffmpeg h224 h281 h323 iax ilbc
+IUSE="celt debug doc +dtmf examples fax ffmpeg h224 h281 h323 iax ilbc
 ipv6 ivr ixj java ldap lid +plugins sbc sip sipim +sound srtp ssl static-libs
 stats swig theora +video vpb vxml wav x264 x264-static xml"
 
@@ -26,11 +26,10 @@ RDEPEND=">=net-libs/ptlib-2.12.4:=[stun,debug=,dtmf,http,ipv6?,ldap?,sound?,ssl?
 	fax? ( net-libs/ptlib[asn] )
 	h323? ( net-libs/ptlib[asn] )
 	ivr? ( net-libs/ptlib[http,xml,vxml] )
-	java? ( >=virtual/jre-1.4 )
+	java? ( >=virtual/jre-1.4:* )
 	plugins? (
 		media-sound/gsm
-		capi? ( net-dialup/capi4k-utils )
-		celt? ( media-libs/celt )
+		celt? ( media-libs/celt:0 )
 		ffmpeg? ( virtual/ffmpeg[encode] )
 		ixj? ( sys-kernel/linux-headers )
 		ilbc? ( dev-libs/ilbc-rfc3951 )
@@ -38,7 +37,7 @@ RDEPEND=">=net-libs/ptlib-2.12.4:=[stun,debug=,dtmf,http,ipv6?,ldap?,sound?,ssl?
 		theora? ( media-libs/libtheora )
 		x264? (	virtual/ffmpeg
 			media-libs/x264 ) )
-	srtp? ( net-libs/libsrtp )
+	srtp? ( net-libs/libsrtp:0= )
 	vxml? ( net-libs/ptlib[http,vxml] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -134,6 +133,7 @@ src_configure() {
 	econf \
 		--enable-versioncheck \
 		--enable-shared \
+		--disable-capi \
 		--disable-zrtp \
 		--disable-localspeex \
 		--disable-localspeexdsp \
@@ -148,7 +148,6 @@ src_configure() {
 		--enable-g711plc \
 		--enable-rfc4103 \
 		$(use_enable debug) \
-		$(use_enable capi) \
 		$(use_enable fax) \
 		$(use_enable fax t38) \
 		$(use_enable h224) \
