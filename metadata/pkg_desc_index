@@ -10455,7 +10455,7 @@ dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2 5.0.
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2-r1: A set of base plugins for Molecule
-dev-util/monkeystudio 1.9.0.4-r1: A cross platform Qt 4 IDE
+dev-util/monkeystudio 1.9.0.4-r2: A cross platform Qt 4 IDE
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
@@ -12665,7 +12665,7 @@ media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
 media-gfx/cura 0.15.04.4 0.15.04.5_rc5 2.1.0_beta 2.3.1: A 3D model slicing application for 3D printing
 media-gfx/curaengine 0.15.04.6 2.1.0_beta 2.3.1: A 3D model slicing engine for 3D printing
-media-gfx/darktable 2.2.3 2.2.4 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 2.2.3 2.2.4 2.2.5 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.5.0: Digital photo management application
