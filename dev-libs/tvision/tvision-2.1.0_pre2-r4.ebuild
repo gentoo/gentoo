@@ -30,6 +30,14 @@ PATCHES=(
 	"${FILESDIR}/${P}-build-system.patch" # for EAPI=6
 )
 
+src_prepare() {
+	# Strip hunk from invalid characters for gcc6.patch
+	sed -e ":TScrollChars: s:; // \x1E\x1F\xB1\xFE\xB2:;:" \
+		-e ":TScrollChars: s:; // \x11\x10\xB1\xFE\xB2:;:" \
+		-i classes/tvtext1.cc || die
+	default
+}
+
 src_configure() {
 	./configure --fhs || die
 }
