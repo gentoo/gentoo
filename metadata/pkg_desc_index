@@ -8484,7 +8484,7 @@ dev-python/python-mpd 0.5.5: Python MPD client library
 dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay extension
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
-dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
+dev-python/python-nbxmpp 0.5.3 0.5.6: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 4.1.1 6.0.0 6.1.0: A client for the OpenStack Quantum API
 dev-python/python-novaclient 6.0.0 6.0.1 7.1.0 7.1.1: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
@@ -14752,7 +14752,7 @@ net-im/ejabberd 16.09 17.01 17.01-r1 17.04: Robust, scalable and extensible XMPP
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
-net-im/gajim 0.16.6 0.16.6-r1: Jabber client written in PyGTK
+net-im/gajim 0.16.6 0.16.6-r1 0.16.8: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0: Chat and network platform
 net-im/hangups 9999: Third Party IM Client for Google Hangouts
