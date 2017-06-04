@@ -8,7 +8,8 @@ inherit toolchain-funcs flag-o-matic versionator
 DESCRIPTION="The rEFInd UEFI Boot Manager by Rod Smith"
 HOMEPAGE="http://www.rodsbooks.com/refind/"
 
-SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz"
+SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz
+	gnuefi? ( https://dev.gentoo.org/~wraeth/distfiles/${P}-fix_build_gnuefi-3.0.5.patch.xz )"
 
 LICENSE="BSD GPL-2 GPL-3 FDL-1.3"
 SLOT="0"
@@ -55,7 +56,7 @@ src_prepare() {
 	default
 
 	# bug 616668 - build fails against gnu-efi-3.0.5
-	eapply "${FILESDIR}"/"${P}"-fix_build_gnuefi-3.0.5.patch
+	use gnuefi && eapply "${WORKDIR}"/"${P}"-fix_build_gnuefi-3.0.5.patch
 
 	# bug 598647 - PIE not supported
 	sed -e 's:CFLAGS          =:& -fno-PIE:' -i "${S}/Make.common" || die
