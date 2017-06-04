@@ -310,6 +310,16 @@ kde-apps/plasma-runtime
 www-client/phantomjs
 dev-ruby/poltergeist
 
+# Raymond Jennings <shentino@gmail.com> (04 Jun 2017)
+# Upstream announced EOL effective July 2017.
+# Depends on qt4 which is being deprecated.
+# Possible alternative is skypeforlinux,
+#   which uses the same account information but has different features.
+dev-python/skype4py
+media-sound/skype-call-recorder
+net-im/skype
+net-im/skypetab-ng
+
 # Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
 # Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
 # Masked for removal in 30 days. Bug #620758.
