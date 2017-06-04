@@ -860,6 +860,7 @@ app-leechcraft/lc-poshuku:onlinebookmarks - Build OnlineBookmarks for syncing bo
 app-leechcraft/lc-poshuku:qrd - Build module for displaying the QR code of a web page.
 app-leechcraft/lc-poshuku:speeddial - Build SpeedDial module.
 app-leechcraft/lc-poshuku:webengine - Build WebEngine- (that is, Chromium-)based rendering backend.
+app-leechcraft/lc-secman:exposecontents - Build the GUI for viewing the stored data.
 app-leechcraft/leechcraft-meta:de - Install components, that allow using Leechcraft as Desktop Environment
 app-misc/anki:recording - Enable support for audio recording
 app-misc/anki:sound - Enable support for adding sound to cards
