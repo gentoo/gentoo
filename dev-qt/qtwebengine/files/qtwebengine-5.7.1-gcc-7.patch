@@ -1,0 +1,144 @@
+From 64fdd317d4127142ad9e967197a2df6ac81ef55f Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Wed, 29 Mar 2017 17:42:18 +0200
+Subject: [PATCH] Fix build with GCC 7.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+Fixes some ambiguities and outright wrong code GCC 7 doesn't accept but
+earlier compilers did.
+
+Task-number:QTBUG-59776
+Change-Id: I012f121842ac6cde49db0d571efc62aabe2115e3
+Reviewed-by: Michael BrÃ¼ning <michael.bruning@qt.io>
+---
+ .../mojo/public/cpp/bindings/interface_ptr_info.h     |  2 +-
+ .../third_party/WebKit/Source/wtf/LinkedHashSet.h     |  2 ++
+ chromium/v8/src/objects-body-descriptors.h            |  2 +-
+ chromium/v8/src/objects-inl.h                         | 19 +++++++++++++++++++
+ chromium/v8/src/objects.h                             | 16 ++--------------
+ 5 files changed, 25 insertions(+), 16 deletions(-)
+
+diff --git a/src/3rdparty/chromium/mojo/public/cpp/bindings/interface_ptr_info.h b/src/3rdparty/chromium/mojo/public/cpp/bindings/interface_ptr_info.h
+index 5bd29d5..c94a5ac 100644
+--- a/src/3rdparty/chromium/mojo/public/cpp/bindings/interface_ptr_info.h
++++ b/src/3rdparty/chromium/mojo/public/cpp/bindings/interface_ptr_info.h
+@@ -34,7 +34,7 @@ class InterfacePtrInfo {
+ 
+   InterfacePtrInfo& operator=(InterfacePtrInfo&& other) {
+     if (this != &other) {
+-      handle_ = other.handle_.Pass();
++      handle_ = std::move(other.handle_);
+       version_ = other.version_;
+       other.version_ = 0u;
+     }
+-- 
+2.7.4
+From 493441248c82d9f39d0947e3bbf4571736e1cf85 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Wed, 29 Mar 2017 15:53:00 +0200
+Subject: [PATCH 1/1] Fix build with GCC 7.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+Fixes a few problems with using undeclared functions and ambigious
+code.
+
+Task-number: QTBUG-59776
+Change-Id: I59813919b4867d5dd3499a45baed004a1a1c1a3c
+Reviewed-by: Michael BrÃ¼ning <michael.bruning@qt.io>
+---
+ chromium/third_party/WebKit/Source/wtf/LinkedHashSet.h |  2 ++
+ .../third_party/pdfium/fpdfsdk/javascript/global.cpp   |  8 ++++----
+ chromium/v8/src/objects-body-descriptors.h             |  2 +-
+ chromium/v8/src/objects-inl.h                          | 18 ++++++++++++++++++
+ chromium/v8/src/objects.h                              | 16 ++--------------
+ 5 files changed, 27 insertions(+), 19 deletions(-)
+
+diff --git a/src/3rdparty/chromium/third_party/WebKit/Source/wtf/LinkedHashSet.h b/src/3rdparty/chromium/third_party/WebKit/Source/wtf/LinkedHashSet.h
+index e85c72f..6f94cd6 100644
+--- a/src/3rdparty/chromium/third_party/WebKit/Source/wtf/LinkedHashSet.h
++++ b/src/3rdparty/chromium/third_party/WebKit/Source/wtf/LinkedHashSet.h
+@@ -542,6 +542,8 @@ inline LinkedHashSet<T, U, V, W>& LinkedHashSet<T, U, V, W>::operator=(LinkedHas
+     return *this;
+ }
+ 
++inline void swapAnchor(LinkedHashSetNodeBase& a, LinkedHashSetNodeBase& b);
++
+ template<typename T, typename U, typename V, typename W>
+ inline void LinkedHashSet<T, U, V, W>::swap(LinkedHashSet& other)
+ {
+diff --git a/src/3rdparty/chromium/v8/src/objects-body-descriptors.h b/src/3rdparty/chromium/v8/src/objects-body-descriptors.h
+index 91cb888..a1c3634 100644
+--- a/src/3rdparty/chromium/v8/src/objects-body-descriptors.h
++++ b/src/3rdparty/chromium/v8/src/objects-body-descriptors.h
+@@ -99,7 +99,7 @@ class FixedBodyDescriptor final : public BodyDescriptorBase {
+ 
+   template <typename StaticVisitor>
+   static inline void IterateBody(HeapObject* obj, int object_size) {
+-    IterateBody(obj);
++    IterateBody<StaticVisitor>(obj);
+   }
+ };
+ 
+diff --git a/src/3rdparty/chromium/v8/src/objects-inl.h b/src/3rdparty/chromium/v8/src/objects-inl.h
+index 58441d3..4c486ea 100644
+--- a/src/3rdparty/chromium/v8/src/objects-inl.h
++++ b/src/3rdparty/chromium/v8/src/objects-inl.h
+@@ -7588,6 +7588,24 @@ bool GlobalDictionaryShape::IsDeleted(Dictionary* dict, int entry) {
+ }
+ 
+ 
++template <typename Derived, typename Shape, typename Key>
++inline uint32_t HashTable<Derived,Shape,Key>::Hash(Key key) {
++  if (Shape::UsesSeed) {
++    return Shape::SeededHash(key, GetHeap()->HashSeed());
++  } else {
++    return Shape::Hash(key);
++  }
++}
++
++template <typename Derived, typename Shape, typename Key>
++inline uint32_t HashTable<Derived,Shape,Key>::HashForObject(Key key, Object* object) {
++  if (Shape::UsesSeed) {
++    return Shape::SeededHashForObject(key, GetHeap()->HashSeed(), object);
++  } else {
++    return Shape::HashForObject(key, object);
++  }
++}
++
+ bool ObjectHashTableShape::IsMatch(Handle<Object> key, Object* other) {
+   return key->SameValue(other);
+ }
+diff --git a/src/3rdparty/chromium/v8/src/objects.h b/src/3rdparty/chromium/v8/src/objects.h
+index 7d774be..42da5fa 100644
+--- a/src/3rdparty/chromium/v8/src/objects.h
++++ b/src/3rdparty/chromium/v8/src/objects.h
+@@ -3194,21 +3194,9 @@ class HashTable : public HashTableBase {
+   typedef Shape ShapeT;
+ 
+   // Wrapper methods
+-  inline uint32_t Hash(Key key) {
+-    if (Shape::UsesSeed) {
+-      return Shape::SeededHash(key, GetHeap()->HashSeed());
+-    } else {
+-      return Shape::Hash(key);
+-    }
+-  }
++  inline uint32_t Hash(Key key);
+ 
+-  inline uint32_t HashForObject(Key key, Object* object) {
+-    if (Shape::UsesSeed) {
+-      return Shape::SeededHashForObject(key, GetHeap()->HashSeed(), object);
+-    } else {
+-      return Shape::HashForObject(key, object);
+-    }
+-  }
++  inline uint32_t HashForObject(Key key, Object* object);
+ 
+   // Returns a new HashTable object.
+   MUST_USE_RESULT static Handle<Derived> New(
+-- 
+2.7.4
