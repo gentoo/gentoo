@@ -2064,7 +2064,7 @@ app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r2 1.5.2-r3 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r2 1.5.2-r3 1.5.3 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.5.0 2.8.1: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -8091,7 +8091,7 @@ dev-python/packaging 15.3-r2 16.6 16.8: Core utilities for Python packages
 dev-python/pafy 0.5.3.1: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.1 1.2.3: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
-dev-python/pandas 0.16.2 0.17.0 0.17.1 0.19.1 9999: Powerful data structures for data analysis and statistics
+dev-python/pandas 0.16.2 0.17.0 0.17.1 0.19.1 0.20.1 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.16.0 2.1.2 9999: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4 1.6.6: parse() is the opposite of format()
@@ -15991,7 +15991,7 @@ sci-biology/beast-mcmc 1.7.5-r1 9999: Bayesian MCMC of Evolution & Phylogenetics
 sci-biology/bedtools 2.26.0: Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
 sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0-r2: Multithreaded tool for matching large sets of patterns against biosequence DBs
-sci-biology/biopandas 0.1.4: Molecular Structures in Pandas DataFrames
+sci-biology/biopandas 0.1.4 0.2.1: Molecular Structures in Pandas DataFrames
 sci-biology/bioperl 1.6.9 9999-r1: Perl tools for bioinformatics - Core modules
 sci-biology/bioperl-db 1.6.9 9999-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
 sci-biology/bioperl-network 1.6.9 9999-r1: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
@@ -16252,7 +16252,7 @@ sci-chemistry/votca-csg 1.4 9999: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.4 9999: Extra applications for votca-csg
 sci-chemistry/votca-xtp 1.4 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
-sci-chemistry/xds-bin 20170430: Software for processing single-crystal X-ray monochromatic diffraction data
+sci-chemistry/xds-bin 20170930: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xdsgui 0_p130530: GUI for XDS that is supposed to help both novice and experienced users
 sci-chemistry/xdsstat-bin 140225: Prints various statistics (that are not available from XDS itself)
 sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
@@ -18792,7 +18792,7 @@ x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.9.2-r1 2.9.4 2.10: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1 9999: Qt terminal emulator widget
-x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
+x11-libs/qtscriptgenerator 0.2.0 0.2.0-r1: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
 x11-libs/qwtpolar 1.1.1-r1: Library for displaying values on a polar coordinate system
