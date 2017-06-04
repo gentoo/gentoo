@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=dev-qt/qtwebkit:4
+DESCRIPTION=Download from various internet video services like Youtube etc.
+EAPI=5
+HOMEPAGE=http://clipgrab.de/en
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtwebkit:4 || ( media-video/libav media-video/ffmpeg )
+SLOT=0
+SRC_URI=https://download.clipgrab.de/clipgrab-3.6.5.tar.bz2
+_eclass_exported_funcs=src_unpack:qt4-r2 src_prepare:qt4-r2 src_configure:qt4-r2 src_compile:qt4-r2 src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	qt4-r2	b7985a3197fbc3a22d059f19904e735b	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=0c4ed059fed6eb9cd96e63b4e4e9fdf6
