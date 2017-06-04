@@ -30,9 +30,6 @@ DEPEND="app-eselect/eselect-opencascade
 	tbb? ( dev-cpp/tbb )"
 RDEPEND="${DEPEND}"
 
-# https://bugs.gentoo.org/show_bug.cgi?id=600514
-RESTRICT="fetch"
-
 CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
 
