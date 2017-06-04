@@ -32,9 +32,6 @@ DEPEND="app-eselect/eselect-opencascade
 	vtk? ( || ( =sci-libs/${MY_VTK}*[imaging] =sci-libs/${MY_VTK}*[qt4] =sci-libs/${MY_VTK}*[rendering] =sci-libs/${MY_VTK}*[views] =sci-libs/${MY_VTK}*[all-modules] ) )"
 RDEPEND="${DEPEND}"
 
-# https://bugs.gentoo.org/show_bug.cgi?id=600514
-RESTRICT="fetch"
-
 CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
 
