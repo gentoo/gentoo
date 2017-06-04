@@ -5756,7 +5756,7 @@ dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.40.0 0.50.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
 dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
-dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0 6.570.0 6.580.0: Perl date manipulation routines
+dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0 6.570.0 6.580.0 6.590.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0: A date and time object
@@ -6045,6 +6045,7 @@ dev-perl/HTTP-Server-Simple 0.520.0: Lightweight HTTP Server
 dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standalone mason server
 dev-perl/HTTP-Server-Simple-PSGI 0.160.0: PSGI handler for HTTP::Server::Simple
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
+dev-perl/Hash-FieldHash 0.150.0: Lightweight field hash for inside-out objects
 dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
 dev-perl/Hash-Merge-Simple 0.51.0: Recursively merge two or more hashes, simply
 dev-perl/Hash-MoreUtils 0.20.0-r1 0.50.0: Provide the stuff missing in Hash::Util
@@ -6520,6 +6521,7 @@ dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-RegGrp 2.10.0: Groups a regular expressions collection
 dev-perl/Regexp-Shellish 0.930.0-r1: Regexp::Shellish - Shell-like regular expressions
+dev-perl/Regexp-Util 0.3.0: General purpose utilities for working with Regular Expressions
 dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
 dev-perl/Role-HasMessage 0.6.0: a thing with a message method
@@ -6793,7 +6795,8 @@ dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
 dev-perl/Tree-DAG_Node 1.60.0-r1 1.290.0: (Super)class for representing nodes in a tree
 dev-perl/Tree-Simple 1.180.0-r1 1.270.0 1.290.0 1.300.0 1.310.0: A simple tree object
 dev-perl/Try-Tiny 0.220.0 0.240.0: Minimal try/catch with proper localization of $@
-dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
+dev-perl/Type-Tie 0.9.0: Tie a variable to a type constraint
+dev-perl/Type-Tiny 1.0.5 1.2.0: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
