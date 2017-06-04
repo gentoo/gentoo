@@ -5,9 +5,6 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
-	<use>
-		<flag name="plugins">Build and install additional plugins</flag>
-	</use>
 	<upstream>
 		<remote-id type="google-code">monkeystudio</remote-id>
 	</upstream>
