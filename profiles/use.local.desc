@@ -5655,7 +5655,6 @@ net-im/psi:extras - Enables extra non official patches
 net-im/psi:iconsets - Install additional iconsets, some of them has not clear licensing
 net-im/psi:plugins - Enable plugins support
 net-im/psi:powersave - Disable some non critical timers for much less CPU usage
-net-im/psi:webkit - Enable chatlog rendering using webkit
 net-im/psi:whiteboarding - Enable experimental interactive SVG drawing
 net-im/psi:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
 net-im/psimedia:demo - build simple test application for the PsiMedia system

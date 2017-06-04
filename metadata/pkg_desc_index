@@ -12735,7 +12735,7 @@ media-gfx/gthumb 3.4.4.1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4 3.4.4-r1: Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats
-media-gfx/hugin 2016.2.0 9999: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2016.2.0 2017.0_rc1 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc_examin 0.55-r1 9999: Viewer for ICC and CGATS profiles, argylls gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0 0.31.1: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
@@ -14424,7 +14424,7 @@ net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
 net-analyzer/nmap 7.31 7.40 7.40-r1 9999: A utility for network discovery and security auditing
-net-analyzer/nmapsi 0.4.1 0.5_alpha1: A Qt frontend to nmap
+net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.04 9999: Monitor and do event correlation
 net-analyzer/nrpe 2.15-r3 3.1.0: Nagios Remote Plugin Executor
