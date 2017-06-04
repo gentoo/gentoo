@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
+# Relies on obsolete and vulerable qtwebkit version. Dead upstream.
+# Masked for removal in 30 days. Bug #620752.
+sci-mathematics/freemat
+
 # Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
 # Relies on obsolete and vulnerable webkit-gtk version and bundles some libs
 # (#597532). Removal in a month.
