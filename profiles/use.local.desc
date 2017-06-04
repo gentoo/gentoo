@@ -7047,7 +7047,6 @@ sci-geosciences/mapserver:postgis - Enable dev-db/postgis support
 sci-geosciences/mapserver:proj - Enable sci-libs/proj library support (geographic projections)
 sci-geosciences/mapserver:xslt - Enable xslt and exslt support xml-mapfile support
 sci-geosciences/merkaartor:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration
-sci-geosciences/merkaartor:qrcode - Enable QR code scanning with media-gfx/zbar
 sci-geosciences/merkaartor:webengine - Enable dev-qt/qtwebengine in some plugins
 sci-geosciences/qgis:designer - Build custom widgets for dev-qt/designer
 sci-geosciences/qgis:georeferencer - Determines whether georeferencer plugin should be built
