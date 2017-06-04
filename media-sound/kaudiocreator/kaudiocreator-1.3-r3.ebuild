@@ -39,7 +39,7 @@ pkg_postinst() {
 	has_version media-sound/vorbis-tools && stcnt=$((stcnt+1))
 
 	if [[ ${stcnt} -lt 1 ]] ; then
-		ewarn "You you should emerge at least one of the following packages"
+		ewarn "You should emerge at least one of the following packages"
 		ewarn "for ${PN} to do anything useful."
 	fi
 	elog "Optional runtime dependencies:"
