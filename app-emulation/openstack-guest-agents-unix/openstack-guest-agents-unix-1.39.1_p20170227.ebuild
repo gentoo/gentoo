@@ -10,7 +10,7 @@ COMMIT="c9a4f15b8c8f2349601d3073cc95e30d3b91af13"
 
 DESCRIPTION="Unix Guest Agent for OpenStack"
 HOMEPAGE="https://wiki.openstack.org/wiki/GuestAgent"
-SRC_URI="https://github.com/rackerlabs/${PN}/archive/${COMMIT}.zip"
+SRC_URI="https://github.com/rackerlabs/${PN}/archive/${COMMIT}.zip -> ${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
