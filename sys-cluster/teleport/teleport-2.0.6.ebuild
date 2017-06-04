@@ -20,26 +20,12 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="etcd systemd"
+IUSE=""
 
 DEPEND="
 	>=dev-lang/go-1.7
 	app-arch/zip"
-RDEPEND="
-	systemd? ( sys-apps/systemd )
-	etcd? ( dev-db/etcd )"
-
-src_prepare() {
-	default
-
-	for i in "${FILESDIR}"/*;do cp "$i" "${S}";done
-
-	if use etcd; then
-		epatch "${S}/${PN}-etcd-storage-backend.patch"
-		epatch "${S}/${PN}-init-d-etcd.patch"
-		epatch "${S}/${PN}-systemd-etcd.patch"
-	fi
-}
+RDEPEND=""
 
 src_compile() {
 	GOPATH="${S}" emake -C src/${EGO_PN%/*}
@@ -55,9 +41,11 @@ src_install() {
 	dobin src/${EGO_PN%/*}/build/{tsh,tctl,teleport}
 
 	insinto /etc/${PN}
-	doins ${PN}.yaml
+	doins "${FILESDIR}"/${PN}.yaml
 
-	newinitd ${PN}.init.d ${PN}
+	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
-	use systemd && systemd_dounit ${PN}.service
+	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf ${PN}.service
 }
