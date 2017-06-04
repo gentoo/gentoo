@@ -23,8 +23,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=dev-lang/go-1.7
-	app-arch/zip"
+	app-arch/zip
+	>=dev-lang/go-1.7"
 RDEPEND=""
 
 src_compile() {
