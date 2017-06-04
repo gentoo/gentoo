@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ "$*" == *-c* ]]; then
+  /usr/bin/srf-ip-conn-srv-target "$@"
+else
+  /usr/bin/srf-ip-conn-srv-target -c /etc/srf-ip-conn-srv/config.json "$@"
+fi
