@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads(+)"
@@ -63,7 +63,7 @@ OPTIONAL_DEPEND="
 
 DEPEND="${MINIMAL_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/cython-0.19.1[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.23[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
@@ -101,7 +101,14 @@ RDEPEND="
 
 python_prepare_all() {
 	# Prevent un-needed download during build
-	sed -e "/^              'sphinx.ext.intersphinx',/d" -i doc/source/conf.py || die
+	sed \
+		-e "/^              'sphinx.ext.intersphinx',/d" \
+		-i doc/source/conf.py || die
+
+	# https://github.com/pydata/pandas/issues/11299
+	sed \
+		-e 's:testOdArray:disable:g' \
+		-i pandas/tests/io/json/test_ujson.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -122,7 +129,7 @@ python_test() {
 	pushd  "${BUILD_DIR}"/lib > /dev/null
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
 	PYTHONPATH=. MPLCONFIGDIR=. \
-		virtx nosetests --verbosity=3 -A "${test_pandas}" pandas.io.tests.json.test_ujson.NumpyJSONTests
+		virtx nosetests --verbosity=3 -A "${test_pandas}" pandas
 	popd > /dev/null
 }
 
