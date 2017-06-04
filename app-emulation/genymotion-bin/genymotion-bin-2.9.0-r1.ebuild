@@ -3,14 +3,14 @@
 
 EAPI=6
 
-inherit eutils bash-completion-r1
+inherit eutils bash-completion-r1 pax-utils
 
 MY_PN="${PN/-bin}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Complete set of tools that provide a virtual environment for Android"
 HOMEPAGE="http://genymotion.com"
-SRC_URI="${MY_P}_x64.bin"
+SRC_URI="${MY_P}-linux_x64.bin"
 DOWNLOAD_URL="https://www.genymotion.com/download/"
 
 LICENSE="genymotion"
@@ -20,31 +20,32 @@ KEYWORDS="-* ~amd64"
 DEPEND=""
 RDEPEND="|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5.0.28 )
 	virtual/opengl
-	media-libs/libpng:1.2
 	dev-libs/openssl
-	dev-qt/qtgui:5[libinput,xcb]
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtopengl:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwebkit:5
+	dev-qt/qtwebsockets:5
 	dev-qt/qtsvg:5
 	dev-qt/qtx11extras:5
-	dev-qt/qtdeclarative:5
+	dev-qt/qtdeclarative:5[widgets]
+	dev-qt/qtquickcontrols:5
 	dev-qt/qtconcurrent:5
-	dev-util/android-sdk-update-manager
-	media-libs/jpeg:8
-	dev-libs/double-conversion
+	dev-qt/qtgraphicaleffects:5
 	sys-apps/util-linux
-	media-libs/fontconfig:1.0
-	media-libs/harfbuzz[graphite]
-	>=dev-libs/libffi-3.0.13-r1
-	media-libs/gstreamer[orc]
 "
+# note if you compile protobuf with >=gcc-5.1 you need to disable the new c++11 abi
+# -D_GLIBCXX_USE_CXX11_ABI=0  to your CXXFLAGS for protobuf
+#	=dev-libs/protobuf-2.6*
+
 RESTRICT="bindist fetch"
 S="${WORKDIR}"
 
 pkg_nofetch() {
 	einfo
-	einfo "Please visit ${DOWNLOAD_URL} and download ${MY_P}_x64.bin"
-	einfo "which must be placed in ${DISTDIR}"
+	einfo "Please visit ${DOWNLOAD_URL} and download ${A}"
+	einfo "which must be placed in DISTDIR directory."
 	einfo
 }
 
@@ -82,22 +83,23 @@ src_install() {
 
 	doins "${MY_PN}"/{libcom,librendering}.so*
 	# library that differ from system version
-	doins "${MY_PN}"/{libicudata,libicui18n,libicuuc,libswscale,libavutil,libprotobuf}.so*
+	doins "${MY_PN}"/{libswscale,libavutil,libprotobuf}.so*
 	# android library
-	doins "${MY_PN}"/{libEGL_translator,libGLES_CM_translator,libGLES_V2_translator,libOpenglRender}.so*
+	doins "${MY_PN}"/{libEGL_translator,libGLES_CM_translator,libGLES_V2_translator,libOpenglRender,libemugl_logger}.so*
 
 	insopts -m0755
 	doins "${MY_PN}"/{device-upgrade,genymotion,genyshell,player,genymotionadbtunneld,gmtool}
 
+	pax-mark -m "${ED%/}/opt/${MY_PN}/${MY_PN}"
+	pax-mark -m "${ED%/}/opt/${MY_PN}/gmtool"
+
 	dosym "${ED%/}"/opt/"${MY_PN}"/genyshell /opt/bin/genyshell
 	dosym "${ED%/}"/opt/"${MY_PN}"/"${MY_PN}" /opt/bin/"${MY_PN}"
-	dosym "${ED%/}"/opt/"${MY_PN}"/device-upgrade /opt/bin/"${MY_PN}"-device-upgrade
-	dosym "${ED%/}"/opt/"${MY_PN}"/player /opt/bin/"${MY_PN}"-player
-	dosym "${ED%/}"/opt/"${MY_PN}"/"${MY_PN}"adbtunneld /opt/bin/"${MY_PN}"adbtunneld
 	dosym "${ED%/}"/opt/"${MY_PN}"/gmtool /opt/bin/gmtool
 
 	# Workaround
 	dosym "${ED%/}/"usr/$(get_libdir)/qt5/plugins/imageformats/libqsvg.so /opt/"${MY_PN}"/imageformats/libqsvg.so
+	dosym "${ED%/}/"usr/$(get_libdir)/qt5/plugins/sqldrivers/libqsqlite.so /opt/"${MY_PN}"/sqldrivers/libqsqlite.so
 
 	newbashcomp "${MY_PN}/completion/bash/gmtool.bash" gmtool
 
