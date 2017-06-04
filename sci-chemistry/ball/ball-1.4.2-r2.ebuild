@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,8 +25,7 @@ RDEPEND="
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
 	dev-qt/qttest:4
-	dev-qt/qtwebkit:4
-	media-libs/glew
+	media-libs/glew:0
 	sci-libs/fftw:3.0[threads?]
 	sci-libs/gsl
 	sci-libs/libsvm
