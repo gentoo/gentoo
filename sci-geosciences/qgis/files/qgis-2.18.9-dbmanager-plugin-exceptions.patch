@@ -1,0 +1,89 @@
+From dae921c51f85f2dde2bab9b18a0d7c7c31bc700b Mon Sep 17 00:00:00 2001
+From: Luigi Pirelli <luipir@gmail.com>
+Date: Thu, 11 May 2017 17:40:32 +0200
+Subject: [PATCH] [DB Manager] previewing layers in Virtual layers section
+ remove them from the Layers panel: fixies #16476 plus more vlayer db_manager
+ plugin fixes to reduce (but can't avoid) exceptions due to C++/SIP object
+ removes
+
+---
+ python/plugins/db_manager/db_plugins/vlayers/connector.py | 10 ++++++++++
+ python/plugins/db_manager/layer_preview.py                | 11 +++++++----
+ 2 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/python/plugins/db_manager/db_plugins/vlayers/connector.py b/python/plugins/db_manager/db_plugins/vlayers/connector.py
+index e64f2ec57b6..4c8cb4dca1b 100644
+--- a/python/plugins/db_manager/db_plugins/vlayers/connector.py
++++ b/python/plugins/db_manager/db_plugins/vlayers/connector.py
+@@ -96,6 +96,10 @@ def getLayer(self, l):
+         lid = self.layers.get(l)
+         if lid is None:
+             return lid
++        # the instance can refer to a layer in map previe and not in qgis general canvas
++        if lid not in QgsMapLayerRegistry.instance().mapLayers().keys():
++            self.layers.pop(l)
++            return None
+         return QgsMapLayerRegistry.instance().mapLayer(lid)
+ 
+ 
+@@ -246,12 +250,16 @@ def getRasterTables(self, schema=None):
+     def getTableRowCount(self, table):
+         t = table[1]
+         l = VLayerRegistry.instance().getLayer(t)
++        if not l or not l.isValid():
++            return None
+         return l.featureCount()
+ 
+     def getTableFields(self, table):
+         """ return list of columns in table """
+         t = table[1]
+         l = VLayerRegistry.instance().getLayer(t)
++        if not l or not l.isValid():
++            return []
+         # id, name, type, nonnull, default, pk
+         n = l.dataProvider().fields().size()
+         f = [(i, f.name(), f.typeName(), False, None, False)
+@@ -277,6 +285,8 @@ def getTableExtent(self, table, geom):
+             l = QgsMapLayerRegistry.instance().mapLayer(t)
+         else:
+             l = VLayerRegistry.instance().getLayer(t)
++        if not l or not l.isValid():
++            return None
+         e = l.extent()
+         r = (e.xMinimum(), e.yMinimum(), e.xMaximum(), e.yMaximum())
+         return r
+diff --git a/python/plugins/db_manager/layer_preview.py b/python/plugins/db_manager/layer_preview.py
+index 1f7cec65526..27bba0a8f13 100644
+--- a/python/plugins/db_manager/layer_preview.py
++++ b/python/plugins/db_manager/layer_preview.py
+@@ -25,7 +25,7 @@
+ from qgis.PyQt.QtWidgets import QApplication
+ 
+ from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer, QgsMessageBar
+-from qgis.core import QgsVectorLayer, QgsMapLayerRegistry
++from qgis.core import QgsVectorLayer, QgsMapLayerRegistry, QgsProject
+ 
+ from .db_plugins.plugin import Table
+ 
+@@ -113,15 +113,18 @@ def _loadTablePreview(self, table, limit=False):
+             else:
+                 vl = table.toMapLayer()
+ 
+-            if not vl.isValid():
++            if vl and not vl.isValid():
+                 vl.deleteLater()
+                 vl = None
+ 
+         # remove old layer (if any) and set new
+         if self.currentLayer:
+-            QgsMapLayerRegistry.instance().removeMapLayers([self.currentLayer.id()])
++            # but not remove it if in layer list panel
++            # fix https://issues.qgis.org/issues/16476
++            if not QgsProject.instance().layerTreeRoot().findLayer(self.currentLayer.id()):
++                QgsMapLayerRegistry.instance().removeMapLayers([self.currentLayer.id()])
+ 
+-        if vl:
++        if vl and vl.isValid():
+             self.setLayerSet([QgsMapCanvasLayer(vl)])
+             QgsMapLayerRegistry.instance().addMapLayers([vl], False)
+             self.zoomToFullExtent()
