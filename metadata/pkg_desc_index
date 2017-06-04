@@ -12312,7 +12312,7 @@ mail-client/kube 0.1.0-r1: A mail client by KDE
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.5.23-r7 1.5.24-r2 1.7.2 1.8.2: A small but very powerful text-based mail client
+mail-client/mutt 1.5.23-r7 1.5.24-r2 1.7.2 1.8.2 1.8.3: A small but very powerful text-based mail client
 mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/nmh 1.3-r3: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
@@ -14200,7 +14200,7 @@ media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webc
 media-video/shrip 0.6.0: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.3.8 9999: A Simple Screen Recorder
 media-video/smplayer 16.1.0 16.11.0: Great Qt GUI front-end for mplayer/mpv
-media-video/smtube 16.1.0 16.3.0 16.6.0 16.6.0-r1 16.7.0 17.1.0 17.5.0: YouTube Browser for SMPlayer
+media-video/smtube 16.1.0 16.3.0 16.6.0 16.6.0-r1 16.7.0 17.1.0 17.5.0 17.5.0-r1: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/sswf 1.8.2-r1 1.8.4-r1: A C++ Library and a script language tool to create Flash (SWF) movies up to version 8
@@ -16152,7 +16152,7 @@ sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking
 sci-chemistry/avogadro 1.0.3-r2 1.1.0 1.1.1: Advanced molecular editor that uses Qt4 and OpenGL
 sci-chemistry/avogadro2 0.7.2 0.8.0 0.9.0: Advanced molecule editor and visualizer 2
 sci-chemistry/azara 2.8-r5: A suite of programmes to process and view NMR data
-sci-chemistry/ball 1.4.2-r1: Biochemical Algorithms Library
+sci-chemistry/ball 1.4.2-r2: Biochemical Algorithms Library
 sci-chemistry/bkchem 0.14.0_pre2-r1: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/burrow-owl 1.5.1: Visualize multidimensional nuclear magnetic resonance (NMR) spectra
