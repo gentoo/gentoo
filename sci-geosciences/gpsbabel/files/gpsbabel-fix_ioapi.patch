@@ -1,0 +1,14 @@
+--- a/zlib/contrib/minizip/ioapi.h
++++ b/zlib/contrib/minizip/ioapi.h
+@@ -102,7 +102,11 @@
+ #endif
+ #endif
+ 
++    
+ 
++#ifndef OF
++#define OF(x) x
++#endif
+ 
+ #ifdef __cplusplus
+ extern "C" {
