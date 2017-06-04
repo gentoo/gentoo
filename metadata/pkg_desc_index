@@ -75,7 +75,7 @@ app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
 app-admin/consul 0.7.1 0.7.2 0.7.3 0.7.5 0.8.0 0.8.3: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
-app-admin/consul-template 0.12.2 0.16.0: Generic template rendering and notifications with Consul
+app-admin/consul-template 0.12.2 0.16.0 0.18.5: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r3 1.6.2-r4 1.6.2-r5: Log rotation software
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
