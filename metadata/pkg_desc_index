@@ -4849,7 +4849,7 @@ dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.2 0.99.4 0.99.6: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.9.0 0.9.1 0.9.2: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.9.1 0.9.2: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1 0.3.0: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 3.0.1 9999: Small, safe and fast formatting library
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -14710,7 +14710,7 @@ net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subv
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.12.0.2 3.14.1 3.24.0 3.24.1-r1 3.25.0 3.25.1 3.25.2 3.25.2-r1: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.25.2 3.25.2-r1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
@@ -18402,7 +18402,7 @@ www-apps/trac-mercurial 0.12.0.29_pre10899-r1 1.0.0.3_pre20130206-r1: A Mercuria
 www-apps/trac-tags 0.6-r1: Tags plugin for Trac
 www-apps/tt-rss 20160527 20160930: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911-r1 20100911-r2: A feed aggregator application
-www-apps/viewvc 1.1.20-r1: ViewVC, a web interface to CVS and Subversion
+www-apps/viewvc 1.1.20-r1 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
@@ -18432,7 +18432,7 @@ www-client/opera 12.16_p1860-r1 45.0.2552.881 45.0.2552.888: A fast and secure w
 www-client/opera-beta 46.0.2597.6 46.0.2597.11: A fast and secure web browser
 www-client/opera-developer 46.0.2602.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
-www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
+www-client/phantomjs 1.9.8 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
 www-client/qupzilla 2.0.2 2.1.1 2.1.2: A cross-platform web browser using QtWebEngine
