@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit python-any-r1 golang-build golang-vcs-snapshot
 
-EGO_PN="k8s.io/minikube/..."
+EGO_PN="k8s.io/minikube"
 ARCHIVE_URI="https://github.com/kubernetes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -20,23 +20,23 @@ IUSE="hardened"
 
 DEPEND="dev-go/go-bindata
 	${PYTHON_DEPS}"
-RDEPEND=">=sys-cluster/kubectl-1.6.0"
+RDEPEND=">=sys-cluster/kubectl-1.6.4"
 
 RESTRICT="test"
 
 src_prepare() {
 	default
-	sed -i -e 's/ -s -w/ -w/' -e 's#$(GOPATH)/bin/go-bindata#go-bindata#' -e 's#GOBIN=$(GOPATH)/bin go get github.com/jteeuwen/go-bindata/...##' src/${EGO_PN%/*}/Makefile || die
-	sed -i -e "s/get_rev(), get_version(), get_tree_state()/get_rev(), get_version(), 'gitTreeState=clean'/"  src/${EGO_PN%/*}/hack/get_k8s_version.py || die
+	sed -i -e 's/ -s -w/ -w/' -e 's#$(GOPATH)/bin/go-bindata#go-bindata#' -e 's#GOBIN=$(GOPATH)/bin go get github.com/jteeuwen/go-bindata/...##' src/${EGO_PN}/Makefile || die
+	sed -i -e "s/get_rev(), get_version(), get_tree_state()/get_rev(), get_version(), 'gitTreeState=clean'/"  src/${EGO_PN}/hack/get_k8s_version.py || die
 }
 
 src_compile() {
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
-	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -C src/${EGO_PN%/*}
+	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -C src/${EGO_PN}
 }
 
 src_install() {
-	pushd src/${EGO_PN%/*} || die
+	pushd src/${EGO_PN} || die
 	dobin out/minikube out/localkube
 	dodoc -r docs CHANGELOG.md README.md
 	popd || die
