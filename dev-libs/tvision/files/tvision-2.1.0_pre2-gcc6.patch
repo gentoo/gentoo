@@ -28,21 +28,19 @@ Fix gcc-6 compilation errors; bug 594176
  
 --- a/classes/tvtext1.cc
 +++ b/classes/tvtext1.cc
-@@ -110,10 +110,10 @@
+@@ -110,8 +110,8 @@
  char TCheckBoxes::button[] = " [ ] ";
  char TCheckBoxes::obutton[] = " [ ] ";
  
--TScrollChars TScrollBar::vChars = {30, 31, 177, 254, 178}; // ±þ²
--TScrollChars TScrollBar::ovChars = {30, 31, 177, 254, 178}; // ±þ²
--TScrollChars TScrollBar::hChars = {17, 16, 177, 254, 178}; // ±þ²
--TScrollChars TScrollBar::ohChars = {17, 16, 177, 254, 178}; // ±þ²
-+TScrollChars TScrollBar::vChars = {30, 31, (char) 177, (char) 254, (char) 178}; // ±þ²
-+TScrollChars TScrollBar::ovChars = {30, 31, (char) 177, (char) 254, (char) 178}; // ±þ²
-+TScrollChars TScrollBar::hChars = {17, 16, (char) 177, (char) 254, (char) 178}; // ±þ²
-+TScrollChars TScrollBar::ohChars = {17, 16, (char) 177, (char) 254, (char) 178}; // ±þ²
+-TScrollChars TScrollBar::vChars = {30, 31, 177, 254, 178};
+-TScrollChars TScrollBar::ovChars = {30, 31, 177, 254, 178};
+-TScrollChars TScrollBar::hChars = {17, 16, 177, 254, 178};
+-TScrollChars TScrollBar::ohChars = {17, 16, 177, 254, 178};
++TScrollChars TScrollBar::vChars = {30, 31, (char) 177, (char) 254, (char) 178};
++TScrollChars TScrollBar::ovChars = {30, 31, (char) 177, (char) 254, (char) 178};
++TScrollChars TScrollBar::hChars = {17, 16, (char) 177, (char) 254, (char) 178};
++TScrollChars TScrollBar::ohChars = {17, 16, (char) 177, (char) 254, (char) 178};
  
- char TButton::shadows[] = "\xDC\xDB\xDF"; // ÜÛß
- char TButton::oshadows[] = "\xDC\xDB\xDF"; // ÜÛß
 --- a/classes/x11/x11src.cc
 +++ b/classes/x11/x11src.cc
 @@ -94,6 +94,10 @@
