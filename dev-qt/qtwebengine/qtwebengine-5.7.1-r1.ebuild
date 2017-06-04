@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit pax-utils python-any-r1 qt5-build
+inherit multiprocessing pax-utils python-any-r1 qt5-build
 
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
@@ -24,12 +24,10 @@ RDEPEND="
 	~dev-qt/qtnetwork-${PV}
 	~dev-qt/qtwebchannel-${PV}[qml]
 	dev-libs/expat
-	dev-libs/jsoncpp:=
 	dev-libs/libevent:=
 	dev-libs/libxml2
 	dev-libs/libxslt
 	dev-libs/protobuf:=
-	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -38,12 +36,13 @@ RDEPEND="
 	media-libs/libwebp:=
 	media-libs/mesa
 	media-libs/opus
-	media-libs/speex
 	net-libs/libsrtp:0=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/libcap
 	sys-libs/zlib[minizip]
+	virtual/jpeg:0
+	virtual/libudev
 	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -77,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.7.0-fix-system-ffmpeg.patch"
 	"${FILESDIR}/${PN}-5.7.0-icu58.patch"
 	"${FILESDIR}/${PN}-5.7.0-undef-madv_free.patch"
+	"${FILESDIR}/${PN}-5.7.1-gcc-7.patch"
 )
 
 src_prepare() {
@@ -98,6 +98,7 @@ src_prepare() {
 
 src_configure() {
 	export NINJA_PATH=/usr/bin/ninja
+	export NINJAFLAGS="-j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v"
 
 	local myqmakeargs=(
 		$(usex alsa 'WEBENGINE_CONFIG+=use_alsa' '')
