@@ -1,0 +1,32 @@
+From 2c8e03de391ac8a878d56e0a491c6a70b7a4c589 Mon Sep 17 00:00:00 2001
+From: Borys Jurgiel <info@borysjurgiel.pl>
+Date: Sat, 3 Jun 2017 16:54:54 +0200
+Subject: [PATCH] [PROCESSING] [regression] One more fix for broken encoding of
+ psycopg2 error messages
+
+---
+ python/plugins/processing/tools/postgis.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/plugins/processing/tools/postgis.py b/python/plugins/processing/tools/postgis.py
+index 69fab99b7f4..96c88f95f63 100644
+--- a/python/plugins/processing/tools/postgis.py
++++ b/python/plugins/processing/tools/postgis.py
+@@ -205,7 +205,7 @@ def __init__(self, host=None, port=None, dbname=None, user=None,
+                 break
+             except psycopg2.OperationalError as e:
+                 if i == 3:
+-                    raise DbError(unicode(e))
++                    raise DbError(unicode(e.pgerror, e.cursor.connection.encoding, 'replace'))
+ 
+                 err = unicode(e)
+                 user = self.uri.username()
+@@ -821,7 +821,7 @@ def _exec_sql(self, cursor, sql):
+         try:
+             cursor.execute(sql)
+         except psycopg2.Error as e:
+-            raise DbError(unicode(e), e.cursor.query)
++            raise DbError(unicode(e.pgerror, e.cursor.connection.encoding, 'replace'), e.cursor.query)
+ 
+     def _exec_sql_and_commit(self, sql):
+         """Tries to execute and commit some action, on error it rolls

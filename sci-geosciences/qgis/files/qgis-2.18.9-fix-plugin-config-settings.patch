@@ -1,0 +1,23 @@
+From 008f38574e78f0557aae890f508cf5e148545d15 Mon Sep 17 00:00:00 2001
+From: "Juergen E. Fischer" <jef@norbit.de>
+Date: Wed, 31 May 2017 13:50:03 +0200
+Subject: [PATCH] processing: only reset existing menu 'settings' (followup
+ e78fc620)
+
+---
+ python/plugins/processing/gui/ConfigDialog.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/python/plugins/processing/gui/ConfigDialog.py b/python/plugins/processing/gui/ConfigDialog.py
+index 85d8641fb48..d2776b7dca0 100644
+--- a/python/plugins/processing/gui/ConfigDialog.py
++++ b/python/plugins/processing/gui/ConfigDialog.py
+@@ -256,6 +256,8 @@ def resetMenusToDefaults(self):
+         for provider in providers:
+             for alg in provider.algs:
+                 d = defaultMenuEntries.get(alg.commandLineName(), "")
++                if "MENU_" + alg.commandLineName() not in ProcessingConfig.settings:
++                    continue
+                 setting = ProcessingConfig.settings["MENU_" + alg.commandLineName()]
+                 item = self.items[setting]
+                 item.setData(d, Qt.EditRole)
