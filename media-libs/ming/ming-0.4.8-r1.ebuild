@@ -34,6 +34,8 @@ PDEPEND="php? ( dev-php/ming-php )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S=${WORKDIR}/${P//./_}
 
+PATCHES=( "${FILESDIR}"/${PN}-0.4.8-CVE-2017-8782.patch )
+
 # Tests only work when the package is tested on a system
 # which does not presently have any version of ming installed.
 RESTRICT="test"
