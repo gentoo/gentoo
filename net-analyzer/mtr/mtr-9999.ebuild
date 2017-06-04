@@ -30,7 +30,7 @@ DEPEND="
 DOCS=( AUTHORS FORMATS NEWS README SECURITY TODO )
 FILECAPS=( cap_net_raw usr/sbin/mtr )
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-tinfo.patch
+	"${FILESDIR}"/${PN}-0.88-tinfo.patch
 )
 
 src_unpack() {
