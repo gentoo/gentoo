@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,5 +45,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "This package will expire on April 30, 2017"
+	elog "This package will expire on September 30, 2017"
 }
