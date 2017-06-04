@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 LICENSE="GPL-2 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc plugins"
+IUSE="doc"
 
 RDEPEND="
 	dev-qt/designer:4
@@ -24,7 +24,6 @@ RDEPEND="
 	dev-qt/qthelp:4
 	dev-qt/qtsql:4
 	x11-libs/qscintilla:=[qt4(-)]
-	plugins? ( dev-qt/qtwebkit:4 )
 "
 DEPEND="${RDEPEND}
 	doc? ( >=app-doc/doxygen-1.5.8 )
@@ -50,19 +49,10 @@ src_prepare() {
 
 src_configure() {
 	eqmake4 prefix=/usr system_qscintilla=1
-
-	if use plugins ; then
-		eqmake4 plugins/plugins.pro
-	fi
 }
 
 src_install() {
 	qt4-r2_src_install
-
-	if use plugins ; then
-		insinto /usr/lib64/monkeystudio
-		doins -r bin/plugins/*
-	fi
 
 	insinto /usr/share/${PN}/translations
 	local lang
