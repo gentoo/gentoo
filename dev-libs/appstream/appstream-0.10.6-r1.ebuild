@@ -13,7 +13,7 @@ else
 	MY_PV="$(replace_all_version_separators '_')"
 	MY_P="APPSTREAM_${MY_PV}"
 	SRC_URI="https://github.com/ximion/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 	S="${WORKDIR}/${PN}-${MY_P}"
 fi
 
