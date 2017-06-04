@@ -31,6 +31,11 @@
 
 # Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
 # Relies on obsolete and vulerable qtwebkit version. Dead upstream.
+# Masked for removal in 30 days. Bug #620758.
+www-client/qtweb
+
+# Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
+# Relies on obsolete and vulerable qtwebkit version. Dead upstream.
 # Masked for removal in 30 days. Bug #620752.
 sci-mathematics/freemat
 
