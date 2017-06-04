@@ -14,7 +14,4 @@
 		<bugs-to>https://github.com/gravitational/teleport/issues</bugs-to>
 		<remote-id type="github">gravitational/teleport</remote-id>
 	</upstream>
-	<use>
-		<flag name="etcd">Use etcd storage backend (required for HA)</flag>
-	</use>
 </pkgmetadata>
