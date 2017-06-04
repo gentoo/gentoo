@@ -1,0 +1,40 @@
+From ed03e99ee582cb4abd1ae08cf333da8c0975a4c8 Mon Sep 17 00:00:00 2001
+From: Luigi Pirelli <luipir@gmail.com>
+Date: Tue, 9 May 2017 13:39:23 +0200
+Subject: [PATCH] catch uncatched exception when item has lost reference.
+ fixies #15868
+
+---
+ python/plugins/db_manager/layer_preview.py | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/python/plugins/db_manager/layer_preview.py b/python/plugins/db_manager/layer_preview.py
+index 27bba0a8f13..9947b1ef4d8 100644
+--- a/python/plugins/db_manager/layer_preview.py
++++ b/python/plugins/db_manager/layer_preview.py
+@@ -25,7 +25,7 @@
+ from qgis.PyQt.QtWidgets import QApplication
+ 
+ from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer, QgsMessageBar
+-from qgis.core import QgsVectorLayer, QgsMapLayerRegistry, QgsProject
++from qgis.core import QgsVectorLayer, QgsMapLayerRegistry, QgsProject, QgsMessageLog
+ 
+ from .db_plugins.plugin import Table
+ 
+@@ -78,11 +78,13 @@ def setDirty(self, val=True):
+     def _clear(self):
+         """ remove any layers from preview canvas """
+         if self.item is not None:
+-            ## skip exception on RuntimeError fixes #6892
+             try:
+                 self.item.aboutToChange.disconnect(self.setDirty)
+-            except RuntimeError:
+-                pass
++            ## skip exception on RuntimeError fixes #6892
++            ## skip TypeError and generic Exceptions fixes #15868
++            ## generally due the remove of self.item object or C++ referenced object
++            except Exception as ex:
++                QgsMessageLog.logMessage(unicode(ex))
+ 
+         self.item = None
+         self.dirty = False
