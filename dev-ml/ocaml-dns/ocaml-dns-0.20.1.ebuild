@@ -44,7 +44,7 @@ DEPEND="
 RESTRICT="test"
 
 src_prepare() {
-	epatch "${FILESDIR}/uri.patch"
+	epatch "${FILESDIR}/uri.patch" "${FILESDIR}/ipaddr.patch"
 	default
 }
 
