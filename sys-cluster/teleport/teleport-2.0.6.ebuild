@@ -43,18 +43,16 @@ src_prepare() {
 
 src_compile() {
 	GOPATH="${S}" emake -C src/${EGO_PN%/*}
-	pushd src/${EGO_PN%/*}/web/dist
-	zip -qr "${S}/src/${EGO_PN%/*}/build/webassets.zip" . || die "failed to create webassets.zip"
-	popd
-	cat "${S}/src/${EGO_PN%/*}/build/webassets.zip" >> "src/${EGO_PN%/*}/build/${PN}"
-	zip -q -A "${S}/src/${EGO_PN%/*}/build/teleport" || die "failed to adjust self-extracting executable archive"
+	pushd src/${EGO_PN%/*}/web/dist >/dev/null || die
+	zip -qr "${S}/src/${EGO_PN%/*}/build/webassets.zip" . || die
+	popd >/dev/null || die
+	cat "${S}/src/${EGO_PN%/*}/build/webassets.zip" >> "src/${EGO_PN%/*}/build/${PN}" || die
+	zip -q -A "${S}/src/${EGO_PN%/*}/build/${PN}" || die
 }
 
 src_install() {
 	dodir /var/lib/${PN} /etc/${PN}
-	pushd src/${EGO_PN%/*} || die
-	dobin build/{tsh,tctl,teleport}
-	popd
+	dobin src/${EGO_PN%/*}/build/{tsh,tctl,teleport}
 
 	insinto /etc/${PN}
 	doins ${PN}.yaml
