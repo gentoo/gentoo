@@ -184,14 +184,16 @@ resume() {
 	env_check || return 1
 
 	local password=""
-	local master_urls=( \
-		$("${BOINCCMD}" --get_project_status | \
-		  sed -n 's/\s*master URL: //p') \
-	)
 
 	if need_passwd_arg; then
 		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
 	fi
+
+	local master_urls=( \
+		$(cd "${RUNTIMEDIR}" ; \
+		  "${BOINCCMD}" ${password} --get_project_status | \
+		  sed -n 's/\s*master URL: //p') \
+	)
 
 	for url in "${master_urls[@]}"; do
 		ebegin "Resuming $url"
@@ -207,14 +209,16 @@ suspend() {
 	env_check || return 1
 
 	local password=""
-	local master_urls=( \
-		$("${BOINCCMD}" --get_project_status | \
-		  sed -n 's/\s*master URL: //p') \
-	)
 
 	if need_passwd_arg; then
 		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
 	fi
+
+	local master_urls=( \
+		$(cd "${RUNTIMEDIR}" ; \
+		  "${BOINCCMD}" ${password} --get_project_status | \
+		  sed -n 's/\s*master URL: //p') \
+	)
 
 	for url in "${master_urls[@]}"; do
 		ebegin "Suspending $url"
