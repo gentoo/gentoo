@@ -31,6 +31,13 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Unmaintained since addition. Obsolete version that requires ancient
+# dev-python/mock version. No reverse dependencies.
+# Removal in 30 days. Bug #616292.
+dev-python/cassandra-driver
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained. Does not use python eclasses. Unhandled bug reports.
 # Removal in 30 days. Bug #615920.
 dev-util/rpmdevtools
