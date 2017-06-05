@@ -43,8 +43,8 @@ pkg_setup() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-octave \
-		--disable-gcc-pipe \
-		--disable-gcc-opt \
+		--enable-gcc-pipe \
+		--enable-gcc-opt \
 		$(use_enable static-libs static) \
 		$(use_enable !minimal external-libs) \
 		$(multilib_native_enable full-suite) \
