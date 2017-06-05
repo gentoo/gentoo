@@ -176,7 +176,6 @@ x11-misc/xscreensaver gdm new-login
 x11-libs/wxGTK gstreamer
 net-p2p/mldonkey guionly gtk
 dev-vcs/git gtk
-app-cdr/cdrdao gcdmaster
 net-im/pidgin eds
 
 # Jeroen Roovers <jer@gentoo.org> (15 Apr 2008)
