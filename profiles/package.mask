@@ -31,6 +31,13 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Abandoned upstream. Requires obsolete GNOME libraries. Multiple
+# alternatives exist, e.g. app-dicts/gwaei.
+# Removal in 30 days. Bug #608404.
+app-dicts/gjiten
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Discontinued blob driver. Fails to build against modern kernels.
 # Removal in 30 days. Bug #574026.
 net-dialup/martian-modem
