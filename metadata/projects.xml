@@ -4279,7 +4279,7 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>www@gentoo.org</email>
-    <name>Website Maintainers</name>
+    <name>Website maintainers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Website</url>
     <description>The Website team maintains the Gentoo website and develops new sites for the community.</description>
     <member is-lead="1">
