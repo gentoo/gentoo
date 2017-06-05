@@ -41,7 +41,7 @@ src_install() {
 	dobin node_exporter
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
 	popd || die
-	keepdir /var/node_exporter /var/log/node_exporter
+	keepdir /var/lib/node_exporter /var/log/node_exporter
 	fowners ${PN}:${PN} /var/node_exporter /var/log/node_exporter
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
