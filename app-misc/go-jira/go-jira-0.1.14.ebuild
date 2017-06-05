@@ -17,7 +17,7 @@ EGO_VENDOR=(
 	"gopkg.in/op/go-logging.v1 b2cb9fa56473e98db8caba80237377e83fe44db5 github.com/op/go-logging"
 	"golang.org/x/crypto e1a4589e7d3ea14a3352255d04b6f1a418845e5e github.com/golang/crypto"
 )
-inherit golang-build golang-vcs-snapshot user
+inherit golang-build golang-vcs-snapshot
 
 ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
