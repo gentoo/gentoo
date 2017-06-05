@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# www-apache/mod_python is masked for removal, force agent-only builds.
+net-analyzer/check_mk agent-only
+
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Always force patch on appropriate variant to ensure
 # similar experience when using app-emulation/wine-any

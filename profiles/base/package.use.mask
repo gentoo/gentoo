@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# www-apache/mod_python is masked for removal, mask flags that
+# require it.
+net-analyzer/check_mk livestatus wato
+
 # Matthias Maier <tamiko@gentoo.org> (31 May 2017)
 # mask dependencies on old paraview versions, bug #561084
 <sci-libs/openfoam-2.4.0 paraview

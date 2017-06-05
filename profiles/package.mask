@@ -29,6 +29,100 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Security vulnerability.
+# Removal in 30 days. Bug #552628.
+dev-libs/libmimedir
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned downstream and upstream. Permanently masked due to
+# a dependency on vulnerable library.
+# Removal in 30 days. Bug #337473.
+sys-block/afacli
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Reported not to work. Uses old wxPython.
+# Removal in 30 days. Bug #601192.
+sci-geosciences/cdat-lite
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Multiple bugs, including a security
+# vulnerability. Removal in 30 days. Bug #581960.
+net-irc/atheme-services
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned in Gentoo. Fail to build with gcc-6.
+# Removal in 30 days. Bugs:
+# app-backup/boxbackup - #595412
+# dev-lang/falcon - #595416
+# net-p2p/ppcoin-qt - #598366
+app-backup/boxbackup
+dev-lang/falcon
+net-p2p/ppcoin-qt
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned upstream and unmaintained in Gentoo. Requires old wxPython
+# and pycrypto. Removal in 30 days. Bug #313923.
+app-mobilephone/bitpim
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Security vulnerability.
+# Removal in 30 days. Bug #562896.
+net-irc/charybdis
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Security vulnerability. No reverse
+# dependencies. Removal in 30 days. Bug #551216.
+www-apache/mod_jk
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Multiple versions behind upstream.
+# Security vulnerabilities. No reverse dependencies anymore.
+# Removal in 30 days. Bug #512292.
+dev-db/ctdb
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Multiple versions behind upstream. Multiple
+# security vulnerabilities. Removal in 30 days. Bug #509920.
+www-apps/egroupware
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained. Fails to build. Removal in 30 days. Bug #541702.
+net-mail/topal
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned upstream and downstream. Reported not to work. CAPI flags
+# in reverse dependencies are masked for some time already.
+# Removal in 30 days. Bug #379975.
+net-dialup/capi4k-utils
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned upstream and downstream. Buggy. Segfaults hard on Python
+# upgrades. Use one of the *CGI modules instead.
+# Removal in 30 days. Bug #536134.
+www-apache/mod_python
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned upstream and downstream. Buggy to the point of producing
+# corrupted media. Use the original app-cdr/cdrtools or one of the many
+# other alternatives (app-cdr/dvd+rw-tools, dev-libs/libburn...).
+# Removal in 30 days. Bugs #254312, #591778.
+app-cdr/cdrkit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (05 Jun 2017)
 # Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
 # Masked for removal in 30 days. Bugs #620792, #620796
@@ -602,10 +696,6 @@ dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-Format-Strptime-1.710.0
 >=dev-perl/Log-Dispatch-2.590.0
 
-# Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
-# Unpatched security vulnerability per bug #509920
-www-apps/egroupware
-
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 <media-video/motion-4.0.1-r1
@@ -759,7 +849,6 @@ games-fps/unreal
 games-strategy/heroes3
 games-strategy/heroes3-demo
 games-strategy/smac
-sys-block/afacli
 
 # Mikle Kolyada <zlogene@gentoo.org> (27 Jun 2014)
 # Masked for proper testing. (Major updates in the code).
