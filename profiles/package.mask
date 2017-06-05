@@ -31,6 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Multiple versions behind upstream. Multiple
+# security vulnerabilities. Removal in 30 days. Bug #509920.
+www-apps/egroupware
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained. Fails to build. Removal in 30 days. Bug #541702.
 net-mail/topal
 
@@ -628,10 +634,6 @@ dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-1.370.0
 >=dev-perl/DateTime-Format-Strptime-1.710.0
 >=dev-perl/Log-Dispatch-2.590.0
-
-# Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
-# Unpatched security vulnerability per bug #509920
-www-apps/egroupware
 
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
