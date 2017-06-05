@@ -8,7 +8,7 @@ user=${user:-${SVCNAME}}
 group=${group:-${SVCNAME}}
 
 command="/usr/bin/node_exporter"
-command_args="${command_args:--collector.textfile.directory=/var/node_exporter/}"
+command_args="${command_args:--collector.textfile.directory=/var/lib/node_exporter/}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/node_exporter/${SVCNAME}.log \
