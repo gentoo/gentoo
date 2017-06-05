@@ -1,6 +1,11 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# This eclass is no longer maintained. The last consumer is last rited
+# for removal. The eclass will be removed along with it in 30 days.
+
 # @ECLASS: gpe.eclass
 # @MAINTAINER:
 # gpe@gentoo.org
