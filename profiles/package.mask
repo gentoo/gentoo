@@ -392,65 +392,6 @@ app-cdr/backlite
 # Masked for removal in 30 days.
 net-im/licq
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Obsolete parts of kdevelop:4 - upstream merged into kdevelop:5.
-# Masked for removal in 30 days.
-dev-util/kdevelop-php-docs
-dev-util/kdevelop-qmake
-dev-util/kdevelop-qmljs
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Unused Plasma 4 runtime cleanup, masked for removal in 30 days.
-kde-apps/attica
-kde-apps/drkonqi
-kde-apps/kcontrol
-kde-apps/kdebase-desktoptheme
-kde-apps/kdebase-menu
-kde-apps/kdebase-menu-icons
-kde-apps/kdebugdialog
-kde-apps/kdesu
-kde-apps/kglobalaccel
-kde-apps/kiconfinder
-kde-apps/kimgio
-kde-apps/knetattach
-kde-apps/kpasswdserver
-kde-apps/kquitapp
-kde-apps/kstart
-kde-apps/kuiserver
-kde-apps/kurifilter-plugins
-kde-apps/plasma-apps
-kde-apps/renamedlg-plugins
-kde-apps/solid-runtime
-sys-auth/polkit-kde-agent
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Follow-up to 16.12.3 stabilisation - the remaining split
-# kde-baseapps are now either part of konqueror:5 or obsolete.
-# Masked for removal in 30 days.
-kde-apps/kdepasswd
-kde-apps/kfmclient
-kde-apps/konq-plugins
-kde-apps/libkonq
-kde-apps/nsplugins
-kde-apps/plasma-apps
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Depends on deprecated libs, no development in 8 years.
-# No consumer left after konqueror:4 removal.
-# Masked for removal in 30 days.
-kde-misc/kim4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Depends on deprecated libs, no development in 9 years.
-# No consumer left after konqueror:4 removal.
-# Masked for removal in 30 days.
-kde-misc/kio-ftps
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Crash on start, hugely outdated, depends on deprecated libs.
-# Masked for removal in 30 days.
-kde-misc/quadkonsole
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 May 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
