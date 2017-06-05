@@ -68,7 +68,6 @@ GUI_RDEPEND="
 			)
 		)
 		phonon? ( || ( media-libs/phonon[qt4] dev-qt/qtphonon:4 ) )
-		webkit? ( dev-qt/qtwebkit:4 )
 	)
 "
 
@@ -108,7 +107,7 @@ REQUIRED_USE="
 	qt5? ( !ayatana )
 	snorenotify? ( qt5 || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
-	webkit? ( || ( X monolithic ) )
+	webkit? ( qt5 || ( X monolithic ) )
 "
 
 pkg_setup() {
