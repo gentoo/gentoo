@@ -14611,7 +14611,7 @@ net-dns/dnsmasq 2.76 2.76-r1 2.77: Small forwarding DNS server
 net-dns/dnssec-check 2.2: tests local resolver for support of DNSSEC validation
 net-dns/dnssec-lookup 2.1 2.2: DNS lookup utility that supports DNSSEC validation
 net-dns/dnssec-nodes 2.1 2.2: graphically depicts the DNSSEC results from a lookup via logfiles
-net-dns/dnssec-root 20110630 20150403: The DNSSEC root key(s)
+net-dns/dnssec-root 20150403: The DNSSEC root key(s)
 net-dns/dnssec-system-tray 2.1 2.2: display DNSSEC resolver logs in system tray
 net-dns/dnssec-tools 2.1 2.2: tools to ease the deployment of DNSSEC related technologies
 net-dns/dnssec-validator 2.1 2.2: DNSSEC validator (dnsval)
@@ -19083,7 +19083,7 @@ x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord an
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5_p5_p1 0.5_p6: User preference utility for XKB extensions for X
-x11-misc/xkeyboard-config 2.20: X keyboard configuration database
+x11-misc/xkeyboard-config 2.20 2.21: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.47 5.50 5.53 5.54: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
@@ -19376,7 +19376,7 @@ x11-terms/terminator 0.97-r1 0.98 1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1 1.0.0 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 0.9.6 0.9.6-r1: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.6.3 0.6.90 0.6.92 0.8.0 0.8.1 0.8.3 0.8.4 0.8.5.1: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 327: Terminal Emulator for X Windows
+x11-terms/xterm 327 328: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
