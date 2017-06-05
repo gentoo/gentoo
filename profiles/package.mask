@@ -31,6 +31,13 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Abandoned downstream and upstream. Permanently masked due to
+# a dependency on vulnerable library.
+# Removal in 30 days. Bug #337473.
+sys-block/afacli
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. Reported not to work. Uses old wxPython.
 # Removal in 30 days. Bug #601192.
 sci-geosciences/cdat-lite
@@ -836,7 +843,6 @@ games-fps/unreal
 games-strategy/heroes3
 games-strategy/heroes3-demo
 games-strategy/smac
-sys-block/afacli
 
 # Mikle Kolyada <zlogene@gentoo.org> (27 Jun 2014)
 # Masked for proper testing. (Major updates in the code).
