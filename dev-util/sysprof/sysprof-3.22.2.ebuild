@@ -15,7 +15,9 @@ IUSE="debug gtk systemd"
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
-	gtk? ( >=x11-libs/gtk+-3.21.5:3 )
+	gtk? (
+		sys-auth/polkit
+		>=x11-libs/gtk+-3.22.0:3 )
 	systemd? (
 		sys-auth/polkit
 		>=sys-apps/systemd-222 )
