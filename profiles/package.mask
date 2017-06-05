@@ -31,6 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# The libgnomeuimm is long dead upstream.
+# Removal in 30 days. Bug #608948.
+dev-cpp/libgnomeuimm
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained upstream and in Gentoo. Requires old wxGTK version.
 # Removal in 30 days. Bug #564100.
 net-analyzer/fe3d
