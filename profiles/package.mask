@@ -30,6 +30,25 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# Mask split *-sharp packages for removal. Replaced by combined:
+# - >=dev-dotnet/gtk-sharp-2.12.21,
+# - >=dev-dotnet/gnome-sharp-2.24.2-r1.
+# Removal in 14 days.
+<dev-dotnet/gtk-sharp-2.12.21
+dev-dotnet/atk-sharp
+dev-dotnet/gdk-sharp
+dev-dotnet/glade-sharp
+dev-dotnet/glib-sharp
+dev-dotnet/gtk-dotnet-sharp
+dev-dotnet/gtk-sharp-docs
+dev-dotnet/gtk-sharp-gapi
+dev-dotnet/pango-sharp
+<dev-dotnet/gnome-sharp-2.24.2-r1
+dev-dotnet/art-sharp
+dev-dotnet/gconf-sharp
+dev-dotnet/gnomevfs-sharp
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
 # Unmaintained since addition. Obsolete version that requires ancient
 # dev-python/mock version. No reverse dependencies.
