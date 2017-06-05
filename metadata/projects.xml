@@ -285,7 +285,12 @@
     <email>bsd@gentoo.org</email>
     <name>BSD Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:BSD</url>
-    <description>Porting of Gentoo facilities on BSD systems.</description>
+    <description>Maintains BSD userspace and some BSD-origin packages</description>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Minor ebuild janitor</role>
+    </member>
   </project>
   <project>
     <email>base-system@gentoo.org</email>
@@ -2883,7 +2888,6 @@ developers and volunteer mentors.</description>
     <name>Gentoo Prefix</name>
     <url>https://wiki.gentoo.org/wiki/Project:Prefix</url>
     <description>To bring out the virtues of Gentoo on different operating systems, the Gentoo Prefix project develops and maintains a way of installing Gentoo systems in a non-standard location, designated by a "prefix".</description>
-    <subproject ref="bsd@gentoo.org"/>
     <member>
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>

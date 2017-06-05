@@ -95,7 +95,7 @@ app-admin/eselect 1.4.5 1.4.8 1.4.9 9999: Gentoo's multi-purpose configuration a
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
-app-admin/fifo-cronolog 1.1.1 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
+app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
 app-admin/filebeat 5.2.2 5.3.2 5.4.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
@@ -222,7 +222,7 @@ app-admin/systemdgenie 0.99.0: systemd managment utility
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
-app-admin/tmpreaper 1.6.13 1.6.13-r1: A utility for removing files based on when they were last accessed
+app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.5: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
@@ -10292,6 +10292,7 @@ dev-util/cgdb 0.6.6 0.6.7 0.6.8 9999: A curses front-end for GDB, the GNU debugg
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.16.13 2.17.2 2.17.5-r1: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
+dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.1.2: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
