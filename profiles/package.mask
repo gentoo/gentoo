@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned upstream and downstream. Buggy to the point of producing
+# corrupted media. Use the original app-cdr/cdrtools or one of the many
+# other alternatives (app-cdr/dvd+rw-tools, dev-libs/libburn...).
+# Removal in 30 days. Bugs #254312, #591778.
+app-cdr/cdrkit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (05 Jun 2017)
 # Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
 # Masked for removal in 30 days. Bugs #620792, #620796
