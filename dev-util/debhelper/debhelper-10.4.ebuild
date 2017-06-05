@@ -34,8 +34,6 @@ DEPEND="
 	)
 "
 
-S=${WORKDIR}/${PN}
-
 src_compile() {
 	tc-export CC
 
