@@ -31,6 +31,13 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Abandoned upstream and downstream. Buggy. Segfaults hard on Python
+# upgrades. Use one of the *CGI modules instead.
+# Removal in 30 days. Bug #536134.
+www-apache/mod_python
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Abandoned upstream and downstream. Buggy to the point of producing
 # corrupted media. Use the original app-cdr/cdrtools or one of the many
 # other alternatives (app-cdr/dvd+rw-tools, dev-libs/libburn...).
