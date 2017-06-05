@@ -9,6 +9,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# dev-cpp/libgnomeuimm is masked for removal, mask flags that require
+# it.
+app-cdr/cdrdao gcdmaster
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # dev-libs/dee is masked for removal, mask flags that requires it.
 gnome-extra/zeitgeist icu
 
