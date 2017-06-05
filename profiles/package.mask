@@ -710,11 +710,6 @@ dev-libs/iniparser:4
 # Needs revdep testing. Bug #388207.
 =dev-qt/qtwebkit-4.10*
 
-# Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
-# Version bump is a WIP, see bug #524242
-# It works (except USE=vamp) but is not up to Gentoo standards yet
->=media-sound/audacity-2.1.1
-
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
 # No upstream support anymore
