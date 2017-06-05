@@ -9449,7 +9449,7 @@ dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait f
 dev-ruby/crack 0.4.2-r1 0.4.3 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
-dev-ruby/cri 2.7.1 2.8.0: Cri is a library for building easy-to-use commandline tools
+dev-ruby/cri 2.7.1 2.8.0 2.9.1: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.4.8 1.4.9 1.4.10 1.5.0: Sass-based Stylesheet Framework
 dev-ruby/curb 0.9.3: Ruby-language bindings for libcurl
 dev-ruby/curses 1.1.3 1.2.1 1.2.2: Ruby binding for curses, ncurses, and PDCurses
@@ -9658,7 +9658,7 @@ dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pca
 dev-ruby/nexpose 5.3.1 5.3.2: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.2.1 1.2.1-r1 2.0.0 2.1.0: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.6.8.1 1.7.0 1.7.0.1 1.7.1 1.7.2: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.6.8.1 1.7.1 1.7.2 1.8.0: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7 1.4.9: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
