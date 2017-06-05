@@ -1816,6 +1816,7 @@ app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
 app-misc/gnote 3.22.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
+app-misc/go-jira 0.1.14: A simple JIRA commandline client in Go
 app-misc/golly 2.7-r1 2.8: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 1.9: Google Contacts wrapper for mutt
 app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
