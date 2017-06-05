@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,9 +30,9 @@ I2PD_GROUP=i2pd
 
 CMAKE_USE_DIR="${S}/build"
 
-DOCS=( README.md docs/i2pd.conf docs/tunnels.conf )
+DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
 
-PATCHES=( "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch" )
+PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch" )
 
 src_configure() {
 	mycmakeargs=(
@@ -52,8 +52,8 @@ src_install() {
 
 	# config
 	insinto /etc/i2pd
-	doins docs/i2pd.conf
-	doins docs/tunnels.conf
+	doins contrib/i2pd.conf
+	doins contrib/tunnels.conf
 
 	# grant i2pd group read and write access to config files
 	fowners "root:${I2PD_GROUP}" \
