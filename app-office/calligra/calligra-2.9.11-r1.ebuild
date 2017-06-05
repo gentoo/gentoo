@@ -40,7 +40,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="color-management +crypt +eigen +exif fftw +fontconfig freetds +glew +glib
-+gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms mysql openexr +pdf +pim
++gsf gsl import-filter +jpeg jpeg2k +lcms mysql openexr +pdf +pim
 postgres spacenav sybase test tiff +threads +truetype vc xbase +xml"
 
 # Don't use Active, it's broken on desktops.
@@ -90,7 +90,6 @@ RDEPEND="
 	)
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:0 )
-	kdcraw? ( $(add_kdeapps_dep libkdcraw) )
 	lcms? (
 		media-libs/lcms:2
 		x11-libs/libX11
@@ -196,7 +195,7 @@ src_configure() {
 		-DWITH_LibWps=$(usex import-filter)
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_OpenJPEG=$(usex jpeg2k)
-		-DWITH_Kdcraw=$(usex kdcraw)
+		-DWITH_Kdcraw=OFF
 		-DWITH_LCMS2=$(usex lcms)
 		-DWITH_MySQL=$(usex mysql)
 		-DWITH_Okular=OFF
