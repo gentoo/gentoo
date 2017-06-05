@@ -31,6 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Security vulnerability.
+# Removal in 30 days. Bug #552628.
+dev-libs/libmimedir
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Abandoned downstream and upstream. Permanently masked due to
 # a dependency on vulnerable library.
 # Removal in 30 days. Bug #337473.
