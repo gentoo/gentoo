@@ -12996,7 +12996,7 @@ media-libs/libao 1.2.0 1.2.2: The Audio Output library
 media-libs/libaom 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libasdcp-cth 0.1.2 0.1.3: implementation of SMPTE and the MXF Interop Sound & Picture Track File format
-media-libs/libass 0.11.2 0.12.3 0.13.0 0.13.1 0.13.2 0.13.3 0.13.4 0.13.5 0.13.6: Library for SSA/ASS subtitles rendering
+media-libs/libass 0.13.6 0.13.7: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 0.9.3 1.0.0 9999: Blu-ray playback libraries
 media-libs/libbmp 0.1.3: C library for reading, writing, and modifying Windows bitmap image files
@@ -17657,7 +17657,7 @@ sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PH
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 2017_pre20170505: UEFI firmware for 64-bit x86 virtual machines
-sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106 20160607 20160714 20161104: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106 20160607 20160714 20161104 20170511: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
