@@ -16,7 +16,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-#RESTRICT="test"
+RDEPEND="app-arch/rpm
+	app-arch/xz-utils
+	dev-vcs/bzr
+	dev-vcs/git"
 
 pkg_setup() {
 	enewgroup ${PN}
