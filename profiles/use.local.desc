@@ -2914,6 +2914,7 @@ dev-util/strace:aio - Enable dev-libs/libaio support for tracing Asynchronous I/
 dev-util/strace:unwind - Enable stack backtraces (-k flag) via sys-libs/libunwind
 dev-util/suse-build:symlink - Provide compatibility symlinks with original openSUSE package (might clash with other packages)
 dev-util/sysdig:modules - Build kernel modules needed for tracing local events. Disable this only if you intend to use sysdig purely to work with dumpfiles.
+dev-util/sysprof:systemd - Build the sysprofd daemon service, required to run the UI without root permissions. Relies on sys-apps/systemd running as the init system.
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
 dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler library
 dev-util/universalindentgui:html - Add support for HTML files
