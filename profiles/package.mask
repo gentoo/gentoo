@@ -31,6 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Dead upstream. No reverse dependencies. Fails to build.
+# Removal in 30 days. Bug #594384.
+dev-libs/libjit
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained upstream. Fails to build.
 # Removal in 30 days. Bug #513416.
 media-sound/pianobooster
