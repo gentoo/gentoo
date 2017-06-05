@@ -3,18 +3,16 @@
 
 EAPI=5
 
-inherit flag-o-matic toolchain-funcs
-
 DESCRIPTION="8-bit Implementation of BibTeX 0.99 with a Very Large Capacity"
 HOMEPAGE="http://tug.org/texlive/"
 SRC_URI="mirror://gentoo/texlive-${PV#*_p}-source.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc source"
 
-RDEPEND=">=dev-libs/kpathsea-6.2.0
+RDEPEND=">=dev-libs/kpathsea-6.2.1:=
 		>=dev-libs/icu-4.4:=
 		!<app-text/texlive-core-2013"
 DEPEND="${RDEPEND}
@@ -22,7 +20,7 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/bibtex-x
 
-TL_VERSION=2014
+TL_VERSION=2017
 EXTRA_TL_MODULES="bibtex8 bibtexu"
 EXTRA_TL_DOC_MODULES="bibtex8.doc bibtexu.doc"
 
@@ -37,7 +35,6 @@ done
 SRC_URI="${SRC_URI} ) "
 
 src_configure() {
-	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
 	econf \
 		--with-system-kpathsea \
 		--with-system-icu

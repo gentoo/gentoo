@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=5
 
 DESCRIPTION="Freetype 2 based TrueType font to TeX's PK format converter"
 HOMEPAGE="http://tug.org/texlive/"
@@ -17,7 +17,7 @@ IUSE=""
 # It installs some data that collides with
 # dev-texlive/texlive-langcjk-2011[source]. Hope it'd be fixed with 2012,
 # meanwhile we can start dropping freetype1.
-RDEPEND=">=dev-libs/kpathsea-6.1.0_p20120701
+RDEPEND=">=dev-libs/kpathsea-6.2.1
 		media-libs/freetype:2
 		sys-libs/zlib
 		!media-libs/freetype:1
