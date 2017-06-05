@@ -103,7 +103,7 @@ app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
 app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor API & Server
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
-app-admin/gentoo-perl-helpers 0.1.0 0.2.0 0.2.1: Introspection and Upgrade Assistance tools for Gentoo Perl
+app-admin/gentoo-perl-helpers 0.1.0 0.2.0 0.2.1 0.2.2: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0: Backup and recovery utilities for GitHub Enterprise
@@ -12714,7 +12714,7 @@ media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to 
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
-media-gfx/gimp 2.8.14-r2 2.8.14-r3 2.8.14-r4 2.8.20 2.8.20-r1 2.8.22 2.9.4-r2 2.9.4-r3 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.14-r2 2.8.14-r4 2.8.20-r1 2.8.22 2.9.4-r3 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
