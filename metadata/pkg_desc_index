@@ -10637,7 +10637,7 @@ dev-vcs/git-cola 2.2.1 2.3 2.4: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-deps 9999: git commit dependency analysis tool
-dev-vcs/git-flow 1.10.2: Git extensions to provide high-level repository operations
+dev-vcs/git-flow 1.10.2 1.11.0: Git extensions to provide high-level repository operations
 dev-vcs/git-imerge 1.0.0: Incremental merge for git
 dev-vcs/git-lfs 1.5.6 2.0.2 2.1.1 9999: command line extension and specification for managing large files with Git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
