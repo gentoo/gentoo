@@ -6517,7 +6517,7 @@ dev-perl/RedisDB 2.360.0: Perl extension to access redis database
 dev-perl/RedisDB-Parser 2.200.0: Redis protocol parser for RedisDB
 dev-perl/Ref-Util 0.101.0 0.111.0 0.113.0 0.203.0: Utility functions for checking references
 dev-perl/Ref-Util-XS 0.116.0: XS Implementation for Ref::Util
-dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0 2016060801.0.0 2017040401.0.0: Provide commonly requested regular expressions
+dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0 2016060801.0.0 2017040401.0.0 2017060201.0.0: Provide commonly requested regular expressions
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-RegGrp 2.10.0: Groups a regular expressions collection
