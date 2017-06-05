@@ -10427,10 +10427,7 @@ dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
 dev-util/kdevelop 5.1.0 5.1.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.0.0-r1: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 5.1.0 5.1.1: PHP plugin for KDevelop
-dev-util/kdevelop-php-docs 1.7.2 1.7.4: PHP documentation plugin for KDevelop 4
 dev-util/kdevelop-python 5.1.0-r1 5.1.1: Python plugin for KDevelop
-dev-util/kdevelop-qmake 1.7.0: qmake plugin for KDevelop 4
-dev-util/kdevelop-qmljs 1.7.0: QML and javascript plugin for KDevelop 4
 dev-util/kdevplatform 5.1.0 5.1.1: KDE development support libraries and apps
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kscope 1.9.4-r2: Source Editing Environment based on Qt
@@ -11809,7 +11806,6 @@ kde-apps/akregator 4.4.2017.04 4.14.11_pre20160611 17.04.1: News feed aggregator
 kde-apps/analitza 16.12.3 17.04.1: KDE library for mathematical features
 kde-apps/ark 16.12.3 17.04.1: KDE Archiving tool
 kde-apps/artikulate 16.12.3 17.04.1: Language learning application that helps improving pronunciation skills
-kde-apps/attica 16.04.3: Open Collaboration Services provider management
 kde-apps/audiocd-kio 16.08.3 16.12.3 17.04.1: kioslave for accessing audio CDs
 kde-apps/baloo-widgets 16.12.3 17.04.1: Widget library for baloo
 kde-apps/blinken 16.12.3 17.04.1: KDE version of the Simon Says game
@@ -11823,7 +11819,6 @@ kde-apps/cervisia 16.12.3 17.04.1: CVS frontend by KDE
 kde-apps/dolphin 16.12.3 17.04.1: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins 16.12.3 17.04.1: Extra Dolphin plugins
 kde-apps/dragon 16.12.3 17.04.1: A simple video player
-kde-apps/drkonqi 16.04.3: KDE crash handler, gives the user feedback if a program crashed
 kde-apps/eventviews 17.04.1: Calendar viewer for KDE PIM
 kde-apps/ffmpegthumbs 16.12.3 17.04.1: FFmpeg based thumbnail generator for video files
 kde-apps/filelight 16.12.3 17.04.1: Visualise disk usage with interactive map of concentric, segmented rings
@@ -11867,7 +11862,6 @@ kde-apps/kcharselect 16.12.3 17.04.1: KDE character selection utility
 kde-apps/kcmshell 16.04.3: Utility to host KDE control modules independently of SystemSettings
 kde-apps/kcolorchooser 16.12.3 17.04.1: KDE color selector/editor
 kde-apps/kcontacts 17.04.1: Address book API based on KDE Frameworks
-kde-apps/kcontrol 16.04.3: The KDE Control Center
 kde-apps/kcron 16.12.3 17.04.1: KDE Task Scheduler
 kde-apps/kdav 17.04.1: DAV protocol implemention with KJobs
 kde-apps/kde-apps-meta 16.12.3-r1 17.04.1: Meta package for the KDE Applications collection
@@ -11879,13 +11873,9 @@ kde-apps/kde4-l10n 16.12.3-r1 17.04.1: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 16.12.3 17.04.1: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 16.12.3 17.04.1: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
-kde-apps/kdebase-desktoptheme 16.04.3: Oxygen Plasma 4 desktop theme
 kde-apps/kdebase-kioslaves 16.04.3-r2: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
-kde-apps/kdebase-menu 16.04.3: KDE Menu query tool
-kde-apps/kdebase-menu-icons 16.04.3: KDE menu icons
 kde-apps/kdebase-meta 16.12.3 17.04.1: Transitional package to pull in plasma-meta plus basic applications
 kde-apps/kdebase-runtime-meta 16.04.3-r1: Merge this to pull in all kdebase-runtime-derived packages
-kde-apps/kdebugdialog 16.04.3: Dialog box for setting preferences for debug output
 kde-apps/kdebugsettings 16.12.3 17.04.1: Application to enable/disable qCDebug
 kde-apps/kdecore-meta 16.12.3 17.04.1: kdecore - merge this to pull in the most basic applications
 kde-apps/kdeedu-data 16.12.3 17.04.1: Shared icons, artwork and data files for educational applications
@@ -11897,7 +11887,6 @@ kde-apps/kdemultimedia-meta 16.12.3 17.04.1: kdemultimedia - merge this to pull 
 kde-apps/kdenetwork-filesharing 16.12.3 17.04.1: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 16.12.3 17.04.1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 16.12.3 17.04.1: Non-linear video editing suite by KDE
-kde-apps/kdepasswd 16.08.3: KDE GUI for passwd
 kde-apps/kdepim-addons 17.04.1: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 17.04.1: Libraries for KDE PIM applications
 kde-apps/kdepim-common-libs 4.14.11_pre20160611: Common libraries for KDE PIM apps
@@ -11910,7 +11899,6 @@ kde-apps/kdepimlibs 4.14.10_p20160611 4.14.11_pre20160611: Common library for KD
 kde-apps/kdesdk-kioslaves 16.12.3 17.04.1: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 16.12.3 17.04.1: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 16.12.3 17.04.1: Thumbnail generator for PO files
-kde-apps/kdesu 16.04.3: KDE gui for su(1)
 kde-apps/kdeutils-meta 16.12.3-r1 17.04.1: kdeutils - merge this to pull in all kdeutils-derived packages
 kde-apps/kdewebdev-meta 16.12.3 17.04.1: KDE WebDev - merge this to pull in all kdewebdev-derived packages
 kde-apps/kdf 16.12.3 17.04.1: KDE free disk space utility
@@ -11923,24 +11911,20 @@ kde-apps/kfile 16.04.3: Commandline frontend to KFileMetaInfo
 kde-apps/kfilereplace 16.12.3 17.04.1: Powerful tool to search and replace in multiple files
 kde-apps/kfind 16.12.3 17.04.1: File finder utility based on KDE Frameworks
 kde-apps/kfloppy 16.12.3 17.04.1: A straightforward graphical means to format 3.5" and 5.25" floppy disks
-kde-apps/kfmclient 16.08.3: KDE tool for opening URLs from the command line
 kde-apps/kfourinline 16.12.3 17.04.1: KDE four-in-a-row game
 kde-apps/kgeography 16.12.3 17.04.1: Geography learning tool
 kde-apps/kget 16.12.3 17.04.1: Advanced download manager by KDE
-kde-apps/kglobalaccel 16.04.3: KDE's Global Shortcut Daemon
 kde-apps/kgoldrunner 16.12.3 17.04.1: Game of action and puzzle solving by KDE
 kde-apps/kgpg 16.08.3 16.12.3 17.04.1: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 16.12.3 17.04.1: Classical hangman game by KDE
 kde-apps/khelpcenter 16.12.3 17.04.1: The KDE Help Center
 kde-apps/kholidays 16.12.3 17.04.1: Library to determine holidays and other special events for a geographical region
-kde-apps/kiconfinder 16.04.3: Finds an icon based on its name
 kde-apps/kidentitymanagement 17.04.1: Library for managing identitites
 kde-apps/kig 16.12.3 17.04.1: KDE Interactive Geometry tool
 kde-apps/kigo 16.12.3 17.04.1: Go game by KDE
 kde-apps/killbots 16.12.3 17.04.1: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 16.12.3 17.04.1: KDE web development - image map editor
 kde-apps/kimap 17.04.1: Library for interacting with IMAP servers
-kde-apps/kimgio 16.04.3: KDE WebP image format plugin
 kde-apps/kio-extras 16.12.3-r1 16.12.3-r2 17.04.1: KIO plugins present a filesystem-like view of arbitrary data
 kde-apps/kioclient 16.04.3: Command-line tool for network-transparent operations
 kde-apps/kiriki 16.12.3 17.04.1: An addictive and fun dice game
@@ -11967,7 +11951,6 @@ kde-apps/kmousetool 16.12.3 17.04.1: KDE program that clicks the mouse for you
 kde-apps/kmouth 16.12.3 17.04.1: Text-to-speech synthesizer front end
 kde-apps/kmplot 16.12.3 17.04.1: Mathematical function plotter
 kde-apps/knavalbattle 16.12.3 17.04.1: Battleship clone by KDE
-kde-apps/knetattach 16.04.3: KDE network wizard
 kde-apps/knetwalk 16.12.3 17.04.1: KDE version of the popular NetWalk game for system administrators
 kde-apps/knewstuff 16.04.3: KDE4 software to download and upload 'new stuff'
 kde-apps/knode 4.4.2017.04 4.14.11_pre20160611: Usenet newsgroups and mailing lists reader by KDE
@@ -11978,7 +11961,6 @@ kde-apps/kollision 16.12.3 17.04.1: Simple ball dodging game
 kde-apps/kolourpaint 16.12.3 17.04.1: Paint Program by KDE
 kde-apps/kommander 16.12.3: KDE dialog system for scripting
 kde-apps/kompare 16.12.3 17.04.1: A program to view the differences between files
-kde-apps/konq-plugins 16.08.3: Various plugins for konqueror
 kde-apps/konqueror 16.12.3 17.04.1: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 16.12.3 17.04.1: Galactic Strategy KDE Game
 kde-apps/konsole 16.12.3 16.12.3-r1 17.04.1: KDE's terminal emulator
@@ -11988,12 +11970,10 @@ kde-apps/kontact 4.4.2017.04 4.14.11_pre20160611 17.04.1: Container application 
 kde-apps/kontactinterface 17.04.1: Library for embedding KParts in a Kontact component
 kde-apps/kopete 16.12.3-r2 17.04.1: KDE multi-protocol IM client
 kde-apps/korganizer 4.4.2017.04 4.14.11_pre20160611 17.04.1: Organizational assistant, providing calendars and other similar functionality
-kde-apps/kpasswdserver 16.04.3: KDED Password Module
 kde-apps/kpat 16.12.3 17.04.1: KDE patience game
 kde-apps/kpimtextedit 17.04.1: A textedit with PIM-specific features
 kde-apps/kppp 16.12.3 17.04.1: A dialer and front-end to pppd
 kde-apps/kqtquickcharts 16.12.3 17.04.1: Qt Quick plugin for beautiful and interactive charts
-kde-apps/kquitapp 16.04.3: A CLI application quitter
 kde-apps/krdc 16.12.3 17.04.1: Remote desktop connection (RDP and VNC) client
 kde-apps/kreadconfig 16.04.3: Command-line tool to read KConfig entries
 kde-apps/kremotecontrol 16.12.3 17.04.1: KDE frontend for the Linux Infrared Remote Control system
@@ -12009,7 +11989,6 @@ kde-apps/ksnakeduel 16.12.3 17.04.1: KDE Tron game
 kde-apps/kspaceduel 16.12.3 17.04.1: Space Game by KDE
 kde-apps/ksquares 16.12.3 17.04.1: KDE clone of the game squares
 kde-apps/kstars 16.12.3-r1 17.04.1: Desktop Planetarium
-kde-apps/kstart 16.04.3: KDE: Utility to launch applications with special window properties
 kde-apps/ksudoku 16.12.3 17.04.1: Sudoku by KDE
 kde-apps/ksystemlog 16.12.3 17.04.1: System log viewer by KDE
 kde-apps/kteatime 16.12.3 17.04.1: KDE timer for making a fine cup of tea
@@ -12034,8 +12013,6 @@ kde-apps/ktraderclient 16.04.3: A command-line tool for querying the KDE trader 
 kde-apps/ktuberling 16.12.3 17.04.1: Potato game for kids by KDE
 kde-apps/kturtle 16.12.3 17.04.1: Educational programming environment using the Logo programming language
 kde-apps/kubrick 16.12.3 17.04.1: A game based on the "Rubik's Cube" puzzle
-kde-apps/kuiserver 16.04.3: KDE: Progress Info UI server
-kde-apps/kurifilter-plugins 16.04.3: KDE: Plugins to manage filtering URIs
 kde-apps/kwalletd 16.04.3-r1: KDE Password Server
 kde-apps/kwalletmanager 15.04.3-r1 16.12.3 17.04.1: KDE Wallet management tool
 kde-apps/kwave 16.12.3 17.04.1: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
@@ -12056,7 +12033,6 @@ kde-apps/libkipi 16.12.3 17.04.1: A library for image plugins accross KDE applic
 kde-apps/libkleo 4.4.2017.04 17.04.1: Library for encryption handling
 kde-apps/libkmahjongg 4.14.3 16.12.3 17.04.1: Mahjongg library based on Qt/KDE Frameworks
 kde-apps/libkomparediff2 16.12.3 17.04.1: KDE library to compare files and strings
-kde-apps/libkonq 16.08.3: The embeddable part of konqueror
 kde-apps/libkpgp 4.4.2017.04: KDE pgp abstraction library
 kde-apps/libksane 15.08.3-r1 16.12.3 17.04.1: SANE Library interface based on KDE Frameworks
 kde-apps/libksieve 17.04.1: Common PIM libraries
@@ -12069,7 +12045,6 @@ kde-apps/marble 16.12.3-r1 17.04.1: Virtual Globe and World Atlas to learn more 
 kde-apps/mbox-importer 17.04.1: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 17.04.1: Libraries for messaging functions
 kde-apps/minuet 16.04.3 16.12.3 17.04.1: A KDE Software for Music Education
-kde-apps/nsplugins 16.08.3: Netscape plugins support for Konqueror
 kde-apps/okteta 16.12.3 17.04.1: KDE hexeditor
 kde-apps/okular 16.12.3 17.04.1: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 16.12.3 17.04.1: KDE jigsaw puzzle game
@@ -12079,16 +12054,13 @@ kde-apps/picmi 16.12.3 17.04.1: Nonogram logic game by KDE
 kde-apps/pim-data-exporter 17.04.1: Assistant to backup and archive PIM data and configuration
 kde-apps/pim-sieve-editor 17.04.1: Assistant for editing IMAP Sieve filters
 kde-apps/pimcommon 17.04.1: Common PIM libraries
-kde-apps/plasma-apps 16.08.3: Additional Applets for Plasma
 kde-apps/plasma-runtime 16.04.3: Script engine and package tool for plasma
 kde-apps/plasma-telepathy-meta 16.12.3 17.04.1: Plasma Telepathy client
 kde-apps/poxml 16.12.3 17.04.1: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 16.12.3 17.04.1: Manage print jobs and printers in Plasma
 kde-apps/pykde4 4.14.3-r3: Python bindings for kdelibs-4
-kde-apps/renamedlg-plugins 16.04.3: KDE RenameDlg plugins
 kde-apps/rocs 16.12.3 17.04.1: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 16.12.3 17.04.1: KWallet extension for signond
-kde-apps/solid-runtime 16.04.3: KDE SC solid runtime modules (autoeject, automounter and others)
 kde-apps/spectacle 16.12.3 17.04.1: Screenshot capture utility
 kde-apps/step 16.12.3 17.04.1: Interactive physics simulator
 kde-apps/svgpart 16.12.3 17.04.1: Kpart for viewing SVGs
@@ -12189,9 +12161,7 @@ kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly
 kde-misc/kdiff3 0.9.97-r2 0.9.98-r1 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kfilebox 0.4.9: KDE dropbox client
-kde-misc/kim4 0.9.5-r1: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.91: An input method frontend for Plasma
-kde-misc/kio-ftps 0.2: KDE ftps KIO slave
 kde-misc/kio-gdrive 1.1.1 1.2.0.1: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
@@ -12215,7 +12185,6 @@ kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that 
 kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-redshift-control 1.0.17 1.0.18: Plasma 5 applet for controlling redshift
 kde-misc/plasma-applet-weather-widget 1.6.8: Plasma 5 applet for weather forecasts
-kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
 kde-misc/rsibreak 0.12.6 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/semantik 0.9.5: Mindmapping-like tool for document generation
 kde-misc/skanlite 2.0.1: KDE image scanning application
@@ -17343,7 +17312,7 @@ sys-apps/yarn 0.21.3-r1: Fast, reliable, and secure node dependency management
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
-sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 1.1.1 9999: Framework for defining and tracking users, login sessions and seats
+sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 1.1.1 1.1.2 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/docker_auth 1.2.1: Docker Registry 2 authentication server
 sys-auth/elogind 229.3-r1: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
@@ -17394,7 +17363,6 @@ sys-auth/pam_yubico 2.23 2.24: Library for authenticating against PAM with a Yub
 sys-auth/pambase 20101024-r2 20120417-r3 20140313 20150213 20150213-r1: PAM base configuration files
 sys-auth/passwdqc 1.3.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.113 0.113-r1 0.113-r2: Policy framework for controlling privileges for system-wide services
-sys-auth/polkit-kde-agent 0.99.1-r1: PolKit agent module for KDE
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.112.0-r1: PolicyKit Qt4 API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
