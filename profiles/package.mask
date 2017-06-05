@@ -31,6 +31,13 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Multiple versions behind upstream.
+# Security vulnerabilities. No reverse dependencies anymore.
+# Removal in 30 days. Bug #512292.
+dev-db/ctdb
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. Multiple versions behind upstream. Multiple
 # security vulnerabilities. Removal in 30 days. Bug #509920.
 www-apps/egroupware
