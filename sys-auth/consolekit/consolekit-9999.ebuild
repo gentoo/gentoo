@@ -83,8 +83,8 @@ src_configure() {
 		$(use_enable policykit polkit) \
 		$(use_enable evdev libevdev) \
 		$(use_enable acl udev-acl) \
-		$(use_enable cgroups) \
-		$(use_enable selinux) \
+		$(use_enable cgroups libcgmanager) \
+		$(use_enable selinux libselinux) \
 		$(use_enable udev libudev) \
 		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
