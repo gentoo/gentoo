@@ -31,9 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Abandoned in Gentoo. Fails to build with gcc-6.
-# Removal in 30 days. Bug #595412.
+# Abandoned in Gentoo. Fail to build with gcc-6.
+# Removal in 30 days. Bugs:
+# app-backup/boxbackup - #595412
+# dev-lang/falcon - #595416
 app-backup/boxbackup
+dev-lang/falcon
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
