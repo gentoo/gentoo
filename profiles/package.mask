@@ -31,6 +31,77 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Unmaintained upstream. Already suffers heavy patching in Gentoo.
+# Multiple bugs filed, including build failures.
+# Removal in 30 days. Bug #515760.
+media-sound/rezound
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Requires old wxPython. GAMESS itself
+# is masked for removal already.
+# Removal in 30 days. Bug #564104.
+sci-chemistry/gamessq
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Abandoned upstream. Require obsolete GNOME libraries. Multiple
+# alternatives exist. Removal in 30 days.
+# app-dicts/gjiten -- bug #608404; alternative: app-dicts/gwaei
+# app-i18n/im-ja -- bug #608418.
+# games-board/gamazons -- bug #608424.
+app-dicts/gjiten
+app-i18n/im-ja
+games-board/gamazons
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Discontinued blob driver. Fails to build against modern kernels.
+# Removal in 30 days. Bug #574026.
+net-dialup/martian-modem
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. The current version is obsolete, and the new
+# versions cause issues preventing adding.
+# Removal in 30 days. Bug #368257.
+x11-misc/etm
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. The current Gentoo version no longer builds.
+# Removal in 30 days. Bug #602820.
+media-plugins/vdr-xineliboutput
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained upstream. Seems to fail at Python. Depends on multiple
+# deprecated GNOME libraries.
+# Removal in 30 days. Bug #562416.
+dev-java/java-gnome
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained upstream. Bad quality code.
+# Removal in 30 days. Bug #603562.
+dev-libs/dee
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Discontinued upstream. Plugins no longer get updates, resulting
+# in security vulnerabilities.
+# Removal in 30 days. Bug #603282.
+www-plugins/pipelight
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Does not support ffmpeg-3. Maintainer is unable to solve that,
+# and nobody seems to be interested.
+# Removal in 30 days. Bug #575138.
+media-plugins/vdr-audiorecorder
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. Security vulnerability.
 # Removal in 30 days. Bug #552628.
 dev-libs/libmimedir
@@ -320,65 +391,6 @@ app-cdr/backlite
 # Dead upstream since 2014. Fails to build with gcc-6 (bug #594260).
 # Masked for removal in 30 days.
 net-im/licq
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Obsolete parts of kdevelop:4 - upstream merged into kdevelop:5.
-# Masked for removal in 30 days.
-dev-util/kdevelop-php-docs
-dev-util/kdevelop-qmake
-dev-util/kdevelop-qmljs
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Unused Plasma 4 runtime cleanup, masked for removal in 30 days.
-kde-apps/attica
-kde-apps/drkonqi
-kde-apps/kcontrol
-kde-apps/kdebase-desktoptheme
-kde-apps/kdebase-menu
-kde-apps/kdebase-menu-icons
-kde-apps/kdebugdialog
-kde-apps/kdesu
-kde-apps/kglobalaccel
-kde-apps/kiconfinder
-kde-apps/kimgio
-kde-apps/knetattach
-kde-apps/kpasswdserver
-kde-apps/kquitapp
-kde-apps/kstart
-kde-apps/kuiserver
-kde-apps/kurifilter-plugins
-kde-apps/plasma-apps
-kde-apps/renamedlg-plugins
-kde-apps/solid-runtime
-sys-auth/polkit-kde-agent
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Follow-up to 16.12.3 stabilisation - the remaining split
-# kde-baseapps are now either part of konqueror:5 or obsolete.
-# Masked for removal in 30 days.
-kde-apps/kdepasswd
-kde-apps/kfmclient
-kde-apps/konq-plugins
-kde-apps/libkonq
-kde-apps/nsplugins
-kde-apps/plasma-apps
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Depends on deprecated libs, no development in 8 years.
-# No consumer left after konqueror:4 removal.
-# Masked for removal in 30 days.
-kde-misc/kim4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Depends on deprecated libs, no development in 9 years.
-# No consumer left after konqueror:4 removal.
-# Masked for removal in 30 days.
-kde-misc/kio-ftps
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Crash on start, hugely outdated, depends on deprecated libs.
-# Masked for removal in 30 days.
-kde-misc/quadkonsole
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 May 2017)
 # Dev channel releases are only for people who are developers or want more

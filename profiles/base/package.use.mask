@@ -9,6 +9,11 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# dev-libs/dee is masked for removal, mask flags that requires it.
+gnome-extra/zeitgeist icu
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # www-apache/mod_python is masked for removal, mask flags that
 # require it.
 net-analyzer/check_mk livestatus wato
