@@ -1,8 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 
 inherit gnome2 systemd user versionator
 
@@ -13,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${MY_PV}/${P}.tar.x
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="+introspection +modemmanager zeroconf"
 
 RDEPEND="
@@ -45,12 +44,12 @@ src_configure() {
 	gnome2_src_configure \
 		--enable-backend \
 		--with-dbus-service-user=geoclue \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(use_enable introspection) \
 		$(use_enable modemmanager 3g-source) \
 		$(use_enable modemmanager cdma-source) \
 		$(use_enable modemmanager modem-gps-source) \
-		$(use_enable zeroconf nmea-source) \
-		$(systemd_with_unitdir)
+		$(use_enable zeroconf nmea-source)
 }
 
 pkg_preinst() {
