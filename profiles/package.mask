@@ -31,6 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Abandoned in Gentoo. Fails to build with gcc-6.
+# Removal in 30 days. Bug #595412.
+app-backup/boxbackup
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Abandoned upstream and unmaintained in Gentoo. Requires old wxPython
 # and pycrypto. Removal in 30 days. Bug #313923.
 app-mobilephone/bitpim
