@@ -31,6 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Abandoned upstream and unmaintained in Gentoo. Requires old wxPython
+# and pycrypto. Removal in 30 days. Bug #313923.
+app-mobilephone/bitpim
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. Security vulnerability.
 # Removal in 30 days. Bug #562896.
 net-irc/charybdis
