@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+EAPI=6
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-s
 
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/rubygems-2.1.0"
+ruby_add_rdepend ">=dev-ruby/activesupport-4.2:*"
 
 ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/activesupport )"
 
