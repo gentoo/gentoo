@@ -1981,6 +1981,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
     <description>Maintains LXQt DE related packages.</description>
     <member>
+      <email>johu@gentoo.org</email>
+      <name>Johannes Huber</name>
+    </member>
+    <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
     </member>
