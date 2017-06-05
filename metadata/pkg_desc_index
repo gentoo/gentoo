@@ -2278,7 +2278,7 @@ app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
 app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
 app-text/dvipng 1.15: Translate DVI files into PNG or GIF graphics
-app-text/dvipsk 5.992_p20120701 5.993_p20130530 5.994_p20140525 5.995_p20150521 5.996_p20160523: DVI-to-PostScript translator
+app-text/dvipsk 5.992_p20120701 5.995_p20150521 5.996_p20160523 5.997_p20170524: DVI-to-PostScript translator
 app-text/dvisvgm 1.8.1 1.10 2.0.4 2.1 2.1.1 2.1.2 2.1.3: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.1: EditorConfig core library written in C
@@ -2415,7 +2415,7 @@ app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the P
 app-text/poppler 0.45.0 0.55.0 0.55.0-r1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
-app-text/ps2pkm 1.5_p20120701 1.5_p20130530 1.5_p20140525 1.7_p20150521 1.8_p20160523: Tool that converts a PostScript type1 font into a corresponding TeX PK font
+app-text/ps2pkm 1.5_p20120701 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
 app-text/psiconv 0.8.3-r1: An interpreter for Psion 5(MX) file formats
 app-text/pspdftool 0.03 9999: Tool for prepress preparation of PDF and PostScript documents
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
@@ -2474,7 +2474,7 @@ app-text/tofrodos 1.7.12a: Utility that converts ASCII files between the MSDOS a
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.7.0: Lists directories recursively, and produces an indented listing of files
-app-text/ttf2pk2 1.5_p20120701 1.5_p20130530 2.0_p20140525 2.0_p20150521 2.0_p20160523: Freetype 2 based TrueType font to TeX's PK format converter
+app-text/ttf2pk2 1.5_p20120701 2.0_p20140525 2.0_p20150521 2.0_p20160523 2.0_p20170524: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/tuxcards 2.2.1-r1: A hierarchical notebook
 app-text/txt2man 1.5.6: Scripts to convert regular ASCII text to man pages
@@ -4783,7 +4783,7 @@ dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating busine
 dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0 2.1.0: Lightweight user interface framework for mobile and convergent applications
 dev-libs/klibc 1.5.25 2.0.4 2.0.4-r2: A minimal libc subset for use with initramfs
-dev-libs/kpathsea 6.2.2_p20160523: Path searching library for TeX-related files
+dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
 dev-libs/kproperty 3.0.0 3.0.1: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.0-r1 3.0.1: Framework for creation and generation of reports in multiple formats
@@ -5060,7 +5060,7 @@ dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library provides numerical a
 dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0: Google's Protocol Buffers -- an efficient method of encoding structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
-dev-libs/ptexenc 1.3.3_p20150521 1.3.4_p20160523: Library for Japanese pTeX providing a better way of handling character encodings
+dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/purpose 1.1-r1: Library for providing abstractions to get the developer's purposes fulfilled
 dev-libs/qcodeedit 2.2.3 2.2.3-r2: Qt-Framework for code editing
@@ -5320,7 +5320,7 @@ dev-ml/ocaml-extunix 0.1.4: Thin bindings to various low-level system APIs
 dev-ml/ocaml-fileutils 0.5.1 0.5.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
-dev-ml/ocaml-ipaddr 2.7.1 2.7.2: OCaml library for manipulation of IP (and MAC) address representations
+dev-ml/ocaml-ipaddr 2.7.1 2.7.2 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-migrate-parsetree 0.7 1.0: Convert OCaml parsetrees between different major versions
@@ -10054,7 +10054,7 @@ dev-tex/biber 2.5 2.7: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.4-r1 3.7 3.7-r1: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 6.6: APA style for BibLaTeX
 dev-tex/bibtex2html 1.98: A bibtex to HTML converter
-dev-tex/bibtexu 3.71_p20120701 3.71_p20130530 3.71_p20140525 3.71_p20150521 3.71_p20160523: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
+dev-tex/bibtexu 3.71_p20120701 3.71_p20150521 3.71_p20160523 3.71_p20170524: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r1: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1 1.7.2 1.7.3 1.7.4 1.7.5 1.7.6: Checks latex source for common mistakes
@@ -14468,7 +14468,7 @@ net-analyzer/prelude-correlator 3.0.1-r1 3.1.0: Real time correlator of events r
 net-analyzer/prelude-lml 3.0.0 3.1.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 3.1.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
-net-analyzer/prometheus 1.6.2: Prometheus monitoring system and time series database
+net-analyzer/prometheus 1.6.2 1.6.3: Prometheus monitoring system and time series database
 net-analyzer/prometheus-node_exporter 0.14.0_rc1 0.14.0_rc2: Prometheus exporter for machine metrics
 net-analyzer/pypacker 2.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
