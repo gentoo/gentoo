@@ -42,7 +42,7 @@ src_install() {
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
 	popd || die
 	keepdir /var/lib/node_exporter /var/log/node_exporter
-	fowners ${PN}:${PN} /var/node_exporter /var/log/node_exporter
+	fowners ${PN}:${PN} /var/lib/node_exporter /var/log/node_exporter
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
