@@ -53,6 +53,9 @@ src_prepare() {
 	# automagic dep in our patches, bug #461638
 	rm -rf lib/libjemalloc
 
+	# Fix bug #620952
+	epatch "${FILESDIR}"/fix-build-x86.patch
+
 	# Remove -Werror bug #528354
 	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac
 
