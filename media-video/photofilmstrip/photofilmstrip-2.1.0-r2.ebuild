@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,16 +17,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cairo sdl"
 
-RDEPEND="dev-python/wxpython:2.8[cairo?,${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/wxpython:3.0[cairo?,${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	media-video/mplayer[encode]
-	sdl? ( dev-python/pygame[${PYTHON_USEDEP}] )"
-
+	sdl? ( dev-python/pygame[${PYTHON_USEDEP}] )
+"
 DEPEND="${RDEPEND}"
 
 # Fix bug #472774 (https://bugs.gentoo.org/show_bug.cgi?id=472774)
 PATCHES=(
 	"${FILESDIR}/${P}-PIL_modules_imports_fix.patch"
+	"${FILESDIR}/${P}-PIL_tostring_fix.patch"
 )
 
 DOCS=( CHANGES COPYING README )
