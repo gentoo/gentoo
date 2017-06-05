@@ -1,10 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 May 2017)
-# Depends on dev-util/kirigami:2, not keyworded yet.
->=kde-plasma/plasma-meta-5.10.0 sdk
-
 # Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
 # Depends on dev-util/kdevplatform:5, not keyworded yet.
 kde-plasma/plasma-sdk plasmate
