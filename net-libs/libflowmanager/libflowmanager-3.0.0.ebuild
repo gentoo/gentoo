@@ -8,7 +8,7 @@ HOMEPAGE="http://research.wand.net.nz/software/libflowmanager.php"
 SRC_URI="http://research.wand.net.nz/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/2"
+SLOT="0/3"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
