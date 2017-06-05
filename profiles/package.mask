@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
+# Bundles obsolete and vulnerable webkit version.
+# Upstream has stopped development and recommends using
+# headless mode in >=www-client/chromium-59.
+# Masked for removal in 30 days. Bug #589994.
+www-client/phantomjs
+dev-ruby/poltergeist
+
 # Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
 # Relies on obsolete and vulerable qtwebkit version. Dead upstream.
 # Masked for removal in 30 days. Bug #620758.
