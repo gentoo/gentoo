@@ -6143,7 +6143,7 @@ dev-perl/Lingua-Stem-It 0.20.0-r1: Porter's stemming algorithm for Italian
 dev-perl/Lingua-Stem-Ru 0.40.0: Porter's stemming algorithm for Russian (KOI8-R only)
 dev-perl/Lingua-Stem-Snowball-Da 1.10.0-r1: Porters stemming algorithm for Denmark
 dev-perl/Lingua-Translit 0.250.0 0.270.0: Transliterates text between writing systems
-dev-perl/Linux-DesktopFiles 0.90.0: Perl module to get and parse the Linux .desktop files
+dev-perl/Linux-DesktopFiles 0.90.0 0.130.0: Perl module to get and parse the Linux .desktop files
 dev-perl/Linux-Distribution 0.230.0: Perl extension to detect on which Linux distribution we are running
 dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
