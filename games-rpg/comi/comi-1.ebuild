@@ -7,6 +7,7 @@ inherit cdrom estack eutils xdg
 
 DESCRIPTION="The Curse of Monkey Island, the third game in the series"
 HOMEPAGE="https://en.wikipedia.org/wiki/The_Curse_of_Monkey_Island"
+SRC_URI="http://dev.gentoo.org/~chewi/distfiles/${PN}.jpg"
 LICENSE="${PN}"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -60,7 +61,7 @@ src_install() {
 	# Documentation may be missing.
 	[[ -d doc ]] && dodoc doc/*
 
-	doicon "${FILESDIR}"/${PN}.jpg
+	doicon "${DISTDIR}"/${PN}.jpg
 	make_wrapper ${PN} "scummvm comi"
 	make_desktop_entry ${PN} "The Curse of Monkey Island" ${PN}.jpg
 }
