@@ -11014,7 +11014,7 @@ games-emulation/lxdream 0.9.1-r2: An emulator for the Sega Dreamcast system
 games-emulation/m64py 0.2.3-r2: A frontend for Mupen64Plus
 games-emulation/mamory 0.2.25: ROM management tools and library
 games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
-games-emulation/mednafen 0.9.41: Argument-driven multi-system emulator utilizing OpenGL and SDL
+games-emulation/mednafen 0.9.41 0.9.45: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
 games-emulation/mgba 0.5.2: A new Game Boy Advance emulator written in C.
@@ -12021,11 +12021,11 @@ kde-apps/kwrite 16.12.3 17.04.1: KDE simple text editor
 kde-apps/libgravatar 17.04.1: Library for gravatar integration
 kde-apps/libkcddb 16.08.3 16.12.3 17.04.1: KDE library for CDDB
 kde-apps/libkcompactdisc 16.08.3 16.12.3-r1 17.04.1: Library for playing & ripping CDs
-kde-apps/libkdcraw 15.08.3 16.12.3 17.04.1: Digital camera raw image library wrapper
+kde-apps/libkdcraw 16.12.3 17.04.1: Digital camera raw image library wrapper
 kde-apps/libkdegames 4.14.3-r1 16.12.3 17.04.1: Base library common to many KDE games
 kde-apps/libkdepim 4.4.2017.04 17.04.1: Common PIM libraries
 kde-apps/libkeduvocdocument 16.12.3 17.04.1: Library for reading/writing KVTML
-kde-apps/libkexiv2 15.08.3 16.12.3 17.04.1: KDE Image Plugin Interface: an exiv2 library wrapper
+kde-apps/libkexiv2 16.12.3 17.04.1: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 16.12.3 17.04.1: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgapi 2.2.0 17.04.1: Library for accessing Google calendar and contact resources
 kde-apps/libkgeomap 16.12.3 17.04.1: Wrapper library for world map components as marble, openstreetmap and googlemap
