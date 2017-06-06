@@ -7257,7 +7257,7 @@ dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support 
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/ImageHash 3.4: Image Hashing library
-dev-python/Kivy 1.9.0-r1 1.9.1 1.9.1-r1: Library for rapid development of hardware-accelerated multitouch applications
+dev-python/Kivy 1.9.1 1.9.1-r1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/MechanicalSoup 0.6.0: A python library for automating interaction with web sites
 dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
@@ -7518,17 +7518,17 @@ dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration d
 dev-python/django-auth-ldap 1.2.2 1.2.7: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
 dev-python/django-celery 3.1.17: Celery Integration for Django
-dev-python/django-classy-tags 0.6.2 0.7.1 0.7.2 0.8.0: Class based template tags for Django
+dev-python/django-classy-tags 0.7.2 0.8.0: Class based template tags for Django
 dev-python/django-cms 3.4.3: A Django application for managing hierarchical pages of content
 dev-python/django-compressor 1.4 1.5: Compresses linked and inline javascript or CSS into a single cached file
 dev-python/django-crispy-forms 1.6.0: Best way to have Django DRY forms
 dev-python/django-debug-toolbar 1.3.2 1.5: A configurable set of panels that display debug information
 dev-python/django-discover-runner 1.0: A Django test runner based on unittest2's test discovery
-dev-python/django-durationfield 0.5.2: Reusable app for adding a DurationField to Django
+dev-python/django-durationfield 0.5.2 0.5.4: Reusable app for adding a DurationField to Django
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
 dev-python/django-evolution 0.7.4 0.7.5: A Django application that will run cron jobs for other django apps
 dev-python/django-extensions 1.5.6 1.5.7 1.5.9 1.6.1: Django Command Extensions
-dev-python/django-filer 0.9.12 1.0.4 1.2.0 1.2.5 1.2.7: File management application for django that makes handling of files and images
+dev-python/django-filer 1.2.0 1.2.7: File management application for django that makes handling of files and images
 dev-python/django-formtools 1.0: High-level abstractions for Django forms
 dev-python/django-grappelli 2.7.3: A jazzy skin for the Django Admin-Interface
 dev-python/django-haystack 2.2.0 2.4.1: Pluggable search for Django
@@ -7549,7 +7549,7 @@ dev-python/django-pipeline 1.3.26 1.6.0: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1 9999: A mini-framework for Django for creating RESTful APIs
 dev-python/django-recaptcha 1.0.3 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 1.0: An extensible user-registration application for Django
-dev-python/django-sekizai 0.8.2 0.9.0 0.10.0: Django Template Blocks with extra functionality
+dev-python/django-sekizai 0.10.0: Django Template Blocks with extra functionality
 dev-python/django-select2 4.2.2 5.5.0: A Django integration of Select2
 dev-python/django-setuptest 0.1.6 0.2.1: Simple test suite enabling Django app testing via setup.py
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
@@ -7560,7 +7560,7 @@ dev-python/django-tables2 1.1.2: Table/data-grid framework for Django
 dev-python/django-tagging 0.4.1: Generic tagging application for Django
 dev-python/django-tastypie 0.9.15 0.13.3: A flexible and capable API layer for django utilising serialisers
 dev-python/django-tinymce 1.5.3: TinyMCE integration for Django
-dev-python/django-treebeard 3.0 4.0 4.1.0: Efficient tree implementations for Django 1.6+
+dev-python/django-treebeard 4.1.0: Efficient tree implementations for Django 1.6+
 dev-python/django-two-factor-auth 1.2.1 1.3.0: User-friendly Two-Factor Authentication for Django
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/django_polymorphic 0.7.2 0.9.2 1.2: Seamless Polymorphic Inheritance for Django Models
