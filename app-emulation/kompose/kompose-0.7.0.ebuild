@@ -4,10 +4,10 @@
 EAPI=6
 inherit golang-build golang-vcs-snapshot
 
-EGO_PN="github.com/kubernetes-incubator/kompose/..."
+EGO_PN="github.com/kubernetes-incubator/kompose"
 EGIT_COMMIT="v${PV}"
-COMPOSE_COMMIT="ae4ef9e"
-ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+COMPOSE_COMMIT="c25b7e8"
+ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Tool to move from docker-compose to Kubernetes"
@@ -21,10 +21,10 @@ RESTRICT="test"
 
 src_compile() {
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
-	GOPATH="${S}" go build -ldflags="-X github.com/kubernetes-incubator/kompose/cmd.GITCOMMIT=${COMPOSE_COMMIT}" -o bin/kompose src/${EGO_PN%/*}/main.go || die
+	GOPATH="${S}" go build -ldflags="-X github.com/kubernetes-incubator/kompose/cmd.GITCOMMIT=${COMPOSE_COMMIT}" -o bin/kompose src/${EGO_PN}/main.go || die
 }
 
 src_install() {
 	dobin bin/*
-	dodoc -r src/${EGO_PN%/*}/{docs,{README,RELEASE,ROADMAP,CHANGELOG,CONTRIBUTING}.md}
+	dodoc -r src/${EGO_PN}/{docs,{README,RELEASE,ROADMAP,CHANGELOG,CONTRIBUTING}.md}
 }
