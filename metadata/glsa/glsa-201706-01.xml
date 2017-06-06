@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-01">
+  <title>MUNGE: Privilege escalation </title>
+  <synopsis>Gentoo's MUNGE ebuilds are vulnerable to privilege escalation due
+    to improper permissions.
+  </synopsis>
+  <product type="ebuild">munge</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>602596</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-auth/munge" auto="yes" arch="*">
+      <unaffected range="ge">0.5.10-r2</unaffected>
+      <vulnerable range="lt">0.5.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>An authentication service for creating and validating credentials.</p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s default MUNGE installation suffered
+      from a privilege escalation vulnerability (munge user to root) due to
+      improper permissions and a runscript which called chown() on a user
+      controlled file.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker, who either is already MUNGE’s system user or belongs
+      to MUNGE’s group, could potentially escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MUNGE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-auth/munge-0.5.10-r2"
+    </code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-08T22:27:29Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T06:21:40Z">whissi</metadata>
+</glsa>
