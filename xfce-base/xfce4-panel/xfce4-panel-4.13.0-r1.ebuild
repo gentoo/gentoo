@@ -25,7 +25,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.100:=
 	>=xfce-base/garcon-0.5:=
 	>=xfce-base/libxfce4ui-4.13:=
 	>=xfce-base/libxfce4util-4.11:=
-	>=xfce-base/xfconf-4.12:="
+	>=xfce-base/xfconf-4.12:0="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-util/gtk-doc-am
