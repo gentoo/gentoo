@@ -10262,7 +10262,7 @@ dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disas
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bitcoin-tx 0.13.0 0.13.1 0.13.2 9999: Command-line Bitcoin transaction tool
 dev-util/bless 0.6.0-r2: GTK# Hex Editor
-dev-util/bloaty 0_p20170321: A size profiler for binaries
+dev-util/bloaty 0_p20170420: A size profiler for binaries
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.62.0-r1 1.63.0: A system for large project software construction, simple to use and powerful
@@ -14789,7 +14789,7 @@ net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for se
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
 net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.17 2.18: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 0.8.21 1.0.2 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 0.8.21 1.0.2 1.0.3 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
