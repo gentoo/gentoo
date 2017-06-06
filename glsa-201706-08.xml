@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-08">
+  <title>MuPDF: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MuPDF, the worst of
+    which allows remote attackers to cause a Denial of Service condition or
+    have other unspecified impact.
+  </synopsis>
+  <product type="ebuild">mupdf</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>611444</bug>
+  <bug>614044</bug>
+  <bug>614852</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/mupdf" auto="yes" arch="*">
+      <unaffected range="ge">1.11-r1</unaffected>
+      <vulnerable range="lt">1.11-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A lightweight PDF, XPS, and E-book viewer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MuPDF. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted PDF
+      document or image using MuPDF, possibly resulting in a Denial of Service
+      condition or have other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MuPDF users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/mupdf-1.11-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10221">
+      CVE-2016-10221
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5991">CVE-2017-5991</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6060">CVE-2017-6060</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-21T07:28:46Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T08:34:32Z">whissi</metadata>
+</glsa>
