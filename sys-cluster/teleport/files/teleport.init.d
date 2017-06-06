@@ -12,15 +12,15 @@ depend() {
 
 start() {
 	ebegin "Starting Teleport SSH Service"
-	start-stop-daemon --start --exec /usr/bin/teleport \
-		--pidfile ${PIDFILE} \
+		start-stop-daemon --start --exec /usr/bin/teleport \
+		--background --make-pidfile --pidfile ${TELEPORT_PIDFILE} \
 		-- start --config=${TELEPORT_CONFDIR}/teleport.yaml $TELEPORT_OPTS
-	eend $?
+		eend $?
 }
 
 stop() {
 	ebegin "Stopping Teleport SSH Service"
-	start-stop-daemon --stop --exec /usr/bin/teleport \
-		--pidfile ${PIDFILE}
+		start-stop-daemon --stop --exec /usr/bin/teleport \
+		--pidfile ${TELEPORT_PIDFILE}
 	eend $?
 }
