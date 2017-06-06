@@ -16,7 +16,7 @@ DESCRIPTION="Cucumber steps for driving out command line applications"
 HOMEPAGE="https://github.com/cucumber/aruba"
 LICENSE="MIT"
 
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 SLOT="0"
 IUSE=""
 

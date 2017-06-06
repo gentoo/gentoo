@@ -5,7 +5,7 @@ EAPI=6
 
 inherit vcs-snapshot toolchain-funcs
 
-COMMIT="8e2298492eb9c0c9c358f4e5173bbc147e8e0436"
+COMMIT="73594cde8c9a52a102c4341c244c833aa61b9c06"
 
 DESCRIPTION="A size profiler for binaries"
 HOMEPAGE="https://github.com/google/bloaty"
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	sed -i -e "s#\$(RE2_[AH])##"\
-		-e "s/\tar /\t$(tc-getAR) /"\
+		-e "s#\tar #\t$(tc-getAR) #"\
 		-e "s#-lpthread#-lre2 -lpthread#"\
 		-e "/^CXXFLAGS/ s#-I third_party/re2##"\
 		Makefile || die
