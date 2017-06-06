@@ -19,7 +19,7 @@ RDEPEND=">=dev-libs/glib-2.24.0:=
 	>=xfce-base/libxfce4ui-4.11.0:=[gtk3(+)]
 	>=xfce-base/libxfce4util-4.9.0:=
 	>=xfce-base/xfce4-panel-4.11.0:=
-	>=xfce-base/xfconf-4.6.0:=
+	>=xfce-base/xfconf-4.6.0:0=
 	keybinder? ( dev-libs/keybinder:3= )
 	libnotify? ( x11-libs/libnotify:= )"
 DEPEND="${RDEPEND}
