@@ -18,7 +18,7 @@ RDEPEND=">=dev-libs/glib-2.30:=
 	>=xfce-base/garcon-0.3:=
 	>=xfce-base/libxfce4util-4.11:=
 	>=xfce-base/libxfce4ui-4.11:=[gtk3(+)]
-	>=xfce-base/xfconf-4.10:=
+	>=xfce-base/xfconf-4.10:0=
 	!xfce-base/xfce-utils"
 DEPEND="${RDEPEND}
 	dev-util/intltool
