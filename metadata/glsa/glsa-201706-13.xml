@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-13">
+  <title>minicom: Remote execution of arbitrary code</title>
+  <synopsis>An out-of-bounds data access in minicom might allow remote
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">minicom</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>615996</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/minicom" auto="yes" arch="*">
+      <unaffected range="ge">2.7.1</unaffected>
+      <vulnerable range="lt">2.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Minicom is a text-based serial port communications program.</p>
+  </background>
+  <description>
+    <p>In minicom before version 2.7.1, the escparms[] buffer in vt100.c is
+      vulnerable to an overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to connect to a minicom port, could possibly
+      execute arbitrary code with the privileges of the process, or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All minicom users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/minicom-2.7.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7467">CVE-2017-7467</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-30T12:15:55Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T20:02:58Z">whissi</metadata>
+</glsa>

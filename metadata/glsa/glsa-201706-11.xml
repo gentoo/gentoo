@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-11">
+  <title>PCRE library: Denial of Service</title>
+  <synopsis>A vulnerability in PCRE library allows remote attackers to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">PCRE</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>609592</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libpcre" auto="yes" arch="*">
+      <unaffected range="ge">8.40-r1</unaffected>
+      <vulnerable range="lt">8.40-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PCRE library is a set of functions that implement regular expression
+      pattern matching using the same syntax and semantics as Perl 5.
+    </p>
+  </background>
+  <description>
+    <p>It was found that the compile_bracket_matchingpath function in
+      pcre_jit_compile.c in PCRE library is vulnerable to an out-of-bounds
+      read.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition via
+      a special crafted regular expression.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PCRE library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libpcre-8.40-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6004">CVE-2017-6004</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-26T00:55:28Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T19:43:31Z">whissi</metadata>
+</glsa>

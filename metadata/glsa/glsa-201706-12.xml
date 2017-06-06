@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-12">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark, the worst of
+    which allows remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>609646</bug>
+  <bug>615462</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">2.2.6</unaffected>
+      <vulnerable range="lt">2.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a network protocol analyzer formerly known as ethereal.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      network packet using Wireshark, possibly resulting a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-2.2.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6014">CVE-2017-6014</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7700">CVE-2017-7700</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7701">CVE-2017-7701</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7702">CVE-2017-7702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7703">CVE-2017-7703</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7704">CVE-2017-7704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7705">CVE-2017-7705</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-24T05:23:51Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T19:48:46Z">whissi</metadata>
+</glsa>
