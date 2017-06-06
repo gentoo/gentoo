@@ -21,7 +21,7 @@ COMMON_DEPEND="x11-apps/iceauth
 	x11-libs/libX11:=
 	>=xfce-base/libxfce4util-4.12:=
 	>=xfce-base/libxfce4ui-4.12.1:=[gtk3(+)]
-	>=xfce-base/xfconf-4.12:=
+	>=xfce-base/xfconf-4.12:0=
 	policykit? ( >=sys-auth/polkit-0.102:= )"
 RDEPEND="${COMMON_DEPEND}
 	x11-apps/xrdb
