@@ -2,4 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/libimobiledevice/libplist/issues</bugs-to>
+		<remote-id type="github">libimobiledevice/libplist</remote-id>
+	</upstream>
 </pkgmetadata>
