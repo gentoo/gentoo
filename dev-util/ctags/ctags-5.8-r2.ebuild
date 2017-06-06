@@ -27,8 +27,6 @@ PATCHES=(
 
 HTML_DOCS=( EXTENDING.html ctags.html )
 
-DOCS=( FAQ NEWS README )
-
 src_prepare() {
 	default
 
