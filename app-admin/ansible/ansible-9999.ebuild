@@ -18,7 +18,7 @@ KEYWORDS=""
 IUSE="test"
 
 RDEPEND="
-	dev-python/jinja[${PYTHON_USEDEP}]
+	<dev-python/jinja-2.9[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
