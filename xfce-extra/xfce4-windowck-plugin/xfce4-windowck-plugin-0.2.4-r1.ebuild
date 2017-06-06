@@ -20,7 +20,7 @@ RDEPEND=">=x11-libs/gtk+-2.20:2
 	>=xfce-base/libxfce4ui-4.10
 	>=xfce-base/libxfce4util-4.10
 	>=xfce-base/xfce4-panel-4.10
-	>=xfce-base/xfconf-4.10"
+	>=xfce-base/xfconf-4.10:0"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
