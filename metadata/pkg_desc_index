@@ -2468,7 +2468,7 @@ app-text/tesseract 3.04.01 3.04.01-r1 3.05.00 4.00.00_alpha 9999: An OCR Engine,
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
 app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5: A complete TeX distribution
-app-text/tidy-html5 5.2.0 5.4.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
+app-text/tidy-html5 5.4.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
 app-text/tofrodos 1.7.12a: Utility that converts ASCII files between the MSDOS and the Unix format
@@ -3017,7 +3017,7 @@ dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain tex
 dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.5-r1 3.2.5-r4 3.2.5-r5 3.2.6 3.2.6-r1 3.2.6-r4 3.2.6-r5 3.2.8 3.2.8-r1 3.2.8-r2 3.2.8-r3: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1: PostgreSQL Replication Manager
 dev-db/rethinkdb 2.3.5: The open-source database for the realtime web.
-dev-db/rqlite 2.1 3.0.1 9999: Replicated SQLite using the Raft consensus protocol
+dev-db/rqlite 2.1 3.0.1 3.14.0 9999: Replicated SQLite using the Raft consensus protocol
 dev-db/slony1 2.1.3 2.1.4 2.2.0 2.2.1 2.2.2 2.2.3 2.2.4 2.2.5: A replication system for the PostgreSQL Database Management System
 dev-db/soci 3.2.2 3.2.3: Makes the illusion of embedding SQL queries in the regular C++ code
 dev-db/spatialite 4.3.0-r1 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
@@ -5184,7 +5184,7 @@ dev-lua/lpeg 0.12 0.12.1 0.12.2 1.0.0 1.0.0-r1 1.0.1: Parsing Expression Grammar
 dev-lua/lua-cjson 2.1.0: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.4.1-r1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
-dev-lua/lua-zlib 0.3 0.4-r1 0.5: Lua bindings to zlib
+dev-lua/lua-zlib 0.3 0.5 1.1: Lua bindings to zlib
 dev-lua/lua_cliargs 2.5_p5 3.0_p1: A command-line argument parser.
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
@@ -7354,7 +7354,7 @@ dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.4 0.5: Backport of Python 3.5's 'collections.abc' module
-dev-python/backports-functools-lru-cache 1.2.1 1.3 1.3-r1: Backport of functools.lru_cache from Python 3.3
+dev-python/backports-functools-lru-cache 1.3 1.3-r1 1.4: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-lzma 0.0.6 0.0.8: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-shutil_which 3.5.1: Backport of shutil.which from Python 3.3
@@ -10628,7 +10628,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, int
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35 2.2: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1 0.7-r2: GTK+ Frontend for GIT
-dev-vcs/git 2.12.3 2.13.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.13.0 2.13.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419 6.20160923 6.20160923-r1 6.20161031 6.20170101: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
@@ -19166,7 +19166,7 @@ x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with 
 x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1 1.21.1 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
-x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
+x11-plugins/pidgin-xmpp-receipts 0.6 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/purple-facebook 20160107 20160118 20160409 20170329 20170330: Facebook protocol plugin for libpurple
 x11-plugins/purple-hangouts 0_p20170209: Hangouts Plugin for libpurple
