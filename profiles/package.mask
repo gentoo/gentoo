@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (07 Jun 2017)
+# The new release changes API and *breaks* core Xfce components.
+# Upstream lists xfce-base/xfce4-settings and xfce-base/xfce4-panel
+# as being incompatible. The breakage is not exhibited at build time
+# but results in broken executables. Masked until upstream releases
+# fixed versions and for further testing.
+>=xfce-base/xfconf-4.13
+
 # Andreas Sturmlechner <asturm@gentoo.org> (07 Jun 2017)
 # Needs some testing.
 ~media-gfx/exiv2-0.26
