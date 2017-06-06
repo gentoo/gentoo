@@ -24,7 +24,7 @@ RDEPEND=">=x11-libs/cairo-1.12:=
 	>=xfce-base/garcon-0.6:=
 	>=xfce-base/libxfce4ui-4.13:=
 	>=xfce-base/libxfce4util-4.12:=
-	>=xfce-base/xfconf-4.12.1:=
+	>=xfce-base/xfconf-4.12.1:0=
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	thunar? (
 		>=dev-libs/glib-2.38:=
