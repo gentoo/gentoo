@@ -4,7 +4,7 @@ Date: Tue, 20 Sep 2016 17:33:14 -0400
 Subject: [PATCH] Assume there exists lround if compiling with g++ in C++11 or
  later
 
-GCC-6 doesn't define HAVE_LROUND, but lround is valid in C++ in dialects >= c++11.
+GCC-6 doesn't define HAVE_LROUND, but lround is valid in C++ in dialects >= c++11.
 ---
  JUCE/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_flac.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
