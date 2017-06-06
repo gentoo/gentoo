@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-03">
+  <title>QEMU: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
+    which may allow a remote attacker to cause a Denial of Service or gain
+    elevated privileges from a guest VM.
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>614744</bug>
+  <bug>615874</bug>
+  <bug>616460</bug>
+  <bug>616462</bug>
+  <bug>616482</bug>
+  <bug>616484</bug>
+  <bug>616636</bug>
+  <bug>616870</bug>
+  <bug>616872</bug>
+  <bug>616874</bug>
+  <bug>618808</bug>
+  <bug>619018</bug>
+  <bug>619020</bug>
+  <bug>620322</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">2.9.0-r2</unaffected>
+      <vulnerable range="lt">2.9.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QEMU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might cause a Denial of Service or gain escalated
+      privileges from a guest VM.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-2.9.0-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9603">CVE-2016-9603</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7377">CVE-2017-7377</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7471">CVE-2017-7471</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7493">CVE-2017-7493</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7718">CVE-2017-7718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7980">CVE-2017-7980</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8086">CVE-2017-8086</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8112">CVE-2017-8112</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8309">CVE-2017-8309</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8379">CVE-2017-8379</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8380">CVE-2017-8380</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9060">CVE-2017-9060</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9310">CVE-2017-9310</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9330">CVE-2017-9330</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-19T06:36:34Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T06:41:28Z">whissi</metadata>
+</glsa>
