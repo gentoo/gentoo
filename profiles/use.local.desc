@@ -4708,13 +4708,10 @@ media-tv/kodi:dvd - Enable optical (CD/DVD drive) support
 media-tv/kodi:gles - Enable support for GLES
 media-tv/kodi:libusb - Use virtual/libusb for usb device hotplug support. This flag should only be enabled if you're running a non-Linux kernel or you don't want to use sys-fs/udev.
 media-tv/kodi:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
-media-tv/kodi:midi - Support MIDI files
 media-tv/kodi:nfs - Enable NFS client support
 media-tv/kodi:nonfree - Enable non-free components
-media-tv/kodi:rtmp - Enable Real Time Messaging Protocol using librtmp
 media-tv/kodi:sftp - Support browsing files over SFTP
 media-tv/kodi:system-ffmpeg - Use system ffmpeg instead of the bundled one
-media-tv/kodi:texturepacker - Support packing skin textures
 media-tv/kodi:udev - Use sys-fs/udev rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.
 media-tv/kodi:webserver - Enable internal webserver
 media-tv/kodi:xslt - Enable XSLT support using dev-libs/libxslt
