@@ -19,7 +19,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.30
 	>=xfce-base/exo-0.10
 	>=xfce-base/libxfce4ui-4.10
 	>=xfce-base/libxfce4util-4.10
-	>=xfce-base/xfconf-4.10
+	>=xfce-base/xfconf-4.10:0
 	libnotify? ( >=x11-libs/libnotify-0.7 )"
 RDEPEND="${COMMON_DEPEND}
 	virtual/udev
