@@ -12915,7 +12915,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.50 10.51 10.53 10.54: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.50 10.51 10.53 10.54 10.55: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
@@ -17281,7 +17281,7 @@ sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 4.13-r2 5.2 6.1 6.3: The GNU info program and utilities
-sys-apps/the_silver_searcher 1.0.2 1.0.3: A code-searching tool similar to ack, but faster
+sys-apps/the_silver_searcher 1.0.2 1.0.3 2.0.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 0.7.2 0.7.3 9999: Common linux commands in a multicall binary
