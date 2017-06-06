@@ -18,7 +18,7 @@ RDEPEND=">=dev-libs/glib-2.24:2=
 	>=xfce-base/libxfce4ui-4.10:=
 	>=xfce-base/libxfce4util-4.10:=
 	>=xfce-base/xfce4-panel-4.10:=
-	>=xfce-base/xfconf-4.10:=
+	>=xfce-base/xfconf-4.10:0=
 	dev-libs/libunique:1="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
