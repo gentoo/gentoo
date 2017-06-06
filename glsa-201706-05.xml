@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-05">
+  <title>D-Bus: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in D-Bus might allow an attacker to
+    overwrite files with a fixed filename in arbitrary directories or conduct a
+    symlink attack.
+  </synopsis>
+  <product type="ebuild">dbus</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>611392</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.10.18</unaffected>
+      <vulnerable range="lt">1.10.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system which processes can use to talk to each
+      other.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in D-Bus. Please review
+      the original report referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly overwrite arbitrary files named “once”
+      with content not controlled by the attacker.
+    </p>
+    
+    <p>A local attacker could perform a symlink attack against D-Bus’ test
+      suite.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.10.18"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://www.openwall.com/lists/oss-security/2017/02/16/4">
+      Original report
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-21T07:09:05Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T08:33:43Z">whissi</metadata>
+</glsa>
