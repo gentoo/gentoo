@@ -23,7 +23,7 @@ RDEPEND="dev-libs/dbus-glib:=
 	>=x11-libs/libwnck-2.30:1=
 	>=xfce-base/libxfce4util-4.10:=
 	>=xfce-base/libxfce4ui-4.11:=
-	>=xfce-base/xfconf-4.10:=
+	>=xfce-base/xfconf-4.10:0=
 	startup-notification? ( x11-libs/startup-notification:= )
 	xcomposite? (
 		x11-libs/libXcomposite:=
