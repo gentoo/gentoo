@@ -1,0 +1,27 @@
+From 88cf58613ffde4c907011bea82f61daae6006c3c Mon Sep 17 00:00:00 2001
+From: clanmills <robin@clanmills.com>
+Date: Sun, 4 Jun 2017 09:07:14 +0100
+Subject: [PATCH] #8 Adding INCLUDE_DIRECTORIES(${Intl_INCLUDE_DIRS})
+
+---
+ config/CMakeChecks.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/config/CMakeChecks.txt b/config/CMakeChecks.txt
+index e6100c0f..b90d4fde 100644
+--- a/config/CMakeChecks.txt
++++ b/config/CMakeChecks.txt
+@@ -102,11 +102,12 @@ IF( EXIV2_ENABLE_NLS )
+         INCLUDE_DIRECTORIES(${Intl_INCLUDE_DIRS})
+         find_library(LIBINTL_LIBRARY NAMES intl libintl)
+         if(libintl_FOUND)
++            INCLUDE_DIRECTORIES(${Intl_INCLUDE_DIRS})
+             SET(LIBINTL_LIBRARIES ${LIBINTL_LIBRARY})
+         else()
+             SET(LIBINTL_LIBRARIES)
+             if ( APPLE OR CYGWIN )
+-            	SET(LIBINTL_LIBRARIES -lintl)
++                SET(LIBINTL_LIBRARIES -lintl)
+             endif()
+         endif()
+     endif()
