@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-09">
+  <title>FileZilla: Buffer overflow</title>
+  <synopsis>A vulnerability in a bundled copy of PuTTY in FileZilla might allow
+    remote attackers to execute arbitrary code or cause a denial of service.
+  </synopsis>
+  <product type="ebuild">filezilla</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>610554</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/filezilla" auto="yes" arch="*">
+      <unaffected range="ge">3.25.2</unaffected>
+      <vulnerable range="lt">3.25.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FileZilla is an open source FTP client.</p>
+  </background>
+  <description>
+    <p>FileZilla is affected by the same vulnerability as reported in “GLSA
+      201703-03” because the package included a vulnerable copy of PuTTY.
+      Please read the GLSA for PuTTY referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, utilizing the SSH agent forwarding of an SSH server,
+      could execute arbitrary code with the privileges of the user running
+      FileZilla or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FileZilla users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/filezilla-3.25.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6542">CVE-2017-6542</uri>
+    <uri link="https://security.gentoo.org/glsa/201703-03">GLSA 201703-03</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-04T11:05:52Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T08:34:45Z">whissi</metadata>
+</glsa>
