@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-14">
+  <title>FreeType: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FreeType, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">freetype </product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>612192</bug>
+  <bug>616730</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.8</unaffected>
+      <vulnerable range="lt">2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeType is a high-quality and portable font engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FreeType. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to use a specially crafted font
+      file using FreeType, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeType users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/freetype-2.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10244">
+      CVE-2016-10244
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10328">
+      CVE-2016-10328
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7857">CVE-2017-7857</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7858">CVE-2017-7858</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7864">CVE-2017-7864</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8105">CVE-2017-8105</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8287">CVE-2017-8287</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-11T06:23:01Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T20:06:36Z">whissi</metadata>
+</glsa>
