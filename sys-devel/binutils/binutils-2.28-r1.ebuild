@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PATCHVER="1.0"
+PATCHVER="1.1"
 ELF2FLT_VER=""
 inherit toolchain-binutils
 
