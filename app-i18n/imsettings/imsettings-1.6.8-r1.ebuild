@@ -27,7 +27,7 @@ RDEPEND=">=dev-libs/check-0.9.4
 	gconf? ( gnome-base/gconf )
 	gtk3? ( x11-libs/gtk+:3 )
 	qt4? ( dev-qt/qtcore:4 )
-	xfconf? ( xfce-base/xfconf )"
+	xfconf? ( xfce-base/xfconf:0 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-util/intltool
