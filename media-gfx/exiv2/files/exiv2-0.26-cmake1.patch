@@ -1,0 +1,22 @@
+From d5ae1a7502cc3a19f2ca45f5f17f1ee8fc6ad979 Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Tue, 30 May 2017 20:25:28 +0200
+Subject: [PATCH] Use CMAKE_INSTALL_LOCALEDIR
+
+---
+ config/CMakeChecks.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/CMakeChecks.txt b/config/CMakeChecks.txt
+index 77922930..b3a888f2 100644
+--- a/config/CMakeChecks.txt
++++ b/config/CMakeChecks.txt
+@@ -98,7 +98,7 @@ IF( EXIV2_ENABLE_NLS )
+     #FIND_PACKAGE(Intl REQUIRED)
+     #INCLUDE_DIRECTORIES(${Intl_INCLUDE_DIRS})
+     IF( NOT LOCALEDIR )
+-        SET( LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale" )
++        SET( LOCALEDIR "${CMAKE_INSTALL_LOCALEDIR}" )
+         IF( WIN32 )
+             STRING( REPLACE "/" "\\\\" LOCALEDIR ${LOCALEDIR} )
+         ENDIF( WIN32 )
