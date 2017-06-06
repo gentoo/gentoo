@@ -18,8 +18,7 @@ RDEPEND="app-shells/bash"
 
 S="${WORKDIR}/${MY_P}"
 
-HTML=( docs/nanoblogger.html )
-DOCS=( ChangeLog )
+HTML_DOCS=( docs/nanoblogger.html )
 
 src_prepare() {
 	default
