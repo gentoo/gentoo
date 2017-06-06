@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# preserve cflags
 	epatch "${FILESDIR}/${PN}-0.1.5-cflags.patch"
+	epatch "${FILESDIR}/${PN}-0.1.5-gcc6.patch"
 }
 
 src_configure() {
