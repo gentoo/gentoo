@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit eutils
 
 DESCRIPTION="A library that measures and reports on packet flows"
 HOMEPAGE="http://research.wand.net.nz/software/libflowmanager.php"
@@ -21,4 +22,10 @@ RDEPEND="
 
 src_configure() {
 	econf $(use_enable static-libs static)
+}
+
+src_install() {
+	default
+
+	prune_libtool_files
 }
