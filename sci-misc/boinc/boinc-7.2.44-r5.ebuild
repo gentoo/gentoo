@@ -3,7 +3,7 @@
 
 EAPI=6
 
-WX_GTK_VER=3.0
+WX_GTK_VER=2.8
 
 inherit autotools eutils linux-info systemd user versionator wxwidgets
 
@@ -42,7 +42,7 @@ RDEPEND="
 		virtual/jpeg:0=
 		x11-libs/gtk+:2
 		>=x11-libs/libnotify-0.7
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
+		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	)
 "
 DEPEND="${RDEPEND}
@@ -51,11 +51,6 @@ DEPEND="${RDEPEND}
 	app-text/docbook2X
 	X? ( virtual/imagemagick-tools[png,tiff] )
 "
-
-PATCHES=(
-	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
-	"${FILESDIR}"/fix_webview.patch
-)
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 
@@ -127,7 +122,8 @@ src_install() {
 	# cleanup cruft
 	rm -rf "${ED%/}"/etc || die "rm failed"
 
-	newinitd "${FILESDIR}"/${PN}.init ${PN}
+	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.init.in > ${PN}.init || die
+	newinitd ${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
 }
@@ -168,4 +164,12 @@ pkg_postinst() {
 		elog "Run as root:"
 		elog "gpasswd -a boinc video"
 	fi
+	# Add information about BOINC supporting OpenCL
+	elog "BOINC supports OpenCL. To use it you have to eselect"
+	if use cuda; then
+		elog "nvidia as the OpenCL implementation, as you are using CUDA."
+	else
+		elog "the correct OpenCL implementation for your graphic card."
+	fi
+	elog
 }
