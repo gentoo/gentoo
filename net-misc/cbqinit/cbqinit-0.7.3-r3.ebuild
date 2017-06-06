@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply -p0 "${FILESDIR}"/${P}-gentoo.patch
+	sed -i -e 's:/sbin/ip:/bin/ip:' cbqinit || die
 	default
 }
 
