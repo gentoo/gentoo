@@ -20,7 +20,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.24
 	>=xfce-base/libxfce4ui-4.10
 	>=xfce-base/libxfce4util-4.10
 	>=xfce-base/xfce4-panel-4.10
-	>=xfce-base/xfconf-4.10
+	>=xfce-base/xfconf-4.10:0
 	keybinder? ( dev-libs/keybinder:0 )"
 RDEPEND="${COMMON_DEPEND}
 	alsa? ( media-plugins/gst-plugins-alsa:0.10 )
