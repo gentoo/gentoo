@@ -24,7 +24,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.100:=
 	x11-libs/libXinerama:=
 	>=xfce-base/garcon-0.2.0:=
 	>=xfce-base/libxfce4util-4.10:=
-	>=xfce-base/xfconf-4.10:="
+	>=xfce-base/xfconf-4.10:0="
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
