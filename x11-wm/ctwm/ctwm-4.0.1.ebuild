@@ -41,6 +41,6 @@ src_prepare() {
 src_install() {
 	cmake-utils_src_install
 
-	mv -v "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
-	mv -v "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
+	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
+	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
 }
