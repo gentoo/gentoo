@@ -23,7 +23,7 @@ RDEPEND="$(vala_depend)
 	>=xfce-base/libxfce4ui-4.10
 	>=xfce-base/libxfce4util-4.10
 	>=xfce-base/xfce4-panel-4.10
-	>=xfce-base/xfconf-4.10"
+	>=xfce-base/xfconf-4.10:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
