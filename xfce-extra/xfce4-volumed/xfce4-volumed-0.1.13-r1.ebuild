@@ -16,7 +16,7 @@ IUSE="alsa debug libnotify oss"
 COMMON_DEPEND="dev-libs/keybinder:0
 	media-libs/gstreamer:0.10
 	media-libs/gst-plugins-base:0.10
-	>=xfce-base/xfconf-4.8
+	>=xfce-base/xfconf-4.8:0
 	libnotify? ( x11-libs/libnotify )"
 RDEPEND="${COMMON_DEPEND}
 	alsa? ( media-plugins/gst-plugins-alsa:0.10 )
