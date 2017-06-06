@@ -335,7 +335,7 @@ app-arch/unzip 6.0_p20: unzipper for pkzip-compressed files
 app-arch/upx-bin 3.91: Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
-app-arch/xar 1.5.2-r1 1.5.2-r2 1.6.1: An easily extensible archive format
+app-arch/xar 1.5.2-r1 1.6.1-r1: An easily extensible archive format
 app-arch/xarchiver 0.5.4 0.5.4.8: A GTK+ archive manager that can be used with Thunar
 app-arch/xdms 1.3.2 1.3.2-r1: xDMS - Amiga DMS disk image decompressor
 app-arch/xz-utils 5.2.2 5.2.3 9999: utils for managing LZMA compressed files
@@ -1030,7 +1030,7 @@ app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.0106 8.0.0386 8.0.0386-r1 9999: GUI version of the Vim text editor
+app-editors/gvim 8.0.0386 8.0.0386-r1 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1075,8 +1075,8 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8k 9.8n 9.8o 9.8p 9.8r 9.8s: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.0106 8.0.0386 8.0.0386-r1 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.0.0106 8.0.0386 9999: vim and gvim shared files
+app-editors/vim 8.0.0386 8.0.0386-r1 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.0.0386 9999: vim and gvim shared files
 app-editors/vis 0.3 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
@@ -2095,7 +2095,7 @@ app-pda/ifuse 1.1.3: Mount Apple iPhone/iPod Touch file systems for backup purpo
 app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver iHP-1xx
 app-pda/jpilot 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0: Support library to communicate with Apple iPhone/iPod Touch devices
-app-pda/libplist 1.12: Support library to deal with Apple Property Lists (Binary & XML)
+app-pda/libplist 1.12 2.0.0: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/p3nfs 5.19-r2 5.19-r3: Symbian to Unix and Linux communication program
 app-pda/pilot-link 0.12.5-r1: suite of tools for moving data between a Palm device and a desktop
@@ -2930,7 +2930,7 @@ dev-db/db-je 3.3.75: A high performance, transactional storage engine written en
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
 dev-db/etcd 2.3.7 2.3.8 3.0.17 3.1.0 3.1.6 3.1.8: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
-dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13: Tabular Datastream Library
+dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13 1.00.41: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
 dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
@@ -3035,7 +3035,7 @@ dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading 
 dev-db/tokumx 1.5.0-r2 2.0.2: An open source, high-performance distribution of MongoDB
 dev-db/tokyocabinet 1.4.48 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.0.0_pre20140929-r2 9999: TOra - Toolkit For Oracle
-dev-db/unixODBC 2.3.2-r1 2.3.2-r2 2.3.4: A complete ODBC driver manager
+dev-db/unixODBC 2.3.2-r1 2.3.4 2.3.4-r1: A complete ODBC driver manager
 dev-db/vbisam 2.0: replacement for IBM's C-ISAM
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
@@ -4783,7 +4783,7 @@ dev-libs/kasync 0.1.1: C++ library for controlling asynchronous tasks
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0 2.1.0: Lightweight user interface framework for mobile and convergent applications
-dev-libs/klibc 1.5.25 2.0.4 2.0.4-r2: A minimal libc subset for use with initramfs
+dev-libs/klibc 2.0.4-r2: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
 dev-libs/kproperty 3.0.0 3.0.1: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
@@ -12769,7 +12769,7 @@ media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/opencsg 1.4.0: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0: OpenEXR Viewers
-media-gfx/openmesh 3.2 3.3 4.1: A generic and efficient data structure for representing and manipulating polygonal meshes
+media-gfx/openmesh 4.1: A generic and efficient data structure for representing and manipulating polygonal meshes
 media-gfx/openscad 2015.03_p2-r1 2015.03_p2-r2 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 3.2.0 4.0.0: Libs for the efficient manipulation of volumetric data
@@ -13172,7 +13172,7 @@ media-libs/opencollada 1.6.25 1.6.31 1.6.36: Stream based read/write library for
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13 3.1.0-r6 3.1.0-r7 3.2.0: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13 2.4.13-r1 3.1.0-r6 3.1.0-r7 3.2.0 3.2.0-r1: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
@@ -14117,7 +14117,7 @@ media-video/kamoso 3.2 3.2.2: Application to take pictures and videos from your 
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
-media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 9999: Complete solution to record, convert and stream audio and video
+media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 12.1 9999: Complete solution to record, convert and stream audio and video
 media-video/libva-utils 1.8.0 1.8.1 1.8.2 9999: Collection of utilities and tests for VA-API
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
@@ -14212,7 +14212,7 @@ media-video/vdrsync 0.1.3_pre050322-r1: converting vdr-recordings to mpeg2, dvd 
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
 media-video/videocut 0.2.0: A program to create compositions from video files
 media-video/videotrans 1.6.1-r1 1.6.1-r2: A package to convert movies to DVD format and to build DVDs with
-media-video/vlc 2.2.4-r1 2.2.9999 9999: VLC media player - Video player and streamer
+media-video/vlc 2.2.4-r1 2.2.6 2.2.9999 9999: VLC media player - Video player and streamer
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/x264-encoder 0.0.20160712 9999: A free commandline encoder for X264/AVC streams
@@ -14528,7 +14528,7 @@ net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r2 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
-net-dialup/freeradius 2.2.9-r2 3.0.13: Highly configurable free RADIUS server
+net-dialup/freeradius 3.0.13: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/gtkterm 0.99.7_rc1: A serial port terminal written in GTK+, similar to Windows' HyperTerminal
@@ -14757,7 +14757,7 @@ net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 5.3.0.1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.3.4 2.4.2 2.5.2: Team collaboration tool
-net-im/telegram-desktop-bin 1.0.29 1.1.2: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.1.2 1.1.7: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
@@ -15044,7 +15044,7 @@ net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to admini
 net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.10 2.5.11 2.5.11-r1 3.0.1: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.19 2.2.29.1 2.2.30.1: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.19 2.2.29.1 2.2.30.1 2.2.30.2: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 2.5.0 3.0.5 3.1.2 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 6.0.0 7.0.0 7.0.0-r1 7.0.0-r2: Simple yet powerful mailing list manager for qmail
@@ -15171,7 +15171,7 @@ net-misc/buka 2.0: Download manga from buka.cn
 net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new Shared Registration System
 net-misc/cadaver 0.23.3: Command-line WebDAV client
 net-misc/capi4hylafax 01.03.00.99.300.20-r2: capi4hylafax adds a faxcapi modem to the hylafax enviroment
-net-misc/cbqinit 0.7.3-r2: Sets up class-based queue traffic control (QoS) with iproute2
+net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r4 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
@@ -15680,7 +15680,7 @@ net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
 net-proxy/privoxy 3.0.24-r2 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
-net-proxy/shadowsocks-libev 2.5.6 2.6.2: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
+net-proxy/shadowsocks-libev 2.5.6 2.6.2 3.0.6: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
 net-proxy/squid 3.5.23 3.5.24 3.5.25: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
@@ -15787,7 +15787,7 @@ net-wireless/madwimax 0.1.1-r1: A reverse-engineered Linux driver for mobile WiM
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
 net-wireless/multimode 1.00-r2 1.4_p20140831-r1 9999: multimode radio decoder for rtl-sdr devices using gnuradio
-net-wireless/ndiswrapper 1.59: Wrapper for using Windows drivers for some wireless cards
+net-wireless/ndiswrapper 1.59 1.61: Wrapper for using Windows drivers for some wireless cards
 net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
 net-wireless/openggsn 9999: Gateway GPRS Support Node
@@ -17315,7 +17315,7 @@ sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later ker
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 1.1.1 1.1.2 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/docker_auth 1.2.1: Docker Registry 2 authentication server
-sys-auth/elogind 229.3-r1: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 229.3-r1 229.4: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
@@ -17848,7 +17848,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999: Raspberry PI kernel 
 sys-kernel/rt-sources 3.18.48_p54 4.1.39_p47 4.4.53_p66 4.4.60_p73 4.9.20_p16: Full Linux 4.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.88 3.4.113 3.10.105 3.12.74 3.16.43 4.1.40 4.4.70 4.9.30 4.10.17 4.11.3: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.89 3.4.113 3.10.105 3.12.74 3.16.44 4.1.40 4.4.70 4.9.30 4.10.17 4.11.3: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -18346,7 +18346,7 @@ www-apps/nextcloud 11.0.3 12.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.2.0 7.6.3-r1: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
-www-apps/otrs 5.0.16 5.0.18 5.0.19: OTRS is an Open source Ticket Request System
+www-apps/otrs 5.0.20: OTRS is an Open source Ticket Request System
 www-apps/owncloud 9.0.9 9.0.10 9.1.5 9.1.6 10.0.0 10.0.1 10.0.2: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
