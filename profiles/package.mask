@@ -248,6 +248,7 @@ www-apps/egroupware
 # (on behalf of Treecleaner project)
 # Unmaintained. Fails to build. Removal in 30 days. Bug #541702.
 net-mail/topal
+virtual/ada
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
