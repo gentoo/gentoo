@@ -9386,10 +9386,10 @@ dev-ruby/base32 0.3.2: A library which provides base32 decoding and encoding
 dev-ruby/bcat 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.11 3.1.11-r1: An easy way to keep your users' passwords secure
 dev-ruby/bcrypt_pbkdf 1.0.0: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
-dev-ruby/best_in_place 3.1.0: In-place editor helper for Rails 3
+dev-ruby/best_in_place 3.1.0 3.1.1: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.0: Parsing Binary Data in Ruby
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
-dev-ruby/bit-struct 0.15.0: Library for packed binary data stored in ruby Strings
+dev-ruby/bit-struct 0.15.0 0.16: Library for packed binary data stored in ruby Strings
 dev-ruby/blankslate 2.1.2.4 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
 dev-ruby/bogus 0.1.6: Decreases the need for integration tests by ensuring that the things you stub or mock actually exist.
