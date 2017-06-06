@@ -9,4 +9,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/nanoblogger/nanoblogger-3.5-rc1.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=0fa676f4a6caa644f3f54665fd1284e1
+_md5_=289fb0a5080e154688e9981318a01d3b
