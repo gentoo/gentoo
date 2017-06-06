@@ -23,7 +23,7 @@ COMMON_DEPEND=">=dev-lang/perl-5.6
 	>=xfce-base/exo-0.10:=
 	>=xfce-base/libxfce4ui-4.10:=
 	>=xfce-base/libxfce4util-4.10.1:=
-	>=xfce-base/xfconf-4.10:=
+	>=xfce-base/xfconf-4.10:0=
 	dbus? ( >=dev-libs/dbus-glib-0.100:= )
 	exif? ( >=media-libs/libexif-0.6.19:= )
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
