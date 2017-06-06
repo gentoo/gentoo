@@ -127,7 +127,8 @@ src_install() {
 	# cleanup cruft
 	rm -rf "${ED%/}"/etc || die "rm failed"
 
-	newinitd "${FILESDIR}"/${PN}.init ${PN}
+	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.init.in > ${PN}.init || die
+	newinitd ${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
 }
@@ -167,5 +168,14 @@ pkg_postinst() {
 		elog "To be able to use CUDA you should add boinc user to video group."
 		elog "Run as root:"
 		elog "gpasswd -a boinc video"
+		elog
 	fi
+	# Add information about BOINC supporting OpenCL
+	elog "BOINC supports OpenCL. To use it you have to eselect"
+	if use cuda; then
+		elog "nvidia as the OpenCL implementation, as you are using CUDA."
+	else
+		elog "the correct OpenCL implementation for your graphic card."
+	fi
+	elog
 }
