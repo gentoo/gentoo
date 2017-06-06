@@ -20,6 +20,11 @@ TELEPORT_OPTS=""
 #TELEPORT_BINARY="/usr/bin/teleport"
 
 
+# Path to log file
+
+#TELEPORT_LOGFILE="/var/log/teleport.log"
+
+
 # Startup dependency
 # Un-comment when using etcd storage backend
 #rc_need="etcd"
