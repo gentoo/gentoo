@@ -45,7 +45,6 @@ src_install() {
 
 pkg_preinst() {
 	xdg_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

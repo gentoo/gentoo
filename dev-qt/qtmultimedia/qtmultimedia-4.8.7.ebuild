@@ -7,7 +7,7 @@ inherit qt4-build-multilib
 DESCRIPTION="The Multimedia module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86"
+	KEYWORDS="amd64 arm ~ia64 ppc ppc64 x86"
 fi
 
 IUSE="alsa"
