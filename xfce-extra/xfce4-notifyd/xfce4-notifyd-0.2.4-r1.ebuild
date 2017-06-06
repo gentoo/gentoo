@@ -19,7 +19,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.100
 	>=x11-libs/libnotify-0.7
 	>=xfce-base/libxfce4ui-4.8
 	>=xfce-base/libxfce4util-4.8
-	>=xfce-base/xfconf-4.8"
+	>=xfce-base/xfconf-4.8:0"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
