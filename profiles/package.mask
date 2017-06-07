@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (07 Jun 2017)
+# Needs some testing.
+~media-gfx/exiv2-0.26
+
 # Matthias Maier <tamiko@gentoo.org> (06 Jun 2017)
 # Dead upstream, unmaintained, no homepage, no SRC_URI, x86-only, does not
 # compile, bug #620964. Removal in 30 days.
