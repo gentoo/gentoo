@@ -44,7 +44,7 @@ RDEPEND="
 		libnotify? ( x11-libs/libnotify[${MULTILIB_USEDEP}] )
 		opengl? ( virtual/opengl[${MULTILIB_USEDEP}] )
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
-		webkit? ( net-libs/webkit-gtk:3 )
+		webkit? ( net-libs/webkit-gtk:4 )
 		)
 	aqua? (
 		x11-libs/gtk+:3[aqua=,${MULTILIB_USEDEP}]
