@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils check-reqs multilib java-pkg-opt-2 flag-o-matic
+inherit autotools eutils check-reqs multilib java-pkg-opt-2 flag-o-matic versionator
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="http://www.opencascade.org/"
@@ -14,7 +14,6 @@ SLOT="${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples freeimage gl2ps java qt4 +tbb +vtk"
 
-MY_VTK="vtk-6.1"
 DEPEND="app-eselect/eselect-opencascade
 	dev-lang/tcl:0=
 	dev-lang/tk:0=
@@ -29,13 +28,14 @@ DEPEND="app-eselect/eselect-opencascade
 	gl2ps? ( x11-libs/gl2ps )
 	java? ( >=virtual/jdk-0:= )
 	tbb? ( dev-cpp/tbb )
-	vtk? ( || ( =sci-libs/${MY_VTK}*[imaging] =sci-libs/${MY_VTK}*[qt4] =sci-libs/${MY_VTK}*[rendering] =sci-libs/${MY_VTK}*[views] =sci-libs/${MY_VTK}*[all-modules] ) )"
+	vtk? ( || ( sci-libs/vtk[imaging] sci-libs/vtk[qt4] sci-libs/vtk[rendering] sci-libs/vtk[views] sci-libs/vtk[all-modules] ) )"
 RDEPEND="${DEPEND}"
 
 CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
 
-PATCHES=( "${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch )
+PATCHES=( "${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch
+	"${FILESDIR}"/${PN}-6.9.1-vtk-configure.patch )
 
 pkg_setup() {
 	check-reqs_pkg_setup
@@ -44,6 +44,13 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	MY_VTK_P=$(best_version sci-libs/vtk)
+	MY_VTK_PV=${MY_VTK_P/sci-libs\/vtk-}
+	MY_VTK_SUB=vtk-$(get_version_component_range 1-2 ${MY_VTK_PV})
+	if has_version ">=sci-libs/vtk-6.3" ; then #bug 605304
+		epatch "${FILESDIR}"/${PN}-6.9.1-vtk-6.3.patch
+	fi
 
 	java-pkg-opt-2_src_prepare
 
@@ -106,7 +113,6 @@ TCL_LIBRARY=${my_sys_lib}/tcl$(grep TCL_VER /usr/include/tcl.h | sed 's/^.*"\(.*
 		-e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" \
 		-e "s:\$qt/include:\$qt/include/qt4:g"\
 		-e "s:\$qt/lib:\$qt/$(get_libdir)/qt4:g"\
-		-e "/CSF_VTK_LIB=/s:-${MY_VTK/vtk-}::g" \
 		-i configure.ac || die
 	eautoreconf
 }
@@ -123,7 +129,7 @@ src_configure() {
 		$(usex tbb "--with-tbb-include=${EROOT}usr" "") \
 		$(usex tbb "--with-tbb-library=${EROOT}usr" "") \
 		$(use java && echo "--with-java-include=$(java-config -O)/include" || echo "--without-java-include") \
-		$(usex vtk "--with-vtk-include=${EROOT}usr/include/${MY_VTK}" "") \
+		$(usex vtk "--with-vtk-include=${EROOT}usr/include/${MY_VTK_SUB}" "") \
 		$(usex vtk "--with-vtk-library=${EROOT}usr/$(get_libdir)" "") \
 		$(use_enable debug) \
 		$(use_enable !debug production)

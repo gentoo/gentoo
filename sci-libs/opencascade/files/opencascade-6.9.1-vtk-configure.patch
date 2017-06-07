@@ -1,0 +1,13 @@
+--- opencascade-6.9.1/configure.ac
++++ opencascade-6.9.1/configure.ac
+@@ -1043,8 +1043,8 @@
+       HAVE_VTK=no
+     fi
+     if test "x$vtk_lib" != "x"; then
+-      CSF_VTK_LIB="-L$vtk_lib -lvtkCommonCore-6.1 -lvtkCommonDataModel-6.1 -lvtkCommonExecutionModel-6.1 -lvtkCommonMath-6.1 -lvtkCommonTransforms-6.1 "
+-      CSF_VTK_LIB="${CSF_VTK_LIB} -lvtkRenderingCore-6.1 -lvtkRenderingOpenGL-6.1  -lvtkFiltersGeneral-6.1 -lvtkIOCore-6.1 -lvtkIOImage-6.1 -lvtkImagingCore-6.1 -lvtkInteractionStyle-6.1 "
++      CSF_VTK_LIB="-L$vtk_lib -lvtkCommonCore -lvtkCommonDataModel -lvtkCommonExecutionModel -lvtkCommonMath -lvtkCommonTransforms "
++      CSF_VTK_LIB="${CSF_VTK_LIB} -lvtkRenderingCore -lvtkRenderingOpenGL  -lvtkFiltersGeneral -lvtkIOCore -lvtkIOImage -lvtkImagingCore -lvtkInteractionStyle "
+     else
+       HAVE_VTK=no
+     fi
