@@ -1,0 +1,461 @@
+From 164a4cf56af423d3445c15a6e7aceae46e048dd5 Mon Sep 17 00:00:00 2001
+From: FinboySlick <jonathan@navigue.com>
+Date: Thu, 23 Jul 2015 16:05:19 -0400
+Subject: [PATCH] Support for vte>=0.38.0 -- Thanks Gyorgy Ballo
+
+---
+ configure.ac      |  4 +++-
+ src/lxterminal.c  | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ src/preferences.c | 17 ++++++++++++++
+ src/setting.c     | 30 ++++++++++++++++++++++++
+ src/setting.h     |  6 +++++
+ 5 files changed, 124 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index fb03567..e502c78 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -56,7 +56,9 @@ PKG_CHECK_MODULES(glib, [glib-2.0 >= 2.6.0])
+ PKG_CHECK_MODULES(x11, [x11 >= 1.0])
+ 
+ if test "x$enable_gtk3" = "xyes" ; then
+-PKG_CHECK_MODULES(vte, [vte-2.90 >= 0.20.0])
++PKG_CHECK_MODULES(vte, [vte-2.91 >= 0.20.0],, [
++  PKG_CHECK_MODULES(vte, [vte-2.90 >= 0.20.0])
++])
+ else
+ PKG_CHECK_MODULES(vte, [vte >= 0.20.0])
+ fi
+diff --git a/src/lxterminal.c b/src/lxterminal.c
+index d85203c..7980a42 100644
+--- a/src/lxterminal.c
++++ b/src/lxterminal.c
+@@ -39,6 +39,27 @@
+ #include "unixsocket.h"
+ 
+ /* Linux color for palette. */
++#if VTE_CHECK_VERSION (0, 38, 0)
++static const GdkRGBA linux_color[16] =
++{
++    { 0, 0, 0, 1 },
++    { 0.67, 0, 0, 1 },
++    { 0, 0.67, 0, 1 },
++    { 0.67, 0.33, 0, 1 },
++    { 0, 0, 0.67, 1 },
++    { 0.67, 0, 0.67, 1 },
++    { 0, 0.67, 0.67, 1 },
++    { 0.67, 0.67, 0.67, 1 },
++    { 0.33, 0.33, 0.33, 1 },
++    { 1, 0.33, 0.33, 1 },
++    { 0.33, 1, 0.33, 1 },
++    { 1, 1, 0.33, 1 },
++    { 0.33, 0.33, 1, 1 },
++    { 1, 0.33, 1, 1 },
++    { 0.33, 1, 1, 1 },
++    { 1, 1, 1, 1 }
++};
++#else
+ static const GdkColor linux_color[16] =
+ {
+     { 0, 0x0000, 0x0000, 0x0000 },
+@@ -58,6 +79,7 @@ static const GdkColor linux_color[16] =
+     { 0, 0x5555, 0xffff, 0xffff },
+     { 0, 0xffff, 0xffff, 0xffff }
+ };
++#endif
+ 
+ /* X accessor. */
+ static void gdk_window_get_geometry_hints(GdkWindow * window, GdkGeometry * geometry, GdkWindowHints * geometry_mask);
+@@ -229,7 +251,18 @@ static void gdk_window_get_geometry_hints(GdkWindow * window, GdkGeometry * geom
+ /* Accessor for border values from VteTerminal. */
+ static GtkBorder * terminal_get_border(Term * term)
+ {
+-#if VTE_CHECK_VERSION(0, 24, 0)
++#if VTE_CHECK_VERSION (0, 38, 0)
++    GtkBorder padding;
++    gtk_style_context_get_padding(gtk_widget_get_style_context(term->vte),
++                                  gtk_widget_get_state_flags(term->vte),
++                                  &padding);
++    GtkBorder * border = gtk_border_new();
++    border->left = padding.left;
++    border->right = padding.right;
++    border->top = padding.top;
++    border->bottom = padding.bottom;
++    return border;
++#elif VTE_CHECK_VERSION(0, 24, 0)
+     /* Style property, new in 0.24.0, replaces the function below. */
+     GtkBorder * border;
+     gtk_widget_style_get(term->vte, "inner-border", &border, NULL);
+@@ -943,10 +976,19 @@ static void terminal_vte_commit(VteTerminal * vte, gchar * text, guint size, Ter
+ static void terminal_settings_apply_to_term(LXTerminal * terminal, Term * term)
+ {
+     Setting * setting = get_setting();
++#if VTE_CHECK_VERSION (0, 38, 0)
++    PangoFontDescription * font_desc;
++#endif
+ 
+     /* Terminal properties. */
++#if VTE_CHECK_VERSION (0, 38, 0)
++    font_desc = pango_font_description_from_string(setting->font_name);
++    vte_terminal_set_font(VTE_TERMINAL(term->vte), font_desc);
++    pango_font_description_free(font_desc);
++#else
+     vte_terminal_set_font_from_string(VTE_TERMINAL(term->vte), setting->font_name);
+     vte_terminal_set_word_chars(VTE_TERMINAL(term->vte), setting->word_selection_characters);
++#endif
+     vte_terminal_set_scrollback_lines(VTE_TERMINAL(term->vte), setting->scrollback);
+     vte_terminal_set_allow_bold(VTE_TERMINAL(term->vte), ! setting->disallow_bold);
+     vte_terminal_set_cursor_blink_mode(VTE_TERMINAL(term->vte), ((setting->cursor_blink) ? VTE_CURSOR_BLINK_ON : VTE_CURSOR_BLINK_OFF));
+@@ -955,6 +997,7 @@ static void terminal_settings_apply_to_term(LXTerminal * terminal, Term * term)
+     vte_terminal_set_mouse_autohide(VTE_TERMINAL(term->vte), setting->hide_pointer);
+ 
+     /* Background and foreground colors. */
++#if !VTE_CHECK_VERSION (0, 38, 0)
+     if (terminal->rgba)
+     {
+         /* vte_terminal_queue_background_update doesn't run without changing background. */
+@@ -967,6 +1010,7 @@ static void terminal_settings_apply_to_term(LXTerminal * terminal, Term * term)
+         vte_terminal_set_background_transparent(VTE_TERMINAL(term->vte), setting->background_alpha == 65535 ? FALSE : TRUE);
+         vte_terminal_set_background_saturation(VTE_TERMINAL(term->vte), 1 - ((double) setting->background_alpha / 65535));
+     }
++#endif
+     vte_terminal_set_colors(VTE_TERMINAL(term->vte), &setting->foreground_color, &setting->background_color, &linux_color[0], 16);
+ 
+     /* Hide or show scrollbar. */
+@@ -1013,8 +1057,12 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+ 
+     /* Set up the VTE. */
+     setlocale(LC_ALL, "");
++#if VTE_CHECK_VERSION (0, 38, 0)
++    vte_terminal_set_encoding(VTE_TERMINAL(term->vte), nl_langinfo(CODESET), NULL);
++#else
+     vte_terminal_set_emulation(VTE_TERMINAL(term->vte), "xterm");
+     vte_terminal_set_encoding(VTE_TERMINAL(term->vte), nl_langinfo(CODESET));
++#endif
+     vte_terminal_set_backspace_binding(VTE_TERMINAL(term->vte), VTE_ERASE_ASCII_DELETE);
+     vte_terminal_set_delete_binding(VTE_TERMINAL(term->vte), VTE_ERASE_DELETE_SEQUENCE);
+ 
+@@ -1086,7 +1134,11 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+     gtk_widget_show_all(term->tab);
+ 
+     /* Set up scrollbar. */
++#if VTE_CHECK_VERSION (0, 38, 0)
++    gtk_range_set_adjustment(GTK_RANGE(term->scrollbar), gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(term->vte)));
++#else
+     gtk_range_set_adjustment(GTK_RANGE(term->scrollbar), vte_terminal_get_adjustment(VTE_TERMINAL(term->vte)));
++#endif
+ 
+     /* Fork the process that will have the VTE as its controlling terminal. */
+     if (exec == NULL)
+@@ -1097,6 +1149,20 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+         exec[2] = NULL;
+     }
+ 
++#if VTE_CHECK_VERSION (0, 38, 0)
++    vte_terminal_spawn_sync(
++                    VTE_TERMINAL(term->vte),
++                    VTE_PTY_NO_LASTLOG | VTE_PTY_NO_UTMP | VTE_PTY_NO_WTMP,
++                    pwd,
++                    command,
++                    env,
++                    G_SPAWN_SEARCH_PATH | G_SPAWN_FILE_AND_ARGV_ZERO,
++                    NULL,
++                    NULL,
++                    &term->pid,
++                    NULL,
++                    NULL);
++#else
+     vte_terminal_fork_command_full(
+                     VTE_TERMINAL(term->vte),
+                     VTE_PTY_NO_LASTLOG | VTE_PTY_NO_UTMP | VTE_PTY_NO_WTMP,
+@@ -1108,6 +1174,7 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+                     NULL,
+                     &term->pid,
+                     NULL);
++#endif
+     g_strfreev(command);
+ 
+     /* Connect signals. */
+diff --git a/src/preferences.c b/src/preferences.c
+index 4cb18ce..eda989c 100644
+--- a/src/preferences.c
++++ b/src/preferences.c
+@@ -21,6 +21,7 @@
+ #include <glib.h>
+ #include <gtk/gtk.h>
+ #include <glib/gi18n.h>
++#include <vte/vte.h>
+ 
+ #include "lxterminal.h"
+ #include "setting.h"
+@@ -37,6 +38,9 @@ static void preferences_dialog_font_set_event(GtkFontButton * widget, Setting *
+ /* Handler for "color-set" signal on Background Color color button. */
+ static void preferences_dialog_background_color_set_event(GtkColorButton * widget, Setting * setting)
+ {
++#if VTE_CHECK_VERSION (0, 38, 0)
++    gtk_color_button_get_rgba(widget, &setting->background_color);
++#else
+     gtk_color_button_get_color(widget, &setting->background_color);
+     setting->background_alpha = gtk_color_button_get_alpha(widget);
+ 
+@@ -44,12 +48,17 @@ static void preferences_dialog_background_color_set_event(GtkColorButton * widge
+     {
+         setting->background_alpha = 1;
+     }
++#endif
+ }
+ 
+ /* Handler for "color-set" signal on Foreground Color color button. */
+ static void preferences_dialog_foreground_color_set_event(GtkColorButton * widget, Setting * setting)
+ {
++#if VTE_CHECK_VERSION (0, 38, 0)
++    gtk_color_button_get_rgba(widget, &setting->foreground_color);
++#else
+     gtk_color_button_get_color(widget, &setting->foreground_color);
++#endif
+ }
+ 
+ /* Handler for "toggled" signal on Allow Bold toggle button.
+@@ -183,13 +192,21 @@ void terminal_preferences_dialog(GtkAction * action, LXTerminal * terminal)
+     g_signal_connect(G_OBJECT(w), "font-set", G_CALLBACK(preferences_dialog_font_set_event), setting);
+ 
+     w = GTK_WIDGET(gtk_builder_get_object(builder, "background_color"));
++#if VTE_CHECK_VERSION (0, 38, 0)
++    gtk_color_button_set_rgba(GTK_COLOR_BUTTON(w), &setting->background_color);
++#else
+     gtk_color_button_set_color(GTK_COLOR_BUTTON(w), &setting->background_color);
+     gtk_color_button_set_alpha(GTK_COLOR_BUTTON(w), setting->background_alpha);
++#endif
+     g_signal_connect(G_OBJECT(w), "color-set", 
+         G_CALLBACK(preferences_dialog_background_color_set_event), setting);
+ 
+     w = GTK_WIDGET(gtk_builder_get_object(builder, "foreground_color"));
++#if VTE_CHECK_VERSION (0, 38, 0)
++    gtk_color_button_set_rgba(GTK_COLOR_BUTTON(w), &setting->foreground_color);
++#else
+     gtk_color_button_set_color(GTK_COLOR_BUTTON(w), &setting->foreground_color);
++#endif
+     g_signal_connect(G_OBJECT(w), "color-set", 
+         G_CALLBACK(preferences_dialog_foreground_color_set_event), setting);
+ 
+diff --git a/src/setting.c b/src/setting.c
+index d115313..7ce79b2 100644
+--- a/src/setting.c
++++ b/src/setting.c
+@@ -22,6 +22,7 @@
+ #include <gtk/gtk.h>
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
++#include <vte/vte.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <errno.h>
+@@ -40,11 +41,19 @@ void print_setting()
+     g_return_if_fail (setting != NULL);
+ 
+     printf("Font name: %s\n", setting->font_name);
++#if VTE_CHECK_VERSION (0, 38, 0)
++    gchar * p = gdk_rgba_to_string(&setting->background_color);
++#else
+     gchar * p = gdk_color_to_string(&setting->background_color);
++#endif
+     printf("Background color: %s\n", p);
+     g_free(p);
++#if VTE_CHECK_VERSION (0, 38, 0)
++    p = gdk_rgba_to_string(&setting->foreground_color);
++#else
+     printf("Background Alpha: %i\n", setting->background_alpha);
+     p = gdk_color_to_string(&setting->foreground_color);
++#endif
+     printf("Foreground color: %s\n", p);
+     g_free(p);
+     printf("Disallow bolding by VTE: %i\n", setting->disallow_bold);
+@@ -98,12 +107,20 @@ void save_setting()
+     
+     /* Push settings to GKeyFile. */
+     g_key_file_set_string(setting->keyfile, GENERAL_GROUP, FONT_NAME, setting->font_name);
++#if VTE_CHECK_VERSION (0, 38, 0)
++    gchar * p = gdk_rgba_to_string(&setting->background_color);
++#else
+     gchar * p = gdk_color_to_string(&setting->background_color);
++#endif
+     if (p != NULL)
+         g_key_file_set_string(setting->keyfile, GENERAL_GROUP, BG_COLOR, p);
+     g_free(p);
++#if VTE_CHECK_VERSION (0, 38, 0)
++    p = gdk_rgba_to_string(&setting->foreground_color);
++#else
+     g_key_file_set_integer(setting->keyfile, GENERAL_GROUP, BG_ALPHA, setting->background_alpha);
+     p = gdk_color_to_string(&setting->foreground_color);
++#endif
+     if (p != NULL)
+         g_key_file_set_string(setting->keyfile, GENERAL_GROUP, FG_COLOR, p);
+     g_free(p);
+@@ -235,8 +252,13 @@ Setting * load_setting()
+     setting = g_slice_new0(Setting);
+ 
+     /* Initialize nonzero integer values to defaults. */
++#if VTE_CHECK_VERSION (0, 38, 0)
++    setting->background_color.alpha = setting->foreground_color.alpha = 1;
++    setting->foreground_color.red = setting->foreground_color.green = setting->foreground_color.blue = (gdouble) 170/255;
++#else
+     setting->background_alpha = 65535;
+     setting->foreground_color.red = setting->foreground_color.green = setting->foreground_color.blue = 0xaaaa;
++#endif
+ 
+     /* Load configuration. */
+     setting->keyfile = g_key_file_new();
+@@ -248,6 +270,9 @@ Setting * load_setting()
+         char * p = g_key_file_get_string(setting->keyfile, GENERAL_GROUP, BG_COLOR, NULL);
+         if (p != NULL)
+         {
++#if VTE_CHECK_VERSION (0, 38, 0)
++            gdk_rgba_parse(&setting->background_color, p);
++#else
+             gdk_color_parse(p, &setting->background_color);
+         }
+         setting->background_alpha = g_key_file_get_integer(setting->keyfile, GENERAL_GROUP, BG_ALPHA, &error);
+@@ -255,11 +280,16 @@ Setting * load_setting()
+         {   
+             /* Set default value if key not found! */
+             setting->background_alpha = 65535;
++#endif
+         }
+         p = g_key_file_get_string(setting->keyfile, GENERAL_GROUP, FG_COLOR, NULL);
+         if (p != NULL)
+         {
++#if VTE_CHECK_VERSION (0, 38, 0)
++            gdk_rgba_parse(&setting->foreground_color, p);
++#else
+             gdk_color_parse(p, &setting->foreground_color);
++#endif
+         }
+         setting->disallow_bold = g_key_file_get_boolean(setting->keyfile, GENERAL_GROUP, DISALLOW_BOLD, NULL);
+         setting->cursor_blink = g_key_file_get_boolean(setting->keyfile, GENERAL_GROUP, CURSOR_BLINKS, NULL);
+diff --git a/src/setting.h b/src/setting.h
+index 283b6a6..2350401 100644
+--- a/src/setting.h
++++ b/src/setting.h
+@@ -22,6 +22,7 @@
+ #define LXTERMINAL_SETTING_H
+ 
+ #include <gtk/gtk.h>
++#include <vte/vte.h>
+ 
+ #define GENERAL_GROUP "general"
+ #define FONT_NAME "fontname"
+@@ -72,9 +73,14 @@ typedef struct _setting {
+ 
+     GKeyFile * keyfile;         /* Pointer to GKeyFile containing settings */
+     char * font_name;           /* Font name */
++#if VTE_CHECK_VERSION (0, 38, 0)
++    GdkRGBA background_color;      /* Background color */
++    GdkRGBA foreground_color;      /* Foreground color */
++#else
+     GdkColor background_color;      /* Background color */
+     guint16 background_alpha;       /* Alpha value to go with background color */
+     GdkColor foreground_color;      /* Foreground color */
++#endif
+     gboolean disallow_bold;     /* Disallow bolding by VTE */
+     gboolean cursor_blink;      /* True if cursor blinks */
+     gboolean cursor_underline;      /* True if underline cursor; false if block cursor */
+-- 
+2.1.4
+
+From e1284def04cbce228e65db16f2ad31003aef28fd Mon Sep 17 00:00:00 2001
+From: Ming-ting Yao Wei <mwei@lxde.org>
+Date: Thu, 13 Aug 2015 01:07:51 +0200
+Subject: [PATCH] Fix: child-exited event has status code in libvte 0.38
+
+---
+ src/lxterminal.c | 31 +++++++++++++++++++++++++------
+ 1 file changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/src/lxterminal.c b/src/lxterminal.c
+index 392716d..d0c2de0 100644
+--- a/src/lxterminal.c
++++ b/src/lxterminal.c
+@@ -74,7 +74,12 @@ static void terminal_window_set_fixed_size(LXTerminal * terminal);
+ static void terminal_switch_page_event(GtkNotebook * notebook, GtkWidget * page, guint num, LXTerminal * terminal);
+ static void terminal_window_title_changed_event(GtkWidget * vte, Term * term);
+ static void terminal_window_exit(LXTerminal * terminal, GObject * where_the_object_was);
++#if VTE_CHECK_VERSION (0, 38, 0)
++static void terminal_child_exited_event(VteTerminal * vte, gint status, Term * term);
++#else
+ static void terminal_child_exited_event(VteTerminal * vte, Term * term);
++#endif
++static void terminal_close_button_event(VteTerminal * vte, Term * term);
+ static gboolean terminal_tab_button_press_event(GtkWidget * widget, GdkEventButton * event, Term * term);
+ static gboolean terminal_vte_button_press_event(VteTerminal * vte, GdkEventButton * event, Term * term);
+ static void terminal_settings_apply_to_term(LXTerminal * terminal, Term * term);
+@@ -444,7 +449,7 @@ static void terminal_new_tab(LXTerminal * terminal, const gchar * label)
+ static void terminal_close_tab_activate_event(GtkAction * action, LXTerminal * terminal)
+ {
+     Term * term = g_ptr_array_index(terminal->terms, gtk_notebook_get_current_page(GTK_NOTEBOOK(terminal->notebook)));
+-    terminal_child_exited_event(VTE_TERMINAL(term->vte), term);
++    terminal_close_button_event(VTE_TERMINAL(term->vte), term);
+ }
+ 
+ /* Handler for "activate" signal on File/Close Window menu item.
+@@ -454,7 +459,7 @@ static void terminal_close_window_activate_event(GtkAction * action, LXTerminal
+     /* Play it safe and delete tabs one by one. */
+     while(terminal->terms->len > 0)
+     {
+-        terminal_child_exited_event(NULL, g_ptr_array_index(terminal->terms, 0));
++        terminal_close_button_event(NULL, g_ptr_array_index(terminal->terms, 0));
+     }
+ }
+ 
+@@ -779,9 +784,12 @@ static void terminal_window_exit(LXTerminal * terminal, GObject * where_the_obje
+     }
+ }
+ 
+-/* Handler for "child-exited" signal on VTE.
+- * Also handler for "activate" signal on Close button of tab and File/Close Tab menu item and accelerator. */
++/* Handler for "child-exited" signal on VTE. */
++#if VTE_CHECK_VERSION (0, 38, 0)
++static void terminal_child_exited_event(VteTerminal * vte, gint status, Term * term)
++#else
+ static void terminal_child_exited_event(VteTerminal * vte, Term * term)
++#endif
+ {
+     LXTerminal * terminal = term->parent;
+ 
+@@ -817,13 +825,24 @@ static void terminal_child_exited_event(VteTerminal * vte, Term * term)
+     }
+ }
+ 
++/* Adapter for "activate" signal on Close button of tab and File/Close Tab menu item and accelerator. */
++static void terminal_close_button_event(VteTerminal * vte, Term * term)
++{
++#if VTE_CHECK_VERSION (0, 38, 0)
++    terminal_child_exited_event(vte, 0, term);
++#else
++    terminal_child_exited_event(vte, term);
++#endif
++}
++
++
+ /* Handler for "button-press-event" signal on a notebook tab. */
+ static gboolean terminal_tab_button_press_event(GtkWidget * widget, GdkEventButton * event, Term * term)
+ {
+     if (event->button == 2)
+     {
+         /* Middle click closes the tab. */
+-        terminal_child_exited_event(NULL, term);
++        terminal_close_button_event(NULL, term);
+         return TRUE;
+     }
+     return FALSE;
+@@ -1136,7 +1155,7 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+ 
+     /* Connect signals. */
+     g_signal_connect(G_OBJECT(term->tab), "button-press-event", G_CALLBACK(terminal_tab_button_press_event), term);
+-    g_signal_connect(G_OBJECT(term->close_button), "clicked", G_CALLBACK(terminal_child_exited_event), term);
++    g_signal_connect(G_OBJECT(term->close_button), "clicked", G_CALLBACK(terminal_close_button_event), term);
+     g_signal_connect(G_OBJECT(term->vte), "button-press-event", G_CALLBACK(terminal_vte_button_press_event), term);
+     g_signal_connect(G_OBJECT(term->vte), "button-release-event", G_CALLBACK(terminal_vte_button_release_event), term);
+     g_signal_connect(G_OBJECT(term->vte), "commit", G_CALLBACK(terminal_vte_commit), term);
+-- 
+2.1.4
+
