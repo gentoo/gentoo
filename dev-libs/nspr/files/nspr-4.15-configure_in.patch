@@ -1,0 +1,26 @@
+From 9c751b2e857db1760d2fa82d9c20e7da518a5da7 Mon Sep 17 00:00:00 2001
+From: "Jory A. Pratt" <anarchy@gentoo.org>
+Date: Wed, 7 Jun 2017 12:14:46 -0500
+Subject: [PATCH] Close out darwin if statement, will breakage configure.in
+ rename to configure.ac
+
+Signed-off-by: Jory A. Pratt <anarchy@gentoo.org>
+---
+ configure.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.in b/configure.in
+index 4b2e46d..dc14ee5 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1389,6 +1389,7 @@ case "$target" in
+     changequote([,])
+     if test "$HOST_DARWIN_MAJOR" -ge 15 ; then
+         AC_DEFINE(HAS_CONNECTX)
++    fi
+     AS='$(CC) -x assembler-with-cpp'
+     CFLAGS="$CFLAGS -Wall -fno-common"
+     case "${target_cpu}" in
+-- 
+2.13.1
+
