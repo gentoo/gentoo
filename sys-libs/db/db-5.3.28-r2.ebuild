@@ -27,7 +27,7 @@ done
 
 LICENSE="Sleepycat"
 SLOT="5.3"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
