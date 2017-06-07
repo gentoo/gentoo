@@ -64,7 +64,7 @@ media-sound/amarok:4 -cdda
 
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
 <app-office/texmaker-4.5-r1 -qt4
-dev-python/qscintilla-python -qt4
+<dev-python/qscintilla-python-2.10 -qt4
 <x11-libs/qscintilla-2.10 -qt4
 
 # Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
