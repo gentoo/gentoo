@@ -1,0 +1,9 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2017)
+# We can unmask ICU 59 and later now we for sure have a recent GCC
+# Note: "and later" is safe here since the profiles/package.mask
+# still overrides.
+>=dev-libs/icu-59
+>=dev-libs/icu-layoutex-59
