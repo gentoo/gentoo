@@ -25,7 +25,5 @@ DEPEND="
 S="${WORKDIR}/estin-${PN}-${COMMIT_ID}"
 
 python_test() {
-	distutils_install_for_testing
 	nosetests -v || die
 }
-
