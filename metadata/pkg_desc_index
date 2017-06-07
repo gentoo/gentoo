@@ -2108,7 +2108,7 @@ app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20170321 20170428 20170521 99999999: collection of Gentoo eclass manpages
-app-portage/eix 0.32.4 0.32.5 0.32.5-r1: Search and query ebuilds
+app-portage/eix 0.32.4 0.32.5 0.32.5-r1 0.32.9: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2 2.7: Elog viewer for Gentoo
 app-portage/elt-patches 20170317: Collection of patches for libtool.eclass
@@ -16529,7 +16529,7 @@ sci-libs/nlopt 2.4.2-r1: Non-linear optimization library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/octomap 1.8.1 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
-sci-libs/opencascade 6.7.1-r1 6.8.0-r1 6.9.0-r1 6.9.1-r1: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+sci-libs/opencascade 6.7.1-r1 6.8.0-r1 6.9.0-r1 6.9.1-r1 6.9.1-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openfoam 2.2.1 2.2.2 2.3.0-r1 2.3.1-r1 2.4.0-r1: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openfoam-bin 1.6: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openlibm 0.5.4: High quality system independent, open source libm
