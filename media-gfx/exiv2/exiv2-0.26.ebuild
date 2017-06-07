@@ -127,7 +127,7 @@ multilib_src_install_all() {
 	find "${D}" -name '*.la' -delete || die
 
 	if use examples; then
-		docinto -r examples
+		docinto examples
 		dodoc samples/*.cpp
 	fi
 }
