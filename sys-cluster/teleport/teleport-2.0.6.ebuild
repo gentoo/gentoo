@@ -44,7 +44,7 @@ src_install() {
 	doins "${FILESDIR}"/${PN}.yaml
 
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newconfd "${FILESDIR}"/${PN}.conf.d ${PN}
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf ${PN}.service
