@@ -1,16 +1,17 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
+inherit xfconf
 
 DESCRIPTION="Window manager for the Xfce desktop environment"
-HOMEPAGE="https://www.xfce.org/projects/"
+HOMEPAGE="https://docs.xfce.org/xfce/xfwm4/start"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="dri startup-notification +xcomposite"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="debug dri startup-notification +xcomposite"
 
 RDEPEND="dev-libs/dbus-glib:=
 	>=dev-libs/glib-2.20:=
@@ -42,17 +43,21 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dri? ( >=x11-libs/libdrm-2.4 )"
 
-DOCS=( AUTHORS ChangeLog COMPOSITOR NEWS README TODO )
-
-src_configure() {
-	local myconf=(
+pkg_setup() {
+	XFCONF=(
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable dri libdrm)
 		$(use_enable startup-notification)
 		--enable-xsync
 		--enable-render
 		--enable-randr
 		$(use_enable xcomposite compositor)
-	)
+		$(xfconf_use_debug)
+		)
 
-	econf "${myconf[@]}"
+	DOCS=( AUTHORS ChangeLog COMPOSITOR NEWS README TODO )
+
+	PATCHES=(
+		"${FILESDIR}/xfwm4-4.12-touchscreen-subwindow-fix.patch"
+		)
 }
