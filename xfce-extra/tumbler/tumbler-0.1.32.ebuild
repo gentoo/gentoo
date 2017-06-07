@@ -12,7 +12,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="curl ffmpeg gstreamer jpeg odf pdf raw"
 
-COMMON_DEPEND=">=dev-libs/glib-2.26:2=
+COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
+	>=dev-libs/glib-2.24:2=
 	media-libs/freetype:2=
 	media-libs/libpng:0=
 	>=sys-apps/dbus-1.6:=
