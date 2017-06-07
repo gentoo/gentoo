@@ -121,6 +121,65 @@ net-analyzer/fe3d
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
+# Unmaintained since addition. Obsolete version that requires ancient
+# dev-python/mock version. No reverse dependencies.
+# Removal in 30 days. Bug #616292.
+dev-python/cassandra-driver
+<dev-python/mock-1.3
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained. Does not use python eclasses. Unhandled bug reports.
+# Removal in 30 days. Bug #615920.
+dev-util/rpmdevtools
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Dead upstream. No reverse dependencies. Fails to build.
+# Removal in 30 days. Bug #594384.
+dev-libs/libjit
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained upstream. Fails to build.
+# Removal in 30 days. Bug #513416.
+media-sound/pianobooster
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained library with no reverse dependencies. Last consumer
+# of unmaintained gpe.eclass.
+# Removal in 30 days. Bug #610490.
+x11-libs/libxsettings-client
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo, awfully old version. Uses obsolete
+# built_with_use.
+# Removal in 30 days. Bug #610454.
+net-misc/ser
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained in Gentoo. Abandoned upstream before Gentoo got to
+# bumping it.
+# Removal in 30 days. Bug #360767.
+www-apps/pyblosxom
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# The libgnomeuimm is long dead upstream.
+# Removal in 30 days. Bug #608948.
+dev-cpp/libgnomeuimm
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# Unmaintained upstream and in Gentoo. Requires old wxGTK version.
+# Removal in 30 days. Bug #564100.
+net-analyzer/fe3d
+
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
 # Unmaintained upstream. Already suffers heavy patching in Gentoo.
 # Multiple bugs filed, including build failures.
 # Removal in 30 days. Bug #515760.
