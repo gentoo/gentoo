@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PATCHVER="1.0"
+PATCHVER="1.2"
 
 inherit eutils toolchain-funcs multilib-minimal
 
