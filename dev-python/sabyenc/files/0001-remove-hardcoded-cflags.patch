@@ -1,0 +1,25 @@
+From 3f70d3f955048e31ccac668caa59199d8cb71b50 Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Wed, 7 Jun 2017 17:23:37 -0400
+Subject: [PATCH] remove hardcoded cflags
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index d198eac..e2d8f1a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -32,7 +32,7 @@ setup(
+     url             = "https://github.com/sabnzbd/sabnzbd-yenc",
+     license         = "LGPLv3",
+     package_dir     = {'sabyenc': 'src'},
+-    ext_modules     = [Extension("sabyenc", ["src/sabyenc.c"], extra_compile_args=["-O2"])],
++    ext_modules     = [Extension("sabyenc", ["src/sabyenc.c"])],
+     classifiers     = [
+         "Programming Language :: Python",
+         "Programming Language :: Python :: 2.7",
+-- 
+2.10.2
+
