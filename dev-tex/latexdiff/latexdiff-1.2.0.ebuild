@@ -15,7 +15,7 @@ IUSE="test"
 
 RDEPEND=">=dev-lang/perl-5.8
 	virtual/latex-base
-	dev-texlive/texlive-genericrecommended
+	|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 	dev-perl/Algorithm-Diff"
 DEPEND="${RDEPEND}
 	dev-perl/Pod-LaTeX
