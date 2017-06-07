@@ -17,7 +17,7 @@ IUSE="doc examples"
 RDEPEND="dev-lang/perl
 	dev-texlive/texlive-latexrecommended
 	>=dev-texlive/texlive-latexextra-2012
-	>=dev-texlive/texlive-genericextra-2014"
+	|| ( dev-texlive/texlive-plaingeneric >=dev-texlive/texlive-genericextra-2014 )"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
