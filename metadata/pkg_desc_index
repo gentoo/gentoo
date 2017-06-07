@@ -9863,7 +9863,7 @@ dev-ruby/rubytter 1.5.1 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r2: An automatic logger for HTTP requests in Ruby
-dev-ruby/sanitize 2.1.0 4.2.0 4.3.0 4.4.0: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 2.1.0 4.4.0 4.5.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.4.15 3.4.23 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.7.0 0.7.0-r1 0.8.0 0.8.1: Secret User Agent of HTTP
