@@ -19,7 +19,7 @@ SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${PV}/${MY_P}-src.
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+rar unzip +yenc"
+IUSE="+7za +rar unzip"
 
 # Sabnzbd is installed to /usr/share/ as upstream makes it clear they should not
 # be in python's sitedir.  See:  http://wiki.sabnzbd.org/unix-packaging
@@ -27,6 +27,9 @@ IUSE="+rar unzip +yenc"
 # TODO:  still bundled but not in portage:
 # kronos, rsslib, ssmtplib, listquote, json-py, msgfmt, happyeyeballs
 # pynewsleecher
+#
+# dev-python/rarfile is bundled as of 2.0.1 because sabnzbd is modifying it
+# https://github.com/sabnzbd/sabnzbd/commit/de6d642b0dc6eaed63199a99d9a1a8b2e3d0018b
 #
 # Also note that cherrypy is still bundled.  It's near impossible to find
 # out where the bundled and heavily patched version came from (pulled from
@@ -39,14 +42,15 @@ RDEPEND="
 	>=app-arch/par2cmdline-0.4
 	>=dev-python/cheetah-2.0.1
 	dev-python/configobj
+	dev-python/cryptography
 	dev-python/feedparser
 	dev-python/gntp
 	dev-python/pythonutils
-	dev-python/rarfile
+	dev-python/sabyenc
 	net-misc/wget
+	7za? ( app-arch/p7zip )
 	rar? ( || ( app-arch/unrar app-arch/rar ) )
 	unzip? ( >=app-arch/unzip-5.5.2 )
-	yenc? ( dev-python/yenc )
 "
 DEPEND="${PYTHON_DEPS}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -67,9 +71,9 @@ src_prepare() {
 	eapply "${FILESDIR}"/patches
 
 	# remove bundled modules
-	rm -r sabnzbd/utils/{feedparser,configobj,rarfile}.py || die
+	rm -r sabnzbd/utils/{feedparser,configobj}.py || die
 	rm -r gntp || die
-	rm licenses/License-{feedparser,configobj,gntp,rarfile}.txt || die
+	rm licenses/License-{feedparser,configobj,gntp}.txt || die
 
 	eapply_user
 }
@@ -117,13 +121,11 @@ pkg_postinst() {
 
 	local replacing
 	for replacing in ${REPLACING_VERSIONS}; do
-		if [ "$(get_major_version ${replacing})" == "0" ]; then
+		if [ "$(get_major_version ${replacing})" == "1" ]; then
 			ewarn
-			ewarn "Upgrading from ${PN}-0.x.y to ${PN}-1.x.y introduces incompatible changes, see:"
+			ewarn "Upgrading to ${PN}-2.x.y converts schedule items to a format"
+			ewarn "that is not compatible with earlier ${PN}-1.x.y releases."
 			ewarn
-			ewarn "    https://sabnzbd.org/wiki/introducing-1-0-0"
-			ewarn
-			ewarn "In particular, you need to let your queue complete before restarting SABnzbd+."
 			break
 		fi
 	done

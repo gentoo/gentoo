@@ -1,4 +1,4 @@
-From 74213e601bdb299a18e6eda8d71d4df28d871286 Mon Sep 17 00:00:00 2001
+From 55328c07986010fd7c91c7da42bca136fc4cd2e9 Mon Sep 17 00:00:00 2001
 From: Justin Bronder <jsbronder@gmail.com>
 Date: Mon, 13 Feb 2017 18:20:39 -0500
 Subject: [PATCH 1/5] use system configobj
@@ -8,13 +8,13 @@ Subject: [PATCH 1/5] use system configobj
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/sabnzbd/config.py b/sabnzbd/config.py
-index ab5da99..1043298 100644
+index 93dd9bb..aab1648 100644
 --- a/sabnzbd/config.py
 +++ b/sabnzbd/config.py
-@@ -27,9 +27,10 @@ import shutil
+@@ -26,9 +26,10 @@ import threading
+ import shutil
  import sabnzbd.misc
  from sabnzbd.constants import CONFIG_VERSION, NORMAL_PRIORITY, DEFAULT_PRIORITY, MAX_WIN_DFOLDER
- from sabnzbd.utils import listquote
 -from sabnzbd.utils import configobj
  from sabnzbd.decorators import synchronized
  
@@ -24,5 +24,5 @@ index ab5da99..1043298 100644
  SAVE_CONFIG_LOCK = threading.Lock()
  
 -- 
-2.7.3
+2.10.2
 
