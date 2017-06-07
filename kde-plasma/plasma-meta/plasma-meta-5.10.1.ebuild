@@ -10,7 +10,7 @@ HOMEPAGE="https://www.kde.org/workspaces/plasmadesktop/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bluetooth +display-manager grub gtk +handbook networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers"
 
 RDEPEND="
@@ -57,7 +57,10 @@ RDEPEND="
 	handbook? ( $(add_kdeapps_dep khelpcenter) )
 	networkmanager? ( $(add_plasma_dep plasma-nm) )
 	pam? ( $(add_plasma_dep kwallet-pam) )
-	plymouth? ( $(add_plasma_dep breeze-plymouth) )
+	plymouth? (
+		$(add_plasma_dep breeze-plymouth)
+		$(add_plasma_dep plymouth-kcm)
+	)
 	pulseaudio? ( $(add_plasma_dep plasma-pa) )
 	sdk? ( $(add_plasma_dep plasma-sdk) )
 	wallpapers? ( $(add_plasma_dep plasma-workspace-wallpapers) )
