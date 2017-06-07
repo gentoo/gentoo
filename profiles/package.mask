@@ -465,12 +465,6 @@ sci-chemistry/mead
 # dependencies. See #594134. To be removed in 30 days.
 sys-fabric/libibvpp
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (13 May 2017)
-# This release breaks lots of reverse deps because of conflicting types.
-# So let's get it in the tree, mask it and test.
-=dev-libs/icu-59*
-=dev-libs/icu-layoutex-59*
-
 # Michael Orlitzky <mjo@gentoo.org> (11 May 2017)
 # Neither of these packages has a clear license, and both are
 # unmaintained (and probably unused). No reverse dependencies,
