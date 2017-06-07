@@ -30,6 +30,7 @@ S="${WORKDIR}/mingw-w64-v${PV}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.1-winpthreads.patch"
 	"${FILESDIR}/${PN}-4.0.1-build.patch"
+	"${FILESDIR}/${PN}-5.0.2-implicit-fallthrough.patch"
 )
 
 is_crosscompile() {
