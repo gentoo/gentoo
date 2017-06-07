@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/show_bug.cgi?id=620732
+
+Fixes build failure on gcc-7:
+
+  htapp.cc: In function 'uint isqr(uint)':
+  htapp.cc:3026:18: error: call of overloaded 'abs(uint)' is ambiguous
+    while (abs(a - b) > 1) {
+                    ^
+
+Picked upstream patch that fixes it:
+
+commit 3b62f2f7e49e024ec9d3c5ffc8ff9cd87a107af6
+Author: Sebastian Biallas <sb@biallas.net>
+Date:   Sun Nov 13 15:25:26 2016 +0100
+
+    use unsigned variables
+
+diff --git a/htapp.cc b/htapp.cc
+index 53d8725..03236e2 100644
+--- a/htapp.cc
++++ b/htapp.cc
+@@ -3021,8 +3021,8 @@ void do_modal_resize()
+ 
+ static uint isqr(uint u)
+ {
+-	uint a = 2;
+-	uint b = u/a;
++	int a = 2;
++	int b = u/a;
+ 	while (abs(a - b) > 1) {
+ 		a = (a+b)/2;
+ 		b = u/a;
