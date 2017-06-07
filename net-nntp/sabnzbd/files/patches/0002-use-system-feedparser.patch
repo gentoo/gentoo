@@ -1,4 +1,4 @@
-From 04a18875d34f677a89bdf1bf57db7f236216e70e Mon Sep 17 00:00:00 2001
+From 6a28d8ba51e902e9d49ad6c18fa2de6511908119 Mon Sep 17 00:00:00 2001
 From: Justin Bronder <jsbronder@gmail.com>
 Date: Mon, 13 Feb 2017 18:21:28 -0500
 Subject: [PATCH 2/5] use system feedparser
@@ -8,7 +8,7 @@ Subject: [PATCH 2/5] use system feedparser
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/sabnzbd/rss.py b/sabnzbd/rss.py
-index 73ec2b4..069aed0 100644
+index 9987e91..8ee1552 100644
 --- a/sabnzbd/rss.py
 +++ b/sabnzbd/rss.py
 @@ -25,6 +25,8 @@ import time
@@ -30,5 +30,5 @@ index 73ec2b4..069aed0 100644
  
  
 -- 
-2.7.3
+2.10.2
 
