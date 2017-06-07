@@ -7,7 +7,3 @@
 # strange blockers.
 sys-fs/eudev
 sys-fs/udev
-
-# sys-kernel/genkernel is not compatible with Systemd, you need
-# to use sys-kernel/genkernel-next instead
-sys-kernel/genkernel
