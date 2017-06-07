@@ -4718,7 +4718,7 @@ dev-libs/efl 1.17.0-r1 1.18.4 9999: Enlightenment Foundation Libraries all-in-on
 dev-libs/elfio 1.0.3: ELF reader and producer implemented as a C++ library
 dev-libs/elfutils 0.166 0.167 0.168 0.169 0.169-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.2.0-r1: Stream-oriented XML parser library
+dev-libs/expat 2.2.0-r1 2.2.0-r2: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r3: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
