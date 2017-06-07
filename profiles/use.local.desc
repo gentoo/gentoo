@@ -8739,9 +8739,7 @@ x11-wm/xpra:vpx - Enable vpx image format support
 x11-wm/xpra:webcam - Enable webcam support via opencv
 x11-wm/xpra:webp - Enable webp image format support
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
-xfce-base/libxfce4ui:gtk3 - Enable gtk3 support
 xfce-base/xfce4-settings:libcanberra - Enable sound event support using media-libs/libcanberra
-xfce-base/xfce4-settings:libinput - Enable libinput Xorg driver (x11-drivers/xf86-input-libinput) support
 xfce-base/xfce4-settings:xklavier - Enable keyboard layout selection support using x11-libs/libxklavier
 xfce-base/xfdesktop:thunar - Build support for desktop icons (for example, launchers and folders)
 xfce-base/xfwm4:xpresent - Enable the XPresent extension for sync to vblank
