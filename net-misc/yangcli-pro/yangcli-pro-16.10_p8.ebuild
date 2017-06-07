@@ -19,7 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 -*"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses:5/5[tinfo]"
+RDEPEND="net-libs/libssh2
+	 sys-libs/ncurses:5/5[tinfo]"
 
 src_install() {
 	dodoc usr/share/doc/yangcli-pro/changelog.gz
