@@ -14339,7 +14339,7 @@ net-analyzer/monitoring-plugins 2.1.2 2.2: 50+ standard plugins for Icinga, Naem
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
-net-analyzer/mtr 0.87 0.88 9999: My TraceRoute, an Excellent network diagnostic tool
+net-analyzer/mtr 0.87 0.88 0.92 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.0.0-r1 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/munin 2.0.19 2.0.19-r2 2.0.25 2.0.25-r2 2.1.9999: Munin Server Monitoring Tool
 net-analyzer/nagios 4.3.1: The Nagios metapackage
