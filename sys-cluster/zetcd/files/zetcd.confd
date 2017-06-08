@@ -1,0 +1,2 @@
+# arguments for zetcd
+command_args="--zkaddr 0.0.0.0:2181 --endpoints localhost:2379"
