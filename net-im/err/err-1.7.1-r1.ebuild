@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="irc qt4 +plugins"
+IUSE="irc +plugins"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/pyfire[${PYTHON_USEDEP}]
 	dev-python/python-daemon[${PYTHON_USEDEP}]
-	dev-python/xmpppy
+	dev-python/xmpppy[${PYTHON_USEDEP}]
 	dev-python/yapsy[${PYTHON_USEDEP}]
 	virtual/python-dnspython[${PYTHON_USEDEP}]
 	irc? (
@@ -30,7 +30,6 @@ RDEPEND="
 		dev-python/twisted-core[${PYTHON_USEDEP}]
 		dev-python/twisted-words[${PYTHON_USEDEP}]
 	)
-	qt4? ( dev-python/pyside[${PYTHON_USEDEP},X,webkit] )
 	plugins? ( dev-vcs/git )"
 
 # Testsuite is broken since 1.6.3
@@ -38,10 +37,9 @@ RESTRICT="test"
 
 # NOTES:
 # 1. It has bundled libs - for example exrex(see 'errbot/bundled' subfolder)
-# 2. Need to add PYTHON_USEDEP to remaining dev-python/ deps
-# 3. Support for BOT_SENTRY option is missing, cause
+# 2. Support for BOT_SENTRY option is missing, cause
 #    we do not have apropriate packages in portage yet
-# 4. Internal web server is broken(dunno why :-()
+# 3. Internal web server is broken(dunno why :-()
 
 pkg_setup() {
 	ebegin "Creating err group and user"
@@ -77,15 +75,4 @@ python_install_all() {
 
 	insinto /etc/${PN}
 	newins errbot/config-template.py config.py
-}
-
-python_install() {
-	distutils-r1_python_install
-
-	# Upstream requires images to be in site-packages directory,
-	# but does not install them at all!
-	if use qt4; then
-		python_moduleinto errbot
-		python_domodule errbot/*.svg
-	fi
 }
