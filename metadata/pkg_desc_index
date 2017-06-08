@@ -3021,7 +3021,7 @@ dev-db/slony1 2.1.3 2.1.4 2.2.0 2.2.1 2.2.2 2.2.3 2.2.4 2.2.5: A replication sys
 dev-db/soci 3.2.2 3.2.3: Makes the illusion of embedding SQL queries in the regular C++ code
 dev-db/spatialite 4.3.0-r1 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
-dev-db/sqlcipher 3.3.0 3.4.0: Full Database Encryption for SQLite
+dev-db/sqlcipher 3.3.0 3.4.0 3.4.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 4.2.0.16.355.0402 4.2.0.17.097.0719: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.0.2.15.21 4.1.3.20.78-r1 4.1.5.21.78 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.16.2 3.17.0 3.18.0 3.19.2: A SQL Database Engine in a C Library
@@ -5878,7 +5878,6 @@ dev-perl/Exporter-Tiny 0.42.0 0.44.0 1.0.0: An exporter with the features of Sub
 dev-perl/ExtUtils-AutoInstall 0.630.0-r1: Allows module writers to specify a more sophisticated form of dependency information
 dev-perl/ExtUtils-CChecker 0.90.0 0.100.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.7.0 0.8.0: A wrapper for perl's configuration
-dev-perl/ExtUtils-Constant 0.230.0: Generate XS code to import C header constants
 dev-perl/ExtUtils-CppGuess 0.110.0: Guess C++ compiler and flags
 dev-perl/ExtUtils-Depends 0.404.0 0.405.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.180.0 1.190.0 1.200.0: Facilitate use of FORTRAN from Perl/XS code
@@ -6934,7 +6933,6 @@ dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
-dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
