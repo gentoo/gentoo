@@ -11,7 +11,7 @@ DESCRIPTION="KDE PIM groupware plugin collection (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
 IUSE="debug"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	$(add_kdeapps_dep kaddressbook)
