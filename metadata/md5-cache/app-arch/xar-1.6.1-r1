@@ -4,11 +4,11 @@ DESCRIPTION=An easily extensible archive format
 EAPI=6
 HOMEPAGE=https://github.com/mackyle/xar
 IUSE=+bzip2 libressl
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=BSD-2
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) bzip2? ( app-arch/bzip2 ) sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://github/mackyle/xar/xar-1.6.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=ab2398c1f9811aae1a8c3acc2d34e93a
+_md5_=df6c1a04dd2fea30163ef85dd3ad24cf
