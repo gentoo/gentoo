@@ -29,7 +29,6 @@ pkg_setup() {
 	addwrite "/usr/share/.mono/keypairs"
 	addwrite "/etc/ssl/certs/ca-certificates.crt"
 	addwrite "/etc/mono/registry"
-	dotnet_pkg_setup
 	cert-sync /etc/ssl/certs/ca-certificates.crt
 }
 
