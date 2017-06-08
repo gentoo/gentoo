@@ -506,13 +506,6 @@ net-im/licq
 # bugs (603716 and 603720). Upgrade to latest version.
 =dev-db/postgresql-9.1.24
 
-# Kent Fredric <kentnl@gentoo.org> (17 Apr 2017)
-# Should be provided by dev-lang/perl or a virtual since perl 5.9,
-# But was added accidentally in 2012. Don't depend on this,
-# and if you need a version newer than 0.11, ask perl project
-# for a virtual
-dev-perl/encoding-warnings
-
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Masked for testing
 virtual/wine
@@ -842,10 +835,6 @@ dev-java/spring-instrument
 # commons-dbcp:0 as that requires Java 6. Note that the 2.0 in the
 # tree should have actually been 2.0_beta1. There are no revdeps.
 dev-java/jcs
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (9 Jan 2016)
-# Errorneously added. Is already in perl-core. Please uninstall.
-dev-perl/ExtUtils-Constant
 
 # Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
 # Needs a bump and substantial ebuild rewrite
