@@ -10,7 +10,7 @@ TEXLIVE_MODULE_SRC_CONTENTS="c90.source cjkpunct.source garuda-c90.source norasi
 inherit  texlive-module
 DESCRIPTION="TeXLive Chinese/Japanese/Korean (base)"
 
-LICENSE=" BSD GPL-2 GPL-3 LPPL-1.3 MIT "
+LICENSE=" BSD GPL-2 GPL-3 LPPL-1.3 MIT TeX-other-free "
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
