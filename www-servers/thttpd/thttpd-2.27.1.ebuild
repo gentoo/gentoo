@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools eutils flag-o-matic toolchain-funcs user
+inherit autotools flag-o-matic toolchain-funcs user
 
 if [[ ${PV} = 9999* ]]
 then
@@ -42,7 +42,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/thttpd-renamed-htpasswd.patch
+	eapply "${FILESDIR}"/thttpd-renamed-htpasswd.patch
 	mv "${S}"/extras/{htpasswd.c,th_htpasswd.c} || die
 	eapply_user
 	eautoreconf -f -i
