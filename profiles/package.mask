@@ -836,10 +836,6 @@ dev-java/spring-instrument
 # tree should have actually been 2.0_beta1. There are no revdeps.
 dev-java/jcs
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (9 Jan 2016)
-# Errorneously added. Is already in perl-core. Please uninstall.
-dev-perl/ExtUtils-Constant
-
 # Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
 # Needs a bump and substantial ebuild rewrite
 =sci-mathematics/reduce-20110414-r1
