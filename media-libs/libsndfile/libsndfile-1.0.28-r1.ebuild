@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${P}-arm-varargs-failure.patch )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
