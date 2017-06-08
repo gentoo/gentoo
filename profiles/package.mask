@@ -633,10 +633,11 @@ app-emulation/wine-any
 >=dev-python/qscintilla-python-2.10
 >=x11-libs/qscintilla-2.10
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (19 Feb 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (8 June 2017)
 # Dead upstream for >3 years. Closed source. Bundles outdated
 # libraries that certainly have known security issues (e.g.,
-# icu-36 (!) or curl). Use at your own risk.
+# icu-36 (!) or curl). Does not start anymore but segfaults.
+# Removal in 30 days.
 app-text/acroread
 media-fonts/acroread-asianfonts
 
