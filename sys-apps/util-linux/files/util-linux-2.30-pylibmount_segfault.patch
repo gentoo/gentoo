@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/621176
+
+From 29b721bc9d20ed44858017689ce1745c220bd0d4 Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gentoo.org>
+Date: Wed, 7 Jun 2017 17:21:33 -0700
+Subject: [PATCH] pylibmount: NULL terminate kwlist in Context_init
+
+Fixes a segfault observed with python3.6.
+---
+ libmount/python/context.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libmount/python/context.c b/libmount/python/context.c
+index 6d82e1432..982414d01 100644
+--- a/libmount/python/context.c
++++ b/libmount/python/context.c
+@@ -90,7 +90,7 @@ static int Context_init(ContextObjext *self, PyObject *args, PyObject *kwds)
+ 		"source", "target", "fstype",
+ 		"options", "mflags", "fstype_pattern",
+ 		"options_pattern", "fs", "fstab",
+-		"optsmode"
++		"optsmode", NULL
+ 	};
+ 
+ 	if (!PyArg_ParseTupleAndKeywords(

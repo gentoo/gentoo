@@ -61,11 +61,17 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.30-pylibmount_segfault.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
+	epatch "${PATCHES[@]}"
+
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
 		eautoreconf
