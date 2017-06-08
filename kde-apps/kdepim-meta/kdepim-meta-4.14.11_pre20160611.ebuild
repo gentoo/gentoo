@@ -8,7 +8,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="kdepim - merge this to pull in all kdepim-derived packages"
 HOMEPAGE+=" https://community.kde.org/KDE_PIM"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 SLOT="4"
 
