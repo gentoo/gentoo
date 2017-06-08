@@ -146,6 +146,8 @@ multilib_src_configure() {
 
 	# sql_compat will cause a collision with sqlite3
 	# --enable-sql_compat
+	# Don't --enable-sql* because we don't want to use bundled sqlite.
+	# See Gentoo bug #605688
 	ECONF_SOURCE="${S_BASE}"/dist \
 	STRIP="true" \
 	econf \
@@ -153,8 +155,8 @@ multilib_src_configure() {
 		--enable-dbm \
 		--enable-o_direct \
 		--without-uniquename \
-		--enable-sql \
-		--enable-sql_codegen \
+		--disable-sql \
+		--disable-sql_codegen \
 		--disable-sql_compat \
 		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly) \
 		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly) \
