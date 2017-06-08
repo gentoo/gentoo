@@ -1,5 +1,5 @@
---- /CMakeLists.txt
-+++ /CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -98,8 +98,8 @@
  macro_optional_find_package(QJSON)
  macro_log_feature(QJSON_FOUND "QJSON" "JSON handling library for Qt" "http://qjson.sourceforge.net/" FALSE "" "Required for the Jabber protocol")
@@ -11,8 +11,8 @@
  
  macro_optional_find_package(Sqlite)
  macro_log_feature(SQLITE_FOUND "Sqlite" "SQLite is a Binary-Database" "http://www.sqlite.org/" FALSE "" "Required for the Statistic plugin")
---- /plugins/CMakeLists.txt
-+++ /plugins/CMakeLists.txt
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
 @@ -74,6 +74,6 @@
  if (WITH_otr AND LIBOTR_FOUND)
    add_subdirectory ( otr )
@@ -22,8 +22,8 @@
    add_subdirectory ( cryptography )
 -endif (WITH_cryptography AND KLEOPATRA_FOUND AND QGPGME_FOUND)
 +endif (WITH_cryptography AND KLEOPATRA_FOUND AND KDE4_QGPGME_FOUND)
---- /plugins/cryptography/CMakeLists.txt
-+++ /plugins/cryptography/CMakeLists.txt
+--- a/plugins/cryptography/CMakeLists.txt
++++ b/plugins/cryptography/CMakeLists.txt
 @@ -17,7 +17,7 @@
  
  kde4_add_plugin(kopete_cryptography ${kopete_cryptography_PART_SRCS})
@@ -33,8 +33,8 @@
  
  install(TARGETS kopete_cryptography  DESTINATION ${PLUGIN_INSTALL_DIR})
  
---- /plugins/cryptography/cryptographyplugin.cpp
-+++ /plugins/cryptography/cryptographyplugin.cpp
+--- a/plugins/cryptography/cryptographyplugin.cpp
++++ b/plugins/cryptography/cryptographyplugin.cpp
 @@ -52,12 +52,12 @@
  #include <kleo/signjob.h>
  #include <kleo/keylistjob.h>
