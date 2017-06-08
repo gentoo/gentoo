@@ -516,7 +516,7 @@ app-crypt/ccrypt 1.10: Encryption and decryption
 app-crypt/certbot 0.14.1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.14.1 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.14.1 9999: Nginx plugin for certbot (Let's Encrypt Client)
-app-crypt/cfssl 1.2.0_p20170322: Cloudflare's PKI and TLS toolkit
+app-crypt/cfssl 1.2.0_p20170601: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
 app-crypt/codecrypt 1.4.1 1.6 1.7.2 1.7.5: Post-quantum cryptography tool
@@ -14510,7 +14510,7 @@ net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps stati
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.5 2.2.6 2.2.7 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.5 2.2.6 2.2.7 2.4.0_rc1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -18478,7 +18478,7 @@ www-servers/resin 4.0.46 4.0.48 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.0-r1: A fast and very simple Ruby web server
-www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
+www-servers/thttpd 2.27.0 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.77 8.0.43 8.5.13 8.5.14 8.5.15 9.0.0_alpha21: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.15: uWSGI server for Python web applications
