@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools pam python-any-r1 systemd user
+inherit autotools pam python-single-r1 systemd user
 
 MY_P="${PN}-server-${PV}"
 
@@ -47,13 +47,15 @@ RDEPEND="!net-dialup/cistronradius
 	oracle? ( dev-db/oracle-instantclient-basic )"
 DEPEND="${RDEPEND}"
 
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup radius
 	enewuser radius -1 -1 /var/log/radius radius
 
-	python-any-r1_pkg_setup
+	python-single-r1_pkg_setup
 	export PYTHONBIN="${EPYTHON}"
 }
 
