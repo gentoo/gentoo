@@ -6017,7 +6017,7 @@ dev-perl/HTML-StripScripts-Parser 1.30.0: XSS filter using HTML::Parser
 dev-perl/HTML-Table 2.08a-r1: produces HTML tables
 dev-perl/HTML-TableContentParser 0.130.0: Parse the content of tables in HTML
 dev-perl/HTML-TableExtract 2.130.0: The Perl Table-Extract Module
-dev-perl/HTML-TableParser 0.400.0 0.420.0: Extract data from an HTML table
+dev-perl/HTML-TableParser 0.420.0: Extract data from an HTML table
 dev-perl/HTML-TagFilter 1.30.0: A fine-grained html-filter, xss-blocker and mailto-obfuscator
 dev-perl/HTML-Tagset 3.200.0-r1: Data tables useful in parsing HTML
 dev-perl/HTML-Template 2.950.0 2.970.0: A Perl module to use HTML Templates
@@ -6917,7 +6917,7 @@ dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
 dev-perl/YAML 1.150.0 1.210.0 1.230.0: YAML Ain't Markup Language (tm)
-dev-perl/YAML-LibYAML 0.620.0 0.630.0 0.640.0 0.650.0: Perl YAML Serialization using XS and libyaml
+dev-perl/YAML-LibYAML 0.640.0 0.650.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.290.0 1.300.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.700.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
