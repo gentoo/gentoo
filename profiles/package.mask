@@ -506,13 +506,6 @@ net-im/licq
 # bugs (603716 and 603720). Upgrade to latest version.
 =dev-db/postgresql-9.1.24
 
-# Kent Fredric <kentnl@gentoo.org> (17 Apr 2017)
-# Should be provided by dev-lang/perl or a virtual since perl 5.9,
-# But was added accidentally in 2012. Don't depend on this,
-# and if you need a version newer than 0.11, ask perl project
-# for a virtual
-dev-perl/encoding-warnings
-
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Masked for testing
 virtual/wine
