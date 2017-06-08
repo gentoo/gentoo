@@ -6625,7 +6625,7 @@ dev-perl/Sys-Mmap 0.170.0 0.190.0: Uses mmap to map in a file as a Perl variable
 dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
-dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2 2.4.0 2.5.0 3.1.0: API for using the libvirt library from Perl
+dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2 2.4.0 2.5.0 3.1.0 3.3.0: API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.460.0: Typical installation tasks for system administrators
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0 3.320.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
@@ -14527,7 +14527,7 @@ net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r2 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
-net-dialup/freeradius 3.0.13: Highly configurable free RADIUS server
+net-dialup/freeradius 3.0.13 3.0.14: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/gtkterm 0.99.7_rc1: A serial port terminal written in GTK+, similar to Windows' HyperTerminal
