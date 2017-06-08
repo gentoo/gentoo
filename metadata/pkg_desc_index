@@ -2331,7 +2331,7 @@ app-text/iso-codes 3.74: ISO language, territory, currency, script codes and the
 app-text/itex2mml 1.5.5 1.5.6: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8 3.8.1 3.8.2: Java GUI for managing BibTeX and other bibliographies
-app-text/jadetex 3.13-r6: TeX macros used by Jade TeX output
+app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
 app-text/jist 1.5.1-r1: A ruby gem to publish a gist
 app-text/jmupdf 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jo 1.0 1.1: JSON output from a shell
@@ -2465,8 +2465,8 @@ app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: A tool for analyzing files that contain control characters and sequences
 app-text/tesseract 3.04.01 3.04.01-r1 3.05.00 4.00.00_alpha 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
-app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5: A complete TeX distribution
+app-text/texlive 2012 2013 2014 2015 2016 2017: A complete TeX distribution
+app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5 2017: A complete TeX distribution
 app-text/tidy-html5 5.4.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -5242,7 +5242,7 @@ dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1: OCaml code generator plugin for the Cap'n Proto serialization framework
 dev-ml/cmdliner 0.9.8 1.0.0: Declarative definition of command line interfaces for OCaml
-dev-ml/configurator 0.9.0: Helper library for gathering system configuration
+dev-ml/configurator 0.9.0 0.9.1: Helper library for gathering system configuration
 dev-ml/core 0.9.0 0.9.1: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.9.0: Micro-benchmarking library for OCaml
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
@@ -5260,7 +5260,7 @@ dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values 
 dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1.2: An OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
-dev-ml/findlib 1.7.1 1.7.2: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.7.1 1.7.2 1.7.3: OCaml tool to find/use non-standard packages
 dev-ml/flow_parser 0.46.0 0.47.0: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
@@ -5292,7 +5292,7 @@ dev-ml/lwt_react 1.0.1: GLib integration for Lwt
 dev-ml/lwt_ssl 1.0.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.4: Error-recovering streaming HTML5 and XML parsers
-dev-ml/menhir 20170101 20170418 20170509: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20170101 20170418 20170509 20170607: LR(1) parser generator for the OCaml language
 dev-ml/merlin 2.5.3 2.5.4: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
@@ -5323,7 +5323,7 @@ dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.7.1 2.7.2 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
-dev-ml/ocaml-migrate-parsetree 0.7 1.0: Convert OCaml parsetrees between different major versions
+dev-ml/ocaml-migrate-parsetree 0.7 1.0 1.0.1: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-mysql 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
@@ -7407,7 +7407,7 @@ dev-python/case 1.2.3 1.5.2: Python unittest Utilities
 dev-python/cassandra-driver 2.7.2: DataStax python driver for Apache Cassandra
 dev-python/castellan 0.4.0: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
-dev-python/catkin_pkg 0.3.1-r3 0.3.3 0.3.4 9999: Standalone Python library for the catkin package system
+dev-python/catkin_pkg 0.3.4 0.3.5 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/ccdproc 1.1.0 1.2.0: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
@@ -9045,7 +9045,7 @@ dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 
 dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
-dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 9999: C++ code for doing things that are not necessarily ROS related
+dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.12.4-r1 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.19 1.12.20 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
@@ -9186,8 +9186,8 @@ dev-ros/rosclean 1.14.0 9999: Cleanup filesystem resources (e.g. log files)
 dev-ros/rosconsole 1.12.5 1.12.6 1.12.7 1.13.0 9999: ROS console output library
 dev-ros/rosconsole_bridge 0.4.2 0.4.3 0.4.4 9999: Connects console_bridge-based logging to rosconsole-based logging
 dev-ros/roscpp 1.13.0 9999: C++ implementation of ROS
-dev-ros/roscpp_serialization 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 9999: Code for serialization
-dev-ros/roscpp_traits 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 9999: Message traits code
+dev-ros/roscpp_serialization 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 9999: Code for serialization
+dev-ros/roscpp_traits 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 9999: Message traits code
 dev-ros/roscpp_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/roscreate 1.14.0 9999: Tool that assists in the creation of ROS filesystem resources
 dev-ros/rosdiagnostic 1.9.0 9999: Command to print aggregated diagnostic contents to the command line
@@ -9219,7 +9219,7 @@ dev-ros/rosserial_windows 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 9999: Libraries an
 dev-ros/rosserial_xbee 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 9999: Tools to do point to multipoint communication between rosserial nodes connected to an xbee
 dev-ros/rosservice 1.13.0 9999: Command-line tool for listing and querying ROS Services
 dev-ros/rostest 1.13.0 9999: Integration test suite based on roslaunch that is compatible with xUnit frameworks
-dev-ros/rostime 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 9999: Time and Duration implementations for C++ libraries
+dev-ros/rostime 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 9999: Time and Duration implementations for C++ libraries
 dev-ros/rostopic 1.13.0 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.14.0 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.13.0 9999: Tool for diagnosing issues with a running ROS system
@@ -9258,7 +9258,7 @@ dev-ros/rqt_tf_tree 0.5.6 0.5.7 9999: GUI plugin for visualizing the ROS TF fram
 dev-ros/rqt_top 0.4.7 0.4.8 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.7 0.4.8 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
-dev-ros/rviz 1.12.4-r1 1.12.6 1.12.7 1.12.8 9999: 3D visualization tool for ROS
+dev-ros/rviz 1.12.8 1.12.10 9999: 3D visualization tool for ROS
 dev-ros/rviz_plugin_tutorials 0.10.1-r2 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.8.8 1.8.9 1.8.10 1.9.0 9999: Robot self-test node
@@ -10093,7 +10093,7 @@ dev-tex/latex-beamer 3.36 3.41: LaTeX class for creating presentations using a v
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2008 2008-r1 2015 2017.2: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
-dev-tex/latexdiff 0.5 1.0.4 1.1.0 1.1.1 1.2.0: Compare two latex files and mark up significant differences
+dev-tex/latexdiff 0.5 1.0.4 1.1.0 1.1.1 1.2.0-r1: Compare two latex files and mark up significant differences
 dev-tex/latexmk 435 441 443a 444 445 448 452c: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
@@ -10132,9 +10132,9 @@ dev-tex/tth 3.77 4.08: Translate TEX into HTML
 dev-tex/vc 0.5: The vc (version control) bundle
 dev-tex/xcolor 2.11 2.12: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
-dev-texlive/texlive-basic 2012 2013 2014 2015 2016: TeXLive Essential programs and files
-dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015 2016: TeXLive BibTeX additional styles
-dev-texlive/texlive-context 2012 2012-r1 2013 2013-r1 2014 2015 2016: TeXLive ConTeXt and packages
+dev-texlive/texlive-basic 2012 2013 2014 2015 2016 2017: TeXLive Essential programs and files
+dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015 2016 2017: TeXLive BibTeX additional styles
+dev-texlive/texlive-context 2012 2012-r1 2013 2013-r1 2014 2015 2016 2017: TeXLive ConTeXt and packages
 dev-texlive/texlive-documentation-arabic 2012: TeXLive Arabic documentation
 dev-texlive/texlive-documentation-base 2012: TeXLive TeX Live documentation
 dev-texlive/texlive-documentation-bulgarian 2012: TeXLive Bulgarian documentation
@@ -10159,66 +10159,67 @@ dev-texlive/texlive-documentation-thai 2012: TeXLive Thai documentation
 dev-texlive/texlive-documentation-turkish 2012: TeXLive Turkish documentation
 dev-texlive/texlive-documentation-ukrainian 2012: TeXLive Ukrainian documentation
 dev-texlive/texlive-documentation-vietnamese 2012: TeXLive Vietnamese documentation
-dev-texlive/texlive-fontsextra 2012 2013 2014 2015 2016: TeXLive Additional fonts
-dev-texlive/texlive-fontsrecommended 2012 2013 2014 2015 2016: TeXLive Recommended fonts
-dev-texlive/texlive-fontutils 2012 2013 2014 2015 2016: TeXLive Graphics and font utilities
-dev-texlive/texlive-formatsextra 2012 2013 2014 2015 2016: TeXLive Additional formats
-dev-texlive/texlive-games 2012 2013 2014 2015 2016: TeXLive Games typesetting
+dev-texlive/texlive-fontsextra 2012 2013 2014 2015 2016 2017: TeXLive Additional fonts
+dev-texlive/texlive-fontsrecommended 2012 2013 2014 2015 2016 2017: TeXLive Recommended fonts
+dev-texlive/texlive-fontutils 2012 2013 2014 2015 2016 2017: TeXLive Graphics and font utilities
+dev-texlive/texlive-formatsextra 2012 2013 2014 2015 2016 2017: TeXLive Additional formats
+dev-texlive/texlive-games 2012 2013 2014 2015 2016 2017: TeXLive Games typesetting
 dev-texlive/texlive-genericextra 2012 2013 2014 2015 2016: TeXLive Generic additional packages
 dev-texlive/texlive-genericrecommended 2012 2013 2014 2015 2016: TeXLive Generic recommended packages
 dev-texlive/texlive-htmlxml 2012: TeXLive HTML/SGML/XML support
-dev-texlive/texlive-humanities 2012 2013 2014 2015 2016: TeXLive Humanities packages
+dev-texlive/texlive-humanities 2012 2013 2014 2015 2016 2017: TeXLive Humanities packages
 dev-texlive/texlive-langafrican 2012 2013 2014 2015 2016: TeXLive African scripts
-dev-texlive/texlive-langarabic 2012 2013 2014 2015 2016: TeXLive Arabic
+dev-texlive/texlive-langarabic 2012 2013 2014 2015 2016 2017: TeXLive Arabic
 dev-texlive/texlive-langarmenian 2012: TeXLive Armenian
-dev-texlive/texlive-langchinese 2014 2015 2016: TeXLive Chinese
-dev-texlive/texlive-langcjk 2012 2013 2014 2015 2016: TeXLive Chinese/Japanese/Korean (base)
+dev-texlive/texlive-langchinese 2014 2015 2016 2017: TeXLive Chinese
+dev-texlive/texlive-langcjk 2012 2013 2014 2015 2016 2017: TeXLive Chinese/Japanese/Korean (base)
 dev-texlive/texlive-langcroatian 2012: TeXLive Croatian
-dev-texlive/texlive-langcyrillic 2012 2013 2014 2015 2016: TeXLive Cyrillic
-dev-texlive/texlive-langczechslovak 2012 2013 2014 2015-r1 2016: TeXLive Czech/Slovak
+dev-texlive/texlive-langcyrillic 2012 2013 2014 2015 2016 2017: TeXLive Cyrillic
+dev-texlive/texlive-langczechslovak 2012 2013 2014 2015-r1 2016 2017: TeXLive Czech/Slovak
 dev-texlive/texlive-langdanish 2012: TeXLive Danish
 dev-texlive/texlive-langdutch 2012: TeXLive Dutch
-dev-texlive/texlive-langenglish 2012 2013 2014 2015 2016: TeXLive US and UK English
-dev-texlive/texlive-langeuropean 2013 2014 2015 2016: TeXLive Other European languages
+dev-texlive/texlive-langenglish 2012 2013 2014 2015 2016 2017: TeXLive US and UK English
+dev-texlive/texlive-langeuropean 2013 2014 2015 2016 2017: TeXLive Other European languages
 dev-texlive/texlive-langfinnish 2012: TeXLive Finnish
-dev-texlive/texlive-langfrench 2012 2013 2014 2015 2016: TeXLive French
-dev-texlive/texlive-langgerman 2012 2013 2014 2015 2016: TeXLive German
-dev-texlive/texlive-langgreek 2012 2013 2014 2015 2016: TeXLive Greek
+dev-texlive/texlive-langfrench 2012 2013 2014 2015 2016 2017: TeXLive French
+dev-texlive/texlive-langgerman 2012 2013 2014 2015 2016 2017: TeXLive German
+dev-texlive/texlive-langgreek 2012 2013 2014 2015 2016 2017: TeXLive Greek
 dev-texlive/texlive-langhebrew 2012: TeXLive Hebrew
 dev-texlive/texlive-langhungarian 2012: TeXLive Hungarian
 dev-texlive/texlive-langindic 2012 2013 2014 2015 2016: TeXLive Indic scripts
-dev-texlive/texlive-langitalian 2012 2013 2014 2015 2016: TeXLive Italian
-dev-texlive/texlive-langjapanese 2014 2015 2016: TeXLive Japanese
-dev-texlive/texlive-langkorean 2014 2015 2016: TeXLive Korean
+dev-texlive/texlive-langitalian 2012 2013 2014 2015 2016 2017: TeXLive Italian
+dev-texlive/texlive-langjapanese 2014 2015 2016 2017: TeXLive Japanese
+dev-texlive/texlive-langkorean 2014 2015 2016 2017: TeXLive Korean
 dev-texlive/texlive-langlatin 2012: TeXLive Latin
 dev-texlive/texlive-langlatvian 2012: TeXLive Latvian
 dev-texlive/texlive-langlithuanian 2012: TeXLive Lithuanian
 dev-texlive/texlive-langmongolian 2012: TeXLive Mongolian
 dev-texlive/texlive-langnorwegian 2012: TeXLive Norwegian
-dev-texlive/texlive-langother 2012 2013 2014 2015 2016: TeXLive Other languages
-dev-texlive/texlive-langpolish 2012 2013 2014 2015 2016: TeXLive Polish
-dev-texlive/texlive-langportuguese 2012 2013 2014 2015 2016: TeXLive Portuguese
-dev-texlive/texlive-langspanish 2012 2013 2014 2015 2016: TeXLive Spanish
+dev-texlive/texlive-langother 2012 2013 2014 2015 2016 2017: TeXLive Other languages
+dev-texlive/texlive-langpolish 2012 2013 2014 2015 2016 2017: TeXLive Polish
+dev-texlive/texlive-langportuguese 2012 2013 2014 2015 2016 2017: TeXLive Portuguese
+dev-texlive/texlive-langspanish 2012 2013 2014 2015 2016 2017: TeXLive Spanish
 dev-texlive/texlive-langswedish 2012: TeXLive Swedish
 dev-texlive/texlive-langtibetan 2012: TeXLive Tibetan
 dev-texlive/texlive-langturkmen 2012: TeXLive Turkmen
 dev-texlive/texlive-langvietnamese 2012: TeXLive Vietnamese
-dev-texlive/texlive-latex 2012 2013 2014 2015 2016: TeXLive LaTeX fundamental packages
-dev-texlive/texlive-latexextra 2012 2013 2014 2015 2015-r1 2016: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2012 2012-r1 2013 2014 2015-r1 2016: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2012 2012-r1 2013 2014 2015 2016: TeXLive LuaTeX packages
+dev-texlive/texlive-latex 2012 2013 2014 2015 2016 2017: TeXLive LaTeX fundamental packages
+dev-texlive/texlive-latexextra 2012 2013 2014 2015 2015-r1 2016 2017: TeXLive LaTeX additional packages
+dev-texlive/texlive-latexrecommended 2012 2012-r1 2013 2014 2015-r1 2016 2017: TeXLive LaTeX recommended packages
+dev-texlive/texlive-luatex 2012 2012-r1 2013 2014 2015 2016 2017: TeXLive LuaTeX packages
 dev-texlive/texlive-mathextra 2012 2012-r1 2013 2014 2015: TeXLive Mathematics packages
-dev-texlive/texlive-mathscience 2016: TeXLive Mathematics and science packages
-dev-texlive/texlive-metapost 2012 2013 2014 2015 2016: TeXLive MetaPost and Metafont packages
-dev-texlive/texlive-music 2012 2013 2014 2015 2016: TeXLive Music packages
+dev-texlive/texlive-mathscience 2016 2017: TeXLive Mathematics and science packages
+dev-texlive/texlive-metapost 2012 2013 2014 2015 2016 2017: TeXLive MetaPost and Metafont packages
+dev-texlive/texlive-music 2012 2013 2014 2015 2016 2017: TeXLive Music packages
 dev-texlive/texlive-omega 2012 2013 2014 2015 2016: TeXLive Omega packages
-dev-texlive/texlive-pictures 2012 2013 2014 2015-r2 2016: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-pictures 2012 2013 2014 2015-r2 2016 2017: TeXLive Graphics, pictures, diagrams
 dev-texlive/texlive-plainextra 2012 2013 2014 2015 2016: TeXLive Plain TeX packages
-dev-texlive/texlive-pstricks 2012 2013 2014 2015 2016: TeXLive PSTricks
-dev-texlive/texlive-publishers 2012 2013 2014 2015 2016: TeXLive Publisher styles, theses, etc.
+dev-texlive/texlive-plaingeneric 2017: TeXLive Plain (La)TeX packages
+dev-texlive/texlive-pstricks 2012 2013 2014 2015 2016 2017: TeXLive PSTricks
+dev-texlive/texlive-publishers 2012 2013 2014 2015 2016 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-texinfo 2012: TeXLive GNU Texinfo
-dev-texlive/texlive-xetex 2012 2013 2014 2015 2016: TeXLive XeTeX and packages
+dev-texlive/texlive-xetex 2012 2013 2014 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
@@ -13445,7 +13446,7 @@ media-plugins/kodi-visualization-waveform 1.1.0 9999: Waveform visualizer for Ko
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2017.01.26 2017.05.24: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2017.01.26 2017.05.24 2017.06.04: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -14086,7 +14087,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 2.8.10 2.8.11 3.2.4 3.2.5 3.3 3.3.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 2.8.10 2.8.11 3.2.4 3.2.5 3.3 3.3.1 3.3.2 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
@@ -15898,7 +15899,7 @@ ros-meta/ros_control 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Controller interfa
 ros-meta/ros_core 1.2.0 1.3.0 1.3.1 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: JSON API to ROS functionality for non-ROS programs
-ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 9999: Underlying data libraries for roscpp messages
+ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.3.2 0.5.0 9999: Qt-based framework for GUI development for ROS
 ros-meta/rqt_common_plugins 0.4.8 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
@@ -16241,7 +16242,7 @@ sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espres
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
-sci-electronics/gazebo 8.0.0 8.1.0: A 3D multiple robot simulator with dynamics
+sci-electronics/gazebo 8.0.0 8.1.0 8.1.1: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.2 1.9.2: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/cpp_common dev-ros/rostime sys-devel/make >=dev-util/cmake-3.7.2 dev-util/catkin dev-python/empy
+DESCRIPTION=Message traits code
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/roscpp_traits
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-ros/cpp_common dev-ros/rostime
+SLOT=0
+SRC_URI=https://github.com/ros/roscpp_core/archive/0.6.4.tar.gz -> roscpp_core-0.6.4.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	ros-catkin	e4e9a7a79efb661d8f4667b966d5ba26	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=fe84de90f142fb8a2485d97bf6a7416f
