@@ -1,0 +1,194 @@
+commit f0faec0f2bdbec4b742600a9643ebc11ff9df4cd
+Author: David Faure <faure@kde.org>
+Date:   Thu Jun 8 13:10:25 2017 +0200
+
+    Revert "Update Turkish Holiday File (EN and TR)"
+    
+    This reverts commit 867fb26176ecf8a99c52577f718bc7397d807352.
+    
+    Something in there leads to a lexer error which makes kholidays exit()
+    (e.g. plasmashell didn't start anymore)
+    
+    CCMAIL: winter@kde.org, volkangezer@gmail.com
+
+diff --git a/holidays/plan2/holiday_tr_en-gb b/holidays/plan2/holiday_tr_en-gb
+old mode 100755
+new mode 100644
+index 40b3d37..be1551b
+--- a/holidays/plan2/holiday_tr_en-gb
++++ b/holidays/plan2/holiday_tr_en-gb
+@@ -10,10 +10,10 @@
+ ::           Volkan Gezer    <volkangezer@gmail.com>
+ ::           Ömer Fadıl Usta <omerusta@gmail.com>
+ ::
+-:: Updated:  2017-05-20
++:: Updated:  2013-04-19
+ ::
+-:: Source:   http://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf (for public holidays) and
+-:: http://www2.diyanet.gov.tr/DinHizmetleriGenelMudurlugu/Sayfalar/2017DiniG%C3%BCnlerListesi.aspx
++:: Source:   http://mevzuat.meb.gov.tr/html/114.html (for public holidays) and
++:: http://www.diyanet.gov.tr/turkish/dy/Diyanet-Isleri-Baskanligi-Duyuru-9882.aspx
+ :: (for religious holidays)
+ 
+ :: Metadata
+@@ -27,27 +27,43 @@ description "National holiday file for Turkey"
+ "National Sovereignty and Children's Day"             public on april 23
+ "Labour and Solidarity Day"                           public on may 1
+ "Commemoration of Atatürk, Youth and Sports Day"      public on may 19
+-"Democracy and National Unity Day"                    public on july 15
+ "Victory Day"                                         public on august 30
+ "Republic Day"                                        public on october 29
+ 
+ :: Religious
++:: We cannot use KDE Hijri calendar since is one/two days ahead
++:: than holiday dates defined for Turkey
++:: "Ramadan Feast"                                    public religious on hijri shawwal 1 length 3 days
++:: "Sacrifice Feast"                                  public religious on hijri thualhijjah 10 length 4 days
+ 
+-"Ramadan Feast"                                       public religious on hijri shawwal 1 length 3
+-"Sacrifice Feast"                                     public religious on hijri thualhijjah 10 length 4
++"Ramadan Feast"                                       public religious on 08 august 2013 length 3 days
++"Ramadan Feast"                                       public religious on 28 july 2014 length 3 days
++"Ramadan Feast"                                       public religious on 17 july 2015 length 3 days
+ 
+-"Night of Qadr"                                       religious on hijri ramadan 26
++"Sacrifice Feast"                                     public religious on 15 october 2013 length 4 days
++"Sacrifice Feast"                                     public religious on 04 october 2014 length 4 days
++"Sacrifice Feast"                                     public religious on 23 september 2015 length 4 days
+ 
+-"Mawlid"                                              religious on hijri rabialawal 12
++"Night of Qadr"                                       religious on 03 august 2013
++"Night of Qadr"                                       religious on 23 july 2014
++"Night of Qadr"                                       religious on 12 july 2015
+ 
+-"Regaib Night"                                        religious on hijri first thursday in rajab
++"Mawlid"                                              religious on 23 january 2013
++"Mawlid"                                              religious on 12 january 2014
++"Mawlid"                                              religious on 02 january 2015
++"Mawlid"                                              religious on 22 december 2015
+ 
+-"Ashura"                                              religious on hijri muharram 10
++"Regaib Night"                                        religious on 16 may 2013
++"Regaib Night"                                        religious on 01 may 2014
++"Regaib Night"                                        religious on 23 april 2015
+ 
+-"Miraj"                                               religious on hijri rajab 26
+-
+-"Bara'ah Night"                                       religious on hijri shabad 14
++"Miraj"                                               religious on 05 june 2013
++"Miraj"                                               religious on 25 may 2014
++"Miraj"                                               religious on 15 may 2015
+ 
++"Bara'ah Night"                                       religious on 23 june 2013
++"Bara'ah Night"                                       religious on 12 june 2014
++"Bara'ah Night"                                       religious on 01 june 2015
+ 
+ :: Financial
+ 
+@@ -87,6 +103,8 @@ description "National holiday file for Turkey"
+ :: School
+ 
+ :: Daylight Saving
++"Daylight Saving Start"                               seasonal on ((year == 2011) ? [march 28] : [last sunday in march])
++"Daylight Saving End"                                 seasonal on last sunday in october
+ 
+ :: Seasons
+ "Spring Begins"                                       seasonal on march 21
+diff --git a/holidays/plan2/holiday_tr_tr b/holidays/plan2/holiday_tr_tr
+old mode 100755
+new mode 100644
+index 5b7bb6e..7d952ea
+--- a/holidays/plan2/holiday_tr_tr
++++ b/holidays/plan2/holiday_tr_tr
+@@ -10,43 +10,60 @@
+ ::           Volkan Gezer    <volkangezer@gmail.com>
+ ::           Ömer Fadıl Usta <omerusta@gmail.com>
+ ::
+-:: Updated:  2017-05-20
++:: Updated:  2013-04-19
+ ::
+-:: Source:   http://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf (for public holidays) and
+-:: http://www2.diyanet.gov.tr/DinHizmetleriGenelMudurlugu/Sayfalar/2017DiniG%C3%BCnlerListesi.aspx
++:: Source:   http://mevzuat.meb.gov.tr/html/114.html (for public holidays) and
++:: http://www.diyanet.gov.tr/turkish/dy/Diyanet-Isleri-Baskanligi-Duyuru-9882.aspx
+ :: (for religious holidays)
+ 
+ :: Metadata
+ country     "TR"
+ language    "tr"
+ :name        "optional - defaults to country name"
+-description "Türkiye'nin ulusal tatilleri"
++description "National holiday file for Turkey"
+ 
+ :: Public Holidays
+ "Yeni Yıl Tatili"                                  public on january 1
+ "Ulusal Egemenlik ve Çocuk Bayramı"                public on april 23
+ "Emek ve Dayanışma Günü"                           public on may 1
+ "Atatürk'ü Anma, Gençlik ve Spor Bayramı"          public on may 19
+-"Demokrasi ve Millî Birlik Günü"                   public on july 15
+ "Zafer Bayramı"                                    public on august 30
+ "Cumhuriyet Bayramı"                               public on october 29
+ 
+ :: Religious
++:: We cannot use KDE Hijri calendar since is one/two days ahead
++:: than holiday dates defined for Turkey
++:: "Ramazan Bayramı"                               public religious on hijri shawwal 1 length 3 days
++:: "Kurban Bayramı"                                public religious on hijri thualhijjah 10 length 4 days
+ 
+-"Ramazan Bayramı"                                  public religious on hijri shawwal 1 length 3
+-"Kurban Bayramı"                                   public religious on hijri thualhijjah 10 length 4
++"Ramazan Bayramı"                                  public religious on 08 august 2013 length 3 days
++"Ramazan Bayramı"                                  public religious on 28 july 2014 length 3 days
++"Ramazan Bayramı"                                  public religious on 17 july 2015 length 3 days
+ 
+-"Kadir Gecesi"                                     religious on hijri ramadan 26
++"Kurban Bayramı"                                   public religious on 15 october 2013 length 4 days
++"Kurban Bayramı"                                   public religious on 04 october 2014 length 4 days
++"Kurban Bayramı"                                   public religious on 23 september 2015 length 4 days
+ 
+-"Mevlid Kandili"                                   religious on hijri rabialawal 12
++"Kadir Gecesi"                                     religious on 03 august 2013
++"Kadir Gecesi"                                     religious on 23 july 2014
++"Kadir Gecesi"                                     religious on 12 july 2015
+ 
+-"Regaib Kandili"                                   religious on hijri first thursday in rajab
++"Mevlid Kandili"                                   religious on 23 january 2013
++"Mevlid Kandili"                                   religious on 12 january 2014
++"Mevlid Kandili"                                   religious on 02 january 2015
++"Mevlid Kandili"                                   religious on 22 december 2015
+ 
+-"Aşure Günü"                                       religious on hijri muharram 10
++"Regaib Kandili"                                   religious on 16 may 2013
++"Regaib Kandili"                                   religious on 01 may 2014
++"Regaib Kandili"                                   religious on 23 april 2015
+ 
+-"Mirac Kandili"                                    religious on hijri rajab 26
++"Mirac Kandili"                                    religious on 05 june 2013
++"Mirac Kandili"                                    religious on 25 may 2014
++"Mirac Kandili"                                    religious on 15 may 2015
+ 
+-"Berat Kandili"                                    religious on hijri shabad 14
++"Berat Kandili"                                    religious on 23 june 2013
++"Berat Kandili"                                    religious on 12 june 2014
++"Berat Kandili"                                    religious on 01 june 2015
+ 
+ :: Financial
+ 
+@@ -75,7 +92,7 @@ description "Türkiye'nin ulusal tatilleri"
+ "Türk Dil Bayramı"                                 cultural on september 26
+ "Dünya Kalp Günü"                                  cultural on last sunday in september
+ "Dünya Hayvanları Koruma Günü"                     cultural on october 4
+-"Atatürk'ü Anma Günü ve Atatürk Haftası"           cultural on november 10
++"Atatürk'ün Ölüm Yıldönümü"                        cultural on november 10
+ "Çocuk Hakları Günü"                               cultural on november 20
+ "Öğretmenler Günü"                                 cultural on november 24
+ "Kadına Yönelik Şiddete Karşı Mücadele Günü"       cultural on november 25
+@@ -86,6 +103,8 @@ description "Türkiye'nin ulusal tatilleri"
+ :: School
+ 
+ :: Daylight Saving
++"Yaz Saati Uygulaması Başlangıcı"                  seasonal on ((year == 2011) ? [march 28] : [last sunday in march])
++"Yaz Saati Uygulaması Bitişi"                      seasonal on last sunday in october
+ 
+ :: Seasons
+ "İlkbahar Başlangıcı"                              seasonal on march 21
