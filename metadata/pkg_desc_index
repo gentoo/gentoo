@@ -17568,6 +17568,7 @@ sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager an
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
+sys-cluster/zetcd 0.0.2: A ZooKeeper personality for etcd
 sys-cluster/zookeeper-bin 3.4.9 3.4.10: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.10: Simple, lightweight, dependable CLI for ZooKeeper
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r3 9999: Used to create autoconfiguration files

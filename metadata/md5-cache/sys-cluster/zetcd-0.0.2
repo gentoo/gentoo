@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup test unpack
+DEPEND=>=dev-lang/go-1.7:=
+DESCRIPTION=A ZooKeeper personality for etcd
+EAPI=6
+HOMEPAGE=https://github.com/coreos/zetcd
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/coreos/zetcd/archive/v0.0.2.tar.gz -> zetcd-0.0.2.tar.gz https://github.com/coreos/etcd/archive/fa4903c83c72f2857b8ed795a3c86f140b89d52c.tar.gz -> github.com-coreos-etcd-fa4903c83c72f2857b8ed795a3c86f140b89d52c.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	2983c8674b8e3b3a99ec61986356c76a	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=bbc72cd570b6140aebdc18df022c35c1
