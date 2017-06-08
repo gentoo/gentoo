@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils user
+inherit autotools eutils fcaps flag-o-matic multilib qmake-utils user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="
 	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 doc doc-pdf
 	geoip gtk kerberos lua +netlink nghttp2 +pcap portaudio +qt5 sbc selinux
@@ -96,10 +96,6 @@ PATCHES=(
 
 pkg_setup() {
 	enewgroup wireshark
-}
-
-src_unpack() {
-	git-r3_src_unpack
 }
 
 src_prepare() {

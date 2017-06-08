@@ -34,12 +34,16 @@
 		<flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
 		<flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
 		<flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
+		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
 		<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
+		<flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
 		<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 		<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 		<flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
 		<flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
+		<flag name="snappy">Use <pkg>app-arch/snappy</pkg> for snappy compression and decompression</flag>
+		<flag name="spandsp">Use <pkg>media-libs/spandsp</pkg> for for G.722 and G.726 codec support in the RTP Player</flag>
 		<flag name="sshdump">Install sshdump, an extcap interface to capture from a remote host through SSH</flag>
 		<flag name="tfshark">Install tfshark, a terminal-based version of the FileShark capability</flag>
 	</use>

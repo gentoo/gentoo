@@ -3,21 +3,21 @@
 
 EAPI=6
 
-EGO_PN="github.com/cloudflare/${PN}/..."
-EGIT_COMMIT="1a5ac2e68991e01380068b96f50f5ff982d9bb14"
-EGO_VENDOR=( "github.com/juju/ratelimit acf38b000a03e4ab89e40f20f1e548f4e6ac7f72" )
+EGO_PN="github.com/cloudflare/${PN}"
+EGIT_COMMIT="9c06c53d4dfb9c0272c983a26ea10a6a2da12392"
 inherit golang-build golang-vcs-snapshot
 
-ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Cloudflare's PKI and TLS toolkit"
 HOMEPAGE="https://github.com/cloudflare/cfssl"
-SRC_URI="${ARCHIVE_URI}
-	${EGO_VENDOR_URI}"
+SRC_URI="${ARCHIVE_URI}"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="hardened"
+
+RESTRICT="test"
 
 src_compile() {
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
@@ -28,7 +28,7 @@ src_compile() {
 
 src_install() {
 	dobin bin/*
-	pushd src/${EGO_PN%/*} || die
+	pushd src/${EGO_PN} || die
 	dodoc CHANGELOG README.md
 	popd || die
 }

@@ -1,20 +1,27 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-inherit eutils flag-o-matic systemd toolchain-funcs user
+inherit autotools flag-o-matic toolchain-funcs user
 
-MY_P="s${P}"
+if [[ ${PV} = 9999* ]]
+then
+	EGIT_REPO_URI="https://github.com/blueness/sthttpd.git"
+	inherit git-r3
+	KEYWORDS=""
+else
+	MY_P="s${P}"
+	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/blueness/sthttpd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+fi
 
 DESCRIPTION="Fork of thttpd, a small, fast, multiplexing webserver"
 HOMEPAGE="http://opensource.dyc.edu/sthttpd"
-SRC_URI="http://opensource.dyc.edu/pub/sthttpd/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=""
@@ -26,7 +33,7 @@ THTTPD_USER=thttpd
 THTTPD_GROUP=thttpd
 THTTPD_DOCROOT="${EPREFIX}${WEBROOT}/htdocs"
 
-DOCS=( README TODO )
+DOCS=( TODO )
 
 pkg_setup() {
 	ebegin "Creating thttpd user and group"
@@ -34,8 +41,11 @@ pkg_setup() {
 	enewuser ${THTTPD_USER} -1 -1 -1 ${THTTPD_GROUP}
 }
 
-src_prepare () {
-	epatch "${FILESDIR}"/thttpd-fix-world-readable-log.patch
+src_prepare() {
+	eapply "${FILESDIR}"/thttpd-renamed-htpasswd.patch
+	mv "${S}"/extras/{htpasswd.c,th_htpasswd.c} || die
+	eapply_user
+	eautoreconf -f -i
 }
 
 src_configure() {
@@ -54,13 +64,11 @@ src_install () {
 	insinto /etc/thttpd
 	doins "${FILESDIR}"/thttpd.conf.sample
 
-	systemd_dounit "${FILESDIR}/${PN}.service"
-
 	#move htdocs to docdir, bug #429632
 	docompress -x /usr/share/doc/"${PF}"/htdocs.dist
 	mv "${ED}"${WEBROOT}/htdocs \
-		"${ED}"/usr/share/doc/"${PF}"/htdocs.dist
-	mkdir "${ED}"${WEBROOT}/htdocs
+		"${ED}"/usr/share/doc/"${PF}"/htdocs.dist || die
+	mkdir "${ED}"${WEBROOT}/htdocs || die
 
 	keepdir ${WEBROOT}/htdocs
 

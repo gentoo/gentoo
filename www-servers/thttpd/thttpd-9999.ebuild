@@ -1,19 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit autotools eutils flag-o-matic toolchain-funcs user
+inherit autotools flag-o-matic toolchain-funcs user
 
 if [[ ${PV} = 9999* ]]
 then
-	EGIT_REPO_URI="git://opensource.dyc.edu/s${PN}.git"
-	inherit git-2
+	EGIT_REPO_URI="https://github.com/blueness/sthttpd.git"
+	inherit git-r3
 	KEYWORDS=""
 else
 	MY_P="s${P}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="http://opensource.dyc.edu/pub/sthttpd/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/blueness/sthttpd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
@@ -33,7 +33,7 @@ THTTPD_USER=thttpd
 THTTPD_GROUP=thttpd
 THTTPD_DOCROOT="${EPREFIX}${WEBROOT}/htdocs"
 
-DOCS=( README TODO )
+DOCS=( TODO )
 
 pkg_setup() {
 	ebegin "Creating thttpd user and group"
@@ -42,8 +42,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/thttpd-renamed-htpasswd.patch
-	mv "${S}"/extras/{htpasswd.c,th_htpasswd.c}
+	eapply "${FILESDIR}"/thttpd-renamed-htpasswd.patch
+	mv "${S}"/extras/{htpasswd.c,th_htpasswd.c} || die
+	eapply_user
 	eautoreconf -f -i
 }
 
@@ -66,8 +67,8 @@ src_install () {
 	#move htdocs to docdir, bug #429632
 	docompress -x /usr/share/doc/"${PF}"/htdocs.dist
 	mv "${ED}"${WEBROOT}/htdocs \
-		"${ED}"/usr/share/doc/"${PF}"/htdocs.dist
-	mkdir "${ED}"${WEBROOT}/htdocs
+		"${ED}"/usr/share/doc/"${PF}"/htdocs.dist || die
+	mkdir "${ED}"${WEBROOT}/htdocs || die
 
 	keepdir ${WEBROOT}/htdocs
 
