@@ -17,7 +17,7 @@ RESTRICT="test"
 
 DEPEND=">=app-text/openjade-1.3.1
 	dev-texlive/texlive-fontsrecommended
-	dev-texlive/texlive-genericrecommended"
+	|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )"
 
 src_compile() {
 	VARTEXFONTS="${T}/fonts" emake
