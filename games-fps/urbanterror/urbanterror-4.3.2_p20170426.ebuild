@@ -15,7 +15,7 @@ else
 	COMMIT_ID="60b17a27ecaa30bffc44114cb94df82af7febfdd"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="amd64 ~x86"
 
 fi
 
