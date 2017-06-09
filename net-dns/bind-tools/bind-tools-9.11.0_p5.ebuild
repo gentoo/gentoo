@@ -44,6 +44,9 @@ S="${WORKDIR}/${MY_P}"
 RESTRICT="test"
 
 src_prepare() {
+	# bug 600212
+	epatch "${FILESDIR}"/${P}-dyndb-dlopen.patch
+
 	epatch "${FILESDIR}"/${PN}-9.5.0_p1-lwconfig.patch #231247
 
 	# Disable tests for now, bug 406399
