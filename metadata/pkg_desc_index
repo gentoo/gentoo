@@ -7899,7 +7899,7 @@ dev-python/libiscsi-python 0_pre160211 9999: Python bindings for libiscsi
 dev-python/liblarch 2.1.0: Library to handle directed acyclic graphs
 dev-python/libnacl 1.4.4 1.5.0: Python ctypes wrapper for libsodium
 dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp, an alternative protocol to UPnP IGD
-dev-python/libpillowfight 0.2.1: Small library containing various image processing algorithms
+dev-python/libpillowfight 0.2.1 0.2.2: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
 dev-python/libvirt-python 3.2.0 3.3.0 9999: libvirt Python bindings
@@ -12645,7 +12645,7 @@ media-gfx/darktable 2.2.3 2.2.4 2.2.5 9999: A virtual lighttable and darkroom fo
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.5.0: Digital photo management application
-media-gfx/displaycal 3.2.4.0 3.3.0.0: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.2.4.0 3.3.0.0 3.3.1.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
