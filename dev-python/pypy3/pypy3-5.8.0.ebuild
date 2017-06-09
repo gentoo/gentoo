@@ -14,8 +14,8 @@ HOMEPAGE="http://pypy.org/"
 SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2"
 
 LICENSE="MIT"
-# XX from pypy3-XX.so module suffix
-SLOT="0/57"
+# pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
+SLOT="0/58"
 KEYWORDS="~amd64 ~amd64-linux"
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite tk"
 
@@ -78,8 +78,6 @@ src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
-	# disarm implicit -flto
-	eapply "${FILESDIR}"/5.7.1-kill-flto.patch
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -87,7 +85,7 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	eapply "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/5.8.0_all_distutils_cxx.patch
 	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
