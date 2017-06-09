@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (09 Jun 2017)
+# sys-process/audit not keyworded
+sys-process/fcron audit
+
 # Thomas Deutschmann <whissi@gentoo.org> (14 Feb 2017)
 # net-misc/curl dropped keywords in ffe8d873b8110d4434fc89423ea668450cab1d96
 www-servers/nginx nginx_modules_http_security
