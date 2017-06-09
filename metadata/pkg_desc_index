@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.3.0.0-r1 2.3.0.0-r2 2.3.1.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.3.1.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.2.32 2.4.25: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -8485,7 +8485,7 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3 0.5.6: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 4.1.1 6.0.0 6.1.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 6.0.0 6.0.1 7.1.0 7.1.1 7.1.2: A client for the OpenStack Nova API
+dev-python/python-novaclient 6.0.1 7.1.2: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.4: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
@@ -17321,7 +17321,7 @@ sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libf
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.01_pre20160307231538 9999: PAM Module for two step verification via mobile platform
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
-sys-auth/keystone 10.0.1-r1 11.0.0-r1 11.0.1 11.0.2 2016.2.9999 2017.1.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 10.0.1-r1 11.0.2 2016.2.9999 2017.1.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2 0.5.1-r2 0.6.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
@@ -17542,7 +17542,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 9.3.1 9.4.0 10.0.1 10.0.2 2016.2.9999 2017.1.9999: A virtual network service for Openstack
-sys-cluster/nova 14.0.5 14.0.6 14.0.7 15.0.3 15.0.4 15.0.5 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 14.0.7 15.0.5 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
