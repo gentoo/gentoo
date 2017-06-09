@@ -28,6 +28,7 @@ RDEPEND="
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	virtual/python-ipaddress[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
