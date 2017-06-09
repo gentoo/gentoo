@@ -771,11 +771,6 @@ sci-geosciences/googleearth
 # https://bugs.gentoo.org/590780
 ~sys-power/cpupower-4.7.0
 
-# Michał Górny <mgorny@gentoo.org> (7 Aug 2016)
-# Issue with thunar detailed view
-# Masked for more restrictive testing.
-=xfce-base/exo-0.11.1
-
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all
 # functionality is provided yet. Use --pretend to make sure correct
