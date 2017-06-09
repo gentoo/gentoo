@@ -1,0 +1,56 @@
+From 89b244a1ff72925805da6e5f44979ad4cb647468 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ivan=20=C4=8Cuki=C4=87?= <ivan.cukic@kde.org>
+Date: Mon, 22 May 2017 10:08:16 +0200
+Subject: We should not forget the launchers that are not currently shown
+
+Summary:
+The pinned launchers that are assigned to other activities
+will have a -1 as the order. We should not forget them
+when saving to the configuration file.
+
+Reviewers: hein, mart
+
+Reviewed By: hein
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D5933
+---
+ libtaskmanager/tasksmodel.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/libtaskmanager/tasksmodel.cpp b/libtaskmanager/tasksmodel.cpp
+index 19f1bca..0150761 100644
+--- a/libtaskmanager/tasksmodel.cpp
++++ b/libtaskmanager/tasksmodel.cpp
+@@ -1545,6 +1545,7 @@ void TasksModel::syncLaunchers()
+     }
+ 
+     QMap<int, QString> sortedShownLaunchers;
++    QStringList sortedHiddenLaunchers;
+ 
+     foreach(const QString &launcherUrlStr, launcherList()) {
+         int row = -1;
+@@ -1564,6 +1565,8 @@ void TasksModel::syncLaunchers()
+ 
+         if (row != -1) {
+             sortedShownLaunchers.insert(row, launcherUrlStr);
++        } else {
++            sortedHiddenLaunchers << launcherUrlStr;
+         }
+     }
+ 
+@@ -1588,7 +1591,8 @@ void TasksModel::syncLaunchers()
+             d->sortedPreFilterRows.replace(sortMapIndices.at(i), preFilterRows.at(i));
+         }
+     }
+-    setLauncherList(sortedShownLaunchers.values());
++
++    setLauncherList(sortedShownLaunchers.values() + sortedHiddenLaunchers);
+     d->launcherSortingDirty = false;
+ }
+ 
+-- 
+cgit v0.11.2
