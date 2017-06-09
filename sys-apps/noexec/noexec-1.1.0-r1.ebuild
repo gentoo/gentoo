@@ -12,10 +12,3 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="sys-libs/glibc"
-
-DOCS=( AUTHORS BUGS ChangeLog NEWS README )
-
-src_install() {
-	emake install DESTDIR="${D}"
-	einstalldocs
-}
