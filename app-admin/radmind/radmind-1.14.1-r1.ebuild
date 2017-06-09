@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/radmind/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="libressl"
 
 DEPEND="

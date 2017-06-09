@@ -9,7 +9,7 @@ HOMEPAGE="http://ndiswrapper.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/stable/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug usb"
 
 DEPEND="sys-apps/pciutils"
