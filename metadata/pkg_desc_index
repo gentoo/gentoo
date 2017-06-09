@@ -2969,7 +2969,7 @@ dev-db/mongodb 2.6.12 3.0.14 3.2.12 3.2.13 3.4.3 3.4.4: A high-performance, open
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup toolset for MySQL and Drizzle
-dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
+dev-db/myodbc 5.2.7-r1 5.2.7-r2 5.3.8: ODBC driver for MySQL
 dev-db/mysql 5.5.56 5.6.35 5.6.35-r1 5.6.36: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2 3.2.3: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
@@ -17043,7 +17043,7 @@ sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.22.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
-sys-apps/baselayout 2.3: Filesystem baselayout and init scripts
+sys-apps/baselayout 2.3 2.4.1: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 2.2-r5: Minimal baselayout for Gentoo Prefix installs
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
