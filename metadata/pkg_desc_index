@@ -2038,7 +2038,7 @@ app-office/homebank 4.6.3 5.0.9 5.1.1 5.1.3: Free, easy, personal accounting for
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.10.5 0.11.0b-r1: Stylish way of giving presentations with Python
-app-office/kexi 3.0.0 3.0.1: Visual database applications creator
+app-office/kexi 3.0.1: Visual database applications creator
 app-office/kmymoney 4.8.0-r1 4.8.0-r2: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
@@ -12227,7 +12227,7 @@ kde-plasma/plasma-meta 5.8.6 5.8.7 5.9.5 5.10.1: Merge this to pull in all Plasm
 kde-plasma/plasma-nm 5.8.6 5.8.7 5.9.5 5.10.1: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.8.6 5.8.7 5.9.5 5.10.1: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.8.6 5.8.7 5.9.5 5.10.1: Useful applications for Plasma development
-kde-plasma/plasma-workspace 5.8.6 5.8.6-r1 5.8.7-r1 5.9.5.1-r1 5.10.1: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.8.6 5.8.6-r1 5.8.7-r1 5.9.5.1-r2 5.10.1: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.8.6 5.8.7 5.9.5 5.10.1: Additional wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.10.1: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.8.6 5.8.7 5.9.5 5.10.1: PolKit agent module for KDE Plasma
