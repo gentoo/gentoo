@@ -8515,7 +8515,6 @@ x11-misc/qt5ct:systray - Enable system tray support
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/redshift:appindicator - Enable usage of dev-libs/libappindicator to export menu options in to unity and KDE 5
 x11-misc/redshift:geoclue - Control dependency on app-misc/geoclue
-x11-misc/rodent:experimental - Build experimental plugins (obexfs, curlftpfs, ecryptfs, cifs and samba)
 x11-misc/rofi:windowmode - Enable normal window mode
 x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
 x11-misc/sddm:consolekit - Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)
@@ -8747,7 +8746,6 @@ xfce-base/xfce4-settings:libcanberra - Enable sound event support using media-li
 xfce-base/xfce4-settings:xklavier - Enable keyboard layout selection support using x11-libs/libxklavier
 xfce-base/xfdesktop:thunar - Build support for desktop icons (for example, launchers and folders)
 xfce-base/xfwm4:xpresent - Enable the XPresent extension for sync to vblank
-xfce-extra/multiload-nandhp:lxpanel - Build the applet for lxde-base/lxpanel, you can set XFCE_PLUGINS="" if you don't want the Xfce dependencies.
 xfce-extra/tumbler:odf - Enable support for .odf thumbnailers by using gnome-extra/libgsf
 xfce-extra/xfce4-clipman-plugin:qrcode - Enable support for media-gfx/qrencode
 xfce-extra/xfce4-mixer:keybinder - Enable shortcut support using dev-libs/keybinder
