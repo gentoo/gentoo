@@ -4667,7 +4667,6 @@ media-sound/tuxguitar:fluidsynth - Enables Fluidsynth MIDI software synthesis (w
 media-sound/tuxguitar:lilypond - Exports the score in a lilypond compatible format.
 media-sound/tuxguitar:pdf - Exports the score as a PDF file using dev-java/itext.
 media-sound/tuxguitar:tray - Adds an icon to the tray that controls midi playback.
-media-sound/umurmur:polarssl - Use net-libs/polarssl instead of dev-libs/openssl
 media-sound/umurmur:shm - Enable shared memory support
 media-sound/vimpc:boost - Use boost instead of C++11 libraries
 media-sound/vorbis-tools:kate - Adds support for Ogg Kate subtitles via libkate.
