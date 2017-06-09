@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pure-Python HPACK header compression"
 HOMEPAGE="https://python-hyper.org/hpack/en/latest/ https://pypi.python.org/pypi/hpack"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
