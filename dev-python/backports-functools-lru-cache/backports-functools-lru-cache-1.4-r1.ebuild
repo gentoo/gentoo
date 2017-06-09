@@ -24,8 +24,8 @@ DEPEND="
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/rst-linker[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
@@ -46,9 +46,8 @@ python_test() {
 	PYTHONPATH=. py.test || die "tests failed with ${EPYTHON}"
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
-
+python_install() {
 	# avoid a collision with dev-python/backports
-	find "${D}" -path '*/backports/__init__.py' -delete || die
+	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
+	distutils-r1_python_install --skip-build
 }
