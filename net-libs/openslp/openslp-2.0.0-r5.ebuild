@@ -24,6 +24,9 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.0.0-CVE-2016-4912.patch
+	"${FILESDIR}"/${PN}-2.0.0-CVE-2012-4428.patch
+	"${FILESDIR}"/${PN}-2.0.0-CVE-2016-7567.patch
+	"${FILESDIR}"/${PN}-2.0.0-namespace.patch
 )
 
 src_prepare() {
