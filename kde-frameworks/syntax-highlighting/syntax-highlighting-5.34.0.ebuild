@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for syntax highlighting"
 LICENSE="LGPL-2+ LGPL-2.1+"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="nls"
 
 RDEPEND="
