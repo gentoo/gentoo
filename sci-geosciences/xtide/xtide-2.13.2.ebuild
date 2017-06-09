@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.flaterco.com/xtide/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gps"
 
 DEPEND="
