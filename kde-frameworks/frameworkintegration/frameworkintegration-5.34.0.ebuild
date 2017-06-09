@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for integrating Qt applications with KDE Plasma workspaces"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="appstream X"
 
 RDEPEND="
