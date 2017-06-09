@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for notifying the user of an event"
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="dbus nls speech X"
 
 # drop qtgui subslot operator when QT_MINIMAL >= 5.7.0
