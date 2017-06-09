@@ -10289,13 +10289,13 @@ dev-util/cdiff 0.9.8 9999: Term based view of colored, incremental diff in a Git
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.16.13 2.17.2 2.17.5-r1: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.17.2 2.17.5-r1 2.17.6: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.1.2: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
-dev-util/cmake 3.7.2 3.7.2-r1 3.7.2-r10 3.8.1 3.8.2: Cross platform Make
+dev-util/cmake 3.7.2 3.7.2-r1 3.7.2-r10 3.8.1 3.8.2 3.9.0_rc2: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
@@ -10687,7 +10687,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.2.1-r1 2.2.2 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 3.8.4 4.1.3 4.2 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.8.4 4.1.3 4.2 4.2.1 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
@@ -13167,7 +13167,7 @@ media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML 
 media-libs/mutagen 1.27 1.31 1.35.1 1.36.3 1.37: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
-media-libs/openal 1.15.1-r2 1.17.1 1.17.2: A software implementation of the OpenAL 3D audio API
+media-libs/openal 1.15.1-r2 1.17.2 1.18.0: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.25 1.6.31 1.6.36: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
@@ -13738,7 +13738,7 @@ media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116
 media-sound/gpodder 3.9.1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6-r1 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 3.3.1-r3 3.4.0 3.4.1: GTK+ based Audio CD Player/Ripper
+media-sound/grip 3.3.1-r3 3.4.1 3.4.2: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.4: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
@@ -13897,7 +13897,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.3.10 0.4.4 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3 0.6.4: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 0.10.8 1.1.7-r1 1.1.8 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 0.10.8 0.10.9 1.1.7-r1 1.1.8 1.1.9 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r2: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.4.0-r1 0.4.1 0.4.2 0.4.3: A graphical frontend to the LinuxSampler engine
@@ -17149,7 +17149,7 @@ sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter M
 sys-apps/inxi 2.3.0_p20160807 2.3.4_p20161104 2.3.8_p20170114: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
-sys-apps/ipmiutil 3.0.2 3.0.3 3.0.4: IPMI Management Utilities
+sys-apps/ipmiutil 3.0.2 3.0.4 3.0.5: IPMI Management Utilities
 sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 4.10.0 4.11.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.0.9-r1 1.1.0 1.2.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
@@ -17301,7 +17301,7 @@ sys-apps/usbredir 0.7 0.7.1_p20170503 9999: TCP daemon and set of libraries for 
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.26.2 2.28.2 2.29.1-r1 2.29.2 2.29.2-r1 2.30_rc2 9999: Various useful Linux utilities
+sys-apps/util-linux 2.26.2 2.28.2 2.29.1-r1 2.29.2 2.29.2-r1 2.30 9999: Various useful Linux utilities
 sys-apps/v86d 0.1.10: A daemon to run x86 code in an emulated environment
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
 sys-apps/watchdog 5.14 5.15: A software watchdog and /dev/watchdog daemon
@@ -17738,7 +17738,7 @@ sys-fs/ecryptfs-utils 108-r1: eCryptfs userspace utilities
 sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1 1.9 1.9.1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem
 sys-fs/eudev 1.9-r2 1.10-r2 3.1.2 3.1.5 3.2.2 3.2.2-r1 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
-sys-fs/exfat-utils 1.2.4 1.2.5 1.2.6: exFAT filesystem utilities
+sys-fs/exfat-utils 1.2.4 1.2.6 1.2.7: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
@@ -17746,7 +17746,7 @@ sys-fs/f2fs-tools 1.6.0 1.6.1 1.7.0-r1: Tools for Flash-Friendly File System (F2
 sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fuse 2.9.7 3.0.0_rc3: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
-sys-fs/fuse-exfat 1.2.4 1.2.5 1.2.6: exFAT filesystem FUSE module
+sys-fs/fuse-exfat 1.2.4 1.2.6 1.2.7: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.4.2: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuse4bsd 0.3.0 0.3.9_pre1: Fuse for FreeBSD
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
