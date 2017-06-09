@@ -500,11 +500,6 @@ net-im/licq
 >=dev-python/aiohttp-2
 >=dev-python/yarl-0.10
 
-# Alice Ferrazzi <alicef@gentoo.org> (29 Apr 2017)
-# CVE-2016-10229 security issue. Masked until upstream add the patch.
-# Bug #615480
-=sys-kernel/vanilla-sources-4.1.39
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
@@ -771,11 +766,6 @@ sci-geosciences/googleearth
 # https://bugs.gentoo.org/590780
 ~sys-power/cpupower-4.7.0
 
-# Michał Górny <mgorny@gentoo.org> (7 Aug 2016)
-# Issue with thunar detailed view
-# Masked for more restrictive testing.
-=xfce-base/exo-0.11.1
-
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all
 # functionality is provided yet. Use --pretend to make sure correct
@@ -798,10 +788,6 @@ dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-1.370.0
 >=dev-perl/DateTime-Format-Strptime-1.710.0
 >=dev-perl/Log-Dispatch-2.590.0
-
-# Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
-# Unpatched security vulnerability per bug #475120
-<media-video/motion-4.0.1-r1
 
 # Chris Reffett <creffett@gentoo.org> (25 May 2016)
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
