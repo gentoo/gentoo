@@ -14,7 +14,7 @@ sys-devel/binutils cxx
 
 # Force openssl on curl since cmakes needs it and is in @system because of
 # libcxx on this profile. Mask the other ssl providers.
-net-misc/curl curl_ssl_axtls curl_ssl_gnutls curl_ssl_nss curl_ssl_polarssl
+net-misc/curl curl_ssl_axtls curl_ssl_gnutls curl_ssl_nss
 
 # Needs to be fixed: build fails with clang++
 # https://bugs.gentoo.org/show_bug.cgi?id=578506
