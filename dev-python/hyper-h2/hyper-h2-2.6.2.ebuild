@@ -6,26 +6,22 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 
 inherit distutils-r1
 
-MY_PN="h2"
-
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
 HOMEPAGE="http://python-hyper.org/h2 https://pypi.python.org/pypi/h2"
-SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/hyperframe-5.0.0[${PYTHON_USEDEP}]
+	>=dev-python/hyperframe-4.0.1[${PYTHON_USEDEP}]
 	<dev-python/hyperframe-6.0.0[${PYTHON_USEDEP}]
-	>=dev-python/hpack-2.3.0[${PYTHON_USEDEP}]
-	<dev-python/hpack-3.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/enum34-1.1.6[${PYTHON_USEDEP}]' python2_7)
+	>=dev-python/hpack-2.2.0[${PYTHON_USEDEP}]
+	<dev-python/hpack-4.0.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]' python2_7)
 	$(python_gen_cond_dep '<dev-python/enum34-2.0.0[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 "
-
-S=${WORKDIR}/${MY_PN}-${PV}
