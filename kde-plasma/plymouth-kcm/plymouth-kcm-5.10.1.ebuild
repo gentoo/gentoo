@@ -10,7 +10,7 @@ DESCRIPTION="KDE Plasma control module for Plymouth"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/plymouth-kcm"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
