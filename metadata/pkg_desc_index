@@ -9266,9 +9266,9 @@ dev-ros/sensor_msgs 1.12.5 9999: Messages for commonly used sensors, including c
 dev-ros/settlerlib 0.10.14 9999: Helper functions and routines to help creating a settler for a specific sensor channel
 dev-ros/shape_msgs 1.12.3 1.12.4 1.12.5 9999: Messages for defining shapes, such as simple solid object primitives, planes, and meshes
 dev-ros/shape_tools 0.2.1 9999: Tools for operating on shape messages
-dev-ros/smach 2.0.0 9999: Task-level architecture for rapidly creating complex robot behavior
-dev-ros/smach_msgs 2.0.0 9999: Set of messages that are used by the introspection interfaces for smach
-dev-ros/smach_ros 2.0.0 9999: Extensions for the SMACH library to integrate it tightly with ROS
+dev-ros/smach 2.0.0 2.0.1 9999: Task-level architecture for rapidly creating complex robot behavior
+dev-ros/smach_msgs 2.0.0 2.0.1 9999: Set of messages that are used by the introspection interfaces for smach
+dev-ros/smach_ros 2.0.0 2.0.1 9999: Extensions for the SMACH library to integrate it tightly with ROS
 dev-ros/smclib 1.7.16 1.7.17 1.7.18 1.7.19 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
 dev-ros/sound_play 0.3.1 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 1.8.0 9999: ROS specific hooks and tools for the Stage simulator
@@ -15870,7 +15870,7 @@ ros-meta/desktop 1.2.0 1.3.0 1.3.1 9999: Metapackage for a basic ROS desktop ins
 ros-meta/desktop_full 1.2.0 1.3.0 1.3.1 9999: Metapackage for ROS complete desktop install
 ros-meta/diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
-ros-meta/executive_smach 2.0.0 9999: SMACH library and ROS SMACH integration packages
+ros-meta/executive_smach 2.0.0 2.0.1 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 1.11.8 9999: Common geometric calculations
