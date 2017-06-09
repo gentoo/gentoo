@@ -20,7 +20,7 @@ IUSE="libressl test"
 RDEPEND="
 	!libressl? ( >=dev-libs/openssl-1.0.2:0= )
 	libressl? ( dev-libs/libressl )
-	$(python_gen_cond_dep '>=dev-python/cffi-1.4.1:=[${PYTHON_USEDEP}]' 'python*')
+	$(python_gen_cond_dep '>=dev-python/cffi-1.7:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 python3_3 pypy{,3})
 	>=dev-python/idna-2.1[${PYTHON_USEDEP}]
 	>=dev-python/asn1crypto-0.21.0[${PYTHON_USEDEP}]
@@ -28,7 +28,6 @@ RDEPEND="
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	virtual/python-ipaddress[${PYTHON_USEDEP}]
-	dev-python/packaging[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
