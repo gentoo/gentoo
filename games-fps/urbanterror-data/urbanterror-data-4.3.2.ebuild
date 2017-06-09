@@ -26,7 +26,7 @@ unset MY_CTR
 
 LICENSE="Q3AEULA-20000111 urbanterror-4.2-maps"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_PN}43"
