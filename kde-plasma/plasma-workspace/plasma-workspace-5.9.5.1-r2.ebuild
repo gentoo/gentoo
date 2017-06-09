@@ -3,11 +3,10 @@
 
 EAPI=6
 
-FRAMEWORKS_MINIMAL="5.33.0"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
-inherit kde5 multilib qmake-utils
+inherit kde5 qmake-utils
 
 DESCRIPTION="KDE Plasma workspace"
 KEYWORDS="~amd64 ~arm ~x86"
@@ -118,7 +117,12 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.4-startkde-script.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.4-startkde-script.patch"
+	# Plasma/5.9 branch
+	"${FILESDIR}/${P}-startup-crash.patch" # KDE bug #377280
+	"${FILESDIR}/${P}-pinned-launchers.patch" # KDE bug #379414
+)
 
 RESTRICT+=" test"
 
