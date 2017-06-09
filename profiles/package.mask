@@ -500,11 +500,6 @@ net-im/licq
 >=dev-python/aiohttp-2
 >=dev-python/yarl-0.10
 
-# Alice Ferrazzi <alicef@gentoo.org> (29 Apr 2017)
-# CVE-2016-10229 security issue. Masked until upstream add the patch.
-# Bug #615480
-=sys-kernel/vanilla-sources-4.1.39
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
