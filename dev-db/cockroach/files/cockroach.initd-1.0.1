@@ -1,0 +1,70 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/cockroach
+pidfile=/run/${RC_SVCNAME}/cockroach.pid
+start_stop_daemon_args="--quiet --user cockroach"
+[ -n "${attrs}" ] && attrs_arg="--attrs=${attrs}"
+[ -n "${cache}" ] && cache_arg="--cache=${cache}"
+[ -n "${certs_path}" ] && certs_dir_arg="--certs-dir=${certs_path}"
+[ "${host}" != all ] && host_arg="--host=${host:-localhost}"
+[ "$http_host" != all ] && http_host_arg="--http-host=${http_host:-localhost}"
+[ -n "${http_port}" ] && http_port_arg="--http-port=${http_port}"
+yesno "${insecure:-yes}" && insecure_arg="--insecure"
+[ -n "${join}" ] && join_arg="--join=${join}"
+[ -n "${locality}" ] && locality_arg="--locality=\"${locality}\""
+log_path="${log_path:-/var/log/${RC_SVCNAME}}"
+[ -n "${log_path}" ] && log_dir_arg="--log-dir=${log_path}"
+	pidfile_arg="--pid-file=${pidfile}"
+[ -n "${port}" ] && port_arg="--port=${port}"
+store_arg="--store=${store:-/var/lib/cockroach/data}"
+command_args="start --background
+	${attrs_arg}
+	${cache_arg}
+	${certs_dir_arg}
+	${host_arg}
+	${http_host_arg}
+	${http_port_arg}
+	${insecure_arg}
+	${join_arg}
+	${locality_arg}
+	${log_dir_arg}
+	${pidfile_arg}
+	${port_arg}
+	${store_arg}
+	${start_args}"
+quit_args="
+	${certs_dir_arg}
+	${host_arg}
+	${insecure_arg}
+	${port_arg} 
+	"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	if [ -n "${log_path}" ]; then
+	checkpath -d -m 0755 -o cockroach:cockroach "${log_path}" ||
+	return 1
+	fi
+	checkpath -d -m 0755 -o cockroach:cockroach "$(dirname ${pidfile})"
+}
+
+stop() {
+ebegin "bringing down ${RC_SVCNAME}"
+eval ${command} quit ${quit_args} ${stop_args}
+eend $?
+}
+
+stop_post() {
+	local cr_pid
+	read -r cr_pid < "${pidfile}"
+	while [ -d /proc/"${cr_pid}" ]; do
+		sleep 1
+	done
+	rm -f "${pidfile}"
+	return 0
+}
