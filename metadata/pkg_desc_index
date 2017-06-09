@@ -2296,7 +2296,7 @@ app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
 app-text/freepwing 1.4.3: FreePWING is a free JIS X 4081 (subset of EPWING V1) formatter
 app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
 app-text/getxbook 1.0-r1: Download books from google, amazon, barnes and noble
-app-text/ghostscript-gpl 9.20-r1 9.20-r2: Ghostscript is an interpreter for the PostScript language and for PDF
+app-text/ghostscript-gpl 9.20-r1 9.20-r2 9.21: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glark 1.10.5-r1: File searcher similar to grep but with fancy output
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
@@ -5154,7 +5154,7 @@ dev-libs/zlog 1.2.12: A reliable, thread safe, clear-model, pure C logging libra
 dev-libs/zookeeper-c 3.4.8 3.4.9 3.4.10: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
-dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
+dev-lisp/abcl 0.0.9-r1 0.20.0 0.20.0-r1: Common Lisp implementation for the JVM
 dev-lisp/asdf 1.89 3.0.3 3.1.5 3.1.6 3.1.7 3.2.0 3.2.0-r1 3.2.1: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
 dev-lisp/cl-ppcre 1.2.10 1.2.11 1.2.12 1.2.13 1.2.14 1.2.15 1.2.16 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
