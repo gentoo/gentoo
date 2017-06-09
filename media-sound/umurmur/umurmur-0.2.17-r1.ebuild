@@ -1,24 +1,26 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools systemd eutils readme.gentoo user
+inherit autotools systemd eutils readme.gentoo-r1 user
 
 DESCRIPTION="Minimalistic Murmur (Mumble server)"
 HOMEPAGE="https://github.com/umurmur/umurmur"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
-IUSE="gnutls polarssl shm"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="gnutls libressl shm"
 
+# ssl-provider precendence: gnutls, libressl
+# and openssl if none specified
 DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2
 	dev-libs/libconfig
 	gnutls? ( >=net-libs/gnutls-3.0.0 )
-	polarssl? ( >=net-libs/polarssl-1.0.0 )
-	!gnutls? ( !polarssl? ( dev-libs/openssl:0 ) )"
+	libressl? ( !gnutls? ( dev-libs/libressl ) )
+	!gnutls? ( !libressl? ( dev-libs/openssl:0 ) )"
 
 RDEPEND="${DEPEND}"
 
@@ -27,24 +29,34 @@ DOC_CONTENTS="
 	may	want to review it. See also\n
 	https://github.com/umurmur/umurmur/wiki/Configuration "
 
+S="${WORKDIR}/${P/_}"
+
+pkg_pretend() {
+	local ssl_provider=(  )
+	use gnutls && ssl_provider+=( gnutls )
+	use libressl && ssl_provider+=( libressl )
+
+	if [[ ${#ssl_provider[@]} -gt 1 ]] ; then
+		ewarn "More than one ssl provider selected (${ssl_provider[@]})"
+		ewarn "defaulting to ${ssl_provider[0]}."
+	fi
+}
+
 pkg_setup() {
 	enewgroup murmur
 	enewuser murmur "" "" "" murmur
 }
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
 src_configure() {
 	local myconf
 
-	if use polarssl && use gnutls; then
-		ewarn "Both gnutls and polarssl requested, defaulting to polarssl."
-	fi
-
 	econf \
-		--with-ssl=$(usev polarssl || usev gnutls || echo openssl) \
+		--with-ssl=$(usev gnutls || echo openssl) \
 		$(use_enable shm shmapi)
 }
 
@@ -76,12 +88,4 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-
-	if use polarssl ; then
-		elog
-		elog "Because you have enabled PolarSSL support, umurmurd will use a"
-		elog "predefined test-certificate and key if none are configured, which"
-		elog "is insecure. See https://code.google.com/p/umurmur/wiki/Installing02x#Installing_uMurmur_with_PolarSSL_support"
-		elog "for more information on how to create your certificate and key"
-	fi
 }

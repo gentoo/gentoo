@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Brian Evans <grknight@gentoo.org> (9 Jun 2017)
+# sys-cluster/galera needs additional deps stable
+dev-db/mariadb galera
+
 # Alexis Ballier <aballier@gentoo.org> (30 May 2017)
 # No stable libtar yet
 <media-video/vlc-2.3 libtar
