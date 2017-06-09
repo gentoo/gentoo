@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,10 +11,10 @@ DESCRIPTION="Streamlined C++ linear algebra library"
 HOMEPAGE="http://arma.sourceforge.net/"
 SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
 
-LICENSE="MPL-2.0"
+LICENSE="Apache-2.0"
 SLOT="0/7"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="arpack blas debug doc examples hdf5 lapack mkl tbb test"
+IUSE="arpack blas debug doc examples hdf5 lapack mkl superlu tbb test"
 REQUIRED_USE="test? ( lapack )"
 
 RDEPEND="
@@ -22,9 +22,8 @@ RDEPEND="
 	arpack? ( sci-libs/arpack )
 	blas? ( virtual/blas )
 	lapack? ( virtual/lapack )
+	superlu? ( >=sci-libs/superlu-5 )
 "
-#	superlu? ( sci-libs/superlu )
-# needs superlu-5
 
 DEPEND="${RDEPEND}
 	arpack? ( virtual/pkgconfig )
@@ -104,16 +103,16 @@ src_configure() {
 			-DLAPACK_FOUND=OFF
 		)
 	fi
-#	if use superlu; then
-#		mycmakeargs+=(
-#			-DSuperLU_FOUND=ON
-#			-DSuperLU_LIBRARIES="$($(tc-getPKG_CONFIG) --libs superlu)"
-#		)
-#	else
-#		mycmakeargs+=(
-#			-DSuperLU_FOUND=OFF
-#		)
-#	fi
+	if use superlu; then
+		mycmakeargs+=(
+			-DSuperLU_FOUND=ON
+			-DSuperLU_LIBRARIES="$($(tc-getPKG_CONFIG) --libs superlu)"
+		)
+	else
+		mycmakeargs+=(
+			-DSuperLU_FOUND=OFF
+		)
+	fi
 
 	cmake-utils_src_configure
 }
@@ -132,9 +131,14 @@ src_test() {
 src_install() {
 	cmake-utils_src_install
 	dodoc README.txt
-	use doc && dodoc *pdf && dohtml *html
+
+	if use doc ; then
+		dodoc *pdf
+		dodoc *html
+	fi
+
 	if use examples; then
-		insinto /usr/share/examples/${PF}
+		insinto /usr/share/doc/${PF}/examples
 		doins -r examples/*
 	fi
 }
