@@ -18,7 +18,6 @@
 		<flag name="client">Build binary for client (includes code for non-dedicated server)</flag>
 		<flag name="opus">Use opus as sound codec</flag>
 		<flag name="mumble">Use Mumble for ingame VoIP (experimental)</flag>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
 		<flag name="voip">Use ioq3 ingame VoIP (experimental)</flag>
 		<flag name="server">Build binary for dedicated server</flag>
 	</use>
