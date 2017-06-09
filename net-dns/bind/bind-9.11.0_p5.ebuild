@@ -100,6 +100,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# bug 600212
+	epatch "${FILESDIR}"/${P}-dyndb-dlopen.patch
+
 	# Adjusting PATHs in manpages
 	for i in bin/{named/named.8,check/named-checkconf.8,rndc/rndc.8} ; do
 		sed -i \
