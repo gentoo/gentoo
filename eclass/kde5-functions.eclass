@@ -38,18 +38,12 @@ case ${CATEGORY} in
 		if [[ $(get_version_component_range 2) -ge 9 ]]; then
 			: ${QT_MINIMAL:=5.7.1}
 		fi
-		if ! [[ $(get_version_component_range 2) -le 9 && $(get_version_component_range 3) -lt 50 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.34.0}
-		fi
 		if [[ ${KDE_BUILD_TYPE} = live && $(get_version_component_range 2) -ne 8 ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
 			: ${QT_MINIMAL:=5.7.1}
 		fi
 		;;
 	kde-apps)
-		if [[ $(get_version_component_range 1) -ge 17 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.32.0}
-		fi
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			: ${QT_MINIMAL:=5.7.1}
 		fi
@@ -64,12 +58,12 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.29.0}
+: ${FRAMEWORKS_MINIMAL:=5.34.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.4.1}
+: ${PLASMA_MINIMAL:=5.8.6}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
