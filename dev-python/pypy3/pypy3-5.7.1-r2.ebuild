@@ -16,8 +16,8 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2"
 LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
 SLOT="0/57"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
+KEYWORDS="~amd64 ~amd64-linux"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -97,32 +97,12 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 
-	local jit_backend
-	if use jit; then
-		jit_backend='--jit-backend='
-
-		# We only need the explicit sse2 switch for x86.
-		# On other arches we can rely on autodetection which uses
-		# compiler macros. Plus, --jit-backend= doesn't accept all
-		# the modern values...
-
-		if use x86; then
-			if use cpu_flags_x86_sse2; then
-				jit_backend+=x86
-			else
-				jit_backend+=x86-without-sse2
-			fi
-		else
-			jit_backend+=auto
-		fi
-	fi
-
 	local args=(
 		--shared
 		$(usex jit -Ojit -O2)
 		$(usex sandbox --sandbox '')
 
-		${jit_backend}
+		--jit_backend=auto
 
 		pypy/goal/targetpypystandalone
 	)
