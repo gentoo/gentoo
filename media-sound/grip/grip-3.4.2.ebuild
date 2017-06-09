@@ -35,18 +35,18 @@ DEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
 src_prepare() {
 	default
-	# fix include syntax for newer versions of bash
-	sed -i '/[.] conftest[.]id3/s: c: ./c:' configure || die
-	elibtoolize
+
+	sed '/^Icon/s@grip\b@gripicon@' -i grip.desktop || die
 }
 
 src_configure() {
 	# Bug #69536
 	[[ $(tc-arch) == "x86" ]] && append-flags "-mno-sse"
 
-	strip-linguas be bg ca de en en_CA en_GB en_US es fi fr hu it ja nl pl_PL pt_BR ru zh_CN zh_HK zh_TW
+	strip-linguas be bg ca de en en_CA en_GB en_US es fi fr hu it ja nb nl pl_PL pt_BR ru sr vi zh_CN zh_HK zh_TW
 
 	econf
 }

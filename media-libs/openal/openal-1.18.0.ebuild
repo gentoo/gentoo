@@ -1,10 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit cmake-multilib
 
-MY_P=${PN}-soft-${PV}
+MY_P="${PN}-soft-${PV}"
 
 DESCRIPTION="A software implementation of the OpenAL 3D audio API"
 HOMEPAGE="http://kcat.strangesoft.net/openal.html"
@@ -31,9 +31,9 @@ RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-DOCS="alsoftrc.sample env-vars.txt hrtf.txt ChangeLog README"
+DOCS=( alsoftrc.sample docs/env-vars.txt docs/hrtf.txt ChangeLog README )
 
 src_configure() {
 	# -DEXAMPLES=OFF to avoid FFmpeg dependency wrt #481670
