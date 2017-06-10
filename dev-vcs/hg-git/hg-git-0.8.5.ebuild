@@ -16,7 +16,8 @@ KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-maco
 IUSE=""
 
 RDEPEND="
-	>=dev-vcs/mercurial-1.9.3[${PYTHON_USEDEP}]
+	>=dev-vcs/mercurial-2.8.2[${PYTHON_USEDEP}]
+	<=dev-vcs/mercurial-4.1.3[${PYTHON_USEDEP}]
 	>=dev-python/dulwich-0.9.7[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
