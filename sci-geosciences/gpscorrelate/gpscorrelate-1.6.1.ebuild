@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="doc gtk"
 
-RDEPEND="dev-libs/libxml2:2
-	media-gfx/exiv2
+RDEPEND="
+	dev-libs/libxml2:2
+	media-gfx/exiv2:=
 	gtk? ( x11-libs/gtk+:2 )
 "
 DEPEND="${RDEPEND}
