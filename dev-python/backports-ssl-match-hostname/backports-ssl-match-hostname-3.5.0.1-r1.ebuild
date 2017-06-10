@@ -31,6 +31,5 @@ python_install_all() {
 python_install() {
 	# main namespace provided by dev-python/backports
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
-	rm -f backports/__init__.py || die
-	distutils-r1_python_install
+	distutils-r1_python_install --skip-build
 }
