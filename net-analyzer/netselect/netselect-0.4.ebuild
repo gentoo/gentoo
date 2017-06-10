@@ -6,11 +6,15 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ultrafast implementation of ping"
 HOMEPAGE="http://apenwarr.ca/netselect/"
-SRC_URI="https://github.com/apenwarr/${PN}/archive/${P}.tar.gz"
+SRC_URI="
+	https://github.com/apenwarr/${PN}/archive/${P}.tar.gz
+	ipv6? ( https://dev.gentoo.org/~jer/${P}-ipv6.patch.xz )
+"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+IUSE="ipv6"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4-bsd.patch
@@ -19,9 +23,9 @@ PATCHES=(
 S=${WORKDIR}/${PN}-${P}
 
 src_prepare() {
-	default
+	use ipv6 && eapply "${WORKDIR}"/${PN}-0.4-ipv6.patch
 
-	rm -r netinet || die
+	default
 
 	tc-export CC
 }
