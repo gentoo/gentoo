@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Mass IP port scanner"
@@ -16,6 +16,8 @@ RDEPEND="net-libs/libpcap"
 DEPEND="${RDEPEND}"
 
 src_prepare(){
+	default
+
 	sed -i \
 		-e '/$(CC)/s!$(CFLAGS)!$(LDFLAGS) $(CFLAGS)!g' \
 		-e '/^GITVER :=/s!= .(.*!=!g' \
@@ -23,21 +25,19 @@ src_prepare(){
 		-e '/$(CC)/s!-DGIT=\"$(GITVER)\"!!g' \
 		-e '/^CFLAGS =/{s,=,+=,;s,-g -ggdb,,;s,-O3,,;}' \
 		Makefile || die
-}
 
-src_compile() {
-	emake CC="$(tc-getCC)"
+	tc-export CC
 }
 
 src_install() {
-	emake CC="$(tc-getCC)" DESTDIR="${D}" PREFIX=/usr install
+	dobin bin/masscan
 
 	insinto /etc/masscan
 	doins data/exclude.conf
 	doins "${FILESDIR}"/masscan.conf
 
 	mv doc/bot.{hml,html} || die
-	dohtml doc/bot.html
+	dodoc doc/bot.html *.md
+
 	doman doc/masscan.8
-	dodoc *.md
 }
