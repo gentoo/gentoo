@@ -20,7 +20,7 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
 
 LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
-SLOT="0/57"
+SLOT="0/58"
 KEYWORDS="~amd64"
 IUSE="gdbm +jit sqlite test tk"
 
