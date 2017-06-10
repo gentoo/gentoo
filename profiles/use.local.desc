@@ -5440,6 +5440,7 @@ net-dns/pdns-recursor:protobuf - Enable support for dev-libs/protobuf.
 net-dns/pdnsd:isdn - Linux-only: check status of ippp interfaces with ISDN-specific system calls.
 net-dns/pdnsd:urandom - Linux-only: use /dev/urandom (pseudo-random number generation) instead of the default use of random() PRNG.
 net-dns/resolvconf-symlink:symlink - Actually replace /etc/resolv.conf with a symlink. Without this flag, the ebuild is a no-op.
+net-dns/unbound:dnscrypt - Enable DNSCrypt support
 net-dns/unbound:dnstap - Enable dnstap support
 net-dns/unbound:ecdsa - Enable ECDSA support
 net-dns/unbound:gost - Enable GOST support
