@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+EAPI=6
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_EXTRADOC="History.md README.md"
 
@@ -43,6 +43,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	VIRTUALX_COMMAND=${RUBY}
-	virtualmake -Ilib -S rspec-3 spec || die "Tests failed."
+	virtx ${RUBY} -Ilib -S rspec-3 spec || die "Tests failed."
 }
