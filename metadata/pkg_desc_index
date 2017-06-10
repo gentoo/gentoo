@@ -12175,7 +12175,7 @@ kde-misc/kopete-thinklight 0.50: A thinkpad's light flash on every incoming mess
 kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
 kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
 kde-misc/krecipes 2.0.0: A recipe application by KDE
-kde-misc/krename 4.0.9-r3 4.0.9-r4: KRename - a very powerful batch file renamer
+kde-misc/krename 4.0.9-r3 4.0.9-r4 4.0.9_p20170610: Powerful batch file renamer
 kde-misc/krusader 2.5.0-r2 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.0: Shutdown manager for desktop environmenmts like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
