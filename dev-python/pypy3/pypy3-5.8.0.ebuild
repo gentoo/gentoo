@@ -100,7 +100,7 @@ src_configure() {
 		$(usex jit -Ojit -O2)
 		$(usex sandbox --sandbox '')
 
-		--jit_backend=auto
+		--jit-backend=auto
 
 		pypy/goal/targetpypystandalone
 	)
