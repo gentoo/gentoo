@@ -4,3 +4,10 @@
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2017)
 # Require a gcc here that uses C++14 or later as default setting
 <sys-devel/gcc-6
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2017)
+# We can unmask ICU 59 and later now we for sure have a recent GCC
+# Note: "and later" is safe here since the profiles/package.mask
+# still overrides.
+->=dev-libs/icu-59
+->=dev-libs/icu-layoutex-59
