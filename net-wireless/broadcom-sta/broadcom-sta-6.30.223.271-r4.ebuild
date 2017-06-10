@@ -66,7 +66,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch" \
 		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.7.patch" \
 		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.8.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.11.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.11.patch" \
+		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.12.patch"
 
 	epatch_user
 }
