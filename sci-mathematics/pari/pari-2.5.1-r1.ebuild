@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -41,6 +41,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.5.0-mp.c.patch
 	# OS X: add -install_name to the linker option
 	epatch "${FILESDIR}"/${PN}-2.5.0-macos.patch
+	# Fix Perl 5.26
+	epatch "${FILESDIR}/"${PN}-2.5.0-no-dot-inc.patch
 	# from debian, fies bug #423617
 	epatch "${FILESDIR}"/${PN}-2.5.1-gcc47.patch
 	# fix automagic
