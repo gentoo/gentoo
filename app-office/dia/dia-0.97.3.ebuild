@@ -57,7 +57,6 @@ src_prepare() {
 
 	if use python; then
 		python_fix_shebang .
-		sed -i -e "s/\.so/$(get_libname)/" acinclude.m4 || die #298232
 	fi
 
 	if ! use doc; then
