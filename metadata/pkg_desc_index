@@ -8349,7 +8349,7 @@ dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-p
 dev-python/pypy 5.6.0 5.7.1 5.8.0 9999: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-bin 5.6.0 5.7.1 5.8.0: Pre-built version of PyPy
 dev-python/pypy3 5.5.0_alpha 5.7.1-r2 5.8.0 9999: A fast, compliant alternative implementation of the Python (3.3) language
-dev-python/pypy3-bin 5.5.0_alpha 5.7.1-r1 5.8.0: A fast, compliant alternative implementation of Python 3.3 (binary package)
+dev-python/pypy3-bin 5.5.0_alpha 5.7.1-r1 5.8.0-r1: A fast, compliant alternative implementation of Python 3.3 (binary package)
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.10.0: a pure-python graphics and GUI library built on PyQt/PySide and numpy
 dev-python/pyquery 1.2.13: A jQuery-like library for python
@@ -18199,7 +18199,7 @@ virtual/pkgconfig 0-r1: Virtual for the pkg-config implementation
 virtual/pmake 0: Virtual for BSD-like make
 virtual/podofo-build 0.9.6_pre20170508-r1: Virtual package for building against PoDoFo
 virtual/pypy 5.6.0 5.7.1 5.8.0: A virtual for PyPy Python implementation
-virtual/pypy3 5.5.0_alpha 5.7.1 5.8.0: A virtual for PyPy3 Python implementation
+virtual/pypy3 5.5.0_alpha 5.7.1 5.8.0-r1: A virtual for PyPy3 Python implementation
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-cffi 0: A virtual for the Python cffi package
 virtual/python-dnspython 1 2: A virtual for dnspython, for Python 2 & 3
