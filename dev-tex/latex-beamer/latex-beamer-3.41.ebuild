@@ -17,6 +17,7 @@ IUSE="doc examples"
 DEPEND="dev-texlive/texlive-latex
 	doc? ( dev-tex/latex-beamer )"
 RDEPEND=">=dev-tex/pgf-1.10
+	dev-texlive/texlive-latexextra
 	dev-tex/xcolor
 	!dev-tex/translator"
 
