@@ -91,7 +91,7 @@ app-admin/elektra 0.8.15 0.8.16 9999: Framework to store config parameters in hi
 app-admin/emacs-updater 1.15: Rebuild Emacs packages
 app-admin/entr 3.6 3.7: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
-app-admin/eselect 1.4.5 1.4.8 1.4.9 9999: Gentoo's multi-purpose configuration and management tool
+app-admin/eselect 1.4.8 1.4.9 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
@@ -1016,7 +1016,7 @@ app-editors/editra 0.7.20-r1 0.7.20-r2: Multi-platform text editor supporting ov
 app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
-app-editors/emacs 18.59-r11 23.4-r14 23.4-r15 24.5-r3 25.1 25.2: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r11 23.4-r15 24.5-r3 25.1 25.2: The extensible, customizable, self-documenting real-time display editor
 app-editors/emacs-vcs 25.2.9999 26.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
@@ -1141,7 +1141,7 @@ app-emacs/edit-list 0.3: Edit a single list
 app-emacs/editorconfig-emacs 0.7.8: EditorConfig plugin for emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
-app-emacs/emacs-common-gentoo 1.5 1.6: Common files needed by all GNU Emacs versions
+app-emacs/emacs-common-gentoo 1.6: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.528_pre20140213 1.4.570_pre20170203: emacs-w3m is an interface program of w3m on Emacs
@@ -7356,7 +7356,7 @@ dev-python/backports-lzma 0.0.6 0.0.8: Backport of Python 3.3's lzma module for 
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-shutil_which 3.5.1: Backport of shutil.which from Python 3.3
 dev-python/backports-ssl-match-hostname 3.5.0.1-r1: Backport of the ssl.match_hostname function
-dev-python/backports-unittest-mock 1.1.1 1.2.1 1.2.1-r1: Backport of unittest.mock
+dev-python/backports-unittest-mock 1.2.1 1.2.1-r1 1.3: Backport of unittest.mock
 dev-python/bandit 0.13.2-r1 1.0.1 1.1.0 1.2.0 1.3.0 1.4.0: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
@@ -18759,7 +18759,7 @@ x11-libs/libyui 3.0.13 3.2.5: UI abstraction library
 x11-libs/libyui-gtk 2.44.5 2.44.7: UI abstraction library - GTK plugin
 x11-libs/libyui-ncurses 2.46.4 2.47.6: UI abstraction library - ncurses plugin
 x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
-x11-libs/motif 2.2.3-r12 2.3.5 2.3.6 2.3.6-r1: The Motif user interface component toolkit
+x11-libs/motif 2.2.3-r12 2.3.5 2.3.6-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.3 1.40.5 1.40.6: Internationalized text layout and rendering library
