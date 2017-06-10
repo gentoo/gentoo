@@ -13,7 +13,6 @@ LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="net-libs/libpcap"
-DEPEND="${RDEPEND}"
 
 src_prepare(){
 	default
@@ -22,7 +21,6 @@ src_prepare(){
 		-e '/$(CC)/s!$(CFLAGS)!$(LDFLAGS) $(CFLAGS)!g' \
 		-e '/^GITVER :=/s!= .(.*!=!g' \
 		-e '/^SYS/s|gcc|$(CC)|g' \
-		-e '/$(CC)/s!-DGIT=\"$(GITVER)\"!!g' \
 		-e '/^CFLAGS =/{s,=,+=,;s,-g -ggdb,,;s,-O3,,;}' \
 		Makefile || die
 
