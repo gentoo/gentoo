@@ -6227,7 +6227,7 @@ dev-perl/Math-Libm 1.0.0: wrapper to libm functions
 dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
 dev-perl/Math-NumSeq 71.0.0: number sequences (for example from OEIS)
 dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
-dev-perl/Math-Pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
+dev-perl/Math-Pari 2.10.806.50-r1 2.10.808 2.10.809.0: Perl interface to PARI
 dev-perl/Math-PlanePath 123.0.0 124.0.0: Mathematical paths through the 2-D plane
 dev-perl/Math-Prime-XS 0.260.0: Detect and calculate prime numbers with deterministic tests
 dev-perl/Math-Random 0.720.0: Random Number Generators
