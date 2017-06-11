@@ -11681,7 +11681,7 @@ gnome-extra/gnome-color-manager 3.22.2: Color profile manager for the GNOME desk
 gnome-extra/gnome-commander 1.4.8 1.6.1 1.6.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.22.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.8: Thumbnail generator for directories
-gnome-extra/gnome-documents 3.22.3: A document manager application for GNOME
+gnome-extra/gnome-documents 3.22.3 3.22.4: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.22.0: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
@@ -18383,7 +18383,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 59.0.3071.86 60.0.3112.10 60.0.3112.20: Open-source version of Google Chrome web browser
+www-client/chromium 59.0.3071.86 60.0.3112.20 60.0.3112.24 61.0.3124.4: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
