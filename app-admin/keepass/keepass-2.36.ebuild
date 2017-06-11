@@ -34,13 +34,8 @@ src_prepare() {
 	# (which keeps/looks for xsl files in its own folder)
 	default
 
-	# New Mono Prep Script until keepass 2.36+ comes out.
-	# This script has been upstreamed, still waiting for final confirmation.
-	local newMonoPrepScript="${FILESDIR}/keepass-2.35-new-monoprep-script.sh"
-
 	# Switch into build dir so the mono prepration script works correctly
 	cd Build || die
-	cp -f "${newMonoPrepScript}" PrepMonoDev.sh
 	source PrepMonoDev.sh || die
 	cd ../ || die
 }
