@@ -64,7 +64,7 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.6.0 )
 	doc? (
 		virtual/latex-base
-		dev-texlive/texlive-genericrecommended
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 		dev-texlive/texlive-metapost
 		sys-apps/texinfo )
 	dev-util/gperf

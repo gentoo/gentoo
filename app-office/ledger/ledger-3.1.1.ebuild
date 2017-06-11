@@ -37,10 +37,7 @@ DEPEND="
 	dev-libs/utfcpp
 	doc? (
 		sys-apps/texinfo
-		|| (
-			>=dev-texlive/texlive-plainextra-2013
-			dev-texlive/texlive-texinfo
-		)
+		virtual/texi2dvi
 		dev-texlive/texlive-fontsrecommended
 	)
 "
