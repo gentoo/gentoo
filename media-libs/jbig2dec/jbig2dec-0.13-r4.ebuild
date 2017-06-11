@@ -27,7 +27,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-CVE-2017-9216.patch"
 	"${FILESDIR}/${P}-CVE-2017-7885.patch"
 	"${FILESDIR}/${P}-CVE-2017-7975.patch"
-#	"${FILESDIR}/${P}-CVE-2017-7976.patch"
+	"${FILESDIR}/${P}-CVE-2017-7976.patch"
 )
 
 src_prepare() {
