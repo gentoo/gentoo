@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit cannadic eutils multilib
@@ -22,7 +22,7 @@ DEPEND=">=sys-apps/sed-4
 		app-text/ghostscript-gpl
 		>=dev-texlive/texlive-langcjk-2010
 		dev-texlive/texlive-fontsextra
-		dev-texlive/texlive-genericrecommended
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 		dev-texlive/texlive-latexrecommended
 	)"
 RDEPEND=""
