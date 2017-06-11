@@ -7746,7 +7746,7 @@ dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.10 0.4.12: Lightweight in-process concurrent programming
 dev-python/gst-python 0.10.22-r1 1.8.3 1.10.3: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
-dev-python/guessit 2.1.1 2.1.2 2.1.3 9999: Python library for guessing information from video filenames
+dev-python/guessit 2.1.2-r1 2.1.3-r1 2.1.4 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.10: Sphinx theme used by Guzzle
 dev-python/gwcs 0.7: Python for managing the World Coordinate System
@@ -8575,7 +8575,7 @@ dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/
 dev-python/readlike 0.1.2: a python library similar to readline
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readme_renderer 17.2: a library for rendering "readme" descriptions for Warehouse
-dev-python/rebulk 0.8.2 9999: Python library that performs advanced searches in strings
+dev-python/rebulk 0.8.2 0.9.0 9999: Python library that performs advanced searches in strings
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
 dev-python/recommonmark 0.4.0: Python docutils-compatibility bridge to CommonMark
 dev-python/reconfigure 0.1.79: An ORM for config files
