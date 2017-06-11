@@ -306,7 +306,7 @@ kde-apps/plasma-runtime
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
 # headless mode in >=www-client/chromium-59.
-# Masked for removal in 30 days. Bug #589994.
+# Masked for removal in 90 days. Bug #589994.
 www-client/phantomjs
 dev-ruby/poltergeist
 

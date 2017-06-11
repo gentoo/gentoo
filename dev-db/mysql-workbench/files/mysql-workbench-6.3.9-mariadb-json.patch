@@ -1,13 +1,13 @@
---- a/plugins/migration/copytable/copytable.cpp.~1~	2017-02-03 19:40:18.000000000 +0100
-+++ b/plugins/migration/copytable/copytable.cpp	2017-05-21 17:23:14.135875375 +0200
+--- a/plugins/migration/copytable/copytable.cpp
++++ b/plugins/migration/copytable/copytable.cpp
 @@ -109,8 +109,10 @@
        return "MYSQL_TYPE_STRING";
      case MYSQL_TYPE_GEOMETRY:
        return "MYSQL_TYPE_GEOMETRY";
-+#ifndef MARIADB_BASE_VERSION    
++#if MYSQL_CHECK_VERSION(5, 7, 8) && ! defined MARIADB_BASE_VERSION
      case MYSQL_TYPE_JSON:
        return "MYSQL_TYPE_JSON";
-+#endif     
++#endif
      default:
        return "UNKNOWN";
    }
@@ -15,9 +15,9 @@
        case MYSQL_TYPE_STRING:
        case MYSQL_TYPE_VAR_STRING:
        case MYSQL_TYPE_BIT:
-+#ifndef MARIADB_BASE_VERSION        
++#if MYSQL_CHECK_VERSION(5, 7, 8) && ! defined MARIADB_BASE_VERSION
        case MYSQL_TYPE_JSON:
-+#endif        
++#endif
          if (!col->is_long_data)
            bind.buffer_length = (unsigned)col->source_length + 1;
  
@@ -27,9 +27,9 @@
                rowbuffer[index].buffer_type == MYSQL_TYPE_STRING ||
 -              rowbuffer[index].buffer_type == MYSQL_TYPE_GEOMETRY || rowbuffer[index].buffer_type == MYSQL_TYPE_JSON) {
 +              rowbuffer[index].buffer_type == MYSQL_TYPE_GEOMETRY
-+#ifndef MARIADB_BASE_VERSION              
++#if MYSQL_CHECK_VERSION(5, 7, 8) && ! defined MARIADB_BASE_VERSION
 +              || rowbuffer[index].buffer_type == MYSQL_TYPE_JSON
-+#endif              
++#endif
 +              ) {
              if (rowbuffer[index].buffer_length)
                free(rowbuffer[index].buffer);
@@ -38,9 +38,9 @@
        case MYSQL_TYPE_STRING:
        case MYSQL_TYPE_ENUM:
        case MYSQL_TYPE_SET:
-+#ifndef MARIADB_BASE_VERSION        
++#if MYSQL_CHECK_VERSION(5, 7, 8) && ! defined MARIADB_BASE_VERSION
        case MYSQL_TYPE_JSON:
-+#endif        
++#endif
          _bulk_insert_record.append("'", 1);
          ret_val = _bulk_insert_record.append_escaped((char *)(*_row_buffer)[col_index].buffer,
                                                       *(*_row_buffer)[col_index].length);
