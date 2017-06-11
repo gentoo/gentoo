@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-61
+
 # Raymond Jennings <shentino@gmail.com> (11 Jun 2017)
 # Upstream announced EOL effective July 2017.
 # Depends on qt4 which is being deprecated.
@@ -492,11 +497,6 @@ app-arch/unlzx
 # Dead upstream since 2014. Fails to build with gcc-6 (bug #594260).
 # Masked for removal in 30 days.
 net-im/licq
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (03 May 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-60
 
 # Zac Medico <zmedico@gentoo.org> (01 May 2017)
 # Possible API incompatibilities, bug #617174.
