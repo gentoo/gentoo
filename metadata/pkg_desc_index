@@ -1308,7 +1308,7 @@ app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20130107-r3: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
-app-emulation/e-uae 0.8.29_rc4-r2: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
+app-emulation/e-uae 0.8.29_rc4-r2 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/flannel 0.5.5 0.6.2: An etcd backed network fabric for containers
 app-emulation/free42 1.5.15: An HP-42S Calculator Simulator
@@ -1329,7 +1329,7 @@ app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library em
 app-emulation/libdsk 1.5.4: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.28.5-r2: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
-app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
+app-emulation/libspectrum 1.1.1: Spectrum emulation library
 app-emulation/libvirt 3.2.0 3.3.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
@@ -1358,7 +1358,7 @@ app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.13.3-r1 9999: SPICE server
 app-emulation/spice-protocol 0.12.12 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0: SPICE VD Linux Guest Agent
-app-emulation/spim 8.0-r1: MIPS Simulator
+app-emulation/spim 8.0-r1 8.0-r2: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
 app-emulation/vagrant 1.9.3 1.9.5: A tool for building and distributing development environments
@@ -1419,7 +1419,7 @@ app-eselect/eselect-lib-bin-symlink 0.1 0.1.1 9999: An eselect library to manage
 app-eselect/eselect-lua 1: Lua eselect module
 app-eselect/eselect-mesa 0.0.10-r1: Utility to change the Mesa OpenGL driver being used
 app-eselect/eselect-metasploit 0.16: eselect module for metasploit
-app-eselect/eselect-miniaudicle 1.0.1-r1: Manages the /usr/bin/miniAudicle symlink
+app-eselect/eselect-miniaudicle 1.0.1-r1 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
 app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-mpost 0.3: mpost module for eselect
 app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
