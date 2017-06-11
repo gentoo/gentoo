@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )	# py2 only
 # xml.etree.ElementTree module required.
@@ -20,17 +20,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-# ALL versions of meld3 match to >=meld3-0.6.5
-RDEPEND="dev-python/meld3[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+RDEPEND="
+	dev-python/meld3[${PYTHON_USEDEP}]
+"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? (
+		${RDEPEND}
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
+"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 python_compile_all() {
-	# Somehow the test phase is called and run on invoking a doc build; harmless
 	use doc && emake -C docs html
 }
 

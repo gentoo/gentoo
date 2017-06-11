@@ -21,13 +21,13 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="VLC media player - Video player and streamer"
-HOMEPAGE="http://www.videolan.org/vlc/"
+HOMEPAGE="https://www.videolan.org/vlc/"
 if [[ ${PV} = *9999 ]] ; then # Live ebuild
 	SRC_URI=""
 elif [[ "${MY_P}" == "${P}" ]]; then
-	SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 else
-	SRC_URI="http://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 fi
 
 LICENSE="LGPL-2.1 GPL-2"
