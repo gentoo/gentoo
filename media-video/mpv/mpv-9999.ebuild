@@ -22,10 +22,10 @@ else
 	inherit git-r3
 fi
 SRC_URI+=" https://waf.io/waf-${WAF_PV}"
-DOCS+=( README.md )
+DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
-LICENSE="LGPL-2.1+ GPL-2+ BSD ISC"
+LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
 	dvd +egl encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua
@@ -142,24 +142,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.23.0-make-libavdevice-check-accept-libav.patch"
 )
 
-mpv_check_compiler() {
-	if [[ ${MERGE_TYPE} != "binary" ]]; then
-		if tc-is-gcc && [[ $(gcc-major-version) -lt 4 || \
-				( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 5 ) ]]; then
-			die "${PN} requires GCC>=4.5."
-		fi
-		if use opengl && ! tc-has-tls; then
-			die "Your compiler lacks C++11 TLS support. Use GCC>=4.8 or Clang>=3.3."
-		fi
-	fi
-}
-
-pkg_pretend() {
-	mpv_check_compiler
-}
-
 pkg_setup() {
-	mpv_check_compiler
 	[[ ${MERGE_TYPE} != "binary" ]] && python_setup
 }
 
@@ -312,13 +295,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	local rv softvol_0_18_1=0 osc_0_21_0=0 opengl_0_25_0=0
+	local rv softvol_0_18_1=0 osc_0_21_0=0 txtsubs_0_24_0=0 opengl_0_25_0=0
 
 	for rv in ${REPLACING_VERSIONS}; do
 		version_compare ${rv} 0.18.1
 		[[ $? -eq 1 ]] && softvol_0_18_1=1
 		version_compare ${rv} 0.21.0
 		[[ $? -eq 1 ]] && osc_0_21_0=1
+		version_compare ${rv} 0.24.0
+		[[ $? -eq 1 ]] && txtsubs_0_24_0=1
 		version_compare ${rv} 0.25.0
 		[[ $? -eq 1 ]] && ! use opengl && opengl_0_25_0=1
 	done
@@ -338,6 +323,14 @@ pkg_postinst() {
 		elog "If you want to restore the previous layout, please refer to"
 		elog
 		elog "https://wiki.gentoo.org/wiki/Mpv#OSC_in_0.21.0"
+		elog
+	fi
+
+	if [[ ${txtsubs_0_24_0} -eq 1 ]]; then
+		elog "Since version 0.24.0 subtitles with .txt extension aren't autoloaded."
+		elog "If you want to restore the previous behaviour, please refer to"
+		elog
+		elog "https://wiki.gentoo.org/wiki/Mpv#Subtitles_with_.txt_extension_in_0.24.0"
 		elog
 	fi
 

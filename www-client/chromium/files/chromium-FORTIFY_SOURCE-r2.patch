@@ -1,5 +1,10 @@
---- a/build/config/compiler/BUILD.gn.orig	2017-06-10 11:11:04.852935374 +0000
-+++ b/build/config/compiler/BUILD.gn	2017-06-10 11:11:12.749100346 +0000
+Drop _FORTIFY_SOURCE=2 from defines
+
+Gentoo toolchains enable this by default. Removing this prevents spammy
+warnings about the macro being redefined.
+
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
 @@ -1213,22 +1213,6 @@
        "__STDC_FORMAT_MACROS",
      ]
