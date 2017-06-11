@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit qt4-r2 multilib
+inherit qmake-utils
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework"
 HOMEPAGE="https://github.com/qxmpp-project/qxmpp/"
@@ -14,13 +14,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="debug doc opus +speex test theora vpx"
 
-RDEPEND="dev-qt/qtcore:4
+RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtxml:5
 	opus? ( media-libs/opus )
 	speex? ( media-libs/speex )
 	theora? ( media-libs/libtheora )
-	vpx? ( media-libs/libvpx )"
+	vpx? ( media-libs/libvpx )
+"
 DEPEND="${RDEPEND}
-	test? ( dev-qt/qttest:4 )"
+	test? ( dev-qt/qttest:5 )
+"
 
 src_prepare(){
 	if ! use doc; then
@@ -36,7 +41,7 @@ src_prepare(){
 	# There is no point in building examples. Also, they require dev-qt/qtgui
 	sed -i -e '/SUBDIRS/s/examples//' \
 			qxmpp.pro || die "sed for removing examples failed"
-	qt4-r2_src_prepare
+	default_src_prepare
 }
 
 src_configure(){
@@ -49,13 +54,19 @@ src_configure(){
 	use theora && conf_theora="QXMPP_USE_THEORA=1"
 	use vpx && conf_vpx="QXMPP_USE_VPX=1"
 
-	eqmake4 "${S}"/qxmpp.pro "PREFIX=${EPREFIX}/usr" "LIBDIR=$(get_libdir)" "${conf_opus}" "${conf_speex}" "${conf_theora}" "${conf_vpx}"
+	eqmake5 "${S}"/qxmpp.pro "PREFIX=${EPREFIX}/usr" "LIBDIR=$(get_libdir)" "${conf_opus}" "${conf_speex}" "${conf_theora}" "${conf_vpx}"
 }
 
 src_install() {
-	qt4-r2_src_install
+	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 	if use doc; then
 		# Use proper path for documentation
 		mv "${ED}"/usr/share/doc/${PN} "${ED}"/usr/share/doc/${PF} || die "doc mv failed"
 	fi
+}
+
+src_test() {
+	MAKEOPTS="-j1" # random tests fail otherwise
+	default_src_test
 }
