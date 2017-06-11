@@ -187,6 +187,7 @@ src_prepare() {
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
 		"${FILESDIR}/${PN}-gn-bootstrap-r9.patch"
+		"${FILESDIR}/${PN}-system-icu-r2.patch"
 	)
 
 	default
