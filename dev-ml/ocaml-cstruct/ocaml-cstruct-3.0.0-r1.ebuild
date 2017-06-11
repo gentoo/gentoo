@@ -20,7 +20,7 @@ RDEPEND="
 	ppx? (
 		dev-ml/ppx_tools:=
 		dev-ml/ocaml-migrate-parsetree:=
-		dev-ml/ppx_tools_versioned:=
+		>=dev-ml/ppx_tools_versioned-5.0.1:=
 	)
 	>=dev-lang/ocaml-4.01:=
 	dev-ml/ocplib-endian:=
