@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -44,9 +44,13 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-util/gtk-doc-am-1.17
 	dev-libs/libxslt
-	test? ( >=dev-python/twisted-core-0.8.2
-		>=dev-python/twisted-words-0.8.2
-		>=dev-python/dbus-python-0.83 )
+	test? ( || (
+		>=dev-python/twisted-16.0.0
+		(	>=dev-python/twisted-core-0.8.2
+			>=dev-python/twisted-words-0.8.2
+			>=dev-python/dbus-python-0.83
+		)
+	) )
 "
 
 pkg_setup() {
