@@ -8961,7 +8961,7 @@ dev-qt/qt-creator 3.6.1 4.2.0 4.3.0 9999: Lightweight IDE for C++/QML developmen
 dev-qt/qt-docs 5.6.2_p0-r1 5.7.1_p0: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
 dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and desktop platforms
-dev-qt/qt3d 5.7.1: The 3D module for the Qt5 framework
+dev-qt/qt3d 5.7.1-r1: The 3D module for the Qt5 framework
 dev-qt/qt3support 4.8.6-r1 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.6-r1 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.6.2 5.7.1: Bluetooth support library for the Qt5 framework

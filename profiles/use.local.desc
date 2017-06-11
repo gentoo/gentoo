@@ -2636,6 +2636,8 @@ dev-qt/qt-mobility:serviceframework - Build the QtServiceFramework module
 dev-qt/qt-mobility:systeminfo - Build the QtSystemInfo module
 dev-qt/qt-mobility:tools - Build various useful tools (e.g.: qcrmlgen, servicexmlgen, vsexplorer, ...)
 dev-qt/qt-mobility:versit - Build the QtVersit module
+dev-qt/qt3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
+dev-qt/qt3d:qml - Build QML/QtQuick bindings
 dev-qt/qt3support:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtbearer:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtbluetooth:qml - Build QML/QtQuick bindings and imports
