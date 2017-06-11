@@ -76,7 +76,7 @@ DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-fontsrecommended
-		dev-texlive/texlive-genericrecommended
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 		dev-texlive/texlive-metapost
 	)
 	sys-apps/texinfo
