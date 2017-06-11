@@ -6,7 +6,7 @@ EAPI=6
 KDE_HANDBOOK="optional"
 KMNAME="kde-runtime"
 KMMODULE="kioslave"
-WEBKIT_REQUIRED="optional"
+WEBKIT_REQUIRED="never"
 inherit kde4-meta
 
 KEYWORDS="amd64 ~arm x86"
@@ -45,13 +45,13 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_SLP=OFF
+		-DWITH_KDEWEBKIT=OFF
 		-DWITH_BZip2=$(usex bzip2)
 		-DWITH_Exiv2=$(usex exif)
 		-DWITH_LibLZMA=$(usex lzma)
 		-DWITH_OpenEXR=$(usex openexr)
 		-DWITH_Samba=$(usex samba)
 		-DWITH_LibSSH=$(usex sftp)
-		-DWITH_KDEWEBKIT=$(usex webkit)
 	)
 
 	kde4-meta_src_configure
