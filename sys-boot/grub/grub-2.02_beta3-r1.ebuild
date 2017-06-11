@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/2.02_beta3-10_linux-UUID.patch
 	"${FILESDIR}"/2.02_beta3-sysmacros.patch
 	"${FILESDIR}"/2.02_beta3-gcc6-ld-no-pie.patch
+	"${FILESDIR}"/2.02_beta3-grub-mkconfig-btrfs-multidev.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.35
