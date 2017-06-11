@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # To recreate this tarball, just grab latest rpm5 release:
@@ -17,7 +17,7 @@ SRC_URI="https://dev.gentoo.org/~swegener/distfiles/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE=""
 
 DEPEND="dev-libs/popt
