@@ -155,9 +155,7 @@ src_install() {
 	if ! use nfsv41 ; then
 		rm "${ED}$(systemd_get_unitdir)"/nfs-blkmap.* || die
 	fi
-	sed -i -r \
-		-e "/^EnvironmentFile=/s:=.*:=${EPREFIX}/etc/conf.d/nfs:" \
-		-e '/^(After|Wants)=nfs-config.service$/d' \
+	sed -i \
 		-e 's:/usr/sbin/rpc.statd:/sbin/rpc.statd:' \
 		"${ED}$(systemd_get_unitdir)"/* || die
 
