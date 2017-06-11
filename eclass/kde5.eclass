@@ -710,10 +710,10 @@ kde5_src_install() {
 
 	cmake-utils_src_install
 
-	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
+	# We don't want /usr/share/doc/HTML to be compressed,
 	# because then khelpcenter can't find the docs
-	if [[ -d ${ED}/${PREFIX}/share/doc/HTML ]]; then
-		docompress -x ${PREFIX}/share/doc/HTML
+	if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
+		docompress -x /usr/share/doc/HTML
 	fi
 }
 
