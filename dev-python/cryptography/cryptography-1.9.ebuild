@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~x86"
 IUSE="libressl test"
 
 RDEPEND="
-	!libressl? ( >=dev-libs/openssl-1.0.2:0= )
+	!libressl? ( >=dev-libs/openssl-1.0.2:0=[-bindist(-)] )
 	libressl? ( dev-libs/libressl )
 	$(python_gen_cond_dep '>=dev-python/cffi-1.7:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 python3_3 pypy{,3})
