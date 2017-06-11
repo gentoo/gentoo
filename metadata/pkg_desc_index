@@ -14398,7 +14398,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 7.31 7.40 7.40-r1 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 7.40 7.40-r1 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.04 9999: Monitor and do event correlation
@@ -14729,7 +14729,7 @@ net-im/gitter-bin 3.1.0: Chat and network platform
 net-im/hangups 9999: Third Party IM Client for Google Hangouts
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
 net-im/jabberd2 2.3.3-r2 2.3.4-r1 2.5.0: Open Source Jabber Server
-net-im/kadu 2.1-r1 3.0 4.3: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
+net-im/kadu 2.1-r1 4.3-r1: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
@@ -14995,7 +14995,7 @@ net-libs/polarssl 1.3.9 1.3.9-r1: Cryptographic library for embedded systems
 net-libs/ptlib 2.10.11 2.12.9 2.12.9-r1: Network focused portable C++ class library providing high level functions
 net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/quasselc 0_p20170111: API for accessing Quassel using C
-net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 0.9.3 9999: A cross-platform C++ XMPP client library based on the Qt framework
+net-libs/qxmpp 0.8.0 0.9.3-r1 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rest 0.8.0: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10 1.1.11: A parsing library for RIPE Atlas result strings
