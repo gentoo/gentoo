@@ -92,22 +92,8 @@ src_install() {
 
 	keepdir "/var/log/${PN}"
 
-	# TODO: Globbing doesn't work; find alternative.
-	dodoc -r "${D}etc/${PN}/aliases"
-	dodoc -r "${D}etc/${PN}/modules"
-	dodoc "${D}etc/${PN}/censor.conf.example"
-	dodoc "${D}etc/${PN}/filter.conf.example"
-	dodoc "${D}etc/${PN}/helpop-full.conf.example"
-	dodoc "${D}etc/${PN}/helpop.conf.example"
-	dodoc "${D}etc/${PN}/inspircd.conf.example"
-	dodoc "${D}etc/${PN}/links.conf.example"
-	dodoc "${D}etc/${PN}/modules.conf.example"
-	dodoc "${D}etc/${PN}/motd.txt.example"
-	dodoc "${D}etc/${PN}/opermotd.txt.example"
-	dodoc "${D}etc/${PN}/opers.conf.example"
-	dodoc "${D}etc/${PN}/quotes.txt.example"
-	dodoc "${D}etc/${PN}/rules.txt.example"
-	rm -rf "${D}etc/${PN}"
+	dodoc -r docs/*
+	rm -r "${D%/}/etc/${PN}" || die
 	dodir "/etc/${PN}"
 	dodir "/etc/${PN}/aliases"
 	dodir "/etc/${PN}/modules"
