@@ -15699,7 +15699,7 @@ net-voip/gnugk 3.4-r1: GNU H.323 gatekeeper
 net-voip/homer 0.25-r1 9999: Homer Conferencing (short: Homer) is a free SIP softphone with advanced audio and video support
 net-voip/linphone 3.5.2 3.6.1: Video softphone based on the SIP protocol
 net-voip/openmcu 2.2.5-r1: Simple Multi Conference Unit using H.323
-net-voip/telepathy-gabble 0.18.3: A Jabber/XMPP connection manager, with handling of single and multi user chats and voice calls
+net-voip/telepathy-gabble 0.18.3 0.18.4: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-haze 0.8.0 0.8.0-r1: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepathy
