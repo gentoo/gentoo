@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit gnome2 eutils python-any-r1
 
-DESCRIPTION="A Jabber/XMPP connection manager, with handling of single and multi user chats and voice calls"
+DESCRIPTION="A XMPP connection manager, handles single and multi user chats and voice calls"
 HOMEPAGE="https://telepathy.freedesktop.org/"
 SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
