@@ -1,0 +1,32 @@
+From 0906d6c153b3bedad2a91a19e8441b9633070e10 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 11 Jun 2017 15:29:53 +1200
+Subject: [PATCH] Fix tab/tables.pl for Perl 5.26
+
+Removal of "." from @INC means require $PATH no longer ever assumes
+a path relative to ".", and instead must be explicitly stated with a
+leading "./"
+
+Fixes RT#120087
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=120087
+---
+ tab/tables.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tab/tables.pl b/tab/tables.pl
+index 2aa0c66..7bed411 100644
+--- a/tab/tables.pl
++++ b/tab/tables.pl
+@@ -3,7 +3,7 @@
+ # Copyright 2001 Abhijit Menon-Sen <ams@wiw.org>
+ 
+ use strict;
+-require 'tab/misc.pl';
++require './tab/misc.pl';
+ 
+ my ($qtab, $mtab) = ([], []);
+ 
+-- 
+2.13.1
+
