@@ -58,7 +58,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
-		dev-texlive/texlive-genericrecommended
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 		sys-apps/texinfo )
 	dev-util/gperf
 	virtual/pkgconfig"
