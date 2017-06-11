@@ -17,5 +17,5 @@ IUSE=""
 RDEPEND="virtual/perl-File-Spec"
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker"
-
+PATCHES=("${FILESDIR}/no-dot-inc.patch")
 SRC_TEST="do"
