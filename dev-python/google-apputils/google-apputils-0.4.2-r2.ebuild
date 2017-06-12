@@ -25,6 +25,10 @@ RDEPEND="
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND} dev-python/mox[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}/0.4.2-sh_test-env.patch"
+)
+
 src_unpack() {
 	default
 	chmod -R a+rX,u+w,g-w,o-w ${P} || die
