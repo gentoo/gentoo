@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -8,7 +8,7 @@ WANT_AUTOCONF="2.1"
 inherit eutils multilib versionator autotools
 
 DESCRIPTION="Mozilla LDAP C SDK"
-HOMEPAGE="http://wiki.mozilla.org/LDAP_C_SDK"
+HOMEPAGE="https://wiki.mozilla.org/LDAP_C_SDK"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v${PV}/src/${P}.tar.gz"
 
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
