@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ EAPI=4
 inherit multilib rpm toolchain-funcs
 
 DESCRIPTION="A library for emulating x86"
-HOMEPAGE="http://www.opensuse.org/"
-SRC_URI="http://download.opensuse.org/source/factory/repo/oss/suse/src/${P}-9.8.src.rpm"
+HOMEPAGE="https://www.opensuse.org/"
+SRC_URI="https://download.opensuse.org/source/factory/repo/oss/suse/src/${P}-9.8.src.rpm"
 
 LICENSE="HPND"
 SLOT="0"
