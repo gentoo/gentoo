@@ -32,8 +32,6 @@ CONFIG_CHECK="NET INET NET_UDP_TUNNEL NF_CONNTRACK NETFILTER_XT_MATCH_HASHLIMIT 
 WARNING_PADATA="If you're running a multicore system you likely should enable CONFIG_PADATA for improved performance and parallel crypto."
 WARNING_IP6_NF_IPTABLES="If your kernel has CONFIG_IPV6, you need CONFIG_IP6_NF_IPTABLES; otherwise WireGuard will not insert."
 
-PATCHES=( "${FILESDIR}/${P}-wait-for-rng.patch" )
-
 pkg_setup() {
 	if use module; then
 		linux-mod_pkg_setup
