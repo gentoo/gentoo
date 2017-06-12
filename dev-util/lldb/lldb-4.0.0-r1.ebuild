@@ -58,6 +58,8 @@ src_unpack() {
 src_prepare() {
 	# fix tests in stand-alone build
 	eapply "${FILESDIR}"/4.0.0/0001-test-Fix-finding-LLDB-tools-when-building-stand-alon.patch
+	# fix compatibility with new libedit
+	eapply "${FILESDIR}"/4.0.0/0002-Fix-bug-28898.patch
 
 	eapply_user
 }
