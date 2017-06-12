@@ -8742,6 +8742,7 @@ x11-wm/xpra:server - Build server-side code
 x11-wm/xpra:vpx - Enable vpx image format support
 x11-wm/xpra:webcam - Enable webcam support via opencv
 x11-wm/xpra:webp - Enable webp image format support
+xfce-base/garcon:gtk2 - Build the garcon-gtk2-1 library (required for xfce-base/xfce4-panel < 4.13 only).
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
 xfce-base/xfce4-settings:libcanberra - Enable sound event support using media-libs/libcanberra
 xfce-base/xfce4-settings:xklavier - Enable keyboard layout selection support using x11-libs/libxklavier
