@@ -39,11 +39,6 @@ pkg_setup() {
 	fi
 }
 
-PATCHES=(
-	"${FILESDIR}/${P}-remove-padata-hotplug.patch"
-	"${FILESDIR}/${P}-simultaneous-start.patch"
-)
-
 src_compile() {
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	use module && linux-mod_src_compile
