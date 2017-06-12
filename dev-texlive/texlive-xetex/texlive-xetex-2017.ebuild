@@ -20,6 +20,7 @@ DEPEND=">=dev-texlive/texlive-basic-2017
 >=app-text/texlive-core-2010[xetex]
 dev-texlive/texlive-mathscience
 !<dev-texlive/texlive-mathextra-2012
+dev-texlive/texlive-luatex
 "
 RDEPEND="${DEPEND} "
 FONT_CONF=( "${FILESDIR}"/09-texlive.conf )
