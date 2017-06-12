@@ -19,7 +19,7 @@ inherit myspell-r2
 
 DESCRIPTION="Danish dictionaries for myspell/hunspell"
 HOMEPAGE="https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary"
-SRC_URI="http://extensions.libreoffice.org/extension-center/stavekontrolden-danish-dictionary/pscreleasefolder.2011-09-30.0280139318/2.1/dict-da-${PV}.oxt"
+SRC_URI="https://extensions.libreoffice.org/extension-center/stavekontrolden-danish-dictionary/pscreleasefolder.2011-09-30.0280139318/2.1/dict-da-${PV}.oxt"
 SRC_URI="https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary/${PV}/@@download/file/dict-da-${PV/./-}.oxt"
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
