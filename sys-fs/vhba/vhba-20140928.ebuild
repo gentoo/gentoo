@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit linux-mod user udev
+inherit eutils linux-mod user udev
 
 MY_P=vhba-module-${PV}
 DESCRIPTION="Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite"
@@ -36,6 +36,10 @@ src_prepare() {
 	# Avoid "make jobserver unavailable" warning and -Werror problems
 	sed -e '/ccflags/s/-Werror$/-Wall/' \
 		-i Makefile || die "sed failed"
+
+	epatch "${FILESDIR}/${PN}-20161009-linux-4.11.patch"
+
+	epatch_user
 }
 
 src_install() {
