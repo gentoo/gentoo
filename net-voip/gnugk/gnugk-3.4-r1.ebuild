@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ MY_P1=${PN}-$(replace_version_separator 2 -)
 MY_P2=${PN}-$(get_version_component_range 1-2)
 
 DESCRIPTION="GNU H.323 gatekeeper"
-HOMEPAGE="http://www.gnugk.org/"
+HOMEPAGE="https://www.gnugk.org/"
 SRC_URI="mirror://sourceforge/openh323gk/${MY_P1}.tar.gz"
 
 LICENSE="GPL-2"
