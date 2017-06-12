@@ -19,7 +19,8 @@ IUSE=""
 RDEPEND="app-arch/rpm
 	app-arch/xz-utils
 	dev-vcs/bzr
-	dev-vcs/git"
+	dev-vcs/git
+	!!sci-visualization/xd3d" # File collision (Bug #621044)
 
 pkg_setup() {
 	enewgroup ${PN}
