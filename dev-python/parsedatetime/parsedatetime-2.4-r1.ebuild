@@ -15,13 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
+RDEPEND="dev-python/future[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_prepare() {
 	rm setup.cfg || die
 }
 
 python_test() {
-	nosetests || die
+	py.test || die
 }
