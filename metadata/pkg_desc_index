@@ -219,7 +219,7 @@ app-admin/sysstat 11.4.0 11.4.3-r1 11.4.4 11.5.6: System performance tools for L
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -19546,18 +19546,18 @@ x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 1.0.4-r1 1.0.6 2.0.1 2.0.2: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.7 0.11.2: Extensions, widgets and framework library with session support for Xfce
-xfce-base/garcon 0.5.0-r2 0.6.0: Xfce's freedesktop.org specification compatible menu implementation library
+xfce-base/garcon 0.5.0-r2 0.6.1: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.13.0 4.13.1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.12.1-r1: A basic utility library for the Xfce desktop environment
+xfce-base/libxfce4util 4.12.1-r1 4.13.0: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
 xfce-base/thunar 1.6.10-r1 1.6.11: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applications for the Xfce desktop environment
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.0-r1 4.12.1 4.13.0: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.1: A flexible, easy-to-use configuration management system for Xfce
-xfce-base/xfdesktop 4.12.3 4.13.0: Desktop manager for the Xfce desktop environment
+xfce-base/xfdesktop 4.12.3 4.13.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3: A port of the GNOME multiload applet for the Xfce panel
