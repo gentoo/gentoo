@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils
 DESCRIPTION="Watches a multilog file for irregularities"
 
-HOMEPAGE="http://www.eyrie.org/~eagle/software/multilog-watch/"
-SRC_URI="http://archives.eyrie.org/software/system/multilog-watch
-http://www.eyrie.org/%7Eeagle/software/multilog-watch/sample.filter"
+HOMEPAGE="https://www.eyrie.org/~eagle/software/multilog-watch/"
+SRC_URI="https://archives.eyrie.org/software/system/multilog-watch
+https://www.eyrie.org/%7Eeagle/software/multilog-watch/sample.filter"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
