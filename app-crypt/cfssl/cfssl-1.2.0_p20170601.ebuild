@@ -17,6 +17,8 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="hardened"
 
+RDEPEND="!!dev-lang/mono" #File collision (bug 614364)
+
 RESTRICT="test"
 
 src_compile() {
