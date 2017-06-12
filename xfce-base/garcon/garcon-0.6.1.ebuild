@@ -10,10 +10,10 @@ SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="LGPL-2 FDL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE=""
+IUSE="+gtk2"
 
 RDEPEND=">=dev-libs/glib-2.30:=
-	>=x11-libs/gtk+-2.24:2=
+	gtk2? ( >=x11-libs/gtk+-2.24:2= )
 	>=x11-libs/gtk+-3.14:3=
 	>=xfce-base/libxfce4ui-4.11.1:=[gtk3(+)]
 	>=xfce-base/libxfce4util-4.11:="
@@ -24,3 +24,18 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README STATUS TODO )
+
+src_configure() {
+	local myconf=(
+		$(use_enable gtk2)
+		$(use_enable gtk2 libxfce4ui)
+	)
+
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+
+	find "${D}" -name '*.la' -delete || die
+}
