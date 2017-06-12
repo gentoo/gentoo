@@ -8662,7 +8662,7 @@ dev-python/serpent 1.7 1.12 1.19: A simple serialization library based on ast.li
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10: Allow customization of the process title
 dev-python/setuptools 30.4.0 34.0.2-r1 35.0.1 35.0.2 9999: Collection of extensions to Distutils
-dev-python/setuptools-git 1.1-r1: Setuptools revision control system plugin for Git
+dev-python/setuptools-git 1.1-r1 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.15.0 1.15.5: package to manage versions by scm tags via setuptools
 dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
@@ -8944,7 +8944,7 @@ dev-python/zope-component 4.3.0 4.3.0-r1: Zope Component Architecture
 dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0 4.2.0-r1: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.1.0: General purpose exceptions for Zope packages
-dev-python/zope-interface 4.1.1 4.3.2 4.4.0 4.4.0-r1: Interfaces for Python
+dev-python/zope-interface 4.1.1 4.3.2 4.4.0 4.4.0-r1 4.4.1: Interfaces for Python
 dev-python/zope-testing 4.6.1: Zope testing helpers
 dev-python/zope-testrunner 4.6.0: Zope testrunner script
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
