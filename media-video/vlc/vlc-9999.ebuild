@@ -131,7 +131,7 @@ RDEPEND="
 	shout? ( >=media-libs/libshout-2.1:0 )
 	sid? ( media-libs/libsidplay:2 )
 	skins? ( x11-libs/libXext:0 x11-libs/libXpm:0 x11-libs/libXinerama:0 )
-	speex? ( media-libs/speex:0 )
+	speex? ( >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 )
 	svg? ( >=gnome-base/librsvg-2.9:2 >=x11-libs/cairo-1.13.1:0 )
 	swscale? (
 		!libav? ( media-video/ffmpeg:0= )
