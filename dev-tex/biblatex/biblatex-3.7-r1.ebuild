@@ -17,8 +17,8 @@ IUSE="+biber doc examples"
 DEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-latexextra
 	|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )"
-RDEPEND="${DEPEND}
-	biber? ( ~dev-tex/biber-2.7 )"
+RDEPEND="${DEPEND}"
+PDEPEND="biber? ( ~dev-tex/biber-2.7 )"
 
 S="${WORKDIR}"
 TEXMF=/usr/share/texmf-site
