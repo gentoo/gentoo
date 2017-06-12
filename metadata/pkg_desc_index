@@ -968,7 +968,7 @@ app-doc/doxygen 1.8.12 1.8.13-r1 9999: Documentation system for most programming
 app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.2: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.9.6 4.10.0 4.10.03 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
-app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
+app-doc/gimp-help 2.6.1 2.8.2: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition
