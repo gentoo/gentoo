@@ -9,7 +9,8 @@ inherit distutils-r1 eutils versionator
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
-SRC_URI="http://releases.ansible.com/${PN}/${P}.tar.gz"
+SRC_URI="http://releases.ansible.com/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/ansible/ansible-2.3.1.0-pycryptodome.patch"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -47,7 +48,7 @@ DEPEND="
 # not included in release tarball
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${P}-pycryptodome.patch" )
+PATCHES=( "${DISTDIR}/${P}-pycryptodome.patch" )
 
 python_test() {
 	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
