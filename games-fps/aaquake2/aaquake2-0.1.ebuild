@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils games
 
 DESCRIPTION="text mode Quake II"
-HOMEPAGE="http://www.jfedor.org/aaquake2/"
+HOMEPAGE="https://www.jfedor.org/aaquake2/"
 SRC_URI="mirror://idsoftware/source/q2source-3.21.zip
-	http://www.jfedor.org/aaquake2/quake2-ref_softaa-${PV}.tar.gz"
+	https://www.jfedor.org/aaquake2/quake2-ref_softaa-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
