@@ -1553,7 +1553,7 @@ app-i18n/libtabe 0.2.6 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.
 app-i18n/libtomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux man pages
 app-i18n/man-pages-de 1.15 1.16 1.21: A somewhat comprehensive collection of Linux german man page translations
-app-i18n/man-pages-fr 2.39.0 3.40.1: A somewhat comprehensive collection of french Linux man pages
+app-i18n/man-pages-fr 3.40.1 3.70: A somewhat comprehensive collection of french Linux man pages
 app-i18n/man-pages-it 2.80-r1 4.00: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20130215 20131015: A collection of manual pages translated into Japanese
 app-i18n/man-pages-nl 0.13.3: A somewhat comprehensive collection of Dutch Linux man pages
@@ -10503,7 +10503,7 @@ dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
-dev-util/promu 0.1.0_p20161031 0.1.0_p20170130: Prometheus Utility Tool
+dev-util/promu 0.1.0_p20170607: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2016.3.2-r1 2017.1 2017.1.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2016.3.2 2017.1: Intelligent Python IDE with unique code assistance and analysis
