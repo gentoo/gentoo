@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils flag-o-matic toolchain-funcs
 CLISP_PACKAGE="clisp-2.41"
 
 DESCRIPTION="foreign function call libraries"
-HOMEPAGE="http://www.haible.de/bruno/packages-ffcall.html"
+HOMEPAGE="https://www.haible.de/bruno/packages-ffcall.html"
 SRC_URI="mirror://sourceforge/clisp/${CLISP_PACKAGE}.tar.bz2"
 
 # "Ffcall is under GNU GPL. As a special exception, if used in GNUstep
