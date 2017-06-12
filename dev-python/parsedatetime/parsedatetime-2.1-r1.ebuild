@@ -18,6 +18,8 @@ IUSE="test"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
+RDEPEND="dev-python/future[${PYTHON_USEDEP}]"
+
 python_prepare() {
 	rm setup.cfg || die
 }
