@@ -1,0 +1,10 @@
+--- libedit-20170329-3.1/libedit.pc.in	2017-03-29 21:08:21.000000000 +0300
++++ libedit-20170329-3.1/libedit.pc.in	2017-05-21 01:28:55.000000000 +0300
+@@ -7,5 +7,6 @@
+ Description: command line editor library provides generic line editing, history, and tokenization functions.
+ Version: @VERSION@
+ Requires:
+-Libs: -L${libdir} -ledit @LIBS@
++Libs: -L${libdir} -ledit
++Libs.private: @LIBS@
+ Cflags: -I${includedir} -I${includedir}/editline
