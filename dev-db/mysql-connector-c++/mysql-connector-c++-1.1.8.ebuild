@@ -8,7 +8,7 @@ inherit cmake-utils flag-o-matic
 DESCRIPTION="MySQL database connector for C++ (mimics JDBC 4.0 API)"
 HOMEPAGE="http://dev.mysql.com/downloads/connector/cpp/"
 URI_DIR="Connector-C++"
-SRC_URI="mirror://mysql/Downloads/${URI_DIR}/${P}.tar.gz"
+SRC_URI="https://dev.mysql.com/get/Downloads/${URI_DIR}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
