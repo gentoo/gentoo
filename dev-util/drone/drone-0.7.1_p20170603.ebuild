@@ -3,13 +3,13 @@
 
 EAPI=6
 
-EGO_PN="github.com/drone/drone/..."
-EGIT_COMMIT="823175605f61ddf18b8566e04f6e94d550762d99"
-EGO_VENDOR=( "github.com/drone/drone-ui 72dc649bc4ff81f4560ab70b29495830a4c1cf3d" )
+EGO_PN="github.com/drone/drone"
+EGIT_COMMIT="eed03a58036c5029af1b4bf347d2ac6f5746bf21"
+EGO_VENDOR=( "github.com/drone/drone-ui 2910d0ee662816a2463d31f0988b1ecccd0410b5" )
 
 inherit golang-build golang-vcs-snapshot user
 
-ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="A Continuous Delivery platform built on Docker, written in Go"
@@ -23,24 +23,25 @@ IUSE=""
 DEPEND="dev-go/go-bindata
 	dev-go/go-bindata-assetfs:="
 
+RESTRICT="test"
+
 pkg_setup() {
-	enewgroup drone
-	enewuser drone -1 -1 /var/lib/drone drone
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 /var/lib/drone ${PN}
 }
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"	emake -C src/github.com/drone/drone gen || die
 	pushd src || die
-	DRONE_BUILD_NUMBER="${EGIT_COMMIT:0:7}" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"\
-		go install -ldflags "-extldflags '-static' -X github.com/drone/drone/version.VersionDev=build.${EGIT_COMMIT:0:7}" github.com/drone/drone/drone || die
+	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"\
+		go install -ldflags "-extldflags '-static' -X github.com/drone/drone/version.VersionDev=build.${EGIT_COMMIT:0:7}" ${EGO_PN}/drone || die
 	popd || die
 }
 
 src_install() {
-	dobin bin/*
+	newbin bin/drone drone-server
 	dodoc src/github.com/drone/drone/README.md
 	keepdir /var/log/drone /var/lib/drone
-	fowners -R drone:drone /var/log/drone /var/lib/drone
+	fowners -R ${PN}:${PN} /var/log/drone /var/lib/drone
 	newinitd "${FILESDIR}"/drone.initd drone
 	newconfd "${FILESDIR}"/drone.confd drone
 	newinitd "${FILESDIR}"/drone-agent.initd drone-agent

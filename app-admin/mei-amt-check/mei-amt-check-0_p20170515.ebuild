@@ -7,7 +7,7 @@ inherit vcs-snapshot linux-info toolchain-funcs
 
 DESCRIPTION="AMT status checker"
 HOMEPAGE="https://github.com/mjg59/mei-amt-check/"
-COMMIT="a4d8fca4d18e1ae896b0305a53e152b568596bc1"
+COMMIT="d07672120ce7a0c79e949e537f3d19efecec1700"
 SRC_URI="https://github.com/mjg59/mei-amt-check/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
