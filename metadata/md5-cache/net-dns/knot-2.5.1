@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst test
+DEPEND=>=net-libs/gnutls-3.3:= >=dev-db/lmdb-0.9.15 >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( || ( net-dns/libidn >=net-dns/libidn2-2.0.0 ) ) dev-libs/libedit systemd? ( sys-apps/systemd ) virtual/pkgconfig doc? ( dev-python/sphinx ) virtual/pkgconfig
+DESCRIPTION=High-performance authoritative-only DNS server
+EAPI=6
+HOMEPAGE=http://www.knot-dns.cz/
+IUSE=dnstap doc caps +fastparser idn systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=net-libs/gnutls-3.3:= >=dev-db/lmdb-0.9.15 >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( || ( net-dns/libidn >=net-dns/libidn2-2.0.0 ) ) dev-libs/libedit systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=https://secure.nic.cz/files/knot-dns/knot-2.5.1.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	ec2e9154031d942186c75c0aabb41900	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=c34928072aa5e3997ec776c222e6ca7a
