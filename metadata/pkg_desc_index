@@ -4086,7 +4086,7 @@ dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
 dev-java/glassfish-jms-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-persistence 1.0-r1: Glassfish implementation of persistence API
 dev-java/glassfish-servlet-api 3.1.1: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
-dev-java/glassfish-transaction-api 1.1.2.2.04: Java Transaction API
+dev-java/glassfish-transaction-api 1.1.2.2.04 1.1.2.2.04-r1: Java Transaction API
 dev-java/glassfish-xmlrpc-api 1.1.1: Project GlassFish XML RPC API
 dev-java/glazedlists 1.8.0-r1: A toolkit for list transformations
 dev-java/gnu-classpath 0.98-r5: Free core class libraries for use with Java VMs and compilers
@@ -4151,7 +4151,7 @@ dev-java/jama 1.0.3-r1: A Java Matrix Package
 dev-java/jamon 2.81: Java API to monitor production applications
 dev-java/jamvm 2.0.0-r1: An extremely small and specification-compliant virtual machine
 dev-java/janino 2.7.0: An embedded compiler for run-time compilation purposes
-dev-java/jansi 1.5 1.5-r1 1.11-r1: A library that allows you to use ANSI escape sequences in your console output
+dev-java/jansi 1.5-r2 1.11-r1: A library that allows you to use ANSI escape sequences in your console output
 dev-java/jansi-native 1.5: Native JNI component for dev-java/jansi
 dev-java/japitools 0.9.7-r4: Java API compatibility testing tools
 dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
@@ -4301,7 +4301,7 @@ dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r2: Kunststoff look'n'feel Java library
 dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
-dev-java/laf-plugin 0.2-r1 0.2-r2 1.1-r1: Look'n'feel Java library
+dev-java/laf-plugin 0.2-r2 1.1-r1: Look'n'feel Java library
 dev-java/ldapsdk 4.1.7-r4: Netscape Directory SDK for Java
 dev-java/leiningen-bin 2.7.0 2.7.1-r1: Automate Clojure projects without setting your hair on fire
 dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife for OSGi
@@ -4835,7 +4835,7 @@ dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configurati
 dev-libs/libdynd 0.6.5 0.6.6 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.3.4: Extensible binary format library (kinda like XML)
-dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
+dev-libs/libedit 20130712.3.1 20170329.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.8-r1 1.1.1: Erasure Code API library written in C with pluggable Erasure Code backends.
@@ -10437,7 +10437,7 @@ dev-util/kyua 0.13: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11 1.13-r1: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lldb 4.0.0 9999: The LLVM debugger
+dev-util/lldb 4.0.0-r1 9999: The LLVM debugger
 dev-util/lockrun 20120508: Lockrun - runs cronjobs with overrun protection
 dev-util/lorax 26.0: Redhat Tools for creating disk, filesystem, and iso images
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
@@ -15713,7 +15713,7 @@ net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.0: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/htun 0.9.6: Project to tunnel IP traffic over HTTP
-net-vpn/i2p 0.9.29 0.9.30: A privacy-centric, anonymous network.
+net-vpn/i2p 0.9.29 0.9.30 0.9.30-r1: A privacy-centric, anonymous network.
 net-vpn/i2pd 2.12.0 2.13.0 2.14.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
@@ -17207,7 +17207,7 @@ sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netloc 0.5: Portable Network Locality (netloc)
 sys-apps/netplug 1.2.9.2-r1 1.2.9.2-r2: Brings up/down ethernet ports automatically with cable detection
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
-sys-apps/nix 1.11.9: A purely functional package manager
+sys-apps/nix 1.11.9 1.11.10: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.1 1.2 1.3: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.21.7 0.22.4 0.23.2 0.24.2 0.25 0.26.2 0.26.3 0.27.1 9999: OpenRC manages the services, startup and shutdown of a host
