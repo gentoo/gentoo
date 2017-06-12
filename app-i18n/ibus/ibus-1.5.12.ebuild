@@ -24,7 +24,8 @@ REQUIRED_USE="
 	vala? ( introspection )
 	python? (
 		${PYTHON_REQUIRED_USE}
-		|| ( deprecated ( gtk3 introspection ) ) )" #342903
+		|| ( deprecated gtk3 )
+		gtk3? ( introspection ) )" #342903
 
 [[ -n ${UPSTREAM_VER} ]] && \
 	UPSTRAM_PATCHSET_URI="http://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"

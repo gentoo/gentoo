@@ -22,7 +22,8 @@ REQUIRED_USE="|| ( gtk gtk3 X )
 	deprecated? ( python )
 	python? (
 		${PYTHON_REQUIRED_USE}
-		|| ( deprecated ( gtk3 introspection ) ) )" #342903
+		|| ( deprecated gtk3 )
+		gtk3? ( introspection ) )" #342903
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.26:2
