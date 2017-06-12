@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools libtool linux-info pam
+inherit autotools libtool linux-info pam xdg-utils
 
 MY_PN=ConsoleKit2
 MY_P=${MY_PN}-${PV}
@@ -66,6 +66,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	xdg_environment_reset
+
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
 
 	default
