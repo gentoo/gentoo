@@ -27,7 +27,7 @@ DEPEND="
 "
 
 DOCS=( AUTHORS FORMATS NEWS README SECURITY TODO )
-FILECAPS=( cap_net_raw usr/sbin/mtr )
+FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.88-tinfo.patch
 )
