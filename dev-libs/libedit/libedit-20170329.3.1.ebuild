@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit multilib-minimal toolchain-funcs
+inherit autotools multilib-minimal toolchain-funcs
 
 MY_PV=${PV/./-}
 MY_P=${PN}-${MY_PV}
@@ -26,7 +26,13 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${P}-ncursesprivate.patch"
 	"${FILESDIR}/${P}-el_fn_sh_complete.patch"
+	"${FILESDIR}/${P}-tinfo.patch"
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
