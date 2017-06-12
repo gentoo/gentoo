@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="A somewhat comprehensive collection of french Linux man pages"
-HOMEPAGE="http://traduc.org/perkamon"
-SRC_URI="http://alioth.debian.org/frs/download.php/3722/${P}.tar.bz2"
+HOMEPAGE="https://traduc.org/perkamon"
+SRC_URI="https://alioth.debian.org/frs/download.php/3722/${P}.tar.bz2"
 
 LICENSE="man-pages GPL-1+ GPL-2+ GPL-2 BSD BSD-2 MIT rc LDP-1 public-domain"
 SLOT="0"
