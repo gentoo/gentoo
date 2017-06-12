@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="A fast JSON encoding/parsing module for Lua"
-HOMEPAGE="http://www.kyne.com.au/~mark/software/lua-cjson.php https://github.com/mpx/lua-cjson/"
-SRC_URI="http://www.kyne.com.au/~mark/software/download/${P}.tar.gz"
+HOMEPAGE="https://www.kyne.com.au/~mark/software/lua-cjson.php https://github.com/mpx/lua-cjson/"
+SRC_URI="https://www.kyne.com.au/~mark/software/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
