@@ -498,7 +498,7 @@ app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD 
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.1.0 0.14.1 9999: An implementation of the ACME protocol
+app-crypt/acme 0.1.0 0.14.1 0.15.0 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.4d: Encrypts data from stdin to stdout
@@ -2927,7 +2927,7 @@ dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to s
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.7 2.3.8 3.0.17 3.1.0 3.1.6 3.1.8: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.8 3.0.17 3.1.9: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13 1.00.41: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
