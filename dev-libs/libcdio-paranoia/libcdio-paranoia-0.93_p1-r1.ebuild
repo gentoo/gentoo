@@ -32,6 +32,8 @@ S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
+PATCHES=("${FILESDIR}"/${PN}-0.90-oos-tests.patch)
+
 src_prepare() {
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	default
