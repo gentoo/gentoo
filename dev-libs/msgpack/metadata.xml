@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">msgpack/msgpack-c</remote-id>
   </upstream>
+  <use>
+    <flag name="boost">Uses <pkg>dev-libs/boost</pkg></flag>
+  </use>
 </pkgmetadata>
