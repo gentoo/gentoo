@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,3 +18,9 @@ DEPEND=">=virtual/perl-File-Spec-0.80
 RDEPEND="${DEPEND}"
 
 SRC_TEST="do"
+
+src_prepare() {
+	sed -i -e 's/use inc::Module::Install::DSL /use lib q[.]; use inc::Module::Install::DSL /' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}
