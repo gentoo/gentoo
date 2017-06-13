@@ -25,6 +25,7 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
+	$(add_qt_dep qtquickcontrols)
 	$(add_qt_dep qtwidgets)
 	sys-boot/plymouth
 "
