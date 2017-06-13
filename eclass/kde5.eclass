@@ -305,13 +305,7 @@ _calculate_src_uri() {
 			esac
 			;;
 		kde-frameworks)
-			case ${PV} in
-				5.29.?)
-					SRC_URI="mirror://kde/Attic/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
-				*)
-					SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
-			esac
-			;;
+			SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
 		kde-plasma)
 			local plasmapv=$(get_version_component_range 1-3)
 
