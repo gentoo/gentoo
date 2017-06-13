@@ -27,8 +27,6 @@ DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( authors.txt contributing.txt )
-
 python_test() {
 	${EPYTHON} run_tests.py || die
 }
