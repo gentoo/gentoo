@@ -4,7 +4,7 @@
 
 extra_started_commands="reload graceful"
 
-LIGHTTPD_PID="$(grep pid ${LIGHTTPD_CONF} | cut -d '=' -f 2 | tr -d \\\" | tr -d [:space:])"
+LIGHTTPD_PID="$(awk -F'["]' '/pid/ {print $2}' ${LIGHTTPD_CONF})"
 
 depend() {
 	need net
@@ -32,8 +32,8 @@ start() {
 	checkconfig || return 1
 	# Glean lighttpd's credentials from the configuration file
 	# Fixes bug 454366
-	LIGHTTPD_USER="$(awk '/^server.username/{s=$3};{sub("\"","",s)};END{print s}' ${LIGHTTPD_CONF})"
-	LIGHTTPD_GROUP="$(awk '/^server.groupname/{s=$3};{sub("\"","",s)};END{print s}' ${LIGHTTPD_CONF})"
+	LIGHTTPD_USER="$(awk -F'["]' '/^server[.]username/ {print $2}' ${LIGHTTPD_CONF})"
+	LIGHTTPD_GROUP="$(awk -F'["]' '/^server[.]groupname/ {print $2}' ${LIGHTTPD_CONF})"
 	checkpath -d -q -m 0750 -o "${LIGHTTPD_USER}":"${LIGHTTPD_GROUP}" /run/lighttpd/
 
 	ebegin "Starting lighttpd"
