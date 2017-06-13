@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2015-2016 Gentoo Foundation
+# Copyright 2015-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="checkconfig"
@@ -13,7 +13,7 @@ depend() {
 }
 
 checkconfig() {
-	/usr/bin/rspamadm configtest -c /etc/rspamd/rspamd.sysvinit.conf > /dev/null \
+	/usr/bin/rspamadm configtest -c /etc/rspamd/rspamd.conf > /dev/null \
 		|| return 1
 }
 
@@ -21,9 +21,7 @@ start() {
 	checkconfig || return 1
 	ebegin "Starting ${SVCNAME}"
 
-	mkdir -m0750 -p $RUNDIR
-	chown rspamd:rspamd $RUNDIR
-	chmod g+s $RUNDIR
+	checkpath -d $RUNDIR -m 2750 -o rspamd:rspamd
 	rm -f $RUNDIR/$SVCNAME.sock
 
 	start-stop-daemon --start --quiet --pidfile $PIDFILE -u rspamd -g rspamd \
