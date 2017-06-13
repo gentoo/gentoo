@@ -1,0 +1,33 @@
+--- a/configure.in
++++ b/configure.in
+@@ -176,7 +176,7 @@
+ AC_FUNC_STRFTIME
+ AC_FUNC_STRPTIME
+ AC_FUNC_VPRINTF
+-AC_CHECK_FUNCS([alarm btowc bzero ftime getcwd gettimeofday localtime_r memcmp memcpy memmove memset mkstemp munmap pstat_getdynamic raise re_comp regcomp select setlocale strchr strcspn strdup strerror strrchr strstr strtol strtoul timegm])
++AC_CHECK_FUNCS([alarm btowc bzero ftime getcwd gettimeofday localtime_r memcmp memcpy memmove memset mkstemp munmap pstat_getdynamic raise re_comp regcomp rresvport select setlocale strchr strcspn strdup strerror strrchr strstr strtol strtoul timegm])
+ AC_REPLACE_FUNCS(snprintf vsnprintf)
+ 
+ # More header checks--here use C++
+diff -ur a/htdig-3.2.0b6/htnet/Connection.cc b/htdig-3.2.0b6/htnet/Connection.cc
+--- a/htnet/Connection.cc
++++ b/htnet/Connection.cc
+@@ -64,7 +64,7 @@
+ 
+ typedef void (*SIGNAL_HANDLER) (...);
+ 
+-#ifndef _MSC_VER /* _WIN32 */
++#ifdef HAVE_RRESVPORT
+ extern "C" {
+     int rresvport(int *);
+ }
+@@ -161,8 +161,7 @@
+     {
+ 	int	aport = IPPORT_RESERVED - 1;
+ 
+-//  Native Windows (MSVC) has no rresvport
+-#ifndef _MSC_VER /* _WIN32 */
++#ifdef HAVE_RRESVPORT
+ 	sock = rresvport(&aport);
+ #else
+ 	return NOTOK;
