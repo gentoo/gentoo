@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 # Running tests in parallel fails
 DIST_TEST="do"
 
+PATCHES=(
+	# Fix bad escaping of '.' in @INC modification
+	"${FILESDIR}/${PN}-0.45-614122-no-dot-inc.patch"
+)
 src_prepare() {
 	# Check against locale files in ${S}/pod/bin for mismatches
 	# with languages listed in PLOCALES
