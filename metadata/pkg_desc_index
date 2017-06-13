@@ -7780,6 +7780,7 @@ dev-python/httreplay 0.2.0: A HTTP replay library for testing.
 dev-python/humanfriendly 2.4: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
+dev-python/hvac 0.2.17: Python 2/3 client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 2.6.2 3.0.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.0.0 5.1.0: HTTP/2 framing layer for Python
 dev-python/hypothesis 3.6.0-r1 3.6.1 3.8.3: A library for property based testing
@@ -8285,6 +8286,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
+dev-python/pyhcl 0.2.3 0.3.5: HCL configuration parser for python
 dev-python/pyicu 1.9.5 1.9.7: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
@@ -8656,7 +8658,7 @@ dev-python/seaborn 0.7.1: Statistical data visualization
 dev-python/secretstorage 2.3.1: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selectors34 1.1: Backport of the selectors module from Python 3.4
 dev-python/selenium 2.46.0 3.0.2: Python language binding for Selenium Remote Control
-dev-python/semantic_version 2.6.0: Python library providing a few tools handling SemVer in Python.
+dev-python/semantic_version 2.6.0 2.6.0-r1: Python library providing a few tools handling SemVer in Python
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
 dev-python/sepolgen 1.2.3 2.6 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.12 1.19: A simple serialization library based on ast.literal_eval
