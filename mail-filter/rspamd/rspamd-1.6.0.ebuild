@@ -6,13 +6,13 @@ EAPI=5
 inherit cmake-utils pax-utils user systemd
 
 DESCRIPTION="Rapid spam filtering system"
-SRC_URI="https://rspamd.com/downloads/${P}.tar.xz"
+SRC_URI="https://github.com/vstakhov/rspamd/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/vstakhov/rspamd"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_ssse3 fann +gd jemalloc +jit libressl pcre2"
+IUSE="cpu_flags_x86_ssse3 fann gd jemalloc +jit libressl pcre2"
 
 RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
@@ -56,7 +56,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	newinitd "${FILESDIR}/rspamd.init-r2" rspamd
+	newinitd "${FILESDIR}/rspamd.init-r5" rspamd
 
 	# Remove mprotect for JIT support
 	if use jit; then
