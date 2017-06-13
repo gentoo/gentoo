@@ -55,6 +55,9 @@ src_prepare() {
 	einfo "Your LINGUAS lists the following languages: $LINGUAS"
 	einfo "Removing locale files not listed in it ..."
 
+	# Fix bad escaping of '.' in @INC modification
+	epatch "${FILESDIR}/${P}-614122-no-dot-inc.patch"
+
 	# perl_rm_files also updates the Manifest file
 	# and therefore silences Perl as to .po files we're about to clean
 	perl_rm_files "${locales_to_remove[@]}"
