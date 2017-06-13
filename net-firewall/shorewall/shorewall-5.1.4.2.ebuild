@@ -173,10 +173,6 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall.confd-r1 "${S}"/${MY_PN_IPV4}/default.gentoo || die "Copying shorewall.confd-r1 failed"
 		cp "${FILESDIR}"/shorewall.initd-r2 "${S}"/${MY_PN_IPV4}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall.systemd "${S}"/${MY_PN_IPV4}/gentoo.service || die "Copying shorewall.systemd failed"
-
-		# Patch LOGFORMAT to default value (=the value when LOGFORMAT isn't set)
-		# to keep existing tools which processes the logs working
-		sed -i -e 's/LOGFORMAT=.*/LOGFORMAT="Shorewall:%s:%s:"/' "${S}"/${MY_PN_IPV4}/configfiles/shorewall.conf || die "Failed to patch shorewall.conf"
 		eend 0
 	fi
 
@@ -188,10 +184,6 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall.confd-r1 "${S}"/${MY_PN_IPV6}/default.gentoo || die "Copying shorewall.confd-r1 failed"
 		cp "${FILESDIR}"/shorewall.initd-r2 "${S}"/${MY_PN_IPV6}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall6.systemd "${S}"/${MY_PN_IPV6}/gentoo.service || die "Copying shorewall6.systemd failed"
-
-		# Patch LOGFORMAT to default value (=the value when LOGFORMAT isn't set)
-		# to keep existing tools which processes the logs working
-		sed -i -e 's/LOGFORMAT=.*/LOGFORMAT="Shorewall:%s:%s:"/' "${S}"/${MY_PN_IPV6}/configfiles/shorewall6.conf || die "Failed to patch shorewall6.conf"
 		eend 0
 	fi
 
