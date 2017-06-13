@@ -227,7 +227,7 @@ app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed f
 app-admin/tripwire 2.4.3.5: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 0.5.3 0.6.2 0.6.5 0.7.2: A tool for managing secrets
+app-admin/vault 0.6.5 0.7.2: A tool for managing secrets
 app-admin/verynice 1.1-r2 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
@@ -15605,7 +15605,7 @@ net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to 
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.6.2-r1: P2P communications protocol
 net-p2p/qbittorrent 3.3.7 3.3.10 3.3.12 9999: BitTorrent client in C++ and Qt
-net-p2p/retroshare 0.5.5c 0.6.0 0.6.1 0.6.2 0.6.9999: P2P private sharing application
+net-p2p/retroshare 0.5.5c 0.6.2 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
