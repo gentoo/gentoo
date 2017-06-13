@@ -8285,7 +8285,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
-dev-python/pyicu 1.9.3-r1 1.9.5 1.9.6 1.9.7: Python bindings for dev-libs/icu
+dev-python/pyicu 1.9.5 1.9.7: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
 dev-python/pyinotify 0.9.4-r1 0.9.6: Python module used for monitoring filesystems events
@@ -15610,7 +15610,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.14.28: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.28 0.14.30: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6 1.8.6-r1: A torrent file parser
 net-p2p/transmission 2.92-r2 9999: A fast, easy, and free BitTorrent client
