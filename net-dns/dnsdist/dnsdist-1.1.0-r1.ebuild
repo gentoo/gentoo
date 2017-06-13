@@ -45,6 +45,7 @@ RDEPEND="${DEPEND}"
 "
 
 src_prepare() {
+	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
