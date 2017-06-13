@@ -22,10 +22,8 @@ SLOT="0"
 IUSE=""
 RESTRICT="test"
 
-DEPEND="${PYTHON_DEPS}
-	>=dev-util/ninja-1.6.0
-"
-RDEPEND="${DEPEND}"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND=""
 
 python_test() {
 	${EPYTHON} run_tests.py || die
