@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://git.zx2c4.com/WireGuard/snapshot/WireGuard-${PV}.tar.xz"
 	S="${WORKDIR}/WireGuard-${PV}"
-	KEYWORDS="~amd64 ~x86 ~mips ~arm ~arm64"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
