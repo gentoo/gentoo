@@ -21,7 +21,7 @@ app-accessibility/flite 1.4-r4: Flite text to speech engine
 app-accessibility/freetts 1.2.1-r2 1.2.2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
-app-accessibility/nfbtrans 7.74 7.74-r1: braille translator from the National Federation of the Blind
+app-accessibility/nfbtrans 7.74 7.74-r1 7.74-r2: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.22.2: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/pidgin-festival 2.4: A plugin which enables text-to-speech output of conversations using festival
@@ -227,7 +227,7 @@ app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed f
 app-admin/tripwire 2.4.3.5: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 0.6.5 0.7.2: A tool for managing secrets
+app-admin/vault 0.6.5 0.7.2 0.7.3: A tool for managing secrets
 app-admin/verynice 1.1-r2 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
