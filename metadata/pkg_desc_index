@@ -18894,7 +18894,7 @@ x11-misc/kapow 1.5.2: A punch clock program designed to easily keep track of you
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
-x11-misc/kronometer 2.1.2 2.1.4: Stopwatch application
+x11-misc/kronometer 2.1.2 2.1.4 2.1.5: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5-r1: utility that merges application menus, your desktop and even your file manager
 x11-misc/libinput-gestures 2.15 2.19 9999: Actions gestures on your touchpad using libinput
