@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20161014"
+MY_RELEASEDATE="20170609"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
@@ -85,7 +85,11 @@ multilib_src_compile() {
 
 	if multilib_is_native_abi && use python; then
 		building_py() {
-			emake "$@"
+			emake \
+				AR="$(tc-getAR)" \
+				CC="$(tc-getCC)" \
+				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+				"$@"
 		}
 		python_foreach_impl building_py swigify
 		python_foreach_impl building_py pywrap
