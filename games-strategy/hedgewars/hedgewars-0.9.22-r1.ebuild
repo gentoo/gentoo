@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: when physfs-2.1.0 hits the tree, set
@@ -13,7 +13,7 @@ MY_P=${PN}-src-${PV}
 DEB_PATCH_VER=7
 DESCRIPTION="A turn-based strategy, artillery, action and comedy game"
 HOMEPAGE="http://hedgewars.org/"
-SRC_URI="http://download.gna.org/hedgewars/${MY_P}.tar.bz2
+SRC_URI="http://www.hedgewars.org/download/releases/${MY_P}.tar.bz2
 	mirror://debian/pool/main/h/${PN}/${PN}_${PV}-dfsg-${DEB_PATCH_VER}.debian.tar.xz"
 
 LICENSE="GPL-2 Apache-2.0 FDL-1.3"
