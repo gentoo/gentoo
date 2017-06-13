@@ -2207,7 +2207,7 @@ app-text/adiff 1.4: wordwise diff
 app-text/agrep 2.04 2.04-r1 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2 1.2-r1: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.4: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.4 2.4-r1: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
@@ -3241,6 +3241,7 @@ dev-go/godep 74 9999: dependency tool for go
 dev-go/golint 0_pre20161114: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/goptlib 0.5 0.6: Go Tor pluggable transports library
+dev-go/gox 0_pre20160725: A dead simple, no frills Go cross compile tool
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/sarama 1.4.3 9999: Sarama is a Go library for Apache Kafka
 dev-go/siphash 1.0.0: Go implementation of SipHash-2.4
@@ -15707,7 +15708,7 @@ net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based aro
 net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepathy
 net-voip/vidyodesktop 3.6.3.017 3.6.7.010: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
-net-vpn/6tunnel 0.10 0.11_rc1 0.12: TCP proxy for applications that don't speak IPv6
+net-vpn/6tunnel 0.12: TCP proxy for applications that don't speak IPv6
 net-vpn/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
@@ -17317,7 +17318,7 @@ sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later ker
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 1.1.1 1.1.2 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/docker_auth 1.2.1: Docker Registry 2 authentication server
-sys-auth/elogind 229.3-r1 229.4: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 229.3-r1 229.4 229.5: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
@@ -17878,7 +17879,7 @@ sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries fo
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
-sys-libs/libapparmor 2.11.0: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.11.0 2.11.0-r1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
