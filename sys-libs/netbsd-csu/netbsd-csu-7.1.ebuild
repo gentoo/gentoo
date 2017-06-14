@@ -59,6 +59,70 @@ multilib_src_compile() {
 	bsdmk_src_compile "${opts[@]}"
 }
 
+multilib_src_test() {
+	local cc=(
+		# -B sets prefix for internal gcc/clang file lookup
+		$(tc-getCC) -B"${BUILD_DIR}"
+	)
+
+	# 1. figure out the correct location for crt* files
+	if tc-is-gcc; then
+		# gcc requires crt*.o in multi-dir
+		local multidir=$("${cc[@]}" -print-multi-directory)
+		if [[ ${multidir} != . ]]; then
+			ln -s . "${multidir}" || die
+		fi
+	elif tc-is-clang; then
+		# clang is entirely happy with crt*.o in -B
+		:
+	else
+		eerror "Unsupported compiler for tests ($(tc-getCC))"
+		return
+	fi
+
+	# 2. verify that the compiler can use our crtbegin/crtend
+	local crtbegin=$("${cc[@]}" -print-file-name=crtbegin.o) || die
+	local crtend=$("${cc[@]}" -print-file-name=crtend.o) || die
+	if [[ ! ${crtbegin} -ef ${BUILD_DIR}/crtbegin.o ]]; then
+		die "Compiler uses wrong crtbegin: ${crtbegin}"
+	fi
+	if [[ ! ${crtend} -ef ${BUILD_DIR}/crtend.o ]]; then
+		die "Compiler uses wrong crtend: ${crtend}"
+	fi
+
+	cat > hello.c <<-EOF || die
+		#include <stdio.h>
+
+		__attribute__((constructor))
+		static void ctor_test()
+		{
+			fputs("ctor:", stdout);
+		}
+
+		__attribute__((destructor))
+		static void dtor_test()
+		{
+			fputs(":dtor", stdout);
+		}
+
+		int main()
+		{
+			fputs("main", stdout);
+			return 0;
+		}
+	EOF
+
+	emake -f /dev/null CC="${cc[*]}" hello
+
+	local out=$(./hello) || die
+	if [[ ${out} != ctor:main:dtor ]]; then
+		eerror "Invalid output from the test case."
+		eerror "  Expected: ctor:main:dtor"
+		eerror "  Output  : ${out}"
+		die "Test failed for ${ABI:-${ARCH}}"
+	fi
+}
+
 multilib_src_install() {
 	dolib crtbegin.o crtbeginS.o crtend.o
 	dosym crtbegin.o "/usr/$(get_libdir)/crtbeginT.o"
