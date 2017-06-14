@@ -17,18 +17,23 @@ IUSE="l10n_ja"
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
 
+DOCS=( README.md )
+
 src_prepare() {
 	default
-	sed -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" -i Makefile || die
+	sed \
+	    -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
+		-i Makefile || die
 }
 
 src_install() {
 	dobin "${PN}"
 	doman "${PN}.1"
-	local DOCS=( README.md )
+
 	if use l10n_ja; then
-		newman ${PN}.1.ja ${PN}.ja.1
+		newman "${PN}.1.ja" "${PN}.ja.1"
 		DOCS+=( README.ja.md )
 	fi
+
 	einstalldocs
 }
