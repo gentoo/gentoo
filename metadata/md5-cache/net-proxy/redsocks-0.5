@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/libevent:0=
+DESCRIPTION=Transparent redirector of any TCP connection to proxy
+EAPI=6
+HOMEPAGE=http://darkk.net.ru/redsocks/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0 LGPL-2.1+ ZLIB
+RDEPEND=dev-libs/libevent:0= net-firewall/iptables
+SLOT=0
+SRC_URI=https://github.com/darkk/redsocks/archive/release-0.5.tar.gz -> redsocks-0.5.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=0d6a85fbc43149f9599d6a60f95b4c93
