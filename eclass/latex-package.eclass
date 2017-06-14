@@ -139,8 +139,8 @@ latex-package_src_doinstall() {
 					do
 						[ -n "${LATEX_PACKAGE_SKIP}" ] && has ${i##*/} ${LATEX_PACKAGE_SKIP} && continue
 						einfo "Making documentation: $i"
-						if pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i ; then
-							pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i || die
+						if pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode $i ; then
+							pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode $i || die
 						else
 							einfo "pdflatex failed, trying texi2dvi"
 							texi2dvi -q -c --language=latex $i || die
@@ -205,7 +205,7 @@ latex-package_src_compile() {
 	for i in `find \`pwd\` -maxdepth 1 -type f -name "*.ins"`
 	do
 		einfo "Extracting from $i"
-		latex --interaction=batchmode $i || die
+		latex --halt-on-error --interaction=nonstopmode $i || die
 	done
 }
 
