@@ -5263,7 +5263,7 @@ dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1.2: An OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1 1.7.2 1.7.3: OCaml tool to find/use non-standard packages
-dev-ml/flow_parser 0.46.0 0.47.0: JavaScript parser written in OCaml
+dev-ml/flow_parser 0.46.0 0.47.0 0.48.0: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
@@ -13081,7 +13081,7 @@ media-libs/libmatroska 1.4.5 1.4.7: Extensible multimedia container format based
 media-libs/libmediaart 0.7.0 1.9.1: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.94 0.7.95 0.7.96: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
-media-libs/libmikmod 3.3.8 3.3.10: A library to play a wide range of module formats
+media-libs/libmikmod 3.3.8 3.3.10 3.3.11: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.2-r1 2.0.3: Multiple Image Networkgraphics lib (animated png's)
@@ -13810,7 +13810,7 @@ media-sound/marrie 0.3.2-r1 9999: A simple podcast client that runs on the Comma
 media-sound/mcdp 0.4a 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
-media-sound/mikmod 3.2.6 3.2.7: A console MOD-Player based on libmikmod
+media-sound/mikmod 3.2.6 3.2.7 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.0.0: FastTracker 2 inspired music tracker
 media-sound/mixxx 1.10.1 1.11.0-r1 2.0.0-r3 2.0.0-r4: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3: A soundcard mixer for the OSS driver
@@ -14093,7 +14093,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 2.8.10 2.8.11 3.2.4 3.2.5 3.3 3.3.1 3.3.2 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 2.8.10 2.8.11 3.2.4 3.2.5 3.3.2 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
