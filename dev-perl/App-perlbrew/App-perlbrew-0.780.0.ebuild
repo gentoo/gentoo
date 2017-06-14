@@ -34,3 +34,4 @@ DEPEND="${RDEPEND}
 	)
 "
 mydoc=("doc/notes.org")
+PATCHES=("${FILESDIR}/no-dot-inc.patch")
