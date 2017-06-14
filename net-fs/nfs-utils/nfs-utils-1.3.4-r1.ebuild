@@ -147,6 +147,9 @@ src_install() {
 		-e '/^(After|Wants)=nfs-config.service$/d' \
 		-e 's:/usr/sbin/rpc.statd:/sbin/rpc.statd:' \
 		"${D}$(systemd_get_unitdir)"/* || die
+
+	keepdir /var/lib/nfs #368505
+	keepdir /var/lib/nfs/v4recovery #603628
 }
 
 pkg_postinst() {
@@ -154,7 +157,6 @@ pkg_postinst() {
 	# src_install we put them in /usr/lib/nfs for safe-keeping, but
 	# the daemons actually use the files in /var/lib/nfs.  #30486
 	local f
-	mkdir -p "${EROOT}"/var/lib/nfs #368505
 	for f in "${EROOT}"/usr/$(get_libdir)/nfs/*; do
 		[[ -e ${EROOT}/var/lib/nfs/${f##*/} ]] && continue
 		einfo "Copying default ${f##*/} from ${EPREFIX}/usr/$(get_libdir)/nfs to ${EPREFIX}/var/lib/nfs"
