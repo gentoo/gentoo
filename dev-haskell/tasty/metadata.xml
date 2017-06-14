@@ -8,7 +8,4 @@
 	<longdescription>
 		See &lt;http://documentup.com/feuerbach/tasty&gt;
 	</longdescription>
-	<use>
-		<flag name="colors">Enable colorful output</flag>
-	</use>
 </pkgmetadata>
