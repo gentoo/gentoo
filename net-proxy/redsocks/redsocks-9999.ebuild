@@ -11,7 +11,7 @@ else
 	EGIT_REPO_URI="git://github.com/darkk/${PN}.git"
 fi
 
-inherit toolchain-funcs ${GIT_ECLASS}
+inherit systemd toolchain-funcs user ${GIT_ECLASS}
 
 DESCRIPTION="Transparent redirector of any TCP connection to proxy"
 HOMEPAGE="http://darkk.net.ru/redsocks/"
@@ -25,13 +25,24 @@ RDEPEND="${DEPEND}
 
 [[ ${PV} != *9999 ]] && S="${WORKDIR}"/"${PN}"-release-"${PV}"
 
+pkg_setup() {
+	enewgroup redsocks
+	enewuser redsocks -1 -1 /run/redsocks redsocks
+}
+
 src_compile() {
 	CC="$(tc-getCC)" emake || die "emake failed"
 }
 
 src_install() {
-	dobin redsocks
+	dosbin redsocks
+	doman debian/redsocks.8
 	use doc && dodoc README doc/*
-	insinto /etc/redsocks
-	newins redsocks.conf.example redsocks.conf
+	insinto /etc
+	newins debian/redsocks.conf redsocks.conf
+
+	newinitd "${FILESDIR}"/redsocks.init redsocks
+	newconfd "${FILESDIR}"/redsocks.conf redsocks
+
+	systemd_dounit "${FILESDIR}"/redsocks.service
 }
