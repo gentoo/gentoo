@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Container application to unify several major PIM applications within one"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 
 DEPEND="

@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="Usenet newsgroups and mailing lists reader by KDE (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="debug"
 
 # test fails, last checked for 4.2.96
