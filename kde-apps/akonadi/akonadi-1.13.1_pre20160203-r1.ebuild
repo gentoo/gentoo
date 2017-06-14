@@ -19,7 +19,7 @@ HOMEPAGE="https://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
 SLOT="4"
-KEYWORDS="amd64 ~arm ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm x86 ~x86-fbsd"
 IUSE="+mysql postgres sqlite test"
 
 REQUIRED_USE="|| ( sqlite mysql postgres )"
