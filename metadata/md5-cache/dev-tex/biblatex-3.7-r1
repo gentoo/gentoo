@@ -11,5 +11,5 @@ RDEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-latexextra || ( dev-
 SLOT=0
 SRC_URI=mirror://sourceforge/biblatex/biblatex-3.7.tds.tgz
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_compile:latex-package src_install:-
-_eclasses_=latex-package	00777e2de6c20be92a1adce060eeafa4
+_eclasses_=latex-package	79acad19b9efeec616d0ad70cd117b03
 _md5_=22c772916a91b288eacfcd9e755480a8
