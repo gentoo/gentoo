@@ -137,11 +137,6 @@ src_prepare() {
 				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
 				debug/Makefile || die
 		fi
-
-		# Build various bits with ssp-all
-		sed -i \
-			-e 's:-fstack-protector$:-fstack-protector-all:' \
-			*/Makefile || die
 	fi
 
 	case $(gcc-fullversion) in
