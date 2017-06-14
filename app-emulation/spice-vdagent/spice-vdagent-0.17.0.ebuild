@@ -30,8 +30,8 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-vdagent )"
 
 CONFIG_CHECK="~INPUT_UINPUT ~VIRTIO_CONSOLE"
-ERROR_INPUT_UINPUT="User level input support is required"
-ERROR_VIRTIO_CONSOLE="VirtIO console/serial device support is required"
+ERROR_INPUT_UINPUT="User level input support (INPUT_UINPUT) is required"
+ERROR_VIRTIO_CONSOLE="VirtIO console/serial device support (VIRTIO_CONSOLE) is required"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.17.0-add-missing-stub-function.patch )
 
