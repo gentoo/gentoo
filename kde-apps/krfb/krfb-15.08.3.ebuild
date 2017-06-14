@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ DESCRIPTION="VNC-compatible server to share KDE desktops"
 HOMEPAGE="https://www.kde.org/applications/system/krfb/"
 SRC_URI="mirror://kde/Attic/applications/${PV}/src/${P}.tar.xz"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug telepathy ktp"
 REQUIRED_USE="ktp? ( telepathy )"
 

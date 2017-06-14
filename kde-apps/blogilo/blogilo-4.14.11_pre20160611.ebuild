@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="Application to create, edit and update blog content"
 HOMEPAGE="https://www.kde.org/applications/internet/blogilo"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="

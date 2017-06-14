@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="Note taking application"
 HOMEPAGE="https://www.kde.org/applications/utilities/knotes/"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
