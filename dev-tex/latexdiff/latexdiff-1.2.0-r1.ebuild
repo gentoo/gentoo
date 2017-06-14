@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	test? ( app-shells/tcsh )"
 
 src_compile() {
+	export VARTEXFONTS="${T}/fonts"
 	PATH="${S}/dist:${PATH}" emake -j1 distribution
 }
 
