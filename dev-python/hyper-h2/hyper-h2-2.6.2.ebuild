@@ -27,3 +27,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 "
+
+S=${WORKDIR}/${MY_PN}-${PV}
