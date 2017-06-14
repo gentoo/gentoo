@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/xz-utils"
@@ -31,6 +31,7 @@ multilib_src_compile() {
 		x86) inc_arch=i386;;
 		# x32 seems to be equivalent to amd64 as far as we're concerned
 		x32) inc_arch=amd64;;
+		arm64) inc_arch=aarch64;;
 	esac
 
 	# we need arch-specific headers for some assembler macros
