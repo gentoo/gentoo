@@ -128,7 +128,7 @@ src_prepare() {
 		# includes backtraces and symbols.
 		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
 		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
-		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-chk_fail.c debug/chk_fail.c || die
+		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
 
 		if use debug ; then
 			# Allow SIGABRT to dump core on non-hardened systems, or when debug is requested.
