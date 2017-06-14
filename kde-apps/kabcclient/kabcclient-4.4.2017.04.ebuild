@@ -11,7 +11,7 @@ inherit kde4-meta
 DESCRIPTION="Command line client for accessing the KDE addressbook"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="
