@@ -6,7 +6,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="Base library common to many KDE games"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND="
