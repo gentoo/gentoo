@@ -30,6 +30,12 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/libmikmod-config
 )
 
+src_prepare() {
+	# USE=debug enables Werror, bug #621688
+	sed -i -e 's/-Werror//' configure || die
+	default
+}
+
 multilib_src_configure() {
 	local mysimd="--disable-simd"
 	if use ppc || use ppc64 || use ppc-macos; then
