@@ -266,14 +266,20 @@ setup_flags() {
 		tc-enables-ssp && append-flags $(test-flags -fno-stack-protector)
 	fi
 
-	if use hardened && tc-enables-pie ; then
-		# Force PIC macro definition for all compilations since they're all
-		# either -fPIC or -fPIE with the default-PIE compiler.
-		append-cppflags -DPIC
-	else
-		# Don't build -fPIE without the default-PIE compiler and the
-		# hardened-pie patch
-		filter-flags -fPIE
+	if [[ $(gcc-major-version) -lt 6 ]]; then
+		# Starting with gcc-6 (and fully upstreamed pie patches) we control
+		# default enabled/disabled pie via use flags. So nothing to do
+		# here. #618160
+
+		if use hardened && tc-enables-pie ; then
+			# Force PIC macro definition for all compilations since they're all
+			# either -fPIC or -fPIE with the default-PIE compiler.
+			append-cppflags -DPIC
+		else
+			# Don't build -fPIE without the default-PIE compiler and the
+			# hardened-pie patch
+			filter-flags -fPIE
+		fi
 	fi
 }
 
