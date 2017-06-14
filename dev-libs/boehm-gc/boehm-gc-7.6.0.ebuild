@@ -34,8 +34,6 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	# Workaround build errors. #574566
-	use ia64 && emake src/ia64_save_regs_in_stack.lo
 	use sparc && emake src/sparc_mach_dep.lo
 	default
 }
