@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
 	client? ( enc_x264? ( dec_avcodec2 ) enc_x265? ( dec_avcodec2 ) )"
 
-COMMON_DEPEND=""${PYTHON_DEPS}"
+COMMON_DEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	x11-libs/gtk+:2
