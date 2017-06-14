@@ -13,13 +13,14 @@ LICENSE="metapackage"
 # Note: keep it matching clang-9999 version
 SLOT="5.0.0"
 KEYWORDS=""
-IUSE="+compiler-rt libcxx openmp +sanitize"
+IUSE="+compiler-rt csu libcxx openmp +sanitize"
 
 RDEPEND="
 	compiler-rt? (
 		~sys-libs/compiler-rt-${PV}:${SLOT}
 		sanitize? ( ~sys-libs/compiler-rt-sanitizers-${PV}:${SLOT} )
 	)
+	csu? ( sys-libs/netbsd-csu[${MULTILIB_USEDEP}] )
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
 	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"
 
