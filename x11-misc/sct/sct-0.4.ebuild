@@ -14,8 +14,6 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="x11-libs/libXrandr"
 RDEPEND="${DEPEND}"
 
-DOCS=( README )
-
 src_prepare() {
 	default
 	sed \
