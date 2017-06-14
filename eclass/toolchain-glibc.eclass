@@ -780,13 +780,18 @@ glibc_do_configure() {
 	[[ -d ports ]] && addons+=",ports"
 	popd > /dev/null
 
-	myconf+=( $(use_enable hardened stackguard-randomization) )
 	if has_version '<sys-libs/glibc-2.13' ; then
 		myconf+=( --enable-old-ssp-compat )
 	fi
 
 	if version_is_at_least 2.25 ; then
 		myconf+=( --enable-stack-protector=all )
+	fi
+
+	if version_is_at_least 2.25 ; then
+		myconf+=( --enable-stackguard-randomization )
+	else
+		myconf+=( $(use_enable hardened stackguard-randomization) )
 	fi
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
