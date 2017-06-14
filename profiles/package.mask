@@ -29,6 +29,58 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# Fails to build, nothing needs it in the tree, bug #557450. Removal in a
+# month.
+dev-libs/radlib
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# Relies on lots of dead old gnome libs, relies also on berlios.de and it is
+# dead for more than 8 years, bug #537708. Removal in a month.
+app-office/rubrica
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# Deprecated in favor of media-fonts/dejavu since many years ago, see bug
+# #282754. Removal in a month.
+media-fonts/ttf-bitstream-vera
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# Not needed by anything in the tree, requires an obsolete texinfo version
+# and is also the last consumer of gnat-gcc, bug #620982. Removal in a
+# month.
+sci-electronics/ghdl
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# Not needed by anything in the tree, unmaintained and waiting for a major
+# version bump if someone wants to take care of it, bug #474738. Removal in
+# a month.
+net-voip/gnugk
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# All consumers of this newer versions never got ported, if finally we need
+# to readd a even newer version of this packages with an hypothetical newer
+# Ekiga, we will need to work on new ebuilds anyway, bug #474740. Removal in
+# a month.
+#
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (25 Jun 2013)
+# Mask new ptlib/opal for breakage, tracked in bug #474742
+# Lars Wendler <polynomial-c@gentoo.org> (29 Apr 2014)
+# Adjusted mask so newer versions get covered as well.
+>=net-libs/ptlib-2.12.0
+>=net-libs/opal-3.12.0
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# Not needed by anything in the tree, dead since 2006 and also needing our
+# rpm package that is buggy and unmaintained, bug # 620986. Removal in a
+# month.
+app-emulation/domi
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
+# Needs someone with the hardware to test how to install it (and its
+# configuration files) properly. Dead since 2007, bug #493898. Removal in a
+# month.
+dev-lang/nqc
+
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -986,13 +1038,6 @@ www-plugins/chrome-binary-plugins:unstable
 # Michael Weber <xmw@gentoo.org> (17 Jul 2013)
 # Upstream next versions
 >=sys-boot/raspberrypi-firmware-1_pre
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (25 Jun 2013)
-# Mask new ptlib/opal for breakage, tracked in bug #474742
-# Lars Wendler <polynomial-c@gentoo.org> (29 Apr 2014)
-# Adjusted mask so newer versions get covered as well.
->=net-libs/ptlib-2.12.0
->=net-libs/opal-3.12.0
 
 # Richard Freeman <rich0@gentoo.org> (24 Mar 2013)
 # Contains known buffer overflows.  Package generally works
