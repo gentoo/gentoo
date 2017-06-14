@@ -14665,7 +14665,7 @@ net-fs/cifs-utils 6.4 6.6-r2 6.7: Tools for Managing Linux CIFS Client Filesyste
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.1.19 2.1.20.0_p05 9999: HTTP read-only file system for distributing software
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
-net-fs/docker-volume-netshare 0.33_p20170209 0.33_p20170318: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
+net-fs/docker-volume-netshare 0.33_p20170318 0.34: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 9999: Client library for accessing NFS shares over a network
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.8 3.1.10 3.1.11: Open Source AFP server
