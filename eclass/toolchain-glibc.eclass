@@ -254,7 +254,7 @@ setup_flags() {
 	# this flag for us, so no need to do it manually.
 	version_is_at_least 2.16 ${PV} || append-cppflags -U_FORTIFY_SOURCE
 
-	# building glibc with SSP is fraught with difficulty, especially
+	# building glibc <2.25 with SSP is fraught with difficulty, especially
 	# due to __stack_chk_fail_local which would mean significant changes
 	# to the glibc build process. See bug #94325 #293721
 	# Note we have to handle both user-given CFLAGS and gcc defaults via
@@ -262,7 +262,9 @@ setup_flags() {
 	# added before user flags, and we can't just filter-flags because
 	# _filter_hardened doesn't support globs.
 	filter-flags -fstack-protector*
-	gcc-specs-ssp && append-flags $(test-flags -fno-stack-protector)
+	if ! version_is_at_least 2.25 ; then
+		tc-enables-ssp && append-flags $(test-flags -fno-stack-protector)
+	fi
 
 	if use hardened && gcc-specs-pie ; then
 		# Force PIC macro definition for all compilations since they're all
@@ -783,6 +785,10 @@ glibc_do_configure() {
 		myconf+=( --enable-old-ssp-compat )
 	fi
 
+	if version_is_at_least 2.25 ; then
+		myconf+=( --enable-stack-protector=all )
+	fi
+
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
 	if [[ $1 == "linuxthreads" ]] ; then
@@ -941,7 +947,7 @@ toolchain-glibc_headers_configure() {
 		libc_cv_mlong_double_128ibm=yes
 		libc_cv_ppc_machine=yes
 		libc_cv_ppc_rel16=yes
-		libc_cv_predef_{fortify_source,stack_protector}=no
+		libc_cv_predef_fortify_source=no
 		libc_cv_visibility_attribute=yes
 		libc_cv_z_combreloc=yes
 		libc_cv_z_execstack=yes
@@ -955,6 +961,11 @@ toolchain-glibc_headers_configure() {
 		ac_cv_lib_audit_audit_log_user_avc_message=no
 		ac_cv_lib_cap_cap_init=no
 	)
+	if ! version_is_at_least 2.25 ; then
+		vars+=(
+			libc_cv_predef_stack_protector=no
+		)
+	fi
 	einfo "Forcing cached settings:"
 	for v in "${vars[@]}" ; do
 		einfo " ${v}"
