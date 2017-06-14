@@ -266,7 +266,7 @@ setup_flags() {
 		tc-enables-ssp && append-flags $(test-flags -fno-stack-protector)
 	fi
 
-	if use hardened && gcc-specs-pie ; then
+	if use hardened && tc-enables-pie ; then
 		# Force PIC macro definition for all compilations since they're all
 		# either -fPIC or -fPIE with the default-PIE compiler.
 		append-cppflags -DPIC
@@ -535,7 +535,7 @@ toolchain-glibc_pkg_pretend() {
 		ewarn "hypervisor, which is probably not what you want."
 	fi
 
-	use hardened && ! gcc-specs-pie && \
+	use hardened && ! tc-enables-pie && \
 		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
 
 	# Make sure host system is up to date #394453
