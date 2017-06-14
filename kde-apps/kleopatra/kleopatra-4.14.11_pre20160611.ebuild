@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="Certificate manager and GUI for OpenPGP and CMS cryptography"
 HOMEPAGE="https://www.kde.org/applications/utilities/kleopatra/"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="

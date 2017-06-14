@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="Address book application"
 HOMEPAGE="https://www.kde.org/applications/office/kaddressbook/"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="

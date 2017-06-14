@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="Editor KPart by KDE"
 HOMEPAGE+=" http://kate-editor.org/about-katepart/"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="debug"
 
 RESTRICT="test"
