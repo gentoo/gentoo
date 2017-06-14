@@ -1361,6 +1361,7 @@ app-emulation/spice-vdagent 0.17.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1 8.0-r2: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
+app-emulation/umoci 0.2.1: Manipulation tool for OCI images
 app-emulation/vagrant 1.9.3 1.9.5: A tool for building and distributing development environments
 app-emulation/vice 2.4.22 2.4.27 2.4.27-r2 2.4.27-r3 2.4.31: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.0-r3 1.4.1 9999: A graphical tool for administering virtual machines
