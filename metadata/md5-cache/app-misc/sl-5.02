@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/mtoyoda/sl/archive/5.02.tar.gz -> sl-5.02.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=d239e1d90796b57bbc56e18428405d2b
+_md5_=2de2e68c9c26eabe4e721b9a14f48d08
