@@ -17,7 +17,7 @@ RDEPEND="
 	!<kde-apps/kde4-l10n-4.14.3-r1
 "
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 MY_LANGS="ar bg ca ca@valencia cs csb da de el en_GB eo es et eu

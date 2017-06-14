@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="Usenet newsgroups and mailing lists reader by KDE"
 HOMEPAGE="https://www.kde.org/applications/internet/knode/"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 # test fails, last checked for 4.2.96
