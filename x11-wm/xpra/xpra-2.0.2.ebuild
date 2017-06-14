@@ -51,15 +51,14 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 	)
 	enc_x265? ( media-libs/x265
 		!libav? ( >=media-video/ffmpeg-2:0= )
-		libav? ( media-video/libav:0= )
+		libav? ( media-video/libav:0= ) )
 	jpeg? ( media-libs/libjpeg-turbo )
 	opengl? ( dev-python/pygtkglext )
 	pulseaudio? ( media-sound/pulseaudio )
 	sound? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 		dev-python/gst-python:1.0 )
-	vpx? ( media-libs/libvpx virtual/ffmpeg )
-	)"
+	vpx? ( media-libs/libvpx virtual/ffmpeg )"
 
 RDEPEND="${COMMON_DEPEND}
 	dev-python/ipython[${PYTHON_USEDEP}]
