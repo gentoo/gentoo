@@ -792,6 +792,73 @@ gcc-specs-stack-check() {
 }
 
 
+# @FUNCTION: tc-enables-pie
+# @RETURN: Truth if the current compiler generates position-independent code (PIC) which can be linked into executables
+# @DESCRIPTION:
+# Return truth if the current compiler generates position-independent code (PIC)
+# which can be linked into executables.
+tc-enables-pie() {
+	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null
+		#if defined(__PIE__)
+		true
+		#endif
+		EOF
+	)"
+	[[ ${ret} == true ]]
+}
+
+# @FUNCTION: tc-enables-ssp
+# @RETURN: Truth if the current compiler enables stack smashing protection (SSP) on at least minimal level
+# @DESCRIPTION:
+# Return truth if the current compiler enables stack smashing protection (SSP)
+# on level corresponding to any of the following options:
+#  -fstack-protector
+#  -fstack-protector-strong
+#  -fstack-protector-all
+tc-enables-ssp() {
+	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null
+		#if defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)
+		true
+		#endif
+		EOF
+	)"
+	[[ ${ret} == true ]]
+}
+
+# @FUNCTION: tc-enables-ssp-strong
+# @RETURN: Truth if the current compiler enables stack smashing protection (SSP) on at least middle level
+# @DESCRIPTION:
+# Return truth if the current compiler enables stack smashing protection (SSP)
+# on level corresponding to any of the following options:
+#  -fstack-protector-strong
+#  -fstack-protector-all
+tc-enables-ssp-strong() {
+	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null
+		#if defined(__SSP_STRONG__) || defined(__SSP_ALL__)
+		true
+		#endif
+		EOF
+	)"
+	[[ ${ret} == true ]]
+}
+
+# @FUNCTION: tc-enables-ssp-all
+# @RETURN: Truth if the current compiler enables stack smashing protection (SSP) on maximal level
+# @DESCRIPTION:
+# Return truth if the current compiler enables stack smashing protection (SSP)
+# on level corresponding to any of the following options:
+#  -fstack-protector-all
+tc-enables-ssp-all() {
+	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null
+		#if defined(__SSP_ALL__)
+		true
+		#endif
+		EOF
+	)"
+	[[ ${ret} == true ]]
+}
+
+
 # @FUNCTION: gen_usr_ldscript
 # @USAGE: [-a] <list of libs to create linker scripts for>
 # @DESCRIPTION:
