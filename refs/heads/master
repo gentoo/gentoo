@@ -1,22 +1,23 @@
 certificate version 0.1
-pusher 0x5CA7E64652290CF0 1497450003 -0500
-pushee git.gentoo.org:/repo/gentoo.git
-nonce 1497450003-502a66ed30643b62d42e
+pusher 0x4AEE79FF 1497450277 -0500
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1497450277-11e65092f943edc7c162
 
-8eb0c3e1e7f93aeb19e5686eb7da8ad6805f6f8e 1b3f7f9d0ee8e083252bdc8eefe6da6ba1327d2a refs/heads/master
+1b3f7f9d0ee8e083252bdc8eefe6da6ba1327d2a 7d66b82c19e7b820fa42ae3c36e7af1a9cb4ef43 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-iQIzBAABCAAdFiEEnB9e/J8YI6T0NBsJm0Co7cr65zMFAllBRhMACgkQm0Co7cr6
-5zOKbA//d2VoCHkbsAnvwJlAQreIpZt2+DamHvg2isobm+byrkb5PvNVYLdjxO6z
-YrQiWGu8zHPustqOI+Ju02OyigK+PKQaG+N4/Z0Gh+X6EFXpaYO/DaoR/9thXjZo
-LGYO/1WWff1FrGbtwgMGeUorxLKvsvuwTxL7PXQTK9mFLQXR6102ZwBn6lGFitx8
-FviNvYkVQgvKlNeTB/ZbalCa07lOc96/lSgJwrilxT/JjaQ/62ft/z0e+xKC1QLq
-q87xPjoqiYV1jVQspOtGVUWgGRxa2ze968N2uxtGPABodJt3aBJAQQe0xswnsO2J
-wulX/7srZQXJ1n0KGWNSGX8i5jsjVxtKmkq92xTL/gmYbx0vfj2iDw/64USxpcNF
-bIvm/iH5vWfEC514oyiyKJFMvZtHNL+tTdMNET74Zf0GJyzzUaRRstzrEyoydpH6
-TUI1cPbukh9l1UPAExAF5jWxjC12j3LXurgrYUv6Qa+aId36J6VEmYytk+V6ulqi
-COzfsnzaRX6ayzv+IcRYp+q/5j6qE8F9X+o2DpnMgPFW3bzxBWBiQKIDE3wSUwT2
-dYDd9k0R/A1Gu3AGGZY8FvMXw3tDHGnPcdiVnbJsCWNdRTAonvVevt8diOlZs47R
-2yd7aZKkJTWiGgkbIRs2TmmKT25p+HJmc7btWk08IG4NCLWEHgQ=
-=oG/p
+iQIzBAABCgAdFiEE6t/5JjgpnbiQKMUluE7NiUruef8FAllBRyUACgkQuE7NiUru
+ef+nphAA6/cWQ2lmLSDZKffd8IQaVyj6SXz/DqpSHo++7j1eFvEdM8MBjod787z1
+E42vE3WOg7Jo00fCw1fH/B4974hb4HJwqV3qGUMhRV9Al7xHwlBPQNXU5vfvmhUy
+LH0t8xUugfDfprkKFpWeBbX2KICUn/jNaFEwP7UJ5Tt1Gzt7IMdlloewYS+x5Pq1
+WEcp0pIMLU7nSJmO14j2D0QGges01RvY7+qKOK0wgmoov1yqnn009CI/nAMZMh0X
+6TikxNM3PFuvz5cnhprUx/QfO5MVXN/0RqKsrMAO2vqWx85VPxPy6wYDs1b+gDf7
++cQI767RXzw0ZqBRgfqpN+96qxcWg7DFkhpr+mLOroy4BE1gCtLb+wuDc6agbpmK
+jj8Vk9ar17o3Qn2Yua/3hK/f2GDp2nMPzBfIt80H1szWymY0EzI3JjLUD7cAsuEP
+fym/HdbtHJZumf3/jDB2raTVkIKPQxpeb7OX9oVwrcFZsDBjzQj+ktdZaN50ecKe
+B+VhJRGeSExOl/Q5cmhql14v5mJA5bEMfSdchz/OHg7BXCHM2P0sZJ5MwQKkQi5+
+hla/8tt9+P0nJXuCLOJ1teKJ1+tMIn2CUSZpsiuBQqsg3exktxJ7vVuyPNcWsN5B
+bAezLpFZxFGg4bBPeD3TBK7AbVDPNYMzBS+XCOmxWq0fHHpHToc=
+=Wftl
 -----END PGP SIGNATURE-----
