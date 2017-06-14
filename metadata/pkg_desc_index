@@ -3442,7 +3442,7 @@ dev-haskell/extensible-exceptions 0.1.1.4: Extensible exceptions
 dev-haskell/extra 1.3.1 1.4.2 1.4.10: Extra functions I use
 dev-haskell/fail 4.9.0.0: Forward-compatible MonadFail class
 dev-haskell/failure 0.2.0.3: A simple type class for success/failure computations. (deprecated)
-dev-haskell/fast-logger 0.3.3 2.0.0 2.1.5 2.2.3 2.3.1 2.4.0 2.4.1 2.4.6 2.4.7: A fast logging system
+dev-haskell/fast-logger 2.4.6 2.4.7: A fast logging system
 dev-haskell/fclabels 2.0.2.3 2.0.3 2.0.3.1: First class accessor labels implemented as lenses
 dev-haskell/fdo-notify 0.3.1: Desktop Notifications client
 dev-haskell/feed 0.3.11.1: Interfacing with RSS (v 0.9x, 2.x, 1.0) + Atom feeds
@@ -3578,7 +3578,7 @@ dev-haskell/io-streams-haproxy 1.0.0.1: HAProxy protocol 1.5 support for io-stre
 dev-haskell/iproute 1.2.12 1.3.1 1.4.0 1.5.0: IP Routing Table
 dev-haskell/js-flot 0.8.3: Obtain minified flot code
 dev-haskell/js-jquery 3.1.1: Obtain minified jQuery code
-dev-haskell/json 0.4.4 0.5 0.7 0.9.1: Support for serialising Haskell to and from JSON
+dev-haskell/json 0.9.1: Support for serialising Haskell to and from JSON
 dev-haskell/juicypixels 3.2.5.3 3.2.7 3.2.8: Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and others)
 dev-haskell/kan-extensions 4.2.3 5.0.1: Kan extensions, lifts, forms of the Yoneda lemma, and (co)density (co)monads
 dev-haskell/keys 3.10.2 3.11: Keyed functors and containers
@@ -3717,7 +3717,7 @@ dev-haskell/quickcheck-instances 0.3.11 0.3.12 0.3.12-r1: Common quickcheck inst
 dev-haskell/quickcheck-io 0.1.1-r1 0.1.2 0.1.4: Use HUnit assertions as QuickCheck properties
 dev-haskell/quickcheck-unicode 1.0.0.1: Generator and shrink functions for testing Unicode-related software
 dev-haskell/random 1.0.1.1-r1 1.1: random number library
-dev-haskell/ranges 0.2.4 0.2.4-r1: Ranges and various functions on them
+dev-haskell/ranges 0.2.4-r1: Ranges and various functions on them
 dev-haskell/raw-strings-qq 1.1: Raw string literals for Haskell
 dev-haskell/readable 0.3.1: Reading from Text and ByteString
 dev-haskell/readargs 1.2.2 1.2.3: Simple command line argument parsing
@@ -3729,7 +3729,7 @@ dev-haskell/reflection 1.3.2 1.4 1.5.2.1 2.1.2: Reifies arbitrary terms into typ
 dev-haskell/regex-applicative 0.3.3: Regex-based parsing with applicative interface
 dev-haskell/regex-applicative-text 0.1.0.1: regex-applicative on text
 dev-haskell/regex-base 0.93.2-r1: Replaces/Enhances Text.Regex
-dev-haskell/regex-compat 0.95.1 0.95.1-r1: Replaces/Enhances Text.Regex
+dev-haskell/regex-compat 0.95.1-r1: Replaces/Enhances Text.Regex
 dev-haskell/regex-compat-tdfa 0.95.1.4: Unicode Support version of Text.Regex, using regex-tdfa
 dev-haskell/regex-pcre 0.94.4-r1: Replaces/Enhances Text.Regex
 dev-haskell/regex-pcre-builtin 0.94.4.8.8.35: Replaces/Enhances Text.Regex
@@ -3799,8 +3799,8 @@ dev-haskell/tagged 0.6.1 0.7.3 0.8.2 0.8.4: Haskell 98 phantom types to avoid un
 dev-haskell/tagshare 0.0: TagShare - explicit sharing with tags
 dev-haskell/tagsoup 0.13.3-r1 0.13.8 0.13.10: Parsing and extracting information from (possibly malformed) HTML/XML documents
 dev-haskell/tagstream-conduit 0.5.5.3: streamlined html tag parser
-dev-haskell/tar 0.3.2.0 0.4.0.1 0.4.2.1 0.5.0.3: Reading, writing and manipulating ".tar" archive files
-dev-haskell/tasty 0.2 0.3.1 0.5.2 0.7 0.8 0.8.1.2 0.10.1.2 0.11.0.2 0.11.0.3 0.11.0.4: Modern and extensible testing framework
+dev-haskell/tar 0.4.0.1 0.4.2.1 0.5.0.3: Reading, writing and manipulating ".tar" archive files
+dev-haskell/tasty 0.10.1.2 0.11.0.4: Modern and extensible testing framework
 dev-haskell/tasty-ant-xml 1.0.1 1.0.2: Render tasty output to XML for Jenkins
 dev-haskell/tasty-golden 2.2.2.4 2.3.1 2.3.1.1: Golden tests support for tasty
 dev-haskell/tasty-hunit 0.2 0.4.1 0.8.0.1 0.9.2: HUnit support for the Tasty test framework
@@ -3813,8 +3813,8 @@ dev-haskell/temporary 1.1.2.4 1.2.0.3 1.2.0.4: Portable temporary file and direc
 dev-haskell/temporary-rc 1.2.0.3: Portable temporary file and directory support for Windows and Unix
 dev-haskell/tensor 1.0.0.1: Tensor data types
 dev-haskell/terminal-size 0.3.2.1: Get terminal window height and width
-dev-haskell/terminfo 0.3.2.3 0.3.2.5 0.4.0.0 0.4.0.1 0.4.0.2: Haskell bindings to the terminfo library
-dev-haskell/test-framework 0.2.4 0.4.2.0 0.5 0.6 0.6.1 0.8 0.8.1.1: Framework for running and organising tests, with HUnit and QuickCheck support
+dev-haskell/terminfo 0.4.0.0 0.4.0.1 0.4.0.2: Haskell bindings to the terminfo library
+dev-haskell/test-framework 0.8 0.8.1.1: Framework for running and organising tests, with HUnit and QuickCheck support
 dev-haskell/test-framework-hunit 0.2.7 0.3.0 0.3.0.2: HUnit support for the test-framework package
 dev-haskell/test-framework-quickcheck2 0.3.0.2 0.3.0.3-r2: QuickCheck2 support for the test-framework package
 dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck code using Template Haskell
@@ -10301,7 +10301,7 @@ dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.1.3: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
-dev-util/cmake 3.7.2 3.7.2-r1 3.7.2-r10 3.8.1 3.8.2 3.9.0_rc2: Cross platform Make
+dev-util/cmake 3.7.2 3.7.2-r1 3.7.2-r10 3.8.1 3.8.2 3.9.0_rc3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
@@ -15456,7 +15456,7 @@ net-misc/sstp-client 1.0.10 1.0.10-r1: A client implementation of Secure Socket 
 net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC connections
 net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
-net-misc/streamlink 0.1.0 0.4.0 9999: CLI for extracting streams from websites to a video player of your choice
+net-misc/streamlink 0.1.0 0.4.0 0.6.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.36 5.37 5.38 5.39 5.40: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
@@ -18401,8 +18401,8 @@ www-client/dooble 1.55 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.22.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 45.8.0 52.1.0-r1 53.0.3: Firefox Web Browser
-www-client/firefox-bin 52.1.2 53.0.3: Firefox Web Browser
+www-client/firefox 45.8.0 52.1.0-r1 52.2.0 53.0.3: Firefox Web Browser
+www-client/firefox-bin 52.2.0 54.0: Firefox Web Browser
 www-client/google-chrome 59.0.3071.86: The web browser from Google
 www-client/google-chrome-beta 60.0.3112.24: The web browser from Google
 www-client/google-chrome-unstable 61.0.3124.4: The web browser from Google
