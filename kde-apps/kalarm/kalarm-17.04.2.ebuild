@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Application to manage alarms and other timer based alerts for the desktop"
 HOMEPAGE+=" https://userbase.kde.org/KAlarm"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="X"
 
 DEPEND="
