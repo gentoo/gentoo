@@ -4,8 +4,8 @@
 EAPI=6
 inherit user golang-build golang-vcs-snapshot
 
-EGO_PN="code.gitea.io/gitea/..."
-GIT_COMMIT="1d65291"
+EGO_PN="code.gitea.io/gitea"
+GIT_COMMIT="bbe6aa3"
 ARCHIVE_URI="https://github.com/go-gitea/gitea/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm"
 
@@ -29,8 +29,8 @@ src_prepare() {
 	default
 	local GITEA_PREFIX=${EPREFIX}/var/lib/gitea
 	sed -i -e "s/git rev-parse --short HEAD/echo ${GIT_COMMIT}/"\
-		-e "s/^LDFLAGS += -X \"main.Version.*$/LDFLAGS += -X \"main.Version=${PV}\"/"\
-		-e "s/-ldflags '-s/-ldflags '/" src/${EGO_PN%/*}/Makefile || die
+		-e "s/\"main.Version.*$/\"main.Version=${PV}\"/"\
+		-e "s/-ldflags '-s/-ldflags '/" src/${EGO_PN}/Makefile || die
 	sed -i -e "s#^APP_DATA_PATH = data#APP_DATA_PATH = ${GITEA_PREFIX}/data#"\
 		-e "s#^PATH = data/gitea.db#PATH = ${GITEA_PREFIX}/data/gitea.db#"\
 		-e "s#^PROVIDER_CONFIG = data/sessions#PROVIDER_CONFIG = ${GITEA_PREFIX}/data/sessions#"\
@@ -39,16 +39,16 @@ src_prepare() {
 		-e "s#^PATH = data/attachments#PATH = ${GITEA_PREFIX}/data/attachments#"\
 		-e "s#^ROOT_PATH =#ROOT_PATH = ${EPREFIX}/var/log/gitea#"\
 		-e "s#^ISSUE_INDEXER_PATH =#ISSUE_INDEXER_PATH = ${GITEA_PREFIX}/indexers/issues.bleve#"\
-		src/${EGO_PN%/*}/conf/app.ini || die
+		src/${EGO_PN}/conf/app.ini || die
 }
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} generate
-	TAGS="bindata pam sqlite" LDFLAGS="" CGO_LDFLAGS="-fno-PIC" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} build
+	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN} generate
+	TAGS="bindata pam sqlite" LDFLAGS="" CGO_LDFLAGS="-fno-PIC" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN} build
 }
 
 src_install() {
-	pushd src/${EGO_PN%/*} || die
+	pushd src/${EGO_PN} || die
 	dobin gitea
 	insinto /var/lib/gitea/conf
 	newins conf/app.ini app.ini.example
