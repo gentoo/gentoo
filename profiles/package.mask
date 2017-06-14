@@ -39,6 +39,7 @@
 # Depends on qt4 which is being deprecated.
 # Possible alternative is skypeforlinux,
 # which uses the same account information but has different features.
+# See bug #620722 and bug #608174.
 dev-python/skype4py
 media-sound/skype-call-recorder
 net-im/skype
