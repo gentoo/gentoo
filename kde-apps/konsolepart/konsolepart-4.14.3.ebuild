@@ -11,7 +11,7 @@ inherit kde4-base
 
 DESCRIPTION="X terminal kpart for use by konsole and other KDE applications"
 HOMEPAGE="https://www.kde.org/applications/system/konsole https://konsole.kde.org"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 COMMONDEPEND="

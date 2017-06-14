@@ -10,7 +10,7 @@ inherit kde4-meta
 DESCRIPTION="News feed aggregator"
 HOMEPAGE="https://www.kde.org/applications/internet/akregator"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
