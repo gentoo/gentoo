@@ -567,10 +567,6 @@ media-sound/pulseaudio system-wide
 # 299674
 >net-misc/wicd-1.6.2.2 ioctl
 
-# Alexey Shvetsov <alexxy@gentoo.org> (3 Dec 2009)
-# Mask very experimental mpi use flag dfor gamess
-sci-chemistry/gamess mpi
-
 # These are for BSD only
 net-proxy/squid ipf-transparent pf-transparent
 app-admin/sshguard ipfilter
