@@ -15,7 +15,11 @@ KEYWORDS="~amd64"
 IUSE="async +lwt +ppx test"
 
 RDEPEND="
-	async? ( dev-ml/async:= )
+	async? (
+		dev-ml/async_kernel:=
+		dev-ml/async_unix:=
+		dev-ml/core_kernel:=
+	)
 	lwt? ( dev-ml/lwt:= )
 	ppx? (
 		dev-ml/ppx_tools:=
