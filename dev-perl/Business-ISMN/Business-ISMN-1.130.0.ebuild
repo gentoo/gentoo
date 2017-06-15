@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="International Standard Music Numbers"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="test"
 
 RDEPEND="
