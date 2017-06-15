@@ -3,7 +3,7 @@
 EAPI="6"
 
 IUSE=""
-MODS="apm"
+MODS="acpi"
 
 inherit selinux-policy-2
 
