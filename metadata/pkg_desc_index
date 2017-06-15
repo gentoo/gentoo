@@ -9012,7 +9012,7 @@ dev-qt/qtwidgets 5.6.2 5.7.1: Set of components for creating classic desktop-sty
 dev-qt/qtx11extras 5.6.2 5.7.1: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.6.2 5.7.1: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.6.2 5.7.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
-dev-ros/actionlib 1.11.8 1.11.9 9999: Provides a standardized interface for interfacing with preemptable tasks
+dev-ros/actionlib 1.11.9 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.5 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 9999: Actionlib tutorials
 dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
@@ -17872,7 +17872,7 @@ sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.0.3 3.1.0: Library for managing partitions
 sys-libs/ldb 1.1.24 1.1.26 1.1.27-r1 1.1.29 1.1.29-r1: An LDAP-like embedded database
-sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
+sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
