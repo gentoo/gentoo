@@ -5474,7 +5474,7 @@ dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface progra
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
 dev-perl/App-Nopaste 1.4.0-r1 1.8.0 1.9.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0 1.704.300: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.730.0-r1 0.740.0-r1 0.750.0-r1 0.780.0: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.780.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
