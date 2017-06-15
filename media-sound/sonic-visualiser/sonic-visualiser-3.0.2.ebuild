@@ -66,6 +66,14 @@ src_prepare() {
 	use pulseaudio || sv_disable_opt libpulse
 
 	eautoreconf
+
+	# Those need to be regenerated as they must match current capnproto version
+	einfo "Regenerating piper capnproto files"
+	rm -f piper-cpp/vamp-capnp/piper.capnp.* || die
+	mkdir -p piper/capnp || die
+	cp "${FILESDIR}/piper.capnp" piper/capnp/ || die
+	cd piper-cpp
+	emake vamp-capnp/piper.capnp.h
 }
 
 src_configure() {
