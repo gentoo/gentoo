@@ -5632,7 +5632,6 @@ net-im/kadu:otr - Enable char encryption via OTR library
 net-im/kadu:phonon - Enables phonon audio plugin
 net-im/kadu:sdk - Install Kadu SDK (cmake module, API headers)
 net-im/kadu:speech - Enables speech module
-net-im/licq:aosd - Build the advanced on screen display plugin.
 net-im/mcabber:aspell - Adds support for app-text/aspell spell checker.
 net-im/mcabber:otr - Enable encrypted conversations using Off-The-Records messaging
 net-im/pidgin:gadu - Enable Gadu Gadu protocol support
@@ -6962,9 +6961,6 @@ sci-chemistry/ball:sql - Include SQL database support
 sci-chemistry/chemtool:emf - EMF export support
 sci-chemistry/cns:aria - Support patch for sci-chemistry/aria
 sci-chemistry/eden:double-precision - More precise calculations at the expense of speed
-sci-chemistry/gamess:neo - Enable NEO for nuclear basis support
-sci-chemistry/gamess:pax_kernel - Make this package work on PAX kernels
-sci-chemistry/gamess:qmmm-tinker - Enable tinker qmmm code
 sci-chemistry/ghemical:openbabel - Use sci-chemistry/openbabel for file conversions
 sci-chemistry/gromacs:boost - Enable external boost library
 sci-chemistry/gromacs:cuda - Enable cuda non-bonded kernels
