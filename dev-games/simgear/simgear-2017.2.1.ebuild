@@ -1,18 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils cmake-utils toolchain-funcs git-r3
+inherit eutils cmake-utils toolchain-funcs
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="http://www.simgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/flightgear/${PN}
-	git://mapserver.flightgear.org/${PN}"
-EGIT_BRANCH="next"
+SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+dns debug gdal openmp subversion test"
 
