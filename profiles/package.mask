@@ -528,11 +528,6 @@ sci-chemistry/gamess
 sci-chemistry/gtk-gamess
 sci-chemistry/mead
 
-# David Seifert <soap@gentoo.org> (14 May 2017)
-# Unmaintained upstream, awful codebase. No reverse
-# dependencies. See #594134. To be removed in 30 days.
-sys-fabric/libibvpp
-
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
 # Drop mask after migration of existing wxGTK:3.0 users
