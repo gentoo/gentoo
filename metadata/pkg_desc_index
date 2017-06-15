@@ -1860,7 +1860,7 @@ app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1 0.7.1-r1: Linux Serial Protocol Analyser
-app-misc/lirc 0.9.0-r6 0.9.4a-r2 0.9.4c 0.9.4d: decode and send infra-red signals of many commonly used remote controls
+app-misc/lirc 0.9.0-r6 0.9.4a-r2 0.9.4c 0.9.4d 0.10.0_rc2: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.2 2.3 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
@@ -17265,7 +17265,7 @@ sys-apps/sed 4.2.2 4.3-r1 4.4: Super-useful stream editor
 sys-apps/selinux-python 2.7_rc1 9999: SELinux core utilities
 sys-apps/semodule-utils 2.7_rc1 9999: SELinux policy module utilities
 sys-apps/servicelog 1.0.1 1.1.11 1.1.13 1.1.14: Provides utilities for logging service-related events
-sys-apps/setserial 2.17-r4: Configure your serial ports with it
+sys-apps/setserial 2.17-r4 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.40 1.41 1.42: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.4-r2 4.5: Utilities to deal with user accounts
 sys-apps/smartmontools 6.4 6.4-r1 6.5 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
