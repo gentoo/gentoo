@@ -1,0 +1,21 @@
+diff -Naur playonlinux-orig/Makefile playonlinux/Makefile
+--- playonlinux-orig/Makefile	2017-06-14 19:31:55.746343655 -0700
++++ playonlinux/Makefile	2017-06-14 19:35:22.616281108 -0700
+@@ -28,8 +28,6 @@
+ PREFIX ?= /usr
+ DESTDIR ?= # root dir
+ 
+-CFLAGS += -lGL -lX11
+-
+ sharedir := $(DESTDIR)$(PREFIX)/share
+ bindir := $(DESTDIR)$(PREFIX)/bin
+ execdir := $(DESTDIR)$(PREFIX)/libexec
+@@ -46,7 +44,7 @@
+ 	$(RM) ./ChangeLog
+ 
+ build:
+-	$(CC) ./src/check_direct_rendering.c -o ./bin/playonlinux-check_dd
++	$(CC) ./src/check_direct_rendering.c -o ./bin/playonlinux-check_dd -lGL -lX11
+ 	$(PYTHON) ./python/*.py
+ 	$(PYTHON) ./python/lib/*.py
+ 	echo -e '#!/bin/bash\nGDK_BACKEND=x11 ${sharedir}/playonlinux/playonlinux "$$@"\nexit 0' > ./bin/playonlinux
