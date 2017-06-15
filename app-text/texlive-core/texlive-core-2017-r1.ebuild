@@ -108,7 +108,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	dev-libs/gmp:0
 	dev-libs/mpfr:0
 	xetex? (
-		>=media-libs/harfbuzz-0.9.20[icu,graphite]
+		>=media-libs/harfbuzz-1.4.5[icu,graphite]
 		>=dev-libs/icu-50:=
 		>=app-text/teckit-2.5.3
 		media-libs/fontconfig
