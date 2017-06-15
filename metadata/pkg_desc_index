@@ -69,7 +69,7 @@ app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1 1.7.3: Python framework for efficient cluster administration
 app-admin/collectd 5.6.2-r4 5.7.1 5.7.2: Collects system statistics and provides mechanisms to store the values
-app-admin/conky 1.10.4 1.10.6-r1 1.10.6-r2: An advanced, highly configurable system monitor for X
+app-admin/conky 1.10.4 1.10.6-r2: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
@@ -4809,7 +4809,7 @@ dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.8.2 0.8.3 0.8.3-r2: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
-dev-libs/libburn 1.3.8 1.4.6: Open-source library for reading, mastering and writing optical discs
+dev-libs/libburn 1.4.6: Open-source library for reading, mastering and writing optical discs
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
 dev-libs/libcdio 0.92 0.93 0.94-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.93_p1-r1 0.94_p1-r1: an advanced CDDA reader with error correction
@@ -4881,8 +4881,8 @@ dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 1.6.2 1.6.3 1.7.1 1.7.2: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
-dev-libs/libisoburn 1.3.8 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
-dev-libs/libisofs 1.3.8 1.4.6: Open-source library for reading, mastering and writing optical discs
+dev-libs/libisoburn 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
+dev-libs/libisofs 1.4.6: Open-source library for reading, mastering and writing optical discs
 dev-libs/libixion 0.11.1 0.12.2 9999: General purpose formula parser & interpreter
 dev-libs/libjit 0.1.2: Libjit is a generic Just-In-Time compilation library
 dev-libs/libkpass 6 6-r1: Libkpass is a from-scratch C implementation for accessing KeePass 1.x databases
@@ -11895,7 +11895,7 @@ kde-apps/kdenetwork-meta 16.12.3 17.04.2: kdenetwork - merge this to pull in all
 kde-apps/kdenlive 16.12.3 17.04.2: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 17.04.2: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 17.04.2: Libraries for KDE PIM applications
-kde-apps/kdepim-common-libs 4.14.11_pre20160611: Common libraries for KDE PIM apps
+kde-apps/kdepim-common-libs 4.14.11_pre20160611 4.14.11_pre20160611-r1: Common libraries for KDE PIM apps
 kde-apps/kdepim-kresources 4.4.2017.04 4.14.11_pre20160611: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2017.04 4.14.11_pre20160611 17.04.2: KDE PIM - merge this to pull in all kdepim-derived packages
@@ -11945,7 +11945,7 @@ kde-apps/klines 16.12.3 17.04.2: A little KDE game about balls and how to get ri
 kde-apps/klinkstatus 16.12.3 17.04.2: KDE web development - link validity checker
 kde-apps/kmag 16.12.3 17.04.2: KDE screen magnifier
 kde-apps/kmahjongg 16.12.3 17.04.2: A tile matching game for one or two players
-kde-apps/kmail 4.4.2017.04 4.14.11_pre20160611 17.04.2: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail 4.4.2017.04 4.14.11_pre20160611 4.14.11_pre20160611-r1 17.04.2: Email client, supporting POP3 and IMAP mailboxes.
 kde-apps/kmail-account-wizard 17.04.2: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 17.04.2: Mail transport service
 kde-apps/kmbox 17.04.2: Library for accessing MBox format mail storages
