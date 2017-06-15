@@ -538,7 +538,6 @@ sys-fabric/libibvpp
 # unmaintained (and probably unused). No reverse dependencies,
 # either. See bugs 618130 and 618140. To be removed in 30 days.
 app-arch/undms
-app-arch/unlzx
 
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
