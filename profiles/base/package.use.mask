@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Maciej Mrozowski <reavertm@gmail.com> (15 Jun 2017)
+# Mask due to bug #621810
+dev-games/simgear gdal
+games-simulation/flightgear gdal
+
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
 # dev-cpp/libgnomeuimm is masked for removal, mask flags that require

@@ -1,0 +1,28 @@
+From 9971d517fdf351e40467c88915d3e30e56f999d4 Mon Sep 17 00:00:00 2001
+From: Maciej Mrozowski <reavertm@gmail.com>
+Date: Thu, 15 Jun 2017 04:58:03 +0200
+Subject: [PATCH] Link shared SimGearScene with libgdal when enabled
+
+---
+ simgear/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/simgear/CMakeLists.txt b/simgear/CMakeLists.txt
+index 18c2e04c..6c7cb495 100644
+--- a/simgear/CMakeLists.txt
++++ b/simgear/CMakeLists.txt
+@@ -173,6 +173,11 @@ if(NOT SIMGEAR_HEADLESS)
+         ${OPENGL_LIBRARY}
+         ${JPEG_LIBRARY})
+ 
++    if(ENABLE_GDAL)
++        target_link_libraries(SimGearScene
++            ${GDAL_LIBRARIES})
++    endif()
++
+     # only actually needed by canvas/KeyboardEvent.cxx
+     target_include_directories(SimGearScene PRIVATE ${PROJECT_SOURCE_DIR}/3rdparty/utf8/source)
+ endif()
+-- 
+2.13.0
+
