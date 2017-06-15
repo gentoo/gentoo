@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sandstorm-io/capnproto/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0/060"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="static-libs test"
 
 RDEPEND=""
