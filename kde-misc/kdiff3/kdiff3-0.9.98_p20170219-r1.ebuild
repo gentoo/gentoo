@@ -11,7 +11,7 @@ https://cgit.kde.org/scratch/thomasfischer/kdiff3.git/log/?h=kf5"
 SRC_URI="http://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
