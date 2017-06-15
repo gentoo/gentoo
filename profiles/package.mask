@@ -522,7 +522,6 @@ sci-biology/mammoth
 sci-chemistry/acpype
 sci-chemistry/ambertools
 sci-chemistry/gamess
-sci-chemistry/gtk-gamess
 
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
