@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="JIS X 0212 (aka JIS 2000) Encodings"
 
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm"
 IUSE=""
 
 RDEPEND="virtual/perl-Encode"
