@@ -10,8 +10,8 @@ HOMEPAGE="http://capnproto.org"
 SRC_URI="https://github.com/sandstorm-io/capnproto/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
-KEYWORDS="~amd64 ~arm"
+SLOT="0/061"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="static-libs test"
 
 RDEPEND=""
