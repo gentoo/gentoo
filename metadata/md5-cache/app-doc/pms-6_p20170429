@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install
-DEPEND=!binary? ( dev-tex/leaflet dev-texlive/texlive-bibtexextra dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended || ( dev-texlive/texlive-mathscience dev-texlive/texlive-science ) html? ( app-text/recode >=dev-tex/tex4ht-20090611_p1038-r5 ) )
+DEPEND=!binary? ( dev-tex/leaflet dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended || ( dev-texlive/texlive-mathscience dev-texlive/texlive-science ) html? ( app-text/recode >=dev-tex/tex4ht-20090611_p1038-r5 ) )
 DESCRIPTION=Gentoo Package Manager Specification
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification
@@ -9,4 +9,4 @@ LICENSE=CC-BY-SA-3.0
 SLOT=0
 SRC_URI=!binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-6_p20170429.tar.xz ) binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-6_p20170429-prebuilt.tar.xz )
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=45f3ad87d611f7df8ded65df54b4dde7
+_md5_=cf42182c56673615e4355cf86a2ac886
