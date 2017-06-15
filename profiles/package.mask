@@ -511,11 +511,7 @@ x11-terms/rxvt
 #
 # sci-biology/mammoth - #612738, not touched since 2015, added in 2007,
 # not bumped since; homepage gone
-#
-# sci-chemistry/ambertools - #612740, not touched since 2013, added
-# in 2011, not bumped since; includes sci-chemistry/acpype as a revdep
 sci-biology/mammoth
-sci-chemistry/ambertools
 
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
