@@ -514,14 +514,9 @@ x11-terms/rxvt
 #
 # sci-chemistry/ambertools - #612740, not touched since 2013, added
 # in 2011, not bumped since; includes sci-chemistry/acpype as a revdep
-#
-# sci-chemistry/gamess - #612742, not touched since 2013, last bump 2011,
-# seems to be maintained in ::science; includes sci-chemistry/gtk-gamess
-# as a revdep
 sci-biology/mammoth
 sci-chemistry/acpype
 sci-chemistry/ambertools
-sci-chemistry/gamess
 
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
