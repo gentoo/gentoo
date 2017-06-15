@@ -546,11 +546,6 @@ app-arch/unlzx
 # and wxGTK-3.0.3 bump in tree
 >=net-ftp/filezilla-3.25.2-r1
 
-# Lars Wendler <polynomial-c@gentoo.org> (07 May 2017)
-# Dead upstream since 2014. Fails to build with gcc-6 (bug #594260).
-# Masked for removal in 30 days.
-net-im/licq
-
 # Zac Medico <zmedico@gentoo.org> (01 May 2017)
 # Possible API incompatibilities, bug #617174.
 # http://aiohttp.readthedocs.io/en/latest/migration.html
