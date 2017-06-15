@@ -47,7 +47,6 @@ move sys-infiniband/libibcm sys-fabric/libibcm
 move sys-infiniband/libibmad sys-fabric/libibmad
 move sys-infiniband/libibumad sys-fabric/libibumad
 move sys-infiniband/libibverbs sys-fabric/libibverbs
-move sys-infiniband/libibvpp sys-fabric/libibvpp
 move sys-infiniband/libipathverbs sys-fabric/libipathverbs
 move sys-infiniband/libmlx4 sys-fabric/libmlx4
 move sys-infiniband/libmlx5 sys-fabric/libmlx5
