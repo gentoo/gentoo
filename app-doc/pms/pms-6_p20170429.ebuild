@@ -34,6 +34,8 @@ RDEPEND=""
 
 src_compile() {
 	if ! use binary; then
+		# just in case; we shouldn't be generating any fonts
+		export VARTEXFONTS="${T}/fonts"
 		emake
 		use html && emake html
 	fi

@@ -29,6 +29,8 @@ DEPEND="dev-tex/leaflet
 RDEPEND=""
 
 src_compile() {
+	# just in case; we shouldn't be generating any fonts
+	export VARTEXFONTS="${T}/fonts"
 	emake $(usex twoside TWOSIDE=yes "")
 	use html && emake html
 }
