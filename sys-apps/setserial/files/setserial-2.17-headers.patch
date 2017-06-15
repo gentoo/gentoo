@@ -1,5 +1,5 @@
---- setserial.c
-+++ setserial.c
+--- a/setserial.c
++++ b/setserial.c
 @@ -15,6 +15,9 @@
  #include <termios.h>
  #include <string.h>
