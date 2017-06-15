@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Allows conversion between Roman and Arabic algarisms"
 
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm"
 IUSE=""
 
 SRC_TEST="do"
