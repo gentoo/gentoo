@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Jun 2017)
+# Last release 16.12.3, dropped upstream, never worked properly.
+# Masked for removal in 30 days.
+kde-apps/pim-storage-service-manager
+
 # Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
 # Fails to build, nothing needs it in the tree, bug #557450. Removal in a
 # month.
