@@ -68,7 +68,6 @@ REQUIRED_USE="!minimal? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${WORKDIR}/patches"
-	"${FILESDIR}/${PN}-3.16.9-hpps-indent.patch"
 )
 
 CONFIG_CHECK="~PARPORT ~PPDEV"
