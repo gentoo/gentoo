@@ -515,7 +515,6 @@ x11-terms/rxvt
 # sci-chemistry/ambertools - #612740, not touched since 2013, added
 # in 2011, not bumped since; includes sci-chemistry/acpype as a revdep
 sci-biology/mammoth
-sci-chemistry/acpype
 sci-chemistry/ambertools
 
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
