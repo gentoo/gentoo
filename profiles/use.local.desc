@@ -1513,8 +1513,9 @@ dev-games/physfs:mvl - Enable Descent I/II MVL archive support
 dev-games/physfs:qpak - Enable Quake I/II QPAK archive support
 dev-games/physfs:wad - Enable Doom WAD archive support
 dev-games/physfs:zip - Enable ZIP archive support
-dev-games/simgear:dns - Enables DNS resolver via net-libs/udns
-dev-games/simgear:subversion - Enables terrasync scenery downloader
+dev-games/simgear:dns - Enable DNS resolver via net-libs/udns
+dev-games/simgear:gdal - Enable alternative terrain engine based on pagedLOD via sci-libs/gdal
+dev-games/simgear:subversion - Enable terrasync scenery downloader
 dev-haskell/abstract-deque:usecas - Enable the reference implementation to use hardware compare-and-swap.
 dev-haskell/aeson-pretty:lib-only - don't build 'aeson-pretty' executable.
 dev-haskell/ansi-terminal:example - Build the example application.
@@ -3228,10 +3229,10 @@ games-rpg/nwn-data:sou - Installs the Shadows of Undrentide expension pack
 games-rpg/sumwars:tools - Builds editor tools
 games-rpg/to-the-moon:bundled-libs - Use bundled libraries
 games-simulation/flightgear:dbus - Enable screensaver DBus interaction
-games-simulation/flightgear:gdal - Builds alternative terrain engine based on pagedLOD using sci-libs/gdal
-games-simulation/flightgear:qt5 - Builds Qt5 launcher application
-games-simulation/flightgear:udev - Enables event-based Input devices through virtual/udev
-games-simulation/flightgear:utils - Builds various utilities (fgpanel, fgviewer among others)
+games-simulation/flightgear:gdal - Enable alternative terrain engine based on pagedLOD using sci-libs/gdal
+games-simulation/flightgear:qt5 - Build Qt5 launcher application
+games-simulation/flightgear:udev - Enable event-based Input devices through virtual/udev
+games-simulation/flightgear:utils - Build various utilities (fgpanel, fgviewer among others)
 games-simulation/openttd:aplaymidi - Enables midi music in game, using aplaymidi as an external player
 games-simulation/openttd:dedicated - Build only the openttd server, and not the client.
 games-simulation/openttd:lzo - Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)
