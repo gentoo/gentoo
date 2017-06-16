@@ -1,0 +1,28 @@
+Prototypes do not match, fixes some build failures.
+
+Index: onion-0.8/src/onion/poller_libev.c
+===================================================================
+--- onion-0.8.orig/src/onion/poller_libev.c
++++ onion-0.8/src/onion/poller_libev.c
+@@ -75,7 +75,7 @@ void onion_poller_slot_set_timeout(onion
+ 	el->timeout=timeout_ms;
+ }
+ /// Sets the polling type: read/write/other. O_POLL_READ | O_POLL_WRITE | O_POLL_OTHER
+-void onion_poller_slot_set_type(onion_poller_slot *el, int type){
++void onion_poller_slot_set_type(onion_poller_slot *el, onion_poller_slot_type_e type){
+ 	el->type=0;
+ 	if (type&O_POLL_READ)
+ 		el->type|=EV_READ;
+Index: onion-0.8/src/onion/poller_libevent.c
+===================================================================
+--- onion-0.8.orig/src/onion/poller_libevent.c
++++ onion-0.8/src/onion/poller_libevent.c
+@@ -77,7 +77,7 @@ void onion_poller_slot_set_timeout(onion
+ 	el->timeout=timeout_ms;
+ }
+ /// Sets the polling type: read/write/other. O_POLL_READ | O_POLL_WRITE | O_POLL_OTHER
+-void onion_poller_slot_set_type(onion_poller_slot *el, int type){
++void onion_poller_slot_set_type(onion_poller_slot *el, onion_poller_slot_type_e type){
+ 	el->type=EV_PERSIST;
+ 	if (type&O_POLL_READ)
+ 		el->type|=EV_READ;
