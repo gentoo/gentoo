@@ -1,10 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=ADAMK
-MODULE_VERSION=1.09
+DIST_AUTHOR=ADAMK
+DIST_VERSION=1.09
 inherit perl-module
 
 DESCRIPTION="Track the number of times subs are called"
@@ -17,10 +17,4 @@ DEPEND=">=dev-perl/Hook-LexWrap-0.20
 	virtual/perl-File-Spec"
 RDEPEND="${DEPEND}"
 
-SRC_TEST="do"
-
-src_prepare() {
-	sed -i -e 's/use inc::Module::Install::DSL /use lib q[.]; use inc::Module::Install::DSL /' Makefile.PL ||
-		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
-	perl-module_src_prepare
-}
+PATCHES=( "${FILESDIR}/${P}"-dot.patch )
