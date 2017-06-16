@@ -7064,7 +7064,7 @@ dev-php/PEAR-Net_Ping 2.4.5-r2: OS independent wrapper class for executing ping 
 dev-php/PEAR-Net_SMTP 1.7.2-r3 1.7.3: A PHP implementation of the SMTP protocol
 dev-php/PEAR-Net_Server 1.0.3: Generic server class for PHP
 dev-php/PEAR-Net_Sieve 1.5.2-r1 1.5.4: An API for talking to sieve (RFC 3028) servers
-dev-php/PEAR-Net_SmartIRC 1.1.10-r1: PHP class to communicate with IRC networks
+dev-php/PEAR-Net_SmartIRC 1.1.10-r1 1.1.11: PHP class to communicate with IRC networks
 dev-php/PEAR-Net_Socket 1.0.14-r3 1.1.0 1.2.2: PHP class interface to TCP sockets
 dev-php/PEAR-Net_Traceroute 0.21.3: OS independet wrapper class for executing traceroute calls
 dev-php/PEAR-Net_URL 1.0.15: Easy parsing of URLs
