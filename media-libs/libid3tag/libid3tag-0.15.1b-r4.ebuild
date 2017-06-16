@@ -23,6 +23,10 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epunt_cxx #74489
 	epatch "${FILESDIR}/${PV}"/*.patch
+	# gperf 3.1 and newer generate code with a size_t length parameter,
+	# older versions are incompatible and take an unsigned int.
+	has_version '>=dev-util/gperf-3.1' && epatch "${FILESDIR}/${P}-fix-signature.patch"
+
 	elibtoolize #sane .so versionning on fbsd and .so -> .so.version symlink
 }
 
