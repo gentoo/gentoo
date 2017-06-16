@@ -102,11 +102,6 @@ media-sound/skype-call-recorder
 net-im/skype
 net-im/skypetab-ng
 
-# Thomas Deutschmann <whissi@gentoo.org> (08 Jun 2017)
-# Unmaintained in Gentoo; Unpatched security bugs.
-# Removal in 30 days. Bug #608726
-www-apps/postfixadmin
-
 # Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2017)
 # Dead upstream, relies on ancient and vulnerable qtwebkit
 # See bug #620690
