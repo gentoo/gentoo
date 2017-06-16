@@ -5,6 +5,10 @@
     <email>tetromino@gentoo.org</email>
     <name>Alexandre Rostovtsev</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <use>
     <flag name="cdemu-daemon">Pull <pkg>app-cdr/cdemu-daemon</pkg> dependency, useful in chroot environment (bug #315491). Do not disable until you know what you are doing.</flag>
   </use>
