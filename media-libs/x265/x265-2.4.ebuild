@@ -21,7 +21,7 @@ HOMEPAGE="http://x265.org/"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/116"
-IUSE="+10bit +12bit neon numa pic power8 test"
+IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -158,8 +158,8 @@ multilib_src_configure() {
 		# bug #510890
 		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	elif [[ ${ABI} = arm ]] ; then
-		myabicmakeargs+=( -DENABLE_ASSEMBLY=$(usex pic OFF $(usex neon ON OFF)) )
-		use neon && use pic && ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=$(usex pic OFF $(usex cpu_flags_arm_neon ON OFF)) )
+		use cpu_flags_arm_neon && use pic && ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
 	fi
 
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
