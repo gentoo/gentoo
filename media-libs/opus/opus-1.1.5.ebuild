@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://archive.mozilla.org/pub/${PN}/${P}.tar.gz
 		http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 fi
 
 DESCRIPTION="Open codec designed for internet transmission of interactive speech and audio"
