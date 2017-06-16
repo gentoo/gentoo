@@ -18753,7 +18753,7 @@ x11-libs/libxcb 1.12-r2: X C-language Bindings library
 x11-libs/libxkbcommon 0.6.0 0.7.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9 1.0.9-r1: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
-x11-libs/libxklavier 5.3 5.3-r1: A library for the X Keyboard Extension (high-level API)
+x11-libs/libxklavier 5.3 5.3-r1 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxsettings-client 0.17 0.17-r1: XSETTINGS client code
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
 x11-libs/libyui 3.0.13 3.2.5: UI abstraction library
@@ -19623,6 +19623,6 @@ xfce-extra/xfce4-weather-plugin 0.8.8 0.8.9: A weather plug-in for the Xfce desk
 xfce-extra/xfce4-whiskermenu-plugin 1.6.0 1.7.2 2.1.2: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
-xfce-extra/xfce4-xkb-plugin 0.7.1-r1: XKB layout switching panel plug-in for the Xfce desktop environment
+xfce-extra/xfce4-xkb-plugin 0.7.1-r1 0.8.0: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.4.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
 xfce-extra/xfswitch-plugin 0.0.1-r2: A panel plug-in for user switching (using lightdm or gdm or ldm)
