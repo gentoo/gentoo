@@ -1403,7 +1403,7 @@ app-eselect/eselect-bashcomp 1.3.6: Manage contributed bash-completion scripts
 app-eselect/eselect-blas 0.1: BLAS module for eselect
 app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
 app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
-app-eselect/eselect-chuck 1.0.1: Manages the /usr/bin/chuck symlink
+app-eselect/eselect-chuck 1.0.1 1.0.2: Manages the /usr/bin/chuck symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
 app-eselect/eselect-electron 1.0.0: Utility to select the default Electron slot
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
