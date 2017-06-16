@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=0/0.34
 SRC_URI=http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/ImageMagick/OCaml-ImageMagick-0.34.tgz
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
 _md5_=85985a530b18f04f4365b66b359d958c
