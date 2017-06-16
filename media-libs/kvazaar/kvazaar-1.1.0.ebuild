@@ -38,6 +38,7 @@ DEPEND="${DEPEND}
 	abi_x86_64? ( ${ASM_DEP} )"
 
 src_prepare() {
+	epatch "${FILESDIR}/gcc7.patch"
 	eautoreconf
 	if use test && [ "${PV#9999}" = "${PV}" ]; then
 		# https://bugs.gentoo.org/show_bug.cgi?id=595932
