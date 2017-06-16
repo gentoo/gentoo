@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (16 Jun 2017)
+# neon on pixman seems armv7 only, at least according to configure checks: it
+# aborts when neon is enabled.
+x11-libs/pixman neon
+
 # James Le Cuirot <chewi@gentoo.org> (22 May 2017)
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
