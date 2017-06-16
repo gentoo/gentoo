@@ -505,7 +505,7 @@ qemu_src_configure() {
 	if use ${static_flag}; then
 		conf_opts+=( --static --disable-pie )
 	else
-		gcc-specs-pie && conf_opts+=( --enable-pie )
+		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
 
 	echo "../configure ${conf_opts[*]}"
