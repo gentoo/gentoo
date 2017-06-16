@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/mad/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug static-libs"
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
@@ -23,6 +23,10 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epunt_cxx #74489
 	epatch "${FILESDIR}/${PV}"/*.patch
+	# gperf 3.1 and newer generate code with a size_t length parameter,
+	# older versions are incompatible and take an unsigned int.
+	has_version '>=dev-util/gperf-3.1' && epatch "${FILESDIR}/${P}-fix-signature.patch"
+
 	elibtoolize #sane .so versionning on fbsd and .so -> .so.version symlink
 }
 
