@@ -79,6 +79,17 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # Defaults to "doc". Otherwise, use alternative KDE handbook path.
 : ${KDE_DOC_DIR:=doc}
 
+# @ECLASS-VARIABLE: KDE_QTHELP
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# Otherwise, add "doc" to IUSE, add the appropriate dependency, generate
+# and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
+if [[ ${CATEGORY} = kde-frameworks && ( $(get_version_component_range 2) -ge 36 || ${KDE_BUILD_TYPE} = live ) ]]; then
+	: ${KDE_QTHELP:=true}
+else
+	: ${KDE_QTHELP:=false}
+fi
+
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -220,6 +231,18 @@ case ${KDE_HANDBOOK} in
 	*)
 		IUSE+=" +handbook"
 		DEPEND+=" handbook? ( $(add_frameworks_dep kdoctools) )"
+		;;
+esac
+
+case ${KDE_QTHELP} in
+	false)	;;
+	*)
+		IUSE+=" doc"
+		COMMONDEPEND+=" doc? ( $(add_qt_dep qt-docs) )"
+		DEPEND+=" doc? (
+			$(add_qt_dep qthelp)
+			>=app-doc/doxygen-1.8.13-r1
+		)"
 		;;
 esac
 
@@ -647,6 +670,10 @@ kde5_src_configure() {
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
 	fi
 
+	if [[ ${KDE_QTHELP} != false ]]; then
+		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
+	fi
+
 	# install mkspecs in the same directory as qt stuff
 	cmakeargs+=(-DKDE_INSTALL_USE_QT_SYS_PATHS=ON)
 
@@ -703,6 +730,14 @@ kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake-utils_src_install
+
+	# We don't want QCH and tags files to be compressed, because then
+	# cmake can't find the tags and qthelp viewers can't find the docs
+	local p=$(best_version dev-qt/qtcore:5)
+	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
+	if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
+		docompress -x /usr/share/doc/qt-${pv}
+	fi
 
 	# We don't want /usr/share/doc/HTML to be compressed,
 	# because then khelpcenter can't find the docs
