@@ -10,7 +10,7 @@ HOMEPAGE="http://cdemu.org"
 SRC_URI="mirror://sourceforge/cdemu/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
-SLOT="0/10" # subslot = libmirage soname version
+SLOT="0/11" # subslot = libmirage soname version
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="doc +introspection"
 
