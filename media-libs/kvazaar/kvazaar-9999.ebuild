@@ -49,6 +49,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 		econf \
+			--disable-werror \
 			--docdir "/usr/share/doc/${PF}" \
 			$(use_enable static-libs static)
 }
