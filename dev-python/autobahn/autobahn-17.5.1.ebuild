@@ -55,3 +55,8 @@ python_test() {
 	cd "${BUILD_DIR}"/lib || die
 	py.test -v || die
 }
+
+python_compile() {
+	addpredict "$(python_get_sitedir)"
+	distutils-r1_python_compile
+}
