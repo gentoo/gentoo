@@ -340,6 +340,9 @@ src_install() {
 pkg_postinst() {
 	etexmf-update
 
+	einfo "Regenerating TeX formats"
+	fmtutil-sys --all &> /dev/null
+
 	elog
 	elog "If you have configuration files in ${EPREFIX}/etc/texmf to merge,"
 	elog "please update them and run ${EPREFIX}/usr/sbin/texmf-update."
