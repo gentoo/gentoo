@@ -136,3 +136,8 @@ UNINSTALL_IGNORE="/lib/modules/* /var/run /var/lock"
 # Andreas K. Hüttel <dilfridge@gentoo.org> (23 Aug 2013)
 # Make emerge messages default to English as per Council decision
 LC_MESSAGES="C"
+
+# Brian Dolbec <dolsen@gentoo.org> (16 Jun 2017)
+# disable twisted's plugin cache update to prevent access violations
+# call /usr/bin/twisted-regen-cache in pkg_postinst()
+TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
