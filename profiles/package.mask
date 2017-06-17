@@ -29,6 +29,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
+# Not compatible with ffmpeg-3 (#602786), other bug reports and NPAPI
+# plugins support in main browsers is dying. Removal in a month.
+www-plugins/gnash
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
+# Not compatible with ffmpeg-3 (#591946), neither builds without ffmpeg
+# support (#607492) and NPAPI plugins are dying. Removal in a month.
+www-plugins/lightspark
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
+# Not compatible with ffmpeg-3 (#589806) and needs vulnerable qtwebkit:4
+# (#620740). Removal in a month.
+net-voip/homer
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
+# Dead for ages, relies on google-code for fetching, not compatible with
+# ffmpeg-3 neither with latest imagemagick (#575988). Removal in a month.
+media-sound/gejengel
+
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Jun 2017)
 # Last release 16.12.3, dropped upstream, never worked properly.
 # Masked for removal in 30 days.
