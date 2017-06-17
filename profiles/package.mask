@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
+# Unmaintained in Gentoo repository; Multiple vulnerabilities
+# People using VMware in Gentoo should switch to Gentoo's VMware overlay
+# Bugs 619398, 621910, 616958, 536364, 614666, 612804 ...
+app-emulation/vmware-workstation
+app-emulation/vmware-player
+app-emulation/vmware-modules
+app-emulation/vmware-tools
+
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
 # Not compatible with ffmpeg-3 (#602786), other bug reports and NPAPI
 # plugins support in main browsers is dying. Removal in a month.
@@ -932,13 +941,6 @@ sys-fs/bedup
 # Expires (2 Oct 2017)
 =sys-kernel/vanilla-sources-4.1.9
 =sys-kernel/gentoo-sources-4.1.9
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (19 Sep 2015)
-# Masked for security reasons, bugs 516044, 552644
-# Keeping it in the tree for now for users who cannot upgrade
-# (commercial product, separate licenses for major versions)
-=app-emulation/vmware-workstation-9*
-=app-emulation/vmware-modules-271*
 
 # Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
 # Masked for testing.
