@@ -8,7 +8,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 VALA_USE_DEPEND="vapigen"
 
-inherit bash-completion-r1 multilib python-single-r1 systemd vala xdg
+inherit autotools bash-completion-r1 multilib python-single-r1 systemd vala xdg
 
 MY_PN="PackageKit"
 MY_P=${MY_PN}-${PV}
@@ -20,14 +20,15 @@ SRC_URI="https://www.freedesktop.org/software/${MY_PN}/releases/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/18"
 KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
-IUSE="connman cron command-not-found +introspection networkmanager entropy systemd test vala"
+IUSE="connman cron command-not-found elogind +introspection networkmanager entropy systemd test vala"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	?? ( elogind systemd )
 	vala? ( introspection )
 "
 
 # While not strictly needed, consolekit is the alternative to systemd-login
-# to get current session's user.
+# or elogind to get current session's user.
 COMMON_DEPEND="
 	>=app-shells/bash-completion-2
 	dev-db/sqlite:3
@@ -37,6 +38,7 @@ COMMON_DEPEND="
 	>=sys-apps/dbus-1.3.0
 	${PYTHON_DEPS}
 	connman? ( net-misc/connman )
+	elogind? ( >=sys-auth/elogind-229.4 )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.9:= )
 	networkmanager? ( >=net-misc/networkmanager-0.6.4:= )
 	systemd? ( >=sys-apps/systemd-204 )
@@ -54,17 +56,23 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-portage/layman-2[${PYTHON_USEDEP}]
 	>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
 	entropy? ( >=sys-apps/entropy-234[${PYTHON_USEDEP}] )
-	!systemd? ( sys-auth/consolekit )
+	!systemd? ( !elogind? ( sys-auth/consolekit ) )
 "
+
+PATCHES=(
+	# Fixes QA Notices:
+	# - https://github.com/gentoo/gentoo/pull/1760
+	# - https://github.com/hughsie/PackageKit/issues/143
+	"${FILESDIR}"/${PN}-1.1.1-cache-qafix.patch
+
+	# Adds elogind support:
+	# - https://bugs.gentoo.org/show_bug.cgi?id=620948
+	"${FILESDIR}"/${PN}-elogind-support.patch
+)
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	# Fixes QA Notices:
-	# - https://github.com/gentoo/gentoo/pull/1760
-	# - https://github.com/hughsie/PackageKit/issues/143
-	eapply "${FILESDIR}"/${PN}-1.1.1-cache-qafix.patch
-
 	# Disable unittests not working with portage backend
 	# console: requires terminal input
 	sed -e 's:^\(.*/packagekit-glib2/control\)://\1:' \
@@ -82,6 +90,9 @@ src_prepare() {
 	eapply_user
 	use vala && vala_src_prepare
 	xdg_src_prepare
+
+	# Needed by elogind patch:
+	eautoreconf
 }
 
 src_configure() {
@@ -99,6 +110,7 @@ src_configure() {
 		$(use_enable command-not-found) \
 		$(use_enable connman) \
 		$(use_enable cron) \
+		$(use_enable elogind) \
 		$(use_enable entropy) \
 		$(use_enable introspection) \
 		$(use_enable networkmanager) \
