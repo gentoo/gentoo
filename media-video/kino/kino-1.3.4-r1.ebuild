@@ -31,7 +31,7 @@ CDEPEND="
 	media-libs/libv4l:0=
 	alsa? ( >=media-libs/alsa-lib-1.0.9 )
 	!libav? ( >=media-video/ffmpeg-3:0= )
-	libav? ( media-video/libav:0= )	
+	libav? ( media-video/libav:0= )
 	quicktime? ( >=media-libs/libquicktime-0.9.5 )
 "
 DEPEND="${CDEPEND}
