@@ -1,0 +1,62 @@
+--- a/libpcsxcore/cdriso.c	2013-11-09 16:24:14.000000000 +0100
++++ b/libpcsxcore/cdriso.c	2016-12-12 01:02:25.652521029 +0100
+@@ -266,14 +266,14 @@
+ 		}
+ 
+ 		if (!decoded_frame) {
+-			if (!(decoded_frame = avcodec_alloc_frame())) {
++			if (!(decoded_frame = av_frame_alloc())) {
+ 				SysMessage(_(" -> Error allocating audio frame buffer. This track will not be available."));
+ 				avformat_close_input(&inAudioFormat);
+-				avcodec_free_frame(&decoded_frame);
++				av_frame_free(&decoded_frame);
+ 				return 1; // error decoding frame
+ 			}
+ 		} else {
+-			avcodec_get_frame_defaults(decoded_frame);
++			av_frame_unref(decoded_frame);
+ 		}
+ 		len = avcodec_decode_audio4(c, decoded_frame, &got_frame, &avpkt);
+ 		if (len > 0 && got_frame) {
+@@ -285,7 +285,7 @@
+ 			fwrite(decoded_frame->data[0], 1, data_size, outfile);
+ 		}
+ 		av_free_packet(&avpkt);
+-		//avcodec_free_frame(&decoded_frame);
++		//av_frame_free(&decoded_frame);
+ 	} while (moreFrames >= 0); // TODO: check for possible leaks
+ 
+ 	// file will be closed later on, now just flush it
+@@ -294,7 +294,7 @@
+ 	avformat_close_input(&inAudioFormat);
+ 	//avcodec_close(c);
+ 	//av_free(c);
+-	avcodec_free_frame(&decoded_frame);
++	av_frame_free(&decoded_frame);
+ 	return 0;
+ }
+ #endif
+@@ -340,12 +340,12 @@
+ 	while (avpkt.size > 0) {
+ 		int got_frame = 0;
+ 		if (!decoded_frame) {
+-			if (!(decoded_frame = avcodec_alloc_frame())) {
++			if (!(decoded_frame = av_frame_alloc())) {
+ 				SysPrintf(" -> Error allocating audio frame buffer. Track will not be available.");
+ 				return 1; // error decoding frame
+ 			}
+ 		} else {
+-			avcodec_get_frame_defaults(decoded_frame);
++			av_frame_unref(decoded_frame);
+ 		}
+ 
+ 		len = avcodec_decode_audio4(c, decoded_frame, &got_frame, &avpkt);
+@@ -383,7 +383,7 @@
+ 
+ 	avcodec_close(c);
+ 	av_free(c);
+-	avcodec_free_frame(&decoded_frame);
++	av_frame_free(&decoded_frame);
+ 	return 0;
+ }
+ #endif
