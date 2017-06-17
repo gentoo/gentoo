@@ -125,3 +125,7 @@ twisted-r1_update_plugin_cache() {
 pkg_postinst() {
 	_distutils-r1_run_foreach_impl twisted-r1_update_plugin_cache
 }
+
+pkg_postrm() {
+	_distutils-r1_run_foreach_impl twisted-r1_update_plugin_cache
+}
