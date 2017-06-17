@@ -11896,7 +11896,7 @@ kde-apps/kdenetwork-meta 16.12.3 17.04.2: kdenetwork - merge this to pull in all
 kde-apps/kdenlive 16.12.3 17.04.2: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 17.04.2: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 17.04.2: Libraries for KDE PIM applications
-kde-apps/kdepim-common-libs 4.14.11_pre20160611 4.14.11_pre20160611-r1: Common libraries for KDE PIM apps
+kde-apps/kdepim-common-libs 4.14.11_pre20160611-r1: Common libraries for KDE PIM apps
 kde-apps/kdepim-kresources 4.4.2017.04 4.14.11_pre20160611: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2017.04 4.14.11_pre20160611 17.04.2: KDE PIM - merge this to pull in all kdepim-derived packages
@@ -11946,7 +11946,7 @@ kde-apps/klines 16.12.3 17.04.2: A little KDE game about balls and how to get ri
 kde-apps/klinkstatus 16.12.3 17.04.2: KDE web development - link validity checker
 kde-apps/kmag 16.12.3 17.04.2: KDE screen magnifier
 kde-apps/kmahjongg 16.12.3 17.04.2: A tile matching game for one or two players
-kde-apps/kmail 4.4.2017.04 4.14.11_pre20160611 4.14.11_pre20160611-r1 17.04.2: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail 4.4.2017.04 4.14.11_pre20160611-r1 17.04.2: Email client, supporting POP3 and IMAP mailboxes.
 kde-apps/kmail-account-wizard 17.04.2: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 17.04.2: Mail transport service
 kde-apps/kmbox 17.04.2: Library for accessing MBox format mail storages
