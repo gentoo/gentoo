@@ -154,10 +154,6 @@ dev-haskell/binary test
 dev-haskell/text test
 dev-haskell/vector test
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
-# Missing keywords, bug #523686
->=dev-libs/libgdata-0.16.1 test
-
 # Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf
