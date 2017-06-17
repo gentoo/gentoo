@@ -11717,7 +11717,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.3 3.8.4: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.10.5: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6 3.2.0: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.2.4 1.4.6-r1 1.8.0: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.2.4 1.4.6-r1 1.8.0 1.8.2: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
@@ -18384,7 +18384,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 59.0.3071.86 59.0.3071.104 60.0.3112.20 60.0.3112.24 61.0.3124.4 61.0.3128.3: Open-source version of Google Chrome web browser
+www-client/chromium 59.0.3071.86 59.0.3071.104 60.0.3112.24 60.0.3112.32 61.0.3124.4 61.0.3128.3: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
