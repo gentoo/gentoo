@@ -65,6 +65,7 @@ src_configure() {
 		-DWITH_LASTFM="$(usex lastfm)" \
 		-DWITH_MAGIC="$(usex magic)" \
 		-DWITH_MYSQL="$(usex mysql)"
+		-DWITH_TAGLIB="$(usex taglib)"
 	)
 
 	cmake-utils_src_configure
