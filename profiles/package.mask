@@ -571,11 +571,6 @@ app-admin/geolizer
 # Removal in 30 days.
 mail-client/squirrelmail
 
-# Thomas Deutschmann <whissi@gentoo.org> (17 May 2017)
-# Multiple unpatched security vulnerabilitie (see bug #603756, #610696, #612650 ...)
-# Removal in 30 days.
-www-apps/joomla
-
 # Eray Aslan <eras@gentoo.org> (17 May 2017)
 # Functionality merged to cyrus-imapd-2.5.x series.
 # cyrus-imapd-2.5.10 was stabilized in Jan 2017.  Upgrade
