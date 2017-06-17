@@ -5,7 +5,7 @@
  endif()
  
 -add_definitions( -Wall -O3 -g -Wno-pointer-sign -fPIC -std=gnu99)
-+#add_definitions( -Wall -O3 -g -Wno-pointer-sign -fPIC -std=gnu99)
++add_definitions( -Wall -Wno-pointer-sign -fPIC -std=gnu99)
  # add_definitions(  -Wall -O0 -g -Wno-pointer-sign )
  
  ### ORC is not used in any active code at the moment  ###
