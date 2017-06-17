@@ -2497,7 +2497,7 @@ app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to somethi
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapian-omega 1.2.22 1.2.24 1.4.3 1.4.4: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1 1.23-r2: Utility for viewing Compiled HTML Help (CHM) files
-app-text/xdvik 22.85-r1 22.86 22.87 22.87.03: DVI previewer for X Window System
+app-text/xdvik 22.85-r1 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
@@ -10063,7 +10063,7 @@ dev-tex/catdvi 0.14-r1: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1 1.7.2 1.7.3 1.7.4 1.7.5 1.7.6: Checks latex source for common mistakes
 dev-tex/circuit_macros 8.3.2 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
-dev-tex/cjk-latex 4.8.3-r1 4.8.4: A LaTeX 2e macro package which enables the use of CJK scripts in various encodings
+dev-tex/cjk-latex 4.8.4: A LaTeX 2e macro package which enables the use of CJK scripts in various encodings
 dev-tex/cpp2latex 2.3-r1 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6-r2: CrossTeX - object oriented BibTeX replacement
 dev-tex/csindex 2.11c-r1: Utility for creating Czech/Slovak-sorted LaTeX index-files
