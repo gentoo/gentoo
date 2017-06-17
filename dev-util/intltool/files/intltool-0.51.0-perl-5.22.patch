@@ -1,11 +1,21 @@
 https://bugs.launchpad.net/intltool/+bug/1490906
+https://bugs.gentoo.org/614698
 
 fix warnings w/newer perl:
 Unescaped left brace in regex is deprecated, passed through in regex; marked by <-- HERE in m/^(.*)\${ <-- HERE ?([A-Z_]+)}?(.*)$/ at /usr/bin/intltool-update line 1065.
 
+fix failures since Perl 5.26
++Unescaped left brace in regex is illegal here in regex; marked by <-- HERE in m/\${ <-- HERE ?PACKAGE}?/ at /usr/bin/intltool-update line 1071, <CONF> line 98.
+
+---
+ intltool-update.in | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/intltool-update.in b/intltool-update.in
+index 6992ab4..440e778 100644
 --- a/intltool-update.in
 +++ b/intltool-update.in
-@@ -1062,7 +1062,7 @@
+@@ -1062,13 +1062,13 @@ sub SubstituteVariable
  	}
      }
  
@@ -14,7 +24,14 @@ Unescaped left brace in regex is deprecated, passed through in regex; marked by 
      {
  	my $rest = $3;
  	my $untouched = $1;
-@@ -1190,10 +1190,10 @@
+ 	my $sub = "";
+         # Ignore recursive definitions of variables
+-        $sub = $varhash{$2} if defined $varhash{$2} and $varhash{$2} !~ /\${?$2}?/;
++        $sub = $varhash{$2} if defined $varhash{$2} and $varhash{$2} !~ /\$\{?$2\}?/;
+ 
+ 	return SubstituteVariable ("$untouched$sub$rest");
+     }
+@@ -1190,10 +1190,10 @@ sub FindPackageName
  	$name    =~ s/\(+$//g;
  	$version =~ s/\(+$//g;
  
@@ -29,7 +46,7 @@ Unescaped left brace in regex is deprecated, passed through in regex; marked by 
      }
  
      if ($conf_source =~ /^AC_INIT\(([^,\)]+),([^,\)]+)[,]?([^,\)]+)?/m)
-@@ -1219,11 +1219,11 @@
+@@ -1219,11 +1219,11 @@ sub FindPackageName
  	$version =~ s/\(+$//g;
          $bugurl  =~ s/\(+$//g if (defined $bugurl);
  
@@ -46,3 +63,6 @@ Unescaped left brace in regex is deprecated, passed through in regex; marked by 
      }
  
      # \s makes this not work, why?
+-- 
+2.13.1
+
