@@ -107,7 +107,6 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep oxygen)
 	$(add_qt_dep qtgraphicaleffects)
-	|| ( net-misc/ntp net-misc/rdate )
 	sys-apps/accountsservice
 	sys-apps/util-linux
 	x11-apps/setxkbmap
