@@ -10229,7 +10229,7 @@ dev-texlive/texlive-xetex 2012 2013 2014 2015 2016 2017: TeXLive XeTeX and packa
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
-dev-util/abi-compliance-checker 1.99.21 1.99.22 1.99.23 1.99.25 2.0 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-compliance-checker 2.0 2.1 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
 dev-util/abootimg 20150323: Manipulate Android boot images.
 dev-util/ald 0.1.7-r2: Assembly Language Debugger
