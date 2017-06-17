@@ -10,8 +10,8 @@ Subject: [PATCH] Fix build against zlib-1.2.9+ (having uncompress2)
 
 diff --git a/pcsxr/configure.ac b/pcsxr/configure.ac
 index 300bb185..128b4f97 100644
---- a/pcsxr/configure.ac
-+++ b/pcsxr/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -113,6 +113,9 @@ if test "x$have_xtest" = xno; then
  	AC_MSG_ERROR([unable to find xtest headers])
  fi
@@ -24,8 +24,8 @@ index 300bb185..128b4f97 100644
  AC_ARG_ENABLE(libcdio, [  --enable-libcdio        use GNU libcdio for CD-ROM support (default=no)],
 diff --git a/pcsxr/libpcsxcore/cdriso.c b/pcsxr/libpcsxcore/cdriso.c
 index 04e866d9..fb7f28a5 100644
---- a/pcsxr/libpcsxcore/cdriso.c
-+++ b/pcsxr/libpcsxcore/cdriso.c
+--- a/libpcsxcore/cdriso.c
++++ b/libpcsxcore/cdriso.c
 @@ -1219,6 +1219,7 @@ static int cdread_sub_mixed(FILE *f, unsigned int base, void *dest, int sector)
  	return ret;
  }
