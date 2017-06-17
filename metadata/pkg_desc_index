@@ -3597,7 +3597,7 @@ dev-haskell/lens-family 1.2.1: Lens Families
 dev-haskell/lens-family-core 1.2.1: Haskell 98 Lens Families
 dev-haskell/lens-family-th 0.4.1.0: Generate lens-family style lenses
 dev-haskell/lens-simple 0.1.0.9: simplified import of elementary lens-family combinators
-dev-haskell/lhs2tex 1.18.1-r1 1.19: Preprocessor for typesetting Haskell sources with LaTeX
+dev-haskell/lhs2tex 1.18.1-r1 1.19-r1: Preprocessor for typesetting Haskell sources with LaTeX
 dev-haskell/libmpd 0.8.0.4-r1 0.9.0.2 0.9.0.4 0.9.0.6: An MPD client library
 dev-haskell/libxml 0.1.1: Binding to libxml2
 dev-haskell/libxml-sax 0.7.5: Bindings for the libXML2 SAX interface
