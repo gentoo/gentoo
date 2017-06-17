@@ -555,12 +555,6 @@ media-libs/lv2-ui
 <dev-util/nvidia-cuda-toolkit-7
 net-wireless/cpyrit-cuda
 
-# Michał Górny <mgorny@gentoo.org> (18 May 2017)
-# Last release in 2007, upstream disappeared. Requires a lot
-# of patching. Unmaintained since 2012. Bad ebuild quality, #514850.
-# Does not build anymore, #612398. Removal in 30 days.
-app-admin/geolizer
-
 # Maciej Mrozowski <reavertm@gentoo.org> (18 May 2017)
 # Experimental, most consumers does not support it yet
 >=dev-games/openscenegraph-3.5.5
@@ -570,11 +564,6 @@ app-admin/geolizer
 # Unpatched security vulnerability per bug #616700
 # Removal in 30 days.
 mail-client/squirrelmail
-
-# Thomas Deutschmann <whissi@gentoo.org> (17 May 2017)
-# Multiple unpatched security vulnerabilitie (see bug #603756, #610696, #612650 ...)
-# Removal in 30 days.
-www-apps/joomla
 
 # Eray Aslan <eras@gentoo.org> (17 May 2017)
 # Functionality merged to cyrus-imapd-2.5.x series.
@@ -586,13 +575,6 @@ dev-libs/cyrus-imap-dev
 # net-mail/cyrus-imap-admin and dev-libs/cyrus-imap-dev
 # are tree cleaned.
 =net-mail/cyrus-imapd-2.4*
-
-# Jason A. Donenfeld <zx2c4@gentoo.org> (16 May 2017)
-# This package has no upstream and has likely security vulnerabilities.
-# Users can trivially upgrade to x11-terms/rxvt-unicode, which is its
-# modern day replacement, with no drawbacks. See bug 618250. No reverse
-# dependencies. To be removed in 30 days.
-x11-terms/rxvt
 
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
