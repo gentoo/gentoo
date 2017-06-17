@@ -1850,6 +1850,7 @@ dev-lang/gnat-gpl:fixed-point - Enable fixed-point arithmetic support for MIPS t
 dev-lang/gnat-gpl:go - Build the GCC Go language frontend.
 dev-lang/gnat-gpl:graphite - Add support for the framework for loop optimizations based on a polyhedral intermediate representation
 dev-lang/gnat-gpl:libssp - Build SSP support into a dedicated library rather than use the code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)
+dev-lang/gnat-gpl:mpx - Enable support for Intel Memory Protection Extensions (MPX)
 dev-lang/gnat-gpl:nopie - Disable PIE support (NOT FOR GENERAL USE)
 dev-lang/gnat-gpl:nossp - Disable SSP support (NOT FOR GENERAL USE)
 dev-lang/gnat-gpl:objc - Build support for the Objective C code language
@@ -1857,6 +1858,7 @@ dev-lang/gnat-gpl:objc++ - Build support for the Objective C++ language
 dev-lang/gnat-gpl:objc-gc - Build support for the Objective C code language Garbage Collector
 dev-lang/gnat-gpl:regression-test - Run the testsuite and install the results (requires FEATURES=test)
 dev-lang/gnat-gpl:sanitize - Build support for various sanitizer functions (ASAN/TSAN/etc...)
+dev-lang/gnat-gpl:ssp - Build packages with stack smashing protector on by default
 dev-lang/gnat-gpl:vtv - Build support for virtual table verification (a C++ hardening feature)
 dev-lang/go:gccgo - Enable bootstrapping using gccgo
 dev-lang/icon:iplsrc - install the icon programming library source
