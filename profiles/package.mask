@@ -555,12 +555,6 @@ media-libs/lv2-ui
 <dev-util/nvidia-cuda-toolkit-7
 net-wireless/cpyrit-cuda
 
-# Michał Górny <mgorny@gentoo.org> (18 May 2017)
-# Last release in 2007, upstream disappeared. Requires a lot
-# of patching. Unmaintained since 2012. Bad ebuild quality, #514850.
-# Does not build anymore, #612398. Removal in 30 days.
-app-admin/geolizer
-
 # Maciej Mrozowski <reavertm@gentoo.org> (18 May 2017)
 # Experimental, most consumers does not support it yet
 >=dev-games/openscenegraph-3.5.5
