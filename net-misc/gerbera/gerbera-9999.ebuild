@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils linux-info systemd user
+inherit cmake-utils eutils linux-info systemd tmpfiles user
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/v00d00/${PN}.git"
@@ -88,6 +88,8 @@ src_install() {
 
 	keepdir /var/lib/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN}
+
+	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 }
 
 pkg_postinst() {
