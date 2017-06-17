@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 openmp"
 PATCHES=( "${FILESDIR}/${PN}-gentoo.diff" )
+RDEPEND="openmp? ( sys-devel/gcc[openmp] )"
+DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 
