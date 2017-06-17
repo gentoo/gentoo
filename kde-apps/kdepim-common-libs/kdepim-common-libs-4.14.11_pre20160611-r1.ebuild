@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="Common libraries for KDE PIM apps"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug google"
 
 DEPEND="
