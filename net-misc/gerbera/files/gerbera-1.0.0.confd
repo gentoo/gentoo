@@ -1,28 +1,25 @@
-# /etc/conf.d/mediatomb: config file for /etc/init.d/mediatomb
+# /etc/conf.d/gerbera: config file for /etc/init.d/gerbera
 
-# See the mediatomb(1) manpage for more info.
+# See the gerbera(1) manpage for more info.
 
-# MediaTomb Web UI port.
+# Gerbera Web UI port.
 # NOTE: The minimum value allowed is 49152
-MEDIATOMB_PORT=49152
+GERBERA_PORT=49152
 
-# Run MediaTomb as this user.
-# NOTE: For security reasons do not run MediaTomb as root.
-MEDIATOMB_USER="mediatomb"
+# Run Gerbera as this user.
+# NOTE: For security reasons do not run Gerbera as root.
+GERBERA_USER="gerbera"
 
-# Run MediaTomb as this group.
-# NOTE: For security reasons do not run MediaTomb as root.
-MEDIATOMB_GROUP="mediatomb"
+# Run Gerbera as this group.
+# NOTE: For security reasons do not run Gerbera as root.
+GERBERA_GROUP="gerbera"
 
-# Path to MediaTomb config file.
-MEDIATOMB_CONFIG="/etc/mediatomb/config.xml"
+# Path to Gerbera config file.
+GERBERA_CONFIG="/etc/gerbera/config.xml"
 
-# Path to MediaTomb log file.
-MEDIATOMB_LOGFILE="/var/log/mediatomb.log"
+# Path to Gerbera log file.
+GERBERA_LOGFILE="/var/log/gerbera.log"
 
-# Path to MediaTomb pid file.
-MEDIATOMB_PIDFILE="/var/run/mediatomb.pid"
-
-# Other options you want to pass to MediaTomb.
-# Add "--interface ${MEDIATOMB_INTERFACE}" to bind to a named interface.
-MEDIATOMB_OPTIONS=""
+# Other options you want to pass to Gerbera.
+# Add "--interface ${GERBERA_INTERFACE}" to bind to a named interface.
+GERBERA_OPTIONS=""
