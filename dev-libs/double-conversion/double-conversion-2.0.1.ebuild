@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit scons-utils eutils
+inherit scons-utils eutils toolchain-funcs
 
 DESCRIPTION="Binary-decimal and decimal-binary conversion routines for IEEE doubles"
 HOMEPAGE="https://github.com/google/double-conversion"
@@ -21,6 +21,7 @@ src_prepare() {
 }
 
 src_compile() {
+	sed -i -e "s/g++/$(tc-getCXX)/" SConstruct || die
 	escons ${LIBNAME}.so.1
 	use static-libs && escons ${LIBNAME}.a
 }
