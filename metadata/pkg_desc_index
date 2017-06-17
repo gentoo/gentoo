@@ -105,7 +105,6 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-perl-helpers 0.1.0 0.2.0 0.2.1 0.2.2: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
-app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.3 0.1.4 0.1.5: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.10-r1: Single process stack of various system monitors
@@ -18329,7 +18328,6 @@ www-apps/jekyll-paginate 1.1.0: Default pagination generator for Jekyll
 www-apps/jekyll-sass-converter 1.4.0 1.5.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.11.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
-www-apps/joomla 3.4.8: A powerful Open Source Content Management System
 www-apps/kibana-bin 4.6.4 5.1.2 5.2.2 5.3.3 5.4.1: Explore and visualize data
 www-apps/klaus 1.0.1 1.1.0: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
@@ -19340,7 +19338,6 @@ x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160
 x11-terms/qterminal 0.7.1 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 2.9.3-r2 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
-x11-terms/rxvt 2.7.10-r4 2.7.10-r5: A nice small x11 terminal
 x11-terms/rxvt-unicode 9.21 9.22 9.22-r1 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.3.4 3.4.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.7 9999: simple terminal implementation for X

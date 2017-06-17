@@ -8571,8 +8571,6 @@ x11-terms/mlterm:uim - Enable app-i18n/uim support
 x11-terms/mlterm:utempter - Enable sys-libs/libutempter support
 x11-terms/mrxvt:menubar - Enable mrxvt menubar
 x11-terms/mrxvt:utempter - REcords user logins. Useful on multi-user systems
-x11-terms/rxvt:linuxkeys - Define LINUX_KEYS (changes Home/End key)
-x11-terms/rxvt:xgetdefault - Enable resources via X instead of rxvt small version
 x11-terms/rxvt-unicode:256-color - Enable 256 color support
 x11-terms/rxvt-unicode:alt-font-width - Calculate the font width using a different method
 x11-terms/rxvt-unicode:blink - Enable blinking text
