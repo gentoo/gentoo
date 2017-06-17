@@ -6,10 +6,10 @@ EAPI=6
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
-inherit kde5 multilib qmake-utils
+inherit kde5 qmake-utils
 
 DESCRIPTION="KDE Plasma workspace"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+calendar geolocation gps prison qalculate +semantic-desktop"
 
 COMMON_DEPEND="
@@ -66,7 +66,6 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
 	$(add_qt_dep qtxml)
-	dev-libs/libdbusmenu-qt[qt5]
 	media-libs/phonon[qt5]
 	sys-libs/zlib
 	x11-libs/libICE
@@ -120,8 +119,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4-startkde-script.patch"
-	# master
-	"${FILESDIR}/${PN}-5.7.90-baloo-optional.patch"
+	"${FILESDIR}/${P}-xembedsniproxy.patch"
 )
 
 RESTRICT+=" test"
