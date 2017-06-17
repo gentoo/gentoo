@@ -1,0 +1,32 @@
+From a17de5957d4ba0f07c77fa99860c9046ff8aa1be Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Sat, 17 Jun 2017 19:19:40 +0200
+Subject: [xembedsniproxy] Fix memleak and possible crash
+
+Check the return value of xcb_get_window_attributes_reply() to prevent a crash if getting the window attributes would fail for some reason.
+
+Also free the returned structure after usage to avoid memleaks.
+This is necessary according to https://xcb.freedesktop.org/windowcontextandmanipulation (see the end of the page).
+
+Differential Revision: https://phabricator.kde.org/D6252
+---
+ xembed-sni-proxy/sniproxy.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/xembed-sni-proxy/sniproxy.cpp b/xembed-sni-proxy/sniproxy.cpp
+index 5974baf..b2f64fb 100644
+--- a/xembed-sni-proxy/sniproxy.cpp
++++ b/xembed-sni-proxy/sniproxy.cpp
+@@ -209,8 +209,9 @@ SNIProxy::SNIProxy(xcb_window_t wid, QObject* parent):
+     //if the client does supports that we send directly, otherwise we'll use xtest
+     auto waCookie = xcb_get_window_attributes(c, wid);
+     auto windowAttributes = xcb_get_window_attributes_reply(c, waCookie, nullptr);
+-    if (! (windowAttributes->all_event_masks & XCB_EVENT_MASK_BUTTON_PRESS)) {
++    if (windowAttributes && ! (windowAttributes->all_event_masks & XCB_EVENT_MASK_BUTTON_PRESS)) {
+         m_injectMode = XTest;
++        free(windowAttributes);
+     }
+ 
+     //there's no damage event for the first paint, and sometimes it's not drawn immediately
+-- 
+cgit v0.11.2
