@@ -42,7 +42,7 @@ app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.3.1.0 9999: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.31 2.2.32 2.4.25: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.31 2.2.32 2.4.25 2.4.26: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: A library for changing configuration files
@@ -252,7 +252,7 @@ app-arch/bzip2 1.0.6-r7 1.0.6-r8: A high-quality data compressor used extensivel
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.14: SFV checksum utility (simple file verification)
-app-arch/cpio 2.11-r3 2.12 2.12-r1: A file archival tool which can also read and write tar files
+app-arch/cpio 2.12-r1: A file archival tool which can also read and write tar files
 app-arch/createrepo 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
@@ -2155,7 +2155,7 @@ app-portage/tatt 0.4 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
 app-portage/unsandbox 1 2: The Sandbox escapist tool
 app-shells/autojump 22.2.4-r4: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p48-r1 4.4_p5-r1 4.4_p11 4.4_p12: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p48-r1 4.4_p12: The standard GNU Bourne again shell
 app-shells/bash-completion 2.1_p20141224-r1 2.3-r2 2.4 2.4-r1 2.5: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r2 4.4.0.92: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -4651,8 +4651,8 @@ dev-libs/angelscript 2.31.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.10.5 0.10.6 0.10.6-r1: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.6.7 0.6.8 0.6.13: Provides GObjects and helper methods to read and write AppStream metadata
-dev-libs/apr 1.5.2: Apache Portable Runtime Library
-dev-libs/apr-util 1.5.4 1.5.4-r1 1.5.4-r3: Apache Portable Runtime Utility Library
+dev-libs/apr 1.5.2 1.6.2: Apache Portable Runtime Library
+dev-libs/apr-util 1.5.4 1.5.4-r1 1.5.4-r3 1.6.0: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
 dev-libs/atf 0.21: Libraries to write tests in C, C++ and shell
@@ -15496,7 +15496,7 @@ net-misc/vncrec 0.2-r1: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.18 1.19 1.19.1 1.19.1-r1: Network utility to retrieve files from the WWW
+net-misc/wget 1.19.1-r1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.15 5.2.16: improved Whois Client
@@ -18458,7 +18458,7 @@ www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netsc
 www-plugins/pdfjs 1.7.225: A PDF reader in JavaScript
 www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.31-r1 2.2.32 2.4.25: The Apache Web Server
+www-servers/apache 2.2.31-r1 2.2.32 2.4.25 2.4.26: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.0: Fast, cross-platform HTTP/2 web server with automatic HTTPS
