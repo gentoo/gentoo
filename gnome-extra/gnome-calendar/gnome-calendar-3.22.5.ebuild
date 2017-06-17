@@ -17,7 +17,7 @@ RDEPEND="
 	>=dev-libs/glib-2.43.4:2
 	>=x11-libs/gtk+-3.21.6:3
 	>=gnome-extra/evolution-data-server-3.17.1:=
-	>=dev-libs/libical-1.0.1
+	>=dev-libs/libical-1.0.1:0=
 	>=net-libs/gnome-online-accounts-3.2.0:=
 	>=gnome-base/gsettings-desktop-schemas-3.21.2
 "
