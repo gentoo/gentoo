@@ -233,7 +233,6 @@ pkg_postinst() {
 	eselect emacs update ifunset
 	eselect gnuclient update ifunset
 
-	einfo "*************************************************"
 	einfo "If you are upgrading from XEmacs 21.4 you should note the following"
 	einfo "incompatibilities:"
 	einfo "- Mule-UCS is no longer supported due to proper UTF-8 support in XEmacs 21.5"
