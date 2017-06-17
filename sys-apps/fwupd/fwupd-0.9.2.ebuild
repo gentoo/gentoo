@@ -48,6 +48,7 @@ REQUIRED_USE="dell? ( uefi )"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9-polkit_its_files.patch"
 	"${FILESDIR}/${PN}-0.9.2-no_systemd.patch"
+	"${FILESDIR}/${PN}-0.9.2-meson-dist.patch"
 )
 
 src_configure() {
