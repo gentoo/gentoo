@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-COMMON_DEPEND="
+DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
@@ -30,9 +30,8 @@ COMMON_DEPEND="
 	net-libs/signond
 	net-libs/telepathy-qt[qt5]
 "
-DEPEND="${COMMON_DEPEND}
-	$(add_frameworks_dep kdewebkit)
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	app-crypt/qca:2[ssl]
 "
+
+PATCHES=( "${FILESDIR}/${P}-no-qtwebkit.patch" )
