@@ -147,11 +147,7 @@ media-libs/elementary sdl
 
 # Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
 # Missing ffmpeg deps, bug #510340
-media-video/ffmpeg x265 gme ssh
-
-# Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
-# Missing keywords for media-libs/x265
-media-video/libav x265
+media-video/ffmpeg gme ssh
 
 # Pacho Ramos <pacho@gentoo.org> (10 Jan 2014)
 # Missing keywords
