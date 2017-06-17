@@ -1,0 +1,31 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,7 @@ else()
+     set(LIBSUFFIX "")
+ endif()
+ 
+-add_definitions( -Wall -O3 -g -Wno-pointer-sign -fPIC -std=gnu99)
++#add_definitions( -Wall -O3 -g -Wno-pointer-sign -fPIC -std=gnu99)
+ # add_definitions(  -Wall -O0 -g -Wno-pointer-sign )
+ 
+ ### ORC is not used in any active code at the moment  ###
+@@ -41,13 +41,13 @@ endif()
+ 
+ # here we should check for SSE2
+ # our  -DUSE_SSE2_ASM code does not work with fpic
+-if(SSE2_FOUND)
+-add_definitions( -DUSE_SSE2 -msse2 -ffast-math )
+-endif()
++#if(SSE2_FOUND)
++#add_definitions( -DUSE_SSE2 -msse2 -ffast-math )
++#endif()
+ 
+-if(USE_OMP)
+-add_definitions(-fopenmp -DUSE_OMP)
+-endif()
++#if(USE_OMP)
++#add_definitions(-fopenmp -DUSE_OMP)
++#endif()
+ 
+ set(SOURCES src/frameinfo.c src/transformtype.c src/libvidstab.c
+   src/transform.c src/transformfixedpoint.c src/motiondetect.c
