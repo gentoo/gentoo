@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=6
 
@@ -14,4 +13,13 @@ EGIT_REPO_URI=( {https,git}://github.com/georgmartius/${MY_PN}.git )
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="cpu_flags_x86_sse2 openmp"
+PATCHES=( "${FILESDIR}/${PN}-gentoo.diff" )
+
+
+src_configure() {
+        use openmp && append-cppflags "-fopenmp -DUSE_OMP"
+        use cpu_flags_x86_sse2 && append-cppflags "-DUSE_SSE2 -msse2 -ffast-math"
+        append-cppflags "--std=gnu99"
+        cmake-multilib_src_configure
+}
