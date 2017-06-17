@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 MY_PN="vid.stab"
 DESCRIPTION="Video stabilization library"
-HOMEPAGE="http://public.hronopik.de/${MY_PN}/"
+HOMEPAGE="http://public.hronopik.de/vid.stab/"
 SRC_URI="https://github.com/georgmartius/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
