@@ -4,18 +4,25 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_{4,5,6})
 PYTHON_REQ_USE="threads(+)"
-TWISTED_PN="Twisted"
-#DISTUTILS_IN_SOURCE_BUILD="yes"
 
-inherit eutils flag-o-matic twisted-r1
+inherit eutils flag-o-matic distutils-r1 versionator
+
+TWISTED_PN="Twisted"
+TWISTED_P="${TWISTED_PN}-${PV}"
+TWISTED_RELEASE=$(get_version_component_range 1-2 "${PV}")
 
 DESCRIPTION="An asynchronous networking framework written in Python"
+HOMEPAGE="http://www.twistedmatrix.com/"
 SRC_URI="http://twistedmatrix.com/Releases/${TWISTED_PN}"
-SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2"
+SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 
 # Dropped keywords due to new deps not keyworded
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
+
+LICENSE="MIT"
+SLOT="0"
 IUSE="conch crypt http2 serial +soap test"
 
 RDEPEND=">=dev-python/zope-interface-4.0.2[${PYTHON_USEDEP}]
@@ -73,6 +80,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-16.6.0-test-fixes.patch"
 )
 
+S=${WORKDIR}/${TWISTED_P}
+
 python_prepare_all() {
 	# disable tests that don't work in our sandbox
 	# and other test failures due to our conditions
@@ -127,13 +136,10 @@ python_install() {
 
 	cd "${D%/}$(python_get_sitedir)" || die
 
-	# create 'Twisted' egg wrt bug #299736
-	#local egg=( Twisted_Core*.egg-info )
-	#[[ -f ${egg[0]} ]] || die "Twisted_Core*.egg-info not found"
-	#ln -s "${egg[0]}" "${egg[0]/_Core/}" || die
-
 	# own the dropin.cache so we don't leave orphans
 	touch twisted/plugins/dropin.cache || die
+
+	python_doscript "${WORKDIR}"/twisted-regen-cache
 }
 
 python_install_all() {
@@ -143,7 +149,13 @@ python_install_all() {
 	newinitd "${FILESDIR}/twistd.init" twistd
 }
 
+python_postinst() {
+	twisted-regen-cache || die
+}
+
 pkg_postinst() {
+	python_foreach_impl python_postinst
+
 	einfo "Install complete"
 	if use test ; then
 		einfo ""
@@ -158,8 +170,13 @@ pkg_postinst() {
 	fi
 }
 
+python_postrm() {
+	rm -f "${ROOT%/}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
+}
+
 pkg_postrm(){
-	# pre portage-2.3.2 release workaround for bug 595028
-	cd "${HOME}"
-	_distutils-r1_run_foreach_impl twisted-r1_update_plugin_cache
+	# if we're removing the last version, remove the cache file
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		python_foreach_impl python_postrm
+	fi
 }
