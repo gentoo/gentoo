@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="cpu_flags_x86_sse2 openmp"
 PATCHES=( "${FILESDIR}/${PN}-gentoo.diff" )
+RDEPEND="openmp? ( sys-devel/gcc[openmp] )"
+DEPEND="${RDEPEND}"
 
 
 src_configure() {
