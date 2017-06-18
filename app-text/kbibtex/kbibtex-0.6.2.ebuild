@@ -7,7 +7,7 @@ WEBKIT_REQUIRED="optional"
 inherit kde4-base
 
 DESCRIPTION="BibTeX editor by KDE to edit bibliographies used with LaTeX"
-HOMEPAGE="http://home.gna.org/kbibtex/"
+HOMEPAGE="https://userbase.kde.org/KBibTeX"
 SRC_URI="mirror://kde/stable/KBibTeX/${P}.tar.xz"
 
 LICENSE="GPL-2"
