@@ -70,6 +70,7 @@ REQUIRED_USE="
 	video_cards_r300?   ( gallium x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_r600?   ( gallium )
 	video_cards_radeonsi?   ( gallium llvm )
+	video_cards_vc4? ( gallium )
 	video_cards_vivante? ( gallium gbm )
 	video_cards_vmware? ( gallium )
 "
@@ -231,7 +232,7 @@ multilib_src_configure() {
 	fi
 
 	if use egl; then
-		myconf+=" --with-egl-platforms=x11$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
+		myconf+=" --with-egl-platforms=x11,surfaceless$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
 	fi
 
 	if use gallium; then

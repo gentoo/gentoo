@@ -252,7 +252,3 @@ xine
 # libdlm and cman are not keyworded
 cman
 clvm
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
-# virtual/opencl is not keyworded
-opencl

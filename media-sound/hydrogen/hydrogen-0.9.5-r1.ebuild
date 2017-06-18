@@ -18,7 +18,7 @@ RDEPEND="dev-qt/qtgui:4 dev-qt/qtcore:4
 	!archive? ( >=dev-libs/libtar-1.2.11-r3 )
 	>=media-libs/libsndfile-1.0.18
 	alsa? ( media-libs/alsa-lib )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	ladspa? ( media-libs/liblrdf )
 	lash? ( media-sound/lash )
 	portaudio? ( >=media-libs/portaudio-19_pre )"

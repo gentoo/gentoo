@@ -16,7 +16,9 @@ IUSE="systemd"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/gnosek/${PN}.git"
 else
-	SRC_URI="https://github.com/gnosek/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	MY_REV="99c942c90063c73734e56bacaa65f947772d9186"
+	MY_P="gnosek-fcgiwrap-${MY_REV:0:7}"
+	SRC_URI="https://github.com/gnosek/${PN}/tarball/${MY_REV} -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -28,6 +30,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( README.rst )
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed -e "s/-Werror//" \
