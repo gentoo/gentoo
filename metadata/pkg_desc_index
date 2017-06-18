@@ -13652,7 +13652,7 @@ media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.2 2.8 2.8.1 2.9: A graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.4.1 3.6.2 3.7.1 3.7.1-r1: Audacious Player - Your music, your way, no exceptions
-media-sound/audacity 2.0.5 2.0.5-r1 2.1.3: Free crossplatform audio editor
+media-sound/audacity 2.0.5 2.0.5-r2 2.1.3-r1: Free crossplatform audio editor
 media-sound/audex 0.79: KDE based CDDA extraction tool
 media-sound/audicle 1.0.0.7-r1: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
@@ -13756,10 +13756,10 @@ media-sound/gtklick 0.6.4: A simple metronome with an easy-to-use GTK interface
 media-sound/guayadeque 0.4.5_p20170110: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/hearnet 0.0.9: Listen to your network
-media-sound/helm 0.4.1-r1: Open source polyphonic software synthesizer with lots of modulation
+media-sound/helm 0.4.1-r2: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14: Opensource software organ
-media-sound/hydrogen 0.9.5: Advanced drum machine
+media-sound/hydrogen 0.9.5-r1: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
 media-sound/id3 0.15: changes the id3 tag in an mp3 file
 media-sound/id3ed 1.10.4: ID3 tag editor for mp3 files
@@ -13793,7 +13793,7 @@ media-sound/konvertible 1.0.1: A program to convert audio formats with FFmpeg
 media-sound/kradio 4.0.8: kradio is a radio tuner application for KDE
 media-sound/kstreamripper 0.7.100-r2: Program for ripping internet radios
 media-sound/lame 3.99.5-r1: LAME Ain't an MP3 Encoder
-media-sound/lash 0.5.4-r2: LASH Audio Session Handler
+media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
@@ -13903,7 +13903,7 @@ media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Dae
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.3.10 0.4.4 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
-media-sound/qmidiarp 0.6.3 0.6.4: An arpeggiator, sequencer and MIDI LFO for ALSA
+media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 0.10.8 0.10.9 1.1.7-r1 1.1.8 1.1.9 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r2: QMPDClient with NBL additions, such as lyrics' display
@@ -13914,7 +13914,7 @@ media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
-media-sound/qtractor 0.8.0 0.8.1 0.8.2: Qtractor is an Audio/MIDI multi-track sequencer
+media-sound/qtractor 0.8.0-r1 0.8.1-r1 0.8.2-r1: Qtractor is an Audio/MIDI multi-track sequencer
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.3.2 1.4.0: A Qt4 client for the music player daemon (MPD) written in C++
@@ -14024,7 +14024,7 @@ media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5 1.6: Digital vinyl emulation software
 media-sound/yoshimi 1.4.1 1.5.1.1: A software synthesizer based on ZynAddSubFX
-media-sound/zynaddsubfx 3.0.1: ZynAddSubFX is an opensource software synthesizer
+media-sound/zynaddsubfx 3.0.1-r1: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
@@ -16785,7 +16785,7 @@ sec-policy/selinux-amavis 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r
 sec-policy/selinux-android 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for android
 sec-policy/selinux-apache 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for apache
 sec-policy/selinux-apcupsd 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for apcupsd
-sec-policy/selinux-apm 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for apm
+sec-policy/selinux-apm 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for acpi
 sec-policy/selinux-arpwatch 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for arpwatch
 sec-policy/selinux-asterisk 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for asterisk
 sec-policy/selinux-at 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for at
@@ -18428,7 +18428,7 @@ www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides sev
 www-client/xombrero 1.6.3 9999: A minimalist web browser with sophisticated security features designed-in
 www-misc/awstats 7.1_p20121017 7.4 7.5: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r2: bookmarksync synchronizes various browser bookmark files
-www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
+www-misc/fcgiwrap 1.1.0_pre20150419 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/gurlchecker 0.13.1-r2: Gnome tool that checks links on web pages/sites
 www-misc/htdig 3.2.0_beta6-r3 3.2.0_beta6-r4 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/litmus 0.13: WebDAV server protocol compliance test suite
