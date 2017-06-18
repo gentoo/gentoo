@@ -7,7 +7,7 @@ EAPI="6"
 inherit autotools systemd toolchain-funcs ${VCS_ECLASS}
 
 DESCRIPTION="Simple FastCGI wrapper for CGI scripts (CGI support for nginx)"
-HOMEPAGE="http://nginx.localdomain.pl/wiki/FcgiWrap"
+HOMEPAGE="https://github.com/gnosek/fcgiwrap"
 
 LICENSE="BSD"
 SLOT="0"
