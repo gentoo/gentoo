@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 inherit autotools systemd toolchain-funcs ${VCS_ECLASS}
@@ -46,13 +46,14 @@ src_prepare() {
 	sed -i -e '/User/d' systemd/fcgiwrap.service || die
 	sed -i -e '/Group/d' systemd/fcgiwrap.service || die
 
+	eapply_user
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		$(use_with systemd) \
-		"$(systemd_with_unitdir)"
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 }
 
 pkg_postinst() {
