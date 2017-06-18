@@ -18,7 +18,7 @@ HOMEPAGE="http://download.oracle.com/javase/8/docs/"
 SRC_URI="${ORIG_NAME}"
 LICENSE="oracle-java-documentation-8"
 SLOT="1.8"
-KEYWORDS="amd64 ~arm ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="fetch"
 
 DEPEND="app-arch/unzip"
