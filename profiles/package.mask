@@ -30,7 +30,7 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimamka <kensington@gentoo.org> (18 Jun 2017)
-# Fails to build with uncoming stable Qt 5.7. Dead upstream.
+# Fails to build with upcoming stable Qt 5.7. Dead upstream.
 # Masked for removal in 30 days. Bug #603564.
 media-sound/ams
 
