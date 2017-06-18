@@ -32,6 +32,7 @@ RDEPEND="
 	)
 	elf? ( dev-libs/libelf )
 	systemd? ( sys-apps/systemd )
+	!systemd? ( >=sys-auth/consolekit-1.0.0 )
 	uefi? ( >=sys-apps/fwupdate-5 )
 "
 DEPEND="
@@ -51,14 +52,15 @@ PATCHES=(
 
 src_configure() {
 	local emesonargs=(
-		# requires libtbtfwu which is not packaged yet
-		-Denable-thunderbolt=false
+		-Denable-colorhug="$(usex colorhug true false)"
+		-Denable-consolekit="$(usex systemd false true)"
+		-Denable-dell="$(usex dell true false)"
 		-Denable-doc="$(usex doc true false)"
 		-Denable-man="$(usex man true false)"
-		-Denable-systemd="$(usex systemd true false)"
-		-Denable-colorhug="$(usex colorhug true false)"
-		-Denable-dell="$(usex dell true false)"
 		-Denable-libelf="$(usex elf true false)"
+		-Denable-systemd="$(usex systemd true false)"
+		# requires libtbtfwu which is not packaged yet
+		-Denable-thunderbolt=false
 		-Denable-uefi="$(usex uefi true false)"
 	)
 	meson_src_configure
