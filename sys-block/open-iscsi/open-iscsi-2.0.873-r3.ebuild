@@ -8,7 +8,7 @@ inherit versionator linux-info eutils flag-o-matic toolchain-funcs udev
 MY_P="${PN}-$(replace_version_separator 2 "-")"
 
 DESCRIPTION="Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720"
-HOMEPAGE="http://www.open-iscsi.org/"
+HOMEPAGE="http://www.open-iscsi.com/"
 SRC_URI="http://www.open-iscsi.org/bits/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
