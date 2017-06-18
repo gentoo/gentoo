@@ -5,7 +5,7 @@ EAPI=6
 
 # Normally you need only one version of this.
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,sqlite,ssl?"
 
 inherit distutils-r1
