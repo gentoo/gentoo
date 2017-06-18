@@ -4,7 +4,7 @@
 EAPI=6
 inherit ltprune systemd
 
-DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
+DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and stats"
 HOMEPAGE="https://upower.freedesktop.org/"
 SRC_URI="https://${PN}.freedesktop.org/releases/${P}.tar.xz"
 
