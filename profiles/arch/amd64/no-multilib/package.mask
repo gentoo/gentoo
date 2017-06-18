@@ -116,6 +116,7 @@ games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/hoh-bin
 games-roguelike/adom
+games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
