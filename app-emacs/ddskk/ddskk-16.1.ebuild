@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23"
 NEED_EMACS="24"
 
 inherit elisp ruby-single
@@ -32,7 +32,7 @@ src_prepare() {
 
 	echo "(add-to-list 'load-path (expand-file-name \"..\"))" >> nicola/NICOLA-DDSKK-CFG
 
-	eapply_user
+	default
 
 	rm -f skk-lookup.el
 	mv {bayesian,tut-code}/*.el .
