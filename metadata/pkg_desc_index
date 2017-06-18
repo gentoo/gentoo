@@ -1019,7 +1019,7 @@ app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.6.3 1.6.4: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.6.3 1.6.4 1.6.5: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.22.0: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
@@ -1607,7 +1607,7 @@ app-i18n/yaskkserv 1.1.0: Yet Another SKK server
 app-i18n/zhcon 0.2.6-r2: A Fast CJK (Chinese/Japanese/Korean) Console Environment
 app-i18n/zinnia 0.06-r3: Online hand recognition system with machine learning
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
-app-laptop/batti 0.3.8-r3: A upower based battery monitor for the system tray, similar to batterymon
+app-laptop/batti 0.3.8-r3 0.3.8-r4: A upower based battery monitor for the system tray, similar to batterymon
 app-laptop/dispad 0.3.1: Daemon to disable trackpads while typing
 app-laptop/hdaps-gl 0.0.5: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
@@ -13353,7 +13353,7 @@ media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.8.3 1.10.3 1.10.4 1.10.5: PNG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.8.3 1.10.3 1.10.4 1.10.5: Visualization elements for GStreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.8.3 1.10.3 1.10.5: MP3 decoder plugin for GStreamer
-media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.3: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.3 1.10.5: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.8.3 1.10.3 1.10.4 1.10.5: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.8.3 1.10.3 1.10.5: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.8.3 1.10.3 1.10.4 1.10.5: MPEG-1/2 video encoding plugin for GStreamer
@@ -15189,7 +15189,7 @@ net-misc/clipgrab 3.5.6 3.6.5: Download from various internet video services lik
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
-net-misc/cmst 2016.10.03 2017.03.18: Qt GUI for Connman with system tray icon
+net-misc/cmst 2017.03.18: Qt GUI for Connman with system tray icon
 net-misc/cocaine-core 0.9.2-r1 0.11.2.5 0.11.3.2: Cloud platform, core parts
 net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.33-r1 1.34: Provides a daemon for managing internet connections
@@ -17974,7 +17974,7 @@ sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is 
 sys-power/sispmctl 3.1 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.4.2-r1 1.5.3 1.5.4 1.6: Thermal daemon for Intel architectures
-sys-power/upower 0.99.2-r1 0.99.3 0.99.4: D-Bus abstraction for enumerating power devices, querying history and statistics
+sys-power/upower 0.99.4 0.99.4-r1: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
 sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1: GNU system accounting utilities
