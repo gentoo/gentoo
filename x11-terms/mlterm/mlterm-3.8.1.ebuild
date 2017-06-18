@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,8 +11,8 @@ SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+IUSE="bidi cairo canna debug fbcon fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -20,6 +20,7 @@ RDEPEND="x11-libs/libICE
 	bidi? ( dev-libs/fribidi )
 	cairo? ( x11-libs/cairo[X] )
 	canna? ( app-i18n/canna )
+	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx )
 	freewnn? ( app-i18n/freewnn )
 	gtk? ( >=x11-libs/gtk+-2:= )
@@ -47,6 +48,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}"/${PN}-font.patch )
 DOCS=( doc/{en,ja} )
 
 src_prepare() {
@@ -61,10 +63,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--disable-static
-		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
-		--enable-optimize-redrawing
-		--enable-vt52
 		$(use_enable bidi fribidi)
 		$(use_enable canna)
 		$(use_enable debug)
@@ -78,16 +76,21 @@ src_configure() {
 		$(use_enable skk)
 		$(use_enable uim)
 		$(use_enable utempter utmp)
+		--with-gui=xlib$(usex fbcon ",fb" "")
+		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
+		--enable-optimize-redrawing
+		--enable-vt52
+		--disable-static
 	)
 
 	local scrollbars="sample,extra"
 	local tools="mlclient,mlcc,mlfc,mlmenu,mlterm-zoom"
 	if use gtk; then
-		myconf+=(--with-imagelib=gdk-pixbuf)
+		myconf+=( --with-imagelib=gdk-pixbuf )
 		if has_version x11-libs/gtk+:3; then
-			myconf+=(--with-gtk=3.0)
+			myconf+=( --with-gtk=3.0 )
 		else
-			myconf+=(--with-gtk=2.0)
+			myconf+=( --with-gtk=2.0 )
 		fi
 		scrollbars+=",pixmap_engine"
 		tools+=",mlconfig,mlimgloader"
@@ -95,8 +98,8 @@ src_configure() {
 	if use regis; then
 		tools+=",registobmp"
 	fi
-	myconf+=(--with-scrollbars="${scrollbars}")
-	myconf+=(--with-tools="${tools}")
+	myconf+=( --with-scrollbars="${scrollbars}" )
+	myconf+=( --with-tools="${tools}" )
 
 	addpredict /dev/ptmx
 	econf "${myconf[@]}"
