@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
-[[ ${PV} = *9999* ]] && VCS_ECLASS="git-2" || VCS_ECLASS=""
+[[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 inherit autotools ${VCS_ECLASS}
 
 DESCRIPTION="Simple FastCGI wrapper for CGI scripts (CGI support for nginx)"
