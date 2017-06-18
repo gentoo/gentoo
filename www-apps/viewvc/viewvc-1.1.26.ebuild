@@ -14,7 +14,7 @@ SRC_URI="http://viewvc.org/downloads/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="cvs cvsgraph mod_wsgi mysql pygments +subversion"
 
 DEPEND=""
