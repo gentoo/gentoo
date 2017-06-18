@@ -9,7 +9,7 @@ KDE_TEST="forceoptional-recursive"
 inherit check-reqs kde5 versionator
 
 DESCRIPTION="KDE Office Suite"
-HOMEPAGE="http://www.calligra.org/"
+HOMEPAGE="https://www.calligra.org/"
 [[ ${KDE_BUILD_TYPE} == release ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
