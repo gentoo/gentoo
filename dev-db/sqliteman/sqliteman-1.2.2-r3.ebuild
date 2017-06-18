@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Powerful GUI manager for the Sqlite3 database"
-HOMEPAGE="http://sqliteman.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/sqliteman/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
