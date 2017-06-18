@@ -29,7 +29,7 @@ RDEPEND=">=app-arch/zip-2.3
 		!libav? ( >=media-video/ffmpeg-1.2:= ) )
 	flac? ( >=media-libs/flac-1.2.0[cxx] )
 	id3tag? ( media-libs/libid3tag )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.103.0 )
+	jack? ( virtual/jack )
 	lame? ( >=media-sound/lame-3.70 )
 	lv2? ( media-libs/lv2 )
 	mad? ( >=media-libs/libmad-0.14.2b )

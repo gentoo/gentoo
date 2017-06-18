@@ -34,7 +34,7 @@ COMMON_DEPEND="x11-libs/wxGTK:2.8[X]
 	twolame? ( media-sound/twolame )
 	ffmpeg? ( virtual/ffmpeg )
 	alsa? ( media-libs/alsa-lib )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.103.0 )"
+	jack? ( virtual/jack )"
 # Crashes at  startup here...
 #	lv2? ( >=media-libs/slv2-0.6.0 )
 # Disabled upstream ATM
