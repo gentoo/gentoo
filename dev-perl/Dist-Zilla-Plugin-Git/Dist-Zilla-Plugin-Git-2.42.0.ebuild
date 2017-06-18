@@ -25,6 +25,7 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 	dev-perl/Module-Runtime
 	dev-perl/Moose
+	dev-perl/MooseX-Has-Sugar
 	dev-perl/MooseX-Types
 	dev-perl/MooseX-Types-Path-Tiny
 	dev-perl/Path-Tiny
