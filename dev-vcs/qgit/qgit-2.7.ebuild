@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Qt GUI for git repositories"
-HOMEPAGE="http://libre.tibirna.org/projects/qgit"
+HOMEPAGE="http://libre.tibirna.org/projects/qgit/wiki/QGit"
 SRC_URI="https://github.com/tibirna/qgit/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
