@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+introspection gcr modemmanager selinux teamd"
+IUSE="+introspection gcr +modemmanager selinux teamd"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 RDEPEND="
