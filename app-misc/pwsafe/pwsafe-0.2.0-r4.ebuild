@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,10 +11,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="X readline"
+IUSE="X libressl readline"
 
 DEPEND="sys-libs/ncurses:0=
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	readline? ( sys-libs/readline:0= )
 	X? ( x11-libs/libSM
 		x11-libs/libICE
