@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86"
 IUSE="alsa debug gtk python static-libs" # doc
 
 RDEPEND="dev-libs/libxml2
-	media-sound/jack-audio-connection-kit
+	virtual/jack
 	>=sys-apps/util-linux-2.24.1-r3[${MULTILIB_USEDEP}]
 	alsa? ( media-libs/alsa-lib )
 	gtk? ( x11-libs/gtk+:2 )
