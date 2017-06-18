@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sir.suriv@gmail.com</email>
+		<name>Diogo Pereira</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Baldur's Gate: Enhanced Edition is a remake of the role-playing video
+		game Baldur's Gate. It takes place in the Forgotten Realms, a high
+		fantasy campaign setting, using a modified version of the Advanced
+		Dungeons &amp; Dragons (AD&amp;D) 2nd edition rules.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://support.baldursgate.com/projects/bg-ee-bugs/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
