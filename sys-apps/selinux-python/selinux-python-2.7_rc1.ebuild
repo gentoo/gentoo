@@ -39,6 +39,7 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 	>=app-admin/setools-4.0
 	dev-python/ipy[${PYTHON_USEDEP}]
 	!dev-python/sepolgen
+	!<sys-apps/policycoreutils-2.7_rc1
 	${PYTHON_DEPS}"
 
 RDEPEND="${DEPEND}"
