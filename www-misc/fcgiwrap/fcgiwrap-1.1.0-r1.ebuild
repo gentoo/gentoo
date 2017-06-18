@@ -37,6 +37,9 @@ src_prepare() {
 
 	sed -e '/man8dir = $(DESTDIR)/s/@prefix@//' \
 		-i Makefile.in || die "sed failed"
+
+	sed -e "s/libsystemd-daemon/libsystemd/" \
+		-i configure.ac || die "sed failed"
 	tc-export CC
 
 	# Fix systemd units for Gentoo
