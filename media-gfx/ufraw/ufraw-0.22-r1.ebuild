@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.17-cfitsio-automagic.patch
 	"${FILESDIR}"/${P}-jasper-automagic.patch
 	"${FILESDIR}"/${P}-crashfix.patch
+	"${FILESDIR}"/${P}-drop_superfluous_abs.patch
 )
 
 src_prepare() {
