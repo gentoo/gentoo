@@ -4,8 +4,6 @@
 	<use>
 		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for 
 			getting the HTTP/HTTPS/SOCKS proxy configuration.</flag>
-		<flag name="unique">Enable single instance support using
-			<pkg>dev-libs/libunique</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">transmission-remote-gtk/transmission-remote-gtk</remote-id>
