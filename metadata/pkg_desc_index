@@ -5803,6 +5803,7 @@ dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.380.0 1.400.0 1.440.0 1.460.0 1.480.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.27: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
+dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
 dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl variables
 dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
@@ -5822,6 +5823,8 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Zilla 6.8.0 6.9.0: distribution builder; installer not included!
+dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
+dev-perl/Dist-Zilla-Plugin-Git 2.42.0: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0: A more awesome MakeMaker plugin for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provides' in your META.yml
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
@@ -5971,6 +5974,7 @@ dev-perl/Getopt-GUI-Long 0.930.0-r1: Auto-GUI extending Getopt::Long
 dev-perl/Getopt-Long-Descriptive 0.97.0 0.99.0: Getopt::Long with usage text
 dev-perl/Getopt-Mixed 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
+dev-perl/Git-Wrapper 0.47.0: Wrap git(7) command-line interface
 dev-perl/Glib-Object-Introspection 0.40.0 0.42.0 0.43.0: Dynamically create Perl language bindings
 dev-perl/GnuPG-Interface 0.520.0-r1 0.520.0-r2: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
@@ -6288,6 +6292,7 @@ dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attri
 dev-perl/MooseX-FollowPBP 0.50.0: Name your accessors get_foo() and set_foo(), whatever that may mean
 dev-perl/MooseX-Getopt 0.680.0: A Moose role for processing command line options
 dev-perl/MooseX-GlobRef 0.70.100: Store a Moose object in glob reference
+dev-perl/MooseX-Has-Sugar 1.0.6: Sugar Syntax for moose 'has' fields
 dev-perl/MooseX-LazyRequire 0.110.0: Required attributes which fail only when trying to use them
 dev-perl/MooseX-MultiInitArg 0.20.0: Attributes with aliases for constructor arguments
 dev-perl/MooseX-Object-Pluggable 0.1.400: Make your classes pluggable
@@ -6828,6 +6833,7 @@ dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting e
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
 dev-perl/Validate-Tiny 1.551 1.600: Minimalistic data validation
 dev-perl/Variable-Magic 0.590.0 0.600.0 0.610.0: Associate user-defined magic to variables from Perl
+dev-perl/Version-Next 1.0.0: Increment module version numbers simply and correctly
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
@@ -11718,7 +11724,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.3 3.8.4: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.10.5: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6 3.2.0: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.2.4 1.4.6-r1 1.8.0 1.8.2: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.4.6-r1 1.8.0 1.8.2: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
