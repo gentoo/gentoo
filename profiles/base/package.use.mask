@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (18 Jun 2017)
+# Libav is basically unsupported by mpv, see upstream issues 3923, 3925.
+# Needs patch to even build, subs are broken and not supported anymore.
+media-video/mpv libav
+
 # Maciej Mrozowski <reavertm@gmail.com> (15 Jun 2017)
 # Mask due to bug #621810
 dev-games/simgear gdal
