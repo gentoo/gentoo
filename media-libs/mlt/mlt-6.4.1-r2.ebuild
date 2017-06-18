@@ -10,7 +10,7 @@ USE_RUBY="ruby22"
 inherit eutils flag-o-matic multilib python-single-r1 ruby-single toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
-HOMEPAGE="http://www.mltframework.org/"
+HOMEPAGE="https://www.mltframework.org/"
 SRC_URI="https://github.com/mltframework/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -154,7 +154,7 @@ src_configure() {
 	fi
 
 	# TODO: add swig language bindings
-	# see also http://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
+	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
 
 	local swig_lang
 	# TODO: java perl php tcl
