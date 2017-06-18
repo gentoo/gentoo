@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pinentry test"
 
-COMMON_DEPEND=">=dev-libs/libmirage-2.0.0:0=
+COMMON_DEPEND="<dev-libs/libmirage-3.0.5:0=
 	dev-libs/glib:2=
 	pinentry? ( dev-libs/libassuan:0= )"
 DEPEND="${COMMON_DEPEND}
