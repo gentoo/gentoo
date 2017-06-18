@@ -8672,7 +8672,7 @@ dev-python/sepolgen 1.2.3 2.6 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.12 1.19: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10: Allow customization of the process title
-dev-python/setuptools 30.4.0 34.0.2-r1 35.0.1 35.0.2 9999: Collection of extensions to Distutils
+dev-python/setuptools 30.4.0 34.0.2-r1 35.0.1 35.0.2 36.0.1 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.1-r1 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.15.0 1.15.5: package to manage versions by scm tags via setuptools
@@ -10644,7 +10644,7 @@ dev-vcs/git 2.13.0 2.13.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: 
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419 6.20160923 6.20160923-r1 6.20161031 6.20170101: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
-dev-vcs/git-cola 2.2.1 2.3 2.4: The highly caffeinated git GUI
+dev-vcs/git-cola 2.2.1 2.3 2.4 2.11: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-deps 9999: git commit dependency analysis tool
