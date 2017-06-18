@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ inherit eutils fdo-mime gnome2-utils qmake-utils
 MY_P=${PN}-${PV%0}-src
 
 DESCRIPTION="Qt5 application to design electric diagrams"
-HOMEPAGE="http://qelectrotech.org/"
-SRC_URI="http://download.tuxfamily.org/qet/tags/20151127/${MY_P}.tar.gz"
+HOMEPAGE="https://qelectrotech.org/"
+SRC_URI="https://download.tuxfamily.org/qet/tags/20151127/${MY_P}.tar.gz"
 
 LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
