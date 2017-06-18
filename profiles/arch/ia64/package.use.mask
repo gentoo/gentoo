@@ -60,10 +60,6 @@ dev-db/percona-server -numa
 # Missing keywords on media-libs/grilo - bug #521972
 media-sound/rhythmbox upnp-av
 
-# Gilles Dartiguelongue <eva@gentoo.org> (22 Aug 2016)
-# Missing keywords on dev-libs/gom - bug #521972
-media-libs/grilo test
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
