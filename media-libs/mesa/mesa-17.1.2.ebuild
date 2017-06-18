@@ -231,7 +231,7 @@ multilib_src_configure() {
 	fi
 
 	if use egl; then
-		myconf+=" --with-egl-platforms=x11$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
+		myconf+=" --with-egl-platforms=x11,surfaceless$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
 	fi
 
 	if use gallium; then
