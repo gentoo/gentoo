@@ -11339,7 +11339,7 @@ games-puzzle/gnome-taquin 3.22.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.22.0: Complete the puzzle by matching numbered tiles
 games-puzzle/gnudoku 0.93: A program for creating and solving Su Doku puzzles
 games-puzzle/gnurobbo 0.66: Robbo, a popular Atari XE/XL game ported to Linux
-games-puzzle/gottet 1.0.6 1.1.3: A tetris clone based on Qt4
+games-puzzle/gottet 1.0.6 1.1.3: A tetris clone based on Qt5
 games-puzzle/greedy 0.2.0-r1: fun little ncurses puzzle game
 games-puzzle/groundhog 1.4: Put the balls in the pockets of the same color by manipulating a maze of tubes
 games-puzzle/gtetrinet 0.7.11-r3: Tetrinet Clone for GNOME
