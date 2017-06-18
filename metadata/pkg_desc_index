@@ -1119,7 +1119,7 @@ app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.6: Emacs major mode for editing D code
 app-emacs/dash 2.13.0: A modern list library for Emacs
-app-emacs/ddskk 14.3 14.4 15.1 16.1: One Japanese input methods on Emacs
+app-emacs/ddskk 16.1 16.2: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2: desktop+ extends standard desktop module
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509: Minor mode to show space left on devices in the mode line
@@ -15619,7 +15619,7 @@ net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6 1.8.6-r1: A torrent file parser
 net-p2p/transmission 2.92-r2 9999: A fast, easy, and free BitTorrent client
 net-p2p/transmission-remote-cli 1.7.1: Ncurses interface for the Transmission BitTorrent client
-net-p2p/transmission-remote-gtk 1.0 1.1.1 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
+net-p2p/transmission-remote-gtk 1.1.1 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.3.3-r1: Bittorrent client that does not require a website to discover content
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
 net-p2p/valknut 0.4.9: A open source cross platform client for the Direct Connect network
@@ -18890,7 +18890,7 @@ x11-misc/kapow 1.5.2: A punch clock program designed to easily keep track of you
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
-x11-misc/kronometer 2.1.2 2.1.4 2.1.5: Stopwatch application
+x11-misc/kronometer 2.1.2 2.1.5: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5-r1: utility that merges application menus, your desktop and even your file manager
 x11-misc/libinput-gestures 2.15 2.19 9999: Actions gestures on your touchpad using libinput

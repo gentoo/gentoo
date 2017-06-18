@@ -6658,7 +6658,6 @@ net-p2p/transmission:lightweight - Optimize transmission for low-resource system
 net-p2p/transmission:mbedtls - Use mbed TLS instead of OpenSSL
 net-p2p/transmission:xfs - Enable XFS filesystem capabilities by using sys-fs/xfsprogs headers (in building of fdlimit(.c))
 net-p2p/transmission-remote-gtk:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration.
-net-p2p/transmission-remote-gtk:unique - Enable single instance support using dev-libs/libunique
 net-p2p/tribler:vlc - Enable vlc support.
 net-print/cups:java - Add support for the Java interpeter in the web server CGIs.
 net-print/cups:lprng-compat - Do not install lp... binaries so cups and lprng can coexist.
