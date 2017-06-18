@@ -15,7 +15,7 @@ SRC_URI="https://github.com/ClusterLabs/${PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~x86"
 REQUIRED_USE="cman? ( !heartbeat )"
 IUSE="acl cman heartbeat smtp snmp static-libs"
 
