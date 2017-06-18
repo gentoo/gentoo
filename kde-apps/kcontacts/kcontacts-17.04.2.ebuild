@@ -32,3 +32,9 @@ src_prepare() {
 		-e "/ecm_add_tests/ s/picturetest\.cpp //" \
 		autotests/CMakeLists.txt || die
 }
+
+src_test() {
+	mkdir -p "${HOME}/.local/share/kf5/kcontacts" || die
+	cp "${S}/src/countrytransl.map" "${HOME}/.local/share/kf5/kcontacts/" || die
+	kde5_src_test
+}
