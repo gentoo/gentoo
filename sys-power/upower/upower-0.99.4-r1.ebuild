@@ -1,22 +1,25 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils systemd
+EAPI=6
+inherit ltprune systemd
 
-DESCRIPTION="D-Bus abstraction for enumerating power devices and querying history and statistics"
+DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
 HOMEPAGE="https://upower.freedesktop.org/"
 SRC_URI="https://${PN}.freedesktop.org/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/3" # based on SONAME of libupower-glib.so
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE="+introspection ios kernel_FreeBSD kernel_linux selinux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
-COMMON_DEPS=">=dev-libs/dbus-glib-0.100
-	>=dev-libs/glib-2.34
+# gtk-doc files are not available as prebuilt in the tarball
+IUSE="doc +introspection ios kernel_FreeBSD kernel_linux selinux"
+
+COMMON_DEPS="
+	>=dev-libs/dbus-glib-0.100
+	>=dev-libs/glib-2.34:2
 	sys-apps/dbus:=
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( dev-libs/gobject-introspection:= )
 	kernel_linux? (
 		virtual/libusb:1
 		virtual/libgudev:=
@@ -25,23 +28,37 @@ COMMON_DEPS=">=dev-libs/dbus-glib-0.100
 			>=app-pda/libimobiledevice-1:=
 			>=app-pda/libplist-1:=
 			)
-		)"
+		)
+"
 RDEPEND="
 	${COMMON_DEPS}
 	selinux? ( sec-policy/selinux-devicekit )
 "
 DEPEND="${COMMON_DEPS}
+	doc? ( dev-util/gtk-doc )
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
 	dev-util/intltool
 	>=sys-devel/gettext-0.17
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 QA_MULTILIB_PATHS="usr/lib/${PN}/.*"
 
 DOCS="AUTHORS HACKING NEWS README"
 
+PATCHES=(
+	# Fix calling the wrong _complete_ function for up_daemon_get_critical_action()
+	# (from 'master')
+	"${FILESDIR}"/${P}-copy-paste.patch
+
+	# Do not spin in a loop when /proc/timer_stats cannot be written
+	# (from 'master')
+	"${FILESDIR}"/${P}-timer-stats.patch
+)
+
 src_prepare() {
+	default
 	sed -i -e '/DISABLE_DEPRECATED/d' configure || die
 }
 
@@ -57,6 +74,7 @@ src_configure() {
 	fi
 
 	econf \
+		$(use_enable doc gtk-doc) \
 		--libexecdir="${EPREFIX}"/usr/lib/${PN} \
 		--localstatedir="${EPREFIX}"/var \
 		$(use_enable introspection) \
@@ -64,21 +82,14 @@ src_configure() {
 		${myconf} \
 		--enable-man-pages \
 		--disable-tests \
-		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		--with-backend=${backend} \
 		$(use_with ios idevice) \
-		"$(systemd_with_utildir)" \
-		"$(systemd_with_unitdir)"
+		--with-systemdutildir="$(systemd_get_utildir)" \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 }
 
 src_install() {
 	default
-
-	# https://bugs.gentoo.org/487400
-	insinto /usr/share/doc/${PF}/html/UPower
-	doins doc/html/*
-	dosym /usr/share/doc/${PF}/html/UPower /usr/share/gtk-doc/html/UPower
-
 	keepdir /var/lib/upower #383091
 	prune_libtool_files
 }
