@@ -15,7 +15,7 @@ WEBKIT_REQUIRED="optional"
 inherit check-reqs kde4-base versionator
 
 DESCRIPTION="KDE Office Suite"
-HOMEPAGE="http://www.calligra.org/"
+HOMEPAGE="https://www.calligra.org/"
 
 case ${PV} in
 	2.[456789].[789]?)
