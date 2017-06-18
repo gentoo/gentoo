@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -66,6 +66,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4.2-system-leveldb.patch"
+	"${FILESDIR}/${PN}-5.6.2-icu-59.patch" # bug 618644
 )
 
 src_prepare() {
