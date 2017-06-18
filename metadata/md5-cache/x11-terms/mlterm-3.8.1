@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo[X] ) canna? ( app-i18n/canna ) fbcon? ( media-fonts/unifont ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( >=x11-libs/gtk+-2:= ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) xft? ( x11-libs/libXft ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A multi-lingual terminal emulator
+EAPI=6
+HOMEPAGE=http://mlterm.sourceforge.net/
+IUSE=bidi cairo canna debug fbcon fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo[X] ) canna? ( app-i18n/canna ) fbcon? ( media-fonts/unifont ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( >=x11-libs/gtk+-2:= ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) xft? ( x11-libs/libXft )
+SLOT=0
+SRC_URI=mirror://sourceforge/mlterm/mlterm-3.8.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_md5_=ca96b26335ee8dd4eebee99e1b80bae7
