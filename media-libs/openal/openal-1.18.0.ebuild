@@ -16,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fb
 IUSE="
 	alsa coreaudio debug jack oss portaudio pulseaudio qt4
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
-	neon
+	cpu_flags_arm_neon
 "
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
@@ -48,7 +48,7 @@ src_configure() {
 			"-DALSOFT_CPUEXT_SSE=$(usex cpu_flags_x86_sse ON OFF)"
 			"-DALSOFT_CPUEXT_SSE2=$(usex cpu_flags_x86_sse2 ON OFF)"
 			"-DALSOFT_CPUEXT_SSE4_1=$(usex cpu_flags_x86_sse4_1 ON OFF)"
-			"-DALSOFT_CPUEXT_NEON=$(usex neon ON OFF)"
+			"-DALSOFT_CPUEXT_NEON=$(usex cpu_flags_arm_neon ON OFF)"
 			"-DALSOFT_UTILS=$(multilib_is_native_abi && echo "ON" || echo "OFF")"
 			"-DALSOFT_NO_CONFIG_UTIL=$(usex qt4 "$(multilib_is_native_abi && echo "OFF" || echo "ON")" ON)"
 			"-DALSOFT_EXAMPLES=OFF"
