@@ -29,7 +29,7 @@ RDEPEND="
 	)
 	media-libs/alsa-lib
 	media-libs/libsndfile
-	media-sound/jack-audio-connection-kit
+	virtual/jack
 	media-libs/ladspa-sdk
 	>=media-libs/lilv-0.16.0
 	media-libs/lv2
