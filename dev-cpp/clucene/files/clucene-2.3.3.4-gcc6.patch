@@ -3,6 +3,9 @@ From: Hodorgasm <nsane457@gmail.com>
 Date: Thu, 12 May 2016 20:38:12 -0400
 Subject: [PATCH] Support GCC-6
 
+Updated 2017-06-18 by mgorny to allow *any* gcc version so that
+we do not have to update the patch every second month.
+
 ---
  src/shared/cmake/MacroCheckGccVisibility.cmake | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -16,7 +19,7 @@ index 2022aa3..020f913 100644
     exec_program(${CMAKE_C_COMPILER} ARGS --version OUTPUT_VARIABLE _gcc_version_info)
  
 -   string (REGEX MATCH "[345]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
-+   string (REGEX MATCH "[3456]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
++   string (REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" _gcc_version "${_gcc_version_info}")
     if (NOT _gcc_version)
     
        # clang reports: clang version 1.1 (trunk 95754)
