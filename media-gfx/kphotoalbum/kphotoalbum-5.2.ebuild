@@ -7,7 +7,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Tool for indexing, searching, and viewing images"
-HOMEPAGE="http://www.kphotoalbum.org/"
+HOMEPAGE="https://www.kphotoalbum.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.2"
