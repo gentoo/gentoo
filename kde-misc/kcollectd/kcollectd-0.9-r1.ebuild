@@ -6,8 +6,8 @@ EAPI=6
 inherit kde4-base
 
 DESCRIPTION="Simple kdelibs4-based live data viewer for collectd"
-HOMEPAGE="http://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html"
-SRC_URI="http://www.forwiss.uni-passau.de/~berberic/Linux/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html"
+SRC_URI="https://www.forwiss.uni-passau.de/~berberic/Linux/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="4"
