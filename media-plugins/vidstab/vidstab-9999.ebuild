@@ -18,7 +18,6 @@ PATCHES=( "${FILESDIR}/${PN}-gentoo.diff" )
 RDEPEND="openmp? ( sys-devel/gcc[openmp] )"
 DEPEND="${RDEPEND}"
 
-
 src_configure() {
         use openmp && append-cppflags "-fopenmp -DUSE_OMP"
         use cpu_flags_x86_sse2 && append-cppflags "-DUSE_SSE2 -msse2 -ffast-math"
