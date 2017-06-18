@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=app-crypt/gpgme dev-db/sqlite >=dev-libs/appstream-glib-0.6.13 >=dev-libs/glib-2.45.8:2 dev-libs/libgpg-error dev-libs/libgudev dev-libs/libgusb >=net-libs/libsoup-2.51.92:2.4 >=sys-auth/polkit-0.103 colorhug? ( >=x11-misc/colord-1.2.12:0= ) dell? ( sys-libs/efivar >=sys-libs/libsmbios-2.3.0 ) elf? ( dev-libs/libelf ) systemd? ( sys-apps/systemd ) !systemd? ( >=sys-auth/consolekit-1.0.0 ) uefi? ( >=sys-apps/fwupdate-5 ) app-arch/gcab app-arch/libarchive virtual/pkgconfig doc? ( dev-util/gtk-doc ) man? ( app-text/docbook-sgml-utils ) >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2
+DESCRIPTION=Aims to make updating firmware on Linux automatic, safe and reliable
+EAPI=6
+HOMEPAGE=http://www.fwupd.org
+IUSE=colorhug dell doc elf +man systemd uefi
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-crypt/gpgme dev-db/sqlite >=dev-libs/appstream-glib-0.6.13 >=dev-libs/glib-2.45.8:2 dev-libs/libgpg-error dev-libs/libgudev dev-libs/libgusb >=net-libs/libsoup-2.51.92:2.4 >=sys-auth/polkit-0.103 colorhug? ( >=x11-misc/colord-1.2.12:0= ) dell? ( sys-libs/efivar >=sys-libs/libsmbios-2.3.0 ) elf? ( dev-libs/libelf ) systemd? ( sys-apps/systemd ) !systemd? ( >=sys-auth/consolekit-1.0.0 ) uefi? ( >=sys-apps/fwupdate-5 )
+REQUIRED_USE=dell? ( uefi )
+SLOT=0
+SRC_URI=https://github.com/hughsie/fwupd/archive/0.9.4.tar.gz -> fwupd-0.9.4.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:meson src_test:meson src_install:meson
+_eclasses_=meson	8ef05931cfb4c34af284864f5d1dfd67	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_md5_=e99b2e70c3f86700a848d109a0c4bec2
