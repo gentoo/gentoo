@@ -1,7 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
+# NOTE: When masking a USE flag due to missing keywords, please file a keyword
+# request bug for the hppa arch.
 
 # Jeroen Roovers <jer@gentoo.org> (26 Feb 2017)
 # app-crypt/libsecret is not keyworded for HPPA
@@ -195,5 +196,3 @@ app-text/texlive xindy
 # Mart Raudsepp <leio@gentoo.org> (02 Apr 2008)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded
 media-plugins/gst-plugins-meta dvb
-
-# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
