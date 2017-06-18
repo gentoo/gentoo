@@ -7,6 +7,7 @@ inherit multilib qmake-utils qt4-r2
 
 DESCRIPTION="Extension library providing cross-platform utility classes for the Qt toolkit"
 HOMEPAGE="http://libqxt.org/"
+HOMEPAGE="https://bitbucket.org/libqxt/libqxt/wiki/Home"
 SRC_URI="http://dev.libqxt.org/libqxt/get/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="|| ( CPL-1.0 LGPL-2.1 )"
