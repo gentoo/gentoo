@@ -15,6 +15,7 @@
 	</maintainer>
 	<use>
 		<flag name="headless">Build headless version of the PPSSPP</flag>
+		<flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/hrydgard/ppsspp/issues</bugs-to>
