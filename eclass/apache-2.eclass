@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -402,7 +402,7 @@ apache-2_pkg_setup() {
 	setup_modules
 
 	if use debug; then
-		MY_CONF+=( --enable-maintainer-mode --enable-exception-hook )
+		MY_CONF+=( --enable-exception-hook )
 	fi
 
 	elog "Please note that you need SysV IPC support in your kernel."
