@@ -19,7 +19,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
-	media-sound/jack-audio-connection-kit
+	virtual/jack
 	lv2? ( media-libs/lv2 )
 	osc? ( media-libs/liblo )"
 DEPEND="${RDEPEND}
