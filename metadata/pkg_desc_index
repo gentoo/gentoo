@@ -2853,7 +2853,7 @@ dev-ada/gnatmem 2016: Monitors dynamic allocation and deallocation activity in a
 dev-ada/gprbuild 2016 9999: Multi-Language Management
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 17.0 2016 9999: A complete Ada graphical toolkit
-dev-ada/xmlada 2016 9999: Set of modules that provide a simple manipulation of XML streams
+dev-ada/xmlada 2016 2017 9999: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library

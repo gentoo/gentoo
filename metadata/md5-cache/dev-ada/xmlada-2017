@@ -9,7 +9,7 @@ LICENSE=GPL-3
 RDEPEND=dev-lang/gnat-gpl:=
 REQUIRED_USE=|| ( shared static static-pic )
 SLOT=0
-SRC_URI=http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0 -> xmlada-gpl-2016-src.tar.gz
+SRC_URI=http://mirrors.cdn.adacore.com/art/591aeb88c7a4473fcbb154f8 -> xmlada-gpl-2017-src.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c
-_md5_=6d299b35131767d176ded1499e06c4a7
+_md5_=447ab126d4e78779f76f1516c373990e
