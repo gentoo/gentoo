@@ -5748,7 +5748,6 @@ net-im/vacuum:shortcutmanager - Allows to setup user defined shortcuts
 net-im/vacuum:socksstreams - Enable initiating SOCKS5 data streams between two XMPP entities
 net-im/vacuum:urlprocessor - Allows other plugins to load data from custom types of URLs
 net-im/vacuum:vcard - Enable obtaining peer's personal contact information
-net-im/vacuum:vcs-revision - Add VCS revision to version number, INSECURE.
 net-im/vacuum:xmppuriqueries - Allow other plugins to handle XMPP URI queries
 net-irc/atheme-services:cracklib - Enable nickserv/cracklib module for enforcing strong account passwords
 net-irc/atheme-services:largenet - Enable support/tweaks for large networks
