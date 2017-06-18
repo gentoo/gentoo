@@ -14770,7 +14770,7 @@ net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatch
 net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
 net-im/toxic 0.7.1 0.7.2 0.7.2-r1: A curses-based client for Tox.
 net-im/turses 0.2.23: Command line twitter client
-net-im/vacuum 1.2.4 9999: Qt Crossplatform Jabber client
+net-im/vacuum 1.2.5 9999: Qt Crossplatform Jabber client
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
 net-irc/atheme-services 6.0.11-r1 7.0.6-r1 9999: A portable and secure set of open-source and modular IRC services
@@ -15540,7 +15540,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r2 9999: A RSS/Atom feed reader for the text console
-net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.18.4 0.18.5 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.3.5: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
