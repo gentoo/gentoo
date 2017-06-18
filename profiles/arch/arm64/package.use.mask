@@ -87,6 +87,10 @@ app-crypt/libsecret test
 # restricted anyway, so no point in pursuing it right now.
 app-shells/bash-completion test
 
+# Alexis Ballier <aballier@gentoo.org> (28 Jun 2017)
+# No binary plugin for arm64.
+www-client/chromium widevine
+
 # Alexis Ballier <aballier@gentoo.org> (27 Jun 2017)
 # qtwebkit:4 is old and doesnt build with gcc7, skip it
 dev-python/PyQt4 webkit

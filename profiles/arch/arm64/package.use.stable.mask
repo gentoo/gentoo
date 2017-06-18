@@ -1,10 +1,135 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
-# idn: Needs net-dns/libidn2 which is not stabilized yet on arm64
-# gnutls: Needs net-libs/gnutls which is not stabilized yet on arm64
-net-misc/wget idn gnutls
+# app-doc/doxygen not stable
+dev-embedded/libftdi doc
+dev-libs/apr doc
+dev-libs/icu doc
+dev-libs/iniparser doc
+dev-libs/jsoncpp doc
+dev-libs/libdaemon doc
+dev-libs/libnatspec doc
+dev-libs/libnl:1.1 doc
+dev-libs/libusb doc
+dev-util/cppunit doc
+dev-util/ninja doc
+dev-vcs/subversion doc
+media-libs/openjpeg doc
+net-dns/avahi doc
+sys-apps/dbus doc
+x11-libs/libSM doc
+x11-libs/libX11 doc
+x11-libs/libXaw doc
+x11-libs/libXdmcp doc
+x11-libs/libXext doc
+x11-libs/libXmu doc
+x11-libs/libXtst doc
+x11-libs/libxcb doc
+x11-libs/xtrans doc
+x11-proto/recordproto doc
+x11-proto/xextproto doc
+x11-proto/xproto doc
+x11-libs/libICE doc
+x11-libs/libXi doc
+
+# app-emacs/lua-mode
+dev-lang/lua emacs
+
+# app-emacs/autoconf-mode
+sys-devel/autoconf emacs
+
+# app-emacs/po-mode
+sys-devel/gettext emacs
+
+# app-emacs/eselect-mode
+app-admin/eselect emacs
+
+# app-vim/eselect-syntax
+app-admin/eselect vim-syntax
+
+# app-vim/pam-syntax
+sys-libs/pam vim-syntax
+
+# dev-util/valgrind
+app-arch/lz4 valgrind
+
+# net-nds/openldap
+app-crypt/gnupg ldap
+
+# dev-qt/*:5
+app-crypt/pinentry qt5
+
+# dev-util/cscope
+app-editors/vim cscope
+
+# sys-apps/systemd
+app-admin/syslog-ng systemd
+net-nds/rpcbind systemd
+sys-apps/dbus systemd
+sys-apps/util-linux systemd
+sys-auth/pambase systemd
+sys-fs/lvm2 systemd
+sys-process/procps systemd
+virtual/libudev systemd
+virtual/udev systemd
+
+# app-crypt/libsecret and app-crypt/gcr
+app-crypt/pinentry gnome-keyring
+
+# x11-libs/gtk+:2
+app-crypt/pinentry gtk
+
+# dev-qt/qtgui-4.4.1:4
+app-crypt/pinentry qt4
+
+# dev-vcs/git
+app-portage/layman git
+
+# dev-vcs/bzr
+app-portage/layman bazaar
+
+# dev-vcs/mercurial
+app-portage/layman mercurial
+
+# dev-vcs/cvs
+app-portage/layman cvs
+
+# dev-vcs/darcs
+app-portage/layman darcs
+
+# media-gfx/graphviz
+app-text/asciidoc graphviz
+
+# dev-python/sphinx
+dev-python/pytest doc
+dev-python/pyxattr doc
+dev-python/six doc
+dev-python/urllib3 doc
+dev-util/cmake doc
+www-servers/tornado doc
+dev-python/cffi doc
+dev-python/characteristic doc
+dev-python/click doc
+dev-python/cssselect doc
+dev-python/cython doc
+dev-python/execnet doc
+dev-python/futures doc
+dev-python/nose doc
+dev-python/pbr test
+dev-python/pexpect doc
+dev-python/py doc
+dev-python/pygments doc
+dev-python/pyopenssl doc
+dev-python/pyserial doc
+
+# gnome-base/gnome-keyring
+sys-auth/pambase gnome-keyring
+
+# sys-auth/consolekit
+sys-auth/pambase consolekit
+
+# media-libs/libsdl
+dev-libs/zziplib sdl
 
 # Michael Weber <xmw@gentoo.org> (29 Mar 2017)
 # unstable deps mesa llvm et al.
