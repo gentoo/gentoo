@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-multilib
 
 DESCRIPTION="A unit testing framework for C"
-HOMEPAGE="http://cmocka.org/"
+HOMEPAGE="https://cmocka.org/"
 SRC_URI="https://cmocka.org/files/1.1/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
