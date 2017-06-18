@@ -1,24 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-LANGS="de pl ru uk"
+EAPI=6
 
-inherit cmake-utils git-r3
-
-DESCRIPTION="Qt4 Crossplatform Jabber client"
-HOMEPAGE="http://www.vacuum-im.org/"
+EGIT_BRANCH="dev_qt5"
 EGIT_REPO_URI="https://github.com/Vacuum-IM/vacuum-im.git"
+PLOCALES="de es pl ru uk"
+inherit cmake-utils git-r3 l10n
+
+DESCRIPTION="Qt Crossplatform Jabber client"
+HOMEPAGE="http://www.vacuum-im.org/"
 
 LICENSE="GPL-3"
-SLOT="0/31" # subslot = libvacuumutils soname version
+SLOT="0/37" # subslot = libvacuumutils soname version
 KEYWORDS=""
-PLUGINS=" adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries"
+PLUGINS=( adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
 SPELLCHECKER_BACKENDS="aspell +enchant hunspell"
-IUSE="${PLUGINS// / +} ${SPELLCHECKER_BACKENDS} +spell vcs-revision"
-for x in ${LANGS}; do
-	IUSE+=" linguas_${x}"
-done
+IUSE="${PLUGINS[@]/#/+} ${SPELLCHECKER_BACKENDS} +spell"
 
 REQUIRED_USE="
 	annotations? ( privatestorage )
@@ -41,27 +39,30 @@ REQUIRED_USE="
 	spell? ( ^^ ( ${SPELLCHECKER_BACKENDS//+/} ) )
 "
 
-RDEPEND="
-	>=dev-qt/qtcore-4.8:4[ssl]
-	>=dev-qt/qtgui-4.8:4
-	dev-qt/qtlockedfile[qt4(+)]
-	>=dev-libs/openssl-1.0.0
-	adiummessagestyle? ( >=dev-qt/qtwebkit-4.8:4 )
-	filemessagearchive? ( >=dev-qt/qtsql-4.8:4[sqlite] )
-	messagearchiver? ( >=dev-qt/qtsql-4.8:4[sqlite] )
+DEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtlockedfile[qt5(+)]
+	dev-qt/qtmultimedia:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtxml:5
+	net-dns/libidn
+	sys-libs/zlib[minizip]
+	x11-libs/libXScrnSaver
+	adiummessagestyle? ( dev-qt/qtwebkit:5 )
+	filemessagearchive? ( dev-qt/qtsql:5[sqlite] )
+	messagearchiver? ( dev-qt/qtsql:5[sqlite] )
 	spell? (
 		aspell? ( app-text/aspell )
 		enchant? ( app-text/enchant )
 		hunspell? ( app-text/hunspell )
 	)
-	net-dns/libidn
-	x11-libs/libXScrnSaver
-	sys-libs/zlib[minizip]
+"
+RDEPEND="${DEPEND}
 	!net-im/vacuum-spellchecker
 "
-DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS CHANGELOG README TRANSLATORS"
+DOCS=( AUTHORS CHANGELOG README TRANSLATORS )
 
 src_prepare() {
 	# Force usage of system libraries
@@ -71,34 +72,24 @@ src_prepare() {
 }
 
 src_configure() {
-	# linguas
-	local langs="none;" x
-	for x in ${LANGS}; do
-		use linguas_${x} && langs+="${x};"
-	done
-
 	local mycmakeargs=(
 		-DINSTALL_LIB_DIR="$(get_libdir)"
 		-DINSTALL_SDK=ON
-		-DLANGS="${langs}"
+		-DLANGS="$(l10n_get_locales)"
 		-DINSTALL_DOCS=OFF
 		-DFORCE_BUNDLED_MINIZIP=OFF
 		-DPLUGIN_statistics=OFF
+		-DNO_WEBKIT=$(usex !adiummessagestyle)
+		-DPLUGIN_spellchecker=$(usex spell)
 	)
 
-	for x in ${PLUGINS}; do
-		mycmakeargs+=( "$(cmake-utils_use ${x} PLUGIN_${x})" )
+	for x in ${PLUGINS[@]}; do
+		mycmakeargs+=( -DPLUGIN_${x}=$(usex $x) )
 	done
-	mycmakeargs+=( "$(cmake-utils_use spell PLUGIN_spellchecker)" )
 
 	for i in ${SPELLCHECKER_BACKENDS//+/}; do
 		use "${i}" && mycmakeargs+=( -DSPELLCHECKER_BACKEND="${i}" )
 	done
-
-	if use vcs-revision; then
-		subversion_wc_info # eclass is broken
-		mycmakeargs+=( -DVER_STRING="${ESVN_WC_REVISION}" )
-	fi
 
 	cmake-utils_src_configure
 }
