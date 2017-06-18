@@ -6,8 +6,8 @@ EAPI=6
 inherit fdo-mime gnome2-utils qmake-utils
 
 DESCRIPTION="A fullscreen and distraction-free word processor"
-HOMEPAGE="http://gottcode.org/focuswriter/"
-SRC_URI="http://gottcode.org/${PN}/${P}-src.tar.bz2"
+HOMEPAGE="https://gottcode.org/focuswriter/"
+SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0"
