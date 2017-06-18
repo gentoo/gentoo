@@ -19,7 +19,7 @@ RDEPEND=">=dev-libs/mini-xml-2.2.1
 	media-libs/liblo
 	alsa? ( media-libs/alsa-lib )
 	fltk? ( >=x11-libs/fltk-1.3:1 )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	lash? ( media-sound/lash )"
 #	portaudio? ( media-libs/portaudio )"
 DEPEND="${RDEPEND}
