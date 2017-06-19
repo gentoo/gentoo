@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
-inherit libtool
+inherit libtool eutils
 
 MY_P=${P/lib}
 
@@ -25,6 +25,7 @@ DOCS="doc/*.txt README"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
+	epatch "${FILESDIR}/gcc7.patch"
 	elibtoolize
 }
 
