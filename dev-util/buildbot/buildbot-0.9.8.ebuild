@@ -127,6 +127,7 @@ src_install() {
 
 python_test() {
 	distutils_install_for_testing
+	export TEST_HYPER=1
 
 	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
