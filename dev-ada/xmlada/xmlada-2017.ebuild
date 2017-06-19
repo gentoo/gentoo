@@ -32,13 +32,13 @@ src_compile () {
 	if use shared; then
 		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=relocatable \
 			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
-			-cargs ${ADAFLAGS}
+			-cargs ${ADAFLAGS} || die "gprbuild failed"
 	fi
 	for kind in static static-pic; do
 		if use ${kind}; then
 			gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=${kind} \
 				-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
-				-cargs ${ADAFLAGS}
+				-cargs ${ADAFLAGS} || die "gprbuild failed"
 		fi
 	done
 }
