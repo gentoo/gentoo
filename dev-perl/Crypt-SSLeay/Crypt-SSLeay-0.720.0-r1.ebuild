@@ -34,7 +34,7 @@ PDEPEND="
 	dev-perl/libwww-perl
 	>=dev-perl/LWP-Protocol-https-6.20.0
 "
-
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
 export OPTIMIZE="${CFLAGS}"
 #myconf="--lib=${EPREFIX}/usr"
 
