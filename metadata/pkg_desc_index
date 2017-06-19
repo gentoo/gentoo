@@ -4878,7 +4878,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.6.2 1.6.3 1.7.1 1.7.2: Library to handle input devices in Wayland
+dev-libs/libinput 1.6.2 1.7.2 1.7.3: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.6: Open-source library for reading, mastering and writing optical discs
@@ -19355,7 +19355,7 @@ x11-terms/terminator 0.97-r1 0.98 1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1 1.0.0 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 0.9.6 0.9.6-r1: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.6.3 0.8.5.1: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 327 328: Terminal Emulator for X Windows
+x11-terms/xterm 327 328 329: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
@@ -19563,7 +19563,7 @@ xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applica
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.12.0-r2 4.13.0: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.1: A flexible, easy-to-use configuration management system for Xfce
 xfce-base/xfdesktop 4.12.3 4.13.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0: Window manager for the Xfce desktop environment
