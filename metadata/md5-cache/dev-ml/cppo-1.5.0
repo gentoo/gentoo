@@ -4,11 +4,11 @@ DESCRIPTION=An equivalent of the C preprocessor for OCaml programs
 EAPI=5
 HOMEPAGE=http://mjambon.com/cppo.html https://github.com/mjambon/cppo/
 IUSE=examples +ocamlopt
-KEYWORDS=~amd64 ~arm ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild:=[ocamlopt?]
 SLOT=0/1.5.0
 SRC_URI=https://github.com/mjambon/cppo/archive/v1.5.0.tar.gz -> cppo-1.5.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
-_md5_=ffa6fab5eb3390cda0eeec06f3751db3
+_md5_=530c886a21a6a118211e1b35b6c43a9a
