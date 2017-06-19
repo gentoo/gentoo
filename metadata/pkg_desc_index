@@ -14422,7 +14422,7 @@ net-analyzer/nsat 1.5-r3: Network Security Analysis Tool, an application-level n
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/ntop 5.0.1-r2 5.0.1-r3: Network traffic analyzer with web interface
-net-analyzer/ntopng 2.4: Network traffic analyzer with web interface
+net-analyzer/ntopng 2.4 3.0: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
@@ -14984,6 +14984,7 @@ net-libs/loudmouth 1.4.3-r2 1.5.2-r1 1.5.3: Lightweight C Jabber library
 net-libs/mbedtls 2.2.1 2.3.0-r1 2.4.1 2.4.2 2.5.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 1.8 1.9.20151008 2.0.20161216 2.0.20170509: UPnP client library and a simple UPnP client
+net-libs/nDPI 2.0: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
 net-libs/nativebiginteger 0.6.4 0.6.4-r3 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
 net-libs/neon 0.30.2: HTTP and WebDAV client library
@@ -15679,7 +15680,7 @@ net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP s
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.1.19-r4 1.4.0-r2 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.5.14 1.5.19 1.6.11 1.6.12 1.6.9999 1.7.5 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.5.14 1.5.19 1.6.11 1.6.12 1.6.13 1.6.9999 1.7.5 1.7.6 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
