@@ -4,11 +4,11 @@ DESCRIPTION=PKCS#11 helper library
 EAPI=6
 HOMEPAGE=https://github.com/OpenSC/pkcs11-helper
 IUSE=doc gnutls libressl nss static-libs
-KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
 LICENSE=|| ( BSD GPL-2 )
 RDEPEND=!libressl? ( >=dev-libs/openssl-0.9.7:= ) libressl? ( dev-libs/libressl ) gnutls? ( >=net-libs/gnutls-1.4.4 ) nss? ( dev-libs/nss )
 SLOT=0
 SRC_URI=https://github.com/OpenSC/pkcs11-helper/releases/download/pkcs11-helper-1.21/pkcs11-helper-1.21.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
-_md5_=114ad1ea320028f354c99e06dbf4c201
+_md5_=252eda5514407126d6a8e0d8665cd5ff
