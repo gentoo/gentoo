@@ -30,8 +30,7 @@ SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
 	dvd +egl encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
-	selinux test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X +xv
-	zsh-completion"
+	selinux test tools +uchardet v4l vaapi vdpau wayland +X +xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -178,7 +177,6 @@ src_configure() {
 
 		$(use_enable doc pdf-build)
 		$(use_enable cplugins)
-		$(use_enable vf-dlopen vf-dlopen-filters)
 		$(use_enable zsh-completion zsh-comp)
 		$(use_enable test)
 
