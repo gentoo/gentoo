@@ -5572,7 +5572,7 @@ dev-perl/Capture-Tiny 0.360.0 0.420.0 0.460.0: Capture STDOUT and STDERR from Pe
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
 dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
-dev-perl/Carp-Clan 6.40.0-r1 6.60.0: Report errors from perspective of caller of a clan of modules
+dev-perl/Carp-Clan 6.60.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.6-r1 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r1: Implements an algorithm to find good values for chart axis
 dev-perl/Chatbot-Eliza 1.60.0 1.70.0: A clone of the classic Eliza program
@@ -5587,7 +5587,7 @@ dev-perl/Class-Autouse 2.10.0-r1: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.50.0-r1 0.60.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.310.0 0.330.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
-dev-perl/Class-C3-XS 0.130.0-r1 0.140.0: XS speedups for Class::C3
+dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r1: Class-Container module for perl
 dev-perl/Class-DBI 3.0.17-r1: Simple Database Abstraction
 dev-perl/Class-DBI-AbstractSearch 0.70.0: Abstract Class::DBI's SQL with SQL::Abstract::Limit
@@ -5808,7 +5808,7 @@ dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl
 dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
-dev-perl/Devel-Symdump 2.150.0 2.170.0 2.180.0: Dump symbol names or the symbol table
+dev-perl/Devel-Symdump 2.180.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/Digest-CRC 0.210.0 0.220.0_p2: Generic CRC function
@@ -5919,7 +5919,7 @@ dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
 dev-perl/File-Next 1.160.0: File::Next is an iterator-based module for finding files
 dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
-dev-perl/File-Remove 1.520.0-r1 1.550.0 1.570.0: Remove files and directories
+dev-perl/File-Remove 1.570.0: Remove files and directories
 dev-perl/File-RsyncP 0.740.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
@@ -5947,7 +5947,7 @@ dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r1 3.200.0-r2: Provide Perl API for libsmbclient.so
-dev-perl/Filter 1.540.0 1.550.0 1.570.0: Interface for creation of Perl Filters
+dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
@@ -6153,7 +6153,7 @@ dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.90.0 0.140.0: Combines many List::* utility modules in one bite-sized package
-dev-perl/List-MoreUtils 0.413.0 0.418.0 0.419.0: Provide the missing functionality from List::Util
+dev-perl/List-MoreUtils 0.418.0 0.419.0: Provide the missing functionality from List::Util
 dev-perl/List-MoreUtils-XS 0.418.0: Compiled List::MoreUtils functions
 dev-perl/List-SomeUtils 0.530.0: A colletion of List utilities missing from List::Util
 dev-perl/List-SomeUtils-XS 0.520.0: XS implementation for List::SomeUtils
@@ -6266,7 +6266,7 @@ dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.14.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
-dev-perl/Module-ScanDeps 1.200.0 1.230.0: Recursively scan Perl code for dependencies
+dev-perl/Module-ScanDeps 1.230.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.790.0: Module signature file manipulation
 dev-perl/Module-Starter 1.710.0 1.720.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
@@ -6371,7 +6371,7 @@ dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1-r2: Perl client Interface to SSH
 dev-perl/Net-SSH2 0.580.0 0.580.0-r1: Support for the SSH 2 protocol via libssh2
-dev-perl/Net-SSLeay 1.800.0 1.810.0: Perl extension for using OpenSSL
+dev-perl/Net-SSLeay 1.810.0: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
 dev-perl/Net-Server-Mail 0.230.0: Class to easily create a mail server
@@ -6735,7 +6735,7 @@ dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.800.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.940.0 1.950.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
-dev-perl/Text-CSV_XS 1.230.0 1.260.0 1.280.0 1.290.0: Comma-separated values manipulation routines
+dev-perl/Text-CSV_XS 1.280.0 1.290.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
 dev-perl/Text-Diff 1.410.0-r1 1.430.0 1.440.0: Perform diffs on files and record sets
 dev-perl/Text-FindIndent 0.110.0: Heuristically determine the indent style
@@ -6893,7 +6893,7 @@ dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed do
 dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.940.0 1.950.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
-dev-perl/XML-NamespaceSupport 1.110.0-r1 1.120.0: A Perl module that offers a simple to process namespaced XML names
+dev-perl/XML-NamespaceSupport 1.120.0: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
 dev-perl/XML-Parser 2.440.0: A Perl extension interface to James Clark's XML parser, expat
 dev-perl/XML-Parser-Lite 0.721.0: Lightweight regexp-based XML parser
@@ -14156,7 +14156,7 @@ media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpglen 0.1: A program to scan through a MPEG file and count the number of GOPs and frames
 media-video/mpgtx 1.3.1-r2: Command line MPEG audio/video/system file toolbox
 media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
-media-video/mplayer 1.2.1 1.3.0 9999: Media Player for Linux
+media-video/mplayer 1.2.1 1.3.0 1.3.0-r1 9999: Media Player for Linux
 media-video/mplayer-resume 2.0: MPlayer wrapper script to save/resume playback position
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.18.0-r1 0.25.0-r1 9999: Media player based on MPlayer and mplayer2
@@ -14579,7 +14579,7 @@ net-dialup/xl2tpd 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.3.6: A modern version of the Laye
 net-dns/avahi 0.6.31-r10 0.6.31-r11 0.6.32 0.6.32-r1 0.6.32-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.11.0_p5 9.11.1_p1: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
-net-dns/bind-tools 9.11.0_p5 9.11.1_p1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind-tools 9.11.0_p3 9.11.0_p5 9.11.1_p1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.12.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
 net-dns/coredns 006: A DNS server that chains middleware
