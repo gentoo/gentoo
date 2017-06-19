@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,8 @@ RDEPEND=">=media-libs/libsndfile-1.0.25[${MULTILIB_USEDEP}]
 					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${PV}-perl-tests.patch" )
 
 src_prepare() {
 	sed -i -e '/CFLAGS/s:-O3::' configure || die
