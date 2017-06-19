@@ -15,20 +15,21 @@ IUSE="test"
 
 RDEPEND="
 	dev-perl/DateTime
-	>=dev-perl/Dist-Zilla-4.0.0
+	>=dev-perl/Dist-Zilla-4.200.16
 	dev-perl/Dist-Zilla-Plugin-Config-Git
 	>=dev-perl/File-HomeDir-0.810.0
 	virtual/perl-File-Spec
 	virtual/perl-File-Temp
 	dev-perl/File-chdir
-	dev-perl/Git-Wrapper
-	virtual/perl-Scalar-List-Utils
+	>=dev-perl/Git-Wrapper-0.21.0
+	dev-perl/IPC-System-Simple
+	>=virtual/perl-Scalar-List-Utils-1.450.0
 	dev-perl/Module-Runtime
 	dev-perl/Moose
 	dev-perl/MooseX-Has-Sugar
 	dev-perl/MooseX-Types
-	dev-perl/MooseX-Types-Path-Tiny
-	dev-perl/Path-Tiny
+	>=dev-perl/MooseX-Types-Path-Tiny-0.10.0
+	>=dev-perl/Path-Tiny-0.48.0
 	dev-perl/String-Formatter
 	dev-perl/Try-Tiny
 	dev-perl/Version-Next
@@ -38,7 +39,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-Text-ParseWords
-	virtual/perl-version
 	test? (
 		>=dev-perl/CPAN-Meta-Check-0.11.0
 		virtual/perl-CPAN-Meta-Requirements
