@@ -5824,7 +5824,7 @@ dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Zilla 6.8.0 6.9.0: distribution builder; installer not included!
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
-dev-perl/Dist-Zilla-Plugin-Git 2.42.0: Update your git repository after release
+dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0: A more awesome MakeMaker plugin for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provides' in your META.yml
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
@@ -7086,7 +7086,7 @@ dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4-r1: Various methods to check 
 dev-php/PEAR-PHP_Beautifier 0.1.15-r2: Code Beautifier for PHP
 dev-php/PEAR-PHP_CompatInfo 1.9.0: Find out the minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
-dev-php/PEAR-Pager 2.4.9 2.4.9-r1 2.5.0: Data paging class
+dev-php/PEAR-Pager 2.4.9 2.5.1: Data paging class
 dev-php/PEAR-SOAP 0.13.0: SOAP Client/Server for PHP 4
 dev-php/PEAR-Services_Amazon 0.8.0: Provides access to Amazon's retail and associate web services
 dev-php/PEAR-Services_JSON 1.0.3: PHP implementaion of json_encode/decode
