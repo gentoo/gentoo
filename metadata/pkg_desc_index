@@ -2850,7 +2850,7 @@ dev-ada/aws 2016: A complete Web development framework
 dev-ada/gnat_util 2016: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016: GNAT Component Collection
 dev-ada/gnatmem 2016: Monitors dynamic allocation and deallocation activity in a program
-dev-ada/gprbuild 2016 9999: Multi-Language Management
+dev-ada/gprbuild 2016 2017 9999: Multi-Language Management
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 17.0 2016 9999: A complete Ada graphical toolkit
 dev-ada/xmlada 2016 2017 9999: Set of modules that provide a simple manipulation of XML streams
