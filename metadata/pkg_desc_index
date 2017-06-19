@@ -5508,7 +5508,7 @@ dev-perl/B-Hooks-Parser 0.190.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
-dev-perl/BSD-Resource 1.290.800 1.290.900 1.291.100: Perl module for BSD process resource limit and priority functions
+dev-perl/BSD-Resource 1.291.100: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.2.2 1.4.0: BSON serialization and deserialization
 dev-perl/BZ-Client 1.72.0 4.400.0 4.400.100 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
@@ -5626,7 +5626,7 @@ dev-perl/Clipboard 0.130.0-r2: Copy and paste with any OS
 dev-perl/Clone 0.380.0 0.390.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
-dev-perl/Compress-Bzip2 2.220.0 2.240.0 2.260.0: Interface to Bzip2 compression library
+dev-perl/Compress-Bzip2 2.260.0: Interface to Bzip2 compression library
 dev-perl/Config-Any 0.290.0 0.300.0 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
@@ -5907,7 +5907,7 @@ dev-perl/File-Find-Rule-Perl 1.130.0 1.150.0: Common rules for searching for Per
 dev-perl/File-Flat 1.40.0-r1: Implements a flat filesystem
 dev-perl/File-Flock 2014.10.0: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.020.0-r1: Find matches to a pattern in a series of files and related functions
-dev-perl/File-HomeDir 1.0.0-r1 1.2.0: Get home directory for self or other user
+dev-perl/File-HomeDir 1.2.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
@@ -6733,7 +6733,7 @@ dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styl
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.800.0: A Perl library for reading, parsing, and processing BibTeX files
-dev-perl/Text-CSV 1.330.0 1.910.0 1.920.0 1.930.0 1.940.0 1.950.0: Manipulate comma-separated value strings
+dev-perl/Text-CSV 1.940.0 1.950.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 1.230.0 1.260.0 1.280.0 1.290.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
