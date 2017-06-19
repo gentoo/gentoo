@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (19 Jun 2017)
+# This is for arm32 only neon asm
+media-libs/vo-aacenc cpu_flags_arm_neon
+
 # Alexis Ballier <aballier@gentoo.org> (16 Jun 2017)
 # neon on pixman seems armv7 only, at least according to configure checks: it
 # aborts when neon is enabled.
