@@ -22,7 +22,6 @@ RDEPEND="|| (
 		virtual/skkserv
 	)
 	ruby? ( ${RUBY_DEPS} )"
-S="${WORKDIR}/${PN}-${P}_Warabitai"
 
 SITEFILE="50${PN}-gentoo.el"
 
