@@ -333,6 +333,22 @@ src_prepare() {
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
 }
 
+bootstrap_gn() {
+	if tc-is-cross-compiler; then
+		local -x AR=${BUILD_AR}
+		local -x CC=${BUILD_CC}
+		local -x CXX=${BUILD_CXX}
+		local -x NM=${BUILD_NM}
+		local -x CFLAGS=${BUILD_CFLAGS}
+		local -x CXXFLAGS=${BUILD_CXXFLAGS}
+		local -x LDFLAGS=${BUILD_LDFLAGS}
+	fi
+	einfo "Building GN..."
+	set -- tools/gn/bootstrap/bootstrap.py -s -v --no-clean
+	echo "$@"
+	"$@" || die
+}
+
 src_configure() {
 	local myconf_gn=""
 
@@ -398,7 +414,6 @@ src_configure() {
 
 	if tc-is-clang; then
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
-		myconf_gn+=" clang_base_path=\"$(realpath $(dirname `which clang`)/..)\""
 	else
 		myconf_gn+=" is_clang=false"
 	fi
@@ -425,16 +440,16 @@ src_configure() {
 
 	local myarch="$(tc-arch)"
 	if [[ $myarch = amd64 ]] ; then
-		target_arch=x64
+		myconf_gn+=" target_cpu=\"x64\""
 		ffmpeg_target_arch=x64
 	elif [[ $myarch = x86 ]] ; then
-		target_arch=ia32
+		myconf_gn+=" target_cpu=\"x86\""
 		ffmpeg_target_arch=ia32
 	elif [[ $myarch = arm64 ]] ; then
-		target_arch=arm64
+		myconf_gn+=" target_cpu=\"arm64\""
 		ffmpeg_target_arch=arm64
 	elif [[ $myarch = arm ]] ; then
-		target_arch=arm
+		myconf_gn+=" target_cpu=\"arm\""
 		ffmpeg_target_arch=$(usex neon arm-neon arm)
 	else
 		die "Failed to determine target arch, got '$myarch'."
@@ -467,19 +482,18 @@ src_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
-	# https://bugs.gentoo.org/588596
-	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
-
 	# Define a custom toolchain for GN
 	myconf_gn+=" custom_toolchain=\"${FILESDIR}/toolchain:default\""
 
-	# Tools for building programs to be executed on the build system, bug #410883.
 	if tc-is-cross-compiler; then
-		export AR_host=$(tc-getBUILD_AR)
-		export CC_host=$(tc-getBUILD_CC)
-		export CXX_host=$(tc-getBUILD_CXX)
-		export NM_host=$(tc-getBUILD_NM)
+		tc-export BUILD_{AR,CC,CXX,NM}
+		myconf_gn+=" host_toolchain=\"${FILESDIR}/toolchain:host\""
+	else
+		myconf_gn+=" host_toolchain=\"${FILESDIR}/toolchain:default\""
 	fi
+
+	# https://bugs.gentoo.org/588596
+	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
 
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
@@ -505,9 +519,12 @@ src_configure() {
 
 	touch chrome/test/data/webui/i18n_process_css_test.html || die
 
+	bootstrap_gn
+
 	einfo "Configuring Chromium..."
-	tools/gn/bootstrap/bootstrap.py -v --no-clean --gn-gen-args "${myconf_gn}" || die
-	out/Release/gn gen --args="${myconf_gn}" out/Release || die
+	set -- out/Release/gn gen --args="${myconf_gn}" out/Release
+	echo "$@"
+	"$@" || die
 }
 
 src_compile() {
