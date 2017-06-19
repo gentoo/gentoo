@@ -80,7 +80,7 @@ FFMPEG_FLAG_MAP=(
 		# libavfilter options
 		bs2b:libbs2b chromaprint flite:libflite frei0r
 		fribidi:libfribidi fontconfig ladspa libass truetype:libfreetype
-		rubberband:librubberband sofalizer:netcdf zeromq:libzmq zimg:libzimg
+		rubberband:librubberband zeromq:libzmq zimg:libzimg
 		# libswresample options
 		libsoxr
 		# Threads; we only support pthread for now but ffmpeg supports more
@@ -120,7 +120,7 @@ ARM_CPU_REQUIRED_USE="
 	cpu_flags_arm_thumb2? ( cpu_flags_arm_v6 )
 	cpu_flags_arm_v6? ( cpu_flags_arm_thumb )
 "
-MIPS_CPU_FEATURES=( mipsdspr1 mipsdspr2 mipsfpu )
+MIPS_CPU_FEATURES=( mipsdspr1:mipsdsp mipsdspr2 mipsfpu )
 PPC_CPU_FEATURES=( altivec )
 X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
 X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
@@ -142,28 +142,18 @@ X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_3dnow?  ( cpu_flags_x86_mmx )
 "
 
+CPU_FEATURES_MAP=(
+	${ARM_CPU_FEATURES[@]}
+	${MIPS_CPU_FEATURES[@]}
+	${PPC_CPU_FEATURES[@]}
+	${X86_CPU_FEATURES[@]}
+)
 IUSE="${IUSE}
-	${ARM_CPU_FEATURES[@]%:*}
-	${MIPS_CPU_FEATURES[@]%:*}
-	${PPC_CPU_FEATURES[@]%:*}
-	${X86_CPU_FEATURES[@]%:*}
-"
+	${CPU_FEATURES_MAP[@]%:*}"
 
 CPU_REQUIRED_USE="
 	${ARM_CPU_REQUIRED_USE}
 	${X86_CPU_REQUIRED_USE}
-"
-
-# "$(tc-arch):XXX" form where XXX_CPU_FEATURES are the cpu features that apply to
-# $(tc-arch).
-CPU_FEATURES_MAP="
-	arm:ARM
-	arm64:ARM
-	mips:MIPS
-	ppc:PPC
-	ppc64:PPC
-	x86:X86
-	amd64:X86
 "
 
 FFTOOLS=( aviocat cws2fws ffescape ffeval ffhash fourcc2pixfmt graph2dot ismindex pktdumper qt-faststart sidxindex trasher )
@@ -235,10 +225,6 @@ RDEPEND="
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
-	sofalizer? (
-		>=sci-libs/netcdf-4.3.2-r1[hdf5]
-		>=sci-libs/hdf5-1.8.18[hl]
-	)
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh-0.5.5[${MULTILIB_USEDEP}] )
 	svg? ( gnome-base/librsvg:2=[${MULTILIB_USEDEP}] )
@@ -355,19 +341,14 @@ multilib_src_configure() {
 
 	# (temporarily) disable non-multilib deps
 	if ! multilib_is_native_abi; then
-		for i in frei0r netcdf libzmq ; do
+		for i in frei0r libzmq ; do
 			myconf+=( --disable-${i} )
 		done
 	fi
 
 	# CPU features
-	for i in ${CPU_FEATURES_MAP} ; do
-		if [ "$(tc-arch)" = "${i%:*}" ] ; then
-			local var="${i#*:}_CPU_FEATURES[@]"
-			for j in ${!var} ; do
-				use ${j%:*} || myconf+=( --disable-${j#*:} )
-			done
-		fi
+	for i in "${CPU_FEATURES_MAP[@]}" ; do
+		use ${i%:*} || myconf+=( --disable-${i#*:} )
 	done
 
 	if use pic ; then
