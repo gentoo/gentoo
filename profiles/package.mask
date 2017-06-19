@@ -155,6 +155,7 @@ app-editors/fb2edit
 # but results in broken executables. Masked until upstream releases
 # fixed versions and for further testing.
 >=xfce-base/xfconf-4.13
+>=xfce-base/xfce4-settings-4.13.1
 
 # Matthias Maier <tamiko@gentoo.org> (06 Jun 2017)
 # Dead upstream, unmaintained, no homepage, no SRC_URI, x86-only, does not
