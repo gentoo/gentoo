@@ -17,7 +17,6 @@
     <remote-id type="cpan-module">PPI::Element</remote-id>
     <remote-id type="cpan-module">PPI::Exception</remote-id>
     <remote-id type="cpan-module">PPI::Exception::ParserRejection</remote-id>
-    <remote-id type="cpan-module">PPI::Exception::ParserTimeout</remote-id>
     <remote-id type="cpan-module">PPI::Find</remote-id>
     <remote-id type="cpan-module">PPI::Lexer</remote-id>
     <remote-id type="cpan-module">PPI::Node</remote-id>
