@@ -13,7 +13,7 @@ DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/"
 SRC_URI="https://github.com/lxc/lxc/archive/${MY_P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 
 LICENSE="LGPL-3"
 SLOT="0"
