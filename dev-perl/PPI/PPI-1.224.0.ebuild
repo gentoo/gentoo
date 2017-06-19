@@ -36,3 +36,4 @@ DEPEND="${RDEPEND}
 		>=dev-perl/Test-Warn-0.300.0
 	)
 "
+PATCHES=("${FILESDIR}/${P}-t-marpa-dot-inc.patch")
