@@ -9373,7 +9373,7 @@ dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby
 dev-ruby/arel 5.0.1.20140414130214 6.0.3 7.1.4 8.0.0: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.3.0 2.4.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
-dev-ruby/asciidoctor 1.5.4 1.5.5 1.5.5-r1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciidoctor 1.5.5-r1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciidoctor-diagram 1.5.4: A set of Asciidoctor extensions that enable you to add diagrams
 dev-ruby/asciimath 1.0.2 1.0.4: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.2.0 2.3.0: A library for working with abstract syntax trees
@@ -9745,7 +9745,7 @@ dev-ruby/rake-compiler 0.9.2-r1 1.0.2: Provide a standard and simplified way to 
 dev-ruby/rake-remote_task 2.4.1 2.4.2: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rb-gsl 1.16.0.6 2.1.0.1: Ruby interface to GNU Scientific Library
-dev-ruby/rb-inotify 0.9.5-r1 0.9.8 0.9.9: A thorough inotify wrapper for Ruby using FFI
+dev-ruby/rb-inotify 0.9.5-r1 0.9.8 0.9.9 0.9.10: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.3 0.5.4: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
 dev-ruby/rbnacl 4.0.1 4.0.2 5.0.0: Provides a high-level toolkit for building cryptographic systems and protocols
