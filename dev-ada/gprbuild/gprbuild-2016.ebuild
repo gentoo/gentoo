@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="bootstrap +shared static static-pic"
 
-DEPEND="dev-lang/gnat-gpl
+DEPEND="dev-lang/gnat-gpl:=
 	!bootstrap? ( dev-ada/xmlada )"
 RDEPEND="${DEPEND}"
 
