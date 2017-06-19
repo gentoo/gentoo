@@ -397,7 +397,7 @@ src_configure() {
 
 	if tc-is-clang; then
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
-		myconf_gn+=" clang_base_path=\"$(realpath $(dirname `which clang`)/..)\""
+		myconf_gn+=" clang_base_path=\"$(llvm-config --prefix)\""
 	else
 		myconf_gn+=" is_clang=false"
 	fi
