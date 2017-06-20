@@ -1,10 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>xarthisius@gentoo.org</email>
-		<name>Kacper Kowalik</name>
-	</maintainer>
 	<use>
 		<flag name="ispc">Enables support for the Intel SPMD Program Compiler.</flag>
 		<flag name="imagemagick">Enables BMP, GIF, PNG, TGA, TIFF image codecs.</flag>
