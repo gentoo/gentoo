@@ -259,11 +259,6 @@
       <name>Jason Zaman</name>
       <role>General maintenance</role>
     </member>
-    <member>
-      <email>xarthisius@gentoo.org</email>
-      <name>Kacper Kowalik</name>
-      <role>General maintainance</role>
-    </member>
   </project>
   <project>
     <email>security-audit@gentoo.org</email>
@@ -567,11 +562,6 @@
       <name>Naohiro Aota</name>
       <role>Member (Japanese Support)</role>
     </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>cluster@gentoo.org</email>
@@ -616,11 +606,6 @@
     <member>
       <email>ultrabug@gentoo.org</email>
       <name>Ultrabug</name>
-      <role>developer</role>
-    </member>
-    <member>
-      <email>xarthisius@gentoo.org</email>
-      <name>Kacper Kowalik</name>
       <role>developer</role>
     </member>
   </project>
@@ -808,10 +793,6 @@
     <member>
       <email>jer@gentoo.org</email>
       <name>Jeroen Roovers</name>
-    </member>
-    <member>
-      <email>xarthisius@gentoo.org</email>
-      <name>Kacper Kowalik</name>
     </member>
   </project>
   <project>
@@ -1088,11 +1069,6 @@
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>
       <role>Member</role>
-    </member>
-    <member is-lead="1">
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-      <role>Lead</role>
     </member>
   </project>
   <project>
@@ -1646,11 +1622,6 @@
       <email>hattya@gentoo.org</email>
       <name>Akinori Hattori</name>
       <role>Member ( Gentoo/IA-64 )</role>
-    </member>
-    <member is-lead="1">
-      <email>jmorgan@gentoo.org</email>
-      <name>Jack Morgan</name>
-      <role>Lead</role>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
@@ -2853,11 +2824,6 @@ developers and volunteer mentors.</description>
       <role>ppc/ppc64 keywording/stabilization</role>
     </member>
     <member>
-      <email>jmorgan@gentoo.org</email>
-      <name>Jack Morgan</name>
-      <role>ppc/ppc64 keywording/stabilization</role>
-    </member>
-    <member>
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
       <role>ppc/ppc64 keywording/stabilization</role>
@@ -3204,11 +3170,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>wizardedit@gentoo.org</email>
       <name>Austin English</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>xarthisius@gentoo.org</email>
-      <name>Kacper Kowalik</name>
       <role>Member</role>
     </member>
   </project>
@@ -3628,11 +3589,6 @@ developers and volunteer mentors.</description>
       <name>Jeroen Roovers</name>
       <role>Member ( Porting )</role>
     </member>
-    <member is-lead="1">
-      <email>jmorgan@gentoo.org</email>
-      <name>Jack Morgan</name>
-      <role>Lead</role>
-    </member>
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
@@ -3770,11 +3726,6 @@ developers and volunteer mentors.</description>
       <name>Matthias Maier</name>
       <role>Mathematics, *, BLAS/LAPACK overlord</role>
     </member>
-    <member>
-      <email>xarthisius@gentoo.org</email>
-      <name>Kacper Kowalik</name>
-      <role>Astronomy, *</role>
-    </member>
   </project>
   <project>
     <email>security@gentoo.org</email>
@@ -3880,11 +3831,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Member ( misc )</role>
-    </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
       <role>Member ( misc )</role>
     </member>
   </project>
@@ -4217,10 +4163,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>tranquility@gentoo.org</email>
       <name>Ole Reifschneider</name>
-    </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
     </member>
   </project>
   <project>
