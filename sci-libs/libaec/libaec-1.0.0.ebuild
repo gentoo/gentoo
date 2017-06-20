@@ -13,7 +13,7 @@ SRC_URI="${HOMEPAGE}/uploads/${PID}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs +szip"
 
 DEPEND=""
