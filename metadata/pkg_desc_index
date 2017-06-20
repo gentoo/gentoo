@@ -8074,12 +8074,12 @@ dev-python/os-xenapi 0.1.1: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.6.0 1.14.0 1.17.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.18.0: library for running multi-thread, multi-process applications
-dev-python/oslo-config 3.22.0: Oslo Configuration API
+dev-python/oslo-config 3.22.0 3.22.1: Oslo Configuration API
 dev-python/oslo-context 2.12.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.7.1 4.13.5 4.17.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.5.0 3.9.0 3.12.0: Oslo i18n library
 dev-python/oslo-log 3.20.1: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 5.17.1: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 5.17.1 5.17.2: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.23.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.18.0 1.23.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.16.0: OpenStack library for privilege separation.
@@ -8121,7 +8121,7 @@ dev-python/pathtools 0.1.2-r1 0.1.2-r2: Pattern matching and various utilities f
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2-r1 1.8.1 1.9.1 1.10.0 1.10.0-r1 2.0.0 2.1.0 3.0.1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 0.8.2-r1 1.8.1 1.9.1 1.10.0 1.10.0-r1 2.0.0 2.1.0 3.0.1 3.1.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pcapy 0.11.1: Python pcap extension
 dev-python/pdfrw 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.2: Simple program and library to auto generate API documentation for Python modules
@@ -17551,7 +17551,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 9.3.1 9.4.0 10.0.1 10.0.2 2016.2.9999 2017.1.9999: A virtual network service for Openstack
-sys-cluster/nova 14.0.7 15.0.5 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 14.0.7 15.0.5 15.0.6 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
