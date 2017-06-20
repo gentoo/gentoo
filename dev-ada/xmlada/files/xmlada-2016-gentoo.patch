@@ -17,3 +17,13 @@
  
  # Rebuild the tests (and not the XML/Ada code itself)
  test: force
+--- xmlada-gpl-2016-src/shared.gpr.in.old	2017-06-20 21:22:08.312775803 +0200
++++ xmlada-gpl-2016-src/shared.gpr.in	2017-06-20 21:22:47.486201843 +0200
+@@ -76,6 +76,7 @@
+          when "profile" =>
+             for Switches ("Ada") use warnings & ("-g", "-pg");
+       end case;
++      for Driver ("Ada") use External ("ADA", "gcc");
+    end compiler;
+ 
+    package binder is
