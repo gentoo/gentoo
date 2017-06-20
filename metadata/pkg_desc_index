@@ -536,7 +536,7 @@ app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.21 2.1.15 2.1.18 2.1.20-r1 2.1.21: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.1.15 2.1.18 2.1.20-r1 2.1.21 2.1.21-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.6: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -10463,7 +10463,7 @@ dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make r
 dev-util/mdds 1.2.2 1.2.3 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.4: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.40.1 0.41.0 9999: Open source build system
+dev-util/meson 0.40.1 0.41.0 0.41.1 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2 5.0.2-r1: Free Win64 runtime and import library definitions
