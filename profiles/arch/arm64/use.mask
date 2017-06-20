@@ -185,6 +185,7 @@ tk
 vim-syntax
 
 # Unmask ARM-only video-cards
+-video_cards_freedreno
 -video_cards_vc4
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
