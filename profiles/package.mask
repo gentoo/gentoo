@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (20 Jun 2017)
+# Fails to build with Java 8. Project is active on Github yet ebuild has never
+# been marked stable.
+# Masked for removal in 30 days.
+dev-java/jdbc-jaybird
+
 # Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2017)
 # No port to kf5 as nsplugin support is dropped everywhere.
 # No more kdelibs-4 based kparts in tree to feed it with.
