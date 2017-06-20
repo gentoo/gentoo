@@ -5228,6 +5228,7 @@ dev-ml/bignum 0.9.0: Core-flavoured wrapper around zarith's arbitrary-precision 
 dev-ml/bin-prot 0.9.0: Binary protocol generator
 dev-ml/biniou 1.0.12 1.0.13: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bolt 1.4: Logging tool for the Objective Caml language
+dev-ml/bos 0.1.6: Basic OS interaction for OCaml
 dev-ml/bson 0.89.3: An ocaml implementation for bson
 dev-ml/cairo-ocaml 1.2.0: Ocaml bindings for the cairo vector graphics library
 dev-ml/calendar 2.04: An Ocaml library to handle dates and time
@@ -5264,6 +5265,7 @@ dev-ml/findlib 1.7.1 1.7.2 1.7.3: OCaml tool to find/use non-standard packages
 dev-ml/flow_parser 0.46.0 0.47.0 0.48.0: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
+dev-ml/fpath 0.7.2: File system paths for OCaml
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
 dev-ml/gen_js_api 1.0.3: Easy OCaml bindings for Javascript libraries
@@ -5301,7 +5303,7 @@ dev-ml/mtime 0.8.4 1.0.0: OCaml module to access monotonic wall-clock time
 dev-ml/oasis 0.4.8 0.4.10: OASIS is a tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
-dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
+dev-ml/ocaml-base64 2.0.0 2.2.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-bigstring 0.1.1: Overlay over bigarrays of chars
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
@@ -5417,6 +5419,7 @@ dev-ml/reason 2.0.0: Meta Language Toolchain
 dev-ml/reason-parser 2.0.0: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
+dev-ml/rresult 0.5.0: Result value combinators for OCaml
 dev-ml/sedlex 1.99.3: An OCaml lexer generator for Unicode
 dev-ml/sequence 0.9 0.10: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 0.9.1: Library for automated conversion of OCaml-values to and from S-expressions
