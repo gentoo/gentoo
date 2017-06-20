@@ -4,7 +4,7 @@
 EAPI=5
 
 #TL_UPSTREAM_PATCHLEVEL="1"
-PATCHLEVEL="67"
+PATCHLEVEL="68"
 TL_SOURCE_VERSION=20170524
 
 inherit eutils flag-o-matic toolchain-funcs libtool texlive-common
