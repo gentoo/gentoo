@@ -5250,7 +5250,7 @@ dev-ml/core_kernel 0.9.0: System-independent part of Core
 dev-ml/core_profiler 0.9.0: Jane Street's profiling library
 dev-ml/cppo 1.4.1 1.5.0: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10 1.11: Cryptographic primitives library for Objective Caml
-dev-ml/csv 1.5 1.6: A pure OCaml library to read and write CSV files
+dev-ml/csv 1.5 1.6 1.7: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dose3 5.0.1: Library and a collection of tools to perform la large spectrum of analysis on package repositories
