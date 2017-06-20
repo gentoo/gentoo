@@ -10149,7 +10149,7 @@ dev-tex/tth 3.77 4.08: Translate TEX into HTML
 dev-tex/vc 0.5: The vc (version control) bundle
 dev-tex/xcolor 2.11 2.12: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
-dev-texlive/texlive-basic 2012 2013 2014 2015 2016 2017: TeXLive Essential programs and files
+dev-texlive/texlive-basic 2012 2013 2014 2015 2016 2017-r1: TeXLive Essential programs and files
 dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015 2016 2017: TeXLive BibTeX additional styles
 dev-texlive/texlive-context 2012 2012-r1 2013 2013-r1 2014 2015 2016 2017: TeXLive ConTeXt and packages
 dev-texlive/texlive-documentation-arabic 2012: TeXLive Arabic documentation
