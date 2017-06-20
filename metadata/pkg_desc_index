@@ -383,7 +383,7 @@ app-backup/holland-backup-sqlite 1.0.10: Holland sqlite Plugin
 app-backup/holland-lib-common 1.0.10: Holland Core Library
 app-backup/holland-lib-lvm 1.0.10: Holland LVM Library
 app-backup/holland-lib-mysql 1.0.10: Holland MySQL Library
-app-backup/kbackup 0.8-r1 1.0: Program that lets you back up any directories or files
+app-backup/kbackup 1.0: Program that lets you back up any directories or files
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
 app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
@@ -2463,7 +2463,7 @@ app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: A tool for analyzing files that contain control characters and sequences
 app-text/tesseract 3.04.01 3.04.01-r1 3.05.00 4.00.00_alpha 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2012 2013 2014 2015 2016 2017: A complete TeX distribution
+app-text/texlive 2012 2015 2016 2017: A complete TeX distribution
 app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5 2017-r2: A complete TeX distribution
 app-text/tidy-html5 5.4.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
@@ -12190,7 +12190,7 @@ kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
 kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
 kde-misc/krecipes 2.0.0: A recipe application by KDE
 kde-misc/krename 4.0.9-r3 4.0.9-r4 4.0.9_p20170610: Powerful batch file renamer
-kde-misc/krusader 2.5.0-r2 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
+kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.0: Shutdown manager for desktop environmenmts like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20170128: WebKit KPart for Konqueror
@@ -12205,7 +12205,7 @@ kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.0.2: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
-kde-misc/yakuake 3.0.2 3.0.4: Quake-style terminal emulator based on konsole
+kde-misc/yakuake 3.0.4: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
 kde-plasma/bluedevil 5.8.6 5.8.7 5.9.5 5.10.2: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.8.6 5.8.7 5.9.5 5.10.2: Breeze visual style for the Plasma desktop
