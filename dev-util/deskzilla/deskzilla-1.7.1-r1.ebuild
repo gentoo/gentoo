@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -84,8 +84,4 @@ pkg_postinst() {
 	elog "It is locked to Gentoo, ALM Works and Mozilla bugzilla only."
 	elog "Note that you need to use 1.5 VM to run deskzilla when setting"
 	elog "license or it won't get set due to bug in 1.6+ VMs."
-	elog
-	elog "If you are going to use Deskzilla for an open source project,"
-	elog "you can similarly request your own free license:"
-	elog "http://almworks.com/opensource.html?product=deskzilla"
 }
