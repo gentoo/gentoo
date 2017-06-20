@@ -88,7 +88,7 @@ DEPEND="${COMMON_DEPEND}
 	api? ( dev-libs/libxml2
 		net-misc/curl )
 	ovmf? (
-		!arm? ( dev-lang/nasm )
+		!arm? ( !arm64? ( dev-lang/nasm ) )
 		$(python_gen_impl_dep sqlite)
 		)
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
