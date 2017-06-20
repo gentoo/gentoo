@@ -82,9 +82,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	sed "${FILESDIR}"/${PN}.xml \
-		-e "s:@VER@:${PV}:g" \
-		> ${P}.xml || die
+	sed -e "s:@VER@:${TOOLCHAIN_GCC_PV}:g" "${FILESDIR}"/${PN}.xml > ${P}.xml
 
 	CC=${GCC}
 	CXX="${gnatbase/gcc/g++}"
