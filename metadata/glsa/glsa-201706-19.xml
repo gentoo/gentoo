@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-19">
+  <title>GNU C Library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the GNU C Library, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>2017-06-20</announced>
+  <revised>2017-06-20: 2</revised>
+  <bug>608698</bug>
+  <bug>608706</bug>
+  <bug>622220</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.23-r4</unaffected>
+      <vulnerable range="lt">2.23-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU C library is the standard C library used by Gentoo Linux
+      systems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the GNU C Library.
+      Please review the CVE identifiers and Qualys’ security advisory
+      referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker could possibly execute arbitrary code with the privileges of
+      the process, escalate privileges or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU C Library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.23-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5180">CVE-2015-5180</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6323">CVE-2016-6323</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000366">
+      CVE-2017-1000366
+    </uri>
+    <uri link="https://www.qualys.com/2017/06/19/stack-clash/stack-clash.txt">
+      Qualys Security Advisory - The Stack Clash
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-20T17:01:37Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-20T17:49:43Z">whissi</metadata>
+</glsa>
