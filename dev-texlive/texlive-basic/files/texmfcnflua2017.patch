@@ -39,12 +39,13 @@ Index: work/texmf-dist/web2c/texmfcnf.lua
  
              -- I don't like this texmf under home and texmf-home would make more
              -- sense. One never knows what installers put under texmf anywhere and
-@@ -62,12 +59,12 @@ return {
+@@ -62,12 +59,13 @@ return {
              -- entry. This makes the tex root relocatable.
  
              TEXMFOS         = "selfautodir:",
 -            TEXMFDIST       = "selfautoparent:texmf-dist",
 +            TEXMFDIST       = "selfautodir:share/texmf-dist",
++            TEXMFSITE       = "selfautodir:share/texmf-site",
  
 -            TEXMFLOCAL      = texmflocal,
 -            TEXMFSYSCONFIG  = "selfautoparent:texmf-config",
@@ -57,3 +58,12 @@ Index: work/texmf-dist/web2c/texmfcnf.lua
  
              TEXMFHOME       = "home:texmf",
           -- TEXMFHOME       = os.name == "macosx" and "home:Library/texmf" or "home:texmf",
+@@ -75,7 +73,7 @@ return {
+             -- We need texmfos for a few rare files but as I have a few more bin trees
+             -- a hack is needed. Maybe other users also have texmf-platform-new trees.
+ 
+-            TEXMF           = "{$TEXMFCONFIG,$TEXMFHOME,!!$TEXMFSYSCONFIG,!!$TEXMFSYSVAR,!!$TEXMFPROJECT,!!$TEXMFFONTS,!!$TEXMFLOCAL,!!$TEXMFDIST}",
++            TEXMF           = "{$TEXMFCONFIG,$TEXMFHOME,!!$TEXMFSYSCONFIG,!!$TEXMFSYSVAR,!!$TEXMFPROJECT,!!$TEXMFFONTS,!!$TEXMFLOCAL,!!$TEXMFDIST,!!$TEXMFSITE}",
+ 
+             TEXFONTMAPS     = ".;$TEXMF/fonts/data//;$TEXMF/fonts/map/{pdftex,dvips}//",
+             ENCFONTS        = ".;$TEXMF/fonts/data//;$TEXMF/fonts/enc/{dvips,pdftex}//",
