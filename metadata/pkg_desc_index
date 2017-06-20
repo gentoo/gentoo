@@ -3510,7 +3510,7 @@ dev-haskell/hdbc-odbc 2.3.1.1 2.4.0.1: ODBC driver for HDBC
 dev-haskell/hdbc-postgresql 2.3.2.3 2.3.2.4-r1: PostgreSQL driver for HDBC
 dev-haskell/hdbc-sqlite3 2.3.3.1-r1: Sqlite v3 driver for HDBC
 dev-haskell/hex 0.1.2: Convert strings into hexadecimal and back
-dev-haskell/hexpat 0.20.9 0.20.10: XML parser/formatter based on expat
+dev-haskell/hexpat 0.20.9 0.20.10 0.20.11: XML parser/formatter based on expat
 dev-haskell/hgettext 0.1.30: Bindings to libintl.h (gettext, bindtextdomain)
 dev-haskell/highlighting-kate 0.5.5 0.5.14 0.6 0.6.1 0.6.2 0.6.3: Syntax highlighting
 dev-haskell/hinotify 0.3.8.1: Haskell binding to inotify
@@ -5830,6 +5830,7 @@ dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provid
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0: No line insertion and does Package version with our
+dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.0.0 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
@@ -6488,6 +6489,8 @@ dev-perl/Plack 1.3.900 1.4.300 1.4.400: Perl Superglue for Web frameworks and We
 dev-perl/Plucene 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
+dev-perl/Pod-Elemental 0.103.4: Work with nestable Pod elements
+dev-perl/Pod-Elemental-PerlMunger 0.200.6: A thing that takes a string of Perl and rewrites its documentation
 dev-perl/Pod-Eventual 0.94.1: read a POD document as a series of trivial events
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
 dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
@@ -6497,6 +6500,7 @@ dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
 dev-perl/Pod-Spell 1.10.0-r1 1.190.0: A formatter for spellchecking Pod
 dev-perl/Pod-Strip 1.20.0: Remove POD from Perl code
 dev-perl/Pod-Tests 1.190.0-r1: Extracts embedded tests and code examples from POD
+dev-perl/Pod-Weaver 4.15.0: Weave together a Pod document from an outline
 dev-perl/PortageXS 0.02.10-r4 0.2.10-r5 0.2.12-r1: Portage abstraction layer for perl
 dev-perl/PostScript 0.60.0-r1: An object that may be used to construct a block of text in PostScript
 dev-perl/PostScript-Simple 0.90.0: Allows you to have a simple method of writing PostScript files from Perl
@@ -6607,6 +6611,7 @@ dev-perl/String-Print 0.150.0: Extensions to printf
 dev-perl/String-RewritePrefix 0.7.0: Rewrite strings based on a set of known prefixes
 dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shell
 dev-perl/String-Tokenizer 0.60.0: A simple string tokenizer
+dev-perl/String-Truncate 1.100.602: Module for when strings are too long to be displayed in...
 dev-perl/Struct-Compare 1.0.1: Recursive diff for perl structures
 dev-perl/Sub-Exporter 0.987.0: A sophisticated exporter for custom-built routines
 dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Exporter to build methods
