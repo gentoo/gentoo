@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-16">
+  <title>GNU Wget: Header injection</title>
+  <synopsis>A header injection vulnerability in GNU Wget might allow remote
+    attackers to inject arbitrary HTTP headers.
+  </synopsis>
+  <product type="ebuild">wget</product>
+  <announced>2017-06-20</announced>
+  <revised>2017-06-20: 1</revised>
+  <bug>612326</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.19.1-r1</unaffected>
+      <vulnerable range="lt">1.19.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that there was a header injection vulnerability in GNU
+      Wget which allowed remote attackers to inject arbitrary HTTP headers via
+      CRLF sequences in the host subcomponent of a URL.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could inject arbitrary HTTP headers in requests by
+      tricking a user running GNU Wget into processing crafted URLs.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.19.1-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6508">CVE-2017-6508</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-23T20:33:13Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-20T17:09:12Z">whissi</metadata>
+</glsa>
