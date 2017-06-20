@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ SRC_URI="http://v3.sk/~lkundrak/dev86/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 src_prepare() {
