@@ -9,7 +9,8 @@ MYP=${PN}-gpl-${PV}
 
 DESCRIPTION="Set of modules that provide a simple manipulation of XML streams"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0 -> ${MYP}-src.tar.gz"
+SRC_URI="http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0 ->
+	${MYP}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -17,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="+shared static static-pic"
 REQUIRED_USE="|| ( shared static static-pic )"
 
-RDEPEND="dev-lang/gnat-gpl:="
+RDEPEND="dev-lang/gnat-gpl:*"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild"
 
