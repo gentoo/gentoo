@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (20 Jun 2017)
+# Appends -mfpu=neon which is only valid for arm32 and suggests this is arm32
+# only
+media-sound/pulseaudio neon
+
 # Alexis Ballier <aballier@gentoo.org> (19 Jun 2017)
 # This is for arm32 only neon asm
 media-libs/vo-aacenc cpu_flags_arm_neon
