@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -248,7 +248,7 @@ multilib_src_configure() {
 	done
 
 	# pass the right -mfpu as extra
-	use neon && append-cflags -mfpu=neon
+	use neon && use arm && append-cflags -mfpu=neon
 
 	# disable mmx accelerated code if PIC is required
 	# as the provided asm decidedly is not PIC for x86.
