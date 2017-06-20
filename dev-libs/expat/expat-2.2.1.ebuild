@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils libtool multilib toolchain-funcs multilib-minimal
+inherit autotools eutils libtool multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="Stream-oriented XML parser library"
 HOMEPAGE="http://expat.sourceforge.net/"
@@ -16,6 +16,13 @@ RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r6
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
 
 DOCS=( AUTHORS Changes README )
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-getrandom-detection.patch
+	epatch "${FILESDIR}"/${P}-posix-shell.patch
+	eapply_user
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myconf="$(use_enable static-libs static)"
