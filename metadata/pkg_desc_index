@@ -8386,7 +8386,7 @@ dev-python/pyserial 2.7-r1 3.2.1 3.3: Python Serial Port extension
 dev-python/pyshark 0.3.7.2: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
-dev-python/pysnmp 4.3.3 4.3.5 4.3.7: Python SNMP library
+dev-python/pysnmp 4.3.3 4.3.5 4.3.7 4.3.8: Python SNMP library
 dev-python/pysnmp-apps 0.4.1: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
@@ -14413,7 +14413,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 7.40 7.40-r1 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 7.40 7.40-r1 7.50 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.04 9999: Monitor and do event correlation
@@ -14658,7 +14658,7 @@ net-firewall/nftables 0.6-r4 0.7: Linux kernel (3.13+) firewall, NAT and packet 
 net-firewall/nufw 2.2.22-r1 2.2.22-r2: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.7-r2: Tool for real-time display of active states and rule statistics for pf
 net-firewall/pglinux 2.3.1: Privacy oriented firewall application
-net-firewall/psad 2.2.5 2.4.3 2.4.4: Port Scanning Attack Detection daemon
+net-firewall/psad 2.2.5 2.4.3 2.4.4 2.4.5: Port Scanning Attack Detection daemon
 net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
@@ -18412,9 +18412,9 @@ www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl sup
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 45.0.2552.888: A fast and secure web browser
-www-client/opera-beta 46.0.2597.11 46.0.2597.14: A fast and secure web browser
-www-client/opera-developer 47.0.2615.0: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 45.0.2552.898: A fast and secure web browser
+www-client/opera-beta 46.0.2597.14 46.0.2597.19: A fast and secure web browser
+www-client/opera-developer 47.0.2615.0 47.0.2628.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
