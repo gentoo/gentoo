@@ -261,7 +261,7 @@ multilib_src_configure() {
 	done
 
 	# pass the right -mfpu as extra
-	use neon && append-cflags -mfpu=neon
+	use neon && use arm && append-cflags -mfpu=neon
 
 	# disable mmx accelerated code if PIC is required
 	# as the provided asm decidedly is not PIC for x86.
