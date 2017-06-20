@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=zstd fast compression library
+EAPI=6
+HOMEPAGE=https://facebook.github.io/zstd/
+IUSE=static-libs
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/facebook/zstd/archive/v1.2.0.tar.gz -> zstd-1.2.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_md5_=22207188485af09cc8a0fff7b9df8342
