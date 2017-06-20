@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils libtool multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="Stream-oriented XML parser library"
-HOMEPAGE="http://expat.sourceforge.net/"
+HOMEPAGE="https://libexpat.github.io/"
 SRC_URI="mirror://sourceforge/expat/${P}.tar.bz2"
 
 LICENSE="MIT"
