@@ -3,7 +3,7 @@
 
 # @ECLASS: l10n.eclass
 # @MAINTAINER:
-# Ben de Groot <yngwin@gentoo.org>
+# maintainer-needed@gentoo.org
 # @BLURB: convenience functions to handle localizations
 # @DESCRIPTION:
 # The l10n (localization) eclass offers a number of functions to more
