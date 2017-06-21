@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,8 @@ inherit cmake-utils multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://tls.mbed.org/"
-SRC_URI="https://github.com/ARMmbed/mbedtls/archive/mbedtls-${PV}.tar.gz"
+SRC_URI="https://github.com/ARMmbed/mbedtls/archive/${P}.tar.gz"
+S=${WORKDIR}/${PN}-${P}
 
 LICENSE="Apache-2.0"
 SLOT="0/10" # slot for libmbedtls.so
@@ -23,14 +24,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen media-gfx/graphviz )
 	test? ( dev-lang/perl )"
-
-S=${WORKDIR}/${PN}-${P}
-
-PATCHES=(
-	"${FILESDIR}/${P}-include-guards.patch"
-	"${FILESDIR}/${P}-move-to-header.patch"
-	"${FILESDIR}/${P}-tests.patch"
-)
 
 enable_mbedtls_option() {
 	local myopt="$@"
