@@ -5324,7 +5324,7 @@ dev-ml/ocaml-fileutils 0.5.1 0.5.2: Pure OCaml functions to manipulate real file
 dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.7.1 2.7.2 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
-dev-ml/ocaml-magic-mime 1.0.0: Convert file extensions to MIME types
+dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-migrate-parsetree 0.7 1.0 1.0.1: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-mysql 1.2.1: A package for ocaml that provides access to mysql databases
