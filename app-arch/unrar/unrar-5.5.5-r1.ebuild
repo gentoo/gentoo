@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="5"
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic multilib toolchain-funcs
 
 MY_PN=${PN}src
 
@@ -21,13 +21,10 @@ RDEPEND="!<=app-arch/unrar-gpl-0.0.1_p20080417"
 
 S=${WORKDIR}/unrar
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.5.5-build.patch
-	"${FILESDIR}"/${PN}-5.5.5-honor-flags.patch
-)
-
 src_prepare() {
-	default
+	epatch "${FILESDIR}"/${PN}-5.5.5-build.patch
+	epatch "${FILESDIR}"/${PN}-5.5.5-honor-flags.patch
+	epatch_user
 
 	local sed_args=( -e "/libunrar/s:.so:$(get_libname ${PV%.*.*}):" )
 	if [[ ${CHOST} == *-darwin* ]] ; then
