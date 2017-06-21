@@ -185,9 +185,15 @@ tk
 vim-syntax
 
 # Unmask ARM-only video-cards
+# e.g. exynos5433
 -video_cards_exynos
+# e.g. Snapdragon 410E (dragonboard)
 -video_cards_freedreno
+# e.g. Nvidia's Tegra K1 T132 Denver
+-video_cards_tegra
+# e.g. Raspeberry Pi 3
 -video_cards_vc4
+# e.g. Freescale/NXP i.MX 8
 -video_cards_vivante
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
