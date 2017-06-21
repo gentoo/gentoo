@@ -19,7 +19,7 @@ HOMEPAGE="http://opus-codec.org/"
 
 LICENSE="BSD-2"
 SLOT="0"
-INTRINSIC_FLAGS="cpu_flags_x86_sse neon"
+INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
 IUSE="ambisonics custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 
 DEPEND="doc? ( app-doc/doxygen media-gfx/graphviz )"
