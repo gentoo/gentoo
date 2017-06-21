@@ -29,6 +29,8 @@ RDEPEND="
 DOCS="AUTHORS FAQ NEWS README TODO"
 
 src_prepare() {
+	sed -i -e '/stat.h/a#include <sys/sysmacros.h>' "${S}/src/modes/file_info.c" \
+		|| die
 	eapply_user
 	eautoreconf
 }
