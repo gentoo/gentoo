@@ -15,3 +15,6 @@ FEATURES="collision-protect"
 # built first.  Drop Python 3.4 to avoid unnecessary builds.
 PYTHON_TARGETS="python2_7 python3_5"
 PYTHON_SINGLE_TARGET="python3_5"
+
+# Move away from ruby21, fast forward to ruby24, we don't have ruby23
+RUBY_TARGETS="ruby22 ruby24"
