@@ -4806,7 +4806,7 @@ dev-libs/libb64 1.2 1.2.1: Fast Base64 encoding/decoding routines
 dev-libs/libbase58 0.1.0 0.1.1: C implementation of Bitcoin's base58 encoding
 dev-libs/libbegemot 1.11: begemot utility function library
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
-dev-libs/libbsd 0.8.2 0.8.3 0.8.3-r2: An library to provide useful functions commonly found on BSD systems
+dev-libs/libbsd 0.8.2 0.8.3 0.8.3-r2 0.8.4: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.6: Open-source library for reading, mastering and writing optical discs
@@ -12412,7 +12412,7 @@ mate-base/mate-control-center 1.12.1-r1 1.14.1-r1 1.16.0 1.18.1: The MATE Deskto
 mate-base/mate-desktop 1.12.1-r2 1.14.1 1.16.1 1.18.0: Libraries for the MATE desktop that are not part of the UI
 mate-base/mate-menus 1.12.0-r1 1.14.0 1.16.0 1.18.0: MATE menu system, implementing the F.D.O cross-desktop spec
 mate-base/mate-panel 1.12.2-r3 1.14.2 1.16.0 1.18.2: The MATE panel
-mate-base/mate-session-manager 1.12.2-r1 1.14.1 1.16.0 1.18.0: MATE session manager
+mate-base/mate-session-manager 1.12.2-r1 1.14.1 1.16.0 1.18.0 1.18.0-r1: MATE session manager
 mate-base/mate-settings-daemon 1.12.1 1.14.1 1.16.0 1.18.1: MATE Settings Daemon
 mate-extra/caja-dropbox 1.12.0-r1 1.14.0 1.16.0 1.18.0: Store, Sync and Share Files Online
 mate-extra/caja-extensions 1.12.0-r2 1.14.1-r1 1.16.0-r1 1.18.1: Several Caja extensions
@@ -15691,7 +15691,7 @@ net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP s
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.1.19-r4 1.4.0-r2 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.5.14 1.5.19 1.6.11 1.6.12 1.6.13 1.6.9999 1.7.5 1.7.6 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.5.14 1.5.19 1.6.11-r1 1.6.12-r1 1.6.13-r1 1.6.9999-r1 1.7.5-r1 1.7.6-r1 1.7.9999-r1: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
