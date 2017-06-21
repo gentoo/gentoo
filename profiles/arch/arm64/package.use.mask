@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexis Ballier <aballier@gentoo.org> (21 Jun 2017)
+# Appends -mfpu=neon that doesnt work on arm64
+media-libs/speexdsp cpu_flags_arm_neon
+
+# Alexis Ballier <aballier@gentoo.org> (21 Jun 2017)
 # net-fs/openafs-kernel does not recognize arm64 properly
 # Need to check if this has a chance to work with in-kernel drivers
 app-crypt/heimdal afs
