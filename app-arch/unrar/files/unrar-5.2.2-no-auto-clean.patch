@@ -1,0 +1,17 @@
+if clean runs in parallel with $(OBJECTS), it is possible to build some
+objects first, then the clean target fires and deletes some, and then we
+try to link and fail.
+
+https://bugs.gentoo.org/528218
+
+--- a/makefile
++++ b/makefile
+@@ -118,7 +118,7 @@
+ clean:
+ 	@rm -f *.o *.bak *~
+ 
+-unrar:	clean $(OBJECTS) $(UNRAR_OBJ)
++unrar:	$(OBJECTS) $(UNRAR_OBJ)
+ 	$(LINK) -o unrar $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) $(UNRAR_OBJ) $(LIBS)	
+ 	$(STRIP) unrar
+ 
