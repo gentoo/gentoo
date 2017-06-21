@@ -13,3 +13,6 @@ acl
 # Prefix removed python3_4 from PYTHON_TARGETS and PYTHON_SINGLE_TARGET
 python_targets_python3_4
 python_single_target_python3_4
+
+# Similar for Ruby 2.1
+ruby_targets_ruby21
