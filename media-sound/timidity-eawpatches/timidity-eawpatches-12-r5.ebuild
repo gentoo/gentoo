@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 S=${WORKDIR}/eawpats
@@ -9,7 +9,7 @@ SRC_URI="http://5hdumat.samizdat.net/music/eawpats${PV}_full.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 # These can be used for libmodplug too, so don't depend on timidity++
