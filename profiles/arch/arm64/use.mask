@@ -188,6 +188,7 @@ vim-syntax
 -video_cards_exynos
 -video_cards_freedreno
 -video_cards_vc4
+-video_cards_vivante
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
