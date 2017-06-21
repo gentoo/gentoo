@@ -21,13 +21,13 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="VLC media player - Video player and streamer"
-HOMEPAGE="https://www.videolan.org/vlc/"
+HOMEPAGE="http://www.videolan.org/vlc/"
 if [[ ${PV} = *9999 ]] ; then # Live ebuild
 	SRC_URI=""
 elif [[ "${MY_P}" == "${P}" ]]; then
-	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 else
-	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+	SRC_URI="http://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 fi
 
 LICENSE="LGPL-2.1 GPL-2"
@@ -307,7 +307,7 @@ src_configure() {
 	local myconf
 
 	# Compatibility fix for Samba 4.
-	use samba && append-cppflags "-I/usr/include/samba-4.0"
+	use samba && append-cppflags "-I${EPREFIX}/usr/include/samba-4.0"
 
 	# We need to disable -fstack-check if use >=gcc 4.8.0.
 	# See bug #499996
@@ -315,10 +315,10 @@ src_configure() {
 
 	# Needs libresid-builder from libsidplay:2 which is in another directory...
 	# FIXME!
-	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
+	append-ldflags "-L${EPREFIX}/usr/$(get_libdir)/sidplay/builders/"
 
 	if use truetype || use projectm ; then
-		local dejavu="/usr/share/fonts/dejavu/"
+		local dejavu="${EPREFIX}/usr/share/fonts/dejavu/"
 		myconf="--with-default-font=${dejavu}/DejaVuSans.ttf \
 				--with-default-font-family=Sans \
 				--with-default-monospace-font=${dejavu}/DejaVuSansMono.ttf
@@ -339,7 +339,7 @@ src_configure() {
 	econf \
 		${myconf} \
 		--enable-vlc \
-		--docdir=/usr/share/doc/${PF} \
+		--docdir='$(datarootdir)'/doc/${PF} \
 		--disable-dependency-tracking \
 		--disable-optimizations \
 		--disable-update-check \
