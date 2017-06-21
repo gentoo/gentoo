@@ -281,6 +281,11 @@
     <name>BSD Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:BSD</url>
     <description>Maintains BSD userspace and some BSD-origin packages</description>
+    <member is-lead="1">
+      <email>aballier@gentoo.org</email>
+      <name>Alexis Ballier</name>
+      <role>Bearded one. Helping out reviewing mostly.</role>
+    </member>
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
@@ -2161,9 +2166,10 @@
     <name>Gentoo ML Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:ML</url>
     <description>The Gentoo ML Project maintains packages related to the ML programming language family.</description>
-    <member>
+    <member is-lead="1">
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
+      <role>Ocaml</role>
     </member>
     <member>
       <email>heroxbd@gentoo.org</email>
@@ -3302,9 +3308,10 @@ developers and volunteer mentors.</description>
     <name>Gentoo ROS Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:ROS</url>
     <description>The Gentoo ROS Project maintains packages for the Robot Operating System.</description>
-    <member>
+    <member is-lead="1">
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
+      <role>Almost everything</role>
     </member>
   </project>
   <project>
@@ -3947,8 +3954,8 @@ developers and volunteer mentors.</description>
     <email>tex@gentoo.org</email>
     <name>Gentoo TeX Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:TeX</url>
-    <description>The TeX project maintains ebuilds for TeX distributions and TeX related packages. This includes app-text/texlive, app-text/tetex, the dev-texlive category, most of dev-tex and a few others.</description>
-    <member>
+    <description>The TeX project maintains ebuilds for TeX distributions and TeX related packages. This includes [https://packages.gentoo.org/packages/app-text/texlive app-text/texlive], the [https://packages.gentoo.org/categories/dev-texlive dev-texlive] category, most of [https://packages.gentoo.org/categories/dev-tex dev-tex] and a few others.</description>
+    <member is-lead="1">
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
       <role>Member</role>
@@ -4134,7 +4141,7 @@ developers and volunteer mentors.</description>
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member ( XdTV, gpac, other )</role>
+      <role>Member ( FFmpeg, x265, etc. )</role>
     </member>
     <member>
       <email>lordvan@gentoo.org</email>
