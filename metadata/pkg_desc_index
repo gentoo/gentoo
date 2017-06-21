@@ -13100,7 +13100,7 @@ media-libs/libmatroska 1.4.5 1.4.7: Extensible multimedia container format based
 media-libs/libmediaart 0.7.0 1.9.1: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.94 0.7.95 0.7.96: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
-media-libs/libmikmod 3.3.8 3.3.10 3.3.11: A library to play a wide range of module formats
+media-libs/libmikmod 3.3.8 3.3.10 3.3.11 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.2-r1 2.0.3: Multiple Image Networkgraphics lib (animated png's)
