@@ -17,6 +17,7 @@ IUSE="test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/click-4.0[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]"
