@@ -66,8 +66,8 @@ src_configure() {
 		--with-system-kpathsea \
 		--with-kpathsea-include="${EPREFIX}"/usr/include/kpathsea \
 		--with-xdvi-x-toolkit="${toolkit}" \
-		--x-includes="${EPREFIX}"/usr/include \
-		--x-libraries="${EPREFIX}"/usr/$(get_libdir)
+		--x-includes="${SYSROOT}${EPREFIX}"/usr/include \
+		--x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
 }
 
 src_compile() {
