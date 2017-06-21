@@ -9,6 +9,9 @@
   <email>base-system@gentoo.org</email>
   <name>Gentoo Base System</name>
 </maintainer>
+<slots>
+  <subslots>Reflect ABI of libunrar.so.</subslots>
+</slots>
 <upstream>
   <remote-id type="cpe">cpe:/a:rarlab:unrar</remote-id>
 </upstream>
