@@ -9623,7 +9623,7 @@ dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object
 dev-ruby/maxitest 2.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3-r1 2.7.5 2.7.5-r2: A Ruby library used for automating interaction with websites
-dev-ruby/memoist 0.14.0 0.15.0: ActiveSupport::Memoizable with a few enhancements
+dev-ruby/memoist 0.14.0 0.15.0 0.16.0: ActiveSupport::Memoizable with a few enhancements
 dev-ruby/memoizable 0.4.2: Memoize method return values
 dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.3.5 0.3.6: Lightweight and flexible library for writing command-line apps
