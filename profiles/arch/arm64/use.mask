@@ -190,6 +190,7 @@ vim-syntax
 # e.g. Snapdragon 410E (dragonboard)
 -video_cards_freedreno
 # e.g. Nvidia's Tegra K1 T132 Denver
+-video_cards_nouveau
 -video_cards_tegra
 # e.g. Raspeberry Pi 3
 -video_cards_vc4
@@ -211,7 +212,6 @@ video_cards_mach64
 video_cards_mga
 video_cards_neomagic
 video_cards_newport
-video_cards_nouveau
 video_cards_nsc
 video_cards_nv
 video_cards_r128
