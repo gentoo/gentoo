@@ -3,8 +3,7 @@
 
 EAPI=6
 
-# waf fails on python3_5: AttributeError: Can't pickle local object 'Context.__init__.<locals>.node_class'
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 USE_RUBY="ruby20 ruby21 ruby22"
 
 inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
