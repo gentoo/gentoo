@@ -22,7 +22,7 @@ MY_DEPEND="
 
 DEPEND="${PYTHON_DEPS}
 	${MY_DEPEND}
-	test? ( dev-python/CoverageTestRunner dev-python/pep8 )
+	test? ( >=dev-python/CoverageTestRunner-1.11 dev-python/pep8 )
 	"
 
 RDEPEND="
