@@ -4171,7 +4171,7 @@ dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
-dev-java/javax-inject 1-r2: Dependency injection for Java (JSR-330)
+dev-java/javax-inject 1-r2 1-r3: Dependency injection for Java (JSR-330)
 dev-java/javax-mail 1.4: Provides a platform/protocol-independent framework for mail and messaging apps
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jaxen 1.1.4-r1 1.1.6: A Java XPath Engine
@@ -14758,7 +14758,7 @@ net-im/kadu 2.1-r1 4.3-r1: An open source Gadu-Gadu and Jabber/XMPP protocol Ins
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 3.5.0 3.6.0: Mattermost Desktop application
-net-im/mcabber 1.0.4 1.0.5 9999: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 1.0.4 1.0.5 1.1.0 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
 net-im/openfire 4.1.0 4.1.1 4.1.2 4.1.3 4.1.4: Openfire (formerly wildfire) real time collaboration (RTC) server
