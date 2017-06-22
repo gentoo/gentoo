@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/591aeb88c7a4473fcbb154f8 -> xmlada-gpl-2017-src.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c
-_md5_=87d4bf5e0abe3d336cc6d518a52b46a1
+_md5_=50f7a3aebf3c39018dd2b5f253ad70fe

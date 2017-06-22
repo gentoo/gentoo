@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install setup
+DEFINED_PHASES=compile configure install prepare setup
 DEPEND=dev-lang/gnat-gpl:= !bootstrap? ( dev-ada/xmlada )
 DESCRIPTION=Multi-Language Management
 EAPI=6
@@ -10,6 +10,6 @@ RDEPEND=dev-lang/gnat-gpl:= !bootstrap? ( dev-ada/xmlada )
 REQUIRED_USE=bootstrap? ( !shared !static !static-pic )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8 -> gprbuild-gpl-2016-src.tar.gz bootstrap? ( http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0 -> xmlada-gpl-2016-src.tar.gz )
-_eclass_exported_funcs=pkg_setup:- src_configure:- src_compile:- src_install:-
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
-_md5_=d7ec4248d478736acd3aebfa353865a9
+_md5_=398d36ff13b3e6661de95c614711866d
