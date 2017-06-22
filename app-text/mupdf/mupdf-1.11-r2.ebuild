@@ -49,6 +49,7 @@ PATCHES=(
 		"${FILESDIR}"/${PN}-1.11-openssl-curl-x11.patch
 		"${FILESDIR}"/${PN}-1.11-system-glfw.patch
 		"${FILESDIR}"/${PN}-1.11-CVE-2017-6060.patch
+		"${FILESDIR}"/${PN}-1.11-drop-libmupdfthird.patch
 )
 
 src_prepare() {
