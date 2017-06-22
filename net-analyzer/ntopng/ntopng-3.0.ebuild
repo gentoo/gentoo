@@ -67,6 +67,11 @@ src_install() {
 	doins -r httpdocs
 	doins -r scripts
 
+	dodir ${SHARE_NTOPNG_DIR}/third-party
+	insinto ${SHARE_NTOPNG_DIR}/third-party
+	doins -r third-party/i18n.lua-master
+	doins -r third-party/lua-resty-template-master
+
 	exeinto /usr/bin
 	doexe ${PN}
 	doman ${PN}.8
