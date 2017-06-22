@@ -1,5 +1,5 @@
---- work/opencascade-6.9.1/configure.ac
-+++ work/opencascade-6.9.1/configure.ac
+--- opencascade-6.9.1/configure.ac
++++ opencascade-6.9.1/configure.ac
 @@ -1044,7 +1044,7 @@
      fi
      if test "x$vtk_lib" != "x"; then
