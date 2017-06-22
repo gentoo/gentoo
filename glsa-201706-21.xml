@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-21">
+  <title>nettle: Information disclosure</title>
+  <synopsis>A cache-related side channel vulnerability was found in nettle
+    which might allow an attacker to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">nettle</product>
+  <announced>2017-06-22</announced>
+  <revised>2017-06-22: 1</revised>
+  <bug>590484</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/nettle" auto="yes" arch="*">
+      <unaffected range="ge">3.2-r1</unaffected>
+      <vulnerable range="lt">3.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nettle is a cryptographic library that is designed to fit easily in
+      almost any context: In cryptographic toolkits for object-oriented
+      languages, such as C++, Python, or Pike, in applications like lsh or
+      GnuPG, or even in kernel space.
+    </p>
+  </background>
+  <description>
+    <p>It was found that nettle’s RSA and DSA decryption code was vulnerable
+      to cache-related side channel attacks.
+    </p>
+    
+    <p>See the referenced technical paper “Cache Attacks Enable Bulk Key
+      Recovery on the Cloud” below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could recover the private key from a co-located
+      virtual-machine instance.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nettle users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nettle-3.2-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6489">CVE-2016-6489</uri>
+    <uri link="https://eprint.iacr.org/2016/596.pdf">Cache Attacks Enable Bulk
+      Key Recovery on the Cloud
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-19T05:47:07Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-22T17:24:59Z">whissi</metadata>
+</glsa>
