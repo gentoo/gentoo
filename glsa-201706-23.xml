@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-23">
+  <title>Urban Terror: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Urban Terror, the worst
+    of which allows for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">UrbanTerror</product>
+  <announced>2017-06-22</announced>
+  <revised>2017-06-22: 1</revised>
+  <bug>606702</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-fps/urbanterror" auto="yes" arch="*">
+      <unaffected range="ge">4.3.2_p20170426</unaffected>
+      <vulnerable range="lt">4.3.2_p20170426</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Urban Terror is a free multiplayer first person shooter developed by
+      FrozenSand, that will run on any Quake III Arena compatible engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Urban Terror. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to connect to a malicious server
+      or leverage Man-in-the-Middle attacks to cause the execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Urban Terror users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=games-fps/urbanterror-4.3.2_p20170426"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1412">CVE-2011-1412</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2764">CVE-2011-2764</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3012">CVE-2011-3012</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3345">CVE-2012-3345</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-09T11:09:47Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-22T17:57:40Z">whissi</metadata>
+</glsa>
