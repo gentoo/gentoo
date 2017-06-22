@@ -163,7 +163,6 @@ nut
 dvd
 fits
 tokyocabinet
-vaapi
 rtmp
 vpx
 plotutils
