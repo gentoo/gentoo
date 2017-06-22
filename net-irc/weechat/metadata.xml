@@ -4,9 +4,6 @@
 	<maintainer type="person">
 		<email>radhermit@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>scarabeus@gentoo.org</email>
-	</maintainer>
 	<use>
 		<flag name="alias">Enable plugin for alias control.</flag>
 		<flag name="charset">Enable encoding conversions.</flag>
