@@ -10362,7 +10362,7 @@ dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20160814 10.3 10.4: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.88 1.0.89 1.0.90: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
-dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
+dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
 dev-util/deskzilla 1.7.1-r1: A desktop client for Mozilla's Bugzilla bug tracking system
 dev-util/devhelp 3.22.0: An API documentation browser for GNOME
