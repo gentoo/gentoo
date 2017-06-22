@@ -6,7 +6,5 @@
 	/ Data Box Information System) SOAP services as defined in Czech ISDS Act
 	(300/2008 Coll.) and implied documents.
 </longdescription>
-<maintainer type="person">
-	<email>scarabeus@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 </pkgmetadata>
