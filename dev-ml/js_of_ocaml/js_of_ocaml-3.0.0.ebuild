@@ -20,7 +20,7 @@ fi
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-IUSE="+ocamlopt camlp4 lwt doc +deriving +ppx +xml test"
+IUSE="+ocamlopt +camlp4 +lwt doc +deriving +ppx +xml test"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]
