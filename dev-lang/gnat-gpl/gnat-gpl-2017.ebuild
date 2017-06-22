@@ -82,8 +82,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	sed -e "s:@VER@:${TOOLCHAIN_GCC_PV}:g" "${FILESDIR}"/${PN}.xml > ${P}.xml
-
 	CC=${GCC}
 	CXX="${gnatbase/gcc/g++}"
 	GNATBIND="${gnatbase/gcc/gnatbind}"
@@ -138,8 +136,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/share/gprconfig
-	doins ${P}.xml
 	toolchain_src_install
 	cd "${D}"${BINPATH}
 	for x in gnat*; do
