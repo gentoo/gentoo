@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<gprconfig>
+  <compiler_description>
+    <name>GNAT-@VER@</name>
+    <executable prefix="1">gnatmake-@VER@</executable>
+    <version>
+      <external>${PREFIX}gnatls-@VER@ -v --version</external>
+      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+    </version>
+    <languages>Ada</languages>
+    <variable name="gcc_version">
+      <external>${PREFIX}gcc-@VER@ -v</external>
+      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+    </variable>
+    <runtimes default="default,kernel,native">
+       <directory group="default" >\.\./lib/gcc(-lib)?/$TARGET/$gcc_version/adalib/</directory>
+       <directory group="default" contents="^rts-">\.\./lib/gcc(-lib)?/$TARGET/$gcc_version/ada_object_path</directory>
+       <directory group="2" >\.\./lib/gcc(-lib)?/$TARGET/$gcc_version/rts-(.*)/adalib/</directory>
+       <directory group="1" >\.\./$TARGET/lib/gnat/(.*)/adalib/</directory>
+    </runtimes>
+    <target>
+      <external>${PREFIX}gcc-@VER@ -dumpmachine</external>
+      <grep regexp="[^\r\n]+"></grep>
+    </target>
+  </compiler_description>
+
+  <configuration>
+    <compilers>
+      <compiler name="GNAT-@VER@" />
+    </compilers>
+   <config>
+   package Naming is
+      for Spec_Suffix ("Ada") use ".ads";
+      for Body_Suffix ("Ada") use ".adb";
+      for Casing use "lowercase";
+      for Dot_Replacement use "-";
+   end Naming;
+
+   package Compiler is
+      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc-@VER@";
+      for Language_Kind            ("Ada") use "unit_based";
+      for Dependency_Kind          ("Ada") use "ALI_File";
+      for Leading_Required_Switches        ("Ada") use
+	  ("-c", "-x", "ada", "-gnatA")
+             &amp; Compiler'Leading_Required_Switches ("Ada");
+      for Mapping_File_Switches    ("Ada") use ("-gnatem=");
+      for Mapping_Spec_Suffix      ("Ada") use "%s";
+      for Mapping_Body_Suffix      ("Ada") use "%b";
+      for Config_File_Switches     ("Ada") use ("-gnatec=");
+      for Include_Path_File     ("Ada") use "ADA_PRJ_INCLUDE_FILE";
+      for Multi_Unit_Switches ("Ada") use ("-gnateI");
+      for Multi_Unit_Object_Separator ("Ada") use "~";
+      for Config_Body_File_Name ("Ada") use
+           "pragma Source_File_Name_Project (%u, Body_File_Name => ""%f"");";
+      for Config_Spec_File_Name ("Ada") use
+           "pragma Source_File_Name_Project (%u, Spec_File_Name => ""%f"");";
+      for Config_Body_File_Name_Index ("Ada") use
+           "pragma Source_File_Name_Project (%u, Body_File_Name => ""%f"", Index => %i);";
+      for Config_Spec_File_Name_Index ("Ada") use
+           "pragma Source_File_Name_Project (%u, Spec_File_Name => ""%f"", Index => %i);";
+      for Config_Body_File_Name_Pattern ("Ada") use
+           "pragma Source_File_Name_Project " &amp;
+           "  (Body_File_Name  => ""*%b""," &amp;
+           "   Casing          => %c," &amp;
+           "   Dot_Replacement => ""%d"");";
+      for Config_Spec_File_Name_Pattern ("Ada") use
+           "pragma Source_File_Name_Project " &amp;
+           "  (Spec_File_Name  => ""*%s""," &amp;
+           "   Casing          => %c," &amp;
+           "   Dot_Replacement => ""%d"");";
+      for Config_File_Unique    ("Ada") use "False";
+      for PIC_Option      ("Ada") use ("-fPIC");
+   end Compiler;
+
+   package Binder is
+      for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
+      for Driver         ("Ada") use
+          "${GPRCONFIG_PREFIX}libexec/gprbuild/gprbind";
+      for Switches ("Ada") use ("--gnatbind_path=gnatbind-@VER@");
+   end Binder;
+
+   package Clean is
+      for Source_Artifact_Extensions ("Ada")
+         use (".dg", ".rep", ".stdout", ".stderr");
+      for Object_Artifact_Extensions ("Ada") use (".s", ".ci", ".gcno");
+   end Clean;
+
+   for Toolchain_Version     ("Ada") use "GNAT ${VERSION(ada)}";
+   for Runtime_Library_Dir   ("Ada") use "${RUNTIME_DIR(ada)}/adalib/";
+   for Runtime_Source_Dirs   ("Ada") use ("${RUNTIME_DIR(ada)}/adainclude/");
+   for Library_Encapsulated_Supported use "true";
+   </config>
+  </configuration>
+</gprconfig>
