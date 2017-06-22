@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-libs/libXt )"
 
 src_prepare() {
+	epatch "${FILESDIR}/tests-gcc7.patch"
 	elibtoolize
 }
 
