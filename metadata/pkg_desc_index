@@ -5280,7 +5280,7 @@ dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
 dev-ml/jane-street-headers 0.9.0: Jane Street header files
 dev-ml/jbuilder 1.0_beta10: A composable build system for OCaml
 dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
-dev-ml/js_of_ocaml 2.8.4-r1 9999: A compiler from OCaml bytecode to javascript
+dev-ml/js_of_ocaml 2.8.4-r1 3.0.0 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.0 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
@@ -5370,6 +5370,7 @@ dev-ml/pa_ounit 113.00.00: Syntax extension that helps writing in-line test in o
 dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
+dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
 dev-ml/pcre-ocaml 7.2.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
@@ -10515,6 +10516,7 @@ dev-util/oprofile 0.9.9-r2 1.1.0-r1 1.2.0_pre20161027: A transparent low-overhea
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
+dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
 dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4 4.9.13: Userland tools for Linux Performance Counters
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
