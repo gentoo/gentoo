@@ -41,6 +41,13 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	gnatbase=$(basename ${GCC})
+	GCC_PV=${gnatbase#*gcc-}
+	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
+	default
+}
+
 src_configure() {
 	if ! use bootstrap ; then
 		default
@@ -78,9 +85,9 @@ src_compile() {
 src_install() {
 	if use bootstrap; then
 		dobin ${bin_progs}
-		insinto /usr/share/gprconfig
 		exeinto /usr/libexec/gprbuild
 		doexe ${lib_progs}
+		insinto /usr/share/gprconfig
 		doins share/gprconfig/*.xml
 		insinto /usr/share/gpr
 		doins share/_default.gpr
@@ -95,5 +102,7 @@ src_install() {
 		mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF} || die
 		rmdir "${D}"/usr/share/doc/${PN} || die
 	fi
+	insinto /usr/share/gprconfig
+	doins gnat-${GCC_PV}.xml
 	einstalldocs
 }
