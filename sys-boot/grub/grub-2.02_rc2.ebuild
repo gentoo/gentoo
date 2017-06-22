@@ -35,6 +35,7 @@ fi
 PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/2.02_beta3-grub-mkconfig-btrfs-multidev.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
