@@ -9,7 +9,7 @@ SRC_URI="http://forge.ocamlcore.org/frs/download.php/282/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE=""
 
 DEPEND=""
