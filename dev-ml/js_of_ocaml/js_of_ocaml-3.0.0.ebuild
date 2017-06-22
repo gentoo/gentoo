@@ -15,7 +15,9 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/ocsigen/js_of_ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	# Breaks dev-ml/eliom dev-ml/async_js dev-ml/ocsigen-toolkit
+	KEYWORDS=""
+	#KEYWORDS="~amd64"
 fi
 
 LICENSE="LGPL-2.1-with-linking-exception"
