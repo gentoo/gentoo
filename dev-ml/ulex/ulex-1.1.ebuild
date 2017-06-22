@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,7 @@ IUSE="+ocamlopt"
 RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	dev-ml/camlp4:="
 DEPEND="${RDEPEND}
-	|| ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )"
+	dev-ml/ocamlbuild"
 
 src_compile() {
 	emake all
