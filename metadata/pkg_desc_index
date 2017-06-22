@@ -15574,7 +15574,7 @@ net-nntp/inn 2.5.3-r1 2.5.3-r3 2.5.4-r1 2.5.5-r1: The Internet News daemon, full
 net-nntp/kwooty 1.1.0: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
-net-nntp/nzbget 14.1 17.1 18.0_pre1865 19.0_pre1903: A command-line based binary newsgrabber supporting .nzb files
+net-nntp/nzbget 14.1 17.1 18.1 19.0_pre2021: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.140 0.141: A newsreader for GNOME
 net-nntp/sabnzbd 2.0.1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
