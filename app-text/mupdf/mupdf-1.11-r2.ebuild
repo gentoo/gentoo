@@ -147,5 +147,5 @@ src_install() {
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins platform/debian/${PN}.pc
 
-	dodoc README docs/*.{txt,c}
+	dodoc README CHANGES docs/*.{txt,c}
 }
