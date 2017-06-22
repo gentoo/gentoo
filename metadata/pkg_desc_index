@@ -2411,7 +2411,7 @@ app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r6: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.45.0 0.55.0 0.55.0-r1 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.45.0 0.56.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -5278,7 +5278,7 @@ dev-ml/incremental_kernel 0.9.0: Library for incremental computations depending 
 dev-ml/integers 0.2.2: Various signed and unsigned integer types for OCaml
 dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
 dev-ml/jane-street-headers 0.9.0: Jane Street header files
-dev-ml/jbuilder 1.0_beta8 1.0_beta9 1.0_beta10: A composable build system for OCaml
+dev-ml/jbuilder 1.0_beta10: A composable build system for OCaml
 dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
 dev-ml/js_of_ocaml 2.8.4-r1 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.0 1.0.1: Non-blocking streaming JSON codec for OCaml
@@ -9391,7 +9391,7 @@ dev-ruby/ast 2.2.0 2.3.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.2.1: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 6.7.7.2 7.1.1 7.1.1.2: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 6.7.7.2 7.1.1 7.1.1.2 7.1.1.2-r1: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/awesome_print 1.7.0: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
 dev-ruby/aws-sdk 1.66.0 2.5.11 2.6.50 2.8.14: Official SDK for Amazon Web Services

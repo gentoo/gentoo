@@ -3,11 +3,11 @@ DEPEND=dev-ml/result:= dev-ml/ocamlbuild:= dev-lang/ocaml:= >=dev-ml/findlib-1.0
 DESCRIPTION=The transitory OCaml software packager
 EAPI=6
 HOMEPAGE=http://erratique.ch/software/topkg https://github.com/dbuenzli/topkg
-KEYWORDS=~amd64 ~arm ~ppc
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc
 LICENSE=ISC
 RDEPEND=dev-ml/result:= dev-ml/ocamlbuild:= dev-lang/ocaml:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/dbuenzli/topkg/archive/v0.9.0.tar.gz -> topkg-0.9.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
-_md5_=95bd13c6631952a8e39159571e83100d
+_md5_=a1c796feb421d56f14455515ff3ffcb3
