@@ -56,6 +56,7 @@ multilib_src_configure() {
 		$(use_enable debug) \
 		$(use_enable oss) \
 		--disable-portaudio \
+		--disable-firewire \
 		$(use_enable cpu_flags_x86_sse sse) \
 		--with-html-dir=/usr/share/doc/${PF} \
 		--disable-dependency-tracking \
