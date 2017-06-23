@@ -4,7 +4,7 @@
               for Switches ("C") use ("-O2");
        end case;
  
-+      for Driver ("C") use External ("CC", "gcc");
++      for Driver ("C") use External ("GCC", "gcc");
 +      for PIC_Option ("C") use ("-fPIC");
        for Switches ("C") use Compiler'Switches ("C") & Gtk_Include;
        for Switches ("Objective-C") use Compiler'Switches ("Objective-C") & Gtk_Include;
