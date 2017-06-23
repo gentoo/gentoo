@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+shared static"
 
-RDEPEND="dev-lang/gnat-gpl
+RDEPEND="dev-lang/gnat-gpl:*
 	dev-libs/atk
 	dev-libs/glib:2
 	media-libs/fontconfig
@@ -55,7 +55,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 PROCESSORS=$(makeopts_jobs)
+	GCC=${GCC} emake -j1 PROCESSORS=$(makeopts_jobs)
 }
 
 src_install() {
