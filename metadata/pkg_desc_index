@@ -5454,6 +5454,7 @@ dev-perl/Algorithm-ClusterPoints 0.80.0: Find clusters inside a set of points
 dev-perl/Algorithm-Dependency 1.110.0-r2: Toolkit for implementing dependency systems
 dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
+dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1 0.680.0: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
@@ -6135,7 +6136,7 @@ dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects yo
 dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.91.6 0.91.6-r1 0.92.0: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
-dev-perl/Lab-Measurement 3.531.0 9999: Measurement control and automation with Perl
+dev-perl/Lab-Measurement 3.531.0 3.550.0 9999: Measurement control and automation with Perl
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 9999: Perl bindings to the LabOne API of Zurich Instruments
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
@@ -6417,6 +6418,8 @@ dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batc
 dev-perl/PDF-API2 2.27.0 2.31.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0 1.410.0 1.420.0: Create PDF documents in Perl
 dev-perl/PDL 2.17.0: Perl Data Language for scientific computing
+dev-perl/PDL-Graphics-Gnuplot 2.11.0: Gnuplot-based plotting for PDL
+dev-perl/PDL-Transform-Color 1.3.0: Useful color system conversions for PDL
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
 dev-perl/POE 1.367: A framework for creating multitasking programs in Perl
