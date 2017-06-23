@@ -24,7 +24,7 @@ IUSE_DAEMON="crypt samba slp tcpd experimental minimal"
 IUSE_BACKEND="+berkdb"
 IUSE_OVERLAY="overlays perl"
 IUSE_OPTIONAL="gnutls iodbc sasl ssl odbc debug ipv6 libressl +syslog selinux static-libs"
-IUSE_CONTRIB="smbkrb5passwd kerberos kinit pbkdf2"
+IUSE_CONTRIB="smbkrb5passwd kerberos kinit pbkdf2 sha2"
 IUSE_CONTRIB="${IUSE_CONTRIB} -cxx"
 IUSE="${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
 
@@ -616,6 +616,33 @@ multilib_src_compile() {
 				-rpath "${EPREFIX}"/usr/$(get_libdir)/openldap/openldap \
 				-o pw-pbkdf2.la \
 				pbkdf2.lo || die "linking pw-pbkdf2 failed"
+		fi
+
+		if use sha2 ; then
+			cd "${S}/contrib/slapd-modules/passwd/sha2" || die
+			einfo "Compiling contrib-module: pw-sha2"
+			"${lt}" --mode=compile --tag=CC \
+				"${CC}" \
+				-I"${BUILD_DIR}"/include \
+				-I../../../../include \
+				${CFLAGS} \
+				-o sha2.lo \
+				-c sha2.c || die "compiling pw-sha2 failed"
+			"${lt}" --mode=compile --tag=CC \
+				"${CC}" \
+				-I"${BUILD_DIR}"/include \
+				-I../../../../include \
+				${CFLAGS} \
+				-o slapd-sha2.lo \
+				-c slapd-sha2.c || die "compiling pw-sha2 failed"
+			einfo "Linking contrib-module: pw-sha2"
+			"${lt}" --mode=link --tag=CC \
+				"${CC}" -module \
+				${CFLAGS} \
+				${LDFLAGS} \
+				-rpath "${EPREFIX}"/usr/$(get_libdir)/openldap/openldap \
+				-o pw-sha2.la \
+				sha2.lo slapd-sha2.lo || die "linking pw-sha2 failed"
 		fi
 
 		# We could build pw-radius if GNURadius would install radlib.h
