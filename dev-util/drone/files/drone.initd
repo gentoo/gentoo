@@ -7,7 +7,7 @@ pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
 user=${user:-${SVCNAME}}
 group=${group:-${SVCNAME}}
 
-command="/usr/bin/drone server"
+command="/usr/bin/drone-server server"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
