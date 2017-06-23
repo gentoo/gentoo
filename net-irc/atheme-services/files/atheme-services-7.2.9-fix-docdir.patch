@@ -1,0 +1,13 @@
+diff --git a/extra.mk.in b/extra.mk.in
+index 39053e48a..e47b27246 100644
+--- a/extra.mk.in
++++ b/extra.mk.in
+@@ -82,7 +82,7 @@ libdir ?= @libdir@
+ CFLAGS ?= @CFLAGS@
+ INSTALL_LIB ?= @INSTALL_LIB@
+ RUNDIR ?= @RUNDIR@
+-DOCDIR ?= @DOCDIR@
++DOCDIR ?= @docdir@
+ localstatedir ?= @localstatedir@
+ docdir ?= @docdir@
+ GREP ?= @GREP@
