@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md docs/TEMPLATES.md"
@@ -37,7 +37,7 @@ all_ruby_prepare() {
 
 	# Avoid tests with minor syntax differences since this happens all
 	# the time when details in the dependencies change.
-	sed -e '/test_smarty_pants_true/,/^    end/ s:^:#:' -i test/tilt_markdown_test.rb || die
+	sed -e '/test_smarty_pants_true/,/^    end/ s:^:#:' \
+		-e '/test_smart_quotes_true/,/^  end/ s:^:#:' -i test/tilt_markdown_test.rb || die
 	sed -e '/smartypants when :smart is set/,/^    end/ s:^:#:' -i test/tilt_rdiscounttemplate_test.rb || die
-	#sed -i -e '/docbook templates/,/^    end/ s:^:#:' test/tilt_asciidoctor_test.rb || die
 }
