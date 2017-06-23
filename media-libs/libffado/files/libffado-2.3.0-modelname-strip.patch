@@ -1,0 +1,45 @@
+------------------------------------------------------------------------
+r2677 | jwoithe | 2017-03-22 07:43:24 +0900 (Wed, 22 Mar 2017) | 1 line
+
+configrom: there is no obvious reason why a space should be added to the end of the vendor and model strings returned from the interface.  Retain the explicit null termination of these strings to cover for the case where an interface may not return any null bytes.  Also fix indentation associated with the null termination code.  The issue with the trailing space was noticed and reported by Nils Philippsen: its presence broke a test in the saffire_dice mixer python code.
+------------------------------------------------------------------------
+Index: src/libieee1394/configrom.cpp
+===================================================================
+--- a/src/libieee1394/configrom.cpp	(revision 2676)
++++ b/src/libieee1394/configrom.cpp	(revision 2677)
+@@ -176,13 +176,11 @@
+                 ( void* )CSR1212_TEXTUAL_DESCRIPTOR_LEAF_DATA( m_vendorNameKv ),
+                 len );
+ 
+-    while ((buf + len - 1) == '\0') {
+-            len--;
++        while (*(buf + len - 1) == '\0') {
++                len--;
+         }
+-        // \todo XXX seems a bit strage to do this but the nodemgr.c code does
+-        // it. try to figure out why this is needed (or not)
+-    buf[len++] = ' ';
+-    buf[len] = '\0';
++        // Ensure vendor string is null terminated
++        buf[len] = '\0';
+ 
+ 
+         debugOutput( DEBUG_LEVEL_VERBOSE, "Vendor name: '%s'\n", buf );
+@@ -195,13 +193,11 @@
+         memcpy( buf,
+                 ( void* )CSR1212_TEXTUAL_DESCRIPTOR_LEAF_DATA( m_modelNameKv ),
+                 len );
+-    while ((buf + len - 1) == '\0') {
+-            len--;
++        while (*(buf + len - 1) == '\0') {
++                len--;
+         }
+-        // \todo XXX for edirol fa-66 it seems somehow broken. see above
+-        // todo as well.
+-    buf[len++] = ' ';
+-    buf[len] = '\0';
++        // Ensure model name string is null terminated
++        buf[len] = '\0';
+ 
+         debugOutput( DEBUG_LEVEL_VERBOSE, "Model name: '%s'\n", buf);
+         m_modelName = buf;
