@@ -7943,7 +7943,7 @@ dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.6.0 3.6.4-r1 3.7.3: A Pythonic binding for the libxml2 and libxslt libraries
-dev-python/lz4 0.8.2 0.9.0: LZ4 Bindings for Python
+dev-python/lz4 0.8.2 0.9.0 0.10.0: LZ4 Bindings for Python
 dev-python/m2crypto 0.24.0 0.25.1-r2 0.26.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2r 0.1.5 0.1.6: Markdown to reStructuredText converter
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -8687,7 +8687,7 @@ dev-python/setproctitle 1.1.8 1.1.10: Allow customization of the process title
 dev-python/setuptools 30.4.0 34.0.2-r1 35.0.1 35.0.2 36.0.1 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.1-r1 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
-dev-python/setuptools_scm 1.8.0 1.15.0 1.15.5: package to manage versions by scm tags via setuptools
+dev-python/setuptools_scm 1.8.0 1.15.0 1.15.5 1.15.6: package to manage versions by scm tags via setuptools
 dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.11 1.11-r1 1.12.9: Python subprocess interface
@@ -10382,7 +10382,7 @@ dev-util/docker-ls 0.2.1_p20161102: Tools for browsing and manipulating docker r
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
-dev-util/drone 0.6.0_p20170521 0.7.1_p20170603 0.7.2: A Continuous Delivery platform built on Docker, written in Go
+dev-util/drone 0.7.1_p20170603 0.7.2: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-cli 0.7.0_p20170603: Command-line interface for Drone
 dev-util/drone-ui 0.5.0 0.6.0_rc1_pre20170412: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
