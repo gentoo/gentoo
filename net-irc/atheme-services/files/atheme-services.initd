@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+command="/usr/bin/atheme-services"
+command_user="atheme-services"
+pidfile="/var/run/atheme/atheme.pid"
+
+name="Atheme IRC Services"
+
+depend() {
+	need net
+	use ircd
+	provide irc-services
+}
+
+start_pre() {
+	checkpath -d "/var/run/atheme" -o atheme-services
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
