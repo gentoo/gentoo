@@ -31,7 +31,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake PROCESSORS=$(makeopts_jobs)
+	emake GCC=${ADA} PROCESSORS=$(makeopts_jobs)
 }
 
 src_install() {

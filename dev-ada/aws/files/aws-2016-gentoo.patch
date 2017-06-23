@@ -4,7 +4,7 @@
     package Compiler is
  
        for Driver ("Makefile") use "";
-+      for Driver ("C") use External ("CC", "gcc");
++      for Driver ("C") use External ("GCC", "gcc");
  
        case Build is
           when "Debug" =>
