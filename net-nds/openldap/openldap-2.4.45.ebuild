@@ -330,7 +330,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.4.11-libldap_r.patch
 
 	# bug #233633
-	epatch "${FILESDIR}"/${PN}-2.4.17-fix-lmpasswd-gnutls-symbols.patch
+	epatch "${FILESDIR}"/${PN}-2.4.45-fix-lmpasswd-gnutls-symbols.patch
 
 	# bug #281495
 	epatch "${FILESDIR}"/${PN}-2.4.28-gnutls-gcrypt.patch
