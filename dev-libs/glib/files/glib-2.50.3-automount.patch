@@ -1,0 +1,35 @@
+From c54f6e81a2acc7ce43a4cd14d44428f4119e5a8f Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Fri, 5 May 2017 12:42:39 +0200
+Subject: gunixmounts: Prevent unwanted automount requests
+
+mnt_table_is_fs_mounted causes unwanted automount requests due to
+canonicalization of source and target. It might be replaced by
+mnt_table_find_source as per the documentation in order to prevent
+the automounts, but it is redundant. All mtab entries should be already
+mounted and thus mnt_table_is_fs_mounted result is always true (it
+basically checks that the fs from mtab is in mtab). Let's remove
+the check at all.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=781867
+---
+ gio/gunixmounts.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/gio/gunixmounts.c b/gio/gunixmounts.c
+index b5e066f..0f1fb4d 100644
+--- a/gio/gunixmounts.c
++++ b/gio/gunixmounts.c
+@@ -403,9 +403,6 @@ _g_get_unix_mounts (void)
+       unsigned long mount_flags = 0;
+       gboolean is_read_only = FALSE;
+ 
+-      if (!mnt_table_is_fs_mounted (table, fs))
+-        continue;
+-
+       device_path = mnt_fs_get_source (fs);
+       if (g_strcmp0 (device_path, "/dev/root") == 0)
+         device_path = _resolve_dev_root ();
+-- 
+cgit v0.12
+
