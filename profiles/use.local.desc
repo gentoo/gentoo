@@ -4034,6 +4034,7 @@ media-libs/assimp:boost - Build assimp with boost support
 media-libs/assimp:samples - Build viewer library
 media-libs/assimp:tools - Build assimp tool binary
 media-libs/aubio:double-precision - Compile in double precision mode.
+media-libs/avidemux-core:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 media-libs/avidemux-core:system-ffmpeg - Use the ffmpeg provided by the system.
 media-libs/avidemux-plugins:aften - Enable A/52 (AC-3) audio encoder support.
 media-libs/avidemux-plugins:amr - Enable Adaptive Multi-Rate format support via media-libs/opencore-amr.
