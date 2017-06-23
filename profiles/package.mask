@@ -29,6 +29,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (23 Jun 2017)
+# Mask ruby21-only packages for removal in 30 days
+# Old slots that are ruby21-only
+dev-ruby/prawn:1
+dev-ruby/rspec:0
+# ruby21-only package that does not work with current
+# dev-ruby/parslet versions.
+dev-ruby/toml
+# ruby21-only, no maintainer, fails tests
+www-apps/jekyll-paginate
+# ruby21-only, no maintainer
+www-apps/redmine
+
 # Patrice Clement <monsieurp@gentoo.org> (20 Jun 2017)
 # Fails to build with Java 8. Project is active on Github yet ebuild has never
 # been marked stable.
