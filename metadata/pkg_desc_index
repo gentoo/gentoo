@@ -361,7 +361,7 @@ app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists 
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.4.20 2.4.24 2.5.9 2.5.10: A full featured backup tool, aimed for disks
+app-backup/dar 2.4.20 2.4.24 2.5.10 2.5.11: A full featured backup tool, aimed for disks
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.7.10 0.7.11 0.7.12: Secure backup system using gnupg to encrypt data
@@ -17307,7 +17307,7 @@ sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
-sys-apps/texinfo 4.13-r2 5.2 6.1 6.3: The GNU info program and utilities
+sys-apps/texinfo 4.13-r2 6.1 6.3 6.4: The GNU info program and utilities
 sys-apps/the_silver_searcher 1.0.2 1.0.3 2.0.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
