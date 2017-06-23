@@ -8918,7 +8918,7 @@ dev-python/websockify 0.8.0: WebSockets support for any application/server
 dev-python/webtest 2.0.16 2.0.21: Helper to test WSGI applications
 dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.11.11 0.11.15: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.11.11 0.11.15 0.12.2: Collection of various utilities for WSGI applications
 dev-python/wheel 0.29.0: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.4.0 0.4.1: This package provides cross-platform cross-python shutil.which functionality
