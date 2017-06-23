@@ -75,7 +75,7 @@ app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
 app-admin/consul 0.7.5 0.8.0 0.8.3 0.8.4: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
-app-admin/consul-template 0.12.2 0.16.0 0.18.5: Generic template rendering and notifications with Consul
+app-admin/consul-template 0.18.5: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r3 1.6.2-r4 1.6.2-r5: Log rotation software
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
@@ -19542,7 +19542,7 @@ x11-wm/mutter 3.22.4-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20 2.0.20-r1: Small and fast window manager
-x11-wm/page 1.9.8: A mouse friendly tiling window manager
+x11-wm/page 1.9.8 1.9.8-r1: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
 x11-wm/qtile 0.10.5 0.10.6 9999: A full-featured, hackable tiling window manager written in Python
