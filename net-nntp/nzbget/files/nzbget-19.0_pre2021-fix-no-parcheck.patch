@@ -1,0 +1,46 @@
+From 928e0a60061d33252de0b490c80477e77dde0627 Mon Sep 17 00:00:00 2001
+From: Andrey Prygunkov <hugbug@users.sourceforge.net>
+Date: Fri, 23 Jun 2017 23:22:49 +0200
+Subject: [PATCH] fixed #399: error when compiling without par-check
+
+---
+ daemon/queue/DirectRenamer.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/daemon/queue/DirectRenamer.cpp b/daemon/queue/DirectRenamer.cpp
+index 585ce941..2dd0f95b 100644
+--- a/daemon/queue/DirectRenamer.cpp
++++ b/daemon/queue/DirectRenamer.cpp
+@@ -51,6 +51,7 @@ class RenameContentAnalyzer : public ArticleContentAnalyzer
+ 	bool m_parFile = false;
+ };
+ 
++#ifndef DISABLE_PARCHECK
+ class DirectParRepairer : public Par2::Par2Repairer
+ {
+ public:
+@@ -161,7 +162,7 @@ void DirectParLoader::LoadParFile(const char* parFile)
+ 		m_parHashes.emplace_back(filename.c_str(), hash.c_str());
+ 	}
+ }
+-
++#endif
+ 
+ std::unique_ptr<ArticleContentAnalyzer> DirectRenamer::MakeArticleContentAnalyzer()
+ {
+@@ -219,6 +220,7 @@ void DirectRenamer::FileDownloaded(DownloadQueue* downloadQueue, FileInfo* fileI
+ 
+ void DirectRenamer::CheckState(DownloadQueue* downloadQueue, NzbInfo* nzbInfo)
+ {
++#ifndef DISABLE_PARCHECK
+ 	if (nzbInfo->GetDirectRenameStatus() > NzbInfo::tsRunning)
+ 	{
+ 		return;
+@@ -270,6 +272,7 @@ void DirectRenamer::CheckState(DownloadQueue* downloadQueue, NzbInfo* nzbInfo)
+ 			return;
+ 		}
+ 	}
++#endif
+ }
+ 
+ // Unpause smallest par-files from each par-set
