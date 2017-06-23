@@ -38,7 +38,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake -f ../build/gcc/Makefile -C src \
+	# ../build/clang/Makefile is identical except for CXX line.
+	emake CXX="$(tc-getCXX)" -f ../build/gcc/Makefile -C src \
 		${PN} \
 		shared \
 		$(usev java) \
