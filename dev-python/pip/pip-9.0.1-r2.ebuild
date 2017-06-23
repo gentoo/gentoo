@@ -59,13 +59,12 @@ RESTRICT="test"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-9.0.1-disable-version-check.patch"
-)
-
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}/${PN}-9.0.1-disable-version-check.patch"
+	)
 	if ! use vanilla; then
-		epatch "${FILESDIR}/pip-disable-system-install.patch"
+		PATCHES+=( "${FILESDIR}/pip-disable-system-install.patch" )
 	fi
 	distutils-r1_python_prepare_all
 }
