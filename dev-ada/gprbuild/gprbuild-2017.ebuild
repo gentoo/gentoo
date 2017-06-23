@@ -49,6 +49,13 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	gnatbase=$(basename ${GCC})
+	GCC_PV=${gnatbase#*gcc-}
+	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
+	default
+}
+
 src_configure() {
 	emake prefix="${D}"usr setup
 }
@@ -108,5 +115,7 @@ src_install() {
 		done
 		rm "${D}"usr/doinstall || die
 	fi
+	insinto /usr/share/gprconfig
+	doins gnat-${GCC_PV}.xml
 	einstalldocs
 }
