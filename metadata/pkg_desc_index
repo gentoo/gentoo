@@ -14691,6 +14691,7 @@ net-fs/cvmfs 2.1.19 2.1.20.0_p05 9999: HTTP read-only file system for distributi
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/docker-volume-netshare 0.33_p20170318 0.34: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 9999: Client library for accessing NFS shares over a network
+net-fs/minio 0_pre20170613: An Amazon S3 compatible object storage server
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.8 3.1.10 3.1.11: Open Source AFP server
 net-fs/nfs-utils 1.3.1-r4 1.3.1-r5 1.3.4-r1 2.1.1-r1 2.1.2_rc3: NFS client and server daemons
