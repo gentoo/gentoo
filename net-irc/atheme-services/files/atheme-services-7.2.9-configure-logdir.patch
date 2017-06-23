@@ -1,0 +1,25 @@
+diff --git a/dist/atheme.conf.example b/dist/atheme.conf.example
+index ac3ed54dd..be1c2db50 100644
+--- a/dist/atheme.conf.example
++++ b/dist/atheme.conf.example
+@@ -1909,17 +1909,17 @@ ldap {
+  * This block logs all account and channel registrations and drops,
+  * and account and channel setting changes to var/account.log.
+  */
+-logfile "var/account.log" { register; set; };
++logfile "/var/log/atheme/account.log" { register; set; };
+ 
+ /*
+  * This block logs all command use to var/commands.log.
+  */
+-logfile "var/commands.log" { commands; };
++logfile "/var/log/atheme/commands.log" { commands; };
+ 
+ /*
+  * This block logs all security auditing information.
+  */
+-logfile "var/audit.log" { denycmd; };
++logfile "/var/log/atheme/audit.log" { denycmd; };
+ 
+ /*
+  * You can log to IRC channels, and even split it by category, too.
