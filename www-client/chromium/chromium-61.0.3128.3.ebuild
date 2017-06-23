@@ -488,6 +488,7 @@ src_configure() {
 	if tc-is-cross-compiler; then
 		tc-export BUILD_{AR,CC,CXX,NM}
 		myconf_gn+=" host_toolchain=\"${FILESDIR}/toolchain:host\""
+		myconf_gn+=" v8_snapshot_toolchain=\"${FILESDIR}/toolchain:host\""
 	else
 		myconf_gn+=" host_toolchain=\"${FILESDIR}/toolchain:default\""
 	fi
@@ -534,8 +535,13 @@ src_compile() {
 	fi
 
 	# Build mksnapshot and pax-mark it.
-	eninja -C out/Release mksnapshot || die
-	pax-mark m out/Release/mksnapshot
+	if tc-is-cross-compiler; then
+		eninja -C out/Release host/mksnapshot || die
+		pax-mark m out/Release/host/mksnapshot
+	else
+		eninja -C out/Release mksnapshot || die
+		pax-mark m out/Release/mksnapshot
+	fi
 
 	# Even though ninja autodetects number of CPUs, we respect
 	# user's options, for debugging with -j 1 or any other reason.
