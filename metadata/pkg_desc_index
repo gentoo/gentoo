@@ -1884,7 +1884,7 @@ app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows 
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to lower/upper case
-app-misc/neofetch 1.9.1 2.0.2 3.0.1 3.1.0 9999: Simple information system script
+app-misc/neofetch 2.0.2 3.0.1 3.1.0 3.2.0 9999: Simple information system script
 app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nullmodem 0.0.6: A Utility to loopback Pseudo-Terminals
@@ -10383,7 +10383,7 @@ dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using ac
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/drone 0.7.1_p20170603 0.7.2: A Continuous Delivery platform built on Docker, written in Go
-dev-util/drone-cli 0.7.0_p20170603: Command-line interface for Drone
+dev-util/drone-cli 0.7.0_p20170603 0.7.0_p20170620: Command-line interface for Drone
 dev-util/drone-ui 0.5.0 0.6.0_rc1_pre20170412: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
@@ -17587,7 +17587,7 @@ sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
 sys-cluster/singularity 2.2.1: Application containers for Linux
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.10.1 2.10.2 2.13.0 2.13.1 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
-sys-cluster/teleport 2.2.0 9999: Modern SSH server for teams managing distributed infrastructure
+sys-cluster/teleport 2.2.0 2.2.1 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
