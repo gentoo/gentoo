@@ -28,11 +28,14 @@ DEPEND="${RDEPEND}
 	dev-lang/perl"
 
 src_prepare() {
+	default
+
 	# move local macro to m4 and run eautoreconf
 	mkdir "${S}/m4"
 	sed -n -e '/# AC_PROG_SYSCONFTOOL/,+33 p' "${S}"/aclocal.m4 > \
 		m4/sysconftool.m4 || die
 	sed -i -e '/^SUBDIRS/i ACLOCAL_AMFLAGS = -I m4' "${S}"/Makefile.am || die
+
 	eautoreconf
 }
 
