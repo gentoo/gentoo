@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_PN="KFaenza"
-DESCRIPTION="Faenza-Cupertino icon theme for KDE"
+DESCRIPTION="Faenza-Cupertino icon theme for KDE Plasma"
 HOMEPAGE="http://kde-look.org/content/show.php/KFaenza?content=143890 http://kde-look.org/content/show.php/KFaenza+icon+patch?content=153813 http://kde-look.org/content/show.php/Additional+KFaenza+Icons?content=147483"
 #That is upstream location, not reupload. Don't fix
 SRC_URI="http://ompldr.org/vYjR0NQ/${P}.tar.gz
@@ -31,6 +31,13 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# Gentoo bug 620352
+	local f
+	for f in 16 22 32 48; do
+		mv apps/${f}/"numpty physics.png" apps/${f}/"numptyphysics.png" || die
+	done
+
 	use branding || return
 
 	local res
