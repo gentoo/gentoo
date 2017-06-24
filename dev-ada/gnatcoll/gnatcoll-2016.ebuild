@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="gmp gtk iconv postgresql pygobject projects readline +shared sqlite
 	static syslog"
 
-RDEPEND="dev-lang/gnat-gpl
+RDEPEND="dev-lang/gnat-gpl:*
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
@@ -34,7 +34,7 @@ RDEPEND="dev-lang/gnat-gpl
 	postgresql? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		dev-ada/gprbuild[static?,shared?]
+		=dev-ada/gprbuild-2016[static?,shared?]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild"
