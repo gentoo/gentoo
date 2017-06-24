@@ -13639,14 +13639,14 @@ media-radio/gpredict 1.3 1.3-r1: Real-time satellite tracking and orbit predicti
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
 media-radio/qrq 0.3.1 0.3.1-r1: Yet another CW trainer for Linux/Unix
-media-radio/qsstv 8.2.12 9.1.8 9.2.4: Amateur radio SSTV software
+media-radio/qsstv 9.2.4: Amateur radio SSTV software
 media-radio/svxlink 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
-media-radio/tlf 1.2.2 1.2.4.1 1.2.4.5 1.3.0: Console-mode amateur radio contest logger
+media-radio/tlf 1.3.0: Console-mode amateur radio contest logger
 media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
-media-radio/unixcw 3.4.2 3.5.0 3.5.0-r1 3.5.1: A package of programs that fit together to form a morse code tutor program
+media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
 media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information Reporting
-media-radio/xdx 2.4.2 2.4.3 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
+media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.14 2.0.14-r1: An amateur radio logging program
 media-radio/xwxapt 2.4 2.7 2.9: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
@@ -16289,7 +16289,7 @@ sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.4 4.0.5-r1 4.0.6: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10 0.24.9: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
-sci-electronics/linsmith 0.99.28 0.99.30 0.99.30-r1: Smith charting program, mainly designed for educational use
+sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.3.11 1.4.52: LVS tool (layout versus schematic comparison)
 sci-electronics/ngspice 26: The Next Generation Spice (Electronic Circuit Simulator)
@@ -16310,7 +16310,7 @@ sci-electronics/systemc 2.2.0-r2 2.3.0 2.3.1: A C++ based modeling platform for 
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
 sci-electronics/voacapl 0.6.7: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48 3.8.83 3.9.62: Circuit drawing and schematic capture program
-sci-electronics/xnec2c 3.4 3.5 3.5.1: A GTK+ graphical interactive version of nec2c
+sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
 sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
 sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the management and analysis of climate data
