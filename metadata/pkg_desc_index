@@ -14086,7 +14086,7 @@ media-video/avidemux 2.6.8 9999: Video editor designed for simple cutting, filte
 media-video/baka-mplayer 2.0.4: Cross-platform libmpv-based multimedia player with uncluttered design
 media-video/bashnapi 1.1.5 1.3.5: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
-media-video/bdsup2sub 4.0.0-r1: A tool to convert and tweak bitmap based subtitle streams
+media-video/bdsup2sub 4.0.0-r1 4.0.0-r2: A tool to convert and tweak bitmap based subtitle streams
 media-video/bdsup2sub++ 1.0.2: C++ port of BDSup2Sub
 media-video/binkplayer 1.99w: Bink Video! Player
 media-video/bino 1.6.1-r2: Stereoscopic and multi-display media player
