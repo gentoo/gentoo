@@ -1,0 +1,23 @@
+From 75c5a03ac9b41d6dfd67b3b5c02b8942874fc94b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sat, 24 Jun 2017 18:36:10 +1200
+Subject: [PATCH] Fix for '.' in @INC
+
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=617056
+Bug: https://rt.cpan.org/Ticket/Display.html?id=120879
+---
+ Makefile.PL | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index dafb7c9..c69a7b1 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,2 +1,3 @@
+ #!/usr/bin/env perl
+-use inc::Module::Package 'Au:dry 1';
++use lib 'inc';
++use Module::Package 'Au:dry 1';
+-- 
+2.13.1
+
