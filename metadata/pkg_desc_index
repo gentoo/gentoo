@@ -2850,7 +2850,7 @@ dev-ada/asis 2016: To develop tools for Ada software
 dev-ada/aunit 2016: Ada unit testing framework
 dev-ada/aws 2016: A complete Web development framework
 dev-ada/gnat_util 2016: Provides access to GNAT compiler internals for AdaCore utilities
-dev-ada/gnatcoll 2016: GNAT Component Collection
+dev-ada/gnatcoll 2016 2017: GNAT Component Collection
 dev-ada/gnatmem 2016: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gprbuild 2016 2017 9999: Multi-Language Management
 dev-ada/gps-bin 2016: The GNAT Programming Studio

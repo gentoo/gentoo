@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-lang/gnat-gpl:* python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] gmp? ( dev-libs/gmp:* ) gtk? ( dev-ada/gtkada dev-libs/atk dev-libs/glib x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango ) pygobject? ( dev-python/pygobject:3[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) postgresql? ( dev-db/postgresql:* ) sqlite? ( dev-db/sqlite ) projects? ( >=dev-ada/gprbuild-2017[static?,shared?] ) dev-ada/gprbuild >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GNAT Component Collection
+EAPI=6
+HOMEPAGE=http://libre.adacore.com
+IUSE=gmp gtk iconv postgresql pygobject projects readline +shared sqlite static syslog python_targets_python2_7
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-lang/gnat-gpl:* python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] gmp? ( dev-libs/gmp:* ) gtk? ( dev-ada/gtkada dev-libs/atk dev-libs/glib x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango ) pygobject? ( dev-python/pygobject:3[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) postgresql? ( dev-db/postgresql:* ) sqlite? ( dev-db/sqlite ) projects? ( >=dev-ada/gprbuild-2017[static?,shared?] )
+REQUIRED_USE=python_targets_python2_7 pygobject? ( gtk )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed016 -> gnatcoll-gpl-2017-src.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_md5_=df3473ff65f85b478689afe3bd6d3b1b
