@@ -11822,7 +11822,7 @@ java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
 java-virtuals/jmx 1.0-r4: Virtual for Java Management Extensions (JMX)
 java-virtuals/saaj-api 1.3-r3: Virtual for SAAJ 1.3 (AKA JSR-67 MR3) API
 java-virtuals/script-api 1.0-r1: Virtual for Java Scripting API (jsr223)
-java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r1 3.0-r1 3.1: Virtual for servlet api
+java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r1 2.5-r2 3.0-r1 3.0-r2 3.1 3.1-r1: Virtual for servlet api
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
@@ -13913,7 +13913,7 @@ media-sound/pnmixer 0.6_pre20111213 0.7.1 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
-media-sound/podracer 1.4: A simple podcast aggregator, designed for cron
+media-sound/podracer 1.4-r1: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/potamus 16: A lightweight audio player with a simple interface and an emphasis on high audio quality
 media-sound/pragha 1.3.1-r1: A lightweight music player (with support for the Xfce desktop environment)
@@ -14210,7 +14210,7 @@ media-video/simplescreenrecorder 0.3.8 9999: A Simple Screen Recorder
 media-video/smplayer 16.1.0 16.11.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 16.1.0 16.3.0 16.6.0 16.6.0-r1 16.7.0 17.1.0 17.5.0 17.5.0-r1: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
-media-video/sonic-snap 1.7: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
+media-video/sonic-snap 1.7 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/sswf 1.8.2-r1 1.8.4-r1: A C++ Library and a script language tool to create Flash (SWF) movies up to version 8
 media-video/streamdvd 0.4-r1: fast tool to backup Video DVDs 'on the fly'
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
@@ -14226,7 +14226,7 @@ media-video/subtitler-yuv 0.6.5: for mjpegtools for adding subtitles, pictures, 
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/syncplay 1.4.0 9999: Client/server to synchronize media playback
-media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channels
+media-video/tcmplex-panteltje 0.4.7 0.4.7-r1: Audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
 media-video/totem 3.22.1-r1: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
