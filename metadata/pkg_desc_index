@@ -19469,7 +19469,7 @@ x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvola 1.0-r1: Nuvola SVG icon theme
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
-x11-themes/oxygen-gtk 1.4.1 1.4.6: Official GTK+:2 port of KDE's Oxygen widget style
+x11-themes/oxygen-gtk 1.4.1 1.4.1-r1 1.4.6 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
 x11-themes/oxygen-molecule 3.2: Unified KDE and GTK+ theme
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
