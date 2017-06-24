@@ -43,7 +43,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	gnome-base/librsvg
 	>=gnome-extra/cinnamon-desktop-2.4:0=[introspection]
 	gnome-extra/cinnamon-menus[introspection]
-	>=gnome-extra/cjs-2.8.0
+	>=gnome-extra/cjs-3.2.0
 	>=media-libs/clutter-1.10:1.0[introspection]
 	media-libs/cogl:1.0=[introspection]
 	>=gnome-base/gsettings-desktop-schemas-2.91.91
