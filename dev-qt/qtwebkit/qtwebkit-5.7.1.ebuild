@@ -107,3 +107,13 @@ src_prepare() {
 
 	qt5-build_src_prepare
 }
+
+src_install() {
+	qt5-build_src_install
+
+	# bug 572056
+	if [[ ! -f ${D%/}${QT5_LIBDIR}/libQt5WebKit.so ]]; then
+		eerror "${CATEGORY}/${PF} could not build due to a broken ruby environment."
+		die 'Check "eselect ruby" and ensure you have a working ruby in your $PATH'
+	fi
+}
