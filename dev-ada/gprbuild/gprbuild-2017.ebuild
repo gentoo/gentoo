@@ -30,9 +30,9 @@ REQUIRED_USE="bootstrap? ( !shared !static !static-pic )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 pkg_setup() {
+	GCC=${ADA:-$(tc-getCC)}
+	gnatbase=$(basename ${GCC})
 	if use bootstrap; then
-		GCC=${ADA:-$(tc-getCC)}
-		gnatbase=$(basename ${GCC})
 		gnatpath=$(dirname ${GCC})
 
 		GNATMAKE="${gnatbase/gcc/gnatmake}"
@@ -50,7 +50,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	gnatbase=$(basename ${GCC})
 	GCC_PV=${gnatbase#*gcc-}
 	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
 	default
