@@ -3,7 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-    <flag name="capi">Enable CAPI support</flag>
     <flag name="celt">Enable CELT ultra-low delay audio codec</flag>
     <flag name="dtmf">Enable DTMF encoding/decoding support</flag>
     <flag name="fax">Enable T.38 FAX protocol</flag>
