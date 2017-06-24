@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-linguas.patch
 	"${FILESDIR}"/${P}-sphinx.patch
 	"${FILESDIR}"/${P}-opencv-include.patch
+	"${FILESDIR}"/${P}-no-qtwebkit.patch
 )
 
 src_configure() {
