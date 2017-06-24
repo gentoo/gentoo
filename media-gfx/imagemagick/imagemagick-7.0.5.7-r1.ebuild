@@ -68,19 +68,28 @@ REQUIRED_USE="corefonts? ( truetype )
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
+	local ati_cards mesa_cards nvidia_cards render_cards
 	default
 
 	elibtoolize # for Darwin modules
 
 	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
 	shopt -s nullglob
+	ati_cards=$(echo -n /dev/ati/card* | sed 's/ /:/g')
+	if test -n "${ati_cards}"; then
+		addpredict "${ati_cards}"
+	fi
 	mesa_cards=$(echo -n /dev/dri/card* | sed 's/ /:/g')
 	if test -n "${mesa_cards}"; then
 		addpredict "${mesa_cards}"
 	fi
-	ati_cards=$(echo -n /dev/ati/card* | sed 's/ /:/g')
-	if test -n "${ati_cards}"; then
-		addpredict "${ati_cards}"
+	nvidia_cards=$(echo -n /dev/nvidia* | sed 's/ /:/g')
+	if test -n "${nvidia_cards}"; then
+		addpredict "${nvidia_cards}"
+	fi
+	render_cards=$(echo -n /dev/dri/renderD128* | sed 's/ /:/g')
+	if test -n "${render_cards}"; then
+		addpredict "${render_cards}"
 	fi
 	shopt -u nullglob
 	addpredict /dev/nvidiactl
@@ -164,7 +173,7 @@ src_install() {
 
 	if use opencl; then
 		cat <<-EOF > "${T}"/99${PN}
-		SANDBOX_PREDICT="/dev/nvidiactl:/dev/ati/card:/dev/dri/card"
+		SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-uvm:/dev/ati/card:/dev/dri/card:/dev/dri/renderD128"
 		EOF
 
 		insinto /etc/sandbox.d
