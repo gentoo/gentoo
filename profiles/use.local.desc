@@ -5950,7 +5950,6 @@ net-libs/onion:boehm-gc - Add dev-libs/boehm-gc support for memory allocations.
 net-libs/onion:libev - Use dev-libs/libev as thread poller instead of Linux's epoll.
 net-libs/onion:libevent - Use dev-libs/libevent as thread poller instead of libev or Linux's epoll.
 net-libs/onion:redis - Add support for redis sessions.
-net-libs/opal:capi - Enable CAPI support
 net-libs/opal:celt - Enable CELT ultra-low delay audio codec
 net-libs/opal:dtmf - Enable DTMF encoding/decoding support
 net-libs/opal:fax - Enable T.38 FAX protocol
@@ -8703,7 +8702,6 @@ x11-wm/fvwm:netpbm - Enable NetPBM support (used by FvwmScript-ScreenDump)
 x11-wm/fvwm:rplay - Enable rplay support
 x11-wm/fvwm:stroke - Mouse Gesture support
 x11-wm/i3:doc - Build and install the HTML documentation and regenerate the man pages
-x11-wm/i3:pango - Use x11-libs/pango to render text in order to support fonts which have more glyphs (e.g. Kanji). See RELEASE-NOTES for more information
 x11-wm/marco:gtk3 - Build with GTK+3 instead of GTK+2
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
 x11-wm/musca:xlisten - Optionally install the xlisten utility
