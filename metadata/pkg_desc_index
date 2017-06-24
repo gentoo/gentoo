@@ -9839,7 +9839,7 @@ dev-ruby/ruby-feedparser 0.9.3 0.9.4: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.1: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 3.0.8 3.1.1: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.0.8 3.1.1: Ruby GdkPixbuf2 bindings
-dev-ruby/ruby-gettext 3.1.1 3.1.2 3.2.2: Native Language Support Library and Tools modeled after GNU gettext package
+dev-ruby/ruby-gettext 3.1.1 3.1.2 3.2.2 3.2.3: Native Language Support Library and Tools modeled after GNU gettext package
 dev-ruby/ruby-gio2 3.0.8 3.1.1: Ruby binding of GooCanvas
 dev-ruby/ruby-glib2 3.0.8 3.1.1: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.0.8-r1 3.1.1: Ruby Gnome2 bindings
