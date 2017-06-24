@@ -683,10 +683,6 @@ app-emulation/wine-any
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
 
-# Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
-# Testing x32 patch backports from 3.9
-=dev-util/cmake-3.7.2-r10
-
 # Gnome Team <gnome@gentoo.org> (08 Mar 2017)
 # GNOME 3.24 mask (#611270)
 >=x11-themes/adwaita-icon-theme-3.23
