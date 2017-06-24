@@ -111,9 +111,11 @@ cmake_src_test() {
 	#    CTest.updatecvs: which fails to commit as root
 	#    Fortran: requires fortran
 	#    Qt4Deploy, which tries to break sandbox and ignores prefix
+	#    RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
+	#        debugedit binary is not in the expected location
 	#    TestUpload, which requires network access
 	"${BUILD_DIR}"/bin/ctest ${ctestargs} \
-		-E "(BootstrapTest|BundleUtilities|CTest.UpdateCVS|Fortran|Qt4Deploy|TestUpload)" \
+		-E "(BootstrapTest|BundleUtilities|CTest.UpdateCVS|Fortran|Qt4Deploy|RunCMake.CPack_RPM|TestUpload)" \
 		|| die "Tests failed"
 
 	popd > /dev/null
