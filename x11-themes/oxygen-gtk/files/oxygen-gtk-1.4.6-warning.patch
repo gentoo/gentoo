@@ -1,0 +1,24 @@
+From 7a5425d86e8fd5327091ce736a9680317a0c3747 Mon Sep 17 00:00:00 2001
+From: Hugo Pereira Da Costa <hugo.pereira.da.costa@gmail.com>
+Date: Thu, 6 Apr 2017 19:18:13 +0200
+Subject: fixed compiler warning
+
+---
+ src/oxygenstyle.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/oxygenstyle.cpp b/src/oxygenstyle.cpp
+index 75e0fcc..374810f 100644
+--- a/src/oxygenstyle.cpp
++++ b/src/oxygenstyle.cpp
+@@ -2171,7 +2171,7 @@ namespace Oxygen
+     {
+ 
+         // do nothing if not selected nor hovered
+-        if( !options & (Hover|Selected ) ) return;
++        if( !(options & (Hover|Selected )) ) return;
+ 
+         Palette::Group group( (options & Focus) ? Palette::Active : Palette::Inactive );
+         ColorUtils::Rgba base( _settings.palette().color( group, Palette::Selected ) );
+-- 
+cgit v0.11.2
