@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,6 +32,7 @@ src_prepare() {
 	epatch "${WORKDIR}"/debian/patches/[0-9]*
 	epatch "${FILESDIR}"/${PN}-0.7.3-test-protos.patch #bug 421649
 	epatch "${FILESDIR}"/${PN}-0.7.3-alpha-protos.patch
+	epatch "${FILESDIR}"/${PN}-0.7.3-ia64.patch
 	sed -i '/^dist_doc_DATA/d' Makefile.am || die
 	eautoreconf
 }
