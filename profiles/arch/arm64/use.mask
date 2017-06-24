@@ -177,7 +177,6 @@ devil
 gts
 anthy
 ace
-qt4
 R
 sdl
 tk
