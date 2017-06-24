@@ -18,7 +18,6 @@ SLOT="0"
 IUSE="+portage"
 
 DEPEND="app-text/xmlto
-	!dev-python/configparser
 	sys-apps/gentoo-functions"
 RDEPEND="portage? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
