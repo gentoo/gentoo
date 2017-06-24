@@ -87,6 +87,9 @@ src_prepare() {
 		-e "/find_package(XkbFile REQUIRED)/a\\    endif(ENABLE_X11)" \
 		-i CMakeLists.txt
 
+	# https://github.com/fcitx/fcitx/issues/342
+	find . -name '*.sh' -exec sed 's:^#!/bin/sh$:#!/bin/bash:' -i {} \+
+
 	cmake-utils_src_prepare
 	xdg_environment_reset
 }
