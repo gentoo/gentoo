@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	x11-libs/libXxf86vm
 	x11-themes/adwaita-icon-theme
 
-	sys-auth/elogind
+	!systemd? ( sys-auth/elogind )
 
 	${PYTHON_DEPS}
 
