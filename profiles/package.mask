@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (24 Jun 2017)
+# Obsolete package: use sys-apps/systemd[sysv-utils] instead.
+# Removal in 30 days.
+sys-apps/systemd-sysv-utils
+
 # Hans de Graaff <graaff@gentoo.org> (23 Jun 2017)
 # Mask ruby21-only packages for removal in 30 days
 # Old slots that are ruby21-only
