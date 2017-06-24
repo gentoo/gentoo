@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -43,7 +43,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}/tinyxml.patch" \
 		"${FILESDIR}/jpeg.patch" \
-		"${FILESDIR}/soname.patch"
+		"${FILESDIR}/soname.patch" \
+		"${FILESDIR}/${P}-gcc6.patch"
 
 	rm -rf External/{LibJPEG,TinyXml}
 	for i in Platform/Linux/Build/Common/Platform.* Externals/PSCommon/Linux/Build/Platform.* ; do
