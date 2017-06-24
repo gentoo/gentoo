@@ -2207,7 +2207,7 @@ app-text/adiff 1.4: wordwise diff
 app-text/agrep 2.04 2.04-r1 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2 1.2-r1: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.4 2.4-r1: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.4 2.4-r1 2.5: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
