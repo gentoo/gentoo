@@ -1,0 +1,39 @@
+Fix build fauilure on ia64.
+
+Build fails due to bitrot: some definitions
+moved off from <sys/pthrace.h> to <asm/ptrace.h>
+(similar to other arches).
+
+fetch.c:39:26: error: field 'regs' has incomplete type
+  struct pt_all_user_regs regs;
+                          ^~~~
+fetch.c:209:25: warning: 'struct ia64_fpreg' declared inside parameter list will not be visible outside of this definition or declaration
+ fpreg_to_double (struct ia64_fpreg *fp) {
+                         ^~~~~~~~~~
+fetch.c: In function 'fpreg_to_double':
+fetch.c:211:45: error: dereferencing pointer to incomplete type 'struct ia64_fpreg'
+  asm ("ldf.fill %0=%1" : "=f"(result) : "m"(*fp));
+                                             ^~~
+
+diff --git a/sysdeps/linux-gnu/ia64/fetch.c b/sysdeps/linux-gnu/ia64/fetch.c
+index 54dc5b8..b3b9a9a 100644
+--- a/sysdeps/linux-gnu/ia64/fetch.c
++++ b/sysdeps/linux-gnu/ia64/fetch.c
+@@ -134,9 +134,4 @@ allocate_reg(struct fetch_context *ctx, struct Process *proc,
+ 		return 0;
+ 
+-	/* This would normally be brought over from asm/ptrace.h, but
+-	 * when we do, we get namespace conflicts between asm/fpu.h
+-	 * and libunwind.  */
+-	enum { PT_AUR_BSP = 17 };
+-
+ 	union cfm_t cfm = { .value = ctx->regs.cfm };
+ 	unsigned long *bsp = (unsigned long *)ctx->regs.ar[PT_AUR_BSP];
+diff --git a/sysdeps/linux-gnu/ia64/ptrace.h b/sysdeps/linux-gnu/ia64/ptrace.h
+index ef63b4f..8b131f1 100644
+--- a/sysdeps/linux-gnu/ia64/ptrace.h
++++ b/sysdeps/linux-gnu/ia64/ptrace.h
+@@ -20,2 +20,3 @@
+ 
+ #include <sys/ptrace.h>
++#include <asm/ptrace.h>
