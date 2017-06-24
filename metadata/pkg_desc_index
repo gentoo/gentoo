@@ -17856,7 +17856,7 @@ sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.4.69 4.4.70 4.4.71 4.4.72 4.4.73 4.9.16 4.9.25 4.9.26 4.9.27 4.9.28 4.9.29 4.9.30 4.9.31 4.9.32 4.9.33 4.10.17: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.0.2-r1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.27 4.9.28 4.9.29 4.9.30 4.9.31 4.9.32 4.9.33 4.11.0 4.11.1 4.11.2 4.11.3 4.11.3-r1 4.11.4 4.11.5 4.11.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
+sys-kernel/ck-sources 4.9.34 4.11.7: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 9999: Gentoo automatic kernel building scripts
