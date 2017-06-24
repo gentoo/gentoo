@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.17.0-makemakerfix.patch
 	"${FILESDIR}"/${PN}-2.17.0-fortran.patch      # respect user choice for fortran compiler+flags, add pic
 	"${FILESDIR}"/${PN}-2.17.0-shared-hdf.patch   # search for shared hdf instead of static
+	"${FILESDIR}"/${PN}-2.17.0-dot-in-inc.patch   # fix broken Perl 5.26 compile due to @INC changes
 )
 
 pkg_setup() {
