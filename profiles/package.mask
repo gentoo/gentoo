@@ -44,8 +44,6 @@ dev-ruby/rspec:0
 dev-ruby/toml
 # ruby21-only, no maintainer, fails tests
 www-apps/jekyll-paginate
-# ruby21-only, no maintainer
-www-apps/redmine
 
 # Patrice Clement <monsieurp@gentoo.org> (20 Jun 2017)
 # Fails to build with Java 8. Project is active on Github yet ebuild has never
