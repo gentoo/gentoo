@@ -10,10 +10,12 @@ DESCRIPTION="Video stabilization library"
 HOMEPAGE="http://public.hronopik.de/vid.stab/"
 EGIT_REPO_URI=( {https,git}://github.com/georgmartius/${MY_PN}.git )
 #EGIT_COMMIT="v1.1.0"
+
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="cpu_flags_x86_sse2 openmp"
+
 PATCHES=( "${FILESDIR}/${PN}-gentoo.diff" )
 RDEPEND=""
 DEPEND="${RDEPEND}"
