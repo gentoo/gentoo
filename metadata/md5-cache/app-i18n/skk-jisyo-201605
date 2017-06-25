@@ -9,4 +9,4 @@ LICENSE=GPL-2 freedist public-domain
 SLOT=0
 SRC_URI=mirror://gentoo/skk-jisyo-201605.tar.xz https://dev.gentoo.org/~hattya/distfiles/skk-jisyo-201605.tar.xz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=4c04bb7bef72f226536bf44410d20cb5
+_md5_=9e47687315760aff02feef860e25c8a7
