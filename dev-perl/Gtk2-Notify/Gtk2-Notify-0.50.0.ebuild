@@ -30,6 +30,12 @@ PATCHES=( "${FILESDIR}"/${PN}-0.05-libnotify.patch )
 PERL_RM_FILES=( t/notification.t )
 # the test dies if no notification daemon is present...
 
+src_prepare() {
+	sed -i -e 's/use inc::Module::Install;/use lib q[.]; use inc::Module::Install;/' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}
+
 src_test() {
 	# bug 416729
 	virtx perl-module_src_test
