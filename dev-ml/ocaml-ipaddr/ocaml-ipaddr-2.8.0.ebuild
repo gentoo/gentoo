@@ -14,6 +14,8 @@ IUSE="+ocamlopt test"
 
 RDEPEND="dev-ml/sexplib:=
 	dev-ml/ppx_sexp_conv:=
+	dev-ml/ppx_core:=
+	dev-ml/ppx_type_conv:=
 	dev-lang/ocaml:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}
