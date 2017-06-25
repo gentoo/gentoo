@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
+	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 "
 
