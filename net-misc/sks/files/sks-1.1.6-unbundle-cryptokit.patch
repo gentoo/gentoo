@@ -1,0 +1,79 @@
+diff -r 4af75b3526d9 Makefile
+--- a/Makefile	Sun Jun 25 20:39:45 2017 +0000
++++ b/Makefile	Mon Jun 26 00:27:10 2017 +0200
+@@ -53,10 +53,11 @@
+ endif
+ 
+ CAMLP4=-pp $(CAMLP4O)
+-CAMLINCLUDE= -I lib -I bdb
++CRYPTOKIT=$(shell ocamlfind query cryptokit)
++CAMLINCLUDE= -I lib -I bdb -I $(CRYPTOKIT)
+ COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLLDFLAGS) -ccopt -Lbdb -dtypes $(WARNERR)
+ OCAMLDEP=ocamldep $(CAMLP4)
+-CAMLLIBS=unix.cma str.cma bdb.cma nums.cma bigarray.cma cryptokit.cma
++CAMLLIBS=unix.cma str.cma bdb.cma nums.cma bigarray.cma $(CRYPTOKIT)/cryptokit.cma
+ OCAMLFLAGS=$(COMMONCAMLFLAGS) -g $(CAMLLIBS)
+ OCAMLOPTFLAGS=$(COMMONCAMLFLAGS) -inline 40 $(CAMLLIBS:.cma=.cmxa)
+ 
+@@ -107,7 +108,7 @@
+ 
+ EXEOBJS.bc=$(RSERVOBJS.bc) build.cmo fastbuild.cmo dbserver.cmo pdiskTest.cmo
+ 
+-LIBS.bc= lib/cryptokit.cma bdb/bdb.cma
++LIBS.bc= bdb/bdb.cma
+ LIBS=$(LIBS.bc:.cma=.cmxa)
+ 
+ VERSION := $(shell cat VERSION)
+@@ -278,32 +279,11 @@
+ 	touch prepared
+ 
+ 
+-CKVER=cryptokit-1.7
+-CKDIR=$(CKVER)/src
+-
+ $(CKVER)/README.txt:
+ 	tar xmvfz $(CKVER).tar.gz
+ 	patch -p 0 < $(CKVER)-sks.patch
+ 	patch -p 0 < $(CKVER)-sks-custom_compare.patch
+ 
+-$(CKDIR)/cryptokit.cma: $(CKVER)/README.txt
+-	cd $(CKDIR) && $(MAKE) all
+-
+-$(CKDIR)/cryptokit.cmxa: $(CKVER)/README.txt
+-	cd $(CKDIR) && $(MAKE) allopt
+-
+-lib/cryptokit.cma: $(CKDIR)/cryptokit.cma $(CKDIR)/cryptokit.cmxa prepared
+-	cp $(CKDIR)/cryptokit.cmi $(CKDIR)/cryptokit.cma \
+-	   $(CKDIR)/cryptokit.mli lib
+-	cp $(CKDIR)/libcryptokit.a lib
+-	if test -f $(CKDIR)/dllcryptokit.so; then \
+-	   cp $(CKDIR)/dllcryptokit.so lib; fi
+-	if test -f $(CKDIR)/cryptokit.cmxa; then \
+-	   cp $(CKDIR)/cryptokit.cmxa $(CKDIR)/cryptokit.cmx \
+-	   $(CKDIR)/cryptokit.a lib; fi
+-
+-lib/cryptokit.cmxa: lib/cryptokit.cma
+-
+ ################################
+ # old stuff
+ ################################
+@@ -340,16 +320,16 @@
+ dumbloop: $(LIBS) $(ALLOBJS) dumbloop.cmo
+ 	$(OCAMLC) -o dumbloop $(OCAMLFLAGS) $(ALLOBJS) dumbloop.cmo
+ 
+-scan: $(OBJS) cryptokit dblib scan.ml
++scan: $(OBJS) dblib scan.ml
+ 	$(OCAMLC) -o scan $(OCAMLFLAGS) $(OBJS) scan.ml
+ 
+ query: $(LIBS) $(ALLOBJS) query.cmo
+ 	$(OCAMLC) -o query $(OCAMLFLAGS) $(ALLOBJS) query.cmo
+ 
+-printids: $(OBJS:.cmo=.cmx) cryptokit printids.ml
++printids: $(OBJS:.cmo=.cmx) printids.ml
+ 	$(OCAMLOPT) -o printids $(OCAMLOPTFLAGS) $(OBJS:.cmo=.cmx) printids.ml
+ 
+-printids.bc: $(OBJS) cryptokit printids.ml
++printids.bc: $(OBJS) printids.ml
+ 	$(OCAMLC) -o printids $(OCAMLFLAGS) $(OBJS) printids.ml
+ 
+ krecode: $(ALLOBJS.opt) $(LIBS) recode.ml
