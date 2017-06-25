@@ -21,6 +21,7 @@ DEPEND="
 	dev-ml/ppx_optcomp:=
 	dev-ml/sexplib:=
 	dev-ml/ocaml-migrate-parsetree:=
+	dev-ml/ppx_traverse_builtins:=
 	"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
