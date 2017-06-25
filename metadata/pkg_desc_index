@@ -1871,7 +1871,7 @@ app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and d
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
 app-misc/mc 4.8.15 4.8.18-r1 4.8.19 9999: GNU Midnight Commander is a text based file manager
-app-misc/media-player-info 21-r1 22: A repository of data files describing media player capabilities
+app-misc/media-player-info 22: A repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45 0.45-r1: Self-employed-mode software for 3COM/USR message modems
