@@ -183,9 +183,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/openoffice
 	media-fonts/liberation-fonts
 	media-fonts/libertine
-	media-fonts/urw-fonts
+	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools $(add_kdeapps_dep kioclient) )
 	java? ( >=virtual/jre-1.6 )
-	kde? ( $(add_kdeapps_dep kioclient) )
 	vlc? ( media-video/vlc )
 "
 
@@ -246,6 +245,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
@@ -270,23 +270,6 @@ pkg_pretend() {
 			CHECKREQS_DISK_BUILD="6G"
 		fi
 		check-reqs_pkg_pretend
-
-		if ! $(tc-is-clang) && { [[ $(gcc-major-version) -lt 4 ]] ||
-				[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; } then
-			eerror "Compilation with gcc older than 4.7 is not supported"
-			die "Too old gcc found."
-		fi
-	fi
-
-	# Ensure pg version but we have to be sure the pg is installed (first
-	# install on clean system)
-	if use postgres && has_version dev-db/postgresql; then
-		 local pgslot=$(postgresql-config show)
-		 if [[ ${pgslot//.} -lt 90 ]] ; then
-			eerror "PostgreSQL slot must be set to 9.0 or higher."
-			eerror "    postgresql-config set 9.0"
-			die "PostgreSQL slot is not set to 9.0 or higher."
-		 fi
 	fi
 }
 
