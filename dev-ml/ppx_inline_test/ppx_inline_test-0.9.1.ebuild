@@ -18,6 +18,7 @@ DEPEND="
 	dev-ml/ppx_core:=
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_metaquot:=
+	dev-ml/ppx_traverse_builtins:=
 	dev-ml/ocaml-migrate-parsetree:=
 "
 
