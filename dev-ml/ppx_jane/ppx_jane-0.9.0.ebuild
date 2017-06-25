@@ -31,6 +31,7 @@ DEPEND="
 	dev-ml/ppx_sexp_message:=
 	dev-ml/ppx_sexp_value:=
 	dev-ml/ppx_typerep_conv:=
+	dev-ml/ppx_type_conv:=
 	dev-ml/ppx_variants_conv:=
 	dev-ml/ocaml-migrate-parsetree:=
 "
