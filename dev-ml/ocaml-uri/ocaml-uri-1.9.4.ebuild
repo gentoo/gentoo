@@ -19,6 +19,7 @@ RDEPEND="
 	dev-ml/sexplib:=
 	dev-ml/ppx_sexp_conv:=
 	dev-ml/ppx_core:=
+	dev-ml/ppx_type_conv:=
 	dev-ml/stringext:=
 	dev-ml/type-conv:=
 	dev-lang/ocaml:=
