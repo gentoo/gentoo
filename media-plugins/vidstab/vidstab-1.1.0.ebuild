@@ -19,7 +19,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
-        if use openmp && tc-has-openmp; then
+        if tc-check-openmp; then
             append-cppflags "-DUSE_OMP"
             append-cflags -fopenmp
         fi
