@@ -3,7 +3,6 @@
 
 EAPI=6
 
-WEBKIT_REQUIRED="optional"
 inherit kde4-base
 
 DESCRIPTION="BibTeX editor by KDE to edit bibliographies used with LaTeX"
@@ -31,7 +30,7 @@ PATCHES=( "${FILESDIR}/${P}-webkit.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_QTWEBKIT=$(usex webkit)
+		-DWITH_QTWEBKIT=OFF
 	)
 
 	kde4-base_src_configure
