@@ -20,6 +20,7 @@ S="${WORKDIR}/skk-${PV}mu"
 PATCHES=(
 	"${FILESDIR}"/${PN}-segfault.patch
 	"${FILESDIR}"/${PN}-headers.patch
+	"${FILESDIR}"/${PN}-suffix.patch
 )
 
 src_configure() {
