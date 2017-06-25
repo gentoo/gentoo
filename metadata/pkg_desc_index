@@ -11695,7 +11695,7 @@ gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1 3.2.2 3.2.2-r1 3.2.6 3.2.13-r1 3
 gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1 3.2.0 3.4.1: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1 3.2.0 3.4.2: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.2.0: Translation data for Cinnamon
-gnome-extra/cjs 2.8.0 3.0.1 3.2.0 3.4.1: Linux Mint's fork of gjs for Cinnamon
+gnome-extra/cjs 3.0.1 3.4.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.22.7: Evolution groupware backend
