@@ -1,8 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=6
 inherit multilib toolchain-funcs
 
 DESCRIPTION="A Library for Large Linear Classification"
@@ -23,6 +22,8 @@ DEPEND="
 "
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/^AR/s|=|?=|g' \
 		-e '/^RANLIB/s|=|?=|g' \
