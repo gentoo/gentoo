@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -22,19 +22,32 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gentoo.patch"
-	sed -i -e "/^CDBLIB/s:lib:$(get_libdir):" Makefile || die
-	if has_version dev-db/cdb ; then
-		sed -i -e "/^CDBLIB/s:$: /usr/$(get_libdir)/byte.a /usr/$(get_libdir)/unix.a:" Makefile || die
+	epatch "${FILESDIR}"/${PN}-gentoo.patch
+
+	local cdblib=()
+	if has_version dev-db/cdb; then
+		append-cflags -I"${EPREFIX}"/usr/include/cdb
+		local a
+		for a in cdb.a alloc.a buffer.a byte.a unix.a; do
+			cdblib+=( "${EPREFIX}"/usr/$(get_libdir)/${a} )
+		done
+	else
+		cdblib+=( -lcdb )
 	fi
+
+	sed -i "/^CDBLIB/s|=.*$|= ${cdblib[*]}|" Makefile
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die
+	emake \
+		CC="$(tc-getCC)" \
+		COMPAT="-DJISYO_FILE=\\\"${EPREFIX}/usr/share/skk/SKK-JISYO.L.cdb\\\"" \
+		|| die
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	exeinto /usr/libexec
+	doexe ${PN}
 
 	insinto /etc/xinetd.d
 	newins "${FILESDIR}/${PN}.xinetd" ${PN} || die
