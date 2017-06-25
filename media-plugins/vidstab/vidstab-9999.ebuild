@@ -19,7 +19,14 @@ RDEPEND="openmp? ( sys-devel/gcc[openmp] )"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-        use openmp && append-cppflags "-fopenmp -DUSE_OMP"
-        use cpu_flags_x86_sse2 && append-cppflags "-DUSE_SSE2 -msse2 -ffast-math"
+        if use openmp; then
+            tc-check-openmp
+            append-cppflags "-DUSE_OMP"
+            append-cflags -fopenmp
+        fi
+        if use cpu_flags_x86_sse2; then
+            append-cppflags "-DUSE_SSE2"
+            append-cflags "-msse2"
+        fi
         cmake-multilib_src_configure
 }
