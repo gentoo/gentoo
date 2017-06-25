@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=3
@@ -20,9 +20,8 @@ DEPEND=">=app-i18n/skk-jisyo-200210"
 S="${WORKDIR}/skk-${PV}mu"
 
 src_prepare() {
-	cd "${S}"/skkserv
-	epatch "${FILESDIR}"/${P}-segfault-gentoo.patch
-	epatch "${FILESDIR}"/${P}-inet_ntoa-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-segfault.patch
+	epatch "${FILESDIR}"/${PN}-headers.patch
 }
 
 src_configure() {
