@@ -1,4 +1,3 @@
-# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,8 +19,16 @@ PATCHES=( "${FILESDIR}/${PN}-gentoo.diff" )
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
+pkg_pretend() {
+        [[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+        [[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 src_configure() {
-        if tc-check-openmp; then
+        if use openmp; then
             append-cppflags "-DUSE_OMP"
             append-cflags -fopenmp
         fi
