@@ -23,10 +23,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-suffix.patch
 )
 
-src_configure() {
-	econf --libexecdir="${EPREFIX}"/usr/sbin
-}
-
 src_compile() {
 	emake -C ${PN}
 }
