@@ -29,7 +29,7 @@ DOCS=( ChangeLog{,.{1..3}} READMEs/committers.txt edict_doc.txt zipcode/README.j
 src_prepare() {
 	rm -f ${MY_PN}.{wrong*,noregist,not_wrong,hukugougo,notes,requested,pubdic+}
 
-	eapply_user
+	default
 }
 
 cdb_make() {

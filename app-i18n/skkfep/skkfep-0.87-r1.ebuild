@@ -20,7 +20,11 @@ DEPEND="sys-apps/sed
 RDEPEND="sys-libs/ncurses:=
 	app-i18n/skk-jisyo"
 
-PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-system-dic.patch
+	"${FILESDIR}"/${PN}-annotation.patch
+)
 DOCS=( README HISTORY TODO )
 
 src_prepare() {
