@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup test
+DEPEND=>=dev-lang/ocaml-4.0 dev-ml/findlib dev-ml/camlp4 dev-ml/cryptokit:0/1.10 sys-libs/db:5.3 virtual/pkgconfig
+DESCRIPTION=An OpenPGP keyserver which is decentralized with highly reliable synchronization
+EAPI=6
+HOMEPAGE=https://bitbucket.org/skskeyserver/sks-keyserver
+IUSE=optimize test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/ocaml-4.0 dev-ml/findlib dev-ml/camlp4 dev-ml/cryptokit:0/1.10 sys-libs/db:5.3
+SLOT=0
+SRC_URI=https://bitbucket.org/skskeyserver/sks-keyserver/downloads/sks-1.1.6.tgz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=c3ae71459867ad762651fc28d8332564
