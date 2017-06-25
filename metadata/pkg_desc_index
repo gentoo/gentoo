@@ -4594,7 +4594,7 @@ dev-lang/nim 0.14.2 0.15.0-r1 0.15.2 0.16.0 0.17.0: compiled, garbage-collected 
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.10 2016.11 2016.12 2017.01 2017.02 2017.03 2017.04 2017.05 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
-dev-lang/ocaml 4.04.0 4.04.1 4.05.0_beta3: Type-inferring functional programming language descended from the ML family
+dev-lang/ocaml 4.04.0 4.04.1 4.04.2 4.05.0_beta3: Type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
@@ -5301,7 +5301,7 @@ dev-ml/merlin 2.5.3 2.5.4 2.5.5: Context sensitive completion for OCaml in Vim a
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
-dev-ml/mtime 0.8.4 1.0.0: OCaml module to access monotonic wall-clock time
+dev-ml/mtime 0.8.4 1.0.0 1.1.0: OCaml module to access monotonic wall-clock time
 dev-ml/oasis 0.4.8 0.4.10: OASIS is a tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
@@ -5324,7 +5324,7 @@ dev-ml/ocaml-extunix 0.1.4: Thin bindings to various low-level system APIs
 dev-ml/ocaml-fileutils 0.5.1 0.5.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
-dev-ml/ocaml-ipaddr 2.7.1 2.7.2 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
+dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-migrate-parsetree 0.7 1.0 1.0.1: Convert OCaml parsetrees between different major versions
@@ -5342,7 +5342,7 @@ dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocaml-stdint 0.3.0: Various signed and unsigned integers for OCaml
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
-dev-ml/ocaml-uri 1.9.2 1.9.4: RFC3986 URI parsing library for OCaml
+dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
 dev-ml/ocaml-webmachine 0.4.0: A REST toolkit for OCaml
 dev-ml/ocaml-websocket 2.9: Websocket library for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0: Generic build tool with built-in rules for building OCaml library and programs
