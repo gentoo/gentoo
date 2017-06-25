@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -21,9 +21,9 @@ RDEPEND="${RDEPEND}
 	app-i18n/skk-jisyo"
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-LDFLAGS.patch
+	sed -i "/SYSTEM_DIC_NAME/a#define SYSTEM_DIC_NAME \"${EPREFIX}/usr/share/skk/SKK-JISYO.L\"" config.h
+
+	epatch "${FILESDIR}"/${PN}-gentoo.patch
 }
 
 src_compile() {
