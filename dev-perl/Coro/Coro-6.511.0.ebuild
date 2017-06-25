@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,9 +27,10 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	if ! use vanilla; then
-		ewarn "This release includes a 3rd party argarray patch for Perl 5.24 Compat."
-		ewarn "Please do not contact upstream directly regarding problems arising from this."
+		elog "This release includes 3rd party patches for Perl 5.24 and 5.26 compatibility."
+		elog "Please do not contact upstream directly regarding problems arising from this."
 		eapply "${FILESDIR}/${PV}-argarray.patch"
+		eapply "${FILESDIR}/${PV}-padoffset.patch"
 	fi
 	perl-module_src_prepare
 }
