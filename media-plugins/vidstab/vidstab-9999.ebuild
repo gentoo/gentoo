@@ -15,12 +15,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE="cpu_flags_x86_sse2 openmp"
 PATCHES=( "${FILESDIR}/${PN}-gentoo.diff" )
-RDEPEND="openmp? ( sys-devel/gcc[openmp] )"
+RDEPEND=""
 DEPEND="${RDEPEND}"
 
 src_configure() {
-        if use openmp; then
-            tc-check-openmp
+        if use openmp && tc-has-openmp; then
             append-cppflags "-DUSE_OMP"
             append-cflags -fopenmp
         fi
