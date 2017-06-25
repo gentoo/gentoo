@@ -1,0 +1,13 @@
+--- a/skkserv/skkserv.c
++++ a/skkserv/skkserv.c
+@@ -382,6 +382,10 @@
+   code = KANA_END;
+ 
+   while ((c = fgetc(jisho)) != EOF) {
++    if (c == '>') {
++      fgets(buf, BUFSIZE, jisho);
++      continue;
++    }
+     target = ((c & 0xff)<< 8) | (fgetc(jisho) & 0xff);
+     if (target == STRMARK) {
+       fgets(buf, BUFSIZE, jisho);
