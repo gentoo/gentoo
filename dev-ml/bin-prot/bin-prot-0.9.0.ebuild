@@ -17,6 +17,7 @@ RDEPEND="
 	dev-ml/base:=
 	dev-ml/ppx_compare:=
 	dev-ml/ppx_custom_printf:=
+	dev-ml/ppx_core:=
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_fields_conv:=
 	dev-ml/ppx_sexp_conv:=
