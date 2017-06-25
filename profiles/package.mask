@@ -580,7 +580,6 @@ media-libs/lv2-ui
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
 # Masked (+ reverse dependencies) for opt-in testing.
 >=xfce-base/xfce4-panel-4.13
->=xfce-extra/xfce4-screenshooter-1.8.99
 
 # Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
 # Broken runscript/changed behavior causing lvm2 to fail
