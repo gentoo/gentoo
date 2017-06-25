@@ -1,0 +1,39 @@
+--- ./vmci-only/linux/vmciKernelIf.c	2017-02-23 12:19:59.706822502 +0100
++++ ./vmci-only/linux/vmciKernelIf.c.new	2017-02-23 13:12:09.382997502 +0100
+@@ -2056,7 +2056,11 @@
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+    retval = get_user_pages((VA)produceUVA,
+                            produceQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++                           FOLL_WRITE,
++#else
+                            1, 0,
++#endif
+                            produceQ->kernelIf->u.h.headerPage,
+                            NULL);
+ #else
+@@ -2083,7 +2087,11 @@
+                            (VA)consumeUVA,
+ #endif
+                            consumeQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++                           FOLL_WRITE,
++#else
+                            1, 0,
++#endif
+                            consumeQ->kernelIf->u.h.headerPage,
+                            NULL);
+    if (retval < consumeQ->kernelIf->numPages) {
+--- ./vmci-only/linux/driver.c	2017-02-23 12:19:59.645822499 +0100
++++ ./vmci-only/linux/driver.c.new	2017-02-23 12:30:38.845858240 +0100
+@@ -1468,7 +1468,9 @@
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++   retval = get_user_pages(addr, 1, FOLL_WRITE, &page, NULL);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+    retval = get_user_pages(addr, 1, 1, 0, &page, NULL);
+ #else
+    retval = get_user_pages(current, current->mm, addr,

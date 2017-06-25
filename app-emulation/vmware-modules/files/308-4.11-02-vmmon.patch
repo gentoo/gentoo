@@ -1,0 +1,30 @@
+diff -ur old/vmmon-only/linux/driver.c vmmon-only/linux/driver.c
+--- old/vmmon-only/linux/driver.c     2016-11-12 09:15:52.000000000 +0200
++++ vmmon-only/linux/driver.c      2017-03-06 10:46:33.347053458 +0200
+@@ -105,7 +105,7 @@
+ static int LinuxDriver_Close(struct inode *inode, struct file *filp);
+ static unsigned int LinuxDriverPoll(struct file *file, poll_table *wait);
+ #if defined(VMW_NOPAGE_2624)
+-static int LinuxDriverFault(struct vm_area_struct *vma, struct vm_fault *fault);
++static int LinuxDriverFault(struct vm_fault *fault);
+ #else
+ static struct page *LinuxDriverNoPage(struct vm_area_struct *vma,
+                                       unsigned long address,
+@@ -882,15 +882,14 @@
+  */
+
+ #if defined(VMW_NOPAGE_2624)
+-static int LinuxDriverFault(struct vm_area_struct *vma, //IN
+-                            struct vm_fault *fault)     //IN/OUT
++static int LinuxDriverFault(struct vm_fault *fault)     //IN/OUT
+ #else
+ static struct page *LinuxDriverNoPage(struct vm_area_struct *vma, //IN
+                                       unsigned long address,      //IN
+                                       int *type)                  //OUT: Fault type
+ #endif
+ {
+-   VMLinux *vmLinux = (VMLinux *) vma->vm_file->private_data;
++   VMLinux *vmLinux = (VMLinux *) fault->vma->vm_file->private_data;
+    unsigned long pg;
+    struct page* page;
+

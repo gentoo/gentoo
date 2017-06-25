@@ -1,0 +1,16 @@
+--- vmblock-only/linux/inode.c	2016-08-03 19:26:15.293707751 +0200
++++ vmblock-only/linux/inode.c.new	2016-08-03 21:37:42.199148756 +0200
+@@ -205,10 +205,11 @@
+ 
+ #if LINUX_VERSION_CODE <= KERNEL_VERSION(3, 14, 99)
+ 	return vfs_readlink(dentry, buffer, buflen, iinfo->name);
++#elif LINUX_VERSION_CODE <= KERNEL_VERSION(4, 6, 99)
++    return readlink_copy(buffer, buflen, iinfo->name);
+ #else
+-       return readlink_copy(buffer, buflen, iinfo->name);
++    return generic_readlink(dentry, buffer, buflen);
+ #endif
+-
+ }
+ 
+ 

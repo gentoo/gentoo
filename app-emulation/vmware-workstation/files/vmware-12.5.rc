@@ -1,0 +1,91 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	use net
+}
+
+start() {
+	ebegin Starting VMware USB Arbitrator
+	#start-stop-daemon --start --exec @@BINDIR@@/vmware-usbarbitrator
+	@@BINDIR@@/vmware-usbarbitrator 
+	eend $?
+	ebegin Starting VMware services
+	
+	# vmci might be:
+	# 1) built as external kernel module
+	# 2) built as internal kernel module (with name vmw_vmci)
+	# 3) embedded in the kernel
+	for mod in /lib/modules/$(uname -r)/misc/vmci.ko \
+		/lib/modules/$(uname -r)/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko ;
+	do
+		if [[ -f "${mod}" ]] ; then
+			modprobe -v $(basename "${mod}" .ko)
+			eend $?
+			break
+		fi
+	done
+	
+	# vsock might be:
+	# 1) built as external kernel module
+	# 2) built as internal kernel module (with name vmw_vsock_vmci_transport)
+	# 3) embedded in the kernel
+	for mod in /lib/modules/$(uname -r)/misc/vsock.ko \
+		/lib/modules/$(uname -r)/kernel/net/vmw_vsock/vmw_vsock_vmci_transport.ko ;
+	do
+		if [[ -f "${mod}" ]] ; then
+			modprobe -v $(basename "${mod}" .ko)
+			eend $?
+			break
+		fi
+	done
+
+	# vmci or vsock were already loaded by the previous modprobe,
+	# no need to do it here
+	modprobe -av vmmon vmblock vmnet 
+	eend $?
+	@@BINDIR@@/vmware-networks --start
+	eend $?
+}
+
+stop() {
+	ebegin Stopping VMware USB Arbitrator
+	#start-stop-daemon --stop --exec @@BINDIR@@/vmware-usbarbitrator
+	killall --wait @@BINDIR@@/vmware-usbarbitrator 
+	eend $?
+	@@BINDIR@@/vmware-networks --stop 
+	eend $?
+	ebegin Stopping VMware services
+	modprobe -rv vmmon vmblock vmnet
+	eend $?
+	
+	# vsock might be:
+	# 1) built as external kernel module
+	# 2) built as internal kernel module (with name vmw_vsock_vmci_transport)
+	# 3) embedded in the kernel
+	for mod in /lib/modules/$(uname -r)/misc/vsock.ko \
+		/lib/modules/$(uname -r)/kernel/net/vmw_vsock/vmw_vsock_vmci_transport.ko ;
+	do
+		if [[ -f "${mod}" ]] ; then
+			modprobe -rv $(basename "${mod}" .ko)
+			eend $?
+			break
+		fi
+	done
+
+	# vmci might be:
+	# 1) built as external kernel module
+	# 2) built as internal kernel module (with name vmw_vmci)
+	# 3) embedded in the kernel
+	for mod in /lib/modules/$(uname -r)/misc/vmci.ko \
+		/lib/modules/$(uname -r)/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko ;
+	do
+		if [[ -f "${mod}" ]] ; then
+			modprobe -rv $(basename "${mod}" .ko)
+			eend $?
+			break
+		fi
+	done
+}
