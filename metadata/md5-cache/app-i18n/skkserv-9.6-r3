@@ -1,13 +1,11 @@
-DEFINED_PHASES=compile configure install prepare
-DEPEND=>=app-i18n/skk-jisyo-200210
+DEFINED_PHASES=compile install
+DEPEND=app-i18n/skk-jisyo
 DESCRIPTION=Dictionary server for the SKK Japanese-input software
-EAPI=3
+EAPI=6
 HOMEPAGE=http://openlab.ring.gr.jp/skk/
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
-RDEPEND=>=app-i18n/skk-jisyo-200210
 SLOT=0
 SRC_URI=http://openlab.ring.gr.jp/skk/maintrunk/museum/skk9.6mu.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
-_md5_=f6bc073f4ed2a985e0d84a6c28cbc101
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=f5b25020ffded539b3a63fa80ff47992
