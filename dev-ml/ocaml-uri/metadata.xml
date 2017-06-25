@@ -5,9 +5,6 @@
         <email>ml@gentoo.org</email>
         <name>Gentoo ML Project</name>
     </maintainer>
-   <use>
-        <flag name="allservices">Compile support for all service types</flag>
-    </use>
     <upstream>
         <remote-id type="github">mirage/ocaml-uri</remote-id>
     </upstream>
