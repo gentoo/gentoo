@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=|| ( dev-db/tinycdb dev-db/cdb )
+DESCRIPTION=SKK dictionary server based on cdb
+EAPI=6
+HOMEPAGE=https://github.com/jj1bdx/dbskkd-cdb
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=app-i18n/skk-jisyo[cdb] sys-apps/xinetd
+SLOT=0
+SRC_URI=https://github.com/jj1bdx/dbskkd-cdb/archive/3.00.tar.gz -> dbskkd-cdb-3.00.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=5af5a59969d04e9e4d115e2cfbfea630

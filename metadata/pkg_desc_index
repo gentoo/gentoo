@@ -1487,7 +1487,7 @@ app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabi
 app-i18n/canfep 1.0: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42: A charset conversion tool cstocs and two Perl modules for Czech language
-app-i18n/dbskkd-cdb 2.00: SKK dictionary server based on cdb
+app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r1 1.7-r2: Fast terminal emulator for the Linux framebuffer
