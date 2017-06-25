@@ -23,6 +23,7 @@ RDEPEND="sys-libs/ncurses:=
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-system-dic.patch
+	"${FILESDIR}"/${PN}-annotation.patch
 )
 DOCS=( README HISTORY TODO )
 
