@@ -23,10 +23,6 @@ net-analyzer/rrdtool rados
 # x11-libs/libXpresent is not keyworded on ia64
 xfce-base/xfwm4 xpresent
 
-# Alexis Ballier <aballier@gentoo.org> (4 Mar 2017)
-# gst-plugins-x264 is not stable on ia64
-media-plugins/gst-plugins-meta x264
-
 # Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
 # Missing keywords, bug #559770
 >=net-misc/networkmanager-1.4.4 consolekit
