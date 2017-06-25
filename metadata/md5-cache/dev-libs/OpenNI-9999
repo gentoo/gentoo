@@ -9,4 +9,4 @@ RDEPEND=virtual/libusb:1 virtual/libudev virtual/jpeg:0 dev-libs/tinyxml opengl?
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_postinst:- pkg_setup:java-pkg-opt-2 src_unpack:git-r3 src_prepare:- src_compile:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	cbafa3261c37c7e3af44bb16a34ea390	java-pkg-opt-2	be255db325e3af8fbf3506cf63998341	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=9c3ca24cc92618f0a9b8f81835b1ffa0
+_md5_=2bb3ffdae55650acb77fa6c46def2f9b
