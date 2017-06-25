@@ -14,9 +14,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 
-RDEPEND="${RDEPEND}
+RDEPEND="
 	>=sys-libs/mtdev-1.0"
-DEPEND="${DEPEND}
+DEPEND="
 	>=sys-libs/mtdev-1.0
 	x11-proto/inputproto
 	x11-proto/randrproto
@@ -24,7 +24,6 @@ DEPEND="${DEPEND}
 	x11-proto/xineramaproto
 	x11-proto/xproto"
 
-DOCS=( "README.md" )
 PATCHES=( "${FILESDIR}"/${PN}-0.2.0-drop-mtrack-test.patch )
 
 pkg_postinst() {
