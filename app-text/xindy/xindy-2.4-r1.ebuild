@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=("${FILESDIR}"/${P}-configure.patch
 	"${FILESDIR}"/${P}-locale.patch
-	"${FILESDIR}"/${P}-nogrep.patch)
+	"${FILESDIR}"/${P}-nogrep.patch
+	"${FILESDIR}"/${P}-perl5.26.patch)
 DOCS=(AUTHORS ChangeLog.Gour NEWS README)
 
 src_prepare() {
