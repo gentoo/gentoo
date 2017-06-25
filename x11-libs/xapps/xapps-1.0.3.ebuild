@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
+	dev-util/gtk-doc-am
 "
 
 src_prepare() {
@@ -37,6 +38,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--enable-gtk-doc \
+		--enable-gtk-doc-html \
 		$(use_enable introspection) \
 		$(use_enable static-libs static)
 }
