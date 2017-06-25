@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,8 +32,9 @@ DEPEND="
 "
 
 SRC_TEST="do"
+PATCHES=( "${FILESDIR}/${PN}"-1.66-no-dot-inc.patch )
 
 src_prepare() {
 	use test && perl_rm_files t/pod.t
-	perl-module_src_test
+	perl-module_src_prepare
 }

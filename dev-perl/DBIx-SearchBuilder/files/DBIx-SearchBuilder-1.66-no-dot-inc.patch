@@ -1,0 +1,338 @@
+From 239c1bdefee7ce82d9ea6b26931e8b64a5b3d322 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 25 Jun 2017 19:16:42 +1200
+Subject: [PATCH] Fix for '.' removal from @INC in Perl 5.26
+
+---
+ Makefile.PL               | 1 +
+ t/01basics.t              | 2 +-
+ t/01nocap_api.t           | 2 +-
+ t/01records.t             | 2 +-
+ t/01searches.t            | 2 +-
+ t/02distinct_values.t     | 2 +-
+ t/02null_order.t          | 2 +-
+ t/02order_outer.t         | 2 +-
+ t/02records_cachable.t    | 2 +-
+ t/02records_datetime.t    | 2 +-
+ t/02records_dt_interval.t | 2 +-
+ t/02records_integers.t    | 2 +-
+ t/02records_object.t      | 2 +-
+ t/02searches_function.t   | 2 +-
+ t/02searches_joins.t      | 2 +-
+ t/03compatibility.t       | 2 +-
+ t/03cud_from_select.t     | 2 +-
+ t/03rebless.t             | 2 +-
+ t/03transactions.t        | 2 +-
+ t/03versions.t            | 2 +-
+ t/10schema.t              | 4 ++--
+ t/11schema_records.t      | 2 +-
+ t/20set_edge_cases.t      | 2 +-
+ 23 files changed, 24 insertions(+), 23 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 49ec3f0..837f26f 100755
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+ use inc::Module::Install;
+ 
+ name ('DBIx-SearchBuilder');
+diff --git a/t/01basics.t b/t/01basics.t
+index a46ede6..f0c18df 100644
+--- a/t/01basics.t
++++ b/t/01basics.t
+@@ -3,7 +3,7 @@
+ use strict;
+ 
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 4;
+diff --git a/t/01nocap_api.t b/t/01nocap_api.t
+index 1ea417e..be45395 100644
+--- a/t/01nocap_api.t
++++ b/t/01nocap_api.t
+@@ -3,7 +3,7 @@
+ use strict;
+ 
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ 
+ use vars qw(@SPEC_METHODS @MODULES);
+ my @SPEC_METHODS = qw(AUTOLOAD DESTROY CLONE);
+diff --git a/t/01records.t b/t/01records.t
+index a1f1366..d701e94 100644
+--- a/t/01records.t
++++ b/t/01records.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 66;
+diff --git a/t/01searches.t b/t/01searches.t
+index 83a2001..1276544 100644
+--- a/t/01searches.t
++++ b/t/01searches.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 150;
+diff --git a/t/02distinct_values.t b/t/02distinct_values.t
+index f20328d..826db21 100644
+--- a/t/02distinct_values.t
++++ b/t/02distinct_values.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 9;
+diff --git a/t/02null_order.t b/t/02null_order.t
+index 9feda47..fab111d 100644
+--- a/t/02null_order.t
++++ b/t/02null_order.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 11;
+diff --git a/t/02order_outer.t b/t/02order_outer.t
+index 08a236b..14a39fe 100644
+--- a/t/02order_outer.t
++++ b/t/02order_outer.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 98;
+diff --git a/t/02records_cachable.t b/t/02records_cachable.t
+index cdbb9da..9418990 100644
+--- a/t/02records_cachable.t
++++ b/t/02records_cachable.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 16;
+diff --git a/t/02records_datetime.t b/t/02records_datetime.t
+index f1a0d7a..6882729 100644
+--- a/t/02records_datetime.t
++++ b/t/02records_datetime.t
+@@ -5,7 +5,7 @@ BEGIN { $ENV{'TZ'} = 'Europe/Moscow' };
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 38;
+diff --git a/t/02records_dt_interval.t b/t/02records_dt_interval.t
+index ef1ead3..283746f 100644
+--- a/t/02records_dt_interval.t
++++ b/t/02records_dt_interval.t
+@@ -5,7 +5,7 @@ BEGIN { $ENV{'TZ'} = 'Europe/Moscow' };
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 17;
+diff --git a/t/02records_integers.t b/t/02records_integers.t
+index d13e2ee..95b8504 100644
+--- a/t/02records_integers.t
++++ b/t/02records_integers.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 37;
+diff --git a/t/02records_object.t b/t/02records_object.t
+index 18c724e..34576db 100644
+--- a/t/02records_object.t
++++ b/t/02records_object.t
+@@ -5,7 +5,7 @@ use strict;
+ use warnings;
+ use Test::More;
+ 
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 11;
+diff --git a/t/02searches_function.t b/t/02searches_function.t
+index 2fd6e7e..c8682de 100644
+--- a/t/02searches_function.t
++++ b/t/02searches_function.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use Test::More;
+ 
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 18;
+diff --git a/t/02searches_joins.t b/t/02searches_joins.t
+index 1661f2b..cbdc3c9 100644
+--- a/t/02searches_joins.t
++++ b/t/02searches_joins.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use Test::More;
+ 
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 59;
+diff --git a/t/03compatibility.t b/t/03compatibility.t
+index 14eb382..3939503 100644
+--- a/t/03compatibility.t
++++ b/t/03compatibility.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 2;
+diff --git a/t/03cud_from_select.t b/t/03cud_from_select.t
+index 7f5d21b..2f324b7 100644
+--- a/t/03cud_from_select.t
++++ b/t/03cud_from_select.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use Test::More;
+ 
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 14;
+diff --git a/t/03rebless.t b/t/03rebless.t
+index 888bb94..467cf00 100644
+--- a/t/03rebless.t
++++ b/t/03rebless.t
+@@ -6,7 +6,7 @@ use warnings;
+ use Test::More;
+ use DBIx::SearchBuilder::Handle;
+ 
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 4;
+diff --git a/t/03transactions.t b/t/03transactions.t
+index e641c19..ef0f973 100644
+--- a/t/03transactions.t
++++ b/t/03transactions.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 52;
+diff --git a/t/03versions.t b/t/03versions.t
+index 79bb2e9..4acba37 100644
+--- a/t/03versions.t
++++ b/t/03versions.t
+@@ -5,7 +5,7 @@ use warnings;
+ use Test::More;
+ use DBIx::SearchBuilder::Handle;
+ 
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 6;
+diff --git a/t/10schema.t b/t/10schema.t
+index 2ff5ab6..fcf1a7b 100644
+--- a/t/10schema.t
++++ b/t/10schema.t
+@@ -8,7 +8,7 @@ use constant TESTS_PER_DRIVER => 14;
+ our @AvailableDrivers;
+ 
+ BEGIN {
+-  require("t/utils.pl");
++  require("./t/utils.pl");
+   my $total = 3 + scalar(@AvailableDrivers) * TESTS_PER_DRIVER;
+   if( not eval { require DBIx::DBSchema } ) {
+     plan skip_all => "DBIx::DBSchema not installed";
+@@ -22,7 +22,7 @@ BEGIN {
+   use_ok("DBIx::SearchBuilder::Handle");
+ }
+ 
+-require_ok("t/testmodels.pl");
++require_ok("./t/testmodels.pl");
+ 
+ foreach my $d ( @AvailableDrivers ) {
+   SKIP: {
+diff --git a/t/11schema_records.t b/t/11schema_records.t
+index 4fc4dc4..a586cda 100644
+--- a/t/11schema_records.t
++++ b/t/11schema_records.t
+@@ -5,7 +5,7 @@ use strict;
+ use warnings;
+ use Test::More;
+ 
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 63;
+diff --git a/t/20set_edge_cases.t b/t/20set_edge_cases.t
+index 943f76a..d22b1ee 100644
+--- a/t/20set_edge_cases.t
++++ b/t/20set_edge_cases.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ use Test::More;
+-BEGIN { require "t/utils.pl" }
++BEGIN { require "./t/utils.pl" }
+ our (@AvailableDrivers);
+ 
+ use constant TESTS_PER_DRIVER => 20;
+-- 
+2.13.1
+
