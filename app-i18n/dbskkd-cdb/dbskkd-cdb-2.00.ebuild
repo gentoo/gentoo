@@ -5,8 +5,8 @@ EAPI="2"
 inherit eutils multilib toolchain-funcs user
 
 DESCRIPTION="Yet another Dictionary server for the SKK Japanese-input software"
-HOMEPAGE="https://dbskkd-cdb.googlecode.com/"
-SRC_URI="https://dbskkd-cdb.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/jj1bdx/dbskkd-cdb"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
