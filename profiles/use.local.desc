@@ -4115,6 +4115,8 @@ media-libs/libextractor:archive - Enable archive support using app-arch/libarchi
 media-libs/libextractor:gsf - Enable OLE2 (MS Office) plug-in support using gnome-extra/libgsf
 media-libs/libextractor:magic - Enable magic support using sys-apps/file
 media-libs/libextractor:midi - Enable MIDI support through media-libs/libsmf
+media-libs/libffado:qt4 - Install qt4-based mixer frontend
+media-libs/libffado:test-programs - Install standalone test programs
 media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgphoto2:serial - Enable serial port support
 media-libs/libgpod:gtk - Enable ArtworkDB support

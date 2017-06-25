@@ -13068,6 +13068,7 @@ media-libs/libexif 0.6.21 0.6.21-r1: Library for parsing, editing, and saving EX
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.3-r1: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
+media-libs/libffado 2.3.0: Driver for IEEE1394 (Firewire) audio interfaces
 media-libs/libfishsound 1.0.0: Simple programming interface for decoding and encoding audio data using vorbis or speex
 media-libs/libfpx 1.3.1_p6: A library for manipulating FlashPIX images
 media-libs/libfreehand 0.1.1 9999: Library for import of FreeHand drawings
@@ -15779,10 +15780,11 @@ net-wireless/bcm43xx-fwcutter 006: Firmware Tool for Broadcom 43xx based wireles
 net-wireless/bladerf 2015.02 2015.07 2016.01_rc1 2016.06 9999: Libraries for supporing the BladeRF hardware from Nuand
 net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
-net-wireless/blueberry 1.1.8: A Bluetooth configuration tool
+net-wireless/blueberry 1.1.8 1.1.13: A Bluetooth configuration tool
 net-wireless/blueman 2.0.3 2.0.4 2.1_alpha1 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.43-r1 5.44 5.45: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
+net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
 net-wireless/broadcom-sta 6.30.223.271-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
