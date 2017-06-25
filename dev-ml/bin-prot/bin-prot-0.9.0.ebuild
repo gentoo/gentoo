@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_fields_conv:=
 	dev-ml/ppx_sexp_conv:=
+	dev-ml/ppx_type_conv:=
 	dev-ml/ppx_variants_conv:=
 	dev-ml/sexplib:=
 	dev-ml/ocaml-migrate-parsetree:=
