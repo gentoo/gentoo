@@ -183,7 +183,6 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/openoffice
 	media-fonts/liberation-fonts
 	media-fonts/libertine
-	media-fonts/urw-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools $(add_kdeapps_dep kioclient) )
 	java? ( >=virtual/jre-1.6 )
 	vlc? ( media-video/vlc )
