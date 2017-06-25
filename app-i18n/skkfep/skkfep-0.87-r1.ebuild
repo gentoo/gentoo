@@ -5,8 +5,8 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A SKK-like Japanese input method for console"
-HOMEPAGE="http://homepage2.nifty.com/aito/soft.html"
-SRC_URI="http://homepage2.nifty.com/aito/skkfep/${P}.tar.gz"
+HOMEPAGE="http://aitoweb.world.coocan.jp/soft.html"
+SRC_URI="http://aitoweb.world.coocan.jp/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
