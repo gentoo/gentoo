@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3 cmake-multilib
+inherit git-r3 toolchain-funcs flag-o-matic cmake-multilib
 
 MY_PN="vid.stab"
 DESCRIPTION="Video stabilization library"
@@ -19,7 +19,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 src_configure() {
-        if use openmp && tc-has-openmp; then
+        if tc-check-openmp; then
             append-cppflags "-DUSE_OMP"
             append-cflags -fopenmp
         fi
