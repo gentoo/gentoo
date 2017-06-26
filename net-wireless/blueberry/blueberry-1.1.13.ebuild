@@ -2,17 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit eutils gnome2-utils python-single-r1
 
 DESCRIPTION="A Bluetooth configuration tool"
 HOMEPAGE="https://github.com/linuxmint/blueberry"
-SRC_URI="https://github.com/linuxmint/blueberry/archive/${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/linuxmint/blueberry/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
