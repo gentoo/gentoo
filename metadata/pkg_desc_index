@@ -4505,7 +4505,7 @@ dev-java/xml-commons-resolver 1.2-r1: An XML Entity and URI Resolver
 dev-java/xml-security 1.5.7-r1: An implementation of the primary security standards for XML
 dev-java/xml-writer 0.2-r1: A simple XML Writer
 dev-java/xml-xmlbeans 2.6.0: An XML-Java binding tool
-dev-java/xmldb 20011111-r1 20011111-r2: XML:DB Java library
+dev-java/xmldb 20011111-r2: XML:DB Java library
 dev-java/xmlgraphics-commons 2.0.1: A library of several reusable components used by Apache Batik and Apache FOP
 dev-java/xmlrpc 3.1.3: Apache XML-RPC is a Java implementation of XML-RPC
 dev-java/xmlstreambuffer 1.5.3: A stream-based representation of an XML infoset in Java
