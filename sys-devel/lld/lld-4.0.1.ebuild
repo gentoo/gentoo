@@ -48,7 +48,6 @@ src_unpack() {
 
 src_prepare() {
 	# backport stand-alone build test fixes from master
-	eapply "${FILESDIR}/4.0.0/0001-cmake-Support-running-tests-in-stand-alone-builds.patch"
 	eapply "${FILESDIR}/4.0.1/0002-test-Use-LLD-specific-binary-library-dirs-when-build.patch"
 	eapply "${FILESDIR}/4.0.1/0003-test-Fix-zlib-cond-when-building-stand-alone-clean-u.patch"
 
