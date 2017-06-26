@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
+PATCHES=( "${FILESDIR}/${P}-CVE-2017-9433.patch" )
+
 src_prepare() {
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf
