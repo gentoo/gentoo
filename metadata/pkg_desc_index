@@ -1601,7 +1601,7 @@ app-i18n/translate-shell 0.9.6.2: Online command-line translator
 app-i18n/uchardet 0.0.6 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2: Simple, secure and flexible input method library
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
-app-i18n/unicode-data 6.1.0 9.0.0: Unicode data from unicode.org
+app-i18n/unicode-data 9.0.0 10.0.0: Unicode data from unicode.org
 app-i18n/xcin 2.5.3_pre3-r2 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 2.0.3-r3 2.0.4_pre20130108: The SunPinyin IMEngine Wrapper for XIM Framework
 app-i18n/xvnkb 0.2.8a-r1 0.2.9a-r1: Vietnamese input keyboard for X
@@ -17109,7 +17109,7 @@ sys-apps/diffutils 3.3 3.5 3.6: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0 3.1: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
-sys-apps/dog 1.7-r4 1.7-r5: Dog is better than cat
+sys-apps/dog 1.7-r4 1.7-r5 1.7-r6: Dog is better than cat
 sys-apps/dstat 0.7.3: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.4.1 1.4.1-r1 1.4.2 1.4.3 1.4.4 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 9999: A library and suite of tools for inspecting disk usage
@@ -17193,7 +17193,7 @@ sys-apps/kmod 23 24 9999: library and tools for managing linux kernel modules
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
-sys-apps/less 487 491 492: Excellent text file viewer
+sys-apps/less 487 492 493: Excellent text file viewer
 sys-apps/likwid 4.1.1 4.1.2: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1: Misc tools bundled with kernel sources
 sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
@@ -17827,7 +17827,7 @@ sys-fs/rar2fs 1.23.1 1.24.0 1.24.1: A FUSE based filesystem that can mount one o
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
-sys-fs/reiserfsprogs 3.6.24 3.6.25: Reiserfs Utilities
+sys-fs/reiserfsprogs 3.6.24 3.6.25 3.6.26: Reiserfs Utilities
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
 sys-fs/scan-ffs 1.2: Recovers lost disklabel
 sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is used

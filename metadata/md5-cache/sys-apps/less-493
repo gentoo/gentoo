@@ -8,6 +8,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh
 LICENSE=|| ( GPL-3 BSD-2 )
 RDEPEND=>=app-misc/editor-wrapper-3 >=sys-libs/ncurses-5.2:0= pcre? ( dev-libs/libpcre )
 SLOT=0
-SRC_URI=http://www.greenwoodsoftware.com/less/less-491.tar.gz
+SRC_URI=http://www.greenwoodsoftware.com/less/less-493.tar.gz
 _eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_install:-
 _md5_=e9db4513de1d1e344ed16693f509e050
