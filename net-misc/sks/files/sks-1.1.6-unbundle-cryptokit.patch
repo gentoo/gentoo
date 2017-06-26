@@ -1,21 +1,26 @@
-diff -r 4af75b3526d9 Makefile
---- a/Makefile	Sun Jun 25 20:39:45 2017 +0000
-+++ b/Makefile	Mon Jun 26 00:27:10 2017 +0200
-@@ -53,10 +53,11 @@
+From: Christoph Martin <christoph.martin@uni-mainz.de>
+Date: Fri, 6 May 2016 14:55:01 -0400
+Subject: use system cryptokit
+
+Use the system cryptokit instead of the one shipped in upstream source
+---
+ Makefile | 31 ++-----------------------------
+ 1 file changed, 2 insertions(+), 29 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 15ab3ea..eb56758 100644
+--- a/Makefile
++++ b/Makefile
+@@ -55,7 +55,7 @@ WARNERR=-warn-error A
  endif
  
  CAMLP4=-pp $(CAMLP4O)
 -CAMLINCLUDE= -I lib -I bdb
-+CRYPTOKIT=$(shell ocamlfind query cryptokit)
-+CAMLINCLUDE= -I lib -I bdb -I $(CRYPTOKIT)
++CAMLINCLUDE= -I lib -I bdb -I +cryptokit
  COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLLDFLAGS) -ccopt -Lbdb -dtypes $(WARNERR)
  OCAMLDEP=ocamldep $(CAMLP4)
--CAMLLIBS=unix.cma str.cma bdb.cma nums.cma bigarray.cma cryptokit.cma
-+CAMLLIBS=unix.cma str.cma bdb.cma nums.cma bigarray.cma $(CRYPTOKIT)/cryptokit.cma
- OCAMLFLAGS=$(COMMONCAMLFLAGS) -g $(CAMLLIBS)
- OCAMLOPTFLAGS=$(COMMONCAMLFLAGS) -inline 40 $(CAMLLIBS:.cma=.cmxa)
- 
-@@ -107,7 +108,7 @@
+ CAMLLIBS=unix.cma str.cma bdb.cma nums.cma bigarray.cma cryptokit.cma
+@@ -109,7 +109,7 @@ ALLOBJS=$(ALLOBJS.bc:.cmo=.cmx)
  
  EXEOBJS.bc=$(RSERVOBJS.bc) build.cmo fastbuild.cmo dbserver.cmo pdiskTest.cmo
  
@@ -24,18 +29,18 @@ diff -r 4af75b3526d9 Makefile
  LIBS=$(LIBS.bc:.cma=.cmxa)
  
  VERSION := $(shell cat VERSION)
-@@ -278,32 +279,11 @@
+@@ -280,32 +280,6 @@ prepared:
  	touch prepared
  
  
 -CKVER=cryptokit-1.7
 -CKDIR=$(CKVER)/src
 -
- $(CKVER)/README.txt:
- 	tar xmvfz $(CKVER).tar.gz
- 	patch -p 0 < $(CKVER)-sks.patch
- 	patch -p 0 < $(CKVER)-sks-custom_compare.patch
- 
+-$(CKVER)/README.txt:
+-	tar xmvfz $(CKVER).tar.gz
+-	patch -p 0 < $(CKVER)-sks.patch
+-	patch -p 0 < $(CKVER)-sks-custom_compare.patch
+-
 -$(CKDIR)/cryptokit.cma: $(CKVER)/README.txt
 -	cd $(CKDIR) && $(MAKE) all
 -
@@ -57,23 +62,11 @@ diff -r 4af75b3526d9 Makefile
  ################################
  # old stuff
  ################################
-@@ -340,16 +320,16 @@
- dumbloop: $(LIBS) $(ALLOBJS) dumbloop.cmo
- 	$(OCAMLC) -o dumbloop $(OCAMLFLAGS) $(ALLOBJS) dumbloop.cmo
+@@ -404,7 +378,6 @@ clean: mlclean
  
--scan: $(OBJS) cryptokit dblib scan.ml
-+scan: $(OBJS) dblib scan.ml
- 	$(OCAMLC) -o scan $(OCAMLFLAGS) $(OBJS) scan.ml
+ cleanall: clean bdbclean
+ 	rm -f lib/*
+-	rm -rf $(CKVER)
  
- query: $(LIBS) $(ALLOBJS) query.cmo
- 	$(OCAMLC) -o query $(OCAMLFLAGS) $(ALLOBJS) query.cmo
- 
--printids: $(OBJS:.cmo=.cmx) cryptokit printids.ml
-+printids: $(OBJS:.cmo=.cmx) printids.ml
- 	$(OCAMLOPT) -o printids $(OCAMLOPTFLAGS) $(OBJS:.cmo=.cmx) printids.ml
- 
--printids.bc: $(OBJS) cryptokit printids.ml
-+printids.bc: $(OBJS) printids.ml
- 	$(OCAMLC) -o printids $(OCAMLFLAGS) $(OBJS) printids.ml
- 
- krecode: $(ALLOBJS.opt) $(LIBS) recode.ml
+ distclean: cleanall
+ 	rm -rf Makefile.local
