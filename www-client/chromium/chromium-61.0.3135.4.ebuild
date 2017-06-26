@@ -186,8 +186,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r9.patch"
-		"${FILESDIR}/${PN}-system-icu-r2.patch"
+		"${FILESDIR}/${PN}-gn-bootstrap-r10.patch"
 	)
 
 	default
@@ -213,10 +212,10 @@ src_prepare() {
 		third_party/WebKit
 		third_party/analytics
 		third_party/angle
-		third_party/angle/src/common/third_party/numerics
+		third_party/angle/src/common/third_party/base
+		third_party/angle/src/common/third_party/murmurhash
 		third_party/angle/src/third_party/compiler
 		third_party/angle/src/third_party/libXNVCtrl
-		third_party/angle/src/third_party/murmurhash
 		third_party/angle/src/third_party/trace_event
 		third_party/boringssl
 		third_party/brotli
@@ -298,7 +297,6 @@ src_prepare() {
 		third_party/swiftshader
 		third_party/swiftshader/third_party/llvm-subzero
 		third_party/swiftshader/third_party/subzero
-		third_party/tcmalloc
 		third_party/usrsctp
 		third_party/vulkan
 		third_party/vulkan-validation-layers
@@ -327,9 +325,28 @@ src_prepare() {
 		keeplibs+=( third_party/libvpx )
 		keeplibs+=( third_party/libvpx/source/libvpx/third_party/x86inc )
 	fi
+	if use tcmalloc; then
+		keeplibs+=( third_party/tcmalloc )
+	fi
 
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
+}
+
+bootstrap_gn() {
+	if tc-is-cross-compiler; then
+		local -x AR=${BUILD_AR}
+		local -x CC=${BUILD_CC}
+		local -x CXX=${BUILD_CXX}
+		local -x NM=${BUILD_NM}
+		local -x CFLAGS=${BUILD_CFLAGS}
+		local -x CXXFLAGS=${BUILD_CXXFLAGS}
+		local -x LDFLAGS=${BUILD_LDFLAGS}
+	fi
+	einfo "Building GN..."
+	set -- tools/gn/bootstrap/bootstrap.py -s -v --no-clean
+	echo "$@"
+	"$@" || die
 }
 
 src_configure() {
@@ -397,7 +414,6 @@ src_configure() {
 
 	if tc-is-clang; then
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
-		myconf_gn+=" clang_base_path=\"$(realpath $(dirname `which clang`)/..)\""
 	else
 		myconf_gn+=" is_clang=false"
 	fi
@@ -424,16 +440,16 @@ src_configure() {
 
 	local myarch="$(tc-arch)"
 	if [[ $myarch = amd64 ]] ; then
-		target_arch=x64
+		myconf_gn+=" target_cpu=\"x64\""
 		ffmpeg_target_arch=x64
 	elif [[ $myarch = x86 ]] ; then
-		target_arch=ia32
+		myconf_gn+=" target_cpu=\"x86\""
 		ffmpeg_target_arch=ia32
 	elif [[ $myarch = arm64 ]] ; then
-		target_arch=arm64
+		myconf_gn+=" target_cpu=\"arm64\""
 		ffmpeg_target_arch=arm64
 	elif [[ $myarch = arm ]] ; then
-		target_arch=arm
+		myconf_gn+=" target_cpu=\"arm\""
 		ffmpeg_target_arch=$(usex neon arm-neon arm)
 	else
 		die "Failed to determine target arch, got '$myarch'."
@@ -466,19 +482,19 @@ src_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
-	# https://bugs.gentoo.org/588596
-	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
-
 	# Define a custom toolchain for GN
 	myconf_gn+=" custom_toolchain=\"${FILESDIR}/toolchain:default\""
 
-	# Tools for building programs to be executed on the build system, bug #410883.
 	if tc-is-cross-compiler; then
-		export AR_host=$(tc-getBUILD_AR)
-		export CC_host=$(tc-getBUILD_CC)
-		export CXX_host=$(tc-getBUILD_CXX)
-		export NM_host=$(tc-getBUILD_NM)
+		tc-export BUILD_{AR,CC,CXX,NM}
+		myconf_gn+=" host_toolchain=\"${FILESDIR}/toolchain:host\""
+		myconf_gn+=" v8_snapshot_toolchain=\"${FILESDIR}/toolchain:host\""
+	else
+		myconf_gn+=" host_toolchain=\"${FILESDIR}/toolchain:default\""
 	fi
+
+	# https://bugs.gentoo.org/588596
+	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
 
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
@@ -504,9 +520,12 @@ src_configure() {
 
 	touch chrome/test/data/webui/i18n_process_css_test.html || die
 
+	bootstrap_gn
+
 	einfo "Configuring Chromium..."
-	tools/gn/bootstrap/bootstrap.py -v --no-clean --gn-gen-args "${myconf_gn}" || die
-	out/Release/gn gen --args="${myconf_gn}" out/Release || die
+	set -- out/Release/gn gen --args="${myconf_gn}" out/Release
+	echo "$@"
+	"$@" || die
 }
 
 src_compile() {
@@ -516,8 +535,13 @@ src_compile() {
 	fi
 
 	# Build mksnapshot and pax-mark it.
-	eninja -C out/Release mksnapshot || die
-	pax-mark m out/Release/mksnapshot
+	if tc-is-cross-compiler; then
+		eninja -C out/Release host/mksnapshot || die
+		pax-mark m out/Release/host/mksnapshot
+	else
+		eninja -C out/Release mksnapshot || die
+		pax-mark m out/Release/mksnapshot
+	fi
 
 	# Even though ninja autodetects number of CPUs, we respect
 	# user's options, for debugging with -j 1 or any other reason.
