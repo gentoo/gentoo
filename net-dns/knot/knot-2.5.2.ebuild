@@ -67,6 +67,8 @@ src_install() {
 
 	newinitd "${FILESDIR}/knot.init" knot
 	systemd_dounit "${FILESDIR}/knot.service"
+
+	prune_libtool_files
 }
 
 pkg_postinst() {

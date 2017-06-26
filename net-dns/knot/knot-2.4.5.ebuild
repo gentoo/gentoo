@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug dnstap doc caps +fastparser idn systemd"
+IUSE="dnstap doc caps +fastparser idn systemd"
 
 RDEPEND="
 	>=net-libs/gnutls-3.3:=
@@ -42,8 +42,6 @@ src_configure() {
 		--with-lmdb \
 		--with-bash-completions="$(get_bashcompdir)" \
 		$(use_enable fastparser) \
-		$(use_enable debug debug server,zones,ns,loader,dnssec) \
-		$(use_enable debug debuglevel details) \
 		$(use_enable dnstap) \
 		$(use_enable doc documentation) \
 		$(use_with idn libidn) \
@@ -70,6 +68,8 @@ src_install() {
 
 	newinitd "${FILESDIR}/knot.init" knot
 	systemd_dounit "${FILESDIR}/knot.service"
+
+	prune_libtool_files
 }
 
 pkg_postinst() {
