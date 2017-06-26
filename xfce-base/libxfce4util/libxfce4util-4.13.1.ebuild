@@ -23,9 +23,6 @@ DEPEND="${RDEPEND}
 src_configure() {
 	local myconf=(
 		$(use_enable introspection)
-		# .gir is conditional to maintainer mode due to upstream bug
-		# https://bugzilla.xfce.org/show_bug.cgi?id=13638
-		$(use_enable introspection maintainer-mode)
 	)
 
 	econf "${myconf[@]}"
