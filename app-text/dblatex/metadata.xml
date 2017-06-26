@@ -10,6 +10,9 @@
         <email>proxy-maint@gentoo.org</email>
         <name>Proxy Maintainers</name>
     </maintainer>
+    <use>
+        <flag name="inkscape">Use inkscape to convert SVG. Disable to use gnome-base/librsvg instead.</flag>
+    </use>
     <longdescription>
                dbaltex is an opensource DocBook to LaTeX publishing software 
                that originally started as DB2LaTeX clone, but now is more
