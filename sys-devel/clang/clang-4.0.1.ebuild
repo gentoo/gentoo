@@ -15,7 +15,7 @@ DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://llvm.org/"
 SRC_URI="http://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz
 	http://releases.llvm.org/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
-	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm-manpages-${PV}.tar.bz2 )
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-manpages-${PV}.tar.bz2 )
 	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 # Keep in sync with sys-devel/llvm
