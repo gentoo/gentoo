@@ -8,4 +8,12 @@
   <upstream>
     <remote-id type="github">facebook/zstd</remote-id>
   </upstream>
+  <use>
+    <flag name="lzma">
+      Enable support for LZMA compression using <pkg>app-arch/xz-utils</pkg>
+    </flag>
+    <flag name="lz4">
+      Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg>
+    </flag>
+  </use>
 </pkgmetadata>
