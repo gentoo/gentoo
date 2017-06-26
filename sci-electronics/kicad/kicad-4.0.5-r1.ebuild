@@ -66,13 +66,14 @@ src_prepare() {
 	# Patch to work with >=boost 1.61
 	eapply "${FILESDIR}/${PN}-boost-1.61.patch"
 
-	# remove all the non unix file endings
+	# Remove cvpcb desktop file as it does nothing
+	rm "resources/linux/mime/applications/cvpcb.desktop" || die
+
+	# remove all the non unix file endings and fix application categories in desktop files
 	while IFS="" read -d $'\0' -r f; do
 		edos2unix "${f}"
+		sed -i '/Categories/s/Development;//' "${f}"
 	done < <(find "${S}" -type f -name "*.desktop" -print0)
-
-	# Remove cvpcb desktop file while it does nothing
-	rm "${WORKDIR}/${P}/resources/linux/mime/applications/cvpcb.desktop" || die
 
 	# Handle optional minimal install.
 	if use minimal; then
