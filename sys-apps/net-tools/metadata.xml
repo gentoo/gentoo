@@ -8,7 +8,6 @@
 <use>
 	<flag name="arp">build the arp and rarp tools (for manipulating the ARP cache)</flag>
 	<flag name="hostname">build the hostname and dnsdomainname tools</flag>
-	<flag name="old-output">use old ifconfig output style (useful for when new output breaks scripts)</flag>
 	<flag name="plipconfig">build the plipconfig tool (for working with old PLIP hardware)</flag>
 	<flag name="slattach">build the slattach tool (for working with old serial ports)</flag>
 </use>
