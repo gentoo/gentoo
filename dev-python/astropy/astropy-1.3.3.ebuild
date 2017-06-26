@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1 xdg-utils
 
@@ -24,10 +24,10 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	>=sci-astronomy/erfa-1.3:0=
 	>=sci-astronomy/wcslib-5:0=
-	sci-libs/cfitsio:0=
+	>=sci-libs/cfitsio-3.410:0=
 	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
-	>=dev-python/astropy-helpers-1.1[${PYTHON_USEDEP}]
+	dev-python/astropy-helpers[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/pkgconfig
@@ -37,25 +37,24 @@ DEPEND="${RDEPEND}
 		dev-python/h5py[${PYTHON_USEDEP}]
 		dev-python/jplephem[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP},jpeg]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/sphinx-gallery[${PYTHON_USEDEP}]
-		dev-python/wcsaxes[${PYTHON_USEDEP}]
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
 	test? (
 		dev-libs/libxml2[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP},jpeg]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-mpl[${PYTHON_USEDEP}]
 		dev-python/h5py[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.4-system-six.patch
-	"${FILESDIR}"/${PN}-1.0.4-system-configobj.patch
-	"${FILESDIR}"/${PN}-1.3-mark-known-failures.patch
-	"${FILESDIR}"/${PN}-1.2.1-cfitsio-338.patch
+	"${FILESDIR}"/${PN}-1.3.3-mark-known-failures.patch
+	"${FILESDIR}"/${PN}-1.3.3-external-python-pkgs.patch
 )
 
 python_prepare_all() {
