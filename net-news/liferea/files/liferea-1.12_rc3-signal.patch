@@ -1,0 +1,66 @@
+From b08641b21bdb590770e10bad873666aedf4ae306 Mon Sep 17 00:00:00 2001
+From: leiaz <leiaz@free.fr>
+Date: Sun, 14 May 2017 20:08:39 +0200
+Subject: [PATCH] Fixes #500 Connects browser entry to callback
+
+Glade copy/paste doesn't copy the signals/callbacks part. I missed that
+one when updating the ui file.
+---
+ glade/prefs.ui | 24 ++++++++++++++----------
+ 1 file changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/glade/prefs.ui b/glade/prefs.ui
+index b5b97bac0..65d055986 100644
+--- a/glade/prefs.ui
++++ b/glade/prefs.ui
+@@ -736,16 +736,6 @@
+                       </packing>
+                     </child>
+                     <child>
+-                      <object class="GtkComboBox" id="browserpopup">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                      </object>
+-                      <packing>
+-                        <property name="left_attach">1</property>
+-                        <property name="top_attach">1</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+                       <object class="GtkLabel" id="manuallabel">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+@@ -765,6 +755,7 @@
+                         <property name="visible">True</property>
+                         <property name="can_focus">True</property>
+                         <property name="activates_default">True</property>
++                        <signal name="changed" handler="on_browsercmd_changed" swapped="no"/>
+                       </object>
+                       <packing>
+                         <property name="left_attach">1</property>
+@@ -787,6 +778,16 @@
+                       </packing>
+                     </child>
+                     <child>
++                      <object class="GtkComboBox" id="browserpopup">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                      </object>
++                      <packing>
++                        <property name="left_attach">1</property>
++                        <property name="top_attach">1</property>
++                      </packing>
++                    </child>
++                    <child>
+                       <placeholder/>
+                     </child>
+                   </object>
+@@ -1422,5 +1423,8 @@
+     <action-widgets>
+       <action-widget response="-7">prefclosebtn</action-widget>
+     </action-widgets>
++    <child>
++      <placeholder/>
++    </child>
+   </object>
+ </interface>
