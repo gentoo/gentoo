@@ -19,7 +19,10 @@ RDEPEND="
 	dev-perl/namespace-autoclean
 "
 DEPEND="${RDEPEND}
-	test? ( virtual/perl-Test-Simple )
+	test? (
+		dev-perl/List-MoreUtils
+		virtual/perl-Test-Simple
+	)
 "
 
 src_prepare() {
