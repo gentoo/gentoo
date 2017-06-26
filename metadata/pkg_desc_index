@@ -14626,7 +14626,7 @@ net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records l
 net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.3.3 2.4.4 2.5.1: High-performance authoritative-only DNS server
+net-dns/knot 2.4.5 2.5.2: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 0.16-r1 2.0.2: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -14682,7 +14682,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.0.15.6-r1 5.1.4.1 5.1.4.2 5.1.4.3: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.0.15.6-r1 5.1.4.1 5.1.4.2 5.1.4.3 5.1.4.4: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.12: iptables extensions not yet accepted in the main kernel
