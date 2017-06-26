@@ -23,6 +23,7 @@ RDEPEND="
 	dev-perl/Safe-Isa
 	virtual/perl-Storable
 	virtual/perl-Time-HiRes
+	|| ( sci-visualization/gnuplot[X] sci-visualization/gnuplot[qt4] )
 "
 DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.480.0
