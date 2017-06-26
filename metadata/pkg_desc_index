@@ -17865,7 +17865,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.1.39-r1 4.1.40 4.1.41 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.4.69 4.4.70 4.4.71 4.4.72 4.4.73 4.9.6-r1 4.9.16 4.9.34 4.10.17 4.11.7: Full sources including the Gentoo patchset for the 4.11 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.1.39-r1 4.1.40 4.1.41 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.4.69 4.4.70 4.4.71 4.4.72 4.4.73 4.4.74 4.9.6-r1 4.9.16 4.9.34 4.10.17 4.11.7: Full sources including the Gentoo patchset for the 4.11 kernel tree
 sys-kernel/git-sources 4.12_rc1 4.12_rc2 4.12_rc3 4.12_rc4 4.12_rc5 4.12_rc6: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -19578,8 +19578,8 @@ x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 1.0.4-r1 1.0.6 2.0.1 2.0.2: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.7 0.11.3: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r2 0.6.1: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.13.0 4.13.1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.12.1-r1 4.13.0: A basic utility library for the Xfce desktop environment
+xfce-base/libxfce4ui 4.13.0 4.13.2: Unified widget and session management libs for Xfce
+xfce-base/libxfce4util 4.12.1-r1 4.13.1: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
 xfce-base/thunar 1.6.10-r1 1.6.11: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applications for the Xfce desktop environment
@@ -19588,7 +19588,7 @@ xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0: Panel for the Xfce desktop env
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.2: A flexible, easy-to-use configuration management system for Xfce
-xfce-base/xfdesktop 4.12.3 4.13.1: Desktop manager for the Xfce desktop environment
+xfce-base/xfdesktop 4.12.3 4.12.4 4.13.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3: A port of the GNOME multiload applet for the Xfce panel
