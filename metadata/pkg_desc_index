@@ -17362,7 +17362,7 @@ sys-auth/libyubikey 1.12 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2 0.5.11-r1: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.10-r3 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
-sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.7: NSS module for name lookups using LDAP
+sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.7 0.9.8: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 258 259 261 262 264 264-r1 265 265-r1 265-r2 265-r4 265-r5: NSS LDAP Module
 sys-auth/oath-toolkit 2.6.1 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/openpam 20140912: Open source PAM library
