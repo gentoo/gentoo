@@ -7,7 +7,7 @@ MODULE_AUTHOR=AUTRIJUS
 MODULE_VERSION=0.63
 inherit perl-module
 
-DESCRIPTION="Allows module writers to specify a more sophisticated form of dependency information"
+DESCRIPTION="Automatic installation of dependencies via CPAN from within Makefile.PL"
 
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
