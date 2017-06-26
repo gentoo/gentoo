@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-OPENSSL_V=1.0.2j
+# Upstream now builds against the 1.0.2-chacha branch of PeterMosmans
+MOSMANS_OPENSSL_COMMIT=e90b60086e4ed9649cb3aab08f2b4c6529e7a95a
 
 inherit eutils toolchain-funcs
 
@@ -11,7 +12,7 @@ DESCRIPTION="Fast SSL configuration scanner"
 HOMEPAGE="https://github.com/rbsec/sslscan"
 MY_FORK="rbsec"
 SRC_URI="https://github.com/${MY_FORK}/${PN}/archive/${PV}-${MY_FORK}.tar.gz -> ${P}-${MY_FORK}.tar.gz
-	static? ( mirror://openssl/source/openssl-${OPENSSL_V}.tar.gz )"
+	static? ( https://github.com/PeterMosmans/openssl/archive/${MOSMANS_OPENSSL_COMMIT}.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -27,7 +28,7 @@ S="${WORKDIR}/${P}-${MY_FORK}"
 
 src_prepare() {
 	if use static; then
-		ln -s ../openssl-${OPENSSL_V} openssl || die
+		ln -s ../openssl-${MOSMANS_OPENSSL_COMMIT} openssl || die
 		touch .openssl_is_fresh || die
 
 		sed -i -e '/openssl\/.git/,/fi/d' \
