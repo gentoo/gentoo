@@ -21,7 +21,7 @@
  	AC_SUBST([systemdsystemunitdir], [$has_systemdsystemunitdir])
  fi
  AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$has_systemdsystemunitdir"])
-@@ -267,6 +266,22 @@
+@@ -267,6 +266,24 @@
  AM_CONDITIONAL(ENABLE_OFFLINE_UPDATE, [test x$enable_systemd = xyes -a x$enable_offline_update = xyes])
  
  dnl ---------------------------------------------------------------------------
@@ -31,12 +31,14 @@
 +	      enable_elogind=$enableval,enable_elogind=no)
 +if test x$enable_elogind = xyes; then
 +	PKG_CHECK_MODULES(ELOGIND, [libelogind >= 229.4], [have_elogind=yes], [have_elogind=no])
++else
++	have_elogind=no
 +fi
 +
 +dnl ---------------------------------------------------------------------------
 +dnl --- Is systemd/sd-login.h, either from systemd or elogind, available?
 +dnl ---------------------------------------------------------------------------
-+if test "x$have_systemd" != "xno" -o "x$have_elogind" != "xno" ; then
++if test -n "$has_systemdsystemunitdir" -o "x$have_elogind" != "xno" ; then
 +		AC_DEFINE(HAVE_SYSTEMD_SD_LOGIN_H,1,[Build systemd-login code])
 +fi
 +
