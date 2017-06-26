@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit eutils
+EAPI="6"
 
 DESCRIPTION="IPv6 address calculator"
 HOMEPAGE="http://www.deepspace6.net/projects/ipv6calc.html"
@@ -11,10 +10,11 @@ SRC_URI="ftp://ftp.bieringer.de/pub/linux/IPv6/ipv6calc/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="geoip test"
+IUSE="geoip libressl test"
 
 RDEPEND="
-	dev-libs/openssl:=
+	!libressl? ( dev-libs/openssl:= )
+	libressl? ( dev-libs/libressl:= )
 	geoip? ( >=dev-libs/geoip-1.4.7 )
 "
 DEPEND="${RDEPEND}
