@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP},jpeg]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/sphinx-gallery[${PYTHON_USEDEP}]
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
