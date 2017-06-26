@@ -77,7 +77,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter telepathy test vlc
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -174,7 +174,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	mysql? ( dev-db/mysql-connector-c++ )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	telepathy? ( net-libs/telepathy-glib )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -235,7 +234,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	collada? ( gltf )
 	eds? ( gnome )
 	gnome? ( gtk )
-	telepathy? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -485,7 +483,6 @@ src_configure() {
 		$(use_enable pdfimport) \
 		$(use_enable postgres postgresql-sdbc) \
 		$(use_enable quickstarter systray) \
-		$(use_enable telepathy) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
 		$(use_with collada system-opencollada) \
