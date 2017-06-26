@@ -4777,7 +4777,7 @@ dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.4.0 4.5.0: Jemalloc is a general-purpos
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12: A JSON implementation in C
 dev-libs/json-glib 1.2.2 1.2.8: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.8.0: C++ JSON reader and writer
+dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.8.0 1.8.1: C++ JSON reader and writer
 dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5 1.0.5-r1: A C library that implements a dynamic array
 dev-libs/kasync 0.1.1: C++ library for controlling asynchronous tasks
@@ -5954,7 +5954,7 @@ dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of mu
 dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
-dev-perl/Filesys-SmbClient 3.200.0-r1 3.200.0-r2: Provide Perl API for libsmbclient.so
+dev-perl/Filesys-SmbClient 3.200.0-r2: Provide Perl API for libsmbclient.so
 dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0: Get stock quotes from Yahoo! Finance
@@ -18415,7 +18415,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 59.0.3071.104 60.0.3112.32 60.0.3112.40 61.0.3124.4 61.0.3128.3: Open-source version of Google Chrome web browser
+www-client/chromium 59.0.3071.104 60.0.3112.32 60.0.3112.40 61.0.3128.3 61.0.3135.4: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
