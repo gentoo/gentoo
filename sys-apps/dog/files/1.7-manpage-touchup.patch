@@ -4,8 +4,8 @@ so let's fix it.
 
 http://bugs.gentoo.org/show_bug.cgi?id=69660
 
---- dog.1
-+++ dog.1
+--- a/dog.1
++++ b/dog.1
 @@ -8,3 +8,3 @@
  .B dog
 -[\-AbBeEnstTuv] [\-w cols] [\-l lines] 
