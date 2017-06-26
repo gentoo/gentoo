@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<longdescription lang="en">
+		The INTEL-SA-00075-Discovery-Tool for local analysis of a single or
+		multiple systems.
+
+		The INTEL-SA-00075-Unprovisioning-Tool will unprovision computers with
+		Intel® Active Management Technology (Intel® AMT), Intel® Standard
+		Manageability, and Intel® Small Business Technology (Intel® SBT) that
+		are vulnerable to the issue identified in INTEL-SA-00075.  This tool
+		will allow you to unprovision management features, configured in
+		Client Control Mode (CCM).
+	</longdescription>
+</pkgmetadata>
