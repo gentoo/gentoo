@@ -16590,7 +16590,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.12.2 0.12.4 0.12.5 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.12.2 0.12.4 0.12.5 0.13.0 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3 0.13.0: Image processing routines for SciPy
