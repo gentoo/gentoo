@@ -82,6 +82,11 @@ src_prepare() {
 	else
 		einfo "policy(SET CMP0002 OLD) - workaround can be removed"
 	fi
+
+	if tc-is-clang && [[ ${CHOST} == *-darwin* ]] ; then
+		# we need to up the C++ version, bug #622526
+		export CXX="$(tc-getCXX) -std=c++0x"
+	fi
 }
 
 src_configure() {
