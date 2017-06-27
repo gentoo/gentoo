@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit java-vm-2 multilib
+inherit java-vm-2
 
 DESCRIPTION="Java wrappers around GCJ"
 HOMEPAGE="https://www.gentoo.org/"
