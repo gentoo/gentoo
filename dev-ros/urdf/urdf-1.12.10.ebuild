@@ -27,3 +27,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-cpp/gtest )"
+
+PATCHES=( "${FILESDIR}/forward_decl.patch" )
