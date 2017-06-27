@@ -15,8 +15,6 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/joint_state_publisher
-	dev-ros/kdl_parser
-	dev-ros/kdl_parser_py
 	dev-ros/urdf
 	dev-ros/urdf_parser_plugin
 "
