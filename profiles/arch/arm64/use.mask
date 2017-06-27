@@ -131,7 +131,6 @@ mercurial
 kerberos
 gpg
 gnome
-gnome-keyring
 doc
 emacs
 gphoto2
