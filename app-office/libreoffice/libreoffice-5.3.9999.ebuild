@@ -150,7 +150,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-extra/evolution-data-server
 	)
 	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
-	gltf? ( media-libs/libgltf )
+	gltf? ( =media-libs/libgltf-0.0* )
 	gnome? ( gnome-base/dconf )
 	gstreamer? (
 		media-libs/gstreamer:1.0
