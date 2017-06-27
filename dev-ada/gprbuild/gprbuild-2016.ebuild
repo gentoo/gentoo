@@ -15,35 +15,28 @@ SRC_URI="
 	bootstrap? (
 		http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0
 		-> xmlada-gpl-${PV}-src.tar.gz )"
-
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="bootstrap +shared static static-pic"
+IUSE="bootstrap gnat_2016 gnat_2017 +shared static static-pic"
 
-DEPEND="dev-lang/gnat-gpl:=
-	!bootstrap? ( dev-ada/xmlada )"
+DEPEND="!bootstrap? ( dev-ada/xmlada[static,gnat_2016=,gnat_2017=] )
+	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
+	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}-src
 
-REQUIRED_USE="bootstrap? ( !shared !static !static-pic )"
+REQUIRED_USE="bootstrap? ( !shared !static !static-pic )
+	^^ ( gnat_2016 gnat_2017 )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
-pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
-	GNATMAKE="${GCC/gcc/gnatmake}"
-	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set ADA=gcc-4.9.4 in make.conf"
-		die "ada compiler not available"
-	fi
-}
-
 src_prepare() {
-	gnatbase=$(basename ${GCC})
-	GCC_PV=${gnatbase#*gcc-}
+	if use gnat_2016; then
+		GCC_PV=4.9.4
+	else
+		GCC_PV=6.3.0
+	fi
 	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
 	default
 }
@@ -58,12 +51,14 @@ bin_progs="gprbuild gprconfig gprclean gprinstall gprname gprls"
 lib_progs="gprlib gprbind"
 
 src_compile() {
+	GCC=${CHOST}-gcc-${GCC_PV}
 	if use bootstrap; then
+		GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 		local xmlada_src="../xmlada-gpl-${PV}-src"
 		incflags="-Isrc -Igpr/src -I${xmlada_src}/sax -I${xmlada_src}/dom \
 			-I${xmlada_src}/schema -I${xmlada_src}/unicode \
 			-I${xmlada_src}/input_sources"
-		$(tc-getCC) -c ${CFLAGS} src/gpr_imports.c -o gpr_imports.o
+		${GCC} -c ${CFLAGS} src/gpr_imports.c -o gpr_imports.o || die
 		for bin in ${bin_progs}; do
 			${GNATMAKE} -j$(makeopts_jobs) ${incflags} $ADAFLAGS ${bin}-main \
 				-o ${bin} -largs gpr_imports.o || die
@@ -88,7 +83,7 @@ src_install() {
 		exeinto /usr/libexec/gprbuild
 		doexe ${lib_progs}
 		insinto /usr/share/gprconfig
-		doins share/gprconfig/*.xml
+		doins share/gprconfig/*
 		insinto /usr/share/gpr
 		doins share/_default.gpr
 	else
@@ -98,9 +93,6 @@ src_install() {
 				emake DESTDIR="${D}" libgpr.install.${kind}
 			fi
 		done
-		mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
-		mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF} || die
-		rmdir "${D}"/usr/share/doc/${PN} || die
 	fi
 	insinto /usr/share/gprconfig
 	doins gnat-${GCC_PV}.xml
