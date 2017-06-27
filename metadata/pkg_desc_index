@@ -4649,6 +4649,7 @@ dev-libs/OpenSRF 1.2.0 2.1.1: Framework for the high-level development of the Ev
 dev-libs/UTF8Strings 1.14.0 1.14.2: C++ library providing ability to work natively with UTF8 string
 dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
+dev-libs/amdgpu-pro-opencl 17.10.429170: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/angelscript 2.31.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.10.5 0.10.6 0.10.6-r1: Cross-distro effort for providing metadata for software in the Linux ecosystem
@@ -17859,7 +17860,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 0.6.5.9 0.6.5.10 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.4.69 4.4.70 4.4.71 4.4.72 4.4.73 4.9.16 4.9.34 4.10.17: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.4.69 4.4.70 4.4.71 4.4.72 4.4.73 4.4.74 4.9.16 4.9.34 4.10.17: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.0.2-r1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.34 4.11.7: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
