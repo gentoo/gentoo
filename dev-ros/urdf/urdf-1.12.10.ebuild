@@ -7,7 +7,7 @@ KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
 
-inherit ros-catkin flag-o-matic
+inherit ros-catkin
 
 DESCRIPTION="C++ parser for the Unified Robot Description Format (URDF)"
 LICENSE="BSD"
@@ -28,7 +28,4 @@ DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-cpp/gtest )"
 
-src_prepare() {
-	append-cxxflags -std=gnu++11
-	ros-catkin_src_prepare
-}
+PATCHES=( "${FILESDIR}/forward_decl.patch" )
