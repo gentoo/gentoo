@@ -123,7 +123,7 @@ app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8)
 app-admin/kedpm 0.4.0-r2: Helps to manage large amounts of passwords and related information
 app-admin/keepass 2.35-r1 2.36: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
-app-admin/keepassxc 2.1.3 2.1.4 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.1.4 2.2.0 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.4: Binary component required by the LastPass Password Manager browser extension
