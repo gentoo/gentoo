@@ -20,10 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="bootstrap gnat_2016 gnat_2017 +shared static static-pic"
 
-DEPEND="
-	!bootstrap? ( dev-ada/xmlada[static,gnat_2016=,gnat_2017=] )
-	gnat_2016? ( =dev-lang/gnat-gpl-2016 )
-	gnat_2017? ( =dev-lang/gnat-gpl-2017 )"
+DEPEND="!bootstrap? ( dev-ada/xmlada[static,gnat_2016=,gnat_2017=] )
+	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
+	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}-src
