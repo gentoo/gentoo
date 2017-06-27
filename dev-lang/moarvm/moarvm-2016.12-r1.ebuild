@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="asan clang debug doc +jit static-libs optimize ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
-		dev-libs/libtommath
+		>=dev-libs/libtommath-1.0
 		dev-libs/libuv
 		jit? ( dev-lang/lua:0[deprecated]
 			dev-lua/LuaBitOp )
