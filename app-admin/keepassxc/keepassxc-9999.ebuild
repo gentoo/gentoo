@@ -20,7 +20,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype debug http test"
+IUSE="autotype debug http test yubikey"
 
 RDEPEND="
 	dev-libs/libgcrypt:=
@@ -34,8 +34,8 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
+	yubikey? ( sys-auth/libyubikey )
 "
-#	yubikey? ( sys-auth/libyubikey )
 
 DEPEND="
 	${RDEPEND}
@@ -57,7 +57,7 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_HTTP="$(usex http)"
-		#-DWITH_XC_YUBIKEY="$(usex yubikey)"
+		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 	)
 	cmake-utils_src_configure
 }
