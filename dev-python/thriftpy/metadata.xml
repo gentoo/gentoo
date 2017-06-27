@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Thrift is a software framework for the development of reliable and
+    performant communication and data serialization. It combines a software
+    stack with a code generation to build services that operate seamlessly
+    across a number of different development languages.
+    This is a pure Python implementation of Apache Thrift.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">thriftpy</remote-id>
+    <remote-id type="github">eleme/thriftpy</remote-id>
+  </upstream>
+</pkgmetadata>
