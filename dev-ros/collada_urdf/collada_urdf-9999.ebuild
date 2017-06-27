@@ -8,7 +8,7 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents"
+DESCRIPTION="Convert Unified Robot Description Format (URDF) documents into COLLADA documents"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
