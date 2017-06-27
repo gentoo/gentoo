@@ -1776,7 +1776,7 @@ app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 2.4.4 5.1.2 5.2.2 5.3.3 5.4.1: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 5.1.2 5.2.2 5.3.3 5.4.2: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.19b 0.6.20b: Small shell utility, similar to expect(1)

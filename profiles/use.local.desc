@@ -3706,6 +3706,7 @@ mail-filter/opendkim:opendbx - Use opendbx backend to facilitate dataset driven 
 mail-filter/opendkim:poll - Use poll() instead of select() for the provided asynchronous resolver library.
 mail-filter/opendkim:sasl - Used to authenticate to a LDAP server in various ways if required.
 mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DNS queries.
+mail-filter/opendmarc:reports - Install the reports binaries: expire, import, reports, params
 mail-filter/opendmarc:spf - Use the mail-filter/libspf2 for Sender Policy Framework checking
 mail-filter/opensmtpd-extras:filter-clamav - filter for scanning with app-antivirus/clamav
 mail-filter/opensmtpd-extras:filter-dkim-signer - filter for adding DKIM signatures to outgoing messages
