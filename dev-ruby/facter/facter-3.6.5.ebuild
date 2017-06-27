@@ -4,7 +4,7 @@
 EAPI=5
 USE_RUBY="ruby21 ruby22"
 
-inherit cmake-utils multilib ruby-ng
+inherit cmake-utils eutils multilib ruby-ng
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
@@ -43,6 +43,7 @@ src_prepare() {
 	# make the require work
 	sed -i 's/\${LIBFACTER_INSTALL_DESTINATION}\///g' lib/facter.rb.in || die
 	# patches
+	epatch "${FILESDIR}/is-integer_fact-1624_3.6.5.patch"
 	epatch_user
 }
 
