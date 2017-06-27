@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 virtualx xdg-utils
 
@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-python/patsy-0.4[${PYTHON_USEDEP}]
 	>=dev-python/recommonmark-0.4[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
-	>=dev-python/theano-0.8.2[${PYTHON_USEDEP}]
+	>=dev-python/theano-0.9[${PYTHON_USEDEP}]
 	>=dev-python/tqdm-4.8.4[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.12[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
@@ -42,6 +42,7 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/nose-parameterized[${PYTHON_USEDEP}]
 	)
 "
 
