@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (27 Jun 2017)
+# qtwebkit:4 is old and doesnt build with gcc7, skip it
+dev-python/PyQt4 webkit
+dev-qt/designer:4 webkit
+dev-qt/qtdeclarative:4 webkit
+
 # Alexis Ballier <aballier@gentoo.org> (26 Jun 2017)
 # Needs gstreamer:0.10
 <dev-qt/qtwebkit-4.9 gstreamer
