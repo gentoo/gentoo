@@ -21,7 +21,7 @@ CAL_FTS=( karbon plan sheets words )
 CAL_EXP_FTS=( braindump stage )
 
 IUSE="activities +crypt +fontconfig gsl import-filter jpeg2k +lcms okular openexr +pdf
-	phonon pim spacenav +truetype vc X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})
+	phonon pim spacenav +truetype X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})
 	$(printf 'calligra_experimental_features_%s ' ${CAL_EXP_FTS[@]})"
 
 # TODO: Not packaged: Cauchy (https://bitbucket.org/cyrille/cauchy)
@@ -127,7 +127,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	x11-misc/shared-mime-info
 	test? ( $(add_frameworks_dep threadweaver) )
-	vc? ( >=dev-libs/vc-1.1.0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	calligra_features_karbon? ( media-gfx/pstoedit[plotutils] )
@@ -233,7 +232,7 @@ src_configure() {
 		-DWITH_Eigen3=$(usex calligra_features_sheets)
 		-ENABLE_CSTESTER_TESTING=$(usex test)
 		-DWITH_Freetype=$(usex truetype)
-		-DWITH_Vc=$(usex vc)
+		-DWITH_Vc=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libgit2=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libqgit2=ON
 	)
