@@ -12,7 +12,7 @@ DESCRIPTION="Fast SSL configuration scanner"
 HOMEPAGE="https://github.com/rbsec/sslscan"
 MY_FORK="rbsec"
 SRC_URI="https://github.com/${MY_FORK}/${PN}/archive/${PV}-${MY_FORK}.tar.gz -> ${P}-${MY_FORK}.tar.gz
-	static? ( https://github.com/PeterMosmans/openssl/archive/${MOSMANS_OPENSSL_COMMIT}.tar.gz )"
+	static? ( https://github.com/PeterMosmans/openssl/archive/${MOSMANS_OPENSSL_COMMIT}.tar.gz -> ${P}-${MY_FORK}-openssl.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="0"
