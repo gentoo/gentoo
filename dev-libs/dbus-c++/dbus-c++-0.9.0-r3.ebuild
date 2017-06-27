@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -28,6 +28,7 @@ S=${WORKDIR}/lib${P}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-4.7.patch #424707
+	"${FILESDIR}"/${PN}-gcc7.patch #622790
 )
 
 multilib_src_configure() {
