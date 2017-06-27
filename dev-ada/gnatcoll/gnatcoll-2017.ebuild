@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="gmp gtk iconv postgresql pygobject projects readline +shared sqlite
 	static syslog"
 
-RDEPEND="dev-lang/gnat-gpl:*
+RDEPEND="dev-lang/gnat-gpl:6.3.0
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
@@ -37,7 +37,7 @@ RDEPEND="dev-lang/gnat-gpl:*
 		>=dev-ada/gprbuild-2017[static?,shared?]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild"
+	dev-ada/gprbuild[gnat_2017]"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	pygobject? ( gtk )"
@@ -46,19 +46,6 @@ S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
-pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
-	GNATMAKE="${GCC/gcc/gnatmake}"
-	GNATCHOP="${GCC/gcc/gnatchop}"
-	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set ADA=gcc-4.9.4 in make.conf"
-		die "ada compiler not available"
-	fi
-	python-single-r1_pkg_setup
-}
-
 src_prepare() {
 	default
 	mv configure.{in,ac} || die
@@ -66,6 +53,9 @@ src_prepare() {
 }
 
 src_configure() {
+	GCC=${CHOST}-gcc-6.3.0
+	GNATMAKE=${CHOST}-gnatmake-6.3.0
+	GNATCHOP=${CHOST}-gnatchop-6.3.0
 	if use sqlite; then
 		myConf="--with-sqlite=$(get_libdir)"
 	else
