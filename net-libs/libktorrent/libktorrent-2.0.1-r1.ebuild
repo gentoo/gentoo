@@ -48,6 +48,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!net-libs/libktorrent:4
+	!dev-libs/botan[gmp(-)]
 "
 
 src_prepare() {
