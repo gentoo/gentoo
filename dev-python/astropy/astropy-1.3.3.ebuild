@@ -16,11 +16,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
+# ply-3.10 incompatible, keep bundled (bug #622802)
+#rdep: dev-python/ply[${PYTHON_USEDEP}]
+#prep: cp "${FILESDIR}"/astropy-ply.py astropy/extern/ply.py || die
+
 RDEPEND="
 	dev-libs/expat:0=
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.10[${PYTHON_USEDEP}]
-	dev-python/ply[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=sci-astronomy/erfa-1.3:0=
 	>=sci-astronomy/wcslib-5:0=
@@ -61,7 +64,6 @@ python_prepare_all() {
 	export mydistutilsargs="--offline"
 	export ASTROPY_USE_SYSTEM_PYTEST=True
 	#rm -r ${PN}_helpers || die
-	cp "${FILESDIR}"/astropy-ply.py astropy/extern/ply.py || die
 	rm -r cextern/{expat,erfa,cfitsio,wcslib} || die
 	sed -i -e '/auto_use/s/True/False/' setup.cfg || die
 	cat >> setup.cfg <<-EOF
