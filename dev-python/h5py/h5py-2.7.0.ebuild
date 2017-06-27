@@ -58,7 +58,7 @@ python_test() {
 python_install_all() {
 	DOCS=( README.rst ANN.rst )
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	use examples && insinto /usr/share/doc/${PF} && doins -r examples
 
 	distutils-r1_python_install_all
 }
