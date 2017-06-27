@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ SRC_URI="http://darcs.idyll.org/~t/projects/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="doc examples"
 
 REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
