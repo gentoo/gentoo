@@ -1,0 +1,11 @@
+--- a/setup.py.orig	2017-06-27 18:38:37.256325950 +0000
++++ b/setup.py	2017-06-27 18:38:48.896243950 +0000
+@@ -45,8 +45,6 @@
+     kwargs['use_2to3'] = True
+ 
+ packages = ['toro']
+-if "test" in sys.argv:
+-    packages.append('test')
+ 
+ setup(name='toro',
+       version='1.0.1',
