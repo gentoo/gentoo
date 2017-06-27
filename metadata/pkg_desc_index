@@ -14544,7 +14544,7 @@ net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/tsung 1.6.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
-net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps statistics of network usage
+net-analyzer/vnstat 1.17 1.17-r1: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
@@ -18504,7 +18504,7 @@ www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performa
 www-servers/mongoose 5.3 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.10.3 1.11.10 1.11.13-r1 1.12.0 1.13.0 1.13.1: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.10.3 1.11.10 1.11.13-r1 1.12.0 1.13.0 1.13.1 1.13.2: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
