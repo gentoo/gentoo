@@ -117,8 +117,8 @@
          $(NULL)
  
  libpolkit_gobject_1_la_LDFLAGS = -export-symbols-regex '(^polkit_.*)'
---- a/src/polkitbackend/polkitbackendjsauthority.c	2016-11-04 04:44:29.650112018 +0100
-+++ b/src/polkitbackend/polkitbackendjsauthority.c	2016-11-04 04:44:58.283111505 +0100
+--- a/src/polkitbackend/polkitbackendjsauthority.c	2017-06-27 09:22:03.375841040 +0200
++++ b/src/polkitbackend/polkitbackendjsauthority.c	2017-06-27 09:25:33.815845141 +0200
 @@ -39,6 +39,10 @@
  #include <systemd/sd-login.h>
  #endif /* HAVE_LIBSYSTEMD */
@@ -130,6 +130,24 @@
  #include <jsapi.h>
  
  #include "initjs.h" /* init.js */
+@@ -793,7 +797,7 @@
+       g_assert_not_reached ();
+     }
+ 
+-#ifdef HAVE_LIBSYSTEMD
++#if defined(HAVE_LIBSYSTEMD) || defined(HAVE_LIBELOGIND)
+   if (sd_pid_get_session (pid, &session_str) == 0)
+     {
+       if (sd_session_get_seat (session_str, &seat_str) == 0)
+@@ -801,7 +805,7 @@
+           /* do nothing */
+         }
+     }
+-#endif /* HAVE_LIBSYSTEMD */
++#endif /* HAVE_LIBSYSTEMD or HAVE_LIBELOGIND */
+ 
+   g_assert (POLKIT_IS_UNIX_USER (user_for_subject));
+   uid = polkit_unix_user_get_uid (POLKIT_UNIX_USER (user_for_subject));
 --- a/src/polkitbackend/polkitbackendsessionmonitor-systemd.c	2016-11-04 04:44:29.650112018 +0100
 +++ b/src/polkitbackend/polkitbackendsessionmonitor-systemd.c	2016-11-04 04:46:52.718109455 +0100
 @@ -25,7 +25,11 @@
