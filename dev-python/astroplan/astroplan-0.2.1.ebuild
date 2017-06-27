@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 virtualx xdg-utils
 
-DESCRIPTION="Library of IDL astronomy routines converted to Python"
-HOMEPAGE="https://pypi.python.org/pypi/pydl/"
+DESCRIPTION="Observation planning package for astronomers"
+HOMEPAGE="https://astroplan.readthedocs.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -17,12 +17,16 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/astropy[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]"
+	dev-python/pytz[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/astropy-helpers[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	doc? (
+	  dev-python/sphinx[${PYTHON_USEDEP}]
+	  dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}] )
+	test? ( dev-python/pytest-mpl[${PYTHON_USEDEP}] )"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.2-ephem-import.patch )
 
 python_prepare_all() {
 	# use system astropy-helpers instead of bundled one
@@ -42,7 +46,8 @@ python_compile_all() {
 }
 
 python_test() {
-	virtx esetup.py test
+	echo 'backend: Agg' > "${WORKDIR}"/matplotlibrc || die
+	MATPLOTLIBRC="${WORKDIR}" virtx esetup.py test
 }
 
 python_install_all() {
