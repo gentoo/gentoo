@@ -24,6 +24,7 @@ RDEPEND="
 	dev-perl/Path-Tiny
 	dev-perl/Text-Template
 	dev-perl/namespace-autoclean
+	app-arch/rpm
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
