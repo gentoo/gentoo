@@ -36,7 +36,6 @@ src_prepare() {
 
 src_configure() {
 	econf --with-sndfile \
-		--with-portaudio \
 		$(use_with hamlib) \
 		$(use_enable nls) \
 		$(use_with pulseaudio) \
