@@ -56,12 +56,6 @@ src_prepare() {
 		-e "s:get_lsb_info('c'):strdup(_(\"n/a\")):" \
 		plugins_tools/aboutmw/gtk/about-main.c || die
 
-	if [[ ${PV} == "9999" ]] ; then
-		use gtk || eapply "${FILESDIR}"/gtk_not_required_9999.patch
-	else
-		use gtk || eapply "${FILESDIR}"/gtk_not_required_4_2.patch
-	fi
-
 	eautoreconf
 }
 
@@ -69,6 +63,7 @@ src_configure() {
 	econf \
 		$(use_enable dialogs) \
 		$(use_enable p11-kit p11kit) \
+		$(use_with gtk gtkvers)$(use gtk && echo =detect) \
 		--with-gnu-ld \
 		--disable-static \
 		--disable-signed
