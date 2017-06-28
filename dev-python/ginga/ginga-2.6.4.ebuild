@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 PYTHON_REQ_USE='tk?'
 
-inherit distutils-r1 eutils fdo-mime
+inherit distutils-r1 eutils fdo-mime virtualx
 
 DESCRIPTION="Astronomical image toolkit for Python"
 HOMEPAGE="https://ejeschke.github.io/ginga"
@@ -22,15 +22,28 @@ RDEPEND="
 	media-fonts/roboto
 	gtk? (  dev-python/pygobject[${PYTHON_USEDEP},cairo] )
 	qt4? ( || (
-		  dev-python/pyside[${PYTHON_USEDEP},help,X]
-		  dev-python/PyQt4[${PYTHON_USEDEP},help,X]
-	   ) )
-	qt5? (  dev-python/PyQt5[${PYTHON_USEDEP},help,gui,widgets] )"
+		   dev-python/pyside[${PYTHON_USEDEP},help,X]
+		   dev-python/PyQt4[${PYTHON_USEDEP},help,X]
+		  )
+		  dev-python/QtPy[${PYTHON_USEDEP},gui]
+	   )
+	qt5? (
+		 dev-python/PyQt5[${PYTHON_USEDEP},help,gui,widgets]
+		 dev-python/QtPy[${PYTHON_USEDEP},gui]
+	)
+"
 
 DEPEND="${RDEPEND}
 	dev-python/astropy-helpers[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	doc? (
+	  dev-python/sphinx[${PYTHON_USEDEP}]
+	  dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+	)
+	test? (
+	   dev-python/QtPy[${PYTHON_USEDEP},gui]
+	)
+"
 
 PATCHES=( "${FILESDIR}"/${PN}-no-roboto.patch )
 
@@ -48,7 +61,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test
+	virtx esetup.py test
 }
 
 python_install_all() {
