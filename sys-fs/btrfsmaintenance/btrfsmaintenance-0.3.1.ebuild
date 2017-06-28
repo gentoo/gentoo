@@ -1,0 +1,52 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
+inherit eutils
+
+DESCRIPTION="Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag"
+HOMEPAGE="https://github.com/kdave/btrfsmaintenance"
+GITTAG="v${PV}"
+SRC_URI="https://github.com/kdave/btrfsmaintenance/archive/${GITTAG}.tar.gz -> btrfsmaintenance-${PV}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
+
+DEPEND=""
+RDEPEND="${DEPEND}
+	virtual/cron
+	sys-fs/btrfs-progs"
+
+src_configure() {
+	sed -i -e 's#/etc/sysconfig/btrfsmaintenance#/etc/conf.d/btrfsmaintenance#' *.sh
+}
+
+src_install() {
+	dodoc README.md CONTRIBUTING.md btrfsmaintenance.changes
+	newconfd sysconfig.btrfsmaintenance btrfsmaintenance
+	insinto /usr/share/btrfsmaintenance
+	doins btrfsmaintenance-functions
+	exeinto /usr/share/btrfsmaintenance
+	doexe btrfs*.sh
+	insinto /usr/lib/systemd/system
+	doins btrfsmaintenance-refresh.service
+}
+
+pkg_postinst() {
+	elog "Now edit cron periods and mount points in /etc/conf.d/btrfsmaintenance"
+	elog "then run /usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh to"
+	elog "update cron symlinks"
+}
+
+pkg_config() {
+	elog "Installing default btrfsmaintenance scripts"
+	"${ROOT}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh
+}
+
+pkg_prerm() {
+	# uninstall symlinks
+	elog "Removing symlinks from btrfsmaintenance cron tasks"
+	"${ROOT}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh uninstall
+}
