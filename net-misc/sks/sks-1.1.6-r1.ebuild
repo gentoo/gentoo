@@ -10,7 +10,7 @@ HOMEPAGE="https://bitbucket.org/skskeyserver/sks-keyserver"
 SRC_URI="https://bitbucket.org/skskeyserver/sks-keyserver/downloads/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="optimize test"
 DOC_CONTENTS="To get sks running, first build the database,
 start the database, import atleast one key, then
