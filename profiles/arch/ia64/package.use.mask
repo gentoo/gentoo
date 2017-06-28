@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # Pulls in dev-db/redis which is not keyworded on ia64.
 >=dev-python/pyzor-1.0.0 test
