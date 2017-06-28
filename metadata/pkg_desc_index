@@ -1896,7 +1896,7 @@ app-misc/openastro 1.1.48 1.1.49: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6 1.7: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 3.1.1 4.0.6: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 3.1.1 4.0.6 4.0.7: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
@@ -18422,7 +18422,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 59.0.3071.104 60.0.3112.32 60.0.3112.40 61.0.3128.3 61.0.3135.4: Open-source version of Google Chrome web browser
+www-client/chromium 59.0.3071.104 60.0.3112.32 60.0.3112.40 61.0.3135.4 61.0.3141.7: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-text/poppler:=[cairo] dev-libs/glib:2 dev-libs/libgee:0.8 gnome-base/librsvg gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) sys-apps/dbus x11-libs/gtk+:3 || ( dev-lang/vala:0.36 dev-lang/vala:0.34 dev-lang/vala:0.32 ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Presenter console with multi-monitor support for PDF files
+EAPI=6
+HOMEPAGE=http://pdfpc.github.io
+IUSE=gstreamer
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-text/poppler:=[cairo] dev-libs/glib:2 dev-libs/libgee:0.8 gnome-base/librsvg gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) sys-apps/dbus x11-libs/gtk+:3
+SLOT=0
+SRC_URI=https://github.com/pdfpc/pdfpc/archive/v4.0.7.tar.gz -> pdfpc-4.0.7.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	vala	f86cd45e9ae738c40c92f990266f39a7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a17a25db77429152df705e21d9db9ab9
