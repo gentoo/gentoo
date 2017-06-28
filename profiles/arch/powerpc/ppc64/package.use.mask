@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
 # Jeroen Roovers <jer@gentoo.org> <16 Jan 2017>
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp

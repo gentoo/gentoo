@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach & dev-tcltk/tcllib are not keyworded, and tests are
+# restricted anyway, so no point in pursuing it right now.
+app-shells/bash-completion test
+
 # Alexis Ballier <aballier@gentoo.org> (27 Jun 2017)
 # qtwebkit:4 is old and doesnt build with gcc7, skip it
 dev-python/PyQt4 webkit
