@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="https://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc dri"
 
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
