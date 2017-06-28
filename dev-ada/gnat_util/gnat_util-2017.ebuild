@@ -9,7 +9,8 @@ MYP=${PN}-gpl-${PV}
 
 DESCRIPTION="Provides access to GNAT compiler internals for AdaCore utilities"
 HOMEPAGE="http://libre.adacore.com"
-SRC_URI="http://mirrors.cdn.adacore.com/art/57399637c7a447658e0affa6 -> ${MYP}-src.tar.gz"
+SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed037
+	-> ${MYP}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
