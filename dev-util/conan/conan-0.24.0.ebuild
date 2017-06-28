@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-python/passlib-1.6.5[${PYTHON_USEDEP}]
 	>=dev-python/patch-1.16[${PYTHON_USEDEP}]
 	>=dev-python/pyjwt-1.4[${PYTHON_USEDEP}]
+	>=dev-python/pylint-1.6.5[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.7[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
