@@ -1294,7 +1294,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.3.3 2.4.0 2.4.1 2.5.0 2.6.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.12.6 17.03.1 17.05.0 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.12.6 17.03.1 17.05.0 17.06.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.13.0 1.14.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
@@ -8332,7 +8332,7 @@ dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
 dev-python/pylibmc 1.5.0 1.5.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4-r1: Python interface to libpcap
-dev-python/pylint 1.4.4 1.5.6 1.6.5 1.6.5-r1 1.7.1-r1: Python code static checker
+dev-python/pylint 1.4.4 1.5.6 1.6.5 1.6.5-r1 1.7.1-r1 1.7.2: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylzma 0.4.8: Python bindings for the LZMA compression library
 dev-python/pymad 0.6-r1: Python wrapper for libmad MP3 decoding in python
