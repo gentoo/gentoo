@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (28 Jun 2017)
+# New strip feature which is enabled by default causes genkernel
+# to create unbootable kernel/initramfs images. Bug #622716
+=sys-kernel/genkernel-3.5.1.0
+
 # Mike Gilbert <floppym@gentoo.org> (24 Jun 2017)
 # Obsolete package: use sys-apps/systemd[sysv-utils] instead.
 # Removal in 30 days.
