@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="hamlib nls pulseaudio"
+IUSE="hamlib nls portaudio pulseaudio sndfile"
 
 RDEPEND="x11-libs/fltk:1[threads,xft]
 	media-libs/libsamplerate
@@ -20,10 +20,10 @@ RDEPEND="x11-libs/fltk:1[threads,xft]
 	x11-misc/xdg-utils
 	dev-perl/RPC-XML
 	dev-perl/Term-ReadLine-Perl
-	>=media-libs/portaudio-19_pre20071207
 	hamlib? ( media-libs/hamlib )
+	portaudio? ( >=media-libs/portaudio-19_pre20071207 )
 	pulseaudio? ( media-sound/pulseaudio )
-	>=media-libs/libsndfile-1.0.10"
+	sndfile? ( >=media-libs/libsndfile-1.0.10 )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
@@ -35,8 +35,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-sndfile \
-		--with-portaudio \
+	econf $(use_with sndfile) \
+		$(use_with portaudio) \
 		$(use_with hamlib) \
 		$(use_enable nls) \
 		$(use_with pulseaudio) \
