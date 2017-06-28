@@ -2928,7 +2928,7 @@ dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to s
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.8 3.0.17 3.1.9 3.2.0: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.8 3.0.17 3.1.9 3.2.0 3.2.1: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13 1.00.41: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -17560,7 +17560,7 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for par
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kubectl 1.6.4: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.6.4 1.6.6: CLI to run commands against Kubernetes clusters
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
