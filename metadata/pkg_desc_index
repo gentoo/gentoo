@@ -144,7 +144,7 @@ app-admin/lsyncd 2.2.0 2.2.1 2.2.2: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 149 152: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.9.1 2.10.1 2.10.3 2.10.5: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.9.1 2.10.1 2.10.3 2.10.5 2.11.0: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
@@ -5840,6 +5840,7 @@ dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/versio
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-RPM 0.15.0: Build an RPM from your Dist::Zilla release
 dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.0.0 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
@@ -6296,6 +6297,7 @@ dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
 dev-perl/Moose 2.60.400-r1 2.160.400 2.160.500 2.180.600 2.180.700 2.200.400 2.200.500: A postmodern object system for Perl 5
+dev-perl/Moose-Autobox 0.160.0: Autoboxed wrappers for Native Perl datatypes
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.270.0: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attributes from a configfile
@@ -9524,7 +9526,7 @@ dev-ruby/execjs 1.4.0 2.6.0 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.2.4 1.2.5: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facets 3.1.0: Facets is the premier collection of extension methods for Ruby
-dev-ruby/facter 2.4.6 3.1.4-r1 3.1.8 3.6.1 3.6.3 3.6.3-r1 3.6.4 3.6.5 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 2.4.6 3.1.4-r1 3.1.8 3.6.1 3.6.3 3.6.3-r1 3.6.4 3.6.5 3.7.0 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.7.0 4.8.0: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.6.0-r1 0.9.2 0.9.3 0.10.2 0.11.0: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0.20131201-r1: Helper for faking web requests in Ruby
