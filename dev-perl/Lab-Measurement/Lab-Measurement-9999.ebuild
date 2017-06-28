@@ -21,7 +21,7 @@ HOMEPAGE="http://www.labmeasurement.de/"
 SLOT="0"
 IUSE="test"
 
-DZIL_PLUGINS=( Git PodWeaver )
+DZIL_PLUGINS=( Git PodWeaver RPM )
 
 RDEPEND="
 	virtual/perl-Carp
