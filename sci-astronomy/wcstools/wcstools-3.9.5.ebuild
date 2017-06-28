@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,16 +17,10 @@ IUSE=""
 DOCS=( Readme Programs NEWS )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.9.2-compiler_warnings.patch
-	"${FILESDIR}"/${PN}-3.9.2-mayhem.patch
-	"${FILESDIR}"/${PN}-3.9.2-RASortStars.patch
-	"${FILESDIR}"/${PN}-3.9.2-spelling.patch
-	"${FILESDIR}"/${PN}-3.9.2-sprintf.patch
-	"${FILESDIR}"/${PN}-3.9.2-use_abort.patch
-	"${FILESDIR}"/${PN}-3.9.2-wcsinit_crash.patch
-	"${FILESDIR}"/${PN}-3.9.2-additional_pointer_increase.patch
-	"${FILESDIR}"/${PN}-3.9.2-ctype_copy_to_wcs.patch
-	"${FILESDIR}"/${PN}-3.9.2-off-by-one-allocation.patch
+	"${FILESDIR}"/${PN}-3.9.4-spelling.patch
+	"${FILESDIR}"/${PN}-3.9.4-haspm.patch
+	"${FILESDIR}"/${PN}-3.9.4-fix-tests.patch
+	"${FILESDIR}"/${PN}-3.9.4-compiler-warning.patch
 )
 
 src_prepare() {
