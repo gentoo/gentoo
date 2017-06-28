@@ -186,7 +186,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-		"${FILESDIR}/${PN}-system-icu-r2.patch"
+		"${FILESDIR}/${PN}-gn-bootstrap-r11.patch"
 	)
 
 	default
@@ -213,9 +213,9 @@ src_prepare() {
 		third_party/analytics
 		third_party/angle
 		third_party/angle/src/common/third_party/base
+		third_party/angle/src/common/third_party/murmurhash
 		third_party/angle/src/third_party/compiler
 		third_party/angle/src/third_party/libXNVCtrl
-		third_party/angle/src/third_party/murmurhash
 		third_party/angle/src/third_party/trace_event
 		third_party/boringssl
 		third_party/brotli
