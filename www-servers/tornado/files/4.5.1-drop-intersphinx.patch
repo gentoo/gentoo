@@ -1,0 +1,22 @@
+diff -Nur tornado-4.5.1.orig/docs/conf.py tornado-4.5.1/docs/conf.py
+--- tornado-4.5.1.orig/docs/conf.py	2017-06-27 17:39:55.881133239 +0000
++++ tornado-4.5.1/docs/conf.py	2017-06-27 17:40:59.910682166 +0000
+@@ -16,7 +16,6 @@
+     "sphinx.ext.autodoc",
+     "sphinx.ext.coverage",
+     "sphinx.ext.doctest",
+-    "sphinx.ext.intersphinx",
+     "sphinx.ext.viewcode",
+     ]
+ 
+@@ -81,10 +80,6 @@
+     ('index', 'tornado.tex', 'Tornado Documentation', 'The Tornado Authors', 'manual', False),
+     ]
+ 
+-intersphinx_mapping = {
+-    'python': ('https://docs.python.org/3.5/', None),
+-    }
+-
+ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+ 
+ # On RTD we can't import sphinx_rtd_theme, but it will be applied by

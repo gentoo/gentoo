@@ -1,3 +1,5 @@
+Edit: bicatali@gentoo.org, ply-3.10 incompatible, so keep bundled.
+
 From: Ole Streicher <olebole@debian.org>
 Date: Thu, 12 Jan 2017 11:37:47 +0100
 Subject: Use external python modules instead of convenience copies
@@ -14,19 +16,6 @@ Subject: Use external python modules instead of convenience copies
  astropy/units/format/ogip.py           |  4 ++--
  9 files changed, 24 insertions(+), 19 deletions(-)
 
-diff --git a/astropy/coordinates/angle_utilities.py b/astropy/coordinates/angle_utilities.py
-index cfa894e..bb8fb7d 100644
---- a/astropy/coordinates/angle_utilities.py
-+++ b/astropy/coordinates/angle_utilities.py
-@@ -64,7 +64,7 @@ class _AngleParser(object):
- 
-     @classmethod
-     def _make_parser(cls):
--        from ..extern.ply import lex, yacc
-+        from ply import lex, yacc
- 
-         # List of token names.
-         tokens = (
 diff --git a/astropy/extern/configobj.py b/astropy/extern/configobj.py
 index 8d1bd8c..e3bb0e0 100644
 --- a/astropy/extern/configobj.py
@@ -128,69 +117,3 @@ index 9e88d1f..94bd40a 100644
      import pytest
  
  else:
-diff --git a/astropy/units/format/cds.py b/astropy/units/format/cds.py
-index e40c1cf..0d5e033 100644
---- a/astropy/units/format/cds.py
-+++ b/astropy/units/format/cds.py
-@@ -78,7 +78,7 @@ class CDS(Base):
- 
-     @classmethod
-     def _make_lexer(cls):
--        from ...extern.ply import lex
-+        from ply import lex
- 
-         tokens = cls._tokens
- 
-@@ -142,7 +142,7 @@ class CDS(Base):
-         <https://bitbucket.org/nxg/unity/>`_.
-         """
- 
--        from ...extern.ply import yacc
-+        from ply import yacc
- 
-         tokens = cls._tokens
- 
-diff --git a/astropy/units/format/generic.py b/astropy/units/format/generic.py
-index 6f1d0e6..8c12a2d 100644
---- a/astropy/units/format/generic.py
-+++ b/astropy/units/format/generic.py
-@@ -102,7 +102,7 @@ class Generic(Base):
- 
-     @classmethod
-     def _make_lexer(cls):
--        from ...extern.ply import lex
-+        from ply import lex
- 
-         tokens = cls._tokens
- 
-@@ -177,7 +177,7 @@ class Generic(Base):
-         formats, the only difference being the set of available unit
-         strings.
-         """
--        from ...extern.ply import yacc
-+        from ply import yacc
- 
-         tokens = cls._tokens
- 
-diff --git a/astropy/units/format/ogip.py b/astropy/units/format/ogip.py
-index e429407..e80e35a 100644
---- a/astropy/units/format/ogip.py
-+++ b/astropy/units/format/ogip.py
-@@ -110,7 +110,7 @@ class OGIP(generic.Generic):
- 
-     @classmethod
-     def _make_lexer(cls):
--        from ...extern.ply import lex
-+        from ply import lex
- 
-         tokens = cls._tokens
- 
-@@ -180,7 +180,7 @@ class OGIP(generic.Generic):
-         <https://bitbucket.org/nxg/unity/>`_.
-         """
- 
--        from ...extern.ply import yacc
-+        from ply import yacc
- 
-         tokens = cls._tokens
- 
