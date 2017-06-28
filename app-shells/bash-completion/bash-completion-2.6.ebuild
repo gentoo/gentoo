@@ -14,12 +14,20 @@ SRC_URI="https://github.com/scop/bash-completion/releases/download/${PV}/${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris"
-IUSE=""
+IUSE="test"
+# Multiple test failures, need to investigate the exact problem
+RESTRICT="test"
 
 RDEPEND=">=app-shells/bash-4.3_p30-r1
 	sys-apps/miscfiles
 	!app-eselect/eselect-bashcomp"
-DEPEND="app-arch/xz-utils"
+DEPEND="app-arch/xz-utils
+	test? (
+		${RDEPEND}
+		app-misc/dtach
+		dev-util/dejagnu
+		dev-tcltk/tcllib
+	)"
 PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
 
 # Remove unwanted completions.
@@ -48,7 +56,23 @@ src_prepare() {
 	eapply_user
 }
 
-src_test() { :; } # Skip testsuite because of interactive shell wrt #477066
+src_test() {
+	# Tests need an interactive shell, #477066
+	# idea stolen from:
+	# http://pkgs.fedoraproject.org/cgit/rpms/bash-completion.git/tree/bash-completion.spec
+
+	# real-time output of the log ;-)
+	touch "${T}/dtach-test.log" || die
+	tail -f "${T}/dtach-test.log" &
+	local tail_pid=${!}
+
+	nonfatal dtach -N "${T}/dtach.sock" \
+		bash -c 'emake check &> "${T}"/dtach-test.log; echo ${?} > "${T}"/dtach-test.out'
+
+	kill "${tail_pid}"
+	[[ -f ${T}/dtach-test.out ]] || die "Unable to run tests"
+	[[ $(<"${T}"/dtach-test.out) == 0 ]] || die "Tests failed"
+}
 
 src_install() {
 	# work-around race conditions, bug #526996
