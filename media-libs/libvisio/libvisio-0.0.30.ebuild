@@ -1,20 +1,17 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/contrib/libvisio/"
 inherit base eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-2
 
 DESCRIPTION="Library parsing the visio documents"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libvisio"
-[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.xz"
+SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="ppc"
 IUSE="doc static-libs"
 
 RDEPEND="
@@ -35,7 +32,6 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	[[ -d m4 ]] || mkdir "m4"
 	base_src_prepare
-	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
