@@ -1289,7 +1289,7 @@ app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform env
 app-emulation/bochs 2.6.8: LGPL-ed pc emulator
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.6_p1212-r1 0.7.7 0.7.8-r2 0.7.9 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/containerd 0.2.5 0.2.5-r1 0.2.5_p20170308 0.2.6 0.2.7 0.2.8 9999: A daemon to control runC
+app-emulation/containerd 0.2.5 0.2.5-r1 0.2.5_p20170308 0.2.6 0.2.7 0.2.8 0.2.8_p20170504 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.3.3 2.4.0 2.4.1 2.5.0 2.6.1: Golden Disk Image builder.
@@ -1301,7 +1301,7 @@ app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-ce
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
 app-emulation/docker-registry 2.5.1 2.6.0 2.6.1 2.6.1-r1: Docker Registry 2.0
-app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc2_p20170310: runc container cli tools (docker fork)
+app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc2_p20170310 1.0.0_rc3_p20170607: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20130107-r3: DOS Emulator
@@ -10332,7 +10332,7 @@ dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.1.3: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
-dev-util/cmake 3.7.2 3.8.2 3.9.0_rc4: Cross platform Make
+dev-util/cmake 3.7.2 3.8.2 3.9.0_rc5: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
@@ -18416,7 +18416,7 @@ www-apps/trac-mercurial 0.12.0.29_pre10899-r1 1.0.0.3_pre20130206-r1: A Mercuria
 www-apps/trac-tags 0.6-r1: Tags plugin for Trac
 www-apps/tt-rss 20160527 20160930: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911-r1 20100911-r2: A feed aggregator application
-www-apps/viewvc 1.1.20-r1 1.1.26: ViewVC, a web interface to CVS and Subversion
+www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
