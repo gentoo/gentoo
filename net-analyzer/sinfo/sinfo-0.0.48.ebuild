@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,6 +26,7 @@ DEPEND="
 src_prepare() {
 	cp "${FILESDIR}"/${P}-acinclude.m4 acinclude.m4 || die
 	epatch "${FILESDIR}"/${PN}-0.0.47-tinfo.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 	eautoreconf
 }
 
