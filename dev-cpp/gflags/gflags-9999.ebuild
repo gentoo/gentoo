@@ -17,7 +17,7 @@ DESCRIPTION="Google's C++ argument parsing library"
 HOMEPAGE="http://gflags.github.io/gflags/"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/2.2"
 IUSE="static-libs"
 
 # AUTHORS.txt only links the google group
