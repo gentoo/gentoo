@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit cmake-utils vcs-snapshot flag-o-matic
+inherit cmake-multilib vcs-snapshot flag-o-matic
 
 DESCRIPTION="A small, fast, and high performance math library for robot applications"
 HOMEPAGE="http://ignitionrobotics.org/libraries/math"
@@ -24,5 +24,5 @@ src_configure() {
 	append-flags "-fPIC"
 	echo "set (CMAKE_C_FLAGS_ALL \"${CXXFLAGS} \${CMAKE_C_FLAGS_ALL}\")" > "${S}/cmake/HostCFlags.cmake"
 	sed -i -e "s/LINK_FLAGS_RELWITHDEBINFO \" \"/LINK_FLAGS_RELWITHDEBINFO \" ${LDFLAGS} \"/" cmake/DefaultCFlags.cmake || die
-	cmake-utils_src_configure
+	cmake-multilib_src_configure
 }
