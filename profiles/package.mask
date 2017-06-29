@@ -217,12 +217,6 @@ dev-python/cassandra-driver
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Unmaintained. Does not use python eclasses. Unhandled bug reports.
-# Removal in 30 days. Bug #615920.
-dev-util/rpmdevtools
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # Dead upstream. No reverse dependencies. Fails to build.
 # Removal in 30 days. Bug #594384.
 dev-libs/libjit
