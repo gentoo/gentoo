@@ -4595,7 +4595,7 @@ dev-lang/nim 0.14.2 0.15.0-r1 0.15.2 0.16.0 0.17.0: compiled, garbage-collected 
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.10 2016.11 2016.12 2017.01 2017.02 2017.03 2017.04 2017.05 2017.06 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
-dev-lang/ocaml 4.04.0 4.04.1 4.04.2 4.05.0_beta3: Type-inferring functional programming language descended from the ML family
+dev-lang/ocaml 4.04.0 4.04.1 4.04.2 4.05.0_rc1: Type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
@@ -5111,7 +5111,7 @@ dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/sway 0.12.2 0.13.0 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
-dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
+dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1 5.0.1: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded web application server extensible with C++
 dev-libs/totem-pl-parser 3.10.7: Playlist parsing library
 dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
@@ -5266,7 +5266,7 @@ dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
 dev-ml/facile 1.1.2: An OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1 1.7.2 1.7.3: OCaml tool to find/use non-standard packages
-dev-ml/flow_parser 0.46.0 0.47.0 0.48.0: JavaScript parser written in OCaml
+dev-ml/flow_parser 0.48.0 0.49.1: JavaScript parser written in OCaml
 dev-ml/fmt 0.8.2 0.8.3: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/fpath 0.7.2: File system paths for OCaml
@@ -5322,7 +5322,7 @@ dev-ml/ocaml-dns 0.20.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
-dev-ml/ocaml-extunix 0.1.4: Thin bindings to various low-level system APIs
+dev-ml/ocaml-extunix 0.1.4 0.1.5: Thin bindings to various low-level system APIs
 dev-ml/ocaml-fileutils 0.5.1 0.5.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
@@ -9072,16 +9072,16 @@ dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts t
 dev-ros/cmake_modules 0.4.0 0.4.1 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.10 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.12.10 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
-dev-ros/combined_robot_hw 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Combined Robot HW class
-dev-ros/combined_robot_hw_tests 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Combined Robot HW class tests
+dev-ros/combined_robot_hw 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Combined Robot HW class
+dev-ros/combined_robot_hw_tests 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
 dev-ros/control_msgs 1.4.0 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.14.0 1.15.0 9999: Modules that are useful across all controllers
-dev-ros/controller_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Interface base class for controllers
-dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: The controller manager
-dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: The controller manager
-dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Tests for the controller manager
+dev-ros/controller_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Interface base class for controllers
+dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: The controller manager
+dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: The controller manager
+dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 9999: C++ code for doing things that are not necessarily ROS related
@@ -9116,7 +9116,7 @@ dev-ros/geometric_shapes 0.5.1 0.5.2 9999: Generic definitions of geometric shap
 dev-ros/geometry_msgs 1.12.5 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/global_planner 1.13.0 1.13.1 1.14.0 9999: Path planner library and node
 dev-ros/gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
-dev-ros/hardware_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Hardware Interface base class
+dev-ros/hardware_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Hardware Interface base class
 dev-ros/hector_compressed_map_transport 0.3.5 9999: Means for transporting compressed map data through the use of image_transport
 dev-ros/hector_geotiff 0.3.3 0.3.4 0.3.5 9999: Node to save occupancy grid map, robot trajectory and object of interest data to GeoTiff images
 dev-ros/hector_geotiff_plugins 0.3.3 0.3.4 0.3.5 9999: Plugins that extend geotiff maps generated by hector_geotiff
@@ -9144,8 +9144,8 @@ dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutor
 dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
-dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 0.11.4 9999: Interface for enforcing joint limits
-dev-ros/joint_state_publisher 1.12.7 1.12.8 1.12.9 1.12.10 9999: Tool for setting and publishing joint state values for a given URDF
+dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Interface for enforcing joint limits
+dev-ros/joint_state_publisher 1.12.7 1.12.8 1.12.9 1.12.10 1.12.11 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.12.10 9999: Constructs a KDL tree from an XML robot representation in URDF
@@ -9267,7 +9267,7 @@ dev-ros/rqt_action 0.4.9 9999: Introspect all available ROS action (from actionl
 dev-ros/rqt_bag 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_bag_plugins 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_console 0.4.7 0.4.8 9999: GUI plugin for displaying and filtering ROS messages
-dev-ros/rqt_controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: RQT control manager plugin
+dev-ros/rqt_controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: RQT control manager plugin
 dev-ros/rqt_dep 0.4.7 0.4.8 9999: GUI plugin for visualizing the ROS dependency graph
 dev-ros/rqt_graph 0.4.7 0.4.8 9999: GUI plugin for visualizing the ROS computation graph
 dev-ros/rqt_gui 0.3.2-r1 0.5.0 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
@@ -9346,14 +9346,14 @@ dev-ros/theora_image_transport 1.9.5 9999: Plugin to image_transport for transpa
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
 dev-ros/topic_tools 1.13.0 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.5 9999: Messages for defining robot trajectories
-dev-ros/transmission_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Transmission Interface
+dev-ros/transmission_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Transmission Interface
 dev-ros/turtle_actionlib 0.1.8 0.1.10 9999: Demonstrates how to write an action server and client with the turtlesim
 dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
 dev-ros/turtlesim 0.6.1 0.7.0 0.7.1 0.8.0 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.6 9999: ROS Python and C++ interfaces for universally unique identifiers
-dev-ros/urdf 1.12.10 9999: C++ parser for the Unified Robot Description Format (URDF)
-dev-ros/urdf_parser_plugin 1.12.7 1.12.8 1.12.9 1.12.10 9999: C++ base class for URDF parsers
+dev-ros/urdf 1.12.10 1.12.11 9999: C++ parser for the Unified Robot Description Format (URDF)
+dev-ros/urdf_parser_plugin 1.12.7 1.12.8 1.12.9 1.12.10 1.12.11 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 0.2.5 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
 dev-ros/urg_node 0.1.9 0.1.10 9999: ROS wrapper for the Hokuyo urg_c library
@@ -14163,7 +14163,7 @@ media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
 media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 12.1 9999: Complete solution to record, convert and stream audio and video
-media-video/libva-utils 1.8.0 1.8.1 1.8.2 9999: Collection of utilities and tests for VA-API
+media-video/libva-utils 1.8.0 1.8.1 1.8.2 1.8.3 9999: Collection of utilities and tests for VA-API
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
@@ -15939,11 +15939,11 @@ ros-meta/perception_pcl 1.3.0 1.4.0 1.4.1 1.5.1 1.5.2 1.5.3 9999: PCL (Point Clo
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: URDF description and 3D models of robot components of the PR2 robot
 ros-meta/qt_gui_core 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.2.0 1.3.0 1.3.1 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
-ros-meta/robot_model 1.12.10 9999: Packages for modeling various aspects of robot information
+ros-meta/robot_model 1.12.10 1.12.11 9999: Packages for modeling various aspects of robot information
 ros-meta/ros 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 1.3.0 1.3.1 9999: Metapackage which extends ros_core and includes other basic non-robot tools
 ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 1.12.7 1.13.0 9999: ROS communications-related packages
-ros-meta/ros_control 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
+ros-meta/ros_control 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.2.0 1.3.0 1.3.1 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: JSON API to ROS functionality for non-ROS programs
@@ -16284,7 +16284,7 @@ sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espres
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
-sci-electronics/gazebo 8.0.0 8.1.0 8.1.1: A 3D multiple robot simulator with dynamics
+sci-electronics/gazebo 8.1.1: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.2 1.9.2: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow
@@ -16497,7 +16497,7 @@ sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencin
 sci-libs/hypre 2.9.0b 2.11.1: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
-sci-libs/ignition-math 3.1.0 3.2.0: A small, fast, and high performance math library for robot applications
+sci-libs/ignition-math 3.2.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.2.0 1.3.1 1.4.1: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
@@ -18786,8 +18786,8 @@ x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, su
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
 x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send & sw-notify-send
 x11-libs/libtinynotify-systemwide 0.0.2 0.1 9999: A system-wide notifications module for libtinynotify
-x11-libs/libva 1.7.3 1.8.0 1.8.1 1.8.2 9999: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 1.7.3 1.8.0 1.8.1 1.8.2 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva 1.7.3 1.8.0 1.8.1 1.8.2 1.8.3 9999: Video Acceleration (VA) API for Linux
+x11-libs/libva-intel-driver 1.7.3 1.8.0 1.8.1 1.8.2 1.8.3 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
