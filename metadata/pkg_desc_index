@@ -8451,6 +8451,7 @@ dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.5 1.2.7: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.14-r1 1.15.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.9.1: Manage external processes across test runs
+dev-python/python-afl 0.6: Enables American fuzzy lop fork server and instrumentation for pure-Python code
 dev-python/python-application 1.5.0: Basic building blocks for python applications
 dev-python/python-augeas 0.4.1 0.4.2_pre131218 0.5.0: Python bindings for Augeas
 dev-python/python-barbicanclient 3.3.0 4.0.1 4.2.0: Client library for Barbican API.
