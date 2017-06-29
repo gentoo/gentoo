@@ -1297,7 +1297,7 @@ app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 17.03.1 17.03.2 17.06.0_rc5 17.06.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.13.0 1.14.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
-app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
+app-emulation/docker-machine 0.9.0 0.10.0 0.12.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
 app-emulation/docker-registry 2.5.1 2.6.0 2.6.1 2.6.1-r1: Docker Registry 2.0
