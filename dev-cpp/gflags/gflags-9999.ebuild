@@ -20,16 +20,13 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="static-libs"
 
+# AUTHORS.txt only links the google group
+DOCS=( ChangeLog.txt README.md )
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		$(cmake-utils_use_build static-libs STATIC_LIBS)
 	)
 	cmake-utils_src_configure
-}
-
-multilib_src_install_all() {
-	rm -rf "${ED}"/usr/share/doc
-	dodoc {AUTHORS,ChangeLog,NEWS,README}.txt
-	dohtml doc/*
 }
