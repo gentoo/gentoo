@@ -37,6 +37,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-libs/gtk+:3[introspection]
 	x11-libs/libnotify[introspection]
 	|| (
+		x11-themes/adwaita-icon-theme
 		x11-themes/faenza-icon-theme
 		x11-themes/gnome-icon-theme
 		x11-themes/mate-icon-theme
