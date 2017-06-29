@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,6 +28,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-makefile.patch
 	epatch "${FILESDIR}"/${P}-tcl.patch
 	epatch "${FILESDIR}"/${P}-desktop.patch
+	epatch "${FILESDIR}"/fix-random-constants.patch
 
 	# force script to be regenerated so it uses the right data path
 	rm data/checkdotdin || die
