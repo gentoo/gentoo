@@ -1,18 +1,19 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER="3.0"
-MODULE_AUTHOR=MDOOTSON
-MODULE_VERSION=0.9927
+DIST_AUTHOR=MDOOTSON
+DIST_VERSION=0.9932
+DIST_EXAMPLES=("samples/*")
 inherit wxwidgets virtualx perl-module
 
 DESCRIPTION="Perl bindings for wxGTK"
 HOMEPAGE="http://wxperl.sourceforge.net/ ${HOMEPAGE}"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -37,9 +38,9 @@ src_prepare() {
 }
 
 src_test() {
-	VIRTUALX_COMMAND=perl-module_src_test
-	virtualmake
+	# the webview/t/03_threads.t test tends to hang or crash in weird
+	# ways depending on local configuration. eg, backtraces involving
+	# all of webkit-gtk, kpartsplugin and kdelibs...
+	perl_rm_files t/12_pod.t ext/webview/t/03_threads.t
+	virtx perl-module_src_test
 }
-
-SRC_TEST=skip
-# bug 571470
