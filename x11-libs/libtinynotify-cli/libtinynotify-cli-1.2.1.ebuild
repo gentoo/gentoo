@@ -5,12 +5,10 @@ EAPI=4
 
 inherit autotools-utils
 
-MY_PN=tinynotify-send
-MY_P=${MY_PN}-${PV}
-
+MY_P=tinynotify-send-${PV}
 DESCRIPTION="Common CLI routines for tinynotify-send & sw-notify-send"
 HOMEPAGE="https://github.com/mgorny/tinynotify-send/"
-SRC_URI="mirror://github/mgorny/${MY_PN}/${MY_P}.tar.bz2"
+SRC_URI="https://github.com/mgorny/tinynotify-send/releases/download/${MY_P}/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
