@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 inherit git-r3
 #endif
@@ -13,8 +13,8 @@ inherit git-r3
 inherit autotools-utils
 
 DESCRIPTION="A notification sending utility (using libtinynotify)"
-HOMEPAGE="https://bitbucket.org/mgorny/tinynotify-send/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/tinynotify-send/"
+SRC_URI="https://github.com/mgorny/tinynotify-send/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
