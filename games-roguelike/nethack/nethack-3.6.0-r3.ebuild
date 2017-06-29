@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
 LICENSE="nethack"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
-IUSE="experimental X"
+IUSE="experimental X mail"
 
 RDEPEND="sys-libs/ncurses:0=
 	X? (
