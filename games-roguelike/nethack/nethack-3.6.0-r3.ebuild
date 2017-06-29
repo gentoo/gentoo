@@ -58,7 +58,8 @@ src_compile() {
 	use X && append-cflags -DX11_GRAPHICS -DUSE_XPM
 	use experimental &&
 		append-cflags -DSTATUS_VIA_WINDOWPORT -DSTATUS_HILITES -DSCORE_ON_BOTL
-
+	use mail || append-cflags -DNOMAIL
+	
 	makeopts=(
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"
 		WINTTYLIB="$($(tc-getPKG_CONFIG) --libs ncurses)"
