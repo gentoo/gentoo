@@ -1294,7 +1294,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.3.3 2.4.0 2.4.1 2.5.0 2.6.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.12.6 17.03.1 17.05.0 17.06.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.12.6 17.03.1 17.03.2 17.05.0 17.06.0_rc5 17.06.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.13.0 1.14.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0: Machine management for a container-centric world
@@ -4167,7 +4167,7 @@ dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.7.0.80 1.8.0.131: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
-dev-java/javacc 5.0-r2: Java Compiler Compiler - The Java Parser Generator
+dev-java/javacc 5.0-r2 5.0-r3: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
