@@ -5791,7 +5791,7 @@ dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0 1.60.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
-dev-perl/Debug-Client 0.290.0: Client side code for perl debugger
+dev-perl/Debug-Client 0.290.0 0.300.0: Client side code for perl debugger
 dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
 dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
