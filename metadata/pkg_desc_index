@@ -10568,7 +10568,7 @@ dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from
 dev-util/rosdep 0.11.5 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 0.1.12 0.1.13 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
-dev-util/rpmdevtools 8.3 8.3-r1 8.5: Collection of rpm packaging related utilities
+dev-util/rpmdevtools 8.3 8.3-r1 8.5 8.10: Collection of rpm packaging related utilities
 dev-util/rr 4.5.0: Record and Replay Framework
 dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
