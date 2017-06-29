@@ -4,7 +4,3 @@
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
 # Remask as this profile is little endian.
 big-endian
-
-# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
-# Mask multilib, since we cannot use it.
-multilib

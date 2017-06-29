@@ -6,6 +6,10 @@
 
 # This file contains a list of useflags that cannot be used on sparc.
 
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
+
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
 # kwallet integration split from kde to distinct flag
 kwallet

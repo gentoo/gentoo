@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
+
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
 # media-libs/libmtp not tested
 mtp
