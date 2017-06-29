@@ -2,17 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils git-r3
+inherit eutils
 
 DESCRIPTION="A library that performs application layer protocol identification for flows"
 HOMEPAGE="http://research.wand.net.nz/software/libprotoident.php"
-EGIT_REPO_URI="https://github.com/wanduow/libprotoident"
-EGIT_BRANCH="develop"
+SRC_URI="http://research.wand.net.nz/software/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0/2"
-KEYWORDS=""
-IUSE="static-libs +tools"
+KEYWORDS="~amd64 ~x86"
+IUSE="static-libs tools"
 
 DEPEND="
 	>=net-libs/libtrace-4.0.1
@@ -25,9 +24,9 @@ RDEPEND="
 src_prepare() {
 	default
 
-	sed -i -e '/-Werror/d' lib/Makefile.am || die
-
-	eautoreconf
+	sed -i \
+		-e '/-Werror/d' \
+		lib/Makefile{.am,.in} || die
 }
 
 src_configure() {
