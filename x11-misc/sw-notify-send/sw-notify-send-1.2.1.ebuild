@@ -1,9 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit autotools-utils
+EAPI=5
 
 MY_P=tinynotify-send-${PV}
 DESCRIPTION="A system-wide variant of tinynotify-send"
@@ -15,9 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="x11-libs/libtinynotify
+RDEPEND="x11-libs/libtinynotify:0=
 	~x11-libs/libtinynotify-cli-${PV}
-	x11-libs/libtinynotify-systemwide"
+	x11-libs/libtinynotify-systemwide:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -25,11 +23,11 @@ DOCS=( README )
 S=${WORKDIR}/${MY_P}
 
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		--disable-library
 		--disable-regular
 		--enable-system-wide
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
