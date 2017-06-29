@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="appindicator network nls policykit pulseaudio thunar"
+IUSE="appindicator network nls policykit pulseaudio"
 
 COMMON_DEPEND="
 	dev-python/pygobject:3
@@ -54,7 +54,6 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	policykit? ( sys-auth/polkit )
 	pulseaudio? ( media-sound/pulseaudio[bluetooth] )
-	thunar? ( xfce-base/thunar )
 	!net-wireless/gnome-bluetooth
 "
 
@@ -89,7 +88,9 @@ src_configure() {
 		$(use_enable policykit polkit)
 		$(use_enable nls)
 		$(use_enable pulseaudio)
-		$(use_enable thunar thunar-sendto)
+		# thunar integration is a single data file with no extra deps
+		# so install it unconditionally
+		--enable-thunar-sendto
 	)
 	econf "${myconf[@]}"
 }
