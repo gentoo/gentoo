@@ -15,5 +15,6 @@
 	</upstream>
 	<use>
 		<flag name="experimental">Enable experimental features (showscore and status_hilite)</flag>
+		<flag name="mail">Enable mail notification in-game</flag>
 	</use>
 </pkgmetadata>
