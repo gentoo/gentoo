@@ -15,15 +15,12 @@ KEYWORDS=""
 IUSE="static-libs +tools"
 
 DEPEND="
-	>=net-libs/libtrace-3.0.9
-	tools? ( net-libs/libflowmanager )
+	>=net-libs/libtrace-4.0.1
+	>=net-libs/libflowmanager-3.0.0
 "
 RDEPEND="
 	${DEPEND}
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-lpi_find_unknown-snprintf.patch
-)
 
 src_prepare() {
 	default
