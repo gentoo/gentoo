@@ -1,9 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit autotools-utils
+EAPI=6
 
 DESCRIPTION="A lightweight implementation of Desktop Notification Spec"
 HOMEPAGE="https://github.com/mgorny/libtinynotify/"
@@ -14,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc static-libs"
 
-RDEPEND="sys-apps/dbus"
+RDEPEND="sys-apps/dbus:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( >=dev-util/gtk-doc-1.18 )"
@@ -22,10 +20,16 @@ DEPEND="${RDEPEND}
 DOCS=( README )
 
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		$(use_enable debug)
 		$(use_enable doc gtk-doc)
+		$(use_enable static-libs static)
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete
 }
