@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 inherit gnome2-utils linux-info python-single-r1 systemd
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
