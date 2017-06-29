@@ -1,0 +1,12 @@
+diff -Naur libarchive-3.3.0.orig/libarchive/archive_openssl_hmac_private.h libarchive-3.3.0/libarchive/archive_openssl_hmac_private.h
+--- libarchive-3.3.0.orig/libarchive/archive_openssl_hmac_private.h	2017-02-24 11:08:04.378701206 -0800
++++ libarchive-3.3.0/libarchive/archive_openssl_hmac_private.h	2017-02-24 11:08:57.275225258 -0800
+@@ -28,7 +28,7 @@
+ #include <openssl/hmac.h>
+ #include <openssl/opensslv.h>
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ #include <stdlib.h> /* malloc, free */
+ #include <string.h> /* memset */
+ static inline HMAC_CTX *HMAC_CTX_new(void)
