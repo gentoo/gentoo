@@ -462,7 +462,6 @@ app-emulation/docker:aufs - Enables dependencies for the "aufs" graph driver, in
 app-emulation/docker:btrfs - Enables dependencies for the "btrfs" graph driver, including necessary kernel flags.
 app-emulation/docker:container-init - Makes the a staticly-linked init system tini available inside a container.
 app-emulation/docker:device-mapper - Enables dependencies for the "devicemapper" graph driver, including necessary kernel flags.
-app-emulation/docker:experimental - Enable features labelled by upstream to be of "experimental" quality and not yet ready for general consumption.
 app-emulation/docker:overlay - Enables dependencies for the "overlay" graph driver, including necessary kernel flags.
 app-emulation/docker:pkcs11 - Enables pkcs-11 support.
 app-emulation/docker-runc:ambient - Enable support for ambient capability
