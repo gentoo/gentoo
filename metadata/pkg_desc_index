@@ -17876,7 +17876,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.10.107 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.1.39-r1 4.1.40 4.1.41 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.4.69 4.4.70 4.4.71 4.4.72 4.4.73 4.4.74 4.4.75 4.9.6-r1 4.9.16 4.9.34 4.10.17 4.11.7: Full sources including the Gentoo patchset for the 4.11 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.10.107 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.1.39-r1 4.1.40 4.1.41 4.4.52 4.4.65 4.4.66 4.4.67 4.4.68 4.4.69 4.4.70 4.4.71 4.4.72 4.4.73 4.4.74 4.4.75 4.9.6-r1 4.9.16 4.9.34 4.9.35 4.10.17 4.11.7: Full sources including the Gentoo patchset for the 4.11 kernel tree
 sys-kernel/git-sources 4.12_rc1 4.12_rc2 4.12_rc3 4.12_rc4 4.12_rc5 4.12_rc6 4.12_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
