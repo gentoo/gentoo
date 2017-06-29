@@ -6872,7 +6872,7 @@ dev-perl/Weather-Com 2.0.0: fetching weather information from weather.com
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 0.930.0-r1 0.940.0 1.0.2: Web service API to MusicBrainz database
 dev-perl/WordNet-QueryData 1.490.0-r1: Direct perl interface to WordNet database
-dev-perl/Wx 0.992.700-r1 0.992.800: Perl bindings for wxGTK
+dev-perl/Wx 0.992.800 0.993.200: Perl bindings for wxGTK
 dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
 dev-perl/Wx-Perl-ProcessStream 0.320.0-r2: access IO of external processes via events
 dev-perl/Wx-Scintilla 0.390.0-r2: Scintilla source code editing component for wxWidgets
