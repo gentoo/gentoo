@@ -6,7 +6,9 @@
     <name>XFCE Team</name>
   </maintainer>
   <upstream>
+    <!-- applies to 0.5.4 -->
     <remote-id type="sourceforge">xarchiver</remote-id>
+    <!-- applies to 0.5.4.8+ -->
     <remote-id type="github">ib/xarchiver</remote-id>
   </upstream>
 </pkgmetadata>
