@@ -6138,7 +6138,7 @@ dev-perl/LWP-UserAgent-Cached 0.60.0: LWP::UserAgent with simple caching mechani
 dev-perl/LWP-UserAgent-Determined 1.70.0: A virtual browser that retries errors
 dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects you from harm
 dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
-dev-perl/LaTeX-Encode 0.91.6 0.91.6-r1 0.92.0: Encode characters for LaTeX formatting
+dev-perl/LaTeX-Encode 0.91.6-r1 0.92.0: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
 dev-perl/Lab-Measurement 3.531.0 3.550.0 9999: Measurement control and automation with Perl
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 9999: Perl bindings to the LabOne API of Zurich Instruments
