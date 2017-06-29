@@ -27,6 +27,9 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
+		# avoid installing .cmake/packages, e.g.:
+		# >>> /tmp/portage/dev-cpp/gflags-9999/homedir/.cmake/packages/gflags/a7fca4708532331c2d656af0fdc8b8b9
+		-DREGISTER_INSTALL_PREFIX=OFF
 	)
 	cmake-utils_src_configure
 }
