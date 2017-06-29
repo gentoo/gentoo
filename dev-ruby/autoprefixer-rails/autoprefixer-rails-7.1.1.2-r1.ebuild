@@ -23,9 +23,11 @@ IUSE=""
 
 ruby_add_rdepend "dev-ruby/execjs:*"
 
-ruby_add_bdepend "dev-ruby/rails
+ruby_add_bdepend "test? (
+	dev-ruby/rails
 	dev-ruby/rake
-	dev-ruby/rspec-rails"
+	dev-ruby/rspec-rails
+)"
 
 all_ruby_prepare() {
 	sed -i -e "/bundler/d" -e "/BUNDLE/d" spec/app/config/boot.rb || die
