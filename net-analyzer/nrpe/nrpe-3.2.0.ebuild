@@ -42,7 +42,7 @@ src_compile() {
 src_install() {
 	default
 
-	dodoc Changelog SECURITY.md
+	dodoc CHANGELOG.md SECURITY.md
 	insinto /etc/nagios
 	newins sample-config/nrpe.cfg nrpe.cfg
 	fowners root:nagios /etc/nagios/nrpe.cfg
