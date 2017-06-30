@@ -282,7 +282,7 @@ app-arch/lz4 0_p106-r1 0_p120 0_p131 0_p131-r1 1.7.5-r1 9999: Extremely Fast Com
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
 app-arch/lzip 1.18 1.19: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.17 1.18 1.19 1.20_pre1: Lziprecover is a data recovery tool and decompressor for lzip compressed files
-app-arch/lzlib 1.6 1.7 1.8: Library for lzip compression
+app-arch/lzlib 1.9: Library for lzip compression
 app-arch/lzma 9.20-r1: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.03: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.1.5-r2 2.2.0-r1: shell script that generates a self-extractible tar.gz
@@ -295,12 +295,12 @@ app-arch/par2cmdline 0.6.12 0.6.13 0.7.0 0.7.1: A PAR-2.0 file verification and 
 app-arch/patool 1.12: Portable archive file manager
 app-arch/pax 3.4.12.16 3.4.12.16-r1 20160306: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12 1.1.12-r1 1.1.13: Parallel bzip2 (de)compressor using libbz2
-app-arch/pdlzip 1.5 1.6 1.7: Public-domain version of lzip compressor
+app-arch/pdlzip 1.8: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.3.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6 9999: Parallel Indexed XZ compressor
-app-arch/plzip 1.3 1.4 1.5: Parallel lzip compressor
+app-arch/plzip 1.6: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20110811 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
@@ -339,7 +339,7 @@ app-arch/xz-utils 5.2.2 5.2.3 9999: utils for managing LZMA compressed files
 app-arch/zip 2.32-r1 3.0 3.0-r1 3.0-r2 3.0-r3: Info ZIP (encryption support)
 app-arch/zoo 2.10-r4 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.0_p20140705 1.0.1-r2: Very good, but slow, deflate or zlib compression
-app-arch/zpaq 7.13-r1: Journaling incremental deduplicating archiving compressor
+app-arch/zpaq 7.13-r1 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zstd 1.1.0 1.1.3 1.2.0: zstd fast compression library
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5: The Advanced Maryland Automatic Network Disk Archiver
