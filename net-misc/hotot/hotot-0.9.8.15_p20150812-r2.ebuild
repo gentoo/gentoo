@@ -13,7 +13,7 @@ SRC_URI="https://github.com/lyricat/Hotot/tarball/452fc0924a98923b -> ${P}.tar.g
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="chrome kde qt5"
 
 REQUIRED_USE="|| ( chrome qt5 ) ${PYTHON_REQUIRED_USE}"
