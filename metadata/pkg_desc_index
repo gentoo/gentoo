@@ -10402,7 +10402,7 @@ dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using ac
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/drone 0.7.1_p20170603 0.7.2 0.7.3: A Continuous Delivery platform built on Docker, written in Go
-dev-util/drone-cli 0.7.0_p20170603 0.7.0_p20170620: Command-line interface for Drone
+dev-util/drone-cli 0.7.0_p20170603 0.7.0_p20170620 0.7.0_p20170629: Command-line interface for Drone
 dev-util/drone-ui 0.5.0 0.6.0_rc1_pre20170412: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
@@ -10711,7 +10711,7 @@ dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 3.8.4 4.1.3 4.2 4.2.1 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
-dev-vcs/mr 1.20160123 1.20170129 1.99999999: Multiple Repository management tool
+dev-vcs/mr 1.20170129 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
 dev-vcs/pwclient 20121105131501 20141110122616: command line utility for interacting with patchwork repos
 dev-vcs/qbzr 0.23.1: Qt frontend for Bazaar
