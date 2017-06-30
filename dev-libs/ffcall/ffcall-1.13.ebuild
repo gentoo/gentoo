@@ -39,33 +39,18 @@ src_prepare() {
 		# and -Wa, are a must to pass here.
 		sed -e 's/$(CC) /&$(CFLAGS) /g' \
 			-i "${mfi}" || die
-
-		# usually uses '$(CC) ... -o something' for linking
-		sed -e 's/\($(CC) .* \)-o /\1 $(LDFLAGS) -o /g' \
-			-i "${mfi}" || die
 	done
 	eapply_user
 }
 
 src_configure() {
 	append-flags -fPIC
-	append-flags $(test-flags-CC -Wa,--noexecstack) #253963
 
 	# Doc goes in datadir
 	econf \
 		--datadir="${EPREFIX}"/usr/share/doc/${PF} \
 		--enable-shared \
 		--disable-static
-}
-
-src_compile() {
-	# Because CHOST is set to (for example)
-	# alphaev67-unknown-linux-gnu, CPU gets set to alphaev67 which
-	# doesn't work in the Makefile (29 Jan 2004 agriffis)
-	local cpu_setting
-	[[ "${ARCH}" == "alpha" ]] && cpu_setting='CPU=alpha'
-
-	emake ${cpu_setting}
 }
 
 src_install() {
