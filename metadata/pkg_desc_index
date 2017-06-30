@@ -2363,7 +2363,7 @@ app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.3 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.9.9 0.10.1: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.1: C++ library to read and parse graphics in WPG
-app-text/libwps 0.4.4-r1 0.4.6: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.6: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b: graphical PDF viewer which aims to superficially resemble less(1)
@@ -2885,7 +2885,7 @@ dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
 dev-cpp/libassa 3.5.1-r2: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
-dev-cpp/libcmis 0.5.2_pre20160820 0.5.2_pre20160820-r1 9999: C++ client library for the CMIS interface
+dev-cpp/libcmis 0.5.2_pre20160820-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
@@ -13209,7 +13209,7 @@ media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library f
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 13.0.5 13.0.6 17.0.6 17.0.7 17.1.0 17.1.1 17.1.2 17.1.3 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
-media-libs/mlt 6.4.1-r1 6.4.1-r2: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.4.1-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.27 1.31 1.35.1 1.36.3 1.37: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
@@ -13680,7 +13680,7 @@ media-sound/alsa-utils 1.1.2 1.1.3 1.1.4: Advanced Linux Sound Architecture Util
 media-sound/alsamixer-app 0.1: AlsaMixer.app is a simple mixer dockapp
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
-media-sound/amarok 2.8.0-r3 2.8.90-r2 2.8.90-r3: Advanced audio player based on KDE framework
+media-sound/amarok 2.8.90-r3: Advanced audio player based on KDE framework
 media-sound/ams 2.1.2: Alsa Modular Software Synthesizer
 media-sound/amsynth 1.3.2-r1 1.5.1-r1 1.6.4-r1 1.7.0-r1 1.7.1-r1: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
