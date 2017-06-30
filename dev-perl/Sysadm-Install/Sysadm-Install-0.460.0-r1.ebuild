@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ IUSE="hammer"
 RDEPEND="dev-perl/TermReadKey
 	dev-perl/libwww-perl
 	>=dev-perl/Log-Log4perl-1.28
+	dev-perl/File-Which
 	hammer? ( dev-perl/Expect )"
 DEPEND="${RDEPEND}"
 
