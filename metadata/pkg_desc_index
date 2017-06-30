@@ -17586,7 +17586,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable 
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 9.3.1 9.4.0 10.0.1 10.0.2 2016.2.9999 2017.1.9999: A virtual network service for Openstack
+sys-cluster/neutron 9.4.0 10.0.2 2016.2.9999 2017.1.9999: A virtual network service for Openstack
 sys-cluster/nova 14.0.7 15.0.5 15.0.6 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
@@ -17609,7 +17609,7 @@ sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
 sys-cluster/singularity 2.2.1: Application containers for Linux
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
-sys-cluster/swift 2.10.1 2.10.2 2.13.0 2.13.1 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.10.2 2.13.1 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 2.2.0 2.2.1 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
