@@ -12934,8 +12934,8 @@ media-libs/assimp 3.0.1270 3.1.1 3.2-r2 3.2-r3 3.3.1: Importer library to import
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
 media-libs/aubio 0.4.1-r1 0.4.2-r1 0.4.3-r1 0.4.4-r1 0.4.5-r1: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
-media-libs/avidemux-core 2.6.8 2.6.20 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.6.8 9999: Plugins for the video editor media-video/avidemux
+media-libs/avidemux-core 2.6.8 2.6.20 2.6.20-r1 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
+media-libs/avidemux-plugins 2.6.8 2.6.20 9999: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.12 0.1.18 0.1.20 0.1.22 0.1.24 0.1.26 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bio2jack 0.9-r1: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r1: blib is a library full of useful things to hack the Blinkenlights
@@ -14096,7 +14096,7 @@ media-video/aravis 0.1.14 0.1.15 9999: Library for video acquisition using Genic
 media-video/asfrecorder 1.1: ASFRecorder - Download Windows Media Streaming files
 media-video/atomicparsley 0.9.0: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
 media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
-media-video/avidemux 2.6.8 9999: Video editor designed for simple cutting, filtering and encoding tasks
+media-video/avidemux 2.6.8 2.6.20 9999: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/baka-mplayer 2.0.4: Cross-platform libmpv-based multimedia player with uncluttered design
 media-video/bashnapi 1.1.5 1.3.5: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
