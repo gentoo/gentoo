@@ -26,7 +26,6 @@ DEPEND="tools? ( net-libs/libmnl )"
 RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(net:src)"
-BUILD_PARAMS="KERNELDIR=${KERNEL_DIR} V=1"
 BUILD_TARGETS="module"
 CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER ~PADATA"
 WARNING_PADATA="If you're running a multicore system you likely should enable CONFIG_PADATA for improved performance and parallel crypto."
@@ -39,6 +38,7 @@ pkg_setup() {
 }
 
 src_compile() {
+	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR} V=1"
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	use module && linux-mod_src_compile
 	use tools && emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools
