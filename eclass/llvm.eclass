@@ -91,9 +91,9 @@ get_llvm_prefix() {
 			fi
 		fi
 
-		local p=${EPREFIX}/usr/lib/llvm/${slot}
-		if [[ -x ${p}/bin/llvm-config ]]; then
-			echo "${p}"
+		# check if LLVM package is installed
+		if has_version "sys-devel/llvm:${slot}"; then
+			echo "${EPREFIX}/usr/lib/llvm/${slot}"
 			return
 		fi
 	done
@@ -105,13 +105,12 @@ get_llvm_prefix() {
 
 	# fallback to :0
 	# assume it's always <= 4 (the lower max_slot allowed)
-	p=${EPREFIX}/usr
-	if [[ -x ${p}/bin/llvm-config ]]; then
-		echo "${p}"
+	if has_version "sys-devel/llvm:0"; then
+		echo "${EPREFIX}/usr"
 		return
 	fi
 
-	die "No LLVM slot${1:+ <= ${1}} found in PATH!"
+	die "No LLVM slot${1:+ <= ${1}} found installed!"
 }
 
 # @FUNCTION: llvm_pkg_setup
