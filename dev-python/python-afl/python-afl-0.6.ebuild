@@ -19,11 +19,7 @@ RDEPEND="app-forensics/afl"
 DEPEND=">=dev-python/cython-0.19[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-python_prepare_all() {
-	# afl-cmin errors with: "Error: do not use this script in /tmp or /var/tmp"
-	rm tests/test_cmin.py || die
-	distutils-r1_python_prepare_all
-}
+PATCHES=( "${FILESDIR}"/${P}-fix-test.patch )
 
 python_test() {
 	PATH="${PATH}:." nosetests --verbose || die
