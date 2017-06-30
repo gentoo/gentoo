@@ -60,6 +60,16 @@ src_install() {
 }
 
 pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		ewarn "Please note that using proprietary OpenCL libraries together with the"
+		ewarn "Open Source amdgpu stack is not officially supported by AMD. Do not ask them"
+		ewarn "for support in case of problems with this package."
+		ewarn ""
+		ewarn "Furthermore, if you have the whole AMDGPU-Pro stack installed this package"
+		ewarn "will almost certainly conflict with it. This might change once AMDGPU-Pro"
+		ewarn "has become officially supported by Gentoo."
+	fi
+
 	elog "AMD OpenCL driver relies on dev-libs/ocl-icd to work. To enable it, please run"
 	elog ""
 	elog "    eselect opencl set ocl-icd"
