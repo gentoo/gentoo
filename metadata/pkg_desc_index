@@ -15674,7 +15674,7 @@ net-print/cndrvcups-common-lb 3.10 3.20: Common files for Canon drivers
 net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4 2.2.2-r1 2.2.2-r2 2.2.2-r3 2.2.3 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.13.4 1.13.5 1.14.0 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.13.5 1.14.0 1.14.1 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -17112,7 +17112,7 @@ sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
 sys-apps/daemonize 1.7.4 1.7.5 1.7.6: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11: Miscellaneous commands used on macOS, Sierra 10.12
-sys-apps/dbus 1.10.18: A message bus system, a simple way for applications to talk to each other
+sys-apps/dbus 1.10.18 1.10.20: A message bus system, a simple way for applications to talk to each other
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.7 4.8 4.8.1 4.8.1.1: A selection of tools from Debian
