@@ -5342,22 +5342,33 @@ net-analyzer/tcpreplay:tcpdump - Use net-analyzer/tcpdump for packet decoding fe
 net-analyzer/testssl:bundled-openssl - Install precompiled versions of OpenSSL for greater testing coverage
 net-analyzer/wireshark:adns - Use the GNU net-dns/c-ares library to resolve DNS names
 net-analyzer/wireshark:androiddump - Install androiddump, an extcap interface to capture from Android devices
+net-analyzer/wireshark:capinfos - Install capinfos, to print information about capture files
+net-analyzer/wireshark:captype - Install captype, to print the file types of capture files
 net-analyzer/wireshark:ciscodump - Install ciscodump, extcap interface to capture from a remote Cisco router
 net-analyzer/wireshark:crypt - Use dev-libs/libgcrypt to decrypt traffic
+net-analyzer/wireshark:dftest - Install dftest, to display filter byte-code, for debugging dfilter routines
 net-analyzer/wireshark:doc-pdf - Build documentation in pdf format (US and a4 paper sizes)
+net-analyzer/wireshark:dumpcap - Install dumpcap, to dump network traffic from inside wireshark
+net-analyzer/wireshark:editcap - Install editcap, to edit and/or translate the format of capture files
 net-analyzer/wireshark:libssh - Use net-libs/libssh (for sshdump)
 net-analyzer/wireshark:libxml2 - Use dev-libs/libxml2 for handling XML configuration in dissectors
+net-analyzer/wireshark:mergecap - Install mergecap, to merge two or more capture files into one
 net-analyzer/wireshark:netlink - Use dev-libs/libnl
 net-analyzer/wireshark:nghttp2 - Use net-libs/nghttp2 for HTTP/2 support
 net-analyzer/wireshark:pcap - Use net-libs/libpcap for network packet capturing (build dumpcap, rawshark)
 net-analyzer/wireshark:randpkt - Install randpkt, a utility for creating pcap trace files full of random packets
 net-analyzer/wireshark:randpktdump - Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)
+net-analyzer/wireshark:reordercap - Install reordercap, to reorder input file by timestamp into output file
 net-analyzer/wireshark:sbc - Use media-libs/sbc for playing back SBC encoded packets
+net-analyzer/wireshark:sharkd - Install sharkd, the daemon variant of wireshark
 net-analyzer/wireshark:smi - Use net-libs/libsmi to resolve numeric OIDs into human readable format
 net-analyzer/wireshark:snappy - Use app-arch/snappy for snappy compression and decompression
 net-analyzer/wireshark:spandsp - Use media-libs/spandsp for for G.722 and G.726 codec support in the RTP Player
 net-analyzer/wireshark:sshdump - Install sshdump, an extcap interface to capture from a remote host through SSH
+net-analyzer/wireshark:text2pcap - Install text2pcap, to generate a capture file from an ASCII hexdump of packets
 net-analyzer/wireshark:tfshark - Install tfshark, a terminal-based version of the FileShark capability
+net-analyzer/wireshark:tshark - Install tshark, to dump and analyzer network traffic from the command line
+net-analyzer/wireshark:udpdump - Install udpdumpi, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file
 net-analyzer/zabbix:agent - Enable zabbix agent (for to-be-monitored machines)
 net-analyzer/zabbix:frontend - Enable zabbix web frontend
 net-analyzer/zabbix:ipv6 - Turn on support of IPv6
