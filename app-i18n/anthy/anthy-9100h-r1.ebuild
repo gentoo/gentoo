@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 inherit elisp-common eutils
 
 DESCRIPTION="Anthy -- free and secure Japanese input system"
@@ -28,6 +28,7 @@ src_prepare() {
 			-e "/set_input_encoding eucjp/aread ${EPREFIX}/var/lib/canna/dic/canna/nichan.ctd" \
 			mkworddic/dict.args.in || die
 	fi
+	eapply_user
 }
 
 src_configure() {
