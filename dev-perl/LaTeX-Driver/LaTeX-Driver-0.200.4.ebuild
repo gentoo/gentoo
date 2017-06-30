@@ -22,6 +22,7 @@ RDEPEND="
 	virtual/perl-Getopt-Long
 	dev-perl/Readonly
 	virtual/perl-parent
+	virtual/latex-base
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
