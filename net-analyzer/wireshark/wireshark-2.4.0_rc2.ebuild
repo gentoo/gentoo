@@ -12,10 +12,11 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="
-	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 doc doc-pdf
-	geoip gtk kerberos lua +netlink nghttp2 +pcap portaudio +qt5 sbc selinux
-	smi libssh libxml2 randpkt randpktdump snappy spandsp sshdump ssl tfshark
-	zlib
+	adns androiddump +capinfos +caps +captype ciscodump cpu_flags_x86_sse4_2
+	+dftest doc doc-pdf +dumpcap +editcap geoip gtk kerberos libssh libxml2 lua
+	+mergecap +netlink nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump
+	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl +text2pcap
+	tfshark +tshark +udpdump zlib
 "
 REQUIRED_USE="
 	ciscodump? ( libssh )
@@ -146,11 +147,22 @@ src_configure() {
 	econf \
 		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
 		$(use_enable androiddump) \
+		$(use_enable capinfos) \
+		$(use_enable captype) \
 		$(use_enable ciscodump) \
+		$(use_enable dftest) \
+		$(use_enable dumpcap) \
+		$(use_enable editcap) \
+		$(use_enable mergecap) \
 		$(use_enable randpkt) \
 		$(use_enable randpktdump) \
+		$(use_enable reordercap) \
+		$(use_enable sharkd) \
 		$(use_enable sshdump) \
+		$(use_enable text2pcap) \
 		$(use_enable tfshark) \
+		$(use_enable tshark) \
+		$(use_enable udpdump) \
 		$(use_with adns c-ares) \
 		$(use_with caps libcap) \
 		$(use_with geoip) \
