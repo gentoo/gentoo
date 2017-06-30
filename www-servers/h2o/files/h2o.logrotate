@@ -1,0 +1,8 @@
+/var/log/h2o/*.log {
+	missingok
+	delaycompress
+	sharedscripts
+	postrotate
+		/etc/init.d/h2o reload > /dev/null 2>&1 || true
+	endscript
+}
