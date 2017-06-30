@@ -5,16 +5,20 @@ EAPI=6
 
 inherit autotools multiprocessing
 
+MYP=${PN}-gpl-${PV}
+
 DESCRIPTION="A complete Ada graphical toolkit"
 HOMEPAGE="http://libre.adacore.com//tools/gtkada/"
-SRC_URI="https://github.com/AdaCore/gtkada/archive/${P}.tar.gz"
+SRC_URI="http://mirrors.cdn.adacore.com/art/591ae7a8c7a4473fcbb154c9
+	-> ${MYP}-src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+shared static"
+IUSE="gnat_2016 gnat_2017 +shared static"
 
-RDEPEND="dev-lang/gnat-gpl:*
+RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
+	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
 	dev-libs/atk
 	dev-libs/glib:2
 	media-libs/fontconfig
@@ -24,22 +28,11 @@ RDEPEND="dev-lang/gnat-gpl:*
 	x11-libs/gtk+:3
 	x11-libs/pango"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 
-S="${WORKDIR}"/${PN}-${P}
+S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
-
-pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
-	export GNATPREP="${GCC/gcc/gnatprep}"
-	if [[ -z "$(type ${GNATPREP} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set ADA=gcc-4.9.4 in make.conf"
-		die "ada compiler not available"
-	fi
-}
 
 src_prepare() {
 	default
@@ -48,17 +41,25 @@ src_prepare() {
 }
 
 src_configure() {
+	if use gnat_2016; then
+		GCC_PV=4.9.4
+	else
+		GCC_PV=6.3.0
+	fi
+	GCC=${CHOST}-gcc-${GCC_PV}
 	econf \
+		--prefix="${D}/usr" \
 		$(use_enable static) \
 		$(use_enable shared) \
 		--without-GL
 }
 
 src_compile() {
-	GCC=${GCC} emake -j1 PROCESSORS=$(makeopts_jobs)
+	GNATPREP=${CHOST}-gnatprep-${GCC_PV}
+	GCC=${GCC} emake -j1 GNATPREP=${GNATPREP} PROCESSORS=$(makeopts_jobs)
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}" install
+	emake -j1 install
 	einstalldocs
 }

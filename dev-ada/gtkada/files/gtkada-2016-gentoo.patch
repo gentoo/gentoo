@@ -11,15 +11,6 @@
     end Compiler;
 --- gtkada-gpl-2016-src/Makefile.in.old	2017-01-21 22:42:18.319969095 +0100
 +++ gtkada-gpl-2016-src/Makefile.in	2017-01-21 22:42:33.989700236 +0100
-@@ -39,7 +39,7 @@
- prefix=@prefix@
- exec_prefix=@exec_prefix@
- libdir=@libdir@
--datadir=@datadir@
-+datadir=$(DESTDIR)@datadir@
- datarootdir=@datarootdir@
- exampledir=${datadir}/examples/gtkada/testgtk
- 
 @@ -60,30 +60,33 @@
  LIBRARY_TYPE_FOR_TOOLS=static
  endif
