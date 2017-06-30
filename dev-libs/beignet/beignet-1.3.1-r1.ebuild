@@ -81,7 +81,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${VENDOR_DIR}"
 		-DOCLICD_COMPAT=$(usex ocl-icd)
-		$(usex ocl2 "" "-DENABLE_OPENCL_20=OFF")
+		$(usex ocl20 "" "-DENABLE_OPENCL_20=OFF")
 	)
 
 	cmake-utils_src_configure
