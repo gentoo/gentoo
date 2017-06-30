@@ -4,22 +4,13 @@
               for Switches ("C") use ("-O2");
        end case;
  
-+      for Driver ("C") use External ("CC", "gcc");
++      for Driver ("C") use External ("GCC", "gcc");
 +      for PIC_Option ("C") use ("-fPIC");
        for Switches ("C") use Compiler'Switches ("C") & Gtk_Include;
        for Switches ("Objective-C") use Compiler'Switches ("Objective-C") & Gtk_Include;
     end Compiler;
 --- gtkada-gpl-2016-src/Makefile.in.old	2017-01-21 22:42:18.319969095 +0100
 +++ gtkada-gpl-2016-src/Makefile.in	2017-01-21 22:42:33.989700236 +0100
-@@ -39,7 +39,7 @@
- prefix=@prefix@
- exec_prefix=@exec_prefix@
- libdir=@libdir@
--datadir=@datadir@
-+datadir=$(DESTDIR)@datadir@
- datarootdir=@datarootdir@
- exampledir=${datadir}/examples/gtkada/testgtk
- 
 @@ -60,30 +60,33 @@
  LIBRARY_TYPE_FOR_TOOLS=static
  endif
@@ -32,13 +23,13 @@
  tools:
  	@echo "====== Building tools ====="
 -	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Psrc/tools/tools.gpr
-+	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
 +	  -Psrc/tools/tools.gpr -cargs:Ada $(ADAFLAGS)
  
  build_library_type/%:  src/gtkada-intl.adb
  	@echo "====== Building $(@F) libraries ====="
 -	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr
-+	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr \
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr \
 +	  -cargs:Ada $(ADAFLAGS) -cargs:C $(CFLAGS)
  ifeq (${HAVE_OPENGL}, True)
  	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/opengl/gtkada_gl.gpr
@@ -55,17 +46,13 @@
  tests: testgtk/opengl/view_gl.adb
  	@echo "====== Building tests ====="
 -	cd testgtk; ${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Ptestgtk.gpr -aP ../src
-+	cd testgtk; ${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	cd testgtk; ${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
 +	  -Ptestgtk.gpr -aP ../src -cargs:Ada $(ADAFLAGS)
  
  install/%: force
  	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(@F) --build-name=$(@F) \
-@@ -118,12 +118,9 @@
- 		--project-subdir=lib/gnat gtkada
- endif
- 
--install: install-clean
-+install:
+@@ -121,9 +121,6 @@
+ install: install-clean
  	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
  		--mode=usage -Psrc/tools/tools.gpr
 -	cd testgtk; ${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \

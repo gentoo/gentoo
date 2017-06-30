@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic readme.gentoo-r1 systemd versionator user
+inherit flag-o-matic readme.gentoo-r1 systemd versionator user
 
 MY_PV="$(replace_version_separator 4 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -30,26 +30,22 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+)
+
+DOCS=( README ChangeLog ReleaseNotes doc/HACKING )
+
 pkg_setup() {
 	enewgroup tor
 	enewuser tor -1 -1 /var/lib/tor tor
 }
 
-src_prepare() {
-	eapply "${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
-	eapply_user
-}
-
 src_configure() {
-	# Upstream isn't sure of all the user provided CFLAGS that
-	# will break tor, but does recommend against -fstrict-aliasing.
-	# We'll filter-flags them here as we encounter them.
-	filter-flags -fstrict-aliasing
-
 	econf \
+		--localstatedir="${EPREFIX}/var" \
 		--enable-system-torrc \
 		--enable-asciidoc \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
@@ -61,18 +57,14 @@ src_configure() {
 }
 
 src_install() {
+	default
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
 	newinitd "${FILESDIR}"/tor.initd-r8 tor
-	systemd_dounit "${FILESDIR}/${PN}.service"
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
-
-	emake DESTDIR="${D}" install
+	systemd_dounit contrib/dist/tor.service
 
 	keepdir /var/lib/tor
-
-	dodoc -r README ChangeLog ReleaseNotes doc/HACKING
 
 	fperms 750 /var/lib/tor
 	fowners tor:tor /var/lib/tor

@@ -51,6 +51,7 @@ src_configure() {
 		--enable-system-torrc \
 		--enable-asciidoc \
 		--disable-libfuzzer \
+		--disable-rust \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
