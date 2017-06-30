@@ -6003,7 +6003,7 @@ dev-perl/Gtk2-Ex-PodViewer 0.180.0-r1: a Gtk2 widget for displaying Plain old Do
 dev-perl/Gtk2-Ex-PrintDialog 0.30.0-r1: a simple, pure Perl dialog for printing PostScript data in GTK+ applications
 dev-perl/Gtk2-Ex-Simple-List 0.500.0-r1: A simple interface to Gtk2's complex MVC list widget
 dev-perl/Gtk2-ImageView 0.50.0-r1: Perl binding for the GtkImageView image viewer widget
-dev-perl/Gtk2-Notify 0.05-r1 0.50.0: A perl interface to the notification library
+dev-perl/Gtk2-Notify 0.50.0: A perl interface to the notification library
 dev-perl/Gtk2-SourceView2 0.100.0: Perl binding for the C library gtksourceview
 dev-perl/Gtk2-Unique 0.50.0-r1: Perl binding for C libunique library
 dev-perl/Guard 1.23.0: Safe cleanup blocks
@@ -6193,7 +6193,7 @@ dev-perl/MARC-XML 1.0.3: A subclass of MARC.pm to provide XML support
 dev-perl/MCE 1.705.0 1.809.0 1.821.0 1.826.0 1.827.0 1.829.0: Many-Core Engine providing parallel processing capabilities
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
 dev-perl/MIME-Base32 1.20.0 1.303.0: Base32 encoder / decoder
-dev-perl/MIME-Charset 1.9.3 1.12.0 1.12.2: Charset Informations for MIME
+dev-perl/MIME-Charset 1.12.2: Charset Informations for MIME
 dev-perl/MIME-EncWords 1.12.6-r1 1.14.3: Deal with RFC 2047 encoded words (improved)
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
 dev-perl/MIME-Lite-HTML 1.240.0: Provide routine to transform a HTML page in a MIME-Lite mail
@@ -13207,7 +13207,7 @@ media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADS
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 13.0.5 13.0.6 17.0.6 17.0.7 17.1.0 17.1.1 17.1.2 17.1.3 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5 13.0.6 17.0.6 17.0.7 17.1.0 17.1.1 17.1.2 17.1.3 17.1.4 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
