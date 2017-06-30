@@ -10635,7 +10635,7 @@ dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply bec
 dev-util/wsta 0.4.1 0.5.0: A CLI development tool for WebSocket APIs
 dev-util/wstool 0.1.13 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r3: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
-dev-util/xdelta 1.1.4-r1 3.0.10 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
+dev-util/xdelta 1.1.4-r1 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.12.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r1 0.2.17-r2: XML stream reformatter written in ANSI C
