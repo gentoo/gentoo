@@ -18448,7 +18448,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 46.0.2597.26 46.0.2597.32: A fast and secure web browser
-www-client/opera-beta 46.0.2597.14 46.0.2597.19: A fast and secure web browser
+www-client/opera-beta 47.0.2631.7: A fast and secure web browser
 www-client/opera-developer 48.0.2636.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
@@ -18462,8 +18462,8 @@ www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, H
 www-client/surf 0.6-r1 0.7-r1 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.9.818.50_p1 1.10.867.38_p1 1.10.867.42_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.11.880.3_p1 1.11.882.4_p1: A new browser for our friends
+www-client/vivaldi 1.9.818.50_p1 1.10.867.42_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.11.882.4_p1 1.11.890.4_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
