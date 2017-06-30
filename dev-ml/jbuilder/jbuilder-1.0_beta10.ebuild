@@ -25,6 +25,11 @@ OPAMSWITCH="system"
 S="${WORKDIR}/${MY_P}"
 OPAMROOT="${D}"
 
+src_prepare() {
+	# Disable Werror like behavior, doesnt build with ocaml 4.05 otherwise
+	sed -i -e 's/--dev//' Makefile || die
+}
+
 src_install() {
 	opam-installer -i \
 		--prefix="${ED}/usr" \
