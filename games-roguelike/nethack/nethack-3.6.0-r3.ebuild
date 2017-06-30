@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
 LICENSE="nethack"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
-IUSE="experimental X"
+IUSE="experimental X mail"
 
 RDEPEND="sys-libs/ncurses:0=
 	X? (
@@ -58,6 +58,7 @@ src_compile() {
 	use X && append-cflags -DX11_GRAPHICS -DUSE_XPM
 	use experimental &&
 		append-cflags -DSTATUS_VIA_WINDOWPORT -DSTATUS_HILITES -DSCORE_ON_BOTL
+	use mail || append-cflags -DNOMAIL
 
 	makeopts=(
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"
