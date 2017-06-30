@@ -6850,7 +6850,7 @@ dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Rel
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
 dev-perl/Validate-Tiny 1.551 1.600: Minimalistic data validation
-dev-perl/Variable-Magic 0.590.0 0.600.0 0.610.0: Associate user-defined magic to variables from Perl
+dev-perl/Variable-Magic 0.610.0: Associate user-defined magic to variables from Perl
 dev-perl/Version-Next 1.0.0: Increment module version numbers simply and correctly
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
