@@ -26,8 +26,9 @@ else
 fi
 
 COMMON="media-libs/mesa
-	sys-devel/clang:=
-	sys-devel/llvm:=
+	sys-devel/clang:0=
+	>=sys-devel/llvm-3.6:0=
+	ocl20? ( >=sys-devel/llvm-3.9:0= )
 	>=x11-libs/libdrm-2.4.70[video_cards_intel]
 	x11-libs/libXext
 	x11-libs/libXfixes"
@@ -39,8 +40,8 @@ DEPEND="${COMMON}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0_no-debian-multiarch.patch
-	"${FILESDIR}"/${PN}-1.3.1-oclicd_no_upstream_icdfile.patch
+	"${FILESDIR}"/no-debian-multiarch.patch
+	"${FILESDIR}"/${P}-oclicd_no_upstream_icdfile.patch
 	"${FILESDIR}"/${PN}-1.2.0_no-hardcoded-cflags.patch
 	"${FILESDIR}"/llvm-terminfo.patch
 )
