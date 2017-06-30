@@ -41,8 +41,7 @@ DEPEND="${COMMON}
 
 PATCHES=(
 	"${FILESDIR}"/no-debian-multiarch.patch
-	"${FILESDIR}"/${P}-ocl20_no_platform_check.patch
-	"${FILESDIR}"/${P}-oclicd_optional_gentoo.patch
+	"${FILESDIR}"/${P}-oclicd_no_upstream_icdfile.patch
 	"${FILESDIR}"/${PN}-1.2.0_no-hardcoded-cflags.patch
 	"${FILESDIR}"/llvm-terminfo.patch
 )
@@ -82,7 +81,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${VENDOR_DIR}"
 		-DOCLICD_COMPAT=$(usex ocl-icd)
-		-DENABLE_OPENCL_20=$(usex ocl20)
+		$(usex ocl2 "" "-DENABLE_OPENCL_20=OFF")
 	)
 
 	cmake-utils_src_configure
