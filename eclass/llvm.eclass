@@ -159,7 +159,13 @@ llvm_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		export PATH=$(get_llvm_prefix ${LLVM_MAX_SLOT})/bin:${PATH}
+		local llvm_prefix=$(get_llvm_prefix "${LLVM_MAX_SLOT}")
+
+		# do not prepend /usr/bin, it's not necessary and breaks other
+		# prepends, https://bugs.gentoo.org/622866
+		if [[ ${llvm_prefix} != ${EPREFIX}/usr ]]; then
+			export PATH=${llvm_prefix}/bin:${PATH}
+		fi
 	fi
 }
 
