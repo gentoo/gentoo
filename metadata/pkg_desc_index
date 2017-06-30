@@ -6650,7 +6650,7 @@ dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
 dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2 2.4.0 2.5.0 3.1.0 3.3.0: API for using the libvirt library from Perl
-dev-perl/Sysadm-Install 0.460.0: Typical installation tasks for system administrators
+dev-perl/Sysadm-Install 0.460.0-r1: Typical installation tasks for system administrators
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0 3.320.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Taint-Util 0.80.0-r1: Test for and flip the taint flag without regex matches or eval
