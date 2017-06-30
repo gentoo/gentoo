@@ -19213,7 +19213,7 @@ x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.6 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
-x11-plugins/purple-facebook 20160107 20160118 20160409 20170329 20170330: Facebook protocol plugin for libpurple
+x11-plugins/purple-facebook 20160107 20160118 20160409 20170329 20170330 20170608: Facebook protocol plugin for libpurple
 x11-plugins/purple-hangouts 0_p20170209: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
