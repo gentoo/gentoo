@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=JJSCHUTZ
-MODULE_VERSION=0.29
+DIST_AUTHOR=JJSCHUTZ
+DIST_VERSION=0.29
 inherit perl-module
 
 DESCRIPTION="Perl API client for Sphinx search engine"
@@ -19,6 +19,7 @@ RDEPEND="
 	dev-perl/DBI
 	virtual/perl-Data-Dumper
 	virtual/perl-Encode
+	dev-perl/List-MoreUtils
 	dev-perl/File-SearchPath
 	virtual/perl-Scalar-List-Utils
 	virtual/perl-Math-BigInt
@@ -29,5 +30,3 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )
 "
-
-SRC_TEST="do parallel"
