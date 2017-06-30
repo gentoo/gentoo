@@ -33,8 +33,6 @@ DOCS=( ChangeLog README nzbget.conf )
 
 S=${WORKDIR}/${PN}-${PV/_pre*/-testing}
 
-PATCHES=( "${FILESDIR}/${P}-fix-no-parcheck.patch" )
-
 check_compiler() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! test-flag-CXX -std=c++14; then
 		eerror "${P} requires a C++14-capable compiler. Your current compiler"
