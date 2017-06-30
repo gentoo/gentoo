@@ -6601,7 +6601,7 @@ dev-perl/Sort-Versions 1.620.0: A perl 5 module for sorting of revision-like num
 dev-perl/Specio 0.310.0 0.320.0 0.350.0 0.360.0 0.370.0: Type constraints and coercions for Perl
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
 dev-perl/Sphinx-Config 0.100.0: Sphinx search engine configuration file read/modify/write
-dev-perl/Sphinx-Search 0.290.0: Perl API client for Sphinx search engine
+dev-perl/Sphinx-Search 0.290.0-r1: Perl API client for Sphinx search engine
 dev-perl/Spiffy 0.460.0: Spiffy Perl Interface Framework For You
 dev-perl/Spreadsheet-ParseExcel 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.400.0: Write cross-platform Excel binary file
