@@ -4664,7 +4664,7 @@ dev-libs/atk 2.20.0 2.22.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.46: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
-dev-libs/beignet 1.2.1-r1 1.3.0 1.3.1 9999: OpenCL implementation for Intel GPUs
+dev-libs/beignet 1.3.1 1.3.1-r1 9999: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.104 1.106 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
