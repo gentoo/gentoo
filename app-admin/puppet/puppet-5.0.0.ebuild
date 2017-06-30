@@ -9,7 +9,7 @@ USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
-inherit elisp-common xemacs-elisp-common eutils user ruby-fakegem versionator
+inherit eutils user ruby-fakegem versionator
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="http://puppetlabs.com/"
@@ -18,7 +18,7 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~x86"
-IUSE="augeas diff doc emacs experimental ldap rrdtool selinux shadow sqlite vim-syntax xemacs"
+IUSE="augeas diff doc emacs experimental ldap rrdtool selinux shadow sqlite vim-syntax"
 RESTRICT="test"
 
 ruby_add_rdepend "
@@ -43,9 +43,6 @@ ruby_add_bdepend "
 # this should go in the above lists, but isn't because of test deps not being keyworded
 #   dev-ruby/rspec-collection_matchers
 
-DEPEND+=" ${DEPEND}
-	emacs? ( virtual/emacs )
-	xemacs? ( app-editors/xemacs )"
 RDEPEND+=" ${RDEPEND}
 	rrdtool? ( >=net-analyzer/rrdtool-1.2.23[ruby] )
 	selinux? (
@@ -54,8 +51,7 @@ RDEPEND+=" ${RDEPEND}
 	)
 	vim-syntax? ( >=app-vim/puppet-syntax-3.0.1 )
 	>=app-portage/eix-0.18.0"
-
-SITEFILE="50${PN}-mode-gentoo.el"
+PDEPEND="emacs? ( app-emacs/puppet-mode )"
 
 pkg_setup() {
 	enewgroup puppet
@@ -82,20 +78,6 @@ all_ruby_prepare() {
 
 	# Avoid failing spec that need further investigation.
 	rm spec/unit/module_tool/metadata_spec.rb || die
-}
-
-all_ruby_compile() {
-	if use emacs ; then
-		elisp-compile ext/emacs/puppet-mode.el
-	fi
-
-	if use xemacs ; then
-		# Create a separate version for xemacs to be able to install
-		# emacs and xemacs in parallel.
-		mkdir ext/xemacs
-		cp ext/emacs/* ext/xemacs/
-		xemacs-elisp-compile ext/xemacs/puppet-mode.el
-	fi
 }
 
 each_ruby_install() {
@@ -133,16 +115,6 @@ all_ruby_install() {
 	fowners -R :puppet /etc/puppetlabs
 	fowners -R :puppet /var/lib/puppet
 
-	if use emacs ; then
-		elisp-install ${PN} ext/emacs/puppet-mode.el*
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	fi
-
-	if use xemacs ; then
-		xemacs-elisp-install ${PN} ext/xemacs/puppet-mode.el*
-		xemacs-elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	fi
-
 	if use ldap ; then
 		insinto /etc/openldap/schema; doins ext/ldap/puppet.schema
 	fi
@@ -172,12 +144,4 @@ pkg_postinst() {
 		elog "for more information."
 		elog
 	fi
-
-	use emacs && elisp-site-regen
-	use xemacs && xemacs-elisp-site-regen
-}
-
-pkg_postrm() {
-	use emacs && elisp-site-regen
-	use xemacs && xemacs-elisp-site-regen
 }
