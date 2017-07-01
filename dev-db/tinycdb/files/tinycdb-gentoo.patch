@@ -1,5 +1,5 @@
---- tinycdb-0.77.orig/Makefile
-+++ tinycdb-0.77/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -34,7 +34,7 @@
  CDB_USELIB = $(LIB)
  NSS_USELIB = $(PICLIB)
