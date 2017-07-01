@@ -9,7 +9,7 @@ HOMEPAGE="https://gravitational.com/teleport"
 
 EGO_PN="github.com/gravitational/${PN}/..."
 
-if [ ${PV} == "9999" ] ; then
+if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 golang-vcs
 	EGIT_REPO_URI="https://github.com/gravitational/${PN}.git"
 else
