@@ -568,11 +568,6 @@ app-shells/z
 # Use app-admin/needrestart instead.
 app-admin/checkrestart
 
-# Pacho Ramos <pacho@gentoo.org> (28 May 2017)
-# Not compatible with python 3.5 neither 3.6, bug #388549
-# Removal in a month.
-media-libs/lv2core
-
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
