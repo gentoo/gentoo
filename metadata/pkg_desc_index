@@ -13941,7 +13941,7 @@ media-sound/qjackctl 0.3.10 0.4.4 0.4.5: Qt GUI to control the JACK Audio Connec
 media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 0.10.8 0.10.9 1.1.7-r1 1.1.8 1.1.9 9999: Qt5-based audio player with winamp/xmms skins support
-media-sound/qmpdclient 1.2.2-r2: QMPDClient with NBL additions, such as lyrics' display
+media-sound/qmpdclient 1.2.2-r3: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.4.0-r1 0.4.1 0.4.2 0.4.3: A graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.3.9 0.4.2-r1 0.4.3 0.4.4: A Qt application to control FluidSynth
