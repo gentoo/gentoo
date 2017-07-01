@@ -35,6 +35,11 @@
 app-crypt/mdcrack
 
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
+# All revdeps have been ported to app-crypt/gpgme[cxx].
+# Masked for removal in 30 days.
+kde-apps/gpgmepp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
 # Depends on vulnerable qtwebkit:4. Dead upstream.
 # Masked for removal in 30 days. Bug #621558.
 kde-misc/krecipes
