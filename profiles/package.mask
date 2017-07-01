@@ -618,11 +618,6 @@ net-wireless/cpyrit-cuda
 >=dev-games/openscenegraph-3.5.5
 >=dev-games/openscenegraph-qt-3.5.5
 
-# Thomas Deutschmann <whissi@gentoo.org> (17 May 2017)
-# Unpatched security vulnerability per bug #616700
-# Removal in 30 days.
-mail-client/squirrelmail
-
 # Eray Aslan <eras@gentoo.org> (17 May 2017)
 # Functionality merged to cyrus-imapd-2.5.x series.
 # cyrus-imapd-2.5.10 was stabilized in Jan 2017.  Upgrade
