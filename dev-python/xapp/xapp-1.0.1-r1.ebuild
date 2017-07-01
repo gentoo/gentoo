@@ -18,6 +18,6 @@ IUSE=""
 
 DEPEND="x11-libs/xapps"
 RDEPEND="${DEPEND}
-	dev-python/psutil"
+	dev-python/psutil[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/python-xapp-${PV}"
