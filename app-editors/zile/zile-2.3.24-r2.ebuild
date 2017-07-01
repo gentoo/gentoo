@@ -1,9 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Zile is a small Emacs clone"
 HOMEPAGE="https://www.gnu.org/software/zile/"
@@ -14,13 +12,11 @@ SLOT="0"
 KEYWORDS="alpha amd64 ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="test valgrind"
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:0"
 DEPEND="${RDEPEND}
 	test? ( valgrind? ( dev-util/valgrind ) )"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-userhome.patch"
-}
+PATCHES=("${FILESDIR}"/${P}-{userhome,gets}.patch)
 
 src_configure() {
 	econf $(use test && use_with valgrind || echo "--without-valgrind")
