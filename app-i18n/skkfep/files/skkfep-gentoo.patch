@@ -62,3 +62,14 @@
  
  OBJS=fep.o connsh.o readwrite.o terms.o stty.o keybind.o romkan.o etc.o\
  	kkconv.o keymap.o version.o
+--- a/stty.c
++++ b/stty.c
+@@ -306,7 +306,7 @@
+ {
+ 	int cpid;
+ /* #ifdef _AIX */
+-#if defined(_AIX) || defined(NECEWS) || defined(SOLARIS2)
++#if defined(_AIX) || defined(NECEWS) || defined(SOLARIS2) || defined(LINUX)
+ 	int statusp;
+ 	reset_tty_without_close();
+ 	cpid = wait(&statusp);
