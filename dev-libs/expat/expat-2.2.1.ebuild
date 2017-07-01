@@ -20,6 +20,7 @@ DOCS=( AUTHORS Changes README )
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-getrandom-detection.patch
 	epatch "${FILESDIR}"/${P}-posix-shell.patch
+	epatch "${FILESDIR}"/${P}-gentoo-dash.patch  # bug 622360
 	eapply_user
 	eautoreconf
 }
