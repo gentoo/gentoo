@@ -55,7 +55,7 @@ done <<<"
 
 tbegin "strip-unsupported-flags"
 strip-unsupported-flags
-[[ ${CFLAGS} == "" ]] && [[ ${CXXFLAGS} == "-z=2" ]]
+[[ ${CFLAGS} == "" ]] && [[ ${CXXFLAGS} == "-z=2" ]] && [[ ${LDFLAGS} == "" ]]
 ftend
 
 for var in $(all-flag-vars) ; do
