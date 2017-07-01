@@ -15,7 +15,7 @@ HOMEPAGE="http://prawn.majesticseacreature.com/"
 SRC_URI="https://github.com/prawnpdf/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="|| ( GPL-2 Ruby )"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/pdf-core-0.7.0
