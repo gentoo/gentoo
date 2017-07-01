@@ -6,7 +6,7 @@
 
 # Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
 # Requires kde-apps/kcontacts stabilisation
-app-office/calligra:5[pim]
+app-office/calligra:5 pim
 
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Requires dev-lang/julia stabilisation, bug #613576
