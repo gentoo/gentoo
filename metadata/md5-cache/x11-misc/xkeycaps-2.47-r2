@@ -9,5 +9,5 @@ RDEPEND=x11-misc/xbitmaps x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-lib
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xkeycaps/xkeycaps_2.47.orig.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=3a942290f1d10f8b9a41c59be6053c97

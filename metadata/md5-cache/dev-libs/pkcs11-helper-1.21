@@ -10,5 +10,5 @@ RDEPEND=!libressl? ( >=dev-libs/openssl-0.9.7:= ) libressl? ( dev-libs/libressl 
 SLOT=0
 SRC_URI=https://github.com/OpenSC/pkcs11-helper/releases/download/pkcs11-helper-1.21/pkcs11-helper-1.21.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=252eda5514407126d6a8e0d8665cd5ff

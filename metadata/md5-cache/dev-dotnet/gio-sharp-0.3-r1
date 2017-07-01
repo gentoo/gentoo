@@ -9,5 +9,5 @@ RDEPEND=|| ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/glib-sharp-2.12 ) || ( 
 SLOT=0
 SRC_URI=https://github.com/mono/gio-sharp/tarball/0.3 -> gio-sharp-0.3.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_compile:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=f28bafbebb457edb356288be2b7a49b4

@@ -9,5 +9,5 @@ RDEPEND=dev-libs/cvector dev-util/gtk-builder-convert >=sci-libs/cbflib-0.9.2 >=
 SLOT=0
 SRC_URI=mirror://sourceforge/openrasmol/RasMol/RasMol_2.7.5/rasmol-2.7.5.2-13May11.tar.gz
 _eclass_exported_funcs=pkg_setup:fortran-2 src_prepare:- src_compile:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=1018c7ecff11720e0f55739ec4da239e

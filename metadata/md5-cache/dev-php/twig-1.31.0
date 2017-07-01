@@ -11,5 +11,5 @@ REQUIRED_USE=extension? ( || ( php_targets_php5-6 ) )
 SLOT=0
 SRC_URI=https://github.com/twigphp/Twig/archive/v1.31.0.tar.gz -> twig-1.31.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=3a77c50db82ba024833e5e0e4912f19f

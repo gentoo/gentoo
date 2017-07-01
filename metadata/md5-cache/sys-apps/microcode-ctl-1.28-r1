@@ -9,5 +9,5 @@ RDEPEND=>=sys-firmware/intel-microcode-20090330 selinux? ( sec-policy/selinux-cp
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/microcode_ctl/microcode_ctl-1.28.tar.xz
 _eclass_exported_funcs=pkg_preinst:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=ebc2afcc9f3ac06ea3972556224ba0c2

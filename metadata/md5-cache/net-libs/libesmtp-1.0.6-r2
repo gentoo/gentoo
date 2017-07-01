@@ -10,5 +10,5 @@ RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:
 SLOT=0
 SRC_URI=http://www.stafford.uklinux.net/libesmtp/libesmtp-1.0.6.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=eb5c1b04a82365568726424c1e5acb93

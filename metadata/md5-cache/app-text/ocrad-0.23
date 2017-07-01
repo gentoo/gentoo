@@ -8,5 +8,5 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://nongnu/ocrad/ocrad-0.23.tar.lz
 _eclass_exported_funcs=src_unpack:unpacker src_configure:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
 _md5_=6952713f22ec78099cc00d03f1132cc3

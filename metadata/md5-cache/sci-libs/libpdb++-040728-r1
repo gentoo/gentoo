@@ -9,5 +9,5 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://gentoo/libpdb++-040728.shar
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=6a898b56f1363b0d1a06ce2650bbee9b

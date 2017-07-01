@@ -9,5 +9,5 @@ RDEPEND=app-cdr/cuetools media-sound/shntool[mac?] virtual/libiconv media-libs/f
 SLOT=0
 SRC_URI=https://github.com/ftrvxmtrx/split2flac/archive/122.tar.gz -> split2flac-122.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=428c746b04b135c3096feb97bf52ebdd

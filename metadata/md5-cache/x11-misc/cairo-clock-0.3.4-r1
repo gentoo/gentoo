@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/glib-2.8 >=gnome-base/libglade-2.6 >=gnome-base/librsvg-2.14 
 SLOT=0
 SRC_URI=http://macslow.thepimp.net/projects/cairo-clock/cairo-clock-0.3.4.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=fd481e84d6da27f609f29d9431669358

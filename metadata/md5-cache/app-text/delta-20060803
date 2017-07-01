@@ -8,5 +8,5 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://delta.tigris.org/files/documents/3103/33566/delta-2006.08.03.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=8837ac664bf7ba47db4198724de38b74

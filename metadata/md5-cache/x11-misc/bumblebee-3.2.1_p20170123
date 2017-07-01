@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( video_cards_nouveau video_cards_nvidia )
 SLOT=0
 SRC_URI=https://github.com/Bumblebee-Project/Bumblebee/archive/c322bd849aabe6e48b4304b8d13cc4aadc36a30d.tar.gz -> bumblebee-3.2.1_p20170123.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=d044e24da49138ef35031e0f04163ba8

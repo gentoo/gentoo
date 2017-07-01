@@ -10,5 +10,5 @@ RDEPEND=dev-db/sqlcipher dev-libs/libsodium dev-qt/qtconcurrent:5 dev-qt/qtcore:
 SLOT=0
 SRC_URI=https://github.com/qTox/qTox/archive/v1.7.0.tar.gz -> qtox-1.7.0.tar.gz
 _eclass_exported_funcs=pkg_pretend:- src_configure:-
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=7f50a79c9f22130db80a23dd8c9c6d9a

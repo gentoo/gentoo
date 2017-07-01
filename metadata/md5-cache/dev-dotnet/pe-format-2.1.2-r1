@@ -9,5 +9,5 @@ RDEPEND=!<sys-apps/openrc-0.9.4
 SLOT=0
 SRC_URI=https://www.bitbucket.org/mgorny/pe-format2/downloads/pe-format-2.1.2.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
 _md5_=5dfb65489415b2c03d68e5f56a2e4baa

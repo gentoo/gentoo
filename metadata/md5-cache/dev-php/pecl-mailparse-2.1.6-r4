@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 )
 SLOT=0
 SRC_URI=http://pecl.php.net/get/mailparse-2.1.6.tgz
 _eclass_exported_funcs=src_unpack:php-ext-source-r3 src_prepare:- src_configure:php-ext-source-r3 src_compile:php-ext-source-r3 src_test:php-ext-pecl-r3 src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-pecl-r3	f0b4914f85a3c676561454b15a910dc6	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-pecl-r3	f0b4914f85a3c676561454b15a910dc6	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=c269a266dc2fc120c54e1fcd56578494

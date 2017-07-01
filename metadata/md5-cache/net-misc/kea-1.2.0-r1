@@ -10,5 +10,5 @@ RDEPEND=dev-libs/boost dev-cpp/gtest dev-libs/log4cplus !openssl? ( dev-libs/bot
 SLOT=0
 SRC_URI=ftp://ftp.isc.org/isc/kea/kea-1.2.0.tar.gz ftp://ftp.isc.org/isc/kea/1.2.0/kea-1.2.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=2518aec126e2abcd4513a3f03308f4f7

@@ -10,5 +10,5 @@ RDEPEND=net-libs/libnet:1.1 net-libs/libpcap ~net-libs/netwib-5.39.0
 SLOT=0
 SRC_URI=mirror://sourceforge/ntwox/netwox-5.39.0-src.tgz doc? ( mirror://sourceforge/ntwox/netwox-5.39.0-doc_html.tgz )
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=12a56a8b3bbfdb45c3327c9b88b1feb6

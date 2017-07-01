@@ -9,5 +9,5 @@ RDEPEND=!pm-utils? ( virtual/awk ) sys-apps/grep virtual/modutils pm-utils? ( >=
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/powermgmt-base/powermgmt-base_1.31.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=ec98ac1d54d5c18d1fd0624bdb4860d5

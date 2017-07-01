@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/npth-1.2 >=dev-libs/libassuan-2.4.3 >=dev-libs/libgcrypt-1.7.
 SLOT=0
 SRC_URI=mirror://gnupg/gnupg/gnupg-2.1.20.tar.bz2
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=f26a69d425171f755c5809ced786313d

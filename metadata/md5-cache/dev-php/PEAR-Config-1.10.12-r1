@@ -10,5 +10,5 @@ RDEPEND=xml? ( dev-php/PEAR-XML_Parser dev-php/PEAR-XML_Util ) dev-lang/php:* >=
 SLOT=0
 SRC_URI=http://pear.php.net/get/Config-1.10.12.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:php-pear-r1
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=b59f7aecf5209d061da2728931e7e72c

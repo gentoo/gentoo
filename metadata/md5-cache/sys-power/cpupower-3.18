@@ -10,5 +10,5 @@ RDEPEND=sys-apps/pciutils !<sys-apps/linux-misc-apps-3.6-r2 !sys-power/cpufrequt
 SLOT=0
 SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.18.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=8a269f83d7365cbd10ed409df3e75092

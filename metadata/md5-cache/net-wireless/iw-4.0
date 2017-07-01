@@ -9,5 +9,5 @@ RDEPEND=dev-libs/libnl
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/network/iw/iw-4.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=ca31e5e991fb439c19a39c437d039405

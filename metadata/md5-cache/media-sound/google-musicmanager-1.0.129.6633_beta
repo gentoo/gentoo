@@ -11,5 +11,5 @@ RESTRICT=fetch strip
 SLOT=0
 SRC_URI=x86? ( https://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.129.6633-r0_i386.deb ) amd64? ( https://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.129.6633-r0_amd64.deb )
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
 _md5_=6796aa23cb619966112b52a9b11b0469

@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/raptor-2.0.7:2 kernel_linux? ( >=sys-apps/util-linux-2.19 )
 SLOT=0
 SRC_URI=http://download.librdf.org/source/rasqal-0.9.29.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=660acaf151dc43bc64297abd4d88fdfc

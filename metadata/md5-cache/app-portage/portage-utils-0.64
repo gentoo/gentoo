@@ -10,5 +10,5 @@ RDEPEND=dev-libs/iniparser:0
 SLOT=0
 SRC_URI=mirror://gentoo/portage-utils-0.64.tar.xz https://dev.gentoo.org/~vapier/dist/portage-utils-0.64.tar.xz
 _eclass_exported_funcs=src_configure:- src_compile:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=70749b55eda059dc820b3efeb532f48c

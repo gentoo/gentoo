@@ -10,5 +10,5 @@ RDEPEND=sci-libs/netcdf sci-libs/gdal data? ( sci-geosciences/gshhs-data )
 SLOT=0
 SRC_URI=ftp://ftp.soest.hawaii.edu/pwessel/gshhs/gshhs_1.13_src.zip
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=2df28ad78256fc0063a56f14588c8a99

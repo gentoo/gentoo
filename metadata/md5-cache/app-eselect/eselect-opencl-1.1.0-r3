@@ -9,5 +9,5 @@ RDEPEND=>=app-admin/eselect-1.2.4
 SLOT=0
 SRC_URI=https://github.com/anyc/opencl-headers/archive/opencl-headers-1.2.tar.gz https://dev.gentoo.org/~xarthisius/distfiles/eselect-opencl-1.1.0-r1.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=b21c64e31e8b7a48663658b0667f1c8f

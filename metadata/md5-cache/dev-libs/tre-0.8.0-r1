@@ -10,5 +10,5 @@ RDEPEND=!app-misc/glimpse !app-text/agrep
 SLOT=0
 SRC_URI=http://laurikari.net/tre/tre-0.8.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=fd24427e79a118a25074b87c09e780f9

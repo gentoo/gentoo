@@ -8,5 +8,5 @@ LICENSE=FDL-1.2
 SLOT=0
 SRC_URI=mirror://gentoo/myspell-ms_MY-20060316.zip
 _eclass_exported_funcs=pkg_preinst:myspell pkg_postinst:myspell src_install:myspell
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	myspell	a0259d47cff590f8fd5ab7027c637c59	toolchain-funcs	772b26a6baefb4c8c5e0c1fc724508b7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	myspell	a0259d47cff590f8fd5ab7027c637c59	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
 _md5_=f04b6a812e422efeabd2d42eb9890fb3
