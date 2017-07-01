@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
+# Requires kde-apps/kcontacts stabilisation
+app-office/calligra:5[pim]
+
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
