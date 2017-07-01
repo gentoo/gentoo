@@ -12,15 +12,15 @@ SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="berkdb dbus libnotify +xfce_plugins_clock"
+IUSE="berkdb +clock-panel-plugin dbus libnotify"
 
 RDEPEND=">=dev-libs/libical-0.48:=
 	dev-libs/popt:=
 	>=x11-libs/gtk+-2.10:2=
 	berkdb? ( >=sys-libs/db-4:= )
+	clock-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= )
 	dbus? ( >=dev-libs/dbus-glib-0.100:= )
-	libnotify? ( >=x11-libs/libnotify-0.7:= )
-	xfce_plugins_clock? ( >=xfce-base/xfce4-panel-4.10:= )"
+	libnotify? ( >=x11-libs/libnotify-0.7:= )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
@@ -31,7 +31,7 @@ src_configure() {
 	local myconf=(
 		--libexecdir="${EPREFIX}/usr/$(get_libdir)"
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html
-		$(use_enable xfce_plugins_clock libxfce4panel)
+		$(use_enable clock-panel-plugin libxfce4panel)
 		$(use_enable dbus)
 		$(use_enable libnotify)
 		$(use_with berkdb bdb4)
