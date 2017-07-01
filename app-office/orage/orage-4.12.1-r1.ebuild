@@ -27,11 +27,6 @@ DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2.2.6
 	virtual/pkgconfig"
 
-pkg_setup() {
-	# PM doesn't let directory to be replaced by a symlink, see src_install()
-	rm -rf "${EROOT}"/usr/share/${PN}/doc || die
-}
-
 src_configure() {
 	local myconf=(
 		--libexecdir="${EPREFIX}/usr/$(get_libdir)"
@@ -46,14 +41,15 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install \
-		docdir="${EPREFIX}"/usr/share/doc/${PF}/html \
-		imagesdir="${EPREFIX}"/usr/share/doc/${PF}/html/images
-
-	# Create compability symlink for retarded path hardcoding in src/{mainbox,parameters}.c
-	dosym /usr/share/doc/${PF}/html /usr/share/${PN}/doc/C
-
+	default
 	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_preinst() {
+	# Replacing directory by symlink is unreliable
+	if [[ -L ${EROOT}/usr/share/orage/doc/C ]]; then
+		rm -f "${EROOT}/usr/share/orage/doc/C" || die
+	fi
 }
 
 pkg_postinst() {
