@@ -14,15 +14,18 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
-DEPEND="dev-qt/qtdbus:4
+DEPEND="
+	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
-	dev-qt/qtwebkit:4
-	dev-qt/qtxmlpatterns:4"
+	dev-qt/qtxmlpatterns:4
+	x11-libs/libX11
+"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
 
 DOCS=( AUTHORS README THANKSTO )
+
 PATCHES=( "${FILESDIR}"/${P}-qt48.patch )
 
 src_prepare() {
