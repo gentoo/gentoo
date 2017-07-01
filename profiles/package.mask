@@ -31,6 +31,11 @@
 
 # Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
 # Depends on vulnerable qtwebkit:4. Dead upstream.
+# Masked for removal in 30 days. Bug #620836.
+media-gfx/picturewall:
+
+# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
+# Depends on vulnerable qtwebkit:4. Dead upstream.
 # Masked for removal in 30 days. Bug #620704.
 media-gfx/smile
 
