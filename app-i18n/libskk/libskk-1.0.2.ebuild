@@ -1,45 +1,47 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI="6"
 
-VALA_MIN_API_VERSION=0.12
-
-inherit vala
+inherit ltprune virtualx vala
 
 DESCRIPTION="GObject-based library to deal with Japanese kana-to-kanji conversion method"
 HOMEPAGE="https://github.com/ueno/libskk"
-SRC_URI="mirror://github/ueno/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/ueno/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls static-libs"
+IUSE="+introspection nls static-libs"
 
-RDEPEND="dev-libs/glib
-	dev-libs/libgee:0
+RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib
-	>=dev-libs/gobject-introspection-0.9
-	$(vala_depend)
+	dev-libs/libgee:0.8
+	introspection? ( dev-libs/gobject-introspection )
 	nls? ( virtual/libintl )"
-#	>=dev-util/valadoc-0.3.1
 DEPEND="${RDEPEND}
+	$(vala_depend)
+	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+src_prepare() {
+	vala_src_prepare
+	default
+}
+
 src_configure() {
 	econf \
+		$(use_enable introspection) \
 		$(use_enable nls) \
 		$(use_enable static-libs static)
 }
 
+src_test() {
+	Xemake check
+}
+
 src_install() {
 	default
-
-	if ! use static-libs ; then
-		find "${ED}" -name '*.la' -delete
-	fi
-
-	doman docs/skk.1
-	dodoc AUTHORS ChangeLog NEWS README
+	prune_libtool_files
 }
