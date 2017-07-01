@@ -1,5 +1,3 @@
-diff --git a/configure.in b/configure.in
-index c7c00aa..a2c7a9e 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -19,8 +19,8 @@ AC_CHECK_FUNCS(getopt)
