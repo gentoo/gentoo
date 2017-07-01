@@ -1,0 +1,15 @@
+DEFINED_PHASES=install
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Sophisticated text editor for code, markup and prose
+EAPI=6
+HOMEPAGE=http://www.sublimetext.com
+IUSE=dbus
+KEYWORDS=~amd64 ~x86
+LICENSE=Sublime
+RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libX11 dbus? ( sys-apps/dbus )
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://download.sublimetext.com/Sublime%20Text%202.0.2%20x64.tar.bz2 -> sublime-text-2.0.2_x64.tar.bz2 ) x86? ( https://download.sublimetext.com/Sublime%20Text%202.0.2.tar.bz2 -> sublime-text-2.0.2_x32.tar.bz2 )
+_eclass_exported_funcs=src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=35643b0d64b781e9694fd18353e316ae
