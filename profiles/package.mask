@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alon Bar-Lev <alonbl@gentoo.org> (01 Jul 2017)
+# Unmaintained and segfaults.
+# Masked for removal in 30 days. Bug#623276.
+app-crypt/mdcrack
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
 # Depends on vulnerable qtwebkit:4. Dead upstream.
 # Masked for removal in 30 days. Bug #621558.
