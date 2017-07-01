@@ -1,5 +1,5 @@
---- tinycdb-0.77.orig/cdb.c
-+++ tinycdb-0.77/cdb.c
+--- a/cdb.c
++++ b/cdb.c
 @@ -31,6 +31,12 @@
  # define HAVE_PROGRAM_INVOCATION_SHORT_NAME
  #endif

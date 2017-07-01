@@ -18,9 +18,9 @@ RESTRICT="test"
 RDEPEND="!dev-db/cdb"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.diff
-	epatch "${FILESDIR}"/${P}-umask.diff
-	epatch "${FILESDIR}"/${P}-uclibc.diff
+	epatch "${FILESDIR}"/${PN}-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-umask.patch
+	epatch "${FILESDIR}"/${PN}-uclibc.patch
 	# fix multilib support
 	sed -i "/^libdir/s:/lib:/$(get_libdir):" Makefile
 }
