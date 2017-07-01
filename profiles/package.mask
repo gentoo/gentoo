@@ -555,12 +555,6 @@ x11-misc/outwiker
 # Removal in a month.
 www-client/xombrero
 
-# Amadeusz Żołnowski <aidecoe@gentoo.org> (29 May 2017)
-# Masked for removal. I have added it but I no longer use it.
-# If someone cares about z please take ownership. Othwerwise
-# I will remove it in 30 days.
-app-shells/z
-
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
