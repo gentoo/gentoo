@@ -1,0 +1,59 @@
+Author: Christoph Feck <cfeck@kde.org>
+Description: Use KIcon to set window icons
+Bug: https://bugs.kde.org/show_bug.cgi?id=246016
+Bug-Debian: https://bugs.debian.org/599094
+Applied-Upstream: commit:1180094
+
+--- a/src/kvpnc.cpp
++++ b/src/kvpnc.cpp
+@@ -320,10 +320,7 @@ KVpnc::~KVpnc()
+ 
+ void KVpnc::initAction()
+ {
+-    disconnectedIcon = KIconLoader::global()->loadIcon("disconnected", KIconLoader::NoGroup);
+-    connectedIcon = KIconLoader::global()->loadIcon("connected", KIconLoader::NoGroup);
+-    connectingIcon = KIconLoader::global()->loadIcon("connecting" , KIconLoader::NoGroup);
+-    setWindowIcon(disconnectedIcon);
++    setWindowIcon(KIcon("disconnected"));
+ 
+     (void*) KStandardAction::quit(this, SLOT(quitCalled()), actionCollection());
+ 
+@@ -17449,7 +17446,7 @@ void KVpnc::setGuiStatus(int status)
+ 	QString ConnectionStatus = i18n("unknown");
+ 	QString Username = "";
+ 	if (status == KVpncEnum::connected) {
+-        setWindowIcon(connectedIcon);
++        setWindowIcon(KIcon("connected"));
+ 
+         durationString = (i18n("%1:%2:%3" , QString().sprintf("%02u", hour) , QString().sprintf("%02u", min) , QString().sprintf("%02u", sec)));
+         QString ConnectMsg = "";
+@@ -17502,7 +17499,7 @@ void KVpnc::setGuiStatus(int status)
+ 
+     }
+     else if (status == KVpncEnum::connecting) {
+-        setWindowIcon(connectingIcon);
++        setWindowIcon(KIcon("connecting"));
+         mw->buttonConnect->setEnabled(false);
+         mw->buttonDisconnect->setEnabled(true);
+         mw->SessionCombo->setEnabled(false);
+@@ -17531,7 +17528,7 @@ void KVpnc::setGuiStatus(int status)
+         connectClicked();
+ 
+ 	} else if (status == KVpncEnum::disconnected) {
+-        setWindowIcon(disconnectedIcon);
++        setWindowIcon(KIcon("disconnected"));
+         mw->buttonConnect->setEnabled(true);
+         mw->buttonDisconnect->setEnabled(false);
+         DisconnectAction->setEnabled(false);
+--- a/src/kvpnc.h
++++ b/src/kvpnc.h
+@@ -286,9 +286,6 @@ private:
+ 
+     int TimeOutProcess; //< for timeout
+     int ConnectingProcess; //< for killing process
+-    QPixmap connectedIcon;
+-    QPixmap disconnectedIcon;
+-    QPixmap connectingIcon;
+     QPixmap connectingStatusPixmap;
+     QPixmap disconnectedStatusPixmap;
+     QPixmap connectedStatusPixmap;
