@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-userhome.patch"
+	epatch "${FILESDIR}/${P}-gets.patch"
 }
 
 src_configure() {
