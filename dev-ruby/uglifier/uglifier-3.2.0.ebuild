@@ -20,7 +20,7 @@ SRC_URI="https://github.com/lautis/uglifier/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~amd64-linux"
 
 IUSE="test"
 
