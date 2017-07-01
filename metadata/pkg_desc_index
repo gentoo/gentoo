@@ -1081,7 +1081,7 @@ app-editors/xemacs 21.4.22-r4 21.4.24 21.4.24-r1 21.5.34-r4: highly customizable
 app-editors/xmlcopyeditor 1.2.1.3: XML Copy Editor is a fast, free, validating XML editor
 app-editors/xvile 9.8k 9.8n 9.8o 9.8p 9.8r 9.8s: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2 2.9.6: Free (Y)unicode text editor for all unices
-app-editors/zile 2.3.24-r1 2.4.11: Zile is a small Emacs clone
+app-editors/zile 2.3.24-r2 2.4.11 2.4.13: Zile is a small Emacs clone
 app-editors/znotes 0.4.5: Simple Notes
 app-emacs/actionscript-mode 7.2.2_p20120405 7.2.2_p20140605: A major mode for GNU Emacs for editing Actionscript 3 files
 app-emacs/adaptive-wrap 0.5: Smart line-wrapping with wrap-prefix
