@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="x11-libs/xapps"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-python/psutil"
 
 S="${WORKDIR}/python-xapp-${PV}"
