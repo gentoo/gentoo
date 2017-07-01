@@ -36,5 +36,5 @@ src_install() {
 	default
 
 	insinto /etc/xinetd.d
-	doins "${FILESDIR}"/${PN}.xinetd ${PN}
+	newins "${FILESDIR}"/${PN}.xinetd ${PN}
 }
