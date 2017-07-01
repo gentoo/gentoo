@@ -4787,9 +4787,9 @@ dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keybo
 dev-libs/kirigami 1.1.0 2.1.0 2.2.0: Lightweight user interface framework for mobile and convergent applications
 dev-libs/klibc 2.0.4-r2: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
-dev-libs/kproperty 3.0.0 3.0.1: Property editing framework with editor widget similar to Qt Designer
+dev-libs/kproperty 3.0.1: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
-dev-libs/kreport 3.0.0-r1 3.0.1: Framework for creation and generation of reports in multiple formats
+dev-libs/kreport 3.0.1: Framework for creation and generation of reports in multiple formats
 dev-libs/leatherman 0.10.1 0.12.1 1.0.0: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
@@ -8951,7 +8951,7 @@ dev-python/wstools 0.4.3 0.4.5: WSDL parsing services package for Web Services f
 dev-python/wtf-peewee 0.2.6: WTForms integration for peewee models
 dev-python/wtforms 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 3.0.2.0: A blending of the wxWindows C++ class library with Python
-dev-python/xapp 1.0.1: Python bindings for x11-libs/xapps
+dev-python/xapp 1.0.1-r1: Python bindings for x11-libs/xapps
 dev-python/xarray 0.8.2: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.4.0 0.5.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdis 3.2.4 3.3.0 3.3.1: Python cross-version byte-code disassembler and marshal routines
