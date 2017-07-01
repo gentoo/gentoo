@@ -2846,7 +2846,7 @@ app-xemacs/xslide 1.09: XSL editing support
 app-xemacs/xslt-process 1.12: XSLT processing support
 app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
-dev-ada/asis 2016: To develop tools for Ada software
+dev-ada/asis 2016 2017: To develop tools for Ada software
 dev-ada/aunit 2016: Ada unit testing framework
 dev-ada/aws 2016: A complete Web development framework
 dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
@@ -5840,6 +5840,7 @@ dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operatin
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-RPM 0.15.0: Build an RPM from your Dist::Zilla release
+dev-perl/Dist-Zilla-Plugin-SurgicalPodWeaver 0.2.300: Surgically apply PodWeaver
 dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.0.0 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
