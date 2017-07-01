@@ -561,13 +561,6 @@ www-client/xombrero
 # I will remove it in 30 days.
 app-shells/z
 
-# Amadeusz Żołnowski <aidecoe@gentoo.org> (28 May 2017)
-# Masked for removal. Upstream has disappeared. Homepage is not
-# accessible anymore. There are open, long-standing bugs: #553888,
-# #532308, #548920, not worth fixing while there's active alternative.
-# Use app-admin/needrestart instead.
-app-admin/checkrestart
-
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
