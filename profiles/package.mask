@@ -539,41 +539,6 @@ www-client/qtweb
 # Masked for removal in 30 days. Bug #620752.
 sci-mathematics/freemat
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# Relies on obsolete and vulnerable webkit-gtk version and bundles some libs
-# (#597532). Removal in a month.
-x11-misc/rednotebook
-
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# This package needs a maintainer to take care of updating this to a working
-# version not requiring obsolete wxwidgets and webkit versions (#584170).
-# Removal in a month.
-x11-misc/outwiker
-
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# Still relies on old and vulnerable webkit-gtk versions, bug #608626.
-# Removal in a month.
-www-client/xombrero
-
-# Amadeusz Żołnowski <aidecoe@gentoo.org> (29 May 2017)
-# Masked for removal. I have added it but I no longer use it.
-# If someone cares about z please take ownership. Othwerwise
-# I will remove it in 30 days.
-app-shells/z
-
-# Amadeusz Żołnowski <aidecoe@gentoo.org> (28 May 2017)
-# Masked for removal. Upstream has disappeared. Homepage is not
-# accessible anymore. There are open, long-standing bugs: #553888,
-# #532308, #548920, not worth fixing while there's active alternative.
-# Use app-admin/needrestart instead.
-app-admin/checkrestart
-
-# Pacho Ramos <pacho@gentoo.org> (28 May 2017)
-# Not compatible with python 3.5 neither 3.6, bug #388549
-# Removal in a month.
-media-libs/lv2core
-media-libs/lv2-ui
-
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
@@ -617,11 +582,6 @@ net-wireless/cpyrit-cuda
 # Experimental, most consumers does not support it yet
 >=dev-games/openscenegraph-3.5.5
 >=dev-games/openscenegraph-qt-3.5.5
-
-# Thomas Deutschmann <whissi@gentoo.org> (17 May 2017)
-# Unpatched security vulnerability per bug #616700
-# Removal in 30 days.
-mail-client/squirrelmail
 
 # Eray Aslan <eras@gentoo.org> (17 May 2017)
 # Functionality merged to cyrus-imapd-2.5.x series.
