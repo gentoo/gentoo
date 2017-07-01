@@ -1185,7 +1185,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231 0.48_p20161231: Elisp client for the LysKOM conference system
-app-emacs/magit 1.2.2 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3: A Git porcelain inside Emacs
+app-emacs/magit 1.2.2 2.9.0 2.10.2 2.10.3: A Git porcelain inside Emacs
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 1.8.1-r1 2.0 2.1: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
@@ -1216,7 +1216,7 @@ app-emacs/php-mode 1.5.0: GNU Emacs major mode for editing PHP code
 app-emacs/planner 3.42: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/po-mode 0.19.3 0.19.4 0.19.8.1: Major mode for GNU gettext PO files
 app-emacs/popwin 0.6.2: Popup window manager for Emacs
-app-emacs/pov-mode 3.2 3.3: Emacs mode for povray
+app-emacs/pov-mode 3.3: Emacs mode for povray
 app-emacs/prom-wl 2.7.0-r1: Procmail reader for Wanderlust
 app-emacs/proofgeneral 4.2: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
@@ -1247,7 +1247,7 @@ app-emacs/semi 1.14.6-r2: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.3a: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.0_p20101103 2.11 2.12 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
-app-emacs/sml-mode 5.0 6.1-r1 6.4: Emacs major mode for editing Standard ML
+app-emacs/sml-mode 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
 app-emacs/stripes 0.2-r1: An Emacs mode that alternates the background color of lines
@@ -1274,7 +1274,7 @@ app-emacs/wgrep 2.1.10: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.49: Window manager for GNU Emacs
-app-emacs/with-editor 2.5.8 2.5.9 2.5.10: Use the Emacsclient as the $EDITOR of child processes
+app-emacs/with-editor 2.5.8 2.5.10: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.3: Emacs Interface to XClip
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2: An Emacs major mode for editing XSL stylesheets and running XSL processes
