@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="+decode"
 REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND=">=dev-libs/glib-2.28.0
+RDEPEND=">=dev-libs/glib-2.32.0
 	>=sci-libs/libsigrok-0.4.0
 	decode? (
 		>=sci-libs/libsigrokdecode-0.4.0[${PYTHON_USEDEP}]
