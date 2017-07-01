@@ -14,11 +14,14 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="test"
 
-DEPEND="dev-db/cdb
+DEPEND="|| (
+		dev-db/tinycdb
+		dev-db/cdb
+	)
 	test? ( app-i18n/nkf )"
 RDEPEND="app-i18n/skk-jisyo[cdb]"
 
-PATCHES=( "${FILESDIR}"/${P}-cdb.patch )
+PATCHES=( "${FILESDIR}"/${PN}-cdb.patch )
 
 src_prepare() {
 	default
@@ -27,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-cdb=yes
+	econf --with-cdb="${EPREFIX}"/usr
 }
 
 src_install() {
