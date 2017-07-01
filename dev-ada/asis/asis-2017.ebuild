@@ -8,7 +8,7 @@ MYP=${PN}-gpl-${PV}-src
 
 DESCRIPTION="To develop tools for Ada software"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71
+SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecffb
 	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
