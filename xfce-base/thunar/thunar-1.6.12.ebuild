@@ -13,7 +13,7 @@ SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="+dbus exif libnotify pcre test udisks +xfce_plugins_trash"
+IUSE="+dbus exif libnotify pcre test +trash-panel-plugin udisks"
 
 GVFS_DEPEND=">=gnome-base/gvfs-1.18.3"
 COMMON_DEPEND=">=dev-lang/perl-5.6
@@ -28,22 +28,22 @@ COMMON_DEPEND=">=dev-lang/perl-5.6
 	exif? ( >=media-libs/libexif-0.6.19:= )
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	pcre? ( >=dev-libs/libpcre-6:= )
-	udisks? ( virtual/libgudev:= )
-	xfce_plugins_trash? ( >=xfce-base/xfce4-panel-4.10:= )"
+	trash-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= )
+	udisks? ( virtual/libgudev:= )"
 RDEPEND="${COMMON_DEPEND}
 	>=dev-util/desktop-file-utils-0.20-r1
 	x11-misc/shared-mime-info
 	dbus? ( ${GVFS_DEPEND} )
+	trash-panel-plugin? ( ${GVFS_DEPEND} )
 	udisks? (
 		virtual/udev
 		${GVFS_DEPEND}[udisks,udev]
-		)
-	xfce_plugins_trash? ( ${GVFS_DEPEND} )"
+		)"
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
-REQUIRED_USE="xfce_plugins_trash? ( dbus )"
+REQUIRED_USE="trash-panel-plugin? ( dbus )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -56,7 +56,7 @@ src_configure() {
 		$(use_enable libnotify notifications)
 		$(use_enable exif)
 		$(use_enable pcre)
-		$(use_enable xfce_plugins_trash tpa-plugin)
+		$(use_enable trash-panel-plugin tpa-plugin)
 	)
 
 	econf "${myconf[@]}"
