@@ -3654,7 +3654,6 @@ mail-client/nail:ssl - If network is enabled, this adds support for S/MIME and S
 mail-client/roundcube:enigma - Add dependencies to support server-side GnuPG signing and/or encryption through the enigma plugin
 mail-client/roundcube:ldap - Add dependencies to support connecting to an LDAP address book server
 mail-client/roundcube:managesieve - Add dependencies to support the sieverules plugin
-mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
 mail-client/sylpheed:oniguruma - Use dev-libs/oniguruma for regular expression
 mail-client/thunderbird:bindist - Disable official Thunderbird branding (icons, name) which are not binary-redistributable according to upstream.
 mail-client/thunderbird:crypt - Enable encryption support with enigmail
@@ -8545,7 +8544,6 @@ x11-misc/openbox-menu:icons - Enable support for icons in menus
 x11-misc/openbox-menu:svg - Support SVG icons
 x11-misc/qt5ct:dbus - Enable system tray and global menu support
 x11-misc/qt5ct:systray - Enable system tray support
-x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/redshift:appindicator - Enable usage of dev-libs/libappindicator to export menu options in to unity and KDE 5
 x11-misc/redshift:geoclue - Control dependency on app-misc/geoclue
 x11-misc/rofi:windowmode - Enable normal window mode

@@ -59,7 +59,6 @@ app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon receives output from the Linu
 app-admin/ccze 0.2.1-r3 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 4.4.1: A usable configuration management system
 app-admin/cgmanager 0.39 0.41: Control Group manager daemon
-app-admin/checkrestart 0.47-r3 0.47-r4: the sysadmin's rolling upgrade tool
 app-admin/checksec 1.7.2 1.7.3 1.7.4 1.7.5: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4: a tool to chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3 1.3-r1: Run a network service at low privilege level and restricted file system access
@@ -2197,7 +2196,6 @@ app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem 
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.16 3.18: Magnificent app which corrects your previous console command
-app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.22.0 0.24.0 0.25.0 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
@@ -12339,7 +12337,6 @@ mail-client/nmh 1.3-r3: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.5: A browser-based multilingual IMAP client with an application-like user interface
-mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
 mail-client/thunderbird 45.8.0 52.2.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.2.0: Thunderbird Mail Client
@@ -13202,8 +13199,6 @@ media-libs/libzen 0.4.35: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.1 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.20.0 0.24.0 0.24.2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LADSPA
-media-libs/lv2-ui 2.4-r1: Generic UI interface for LV2 plugins
-media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
@@ -18469,7 +18464,6 @@ www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
-www-client/xombrero 1.6.3 9999: A minimalist web browser with sophisticated security features designed-in
 www-misc/awstats 7.1_p20121017 7.4 7.5: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r2: bookmarksync synchronizes various browser bookmark files
 www-misc/fcgiwrap 1.1.0_pre20150419 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
@@ -18972,7 +18966,6 @@ x11-misc/okindd 0.6.1: On Screen Display (OSD) for KDE 4.x - works on any Qt des
 x11-misc/openbox-menu 0.8.0: Another dynamic menu generator for Openbox
 x11-misc/oroborus-deskmenu 1.4.5-r1: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9-r1: utility for binding keys in Oroborus
-x11-misc/outwiker 1.8.0 1.9.0.790 2.0.0.794: The tree notes organizer
 x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 1.2.3 1.2.5 9999: Fast lightweight tabbed filemanager
@@ -18995,7 +18988,6 @@ x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
 x11-misc/qxkb 0.4.6: Qt4-based keyboard layout switcher
 x11-misc/read-edid 1.4.2 3.0.2: Program that can get information from a PnP monitor
-x11-misc/rednotebook 1.14: Graphical journal with calendar, templates, tags and keyword searching
 x11-misc/redshift 1.11-r1: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
