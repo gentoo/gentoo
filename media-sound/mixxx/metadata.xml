@@ -8,7 +8,6 @@
 	<use>
 		<flag name="hid">Enable HID controller support</flag>
 		<flag name="shout">Enable broadcasting support via <pkg>media-libs/libshout</pkg></flag>
-		<flag name="vamp">Enable vamp analyzing plugins support</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">mixxx</remote-id>
