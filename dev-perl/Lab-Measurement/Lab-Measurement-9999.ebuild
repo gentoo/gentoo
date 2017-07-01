@@ -75,7 +75,7 @@ DEPEND="
 if [[ "${PV}" == "9999" ]]; then
 	DEPEND="${DEPEND}
 		dev-perl/Dist-Zilla"
-	for dzp in ${DZIL_PLUGINS} ; do
+	for dzp in "${DZIL_PLUGINS[@]}" ; do
 		DEPEND="${DEPEND}
 		dev-perl/Dist-Zilla-Plugin-${dzp}"
 	done
