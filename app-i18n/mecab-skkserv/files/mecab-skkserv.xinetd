@@ -3,8 +3,8 @@ service skkserv
 	disable         = yes
 	socket_type     = stream
 	wait            = no
-	user            = dbskkd
-	server          = /usr/libexec/dbskkd-cdb
+	user            = nobody
+	server          = /usr/bin/mecab-skkserv
 	only_from       = 127.0.0.1
 	log_on_failure += USERID
 	port            = 1178
