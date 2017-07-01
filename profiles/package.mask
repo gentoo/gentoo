@@ -544,12 +544,6 @@ sci-mathematics/freemat
 # (#597532). Removal in a month.
 x11-misc/rednotebook
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# This package needs a maintainer to take care of updating this to a working
-# version not requiring obsolete wxwidgets and webkit versions (#584170).
-# Removal in a month.
-x11-misc/outwiker
-
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
