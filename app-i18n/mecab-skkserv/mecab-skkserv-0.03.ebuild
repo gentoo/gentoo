@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,9 +21,9 @@ RDEPEND="${DEPEND}
 DOCS=( README NEWS AUTHORS )
 HTML_DOCS=( index.html )
 PATCHES=(
-	"${FILESDIR}"/${P}-cflags.patch
-	"${FILESDIR}"/${P}-dicrc.patch
-	)
+	"${FILESDIR}"/${PN}-cflags.patch
+	"${FILESDIR}"/${PN}-dicrc.patch
+)
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
