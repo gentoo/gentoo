@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="static-libs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=dev-libs/glib-2.24.0
+RDEPEND=">=dev-libs/glib-2.28.0
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
