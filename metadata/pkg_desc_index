@@ -13849,7 +13849,7 @@ media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audi
 media-sound/mhwaveedit 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.6 3.2.7 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.0.0: FastTracker 2 inspired music tracker
-media-sound/mixxx 1.10.1 1.11.0-r1 2.0.0-r3 2.0.0-r4: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.0.0-r4: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.1 0.5.3: libmodplug based module players modplug123 and modplugplay
@@ -15284,7 +15284,7 @@ net-misc/haeredes 0.4.4: Confirm delegation of NS and MX records
 net-misc/hashcash 1.22-r1: Utility to generate hashcash tokens
 net-misc/hath 0.3.0 0.4.1: Hath manipulates network blocks in CIDR notation
 net-misc/hlfl 0.60.1: High Level Firewall Language
-net-misc/hotot 0.9.8.14_p20130514-r1 0.9.8.15_p20150812-r2 9999: lightweight & open source microblogging client
+net-misc/hotot 0.9.8.15_p20150812-r2 9999: lightweight & open source microblogging client
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.1.2 1.1.3: Synchronize local workstation with time offered by remote webservers
