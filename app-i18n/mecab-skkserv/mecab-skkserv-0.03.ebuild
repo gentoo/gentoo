@@ -22,7 +22,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-cflags.patch
 	"${FILESDIR}"/${PN}-dicrc.patch
 )
-DOCS=( AUTHORS NEWS README )
 HTML_DOCS=( index.html ${PN}.css )
 
 src_prepare() {
