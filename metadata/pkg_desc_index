@@ -2852,7 +2852,7 @@ dev-ada/aws 2016: A complete Web development framework
 dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016 2017: GNAT Component Collection
 dev-ada/gnatmem 2016: Monitors dynamic allocation and deallocation activity in a program
-dev-ada/gprbuild 2016 2017 9999: Multi-Language Management
+dev-ada/gprbuild 2016 2017: Multi-Language Management
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2016 2017: A complete Ada graphical toolkit
 dev-ada/xmlada 2016 2017 9999: Set of modules that provide a simple manipulation of XML streams
@@ -14073,7 +14073,7 @@ media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital
 media-tv/mythtv 0.27.6_p20160318-r1 0.28-r1: Homebrew PVR project
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/plex-media-server 1.5.5 1.5.6: A free media library that is intended for use with a plex client.
+media-tv/plex-media-server 1.5.6 1.7.5: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.0.9 9999: Tvheadend is a TV streaming server and digital video recorder
