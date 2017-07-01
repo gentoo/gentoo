@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{4,5} )
 PYTHON_REQ_USE="sqlite"
 
 if [[ ${PV} != *9999 ]]; then
@@ -92,10 +92,6 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/${P}-broken-psycopg2-encoding.patch"
-	"${FILESDIR}/${P}-fix-plugin-config-settings.patch"
-	"${FILESDIR}/${P}-dbmanager-plugin-exceptions.patch"
-	"${FILESDIR}/${P}-uncaught-exception.patch"
 	# TODO upstream
 	"${FILESDIR}/${PN}-2.18.6-featuresummary.patch"
 	"${FILESDIR}/${PN}-2.18.6-python.patch"
@@ -126,7 +122,6 @@ src_configure() {
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
 		-DENABLE_QT5=ON
-		-DENABLE_PYTHON3=$(python_is_python3)
 		-DWITH_CUSTOM_WIDGETS=$(usex designer)
 		-DWITH_GRASS=$(usex grass)
 		-DWITH_SERVER=$(usex mapserver)
