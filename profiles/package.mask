@@ -572,7 +572,6 @@ app-admin/checkrestart
 # Not compatible with python 3.5 neither 3.6, bug #388549
 # Removal in a month.
 media-libs/lv2core
-media-libs/lv2-ui
 
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
