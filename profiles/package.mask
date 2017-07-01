@@ -550,11 +550,6 @@ x11-misc/rednotebook
 # Removal in a month.
 x11-misc/outwiker
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# Still relies on old and vulnerable webkit-gtk versions, bug #608626.
-# Removal in a month.
-www-client/xombrero
-
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
