@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools elisp-common eutils latex-package multilib python-single-r1
+inherit autotools elisp-common latex-package multilib python-single-r1
 
 DESCRIPTION="A vector graphics language that provides a framework for technical drawing"
 HOMEPAGE="http://asymptote.sourceforge.net/"
@@ -53,24 +53,27 @@ DEPEND="${RDEPEND}
 
 TEXMF=/usr/share/texmf-site
 
+PATCHES=(
+	# gc.h -> gc/gc.h
+	"${FILESDIR}/${P}-configure-ac.patch"
+
+	# Changing pdf, ps, image viewers to xdg-open
+	"${FILESDIR}/${P}-xdg-utils.patch"
+
+	# Bug #322473
+	"${FILESDIR}/${P}-info.patch"
+)
+
 pkg_setup() {
 	(use python || use X) && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	# gc.h -> gc/gc.h
-	epatch "${FILESDIR}/${P}-configure-ac.patch"
-
 	sed -e "s:Datadir/doc/asymptote:Datadir/doc/${PF}:" \
 		-i configure.ac \
 		|| die "sed configure.ac failed"
 
-	# Changing pdf, ps, image viewers to xdg-open
-	epatch "${FILESDIR}/${P}-xdg-utils.patch"
-
-	# Bug #322473
-	epatch "${FILESDIR}/${P}-info.patch"
-
+	default
 	eautoreconf
 }
 
