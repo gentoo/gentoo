@@ -5832,7 +5832,7 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Zilla 6.8.0 6.9.0: distribution builder; installer not included!
-dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.1.0: Add per-file per-year copyright information
+dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.2.0: Add per-file per-year copyright information
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0: A more awesome MakeMaker plugin for Dist::Zilla
@@ -6491,11 +6491,11 @@ dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selecte
 dev-perl/Perl-Version 1.13.0: Parse and manipulate Perl version strings
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.11.0: Querying your filehandle's capabilities
-dev-perl/PerlIO-eol 0.140.0-r1: PerlIO::eol - PerlIO layer for normalizing line endings
+dev-perl/PerlIO-eol 0.140.0-r1: PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.190.0: PerlIO layer to gzip/gunzip
 dev-perl/PerlIO-utf8_strict 0.7.0: Fast and correct UTF-8 IO
 dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
-dev-perl/PerlIO-via-dynamic 0.140.0-r1: PerlIO::via::dynamic - dynamic PerlIO layers
+dev-perl/PerlIO-via-dynamic 0.140.0-r1: Dynamic PerlIO layers
 dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for symlinks
 dev-perl/Perlbal 1.800.0-r1: Reverse-proxy load balancer and webserver
 dev-perl/Perlbal-XS-HTTPHeaders 0.200.0-r1: XS acceleration for Perlbal header processing
@@ -6510,7 +6510,7 @@ dev-perl/Pod-Eventual 0.94.1: read a POD document as a series of trivial events
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
 dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
 dev-perl/Pod-POM 2.10.0: POD Object Model
-dev-perl/Pod-Readme 0.110.0-r1 1.1.2: Intelligently generate a README file from POD
+dev-perl/Pod-Readme 1.1.2: Intelligently generate a README file from POD
 dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
 dev-perl/Pod-Spell 1.10.0-r1 1.190.0: A formatter for spellchecking Pod
 dev-perl/Pod-Strip 1.20.0: Remove POD from Perl code
