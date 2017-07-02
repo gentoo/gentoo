@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -14,26 +14,26 @@ HOMEPAGE="http://www.bouncycastle.org/java.html"
 SRC_URI="http://www.bouncycastle.org/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="1.50"
+SLOT="1.52"
 KEYWORDS="amd64 ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 
-CDEPEND="dev-java/bcprov:${SLOT}
-	dev-java/bcpkix:${SLOT}
-	java-virtuals/jaf:0
+CDEPEND="
 	dev-java/junit:0
+	dev-java/bcprov:${SLOT}
+	dev-java/bcpkix:${SLOT}
 	dev-java/oracle-javamail:0"
 
-DEPEND=">=virtual/jdk-1.6
-	app-arch/unzip
-	${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${MY_P}"
 
 JAVA_GENTOO_CLASSPATH="
-	jaf
 	junit
 	bcprov-${SLOT}
 	bcpkix-${SLOT}
@@ -45,15 +45,15 @@ RESTRICT="test"
 
 src_unpack() {
 	default
-	cd "${S}"
+	cd "${S}" || die
 	unpack ./src.zip
 }
 
-java_prepare() {
-	JAVA_RM_FILES=(
-		org/bouncycastle/mail/smime/test/*
-		org/bouncycastle/mail/smime/examples/CreateSignedMail.java
-	)
+src_prepare() {
+	default
+	rm -rv \
+		org/bouncycastle/mail/smime/test/* \
+		org/bouncycastle/mail/smime/examples/CreateSignedMail.java || die
 }
 
 src_compile() {

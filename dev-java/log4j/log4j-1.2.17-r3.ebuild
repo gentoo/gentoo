@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
@@ -14,27 +15,24 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc64 x86"
 IUSE="javamail jms"
 
-CDEPEND="javamail? (
-			dev-java/oracle-javamail:0
-			java-virtuals/jaf:0
-		)
-		jms? (
-			java-virtuals/jms:0
-		)"
+CDEPEND="
+	javamail? ( dev-java/oracle-javamail:0 )
+	jms? ( java-virtuals/jms:0 )"
 
-RDEPEND=">=virtual/jre-1.6
-		${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
-DEPEND=">=virtual/jdk-1.6
-		${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
 
 MY_P="apache-${P}"
 S="${WORKDIR}/${MY_P}"
 
-java_prepare() {
-	rm -rf dist || die
-	java-pkg_filter-compiler jikes
-	rm -v *.jar || die
+src_prepare() {
+	default
+	java-pkg_clean
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
@@ -45,9 +43,10 @@ EANT_DOC_TARGET=""
 
 src_compile() {
 	if use javamail; then
-		EANT_GENTOO_CLASSPATH+="oracle-javamail,jaf"
+		EANT_GENTOO_CLASSPATH+="oracle-javamail"
 		EANT_EXTRA_ARGS+=" -Djavamail-present=true"
 	fi
+
 	if use jms; then
 		EANT_EXTRA_ARGS+=" -Djms-present=true -Djms.jar=$(java-pkg_getjars jms)"
 	fi
@@ -58,7 +57,7 @@ src_compile() {
 src_install() {
 	java-pkg_newjar dist/lib/${PN}-1.2.17.jar ${PN}.jar
 
-	if use doc ; then
+	if use doc; then
 		java-pkg_dohtml -r site/*
 		rm -fr "${ED}/usr/share/doc/${PF}/html/apidocs"
 		java-pkg_dojavadoc --symlink apidocs site/apidocs
