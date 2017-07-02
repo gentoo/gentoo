@@ -37,7 +37,7 @@ RDEPEND="
 	v4l? ( media-libs/libv4l )
 	vorbis? ( media-libs/libvorbis )
 	X? ( x11-libs/libXpm x11-libs/libXaw x11-libs/libXv )
-	x264? ( media-libs/x264 )
+	x264? ( media-libs/x264:= )
 	xml? ( dev-libs/libxml2 )
 	xvid? ( media-libs/xvid )
 	"
