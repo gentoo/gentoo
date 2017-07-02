@@ -5216,6 +5216,7 @@ dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/ANSITerminal 0.6.5 0.7: Module which offers basic control of ANSI compliant terminals
 dev-ml/OCaml-ImageMagick 0.34-r1: Provide the ImageMagick methods to OCaml
 dev-ml/alcotest 0.7.2 0.8.0: A lightweight and colourful test framework
+dev-ml/angstrom 0.5.1: Parser combinators built for speed and memory efficiency
 dev-ml/astring 0.8.3: Alternative String module for OCaml
 dev-ml/async 0.9.0: Jane Street Capital's asynchronous execution library
 dev-ml/async_extra 0.9.0: Jane Street Capital's asynchronous execution library (extra)
@@ -5319,7 +5320,7 @@ dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4 0.12.0: Library for 
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
 dev-ml/ocaml-dns 0.20.1: A pure OCaml implementation of the DNS protocol
-dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
+dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-extunix 0.1.4 0.1.5: Thin bindings to various low-level system APIs
