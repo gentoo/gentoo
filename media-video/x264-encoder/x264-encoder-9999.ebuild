@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,7 +30,7 @@ RDEPEND="ffmpeg? ( virtual/ffmpeg )
 	ffmpegsource? ( media-libs/ffmpegsource )
 	mp4? ( >=media-video/gpac-0.5.2 )"
 
-ASM_DEP=">=dev-lang/yasm-1.2.0"
+ASM_DEP=">=dev-lang/nasm-2.13"
 DEPEND="${RDEPEND}
 	amd64? ( ${ASM_DEP} )
 	x86? ( ${ASM_DEP} )
