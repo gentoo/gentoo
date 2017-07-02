@@ -21,6 +21,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
+RESTRICT="test"
 
 DEPEND="
 	app-arch/zip
@@ -50,4 +51,8 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf ${PN}.service
+}
+
+src_test() {
+	GOPATH="${S}" emake -C src/${EGO_PN%/*} test
 }
