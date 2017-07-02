@@ -2374,7 +2374,7 @@ app-text/manpager 1: Enable colorization of man pages
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/mecab 0.996: Yet Another Part-of-Speech and Morphological Analyzer
-app-text/mftrace 1.2.18-r2: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
+app-text/mftrace 1.2.18-r2 1.2.19: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
