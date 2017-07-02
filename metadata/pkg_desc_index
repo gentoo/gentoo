@@ -4877,7 +4877,7 @@ dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and int
 dev-libs/libhome 0.10.2-r1: libhome is a library providing a getpwnam() emulation
 dev-libs/libhtmlparse 0.1.13-r1: HTML parsing library. It takes HTML tags, text, and calls callbacks for each type of token
 dev-libs/libical 1.0.1 2.0.0-r2: An implementation of basic iCAL protocols
-dev-libs/libiconv 1.13.1 1.14 1.14-r1 1.14-r2: GNU charset conversion library for libc which doesn't implement it
+dev-libs/libiconv 1.14 1.14-r1 1.14-r2: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
@@ -17496,7 +17496,7 @@ sys-boot/dvhtool 1.0.1-r2: Tool to copy kernel(s) into the volume header on SGI 
 sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
 sys-boot/elilo 3.6_p20060314 3.10 3.12 3.16: Linux boot loader for EFI-based systems such as IA-64
 sys-boot/getdvhoff 0.12-r1: Utility for use on LiveCDs to calculate offset of the ext2 partition for losetup
-sys-boot/gnu-efi 3.0u 3.0.2 3.0.3 3.0.4 3.0.5: Library for build EFI Applications
+sys-boot/gnu-efi 3.0u 3.0.2 3.0.3 3.0.4 3.0.5 3.0.6: Library for build EFI Applications
 sys-boot/grub 0.97-r16 0.97-r17 2.02 9999: GNU GRUB boot loader
 sys-boot/grub-static 0.96-r1 0.97 0.97-r6 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
 sys-boot/lilo 22.8-r2 23.2-r2 24.0-r1 24.1 24.2: Standard Linux boot loader
