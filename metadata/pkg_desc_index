@@ -1750,7 +1750,7 @@ app-misc/cmatrix 1.2a-r3: An ncurses based app to show a scrolling screen from t
 app-misc/color 1.2-r1 1.2-r2: Easily add ANSI colouring to shell scripts
 app-misc/colordiff 1.0.16 1.0.18: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
-app-misc/countrycodes 1.0.5-r1: An ISO 3166 country code finder
+app-misc/countrycodes 1.0.5-r1 1.0.5-r2: An ISO 3166 country code finder
 app-misc/cpipe 3.0.3: Counting pipe, measures data transfered over pipe
 app-misc/crunch 3.4 3.5 3.6: A wordlist generator
 app-misc/cstream 3.0.0 3.1.1: general-purpose stream-handling tool like UNIX dd
@@ -12484,7 +12484,7 @@ media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script 
 media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/efont-unicode 0.4.2-r1: The /efont/ Unicode Bitmap Fonts
 media-fonts/ekushey-bangla-fonts 20070420: A collection of Free fonts for the Bangla (Bengali) script
-media-fonts/encodings 1.0.4: X.Org font encodings
+media-fonts/encodings 1.0.4 1.0.4-r1: X.Org font encodings
 media-fonts/essays1743 2.000 2.001: John Stracke's Essays 1743 font
 media-fonts/exljbris-free 20100320: Beautiful free fonts from exljbris Font Foundry
 media-fonts/exo 2: A geometric sans-serif font with a technological feel
@@ -12501,13 +12501,13 @@ media-fonts/font-adobe-utopia-75dpi 1.0.4: X.Org Adobe Utopia bitmap fonts
 media-fonts/font-adobe-utopia-type1 1.0.4: X.Org Adobe Utopia Type 1 fonts
 media-fonts/font-alias 1.0.3-r1: X.Org font aliases
 media-fonts/font-arabic-misc 1.0.3: X.Org arabic bitmap fonts
-media-fonts/font-bh-100dpi 1.0.3: X.Org Bigelow & Holmes bitmap fonts
-media-fonts/font-bh-75dpi 1.0.3: X.Org Bigelow & Holmes bitmap fonts
+media-fonts/font-bh-100dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
+media-fonts/font-bh-75dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
 media-fonts/font-bh-lucidatypewriter-100dpi 1.0.3: X.Org Bigelow & Holmes Lucida bitmap fonts
 media-fonts/font-bh-lucidatypewriter-75dpi 1.0.3: X.Org Bigelow & Holmes Lucida bitmap fonts
 media-fonts/font-bh-ttf 1.0.3: X.Org Bigelow & Holmes TrueType fonts
 media-fonts/font-bh-type1 1.0.3: X.Org Bigelow & Holmes Type 1 fonts
-media-fonts/font-bitstream-100dpi 1.0.3: X.Org Bitstream bitmap fonts
+media-fonts/font-bitstream-100dpi 1.0.3 1.0.3-r1: X.Org Bitstream bitmap fonts
 media-fonts/font-bitstream-75dpi 1.0.3: X.Org Bitstream bitmap fonts
 media-fonts/font-bitstream-speedo 1.0.2: Bitstream Speedo fonts
 media-fonts/font-bitstream-type1 1.0.3: X.Org Bitstream Type 1 fonts
@@ -12522,7 +12522,7 @@ media-fonts/font-micro-misc 1.0.3: X.Org micro-misc font
 media-fonts/font-misc-cyrillic 1.0.3: X.Org misc-cyrillic fonts
 media-fonts/font-misc-ethiopic 1.0.3: Miscellaneous Ethiopic fonts
 media-fonts/font-misc-meltho 1.0.3: X.Org Syriac fonts
-media-fonts/font-misc-misc 1.1.2: X.Org miscellaneous fonts
+media-fonts/font-misc-misc 1.1.2 1.1.2-r1: X.Org miscellaneous fonts
 media-fonts/font-mutt-misc 1.0.3: X.Org ClearlyU fonts
 media-fonts/font-schumacher-misc 1.1.2: X.Org Schumacher fonts
 media-fonts/font-screen-cyrillic 1.0.4: X.Org Screen cyrillic fonts
