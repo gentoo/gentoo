@@ -9,7 +9,7 @@ inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="Traces TeX fonts to PFA or PFB fonts (formerly pktrace)"
 HOMEPAGE="http://lilypond.org/mftrace/"
-SRC_URI="http://lilypond.org/download/sources/mftrace/${P}.tar.gz"
+SRC_URI="http://lilypond.org/downloads/sources/mftrace/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~hppa ppc x86 ~x86-fbsd"
