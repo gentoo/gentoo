@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
-inherit flag-o-matic multilib qmake-utils
+inherit autotools flag-o-matic multilib qmake-utils
 
 DESCRIPTION="QMidiRoute is a filter/router for MIDI events"
 HOMEPAGE="http://alsamodular.sourceforge.net"
@@ -20,6 +20,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-drop-qtopengl.patch
+	eautoreconf
+}
 
 src_configure() {
 	append-cxxflags '-std=c++11'
