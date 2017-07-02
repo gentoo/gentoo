@@ -20,7 +20,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-ruby_add_bdepend "test? ( dev-ruby/flexmock )"
+ruby_add_bdepend "test? ( dev-ruby/ae dev-ruby/flexmock )"
 
 all_ruby_prepare() {
 	sed -i -e "/sdoc/d" Rakefile || die
