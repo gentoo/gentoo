@@ -155,6 +155,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/233-0001-Avoid-strict-DM-interface-version-dependencies-5519.patch"
 		"${FILESDIR}/233-CVE-2017-9445.patch"
+		"${FILESDIR}/233-format-warnings.patch"
 	)
 
 	if ! use vanilla; then
