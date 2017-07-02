@@ -42,7 +42,7 @@ RDEPEND=">=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
 		x11-libs/libXt
 		x11-libs/libXv
 		)
-	x264? ( >=media-libs/x264-0.0.20130506[${MULTILIB_USEDEP}] )"
+	x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	sys-devel/gettext
