@@ -1,14 +1,14 @@
-DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=app-emulation/libvirt dev-libs/libxml2 dev-php/pecl-imagick dev-libs/libxslt doc? ( app-text/xhtml1 ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.13* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 ) >=dev-vcs/git-1.8.2.1
-DESCRIPTION=PHP 5 bindings for libvirt
-EAPI=5
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=app-emulation/libvirt dev-libs/libxml2 dev-libs/libxslt virtual/pkgconfig doc? ( app-text/xhtml1 ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=PHP bindings for libvirt
+EAPI=6
 HOMEPAGE=http://libvirt.org/php/
-IUSE=doc php_targets_php5-6 php_targets_php5-5
+IUSE=doc php_targets_php5-6 php_targets_php7-0 php_targets_php7-1
 LICENSE=LGPL-2.1
-RDEPEND=app-emulation/libvirt dev-libs/libxml2 dev-php/pecl-imagick php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 )
-REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php5-5 )
+RDEPEND=app-emulation/libvirt dev-libs/libxml2 php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 )
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 )
 RESTRICT=test
 SLOT=0
-_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:php-ext-source-r2 src_compile:php-ext-source-r2 src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r2	6b0fe3f9cc5ad2f4e3ffcea3e9112c4c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=28a1ab566233a8d1eb2f7ab3ce64d477
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:php-ext-source-r3 src_compile:php-ext-source-r3 src_test:php-ext-source-r3 src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=03ba20a5d58c86661daeb5f2bf9a8b6b
