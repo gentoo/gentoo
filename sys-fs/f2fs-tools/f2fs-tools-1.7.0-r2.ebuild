@@ -20,7 +20,7 @@ DEPEND="$RDEPEND"
 src_configure() {
 	#This is required to install to /sbin, bug #481110
 	econf \
-		--bindir="${EPREFIX}"/sbin
+		--bindir="${EPREFIX}"/sbin \
 		--disable-static
 }
 
