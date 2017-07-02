@@ -2848,7 +2848,7 @@ app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
 dev-ada/asis 2016 2017: To develop tools for Ada software
 dev-ada/aunit 2016: Ada unit testing framework
-dev-ada/aws 2016: A complete Web development framework
+dev-ada/aws 2016 2017: A complete Web development framework
 dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016 2017: GNAT Component Collection
 dev-ada/gnatmem 2016: Monitors dynamic allocation and deallocation activity in a program
@@ -12239,7 +12239,7 @@ kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.0.2: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.4: Quake-style terminal emulator based on konsole
-kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
+kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1_p20170701: Getting things done application by KDE
 kde-plasma/bluedevil 5.8.6 5.8.7 5.9.5 5.10.3: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.8.6 5.8.7 5.9.5 5.10.3: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.8.6 5.8.7 5.9.5 5.10.3: Breeze theme for GRUB
