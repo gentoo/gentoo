@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (02 Jul 2017)
+# The eselect module has been integrated into app-shells/bash-completion
+# and all the old versions (not having it) are gone. Removal in 14 days.
+app-eselect/eselect-bashcomp
+
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jul 2017)
 # Unmaintained and segfaults.
 # Masked for removal in 30 days. Bug#623276.
