@@ -511,7 +511,7 @@ app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.26 1.4.27: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
 app-crypt/certbot 0.14.1 0.15.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.14.1 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-apache 0.14.1 0.15.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.14.1 0.15.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.2.0_p20170601: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
@@ -4864,7 +4864,7 @@ dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming i
 dev-libs/libgcrypt 1.5.6-r101 1.7.6 1.7.7 1.7.8: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.6 0.17.7 0.17.8: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.24.6 0.25.1 9999: A linkable library for Git
+dev-libs/libgit2 0.24.6 0.25.1 0.26.0 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4 0.25.0: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
