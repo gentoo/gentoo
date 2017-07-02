@@ -8,20 +8,21 @@ HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/ab
 SRC_URI="https://dev.gentoo.org/~blueness/f2fs-tools/${P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0/1"
+SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~mips ~x86"
-IUSE=""
+IUSE="selinux"
 
 RDEPEND="
 	sys-apps/util-linux
-	sys-libs/libselinux"
+	selinux? ( sys-libs/libselinux )"
 DEPEND="$RDEPEND"
 
 src_configure() {
 	#This is required to install to /sbin, bug #481110
 	econf \
-		--bindir="${EPREFIX}"/sbin
-		--disable-static
+		--bindir="${EPREFIX}"/sbin \
+		--disable-static \
+		$(use_with selinux)
 }
 
 src_install() {
