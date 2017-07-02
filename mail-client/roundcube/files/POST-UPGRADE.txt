@@ -13,6 +13,8 @@ Post-Upgrade Activities
    php composer.phar update --no-dev
 6. Update your database and configurations by running:
    ./bin/update.sh
+7. Update the cached javascript libraries by running:
+   ./bin/install-jsdeps.sh
 
 SQLite database upgrade
 -----------------------
