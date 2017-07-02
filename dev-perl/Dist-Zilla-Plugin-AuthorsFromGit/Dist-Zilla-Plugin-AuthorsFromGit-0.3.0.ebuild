@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=AKHUETTEL
-DIST_VERSION=0.002
+DIST_VERSION=0.003
 inherit perl-module
 
 DESCRIPTION="Add per-file per-year copyright information"
