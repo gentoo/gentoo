@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/fbpdf-0_p20161202.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=59187f937231e52bd2a0347b8469283d
+_md5_=8780ff83c989f1520ca7a6deed6f3ac2

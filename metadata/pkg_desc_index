@@ -2290,7 +2290,7 @@ app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes
 app-text/evince 3.22.1: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/fbless 0.2.2-r1 0.2.3 9999: Python-based console fb2 reader with less-like interface
-app-text/fbpdf 0_p20160409 0_p20161202: framebuffer pdf and djvu viewer
+app-text/fbpdf 0_p20161202: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r2: E-Book Reader. Supports many e-book formats
 app-text/fdftk 6.0-r1: Acrobat FDF Toolkit
 app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
