@@ -1295,7 +1295,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.3.3 2.4.0 2.4.1 2.5.0 2.6.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 17.03.1 17.03.2 17.06.0_rc5 17.06.0 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 17.03.1 17.03.2 17.06.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.13.0 1.14.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0 0.12.0: Machine management for a container-centric world
@@ -17875,7 +17875,7 @@ sys-kernel/aufs-sources 4.4.52 4.4.75 4.9.16 4.9.34 4.9.35 4.10.17 4.11.7 4.11.8
 sys-kernel/bliss-initramfs 6.8.3-r2 7.0.2-r1 7.1.0: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.34 4.11.7: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
-sys-kernel/dracut 044-r1 044-r3: Generic initramfs generation tool
+sys-kernel/dracut 044-r1 044-r3 045: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.10.107 3.12.52-r1 3.12.66 3.12.68-r1 3.12.69 3.12.70 3.12.71 3.12.72 3.12.9999 4.1.15-r1 4.1.35 4.1.36-r1 4.1.37 4.1.38 4.1.38-r1 4.1.39 4.1.39-r1 4.1.40 4.1.41 4.1.42 4.4.52 4.4.75 4.9.6-r1 4.9.16 4.9.34 4.9.35 4.10.17 4.11.7 4.11.8: Full sources including the Gentoo patchset for the 4.11 kernel tree
