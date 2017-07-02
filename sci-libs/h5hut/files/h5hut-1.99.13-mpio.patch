@@ -1,0 +1,12 @@
+diff -Naur H5hut-1.99.13.orig/src/h5core/h5_hdf5_private.h H5hut-1.99.13/src/h5core/h5_hdf5_private.h
+--- H5hut-1.99.13.orig/src/h5core/h5_hdf5_private.h	2017-07-02 16:46:44.899690038 -0600
++++ H5hut-1.99.13/src/h5core/h5_hdf5_private.h	2017-07-02 16:47:16.550080867 -0600
+@@ -934,7 +934,7 @@
+ 	HDF5_WRAPPER_ENTER (h5_err_t,
+ 			    "fapl_id=%d, comm=..., use_gpfs=%d",
+ 			    fapl_id, (int)use_gpfs);
+-	if ( H5Pset_fapl_mpiposix (fapl_id, comm, use_gpfs) < 0)
++	if ( H5Pset_fapl_mpio (fapl_id, comm, use_gpfs) < 0)
+ 		HDF5_WRAPPER_LEAVE (
+ 			h5_error (
+ 				H5_ERR_HDF5,
