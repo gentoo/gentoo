@@ -36,6 +36,7 @@ RDEPEND="${CDEPEND}
 		sys-libs/libsepol
 		sec-policy/selinux-dracut
 	)
+	!net-analyzer/arping
 	"
 DEPEND="${CDEPEND}
 	app-text/asciidoc
@@ -132,7 +133,7 @@ pkg_postinst() {
 	elog "dependencies may be installed:"
 	elog ""
 	optfeature "Networking support"  net-misc/curl "net-misc/dhcp[client]" \
-		sys-apps/iproute2
+		sys-apps/iproute2 "net-misc/iputils[arping]"
 	optfeature \
 		"Measure performance of the boot process for later visualisation" \
 		app-benchmarks/bootchart2 app-admin/killproc sys-process/acct
