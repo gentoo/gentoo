@@ -30,5 +30,5 @@ all_ruby_prepare() {
 		-e '/bundler/I s:^:#:' Rakefile || die
 
 	# Make sure a consistent rails version is loaded.
-	sed -i -e '4igem "rails"' -e '/bundler/ s:^:#:' test/test_helper.rb || die
+	sed -i -e '4igem "railties"' -e '/bundler/ s:^:#:' test/test_helper.rb || die
 }
