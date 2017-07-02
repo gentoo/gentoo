@@ -1,0 +1,77 @@
+diff -Naur H5hut-1.99.13.orig/src/Fortran/Makefile.am H5hut-1.99.13/src/Fortran/Makefile.am
+--- H5hut-1.99.13.orig/src/Fortran/Makefile.am	2017-07-02 16:46:44.899690038 -0600
++++ H5hut-1.99.13/src/Fortran/Makefile.am	2017-07-02 16:53:46.414587073 -0600
+@@ -49,9 +49,6 @@
+ 	awk '/INTEGER\*8 :: /{print "\t" $$0}' $^ >$@
+ 	awk '/PARAMETER /{print "\t" $$0}' $^ >> $@
+ 	awk '/INTEGER\*8 FUNCTION/{print "\t" $$1 " " $$3}' $^ >>$@
+-
+-all-local: $(top_srcdir)/src/include/H5hutF.h
+-	$(INSTALL) -m644 .libs/libH5hutF.a $(top_srcdir)/src/lib
+ endif
+ 
+ clean: clean-am
+diff -Naur H5hut-1.99.13.orig/src/h5core/Makefile.am H5hut-1.99.13/src/h5core/Makefile.am
+--- H5hut-1.99.13.orig/src/h5core/Makefile.am	2017-07-02 16:46:44.899690038 -0600
++++ H5hut-1.99.13/src/h5core/Makefile.am	2017-07-02 16:58:03.017839542 -0600
+@@ -89,15 +89,10 @@
+ 
+ libH5hut_la_LDFLAGS = -version-info 2:0:0
+ 
+-all-local:
+-	$(INSTALL) -m0755 -d $(top_builddir)/src/lib
+-	$(INSTALL) -m644 .libs/libH5hut.a $(top_builddir)/src/lib
+-
+ install-exec-local:
+ 	@$(INSTALL) -d $(DESTDIR)$(includedir)/h5core
+ 	@$(INSTALL) -m644 $(top_srcdir)/src/include/h5core/*.h $(DESTDIR)$(includedir)/h5core/
+ 
+ clean-local:
+-	$(RM) -f $(top_srcdir)/src/lib/libH5hut.*
+ 	$(RM) -f *~
+ 
+diff -Naur H5hut-1.99.13.orig/test/Makefile.am H5hut-1.99.13/test/Makefile.am
+--- H5hut-1.99.13.orig/test/Makefile.am	2017-07-02 16:46:44.919690283 -0600
++++ H5hut-1.99.13/test/Makefile.am	2017-07-02 16:58:01.297818301 -0600
+@@ -1,10 +1,9 @@
+ # test level Makefile.am
+ 
+ AM_CPPFLAGS += -I$(top_srcdir)/src/include
+-AM_LDFLAGS += -L${abs_top_builddir}/src/lib
+ 
+ LDADD =
+-LDADD += -lH5hut
++LDADD += ../src/h5core/libH5hut.la
+ 
+ noinst_PROGRAMS =
+ 
+diff -Naur H5hut-1.99.13.orig/tools/Makefile.am H5hut-1.99.13/tools/Makefile.am
+--- H5hut-1.99.13.orig/tools/Makefile.am	2017-07-02 16:46:44.919690283 -0600
++++ H5hut-1.99.13/tools/Makefile.am	2017-07-02 16:59:30.228916458 -0600
+@@ -8,10 +8,9 @@
+ 
+ AM_CPPFLAGS += -I${abs_top_builddir}/src/include -Wno-deprecated
+ FFLAGS += -cpp $(AM_CPPFLAGS)
+-AM_LDFLAGS += -L${abs_top_builddir}/src/lib
+ 
+ LDADD =
+-LDADD += -lH5hut
++LDADD += ../src/h5core/libH5hut.la
+ 
+ if ENABLE_C
+ EXTRA_SCRIPTS = # h5hutcc
+diff -Naur H5hut-1.99.13.orig/tools/vtk2h5grid/Makefile.am H5hut-1.99.13/tools/vtk2h5grid/Makefile.am
+--- H5hut-1.99.13.orig/tools/vtk2h5grid/Makefile.am	2017-07-02 16:46:44.919690283 -0600
++++ H5hut-1.99.13/tools/vtk2h5grid/Makefile.am	2017-07-02 16:58:58.978530564 -0600
+@@ -1,10 +1,9 @@
+ AM_CPPFLAGS = -I${abs_top_srcdir}/src/include -Wno-deprecated
+ FFLAGS += -cpp $(AM_CPPFLAGS)
+-LDFLAGS += -L${abs_top_builddir}/src/lib
+ 
+ LDADD = 
+ 
+-LDADD += -lH5hut -lvtkIO -lvtkFiltering -lvtkCommon -lvtksys -lpthread -ldl
++LDADD += ../src/h5core/libH5hut.la -lvtkIO -lvtkFiltering -lvtkCommon -lvtksys -lpthread -ldl
+ 
+ 
+ bin_PROGRAMS = 
