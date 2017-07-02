@@ -1852,7 +1852,7 @@ app-misc/joy2key 1.6.3: An application that translates joystick events to keyboa
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r2: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3 0.9.4 0.9.5: A CalDAV based calendar
+app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3 0.9.4 0.9.5 0.9.6: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
