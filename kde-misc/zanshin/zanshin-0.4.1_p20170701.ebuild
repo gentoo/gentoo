@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Getting things done application by KDE"
 HOMEPAGE="https://zanshin.kde.org/"
-[[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="http://files.kde.org/zanshin/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 KEYWORDS="~amd64 ~x86"
@@ -31,9 +31,12 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep krunner)
 	$(add_frameworks_dep kwallet)
+	$(add_frameworks_dep kwidgetsaddons)
+	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	$(add_kdeapps_dep akonadi)
 	$(add_kdeapps_dep akonadi-calendar)
+	$(add_kdeapps_dep akonadi-contacts)
 	$(add_kdeapps_dep akonadi-notes)
 	$(add_kdeapps_dep akonadi-search)
 	$(add_kdeapps_dep kcalcore)
@@ -47,9 +50,9 @@ COMMON_DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
-	dev-libs/boost
 "
 DEPEND="${COMMON_DEPEND}
+	dev-libs/boost
 	test? ( $(add_kdeapps_dep akonadi 'tools') )
 "
 RDEPEND="${COMMON_DEPEND}
