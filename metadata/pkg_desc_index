@@ -3550,7 +3550,7 @@ dev-haskell/html-conduit 1.1.1.1 1.2.1 1.2.1.1: Parse HTML documents using xml-c
 dev-haskell/http 4000.2.8 4000.2.17 4000.2.20 4000.2.22 4000.3.5: A library for client-side HTTP
 dev-haskell/http-api-data 0.3.3: Converting to/from HTTP API data like URL pieces, headers and query parameters
 dev-haskell/http-attoparsec 0.1.1-r2 0.1.1-r3: Attoparsec parsers for http-types
-dev-haskell/http-client 0.2.2.2 0.3.3.2 0.4.18.1 0.4.26.2 0.4.28 0.4.30 0.5.5: An HTTP client engine
+dev-haskell/http-client 0.4.18.1 0.4.30 0.5.5 0.5.7.0: An HTTP client engine
 dev-haskell/http-client-conduit 0.2.0.1 0.3.0: Frontend support for using http-client with conduit (deprecated)
 dev-haskell/http-client-multipart 0.2.0.0 0.3.0.0: Generate multipart uploads for http-client. (deprecated)
 dev-haskell/http-client-tls 0.2.2 0.2.4 0.3.3: http-client backend using the connection package and tls library
