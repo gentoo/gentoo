@@ -18,7 +18,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-SONAME="148"
+SONAME="152"
 SLOT="0/${SONAME}"
 
 LICENSE="GPL-2"
