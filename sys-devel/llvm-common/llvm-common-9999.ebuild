@@ -5,7 +5,7 @@ EAPI=6
 
 inherit git-r3
 
-DESCRIPTION="Vim support files for LLVM"
+DESCRIPTION="Common files shared between multiple slots of LLVM"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/llvm.git
@@ -18,11 +18,14 @@ IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"
 
-S=${WORKDIR}/${P}/utils/vim
+src_configure() { :; }
+src_compile() { :; }
+src_test() { :; }
 
 src_install() {
 	insinto /usr/share/vim/vimfiles
-	doins -r */
+	doins -r utils/vim/*/
 	# some users may find it useful
-	dodoc README vimrc
+	newdoc utils/vim/README README.vim
+	dodoc utils/vim/vimrc
 }

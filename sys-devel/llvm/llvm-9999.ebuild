@@ -61,7 +61,7 @@ DEPEND="${RDEPEND}
 # installed means llvm-config there will take precedence.
 RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
-PDEPEND="app-vim/llvm-vim
+PDEPEND="sys-devel/llvm-common
 	gold? ( sys-devel/llvmgold )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
