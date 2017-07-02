@@ -24,7 +24,7 @@ SLOT="0/${SONAME}"
 LICENSE="GPL-2"
 IUSE="10bit altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
 
-ASM_DEP=">=dev-lang/yasm-1.2.0"
+ASM_DEP=">=dev-lang/nasm-2.13"
 DEPEND="abi_x86_32? ( ${ASM_DEP} )
 	abi_x86_64? ( ${ASM_DEP} )
 	opencl? ( dev-lang/perl )"
