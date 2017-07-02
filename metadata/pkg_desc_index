@@ -5832,7 +5832,7 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Zilla 6.8.0 6.9.0: distribution builder; installer not included!
-dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.2.0: Add per-file per-year copyright information
+dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.3.0: Add per-file per-year copyright information
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0: A more awesome MakeMaker plugin for Dist::Zilla
@@ -12523,7 +12523,7 @@ media-fonts/font-misc-cyrillic 1.0.3: X.Org misc-cyrillic fonts
 media-fonts/font-misc-ethiopic 1.0.3: Miscellaneous Ethiopic fonts
 media-fonts/font-misc-meltho 1.0.3: X.Org Syriac fonts
 media-fonts/font-misc-misc 1.1.2 1.1.2-r1: X.Org miscellaneous fonts
-media-fonts/font-mutt-misc 1.0.3: X.Org ClearlyU fonts
+media-fonts/font-mutt-misc 1.0.3 1.0.3-r1: X.Org ClearlyU fonts
 media-fonts/font-schumacher-misc 1.1.2: X.Org Schumacher fonts
 media-fonts/font-screen-cyrillic 1.0.4: X.Org Screen cyrillic fonts
 media-fonts/font-sony-misc 1.0.3: X.Org Sony fonts
@@ -15126,7 +15126,7 @@ net-mail/metamail 2.7.53.3-r1: Metamail (with Debian patches) - Generic MIME pac
 net-mail/mhonarc 2.6.18-r2: Perl Mail-to-HTML Converter
 net-mail/mhonarc-gentoo 2.6.18-r2: Perl Mail-to-HTML Converter, Gentoo fork
 net-mail/mlmmj 1.2.18.0 1.2.18.1 1.2.19.0 1.2.19.0-r1: Mailing list managing made joyful
-net-mail/mpack 1.6-r3: Command-line MIME encoding and decoding utilities
+net-mail/mpack 1.6-r3 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.2.4 1.2.5 1.2.6: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
