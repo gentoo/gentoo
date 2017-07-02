@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (02 Jul 2017)
+# Part of the JRE since 1.6.
+# Masked for removal in 30 days. Bug #553188.
+java-virtual/jaf
+
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jul 2017)
 # Unmaintained and segfaults.
 # Masked for removal in 30 days. Bug#623276.
