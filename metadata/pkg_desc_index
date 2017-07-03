@@ -13636,7 +13636,7 @@ media-plugins/vdr-wapd 0.9 0.9_p1 0.9_p1-r1: VDR plugin: lets VDR listen to WAP 
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
 media-plugins/vdr-xine 0.9.4-r1: VDR plugin: for 'software only' playback using xine
-media-plugins/vdr-xineliboutput 1.1.0 2.0.0_p20130821 2.0.0_p20150220 9999: Video Disk Recorder Xinelib PlugIn
+media-plugins/vdr-xineliboutput 1.1.0 2.0.0_pre20130821 2.0.0_pre20150220 9999: Video Disk Recorder Xinelib PlugIn
 media-plugins/vdr-xvdr 9999: VDR plugin: XVDR Streamserver Plugin
 media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used channels
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
