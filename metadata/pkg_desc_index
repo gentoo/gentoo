@@ -2241,7 +2241,7 @@ app-text/cmark 0.27.1: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
-app-text/convmv 2.0 2.01: convert filenames to utf8 or any other charset
+app-text/convmv 2.01 2.02: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor
 app-text/cpdf 2.1.1-r1: A command line tool for manipulating PDF files
 app-text/crf++ 0.54 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
@@ -11499,7 +11499,7 @@ games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling R
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
-games-rpg/manaplus 1.7.5.27 1.7.6.10 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.6.10 1.7.6.24 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -17207,7 +17207,7 @@ sys-apps/kmod 23 24 9999: library and tools for managing linux kernel modules
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
-sys-apps/less 487 492 493: Excellent text file viewer
+sys-apps/less 487 492 493 494: Excellent text file viewer
 sys-apps/likwid 4.1.1 4.1.2: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1: Misc tools bundled with kernel sources
 sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
@@ -18466,7 +18466,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.9.818.50_p1 1.10.867.42_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.11.882.4_p1 1.11.890.4_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.11.890.4_p1 1.11.894.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings

@@ -9,4 +9,4 @@ RDEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=b8b718175d4d4c5cf3df60ad1da4c698
+_md5_=609f04dc4da4d8458f5de2321e909951
