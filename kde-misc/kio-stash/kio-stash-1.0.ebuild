@@ -18,7 +18,6 @@ IUSE=""
 RESTRICT+=" test"
 
 DEPEND="
-	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep ki18n)
@@ -26,3 +25,5 @@ DEPEND="
 	$(add_qt_dep qtdbus)
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-no-kf5config.patch" )

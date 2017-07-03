@@ -1,0 +1,43 @@
+commit 624a1f38b9604def78c34e26ac31e1fd21c6673b
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Mon Jul 3 20:36:41 2017 +0200
+
+    Drop unused KF5Config dependency
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0cbd710..1552df6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,7 +27,6 @@ find_package(Qt5 ${QT5_MIN_VERSION} REQUIRED COMPONENTS
+ )
+ 
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+-    Config
+     KIO
+     DBusAddons
+     I18n
+diff --git a/src/ioslave/CMakeLists.txt b/src/ioslave/CMakeLists.txt
+index 462fef9..23922f8 100644
+--- a/src/ioslave/CMakeLists.txt
++++ b/src/ioslave/CMakeLists.txt
+@@ -6,8 +6,6 @@ target_link_libraries (kio_filestash
+     Qt5::DBus
+     KF5::KIOCore
+     KF5::I18n
+-    KF5::ConfigCore
+-    KF5::ConfigGui
+ )
+ 
+ set_target_properties(kio_filestash PROPERTIES OUTPUT_NAME "filestash")
+diff --git a/src/ioslave/ioslave.cpp b/src/ioslave/ioslave.cpp
+index b280f11..8928efb 100644
+--- a/src/ioslave/ioslave.cpp
++++ b/src/ioslave/ioslave.cpp
+@@ -34,7 +34,6 @@
+ 
+ #include <KProtocolManager>
+ #include <KLocalizedString>
+-#include <KConfigGroup>
+ #include <KFileItem>
+ #include <KIO/Job>
+ 
