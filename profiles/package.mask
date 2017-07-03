@@ -152,11 +152,6 @@ dev-libs/radlib
 app-office/rubrica
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Deprecated in favor of media-fonts/dejavu since many years ago, see bug
-# #282754. Removal in a month.
-media-fonts/ttf-bitstream-vera
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
 # Not needed by anything in the tree, requires an obsolete texinfo version
 # and is also the last consumer of gnat-gcc, bug #620982. Removal in a
 # month.
