@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=AKHUETTEL
-DIST_VERSION=0.003
+DIST_VERSION=0.004
 inherit perl-module
 
 DESCRIPTION="Add per-file per-year copyright information"
@@ -17,7 +17,7 @@ RDEPEND="
 	dev-perl/DateTime
 	dev-perl/Dist-Zilla
 	dev-perl/Git-Wrapper
-	dev-perl/List-MoreUtils
+	>=dev-perl/List-MoreUtils-0.400.0
 	>=virtual/perl-Scalar-List-Utils-1.330.0
 	dev-perl/Moose
 	dev-perl/Pod-Weaver
