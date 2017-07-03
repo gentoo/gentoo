@@ -3605,9 +3605,9 @@ dev-haskell/libxml 0.1.1: Binding to libxml2
 dev-haskell/libxml-sax 0.7.5: Bindings for the libXML2 SAX interface
 dev-haskell/lifted-async 0.2.0.2-r1 0.6.0.1 0.7.0.2 0.8.0.1-r1 0.9.1.1-r1: Run lifted IO operations asynchronously and wait for their results
 dev-haskell/lifted-base 0.2.3.6-r2 0.2.3.10: lifted IO operations from the base library
-dev-haskell/linear 1.20.5: Linear Algebra
+dev-haskell/linear 1.20.5 1.20.6: Linear Algebra
 dev-haskell/list 0.5.2: List monad transformer and class
-dev-haskell/listlike 4.2.1: Generic support for list-like structures
+dev-haskell/listlike 4.2.1 4.5.1: Generic support for list-like structures
 dev-haskell/logging-facade 0.0.0: Simple logging abstraction that allows multiple backends
 dev-haskell/logict 0.6.0.2: A backtracking logic-programming monad
 dev-haskell/logict-state 0.1.0.2: Library for logic programming based on haskell package logict
