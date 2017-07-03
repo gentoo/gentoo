@@ -6528,7 +6528,7 @@ dev-perl/Proc-Simple 1.320.0: Launch and control background processes
 dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
 dev-perl/Quota 1.7.2: Perl interface to file system quotas
-dev-perl/REST-Client 249 273: A simple client for interacting with RESTful http/https resources
+dev-perl/REST-Client 273: A simple client for interacting with RESTful http/https resources
 dev-perl/RPC-XML 0.790.0: An implementation of XML-RPC
 dev-perl/RRD-Simple 1.440.0-r1: Simple interface to create and store data in RRD files
 dev-perl/RTF-Writer 1.110.0-r2: RTF::Writer - for generating documents in Rich Text Format
@@ -6770,7 +6770,7 @@ dev-perl/Text-Markdown 1.0.31-r1: Convert MultiMarkdown syntax to (X)HTML
 dev-perl/Text-Netstring 0.70.0-r1: Create and manipulate netstrings
 dev-perl/Text-Password-Pronounceable 0.300.0-r1: Generate pronounceable passwords
 dev-perl/Text-Patch 1.800.0-r1: Patches text with given patch
-dev-perl/Text-Quoted 2.60.0-r1 2.90.0: Extract the structure of a quoted mail message
+dev-perl/Text-Quoted 2.90.0: Extract the structure of a quoted mail message
 dev-perl/Text-Reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarisms
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
@@ -6993,7 +6993,7 @@ dev-perl/perl-mozldap 1.5.3: Mozilla PerLDAP
 dev-perl/prefork 1.40.0-r2: Optimized module loading for forking or non-forking processes
 dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expression
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
-dev-perl/self 0.340.0-r1 0.350.0: provides '$self' in OO code
+dev-perl/self 0.350.0: provides '$self' in OO code
 dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
