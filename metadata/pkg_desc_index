@@ -10696,7 +10696,7 @@ dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201 2015_p20160201-r1: Assorted g
 dev-vcs/gitg 3.22.0 3.24.0: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
 dev-vcs/gitinspector 0.4.4: Statistical analysis tool for git repositories
-dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 3.6.4 3.6.4-r1 3.6.5 3.6.6 9999: Highly flexible server for git directory version tracker
+dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 3.6.4 3.6.4-r1 3.6.5 3.6.6 3.6.7 9999: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 3.6.4.1-r1 3.6.5 3.6.6 3.6.6.1 9999: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
