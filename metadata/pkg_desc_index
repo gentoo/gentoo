@@ -7300,7 +7300,7 @@ dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.2.1: Abtraction layer for PyQt5/PyQt4/PySide
 dev-python/ReParser 1.4.3: Simple regex-based lexer/parser for inline markup
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
-dev-python/SaltTesting 2015.7.10 2017.2.23: Required testing tools needed in the several Salt Stack projects
+dev-python/SaltTesting 2015.7.10 2017.2.23 2017.6.1: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3-r1 0.5.7: A simple Python object interface to a MySQL database schema
 dev-python/URLObject 2.4.0 2.4.2-r1: A utility class for manipulating URLs
 dev-python/WSME 0.8.0 0.9.1: Simplify the writing of REST APIs, and extend them with additional protocols.
@@ -7604,7 +7604,7 @@ dev-python/djangocms-video 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r301 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.10.6 2.1.0 2.2.1 2.3.0: Python client for Docker
+dev-python/docker-py 1.2.2 1.10.6 2.2.1 2.3.0: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r1 0.6.2-r2: Pythonic argument parser, that will make you smile
@@ -19389,7 +19389,7 @@ x11-terms/terminator 0.97-r1 0.98 1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1 1.0.0 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 0.9.6 0.9.6-r1: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.6.3 0.8.5.1: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 327 328 329: Terminal Emulator for X Windows
+x11-terms/xterm 327 328 329 330: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
