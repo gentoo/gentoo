@@ -14858,6 +14858,7 @@ net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
 net-irc/quassel 0.12.4 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/quassel-irssi 0_p20170107 0_p20170107-r1: Irssi module to connect to Quassel cores.
+net-irc/quasselgrep 0_p20170411 9999: Tool for searching quassel logs from the commandline
 net-irc/rbot 0.9.15_p20160325: A ruby IRC bot
 net-irc/redirbot 0.0.5-r1: IRCBot, telling people they should contact you on different nickname
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
