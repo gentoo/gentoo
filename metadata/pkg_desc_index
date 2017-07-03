@@ -9342,7 +9342,7 @@ dev-ros/tf2_kdl 0.5.12 0.5.13 0.5.14 0.5.15 9999: KDL binding for tf2
 dev-ros/tf2_msgs 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 messages
 dev-ros/tf2_py 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 python bindings
 dev-ros/tf2_ros 0.5.13-r1 0.5.14 0.5.15 9999: ROS bindings for the tf2 library, for both Python and C++
-dev-ros/tf2_sensor_msgs 0.5.12 0.5.13 0.5.14 0.5.15 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
+dev-ros/tf2_sensor_msgs 0.5.15 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
 dev-ros/tf2_tools 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 tools
 dev-ros/tf_conversions 1.11.7 1.11.8 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
 dev-ros/theora_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending an image stream encoded with the Theora codec
@@ -12758,7 +12758,7 @@ media-gfx/gthumb 3.4.4.1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4 3.4.4-r1: Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats
-media-gfx/hugin 2016.2.0 2017.0_rc2 9999: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2016.2.0 2017.0 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc_examin 0.55-r1 9999: Viewer for ICC and CGATS profiles, argylls gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0 0.31.1: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
