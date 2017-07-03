@@ -2412,7 +2412,7 @@ app-text/pelican 3.6.0 3.6.3 3.7.0 3.7.1 9999: A tool to generate a static blog,
 app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r6: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
-app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
+app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20170629: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.45.0 0.56.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
@@ -18245,7 +18245,7 @@ virtual/perl-version 0.991.600-r1 0.991.700: Virtual for version
 virtual/perl6 0: Convenience virtual for perl6
 virtual/pkgconfig 0-r1: Virtual for the pkg-config implementation
 virtual/pmake 1: Virtual for BSD-like make (to be used with get_bmake)
-virtual/podofo-build 0.9.6_pre20170508-r1: Virtual package for building against PoDoFo
+virtual/podofo-build 0.9.6_pre20170508-r1 0.9.6_pre20170629: Virtual package for building against PoDoFo
 virtual/pypy 5.6.0 5.7.1 5.8.0: A virtual for PyPy Python implementation
 virtual/pypy3 5.5.0_alpha 5.7.1 5.8.0-r1: A virtual for PyPy3 Python implementation
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
