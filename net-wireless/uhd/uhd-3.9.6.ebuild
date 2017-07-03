@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/libusb:1
 	dev-lang/orc
 	dev-libs/boost:=
-	sys-libs/ncurses:0
+	sys-libs/ncurses:0[-tinfo]
 	"
 DEPEND="${RDEPEND}
 	dev-python/mako
