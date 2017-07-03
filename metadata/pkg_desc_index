@@ -16796,7 +16796,7 @@ sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44 2.47: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
 sci-visualization/labplot 2.4.0 9999: Scientific data analysis and visualisation based on KDE Frameworks
-sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer
+sci-visualization/mayavi 4.3.0 4.5.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r5 4.4.4-r6: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
