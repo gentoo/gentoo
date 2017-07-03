@@ -17327,7 +17327,7 @@ sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 4.13-r2 6.1 6.3 6.4: The GNU info program and utilities
 sys-apps/the_silver_searcher 1.0.2 1.0.3 2.0.0: A code-searching tool similar to ack, but faster
-sys-apps/timer_entropyd 0.2: A timer-based entropy generator
+sys-apps/timer_entropyd 0.2 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 0.7.2 0.7.3 0.7.4 9999: Common linux commands in a multicall binary
 sys-apps/tuned 2.7.0 2.7.1-r2: Daemon for monitoring and adaptive tuning of system devices
