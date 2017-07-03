@@ -11,11 +11,11 @@ DESCRIPTION="Team collaboration tool"
 HOMEPAGE="http://www.slack.com/"
 SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
 
-LICENSE="no-source-code"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/atk:0
 	dev-libs/expat:0
