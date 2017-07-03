@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,9 @@ GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
-SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tar.xz"
+MY_PV=${PV/_pre/_p}
+SRC_URI="http://vdr.websitec.de/download/${PN}/${PN}-${MY_PV}.tar.xz"
+S="${WORKDIR}/${VDRPLUGIN}-${MY_PV}"
 
 SLOT="0"
 LICENSE="GPL-2"
