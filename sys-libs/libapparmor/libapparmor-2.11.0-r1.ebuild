@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/apparmor-${PV}/libraries/${PN}
 
+RESTRICT="test"
+
 src_prepare() {
 	rm -r m4 || die "failed to remove bundled macros"
 	epatch "${FILESDIR}"/${PN}-2.10-symbol_visibility.patch
