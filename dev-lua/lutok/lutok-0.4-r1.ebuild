@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	econf --disable-static
+	econf --disable-shared --enable-static
 }
 
 src_install() {
