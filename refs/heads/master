@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0BBEEA1FEA4843A4 1499192913 -0400
-pushee ssh://git.gentoo.org/repo/gentoo.git
-nonce 1499192913-598e255cdef5b148c8f9
+pusher 0xBF20DC51 1499192947 +0300
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1499192947-d9f4376d478adaa4b38b
 
-2964ad571d6cf9be98ebb577fa8d16b78b883d3a 5bb060e4fdcd472a52575c73f9b6b1a82946aaef refs/heads/master
+5bb060e4fdcd472a52575c73f9b6b1a82946aaef 6ed94a024fe610e9a1004914a2df967668477178 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWVveUQAKCRBHG+cz7yka
-P6WlAQCcjlzk75YPTC4QN6JcudSwOskci10Ixvg+TgY/mTeXRQD/ejhyNUBUFxvg
-ZkiQYFD2g5L3ZK2x7Y68u9N7lMAHbqU=
-=/TRd
+iHUEABEIAB0WIQSKL+hc/KQtdEgLSyNdiT0YvyDcUQUCWVvecwAKCRBdiT0YvyDc
+URCKAQCeKYuoUxtn0jcQAGa4QfHUABndL1Yd0GWlrbHSB6DhwgD/WwA+k6Pcm7oW
+Kr654HKJvxNZJLpMBmwjftdcZlr8gtI=
+=VMHf
 -----END PGP SIGNATURE-----
