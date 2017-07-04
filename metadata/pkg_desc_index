@@ -12815,7 +12815,7 @@ media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compile
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
-media-gfx/opencsg 1.4.0: The Constructive Solid Geometry rendering library
+media-gfx/opencsg 1.4.0 1.4.2: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0: OpenEXR Viewers
 media-gfx/openmesh 4.1: A generic and efficient data structure for representing and manipulating polygonal meshes
 media-gfx/openscad 2015.03_p2-r1 2015.03_p2-r2 9999: The Programmers Solid 3D CAD Modeller
@@ -16666,7 +16666,6 @@ sci-mathematics/factmsieve 76-r1: Convenient factorization helper script using m
 sci-mathematics/fann 2.2.0-r1 9999: Fast Artificial Neural Network Library
 sci-mathematics/flint 2.3 2.4.3 2.4.4-r1 2.4.5 2.5.2: Fast Library for Number Theory
 sci-mathematics/form 4.1: Symbolic Manipulation System
-sci-mathematics/freemat 4.2: Environment for rapid engineering and scientific processing
 sci-mathematics/fricas 1.3.0-r1 1.3.1 1.3.2: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r1 0.9.0-r2: Software system and project for computations with monomial ideals
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
@@ -18458,7 +18457,6 @@ www-client/opera-developer 48.0.2636.0 48.0.2643.0: A fast and secure web browse
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
-www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
 www-client/qupzilla 2.0.2 2.1.1 2.1.2: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.8.4 0.9.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
