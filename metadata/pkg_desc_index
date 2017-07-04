@@ -5204,7 +5204,7 @@ dev-lua/luasec 0.5.1 0.6: Lua binding for OpenSSL library to provide TLS/SSL com
 dev-lua/luasocket 3.0_rc1-r3: Networking support library for the Lua language
 dev-lua/luassert 1.7.9: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
-dev-lua/lutok 0.4: Lightweight C++ API library for Lua
+dev-lua/lutok 0.4-r1: Lightweight C++ API library for Lua
 dev-lua/luvit 0.7.0 0.8.2 9999: Takes node.js' architecture and dependencies and fits it in the Lua language
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
@@ -10477,7 +10477,7 @@ dev-util/kdevplatform 5.1.0 5.1.1: KDE development support libraries and apps
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kscope 1.9.4-r2: Source Editing Environment based on Qt
 dev-util/kup 0.3.4-r1: kernel.org uploader tool
-dev-util/kyua 0.13: Testing framework for infrastructure software
+dev-util/kyua 0.13-r1: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11 1.13-r1: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
@@ -14902,7 +14902,7 @@ net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.18 1.0.19 1.0.20: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.22.5: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.26 3.3.27 3.5.12 3.5.13: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.26 3.3.27 3.3.28 3.5.12 3.5.13 3.5.14: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.40 2.8.45 2.8.46: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
