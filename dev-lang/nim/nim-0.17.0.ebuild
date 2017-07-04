@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="compiled, garbage-collected systems programming language"
-HOMEPAGE="http://nim-lang.org/"
-SRC_URI="http://nim-lang.org/download/${P}.tar.xz"
+HOMEPAGE="https://nim-lang.org/"
+SRC_URI="https://nim-lang.org/download/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
