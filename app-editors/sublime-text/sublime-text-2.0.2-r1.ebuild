@@ -7,13 +7,12 @@ inherit eutils gnome2-utils
 
 # get the major version from PV
 MV=${PV:0:1}
-MY_PV=${PV#*_pre}
 
 DESCRIPTION="Sophisticated text editor for code, markup and prose"
 HOMEPAGE="http://www.sublimetext.com"
 SRC_URI="
-	amd64? ( https://download.sublimetext.com/sublime_text_${MV}_build_${MY_PV}_x64.tar.bz2 )
-	x86? ( https://download.sublimetext.com/sublime_text_${MV}_build_${MY_PV}_x32.tar.bz2 )"
+	amd64? ( https://download.sublimetext.com/Sublime%20Text%20${PV}%20x64.tar.bz2 -> ${P}_x64.tar.bz2 )
+	x86? ( https://download.sublimetext.com/Sublime%20Text%20${PV}.tar.bz2 -> ${P}_x32.tar.bz2 )"
 
 LICENSE="Sublime"
 SLOT="0"
@@ -28,26 +27,26 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )"
 
 QA_PREBUILT="*"
-S="${WORKDIR}/sublime_text_${MV}"
+S="${WORKDIR}/Sublime Text ${MV}"
 
 # Sublime bundles the kitchen sink, which includes python and other assorted
 # modules. Do not try to unbundle these because you are guaranteed to fail.
 
 src_install() {
 	insinto /opt/${PN}${MV}
-	doins -r Packages
-	doins changelog.txt sublime_plugin.py sublime.py python3.3.zip
+	doins -r "Pristine Packages" lib
+	doins sublime_plugin.py PackageSetup.py
 
 	exeinto /opt/${PN}${MV}
-	doexe crash_reporter plugin_host sublime_text
-	dosym ../../opt/${PN}${MV}/sublime_text /usr/bin/sublime_text
+	doexe sublime_text
+	dosym ../../opt/${PN}${MV}/sublime_text /usr/bin/subl
 
 	local size
-	for size in 32 48 128 256; do
-		newicon -s ${size} Icon/${size}x${size}/sublime-text.png sublime-text.png
+	for size in 16 32 48 128 256; do
+		newicon -s ${size} Icon/${size}x${size}/sublime_text.png sublime-text.png
 	done
 
-	make_desktop_entry "sublime_text" "Sublime Text ${MV}" \
+	make_desktop_entry "subl" "Sublime Text ${MV}" \
 		/usr/share/icons/hicolor/48x48/apps/sublime-text.png \
 		"TextEditor;IDE;Development" "StartupNotify=true"
 }
