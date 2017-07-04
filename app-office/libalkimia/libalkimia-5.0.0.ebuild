@@ -10,7 +10,7 @@ HOMEPAGE="https://community.kde.org/Alkimia/libalkimia"
 SRC_URI="mirror://kde/stable/${PN/lib/}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0/5"
 IUSE=""
 
