@@ -12260,7 +12260,7 @@ kde-plasma/ksshaskpass 5.8.6 5.8.7 5.9.5 5.10.3: KDE implementation of ssh-askpa
 kde-plasma/ksysguard 5.8.6 5.8.7 5.9.5 5.10.3: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.8.6 5.8.7-r1 5.9.5-r1 5.10.3: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.8.6 5.8.7 5.9.5 5.10.3: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.8.6 5.8.7 5.9.5 5.10.3: KDE window manager
+kde-plasma/kwin 5.8.6 5.8.7 5.9.5 5.10.3 5.10.3.1: KDE window manager
 kde-plasma/kwrited 5.8.6 5.8.7 5.9.5 5.10.3: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.8.6 5.8.7 5.9.5 5.10.3: Plasma screen management library
 kde-plasma/libksysguard 5.8.6 5.8.7 5.9.5 5.10.3: Task management and system monitoring library
