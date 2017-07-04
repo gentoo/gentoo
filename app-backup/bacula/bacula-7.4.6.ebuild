@@ -272,10 +272,10 @@ src_install() {
 		# the logwatch scripts
 		if use logwatch; then
 			diropts -m0750
-			dodir /etc/log.d/scripts/services
-			dodir /etc/log.d/scripts/shared
-			dodir /etc/log.d/conf/logfiles
-			dodir /etc/log.d/conf/services
+			dodir /usr/share/logwatch/scripts/services
+			dodir /usr/share/logwatch/scripts/shared
+			dodir /etc/logwatch/conf/logfiles
+			dodir /etc/logwatch/conf/services
 			pushd "${S}"/scripts/logwatch >&/dev/null || die
 			emake DESTDIR="${D}" install
 			popd >&/dev/null || die
