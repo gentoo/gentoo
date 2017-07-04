@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/jjwhitney/BDelta.git"
@@ -11,7 +11,7 @@ else
 	UNPACKER_ECLASS="vcs-snapshot"
 fi
 
-inherit eutils multilib toolchain-funcs ${UNPACKER_ECLASS}
+inherit toolchain-funcs ${UNPACKER_ECLASS}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-linux"
@@ -19,16 +19,16 @@ if [[ -z ${LIVE_EBUILD} ]]; then
 fi
 
 DESCRIPTION="Binary Delta - Efficient difference algorithm and format"
-HOMEPAGE="http://bdelta.org"
+HOMEPAGE="https://github.com/jjwhitney/BDelta"
 
 SLOT="0"
 LICENSE="MPL-2.0"
 IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-soname.patch
-	epatch "${FILESDIR}"/${P}-gcc-6.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-soname.patch
+	"${FILESDIR}"/${P}-gcc-6.patch
+)
 
 src_compile() {
 	emake -C src \
