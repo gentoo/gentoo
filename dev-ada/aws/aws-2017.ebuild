@@ -43,3 +43,8 @@ src_compile() {
 		DEBUG=true \
 		GPRBUILD="/usr/bin/gprbuild -v"
 }
+
+src_install() {
+	emake DESTDIR="${D}" DEBUG=true install
+	einstalldocs
+}
