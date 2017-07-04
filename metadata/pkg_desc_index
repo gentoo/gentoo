@@ -4571,7 +4571,7 @@ dev-lang/ispc 1.9.1 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.70_pre20110317 0.73 0.74-r1 0.75 0.75-r1 0.76 9999: Small footprint implementation of Tcl programming language
 dev-lang/julia 0.5.0-r3 9999: High-performance programming language for technical computing
-dev-lang/jwasm 2.10-r1 2.11 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
+dev-lang/jwasm 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.2.2 1.2.4 1.2.6 1.6.0-r1 1.6.2 1.6.4: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: Lisaac is an object prototype based language
@@ -4590,7 +4590,7 @@ dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distrib
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
-dev-lang/nim 0.14.2 0.15.0-r1 0.15.2 0.16.0 0.17.0: compiled, garbage-collected systems programming language
+dev-lang/nim 0.16.0 0.17.0: compiled, garbage-collected systems programming language
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.10 2016.11 2016.12 2017.01 2017.02 2017.03 2017.04 2017.05 2017.06 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
@@ -10299,7 +10299,7 @@ dev-util/bazel 0.3.2 0.3.2-r1 0.4.0 0.4.3 0.4.4 0.4.5: Fast and correct automate
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcc 0.2.0-r1 0.3.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
-dev-util/bdelta 0.3.1: Binary Delta - Efficient difference algorithm and format
+dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
 dev-util/beediff 1.9: A graphical user interface for comparing and merging files
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
@@ -17826,7 +17826,7 @@ sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.15 4.0.17 4.0.18 4.0.18-r2: utilities to access MS-DOS disks from Unix without mounting them
-sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
+sys-fs/mtpfs 1.0 1.1-r3: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2 0.6.4: Device mapper target autoconfig
 sys-fs/ncdu 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
