@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 JAVA_PKG_IUSE="doc source test"
@@ -6,7 +6,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="JNDI Kit is a toolkit designed to help with the construction of JNDI providers"
-HOMEPAGE="http://spice.codehaus.org/"
+HOMEPAGE="https://github.com/codehaus"
 SRC_URI="http://dist.codehaus.org/spice/distributions/${P}-src.tar.gz"
 LICENSE="Spice-1.1"
 SLOT="0"
