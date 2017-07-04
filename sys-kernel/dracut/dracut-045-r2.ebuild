@@ -11,7 +11,7 @@ SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug selinux systemd"
+IUSE="debug selinux"
 
 RESTRICT="test"
 
@@ -36,7 +36,6 @@ RDEPEND="${CDEPEND}
 		sys-libs/libsepol
 		sec-policy/selinux-dracut
 	)
-	systemd? ( sys-apps/systemd )
 	!net-analyzer/arping
 	"
 DEPEND="${CDEPEND}
@@ -52,6 +51,7 @@ DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
 QA_MULTILIB_PATHS="usr/lib/dracut"
 
 PATCHES=(
+	"${FILESDIR}/045-systemdutildir.patch"
 )
 
 src_configure() {
@@ -81,9 +81,6 @@ src_install() {
 
 	einfo "Setting libdirs to \"${libdirs}\" ..."
 	echo "libdirs=\"${libdirs}\"" > "${T}/gentoo.conf"
-
-	use systemd || echo 'systemdutildir="/lib/systemd"' >> "${T}/gentoo.conf"
-
 	insinto "${dracutlibdir}/dracut.conf.d"
 	doins "${T}/gentoo.conf"
 
