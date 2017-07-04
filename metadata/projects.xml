@@ -683,11 +683,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Containers</url>
     <description>Gentoo Containers provides minimal container images for a variety of container formats so that users can have a consistent experience when building application specific containers.</description>
     <member>
-      <email>alunduil@gentoo.org</email>
-      <name>Alex Brandt</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>mrueg@gentoo.org</email>
       <name>Manuel Rüger</name>
       <role>Member</role>
@@ -2247,10 +2242,6 @@ developers and volunteer mentors.</description>
       <role>Package Maintainer</role>
     </member>
     <member>
-      <email>twitch153@gentoo.org</email>
-      <name>Devan Franchini</name>
-    </member>
-    <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
     </member>
@@ -2461,11 +2452,6 @@ developers and volunteer mentors.</description>
     <name>Openstack</name>
     <url>https://wiki.gentoo.org/wiki/Project:Openstack</url>
     <description>Openstack is a virtualization orchestration suite that allows the creation and management of cloud infrastructures.</description>
-    <member>
-      <email>alunduil@gentoo.org</email>
-      <name>Alex Brandt</name>
-      <role>Member</role>
-    </member>
     <member>
       <email>cardoe@gentoo.org</email>
       <name>Doug Goldstein</name>
