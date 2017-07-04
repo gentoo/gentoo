@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ EAPI=6
 inherit eutils fortran-2 toolchain-funcs flag-o-matic
 
 # MIDVERS is actually used by MIDAS configuration scripts
-export MIDVERS="15SEPpl1.0"
+export MIDVERS="17FEBpl1.2"
 
 DESCRIPTION="European Southern Observatory Munich Image Data Analysis System"
 HOMEPAGE="http://www.eso.org/projects/esomidas/"
-SRC_URI="ftp://ftp.eso.org/pub/midaspub/15SEP/sources/${MIDVERS}.tar.gz -> ${P}.tar.gz"
+SRC_URI="ftp://ftp.eso.org/pub/midaspub/17FEB/sources/${MIDVERS}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/8"
@@ -28,23 +28,8 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MIDVERS}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-gentoo-setup.patch"
-	"${FILESDIR}/${PN}-cleanmidas.patch"
-	"${FILESDIR}/${PN}-fitswdb.patch"
-	"${FILESDIR}/${PN}-fitswdm_c.patch"
-	"${FILESDIR}/${PN}-log-stdout.patch"
-	"${FILESDIR}/${PN}-madrid.patch"
-	"${FILESDIR}/${PN}-manpages.patch"
-	"${FILESDIR}/${PN}-mdb_put.patch"
-	"${FILESDIR}/${PN}-no-sp_pty.patch"
-	"${FILESDIR}/${PN}-no-strip.patch"
-	"${FILESDIR}/${PN}-nonlinux.patch"
-	"${FILESDIR}/${PN}-rarthm_for.patch"
-	"${FILESDIR}/${PN}-selechar_c.patch"
-	"${FILESDIR}/${PN}-system-readline.patch"
-	"${FILESDIR}/${PN}-x11-include-path.patch"
-	"${FILESDIR}/${PN}-propagate-flags.patch"
-	"${FILESDIR}/${PN}-syskeys.patch"
+	"${FILESDIR}/${P}-output_to_stdout.patch"
+	"${FILESDIR}/${P}-gentoo-setup.patch"
 )
 
 src_prepare() {
