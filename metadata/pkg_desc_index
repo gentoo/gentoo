@@ -2072,7 +2072,7 @@ app-office/skrooge 2.5.0 2.8.1: Personal finances manager, aiming at being simpl
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
-app-office/texmaker 4.4.1-r1 4.5 4.5-r1 4.5-r2 4.5-r3: A nice LaTeX-IDE
+app-office/texmaker 4.5-r2 4.5-r3: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r1 2.12.2 2.12.4: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.1.134: Project collaboration and tracking software for upwork.com
