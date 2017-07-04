@@ -7358,7 +7358,7 @@ dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
 dev-python/astroplan 0.2 0.2.1: Observation planning package for astronomers
 dev-python/astropy 1.2.1 1.3.3: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.2 1.3 1.3.1: Helpers for Astropy and Affiliated packages
-dev-python/astroquery 0.3.1 0.3.2 0.3.5: Collection of packages to access online astronomical resources
+dev-python/astroquery 0.3.6: Collection of packages to access online astronomical resources
 dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
 dev-python/async_timeout 1.0.0 1.1.0 1.2.0 1.2.1: Timeout context manager for asyncio programs
@@ -16813,7 +16813,7 @@ sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6-r1: X-ray diffraction/control image viewer in the context of data processing by XDS
 sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1-r1: Tool for extracting data points from graphs
-sci-visualization/yt 3.2.3 3.3.4: Astrophysical Simulation Analysis and Vizualization package
+sci-visualization/yt 3.3.4 3.3.5: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
 sec-policy/apparmor-profiles 2.11.0: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for abrt
