@@ -33,6 +33,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	dev-lang/swig
 	>=dev-python/cython-0.22[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-36[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
 	test? (	dev-python/nose[${PYTHON_USEDEP}] )"
