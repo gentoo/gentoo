@@ -13,7 +13,7 @@ REQUIRED_USE="systemd? ( !static-libs )"
 RDEPEND="
 	!systemd? (
 		static-libs? (
-			>=sys-fs/eudev-1.3:0/0[${MULTILIB_USEDEP},static-libs]
+			>=sys-fs/eudev-1.3:0/0[${MULTILIB_USEDEP},static-libs(-)]
 		)
 		!static-libs? ( || (
 			>=sys-fs/eudev-1.3:0/0[${MULTILIB_USEDEP}]
