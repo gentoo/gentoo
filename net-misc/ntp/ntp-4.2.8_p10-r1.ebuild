@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs flag-o-matic user systemd
+inherit autotools eutils toolchain-funcs flag-o-matic user systemd
 
 MY_P=${P/_p/p}
 DESCRIPTION="Network Time Protocol suite/programs"
@@ -53,6 +53,7 @@ src_prepare() {
 	append-cppflags -D_GNU_SOURCE #264109
 	# Make sure every build uses the same install layout. #539092
 	find sntp/loc/ -type f '!' -name legacy -delete || die
+	eautoreconf #622754
 	# Disable pointless checks.
 	touch .checkChangeLog .gcc-warning FRC.html html/.datecheck
 }
@@ -65,22 +66,24 @@ src_configure() {
 	export ac_cv_header_dns_sd_h=$(usex zeroconf)
 	export ac_cv_lib_dns_sd_DNSServiceRegister=${ac_cv_header_dns_sd_h}
 	# Increase the default memlimit from 32MiB to 128MiB.  #533232
-	econf \
-		--with-lineeditlibs=readline,edit,editline \
-		--with-yielding-select \
-		--disable-local-libevent \
-		--docdir='$(datarootdir)'/doc/${PF} \
-		--htmldir='$(docdir)/html' \
-		--with-memlock=256 \
-		$(use_enable caps linuxcaps) \
-		$(use_enable parse-clocks) \
-		$(use_enable ipv6) \
-		$(use_enable debug debugging) \
-		$(use_with readline lineeditlibs readline) \
-		$(use_enable samba ntp-signd) \
-		$(use_with snmp ntpsnmpd) \
-		$(use_with ssl crypto) \
+	local myeconfargs=(
+		--with-lineeditlibs=readline,edit,editline
+		--with-yielding-select
+		--disable-local-libevent
+		--docdir='$(datarootdir)'/doc/${PF}
+		--htmldir='$(docdir)/html'
+		--with-memlock=256
+		$(use_enable caps linuxcaps)
+		$(use_enable parse-clocks)
+		$(use_enable ipv6)
+		$(use_enable debug debugging)
+		$(use_with readline lineeditlibs readline)
+		$(use_enable samba ntp-signd)
+		$(use_with snmp ntpsnmpd)
+		$(use_with ssl crypto)
 		$(use_enable threads thread-support)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
