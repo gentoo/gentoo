@@ -12214,6 +12214,7 @@ kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
+kde-misc/kio-stash 1.0: KIO Slave and daemon to stash discontinuous file selections
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/konstruktor 0.9_beta1: LEGO CAD
 kde-misc/kookie 0.1.1: Manage recipes and shopping lists
