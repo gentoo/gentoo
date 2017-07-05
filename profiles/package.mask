@@ -232,14 +232,6 @@ app-editors/fb2edit
 app-text/7plus
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# Mask split *-sharp packages for removal. Replaced by combined:
-# - >=dev-dotnet/gtk-sharp-2.12.21,
-# Removal in 14 days.
-<dev-dotnet/gtk-sharp-2.12.21
-dev-dotnet/gtk-dotnet-sharp
-dev-dotnet/gtk-sharp-docs
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. The current Gentoo version no longer builds.
 # Removal in 30 days. Bug #602820.
