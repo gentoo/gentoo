@@ -3946,7 +3946,7 @@ dev-java/ant-core 1.9.2: Java-based build tool similar to 'make' that uses XML c
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.3.1-r1 1.4.1-r1 2.0.0 2.3.0-r2: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.9.2: Apache Ant's optional tasks depending on sun-jai-bin
-dev-java/ant-javamail 1.9.2 1.9.2-r2: Apache Ant's optional tasks depending on oracle-javamail
+dev-java/ant-javamail 1.9.2-r2: Apache Ant's optional tasks depending on oracle-javamail
 dev-java/ant-jdepend 1.9.2: Apache Ant's optional tasks depending on jdepend
 dev-java/ant-jmf 1.9.2: Apache Ant's optional tasks for the Java Media Framework (JMF)
 dev-java/ant-jsch 1.9.2: Apache Ant's optional tasks depending on jsch
@@ -3967,12 +3967,12 @@ dev-java/asm 3.3.1-r1 5.0.3 5.1: Bytecode manipulation framework for Java
 dev-java/aspectj 1.7.3-r1 1.7.4: A seamless aspect-oriented extension to the Java programming language
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
-dev-java/avalon-logkit 1.2.2-r1 2.1-r8: Easy-to-use Java logging toolkit
+dev-java/avalon-logkit 1.2.2-r2 2.1-r8: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/balloontip 1.2.1: A balloon tip component to spice up your Java Swing applications
 dev-java/batik 1.8-r3: Java based SVG toolkit
 dev-java/bcel 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
-dev-java/bcmail 1.38-r4 1.38-r5 1.45-r3 1.45-r4 1.50-r2 1.52-r2: Java cryptography APIs
+dev-java/bcmail 1.38-r6 1.45-r5 1.50-r3 1.52-r3: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
 dev-java/bcpkix 1.50-r2 1.52-r1: Java cryptography APIs
 dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.50-r4 1.52-r1 1.52-r2 1.52-r3 1.54: Java cryptography APIs
@@ -4406,7 +4406,7 @@ dev-java/rngom 20100718-r1: RNGOM is an open-source Java library for parsing REL
 dev-java/rome 0.9-r3: Java framework for RSS and Atom feeds
 dev-java/rundoc 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/rxtx 2.2_pre2 2.2_pre2-r1: Native lib providing serial and parallel communication for Java
-dev-java/saaj 1.3.19-r1: SOAP with Attachments API for Java
+dev-java/saaj 1.3.19-r2: SOAP with Attachments API for Java
 dev-java/sablecc 3.7-r1: Java based compiler / parser generator
 dev-java/sablecc-anttask 1.1.0-r2: Ant task for sablecc
 dev-java/sac 1.3-r2: SAC is a standard interface for CSS parser
@@ -4442,7 +4442,7 @@ dev-java/spring-instrument 3.2.4: A comprehensive programming and configuration 
 dev-java/spymemcached 2.9.1-r1: A simple, asynchronous, single-threaded memcached client written in java
 dev-java/squareness-jlf 2.3.0-r1: Squareness Java Look and Feel
 dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML data
-dev-java/stax-ex 1.0-r4 1.7.6: Extensions to complement JSR-173 StAX API
+dev-java/stax-ex 1.0-r5 1.7.6: Extensions to complement JSR-173 StAX API
 dev-java/stax2-api 4.0.0 4.0.0-r1: Extended Stax (STandard Api for Xml procesing) API
 dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/sun-dtdparser 1.0: Sun DTDParser
@@ -4451,7 +4451,7 @@ dev-java/sun-jacc-api 20070102: Java Authorization Contract for Containers
 dev-java/sun-jaf 1.1.1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
 dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1 1.5.2: Sun Java3D API Core
-dev-java/sun-javamail 1.4.3: A Java-based framework to build multiplatform mail and messaging applications
+dev-java/sun-javamail 1.4.3-r1: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/sun-jimi 1.0-r3: Jimi is a class library for managing images
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitoring
@@ -12101,7 +12101,6 @@ kde-apps/picmi 16.12.3 17.04.2: Nonogram logic game by KDE
 kde-apps/pim-data-exporter 17.04.2: Assistant to backup and archive PIM data and configuration
 kde-apps/pim-sieve-editor 17.04.2: Assistant for editing IMAP Sieve filters
 kde-apps/pimcommon 17.04.2: Common PIM libraries
-kde-apps/plasma-runtime 16.04.3: Script engine and package tool for plasma
 kde-apps/plasma-telepathy-meta 16.12.3 17.04.2: Plasma Telepathy client
 kde-apps/poxml 16.12.3 17.04.2: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 16.12.3 17.04.2: Manage print jobs and printers in Plasma
@@ -15874,7 +15873,6 @@ perl-core/Digest-MD5 2.530.0: MD5 message digest algorithm
 perl-core/Digest-SHA 5.880.0: Perl extension for SHA-1/224/256/384/512
 perl-core/Dumpvalue 1.170.0: provides screen dump of Perl data
 perl-core/Encode 2.730.0: character encodings
-perl-core/ExtUtils-Command 1.180.0-r1: Utilities to replace common UNIX commands in Makefiles etc
 perl-core/ExtUtils-Constant 0.230.0-r1: Generate XS code to import C header constants
 perl-core/ExtUtils-MakeMaker 7.240.0: Create a module Makefile
 perl-core/ExtUtils-Manifest 1.700.0: Utilities to write and check a MANIFEST file
@@ -18171,7 +18169,6 @@ virtual/perl-Dumpvalue 1.180.0-r2: Virtual for Dumpvalue
 virtual/perl-Encode 2.800.100_rc 2.880.0: Virtual for Encode
 virtual/perl-Exporter 5.720.0-r3: Virtual for Exporter
 virtual/perl-ExtUtils-CBuilder 0.280.225-r2: Virtual for ExtUtils-CBuilder
-virtual/perl-ExtUtils-Command 7.100.200_rc 7.240.0: Virtual for ExtUtils-Command
 virtual/perl-ExtUtils-Constant 0.230.0-r11: Virtual for ExtUtils-Constant
 virtual/perl-ExtUtils-Install 2.40.0-r3: Virtual for ExtUtils-Install
 virtual/perl-ExtUtils-MakeMaker 7.100.200_rc 7.240.0: Virtual for ExtUtils-MakeMaker
@@ -18204,7 +18201,6 @@ virtual/perl-Module-Load-Conditional 0.640.0-r3 0.680.0: Virtual for Module-Load
 virtual/perl-Module-Loaded 0.80.0-r9: Virtual for Module-Loaded
 virtual/perl-Module-Metadata 1.0.31-r1 1.0.33: Virtual for Module-Metadata
 virtual/perl-Net-Ping 2.430.100_rc-r2 2.550.0: Virtual for Net-Ping
-virtual/perl-Package-Constants 0.60.0-r1: Virtual for Package-Constants
 virtual/perl-Params-Check 0.380.0-r6: Virtual for Params-Check
 virtual/perl-Parse-CPAN-Meta 1.441.700.100_rc 2.150.10: Virtual for Parse-CPAN-Meta
 virtual/perl-Perl-OSType 1.9.0-r1 1.10.0: Virtual for Perl-OSType
@@ -18941,7 +18937,6 @@ x11-misc/libinput-gestures 2.15 2.19 9999: Actions gestures on your touchpad usi
 x11-misc/light-locker 1.7.0 1.7.0-r1: A simple locker using lightdm
 x11-misc/lightdm 1.18.3 1.21.5 1.22.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.1-r1 2.0.2: LightDM GTK+ Greeter
-x11-misc/lightdm-kde 0.3.2.1-r1 0.3.2.1-r2: LightDM KDE greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1 0.9.0-r2: Linux support for Easy Access and Internet Keyboards

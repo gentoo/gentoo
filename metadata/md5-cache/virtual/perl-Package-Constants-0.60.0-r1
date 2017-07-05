@@ -1,8 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for Package-Constants
-EAPI=5
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
-RDEPEND=~dev-perl/Package-Constants-0.60.0 dev-lang/perl:=
-SLOT=0
-_eclass_exported_funcs=-
-_md5_=dc3e6d3a5541fb4e42f40a58a64d8145
