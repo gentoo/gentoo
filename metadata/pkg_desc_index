@@ -455,7 +455,6 @@ app-cdr/cdemu 3.0.0 3.0.1 3.1.0: Command-line tool for controlling cdemu-daemon
 app-cdr/cdemu-daemon 3.0.2 3.0.4 3.1.0: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r1 1.2.3-r2 1.2.3-r3 1.2.3-r4: Burn CDs in disk-at-once mode -- with optional GUI frontend
-app-cdr/cdrkit 1.1.11-r2: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdrtools 3.02_alpha06 3.02_alpha07: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.0 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cue2toc 0.4: Convert CUE files to cdrdao's TOC format
@@ -2923,7 +2922,6 @@ dev-db/cockroach 1.0_rc1 1.0 1.0-r1 1.0.1: open source database for building clo
 dev-db/couchdb 1.6.1-r2 1.6.1-r3: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/cpp-driver 2.4.3: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
-dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to store temporary data
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
@@ -14565,7 +14563,6 @@ net-analyzer/zabbix 2.2.16 2.2.17 2.2.18 3.0.6 3.0.8 3.0.9 3.2.2 3.2.3 3.2.4 3.2
 net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.11.0 1.11.1_p20170508 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
-net-dialup/capi4k-utils 20050718-r7: CAPI4Linux Utils
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers that speak the RADIUS protocol
 net-dialup/cutecom 0.22.0-r1 0.40.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
@@ -14817,7 +14814,6 @@ net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/bobotpp 2.2.3: A flexible IRC bot scriptable in scheme
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
-net-irc/charybdis 3.3.0 3.4.2: The atheme project's IRCd based on ratbox
 net-irc/dccserver 0.5 0.5-r1: linux implementation of the mirc dccserver command
 net-irc/dircproxy 1.2.0_rc1: an IRC proxy server
 net-irc/eggdrop 1.6.21-r1: An IRC bot extensible with C or TCL
@@ -15002,7 +14998,7 @@ net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.
 net-libs/libssh 0.7.3-r1 0.7.4 0.7.5 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
-net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1 1.0.1-r1: Transport Independent RPC library (SunRPC replacement)
+net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1 1.0.1-r1 1.0.1-r2: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.0.10 1.0.11 1.1.1 1.1.2 1.1.3: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 3.0.22 4.0.0 4.0.1: A library and tools for trace processing
@@ -15173,7 +15169,6 @@ net-mail/spamcup 1.09: This script does the same you would do when you report sp
 net-mail/swaks 20130209.0 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.14 1.4.15: Decodes MS-TNEF MIME attachments
-net-mail/topal 75: Topal is a 'glue' program that links GnuPG and Pine/Alpine
 net-mail/tpop3d 1.5.5: An extensible POP3 server with vmail-sql/MySQL support
 net-mail/up-imapproxy 1.2.7: Proxy IMAP transactions between an IMAP client and an IMAP server
 net-mail/uw-imap 2007f 2007f-r1: UW server daemons for IMAP and POP network mail protocols
@@ -18074,7 +18069,6 @@ sys-process/wait_on_pid 0.0.2 0.0.2-r1: small utility to wait for an arbitrary p
 sys-process/watchpid 0.1-r2: Watches a process for termination
 sys-process/xjobs 20151016: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
-virtual/ada 1995 2005 2012: Virtual for selecting an appropriate Ada compiler
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0 3.6 3.7: Virtual for FORTRAN 77 BLAS implementation
@@ -18309,7 +18303,6 @@ www-apache/mod_musicindex 1.4.1: mod_musicindex allows nice displaying of direct
 www-apache/mod_nss 1.0.12-r1: SSL/TLS module for the Apache HTTP server
 www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
 www-apache/mod_perl 2.0.10: An embedded Perl interpreter for Apache2
-www-apache/mod_python 3.5.0-r1: An Apache2 module providing an embedded Python interpreter
 www-apache/mod_qos 11.12: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
@@ -18350,7 +18343,6 @@ www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management f
 www-apps/drraw 2.0.1 2.1.3: drraw is a simple web based presentation front-end for RRDtool
 www-apps/drupal 7.56 8.3.4: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
-www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
 www-apps/gitea 1.0.2 1.1.2: A painless self-hosted Git service, written in Go

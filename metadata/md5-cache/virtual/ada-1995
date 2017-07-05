@@ -1,8 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for selecting an appropriate Ada compiler
-EAPI=5
-KEYWORDS=amd64 ppc x86
-RDEPEND=|| ( =dev-lang/gnat-gcc-4.2* =dev-lang/gnat-gcc-4.1* =dev-lang/gnat-gcc-3.4* )
-SLOT=1995
-_eclass_exported_funcs=-
-_md5_=d1ae176d6e523aa435ede2123bdafaa3
