@@ -28,7 +28,13 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-#
+
+# Göktürk Yüksek <gokturk@gentoo.org> (05 Jul 2017)
+# Declared dead by upstream. Removal in 30 days.
+# See: http://www.haildb.com/2015/08/19/shutting-down-haildb/
+# Bug #623654.
+dev-db/haildb
+
 # Patrice Clement <monsieurp@gentoo.org> (05 Jul 2017)
 # Part of the JRE since 1.6.
 # Masked for removal in 30 days. Bug #553188.
