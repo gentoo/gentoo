@@ -375,12 +375,6 @@ media-plugins/vdr-audiorecorder
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Security vulnerability.
-# Removal in 30 days. Bug #552628.
-dev-libs/libmimedir
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. Multiple bugs, including a security
 # vulnerability. Removal in 30 days. Bug #581960.
 net-irc/atheme-services
