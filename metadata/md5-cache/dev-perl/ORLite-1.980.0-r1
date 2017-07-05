@@ -1,14 +1,14 @@
-DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=virtual/perl-File-Path-2.08 >=virtual/perl-File-Temp-0.20 >=dev-perl/Params-Util-1 >=dev-perl/DBI-1.607 >=dev-perl/DBD-SQLite-1.27 >=dev-perl/File-Remove-1.40 test? ( >=dev-perl/Test-Script-1.06 ) dev-lang/perl:=[-build(-)]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-File-Path-2.08 >=virtual/perl-File-Temp-0.20 >=dev-perl/Params-Util-1 >=dev-perl/DBI-1.607 >=dev-perl/DBD-SQLite-1.27 >=dev-perl/File-Remove-1.40 test? ( >=dev-perl/Test-Script-1.06 ) dev-lang/perl:=
 DESCRIPTION=Extremely light weight SQLite-specific ORM
-EAPI=5
+EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/ORLite/
 IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=>=virtual/perl-File-Path-2.08 >=virtual/perl-File-Temp-0.20 >=dev-perl/Params-Util-1 >=dev-perl/DBI-1.607 >=dev-perl/DBD-SQLite-1.27 >=dev-perl/File-Remove-1.40 dev-lang/perl:=[-build(-)]
+RDEPEND=>=virtual/perl-File-Path-2.08 >=virtual/perl-File-Temp-0.20 >=dev-perl/Params-Util-1 >=dev-perl/DBI-1.607 >=dev-perl/DBD-SQLite-1.27 >=dev-perl/File-Remove-1.40 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/ORLite-1.98.tar.gz
-_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=705eff8be6874e2629b3d100979e8b59
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=1905e4a947219e895de8a6f8bd4cad24
