@@ -1302,7 +1302,7 @@ app-emulation/docker-registry 2.5.1 2.6.0 2.6.1 2.6.1-r1: Docker Registry 2.0
 app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc2_p20170310 1.0.0_rc3_p20170607: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
-app-emulation/dosemu 1.4.1_pre20130107-r3: DOS Emulator
+app-emulation/dosemu 1.4.1_pre20130107-r3 1.4.1_pre20130107-r4: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
 app-emulation/e-uae 0.8.29_rc4-r2 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
