@@ -5684,7 +5684,6 @@ net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
 net-im/pidgin:gstreamer - Enables voice and video sessions
 net-im/pidgin:gtk - Builds Pidgin, the GTK+ interface
 net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
-net-im/pidgin:mxit - Enable mxit protocol support
 net-im/pidgin:ncurses - Build finch, console interface
 net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
 net-im/pidgin:python - Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support
