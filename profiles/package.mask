@@ -242,7 +242,6 @@ dev-dotnet/glade-sharp
 dev-dotnet/glib-sharp
 dev-dotnet/gtk-dotnet-sharp
 dev-dotnet/gtk-sharp-docs
-dev-dotnet/gtk-sharp-gapi
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
