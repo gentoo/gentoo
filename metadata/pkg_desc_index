@@ -7156,7 +7156,7 @@ dev-php/cphplib 0.51: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/doctrine-instantiator 1.0.5: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
-dev-php/igbinary 1.2.1-r1 2.0.1: A fast drop-in replacement for the standard PHP serialize
+dev-php/igbinary 2.0.1 2.0.4: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2: Object-oriented graphing library for PHP
 dev-php/json-schema 4.1.0: PHP implementation of JSON schema
 dev-php/jsonlint 1.6.0: JSON Lint for PHP
@@ -7189,7 +7189,7 @@ dev-php/pecl-http 2.6.0 2.6.0-r1 3.1.0 3.1.0-r1: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.1 3.4.3: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.5: This package handles LZF de/compression
-dev-php/pecl-mailparse 2.1.6-r3 2.1.6-r4 3.0.1-r1 3.0.2: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 2.1.6-r4 3.0.2: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3: PHP extension for using memcached
 dev-php/pecl-memcached 2.2.0-r2 3.0.0 3.0.3: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.9 1.6.14-r1: Legacy MongoDB database driver for PHP
@@ -7203,7 +7203,7 @@ dev-php/pecl-propro 1.0.2 1.0.2-r1 2.0.1-r1: A reusable property proxy API for P
 dev-php/pecl-ps 1.3.7-r1 1.4.0: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.3.0-r1 1.4.0_beta1-r1: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 1.1.2 1.1.2-r1 2.0.0-r1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 2.2.7-r1 3.1.1_rc2 3.1.1 3.1.2: PHP extension for interfacing with Redis
+dev-php/pecl-redis 3.1.2: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 1.1.3-r2 2.0.1-r2: RRDtool bindings for PHP
 dev-php/pecl-sphinx 1.3.3-r1: PHP extension to execute search queries on a sphinx daemon
 dev-php/pecl-spl_types 0.4.0-r2: Standard PHP library types add-on
@@ -14879,7 +14879,7 @@ net-libs/aqbanking 5.0.25 5.4.3_beta 5.5.1 5.6.10: Generic Online Banking Interf
 net-libs/axtls 1.5.3 2.1.1 2.1.2 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
-net-libs/biblesync 1.1.2: A multicast protocol to support Bible software shared co-navigation
+net-libs/biblesync 1.1.2 1.1.2-r1: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccnet 6.0.7: Ccnet is a framework for writing networked applications in C
