@@ -1,9 +1,0 @@
-# /etc/conf.d/vdr.audiorecorder
-
-# ################################################
-#
-# Directory to save the recorded and splited mp3s in
-#	allowed values: directory names
-#	default: /var/vdr/audiorecorder
-#AUDIORECORDER_DIR=/var/vdr/audiorecorder
-

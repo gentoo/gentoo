@@ -348,52 +348,6 @@ media-plugins/vdr-xineliboutput
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Unmaintained upstream. Seems to fail at Python. Depends on multiple
-# deprecated GNOME libraries.
-# Removal in 30 days. Bug #562416.
-dev-java/java-gnome
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained upstream. Bad quality code.
-# Removal in 30 days. Bug #603562.
-dev-libs/dee
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Discontinued upstream. Plugins no longer get updates, resulting
-# in security vulnerabilities.
-# Removal in 30 days. Bug #603282.
-www-plugins/pipelight
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Does not support ffmpeg-3. Maintainer is unable to solve that,
-# and nobody seems to be interested.
-# Removal in 30 days. Bug #575138.
-media-plugins/vdr-audiorecorder
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Security vulnerability.
-# Removal in 30 days. Bug #552628.
-dev-libs/libmimedir
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned downstream and upstream. Permanently masked due to
-# a dependency on vulnerable library.
-# Removal in 30 days. Bug #337473.
-sys-block/afacli
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Reported not to work. Uses old wxPython.
-# Removal in 30 days. Bug #601192.
-sci-geosciences/cdat-lite
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. Multiple bugs, including a security
 # vulnerability. Removal in 30 days. Bug #581960.
 net-irc/atheme-services
