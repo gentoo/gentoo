@@ -13,20 +13,23 @@ SRC_URI="mirror://apache/avalon/logkit/source/logkit-${PV}-src.tar.gz"
 
 LICENSE="Apache-1.1"
 SLOT="1.2"
-IUSE=""
+
 KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
 
-COMMON_DEP="
-	dev-java/avalon-framework:4.1
+CDEPEND="
 	dev-java/log4j:0
-	java-virtuals/jaf:0
-	java-virtuals/javamail:0
+	dev-java/avalon-framework:4.1
 	java-virtuals/jms:0
+	java-virtuals/javamail:0
 	java-virtuals/servlet-api:2.5"
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.4"
-DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.4
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6
 	test? ( dev-java/junit:4 )"
 
 S="${WORKDIR}/logkit-${PV}-dev"
@@ -42,7 +45,7 @@ src_compile() {
 
 	ejavac \
 		-encoding "ISO-8859-1" \
-		-classpath $(java-pkg_getjars jaf,javamail,jms,log4j,servlet-api-2.5,avalon-framework-4.1) \
+		-classpath $(java-pkg_getjars javamail,jms,log4j,servlet-api-2.5,avalon-framework-4.1) \
 		-d classes $(find "${SRC_DIR}" -name "*.java") \
 		|| die "Compilation failed"
 
@@ -55,7 +58,7 @@ src_compile() {
 		javadoc \
 			-encoding "ISO-8859-1" \
 			-sourcepath "${SRC_DIR}" \
-			-classpath $(java-pkg_getjars jaf,javamail,jms,log4j,servlet-api-2.5,avalon-framework-4.1) \
+			-classpath $(java-pkg_getjars javamail,jms,log4j,servlet-api-2.5,avalon-framework-4.1) \
 			-source "${JAVA_VERSION}" \
 			-d "${JAVADOC_DIR}" \
 			$(find "org/apache/log" -type d | tr '/' '.') \
