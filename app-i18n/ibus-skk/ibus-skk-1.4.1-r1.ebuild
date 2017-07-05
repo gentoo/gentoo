@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-DESCRIPTION="Japanese input method Anthy IMEngine for IBus Framework"
+DESCRIPTION="Japanese SKK engine for IBus"
 HOMEPAGE="https://github.com/ueno/ibus-skk"
 SRC_URI="mirror://github/ueno/${PN}/${P}.tar.gz"
 
