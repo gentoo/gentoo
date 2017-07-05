@@ -488,7 +488,6 @@ virtual/perl-Package-Constants
 # Please depend on virtual/perl-ExtUtils-MakeMaker from now on.
 # Removal in 30 days.
 virtual/perl-ExtUtils-Command
-perl-core/ExtUtils-Command
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
 # Masked for initial testing.
