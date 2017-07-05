@@ -9,48 +9,46 @@ DESCRIPTION="Azoth, the modular IM client for LeechCraft"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc astrality +acetamide +adiumstyles +autoidler +autopaste +birthdaynotifier
-		+chathistory +crypt +depester +embedmedia +herbicide +hili +isterique
-		+juick +keeso +lastseen	+metacontacts media +murm +latex +nativeemoticons
-		+otroid +spell sarin shx +standardstyles +vader velvetbird +woodpecker +xmpp +xtazy"
+IUSE="debug doc +acetamide +adiumstyles astrality +autoidler +autopaste +birthdaynotifier
+	+chathistory +crypt +depester +embedmedia +herbicide +hili +isterique +juick
+	+keeso +lastseen +latex media +metacontacts +murm +nativeemoticons +otroid sarin
+	shx +spell +standardstyles +vader velvetbird +woodpecker +xmpp +xtazy"
+
+REQUIRED_USE="|| ( standardstyles adiumstyles )"
 
 COMMON_DEPEND="
 	~app-leechcraft/lc-core-${PV}
+	dev-qt/qtdbus:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtxml:5
-	dev-qt/qtdbus:5
+	astrality? ( net-libs/telepathy-qt[qt5] )
+	autoidler? (
+		dev-qt/qtx11extras:5
+		x11-libs/libXScrnSaver
+	)
 	crypt? ( app-crypt/qca:2[qt5] )
-	media? (
-		dev-qt/qtmultimedia:5
+	lastseen? ( dev-qt/qtconcurrent:5 )
+	media? ( dev-qt/qtmultimedia:5 )
+	otroid? (
+		dev-qt/qtconcurrent:5
+		net-libs/libotr
 	)
 	sarin? (
 		dev-qt/qtconcurrent:5
 		net-libs/tox
 	)
-	lastseen? (
-		dev-qt/qtconcurrent:5
-	)
-	otroid? (
-		dev-qt/qtconcurrent:5
-	)
-	autoidler? (
-		dev-qt/qtx11extras:5
-		x11-libs/libXScrnSaver
-	)
-	astrality? ( net-libs/telepathy-qt[qt5] )
-	otroid? ( net-libs/libotr )
 	woodpecker? ( dev-libs/kqoauth )
 	xmpp? (
-		>=net-libs/qxmpp-0.9.3[qt5]
-		media? ( >=net-libs/qxmpp-0.9.3[qt5,speex] )
+		>=net-libs/qxmpp-0.9.3-r1
+		media? ( net-libs/qxmpp[speex] )
 	)
-	xtazy? (
-		~app-leechcraft/lc-xtazy-${PV}
-	)"
+	xtazy? ( ~app-leechcraft/lc-xtazy-${PV} )
+"
 DEPEND="${COMMON_DEPEND}
-	doc? ( app-doc/doxygen[dot] )"
+	doc? ( app-doc/doxygen[dot] )
+"
 RDEPEND="${COMMON_DEPEND}
 	astrality? (
 		net-im/telepathy-mission-control
@@ -61,11 +59,8 @@ RDEPEND="${COMMON_DEPEND}
 		virtual/imagemagick-tools
 		virtual/latex-base
 	)
-	spell? (
-		~app-leechcraft/lc-rosenthal-${PV}
-	)"
-
-REQUIRED_USE="|| ( standardstyles adiumstyles )"
+	spell? ( ~app-leechcraft/lc-rosenthal-${PV} )
+"
 
 src_configure() {
 	local mycmakeargs=(
@@ -86,15 +81,15 @@ src_configure() {
 		-DENABLE_AZOTH_JUICK=$(usex juick)
 		-DENABLE_AZOTH_KEESO=$(usex keeso)
 		-DENABLE_AZOTH_LASTSEEN=$(usex lastseen)
+		-DENABLE_AZOTH_MODNOK=$(usex latex)
 		-DENABLE_AZOTH_METACONTACTS=$(usex metacontacts)
 		-DENABLE_MEDIACALLS=$(usex media)
-		-DENABLE_AZOTH_MODNOK=$(usex latex)
 		-DENABLE_AZOTH_MURM=$(usex murm)
 		-DENABLE_AZOTH_NATIVEEMOTICONS=$(usex nativeemoticons)
 		-DENABLE_AZOTH_OTROID=$(usex otroid)
 		-DENABLE_AZOTH_SARIN=$(usex sarin)
-		-DENABLE_AZOTH_ROSENTHAL=$(usex spell)
 		-DENABLE_AZOTH_SHX=$(usex shx)
+		-DENABLE_AZOTH_ROSENTHAL=$(usex spell)
 		-DENABLE_AZOTH_STANDARDSTYLES=$(usex standardstyles)
 		-DENABLE_AZOTH_VADER=$(usex vader)
 		-DENABLE_AZOTH_VELVETBIRD=$(usex velvetbird)

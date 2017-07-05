@@ -10,9 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="astrality">Build Astrality, support for protocols provided by Telepathy</flag>
 		<flag name="acetamide">Build Acetamide, the IRC protocol support</flag>
 		<flag name="adiumstyles">Build support for Adium styles</flag>
+		<flag name="astrality">Build Astrality, support for protocols provided by Telepathy</flag>
 		<flag name="autoidler">Build support for automatic status changing according to user idle time</flag>
 		<flag name="autopaste">Build Autopaste for pasting long texts to pastebins</flag>
 		<flag name="birthdaynotifier">Build Birthday Notifier for you to not forget about birthdays of your contacts.</flag>
@@ -25,8 +25,8 @@
 		<flag name="juick">Build plugin for the Juick.com microblogging service</flag>
 		<flag name="keeso">Build plugin for changing text into SoMEtHInG lIKe THiS</flag>
 		<flag name="lastseen">Build plugin for client-side recording of the last online/available time</flag>
-		<flag name="metacontacts">Build plugin for metacontacts support</flag>
 		<flag name="media">Enable media calls</flag>
+		<flag name="metacontacts">Build plugin for metacontacts support</flag>
 		<flag name="murm">Build Murm, the VKontakte messaging support via their native API (instead of XMPP)</flag>
 		<flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
 		<flag name="otroid">Build OTRoid, plugin for the Off-the-Record deniable encryption system</flag>
