@@ -434,11 +434,6 @@ dev-db/ctdb
 # security vulnerabilities. Removal in 30 days. Bug #509920.
 www-apps/egroupware
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained. Fails to build. Removal in 30 days. Bug #541702.
-virtual/ada
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
