@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,17 +50,15 @@ src_prepare() {
 	default
 
 	strip-flags # bug #293927
-	echo "BACKEND=mixer_sdl
-COLOUR_DEPTH=16
-OSTYPE=linux
-VERBOSE=1" > config.default || die
+	printf "BACKEND=mixer_sdl\nCOLOUR_DEPTH=16\nOSTYPE=linux\nVERBOSE=1" \
+		> config.default || die
 
 	# make it look in the install location for the data
 	sed -i \
 		-e "s:argv\[0\]:\"/usr/share/${PN}/\":" \
 		simmain.cc || die
 
-	rm -v simutrans/{simutrans,*.txt} || die
+	rm simutrans/*.txt || die
 }
 
 src_install() {
