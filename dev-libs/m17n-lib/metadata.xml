@@ -6,14 +6,13 @@
     <name>Cjk</name>
   </maintainer>
   <use>
-    <flag name="X">
-      Builds the Graphical User Interface API and utilities for the
-      package.
+    <flag name="X">Build the Graphical User Interface API and utilities</flag>
+    <flag name="anthy">
+      Enable support for <pkg>app-i18n/anthy</pkg> input method
     </flag>
-    <flag name="anthy">Enable support for <pkg>app-i18n/anthy</pkg>
-    input method.</flag>
-    <flag name="athena">Enable the MIT Athena widget set
-    (<pkg>x11-libs/libXaw</pkg>)</flag>
+    <flag name="athena">
+      Enable the MIT Athena widget set (<pkg>x11-libs/libXaw</pkg>)
+    </flag>
     <flag name="gd">
       Build API and utilities based on <pkg>media-libs/gd</pkg>. This
       flag is only meaningful if the X USE flag is also enabled.
