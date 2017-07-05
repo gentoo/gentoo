@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit vala
 
-DESCRIPTION="Japanese input method Anthy IMEngine for IBus Framework"
+DESCRIPTION="Japanese SKK engine for IBus"
 HOMEPAGE="https://github.com/ueno/ibus-skk"
 SRC_URI="https://github.com/ueno/${PN}/releases/download/${P}/${P}.tar.gz"
 
