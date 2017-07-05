@@ -462,11 +462,6 @@ www-apache/mod_python
 # Removal in 30 days. Bugs #254312, #591778.
 app-cdr/cdrkit
 
-# Andreas Sturmlechner <asturm@gentoo.org> (05 Jun 2017)
-# Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
-# Masked for removal in 30 days. Bugs #620792, #620796
-kde-apps/plasma-runtime
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
