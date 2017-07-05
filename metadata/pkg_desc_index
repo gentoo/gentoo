@@ -6983,9 +6983,9 @@ dev-php/File_Iterator 1.3.4 1.4.2: FilterIterator implementation that filters fi
 dev-php/PEAR-Archive_Tar 1.4.2-r2: Tar file management class
 dev-php/PEAR-Auth 1.6.4: Provides methods for creating an authentication system using PHP
 dev-php/PEAR-Auth_HTTP 2.1.8: Create HTTP authentication systems similar to Apache's realm-based .htaccess mechanism
-dev-php/PEAR-Auth_SASL 1.0.6 1.1.0: Abstraction of various SASL mechanism responses
+dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Benchmark 1.2.9: Framework to benchmark PHP scripts or function calls
-dev-php/PEAR-Cache 1.5.6: Framework for caching of arbitrary data
+dev-php/PEAR-Cache 1.5.6 1.5.6-r1: Framework for caching of arbitrary data
 dev-php/PEAR-Cache_Lite 1.7.16 1.8.0: Fast and safe little cache system
 dev-php/PEAR-Calendar 0.5.5: A package for building Calendar data structures
 dev-php/PEAR-Config 1.10.12-r1: Provides methods for configuration manipulation. Your configuration's swiss-army knife
@@ -7028,7 +7028,7 @@ dev-php/PEAR-HTML_Template_IT 1.3.0: Integrated Templates
 dev-php/PEAR-HTML_Template_Sigma 1.3.0: An implementation of Integrated Templates API with template 'compilation' added
 dev-php/PEAR-HTML_TreeMenu 1.2.2 1.2.2-r1: Provides an API to create a HTML tree
 dev-php/PEAR-HTTP 1.4.1-r2: Miscellaneous HTTP utilities
-dev-php/PEAR-HTTP_Client 1.2.1: Provides functionality to perform multiple HTTP requests and process their results
+dev-php/PEAR-HTTP_Client 1.2.1 1.2.1-r1: Perform multiple HTTP requests and process their results
 dev-php/PEAR-HTTP_Download 1.1.4: Provides functionality to send HTTP downloads
 dev-php/PEAR-HTTP_Header 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
 dev-php/PEAR-HTTP_Request 1.4.4: Provides an easy way to perform HTTP requests
@@ -7072,7 +7072,7 @@ dev-php/PEAR-Net_Server 1.0.3: Generic server class for PHP
 dev-php/PEAR-Net_Sieve 1.5.2-r1 1.5.4: An API for talking to sieve (RFC 3028) servers
 dev-php/PEAR-Net_SmartIRC 1.1.10-r1 1.1.11: PHP class to communicate with IRC networks
 dev-php/PEAR-Net_Socket 1.0.14-r3 1.1.0 1.2.2: PHP class interface to TCP sockets
-dev-php/PEAR-Net_Traceroute 0.21.3: OS independet wrapper class for executing traceroute calls
+dev-php/PEAR-Net_Traceroute 0.21.3 0.21.3-r1: OS independet wrapper class for executing traceroute calls
 dev-php/PEAR-Net_URL 1.0.15: Easy parsing of URLs
 dev-php/PEAR-Net_URL2 2.0.5 2.2.1-r2: Easy parsing of URLs (PHP5 port of PEAR-Net_URL package)
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web browser, version, and platform from an HTTP user agent string
@@ -12006,7 +12006,7 @@ kde-apps/krdc 16.12.3 17.04.2: Remote desktop connection (RDP and VNC) client
 kde-apps/kreadconfig 16.04.3: Command-line tool to read KConfig entries
 kde-apps/kremotecontrol 16.12.3 17.04.2: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 16.12.3 17.04.2: Board Game by KDE
-kde-apps/krfb 15.08.3 16.12.3-r1 17.04.2: VNC-compatible server to share KDE desktops
+kde-apps/krfb 15.08.3 16.12.3-r1 17.04.2: VNC-compatible server to share Plasma desktops
 kde-apps/kross-interpreters 16.12.3 17.04.2: Kross interpreter plugins for programming languages
 kde-apps/kruler 16.12.3 17.04.2: Screen ruler for Plasma
 kde-apps/ksaneplugin 16.12.3 17.04.2: SANE Plugin by KDE
@@ -17843,7 +17843,7 @@ sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.52 4.4.75 4.9.16 4.9.34 4.9.35 4.10.17 4.11.7 4.11.8: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.0.2-r1 7.1.0: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.34 4.9.35 4.11.7 4.11.8: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
+sys-kernel/ck-sources 4.9.34 4.9.35 4.9.36 4.11.7 4.11.8 4.11.9: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 9999: Gentoo automatic kernel building scripts
@@ -17886,7 +17886,7 @@ sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.0.3 3.1.0 3.1.1: Library for managing partitions
-sys-libs/ldb 1.1.24 1.1.26 1.1.27-r1 1.1.29 1.1.29-r1: An LDAP-like embedded database
+sys-libs/ldb 1.1.24 1.1.26 1.1.27-r1 1.1.29 1.1.29-r1 1.1.31: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
