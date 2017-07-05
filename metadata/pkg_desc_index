@@ -12122,7 +12122,7 @@ kde-frameworks/breeze-icons 5.34.0 5.35.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.34.0 5.35.0: Breeze SVG icon theme binary resource
 kde-frameworks/extra-cmake-modules 5.34.0 5.35.0: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.34.0 5.35.0: Framework for integrating Qt applications with KDE Plasma workspaces
-kde-frameworks/kactivities 4.13.3-r2 5.34.0 5.35.0: Framework for working with KDE activities
+kde-frameworks/kactivities 5.34.0 5.35.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.34.0 5.35.0: Framework for getting the usage statistics collected by the activities service
 kde-frameworks/kapidox 5.34.0 5.35.0: Framework for building KDE API documentation in a standard format and style
 kde-frameworks/karchive 5.34.0 5.35.0: Framework for reading, creation, and manipulation of various archive formats
