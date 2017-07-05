@@ -403,9 +403,7 @@ net-irc/atheme-services
 # Abandoned in Gentoo. Fail to build with gcc-6.
 # Removal in 30 days. Bugs:
 # app-backup/boxbackup - #595412
-# dev-lang/falcon - #595416
 app-backup/boxbackup
-dev-lang/falcon
 
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
