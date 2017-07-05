@@ -19,9 +19,9 @@ IUSE="doc +ldap +python"
 RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.1.8[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.9[python?,${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.9.31[python(+)?,${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.12[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.13[python?,${MULTILIB_USEDEP}]
 	!!<net-fs/samba-3.6.0[ldb]
 	!!>=net-fs/samba-4.0.0[ldb]
 	python? ( ${PYTHON_DEPS} )
