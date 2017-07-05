@@ -415,53 +415,6 @@ net-p2p/ppcoin-qt
 # and pycrypto. Removal in 30 days. Bug #313923.
 app-mobilephone/bitpim
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Security vulnerability.
-# Removal in 30 days. Bug #562896.
-net-irc/charybdis
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Multiple versions behind upstream.
-# Security vulnerabilities. No reverse dependencies anymore.
-# Removal in 30 days. Bug #512292.
-dev-db/ctdb
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Multiple versions behind upstream. Multiple
-# security vulnerabilities. Removal in 30 days. Bug #509920.
-www-apps/egroupware
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained. Fails to build. Removal in 30 days. Bug #541702.
-net-mail/topal
-virtual/ada
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and downstream. Reported not to work. CAPI flags
-# in reverse dependencies are masked for some time already.
-# Removal in 30 days. Bug #379975.
-net-dialup/capi4k-utils
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and downstream. Buggy. Segfaults hard on Python
-# upgrades. Use one of the *CGI modules instead.
-# Removal in 30 days. Bug #536134.
-www-apache/mod_python
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and downstream. Buggy to the point of producing
-# corrupted media. Use the original app-cdr/cdrtools or one of the many
-# other alternatives (app-cdr/dvd+rw-tools, dev-libs/libburn...).
-# Removal in 30 days. Bugs #254312, #591778.
-app-cdr/cdrkit
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
