@@ -271,13 +271,6 @@ media-sound/pianobooster
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Unmaintained library with no reverse dependencies. Last consumer
-# of unmaintained gpe.eclass.
-# Removal in 30 days. Bug #610490.
-x11-libs/libxsettings-client
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. The current Gentoo version no longer builds.
 # Removal in 30 days. Bug #602820.
 media-plugins/vdr-xineliboutput
