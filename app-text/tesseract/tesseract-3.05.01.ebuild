@@ -90,7 +90,6 @@ RDEPEND="${CDEPEND}
 DOCS=( AUTHORS ChangeLog NEWS README.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.05.00-libtiff.patch"
 	"${FILESDIR}/${PN}-3.05.00-no_graphics.patch"
 	"${FILESDIR}/${PN}-4.00.00-use-system-piccolo2d.patch"
 )
