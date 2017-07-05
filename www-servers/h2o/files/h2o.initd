@@ -9,7 +9,7 @@ description_configtest="Run H2O' internal config check"
 description_reload="Reload the H2O configuration or upgrade the binary without losing connections"
 
 : ${config:="/etc/h2o/h2o.conf"}
-pidfile=`grep pid-file "${config}" | cut -d' ' -f2`
+pidfile=$(grep pid-file "${config}" | cut -d' ' -f2)
 
 name="H2O"
 command="/usr/bin/h2o"
