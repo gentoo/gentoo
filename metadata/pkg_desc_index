@@ -1285,7 +1285,7 @@ app-emacs/zenburn 20110907: Zenburn color theme for Emacs
 app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs text editor
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform environment (for running bare metal & Linux)
-app-emulation/bochs 2.6.8: LGPL-ed pc emulator
+app-emulation/bochs 2.6.8 2.6.9: LGPL-ed pc emulator
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.6_p1212-r1 0.7.7 0.7.8-r2 0.7.9 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/containerd 0.2.5 0.2.5-r1 0.2.5_p20170308 0.2.6 0.2.7 0.2.8 0.2.8_p20170504 0.2.9 9999: A daemon to control runC
@@ -2954,8 +2954,8 @@ dev-db/libodbc++ 0.2.5-r2: Provides a subset of the well-known JDBC 2.0(tm) and 
 dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0 3.1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.18 0.9.19: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
-dev-db/m17n-contrib 1.1.14: Contribution database for the m17n library
-dev-db/m17n-db 1.6.4 1.7.0: Database for the m17n library
+dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
+dev-db/m17n-db 1.6.3 1.6.4 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
 dev-db/mariadb 5.5.56 10.0.29 10.0.30 10.0.31 10.1.23 10.1.24 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.28 10.0.30: An enhanced, drop-in replacement for MySQL with Galera Replication
@@ -4159,7 +4159,6 @@ dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for
 dev-java/java-config 2.2.0-r3: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1 0.4: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
-dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.7.0.80 1.8.0.131: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r2 5.0-r3: Java Compiler Compiler - The Java Parser Generator
@@ -4702,7 +4701,6 @@ dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.102 0.104 0.106 0.108: D-Bus bindings for glib
 dev-libs/dclog 1.1.1-r1: A logging library for C/C++ programs
-dev-libs/dee 1.2.7 1.2.7-r1: Provide objects allowing to create MVC type programs across DBus
 dev-libs/device-atlas-api-c 2.1: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0: set of utility libraries (mostly used by sssd)
@@ -4905,7 +4903,6 @@ dev-libs/libmcs 0.7.2: Abstracts the storage of configuration settings away from
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcache 1.4.0_rc2-r1: C API for memcached
 dev-libs/libmemcached 0.50 1.0.14 1.0.17-r3 1.0.17-r4 1.0.18 1.0.18-r1 1.0.18-r2 1.0.18-r3: a C client library to the memcached server
-dev-libs/libmimedir 0.5.1: Library for manipulating MIME directory profiles (RFC2425)
 dev-libs/libmirage 3.0.3 3.0.4 3.1.0: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.2 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
@@ -5011,7 +5008,7 @@ dev-libs/log4shib 1.0.1 1.0.4: Internet2 version for OpenSAML of log4cpp logging
 dev-libs/ltxml 1.2.5 1.2.9: Integrated set of XML tools and a developers tool-kit with C API
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.09 2.10: An extremely fast compression and decompression library
-dev-libs/m17n-lib 1.5.2 1.5.5 1.6.2 1.6.3 1.6.3-r1 1.6.4: Multilingual Library for Unix/Linux
+dev-libs/m17n-lib 1.5.2 1.6.3 1.6.3-r1 1.6.4: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
@@ -13511,7 +13508,6 @@ media-plugins/vdr-admin 0.8.0: VDR plugin: Admin OSD - This is not! the webadmin
 media-plugins/vdr-alcd 1.5.1: VDR plugin: Control Activy 300 LCD
 media-plugins/vdr-arghdirector 0.2.6: VDR plugin: use the multifeed option of some Premiere channels - fork of vdr-director
 media-plugins/vdr-atscepg 0.3.0-r1: VDR plugin: receive schedule and event information from ATSC broadcasts
-media-plugins/vdr-audiorecorder 0.1.0_pre14-r2 0.1.0_pre14-r3 2.0.0_rc3 2.0.0_rc5: VDR plugin: automatically record radio-channels and split it into tracks according to RadioText-Info
 media-plugins/vdr-autosort 0.1.3: VDR plugin: Auto-sort channels.conf
 media-plugins/vdr-avards 0.2.4: VDR Plugin: Automatic Video Aspect Ratio Detection and Signaling
 media-plugins/vdr-beep 0.1.2: VDR plugin: Use the PC speaker to signalize some events (shutdown, cut done etc.)
@@ -16319,7 +16315,6 @@ sci-electronics/xcircuit 3.7.48 3.8.83 3.9.62: Circuit drawing and schematic cap
 sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
 sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
-sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the management and analysis of climate data
 sci-geosciences/congen 1.6.2 1.6.2-r1: Generate the speeds, equilibrium arguments, and node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.0.0-r1 2.1.0: GDAL plugin to access GRASS data
@@ -17151,7 +17146,7 @@ sys-apps/grep 2.27-r1 3.0 3.1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
-sys-apps/gsmartcontrol 0.8.7 0.9.0: Hard disk drive health inspection tool
+sys-apps/gsmartcontrol 0.8.7 0.9.0 1.0.1: Hard disk drive health inspection tool
 sys-apps/guix 0.12.0-r3 0.13.0: GNU package manager (nix sibling)
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
 sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
@@ -17412,7 +17407,6 @@ sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
 sys-auth/yubico-piv-tool 1.4.3: Command line tool for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.23 3.1.24: GUI for personalization of Yubico's YubiKey
-sys-block/afacli 4.1: Dell AACRAID-based PERC RAID controller management tool
 sys-block/aoetools 35 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 1.2.20618 1.7.21229: Adaptec RAID Controller Command Line Utility
 sys-block/blktrace 1.0.3 1.1.0 1.1.0-r1: btrace can show detailed info about what is happening on a block device io queue
@@ -18484,7 +18478,6 @@ www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to em
 www-plugins/lightspark 0.7.2_p20160107 9999: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/pdfjs 1.7.225: A PDF reader in JavaScript
-www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.31-r1 2.2.32 2.4.25 2.4.26: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
