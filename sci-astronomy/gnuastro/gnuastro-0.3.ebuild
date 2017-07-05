@@ -9,7 +9,7 @@ DESCRIPTION="GNU Astronomy Utilities"
 HOMEPAGE="https://www.gnu.org/software/gnuastro"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
