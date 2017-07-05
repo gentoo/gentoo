@@ -1511,12 +1511,13 @@ app-i18n/ibus-chewing 1.5.1: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 0.9.1: ibus-fbterm is a input method for FbTerm based on iBus
 app-i18n/ibus-handwrite 2.1.4-r1: hand write recognition/input using ibus IM engine
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
+app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.6.92 1.7.4: ibus-libpinyin - pinyin chinese input for ibus using libpinyin
 app-i18n/ibus-m17n 1.3.2 1.3.4: The M17N engine IMEngine for IBus Framework
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese PinYin IMEngine for IBus Framework
 app-i18n/ibus-qt 1.3.1 1.3.2 1.3.3: Qt IBus library and Qt input method plugin
 app-i18n/ibus-rime 0.9.9 1.1 1.2: Rime Input Method Engine for IBus Framework
-app-i18n/ibus-skk 1.4.1-r1 1.4.2: Japanese input method Anthy IMEngine for IBus Framework
+app-i18n/ibus-skk 1.4.1-r1 1.4.2: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 2.0.4_pre20130108-r2: The SunPinYin IMEngine for IBus Framework
 app-i18n/ibus-table 1.5.0-r1: The Table Engine for IBus Framework
 app-i18n/ibus-table-chinese 1.4.6: Chinese input tables for ibus-table
@@ -1543,6 +1544,7 @@ app-i18n/kinput2 3.1-r1 3.1-r2: A Japanese input server which supports the XIM p
 app-i18n/libcangjie 1.1 1.3: The library implementing the Cangjie input method
 app-i18n/libguess 1.1 1.2: A high-speed character set detection library
 app-i18n/libhangul 0.1.0: libhangul is a generalized and portable library for processing hangul
+app-i18n/libkkc 0.3.5: Japanese Kana Kanji conversion input method library
 app-i18n/libpinyin 0.8.0 1.0.0 1.3.0-r1: Library for Chinese pinyin input methods
 app-i18n/librime 0.9.9 1.2 1.2.9: Rime Input Method Engine library
 app-i18n/libskk 1.0.1 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
@@ -2883,7 +2885,6 @@ dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libgnomemm 2.30.0-r1: C++ bindings for libgnome
-dev-cpp/libgnomeuimm 2.28.0-r2: C++ bindings for libgnomeui
 dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 0.7.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r2: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
@@ -3036,24 +3037,16 @@ dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x datab
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-db/xtrabackup-bin 2.4.4 2.4.6: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
-dev-dotnet/art-sharp 2.24.2: GtkSharp's art module of the gnome-sharp tarball
-dev-dotnet/atk-sharp 2.12.10: GtkSharp's atk module of the gtk-sharp tarball
 dev-dotnet/dbus-sharp 0.7.0-r2 0.8.1: D-Bus for .NET
 dev-dotnet/dbus-sharp-glib 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration module
 dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - Binary version
-dev-dotnet/gconf-sharp 2.24.2: GtkSharp's gconf module of the gnome-sharp tarball
-dev-dotnet/gdk-sharp 2.12.10: GtkSharp's gdk module of the gtk-sharp tarball
 dev-dotnet/gio-sharp 0.3-r1: GIO API C# binding
 dev-dotnet/gkeyfile-sharp 0.1-r1: C# binding for gkeyfile
-dev-dotnet/glade-sharp 2.12.10: GtkSharp's glade module of the gtk-sharp tarball
-dev-dotnet/glib-sharp 2.12.10: GtkSharp's glib module of the gtk-sharp tarball
 dev-dotnet/gnome-desktop-sharp 2.26.0-r1: GtkSharp's gnome-desktop module of the gnome-desktop-sharp tarball
 dev-dotnet/gnome-keyring-sharp 1.0.2-r2: C# implementation of gnome-keyring
-dev-dotnet/gnome-sharp 2.24.2 2.24.2-r1: gnome bindings for mono
-dev-dotnet/gnomevfs-sharp 2.24.2: GtkSharp's gnomevfs module of the gnome-sharp tarball
+dev-dotnet/gnome-sharp 2.24.2-r1: gnome bindings for mono
 dev-dotnet/gsf-sharp 0.8.1: C# bindings for libgsf
-dev-dotnet/gtk-sharp 2.12.10 2.12.21: gtk bindings for mono
-dev-dotnet/gtk-sharp-gapi 2.12.10: GtkSharp's gtk-gapi module of the gtk-sharp tarball
+dev-dotnet/gtk-sharp 2.12.21: gtk bindings for mono
 dev-dotnet/gtksourceview-sharp 2.24.0-r10: GtkSharp's gtksourceview module of the gnome-desktop-sharp tarball
 dev-dotnet/ikvm-bin 7.1.4532.2: Java VM for .NET
 dev-dotnet/libgdiplus 2.10.9-r1 2.10.9-r2 2.10.9-r3 4.2-r2 4.2-r3: Library for using System.Drawing with mono
@@ -3065,7 +3058,6 @@ dev-dotnet/ndesk-dbus-glib 0.4.1: glib integration for DBus-Sharp
 dev-dotnet/nini 1.1.0-r2: Nini - A configuration library for .NET
 dev-dotnet/notify-sharp 0.4.0_pre20090305-r1: a C# client implementation for Desktop Notifications
 dev-dotnet/nuget 2.8.3 2.8.7 2.8.7-r1: Nuget - .NET Package Manager
-dev-dotnet/pango-sharp 2.12.10: GtkSharp's pango module of the gtk-sharp tarball
 dev-dotnet/pe-format 2.1.2 2.1.2-r1 9999: Intelligent PE executable wrapper for binfmt_misc
 dev-dotnet/referenceassemblies-pcl 4.6: .NET Portable Class Library reference assemblies
 dev-dotnet/rsvg-sharp 2.24.0-r10: GtkSharp's rsvg module of the gnome-desktop-sharp tarball
@@ -4877,7 +4869,6 @@ dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split ou
 dev-libs/libisoburn 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.6: Open-source library for reading, mastering and writing optical discs
 dev-libs/libixion 0.11.1 0.12.2 9999: General purpose formula parser & interpreter
-dev-libs/libjit 0.1.2: Libjit is a generic Just-In-Time compilation library
 dev-libs/libkpass 6 6-r1: Libkpass is a from-scratch C implementation for accessing KeePass 1.x databases
 dev-libs/libksba 1.3.5-r1: X.509 and CMS (PKCS#7) library
 dev-libs/liblazy 0.2: lib for D-Bus daemon messages, querying HAL or PolicyKit privileges
@@ -5006,7 +4997,7 @@ dev-libs/log4shib 1.0.1 1.0.4: Internet2 version for OpenSAML of log4cpp logging
 dev-libs/ltxml 1.2.5 1.2.9: Integrated set of XML tools and a developers tool-kit with C API
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.09 2.10: An extremely fast compression and decompression library
-dev-libs/m17n-lib 1.5.2 1.6.3 1.6.3-r1 1.6.4 1.7.0: Multilingual Library for Unix/Linux
+dev-libs/m17n-lib 1.5.2 1.6.3 1.6.4 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
@@ -7421,7 +7412,6 @@ dev-python/capturer 2.3: Easily capture stdout/stderr of the current process and
 dev-python/carbon 0.9.13 0.9.13-r1 0.9.14-r1 0.9.15-r1: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/case 1.2.3 1.5.2: Python unittest Utilities
-dev-python/cassandra-driver 2.7.2: DataStax python driver for Apache Cassandra
 dev-python/castellan 0.4.0: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/catkin_pkg 0.3.4 0.3.5 9999: Standalone Python library for the catkin package system
@@ -13902,7 +13892,6 @@ media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer f
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2016.06.02 9999: A console-based replacement for Pandora's flash player
-media-sound/pianobooster 0.6.4b: A MIDI file player that teaches how to play the piano
 media-sound/picard 1.3.1 1.3.2-r1 1.4.1 1.4.2: A cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
@@ -14307,7 +14296,6 @@ net-analyzer/etherape 0.9.14 0.9.15: A graphical network monitor for Unix modele
 net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.2 9999: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.9.6 0.9.7 99999999: scans log files and bans IPs that show malicious signs
-net-analyzer/fe3d 0.11.2: A 3D visualization tool for network security information
 net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-middle attacks
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
 net-analyzer/flent 1.0.1: The FLExible Network Tester
@@ -15445,7 +15433,6 @@ net-misc/seafile-client 6.0.7: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r1: a small stealth network autoconfigure software
 net-misc/sendfile 2.1b-r1: SAFT implementation for UNIX and serves as a tool for asynchronous sending of files in the Internet
-net-misc/ser 0.9.7-r2: SIP Express Router
 net-misc/ser2net 2.7-r1 2.9.1 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 13.01: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3 9999: Command line client for ISDS
@@ -18380,7 +18367,6 @@ www-apps/piwigo 2.8.6-r1 2.9.0 2.9.1: a photo gallery software for the web
 www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8 3.0.2: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 3.1.0: Graphical front-end analysis console for the Prelude Framework
-www-apps/pyblosxom 1.4.3-r1: Lightweight weblog system
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
 www-apps/redmine 3.2.1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
@@ -18769,7 +18755,6 @@ x11-libs/libxkbcommon 0.6.0 0.7.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9 1.0.9-r1: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.3 5.3-r1 5.4: A library for the X Keyboard Extension (high-level API)
-x11-libs/libxsettings-client 0.17 0.17-r1: XSETTINGS client code
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
 x11-libs/libyui 3.0.13 3.2.5: UI abstraction library
 x11-libs/libyui-gtk 2.44.5 2.44.7: UI abstraction library - GTK plugin

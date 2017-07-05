@@ -2096,8 +2096,6 @@ dev-libs/libisoburn:frontend-optional - Use dev-tcltk/bwidget which is not stric
 dev-libs/libisoburn:launch-frontend - Enable the tcl gui for xorriso
 dev-libs/libisoburn:launch-frontend-setuid - Enable the tcl gui for xorriso under setuid
 dev-libs/libisofs:verbose-debug - Enable verbose debug messages
-dev-libs/libjit:interpreter - Enable the libjit interpreter
-dev-libs/libjit:long-double - Enable the use of long double for jit_nfloat
 dev-libs/liblogging:rfc3195 - Enables RFC 3195 protocol (aka syslog-reliable) support. If you don't know what this is, you don't need it!
 dev-libs/liblogging:stdlog - Enables liblogging's core component (think of it as a the next version of the syslog(3) API).
 dev-libs/libmail:apop - Enables the APOP authentication method
@@ -2449,9 +2447,6 @@ dev-python/QtPy:webkit - Build bindings for the QtWebKit module
 dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/anyvc:bazaar - Add support for Bazaar
 dev-python/anyvc:mercurial - Add support for Mercurial
-dev-python/cassandra-driver:cython - Optimize core modules and build custom extensions
-dev-python/cassandra-driver:libev - libev event loop integration
-dev-python/cassandra-driver:murmur - Faster hashing for token-aware routing
 dev-python/celery:redis - Enables redis support
 dev-python/celery:sqs - Enables Amazon SQS transport module for celery
 dev-python/celery:yaml - Enable support of yaml as a configuration file format
@@ -4603,7 +4598,6 @@ media-sound/ncmpcpp:outputs - Enable outputs screen
 media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/frequency spectrum modes
 media-sound/patchage:jack-dbus - Use Jack via D-Bus instead of libjack
 media-sound/patchage:session - Include experimental Jack session management (save/restore) support
-media-sound/pianobooster:fluidsynth - Enable Fluidsynth MIDI software synthesis
 media-sound/picard:acoustid - Use media-libs/chromaprint for acoustic fingerprinting
 media-sound/pithos:appindicator - Enable usage of appindicator to export menu options in to unity
 media-sound/pithos:keybinder - Use keybinder to enable global key bindings
