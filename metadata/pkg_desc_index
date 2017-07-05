@@ -11943,7 +11943,7 @@ kde-apps/kfourinline 16.12.3 17.04.2: KDE four-in-a-row game
 kde-apps/kgeography 16.12.3 17.04.2: Geography learning tool
 kde-apps/kget 16.12.3 17.04.2: Advanced download manager by KDE
 kde-apps/kgoldrunner 16.12.3 17.04.2: Game of action and puzzle solving by KDE
-kde-apps/kgpg 16.08.3 16.12.3 17.04.2: Frontend for GnuPG, a powerful encryption utility by KDE
+kde-apps/kgpg 16.08.3 17.04.2: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 16.12.3 17.04.2: Classical hangman game by KDE
 kde-apps/khelpcenter 16.12.3 17.04.2: The KDE Help Center
 kde-apps/kholidays 16.12.3 17.04.2: Library to determine holidays and other special events for a geographical region
