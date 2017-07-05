@@ -498,6 +498,12 @@ app-emulation/wine-any
 >=net-misc/rygel-0.33
 >=games-puzzle/swell-foop-3.23
 
+# Mathy Vanvoorden <mathy@vanvoorden.be> (03 Mar 2017)
+# Packages depending on this library need to be tested first before
+# it is unmasked. Possibly some slotting is still needed.
+# Package testing tracked in bug #611022
+>=dev-libs/msgpack-1.4.2
+
 # Alexis Ballier <aballier@gentoo.org> (03 Mar 2017)
 # Beta release, some packages fail to build.
 >=dev-lang/ocaml-4.05.0_beta2
