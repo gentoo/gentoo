@@ -409,12 +409,6 @@ app-backup/boxbackup
 dev-lang/falcon
 net-p2p/ppcoin-qt
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and unmaintained in Gentoo. Requires old wxPython
-# and pycrypto. Removal in 30 days. Bug #313923.
-app-mobilephone/bitpim
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
