@@ -16323,7 +16323,7 @@ sci-electronics/qucs 0.0.17.130503 0.0.18: Quite Universal Circuit Simulator in 
 sci-electronics/sigrok-cli 0.5.0 0.6.0 0.7.0 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r1 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool
-sci-electronics/systemc 2.2.0-r2 2.3.0 2.3.1: A C++ based modeling platform for VLSI and system-level co-design
+sci-electronics/systemc 2.3.0-r1 2.3.1-r1: A C++ based modeling platform for VLSI and system-level co-design
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
 sci-electronics/voacapl 0.6.7: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48 3.8.83 3.9.62: Circuit drawing and schematic capture program
