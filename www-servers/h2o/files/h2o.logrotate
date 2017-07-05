@@ -3,6 +3,6 @@
 	delaycompress
 	sharedscripts
 	postrotate
-		/etc/init.d/h2o reload > /dev/null 2>&1 || true
+		test -r /run/h2o.pid && kill -HUP $(cat /run/h2o.pid)
 	endscript
 }
