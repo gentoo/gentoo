@@ -247,7 +247,6 @@ dev-dotnet/gtk-sharp-gapi
 dev-dotnet/pango-sharp
 <dev-dotnet/gnome-sharp-2.24.2-r1
 dev-dotnet/art-sharp
-dev-dotnet/gconf-sharp
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
