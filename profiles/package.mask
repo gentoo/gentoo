@@ -322,10 +322,8 @@ sci-chemistry/gamessq
 # alternatives exist. Removal in 30 days.
 # app-dicts/gjiten -- bug #608404; alternative: app-dicts/gwaei
 # app-i18n/im-ja -- bug #608418.
-# games-board/gamazons -- bug #608424.
 app-dicts/gjiten
 app-i18n/im-ja
-games-board/gamazons
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
