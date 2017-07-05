@@ -239,7 +239,6 @@ app-text/7plus
 dev-dotnet/atk-sharp
 dev-dotnet/gdk-sharp
 dev-dotnet/glade-sharp
-dev-dotnet/glib-sharp
 dev-dotnet/gtk-dotnet-sharp
 dev-dotnet/gtk-sharp-docs
 
