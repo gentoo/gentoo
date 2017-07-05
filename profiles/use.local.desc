@@ -8365,6 +8365,7 @@ www-servers/cherokee:admin - Install web based cherokee conf tool
 www-servers/cherokee:rrdtool - Enable rrdtool support
 www-servers/fnord:auth - Enable HTTP authentication support
 www-servers/gatling:diet - Compile against dev-libs/dietlibc
+www-servers/h2o:mruby - Enable support for mruby
 www-servers/hiawatha:cache - Enable caching of content
 www-servers/hiawatha:monitor - Pull in www-apps/hiawatha-monitor
 www-servers/hiawatha:rewrite - Enable the rewrite toolkit

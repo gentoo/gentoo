@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-text/ghostscript-gpl dev-libs/libgit2:= sci-astronomy/wcslib:0= sci-libs/cfitsio:0= sci-libs/gsl:0= virtual/jpeg:0= >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GNU Astronomy Utilities
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/gnuastro
+IUSE=static-libs threads
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=app-text/ghostscript-gpl dev-libs/libgit2:= sci-astronomy/wcslib:0= sci-libs/cfitsio:0= sci-libs/gsl:0= virtual/jpeg:0=
+SLOT=0/1
+SRC_URI=mirror://gnu/gnuastro/gnuastro-0.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=753483785a55c91be9cbbdcb2670c4ec
