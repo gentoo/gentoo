@@ -477,13 +477,6 @@ www-client/phantomjs
 dev-ruby/poltergeist
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
-# Package::Constants has been removed from core Perl.
-# Please depend in your ebuild directly on dev-perl/Package-Constants
-# (and if necessary remove virtual/perl-Package-Constants from
-# your system). Removal of the virtual in 30 days.
-virtual/perl-Package-Constants
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
 # Masked for initial testing.
 =dev-lang/perl-5.26.0
 =virtual/perl-Archive-Tar-2.240.0
