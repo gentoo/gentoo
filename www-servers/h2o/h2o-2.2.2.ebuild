@@ -28,8 +28,6 @@ DEPEND="${RDEPEND}
 		)
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-fix_help_path.patch )
-
 pkg_setup() {
 	enewgroup h2o
 	enewuser h2o -1 -1 -1 h2o
@@ -47,7 +45,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc/h2o
 		-DWITH_MRUBY="$(usex mruby)"
-		-DWITH_BUNDLED_SSL=OFF
 		-DWITHOUT_LIBS=ON
 	)
 	cmake-utils_src_configure
@@ -66,5 +63,5 @@ src_install() {
 	fperms 0700 /var/log/h2o
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/h2o.logrotate ${PN}
+	newins "${FILESDIR}"/h2o.logrotate h2o
 }
