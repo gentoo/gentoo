@@ -51,7 +51,6 @@ RDEPEND="dev-libs/atk:0
 QA_PREBUILT="opt/slack/slack
 	opt/slack/resources/app.asar.unpacked/node_modules/*
 	opt/slack/libnode.so
-	opt/slack/libgcrypt.so.11
 	opt/slack/libffmpeg.so
 	opt/slack/libCallsCore.so"
 
@@ -68,10 +67,6 @@ src_install() {
 	doins -r usr/lib/${MY_PN}/.
 	fperms +x /opt/${MY_PN}/${MY_PN}
 	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
