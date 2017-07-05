@@ -692,7 +692,6 @@ app-dicts/freedict-eng-ita 1.0: Freedict for language translation from English t
 app-dicts/freedict-eng-swe 1.0: Freedict for language translation from English to Swedish
 app-dicts/freedict-fra-eng 1.0: Freedict for language translation from French to English
 app-dicts/freedict-ita-eng 1.0: Freedict for language translation from Italian to English
-app-dicts/gjiten 2.6-r3: A Japanese dictionary program for Gnome
 app-dicts/gnome-dictionary 3.18.1 3.20.0: Dictionary utility for GNOME
 app-dicts/gwaei 3.6.2: Japanese-English Dictionary for GNOME
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
@@ -1531,7 +1530,6 @@ app-i18n/ibus-unikey 0.6.1 0.6.1-r1: Vietnamese Input Method Engine for IBUS usi
 app-i18n/im-canna 0.3.2.2: Japanese Canna input method module for GTK+2
 app-i18n/im-chooser 1.6.2: Desktop Input Method configuration tool
 app-i18n/im-freewnn 0.0.2-r2: Japanese FreeWnn input method module for GTK+2
-app-i18n/im-ja 1.5-r3: A Japanese input module for GTK2 and XIM
 app-i18n/imhangul 2.0.0 2.1.0 3.1.1: Gtk+-3.0 Hangul Input Modules
 app-i18n/imsettings 1.6.8: Delivery framework for general Input Method configuration
 app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement with UTF-8 support
@@ -5008,7 +5006,7 @@ dev-libs/log4shib 1.0.1 1.0.4: Internet2 version for OpenSAML of log4cpp logging
 dev-libs/ltxml 1.2.5 1.2.9: Integrated set of XML tools and a developers tool-kit with C API
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.09 2.10: An extremely fast compression and decompression library
-dev-libs/m17n-lib 1.5.2 1.6.3 1.6.3-r1 1.6.4: Multilingual Library for Unix/Linux
+dev-libs/m17n-lib 1.5.2 1.6.3 1.6.3-r1 1.6.4 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
@@ -10961,7 +10959,6 @@ games-board/eboard 1.1.1-r1 1.1.1-r2: chess interface for POSIX systems
 games-board/four-in-a-row 3.22.1: Make lines of the same color to win
 games-board/freedoko 0.7.13-r1 0.7.14 0.7.14-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
-games-board/gamazons 0.83: A chess/go hybrid
 games-board/gambit 1.0.1 1.0.3 1.0.3-r1: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r1 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.22.2: Play the classic two-player boardgame of chess
@@ -13953,7 +13950,6 @@ media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Cont
 media-sound/redoflacs 0.15 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
 media-sound/retrovol 0.12 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
-media-sound/rezound 0.12.3_beta-r2: Sound editor and recorder
 media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Replay Gain information
 media-sound/rhythmbox 3.4.1-r1: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
@@ -14572,7 +14568,6 @@ net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, 
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
 net-dialup/linux-atm 2.5.0 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r3: Communication package providing the X, Y, and ZMODEM file transfer protocols
-net-dialup/martian-modem 20100123-r1: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dialup/mgetty 1.1.37-r1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.6 2.7 2.7-r1 2.7.1: Serial Communication Program
@@ -16180,7 +16175,6 @@ sci-chemistry/eden 5.3-r2: A crystallographic real-space electron-density refine
 sci-chemistry/elem 1.0.3-r1 1.0.3-r2: periodic table of the elements
 sci-chemistry/freeon 1.0.8-r1 1.0.10: An experimental suite of programs for linear scaling quantum chemistry
 sci-chemistry/gabedit 2.4.6 2.4.7 2.4.8: GUI for computational chemistry packages
-sci-chemistry/gamessq 1.2: Simple job manager for GAMESS-US
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
@@ -17439,7 +17433,7 @@ sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.4.0 2.5.3: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
-sys-block/nbd 3.11 3.15.2 3.15.3: Userland client/server for kernel network block device
+sys-block/nbd 3.11 3.15.3 3.16.1: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2 2.0.873-r3 2.0.874 2.0.874-r1: A performant, transport independent, multi-platform implementation of RFC3720
@@ -18864,7 +18858,6 @@ x11-misc/e16keyedit 0.7: Key binding editor for enlightenment 16
 x11-misc/e16menuedit2 0.0.3: Menu editor for enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0-r1 0.6.0-r2: a gesture-recognition application for X11
 x11-misc/efax-gtk 3.2.9 3.2.13: A graphical frontend for the 'efax' application
-x11-misc/etm 696-r1: Event and Task Manager, an intuitive time management application
 x11-misc/evolvotron 0.6.3-r1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
