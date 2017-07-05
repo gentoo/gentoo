@@ -35,7 +35,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Leave optimization level to user CFLAGS
-	sed -i "s/-O2 -g \${CC_WARNING_FLAGS} //g" ./CMakeLists.txt \
+	sed -i 's/-O2 -g ${CC_WARNING_FLAGS} //g' ./CMakeLists.txt \
 		|| die "sed fix failed!"
 
 	default
