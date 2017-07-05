@@ -252,13 +252,6 @@ dev-dotnet/gnomevfs-sharp
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Unmaintained since addition. Obsolete version that requires ancient
-# dev-python/mock version. No reverse dependencies.
-# Removal in 30 days. Bug #616292.
-dev-python/cassandra-driver
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. The current Gentoo version no longer builds.
 # Removal in 30 days. Bug #602820.
 media-plugins/vdr-xineliboutput
