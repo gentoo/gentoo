@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,8 +97,8 @@
+ 
+ dnl Checks which levels of APIs should be compiled.
+ 
+-AC_ARG_ENABLE(gui,
+-	      AS_HELP_STRING([--enable-gui],[enable GUI level APIs (default is YES)]))
++AC_ARG_WITH(gui,
++	      AS_HELP_STRING([--with-gui],[enable GUI level APIs (default is YES)]))
+ 
+ AM_CONDITIONAL(WITH_GUI, test x$with_gui != xno)
+ 
