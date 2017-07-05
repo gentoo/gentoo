@@ -7,7 +7,7 @@ inherit kde5 multibuild
 
 DESCRIPTION="Oxygen visual style for the Plasma desktop"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/oxygen"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="qt4 wayland"
 
 COMMON_DEPEND="
