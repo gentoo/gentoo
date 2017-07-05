@@ -404,10 +404,8 @@ net-irc/atheme-services
 # Removal in 30 days. Bugs:
 # app-backup/boxbackup - #595412
 # dev-lang/falcon - #595416
-# net-p2p/ppcoin-qt - #598366
 app-backup/boxbackup
 dev-lang/falcon
-net-p2p/ppcoin-qt
 
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
