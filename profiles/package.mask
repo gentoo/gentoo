@@ -236,7 +236,6 @@ app-text/7plus
 # - >=dev-dotnet/gtk-sharp-2.12.21,
 # Removal in 14 days.
 <dev-dotnet/gtk-sharp-2.12.21
-dev-dotnet/atk-sharp
 dev-dotnet/gtk-dotnet-sharp
 dev-dotnet/gtk-sharp-docs
 
