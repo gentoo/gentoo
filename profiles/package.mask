@@ -304,44 +304,6 @@ net-analyzer/fe3d
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Unmaintained upstream. Already suffers heavy patching in Gentoo.
-# Multiple bugs filed, including build failures.
-# Removal in 30 days. Bug #515760.
-media-sound/rezound
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Requires old wxPython. GAMESS itself
-# is masked for removal already.
-# Removal in 30 days. Bug #564104.
-sci-chemistry/gamessq
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream. Require obsolete GNOME libraries. Multiple
-# alternatives exist. Removal in 30 days.
-# app-dicts/gjiten -- bug #608404; alternative: app-dicts/gwaei
-# app-i18n/im-ja -- bug #608418.
-# games-board/gamazons -- bug #608424.
-app-dicts/gjiten
-app-i18n/im-ja
-games-board/gamazons
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Discontinued blob driver. Fails to build against modern kernels.
-# Removal in 30 days. Bug #574026.
-net-dialup/martian-modem
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. The current version is obsolete, and the new
-# versions cause issues preventing adding.
-# Removal in 30 days. Bug #368257.
-x11-misc/etm
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. The current Gentoo version no longer builds.
 # Removal in 30 days. Bug #602820.
 media-plugins/vdr-xineliboutput
