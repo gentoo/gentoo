@@ -23,7 +23,7 @@ DEPEND="dev-ada/gnat_util[gnat_2016=,gnat_2017=]
 	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )"
 RDEPEND="${RDEPEND}"
-REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"
+REQUIRED_USE="!gnat_2016 gnat_2017"
 
 S="${WORKDIR}"/${MYP}
 
