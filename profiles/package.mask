@@ -368,13 +368,6 @@ www-plugins/pipelight
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# Does not support ffmpeg-3. Maintainer is unable to solve that,
-# and nobody seems to be interested.
-# Removal in 30 days. Bug #575138.
-media-plugins/vdr-audiorecorder
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. Multiple bugs, including a security
 # vulnerability. Removal in 30 days. Bug #581960.
 net-irc/atheme-services
