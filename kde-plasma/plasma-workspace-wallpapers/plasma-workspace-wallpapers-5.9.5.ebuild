@@ -8,7 +8,7 @@ KDE_DEBUG="false"
 inherit kde5
 
 DESCRIPTION="Additional wallpapers for the Plasma workspace"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
