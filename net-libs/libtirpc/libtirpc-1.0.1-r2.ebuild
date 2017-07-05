@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit multilib-minimal toolchain-funcs eutils
+inherit autotools multilib-minimal toolchain-funcs eutils
 
 DESCRIPTION="Transport Independent RPC library (SunRPC replacement)"
 HOMEPAGE="http://libtirpc.sourceforge.net/"
@@ -34,6 +34,7 @@ src_prepare() {
 	cp -r "${WORKDIR}"/tirpc "${S}"/ || die
 	epatch "${PATCHES[@]}"
 	epatch_user
+	eautoreconf
 }
 
 multilib_src_configure() {
