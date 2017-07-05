@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 inherit eutils multilib toolchain-funcs multilib-minimal flag-o-matic
 
@@ -16,15 +16,23 @@ IUSE="dns +kmod static-libs +udev zlib"
 
 # Have the sub-libs in RDEPEND with [static-libs] since, logically,
 # our libpci.a depends on libz.a/etc... at runtime.
-LIB_DEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+),${MULTILIB_USEDEP}] )
-	udev? ( >=virtual/libudev-208[static-libs(+),${MULTILIB_USEDEP}] )"
-DEPEND="kmod? ( sys-apps/kmod )
+LIB_DEPEND="
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+),${MULTILIB_USEDEP}] )
+	udev? ( >=virtual/libudev-208[static-libs(+),${MULTILIB_USEDEP}] )
+"
+DEPEND="
+	kmod? ( sys-apps/kmod )
 	static-libs? ( ${LIB_DEPEND} )
-	!static-libs? ( ${LIB_DEPEND//static-libs(+),} )"
-RDEPEND="${DEPEND}
-	sys-apps/hwids"
-DEPEND="${DEPEND}
-	kmod? ( virtual/pkgconfig )"
+	!static-libs? ( ${LIB_DEPEND//static-libs(+),} )
+"
+RDEPEND="
+	${DEPEND}
+	sys-apps/hwids
+"
+DEPEND="
+	${DEPEND}
+	kmod? ( virtual/pkgconfig )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.9-static-pc.patch
