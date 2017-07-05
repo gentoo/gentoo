@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 inherit flag-o-matic eutils toolchain-funcs
 
@@ -23,11 +23,15 @@ IUSE="aio perl static unwind"
 
 LIB_DEPEND="unwind? ( sys-libs/libunwind[static-libs(+)] )"
 # strace only uses the header from libaio to decode structs
-DEPEND="static? ( ${LIB_DEPEND} )
+DEPEND="
+	static? ( ${LIB_DEPEND} )
 	aio? ( >=dev-libs/libaio-0.3.106 )
-	sys-kernel/linux-headers"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	perl? ( dev-lang/perl )"
+	sys-kernel/linux-headers
+"
+RDEPEND="
+	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+	perl? ( dev-lang/perl )
+"
 
 src_prepare() {
 	if epatch_user || [[ ! -e configure ]] ; then
