@@ -6,7 +6,7 @@ EAPI=6
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
-DESCRIPTION="VNC-compatible server to share KDE desktops"
+DESCRIPTION="VNC-compatible server to share Plasma desktops"
 HOMEPAGE="https://www.kde.org/applications/system/krfb/"
 KEYWORDS="amd64 x86"
 IUSE=""
