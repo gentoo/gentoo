@@ -23,6 +23,7 @@ PDEPEND="php_targets_php7-0? ( dev-php/pecl-ssh2:7 )
 
 src_prepare(){
 	if use php_targets_php5-6 ; then
+		local PATCHES=( "${FILESDIR}/0.13-parse_url-fix.patch" )
 		php-ext-source-r3_src_prepare
 	else
 		default_src_prepare
