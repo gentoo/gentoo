@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Qt Platform Theme integration plugins for the Plasma workspaces"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
