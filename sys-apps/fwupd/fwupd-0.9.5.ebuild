@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit meson udev systemd
+inherit meson
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="http://www.fwupd.org"
@@ -13,12 +13,12 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell elf systemd uefi"
+IUSE="colorhug dell doc elf +man systemd uefi"
 
 RDEPEND="
 	app-crypt/gpgme
 	dev-db/sqlite
-	dev-libs/appstream-glib
+	>=dev-libs/appstream-glib-0.6.13
 	>=dev-libs/glib-2.45.8:2
 	dev-libs/libgpg-error
 	dev-libs/libgudev
@@ -32,33 +32,35 @@ RDEPEND="
 	)
 	elf? ( dev-libs/libelf )
 	systemd? ( sys-apps/systemd )
+	!systemd? ( >=sys-auth/consolekit-1.0.0 )
 	uefi? ( >=sys-apps/fwupdate-5 )
 "
 DEPEND="
 	${RDEPEND}
 	app-arch/gcab
 	app-arch/libarchive
-	app-text/docbook-sgml-utils
-	dev-util/gtk-doc
 	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
+	man? ( app-text/docbook-sgml-utils )
 "
 
 REQUIRED_USE="dell? ( uefi )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9-polkit_its_files.patch"
-	"${FILESDIR}/${PN}-0.9.2-no_systemd.patch"
 )
 
 src_configure() {
 	local emesonargs=(
+		-Denable-colorhug="$(usex colorhug true false)"
+		-Denable-consolekit="$(usex systemd false true)"
+		-Denable-dell="$(usex dell true false)"
+		-Denable-doc="$(usex doc true false)"
+		-Denable-man="$(usex man true false)"
+		-Denable-libelf="$(usex elf true false)"
+		-Denable-systemd="$(usex systemd true false)"
 		# requires libtbtfwu which is not packaged yet
 		-Denable-thunderbolt=false
-		-Dwith-systemd="$(usex systemd true false)"
-		-Dwith-udevrulesdir="$(get_udevdir)"/rules.d
-		-Denable-colorhug="$(usex colorhug true false)"
-		-Denable-dell="$(usex dell true false)"
-		-Denable-libelf="$(usex elf true false)"
 		-Denable-uefi="$(usex uefi true false)"
 	)
 	meson_src_configure
