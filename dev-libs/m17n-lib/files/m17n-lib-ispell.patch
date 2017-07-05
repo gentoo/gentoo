@@ -1,5 +1,3 @@
-diff --git a/example/mimx-ispell.c b/example/mimx-ispell.c
-index daa244f..7507de8 100644
 --- a/example/mimx-ispell.c
 +++ b/example/mimx-ispell.c
 @@ -166,7 +166,7 @@ ispell_word (MPlist *args)
