@@ -62,6 +62,8 @@ src_install() {
 	keepdir /var/log/h2o
 	fperms 0700 /var/log/h2o
 
+	keepdir /var/www/localhost/htdocs
+
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/h2o.logrotate h2o
 }
