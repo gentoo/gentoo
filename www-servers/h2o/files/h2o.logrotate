@@ -3,6 +3,6 @@
 	delaycompress
 	sharedscripts
 	postrotate
-		test -r /run/h2o.pid && kill -HUP $(cat /run/h2o.pid)
+		test -r $(grep pid-file "/etc/h2o/h2o.conf" | cut -d' ' -f2) && kill -HUP $(pidof h2o)
 	endscript
 }
