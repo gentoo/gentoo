@@ -398,23 +398,6 @@ sci-geosciences/cdat-lite
 # vulnerability. Removal in 30 days. Bug #581960.
 net-irc/atheme-services
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned in Gentoo. Fail to build with gcc-6.
-# Removal in 30 days. Bugs:
-# app-backup/boxbackup - #595412
-# dev-lang/falcon - #595416
-# net-p2p/ppcoin-qt - #598366
-app-backup/boxbackup
-dev-lang/falcon
-net-p2p/ppcoin-qt
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and unmaintained in Gentoo. Requires old wxPython
-# and pycrypto. Removal in 30 days. Bug #313923.
-app-mobilephone/bitpim
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
