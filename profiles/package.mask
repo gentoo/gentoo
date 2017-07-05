@@ -440,13 +440,6 @@ www-apps/egroupware
 net-mail/topal
 virtual/ada
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and downstream. Reported not to work. CAPI flags
-# in reverse dependencies are masked for some time already.
-# Removal in 30 days. Bug #379975.
-net-dialup/capi4k-utils
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
