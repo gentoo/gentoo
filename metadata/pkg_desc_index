@@ -15757,7 +15757,7 @@ net-vpn/tor 0.2.9.10 0.3.0.8 0.3.0.9 0.3.1.4_alpha: Anonymizing overlay network 
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard 0.0.20170629 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard 0.0.20170706 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
@@ -17965,7 +17965,7 @@ sys-libs/uclibc-ng 1.0.19 1.0.20 1.0.22 1.0.23 1.0.24 1.0.24-r1 1.0.25 9999: C l
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.11: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
-sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
+sys-power/acpi_call 1.1.0 1.1.0-r1 1.1.0-r2 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.23 2.0.27 2.0.28: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.0: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
