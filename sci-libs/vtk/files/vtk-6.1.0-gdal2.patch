@@ -1,0 +1,33 @@
+diff --git a/IO/GDAL/vtkGDALVectorReader.cxx b/IO/GDAL/vtkGDALVectorReader.cxx
+index 86854a0..a0e234a 100644
+--- a/IO/GDAL/vtkGDALVectorReader.cxx
++++ b/IO/GDAL/vtkGDALVectorReader.cxx
+# Patch to build against newer GDAL per upstream commit
+# https://projects.archlinux.org/svntogit/community.git/tree/trunk/gdal2.patch?h=packages/vtk&id=43307598a98872fd4ce7739e47f5bb4cfcb5372d
+@@ -44,7 +44,7 @@ class vtkGDALVectorReader::Internal
+ public:
+   Internal( const char* srcName, int srcMode, int appendFeatures, int addFeatIds )
+     {
+-    this->Source = OGRSFDriverRegistrar::Open( srcName, srcMode, &this->Driver );
++    this->Source = (GDALDataset*) OGROpen( srcName, srcMode, NULL );
+     if ( ! this->Source )
+       {
+       this->LastError = CPLGetLastErrorMsg();
+@@ -61,7 +61,7 @@ public:
+     {
+     if ( this->Source )
+       {
+-      OGRDataSource::DestroyDataSource( this->Source );
++      GDALClose( (GDALDatasetH) this->Source );
+       }
+     }
+
+@@ -304,7 +304,7 @@ public:
+     return nCells;
+     }
+
+-  OGRDataSource* Source;
++  GDALDataset* Source;
+   OGRSFDriver* Driver;
+   const char* LastError;
+   int LayerIdx;
