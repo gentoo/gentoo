@@ -625,7 +625,7 @@ app-crypt/ubuntu-keyring 2012.05.19 2016.09.01 2016.09.19 2016.10.27: GnuPG arch
 app-crypt/veracrypt 1.19: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
-app-crypt/yubikey-manager 0.3.2: Python library and command line tool for configuring a YubiKey
+app-crypt/yubikey-manager 0.3.2-r1 0.3.3 0.4.0: Python library and command line tool for configuring a YubiKey
 app-crypt/yubikey-neo-manager 1.1.0 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: Cross platform personalization tool for the YubiKey NEO
 app-crypt/zuluCrypt 5.1.0: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
@@ -8080,25 +8080,25 @@ dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.19 0.20: Adds Virtual
 dev-python/os-win 0.4.0 1.2.1 1.4.1: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.1.1: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0: A package of common support modules for writing OSC plugins.
-dev-python/oslo-cache 1.6.0 1.14.0 1.17.0: Oslo Caching around dogpile.cache
+dev-python/oslo-cache 1.17.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.18.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 3.22.0 3.22.1: Oslo Configuration API
-dev-python/oslo-context 2.12.1: Helpers to maintain useful information about a request context
-dev-python/oslo-db 4.7.1 4.13.5 4.17.0: OpenStack Common DB Code
+dev-python/oslo-context 2.12.1 2.12.2: Helpers to maintain useful information about a request context
+dev-python/oslo-db 4.17.0 4.17.1: OpenStack Common DB Code
 dev-python/oslo-i18n 3.5.0 3.9.0 3.12.0: Oslo i18n library
 dev-python/oslo-log 3.20.1: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 5.17.1 5.17.2: Messaging API for RPC and notifications over different messaging transports
-dev-python/oslo-middleware 3.23.1: Components injected into wsgi pipelines to intercept request/response flows.
+dev-python/oslo-middleware 3.23.1 3.23.2: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.18.0 1.23.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.16.0: OpenStack library for privilege separation.
-dev-python/oslo-reports 1.7.0 1.14.0 1.17.0: generified reports for openstack
+dev-python/oslo-reports 1.17.0 1.17.1: generified reports for openstack
 dev-python/oslo-rootwrap 5.4.1: Allows fine filtering of shell commands to run as root from OpenStack services
-dev-python/oslo-serialization 1.11.0 2.13.0 2.16.0: Oslo Serialization library
-dev-python/oslo-service 1.8.0 1.16.0 1.19.0: Library for running OpenStack services
+dev-python/oslo-serialization 2.16.0: Oslo Serialization library
+dev-python/oslo-service 1.19.0 1.19.1: Library for running OpenStack services
 dev-python/oslo-sphinx 3.0.0 4.7.0: OpenStack Sphinx Extensions and Theme
-dev-python/oslo-utils 3.8.0 3.16.0 3.22.0: Oslo Utility library
-dev-python/oslo-versionedobjects 1.8.0 1.17.0 1.21.0: A library that provides a generic versioned and RPC-friendly object model.
-dev-python/oslo-vmware 2.17.0: Oslo VMware library for OpenStack projects
+dev-python/oslo-utils 3.22.0 3.22.1: Oslo Utility library
+dev-python/oslo-versionedobjects 1.21.0: A library that provides a generic versioned and RPC-friendly object model.
+dev-python/oslo-vmware 2.17.0 2.17.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 2.4.0: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0 1.5.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0 2.6.1 2.7.0: OVS bindings for python.
@@ -8448,7 +8448,7 @@ dev-python/python-bugzilla 1.2.2: A python module for interacting with Bugzilla 
 dev-python/python-caja 1.12.0-r1 1.14.0 1.16.0 1.18.0: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34-r1: A Python extension module for cdb
-dev-python/python-ceilometerclient 1.1.1 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
+dev-python/python-ceilometerclient 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 1.6.0 1.9.0 1.11.0: A client for the OpenStack Cinder API
 dev-python/python-cjson 1.1.0: Fast JSON encoder/decoder for Python
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
@@ -8763,7 +8763,7 @@ dev-python/statistics 1.0.3.5: A Python 2.* port of 3.4 Statistics Module
 dev-python/statsd 3.2.1: A simple statsd client
 dev-python/statsmodels 0.6.1 0.8.0: Statistical computations and models for use with SciPy
 dev-python/steadymark 0.5.3: Markdown-based test runner for python
-dev-python/stevedore 1.3.0 1.20.0: Manage dynamic plugins for Python applications
+dev-python/stevedore 1.20.0 1.20.1: Manage dynamic plugins for Python applications
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
 dev-python/storm 0.20-r1: An object-relational mapper for Python developed at Canonical
 dev-python/stormpath 2.4.2 2.4.4 2.4.5: Official Stormpath SDK, used to interact with the Stormpath REST API.
@@ -8786,7 +8786,7 @@ dev-python/sympy 0.7.6.1-r1 1.0-r1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.7: Pretty-print tabular data
 dev-python/tagpy 2013.1: Python Bindings for TagLib
-dev-python/taskflow 1.30.0 2.6.0 2.9.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
+dev-python/taskflow 2.9.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.3.0 1.3.2: Traceback fiddling library for Python
 dev-python/tdaemon 0.1.6: Test Daemon
 dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
@@ -8816,7 +8816,7 @@ dev-python/tinydb 3.1.3: Tiny document-oriented database
 dev-python/tlslite 0.4.3-r2 0.4.9-r2: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/tmdb3 0.6.17 0.7.2: TheMovieDB.org APIv3 interface
 dev-python/toolz 0.8.0 0.8.2: List processing tools and functional utilities
-dev-python/tooz 1.34.0 1.43.0 1.48.0: Library centralizing the most common distributed primitives
+dev-python/tooz 1.48.0 1.48.1: Library centralizing the most common distributed primitives
 dev-python/torment 3.0.1 3.0.2 3.0.3: A Study in Fixture Based Testing Frameworking
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/tox 2.4.1: virtualenv-based automation of test activities
@@ -17533,7 +17533,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for par
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 7.0.3 7.0.4 8.0.1 8.0.2 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 7.0.4 8.0.2 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
