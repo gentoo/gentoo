@@ -15,10 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
+	app-crypt/libu2f-host
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/pyscard[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
+	sys-auth/ykpers
 "
