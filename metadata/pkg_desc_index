@@ -5075,7 +5075,7 @@ dev-libs/sdformat 5.1.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0 0.26.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
-dev-libs/sink 0.1.0: A data access layer handling synchronization, caching and indexing
+dev-libs/sink 0.1.0 0.3.0: A data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2 2.5.0.0 2.5.1.1: skarnet.org general-purpose libraries
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
@@ -12315,7 +12315,7 @@ mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on l
 mail-client/evolution 3.22.4 3.22.6: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.11.3: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
-mail-client/kube 0.1.0-r1: A mail client by KDE
+mail-client/kube 0.1.0-r1 0.3.1: A mail client by KDE
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
@@ -15605,7 +15605,7 @@ net-p2p/fms 0.3.79: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
-net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
+net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
@@ -17895,7 +17895,7 @@ sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old program
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
-sys-libs/libapparmor 2.11.0 2.11.0-r1: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.11.0-r1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.10: A library for manipulating block devices
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
