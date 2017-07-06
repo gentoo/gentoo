@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (06 Jul 2017)
+# Masked for testing due to new dependencies which
+# were not packaged in Gentoo previously.
+>=sys-fs/udisks-2.7.0
+
 # Göktürk Yüksek <gokturk@gentoo.org> (05 Jul 2017)
 # Declared dead by upstream. Removal in 30 days.
 # See: http://www.haildb.com/2015/08/19/shutting-down-haildb/
