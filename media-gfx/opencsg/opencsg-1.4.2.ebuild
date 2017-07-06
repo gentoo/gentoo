@@ -22,19 +22,19 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}/src"
 
+PATCHES=(
+	"${FILESDIR}/${P}-includepath.patch"
+)
+
 src_prepare() {
 	default
 
 	# removes duplicated headers
 	rm -r ../glew || die "failed to remove bundled glew"
-
-	sed -i -e "s:^target.path.*:target.path = \$\$INSTALLDIR/$(get_libdir):" \
-		src.pro \
-		|| die 'failed to fix target.path in src.pro'
 }
 
 src_configure() {
-	eqmake5 src.pro INSTALLDIR="/usr"
+	eqmake5 src.pro INSTALLDIR="/usr" LIBDIR="$(get_libdir)"
 }
 
 src_install() {
