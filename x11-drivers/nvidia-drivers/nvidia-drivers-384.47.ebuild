@@ -92,11 +92,11 @@ nvidia_drivers_versions_check() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 11; then
+	if use kernel_linux && kernel_is ge 4 12; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.11"
-		ewarn "<sys-kernel/vanilla-sources-4.11"
+		ewarn "<sys-kernel/gentoo-sources-4.12"
+		ewarn "<sys-kernel/vanilla-sources-4.12"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
@@ -184,6 +184,11 @@ src_prepare() {
 		ewarn "need support with these patches, contact the PaX team."
 		eapply "${FILESDIR}"/${PN}-375.20-pax.patch
 	fi
+
+	local man_file
+	for man_file in "${NV_MAN}"/*1.gz; do
+		gunzip $man_file || die
+	done
 
 	# Allow user patches so they can support RC kernels and whatever else
 	eapply_user
@@ -333,16 +338,16 @@ src_install() {
 	# Documentation
 	if use kernel_FreeBSD; then
 		dodoc "${NV_DOC}/README"
-		use X && doman "${NV_MAN}/nvidia-xconfig.1"
-		use tools && doman "${NV_MAN}/nvidia-settings.1"
+		use X && doman "${NV_MAN}"/nvidia-xconfig.1
+		use tools && doman "${NV_MAN}"/nvidia-settings.1
 	else
 		# Docs
 		newdoc "${NV_DOC}/README.txt" README
 		dodoc "${NV_DOC}/NVIDIA_Changelog"
-		doman "${NV_MAN}/nvidia-smi.1.gz"
-		use X && doman "${NV_MAN}/nvidia-xconfig.1.gz"
-		use tools && doman "${NV_MAN}/nvidia-settings.1.gz"
-		doman "${NV_MAN}/nvidia-cuda-mps-control.1.gz"
+		doman "${NV_MAN}"/nvidia-smi.1
+		use X && doman "${NV_MAN}"/nvidia-xconfig.1
+		use tools && doman "${NV_MAN}"/nvidia-settings.1
+		doman "${NV_MAN}"/nvidia-cuda-mps-control.1
 	fi
 
 	docinto html
@@ -353,9 +358,6 @@ src_install() {
 
 	if use X; then
 		doexe ${NV_OBJ}/nvidia-xconfig
-
-		insinto /etc/vulkan/icd.d
-		doins nvidia_icd.json
 	fi
 
 	if use kernel_linux; then
@@ -371,9 +373,9 @@ src_install() {
 		fperms 4710 /opt/bin/nvidia-modprobe
 		dosym /{opt,usr}/bin/nvidia-modprobe
 
-		doman nvidia-cuda-mps-control.1.gz
-		doman nvidia-modprobe.1.gz
-		doman nvidia-persistenced.1.gz
+		doman nvidia-cuda-mps-control.1
+		doman nvidia-modprobe.1
+		doman nvidia-persistenced.1
 		newinitd "${FILESDIR}/nvidia-smi.init" nvidia-smi
 		newconfd "${FILESDIR}/nvidia-persistenced.conf" nvidia-persistenced
 		newinitd "${FILESDIR}/nvidia-persistenced.init" nvidia-persistenced
@@ -436,10 +438,10 @@ src_install-libs() {
 	local inslibdir=$(get_libdir)
 	local GL_ROOT="/usr/$(get_libdir)/opengl/nvidia/lib"
 	local CL_ROOT="/usr/$(get_libdir)/OpenCL/vendors/nvidia"
-	local libdir=${NV_OBJ}
+	local nv_libdir="${NV_OBJ}"
 
 	if use kernel_linux && has_multilib_profile && [[ ${ABI} == "x86" ]]; then
-		libdir=${NV_OBJ}/32
+		nv_libdir="${NV_OBJ}"/32
 	fi
 
 	if use X; then
@@ -499,7 +501,7 @@ src_install-libs() {
 		fi
 
 		for NV_LIB in "${NV_GLX_LIBRARIES[@]}"; do
-			donvidia ${libdir}/${NV_LIB}
+			donvidia "${nv_libdir}"/${NV_LIB}
 		done
 	fi
 }
