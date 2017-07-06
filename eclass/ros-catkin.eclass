@@ -163,6 +163,8 @@ ros-catkin_src_prepare() {
 	append-cxxflags '-std=c++11'
 }
 
+ROSPREFIX="/opt/ros/"
+
 # @FUNCTION: ros-catkin_src_configure_internal
 # @DESCRIPTION:
 # Internal decoration of cmake-utils_src_configure to handle multiple python installs.
@@ -192,8 +194,15 @@ ros-catkin_src_configure_internal() {
 # @DESCRIPTION:
 # Configures a catkin-based package.
 ros-catkin_src_configure() {
-	export CATKIN_PREFIX_PATH="${EPREFIX}/usr"
-	export ROS_ROOT="${EPREFIX}/usr/share/ros"
+	if [ -f "${ROSPREFIX%/}/setup.bash" ]; then
+		source "${ROSPREFIX%/}/setup.bash"
+	fi
+
+	export CATKIN_PREFIX_PATH="${EPREFIX%/}${ROSPREFIX}"
+	export CMAKE_PREFIX_PATH="${EPREFIX%/}${ROSPREFIX}"
+	export CMAKE_INSTALL_PREFIX="${EPREFIX%/}${ROSPREFIX}"
+	export ROS_ROOT="${EPREFIX%/}${ROSPREFIX}"
+	export DEST_SETUP_DIR="${EPREFIX%/}${ROSPREFIX}"
 	if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 		ROS_LANG_DISABLE=""
 		use ros_messages_cxx    || ROS_LANG_DISABLE="${ROS_LANG_DISABLE}:gencpp"
@@ -206,7 +215,9 @@ ros-catkin_src_configure() {
 	local mycmakeargs=(
 		"$(cmake-utils_use test CATKIN_ENABLE_TESTING)"
 		"-DCATKIN_BUILD_BINARY_PACKAGE=ON"
-		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EROOT}}/usr"
+		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EROOT}}${ROSPREFIX}"
+		"-DCMAKE_PREFIX_PATH=${SYSROOT:-${EROOT}}${ROSPREFIX}"
+		"-DCMAKE_INSTALL_PREFIX=${EPREFIX%/}${ROSPREFIX}"
 		"${mycatkincmakeargs[@]}"
 	)
 	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
@@ -220,6 +231,10 @@ ros-catkin_src_configure() {
 # @DESCRIPTION:
 # Builds a catkin-based package.
 ros-catkin_src_compile() {
+	if [ -f "${ROSPREFIX%/}/setup.bash" ]; then
+		source "${ROSPREFIX%/}/setup.bash"
+	fi
+
 	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
 		if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
 			export CMAKE_USE_DIR="${BUILD_DIR}"
