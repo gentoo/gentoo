@@ -11,6 +11,7 @@ DESCRIPTION="URDF tutorials"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
+ROS_SUBDIR="${PN}"
 
 RDEPEND="
 	dev-ros/urdf
@@ -20,4 +21,3 @@ RDEPEND="
 	dev-ros/xacro
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/notest.patch" )
