@@ -3,10 +3,9 @@
 
 EAPI=6
 
-# python3 is experimental and only one python is supported
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
-inherit cmake-utils eutils toolchain-funcs fortran-2 python-single-r1
+inherit cmake-utils eutils toolchain-funcs fortran-2 python-r1
 
 DESCRIPTION="Core libraries for the Common Astronomy Software Applications"
 HOMEPAGE="https://github.com/casacore/casacore"
@@ -22,8 +21,8 @@ RDEPEND="
 	sci-astronomy/wcslib:0=
 	sci-libs/cfitsio:0=
 	sys-libs/readline:0=
-	virtual/blas
-	virtual/lapack
+	virtual/blas:=
+	virtual/lapack:=
 	data? ( sci-astronomy/casa-data )
 	fftw? ( sci-libs/fftw:3.0= )
 	hdf5? ( sci-libs/hdf5:0= )
@@ -31,24 +30,37 @@ RDEPEND="
 		${PYTHON_DEPS}
 		dev-libs/boost:0=[python,${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-	)"
+	)
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	test? ( sci-astronomy/casa-data )"
+	test? ( sci-astronomy/casa-data	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.0-disable-class-and-collaboration-graph-generation.patch
+	"${FILESDIR}"/${PN}-2.3.0-disable-known-test-failures.patch
+	"${FILESDIR}"/${PN}-2.3.0-disable-tests-that-require-data-tables.patch
+	"${FILESDIR}"/${PN}-2.3.0-do-not-install-test-and-demonstration-executables.patch
+	"${FILESDIR}"/${PN}-2.3.0-fix-FTBFS-tStatisticsUtilities-tLatticeStatistics-and-tLC.patch
+	"${FILESDIR}"/${PN}-2.3.0-fix-too-small-int-type-for-memory-on-32-bit-machines.patch
+	"${FILESDIR}"/${PN}-2.3.0-loose-some-tests-tFFTServer-tests.patch
+	"${FILESDIR}"/${PN}-2.3.0-make-the-check-for-NFS-a-bit-more-portable-BSD.patch
+	"${FILESDIR}"/${PN}-2.3.0-use-the-correct-symbol-to-detect-Linux-OS.patch
+)
 
 pkg_pretend() {
 	if [[ $(tc-getCC)$ == *gcc* ]] && [[ ${MERGE_TYPE} != binary ]]; then
 		use c++11 && [[ $(gcc-major-version) -lt 4 ]] || \
-		( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]] ) && \
-			die "You are using gcc but gcc-4.7 or higher is required for C++11"
-		use openmp && ! tc-has-openmp && \
-			die "You are using gcc but without OpenMP capabilities that you requested"
+			( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]] ) && \
+				die "You are using gcc but gcc-4.7 or higher is required for C++11"
 	fi
+	use openmp && tc-check-openmp
 }
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-r1_pkg_setup
 	fortran-2_pkg_setup
 }
 
@@ -78,8 +90,6 @@ src_compile() {
 
 src_install(){
 	cmake-utils_src_install
-	# conflict, bug #575726 (gone in version > 2.0.4)
-	mv "${ED}"usr/bin/show{,casa}table || die
 	if use doc; then
 		insinto /usr/share/doc/${PF}
 		doins -r doc/html
