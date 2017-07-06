@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="+boehm-gc doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg vim-syntax X"
+IUSE="+boehm-gc doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax X"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -49,7 +49,8 @@ DEPEND="${RDEPEND}
 		media-gfx/imagemagick[png]
 		virtual/texi2dvi
 		virtual/latex-base
-		)"
+		app-text/ghostscript-gpl )
+	test? ( app-text/ghostscript-gpl )"
 
 TEXMF=/usr/share/texmf-site
 
