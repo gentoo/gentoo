@@ -15529,6 +15529,7 @@ net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2017.03.16 2017.06.25 2017.07.02 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 3.2.8 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
+net-misc/zerotier 1.2.4: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/389-ds-base 1.3.4.14 1.3.5.17 9999: 389 Directory Server (core librares and daemons )
