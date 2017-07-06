@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
@@ -26,17 +26,17 @@ RDEPEND="${RDEPEND}
 	virtualbox? ( || ( app-emulation/virtualbox app-emulation/virtualbox-bin ) )"
 
 ruby_add_rdepend "
-	>=dev-ruby/childprocess-0.5.0
+	>=dev-ruby/childprocess-0.6.0
 	>=dev-ruby/erubis-2.7.0
 	>=dev-ruby/i18n-0.6.0:* <dev-ruby/i18n-0.8.0:*
 	>=dev-ruby/listen-3.1.5
 	>=dev-ruby/hashicorp-checkpoint-0.1.1
 	>=dev-ruby/log4r-1.1.9 <dev-ruby/log4r-1.1.11
-	>=dev-ruby/net-ssh-3.0.1:*
+	>=dev-ruby/net-ssh-4.1.0:*
 	>=dev-ruby/net-sftp-2.1
-	>=dev-ruby/net-scp-1.1.0
+	>=dev-ruby/net-scp-1.2.0
 	|| ( >=dev-ruby/rest-client-1.6.0:0 dev-ruby/rest-client:2 )
-	>=dev-ruby/nokogiri-1.6.7.1
+	>=dev-ruby/nokogiri-1.7.1
 	>=dev-ruby/mime-types-2.6.2:* <dev-ruby/mime-types-3:*
 "
 
@@ -52,7 +52,6 @@ all_ruby_prepare() {
 	# loosen dependencies
 	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp\|rake\|childprocess/s/~>/>=/' \
 		-e '/ruby_dep/s/<=/>=/' \
-		-e '/nokogiri/s/=/>=/' \
 		-i ${PN}.gemspec || die
 
 	# remove windows-specific gems
@@ -68,9 +67,6 @@ all_ruby_prepare() {
 
 	# fix rvm issue (bug #474476)
 	epatch "${FILESDIR}"/${PN}-1.8.1-rvm.patch
-
-	# fix thread deadlock (bug #616426)
-	epatch "${FILESDIR}"/${P}-thread-deadlock.patch
 }
 
 all_ruby_install() {
