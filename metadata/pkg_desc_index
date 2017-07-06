@@ -9461,7 +9461,7 @@ dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.8.1: Adds methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.9.0: Sorts an array in column order
 dev-ruby/combustion 0.5.5 0.6.0 0.7.0: Elegant Rails Engine Testing
-dev-ruby/commander 4.4.0 4.4.1 4.4.2 4.4.3: The complete solution for Ruby command-line executables
+dev-ruby/commander 4.4.3: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
@@ -9932,7 +9932,7 @@ dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attri
 dev-ruby/stomp 1.3.4 1.4.3 1.4.4: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.6.1 2.7.0 2.7.1: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
-dev-ruby/syntax 1.2.0-r1 1.2.1: Syntax highlighting for sourcecode and HTML
+dev-ruby/syntax 1.2.0-r1 1.2.1 1.2.2: Syntax highlighting for sourcecode and HTML
 dev-ruby/syslogger 1.6.4: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
@@ -9952,7 +9952,7 @@ dev-ruby/thread_safe 0.3.5 0.3.6: A collection of thread-safe versions of common
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.5: Thin interface over template engines to make their usage as generic as possible
-dev-ruby/timecop 0.7.1 0.8.0 0.8.1 0.9.0: A gem providing 'time travel' and 'time freezing' capabilities
+dev-ruby/timecop 0.7.1 0.8.1 0.9.0 0.9.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.1.1 4.1.2: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 1.6.0 1.13.0 1.13.2 1.13.3 1.14.0 1.15.0: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
