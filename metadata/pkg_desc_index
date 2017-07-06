@@ -213,7 +213,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.4.0 11.4.3-r1 11.4.4 11.5.6: System performance tools for Linux
+app-admin/sysstat 11.4.0 11.4.4 11.4.5 11.5.6 11.5.7: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
@@ -18431,7 +18431,7 @@ www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, H
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.9.818.50_p1 1.10.867.42_p1: A new browser for our friends
+www-client/vivaldi 1.10.867.46_p1: A new browser for our friends
 www-client/vivaldi-snapshot 1.11.890.4_p1 1.11.894.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
