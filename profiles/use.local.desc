@@ -7216,6 +7216,7 @@ sci-libs/umfpack:cholmod - Use sci-libs/cholmod for matrix ordering
 sci-libs/vtk:R - Enable support for dev-lang/R
 sci-libs/vtk:all-modules - Build all modules
 sci-libs/vtk:boost - Add support for boost
+sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:gdal - Support for gdal formated data
 sci-libs/vtk:imaging - Building Imaging modules
 sci-libs/vtk:json - Support for json formated data

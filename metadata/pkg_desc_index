@@ -10710,7 +10710,7 @@ dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.16-r2 0.17.1-r2: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.8.17 1.9.5: Advanced version control system
+dev-vcs/subversion 1.8.17 1.9.5 1.9.6: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.10 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.2.2-r1 1.3.0: Tool collecting path entries across SVN history
@@ -16608,7 +16608,7 @@ sci-libs/umfpack 5.6.2: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 9999: Votca tools library
-sci-libs/vtk 7.1.0: The Visualization Toolkit
+sci-libs/vtk 6.1.0-r3 6.1.0-r4 7.0.0 7.1.0: The Visualization Toolkit
 sci-libs/vtkdata 6.0.0 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r1 1.0_p141226-r2: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1: Library to read gromacs trajectory and topology files
