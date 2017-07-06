@@ -33,6 +33,9 @@ DOCS=( README.md )
 src_prepare() {
 	append-cflags -DSQLITE_HAS_CODEC
 
+	# bug #622114
+	epatch "${FILESDIR}/${P}-libressl.patch"
+
 	eapply_user
 	eautoreconf
 }
