@@ -1,0 +1,85 @@
+From 4527c099a60d6e78e730c4aea51f55c74f95119d Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Fri, 7 Jul 2017 11:52:55 +1200
+Subject: [PATCH] Fix for '.' build and test failures
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121741
+---
+ Makefile.PL    |  1 +
+ t/02_main.t    |  2 +-
+ t/03_trivial.t |  2 +-
+ t/04_class.t   | 12 ++++++++----
+ 4 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index a5b1f8f..1961b17 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+ use inc::Module::Install::DSL 1.04;
+ 
+ all_from      lib/ORLite/Migrate.pm
+diff --git a/t/02_main.t b/t/02_main.t
+index c895f11..ba93eaa 100644
+--- a/t/02_main.t
++++ b/t/02_main.t
+@@ -8,7 +8,7 @@ BEGIN {
+ use Test::More tests => 5;
+ use File::Spec::Functions ':ALL';
+ use ORLite::Migrate ();
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import }
+ 
+ # Check for migration patches
+ my $timeline = catdir( 't', 'data', 'trivial' );
+diff --git a/t/03_trivial.t b/t/03_trivial.t
+index 63ab9d0..32efa07 100644
+--- a/t/03_trivial.t
++++ b/t/03_trivial.t
+@@ -7,7 +7,7 @@ BEGIN {
+ 
+ use Test::More tests => 4;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import }
+ 
+ # Check for migration patches
+ my $timeline = catdir( 't', 'data', 'trivial' );
+diff --git a/t/04_class.t b/t/04_class.t
+index 3f33baf..591f3d9 100644
+--- a/t/04_class.t
++++ b/t/04_class.t
+@@ -8,8 +8,8 @@ BEGIN {
+ use Test::More tests => 4;
+ use File::Spec::Functions ':ALL';
+ use ORLite::Migrate::Timeline ();
+-use t::lib::Test;
+-use t::lib::MyTimeline;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import }
++BEGIN { require "./t/lib/MyTimeline.pm"; t::lib::Test->import; $INC{"t/lib/MyTimeline.pm"} = "1" }
+ 
+ # Set up the file
+ my $file = test_db();
+@@ -19,12 +19,16 @@ eval <<"END_PERL"; die $@ if $@;
+ package Foo::Bar;
+ 
+ use strict;
+-use ORLite::Migrate {
++BEGIN {
++  require ORLite::Migrate;
++  \@INC=('.', \@INC );
++  ORLite::Migrate->import({
+ 	file         => '$file',
+ 	timeline     => 't::lib::MyTimeline',
+ 	user_version => 3,
+ 	prune        => 1,
+-};
++  });
++}
+ 
+ 1;
+ END_PERL
+-- 
+2.13.1
+
