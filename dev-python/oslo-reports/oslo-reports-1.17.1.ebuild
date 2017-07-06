@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,23 +13,25 @@ S="${WORKDIR}/oslo.reports-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
-CDEPEND="
-	>=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
-	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.0[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.1[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.2[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.3[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.4[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/psutil-1.1.1[${PYTHON_USEDEP}]
-	<dev-python/psutil-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/psutil-3.0.1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.16.0[${PYTHON_USEDEP}]"
+	>=dev-python/oslo-utils-3.18.0[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die

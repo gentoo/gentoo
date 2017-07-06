@@ -15,13 +15,10 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
 
-CDEPEND="
-	>=dev-python/pbr-1.6[${PYTHON_USEDEP}]
-	<dev-python/pbr-2.0[${PYTHON_USEDEP}]
-"
+CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
@@ -32,17 +29,18 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
-		>=dev-python/coverage-3.6.0[${PYTHON_USEDEP}]
+		>=dev-python/coverage-4.0.0[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/oslo-config-3.12.0[${PYTHON_USEDEP}]
-		>=dev-python/bandit-1.0.1[${PYTHON_USEDEP}]
+		>=dev-python/oslo-config-3.14.0[${PYTHON_USEDEP}]
+		!~dev-python/oslo-config-3.18.0[${PYTHON_USEDEP}]
+		>=dev-python/bandit-1.1.0[${PYTHON_USEDEP}]
+		>=dev-python/reno-1.8.0[${PYTHON_USEDEP}]
 	)
 	doc? (
-		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
-		!~dev-python/oslo-sphinx-3.4.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
+		>=dev-python/oslo-sphinx-4.7.0[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
+		<dev-python/sphinx-1.4[${PYTHON_USEDEP}]
+		>=dev-python/reno-1.8.0[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
@@ -53,11 +51,11 @@ RDEPEND="
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-0.6[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
-	>=dev-python/netaddr-0.7.12[${PYTHON_USEDEP}]
+	>=dev-python/netaddr-0.7.13[${PYTHON_USEDEP}]
 	!~dev-python/netaddr-0.7.16[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.10.4[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/pyparsing-2.0.1[${PYTHON_USEDEP}]
+	>=dev-python/pyparsing-2.1.0[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {
