@@ -3425,7 +3425,7 @@ dev-haskell/esqueleto 2.1.3 2.4.3-r1: Type-safe EDSL for SQL queries on persiste
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2 0.8.2.1 0.8.3: Extensible optionally-pure exceptions
 dev-haskell/executable-path 0.0.3-r1: Finding out the full path of the executable
 dev-haskell/extensible-exceptions 0.1.1.4: Extensible exceptions
-dev-haskell/extra 1.3.1 1.4.2 1.4.10: Extra functions I use
+dev-haskell/extra 1.3.1 1.4.2 1.4.10 1.5.1: Extra functions I use
 dev-haskell/fail 4.9.0.0: Forward-compatible MonadFail class
 dev-haskell/failure 0.2.0.3: A simple type class for success/failure computations. (deprecated)
 dev-haskell/fast-logger 2.4.6 2.4.7: A fast logging system
@@ -4507,7 +4507,7 @@ dev-java/xz-java 1.5 1.6 1.6-r1: Implementation of xz data compression in pure j
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
-dev-lang/R 3.2.2 3.3.1 3.3.2: Language and environment for statistical computing and graphics
+dev-lang/R 3.2.2 3.3.1 3.3.2 3.4.1: Language and environment for statistical computing and graphics
 dev-lang/ats 0.2.9: ATS Programming Language
 dev-lang/bas 2.4: An interpreter for the classic dialect of the programming language BASIC
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
@@ -15936,9 +15936,9 @@ ros-meta/visualization_tutorials 0.9.2 0.10.1 9999: Metapackage referencing tuto
 ros-meta/viz 1.2.0 1.3.0 1.3.1 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/astrometry 0.67-r2 0.70: Automated astrometric calibration programs and service
-sci-astronomy/casa-data 99999 20160222: Data and tables for the CASA software
-sci-astronomy/casacore 2.0.3 2.1.0: Core libraries for the Common Astronomy Software Applications
-sci-astronomy/cdsclient 3.8.1: Collection of scripts to access the CDS databases
+sci-astronomy/casa-data 99999 20160222 20170703: Data and tables for the CASA software
+sci-astronomy/casacore 2.1.0 2.3.0: Core libraries for the Common Astronomy Software Applications
+sci-astronomy/cdsclient 3.8.1 3.8.4: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
@@ -15965,7 +15965,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2: ESO astronomical image visualizer with catalog access
 sci-astronomy/skychart 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
-sci-astronomy/sofa_c 20150209a 20160503c: Library for algorithms for models in fundamental astronomy
+sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
 sci-astronomy/stellarium 0.12.4 0.14.2 0.14.3 0.15.0 0.15.0-r1 0.15.1 0.16.0 0.16.0-r1: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
