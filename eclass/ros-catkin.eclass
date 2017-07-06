@@ -163,7 +163,7 @@ ros-catkin_src_prepare() {
 	append-cxxflags '-std=c++11'
 }
 
-ROSPREFIX="/opt/ros/${ROSDISTRO}"
+ROSPREFIX="/opt/ros/"
 
 # @FUNCTION: ros-catkin_src_configure_internal
 # @DESCRIPTION:
@@ -171,11 +171,10 @@ ROSPREFIX="/opt/ros/${ROSDISTRO}"
 ros-catkin_src_configure_internal() {
 	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
 		local sitedir="$(python_get_sitedir)"
-		local sitedir="${sitedir/\/usr\//}"
 		local mycmakeargs=(
 			"${mycmakeargs[@]}"
 			-DPYTHON_EXECUTABLE="${PYTHON}"
-			-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}}"
+			-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
 		)
 		python_export PYTHON_SCRIPTDIR
 		if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
