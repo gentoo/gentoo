@@ -4764,7 +4764,7 @@ dev-libs/json-glib 1.2.2 1.2.8: Library providing GLib serialization and deseria
 dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.8.0 1.8.1: C++ JSON reader and writer
 dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5 1.0.5-r1: A C library that implements a dynamic array
-dev-libs/kasync 0.1.1: C++ library for controlling asynchronous tasks
+dev-libs/kasync 0.1.1 0.2.0: C++ library for controlling asynchronous tasks
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0 2.1.0 2.2.0: Lightweight user interface framework for mobile and convergent applications
@@ -10364,7 +10364,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20160814 10.4 10.5: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20160814 10.5 10.6.2: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.88 1.0.89 1.0.90: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
@@ -12136,7 +12136,7 @@ kde-frameworks/kfilemetadata 5.34.0 5.35.0: Library for extracting file metadata
 kde-frameworks/kglobalaccel 5.34.0 5.35.0: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.34.0 5.35.0: Framework providing assorted high-level user interface components
 kde-frameworks/khtml 5.34.0 5.35.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.34.0 5.35.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/ki18n 5.34.0 5.34.0-r1 5.35.0: Framework based on Gettext for internationalizing user interface text
 kde-frameworks/kiconthemes 5.34.0 5.35.0: Framework for icon theming and configuration
 kde-frameworks/kidletime 5.34.0 5.35.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.34.0 5.35.0: Framework providing additional format plugins for Qt's image I/O system
@@ -14893,7 +14893,8 @@ net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 0.7.0: Protobuf messages and functions for robot applications
 net-libs/ignition-transport 3.0.1: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.3.0: Qt XMPP library
-net-libs/kimap2 0.1.1: Library for interacting with IMAP servers - successor of kimap
+net-libs/kdav2 0.1.0: KJob based DAV protocol implementation
+net-libs/kimap2 0.1.1 0.2.0: Library for interacting with IMAP servers - successor of kimap
 net-libs/ldns 1.6.17 1.6.17-r1 1.7.0: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.21-r2: Accounts SSO (Single Sign-On) management library for GLib applications
