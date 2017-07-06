@@ -16,7 +16,7 @@ IUSE="crypt fam gnutls idn ipv6 ldap"
 RDEPEND=">=dev-libs/openssl-0.9.6:*
 	dev-libs/libxml2
 	sys-libs/ncurses:=
-	>=net-libs/courier-unicode-1.2
+	>=net-libs/courier-unicode-2
 	app-text/aspell
 	crypt? ( >=app-crypt/gnupg-1.0.4 )
 	fam? ( virtual/fam )
