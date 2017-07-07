@@ -10200,16 +10200,11 @@ dev-texlive/texlive-langkorean 2015 2016 2017: TeXLive Korean
 dev-texlive/texlive-langlatin 2012: TeXLive Latin
 dev-texlive/texlive-langlatvian 2012: TeXLive Latvian
 dev-texlive/texlive-langlithuanian 2012: TeXLive Lithuanian
-dev-texlive/texlive-langmongolian 2012: TeXLive Mongolian
 dev-texlive/texlive-langnorwegian 2012: TeXLive Norwegian
 dev-texlive/texlive-langother 2012 2013 2014 2015 2016 2017: TeXLive Other languages
 dev-texlive/texlive-langpolish 2012 2013 2014 2015 2016 2017: TeXLive Polish
 dev-texlive/texlive-langportuguese 2012 2013 2014 2015 2016 2017: TeXLive Portuguese
 dev-texlive/texlive-langspanish 2012 2013 2014 2015 2016 2017: TeXLive Spanish
-dev-texlive/texlive-langswedish 2012: TeXLive Swedish
-dev-texlive/texlive-langtibetan 2012: TeXLive Tibetan
-dev-texlive/texlive-langturkmen 2012: TeXLive Turkmen
-dev-texlive/texlive-langvietnamese 2012: TeXLive Vietnamese
 dev-texlive/texlive-latex 2012 2013 2014 2015 2016 2017: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2012 2013 2014 2015 2015-r1 2016 2017: TeXLive LaTeX additional packages
 dev-texlive/texlive-latexrecommended 2012 2012-r1 2013 2014 2015-r1 2016 2017: TeXLive LaTeX recommended packages
@@ -10220,10 +10215,10 @@ dev-texlive/texlive-metapost 2012 2013 2014 2015 2016 2017: TeXLive MetaPost and
 dev-texlive/texlive-music 2012 2013 2014 2015 2016 2017: TeXLive Music packages
 dev-texlive/texlive-omega 2012 2013 2014 2015 2016: TeXLive Omega packages
 dev-texlive/texlive-pictures 2012 2013 2014 2015-r2 2016 2017: TeXLive Graphics, pictures, diagrams
-dev-texlive/texlive-plainextra 2012 2013 2014 2015 2016: TeXLive Plain TeX packages
+dev-texlive/texlive-plainextra 2015 2016: TeXLive Plain TeX packages
 dev-texlive/texlive-plaingeneric 2017: TeXLive Plain (La)TeX packages
 dev-texlive/texlive-pstricks 2012 2013 2014 2015 2016 2017: TeXLive PSTricks
-dev-texlive/texlive-publishers 2012 2013 2014 2015 2016 2017: TeXLive Publisher styles, theses, etc.
+dev-texlive/texlive-publishers 2015 2016 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
