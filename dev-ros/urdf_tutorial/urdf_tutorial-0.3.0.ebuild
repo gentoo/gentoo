@@ -24,3 +24,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-ros/roslaunch[${PYTHON_USEDEP}] )
 "
+
+PATCHES=( "${FILESDIR}/tests.patch" )
