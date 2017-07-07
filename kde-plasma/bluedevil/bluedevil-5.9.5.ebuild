@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Bluetooth stack for KDE Plasma"
 HOMEPAGE="https://projects.kde.org/projects/extragear/base/bluedevil"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 COMMON_DEPEND="
