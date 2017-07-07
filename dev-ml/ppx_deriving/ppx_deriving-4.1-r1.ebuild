@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="Type-driven code generation for OCaml"
 HOMEPAGE="https://github.com/whitequark/ppx_deriving"
@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	dev-ml/cppo
 	dev-ml/opam
 	test? ( dev-ml/ounit )"
+
+src_prepare() {
+	epatch "${FILESDIR}/ocb011.patch"
+}
 
 src_compile() {
 	cp pkg/META.in pkg/META || die
