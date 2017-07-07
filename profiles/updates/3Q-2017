@@ -1,2 +1,3 @@
 move app-vim/llvm-vim sys-devel/llvm-common
 move dev-texlive/texlive-langdutch dev-texlive/texlive-langeuropean
+move dev-texlive/texlive-langdanish dev-texlive/texlive-langeuropean
