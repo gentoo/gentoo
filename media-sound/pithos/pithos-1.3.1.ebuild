@@ -6,7 +6,7 @@ PYTHON_COMPAT=(python3_4 python3_5)
 inherit autotools gnome2-utils python-r1
 
 if [[ ${PV} =~ [9]{4,} ]]; then
-	inherit git-r3
+	inherit git-2
 	EGIT_REPO_URI="git://github.com/pithos/pithos.git
 		https://github.com/pithos/pithos.git"
 else
@@ -18,7 +18,7 @@ HOMEPAGE="http://pithos.github.io/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="libnotify appindicator +keybinder"
 
 RDEPEND="
