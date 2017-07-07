@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~mips ~ppc ~ppc64 x86"
 IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame libav
 	+lv2 mad +midi nls +portmixer sbsms +soundtouch twolame vamp +vorbis +vst"
 RESTRICT="test"
