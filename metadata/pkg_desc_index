@@ -4587,7 +4587,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile an
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.1-r1 5.24.1-r2 5.26.0 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.30 5.6.30-r2 7.0.15 7.0.19 7.0.20 7.0.21 7.1.5 7.1.6: The PHP language runtime engine
+dev-lang/php 5.6.30 5.6.30-r2 7.0.15 7.0.19 7.0.21 7.1.7: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 2.7.13 3.4.5 3.4.6 3.5.3 3.6.1-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5 9999: Python script wrapper
@@ -10173,11 +10173,11 @@ dev-texlive/texlive-fontsrecommended 2012 2013 2014 2015 2016 2017: TeXLive Reco
 dev-texlive/texlive-fontutils 2012 2013 2014 2015 2016 2017: TeXLive Graphics and font utilities
 dev-texlive/texlive-formatsextra 2015 2016 2017: TeXLive Additional formats
 dev-texlive/texlive-games 2012 2013 2014 2015 2016 2017: TeXLive Games typesetting
-dev-texlive/texlive-genericextra 2012 2013 2014 2015 2016: TeXLive Generic additional packages
+dev-texlive/texlive-genericextra 2015 2016: TeXLive Generic additional packages
 dev-texlive/texlive-genericrecommended 2012 2013 2014 2015 2016: TeXLive Generic recommended packages
 dev-texlive/texlive-htmlxml 2012: TeXLive HTML/SGML/XML support
 dev-texlive/texlive-humanities 2012 2013 2014 2015 2016 2017: TeXLive Humanities packages
-dev-texlive/texlive-langafrican 2012 2013 2014 2015 2016: TeXLive African scripts
+dev-texlive/texlive-langafrican 2015 2016: TeXLive African scripts
 dev-texlive/texlive-langarabic 2012 2013 2014 2015 2016 2017: TeXLive Arabic
 dev-texlive/texlive-langarmenian 2012: TeXLive Armenian
 dev-texlive/texlive-langchinese 2014 2015 2016 2017: TeXLive Chinese
@@ -10193,7 +10193,7 @@ dev-texlive/texlive-langgerman 2012 2013 2014 2015 2016 2017: TeXLive German
 dev-texlive/texlive-langgreek 2012 2013 2014 2015 2016 2017: TeXLive Greek
 dev-texlive/texlive-langhebrew 2012: TeXLive Hebrew
 dev-texlive/texlive-langhungarian 2012: TeXLive Hungarian
-dev-texlive/texlive-langindic 2012 2013 2014 2015 2016: TeXLive Indic scripts
+dev-texlive/texlive-langindic 2015 2016: TeXLive Indic scripts
 dev-texlive/texlive-langitalian 2012 2013 2014 2015 2016 2017: TeXLive Italian
 dev-texlive/texlive-langjapanese 2014 2015 2016 2017: TeXLive Japanese
 dev-texlive/texlive-langkorean 2015 2016 2017: TeXLive Korean
