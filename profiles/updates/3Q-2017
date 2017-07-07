@@ -32,3 +32,4 @@ move dev-texlive/texlive-langturkmen dev-texlive/texlive-langother
 move dev-texlive/texlive-langswedish dev-texlive/texlive-langeuropean
 move dev-texlive/texlive-langlatin dev-texlive/texlive-langeuropean
 move dev-texlive/texlive-langlatvian dev-texlive/texlive-langeuropean
+move dev-texlive/texlive-langcroatian dev-texlive/texlive-langeuropean
