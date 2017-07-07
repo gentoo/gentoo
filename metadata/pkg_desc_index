@@ -4210,7 +4210,7 @@ dev-java/jgoodies-looks 1.2.2-r2 2.3.1-r1 2.6.0: JGoodies Looks Library
 dev-java/jgraph 5.12.0.4: Open-source graph component for Java
 dev-java/jgrapht 0.8.3: Graph library that is a simpler and faster alternative to JGraph
 dev-java/jgroups 2.9.0: JGroups is a toolkit for reliable multicast communication
-dev-java/jibx 1.1.5-r1 1.1.5-r2 1.2.6: Bind XML to Java code
+dev-java/jibx 1.1.5-r3 1.2.6-r1: Bind XML to Java code
 dev-java/jibx-tools 1.1.5-r2 1.1.5-r3: JiBX: Binding XML to Java Code - Generators
 dev-java/jicmp 1.0.2: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jid3 0.46-r2: ID3 Class Library Implementation
