@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils
 MY_PN=${PN}-rally
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Free OpenGL rally car racing game"
-HOMEPAGE="http://www.positro.net/trigger/"
+HOMEPAGE="http://trigger-rally.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 	dev-util/ftjam"
 
 S=${WORKDIR}/${MY_P}
+
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
 
 pkg_setup() {
 	# Otherwise build fails with:
