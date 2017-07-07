@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/jtrupiano/timecop"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd"
 IUSE=""
 
 # Missing testdep activesupport
