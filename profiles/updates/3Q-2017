@@ -29,3 +29,4 @@ move dev-texlive/texlive-langvietnamese dev-texlive/texlive-langother
 move dev-texlive/texlive-langmongolian dev-texlive/texlive-langcyrillic
 move dev-texlive/texlive-langtibetan dev-texlive/texlive-langother
 move dev-texlive/texlive-langturkmen dev-texlive/texlive-langother
+move dev-texlive/texlive-langswedish dev-texlive/texlive-langeuropean
