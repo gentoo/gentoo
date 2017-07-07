@@ -9,12 +9,12 @@ if [[ ${PV} = 9999* ]]
 then
 	EGIT_REPO_URI="https://github.com/blueness/sthttpd.git"
 	inherit git-r3
-	KEYWORDS="amd64 arm ppc sparc x86"
+	KEYWORDS="amd64 arm ppc ppc64 sparc x86"
 else
 	MY_P="s${P}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/blueness/sthttpd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm ~hppa ~mips ppc ~ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
 DESCRIPTION="Fork of thttpd, a small, fast, multiplexing webserver"
