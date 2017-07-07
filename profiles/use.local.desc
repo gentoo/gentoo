@@ -1054,7 +1054,6 @@ app-office/scribus:scripts - Install the scripts
 app-office/scribus:templates - Document tamplates
 app-office/scribus:tk - Install tk based scripts e.g. FontSample.py
 app-office/skrooge:activities - Enable kactivities support
-app-office/skrooge:crypt - Enable encryption using dev-db/sqlcipher
 app-office/skrooge:designer - Build plugins for dev-qt/designer
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/texmacs:pdf - Add the experimental native pdf export
@@ -3529,11 +3528,9 @@ kde-misc/tellico:discid - Add support for reading disc IDs from audio CDs
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kde-gtk-config:gtk3 - Add support for gtk+3-based applications.
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
-kde-plasma/kinfocenter:egl - Retrieve information about OpenGL via EGL
 kde-plasma/kinfocenter:gles2 - Show OpenGL ES information in kinfocenter
 kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
-kde-plasma/kwallet-pam:oldwallet - Enable legacy support for kde-apps/kwalletd
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
@@ -3542,7 +3539,6 @@ kde-plasma/plasma-desktop:gtk2 - Add support for gtk+2-based applications using 
 kde-plasma/plasma-desktop:gtk3 - Add support for gtk+3-based applications using legacy xembed systray icons via libappindicator.
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/plasma-desktop:legacy-systray - Add support for applications using legacy xembed systray icons.
-kde-plasma/plasma-desktop:packagekit - Add support for packagekit integration
 kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
@@ -3556,12 +3552,10 @@ kde-plasma/plasma-meta:wallpapers - Install wallpapers for the Plasma Workspace
 kde-plasma/plasma-nm:modemmanager - Enable support for mobile broadband devices
 kde-plasma/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-plasma/plasma-nm:teamd - Enable Teamd control support
-kde-plasma/plasma-sdk:plasmate - IDE for writing Plasma/KWin components (themes, plasmoids, runners, data engines)
 kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location information
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-plasma/powerdevil:consolekit - Enable sys-auth/consolekit support
-kde-plasma/powerdevil:elogind - Use sys-auth/elogind for session tracking
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
@@ -4518,7 +4512,7 @@ media-sound/jack-audio-connection-kit:coreaudio - Build the CoreAudio driver on 
 media-sound/jack-audio-connection-kit:cpudetection - Enables runtime cpudetection
 media-sound/jack-audio-connection-kit:pam - Add basic realtime configuration via sys-auth/realtime-base
 media-sound/jack2:celt - Support CELT low delay audio codec (media-libs/celt)
-media-sound/jack2:classic - Enable building of jackd"
+media-sound/jack2:classic - Enable building of jackd
 media-sound/jack2:opus - Support media-libs/opus
 media-sound/jack2:pam - Add basic realtime configuration via sys-auth/realtime-base
 media-sound/jalv:gtk2 - Adds support for GTK+2 in addition to GTK+3 controlled by the gtk useflag.
