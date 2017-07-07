@@ -37,3 +37,4 @@ move dev-texlive/texlive-langnorwegian dev-texlive/texlive-langeuropean
 move dev-texlive/texlive-langhungarian dev-texlive/texlive-langeuropean
 move dev-texlive/texlive-langhebrew dev-texlive/texlive-langother
 move dev-texlive/texlive-langarmenian dev-texlive/texlive-langeuropean
+move dev-texlive/texlive-langfinnish dev-texlive/texlive-langeuropean
