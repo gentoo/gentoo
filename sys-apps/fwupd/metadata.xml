@@ -13,6 +13,7 @@
       <pkg>dev-libs/libelf</pkg> package.</flag>
     <flag name="man">Build and install man pages</flag>
     <flag name="uefi">Enable UEFI support</flag>
+    <flag name="uefi_labels">Enable UEFI labels support</flag>
   </use>
   <upstream>
     <remote-id type="github">hughsie/fwupd</remote-id>
