@@ -10165,22 +10165,22 @@ dev-tex/vc 0.5: The vc (version control) bundle
 dev-tex/xcolor 2.11 2.12: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
 dev-texlive/texlive-basic 2012 2013 2014 2015 2016 2017-r1: TeXLive Essential programs and files
-dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015 2016 2017: TeXLive BibTeX additional styles
-dev-texlive/texlive-context 2012 2012-r1 2013 2013-r1 2014 2015 2016 2017: TeXLive ConTeXt and packages
+dev-texlive/texlive-bibtexextra 2015 2016 2017: TeXLive BibTeX additional styles
+dev-texlive/texlive-context 2015 2016 2017: TeXLive ConTeXt and packages
 dev-texlive/texlive-documentation-base 2012: TeXLive TeX Live documentation
-dev-texlive/texlive-fontsextra 2012 2013 2014 2015 2016 2017: TeXLive Additional fonts
-dev-texlive/texlive-fontsrecommended 2012 2013 2014 2015 2016 2017: TeXLive Recommended fonts
-dev-texlive/texlive-fontutils 2012 2013 2014 2015 2016 2017: TeXLive Graphics and font utilities
+dev-texlive/texlive-fontsextra 2015 2016 2017: TeXLive Additional fonts
+dev-texlive/texlive-fontsrecommended 2015 2016 2017: TeXLive Recommended fonts
+dev-texlive/texlive-fontutils 2015 2016 2017: TeXLive Graphics and font utilities
 dev-texlive/texlive-formatsextra 2015 2016 2017: TeXLive Additional formats
-dev-texlive/texlive-games 2012 2013 2014 2015 2016 2017: TeXLive Games typesetting
+dev-texlive/texlive-games 2015 2016 2017: TeXLive Games typesetting
 dev-texlive/texlive-genericextra 2015 2016: TeXLive Generic additional packages
-dev-texlive/texlive-genericrecommended 2012 2013 2014 2015 2016: TeXLive Generic recommended packages
-dev-texlive/texlive-humanities 2012 2013 2014 2015 2016 2017: TeXLive Humanities packages
+dev-texlive/texlive-genericrecommended 2015 2016: TeXLive Generic recommended packages
+dev-texlive/texlive-humanities 2015 2016 2017: TeXLive Humanities packages
 dev-texlive/texlive-langafrican 2015 2016: TeXLive African scripts
-dev-texlive/texlive-langarabic 2012 2013 2014 2015 2016 2017: TeXLive Arabic
+dev-texlive/texlive-langarabic 2015 2016 2017: TeXLive Arabic
 dev-texlive/texlive-langchinese 2015 2016 2017: TeXLive Chinese
 dev-texlive/texlive-langcjk 2015 2016 2017: TeXLive Chinese/Japanese/Korean (base)
-dev-texlive/texlive-langcyrillic 2012 2013 2014 2015 2016 2017: TeXLive Cyrillic
+dev-texlive/texlive-langcyrillic 2015 2016 2017: TeXLive Cyrillic
 dev-texlive/texlive-langczechslovak 2015-r1 2016 2017: TeXLive Czech/Slovak
 dev-texlive/texlive-langenglish 2015 2016 2017: TeXLive US and UK English
 dev-texlive/texlive-langeuropean 2013 2014 2015 2016 2017: TeXLive Other European languages
@@ -10188,12 +10188,12 @@ dev-texlive/texlive-langfrench 2015 2016 2017: TeXLive French
 dev-texlive/texlive-langgerman 2015 2016 2017: TeXLive German
 dev-texlive/texlive-langgreek 2015 2016 2017: TeXLive Greek
 dev-texlive/texlive-langindic 2015 2016: TeXLive Indic scripts
-dev-texlive/texlive-langitalian 2012 2013 2014 2015 2016 2017: TeXLive Italian
+dev-texlive/texlive-langitalian 2015 2016 2017: TeXLive Italian
 dev-texlive/texlive-langjapanese 2015 2016 2017: TeXLive Japanese
 dev-texlive/texlive-langkorean 2015 2016 2017: TeXLive Korean
 dev-texlive/texlive-langother 2015 2016 2017: TeXLive Other languages
 dev-texlive/texlive-langpolish 2015 2016 2017: TeXLive Polish
-dev-texlive/texlive-langportuguese 2012 2013 2014 2015 2016 2017: TeXLive Portuguese
+dev-texlive/texlive-langportuguese 2015 2016 2017: TeXLive Portuguese
 dev-texlive/texlive-langspanish 2015 2016 2017: TeXLive Spanish
 dev-texlive/texlive-latex 2015 2016 2017: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2015-r1 2016 2017: TeXLive LaTeX additional packages
