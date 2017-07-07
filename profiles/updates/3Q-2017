@@ -21,3 +21,4 @@ move dev-texlive/texlive-documentation-french dev-texlive/texlive-langfrench
 move dev-texlive/texlive-documentation-finnish dev-texlive/texlive-langeuropean
 move dev-texlive/texlive-documentation-english dev-texlive/texlive-langenglish
 move dev-texlive/texlive-documentation-dutch dev-texlive/texlive-langeuropean
+move dev-texlive/texlive-documentation-czechslovak dev-texlive/texlive-langczechslovak
