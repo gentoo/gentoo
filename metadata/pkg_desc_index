@@ -346,7 +346,7 @@ app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in P
 app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.13 0.7.13-r1: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
-app-backup/backuppc 3.3.1-r4: High-performance backups to a server's disk
+app-backup/backuppc 3.3.1-r4 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.4-r2 7.4.6 7.4.7: Featureful client/server network backup suite
 app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2 16.2.4: Featureful client/server network backup suite
 app-backup/borgbackup 1.0.9 1.0.10 9999: Deduplicating backup program with compression and authenticated encryption
