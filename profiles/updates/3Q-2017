@@ -27,3 +27,4 @@ move dev-texlive/texlive-documentation-bulgarian dev-texlive/texlive-langcyrilli
 move dev-texlive/texlive-texinfo dev-texlive/texlive-plainextra
 move dev-texlive/texlive-langvietnamese dev-texlive/texlive-langother
 move dev-texlive/texlive-langmongolian dev-texlive/texlive-langcyrillic
+move dev-texlive/texlive-langtibetan dev-texlive/texlive-langother
