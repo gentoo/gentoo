@@ -5,3 +5,4 @@ move dev-texlive/texlive-documentation-arabic dev-texlive/texlive-langarabic
 move dev-texlive/texlive-documentation-vietnamese dev-texlive/texlive-langother
 move dev-texlive/texlive-documentation-ukrainian dev-texlive/texlive-langcyrillic
 move dev-texlive/texlive-documentation-turkish dev-texlive/texlive-langeuropean
+move dev-texlive/texlive-documentation-thai dev-texlive/texlive-langother
