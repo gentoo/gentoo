@@ -16,3 +16,4 @@ move dev-texlive/texlive-documentation-mongolian dev-texlive/texlive-langcyrilli
 move dev-texlive/texlive-documentation-korean dev-texlive/texlive-langcjk
 move dev-texlive/texlive-documentation-japanese dev-texlive/texlive-langcjk
 move dev-texlive/texlive-documentation-italian dev-texlive/texlive-langitalian
+move dev-texlive/texlive-documentation-german dev-texlive/texlive-langgerman
