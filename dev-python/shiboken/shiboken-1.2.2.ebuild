@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog )
 PATCHES=(
 	"${FILESDIR}/${PV}-Fix-tests-with-Python-3.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
 )
 
 src_prepare() {
