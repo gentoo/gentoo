@@ -18,3 +18,4 @@ move dev-texlive/texlive-documentation-japanese dev-texlive/texlive-langcjk
 move dev-texlive/texlive-documentation-italian dev-texlive/texlive-langitalian
 move dev-texlive/texlive-documentation-german dev-texlive/texlive-langgerman
 move dev-texlive/texlive-documentation-french dev-texlive/texlive-langfrench
+move dev-texlive/texlive-documentation-finnish dev-texlive/texlive-langeuropean
