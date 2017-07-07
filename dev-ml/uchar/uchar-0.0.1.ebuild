@@ -17,6 +17,11 @@ IUSE="+ocamlopt"
 RDEPEND=">=dev-lang/ocaml-4.03:="
 DEPEND="${RDEPEND} dev-ml/ocamlbuild"
 
+# This is mostly a compat wrapper for older ocaml versions we don't support. No
+# need to test it, plus it fails when installing for the first time:
+# https://bugs.gentoo.org/show_bug.cgi?id=624144
+RESTRICT="test"
+
 src_compile() {
 	ocaml pkg/build.ml \
 		"native=$(usex ocamlopt true false)" \
