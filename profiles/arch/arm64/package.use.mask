@@ -2,10 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
-# Pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
+# gst:0.10: Thanks but no thanks.
+dev-qt/qtmultimedia gstreamer010
+
+# Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
+# nautilus pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
 # Older spidermonkey does not work on arm64.
 # This should be revised when gjs is updated.
 gnome-base/nautilus previewer
+app-crypt/libsecret test
 
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach & dev-tcltk/tcllib are not keyworded, and tests are
