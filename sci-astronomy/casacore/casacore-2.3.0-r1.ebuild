@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit cmake-utils eutils toolchain-funcs fortran-2 python-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
-IUSE="c++11 +data doc fftw hdf5 openmp python threads test"
+IUSE="+c++11 +data doc fftw hdf5 openmp python threads test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -59,18 +59,19 @@ pkg_pretend() {
 	use openmp && tc-check-openmp
 }
 
-pkg_setup() {
-	use python && python-r1_pkg_setup
-	fortran-2_pkg_setup
+src_prepare() {
+	cmake-utils_src_prepare
+	sed -e '/python-py/s/^.*$/find_package(Boost REQUIRED COMPONENTS python)/' \
+		-e 's/3.5/3.6 3.5/' \
+		-i python3/CMakeLists.txt || die
 }
 
 src_configure() {
 	has_version sci-libs/hdf5[mpi] && export CXX=mpicxx
 	local mycmakeargs=(
 		-DENABLE_SHARED=ON
-		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DBUILD_PYTHON=OFF
 		-DDATA_DIR="${EPREFIX}/usr/share/casa/data"
-		-DBUILD_PYTHON="$(usex python)"
 		-DBUILD_TESTING="$(usex test)"
 		-DCXX11="$(usex c++11)"
 		-DUSE_FFTW3="$(usex fftw)"
@@ -78,6 +79,20 @@ src_configure() {
 		-DUSE_OPENMP="$(usex openmp)"
 		-DUSE_THREADS="$(usex threads)"
 	)
+	python_set_options() {
+		if python_is_python3; then
+			mycmakeargs+=(
+				-DPYTHON3_EXECUTABLE="${PYTHON}"
+				-DBUILD_PYTHON3=ON
+			)
+		else
+			mycmakeargs+=(
+				-DPYTHON2_EXECUTABLE="${PYTHON}"
+				-DBUILD_PYTHON=ON
+			)
+		fi
+	}
+	use python && python_foreach_impl python_set_options
 	cmake-utils_src_configure
 }
 
@@ -93,5 +108,6 @@ src_install(){
 	if use doc; then
 		insinto /usr/share/doc/${PF}
 		doins -r doc/html
+		docompress -x /usr/share/doc/${PF}/html
 	fi
 }
