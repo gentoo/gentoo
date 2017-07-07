@@ -10,7 +10,7 @@ HOMEPAGE="http://opam.ocaml.org/"
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
-IUSE=""
+IUSE="test"
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/ocaml/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -19,7 +19,7 @@ else
 	EGIT_REPO_URI="https://github.com/ocaml/opam.git"
 fi
 
-DEPEND="dev-lang/ocaml:=
+RDEPEND="dev-lang/ocaml:=
 	|| ( net-misc/wget net-misc/curl )
 	dev-ml/extlib:=
 	dev-ml/ocaml-re:=
@@ -30,8 +30,9 @@ DEPEND="dev-lang/ocaml:=
 	dev-ml/uutf:=
 	dev-ml/jsonm:=
 "
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	dev-ml/findlib
+	test? ( dev-vcs/git )
 "
 
 src_prepare() {
