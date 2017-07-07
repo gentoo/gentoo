@@ -7,3 +7,4 @@ move dev-texlive/texlive-documentation-ukrainian dev-texlive/texlive-langcyrilli
 move dev-texlive/texlive-documentation-turkish dev-texlive/texlive-langeuropean
 move dev-texlive/texlive-documentation-thai dev-texlive/texlive-langother
 move dev-texlive/texlive-documentation-spanish dev-texlive/texlive-langspanish
+move dev-texlive/texlive-documentation-slovenian dev-texlive/texlive-langeuropean
