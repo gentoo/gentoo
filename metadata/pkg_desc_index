@@ -10175,49 +10175,39 @@ dev-texlive/texlive-formatsextra 2015 2016 2017: TeXLive Additional formats
 dev-texlive/texlive-games 2012 2013 2014 2015 2016 2017: TeXLive Games typesetting
 dev-texlive/texlive-genericextra 2015 2016: TeXLive Generic additional packages
 dev-texlive/texlive-genericrecommended 2012 2013 2014 2015 2016: TeXLive Generic recommended packages
-dev-texlive/texlive-htmlxml 2012: TeXLive HTML/SGML/XML support
 dev-texlive/texlive-humanities 2012 2013 2014 2015 2016 2017: TeXLive Humanities packages
 dev-texlive/texlive-langafrican 2015 2016: TeXLive African scripts
 dev-texlive/texlive-langarabic 2012 2013 2014 2015 2016 2017: TeXLive Arabic
-dev-texlive/texlive-langarmenian 2012: TeXLive Armenian
-dev-texlive/texlive-langchinese 2014 2015 2016 2017: TeXLive Chinese
-dev-texlive/texlive-langcjk 2012 2013 2014 2015 2016 2017: TeXLive Chinese/Japanese/Korean (base)
-dev-texlive/texlive-langcroatian 2012: TeXLive Croatian
+dev-texlive/texlive-langchinese 2015 2016 2017: TeXLive Chinese
+dev-texlive/texlive-langcjk 2015 2016 2017: TeXLive Chinese/Japanese/Korean (base)
 dev-texlive/texlive-langcyrillic 2012 2013 2014 2015 2016 2017: TeXLive Cyrillic
 dev-texlive/texlive-langczechslovak 2015-r1 2016 2017: TeXLive Czech/Slovak
-dev-texlive/texlive-langenglish 2012 2013 2014 2015 2016 2017: TeXLive US and UK English
+dev-texlive/texlive-langenglish 2015 2016 2017: TeXLive US and UK English
 dev-texlive/texlive-langeuropean 2013 2014 2015 2016 2017: TeXLive Other European languages
-dev-texlive/texlive-langfinnish 2012: TeXLive Finnish
-dev-texlive/texlive-langfrench 2012 2013 2014 2015 2016 2017: TeXLive French
-dev-texlive/texlive-langgerman 2012 2013 2014 2015 2016 2017: TeXLive German
-dev-texlive/texlive-langgreek 2012 2013 2014 2015 2016 2017: TeXLive Greek
-dev-texlive/texlive-langhebrew 2012: TeXLive Hebrew
-dev-texlive/texlive-langhungarian 2012: TeXLive Hungarian
+dev-texlive/texlive-langfrench 2015 2016 2017: TeXLive French
+dev-texlive/texlive-langgerman 2015 2016 2017: TeXLive German
+dev-texlive/texlive-langgreek 2015 2016 2017: TeXLive Greek
 dev-texlive/texlive-langindic 2015 2016: TeXLive Indic scripts
 dev-texlive/texlive-langitalian 2012 2013 2014 2015 2016 2017: TeXLive Italian
-dev-texlive/texlive-langjapanese 2014 2015 2016 2017: TeXLive Japanese
+dev-texlive/texlive-langjapanese 2015 2016 2017: TeXLive Japanese
 dev-texlive/texlive-langkorean 2015 2016 2017: TeXLive Korean
-dev-texlive/texlive-langlatin 2012: TeXLive Latin
-dev-texlive/texlive-langlatvian 2012: TeXLive Latvian
-dev-texlive/texlive-langlithuanian 2012: TeXLive Lithuanian
-dev-texlive/texlive-langnorwegian 2012: TeXLive Norwegian
-dev-texlive/texlive-langother 2012 2013 2014 2015 2016 2017: TeXLive Other languages
-dev-texlive/texlive-langpolish 2012 2013 2014 2015 2016 2017: TeXLive Polish
+dev-texlive/texlive-langother 2015 2016 2017: TeXLive Other languages
+dev-texlive/texlive-langpolish 2015 2016 2017: TeXLive Polish
 dev-texlive/texlive-langportuguese 2012 2013 2014 2015 2016 2017: TeXLive Portuguese
-dev-texlive/texlive-langspanish 2012 2013 2014 2015 2016 2017: TeXLive Spanish
-dev-texlive/texlive-latex 2012 2013 2014 2015 2016 2017: TeXLive LaTeX fundamental packages
-dev-texlive/texlive-latexextra 2012 2013 2014 2015 2015-r1 2016 2017: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2012 2012-r1 2013 2014 2015-r1 2016 2017: TeXLive LaTeX recommended packages
+dev-texlive/texlive-langspanish 2015 2016 2017: TeXLive Spanish
+dev-texlive/texlive-latex 2015 2016 2017: TeXLive LaTeX fundamental packages
+dev-texlive/texlive-latexextra 2015-r1 2016 2017: TeXLive LaTeX additional packages
+dev-texlive/texlive-latexrecommended 2015-r1 2016 2017: TeXLive LaTeX recommended packages
 dev-texlive/texlive-luatex 2015 2016 2017: TeXLive LuaTeX packages
 dev-texlive/texlive-mathextra 2012 2012-r1 2013 2014 2015: TeXLive Mathematics packages
 dev-texlive/texlive-mathscience 2016 2017: TeXLive Mathematics and science packages
-dev-texlive/texlive-metapost 2012 2013 2014 2015 2016 2017: TeXLive MetaPost and Metafont packages
-dev-texlive/texlive-music 2012 2013 2014 2015 2016 2017: TeXLive Music packages
-dev-texlive/texlive-omega 2012 2013 2014 2015 2016: TeXLive Omega packages
-dev-texlive/texlive-pictures 2012 2013 2014 2015-r2 2016 2017: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-metapost 2015 2016 2017: TeXLive MetaPost and Metafont packages
+dev-texlive/texlive-music 2015 2016 2017: TeXLive Music packages
+dev-texlive/texlive-omega 2015 2016: TeXLive Omega packages
+dev-texlive/texlive-pictures 2015-r2 2016 2017: TeXLive Graphics, pictures, diagrams
 dev-texlive/texlive-plainextra 2015 2016: TeXLive Plain TeX packages
 dev-texlive/texlive-plaingeneric 2017: TeXLive Plain (La)TeX packages
-dev-texlive/texlive-pstricks 2012 2013 2014 2015 2016 2017: TeXLive PSTricks
+dev-texlive/texlive-pstricks 2015 2016 2017: TeXLive PSTricks
 dev-texlive/texlive-publishers 2015 2016 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
@@ -14784,7 +14774,7 @@ net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for se
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
 net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.17 2.18: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 0.8.21 1.0.2 1.0.3 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 0.8.21 1.0.2 1.0.3 1.0.4 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs

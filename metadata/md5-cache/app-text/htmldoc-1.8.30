@@ -4,11 +4,11 @@ DESCRIPTION=Convert HTML pages into a PDF document
 EAPI=6
 HOMEPAGE=http://www.msweet.org/projects.php?Z1
 IUSE=fltk
-KEYWORDS=~alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~arm ~hppa ia64 ppc ~ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libpng-1.4:0= virtual/jpeg:0 fltk? ( x11-libs/fltk:1 )
 SLOT=0
 SRC_URI=https://github.com/michaelrsweet/htmldoc/releases/download/v1.8.30/htmldoc-1.8.30-source.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=9795fc40b123d3f3be99193b47f3c54b
+_md5_=054f49608c39c8d677ebcbfd75b024c5
