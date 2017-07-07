@@ -7,7 +7,7 @@ KDE_HANDBOOK="true"
 inherit kde5
 
 DESCRIPTION="KDE Plasma workspace hotkey module"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 COMMON_DEPEND="
