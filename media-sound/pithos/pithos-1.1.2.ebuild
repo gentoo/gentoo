@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=(python3_4)
+PYTHON_COMPAT=(python3_4 python3_5)
 inherit eutils distutils-r1
 
 if [[ ${PV} =~ [9]{4,} ]]; then
