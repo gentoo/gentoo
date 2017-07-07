@@ -9,4 +9,4 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x8
 
 RDEPEND="sys-apps/texinfo
 	virtual/latex-base
-	|| ( dev-texlive/texlive-plaingeneric >=dev-texlive/texlive-plainextra-2013 dev-texlive/texlive-texinfo )"
+	|| ( dev-texlive/texlive-plaingeneric >=dev-texlive/texlive-plainextra-2013 )"
