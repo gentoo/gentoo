@@ -6563,7 +6563,7 @@ dev-perl/Search-Xapian 1.2.23.0 1.2.23.0-r1: Perl XS frontend to the Xapian C++ 
 dev-perl/Sereal 3.15.0: Fast, compact, powerful binary (de-)serialization
 dev-perl/Sereal-Decoder 3.15.0: Fast, compact, powerful binary deserialization
 dev-perl/Sereal-Encoder 3.15.0: Fast, compact, powerful binary serialization
-dev-perl/Server-Starter 0.320.0 0.330.0: A superdaemon for hot-deploying server programs
+dev-perl/Server-Starter 0.330.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
