@@ -21,12 +21,6 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_nofetch() {
-	elog "${PN} developers require end-users to accept their license agreement"
-	elog "by registering on their Web site (${HOMEPAGE})."
-	elog "Please download ${A} manually and place it in ${DISTDIR}."
-}
-
 src_prepare() {
 	# drop compiler check to enable use of CXX
 	epatch "${FILESDIR}"/${P}-config.patch
