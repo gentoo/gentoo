@@ -10171,7 +10171,7 @@ dev-texlive/texlive-documentation-base 2012: TeXLive TeX Live documentation
 dev-texlive/texlive-fontsextra 2012 2013 2014 2015 2016 2017: TeXLive Additional fonts
 dev-texlive/texlive-fontsrecommended 2012 2013 2014 2015 2016 2017: TeXLive Recommended fonts
 dev-texlive/texlive-fontutils 2012 2013 2014 2015 2016 2017: TeXLive Graphics and font utilities
-dev-texlive/texlive-formatsextra 2012 2013 2014 2015 2016 2017: TeXLive Additional formats
+dev-texlive/texlive-formatsextra 2015 2016 2017: TeXLive Additional formats
 dev-texlive/texlive-games 2012 2013 2014 2015 2016 2017: TeXLive Games typesetting
 dev-texlive/texlive-genericextra 2012 2013 2014 2015 2016: TeXLive Generic additional packages
 dev-texlive/texlive-genericrecommended 2012 2013 2014 2015 2016: TeXLive Generic recommended packages
@@ -10184,7 +10184,7 @@ dev-texlive/texlive-langchinese 2014 2015 2016 2017: TeXLive Chinese
 dev-texlive/texlive-langcjk 2012 2013 2014 2015 2016 2017: TeXLive Chinese/Japanese/Korean (base)
 dev-texlive/texlive-langcroatian 2012: TeXLive Croatian
 dev-texlive/texlive-langcyrillic 2012 2013 2014 2015 2016 2017: TeXLive Cyrillic
-dev-texlive/texlive-langczechslovak 2012 2013 2014 2015-r1 2016 2017: TeXLive Czech/Slovak
+dev-texlive/texlive-langczechslovak 2015-r1 2016 2017: TeXLive Czech/Slovak
 dev-texlive/texlive-langenglish 2012 2013 2014 2015 2016 2017: TeXLive US and UK English
 dev-texlive/texlive-langeuropean 2013 2014 2015 2016 2017: TeXLive Other European languages
 dev-texlive/texlive-langfinnish 2012: TeXLive Finnish
@@ -10196,7 +10196,7 @@ dev-texlive/texlive-langhungarian 2012: TeXLive Hungarian
 dev-texlive/texlive-langindic 2012 2013 2014 2015 2016: TeXLive Indic scripts
 dev-texlive/texlive-langitalian 2012 2013 2014 2015 2016 2017: TeXLive Italian
 dev-texlive/texlive-langjapanese 2014 2015 2016 2017: TeXLive Japanese
-dev-texlive/texlive-langkorean 2014 2015 2016 2017: TeXLive Korean
+dev-texlive/texlive-langkorean 2015 2016 2017: TeXLive Korean
 dev-texlive/texlive-langlatin 2012: TeXLive Latin
 dev-texlive/texlive-langlatvian 2012: TeXLive Latvian
 dev-texlive/texlive-langlithuanian 2012: TeXLive Lithuanian
@@ -10213,7 +10213,7 @@ dev-texlive/texlive-langvietnamese 2012: TeXLive Vietnamese
 dev-texlive/texlive-latex 2012 2013 2014 2015 2016 2017: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2012 2013 2014 2015 2015-r1 2016 2017: TeXLive LaTeX additional packages
 dev-texlive/texlive-latexrecommended 2012 2012-r1 2013 2014 2015-r1 2016 2017: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2012 2012-r1 2013 2014 2015 2016 2017: TeXLive LuaTeX packages
+dev-texlive/texlive-luatex 2015 2016 2017: TeXLive LuaTeX packages
 dev-texlive/texlive-mathextra 2012 2012-r1 2013 2014 2015: TeXLive Mathematics packages
 dev-texlive/texlive-mathscience 2016 2017: TeXLive Mathematics and science packages
 dev-texlive/texlive-metapost 2012 2013 2014 2015 2016 2017: TeXLive MetaPost and Metafont packages
@@ -10225,8 +10225,7 @@ dev-texlive/texlive-plaingeneric 2017: TeXLive Plain (La)TeX packages
 dev-texlive/texlive-pstricks 2012 2013 2014 2015 2016 2017: TeXLive PSTricks
 dev-texlive/texlive-publishers 2012 2013 2014 2015 2016 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
-dev-texlive/texlive-texinfo 2012: TeXLive GNU Texinfo
-dev-texlive/texlive-xetex 2012 2013 2014 2015 2016 2017: TeXLive XeTeX and packages
+dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
