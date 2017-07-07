@@ -8420,6 +8420,7 @@ dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1 2.3.1: py.test plugin for cove
 dev-python/pytest-django 2.9.1: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-fixture-config 1.2.2: Virtualenv fixture for py.test
+dev-python/pytest-flake8 0.8.1: py.test plugin for flake8
 dev-python/pytest-html 1.10.1 1.14.2: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.7: Py.test plugin to test server connections locally
