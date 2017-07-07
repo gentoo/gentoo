@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit cmake-utils eutils toolchain-funcs fortran-2 python-r1
 
@@ -62,7 +62,6 @@ pkg_pretend() {
 src_prepare() {
 	cmake-utils_src_prepare
 	sed -e '/python-py/s/^.*$/find_package(Boost REQUIRED COMPONENTS python)/' \
-		-e 's/3.5/3.6 3.5/' \
 		-i python3/CMakeLists.txt || die
 }
 
