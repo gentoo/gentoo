@@ -1199,7 +1199,6 @@ app-text/tesseract:webp - Enable support for webp image format.
 app-text/texlive:context - Add support for the ConTeXt format (dev-texlive/texlive-context)
 app-text/texlive:detex - Add support for dev-tex/detex, a filter program that removes the LaTeX (or TeX) control sequences
 app-text/texlive:dvi2tty - Add support for dev-tex/dvi2tty to preview dvi-files on text-only devices
-app-text/texlive:dvipdfm - Add support for app-text/dvipdfm to convert DVI files to PDF
 app-text/texlive:epspdf - Add support for app-text/epspdf, a tool for converting [e]ps files to pdf.
 app-text/texlive:extra - Add support for extra TeXLive packages
 app-text/texlive:games - Add typesetting support for games (chess, etc.) (dev-texlive/texlive-games)
