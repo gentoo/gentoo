@@ -15902,7 +15902,7 @@ ros-meta/viz 1.2.0 1.3.0 1.3.1 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/astrometry 0.67-r2 0.70: Automated astrometric calibration programs and service
 sci-astronomy/casa-data 99999 20160222 20170703: Data and tables for the CASA software
-sci-astronomy/casacore 2.1.0 2.3.0: Core libraries for the Common Astronomy Software Applications
+sci-astronomy/casacore 2.3.0-r1: Core libraries for the Common Astronomy Software Applications
 sci-astronomy/cdsclient 3.8.1 3.8.4: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
