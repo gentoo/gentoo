@@ -5494,7 +5494,7 @@ dev-perl/Authen-SCRAM 0.5.0: Salted Challenge Response Authentication Mechanism 
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
-dev-perl/B-Hooks-EndOfScope 0.150.0 0.200.0: Execute code after a scope finished compilation
+dev-perl/B-Hooks-EndOfScope 0.200.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.210.0: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.190.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
