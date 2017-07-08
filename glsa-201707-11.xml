@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-11">
+  <title>RoundCube: Security bypass</title>
+  <synopsis>A vulnerability in RoundCube may allow authenticated users to
+    bypass security restrictions.
+  </synopsis>
+  <product type="ebuild">roundcube</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>618322</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/roundcube" auto="yes" arch="*">
+      <unaffected range="ge">1.2.5</unaffected>
+      <vulnerable range="lt">1.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Free and open source webmail software for the masses, written in PHP.</p>
+  </background>
+  <description>
+    <p>Authenticated users can arbitrarily reset passwords due to a problem
+      caused by an improperly restricted exec call in the virtualmin and sasl
+      drivers of the password plugin.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Authenticated users can bypass security restrictions and elevate
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RoundCube users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/roundcube-1.2.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8114">CVE-2017-8114</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-19T11:26:16Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T20:12:11Z">b-man</metadata>
+</glsa>
