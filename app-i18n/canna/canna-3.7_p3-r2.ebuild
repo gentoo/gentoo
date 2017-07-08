@@ -32,23 +32,14 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	find . -name '*.man' -o -name '*.jmn' | xargs sed -i.bak -e 's/1M/8/g' || die
-	sed -e "s%@cannapkgver@%${PF}%" \
-		"${FILESDIR}"/${PN}-3.7-gentoo.diff.in > "${T}"/${PF}-gentoo.diff || die
-	epatch "${T}"/${PF}-gentoo.diff
+	epatch "${FILESDIR}"/${PN}-gentoo.patch \
+		"${FILESDIR}"/${PN}-kpdef.patch \
+		"${FILESDIR}"/${PN}-posix-sort.patch
 
-	# bug #248723
-	epatch "${FILESDIR}"/${P}-strip.patch
+	find . -name '*.man' -o -name '*.jmn' | xargs sed -i.bak -e 's/1M/8/g' || die
 
 	# Multilib-strict fix for amd64
 	sed -i -e "s:\(DefLibCannaDir.*\)/lib:\1/$(get_libdir):g" Canna.conf* || die
-	# fix deprecated sort syntax
-	sed -e 's:^\(sortcmd=\".* -s\).*$:\1 -k 1,1\":' \
-		-i cmd/mkbindic/mkbindic.cpp || die
-
-	cd "${S}"/dic/phono
-	epatch "${FILESDIR}"/${PN}-kpdef-gentoo.diff
-
 }
 
 src_compile() {
