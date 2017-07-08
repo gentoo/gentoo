@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils llvm python-single-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
-	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
