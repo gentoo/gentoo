@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst postrm prerm setup unpack
+DEFINED_PHASES=compile install postinst postrm setup unpack
 DEPEND=>=sys-apps/sed-4 x11-misc/gccmakedep x11-misc/imake
 DESCRIPTION=A client-server based Kana-Kanji conversion system
 EAPI=0
@@ -7,6 +7,6 @@ KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=MIT GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/canna/9565/Canna37p3.tar.bz2
-_eclass_exported_funcs=pkg_prerm:- pkg_postrm:- pkg_postinst:- pkg_setup:cannadic src_unpack:- src_compile:- src_install:-
+_eclass_exported_funcs=pkg_postrm:cannadic pkg_postinst:- pkg_setup:cannadic src_unpack:- src_compile:- src_install:-
 _eclasses_=cannadic	a60869e5823b1040630e89ede36797bf	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=3eb88ff6e5e72137697bb624bffc0dd4
+_md5_=ca8114633809b6e633c7f6f47b389a19
