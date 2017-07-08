@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/mongodb/mongo-cxx-driver/archive/legacy-1.1.2.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=88aed9a15a8df11ef867d0e7c3f3c67d
+_md5_=12901b900e98df17a03976566fe8954b
