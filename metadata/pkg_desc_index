@@ -1063,7 +1063,7 @@ app-editors/retext 7.0.0 7.0.1 9999: Simple editor for Markdown and reStructured
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
-app-editors/sublime-text 2.0.2-r1 3_pre3126-r1: Sophisticated text editor for code, markup and prose
+app-editors/sublime-text 2.0.2-r2 3_pre3126-r2: Sophisticated text editor for code, markup and prose
 app-editors/tea 43.1.0 44.0.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
@@ -1817,7 +1817,7 @@ app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 0.1.14: A simple JIRA commandline client in Go
 app-misc/golly 2.7-r1 2.8: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 1.9: Google Contacts wrapper for mutt
-app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
+app-misc/gourmet 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 4.2.5: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 0.1.5-r1 0.1.9: Graphical LCD Driver
@@ -10440,7 +10440,7 @@ dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0: Linux Trace Toolkit - next generat
 dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.2.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
-dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
+dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5 2.0.98.5-r1: GNU make replacement
 dev-util/mdds 1.2.2 1.2.3 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.4: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
@@ -10573,7 +10573,7 @@ dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
-dev-util/vint 0.3.11 0.3.13-r1: Lint tool for Vim script language
+dev-util/vint 0.3.13-r1: Lint tool for Vim script language
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
 dev-util/visualvm 1.3.8-r1: Integrates commandline JDK tools and profiling capabilities
 dev-util/vmtouch 1.0.2 1.2.0 1.3.0: Virtual Memory Toucher, portable file system cache diagnostics and control
