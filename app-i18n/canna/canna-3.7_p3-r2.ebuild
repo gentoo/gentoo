@@ -96,8 +96,8 @@ src_install() {
 		doins doc/man/guide/tex/canna.{dvi,ps,pdf}
 	fi
 
-	newinitd "${FILESDIR}"/${P}.initd canna || die
-	newconfd "${FILESDIR}"/${P}.confd canna || die
+	newinitd "${FILESDIR}"/${PN}.initd canna || die
+	newconfd "${FILESDIR}"/${PN}.confd canna || die
 	insinto /etc/ ; newins "${FILESDIR}"/canna.hosts hosts.canna || die
 	keepdir /var/log/canna/ || die
 
