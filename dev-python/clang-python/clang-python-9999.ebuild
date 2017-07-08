@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit git-r3 python-r1
 
 DESCRIPTION="Python bindings for sys-devel/clang"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
