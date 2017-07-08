@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit cannadic eutils multilib
@@ -19,7 +19,6 @@ DEPEND=">=sys-apps/sed-4
 	x11-misc/gccmakedep
 	x11-misc/imake"
 RDEPEND=""
-
 S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
@@ -113,31 +112,12 @@ src_install() {
 
 pkg_postinst() {
 	update-cannadic-dir
-	elog
-	elog "Canna dictionary format has been changed."
-	elog "You should rebuild app-dict/canna-* after emerge."
-	elog
-}
 
-pkg_prerm() {
-	if [ -S /tmp/.iroha_unix/IROHA ] ; then
-		# make sure cannaserver get stopped because otherwise
-		# we cannot stop it with /etc/init.d after emerge -C canna
-		einfo
-		einfo "Stopping Canna for safe unmerge"
-		einfo
-		/etc/init.d/canna stop
-		touch "${T}"/canna.cookie
-	fi
-}
-
-pkg_postrm() {
-	if [ -f /usr/sbin/cannaserver -a -e "${T}"/canna.cookie ] ; then
-		#update-cannadic-dir
-		einfo
-		einfo "Restarting Canna"
-		einfo
-		/etc/init.d/canna start
-		rm -f "${T}"/canna.cookie
+	if ! locale -a | grep -iq "ja_JP.eucjp"; then
+		elog "Some dictionary tools in this package require ja_JP.EUC-JP locale."
+		elog
+		elog "# echo 'ja_JP.EUC-JP EUC-JP' >> /etc/locale.gen"
+		elog "# locale-gen"
+		elog
 	fi
 }
