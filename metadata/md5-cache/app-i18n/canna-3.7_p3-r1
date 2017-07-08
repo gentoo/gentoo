@@ -9,4 +9,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge.jp/canna/9565/Canna37p3.tar.bz2
 _eclass_exported_funcs=pkg_postrm:cannadic pkg_postinst:- pkg_setup:cannadic src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=cannadic	a60869e5823b1040630e89ede36797bf	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=aa2156cc92b6271c3a9ec17ca531b530
+_md5_=13a14c79c1da1b5d03a1984909cba7e7

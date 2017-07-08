@@ -303,7 +303,7 @@ app-arch/plzip 1.6: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20110811 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 5.4.0-r1 5.5.0_beta4_p20170628: RAR compressor/uncompressor
+app-arch/rar 5.5.0_beta4_p20170628 5.5.0_beta5_p20170706: RAR compressor/uncompressor
 app-arch/rpm 4.11.0.1 4.11.1 4.11.2 4.11.2-r1 4.12.0.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r2: Compression program for large files
@@ -1007,7 +1007,7 @@ app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
 app-editors/e3 2.8: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/editra 0.7.20-r1 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
-app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
+app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
 app-editors/emacs 18.59-r11 23.4-r15 24.5-r3 25.1 25.2: The extensible, customizable, self-documenting real-time display editor
@@ -1483,7 +1483,7 @@ app-i18n/anthy-ss 9026: Anthy -- free and secure Japanese input system
 app-i18n/atokx3 3.0.0-r11: ATOK X3 for Linux - The most famous Japanese Input Method Engine
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
 app-i18n/canfep 1.0: Canna Japanese kana-kanji frontend processor on console
-app-i18n/canna 3.7_p3-r1 3.7_p3-r2: A client-server based Kana-Kanji conversion system
+app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
@@ -9143,7 +9143,7 @@ dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints h
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.12.10 9999: Constructs a KDL tree from an XML robot representation in URDF
 dev-ros/kdl_parser_py 1.12.10 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
-dev-ros/laser_assembler 1.7.3 1.7.4 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
+dev-ros/laser_assembler 1.7.4 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_cb_detector 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.3 1.8.4 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
@@ -9324,7 +9324,7 @@ dev-ros/test_rospy 1.12.7 1.13.0 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.13.0 9999: Unit tests for rospy
 dev-ros/test_tf2 0.5.12-r1 0.5.13 0.5.14 0.5.15 9999: TF2 unit tests
 dev-ros/tf 1.11.8 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
-dev-ros/tf2 0.5.13 0.5.14 0.5.15 9999: The second generation Transform Library in ROS
+dev-ros/tf2 0.5.15 9999: The second generation Transform Library in ROS
 dev-ros/tf2_bullet 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 bullet support
 dev-ros/tf2_eigen 0.5.13 0.5.14 0.5.15 9999: TF2 eigen support
 dev-ros/tf2_geometry_msgs 0.5.12 0.5.13 0.5.14 0.5.15 9999: The second generation Transform Library in ROS
@@ -9363,20 +9363,20 @@ dev-ros/xacro 1.11.1 1.11.2 1.12.0 9999: XML macro language
 dev-ros/xmlrpcpp 1.13.0 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
-dev-ruby/actioncable 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Integrated WebSockets for Rails
-dev-ruby/actionmailer 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Framework for designing email-service layers
-dev-ruby/actionpack 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Eases web-request routing, handling, and response
+dev-ruby/actioncable 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Integrated WebSockets for Rails
+dev-ruby/actionmailer 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Framework for designing email-service layers
+dev-ruby/actionpack 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.1.1 1.2.0: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2 2.0.0 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actionview 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activejob 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Job framework with pluggable queues
+dev-ruby/actionview 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activejob 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Job framework with pluggable queues
 dev-ruby/activeldap 4.0.6 5.1.0: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
-dev-ruby/activemodel 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activemodel 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.1: XML serialization for your Active Model objects and Active Record models
-dev-ruby/activerecord 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
+dev-ruby/activerecord 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate old-style finder option hashes in Active Record
 dev-ruby/activeresource 4.1.0 5.0.0: Think Active Record for web resources
-dev-ruby/activesupport 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Utility Classes and Extension to the Standard Library
+dev-ruby/activesupport 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 0.8.2 0.9.2 0.9.3 0.9.4 0.9.5: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.4.0-r1 2.5.1: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
@@ -9755,12 +9755,12 @@ dev-ruby/rack-ssl 1.3.4 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.4-r3: Powerful tag-based template system
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
-dev-ruby/rails 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: ruby on rails is a web-application and persistance framework
+dev-ruby/rails 4.2.7.1 4.2.8 4.2.9 5.0.0.1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3 1.0.3-r1 1.0.3-r2: Deprecated sanitizer API extracted from Action View
 dev-ruby/rails-dom-testing 1.0.8 1.0.8-r1 2.0.2 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3 1.0.3-r1: Sanitize HTML fragments in Rails applications
 dev-ruby/rails-observers 0.1.2: Rails Observers
-dev-ruby/railties 4.2.7.1 4.2.8 4.2.9 5.0.0.1-r1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1: Tools for creating, working with, and running Rails applications
+dev-ruby/railties 4.2.7.1 4.2.8 4.2.9 5.0.0.1-r1 5.0.1 5.0.2 5.0.3 5.0.4 5.1.1 5.1.2: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.0.0-r1 2.1.0 2.2.1 2.2.2: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0 11.1.2 11.2.2-r1 11.3.0 12.0.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 0.9.2-r1 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
@@ -10224,7 +10224,7 @@ dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1 13b 14b: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
-dev-util/android-studio 2.3.1.0.162.3871768 2.3.2.0.162.3934792: A new Android development environment based on IntelliJ IDEA
+dev-util/android-studio 2.3.2.0.162.3934792 2.3.3.0.162.4069837: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
@@ -18268,7 +18268,7 @@ www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
 www-apps/airdcpp-webui 1.4.0 2.0.3 2.1.0: Web interface for airdcpp-webclient
-www-apps/ampache 3.8.1 3.8.2 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
+www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
 www-apps/baikal 0.2.7 0.3.5 0.4.4 0.4.6: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0 1.2.0-r1: simple-to-use, capable content management system for the cmdline producing static content
@@ -18452,7 +18452,7 @@ www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dy
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.2 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.1.1 3.6.1 3.6.2: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.1.1 3.6.1 3.6.2 3.9.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.46 4.0.48 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
