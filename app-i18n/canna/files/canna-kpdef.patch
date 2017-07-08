@@ -1,5 +1,5 @@
---- default.kpdef.orig	2002-10-19 17:27:40.000000000 +0900
-+++ default.kpdef	2003-12-13 00:54:51.000000000 +0900
+--- a/dic/phono/default.kpdef
++++ b/dic/phono/default.kpdef
 @@ -350,3 +350,15 @@
  _	¡²
  /	¡¿
