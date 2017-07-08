@@ -35,7 +35,7 @@ S="${WORKDIR}/sublime_text_${MV}"
 
 src_install() {
 	insinto /opt/${PN}${MV}
-	doins -r Packages
+	doins -r Packages Icon
 	doins changelog.txt sublime_plugin.py sublime.py python3.3.zip
 
 	exeinto /opt/${PN}${MV}
@@ -44,7 +44,8 @@ src_install() {
 
 	local size
 	for size in 32 48 128 256; do
-		newicon -s ${size} Icon/${size}x${size}/sublime-text.png subl.png
+		dosym ../../../../../../opt/${PN}${MV}/Icon/${size}x${size}/sublime-text.png \
+			/usr/share/icons/hicolor/${size}x${size}/apps/subl.png
 	done
 
 	make_desktop_entry "subl" "Sublime Text ${MV}" "subl" \
