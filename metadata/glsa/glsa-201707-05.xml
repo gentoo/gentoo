@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-05">
+  <title>OpenSLP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSLP, the worst of
+    which allows remote attackers to cause a Denial of Service condition or
+    other unspecified impacts.
+  </synopsis>
+  <product type="ebuild">OpenSLP</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>360061</bug>
+  <bug>434918</bug>
+  <bug>583396</bug>
+  <bug>595542</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/openslp" auto="yes" arch="*">
+      <unaffected range="ge" slot="">2.0.0-r4</unaffected>
+      <vulnerable range="lt" slot="">2.0.0-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSLP is an open-source implementation of Service Location Protocol
+      (SLP).
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSLP. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition or
+      have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSLP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/openslp-2.0.0-r4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3609">CVE-2010-3609</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4428">CVE-2012-4428</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4912">CVE-2016-4912</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7567">CVE-2016-7567</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-21T02:50:48Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T12:05:22Z">whissi</metadata>
+</glsa>

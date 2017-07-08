@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-03">
+  <title>phpMyAdmin: Security bypass</title>
+  <synopsis>A vulnerability in phpMyAdmin might allow remote attackers to
+    bypass authentication.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>614522</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge" slot="">4.0.10.20</unaffected>
+      <unaffected range="ge" slot="">4.7.0</unaffected>
+      <vulnerable range="lt" slot="">4.0.10.20</vulnerable>
+      <vulnerable range="lt" slot="">4.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>phpMyAdmin is a web-based management tool for MySQL databases.</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered where the restrictions caused by
+      “$cfg[‘Servers’][$i][‘AllowNoPassword’] = false” are bypassed
+      under certain PHP versions. This can lead compromised user accounts, who
+      have no passwords set, even if the administrator has set
+      “$cfg[‘Servers’][$i][‘AllowNoPassword’]” to false (which is
+      the default).
+    </p>
+    
+    <p>This behavior depends on the PHP version used (it seems PHP 5 is
+      affected, while PHP 7.0 is not).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, who only needs to know the username, could bypass
+      security restrictions and access phpMyAdmin.
+    </p>
+  </impact>
+  <workaround>
+    <p>Set a password for all users.</p>
+  </workaround>
+  <resolution>
+    <p>All phpMyAdmin 4.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/phpmyadmin-4.0.10.20:4.0.10.20"
+    </code>
+    
+    <p>All other phpMyAdmin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-4.7.0:4.7.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://www.phpmyadmin.net/security/PMASA-2017-8/">PMASA-2017-8</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-28T01:10:27Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T12:04:56Z">whissi</metadata>
+</glsa>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-08">
+  <title>feh: Arbitrary remote code execution</title>
+  <synopsis>A vulnerability in feh might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">feh</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>616470</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/feh" auto="yes" arch="*">
+      <unaffected range="ge" slot="">2.18.3</unaffected>
+      <vulnerable range="lt" slot="">2.18.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>feh is an X11 image viewer aimed mostly at console users.</p>
+  </background>
+  <description>
+    <p>Tobias Stoeckmann discovered it was possible to trigger an
+      out-of-boundary heap write with the image viewer feh while receiving an
+      IPC message.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, pretending to be the E17 window manager, could
+      possibly trigger an out-of-boundary heap write in feh while receiving an
+      IPC message.  This could result in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All feh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/feh-2.18.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7875">CVE-2017-7875</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-05T00:04:28Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T12:06:41Z">whissi</metadata>
+</glsa>
