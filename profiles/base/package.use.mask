@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (8 Jul 2017)
+# The clutter backend is broken with new GTK+3 versions and upstream
+# haven't been able to fix it so far. Enforcing an old GTK+3 version
+# is not a good solution long-term, so mask the flag entirely.
+media-video/parole clutter
+
 # Michał Górny <mgorny@gentoo.org> (29 Jun 2017)
 # Upstream switched to CMake and no longer provides option to build
 # static and shared libs. The flag is preserved not to break USE
