@@ -11411,7 +11411,7 @@ games-roguelike/nethack 3.6.0-r3: The ultimate old-school single player dungeon 
 games-roguelike/powder 117 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/rogue 5.4.4: The original graphical adventure game that spawned an entire genre
 games-roguelike/scourge 0.21.1 0.21.1-r1: A graphical rogue-like adventure game
-games-roguelike/stone-soup 0.16.2 0.16.2-r1: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
+games-roguelike/stone-soup 0.16.2 0.16.2-r1: Role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
 games-roguelike/tomenet 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b 0.8.0b-r1: Gothic science fantasy roguelike game
