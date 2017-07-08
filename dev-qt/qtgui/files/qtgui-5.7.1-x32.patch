@@ -1,0 +1,34 @@
+From 92805a0e9c488e47280e93f65e5378818e340ad1 Mon Sep 17 00:00:00 2001
+From: Laszlo Agocs <laszlo.agocs@qt.io>
+Date: Mon, 7 Nov 2016 11:23:21 +0100
+Subject: Fix EGL break on Debian X32
+
+Change to QT_POINTER_SIZE instead of Q_PROCESSOR_WORDSIZE. The latter
+is 8 due to targeting 64-bit, but pointers are 32-bit still in such
+builds. For the condition in question it is the pointer size that
+matters.
+
+Task-number: QTBUG-56686
+Change-Id: I96c203cae91ceb8404606de605c4fdb1a02a9d5f
+Reviewed-by: Dmitry Shachnev <mitya57@gmail.com>
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ src/platformsupport/eglconvenience/qt_egl_p.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/platformsupport/eglconvenience/qt_egl_p.h b/src/platformsupport/eglconvenience/qt_egl_p.h
+index 615ee4b80a..b1495c9f9d 100644
+--- a/src/platformsupport/eglconvenience/qt_egl_p.h
++++ b/src/platformsupport/eglconvenience/qt_egl_p.h
+@@ -83,7 +83,7 @@ struct QtEglConverter<uint32_t, uintptr_t>
+     { return v; }
+ };
+ 
+-#if Q_PROCESSOR_WORDSIZE > 4
++#if QT_POINTER_SIZE > 4
+ template <>
+ struct QtEglConverter<uintptr_t, uint32_t>
+ {
+-- 
+cgit v1.1-6-g87c4
+

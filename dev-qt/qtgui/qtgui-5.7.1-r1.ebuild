@@ -77,7 +77,10 @@ PDEPEND="
 	ibus? ( app-i18n/ibus )
 "
 
-PATCHES=( "${FILESDIR}/${P}-qclipboard.patch" ) # QTBUG-56972, KDE bug #348390
+PATCHES=(
+	"${FILESDIR}/${P}-qclipboard.patch" # QTBUG-56972, KDE bug #348390
+	"${FILESDIR}/${P}-x32.patch" # bug 623882
+)
 
 QT5_TARGET_SUBDIRS=(
 	src/gui
