@@ -7,6 +7,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matthias Dahl <matthias.dahl@binary-island.eu> (05 Jul 2017)
+# Both are not your typical garden-variety Linux programs and are
+# rather sensitive when it comes to compiler flags, resulting in
+# black screens, hangs or crashes. The average joe should have no
+# need or even advantage to set custom compiler flags at all.
+# Example: https://bugs.gentoo.org/619628
+sys-boot/gnu-efi custom-cflags
+sys-boot/refind custom-cflags
+
 # Michał Górny <mgorny@gentoo.org> (29 Jun 2017)
 # Upstream switched to CMake and no longer provides option to build
 # static and shared libs. The flag is preserved not to break USE
