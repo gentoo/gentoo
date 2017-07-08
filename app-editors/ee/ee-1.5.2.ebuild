@@ -18,7 +18,10 @@ IUSE=""
 RDEPEND="!app-editors/ersatz-emacs"
 S="${WORKDIR}/easyedit-${PV}"
 
-PATCHES=( "${FILESDIR}"/${PN}-init-location.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-init-location.patch
+	"${FILESDIR}"/${PN}-Wformat-security.patch
+)
 DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
 src_prepare() {
