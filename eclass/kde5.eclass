@@ -803,7 +803,9 @@ kde5_pkg_postinst() {
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	xdg_pkg_postrm
 }
 
