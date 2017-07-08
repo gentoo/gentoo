@@ -178,7 +178,6 @@ anthy
 ace
 R
 sdl
-tk
 vim-syntax
 
 # Unmask ARM-only video-cards
