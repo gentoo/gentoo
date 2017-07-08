@@ -10,12 +10,12 @@ inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 	multilib-minimal python-single-r1 toolchain-funcs pax-utils prefix
 
 DESCRIPTION="Low Level Virtual Machine"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
-	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
-	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( https://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		https://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
+		https://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
+	lldb? ( https://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
 	!doc? ( https://dev.gentoo.org/~voyageur/distfiles/${PN}-3.7.0-manpages.tar.bz2 )
 	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.gz"
 
@@ -253,7 +253,7 @@ src_prepare() {
 			-i tools/lldb/scripts/Python/finishSwigPythonLLDB.py || die
 
 		# Fix build with ncurses[tinfo], #560474
-		# http://llvm.org/viewvc/llvm-project?view=revision&revision=247842
+		# https://llvm.org/viewvc/llvm-project?view=revision&revision=247842
 		eapply "${WORKDIR}/${P}-patchset"/lldb/tinfo.patch
 	fi
 
