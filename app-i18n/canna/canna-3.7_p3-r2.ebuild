@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge.jp/canna/9565/${MY_P}.tar.bz2"
 LICENSE="MIT GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc"
+IUSE="doc ipv6"
 
 DEPEND="x11-misc/gccmakedep
 	x11-misc/imake
@@ -38,8 +38,10 @@ src_prepare() {
 
 	find . -name '*.man' -o -name '*.jmn' | xargs sed -i.bak -e 's/1M/8/g' || die
 
-	# Multilib-strict fix for amd64
-	sed -i "/DefLibCannaDir/s:/lib$:/$(get_libdir):" Canna.conf
+	sed -i \
+		-e "/DefLibCannaDir/s:/lib$:/$(get_libdir):" \
+		-e "/UseInet6/s:0:$(usex ipv6 1 0):" \
+		Canna.conf
 }
 
 src_configure() {
