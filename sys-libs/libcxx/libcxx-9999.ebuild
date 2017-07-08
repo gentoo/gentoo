@@ -17,9 +17,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit ${SCM} cmake-multilib llvm python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
-HOMEPAGE="http://libcxx.llvm.org/"
+HOMEPAGE="https://libcxx.llvm.org/"
 if [[ ${PV} != 9999 ]] ; then
-	SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz"
+	SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz"
 	S="${WORKDIR}/${P}.src"
 else
 	SRC_URI=""
