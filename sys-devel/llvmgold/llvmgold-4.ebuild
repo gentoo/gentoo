@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="LLVMgold plugin symlink for autoloading"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 
 LICENSE="public-domain"
