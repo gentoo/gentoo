@@ -44,10 +44,20 @@ src_install() {
 
 	local size
 	for size in 32 48 128 256; do
-		newicon -s ${size} Icon/${size}x${size}/sublime-text.png sublime-text.png
+		newicon -s ${size} Icon/${size}x${size}/sublime-text.png subl.png
 	done
 
-	make_desktop_entry "subl" "Sublime Text ${MV}" \
-		/usr/share/icons/hicolor/48x48/apps/sublime-text.png \
+	make_desktop_entry "subl" "Sublime Text ${MV}" "subl" \
 		"TextEditor;IDE;Development" "StartupNotify=true"
+
+	# needed to get WM_CLASS lookup right
+	mv "${ED%/}"/usr/share/applications/subl{-sublime-text,}.desktop || die
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
 }
