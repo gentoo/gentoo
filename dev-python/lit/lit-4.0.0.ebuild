@@ -8,8 +8,8 @@ inherit distutils-r1
 
 MY_P=llvm-${PV/_/}
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${MY_P}.src.tar.xz"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
