@@ -8890,7 +8890,7 @@ dev-python/vatnumber 1.1: Module to validate VAT numbers
 dev-python/vcrpy 1.10.3 1.10.5 1.11.0 1.11.1: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.38 0.1.39 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0 2.16.0.0: Use version control tags to discover version numbers
-dev-python/vdirsyncer 0.14.0: Synchronize calendars and contacts
+dev-python/vdirsyncer 0.14.0 0.16.0: Synchronize calendars and contacts
 dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
 dev-python/verboselogs 1.6: Verbose logging for Python's logging module
 dev-python/versioneer 0.16: Easy VCS-based management of project version strings
