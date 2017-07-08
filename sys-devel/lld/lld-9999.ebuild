@@ -13,7 +13,7 @@ inherit cmake-utils git-r3 llvm python-any-r1
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/lld.git
+EGIT_REPO_URI="https://git.llvm.org/git/lld.git
 	https://github.com/llvm-mirror/lld.git"
 
 LICENSE="UoI-NCSA"
