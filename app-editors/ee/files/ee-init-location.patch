@@ -1,5 +1,5 @@
---- easyedit-1.5.2.orig/ee.1
-+++ easyedit-1.5.2/ee.1
+--- a/ee.1
++++ b/ee.1
 @@ -406,7 +406,7 @@
  .PP
  Since different users have different preferences, \fIee\fR allows some 
@@ -27,8 +27,8 @@
  .br
  .I $HOME/.init.ee
  .br
---- easyedit-1.5.2.orig/ee.c
-+++ easyedit-1.5.2/ee.c
+--- a/ee.c
++++ b/ee.c
 @@ -4124,7 +4124,7 @@
  }
  

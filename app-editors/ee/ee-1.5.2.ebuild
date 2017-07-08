@@ -18,7 +18,7 @@ RDEPEND="!app-editors/ersatz-emacs"
 S="${WORKDIR}/easyedit-${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-*.diff
+	epatch "${FILESDIR}"/${PN}-init-location.patch
 
 	sed -i \
 		-e "s/make -/\$(MAKE) -/g" \
