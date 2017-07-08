@@ -26,7 +26,6 @@ DEPEND=">=sys-apps/sed-4
 		dev-texlive/texlive-latexrecommended
 	)"
 RDEPEND=""
-
 S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
@@ -139,28 +138,5 @@ pkg_postinst() {
 		elog "# echo 'ja_JP.EUC-JP EUC-JP' >> /etc/locale.gen"
 		elog "# locale-gen"
 		elog
-	fi
-}
-
-pkg_prerm() {
-	if [ -S /tmp/.iroha_unix/IROHA ] ; then
-		# make sure cannaserver get stopped because otherwise
-		# we cannot stop it with /etc/init.d after emerge -C canna
-		einfo
-		einfo "Stopping Canna for safe unmerge"
-		einfo
-		/etc/init.d/canna stop
-		touch "${T}"/canna.cookie
-	fi
-}
-
-pkg_postrm() {
-	if [ -f /usr/sbin/cannaserver -a -e "${T}"/canna.cookie ] ; then
-		#update-cannadic-dir
-		einfo
-		einfo "Restarting Canna"
-		einfo
-		/etc/init.d/canna start
-		rm -f "${T}"/canna.cookie
 	fi
 }
