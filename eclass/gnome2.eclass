@@ -359,7 +359,9 @@ gnome2_pkg_postinst() {
 # Handle scrollkeeper, GSettings, Icons, desktop and mime database updates.
 gnome2_pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	gnome2_schemas_update
 	gnome2_scrollkeeper_update
 

@@ -950,7 +950,9 @@ kde4-base_pkg_postinst() {
 kde4-base_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
 	buildsycoca
