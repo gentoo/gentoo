@@ -8,4 +8,4 @@ RDEPEND=!sys-devel/llvm:0
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
-_md5_=e982912c769b716255e9ba3bf3192425
+_md5_=a0acf7ec28ca64d5e468d44f5ab8c27f
