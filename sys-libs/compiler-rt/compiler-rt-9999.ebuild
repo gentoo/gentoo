@@ -13,7 +13,7 @@ inherit cmake-utils flag-o-matic git-r3 llvm python-any-r1 toolchain-funcs
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
+EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
