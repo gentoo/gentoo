@@ -15413,7 +15413,7 @@ net-misc/siproxd 0.8.0-r3 0.8.1-r2: A proxy/masquerading daemon for the SIP prot
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sjphone 1.60.2235: VOIP softphone supports both SIP and H.323 standards
-net-misc/sks 1.1.6-r2: An OpenPGP keyserver which is decentralized with highly reliable synchronization
+net-misc/sks 1.1.6-r2 1.1.6-r3: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/slimrat 9999: Linux Rapidshare downloader
 net-misc/smb4k 1.2.3-r1 2.0.0-r1: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
@@ -17728,7 +17728,7 @@ sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwri
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.6.0 1.6.1 1.7.0-r2 1.8.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio players
-sys-fs/fuse 2.9.7 3.0.0_rc3: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.7 3.0.0_rc3 3.1.0: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.2.4 1.2.6 1.2.7: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.4.2: FUSE file system to navigate, extract, create and modify ZIP archives
