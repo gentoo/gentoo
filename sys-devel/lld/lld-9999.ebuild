@@ -40,7 +40,7 @@ pkg_setup() {
 src_unpack() {
 	if use test; then
 		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
+		git-r3_fetch "https://git.llvm.org/git/llvm.git
 			https://github.com/llvm-mirror/llvm.git"
 	fi
 	git-r3_fetch
