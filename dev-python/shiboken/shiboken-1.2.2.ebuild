@@ -13,7 +13,7 @@ SRC_URI="http://download.qt-project.org/official_releases/pyside/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
