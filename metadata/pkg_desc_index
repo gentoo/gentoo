@@ -13412,7 +13412,7 @@ media-plugins/kodi-pvr-dvbviewer 2.4.7 2.4.11 9999: Kodi's DVBViewer client addo
 media-plugins/kodi-pvr-filmon 1.4.7 1.4.8 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-iptvsimple 2.4.8 2.4.11 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 2.4.16 2.4.19 9999: Kodi's MediaPortal TVServer client addon
-media-plugins/kodi-pvr-mythtv 4.13.1 4.14.0 4.14.1 4.15.0 9999: MythTV PVR for Kodi
+media-plugins/kodi-pvr-mythtv 4.13.1 4.14.0 4.14.1 4.15.0 4.15.1 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 2.4.11 2.4.13 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 2.4.2 2.4.3 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 1.4.5 1.4.7 9999: Kodi's PCTV client addon
