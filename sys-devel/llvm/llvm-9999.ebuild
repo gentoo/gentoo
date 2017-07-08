@@ -14,7 +14,7 @@ inherit cmake-utils flag-o-matic git-r3 multilib-minimal pax-utils \
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
+EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Keep in sync with CMakeLists.txt
