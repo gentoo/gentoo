@@ -1,7 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
+
 inherit base
 
 DESCRIPTION="Library for handling root privilege"
@@ -12,13 +13,10 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ppc x86"
 IUSE=""
-
 RESTRICT="test"
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/libspt-werror.patch" \
-		"${FILESDIR}/${P}-gentoo.patch"
+	epatch "${FILESDIR}/${PN}-gentoo.patch"
 }
 
 src_install() {
