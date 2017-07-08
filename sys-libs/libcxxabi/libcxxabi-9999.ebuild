@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib git-r3 llvm python-any-r1
 
 DESCRIPTION="Low level support for a standard C++ library"
-HOMEPAGE="http://libcxxabi.llvm.org/"
+HOMEPAGE="https://libcxxabi.llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
@@ -53,7 +53,7 @@ src_unpack() {
 		https://github.com/llvm-mirror/libcxx.git"
 	git-r3_fetch
 
-	git-r3_checkout http://llvm.org/git/libcxx.git \
+	git-r3_checkout https://llvm.org/git/libcxx.git \
 		"${WORKDIR}"/libcxx
 	git-r3_checkout
 }
