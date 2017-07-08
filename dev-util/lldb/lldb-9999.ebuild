@@ -13,7 +13,7 @@ inherit cmake-utils git-r3 llvm python-single-r1 toolchain-funcs
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/lldb.git
+EGIT_REPO_URI="https://git.llvm.org/git/lldb.git
 	https://github.com/llvm-mirror/lldb.git"
 
 LICENSE="UoI-NCSA"
