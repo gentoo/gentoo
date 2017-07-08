@@ -39,6 +39,7 @@ REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.8-et_EE.patch
 	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-gcc-7.patch
 )
 
 do_python() {
