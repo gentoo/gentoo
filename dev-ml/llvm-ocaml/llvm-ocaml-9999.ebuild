@@ -13,7 +13,7 @@ inherit cmake-utils git-r3 llvm python-any-r1
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
+EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Keep in sync with sys-devel/llvm
