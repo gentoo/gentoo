@@ -112,8 +112,12 @@ src_install() {
 
 pkg_postinst() {
 	update-cannadic-dir
-	elog
-	elog "Canna dictionary format has been changed."
-	elog "You should rebuild app-dict/canna-* after emerge."
-	elog
+
+	if ! locale -a | grep -iq "ja_JP.eucjp"; then
+		elog "Some dictionary tools in this package require ja_JP.EUC-JP locale."
+		elog
+		elog "# echo 'ja_JP.EUC-JP EUC-JP' >> /etc/locale.gen"
+		elog "# locale-gen"
+		elog
+	fi
 }
