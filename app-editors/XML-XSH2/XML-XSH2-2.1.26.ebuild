@@ -30,3 +30,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
+PATCHES=( "${FILESDIR}/${P}-perl526.patch" )
