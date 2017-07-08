@@ -11,7 +11,7 @@ gimp		https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/gimp/gimp/ http://artfiles.
 github		https://github.com/downloads
 gmt		ftp://ftp.soest.hawaii.edu/gmt/ ftp://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.iag.usp.br/pub/gmt/ ftp://ftp.geologi.uio.no/pub/gmt/ ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt
 gnome		https://download.gnome.org/
-gnu		http://ftpmirror.gnu.org/
+gnu		http://ftpmirror.gnu.org/ http://ftp.gnu.org/gnu/
 gnu-alpha	ftp://alpha.gnu.org/gnu/ http://alpha.gnu.org/gnu/ ftp://ftp.funet.fi/pub/gnu/alpha/gnu/ http://www.nic.funet.fi/pub/gnu/alpha/gnu/ ftp://gnualpha.uib.no/pub/gnualpha/ http://gnualpha.uib.no/ ftp://mirrors.fe.up.pt/pub/gnu-alpha/ http://mirrors.fe.up.pt/pub/gnu-alpha/ http://mirror.lihnidos.org/GNU/alpha/gnu/ http://mirrors.ibiblio.org/gnu/alpha/gnu/
 gnupg		ftp://ftp.gnupg.org/gcrypt/ http://mirrors.dotsrc.org/gcrypt/ http://artfiles.org/gnupg.org/ http://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ ftp://sunsite.icm.edu.pl/pub/security/gnupg/ http://gd.tuwien.ac.at/privacy/gnupg/ http://www.ring.gr.jp/pub/net/gnupg/ ftp://ftp.ring.gr.jp/pub/net/gnupg/
 hackage		http://hackage.haskell.org/ http://dev.gentoo.org/~qnikst/hdiff.luite.com/
