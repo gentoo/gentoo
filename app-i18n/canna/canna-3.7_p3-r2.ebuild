@@ -20,7 +20,7 @@ DEPEND="x11-misc/gccmakedep
 	x11-misc/imake
 	doc? (
 		app-text/ghostscript-gpl
-		>=dev-texlive/texlive-langcjk-2010
+		dev-texlive/texlive-langjapanese
 		dev-texlive/texlive-latexrecommended
 	)"
 RDEPEND=""
