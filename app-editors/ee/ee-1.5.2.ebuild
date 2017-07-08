@@ -6,8 +6,9 @@ EAPI="4"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="An easy to use text editor. A subset of aee"
-HOMEPAGE="http://mahon.cwx.net/"
-SRC_URI="http://mahon.cwx.net/sources/${P}.src.tgz"
+#HOMEPAGE="http://mahon.cwx.net/ http://www.users.uswest.net/~hmahon/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.src.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"
