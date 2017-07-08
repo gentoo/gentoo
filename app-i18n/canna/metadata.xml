@@ -5,6 +5,9 @@
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
   </maintainer>
+  <use>
+    <flag name="canuum">Build canuum</flag>
+  </use>
   <upstream>
     <remote-id type="sourceforge-jp">canna</remote-id>
   </upstream>
