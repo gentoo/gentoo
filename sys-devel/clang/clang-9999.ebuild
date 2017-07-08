@@ -14,7 +14,7 @@ inherit cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/clang.git
+EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
 # Keep in sync with sys-devel/llvm
