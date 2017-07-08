@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-common.eclass
-# @AUTHOR: Matthew Kennedy <mkennedy@gentoo.org>
 # @MAINTAINER:
 # Common Lisp project <common-lisp@gentoo.org>
+# @AUTHOR: Matthew Kennedy <mkennedy@gentoo.org>
+# @BLURB: eclass for installing Common Lisp packages.
 # @DESCRIPTION:
 # Sundry code common to many Common Lisp related ebuilds.
 
