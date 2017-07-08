@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="Common files shared between multiple slots of LLVM"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
