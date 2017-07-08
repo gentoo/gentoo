@@ -13,12 +13,13 @@ SRC_URI="https://github.com/janestreet/jbuilder/archive/${MY_PV}.tar.gz -> ${MY_
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc"
-IUSE=""
+IUSE="test"
 
 DEPEND="dev-lang/ocaml:="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	dev-ml/opam
+	test? ( dev-ml/menhir )
 "
 OPAMSWITCH="system"
 
