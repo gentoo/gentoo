@@ -10,7 +10,7 @@ SRC_URI="https://guichan.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="allegro opengl sdl static-libs"
 
 DEPEND="allegro? ( <media-libs/allegro-5 )

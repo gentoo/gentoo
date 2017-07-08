@@ -10,7 +10,7 @@ SRC_URI="http://darklomax.org/tyrian/tyrian21.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/libsdl
