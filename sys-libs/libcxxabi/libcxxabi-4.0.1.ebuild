@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib llvm python-any-r1
 
 DESCRIPTION="Low level support for a standard C++ library"
-HOMEPAGE="http://libcxxabi.llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
-	http://releases.llvm.org/${PV/_//}/libcxx-${PV/_/}.src.tar.xz"
+HOMEPAGE="https://libcxxabi.llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	https://releases.llvm.org/${PV/_//}/libcxx-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
