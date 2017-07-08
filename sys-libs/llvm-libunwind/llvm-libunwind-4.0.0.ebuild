@@ -10,7 +10,7 @@ inherit cmake-multilib llvm
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-SRC_URI="http://releases.llvm.org/${PV/_//}/libunwind-${PV/_/}.src.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/libunwind-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
