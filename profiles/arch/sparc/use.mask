@@ -6,6 +6,11 @@
 
 # This file contains a list of useflags that cannot be used on sparc.
 
+# David Seifert <soap@gentoo.org> (08 Jul 2017)
+# Games are not keyworded anymore on sparc
+fortune
+physfs
+
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
 # Unmask as this profile is big endian.
 -big-endian
