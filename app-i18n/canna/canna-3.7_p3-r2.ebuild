@@ -7,12 +7,12 @@ MY_P="Canna${PV//./}"
 MY_P="${MY_P/_/}"
 
 DESCRIPTION="A client-server based Kana-Kanji conversion system"
-HOMEPAGE="http://canna.sourceforge.jp/"
+HOMEPAGE="http://canna.osdn.jp/"
 SRC_URI="mirror://sourceforge.jp/canna/9565/${MY_P}.tar.bz2"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc"
 
 DEPEND=">=sys-apps/sed-4
