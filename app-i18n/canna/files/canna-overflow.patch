@@ -1,0 +1,20 @@
+--- a/cmd/catdic/rutil.c
++++ b/cmd/catdic/rutil.c
+@@ -384,7 +384,7 @@
+ 	(void)fprintf(stderr,gettxt("cannacmd:205", 
+     "Specified dictionary \"%s\" already exists. Do you overwrite it ? (y/n)"),
+ 		      dicname);
+-	fgets(ans,80,stdin);
++	fgets(ans,sizeof(ans),stdin);
+     } else {
+ 	(void)fprintf(stderr,gettxt("cannacmd:206", 
+ 	    "Specified dictionary \"%s\" already exists."),dicname);
+@@ -474,7 +474,7 @@
+     if (isatty(fileno(stdin)) != 0) {
+ 	(void)fprintf(stderr,gettxt("cannacmd:216", 
+ "Personal learning file of dictionary \"%s\" exists. Do you overwrite it ? (y/n)"),dicname);
+-	fgets(ans,80,stdin);
++	fgets(ans,sizeof(ans),stdin);
+     } else {
+ 	(void)fprintf(stderr,gettxt("cannacmd:217", 
+     "Personal learning file of system dictionary \"%s\" already exists."),
