@@ -11,8 +11,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
-HOMEPAGE="http://openmp.llvm.org"
-SRC_URI="http://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
+HOMEPAGE="https://openmp.llvm.org"
+SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 # Additional licenses:
 # - MIT-licensed Intel code,
