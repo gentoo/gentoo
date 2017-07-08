@@ -12606,7 +12606,7 @@ media-fonts/wqy-zenhei 0.9.46: WenQuanYi Hei-Ti Style (sans-serif) Chinese outli
 media-fonts/x11fonts-jmk 3.0-r1: This package contains character-cell fonts for use with X
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
 media-gfx/DFBPoint 0.7.2: DFBPoint is presentation program based on DirectFB
-media-gfx/aaphoto 0.43.1: Automatic color correction and resizing of photos
+media-gfx/aaphoto 0.43.1 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
 media-gfx/album 4.07 4.13-r1: HTML photo album generator
 media-gfx/aoi 2.5 2.7.2: A free, open-source 3D modelling and rendering studio
@@ -15413,7 +15413,7 @@ net-misc/siproxd 0.8.0-r3 0.8.1-r2: A proxy/masquerading daemon for the SIP prot
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sjphone 1.60.2235: VOIP softphone supports both SIP and H.323 standards
-net-misc/sks 1.1.6-r1: An OpenPGP keyserver which is decentralized with highly reliable synchronization
+net-misc/sks 1.1.6-r2: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/slimrat 9999: Linux Rapidshare downloader
 net-misc/smb4k 1.2.3-r1 2.0.0-r1: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
