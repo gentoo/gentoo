@@ -21,8 +21,6 @@ DEPEND="x11-misc/gccmakedep
 	doc? (
 		app-text/ghostscript-gpl
 		>=dev-texlive/texlive-langcjk-2010
-		dev-texlive/texlive-fontsextra
-		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 		dev-texlive/texlive-latexrecommended
 	)"
 RDEPEND=""
