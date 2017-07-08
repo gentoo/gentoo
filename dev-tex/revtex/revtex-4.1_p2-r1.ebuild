@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -7,9 +7,8 @@ inherit versionator latex-package
 
 MY_P="${PN}$(version_format_string '$1-$2')"
 
-DESCRIPTION="LaTeX2e macros for journals of the American Physical Society and the American Institute of Physics"
-HOMEPAGE="http://authors.aps.org/revtex4/"
-
+DESCRIPTION="LaTeX2e macros to prepare manuscripts for the journals of the APS and AIP"
+HOMEPAGE="https://journals.aps.org/revtex"
 SRC_URI="http://authors.aps.org/revtex4/${MY_P}.zip -> ${P}.zip"
 
 LICENSE="LPPL-1.3c"
