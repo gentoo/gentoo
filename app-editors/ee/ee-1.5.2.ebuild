@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="An easy to use text editor. A subset of aee"
 #HOMEPAGE="http://mahon.cwx.net/ http://www.users.uswest.net/~hmahon/"
@@ -18,9 +18,10 @@ IUSE=""
 RDEPEND="!app-editors/ersatz-emacs"
 S="${WORKDIR}/easyedit-${PV}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-init-location.patch
+PATCHES=( "${FILESDIR}"/${PN}-init-location.patch )
+DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
+src_prepare() {
 	sed -i \
 		-e "s/make -/\$(MAKE) -/g" \
 		-e "/^buildee/s/$/ localmake/" \
@@ -31,6 +32,8 @@ src_prepare() {
 		-e "/CFLAGS =/s/\" >/ \\\\\$(LDFLAGS)\" >/" \
 		-e "/other_cflag/s/ *-s//" \
 		create.make
+
+	default
 }
 
 src_compile() {
@@ -38,8 +41,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin ee
-	doman ee.1
-	dodoc Changes README.ee ee.i18n.guide ee.msg
+	dobin ${PN}
+	doman ${PN}.1
+	einstalldocs
 	keepdir /usr/share/${PN}
 }
