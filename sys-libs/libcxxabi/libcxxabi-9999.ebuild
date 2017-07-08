@@ -13,7 +13,7 @@ inherit cmake-multilib git-r3 llvm python-any-r1
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="http://libcxxabi.llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
+EGIT_REPO_URI="https://git.llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
