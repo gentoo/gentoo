@@ -6,8 +6,9 @@ EAPI="2"
 inherit base
 
 DESCRIPTION="Library for handling root privilege"
-HOMEPAGE="http://www.j10n.org/libspt/index.html"
-SRC_URI="http://www.j10n.org/libspt/${P}.tar.bz2"
+#HOMEPAGE="http://www.j10n.org/libspt/index.html"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
