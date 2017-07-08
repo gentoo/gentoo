@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-kpdef.patch
 	"${FILESDIR}"/${PN}-posix-sort.patch
+	"${FILESDIR}"/${PN}-Wformat.patch
 )
 DOCS="*CHANGES* ChangeLog INSTALL* README* RKCCONF* WHATIS*"
 
