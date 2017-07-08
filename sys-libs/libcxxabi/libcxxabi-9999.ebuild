@@ -49,7 +49,7 @@ pkg_setup() {
 
 src_unpack() {
 	# we need the headers
-	git-r3_fetch "http://llvm.org/git/libcxx.git
+	git-r3_fetch "https://git.llvm.org/git/libcxx.git
 		https://github.com/llvm-mirror/libcxx.git"
 	git-r3_fetch
 
