@@ -3,6 +3,7 @@
 
 EAPI=6
 
+KDE_QTHELP="false"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -22,6 +23,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep kded)
 	$(add_frameworks_dep kdesignerplugin)
+	$(add_frameworks_dep kemoticons)
 	$(add_frameworks_dep kglobalaccel)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
@@ -66,7 +68,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kdoctools)
-	$(add_frameworks_dep kemoticons)
 	$(add_frameworks_dep kinit)
 	$(add_frameworks_dep kitemmodels)
 	$(add_qt_dep qtxml)

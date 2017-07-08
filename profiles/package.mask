@@ -32,7 +32,8 @@
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
->=sys-libs/ldb-1.2.0
+# See also https://bugzilla.samba.org/show_bug.cgi?id=12859
+>=sys-libs/ldb-1.1.30
 
 # Michael Palimaka <kensington@gentoo.org> (06 Jul 2017)
 # Obsolete. l10n is now included in app-office/calligra:5.

@@ -6,6 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 KDE_AUTODEPS="false"
 KDE_DEBUG="false"
+KDE_QTHELP="false"
 KDE_TEST="false"
 inherit kde5 python-any-r1
 

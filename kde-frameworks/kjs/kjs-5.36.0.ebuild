@@ -3,6 +3,7 @@
 
 EAPI=6
 
+KDE_QTHELP="false"
 inherit kde5
 
 DESCRIPTION="ECMAScipt compatible parser and engine"
