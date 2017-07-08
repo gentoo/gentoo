@@ -9000,14 +9000,14 @@ dev-qt/qtbluetooth 5.6.2 5.7.1: Bluetooth support library for the Qt5 framework
 dev-qt/qtcharts 5.7.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.6.2 5.7.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.6.2-r1 5.7.1-r2 5.7.1-r3: Cross-platform application development framework
+dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.6.2-r1 5.7.1-r3: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.7.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 4.8.6-r1 4.8.7 5.6.2 5.7.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.6.2 5.7.1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolkit
 dev-qt/qtdiag 5.6.2 5.7.1: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgraphicaleffects 5.6.2 5.7.1: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 4.8.6-r4 4.8.7 5.6.2 5.7.1 5.7.1-r1: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qtgui 4.8.6-r4 4.8.7 5.6.2 5.7.1-r1: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 4.8.6-r3 4.8.7 5.6.2 5.7.1: Qt5 module for integrating online documentation into applications
 dev-qt/qtimageformats 5.6.2 5.7.1: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.6.2 5.7.1: The Location module for the Qt5 framework
