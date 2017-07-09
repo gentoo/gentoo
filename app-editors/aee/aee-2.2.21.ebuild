@@ -12,14 +12,14 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="X"
 
 RDEPEND="X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-ae-location.patch
+	"${FILESDIR}"/${PN}-ae-location.patch
 	"${FILESDIR}"/${PN}-Wformat-security.patch
 )
 DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
