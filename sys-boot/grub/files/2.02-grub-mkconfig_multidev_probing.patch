@@ -1,0 +1,40 @@
+From e3a64ce19758163e8ecfc41a58281dd78c1fd143 Mon Sep 17 00:00:00 2001
+From: Hannes Schweizer <nilathak@users.noreply.github.com>
+Date: Sun, 9 Jul 2017 15:39:29 +0200
+Subject: [PATCH] workaround for multi-device probing in grub-mkconfig
+
+upstream bug: https://savannah.gnu.org/bugs/?48228
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=581904
+---
+ util/grub-mkconfig.in | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+index f8496d28b..c4544460c 100644
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -132,16 +132,16 @@ else
+ fi
+ 
+ # Device containing our userland.  Typically used for root= parameter.
+-GRUB_DEVICE="`${grub_probe} --target=device /`"
+-GRUB_DEVICE_UUID="`${grub_probe} --device ${GRUB_DEVICE} --target=fs_uuid 2> /dev/null`" || true
++GRUB_DEVICE="`${grub_probe} --target=device / | sort | head -n1`"
++GRUB_DEVICE_UUID="`${grub_probe} --device ${GRUB_DEVICE} --target=fs_uuid 2> /dev/null` | sort | head -n1" || true
+ 
+ # Device containing our /boot partition.  Usually the same as GRUB_DEVICE.
+-GRUB_DEVICE_BOOT="`${grub_probe} --target=device /boot`"
+-GRUB_DEVICE_BOOT_UUID="`${grub_probe} --device ${GRUB_DEVICE_BOOT} --target=fs_uuid 2> /dev/null`" || true
++GRUB_DEVICE_BOOT="`${grub_probe} --target=device /boot | sort | head -n1`"
++GRUB_DEVICE_BOOT_UUID="`${grub_probe} --device ${GRUB_DEVICE_BOOT} --target=fs_uuid 2> /dev/null` | sort | head -n1" || true
+ 
+ # Filesystem for the device containing our userland.  Used for stuff like
+ # choosing Hurd filesystem module.
+-GRUB_FS="`${grub_probe} --device ${GRUB_DEVICE} --target=fs 2> /dev/null || echo unknown`"
++GRUB_FS="`${grub_probe} --device ${GRUB_DEVICE} --target=fs 2> /dev/null || echo unknown | sort | head -n1`"
+ 
+ if [ x"$GRUB_FS" = xunknown ]; then
+     GRUB_FS="$(stat -f --printf=%T / || echo unknown)"
+-- 
+2.13.0
+
