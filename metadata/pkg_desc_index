@@ -9432,7 +9432,7 @@ dev-ruby/bson 3.2.6 4.1.1 4.2.0 4.2.1: A Ruby BSON implementation for MongoDB. (
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.12.5 1.12.6 1.13.7: An easy way to vendor gem dependencies
-dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
+dev-ruby/bundler-audit 0.5.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.6.3 2.6.4-r1 2.6.5 2.7.0: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
@@ -9638,7 +9638,7 @@ dev-ruby/mechanize 2.7.3-r1 2.7.5 2.7.5-r2: A Ruby library used for automating i
 dev-ruby/memoist 0.14.0 0.15.0 0.16.0: ActiveSupport::Memoizable with a few enhancements
 dev-ruby/memoizable 0.4.2: Memoize method return values
 dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
-dev-ruby/mercenary 0.3.5 0.3.6: Lightweight and flexible library for writing command-line apps
+dev-ruby/mercenary 0.3.6: Lightweight and flexible library for writing command-line apps
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
 dev-ruby/metasm 1.0.2-r4 9999: cross-architecture assembler, disassembler, linker, and debugger
