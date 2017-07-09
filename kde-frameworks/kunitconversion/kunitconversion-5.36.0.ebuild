@@ -16,3 +16,9 @@ RDEPEND="
 	$(add_qt_dep qtxml)
 "
 DEPEND="${RDEPEND}"
+
+src_prepare(){
+	kde5_src_prepare
+	# bug 623938 - needs internet connection
+	sed -i -e "/convertertest\.cpp/d" autotests/CMakeLists.txt || die
+}
