@@ -37,7 +37,11 @@ src_compile() {
 }
 
 src_test() {
-	emake HASOCAMLOPT=$(usex ocamlopt yes no) HASDYNLINK=$(usex ocamlopt yes no) tests
+	if use ocamlopt ; then
+		emake HASOCAMLOPT=$(usex ocamlopt yes no) HASDYNLINK=$(usex ocamlopt yes no) tests
+	else
+		ewarn "Tests require USE=ocamlopt. Skipping them."
+	fi
 }
 
 src_install() {
