@@ -699,18 +699,8 @@
     <url>https://wiki.gentoo.org/wiki/Project:Council</url>
     <description>The elected Gentoo Council decides on global issues and policies that affect multiple projects in Gentoo.</description>
     <member>
-      <email>blueness@gentoo.org</email>
-      <name>Anthony G. Basile</name>
-      <role>Council member</role>
-    </member>
-    <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>Council member</role>
-    </member>
-    <member>
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
       <role>Council member</role>
     </member>
     <member>
@@ -719,8 +709,18 @@
       <role>Council member</role>
     </member>
     <member>
-      <email>rich0@gentoo.org</email>
-      <name>Richard Freeman</name>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Council member</role>
+    </member>
+    <member>
+      <email>slyfox@gentoo.org</email>
+      <name>Sergei</name>
+      <role>Council member</role>
+    </member>
+    <member>
+      <email>tamiko@gentoo.org</email>
+      <name>Matthias Maier</name>
       <role>Council member</role>
     </member>
     <member>
