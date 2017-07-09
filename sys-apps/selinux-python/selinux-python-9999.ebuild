@@ -9,7 +9,7 @@ inherit python-r1 toolchain-funcs
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20170609"
+MY_RELEASEDATE="20170630"
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 SEMNG_VER="${PV}"
