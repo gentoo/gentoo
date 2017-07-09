@@ -15370,7 +15370,7 @@ net-misc/ptpd 2.3.1 2.3.1-r1: Precision Time Protocol daemon
 net-misc/puf 1.0.0 1.0.0-r1: A download tool for UNIX-like systems
 net-misc/pulseaudio-dlna 0.5.2: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
-net-misc/putty 0.68 0.69 9999: A Free Telnet/SSH Client
+net-misc/putty 0.68 0.69 0.70 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.5.0.2-r1 0.5.0.3: X2Go command line client
 net-misc/pyhoca-gui 0.5.0.4-r1 0.5.0.5 0.5.0.6: X2Go graphical client applet
