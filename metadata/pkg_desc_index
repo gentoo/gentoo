@@ -994,7 +994,7 @@ app-doc/zeal 0.2.1 0.3.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/XML-XSH2 2.1.6-r1 2.1.26: Powerful scripting language/shell for XPath-based editing of XML
 app-editors/adie 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: Text editor based on the FOX Toolkit
-app-editors/aee 2.2.15b: An easy to use text editor
+app-editors/aee 2.2.15b 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/atom 1.15.0-r1 1.16.0 1.18.0: A hackable text editor for the 21st Century
 app-editors/beaver 0.4.1: Beaver is an Early AdVanced EditoR
