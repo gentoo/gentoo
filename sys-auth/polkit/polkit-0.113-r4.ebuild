@@ -41,11 +41,11 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-policykit )
 "
 PDEPEND="
-	gtk? ( >=gnome-extra/polkit-gnome-0.105 )
-	kde? ( || (
-		kde-plasma/polkit-kde-agent
-		sys-auth/polkit-kde-agent
+	gtk? ( || (
+		>=gnome-extra/polkit-gnome-0.105
+		>=lxde-base/lxsession-0.5.2
 	) )
+	kde? ( kde-plasma/polkit-kde-agent )
 	!systemd? ( !elogind? ( sys-auth/consolekit[policykit] ) )
 "
 
