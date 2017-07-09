@@ -1,5 +1,5 @@
---- aee-2.2.15b.orig/aee.1
-+++ aee-2.2.15b/aee.1
+--- a/aee.1
++++ b/aee.1
 @@ -678,7 +678,7 @@
  .\"
  .SS Initializing aee From A File
@@ -27,8 +27,8 @@
  .br
  .I $HOME/.aeeinfo
  .br
---- aee-2.2.15b.orig/aee.c
-+++ aee-2.2.15b/aee.c
+--- a/aee.c
++++ b/aee.c
 @@ -2612,7 +2612,7 @@
  
  char *init_name[4] = {
@@ -38,8 +38,8 @@
  	NULL, 
  	".init.ae"
  	};
---- aee-2.2.15b.orig/aee.msg
-+++ aee-2.2.15b/aee.msg
+--- a/aee.msg
++++ b/aee.msg
 @@ -2,7 +2,7 @@
  $ 
  $set 1
@@ -49,8 +49,8 @@
  2 "main"
  3 "modes menu"
  4 "tabs to spaces        " 
---- aee-2.2.15b.orig/help.ae
-+++ aee-2.2.15b/help.ae
+--- a/help.ae
++++ b/help.ae
 @@ -1058,11 +1058,11 @@
  
  	The file 'init.ae' may be used to set parameters and define keys to 
@@ -65,8 +65,8 @@
  .init.ae, then the current directory.  The settings from each file are read, 
  so that the directives from the most recently read file will take precedence 
  over previously read files.  This allows, for example, the .init.ae file in 
---- aee-2.2.15b.orig/help.c
-+++ aee-2.2.15b/help.c
+--- a/help.c
++++ b/help.c
 @@ -12,7 +12,7 @@
  
  char *help_file_list[4] = {
@@ -76,8 +76,8 @@
  	"~/.help.ae", 
  	"help.ae" 
  	};
---- aee-2.2.15b.orig/localize.c
-+++ aee-2.2.15b/localize.c
+--- a/localize.c
++++ b/localize.c
 @@ -64,7 +64,7 @@
  	catalog = catopen("aee", 0);
  #endif /* NO_CATGETS */
