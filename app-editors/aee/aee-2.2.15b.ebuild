@@ -18,7 +18,10 @@ IUSE="X"
 RDEPEND="X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-ae-location.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-ae-location.patch
+	"${FILESDIR}"/${PN}-Wformat-security.patch
+)
 DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
 src_prepare() {
