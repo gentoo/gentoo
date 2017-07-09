@@ -10245,7 +10245,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0: An automated testing system for bash
-dev-util/bazel 0.3.2 0.3.2-r1 0.4.0 0.4.3 0.4.4 0.4.5: Fast and correct automated build system
+dev-util/bazel 0.4.5-r1: Fast and correct automated build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcc 0.2.0-r1 0.3.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
