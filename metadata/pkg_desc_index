@@ -2956,7 +2956,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.6.3 1.6.4 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.56 10.0.29 10.0.30 10.0.31 10.1.23 10.1.24 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.56 10.0.29 10.0.30 10.0.31 10.1.23 10.1.24 10.1.25 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.28 10.0.30: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
