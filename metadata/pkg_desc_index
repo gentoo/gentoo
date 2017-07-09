@@ -2874,7 +2874,7 @@ dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0-r1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
-dev-cpp/gtkmm 2.24.5 3.22.0: C++ interface for GTK+
+dev-cpp/gtkmm 2.24.5 3.22.0 3.22.1: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
@@ -4712,7 +4712,7 @@ dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5 1.13: foreign function call libraries
 dev-libs/flatbuffers 1.6.0: Memory efficient serialization library
-dev-libs/folks 0.11.2 0.11.3: Library for aggregating people from multiple sources
+dev-libs/folks 0.11.2 0.11.3 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1 0.3.0: Frame Streams implementation in C
@@ -11623,7 +11623,7 @@ gnome-base/gnome-core-apps 3.20.0 3.22.0 3.22.2: Sub-meta package for the core a
 gnome-base/gnome-core-libs 3.22.2: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.22.2 3.24.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.22.2: Sub-meta package for the applications of GNOME 3
-gnome-base/gnome-keyring 3.20.0: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.20.0 3.20.1: Password and keyring managing daemon
 gnome-base/gnome-light 3.20.0 3.22.0 3.22.2: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
@@ -11677,7 +11677,7 @@ gnome-extra/gnome-color-manager 3.22.2: Color profile manager for the GNOME desk
 gnome-extra/gnome-commander 1.4.8 1.6.1 1.6.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.22.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.8: Thumbnail generator for directories
-gnome-extra/gnome-documents 3.22.3 3.22.4: A document manager application for GNOME
+gnome-extra/gnome-documents 3.22.3 3.22.4 3.22.5: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.22.0: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
@@ -17756,7 +17756,7 @@ sys-fs/loop-aes 3.7j 3.7k: Linux kernel module to encrypt disk partitions with A
 sys-fs/lsscsi 0.28: SCSI sysfs query tool
 sys-fs/lufis 0.3: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.116-r1 2.02.116-r2 2.02.116-r4 2.02.116-r5 2.02.116-r6 2.02.136 2.02.136-r1 2.02.136-r2 2.02.139 2.02.139-r1 2.02.145 2.02.145-r1 2.02.145-r2 2.02.166 2.02.166-r2 2.02.171: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.116-r1 2.02.116-r2 2.02.116-r4 2.02.116-r5 2.02.116-r6 2.02.136 2.02.136-r1 2.02.136-r2 2.02.139 2.02.139-r1 2.02.145 2.02.145-r1 2.02.145-r2 2.02.166 2.02.166-r2 2.02.171 2.02.172: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 2.0.4 2.0.6: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7 0.1_p16: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.3.1-r2 3.4 4.0: A useful tool for running RAID systems - it can be used as a replacement for the raidtools

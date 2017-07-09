@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/wincent/ferret/archive/1.4.zip -> ferret-1.4.zip
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
 _eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
-_md5_=7cdcd62ea98c41cbf4ee84bcde7db6eb
+_md5_=95b4b72f0178bb8797c6f17bf6a854dd
