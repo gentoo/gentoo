@@ -5341,6 +5341,7 @@ dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
+dev-ml/ocsigen-i18n 3.1.0: I18n made easy for web sites written with eliom
 dev-ml/ocsigen-start 1.0.0 9999: Eliom Base Application with users, (pre)registration, notifications, etc.
 dev-ml/ocsigen-toolkit 1.0.0 9999: User interface widgets for Ocsigen applications
 dev-ml/octavius 0.2.0 1.1.0: ocamldoc comment syntax parser
