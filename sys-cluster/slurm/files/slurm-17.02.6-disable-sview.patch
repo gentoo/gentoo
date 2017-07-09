@@ -1,7 +1,13 @@
-diff -urN slurm-16.05.2.orig/configure.ac slurm-16.05.2/configure.ac
---- slurm-16.05.2.orig/configure.ac	2016-07-07 02:51:37.000000000 +0300
-+++ slurm-16.05.2/configure.ac	2016-07-15 20:02:41.373270765 +0300
-@@ -261,44 +261,6 @@
+ configure.ac             | 39 ---------------------------------------
+ doc/man/man1/Makefile.am |  8 --------
+ src/Makefile.am          |  3 +--
+ 3 files changed, 1 insertion(+), 49 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2f177ec..ff4d69b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -238,44 +238,6 @@ AC_SUBST(HAVE_SOME_CURSES)
  PKG_CHECK_MODULES([CHECK], [check >= 0.9.8], [ac_have_check="yes"], [ac_have_check="no"])
  AM_CONDITIONAL(HAVE_CHECK, test "x$ac_have_check" = "xyes")
  
@@ -43,10 +49,10 @@ diff -urN slurm-16.05.2.orig/configure.ac slurm-16.05.2/configure.ac
 -
 -AM_CONDITIONAL(BUILD_SVIEW, [test "x$ac_glib_test" = "xyes"] && [test "x$ac_gtk_test" = "xyes"])
 -
- X_AC_DATABASES
- 
  dnl Cray ALPS/Basil support depends on mySQL
-@@ -503,7 +465,6 @@
+ X_AC_CRAY
+ 
+@@ -477,7 +439,6 @@ AC_CONFIG_FILES([Makefile
  		 src/sshare/Makefile
  		 src/sstat/Makefile
  		 src/strigger/Makefile
@@ -54,16 +60,40 @@ diff -urN slurm-16.05.2.orig/configure.ac slurm-16.05.2/configure.ac
  		 src/plugins/Makefile
  		 src/plugins/accounting_storage/Makefile
  		 src/plugins/accounting_storage/common/Makefile
-diff -urN slurm-16.05.2.orig/src/Makefile.am slurm-16.05.2/src/Makefile.am
---- slurm-16.05.2.orig/src/Makefile.am	2016-07-07 02:51:37.000000000 +0300
-+++ slurm-16.05.2/src/Makefile.am	2016-07-15 20:02:41.373270765 +0300
-@@ -27,8 +27,7 @@
+diff --git a/doc/man/man1/Makefile.am b/doc/man/man1/Makefile.am
+index 246f16d..ba39af2 100644
+--- a/doc/man/man1/Makefile.am
++++ b/doc/man/man1/Makefile.am
+@@ -29,10 +29,6 @@ if WITH_BLCR
+ man1_MANS += srun_cr.1
+ endif
+ 
+-if BUILD_SVIEW
+-man1_MANS += sview.1
+-endif
+-
+ EXTRA_DIST = $(man1_MANS)
+ 
+ if HAVE_MAN2HTML
+@@ -65,10 +61,6 @@ if WITH_BLCR
+ html_DATA += srun_cr.html
+ endif
+ 
+-if BUILD_SVIEW
+-html_DATA += sview.html
+-endif
+-
+ MOSTLYCLEANFILES = ${html_DATA}
+ 
+ EXTRA_DIST += $(html_DATA)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index bcd5aa7..a8cbf17 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -28,5 +28,4 @@ SUBDIRS =		\
  	srun_cr		\
  	sshare		\
  	sstat		\
 -	strigger	\
 -	sview
 +	strigger
- 
- if !REAL_BG_L_P_LOADED
- SUBDIRS += srun
