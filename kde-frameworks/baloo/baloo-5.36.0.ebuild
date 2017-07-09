@@ -30,3 +30,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-frameworks/baloo:4[-minimal(+)]
 "
+
+RESTRICT+=" test"
