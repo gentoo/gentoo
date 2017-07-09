@@ -8,4 +8,9 @@
 	<upstream>
 		<remote-id type="github">singularityware/singularity</remote-id>
 	</upstream>
+	<use>
+		<flag name="slurm">
+			Compile spank plugin for <pkg>sys-cluster/slurm</pkg>
+		</flag>
+	</use>
 </pkgmetadata>
