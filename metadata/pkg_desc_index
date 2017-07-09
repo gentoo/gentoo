@@ -8208,7 +8208,7 @@ dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming p
 dev-python/py-smbpasswd 1.0.2: Module capable of generating both LANMAN and NT password hashes, for e.g. Samba
 dev-python/py-ubjson 0.9.0: Universal Binary JSON encoder/decoder
 dev-python/py-xmlrpc 0.9: Fast XML-RPC implementation for Python
-dev-python/py2neo 2.0.9: A simple and pragmatic library which accesses the Neo4j graph database
+dev-python/py2neo 2.0.9 3.1.2: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.3.10 0.3.17: python interface to Clamd (Clamav daemon)
 dev-python/pyGPG 0.1 0.2 9999: A python interface wrapper for gnupg's gpg command
