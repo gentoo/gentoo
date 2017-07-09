@@ -34,6 +34,13 @@ S=${WORKDIR}/${P/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+pkg_pretend() {
+	if ! use clang && ! tc-is-clang; then
+		ewarn "Building using a compiler other than clang may result in broken atomics"
+		ewarn "library. Enable USE=clang unless you have a very good reason not to."
+	fi
+}
+
 pkg_setup() {
 	llvm_pkg_setup
 	python-any-r1_pkg_setup
@@ -48,17 +55,17 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
+	local nolib_flags=( -nodefaultlibs -lc )
 	if use clang; then
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
 		# ensure we can use clang before installing compiler-rt
-		local -x LDFLAGS="${LDFLAGS} -nodefaultlibs -lc"
+		local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
 		strip-unsupported-flags
 	elif ! test_compiler; then
-		local extra_flags=( -nodefaultlibs -lc )
-		if test_compiler "${extra_flags[@]}"; then
-			local -x LDFLAGS="${LDFLAGS} ${extra_flags[*]}"
-			ewarn "${CC} seems to lack runtime, trying with ${extra_flags[*]}"
+		if test_compiler "${nolib_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
+			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
 		fi
 	fi
 
