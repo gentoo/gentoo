@@ -11,4 +11,4 @@ SLOT=0/1.5.0
 SRC_URI=https://github.com/mjambon/cppo/archive/v1.5.0.tar.gz -> cppo-1.5.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
-_md5_=530c886a21a6a118211e1b35b6c43a9a
+_md5_=7984fbcff953ecdf60fd061da222bb85
