@@ -22,14 +22,21 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ml/jbuilder
 	dev-ml/opam
-	test? ( dev-ml/ounit )"
+	test? ( dev-ml/ounit dev-db/redis )"
 
 src_compile() {
 	jbuilder build -p redis || die
 }
 
 src_test() {
-	jbuilder runtest || die
+	einfo "Starting test redis server"
+	local port=4567
+	/usr/sbin/redis-server --port ${port} &
+	local rpid=$!
+	export OCAML_REDIS_TEST_PORT=${port}
+	sleep 1
+	jbuilder runtest || { kill ${rpid}; die; }
+	kill ${rpid} || die
 }
 
 src_install() {
