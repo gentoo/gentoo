@@ -79,7 +79,7 @@ src_configure() {
 
 	if use gui; then
 		pushd "${S}/gui" > /dev/null || die
-		lrelease *.ts || die
+		$(qt5_get_bindir)/lrelease *.ts || die
 		eqmake5
 		popd > /dev/null
 	fi
