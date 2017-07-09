@@ -78,6 +78,9 @@ src_prepare() {
 		-e 's/@ENABLE_GTK_DOC_FALSE@install-data-local://' \
 		docs/polkit/Makefile.in || die
 
+	# disable broken test - bug #624022
+	sed -i -e "/^SUBDIRS/s/polkitbackend//" test/Makefile.am || die
+
 	# Fix cross-building, bug #590764, elogind patch, bug #598615
 	eautoreconf
 }
