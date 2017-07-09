@@ -11,7 +11,7 @@ SRC_URI="http://www.gentoogeek.org/files/${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="doc"
 
 RDEPEND="

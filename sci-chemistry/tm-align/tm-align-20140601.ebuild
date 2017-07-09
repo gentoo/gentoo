@@ -11,7 +11,7 @@ SRC_URI="http://zhanglab.ccmb.med.umich.edu/TM-align/TMtools${PV}.tar.gz"
 
 LICENSE="tm-align"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="static custom-cflags"
 
 S="${WORKDIR}"

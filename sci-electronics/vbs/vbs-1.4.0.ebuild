@@ -12,7 +12,7 @@ SRC_URI="http://www.geda.seul.org/dist/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="examples"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=sys-devel/flex-2.3
 	>=sys-devel/bison-1.22"

@@ -11,7 +11,7 @@ SRC_URI="http://faculty.virginia.edu/wrpearson/${PN}/${PN}3/${P}.tar.gz"
 
 LICENSE="fasta"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="debug cpu_flags_x86_sse2 test"
 
 DEPEND="test? ( app-shells/tcsh )"

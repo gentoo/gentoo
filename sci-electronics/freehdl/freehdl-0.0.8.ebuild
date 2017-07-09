@@ -10,7 +10,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-scheme/guile-2.0:*"
 DEPEND="virtual/pkgconfig"

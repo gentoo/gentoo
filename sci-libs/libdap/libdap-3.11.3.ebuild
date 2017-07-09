@@ -11,7 +11,7 @@ SRC_URI="http://www.opendap.org/pub/source/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 URI )"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs test"
 
 RDEPEND="

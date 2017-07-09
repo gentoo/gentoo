@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+glsl python cpu_flags_x86_sse2"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

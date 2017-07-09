@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.hdfgroup.org/lib-external/${PN}/${PV}/src/${P}.tar.gz"
 LICENSE="szip"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ppc64 x86"
 
 IUSE=""
 DEPEND=""

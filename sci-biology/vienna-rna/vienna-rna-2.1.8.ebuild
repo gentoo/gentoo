@@ -16,7 +16,7 @@ SRC_URI="http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="vienna-rna"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc openmp python static-libs"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

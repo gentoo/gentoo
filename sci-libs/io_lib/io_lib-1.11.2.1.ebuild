@@ -7,7 +7,7 @@ SRC_URI="mirror://sourceforge/staden/${P}.tar.gz"
 LICENSE="staden"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 # Prototype changes in io_lib-1.9.0 create incompatibilities with BioPerl. (Only

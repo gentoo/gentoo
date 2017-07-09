@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.ebi.ac.uk/pub/software/unix/clustalw/${PN}${PV}.UNIX.tar.gz"
 
 LICENSE="clustalw"
 SLOT="1"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="alpha amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE=""
 
 S="${WORKDIR}"/${PN}${PV}

@@ -11,7 +11,7 @@ SRC_URI="http://www.cise.ufl.edu/research/sparse/${MY_PN}/versions/${MY_PN}-${PV
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 hppa ppc64 x86"
 IUSE=""
 
 DEPEND="sci-libs/ufconfig"

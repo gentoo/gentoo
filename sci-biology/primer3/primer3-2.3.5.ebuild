@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
-KEYWORDS="amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 
 DEPEND="dev-lang/perl"
 RDEPEND=""

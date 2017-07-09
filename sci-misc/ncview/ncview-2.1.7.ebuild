@@ -12,7 +12,7 @@ SRC_URI="ftp://cirrus.ucsd.edu/pub/ncview/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="media-libs/libpng:0=
 	>=sci-libs/netcdf-4.1[hdf5]

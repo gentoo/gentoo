@@ -17,7 +17,7 @@ SRC_URI="https://github.com/Electrostatics/apbs-pdb2pqr/archive/${GITHUB_REV}.zi
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc examples fast +fetk iapbs mpi openmp python tools"
 
 REQUIRED_USE="

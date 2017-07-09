@@ -15,7 +15,7 @@ SRC_URI="http://registrationcenter-download.intel.com/irc_nas/${PID}/${P_ARCHIVE
 
 SLOT="0"
 LICENSE="Intel-SDP"
-KEYWORDS="-* amd64 ~ia64 x86"
+KEYWORDS="-* amd64 x86"
 IUSE="doc fftw fortran95 int64 mpi"
 
 RESTRICT="strip mirror"

@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P^}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 S="${WORKDIR}/${P^}"

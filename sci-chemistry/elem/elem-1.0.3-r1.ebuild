@@ -7,7 +7,7 @@ DESCRIPTION="periodic table of the elements"
 HOMEPAGE="http://elem.sourceforge.net/"
 SRC_URI="mirror://sourceforge/elem/${PN}-src-${PV}-Linux.tgz"
 LICENSE="GPL-2"
-KEYWORDS="amd64 sparc x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE=""
 

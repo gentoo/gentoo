@@ -13,11 +13,11 @@ HOMEPAGE="http://www.fftw.org/"
 if [[ ${PV} = *9999 ]]; then
 	inherit git-2
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
-	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+	KEYWORDS="alpha amd64 arm hppa ppc64 x86"
 	AUTOTOOLS_AUTORECONF=1
 else
 	SRC_URI="http://www.fftw.org/${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="alpha amd64 arm hppa ~mips ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="GPL-2+"

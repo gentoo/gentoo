@@ -14,7 +14,7 @@ SRC_URI="http://www.isi.edu/nsnam/dist/${P}.tar.gz
 
 LICENSE="xgraph"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="examples"
 RDEPEND="x11-libs/libSM
 	x11-libs/libX11"

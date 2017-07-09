@@ -9,7 +9,7 @@ DESCRIPTION="Interactive Geometry Viewer"
 HOMEPAGE="http://geomview.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 	https://dev.gentoo.org/~jlec/distfiles/geomview.png.tar"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="motionaveraging debug emacs zlib"

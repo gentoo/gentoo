@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 HOMEPAGE="http://gwave.sourceforge.net"
 SRC_URI="https://sourceforge.net/code-snapshots/svn/g/gw/gwave/code/gwave-code-${rev}-trunk.zip"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gnuplot plotutils"
 SLOT="0"
 

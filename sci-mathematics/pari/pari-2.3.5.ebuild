@@ -16,7 +16,7 @@ SRC_URI="${SRC_COM}/unix/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ~mips ppc64 x86 ~x86-fbsd ~x86-solaris"
 IUSE="doc data fltk gmp static-libs X"
 
 RDEPEND="sys-libs/readline

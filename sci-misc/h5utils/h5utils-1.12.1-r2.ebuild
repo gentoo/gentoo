@@ -13,7 +13,7 @@ SRC_URI="http://ab-initio.mit.edu/h5utils/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="hdf octave"
 
 DEPEND="

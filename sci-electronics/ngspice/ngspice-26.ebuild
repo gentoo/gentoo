@@ -13,7 +13,7 @@ LICENSE="BSD GPL-2"
 
 SLOT="0"
 IUSE="X debug readline"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="sys-libs/ncurses
 	readline? ( >=sys-libs/readline-5.0 )

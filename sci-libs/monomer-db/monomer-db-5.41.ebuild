@@ -11,7 +11,7 @@ SRC_URI="http://www2.mrc-lmb.cam.ac.uk/groups/murshudov/content/refmac/Dictionar
 
 SLOT="0"
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 RESTRICT="binchecks strip"

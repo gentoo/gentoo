@@ -11,7 +11,7 @@ HOMEPAGE="https://git.gnome.org/browse/geocode-glib"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ppc64 x86"
 IUSE="+introspection test"
 
 RDEPEND="

@@ -8,7 +8,7 @@ HOMEPAGE="http://www.pragmatic-c.com/${MY_PN}"
 SRC_URI="http://www.pragmatic-c.com/${MY_PN}/downloads/${P}.src.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86"
 IUSE=""
 S=${WORKDIR}/${P}.src
 

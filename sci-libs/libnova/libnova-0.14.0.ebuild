@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~bicatali/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="doc examples static-libs"
 
 DEPEND="doc? ( app-doc/doxygen )"

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/lanceman2/${PN}/archive/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 RDEPEND="

@@ -12,7 +12,7 @@ SRC_URI="http://evolution.gs.washington.edu/${PN}/download/${P}.tar.gz"
 SLOT="0"
 LICENSE="freedist"
 IUSE=""
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="x11-libs/libXaw"
 DEPEND="${RDEPEND}

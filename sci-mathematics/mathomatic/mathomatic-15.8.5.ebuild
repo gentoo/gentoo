@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}/archive/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="doc gnuplot"
 
 DEPEND="sys-libs/readline

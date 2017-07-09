@@ -11,7 +11,7 @@ SRC_URI="http://www.libgeodecomp.org/archive/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="Boost-1.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
 RDEPEND=">=dev-libs/boost-1.48"

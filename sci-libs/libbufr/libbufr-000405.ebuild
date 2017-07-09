@@ -13,7 +13,7 @@ SRC_URI="https://software.ecmwf.int/wiki/download/attachments/35752466/${MY_P}.t
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 # needs someone to test on these: ~alpha ~hppa ~ia64 ~sparc etc ...
 
 IUSE="debug doc examples"

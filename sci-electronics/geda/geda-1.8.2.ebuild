@@ -13,7 +13,7 @@ SRC_URI="http://ftp.geda-project.org/${MY_PN}/stable/v$(get_version_component_ra
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc examples nls stroke threads"
 
 CDEPEND="

@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 SLOT="0"
 IUSE="doc examples gmp odbc mysql static-libs"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 hppa ppc64 x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="sys-libs/zlib
 	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )

@@ -13,7 +13,7 @@ SRC_URI="mirror://github/masci/mmLib/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND="

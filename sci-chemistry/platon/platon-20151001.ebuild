@@ -11,7 +11,7 @@ SRC_URI="http://www.cryst.chem.uu.nl/xraysoft/unix/${PN}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="free-noncomm"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 # Can't do libf2c dependent on whether <gcc-4 is selected for the build,

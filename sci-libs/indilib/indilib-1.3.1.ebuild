@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN/lib/}/${PN/lib/}-${PV}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0/1"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 RDEPEND="

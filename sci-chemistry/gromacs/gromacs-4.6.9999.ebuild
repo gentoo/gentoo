@@ -30,7 +30,7 @@ else
 		doc? ( ftp://ftp.gromacs.org/pub/manual/manual-${MANUAL_PV}.pdf -> ${PN}-manual-${MANUAL_PV}.pdf )
 		test? ( http://gerrit.gromacs.org/download/regressiontests-${TEST_PV}.tar.gz )"
 	LIVE_DEPEND=""
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx"

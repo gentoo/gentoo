@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/world_boundaries-spherical-20090331.tgz
 
 LICENSE="CC-BY-SA-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

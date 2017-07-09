@@ -9,7 +9,7 @@ DESCRIPTION="Oregano is an application for schematic capture and simulation of e
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 HOMEPAGE="http://oregano.gforge.lug.fi.uba.ar/" # broken
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2"
 IUSE=""
 

@@ -19,7 +19,7 @@ SRC_URI="https://sites.google.com/site/timfenn/povscript/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="glut molscript"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
