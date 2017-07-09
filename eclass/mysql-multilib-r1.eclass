@@ -414,10 +414,6 @@ multilib_src_configure() {
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
 	fi
 
-	if in_iuse systemd ; then
-		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
-	fi
-
 	if use openssl || use libressl ; then
 		mycmakeargs+=( -DWITH_SSL=system )
 	else
@@ -447,6 +443,12 @@ multilib_src_configure() {
 	mycmakeargs+=( -DWITH_EDITLINE=bundled )
 
 	if multilib_is_native_abi && use server ; then
+
+		# systemd is only linked to for server notification
+		if in_iuse systemd ; then
+			mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
+		fi
+
 		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
 			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
 			ewarn "and a collation of ${MYSQL_DEFAULT_COLLATION}."
@@ -505,6 +507,7 @@ multilib_src_configure() {
 			-DWITHOUT_EMBEDDED_SERVER=1
 			-DEXTRA_CHARSETS=none
 			-DINSTALL_SQLBENCHDIR=
+			-DWITH_SYSTEMD=NO
 		)
 	fi
 
