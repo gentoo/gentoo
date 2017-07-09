@@ -1,0 +1,21 @@
+# HG changeset patch
+# User Kristian Fiskerstrand <kf@sumptuouscapital.com>
+# Date 1499612080 -7200
+# Node ID 0106ba2f6abc8ee2f685026d3f218730114a60fa
+# Parent  719ffdf628a81a2f052f3b6dc746a3e1d37afe30
+Add num to findlib packages
+
+Although nums is detected, making this explicit
+
+diff --git a/Makefile b/Makefile
+--- a/Makefile
++++ b/Makefile
+@@ -53,7 +53,7 @@
+ endif
+ 
+ CAMLP4=-pp $(CAMLP4O)
+-CAMLINCLUDE= -package cryptokit,unix,str,bigarray -I lib -I bdb
++CAMLINCLUDE= -package cryptokit,unix,str,bigarray,num -I lib -I bdb
+ COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLLDFLAGS) -ccopt -Lbdb -dtypes $(WARNERR)
+ OCAMLDEP=ocamldep $(CAMLP4)
+ CAMLLIBS=bdb.cma
