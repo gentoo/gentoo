@@ -4308,7 +4308,7 @@ dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
 dev-java/metadata-extractor 2.8.1: Access the metadata in digital images and video via a simple Java API
 dev-java/metainf-services 1.6 1.7: Generates META-INF/services files automatically
-dev-java/microba 0.4.4.3: Swing components for date operations and palettes
+dev-java/microba 0.4.4.3 0.4.4.3-r1: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/milton-api 2.7.1.3: Milton WebDav library
 dev-java/milton-mail-api 2.7.1.3: Milton WebDav library
