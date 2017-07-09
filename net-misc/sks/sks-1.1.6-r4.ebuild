@@ -54,10 +54,6 @@ src_prepare() {
 		-e "s:^MANDIR=.*$:MANDIR=${D}/usr/share/man:g" \
 		Makefile.local || die
 	sed -i \
-		-e 's:^CAMLINCLUDE= -I lib -I bdb$:CAMLINCLUDE= -I lib -I bdb -I +cryptokit:g' \
-		-e 's:-Werror-implicit-function-declaration::g' \
-		Makefile bdb/Makefile || die
-	sed -i \
 		-e 's:/usr/sbin/sks:/usr/bin/sks:g' \
 		sks_build.sh || die
 	eapply_user
