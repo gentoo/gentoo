@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit toolchain-funcs
 
-MY_RELEASEDATE="20170609"
+MY_RELEASEDATE="20170630"
 
 MY_P="${P//_/-}"
 IUSE=""
