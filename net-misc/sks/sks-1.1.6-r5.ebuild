@@ -48,7 +48,6 @@ src_prepare() {
 			"${FILESDIR}/${P}-use-ocamlfind2.patch" \
 			"${FILESDIR}/${P}-use-ocamlfind3.patch"
 
-
 	cp Makefile.local.unused Makefile.local || die
 	sed -i \
 		-e "s:^BDBLIB=.*$:BDBLIB=-L/usr/$(get_libdir):g" \
