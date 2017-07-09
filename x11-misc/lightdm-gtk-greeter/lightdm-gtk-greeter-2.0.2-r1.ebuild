@@ -21,6 +21,7 @@ COMMON_DEPEND="ayatana? ( dev-libs/libindicator:3 )
 	>=x11-misc/lightdm-1.2.2"
 
 DEPEND="${COMMON_DEPEND}
+	dev-util/intltool
 	sys-devel/gettext
 	xfce-base/exo"
 
