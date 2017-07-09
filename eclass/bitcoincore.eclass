@@ -12,7 +12,7 @@
 #
 # The eclass provides all common dependencies as well as common use flags.
 
-has "${EAPI:-0}" 5 || die "EAPI=${EAPI} not supported"
+has "${EAPI:-0}" 5 6 || die "EAPI=${EAPI} not supported"
 
 if [[ ! ${_BITCOINCORE_ECLASS} ]]; then
 
@@ -340,6 +340,7 @@ bitcoincore_prepare() {
 }
 
 bitcoincore_autoreconf() {
+	[[ ${EAPI} != 5 ]] && eapply_user
 	eautoreconf
 	rm -r src/leveldb || die
 	rm -r src/secp256k1 || die
