@@ -35,6 +35,7 @@ src_compile() {
 	echo "build --verbose_failures --spawn_strategy=standalone --genrule_strategy=standalone" \
 		> "${T}/bazelrc" || die
 	output/bazel --bazelrc="${T}/bazelrc" build scripts:bazel-complete.bash || die
+	mv bazel-bin/scripts/bazel-complete.bash output/ || die
 }
 
 src_test() {
@@ -49,21 +50,21 @@ src_test() {
 src_install() {
 	output/bazel shutdown
 	dobin output/bazel
-	newbashcomp bazel-bin/scripts/bazel-complete.bash ${PN}
+	newbashcomp output/bazel-complete.bash ${PN}
 	if use zsh-completion ; then
 		insinto /usr/share/zsh/site-functions
 		doins scripts/zsh_completion/_bazel
 	fi
 	if use examples; then
 		docinto examples
-		doins -r examples/*
+		dodoc -r examples/*
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 	# could really build tools but I don't know which ones
 	# are actually used
 	if use tools; then
 		docinto tools
-		doins -r tools/*
+		dodoc -r tools/*
 		docompress -x /usr/share/doc/${PF}/tools
 	fi
 }
