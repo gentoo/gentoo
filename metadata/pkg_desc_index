@@ -2575,7 +2575,7 @@ app-vim/eruby-syntax 2.0-r1: vim plugin: syntax highlighting for eruby
 app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filetype and indent settings
 app-vim/exheres-syntax 20090310 99999999: vim plugin: exheres format highlighting
 app-vim/extra-syntax 4-r1: vim plugin: metapackage for all extra syntax packages
-app-vim/ferret 1.4 1.4-r1 1.5: vim plugin: enhanced multi-file search
+app-vim/ferret 1.4 1.4-r1 1.5 2.0: vim plugin: enhanced multi-file search
 app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
 app-vim/fugitive 2.2 9999: vim plugin: a git wrapper for vim
@@ -17721,7 +17721,7 @@ sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2
 sys-fs/e4rat 0.2.4_pre20141201 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108-r1: eCryptfs userspace utilities
 sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1 1.9 1.9.1: An implementation of encrypted filesystem in user-space using FUSE
-sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem
+sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
 sys-fs/eudev 1.9-r2 1.10-r2 3.1.2 3.1.5 3.2.2 3.2.2-r1 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.2.4 1.2.6 1.2.7: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
