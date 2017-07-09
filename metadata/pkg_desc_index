@@ -17312,7 +17312,7 @@ sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
 sys-auth/libnss-pgsql 1.4.0 1.5.0_beta: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.12 1.13: Yubico C low-level library
-sys-auth/munge 0.5.10-r2 0.5.11-r1: An authentication service for creating and validating credentials
+sys-auth/munge 0.5.10-r2 0.5.11-r1 0.5.12: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.10-r3 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.7 0.9.8: NSS module for name lookups using LDAP
@@ -17546,8 +17546,8 @@ sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemake
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
-sys-cluster/singularity 2.2.1: Application containers for Linux
-sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
+sys-cluster/singularity 2.2.1 2.3.1: Application containers for Linux
+sys-cluster/slurm 16.05.2 17.02.6: A Highly Scalable Resource Manager
 sys-cluster/swift 2.10.2 2.13.1 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 2.2.0 2.2.1 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
