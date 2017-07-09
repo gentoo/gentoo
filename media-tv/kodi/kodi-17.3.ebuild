@@ -14,6 +14,9 @@ LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
 FFMPEG_VERSION="3.1.6"
 CODENAME="Krypton"
+PATCHES=(
+	"${FILESDIR}/${P}-ftpparse_string.patch"
+)
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
