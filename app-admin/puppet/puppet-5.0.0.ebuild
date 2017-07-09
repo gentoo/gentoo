@@ -18,7 +18,7 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~x86"
-IUSE="augeas diff doc emacs experimental ldap rrdtool selinux shadow sqlite vim-syntax"
+IUSE="augeas diff doc emacs ldap rrdtool selinux shadow sqlite vim-syntax"
 RESTRICT="test"
 
 ruby_add_rdepend "
@@ -67,10 +67,6 @@ all_ruby_prepare() {
 
 	# fix systemd path
 	epatch "${FILESDIR}/puppet-systemd.patch"
-
-	if use experimental; then
-		epatch "${FILESDIR}/43e2c935252b995134ce353e5e6312cf77aea480.patch"
-	fi
 
 	# Avoid specs that can only run in the puppet.git repository. This
 	# should be narrowed down to the specific specs.
