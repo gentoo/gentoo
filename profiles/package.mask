@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (09 Jul 2017)
+# Upstream has removed the code and the published gem.
+# Removal in 30 days.
+dev-ruby/modernizr
+
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
