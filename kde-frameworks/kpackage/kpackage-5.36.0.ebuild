@@ -28,6 +28,10 @@ src_configure() {
 }
 
 src_test() {
+	# bug 621458
+	mkdir -p "${HOME}/.local/share/kservicetypes5" || die
+	cp "${S}"/src/kpackage/data/servicetypes/*desktop "${HOME}/.local/share/kservicetypes5/" || die
+
 	# tests cannot be run in parallel #606942
 	local myctestargs=(
 		-j1
