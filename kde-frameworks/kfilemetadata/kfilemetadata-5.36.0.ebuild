@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	kernel_linux? ( sys-apps/attr )
 "
 
+REQUIRED_USE="test? ( taglib )"
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package epub EPub)
