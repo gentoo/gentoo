@@ -33,7 +33,7 @@ COMMON_DEPEND=">=dev-libs/btparser-0.18:=
 	${PYTHON_DEPS}
 "
 RDEPEND="${COMMON_DEPEND}
-	|| ( gnome-base/gnome-keyring >=kde-apps/kwalletd-4.8 )
+	|| ( gnome-base/gnome-keyring >=kde-frameworks/kwallet-5.34.0-r1  >=kde-apps/kwalletd-4.8 )
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/asciidoc
