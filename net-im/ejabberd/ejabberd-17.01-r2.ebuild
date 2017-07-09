@@ -28,26 +28,27 @@ RESTRICT="test"
 # TODO: 	>=dev-erlang/moka-1.0.5b
 # TODO: )
 CDEPEND="
-	>=dev-erlang/cache_tab-1.0.7
-	>=dev-erlang/esip-1.0.11
-	>=dev-erlang/fast_tls-1.0.11
-	>=dev-erlang/fast_xml-1.1.21
-	>=dev-erlang/fast_yaml-1.0.9
+	>=dev-erlang/cache_tab-1.0.6
+	>=dev-erlang/esip-1.0.10
+	>=dev-erlang/fast_tls-1.0.10
+	>=dev-erlang/fast_xml-1.1.19
+	>=dev-erlang/fast_yaml-1.0.8
 	>=dev-erlang/jiffy-0.14.8
 	>=dev-erlang/lager-3.2.1
 	>=dev-erlang/luerl-0.2
 	>=dev-erlang/p1_oauth2-0.6.1
-	>=dev-erlang/p1_utils-1.0.8
-	>=dev-erlang/stringprep-1.0.8
-	>=dev-erlang/stun-1.0.10
-	>=dev-erlang/xmpp-1.1.9
+	>=dev-erlang/p1_utils-1.0.6
+	>=dev-erlang/stringprep-1.0.7
+	>=dev-erlang/stun-1.0.9
+	>=dev-erlang/xmpp-1.1.6
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( >=dev-erlang/p1_mysql-1.0.2 )
-	nls? ( >=dev-erlang/iconv-1.0.4 )
+	nls? ( >=dev-erlang/iconv-1.0.3 )
 	odbc? ( dev-db/unixODBC )
-	pam? ( >=dev-erlang/epam-1.0.2 )
+	pam? ( >=dev-erlang/epam-1.0.0-r1
+		<dev-erlang/epam-1.0.1 )
 	postgres? ( >=dev-erlang/p1_pgsql-1.1.2 )
 	redis? ( >=dev-erlang/eredis-1.0.8 )
 	riak? (
@@ -63,7 +64,7 @@ RDEPEND="${CDEPEND}
 
 DOCS=( README )
 PATCHES=( "${FILESDIR}/${P}-ejabberdctl.patch"
-	"${FILESDIR}/${P}-0001-Don-t-configure-or-compile-deps.patch" )
+	"${FILESDIR}/${P}-0001-Dont-overwrite-service-file.patch" )
 
 EJABBERD_CERT="${EPREFIX}/etc/ssl/ejabberd/server.pem"
 # Paths in net-im/jabber-base
@@ -157,7 +158,7 @@ is_mod_irc_enabled() {
 # Make ejabberd.service for systemd from upstream provided template.
 make_ejabberd_service() {
 	sed -r \
-		-e 's!@ctlscriptpath@!/usr/sbin!' \
+		-e 's!@ctlscriptpath@!/usr/sbin!g' \
 		-e 's!(User|Group)=(.*)!\1=jabber!' \
 		"${PN}.service.template" >"${PN}.service" \
 		|| die 'failed to make ejabberd.service'
@@ -217,7 +218,6 @@ src_prepare() {
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
 
 	rebar_fix_include_path fast_xml
-	rebar_fix_include_path p1_utils
 	rebar_fix_include_path xmpp
 
 	# Fix bug #591862. ERL_LIBS should point directly to ejabberd directory

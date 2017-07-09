@@ -28,27 +28,26 @@ RESTRICT="test"
 # TODO: 	>=dev-erlang/moka-1.0.5b
 # TODO: )
 CDEPEND="
-	>=dev-erlang/cache_tab-1.0.6
-	>=dev-erlang/esip-1.0.10
-	>=dev-erlang/fast_tls-1.0.10
-	>=dev-erlang/fast_xml-1.1.19
-	>=dev-erlang/fast_yaml-1.0.8
+	>=dev-erlang/cache_tab-1.0.7
+	>=dev-erlang/esip-1.0.11
+	>=dev-erlang/fast_tls-1.0.11
+	>=dev-erlang/fast_xml-1.1.21
+	>=dev-erlang/fast_yaml-1.0.9
 	>=dev-erlang/jiffy-0.14.8
 	>=dev-erlang/lager-3.2.1
 	>=dev-erlang/luerl-0.2
 	>=dev-erlang/p1_oauth2-0.6.1
-	>=dev-erlang/p1_utils-1.0.6
-	>=dev-erlang/stringprep-1.0.7
-	>=dev-erlang/stun-1.0.9
-	>=dev-erlang/xmpp-1.1.6
+	>=dev-erlang/p1_utils-1.0.8
+	>=dev-erlang/stringprep-1.0.8
+	>=dev-erlang/stun-1.0.10
+	>=dev-erlang/xmpp-1.1.9
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( >=dev-erlang/p1_mysql-1.0.2 )
-	nls? ( >=dev-erlang/iconv-1.0.3 )
+	nls? ( >=dev-erlang/iconv-1.0.4 )
 	odbc? ( dev-db/unixODBC )
-	pam? ( >=dev-erlang/epam-1.0.0
-		<dev-erlang/epam-1.0.1 )
+	pam? ( >=dev-erlang/epam-1.0.2 )
 	postgres? ( >=dev-erlang/p1_pgsql-1.1.2 )
 	redis? ( >=dev-erlang/eredis-1.0.8 )
 	riak? (
@@ -63,7 +62,9 @@ RDEPEND="${CDEPEND}
 	captcha? ( media-gfx/imagemagick[truetype,png] )"
 
 DOCS=( README )
-PATCHES=( "${FILESDIR}/${P}-ejabberdctl.patch" )
+PATCHES=( "${FILESDIR}/${P}-ejabberdctl.patch"
+	"${FILESDIR}/${P}-0001-Don-t-configure-or-compile-deps.patch"
+	"${FILESDIR}/${P}-0002-Dont-overwrite-service-file.patch" )
 
 EJABBERD_CERT="${EPREFIX}/etc/ssl/ejabberd/server.pem"
 # Paths in net-im/jabber-base
@@ -157,7 +158,7 @@ is_mod_irc_enabled() {
 # Make ejabberd.service for systemd from upstream provided template.
 make_ejabberd_service() {
 	sed -r \
-		-e 's!@ctlscriptpath@!/usr/sbin!' \
+		-e 's!@ctlscriptpath@!/usr/sbin!g' \
 		-e 's!(User|Group)=(.*)!\1=jabber!' \
 		"${PN}.service.template" >"${PN}.service" \
 		|| die 'failed to make ejabberd.service'
@@ -191,6 +192,19 @@ skip_docs() {
 ' "${S}/Makefile.in" || die 'failed to remove docs section from Makefile.in'
 }
 
+pkg_setup() {
+	if use pam; then
+		einfo "Adding jabber user to epam group to allow ejabberd to use PAM" \
+			"authentication"
+		# See
+		# <https://docs.ejabberd.im/admin/configuration/#pam-authentication>.
+		# epam binary is installed by dev-erlang/epam package, therefore SUID
+		# is set by that package. Instead of jabber group it uses epam group,
+		# therefore we need to add jabber user to epam group.
+		usermod -a -G epam jabber || die
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -204,6 +218,7 @@ src_prepare() {
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
 
 	rebar_fix_include_path fast_xml
+	rebar_fix_include_path p1_utils
 	rebar_fix_include_path xmpp
 
 	# Fix bug #591862. ERL_LIBS should point directly to ejabberd directory
@@ -248,10 +263,6 @@ src_install() {
 		pamd_mimic_system xmpp auth account || die "cannot create pam.d file"
 		into "$(get_ejabberd_path)/priv"
 		newbin epam-wrapper epam
-		# PAM helper module permissions
-		# https://www.process-one.net/docs/ejabberd/guide_en.html#pam
-		fowners root:jabber "${epam_path}"
-		fperms 4750 "${epam_path}"
 	fi
 
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
@@ -305,14 +316,6 @@ pkg_postinst() {
 
 	if ! ejabberd_cert_exists; then
 		ejabberd_cert_install
-	fi
-
-	if use pam; then
-		# sfperms drops read bit from files with suid. Reapply it.
-		# Fix bug #592218.
-		local epam_path="$(get_ejabberd_path)/priv/bin/epam"
-		chmod g+r "${EROOT%/}${epam_path}" \
-			|| die "failed to correct ${epam_path} permissions"
 	fi
 
 	if ! use nls && is_mod_irc_enabled; then
