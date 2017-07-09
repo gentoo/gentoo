@@ -26,7 +26,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/${MY_P}/${PN#selinux-}"
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -39,6 +39,7 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 	>=app-admin/setools-4.0
 	dev-python/ipy[${PYTHON_USEDEP}]
 	!dev-python/sepolgen
+	!<sys-apps/policycoreutils-2.7_rc1
 	${PYTHON_DEPS}"
 
 RDEPEND="${DEPEND}"
