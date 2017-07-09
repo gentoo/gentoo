@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,6 +21,7 @@ DEPEND="zlib? ( >=sys-libs/zlib-1.1 )
 RDEPEND="${DEPEND}"
 
 DOCS=( "Changes" "README.txt" "AUTHORS.txt" )
+REQUIRED_USE="test? ( ocamlopt )"
 
 src_configure() {
 	oasis_configure_opts="$(use_enable zlib)" \
