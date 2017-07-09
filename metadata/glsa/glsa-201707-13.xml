@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-13">
+  <title>libcroco: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libcroco, the worst of
+    which may have unspecified impacts.
+  </synopsis>
+  <product type="ebuild">libcroco</product>
+  <announced>2017-07-09</announced>
+  <revised>2017-07-09: 1</revised>
+  <bug>618012</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libcroco" auto="yes" arch="*">
+      <unaffected range="ge" slot="">0.6.12-r1</unaffected>
+      <vulnerable range="lt" slot="">0.6.12-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libcroco is a standalone CSS2 parsing and manipulation library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libcroco. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted CSS
+      file possibly resulting in a Denial of Service condition or other
+      unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libcroco users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libcroco-0.6.12-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7960">CVE-2017-7960</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7961">CVE-2017-7961</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-21T07:37:50Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-09T20:40:19Z">whissi</metadata>
+</glsa>
