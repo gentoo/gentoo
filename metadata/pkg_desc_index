@@ -11627,7 +11627,7 @@ gnome-base/gnome-light 3.20.0 3.22.0 3.22.2: Meta package for GNOME-Light, merge
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-session 3.22.3 3.24.1: Gnome session manager
-gnome-base/gnome-settings-daemon 3.22.2 3.24.2: Gnome Settings Daemon
+gnome-base/gnome-settings-daemon 3.22.2 3.22.2-r1 3.24.2: Gnome Settings Daemon
 gnome-base/gnome-shell 3.22.3 3.22.3-r2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.22.0 3.24.0: Collection of GSettings schemas for GNOME desktop
