@@ -20,9 +20,6 @@ DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 RDEPEND="${DEPEND}"
 
 python_prepare_all() {
-	sed -e 's:SPHINXBUILD   = sphinx-build:SPHINXBUILD   = /usr/bin/sphinx-build:' \
-		-i docs/Makefile || die
-
 	# Disable tests that seek to read the version of pkginfo from an installed state
 	# These test will still become installed and testable once installed
 	sed -e 's:test_w_directory_no_EGG_INFO:_&:' \
