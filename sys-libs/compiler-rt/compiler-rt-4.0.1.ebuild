@@ -34,6 +34,13 @@ S=${WORKDIR}/${P/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+pkg_pretend() {
+	if ! use clang && ! tc-is-clang; then
+		ewarn "Building using a compiler other than clang may result in broken atomics"
+		ewarn "library. Enable USE=clang unless you have a very good reason not to."
+	fi
+}
+
 pkg_setup() {
 	llvm_pkg_setup
 	python-any-r1_pkg_setup
