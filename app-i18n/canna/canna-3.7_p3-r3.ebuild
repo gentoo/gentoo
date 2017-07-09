@@ -16,11 +16,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 IUSE="canuum doc ipv6"
 
-DEPEND="x11-misc/gccmakedep
+RDEPEND="canuum? (
+		dev-libs/libspt
+		sys-libs/ncurses:=
+	)"
+DEPEND="${RDEPEND}
+	x11-misc/gccmakedep
 	x11-misc/imake
 	canuum? (
-		dev-libs/libspt
-		sys-libs/ncurses
 		virtual/pkgconfig
 	)
 	doc? (
@@ -28,7 +31,6 @@ DEPEND="x11-misc/gccmakedep
 		dev-texlive/texlive-langjapanese
 		dev-texlive/texlive-latexrecommended
 	)"
-RDEPEND=""
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
