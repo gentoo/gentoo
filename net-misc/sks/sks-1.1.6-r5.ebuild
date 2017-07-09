@@ -60,6 +60,7 @@ src_prepare() {
 	sed -i \
 		-e 's:/usr/sbin/sks:/usr/bin/sks:g' \
 		sks_build.sh || die
+	dosym /usr/bin/sks_build.sh /usr/bin/sks_build.bc.sh
 	eapply_user
 }
 
