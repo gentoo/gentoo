@@ -1063,7 +1063,7 @@ app-editors/retext 7.0.0 7.0.1 9999: Simple editor for Markdown and reStructured
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
-app-editors/sublime-text 2.0.2-r2 3_pre3126-r2: Sophisticated text editor for code, markup and prose
+app-editors/sublime-text 2.0.2-r2 3_pre3126-r3: Sophisticated text editor for code, markup and prose
 app-editors/tea 43.1.0 44.0.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
