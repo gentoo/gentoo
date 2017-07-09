@@ -83,7 +83,7 @@ src_prepare() {
 	cd "${S}" || die "Failed to switch to ${S}"
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live ebuilds please use /etc/portage/patches
-		eapply "${FILESDIR}/policycoreutils-2.7-0001-newrole-not-suid.patch"
+		eapply "${FILESDIR}/policycoreutils-2.7_rc1-0001-newrole-not-suid.patch"
 	fi
 
 	# rlpkg is more useful than fixfiles
