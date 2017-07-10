@@ -238,12 +238,6 @@ media-sound/skype-call-recorder
 net-im/skype
 net-im/skypetab-ng
 
-# Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2017)
-# Dead upstream, relies on ancient and vulnerable qtwebkit
-# See bug #620690
-# Removal in 30 days
-app-editors/fb2edit
-
 # Michał Górny <mgorny@gentoo.org> (07 Jun 2017)
 # The new release changes API and *breaks* core Xfce components.
 # Upstream lists xfce-base/xfce4-settings and xfce-base/xfce4-panel
