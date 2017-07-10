@@ -30,8 +30,8 @@ IUSE="doc lapack test"
 
 RDEPEND="lapack? ( virtual/cblas virtual/lapack )"
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( app-arch/unzip )
 	lapack? ( virtual/pkgconfig )
 	test? ( >=dev-python/nose-1.0[${PYTHON_USEDEP}] )"
 
@@ -127,8 +127,10 @@ python_prepare_all() {
 }
 
 python_compile() {
+	local python_makeopts_jobs=""
+	python_is_python3 || python_makeopts_jobs="-j $(makeopts_jobs)"
 	distutils-r1_python_compile \
-		$(usex python_targets_python3_5 "" "-j $(makeopts_jobs)") \
+		${python_makeopts_jobs} \
 		${NUMPY_FCONFIG}
 }
 
