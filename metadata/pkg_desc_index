@@ -1381,13 +1381,13 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 2.0 2.1 2.2 2.3 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
-app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
+app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
+app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170614 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -9093,7 +9093,7 @@ dev-ros/dynamic_reconfigure 1.5.46 1.5.47 1.5.48 9999: Provides a means to chang
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
-dev-ros/filters 1.7.5 1.8.0 1.8.1 9999: Standardized interface for processing data as a sequence of filters
+dev-ros/filters 1.8.1 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_msgs 2.6.2 9999: Message and service data structures for interacting with Gazebo from ROS
 dev-ros/gazebo_plugins 2.6.2 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
 dev-ros/gazebo_ros 2.6.2 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
@@ -9205,7 +9205,7 @@ dev-ros/resource_retriever 1.12.3 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.2.0 2.2.1 2.2.2 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.14.0 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
-dev-ros/robot_state_publisher 1.13.4 1.13.5 9999: Package for publishing the state of a robot to tf
+dev-ros/robot_state_publisher 1.13.5 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.13.0 9999: Set of tools for recording from and playing back to ROS topics
@@ -9309,7 +9309,7 @@ dev-ros/std_msgs 0.5.11 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.2 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.12.19-r1 1.12.20 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 1.12.5 9999: Messages specific to stereo processing, such as disparity images
-dev-ros/test_bond 1.7.16 1.7.17 1.7.18 1.7.19 9999: Tests for bond, bondpy and bondcpp
+dev-ros/test_bond 1.7.19 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.10 1.9.0 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.9.9 1.9.10 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 9999: Nodelet topic tools unit tests
@@ -9329,7 +9329,7 @@ dev-ros/tf2 0.5.15 9999: The second generation Transform Library in ROS
 dev-ros/tf2_bullet 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 bullet support
 dev-ros/tf2_eigen 0.5.13 0.5.14 0.5.15 9999: TF2 eigen support
 dev-ros/tf2_geometry_msgs 0.5.12 0.5.13 0.5.14 0.5.15 9999: The second generation Transform Library in ROS
-dev-ros/tf2_kdl 0.5.12 0.5.13 0.5.14 0.5.15 9999: KDL binding for tf2
+dev-ros/tf2_kdl 0.5.15 9999: KDL binding for tf2
 dev-ros/tf2_msgs 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 messages
 dev-ros/tf2_py 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 python bindings
 dev-ros/tf2_ros 0.5.13-r1 0.5.14 0.5.15 9999: ROS bindings for the tf2 library, for both Python and C++
