@@ -85,7 +85,7 @@ case "${PV}" in
 	else
 		LIBEVENT_DEPEND="dev-libs/libevent"
 	fi
-	LIBSECP256K1_DEPEND="=dev-libs/libsecp256k1-0.0.0_pre20151118[recovery]"
+	LIBSECP256K1_DEPEND=">=dev-libs/libsecp256k1-0.0.0_pre20151118[recovery]"
 	UNIVALUE_DEPEND="dev-libs/univalue"
 	BITCOINCORE_LJR_NAME=knots
 	if in_bcc_iuse ljr; then
