@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
 else
 	SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~x86"
 fi
 
 DESCRIPTION="GNU Music Typesetter"
@@ -99,7 +99,7 @@ src_configure() {
 	# documentation generation currently not supported since it requires a newer
 	# version of texi2html than is currently in the tree
 
-	local myeconfargs+=(
+	local myeconfargs=(
 		--with-texgyre-dir=/usr/share/fonts/tex-gyre
 		--disable-documentation
 		--disable-optimising
