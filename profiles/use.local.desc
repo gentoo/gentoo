@@ -5833,6 +5833,7 @@ net-irc/unrealircd:shunnotices - Enable notifying a user when un-shunned
 net-irc/unrealircd:topicisnuhost - Enable displaying nick!user@host as topic setter
 net-irc/unrealircd:usermod - Enable /set* and /chg* commands
 net-irc/weechat:alias - Enable plugin for alias control.
+net-irc/weechat:buflist - Enable buflist plugin.
 net-irc/weechat:charset - Enable encoding conversions.
 net-irc/weechat:exec - Enable exec plugin.
 net-irc/weechat:fifo - Enable FIFO support (sh pipes).

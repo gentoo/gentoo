@@ -323,7 +323,7 @@ app-arch/unar 1.10.1: unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7 2.0_pre7_p1 2.0_pre7_p1-r1: Script for unpacking various file formats
-app-arch/unrar 5.4.5 5.5.5-r1: Uncompress rar files
+app-arch/unrar 5.4.5 5.5.5-r1 5.5.6: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4 1.4.2: InstallShield CAB file extractor
@@ -11602,7 +11602,7 @@ games-util/umodpack 0.5_beta16-r2: portable and useful [un]packer for Unreal Tou
 games-util/uz2unpack 0.1: UZ2 Decompressor for UT2003/UT2004
 games-util/vispatch 1.4.6: WaterVIS utility for glquake
 games-util/wiiload 0.5: load homebrew apps over the network to your Wii
-games-util/wit 2.30a 2.31a 2.40a: A set of command line tools to manipulate Wii/GameCube ISO images and WBFS containers
+games-util/wit 2.40a: command line tools to manipulate Wii/GameCube ISO images and WBFS containers
 games-util/wxchtdecoder 1.5a-r1: A program to decode .CHT files in Snes9x and ZSNES to plain text
 games-util/xboxdrv 0.8.5-r1 0.8.8: Userspace Xbox 360 Controller driver
 games-util/xboxgw 1.082: Tunnels XBox system link games over the net
@@ -12909,7 +12909,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.50 10.51 10.53 10.54 10.55: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.55 10.59: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.3 0.1.5: Fraunhofer AAC codec library
@@ -13068,7 +13068,7 @@ media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1 1.14.0 1.16.0 1.18.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.7: Extensible multimedia container format based on EBML
 media-libs/libmediaart 0.7.0 1.9.1: Manages, extracts and handles media art caches
-media-libs/libmediainfo 0.7.94 0.7.95 0.7.96: MediaInfo libraries
+media-libs/libmediainfo 0.7.96 0.7.97: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.8 3.3.10 3.3.11 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
@@ -13781,7 +13781,7 @@ media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2-r3 2.19.54 2.19.55 2.19.56 2.19.57 2.19.58 2.19.59 2.19.60 2.19.61 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2-r3 2.19.54 2.19.61 2.19.63 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
@@ -14116,7 +14116,7 @@ media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
 media-video/makemkv 1.10.6: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
-media-video/mediainfo 0.7.94 0.7.95 0.7.96: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 0.7.96 0.7.97: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
@@ -14808,7 +14808,7 @@ net-irc/sic 1.1 1.2: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.7 4.0.6: An advanced Internet Relay Chat daemon
-net-irc/weechat 1.4-r1 1.7-r1 1.7.1 1.8 9999: Portable and multi-interface IRC client
+net-irc/weechat 1.4-r1 1.7-r1 1.7.1 1.8 1.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.4-r1 1.6.3-r1 1.6.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
@@ -17774,7 +17774,7 @@ sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of dir
 sys-fs/pytagsfs 0.9.2: File system that arranges media files based their tags
 sys-fs/quota 3.17-r1 4.02 4.03: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
-sys-fs/rar2fs 1.23.1 1.24.0 1.24.1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
+sys-fs/rar2fs 1.23.1 1.24.0 1.24.1 1.25.2: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
