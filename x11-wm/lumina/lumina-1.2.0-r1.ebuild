@@ -5,14 +5,13 @@ EAPI=6
 
 inherit qmake-utils
 DESCRIPTION="Lumina desktop environment"
-HOMEPAGE="http://lumina-desktop.org/"
-I18N="161211"
-SRC_URI="https://github.com/trueos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://lumina-desktop.org/"
+SRC_URI="https://github.com/trueos/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-IUSE=""
+IUSE="desktop-utils"
 
 COMMON_DEPEND="dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
@@ -37,23 +36,31 @@ RDEPEND="$COMMON_DEPEND
 	sys-fs/inotify-tools
 	x11-misc/numlockx
 	x11-wm/fluxbox
-	x11-apps/xbacklight
+	|| ( x11-apps/xbacklight
+	sys-power/acpilight )
 	media-sound/alsa-utils
 	sys-power/acpi
 	app-admin/sysstat"
 
+S="${WORKDIR}/${P/_/-}"
+
+PATCHES=(
+	"${FILESDIR}/1.2.0-desktop-files.patch"
+)
+
 src_prepare(){
 	default
 
-	rm -rf src-qt5/desktop-utils || die
-
-	sed -e "/desktop-utils/d" -i src-qt5/src-qt5.pro || die
+	if use !desktop-utils ; then
+		rm -rf src-qt5/desktop-utils || die
+		sed -e "/desktop-utils/d" -i src-qt5/src-qt5.pro || die
+	fi
 }
 
 src_configure(){
 	eqmake5 PREFIX="${EPREFIX}/usr" L_BINDIR="${EPREFIX}/usr/bin" \
 		L_ETCDIR="${EPREFIX}/etc" L_LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" DESTDIR="${D}" CONFIG+=WITH_I18N
+		LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" DESTDIR="${D}" CONFIG+=WITH_I18N QMAKE_CFLAGS_ISYSTEM=
 }
 
 src_install(){
