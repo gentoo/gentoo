@@ -4922,7 +4922,7 @@ dev-libs/libpfm 4.4.0 4.6.0 4.8.0: Hardware-based performance monitoring interfa
 dev-libs/libpipeline 1.2.5 1.3.1 1.4.0 1.4.1: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
-dev-libs/libpqxx 4.0.1: C++ client API for PostgreSQL. The standard front-end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 4.0.1 5.0.1: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 3.0.0 3.1.0-r1: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0 3.1.0: Framework to easy access to the Prelude database
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
@@ -7097,7 +7097,7 @@ dev-php/PEAR-Services_W3C_CSSValidator 0.2.3: Provides an object oriented interf
 dev-php/PEAR-Services_W3C_HTMLValidator 1.0.0-r1: Object oriented interface to the API of validator.w3.org
 dev-php/PEAR-Services_Weather 1.4.6: This class acts as an interface to various online weather-services
 dev-php/PEAR-Spreadsheet_Excel_Writer 0.9.3 0.9.4: Package for generating Excel spreadsheets
-dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a record set of data for paging and sorting purposes.
+dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a record set of data for paging and sorting
 dev-php/PEAR-Structures_Graph 1.1.1-r1: Graph datastructure manipulation library
 dev-php/PEAR-System_Command 1.0.8-r1: PHP command-line execution interface
 dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
