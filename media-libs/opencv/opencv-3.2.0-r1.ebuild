@@ -17,6 +17,37 @@ SLOT="0/3.2" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="contrib cuda debug +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 ipp jpeg jpeg2k lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine contrib_cvv contrib_hdf contrib_sfm contrib_xfeatures2d"
 
+ARM_CPU_FEATURES=(
+    cpu_flags_arm_neon:neon
+)
+ARM_CPU_REQUIRED_USE="
+    arm64? ( cpu_flags_arm_v8 )
+    cpu_flags_arm_v8? (  cpu_flags_arm_vfpv3 cpu_flags_arm_neon )
+    cpu_flags_arm_neon? ( cpu_flags_arm_thumb2 cpu_flags_arm_vfp )
+    cpu_flags_arm_vfpv3? ( cpu_flags_arm_vfp )
+    cpu_flags_arm_thumb2? ( cpu_flags_arm_v6 )
+    cpu_flags_arm_v6? ( cpu_flags_arm_thumb )
+"
+X86_CPU_FEATURES_RAW=( avx:avx avx2:avx2 fma3:fma3 fma4:fma4 sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop popcnt:popcnt )
+X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
+X86_CPU_REQUIRED_USE="
+    cpu_flags_x86_avx2? ( cpu_flags_x86_avx )
+    cpu_flags_x86_fma3? ( cpu_flags_x86_avx )
+    cpu_flags_x86_xop?  ( cpu_flags_x86_avx )
+    cpu_flags_x86_avx?  ( cpu_flags_x86_sse4_2 )
+    cpu_flags_x86_popcnt? ( cpu_flags_x86_sse4_2 )
+    cpu_flags_x86_sse4_2?  ( cpu_flags_x86_sse4_1 )
+    cpu_flags_x86_sse4_1?  ( cpu_flags_x86_ssse3 )
+    cpu_flags_x86_ssse3?  ( cpu_flags_x86_sse3 )
+    cpu_flags_x86_sse3?  ( cpu_flags_x86_sse2 )
+    cpu_flags_x86_sse2?  ( cpu_flags_x86_sse )
+"
+
+IUSE="${IUSE}
+    ${ARM_CPU_FEATURES[@]%:*}
+    ${X86_CPU_FEATURES[@]%:*}
+"
+
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it without the user knowing, which defeats the
 # purpose of the opengl use flag.
@@ -131,6 +162,11 @@ src_configure() {
 	export ANT_OPTS+=" -Dfile.encoding=iso-8859-1"
 	java-ant-2_src_configure
 
+	ENABLE_OMIT_FRAME_POINTER=OFF
+	if [ ! -z $(get-flag -fomit-frame-pointer) ]; then
+		ENABLE_OMIT_FRAME_POINTER=ON
+	fi
+
 	# please dont sort here, order is the same as in CMakeLists.txt
 	GLOBALCMAKEARGS=(
 	# Optional 3rd party components
@@ -233,20 +269,19 @@ src_configure() {
 		-DENABLE_SOLUTION_FOLDERS=OFF
 		-DENABLE_PROFILING=OFF
 		-DENABLE_COVERAGE=OFF
-		-DENABLE_OMIT_FRAME_POINTER=OFF
+		-DENABLE_OMIT_FRAME_POINTER=${ENABLE_OMIT_FRAME_POINTER}
 		-DENABLE_FAST_MATH=OFF
-		-DENABLE_SSE=OFF
-		-DENABLE_SSE2=OFF
-		-DENABLE_SSE3=OFF
-		-DENABLE_SSSE3=OFF
-		-DENABLE_SSE41=OFF
-		-DENABLE_SSE42=OFF
-		-DENABLE_POPCNT=OFF
-		-DENABLE_AVX=OFF
-		-DENABLE_AVX=OFF
-		-DENABLE_AVX2=OFF
-		-DENABLE_FMA3=OFF
-		-DENABLE_NEON=OFF
+		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
+		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
+		-DENABLE_SSE3=$(usex cpu_flags_x86_sse3)
+		-DENABLE_SSSE3=$(usex cpu_flags_x86_ssse3)
+		-DENABLE_SSE41=$(usex cpu_flags_x86_sse4_1)
+		-DENABLE_SSE42=$(usex cpu_flags_x86_sse4_2)
+		-DENABLE_POPCNT=$(usex cpu_flags_x86_popcnt)
+		-DENABLE_AVX=$(usex cpu_flags_x86_avx)
+		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
+		-DENABLE_FMA3=$(usex cpu_flags_x86_fma3)
+		-DENABLE_NEON=$(usex cpu_flags_arm_neon)
 
 		-DHAVE_opencv_java=$(usex java YES NO)
 		-DENABLE_NOISY_WARNINGS=OFF
