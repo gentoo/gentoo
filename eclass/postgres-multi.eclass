@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 inherit multibuild postgres
 EXPORT_FUNCTIONS pkg_setup src_prepare src_compile src_install src_test
 
 
-# @ECLASS: postgres-multi
+# @ECLASS: postgres-multi.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
 # @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>

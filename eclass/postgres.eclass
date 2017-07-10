@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 inherit user
 EXPORT_FUNCTIONS pkg_setup
 
-# @ECLASS: postgres
+# @ECLASS: postgres.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
 # @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>
