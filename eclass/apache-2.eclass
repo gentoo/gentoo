@@ -171,6 +171,10 @@ setup_mpm() {
 		eerror "You have selected a non-threaded MPM but USE=threads is enabled"
 		die "invalid use flag combination"
 	fi
+
+	if [[ "${MY_MPM}" = *prefork* ]] && use apache2_modules_http2 ; then
+		die "http2 does not work with prefork MPM."
+	fi
 }
 
 # @VARIABLE: MODULE_CRITICAL
