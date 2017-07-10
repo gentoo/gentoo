@@ -1,0 +1,27 @@
+---
+# repository.yml
+#
+# This is the repository configuration file for repoman modules and 
+# individual checks (future)
+#
+
+# NOTE: for non-gentoo repos, any custom modules added will need their
+# module names to the modules list in order for them to run.
+
+# These are the non-mandatory modules that can be disabled/enabled.
+# use -foo notation to disable, just like use flags
+# Add custom modules to enable them too
+modules:
+    description
+    eapi
+    ebuild_metadata
+    fetches
+    files
+    keywords
+    live
+    manifests
+    multicheck
+    pkgmetadata
+    profile
+    restrict
+    ruby
