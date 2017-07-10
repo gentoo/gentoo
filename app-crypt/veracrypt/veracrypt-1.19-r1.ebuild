@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,6 +44,15 @@ PATCHES=(
 	"${FILESDIR}/${P}-execstack-fix.patch"
 	"${FILESDIR}/${P}-remove-packaging-from-makefile.patch"
 )
+
+src_prepare() {
+	default
+	WX_BASENAME=$( ${EROOT}usr/bin/wx-config --basename )
+	if [[ ${WX_BASENAME} == "wx_baseu" ]] ; then
+		eapply "${FILESDIR}/${P}-missing-libs.patch"
+	fi
+}
+
 
 src_compile() {
 	local myemakeargs=(
