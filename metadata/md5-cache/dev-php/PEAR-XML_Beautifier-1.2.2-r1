@@ -1,6 +1,6 @@
 DEFINED_PHASES=install setup
 DEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
-DESCRIPTION=Adds indentation and linebreaks, replace entities, formats comments and makes XML easier to read
+DESCRIPTION=Formats XML and makes it easier to read
 EAPI=5
 HOMEPAGE=http://pear.php.net/XML_Beautifier
 KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://pear.php.net/get/XML_Beautifier-1.2.2.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:php-pear-r1
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=13570bc2bd6551dab052dbb07cf57f04
+_md5_=cbd88977589774b1b4f1dac166542ace

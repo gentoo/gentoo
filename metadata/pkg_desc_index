@@ -2997,7 +2997,7 @@ dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
 dev-db/pgpool2 3.5.2 3.5.5 3.6.1 3.6.4 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
-dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
+dev-db/pgtap 0.93.0 0.97.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
@@ -6635,7 +6635,7 @@ dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
 dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2 2.4.0 2.5.0 3.1.0 3.3.0: API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.460.0-r1: Typical installation tasks for system administrators
-dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0 3.320.0: Stream TAP from pgTAP test scripts
+dev-perl/TAP-Parser-SourceHandler-pgTAP 3.310.0 3.320.0 3.330.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Taint-Util 0.80.0-r1: Test for and flip the taint flag without regex matches or eval
 dev-perl/Task-Weaken 1.40.0-r1: Ensure that a platform has weaken support
@@ -7018,7 +7018,7 @@ dev-php/PEAR-HTML_Common 1.2.5 1.2.5-r1: Base class for other HTML classes
 dev-php/PEAR-HTML_Common2 2.1.0: Abstract base class for HTML classes (PHP5 port of PEAR-HTML_Common package)
 dev-php/PEAR-HTML_Javascript 1.1.2-r1: Provides an interface for creating simple JS scripts within PHP
 dev-php/PEAR-HTML_QuickForm 3.2.13 3.2.14: Provides methods for creating, validating, processing HTML forms
-dev-php/PEAR-HTML_QuickForm2 2.0.2: The PEAR::HTML_QuickForm package provides methods for creating, validating, processing HTML forms
+dev-php/PEAR-HTML_QuickForm2 2.0.2-r1: Creating, validating, processing HTML forms methods (PHP5 optimize)
 dev-php/PEAR-HTML_QuickForm_Controller 1.0.10-r1: Add-On for HTML_QuickForm that allows building of multipage forms
 dev-php/PEAR-HTML_QuickForm_advmultiselect 1.5.1 1.5.1-r1: Element for HTML_QuickForm that emulate a multi-select
 dev-php/PEAR-HTML_Select 1.3.1-r1: HTML_Select is a class for generating HTML form select elements
@@ -7086,13 +7086,13 @@ dev-php/PEAR-PEAR_PackageFileManager 1.7.2-r1: Updates an existing package.xml f
 dev-php/PEAR-PEAR_PackageFileManager2 1.0.4-r1: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4-r1: Various methods to check files to update an existing package.xml file
 dev-php/PEAR-PHP_Beautifier 0.1.15-r2: Code Beautifier for PHP
-dev-php/PEAR-PHP_CompatInfo 1.9.0: Find out the minimum version and the extensions required for a piece of code to run
+dev-php/PEAR-PHP_CompatInfo 1.9.0: Determine minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
 dev-php/PEAR-Pager 2.4.9 2.5.1: Data paging class
 dev-php/PEAR-SOAP 0.13.0: SOAP Client/Server for PHP 4
 dev-php/PEAR-Services_Amazon 0.8.0: Provides access to Amazon's retail and associate web services
 dev-php/PEAR-Services_JSON 1.0.3: PHP implementaion of json_encode/decode
-dev-php/PEAR-Services_TinyURL 0.1.2: An interface for creating TinyURLs with their API and looking up destinations of given TinyURLs
+dev-php/PEAR-Services_TinyURL 0.1.2-r1: An interface for creating and retrieving TinyURLs with their API
 dev-php/PEAR-Services_W3C_CSSValidator 0.2.3: Provides an object oriented interface for the W3 CSS Validator
 dev-php/PEAR-Services_W3C_HTMLValidator 1.0.0-r1: Object oriented interface to the API of validator.w3.org
 dev-php/PEAR-Services_Weather 1.4.6: This class acts as an interface to various online weather-services
@@ -7102,7 +7102,7 @@ dev-php/PEAR-Structures_Graph 1.1.1-r1: Graph datastructure manipulation library
 dev-php/PEAR-System_Command 1.0.8-r1: PHP command-line execution interface
 dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
 dev-php/PEAR-Text_CAPTCHA 0.5.0 1.0.2-r1: Generation of CAPTCHAs
-dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers in order to prove that bots using it are human
+dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers to prove user is human
 dev-php/PEAR-Text_Figlet 1.0.2-r1: Render text using FIGlet fonts
 dev-php/PEAR-Text_Highlighter 0.7.3-r1 0.8.0: A package for syntax highlighting
 dev-php/PEAR-Text_Password 1.1.1 1.2.1: Creating passwords with PHP
@@ -7113,7 +7113,7 @@ dev-php/PEAR-Translation2 2.0.4 2.0.4-r1: Class for multilingual applications ma
 dev-php/PEAR-Validate 0.8.5: Validation class
 dev-php/PEAR-Var_Dump 1.0.4-r3: Dump structured information about a variable
 dev-php/PEAR-VersionControl_SVN 0.5.2: Simple OO wrapper interface for the Subversion command-line client
-dev-php/PEAR-XML_Beautifier 1.2.2-r1: Adds indentation and linebreaks, replace entities, formats comments and makes XML easier to read
+dev-php/PEAR-XML_Beautifier 1.2.2-r1: Formats XML and makes it easier to read
 dev-php/PEAR-XML_Feed_Parser 1.0.5-r1: Provides an unified API for handling Atom/RSS
 dev-php/PEAR-XML_Parser 1.3.4-r1 1.3.7-r1: XML parsing class based on PHP's SAX parser
 dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
@@ -7127,7 +7127,7 @@ dev-php/PHP_TokenStream 1.1.3 1.4.11: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.3.234_p0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
-dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source framework for developing Web Applications
+dev-php/ZendFramework 1.12.9: A high quality and open source framework for developing Web Applications
 dev-php/adodb 5.20.9: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.56: Andrew McMillan's Web Libraries
@@ -17084,7 +17084,7 @@ sys-apps/flock 2.19: Manage locks from shell scripts
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwcrv 0.1.0: FireWire CSR Config ROM Viewer
 sys-apps/fwts 15.12.00 17.02.00: Firmware Test Suite
-sys-apps/fwupd 0.9.4 0.9.5 0.9.5-r1: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 0.9.5 0.9.5-r1: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fwupdate 8 9: Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
