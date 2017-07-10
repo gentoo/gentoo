@@ -3,19 +3,19 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
-
 POSTGRES_COMPAT=( 9.{2..6} )
 
-inherit git-r3 postgres-multi
+inherit postgres-multi
+
+MY_P="${PN/2/-II}-${PV}"
 
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="http://www.pgpool.net/"
-SRC_URI=""
+SRC_URI="http://www.pgpool.net/download.php?f=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="doc memcached pam ssl static-libs"
 
@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}
 	!!dev-db/pgpool
 "
 
+S=${WORKDIR}/${MY_P}
+
 pkg_setup() {
 	postgres_new_user pgpool
 
@@ -37,7 +39,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/pgpool_run_paths-9999.patch"
+	eapply "${FILESDIR}/pgpool_run_paths-3.6.4.patch"
 
 	postgres-multi_src_prepare
 }
