@@ -14549,9 +14549,9 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.3.6: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.6.31-r10 0.6.31-r11 0.6.32 0.6.32-r1 0.6.32-r2: System which facilitates service discovery on a local network
-net-dns/bind 9.11.0_p5 9.11.1_p1: BIND - Berkeley Internet Name Domain - Name Server
+net-dns/bind 9.11.0_p5 9.11.1_p1 9.11.1_p3: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
-net-dns/bind-tools 9.11.0_p3 9.11.0_p5 9.11.1_p1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind-tools 9.11.0_p3 9.11.0_p5 9.11.1_p1 9.11.1_p3: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.12.0 1.13.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
 net-dns/coredns 006: A DNS server that chains middleware
@@ -15652,7 +15652,7 @@ net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP s
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.1.19-r4 1.4.0-r2 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.5.14 1.5.19 1.5.19-r1 1.6.11-r1 1.6.12-r1 1.6.13-r1 1.6.13-r2 1.6.9999-r1 1.7.5-r1 1.7.6-r1 1.7.7 1.7.9999-r1: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.5.14 1.5.19-r1 1.6.11-r1 1.6.13-r2 1.6.9999-r1 1.7.7 1.7.8 1.7.9999-r1: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
@@ -19419,7 +19419,7 @@ x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/psi-themes 0.9.3_p1-r2: Iconsets for Psi, a Qt4 Jabber Client
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
-x11-themes/qtcurve 1.8.18-r1 1.8.18_p20170601 9999: Widget styles for Qt and GTK2
+x11-themes/qtcurve 1.8.18-r1 1.8.18_p20170601 1.9.0_rc1 9999: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/sawfish-themes 0.0.1-r3: Some nice themes for Sawfish
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
