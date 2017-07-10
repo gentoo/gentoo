@@ -1,0 +1,22 @@
+From c8370c96991cb8af647e46e5067b6c6641eacec4 Mon Sep 17 00:00:00 2001
+From: Hummer12007 <hilobakho@gmail.com>
+Date: Mon, 3 Jul 2017 23:30:39 +0300
+Subject: [PATCH] Disable -Wunused-result diagnostic
+
+It caused unpredictable build failures with different build environments
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0257a99f..a4bf351b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-parameter")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-result")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+ if (CMAKE_COMPILER_IS_GNUCC)
+     if(NOT CMAKE_C_COMPILER_VERSION VERSION_LESS 7.0)
