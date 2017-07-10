@@ -180,7 +180,7 @@ fi
 if [ "${BITCOINCORE_NEED_LIBSECP256K1}" = "1" ]; then
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} $LIBSECP256K1_DEPEND"
 fi
-if [ "${PN}" = "libbitcoinconsensus" ]; then
+if [ "${PN}" = "libbitcoinconsensus" ] && in_bcc_iuse test; then
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND}
 		test? (
 			${UNIVALUE_DEPEND}
@@ -411,7 +411,7 @@ bitcoincore_src_test() {
 
 bitcoincore_src_install() {
 	default
-	[ "${PN}" = "libbitcoinconsensus" ] || rm "${D}/usr/bin/test_bitcoin"
+	use_if_iuse test || rm "${D}/usr/bin/test_bitcoin"
 }
 
 _BITCOINCORE_ECLASS=1
