@@ -8,7 +8,7 @@ inherit pax-utils
 # Upstream messed up packaging:
 # This is v1.21.06 according to "storcli -v" but ZIP is named v1.21.16..
 # Also, README is isn't included in archive.
-MY_PV="1.21.16"
+MY_PV="1.23.02"
 
 DESCRIPTION="MegaRAID StorCLI (successor of the MegaCLI)"
 HOMEPAGE="https://www.broadcom.com/support/download-search?dk=storcli"
@@ -16,8 +16,8 @@ SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-cont
 	https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${PV}_StorCLI.txt -> ${P}_readme.txt"
 
 LICENSE="Avago LSI BSD"
-SLOT="0/6.13"
-KEYWORDS="-* amd64 x86"
+SLOT="0/6.14"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -40,9 +40,6 @@ src_unpack() {
 		fi
 	done
 
-	mv versionChangeSet/univ_viva_cli_rel/storcli_All_OS.zip "${WORKDIR}" || die "Failed to move storcli_All_OS.zip"
-	rm -rf versionChangeSet || die "Failed to cleanup upstream's archive mess (versionChangeSet)"
-	rm -rf cqAttachments || die "Failed to cleanup upstream's archive mess (cqAttachments)"
 	unpack "${WORKDIR}"/storcli_All_OS.zip
 
 	mv storcli_All_OS/Ubuntu/storcli_*.deb "${WORKDIR}" || die "Failed to move storclli_*.deb"
