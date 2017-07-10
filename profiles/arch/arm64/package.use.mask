@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# media-gfx/nvidia-texture-tools does not support arm64
+media-libs/devil nvtt
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # luajit added arm64 support in luajit 2.1, still in rc/beta, revisit this when
 # such a version hits the tree
 dev-db/redis luajit
