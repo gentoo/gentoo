@@ -1,0 +1,11 @@
+--- scripts/sleepproxyclient.sh	2016-06-02 00:22:17.000000000 +0200
++++ scripts/sleepproxyclient.sh.new	2016-06-02 00:23:24.000000000 +0200
+@@ -45,6 +45,6 @@
+ SCRIPTDIR=`dirname $0`
+ 
+ if [ "$SPC_DEBUG" != "" ] ; then
+-	echo "calling: python $SCRIPTDIR/sleepproxyclient.py $IF_OPT $TTL_OPT $DEBUG_OPT"
++	echo "calling: python2.7 $SCRIPTDIR/sleepproxyclient.py $IF_OPT $TTL_OPT $DEBUG_OPT"
+ fi
+-python $SCRIPTDIR/sleepproxyclient.py $IF_OPT $TTL_OPT $DEBUG_OPT
++python2.7 $SCRIPTDIR/sleepproxyclient.py $IF_OPT $TTL_OPT $DEBUG_OPT
