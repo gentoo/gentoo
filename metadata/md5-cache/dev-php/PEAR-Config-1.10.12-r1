@@ -1,6 +1,6 @@
 DEFINED_PHASES=install setup
 DEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
-DESCRIPTION=Provides methods for configuration manipulation. Your configuration's swiss-army knife
+DESCRIPTION=Provides multiple methods for configuration manipulation
 EAPI=5
 HOMEPAGE=http://pear.php.net/Config
 IUSE=xml
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://pear.php.net/get/Config-1.10.12.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:php-pear-r1
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=b59f7aecf5209d061da2728931e7e72c
+_md5_=c7ffc6f58fbbd83ec2e77f148d6bfada
