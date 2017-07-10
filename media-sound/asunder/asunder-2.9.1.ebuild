@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A graphical Audio CD ripper and encoder with support for many output formats"
 HOMEPAGE="http://littlesvr.ca/asunder/"
@@ -9,7 +9,7 @@ SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="aac flac mac mp3 musepack opus vorbis wavpack"
 
 COMMON_DEPEND=">=media-libs/libcddb-0.9.5
@@ -29,8 +29,7 @@ RDEPEND="${COMMON_DEPEND}
 	vorbis? ( media-sound/vorbis-tools )
 	wavpack? ( media-sound/wavpack )"
 
-DOCS="AUTHORS ChangeLog README TODO" # NEWS is dummy
-
 src_prepare() {
-	sed -i -e 's:cd syslogng && $(MAKE) install:true:' "${S}"/Makefile.in
+	default
+	sed -i -e 's:cd syslogng && $(MAKE) install:true:' Makefile.in || die
 }
