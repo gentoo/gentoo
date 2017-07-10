@@ -10,7 +10,7 @@ HOMEPAGE="http://www.leptonica.org/"
 SRC_URI="http://www.leptonica.org/source/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0/5"
-KEYWORDS="alpha amd64 arm ~mips ppc ppc64 sparc x86 ~ppc-macos"
+KEYWORDS="alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86 ~ppc-macos"
 IUSE="gif jpeg jpeg2k png static-libs test tiff utils webp zlib"
 
 # N.B. Tests need some features enabled:
