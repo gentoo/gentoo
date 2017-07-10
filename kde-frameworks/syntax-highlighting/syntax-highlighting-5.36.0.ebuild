@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-tests.patch" )
+
 src_install() {
 	kde5_src_install
 	dobin "${BUILD_DIR}"/src/indexer/katehighlightingindexer
