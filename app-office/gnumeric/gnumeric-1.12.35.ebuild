@@ -43,7 +43,9 @@ RDEPEND="
 	libgda? ( gnome-extra/libgda:5[gtk] )
 "
 DEPEND="${RDEPEND}
+	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35.0
+	app-text/yelp-tools
 	virtual/pkgconfig
 "
 
