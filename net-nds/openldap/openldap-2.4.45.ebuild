@@ -344,9 +344,14 @@ src_prepare() {
 	# bug #420959
 	epatch "${FILESDIR}"/${PN}-2.4.31-gcc47.patch
 
+	# bug #622464
+	epatch "${FILESDIR}"/${PN}-2.4.45-libressl.patch
+
 	# unbundle lmdb
 	epatch "${FILESDIR}"/${PN}-2.4.42-mdb-unbundle.patch
 	rm -rf "${S}"/libraries/liblmdb
+
+	epatch_user
 
 	cd "${S}"/build || die
 	einfo "Making sure upstream build strip does not do stripping too early"

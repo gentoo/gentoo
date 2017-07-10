@@ -72,7 +72,10 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/calligra-l10n:4[calligra_features_krita(+)]
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-vc-fix-gcc49-abi.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-vc-fix-gcc49-abi.patch
+	"${FILESDIR}"/${P}-qt-5.9.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

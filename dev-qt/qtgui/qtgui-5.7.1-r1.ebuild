@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="The GUI module and platform plugins for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86"
 fi
 
 # TODO: linuxfb
@@ -77,7 +77,10 @@ PDEPEND="
 	ibus? ( app-i18n/ibus )
 "
 
-PATCHES=( "${FILESDIR}/${P}-qclipboard.patch" ) # QTBUG-56972, KDE bug #348390
+PATCHES=(
+	"${FILESDIR}/${P}-qclipboard.patch" # QTBUG-56972, KDE bug #348390
+	"${FILESDIR}/${P}-x32.patch" # bug 623882
+)
 
 QT5_TARGET_SUBDIRS=(
 	src/gui

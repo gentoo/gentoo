@@ -1,5 +1,19 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
 # PPC Specific use flags
 #
+
+# David Seifert <soap@gentoo.org> (08 Jul 2017)
+# Games are not keyworded anymore on ppc
+capslib
+fortune
+nagios-game
+physfs
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
 
 # Matt Turner <mattst88@gentoo.org> (24 Mar 2017)
 # virtual/opencl is not keyworded

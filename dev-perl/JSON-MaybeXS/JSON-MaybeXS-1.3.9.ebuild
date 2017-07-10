@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ia64 ~ppc x86"
 IUSE="test +xs"
 
 # needs Scalar-Util

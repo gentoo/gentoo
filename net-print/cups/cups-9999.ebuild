@@ -88,11 +88,10 @@ RESTRICT="test"
 # systemd-socket.patch from Fedora
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
-	"${FILESDIR}/${PN}-1.6.0-fix-install-perms.patch"
+	"${FILESDIR}/${PN}-2.2.4-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
-	"${FILESDIR}/${PN}-2.0.3-cross-compile.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -139,12 +138,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if ! use kerberos ; then
-		PATCHES+=(
-			"${FILESDIR}/${PN}-2.2.2-no_kerberos_config.patch"
-		)
-	fi
-
 	default
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).

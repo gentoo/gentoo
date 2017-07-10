@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A FUSE filesystem providing access to MTP devices"
-HOMEPAGE="http://www.adebenham.com/mtpfs/"
-SRC_URI="http://www.adebenham.com/files/mtp/${P}.tar.gz"
+HOMEPAGE="https://www.adebenham.com/mtpfs/"
+SRC_URI="https://www.adebenham.com/files/mtp/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

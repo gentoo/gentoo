@@ -38,6 +38,22 @@ DEPEND="
 	${RDEPEND}
 "
 
+get_targets() {
+	local tgt="cstruct,cstruct-unix"
+	use lwt && tgt+=",cstruct-lwt"
+	use async && tgt+=",cstruct-async"
+	use ppx && tgt+=",ppx_cstruct"
+	echo "${tgt}"
+}
+
+src_compile() {
+	jbuilder build -p $(get_targets) || die
+}
+
+src_test() {
+	jbuilder runtest -p $(get_targets) || die
+}
+
 oinstall() {
 	opam-installer -i \
 		--prefix="${ED}/usr" \

@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/maccman/sourcemap"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 IUSE=""
 

@@ -184,7 +184,7 @@ RDEPEND="
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 		nvenc? ( media-video/nvidia_video_sdk )
 		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
-		snappy? ( >=app-arch/snappy-1.1.2-r1[${MULTILIB_USEDEP}] )
+		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
 			>=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}]
 			>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]

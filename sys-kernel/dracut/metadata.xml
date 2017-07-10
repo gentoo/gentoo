@@ -13,6 +13,10 @@
 		<email>aidecoe@gentoo.org</email>
 		<name>Amadeusz Żołnowski</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
 	<use>
 		<flag name="debug">Module installing additional tools like strace, file
 			editor, ssh and more</flag>

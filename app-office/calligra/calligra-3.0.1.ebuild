@@ -15,7 +15,7 @@ HOMEPAGE="https://www.calligra.org/"
 LICENSE="GPL-2"
 
 [[ ${KDE_BUILD_TYPE} == release ]] && \
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CAL_FTS=( karbon plan sheets words )
 CAL_EXP_FTS=( braindump stage )

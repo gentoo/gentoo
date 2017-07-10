@@ -8,10 +8,10 @@ inherit eutils check-reqs flag-o-matic multilib pax-utils prefix \
 	python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
-	clang? ( http://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
-		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.gz
+	clang? ( https://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
+		https://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
 	https://dev.gentoo.org/~mgorny/dist/llvm/${PN}-3.4-manpages.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.gz"
 

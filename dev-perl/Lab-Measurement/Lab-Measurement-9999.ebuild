@@ -21,7 +21,7 @@ HOMEPAGE="http://www.labmeasurement.de/"
 SLOT="0"
 IUSE="test"
 
-DZIL_PLUGINS=( Git PodWeaver )
+DZIL_PLUGINS=( Git SurgicalPodWeaver RPM AuthorsFromGit )
 
 RDEPEND="
 	virtual/perl-Carp
@@ -75,7 +75,7 @@ DEPEND="
 if [[ "${PV}" == "9999" ]]; then
 	DEPEND="${DEPEND}
 		dev-perl/Dist-Zilla"
-	for dzp in ${DZIL_PLUGINS} ; do
+	for dzp in "${DZIL_PLUGINS[@]}" ; do
 		DEPEND="${DEPEND}
 		dev-perl/Dist-Zilla-Plugin-${dzp}"
 	done

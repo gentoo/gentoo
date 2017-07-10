@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit php-pear-r1
 
-DESCRIPTION="Net_UserAgent_Detect determines Web browser, version, and platform from an HTTP user agent string"
+DESCRIPTION="Determines Web browser, version, and platform from an HTTP user agent string"
 
 LICENSE="PHP-2.02"
 SLOT="0"

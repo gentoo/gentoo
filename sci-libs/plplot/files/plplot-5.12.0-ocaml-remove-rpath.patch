@@ -1,0 +1,34 @@
+Fix OCaml's asinine RPATH inserting behaviour.
+
+--- a/bindings/ocaml/CMakeLists.txt
++++ b/bindings/ocaml/CMakeLists.txt
+@@ -97,6 +97,20 @@
+ 
+   # ocamlc -c compiles *.c into *.o.
+   # ocamlmklib links *.o into *.so and *.a
++
++  # ocamlmklib implicits inserts RPATHs if it is provided with an absolute path to -L,
++  # which is absolutely unacceptable and presents a massive security hazard. The
++  # following statements convert the absolute paths to relative ones to fix this.
++  # See also:
++  #   https://caml.inria.fr/mantis/view.php?id=5943
++  if(CMAKE_SKIP_RPATH)
++    file(RELATIVE_PATH CAMLIDL_LINK_LIB_DIR ${CMAKE_CURRENT_BINARY_DIR} ${CAMLIDL_LIB_DIR})
++    file(RELATIVE_PATH CMAKE_LINK_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_BINARY_DIR})
++  else(CMAKE_SKIP_RPATH)
++    set(CAMLIDL_LINK_LIB_DIR ${CAMLIDL_LIB_DIR})
++    set(CMAKE_LINK_BINARY_DIR ${CMAKE_BINARY_DIR})
++  endif(CMAKE_SKIP_RPATH)
++
+   add_custom_command(
+     OUTPUT
+     ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.o
+@@ -105,7 +119,7 @@
+     ${CMAKE_CURRENT_BINARY_DIR}/libplplot_stubs.a
+     COMMAND ${OCAMLC} -ccopt -I${CAMLIDL_LIB_DIR} -c ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.c
+     COMMAND ${OCAMLC} -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime -ccopt -I${CMAKE_BINARY_DIR} -ccopt -I${CAMLIDL_LIB_DIR} -ccopt -DPLPLOT_HAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plplot_impl.c
+-    COMMAND ${OCAMLMKLIB} -o plplot_stubs -L${CAMLIDL_LIB_DIR} -lcamlidl -L${CMAKE_BINARY_DIR}/src -lplplot ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.o ${CMAKE_CURRENT_BINARY_DIR}/plplot_impl.o ${ocaml_STATIC_FLAGS}
++    COMMAND ${OCAMLMKLIB} -o plplot_stubs -L${CAMLIDL_LINK_LIB_DIR} -lcamlidl -L${CMAKE_LINK_BINARY_DIR}/src -lplplot ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.o ${CMAKE_CURRENT_BINARY_DIR}/plplot_impl.o ${ocaml_STATIC_FLAGS}
+     DEPENDS
+     ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.c
+     ${CMAKE_CURRENT_SOURCE_DIR}/plplot_impl.c

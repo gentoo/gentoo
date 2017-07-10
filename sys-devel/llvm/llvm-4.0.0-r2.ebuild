@@ -12,8 +12,8 @@ inherit cmake-utils flag-o-matic multilib-minimal pax-utils \
 	python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="Low Level Virtual Machine"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
 	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm-manpages-${PV}.tar.bz2 )"
 
 # Keep in sync with CMakeLists.txt
@@ -60,7 +60,7 @@ DEPEND="${RDEPEND}
 # installed means llvm-config there will take precedence.
 RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
-PDEPEND="app-vim/llvm-vim
+PDEPEND="sys-devel/llvm-common
 	gold? ( sys-devel/llvmgold )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

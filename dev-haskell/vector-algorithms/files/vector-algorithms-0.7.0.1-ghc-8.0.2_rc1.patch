@@ -1,0 +1,44 @@
+diff --git a/tests/properties/Tests.hs b/tests/properties/Tests.hs
+index a0b7d35..8fcfd36 100644
+--- a/tests/properties/Tests.hs
++++ b/tests/properties/Tests.hs
+@@ -1,2 +1,2 @@
+-{-# LANGUAGE ImpredicativeTypes, RankNTypes, TypeOperators, FlexibleContexts #-}
++{-# LANGUAGE ImpredicativeTypes, RankNTypes, TypeOperators, FlexibleContexts, ScopedTypeVariables #-}
+ 
+@@ -44,4 +44,4 @@ args = stdArgs
+ 
+-check_Int_sort = forM_ algos $ \(name,algo) ->
+-  quickCheckWith args (label name . prop_fullsort algo)
++check_Int_sort = forM_ algos (\(name,algo :: Algo Int ()) ->
++  quickCheckWith args (label name . prop_fullsort algo))
+  where
+@@ -55,4 +55,4 @@ check_Int_sort = forM_ algos $ \(name,algo) ->
+ 
+-check_Int_partialsort = forM_ algos $ \(name,algo) ->
+-  quickCheckWith args (label name . prop_partialsort algo)
++check_Int_partialsort = forM_ algos (\(name,algo :: SizeAlgo Int ()) ->
++  quickCheckWith args (label name . prop_partialsort algo))
+  where
+@@ -63,4 +63,4 @@ check_Int_partialsort = forM_ algos $ \(name,algo) ->
+ 
+-check_Int_select = forM_ algos $ \(name,algo) ->
+-  quickCheckWith args (label name . prop_select algo)
++check_Int_select = forM_ algos (\(name,algo :: SizeAlgo Int ()) ->
++  quickCheckWith args (label name . prop_select algo))
+  where
+@@ -119,10 +119,10 @@ check_permutation = do
+   qc $ label "introsort"    . prop_permutation (INT.sort :: Algo Int ())
+-  qc $ label "intropartial" . prop_sized (const . prop_permutation)
++  qc $ label "intropartial" . prop_sized (\x -> const (prop_permutation x))
+                                          (INT.partialSort :: SizeAlgo Int ())
+-  qc $ label "introselect"  . prop_sized (const . prop_permutation)
++  qc $ label "introselect"  . prop_sized (\x -> const (prop_permutation x))
+                                          (INT.select :: SizeAlgo Int ())
+   qc $ label "heapsort"     . prop_permutation (H.sort :: Algo Int ())
+-  qc $ label "heappartial"  . prop_sized (const . prop_permutation)
++  qc $ label "heappartial"  . prop_sized (\x -> const (prop_permutation x))
+                                          (H.partialSort :: SizeAlgo Int ())
+-  qc $ label "heapselect"   . prop_sized (const . prop_permutation)
++  qc $ label "heapselect"   . prop_sized (\x -> const (prop_permutation x))
+                                          (H.select :: SizeAlgo Int ())

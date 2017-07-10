@@ -4,6 +4,8 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/urdf_tutorial"
 KEYWORDS="~amd64"
+ROS_SUBDIR="${PN}"
+PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
@@ -19,5 +21,6 @@ RDEPEND="
 	dev-ros/rviz
 	dev-ros/xacro
 "
-DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/notest.patch" )
+DEPEND="${RDEPEND}
+	test? ( dev-ros/roslaunch[${PYTHON_USEDEP}] )
+"

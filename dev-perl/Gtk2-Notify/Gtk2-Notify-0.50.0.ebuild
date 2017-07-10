@@ -11,7 +11,7 @@ DESCRIPTION="A perl interface to the notification library"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="

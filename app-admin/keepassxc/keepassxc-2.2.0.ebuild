@@ -34,7 +34,7 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
-	yubikey? ( sys-auth/libyubikey )
+	yubikey? ( sys-auth/ykpers )
 "
 
 DEPEND="

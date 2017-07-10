@@ -8,7 +8,7 @@ inherit cmake-utils
 MY_P="libunwind-${PV}"
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
+SRC_URI="https://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"

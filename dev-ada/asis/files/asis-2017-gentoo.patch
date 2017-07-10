@@ -1,0 +1,50 @@
+--- asis-gpl-2015-src/Makefile.old	2017-01-03 13:59:38.106788092 +0000
++++ asis-gpl-2015-src/Makefile	2017-01-03 14:01:43.735605615 +0000
+@@ -10,18 +10,21 @@
+ 
+ .PHONY: all
+ all: setup-snames
+-	$(GPRBUILD) -p -j0 -XBLD=$(BLD) -XOPSYS=$(OPSYS) -XGNSA=$(GNSA) \
+-		$(GPRBUILD_FLAGS) -XASIS_COMPONENTS=$(COMPS) build_asis.gpr
++	$(GPRBUILD) -p -j$(PROCESSORS) -XBLD=$(BLD) -XOPSYS=$(OPSYS) -XGNSA=$(GNSA) \
++		$(GPRBUILD_FLAGS) -XASIS_COMPONENTS=$(COMPS) build_asis.gpr \
++		-cargs $(ADAFLAGS)
+ 
+ .PHONY: tools
+ tools: setup
+-	$(GPRBUILD) -p -j0 -XBLD=$(BLD) -XOPSYS=$(OPSYS) \
+-		$(GPRBUILD_FLAGS) -XASIS_COMPONENTS=tools build_asis.gpr
++	$(GPRBUILD) -p -j$(PROCESSORS) -XBLD=$(BLD) -XOPSYS=$(OPSYS) \
++		$(GPRBUILD_FLAGS) -XASIS_COMPONENTS=tools build_asis.gpr \
++		-cargs $(ADAFLAGS)
+ 
+ .PHONY: toolsdev
+ toolsdev: setup
+-	$(GPRBUILD) -p -j0 -XBLD=$(BLD) -XOPSYS=$(OPSYS) \
+-		$(GPRBUILD_FLAGS) -XASIS_COMPONENTS=toolsdev build_asis.gpr
++	$(GPRBUILD) -p -j$(PROCESSORS) -XBLD=$(BLD) -XOPSYS=$(OPSYS) \
++		$(GPRBUILD_FLAGS) -XASIS_COMPONENTS=toolsdev build_asis.gpr \
++		-cargs $(ADAFLAGS)
+ 
+ # The setup target re-generates 4 generated Ada files. We avoid changing the
+ # timestamps of unchanged files, to avoid triggering recompilation of
+@@ -34,7 +37,8 @@
+ 
+ .PHONY: setup-snames
+ setup-snames: gnat/snames.ads-tmpl gnat/snames.adb-tmpl gnat/xutil.ads gnat/xutil.adb
+-	$(GPRBUILD) -p  -XBLD=$(BLD) $(GPRBUILD_FLAGS) gnat/snames.gpr
++	$(GPRBUILD) -p  -XBLD=$(BLD) $(GPRBUILD_FLAGS) gnat/snames.gpr \
++		-cargs $(ADAFLAGS)
+ 	cd gnat ; ./xsnamest$(exe_ext)
+ 	if cmp --quiet gnat/snames.ns gnat/snames.ads; then \
+ 	  echo "snames.ads unchanged"; \
+@@ -52,7 +56,8 @@
+ .PHONY: setup-factory
+ setup-factory:
+ 	$(GPRBUILD) -p  -XBLD=$(BLD) $(GPRBUILD_FLAGS) \
+-		tools/tool_utils/generate_factory.gpr
++		tools/tool_utils/generate_factory.gpr \
++		-cargs $(ADAFLAGS)
+ 	cd tools/tool_utils ; \
+ 		./ada_trees-generate_factory$(exe_ext)
+ 	if cmp --quiet tools/tool_utils/ada_trees-factory.ns tools/tool_utils/ada_trees-factory.ads; then \

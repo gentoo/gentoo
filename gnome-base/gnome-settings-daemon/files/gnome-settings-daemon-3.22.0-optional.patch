@@ -51,7 +51,7 @@ index 6d9408a..628af0e 100644
 +                          [turn off wacom plugin]),
 +                          [],
 +                          [enable_wacom=no]) dnl Default value
-+         AS_IF([test "$enable_wacom" = "xyes"],
++         AS_IF([test "x$enable_wacom" = "xyes"],
 +               [
 +                 PKG_CHECK_MODULES(LIBWACOM, [libwacom >= $LIBWACOM_REQUIRED_VERSION])
 +                 PKG_CHECK_MODULES(WACOM, [libwacom >= $LIBWACOM_REQUIRED_VERSION x11 xi xtst gudev-1.0 gnome-desktop-3.0 >= $GNOME_DESKTOP_REQUIRED_VERSION xorg-wacom librsvg-2.0 >= $LIBRSVG_REQUIRED_VERSION libnotify >= $LIBNOTIFY_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION])

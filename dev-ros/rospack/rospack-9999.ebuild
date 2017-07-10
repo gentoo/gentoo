@@ -5,7 +5,6 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/rospack"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit ros-catkin
 
@@ -29,13 +28,4 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/gentoo.patch"
-	"${FILESDIR}/multipy.patch"
 )
-
-src_install() {
-	ros-catkin_src_install
-	# Assume greatest alphabetically is what we want as default implementation
-	for i in "${ED}"/usr/$(get_libdir)/librospack*.so ; do
-		dosym $(basename "${i}") /usr/$(get_libdir)/librospack.so
-	done
-}

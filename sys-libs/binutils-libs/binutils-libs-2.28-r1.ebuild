@@ -23,6 +23,7 @@ IUSE="64-bit-bfd multitarget nls static-libs"
 
 COMMON_DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
+	>=sys-apps/texinfo-4.7
 	nls? ( sys-devel/gettext )"
 # Need a newer binutils-config that'll reset include/lib symlinks for us.
 RDEPEND="${COMMON_DEPEND}

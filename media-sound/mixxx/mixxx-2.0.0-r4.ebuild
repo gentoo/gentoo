@@ -15,7 +15,7 @@ SRC_URI+=" https://github.com/mixxxdj/mixxx/commit/869e07067b15e09bf7ef886a8772a
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="aac debug doc ffmpeg hid mp3 mp4 shout wavpack"
 
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this

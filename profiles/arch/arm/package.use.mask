@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# dev-tcltk/tcllib is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
 # Johannes Huber <johu@gentoo.org> (14 May 2017)
 # Depends on dev-qt/qtwebengine, not keyworded yet.
 kde-apps/kio-extras htmlthumbs

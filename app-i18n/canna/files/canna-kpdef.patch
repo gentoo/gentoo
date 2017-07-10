@@ -1,0 +1,18 @@
+--- a/dic/phono/default.kpdef
++++ b/dic/phono/default.kpdef
+@@ -350,3 +350,15 @@
+ _	¡²
+ /	¡¿
+ \\	¡ï
++
++# some useful romkan symbols
++z,	¡Å
++z-	¡Á
++z.	¡Ä
++z/	¡¦
++z[	¡Ø
++z]	¡Ù
++zh	¢«
++zj	¢­
++zk	¢¬
++zl	¢ª

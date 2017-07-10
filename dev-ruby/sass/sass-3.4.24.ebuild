@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -17,7 +17,7 @@ DESCRIPTION="An extension of CSS3, adding nested rules, variables, mixins, and m
 HOMEPAGE="http://sass-lang.com/"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86 ~amd64-linux"
 SLOT="$(get_version_component_range 1-2)"
 IUSE=""
 

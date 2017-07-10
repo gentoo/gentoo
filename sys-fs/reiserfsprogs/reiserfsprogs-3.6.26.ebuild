@@ -15,13 +15,18 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.6.25-no_acl.patch"
+)
+
 src_prepare() {
+	epatch "${PATCHES[@]}"
 	eautoreconf
 }
 
 src_configure() {
 	append-flags -std=gnu89 #427300
-	myeconfargs=(
+	local myeconfargs=(
 		--bindir="${EPREFIX}/bin"
 		--libdir="${EPREFIX}/$(get_libdir)"
 		--sbindir="${EPREFIX}/sbin"

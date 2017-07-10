@@ -3,6 +3,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="Sound card based multimode software modem for Amateur Radio use"
 HOMEPAGE="http://www.w1hkj.com"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -27,6 +29,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+src_prepare() {
+	epatch "$FILESDIR"/$PN-c++11.patch
+}
 
 src_configure() {
 	econf --with-sndfile \

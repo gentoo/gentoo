@@ -1,5 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# @DEAD
+# Michał Górny <mgorny@gentoo.org> (30 Jun 2017)
+# This eclass is no longer useful. Most of it has been superseded by
+# new EAPI features such as REQUIRED_USE and USE dependencies.
+# The remaining functions are very specialized (probably to PHP)
+# and were not used for a long time. The last consumer is now redundant
+# to a new stable version and will be removed soon.
+# The eclass will be removed in 30 days.
 
 # @ECLASS: confutils.eclass
 # @MAINTAINER:

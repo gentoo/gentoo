@@ -15,7 +15,7 @@ SRC_URI="http://gwyddion.net/download/${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc fits fftw gnome kde nls opengl perl python ruby sourceview xml X"
+IUSE="doc fits fftw gnome nls opengl perl python ruby sourceview xml X"
 
 RDEPEND="
 	media-libs/libpng:0
@@ -26,7 +26,6 @@ RDEPEND="
 	fits? ( sci-libs/cfitsio )
 	fftw? ( sci-libs/fftw:3.0 )
 	gnome? ( gnome-base/gconf:2 )
-	kde? ( kde-frameworks/kdelibs:4 )
 	opengl? ( virtual/opengl x11-libs/gtkglext )
 	perl? ( dev-lang/perl )
 	python? (
@@ -53,6 +52,7 @@ pkg_setup() {
 src_configure() {
 	local myeconfargs=(
 		--disable-rpath
+		--without-kde4-thumbnailer
 		$(use_enable doc gtk-doc)
 		$(use_enable nls)
 		$(use_enable python pygwy)
@@ -61,11 +61,10 @@ src_configure() {
 		$(use_with python)
 		$(use_with ruby)
 		$(use_with fftw fftw3)
-		$(use_with opengl gl) \
+		$(use_with opengl gl)
 		$(use_with sourceview gtksourceview)
 		$(use_with xml libxml2)
 		$(use_with X x)
-		$(use_with kde kde4-thumbnailer)
 	)
 	autotools-utils_src_configure
 }

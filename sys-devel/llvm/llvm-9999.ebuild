@@ -12,9 +12,9 @@ inherit cmake-utils flag-o-matic git-r3 multilib-minimal pax-utils \
 	python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="Low Level Virtual Machine"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
+EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Keep in sync with CMakeLists.txt
@@ -61,7 +61,7 @@ DEPEND="${RDEPEND}
 # installed means llvm-config there will take precedence.
 RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
-PDEPEND="app-vim/llvm-vim
+PDEPEND="sys-devel/llvm-common
 	gold? ( sys-devel/llvmgold )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -99,6 +99,9 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		# disable appending VCS revision to the version to improve
+		# direct cache hit ratio
+		-DLLVM_APPEND_VC_REV=OFF
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 

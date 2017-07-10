@@ -13,8 +13,10 @@ DESCRIPTION="Framework for creation and generation of reports in multiple format
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="marble +scripting webkit"
+
+RESTRICT+=" test"
 
 RDEPEND="
 	$(add_frameworks_dep kconfig)

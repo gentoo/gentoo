@@ -9,7 +9,7 @@ SRC_URI="http://www.eblong.com/zarf/ftp/xzip182.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="test"
 

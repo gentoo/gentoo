@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The FITSH software package provides a set of independent binary
+    programs (called Tasks) that are designed for execution from a
+    UNIX command line shell or shell script. Each of these tasks
+    performs a specific operation, following the UNIX philosophy of
+    modular tools that performs a single step related to astronomical
+    data reduction and image processing.
+  </longdescription>
+</pkgmetadata>

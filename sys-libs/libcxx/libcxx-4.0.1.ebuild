@@ -13,8 +13,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib llvm python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
-HOMEPAGE="http://libcxx.llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
+HOMEPAGE="https://libcxx.llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"

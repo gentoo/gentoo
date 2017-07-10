@@ -19,3 +19,9 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=( "${FILESDIR}/${P}-revert-tr.patch" )
+
+src_test() {
+	mkdir -p "${HOME}/.local/share/kf5/libkholidays" || die
+	cp -r "${S}/holidays/plan2" "${HOME}/.local/share/kf5/libkholidays/" || die
+	kde5_src_test
+}

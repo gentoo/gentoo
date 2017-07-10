@@ -1,0 +1,52 @@
+--- a/configure.in
++++ b/configure.in
+@@ -126,19 +126,38 @@
+       fi
+     done
+   else
+-    if test -d "$with_cdb" -a -f "$with_cdb/cdb.h"; then
+-      CDB_DIR="$with_cdb"
+-      CDB_INCLUDES="-I$with_cdb"
+-      available_cdb="yes"
+-      for j in cdb.a buffer.a unix.a byte.a alloc.a; do
+-        if test -f "$with_cdb/$j"; then
+-          LIBADD_CDB="$LIBADD_CDB $with_cdb/$j"
++    for i in include include/cdb; do
++      if test -f "$with_cdb/$i/cdb.h"; then
++        CDB_DIR="$with_cdb"
++        CDB_INCLUDES="-I$with_cdb/$i"
++        available_cdb="yes"
++        if test -f "$with_cdb/$i/uint32.h"; then
++          for l in lib64 lib32 lib; do
++            for a in cdb.a alloc.a buffer.a byte.a unix.a; do
++              if test -f "$with_cdb/$l/$a"; then
++                LIBADD_CDB="$LIBADD_CDB $with_cdb/$l/$a"
++              else
++                LIBADD_CDB=""
++                available_cdb="no"
++                break
++              fi
++            done
++            if test "$available_cdb" = "yes"; then
++              break
++            fi
++          done
+         else
+-          available_cdb="no"
+-	  break
++          save_LIBS="$LIBS"
++          AC_CHECK_LIB(cdb, cdb_init)
++          LIBS="$save_LIBS"
++          LIBADD_CDB="-lcdb"
++          AC_DEFINE(USE_TINYCDB, 1, [Use tinycdb])
+         fi
+-      done
+-    fi
++      fi
++      if test "$available_cdb" = "yes"; then
++        break
++      fi
++    done
+   fi
+   if test "$available_cdb" = "yes"; then
+     AC_MSG_RESULT([cdb found, path: $CDB_DIR])
