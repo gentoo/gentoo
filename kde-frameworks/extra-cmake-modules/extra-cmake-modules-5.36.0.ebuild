@@ -49,3 +49,12 @@ src_configure() {
 
 	cmake-utils_src_configure
 }
+
+src_test() {
+	# ECMToolchainAndroidTest passes but then breaks src_install
+	local myctestargs=(
+		-E "(ECMToolchainAndroidTest)"
+	)
+
+	kde5_src_test
+}
