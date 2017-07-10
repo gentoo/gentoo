@@ -9,6 +9,9 @@
         <email>proxy-maint@gentoo.org</email>
         <name>Gentoo Proxy Maintainers Project</name>
     </maintainer>
+	<use>
+		<flag name="desktop-utils">Build and install lumina's desktop-utils</flag>
+	</use>
     <upstream>
         <maintainer status="active">
             <email>ken@pcbsd.org</email>
