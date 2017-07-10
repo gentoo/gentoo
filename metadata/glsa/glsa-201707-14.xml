@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-14">
+  <title>Gajim: Information disclosure</title>
+  <synopsis>A vulnerability in Gajim might allow remote attackers to intercept
+    encrypted communications.
+  </synopsis>
+  <product type="ebuild">gajim</product>
+  <announced>2017-07-10</announced>
+  <revised>2017-07-10: 1</revised>
+  <bug>620146</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gajim" auto="yes" arch="*">
+      <unaffected range="ge">0.16.6-r1</unaffected>
+      <vulnerable range="lt">0.16.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Gajim is a Jabber/XMPP client which uses GTK+.</p>
+  </background>
+  <description>
+    <p>Gajim unconditionally implements the “XEP-0146: Remote Controlling
+      Clients” extension.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to connect to a malicious XMPP
+      server, could extract plaintext from Off The Record (OTR) encrypted
+      sessions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Gajim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/gajim-0.16.6-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10376">
+      CVE-2016-10376
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-07-04T21:23:24Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-10T00:02:36Z">b-man</metadata>
+</glsa>
