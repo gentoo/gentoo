@@ -7321,7 +7321,7 @@ dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
 dev-python/apsw 3.11.1_p1 3.17.0_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 1.4.1 1.6.0: Bash tab completion for argparse
+dev-python/argcomplete 1.4.1 1.6.0 1.8.2: Bash tab completion for argparse
 dev-python/argh 0.26.2 0.26.2-r1: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arpeggio 1.5: Parser interpreter based on PEG grammars
