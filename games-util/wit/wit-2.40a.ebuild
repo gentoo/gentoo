@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="A set of command line tools to manipulate Wii/GameCube ISO images and WBFS containers"
+DESCRIPTION="command line tools to manipulate Wii/GameCube ISO images and WBFS containers"
 HOMEPAGE="http://wit.wiimm.de/"
 SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
 
