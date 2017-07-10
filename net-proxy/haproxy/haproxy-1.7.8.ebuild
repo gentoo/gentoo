@@ -22,6 +22,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit ssl tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
+	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
 DEPEND="
@@ -63,15 +64,6 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	default
-
-	sed -e 's:@SBINDIR@:'/usr/bin':' contrib/systemd/haproxy.service.in \
-		> contrib/systemd/haproxy.service || die
-
-	sed -ie 's:/usr/sbin/haproxy:/usr/bin/haproxy:' src/haproxy-systemd-wrapper.c || die
-}
-
 src_compile() {
 	local -a args=(
 		TARGET=linux2628
@@ -95,6 +87,7 @@ src_compile() {
 	append-cflags -fno-strict-aliasing
 
 	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
@@ -105,14 +98,16 @@ src_compile() {
 }
 
 src_install() {
-	dobin haproxy
+	dosbin haproxy
+	dosym /usr/sbin/haproxy /usr/bin/haproxy
 
 	newconfd "${FILESDIR}/${PN}.confd" $PN
-	newinitd "${FILESDIR}/${PN}.initd-r4" $PN
+	newinitd "${FILESDIR}/${PN}.initd-r5" $PN
 
 	doman doc/haproxy.1
 
-	dobin haproxy-systemd-wrapper
+	dosbin haproxy-systemd-wrapper
+	dosym /usr/sbin/haproxy-systemd-wrapper /usr/bin/haproxy-systemd-wrapper
 	systemd_dounit contrib/systemd/haproxy.service
 
 	einstalldocs
