@@ -16727,7 +16727,7 @@ sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation files
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
-sci-visualization/gnuplot 5.0.1-r1 5.0.4 5.0.5 5.0.9999 5.1.9999: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.0.1-r1 5.0.4 5.0.5 5.0.6 5.0.9999 5.1.9999: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.23 5.1.23-r1 5.1.25: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44 2.47: Framework for Scanning Mode Microscopy data analysis
@@ -17843,7 +17843,7 @@ sys-libs/compiler-rt-sanitizers 4.0.0 4.0.1 9999: Compiler runtime libraries for
 sys-libs/cracklib 2.9.6-r1: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
-sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r3 6.0.35-r1 6.1.29-r1 6.2.23-r1 6.2.32: Oracle Berkeley DB
+sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r2 5.3.28-r3 6.0.35 6.0.35-r1 6.1.29 6.1.29-r1 6.2.23 6.2.23-r1 6.2.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.43.3 1.43.4: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
@@ -18014,7 +18014,7 @@ sys-process/watchpid 0.1-r2: Watches a process for termination
 sys-process/xjobs 20151016: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 0 1: Virtual for awk implementation
-virtual/bitcoin-leveldb 0: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
+virtual/bitcoin-leveldb 0-r1: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0 3.6 3.7: Virtual for FORTRAN 77 BLAS implementation
 virtual/cblas 1.0 3.6 3.7: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
