@@ -715,7 +715,7 @@
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
-      <name>Sergei</name>
+      <name>Sergei Trofimovich</name>
       <role>Council member</role>
     </member>
     <member>
@@ -1601,7 +1601,7 @@
     </member>
     <member is-lead="1">
       <email>slyfox@gentoo.org</email>
-      <name>Sergei</name>
+      <name>Sergei Trofimovich</name>
     </member>
     <member>
       <email>vikraman@gentoo.org</email>
@@ -1626,6 +1626,11 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
+      <role>Member ( Gentoo/IA-64 )</role>
+    </member>
+    <member>
+      <email>slyfox@gentoo.org</email>
+      <name>Sergei Trofimovich</name>
       <role>Member ( Gentoo/IA-64 )</role>
     </member>
     <member>
