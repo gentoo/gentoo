@@ -353,7 +353,7 @@ app-backup/borgbackup 1.0.9 1.0.10 9999: Deduplicating backup program with compr
 app-backup/borgweb 0.2.0-r2: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.23.3 0.24.0 0.25.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.28.1 0.29 0.29-r1 0.29.1: A highly efficient backup system based on the git packfile format
-app-backup/burp 1.4.40-r5 2.0.54 2.0.54-r1 2.1.8 2.1.10: Network backup and restore client and server for Unix and Windows
+app-backup/burp 1.4.40-r5 2.0.54 2.0.54-r1 2.0.54-r2 2.1.10 2.1.12: Network backup and restore client and server for Unix and Windows
 app-backup/buttersink 0.6.8 9999: rsync-like utility for btrfs snapshots
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
