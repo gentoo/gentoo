@@ -9,6 +9,7 @@ media-libs/devil nvtt
 # luajit added arm64 support in luajit 2.1, still in rc/beta, revisit this when
 # such a version hits the tree
 dev-db/redis luajit
+www-servers/nginx luajit
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # Virtualbox is x86 only
