@@ -28,7 +28,7 @@ RDEPEND="
 	colorhug? ( >=x11-misc/colord-1.2.12:0= )
 	dell? (
 		sys-libs/efivar
-		>=sys-libs/libsmbios-2.3.0
+		>=sys-libs/libsmbios-2.3.3
 	)
 	elf? ( dev-libs/libelf )
 	systemd? ( sys-apps/systemd )
