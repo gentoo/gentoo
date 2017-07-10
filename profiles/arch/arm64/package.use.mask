@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# pull webkit-gtk:2 which we would like to avoid
+x11-libs/wxGTK:2.8 webkit
+x11-libs/wxGTK:3.0 webkit
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # media-gfx/nvidia-texture-tools does not support arm64
 media-libs/devil nvtt
 
