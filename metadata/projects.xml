@@ -4254,11 +4254,11 @@ developers and volunteer mentors.</description>
     <email>wiki@gentoo.org</email>
     <name>Wiki</name>
     <url>https://wiki.gentoo.org/wiki/Project:Wiki</url>
-    <description>The Wiki project oversees the community and the content surrounding https://wiki.gentoo.org</description>
-    <member is-lead="1">
+    <description>The wiki project oversees the community and the content surrounding wiki.gentoo.org</description>
+    <member>
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
-      <role>Lead</role>
+      <role>Administrator</role>
     </member>
     <member>
       <email>creffett@gentoo.org</email>
@@ -4270,7 +4270,7 @@ developers and volunteer mentors.</description>
       <name>Tobias Heinlein</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Administrator / Blaster / Contributor</role>
