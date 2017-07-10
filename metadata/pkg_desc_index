@@ -14240,7 +14240,7 @@ net-analyzer/bwping 1.7-r1 1.8 1.9: A tool to measure bandwidth and RTT between 
 net-analyzer/cacti 0.8.8h 1.1.7 1.1.9: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 0.8.8h 1.1.7 1.1.9: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
-net-analyzer/carl 0.9-r1: An rsync logfile analyzer
+net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
 net-analyzer/chaosreader 0.94 0.94-r1: A tool to trace TCP/UDP/... sessions and fetch application data from snoop or tcpdump logs
 net-analyzer/check_mk 1.2.4_p5-r1 1.2.8_p16: General purpose Nagios/Icinga plugin for retrieving data
