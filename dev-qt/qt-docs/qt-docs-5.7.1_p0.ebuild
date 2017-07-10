@@ -14,7 +14,7 @@ SRC_URI="https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_${M
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 DEPEND="app-arch/p7zip"
 
