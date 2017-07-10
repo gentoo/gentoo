@@ -6982,7 +6982,7 @@ dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
 dev-php/File_Iterator 1.3.4 1.4.2: FilterIterator implementation that filters files based on criteria
 dev-php/PEAR-Archive_Tar 1.4.2-r2: Tar file management class
-dev-php/PEAR-Auth 1.6.4: Provides methods for creating an authentication system using PHP
+dev-php/PEAR-Auth 1.6.4 1.6.5_pre20150209: Provides methods for creating an authentication system using PHP
 dev-php/PEAR-Auth_HTTP 2.1.8-r1: Create HTTP authentication systems like Apache's realm-based .htaccess mechanism
 dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Benchmark 1.2.9: Framework to benchmark PHP scripts or function calls
