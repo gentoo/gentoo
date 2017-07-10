@@ -11,7 +11,7 @@ SRC_URI="https://github.com/grke/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl ipv6 libressl test xattr"
 
 CDEPEND="dev-libs/uthash
@@ -23,11 +23,13 @@ CDEPEND="dev-libs/uthash
 	acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"
 DEPEND="${CDEPEND}
+	virtual/pkgconfig
 	test? ( dev-libs/check )"
 RDEPEND="${CDEPEND}
 	virtual/logger"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.54-ncurses_pkg-config.patch
 	"${FILESDIR}"/${PN}-2.0.54-no_mkdir_run.patch
 	"${FILESDIR}"/${PN}-2.0.54-protocol1_by_default.patch
 	"${FILESDIR}"/${PN}-2.0.54-server_user.patch
@@ -76,6 +78,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	elog "Burp ebuilds now support the autoupgrade mechanism in both"
 	elog "client and server mode. In both cases it is disabled by"
 	elog "default. You almost certainly do NOT want to enable it in"
