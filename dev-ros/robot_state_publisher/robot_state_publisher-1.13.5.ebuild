@@ -29,4 +29,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ros/rostest[${PYTHON_USEDEP}]
+	test? ( dev-cpp/gtest )
 "
