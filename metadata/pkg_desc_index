@@ -17084,7 +17084,7 @@ sys-apps/flock 2.19: Manage locks from shell scripts
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwcrv 0.1.0: FireWire CSR Config ROM Viewer
 sys-apps/fwts 15.12.00 17.02.00: Firmware Test Suite
-sys-apps/fwupd 0.9.4 0.9.5: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 0.9.4 0.9.5 0.9.5-r1: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fwupdate 8 9: Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language

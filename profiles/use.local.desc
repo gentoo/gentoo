@@ -7456,6 +7456,7 @@ sys-apps/fwupd:dell - Enable Dell-specific support.
 sys-apps/fwupd:elf - Enable libelf support through dev-libs/libelf package.
 sys-apps/fwupd:man - Build and install man pages
 sys-apps/fwupd:uefi - Enable UEFI support
+sys-apps/fwupd:uefi_labels - Enable UEFI labels support
 sys-apps/gawk:mpfr - use mpfr for high precision arithmetic (-M / --bignum)
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
