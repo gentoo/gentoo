@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples slurm static-libs +suid"
 
 RDEPEND="
-	sys-cluster/slurm
+	slurm? ( sys-cluster/slurm )
 "
 DEPEND="${RDEPEND}"
 
