@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit php-pear-r1
 
-DESCRIPTION="Provides methods for configuration manipulation. Your configuration's swiss-army knife"
+DESCRIPTION="Provides multiple methods for configuration manipulation"
 LICENSE="PHP-2.02"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
