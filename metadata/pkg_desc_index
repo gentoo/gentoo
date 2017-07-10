@@ -42,7 +42,7 @@ app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.3.1.0 9999: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.31 2.2.32 2.4.25 2.4.26: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.31 2.2.32 2.4.25 2.4.27: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: A library for changing configuration files
@@ -1014,7 +1014,6 @@ app-editors/emacs 18.59-r11 23.4-r15 24.5-r3 25.1 25.2: The extensible, customiz
 app-editors/emacs-vcs 25.2.9999 26.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
-app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
 app-editors/focuswriter 1.6.3 1.6.4 1.6.5: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
@@ -2196,7 +2195,6 @@ app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.16 3.18: Magnificent app which corrects your previous console command
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.22.0 0.24.0 0.25.0 9999: Additional completion definitions for Zsh
-app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/acroread 9.5.5-r3: Adobe's PDF reader
@@ -13635,7 +13633,7 @@ media-sound/aqualung 1.0-r1 1.0-r2: Music player for a wide range of formats des
 media-sound/ardour 2.8.16-r1 4.7-r1 4.7-r2 5.3-r1 5.5-r1 5.6-r1 5.8-r1 5.9 9999: Digital Audio Workstation
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
-media-sound/asunder 2.2 2.8 2.8.1 2.9: A graphical Audio CD ripper and encoder with support for many output formats
+media-sound/asunder 2.2 2.8.1 2.9 2.9.1: A graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.4.1 3.6.2 3.7.1 3.7.1-r1: Audacious Player - Your music, your way, no exceptions
 media-sound/audacity 2.0.5 2.0.5-r2 2.1.3-r1: Free crossplatform audio editor
@@ -18434,7 +18432,7 @@ www-plugins/lightspark 0.7.2_p20160107 9999: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/pdfjs 1.7.225: A PDF reader in JavaScript
 www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.31-r1 2.2.32 2.4.25 2.4.26: The Apache Web Server
+www-servers/apache 2.2.31-r1 2.2.32 2.4.25 2.4.27: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.0: Fast, cross-platform HTTP/2 web server with automatic HTTPS
