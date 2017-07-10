@@ -253,11 +253,6 @@ app-editors/fb2edit
 >=xfce-base/xfconf-4.13
 >=xfce-base/xfce4-settings-4.13.1
 
-# Matthias Maier <tamiko@gentoo.org> (06 Jun 2017)
-# Dead upstream, unmaintained, no homepage, no SRC_URI, x86-only, does not
-# compile, bug #620964. Removal in 30 days.
-app-text/7plus
-
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. The current Gentoo version no longer builds.
