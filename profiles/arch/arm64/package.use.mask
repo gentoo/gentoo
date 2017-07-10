@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# sys-firmware/ipxe does not build, mask x86 targets needing it
+app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # pull webkit-gtk:2 which we would like to avoid
 x11-libs/wxGTK:2.8 webkit
 x11-libs/wxGTK:3.0 webkit
