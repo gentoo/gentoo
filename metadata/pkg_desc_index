@@ -17843,7 +17843,7 @@ sys-libs/compiler-rt-sanitizers 4.0.0 4.0.1 9999: Compiler runtime libraries for
 sys-libs/cracklib 2.9.6-r1: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
-sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r2 6.0.35 6.1.29 6.2.23 6.2.32: Oracle Berkeley DB
+sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r3 6.0.35-r1 6.1.29-r1 6.2.23-r1 6.2.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.43.3 1.43.4: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
@@ -18318,7 +18318,7 @@ www-apps/metadot 6.1.6-r1 6.4.5.4-r1: Metadot is a CMS with file, page and link 
 www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
-www-apps/moodle 2.7.20 3.0.10 3.1.6 3.2.3: The Moodle Course Management System
+www-apps/moodle 3.1.7 3.2.4 3.3.1: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.27.5 0.28: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
