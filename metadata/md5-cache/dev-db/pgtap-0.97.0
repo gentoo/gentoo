@@ -10,5 +10,5 @@ RDEPEND=postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_target
 SLOT=0
 SRC_URI=http://api.pgxn.org/dist/pgtap/0.97.0/pgtap-0.97.0.zip
 _eclass_exported_funcs=pkg_setup:postgres-multi src_prepare:postgres-multi src_configure:- src_compile:postgres-multi src_test:postgres-multi src_install:postgres-multi
-_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	postgres	43ca3a61ed10e9cc454df440b008d2f2	postgres-multi	2d9524cffa1795dca0463fbda365aa85	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	postgres	b9b02f4ca43040794092e39a1de05f47	postgres-multi	5ac3eb2a7c44e8aebcafeef8d17c218a	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=fc11b804eee2a9ca7000b8812cf0407c
