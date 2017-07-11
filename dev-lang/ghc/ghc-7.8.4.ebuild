@@ -73,7 +73,7 @@ IUSE+=" elibc_glibc" # system stuff
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	>=dev-libs/gmp-5:=
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
 "
 

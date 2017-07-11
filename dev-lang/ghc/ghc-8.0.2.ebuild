@@ -78,7 +78,7 @@ IUSE+=" binary"
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
 "
 
