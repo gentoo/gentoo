@@ -12958,7 +12958,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.3.3 0.3.3-r1: libhal stub forwarding to UDisks for Adobe Flash to play DRM content
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.3.1 1.3.4 1.4.5 1.4.6 1.4.6-r1 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.4.5 1.4.6-r1 1.4.6-r2 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
