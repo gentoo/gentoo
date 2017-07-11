@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexis Ballier <aballier@gentoo.org> (11 Jul 2017)
+# Needs indirectly clisp:
+# https://bugs.gentoo.org/show_bug.cgi?id=624532
+app-text/texlive xindy
+
+# Alexis Ballier <aballier@gentoo.org> (11 Jul 2017)
 # dev-libs/botan:0 fails with 'ERROR: Unknown or unidentifiable processor
 # "aarch64"'
 app-crypt/qca botan
