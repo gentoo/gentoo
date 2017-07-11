@@ -37,7 +37,7 @@ RDEPEND="${CDEPEND}
 		sys-libs/libselinux[ruby]
 		sec-policy/selinux-puppet
 	)
-	puppetdb? ( >=dev-ruby/puppetdb-termini-3.1.0 )"
+	puppetdb? ( >=dev-ruby/puppetdb-termini-5.0.1 )"
 
 S=${WORKDIR}
 
