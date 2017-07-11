@@ -9,6 +9,7 @@ inherit eutils multilib python-single-r1 versionator toolchain-funcs
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
+
 DESCRIPTION="VirtualBox X11 video driver for Gentoo guest"
 HOMEPAGE="http://www.virtualbox.org/"
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
@@ -16,18 +17,22 @@ SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
 IUSE="dri"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	>=x11-base/xorg-server-1.7:=[-minimal]
 	x11-libs/libXcomposite
-	${PYTHON_DEPS}"
+"
+
 DEPEND="${RDEPEND}
 	>=dev-lang/yasm-0.6.2
 	>=dev-util/kbuild-0.1.9998_pre20131130
 	sys-power/iasl
 	x11-proto/fontsproto
+	x11-proto/presentproto
 	x11-proto/randrproto
 	x11-proto/renderproto
 	x11-proto/resourceproto
@@ -40,13 +45,20 @@ DEPEND="${RDEPEND}
 	x11-libs/libX11
 	x11-libs/libXfixes
 	x11-libs/libXext
-	dri? (  x11-proto/xf86driproto
-		>=x11-libs/libdrm-2.4.5 )"
+	dri? (
+		x11-proto/dri3proto
+		x11-proto/xf86driproto
+		>=x11-libs/libdrm-2.4.5
+	)
+"
+
 PDEPEND="dri? ( ~app-emulation/virtualbox-guest-additions-${PV} )"
 
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
+
 S="${WORKDIR}/${MY_P}"
+
 MODULES_SRC_DIR="${S}/src/VBox/Additions/linux/drm"
 
 PATCHES=(
