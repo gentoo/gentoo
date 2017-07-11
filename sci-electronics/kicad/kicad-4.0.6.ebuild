@@ -66,13 +66,14 @@ src_prepare() {
 	# Patch to work with >=boost 1.61
 	eapply "${FILESDIR}/${PN}-boost-1.61.patch"
 
-	# remove all the non unix file endings
+	# Remove cvpcb desktop file as it does nothing
+	rm "resources/linux/mime/applications/cvpcb.desktop" || die
+
+	# remove all the non unix file endings and fix application categories in desktop files
 	while IFS="" read -d $'\0' -r f; do
 		edos2unix "${f}"
+		sed -i '/Categories/s/Development;//' "${f}"
 	done < <(find "${S}" -type f -name "*.desktop" -print0)
-
-	# Remove cvpcb desktop file while it does nothing
-	rm "${WORKDIR}/${P}/resources/linux/mime/applications/cvpcb.desktop" || die
 
 	# Handle optional minimal install.
 	if use minimal; then
@@ -125,10 +126,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DPYTHON_DEST="$(python_get_sitedir)"
-		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
-		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DKICAD_DOCS="/usr/share/doc/${PF}"
 		-DKICAD_HELP="/usr/share/doc/${PF}/help"
 		-DwxUSE_UNICODE=ON
@@ -139,6 +136,12 @@ src_configure() {
 		-DKICAD_SCRIPTING_WXPYTHON="$(usex python)"
 		-DKICAD_I18N_UNIX_STRICT_PATH="$(usex i18n)"
 		-DCMAKE_CXX_FLAGS="-std=c++11"
+	)
+	use python && mycmakeargs+=(
+		-DPYTHON_DEST="$(python_get_sitedir)"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
+		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
 	if use debug; then
 		append-cxxflags "-DDEBUG"

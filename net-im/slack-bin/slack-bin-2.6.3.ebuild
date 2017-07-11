@@ -11,11 +11,11 @@ DESCRIPTION="Team collaboration tool"
 HOMEPAGE="http://www.slack.com/"
 SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
 
-LICENSE="no-source-code"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/atk:0
 	dev-libs/expat:0
@@ -39,6 +39,7 @@ RDEPEND="dev-libs/atk:0
 	x11-libs/libXext:0
 	x11-libs/libXfixes:0
 	x11-libs/libXi:0
+	x11-libs/libxkbfile:0
 	x11-libs/libXrandr:0
 	x11-libs/libXrender:0
 	x11-libs/libXScrnSaver:0
@@ -64,10 +65,6 @@ src_install() {
 	doins -r usr/lib/${MY_PN}/.
 	fperms +x /opt/${MY_PN}/${MY_PN}
 	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

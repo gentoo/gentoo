@@ -1,63 +1,60 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit unpacker gnome2-utils
-
-QA_PREBUILT="
-	opt/slack/slack
-	opt/slack/resources/app.asar.unpacked/node_modules/*
-	opt/slack/libnode.so
-	opt/slack/libgcrypt.so.11
-	opt/slack/libffmpeg.so
-	opt/slack/libCallsCore.so
-"
-
-DESCRIPTION="Team collaboration tool"
-HOMEPAGE="http://www.slack.com/"
-
 MY_PN="${PN/-bin/}"
 BASE_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-_arch_.deb"
 
-SRC_URI="
-	x86? ( ${BASE_URI/_arch_/i386} )
-	amd64? ( ${BASE_URI/_arch_/amd64} )
-"
+inherit eutils gnome2-utils unpacker
 
-LICENSE="MIT Apache-2.0 BSD ISC LGPL-2 AFL-2.1 public-domain WTFPL-2 Artistic-2 no-source-code"
+DESCRIPTION="Team collaboration tool"
+HOMEPAGE="http://www.slack.com/"
+SRC_URI="x86? ( ${BASE_URI/_arch_/i386} )
+	amd64? ( ${BASE_URI/_arch_/amd64} )"
+
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
-RDEPEND="x11-libs/gtk+:2
-	x11-libs/libnotify
-	x11-libs/libXtst
-	x11-libs/pango
-	x11-libs/cairo[xcb]
-	media-libs/alsa-lib
-	media-libs/harfbuzz[graphite]
-	media-libs/libcanberra[gtk]
-	dev-libs/nss
+RDEPEND="dev-libs/atk:0
+	dev-libs/expat:0
 	dev-libs/glib:2
-	dev-libs/atk
-	gnome-base/libgnome-keyring
+	dev-libs/nspr:0
+	dev-libs/nss:0
 	gnome-base/gconf:2
-	sys-apps/dbus
-	net-print/cups[ssl]
-	net-misc/curl
-	virtual/udev
-	virtual/libc
-	virtual/libffi
-"
-DEPEND="${RDEPEND}"
+	gnome-base/libgnome-keyring:0
+	media-libs/alsa-lib:0
+	media-libs/fontconfig:1.0
+	media-libs/freetype:2
+	net-misc/curl:0
+	net-print/cups:0
+	sys-apps/dbus:0
+	x11-libs/cairo:0
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:2
+	x11-libs/libX11:0
+	x11-libs/libXcomposite:0
+	x11-libs/libXcursor:0
+	x11-libs/libXdamage:0
+	x11-libs/libXext:0
+	x11-libs/libXfixes:0
+	x11-libs/libXi:0
+	x11-libs/libXrandr:0
+	x11-libs/libXrender:0
+	x11-libs/libXScrnSaver:0
+	x11-libs/libXtst:0
+	x11-libs/pango:0"
+
+QA_PREBUILT="opt/slack/slack
+	opt/slack/resources/app.asar.unpacked/node_modules/*
+	opt/slack/libnode.so
+	opt/slack/libffmpeg.so
+	opt/slack/libCallsCore.so"
 
 S="${WORKDIR}"
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
 
 src_install() {
 	insinto /usr/share/pixmaps
@@ -67,11 +64,15 @@ src_install() {
 	domenu usr/share/applications/${MY_PN}.desktop
 
 	insinto /opt/${MY_PN}
-	doins -r usr/lib/${MY_PN}/*
+	doins -r usr/lib/${MY_PN}/.
 	fperms +x /opt/${MY_PN}/${MY_PN}
 	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
 	gnome2_icon_cache_update
 }
