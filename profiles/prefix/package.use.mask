@@ -8,7 +8,7 @@ app-misc/pax-utils seccomp
 
 # Mikle Kolyada <zlogene@gentoo.org> (29 Nov 2014)
 # Masked because of lack of manpower/time (bug #497068)
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Fabian Groffen <grobian@gentoo.org> (23 Oct 2010)
 # IPC relies on pipes, selects, polls, and more stuff that Python is

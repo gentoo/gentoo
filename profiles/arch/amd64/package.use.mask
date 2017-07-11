@@ -133,7 +133,7 @@ media-libs/libmikmod cpu_flags_x86_sse2
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (4 Jan 2014)
 # While globally masked, the needed amd64 keywords are already present
-dev-vcs/git -mediawiki
+dev-vcs/git -mediawiki -mediawiki-experimental
 
 # Sergey Popov <pinkbyte@gentoo.org> (27 Dec 2013)
 # Boost.Context can be built on amd64
