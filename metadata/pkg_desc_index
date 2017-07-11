@@ -1923,7 +1923,7 @@ app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/scope 0.04-r1: Serial Line Analyser
-app-misc/screen 4.4.0 4.5.1 4.6.0 9999: screen manager with VT100/ANSI terminal emulation
+app-misc/screen 4.4.0 4.5.1 4.6.0 4.6.1 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 2.7.7 3.2.2 3.6.5 3.7.0 3.8.0 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
@@ -11739,7 +11739,7 @@ gnustep-apps/lapispuzzle 1.2: a Tetris-like game where each player is effected b
 gnustep-apps/laternamagica 0.4: an image viewer and slideshow application
 gnustep-apps/mpdcon 1.5.1: GNUstep client for the Music Player Daemon
 gnustep-apps/pictureframe 1.0.0 1.1.2 1.1.3: digital picture frame software
-gnustep-apps/pikopixel 1.0_beta7: a free application for drawing & editing pixel-art images
+gnustep-apps/pikopixel 1.0_beta7 1.0_beta8: a free application for drawing & editing pixel-art images
 gnustep-apps/preferences 1.3.0_pre20061204-r1 1.3.0_pre20100523: Preferences is the GNUstep program with which you define your own personal user experience
 gnustep-apps/preview 0.8.5-r1 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
