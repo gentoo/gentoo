@@ -13,12 +13,16 @@ HOMEPAGE="http://xcb.freedesktop.org/"
 SRC_URI="https://github.com/Airblader/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 KEYWORDS="amd64 ~arm x86"
-IUSE="test"
+IUSE="elibc_musl test"
 
-RDEPEND=">=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util[${MULTILIB_USEDEP}]"
+RDEPEND="
+	elibc_musl? ( sys-libs/queue )
+	>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
+	x11-libs/xcb-util[${MULTILIB_USEDEP}]
+"
 DEPEND="${RDEPEND}
-	test? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
+	test? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
+"
 
 src_configure() {
 	xorg-2_src_configure
