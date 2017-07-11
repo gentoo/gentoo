@@ -12,8 +12,8 @@ inherit cmake-utils llvm python-any-r1
 
 MY_P=llvm-${PV/_/}
 DESCRIPTION="OCaml bindings for LLVM"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${MY_P/_/}.src.tar.xz"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P/_/}.src.tar.xz"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430

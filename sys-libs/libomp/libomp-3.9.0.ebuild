@@ -9,8 +9,8 @@ inherit cmake-multilib
 
 MY_P=openmp-${PV}
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
-HOMEPAGE="http://openmp.llvm.org"
-SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
+HOMEPAGE="https://openmp.llvm.org"
+SRC_URI="https://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
 # Additional licenses:
 # - MIT-licensed Intel code,

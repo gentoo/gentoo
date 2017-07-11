@@ -1,6 +1,33 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# openvz-sources are likely too old for any proper arm64 usage
+app-emulation/libvirt openvz
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# sys-firmware/ipxe does not build, mask x86 targets needing it
+app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# pull webkit-gtk:2 which we would like to avoid
+x11-libs/wxGTK:2.8 webkit
+x11-libs/wxGTK:3.0 webkit
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# media-gfx/nvidia-texture-tools does not support arm64
+media-libs/devil nvtt
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# luajit added arm64 support in luajit 2.1, still in rc/beta, revisit this when
+# such a version hits the tree
+dev-db/redis luajit
+www-servers/nginx luajit
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# Virtualbox is x86 only
+app-emulation/libvirt virtualbox
+
 # Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
 # gst:0.10: Thanks but no thanks.
 dev-qt/qtmultimedia gstreamer010
@@ -22,6 +49,7 @@ app-shells/bash-completion test
 dev-python/PyQt4 webkit
 dev-qt/designer:4 webkit
 dev-qt/qtdeclarative:4 webkit
+dev-python/pyside webkit
 
 # Alexis Ballier <aballier@gentoo.org> (26 Jun 2017)
 # Needs gstreamer:0.10

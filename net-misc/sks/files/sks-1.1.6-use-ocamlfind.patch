@@ -1,0 +1,39 @@
+Use ocamlfind for finding dependencies, esp. for doing their transitive closure.
+
+Ideally the build system should be converted to something more modern like
+jbuilder.
+
+Index: sks-1.1.6/Makefile
+===================================================================
+--- sks-1.1.6.orig/Makefile
++++ sks-1.1.6/Makefile
+@@ -21,10 +21,10 @@ CFLAGS=-O3  $(CINCLUDES) -I .
+ CXXFLAGS=-O3 $(CINCLUDES) -I .
+ 
+ ifndef OCAMLC
+-	OCAMLC=ocamlc
++	OCAMLC=ocamlfind ocamlc
+ endif
+ ifndef OCAMLOPT
+-	OCAMLOPT=ocamlopt
++	OCAMLOPT=ocamlfind ocamlopt
+ endif
+ ifndef CAMLP4O
+ 	CAMLP4O=camlp4o
+@@ -55,12 +55,12 @@ WARNERR=-warn-error A
+ endif
+ 
+ CAMLP4=-pp $(CAMLP4O)
+-CAMLINCLUDE= -I lib -I bdb -I +cryptokit
++CAMLINCLUDE= -package cryptokit,unix,str,bigarray -I lib -I bdb
+ COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLLDFLAGS) -ccopt -Lbdb -dtypes $(WARNERR)
+ OCAMLDEP=ocamldep $(CAMLP4)
+-CAMLLIBS=unix.cma str.cma bdb.cma nums.cma bigarray.cma cryptokit.cma
+-OCAMLFLAGS=$(COMMONCAMLFLAGS) -g $(CAMLLIBS)
+-OCAMLOPTFLAGS=$(COMMONCAMLFLAGS) -inline 40 $(CAMLLIBS:.cma=.cmxa)
++CAMLLIBS=bdb.cma nums.cma
++OCAMLFLAGS=$(COMMONCAMLFLAGS) -linkpkg -g $(CAMLLIBS)
++OCAMLOPTFLAGS=$(COMMONCAMLFLAGS) -linkpkg -inline 40 $(CAMLLIBS:.cma=.cmxa)
+ 
+ EXE=sks sks_add_mail
+ ALL=$(EXE) sks.8.gz

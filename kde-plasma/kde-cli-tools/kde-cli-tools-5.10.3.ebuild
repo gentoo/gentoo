@@ -3,8 +3,8 @@
 
 EAPI=6
 
-KDE_HANDBOOK="true"
-KDE_TEST="true"
+KDE_HANDBOOK="forceoptional"
+KDE_TEST="optional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 

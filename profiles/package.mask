@@ -29,10 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (09 Jul 2017)
+# Upstream has removed the code and the published gem.
+# Removal in 30 days.
+dev-ruby/modernizr
+
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
->=sys-libs/ldb-1.2.0
+# See also https://bugzilla.samba.org/show_bug.cgi?id=12859
+>=sys-libs/ldb-1.1.30
 
 # Michael Palimaka <kensington@gentoo.org> (06 Jul 2017)
 # Obsolete. l10n is now included in app-office/calligra:5.
@@ -232,12 +238,6 @@ media-sound/skype-call-recorder
 net-im/skype
 net-im/skypetab-ng
 
-# Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2017)
-# Dead upstream, relies on ancient and vulnerable qtwebkit
-# See bug #620690
-# Removal in 30 days
-app-editors/fb2edit
-
 # Michał Górny <mgorny@gentoo.org> (07 Jun 2017)
 # The new release changes API and *breaks* core Xfce components.
 # Upstream lists xfce-base/xfce4-settings and xfce-base/xfce4-panel
@@ -246,11 +246,6 @@ app-editors/fb2edit
 # fixed versions and for further testing.
 >=xfce-base/xfconf-4.13
 >=xfce-base/xfce4-settings-4.13.1
-
-# Matthias Maier <tamiko@gentoo.org> (06 Jun 2017)
-# Dead upstream, unmaintained, no homepage, no SRC_URI, x86-only, does not
-# compile, bug #620964. Removal in 30 days.
-app-text/7plus
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
@@ -362,7 +357,7 @@ dev-perl/Params-ValidationCompiler
 # Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
 # Broken runscript/changed behavior causing lvm2 to fail
 # on boot. Bug #617578
-=sys-fs/lvm2-2.02.171
+>=sys-fs/lvm2-2.02.171
 
 # Michał Górny <mgorny@gentoo.org> (22 May 2017)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>

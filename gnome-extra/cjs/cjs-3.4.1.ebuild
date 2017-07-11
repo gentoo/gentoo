@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? ( sys-apps/dbus )
+	sys-devel/autoconf-archive
 "
 # Cinnamon 2.2 does not work with this release.
 RDEPEND="${RDEPEND}

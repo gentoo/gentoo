@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-qt/qtchooser
+	dev-qt/linguist-tools:5
 "
 
 DOCS=( ChangeLog README )
