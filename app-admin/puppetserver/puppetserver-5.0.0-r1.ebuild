@@ -92,7 +92,7 @@ src_install() {
 	fperms -R 771 /etc/puppetlabs/puppet/ssl
 	# init type tasks
 	newconfd ext/default puppetserver
-	newinitd "${FILESDIR}/puppetserver.initd" puppetserver
+	newinitd "${FILESDIR}/puppetserver.init" puppetserver
 	# systemd type things
 	insinto /etc/systemd/system/puppetserver.service.d/
 	newins ext/default gentoo.conf
