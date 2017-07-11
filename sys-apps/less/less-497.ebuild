@@ -17,10 +17,6 @@ DEPEND=">=app-misc/editor-wrapper-3
 	pcre? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	chmod a+x configure || die
-}
-
 src_configure() {
 	export ac_cv_lib_ncursesw_initscr=$(usex unicode)
 	export ac_cv_lib_ncurses_initscr=$(usex !unicode)
