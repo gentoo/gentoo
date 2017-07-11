@@ -2701,7 +2701,7 @@ developers and volunteer mentors.</description>
     <description>The Portage Development Project is devoted to maintaining and updating Portages core functionality and utilities.</description>
     <subproject ref="tools-portage@gentoo.org"/>
     <subproject ref="sandbox@gentoo.org"/>
-    <member is-lead="1">
+    <member>
       <email>bernalex@gentoo.org</email>
       <name>Alexander Berntsen</name>
       <role>Interface developer, Documenter</role>
@@ -2751,7 +2751,7 @@ developers and volunteer mentors.</description>
       <name>Mike Frysinger</name>
       <role>Member, Sandbox developer, Documenter</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>zmedico@gentoo.org</email>
       <name>Zac Medico</name>
       <role>Core</role>
