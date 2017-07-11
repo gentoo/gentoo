@@ -2507,7 +2507,8 @@ dev-python/passlib:scrypt - accelerated scrypt algoythm support
 dev-python/passlib:totp - time based one time password support
 dev-python/paste:flup - enable support for flup (and therefore for various wgsi servers and middleware)
 dev-python/paste:openid - enable OpenID support
-dev-python/pillow:webp - Enable support for webp image format.
+dev-python/pillow:imagequant - Build with Image Quantization Library support
+dev-python/pillow:ole - Add support for OLE2 image format
 dev-python/py-amqp:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/pygame:midi - Enable midi support using media-libs/portmidi
 dev-python/pygpu:cuda - Enable NVIDIA CUDA toolkit support

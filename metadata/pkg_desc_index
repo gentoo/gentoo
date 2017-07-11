@@ -8018,6 +8018,7 @@ dev-python/naima 0.8-r1: Python package for gamma-ray astronomy
 dev-python/namespace-google 1: Namespace package declaration for google
 dev-python/namespace-paste 1: Namespace package declaration for paste
 dev-python/namespace-repoze 1: Namespace package declaration for repoze
+dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinxcontrib
 dev-python/namespace-zope 1: Namespace package declaration for zope
 dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced data
 dev-python/natsort 4.0.4: Natural sorting for Python
@@ -8058,7 +8059,7 @@ dev-python/ntplib 0.3.3: Python NTP library
 dev-python/numba 0.27.0 0.30.1 0.33.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.6.1 2.6.2: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.8.2 1.9.2 1.10.4 1.12.1 1.13.0 1.13.1 9999: Fast array and numerical python library
+dev-python/numpy 1.8.2 1.9.2 1.10.4 1.12.1 1.13.1 9999: Fast array and numerical python library
 dev-python/numpydoc 0.6.0 0.7.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.9.0_p1 1.9.0_p1-r1: Library for OAuth version 1.0
@@ -8068,6 +8069,7 @@ dev-python/objgraph 1.7.2 1.8.1 3.1.0: Draws Python object reference graphs with
 dev-python/oct2py 3.6.0: Python to GNU Octave bridge
 dev-python/odfpy 1.3.2: Python API and tools to manipulate OpenDocument files
 dev-python/odo 0.5.0 0.5.0-r1: Data migration in python
+dev-python/olefile 0.44: Python package to parse, read and write Microsoft OLE2 files
 dev-python/openpyxl 2.3.0 2.3.3 9999: Pure python reader and writer of Excel OpenXML files
 dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output for nosetests
 dev-python/openstacksdk 0.8.2 0.9.5 0.9.13: A collection of libraries for building applications to work with OpenStack.
@@ -8153,7 +8155,7 @@ dev-python/piddle 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/piexif 1.0.12: Exif manipulation with pure Python
 dev-python/pika 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
-dev-python/pillow 3.4.2-r1: Python Imaging Library (fork)
+dev-python/pillow 3.4.2-r1 4.2.1: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 7.1.2 9.0.1-r1 9.0.1-r2: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
@@ -8651,7 +8653,7 @@ dev-python/rosdistro 0.6.1 0.6.2 9999: Tools to work with catkinized rosdistro f
 dev-python/rospkg 1.1.0-r1 1.1.1 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.4: Pure python parser generator that also works with RPython
-dev-python/rpy 2.6.2 2.8.5: Python interface to the R Programming Language
+dev-python/rpy 2.6.2 2.8.5 2.8.6: Python interface to the R Programming Language
 dev-python/rpyc 3.3.0 3.3.0-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.2.3-r1 3.4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
@@ -8732,7 +8734,7 @@ dev-python/sparql-wrapper 1.7.6 1.8.0: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/spectral-cube 0.4.0: Manipulate astronomical data cubes with Python
 dev-python/specutils 0.2 0.2.2: Python package for astronomy spectral operations
-dev-python/sphinx 1.2.2-r1 1.2.3-r1 1.3.1-r2 1.3.5-r1 1.5.2: Python documentation generator
+dev-python/sphinx 1.2.2-r1 1.2.3-r1 1.3.1-r2 1.3.5-r1 1.5.2 1.6.3: Python documentation generator
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.9: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-gallery 0.1.7-r1: Sphinx extension to automatically generate an examples gallery
@@ -8752,6 +8754,7 @@ dev-python/sphinxcontrib-napoleon 0.5.2: Allow a different format in dosctrings 
 dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
 dev-python/sphinxcontrib-programoutput 0.8: Extension to sphinx to include program output
 dev-python/sphinxcontrib-spelling 2.1.2: Sphinx spelling extension
+dev-python/sphinxcontrib-websupport 1.0.1: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spyder 2.3.9 3.0.2-r1: Python IDE with matlab-like features
 dev-python/sqlalchemy 0.7.10 0.9.8 1.0.17 1.1.5 1.1.9 1.1.11: Python SQL toolkit and Object Relational Mapper
@@ -8825,7 +8828,7 @@ dev-python/toolz 0.8.0 0.8.2: List processing tools and functional utilities
 dev-python/tooz 1.48.0 1.48.1: Library centralizing the most common distributed primitives
 dev-python/torment 3.0.1 3.0.2 3.0.3: A Study in Fixture Based Testing Frameworking
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
-dev-python/tox 2.4.1: virtualenv-based automation of test activities
+dev-python/tox 2.4.1 2.7.0: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.8.4 4.10.0 9999: Add a progress meter to your loops in a second.
 dev-python/traceback2 1.4.0: Backports of the traceback module
@@ -12743,6 +12746,7 @@ media-gfx/kphotoalbum 5.2: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
 media-gfx/krita 3.1.4: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kxstitch 2.0.0: Program to create cross stitch patterns
+media-gfx/libimagequant 2.10.1: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.0.3 2.0.9-r1 2.1.1 2.1.3 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2 0.13.18: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
@@ -16343,7 +16347,7 @@ sci-libs/ViSP 3.0.1: Visual Servoing Platform: visual tracking and visual servoi
 sci-libs/adolc 2.4.1 2.5.0 2.5.2 2.6.2: Automatic differentiation system for C/C++
 sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 6.200.3 7.800.2-r1 7.950.0: Streamlined C++ linear algebra library
+sci-libs/armadillo 6.200.3 7.800.2-r1 7.950.0 7.950.1: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5 3.4.0: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
@@ -16429,7 +16433,7 @@ sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.8.5 0.9.0 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data
 sci-libs/gpp4 1.3.1: A standalone, drop-in replacement for the CCP4 library
 sci-libs/grib_api 1.11.0 1.14.5: Library for encoding and decoding WMO FM-92 GRIB messages
-sci-libs/gsl 1.16 2.1 2.3: The GNU Scientific Library
+sci-libs/gsl 1.16 2.1 2.3 2.4: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/h5hut 1.99.13: High-Performance I/O Library for Particle-based Simulations
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
