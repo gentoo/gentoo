@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge.jp/canna/9565/${MY_P}.tar.bz2"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~x86"
 IUSE="canuum doc ipv6"
 
 RDEPEND="canuum? (
