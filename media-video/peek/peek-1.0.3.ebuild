@@ -22,6 +22,7 @@ RDEPEND=">=dev-libs/glib-2.38:2
 	>=x11-libs/gtk+-3.14:3"
 DEPEND="${RDEPEND}
 	$(vala_depend)
+	app-text/txt2man
 	>=sys-devel/gettext-0.19"
 
 src_prepare() {
