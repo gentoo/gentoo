@@ -1,0 +1,21 @@
+diff -Naur usr/lib/pkgconfig/CMakeLists.txt usr/lib/pkgconfig/CMakeLists.txt
+--- a/usr/lib/pkgconfig/CMakeLists.txt	2017-04-13 15:46:35.227879501 +0200
++++ b/usr/lib/pkgconfig/CMakeLists.txt	2017-04-13 15:45:59.809561031 +0200
+@@ -1,6 +1,6 @@
+-set(PKG_CONFIG_LIBDIR     "\${prefix}/lib/\${deb_host_multiarch}")
+-set(PKG_CONFIG_INCLUDEDIR "\${prefix}/include/\${deb_host_multiarch}/${PROJECT_NAME}-${PROJECT_VERSION}")
+-set(PKG_CONFIG_LIBS       "-L\${libdir} -l:libstlink.so.${PROJECT_VERSION_MAJOR}")
++set(PKG_CONFIG_LIBDIR     "\${prefix}/lib}")
++set(PKG_CONFIG_INCLUDEDIR "\${prefix}/include}")
++set(PKG_CONFIG_LIBS       "-L\${libdir} -lstlink")
+ set(PKG_CONFIG_CFLAGS     "-I\${includedir}")
+ set(PKG_CONFIG_REQUIRES   "libusb-1.0")
+ 
+diff -Naur usr/lib/pkgconfig/pkg-config.pc.cmake usr/lib/pkgconfig/pkg-config.pc.cmake
+--- a/usr/lib/pkgconfig/pkg-config.pc.cmake	2017-04-13 15:46:35.227879501 +0200
++++ b/usr/lib/pkgconfig/pkg-config.pc.cmake	2017-02-25 17:45:21.000000000 +0100
+@@ -1,4 +1,3 @@
+-deb_host_multiarch=${CMAKE_LIBRARY_PATH}
+ Name: ${PROJECT_NAME}
+ Description: ${PROJECT_DESCRIPTION}
+ Version: ${PROJECT_VERSION}

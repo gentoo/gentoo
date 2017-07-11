@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2017-04-13 15:11:34.320988866 +0200
++++ b/CMakeLists.txt	2017-04-13 15:12:01.444232749 +0200
+@@ -137,10 +137,6 @@
+ 
+ set_target_properties(${STLINK_LIB_STATIC} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
+ 
+-install(TARGETS ${STLINK_LIB_STATIC}
+-	ARCHIVE DESTINATION ${STLINK_LIBRARY_PATH}
+-)
+-
+ ###
+ # Tools
+ ###
