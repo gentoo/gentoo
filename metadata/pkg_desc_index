@@ -16629,7 +16629,7 @@ sci-mathematics/maxima 5.37.3-r4 5.38.1 5.39.0 5.40.0: Free computer algebra env
 sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
-sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
+sci-mathematics/nauty 2.5.9 2.6.7: Computing automorphism groups of graphs and digraphs
 sci-mathematics/nestedsums 1.5.1: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
