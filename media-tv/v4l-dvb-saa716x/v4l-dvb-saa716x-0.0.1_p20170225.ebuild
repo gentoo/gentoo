@@ -26,10 +26,10 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/powARman-v4l-dvb-saa716x-${HG_REVISION}"
 
 BUILD_TARGETS="modules"
-MODULE_NAMES="saa716x_ff(misc:${ROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
-	saa716x_core(misc:${ROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
-	saa716x_budget(misc:${ROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
-	saa716x_hybrid(misc:${ROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)"
+MODULE_NAMES="saa716x_ff(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
+	saa716x_core(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
+	saa716x_budget(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
+	saa716x_hybrid(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)"
 
 CONFIG_CHECK="DVB_CORE DVB_STV6110x DVB_STV090x"
 
@@ -42,12 +42,14 @@ src_prepare() {
 	kernel_is ge 4 2 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.2-fix-compile.patch"
 	kernel_is ge 4 5 2 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.5.2-fix-compile.patch"
 	kernel_is ge 4 6 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.6.0-fix-compile.patch"
+	kernel_is ge 4 9 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.9-fix-warnings.patch"
+	kernel_is ge 4 10 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.10-fix-compile.patch"
 }
 
 src_compile() {
 	BUILD_PARAMS="SUBDIRS=${S}/linux/drivers/media/common/saa716x \
 	CONFIG_SAA716X_CORE=m CONFIG_DVB_SAA716X_FF=m CONFIG_DVB_SAA716X_BUDGET=m \
 	CONFIG_DVB_SAA716X_HYBRID=m"
-	addpredict "${ROOT}"/usr/src/linux/
+	addpredict "${EROOT%/}"/usr/src/linux/
 	linux-mod_src_compile
 }
