@@ -24,7 +24,7 @@ done
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	idn? ( net-dns/libidn )
-	libidn2? ( net-dns/libidn2 )
+	libidn2? ( >=net-dns/libidn2-2.0 )
 	lua? ( dev-lang/lua:* )
 	conntrack? ( net-libs/libnetfilter_conntrack )
 	nls? ( sys-devel/gettext )
