@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="alsa celt classic dbus doc firewire libsamplerate opus pam readline sndfile"
+IUSE="alsa celt classic dbus doc ieee1394 libsamplerate opus pam readline sndfile"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -31,7 +31,7 @@ CDEPEND="media-libs/libsamplerate
 		dev-libs/expat[${MULTILIB_USEDEP}]
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
-	firewire? ( media-libs/libffado[${MULTILIB_USEDEP}] )
+	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
 DEPEND="!media-sound/jack-audio-connection-kit:0
 	${CDEPEND}
@@ -56,7 +56,7 @@ multilib_src_configure() {
 		--alsa=$(usex alsa yes no)
 		--celt=$(usex celt yes no)
 		--doxygen=$(multilib_native_usex doc yes no)
-		--firewire=$(usex firewire yes no)
+		--firewire=$(usex ieee1394 yes no)
 		--freebob=no
 		--iio=no
 		--opus=$(usex opus yes no)
