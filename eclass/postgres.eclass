@@ -23,12 +23,14 @@ esac
 
 
 # @ECLASS-VARIABLE: POSTGRES_COMPAT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A Bash array containing a list of compatible PostgreSQL slots as
 # defined by the developer. If declared, must be declared before
 # inheriting this eclass. Example: POSTGRES_COMPAT=( 9.4 9.{5,6} )
 
 # @ECLASS-VARIABLE: POSTGRES_USEDEP
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Add the 2-Style and/or 4-Style use dependencies without brackets to be used
 # for POSTGRES_DEP. If declared, must be done before inheriting this eclass.
@@ -114,7 +116,6 @@ postgres_new_user() {
 }
 
 # @FUNCTION: postgres_pkg_setup
-# @REQUIRED
 # @USAGE: postgres_pkg_setup
 # @DESCRIPTION:
 # Initialize environment variable(s) according to the best
