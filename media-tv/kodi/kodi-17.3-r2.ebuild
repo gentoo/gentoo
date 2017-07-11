@@ -16,6 +16,8 @@ FFMPEG_VERSION="3.1.6"
 CODENAME="Krypton"
 PATCHES=(
 	"${FILESDIR}/${P}-ftpparse_string.patch"
+	"${FILESDIR}/${P}-unrar-vulnerability.patch"
+	"${FILESDIR}/${P}-10-bit-h265-hardware-decoding.patch"
 )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
@@ -146,7 +148,7 @@ case ${PV} in
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
 		 !java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	IUSE+=" java"
 	DEPEND+="
 		java? ( virtual/jre )

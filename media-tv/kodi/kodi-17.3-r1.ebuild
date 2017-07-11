@@ -7,13 +7,17 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils linux-info python-single-r1 cmake-utils autotools
+inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
 FFMPEG_VERSION="3.1.6"
 CODENAME="Krypton"
+PATCHES=(
+	"${FILESDIR}/${P}-ftpparse_string.patch"
+	"${FILESDIR}/${P}-unrar-vulnerability.patch"
+)
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
@@ -143,7 +147,7 @@ case ${PV} in
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
 		 !java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	IUSE+=" java"
 	DEPEND+="
 		java? ( virtual/jre )
@@ -196,12 +200,11 @@ src_prepare() {
 	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
 		"${S}"/project/cmake/modules/FindCpluff.cmake \
 		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
-		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh
+		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh \
+		|| die
 }
 
 src_configure() {
-	local CMAKE_BUILD_TYPE=$(usex debug Debug RelWithDebInfo)
-
 	local mycmakeargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
@@ -254,24 +257,27 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
+
+	pax-mark Em "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
+
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	newicon media/icon48x48.png kodi.png
 
 	# Replace bundled fonts with system ones.
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf || die
-	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
+	dosym ../../../../fonts/noto/NotoSans-Regular.ttf \
 		usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf
 
 	local f
 	for f in NotoMono-Regular.ttf NotoSans-Bold.ttf NotoSans-Regular.ttf ; do
 		rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/"${f}" || die
-		dosym /usr/share/fonts/noto/"${f}" \
+		dosym ../../../../fonts/noto/"${f}" \
 			usr/share/kodi/addons/skin.estuary/fonts/"${f}"
 	done
 
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
-	dosym /usr/share/fonts/roboto/Roboto-Thin.ttf \
+	dosym ../../../../fonts/roboto/Roboto-Thin.ttf \
 		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
