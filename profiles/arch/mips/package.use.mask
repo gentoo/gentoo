@@ -85,7 +85,7 @@ x11-libs/wxGTK webkit
 
 # Markos Chandras <hwoarang@gentoo.org> (05 Jan 2014)
 # Perl is heavily unkeyworded on MIPS. See 497068
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Sergey Popov <pinkbyte@gentoo.org> (02 Sep 2013)
 # Not tested

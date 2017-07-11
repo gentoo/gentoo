@@ -25,7 +25,7 @@ dev-libs/efl physics
 
 # Mikle Kolyada <zlogene@gentoo.org> (11 Jan 2014)
 # too much unkeyworded dependencies (bug #497068)
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)
