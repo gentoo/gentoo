@@ -6,10 +6,11 @@
     <name>Python</name>
   </maintainer>
   <use>
-    <flag name="webp">Enable support for webp image format.</flag>
+    <flag name="ole">Add support for OLE2 image format</flag>
+    <flag name="imagequant">Build with Image Quantization Library support</flag>
   </use>
   <upstream>
     <remote-id type="pypi">Pillow</remote-id>
-    <remote-id type="github">python-imaging/Pillow</remote-id>
+    <remote-id type="github">pillow-dev/pillow</remote-id>
   </upstream>
 </pkgmetadata>
