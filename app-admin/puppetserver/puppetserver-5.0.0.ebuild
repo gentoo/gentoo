@@ -16,7 +16,7 @@ IUSE="puppetdb"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND+="
-		>=virtual/jdk-1.7.0
+		>=virtual/jdk-1.8.0
 		app-admin/puppet-agent[puppetdb?]"
 DEPEND+=""
 
@@ -120,8 +120,10 @@ pkg_postinst() {
 	elog "puppet config set --section master codedir /etc/puppetlabs/code"
 	elog
 	elog "# install puppetserver gems"
+	elog "cd /opt/puppetlabs/server/apps/puppetserver"
+	elog "echo "jruby-puppet: { gem-home: ${DESTDIR}/opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems }" > jruby.conf"
 	elog "while read LINE"
 	elog "do"
-	elog "	java -cp puppet-server-release.jar:jruby-1_7.jar clojure.main -m puppetlabs.puppetserver.cli.gem --config jruby.conf -- install $(echo $LINE |awk '{print $1}') --version $(echo $LINE |awk '{print $2}')"
+	elog "	java -cp puppet-server-release.jar:jruby-1_7.jar clojure.main -m puppetlabs.puppetserver.cli.gem --config jruby.conf -- install \$(echo \$LINE |awk '{print \$1}') --version \$(echo \$LINE |awk '{print \$2}')"
 	elog "done < /opt/puppetlabs/server/data/puppetserver-gem-list.txt"
 }
