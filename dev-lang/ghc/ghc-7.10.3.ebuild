@@ -84,12 +84,21 @@ RDEPEND="
 	!ghcmakebinary? ( virtual/libffi:= )
 "
 
+# This set of dependencies is needed to run
+# prebuilt ghc. We specifically avoid ncurses
+# dependency with:
+#    utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING
 PREBUILT_BINARY_DEPENDS="
 	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
+"
+# This set of dependencies is needed to install
+# ghc[binary] in system. terminfo package is linked
+# against ncurses.
+PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
 	sys-libs/ncurses:5/5
 "
 
-RDEPEND+="binary? ( ${PREBUILT_BINARY_DEPENDS} )"
+RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xml-dtd:4.2
