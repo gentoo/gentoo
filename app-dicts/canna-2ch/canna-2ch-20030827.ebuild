@@ -18,7 +18,7 @@ IUSE="canna"
 DEPEND="canna? ( app-i18n/canna )"
 S="${WORKDIR}/${PN}"
 
-PATCHES=( "${FILESDIR}/"${P}-canna36p4-gentoo.patch )
+PATCHES=( "${FILESDIR}/"${P}-gentoo.patch )
 
 CANNADICS="2ch"
 DICSDIRFILE="${FILESDIR}/052ch.dics.dir"
