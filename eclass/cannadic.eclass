@@ -22,23 +22,24 @@ DICSDIRFILE="${FILESDIR}/*.dics.dir"
 CANNADICS="${CANNADICS}"			# (optional)
 
 # You don't need to modify these
-cannadir="${EROOT:-${ROOT}}"var/lib/canna/dic/canna
-dicsdir="${EROOT:-${ROOT}}"var/lib/canna/dic/dics.d
+CANNADIC_CANNA_DIR="${EROOT:-${ROOT}}"var/lib/canna/dic/canna
+CANNADIC_DICS_DIR="${EROOT:-${ROOT}}"var/lib/canna/dic/dics.d
+readonly CANNADIC_CANNA_DIR CANNADIC_DICS_DIR
 
 # @FUNCTION: cannadic_pkg_setup
 # @DESCRIPTION:
-# Sets up cannadic dir
+# Sets up ${CANNADIC_CANNA_DIR}
 cannadic_pkg_setup() {
-	keepdir "${cannadir}"
-	fowners bin:bin "${cannadir}"
-	fperms 0775 "${cannadir}"
+	keepdir "${CANNADIC_CANNA_DIR}"
+	fowners bin:bin "${CANNADIC_CANNA_DIR}"
+	fperms 0775 "${CANNADIC_CANNA_DIR}"
 }
 
 # @FUNCTION: cannadic-install
 # @DESCRIPTION:
-# Installs dictionaries to cannadir
+# Installs dictionaries to ${CANNADIC_CANNA_DIR}
 cannadic-install() {
-	insinto "${cannadir}"
+	insinto "${CANNADIC_CANNA_DIR}"
 	insopts -m 0664 -o bin -g bin
 	doins "${@}"
 }
@@ -47,7 +48,7 @@ cannadic-install() {
 # @DESCRIPTION:
 # Installs dics.dir from ${DICSDIRFILE}
 dicsdir-install() {
-	insinto "${dicsdir}"
+	insinto "${CANNADIC_DICS_DIR}"
 	doins "${DICSDIRFILE}"
 }
 
@@ -80,19 +81,19 @@ update-cannadic-dir() {
 	einfo
 
 	# write new dics.dir file in case we are interrupted
-	cat <<-EOF > "${cannadir}"/dics.dir.update-new
+	cat <<-EOF > "${CANNADIC_CANNA_DIR}"/dics.dir.update-new
 	# dics.dir -- automatically generated file by Portage.
 	# DO NOT EDIT BY HAND.
 	EOF
 
 	local f
-	for f in "${dicsdir}"/*.dics.dir; do
-		echo "# ${f}" >> "${cannadir}"/dics.dir.update-new
-		cat "${f}" >> "${cannadir}"/dics.dir.update-new
+	for f in "${CANNADIC_DICS_DIR}"/*.dics.dir; do
+		echo "# ${f}" >> "${CANNADIC_CANNA_DIR}"/dics.dir.update-new
+		cat "${f}" >> "${CANNADIC_CANNA_DIR}"/dics.dir.update-new
 		einfo "Added ${f}."
 	done
 
-	mv "${cannadir}"/dics.dir.update-new "${cannadir}"/dics.dir
+	mv "${CANNADIC_CANNA_DIR}"/dics.dir.update-new "${CANNADIC_CANNA_DIR}"/dics.dir
 
 	einfo
 	einfo "Done."
