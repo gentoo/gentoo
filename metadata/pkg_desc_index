@@ -17264,7 +17264,7 @@ sys-apps/stroke 0.1.3-r1: A powerful tool to change file timestamps (including c
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 226-r2 231 232 233-r1 233-r3 9999: System and service manager for Linux
+sys-apps/systemd 226-r2 231 232 233-r1 233-r3 233-r4 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
@@ -18379,7 +18379,7 @@ www-client/firefox 45.8.0 52.1.0-r1 52.2.0 53.0.3 54.0.1: Firefox Web Browser
 www-client/firefox-bin 52.2.0 54.0.1: Firefox Web Browser
 www-client/google-chrome 59.0.3071.115: The web browser from Google
 www-client/google-chrome-beta 60.0.3112.50: The web browser from Google
-www-client/google-chrome-unstable 61.0.3141.7: The web browser from Google
+www-client/google-chrome-unstable 61.0.3153.4: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18428,7 +18428,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.131: Adobe Flash Player
-www-plugins/chrome-binary-plugins 59.0.3071.115 60.0.3112.50_beta 61.0.3141.7_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 59.0.3071.115 60.0.3112.50_beta 61.0.3153.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
