@@ -39,7 +39,7 @@ CDEPEND="media-libs/libsamplerate
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )
-	ieee1394? (media-libs/libffado[${MULTILIB_USEDEP}])"
+	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )"
 DEPEND="!media-sound/jack-audio-connection-kit:0
 	${CDEPEND}
 	virtual/pkgconfig
