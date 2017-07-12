@@ -15572,7 +15572,7 @@ net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 net-p2p/fms 0.3.79: A spam-resistant message board application for Freenet
-net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2: An encrypted network without censorship
+net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2 0.7.5_p1478: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10: go-ipfs is the main implementation of IPFS.
