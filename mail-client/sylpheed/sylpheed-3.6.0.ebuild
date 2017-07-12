@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,13 +14,17 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="crypt ipv6 ldap libressl nls oniguruma pda spell ssl xface"
 
-CDEPEND="x11-libs/gtk+:2
+CDEPEND="net-libs/liblockfile
+	x11-libs/gtk+:2
 	crypt? ( app-crypt/gpgme )
 	ldap? ( net-nds/openldap )
 	nls? ( sys-devel/gettext )
 	oniguruma? ( dev-libs/oniguruma )
 	pda? ( app-pda/jpilot )
-	spell? ( app-text/gtkspell:2 )
+	spell? (
+		app-text/gtkspell:2
+		dev-libs/dbus-glib
+	)
 	ssl? (
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
@@ -32,8 +36,10 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	xface? ( media-libs/compface )"
 
+DOCS="AUTHORS ChangeLog* NEW* PLUGIN* README* TODO*"
+
 src_configure() {
-	local htmldir=/usr/share/doc/${PF}/html
+	local htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 	econf \
 		$(use_enable crypt gpgme) \
 		$(use_enable ipv6) \
@@ -43,15 +49,14 @@ src_configure() {
 		$(use_enable spell gtkspell) \
 		$(use_enable ssl) \
 		$(use_enable xface compface) \
-		--with-plugindir=/usr/$(get_libdir)/${PN}/plugins \
-		--with-manualdir=${htmldir}/manual \
-		--with-faqdir=${htmldir}/faq \
+		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/${PN}/plugins \
+		--with-manualdir="${htmldir}"/manual \
+		--with-faqdir="${htmldir}"/faq \
 		--disable-updatecheck
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog* NEWS* PLUGIN* README* TODO*
+	default
 
 	doicon *.png
 	domenu *.desktop
