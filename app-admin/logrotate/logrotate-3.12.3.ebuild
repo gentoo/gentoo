@@ -38,8 +38,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
-	sed -i -e 's#/usr/sbin/logrotate#/usr/bin/logrotate#' "${S}"/examples/logrotate.cron || die
+	sed -i -e 's#/usr/sbin/logrotate#/usr/bin/logrotate#' "${S}"/examples/logrotate.{cron,service} || die
+	eapply_user
 }
 
 src_configure() {
@@ -47,10 +47,6 @@ src_configure() {
 		compressconf="--with-compress-command=/bin/bzip2 --with-uncompress-command=/bin/bunzip2 --with-compress-extension=.bz2"
 	fi
 	econf $(use_with acl) $(use_with selinux) ${compressconf}
-}
-
-src_compile() {
-	emake RPM_OPT_FLAGS="${CFLAGS}"
 }
 
 src_test() {
