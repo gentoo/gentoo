@@ -21,6 +21,11 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
 
+# There is no test and 'check' target errors out due to mixing of automake &
+# non-automake makefiles.
+# https://bugs.gentoo.org/show_bug.cgi?id=526436
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.11-free.patch
 	"${FILESDIR}"/${PN}-1.2.11-impl-dec.patch
