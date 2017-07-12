@@ -10,7 +10,7 @@ SRC_URI="amd64? ( https://chromedriver.storage.googleapis.com/${PV}/chromedriver
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="www-client/google-chrome"
