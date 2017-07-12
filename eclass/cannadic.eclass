@@ -59,7 +59,9 @@ dicsdir-install() {
 cannadic_src_install() {
 	local f
 	for f in *.c[btl]d *.t; do
-		cannadic-install "${f}"
+		if [[ -s "${f}" ]]; then
+			cannadic-install "${f}"
+		fi
 	done 2> /dev/null
 
 	dicsdir-install || die
