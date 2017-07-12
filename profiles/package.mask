@@ -295,6 +295,7 @@ net-libs/dhcpcd-dbus
 # Kent Fredric <kentnl@gentoo.org> (12 Jul 2017)
 # Masked for staging purposes
 =dev-lang/perl-5.24.2*
+=virtual/perl-Module-CoreList-5.201.707.150
 
 # Hans de Graaff <graaff@gentoo.org> (09 Jul 2017)
 # Upstream has removed the code and the published gem.
