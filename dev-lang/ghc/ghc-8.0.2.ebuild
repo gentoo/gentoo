@@ -514,6 +514,7 @@ src_configure() {
 		# app-text/dblatex is not in portage, can not build PDF or PS
 		echo "BUILD_SPHINX_PDF  = NO"  >> mk/build.mk
 		echo "BUILD_SPHINX_HTML = $(usex doc YES NO)" >> mk/build.mk
+		echo "BUILD_MAN = $(usex doc YES NO)" >> mk/build.mk
 
 		# this controls presence on 'xhtml' and 'haddock' in final install
 		echo "HADDOCK_DOCS       = YES" >> mk/build.mk
