@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
@@ -9,15 +9,22 @@ inherit eutils python-single-r1 waf-utils multilib-minimal
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://jackaudio.org/"
-MY_PV="${PV/_rc/-RC}"
-MY_P="${PN}-${MY_PV}"
-S="${WORKDIR}/${MY_P}"
-SRC_URI="https://github.com/jackaudio/jack2/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-KEYWORDS="~amd64"
+
+if [[ "${PV}" = "2.9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
+	KEYWORDS=""
+else
+	MY_PV="${PV/_rc/-RC}"
+	MY_P="${PN}-${MY_PV}"
+	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/jackaudio/jack2/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="alsa celt classic dbus doc ieee1394 libsamplerate opus pam readline sndfile"
+IUSE="alsa celt dbus doc opus pam classic sndfile libsamplerate readline ieee1394"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -31,8 +38,8 @@ CDEPEND="media-libs/libsamplerate
 		dev-libs/expat[${MULTILIB_USEDEP}]
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
-	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
-	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
+	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )
+	ieee1394? (media-libs/libffado[${MULTILIB_USEDEP}])"
 DEPEND="!media-sound/jack-audio-connection-kit:0
 	${CDEPEND}
 	virtual/pkgconfig
