@@ -180,6 +180,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
 	!app-office/openoffice
+	media-fonts/dejavu
 	media-fonts/liberation-fonts
 	media-fonts/libertine
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools $(add_kdeapps_dep kioclient) )
@@ -226,7 +227,10 @@ DEPEND="${COMMON_DEPEND}
 		>=virtual/jdk-1.6
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
-	test? ( dev-util/cppunit )
+	test? (
+		dev-util/cppunit
+		media-fonts/dejavu
+	)
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
