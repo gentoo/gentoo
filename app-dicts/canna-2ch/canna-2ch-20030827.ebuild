@@ -1,10 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit cannadic eutils
 
 DESCRIPTION="Japanese Canna dictionary for 2channelers"
-HOMEPAGE="http://omaemona.sourceforge.net/packages/Canna/"
+HOMEPAGE="http://omaemona.sourceforge.net/packages/Canna"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 #SRC_URI="http://omaemona.sourceforge.net/packages/Canna/2ch.t"
 
@@ -15,11 +15,10 @@ IUSE="canna"
 
 DEPEND="canna? ( app-i18n/canna )"
 RDEPEND=""
-# You cannot use 2ch.cbd as its name. Canna doesn't load dictionaries
-# if the name begins with number. (I don't know why ...)
-CANNADICS="2ch"
+S="${WORKDIR}/${PN}"
 
-S=${WORKDIR}/${PN}
+CANNADICS="2ch"
+DICSDIRFILE="${FILESDIR}/052ch.dics.dir"
 
 src_unpack() {
 	unpack ${A}
