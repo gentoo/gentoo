@@ -8,8 +8,9 @@ IUSE=""
 MY_P="${P/canna-/}"
 
 DESCRIPTION="Japanese dictionary as a supplement/replacement to Canna3.5b2"
-HOMEPAGE="http://cannadic.oucrc.org/"
-SRC_URI="http://cannadic.oucrc.org/${MY_P}.tar.gz"
+#HOMEPAGE="http://cannadic.oucrc.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 KEYWORDS="x86 alpha sparc ppc ppc64 ~amd64"
 LICENSE="GPL-2"
