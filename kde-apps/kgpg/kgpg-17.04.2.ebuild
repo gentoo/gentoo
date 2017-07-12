@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 DEPEND="${COMMON_DEPEND}
-	app-crypt/gpgme
+	>=app-crypt/gpgme-1.4.3
 "
 RDEPEND="${COMMON_DEPEND}
 	app-crypt/gnupg
