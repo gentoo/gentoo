@@ -22,23 +22,23 @@ DICSDIRFILE="${FILESDIR}/*.dics.dir"
 CANNADICS="${CANNADICS}"			# (optional)
 
 # You don't need to modify these
-cannadir="${ROOT}/var/lib/canna/dic/canna"
-dicsdir="${ROOT}/var/lib/canna/dic/dics.d"
+cannadir="${EROOT:-${ROOT}}"var/lib/canna/dic/canna
+dicsdir="${EROOT:-${ROOT}}"var/lib/canna/dic/dics.d
 
 # @FUNCTION: cannadic_pkg_setup
 # @DESCRIPTION:
 # Sets up cannadic dir
 cannadic_pkg_setup() {
-	keepdir ${cannadir}
-	fowners bin:bin ${cannadir}
-	fperms 0775 ${cannadir}
+	keepdir "${cannadir}"
+	fowners bin:bin "${cannadir}"
+	fperms 0775 "${cannadir}"
 }
 
 # @FUNCTION: cannadic-install
 # @DESCRIPTION:
 # Installs dictionaries to cannadir
 cannadic-install() {
-	insinto ${cannadir}
+	insinto "${cannadir}"
 	insopts -m 0664 -o bin -g bin
 	doins "${@}"
 }
@@ -47,8 +47,8 @@ cannadic-install() {
 # @DESCRIPTION:
 # Installs dics.dir from ${DICSDIRFILE}
 dicsdir-install() {
-	insinto ${dicsdir}
-	doins ${DICSDIRFILE}
+	insinto "${dicsdir}"
+	doins "${DICSDIRFILE}"
 }
 
 # @FUNCTION: cannadic_src_install
@@ -58,7 +58,7 @@ dicsdir-install() {
 cannadic_src_install() {
 	local f
 	for f in *.c[btl]d *.t; do
-		cannadic-install ${f}
+		cannadic-install "${f}"
 	done 2> /dev/null
 
 	dicsdir-install || die
@@ -80,19 +80,19 @@ update-cannadic-dir() {
 	einfo
 
 	# write new dics.dir file in case we are interrupted
-	cat <<-EOF > ${cannadir}/dics.dir.update-new
+	cat <<-EOF > "${cannadir}"/dics.dir.update-new
 	# dics.dir -- automatically generated file by Portage.
 	# DO NOT EDIT BY HAND.
 	EOF
 
 	local f
-	for f in ${dicsdir}/*.dics.dir; do
-		echo "# ${f}" >> ${cannadir}/dics.dir.update-new
-		cat ${f} >> ${cannadir}/dics.dir.update-new
+	for f in "${dicsdir}"/*.dics.dir; do
+		echo "# ${f}" >> "${cannadir}"/dics.dir.update-new
+		cat "${f}" >> "${cannadir}"/dics.dir.update-new
 		einfo "Added ${f}."
 	done
 
-	mv ${cannadir}/dics.dir.update-new ${cannadir}/dics.dir
+	mv "${cannadir}"/dics.dir.update-new "${cannadir}"/dics.dir
 
 	einfo
 	einfo "Done."
