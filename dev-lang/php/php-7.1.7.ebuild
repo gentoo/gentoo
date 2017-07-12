@@ -57,20 +57,10 @@ COMMON_DEPEND="
 					sys-libs/db:4.5 ) )
 	bzip2? ( app-arch/bzip2 )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
-	cjk? ( !gd? (
-		virtual/jpeg:0
-		media-libs/libpng:0=
-		sys-libs/zlib
-	) )
 	coverage? ( dev-util/lcov )
 	crypt? ( >=dev-libs/libmcrypt-2.4 )
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( app-text/enchant )
-	exif? ( !gd? (
-		virtual/jpeg:0
-		media-libs/libpng:0=
-		sys-libs/zlib
-	) )
 	firebird? ( dev-db/firebird )
 	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
@@ -102,11 +92,7 @@ COMMON_DEPEND="
 		libressl? ( dev-libs/libressl )
 	)
 	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
-	truetype? (
-		=media-libs/freetype-2*
-		!gd? (
-			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
-	)
+	truetype? ( =media-libs/freetype-2* )
 	unicode? ( dev-libs/oniguruma )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
 	webp? ( media-libs/libwebp )
@@ -114,11 +100,7 @@ COMMON_DEPEND="
 	xmlrpc? ( >=dev-libs/libxml2-2.6.8 virtual/libiconv )
 	xmlreader? ( >=dev-libs/libxml2-2.6.8 )
 	xmlwriter? ( >=dev-libs/libxml2-2.6.8 )
-	xpm? (
-		x11-libs/libXpm
-		virtual/jpeg:0
-		media-libs/libpng:0= sys-libs/zlib
-	)
+	xpm? ( x11-libs/libXpm )
 	xslt? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
 	zip? ( sys-libs/zlib )
 	zlib? ( sys-libs/zlib )
@@ -140,11 +122,11 @@ DEPEND="${COMMON_DEPEND}
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
 	cli? ( ^^ ( readline libedit ) )
-	truetype? ( gd )
-	webp? ( gd )
-	cjk? ( gd )
-	exif? ( gd )
-	xpm? ( gd )
+	truetype? ( gd zlib )
+	webp? ( gd zlib )
+	cjk? ( gd zlib )
+	exif? ( gd zlib )
+	xpm? ( gd zlib )
 	gd? ( zlib )
 	simplexml? ( xml )
 	soap? ( xml )
