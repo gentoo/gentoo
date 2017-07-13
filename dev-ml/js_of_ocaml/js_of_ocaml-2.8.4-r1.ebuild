@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/ppx.patch"
+	has_version '>=dev-lang/ocaml-4.05_rc' && epatch "${FILESDIR}/ocaml405.patch"
 }
 
 src_configure() {
