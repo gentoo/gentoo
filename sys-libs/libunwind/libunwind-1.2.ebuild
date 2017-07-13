@@ -9,7 +9,7 @@ inherit eutils libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
-SRC_URI="http://download.savannah.nongnu.org/releases/libunwind/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="7"
@@ -46,6 +46,10 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.2-coredump-regs.patch #586092
+	epatch "${FILESDIR}"/${PN}-1.2-ia64-undwarf.patch
+	epatch "${FILESDIR}"/${PN}-1.2-ia64-ptrace-coredump.patch
+	epatch -p1 "${FILESDIR}"/${PN}-1.2-ia64-missing.patch
+	chmod +x src/ia64/mk_cursor_i || die
 
 	# These tests like to fail.  bleh.
 	echo 'int main(){return 0;}' > tests/Gtest-dyn1.c
