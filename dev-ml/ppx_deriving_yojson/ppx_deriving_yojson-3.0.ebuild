@@ -1,7 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
+inherit eutils
 
 DESCRIPTION="A Yojson codec generator for OCaml"
 HOMEPAGE="https://github.com/whitequark/ppx_deriving_yojson/"
@@ -24,6 +26,10 @@ DEPEND="${DEPEND}
 	dev-ml/findlib
 	dev-ml/ocamlbuild
 	test? ( dev-ml/ounit dev-ml/ppx_import )"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.05_rc' && epatch "${FILESDIR}/ocaml405.patch"
+}
 
 src_compile() {
 	cp pkg/META.in pkg/META
