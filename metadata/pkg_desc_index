@@ -1330,7 +1330,7 @@ app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6-r1 2.0.7: LinuX Containers userspace utilities
 app-emulation/lxd 2.8 2.11 2.14: Fast, dense and secure container management
-app-emulation/nemu 1.1.0: ncurses interface for QEMU
+app-emulation/nemu 1.1.0 1.2.0: ncurses interface for QEMU
 app-emulation/open-vm-tools 10.0.7 10.1.0 10.1.0-r1: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1 1.39.1_p20170227: Unix Guest Agent for OpenStack
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3 5.0.5: Web-based administration for VirtualBox in PHP
@@ -2573,7 +2573,7 @@ app-vim/eruby-syntax 2.0-r1: vim plugin: syntax highlighting for eruby
 app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filetype and indent settings
 app-vim/exheres-syntax 20090310 99999999: vim plugin: exheres format highlighting
 app-vim/extra-syntax 4-r1: vim plugin: metapackage for all extra syntax packages
-app-vim/ferret 1.4 1.4-r1 1.5 2.0: vim plugin: enhanced multi-file search
+app-vim/ferret 1.4 1.4-r1 1.5 2.0 3.0: vim plugin: enhanced multi-file search
 app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
 app-vim/fugitive 2.2 9999: vim plugin: a git wrapper for vim
