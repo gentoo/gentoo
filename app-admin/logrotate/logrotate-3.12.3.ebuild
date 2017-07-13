@@ -38,8 +38,8 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
 	sed -i -e 's#/usr/sbin/logrotate#/usr/bin/logrotate#' "${S}"/examples/logrotate.{cron,service} || die
-	eapply_user
 }
 
 src_configure() {
