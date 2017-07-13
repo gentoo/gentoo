@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/${MY_PN}/${PV}/${MY_PN}-${PV}-src.zip"
 
 LICENSE="BSD"
 SLOT="1.7"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="amd64 ~arm64 ppc64 x86 ~x86-fbsd ~x64-macos"
 IUSE=""
 
 RDEPEND="
