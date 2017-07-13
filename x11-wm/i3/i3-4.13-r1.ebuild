@@ -38,6 +38,7 @@ RDEPEND="${CDEPEND}
 DOCS=( RELEASE-NOTES-${PV} )
 PATCHES=(
 	"${FILESDIR}/${P}-remove-git-polling.patch"
+	"${FILESDIR}/${PN}-musl-GLOB_TILDE.patch"
 )
 
 src_prepare() {
