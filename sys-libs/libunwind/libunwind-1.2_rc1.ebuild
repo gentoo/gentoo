@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ inherit eutils libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
-SRC_URI="http://download.savannah.nongnu.org/releases/libunwind/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="7"
