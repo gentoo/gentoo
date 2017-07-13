@@ -18,6 +18,10 @@ DEPEND="app-arch/bzip2
 	>=dev-lang/ocaml-3.12:=[ocamlopt]"
 RDEPEND="${DEPEND}"
 
+src_compile() {
+	emake -j1
+}
+
 src_install() {
 	findlib_src_preinst
 	emake DESTDIR="${OCAMLFIND_DESTDIR}" install
