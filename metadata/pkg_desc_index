@@ -5279,7 +5279,7 @@ dev-ml/lwt_react 1.0.1: GLib integration for Lwt
 dev-ml/lwt_ssl 1.0.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.4 0.7.5: Error-recovering streaming HTML5 and XML parsers
-dev-ml/menhir 20170101 20170418 20170509 20170607: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20170101 20170418 20170509 20170607 20170712: LR(1) parser generator for the OCaml language
 dev-ml/merlin 2.5.3 2.5.4 2.5.5: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
