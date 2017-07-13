@@ -5295,7 +5295,7 @@ dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
 dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libraries so they do not expose everything at toplevel
 dev-ml/ocaml-conduit 0.15.3 0.15.4: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 1.2: A modular standard library focused on data structures
-dev-ml/ocaml-cstruct 3.0.1 3.0.2: Map OCaml arrays onto C-like structs
+dev-ml/ocaml-cstruct 3.0.1 3.0.2 3.1.0: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4 0.12.0 0.12.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
@@ -5407,7 +5407,7 @@ dev-ml/reason-parser 2.0.0: Meta Language Toolchain
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/rresult 0.5.0: Result value combinators for OCaml
-dev-ml/sedlex 1.99.3: An OCaml lexer generator for Unicode
+dev-ml/sedlex 1.99.3 1.99.4: An OCaml lexer generator for Unicode
 dev-ml/sequence 0.9 0.10: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 0.9.1: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/spawn 0.9.0: Spawning sub-processes
@@ -10238,7 +10238,7 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/artifactory-bin 4.16.0-r1: The world's most advanced repository manager for maven
+dev-util/artifactory-bin 4.16.0-r1 5.3.2 5.4.4: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.6.2-r1 0.7.4 0.8.1: Cucumber steps for driving out command line applications
 dev-util/astyle 2.04-r1 2.05.1 2.06 3.0 3.0.1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
@@ -16596,7 +16596,7 @@ sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/cado-nfs 2.2.0: Number Field Sieve (NFS) implementation for factoring integers
 sci-mathematics/calc 2.12.2.2 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.3-r1 4.8-r1 4.9: C++ library for geometric algorithms and data structures
-sci-mathematics/coq 8.5 8.5_p3 8.6: Proof assistant written in O'Caml
+sci-mathematics/coq 8.6: Proof assistant written in O'Caml
 sci-mathematics/cvc3 2.4.1 2.4.1-r1: CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
