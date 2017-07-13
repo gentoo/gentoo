@@ -93,7 +93,7 @@ src_compile() {
 	if use ocamlopt ; then
 		# bug #279968
 		emake opt
-		emake opt.opt
+		emake -j1 opt.opt
 	fi
 }
 
