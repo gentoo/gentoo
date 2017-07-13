@@ -1,0 +1,21 @@
+commit 7fffa653aa5d0bcff834b2abddf4c4da0357397a
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Fri Jul 14 00:45:32 2017 +0200
+
+    Revert "Fix .desktop: Qt5 apps accept qwindowtitle, not caption"
+    
+    This reverts commit 672b4e39f22f840034a8e66e1311175639bff3e3.
+
+diff --git a/src/gui/org.kde.ksudoku.desktop b/src/gui/org.kde.ksudoku.desktop
+index 858688a..626ec59 100755
+--- a/src/gui/org.kde.ksudoku.desktop
++++ b/src/gui/org.kde.ksudoku.desktop
+@@ -50,7 +50,7 @@ Name[wa]=KSudoku
+ Name[x-test]=xxKSudokuxx
+ Name[zh_CN]=KSudoku
+ Name[zh_TW]=KSudoku
+-Exec=ksudoku %i -qwindowtitle %c
++Exec=ksudoku %i -caption %c
+ Icon=ksudoku
+ Type=Application
+ X-DocPath=ksudoku/index.html
