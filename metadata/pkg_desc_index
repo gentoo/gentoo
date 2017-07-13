@@ -11989,7 +11989,7 @@ kde-apps/ksnakeduel 16.12.3 17.04.3: KDE Tron game
 kde-apps/kspaceduel 16.12.3 17.04.3: Space Game by KDE
 kde-apps/ksquares 16.12.3 17.04.3: KDE clone of the game squares
 kde-apps/kstars 16.12.3-r1 17.04.3: Desktop Planetarium
-kde-apps/ksudoku 16.12.3 17.04.3: Sudoku by KDE
+kde-apps/ksudoku 16.12.3 17.04.3-r1: Sudoku by KDE
 kde-apps/ksystemlog 16.12.3 17.04.3: System log viewer by KDE
 kde-apps/kteatime 16.12.3 17.04.3: KDE timer for making a fine cup of tea
 kde-apps/ktimer 16.12.3 17.04.3: KDE Timer
