@@ -1726,7 +1726,7 @@ app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1 1.1.2-r2: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
-app-misc/byobu 5.112 5.113 5.116: A set of profiles for the GNU Screen console window manager (app-misc/screen)
+app-misc/byobu 5.116 5.119: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20161102.3.27.2-r2 20161130.3.29.3 20161130.3.30 20161130.3.30-r1 20161130.3.30.1 20161130.3.30.2: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
@@ -13180,7 +13180,7 @@ media-libs/openicc 0.1.0: Config database to store, share and manipulate colour 
 media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2: An open-source JPEG 2000 library
 media-libs/opensubdiv 3.1.0 3.1.1: An Open-Source subdivision surface library
-media-libs/opus 1.1.3-r1 1.1.4 1.1.5 1.2_beta 1.2: Open codec designed for internet transmission of interactive speech and audio
+media-libs/opus 1.1.3-r1 1.1.4 1.1.5 1.2_beta 1.2 1.2.1: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
@@ -13621,8 +13621,8 @@ media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer application
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2 2.8.1: A command line CD encoder
-media-sound/abcm2ps 8.12.9 8.13.9 8.13.10 8.13.11: A program to convert abc files to Postscript files
-media-sound/abcmidi 2017.04.10 2017.04.19: Programs for processing ABC music notation files
+media-sound/abcm2ps 8.12.9 8.13.9 8.13.10 8.13.11 8.13.12: A program to convert abc files to Postscript files
+media-sound/abcmidi 2017.04.10 2017.04.19 2017.07.11: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -18383,7 +18383,7 @@ www-client/google-chrome-unstable 61.0.3153.4: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
-www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
+www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
