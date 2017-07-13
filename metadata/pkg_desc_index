@@ -5253,7 +5253,7 @@ dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Ca
 dev-ml/fpath 0.7.2: File system paths for OCaml
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
-dev-ml/gen_js_api 1.0.3: Easy OCaml bindings for Javascript libraries
+dev-ml/gen_js_api 1.0.3 1.0.4: Easy OCaml bindings for Javascript libraries
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/herelib 112.35.00: Syntax extension for inserting the current location
 dev-ml/iTeML 2.5 2.6: Inline (Unit) Tests for OCaml
