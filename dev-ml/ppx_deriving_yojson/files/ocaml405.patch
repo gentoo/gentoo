@@ -1,0 +1,76 @@
+Index: ppx_deriving_yojson-3.0/src/ppx_deriving_yojson.cppo.ml
+===================================================================
+--- ppx_deriving_yojson-3.0.orig/src/ppx_deriving_yojson.cppo.ml
++++ ppx_deriving_yojson-3.0/src/ppx_deriving_yojson.cppo.ml
+@@ -260,7 +260,7 @@ let ser_str_of_type ~options ~path ({ pt
+       let polymorphize_ser  = Ppx_deriving.poly_arrow_of_type_decl
+         (fun var -> [%type: [%t var] -> Yojson.Safe.json]) type_decl
+       in
+-      let ty = Typ.poly poly_vars (polymorphize_ser [%type: [%t typ] -> Yojson.Safe.json]) in
++      let ty = Typ.poly (List.map Location.mknoloc poly_vars) (polymorphize_ser [%type: [%t typ] -> Yojson.Safe.json]) in
+       let default_fun =
+         let type_path = String.concat "." (path @ [type_decl.ptype_name.txt]) in
+         let e_type_path = Exp.constant (Pconst_string (type_path, None)) in
+@@ -270,7 +270,7 @@ let ser_str_of_type ~options ~path ({ pt
+       in
+       let poly_fun = polymorphize default_fun in
+       let poly_fun =
+-        (Ppx_deriving.fold_left_type_decl (fun exp name -> Exp.newtype name exp) poly_fun type_decl)
++        (Ppx_deriving.fold_left_type_decl (fun exp name -> Exp.newtype (Location.mknoloc name) exp) poly_fun type_decl)
+       in
+       let mod_name = "M_"^to_yojson_name in
+       let typ = Type.mk ~kind:(Ptype_record [Type.field ~mut:Mutable (mknoloc "f") ty])
+@@ -337,7 +337,7 @@ let ser_str_of_type ~options ~path ({ pt
+         raise_errorf ~loc "%s cannot be derived for fully abstract types" deriver
+     in
+     let ty = ser_type_of_decl ~options ~path type_decl in
+-    let fv = Ppx_deriving.free_vars_in_core_type ty in
++    let fv = List.map Location.mknoloc (Ppx_deriving.free_vars_in_core_type ty) in
+     let poly_type = Typ.force_poly @@ Typ.poly fv @@ ty in
+     let var = pvar (Ppx_deriving.mangle_type_decl (`Suffix "to_yojson") type_decl) in
+     ([],
+@@ -431,7 +431,7 @@ let desu_str_of_type ~options ~path ({ p
+       raise_errorf ~loc "%s: extensible type manifest should be a type name" deriver
+     | None ->
+       let poly_vars = List.rev
+-        (Ppx_deriving.fold_left_type_decl (fun acc name -> name :: acc) [] type_decl)
++        (List.map Location.mknoloc (Ppx_deriving.fold_left_type_decl (fun acc name -> name :: acc) [] type_decl))
+       in
+       let polymorphize_desu = Ppx_deriving.poly_arrow_of_type_decl
+         (fun var -> [%type: Yojson.Safe.json -> [%t error_or var]]) type_decl in
+@@ -441,7 +441,7 @@ let desu_str_of_type ~options ~path ({ p
+       let default_fun = Exp.function_ [Exp.case [%pat? _] top_error] in
+       let poly_fun = polymorphize default_fun in
+       let poly_fun =
+-        (Ppx_deriving.fold_left_type_decl (fun exp name -> Exp.newtype name exp) poly_fun type_decl)
++        (Ppx_deriving.fold_left_type_decl (fun exp name -> Exp.newtype (Location.mknoloc name) exp) poly_fun type_decl)
+       in
+       let mod_name = "M_"^of_yojson_name in
+       let typ = Type.mk ~kind:(Ptype_record [Type.field ~mut:Mutable (mknoloc "f") ty])
+@@ -514,7 +514,7 @@ let desu_str_of_type ~options ~path ({ p
+         raise_errorf ~loc "%s cannot be derived for fully abstract types" deriver
+     in
+     let ty = desu_type_of_decl ~options ~path type_decl in
+-    let fv = Ppx_deriving.free_vars_in_core_type ty in
++    let fv = List.map Location.mknoloc (Ppx_deriving.free_vars_in_core_type ty) in
+     let poly_type = Typ.force_poly @@ Typ.poly fv @@ ty in
+     let var = pvar (Ppx_deriving.mangle_type_decl (`Suffix "of_yojson") type_decl) in
+     ([],
+@@ -579,7 +579,7 @@ let ser_sig_of_type ~options ~path type_
+       (`PrefixSuffix ("M", "to_yojson")) type_decl
+     in
+     let poly_vars = List.rev
+-      (Ppx_deriving.fold_left_type_decl (fun acc name -> name :: acc) [] type_decl)
++      (List.map Location.mknoloc (Ppx_deriving.fold_left_type_decl (fun acc name -> name :: acc) [] type_decl))
+     in
+     let typ = Ppx_deriving.core_type_of_type_decl type_decl in
+     let polymorphize_ser  = Ppx_deriving.poly_arrow_of_type_decl
+@@ -614,7 +614,7 @@ let desu_sig_of_type ~options ~path type
+       (`PrefixSuffix ("M", "of_yojson")) type_decl
+     in
+     let poly_vars = List.rev
+-      (Ppx_deriving.fold_left_type_decl (fun acc name -> name :: acc) [] type_decl)
++      (List.map Location.mknoloc (Ppx_deriving.fold_left_type_decl (fun acc name -> name :: acc) [] type_decl))
+     in
+     let typ = Ppx_deriving.core_type_of_type_decl type_decl in
+     let polymorphize_desu = Ppx_deriving.poly_arrow_of_type_decl
