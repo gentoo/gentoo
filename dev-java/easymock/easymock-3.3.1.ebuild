@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/EasyMock/${PV}/${P}.zip"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="3.2"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE=""
 
 COMMON_DEPEND="
