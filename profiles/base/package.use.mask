@@ -180,7 +180,7 @@ kde-frameworks/ktextwidgets speech
 
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # Depends on masked, end-of-life php versions
-=dev-libs/ossp-uuid-1.6.2-r4 php
+<=dev-libs/ossp-uuid-1.6.2-r4 php
 =dev-libs/xapian-bindings-1.2.22 php
 =www-servers/uwsgi-2.0.9 php
 
