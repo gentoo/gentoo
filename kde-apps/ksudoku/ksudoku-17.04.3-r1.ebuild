@@ -21,6 +21,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_OpenGL=$(usex opengl)
