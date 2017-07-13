@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="${PN/-bin/}"
 BASE_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-_arch_.deb"
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="http://www.slack.com/"
@@ -66,13 +66,15 @@ src_install() {
 	insinto /opt/${MY_PN}
 	doins -r usr/lib/${MY_PN}/.
 	fperms +x /opt/${MY_PN}/${MY_PN}
-	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
+	dosym ../../opt/${MY_PN}/${MY_PN} usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
