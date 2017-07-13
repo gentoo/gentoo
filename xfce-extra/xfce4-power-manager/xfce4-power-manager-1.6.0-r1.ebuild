@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit linux-info gnome2-utils
+inherit gnome2-utils
 
 DESCRIPTION="Power manager for the Xfce desktop environment"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-power-manager"
@@ -38,13 +38,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	x11-proto/xproto"
-
-pkg_setup() {
-	if use kernel_linux; then
-		CONFIG_CHECK="~TIMER_STATS"
-		linux-info_pkg_setup
-	fi
-}
 
 src_configure() {
 	local myconf=(
