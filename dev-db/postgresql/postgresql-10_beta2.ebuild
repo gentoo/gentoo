@@ -168,6 +168,7 @@ src_configure() {
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
+		$(use_enable !alpha spinlocks) \
 		$(use_enable !pg_legacytimestamp integer-datetimes) \
 		$(use_enable threads thread-safety) \
 		$(use_with kerberos gssapi) \
@@ -223,7 +224,7 @@ src_install() {
 		local rel_manpath="../../postgresql-${SLOT}/man/man${mansec}"
 
 		mkdir -p "${ED}"/usr/share/man/man${mansec} || die "making man dir"
-		pushd "${ED}"/usr/share/man/man${mansec} > /dev/null
+		pushd "${ED}"/usr/share/man/man${mansec} > /dev/null || die "pushd failed"
 
 		for f in "${ED}/usr/share/postgresql-${SLOT}/man/man${mansec}"/* ; do
 			bn=$(basename "${f}")
