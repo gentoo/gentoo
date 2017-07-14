@@ -1,13 +1,13 @@
-From 5ad997775501a1172846bccdf56aad6c9c4bcb1f Mon Sep 17 00:00:00 2001
+From c3b0d1123cae5a895452d2a8d75e663e76cbf5bd Mon Sep 17 00:00:00 2001
 From: Timo Tambet <ttambet@gmail.com>
 Date: Sat, 25 Feb 2017 23:29:10 +0200
-Subject: [PATCH 1/4] Make bluetooth/colord/goa/kerberos/wacom optional
+Subject: [PATCH 1/5] Make bluetooth/colord/goa/kerberos/wacom optional
 
 Upstream is not interested in any part of this patch:
 
-https://bugzilla.gnome.org/show_bug.cgi?id=686840
-https://bugzilla.gnome.org/show_bug.cgi?id=697478
-https://bugzilla.gnome.org/show_bug.cgi?id=700145
+https://bugzilla.gnome.org/686840
+https://bugzilla.gnome.org/697478
+https://bugzilla.gnome.org/700145
 
 Signed-off-by: Ole Reifschneider <tranquility@gentoo.org>
 Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
@@ -24,7 +24,7 @@ Signed-off-by: Alexandre Rostovtsev <tetromino@gentoo.org>
  8 files changed, 188 insertions(+), 50 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 12a8adee6..022635d34 100644
+index 11fc9fc..9566fb7 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -120,10 +120,6 @@ LIBGD_INIT([_view-common static])
@@ -243,7 +243,7 @@ index 12a8adee6..022635d34 100644
  	AC_MSG_NOTICE([** wacom (Wacom tablet panel)])
  else
 diff --git a/panels/Makefile.am b/panels/Makefile.am
-index 507cd2f54..2806c4555 100644
+index 507cd2f..2806c45 100644
 --- a/panels/Makefile.am
 +++ b/panels/Makefile.am
 @@ -2,11 +2,9 @@ SUBDIRS= \
@@ -279,7 +279,7 @@ index 507cd2f54..2806c4555 100644
 +
  -include $(top_srcdir)/git.mk
 diff --git a/panels/background/Makefile.am b/panels/background/Makefile.am
-index ccb80172f..bde4cdf43 100644
+index ccb8017..bde4cdf 100644
 --- a/panels/background/Makefile.am
 +++ b/panels/background/Makefile.am
 @@ -27,8 +27,6 @@ libbackground_chooser_la_SOURCES =	\
@@ -305,7 +305,7 @@ index ccb80172f..bde4cdf43 100644
  
  libbackground_la_SOURCES =		\
 diff --git a/panels/background/bg-pictures-source.c b/panels/background/bg-pictures-source.c
-index a33cee7f3..408359cba 100644
+index a33cee7..408359c 100644
 --- a/panels/background/bg-pictures-source.c
 +++ b/panels/background/bg-pictures-source.c
 @@ -23,13 +23,17 @@
@@ -413,7 +413,7 @@ index a33cee7f3..408359cba 100644
    priv->thumb_factory =
      gnome_desktop_thumbnail_factory_new (GNOME_DESKTOP_THUMBNAIL_SIZE_LARGE);
 diff --git a/panels/power/cc-power-panel.c b/panels/power/cc-power-panel.c
-index db4e69a26..7677b58c4 100644
+index db4e69a..7677b58 100644
 --- a/panels/power/cc-power-panel.c
 +++ b/panels/power/cc-power-panel.c
 @@ -1882,7 +1882,7 @@ add_power_saving_section (CcPowerPanel *self)
@@ -426,7 +426,7 @@ index db4e69a26..7677b58c4 100644
  						   G_DBUS_PROXY_FLAGS_NONE,
  						   NULL,
 diff --git a/panels/user-accounts/um-realm-manager.c b/panels/user-accounts/um-realm-manager.c
-index 26391486f..977dab1d6 100644
+index 2639148..977dab1 100644
 --- a/panels/user-accounts/um-realm-manager.c
 +++ b/panels/user-accounts/um-realm-manager.c
 @@ -22,7 +22,9 @@
@@ -474,7 +474,7 @@ index 26391486f..977dab1d6 100644
  
  void
 diff --git a/shell/Makefile.am b/shell/Makefile.am
-index 6af3199d8..f3e49c7d9 100644
+index 6af3199..f3e49c7 100644
 --- a/shell/Makefile.am
 +++ b/shell/Makefile.am
 @@ -78,14 +78,12 @@ gnome_control_center_LDADD =						\
@@ -508,7 +508,7 @@ index 6af3199d8..f3e49c7d9 100644
  	$(gnome_control_center_LDADD)					\
  	alt/libshell_alt.la
 diff --git a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
-index 20ebb85d5..9104b45ba 100644
+index 20ebb85..9104b45 100644
 --- a/shell/cc-panel-loader.c
 +++ b/shell/cc-panel-loader.c
 @@ -33,7 +33,9 @@ extern GType cc_background_panel_get_type (void);
@@ -552,5 +552,5 @@ index 20ebb85d5..9104b45ba 100644
    PANEL_TYPE("printers",         cc_printers_panel_get_type     ),
    PANEL_TYPE("privacy",          cc_privacy_panel_get_type      ),
 -- 
-2.11.1
+2.10.2
 
