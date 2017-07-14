@@ -1,4 +1,4 @@
-From 0f0ff7be9bd4d2ad2cd7e5c6092b1d0261c09335 Mon Sep 17 00:00:00 2001
+From e801bd3553dc4e49e19a031ce4007620c35764f8 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
 Date: Thu, 29 Jun 2017 11:14:37 +0200
 Subject: [PATCH 2/3] cmake: Correct & unify CMake install path
@@ -11,10 +11,10 @@ and 'lib/cmake' inconsistently. Replace all of them with a single
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index adda7fa..b88cb20 100644
+index 1ca77c1..3d1a304 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -112,7 +112,7 @@ SET_TARGET_PROPERTIES(snappy PROPERTIES SOVERSION ${PROJECT_VERSION})
+@@ -113,7 +113,7 @@ SET_TARGET_PROPERTIES(snappy PROPERTIES VERSION ${PROJECT_VERSION}
  
  CONFIGURE_PACKAGE_CONFIG_FILE(cmake/SnappyConfig.cmake.in
          ${Snappy_BINARY_DIR}/SnappyConfig.cmake
@@ -23,7 +23,7 @@ index adda7fa..b88cb20 100644
          PATH_VARS CMAKE_INSTALL_INCLUDEDIR CMAKE_INSTALL_LIBDIR CMAKE_INSTALL_BINDIR
          )
  
-@@ -120,7 +120,7 @@ WRITE_BASIC_PACKAGE_VERSION_FILE(${Snappy_BINARY_DIR}/SnappyConfigVersion.cmake
+@@ -121,7 +121,7 @@ WRITE_BASIC_PACKAGE_VERSION_FILE(${Snappy_BINARY_DIR}/SnappyConfigVersion.cmake
          COMPATIBILITY SameMajorVersion)
  INSTALL(FILES ${Snappy_BINARY_DIR}/SnappyConfig.cmake
          ${Snappy_BINARY_DIR}/SnappyConfigVersion.cmake

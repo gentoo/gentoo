@@ -9,8 +9,7 @@ HOMEPAGE="https://github.com/google/snappy"
 SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-# matches SONAME...
-SLOT="0/${PV}"
+SLOT="0/${PV%%.*}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
 # upstream killed static lib support with build system update
@@ -29,9 +28,9 @@ DOCS=( format_description.txt framing_format.txt NEWS README.md )
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}"/snappy-1.1.5-0001-cmake-Use-GNUInstallDirs-to-provide-configurable-cor.patch
-		"${FILESDIR}"/snappy-1.1.5-0002-cmake-Correct-unify-CMake-install-path.patch
-		"${FILESDIR}"/snappy-1.1.5-0003-cmake-Add-missing-linking-to-GTEST_LIBRARIES.patch
+		"${FILESDIR}"/snappy-1.1.6-0001-cmake-Use-GNUInstallDirs-to-provide-configurable-cor.patch
+		"${FILESDIR}"/snappy-1.1.6-0002-cmake-Correct-unify-CMake-install-path.patch
+		"${FILESDIR}"/snappy-1.1.6-0003-cmake-Add-missing-linking-to-GTEST_LIBRARIES.patch
 	)
 
 	# command-line option parsing does not work at all, so just force
