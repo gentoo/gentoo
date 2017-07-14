@@ -11,9 +11,7 @@ HOMEPAGE="http://calamares.io"
 if [[ ${KDE_BUILD_TYPE} == live ]] ; then
 	EGIT_REPO_URI="git://github.com/${PN}/${PN}"
 else
-	inherit versionator
-	MAJOR_PV=$(get_version_component_range 1-2)
-	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MAJOR_PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -38,7 +36,7 @@ DEPEND="${PYTHON_DEPS}
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-auth/polkit-qt[qt5]
-	>=sys-libs/kpmcore-3.0.2:5=
+	>=sys-libs/kpmcore-3.0.3:5=
 	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_USEDEP}] )
 "
 
