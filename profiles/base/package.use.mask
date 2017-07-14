@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# system-renpy cannot be really used and it's going to be treecleaned, bug #587872
+games-misc/katawa-shoujo system-renpy
+
 # Mike Gilbert <floppym@gentoo.org> (09 Jul 2017)
 # Matthias Dahl <matthias.dahl@binary-island.eu> (05 Jul 2017)
 # Both are not your typical garden-variety Linux programs and are
