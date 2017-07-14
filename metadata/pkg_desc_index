@@ -1300,7 +1300,6 @@ app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
 app-emulation/docker-registry 2.5.1 2.6.0 2.6.1 2.6.1-r1: Docker Registry 2.0
 app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc2_p20170310 1.0.0_rc3_p20170607: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
-app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20130107-r3 1.4.1_pre20130107-r4: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
 app-emulation/e-uae 0.8.29_rc4-r2 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
@@ -2061,7 +2060,6 @@ app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microso
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
-app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r2 1.5.2-r3 1.5.3 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.8.1: Personal finances manager, aiming at being simple and intuitive
@@ -2197,7 +2195,6 @@ app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn s
 app-shells/zsh-completions 0.22.0 0.24.0 0.25.0 9999: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
-app-text/acroread 9.5.5-r3: Adobe's PDF reader
 app-text/active-dvi 1.10.2-r1: A DVI previewer and a presenter for slides written in LaTeX
 app-text/adiff 1.4 1.4-r1: Wordise diff
 app-text/agrep 2.04 2.04-r1 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
@@ -4573,7 +4570,6 @@ dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/nim 0.16.0 0.17.0: compiled, garbage-collected systems programming language
-dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.10 2016.11 2016.12 2017.01 2017.02 2017.03 2017.04 2017.05 2017.06 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.0 4.04.1 4.04.2 4.05.0: Type-inferring functional programming language descended from the ML family
@@ -4682,7 +4678,6 @@ dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays (a
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p10: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
-dev-libs/cyrus-imap-dev 2.4.16 2.4.17 2.4.17-r1: Developer support for the Cyrus IMAP Server
 dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10 2.1.26-r11: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
@@ -5057,7 +5052,6 @@ dev-libs/qrosspython 0.3.2 9999: Python scripting backend for Qross
 dev-libs/qtkeychain 0.7.0: Qt API for storing passwords securely
 dev-libs/quantlib 1.6 1.7.1: A comprehensive software framework for quantitative finance
 dev-libs/quazip 0.7.2-r1 0.7.3: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
-dev-libs/radlib 2.12.0-r1: Rapid Application Development Library
 dev-libs/rapidjson 1.1.0 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
@@ -12404,7 +12398,6 @@ mate-extra/mate-user-guide 1.12.0 1.14.0 1.16.0 1.18.0: User documentation for M
 mate-extra/mate-user-share 1.12.0 1.14.0 1.16.0 1.18.0: Personal file sharing for the MATE desktop
 mate-extra/mate-utils 1.12.0-r2 1.14.1 1.16.0 1.18.2: Utilities for the MATE desktop
 media-fonts/Humor-Sans 1.0: A sanserif typeface in the style of xkcd
-media-fonts/acroread-asianfonts 9.1: Asian and Extended Language Font Packs used by Adobe Reader
 media-fonts/ahem 1.0: A font developed to help test writers develop predictable tests
 media-fonts/alee-fonts 13: A Lee's Hangul truetype fonts
 media-fonts/alegreya-sans 1.0.2: A humanist sans-serif typeface with a calligraphic, dynamic feeling
@@ -14760,7 +14753,6 @@ net-im/turses 0.2.23: Command line twitter client
 net-im/vacuum 1.2.5 9999: Qt Crossplatform Jabber client
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
-net-irc/atheme-services 6.0.11-r1 7.0.6-r1 9999: A portable and secure set of open-source and modular IRC services
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/bobotpp 2.2.3: A flexible IRC bot scriptable in scheme
@@ -14978,7 +14970,7 @@ net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.10.0 6.10.2 6.10.3 6.11.0 7.6.0 7.7.2 7.7.
 net-libs/ntirpc 1.4.1: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
-net-libs/opal 3.10.11-r1 3.12.4-r1: C++ class library normalising numerous telephony protocols
+net-libs/opal 3.10.11-r1: C++ class library normalising numerous telephony protocols
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0-r4 2.0.0-r5: An open-source implementation of Service Location Protocol
@@ -14988,7 +14980,7 @@ net-libs/pacparser 1.3.1: Library to parse proxy auto-config files
 net-libs/phodav 2.1 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.5.1: Open source SIP, Media, and NAT Traversal Library
 net-libs/polarssl 1.3.9 1.3.9-r1: Cryptographic library for embedded systems
-net-libs/ptlib 2.10.11 2.12.9 2.12.9-r1: Network focused portable C++ class library providing high level functions
+net-libs/ptlib 2.10.11: Network focused portable C++ class library providing high level functions
 net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/quasselc 0_p20170111: API for accessing Quassel using C
 net-libs/qxmpp 0.8.0 0.9.3-r1 9999: A cross-platform C++ XMPP client library based on the Qt framework
@@ -15035,8 +15027,7 @@ net-mail/checkpassword-pam 0.99: checkpassword-compatible authentication program
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.15-r2 4.16.2-r1 4.17.3: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
-net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to administer a Cyrus IMAP server
-net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.10 2.5.11 2.5.11-r1 3.0.1 3.0.2: The Cyrus IMAP Server
+net-mail/cyrus-imapd 2.5.10 2.5.11 2.5.11-r1 3.0.1 3.0.2: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.19 2.2.29.1 2.2.30.1 2.2.30.2 2.2.31: An IMAP and POP3 server written with security primarily in mind
@@ -15690,7 +15681,6 @@ net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Interne
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
 net-voip/blink 1.4.1: A state of the art, easy to use SIP client
 net-voip/ekiga 4.0.1-r1: H.323 and SIP VoIP softphone
-net-voip/gnugk 3.4-r1: GNU H.323 gatekeeper
 net-voip/homer 0.25-r1 9999: Homer Conferencing (short: Homer) is a free SIP softphone with advanced audio and video support
 net-voip/linphone 3.5.2 3.6.1: Video softphone based on the SIP protocol
 net-voip/openmcu 2.2.5-r1: Simple Multi Conference Unit using H.323
@@ -16236,7 +16226,6 @@ sci-electronics/geda 1.8.2 1.9.2: GPL Electronic Design Automation (gEDA):gaf co
 sci-electronics/geda-suite 20110427: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow
 sci-electronics/gerbv 2.6.0 2.6.1: A RS-274X (Gerber) and NC drill (Excellon) file viewer
-sci-electronics/ghdl 0.29: Complete VHDL simulator using the GCC technology
 sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
 sci-electronics/gnucap 0.35.20091207: GNUCap is the GNU Circuit Analysis Package
 sci-electronics/gplcver 2.11a 2.12a: Verilog simulator
