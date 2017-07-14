@@ -1,7 +1,7 @@
-From ef596aeb01aac8d85fd5861cff360b93cc16ef16 Mon Sep 17 00:00:00 2001
+From c19cbe68d5a4a1363b320debfc6b3e93dbb7e8ac Mon Sep 17 00:00:00 2001
 From: Timo Tambet <ttambet@gmail.com>
 Date: Sun, 26 Feb 2017 00:37:06 +0200
-Subject: [PATCH 3/4] Make network panel optional
+Subject: [PATCH 3/5] Make network panel optional
 
 Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
 [Updated for 3.23.90]
@@ -11,7 +11,7 @@ Signed-off-by: Timo Tambet <ttambet@gmail.com>
  1 file changed, 25 insertions(+), 18 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index edbf657f4..248db379e 100644
+index b47dbc8..4af24d0 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -275,24 +275,31 @@ linux_usb_error_or_warn()
@@ -65,5 +65,5 @@ index edbf657f4..248db379e 100644
  # Check for power panel
  if test x${have_networkmanager} = xyes; then
 -- 
-2.11.1
+2.10.2
 
