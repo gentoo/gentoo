@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A jar program written in C"
 HOMEPAGE="https://savannah.nongnu.org/projects/fastjar"
-SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
+SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
