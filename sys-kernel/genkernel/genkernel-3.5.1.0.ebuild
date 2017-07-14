@@ -57,7 +57,7 @@ DEPEND="sys-fs/e2fsprogs
 RDEPEND="${DEPEND}
 	cryptsetup? ( sys-fs/cryptsetup )
 	app-arch/cpio
-	>=app-misc/pax-utils-0.2.1
+	>=app-misc/pax-utils-1.2.2
 	firmware? ( sys-kernel/linux-firmware )
 	!<sys-apps/openrc-0.9.9"
 # pax-utils is used for lddtree
