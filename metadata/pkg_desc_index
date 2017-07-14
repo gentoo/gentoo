@@ -2359,7 +2359,7 @@ app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML file
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
-app-text/lout 3.38-r1 3.40: High-level language for document formatting
+app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.1-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
