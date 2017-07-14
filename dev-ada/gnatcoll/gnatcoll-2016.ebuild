@@ -101,10 +101,6 @@ src_compile() {
 		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
 			build_library_type/static
 	fi
-	if use tools; then
-		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
-			build_tools/static
-	fi
 	python_fix_shebang .
 }
 
@@ -115,18 +111,9 @@ src_install() {
 	if use static; then
 		emake prefix="${D}usr" install_library_type/static
 	fi
-	if use tools; then
-		emake prefix="${D}usr" install_tools/static
-	fi
 	emake prefix="${D}usr" install_gps_plugin
 	einstalldocs
 	dodoc -r features-* known-problems-*
-	mv "${D}"/usr/share/doc/${PN}/GNATColl.pdf "${D}"/usr/share/doc/${PF}/
-	mv "${D}"/usr/share/doc/${PN}/html/html "${D}"/usr/share/doc/${PF}/
-	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples
-	rm -rf "${D}"/usr/share/doc/${PN}
-	rmdir "${D}"/usr/share/examples
-	docompress -x /usr/share/doc/${PF}/examples
 }
 
 src_test() {
