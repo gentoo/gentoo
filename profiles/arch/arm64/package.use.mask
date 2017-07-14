@@ -4,6 +4,7 @@
 # Alexis Ballier <aballier@gentoo.org> (14 Jul 2017)
 # zfs does not build on arm64 (yet?)
 app-emulation/libvirt zfs
+sys-cluster/ceph zfs
 
 # Alexis Ballier <aballier@gentoo.org> (11 Jul 2017)
 # Needs indirectly clisp:
