@@ -6,7 +6,7 @@ inherit font
 
 DESCRIPTION="Bhutanese style dbu-can font for Tibetan/Dzongkha text named after Mt Jomolhari"
 HOMEPAGE="http://chris.fynn.googlepages.com/jomolhari"
-SRC_URI="http://download.savannah.nongnu.org/releases/free-tibetan/${PN}/${PN}-alpha${PV:(-2)}.tar.gz"
+SRC_URI="mirror://nongnu/free-tibetan/${PN}/${PN}-alpha${PV:(-2)}.tar.gz"
 
 LICENSE="OFL"
 SLOT="0"
