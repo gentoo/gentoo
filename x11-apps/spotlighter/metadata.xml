@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ziapannocchia@gmail.com</email>
-		<name>Marco Clocchiatti</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">Spotlighter is a tool that show a movable and resizable spotlight
 		on the desktop screen.
 		You can use this to hide and show objects on the desktop.
