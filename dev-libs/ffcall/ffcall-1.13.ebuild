@@ -9,7 +9,7 @@ MY_PV="libffcall-${PV}"
 
 DESCRIPTION="foreign function call libraries"
 HOMEPAGE="https://www.gnu.org/software/libffcall/"
-SRC_URI="http://ftp.gnu.org/gnu/libffcall/${MY_PV}.tar.gz"
+SRC_URI="mirror://gnu/libffcall/${MY_PV}.tar.gz"
 
 # "Ffcall is under GNU GPL. As a special exception, if used in GNUstep
 # or in derivate works of GNUstep, the included parts of ffcall are
