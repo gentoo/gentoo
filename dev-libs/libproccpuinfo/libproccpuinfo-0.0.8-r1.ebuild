@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Architecture independent C API for reading /proc/cpuinfo"
 HOMEPAGE="https://savannah.nongnu.org/projects/proccpuinfo/"
-SRC_URI="http://download.savannah.nongnu.org/releases/proccpuinfo/${P}.tar.bz2"
+SRC_URI="mirror://nongnu/proccpuinfo/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
