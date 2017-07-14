@@ -262,9 +262,6 @@ src_install() {
 	if use doc ; then
 		docinto html
 		dodoc doc/src/sgml/html/*
-
-		docinto sgml
-		dodoc doc/src/sgml/*.{sgml,dsl}
 	fi
 
 	if use server; then
